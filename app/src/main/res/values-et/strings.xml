@@ -438,8 +438,6 @@
     <string name="install_history_summary">Vaata kõigi paigalduste ja eemaldamiste privaatset logi</string>
     <string name="send_version_and_uuid">Saada versioon ja UUID serveritesse</string>
     <string name="send_version_and_uuid_summary">Lisa allalaadimisel selle rakenduse versioon ja juhuslik unikaalne ID; mõjub rakenduse järgmisest taaskäivitamisest.</string>
-    <string name="allow_push_requests">Luba repositooriumitel rakendusi paigaldada/eemaldada</string>
-    <string name="allow_push_requests_summary">Repositooriumi metaandmed võivad sisaldada rakenduste paigaldamise või eemaldamise nõudeid</string>
     <string name="over_wifi">Üle Wi-Fi</string>
     <string name="over_data">Üle andmeühenduse</string>
     <string name="over_network_always_summary">Kasuta alati seda ühendust, kui see on saadaval</string>

@@ -460,8 +460,6 @@
     <string name="share_repository">Del pakkebrønn</string>
     <string name="send_install_history">Send installasjonshistorikk</string>
     <string name="send_history_csv">%s installasjonshistorikk som CSV-fil</string>
-    <string name="allow_push_requests">Tillat pakkebrønner å installere/avinstallere programmer</string>
-    <string name="allow_push_requests_summary">Pakkebrønnsmetadata kan inneholde push-forespørsler om installasjon eller avinstallasjon av programmer</string>
     <string name="antinosourcesince">Kildekoden er ikke lenger tilgjengelig, ingen oppdateringer mulig.</string>
     <string name="updates_disabled_by_settings">Alle oppdateringer avskrudd av Data/Wi-Fi-innstillinger</string>
     <string name="send_installed_apps">Del installerte programmer</string>

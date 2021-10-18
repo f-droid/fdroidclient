@@ -159,8 +159,6 @@
     <string name="over_data">தரவுக்கு மேல்</string>
     <string name="over_wifi">வைஃபை வழியாக</string>
     <string name="update_interval">தானியங்கி புதுப்பிப்பு இடைவெளி</string>
-    <string name="allow_push_requests_summary">பயன்பாடுகளை நிறுவ அல்லது நிறுவல் நீக்குவதற்கான புஷ் கோரிக்கைகளை ரெப்போ மெட்டாடேட்டாவில் சேர்க்கலாம்</string>
-    <string name="allow_push_requests">செயலிகளை நிறுவ/நிறுவல் நீக்க களஞ்சியங்களை அனுமதி</string>
     <string name="force_old_index_summary">பிழைகள் அல்லது ஒவ்வுமைச் சிக்கல்கள் இருந்தால், XML செயலி குறியீட்டை பயன்படுத்து</string>
     <string name="force_old_index">பழைய அடைவு வடிவமைப்பை கட்டாயப்படுத்து</string>
     <string name="send_version_and_uuid_summary">இச்செயலியின் பதிப்பு மற்றும் ஒரு சீரற்ற, தனித்துவமான ஐடியைப் பதிவிறக்கத்தின் போது உள்ளடக்கு, அடுத்த செயலி மறுதுவக்கத்தில் செயல்படும்.</string>

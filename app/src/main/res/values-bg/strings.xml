@@ -420,8 +420,6 @@
     <string name="install_history">История на инсталирани приложения</string>
     <string name="install_history_summary">Частен дневник на всяка инсталация и премахване</string>
     <string name="send_version_and_uuid">Изпрати версия и UUID към сървърите</string>
-    <string name="allow_push_requests">Разреши на хранилищата да инсталират/деинсталират приложения</string>
-    <string name="allow_push_requests_summary">Метаданни от хранилищата могат да включват заявки за инсталиране или деинсталиране на приложения</string>
     <string name="over_wifi">През Wi-Fi</string>
     <string name="over_data">През мобилни данни</string>
     <string name="over_network_always_summary">Винаги се използва тази връзка, когато е налична</string>

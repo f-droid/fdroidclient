@@ -469,8 +469,6 @@
     <string name="antinosourcesince">Iturburu kodea ez dago jada eskuragarri, ezin izango da eguneratu.</string>
     <string name="send_install_history">Bidali instalazioen historiala</string>
     <string name="send_history_csv">%s instalazioen historiala CSV fitxategi gisa</string>
-    <string name="allow_push_requests">Baimendu biltegiei aplikazioak instalatzea/desinstalatzea</string>
-    <string name="allow_push_requests_summary">Biltegien metadatuek aplikazioak instalatzeko edo desinstalatzeko push eskariak izan ditzakete</string>
     <string name="updates_disabled_by_settings">Eguneraketa guztiak desgaituta datu/WiFi ezarpenetan</string>
     <string name="send_installed_apps">Partekatu instalatutako aplikazioak</string>
     <string name="send_installed_apps_csv">F-Droid-ek instalatutako aplikazioak CSV fitxategi gisa</string>

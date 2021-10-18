@@ -442,8 +442,6 @@
     <string name="install_history_summary">Az összes telepítés és eltávolítás privát naplójának megtekintése</string>
     <string name="send_version_and_uuid">Verzió és UUID küldése a kiszolgálóknak</string>
     <string name="send_version_and_uuid_summary">Az alkalmazás verziójának és egy véletlenszerű, egyedi azonosítónak a felvétele letöltéskor az alkalmazás következő újraindításakor lép hatályba.</string>
-    <string name="allow_push_requests">Engedélyezés a tárolóknak, hogy alkalmazásokat telepítsenek vagy távolítsanak el</string>
-    <string name="allow_push_requests_summary">A tároló metaadatai tartalmazhatnak alkalmazások telepítését vagy eltávolítását okozó küldési kéréseket</string>
     <string name="antinosourcesince">A forráskód többé nem érhető el, a frissítések nem lehetségesek.</string>
     <string name="share_repository">Tároló megosztása</string>
     <string name="send_install_history">Telepítési előzmények elküldése</string>

@@ -431,7 +431,6 @@
     <string name="send_history_csv">%s 安装历史为 CSV 文件</string>
     <string name="install_history_summary">浏览所有关于安装与卸载的私有日志</string>
     <string name="send_version_and_uuid_summary">下载请求中包含本应用的版本和一个随机且唯一的用户 ID。重启应用后生效。</string>
-    <string name="allow_push_requests">允许存储库指示安装与卸载应用</string>
     <string name="send_installed_apps">分享已安装的应用</string>
     <string name="share_repository">分享存储库</string>
     <string name="swap_toast_invalid_url">无效的交换 URL：%1$s</string>
@@ -441,7 +440,6 @@
     <string name="app_suggested">建议</string>
     <string name="send_installed_apps_csv">通过 F-Droid 安装的应用列表，以 CSV 格式文件存储</string>
     <string name="menu_open">打开</string>
-    <string name="allow_push_requests_summary">存储库的元数据可以含有安装或卸载应用的推送请求</string>
     <string name="updates_disabled_by_settings">由于数据/WiFi 设置全部更新已禁用</string>
     <string name="app_repository">存储库：%1$s</string>
     <string name="scan_removable_storage_title">扫描可移动存储器</string>

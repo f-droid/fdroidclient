@@ -46,8 +46,6 @@
     <string name="send_version_and_uuid_summary">Cynnwys fersiwn yr ap hwn ac ID unigryw ar hap wrth lawrlwytho; yn weithredol wedi ail-ddechrau\'r ap.</string>
     <string name="force_old_index">Gorfodi hen fformat mynegeio</string>
     <string name="force_old_index_summary">Yn yr achos bod bygiau neu anawsterau cydnawsedd, defnyddir y mynegai apiau XML</string>
-    <string name="allow_push_requests">Caniatáu ystorfeydd i osod/dadosod apiau</string>
-    <string name="allow_push_requests_summary">Gall metaddata ystorfeydd gynnwys ceisiadau gwthio i osod neu ddadosod apiau</string>
     <string name="other">Arall</string>
     <string name="update_interval">Cyfnod diweddaru awtomatig</string>
     <string name="over_wifi">Dros Wi-Fi</string>

@@ -442,7 +442,6 @@
     <string name="hide_all_notifications_summary">Impedir exibição das ações na barra de estado e nas notificações.</string>
     <string name="install_history_summary">Ver registo privado de todas as instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID para os servidores</string>
-    <string name="allow_push_requests">Permitir aos repositórios instalar e desinstalar aplicações</string>
     <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme as definições de Wi-Fi/dados móveis</string>
     <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Esta aplicação contém uma falha de segurança conhecida</string>
@@ -452,7 +451,6 @@
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
     <string name="send_history_csv">Histórico de instalações de %s em ficheiro CSV</string>
     <string name="send_version_and_uuid_summary">Inclui a versão da aplicação e uma ID aleatória única ao descarregar. Surte efeito após reiniciar a aplicação.</string>
-    <string name="allow_push_requests_summary">Os meta-dados do repositório podem incluir pedidos \'push\' para instalar ou desinstalar aplicações</string>
     <string name="send_installed_apps">Partilhar aplicações instaladas</string>
     <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid como ficheiro CSV</string>
     <string name="menu_open">Abrir</string>

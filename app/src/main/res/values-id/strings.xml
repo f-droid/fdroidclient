@@ -438,8 +438,6 @@
     <string name="install_history_summary">Lihat log privat dari semua pemasangan dan pencopotan</string>
     <string name="send_version_and_uuid">Kirim versi dan UUID ke server</string>
     <string name="send_version_and_uuid_summary">Sertakan versi aplikasi ini dan ID unik acak saat mengunduh, akan berdampak setelah aplikasi dimulai ulang.</string>
-    <string name="allow_push_requests">Izinkan repo untuk memasang/menghapus aplikasi</string>
-    <string name="allow_push_requests_summary">Metadata repo bisa menyertakan permintaan push untuk memasang atau menghapus aplikasi</string>
     <string name="about_forum">Forum bantuan</string>
     <string name="app_suggested">Disarankan</string>
     <string name="app_size">Ukuran: %1$s</string>

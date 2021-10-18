@@ -182,7 +182,6 @@
     <string name="send_version_and_uuid_summary">इस ऐप के संस्करण को शामिल करें और डाउनलोड करते समय एक यादृच्छिक, अद्वितीय आईडी, अगले ऐप पुनरारंभ पर प्रभाव लेेता है।</string>
     <string name="force_old_index">पुराने इंडेक्स प्रारूप को बाध्य करें</string>
     <string name="force_old_index_summary">यदि \"बग\" या अनुकूलता की समस्याएं हैं, तो XML एप्प सूचकांक का उपयोग करें</string>
-    <string name="allow_push_requests">रिपॉज़िटरीस् को ऐप्स इंस्टॉल/अनइंस्टॉल करने की अनुमती दें</string>
     <string name="system_installer">प्रिविलेज्ड एक्सटेंशन</string>
     <string name="system_installer_on">संकुल को स्थापित करने, अद्यतन करने और हटाने के लिए प्रिविलेज्ड एक्सटेंशन का उपयोग करें</string>
     <string name="repo_exists_add_fingerprint">%1$s पहले से ही सेटअप है, इससे नई महत्वपूर्ण जानकारी जुड़ जाएगी।</string>
@@ -342,7 +341,6 @@
     <string name="antidisabledalgorithmlist">इस ऐप में गैर-मुक्त संपत्ति है</string>
     <string name="antiknownvulnlist">इस एप्लिकेशन में एक ज्ञात सुरक्षा भेद्यता है</string>
     <string name="antinosourcesince">स्रोत कोड अब उपलब्ध नहीं है, कोई अद्यतन संभव नहीं है।</string>
-    <string name="allow_push_requests_summary">रिपोज़िटरी मेटाडेटा में ऐप्स इंस्टॉल या अनइंस्टॉल करने के लिए पुश अनुरोध शामिल हो सकते हैं</string>
     <string name="updates_disabled_by_settings">डेटा / वाईफाई सेटिंग्स द्वारा अक्षम सभी अपडेट</string>
     <string name="send_installed_apps">शेयर किए गए ऐप्स</string>
     <string name="send_installed_apps_csv">F-Droid द्वारा CSV फ़ाइल के रूप में इंस्टॉल किए गए ऐप्स</string>

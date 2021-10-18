@@ -451,8 +451,6 @@
     <string name="send_install_history">Надіслати історію встановлення</string>
     <string name="send_history_csv">Історія встановлень %s як CSV file</string>
     <string name="send_version_and_uuid_summary">Включити версію цього застосунку та випадковий унікальний ID. Зміни набудуть чинності після перезапуску.</string>
-    <string name="allow_push_requests">Дозволяти репозиторіям встановлювати/видаляти застосунки</string>
-    <string name="allow_push_requests_summary">Метадані репозиторіїв можуть містити push-запити на встановлення та видалення застосунків</string>
     <string name="send_installed_apps">Поширити встановлені застосунки</string>
     <string name="send_installed_apps_csv">Застосунки, встановлені через F-Droid, як файл CSV</string>
     <string name="updates_disabled_by_settings">Усі оновлення вимкнено у налаштуваннях мобільного інтернету/WiFi</string>

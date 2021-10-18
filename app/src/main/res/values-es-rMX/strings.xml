@@ -212,8 +212,6 @@
     <string name="over_wifi">Sobre Wi-fi</string>
     <string name="update_interval">Intervalo de actualizaciones automáticas</string>
     <string name="other">Otros</string>
-    <string name="allow_push_requests_summary">Metadatos de los repositorios pueden incluir peticiones push para instalar o desinstalar aplicaciones</string>
-    <string name="allow_push_requests">Permitir a los repositorios instalar y desinstalar aplicaciones</string>
     <string name="force_old_index_summary">En caso de bugs o problemas de compatibilidad, use el XML</string>
     <string name="force_old_index">Forzar inicio con formato antiguo</string>
     <string name="send_version_and_uuid_summary">Incluir la versión de esta aplicación y un ID único y aleatorio cuando se descarga. Requiere reinicio.</string>

@@ -91,8 +91,6 @@
     <string name="send_version_and_uuid_summary">Inclui a versão da aplicação e uma ID aleatória única ao descarregar. Surte efeito após reiniciar a aplicação.</string>
     <string name="force_old_index">Impor formato de índice antigo</string>
     <string name="force_old_index_summary">Se ocorrerem erros ou incompatibilidades, utilizar o índice XML</string>
-    <string name="allow_push_requests">Permitir aos repositórios instalar e desinstalar aplicações</string>
-    <string name="allow_push_requests_summary">Os meta-dados do repositório podem incluir pedidos \'push\' para instalar ou desinstalar aplicações</string>
     <string name="other">Outros</string>
     <string name="update_interval">Intervalo de atualização automática</string>
     <string name="over_wifi">Em Wi-Fi</string>

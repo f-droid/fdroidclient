@@ -449,8 +449,6 @@
     <string name="install_history_summary">Bekijk het privélogboek van alle installaties en deïnstallaties</string>
     <string name="send_version_and_uuid">Verstuur versie en UUID naar de servers</string>
     <string name="send_version_and_uuid_summary">Voeg het versienummer van deze app toe en een willekeurige unieke ID tijdens het downloaden. Werkt als je de app opnieuw start.</string>
-    <string name="allow_push_requests">Sta bronnen toe om apps te installeren en verwijderen</string>
-    <string name="allow_push_requests_summary">Bron-metagegevens kunnen push-requests bevatten om apps te installeren of verwijderen</string>
     <string name="antinosourcesince">De broncode is niet meer beschikbaar, updates zijn niet mogelijk.</string>
     <string name="share_repository">Deel applicatiebron</string>
     <string name="send_install_history">Verstuur installatiegeschiedenis</string>

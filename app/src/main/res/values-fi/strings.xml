@@ -445,8 +445,6 @@
     <string name="install_history_summary">Tarkastele kaikkien asennusten ja poistojen yksityistä lokia</string>
     <string name="send_version_and_uuid">Lähetä versio ja UUID palvelimille</string>
     <string name="send_version_and_uuid_summary">Sisällytä sovelluksen versio ja satunnainen, yksilöivä tunniste ladattaessa. Voimassa uudelleenkäynnistyksen jälkeen.</string>
-    <string name="allow_push_requests">Salli sovelluslähteiden asentaa/poistaa sovelluksia</string>
-    <string name="allow_push_requests_summary">Sovelluslähteen metatietoihin voi sisältyä push-pyyntöjä sovellusten asentamiseen tai poistamiseen</string>
     <string name="about_forum">Tukifoorumi</string>
     <string name="app_suggested">Suositeltu</string>
     <string name="app_size">Koko: %1$s</string>

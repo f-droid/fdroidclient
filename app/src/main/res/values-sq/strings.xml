@@ -293,7 +293,6 @@
     <string name="app_size">Madhësi: %1$s</string>
     <string name="swap_scan_or_type_url">Njëri person lyspet të skanojë kodin, ose të shtypë URL-në e tjetrit në një shfletues.</string>
     <string name="not_on_same_wifi">Pajisja juaj s’është në të njëjtin rrjet Wi-Fi me depon vendore që sapo shtuat! Provoni të hyni në këtë rrjet: %s</string>
-    <string name="allow_push_requests">Lejoji depot të instalojnë/çinstalojnë aplikacione</string>
     <string name="swap_nfc_title">Prekeni që të shkëmbehet</string>
     <string name="over_network_never_summary">Mos shkarko kurrë gjë duke përdorur këtë lidhje</string>
     <string name="over_network_on_demand_summary">Përdore këtë lidhje vetëm kur klikoj për shkarkim</string>
@@ -326,7 +325,6 @@
     <string name="repo_confirm_delete_body">Fshirja e një depoje do të thotë se aplikacionet prej saj s’do të jenë më të gatshme.
 \n
 \nShënim: Krejt aplikacionet e instaluara më parë do të mbeten në pajisjen tuaj.</string>
-    <string name="allow_push_requests_summary">Te tejtëdhëna deposh mund të përfshihen kërkesa push për instalim ose çinstalim aplikacionesh</string>
     <string name="no_handler_app">S’keni ndonjë aplikacion të gatshëm që mund të trajtojë %s.</string>
     <string name="swap_toast_could_not_enable_hotspot">S’u aktivizua dot Hotspot Wi-Fi!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Funksioni atypari u mbyll, ngaqë qe pa punë.</string>

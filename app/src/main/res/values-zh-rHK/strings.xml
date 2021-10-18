@@ -374,8 +374,6 @@
     <string name="over_network_always_summary">此連線可用時總是使用</string>
     <string name="over_data">通過行動網絡</string>
     <string name="over_wifi">通過Wi-Fi</string>
-    <string name="allow_push_requests_summary">存儲庫的中繼資料可以含有安裝或卸載應用的推送請求</string>
-    <string name="allow_push_requests">允許應用庫安裝/解除安裝應用程式</string>
     <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，重新啟動應用程式後才能套用設定。</string>
     <string name="send_version_and_uuid">傳送版本和 UUID 至伺服器</string>
     <string name="toast_metrics_in_install_history">在「安裝歷史紀錄檢視器」中可以檢視 %s 指標回報</string>

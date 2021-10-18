@@ -262,8 +262,6 @@
     <string name="over_wifi">Air WiFi</string>
     <string name="update_interval">Eadaramh nan ùrachaidhean fèin-obrachail</string>
     <string name="other">Eile</string>
-    <string name="allow_push_requests_summary">Faodaidh meata-dàta nan ionadan-tasgaidh push requests a chur ris airson aplacaidean a stàladh no a dhì-stàladh</string>
-    <string name="allow_push_requests">Leig le ionadan-tasgaidh aplacaidean a stàladh/a dhì-stàladh</string>
     <string name="force_old_index_summary">Ma tha bugaichean no duilgheadas leis a’ cho-chòrdalachd ann, cleachd inneacs XML nan aplacaidean</string>
     <string name="force_old_index">Spàrr seann-fhòrmat an inneacsaidh air</string>
     <string name="send_version_and_uuid_summary">Gabh a-staigh tionndadh na h-aplacaid seo agus ID àraidh tuaireamach leis an luchdadh a-nuas, thèid seo a chur an sàs an ath-thuras a thòisicheas tu an aplacaid às ùr.</string>

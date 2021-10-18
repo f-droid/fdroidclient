@@ -468,10 +468,8 @@
     <string name="share_repository">Deila hugbúnaðarsafni</string>
     <string name="send_install_history">Senda feril uppsetninga</string>
     <string name="send_history_csv">%s feril uppsetninga sem CSV-skrá</string>
-    <string name="allow_push_requests">Leyfa hugbúnaðarsöfnum að fjarlægja/setja upp hugbúnað</string>
     <string name="antinosourcesince">Grunnkóðinn er ekki lengur tiltækur, engar uppfærslur eru mögulegar.</string>
     <string name="send_version_and_uuid_summary">Hafa með við niðurhal útgáfu þessa forrits og tilviljanakennt einstakt auðkenni, tekur gildi við næstu ræsingu forritsins.</string>
-    <string name="allow_push_requests_summary">Lýsigögn hugbúnaðarsafna geta innihaldið sendibeiðnir til að setja upp eða fjarlægja forrit</string>
     <string name="updates_disabled_by_settings">Allar uppfærslur eru óvirkar vegna stillinga fyrir gögn eða þráðlaust net</string>
     <string name="about_forum">Vefspjall fyrir aðstoð</string>
     <string name="send_installed_apps">Deila uppsettum forritum</string>

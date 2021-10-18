@@ -455,8 +455,6 @@
     <string name="share_repository">Comparteix el dipòsit</string>
     <string name="send_install_history">Envia l\'historial d\'instal·lacions</string>
     <string name="send_history_csv">%s historial d\'instal·lacions com a fitxer CSV</string>
-    <string name="allow_push_requests">Permet la des/instal·lació d\'aplicacions</string>
-    <string name="allow_push_requests_summary">Les meta-dades del repositori poden incloure «push requests» per instal·lar o desinstal·lar aplicacions</string>
     <string name="updates_disabled_by_settings">Totes les actualitzacions deshabilitades per la configuració de dades mòbils/WiFi</string>
     <string name="antinosourcesince">El codi font ja no està disponible, no és possible actualitzar.</string>
     <string name="about_forum">Fòrum de suport</string>

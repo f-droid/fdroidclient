@@ -91,8 +91,6 @@
     <string name="send_version_and_uuid_summary">Ta med versjons­nummeret til appen og ein tilfeldig, unik, ID ved nedlasting. Trer først i kraft etter omstart av appen.</string>
     <string name="force_old_index">Tving bruk av gammalt indeksformat</string>
     <string name="force_old_index_summary">Ved feil eller kompatibilitets­problem, bruk XML-basert appindeks</string>
-    <string name="allow_push_requests">Tillat pakkebrønnar å (av)installera appar</string>
-    <string name="allow_push_requests_summary">Metadata i pakkebrønnane kan innehalda push-førespurnadar for (av)installering av appar</string>
     <string name="other">Anna</string>
     <string name="update_interval">Intervall for automatisk oppdatering</string>
     <string name="over_wifi">Via Wi-Fi</string>

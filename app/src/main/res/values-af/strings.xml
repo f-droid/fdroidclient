@@ -403,8 +403,6 @@
     <string name="over_network_on_demand_summary">Gebruik slegs hierdie verbinding wanneer ek aflaai klik</string>
     <string name="over_network_always_summary">Gebruik hierdie verbinding altyd indien beskikbaar</string>
     <string name="over_data">Oor data kanaal</string>
-    <string name="allow_push_requests">Laat repos toe om apps te installeer/deïnstalleer</string>
-    <string name="allow_push_requests_summary">Repo-metadata kan stootversoeke insluit om apps te installeer of te deïnstalleer</string>
     <string name="send_version_and_uuid_summary">Voeg die app se weergawe nommer en \'n unieke ID tydens aflaai. Word aktief met volgende app lopie.</string>
     <string name="app_list__dismiss_installing_app">Installasie gekanselleer</string>
     <string name="undo">Ontdoen</string>

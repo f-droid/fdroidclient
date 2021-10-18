@@ -448,13 +448,11 @@
     <string name="share_repository">Dela förråd</string>
     <string name="send_install_history">Skicka installationshistorik</string>
     <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
-    <string name="allow_push_requests">Tillåt förråd att installera/avinstallera appar</string>
     <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Mobildata/Wi-Fi-inställningar</string>
     <string name="send_installed_apps">Dela installerade appar</string>
     <string name="send_installed_apps_csv">Appar installerade av F-Droid som CSV-fil</string>
     <string name="menu_open">Öppna</string>
     <string name="antinosourcesince">Källkoden är inte längre tillgänglig, inga uppdateringar möjliga.</string>
-    <string name="allow_push_requests_summary">Förråd-metadata kan innehålla push-förfrågningar för att installera eller avinstallera appar</string>
     <string name="about_forum">Supportforum</string>
     <string name="app_suggested">Föreslagen</string>
     <string name="app_size">Storlek: %1$s</string>

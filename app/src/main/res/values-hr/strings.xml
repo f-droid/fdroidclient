@@ -439,7 +439,6 @@
     <string name="over_network_always_summary">Uvijek koristi ovu vezu kad je dostupna</string>
     <string name="over_data">Putem mobilne mreže</string>
     <string name="over_wifi">Putem Wi-Fi mreže</string>
-    <string name="allow_push_requests">Dopusti repozitorijima instalirati/deinstalirati aplikacije</string>
     <string name="send_history_csv">%s povijest instalacija kao CSV datoteka</string>
     <string name="show_anti_feature_apps_on">Prikaži programe koji zahtijevaju nepoželjne funkcije</string>
     <string name="show_anti_feature_apps">Uključi programe s nepoželjnim funkcijama</string>
@@ -488,7 +487,6 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">Instalirana verzija nije kompatibilna s nijednom dostupnom verzijom. Deinstaliranje aplikacije omogućiti će vam pregled i instaliranje kompatibilnih verzija. Ovo se često događa s aplikacijama instaliranim putem Google Play ili drugih izvora, ako su potpisane drugim certifikatom.</string>
     <string name="app_details__no_versions__show_incompat_versions">Za prikaz nekompatibilnih verzija omogućite postavku \"%1$s\".</string>
     <string name="scan_removable_storage_summary">Traži repozitorije paketa na prijenosnoj pohrani kao što su SD kartice i USB pohrana</string>
-    <string name="allow_push_requests_summary">Metapodaci repozitorija mogu uključivati push zahtjeve za instaliranje ili deinstaliranje aplikacija</string>
     <string name="theme_follow_system">Slijedi sustav</string>
     <string name="app_list__dismiss_installing_app">Instalacija prekinuta</string>
     <string name="undo">Natrag</string>

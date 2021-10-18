@@ -454,8 +454,6 @@
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
     <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
     <string name="share_repository">Paketquelle teilen</string>
-    <string name="allow_push_requests">Paketquellen App-Installationen erlauben</string>
-    <string name="allow_push_requests_summary">Paketquellen-Metadaten können Push-Anfragen zur Installation oder Deinstallation von Apps enthalten</string>
     <string name="antinosourcesince">Der Quellcode ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>

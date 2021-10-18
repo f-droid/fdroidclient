@@ -445,8 +445,6 @@
     <string name="install_history_summary">Ollar o rexistro privado de tódalas instalacións e desinstalacións</string>
     <string name="send_version_and_uuid">Enviar versión e UUID para os servidores</string>
     <string name="send_version_and_uuid_summary">Enviar a versión da aplicación e un ID xerado ó chou ó baixar. Ten efeito após reiniciar a aplicación.</string>
-    <string name="allow_push_requests">Permitir ós repositorios instalar e desinstalar aplicacións</string>
-    <string name="allow_push_requests_summary">Os metadados do repositorio poden incluír pedidos push para instalar ou desinstalar aplicacións</string>
     <string name="scan_removable_storage_title">Analizar almacenamento extraíbel</string>
     <string name="scan_removable_storage_toast">Estase a analizar %s…</string>
     <string name="scan_removable_storage_summary">Procura repositorios de paquetes en almacenamento extraíbel coma tarxetas SD e chaves de memoria USB</string>
