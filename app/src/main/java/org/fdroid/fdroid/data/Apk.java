@@ -554,6 +554,20 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 }
             }
         }
+        if (Build.VERSION.SDK_INT >= 31) {
+            if (targetSdkVersion >= 31) {
+                // Do nothing. The targetSdk for the below split-permissions is set to 31,
+                // so we don't make any changes for apps targetting 31 or above
+            } else {
+                // TODO: Change the strings below to Manifest.permission once we target SDK 31.
+                if (set.contains(Manifest.permission.BLUETOOTH) ||
+                        set.contains(Manifest.permission.BLUETOOTH_ADMIN)) {
+                    set.add("android.permission.BLUETOOTH_SCAN");
+                    set.add("android.permission.BLUETOOTH_CONNECT");
+                    set.add("android.permission.BLUETOOTH_ADVERTISE");
+                }
+            }
+        }
 
         requestedPermissions = set.toArray(new String[set.size()]);
     }
