@@ -10,6 +10,8 @@
 
 * Improve offline, nearby sharing
 
+* Allow choosing which antifeatures to show
+
 * Block adding new repos when device admin disallows "Unknown Sources"
 
-* Fix crash when using repos with username/password
+* Remove "Allow Push Requests" setting

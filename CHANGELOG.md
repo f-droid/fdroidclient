@@ -1,3 +1,9 @@
+### 1.14-alpha3 (2021-10-22)
+
+* Remove "Allow Push Requests" expert setting, replace with compile-time configuration
+
+* Allow choosing which antifeatures to show
+
 ### 1.14-alpha2 (2021-09-10)
 
 * Improved icon management with limited Data/WiFi settings
