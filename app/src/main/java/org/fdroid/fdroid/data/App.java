@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.xmlpull.v1.XmlPullParser;
@@ -1141,14 +1142,25 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * @return if the given app should be filtered out based on the
      * {@link Preferences#PREF_SHOW_ANTI_FEATURES Show Anti-Features Setting}
      */
-    public boolean isDisabledByAntiFeatures() {
+    public boolean isDisabledByAntiFeatures(Context context) {
         if (this.antiFeatures == null) {
             return false;
         }
 
+        List<String> knownAntiFeatures = Arrays.asList(
+                context.getResources().getStringArray(R.array.antifeaturesValues)
+        );
+
         Set<String> shownAntiFeatures = Preferences.get().showAppsWithAntiFeatures();
 
         for (String antiFeature : this.antiFeatures) {
+            if (!knownAntiFeatures.contains(antiFeature)) {
+                // We do not know this antifeature
+                // Or at least, the user can't toggle it
+                // So we skip checking this one
+                continue;
+            }
+
             if (!shownAntiFeatures.contains(antiFeature)) {
                 return true;
             }
