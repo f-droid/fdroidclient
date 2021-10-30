@@ -1147,22 +1147,21 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return false;
         }
 
-        List<String> knownAntiFeatures = Arrays.asList(
+        List<String> chooseableAntiFeatures = Arrays.asList(
                 context.getResources().getStringArray(R.array.antifeaturesValues)
         );
 
         Set<String> shownAntiFeatures = Preferences.get().showAppsWithAntiFeatures();
 
         for (String antiFeature : this.antiFeatures) {
-            if (!knownAntiFeatures.contains(antiFeature)) {
-                // We do not know this antifeature
-                // Or at least, the user can't toggle it
-                // So we skip checking this one
-                continue;
-            }
-
-            if (!shownAntiFeatures.contains(antiFeature)) {
-                return true;
+            if (chooseableAntiFeatures.contains(antiFeature)) {
+                if (!shownAntiFeatures.contains(antiFeature)) {
+                    return true;
+                }
+            } else {
+                if (!shownAntiFeatures.contains(context.getResources().getString(R.string.antiothers_key))) {
+                    return true;
+                }
             }
         }
 
