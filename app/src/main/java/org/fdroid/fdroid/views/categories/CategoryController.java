@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
@@ -152,7 +153,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                     activity,
                     AppProvider.getCategoryUri(currentCategory),
                     new String[]{Schema.AppMetadataTable.Cols._COUNT},
-                    null,
+                    Utils.getAntifeatureSQLFilter(activity),
                     null,
                     null
             );
@@ -168,7 +169,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
                             Schema.AppMetadataTable.Cols.ICON,
                             Schema.AppMetadataTable.Cols.REPO_ID,
                     },
-                    null,
+                    Utils.getAntifeatureSQLFilter(activity),
                     null,
                     table + "." + Cols.IS_LOCALIZED + " DESC"
                             + ", " + table + "." + Cols.NAME + " IS NULL ASC"

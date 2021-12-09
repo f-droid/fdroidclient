@@ -122,7 +122,7 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                 activity,
                 AppProvider.getLatestTabUri(),
                 AppMetadataTable.Cols.ALL,
-                null,
+                Utils.getAntifeatureSQLFilter(activity),
                 null,
                 table + "." + Cols.IS_LOCALIZED + " DESC"
                         + ", " + table + "." + Cols.NAME + " IS NULL ASC"
