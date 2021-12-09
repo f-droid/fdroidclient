@@ -1,3 +1,9 @@
+### 1.14-alpha4 (2021-12-09)
+
+* Hide unwanted antifeatures from latest and categories
+
+* Allow custom Anti-Features from repos to be unhidden
+
 ### 1.14-alpha3 (2021-10-22)
 
 * Remove "Allow Push Requests" expert setting, replace with compile-time configuration
