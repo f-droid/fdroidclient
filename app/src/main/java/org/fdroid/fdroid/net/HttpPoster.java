@@ -2,6 +2,9 @@ package org.fdroid.fdroid.net;
 
 import android.net.Uri;
 
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,6 +13,9 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
+
+import info.guardianproject.netcipher.NetCipher;
 
 /**
  * HTTP POST a JSON string to the URL configured in the constructor.
@@ -43,5 +49,16 @@ public class HttpPoster extends HttpDownloader {
         if (statusCode < 200 || statusCode >= 300) {
             throw new IOException("HTTP POST failed with " + statusCode + " " + connection.getResponseMessage());
         }
+    }
+
+    private HttpURLConnection getConnection() throws IOException {
+        HttpURLConnection connection;
+        if (FDroidApp.queryString != null) {
+            connection = NetCipher.getHttpURLConnection(new URL(urlString + "?" + FDroidApp.queryString));
+        } else {
+            connection = NetCipher.getHttpURLConnection(new URL(urlString));
+        }
+        connection.setRequestProperty("User-Agent", Utils.getUserAgent());
+        return connection;
     }
 }

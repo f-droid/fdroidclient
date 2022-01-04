@@ -64,7 +64,6 @@ import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 
@@ -125,6 +124,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
     public static final SubnetUtils.SubnetInfo UNSET_SUBNET_INFO = new SubnetUtils("0.0.0.0/32").getInfo();
+
+    @Nullable
+    public static volatile String queryString;
 
     private static volatile LongSparseArray<String> lastWorkingMirrorArray = new LongSparseArray<>(1);
     private static volatile int numTries = Integer.MAX_VALUE;
@@ -468,8 +470,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
         final String queryStringKey = "http-downloader-query-string";
         if (preferences.sendVersionAndUUIDToServers()) {
-            HttpDownloader.queryString = atStartTime.getString(queryStringKey, null);
-            if (HttpDownloader.queryString == null) {
+            queryString = atStartTime.getString(queryStringKey, null);
+            if (queryString == null) {
                 UUID uuid = UUID.randomUUID();
                 ByteBuffer buffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE * 2);
                 buffer.putLong(uuid.getMostSignificantBits());
@@ -481,10 +483,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                 if (versionName != null) {
                     builder.append("&client_version=").append(versionName);
                 }
-                HttpDownloader.queryString = builder.toString();
-            }
-            if (!atStartTime.contains(queryStringKey)) {
-                atStartTime.edit().putString(queryStringKey, HttpDownloader.queryString).apply();
+                queryString = builder.toString();
+                atStartTime.edit().putString(queryStringKey, queryString).apply();
             }
         } else {
             atStartTime.edit().remove(queryStringKey).apply();

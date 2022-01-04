@@ -24,24 +24,22 @@ package org.fdroid.fdroid.net;
 import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.Build;
-import android.text.TextUtils;
-import android.util.Base64;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.HeadInfo;
+import org.fdroid.download.JvmDownloadManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
 import java.net.URL;
-
-import info.guardianproject.netcipher.NetCipher;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Download files over HTTP, with support for proxies, {@code .onion} addresses,
@@ -53,22 +51,16 @@ import info.guardianproject.netcipher.NetCipher;
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
-    public static final String HEADER_FIELD_ETAG = "ETag";
-
+    private final JvmDownloadManager downloadManager =
+            new JvmDownloadManager(Utils.getUserAgent(), FDroidApp.queryString);
     private final String username;
     private final String password;
-    private URL sourceUrl;
-    private HttpURLConnection connection;
+    private final URL sourceUrl;
+
     private boolean newFileAvailableOnServer;
-
     private long fileFullSize = -1L;
-    /**
-     * String to append to all HTTP downloads, created in {@link FDroidApp#onCreate()}
-     */
-    public static String queryString;
 
-    HttpDownloader(Uri uri, File destFile)
-            throws FileNotFoundException, MalformedURLException {
+    HttpDownloader(Uri uri, File destFile) throws MalformedURLException {
         this(uri, destFile, null, null);
     }
 
@@ -83,7 +75,7 @@ public class HttpDownloader extends Downloader {
      * @throws MalformedURLException
      */
     HttpDownloader(Uri uri, File destFile, String username, String password)
-            throws FileNotFoundException, MalformedURLException {
+            throws MalformedURLException {
         super(uri, destFile);
         this.sourceUrl = new URL(urlString);
         this.username = username;
@@ -92,8 +84,10 @@ public class HttpDownloader extends Downloader {
 
     @Override
     protected InputStream getDownloadersInputStream() throws IOException {
-        setupConnection(false);
-        return new BufferedInputStream(connection.getInputStream());
+        List<String> mirrors = Collections.singletonList(""); // TODO get real mirrors here
+        DownloadRequest request = new DownloadRequest(urlString, mirrors, username, password, isSwapUrl(sourceUrl));
+        // TODO why do we need to wrap this in a BufferedInputStream here?
+        return new BufferedInputStream(downloadManager.getBlocking(request));
     }
 
     /**
@@ -130,113 +124,45 @@ public class HttpDownloader extends Downloader {
      */
     @Override
     public void download() throws IOException, InterruptedException {
-        // get the file size from the server
-        HttpURLConnection tmpConn = getConnection();
-        tmpConn.setRequestMethod("HEAD");
-
-        int contentLength = -1;
-        int statusCode = tmpConn.getResponseCode();
-        tmpConn.disconnect();
-        newFileAvailableOnServer = false;
-        switch (statusCode) {
-            case HttpURLConnection.HTTP_OK:
-                String headETag = tmpConn.getHeaderField(HEADER_FIELD_ETAG);
-                contentLength = tmpConn.getContentLength();
-                fileFullSize = contentLength;
-                if (!TextUtils.isEmpty(cacheTag)) {
-                    if (cacheTag.equals(headETag)) {
-                        Utils.debugLog(TAG, urlString + " cached, not downloading: " + headETag);
-                        return;
-                    } else {
-                        String calcedETag = String.format("\"%x-%x\"",
-                                tmpConn.getLastModified() / 1000, contentLength);
-                        if (cacheTag.equals(calcedETag)) {
-                            Utils.debugLog(TAG, urlString + " cached based on calced ETag, not downloading: " +
-                                    calcedETag);
-                            return;
-                        }
-                    }
-                }
-                newFileAvailableOnServer = true;
-                break;
-            case HttpURLConnection.HTTP_NOT_FOUND:
-                notFound = true;
-                return;
-            default:
-                Utils.debugLog(TAG, "HEAD check of " + urlString + " returned " + statusCode + ": "
-                        + tmpConn.getResponseMessage());
+        boolean isSwap = isSwapUrl(sourceUrl);
+        DownloadRequest request =
+                new DownloadRequest(urlString, Collections.singletonList(""), username, password, isSwap);
+        HeadInfo headInfo = downloadManager.headBlocking(request, cacheTag);
+        fileFullSize = headInfo.getContentLength() == null ? -1 : headInfo.getContentLength();
+        if (!headInfo.getETagChanged()) {
+            // ETag has not changed, don't download again
+            Utils.debugLog(TAG, urlString + " cached, not downloading.");
+            newFileAvailableOnServer = false;
+            return;
         }
+        newFileAvailableOnServer = true;
 
         boolean resumable = false;
         long fileLength = outputFile.length();
-        if (fileLength > contentLength) {
+        if (fileLength > fileFullSize) {
             FileUtils.deleteQuietly(outputFile);
-        } else if (fileLength == contentLength && outputFile.isFile()) {
+        } else if (fileLength == fileFullSize && outputFile.isFile()) {
+            Utils.debugLog(TAG, "Already have outputFile, not download. " + outputFile.getAbsolutePath());
             return; // already have it!
         } else if (fileLength > 0) {
             resumable = true;
         }
-        setupConnection(resumable);
         Utils.debugLog(TAG, "downloading " + urlString + " (is resumable: " + resumable + ")");
         downloadFromStream(resumable);
-        cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }
 
     public static boolean isSwapUrl(Uri uri) {
         return isSwapUrl(uri.getHost(), uri.getPort());
     }
 
-    public static boolean isSwapUrl(URL url) {
+    static boolean isSwapUrl(URL url) {
         return isSwapUrl(url.getHost(), url.getPort());
     }
 
-    public static boolean isSwapUrl(String host, int port) {
+    static boolean isSwapUrl(String host, int port) {
         return port > 1023 // only root can use <= 1023, so never a swap repo
                 && host.matches("[0-9.]+") // host must be an IP address
                 && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
-    }
-
-    HttpURLConnection getConnection() throws SocketTimeoutException, IOException {
-        HttpURLConnection connection;
-        if (isSwapUrl(sourceUrl)) {
-            // swap never works with a proxy, its unrouted IP on the same subnet
-            connection = (HttpURLConnection) sourceUrl.openConnection();
-            connection.setRequestProperty("Connection", "Close"); // avoid keep-alive
-        } else {
-            if (queryString != null) {
-                connection = NetCipher.getHttpURLConnection(new URL(urlString + "?" + queryString));
-            } else {
-                connection = NetCipher.getHttpURLConnection(sourceUrl);
-            }
-        }
-
-        connection.setRequestProperty("User-Agent", Utils.getUserAgent());
-        connection.setConnectTimeout(getTimeout());
-        connection.setReadTimeout(getTimeout());
-
-        if (Build.VERSION.SDK_INT < 19) { // gzip encoding can be troublesome on old Androids
-            connection.setRequestProperty("Accept-Encoding", "identity");
-        }
-
-        if (username != null && password != null) {
-            // add authorization header from username / password if set
-            String authString = username + ":" + password;
-            connection.setRequestProperty("Authorization", "Basic "
-                    + Base64.encodeToString(authString.getBytes(), Base64.NO_WRAP));
-        }
-        return connection;
-    }
-
-    private void setupConnection(boolean resumable) throws IOException {
-        if (connection != null) {
-            return;
-        }
-        connection = getConnection();
-
-        if (resumable) {
-            // partial file exists, resume the download
-            connection.setRequestProperty("Range", "bytes=" + outputFile.length() + "-");
-        }
     }
 
     // Testing in the emulator for me, showed that figuring out the
@@ -264,8 +190,6 @@ public class HttpDownloader extends Downloader {
 
     @Override
     public void close() {
-        if (connection != null) {
-            connection.disconnect();
-        }
+        // TODO abort ongoing download somehow
     }
 }

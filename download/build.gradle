@@ -1,0 +1,90 @@
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform'
+    id 'com.android.library'
+}
+
+group = 'org.fdroid'
+version = '0.1'
+
+kotlin {
+    jvm {
+        compilations.all {
+            kotlinOptions.jvmTarget = '1.8'
+        }
+        testRuns["test"].executionTask.configure {
+            useJUnit()
+        }
+    }
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+    def hostOs = System.getProperty("os.name")
+    def isMingwX64 = hostOs.startsWith("Windows")
+    def nativeTarget
+    if (hostOs == "Mac OS X") nativeTarget = macosX64('native')
+    else if (hostOs == "Linux") nativeTarget = linuxX64("native")
+    else if (isMingwX64) nativeTarget = mingwX64("native")
+    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
+
+    ext {
+        ktor_version = "2.0.0-beta-1"
+    }
+
+    android()
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation "io.ktor:ktor-client-core:$ktor_version"
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation kotlin('test')
+            }
+        }
+        jvmMain {
+            kotlin.srcDir('src/commonJvmAndroid/kotlin')
+            dependencies {
+                implementation "io.ktor:ktor-client-cio:$ktor_version"
+            }
+        }
+        jvmTest {
+
+        }
+        androidMain {
+            kotlin.srcDir('src/commonJvmAndroid/kotlin')
+            dependencies {
+                implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+            }
+        }
+        androidTest {
+            dependencies {
+                implementation 'junit:junit:4.13.2'
+            }
+        }
+        nativeMain {
+            dependencies {
+                implementation "io.ktor:ktor-client-curl:$ktor_version"
+            }
+        }
+        nativeTest {
+
+        }
+    }
+}
+
+android {
+    compileSdkVersion 30
+    sourceSets.main.manifest.srcFile('src/androidMain/AndroidManifest.xml')
+    defaultConfig {
+        minSdkVersion 22
+        targetSdkVersion 25
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        disable "InvalidPackage" // FIXME remove when Ktor 2.0 has been released
+    }
+}

@@ -75,6 +75,8 @@ import static org.junit.Assert.assertTrue;
 @RunWith(RobolectricTestRunner.class)
 public class LocalHTTPDTest {
 
+    private static final String HEADER_FIELD_ETAG = "ETag";
+
     private static ClassLoader classLoader;
     private static LocalHTTPD localHttpd;
     private static Thread serverStartThread;
@@ -217,7 +219,7 @@ public class LocalHTTPDTest {
         assertEquals(indexFile.length(), connection.getContentLength());
         assertNotEquals(0, connection.getContentLength());
 
-        String etag = connection.getHeaderField(HttpDownloader.HEADER_FIELD_ETAG);
+        String etag = connection.getHeaderField(HEADER_FIELD_ETAG);
         assertFalse(TextUtils.isEmpty(etag));
 
         assertEquals(200, connection.getResponseCode());

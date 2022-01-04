@@ -28,7 +28,7 @@ public class HttpDownloaderTest {
         ArrayList<String> tempUrls = new ArrayList<>(Arrays.asList(
                 "https://f-droid.org/repo/index-v1.jar",
                 // sites that use SNI for HTTPS
-                "https://mirrors.kernel.org/debian/dists/stable/Release",
+                "https://mirrors.edge.kernel.org/debian/dists/stable/Release",
                 "https://fdroid.tetaneutral.net/fdroid/repo/index-v1.jar",
                 "https://ftp.fau.de/fdroid/repo/index-v1.jar",
                 //"https://microg.org/fdroid/repo/index-v1.jar",
