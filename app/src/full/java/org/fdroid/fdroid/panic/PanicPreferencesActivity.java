@@ -21,12 +21,7 @@ public class PanicPreferencesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_panic_settings);
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Handle navigation icon press
-                onBackPressed();
-            }
-        });
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
