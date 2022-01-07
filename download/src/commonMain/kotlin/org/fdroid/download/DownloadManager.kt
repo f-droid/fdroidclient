@@ -1,19 +1,21 @@
 package org.fdroid.download
 
 import io.ktor.client.HttpClient
-import io.ktor.client.plugins.ResponseException
-import io.ktor.client.plugins.UserAgent
-import io.ktor.client.plugins.onDownload
+import io.ktor.client.call.receive
+import io.ktor.client.features.ResponseException
+import io.ktor.client.features.UserAgent
+import io.ktor.client.features.onDownload
 import io.ktor.client.request.get
 import io.ktor.client.request.head
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
-import io.ktor.client.statement.bodyAsChannel
+import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.Connection
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
 import io.ktor.http.contentLength
+import io.ktor.util.InternalAPI
 import io.ktor.util.encodeBase64
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.charsets.Charsets
@@ -55,7 +57,7 @@ public open class DownloadManager(
      */
     suspend fun head(request: DownloadRequest, eTag: String?): HeadInfo? {
         val authString = constructBasicAuthValue(request)
-        val response = try {
+        val response: HttpResponse = try {
             httpClient.head(request.url) {
                 // add authorization header from username / password if set
                 if (authString != null) header(Authorization, authString)
@@ -75,7 +77,7 @@ public open class DownloadManager(
     @JvmOverloads
     suspend fun get(request: DownloadRequest, skipFirstBytes: Long? = null): ByteReadChannel {
         val authString = constructBasicAuthValue(request)
-        val response = httpClient.get(request.url) {
+        val response: HttpResponse = httpClient.get(request.url) {
             // add query string parameters if existing
             parameters?.forEach { (key, value) ->
                 parameter(key, value)
@@ -91,9 +93,10 @@ public open class DownloadManager(
                 println("Received $bytesSentTotal bytes from $contentLength")
             }
         }
-        return response.bodyAsChannel()
+        return response.receive() // 2.0 .bodyAsChannel()
     }
 
+    @OptIn(InternalAPI::class) // 2.0 remove
     private fun constructBasicAuthValue(request: DownloadRequest): String? {
         if (request.username == null || request.password == null) return null
         val authString = "${request.username}:${request.password}"

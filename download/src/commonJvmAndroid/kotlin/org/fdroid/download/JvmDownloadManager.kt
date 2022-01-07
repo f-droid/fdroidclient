@@ -1,6 +1,6 @@
 package org.fdroid.download
 
-import io.ktor.client.plugins.ResponseException
+import io.ktor.client.features.ResponseException
 import io.ktor.utils.io.jvm.javaio.toInputStream
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
