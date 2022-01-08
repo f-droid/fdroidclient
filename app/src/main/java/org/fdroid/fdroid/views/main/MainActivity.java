@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
 
-            if (item.getItemId() == 2) {
+            if (item.getItemId() == R.id.nearby) {
                 NearbyViewBinder.updateUsbOtg(MainActivity.this);
             }
 
