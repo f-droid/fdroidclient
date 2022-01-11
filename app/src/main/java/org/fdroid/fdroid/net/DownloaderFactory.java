@@ -4,14 +4,20 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 
+import org.fdroid.download.Mirror;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 public class DownloaderFactory {
+
+    private static final String TAG = "DownloaderFactory";
 
     /**
      * Downloads to a temporary file, which *you must delete yourself when
@@ -41,9 +47,15 @@ public class DownloaderFactory {
             final String[] projection = {Schema.RepoTable.Cols.USERNAME, Schema.RepoTable.Cols.PASSWORD};
             Repo repo = RepoProvider.Helper.findByUrl(context, uri, projection);
             if (repo == null) {
-                downloader = new HttpDownloader(uri, destFile);
+                Utils.debugLog(TAG, "Warning: no repo found for " + uri);
+                Mirror mirror = new Mirror(uri.toString());
+                downloader = new HttpDownloader("", destFile, Collections.singletonList(mirror));
             } else {
-                downloader = new HttpDownloader(uri, destFile, repo.username, repo.password);
+                String urlSuffix = uri.toString().replace(repo.address, "");
+                List<Mirror> mirrors = Mirror.fromStrings(repo.getMirrorList());
+                Utils.debugLog(TAG, "Using suffix " + urlSuffix + " with mirrors " + mirrors);
+                downloader =
+                        new HttpDownloader(urlSuffix, destFile, mirrors, repo.username, repo.password);
             }
         }
         return downloader;

@@ -25,10 +25,13 @@ import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.Build;
 
+import androidx.annotation.Nullable;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.HeadInfo;
 import org.fdroid.download.JvmDownloadManager;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 
@@ -36,9 +39,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -53,39 +54,40 @@ public class HttpDownloader extends Downloader {
 
     private final JvmDownloadManager downloadManager =
             new JvmDownloadManager(Utils.getUserAgent(), FDroidApp.queryString);
+    private final String path;
     private final String username;
     private final String password;
-    private final URL sourceUrl;
+    private final List<Mirror> mirrors;
 
     private boolean newFileAvailableOnServer;
     private long fileFullSize = -1L;
 
-    HttpDownloader(Uri uri, File destFile) throws MalformedURLException {
-        this(uri, destFile, null, null);
+    HttpDownloader(String path, File destFile, List<Mirror> mirrors) {
+        this(path, destFile, mirrors, null, null);
     }
 
     /**
      * Create a downloader that can authenticate via HTTP Basic Auth using the supplied
      * {@code username} and {@code password}.
      *
-     * @param uri      The file to download
+     * @param path     The path to the file to download
      * @param destFile Where the download is saved
+     * @param mirrors  The repo base URLs where the file can be found
      * @param username Username for HTTP Basic Auth, use {@code null} to ignore
      * @param password Password for HTTP Basic Auth, use {@code null} to ignore
-     * @throws MalformedURLException
      */
-    HttpDownloader(Uri uri, File destFile, String username, String password)
-            throws MalformedURLException {
-        super(uri, destFile);
-        this.sourceUrl = new URL(urlString);
+    HttpDownloader(String path, File destFile, List<Mirror> mirrors, @Nullable String username,
+                   @Nullable String password) {
+        super(Uri.EMPTY, destFile);
+        this.path = path;
+        this.mirrors = mirrors;
         this.username = username;
         this.password = password;
     }
 
     @Override
     protected InputStream getDownloadersInputStream() throws IOException {
-        List<String> mirrors = Collections.singletonList(""); // TODO get real mirrors here
-        DownloadRequest request = new DownloadRequest(urlString, mirrors, username, password, isSwapUrl(sourceUrl));
+        DownloadRequest request = new DownloadRequest(path, mirrors, username, password);
         // TODO why do we need to wrap this in a BufferedInputStream here?
         return new BufferedInputStream(downloadManager.getBlocking(request));
     }
@@ -124,14 +126,13 @@ public class HttpDownloader extends Downloader {
      */
     @Override
     public void download() throws IOException, InterruptedException {
-        boolean isSwap = isSwapUrl(sourceUrl);
-        DownloadRequest request =
-                new DownloadRequest(urlString, Collections.singletonList(""), username, password, isSwap);
+        // boolean isSwap = isSwapUrl(sourceUrl);
+        DownloadRequest request = new DownloadRequest(path, mirrors, username, password);
         HeadInfo headInfo = downloadManager.headBlocking(request, cacheTag);
         fileFullSize = headInfo.getContentLength() == null ? -1 : headInfo.getContentLength();
         if (!headInfo.getETagChanged()) {
             // ETag has not changed, don't download again
-            Utils.debugLog(TAG, urlString + " cached, not downloading.");
+            Utils.debugLog(TAG, path + " cached, not downloading.");
             newFileAvailableOnServer = false;
             return;
         }
@@ -147,7 +148,7 @@ public class HttpDownloader extends Downloader {
         } else if (fileLength > 0) {
             resumable = true;
         }
-        Utils.debugLog(TAG, "downloading " + urlString + " (is resumable: " + resumable + ")");
+        Utils.debugLog(TAG, "downloading " + path + " (is resumable: " + resumable + ")");
         downloadFromStream(resumable);
     }
 

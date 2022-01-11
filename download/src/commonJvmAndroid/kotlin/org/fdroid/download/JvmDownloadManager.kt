@@ -7,6 +7,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.util.Date
 
+// FIXME ideally we can get rid of this wrapper, only need it for Java 7 right now (SDK < 24)
 public class JvmDownloadManager(
     userAgent: String,
     queryString: String?,

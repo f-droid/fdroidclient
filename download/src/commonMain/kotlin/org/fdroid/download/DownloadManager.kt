@@ -2,8 +2,11 @@ package org.fdroid.download
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.features.ResponseException
+import io.ktor.client.features.ServerResponseException
 import io.ktor.client.features.UserAgent
+import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.onDownload
 import io.ktor.client.request.get
 import io.ktor.client.request.head
@@ -14,6 +17,7 @@ import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.Connection
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
+import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.contentLength
 import io.ktor.util.InternalAPI
 import io.ktor.util.encodeBase64
@@ -22,16 +26,19 @@ import io.ktor.utils.io.charsets.Charsets
 import io.ktor.utils.io.core.toByteArray
 import kotlin.jvm.JvmOverloads
 
-public open class DownloadManager(
+internal expect fun getHttpClientEngine(): HttpClientEngine
+
+public open class DownloadManager @JvmOverloads constructor(
     private val userAgent: String,
     queryString: String? = null,
+    private val mirrorChooser: MirrorChooser = MirrorChooser(),
+    httpClientEngine: HttpClientEngine = getHttpClientEngine(),
 ) {
 
     private val httpClient by lazy {
-        HttpClient {
+        HttpClient(httpClientEngine) {
             followRedirects = false
             expectSuccess = true
-            developmentMode = true // TODO remove
             engine {
                 proxy = null // TODO use proxy except when swap
                 threadsCount = 4
@@ -39,6 +46,12 @@ public open class DownloadManager(
             }
             install(UserAgent) {
                 agent = userAgent
+            }
+            defaultRequest {
+                // add query string parameters if existing
+                parameters?.forEach { (key, value) ->
+                    parameter(key, value)
+                }
             }
         }
     }
@@ -55,12 +68,14 @@ public open class DownloadManager(
      * This is useful for checking if the repository index has changed before downloading it again.
      * However, due to non-standard ETags on mirrors, change detection is unreliable.
      */
-    suspend fun head(request: DownloadRequest, eTag: String?): HeadInfo? {
+    suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
         val authString = constructBasicAuthValue(request)
         val response: HttpResponse = try {
-            httpClient.head(request.url) {
-                // add authorization header from username / password if set
-                if (authString != null) header(Authorization, authString)
+            mirrorChooser.mirrorRequest(request) { url ->
+                httpClient.head(url) {
+                    // add authorization header from username / password if set
+                    if (authString != null) header(Authorization, authString)
+                }
             }
         } catch (e: ResponseException) {
             println(e)
@@ -77,21 +92,22 @@ public open class DownloadManager(
     @JvmOverloads
     suspend fun get(request: DownloadRequest, skipFirstBytes: Long? = null): ByteReadChannel {
         val authString = constructBasicAuthValue(request)
-        val response: HttpResponse = httpClient.get(request.url) {
-            // add query string parameters if existing
-            parameters?.forEach { (key, value) ->
-                parameter(key, value)
-            }
-            // add authorization header from username / password if set
-            if (authString != null) header(Authorization, authString)
-            // add range header if set
-            if (skipFirstBytes != null) header("Range", "bytes=${skipFirstBytes}-")
-            // avoid keep-alive for swap due to strange errors observed in the past
-            if (request.isSwap) header(Connection, "Close")
+        val response: HttpResponse = mirrorChooser.mirrorRequest(request) { url ->
+            httpClient.get(url) {
+                // add authorization header from username / password if set
+                if (authString != null) header(Authorization, authString)
+                // add range header if set
+                if (skipFirstBytes != null) header("Range", "bytes=${skipFirstBytes}-")
+                // avoid keep-alive for swap due to strange errors observed in the past
+                if (request.isSwap) header(Connection, "Close")
 
-            onDownload { bytesSentTotal, contentLength ->
-                println("Received $bytesSentTotal bytes from $contentLength")
+                onDownload { bytesSentTotal, contentLength ->
+                    println("Received $bytesSentTotal bytes from $contentLength")
+                }
             }
+        }
+        if (skipFirstBytes != null && response.status != PartialContent) {
+            throw ServerResponseException(response, "expected 206")
         }
         return response.receive() // 2.0 .bodyAsChannel()
     }

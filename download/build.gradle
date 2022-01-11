@@ -37,6 +37,7 @@ kotlin {
         commonTest {
             dependencies {
                 implementation kotlin('test')
+                implementation "io.ktor:ktor-client-mock:$ktor_version"
             }
         }
         jvmMain {
@@ -46,7 +47,9 @@ kotlin {
             }
         }
         jvmTest {
-
+            dependencies {
+                implementation 'junit:junit:4.13.2'
+            }
         }
         androidMain {
             kotlin.srcDir('src/commonJvmAndroid/kotlin')
