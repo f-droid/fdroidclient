@@ -86,10 +86,11 @@ public class HttpDownloader extends Downloader {
     }
 
     @Override
-    protected InputStream getDownloadersInputStream() throws IOException {
+    protected InputStream getDownloadersInputStream(boolean resumable) throws IOException {
         DownloadRequest request = new DownloadRequest(path, mirrors, username, password);
+        Long skipBytes = resumable ? outputFile.length() : null;
         // TODO why do we need to wrap this in a BufferedInputStream here?
-        return new BufferedInputStream(downloadManager.getBlocking(request));
+        return new BufferedInputStream(downloadManager.getBlocking(request, skipBytes));
     }
 
     /**

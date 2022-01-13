@@ -45,7 +45,7 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    protected InputStream getDownloadersInputStream() throws IOException {
+    protected InputStream getDownloadersInputStream(boolean resumable) throws IOException {
         Request request = Request.createGET(sourcePath, connection);
         Response response = request.send();
         fileDetails = response.toFileDetails();

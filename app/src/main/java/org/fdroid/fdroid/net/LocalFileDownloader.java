@@ -39,9 +39,10 @@ public class LocalFileDownloader extends Downloader {
      * file as it is being downloaded and written to disk.  Things can fail
      * here if the SDCard is not longer mounted, the files were deleted by
      * some other process, etc.
+     * @param resumable
      */
     @Override
-    protected InputStream getDownloadersInputStream() throws IOException {
+    protected InputStream getDownloadersInputStream(boolean resumable) throws IOException {
         try {
             inputStream = new FileInputStream(sourceFile);
             return inputStream;

@@ -33,11 +33,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
@@ -56,16 +58,14 @@ import javax.net.ssl.SSLKeyException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLProtocolException;
 
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 /**
  * DownloaderService is a service that handles asynchronous download requests
  * (expressed as {@link Intent}s) on demand.  Clients send download requests
- * through {@link #queue(Context, String, long, String)} calls.  The
+ * through {@link #queue(Context, long, String)} calls.  The
  * service is started as needed, it handles each {@code Intent} using a worker
  * thread, and stops itself when it runs out of work.  Requests can be canceled
  * using {@link #cancel(Context, String)}.  If this service is killed during
- * operation, it will receive the queued {@link #queue(Context, String, long, String)}
+ * operation, it will receive the queued {@link #queue(Context, long, String)}
  * and {@link #cancel(Context, String)} requests again due to
  * {@link Service#START_REDELIVER_INTENT}.  Bad requests will be ignored,
  * including on restart after killing via {@link Service#START_NOT_STICKY}.
@@ -226,7 +226,8 @@ public class DownloaderService extends Service {
 
         try {
             activeCanonicalUrl = canonicalUrl.toString();
-            downloader = DownloaderFactory.create(this, uri, localFile);
+            final Repo repo = RepoProvider.Helper.findById(this, repoId);
+            downloader = DownloaderFactory.create(this, repo, canonicalUrl, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {
@@ -297,52 +298,21 @@ public class DownloaderService extends Service {
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
      * @param context      this app's {@link Context}
-     * @param mirrorUrl    The URL to add to the download queue
      * @param repoId       the database ID number representing one repo
      * @param canonicalUrl the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, String mirrorUrl, long repoId, String canonicalUrl) {
-        if (TextUtils.isEmpty(mirrorUrl)) {
+    public static void queue(Context context, long repoId, String canonicalUrl) {
+        if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Queue download " + canonicalUrl.hashCode() + "/" + canonicalUrl
-                + " using " + mirrorUrl);
+        Utils.debugLog(TAG, "Queue download " + canonicalUrl.hashCode() + "/" + canonicalUrl);
         Intent intent = new Intent(context, DownloaderService.class);
         intent.setAction(ACTION_QUEUE);
-        intent.setData(Uri.parse(mirrorUrl));
+        intent.setData(Uri.parse(canonicalUrl));
         intent.putExtra(Downloader.EXTRA_REPO_ID, repoId);
         intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUrl);
         context.startService(intent);
-    }
-
-    /**
-     * Add a package to the download queue, choosing a random mirror to
-     * download from.
-     *
-     * @param canonicalUrl the URL used as the unique ID throughout F-Droid,
-     *                     needed here to support canceling active downloads
-     */
-    public static void queueUsingRandomMirror(Context context, long repoId, String canonicalUrl) {
-        String mirrorUrl = FDroidApp.switchUrlToNewMirror(canonicalUrl,
-                RepoProvider.Helper.findById(context, repoId));
-        queue(context, mirrorUrl, repoId, canonicalUrl);
-    }
-
-    /**
-     * Tries to return a version of {@code urlString} from a mirror, if there
-     * is an error, it just returns {@code urlString}.
-     *
-     * @see FDroidApp#getNewMirrorOnError(String, org.fdroid.fdroid.data.Repo)
-     */
-    public static void queueUsingDifferentMirror(Context context, long repoId, String canonicalUrl) {
-        try {
-            String mirrorUrl = FDroidApp.getNewMirrorOnError(canonicalUrl,
-                    RepoProvider.Helper.findById(context, repoId));
-            queue(context, mirrorUrl, repoId, canonicalUrl);
-        } catch (IOException e) {
-            queue(context, canonicalUrl, repoId, canonicalUrl);
-        }
     }
 
     /**
@@ -352,7 +322,7 @@ public class DownloaderService extends Service {
      *
      * @param context      this app's {@link Context}
      * @param canonicalUrl The URL to remove from the download queue
-     * @see #queue(Context, String, long, String)
+     * @see #queue(Context, long, String)
      */
     public static void cancel(Context context, String canonicalUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) {

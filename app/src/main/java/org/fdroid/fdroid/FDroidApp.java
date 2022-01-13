@@ -128,8 +128,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     @Nullable
     public static volatile String queryString;
 
-    private static volatile LongSparseArray<String> lastWorkingMirrorArray = new LongSparseArray<>(1);
-    private static volatile int numTries = Integer.MAX_VALUE;
     private static volatile int timeout = Downloader.DEFAULT_TIMEOUT;
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
@@ -249,77 +247,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         repo = new Repo();
     }
 
-    /**
-     * Each time this is called, it will return a mirror from the pool of
-     * mirrors.  If it reaches the end of the list of mirrors, it will start
-     * again from the stop, while setting the timeout to
-     * {@link Downloader#SECOND_TIMEOUT}.  If it reaches the end of the list
-     * again, it will do one last pass through the list with the timeout set to
-     * {@link Downloader#LONGEST_TIMEOUT}.  After that, this gives up with a
-     * {@link IOException}.
-     * <p>
-     * {@link #lastWorkingMirrorArray} is used to track the last mirror URL used,
-     * so it can be used in the string replacement operating when converting a
-     * download URL to point to a different mirror.  Download URLs can be
-     * anything from {@code index-v1.jar} to APKs to icons to screenshots.
-     *
-     * @see #resetMirrorVars()
-     * @see #getTimeout()
-     * @see Repo#getRandomMirror(String)
-     */
-    public static synchronized String getNewMirrorOnError(@Nullable String urlString, Repo repo2) throws IOException {
-        if (repo2.hasMirrors()) {
-            if (numTries <= 0) {
-                if (timeout == Downloader.DEFAULT_TIMEOUT) {
-                    timeout = Downloader.SECOND_TIMEOUT;
-                    numTries = Integer.MAX_VALUE;
-                } else if (timeout == Downloader.SECOND_TIMEOUT) {
-                    timeout = Downloader.LONGEST_TIMEOUT;
-                    numTries = Integer.MAX_VALUE;
-                } else {
-                    Utils.debugLog(TAG, "Mirrors: Giving up");
-                    throw new IOException("Ran out of mirrors");
-                }
-            }
-            if (numTries == Integer.MAX_VALUE) {
-                numTries = repo2.getMirrorCount();
-            }
-            numTries--;
-            return switchUrlToNewMirror(urlString, repo2);
-        } else {
-            throw new IOException("No mirrors available");
-        }
-    }
-
-    /**
-     * Switch the URL in {@code urlString} to come from a random mirror.
-     */
-    public static String switchUrlToNewMirror(@Nullable String urlString, Repo repo2) {
-        String lastWorkingMirror = lastWorkingMirrorArray.get(repo2.getId());
-        if (lastWorkingMirror == null) {
-            lastWorkingMirror = repo2.address;
-        }
-        String mirror = repo2.getRandomMirror(lastWorkingMirror);
-        lastWorkingMirrorArray.put(repo2.getId(), mirror);
-        return urlString.replace(lastWorkingMirror, mirror);
-    }
-
     public static int getTimeout() {
         return timeout;
-    }
-
-    /**
-     * Reset the retry counter and timeout to defaults, and set the last
-     * working mirror to the canonical URL.
-     *
-     * @see #getNewMirrorOnError(String, Repo)
-     */
-    public static void resetMirrorVars() {
-        for (int i = 0; i < lastWorkingMirrorArray.size(); i++) {
-            lastWorkingMirrorArray.removeAt(i);
-        }
-        numTries = Integer.MAX_VALUE;
-        timeout = Downloader.DEFAULT_TIMEOUT;
     }
 
     @Override

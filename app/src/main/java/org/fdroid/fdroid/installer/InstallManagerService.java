@@ -21,7 +21,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
@@ -206,7 +205,6 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        FDroidApp.resetMirrorVars();
         DownloaderService.setTimeout(FDroidApp.getTimeout());
 
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
@@ -219,7 +217,7 @@ public class InstallManagerService extends Service {
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queueUsingRandomMirror(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl);
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
             sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
@@ -227,7 +225,7 @@ public class InstallManagerService extends Service {
         } else {
             Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
             apkFilePath.delete();
-            DownloaderService.queueUsingRandomMirror(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl);
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
@@ -305,14 +303,12 @@ public class InstallManagerService extends Service {
                     }
                 } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
-                } else if (Downloader.ACTION_CONNECTION_FAILED.equals(action)) {
-                    DownloaderService.queueUsingDifferentMirror(context, repoId, canonicalUrl);
                 } else {
                     throw new RuntimeException("intent action not handled!");
                 }
             }
         };
-        DownloaderService.queueUsingRandomMirror(this, repoId, obbUrlString);
+        DownloaderService.queue(this, repoId, obbUrlString);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }
@@ -367,23 +363,10 @@ public class InstallManagerService extends Service {
                         }
                         break;
                     case Downloader.ACTION_INTERRUPTED:
+                    case Downloader.ACTION_CONNECTION_FAILED:
                         appUpdateStatusManager.setDownloadError(canonicalUrl,
                                 intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
                         localBroadcastManager.unregisterReceiver(this);
-                        break;
-                    case Downloader.ACTION_CONNECTION_FAILED:
-                        // TODO move this logic into DownloaderService to hide the mirror URL stuff from this class
-                        try {
-                            String currentUrlString = FDroidApp.getNewMirrorOnError(
-                                    intent.getStringExtra(Downloader.EXTRA_MIRROR_URL),
-                                    RepoProvider.Helper.findById(InstallManagerService.this, repoId));
-                            DownloaderService.queue(context, currentUrlString, repoId, canonicalUrl);
-                            DownloaderService.setTimeout(FDroidApp.getTimeout());
-                        } catch (IOException e) {
-                            appUpdateStatusManager.setDownloadError(canonicalUrl,
-                                    intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
-                            localBroadcastManager.unregisterReceiver(this);
-                        }
                         break;
                     default:
                         throw new RuntimeException("intent action not handled!");

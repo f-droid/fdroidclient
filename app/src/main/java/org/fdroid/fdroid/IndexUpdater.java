@@ -129,7 +129,7 @@ public class IndexUpdater {
     private Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
-            downloader = DownloaderFactory.create(context, indexUrl);
+            downloader = DownloaderFactory.create(context, repo, indexUrl);
             downloader.setCacheTag(repo.lastetag);
             downloader.setListener(downloadListener);
             downloader.download();

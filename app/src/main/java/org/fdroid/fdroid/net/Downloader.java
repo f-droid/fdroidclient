@@ -65,7 +65,7 @@ public abstract class Downloader {
      */
     private volatile ProgressListener downloaderProgressListener;
 
-    protected abstract InputStream getDownloadersInputStream() throws IOException;
+    protected abstract InputStream getDownloadersInputStream(boolean resumable) throws IOException;
 
     protected abstract void close();
 
@@ -74,8 +74,8 @@ public abstract class Downloader {
         outputFile = destFile;
     }
 
-    public final InputStream getInputStream() throws IOException {
-        return new WrappedInputStream(getDownloadersInputStream());
+    public final InputStream getInputStream(boolean resumable) throws IOException {
+        return new WrappedInputStream(getDownloadersInputStream(resumable));
     }
 
     public void setListener(ProgressListener listener) {
@@ -125,7 +125,7 @@ public abstract class Downloader {
         InputStream input = null;
         OutputStream outputStream = new FileOutputStream(outputFile, resumable);
         try {
-            input = getInputStream();
+            input = getInputStream(resumable);
 
             // Getting the input stream is slow(ish) for HTTP downloads, so we'll check if
             // we were interrupted before proceeding to the download.

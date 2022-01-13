@@ -30,8 +30,6 @@ import android.text.TextUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.fdroid.fdroid.net.TreeUriDownloader;
@@ -40,7 +38,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -401,17 +398,6 @@ public class Repo extends ValueObject {
     }
 
     /**
-     * The main repo URL is included in the mirror list, so it only makes
-     * sense to activate this logic if there are more than one entry in the
-     * mirror list.
-     */
-    public boolean hasMirrors() {
-        List<String> mirrorList = getMirrorList();
-        int size = mirrorList.size();
-        return size > 1 || (size == 1 && !mirrorList.contains(address));
-    }
-
-    /**
      * @return {@link List} of valid URLs to reach this repo, including the canonical URL
      */
     public List<String> getMirrorList() {
@@ -427,73 +413,5 @@ public class Repo extends ValueObject {
             allMirrors.removeAll(Arrays.asList(disabledMirrors));
         }
         return new ArrayList<>(allMirrors);
-    }
-
-    /**
-     * Get the number of available mirrors, including the canonical repo.
-     */
-    public int getMirrorCount() {
-
-        final boolean isTorEnabled = Preferences.get().isTorEnabled();
-
-        int count = 0;
-        for (String m : getMirrorList()) {
-            if (isTorEnabled) {
-                count++;
-            } else if (!m.contains(".onion")) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    /**
-     * Get a random mirror URL from the list of mirrors for this repo. It will
-     * remove the URL in {@code mirrorToSkip} from consideration before choosing
-     * which mirror to return.  {@link #getMirrorList()} returns a list of all
-     * known mirrors <b>minus</b> the mirrors that have been disabled by the
-     * user preference, e.g. {@link #disabledMirrors}.
-     * <p>
-     * The mirror logic assumes that it has a mirrors list with at least one
-     * valid entry in it.  In the index format as defined by {@code fdroid update},
-     * there is always at least one valid URL: the canonical URL.  That also means
-     * if there is only one item in the mirrors list, there are no other URLs to try.
-     * <p>
-     * The initial state of the repos in the database also includes the canonical
-     * URL in the mirrors list so the mirror logic works on the first index
-     * update.  That makes it possible to do the first index update via SD Card
-     * or USB OTG drive.
-     *
-     * @see #getMirrorList()
-     * @see #disabledMirrors
-     * @see FDroidApp#resetMirrorVars()
-     * @see FDroidApp#switchUrlToNewMirror(String, Repo)
-     * @see FDroidApp#getTimeout()
-     */
-    public String getRandomMirror(String mirrorToSkip) {
-        if (TextUtils.isEmpty(mirrorToSkip)) {
-            mirrorToSkip = address;
-        }
-        List<String> shuffledMirrors = getMirrorList();
-        if (shuffledMirrors.size() > 0) {
-
-            final boolean isTorEnabled = Preferences.get().isTorEnabled();
-
-            Collections.shuffle(shuffledMirrors);
-            for (String m : shuffledMirrors) {
-                // Return a non default, and not last used mirror
-                if (!m.equals(mirrorToSkip)) {
-                    if (isTorEnabled) {
-                        return m;
-                    } else {
-                        // Filter-out onion mirrors for non-tor connections
-                        if (!m.contains(".onion")) {
-                            return m;
-                        }
-                    }
-                }
-            }
-        }
-        return address; // In case we are out of mirrors.
     }
 }

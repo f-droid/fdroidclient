@@ -28,6 +28,8 @@ import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -122,7 +124,7 @@ public class IndexV1Updater extends IndexUpdater {
         Downloader downloader = null;
         try {
             // read file name from file
-            downloader = DownloaderFactory.create(context, indexUrl);
+            downloader = DownloaderFactory.create(context, repo, indexUrl);
             downloader.setCacheTag(repo.lastetag);
             downloader.setListener(downloadListener);
             downloader.download();
@@ -136,50 +138,6 @@ public class IndexV1Updater extends IndexUpdater {
             }
 
             processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
-        } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
-                | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                | ProtocolException | UnknownHostException e) {
-            // if the above list changes, also change below and in DownloaderService.handleIntent()
-            Utils.debugLog(TAG, "Trying to download the index from a mirror: " + e.getMessage());
-            // Mirror logic here, so that the default download code is untouched.
-            String mirrorUrl;
-            String prevMirrorUrl = indexUrl;
-            FDroidApp.resetMirrorVars();
-            int n = repo.getMirrorCount() * 3; // 3 is the number of timeouts we have. 10s, 30s & 60s
-            for (int i = 0; i <= n; i++) {
-                try {
-                    mirrorUrl = FDroidApp.getNewMirrorOnError(prevMirrorUrl, repo);
-                    prevMirrorUrl = mirrorUrl;
-                    downloader = DownloaderFactory.create(context, mirrorUrl);
-                    downloader.setCacheTag(repo.lastetag);
-                    downloader.setListener(downloadListener);
-                    downloader.setTimeout(FDroidApp.getTimeout());
-                    downloader.download();
-                    if (downloader.isNotFound()) {
-                        return false;
-                    }
-                    hasChanged = downloader.hasChanged();
-
-                    if (!hasChanged) {
-                        return true;
-                    }
-
-                    processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
-                    break;
-                } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
-                        | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                        | ProtocolException | UnknownHostException e2) {
-                    // We'll just let this try the next mirror
-                    Utils.debugLog(TAG, "Trying next mirror");
-                } catch (IOException e2) {
-                    if (downloader != null) {
-                        FileUtils.deleteQuietly(downloader.outputFile);
-                    }
-                    throw new IndexUpdater.UpdateException(repo, "Error getting F-Droid index file", e2);
-                } catch (InterruptedException e2) {
-                    // ignored if canceled, the local database just won't be updated
-                }
-            }
         } catch (IOException e) {
             if (downloader != null) {
                 FileUtils.deleteQuietly(downloader.outputFile);

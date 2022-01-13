@@ -71,9 +71,10 @@ public class TreeUriDownloader extends Downloader {
      * 6EED-6A10:: java.io.File NotFoundException: No root for 6EED-6A10}
      * <p>
      * Example:
+     * @param resumable
      */
     @Override
-    protected InputStream getDownloadersInputStream() throws IOException {
+    protected InputStream getDownloadersInputStream(boolean resumable) throws IOException {
         try {
             InputStream inputStream = context.getContentResolver().openInputStream(treeUri);
             if (inputStream == null) {
