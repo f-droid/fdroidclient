@@ -1045,24 +1045,28 @@ public final class Utils {
         StringBuilder antiFeatureFilter = new StringBuilder(Schema.AppMetadataTable.NAME)
                 .append(".")
                 .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
-                .append(" IS NULL OR (");
+                .append(" IS NULL");
 
-        for (int i = 0; i < unwantedAntifeatures.size(); i++) {
-            String unwantedAntifeature = unwantedAntifeatures.get(i);
+        if (!unwantedAntifeatures.isEmpty()) {
+            antiFeatureFilter.append(" OR (");
 
-            if (i > 0) {
-                antiFeatureFilter.append(" AND ");
+            for (int i = 0; i < unwantedAntifeatures.size(); i++) {
+                String unwantedAntifeature = unwantedAntifeatures.get(i);
+
+                if (i > 0) {
+                    antiFeatureFilter.append(" AND ");
+                }
+
+                antiFeatureFilter.append(Schema.AppMetadataTable.NAME)
+                        .append(".")
+                        .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
+                        .append(" NOT LIKE '%")
+                        .append(unwantedAntifeature)
+                        .append("%'");
             }
 
-            antiFeatureFilter.append(Schema.AppMetadataTable.NAME)
-                    .append(".")
-                    .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
-                    .append(" NOT LIKE '%")
-                    .append(unwantedAntifeature)
-                    .append("%'");
+            antiFeatureFilter.append(")");
         }
-
-        antiFeatureFilter.append(")");
 
         return antiFeatureFilter.toString();
     }
