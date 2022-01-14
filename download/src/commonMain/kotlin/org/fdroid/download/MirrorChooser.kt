@@ -1,10 +1,14 @@
 package org.fdroid.download
 
 import io.ktor.client.features.ResponseException
-import io.ktor.client.statement.HttpResponse
 import io.ktor.http.Url
+import mu.KotlinLogging
 
 class MirrorChooser {
+
+    companion object {
+        val log = KotlinLogging.logger {}
+    }
 
     /**
      * Returns a list of mirrors with the best mirrors first.
@@ -18,16 +22,17 @@ class MirrorChooser {
     /**
      * Executes the given request on the best mirror and tries the next best ones if that fails.
      */
-    internal suspend fun mirrorRequest(
+    internal suspend fun <T> mirrorRequest(
         downloadRequest: DownloadRequest,
-        request: suspend (url: Url) -> HttpResponse,
-    ): HttpResponse {
+        request: suspend (url: Url) -> T,
+    ): T {
         orderMirrors(downloadRequest.mirrors).forEachIndexed { index, mirror ->
             try {
                 return request(mirror.getUrl(downloadRequest.path))
             } catch (e: ResponseException) {
-                println(e)
-                if (index == downloadRequest.mirrors.size - 1) throw e
+                val wasLastMirror = index == downloadRequest.mirrors.size - 1
+                log.warn(e) { if (wasLastMirror) "Last mirror, rethrowing..." else "Trying other mirror now..." }
+                if (wasLastMirror) throw e
             }
         }
         error("Reached code that was thought to be unreachable.")

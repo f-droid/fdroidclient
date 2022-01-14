@@ -47,7 +47,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.util.List;

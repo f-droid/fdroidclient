@@ -45,6 +45,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.FDroidApp;
@@ -430,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Check if we have moved into the ReadyToInstall or Installed state.
             AppUpdateStatus status = manager.get(
-                    intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
+                    intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL));
             boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
             if (isStatusChange
                     && status != null

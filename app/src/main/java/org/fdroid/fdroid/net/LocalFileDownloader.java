@@ -2,8 +2,11 @@ package org.fdroid.fdroid.net;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.fdroid.download.Downloader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +30,7 @@ public class LocalFileDownloader extends Downloader {
     private final File sourceFile;
 
     LocalFileDownloader(Uri uri, File destFile) {
-        super(uri, destFile);
+        super(destFile);
         sourceFile = new File(uri.getPath());
     }
 
@@ -39,10 +42,10 @@ public class LocalFileDownloader extends Downloader {
      * file as it is being downloaded and written to disk.  Things can fail
      * here if the SDCard is not longer mounted, the files were deleted by
      * some other process, etc.
-     * @param resumable
      */
+    @NonNull
     @Override
-    protected InputStream getDownloadersInputStream(boolean resumable) throws IOException {
+    protected InputStream getInputStream(boolean resumable) throws IOException {
         try {
             inputStream = new FileInputStream(sourceFile);
             return inputStream;
@@ -52,7 +55,7 @@ public class LocalFileDownloader extends Downloader {
     }
 
     @Override
-    protected void close() {
+    public void close() {
         IOUtils.closeQuietly(inputStream);
     }
 
@@ -67,9 +70,8 @@ public class LocalFileDownloader extends Downloader {
     }
 
     @Override
-    public void download() throws ConnectException, IOException, InterruptedException {
+    public void download() throws IOException, InterruptedException {
         if (!sourceFile.exists()) {
-            notFound = true;
             throw new ConnectException(sourceFile + " does not exist, try a mirror");
         }
 

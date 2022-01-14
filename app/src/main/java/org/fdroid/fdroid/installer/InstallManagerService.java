@@ -15,13 +15,12 @@ import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.AppUpdateStatusManager;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
@@ -70,7 +69,7 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * <li>for a {@code String} ID, use {@code canonicalUrl}, {@link Uri#toString()}, or
  * {@link Intent#getDataString()}
  * <li>for an {@code int} ID, use {@link String#hashCode()} or {@link Uri#hashCode()}
- * <li>for an {@link Intent} extra, use {@link org.fdroid.fdroid.net.Downloader#EXTRA_CANONICAL_URL} and include a
+ * <li>for an {@link Intent} extra, use {@link Downloader#EXTRA_CANONICAL_URL} and include a
  * {@link String} instance
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
@@ -205,8 +204,6 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        DownloaderService.setTimeout(FDroidApp.getTimeout());
-
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
 
         registerPackageDownloaderReceivers(canonicalUrl);
@@ -328,7 +325,6 @@ public class InstallManagerService extends Service {
                 }
                 Uri canonicalUri = intent.getData();
                 String canonicalUrl = intent.getDataString();
-                long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
 
                 switch (intent.getAction()) {
                     case Downloader.ACTION_STARTED:

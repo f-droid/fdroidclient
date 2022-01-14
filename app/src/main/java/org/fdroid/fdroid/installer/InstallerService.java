@@ -27,6 +27,7 @@ import android.os.Build;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -76,7 +77,7 @@ public class InstallerService extends JobIntentService {
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
-            Uri canonicalUri = Uri.parse(intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
+            Uri canonicalUri = Uri.parse(intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL));
             installer.installPackage(uri, canonicalUri);
         } else if (ACTION_UNINSTALL.equals(intent.getAction())) {
             installer.uninstallPackage();
@@ -126,7 +127,7 @@ public class InstallerService extends JobIntentService {
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);
-        intent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        intent.putExtra(Downloader.EXTRA_CANONICAL_URL, canonicalUri.toString());
         intent.putExtra(Installer.EXTRA_APK, apk);
         enqueueWork(context, intent);
     }

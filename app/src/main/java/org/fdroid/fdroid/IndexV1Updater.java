@@ -25,6 +25,7 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -40,6 +41,7 @@ import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
@@ -47,18 +49,11 @@ import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.ConnectException;
-import java.net.HttpRetryException;
-import java.net.NoRouteToHostException;
-import java.net.ProtocolException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -69,13 +64,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLKeyException;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLProtocolException;
-
-import androidx.annotation.NonNull;
 
 /**
  * Receives the index data about all available apps and packages via the V1
@@ -121,31 +109,31 @@ public class IndexV1Updater extends IndexUpdater {
             // swap repos do not support index-v1
             return false;
         }
-        Downloader downloader = null;
+        File destFile = null;
+        Downloader downloader;
         try {
+            destFile = File.createTempFile("dl-", "", context.getCacheDir());
+            destFile.deleteOnExit(); // this probably does nothing, but maybe...
             // read file name from file
-            downloader = DownloaderFactory.create(context, repo, indexUrl);
+            downloader = DownloaderFactory.createWithoutMirrors(repo, Uri.parse(indexUrl), destFile);
             downloader.setCacheTag(repo.lastetag);
             downloader.setListener(downloadListener);
             downloader.download();
-            if (downloader.isNotFound()) {
-                return false;
-            }
             hasChanged = downloader.hasChanged();
 
             if (!hasChanged) {
                 return true;
             }
 
-            processDownloadedIndex(downloader.outputFile, downloader.getCacheTag());
+            processDownloadedIndex(destFile, downloader.getCacheTag());
         } catch (IOException e) {
-            if (downloader != null) {
-                FileUtils.deleteQuietly(downloader.outputFile);
+            if (destFile != null) {
+                FileUtils.deleteQuietly(destFile);
             }
             throw new IndexUpdater.UpdateException(repo, "Error getting F-Droid index file", e);
         } catch (InterruptedException e) {
             // ignored if canceled, the local database just won't be updated
-        }
+        } // TODO is it safe to delete destFile in finally block?
 
         return true;
     }

@@ -10,6 +10,7 @@ import android.view.ContextThemeWrapper;
 import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -58,7 +59,7 @@ public class FileInstallerActivity extends FragmentActivity {
         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         installer = new FileInstaller(this, apk);
         if (ACTION_INSTALL_FILE.equals(action)) {
-            canonicalUri = Uri.parse(intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
+            canonicalUri = Uri.parse(intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL));
             if (hasStoragePermission()) {
                 installPackage(localApkUri, canonicalUri, apk);
             } else {

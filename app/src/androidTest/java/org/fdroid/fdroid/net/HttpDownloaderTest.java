@@ -10,8 +10,12 @@ import android.util.Log;
 
 import androidx.core.util.Pair;
 
+import org.fdroid.download.DownloadManager;
+import org.fdroid.download.HttpDownloader;
 import org.fdroid.download.Mirror;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.Utils;
 import org.junit.Test;
 
 import java.io.File;
@@ -27,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class HttpDownloaderTest {
     private static final String TAG = "HttpDownloaderTest";
 
+    private final DownloadManager downloadManager = new DownloadManager(Utils.getUserAgent(), FDroidApp.queryString);
     private static final Collection<Pair<String, String>> URLS;
 
     // https://developer.android.com/reference/javax/net/ssl/SSLContext
@@ -58,7 +63,8 @@ public class HttpDownloaderTest {
             Log.i(TAG, "URL: " + pair.first + pair.second);
             File destFile = File.createTempFile("dl-", "");
             List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList(pair.first));
-            HttpDownloader httpDownloader = new HttpDownloader(pair.second, destFile, mirrors);
+            HttpDownloader httpDownloader =
+                    new HttpDownloader(downloadManager, pair.second, destFile, mirrors, null, null);
             httpDownloader.download();
             assertTrue(destFile.exists());
             assertTrue(destFile.canRead());
@@ -70,10 +76,11 @@ public class HttpDownloaderTest {
     public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(1);
         String path = "index.jar";
-        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://f-droid.org/repo/"));
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.fau.de/fdroid/repo/"));
         receivedProgress = false;
         File destFile = File.createTempFile("dl-", "");
-        final HttpDownloader httpDownloader = new HttpDownloader(path, destFile, mirrors);
+        final HttpDownloader httpDownloader =
+                new HttpDownloader(downloadManager, path, destFile, mirrors, null, null);
         httpDownloader.setListener(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long totalBytes) {
@@ -105,7 +112,7 @@ public class HttpDownloaderTest {
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
         HttpDownloader httpDownloader =
-                new HttpDownloader(path, destFile, mirrors, "myusername", "supersecretpassword");
+                new HttpDownloader(downloadManager, path, destFile, mirrors, "myusername", "supersecretpassword");
         httpDownloader.download();
         assertTrue(destFile.exists());
         assertTrue(destFile.canRead());
@@ -117,7 +124,8 @@ public class HttpDownloaderTest {
         String path = "myusername/supersecretpassword";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(path, destFile, mirrors, "myusername", "wrongpassword");
+        HttpDownloader httpDownloader =
+                new HttpDownloader(downloadManager, path, destFile, mirrors, "myusername", "wrongpassword");
         httpDownloader.download();
         assertFalse(destFile.exists());
         destFile.deleteOnExit();
@@ -129,7 +137,7 @@ public class HttpDownloaderTest {
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
         HttpDownloader httpDownloader =
-                new HttpDownloader(path, destFile, mirrors, "wrongusername", "supersecretpassword");
+                new HttpDownloader(downloadManager, path, destFile, mirrors, "wrongusername", "supersecretpassword");
         httpDownloader.download();
         assertFalse(destFile.exists());
         destFile.deleteOnExit();
@@ -141,7 +149,8 @@ public class HttpDownloaderTest {
         String path = "index.jar";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://f-droid.org/repo/"));
         File destFile = File.createTempFile("dl-", "");
-        final HttpDownloader httpDownloader = new HttpDownloader(path, destFile, mirrors);
+        final HttpDownloader httpDownloader =
+                new HttpDownloader(downloadManager, path, destFile, mirrors, null, null);
         httpDownloader.setListener(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long totalBytes) {

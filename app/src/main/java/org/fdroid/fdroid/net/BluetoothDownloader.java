@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import org.apache.commons.io.input.BoundedInputStream;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.BluetoothClient;
 import org.fdroid.fdroid.nearby.BluetoothConnection;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -38,14 +40,15 @@ public class BluetoothDownloader extends Downloader {
     }
 
     public BluetoothDownloader(Uri uri, File destFile) throws IOException {
-        super(uri, destFile);
+        super(destFile);
         String macAddress = uri.getHost().replace("-", ":");
         this.connection = new BluetoothClient(macAddress).openConnection();
         this.sourcePath = uri.getPath();
     }
 
+    @NonNull
     @Override
-    protected InputStream getDownloadersInputStream(boolean resumable) throws IOException {
+    protected InputStream getInputStream(boolean resumable) throws IOException {
         Request request = Request.createGET(sourcePath, connection);
         Response response = request.send();
         fileDetails = response.toFileDetails();
@@ -99,7 +102,7 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    protected void close() {
+    public void close() {
         if (connection != null) {
             connection.closeQuietly();
         }

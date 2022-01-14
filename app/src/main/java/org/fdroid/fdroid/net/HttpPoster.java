@@ -1,34 +1,26 @@
 package org.fdroid.fdroid.net;
 
-import android.net.Uri;
-
-import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Collections;
 
 import info.guardianproject.netcipher.NetCipher;
 
 /**
  * HTTP POST a JSON string to the URL configured in the constructor.
  */
-// TODO don't extend HttpDownloader
-public class HttpPoster extends HttpDownloader {
+public class HttpPoster {
+
+    private final String urlString;
 
     public HttpPoster(String url) {
-        this(Uri.parse(url), null);
-    }
-
-    private HttpPoster(Uri uri, File destFile) {
-        super("", destFile, Collections.singletonList(new Mirror(uri.toString())));
+        urlString = url;
     }
 
     /**
@@ -52,6 +44,7 @@ public class HttpPoster extends HttpDownloader {
         }
     }
 
+    // TODO user download library instead
     private HttpURLConnection getConnection() throws IOException {
         HttpURLConnection connection;
         if (FDroidApp.queryString != null) {

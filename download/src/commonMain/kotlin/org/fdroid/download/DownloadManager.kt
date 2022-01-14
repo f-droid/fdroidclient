@@ -7,12 +7,12 @@ import io.ktor.client.features.ResponseException
 import io.ktor.client.features.ServerResponseException
 import io.ktor.client.features.UserAgent
 import io.ktor.client.features.defaultRequest
-import io.ktor.client.features.onDownload
 import io.ktor.client.request.get
 import io.ktor.client.request.head
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.HttpStatement
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.Connection
 import io.ktor.http.HttpHeaders.ETag
@@ -21,9 +21,17 @@ import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.contentLength
 import io.ktor.util.InternalAPI
 import io.ktor.util.encodeBase64
+import io.ktor.util.toByteArray
+import io.ktor.utils.io.ByteChannel
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.charsets.Charsets
+import io.ktor.utils.io.close
+import io.ktor.utils.io.core.isEmpty
+import io.ktor.utils.io.core.readBytes
 import io.ktor.utils.io.core.toByteArray
+import io.ktor.utils.io.readRemaining
+import io.ktor.utils.io.writeFully
+import mu.KotlinLogging
 import kotlin.jvm.JvmOverloads
 
 internal expect fun getHttpClientEngine(): HttpClientEngine
@@ -34,6 +42,10 @@ public open class DownloadManager @JvmOverloads constructor(
     private val mirrorChooser: MirrorChooser = MirrorChooser(),
     httpClientEngine: HttpClientEngine = getHttpClientEngine(),
 ) {
+
+    companion object {
+        val log = KotlinLogging.logger {}
+    }
 
     private val httpClient by lazy {
         HttpClient(httpClientEngine) {
@@ -72,47 +84,71 @@ public open class DownloadManager @JvmOverloads constructor(
         val authString = constructBasicAuthValue(request)
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { url ->
+                log.debug { "URL: $url" }
                 httpClient.head(url) {
                     // add authorization header from username / password if set
                     if (authString != null) header(Authorization, authString)
                 }
             }
         } catch (e: ResponseException) {
-            println(e)
+            log.warn(e) { "Error getting HEAD" }
             return null
         }
         val contentLength = response.contentLength()
         val lastModified = response.headers[LastModified]
         if (eTag != null && response.headers[ETag] == eTag) {
-            return HeadInfo(false, contentLength, lastModified)
+            return HeadInfo(false, response.headers[ETag], contentLength, lastModified)
         }
-        return HeadInfo(true, contentLength, lastModified)
+        return HeadInfo(true, response.headers[ETag], contentLength, lastModified)
     }
 
     @JvmOverloads
-    suspend fun get(request: DownloadRequest, skipFirstBytes: Long? = null): ByteReadChannel {
+    suspend fun get(
+        request: DownloadRequest,
+        skipFirstBytes: Long? = null,
+        receiver: suspend (ByteArray) -> Unit,
+    ) {
         val authString = constructBasicAuthValue(request)
-        val response: HttpResponse = mirrorChooser.mirrorRequest(request) { url ->
-            httpClient.get(url) {
+        mirrorChooser.mirrorRequest(request) { url ->
+            httpClient.get<HttpStatement>(url) {
                 // add authorization header from username / password if set
                 if (authString != null) header(Authorization, authString)
                 // add range header if set
                 if (skipFirstBytes != null) header("Range", "bytes=${skipFirstBytes}-")
                 // avoid keep-alive for swap due to strange errors observed in the past
+                // TODO still needed?
                 if (request.isSwap) header(Connection, "Close")
-
-                onDownload { bytesSentTotal, contentLength ->
-                    println("Received $bytesSentTotal bytes from $contentLength")
+            }
+        }.execute { response ->
+            if (skipFirstBytes != null && response.status != PartialContent) {
+                throw ServerResponseException(response, "expected 206")
+            }
+            val channel: ByteReadChannel = response.receive()
+            while (!channel.isClosedForRead) {
+                val packet = channel.readRemaining(8L * 1024L)
+                while (!packet.isEmpty) {
+                    receiver(packet.readBytes())
                 }
             }
         }
-        if (skipFirstBytes != null && response.status != PartialContent) {
-            throw ServerResponseException(response, "expected 206")
-        }
-        return response.receive() // 2.0 .bodyAsChannel()
     }
 
-    @OptIn(InternalAPI::class) // 2.0 remove
+    /**
+     * Same as [get], but returns all bytes.
+     * Use this only when you are sure that a response will be small.
+     * Thus, this is intentionally visible internally only.
+     */
+    @JvmOverloads
+    internal suspend fun getBytes(request: DownloadRequest, skipFirstBytes: Long? = null): ByteArray {
+        val channel = ByteChannel()
+        get(request, skipFirstBytes) { bytes ->
+            channel.writeFully(bytes)
+        }
+        channel.close()
+        return channel.toByteArray()
+    }
+
+    @OptIn(InternalAPI::class) // ktor 2.0 remove
     private fun constructBasicAuthValue(request: DownloadRequest): String? {
         if (request.username == null || request.password == null) return null
         val authString = "${request.username}:${request.password}"

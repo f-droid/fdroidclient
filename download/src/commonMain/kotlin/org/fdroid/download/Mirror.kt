@@ -19,3 +19,10 @@ data class Mirror @JvmOverloads constructor(
         fun fromStrings(list: List<String>): List<Mirror> = list.map { Mirror(it) }
     }
 }
+
+fun Url.isLocal(): Boolean {
+    return (port > 1023 // only root can use <= 1023, so never a swap repo
+            && host.matches(Regex("[0-9.]+")) // host must be an IP address
+            // TODO check if IP is link or site local
+            )
+}

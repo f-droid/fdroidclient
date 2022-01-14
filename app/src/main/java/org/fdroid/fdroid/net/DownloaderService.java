@@ -35,9 +35,9 @@ import android.util.LogPrinter;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.ProgressListener;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -104,7 +104,6 @@ public class DownloaderService extends Service {
     private static volatile Downloader downloader;
     private static volatile String activeCanonicalUrl;
     private LocalBroadcastManager localBroadcastManager;
-    private static volatile int timeout;
 
     private final class ServiceHandler extends Handler {
         static final String TAG = "ServiceHandler";
@@ -227,7 +226,7 @@ public class DownloaderService extends Service {
         try {
             activeCanonicalUrl = canonicalUrl.toString();
             final Repo repo = RepoProvider.Helper.findById(this, repoId);
-            downloader = DownloaderFactory.create(this, repo, canonicalUrl, localFile);
+            downloader = DownloaderFactory.create(repo, canonicalUrl, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {
@@ -238,14 +237,8 @@ public class DownloaderService extends Service {
                     localBroadcastManager.sendBroadcast(intent);
                 }
             });
-            downloader.setTimeout(timeout);
             downloader.download();
-            if (downloader.isNotFound()) {
-                sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, getString(R.string.download_404),
-                        repoId, canonicalUrl);
-            } else {
-                sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
-            }
+            sendBroadcast(uri, Downloader.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
         } catch (InterruptedException e) {
             sendBroadcast(uri, Downloader.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
@@ -356,10 +349,6 @@ public class DownloaderService extends Service {
      */
     private static boolean isActive(String downloadUrl) {
         return downloader != null && TextUtils.equals(downloadUrl, activeCanonicalUrl);
-    }
-
-    public static void setTimeout(int ms) {
-        timeout = ms;
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.fdroid.download
 
-import io.ktor.util.toByteArray
 import kotlinx.coroutines.runBlocking
 import org.fdroid.getRandomString
 import kotlin.test.Test
@@ -16,7 +15,7 @@ class DownloadManagerIntegrationTest {
     fun testResumeOnExample() = runBlocking {
         val downloadManager = DownloadManager(userAgent, null)
 
-        val lastLine = downloadManager.get(downloadRequest, 1248).toByteArray().decodeToString()
+        val lastLine = downloadManager.getBytes(downloadRequest, 1248).decodeToString()
         assertEquals("</html>\n", lastLine)
     }
 }

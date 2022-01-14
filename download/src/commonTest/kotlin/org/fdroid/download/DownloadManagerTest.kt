@@ -4,6 +4,8 @@ import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondError
 import io.ktor.client.engine.mock.respondOk
+import io.ktor.client.engine.mock.respondRedirect
+import io.ktor.client.features.RedirectResponseException
 import io.ktor.client.features.ServerResponseException
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.ETag
@@ -12,8 +14,8 @@ import io.ktor.http.HttpHeaders.UserAgent
 import io.ktor.http.HttpStatusCode.Companion.InternalServerError
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
+import io.ktor.http.HttpStatusCode.Companion.TemporaryRedirect
 import io.ktor.http.headersOf
-import io.ktor.util.toByteArray
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
 import kotlin.random.Random
@@ -39,7 +41,7 @@ class DownloadManagerTest {
         val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
 
         downloadManager.head(downloadRequest)
-        downloadManager.get(downloadRequest)
+        downloadManager.getBytes(downloadRequest)
 
         mockEngine.requestHistory.forEach { request ->
             assertEquals(userAgent, request.headers[UserAgent])
@@ -55,7 +57,7 @@ class DownloadManagerTest {
         val downloadManager = DownloadManager(userAgent, queryString, httpClientEngine = mockEngine)
 
         downloadManager.head(downloadRequest)
-        downloadManager.get(downloadRequest)
+        downloadManager.getBytes(downloadRequest)
 
         mockEngine.requestHistory.forEach { request ->
             assertEquals(id, request.url.parameters["id"])
@@ -71,7 +73,7 @@ class DownloadManagerTest {
         val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
 
         downloadManager.head(downloadRequest)
-        downloadManager.get(downloadRequest)
+        downloadManager.getBytes(downloadRequest)
 
         mockEngine.requestHistory.forEach { request ->
             assertEquals("Basic Rm9vOkJhcg==", request.headers[Authorization])
@@ -103,7 +105,7 @@ class DownloadManagerTest {
         val mockEngine = MockEngine { respond(content) }
         val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
 
-        assertContentEquals(content, downloadManager.get(downloadRequest).toByteArray())
+        assertContentEquals(content, downloadManager.getBytes(downloadRequest))
     }
 
     @Test
@@ -126,12 +128,13 @@ class DownloadManagerTest {
 
         // first request gets only the skipped bytes
         assertContentEquals(content.copyOfRange(skipBytes, content.size),
-            downloadManager.get(downloadRequest, skipBytes.toLong()).toByteArray())
+            downloadManager.getBytes(downloadRequest, skipBytes.toLong()))
         // second request fails, because it responds with OK and full content
         val exception = assertFailsWith<ServerResponseException> {
-            downloadManager.get(downloadRequest, skipBytes.toLong())
+            downloadManager.getBytes(downloadRequest, skipBytes.toLong())
         }
-        assertEquals("Server error(http://example.net/foo: 200 OK. Text: \"expected 206\"", exception.message)
+        val url = mockEngine.requestHistory.last().url
+        assertEquals("Server error($url: 200 OK. Text: \"expected 206\"", exception.message)
     }
 
     @Test
@@ -143,7 +146,7 @@ class DownloadManagerTest {
 
         assertNull(downloadManager.head(downloadRequest))
         assertFailsWith<ServerResponseException> {
-            downloadManager.get(downloadRequest)
+            downloadManager.getBytes(downloadRequest)
         }
 
         // assert that URLs for each mirror get tried
@@ -159,13 +162,32 @@ class DownloadManagerTest {
         val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
 
         assertNotNull(downloadManager.head(downloadRequest))
-        downloadManager.get(downloadRequest)
+        downloadManager.getBytes(downloadRequest)
 
         // assert there is only one request per API call using one of the mirrors
         assertEquals(2, mockEngine.requestHistory.size)
         mockEngine.requestHistory.forEach { request ->
             val url = request.url.toString()
             assertTrue(url == "http://example.org/foo" || url == "http://example.net/foo")
+        }
+    }
+
+    @Test
+    fun testNoRedirect() = runSuspend {
+        val downloadRequest = DownloadRequest("foo", mirrors, "Foo", "Bar")
+
+        val mockEngine = MockEngine { respondRedirect("http://example.com") }
+        val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
+
+        assertNull(downloadManager.head(downloadRequest))
+        assertFailsWith<RedirectResponseException> {
+            downloadManager.getBytes(downloadRequest)
+        }
+
+        // HEAD tries another mirror, but GET throws, so no retry
+        assertEquals(3, mockEngine.requestHistory.size)
+        mockEngine.responseHistory.forEach { response ->
+            assertEquals(TemporaryRedirect, response.statusCode)
         }
     }
 
