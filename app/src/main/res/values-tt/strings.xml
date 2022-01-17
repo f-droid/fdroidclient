@@ -15,4 +15,14 @@
     <string name="ok">Ярый</string>
     <string name="updates">Яңартулар</string>
     <string name="app_name">F-Droid</string>
+    <string name="enable">Кабызу</string>
+    <string name="repo_add_add">Өстәү</string>
+    <string name="updates__tts__download_app">Йөкләп алу</string>
+    <string name="app_size">Үлчәм: %1$s</string>
+    <string name="app_recommended_version_installed">Версия %1$s (Киңәш ителә)</string>
+    <string name="app_version_x_installed">Версия %1$s</string>
+    <string name="app__install_downloaded_update">Яңарту</string>
+    <string name="delete">Бетерү</string>
+    <string name="by_author_format">%s тарафыннан</string>
+    <string name="version">Версия</string>
 </resources>
