@@ -137,4 +137,5 @@
     <string name="force_old_index">پرانے انڈیکس فارمیٹ کو مجبور کریں</string>
     <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے</string>
     <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں</string>
+    <string name="install_history_and_metrics">تاریخ اور میٹرکس انسٹال کریں</string>
 </resources>
