@@ -514,4 +514,16 @@
     <string name="swap_wifi_vpn_conflict">Xung đột với VPN đang hoạt động!</string>
     <string name="has_disallow_install_unknown_sources">Nguồn không xác định không thể được người dùng này thêm vào, bao gồm cả các kho mới</string>
     <string name="has_disallow_install_unknown_sources_globally">Quản trị viên thiết bị không cho phép cài đặt ứng dụng từ nguồn không xác định, bao gồm cả các kho mới</string>
+    <string name="antidisabledalgorithm">Được kí bằng thuật toán không an toàn</string>
+    <string name="antinonfreedep">Phụ thuộc vào những thứ không tự do</string>
+    <string name="antinonfreead">Phần mở rộng không tự do</string>
+    <string name="antiupstreamnonfree">Dự án mẹ không tự do</string>
+    <string name="antinonfreeassets">Các phần không tự do</string>
+    <string name="antiknownvuln">Lỗ hổng bảo mật đã biết</string>
+    <string name="antinosource">Mã nguồn không còn nữa</string>
+    <string name="app_list_results_hidden_antifeature_settings">Một số kết quả bị ẩn dựa theo cài đặt tính năng không mong muốn.</string>
+    <string name="antiads">Quảng cáo</string>
+    <string name="antitrack">Theo dõi</string>
+    <string name="antinonfreenet">Dịch vụ mạng không tự do</string>
+    <string name="antiothers">Tính năng không mong muốn khác</string>
 </resources>
