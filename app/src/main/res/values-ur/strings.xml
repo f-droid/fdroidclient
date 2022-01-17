@@ -236,4 +236,6 @@
     <string name="add_key">کلید شامل کریں</string>
     <string name="scan_removable_storage_summary">ایس ڈی کارڈز اور یو ایس بی تھمب ڈرائیو جیسے ریموویبل سٹوریج پر پیکج ریپوز تلاش کریں</string>
     <string name="menu_translation">ترجمہ</string>
+    <string name="menu_bitcoin">بٹ کوائن۔</string>
+    <string name="menu_downgrade">ڈاؤن گریڈ</string>
 </resources>
