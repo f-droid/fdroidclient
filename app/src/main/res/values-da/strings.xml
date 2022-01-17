@@ -504,4 +504,10 @@
     <string name="send_fdroid_metrics_json">%s målerapport som en JSON-fil</string>
     <string name="send_fdroid_metrics_report">Send %s målerapport</string>
     <string name="apps">Apps</string>
+    <string name="swap_wifi_vpn_conflict">Konflikt med den aktive VPN!</string>
+    <string name="share_apk_error">Kunne ikke dele app fil</string>
+    <string name="banner_no_data_or_wifi">Ingen Data eller WiFi tilgængeligt</string>
+    <string name="banner_no_internet">Ingen Internet</string>
+    <string name="has_disallow_install_unknown_sources">Ukendte kilder kan ikke tilføjes af denne bruger, dette inkluderer nye depoter</string>
+    <string name="has_disallow_install_unknown_sources_globally">Din enhedsadministrator tillader ikke installation af apps fra ukendte kilder, dette inkluderer nye depoter</string>
 </resources>
