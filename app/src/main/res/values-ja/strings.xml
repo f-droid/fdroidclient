@@ -500,4 +500,7 @@
     <string name="send_fdroid_metrics_json">%sメトリクス報告をJSONファイルとして</string>
     <string name="send_fdroid_metrics_report">%sメトリクス報告を通信</string>
     <string name="banner_no_internet">インターネットなし</string>
+    <string name="swap_wifi_vpn_conflict">アクティブなVPNとの衝突!</string>
+    <string name="has_disallow_install_unknown_sources">新規レポジトリを含む未知のソースは、このユーザーによって追加されることができません</string>
+    <string name="has_disallow_install_unknown_sources_globally">あなたのデバイスの管理者は、新規レポジトリを含む未知のソースからアプリのインストールを許可していません</string>
 </resources>
