@@ -524,4 +524,16 @@
     <string name="nearby_splash__document_tree">Ieškoti repozitorijų ir tinklaviečių USB OTG.</string>
     <string name="nearby_splash__read_external_storage">Ieškoti repozitorijų ir tinklaviečių SD kortelėje.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Abi pusės turi turėti %1$s, kad galėtų naudotis netoliese funkcija.</string>
+    <string name="antinonfreedep">Ne atviro kodo priklausomieji</string>
+    <string name="antiupstreamnonfree">Ne atviro kodo pradinis kodas</string>
+    <string name="antinonfreeassets">Ne atviro kodo resursai</string>
+    <string name="antidisabledalgorithm">Pasirašyta naudojant nesaugų algoritmą</string>
+    <string name="antinosource_key">NoSourceSince</string>
+    <string name="antinosource">Pirminis kodas nebepasiekiamas</string>
+    <string name="app_list_results_hidden_antifeature_settings">Kai kurie rezultatai buvo paslėpti atsižvelgiant į jūsų nepageidaujamų ypatybių nustatymus.</string>
+    <string name="antiads">Skelbimai</string>
+    <string name="antinonfreead">Ne atviro kodo papildiniai</string>
+    <string name="antinonfreenet">Ne atviro kodo tinklo paslaugos</string>
+    <string name="antitrack">Sekimas</string>
+    <string name="antiknownvuln">Žinomas pažeidžiamumas</string>
 </resources>
