@@ -425,7 +425,7 @@
     <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
     <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
     <string name="hide_all_notifications">Ẩn tất cả thông báo</string>
-    <string name="hide_all_notifications_summary">Ngăn mọi hành động không hiện lên trong thanh trạng thái và ngăn thông báo.</string>
+    <string name="hide_all_notifications_summary">Ngăn mọi hành động khỏi việc hiển thị thanh trạng thái và ngăn thông báo.</string>
     <string name="prompt_to_send_crash_reports_summary">Thu thập thông tin khi app gặp lỗi và gửi đến nhà phát triển</string>
     <string name="install_history">Lịch sử cài đặt</string>
     <string name="install_history_summary">Xem nhật ký của từng lượt cài đặt và gỡ bỏ</string>
