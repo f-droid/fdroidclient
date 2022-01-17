@@ -132,8 +132,6 @@
     <string name="over_network_always_summary">دستیاب ہونے پر ہمیشہ اس کنکشن کا استعمال کریں</string>
     <string name="over_data">زائد کوائف</string>
     <string name="over_wifi">وائی فائی سے</string>
-    <string name="allow_push_requests_summary">ریپو میٹا ڈیٹا میں ایپس کو انسٹال کرنے یا ان انسٹال کرنے کے لیے پش کی درخواستیں شامل ہو سکتی ہیں</string>
-    <string name="allow_push_requests">ریپوز کو ایپس انسٹال/انسٹال کرنے کی اجازت دیں</string>
     <string name="force_old_index_summary">اگر کیڑے یا مطابقت کے مسائل ہیں تو ، XML ایپ انڈیکس استعمال کریں۔</string>
     <string name="force_old_index">پرانے انڈیکس فارمیٹ کو مجبور کریں</string>
     <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے۔</string>
