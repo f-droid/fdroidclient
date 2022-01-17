@@ -136,7 +136,7 @@
     <string name="force_old_index_summary">اگر کیڑے یا مطابقت کے مسائل ہیں تو ، XML ایپ انڈیکس استعمال کریں</string>
     <string name="force_old_index">پرانے انڈیکس فارمیٹ کو مجبور کریں</string>
     <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے</string>
-    <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں</string>
+    <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں۔</string>
     <string name="install_history_and_metrics">تاریخ اور میٹرکس انسٹال کریں</string>
     <string name="theme_dark">سیاہ</string>
     <string name="app_details_donate_prompt_unknown_author">٪ 1 $ s کے ڈویلپرز کو کافی خریدیں!</string>
