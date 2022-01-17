@@ -149,4 +149,6 @@
     <string name="app_details__incompatible_mismatched_signature">انسٹال ورژن پر مختلف دستخط</string>
     <string name="app_details_donate_prompt">٪ 1 $ s کو٪ 2 $ s نے بنایا ہے۔ انہیں کافی خریدیں!</string>
     <string name="send_to_fdroid_metrics">استعمال کا ڈیٹا بھیجیں۔</string>
+    <string name="menu_show_install_history">سو</string>
+    <string name="main_menu__updates">ابڈےٹ</string>
 </resources>
