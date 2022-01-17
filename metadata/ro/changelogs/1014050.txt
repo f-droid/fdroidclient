@@ -1,13 +1,17 @@
-* Revizuirea meniului Partajare pentru funcția În apropiere
+* Revizuirea Share pentru opțiuni integrate,ca Nearby.
 
-* Îmbunătățire flux și navigare în apropiere, cu o multe corecții.
+* Flux de lucru și navigare Nearby mai bune,multe corecturi .
 
-* Îmbunătățiri de design material (@proletarius101)
+*Design material mai bun(@proletarius101).
 
-* Aplicațiile fără pictograme PNG se afișează acum în Noutăți (@ashutoshgngwr)
+* App-uri fără iconi PNG acum în Latest Tab (@ashutoshgngwr)
 
-* Îmbunătățiți partajarea offline, în apropiere
+* Gestionare îmbunătățită a pictogramelor cu setări limitate de date/WiFi.
 
-* Blocarea adăugării de noi depozite când administratorul dispozitivului dezaprobă "Surse necunoscute"
+*Partajare offline, în apropiere
 
-* Corectarea blocării când se utilizează depozite cu nume de utilizator/parolă
+* Permite să alegi ce antifațe se afișează
+
+* Blocare add de noi repoziții când adminul dispozitivului refuză "Surse necunoscute"
+
+* Eliminarea "Allow Push Requests"

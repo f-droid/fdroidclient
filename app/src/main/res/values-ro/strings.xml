@@ -534,4 +534,5 @@
     <string name="app_list_results_hidden_antifeature_settings">Unele rezultate au fost ascunse în funcție de setările caracteristicilor negative.</string>
     <string name="antinonfreead">Anexe ne-libere</string>
     <string name="antinonfreenet">Servicii de rețea ne-libere</string>
+    <string name="antiothers">Alte Anti-features</string>
 </resources>
