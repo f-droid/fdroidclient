@@ -5,9 +5,7 @@
         کی نا تنصیب کرنا ضروری ہے۔ برائے مہربانی یہ کریں اور دوبارہ کوشش کریں۔ (نوٹ کریں کی، ناتنصیب کرنے سے کسی بھی قسم
         کا اندرونی ڈیٹا جو اطلاقیہ نے محفوظ کیا ہو، مٹا دیا جائے گا)
     </string>
-    <string name="installIncompatible">ایسا لگتا ہے کیہ یہ پیکج آپ کے آلے کے ساتھ کمپیٹبل نہیں۔ کیا آپ پھر بھی اسے نصب
-        کرنا چاہیں گے؟
-    </string>
+    <string name="installIncompatible">ایپ آپ کے آلے سے مطابقت نہیں رکھتی ، پھر بھی انسٹال کریں؟</string>
     <string name="version">ورژن</string>
     <string name="delete">حذف کریں</string>
     <string name="enable_nfc_send">این ایف سی ارسال فعال کریں…</string>
@@ -116,9 +114,9 @@
     <string name="unverified">غیر تصدیق شدہ</string>
     <string name="unsigned">بینالکھے</string>
     <string name="hide_all_notifications_summary">تمام اعمال کو اسٹیٹس بار اور نوٹیفکیشن دراز میں دکھانے سے روکیں۔</string>
-    <string name="hide_all_notifications">تمام اطلاعات چھپائیں</string>
-    <string name="prompt_to_send_crash_reports_summary">کریش کے بارے میں ڈیٹا اکٹھا کریں اور انہیں ڈویلپر کو بھیجنے کے لیے کہیں</string>
-    <string name="prompt_to_send_crash_reports">حادثے کی رپورٹ بھیجنے کا اشارہ</string>
+    <string name="hide_all_notifications">تمام اطلاعات چھپائیں۔</string>
+    <string name="prompt_to_send_crash_reports_summary">کریش کے بارے میں ڈیٹا اکٹھا کریں اور انہیں ڈویلپر کو بھیجنے کے لیے کہیں۔</string>
+    <string name="prompt_to_send_crash_reports">حادثے کی رپورٹ بھیجنے کا اشارہ۔</string>
     <string name="by_author_format">٪ s کی طرف سے</string>
     <string name="send_fdroid_metrics_report">٪ s میٹرکس رپورٹ بھیجیں</string>
     <string name="send_install_history">انسٹال ہسٹری بھیجیں</string>
