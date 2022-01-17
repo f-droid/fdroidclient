@@ -511,4 +511,7 @@
     <string name="send_to_fdroid_metrics_summary">F-Droid അളവുകളിലേക്ക് ആഴ്ചതോറും അജ്ഞാത വിവരം അയയ്ക്കുക (\'സ്ഥാപിക്കല്‍ ചരിത്രം നിലനിർത്തുക\' ആവശ്യമാണ് )</string>
     <string name="send_to_fdroid_metrics">ഉപയോഗത്തിന്റെ അടിസ്ഥാനവിവരം അയയ്‌ക്കുക</string>
     <string name="fdroid_metrics_report">%s അളവുകളുടെ റിപ്പോർട്ട്</string>
+    <string name="swap_wifi_vpn_conflict">സജീവ വിപിഎനുമായി പൊരുത്തപ്പെടുന്നില്ല!</string>
+    <string name="has_disallow_install_unknown_sources">ഈ ഉപയോക്താവിന് അജ്ഞാത ഉറവിടങ്ങൾ ചേർക്കാനാകില്ല, അതിൽ പുതിയ സംഭരണികൾ ഉൾപ്പെടുന്നു</string>
+    <string name="has_disallow_install_unknown_sources_globally">"അജ്ഞാത ഉറവിടങ്ങളിൽ നിന്നുള്ള ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങളുടെ ഉപകരണ അഡ്‌മിൻ അനുവദിക്കുന്നില്ല, അതിൽ പുതിയ സംഭരണികൾ  ഉൾപ്പെടുന്നു"</string>
 </resources>
