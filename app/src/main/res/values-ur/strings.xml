@@ -258,4 +258,6 @@
     <string name="antiknownvulnlist">اس ایپ میں سیکیورٹی کی ایک نامعلوم کمزوری ہے۔</string>
     <string name="expert_on">‫</string>
     <string name="display">ڈسپلے</string>
+    <string name="status_processing_xml_percent">پروسیسنگ شے</string>
+    <string name="theme_light">روشنی</string>
 </resources>
