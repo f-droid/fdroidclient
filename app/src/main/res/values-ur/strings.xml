@@ -199,4 +199,5 @@
         <item quantity="one">٪ 1 $ d ایپ کے لیے اپ ڈیٹ ڈاؤن لوڈ کریں۔</item>
         <item quantity="other">٪ 1 $ d ایپس کے لیے اپ ڈیٹس ڈاؤن لوڈ کریں۔</item>
     </plurals>
+    <string name="updates_disabled_by_settings">تمام اپ ڈیٹس ڈیٹا/وائی فائی سیٹنگز سے غیر فعال ہیں۔</string>
 </resources>
