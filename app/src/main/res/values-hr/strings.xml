@@ -328,9 +328,9 @@
     <string name="hiding_dialog_title">Sakrij %s sada</string>
     <string name="hide_on_long_search_press_title">Sakrij s tipkom za pretraživanje</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d više…</item>
-        <item quantity="few">+%1$d više…</item>
-        <item quantity="other">+%1$d više…</item>
+        <item quantity="one">+još %1$d…</item>
+        <item quantity="few">+još %1$d…</item>
+        <item quantity="other">+još %1$d…</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Spremno za instalaciju</string>
     <string name="notification_title_single_ready_to_install_update">Ažuriranje spremno za instalaciju</string>
@@ -516,14 +516,20 @@
     <string name="swap_toast_could_not_enable_hotspot">Nije moguće uključiti WiFi hotspot!</string>
     <string name="swap_toast_using_path">Koristi se %1$s</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Pogledaj sve (%d)</item>
+        <item quantity="one">Pogledaj (%d)</item>
         <item quantity="few">Pogledaj sve (%d)</item>
         <item quantity="other">Pogledaj sve (%d)</item>
     </plurals>
     <string name="use_pure_black_dark_theme_summary">Preporučuje se samo za OLED ekrane.</string>
     <string name="use_pure_black_dark_theme">Koristi potpuno crnu pozadinu u tamnoj temi</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot uključen</string>
-    <string name="send_fdroid_metrics_report">Pošalji izvještaj %s</string>
-    <string name="send_fdroid_metrics_json">%s izvještaj metrike kao JSON datoteka</string>
-    <string name="install_history_and_metrics">Povijest instalacija i metrika</string>
+    <string name="send_fdroid_metrics_report">Pošalji metrički izvještaj %s</string>
+    <string name="send_fdroid_metrics_json">%s metrički izvještaj kao JSON datoteka</string>
+    <string name="install_history_and_metrics">Povijest instalacije i metrike</string>
+    <string name="menu_show_install_history">Prikaži povijest instalacija</string>
+    <string name="send_to_fdroid_metrics">Pošalji podatke o upotrebi</string>
+    <string name="banner_no_data_or_wifi">Nije WiFi, niti Mobilna Mreža, uključena</string>
+    <string name="menu_show_fdroid_metrics_report">Prikaži metrički izvještaj</string>
+    <string name="send_to_fdroid_metrics_summary">Sedmično šalje anonimne podatke F-Droid Metrikama (zahtjeva da se povijest o instalacijama sadrži)</string>
+    <string name="fdroid_metrics_report">%s Metrički Izvještaj</string>
 </resources>
