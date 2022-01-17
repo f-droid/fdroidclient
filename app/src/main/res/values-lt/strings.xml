@@ -536,4 +536,5 @@
     <string name="antinonfreenet">Ne atviro kodo tinklo paslaugos</string>
     <string name="antitrack">Sekimas</string>
     <string name="antiknownvuln">Žinomas pažeidžiamumas</string>
+    <string name="antiothers">Kitos anti-ypatybės</string>
 </resources>
