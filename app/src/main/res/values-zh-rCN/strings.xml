@@ -66,7 +66,7 @@
     <string name="icon">图标</string>
     <string name="proxy">代理</string>
     <string name="enable_proxy_title">启用 HTTP 代理</string>
-    <string name="enable_proxy_summary">为所有的网络请求启用 http 代理</string>
+    <string name="enable_proxy_summary">为所有网络请求配置 http 代理</string>
     <string name="proxy_host">代理主机</string>
     <string name="proxy_host_summary">本机代理主机名（比如 127.0.0.1）</string>
     <string name="proxy_port">代理端口</string>
@@ -164,9 +164,9 @@
     <string name="category_Theming">主题</string>
     <string name="category_Time">时间</string>
     <string name="category_Writing">记录</string>
-    <string name="empty_installed_app_list">应用未安装。
+    <string name="empty_installed_app_list">未安装任何应用。
 \n
-\n在你的设备上有这些应用，但无法从 F-Droid 获取它们。这可能是因为需要更新你的存储库，或者在库里真的没有这些应用。</string>
+\n你的设备上安装有应用，但无法从 F-Droid 获取它们。这可能是因为需要更新一下你的存储库，或者存储库中确实没有你的应用。</string>
     <string name="empty_can_update_app_list">好棒！
 \n你的应用是最新的啦。</string>
     <string name="install_error_unknown">由于未知错误导致安装失败</string>
@@ -230,8 +230,8 @@
     <string name="interval_1d">每天检查一次更新</string>
     <string name="interval_1w">每周检查一次更新</string>
     <string name="interval_2w">每两周检查一次更新</string>
-    <string name="theme_light">明亮</string>
-    <string name="theme_dark">夜间</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_dark">深色</string>
     <string name="about_license">许可</string>
     <string name="empty_search_available_app_list">没有符合条件的应用可用。</string>
     <string name="status_inserting_apps">正在保存应用详细信息</string>
@@ -301,7 +301,7 @@
     <string name="latest__empty_state__no_enabled_repos">启用存储库并对其更新之后，最新应用将在这里显示</string>
     <string name="categories__empty_state__no_categories">没有可显示的分类</string>
     <string name="preference_category__my_apps">我的应用</string>
-    <string name="details_new_in_version">版本 %s 的新功能</string>
+    <string name="details_new_in_version">版本 %s 的更新内容</string>
     <string name="antifeatureswarning">此应用有一些你未必喜欢的特征。</string>
     <string name="antifeatures">负特征</string>
     <plurals name="button_view_all_apps_in_category">
