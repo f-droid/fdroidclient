@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources/>
+<resources>
+    <string name="menu_uninstall">Бетерү</string>
+    <string name="menu_install">Урнаштыру</string>
+    <string name="menu_share">Бүлешү</string>
+    <string name="menu_launch">Ач</string>
+    <string name="menu_add_repo">Яңа репозиторий</string>
+    <string name="menu_search">Эзләү</string>
+    <string name="menu_settings">Көйләүләр</string>
+    <string name="menu_manage">Репозитарийлар</string>
+    <string name="cancel">Баш тарту</string>
+    <string name="back">Кире</string>
+    <string name="no">Юк</string>
+    <string name="yes">Әйе</string>
+    <string name="ok">Ярый</string>
+    <string name="updates">Яңартулар</string>
+    <string name="app_name">F-Droid</string>
+</resources>
