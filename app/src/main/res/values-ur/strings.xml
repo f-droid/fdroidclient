@@ -156,4 +156,6 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">نصب شدہ ورژن کسی بھی دستیاب ورژن کے ساتھ مطابقت نہیں رکھتا۔ ایپ کو انسٹال کرنے سے آپ مطابقت پذیر ورژن دیکھنے اور انسٹال کرنے کے قابل ہوجائیں گے۔ یہ اکثر گوگل پلے یا دیگر ذرائع کے ذریعے نصب کردہ ایپس کے ساتھ ہوتا ہے ، اگر ان پر کسی مختلف سرٹیفکیٹ سے دستخط ہوتے ہیں۔</string>
     <string name="send_to_fdroid_metrics_summary">ایف ڈروڈ میٹرکس کو ہفتہ وار گمنام ڈیٹا بھیجتا ہے (انسٹال ہسٹری کی ضرورت ہوتی ہے)</string>
     <string name="local_repo_name_summary">آپ کی مقامی رپورٹ کا نامعلوم نام تھا:٪ s۔</string>
+    <string name="about_license">لائسنس</string>
+    <string name="app_suggested">تجویز کردہ</string>
 </resources>
