@@ -22,7 +22,7 @@
     <string name="login_name">اسم صارف</string>
     <string name="login_password">پاس ورڈ</string>
     <string name="repo_edit_credentials">پاس ورڈ تبدیل کریں</string>
-    <string name="update_auto_download"/>
+    <string name="update_auto_download">خود بخود اپ ڈیٹس لائیں</string>
     <string name="update_auto_download_summary">اپڈیٹ والی فائلوں کو پسِ منظر ڈاؤنلوڈ کریں</string>
     <string name="system_installer_on">F-Droid Privileged Extension کے ذریعے پیکج کو انسٹال، اپڈیٹ اور حذف کریں</string>
     <string name="ok">ٹھیک ہے</string>
@@ -124,4 +124,17 @@
     <string name="fdroid_metrics_report">٪ s میٹرکس رپورٹ</string>
     <string name="keep_install_history">انسٹال ہسٹری رکھیں</string>
     <string name="keep_install_history_summary">ایک نجی اسٹور میں تمام انسٹال اور ان انسٹال کا لاگ اسٹور کریں</string>
+    <string name="update_auto_install_summary">ایک نوٹیفکیشن دکھا کر پس منظر میں ایپس ڈاؤن لوڈ اور اپ ڈیٹ کریں</string>
+    <string name="update_auto_install">اپ ڈیٹس خود بخود انسٹال کریں</string>
+    <string name="over_network_never_summary">اس کنکشن کا استعمال کرتے ہوئے کبھی بھی کچھ بھی ڈاؤن لوڈ نہ کریں</string>
+    <string name="over_network_on_demand_summary">اس کنکشن کو صرف اس وقت استعمال کریں جب میں ڈاؤنلوڈ کرنے کے لیے کلک کرتا ہوں</string>
+    <string name="over_network_always_summary">جب دستیاب ہو تو یہ کنکشن ہمیشہ استعمال کریں</string>
+    <string name="over_data">ڈیٹا سے زیادہ</string>
+    <string name="over_wifi">Wi-Fi پر۔</string>
+    <string name="allow_push_requests_summary">ریپو میٹا ڈیٹا میں ایپس کو انسٹال کرنے یا ان انسٹال کرنے کے لیے پش کی درخواستیں شامل ہو سکتی ہیں</string>
+    <string name="allow_push_requests">ریپوز کو ایپس انسٹال/انسٹال کرنے کی اجازت دیں</string>
+    <string name="force_old_index_summary">اگر کیڑے یا مطابقت کے مسائل ہیں تو ، XML ایپ انڈیکس استعمال کریں</string>
+    <string name="force_old_index">پرانے انڈیکس فارمیٹ کو مجبور کریں</string>
+    <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے</string>
+    <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں</string>
 </resources>
