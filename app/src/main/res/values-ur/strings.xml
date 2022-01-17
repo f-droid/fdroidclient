@@ -15,7 +15,7 @@
     <string name="menu_settings">ترتیبات</string>
     <string name="main_menu__categories">زمرے</string>
     <string name="update_interval">خودکار تازہ کاری کرنے کا وقفہ</string>
-    <string name="notify">تازہ کاریوں کی اطلاعات</string>
+    <string name="notify">دستیاب تازہ ترین معلومات دکھائیں</string>
     <string name="notify_on">اگر تازہ کاری دستیاب ہیں تو اطلاع دیں</string>
     <string name="system_installer">پریولجڈ ایکس ٹینشن</string>
     <string name="local_repo_name">اپنے مقامی ریپو کا نام</string>
@@ -154,4 +154,5 @@
     <string name="about_site">ویب سائٹ</string>
     <string name="about_version">ورژن</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">نصب شدہ ورژن کسی بھی دستیاب ورژن کے ساتھ مطابقت نہیں رکھتا۔ ایپ کو انسٹال کرنے سے آپ مطابقت پذیر ورژن دیکھنے اور انسٹال کرنے کے قابل ہوجائیں گے۔ یہ اکثر گوگل پلے یا دیگر ذرائع کے ذریعے نصب کردہ ایپس کے ساتھ ہوتا ہے ، اگر ان پر کسی مختلف سرٹیفکیٹ سے دستخط ہوتے ہیں۔</string>
+    <string name="send_to_fdroid_metrics_summary">ایف ڈروڈ میٹرکس کو ہفتہ وار گمنام ڈیٹا بھیجتا ہے (انسٹال ہسٹری کی ضرورت ہوتی ہے)</string>
 </resources>
