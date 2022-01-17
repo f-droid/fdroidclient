@@ -509,4 +509,5 @@
     <string name="banner_no_data_or_wifi">Nincs adatkapcsolat vagy WiFi</string>
     <string name="banner_no_internet">Nincs internet</string>
     <string name="share_apk_error">Az alkalmazásfájl nem osztható meg</string>
+    <string name="has_disallow_install_unknown_sources_globally">Eszközöd adminisztrátorja nem engedélyezi az alkalmazások telepítését ismeretlen forrásokból, beleértve az új adattárolókat is</string>
 </resources>
