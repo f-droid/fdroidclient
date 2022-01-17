@@ -445,7 +445,7 @@
     <string name="send_installed_apps_csv">Aplikasi terpasang oleh F-Droid sebagai berkas CSV</string>
     <string name="updates_disabled_by_settings">Semua pembaruan dinonaktifkan oleh Setelan Data/WiFi</string>
     <string name="menu_open">Buka</string>
-    <string name="menu_downgrade">Downgrade</string>
+    <string name="menu_downgrade">Menurunkan versi</string>
     <string name="antinosourcesince">Kode sumber sudah tidak tersedia, tidak memungkinkan untuk diperbarui.</string>
     <string name="share_repository">Bagikan Repositori</string>
     <string name="scan_removable_storage_title">Pindai penyimpanan portabel</string>
@@ -503,4 +503,19 @@
     <string name="banner_no_data_or_wifi">Data atau WiFi tidak aktif</string>
     <string name="banner_no_internet">Tanpa Internet</string>
     <string name="share_apk_error">Tidak dapat membagikan file aplikasi</string>
+    <string name="has_disallow_install_unknown_sources">Sumber tidak dikenal tidak dapat ditambahkan oleh pengguna ini, termasuk repo baru</string>
+    <string name="has_disallow_install_unknown_sources_globally">Admin perangkat Anda tidak mengizinkan pemasangan aplikasi dari sumber yang tidak dikenal, termasuk repo baru</string>
+    <string name="swap_wifi_vpn_conflict">Konflik dengan VPN aktif!</string>
+    <string name="antiads">Iklan</string>
+    <string name="antinonfreenet">Layanan Jaringan Tidak Gratis</string>
+    <string name="app_list_results_hidden_antifeature_settings">Beberapa hasil disembunyikan berdasarkan pengaturan antifitur anda.</string>
+    <string name="antitrack">Pelacakan</string>
+    <string name="antinonfreead">Tambahan Tidak Gratis</string>
+    <string name="antiupstreamnonfree">Upstream Tidak Gratis</string>
+    <string name="antinonfreeassets">Aset Tidak Gratis</string>
+    <string name="antinonfreedep">Ketergantungan Tidak Gratis</string>
+    <string name="antidisabledalgorithm">Ditandatangani Menggunakan Algoritma Tidak Aman</string>
+    <string name="antiknownvuln">Kerentanan yang Diketahui</string>
+    <string name="antinosource">Kode Sumber Tidak Lagi Tersedia</string>
+    <string name="antiothers">Anti-fitur lainnya</string>
 </resources>
