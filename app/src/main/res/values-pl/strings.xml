@@ -113,7 +113,7 @@
         usunięcie jej danych i ustawień)
     </string>
     <string name="update_interval">Interwał automatycznej aktualizacji</string>
-    <string name="notify_on">Wyświetlaj powiadomienie, gdy znalezione zostaną nowe aktualizacje</string>
+    <string name="notify_on">Wyświetlaj powiadomienie, gdy aktualizacje są dostępne</string>
     <string name="app_incompatible">Niezgodna</string>
     <string name="app_installed">Zainstalowane</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
@@ -159,7 +159,7 @@
     <string name="swap_join_this_hotspot">Pomóż drugiej osobie dołączyć do Twojego hotspota</string>
     <string name="swap_success">Wymiana powiodła się!</string>
     <string name="swap_active_hotspot">%1$s (Twój hostpot)</string>
-    <string name="swap_switch_to_wifi">Naciśnij, aby przełączyć się do sieci Wi-Fi</string>
+    <string name="swap_switch_to_wifi">Naciśnij, aby przełączyć się na sieć Wi-Fi</string>
     <string name="about_source">Kod źródłowy</string>
     <string name="not_on_same_wifi">Twoje urządzenie nie jest w tej samej sieci Wi-Fi, co lokalne repozytorium, które właśnie dodałeś! Spróbuj połączyć się z tą siecią: %s</string>
     <string name="category_Connectivity">Łączność</string>
@@ -238,7 +238,7 @@
     <string name="about_license">Licencja</string>
     <string name="status_inserting_apps">Zapisywanie szczegółów aplikacji</string>
     <string name="menu_email">E-mail autora</string>
-    <string name="antinonfreeassetslist">Ta aplikacja zawiera niewolną zawartość</string>
+    <string name="antinonfreeassetslist">Ta aplikacja zawiera niewolne zasoby</string>
     <string name="crash_dialog_title">F-Droid uległ awarii</string>
     <string name="crash_dialog_text">Wystąpił nieoczekiwany błąd zmuszający aplikację do zatrzymania się. Czy chciałbyś przesłać e-mailem szczegóły, aby pomóc naprawić problem\?</string>
     <string name="crash_dialog_comment_prompt">Możesz dodać dodatkowe informacje i komentarze tutaj:</string>
@@ -405,10 +405,10 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignoruj</string>
     <string name="privacy">Prywatność</string>
     <string name="preventScreenshots_title">Blokuj zrzuty ekranu</string>
-    <string name="preventScreenshots_summary">Blokuje wykonywanie zrzutów ekranu i ukrywa zawartość aplikacji z ekranu ostatnich aplikacji</string>
+    <string name="preventScreenshots_summary">Blokuj wykonywanie zrzutów ekranu i ukrywaj zawartość aplikacji z ekranu ostatnich aplikacji</string>
     <string name="panic_app_setting_title">Aplikacja przycisku alarmowego</string>
     <string name="panic_app_unknown_app">nieznana aplikacja</string>
-    <string name="panic_app_setting_summary">Brak ustawionej aplikacji</string>
+    <string name="panic_app_setting_summary">Nie ustawiono żadnej aplikacji</string>
     <string name="panic_app_setting_none">Brak</string>
     <string name="panic_app_dialog_title">Potwierdź aplikację alarmową</string>
     <string name="panic_app_dialog_message">Czy na pewno chcesz zezwolić %1$s wywołać niszczące czynności przycisku alarmowego?</string>
@@ -449,7 +449,7 @@
     <string name="swap_toast_could_not_enable_hotspot">Nie można włączyć hotspota Wi-Fi!</string>
     <string name="over_wifi">Przez Wi-Fi</string>
     <string name="over_data">Przez transmisję danych</string>
-    <string name="over_network_always_summary">Zawsze używaj tego połączenia, jeżeli dostępne</string>
+    <string name="over_network_always_summary">Zawsze używaj tego połączenia, gdy jest dostępne</string>
     <string name="over_network_on_demand_summary">Używaj tego połączenia tylko wtedy, gdy nacisnę, aby pobrać</string>
     <string name="over_network_never_summary">Nigdy nie pobieraj niczego za pomocą tego połączenia</string>
     <string name="antidisabledalgorithmlist">Ta aplikacja ma słaby podpis bezpieczeństwa</string>
@@ -533,4 +533,17 @@
     <string name="has_disallow_install_unknown_sources">Ten użytkownik nie może dodawać nieznanych źródeł, w tym nowych repozytoriów</string>
     <string name="apps">Aplikacje</string>
     <string name="swap_wifi_vpn_conflict">Konflikty z włączonym VPN-em!</string>
+    <string name="antinonfreead">Niewolne dodatki</string>
+    <string name="antinonfreenet">Niewolne usługi sieciowe</string>
+    <string name="antinonfreedep">Niewolne zależności</string>
+    <string name="antiupstreamnonfree">Niewolne upstream</string>
+    <string name="antidisabledalgorithm">Podpisany przy użyciu niebezpiecznego algorytmu</string>
+    <string name="antiknownvuln">Znana podatność</string>
+    <string name="antinosource">Kod źródłowy jest już niedostępny</string>
+    <string name="app_list_results_hidden_antifeature_settings">Niektóre wyniki zostały ukryte na podstawie Twoich ustawień niepożądanych funkcji.</string>
+    <string name="antiads">Reklamy</string>
+    <string name="antinosource_key">NoSourceSince</string>
+    <string name="antitrack">Śledzenie</string>
+    <string name="antinonfreeassets">Niewolne zasoby</string>
+    <string name="antiothers">Inne niepożądane funkcje</string>
 </resources>
