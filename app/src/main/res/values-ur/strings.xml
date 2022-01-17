@@ -209,4 +209,20 @@
     <string name="update_all">تمام تجدید کریں</string>
     <string name="updates__app_with_known_vulnerability__ignore">نظر انداز کریں۔</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">ہمیں٪ 1 $ s کے ساتھ ایک کمزوری ملی۔ ہم فوری طور پر تازہ ترین ورژن کو اپ ڈیٹ کرنے کی تجویز کرتے ہیں۔</string>
+    <string name="menu_ignore_this">اس اپ ڈیٹ کو نظر انداز کریں۔</string>
+    <string name="menu_ignore_all">تمام اپ ڈیٹس کو نظر انداز کریں۔</string>
+    <string name="menu_select_for_wipe">مسح کے لیے منتخب کریں۔</string>
+    <string name="menu_open">کھولیں</string>
+    <string name="repositories_summary">ایپس کے اضافی ذرائع شامل کریں۔</string>
+    <string name="repo_provider">ذخیرہ:٪ s</string>
+    <string name="has_disallow_install_unknown_sources">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
+    <string name="has_disallow_install_unknown_sources_globally">آپ کا آلہ منتظم نامعلوم ذرائع سے ایپس انسٹال کرنے کی اجازت نہیں دیتا ، جس میں نئے ریپوز شامل ہیں۔</string>
+    <string name="malformed_repo_uri">خراب شدہ ریپو URI کو نظر انداز کرنا:٪ s</string>
+    <string name="invalid_url">یہ ایک درست URL نہیں ہے۔</string>
+    <string name="repo_exists_add_mirror">یہ٪ 1 $ s کی ایک کاپی ہے ، اسے آئینے کے طور پر شامل کریں؟</string>
+    <string name="bad_fingerprint">خراب فنگر پرنٹ۔</string>
+    <string name="repo_exists_enable">٪ 1 $ s پہلے ہی سیٹ اپ ہے ، تصدیق کریں کہ آپ اسے دوبارہ فعال کرنا چاہتے ہیں۔</string>
+    <string name="repo_exists_and_enabled">٪ 1 $ s پہلے ہی سیٹ اپ اور فعال ہے۔</string>
+    <string name="menu_email">ای میل مصنف۔</string>
+    <string name="menu_website">ویب سائٹ</string>
 </resources>
