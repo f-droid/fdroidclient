@@ -129,13 +129,13 @@
     <string name="over_network_never_summary">اس کنکشن کا استعمال کرتے ہوئے کبھی بھی کچھ بھی ڈاؤن لوڈ نہ کریں</string>
     <string name="over_network_on_demand_summary">اس کنکشن کو صرف اس وقت استعمال کریں جب میں ڈاؤنلوڈ کرنے کے لیے کلک کرتا ہوں</string>
     <string name="over_network_always_summary">جب دستیاب ہو تو یہ کنکشن ہمیشہ استعمال کریں</string>
-    <string name="over_data">ڈیٹا سے زیادہ</string>
+    <string name="over_data">ڈیٹا سے زیادہ۔</string>
     <string name="over_wifi">Wi-Fi پر۔</string>
     <string name="allow_push_requests_summary">ریپو میٹا ڈیٹا میں ایپس کو انسٹال کرنے یا ان انسٹال کرنے کے لیے پش کی درخواستیں شامل ہو سکتی ہیں</string>
     <string name="allow_push_requests">ریپوز کو ایپس انسٹال/انسٹال کرنے کی اجازت دیں</string>
-    <string name="force_old_index_summary">اگر کیڑے یا مطابقت کے مسائل ہیں تو ، XML ایپ انڈیکس استعمال کریں</string>
+    <string name="force_old_index_summary">اگر کیڑے یا مطابقت کے مسائل ہیں تو ، XML ایپ انڈیکس استعمال کریں۔</string>
     <string name="force_old_index">پرانے انڈیکس فارمیٹ کو مجبور کریں</string>
-    <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے</string>
+    <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے۔</string>
     <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں۔</string>
     <string name="install_history_and_metrics">تاریخ اور میٹرکس انسٹال کریں</string>
     <string name="theme_dark">سیاہ</string>
@@ -144,5 +144,5 @@
     <string name="repo_error_empty_username">خالی صارف نام ، اسناد تبدیل نہیں ہوئے۔</string>
     <string name="login_title">تصدیق درکار ہے</string>
     <string name="scan_removable_storage_toast">٪ s کو اسکین کیا جا رہا ہے…</string>
-    <string name="toast_metrics_in_install_history">٪ s میٹرک رپورٹ انسٹال ہسٹری ویوور میں دیکھنے کے قابل ہے</string>
+    <string name="toast_metrics_in_install_history">٪ s میٹرک رپورٹ انسٹال ہسٹری ویوور میں دیکھنے کے قابل ہے۔</string>
 </resources>
