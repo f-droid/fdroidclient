@@ -194,4 +194,8 @@
     <string name="bluetooth_activity_not_found">کوئی بلوٹوتھ بھیجنے کا طریقہ نہیں ملا ، ایک کا انتخاب کریں!</string>
     <string name="sort_search">ترتیب سے ڈھونڈے</string>
     <string name="clear_search">صاف سے ڈھونڈھنا</string>
+    <plurals name="updates__download_updates_for_apps">
+        <item quantity="one">٪ 1 $ d ایپ کے لیے اپ ڈیٹ ڈاؤن لوڈ کریں۔</item>
+        <item quantity="other">٪ 1 $ d ایپس کے لیے اپ ڈیٹس ڈاؤن لوڈ کریں۔</item>
+    </plurals>
 </resources>
