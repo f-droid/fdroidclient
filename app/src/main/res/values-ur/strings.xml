@@ -183,4 +183,6 @@
     <string name="app_list_download_ready">ڈاؤن لوڈ ، انسٹال کرنے کے لیے تیار</string>
     <string name="app_list__dismiss_downloading_app">ڈاؤنلوڈ منسوخ۔</string>
     <string name="app_list__dismiss_vulnerable_app">کمزوری کو نظر انداز کیا گیا۔</string>
+    <string name="send_installed_apps">انسٹال کردہ ایپس کا اشتراک کریں۔</string>
+    <string name="installed_apps__activity_title">انسٹال کردہ ایپس۔</string>
 </resources>
