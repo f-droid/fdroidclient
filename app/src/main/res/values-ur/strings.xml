@@ -144,4 +144,5 @@
     <string name="repo_error_empty_username">خالی صارف نام ، اسناد تبدیل نہیں ہوئے۔</string>
     <string name="login_title">تصدیق درکار ہے</string>
     <string name="scan_removable_storage_toast">٪ s کو اسکین کیا جا رہا ہے…</string>
+    <string name="toast_metrics_in_install_history">٪ s میٹرک رپورٹ انسٹال ہسٹری ویوور میں دیکھنے کے قابل ہے</string>
 </resources>
