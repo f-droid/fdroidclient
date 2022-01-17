@@ -118,7 +118,7 @@
     <string name="send_fdroid_metrics_report">٪ s میٹرکس رپورٹ بھیجیں</string>
     <string name="send_install_history">انسٹال ہسٹری بھیجیں</string>
     <string name="send_fdroid_metrics_json">٪ s میٹرکس JSON فائل کے طور پر رپورٹ کرتا ہے</string>
-    <string name="send_history_csv">٪ s انسٹال کی تاریخ بطور CSV فائل</string>
+    <string name="send_history_csv">"٪ s ہسٹری کو  CSV فائل کی طرح انسٹال کریں"</string>
     <string name="install_history">انسٹال تاریخ</string>
     <string name="install_history_summary">تمام انسٹال اور ان انسٹال کا نجی لاگ دیکھیں</string>
     <string name="fdroid_metrics_report">٪ s میٹرکس رپورٹ</string>
