@@ -3,7 +3,7 @@ package org.fdroid.fdroid.net;
 import android.content.ContentResolver;
 import android.net.Uri;
 
-import org.fdroid.download.DownloadManager;
+import org.fdroid.download.HttpManager;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.HttpDownloader;
 import org.fdroid.download.Mirror;
@@ -20,8 +20,8 @@ public class DownloaderFactory {
 
     private static final String TAG = "DownloaderFactory";
     // TODO move to application object or inject where needed
-    private static final DownloadManager DOWNLOAD_MANAGER =
-            new DownloadManager(Utils.getUserAgent(), FDroidApp.queryString);
+    public static final HttpManager HTTP_MANAGER =
+            new HttpManager(Utils.getUserAgent(), FDroidApp.queryString);
 
     /**
      * Same as {@link #create(Repo, Uri, File)}, but not using mirrors for download.
@@ -53,7 +53,7 @@ public class DownloaderFactory {
             String urlSuffix = uri.toString().replace(repo.address, "");
             Utils.debugLog(TAG, "Using suffix " + urlSuffix + " with mirrors " + mirrors);
             downloader =
-                    new HttpDownloader(DOWNLOAD_MANAGER, urlSuffix, destFile, mirrors, repo.username, repo.password);
+                    new HttpDownloader(HTTP_MANAGER, urlSuffix, destFile, mirrors, repo.username, repo.password);
         }
         return downloader;
     }

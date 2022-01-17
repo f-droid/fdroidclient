@@ -38,8 +38,8 @@ class HttpDownloaderTest {
         val bytes = Random.nextBytes(1024)
 
         val mockEngine = MockEngine { respond(bytes) }
-        val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(downloadManager, "foo/bar", file, mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, "foo/bar", file, mirrors)
         httpDownloader.download()
 
         assertContentEquals(bytes, file.readBytes())
@@ -57,8 +57,8 @@ class HttpDownloaderTest {
             if (numRequest++ == 1) respond("", OK, headers = headersOf(ContentLength, "2048"))
             else respond(secondBytes, PartialContent)
         }
-        val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(downloadManager, "foo/bar", file, mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, "foo/bar", file, mirrors)
         httpDownloader.download()
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
@@ -67,8 +67,8 @@ class HttpDownloaderTest {
     @Test
     fun testNoETagNotTreatedAsNoChange() = runSuspend {
         val mockEngine = MockEngine { respondOk() }
-        val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(downloadManager, "foo/bar", folder.newFile(), mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, "foo/bar", folder.newFile(), mirrors)
         httpDownloader.cacheTag = null
         httpDownloader.download()
 
@@ -84,8 +84,8 @@ class HttpDownloaderTest {
         val eTag = getRandomString()
 
         val mockEngine = MockEngine { respond("", OK, headers = headersOf(ETag, eTag)) }
-        val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(downloadManager, "foo/bar", folder.newFile(), mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, "foo/bar", folder.newFile(), mirrors)
         httpDownloader.cacheTag = eTag
         httpDownloader.download()
 
@@ -105,8 +105,8 @@ class HttpDownloaderTest {
         }
 
         val mockEngine = MockEngine { respond("", OK, headers = headers) }
-        val downloadManager = DownloadManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(downloadManager, "foo/bar", folder.newFile(), mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, "foo/bar", folder.newFile(), mirrors)
         // the ETag is calculated, but we expect a real ETag
         httpDownloader.cacheTag = "60a29a-5d55d390de574"
         httpDownloader.download()

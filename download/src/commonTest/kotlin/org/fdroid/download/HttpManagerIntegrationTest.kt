@@ -5,7 +5,7 @@ import org.fdroid.getRandomString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class DownloadManagerIntegrationTest {
+class HttpManagerIntegrationTest {
 
     private val userAgent = getRandomString()
     private val mirrors = listOf(Mirror("http://example.org"), Mirror("http://example.net/"))
@@ -13,9 +13,9 @@ class DownloadManagerIntegrationTest {
 
     @Test
     fun testResumeOnExample() = runBlocking {
-        val downloadManager = DownloadManager(userAgent, null)
+        val httpManager = HttpManager(userAgent, null)
 
-        val lastLine = downloadManager.getBytes(downloadRequest, 1248).decodeToString()
+        val lastLine = httpManager.getBytes(downloadRequest, 1248).decodeToString()
         assertEquals("</html>\n", lastLine)
     }
 }

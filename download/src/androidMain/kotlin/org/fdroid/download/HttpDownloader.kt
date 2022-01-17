@@ -37,7 +37,7 @@ import java.util.Date
  * Download files over HTTP, with support for proxies, `.onion` addresses, HTTP Basic Auth, etc.
  */
 class HttpDownloader @JvmOverloads constructor(
-    private val downloadManager: DownloadManager,
+    private val httpManager: HttpManager,
     private val path: String,
     destFile: File,
     private val mirrors: List<Mirror>,
@@ -73,7 +73,7 @@ class HttpDownloader @JvmOverloads constructor(
         val request = DownloadRequest(path, mirrors, username, password)
         val skipBytes = if (resumable) outputFile.length() else null
         return try {
-            downloadManager.get(request, skipBytes, receiver)
+            httpManager.get(request, skipBytes, receiver)
         } catch (e: ResponseException) {
             throw IOException(e)
         }
@@ -121,7 +121,7 @@ class HttpDownloader @JvmOverloads constructor(
         // boolean isSwap = isSwapUrl(sourceUrl);
         val request = DownloadRequest(path, mirrors, username, password)
         val headInfo = runBlocking {
-            downloadManager.head(request, cacheTag) ?: throw IOException()
+            httpManager.head(request, cacheTag) ?: throw IOException()
         }
         val expectedETag = cacheTag
         cacheTag = headInfo.eTag

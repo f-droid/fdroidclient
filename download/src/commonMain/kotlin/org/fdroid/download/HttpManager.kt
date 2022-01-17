@@ -11,12 +11,15 @@ import io.ktor.client.request.get
 import io.ktor.client.request.head
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
+import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.HttpStatement
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.Connection
+import io.ktor.http.HttpHeaders.ContentType
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
+import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.contentLength
 import io.ktor.util.InternalAPI
@@ -36,7 +39,7 @@ import kotlin.jvm.JvmOverloads
 
 internal expect fun getHttpClientEngine(): HttpClientEngine
 
-public open class DownloadManager @JvmOverloads constructor(
+public open class HttpManager @JvmOverloads constructor(
     private val userAgent: String,
     queryString: String? = null,
     private val mirrorChooser: MirrorChooser = MirrorChooser(),
@@ -114,7 +117,7 @@ public open class DownloadManager @JvmOverloads constructor(
                 // add authorization header from username / password if set
                 if (authString != null) header(Authorization, authString)
                 // add range header if set
-                if (skipFirstBytes != null) header("Range", "bytes=${skipFirstBytes}-")
+                if (skipFirstBytes != null) header(Range, "bytes=${skipFirstBytes}-")
                 // avoid keep-alive for swap due to strange errors observed in the past
                 // TODO still needed?
                 if (request.isSwap) header(Connection, "Close")
@@ -146,6 +149,13 @@ public open class DownloadManager @JvmOverloads constructor(
         }
         channel.close()
         return channel.toByteArray()
+    }
+
+    suspend fun post(url: String, json: String) {
+        httpClient.post<HttpResponse>(url) {
+            header(ContentType, "application/json; utf-8")
+            body = json
+        }
     }
 
     @OptIn(InternalAPI::class) // ktor 2.0 remove
