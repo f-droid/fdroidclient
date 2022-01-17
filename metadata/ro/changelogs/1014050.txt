@@ -1,10 +1,10 @@
-* Revizuirea meniului Share ptr. uz de opțiuni integrate, ca Nearby.
+* Revizuirea meniului Partajare pentru funcția În apropiere
 
 * Îmbunătățire flux și navigare în apropiere, cu o multe corecții.
 
-*Îmbunătățiri de design material (@proletarius101)
+* Îmbunătățiri de design material (@proletarius101)
 
-* App-uri fără pictograme PNG se afișează acum în Latest Tab (@ashutoshgngwr)
+* Aplicațiile fără pictograme PNG se afișează acum în Noutăți (@ashutoshgngwr)
 
 * Îmbunătățiți partajarea offline, în apropiere
 

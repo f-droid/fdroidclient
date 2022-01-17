@@ -523,4 +523,15 @@
     <string name="has_disallow_install_unknown_sources">Sursele necunoscute nu pot fi adăugate de acest utilizator, care include noi depozite</string>
     <string name="has_disallow_install_unknown_sources_globally">Administratorul dispozitivului dumneavoastră nu permite instalarea de aplicații din surse necunoscute, care includ și noile depozite</string>
     <string name="swap_wifi_vpn_conflict">Conflict cu VPN-ul activ!</string>
+    <string name="antinonfreedep">Dependențe ne-libere</string>
+    <string name="antiads">Reclame</string>
+    <string name="antitrack">Urmărire</string>
+    <string name="antiupstreamnonfree">Surse ne-libere</string>
+    <string name="antidisabledalgorithm">Algoritm nesigur semnătură</string>
+    <string name="antiknownvuln">Vulnerabilitate cunoscută</string>
+    <string name="antinosource">Surse indisponibile</string>
+    <string name="antinonfreeassets">Resurse ne-libere</string>
+    <string name="app_list_results_hidden_antifeature_settings">Unele rezultate au fost ascunse în funcție de setările caracteristicilor negative.</string>
+    <string name="antinonfreead">Anexe ne-libere</string>
+    <string name="antinonfreenet">Servicii de rețea ne-libere</string>
 </resources>
