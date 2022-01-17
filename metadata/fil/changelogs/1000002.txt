@@ -1,0 +1,7 @@
+* Harangan ang HTTP ETag na magamit bilang isang cookie sa pagta-track
+
+* Pinahusay ang layout ng mga screenshot
+
+* Maayos na nilinis ang mga temp at naka-cache na file
+
+* Pagsasaayos sa madilim na tema

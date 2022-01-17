@@ -1,0 +1,7 @@
+* Dinagdag ang mga swipe gesture sa tab ng Update
+
+* Ipakita ang mga babala na may gawain sa tab ng Update para sa mga KnownVulns
+
+* In-update ang mga salin
+
+* Pagsasaayos sa madilim na UI

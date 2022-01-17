@@ -1,0 +1,18 @@
+Ang F-Droid ay isang mai-install na katalogo ng mga libre software
+app sa Android. Pinapadali ng F-Droid client na
+mag-browse, mag-install, at mag-track sa mga update sa iyong device.
+
+Kumokonekta ito sa kahit anong mga repositoryong compatible sa F-Droid. Ang default na repo ay
+hino-host sa fdroid.org, na naglalaman lang ng mga bona fide na libre software.
+
+Bukas ang Android dahil malaya kang makakapag-install ng mga APK
+saanman sila galing, pero may mga magagandang dahilan kung bakit magandang gamitin ang F-Droid bilang app manager ng mga libre software mo:
+
+* Maabisuhan kapag may mga update
+* Pwedeng ipakusa ang pag-download at pag-install sa mga update
+* I-track ang mga luma at beta na bersyon
+* Isala ang mga app na hindi compatible sa device
+* Maghanap ng mga app sa tulong ng mga kategorya at mahahanap na paglalarawan
+* I-access ang mga kaugnay na URL para sa mga donasyon, code ng source, atbp.
+* Manatiling ligtas sa tulong ng pagtingin
+sa mga pirma sa index ng repo at mga hash ng APK

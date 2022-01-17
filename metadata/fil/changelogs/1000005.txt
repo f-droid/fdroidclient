@@ -1,0 +1,3 @@
+* Inayos ang isang bug na naghaharang sa mga salin na magpakita sa mga Android >= 7.0
+
+* Inayos ang crash sa pag-upgrade sa DB mula 1.0-alpha3 → 1.0-alpha4 #1181
