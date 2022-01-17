@@ -246,7 +246,7 @@
         browser.
     </string>
     <string name="swap_send_fdroid">Invia F-Droid</string>
-    <string name="apps">App</string>
+    <string name="apps">Applicazioni</string>
     <string name="swap_connection_misc_error">È avvenuto un errore durante la connessione al dispositivo, non sembra possibile effettuare lo scambio!</string>
     <string name="install_confirm_update_no_perms">Vuoi installare un aggiornamento di questa applicazione esistente? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
     <string name="install_confirm_update_system_no_perms">Vuoi installare un aggiornamento di questa applicazione integrata? I dati correnti verranno conservati. Non occorrono accessi speciali.</string>
@@ -538,4 +538,5 @@
     <string name="antidisabledalgorithm">Firmato usando un algoritmo non sicuro</string>
     <string name="antinosource">Il codice sorgente non è più disponibile</string>
     <string name="antiupstreamnonfree">Non libero a monte</string>
+    <string name="antiothers">Altre anti-caratteristiche</string>
 </resources>
