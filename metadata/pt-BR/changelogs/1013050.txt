@@ -1,3 +1,17 @@
-* Suporte de temas modernizado e vinculado aos temas do Android (@proletarius101)
+* Suporte dos temas embutidos do Android (@proletarius101)
 
-* Novas notificações no banner superior: "Sem Internet" e "Sem dados ou WiFi habilitados"
+* Novas notificações: "Sem Internet" e "Sem dados ou Wi-Fi ativados"
+
+* Melhoria com repositórios e espelhos USB-OTG e SD Card
+
+* Parar atualizações repetidas da Biblioteca Tricromia
+
+* Alterações conforme Material Design (@proletarius101)
+
+* Melhorado crachá OpenCollective (@ConnyDuck)
+
+* Revisão do carregamento de ícones usando o Glide (@proletarius101)
+
+* Novo ícone adaptativo (@12people)
+
+* Código modernizado (@Isira-Seneviratne)
