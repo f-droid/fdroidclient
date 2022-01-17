@@ -29,7 +29,7 @@
     <string name="yes">ہاں</string>
     <string name="no">نہیں</string>
     <string name="back">واپس</string>
-    <string name="menu_manage">ریپازیٹری</string>
+    <string name="menu_manage">توشہ</string>
     <string name="menu_search">تلاش کریں</string>
     <string name="menu_add_repo">نئی ریپازیٹری</string>
     <string name="menu_launch">کھولیں</string>
@@ -114,7 +114,7 @@
     <string name="hide_all_notifications">تمام اطلاعات چھپائیں۔</string>
     <string name="prompt_to_send_crash_reports_summary">کریش کے بارے میں ڈیٹا اکٹھا کریں اور انہیں ڈویلپر کو بھیجنے کے لیے کہیں۔</string>
     <string name="prompt_to_send_crash_reports">تباہی کی رپورٹ بھیجنے کا اشارہ۔</string>
-    <string name="by_author_format">٪ s کی طرف سے</string>
+    <string name="by_author_format">٪ s ذریعہ</string>
     <string name="send_fdroid_metrics_report">٪ s میٹرکس رپورٹ بھیجیں۔</string>
     <string name="send_install_history">انسٹال ہسٹری بھیجیں</string>
     <string name="send_fdroid_metrics_json">٪ s میٹرکس JSON فائل کے طور پر رپورٹ کرتا ہے۔</string>
