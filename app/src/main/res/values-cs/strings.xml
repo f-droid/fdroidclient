@@ -541,4 +541,5 @@
     <string name="antiupstreamnonfree">Nesvobodný Upstream</string>
     <string name="antinonfreeassets">Nesvobodná aktiva</string>
     <string name="antinosource">Zdrojový kód již není dostupný</string>
+    <string name="antiothers">Další anti-funkce</string>
 </resources>
