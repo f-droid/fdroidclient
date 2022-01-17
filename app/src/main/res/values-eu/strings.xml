@@ -535,4 +535,16 @@
     <string name="share_apk_error">Ezin izan da aplikazio fitxategia partekatu</string>
     <string name="has_disallow_install_unknown_sources_globally">Zure gailuaren administratzaileak ez du jatorri ezezaguneko aplikazioak instalatzen uzten, biltegi berriak barne</string>
     <string name="has_disallow_install_unknown_sources">Erabiltzaile honek ezin ditu jatorri ezezagunak gehitu, biltegi berriak barne</string>
+    <string name="app_list_results_hidden_antifeature_settings">Emaitza batzuk ezkutatu egin dira euren ezaugarri gorabeheratsuak direla medio.</string>
+    <string name="antiads">Iragarkiak</string>
+    <string name="antitrack">Arrastoaren jarraipena</string>
+    <string name="antinonfreead">Libreak ez diren gehigarriak</string>
+    <string name="antinonfreenet">Libreak ez diren sareko zerbitzuak</string>
+    <string name="antinonfreedep">Libreak ez diren menpekotasunak</string>
+    <string name="antiupstreamnonfree">Librea ez den iturburua</string>
+    <string name="antinonfreeassets">Libreak ez diren aktiboak</string>
+    <string name="antidisabledalgorithm">Segurua ez den algoritmo batez sinatua</string>
+    <string name="antiknownvuln">Ahultasun ezaguna</string>
+    <string name="antinosource">Jatorrizko kodea ez dago erabilgarri</string>
+    <string name="antiothers">Beste anti-ezaugarriak</string>
 </resources>
