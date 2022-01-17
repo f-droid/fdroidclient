@@ -515,4 +515,13 @@
     <string name="swap_wifi_vpn_conflict">Konflikter med aktiv VPN!</string>
     <string name="has_disallow_install_unknown_sources">Okända källor kan inte läggas till av denna användare, det inkluderar nya förråd</string>
     <string name="has_disallow_install_unknown_sources_globally">Din enhetsadministratör tillåter inte installation av appar från okända källor, det inkluderar nya förråd</string>
+    <string name="antiads">Annonser</string>
+    <string name="antinonfreenet">Icke-fria nätverkstjänster</string>
+    <string name="antinonfreedep">Icke-fria beroenden</string>
+    <string name="antinonfreeassets">Icke-fria tillgångar</string>
+    <string name="antidisabledalgorithm">Signerad med en osäker algoritm</string>
+    <string name="antiknownvuln">Känd sårbarhet</string>
+    <string name="app_list_results_hidden_antifeature_settings">Några resultat gömdes baserat på dina antifunktionsinställningar.</string>
+    <string name="antinonfreead">Icke-fria tillägg</string>
+    <string name="antinosource">Källkoden är inte längre tillgänglig</string>
 </resources>
