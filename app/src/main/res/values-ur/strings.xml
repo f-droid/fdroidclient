@@ -162,4 +162,5 @@
     <string name="app_not_installed">انسٹال نہیں</string>
     <string name="app_installed">انسٹال</string>
     <string name="app_new">نئی</string>
+    <string name="scan_removable_storage_title">ہٹنے والا اسٹوریج اسکین کریں۔</string>
 </resources>
