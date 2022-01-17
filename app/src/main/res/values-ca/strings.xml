@@ -154,7 +154,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="banner_updating_repositories">Actualitzant respositoris</string>
+    <string name="banner_updating_repositories">Actualitzant repositoris</string>
     <string name="more">Més</string>
     <string name="less">Menys</string>
     <string name="permissions">Permisos</string>
