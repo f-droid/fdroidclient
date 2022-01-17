@@ -172,4 +172,5 @@
     <string name="app_recommended_version_installed">ورژن٪ 1 $ s (تجویز کردہ)</string>
     <string name="added_on">٪ s کو شامل کیا گیا</string>
     <string name="app__tts__cancel_download">ڈاؤن لوڈ منسوخ کریں۔</string>
+    <string name="about_source">سورس کوڈ</string>
 </resources>
