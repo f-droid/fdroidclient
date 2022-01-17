@@ -532,4 +532,5 @@
     <string name="menu_show_fdroid_metrics_report">Prikaži metrički izvještaj</string>
     <string name="send_to_fdroid_metrics_summary">Sedmično šalje anonimne podatke F-Droid Metrikama (zahtjeva da se povijest o instalacijama sadrži)</string>
     <string name="fdroid_metrics_report">%s Metrički Izvještaj</string>
+    <string name="toast_metrics_in_install_history">Izvještaj metrike %s je moguće vidjeti u Pregledniku za povijest instalacija</string>
 </resources>
