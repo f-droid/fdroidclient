@@ -44,7 +44,7 @@
     <string name="menu_ignore_all">忽略所有更新</string>
     <string name="menu_ignore_this">忽略当前更新</string>
     <string name="menu_website">网站</string>
-    <string name="menu_issues">报告错误</string>
+    <string name="menu_issues">错误</string>
     <string name="menu_source">源代码</string>
     <string name="menu_upgrade">更新</string>
     <string name="details_notinstalled">未安装</string>
