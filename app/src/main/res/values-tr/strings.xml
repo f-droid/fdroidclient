@@ -524,4 +524,5 @@
     <string name="antiupstreamnonfree">Üst Kod Özgür Değil</string>
     <string name="antiknownvuln">Bilinen Güvenlik Açığı</string>
     <string name="antinosource">Kaynak Kodu Artık Yok</string>
+    <string name="antiothers">Diğer Karşıt-özellikler</string>
 </resources>
