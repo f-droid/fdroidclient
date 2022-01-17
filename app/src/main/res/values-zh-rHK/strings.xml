@@ -73,7 +73,7 @@
     <string name="icon">圖示</string>
     <string name="skip">跳過</string>
     <string name="status_connecting_to_repo">正在連線至
-%1$s</string>
+\n %1$s</string>
     <string name="repos_unchanged">所有倉庫已更新至最新的版本</string>
     <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
     <string name="global_error_updating_repos">更新時出現問題：%s</string>
@@ -87,7 +87,9 @@
     <string name="repo_name">名稱</string>
     <string name="unknown">未知</string>
     <string name="repo_confirm_delete_title">刪除軟件庫？</string>
-    <string name="repo_disabled_notification">已停用 %1$s。在安裝庫中的應用程式之前，必須重新啟用軟件庫。</string>
+    <string name="repo_disabled_notification">已停用 %1$s。
+\n
+\n在安裝庫中的應用程式之前，必須重新啟用軟件庫。</string>
     <string name="repo_added">已儲存 F-Droid 軟件庫 %1$s。</string>
     <string name="repo_searching_address">在 %1$s
 搜索 F-Droid 軟件庫</string>
