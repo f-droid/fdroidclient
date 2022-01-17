@@ -322,7 +322,7 @@
     <string name="app_list__name__successfully_installed">%1$s instalată</string>
     <string name="app_list__name__downloading_in_progress">Se descarcă %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
-    <string name="app_new">Nouă</string>
+    <string name="app_new">Nou</string>
     <string name="app_recommended_version_installed">Versiunea %1$s (Recomandată)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibilă</string>
@@ -386,7 +386,7 @@
     <string name="app_list__dismiss_app_update">Actualizare ignorată</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilitate ignorată</string>
     <string name="app_list__dismiss_downloading_app">Descărcare anulată</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">S-a detectat o vulnerabilitate în %1$s. Se recomandă dezinstalarea imediată a acestei aplicații.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Am găsit o vulnerabilitate cu %1$s. Vă recomandăm să dezinstalați imediat această aplicație.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">S-a detectat o vulnerabilitate în %1$s. Se recomandă actualizarea imediată la cea mai nouă versiune.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoră</string>
     <string name="privacy">Intimitate</string>
@@ -459,7 +459,7 @@
     <string name="send_history_csv">%s istoric instalări ca fișier CSV</string>
     <string name="updates_disabled_by_settings">Toate actualizările sunt oprite din setările de date mobile/Wi-Fi</string>
     <string name="send_installed_apps">Partajează aplicațiile instalate</string>
-    <string name="send_installed_apps_csv">Lista de aplicații instalate ca fișier CSV</string>
+    <string name="send_installed_apps_csv">Aplicațiile instalate de F-Droid ca fișier CSV</string>
     <string name="menu_open">Deschide</string>
     <string name="about_forum">Forum suport tehnic</string>
     <string name="app_suggested">Recomandată</string>

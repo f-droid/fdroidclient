@@ -1,0 +1,13 @@
+* Revizuirea meniului Share ptr. uz de opțiuni integrate, ca Nearby.
+
+* Îmbunătățire flux și navigare în apropiere, cu o multe corecții.
+
+*Îmbunătățiri de design material (@proletarius101)
+
+* App-uri fără pictograme PNG se afișează acum în Latest Tab (@ashutoshgngwr)
+
+* Îmbunătățiți partajarea offline, în apropiere
+
+* Blocarea adăugării de noi depozite când administratorul dispozitivului dezaprobă "Surse necunoscute"
+
+* Corectarea blocării când se utilizează depozite cu nume de utilizator/parolă
