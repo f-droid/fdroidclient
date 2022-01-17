@@ -10,7 +10,7 @@
     <string name="other">Annat</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
-    <string name="notify_on">Visa en avisering när det finns uppdateringar tillgängliga</string>
+    <string name="notify_on">Visa en avisering när uppdateringar är tillgängliga</string>
     <string name="system_installer">Privilegierat tillägg</string>
     <string name="system_installer_on">Använd Privilegierat tillägg för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
@@ -66,7 +66,7 @@
     <string name="search_hint">Sök efter appar</string>
     <string name="appcompatibility">Appkompatibilitet</string>
     <string name="show_incompat_versions">Inkludera inkompatibla versioner</string>
-    <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
+    <string name="show_incompat_versions_on">Visa appversioner som är inkompatibla med enheten</string>
     <string name="local_repo">Lokalt förråd</string>
     <string name="local_repo_running">F-Droid är redo att utbyta</string>
     <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
@@ -111,9 +111,9 @@
     <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga. 
 \n 
 \nObservera: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
-    <string name="repo_disabled_notification">Inaktiverade %1$s. 
-\n 
-\nDu kommer att behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
+    <string name="repo_disabled_notification">Inaktiverade %1$s.
+\n
+\nDu måste återaktivera detta förråd för att installera appar från det.</string>
     <string name="repo_searching_address">Söker efter paketförråd på 
 \n%1$s</string>
     <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
@@ -172,7 +172,7 @@
     <string name="useTor">Använd Tor</string>
     <string name="useTorSummary">Tvinga hämtningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
-    <string name="status_inserting_apps">Sparar app-detaljer</string>
+    <string name="status_inserting_apps">Sparar appdetaljer</string>
     <string name="repo_added">Sparat paketförråd %1$s.</string>
     <string name="wifi_ap">Surfzon</string>
     <string name="category_Connectivity">Anslutbarhet</string>
@@ -237,7 +237,7 @@
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tillhandahålls av %1$s.</string>
     <string name="downloading">Hämtar…</string>
-    <string name="interval_never">Inga automatiska app-uppdateringar</string>
+    <string name="interval_never">Inga automatiska appuppdateringar</string>
     <string name="interval_1h">Leta efter uppdateringar varje timme</string>
     <string name="interval_4h">Leta efter uppdateringar var fjärde timme</string>
     <string name="interval_12h">Leta efter uppdateringar var 12:e timme</string>
@@ -292,18 +292,18 @@
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_single_ready_to_install">Färdig att installeras</string>
     <string name="notification_title_single_ready_to_install_update">Uppdatering redo att installeras</string>
-    <string name="notification_title_single_install_error">Installationen misslyckades</string>
+    <string name="notification_title_single_install_error">Installation misslyckades</string>
     <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
-    <string name="notification_content_single_installed">Installerades</string>
+    <string name="notification_content_single_installed">Installerad</string>
     <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_summary_downloading">Hämtar…</string>
     <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>
     <string name="notification_title_summary_ready_to_install">Färdig att installeras</string>
     <string name="notification_title_summary_ready_to_install_update">Uppdatering redo att installeras</string>
     <string name="notification_title_summary_installing">Installerar</string>
-    <string name="notification_title_summary_installed">Installationen lyckades</string>
+    <string name="notification_title_summary_installed">Installation lyckades</string>
     <string name="notification_title_summary_install_error">Installation misslyckades</string>
     <string name="notification_action_update">Uppdatering</string>
     <string name="notification_action_cancel">Avbryt</string>
@@ -410,7 +410,7 @@
     <string name="hiding_calculator">Kalkylator</string>
     <string name="hiding_dialog_title">Dölj %s Nu</string>
     <string name="hiding_dialog_message">Är du säker på att du vill ta bort %1$s från startaren? Att bara skriva \"%2$d\" i fejkappen %3$s kan återställa det.</string>
-    <string name="hiding_dialog_warning">Varning: Alla app-genvägar på hemskärmen kommer också att tas bort och kommer att behöva läggas till igen manuellt.</string>
+    <string name="hiding_dialog_warning">Varning: Alla appgenvägar på startskärmen kommer också att tas bort och måste läggas till igen manuellt.</string>
     <string name="hide_on_long_search_press_title">Dölj med sökknappen</string>
     <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att dölja appen</string>
     <string name="over_wifi">Över Wi-Fi</string>
@@ -440,7 +440,7 @@
     <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
     <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
     <string name="hide_all_notifications">Dölj alla aviseringar</string>
-    <string name="hide_all_notifications_summary">Förhindra alla händelser från att visas i statusfältet samt notifieringsfönstret.</string>
+    <string name="hide_all_notifications_summary">Förhindra att alla åtgärder visas i statusfältet och aviseringsfönstret.</string>
     <string name="install_history">Installationshistorik</string>
     <string name="install_history_summary">Visa privat logg av samtliga installationer och avinstallationer</string>
     <string name="send_version_and_uuid">Sänd versionnummer och UUID till servrarna</string>
@@ -492,10 +492,10 @@
     <string name="nearby_splash__document_tree">Sök USB OTG för förråd och speglar.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_installs_title">Installationer</string>
-    <string name="notification_channel_installs_description">Visar notifikationer för app-installationer.</string>
-    <string name="notification_channel_updates_description">Visar notifikationer för uppdateringar av app och förråd.</string>
+    <string name="notification_channel_installs_description">Visar aviseringar för appinstallationer.</string>
+    <string name="notification_channel_updates_description">Visar uppdateringsaviseringar för appar och förråd.</string>
     <string name="notification_channel_updates_title">Uppdateringar</string>
-    <string name="notification_channel_swaps_description">Visar aviseringar för app-byten mellan användare.</string>
+    <string name="notification_channel_swaps_description">Visar aviseringar för appbyten mellan användare.</string>
     <string name="notification_channel_swaps_title">Byten</string>
     <string name="menu_show_install_history">Visa installationshistorik</string>
     <string name="menu_show_fdroid_metrics_report">Visa mätvärdesrapport</string>
@@ -526,4 +526,5 @@
     <string name="antinosource">Källkoden är inte längre tillgänglig</string>
     <string name="antitrack">Spårning</string>
     <string name="antiupstreamnonfree">Icke-fri uppströms</string>
+    <string name="antiothers">Andra antifunktioner</string>
 </resources>
