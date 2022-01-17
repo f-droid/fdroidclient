@@ -157,7 +157,7 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">نصب شدہ ورژن کسی بھی دستیاب ورژن کے ساتھ مطابقت نہیں رکھتا۔ ایپ کو انسٹال کرنے سے آپ مطابقت پذیر ورژن دیکھنے اور انسٹال کرنے کے قابل ہوجائیں گے۔ یہ اکثر گوگل پلے یا دیگر ذرائع کے ذریعے نصب کردہ ایپس کے ساتھ ہوتا ہے ، اگر ان پر کسی مختلف سرٹیفکیٹ سے دستخط ہوتے ہیں۔</string>
     <string name="send_to_fdroid_metrics_summary">ایف ڈروڈ میٹرکس کو ہفتہ وار گمنام ڈیٹا بھیجتا ہے (انسٹال ہسٹری کی ضرورت ہوتی ہے)</string>
     <string name="local_repo_name_summary">۔</string>
-    <string name="about_license">لائسنس</string>
+    <string name="about_license">‎لائسنس</string>
     <string name="app_suggested">تجویز کردہ</string>
     <string name="app_details__no_versions__no_compatible_signatures">ہم آہنگ دستخط کے ساتھ کوئی ورژن نہیں</string>
     <string name="app_not_installed">انسٹال نہیں</string>
@@ -192,7 +192,7 @@
     <string name="updates__hide_updateable_apps">ایپس چھپائیں۔</string>
     <string name="repo_add_url">ذخیرہ پتہ</string>
     <string name="choose_bt_send">بلوٹوتھ بھیجنے کا طریقہ منتخب کریں</string>
-    <string name="bluetooth_activity_not_found">کوئی بلوٹوتھ بھیجنے کا طریقہ نہیں ملا، ایک کا انتخاب کریں</string>
+    <string name="bluetooth_activity_not_found">‍کوئی بلوٹوتھ بھیجنے کا طریقہ نہیں ملا، ایک کا انتخاب کریں</string>
     <string name="sort_search">تلاش چھانٹیں</string>
     <string name="clear_search">تلاش صاف کریں</string>
     <plurals name="updates__download_updates_for_apps">
@@ -215,9 +215,9 @@
     <string name="menu_open">کھولیں</string>
     <string name="repositories_summary">ایپس کے اضافی ذرائع شامل کریں۔</string>
     <string name="repo_provider">ذخیرہ:٪ s</string>
-    <string name="has_disallow_install_unknown_sources">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
+    <string name="has_disallow_install_unknown_sources">‎‏‌Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
     <string name="has_disallow_install_unknown_sources_globally">آپ کا ڈیوائس ایڈمن نامعلوم ذرائع سے ایپس انسٹال کرنے کی اجازت نہیں دیتا، جس میں نئے ریپو شامل ہیں</string>
-    <string name="malformed_repo_uri">خراب شدہ ریپو URI کو نظر انداز کرنا:٪ s</string>
+    <string name="malformed_repo_uri">‎خراب شدہ ریپو URI کو نظر انداز کرنا:٪ s</string>
     <string name="invalid_url">یہ ایک درست URL نہیں ہے۔</string>
     <string name="repo_exists_add_mirror">یہ٪ 1 $ s کی ایک کاپی ہے ، اسے آئینے کے طور پر شامل کریں؟</string>
     <string name="bad_fingerprint">‎خراب فنگر پرنٹ۔</string>
