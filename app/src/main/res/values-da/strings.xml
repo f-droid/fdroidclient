@@ -510,4 +510,8 @@
     <string name="banner_no_internet">Ingen internetadgang</string>
     <string name="has_disallow_install_unknown_sources">Ukendte kilder kan ikke tilføjes af denne bruger, dette inkluderer nye depoter</string>
     <string name="has_disallow_install_unknown_sources_globally">Din enhedsadministrator tillader ikke installation af apps fra ukendte kilder, dette inkluderer nye depoter</string>
+    <string name="antiads">Reklamer</string>
+    <string name="antitrack">Sporing</string>
+    <string name="antinonfreenet">Ikke-frie netværkstjenester</string>
+    <string name="app_list_results_hidden_antifeature_settings">Nogle resultater blev skjult på grund af dine antifeature-indstillinger.</string>
 </resources>
