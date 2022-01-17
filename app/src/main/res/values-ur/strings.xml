@@ -120,10 +120,10 @@
     <string name="send_fdroid_metrics_json">٪ s میٹرکس JSON فائل کے طور پر رپورٹ کرتا ہے۔</string>
     <string name="send_history_csv">٪ s انسٹال کی تاریخ بطور CSV فائل۔</string>
     <string name="install_history">انسٹال تاریخ</string>
-    <string name="install_history_summary">تمام انسٹال اور ان انسٹال کا نجی لاگ دیکھیں</string>
+    <string name="install_history_summary">تمام انسٹال اور ان انسٹال کا نجی لاگ دیکھیں۔</string>
     <string name="fdroid_metrics_report">٪ s میٹرکس رپورٹ</string>
-    <string name="keep_install_history">انسٹال ہسٹری رکھیں</string>
-    <string name="keep_install_history_summary">ایک نجی اسٹور میں تمام انسٹال اور ان انسٹال کا لاگ اسٹور کریں</string>
+    <string name="keep_install_history">انسٹال ہسٹری رکھیں۔</string>
+    <string name="keep_install_history_summary">ایک نجی اسٹور میں تمام انسٹال اور ان انسٹال کا لاگ اسٹور کریں۔</string>
     <string name="update_auto_install_summary">ایک نوٹیفکیشن دکھا کر پس منظر میں ایپس ڈاؤن لوڈ اور اپ ڈیٹ کریں</string>
     <string name="update_auto_install">اپ ڈیٹس خود بخود انسٹال کریں</string>
     <string name="over_network_never_summary">اس کنکشن کا استعمال کرتے ہوئے کبھی بھی کچھ بھی ڈاؤن لوڈ نہ کریں</string>
