@@ -499,4 +499,16 @@
     <string name="has_disallow_install_unknown_sources">此用户无法添加未知来源，包括新的存储库</string>
     <string name="has_disallow_install_unknown_sources_globally">您的设备管理员不允许安装来自未知来源的应用程序，其中包括新的存储库</string>
     <string name="swap_wifi_vpn_conflict">与活跃 VPN 冲突！</string>
+    <string name="antiknownvuln">含已知漏洞</string>
+    <string name="antiads">有广告</string>
+    <string name="antinonfreead">非自由附加组件</string>
+    <string name="app_list_results_hidden_antifeature_settings">基于你的 antifeature 设置，一些结果被隐藏了。</string>
+    <string name="antinosource_key">源码自下列日期起不可得</string>
+    <string name="antinonfreenet">非自由网络服务</string>
+    <string name="antitrack">跟踪用户</string>
+    <string name="antinonfreeassets">非自由资产</string>
+    <string name="antinonfreedep">非自由依赖项</string>
+    <string name="antiupstreamnonfree">上游代码非自由</string>
+    <string name="antidisabledalgorithm">使用不安全算法签名</string>
+    <string name="antinosource">源码不再可用</string>
 </resources>
