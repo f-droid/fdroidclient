@@ -535,4 +535,5 @@
     <string name="antinonfreeassets">Activos no libres</string>
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
+    <string name="antiothers">Otras anti-característcas</string>
 </resources>
