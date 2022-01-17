@@ -125,7 +125,7 @@
     <string name="fdroid_metrics_report">٪ s میٹرکس رپورٹ</string>
     <string name="keep_install_history">انسٹال ہسٹری رکھیں۔</string>
     <string name="keep_install_history_summary">ایک نجی اسٹور میں تمام انسٹال اور ان انسٹال کا لاگ اسٹور کریں۔</string>
-    <string name="update_auto_install_summary"></string>
+    <string name="update_auto_install_summary"/>
     <string name="update_auto_install">خود بخود تازہ کاری تنصیب کریں</string>
     <string name="over_network_never_summary">اس کنکشن کا استعمال کرتے ہوئے کبھی بھی کچھ ڈاؤن لوڈ نہ کریں</string>
     <string name="over_network_on_demand_summary">جب میں ڈاؤن لوڈ کرنے کے لیے کلک کروں تو صرف اس کنکشن کا استعمال کریں</string>
@@ -238,4 +238,7 @@
     <string name="menu_translation">ترجمہ</string>
     <string name="menu_bitcoin">بٹ کوائن۔</string>
     <string name="menu_downgrade">ڈاؤن گریڈ</string>
+    <string name="menu_changelog">چےنزغےلوغ</string>
+    <string name="menu_flattr">فلاٹڑ</string>
+    <string name="menu_issues">اسسو</string>
 </resources>
