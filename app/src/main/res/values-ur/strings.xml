@@ -168,4 +168,8 @@
     <string name="app_inst_unknown_source">انسٹال (نامعلوم ذریعہ سے)</string>
     <string name="app_version_x_available">ورژن٪ 1 $ s دستیاب ہے۔</string>
     <string name="local_repo_https_on">مقامی ریپو کے لیے خفیہ کردہ HTTPS: // کنکشن استعمال کریں۔</string>
+    <string name="app__install_downloaded_update">اپ ڈیٹ</string>
+    <string name="app_recommended_version_installed">ورژن٪ 1 $ s (تجویز کردہ)</string>
+    <string name="added_on">٪ s کو شامل کیا گیا</string>
+    <string name="app__tts__cancel_download">ڈاؤن لوڈ منسوخ کریں۔</string>
 </resources>
