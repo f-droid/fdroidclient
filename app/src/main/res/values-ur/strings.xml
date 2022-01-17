@@ -178,4 +178,7 @@
     <string name="app_repository">ذخیرہ:٪ 1 $ s</string>
     <string name="app_permission_storage">F-Droid کو اسٹوریج میں انسٹال کرنے کے لیے اسٹوریج کی اجازت درکار ہے۔ براہ کرم اسے اگلی سکرین پر انسٹالیشن کے ساتھ آگے بڑھنے دیں۔</string>
     <string name="app_installed_media">فائل٪ s پر انسٹال ہو گئی</string>
+    <string name="app_version_x_installed">ورژن٪ 1 $ s</string>
+    <string name="app_list__dismiss_app_update">اپ ڈیٹ نظر انداز کر دیا گیا</string>
+    <string name="app_list_download_ready">ڈاؤن لوڈ ، انسٹال کرنے کے لیے تیار</string>
 </resources>
