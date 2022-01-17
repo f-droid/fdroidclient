@@ -531,4 +531,10 @@
     <string name="app_list_results_hidden_antifeature_settings">Alcuni risultati sono stati nascosti in base alle tue impostazioni di anti-caratteristiche.</string>
     <string name="antinonfreead">Addon non liberi</string>
     <string name="antinonfreenet">Servizi di rete non liberi</string>
+    <string name="antiknownvuln">Vulnerabilità conosciuta</string>
+    <string name="antiads">Annunci</string>
+    <string name="antitrack">Tracciamento</string>
+    <string name="antinonfreeassets">Risorse non libere</string>
+    <string name="antidisabledalgorithm">Firmato usando un algoritmo non sicuro</string>
+    <string name="antinosource">Il codice sorgente non è più disponibile</string>
 </resources>
