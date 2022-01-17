@@ -36,7 +36,7 @@
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на ново хранилище</string>
     <string name="repo_add_add">Добавяне</string>
-    <string name="cancel">Отказ</string>
+    <string name="cancel">Cancel</string>
     <string name="add_key">Добавете ключ</string>
     <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане. Моля, изберете такъв!</string>
     <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
@@ -541,4 +541,5 @@
     <string name="antinonfreedep">Несвободни зависимости</string>
     <string name="antinonfreeassets">Несвободни активи</string>
     <string name="antinonfreenet">Несвободни мрежови услуги</string>
+    <string name="antiothers">Други анти-функции</string>
 </resources>
