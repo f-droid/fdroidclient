@@ -503,4 +503,10 @@
     <string name="swap_wifi_vpn_conflict">アクティブなVPNとの衝突!</string>
     <string name="has_disallow_install_unknown_sources">新規レポジトリを含む未知のソースは、このユーザーによって追加されることができません</string>
     <string name="has_disallow_install_unknown_sources_globally">あなたのデバイスの管理者は、新規レポジトリを含む未知のソースからアプリのインストールを許可していません</string>
+    <string name="antiads">広告</string>
+    <string name="antitrack">追跡</string>
+    <string name="antinonfreead">非フリーのアドオン</string>
+    <string name="antinonfreenet">非フリーのネットワーク・サービス</string>
+    <string name="antinonfreedep">非フリーの依存性</string>
+    <string name="app_list_results_hidden_antifeature_settings">「好ましくない機能」の設定によると一定の成果は表示されませんでした。</string>
 </resources>
