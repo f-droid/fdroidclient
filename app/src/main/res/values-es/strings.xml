@@ -79,7 +79,7 @@
     <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
     <string name="icon">Icono</string>
     <string name="next">Siguiente</string>
-    <string name="skip">Saltar</string>
+    <string name="skip">Omitir</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Habilitar proxy HTTP</string>
     <string name="enable_proxy_summary">Configurar proxy HTTP para todas las solicitudes de red</string>
