@@ -527,4 +527,5 @@
     <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
     <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
     <string name="antinosource">Lähdekoodi Ei enää saatavilla</string>
+    <string name="antiothers">Muut antiominaisuudet</string>
 </resources>
