@@ -177,7 +177,7 @@
 \nEs sind Apps auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Apps beinhalten.</string>
     <string name="empty_can_update_app_list">Glückwunsch!\nIhre Apps sind auf dem neuesten Stand.</string>
     <string name="swap_send_fdroid">F-Droid senden</string>
-    <string name="apps">Applikationen</string>
+    <string name="apps">Apps</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
     <string name="interval_never">Keine automatischen App-Aktualisierungen</string>
     <string name="interval_2w">Alle zwei Wochen nach Aktualisierungen suchen</string>
