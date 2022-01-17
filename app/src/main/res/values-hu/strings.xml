@@ -509,5 +509,19 @@
     <string name="banner_no_data_or_wifi">Nincs adatkapcsolat vagy WiFi</string>
     <string name="banner_no_internet">Nincs internet</string>
     <string name="share_apk_error">Az alkalmazásfájl nem osztható meg</string>
-    <string name="has_disallow_install_unknown_sources_globally">Eszközöd adminisztrátorja nem engedélyezi az alkalmazások telepítését ismeretlen forrásokból, beleértve az új adattárolókat is</string>
+    <string name="has_disallow_install_unknown_sources_globally">Az eszköze rendszergazdája nem engedélyezi az alkalmazások ismeretlen forrásokból történő telepítését, beleértve az új tárolókat is</string>
+    <string name="antiads">Reklámok</string>
+    <string name="swap_wifi_vpn_conflict">Ütközések az aktív VPN-nel!</string>
+    <string name="app_list_results_hidden_antifeature_settings">Egyes találatok el lettek rejtve az előnytelen funkciók beállításai alapján.</string>
+    <string name="has_disallow_install_unknown_sources">Ez a felhasználó nem adhat hozzá ismeretlen forrásokat, ebbe a tárolókat is beleértve</string>
+    <string name="antinonfreedep">Nem szabad függőségek</string>
+    <string name="antinonfreead">Nem szabad kiegészítők</string>
+    <string name="antitrack">Követés</string>
+    <string name="antinonfreenet">Nem szabad hálózati szolgáltatások</string>
+    <string name="antiupstreamnonfree">Nem szabad upstream forráskód</string>
+    <string name="antinonfreeassets">Nem szabad erőforrások</string>
+    <string name="antidisabledalgorithm">Nem biztonságos algoritmussal aláírt</string>
+    <string name="antiknownvuln">Ismert sérülékenység</string>
+    <string name="antinosource">Már nem elérhető forráskód</string>
+    <string name="antiothers">Egyéb előnytelen funkciók</string>
 </resources>

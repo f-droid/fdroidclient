@@ -1,0 +1,13 @@
+* Az alkalmazásleírások fordítása most már teljesen figyelembe veszi az Android nyelvi beállításait
+
+* A Legfrissebb lapon a legújabb alkalmazások jelennek meg legelől (@TheLastProject @IzzySoft)
+
+* A keresési találatok sokat javultak (@Tvax @gcbrown76)
+
+* Megbízhatóbb gyorsítótár-ürítés
+
+* Gyorsítótár-tisztítás hatékony ütemezése (@Isira-Seneviratne)
+
+* Tároló URL feldolgozásának átdolgozása a megbízható tároló hozzáadás érdekében (@projectgus)
+
+* Választhatóan bekapcsolható F-Droid metrikák

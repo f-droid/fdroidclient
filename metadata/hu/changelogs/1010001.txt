@@ -1,0 +1,7 @@
+* értesítési csatornák használata az aprólékosabb beállítások érdekében (@Isira-Seneviratne)
+* alkalmazások közvetlen megosztása az alkalmazás részleteiben (@fynngodau)
+* a legfrissebb lap jobb eredményeket ad a nem angol területi beállítású eszközökön
+* központi programkönyvtárak frissítése (Jackson, androidx, gradle, stb.)
+* márkázhatóság támogatásának finomítása
+
+Köszönjük az új közreműködőknek! @fynngodau @projectgus @glennmen @Isira-Seneviratne

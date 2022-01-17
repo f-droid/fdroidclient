@@ -1,0 +1,12 @@
+* Az alkalmazásleírások fordítása most már teljesen figyelembe veszi
+  az Android nyelvi beállításait
+
+* A Legfrissebb lap találatai figyelembe veszik a nyelvi beállításokat
+
+* A Legfrissebb lapon a legújabb alkalmazások jelennek meg legelől (@TheLastProject @IzzySoft)
+
+* A tématámogatás már az Android beépített témáihoz kötődik (@proletarius101)
+
+* A keresési találatok sokat javultak (@Tvax @gcbrown76)
+
+* Az Android hatékonyan ütemezhet be gyorsítótár-tisztási műveleteket (@Isira-Seneviratne)
