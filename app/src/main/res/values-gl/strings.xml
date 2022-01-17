@@ -508,4 +508,10 @@
     <string name="send_fdroid_metrics_json">Informe de métricas %s como ficheiro JSON</string>
     <string name="send_fdroid_metrics_report">Enviar informe de métricas %s</string>
     <string name="apps">Aplicacións</string>
+    <string name="antiads">Anuncios</string>
+    <string name="antiknownvuln">Vulnerabilidade Coñecida</string>
+    <string name="has_disallow_install_unknown_sources">Este usuario non pode engadir fontes descoñecidas, o que inclúe novos repositorios</string>
+    <string name="has_disallow_install_unknown_sources_globally">O administrador do dispositivo non permita instalar aplicacións de fontes descoñecidas, o que inclúe novos repositorios</string>
+    <string name="antidisabledalgorithm">Asinado usando un algoritmo inseguro</string>
+    <string name="antitrack">Seguimento</string>
 </resources>
