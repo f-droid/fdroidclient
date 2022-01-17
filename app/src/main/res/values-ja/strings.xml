@@ -512,5 +512,6 @@
     <string name="antiknownvuln">既知の脆弱性</string>
     <string name="antinonfreeassets">不自由なアセット</string>
     <string name="antiupstreamnonfree">アップストリームは非フリーである</string>
-    <string name="antidisabledalgorithm">不安全なアルゴリズムで署名されました</string>
+    <string name="antidisabledalgorithm">安全でないアルゴリズムで署名されました</string>
+    <string name="antinosource">ソースコードはもう利用できません</string>
 </resources>
