@@ -4,7 +4,7 @@
 
 * Material design 改进 (@proletarius101)
 
-* 没有 PNG 图标的应用程序现在显示在“最新”选项卡中 (@ashutoshgngwr)
+* 没有 PNG 图标的应用现在显示在“最新”选项卡中 (@ashutoshgngwr)
 
 * 改进了有限的数据/WiFi 设置下的图标管理
 

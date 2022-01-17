@@ -302,8 +302,8 @@
     <string name="categories__empty_state__no_categories">没有可显示的分类</string>
     <string name="preference_category__my_apps">我的应用</string>
     <string name="details_new_in_version">版本 %s 的新功能</string>
-    <string name="antifeatureswarning">此应用有一些你未必喜欢的功能。</string>
-    <string name="antifeatures">反自由的功能</string>
+    <string name="antifeatureswarning">此应用有一些你未必喜欢的特征。</string>
+    <string name="antifeatures">负特征</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
@@ -399,7 +399,7 @@
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
     <string name="warning_scaning_qr_code">你的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
     <string name="show_anti_feature_apps">包括带有 anti-feature 的应用</string>
-    <string name="show_anti_feature_apps_on">显示需要 anti-feature 的应用</string>
+    <string name="show_anti_feature_apps_on">显示包含负特征的应用</string>
     <string name="repo_add_mirror">添加镜像</string>
     <string name="force_touch_apps">包括触屏应用</string>
     <string name="force_touch_apps_on">显示需要触控式屏幕的应用，无论硬件是否支持</string>
@@ -475,11 +475,11 @@
     <string name="swap_toast_closing_nearby_after_timeout">附近因闲置而关闭。</string>
     <string name="nearby_splash__document_tree">搜索 USB OTG 用于存储库和镜像。</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_updates_description">显示应用程序和存储库更新通知。</string>
+    <string name="notification_channel_updates_description">显示应用和存储库更新通知。</string>
     <string name="notification_channel_updates_title">更新</string>
     <string name="notification_channel_installs_description">展示应用安装通知。</string>
     <string name="notification_channel_installs_title">安装</string>
-    <string name="notification_channel_swaps_description">展示P2P 应用程序交换通知。</string>
+    <string name="notification_channel_swaps_description">展示P2P 应用交换通知。</string>
     <string name="notification_channel_swaps_title">交换</string>
     <string name="menu_show_install_history">显示安装历史</string>
     <string name="menu_show_fdroid_metrics_report">显示指标报告</string>
@@ -497,12 +497,12 @@
     <string name="banner_no_internet">无互联网</string>
     <string name="share_apk_error">无法分享应用文件</string>
     <string name="has_disallow_install_unknown_sources">此用户无法添加未知来源，包括新的存储库</string>
-    <string name="has_disallow_install_unknown_sources_globally">您的设备管理员不允许安装来自未知来源的应用程序，其中包括新的存储库</string>
+    <string name="has_disallow_install_unknown_sources_globally">您的设备管理员不允许安装来自未知来源的应用，其中包括新的存储库</string>
     <string name="swap_wifi_vpn_conflict">与活跃 VPN 冲突！</string>
     <string name="antiknownvuln">含已知漏洞</string>
     <string name="antiads">有广告</string>
     <string name="antinonfreead">非自由附加组件</string>
-    <string name="app_list_results_hidden_antifeature_settings">基于你的 antifeature 设置，一些结果被隐藏了。</string>
+    <string name="app_list_results_hidden_antifeature_settings">根据你的负特征设置，一些结果被隐藏了。</string>
     <string name="antinosource_key">源码自下列日期起不可得</string>
     <string name="antinonfreenet">非自由网络服务</string>
     <string name="antitrack">跟踪用户</string>
