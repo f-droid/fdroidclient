@@ -165,4 +165,6 @@
     <string name="scan_removable_storage_title">ہٹنے والا اسٹوریج اسکین کریں۔</string>
     <string name="app_details__no_versions__none_compatible_with_device">آلہ کے ساتھ کوئی ورژن ہم آہنگ نہیں</string>
     <string name="about_forum">سپورٹ فورم</string>
+    <string name="app_inst_unknown_source">انسٹال (نامعلوم ذریعہ سے)</string>
+    <string name="app_version_x_available">ورژن٪ 1 $ s دستیاب ہے۔</string>
 </resources>
