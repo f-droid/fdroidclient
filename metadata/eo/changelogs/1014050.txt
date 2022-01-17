@@ -1,11 +1,15 @@
-• rekonstruita menuo “kunhavigi” por uzi enkonstruitajn eblaĵojn, kiel “proksime”
+• rekonstruita menuo “Kunhavigi” por uzi enkonstruitajn eblojn, ekz. “proksime”
 
-• plibonigoj al Material Design (@proletarius101)
+• plibonigita funkciado kaj stirado en “Proksime”
 
-• aplikaĵoj sen PNG-emblemoj nun montriĝas en la langeto “novaj” (@ashutoshgngwr)
+• plibonigoj al Material Design
+
+• aplikaĵoj sen PNG-emblemoj nun montriĝas en langeto “novaj”
+
+• je limigita konekto pli bone trakti emblemojn
 
 • plibonigoj al kunhavigi aplikaĵojn malkonekte per “proksime”
 
-• malpermesi aldoni novajn deponejojn kiam administranto de aparato malpermesas “nekonatajn fontojn”
+• eblo elekti fieblojn por montri
 
-• riparita eraro dum uzi deponejojn kun uzantnomo/pasvorto
+• malpermesi aldoni novajn deponejojn kiam administranto de aparato malpermesas “nekonatajn fontojn”
