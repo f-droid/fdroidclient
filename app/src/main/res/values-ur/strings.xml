@@ -151,4 +151,7 @@
     <string name="send_to_fdroid_metrics">استعمال کا ڈیٹا بھیجیں۔</string>
     <string name="menu_show_install_history">سو</string>
     <string name="main_menu__updates">ابڈےٹ</string>
+    <string name="about_site">ویب سائٹ</string>
+    <string name="about_version">ورژن</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">نصب شدہ ورژن کسی بھی دستیاب ورژن کے ساتھ مطابقت نہیں رکھتا۔ ایپ کو انسٹال کرنے سے آپ مطابقت پذیر ورژن دیکھنے اور انسٹال کرنے کے قابل ہوجائیں گے۔ یہ اکثر گوگل پلے یا دیگر ذرائع کے ذریعے نصب کردہ ایپس کے ساتھ ہوتا ہے ، اگر ان پر کسی مختلف سرٹیفکیٹ سے دستخط ہوتے ہیں۔</string>
 </resources>
