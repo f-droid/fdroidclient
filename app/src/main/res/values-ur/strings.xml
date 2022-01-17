@@ -138,4 +138,10 @@
     <string name="send_version_and_uuid_summary">اس ایپ کا ورژن اور ایک بے ترتیب ، منفرد آئی ڈی شامل کریں جب ڈاؤن لوڈ کریں ، اگلے ایپ کے دوبارہ شروع ہونے پر اثر انداز ہوتا ہے</string>
     <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں</string>
     <string name="install_history_and_metrics">تاریخ اور میٹرکس انسٹال کریں</string>
+    <string name="theme_dark">سیاہ</string>
+    <string name="app_details_donate_prompt_unknown_author">٪ 1 $ s کے ڈویلپرز کو کافی خریدیں!</string>
+    <string name="no_such_app">ایسی کوئی ایپ نہیں ملی۔</string>
+    <string name="repo_error_empty_username">خالی صارف نام ، اسناد تبدیل نہیں ہوئے۔</string>
+    <string name="login_title">تصدیق درکار ہے</string>
+    <string name="scan_removable_storage_toast">٪ s کو اسکین کیا جا رہا ہے…</string>
 </resources>
