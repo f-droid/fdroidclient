@@ -535,5 +535,5 @@
     <string name="app_list_results_hidden_antifeature_settings">Certains résultats ont été masqués pour respecter vos paramètres d\'anti-fonctionnalité.</string>
     <string name="antiads">Publicités</string>
     <string name="antinonfreead">Addons payants</string>
-    <string name="antinonfreeassets">Composants pas open source</string>
+    <string name="antinonfreeassets">Composants non open source</string>
 </resources>
