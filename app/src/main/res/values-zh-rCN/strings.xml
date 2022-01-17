@@ -42,7 +42,7 @@
     <string name="menu_install">安装</string>
     <string name="menu_uninstall">卸载</string>
     <string name="menu_ignore_all">忽略所有更新</string>
-    <string name="menu_ignore_this">忽略这个更新</string>
+    <string name="menu_ignore_this">忽略当前更新</string>
     <string name="menu_website">网站</string>
     <string name="menu_issues">报告错误</string>
     <string name="menu_source">源代码</string>
