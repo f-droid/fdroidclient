@@ -94,4 +94,13 @@
     <string name="preference_manage_installed_apps">انستال ہوے ایپس کو مینیج کریں</string>
     <string name="swap_scan_qr">QR کوڈ</string>
     <string name="apps">ایپس</string>
+    <string name="app_details">ایپ کی تفصیلات</string>
+    <string name="warning_no_internet">اپ ڈیٹ نہیں ہو سکتا ، کیا آپ انٹرنیٹ سے منسلک ہیں؟</string>
+    <string name="antitracklist">یہ ایپ آپ کی سرگرمیوں کو ٹریک اور رپورٹ کرتی ہے۔</string>
+    <string name="less">کم</string>
+    <string name="more">مزید</string>
+    <string name="updates__tts__download_app">ڈاؤن لوڈ کریں</string>
+    <string name="app_list__name__successfully_installed">٪ 1 $ s انسٹال ہو گیا</string>
+    <string name="about_title">F-Droid کے بارے میں</string>
+    <string name="app_list__name__downloading_in_progress">٪ 1 $ s ڈاؤن لوڈ ہو رہا ہے</string>
 </resources>
