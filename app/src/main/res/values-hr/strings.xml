@@ -522,4 +522,8 @@
     </plurals>
     <string name="use_pure_black_dark_theme_summary">Preporučuje se samo za OLED ekrane.</string>
     <string name="use_pure_black_dark_theme">Koristi potpuno crnu pozadinu u tamnoj temi</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot uključen</string>
+    <string name="send_fdroid_metrics_report">Pošalji izvještaj %s</string>
+    <string name="send_fdroid_metrics_json">%s izvještaj metrike kao JSON datoteka</string>
+    <string name="install_history_and_metrics">Povijest instalacija i metrika</string>
 </resources>
