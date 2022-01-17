@@ -145,4 +145,7 @@
     <string name="login_title">تصدیق درکار ہے</string>
     <string name="scan_removable_storage_toast">٪ s کو اسکین کیا جا رہا ہے…</string>
     <string name="toast_metrics_in_install_history">٪ s میٹرک رپورٹ انسٹال ہسٹری ویوور میں دیکھنے کے قابل ہے۔</string>
+    <string name="app_details__no_versions__show_incompat_versions">ویسے بھی غیر مطابقت پذیر ورژن دکھانے کے لیے ، \"٪ 1 $ s\" ترتیب کو فعال کریں۔</string>
+    <string name="app_details__incompatible_mismatched_signature">انسٹال ورژن پر مختلف دستخط</string>
+    <string name="app_details_donate_prompt">٪ 1 $ s کو٪ 2 $ s نے بنایا ہے۔ انہیں کافی خریدیں!</string>
 </resources>
