@@ -527,4 +527,8 @@
     <string name="swap_wifi_vpn_conflict">In conflitto con la VPN attiva!</string>
     <string name="has_disallow_install_unknown_sources">Fonti sconosciute non possono essere aggiunte da questo utente, inclusi nuovi repository</string>
     <string name="has_disallow_install_unknown_sources_globally">L\'amministratore del tuo dispositivo non permette l\'installazione di app da fonti sconosciute, inclusi nuovi repository</string>
+    <string name="antinonfreedep">Dipendenze non libere</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alcuni risultati sono stati nascosti in base alle tue impostazioni di anti-caratteristiche.</string>
+    <string name="antinonfreead">Addon non liberi</string>
+    <string name="antinonfreenet">Servizi di rete non liberi</string>
 </resources>
