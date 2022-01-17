@@ -534,4 +534,15 @@
     <string name="swap_wifi_vpn_conflict">Tha còmhstri le VPN gnìomhach ann!</string>
     <string name="has_disallow_install_unknown_sources">Chan fhaod an cleachdaiche seo tùsan nach aithne dhuinn a chur ris, tha seo a’ gabhail a-staigh ionadan-tasgaidh ùra</string>
     <string name="has_disallow_install_unknown_sources_globally">Cha cheadaich rianaire an uidheim agad gun stàlaich thu aplacaidean o thùs nach aithne dhuinn, tha seo a’ gabhail a-staigh ionadan-tasgaidh ùra</string>
+    <string name="app_list_results_hidden_antifeature_settings">Chaidh cuid dhe na toraidhean fhalach ri linn nan roghainnean agad mu dhroch-ghleusan.</string>
+    <string name="antiads">Sanasachd</string>
+    <string name="antitrack">Tracadh</string>
+    <string name="antinonfreead">Tuilleadain neo-shaor</string>
+    <string name="antinonfreenet">Seirbheisean lìonraidh neo-shaor</string>
+    <string name="antinonfreedep">Eisimeileachdan neo-shaor</string>
+    <string name="antiupstreamnonfree">Upstream neo-shaor</string>
+    <string name="antinonfreeassets">Maoin neo-shaor</string>
+    <string name="antidisabledalgorithm">Soidhneadh le algairim nach eil sàbhailte</string>
+    <string name="antiknownvuln">So-leòntachd aithnichte</string>
+    <string name="antinosource">Chan eil am bun-tùs ri fhaighinn tuilleadh</string>
 </resources>
