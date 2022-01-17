@@ -1,0 +1,13 @@
+* Lokalizacja opisu aplikacji w pełni uwzględnia listy w Ustawieniach Językowych Androida
+
+* Najnowsza zakładka pokazuje aplikacje w oparciu o ustawienia językowe, w kolejności od najnowszych (@TheLastProject @IzzySoft)
+
+* Wyniki wyszukiwania znacznie poprawione (@Tvax @gcbrown76)
+
+* Bardziej niezawodne czyszczenie pamięci podręcznej
+
+* Efektywny harmonogram czyszczenia pamięci podręcznej (@Isira-Seneviratne)
+
+* Poprawiono parsowanie adresów URL repo (@projectgus)
+
+* Opcjonalne metryki F-Droid
