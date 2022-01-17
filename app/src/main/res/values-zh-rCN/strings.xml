@@ -66,11 +66,11 @@
     <string name="icon">图标</string>
     <string name="proxy">代理</string>
     <string name="enable_proxy_title">启用 HTTP 代理</string>
-    <string name="enable_proxy_summary">为所有网络请求配置 http 代理</string>
+    <string name="enable_proxy_summary">为所有网络请求配置 HTTP 代理</string>
     <string name="proxy_host">代理主机</string>
-    <string name="proxy_host_summary">本机代理主机名（比如 127.0.0.1）</string>
+    <string name="proxy_host_summary">你的代理主机名（比如 127.0.0.1）</string>
     <string name="proxy_port">代理端口</string>
-    <string name="proxy_port_summary">本机代理端口号（比如 8118）</string>
+    <string name="proxy_port_summary">你的代理端口号（比如 8118）</string>
     <string name="status_download">正在从 %1$s 下载 %2$s / %3$s (%4$d%%)</string>
     <string name="status_connecting_to_repo">正在连接
 \n%1$s</string>
@@ -144,7 +144,7 @@
     <string name="skip">跳过</string>
     <string name="status_download_unknown_size">正在从 %1$s 下载 %2$s</string>
     <string name="banner_updating_repositories">正在更新存储库</string>
-    <string name="status_processing_xml_percent">处理中 %2$s / %3$s (%4$d%%) 来自 %1$s</string>
+    <string name="status_processing_xml_percent">正在处理 %2$s / %3$s (%4$d%%) 来自 %1$s</string>
     <string name="repos_unchanged">所有存储库已是最新的</string>
     <string name="all_other_repos_fine">所有其他的存储库并没有产生错误。</string>
     <string name="global_error_updating_repos">更新出错：%s</string>
@@ -181,12 +181,12 @@
     <string name="swap_success">交换成功！</string>
     <string name="swap_no_wifi_network">尚未连上网络</string>
     <string name="swap_active_hotspot">%1$s（你的热点）</string>
-    <string name="swap_view_available_networks">点击打开可用的网络</string>
-    <string name="swap_switch_to_wifi">点击切换到 Wi-Fi 网络</string>
-    <string name="open_qr_code_scanner">开启二维码扫描</string>
+    <string name="swap_view_available_networks">轻按打开可用的网络</string>
+    <string name="swap_switch_to_wifi">轻按切换到 Wi-Fi 网络</string>
+    <string name="open_qr_code_scanner">打开二维码扫描器</string>
     <string name="swap_confirm_connect">你想从 %1$s 获取应用吗？</string>
     <string name="swap_dont_show_again">不再显示</string>
-    <string name="swap_scan_or_type_url">别人需要扫描此二维码，或在浏览器输入对方的 URL 。</string>
+    <string name="swap_scan_or_type_url">别人需要扫描此二维码，或在浏览器中输入对方的 URL 。</string>
     <string name="swap_choose_apps">选择应用</string>
     <string name="swap_scan_qr">二维码</string>
     <string name="swap_people_nearby">附近的人</string>
@@ -209,20 +209,20 @@
     <string name="swap_qr_isnt_for_swap">你扫描的二维码似乎不是一个交换代码。</string>
     <string name="loading">正在加载…</string>
     <string name="swap_connection_misc_error">连接设备时出错，无法交换应用！</string>
-    <string name="install_confirm">确定要安装这个应用吗？它将有以下权限</string>
-    <string name="install_confirm_update">您要安装此应用的新版本吗？您现有的数据不会丢失。更新后的应用将具备以下权限：</string>
-    <string name="install_confirm_update_system">您要安装此内置应用的新版本吗？您现有的数据不会丢失。更新后的应用将具备以下权限：</string>
-    <string name="install_confirm_update_no_perms">是否要为这一现有应用安装更新？您现有的数据不会丢失，且安装过程无需任何特殊权限。</string>
-    <string name="install_confirm_update_system_no_perms">是否要为这一内置应用安装更新？您现有的数据不会丢失，且安装过程无需任何特殊权限。</string>
+    <string name="install_confirm">需要访问</string>
+    <string name="install_confirm_update">你要安装此应用的新版本吗？你现有的数据不会丢失。更新后的应用将具备以下权限：</string>
+    <string name="install_confirm_update_system">你要安装此应用的新版本吗？你现有的数据不会丢失。更新后的应用将具备以下权限：</string>
+    <string name="install_confirm_update_no_perms">你是否想要安装此应用的更新？你现有的数据不会丢失。更新无需任何特殊权限。</string>
+    <string name="install_confirm_update_system_no_perms">你是否想要安装此内置应用的更新？你现有的数据不会丢失。更新无需任何特殊权限。</string>
     <string name="newPerms">新权限</string>
     <string name="allPerms">全部</string>
     <string name="perm_costs_money">这可能会产生费用</string>
-    <string name="uninstall_update_confirm">要将此应用替换为出厂版本吗？这样会移除所有数据。</string>
-    <string name="uninstall_confirm">要卸载此应用吗？</string>
+    <string name="uninstall_update_confirm">你想要将此应用替换为出厂版本吗？这会移除所有数据。</string>
+    <string name="uninstall_confirm">你想要卸载此应用吗？</string>
     <string name="download_error">下载失败！</string>
     <string name="perms_new_perm_prefix">新的：</string>
     <string name="perms_description_app">由 %1$s 提供。</string>
-    <string name="downloading">下载中…</string>
+    <string name="downloading">正在下载…</string>
     <string name="interval_never">不自动更新应用</string>
     <string name="interval_1h">每小时检查一次更新</string>
     <string name="interval_4h">每 4 小时检查一次更新</string>
@@ -239,7 +239,7 @@
     <string name="antinonfreeassetslist">此应用包含非自由资源</string>
     <string name="crash_dialog_title">F-Droid 已停止运行</string>
     <string name="crash_dialog_text">本应用因意外问题而停止运行。你愿意通过电子邮件向我们提供详细信息，以协助修复此问题吗？</string>
-    <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论:</string>
+    <string name="crash_dialog_comment_prompt">你可以在此添加额外的信息或者评论：</string>
     <string name="repo_provider">存储库：%s</string>
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">强制下载流量通过 Tor 以增强隐私保障。需要 Orbot</string>
@@ -310,12 +310,12 @@
     <string name="nearby_splash__download_apps_from_people_nearby">没有网络连接？请从附近的 F-Droid 用户那里获取应用！</string>
     <string name="nearby_splash__find_people_button">查找附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方都需要 %1$s 才可使用附近功能。</string>
-    <string name="app__tts__downloading_progress">正在下载，完成 %1$d%%</string>
+    <string name="app__tts__downloading_progress">正在下载，已完成 %1$d%%</string>
     <plurals name="notification_summary_more">
         <item quantity="other">+%1$d 更多…</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">准备安装</string>
-    <string name="notification_title_single_ready_to_install_update">已准备好开始安装</string>
+    <string name="notification_title_single_ready_to_install_update">更新已就绪</string>
     <string name="notification_title_single_install_error">安装失败</string>
     <string name="notification_content_single_downloading">正在下载“%1$s”…</string>
     <string name="notification_content_single_downloading_update">正在下载“%1$s”的更新…</string>
@@ -338,7 +338,7 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="other">在 %2$s 的类别中查看全部 %1$d 个应用</item>
     </plurals>
-    <string name="details_last_updated_today">今天更新</string>
+    <string name="details_last_updated_today">更新于今天</string>
     <plurals name="details_last_update_days">
         <item quantity="other">更新于 %1$d 天前</item>
     </plurals>
@@ -450,7 +450,7 @@
     <string name="not_visible_nearby">附近功能未启用</string>
     <string name="not_visible_nearby_description">在与附近的设备交换之前，使你的设备可见。</string>
     <string name="swap_toast_using_path">使用 %1$s</string>
-    <string name="swap_toast_not_removable_storage">选择无法匹配任何可移动存储设备，请重试！</string>
+    <string name="swap_toast_not_removable_storage">此选择无法匹配任何可移动存储设备，请重试！</string>
     <string name="swap_toast_find_removeable_storage">选择你的可移动 SD 卡或 USB</string>
     <string name="main_menu__updates">更新</string>
     <string name="menu_translation">翻译</string>
@@ -477,9 +477,9 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">显示应用和存储库更新通知。</string>
     <string name="notification_channel_updates_title">更新</string>
-    <string name="notification_channel_installs_description">展示应用安装通知。</string>
+    <string name="notification_channel_installs_description">显示应用安装通知。</string>
     <string name="notification_channel_installs_title">安装</string>
-    <string name="notification_channel_swaps_description">展示P2P 应用交换通知。</string>
+    <string name="notification_channel_swaps_description">显示 P2P 应用交换通知。</string>
     <string name="notification_channel_swaps_title">交换</string>
     <string name="menu_show_install_history">显示安装历史</string>
     <string name="menu_show_fdroid_metrics_report">显示指标报告</string>
@@ -498,7 +498,7 @@
     <string name="share_apk_error">无法分享应用文件</string>
     <string name="has_disallow_install_unknown_sources">此用户无法添加未知来源，包括新的存储库</string>
     <string name="has_disallow_install_unknown_sources_globally">你的设备管理员不允许安装来自未知来源的应用，其中包括新的存储库</string>
-    <string name="swap_wifi_vpn_conflict">与活跃 VPN 冲突！</string>
+    <string name="swap_wifi_vpn_conflict">与正在使用的 VPN 冲突！</string>
     <string name="antiknownvuln">含有已知漏洞</string>
     <string name="antiads">广告</string>
     <string name="antinonfreead">非自由附加组件</string>
