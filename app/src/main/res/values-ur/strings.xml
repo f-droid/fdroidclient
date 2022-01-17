@@ -305,4 +305,5 @@
     <string name="panic_settings_summary">ہنگامی صورت حال کی صورت میں لے جانے کے لۓ</string>
     <string name="panic_settings">گھبراہٹ بٹن کی ترتیبات</string>
     <string name="panic_app_dialog_message">کیا آپ کو یقین ہے کہ آپ کو تباہ کن آراستہ بٹن کے اعمال کو ٹرگر کرنے کے لئے٪ 1 $ s کی اجازت دینا ہے؟</string>
+    <string name="details_last_updated_today">آج آپ ڈیٹ</string>
 </resources>
