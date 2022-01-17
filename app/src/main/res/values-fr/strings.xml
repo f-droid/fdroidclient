@@ -536,4 +536,5 @@
     <string name="antiads">Publicités</string>
     <string name="antinonfreead">Addons payants</string>
     <string name="antinonfreeassets">Composants non libres</string>
+    <string name="antiothers">Autres Antifonctions</string>
 </resources>
