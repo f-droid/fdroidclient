@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -934,35 +933,25 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             throw new CertificateEncodingException("null signed entry!");
         }
 
-        byte[] rawCertBytes;
-
-        // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
-        // breakage when verifying the signature of most .jars. For more
-        // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
-        try {
-            FDroidApp.disableBouncyCastleOnLollipop();
-            final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
-            byte[] buff = new byte[2048];
-            //noinspection StatementWithEmptyBody
-            while (tmpIn.read(buff, 0, buff.length) != -1) {
-                /*
-                 * NOP - apparently have to READ from the JarEntry before you can
-                 * call getCerficates() and have it return != null. Yay Java.
-                 */
-            }
-            tmpIn.close();
-
-            if (aSignedEntry.getCertificates() == null
-                    || aSignedEntry.getCertificates().length == 0) {
-                apkJar.close();
-                throw new CertificateEncodingException("No Certificates found!");
-            }
-
-            final Certificate signer = aSignedEntry.getCertificates()[0];
-            rawCertBytes = signer.getEncoded();
-        } finally {
-            FDroidApp.enableBouncyCastleOnLollipop();
+        final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
+        byte[] buff = new byte[2048];
+        //noinspection StatementWithEmptyBody
+        while (tmpIn.read(buff, 0, buff.length) != -1) {
+            /*
+             * NOP - apparently have to READ from the JarEntry before you can
+             * call getCerficates() and have it return != null. Yay Java.
+             */
         }
+        tmpIn.close();
+
+        if (aSignedEntry.getCertificates() == null
+                || aSignedEntry.getCertificates().length == 0) {
+            apkJar.close();
+            throw new CertificateEncodingException("No Certificates found!");
+        }
+
+        final Certificate signer = aSignedEntry.getCertificates()[0];
+        byte[] rawCertBytes = signer.getEncoded();
         apkJar.close();
 
         apk.sig = Utils.getsig(rawCertBytes);
