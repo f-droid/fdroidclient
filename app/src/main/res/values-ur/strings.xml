@@ -237,8 +237,21 @@
     <string name="scan_removable_storage_summary">ایس ڈی کارڈز اور یو ایس بی تھمب ڈرائیو جیسے ریموویبل سٹوریج پر پیکج ریپوز تلاش کریں</string>
     <string name="menu_translation">ترجمہ</string>
     <string name="menu_bitcoin">بٹ کوائن۔</string>
-    <string name="menu_downgrade">ڈاؤن گریڈ</string>
+    <string name="menu_downgrade">تنزلی</string>
     <string name="menu_changelog">چےنزغےلوغ</string>
     <string name="menu_flattr">فلاٹڑ</string>
     <string name="menu_issues">اسسو</string>
+    <string name="antinonfreedeplist">یہ ایپ دیگر غیر مفت ایپس پر منحصر ہے</string>
+    <string name="antiadslist">یہ ایپ اشتہارات پر مشتمل ہے</string>
+    <string name="antifeatures">اینٹی فیچرز</string>
+    <string name="antifeatureswarning">اس ایپ میں ایسے فیچرز ہیں جو آپ کو پسند نہیں آسکتے۔</string>
+    <string name="menu_show_fdroid_metrics_report">میٹرکس رپورٹ نمایش کریں</string>
+    <string name="menu_liberapay">لیبراپے</string>
+    <string name="antinonfreeassetslist">یہ ایپ غیر مفت اثاثوں پر مشتمل ہے</string>
+    <string name="antiupstreamnonfreelist">اپ سٹریم سورس کوڈ مکمل طور پر مفت نہیں ہے</string>
+    <string name="details_new_in_version">نیا ورژن میں %s</string>
+    <string name="preference_category__my_apps">میری ایپس</string>
+    <string name="categories__empty_state__no_categories">دکھانے کے لیے کوئی زمرہ نہیں</string>
+    <string name="latest__empty_state__never_updated">ایک بار جب آپ کی ایپس کی فہرست اپ ڈیٹ ہو جائے تو تازہ ترین ایپس کو یہاں دکھانا چاہئے</string>
+    <string name="latest__empty_state__no_recent_apps">کوئی حالیہ ایپس نہیں ملی</string>
 </resources>
