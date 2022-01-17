@@ -150,8 +150,8 @@
     <string name="app_details__incompatible_mismatched_signature">انسٹال ورژن پر مختلف دستخط</string>
     <string name="app_details_donate_prompt">٪ 1 $ s کو٪ 2 $ s نے بنایا ہے۔ انہیں کافی خریدیں!</string>
     <string name="send_to_fdroid_metrics">استعمال کا ڈیٹا بھیجیں۔</string>
-    <string name="menu_show_install_history">انسٹال کی تاریخ دکھائی</string>
-    <string name="main_menu__updates">ابڈےٹ</string>
+    <string name="menu_show_install_history">انسٹال کی تاریخ دکھائیں۔</string>
+    <string name="main_menu__updates">تازہ ترین</string>
     <string name="about_site">ویب سائٹ</string>
     <string name="about_version">ورژن</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">نصب شدہ ورژن کسی بھی دستیاب ورژن کے ساتھ مطابقت نہیں رکھتا۔ ایپ کو انسٹال کرنے سے آپ مطابقت پذیر ورژن دیکھنے اور انسٹال کرنے کے قابل ہوجائیں گے۔ یہ اکثر گوگل پلے یا دیگر ذرائع کے ذریعے نصب کردہ ایپس کے ساتھ ہوتا ہے ، اگر ان پر کسی مختلف سرٹیفکیٹ سے دستخط ہوتے ہیں۔</string>
@@ -190,10 +190,10 @@
     <string name="versions">ورژن</string>
     <string name="enable">انابل</string>
     <string name="updates__hide_updateable_apps">ایپس چھپائیں۔</string>
-    <string name="repo_add_url">ذخیرہ پتہ</string>
-    <string name="choose_bt_send">بلوٹوتھ بھیجنے کا طریقہ منتخب کریں</string>
-    <string name="bluetooth_activity_not_found">‍کوئی بلوٹوتھ بھیجنے کا طریقہ نہیں ملا، ایک کا انتخاب کریں</string>
-    <string name="sort_search">تلاش چھانٹیں</string>
+    <string name="repo_add_url">مخزن کا پتہ۔</string>
+    <string name="choose_bt_send">بلوٹوتھ بھیجنے کا طریقہ منتخب کریں۔</string>
+    <string name="bluetooth_activity_not_found">کوئی بلوٹوتھ بھیجنے کا طریقہ نہیں ملا ، ایک کا انتخاب کریں!</string>
+    <string name="sort_search">تلاش کو ترتیب دیں۔</string>
     <string name="clear_search">تلاش صاف کریں</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">٪ 1 $ d ایپ کے لیے اپ ڈیٹ ڈاؤن لوڈ کریں۔</item>
@@ -215,48 +215,48 @@
     <string name="menu_open">کھولیں</string>
     <string name="repositories_summary">ایپس کے اضافی ذرائع شامل کریں۔</string>
     <string name="repo_provider">ذخیرہ:٪ s</string>
-    <string name="has_disallow_install_unknown_sources">‎‏‌Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
-    <string name="has_disallow_install_unknown_sources_globally">آپ کا ڈیوائس ایڈمن نامعلوم ذرائع سے ایپس انسٹال کرنے کی اجازت نہیں دیتا، جس میں نئے ریپو شامل ہیں</string>
+    <string name="has_disallow_install_unknown_sources">اس صارف کے ذریعہ نامعلوم ذرائع شامل نہیں کیے جا سکتے ، اس میں نئے ریپوز شامل ہیں۔</string>
+    <string name="has_disallow_install_unknown_sources_globally">آپ کا آلہ منتظم نامعلوم ذرائع سے ایپس انسٹال کرنے کی اجازت نہیں دیتا ، جس میں نئے ریپوز شامل ہیں۔</string>
     <string name="malformed_repo_uri">‎خراب شدہ ریپو URI کو نظر انداز کرنا:٪ s</string>
     <string name="invalid_url">یہ ایک درست URL نہیں ہے۔</string>
     <string name="repo_exists_add_mirror">یہ٪ 1 $ s کی ایک کاپی ہے ، اسے آئینے کے طور پر شامل کریں؟</string>
-    <string name="bad_fingerprint">‎خراب فنگر پرنٹ۔</string>
+    <string name="bad_fingerprint">خراب فنگر پرنٹ۔</string>
     <string name="repo_exists_enable">٪ 1 $ s پہلے ہی سیٹ اپ ہے ، تصدیق کریں کہ آپ اسے دوبارہ فعال کرنا چاہتے ہیں۔</string>
     <string name="repo_exists_and_enabled">٪ 1 $ s پہلے ہی سیٹ اپ اور فعال ہے۔</string>
     <string name="menu_email">ای میل مصنف۔</string>
     <string name="menu_website">ویب سائٹ</string>
     <string name="links">روابط</string>
-    <string name="menu_source">ماخذ کوڈ</string>
+    <string name="menu_source">سورس کوڈ</string>
     <string name="menu_license">لائسنس: ٪t</string>
     <string name="menu_video">ویڈیو</string>
-    <string name="repo_delete_to_overwrite">متضاد کلید کے ساتھ اس کو شامل کرنے کے لیے پہلے ٪1$حذف کریں۔</string>
-    <string name="repo_exists_add_fingerprint">٪1$ایس پہلے ہی سیٹ اپ ہے، اس سے نئی کلیدی معلومات کا اضافہ ہوگا۔</string>
+    <string name="repo_delete_to_overwrite">متضاد کلید کے ساتھ شامل کرنے کے لیے پہلے٪ 1 $ s حذف کریں</string>
+    <string name="repo_exists_add_fingerprint">٪ 1 $ s پہلے سے سیٹ اپ ہے ، اس سے نئی کلیدی معلومات شامل ہو جائیں گی۔</string>
     <string name="repo_add_fingerprint">فنگر پرنٹ (اختیاری)</string>
-    <string name="overwrite">برتحریر</string>
-    <string name="add_key">کلید شامل کریں</string>
+    <string name="overwrite">اوور رائٹ۔</string>
+    <string name="add_key">کلید شامل کریں۔</string>
     <string name="scan_removable_storage_summary">ایس ڈی کارڈز اور یو ایس بی تھمب ڈرائیو جیسے ریموویبل سٹوریج پر پیکج ریپوز تلاش کریں</string>
     <string name="menu_translation">ترجمہ</string>
     <string name="menu_bitcoin">بٹ کوائن۔</string>
-    <string name="menu_downgrade">تنزلی</string>
-    <string name="menu_changelog">چےنزغےلوغ</string>
-    <string name="menu_flattr">فلاٹڑ</string>
-    <string name="menu_issues">اسسو</string>
+    <string name="menu_downgrade">ڈاؤن گریڈ</string>
+    <string name="menu_changelog">چینجلوگ۔</string>
+    <string name="menu_flattr">فلیٹر۔</string>
+    <string name="menu_issues">مسائل۔</string>
     <string name="antinonfreedeplist">یہ ایپ دیگر غیر مفت ایپس پر منحصر ہے</string>
-    <string name="antiadslist">یہ ایپ اشتہارات پر مشتمل ہے</string>
-    <string name="antifeatures">اینٹی فیچرز</string>
+    <string name="antiadslist">اس ایپ میں اشتہارات شامل ہیں۔</string>
+    <string name="antifeatures">مخالف خصوصیات۔</string>
     <string name="antifeatureswarning">اس ایپ میں ایسے فیچرز ہیں جو آپ کو پسند نہیں آسکتے۔</string>
     <string name="menu_show_fdroid_metrics_report">میٹرکس رپورٹ نمایش کریں</string>
-    <string name="menu_liberapay">لیبراپے</string>
+    <string name="menu_liberapay">لبرا پے۔</string>
     <string name="antinonfreeassetslist">یہ ایپ غیر مفت اثاثوں پر مشتمل ہے</string>
     <string name="antiupstreamnonfreelist">اپ سٹریم سورس کوڈ مکمل طور پر مفت نہیں ہے</string>
     <string name="details_new_in_version">نیا ورژن میں %s</string>
     <string name="preference_category__my_apps">میری ایپس</string>
     <string name="categories__empty_state__no_categories">دکھانے کے لیے کوئی زمرہ نہیں</string>
-    <string name="latest__empty_state__never_updated">ایک بار جب آپ کی ایپس کی فہرست اپ ڈیٹ ہو جائے تو تازہ ترین ایپس کو یہاں دکھانا چاہئے</string>
+    <string name="latest__empty_state__never_updated">ایک بار جب آپ کی ایپس کی فہرست اپ ڈیٹ ہو جائے تو تازہ ترین ایپس کو یہاں دکھانا چاہیے۔</string>
     <string name="latest__empty_state__no_recent_apps">کوئی حالیہ ایپس نہیں ملی</string>
     <string name="antinosourcesince">سورس کوڈ اب دستیاب نہیں ہے ، کوئی اپ ڈیٹ ممکن نہیں ہے۔</string>
     <string name="antiknownvulnlist">اس ایپ میں سیکیورٹی کی ایک نامعلوم کمزوری ہے۔</string>
-    <string name="expert_on">‫</string>
+    <string name="expert_on">‫اضافی معلومات دکھائیں اور اضافی ترتیبات کو فعال کریں۔</string>
     <string name="display">ڈسپلے</string>
     <string name="status_processing_xml_percent">پروسیسنگ شے</string>
     <string name="theme_light">روشنی</string>
@@ -268,9 +268,9 @@
     <string name="preventScreenshots_summary">اسکرین شاٹس لینے سے روکتا ہے اور حالیہ ایپس اسکرین سے ایپ کا مواد چھپاتا ہے۔</string>
     <string name="preventScreenshots_title">اسکرین شاٹس کو روکیں۔</string>
     <string name="privacy">پرائیویسی</string>
-    <string name="enable_proxy_title">پراکسی</string>
+    <string name="enable_proxy_title">HTTP پراکسی کو فعال کریں۔</string>
     <string name="proxy">پراکسی</string>
-    <string name="useTorSummary">"بڑھتی ہوئی پرائیویسی کے لیے ٹور کے ذریعے ٹریفک ڈاؤن لوڈ کریں۔  Orbot کی ضرورت ہے۔"</string>
+    <string name="useTorSummary">بڑھتی ہوئی پرائیویسی کے لیے ٹور کے ذریعے ٹریفک ڈاؤن لوڈ کریں۔ Orbot کی ضرورت ہے۔</string>
     <string name="useTor">ٹور استعمال کریں۔</string>
     <string name="try_again">دوبارہ کوشش کریں</string>
     <string name="icon">شبیہ</string>
@@ -284,7 +284,7 @@
     <string name="local_repo">مقامی ریپو۔</string>
     <string name="force_touch_apps_on">ہارڈ ویئر سپورٹ سے قطع نظر ٹچ اسکرین کی ضرورت والی ایپس دکھائیں۔</string>
     <string name="force_touch_apps">ٹچ اسکرین ایپس شامل کریں۔</string>
-    <string name="show_anti_feature_apps_on">اینٹی فیچر ایپس شامل کریں۔</string>
+    <string name="show_anti_feature_apps_on">ایسی ایپس دکھائیں جن میں اینٹی فیچرز درکار ہوں۔</string>
     <string name="show_anti_feature_apps">اینٹی فیچر ایپس شامل کریں۔</string>
     <string name="show_incompat_versions_on">ایپ کے ایسے ورژن دکھائیں جو آلہ سے مطابقت نہیں رکھتے۔</string>
     <string name="show_incompat_versions">غیر مطابقت پذیر ورژن شامل کریں۔</string>
@@ -299,11 +299,85 @@
     <string name="menu_litecoin">لائٹ کوائن</string>
     <string name="repo_add_mirror">آئینہ شامل کریں۔</string>
     <string name="repo_add_add">شامل کریں</string>
-    <string name="panic_destructive_actions">تباہ کن کارروائی</string>
-    <string name="panic_exit_summary">یہ ایپ بند ہو جائے گا</string>
-    <string name="panic_exit_title">باہر نکلیں اے پی پی</string>
-    <string name="panic_settings_summary">ہنگامی صورت حال کی صورت میں لے جانے کے لۓ</string>
+    <string name="panic_destructive_actions">تباہ کن اعمال۔</string>
+    <string name="panic_exit_summary">یہ ایپ بند ہو جائے گی۔</string>
+    <string name="panic_exit_title">ایپ سے باہر نکلیں۔</string>
+    <string name="panic_settings_summary">ایمرجنسی کی صورت میں اقدامات کئے جائیں۔</string>
     <string name="panic_settings">گھبراہٹ بٹن کی ترتیبات</string>
-    <string name="panic_app_dialog_message">کیا آپ کو یقین ہے کہ آپ کو تباہ کن آراستہ بٹن کے اعمال کو ٹرگر کرنے کے لئے٪ 1 $ s کی اجازت دینا ہے؟</string>
+    <string name="panic_app_dialog_message">کیا آپ کو یقین ہے کہ آپ٪ 1 $ s کو تباہ کن گھبراہٹ کے بٹن کی کارروائیوں کو متحرک کرنے کی اجازت دینا چاہتے ہیں؟</string>
     <string name="details_last_updated_today">آج آپ ڈیٹ</string>
+    <string name="nearby_splash__find_people_button">قریبی لوگوں کو تلاش کریں۔</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">انٹرنیٹ نہیں ہے؟ اپنے قریبی لوگوں سے ایپس حاصل کریں!</string>
+    <string name="share_apk_error">ایپ فائل شیئر نہیں کی جا سکی۔</string>
+    <string name="system_install_denied_permissions">توسیع کے لیے مراعات یافتہ اجازتیں نہیں دی گئیں! براہ کرم ایک بگ رپورٹ بنائیں!</string>
+    <string name="uninstall_error_unknown">نامعلوم خرابی کی وجہ سے ان انسٹال کرنے میں ناکام۔</string>
+    <string name="install_error_unknown">نامعلوم خرابی کی وجہ سے انسٹال کرنے میں ناکام۔</string>
+    <string name="empty_search_available_app_list">کوئی مماثل ایپلی کیشن دستیاب نہیں ہے۔</string>
+    <string name="empty_can_update_app_list">مبارک ہو!
+\nآپ کی ایپس تازہ ترین ہیں۔</string>
+    <string name="empty_installed_app_list">کوئی ایپس انسٹال نہیں ہیں۔
+\n
+\nآپ کے آلے پر ایپس موجود ہیں ، لیکن وہ F-Droid سے دستیاب نہیں ہیں۔ اس کی وجہ یہ ہوسکتی ہے کہ آپ کو اپنے ذخیروں کو اپ ڈیٹ کرنے کی ضرورت ہے ، یا ذخیروں میں حقیقی طور پر آپ کے ایپس دستیاب نہیں ہیں۔</string>
+    <plurals name="button_view_all_apps_in_category">
+        <item quantity="one">٪ d دیکھیں</item>
+        <item quantity="other">تمام٪ d دیکھیں</item>
+    </plurals>
+    <string tools:ignore="UnusedResources" name="category_Theming">تھیمنگ</string>
+    <string name="wifi_ap">ہاٹ سپاٹ</string>
+    <string name="requires_features">درکار ہے:٪ 1 $ s</string>
+    <string name="share_repository">ذخیرہ شیئر کریں۔</string>
+    <string name="repo_searching_address">پر پیکیج کے ذخیرے کی تلاش ہے۔
+\n٪ 1 $ s</string>
+    <string name="repo_added">محفوظ کردہ پیکیج کا ذخیرہ٪ 1 $ s۔</string>
+    <string name="repo_disabled_notification">غیر فعال٪ 1 $ s
+\n
+\nاس سے ایپس انسٹال کرنے کے لیے آپ کو اس ذخیرے کو دوبارہ فعال کرنے کی ضرورت ہوگی۔</string>
+    <string name="repo_confirm_delete_body">ذخیرہ حذف کرنے کا مطلب ہے کہ اس سے ایپس مزید دستیاب نہیں ہوں گی۔
+\n
+\nنوٹ: پہلے نصب کردہ تمام ایپس آپ کے آلے پر رہیں گی۔</string>
+    <string name="repo_confirm_delete_title">ذخیرہ حذف کریں؟</string>
+    <string name="repo_not_yet_updated">یہ ذخیرہ ابھی تک استعمال نہیں ہوا ہے۔ آپ کو فراہم کردہ ایپس کو دیکھنے کے لیے اسے فعال کرنے کی ضرورت ہے۔</string>
+    <string name="unsigned_description">اس کا مطلب یہ ہے کہ ایپس کی فہرست کی تصدیق نہیں ہو سکی۔ آپ کو دستخط شدہ انڈیکس سے ڈاؤن لوڈ کردہ ایپس سے محتاط رہنا چاہیے۔</string>
+    <string name="repo_name">نام۔</string>
+    <string name="repo_user_mirrors">صارف کے آئینے۔</string>
+    <string name="repo_official_mirrors">سرکاری آئینے۔</string>
+    <string name="repo_description">تفصیل</string>
+    <string name="repo_fingerprint">دستخط کی کلید کا فنگر پرنٹ (SHA-256)</string>
+    <string name="repo_num_apps">ایپس کی تعداد</string>
+    <string name="repo_url">پتہ۔</string>
+    <string name="use_pure_black_dark_theme_summary">صرف OLED اسکرینوں کے لیے تجویز کردہ۔</string>
+    <string name="use_pure_black_dark_theme">سیاہ تھیم میں خالص سیاہ پس منظر استعمال کریں۔</string>
+    <string name="theme">خیالیہ</string>
+    <string name="no_handler_app">آپ کے پاس کوئی دستیاب ایپ نہیں ہے جو٪ s کو سنبھال سکے۔</string>
+    <string name="global_error_updating_repos">اپ ڈیٹ کے دوران خرابی:٪ s</string>
+    <string name="all_other_repos_fine">دیگر تمام ریپوز نے غلطیاں پیدا نہیں کیں۔</string>
+    <string name="repos_unchanged">تمام ذخیرے تازہ ترین ہیں۔</string>
+    <string name="status_inserting_x_apps">ایپ کی تفصیلات (٪ 1 $ d/٪ 2 $ d) کو٪ 3 $ s سے محفوظ کیا جا رہا ہے۔</string>
+    <string name="status_connecting_to_repo">سے منسلک ہو رہا ہے۔
+\n٪ 1 $ s</string>
+    <string name="banner_no_data_or_wifi">کوئی ڈیٹا یا وائی فائی فعال نہیں ہے۔</string>
+    <string name="banner_no_internet">انٹرنیٹ نہیں ہے۔</string>
+    <string name="banner_updating_repositories">ذخیروں کو اپ ڈیٹ کرنا۔</string>
+    <string name="download_404">مطلوبہ فائل نہیں ملی۔</string>
+    <string name="status_download_unknown_size">ڈاؤن لوڈ ہو رہا ہے۔
+\nسے٪ 2 $ s
+\n٪ 1 $ s</string>
+    <string name="status_download">ڈاؤن لوڈ ہو رہا ہے۔
+\n٪ 2 $ s /٪ 3 $ s (٪ 4 $ d ٪٪) سے۔
+\n٪ 1 $ s</string>
+    <string name="hide_on_long_search_press_summary">سرچ بٹن کو زیادہ دیر دبانے سے ایپ چھپ جائے گی۔</string>
+    <string name="hide_on_long_search_press_title">سرچ بٹن سے چھپائیں۔</string>
+    <string name="hiding_dialog_warning">انتباہ: ہوم اسکرین پر کوئی بھی ایپ شارٹ کٹ بھی ہٹا دیا جائے گا اور اسے دستی طور پر دوبارہ شامل کرنے کی ضرورت ہوگی۔</string>
+    <string name="hiding_dialog_message">کیا آپ واقعی لانچر سے٪ 1 $ s کو ہٹانا چاہتے ہیں؟ جعلی٪ 3 $ s ایپ میں صرف \"٪ 2 $ d\" ٹائپ کرنے سے اسے بحال کیا جا سکتا ہے۔</string>
+    <string name="hiding_dialog_title">اب٪ s چھپائیں۔</string>
+    <string name="hiding_calculator">کیلکولیٹر</string>
+    <string name="panic_reset_repos_summary">ریپو سیٹ اپ کو واپس ڈیفالٹس پر مجبور کریں۔</string>
+    <string name="panic_reset_repos_title">ریپوز ری سیٹ کریں۔</string>
+    <string name="panic_hide_warning_message">گھبراہٹ کی صورت میں ، یہ لانچر سے٪ 1 $ s کو ہٹا دے گا۔ جعلی٪ 3 $ s ایپ میں صرف \"٪ 2 $ d\" ٹائپ کرنے سے اسے بحال کیا جا سکتا ہے۔</string>
+    <string name="panic_hide_warning_title">بحال کرنے کا طریقہ یاد رکھیں۔</string>
+    <string name="panic_hide_summary">ایپ خود چھپ جائے گی۔</string>
+    <string name="panic_hide_title">٪ s چھپائیں</string>
+    <string name="panic_add_apps_to_uninstall">ایپس کو انسٹال اور مسح کرنے کے لیے شامل کریں۔</string>
+    <string name="panic_apps_to_uninstall">ایپس کو ان انسٹال کیا جائے اور تمام ڈیٹا مٹا دیا جائے۔</string>
+    <string name="panic_will_be_wiped">انسٹال ہو جائے گا اور تمام ڈیٹا حذف ہو جائے گا۔</string>
 </resources>
