@@ -522,4 +522,13 @@
     <string name="has_disallow_install_unknown_sources">L\'usuari actual no pot afegir fonts desconegudes, això inclou nou repositoris</string>
     <string name="has_disallow_install_unknown_sources_globally">L\'administració del dispositiu no permet instal·lar aplicacions de fonts desconegudes, això inclou nous repositoris</string>
     <string name="swap_wifi_vpn_conflict">Entra en conflicte amb la VPN activa!</string>
+    <string name="antinonfreenet">Serveis de xarxa no lliures</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alguns resultats s\'han amagat en funció de la vostra configuració antifunció.</string>
+    <string name="antitrack">Seguiment</string>
+    <string name="antinonfreead">Complements no lliures</string>
+    <string name="antinonfreedep">Dependències no lliures</string>
+    <string name="antidisabledalgorithm">Signat amb un algoritme insegur</string>
+    <string name="antiknownvuln">Vulnerabilitat coneguda</string>
+    <string name="antiads">Anuncis</string>
+    <string name="antinosource">El codi font ja no està disponible</string>
 </resources>

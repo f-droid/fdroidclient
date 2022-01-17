@@ -1,0 +1,7 @@
+* Admet la instal·lació d'arxius multimèdia, OTA, ZIP, etc.
+
+* Suport complet per a APK signats per múltiples claus de firma.
+
+* Nova traducció al tibetà
+
+* Elimina aplicacions i categories relacionades després de desactivar un repositori
