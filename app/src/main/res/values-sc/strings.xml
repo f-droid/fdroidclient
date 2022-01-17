@@ -542,4 +542,16 @@
     <string name="swap_wifi_vpn_conflict">Cunflitos cun sa VPN ativa!</string>
     <string name="has_disallow_install_unknown_sources">Custu impreadore non podet annànghere fontes disconnotas, chi incluint fintzas sos depòsitos noos</string>
     <string name="has_disallow_install_unknown_sources_globally">S\'amministradore de su dispositivu tuo non permitit s\'installatzione de aplicatzione dae fontes disconnotas, cosa chi incluit sos depòsitos noos</string>
+    <string name="antinonfreead">Estensiones non lìberas</string>
+    <string name="antitrack">Arrastamentu</string>
+    <string name="antiads">Publitzidade</string>
+    <string name="antinonfreedep">Dipendèntzias non lìberas</string>
+    <string name="app_list_results_hidden_antifeature_settings">Unos cantos resurtados sunt istados cuados sighende sas impostatziones tuas pro sas anti-funtzionalidades.</string>
+    <string name="antinonfreenet">Servìtzios de retza non lìberos</string>
+    <string name="antiknownvuln">Vulnerabilidade connota</string>
+    <string name="antinosource">Còdighe de orìgine non prus a disponimentu</string>
+    <string name="antinonfreeassets">Cumponentes non lìberos</string>
+    <string name="antidisabledalgorithm">Firmadu impreende un\'algoritmu non seguru</string>
+    <string name="antiupstreamnonfree">A monte (upstream) non lìberu</string>
+    <string name="antiothers">Àteras anti-funtzionalidades</string>
 </resources>
