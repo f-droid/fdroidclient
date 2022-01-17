@@ -455,7 +455,7 @@
     <string name="antidisabledalgorithmlist">Ta aplikacja ma słaby podpis bezpieczeństwa</string>
     <string name="antiknownvulnlist">Ta aplikacja ma znaną podatność bezpieczeństwa</string>
     <string name="hide_all_notifications">Ukrywaj wszystkie powiadomienia</string>
-    <string name="hide_all_notifications_summary">Zapobiegaj wyświetlaniu wszystkich akcji na pasku stanu i w obszarze powiadomień.</string>
+    <string name="hide_all_notifications_summary">Zapobiegaj wyświetlaniu wszystkich akcji na pasku stanu i w obszarze powiadomień</string>
     <string name="prompt_to_send_crash_reports">Proponuj wysyłanie raportów o awariach</string>
     <string name="prompt_to_send_crash_reports_summary">Zbieraj dane o awariach i proponuj wysyłanie ich do programistów</string>
     <string name="install_history">Historia instalacji</string>
@@ -524,7 +524,7 @@
     <string name="send_fdroid_metrics_json">Raport metryk %s jako plik JSON</string>
     <string name="send_fdroid_metrics_report">Wyślij raport metryk %s</string>
     <string name="theme_follow_system">Systemowy</string>
-    <string name="use_pure_black_dark_theme_summary">Zalecane jedynie dla ekranów OLED.</string>
+    <string name="use_pure_black_dark_theme_summary">Zalecane jedynie dla ekranów OLED</string>
     <string name="use_pure_black_dark_theme">Używaj czarnego tła w ciemnym motywie</string>
     <string name="banner_no_data_or_wifi">Brak włączonej transmisji danych lub Wi-Fi</string>
     <string name="banner_no_internet">Brak Internetu</string>
