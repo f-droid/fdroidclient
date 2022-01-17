@@ -505,7 +505,7 @@
     <string name="notification_channel_swaps_description">Zeigt Benachrichtigungen zum Austausch von Apps via P2P an.</string>
     <string name="notification_channel_installs_title">Installationen</string>
     <string name="toast_metrics_in_install_history">Der %s Metrikenbericht ist sichtbar in der Ansicht des Installationsverlaufes</string>
-    <string name="send_to_fdroid_metrics_summary">Sendet anonymisierte Daten wöchentlich zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
+    <string name="send_to_fdroid_metrics_summary">Sendet wöchentlich anonymisierte Daten zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
     <string name="send_to_fdroid_metrics">Nutzungsdaten senden</string>
     <string name="fdroid_metrics_report">%s Metrikenbericht</string>
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
@@ -527,10 +527,11 @@
     <string name="antinonfreeassets">Nicht-quelloffene Bestandteile</string>
     <string name="antiknownvuln">Bekannte Sicherheitslücke</string>
     <string name="antinosource">Quellcode nicht mehr verfügbar</string>
-    <string name="antiupstreamnonfree">Originalcode nicht quelloffen</string>
+    <string name="antiupstreamnonfree">Originalcode nicht-quelloffen</string>
     <string name="antinonfreedep">Nicht-quelloffene Abhängigkeiten</string>
     <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Antifeature-Einstellungen ausgeblendet.</string>
     <string name="antiads">Werbung</string>
     <string name="antitrack">Tracking</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
+    <string name="antiothers">Andere unerwünschte Merkmale</string>
 </resources>

@@ -1,0 +1,11 @@
+* Überarbeitung des Menüs "Teilen", um integrierte Optionen wie "Umfeld" zu verwenden.
+
+* Verbesserungen beim Material Design (@proletarius101)
+
+* Apps ohne PNG-Symbole werden jetzt unter "Neues" angezeigt (@ashutoshgngwr)
+
+* Verbessertes Offline- und Umfeld-Teilen
+
+* Blockieren des Hinzufügens neuer Repos, wenn der Geräteadministrator "Unbekannte Quellen" nicht zulässt
+
+* Behebung eines Absturzes bei der Verwendung von Repos mit Benutzernamen/Passwort
