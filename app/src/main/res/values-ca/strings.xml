@@ -125,7 +125,7 @@
     <string name="category_Multimedia">Multimèdia</string>
     <string name="category_Navigation">Navegació</string>
     <string name="category_Phone_SMS">Mòbil i missatgeria</string>
-    <string name="category_Reading">Per a llegir</string>
+    <string name="category_Reading">Lectura</string>
     <string name="category_Science_Education">Ciència i educació</string>
     <string name="category_Security">Seguretat</string>
     <string name="category_System">Sistema</string>
@@ -209,7 +209,7 @@
     <string name="swap_success">Intercanvi correcte!</string>
     <string name="swap_active_hotspot">%1$s (el vostre punt d\'accés)</string>
     <string name="swap_switch_to_wifi">Toqueu per canviar a una xarxa Wi-Fi</string>
-    <string name="swap_dont_show_again">No tornis a mostrar això</string>
+    <string name="swap_dont_show_again">No ho tornis a mostrar</string>
     <string name="swap_scan_or_type_url">Una persona ha d\'escanejar el codi, o escriure l\'URL de l\'altra al navegador.</string>
     <string name="swap_choose_apps">Trieu les aplicacions</string>
     <string name="swap_scan_qr">Codi QR</string>
@@ -531,4 +531,5 @@
     <string name="antiknownvuln">Vulnerabilitat coneguda</string>
     <string name="antiads">Anuncis</string>
     <string name="antinosource">El codi font ja no està disponible</string>
+    <string name="antinonfreeassets">Recursos no gratuïts</string>
 </resources>
