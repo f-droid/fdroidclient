@@ -545,4 +545,5 @@
     <string name="antiupstreamnonfree">Upstream Não Livre</string>
     <string name="antinonfreedep">Dependências não Livres</string>
     <string name="antinosource">Código fonte não mais disponível</string>
+    <string name="antinonfreeassets">Ativos não livres</string>
 </resources>
