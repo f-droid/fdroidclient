@@ -1,5 +1,6 @@
 package org.fdroid.download
 
+import io.ktor.client.engine.ProxyBuilder
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondOk
@@ -12,15 +13,22 @@ import io.ktor.http.HttpMethod.Companion.Head
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.headersOf
+import org.fdroid.get
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
+import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
+import java.net.BindException
+import java.net.ServerSocket
 import kotlin.random.Random
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+
+private const val TOR_SOCKS_PORT = 9050
 
 @Suppress("BlockingMethodInNonBlockingContext")
 class HttpDownloaderTest {
@@ -31,6 +39,7 @@ class HttpDownloaderTest {
     private val userAgent = getRandomString()
     private val mirror1 = Mirror("http://example.org")
     private val mirrors = listOf(mirror1)
+    private val downloadRequest = DownloadRequest("foo/bar", mirrors)
 
     @Test
     fun testDownload() = runSuspend {
@@ -38,8 +47,8 @@ class HttpDownloaderTest {
         val bytes = Random.nextBytes(1024)
 
         val mockEngine = MockEngine { respond(bytes) }
-        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(httpManager, "foo/bar", file, mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
         httpDownloader.download()
 
         assertContentEquals(bytes, file.readBytes())
@@ -57,8 +66,8 @@ class HttpDownloaderTest {
             if (numRequest++ == 1) respond("", OK, headers = headersOf(ContentLength, "2048"))
             else respond(secondBytes, PartialContent)
         }
-        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(httpManager, "foo/bar", file, mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
         httpDownloader.download()
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
@@ -67,8 +76,8 @@ class HttpDownloaderTest {
     @Test
     fun testNoETagNotTreatedAsNoChange() = runSuspend {
         val mockEngine = MockEngine { respondOk() }
-        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(httpManager, "foo/bar", folder.newFile(), mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, folder.newFile())
         httpDownloader.cacheTag = null
         httpDownloader.download()
 
@@ -84,8 +93,8 @@ class HttpDownloaderTest {
         val eTag = getRandomString()
 
         val mockEngine = MockEngine { respond("", OK, headers = headersOf(ETag, eTag)) }
-        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(httpManager, "foo/bar", folder.newFile(), mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, folder.newFile())
         httpDownloader.cacheTag = eTag
         httpDownloader.download()
 
@@ -105,8 +114,8 @@ class HttpDownloaderTest {
         }
 
         val mockEngine = MockEngine { respond("", OK, headers = headers) }
-        val httpManager = HttpManager(userAgent, null, httpClientEngine = mockEngine)
-        val httpDownloader = HttpDownloader(httpManager, "foo/bar", folder.newFile(), mirrors)
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, folder.newFile())
         // the ETag is calculated, but we expect a real ETag
         httpDownloader.cacheTag = "60a29a-5d55d390de574"
         httpDownloader.download()
@@ -116,5 +125,27 @@ class HttpDownloaderTest {
         assertEquals(Head, mockEngine.requestHistory[0].method)
     }
 
+    @Test
+    fun testTorProxy() = runSuspend {
+        assumeTrue(isTorRunning())
+
+        val file = folder.newFile()
+
+        val httpManager = HttpManager(userAgent, null)
+        val torHost = "http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion" // tor-project.org
+        val proxy = ProxyBuilder.socks("localhost", TOR_SOCKS_PORT)
+        val downloadRequest = DownloadRequest("index.html", listOf(Mirror(torHost)), proxy)
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
+        httpDownloader.download()
+
+        assertTrue { file.length() > 1024 }
+    }
+
+    private fun isTorRunning(): Boolean = try {
+        ServerSocket(TOR_SOCKS_PORT)
+        false
+    } catch (e: BindException) {
+        true
+    }
 
 }

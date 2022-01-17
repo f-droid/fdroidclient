@@ -24,11 +24,11 @@ class MirrorChooser {
      */
     internal suspend fun <T> mirrorRequest(
         downloadRequest: DownloadRequest,
-        request: suspend (url: Url) -> T,
+        request: suspend (mirror: Mirror, url: Url) -> T,
     ): T {
         orderMirrors(downloadRequest.mirrors).forEachIndexed { index, mirror ->
             try {
-                return request(mirror.getUrl(downloadRequest.path))
+                return request(mirror, mirror.getUrl(downloadRequest.path))
             } catch (e: ResponseException) {
                 val wasLastMirror = index == downloadRequest.mirrors.size - 1
                 log.warn(e) { if (wasLastMirror) "Last mirror, rethrowing..." else "Trying other mirror now..." }

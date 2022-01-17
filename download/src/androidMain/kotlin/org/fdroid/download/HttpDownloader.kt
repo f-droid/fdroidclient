@@ -36,13 +36,10 @@ import java.util.Date
 /**
  * Download files over HTTP, with support for proxies, `.onion` addresses, HTTP Basic Auth, etc.
  */
-class HttpDownloader @JvmOverloads constructor(
+class HttpDownloader constructor(
     private val httpManager: HttpManager,
-    private val path: String,
+    private val request: DownloadRequest,
     destFile: File,
-    private val mirrors: List<Mirror>,
-    private val username: String? = null,
-    private val password: String? = null,
 ) : Downloader(destFile) {
 
     companion object {
@@ -70,7 +67,6 @@ class HttpDownloader @JvmOverloads constructor(
 
     @Throws(IOException::class)
     override suspend fun getBytes(resumable: Boolean, receiver: (ByteArray) -> Unit) {
-        val request = DownloadRequest(path, mirrors, username, password)
         val skipBytes = if (resumable) outputFile.length() else null
         return try {
             httpManager.get(request, skipBytes, receiver)
@@ -118,8 +114,6 @@ class HttpDownloader @JvmOverloads constructor(
     @OptIn(DelicateCoroutinesApi::class)
     @Throws(IOException::class, InterruptedException::class)
     override fun download() {
-        // boolean isSwap = isSwapUrl(sourceUrl);
-        val request = DownloadRequest(path, mirrors, username, password)
         val headInfo = runBlocking {
             httpManager.head(request, cacheTag) ?: throw IOException()
         }
@@ -150,7 +144,7 @@ class HttpDownloader @JvmOverloads constructor(
         // calculatedEtag == expectedETag (ETag calculated from server response matches expected ETag)
         if (!headInfo.eTagChanged || calculatedEtag == expectedETag) {
             // ETag has not changed, don't download again
-            log.debug { "$path cached, not downloading." }
+            log.debug { "${request.path} cached, not downloading." }
             hasChanged = false
             return
         }
@@ -166,7 +160,7 @@ class HttpDownloader @JvmOverloads constructor(
         } else if (fileLength > 0) {
             resumable = true
         }
-        log.debug { "downloading $path (is resumable: $resumable)" }
+        log.debug { "downloading ${request.path} (is resumable: $resumable)" }
         runBlocking { downloadFromBytesReceiver(resumable) }
     }
 

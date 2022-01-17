@@ -2,7 +2,8 @@ package org.fdroid.download
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
-import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.HttpClientEngineFactory
+import io.ktor.client.engine.ProxyConfig
 import io.ktor.client.features.ResponseException
 import io.ktor.client.features.ServerResponseException
 import io.ktor.client.features.UserAgent
@@ -15,7 +16,6 @@ import io.ktor.client.request.post
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.HttpStatement
 import io.ktor.http.HttpHeaders.Authorization
-import io.ktor.http.HttpHeaders.Connection
 import io.ktor.http.HttpHeaders.ContentType
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
@@ -37,27 +37,43 @@ import io.ktor.utils.io.writeFully
 import mu.KotlinLogging
 import kotlin.jvm.JvmOverloads
 
-internal expect fun getHttpClientEngine(): HttpClientEngine
+internal expect fun getHttpClientEngineFactory(): HttpClientEngineFactory<*>
 
 public open class HttpManager @JvmOverloads constructor(
     private val userAgent: String,
     queryString: String? = null,
+    proxyConfig: ProxyConfig? = null,
     private val mirrorChooser: MirrorChooser = MirrorChooser(),
-    httpClientEngine: HttpClientEngine = getHttpClientEngine(),
+    private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
 ) {
 
     companion object {
         val log = KotlinLogging.logger {}
     }
 
-    private val httpClient by lazy {
-        HttpClient(httpClientEngine) {
+    private var httpClient = getNewHttpClient(proxyConfig)
+
+    /**
+     * Only exists because KTor doesn't keep a reference to the proxy its client uses.
+     * Should only get set in [getNewHttpClient].
+     */
+    internal var currentProxy: ProxyConfig? = null
+        private set
+
+    private val parameters = queryString?.split('&')?.map { p ->
+        val (key, value) = p.split('=')
+        Pair(key, value)
+    }
+
+    private fun getNewHttpClient(proxyConfig: ProxyConfig? = null): HttpClient {
+        currentProxy = proxyConfig
+        return HttpClient(httpClientEngineFactory) {
             followRedirects = false
             expectSuccess = true
             engine {
-                proxy = null // TODO use proxy except when swap
                 threadsCount = 4
                 pipelining = true
+                proxy = proxyConfig
             }
             install(UserAgent) {
                 agent = userAgent
@@ -70,12 +86,6 @@ public open class HttpManager @JvmOverloads constructor(
             }
         }
     }
-    private val parameters = queryString?.split('&')?.map { p ->
-        val (key, value) = p.split('=')
-        Pair(key, value)
-    }
-
-    // TODO try to force onion addresses over proxy like NetCipher.getHttpURLConnection()
 
     /**
      * Performs a HEAD request and returns [HeadInfo].
@@ -86,8 +96,9 @@ public open class HttpManager @JvmOverloads constructor(
     suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
         val authString = constructBasicAuthValue(request)
         val response: HttpResponse = try {
-            mirrorChooser.mirrorRequest(request) { url ->
-                log.debug { "URL: $url" }
+            mirrorChooser.mirrorRequest(request) { mirror, url ->
+                log.debug { "HEAD $url" }
+                resetProxyIfNeeded(request.proxy, mirror)
                 httpClient.head(url) {
                     // add authorization header from username / password if set
                     if (authString != null) header(Authorization, authString)
@@ -112,7 +123,9 @@ public open class HttpManager @JvmOverloads constructor(
         receiver: suspend (ByteArray) -> Unit,
     ) {
         val authString = constructBasicAuthValue(request)
-        mirrorChooser.mirrorRequest(request) { url ->
+        mirrorChooser.mirrorRequest(request) { mirror, url ->
+            log.debug { "GET $url" }
+            resetProxyIfNeeded(request.proxy, mirror)
             httpClient.get<HttpStatement>(url) {
                 // add authorization header from username / password if set
                 if (authString != null) header(Authorization, authString)
@@ -120,7 +133,7 @@ public open class HttpManager @JvmOverloads constructor(
                 if (skipFirstBytes != null) header(Range, "bytes=${skipFirstBytes}-")
                 // avoid keep-alive for swap due to strange errors observed in the past
                 // TODO still needed?
-                if (request.isSwap) header(Connection, "Close")
+//                if (request.isSwap) header(Connection, "Close")
             }
         }.execute { response ->
             if (skipFirstBytes != null && response.status != PartialContent) {
@@ -151,10 +164,20 @@ public open class HttpManager @JvmOverloads constructor(
         return channel.toByteArray()
     }
 
-    suspend fun post(url: String, json: String) {
+    suspend fun post(url: String, json: String, proxy: ProxyConfig? = null) {
+        resetProxyIfNeeded(proxy)
         httpClient.post<HttpResponse>(url) {
             header(ContentType, "application/json; utf-8")
             body = json
+        }
+    }
+
+    private fun resetProxyIfNeeded(proxyConfig: ProxyConfig?, mirror: Mirror? = null) {
+        // TODO based on mirror: disable on swap,
+        if (currentProxy != proxyConfig) {
+            log.info { "Switching proxy from [$currentProxy] to [$proxyConfig]"}
+            httpClient.close()
+            httpClient = getNewHttpClient(proxyConfig)
         }
     }
 

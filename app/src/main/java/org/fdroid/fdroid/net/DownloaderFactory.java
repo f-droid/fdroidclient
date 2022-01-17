@@ -3,9 +3,10 @@ package org.fdroid.fdroid.net;
 import android.content.ContentResolver;
 import android.net.Uri;
 
-import org.fdroid.download.HttpManager;
+import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.HttpDownloader;
+import org.fdroid.download.HttpManager;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
@@ -13,15 +14,18 @@ import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.Proxy;
 import java.util.Collections;
 import java.util.List;
+
+import info.guardianproject.netcipher.NetCipher;
 
 public class DownloaderFactory {
 
     private static final String TAG = "DownloaderFactory";
     // TODO move to application object or inject where needed
     public static final HttpManager HTTP_MANAGER =
-            new HttpManager(Utils.getUserAgent(), FDroidApp.queryString);
+            new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, NetCipher.getProxy());
 
     /**
      * Same as {@link #create(Repo, Uri, File)}, but not using mirrors for download.
@@ -50,10 +54,11 @@ public class DownloaderFactory {
         } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             downloader = new LocalFileDownloader(uri, destFile);
         } else {
-            String urlSuffix = uri.toString().replace(repo.address, "");
-            Utils.debugLog(TAG, "Using suffix " + urlSuffix + " with mirrors " + mirrors);
-            downloader =
-                    new HttpDownloader(HTTP_MANAGER, urlSuffix, destFile, mirrors, repo.username, repo.password);
+            String path = uri.toString().replace(repo.address, "");
+            Utils.debugLog(TAG, "Using suffix " + path + " with mirrors " + mirrors);
+            Proxy proxy = NetCipher.getProxy();
+            DownloadRequest request = new DownloadRequest(path, mirrors, proxy, repo.username, repo.password);
+            downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
         }
         return downloader;
     }
