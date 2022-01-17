@@ -1,4 +1,6 @@
-* Revisão do menu Partilhar para usar opções incorporadas tal como no menu Proximidades.
+* Revisão do menu Partilhar.
+
+* Fluxo de trabalho e a navegação nas proximidades melhoradas com muitas correções.
 
 * Melhorias no design do material (@proletarius101)
 
