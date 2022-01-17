@@ -103,10 +103,10 @@
     <string name="app_list__name__successfully_installed">٪ 1 $ s انسٹال ہو گیا</string>
     <string name="about_title">F-Droid کے بارے میں</string>
     <string name="app_list__name__downloading_in_progress">٪ 1 $ s ڈاؤن لوڈ ہو رہا ہے</string>
-    <string name="notification_title_summary_install_error">ناکام۔</string>
+    <string name="notification_title_summary_install_error">لگانا ناکامیاب</string>
     <string name="notification_title_single_update_available">اپ ڈیٹ دستیاب ہے</string>
     <string name="crash_dialog_text">ایپ کو روکنے پر مجبور کرنے میں ایک غیر متوقع خرابی پیش آگئی۔ کیا آپ مسئلے کو حل کرنے میں مدد کے لیے تفصیلات ای میل کرنا چاہیں گے؟</string>
-    <string name="crash_dialog_title">گر کر تباہ ہو گیا ہے</string>
+    <string name="crash_dialog_title">ف- ڈیوڈ تباہ ہو گیا</string>
     <string name="swap_send_fdroid">F-Droid بھیجیں۔</string>
     <string tools:ignore="UnusedResources" name="category_System">نظام</string>
     <string tools:ignore="UnusedResources" name="category_Sports_Health">کھیل اور صحت</string>
@@ -114,4 +114,5 @@
     <string name="repo_last_update">آخری اپ ڈیٹ۔</string>
     <string name="repo_details">مخزن</string>
     <string name="unverified">غیر تصدیق شدہ</string>
+    <string name="unsigned">بینالکھے</string>
 </resources>
