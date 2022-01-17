@@ -479,7 +479,7 @@
     <string name="scan_removable_storage_toast">Skanowanie %s…</string>
     <string name="scan_removable_storage_summary">Szukaj repozytoriów pakietów na nośnikach wymiennych, takich jak karty SD i pamięci USB</string>
     <string name="nearby_splash__read_external_storage">Wyszukaj repozytoria i kopie lustrzane na karcie SD.</string>
-    <string name="nearby_splash__request_permission">Spróbuj</string>
+    <string name="nearby_splash__request_permission">Wypróbuj</string>
     <string name="not_visible_nearby">Wymiana w pobliżu nie jest włączona</string>
     <string name="not_visible_nearby_description">Przed wymianą z urządzeniami w pobliżu ustaw swoje urządzenie jako widoczne.</string>
     <string name="swap_toast_using_path">Korzystasz z %1$s</string>
