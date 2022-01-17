@@ -128,7 +128,7 @@
     <string name="update_auto_install_summary">ایک نوٹیفکیشن دکھا کر پس منظر میں ایپس ڈاؤن لوڈ اور اپ ڈیٹ کریں۔</string>
     <string name="update_auto_install">خود بخود تازہ کاری تنصیب کریں</string>
     <string name="over_network_never_summary">اس کنکشن کا استعمال کرتے ہوئے کبھی بھی کچھ ڈاؤن لوڈ نہ کریں</string>
-    <string name="over_network_on_demand_summary">جب میں ڈاؤن لوڈ کرنے کے لیے کلک کروں تو صرف اس کنکشن کا استعمال کریں</string>
+    <string name="over_network_on_demand_summary">اسے ڈاؤنلوڈ کرنے کے لیے یہاں کلک کریں</string>
     <string name="over_network_always_summary">دستیاب ہونے پر ہمیشہ اس کنکشن کا استعمال کریں</string>
     <string name="over_data">زائد کوائف</string>
     <string name="over_wifi">وائی فائی سے</string>
