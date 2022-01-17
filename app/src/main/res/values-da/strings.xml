@@ -7,7 +7,7 @@
     <string name="delete">Slet</string>
     <string name="enable_nfc_send">Aktiver NFC send…</string>
     <string name="cache_downloaded">Behold cache-lagrede apps</string>
-    <string name="updates">Opdat.</string>
+    <string name="updates">Opdateringer</string>
     <string name="unstable_updates">Ustabile opdateringer</string>
     <string name="unstable_updates_summary">Foreslå opdateringer til ustabile versioner</string>
     <string name="other">Andet</string>
@@ -311,7 +311,7 @@
         <item quantity="one">Vis %d</item>
         <item quantity="other">Vis alle %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Ingen Internet? Hent apps fra folk i nærheden af dig!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ingen internetadgang\? Hent apps fra folk i nærheden af dig!</string>
     <string name="nearby_splash__find_people_button">Find personer i nærheden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte \"i nærheden\".</string>
     <string name="app__tts__downloading_progress">Henter, %1$d%% udført</string>
@@ -507,7 +507,7 @@
     <string name="swap_wifi_vpn_conflict">Konflikt med den aktive VPN!</string>
     <string name="share_apk_error">Kunne ikke dele app fil</string>
     <string name="banner_no_data_or_wifi">Ingen Data eller WiFi tilgængeligt</string>
-    <string name="banner_no_internet">Ingen Internet</string>
+    <string name="banner_no_internet">Ingen internetadgang</string>
     <string name="has_disallow_install_unknown_sources">Ukendte kilder kan ikke tilføjes af denne bruger, dette inkluderer nye depoter</string>
     <string name="has_disallow_install_unknown_sources_globally">Din enhedsadministrator tillader ikke installation af apps fra ukendte kilder, dette inkluderer nye depoter</string>
 </resources>
