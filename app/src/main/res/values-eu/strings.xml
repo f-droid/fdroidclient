@@ -530,4 +530,9 @@
     <string name="banner_no_data_or_wifi">Datuak eta WiFi-a itzalita</string>
     <string name="banner_no_internet">Internet gabe</string>
     <string name="menu_show_install_history">Instalazio historia erakutsi</string>
+    <string name="send_to_fdroid_metrics_summary">Astero informazio anonimoa F-Droid Metrics-era bidali (\"Mantendu instalazioen historiala\" behar du)</string>
+    <string name="swap_wifi_vpn_conflict">Uneko VPNarekin gatazka sortzen du!</string>
+    <string name="share_apk_error">Ezin izan da aplikazio fitxategia partekatu</string>
+    <string name="has_disallow_install_unknown_sources_globally">Zure gailuaren administratzaileak ez du jatorri ezezaguneko aplikazioak instalatzen uzten, biltegi berriak barne</string>
+    <string name="has_disallow_install_unknown_sources">Erabiltzaile honek ezin ditu jatorri ezezagunak gehitu, biltegi berriak barne</string>
 </resources>
