@@ -505,8 +505,10 @@
     <string name="has_disallow_install_unknown_sources_globally">あなたのデバイスの管理者は、新規レポジトリを含む未知のソースからアプリのインストールを許可していません</string>
     <string name="antiads">広告</string>
     <string name="antitrack">追跡</string>
-    <string name="antinonfreead">非フリーのアドオン</string>
-    <string name="antinonfreenet">非フリーのネットワーク・サービス</string>
-    <string name="antinonfreedep">非フリーの依存性</string>
+    <string name="antinonfreead">不自由なアドオン</string>
+    <string name="antinonfreenet">不自由なネットワークサービス</string>
+    <string name="antinonfreedep">不自由な依存性</string>
     <string name="app_list_results_hidden_antifeature_settings">「好ましくない機能」の設定によると一定の成果は表示されませんでした。</string>
+    <string name="antiknownvuln">既知の脆弱性</string>
+    <string name="antinonfreeassets">不自由なアセット</string>
 </resources>
