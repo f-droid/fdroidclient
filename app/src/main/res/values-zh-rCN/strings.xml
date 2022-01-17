@@ -302,7 +302,7 @@
     <string name="categories__empty_state__no_categories">没有可显示的分类</string>
     <string name="preference_category__my_apps">我的应用程序</string>
     <string name="details_new_in_version">版本 %s 的新功能</string>
-    <string name="antifeatureswarning">此应用程序有一些你未必喜欢的功能。</string>
+    <string name="antifeatureswarning">此应用有一些你未必喜欢的特征。</string>
     <string name="antifeatures">负特征</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
