@@ -174,4 +174,8 @@
     <string name="app__tts__cancel_download">ڈاؤن لوڈ منسوخ کریں۔</string>
     <string name="about_source">سورس کوڈ</string>
     <string name="app_incompatible">ناموافق</string>
+    <string name="app_size">سائز:٪ 1 $ s</string>
+    <string name="app_repository">ذخیرہ:٪ 1 $ s</string>
+    <string name="app_permission_storage">F-Droid کو اسٹوریج میں انسٹال کرنے کے لیے اسٹوریج کی اجازت درکار ہے۔ براہ کرم اسے اگلی سکرین پر انسٹالیشن کے ساتھ آگے بڑھنے دیں۔</string>
+    <string name="app_installed_media">فائل٪ s پر انسٹال ہو گئی</string>
 </resources>
