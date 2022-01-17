@@ -525,4 +525,20 @@
     <string name="use_pure_black_dark_theme">Χρήση τελείως μαύρου φόντου στο σκούρο θέμα</string>
     <string name="banner_no_data_or_wifi">Δεν έχουν ενεργοποιηθεί δεδομένα ή WiFi</string>
     <string name="banner_no_internet">Χωρίς σύνδεση στο διαδίκτυο</string>
+    <string name="has_disallow_install_unknown_sources_globally">Ο διαχειριστής της συσκευής σας δεν επιτρέπει την εγκατάσταση εφαρμογών από άγνωστες πηγές, που περιλαμβάνουν νέα repos</string>
+    <string name="swap_wifi_vpn_conflict">Συγκρούσεις με ενεργό VPN!</string>
+    <string name="antiads">Διαφημίσεις</string>
+    <string name="antitrack">Ιχνηλάτηση</string>
+    <string name="antinonfreead">Μη Δωρεάν Πρόσθετα</string>
+    <string name="antinonfreenet">Μη Δωρεάν Υπηρεσίες Δικτύου</string>
+    <string name="antinonfreedep">Μη Δωρεάν Εξαρτήσεις</string>
+    <string name="antinonfreeassets">Μη Δωρεάν Περιουσιακά Στοιχεία</string>
+    <string name="antiknownvuln">Γνωστή Ευπάθεια</string>
+    <string name="antinosource">Ο πηγαίος κώδικας δεν είναι πλέον διαθέσιμος</string>
+    <string name="antiothers">Άλλα αντι-χαρακτηριστικά</string>
+    <string name="app_list_results_hidden_antifeature_settings">Κάποια αποτελέσματα κρύφτηκαν με βάση τις ρυθμίσεις αντιλειτουργιών σας.</string>
+    <string name="has_disallow_install_unknown_sources">Δεν είναι δυνατή η προσθήκη άγνωστων πηγών από αυτόν τον χρήστη, που περιλαμβάνει νέα repos</string>
+    <string name="antiupstreamnonfree">Upstream Μη Δωρεάν</string>
+    <string name="share_apk_error">Δεν ήταν δυνατή η κοινή χρήση του αρχείου εφαρμογής</string>
+    <string name="antidisabledalgorithm">Υπογραφή με χρήση μη ασφαλούς αλγόριθμου</string>
 </resources>
