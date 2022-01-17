@@ -30,7 +30,7 @@
     <string name="no">No</string>
     <string name="repo_add_title">Afegeix un nou dipòsit</string>
     <string name="repo_add_add">Afegeix</string>
-    <string name="cancel">Cancel·la</string>
+    <string name="cancel">Cancel·lar</string>
     <string name="enable">Permès</string>
     <string name="add_key">Afegeix clau</string>
     <string name="overwrite">Sobreescriu</string>
@@ -532,4 +532,6 @@
     <string name="antiads">Anuncis</string>
     <string name="antinosource">El codi font ja no està disponible</string>
     <string name="antinonfreeassets">Recursos no gratuïts</string>
+    <string name="antiupstreamnonfree">Upstream no lliure</string>
+    <string name="antiothers">Altres anti-característiques</string>
 </resources>
