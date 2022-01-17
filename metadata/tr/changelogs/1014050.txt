@@ -1,0 +1,13 @@
+* Yakınımda gibi seçenekleri kullanmak için Paylaş menüsü elden geçirildi.
+
+* Birçok hata düzeltmesi ile Yakınımda iş akışı iyileştirildi.
+
+* Material tasarımı iyileştirmeleri (@proletarius101)
+
+* PNG simgeleri olmayan uygulamalar artık En Yeniler Sekmesinde gösteriliyor (@ashutoshgngwr)
+
+* Çevrim dışı, yakınımda paylaşımı iyileştirildi
+
+* Aygıt yöneticisi "Bilinmeyen Kaynaklar" için izin vermediğinde yeni depo eklemeyi engelle
+
+* Kullanıcı adı/parola ile depoları kullanırken çökme düzeltildi
