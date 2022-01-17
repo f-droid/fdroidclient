@@ -200,4 +200,13 @@
         <item quantity="other">٪ 1 $ d ایپس کے لیے اپ ڈیٹس ڈاؤن لوڈ کریں۔</item>
     </plurals>
     <string name="updates_disabled_by_settings">تمام اپ ڈیٹس ڈیٹا/وائی فائی سیٹنگز سے غیر فعال ہیں۔</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">ہمیں٪ 1 $ s کے ساتھ ایک کمزوری ملی۔ ہم اس ایپ کو فوری طور پر انسٹال کرنے کی تجویز کرتے ہیں۔</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">ورژن٪ 1 $ s کیلئے اپ ڈیٹس کو نظر انداز کر دیا گیا۔</string>
+    <string name="installed_app__updates_ignored">اپ ڈیٹس کو نظر انداز کر دیا گیا۔</string>
+    <string name="send_installed_apps_csv">F-Droid کے ذریعہ بطور CSV فائل انسٹال کردہ ایپس۔</string>
+    <string name="repo_add_title">نیا ذخیرہ شامل کریں۔</string>
+    <string name="updates__show_updateable_apps">ایپس دکھائیں۔</string>
+    <string name="update_all">تمام تجدید کریں</string>
+    <string name="updates__app_with_known_vulnerability__ignore">نظر انداز کریں۔</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">ہمیں٪ 1 $ s کے ساتھ ایک کمزوری ملی۔ ہم فوری طور پر تازہ ترین ورژن کو اپ ڈیٹ کرنے کی تجویز کرتے ہیں۔</string>
 </resources>
