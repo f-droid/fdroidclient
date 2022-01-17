@@ -233,4 +233,14 @@
     <string name="install_history_and_metrics">Instalar historial y métricas</string>
     <string name="send_fdroid_metrics_json">Informe de métricas% s como archivo JSON</string>
     <string name="send_fdroid_metrics_report">Enviar % un informe de métricas</string>
+    <string name="about_version">Versión</string>
+    <string name="app_suggested">Sugerida</string>
+    <string name="about_forum">Foro de soporte</string>
+    <string name="app_new">Nueva</string>
+    <string name="about_license">Licencia</string>
+    <string name="app_not_installed">No instalado</string>
+    <string name="app_installed">Instalado</string>
+    <string name="app_incompatible">Incompatible</string>
+    <string name="about_source">Código fuente</string>
+    <string name="undo">Retroceder</string>
 </resources>
