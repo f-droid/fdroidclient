@@ -524,4 +524,6 @@
     <string name="app_list_results_hidden_antifeature_settings">Några resultat gömdes baserat på dina antifunktionsinställningar.</string>
     <string name="antinonfreead">Icke-fria tillägg</string>
     <string name="antinosource">Källkoden är inte längre tillgänglig</string>
+    <string name="antitrack">Spårning</string>
+    <string name="antiupstreamnonfree">Icke-fri uppströms</string>
 </resources>
