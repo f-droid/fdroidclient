@@ -189,4 +189,9 @@
     <string name="versions">ورژن</string>
     <string name="enable">انابل</string>
     <string name="updates__hide_updateable_apps">ایپس چھپائیں۔</string>
+    <string name="repo_add_url">مخزن کا پتہ۔</string>
+    <string name="choose_bt_send">بلوٹوتھ بھیجنے کا طریقہ منتخب کریں۔</string>
+    <string name="bluetooth_activity_not_found">کوئی بلوٹوتھ بھیجنے کا طریقہ نہیں ملا ، ایک کا انتخاب کریں!</string>
+    <string name="sort_search">ترتیب سے ڈھونڈے</string>
+    <string name="clear_search">صاف سے ڈھونڈھنا</string>
 </resources>
