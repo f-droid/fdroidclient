@@ -511,4 +511,18 @@
     <string name="share_apk_error">ऐप फ़ाइल साझा नहीं कर सका</string>
     <string name="banner_no_data_or_wifi">कोई डेटा या वाईफाई सक्षम नहीं</string>
     <string name="banner_no_internet">इंटरनेट नहीं है</string>
+    <string name="has_disallow_install_unknown_sources">इस उपयोगकर्ता द्वारा अज्ञात स्रोतों को नहीं जोड़ा जा सकता है, जिसमें नए रेपो शामिल हैं</string>
+    <string name="antitrack">नज़र रखना</string>
+    <string name="antinonfreenet">गैर-मुक्त नेटवर्क सेवाएं</string>
+    <string name="antinonfreedep">गैर-मुक्त निर्भरताएं</string>
+    <string name="antiupstreamnonfree">अपस्ट्रीम गैर-मुक्त</string>
+    <string name="antinonfreeassets">गैर-मुक्त Assets</string>
+    <string name="antiknownvuln">ज्ञात भेद्यता</string>
+    <string name="antinonfreead">गैर-मुक्त एडॉन्स</string>
+    <string name="app_list_results_hidden_antifeature_settings">आपकी एंटी-फ़ीचर settings के आधार पर कुछ परिणाम छुपाए गए थे।</string>
+    <string name="has_disallow_install_unknown_sources_globally">आपका डिवाइस व्यवस्थापक अज्ञात स्रोतों से ऐप्स इंस्टॉल करने की अनुमति नहीं देता है, जिसमें नए रेपो शामिल हैं</string>
+    <string name="antiads">विज्ञापन</string>
+    <string name="antidisabledalgorithm">असुरक्षित एल्गोरिदम का उपयोग करके हस्ताक्षरित</string>
+    <string name="antinosource">स्रोत कोड अब उपलब्ध नहीं है</string>
+    <string name="swap_wifi_vpn_conflict">सक्रिय वीपीएन के साथ संघर्ष!</string>
 </resources>
