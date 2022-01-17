@@ -525,4 +525,5 @@
     <string name="antidisabledalgorithm">असुरक्षित एल्गोरिदम का उपयोग करके हस्ताक्षरित</string>
     <string name="antinosource">स्रोत कोड अब उपलब्ध नहीं है</string>
     <string name="swap_wifi_vpn_conflict">सक्रिय वीपीएन के साथ संघर्ष!</string>
+    <string name="antiothers">अन्य विरोधी सुविधाएं</string>
 </resources>
