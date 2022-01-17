@@ -273,7 +273,7 @@
     <string name="keep_install_history">Uchovat historii instalací</string>
     <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích soukromém úložišti</string>
     <string name="update_auto_install">Automaticky nainstalovat aktualizace</string>
-    <string name="update_auto_install_summary">Stažení a aktualizace aplikací na pozadí, zobrazení oznámení</string>
+    <string name="update_auto_install_summary">Stahovat a aktualizovat aplikace na pozadí, zobrazovat upozornění</string>
     <string name="versions">Verze</string>
     <string name="warning_no_internet">Nedaří se aktualizovat – jste připojení k Internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Koupit vývojářům kávu za %1$s!</string>
@@ -529,5 +529,16 @@
     <string name="share_apk_error">Sdílet aplikační soubor se nezdařilo</string>
     <string name="swap_wifi_vpn_conflict">Konflikty s aktivní VPN!</string>
     <string name="has_disallow_install_unknown_sources">Tento uživatel nemůže přidávat neznámé zdroje, včetně nových repozitářů</string>
-    <string name="has_disallow_install_unknown_sources_globally">Správce vašeho zařízení nepovoluje instalaci aplikací z neznámých zdrojů, což zahrnuje i nové repozitáře</string>
+    <string name="has_disallow_install_unknown_sources_globally">Správce vašeho zařízení nepovoluje instalaci aplikací z neznámých zdrojů, což zahrnuje i nová úložiště</string>
+    <string name="antiads">Reklamy</string>
+    <string name="antidisabledalgorithm">Podepsáno pomocí nebezpečného algoritmu</string>
+    <string name="antiknownvuln">Známá zranitelnost</string>
+    <string name="antitrack">Sledování</string>
+    <string name="antinonfreenet">Nesvobodné síťové služby</string>
+    <string name="app_list_results_hidden_antifeature_settings">Některé výsledky byly skryty na základě nastavení funkce antifeature.</string>
+    <string name="antinonfreead">Nesvobodné doplňky</string>
+    <string name="antinonfreedep">Nesvobodné závislosti</string>
+    <string name="antiupstreamnonfree">Nesvobodný Upstream</string>
+    <string name="antinonfreeassets">Nesvobodná aktiva</string>
+    <string name="antinosource">Zdrojový kód již není dostupný</string>
 </resources>
