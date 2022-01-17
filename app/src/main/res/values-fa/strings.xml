@@ -514,4 +514,17 @@
     <string name="has_disallow_install_unknown_sources_globally">مدیر افزاره‌تان اجازهٔ نصب کاره‌ها از منابع ناشناس را نمی‌دهد که شامل مخزن‌های جدید هم می‌شود</string>
     <string name="apps">کاره‌ها</string>
     <string name="swap_wifi_vpn_conflict">با وی‌پی‌ان فعّال تداخل دارد!</string>
+    <string name="antiads">تبلیغات</string>
+    <string name="antiupstreamnonfree">بالادست ناآزاد</string>
+    <string name="antinonfreenet">خدمات شبکه‌ای ناآزاد</string>
+    <string name="antinonfreeassets">بخش‌های ناآزاد</string>
+    <string name="antidisabledalgorithm">امضا شده با الگوریتمی ناامن</string>
+    <string name="antiknownvuln">آسیب‌پذیری شناخته</string>
+    <string name="app_list_results_hidden_antifeature_settings">برخی نتیجه‌ها بر پایهٔ تنظیمات پادویژگیتان پنهان شده‌اند.</string>
+    <string name="antinosource_key">بدون منبع از</string>
+    <string name="antitrack">ردیابی</string>
+    <string name="antinonfreead">افزونه‌های ناآزاد</string>
+    <string name="antinonfreedep">وابستگی‌های ناآزاد</string>
+    <string name="antinosource">کد مبدأ دیگر موجود نیست</string>
+    <string name="antiothers">دیگر پادویژگی‌ها</string>
 </resources>
