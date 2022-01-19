@@ -226,13 +226,13 @@
     <string name="app_details__incompatible_mismatched_signature">Firma diferente a la versión instalada</string>
     <string name="app_details_donate_prompt">%1$s es creado por %2$s. ¡Invítalos a un café!</string>
     <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>
-    <string name="toast_metrics_in_install_history">El informe de la métrica% s se puede ver en el visor del historial de instalación</string>
+    <string name="toast_metrics_in_install_history">El informe de la métrica %s se puede ver en el visor del historial de instalación</string>
     <string name="send_to_fdroid_metrics_summary">Envía datos anónimos semanalmente a F-Droid Métricas (requiere mantener el historial de instalación)</string>
     <string name="send_to_fdroid_metrics">Enviar datos de uso</string>
-    <string name="fdroid_metrics_report">Informe de métricas de% s</string>
+    <string name="fdroid_metrics_report">Informe de métricas de %s</string>
     <string name="install_history_and_metrics">Instalar historial y métricas</string>
-    <string name="send_fdroid_metrics_json">Informe de métricas% s como archivo JSON</string>
-    <string name="send_fdroid_metrics_report">Enviar % un informe de métricas</string>
+    <string name="send_fdroid_metrics_json">Informe de métricas %s como archivo JSON</string>
+    <string name="send_fdroid_metrics_report">Enviar %s un informe de métricas</string>
     <string name="about_version">Versión</string>
     <string name="app_suggested">Sugerida</string>
     <string name="about_forum">Foro de soporte</string>

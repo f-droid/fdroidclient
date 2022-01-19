@@ -95,9 +95,9 @@
     <string name="less">کم</string>
     <string name="more">مزید</string>
     <string name="updates__tts__download_app">ڈاؤن لوڈ کریں</string>
-    <string name="app_list__name__successfully_installed">٪ 1 $ s انسٹال ہو گیا</string>
+    <string name="app_list__name__successfully_installed">%1$s انسٹال ہو گیا</string>
     <string name="about_title">F-Droid کے بارے میں</string>
-    <string name="app_list__name__downloading_in_progress">٪ 1 $ s ڈاؤن لوڈ ہو رہا ہے</string>
+    <string name="app_list__name__downloading_in_progress">%1$s ڈاؤن لوڈ ہو رہا ہے</string>
     <string name="notification_title_summary_install_error">لگانا ناکامیاب</string>
     <string name="notification_title_single_update_available">اپ ڈیٹ دستیاب ہے</string>
     <string name="crash_dialog_text">ایپ کو روکنے پر مجبور کرنے میں ایک غیر متوقع خرابی پیش آگئی۔ کیا آپ مسئلے کو حل کرنے میں مدد کے لیے تفصیلات ای میل کرنا چاہیں گے؟</string>
@@ -105,7 +105,7 @@
     <string name="swap_send_fdroid">F-Droid بھیجیں۔</string>
     <string tools:ignore="UnusedResources" name="category_System">نظام</string>
     <string tools:ignore="UnusedResources" name="category_Sports_Health">کھیل اور صحت</string>
-    <string name="not_on_same_wifi">آپ کی ڈیوائس اسی وائی فائی پر نہیں ہے جیسا کہ مقامی ریپو آپ نے ابھی شامل کیا ہے! اس نیٹ ورک میں شامل ہونے کی کوشش کریں: ٪t
+    <string name="not_on_same_wifi">آپ کی ڈیوائس اسی وائی فائی پر نہیں ہے جیسا کہ مقامی ریپو آپ نے ابھی شامل کیا ہے! اس نیٹ ورک میں شامل ہونے کی کوشش کریں: %s
 \nاردو</string>
     <string name="repo_last_update">آخری اپ ڈیٹ۔</string>
     <string name="repo_details">مخزن</string>
@@ -115,14 +115,14 @@
     <string name="hide_all_notifications">تمام اطلاعات چھپائیں۔</string>
     <string name="prompt_to_send_crash_reports_summary">کریش کے بارے میں ڈیٹا اکٹھا کریں اور انہیں ڈویلپر کو بھیجنے کے لیے کہیں۔</string>
     <string name="prompt_to_send_crash_reports">تباہی کی رپورٹ بھیجنے کا اشارہ۔</string>
-    <string name="by_author_format">٪ s ذریعہ</string>
-    <string name="send_fdroid_metrics_report">٪ s میٹرکس رپورٹ بھیجیں۔</string>
+    <string name="by_author_format">%s ذریعہ</string>
+    <string name="send_fdroid_metrics_report">%s میٹرکس رپورٹ بھیجیں۔</string>
     <string name="send_install_history">انسٹال ہسٹری بھیجیں</string>
-    <string name="send_fdroid_metrics_json">٪ s میٹرکس JSON فائل کے طور پر رپورٹ کرتا ہے۔</string>
-    <string name="send_history_csv">٪ s انسٹال کی تاریخ بطور CSV فائل۔</string>
+    <string name="send_fdroid_metrics_json">%s میٹرکس JSON فائل کے طور پر رپورٹ کرتا ہے۔</string>
+    <string name="send_history_csv">%s انسٹال کی تاریخ بطور CSV فائل۔</string>
     <string name="install_history">تاریخ تنصیب کریں</string>
     <string name="install_history_summary">تمام انسٹال اور ان انسٹال کا نجی لاگ دیکھیں۔</string>
-    <string name="fdroid_metrics_report">٪ s میٹرکس رپورٹ</string>
+    <string name="fdroid_metrics_report">%s میٹرکس رپورٹ</string>
     <string name="keep_install_history">انسٹال ہسٹری رکھیں۔</string>
     <string name="keep_install_history_summary">ایک نجی اسٹور میں تمام انسٹال اور ان انسٹال کا لاگ اسٹور کریں۔</string>
     <string name="update_auto_install_summary">ایک نوٹیفکیشن دکھا کر پس منظر میں ایپس ڈاؤن لوڈ اور اپ ڈیٹ کریں۔</string>
@@ -138,15 +138,15 @@
     <string name="send_version_and_uuid">ورژن اور UUID سرورز کو بھیجیں۔</string>
     <string name="install_history_and_metrics">تاریخ اور میٹرکس انسٹال کریں</string>
     <string name="theme_dark">سیاہ</string>
-    <string name="app_details_donate_prompt_unknown_author">٪ 1 $ s کے ڈویلپرز کو کافی خریدیں!</string>
+    <string name="app_details_donate_prompt_unknown_author">%1$s کے ڈویلپرز کو کافی خریدیں!</string>
     <string name="no_such_app">ایسی کوئی ایپ نہیں ملی۔</string>
     <string name="repo_error_empty_username">خالی صارف نام ، اسناد تبدیل نہیں ہوئے۔</string>
     <string name="login_title">تصدیق درکار ہے</string>
-    <string name="scan_removable_storage_toast">٪ s کو اسکین کیا جا رہا ہے…</string>
-    <string name="toast_metrics_in_install_history">٪ s میٹرک رپورٹ انسٹال ہسٹری ویوور میں دیکھنے کے قابل ہے۔</string>
-    <string name="app_details__no_versions__show_incompat_versions">ویسے بھی غیر مطابقت پذیر ورژن دکھانے کے لیے ، \"٪ 1 $ s\" ترتیب کو فعال کریں۔</string>
+    <string name="scan_removable_storage_toast">%s کو اسکین کیا جا رہا ہے…</string>
+    <string name="toast_metrics_in_install_history">%s میٹرک رپورٹ انسٹال ہسٹری ویوور میں دیکھنے کے قابل ہے۔</string>
+    <string name="app_details__no_versions__show_incompat_versions">ویسے بھی غیر مطابقت پذیر ورژن دکھانے کے لیے ، \"%1$s\" ترتیب کو فعال کریں۔</string>
     <string name="app_details__incompatible_mismatched_signature">انسٹال ورژن پر مختلف دستخط</string>
-    <string name="app_details_donate_prompt">٪ 1 $ s کو٪ 2 $ s نے بنایا ہے۔ انہیں کافی خریدیں!</string>
+    <string name="app_details_donate_prompt">%1$s کو%2$s نے بنایا ہے۔ انہیں کافی خریدیں!</string>
     <string name="send_to_fdroid_metrics">استعمال کا ڈیٹا بھیجیں۔</string>
     <string name="menu_show_install_history">انسٹال کی تاریخ دکھائیں۔</string>
     <string name="main_menu__updates">تازہ ترین</string>
@@ -154,7 +154,7 @@
     <string name="about_version">ورژن</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">نصب شدہ ورژن کسی بھی دستیاب ورژن کے ساتھ مطابقت نہیں رکھتا۔ ایپ کو انسٹال کرنے سے آپ مطابقت پذیر ورژن دیکھنے اور انسٹال کرنے کے قابل ہوجائیں گے۔ یہ اکثر گوگل پلے یا دیگر ذرائع کے ذریعے نصب کردہ ایپس کے ساتھ ہوتا ہے ، اگر ان پر کسی مختلف سرٹیفکیٹ سے دستخط ہوتے ہیں۔</string>
     <string name="send_to_fdroid_metrics_summary">ایف ڈروڈ میٹرکس کو ہفتہ وار گمنام ڈیٹا بھیجتا ہے (انسٹال ہسٹری کی ضرورت ہوتی ہے)</string>
-    <string name="local_repo_name_summary">آپ کے مقامی ریپو کا اشتہاری عنوان:٪ s۔</string>
+    <string name="local_repo_name_summary">آپ کے مقامی ریپو کا اشتہاری عنوان:%s۔</string>
     <string name="about_license">‎لائسنس</string>
     <string name="app_suggested">تجویز کردہ</string>
     <string name="app_details__no_versions__no_compatible_signatures">ہم آہنگ دستخط کے ساتھ کوئی ورژن نہیں</string>
@@ -165,26 +165,26 @@
     <string name="app_details__no_versions__none_compatible_with_device">آلہ کے ساتھ کوئی ورژن ہم آہنگ نہیں</string>
     <string name="about_forum">سپورٹ فورم</string>
     <string name="app_inst_unknown_source">انسٹال (نامعلوم ذریعہ سے)</string>
-    <string name="app_version_x_available">ورژن٪ 1 $ s دستیاب ہے۔</string>
+    <string name="app_version_x_available">ورژن%1$s دستیاب ہے۔</string>
     <string name="local_repo_https_on">مقامی ریپو کے لیے خفیہ کردہ HTTPS: // کنکشن استعمال کریں۔</string>
     <string name="app__install_downloaded_update">اپ ڈیٹ</string>
-    <string name="app_recommended_version_installed">ورژن٪ 1 $ s (تجویز کردہ)</string>
-    <string name="added_on">٪ sاضافہ بطرف</string>
+    <string name="app_recommended_version_installed">ورژن%1$s (تجویز کردہ)</string>
+    <string name="added_on">%sاضافہ بطرف</string>
     <string name="app__tts__cancel_download">ڈاؤن لوڈ منسوخ کریں۔</string>
     <string name="about_source">سورس کوڈ</string>
     <string name="app_incompatible">ناموافق</string>
-    <string name="app_size">سائز:٪ 1 $ s</string>
-    <string name="app_repository">ذخیرہ:٪ 1 $ s</string>
+    <string name="app_size">سائز:%1$s</string>
+    <string name="app_repository">ذخیرہ:%1$s</string>
     <string name="app_permission_storage">F-Droid کو اسٹوریج میں انسٹال کرنے کے لیے اسٹوریج کی اجازت درکار ہے۔ براہ کرم اسے اگلی سکرین پر انسٹالیشن کے ساتھ آگے بڑھنے دیں۔</string>
-    <string name="app_installed_media">فائل٪ s پر انسٹال ہو گئی</string>
-    <string name="app_version_x_installed">ورژن٪ 1 $ s</string>
+    <string name="app_installed_media">فائل%s پر انسٹال ہو گئی</string>
+    <string name="app_version_x_installed">ورژن%1$s</string>
     <string name="app_list__dismiss_app_update">اپ ڈیٹ نظر انداز کر دیا گیا</string>
     <string name="app_list_download_ready">ڈاؤن لوڈ ، انسٹال کرنے کے لیے تیار</string>
     <string name="app_list__dismiss_downloading_app">ڈاؤنلوڈ منسوخ۔</string>
     <string name="app_list__dismiss_vulnerable_app">کمزوری کو نظر انداز کیا گیا۔</string>
     <string name="send_installed_apps">‏\tانسٹال کردہ ایپس کا اشتراک کریں۔</string>
     <string name="installed_apps__activity_title">انسٹال کردہ ایپس</string>
-    <string name="app_inst_known_source">انسٹال (٪ s سے)</string>
+    <string name="app_inst_known_source">انسٹال (%s سے)</string>
     <string name="versions">ورژن</string>
     <string name="enable">انابل</string>
     <string name="updates__hide_updateable_apps">ایپس چھپائیں۔</string>
@@ -194,41 +194,41 @@
     <string name="sort_search">تلاش کو ترتیب دیں۔</string>
     <string name="clear_search">تلاش صاف کریں</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">٪ 1 $ d ایپ کے لیے اپ ڈیٹ ڈاؤن لوڈ کریں۔</item>
-        <item quantity="other">٪ 1 $ d ایپس کے لیے اپ ڈیٹس ڈاؤن لوڈ کریں۔</item>
+        <item quantity="one">%1$d ایپ کے لیے اپ ڈیٹ ڈاؤن لوڈ کریں۔</item>
+        <item quantity="other">%1$d ایپس کے لیے اپ ڈیٹس ڈاؤن لوڈ کریں۔</item>
     </plurals>
     <string name="updates_disabled_by_settings">تمام اپ ڈیٹس ڈیٹا/وائی فائی سیٹنگز سے غیر فعال ہیں۔</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">ہمیں٪ 1 $ s کے ساتھ ایک کمزوری ملی۔ ہم اس ایپ کو فوری طور پر انسٹال کرنے کی تجویز کرتے ہیں۔</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">ورژن٪ 1 $ s کیلئے اپ ڈیٹس کو نظر انداز کر دیا گیا۔</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">ہمیں%1$s کے ساتھ ایک کمزوری ملی۔ ہم اس ایپ کو فوری طور پر انسٹال کرنے کی تجویز کرتے ہیں۔</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">ورژن%1$s کیلئے اپ ڈیٹس کو نظر انداز کر دیا گیا۔</string>
     <string name="installed_app__updates_ignored">اپ ڈیٹس کو نظر انداز کر دیا گیا۔</string>
     <string name="send_installed_apps_csv">F-Droid کے ذریعہ بطور CSV فائل انسٹال کردہ ایپس۔</string>
     <string name="repo_add_title">نیا ذخیرہ شامل کریں۔</string>
     <string name="updates__show_updateable_apps">ایپس دکھائیں۔</string>
     <string name="update_all">تمام تجدید کریں</string>
     <string name="updates__app_with_known_vulnerability__ignore">نظر انداز کریں۔</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">ہمیں٪ 1 $ s کے ساتھ ایک کمزوری ملی۔ ہم فوری طور پر تازہ ترین ورژن کو اپ ڈیٹ کرنے کی تجویز کرتے ہیں۔</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">ہمیں%1$s کے ساتھ ایک کمزوری ملی۔ ہم فوری طور پر تازہ ترین ورژن کو اپ ڈیٹ کرنے کی تجویز کرتے ہیں۔</string>
     <string name="menu_ignore_this">اس اپ ڈیٹ کو نظر انداز کریں۔</string>
     <string name="menu_ignore_all">تمام اپ ڈیٹس کو نظر انداز کریں۔</string>
     <string name="menu_select_for_wipe">مسح کے لیے منتخب کریں۔</string>
     <string name="menu_open">کھولیں</string>
     <string name="repositories_summary">ایپس کے اضافی ذرائع شامل کریں۔</string>
-    <string name="repo_provider">ذخیرہ:٪ s</string>
+    <string name="repo_provider">ذخیرہ:%s</string>
     <string name="has_disallow_install_unknown_sources">اس صارف کے ذریعہ نامعلوم ذرائع شامل نہیں کیے جا سکتے ، اس میں نئے ریپوز شامل ہیں۔</string>
     <string name="has_disallow_install_unknown_sources_globally">آپ کا آلہ منتظم نامعلوم ذرائع سے ایپس انسٹال کرنے کی اجازت نہیں دیتا ، جس میں نئے ریپوز شامل ہیں۔</string>
-    <string name="malformed_repo_uri">‎خراب شدہ ریپو URI کو نظر انداز کرنا:٪ s</string>
+    <string name="malformed_repo_uri">‎خراب شدہ ریپو URI کو نظر انداز کرنا:%s</string>
     <string name="invalid_url">یہ ایک درست URL نہیں ہے۔</string>
-    <string name="repo_exists_add_mirror">یہ٪ 1 $ s کی ایک کاپی ہے ، اسے آئینے کے طور پر شامل کریں؟</string>
+    <string name="repo_exists_add_mirror">یہ%1$s کی ایک کاپی ہے ، اسے آئینے کے طور پر شامل کریں؟</string>
     <string name="bad_fingerprint">خراب فنگر پرنٹ۔</string>
-    <string name="repo_exists_enable">٪ 1 $ s پہلے ہی سیٹ اپ ہے ، تصدیق کریں کہ آپ اسے دوبارہ فعال کرنا چاہتے ہیں۔</string>
-    <string name="repo_exists_and_enabled">٪ 1 $ s پہلے ہی سیٹ اپ اور فعال ہے۔</string>
+    <string name="repo_exists_enable">%1$s پہلے ہی سیٹ اپ ہے ، تصدیق کریں کہ آپ اسے دوبارہ فعال کرنا چاہتے ہیں۔</string>
+    <string name="repo_exists_and_enabled">%1$s پہلے ہی سیٹ اپ اور فعال ہے۔</string>
     <string name="menu_email">ای میل مصنف۔</string>
     <string name="menu_website">ویب سائٹ</string>
     <string name="links">روابط</string>
     <string name="menu_source">سورس کوڈ</string>
-    <string name="menu_license">لائسنس: ٪t</string>
+    <string name="menu_license">لائسنس: %s</string>
     <string name="menu_video">ویڈیو</string>
-    <string name="repo_delete_to_overwrite">متضاد کلید کے ساتھ شامل کرنے کے لیے پہلے٪ 1 $ s حذف کریں</string>
-    <string name="repo_exists_add_fingerprint">٪ 1 $ s پہلے سے سیٹ اپ ہے ، اس سے نئی کلیدی معلومات شامل ہو جائیں گی۔</string>
+    <string name="repo_delete_to_overwrite">متضاد کلید کے ساتھ شامل کرنے کے لیے پہلے%1$s حذف کریں</string>
+    <string name="repo_exists_add_fingerprint">%1$s پہلے سے سیٹ اپ ہے ، اس سے نئی کلیدی معلومات شامل ہو جائیں گی۔</string>
     <string name="repo_add_fingerprint">فنگر پرنٹ (اختیاری)</string>
     <string name="overwrite">اوور رائٹ۔</string>
     <string name="add_key">کلید شامل کریں۔</string>
@@ -256,7 +256,6 @@
     <string name="antiknownvulnlist">اس ایپ میں سیکیورٹی کی ایک نامعلوم کمزوری ہے۔</string>
     <string name="expert_on">‫اضافی معلومات دکھائیں اور اضافی ترتیبات کو فعال کریں۔</string>
     <string name="display">ڈسپلے</string>
-    <string name="status_processing_xml_percent">پروسیسنگ شے</string>
     <string name="theme_light">روشنی</string>
     <string name="panic_app_dialog_title">گھبراہٹ ایپ کی تصدیق کریں۔</string>
     <string name="panic_app_setting_none">کوئی نہیں</string>
@@ -275,7 +274,7 @@
     <string name="copying_icons">ایپ آئیکنز کو ریپو میں کاپی کیا جا رہا ہے…</string>
     <string name="linking_apks">APKs کو ریپو میں لنک کرنا…</string>
     <string name="writing_index_jar">دستخط شدہ انڈیکس فائل لکھنا (index.jar)…</string>
-    <string name="adding_apks_format">٪ s کو ریپو میں شامل کیا جا رہا ہے…</string>
+    <string name="adding_apks_format">%s کو ریپو میں شامل کیا جا رہا ہے…</string>
     <string name="deleting_repo">موجودہ ریپو کو حذف کیا جا رہا ہے…</string>
     <string name="touch_to_configure_local_repo">تفصیلات دیکھنے کے لیے ٹچ کریں اور دوسروں کو آپ کے ایپس کو تبدیل کرنے کی اجازت دیں۔</string>
     <string name="local_repo_running">F-Droid تبدیل کرنے کے لیے تیار ہے۔</string>
@@ -302,7 +301,7 @@
     <string name="panic_exit_title">ایپ سے باہر نکلیں۔</string>
     <string name="panic_settings_summary">ایمرجنسی کی صورت میں اقدامات کئے جائیں۔</string>
     <string name="panic_settings">گھبراہٹ بٹن کی ترتیبات</string>
-    <string name="panic_app_dialog_message">کیا آپ کو یقین ہے کہ آپ٪ 1 $ s کو تباہ کن گھبراہٹ کے بٹن کی کارروائیوں کو متحرک کرنے کی اجازت دینا چاہتے ہیں؟</string>
+    <string name="panic_app_dialog_message">کیا آپ کو یقین ہے کہ آپ%1$s کو تباہ کن گھبراہٹ کے بٹن کی کارروائیوں کو متحرک کرنے کی اجازت دینا چاہتے ہیں؟</string>
     <string name="details_last_updated_today">آج آپ ڈیٹ</string>
     <string name="nearby_splash__find_people_button">قریبی لوگوں کو تلاش کریں۔</string>
     <string name="nearby_splash__download_apps_from_people_nearby">انٹرنیٹ نہیں ہے؟ اپنے قریبی لوگوں سے ایپس حاصل کریں!</string>
@@ -317,17 +316,17 @@
 \n
 \nآپ کے آلے پر ایپس موجود ہیں ، لیکن وہ F-Droid سے دستیاب نہیں ہیں۔ اس کی وجہ یہ ہوسکتی ہے کہ آپ کو اپنے ذخیروں کو اپ ڈیٹ کرنے کی ضرورت ہے ، یا ذخیروں میں حقیقی طور پر آپ کے ایپس دستیاب نہیں ہیں۔</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">٪ d دیکھیں</item>
-        <item quantity="other">تمام٪ d دیکھیں</item>
+        <item quantity="one">%d دیکھیں</item>
+        <item quantity="other">تمام%d دیکھیں</item>
     </plurals>
     <string tools:ignore="UnusedResources" name="category_Theming">تھیمنگ</string>
     <string name="wifi_ap">ہاٹ سپاٹ</string>
-    <string name="requires_features">درکار ہے:٪ 1 $ s</string>
+    <string name="requires_features">درکار ہے:%1$s</string>
     <string name="share_repository">ذخیرہ شیئر کریں۔</string>
     <string name="repo_searching_address">پر پیکیج کے ذخیرے کی تلاش ہے۔
-\n٪ 1 $ s</string>
-    <string name="repo_added">محفوظ کردہ پیکیج کا ذخیرہ٪ 1 $ s۔</string>
-    <string name="repo_disabled_notification">غیر فعال٪ 1 $ s
+\n%1$s</string>
+    <string name="repo_added">محفوظ کردہ پیکیج کا ذخیرہ%1$s۔</string>
+    <string name="repo_disabled_notification">غیر فعال%1$s
 \n
 \nاس سے ایپس انسٹال کرنے کے لیے آپ کو اس ذخیرے کو دوبارہ فعال کرنے کی ضرورت ہوگی۔</string>
     <string name="repo_confirm_delete_body">ذخیرہ حذف کرنے کا مطلب ہے کہ اس سے ایپس مزید دستیاب نہیں ہوں گی۔
@@ -346,35 +345,35 @@
     <string name="use_pure_black_dark_theme_summary">صرف OLED اسکرینوں کے لیے تجویز کردہ۔</string>
     <string name="use_pure_black_dark_theme">سیاہ تھیم میں خالص سیاہ پس منظر استعمال کریں۔</string>
     <string name="theme">خیالیہ</string>
-    <string name="no_handler_app">آپ کے پاس کوئی دستیاب ایپ نہیں ہے جو٪ s کو سنبھال سکے۔</string>
-    <string name="global_error_updating_repos">اپ ڈیٹ کے دوران خرابی:٪ s</string>
+    <string name="no_handler_app">آپ کے پاس کوئی دستیاب ایپ نہیں ہے جو%s کو سنبھال سکے۔</string>
+    <string name="global_error_updating_repos">اپ ڈیٹ کے دوران خرابی:%s</string>
     <string name="all_other_repos_fine">دیگر تمام ریپوز نے غلطیاں پیدا نہیں کیں۔</string>
     <string name="repos_unchanged">تمام ذخیرے تازہ ترین ہیں۔</string>
-    <string name="status_inserting_x_apps">ایپ کی تفصیلات (٪ 1 $ d/٪ 2 $ d) کو٪ 3 $ s سے محفوظ کیا جا رہا ہے۔</string>
+    <string name="status_inserting_x_apps">ایپ کی تفصیلات (%1$d/%2$d) کو%3$s سے محفوظ کیا جا رہا ہے۔</string>
     <string name="status_connecting_to_repo">سے منسلک ہو رہا ہے۔
-\n٪ 1 $ s</string>
+\n%1$s</string>
     <string name="banner_no_data_or_wifi">کوئی ڈیٹا یا وائی فائی فعال نہیں ہے۔</string>
     <string name="banner_no_internet">انٹرنیٹ نہیں ہے۔</string>
     <string name="banner_updating_repositories">ذخیروں کو اپ ڈیٹ کرنا۔</string>
     <string name="download_404">مطلوبہ فائل نہیں ملی۔</string>
     <string name="status_download_unknown_size">ڈاؤن لوڈ ہو رہا ہے۔
-\nسے٪ 2 $ s
-\n٪ 1 $ s</string>
+\nسے%2$s
+\n%1$s</string>
     <string name="status_download">ڈاؤن لوڈ ہو رہا ہے۔
-\n٪ 2 $ s /٪ 3 $ s (٪ 4 $ d ٪٪) سے۔
-\n٪ 1 $ s</string>
+\n%2$s / %3$s (%4$d%%) سے۔
+\n%1$s</string>
     <string name="hide_on_long_search_press_summary">سرچ بٹن کو زیادہ دیر دبانے سے ایپ چھپ جائے گی۔</string>
     <string name="hide_on_long_search_press_title">سرچ بٹن سے چھپائیں۔</string>
     <string name="hiding_dialog_warning">انتباہ: ہوم اسکرین پر کوئی بھی ایپ شارٹ کٹ بھی ہٹا دیا جائے گا اور اسے دستی طور پر دوبارہ شامل کرنے کی ضرورت ہوگی۔</string>
-    <string name="hiding_dialog_message">کیا آپ واقعی لانچر سے٪ 1 $ s کو ہٹانا چاہتے ہیں؟ جعلی٪ 3 $ s ایپ میں صرف \"٪ 2 $ d\" ٹائپ کرنے سے اسے بحال کیا جا سکتا ہے۔</string>
-    <string name="hiding_dialog_title">اب٪ s چھپائیں۔</string>
+    <string name="hiding_dialog_message">کیا آپ واقعی لانچر سے%1$s کو ہٹانا چاہتے ہیں؟ جعلی%3$s ایپ میں صرف \"%2$d\" ٹائپ کرنے سے اسے بحال کیا جا سکتا ہے۔</string>
+    <string name="hiding_dialog_title">اب%s چھپائیں۔</string>
     <string name="hiding_calculator">کیلکولیٹر</string>
     <string name="panic_reset_repos_summary">ریپو سیٹ اپ کو واپس ڈیفالٹس پر مجبور کریں۔</string>
     <string name="panic_reset_repos_title">ریپوز ری سیٹ کریں۔</string>
-    <string name="panic_hide_warning_message">گھبراہٹ کی صورت میں ، یہ لانچر سے٪ 1 $ s کو ہٹا دے گا۔ جعلی٪ 3 $ s ایپ میں صرف \"٪ 2 $ d\" ٹائپ کرنے سے اسے بحال کیا جا سکتا ہے۔</string>
+    <string name="panic_hide_warning_message">گھبراہٹ کی صورت میں ، یہ لانچر سے%1$s کو ہٹا دے گا۔ جعلی%3$s ایپ میں صرف \"%2$d\" ٹائپ کرنے سے اسے بحال کیا جا سکتا ہے۔</string>
     <string name="panic_hide_warning_title">بحال کرنے کا طریقہ یاد رکھیں۔</string>
     <string name="panic_hide_summary">ایپ خود چھپ جائے گی۔</string>
-    <string name="panic_hide_title">٪ s چھپائیں</string>
+    <string name="panic_hide_title">%s چھپائیں</string>
     <string name="panic_add_apps_to_uninstall">ایپس کو انسٹال اور مسح کرنے کے لیے شامل کریں۔</string>
     <string name="panic_apps_to_uninstall">ایپس کو ان انسٹال کیا جائے اور تمام ڈیٹا مٹا دیا جائے۔</string>
     <string name="panic_will_be_wiped">انسٹال ہو جائے گا اور تمام ڈیٹا حذف ہو جائے گا۔</string>
