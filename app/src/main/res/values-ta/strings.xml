@@ -102,14 +102,14 @@
     <string name="wifi">வைஃபை</string>
     <string name="requires_features">தேவை: %1$s</string>
     <string name="repo_last_update">கடைசியாக புதுப்பிக்கப்பட்டது</string>
-    <string name="useTor">டோர் பயன்படுத்தவும்</string>
+    <string name="useTor">டார் பயன்படுத்து</string>
     <string name="bad_fingerprint">மோசமான கைரேகை</string>
     <string name="swap_starting">தொடங்குகிறது…</string>
     <string name="swap_blank_wifi_ssid">(வெற்று)</string>
     <string name="menu_translation">மொழிபெயர்ப்பு</string>
     <string name="app_new">புதிய</string>
     <string name="menu_liberapay">லிபராபே</string>
-    <string name="panic_app_setting_none">எதுவும் இல்லை</string>
+    <string name="panic_app_setting_none">ஒன்றுமில்லை</string>
     <string name="updates__app_with_known_vulnerability__ignore">புறக்கணி</string>
     <string name="antifeatures">எதிர்ப்பு அம்சங்கள்</string>
     <string name="app__install_downloaded_update">புதுப்பிப்பு</string>
@@ -165,10 +165,10 @@
     <string name="send_version_and_uuid">பதிப்பு மற்றும் UUID ஐ சேவையகங்களுக்கு அனுப்பு</string>
     <string name="keep_install_history_summary">அனைத்து நிறுவல்கள் மற்றும் நிறுவல் நீக்கங்களின் பதிவை ஒரு தனிப்பட்ட அங்காடியில் சேமி</string>
     <string name="keep_install_history">வரலாற்றை நிறுவுங்கள்</string>
-    <string name="install_history_summary">அனைத்து நிறுவல்கள் மற்றும் நிறுவல்நீக்கம் தனிப்பட்ட பதிவைக் காணவும்</string>
+    <string name="install_history_summary">அனைத்து நிறுவல்கள் மற்றும் நிறுவல்நீக்கங்களின் தனிப்பட்ட பதிவைப் பார்</string>
     <string name="send_history_csv">%s நிறுவல் வரலாறு CSV கோப்பாக</string>
     <string name="unstable_updates_summary">நிலையற்ற பதிப்புகளுக்கு புதுப்பிப்புகளைப் பரிந்துரை</string>
-    <string name="prompt_to_send_crash_reports">செயலிழப்பு அறிக்கைகளை அனுப்பும்படி கேட்கவும்</string>
+    <string name="prompt_to_send_crash_reports">சிதைவறிக்கைகளை அனுப்பத் தூண்டு</string>
     <string name="enable_nfc_send">என்எப்சி அனுப்புஎன்பதை இயக்கு…</string>
     <string name="details_new_in_version">%s பதிப்பில் புதியது</string>
     <string name="panic_hide_summary">பயன்பாடு தன்னை மறைக்கும்</string>
@@ -178,7 +178,7 @@
     <string name="system_install_denied_permissions">சலுகை பெற்ற அனுமதிகள் நீட்டிப்பு க்கு வழங்கப்படவில்லை! பிழை அறிக்கையை உருவாக்கவும்!</string>
     <string name="uninstall_error_unknown">தெரியாத பிழைகாரணமாக நிறுவல்நீக்க முடியவில்லை</string>
     <string name="install_error_unknown">தெரியாத பிழைகாரணமாக நிறுவுவதில் தோல்வி</string>
-    <string name="empty_search_available_app_list">பொருந்தும் பயன்பாடுகள் எதுவும் கிடைக்கவில்லை.</string>
+    <string name="empty_search_available_app_list">பொருந்தும் செயலிகள் எவையுங்கிடைக்கவில்லை.</string>
     <string name="empty_can_update_app_list">வாழ்த்துக்கள்!
 \nஉங்கள் பயன்பாடுகள் புதுப்பித்த நிலையில் உள்ளன.</string>
     <string name="empty_installed_app_list">செயலிகள் ஏதும் நிறுவப்படவில்லை.
@@ -202,7 +202,7 @@
 \n%2$s / %3$s (%4$d %%) இருந்து
 \n%1$s</string>
     <string name="panic_app_dialog_message">அழிவுகரமான பீதி பொத்தான் செயல்களைத் தூண்டுவதற்கு %1$s அனுமதிக்க விரும்புகிறீர்களா\?</string>
-    <string name="enable_proxy_title">HTTP ப்ராக்ஸியை இயக்கவும்</string>
+    <string name="enable_proxy_title">HTTP பதிலியை இயக்கு</string>
     <string name="repo_confirm_delete_title">களஞ்சியத்தை நீக்கவா\?</string>
     <string name="repo_not_yet_updated">இந்த களஞ்சியம் இன்னும் பயன்படுத்தப்படவில்லை. அது வழங்கும் பயன்பாடுகளைப் பார்க்க நீங்கள் அதை செயல்படுத்த வேண்டும்.</string>
     <string name="repo_user_mirrors">பயனர் கண்ணாடிகள்</string>
@@ -225,27 +225,27 @@
     <string name="hiding_calculator">கணக்கிடு</string>
     <string name="panic_exit_title">பயன்பாட்டிலிருந்து வெளியேறு</string>
     <string name="deleting_repo">நடப்பு ரெப்போவை நீக்குகிறது…</string>
-    <string name="panic_reset_repos_summary">ரெப்போ அமைப்பை இயல்புநிலைக்குத் திரும்ப கட்டாயப்படுத்தவும்</string>
-    <string name="panic_reset_repos_title">களஞ்சியங்களை மீட்டமைக்கவும்</string>
+    <string name="panic_reset_repos_summary">களஞ்சியவமைப்பை இயல்புநிலைக்குத் திரும்ப கட்டாயப்படுத்து</string>
+    <string name="panic_reset_repos_title">களஞ்சியங்களை அகரமாக்கு</string>
     <string name="panic_hide_warning_title">மீட்டெடுப்பது எப்படி என்பதை நினைவில் கொள்ளுங்கள்</string>
     <string name="panic_hide_title">மறை %s</string>
     <string name="panic_add_apps_to_uninstall">நிறுவல் நீக்கி துடைக்கப்பட வேண்டிய செயலிகளைச் சேர்</string>
-    <string name="panic_apps_to_uninstall">பயன்பாடுகள் நிறுவல் நீக்கம் செய்யப்பட்டு எல்லா தரவும் அழிக்கப்படும்</string>
-    <string name="panic_will_be_wiped">நிறுவல் நீக்கம் செய்யப்பட்டு அனைத்து தரவும் நீக்கப்படும்</string>
+    <string name="panic_apps_to_uninstall">செயலிகள் நிறுவல் நீக்கப்பட்டு தரவனைத்துமழிக்கப்படவுள்ளன</string>
+    <string name="panic_will_be_wiped">நிறுவல் நீக்கப்பட்டு தரவனைத்துமழிக்கப்படும்</string>
     <string name="panic_destructive_actions">அழிவுகரமான செயல்கள்</string>
     <string name="panic_exit_summary">இந்த பயன்பாடு மூடப்படும்</string>
     <string name="panic_settings_summary">அவசரகாலத்தில் எடுக்கப்படவேண்டிய நடவடிக்கைகள்</string>
     <string name="panic_settings">பீதி பொத்தான் அமைப்புகள்</string>
     <string name="touch_to_configure_local_repo">விவரங்களைக் காண மற்றும் உங்கள் செயலிகளை இடமாற்ற மற்றவர்களை அனுமதிக்க தொடவும்.</string>
-    <string name="panic_app_dialog_title">பீதி பயன்பாட்டை உறுதிப்படுத்தவும்</string>
-    <string name="panic_app_setting_summary">பயன்பாடு எதுவும் அமைக்கப்படவில்லை</string>
+    <string name="panic_app_dialog_title">பீதி செயலியை உறுதிசெய்</string>
+    <string name="panic_app_setting_summary">செயலி ஏதும் அமைக்கப்படவில்லை</string>
     <string name="panic_app_unknown_app">அறியப்படாத பயன்பாடு</string>
     <string name="panic_app_setting_title">பீதி பொத்தான் பயன்பாடு</string>
     <string name="preventScreenshots_summary">திரைபிடிப்பு எடுத்துக்கொள்ளுவதிலிருந்து தடுக்கிறது மற்றும் அண்மைச் செயலிகள் திரையிலிருந்து செயலி உள்ளடக்கத்தை மறைக்கிறது</string>
-    <string name="preventScreenshots_title">திரைக்காட்சிகளைத் தடுக்கவும்</string>
+    <string name="preventScreenshots_title">திரைப்பிடிப்புகளைத் தவிர்</string>
     <string name="privacy">தனியுரிமை</string>
     <string name="proxy">ப்ராக்ஸி</string>
-    <string name="useTorSummary">அதிகரித்த தனியுரிமைக்கு டோர் மூலம் போக்குவரத்தை கட்டாயப்படுத்தவும். தேவைப்படுகிறது ஆர்போட்</string>
+    <string name="useTorSummary">அதிகரித்த தனியுரிமைக்கு டார் மூலம் போக்குவரத்தை கட்டாயப்படுத்து. ஆர்பாட் தேவை</string>
     <string name="try_again">மீண்டும் முயற்சி செய்</string>
     <string name="copying_icons">ரெப்போவில் பயன்பாட்டு படவுருக்களை நகலெடுக்கிறது…</string>
     <string name="linking_apks">APK களை ரெப்போவில் இணைக்கிறது…</string>
@@ -264,7 +264,7 @@
     <string name="expert_on">கூடுதல் தகவலைக் காண்பி மற்றும் கூடுதல் அமைப்புகளை இயக்கு</string>
     <string name="expert">நிபுணர் முறை</string>
     <string name="display">காட்சி</string>
-    <string name="antinosourcesince">மூல குறியீடு இனி கிடைக்காது, புதுப்பிப்புகள் எதுவும் சாத்தியமில்லை.</string>
+    <string name="antinosourcesince">மூல குறியீடு இனி கிடைக்காது, புதுப்பிப்புகள் எவையும் சாத்தியமில்லை.</string>
     <string name="antiknownvulnlist">இந்த பயன்பாட்டில் அறியப்பட்ட பாதுகாப்பு பாதிப்பு உள்ளது</string>
     <string name="antidisabledalgorithmlist">இந்த பயன்பாட்டில் பலவீனமான பாதுகாப்பு கையொப்பம் உள்ளது</string>
     <string name="antinonfreeassetslist">இந்த பயன்பாட்டில் இலவச மற்ற சொத்துக்கள் உள்ளன</string>
@@ -327,7 +327,7 @@
     <string name="send_installed_apps_csv">CSV கோப்பாக எஃப்-டிராய்டு நிறுவிய செயலிகள்</string>
     <string name="app_list__dismiss_vulnerable_app">பாதிப்பு புறக்கணிக்கப்பட்டது</string>
     <string name="app_list_download_ready">பதிவிறக்கம் செய்யப்பட்டது, நிறுவ தயாராக உள்ளது</string>
-    <string name="app_permission_storage">இதை சேமிப்பகத்தில் நிறுவ எஃப்-டிராய்டுக்கு சேமிப்பு அனுமதி தேவை. நிறுவலைத் தொடர அடுத்த திரையில் இதனை அனுமதிக்கவும்.</string>
+    <string name="app_permission_storage">இதை சேமிப்பகத்தில் நிறுவ எஃப்-டிராய்டுக்கு சேமிப்பனுமதி தேவை. நிறுவலைத் தொடர அடுத்த திரையில் இதனை அனுமதிக்கவும்.</string>
     <string name="app_installed_media">கோப்பு நிறுவப்பட்டது %s</string>
     <string name="app_incompatible">பொருந்தாது</string>
     <string name="app_suggested">பரிந்துரைக்கப்படுகிறது</string>
@@ -526,4 +526,5 @@
     <string name="antidisabledalgorithm">பாதுகாப்பற்ற படிமுறை பயன்படுத்தி ஒப்பமிடப்பட்டது</string>
     <string name="swap_wifi_vpn_conflict">செயலிலுள்ள விபியென்னுடன் முரண்கள்!</string>
     <string name="share_apk_error">செயலி கோப்பைப் பகிர முடியவில்லை</string>
+    <string name="antiothers">பிற எதிரம்சங்கள்</string>
 </resources>
