@@ -29,6 +29,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.PatternMatcher;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
@@ -299,8 +300,8 @@ public abstract class Installer {
             // and an unattended installer is used, a wrong permission screen
             // has been shown, thus fallback to AOSP DefaultInstaller!
             if (isUnattended()) {
-                Utils.debugLog(TAG, e.getMessage(), e);
-                Utils.debugLog(TAG, "Falling back to AOSP DefaultInstaller!");
+                Log.e(TAG, e.getMessage(), e);
+                Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
                 DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
                 defaultInstaller.installPackageInternal(sanitizedUri, canonicalUri);
                 return;

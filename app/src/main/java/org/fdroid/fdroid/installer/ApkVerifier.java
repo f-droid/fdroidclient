@@ -107,8 +107,8 @@ class ApkVerifier {
      */
     public static boolean requestedPermissionsEqual(@Nullable String[] expected, @Nullable String[] actual) {
         Utils.debugLog(TAG, "Checking permissions");
-        Utils.debugLog(TAG, "Actual:\n  " + (actual == null ? "None" : TextUtils.join("\n  ", actual)));
         Utils.debugLog(TAG, "Expected:\n  " + (expected == null ? "None" : TextUtils.join("\n  ", expected)));
+        Utils.debugLog(TAG, "Actual:\n  " + (actual == null ? "None" : TextUtils.join("\n  ", actual)));
 
         if (expected == null && actual == null) {
             return true;
