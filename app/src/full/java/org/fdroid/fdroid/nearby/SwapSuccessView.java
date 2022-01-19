@@ -313,8 +313,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     nameView.setText(app.name);
                 }
 
-                Glide.with(iconView.getContext())
-                        .load(app.getIconUrl(iconView.getContext()))
+                app.loadWithGlide(iconView.getContext())
                         .apply(Utils.getAlwaysShowIconRequestOptions())
                         .into(iconView);
 

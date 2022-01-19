@@ -10,6 +10,7 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -19,11 +20,15 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -733,8 +738,18 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 .build();
     }
 
-    public String getIconUrl(Context context) {
+    public RequestBuilder<Drawable> loadWithGlide(Context context) {
         Repo repo = RepoProvider.Helper.findById(context, repoId);
+        if (repo.address.startsWith("content://")) {
+            return Glide.with(context).load(getIconUrl(context, repo));
+        } else {
+            return Glide.with(context).load(getDownloadRequest(context, repo));
+        }
+    }
+
+    @Nullable
+    @Deprecated // not taking mirrors into account
+    public String getIconUrl(Context context, Repo repo) {
         if (TextUtils.isEmpty(iconUrl)) {
             if (TextUtils.isEmpty(iconFromApk)) {
                 return null;
@@ -753,6 +768,44 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             return repo.getFileUrl(iconsDir, iconFromApk);
         }
         return repo.getFileUrl(packageName, iconUrl);
+    }
+
+    @Nullable
+    @Deprecated // not taking mirrors into account
+    public String getIconUrl(Context context) {
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        return getIconUrl(context, repo);
+    }
+
+    @Nullable
+    public DownloadRequest getDownloadRequest(Context context, Repo repo) {
+        String path;
+        if (TextUtils.isEmpty(iconUrl)) {
+            if (TextUtils.isEmpty(iconFromApk)) {
+                return null;
+            }
+            if (iconFromApk.endsWith(".xml")) {
+                // We cannot use xml resources as icons. F-Droid server should not include them
+                // https://gitlab.com/fdroid/fdroidserver/issues/344
+                return null;
+            }
+            String iconsDir;
+            if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
+                iconsDir = Utils.getIconsDir(context, 1.0);
+            } else {
+                iconsDir = Utils.FALLBACK_ICONS_DIR;
+            }
+            path = repo.getPath(iconsDir, iconFromApk);
+        } else {
+            path = repo.getPath(packageName, iconUrl);
+        }
+        return repo.getDownloadRequest(path);
+    }
+
+    @Nullable
+    public DownloadRequest getDownloadRequest(Context context) {
+        Repo repo = RepoProvider.Helper.findById(context, repoId);
+        return getDownloadRequest(context, repo);
     }
 
     public String getFeatureGraphicUrl(Context context) {

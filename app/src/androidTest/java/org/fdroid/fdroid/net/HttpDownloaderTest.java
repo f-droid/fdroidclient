@@ -125,7 +125,8 @@ public class HttpDownloaderTest {
         String path = "myusername/supersecretpassword";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
-        final DownloadRequest request = new DownloadRequest(path, mirrors, null,"myusername", "wrongpassword");
+        final DownloadRequest request =
+                new DownloadRequest(path, mirrors, null, "myusername", "wrongpassword");
         HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.download();
         assertFalse(destFile.exists());
@@ -137,7 +138,8 @@ public class HttpDownloaderTest {
         String path = "myusername/supersecretpassword";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
-        final DownloadRequest request = new DownloadRequest(path, mirrors, null, "wrongusername", "supersecretpassword");
+        final DownloadRequest request =
+                new DownloadRequest(path, mirrors, null, "wrongusername", "supersecretpassword");
         HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.download();
         assertFalse(destFile.exists());

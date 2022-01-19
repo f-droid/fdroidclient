@@ -30,17 +30,23 @@ import android.text.TextUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.RepoTable.Cols;
 import org.fdroid.fdroid.net.TreeUriDownloader;
 
 import java.net.MalformedURLException;
+import java.net.Proxy;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+
+import info.guardianproject.netcipher.NetCipher;
 
 
 /**
@@ -268,6 +274,27 @@ public class Repo extends ValueObject {
         return tempName;
     }
 
+    /**
+     * Gets the path relative to the repo root.
+     * Can be used to create URLs for use with mirrors.
+     * Attention: This does NOT encode for use in URLs.
+     */
+    public String getPath(String... pathElements) {
+        /* Each String in pathElements might contain a /, should keep these as path elements */
+        ArrayList<String> elements = new ArrayList<>();
+        for (String element : pathElements) {
+            Collections.addAll(elements, element.split("/"));
+        }
+        // build up path WITHOUT encoding the segments, this will happen later when turned into URL
+        StringBuilder sb = new StringBuilder();
+        for (String element : elements) {
+            sb.append(element).append("/");
+        }
+        sb.deleteCharAt(sb.length() - 1); // remove trailing slash
+        return sb.toString();
+    }
+
+    @Deprecated // not taking mirrors into account
     public String getFileUrl(String... pathElements) {
         /* Each String in pathElements might contain a /, should keep these as path elements */
         List<String> elements = new ArrayList();
@@ -300,6 +327,12 @@ public class Repo extends ValueObject {
             }
             return result.build().toString();
         }
+    }
+
+    public DownloadRequest getDownloadRequest(String path) {
+        List<Mirror> mirrors = Mirror.fromStrings(getMirrorList());
+        Proxy proxy = NetCipher.getProxy();
+        return new DownloadRequest(path, mirrors, proxy, username, password);
     }
 
     private static int toInt(Integer value) {

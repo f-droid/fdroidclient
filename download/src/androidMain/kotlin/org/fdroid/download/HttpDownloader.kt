@@ -65,7 +65,7 @@ class HttpDownloader constructor(
         throw NotImplementedError("Use getInputStreamSuspend instead.")
     }
 
-    @Throws(IOException::class)
+    @Throws(IOException::class, NoResumeException::class)
     override suspend fun getBytes(resumable: Boolean, receiver: (ByteArray) -> Unit) {
         val skipBytes = if (resumable) outputFile.length() else null
         return try {
@@ -161,7 +161,15 @@ class HttpDownloader constructor(
             resumable = true
         }
         log.debug { "downloading ${request.path} (is resumable: $resumable)" }
-        runBlocking { downloadFromBytesReceiver(resumable) }
+        runBlocking {
+            try {
+                downloadFromBytesReceiver(resumable)
+            } catch (e: NoResumeException) {
+                require(resumable) { "Got $e even though download was not resumable" }
+                if (!outputFile.delete()) log.warn { "Warning: " + outputFile.absolutePath + " not deleted" }
+                downloadFromBytesReceiver(false)
+            }
+        }
     }
 
     @TargetApi(24)

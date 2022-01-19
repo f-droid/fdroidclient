@@ -110,6 +110,7 @@ abstract class Downloader constructor(
     }
 
     @Suppress("BlockingMethodInNonBlockingContext")
+    @Throws(InterruptedException::class, IOException::class, NoResumeException::class)
     protected suspend fun downloadFromBytesReceiver(isResume: Boolean) {
         try {
             FileOutputStream(outputFile, isResume).use { outputStream ->

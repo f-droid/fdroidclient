@@ -56,6 +56,10 @@ kotlin {
         androidMain {
             dependencies {
                 implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+                implementation("com.github.bumptech.glide:glide:$glide_version") {
+                    transitive = false // we don't need all that it pulls in, just the basics
+                }
+                implementation "com.github.bumptech.glide:annotations:$glide_version"
                 implementation 'ch.qos.logback:logback-classic:1.2.5'
             }
         }

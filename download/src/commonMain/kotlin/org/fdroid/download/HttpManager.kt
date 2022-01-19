@@ -4,10 +4,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.ProxyConfig
+import io.ktor.client.features.HttpTimeout
 import io.ktor.client.features.ResponseException
-import io.ktor.client.features.ServerResponseException
 import io.ktor.client.features.UserAgent
 import io.ktor.client.features.defaultRequest
+import io.ktor.client.features.timeout
 import io.ktor.client.request.get
 import io.ktor.client.request.head
 import io.ktor.client.request.header
@@ -35,6 +36,7 @@ import io.ktor.utils.io.core.toByteArray
 import io.ktor.utils.io.readRemaining
 import io.ktor.utils.io.writeFully
 import mu.KotlinLogging
+import kotlin.coroutines.cancellation.CancellationException
 import kotlin.jvm.JvmOverloads
 
 internal expect fun getHttpClientEngineFactory(): HttpClientEngineFactory<*>
@@ -78,6 +80,7 @@ public open class HttpManager @JvmOverloads constructor(
             install(UserAgent) {
                 agent = userAgent
             }
+            install(HttpTimeout)
             defaultRequest {
                 // add query string parameters if existing
                 parameters?.forEach { (key, value) ->
@@ -93,7 +96,7 @@ public open class HttpManager @JvmOverloads constructor(
      * This is useful for checking if the repository index has changed before downloading it again.
      * However, due to non-standard ETags on mirrors, change detection is unreliable.
      */
-    suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
+    public suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
         val authString = constructBasicAuthValue(request)
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->
@@ -102,6 +105,8 @@ public open class HttpManager @JvmOverloads constructor(
                 httpClient.head(url) {
                     // add authorization header from username / password if set
                     if (authString != null) header(Authorization, authString)
+                    // increase connect timeout if using Tor mirror
+                    if (mirror.isOnion()) timeout { connectTimeoutMillis = 10_000 }
                 }
             }
         } catch (e: ResponseException) {
@@ -117,28 +122,20 @@ public open class HttpManager @JvmOverloads constructor(
     }
 
     @JvmOverloads
-    suspend fun get(
+    @Throws(ResponseException::class, NoResumeException::class, CancellationException::class)
+    public suspend fun get(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
         receiver: suspend (ByteArray) -> Unit,
     ) {
-        val authString = constructBasicAuthValue(request)
-        mirrorChooser.mirrorRequest(request) { mirror, url ->
-            resetProxyIfNeeded(request.proxy, mirror)
-            log.debug { "GET $url" }
-            httpClient.get<HttpStatement>(url) {
-                // add authorization header from username / password if set
-                if (authString != null) header(Authorization, authString)
-                // add range header if set
-                if (skipFirstBytes != null) header(Range, "bytes=${skipFirstBytes}-")
-            }
-        }.execute { response ->
+        get(request, skipFirstBytes).execute { response ->
             if (skipFirstBytes != null && response.status != PartialContent) {
-                throw ServerResponseException(response, "expected 206")
+                throw NoResumeException()
             }
             val channel: ByteReadChannel = response.receive()
+            val limit = 8L * 1024L
             while (!channel.isClosedForRead) {
-                val packet = channel.readRemaining(8L * 1024L)
+                val packet = channel.readRemaining(limit)
                 while (!packet.isEmpty) {
                     receiver(packet.readBytes())
                 }
@@ -146,12 +143,41 @@ public open class HttpManager @JvmOverloads constructor(
         }
     }
 
+    internal suspend fun get(
+        request: DownloadRequest,
+        skipFirstBytes: Long? = null,
+    ): HttpStatement {
+        val authString = constructBasicAuthValue(request)
+        return mirrorChooser.mirrorRequest(request) { mirror, url ->
+            resetProxyIfNeeded(request.proxy, mirror)
+            log.debug { "GET $url" }
+            httpClient.get(url) {
+                // add authorization header from username / password if set
+                if (authString != null) header(Authorization, authString)
+                // increase connect timeout if using Tor mirror
+                if (mirror.isOnion()) timeout { connectTimeoutMillis = 20_000 }
+                // add range header if set
+                if (skipFirstBytes != null) header(Range, "bytes=${skipFirstBytes}-")
+            }
+        }
+    }
+
+    /**
+     * Returns a [ByteChannel] for streaming download.
+     */
+    internal suspend fun getChannel(
+        request: DownloadRequest,
+        skipFirstBytes: Long? = null,
+    ): ByteReadChannel {
+        return get(request, skipFirstBytes).receive()
+    }
+
     /**
      * Same as [get], but returns all bytes.
      * Use this only when you are sure that a response will be small.
      * Thus, this is intentionally visible internally only.
+     * Does not use [getChannel] so, it gets the [NoResumeException] as in the public API.
      */
-    @JvmOverloads
     internal suspend fun getBytes(request: DownloadRequest, skipFirstBytes: Long? = null): ByteArray {
         val channel = ByteChannel()
         get(request, skipFirstBytes) { bytes ->
@@ -176,7 +202,7 @@ public open class HttpManager @JvmOverloads constructor(
             null
         } else proxyConfig
         if (currentProxy != newProxy) {
-            log.info { "Switching proxy from [$currentProxy] to [$newProxy]"}
+            log.info { "Switching proxy from [$currentProxy] to [$newProxy]" }
             httpClient.close()
             httpClient = getNewHttpClient(newProxy)
         }

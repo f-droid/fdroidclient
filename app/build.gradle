@@ -177,8 +177,8 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15on:1.65'

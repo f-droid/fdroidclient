@@ -27,6 +27,7 @@ import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 private const val TOR_SOCKS_PORT = 9050
 
@@ -71,6 +72,32 @@ class HttpDownloaderTest {
         httpDownloader.download()
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
+        assertEquals(2, mockEngine.responseHistory.size)
+    }
+
+    @Test
+    fun testResumeError() = runSuspend {
+        val file = folder.newFile()
+        val firstBytes = Random.nextBytes(1024)
+        file.writeBytes(firstBytes)
+        val secondBytes = Random.nextBytes(1024)
+        val allBytes = firstBytes + secondBytes
+
+        var numRequest = 1
+        val mockEngine = MockEngine {
+            when (numRequest++) {
+                1 -> respond("", OK, headers = headersOf(ContentLength, "2048"))
+                2 -> respond(allBytes, OK) // not replying with PartialContent
+                3 -> respond(allBytes, OK)
+                else -> fail("Unexpected additional request")
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
+        httpDownloader.download()
+
+        assertContentEquals(allBytes, file.readBytes())
+        assertEquals(3, mockEngine.responseHistory.size)
     }
 
     @Test

@@ -132,11 +132,9 @@ class HttpManagerTest {
         assertContentEquals(content.copyOfRange(skipBytes, content.size),
             httpManager.getBytes(downloadRequest, skipBytes.toLong()))
         // second request fails, because it responds with OK and full content
-        val exception = assertFailsWith<ServerResponseException> {
+        assertFailsWith<NoResumeException> {
             httpManager.getBytes(downloadRequest, skipBytes.toLong())
         }
-        val url = mockEngine.requestHistory.last().url
-        assertEquals("Server error($url: 200 OK. Text: \"expected 206\"", exception.message)
     }
 
     @Test

@@ -79,8 +79,7 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
         appName.setText(app.name);
-        Glide.with(this)
-                .load(app.getIconUrl(this))
+        app.loadWithGlide(this)
                 .apply(Utils.getAlwaysShowIconRequestOptions())
                 .into(appIcon);
 

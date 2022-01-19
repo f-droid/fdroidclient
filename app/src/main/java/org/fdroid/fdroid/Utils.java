@@ -491,7 +491,7 @@ public final class Utils {
                     .fallback(R.drawable.ic_repo_app_default);
         }
         iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
-        Glide.with(context).load(app.getIconUrl(iv.getContext())).apply(iconRequestOptions).into(iv);
+        app.loadWithGlide(context).apply(iconRequestOptions).into(iv);
     }
 
     /**
