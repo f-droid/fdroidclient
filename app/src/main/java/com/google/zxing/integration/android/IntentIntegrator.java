@@ -19,11 +19,8 @@ package com.google.zxing.integration.android;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,16 +110,14 @@ import java.util.Map;
 public class IntentIntegrator {
 
     public static final int REQUEST_CODE = 0x0000c0de; // Only use bottom 16 bits
-    private static final String TAG = IntentIntegrator.class.getSimpleName();
 
     public static final String DEFAULT_TITLE = "Install Barcode Scanner?";
     public static final String DEFAULT_MESSAGE =
-            "This application requires Barcode Scanner. Would you like to install it?";
+            "This application requires a Barcode Scanner. Would you like to install one?";
     public static final String DEFAULT_YES = "Yes";
     public static final String DEFAULT_NO = "No";
 
     private static final String BS_PACKAGE = "com.google.zxing.client.android";
-    private static final String BSPLUS_PACKAGE = "com.srowen.bs.android";
 
     // supported barcode formats
     public static final Collection<String> PRODUCT_CODE_TYPES = list("UPC_A", "UPC_E", "EAN_8", "EAN_13", "RSS_14");
@@ -135,12 +130,6 @@ public class IntentIntegrator {
     public static final Collection<String> ALL_CODE_TYPES = null;
 
     public static final List<String> TARGET_BARCODE_SCANNER_ONLY = Collections.singletonList(BS_PACKAGE);
-    public static final List<String> TARGET_ALL_KNOWN = list(
-            BSPLUS_PACKAGE,             // Barcode Scanner+
-            BSPLUS_PACKAGE + ".simple", // Barcode Scanner+ Simple
-            BS_PACKAGE                  // Barcode Scanner
-            // What else supports this intent?
-            );
 
     private final AppCompatActivity activity;
     private final Fragment fragment;
@@ -149,7 +138,6 @@ public class IntentIntegrator {
     private String message;
     private String buttonYes;
     private String buttonNo;
-    private List<String> targetApplications;
     private final Map<String, Object> moreExtras = new HashMap<>(3);
 
     /**
@@ -177,7 +165,6 @@ public class IntentIntegrator {
         message = DEFAULT_MESSAGE;
         buttonYes = DEFAULT_YES;
         buttonNo = DEFAULT_NO;
-        targetApplications = TARGET_ALL_KNOWN;
     }
 
     public String getTitle() {
@@ -226,21 +213,6 @@ public class IntentIntegrator {
 
     public void setButtonNoByID(int buttonNoID) {
         buttonNo = activity.getString(buttonNoID);
-    }
-
-    public Collection<String> getTargetApplications() {
-        return targetApplications;
-    }
-
-    public final void setTargetApplications(List<String> targetApplications) {
-        if (targetApplications.isEmpty()) {
-            throw new IllegalArgumentException("No target applications");
-        }
-        this.targetApplications = targetApplications;
-    }
-
-    public void setSingleTargetApplication(String targetApplication) {
-        this.targetApplications = Collections.singletonList(targetApplication);
     }
 
     public Map<String, ?> getMoreExtras() {
@@ -317,15 +289,14 @@ public class IntentIntegrator {
             intentScan.putExtra("SCAN_CAMERA_ID", cameraId);
         }
 
-        String targetAppPackage = findTargetAppPackage(intentScan);
-        if (targetAppPackage == null) {
-            return showDownloadDialog();
-        }
-        intentScan.setPackage(targetAppPackage);
         intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         attachMoreExtras(intentScan);
-        startActivityForResult(intentScan, REQUEST_CODE);
+        try {
+            startActivityForResult(intentScan, REQUEST_CODE);
+        } catch (ActivityNotFoundException ex) {
+            return showDownloadDialog();
+        }
         return null;
     }
 
@@ -346,29 +317,6 @@ public class IntentIntegrator {
         }
     }
 
-    private String findTargetAppPackage(Intent intent) {
-        PackageManager pm = activity.getPackageManager();
-        List<ResolveInfo> availableApps = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-        if (availableApps != null) {
-            for (String targetApp : targetApplications) {
-                if (contains(availableApps, targetApp)) {
-                    return targetApp;
-                }
-            }
-        }
-        return null;
-    }
-
-    private static boolean contains(Iterable<ResolveInfo> availableApps, String targetApp) {
-        for (ResolveInfo availableApp : availableApps) {
-            String packageName = availableApp.activityInfo.packageName;
-            if (targetApp.equals(packageName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private AlertDialog showDownloadDialog() {
         AlertDialog.Builder downloadDialog = new AlertDialog.Builder(activity);
         downloadDialog.setTitle(title);
@@ -376,25 +324,13 @@ public class IntentIntegrator {
         downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String packageName;
-                if (targetApplications.contains(BS_PACKAGE)) {
-                    // Prefer to suggest download of BS if it's anywhere in the list
-                    packageName = BS_PACKAGE;
-                } else {
-                    // Otherwise, first option:
-                    packageName = targetApplications.get(0);
-                }
+                String packageName = BS_PACKAGE;
                 Uri uri = Uri.parse("market://details?id=" + packageName);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                try {
-                    if (fragment == null) {
-                        activity.startActivity(intent);
-                    } else {
-                        fragment.startActivity(intent);
-                    }
-                } catch (ActivityNotFoundException anfe) {
-                    // Hmm, market is not installed
-                    Log.w(TAG, "Google Play is not installed; cannot install " + packageName);
+                if (fragment == null) {
+                    activity.startActivity(intent);
+                } else {
+                    fragment.startActivity(intent);
                 }
             }
         });
@@ -461,18 +397,17 @@ public class IntentIntegrator {
         intent.setAction(BS_PACKAGE + ".ENCODE");
         intent.putExtra("ENCODE_TYPE", type);
         intent.putExtra("ENCODE_DATA", text);
-        String targetAppPackage = findTargetAppPackage(intent);
-        if (targetAppPackage == null) {
-            return showDownloadDialog();
-        }
-        intent.setPackage(targetAppPackage);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         attachMoreExtras(intent);
-        if (fragment == null) {
-            activity.startActivity(intent);
-        } else {
-            fragment.startActivity(intent);
+        try {
+            if (fragment == null) {
+                activity.startActivity(intent);
+            } else {
+                fragment.startActivity(intent);
+            }
+        } catch (ActivityNotFoundException ex) {
+            return showDownloadDialog();
         }
         return null;
     }
