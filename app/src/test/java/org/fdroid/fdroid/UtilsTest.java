@@ -4,8 +4,13 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.Signature;
+import android.database.Cursor;
 
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -15,6 +20,7 @@ import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
 
+import androidx.loader.content.CursorLoader;
 import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
@@ -54,6 +60,23 @@ public class UtilsTest {
     // this pair has one digit added to the fingerprint
     String fingerprintLongByOneFingerprint = "59050C8155DCA377F23D5A15B77D37134000CDBD8B42FBFBE0E3F38096E68CECE";
     String fingerprintLongByOnePubkey = "308203c5308202ada00302010202047b7cf549300d06092a864886f70d01010b0500308192310b30090603550406130255533111300f060355040813084e657720596f726b3111300f060355040713084e657720596f726b311d301b060355040a131454686520477561726469616e2050726f6a656374311f301d060355040b1316477561726469616e20462d44726f6964204275696c64311d301b06035504031314677561726469616e70726f6a6563742e696e666f301e170d3132313032393130323530305a170d3430303331363130323530305a308192310b30090603550406130255533111300f060355040813084e657720596f726b3111300f060355040713084e657720596f726b311d301b060355040a131454686520477561726469616e2050726f6a656374311f301d060355040b1316477561726469616e20462d44726f6964204275696c64311d301b06035504031314677561726469616e70726f6a6563742e696e666f30820122300d06092a864886f70d01010105000382010f003082010a0282010100b7f1f635fa3fce1a8042aaa960c2dc557e4ad2c082e5787488cba587fd26207cf59507919fc4dcebda5c8c0959d14146d0445593aa6c29dc639570b71712451fd5c231b0c9f5f0bec380503a1c2a3bc00048bc5db682915afa54d1ecf67b45e1e05c0934b3037a33d3a565899131f27a72c03a5de93df17a2376cc3107f03ee9d124c474dfab30d4053e8f39f292e2dcb6cc131bce12a0c5fc307985195d256bf1d7a2703d67c14bf18ed6b772bb847370b20335810e337c064fef7e2795a524c664a853cd46accb8494f865164dabfb698fa8318236432758bc40d52db00d5ce07fe2210dc06cd95298b4f09e6c9b7b7af61c1d62ea43ea36a2331e7b2d4e250203010001a321301f301d0603551d0e0416041404d763e981cf3a295b94a790d8536a783097232b300d06092a864886f70d01010b05000382010100654e6484ff032c54fed1d96d3c8e731302be9dbd7bb4fe635f2dac05b69f3ecbb5acb7c9fe405e2a066567a8f5c2beb8b199b5a4d5bb1b435cf02df026d4fb4edd9d8849078f085b00950083052d57467d65c6eebd98f037cff9b148d621cf8819c4f7dc1459bf8fc5c7d76f901495a7caf35d1e5c106e1d50610c4920c3c1b50adcfbd4ad83ce7353cdea7d856bba0419c224f89a2f3ebc203d20eb6247711ad2b55fd4737936dc42ced7a047cbbd24012079204a2883b6d55d5d5b66d9fd82fb51fca9a5db5fad9af8564cb380ff30ae8263dbbf01b46e01313f53279673daa3f893380285646b244359203e7eecde94ae141b7dfa8e6499bb8e7e0b25ab85";
+
+    Context context;
+    Cursor cursor;
+
+    @Before
+    public void setUp() {
+        context = ApplicationProvider.getApplicationContext();
+        Preferences.setupForTests(context);
+        cursor = null;
+    }
+
+    @After
+    public void tearDown() {
+        if (cursor != null) {
+            cursor.close();
+        }
+    }
 
     @Test
     public void trailingNewLines() {
@@ -253,5 +276,25 @@ public class UtilsTest {
             packageInfo.signatures = new Signature[]{new Signature(rawCertBytes)};
             assertEquals(sig, Utils.getPackageSig(packageInfo));
         }
+    }
+
+    @Test
+    public void testGetAntifeatureSQLFilterWithNone() {
+        Context context = ApplicationProvider.getApplicationContext();
+        Preferences.setupForTests(context);
+        assertEquals("fdroid_app.antiFeatures IS NULL", Utils.getAntifeatureSQLFilter(context));
+    }
+
+    @Test
+    public void testGetAntifeatureSQLFilter() {
+        CursorLoader cursorLoader = new CursorLoader(
+                context,
+                AppProvider.getLatestTabUri(),
+                Schema.AppMetadataTable.Cols.ALL,
+                Utils.getAntifeatureSQLFilter(context),
+                null,
+                null);
+        cursor = cursorLoader.loadInBackground();
+        assertNotNull(cursor);
     }
 }
