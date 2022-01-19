@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MenuTitle">
-    <!-- android:title and android:icon are set dynamically in MainActivity -->
     <item
         android:id="@+id/latest"
         android:enabled="true"
