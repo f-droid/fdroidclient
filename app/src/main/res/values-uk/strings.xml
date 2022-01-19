@@ -530,4 +530,17 @@
     <string name="has_disallow_install_unknown_sources">Цей користувач не може додати невідомі джерела, які містять нові репозиторії</string>
     <string name="has_disallow_install_unknown_sources_globally">Адміністратор пристрою не дозволяє встановлювати застосунки з невідомих джерел, що містять нові репозиторії</string>
     <string name="swap_wifi_vpn_conflict">Конфлікти з активною VPN!</string>
+    <string name="antiads">Оголошення</string>
+    <string name="antinosource_key">NoSourceSince</string>
+    <string name="antitrack">Відстеження</string>
+    <string name="antinonfreead">Невільні додатки</string>
+    <string name="antinosource">Джерельний код більше недоступний</string>
+    <string name="app_list_results_hidden_antifeature_settings">Деякі результати сховано через ваші налаштування небажаних функцій.</string>
+    <string name="antinonfreenet">Невільні мережеві послуги</string>
+    <string name="antinonfreedep">Невільні залежності</string>
+    <string name="antiupstreamnonfree">Основні невільні</string>
+    <string name="antidisabledalgorithm">Підписано за допомогою небезпечного алгоритму</string>
+    <string name="antinonfreeassets">Невільні засоби</string>
+    <string name="antiknownvuln">Відома вразливість</string>
+    <string name="antiothers">Інші небажані функції</string>
 </resources>

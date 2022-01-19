@@ -527,4 +527,16 @@
     <string name="share_apk_error">Kunne ikke dele programfil</string>
     <string name="has_disallow_install_unknown_sources_globally">Din enhetsadministrator tillater ikke installasjon av programmer fra ukjente kilder. Dette gjelder også nye pakkebrønner.</string>
     <string name="has_disallow_install_unknown_sources">Ukjente kilder kan ikke legges til av denne brukeren. Dette gjelder også nye pakkebrønner.</string>
+    <string name="antiads">Reklame</string>
+    <string name="antinonfreeassets">Ufrie gjenstander</string>
+    <string name="antinonfreedep">Ufrie avhengigheter</string>
+    <string name="antitrack">Sporing</string>
+    <string name="app_list_results_hidden_antifeature_settings">Noen resultater ble utelatt som følge av dine antifunksjonsinnstillinger.</string>
+    <string name="antiupstreamnonfree">Kildekoden oppstrøms er ikke helt fri</string>
+    <string name="antinonfreead">Ufrie tillegg</string>
+    <string name="antiothers">Andre antifunksjoner</string>
+    <string name="antinonfreenet">Ufrie nettverkstjenester</string>
+    <string name="antidisabledalgorithm">Signert med en utrygg algoritme</string>
+    <string name="antiknownvuln">Kjent sårbarhet</string>
+    <string name="antinosource">Kilden er ikke lenger tilgjengelig</string>
 </resources>

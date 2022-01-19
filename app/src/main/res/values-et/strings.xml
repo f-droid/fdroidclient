@@ -58,7 +58,7 @@
     <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
-    <string name="install_confirm_update">Kas soovite olemasoleva rakenduse värskenduse installida? Teie olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
+    <string name="install_confirm_update">Kas soovid olemasoleva rakenduse värskenduse paigaldada\? Sinu olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
     <string name="menu_email">Saada autorile e-kiri</string>
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
     <string name="repo_provider">Hoidla: %s</string>
@@ -112,9 +112,9 @@
     <string name="menu_source">Lähtekood</string>
     <string name="global_error_updating_repos">Viga värskendamisel: %s</string>
     <string name="repo_last_update">Viimane värskendus</string>
-    <string name="install_confirm_update_system">Kas soovite sisseehitatud rakenduse värskenduse installida? Teie olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
-    <string name="install_confirm_update_no_perms">Kas soovite installida olemasoleva rakenduse värskenduse? Olemasolevad andmed ei lähe kaduma. See ei nõua erijuurdepääsu.</string>
-    <string name="install_confirm_update_system_no_perms">Kas soovite installida sisseehitatud rakenduse värskenduse? Olemasolevad andmed ei lähe kaduma. See ei nõua erijuurdepääsu.</string>
+    <string name="install_confirm_update_system">Kas soovid sisseehitatud rakenduse värskenduse paigaldada\? Sinu olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
+    <string name="install_confirm_update_no_perms">Kas soovid paigaldada olemasoleva rakenduse värskenduse\? Olemasolevad andmed ei lähe kaduma. See ei nõua erijuurdepääsu.</string>
+    <string name="install_confirm_update_system_no_perms">Kas soovid paigaldada sisseehitatud rakenduse värskenduse\? Olemasolevad andmed ei lähe kaduma. See ei nõua erijuurdepääsu.</string>
     <string name="menu_upgrade">Värskenda</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -122,10 +122,10 @@
     <string name="details_notinstalled">Pole paigaldatud</string>
     <string name="antiadslist">Selles rakenduses on reklaame</string>
     <string name="antinonfreeadlist">See rakendus edendab mitte-vabu laiendusi</string>
-    <string name="antinonfreenetlist">See rakendus edendab mitte-vabu võrguteenuseid</string>
+    <string name="antinonfreenetlist">See rakendus eelistab mitte-vabu võrguteenuseid</string>
     <string name="antinonfreedeplist">See rakendus sõltub teistest mitte-vabadest rakendustest</string>
     <string name="antiupstreamnonfreelist">Ülesvoolu lähtekood ei ole täiesti vaba</string>
-    <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu varasid</string>
+    <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu komponente</string>
     <string name="display">Kuva</string>
     <string name="expert">Eksperdi režiim</string>
     <string name="expert_on">Näita täiendavat infot ja luba täiendavad seaded</string>
@@ -239,7 +239,7 @@
     <string name="allPerms">Kõik</string>
     <string name="perm_costs_money">See võib olla tasuline</string>
     <string name="uninstall_update_confirm">Kas asendada see rakendus tehaseversiooniga? Kõik andmed eemaldatakse.</string>
-    <string name="uninstall_confirm">Kas soovite selle rakenduse desinstallida?</string>
+    <string name="uninstall_confirm">Kas soovid selle rakenduse eemaldada\?</string>
     <string name="download_error">Allalaadimine nurjus!</string>
     <string name="download_pending">Oodatakse allalaadimise algamist…</string>
     <string name="install_error_notify_title">Viga %s paigaldamisel</string>
@@ -308,7 +308,7 @@
     <string name="app__install_downloaded_update">Värskenda</string>
     <string name="app_installed_media">Fail paigaldati asukohta %s</string>
     <string name="app_permission_storage">F-Droid vajab sellele seadmele paigaldamisel salvestusõigust. Palun luba see järgmisel ekraanil, et jätkata paigaldust.</string>
-    <string name="app_list_download_ready">Alla laetud, valmis paigaldamiseks</string>
+    <string name="app_list_download_ready">Alla laaditud, valmis paigaldamiseks</string>
     <string name="app_list__dismiss_app_update">Värskendust ignoreeriti</string>
     <string name="app_list__dismiss_vulnerable_app">Haavatavust ignoreeriti</string>
     <string name="app_list__dismiss_downloading_app">Allalaadimine tühistatud</string>
@@ -337,7 +337,7 @@
     <string name="preference_category__my_apps">Minu rakendused</string>
     <string name="details_new_in_version">Uus versioonis %s</string>
     <string name="antifeatureswarning">Sellel rakendusel on funktsioone, mis ei pruugi sulle meeldida.</string>
-    <string name="antifeatures">Anti funktsioonid</string>
+    <string name="antifeatures">Omadused, mis ei sobi</string>
     <string name="download_404">Soovitud faili ei leitud.</string>
     <string name="status_inserting_x_apps">Rakenduse detailide salvestamine (%1$d/%2$d) %3$s-st</string>
     <plurals name="button_view_all_apps_in_category">
@@ -452,8 +452,8 @@
     <string name="antidisabledalgorithmlist">Sellel rakendusel on nõrk turvasignatuur</string>
     <string name="antiknownvulnlist">Sellel rakendusel on tuntud turvanõrkus</string>
     <string name="antinosourcesince">Lähtekood ei ole enam saadaval, uuendused ei ole enam võimalikud.</string>
-    <string name="show_anti_feature_apps">Kaasa vastandomadustega rakendused</string>
-    <string name="show_anti_feature_apps_on">Kuva rakendused, mis vajavad vastandomadusi</string>
+    <string name="show_anti_feature_apps">Kaasa mittesobivate omadustega rakendused</string>
+    <string name="show_anti_feature_apps_on">Kuva rakendused, mis vajavad mittesobivaid omadusi</string>
     <string name="force_touch_apps">Kaasa puuteekraani rakendused</string>
     <string name="force_touch_apps_on">Kaasa rakendused, mis vajavad puuteekraani sõltumata riistvara toest</string>
     <string name="repo_official_mirrors">Ametlikud peeglid</string>
@@ -525,4 +525,16 @@
     <string name="has_disallow_install_unknown_sources_globally">Sinu seadme haldaja ei luba rakenduste paigaldamist tundmatutest allikatest, sealhulgas uutest hoidlatest</string>
     <string name="has_disallow_install_unknown_sources">Antud kasutaja ei või lisada tundmatuid allikaid, sealhulgas uusi hoidlaid</string>
     <string name="swap_wifi_vpn_conflict">Nii tekib vastuolu hetkel kasutusel oleva VPN\'iga!</string>
+    <string name="antinonfreedep">Sõltuvus mitte-vabadest rakendustest</string>
+    <string name="antiads">Reklaamid</string>
+    <string name="antitrack">Sisaldab kasutajate tegevuse jälgimist</string>
+    <string name="antiupstreamnonfree">Mitte-vaba ülesvoolu lähtekood</string>
+    <string name="antinosource">Lähtekood pole enam saadaval</string>
+    <string name="antidisabledalgorithm">Allkirjastamisel on kasutatud ebaturvalist algoritmi</string>
+    <string name="app_list_results_hidden_antifeature_settings">Osa otsingutulemusi on kuvamata, sest rakendustel on funktsioone, mis sulle ei meeldi.</string>
+    <string name="antinonfreenet">Mitte-vabad võrguteenuseid</string>
+    <string name="antinonfreead">Mitte-vabad laiendused</string>
+    <string name="antinonfreeassets">Mitte-vabad komponendid</string>
+    <string name="antiknownvuln">Tuntud turvanõrkus</string>
+    <string name="antiothers">Muud omadused, mis ei sobi</string>
 </resources>

@@ -516,4 +516,16 @@
     <string name="swap_wifi_vpn_conflict">Conflitos com VPN ativa!</string>
     <string name="has_disallow_install_unknown_sources">Não podem ser adicionadas por este utilizador fontes desconhecidas, o que inclui novos repositórios</string>
     <string name="has_disallow_install_unknown_sources_globally">O administrador do seu aparelho não permite a instalação de apps de fontes desconhecidas que incluem novos repositórios</string>
+    <string name="antiads">Anúncios</string>
+    <string name="antitrack">Rastreamento</string>
+    <string name="antinonfreeassets">Ativos não livres</string>
+    <string name="antidisabledalgorithm">Assinado usando um algoritmo inseguro</string>
+    <string name="antinosource">Código-fonte já não disponível</string>
+    <string name="antinonfreenet">Serviços de rede não livres</string>
+    <string name="antinonfreead">Complementos não livres</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de recursos indesejados.</string>
+    <string name="antinonfreedep">Dependências não livres</string>
+    <string name="antiupstreamnonfree">Upstream não livre</string>
+    <string name="antiknownvuln">Vulnerabilidade conhecida</string>
+    <string name="antiothers">Outras características indesejadas</string>
 </resources>

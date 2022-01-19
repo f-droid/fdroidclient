@@ -1,11 +1,13 @@
 * Lokalisierung der App-Beschreibung beachtet jetzt Sprachlisten in den Spracheinstellungen
 
-* Tab "Neueste" zeigt nun neuere Ergebnisse zuerst (@TheLastProject @IzzySoft)
+* Tab "Neues" zeigt nun neuere Ergebnisse zuerst (@TheLastProject @IzzySoft)
 
 * Verbesserte Suchergebnisse (@Tvax @gcbrown76)
 
-* Effiziente Planung der und zuverlässigere Cache-Bereinigung (@Isira-Seneviratne)
+* Zuverlässigere Cache-Bereinigung
+
+* Effiziente Planung der Cache-Bereinigung (@Isira-Seneviratne)
 
 * Zuverlässigere Repo-URL-Analyse beim Hinzufügen von Repos (@projectgus)
 
-* Opt-in F-Droid Metriken
+* Opt-in F-Droid-Metriken

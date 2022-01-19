@@ -425,7 +425,7 @@
     <string name="swap_toast_could_not_enable_hotspot">Không bật được điểm phát sóng Wi-Fi!</string>
     <string name="warning_scaning_qr_code">Máy ảnh của bạn không có chức năng tự động lấy nét. Có thể khó quét được mã.</string>
     <string name="hide_all_notifications">Ẩn tất cả thông báo</string>
-    <string name="hide_all_notifications_summary">Ngăn mọi hành động không hiện lên trong thanh trạng thái và ngăn thông báo.</string>
+    <string name="hide_all_notifications_summary">Ngăn mọi hành động khỏi việc hiển thị thanh trạng thái và ngăn thông báo.</string>
     <string name="prompt_to_send_crash_reports_summary">Thu thập thông tin khi app gặp lỗi và gửi đến nhà phát triển</string>
     <string name="install_history">Lịch sử cài đặt</string>
     <string name="install_history_summary">Xem nhật ký của từng lượt cài đặt và gỡ bỏ</string>
@@ -514,4 +514,16 @@
     <string name="swap_wifi_vpn_conflict">Xung đột với VPN đang hoạt động!</string>
     <string name="has_disallow_install_unknown_sources">Nguồn không xác định không thể được người dùng này thêm vào, bao gồm cả các kho mới</string>
     <string name="has_disallow_install_unknown_sources_globally">Quản trị viên thiết bị không cho phép cài đặt ứng dụng từ nguồn không xác định, bao gồm cả các kho mới</string>
+    <string name="antidisabledalgorithm">Được kí bằng thuật toán không an toàn</string>
+    <string name="antinonfreedep">Phụ thuộc vào những thứ không tự do</string>
+    <string name="antinonfreead">Phần mở rộng không tự do</string>
+    <string name="antiupstreamnonfree">Dự án mẹ không tự do</string>
+    <string name="antinonfreeassets">Các phần không tự do</string>
+    <string name="antiknownvuln">Lỗ hổng bảo mật đã biết</string>
+    <string name="antinosource">Mã nguồn không còn nữa</string>
+    <string name="app_list_results_hidden_antifeature_settings">Một số kết quả bị ẩn dựa theo cài đặt tính năng không mong muốn.</string>
+    <string name="antiads">Quảng cáo</string>
+    <string name="antitrack">Theo dõi</string>
+    <string name="antinonfreenet">Dịch vụ mạng không tự do</string>
+    <string name="antiothers">Tính năng không mong muốn khác</string>
 </resources>

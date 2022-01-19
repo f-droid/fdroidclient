@@ -1,0 +1,15 @@
+* Megosztási menü átdolgozása.
+
+* Továbbfejlesztett Közeli munkafolyamat és navigáció, hibajavítások.
+
+* Material Design fejlesztések (@proletarius101)
+
+* A PNG alkalmazásikon nélküli alkalmazások megjelennek a Legfrissebb lapon (@ashutoshgngwr)
+
+* Fejlettebb ikonkezelés korlátolt adat/Wi-Fi beállítások mellett
+
+* Offline, közeli megosztás fejlesztése
+
+* Megjelenítendő előnytelen funkciók kiválasztása
+
+* Új tárolók hozzáadásának tiltása, ha az „Ismeretlen források” tiltottak

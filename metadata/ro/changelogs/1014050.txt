@@ -1,0 +1,17 @@
+* Revizuirea Share pentru opțiuni integrate,ca Nearby.
+
+* Flux de lucru și navigare Nearby mai bune,multe corecturi .
+
+*Design material mai bun(@proletarius101).
+
+* App-uri fără iconi PNG acum în Latest Tab (@ashutoshgngwr)
+
+* Gestionare îmbunătățită a pictogramelor cu setări limitate de date/WiFi.
+
+*Partajare offline, în apropiere
+
+* Permite să alegi ce antifațe se afișează
+
+* Blocare add de noi repoziții când adminul dispozitivului refuză "Surse necunoscute"
+
+* Eliminarea "Allow Push Requests"

@@ -1,0 +1,13 @@
+* Lokalizacja opisu aplikacji w pełni uwzględnia listy w ustawieniach językowych Androida
+
+* Karta Ostatnie pokazuje aplikacje na podstawie ustawień językowych, w kolejności od najnowszych (@TheLastProject @IzzySoft)
+
+* Znacznie lepsze wyniki wyszukiwania (@Tvax @gcbrown76)
+
+* Bardziej niezawodne czyszczenie pamięci podręcznej
+
+* Efektywne planowanie czyszczenia pamięci podręcznej (@Isira-Seneviratne)
+
+* Poprawiono parsowanie adresów URL repozytorium (@projectgus)
+
+* Opcjonalne metryki F-Droid

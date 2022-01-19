@@ -36,7 +36,7 @@
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на ново хранилище</string>
     <string name="repo_add_add">Добавяне</string>
-    <string name="cancel">Отказ</string>
+    <string name="cancel">Cancel</string>
     <string name="add_key">Добавете ключ</string>
     <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане. Моля, изберете такъв!</string>
     <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
@@ -530,4 +530,16 @@
     <string name="swap_wifi_vpn_conflict">Конфликт с текущия VPN!</string>
     <string name="has_disallow_install_unknown_sources">Този потребител не може да добавя неизвестни източници, включително нови хранилища</string>
     <string name="has_disallow_install_unknown_sources_globally">Администраторът на устройството не позволява инсталиране на приложения от неизвестни източници, включително нови хранилища</string>
+    <string name="antidisabledalgorithm">Подписът е от несигурен алгоритъм</string>
+    <string name="antiknownvuln">Известна уязвимост</string>
+    <string name="antinosource">Изходният код вече не е наличен</string>
+    <string name="antiupstreamnonfree">Несвободен оригинален изходен код</string>
+    <string name="app_list_results_hidden_antifeature_settings">Има скрити резултати въз основа на настройките за антифункции.</string>
+    <string name="antiads">Реклами</string>
+    <string name="antitrack">Проследяване</string>
+    <string name="antinonfreead">Несвободни добавки</string>
+    <string name="antinonfreedep">Несвободни зависимости</string>
+    <string name="antinonfreeassets">Несвободни активи</string>
+    <string name="antinonfreenet">Несвободни мрежови услуги</string>
+    <string name="antiothers">Други анти-функции</string>
 </resources>

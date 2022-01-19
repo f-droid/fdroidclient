@@ -1,6 +1,6 @@
 * Uygulama açıklamalarında URL'lerin bağlantıya çevrilmesi iyileştirildi
 
-* Nearby'da SD kartların ve USG-OTG'nin daha işlenmesi iyileştirildi
+* Yakınımda'da SD kartların ve USG-OTG'nin işlenmesi iyileştirildi
 
 * Kodlar modernleştirildi ve PNG resimler vektörlere dönüştürüldü (teşekkürler @isira-seneviratne!)
 

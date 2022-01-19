@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalanmış. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekiyor. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın tüm verilerini sileceğini unutmayın)</string>
-    <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de kurulsun mu\?</string>
+    <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de yüklensin mi\?</string>
     <string name="version">Sürüm</string>
     <string name="delete">Sil</string>
     <string name="enable_nfc_send">NFC ile göndermeyi etkinleştir…</string>
@@ -19,12 +19,12 @@
     <string name="app_details">Uygulama Ayrıntıları</string>
     <string name="no_such_app">Böyle bir uygulama yok.</string>
     <string name="about_title">F-Droid Hakkında</string>
-    <string name="about_site">Web Sitesi</string>
+    <string name="about_site">İnternet Sitesi</string>
     <string name="about_version">Sürüm</string>
-    <string name="app_installed">Kurulu</string>
-    <string name="app_not_installed">Kurulu değil</string>
-    <string name="app_inst_known_source">Kuruldu (%s konumundan)</string>
-    <string name="app_inst_unknown_source">Kuruldu (bilinmeyen kaynaktan)</string>
+    <string name="app_installed">Yüklü</string>
+    <string name="app_not_installed">Yüklü değil</string>
+    <string name="app_inst_known_source">Yüklendi (%s kaynağından)</string>
+    <string name="app_inst_unknown_source">Yüklendi (bilinmeyen kaynaktan)</string>
     <string name="added_on">%s tarihinde eklendi</string>
     <string name="ok">Tamam</string>
     <string name="yes">Evet</string>
@@ -49,7 +49,7 @@
     <string name="menu_uninstall">Kaldır</string>
     <string name="menu_ignore_all">Tüm güncellemeleri yoksay</string>
     <string name="menu_ignore_this">Bu güncellemeyi yoksay</string>
-    <string name="menu_website">Web Sitesi</string>
+    <string name="menu_website">İnternet Sitesi</string>
     <string name="menu_issues">Sorunlar</string>
     <string name="menu_source">Kaynak Kodu</string>
     <string name="menu_upgrade">Güncelle</string>
@@ -69,7 +69,7 @@
     <string name="show_incompat_versions_on">Aygıtla uyumsuz uygulama sürümlerini göster</string>
     <string name="local_repo">Yerel Depo</string>
     <string name="local_repo_running">F-Droid takasa hazır</string>
-    <string name="touch_to_configure_local_repo">Ayrıntıları görmek ve başkalarının uygulamalarınızı takas etmesine müsaade etmek için dokunun.</string>
+    <string name="touch_to_configure_local_repo">Ayrıntıları görüntülemek ve başkalarının uygulamalarınızı değiştirmesine izin vermek için dokunun.</string>
     <string name="deleting_repo">Geçerli depo siliniyor…</string>
     <string name="adding_apks_format">%s depoya ekleniyor…</string>
     <string name="writing_index_jar">İmzalanmış dizin dosyası yazılıyor (index.jar)…</string>
@@ -85,11 +85,11 @@
     <string name="proxy_host_summary">Vekil sunucu adresi (örn. 127.0.0.1)</string>
     <string name="proxy_port">Vekil Bağlantı Noktası</string>
     <string name="proxy_port_summary">Vekil bağlantı noktası numarası (örn. 8118)</string>
-    <string name="status_download">%1$s konumundan
+    <string name="status_download">İndiriliyor
 \n%2$s / %3$s (%%%4$d)
-\nindiriliyor</string>
-    <string name="status_connecting_to_repo">%1$s konumuna
-\nbağlanılıyor</string>
+\nkaynak: %1$s</string>
+    <string name="status_connecting_to_repo">Bağlanılıyor
+\n%1$s</string>
     <string name="repos_unchanged">Tüm depolar güncel</string>
     <string name="all_other_repos_fine">Diğer depolar hata oluşturmadı.</string>
     <string name="global_error_updating_repos">Güncelleme sırasında hata: %s</string>
@@ -107,9 +107,9 @@
     <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır. Sunduğu uygulamaları görmek için etkinleştirmelisiniz.</string>
     <string name="unknown">Bilinmiyor</string>
     <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
-    <string name="repo_confirm_delete_body">Bir depoyu silmek, oradan uygulamaların artık kullanılamayacağı anlamına gelir.
+    <string name="repo_confirm_delete_body">Bir depoyu silmek, oradaki uygulamaların artık kullanılamayacağı anlamına gelir.
 \n
-\nNot: Önceden kurulan tüm uygulamalar aygıtınızda kalacaktır.</string>
+\nNot: Önceden yüklenen tüm uygulamalar aygıtınızda kalacaktır.</string>
     <string name="repo_disabled_notification">\"%1$s\" devre dışı bırakıldı.
 \n
 \nOradan uygulama kurmak için bu depoyu tekrar etkinleştirmeniz gerekecektir.</string>
@@ -137,8 +137,8 @@
     <string name="swap_welcome">F-Droid\'e hoş geldiniz!</string>
     <string name="swap_confirm_connect">%1$s cihazından şimdi uygulama almak istiyor musunuz\?</string>
     <string name="app_name">F-Droid</string>
-    <string name="unstable_updates">Stabil olmayan güncellemeler</string>
-    <string name="unstable_updates_summary">Stabil olmayan sürümlere güncellemeyi öner</string>
+    <string name="unstable_updates">Kararsız güncellemeler</string>
+    <string name="unstable_updates_summary">Kararsız sürümlere güncellemeleyi öner</string>
     <string name="login_title">Kimlik doğrulama gerekli</string>
     <string name="login_name">Kullanıcı adı</string>
     <string name="login_password">Parola</string>
@@ -159,9 +159,8 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="antinonfreeassetslist">Bu uygulama özgür olmayan unsurlar içerir</string>
-    <string name="status_download_unknown_size">%1$s konumundan
-\n%2$s
-\nindiriliyor</string>
+    <string name="status_download_unknown_size">%2$s indiriliyor
+\nkaynak %1$s</string>
     <string name="banner_updating_repositories">Depolar güncelleniyor</string>
     <string name="status_processing_xml_percent">İşleniyor %2$s / %3$s (%%%4$d) kaynak: %1$s</string>
     <string name="status_inserting_apps">Uygulama ayrıntıları kaydediliyor</string>
@@ -179,12 +178,12 @@
     <string name="category_Time">Zaman</string>
     <string name="category_Writing">Yazım</string>
     <string name="empty_search_available_app_list">Eşleşen hiçbir uygulama yok.</string>
-    <string name="empty_installed_app_list">Kurulu uygulama yok.
+    <string name="empty_installed_app_list">Yüklü uygulama yok.
 \n
-\nAygıtınızda uygulamalar var ancak bunlar F-Droid\'te mevcut değil. Bunun nedeni, depolarınızı güncellemeniz gerektiğinden ya da depoların uygulamalarınızı gerçekten elinizde bulundurması için olabilir.</string>
+\nAygıtınızda uygulamalar var ancak bunlar F-Droid\'te mevcut değil. Bu depolarınızı güncellemeniz gerektiğinden veya depolarda gerçekten uygulamanız mevcut olmadığından olabilir.</string>
     <string name="empty_can_update_app_list">Tebrikler!
 \nUygulamalarınız güncel.</string>
-    <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle kurulamadı</string>
+    <string name="install_error_unknown">Bilinmeyen bir hata nedeniyle yüklenemedi</string>
     <string name="uninstall_error_unknown">Bilinmeyen bir hata nedeniyle kaldırılamadı</string>
     <string name="swap_nfc_title">Takaslamak için dokunun</string>
     <string name="swap_success">Takas başarılı!</string>
@@ -262,7 +261,7 @@
     <string name="keep_month">1 Ay</string>
     <string name="keep_year">1 Yıl</string>
     <string name="keep_forever">Daima</string>
-    <string name="keep_install_history">Kurulum geçmişi tut</string>
+    <string name="keep_install_history">Yükleme geçmişi tut</string>
     <string name="keep_install_history_summary">Tüm yükleme ve kaldırmaların günlüğünü özel olarak sakla</string>
     <string name="update_auto_install">Güncellemeleri otomatik olarak yükle</string>
     <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız\?</string>
@@ -302,10 +301,9 @@
     </plurals>
     <string name="app_recommended_version_installed">Sürüm %1$s (Önerilen)</string>
     <string name="app_new">Yeni</string>
-    <string name="installed_apps__activity_title">Kurulu Uygulamalar</string>
-    <string name="installed_app__updates_ignored">Yok sayılan güncellemeler</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Sürüm %1$s için yok sayılan güncellemeler
-    </string>
+    <string name="installed_apps__activity_title">Yüklü Uygulamalar</string>
+    <string name="installed_app__updates_ignored">Güncellemeler yok sayıldı</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">%1$s sürümü için güncellemeler yok sayıldı</string>
     <string name="preference_category__my_apps">Uygulamalarım</string>
     <string name="preference_manage_installed_apps">Yüklü uygulamaları yönet</string>
     <string name="tts_category_name">Kategori %1$s</string>
@@ -320,8 +318,8 @@
     <string name="updates__hide_updateable_apps">Uygulamaları gizle</string>
     <string name="updates__show_updateable_apps">Uygulamaları göster</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">%1$d uygulama için güncellemeyi indir.</item>
-        <item quantity="other">%1$d uygulama için güncellemeleri indir.</item>
+        <item quantity="one">%1$d uygulamanın güncellemesini indir.</item>
+        <item quantity="other">%1$d uygulamanın güncellemesini indir.</item>
     </plurals>
     <string name="details_new_in_version">%s sürümündeki yenilikler</string>
     <string name="antifeatureswarning">Bu uygulama sevmeyebileceğiniz özellikler içerir.</string>
@@ -334,12 +332,8 @@
     <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu\? Uygulamaları yakınınızdaki kişilerden alın!</string>
     <string name="nearby_splash__find_people_button">Yakındaki kişileri bul</string>
     <string name="nearby_splash__both_parties_need_fdroid">Yakınımda kullanımı için her iki tarafta %1$s olmalı.</string>
-    <string name="latest__empty_state__never_updated">Uygulama listeniz güncellendiğinde, en son uygulamalar burada
-        görünmeli
-    </string>
-    <string name="latest__empty_state__no_enabled_repos">Bir depoyu etkinleştirip güncellemesine izin verdiğinizde, en
-        son uygulamalar burada görünmeli
-    </string>
+    <string name="latest__empty_state__never_updated">Uygulama listeniz güncellendiğinde, en son uygulamalar burada gözükecektir</string>
+    <string name="latest__empty_state__no_enabled_repos">Bir depoyu etkinleştirip güncellemesine izin verdiğinizde, en son uygulamalar burada gözükecektir</string>
     <string name="categories__empty_state__no_categories">Gösterilecek kategori yok</string>
     <string name="latest__empty_state__no_recent_apps">Yakın tarihli uygulama bulunamadı</string>
     <string name="menu_video">Video</string>
@@ -373,17 +367,17 @@
     </plurals>
     <string name="by_author_format">%s tarafından</string>
     <string name="download_404">İstenen dosya bulunamadı.</string>
-    <string name="force_old_index">Eski indeks biçimini zorunlu kıl</string>
-    <string name="force_old_index_summary">Hatalar ve uyumluluk sorunları olması halinde, XML uygulama indeksini kullan</string>
-    <string name="app_list_download_ready">İndirildi, kurmaya hazır</string>
+    <string name="force_old_index">Eski dizin biçimini zorunlu kıl</string>
+    <string name="force_old_index_summary">Hatalar ve uyumluluk sorunları olması halinde, XML uygulama dizinini kullan</string>
+    <string name="app_list_download_ready">İndirildi, yüklemeye hazır</string>
     <string name="status_inserting_x_apps">Uygulama ayrıntıları kaydediliyor (%1$d/%2$d) kaynak %3$s</string>
-    <string name="app_installed_media">Dosya %s konumuna kuruldu</string>
-    <string name="app_permission_storage">F-Droid, bunu depolamaya kurmak için depolama iznine gereksinir. Lütfen kurulumu sürdürmek için sonraki ekranda izin verin.</string>
+    <string name="app_installed_media">Dosya %s konumuna yüklendi</string>
+    <string name="app_permission_storage">F-Droid bunu depolaya yüklemek için depolama iznine ihtiyaç duyuyor. Yüklemeye devam etmek için lütfen bir sonraki ekranda izin verin.</string>
     <string name="app_details__incompatible_mismatched_signature">Yüklü sürümden farklı imza</string>
-    <string name="app_details__no_versions__show_incompat_versions">Burada uyumsuz sürümleri yinede göstermek için, \"%1$s\" ayarını etkinleştirin.</string>
+    <string name="app_details__no_versions__show_incompat_versions">Uyumsuz sürümleri burada yine de göstermek için, \"%1$s\" ayarını etkinleştirin.</string>
     <string name="app_details__no_versions__no_compatible_signatures">Uyumlu imzaya sahip sürüm yok</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Aygıtla uyumlu sürüm yok</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Kurulu sürüm hiçbir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip kurmanızı sağlayacaktır. Bu genellikle, farklı bir sertifika ile imzalanmışsa, Google Play veya diğer kaynaklar aracılığıyla kurulmuş uygulamalarda oluşur.</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Cihazla uyumlu sürüm yok</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">Yüklü sürüm hiçbir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip kurmanızı sağlayacaktır. Bu genellikle, Google Play veya diğer kaynaklar aracılığıyla yüklenmiş uygulamalarda farklı bir sertifika ile imzalandığında oluşur.</string>
     <string name="app_list__dismiss_app_update">Güncelleme yok sayıldı</string>
     <string name="app_list__dismiss_vulnerable_app">Güvenlik açığı yok sayıldı</string>
     <string name="app_list__dismiss_downloading_app">İndirme iptal edildi</string>
@@ -408,10 +402,10 @@
     <string name="panic_hide_title">%s uygulamasını gizle</string>
     <string name="panic_hide_summary">Uygulama kendisini gizleyecek</string>
     <string name="panic_hide_warning_title">Nasıl geri yükleneceğini hatırla</string>
-    <string name="panic_hide_warning_message">Bu, bir panik durumunda, başlatıcıdan %1$s ögesini kaldırır. Yalnızca sahte %3$s uygulamasında \"%2$d\" yazmak onu geri yükleyebilir.</string>
+    <string name="panic_hide_warning_message">Panik durumunda, %1$s başlatıcıdan kaldırılır. Sahte %3$s uygulamasına yalnızca \"%2$d\" yazarak geri yüklenebilir.</string>
     <string name="hiding_calculator">Hesap Makinesi</string>
     <string name="hiding_dialog_title">%s Ögesini Şimdi Gizle</string>
-    <string name="hiding_dialog_message">%1$s ögesini başlatıcıdan kaldırmak istediğinize emin misiniz? Yalnızca sahte %3$s uygulamasında \"%2$d\" yazmak onu geri yükleyebilir.</string>
+    <string name="hiding_dialog_message">%1$s ögesini başlatıcıdan kaldırmak istediğinize emin misiniz\? Yalnızca sahte %3$s uygulamasında \"%2$d\" yazmak onu geri yükleyebilir.</string>
     <string name="hiding_dialog_warning">Uyarı: Ana ekrandaki her bir uygulama kısayolu da kaldırılacak ve elle yeniden eklenmesi gerekecek.</string>
     <string name="hide_on_long_search_press_title">Arama düğmesiyle gizle</string>
     <string name="hide_on_long_search_press_summary">Arama düğmesine uzun basmak uygulamayı gizler</string>
@@ -421,13 +415,13 @@
     <string name="show_anti_feature_apps">Karşıt-özellikli uygulamaları içer</string>
     <string name="show_anti_feature_apps_on">Karşıt-özellikler gerektiren uygulamaları göster</string>
     <string name="force_touch_apps">Dokunmatik ekran uygulamalarını içer</string>
-    <string name="force_touch_apps_on">Donanım desteği aramadan dokunmatik ekran gerektiren uygulamaları göster</string>
+    <string name="force_touch_apps_on">Donanım desteğinden bağımsız olarak dokunmatik ekran gerektiren uygulamaları göster</string>
     <string name="repo_add_mirror">Yansıma ekle</string>
-    <string name="repo_exists_add_fingerprint">%1$s zaten kurulu, bu yeni anahtar bilgisi ekleyecek.</string>
-    <string name="repo_exists_enable">%1$s zaten kurulu, onu yeniden etkinleştirmek istediğinizi onaylayın.</string>
-    <string name="repo_exists_and_enabled">%1$s zaten kurulu ve etkin.</string>
+    <string name="repo_exists_add_fingerprint">%1$s zaten yüklü, bu yeni anahtar bilgisi ekleyecek.</string>
+    <string name="repo_exists_enable">%1$s zaten yüklü, yeniden etkinleştirmek istediğinizi onaylayın.</string>
+    <string name="repo_exists_and_enabled">%1$s zaten yüklü ve etkin.</string>
     <string name="repo_delete_to_overwrite">Bunu çakışan bir anahtarla eklemek için ilk önce %1$s deposunu silin.</string>
-    <string name="repo_exists_add_mirror">Bu %1$s deposunun bir kopyası, bir yansıma olarak eklensin mi?</string>
+    <string name="repo_exists_add_mirror">Bu %1$s deposunun bir kopyası, bir yansıma olarak eklensin mi\?</string>
     <string name="repo_official_mirrors">Resmi yansımalar</string>
     <string name="repo_user_mirrors">Kullanıcı yansımaları</string>
     <string name="use_bluetooth">Bluetooth Kullan</string>
@@ -446,16 +440,16 @@
     <string name="prompt_to_send_crash_reports">Çökme bildirimlerini göndermek için sor</string>
     <string name="prompt_to_send_crash_reports_summary">Çökme verilerini topla ve bunları geliştiriciye göndermek için sor</string>
     <string name="install_history">Yükleme geçmişi</string>
-    <string name="install_history_summary">Tüm kurulmaların ve kaldırmaların özel günlüğünü görüntüle</string>
+    <string name="install_history_summary">Tüm yükleme ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
     <string name="send_version_and_uuid_summary">İndirirken bu uygulamanın sürümünü ve rastgele benzersiz bir kimliği ekle, bir sonraki uygulama yeniden başlamasıyla etkin olur.</string>
     <string name="share_repository">Depoyu Paylaş</string>
     <string name="antinosourcesince">Kaynak kodu artık mevcut değil, güncelleme mümkün değil.</string>
     <string name="send_install_history">Yükleme Geçmişini Gönder</string>
     <string name="send_history_csv">%s geçmişi CSV dosyası olarak yükle</string>
-    <string name="updates_disabled_by_settings">Tüm güncellemeler Veri/WiFi Ayarları tarafından devre dışı bırakıldı</string>
-    <string name="send_installed_apps">Kurulu uygulamaları paylaş</string>
-    <string name="send_installed_apps_csv">F-Droid tarafıdan kurulmuş uygulamalar, CSV dosyası olarak</string>
+    <string name="updates_disabled_by_settings">Tüm güncellemeler Veri/Kablosuz Ayarları tarafından devre dışı bırakıldı</string>
+    <string name="send_installed_apps">Yüklü uygulamaları paylaş</string>
+    <string name="send_installed_apps_csv">F-Droid tarafından CSV dosyası olarak yüklenmiş uygulamalar,</string>
     <string name="menu_open">Aç</string>
     <string name="about_forum">Destek forumu</string>
     <string name="app_suggested">Önerilen</string>
@@ -475,7 +469,7 @@
     <string name="main_menu__updates">Güncellemeler</string>
     <string name="menu_translation">Çeviri</string>
     <string name="undo">Geri al</string>
-    <string name="app_list__dismiss_installing_app">Kurulum iptal edildi</string>
+    <string name="app_list__dismiss_installing_app">Yükleme iptal edildi</string>
     <string name="menu_select_for_wipe">Silmek için seçin</string>
     <string name="try_again">Yeniden dene</string>
     <string name="panic_apps_to_uninstall">Kaldırılıp tüm verileri silinecek uygulamalar</string>
@@ -501,7 +495,7 @@
     <string name="notification_channel_swaps_title">Takaslar</string>
     <string name="notification_channel_installs_description">Uygulama yükleme bildirimlerini görüntüler.</string>
     <string name="notification_channel_installs_title">Yüklemeler</string>
-    <string name="menu_show_install_history">Kurulum geçmişini göster</string>
+    <string name="menu_show_install_history">Yükleme geçmişini göster</string>
     <string name="menu_show_fdroid_metrics_report">Ölçüm raporunu göster</string>
     <string name="toast_metrics_in_install_history">%s Ölçüm raporu Yükleme Geçmişi görüntüleyicisinde görüntülenebilir</string>
     <string name="send_to_fdroid_metrics_summary">F-Droid Ölçümleri\'ne haftalık olarak anonim veri gönderir (Yükleme geçmişini tut etkin olmalı)</string>
@@ -513,10 +507,22 @@
     <string name="theme_follow_system">Sisteme uy</string>
     <string name="use_pure_black_dark_theme_summary">Yalnızca OLED ekranlar için önerilir.</string>
     <string name="use_pure_black_dark_theme">Koyu temada saf siyah arka plan kullan</string>
-    <string name="banner_no_data_or_wifi">Veri veya etkin Wi-Fi yok</string>
+    <string name="banner_no_data_or_wifi">Veri veya kablosuz etkin değil</string>
     <string name="banner_no_internet">İnternet Yok</string>
     <string name="share_apk_error">Uygulama dosyası paylaşılamadı</string>
-    <string name="has_disallow_install_unknown_sources">Yeni depolar da dahil, bilinmeyen kaynaklar bu kullanıcı tarafından eklenemiyor</string>
-    <string name="has_disallow_install_unknown_sources_globally">Aygıt yöneticiniz, yeni depolar da dahil bilinmeyen kaynaklardan uygulamaların kurulmasına izin vermiyor</string>
+    <string name="has_disallow_install_unknown_sources">Bilinmeyen kaynaklar bu kullanıcı tarafından eklenemez, buna yeni depolar da dahildir</string>
+    <string name="has_disallow_install_unknown_sources_globally">Cihaz yöneticiniz, yeni depolar da dahil olmak üzere bilinmeyen kaynaklardan uygulama yüklemeye izin vermiyor</string>
     <string name="swap_wifi_vpn_conflict">Etkin VPN ile çakışıyor!</string>
+    <string name="antinonfreedep">Özgür Olmayan Bağlılıklar</string>
+    <string name="antiads">Reklam</string>
+    <string name="antinonfreeassets">Özgür Olmayan İçerikler</string>
+    <string name="app_list_results_hidden_antifeature_settings">Bazı sonuçlar, karşıt-özellik ayarlarınıza göre gizlendi.</string>
+    <string name="antinonfreenet">Özgür Olmayan Ağ Hizmetleri</string>
+    <string name="antitrack">İzleme</string>
+    <string name="antinonfreead">Özgür Olmayan Eklentiler</string>
+    <string name="antidisabledalgorithm">Güvenli Olmayan Bir Algoritma Kullanılarak İmzalandı</string>
+    <string name="antiupstreamnonfree">Üst Kod Özgür Değil</string>
+    <string name="antiknownvuln">Bilinen Güvenlik Açığı</string>
+    <string name="antinosource">Kaynak Kodu Artık Yok</string>
+    <string name="antiothers">Diğer Karşıt-özellikler</string>
 </resources>

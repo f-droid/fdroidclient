@@ -200,7 +200,7 @@
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não consegue achar quem você está procurando?</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
-    <string name="apps">Apps</string>
+    <string name="apps">Aplicativos</string>
     <string name="swap_no_peers_nearby">Não foi possível encontrar pessoas próximas para permutar.</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar a permuta</string>
@@ -535,4 +535,16 @@
     <string name="swap_wifi_vpn_conflict">Há conflitos com a VPN ativa!</string>
     <string name="has_disallow_install_unknown_sources">Fontes desconhecidas não podem ser adicionadas por este usuário, incluindo novos repositórios</string>
     <string name="has_disallow_install_unknown_sources_globally">O administrador do seu dispositivo não permite a instalação de aplicativos vindas de fontes desconhecidas e incluindo novos repositórios</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de antifeature.</string>
+    <string name="antiads">Anúncios</string>
+    <string name="antiknownvuln">Vulnerabilidade conhecida</string>
+    <string name="antidisabledalgorithm">Assinado Usando um Algoritmo Inseguro</string>
+    <string name="antitrack">Rastreamento</string>
+    <string name="antinonfreead">Addons não gratuitos</string>
+    <string name="antinonfreenet">Serviços de rede não gratuitos</string>
+    <string name="antiupstreamnonfree">Upstream Não Livre</string>
+    <string name="antinonfreedep">Dependências não Livres</string>
+    <string name="antinosource">Código fonte não mais disponível</string>
+    <string name="antinonfreeassets">Ativos não livres</string>
+    <string name="antiothers">Outras características indesejadas</string>
 </resources>

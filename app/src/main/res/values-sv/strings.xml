@@ -10,7 +10,7 @@
     <string name="other">Annat</string>
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
-    <string name="notify_on">Visa en avisering när det finns uppdateringar tillgängliga</string>
+    <string name="notify_on">Visa en avisering när uppdateringar är tillgängliga</string>
     <string name="system_installer">Privilegierat tillägg</string>
     <string name="system_installer_on">Använd Privilegierat tillägg för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
@@ -54,11 +54,11 @@
     <string name="menu_source">Källkod</string>
     <string name="menu_upgrade">Uppdatera</string>
     <string name="details_notinstalled">Inte installerad</string>
-    <string name="antiadslist">Den här appen innehåller reklam</string>
-    <string name="antitracklist">Den här appen spårar och rapporterar om din aktivitet</string>
-    <string name="antinonfreeadlist">Den här appen uppmuntrar icke-fria tillägg</string>
-    <string name="antinonfreenetlist">Den här appen uppmuntrar icke-fria nätverkstjänster</string>
-    <string name="antinonfreedeplist">Den här appen är beroende av andra icke-fria appar</string>
+    <string name="antiadslist">Denna app innehåller reklam</string>
+    <string name="antitracklist">Denna app spårar och rapporterar om din aktivitet</string>
+    <string name="antinonfreeadlist">Denna app uppmuntrar icke-fria tillägg</string>
+    <string name="antinonfreenetlist">Denna app uppmuntrar icke-fria nätverkstjänster</string>
+    <string name="antinonfreedeplist">Denna app är beroende av andra icke-fria appar</string>
     <string name="antiupstreamnonfreelist">Källkoden från uppström är inte fullständigt fri</string>
     <string name="display">Visning</string>
     <string name="expert">Expertläge</string>
@@ -66,7 +66,7 @@
     <string name="search_hint">Sök efter appar</string>
     <string name="appcompatibility">Appkompatibilitet</string>
     <string name="show_incompat_versions">Inkludera inkompatibla versioner</string>
-    <string name="show_incompat_versions_on">Visa app-versioner som är inkompatibla med enheten</string>
+    <string name="show_incompat_versions_on">Visa appversioner som är inkompatibla med enheten</string>
     <string name="local_repo">Lokalt förråd</string>
     <string name="local_repo_running">F-Droid är redo att utbyta</string>
     <string name="touch_to_configure_local_repo">Tryck för att se detaljer och tillåta andra att utbyta appar med dig.</string>
@@ -111,9 +111,9 @@
     <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga. 
 \n 
 \nObservera: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
-    <string name="repo_disabled_notification">Inaktiverade %1$s. 
-\n 
-\nDu kommer att behöva återaktivera det här förrådet för att kunna installera appar från det.</string>
+    <string name="repo_disabled_notification">Inaktiverade %1$s.
+\n
+\nDu måste återaktivera detta förråd för att installera appar från det.</string>
     <string name="repo_searching_address">Söker efter paketförråd på 
 \n%1$s</string>
     <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
@@ -170,9 +170,9 @@
     <string name="menu_email">E-posta utvecklare</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
     <string name="useTor">Använd Tor</string>
-    <string name="useTorSummary">Tvinga nerladdningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
+    <string name="useTorSummary">Tvinga hämtningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
-    <string name="status_inserting_apps">Sparar app-detaljer</string>
+    <string name="status_inserting_apps">Sparar appdetaljer</string>
     <string name="repo_added">Sparat paketförråd %1$s.</string>
     <string name="wifi_ap">Surfzon</string>
     <string name="category_Connectivity">Anslutbarhet</string>
@@ -237,7 +237,7 @@
     <string name="perms_new_perm_prefix">Ny:</string>
     <string name="perms_description_app">Tillhandahålls av %1$s.</string>
     <string name="downloading">Hämtar…</string>
-    <string name="interval_never">Inga automatiska app-uppdateringar</string>
+    <string name="interval_never">Inga automatiska appuppdateringar</string>
     <string name="interval_1h">Leta efter uppdateringar varje timme</string>
     <string name="interval_4h">Leta efter uppdateringar var fjärde timme</string>
     <string name="interval_12h">Leta efter uppdateringar var 12:e timme</string>
@@ -251,7 +251,7 @@
     <string name="crash_dialog_comment_prompt">Du kan lägga till ytterligare information och kommentarer här:</string>
     <string name="swap_nearby">Byta ut i närheten</string>
     <string name="update_auto_download">Hämta uppdateringar automatiskt</string>
-    <string name="update_auto_download_summary">Uppdateringar laddas automatiskt ner och du blir aviserad om att installera dem</string>
+    <string name="update_auto_download_summary">Uppdateringar hämtas automatiskt och du blir aviserad att installera dem</string>
     <string name="download_pending">Väntar på att påbörja hämtning…</string>
     <string name="keep_hour">1 timme</string>
     <string name="keep_day">1 dag</string>
@@ -267,7 +267,7 @@
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och uppdatera appar i bakgrunden, visar en avisering</string>
-    <string name="warning_no_internet">Kan inte uppdatera: Är du ansluten till internet\?</string>
+    <string name="warning_no_internet">Kan inte uppdatera, är du ansluten till Internet\?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till %1$s-utvecklarna!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp en kaffe till dem!</string>
@@ -292,18 +292,18 @@
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_single_ready_to_install">Färdig att installeras</string>
     <string name="notification_title_single_ready_to_install_update">Uppdatering redo att installeras</string>
-    <string name="notification_title_single_install_error">Installationen misslyckades</string>
+    <string name="notification_title_single_install_error">Installation misslyckades</string>
     <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
-    <string name="notification_content_single_installed">Installerades</string>
+    <string name="notification_content_single_installed">Installerad</string>
     <string name="notification_title_summary_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_summary_downloading">Hämtar…</string>
     <string name="notification_title_summary_downloading_update">Hämtar uppdatering…</string>
     <string name="notification_title_summary_ready_to_install">Färdig att installeras</string>
     <string name="notification_title_summary_ready_to_install_update">Uppdatering redo att installeras</string>
     <string name="notification_title_summary_installing">Installerar</string>
-    <string name="notification_title_summary_installed">Installationen lyckades</string>
+    <string name="notification_title_summary_installed">Installation lyckades</string>
     <string name="notification_title_summary_install_error">Installation misslyckades</string>
     <string name="notification_action_update">Uppdatering</string>
     <string name="notification_action_cancel">Avbryt</string>
@@ -324,8 +324,8 @@
         <item quantity="other">Hämta uppdateringar för %1$d appar.</item>
     </plurals>
     <string name="details_new_in_version">Nyheter i versionen %s</string>
-    <string name="antifeatureswarning">Den här appen har funktioner som du kanske inte tycker om.</string>
-    <string name="antifeatures">Anti-funktioner</string>
+    <string name="antifeatureswarning">Denna app har funktioner som du kanske inte tycker om.</string>
+    <string name="antifeatures">Antifunktioner</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Uppdaterades för %1$d dag sedan</item>
         <item quantity="other">Uppdaterades för %1$d dagar sedan</item>
@@ -395,7 +395,7 @@
     <string name="panic_app_dialog_message">Är du säker på att du vill tillåta %1$s att utlösa destruktiva panikknappåtgärder\?</string>
     <string name="allow">Tillåt</string>
     <string name="panic_settings">Panikknappinställningar</string>
-    <string name="panic_settings_summary">Åtrgärder som ska ske i nödfall</string>
+    <string name="panic_settings_summary">Åtgärder som ska vidtas i nödfall</string>
     <string name="panic_exit_title">Avsluta appen</string>
     <string name="panic_exit_summary">Denna app kommer att stängas</string>
     <string name="panic_destructive_actions">Destruktiva åtgärder</string>
@@ -410,7 +410,7 @@
     <string name="hiding_calculator">Kalkylator</string>
     <string name="hiding_dialog_title">Dölj %s Nu</string>
     <string name="hiding_dialog_message">Är du säker på att du vill ta bort %1$s från startaren? Att bara skriva \"%2$d\" i fejkappen %3$s kan återställa det.</string>
-    <string name="hiding_dialog_warning">Varning: Alla app-genvägar på hemskärmen kommer också att tas bort och kommer att behöva läggas till igen manuellt.</string>
+    <string name="hiding_dialog_warning">Varning: Alla appgenvägar på startskärmen kommer också att tas bort och måste läggas till igen manuellt.</string>
     <string name="hide_on_long_search_press_title">Dölj med sökknappen</string>
     <string name="hide_on_long_search_press_summary">Att trycka och hålla in sökknappen kommer att dölja appen</string>
     <string name="over_wifi">Över Wi-Fi</string>
@@ -425,9 +425,9 @@
     <string name="repo_delete_to_overwrite">Ta först bort %1$s för att lägga till denna med en nyckel som står i konflikt.</string>
     <string name="repo_exists_add_mirror">Detta är en kopia av %1$s, lägg till det som en spegel?</string>
     <string name="antidisabledalgorithmlist">Denna app har en svag säkerhetssignatur</string>
-    <string name="antiknownvulnlist">Denna app innehåller en känd säkerhetsårbarhet</string>
-    <string name="show_anti_feature_apps">Inkludera mot-funktionsappar</string>
-    <string name="show_anti_feature_apps_on">Visa appar som kräver mot-funktioner</string>
+    <string name="antiknownvulnlist">Denna app innehåller en känd säkerhetssårbarhet</string>
+    <string name="show_anti_feature_apps">Inkludera antifunktionsappar</string>
+    <string name="show_anti_feature_apps_on">Visa appar som kräver antifunktioner</string>
     <string name="force_touch_apps">Inkludera pekskärmsappar</string>
     <string name="force_touch_apps_on">Visa appar som kräver pekskärm oavsett hårdvarustöd</string>
     <string name="repo_official_mirrors">Officiella speglar</string>
@@ -440,11 +440,11 @@
     <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
     <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
     <string name="hide_all_notifications">Dölj alla aviseringar</string>
-    <string name="hide_all_notifications_summary">Förhindra alla händelser från att visas i statusfältet samt notifieringsfönstret.</string>
+    <string name="hide_all_notifications_summary">Förhindra att alla åtgärder visas i statusfältet och aviseringsfönstret.</string>
     <string name="install_history">Installationshistorik</string>
     <string name="install_history_summary">Visa privat logg av samtliga installationer och avinstallationer</string>
     <string name="send_version_and_uuid">Sänd versionnummer och UUID till servrarna</string>
-    <string name="send_version_and_uuid_summary">Inkludera appens versionnummer samt en slumpvald, unik ID vid nedladdning. Börjar gälla först efter omstart.</string>
+    <string name="send_version_and_uuid_summary">Inkludera appens versionnummer samt en slumpvald, unik ID vid hämtning. Börjar gälla först efter omstart.</string>
     <string name="share_repository">Dela förråd</string>
     <string name="send_install_history">Skicka installationshistorik</string>
     <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
@@ -454,7 +454,7 @@
     <string name="menu_open">Öppna</string>
     <string name="antinosourcesince">Källkoden är inte längre tillgänglig, inga uppdateringar möjliga.</string>
     <string name="about_forum">Supportforum</string>
-    <string name="app_suggested">Föreslagen</string>
+    <string name="app_suggested">Föreslås</string>
     <string name="app_size">Storlek: %1$s</string>
     <string name="menu_downgrade">Nedgradera</string>
     <string name="scan_removable_storage_title">Skanna flyttbar lagring</string>
@@ -492,10 +492,10 @@
     <string name="nearby_splash__document_tree">Sök USB OTG för förråd och speglar.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_installs_title">Installationer</string>
-    <string name="notification_channel_installs_description">Visar notifikationer för app-installationer.</string>
-    <string name="notification_channel_updates_description">Visar notifikationer för uppdateringar av app och förråd.</string>
+    <string name="notification_channel_installs_description">Visar aviseringar för appinstallationer.</string>
+    <string name="notification_channel_updates_description">Visar uppdateringsaviseringar för appar och förråd.</string>
     <string name="notification_channel_updates_title">Uppdateringar</string>
-    <string name="notification_channel_swaps_description">Visar notifikationer för app-byten mellan användare.</string>
+    <string name="notification_channel_swaps_description">Visar aviseringar för appbyten mellan användare.</string>
     <string name="notification_channel_swaps_title">Byten</string>
     <string name="menu_show_install_history">Visa installationshistorik</string>
     <string name="menu_show_fdroid_metrics_report">Visa mätvärdesrapport</string>
@@ -512,4 +512,19 @@
     <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktiverat</string>
     <string name="banner_no_internet">Inget internet</string>
     <string name="share_apk_error">Det gick inte att dela appfilen</string>
+    <string name="swap_wifi_vpn_conflict">Konflikter med aktiv VPN!</string>
+    <string name="has_disallow_install_unknown_sources">Okända källor kan inte läggas till av denna användare, det inkluderar nya förråd</string>
+    <string name="has_disallow_install_unknown_sources_globally">Din enhetsadministratör tillåter inte installation av appar från okända källor, det inkluderar nya förråd</string>
+    <string name="antiads">Annonser</string>
+    <string name="antinonfreenet">Icke-fria nätverkstjänster</string>
+    <string name="antinonfreedep">Icke-fria beroenden</string>
+    <string name="antinonfreeassets">Icke-fria tillgångar</string>
+    <string name="antidisabledalgorithm">Signerad med en osäker algoritm</string>
+    <string name="antiknownvuln">Känd sårbarhet</string>
+    <string name="app_list_results_hidden_antifeature_settings">Några resultat gömdes baserat på dina antifunktionsinställningar.</string>
+    <string name="antinonfreead">Icke-fria tillägg</string>
+    <string name="antinosource">Källkoden är inte längre tillgänglig</string>
+    <string name="antitrack">Spårning</string>
+    <string name="antiupstreamnonfree">Icke-fri uppströms</string>
+    <string name="antiothers">Andra antifunktioner</string>
 </resources>

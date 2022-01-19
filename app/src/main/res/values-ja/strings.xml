@@ -319,7 +319,7 @@
         <item quantity="other">%1$d 個のアプリのアップデートをダウンロードします。</item>
     </plurals>
     <string name="details_new_in_version">バージョン%sの新機能</string>
-    <string name="antifeatureswarning">このアプリは好ましくないかもしれない機能を含んでいます。</string>
+    <string name="antifeatureswarning">このアプリには好ましくない機能が含んでいる可能性があります。</string>
     <string name="antifeatures">好ましくない機能</string>
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d 日前にアップデートしました</item>
@@ -500,4 +500,19 @@
     <string name="send_fdroid_metrics_json">%sメトリクス報告をJSONファイルとして</string>
     <string name="send_fdroid_metrics_report">%sメトリクス報告を通信</string>
     <string name="banner_no_internet">インターネットなし</string>
+    <string name="swap_wifi_vpn_conflict">アクティブなVPNとの衝突!</string>
+    <string name="has_disallow_install_unknown_sources">新規レポジトリを含む未知のソースは、このユーザーによって追加されることができません</string>
+    <string name="has_disallow_install_unknown_sources_globally">あなたのデバイスの管理者は、新規レポジトリを含む未知のソースからアプリのインストールを許可していません</string>
+    <string name="antiads">広告</string>
+    <string name="antitrack">追跡</string>
+    <string name="antinonfreead">不自由なアドオン</string>
+    <string name="antinonfreenet">不自由なネットワークサービス</string>
+    <string name="antinonfreedep">不自由な依存性</string>
+    <string name="app_list_results_hidden_antifeature_settings">「好ましくない機能」の設定によると一定の成果は表示されませんでした。</string>
+    <string name="antiknownvuln">既知の脆弱性</string>
+    <string name="antinonfreeassets">不自由なアセット</string>
+    <string name="antiupstreamnonfree">アップストリームは非フリーである</string>
+    <string name="antidisabledalgorithm">安全でないアルゴリズムで署名されました</string>
+    <string name="antinosource">ソースコードはもう利用できません</string>
+    <string name="antiothers">他の好ましくない機能</string>
 </resources>

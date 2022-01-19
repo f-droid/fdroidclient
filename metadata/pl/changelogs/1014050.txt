@@ -1,11 +1,17 @@
-* Przebudowano menu udostępniania, aby korzystać z wbudowanych opcji, takich jak W pobliżu.
+* Przebud. menu udostęp., aby korzystać z wbud. opcji, np. W pobliżu.
 
-* Poprawiono Material Design (@proletarius101)
+* Ulepsz. działanie W pobliżu.
 
-* Aplikacje bez ikon w PNG są teraz wyświetlane w karcie Ostatnie (@ashutoshgngwr)
+* Popraw. Material Design (@proletarius101)
 
-* Poprawiono udostępnianie w trybie offline, w pobliżu
+* Wyśw. aplikacji bez ikon PNG w karcie Ostatnie (@ashutoshgngwr)
 
-* Zablokowano dodawanie nowych repozytoriów, gdy administrator urządzenia nie pozwala na „Nieznane źródła”
+* Ulepsz. zarządz. ikonami przy limicie danych/Wi-Fi
 
-* Naprawiono awarię podczas korzystania z repozytoriów z nazwą użytkownika/hasłem
+* Popraw. udostęp. offline, w pobliżu
+
+* Zezw. na wybieranie, które niepożądane funkcje mają być wyśw.
+
+* Zablok. dodaw. nowych repo, gdy admin urządz. nie pozwala na „Nieznane źródła”
+
+* Usun. ustawienie „zezwalaj na żądania push”

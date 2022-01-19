@@ -58,7 +58,7 @@
     <string name="unverified">Não verificada</string>
     <string name="repo_details">Repositório</string>
     <string name="repo_last_update">Última atualização</string>
-    <string name="not_on_same_wifi">O seu dispositivo não está ligado à rede Wi-Fi do repositório adicionado! Tente conectar-se à rede: %s</string>
+    <string name="not_on_same_wifi">O seu aparelho não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Sports_Health">Desporto e saúde</string>
     <string name="category_System">Sistema</string>
@@ -514,4 +514,16 @@
     <string name="swap_wifi_vpn_conflict">Conflitos com VPN ativa!</string>
     <string name="has_disallow_install_unknown_sources">Não podem ser adicionadas fontes desconhecidas por este utilizador, o que inclui novos repositórios</string>
     <string name="has_disallow_install_unknown_sources_globally">O administrador do seu dispositivo não permite a instalação de aplicações de fontes desconhecidas que incluem novos repositórios</string>
+    <string name="antinosource">Código-fonte já não disponível</string>
+    <string name="antiads">Anúncios</string>
+    <string name="antiknownvuln">Vulnerabilidade conhecida</string>
+    <string name="antinonfreedep">Dependências não livres</string>
+    <string name="antitrack">Rastreamento</string>
+    <string name="antinonfreead">Complementos não livres</string>
+    <string name="antidisabledalgorithm">Assinado usando um algoritmo inseguro</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de recursos indesejados.</string>
+    <string name="antinonfreenet">Serviços de rede não livres</string>
+    <string name="antinonfreeassets">Ativos não livres</string>
+    <string name="antiupstreamnonfree">Upstream não livre</string>
+    <string name="antiothers">Outras características indesejadas</string>
 </resources>

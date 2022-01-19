@@ -1,0 +1,7 @@
+* Suporta sa pag-install sa mga file na midya, OTA, ZIP, atbp.
+
+* Kabuuang suporta sa mga APK na pirmado ng maraming mga susing pangpirma
+
+* Bagong salin sa wikang Tibetan
+
+* Tanggalin ang mga kaugnay na app at kategorya matapos isara ang isang repo

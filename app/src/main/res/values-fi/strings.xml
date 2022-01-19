@@ -513,4 +513,19 @@
     <string name="fdroid_metrics_report">%s analytiikkaraportti</string>
     <string name="send_fdroid_metrics_json">%s analytiikkaraportti JSON-tiedostona</string>
     <string name="send_fdroid_metrics_report">Lähetä %s analytiikkaraportti</string>
+    <string name="swap_wifi_vpn_conflict">Ristiriidassa aktiivisen VPN:n kanssa!</string>
+    <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
+    <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
+    <string name="antinonfreedep">Ei-vapaat riippuvuudet</string>
+    <string name="app_list_results_hidden_antifeature_settings">Jotkin tulokset on piilotettu ei toivottujen asetusten perusteella.</string>
+    <string name="antiads">Mainokset</string>
+    <string name="antitrack">Seuranta</string>
+    <string name="antinonfreead">Ei-vapaat lisäosat</string>
+    <string name="antinonfreenet">Ei-vapaat verkkopalvelut</string>
+    <string name="antiupstreamnonfree">Upstream ei-vapaa</string>
+    <string name="antinonfreeassets">Ei-vapaa sisältö</string>
+    <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
+    <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
+    <string name="antinosource">Lähdekoodi Ei enää saatavilla</string>
+    <string name="antiothers">Muut antiominaisuudet</string>
 </resources>

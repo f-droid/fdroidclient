@@ -1,0 +1,17 @@
+* Javított tématámogatás (@proletarius101)
+
+* Új értesítési szalagok: „Nincs internet” és „Nincs engedélyezett Wi-Fi vagy adatkapcsolat”
+
+* SD-kártyán lévő tárolók és tükrök kezelésének javítása
+
+* A Trichrome programkönyvár ismételt frissítéseinek megállítása
+
+* Material Design jobb követése (@proletarius101)
+
+* OpenCollective-jelvény javítása (@ConnyDuck)
+
+* Ikonbetöltés átdolgozása a Glide segítségével (@proletarius101)
+
+* Új adaptív ikon (@12people)
+
+* Kódmodernizáció (@Isira-Seneviratne)

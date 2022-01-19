@@ -1,6 +1,6 @@
 * 应用描述本地化完全遵照安卓语言设置中的列表
 
-* "最新" 选项卡显示基于语言设置的应用程序，最新的优先 (@TheLastProject @IzzySoft)
+* "最新" 选项卡显示基于语言设置的应用，最新的优先 (@TheLastProject @IzzySoft)
 
 * 大幅改进搜索结果 (@Tvax @gcbrown76)
 

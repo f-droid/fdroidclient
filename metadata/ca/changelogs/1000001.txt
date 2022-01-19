@@ -1,0 +1,3 @@
+* Corregir l'error que eliminava les aplicacions dels repositoris (# 568)
+
+* Actualitzacions d'índexs molt més ràpides

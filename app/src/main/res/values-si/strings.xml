@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="menu_uninstall">අස්ථාපනය කරන්න</string>
     <string name="menu_install">ස්ථාපනය කරන්න</string>
     <string name="menu_share">බෙදාගන්න</string>
@@ -41,4 +41,8 @@
     <string name="delete">මකන්න</string>
     <string name="wifi">Wi-Fi</string>
     <string name="apps">යෙදුම්</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">අන්තර්ජාලය</string>
+    <string tools:ignore="UnusedResources" name="category_Games">ක්‍රීඩා</string>
+    <string name="pref_language">භාෂාව</string>
+    <string name="skip">මගහරින්න</string>
 </resources>

@@ -142,7 +142,7 @@
     <string name="bad_fingerprint">Slechte vingerafdruk</string>
     <string name="invalid_url">Dit is geen geldige URL.</string>
     <string name="menu_changelog">Lijst van veranderingen</string>
-    <string name="banner_updating_repositories">Applicatiebronnen worden bijgewerkt</string>
+    <string name="banner_updating_repositories">Opslagplaatsen worden bijgewerkt</string>
     <string name="status_processing_xml_percent">%2$s / %3$s (%4$d%%) van %1$s worden verwerkt</string>
     <string name="pref_language">Taal</string>
     <string name="pref_language_default">Systeemstandaard</string>
@@ -190,7 +190,7 @@
     <string name="swap_wifi_device_name">Apparaatnaam</string>
     <string name="swap_cant_find_peers">Kunt u de persoon waar u naar zoekt niet vinden\?</string>
     <string name="swap_send_fdroid">Verstuur F-Droid</string>
-    <string name="apps">Apps</string>
+    <string name="apps">Applicaties</string>
     <string name="swap_no_peers_nearby">Kon geen mensen in de buurt vinden om mee uit te wisselen.</string>
     <string name="swap_connecting">Verbinding maken</string>
     <string name="swap_confirm">Bevestig uitwisseling</string>
@@ -516,4 +516,7 @@
     <string name="banner_no_data_or_wifi">Data of Wi-Fi niet ingeschakeld</string>
     <string name="banner_no_internet">Geen internet</string>
     <string name="share_apk_error">App bestand kon niet worden gedeeld</string>
+    <string name="swap_wifi_vpn_conflict">Het is in strijd met de actieve VPN!</string>
+    <string name="has_disallow_install_unknown_sources">Onbekende bronnen kunnen niet worden toegevoegd door deze gebruiker, inclusief nieuwe opslagplaatsen</string>
+    <string name="has_disallow_install_unknown_sources_globally">Je apparaatbeheerder staat het installeren van apps van onbekende bronnen, waaronder nieuwe opslagplaatsen zijn, niet toe</string>
 </resources>

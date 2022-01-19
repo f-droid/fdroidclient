@@ -1,0 +1,3 @@
+* Inayos ang isang bug na nagtatanggal ng mga app sa mga repo (#568)
+
+* Mas mabilis na ma update sa index

@@ -47,7 +47,7 @@
     <string name="menu_uninstall">আনইনস্টল করো</string>
     <string name="menu_install">ইনস্টল করো</string>
     <string name="menu_share">শেয়ার করো</string>
-    <string name="menu_add_repo">নতুন রিপোসিটরি</string>
+    <string name="menu_add_repo">নতুন ভাণ্ডার</string>
     <string name="notification_title_single_ready_to_install">ইনস্টল করতে প্রস্তুত</string>
     <string name="notification_title_single_ready_to_install_update">হালনাগাদ ইনস্টল করতে প্রস্তুত</string>
     <string name="notification_title_single_install_error">ইনস্টল ব্যর্থ</string>
@@ -122,11 +122,11 @@
     <string name="overwrite">ওভাররাইট</string>
     <string name="repo_edit_credentials">পাসওয়ার্ড পাল্টাও</string>
     <string name="login_title">অথেনটিকেশন প্রয়োজন</string>
-    <string name="scan_removable_storage_summary">এসডি কার্ড ও ইউএসবি ড্রাইভে প্যাকেজ রিপো খুজো</string>
+    <string name="scan_removable_storage_summary">এসডি কার্ড ও ইউএসবি ড্রাইভে প্যাকেজ ভাণ্ডার খুঁজো</string>
     <string name="scan_removable_storage_toast">%s স্ক্যান করা হচ্ছে…</string>
     <string name="scan_removable_storage_title">অপসারণযোগ্য স্টোরেজ স্ক্যান করো</string>
-    <string name="local_repo_https_on">স্থানীয় রিপোর জন্য এনক্রিপটেড HTTPS:// সংযোগ ব্যবহার করো</string>
-    <string name="local_repo_name_summary">তোমার স্থানীয় রিপোর বিজ্ঞাপিত শিরোনাম: %s</string>
+    <string name="local_repo_https_on">স্থানীয় ভাণ্ডারের জন্য এনক্রিপটেড HTTPS:// সংযোগ ব্যবহার করো</string>
+    <string name="local_repo_name_summary">তোমার স্থানীয় ভাণ্ডারের বিজ্ঞাপিত শিরোনাম: %s</string>
     <string name="local_repo_name">আপনার স্থানীয় রেপোর নাম</string>
     <string name="system_installer_on">প্যাকেজ ইনস্টল, আপডেট এবং মুছে ফেলার জন্য প্রাইভেলিজড এক্সটেনশন ব্যবহার করুন</string>
     <string name="system_installer">প্রিভিলেজড এক্সটেনশন</string>
@@ -158,7 +158,7 @@
     <string name="unstable_updates">অস্থিতিশীল আপডেট</string>
     <string name="cache_downloaded">ক্যাশড অ্যাপ রাখো</string>
     <string name="prompt_to_send_crash_reports_summary">ক্র্যাশ সম্পর্কে তথ্য সংগ্রহ করুন এবং ডেভেলপারের কাছে পাঠাতে বলুন</string>
-    <string name="prompt_to_send_crash_reports">ক্র্যাশ রিপোর্ট পাঠানোর অনুরোধ</string>
+    <string name="prompt_to_send_crash_reports">ত্রুটি প্রতিবেদন পাঠানোর অনুরোধ করবে</string>
     <string name="enable_nfc_send">এনএফসি যোগাযোগ সক্রিয় করুন…</string>
     <string name="by_author_format">%s দ্বারা</string>
     <string name="installIncompatible">অ্যাপ্লিকেশনটি আপনার ডিভাইসের সাথে নাও চলতে পারে, তবুও ইনস্টল করবেন\?</string>
@@ -169,7 +169,7 @@
     <string name="repo_name">নাম</string>
     <string name="repo_description">বিবরণ</string>
     <string name="repo_url">ঠিকানা</string>
-    <string name="repo_details">রিপোসিটরি</string>
+    <string name="repo_details">ভাণ্ডার</string>
     <string name="unverified">অযাচাইকৃত</string>
     <string name="theme">থিম</string>
     <string name="permissions">অনুমতিগুলি</string>
@@ -514,4 +514,15 @@
     <string name="has_disallow_install_unknown_sources">ব্যবহারকারী অজানা উৎস থেকে অ্যাপ ইন্সটল করতে পারবে না, এজন্য নতুন ভাণ্ডারও যোগ করা যাবে না</string>
     <string name="has_disallow_install_unknown_sources_globally">তোমার যন্ত্রের ব্যবস্থাপক অজানা উৎস থেকে অ্যাপ ইন্সটল করতে দেয় না, এজন্য নতুন ভাণ্ডারও যোগ করা যায় না</string>
     <string name="swap_wifi_vpn_conflict">সক্রিয় ভিপিএনের সাথে সমস্যা হচ্ছে!</string>
+    <string name="app_list_results_hidden_antifeature_settings">কিছু ফলাফল তোমার অপবৈশিষ্ট্য পছন্দের উপর ভিত্তি করে লুকানো হয়েছে।</string>
+    <string name="antiupstreamnonfree">উজান অ-মুক্ত</string>
+    <string name="antinosource">উৎস কোড আর পাওয়া যাচ্ছে না</string>
+    <string name="antinonfreedep">অ-মুক্ত নির্ভরশীল শাখা</string>
+    <string name="antiknownvuln">জানা অনিরাপত্তা আছে</string>
+    <string name="antinonfreead">অ-মুক্ত সংযোজন</string>
+    <string name="antiads">বিজ্ঞাপন</string>
+    <string name="antinonfreeassets">অমুক্ত অংশ</string>
+    <string name="antidisabledalgorithm">অনিরাপদভাবে স্বাক্ষরিত</string>
+    <string name="antitrack">নজরদারী</string>
+    <string name="antinonfreenet">অ-মুক্ত নেটওয়ার্ক সেবা</string>
 </resources>

@@ -1,1 +1,13 @@
 * Prise en charge des thèmes liés aux thèmes Android intégrés (@proletarius101)
+
+* Nouvelle bannière des notifications : "Aucune connection Internet" et "Pas de Donnée mobile ou Wi-FI activé"
+
+*Amélioration du support des dépôts et clones USB OTG et carte SD
+
+* Cesse de répéter les mises à jour de la bibliothèque Trichrome
+
+* Quelques changements pour suivre le style de l'application (@proletarius101)
+
+* Amélioration du badge de OpenCollective (@ConnyDuck)
+
+* Refonte de l'icône de chargement

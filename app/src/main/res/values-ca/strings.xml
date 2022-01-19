@@ -30,7 +30,7 @@
     <string name="no">No</string>
     <string name="repo_add_title">Afegeix un nou dipòsit</string>
     <string name="repo_add_add">Afegeix</string>
-    <string name="cancel">Cancel·la</string>
+    <string name="cancel">Cancel·lar</string>
     <string name="enable">Permès</string>
     <string name="add_key">Afegeix clau</string>
     <string name="overwrite">Sobreescriu</string>
@@ -125,7 +125,7 @@
     <string name="category_Multimedia">Multimèdia</string>
     <string name="category_Navigation">Navegació</string>
     <string name="category_Phone_SMS">Mòbil i missatgeria</string>
-    <string name="category_Reading">Per a llegir</string>
+    <string name="category_Reading">Lectura</string>
     <string name="category_Science_Education">Ciència i educació</string>
     <string name="category_Security">Seguretat</string>
     <string name="category_System">Sistema</string>
@@ -154,7 +154,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="banner_updating_repositories">Actualitzant respositoris</string>
+    <string name="banner_updating_repositories">Actualitzant repositoris</string>
     <string name="more">Més</string>
     <string name="less">Menys</string>
     <string name="permissions">Permisos</string>
@@ -209,7 +209,7 @@
     <string name="swap_success">Intercanvi correcte!</string>
     <string name="swap_active_hotspot">%1$s (el vostre punt d\'accés)</string>
     <string name="swap_switch_to_wifi">Toqueu per canviar a una xarxa Wi-Fi</string>
-    <string name="swap_dont_show_again">No tornis a mostrar això</string>
+    <string name="swap_dont_show_again">No ho tornis a mostrar</string>
     <string name="swap_scan_or_type_url">Una persona ha d\'escanejar el codi, o escriure l\'URL de l\'altra al navegador.</string>
     <string name="swap_choose_apps">Trieu les aplicacions</string>
     <string name="swap_scan_qr">Codi QR</string>
@@ -522,4 +522,16 @@
     <string name="has_disallow_install_unknown_sources">L\'usuari actual no pot afegir fonts desconegudes, això inclou nou repositoris</string>
     <string name="has_disallow_install_unknown_sources_globally">L\'administració del dispositiu no permet instal·lar aplicacions de fonts desconegudes, això inclou nous repositoris</string>
     <string name="swap_wifi_vpn_conflict">Entra en conflicte amb la VPN activa!</string>
+    <string name="antinonfreenet">Serveis de xarxa no lliures</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alguns resultats s\'han amagat en funció de la vostra configuració antifunció.</string>
+    <string name="antitrack">Seguiment</string>
+    <string name="antinonfreead">Complements no lliures</string>
+    <string name="antinonfreedep">Dependències no lliures</string>
+    <string name="antidisabledalgorithm">Signat amb un algoritme insegur</string>
+    <string name="antiknownvuln">Vulnerabilitat coneguda</string>
+    <string name="antiads">Anuncis</string>
+    <string name="antinosource">El codi font ja no està disponible</string>
+    <string name="antinonfreeassets">Recursos no gratuïts</string>
+    <string name="antiupstreamnonfree">Upstream no lliure</string>
+    <string name="antiothers">Altres anti-característiques</string>
 </resources>

@@ -1,0 +1,7 @@
+* Fejlesztett hivatkozáskészítés az alkalmazásleírásokban
+
+* SD-kártyák és USG-OTG eszközök jobb kezelése a Közeli lapon
+
+* Modernizált kód, és PNG-k vektorgrafikára cserélése (köszönjük @isira-seneviratne!)
+
+* Hosszabb tároló URL-ek felismerése a GitCDN/RawGit/stb. tárolók támogatásához

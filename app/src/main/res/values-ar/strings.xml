@@ -259,8 +259,8 @@
     <string name="keep_month">شهر</string>
     <string name="keep_year">سنة</string>
     <string name="keep_forever">إلى الأبد</string>
-    <string name="theme_light">فاتحة</string>
-    <string name="theme_dark">داكنة</string>
+    <string name="theme_light">ابيض</string>
+    <string name="theme_dark">اسود</string>
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
     <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>
@@ -556,4 +556,17 @@
     <string name="has_disallow_install_unknown_sources">لا يمكن إضافة مصادر غير معروفة بواسطة هذا المستخدم ، بما في ذلك عمليات اضافة مستودعات جديدة</string>
     <string name="has_disallow_install_unknown_sources_globally">لا يسمح مسؤول جهازك بتثبيت التطبيقات من مصادر غير معروفة، والتي تتضمن مستودعات جديدة</string>
     <string name="swap_wifi_vpn_conflict">يتعارض مع VPN النشط!</string>
+    <string name="antinosource_key">لا يوجد مصدر منذ</string>
+    <string name="antiads">إعلانات</string>
+    <string name="antitrack">تتبع</string>
+    <string name="antinonfreead">إضافات غير مجانية</string>
+    <string name="antinonfreenet">خدمات شبكة غير مجانية</string>
+    <string name="antinonfreedep">تبعيات غير حرة</string>
+    <string name="antinosource">شفرة المصدر لم تعد متوفرة</string>
+    <string name="antinonfreeassets">الأصول غير الحرة</string>
+    <string name="antidisabledalgorithm">تم التوقيع باستخدام خوارزمية غير آمنة</string>
+    <string name="antiknownvuln">مشكلة ثغرة معروفة</string>
+    <string name="app_list_results_hidden_antifeature_settings">تم إخفاء بعض النتائج استنادا إلى إعدادات مكافحة الميزات.</string>
+    <string name="antiupstreamnonfree">المصدر ليس حر</string>
+    <string name="antiothers">الميزات المضادة الأخرى</string>
 </resources>

@@ -1,0 +1,13 @@
+*Révision du menu de partage pour utiliser des options intégrées comme À proximité.
+
+*Amélioration du flux opérationnel et de navigation de À proximité, avec beaucoup de bogues corrigés.
+
+*Améliorations du rendu du contenu (@proletarius101)
+
+*Les applications sans îcone PNG d'applications sont maintenant montrées dans l'onglet récent (@ashutoshgngwr)
+
+*Amélioration de la geston des îcones avec les Données/Wi-FI limitées
+
+*Amélioration hors ligne du partage À proximité
+
+*Choix des anti-fonctions

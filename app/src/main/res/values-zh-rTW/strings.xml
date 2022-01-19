@@ -501,4 +501,16 @@
     <string name="has_disallow_install_unknown_sources">此使用者無法新增未知來源，包含了新的軟體倉庫</string>
     <string name="has_disallow_install_unknown_sources_globally">您的裝置管理員不允許安裝來自未知來源的應用程式，其中包括新的軟體倉庫</string>
     <string name="swap_wifi_vpn_conflict">與作用中的 VPN 衝突！</string>
+    <string name="antidisabledalgorithm">使用不安全的演算法簽署</string>
+    <string name="antiknownvuln">已知的安全漏洞</string>
+    <string name="antiupstreamnonfree">上游非自由</string>
+    <string name="antinonfreeassets">非自由資源</string>
+    <string name="antinosource">不再提供原始碼</string>
+    <string name="app_list_results_hidden_antifeature_settings">根據您的反特徵設定隱藏了部份結果。</string>
+    <string name="antinonfreead">非自由的附加元件</string>
+    <string name="antiads">廣告</string>
+    <string name="antitrack">追蹤</string>
+    <string name="antinonfreenet">非自由的網路服務</string>
+    <string name="antinonfreedep">非自由的相依性</string>
+    <string name="antiothers">其他反特徵</string>
 </resources>

@@ -1,0 +1,5 @@
+* Az „Android alkalmazáshivatkozások” eltávolítása, mivel úgy sem működik az F-Droiddal, és DNS információk kiszivárgását okozhatta.
+* Az archív tárolók most már alacsonyabb prioritásúak, ez megoldja azt a problémát, hogy az információkat az archívumban kereste volna a tároló helyett.
+* Kiemelt borítóképek levágásának megakadályozása (köszönjük @ByteHamster!)
+* A navigációs sáv beleillik a sötét módba (köszönjük @MatthieuB!)
+* Elavult kód eltávolítása (köszönjük @Isira-Seneviratne!)

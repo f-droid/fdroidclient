@@ -56,7 +56,7 @@
     <string name="details_notinstalled">Не установлено</string>
     <string name="antiadslist">Это приложение содержит рекламу</string>
     <string name="antitracklist">Это приложение отслеживает и сообщает о вашей деятельности</string>
-    <string name="antinonfreeadlist">Это приложение поощряет дополнения с закрытым исходным кодом</string>
+    <string name="antinonfreeadlist">Это приложение популяризует дополнения с закрытым исходным кодом</string>
     <string name="antinonfreenetlist">Это приложение популяризует несвободные сетевые сервисы</string>
     <string name="antinonfreedeplist">Это приложение зависит от других несвободных приложений</string>
     <string name="antiupstreamnonfreelist">Оригинальный исходный код не является полностью свободным</string>
@@ -456,7 +456,7 @@
     <string name="over_network_on_demand_summary">Использовать это соединение только для загрузки</string>
     <string name="antiknownvulnlist">Это приложение содержит известную уязвимость безопасности</string>
     <string name="over_network_never_summary">Никогда не загружать, используя это соединение</string>
-    <string name="antidisabledalgorithmlist">Это приложение имеет слабую подпись безопасности</string>
+    <string name="antidisabledalgorithmlist">Это приложение имеет слабую сигнатуру безопасности</string>
     <string name="hide_all_notifications">Скрыть все уведомления</string>
     <string name="hide_all_notifications_summary">Запретить показ всех действий в строке состояния и панели уведомлений.</string>
     <string name="prompt_to_send_crash_reports">Запрос на отправку отчетов о сбоях</string>
@@ -535,4 +535,16 @@
     <string name="swap_wifi_vpn_conflict">Конфликтует с активной VPN!</string>
     <string name="has_disallow_install_unknown_sources">Неизвестные источники не могут быть добавлены этим пользователем, и это правило распространяется на новые репозитории</string>
     <string name="has_disallow_install_unknown_sources_globally">Администратор вашего устройства не разрешает установку приложений из неизвестных источников, и это правило распространяется на новые репозитории</string>
+    <string name="antinonfreead">Несвободные дополнения</string>
+    <string name="antinonfreenet">Несвободные сетевые сервисы</string>
+    <string name="antinonfreedep">Несвободные зависимости</string>
+    <string name="antiupstreamnonfree">Несвободный апстрим</string>
+    <string name="antinonfreeassets">Несвободные активы</string>
+    <string name="antidisabledalgorithm">Подписано с использованием небезопасного алгоритма</string>
+    <string name="antiads">Реклама</string>
+    <string name="app_list_results_hidden_antifeature_settings">Некоторые результаты были скрыты в соответствии с вашими настройками анти-функций.</string>
+    <string name="antitrack">Отслеживание</string>
+    <string name="antinosource">Исходный код больше не доступен</string>
+    <string name="antiknownvuln">Известная уязвимость</string>
+    <string name="antiothers">Прочие анти-функции</string>
 </resources>

@@ -1,17 +1,17 @@
-* Overhaul Share menu to use built-in options like Nearby.
+* Overhaul Share menu to use built-in options like Nearby
 
-* Improved Nearby workflow and navigation, with lots of bug fixes.
+* Improved Nearby workflow and navigation with lots of bug fixes
 
 * Material design improvements (@proletarius101)
 
 * Apps without PNG app icons now show in Latest Tab (@ashutoshgngwr)
 
-* Improved icon management with limited Data/WiFi settings
+* Better icon management with limited Data/WiFi settings
 
-* Improve offline, nearby sharing
+* Support more barcode scanners (@Lugerun)
 
-* Allow choosing which antifeatures to show
+* Allow choosing which AntiFeatures to show
 
-* Block adding new repos when device admin disallows "Unknown Sources"
+* Block adding repos when device admin disallows "Unknown Sources"
 
 * Remove "Allow Push Requests" setting
