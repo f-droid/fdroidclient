@@ -1,3 +1,15 @@
+### 1.14-alpha5 (2022-01-19)
+
+* Fix missing back button on Panic and Manage Repos Settings (@splitowo)
+
+* Fix Nearby crash on Android 12
+
+* Handle API 31 split-permissions
+
+* Fix navigation in Basic flavor (@raphaelm)
+
+* Add support for other barcode scanners (@Lugerun)
+
 ### 1.14-alpha4 (2021-12-09)
 
 * Hide unwanted antifeatures from latest and categories
