@@ -43,7 +43,7 @@ public open class HttpManager @JvmOverloads constructor(
     private val userAgent: String,
     queryString: String? = null,
     proxyConfig: ProxyConfig? = null,
-    private val mirrorChooser: MirrorChooser = MirrorChooser(),
+    private val mirrorChooser: MirrorChooser = MirrorChooserRandom(),
     private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
 ) {
 

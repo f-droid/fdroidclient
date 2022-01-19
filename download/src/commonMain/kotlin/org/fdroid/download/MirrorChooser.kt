@@ -4,31 +4,31 @@ import io.ktor.client.features.ResponseException
 import io.ktor.http.Url
 import mu.KotlinLogging
 
-class MirrorChooser {
+interface MirrorChooser {
+    fun orderMirrors(downloadRequest: DownloadRequest): List<Mirror>
+    suspend fun <T> mirrorRequest(
+        downloadRequest: DownloadRequest,
+        request: suspend (mirror: Mirror, url: Url) -> T,
+    ): T
+}
+
+internal abstract class MirrorChooserImpl : MirrorChooser {
 
     companion object {
-        val log = KotlinLogging.logger {}
-    }
-
-    /**
-     * Returns a list of mirrors with the best mirrors first.
-     */
-    private fun orderMirrors(mirrors: List<Mirror>): List<Mirror> {
-        // simple random selection for now
-        // TODO Filter-out onion mirrors for non-tor connections
-        return mirrors.toMutableList().apply { shuffle() }
+        protected val log = KotlinLogging.logger {}
     }
 
     /**
      * Executes the given request on the best mirror and tries the next best ones if that fails.
      */
-    internal suspend fun <T> mirrorRequest(
+    override suspend fun <T> mirrorRequest(
         downloadRequest: DownloadRequest,
         request: suspend (mirror: Mirror, url: Url) -> T,
     ): T {
-        orderMirrors(downloadRequest.mirrors).forEachIndexed { index, mirror ->
+        orderMirrors(downloadRequest).forEachIndexed { index, mirror ->
+            val url = mirror.getUrl(downloadRequest.path)
             try {
-                return request(mirror, mirror.getUrl(downloadRequest.path))
+                return request(mirror, url)
             } catch (e: ResponseException) {
                 val wasLastMirror = index == downloadRequest.mirrors.size - 1
                 log.warn(e) { if (wasLastMirror) "Last mirror, rethrowing..." else "Trying other mirror now..." }
@@ -36,6 +36,22 @@ class MirrorChooser {
             }
         }
         error("Reached code that was thought to be unreachable.")
+    }
+}
+
+internal class MirrorChooserRandom : MirrorChooserImpl() {
+
+    /**
+     * Returns a list of mirrors with the best mirrors first.
+     */
+    override fun orderMirrors(downloadRequest: DownloadRequest): List<Mirror> {
+        val mirrors = if (downloadRequest.proxy == null) {
+            downloadRequest.mirrors.filter { mirror -> !mirror.isOnion() }.toMutableList()
+        } else {
+            downloadRequest.mirrors.toMutableList()
+        }
+        // simple random selection for now
+        return mirrors.apply { shuffle() }
     }
 
 }

@@ -1,0 +1,37 @@
+package org.fdroid.download
+
+import org.fdroid.runSuspend
+import kotlin.random.Random
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+
+class MirrorChooserTest {
+
+    private val mirrors = listOf(Mirror("foo"), Mirror("bar"), Mirror("42"), Mirror("1337"))
+    private val downloadRequest = DownloadRequest("foo", mirrors)
+
+    @Test
+    fun testMirrorChooserDefaultImpl() = runSuspend {
+        val mirrorChooser = MirrorChooserRandom()
+        val expectedResult = Random.nextInt()
+
+        val result = mirrorChooser.mirrorRequest(downloadRequest) { mirror, url ->
+            assertTrue { mirrors.contains(mirror) }
+            assertEquals(mirror.getUrl(downloadRequest.path), url)
+            expectedResult
+        }
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun testMirrorChooserRandom() {
+        val mirrorChooser = MirrorChooserRandom()
+
+        val orderedMirrors = mirrorChooser.orderMirrors(downloadRequest)
+
+        // set of input mirrors is equal to set of output mirrors
+        assertEquals(mirrors.toSet(), orderedMirrors.toSet())
+    }
+
+}
