@@ -97,8 +97,8 @@ public open class HttpManager @JvmOverloads constructor(
         val authString = constructBasicAuthValue(request)
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->
-                log.debug { "HEAD $url" }
                 resetProxyIfNeeded(request.proxy, mirror)
+                log.debug { "HEAD $url" }
                 httpClient.head(url) {
                     // add authorization header from username / password if set
                     if (authString != null) header(Authorization, authString)
@@ -124,16 +124,13 @@ public open class HttpManager @JvmOverloads constructor(
     ) {
         val authString = constructBasicAuthValue(request)
         mirrorChooser.mirrorRequest(request) { mirror, url ->
-            log.debug { "GET $url" }
             resetProxyIfNeeded(request.proxy, mirror)
+            log.debug { "GET $url" }
             httpClient.get<HttpStatement>(url) {
                 // add authorization header from username / password if set
                 if (authString != null) header(Authorization, authString)
                 // add range header if set
                 if (skipFirstBytes != null) header(Range, "bytes=${skipFirstBytes}-")
-                // avoid keep-alive for swap due to strange errors observed in the past
-                // TODO still needed?
-//                if (request.isSwap) header(Connection, "Close")
             }
         }.execute { response ->
             if (skipFirstBytes != null && response.status != PartialContent) {
@@ -173,11 +170,15 @@ public open class HttpManager @JvmOverloads constructor(
     }
 
     private fun resetProxyIfNeeded(proxyConfig: ProxyConfig?, mirror: Mirror? = null) {
-        // TODO based on mirror: disable on swap,
-        if (currentProxy != proxyConfig) {
-            log.info { "Switching proxy from [$currentProxy] to [$proxyConfig]"}
+        // force no-proxy when trying to hit a local mirror
+        val newProxy = if (mirror.isLocal() && proxyConfig != null) {
+            if (currentProxy != null) log.info { "Forcing mirror to null, because mirror is local: $mirror" }
+            null
+        } else proxyConfig
+        if (currentProxy != newProxy) {
+            log.info { "Switching proxy from [$currentProxy] to [$newProxy]"}
             httpClient.close()
-            httpClient = getNewHttpClient(proxyConfig)
+            httpClient = getNewHttpClient(newProxy)
         }
     }
 

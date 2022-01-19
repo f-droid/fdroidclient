@@ -34,17 +34,31 @@ data class Mirror @JvmOverloads constructor(
 
     fun isOnion(): Boolean = url.isOnion()
 
+    fun isLocal(): Boolean = url.isLocal()
+
     companion object {
         @JvmStatic
         fun fromStrings(list: List<String>): List<Mirror> = list.map { Mirror(it) }
     }
 }
 
+internal fun Mirror?.isLocal(): Boolean = this?.isLocal() == true
+
 internal fun Url.isOnion(): Boolean = host.endsWith(".onion")
 
-fun Url.isLocal(): Boolean {
-    return (port > 1023 // only root can use <= 1023, so never a swap repo
-            && host.matches(Regex("[0-9.]+")) // host must be an IP address
-            // TODO check if IP is link or site local
-            )
+/**
+ * Returns true when no proxy should be used for connecting to this [Url].
+ */
+internal fun Url.isLocal(): Boolean {
+    if (!host.matches(Regex("[0-9.]{7,15}"))) return false
+    if (host.startsWith("172.")) {
+        val second = host.substring(4..6)
+        if (!second.endsWith('.')) return false
+        val num = second.trimEnd('.').toIntOrNull() ?: return false
+        return num in 16..31
+    }
+    return host.startsWith("169.254.") ||
+            host.startsWith("10.") ||
+            host.startsWith("192.168.") ||
+            host == "127.0.0.1"
 }

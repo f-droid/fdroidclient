@@ -222,4 +222,40 @@ class HttpManagerTest {
         assertEquals(3, numRequests)
     }
 
+    @Test
+    fun testNoProxyWithLocalMirror() = runSuspend {
+        val mirror = Mirror("http://192.168.49.5")
+        assertTrue(mirror.isLocal())
+        val proxyConfig = ProxyBuilder.http(Url("http://127.0.0.1:5050"))
+        val localRequest = DownloadRequest("foo", listOf(mirror), proxyConfig)
+        val internetRequest = DownloadRequest("foo", mirrors, proxyConfig)
+
+        var numEngines = 0
+        val factory = object : HttpClientEngineFactory<MockEngineConfig> {
+            override fun create(block: MockEngineConfig.() -> Unit): HttpClientEngine {
+                return when (++numEngines) {
+                    1 -> MockEngine { respondOk() }
+                    2 -> MockEngine { respondOk() }
+                    else -> fail("Too many engine creations")
+                }
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, proxyConfig, httpClientEngineFactory = factory)
+        assertEquals(proxyConfig, httpManager.currentProxy)
+
+        // does not need a new engine, because also does use a proxy (1)
+        assertNotNull(httpManager.head(internetRequest))
+        assertEquals(proxyConfig, httpManager.currentProxy)
+
+        // now no proxy, because local mirror, creates new engine (2)
+        assertNotNull(httpManager.head(localRequest))
+        assertNull(httpManager.currentProxy)
+
+        // still no proxy, because local mirror as well, should not create new engine
+        assertNotNull(httpManager.getBytes(localRequest))
+        assertNull(httpManager.currentProxy)
+
+        assertEquals(2, numEngines)
+    }
+
 }
