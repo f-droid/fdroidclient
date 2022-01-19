@@ -15,6 +15,7 @@ apply plugin: "net.ltgt.errorprone"
 tasks.withType(JavaCompile) {
     options.compilerArgs += [
         '-XepAllDisabledChecksAsWarnings',
+	'-XepExcludedPaths:.*/cc/mvdan/accesspoint/.*',
         '-Xep:CatchFail:OFF',
         '-Xep:ClassCanBeStatic:OFF',
         '-Xep:DateFormatConstant:OFF',
