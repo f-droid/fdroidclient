@@ -181,7 +181,6 @@ dependencies {
 
     implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15on:1.65'
-    fullImplementation 'cc.mvdan.accesspoint:library:0.2.0'
     fullImplementation 'org.jmdns:jmdns:3.5.5'
     fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
 

@@ -11,10 +11,5 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
-        jcenter() {
-            content {
-                includeModule("cc.mvdan.accesspoint", "library")
-            }
-        }
     }
 }
