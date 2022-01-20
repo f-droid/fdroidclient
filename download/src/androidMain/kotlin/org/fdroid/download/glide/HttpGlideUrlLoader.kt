@@ -12,12 +12,12 @@ import org.fdroid.download.HttpManager
 import java.io.InputStream
 
 @Deprecated("Use DownloadRequestLoader instead")
-class HttpGlideUrlLoader(
+public class HttpGlideUrlLoader(
     private val httpManager: HttpManager,
     private val proxyGetter: () -> ProxyConfig?,
 ) : ModelLoader<GlideUrl, InputStream> {
 
-    companion object {
+    private companion object {
         private val log = KotlinLogging.logger { }
     }
 
@@ -30,7 +30,7 @@ class HttpGlideUrlLoader(
         return LoadData(glideUrl, HttpFetcher(httpManager, glideUrl, proxyGetter()))
     }
 
-    class Factory(
+    public class Factory(
         private val httpManager: HttpManager,
         private val proxyGetter: () -> ProxyConfig?,
     ) : ModelLoaderFactory<GlideUrl, InputStream> {

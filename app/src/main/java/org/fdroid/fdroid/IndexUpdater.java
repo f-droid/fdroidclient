@@ -33,8 +33,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
-import androidx.annotation.NonNull;
-
 import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -69,6 +67,8 @@ import java.util.jar.JarFile;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import androidx.annotation.NonNull;
 
 // TODO move to org.fdroid.fdroid.updater
 // TODO reduce visibility of methods once in .updater package (.e.g tests need it public now)

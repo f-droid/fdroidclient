@@ -300,6 +300,8 @@ public class InstallManagerService extends Service {
                     }
                 } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
+                } else if (Downloader.ACTION_CONNECTION_FAILED.equals(action)) {
+                    localBroadcastManager.unregisterReceiver(this);
                 } else {
                     throw new RuntimeException("intent action not handled!");
                 }

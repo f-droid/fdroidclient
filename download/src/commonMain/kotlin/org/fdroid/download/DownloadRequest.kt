@@ -3,7 +3,7 @@ package org.fdroid.download
 import io.ktor.client.engine.ProxyConfig
 import kotlin.jvm.JvmOverloads
 
-data class DownloadRequest @JvmOverloads constructor(
+public data class DownloadRequest @JvmOverloads constructor(
     val path: String,
     val mirrors: List<Mirror>,
     val proxy: ProxyConfig? = null,

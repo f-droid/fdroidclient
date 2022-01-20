@@ -17,7 +17,7 @@ import org.fdroid.download.HttpManager
 import org.fdroid.download.Mirror
 import java.io.InputStream
 
-class HttpFetcher(
+internal class HttpFetcher(
     private val httpManager: HttpManager,
     private val downloadRequest: DownloadRequest,
 ) : DataFetcher<InputStream> {

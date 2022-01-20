@@ -8,25 +8,26 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-abstract class Downloader constructor(
+public abstract class Downloader constructor(
     @JvmField
     protected val outputFile: File,
 ) {
 
-    companion object {
-        val log = KotlinLogging.logger {}
+    public companion object {
+        private val log = KotlinLogging.logger {}
 
-        const val ACTION_STARTED = "org.fdroid.fdroid.net.Downloader.action.STARTED"
-        const val ACTION_PROGRESS = "org.fdroid.fdroid.net.Downloader.action.PROGRESS"
-        const val ACTION_INTERRUPTED = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED"
-        const val ACTION_CONNECTION_FAILED = "org.fdroid.fdroid.net.Downloader.action.CONNECTION_FAILED"
-        const val ACTION_COMPLETE = "org.fdroid.fdroid.net.Downloader.action.COMPLETE"
-        const val EXTRA_DOWNLOAD_PATH = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH"
-        const val EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ"
-        const val EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES"
-        const val EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE"
-        const val EXTRA_REPO_ID = "org.fdroid.fdroid.net.Downloader.extra.REPO_ID"
-        const val EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.MIRROR_URL"
+        public const val ACTION_STARTED: String = "org.fdroid.fdroid.net.Downloader.action.STARTED"
+        public const val ACTION_PROGRESS: String = "org.fdroid.fdroid.net.Downloader.action.PROGRESS"
+        public const val ACTION_INTERRUPTED: String = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED"
+        public const val ACTION_CONNECTION_FAILED: String =
+            "org.fdroid.fdroid.net.Downloader.action.CONNECTION_FAILED"
+        public const val ACTION_COMPLETE: String = "org.fdroid.fdroid.net.Downloader.action.COMPLETE"
+        public const val EXTRA_DOWNLOAD_PATH: String = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH"
+        public const val EXTRA_BYTES_READ: String = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ"
+        public const val EXTRA_TOTAL_BYTES: String = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES"
+        public const val EXTRA_ERROR_MESSAGE: String = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE"
+        public const val EXTRA_REPO_ID: String = "org.fdroid.fdroid.net.Downloader.extra.REPO_ID"
+        public const val EXTRA_MIRROR_URL: String = "org.fdroid.fdroid.net.Downloader.extra.MIRROR_URL"
 
         /**
          * Unique ID used to represent this specific package's install process,
@@ -36,10 +37,7 @@ abstract class Downloader constructor(
          *
          * @see android.content.Intent.EXTRA_ORIGINATING_URI
          */
-        const val EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL"
-
-        const val DEFAULT_TIMEOUT = 10000
-        const val LONGEST_TIMEOUT = 600000 // 10 minutes
+        public const val EXTRA_CANONICAL_URL: String = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL"
     }
 
     /**
@@ -50,7 +48,7 @@ abstract class Downloader constructor(
      * If this cacheTag matches that returned by the server, then no download will
      * take place, and a status code of 304 will be returned by download().
      */
-    var cacheTag: String? = null
+    public var cacheTag: String? = null
 
     @Volatile
     private var cancelled = false
@@ -63,7 +61,7 @@ abstract class Downloader constructor(
      * Never call this more than once. Create a new [Downloader], if you need to download again!
      */
     @Throws(IOException::class, InterruptedException::class)
-    abstract fun download()
+    public abstract fun download()
 
     @Throws(IOException::class)
     protected abstract fun getInputStream(resumable: Boolean): InputStream
@@ -82,10 +80,10 @@ abstract class Downloader constructor(
      * After calling [download], this returns true if a new file was downloaded and
      * false if the file on the server has not changed and thus was not downloaded.
      */
-    abstract fun hasChanged(): Boolean
-    abstract fun close()
+    public abstract fun hasChanged(): Boolean
+    public abstract fun close()
 
-    fun setListener(listener: ProgressListener) {
+    public fun setListener(listener: ProgressListener) {
         progressListener = listener
     }
 
@@ -179,7 +177,7 @@ abstract class Downloader constructor(
     /**
      * Cancel a running download, triggering an [InterruptedException]
      */
-    fun cancelDownload() {
+    public fun cancelDownload() {
         cancelled = true
     }
 

@@ -28,6 +28,8 @@ kotlin {
         all {
             languageSettings {
                 optIn('kotlin.RequiresOptIn')
+                explicitApi()
+                explicitApi = 'strict'
             }
         }
         commonMain {

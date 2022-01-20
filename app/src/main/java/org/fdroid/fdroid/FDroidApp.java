@@ -50,7 +50,6 @@ import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 import org.apache.commons.net.util.SubnetUtils;
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
@@ -126,8 +125,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     @Nullable
     public static volatile String queryString;
-
-    private static volatile int timeout = Downloader.DEFAULT_TIMEOUT;
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.bouncycastle.jce.provider.BouncyCastleProvider BOUNCYCASTLE_PROVIDER;
@@ -244,10 +241,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         ssid = "";
         bssid = "";
         repo = new Repo();
-    }
-
-    public static int getTimeout() {
-        return timeout;
     }
 
     @Override

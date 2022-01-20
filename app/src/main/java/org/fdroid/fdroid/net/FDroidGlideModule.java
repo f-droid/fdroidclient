@@ -18,7 +18,6 @@ import com.bumptech.glide.request.RequestOptions;
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.glide.DownloadRequestLoader;
 import org.fdroid.download.glide.HttpGlideUrlLoader;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
 import androidx.annotation.NonNull;
@@ -39,8 +38,7 @@ public class FDroidGlideModule extends AppGlideModule {
                 BitmapTransitionOptions.withCrossFade())
                 .setDefaultRequestOptions(new RequestOptions()
                         .format(DecodeFormat.PREFER_RGB_565)
-                        .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed())
-                        .timeout(FDroidApp.getTimeout()));
+                        .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed()));
     }
 
     @Override

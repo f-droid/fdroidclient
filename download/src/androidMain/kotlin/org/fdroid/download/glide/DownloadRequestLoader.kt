@@ -10,7 +10,7 @@ import org.fdroid.download.DownloadRequest
 import org.fdroid.download.HttpManager
 import java.io.InputStream
 
-class DownloadRequestLoader(
+public class DownloadRequestLoader(
     private val httpManager: HttpManager,
 ) : ModelLoader<DownloadRequest, InputStream> {
 
@@ -27,7 +27,7 @@ class DownloadRequestLoader(
         return LoadData(downloadRequest.getKey(), HttpFetcher(httpManager, downloadRequest))
     }
 
-    class Factory(
+    public class Factory(
         private val httpManager: HttpManager,
     ) : ModelLoaderFactory<DownloadRequest, InputStream> {
         override fun build(multiFactory: MultiModelLoaderFactory): ModelLoader<DownloadRequest, InputStream> {
@@ -39,7 +39,7 @@ class DownloadRequestLoader(
 
 }
 
-fun DownloadRequest.getKey(): ObjectKey {
+internal fun DownloadRequest.getKey(): ObjectKey {
     // TODO should we choose a unique key or is it ok for this to work cross-repo based on file path only?
     return ObjectKey(path)
 }

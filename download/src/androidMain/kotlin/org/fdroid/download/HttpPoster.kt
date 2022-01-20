@@ -7,13 +7,13 @@ import java.io.IOException
 /**
  * HTTP POST a JSON string to the URL configured in the constructor.
  */
-class HttpPoster(
+public class HttpPoster(
     private val httpManager: HttpManager,
     private val url: String,
 ) {
 
     @Throws(IOException::class)
-    fun post(json: String) {
+    public fun post(json: String) {
         runBlocking {
             try {
                 httpManager.post(url, json)

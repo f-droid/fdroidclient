@@ -22,7 +22,6 @@
 package org.fdroid.download
 
 import android.annotation.TargetApi
-import android.net.Uri
 import android.os.Build.VERSION.SDK_INT
 import io.ktor.client.features.ResponseException
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -36,26 +35,14 @@ import java.util.Date
 /**
  * Download files over HTTP, with support for proxies, `.onion` addresses, HTTP Basic Auth, etc.
  */
-class HttpDownloader constructor(
+public class HttpDownloader constructor(
     private val httpManager: HttpManager,
     private val request: DownloadRequest,
     destFile: File,
 ) : Downloader(destFile) {
 
-    companion object {
+    private companion object {
         val log = KotlinLogging.logger {}
-
-        @JvmStatic
-        fun isSwapUrl(uri: Uri): Boolean {
-            return isSwapUrl(uri.host, uri.port)
-        }
-
-        fun isSwapUrl(host: String?, port: Int): Boolean {
-            return (port > 1023 // only root can use <= 1023, so never a swap repo
-                    && host!!.matches(Regex("[0-9.]+")) // host must be an IP address
-                    )
-            // TODO check if is local
-        }
     }
 
     private var hasChanged = false

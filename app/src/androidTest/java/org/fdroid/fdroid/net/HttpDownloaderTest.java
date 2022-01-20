@@ -1,10 +1,6 @@
 
 package org.fdroid.fdroid.net;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import android.os.Build;
 import android.util.Log;
 
@@ -28,6 +24,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class HttpDownloaderTest {
     private static final String TAG = "HttpDownloaderTest";

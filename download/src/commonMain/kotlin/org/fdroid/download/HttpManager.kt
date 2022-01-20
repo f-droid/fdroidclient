@@ -49,7 +49,7 @@ public open class HttpManager @JvmOverloads constructor(
     private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
 ) {
 
-    companion object {
+    private companion object {
         val log = KotlinLogging.logger {}
     }
 
@@ -187,7 +187,7 @@ public open class HttpManager @JvmOverloads constructor(
         return channel.toByteArray()
     }
 
-    suspend fun post(url: String, json: String, proxy: ProxyConfig? = null) {
+    public suspend fun post(url: String, json: String, proxy: ProxyConfig? = null) {
         resetProxyIfNeeded(proxy)
         httpClient.post<HttpResponse>(url) {
             header(ContentType, "application/json; utf-8")
@@ -217,3 +217,5 @@ public open class HttpManager @JvmOverloads constructor(
     }
 
 }
+
+public class NoResumeException : Exception()

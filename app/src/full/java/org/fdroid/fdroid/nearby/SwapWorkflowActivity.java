@@ -41,7 +41,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.fdroid.download.Downloader;
-import org.fdroid.download.HttpDownloader;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -466,12 +465,22 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
         Uri uri = intent.getData();
-        if (uri != null && !HttpDownloader.isSwapUrl(uri) && !BluetoothDownloader.isBluetoothUri(uri)) {
+        if (uri != null && !isSwapUrl(uri) && !BluetoothDownloader.isBluetoothUri(uri)) {
             String msg = getString(R.string.swap_toast_invalid_url, uri);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             return;
         }
         confirmSwapConfig = new NewRepoConfig(this, intent);
+    }
+
+    private static boolean isSwapUrl(Uri uri) {
+        return isSwapUrl(uri.getHost(), uri.getPort());
+    }
+
+    private static boolean isSwapUrl(String host, int port) {
+        return port > 1023 // only root can use <= 1023, so never a swap repo
+                && host.matches("[0-9.]+") // host must be an IP address
+                && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
     }
 
     public void promptToSelectWifiNetwork() {

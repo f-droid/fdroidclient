@@ -8,11 +8,11 @@ import mu.KotlinLogging
 import kotlin.jvm.JvmOverloads
 import kotlin.jvm.JvmStatic
 
-data class Mirror @JvmOverloads constructor(
+public data class Mirror @JvmOverloads constructor(
     private val baseUrl: String,
     val location: String? = null,
 ) {
-    val url by lazy {
+    public val url: Url by lazy {
         try {
             URLBuilder(baseUrl).build()
             // we fall back to a non-existent URL if someone tries to sneak in an invalid mirror URL to crash us
@@ -28,17 +28,17 @@ data class Mirror @JvmOverloads constructor(
         }
     }
 
-    fun getUrl(path: String): Url {
+    public fun getUrl(path: String): Url {
         return URLBuilder(url).pathComponents(path).build()
     }
 
-    fun isOnion(): Boolean = url.isOnion()
+    public fun isOnion(): Boolean = url.isOnion()
 
-    fun isLocal(): Boolean = url.isLocal()
+    public fun isLocal(): Boolean = url.isLocal()
 
-    companion object {
+    public companion object {
         @JvmStatic
-        fun fromStrings(list: List<String>): List<Mirror> = list.map { Mirror(it) }
+        public fun fromStrings(list: List<String>): List<Mirror> = list.map { Mirror(it) }
     }
 }
 

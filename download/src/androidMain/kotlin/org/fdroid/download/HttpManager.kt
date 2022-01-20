@@ -7,7 +7,7 @@ import io.ktor.client.engine.okhttp.OkHttpConfig
 import okhttp3.Dns
 import java.net.InetAddress
 
-actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
+internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
     return object : HttpClientEngineFactory<OkHttpConfig> {
         override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine = OkHttp.create {
             block()

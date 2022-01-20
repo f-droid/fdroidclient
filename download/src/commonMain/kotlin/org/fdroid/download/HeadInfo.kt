@@ -1,6 +1,6 @@
 package org.fdroid.download
 
-data class HeadInfo(
+public data class HeadInfo(
     val eTagChanged: Boolean,
     val eTag: String?,
     val contentLength: Long?,

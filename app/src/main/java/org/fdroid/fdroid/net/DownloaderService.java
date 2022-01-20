@@ -33,8 +33,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
 
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.ProgressListener;
@@ -57,6 +55,8 @@ import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLKeyException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLProtocolException;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * DownloaderService is a service that handles asynchronous download requests
