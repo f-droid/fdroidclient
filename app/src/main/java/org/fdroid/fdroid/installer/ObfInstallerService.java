@@ -20,6 +20,8 @@ import java.lang.reflect.Method;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import androidx.core.content.FileProvider;
+
 /**
  * An {@link IntentService} subclass for installing {@code .obf} and {@code .obf.zip}
  * map files into OsmAnd.  This will unzip the {@code .obf}
@@ -109,15 +111,21 @@ public class ObfInstallerService extends IntentService {
         if (TextUtils.isEmpty(mimeType)) {
             mimeType = "application/octet-stream";
         }
-        intent.setDataAndType(Uri.fromFile(file), mimeType);
+        if (Build.VERSION.SDK_INT < 24) {
+            intent.setDataAndType(Uri.fromFile(file), mimeType);
+        } else {
+            intent.setDataAndType(FileProvider.getUriForFile(this, Installer.AUTHORITY, file), mimeType);
+        }
         if (Build.VERSION.SDK_INT >= 23) {
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
         }
         if (intent != null && intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
+            sendBroadcastInstall(Installer.ACTION_INSTALL_COMPLETE, canonicalUri, apk, null);
         } else {
             Log.i(TAG, "No AppCompatActivity available to handle " + intent);
+            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, apk, null);
         }
-        sendBroadcastInstall(Installer.ACTION_INSTALL_COMPLETE, canonicalUri, apk, null);
     }
 }
