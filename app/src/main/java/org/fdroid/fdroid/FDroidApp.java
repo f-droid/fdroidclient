@@ -187,6 +187,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         return R.style.Theme_App;
     }
 
+    @Deprecated // broken, use system (night) resources instead
     public static boolean isAppThemeLight() {
         return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO;
     }
