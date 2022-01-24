@@ -6,10 +6,10 @@
 
 * A PNG alkalmazásikon nélküli alkalmazások megjelennek a Legfrissebb lapon (@ashutoshgngwr)
 
-* Fejlettebb ikonkezelés korlátolt adat/Wi-Fi beállítások mellett
+* Jobb ikonkezelés korlátolt adat/Wi-Fi beállítások mellett
 
-* Offline, közeli megosztás fejlesztése
+* Több vonalkód-leolvasó támogatása (@Lugerun)
 
 * Megjelenítendő előnytelen funkciók kiválasztása
 
-* Új tárolók hozzáadásának tiltása, ha az „Ismeretlen források” tiltottak
+* Tárolók hozzáadásának tiltása, ha az „Ismeretlen források” tiltottak
