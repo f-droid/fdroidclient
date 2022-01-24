@@ -1,12 +1,12 @@
-* Yakınımda gibi seçenekleri kullanmak için Paylaş menüsü elden geçirildi.
+* Yakınımda gibi seçenekleri kullanmak için Paylaş menüsü elden geçirildi
 
-* Birçok hata düzeltmesi ile Yakınımda iş akışı iyileştirildi.
+* Birçok hata düzeltmesi ile Yakınımda iş akışı iyileştirildi
 
 * Material tasarımı iyileştirmeleri (@proletarius101)
 
 * PNG simgeleri olmayan uygulamalar artık En Yeniler Sekmesinde gösteriliyor (@ashutoshgngwr)
 
-* Çevrim dışı, yakınımda paylaşımı iyileştirildi
+* Daha fazla barkod tarayıcıyı destekleği (@Lugerun)
 
 * Aygıt yöneticisi "Bilinmeyen Kaynaklar" için izin vermediğinde yeni depo eklemeyi engelle
 

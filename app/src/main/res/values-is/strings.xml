@@ -547,4 +547,5 @@
     <string name="antidisabledalgorithm">Undirritað með óöruggu reikniriti</string>
     <string name="antiknownvuln">Þekktir veikleikar</string>
     <string name="antinosource">Grunnkóði ekki lengur til taks</string>
+    <string name="antiothers">Aðrir neikvæðir eiginleikar</string>
 </resources>

@@ -1,15 +1,17 @@
-• rekonstruita menuo “Kunhavigi” por uzi enkonstruitajn eblojn, ekz. “proksime”
+• rekonstruita menuo “Kunhavigi” por uzi enkonstruitajn eblojn, ekz. “Proksime”
 
-• plibonigita funkciado kaj stirado en “Proksime”
+• plibonigita stirado en “Proksime”
 
 • plibonigoj al Material Design
 
-• aplikaĵoj sen PNG-emblemoj nun montriĝas en langeto “novaj”
+• aplikaĵoj sen PNG-bildsimboloj montriĝas en langeto “novaj”
 
-• je limigita konekto pli bone trakti emblemojn
+• je limigita konekto pli bone trakti bildsimbolojn
+
+• subteno por strekkodskaniloj
 
 • plibonigoj al kunhavigi aplikaĵojn malkonekte per “proksime”
 
 • eblo elekti fieblojn por montri
 
-• malpermesi aldoni novajn deponejojn kiam administranto de aparato malpermesas “nekonatajn fontojn”
+• rifuzi aldoni novajn deponejojn kiam administranto de aparato malpermesas “nekonatajn fontojn”
