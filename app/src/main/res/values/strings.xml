@@ -289,6 +289,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antidisabledalgorithm_key" translatable="false">DisabledAlgorithm</string>
     <string name="antiknownvuln_key" translatable="false">KnownVuln</string>
     <string name="antinosource_key" translatable="false">NoSourceSince</string>
+    <string name="antinsfw_key" translatable="false">NSFW</string>
     <string name="antiothers_key" translatable="false">_anti_others_</string>
     <string name="antifeatures">Anti-features</string>
     <string name="antiads">Ads</string>
@@ -312,6 +313,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antidisabledalgorithmlist">This app has a weak security signature</string>
     <string name="antiknownvulnlist">This app contains a known security vulnerability</string>
     <string name="antinosourcesince">The source code is no longer available, no updates possible.</string>
+    <string name="antinsfw">This app contains content that should not be publicized or visible everywhere</string>
     <string name="display">Display</string>
 
     <string name="expert">Expert mode</string>
