@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Process;
 import android.util.Log;
 
+import com.bumptech.glide.Glide;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -28,6 +30,7 @@ public class DeleteCacheService extends JobIntentService {
     protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         Log.w(TAG, "Deleting all cached contents!");
+        Glide.get(this).clearDiskCache();
         try {
             File cacheDir = getCacheDir();
             FileUtils.deleteDirectory(cacheDir);
