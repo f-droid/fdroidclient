@@ -3,7 +3,6 @@ package org.fdroid.fdroid.panic;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
 import androidx.core.content.ContextCompat;
@@ -33,10 +32,6 @@ public class DestructiveCheckBoxPreference extends CheckBoxPreference {
         if (!holder.itemView.isEnabled()) {
             return;
         }
-        if (FDroidApp.isAppThemeLight()) {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.panic_destructive_light));
-        } else {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.panic_destructive_dark));
-        }
+        holder.itemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.panic_destructive));
     }
 }

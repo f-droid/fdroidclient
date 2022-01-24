@@ -9,6 +9,5 @@
     <color name="swap_light_text">#bbbbbb</color>
     <color name="swap_light_grey_icon">#bbbbbb</color>
 
-    <color name="panic_destructive_light">#fff0f0</color>
-    <color name="panic_destructive_dark">#330000</color>
+    <color name="panic_destructive">#fff0f0</color>
 </resources>
