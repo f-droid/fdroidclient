@@ -1,11 +1,15 @@
 * Überarbeitung des Menüs "Teilen", um integrierte Optionen wie "Umfeld" zu verwenden.
 
+* Verbesserter Umfeld-Workflow und Steuerung mit vielen Fehlerkorrekturen
+
 * Verbesserungen beim Material Design (@proletarius101)
 
 * Apps ohne PNG-Symbole werden jetzt unter "Neues" angezeigt (@ashutoshgngwr)
 
-* Verbessertes Offline- und Umfeld-Teilen
+* Bessere Symbolverwaltung mit eingeschränkten Daten-/WLAN-Einstellungen
 
-* Blockieren des Hinzufügens neuer Repos, wenn der Geräteadministrator "Unbekannte Quellen" nicht zulässt
+* Unterstützung für mehr Barcode-Scanner (@Lugerun)
 
-* Behebung eines Absturzes bei der Verwendung von Repos mit Benutzernamen/Passwort
+* Ermöglicht die Auswahl der anzuzeigenden unerwünschten Merkmale.
+
+* …
