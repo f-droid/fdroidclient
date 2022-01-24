@@ -1,3 +1,11 @@
+### 1.14 (2022-01-24)
+
+* Install Osmand map files without requiring Osmand have Storage permission.
+
+* Fix crash in cache cleanup when disk space is running low.
+
+* Fix UI coloring in Panic settings.
+
 ### 1.14-alpha5 (2022-01-19)
 
 * Fix missing back button on Panic and Manage Repos Settings (@splitowo)
