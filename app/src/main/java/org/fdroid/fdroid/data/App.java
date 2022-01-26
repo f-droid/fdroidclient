@@ -431,7 +431,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             app.installedApk.hash = installedApp.getHash();
         } else if (apkFile.canRead()) {
             String hashType = "sha256";
-            String hash = Utils.getBinaryHash(apkFile, hashType);
+            String hash = Utils.getFileHexDigest(apkFile, hashType);
             if (TextUtils.isEmpty(hash)) {
                 return null;
             }
@@ -876,10 +876,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             if (Integer.parseInt(segments[1]) <= apk.versionCode) {
                 if ("main".equals(segments[0])) {
                     apk.obbMainFile = filename;
-                    apk.obbMainFileSha256 = Utils.getBinaryHash(f, apk.hashType);
+                    apk.obbMainFileSha256 = Utils.getFileHexDigest(f, apk.hashType);
                 } else if ("patch".equals(segments[0])) {
                     apk.obbPatchFile = filename;
-                    apk.obbPatchFileSha256 = Utils.getBinaryHash(f, apk.hashType);
+                    apk.obbPatchFileSha256 = Utils.getFileHexDigest(f, apk.hashType);
                 }
             }
         }

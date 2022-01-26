@@ -299,7 +299,7 @@ public class InstalledAppProviderService extends JobIntentService {
                 if (apk.exists() && apk.canRead()) {
                     try {
                         String hashType = "sha256";
-                        String hash = Utils.getBinaryHash(apk, hashType);
+                        String hash = Utils.getFileHexDigest(apk, hashType);
                         insertAppIntoDb(this, packageInfo, hashType, hash);
                     } catch (IllegalArgumentException e) {
                         Utils.debugLog(TAG, e.getMessage());

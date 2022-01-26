@@ -500,8 +500,8 @@ public final class Utils {
     }
 
     /**
-     * Get the checksum hash of the file {@code apk} using the algorithm in {@code algo}.
-     * {@code apk} must exist on the filesystem and {@code algo} must be supported
+     * Get the checksum hash of the file {@code file} using the algorithm in {@code hashAlgo}.
+     * {@code file} must exist on the filesystem and {@code hashAlgo} must be supported
      * by this device, otherwise an {@link IllegalArgumentException} is thrown.  This
      * method must be very defensive about checking whether the file exists, since APKs
      * can be uninstalled/deleted in background at any time, even if this is in the
@@ -514,11 +514,11 @@ public final class Utils {
      * for more detail.
      */
     @Nullable
-    public static String getBinaryHash(File apk, String algo) {
+    public static String getFileHexDigest(File file, String hashAlgo) {
         FileInputStream fis = null;
         try {
-            MessageDigest md = MessageDigest.getInstance(algo);
-            fis = new FileInputStream(apk);
+            MessageDigest md = MessageDigest.getInstance(hashAlgo);
+            fis = new FileInputStream(file);
             BufferedInputStream bis = new BufferedInputStream(fis);
 
             byte[] dataBytes = new byte[8192];
@@ -532,9 +532,9 @@ public final class Utils {
         } catch (IOException e) {
             String message = e.getMessage();
             if (message.contains("read failed: EIO (I/O error)")) {
-                Utils.debugLog(TAG, "potential filesystem corruption while accessing " + apk + ": " + message);
+                Utils.debugLog(TAG, "potential filesystem corruption while accessing " + file + ": " + message);
             } else if (message.contains(" ENOENT ")) {
-                Utils.debugLog(TAG, apk + " vanished: " + message);
+                Utils.debugLog(TAG, file + " vanished: " + message);
             }
         } catch (NoSuchAlgorithmException e) {
             throw new IllegalArgumentException(e);
