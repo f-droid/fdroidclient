@@ -62,7 +62,6 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.data.Schema;
 import org.xml.sax.XMLReader;
 
-import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
@@ -104,6 +103,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import vendored.org.apache.commons.codec.binary.Hex;
+import vendored.org.apache.commons.codec.digest.DigestUtils;
 
 public final class Utils {
 
@@ -512,23 +513,13 @@ public final class Utils {
      * exception-message-parsing-and-throwing-a-new-ignorable-exception-hackery is
      * probably warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855
      * for more detail.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
      */
     @Nullable
     public static String getFileHexDigest(File file, String hashAlgo) {
-        FileInputStream fis = null;
         try {
-            MessageDigest md = MessageDigest.getInstance(hashAlgo);
-            fis = new FileInputStream(file);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-
-            byte[] dataBytes = new byte[8192];
-            int nread;
-            while ((nread = bis.read(dataBytes)) != -1) { // NOPMD Avoid assignments in operands
-                md.update(dataBytes, 0, nread);
-            }
-
-            byte[] mdbytes = md.digest();
-            return toHexString(mdbytes);
+            return Hex.encodeHexString(DigestUtils.digest(DigestUtils.getDigest(hashAlgo), file));
         } catch (IOException e) {
             String message = e.getMessage();
             if (message.contains("read failed: EIO (I/O error)")) {
@@ -536,10 +527,6 @@ public final class Utils {
             } else if (message.contains(" ENOENT ")) {
                 Utils.debugLog(TAG, file + " vanished: " + message);
             }
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalArgumentException(e);
-        } finally {
-            closeQuietly(fis);
         }
         return null;
     }

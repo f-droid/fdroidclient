@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
@@ -28,7 +29,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.MD5;
+import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
+/**
+ * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
+ */
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class UtilsTest {
@@ -204,7 +210,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void testGetFileHexDigest() {
+    public void testGetFileHexDigest() throws IOException {
         File f = TestUtils.copyResourceToTempFile("largeRepo.xml");
         assertEquals("df1754aa4b56c86c06d7842dfd02064f0781c1f740f489d3fc158bb541c8d197",
                 Utils.getFileHexDigest(f, "sha256"));
@@ -217,7 +223,25 @@ public class UtilsTest {
         f = TestUtils.copyResourceToTempFile("index.fdroid.2016-11-10.jar");
         assertEquals("93bea45814fd8955cabb957e7a3f8790d6c568eaa16fa30425c2d26c60490bde",
                 Utils.getFileHexDigest(f, "SHA-256"));
+
+        // zero size file should have a stable hex digest file
+        assertEquals("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                Utils.getFileHexDigest(File.createTempFile("asdf", "asdf"), SHA_256));
+
+        assertNull(Utils.getFileHexDigest(new File("/kasdfkjasdhflkjasd"), SHA_256));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFileHexDigestBadAlgo() {
+        File f = TestUtils.copyResourceToTempFile("additional_repos.xml");
+        assertNull(Utils.getFileHexDigest(f, "FAKE"));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testGetFileHexDigestNullFile() {
+        assertNull(Utils.getFileHexDigest(null, SHA_256));
+    }
+
     // TODO write tests that work with a Certificate
 
     @Test
@@ -269,7 +293,7 @@ public class UtilsTest {
                 d = v & 0xF;
                 fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
             }
-            String sig = Utils.hashBytes(fdroidSig, "md5");
+            String sig = Utils.hashBytes(fdroidSig, MD5);
             assertEquals(sig, Utils.getsig(rawCertBytes));
 
             PackageInfo packageInfo = new PackageInfo();
