@@ -23,13 +23,13 @@ import java.util.TimeZone;
 
 import androidx.loader.content.CursorLoader;
 import androidx.test.core.app.ApplicationProvider;
+import vendored.org.apache.commons.codec.digest.DigestUtils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.MD5;
 import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
 /**
@@ -335,7 +335,7 @@ public class UtilsTest {
                 d = v & 0xF;
                 fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
             }
-            String sig = Utils.hashBytes(fdroidSig, MD5);
+            String sig = DigestUtils.md5Hex(fdroidSig);
             assertEquals(sig, Utils.getsig(rawCertBytes));
 
             PackageInfo packageInfo = new PackageInfo();

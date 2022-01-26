@@ -437,7 +437,7 @@ public final class Utils {
      * @see org.fdroid.fdroid.data.Apk#sig
      */
     public static String getsig(byte[] rawCertBytes) {
-        return Utils.hashBytes(Hex.encodeHexString(rawCertBytes).getBytes(), "md5");
+        return DigestUtils.md5Hex(Hex.encodeHexString(rawCertBytes).getBytes());
     }
 
     /**
@@ -492,21 +492,6 @@ public final class Utils {
         }
         iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
         Glide.with(context).load(app.getIconUrl(iv.getContext())).apply(iconRequestOptions).into(iv);
-    }
-
-    // this is all new stuff being added
-    public static String hashBytes(byte[] input, String algo) {
-        try {
-            MessageDigest md = MessageDigest.getInstance(algo);
-            byte[] hashBytes = md.digest(input);
-            String hash = Hex.encodeHexString(hashBytes);
-
-            md.reset();
-            return hash;
-        } catch (NoSuchAlgorithmException e) {
-            Log.e(TAG, "Device does not support " + algo + " MessageDisgest algorithm");
-            return null;
-        }
     }
 
     /**
