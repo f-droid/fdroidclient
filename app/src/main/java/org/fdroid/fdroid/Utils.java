@@ -418,6 +418,15 @@ public final class Utils {
         return ret;
     }
 
+    /**
+     * Checks the file against the provided hash, returning whether it is a match.
+     */
+    public static boolean isFileMatchingHash(File file, String hash, String hashType) {
+        if (file == null || !file.exists() || TextUtils.isEmpty(hash)) {
+            return false;
+        }
+        return hash.equals(getFileHexDigest(file, hashType));
+    }
 
     /**
      * Get the fingerprint used to represent an APK signing key in F-Droid.

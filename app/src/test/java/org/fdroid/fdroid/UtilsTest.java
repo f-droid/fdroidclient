@@ -170,6 +170,48 @@ public class UtilsTest {
     }
 
     @Test
+    public void testIsFileMatchingHash() {
+        Utils.isFileMatchingHash(null, null, null);
+        Utils.isFileMatchingHash(new File("/"), "", null);
+
+        assertFalse(Utils.isFileMatchingHash(null, null, ""));
+        assertFalse(Utils.isFileMatchingHash(null, null, SHA_256));
+        assertFalse(Utils.isFileMatchingHash(new File("/"), null, SHA_256));
+        assertFalse(Utils.isFileMatchingHash(new File("/"), "", SHA_256));
+
+        assertTrue(Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("Norway_bouvet_europe_2.obf.zip"),
+                "6e8a584e004c6cd26d3822a04b0591e355dc5d07b5a3d0f8e309443f47ad1208", SHA_256));
+        assertTrue(Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("install_history_all"),
+                "4ad118d4a600dcc104834635d248a89e337fc91b173163d646996b9c54d77372", SHA_256));
+        assertFalse("wrong sha256 value",
+                Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("simpleIndex.jar"),
+                        "6e8a584e004c6cd26d3822a04b0591e355dc5d07b5a3d0f8e309443f47ad1208", SHA_256));
+
+        File f = TestUtils.copyResourceToTempFile("additional_repos.xml");
+        assertTrue(Utils.isFileMatchingHash(f,
+                "47ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab7", SHA_256));
+        assertFalse("uppercase fails",
+                Utils.isFileMatchingHash(f,
+                        "47AD2284D3042373E6280012CC10E9B82F75352DB6D6D9BAB1E06934B7B1DAB7", SHA_256));
+        assertFalse("one uppercase digit fails",
+                Utils.isFileMatchingHash(f,
+                        "47Ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab7", SHA_256));
+        assertFalse("missing digit fails",
+                Utils.isFileMatchingHash(f,
+                        "47ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab", SHA_256));
+        assertFalse("extra digit fails",
+                Utils.isFileMatchingHash(f,
+                        "47ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab71", SHA_256));
+        assertFalse("all zeros fails",
+                Utils.isFileMatchingHash(f,
+                        "0000000000000000000000000000000000000000000000000000000000000000", SHA_256));
+        assertFalse("null fails",
+                Utils.isFileMatchingHash(f, null, SHA_256));
+        assertFalse("empty string fails",
+                Utils.isFileMatchingHash(f, "", SHA_256));
+    }
+
+    @Test
     public void testCalcFingerprintString() {
         // these should pass
         assertEquals(fdroidFingerprint, Utils.calcFingerprint(fdroidPubkey));

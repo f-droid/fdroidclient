@@ -17,7 +17,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
@@ -32,6 +31,8 @@ import java.io.IOException;
 
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
 /**
  * Manages the whole process when a background update triggers an install or the user
@@ -86,6 +87,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * has a different name/description/summary, etc).
  *
  * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
+ * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
  */
 @SuppressWarnings("LineLength")
 public class InstallManagerService extends Service {
@@ -281,7 +283,7 @@ public class InstallManagerService extends Service {
                             + " to " + localApkUri);
 
                     try {
-                        if (Hasher.isFileMatchingHash(localFile, hash, "sha256")) {
+                        if (Utils.isFileMatchingHash(localFile, hash, SHA_256)) {
                             Utils.debugLog(TAG, "Installing OBB " + localFile + " to " + obbDestFile);
                             FileUtils.forceMkdirParent(obbDestFile);
                             FileUtils.copyFile(localFile, obbDestFile);

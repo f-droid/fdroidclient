@@ -28,19 +28,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
-import java.util.Locale;
 
 public class Hasher {
 
     private MessageDigest digest;
     private File file;
-    private byte[] array;
+    private final byte[] array;
     private String hashCache;
-
-    public Hasher(String type, File f) throws NoSuchAlgorithmException {
-        init(type);
-        this.file = f;
-    }
 
     public Hasher(String type, byte[] a) throws NoSuchAlgorithmException {
         init(type);
@@ -82,34 +76,6 @@ public class Hasher {
         }
         hashCache = hex(digest.digest());
         return hashCache;
-    }
-
-    // Compare the calculated hash to another string, ignoring case,
-    // returning true if they are equal. The empty string and null are
-    // considered non-matching.
-    public boolean match(String otherHash) {
-        if (otherHash == null) {
-            return false;
-        }
-        if (hashCache == null) {
-            getHash();
-        }
-        return hashCache.equals(otherHash.toLowerCase(Locale.ENGLISH));
-    }
-
-    /**
-     * Checks the file against the provided hash, returning whether it is a match.
-     */
-    public static boolean isFileMatchingHash(File file, String hash, String hashType) {
-        if (!file.exists()) {
-            return false;
-        }
-        try {
-            Hasher hasher = new Hasher(hashType, file);
-            return hasher.match(hash);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static String hex(Certificate cert) {
