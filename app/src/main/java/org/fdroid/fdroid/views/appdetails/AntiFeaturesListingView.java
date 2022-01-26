@@ -133,6 +133,8 @@ public class AntiFeaturesListingView extends RecyclerView {
             return context.getString(R.string.antiknownvulnlist);
         } else if (antiFeatureName.equals(context.getString(R.string.antinosource_key))) {
             return context.getString(R.string.antinosourcesince);
+        } else if (antiFeatureName.equals(context.getString(R.string.antinsfw_key))) {
+            return context.getString(R.string.antinsfw);
         } else {
             return antiFeatureName;
         }
@@ -159,6 +161,8 @@ public class AntiFeaturesListingView extends RecyclerView {
             return R.drawable.ic_antifeature_knownvuln;
         } else if (antiFeatureName.equals(context.getString(R.string.antinosource_key))) {
             return R.drawable.ic_antifeature_nosourcesince;
+        } else if (antiFeatureName.equals(context.getString(R.string.antinsfw_key))) {
+            return R.drawable.ic_antifeature_nsfw;
         } else {
             return R.drawable.ic_cancel;
         }
