@@ -428,7 +428,7 @@ public final class Utils {
      * @see org.fdroid.fdroid.data.Apk#sig
      */
     public static String getsig(byte[] rawCertBytes) {
-        return Utils.hashBytes(toHexString(rawCertBytes).getBytes(), "md5");
+        return Utils.hashBytes(Hex.encodeHexString(rawCertBytes).getBytes(), "md5");
     }
 
     /**
@@ -490,7 +490,7 @@ public final class Utils {
         try {
             MessageDigest md = MessageDigest.getInstance(algo);
             byte[] hashBytes = md.digest(input);
-            String hash = toHexString(hashBytes);
+            String hash = Hex.encodeHexString(hashBytes);
 
             md.reset();
             return hash;
@@ -530,25 +530,6 @@ public final class Utils {
         }
         return null;
     }
-
-    /**
-     * Computes the base 16 representation of the byte array argument.
-     *
-     * @param bytes an array of bytes.
-     * @return the bytes represented as a string of lowercase hexadecimal digits.
-     * @see <a href="https://stackoverflow.com/a/9855338">source</a>
-     */
-    public static String toHexString(byte[] bytes) {
-        char[] hexChars = new char[bytes.length * 2];
-        for (int j = 0; j < bytes.length; j++) {
-            int v = bytes[j] & 0xFF;
-            hexChars[j * 2] = HEX_LOOKUP_ARRAY[v >>> 4];
-            hexChars[j * 2 + 1] = HEX_LOOKUP_ARRAY[v & 0x0F];
-        }
-        return new String(hexChars);
-    }
-
-    private static final char[] HEX_LOOKUP_ARRAY = "0123456789abcdef".toCharArray();
 
     public static int parseInt(String str, int fallback) {
         if (str == null || str.length() == 0) {
