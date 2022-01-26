@@ -3,7 +3,7 @@
 TOOLS_DIR=$(cd "$(dirname "$0")"; pwd)
 
 cd "$TOOLS_DIR"/..
-./gradlew --write-verification-metadata pgp,sha256 assemble assembleFullDebug
+./gradlew --write-verification-metadata pgp,sha256 build connectedCheck assembleFullDebug
 
 printf "\nPlease review the following diff:\n\n"
 

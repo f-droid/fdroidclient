@@ -1671,6 +1671,11 @@
             <pgp value="5ce325996a35213326ae2c68912d2c0eccda55c0"/>
          </artifact>
       </component>
+      <component group="com.google.errorprone" name="error_prone_annotations" version="2.3.2">
+         <artifact name="error_prone_annotations-2.3.2.jar">
+            <pgp value="5ce325996a35213326ae2c68912d2c0eccda55c0"/>
+         </artifact>
+      </component>
       <component group="com.google.errorprone" name="error_prone_annotations" version="2.3.4">
          <artifact name="error_prone_annotations-2.3.4.jar">
             <pgp value="7615ad56144df2376f49d98b1669c4bb543e0445"/>
