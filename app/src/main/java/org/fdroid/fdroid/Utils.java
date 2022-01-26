@@ -454,36 +454,6 @@ public final class Utils {
     }
 
     /**
-     * There is a method {@link java.util.Locale#forLanguageTag(String)} which would be useful
-     * for this, however it doesn't deal with android-specific language tags, which are a little
-     * different. For example, android language tags may have an "r" before the country code,
-     * such as "zh-rHK", however {@link java.util.Locale} expects them to be "zr-HK".
-     */
-    public static Locale getLocaleFromAndroidLangTag(String languageTag) {
-        if (TextUtils.isEmpty(languageTag)) {
-            return null;
-        }
-
-        final String[] parts = languageTag.split("-");
-        if (parts.length == 1) {
-            return new Locale(parts[0]);
-        }
-        if (parts.length == 2) {
-            String country = parts[1];
-            // Some languages have an "r" before the country as per the values folders, such
-            // as "zh-rCN". As far as the Locale class is concerned, the "r" is
-            // not helpful, and this should be "zh-CN". Thus, we will
-            // strip the "r" when found.
-            if (country.charAt(0) == 'r' && country.length() == 3) {
-                country = country.substring(1);
-            }
-            return new Locale(parts[0], country);
-        }
-        Log.e(TAG, "Locale could not be parsed from language tag: " + languageTag);
-        return new Locale(languageTag);
-    }
-
-    /**
      * Gets the {@link RequestOptions} instance used to configure
      * {@link Glide} instances used to display app icons that should always be
      * downloaded.  It lazy loads a reusable static instance.
