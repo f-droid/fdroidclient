@@ -58,7 +58,12 @@ internal class MirrorChooserRandom : MirrorChooserImpl() {
      */
     override fun orderMirrors(downloadRequest: DownloadRequest): List<Mirror> {
         // simple random selection for now
-        return downloadRequest.mirrors.toMutableList().apply { shuffle() }
+        return downloadRequest.mirrors.toMutableList().apply { shuffle() }.also { mirrors ->
+            // respect the mirror to try first, if set
+            if (downloadRequest.tryFirstMirror != null) {
+                mirrors.sortBy { if (it == downloadRequest.tryFirstMirror) 0 else 1 }
+            }
+        }
     }
 
 }

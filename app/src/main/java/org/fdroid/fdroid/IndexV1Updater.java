@@ -115,7 +115,7 @@ public class IndexV1Updater extends IndexUpdater {
             destFile = File.createTempFile("dl-", "", context.getCacheDir());
             destFile.deleteOnExit(); // this probably does nothing, but maybe...
             // read file name from file
-            downloader = DownloaderFactory.createWithoutMirrors(repo, Uri.parse(indexUrl), destFile);
+            downloader = DownloaderFactory.createWithTryFirstMirror(repo, Uri.parse(indexUrl), destFile);
             downloader.setCacheTag(repo.lastetag);
             downloader.setListener(downloadListener);
             downloader.download();
