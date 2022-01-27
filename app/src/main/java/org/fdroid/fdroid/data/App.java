@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -431,7 +430,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             app.installedApk.hash = installedApp.getHash();
         } else if (apkFile.canRead()) {
             String hashType = "sha256";
-            String hash = Utils.getBinaryHash(apkFile, hashType);
+            String hash = Utils.getFileHexDigest(apkFile, hashType);
             if (TextUtils.isEmpty(hash)) {
                 return null;
             }
@@ -876,10 +875,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             if (Integer.parseInt(segments[1]) <= apk.versionCode) {
                 if ("main".equals(segments[0])) {
                     apk.obbMainFile = filename;
-                    apk.obbMainFileSha256 = Utils.getBinaryHash(f, apk.hashType);
+                    apk.obbMainFileSha256 = Utils.getFileHexDigest(f, apk.hashType);
                 } else if ("patch".equals(segments[0])) {
                     apk.obbPatchFile = filename;
-                    apk.obbPatchFileSha256 = Utils.getBinaryHash(f, apk.hashType);
+                    apk.obbPatchFileSha256 = Utils.getFileHexDigest(f, apk.hashType);
                 }
             }
         }
@@ -934,35 +933,25 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             throw new CertificateEncodingException("null signed entry!");
         }
 
-        byte[] rawCertBytes;
-
-        // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
-        // breakage when verifying the signature of most .jars. For more
-        // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
-        try {
-            FDroidApp.disableBouncyCastleOnLollipop();
-            final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
-            byte[] buff = new byte[2048];
-            //noinspection StatementWithEmptyBody
-            while (tmpIn.read(buff, 0, buff.length) != -1) {
-                /*
-                 * NOP - apparently have to READ from the JarEntry before you can
-                 * call getCerficates() and have it return != null. Yay Java.
-                 */
-            }
-            tmpIn.close();
-
-            if (aSignedEntry.getCertificates() == null
-                    || aSignedEntry.getCertificates().length == 0) {
-                apkJar.close();
-                throw new CertificateEncodingException("No Certificates found!");
-            }
-
-            final Certificate signer = aSignedEntry.getCertificates()[0];
-            rawCertBytes = signer.getEncoded();
-        } finally {
-            FDroidApp.enableBouncyCastleOnLollipop();
+        final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
+        byte[] buff = new byte[2048];
+        //noinspection StatementWithEmptyBody
+        while (tmpIn.read(buff, 0, buff.length) != -1) {
+            /*
+             * NOP - apparently have to READ from the JarEntry before you can
+             * call getCerficates() and have it return != null. Yay Java.
+             */
         }
+        tmpIn.close();
+
+        if (aSignedEntry.getCertificates() == null
+                || aSignedEntry.getCertificates().length == 0) {
+            apkJar.close();
+            throw new CertificateEncodingException("No Certificates found!");
+        }
+
+        final Certificate signer = aSignedEntry.getCertificates()[0];
+        byte[] rawCertBytes = signer.getEncoded();
         apkJar.close();
 
         apk.sig = Utils.getsig(rawCertBytes);

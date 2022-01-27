@@ -207,11 +207,6 @@ public class IndexUpdater {
                 throw new UpdateException(repo, downloadedFile + " does not exist!");
             }
 
-            // Due to a bug in Android 5.0 Lollipop, the inclusion of bouncycastle causes
-            // breakage when verifying the signature of the downloaded .jar. For more
-            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
-            FDroidApp.disableBouncyCastleOnLollipop();
-
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexUpdater.DATA_FILE_NAME);
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
@@ -241,7 +236,6 @@ public class IndexUpdater {
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index", e);
         } finally {
-            FDroidApp.enableBouncyCastleOnLollipop();
             Utils.closeQuietly(indexInputStream);
             if (downloadedFile != null) {
                 if (!downloadedFile.delete()) {

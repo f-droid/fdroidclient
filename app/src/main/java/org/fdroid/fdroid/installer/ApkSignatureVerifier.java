@@ -33,10 +33,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+import vendored.org.apache.commons.codec.binary.Hex;
+
 /**
  * NOTE: Silly Android API naming: APK signatures are actually certificates!
  * Thus, we are comparing certificates (including the public key) used to sign an APK,
  * not the actual APK signature.
+ *
+ * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
  */
 class ApkSignatureVerifier {
 
@@ -69,8 +73,8 @@ class ApkSignatureVerifier {
         }
 
         Utils.debugLog(TAG, "Signature mismatch!");
-        Utils.debugLog(TAG, "APK sig: " + Utils.toHexString(getApkSignature(apkFile)));
-        Utils.debugLog(TAG, "F-Droid sig: " + Utils.toHexString(getFDroidSignature()));
+        Utils.debugLog(TAG, "APK sig: " + Hex.encodeHexString(getApkSignature(apkFile)));
+        Utils.debugLog(TAG, "F-Droid sig: " + Hex.encodeHexString(getFDroidSignature()));
         return false;
     }
 

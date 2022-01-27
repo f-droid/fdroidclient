@@ -226,18 +226,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         Security.addProvider(BOUNCYCASTLE_PROVIDER);
     }
 
-    public static void enableBouncyCastleOnLollipop() {
-        if (Build.VERSION.SDK_INT == 21) {
-            Security.addProvider(BOUNCYCASTLE_PROVIDER);
-        }
-    }
-
-    public static void disableBouncyCastleOnLollipop() {
-        if (Build.VERSION.SDK_INT == 21) {
-            Security.removeProvider(BOUNCYCASTLE_PROVIDER.getName());
-        }
-    }
-
     /**
      * Initialize the settings needed to run a local swap repo. This should
      * only ever be called in {@link WifiStateChangeService.WifiInfoThread},

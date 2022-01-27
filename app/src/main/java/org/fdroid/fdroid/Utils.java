@@ -62,7 +62,6 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.data.Schema;
 import org.xml.sax.XMLReader;
 
-import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
@@ -104,6 +103,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import vendored.org.apache.commons.codec.binary.Hex;
+import vendored.org.apache.commons.codec.digest.DigestUtils;
 
 public final class Utils {
 
@@ -417,6 +418,15 @@ public final class Utils {
         return ret;
     }
 
+    /**
+     * Checks the file against the provided hash, returning whether it is a match.
+     */
+    public static boolean isFileMatchingHash(File file, String hash, String hashType) {
+        if (file == null || !file.exists() || TextUtils.isEmpty(hash)) {
+            return false;
+        }
+        return hash.equals(getFileHexDigest(file, hashType));
+    }
 
     /**
      * Get the fingerprint used to represent an APK signing key in F-Droid.
@@ -427,7 +437,7 @@ public final class Utils {
      * @see org.fdroid.fdroid.data.Apk#sig
      */
     public static String getsig(byte[] rawCertBytes) {
-        return Utils.hashBytes(toHexString(rawCertBytes).getBytes(), "md5");
+        return DigestUtils.md5Hex(Hex.encodeHexString(rawCertBytes).getBytes());
     }
 
     /**
@@ -451,36 +461,6 @@ public final class Utils {
             // ignore
         }
         return sigHash;
-    }
-
-    /**
-     * There is a method {@link java.util.Locale#forLanguageTag(String)} which would be useful
-     * for this, however it doesn't deal with android-specific language tags, which are a little
-     * different. For example, android language tags may have an "r" before the country code,
-     * such as "zh-rHK", however {@link java.util.Locale} expects them to be "zr-HK".
-     */
-    public static Locale getLocaleFromAndroidLangTag(String languageTag) {
-        if (TextUtils.isEmpty(languageTag)) {
-            return null;
-        }
-
-        final String[] parts = languageTag.split("-");
-        if (parts.length == 1) {
-            return new Locale(parts[0]);
-        }
-        if (parts.length == 2) {
-            String country = parts[1];
-            // Some languages have an "r" before the country as per the values folders, such
-            // as "zh-rCN". As far as the Locale class is concerned, the "r" is
-            // not helpful, and this should be "zh-CN". Thus, we will
-            // strip the "r" when found.
-            if (country.charAt(0) == 'r' && country.length() == 3) {
-                country = country.substring(1);
-            }
-            return new Locale(parts[0], country);
-        }
-        Log.e(TAG, "Locale could not be parsed from language tag: " + languageTag);
-        return new Locale(languageTag);
     }
 
     /**
@@ -514,24 +494,9 @@ public final class Utils {
         Glide.with(context).load(app.getIconUrl(iv.getContext())).apply(iconRequestOptions).into(iv);
     }
 
-    // this is all new stuff being added
-    public static String hashBytes(byte[] input, String algo) {
-        try {
-            MessageDigest md = MessageDigest.getInstance(algo);
-            byte[] hashBytes = md.digest(input);
-            String hash = toHexString(hashBytes);
-
-            md.reset();
-            return hash;
-        } catch (NoSuchAlgorithmException e) {
-            Log.e(TAG, "Device does not support " + algo + " MessageDisgest algorithm");
-            return null;
-        }
-    }
-
     /**
-     * Get the checksum hash of the file {@code apk} using the algorithm in {@code algo}.
-     * {@code apk} must exist on the filesystem and {@code algo} must be supported
+     * Get the checksum hash of the file {@code file} using the algorithm in {@code hashAlgo}.
+     * {@code file} must exist on the filesystem and {@code hashAlgo} must be supported
      * by this device, otherwise an {@link IllegalArgumentException} is thrown.  This
      * method must be very defensive about checking whether the file exists, since APKs
      * can be uninstalled/deleted in background at any time, even if this is in the
@@ -542,56 +507,23 @@ public final class Utils {
      * exception-message-parsing-and-throwing-a-new-ignorable-exception-hackery is
      * probably warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855
      * for more detail.
+     *
+     * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
      */
     @Nullable
-    public static String getBinaryHash(File apk, String algo) {
-        FileInputStream fis = null;
+    public static String getFileHexDigest(File file, String hashAlgo) {
         try {
-            MessageDigest md = MessageDigest.getInstance(algo);
-            fis = new FileInputStream(apk);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-
-            byte[] dataBytes = new byte[8192];
-            int nread;
-            while ((nread = bis.read(dataBytes)) != -1) { // NOPMD Avoid assignments in operands
-                md.update(dataBytes, 0, nread);
-            }
-
-            byte[] mdbytes = md.digest();
-            return toHexString(mdbytes);
+            return Hex.encodeHexString(DigestUtils.digest(DigestUtils.getDigest(hashAlgo), file));
         } catch (IOException e) {
             String message = e.getMessage();
             if (message.contains("read failed: EIO (I/O error)")) {
-                Utils.debugLog(TAG, "potential filesystem corruption while accessing " + apk + ": " + message);
+                Utils.debugLog(TAG, "potential filesystem corruption while accessing " + file + ": " + message);
             } else if (message.contains(" ENOENT ")) {
-                Utils.debugLog(TAG, apk + " vanished: " + message);
+                Utils.debugLog(TAG, file + " vanished: " + message);
             }
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalArgumentException(e);
-        } finally {
-            closeQuietly(fis);
         }
         return null;
     }
-
-    /**
-     * Computes the base 16 representation of the byte array argument.
-     *
-     * @param bytes an array of bytes.
-     * @return the bytes represented as a string of lowercase hexadecimal digits.
-     * @see <a href="https://stackoverflow.com/a/9855338">source</a>
-     */
-    public static String toHexString(byte[] bytes) {
-        char[] hexChars = new char[bytes.length * 2];
-        for (int j = 0; j < bytes.length; j++) {
-            int v = bytes[j] & 0xFF;
-            hexChars[j * 2] = HEX_LOOKUP_ARRAY[v >>> 4];
-            hexChars[j * 2 + 1] = HEX_LOOKUP_ARRAY[v & 0x0F];
-        }
-        return new String(hexChars);
-    }
-
-    private static final char[] HEX_LOOKUP_ARRAY = "0123456789abcdef".toCharArray();
 
     public static int parseInt(String str, int fallback) {
         if (str == null || str.length() == 0) {

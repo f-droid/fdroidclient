@@ -225,6 +225,7 @@ task pmdMain(type: Pmd) {
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/main/java'
     include '**/*.java'
+    exclude '**/vendored/**/*.java'
 }
 
 task pmdTest(type: Pmd) {
@@ -233,6 +234,7 @@ task pmdTest(type: Pmd) {
     ruleSets = [] // otherwise defaults clash with the list in rules.xml
     source 'src/test/java', 'src/androidTest/java'
     include '**/*.java'
+    exclude '**/vendored/**/*.java'
 }
 
 task pmd(dependsOn: [pmdMain, pmdTest]) {}

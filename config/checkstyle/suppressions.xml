@@ -4,4 +4,5 @@
 "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 <suppressions>
   <suppress checks="." files="[\\/]kellinwood[\\/].*\.java$"/>
+  <suppress checks="." files="[\\/]vendored[\\/].*\.java$"/>
 </suppressions>

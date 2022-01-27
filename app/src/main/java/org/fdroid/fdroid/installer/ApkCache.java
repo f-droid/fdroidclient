@@ -25,7 +25,7 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -89,7 +89,7 @@ public class ApkCache {
         FileUtils.copyFile(apkFile, sanitizedApkFile);
 
         // verify copied file's hash with expected hash from Apk class
-        if (verifyHash && !Hasher.isFileMatchingHash(sanitizedApkFile, hash, hashType)) {
+        if (verifyHash && !Utils.isFileMatchingHash(sanitizedApkFile, hash, hashType)) {
             FileUtils.deleteQuietly(apkFile);
             throw new IOException(apkFile + " failed to verify!");
         }
@@ -137,7 +137,7 @@ public class ApkCache {
      */
     public static boolean apkIsCached(File apkFile, Apk apkToCheck) {
         return apkFile.length() == apkToCheck.size &&
-                Hasher.isFileMatchingHash(apkFile, apkToCheck.hash, apkToCheck.hashType);
+                Utils.isFileMatchingHash(apkFile, apkToCheck.hash, apkToCheck.hashType);
     }
 
     /**

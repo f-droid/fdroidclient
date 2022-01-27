@@ -16,19 +16,25 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
 
 import androidx.loader.content.CursorLoader;
 import androidx.test.core.app.ApplicationProvider;
+import vendored.org.apache.commons.codec.digest.DigestUtils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
+/**
+ * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
+ */
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings("LineLength")
 public class UtilsTest {
@@ -164,6 +170,48 @@ public class UtilsTest {
     }
 
     @Test
+    public void testIsFileMatchingHash() {
+        Utils.isFileMatchingHash(null, null, null);
+        Utils.isFileMatchingHash(new File("/"), "", null);
+
+        assertFalse(Utils.isFileMatchingHash(null, null, ""));
+        assertFalse(Utils.isFileMatchingHash(null, null, SHA_256));
+        assertFalse(Utils.isFileMatchingHash(new File("/"), null, SHA_256));
+        assertFalse(Utils.isFileMatchingHash(new File("/"), "", SHA_256));
+
+        assertTrue(Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("Norway_bouvet_europe_2.obf.zip"),
+                "6e8a584e004c6cd26d3822a04b0591e355dc5d07b5a3d0f8e309443f47ad1208", SHA_256));
+        assertTrue(Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("install_history_all"),
+                "4ad118d4a600dcc104834635d248a89e337fc91b173163d646996b9c54d77372", SHA_256));
+        assertFalse("wrong sha256 value",
+                Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("simpleIndex.jar"),
+                        "6e8a584e004c6cd26d3822a04b0591e355dc5d07b5a3d0f8e309443f47ad1208", SHA_256));
+
+        File f = TestUtils.copyResourceToTempFile("additional_repos.xml");
+        assertTrue(Utils.isFileMatchingHash(f,
+                "47ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab7", SHA_256));
+        assertFalse("uppercase fails",
+                Utils.isFileMatchingHash(f,
+                        "47AD2284D3042373E6280012CC10E9B82F75352DB6D6D9BAB1E06934B7B1DAB7", SHA_256));
+        assertFalse("one uppercase digit fails",
+                Utils.isFileMatchingHash(f,
+                        "47Ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab7", SHA_256));
+        assertFalse("missing digit fails",
+                Utils.isFileMatchingHash(f,
+                        "47ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab", SHA_256));
+        assertFalse("extra digit fails",
+                Utils.isFileMatchingHash(f,
+                        "47ad2284d3042373e6280012cc10e9b82f75352db6d6d9bab1e06934b7b1dab71", SHA_256));
+        assertFalse("all zeros fails",
+                Utils.isFileMatchingHash(f,
+                        "0000000000000000000000000000000000000000000000000000000000000000", SHA_256));
+        assertFalse("null fails",
+                Utils.isFileMatchingHash(f, null, SHA_256));
+        assertFalse("empty string fails",
+                Utils.isFileMatchingHash(f, "", SHA_256));
+    }
+
+    @Test
     public void testCalcFingerprintString() {
         // these should pass
         assertEquals(fdroidFingerprint, Utils.calcFingerprint(fdroidPubkey));
@@ -204,20 +252,38 @@ public class UtilsTest {
     }
 
     @Test
-    public void testGetBinaryHash() {
+    public void testGetFileHexDigest() throws IOException {
         File f = TestUtils.copyResourceToTempFile("largeRepo.xml");
         assertEquals("df1754aa4b56c86c06d7842dfd02064f0781c1f740f489d3fc158bb541c8d197",
-                Utils.getBinaryHash(f, "sha256"));
+                Utils.getFileHexDigest(f, "sha256"));
         f = TestUtils.copyResourceToTempFile("masterKeyIndex.jar");
         assertEquals("625d5aedcd0499fe04ebab81f3c7ae30c236cee653a914ffb587d890198f3aba",
-                Utils.getBinaryHash(f, "sha256"));
+                Utils.getFileHexDigest(f, "sha256"));
         f = TestUtils.copyResourceToTempFile("index.fdroid.2016-10-30.jar");
         assertEquals("c138b503c6475aa749585d0e3ad4dba3546b6d33ec485efd8ac8bd603d93fedb",
-                Utils.getBinaryHash(f, "sha256"));
+                Utils.getFileHexDigest(f, "sha-256"));
         f = TestUtils.copyResourceToTempFile("index.fdroid.2016-11-10.jar");
         assertEquals("93bea45814fd8955cabb957e7a3f8790d6c568eaa16fa30425c2d26c60490bde",
-                Utils.getBinaryHash(f, "sha256"));
+                Utils.getFileHexDigest(f, "SHA-256"));
+
+        // zero size file should have a stable hex digest file
+        assertEquals("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                Utils.getFileHexDigest(File.createTempFile("asdf", "asdf"), SHA_256));
+
+        assertNull(Utils.getFileHexDigest(new File("/kasdfkjasdhflkjasd"), SHA_256));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFileHexDigestBadAlgo() {
+        File f = TestUtils.copyResourceToTempFile("additional_repos.xml");
+        assertNull(Utils.getFileHexDigest(f, "FAKE"));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testGetFileHexDigestNullFile() {
+        assertNull(Utils.getFileHexDigest(null, SHA_256));
+    }
+
     // TODO write tests that work with a Certificate
 
     @Test
@@ -269,7 +335,7 @@ public class UtilsTest {
                 d = v & 0xF;
                 fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
             }
-            String sig = Utils.hashBytes(fdroidSig, "md5");
+            String sig = DigestUtils.md5Hex(fdroidSig);
             assertEquals(sig, Utils.getsig(rawCertBytes));
 
             PackageInfo packageInfo = new PackageInfo();
