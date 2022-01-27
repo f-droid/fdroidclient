@@ -9,12 +9,14 @@ import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondError
 import io.ktor.client.engine.mock.respondOk
 import io.ktor.client.engine.mock.respondRedirect
+import io.ktor.client.features.ClientRequestException
 import io.ktor.client.features.RedirectResponseException
 import io.ktor.client.features.ServerResponseException
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpHeaders.UserAgent
+import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.HttpStatusCode.Companion.InternalServerError
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
@@ -169,6 +171,31 @@ class HttpManagerTest {
         // assert there is only one request per API call using one of the mirrors
         assertEquals(2, mockEngine.requestHistory.size)
         mockEngine.requestHistory.forEach { request ->
+            val url = request.url.toString()
+            assertTrue(url == "http://example.org/foo" || url == "http://example.net/foo")
+        }
+    }
+
+    @Test
+    fun testNoMoreMirrorsWhenForbiddenWithCredentials() = runSuspend {
+        val downloadRequest =
+            downloadRequest.copy(username = getRandomString(), password = getRandomString())
+        val mockEngine = MockEngine { respond("", Forbidden) }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+
+        assertTrue(downloadRequest.hasCredentials)
+
+        assertNull(httpManager.head(downloadRequest))
+        val e = assertFailsWith<ClientRequestException> {
+            httpManager.getBytes(downloadRequest)
+        }
+
+        // assert that the exception reflects the forbidden
+        assertEquals(Forbidden, e.response.status)
+        // assert there is only one request per API call using one of the mirrors
+        assertEquals(2, mockEngine.requestHistory.size)
+        mockEngine.requestHistory.forEach { request ->
+            println(mockEngine.requestHistory)
             val url = request.url.toString()
             assertTrue(url == "http://example.org/foo" || url == "http://example.net/foo")
         }

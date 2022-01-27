@@ -21,4 +21,6 @@ public data class DownloadRequest @JvmOverloads constructor(
             "$tryFirstMirror not in mirrors."
         }
     }
+
+    val hasCredentials: Boolean = username != null && password != null
 }

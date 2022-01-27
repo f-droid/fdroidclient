@@ -1,6 +1,7 @@
 package org.fdroid.download
 
 import io.ktor.client.features.ResponseException
+import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.Url
 import mu.KotlinLogging
 
@@ -39,6 +40,9 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
             try {
                 return request(mirror, url)
             } catch (e: ResponseException) {
+                // don't try other mirrors if we got Forbidden response, but supplied credentials
+                if (downloadRequest.hasCredentials && e.response.status == Forbidden) throw e
+                // also throw if this is the last mirror to try, otherwise try next
                 val wasLastMirror = index == downloadRequest.mirrors.size - 1
                 log.warn(e) {
                     if (wasLastMirror) "Last mirror, rethrowing..."
