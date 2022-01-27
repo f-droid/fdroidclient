@@ -26,7 +26,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.nearby.peers.Peer;
-import org.fdroid.download.Downloader;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -392,9 +392,9 @@ public class SwapService extends Service {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .onErrorComplete(e -> {
-                            Intent intent = new Intent(Downloader.ACTION_INTERRUPTED);
+                            Intent intent = new Intent(DownloaderService.ACTION_INTERRUPTED);
                             intent.setData(Uri.parse(repo.address));
-                            intent.putExtra(Downloader.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
+                            intent.putExtra(DownloaderService.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
                             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
                             return true;
                         })

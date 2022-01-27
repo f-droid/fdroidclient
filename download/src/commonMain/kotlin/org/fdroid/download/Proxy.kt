@@ -16,5 +16,5 @@ internal fun ProxyConfig?.isTor(): Boolean {
     if (this == null || !hostIsIp(DEFAULT_PROXY_HOST)) return false
     val address = resolveAddress()
     return (type == HTTP && address.port == DEFAULT_PROXY_HTTP_PORT) ||
-            (type == SOCKS && address.port == DEFAULT_PROXY_SOCKS_PORT)
+        (type == SOCKS && address.port == DEFAULT_PROXY_SOCKS_PORT)
 }

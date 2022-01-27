@@ -153,15 +153,15 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     switch (intent.getAction()) {
-                        case Downloader.ACTION_STARTED:
+                        case DownloaderService.ACTION_STARTED:
                             resetView();
                             break;
-                        case Downloader.ACTION_PROGRESS:
+                        case DownloaderService.ACTION_PROGRESS:
                             if (progressView.getVisibility() != View.VISIBLE) {
                                 showProgress();
                             }
-                            long read = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
-                            long total = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                            long read = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
+                            long total = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
                             if (total > 0) {
                                 progressView.setIndeterminate(false);
                                 progressView.setMax(100);
@@ -170,17 +170,17 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                                 progressView.setIndeterminate(true);
                             }
                             break;
-                        case Downloader.ACTION_COMPLETE:
+                        case DownloaderService.ACTION_COMPLETE:
                             localBroadcastManager.unregisterReceiver(this);
                             resetView();
                             statusInstalled.setText(R.string.installing);
                             statusInstalled.setVisibility(View.VISIBLE);
                             btnInstall.setVisibility(View.GONE);
                             break;
-                        case Downloader.ACTION_INTERRUPTED:
+                        case DownloaderService.ACTION_INTERRUPTED:
                             localBroadcastManager.unregisterReceiver(this);
-                            if (intent.hasExtra(Downloader.EXTRA_ERROR_MESSAGE)) {
-                                String msg = intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE)
+                            if (intent.hasExtra(DownloaderService.EXTRA_ERROR_MESSAGE)) {
+                                String msg = intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE)
                                         + " " + intent.getDataString();
                                 Toast.makeText(context, R.string.download_error, Toast.LENGTH_SHORT).show();
                                 Toast.makeText(context, msg, Toast.LENGTH_LONG).show();

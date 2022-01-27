@@ -1,15 +1,11 @@
 buildscript {
-    ext {
-        kotlin_version = "1.6.10"
-        glide_version = "4.12.0"
-    }
     repositories {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
     }
 }
 allprojects {

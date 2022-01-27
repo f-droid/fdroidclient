@@ -217,8 +217,8 @@ public class InstallManagerService extends Service {
             DownloaderService.queue(this, apk.repoId, canonicalUrl);
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
-            sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
-            sendBroadcast(intent.getData(), Downloader.ACTION_COMPLETE, apkFilePath);
+            sendBroadcast(intent.getData(), DownloaderService.ACTION_STARTED, apkFilePath);
+            sendBroadcast(intent.getData(), DownloaderService.ACTION_COMPLETE, apkFilePath);
         } else {
             Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
             apkFilePath.delete();
@@ -231,7 +231,7 @@ public class InstallManagerService extends Service {
     private void sendBroadcast(Uri uri, String action, File file) {
         Intent intent = new Intent(action);
         intent.setData(uri);
-        intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
+        intent.putExtra(DownloaderService.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
         localBroadcastManager.sendBroadcast(intent);
     }
 
@@ -263,16 +263,16 @@ public class InstallManagerService extends Service {
                     return;
                 }
                 String action = intent.getAction();
-                if (Downloader.ACTION_STARTED.equals(action)) {
+                if (DownloaderService.ACTION_STARTED.equals(action)) {
                     Utils.debugLog(TAG, action + " " + intent);
-                } else if (Downloader.ACTION_PROGRESS.equals(action)) {
+                } else if (DownloaderService.ACTION_PROGRESS.equals(action)) {
 
-                    long bytesRead = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
-                    long totalBytes = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    long bytesRead = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
+                    long totalBytes = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
                     appUpdateStatusManager.updateApkProgress(canonicalUrl, totalBytes, bytesRead);
-                } else if (Downloader.ACTION_COMPLETE.equals(action)) {
+                } else if (DownloaderService.ACTION_COMPLETE.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
-                    File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                    File localFile = new File(intent.getStringExtra(DownloaderService.EXTRA_DOWNLOAD_PATH));
                     Uri localApkUri = Uri.fromFile(localFile);
                     Utils.debugLog(TAG, "OBB download completed " + intent.getDataString()
                             + " to " + localApkUri);
@@ -298,9 +298,9 @@ public class InstallManagerService extends Service {
                     } finally {
                         FileUtils.deleteQuietly(localFile);
                     }
-                } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
+                } else if (DownloaderService.ACTION_INTERRUPTED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
-                } else if (Downloader.ACTION_CONNECTION_FAILED.equals(action)) {
+                } else if (DownloaderService.ACTION_CONNECTION_FAILED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
                 } else {
                     throw new RuntimeException("intent action not handled!");
@@ -329,7 +329,7 @@ public class InstallManagerService extends Service {
                 String canonicalUrl = intent.getDataString();
 
                 switch (intent.getAction()) {
-                    case Downloader.ACTION_STARTED:
+                    case DownloaderService.ACTION_STARTED:
                         // App should currently be in the "PendingDownload" state, so this changes it to "Downloading".
                         Intent intentObject = new Intent(context, InstallManagerService.class);
                         intentObject.setAction(ACTION_CANCEL);
@@ -338,17 +338,17 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(canonicalUrl,
                                 AppUpdateStatusManager.Status.Downloading, action);
                         break;
-                    case Downloader.ACTION_PROGRESS:
-                        long bytesRead = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
-                        long totalBytes = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    case DownloaderService.ACTION_PROGRESS:
+                        long bytesRead = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
+                        long totalBytes = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
                         appUpdateStatusManager.updateApkProgress(canonicalUrl, totalBytes, bytesRead);
                         break;
-                    case Downloader.ACTION_COMPLETE:
-                        File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                    case DownloaderService.ACTION_COMPLETE:
+                        File localFile = new File(intent.getStringExtra(DownloaderService.EXTRA_DOWNLOAD_PATH));
                         Uri localApkUri = Uri.fromFile(localFile);
 
                         Utils.debugLog(TAG, "download completed of "
-                                + intent.getStringExtra(Downloader.EXTRA_MIRROR_URL) + " to " + localApkUri);
+                                + intent.getStringExtra(DownloaderService.EXTRA_MIRROR_URL) + " to " + localApkUri);
                         appUpdateStatusManager.updateApk(canonicalUrl,
                                 AppUpdateStatusManager.Status.ReadyToInstall, null);
 
@@ -360,10 +360,10 @@ public class InstallManagerService extends Service {
                             InstallerService.install(context, localApkUri, canonicalUri, apk);
                         }
                         break;
-                    case Downloader.ACTION_INTERRUPTED:
-                    case Downloader.ACTION_CONNECTION_FAILED:
+                    case DownloaderService.ACTION_INTERRUPTED:
+                    case DownloaderService.ACTION_CONNECTION_FAILED:
                         appUpdateStatusManager.setDownloadError(canonicalUrl,
-                                intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
+                                intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE));
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     default:

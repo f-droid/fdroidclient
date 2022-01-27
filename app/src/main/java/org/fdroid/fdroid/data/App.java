@@ -28,7 +28,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.download.DownloadRequest;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;

@@ -60,7 +60,8 @@ class HttpManagerTest {
         val version = getRandomString()
         val queryString = "id=$id&client_version=$version"
         val mockEngine = MockEngine { respondOk() }
-        val httpManager = HttpManager(userAgent, queryString, httpClientEngineFactory = get(mockEngine))
+        val httpManager =
+            HttpManager(userAgent, queryString, httpClientEngineFactory = get(mockEngine))
 
         httpManager.head(downloadRequest)
         httpManager.getBytes(downloadRequest)
@@ -119,8 +120,11 @@ class HttpManagerTest {
         var requestNum = 1
         val mockEngine = MockEngine { request ->
             assertNotNull(request.headers[Range])
-            val (fromStr, endStr) = request.headers[Range]!!.replace("bytes=", "").split('-')
-            val from = fromStr.toIntOrNull() ?: fail("No valid content range ${request.headers[Range]}")
+            val (fromStr, endStr) = request.headers[Range]!!
+                .replace("bytes=", "")
+                .split('-')
+            val from =
+                fromStr.toIntOrNull() ?: fail("No valid content range ${request.headers[Range]}")
             assertEquals("", endStr)
             assertEquals(skipBytes, from)
             if (requestNum++ == 1) respond(content.copyOfRange(from, content.size), PartialContent)
@@ -129,8 +133,10 @@ class HttpManagerTest {
         val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
 
         // first request gets only the skipped bytes
-        assertContentEquals(content.copyOfRange(skipBytes, content.size),
-            httpManager.getBytes(downloadRequest, skipBytes.toLong()))
+        assertContentEquals(
+            content.copyOfRange(skipBytes, content.size),
+            httpManager.getBytes(downloadRequest, skipBytes.toLong())
+        )
         // second request fails, because it responds with OK and full content
         assertFailsWith<NoResumeException> {
             httpManager.getBytes(downloadRequest, skipBytes.toLong())
@@ -238,7 +244,8 @@ class HttpManagerTest {
                 }
             }
         }
-        val httpManager = HttpManager(userAgent, null, proxyConfig, httpClientEngineFactory = factory)
+        val httpManager =
+            HttpManager(userAgent, null, proxyConfig, httpClientEngineFactory = factory)
         assertEquals(proxyConfig, httpManager.currentProxy)
 
         // does not need a new engine, because also does use a proxy (1)

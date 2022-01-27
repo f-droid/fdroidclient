@@ -157,7 +157,7 @@ public open class HttpManager @JvmOverloads constructor(
                 // increase connect timeout if using Tor mirror
                 if (mirror.isOnion()) timeout { connectTimeoutMillis = 20_000 }
                 // add range header if set
-                if (skipFirstBytes != null) header(Range, "bytes=${skipFirstBytes}-")
+                if (skipFirstBytes != null) header(Range, "bytes=$skipFirstBytes-")
             }
         }
     }
@@ -178,7 +178,10 @@ public open class HttpManager @JvmOverloads constructor(
      * Thus, this is intentionally visible internally only.
      * Does not use [getChannel] so, it gets the [NoResumeException] as in the public API.
      */
-    internal suspend fun getBytes(request: DownloadRequest, skipFirstBytes: Long? = null): ByteArray {
+    internal suspend fun getBytes(
+        request: DownloadRequest,
+        skipFirstBytes: Long? = null,
+    ): ByteArray {
         val channel = ByteChannel()
         get(request, skipFirstBytes) { bytes ->
             channel.writeFully(bytes)
@@ -198,7 +201,9 @@ public open class HttpManager @JvmOverloads constructor(
     private fun resetProxyIfNeeded(proxyConfig: ProxyConfig?, mirror: Mirror? = null) {
         // force no-proxy when trying to hit a local mirror
         val newProxy = if (mirror.isLocal() && proxyConfig != null) {
-            if (currentProxy != null) log.info { "Forcing mirror to null, because mirror is local: $mirror" }
+            if (currentProxy != null) log.info {
+                "Forcing mirror to null, because mirror is local: $mirror"
+            }
             null
         } else proxyConfig
         if (currentProxy != newProxy) {

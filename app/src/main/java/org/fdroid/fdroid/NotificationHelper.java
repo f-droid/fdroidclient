@@ -30,8 +30,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -114,14 +114,14 @@ public class NotificationHelper {
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED:
                         updateStatusLists();
                         createSummaryNotifications();
-                        url = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+                        url = intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL);
                         entry = appUpdateStatusManager.get(url);
                         if (entry != null) {
                             createNotification(entry);
                         }
                         break;
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED:
-                        url = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+                        url = intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL);
                         entry = appUpdateStatusManager.get(url);
                         updateStatusLists();
                         if (entry != null) {
@@ -132,7 +132,7 @@ public class NotificationHelper {
                         }
                         break;
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
-                        url = intent.getStringExtra(Downloader.EXTRA_CANONICAL_URL);
+                        url = intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL);
                         notificationManager.cancel(url, NOTIFY_ID_INSTALLED);
                         notificationManager.cancel(url, NOTIFY_ID_UPDATES);
                         updateStatusLists();
@@ -365,7 +365,7 @@ public class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
-        intentDeleted.putExtra(Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
+        intentDeleted.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);
@@ -453,7 +453,7 @@ public class NotificationHelper {
         }
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
-        intentDeleted.putExtra(Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
+        intentDeleted.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
         PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setDeleteIntent(piDeleted);

@@ -10,13 +10,13 @@ import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 
 import java.util.ArrayList;
@@ -292,7 +292,7 @@ public final class AppUpdateStatusManager {
     private void notifyAdd(AppUpdateStatus entry) {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_ADDED);
-            broadcastIntent.putExtra(Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
+            broadcastIntent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
             broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }
@@ -301,7 +301,7 @@ public final class AppUpdateStatusManager {
     private void notifyChange(AppUpdateStatus entry, boolean isStatusUpdate) {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_CHANGED);
-            broadcastIntent.putExtra(Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
+            broadcastIntent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
             broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             broadcastIntent.putExtra(EXTRA_IS_STATUS_UPDATE, isStatusUpdate);
             localBroadcastManager.sendBroadcast(broadcastIntent);
@@ -311,7 +311,7 @@ public final class AppUpdateStatusManager {
     private void notifyRemove(AppUpdateStatus entry) {
         if (!isBatchUpdating) {
             Intent broadcastIntent = new Intent(BROADCAST_APPSTATUS_REMOVED);
-            broadcastIntent.putExtra(Downloader.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
+            broadcastIntent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
             broadcastIntent.putExtra(EXTRA_STATUS, entry.copy());
             localBroadcastManager.sendBroadcast(broadcastIntent);
         }

@@ -15,29 +15,6 @@ public abstract class Downloader constructor(
 
     public companion object {
         private val log = KotlinLogging.logger {}
-
-        public const val ACTION_STARTED: String = "org.fdroid.fdroid.net.Downloader.action.STARTED"
-        public const val ACTION_PROGRESS: String = "org.fdroid.fdroid.net.Downloader.action.PROGRESS"
-        public const val ACTION_INTERRUPTED: String = "org.fdroid.fdroid.net.Downloader.action.INTERRUPTED"
-        public const val ACTION_CONNECTION_FAILED: String =
-            "org.fdroid.fdroid.net.Downloader.action.CONNECTION_FAILED"
-        public const val ACTION_COMPLETE: String = "org.fdroid.fdroid.net.Downloader.action.COMPLETE"
-        public const val EXTRA_DOWNLOAD_PATH: String = "org.fdroid.fdroid.net.Downloader.extra.DOWNLOAD_PATH"
-        public const val EXTRA_BYTES_READ: String = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ"
-        public const val EXTRA_TOTAL_BYTES: String = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES"
-        public const val EXTRA_ERROR_MESSAGE: String = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE"
-        public const val EXTRA_REPO_ID: String = "org.fdroid.fdroid.net.Downloader.extra.REPO_ID"
-        public const val EXTRA_MIRROR_URL: String = "org.fdroid.fdroid.net.Downloader.extra.MIRROR_URL"
-
-        /**
-         * Unique ID used to represent this specific package's install process,
-         * including [android.app.Notification]s, also known as `canonicalUrl`.
-         * Careful about types, this should always be a [String], so it can
-         * be handled on the receiving side by [android.content.Intent.getStringArrayExtra].
-         *
-         * @see android.content.Intent.EXTRA_ORIGINATING_URI
-         */
-        public const val EXTRA_CANONICAL_URL: String = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL"
     }
 
     /**

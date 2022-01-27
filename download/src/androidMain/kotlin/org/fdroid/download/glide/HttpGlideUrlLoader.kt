@@ -25,7 +25,12 @@ public class HttpGlideUrlLoader(
         return true
     }
 
-    override fun buildLoadData(glideUrl: GlideUrl, width: Int, height: Int, options: Options): LoadData<InputStream> {
+    override fun buildLoadData(
+        glideUrl: GlideUrl,
+        width: Int,
+        height: Int,
+        options: Options,
+    ): LoadData<InputStream> {
         log.warn { "Not using mirrors when loading $glideUrl" }
         return LoadData(glideUrl, HttpFetcher(httpManager, glideUrl, proxyGetter()))
     }
@@ -34,7 +39,9 @@ public class HttpGlideUrlLoader(
         private val httpManager: HttpManager,
         private val proxyGetter: () -> ProxyConfig?,
     ) : ModelLoaderFactory<GlideUrl, InputStream> {
-        override fun build(multiFactory: MultiModelLoaderFactory): ModelLoader<GlideUrl, InputStream> {
+        override fun build(
+            multiFactory: MultiModelLoaderFactory,
+        ): ModelLoader<GlideUrl, InputStream> {
             return HttpGlideUrlLoader(httpManager, proxyGetter)
         }
 

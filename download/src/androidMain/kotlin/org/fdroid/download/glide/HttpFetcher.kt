@@ -25,7 +25,8 @@ internal class HttpFetcher(
     @Deprecated("Use DownloadRequests with other constructor instead")
     constructor(
         httpManager: HttpManager,
-        glideUrl: GlideUrl, proxy: ProxyConfig?,
+        glideUrl: GlideUrl,
+        proxy: ProxyConfig?,
     ) : this(httpManager, getDownloadRequest(glideUrl, proxy))
 
     companion object {

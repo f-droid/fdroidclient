@@ -54,6 +54,7 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
+import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.qr.CameraCharacteristicsChecker;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -273,7 +274,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
-                new IntentFilter(Downloader.ACTION_INTERRUPTED));
+                new IntentFilter(DownloaderService.ACTION_INTERRUPTED));
 
         wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
         wifiApControl = WifiApControl.getInstance(this);
@@ -1505,7 +1506,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             Repo repo = RepoProvider.Helper.findByUrl(context, intent.getData(), null);
             if (repo != null && repo.isSwap) {
-                setUpConnectingProgressText(intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
+                setUpConnectingProgressText(intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE));
             }
         }
     };

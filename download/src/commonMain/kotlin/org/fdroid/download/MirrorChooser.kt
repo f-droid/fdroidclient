@@ -27,9 +27,10 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
     ): T {
         val mirrors = if (downloadRequest.proxy == null) {
             // if we don't use a proxy, filter out onion mirrors (won't work without Orbot)
-            val orderedMirrors = orderMirrors(downloadRequest).filter { mirror -> !mirror.isOnion() }
+            val orderedMirrors =
+                orderMirrors(downloadRequest).filter { mirror -> !mirror.isOnion() }
             // if we only have onion mirrors, take what we have and expect errors
-            if (orderedMirrors.isEmpty()) downloadRequest.mirrors else orderedMirrors
+            orderedMirrors.ifEmpty { downloadRequest.mirrors }
         } else {
             orderMirrors(downloadRequest)
         }
@@ -39,7 +40,10 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
                 return request(mirror, url)
             } catch (e: ResponseException) {
                 val wasLastMirror = index == downloadRequest.mirrors.size - 1
-                log.warn(e) { if (wasLastMirror) "Last mirror, rethrowing..." else "Trying other mirror now..." }
+                log.warn(e) {
+                    if (wasLastMirror) "Last mirror, rethrowing..."
+                    else "Trying other mirror now..."
+                }
                 if (wasLastMirror) throw e
             }
         }

@@ -159,7 +159,8 @@ class HttpDownloaderTest {
         val file = folder.newFile()
 
         val httpManager = HttpManager(userAgent, null)
-        val torHost = "http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion" // tor-project.org
+        // tor-project.org
+        val torHost = "http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion"
         val proxy = ProxyBuilder.socks("localhost", TOR_SOCKS_PORT)
         val downloadRequest = DownloadRequest("index.html", listOf(Mirror(torHost)), proxy)
         val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)

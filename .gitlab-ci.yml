@@ -34,6 +34,7 @@ stages:
       - app/build/reports
       - app/build/outputs/*ml
       - app/build/outputs/apk
+      - build/reports
     expire_in: 1 week
     when: on_failure
   after_script:
@@ -49,10 +50,11 @@ test_lint_pmd_checkstyle:
     - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew testFullDebugUnitTest || set_error
+    - ./gradlew testDebugUnitTest testFullDebugUnitTest || set_error
     - ./gradlew lint || set_error
     - ./gradlew pmd || set_error
     - ./gradlew checkstyle || set_error
+    - ./gradlew ktlintCheck || set_error
     - ./tools/check-format-strings.py || set_error
     - ./tools/check-fastlane-whitespace.py || set_error
     - ./tools/remove-unused-and-blank-translations.py || set_error

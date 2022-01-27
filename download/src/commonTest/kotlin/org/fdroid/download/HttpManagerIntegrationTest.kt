@@ -2,9 +2,9 @@ package org.fdroid.download
 
 import io.ktor.client.engine.ProxyBuilder
 import io.ktor.http.Url
+import io.ktor.utils.io.errors.IOException
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
-import java.net.ConnectException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -28,7 +28,7 @@ class HttpManagerIntegrationTest {
         val proxyRequest = downloadRequest.copy(proxy = ProxyBuilder.http(Url("http://127.0.0.1")))
         val httpManager = HttpManager(userAgent, null)
 
-        val e = assertFailsWith<ConnectException> {
+        val e = assertFailsWith<IOException> {
             httpManager.getBytes(proxyRequest)
         }
         assertEquals("Failed to connect to /127.0.0.1:80", e.message)

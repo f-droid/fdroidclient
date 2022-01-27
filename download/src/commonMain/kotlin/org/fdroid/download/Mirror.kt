@@ -58,7 +58,7 @@ internal fun Url.isLocal(): Boolean {
         return num in 16..31
     }
     return host.startsWith("169.254.") ||
-            host.startsWith("10.") ||
-            host.startsWith("192.168.") ||
-            host == "127.0.0.1"
+        host.startsWith("10.") ||
+        host.startsWith("192.168.") ||
+        host == "127.0.0.1"
 }
