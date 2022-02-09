@@ -67,8 +67,8 @@ class ApkVerifier {
             // Unfortunately, more specific errors are not forwarded to us
             // but the internal PackageParser sometimes shows warnings in logcat such as
             // "Requires newer sdk version #14 (current version is #11)"
-            throw new ApkVerificationException("Parsing apk file failed!" +
-                    "Maybe minSdk of apk is lower than current Sdk?" +
+            throw new ApkVerificationException("Parsing apk file failed! " +
+                    "Maybe minSdk of apk is lower than current Sdk? " +
                     "Look into logcat for more specific warnings of Android's PackageParser");
         }
 
