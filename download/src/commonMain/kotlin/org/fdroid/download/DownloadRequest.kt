@@ -13,14 +13,11 @@ public data class DownloadRequest @JvmOverloads constructor(
      * Signals the [MirrorChooser] that this mirror should be tried before all other mirrors.
      * This could be useful for index updates for repositories with mirrors that update infrequently,
      * so that the official repository can be tried first to get updates fast.
+     *
+     * If this mirror is not in [mirrors], e.g. when the user has disabled it,
+     * then setting this has no effect.
      */
     val tryFirstMirror: Mirror? = null,
 ) {
-    init {
-        require(tryFirstMirror == null || mirrors.contains(tryFirstMirror)) {
-            "$tryFirstMirror not in mirrors."
-        }
-    }
-
     val hasCredentials: Boolean = username != null && password != null
 }

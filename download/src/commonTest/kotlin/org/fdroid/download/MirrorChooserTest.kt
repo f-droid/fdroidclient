@@ -47,4 +47,15 @@ class MirrorChooserTest {
         assertEquals(mirrors.toSet(), orderedMirrors.toSet())
     }
 
+    @Test
+    fun testMirrorChooserRandomIgnoresMissingTryFirstMirror() {
+        val mirrorChooser = MirrorChooserRandom()
+
+        val tryFirstRequest = downloadRequest.copy(tryFirstMirror = Mirror("missing"))
+        val orderedMirrors = mirrorChooser.orderMirrors(tryFirstRequest)
+
+        // set of input mirrors is equal to set of output mirrors
+        assertEquals(mirrors.toSet(), orderedMirrors.toSet())
+    }
+
 }
