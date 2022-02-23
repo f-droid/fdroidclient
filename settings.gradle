@@ -1,3 +1,4 @@
 include ':app'
 include ':download'
 include ':index'
+include ':database'
