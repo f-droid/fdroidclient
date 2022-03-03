@@ -741,6 +741,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         Repo repo = RepoProvider.Helper.findById(context, repoId);
         if (repo.address.startsWith("content://")) {
             return Glide.with(context).load(getIconUrl(context, repo));
+        } else if (repo.address.startsWith("file://")) {
+            return Glide.with(context).load(getIconUrl(context, repo));
         } else {
             return Glide.with(context).load(getDownloadRequest(context, repo));
         }
