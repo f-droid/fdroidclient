@@ -32,7 +32,7 @@ import kotlin.test.fail
 private const val TOR_SOCKS_PORT = 9050
 
 @Suppress("BlockingMethodInNonBlockingContext")
-class HttpDownloaderTest {
+internal class HttpDownloaderTest {
 
     @get:Rule
     var folder = TemporaryFolder()

@@ -14,7 +14,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 @Suppress("BlockingMethodInNonBlockingContext")
-class HttpPosterTest {
+internal class HttpPosterTest {
 
     private val userAgent = getRandomString()
 
