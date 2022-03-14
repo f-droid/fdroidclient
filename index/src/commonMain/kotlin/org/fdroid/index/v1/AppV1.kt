@@ -1,6 +1,16 @@
 package org.fdroid.index.v1
 
 import kotlinx.serialization.Serializable
+import org.fdroid.index.DEFAULT_LOCALE
+import org.fdroid.index.mapValuesNotNull
+import org.fdroid.index.v2.Author
+import org.fdroid.index.v2.Donation
+import org.fdroid.index.v2.FileV2
+import org.fdroid.index.v2.LocalizedFileListV2
+import org.fdroid.index.v2.LocalizedFileV2
+import org.fdroid.index.v2.LocalizedTextV2
+import org.fdroid.index.v2.MetadataV2
+import org.fdroid.index.v2.Screenshots
 
 @Serializable
 public data class AppV1(
@@ -34,7 +44,102 @@ public data class AppV1(
     val packageName: String,
     val lastUpdated: Long? = null, // missing in wind repo,
     val localized: Map<String, Localized>? = null,
-)
+) {
+    public fun toMetadataV2(
+        preferredSigner: String?,
+        locale: String = DEFAULT_LOCALE,
+    ): MetadataV2 = MetadataV2(
+        name = getLocalizedTextV2(name, locale) { it.name },
+        summary = getLocalizedTextV2(summary, locale) { it.summary },
+        description = getLocalizedTextV2(description, locale) { it.description },
+        added = added ?: 0,
+        lastUpdated = lastUpdated ?: 0,
+        webSite = webSite,
+        changelog = changelog,
+        license = license,
+        sourceCode = sourceCode,
+        issueTracker = issueTracker,
+        translation = translation,
+        preferredSigner = preferredSigner,
+        categories = categories,
+        author = Author(
+            name = authorName,
+            email = authorEmail,
+            website = authorWebSite,
+            phone = authorPhone,
+        ).takeIf { !it.isNull },
+        donation = Donation(
+            url = donate,
+            liberapayID = liberapayID,
+            liberapay = liberapay,
+            openCollective = openCollective,
+            bitcoin = bitcoin,
+            litecoin = litecoin,
+            flattrID = flattrID,
+        ).takeIf { !it.isNull },
+        icon = icon?.let { mapOf(locale to FileV2("/icons/$it")) }
+            ?: localized.toLocalizedFileV2 { it.icon },
+        featureGraphic = localized.toLocalizedFileV2 { it.featureGraphic },
+        promoGraphic = localized.toLocalizedFileV2 { it.promoGraphic },
+        tvBanner = localized.toLocalizedFileV2 { it.tvBanner },
+        video = localized.toLocalizedTextV2 { it.video },
+        screenshots = Screenshots(
+            phone = localized.toLocalizedFileListV2("phoneScreenshots") {
+                it.phoneScreenshots
+            },
+            sevenInch = localized.toLocalizedFileListV2("sevenInchScreenshots") {
+                it.sevenInchScreenshots
+            },
+            tenInch = localized.toLocalizedFileListV2("tenInchScreenshots") {
+                it.tenInchScreenshots
+            },
+            wear = localized.toLocalizedFileListV2("wearScreenshots") {
+                it.wearScreenshots
+            },
+            tv = localized.toLocalizedFileListV2("tvScreenshots") {
+                it.tvScreenshots
+            },
+        ).takeIf { !it.isNull },
+    )
+
+    private fun getLocalizedTextV2(
+        s: String?,
+        locale: String,
+        selector: (Localized) -> String?,
+    ): LocalizedTextV2? {
+        return if (s == null) localized?.toLocalizedTextV2(selector) else mapOf(locale to s)
+    }
+
+    private fun Map<String, Localized>?.toLocalizedTextV2(
+        selector: (Localized) -> String?,
+    ): LocalizedTextV2? {
+        if (this == null) return null
+        return mapValuesNotNull { selector(it.value) }
+    }
+
+    private fun Map<String, Localized>?.toLocalizedFileV2(
+        selector: (Localized) -> String?,
+    ): LocalizedFileV2? {
+        if (this == null) return null
+        return mapValuesNotNull {
+            selector(it.value)?.let { file ->
+                FileV2("/$packageName/${it.key}/$file")
+            }
+        }
+    }
+
+    private fun Map<String, Localized>?.toLocalizedFileListV2(
+        kind: String,
+        selector: (Localized) -> List<String>?,
+    ): LocalizedFileListV2? {
+        if (this == null) return null
+        return mapValuesNotNull {
+            selector(it.value)?.map { file ->
+                FileV2("/$packageName/${it.key}/$kind/$file")
+            }
+        }
+    }
+}
 
 @Serializable
 public data class Localized(

@@ -29,7 +29,7 @@ public data class RepoV2(
     val name: String,
     val icon: FileV2? = null,
     val address: String,
-    val webBaseUrl: String?,
+    val webBaseUrl: String? = null,
     val description: LocalizedTextV2 = emptyMap(),
     val mirrors: List<MirrorV2> = emptyList(),
     val timestamp: Long,
@@ -50,17 +50,20 @@ public data class MirrorV2(
 
 @Serializable
 public data class AntiFeatureV2(
-    val icon: FileV2,
-    val description: LocalizedTextV2,
+    val icon: FileV2? = null,
+    val name: LocalizedTextV2,
+    val description: LocalizedTextV2 = emptyMap(),
 )
 
 @Serializable
 public data class CategoryV2(
-    val icon: FileV2,
-    val description: LocalizedTextV2,
+    val icon: FileV2? = null,
+    val name: LocalizedTextV2,
+    val description: LocalizedTextV2 = emptyMap(),
 )
 
 @Serializable
 public data class ReleaseChannelV2(
-    val description: LocalizedTextV2,
+    val name: LocalizedTextV2,
+    val description: LocalizedTextV2 = emptyMap(),
 )

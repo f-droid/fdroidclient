@@ -59,8 +59,8 @@ public data class Donation(
     internal constructor() : this(null, null, null, null, null, null, null)
 
     val isNull: Boolean
-        get() = (url == null && liberapayID == null && liberapay == null &&
-            openCollective == null && bitcoin == null && litecoin == null && flattrID == null)
+        get() = url == null && liberapayID == null && liberapay == null &&
+            openCollective == null && bitcoin == null && litecoin == null && flattrID == null
 }
 
 @Serializable
@@ -72,8 +72,7 @@ public data class Screenshots(
     val tv: LocalizedFileListV2? = null,
 ) {
     val isNull: Boolean
-        get() = (phone == null && sevenInch == null && tenInch == null && wear == null
-            && tv == null)
+        get() = phone == null && sevenInch == null && tenInch == null && wear == null && tv == null
 }
 
 @Serializable
