@@ -34,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    aaptOptions {
+        // needed only for instrumentation tests: assets.openFd()
+        noCompress "json"
+    }
 }
 
 dependencies {
@@ -54,4 +58,6 @@ dependencies {
     androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    androidTestImplementation 'commons-io:commons-io:2.6'
 }

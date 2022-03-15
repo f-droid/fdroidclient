@@ -17,13 +17,14 @@ import org.fdroid.index.v2.RepoV2
 data class CoreRepository(
     @PrimaryKey(autoGenerate = true) val repoId: Long = 0,
     val name: String,
-    @Embedded(prefix = "icon") val icon: FileV2?,
+    @Embedded(prefix = "icon_") val icon: FileV2?,
     val address: String,
     val timestamp: Long,
     val description: LocalizedTextV2 = emptyMap(),
 )
 
-fun RepoV2.toCoreRepository() = CoreRepository(
+fun RepoV2.toCoreRepository(repoId: Long = 0) = CoreRepository(
+    repoId = repoId,
     name = name,
     icon = icon,
     address = address,
@@ -88,7 +89,7 @@ fun MirrorV2.toMirror(repoId: Long) = Mirror(
 data class AntiFeature(
     val repoId: Long,
     val name: String,
-    @Embedded(prefix = "icon") val icon: FileV2? = null,
+    @Embedded(prefix = "icon_") val icon: FileV2? = null,
     val description: LocalizedTextV2,
 )
 
@@ -113,7 +114,7 @@ fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
 data class Category(
     val repoId: Long,
     val name: String,
-    @Embedded(prefix = "icon") val icon: FileV2? = null,
+    @Embedded(prefix = "icon_") val icon: FileV2? = null,
     val description: LocalizedTextV2,
 )
 
@@ -138,7 +139,7 @@ fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
 data class ReleaseChannel(
     val repoId: Long,
     val name: String,
-    @Embedded(prefix = "icon") val icon: FileV2? = null,
+    @Embedded(prefix = "icon_") val icon: FileV2? = null,
     val description: LocalizedTextV2,
 )
 

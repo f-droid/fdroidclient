@@ -37,7 +37,7 @@ object TestUtils2 {
         }
     }
 
-    private fun <T> T.orNull(): T? {
+    fun <T> T.orNull(): T? {
         return if (Random.nextBoolean()) null else this
     }
 

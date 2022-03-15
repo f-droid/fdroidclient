@@ -1,12 +1,5 @@
-package org.fdroid.database
+package org.fdroid.database.test
 
-import org.fdroid.index.v2.AntiFeatureV2
-import org.fdroid.index.v2.CategoryV2
-import org.fdroid.index.v2.FileV2
-import org.fdroid.index.v2.LocalizedTextV2
-import org.fdroid.index.v2.MirrorV2
-import org.fdroid.index.v2.ReleaseChannelV2
-import org.fdroid.index.v2.RepoV2
 import kotlin.random.Random
 
 object TestUtils {
@@ -22,7 +15,7 @@ object TestUtils {
         size: Int = Random.nextInt(0, 23),
         factory: () -> T,
     ): List<T> = if (size == 0) emptyList() else buildList {
-        repeat(Random.nextInt(0, size)) {
+        repeat(size) {
             add(factory())
         }
     }
@@ -37,44 +30,9 @@ object TestUtils {
         }
     }
 
-    private fun <T> T.orNull(): T? {
+    fun <T> T.orNull(): T? {
         return if (Random.nextBoolean()) null else this
     }
-
-    fun getRandomMirror() = MirrorV2(
-        url = getRandomString(),
-        location = getRandomString().orNull()
-    )
-
-    fun getRandomLocalizedTextV2(size: Int = Random.nextInt(0, 23)): LocalizedTextV2 = buildMap {
-        repeat(size) {
-            put(getRandomString(4), getRandomString())
-        }
-    }
-
-    fun getRandomFileV2() = FileV2(
-        name = getRandomString(),
-        sha256 = getRandomString(64),
-        size = Random.nextLong(-1, Long.MAX_VALUE)
-    )
-
-    fun getRandomRepo() = RepoV2(
-        name = getRandomString(),
-        icon = getRandomFileV2(),
-        address = getRandomString(),
-        description = getRandomLocalizedTextV2(),
-        mirrors = getRandomList { getRandomMirror() },
-        timestamp = System.currentTimeMillis(),
-        antiFeatures = getRandomMap {
-            getRandomString() to AntiFeatureV2(getRandomFileV2(), getRandomLocalizedTextV2())
-        },
-        categories = getRandomMap {
-            getRandomString() to CategoryV2(getRandomFileV2(), getRandomLocalizedTextV2())
-        },
-        releaseChannels = getRandomMap {
-            getRandomString() to ReleaseChannelV2(getRandomLocalizedTextV2())
-        },
-    )
 
     /**
      * Create a map diff by adding or removing keys. Note that this does not change keys.
