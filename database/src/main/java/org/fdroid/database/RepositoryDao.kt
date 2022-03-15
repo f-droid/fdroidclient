@@ -4,7 +4,6 @@ import androidx.annotation.VisibleForTesting
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.ABORT
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import androidx.room.Transaction
@@ -14,19 +13,28 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.index.ReflectionDiffer.applyDiff
+import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.RepoV2
 
 public interface RepositoryDao {
-    fun insert(repository: RepoV2)
+    /**
+     * Use when inserting a new repo for the first time.
+     */
+    fun insert(repository: RepoV2): Long
+
+    /**
+     * Use when replacing an existing repo with a full index.
+     * This removes all existing index data associated with this repo from the database.
+     */
+    fun replace(repoId: Long, repository: RepoV2)
 }
 
 @Dao
 internal interface RepositoryDaoInt : RepositoryDao {
 
-    @Insert(onConflict = ABORT)
+    @Insert(onConflict = REPLACE)
     fun insert(repository: CoreRepository): Long
 
     @Insert(onConflict = REPLACE)
@@ -42,8 +50,20 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun insertReleaseChannels(repoFeature: List<ReleaseChannel>)
 
     @Transaction
-    override fun insert(repository: RepoV2) {
+    override fun insert(repository: RepoV2): Long {
         val repoId = insert(repository.toCoreRepository())
+        insertRepoTables(repoId, repository)
+        return repoId
+    }
+
+    @Transaction
+    override fun replace(repoId: Long, repository: RepoV2) {
+        val newRepoId = insert(repository.toCoreRepository(repoId))
+        require(newRepoId == repoId) { "New repoId $newRepoId did not match old $repoId" }
+        insertRepoTables(repoId, repository)
+    }
+
+    private fun insertRepoTables(repoId: Long, repository: RepoV2) {
         insertMirrors(repository.mirrors.map { it.toMirror(repoId) })
         insertAntiFeatures(repository.antiFeatures.toRepoAntiFeatures(repoId))
         insertCategories(repository.categories.toRepoCategories(repoId))

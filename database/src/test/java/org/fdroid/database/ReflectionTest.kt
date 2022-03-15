@@ -3,7 +3,7 @@ package org.fdroid.database
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.index.ReflectionDiffer.applyDiff
+import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals

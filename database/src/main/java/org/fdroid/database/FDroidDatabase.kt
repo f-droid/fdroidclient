@@ -7,15 +7,25 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(entities = [
+    // repo
     CoreRepository::class,
     Mirror::class,
     AntiFeature::class,
     Category::class,
     ReleaseChannel::class,
+    // packages
+    AppMetadata::class,
+    LocalizedFile::class,
+    LocalizedFileList::class,
+    // versions
+    Version::class,
+    VersionedString::class,
 ], version = 1)
 @TypeConverters(Converters::class)
 internal abstract class FDroidDatabase internal constructor() : RoomDatabase() {
     abstract fun getRepositoryDaoInt(): RepositoryDaoInt
+    abstract fun getAppDaoInt(): AppDaoInt
+    abstract fun getVersionDaoInt(): VersionDaoInt
 
     companion object {
         // Singleton prevents multiple instances of database opening at the same time.
