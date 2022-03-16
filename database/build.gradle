@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation project(":download")
     implementation project(":index")
 
     def room_version = "2.4.2"

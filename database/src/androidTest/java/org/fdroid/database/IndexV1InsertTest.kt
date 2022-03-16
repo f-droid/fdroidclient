@@ -6,14 +6,15 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.serialization.SerializationException
 import org.apache.commons.io.input.CountingInputStream
-import org.fdroid.index.v2.IndexStreamProcessor
 import org.fdroid.index.IndexV1StreamProcessor
+import org.fdroid.index.v2.IndexStreamProcessor
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.math.roundToInt
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 class IndexV1InsertTest : DbTest() {
@@ -58,8 +59,8 @@ class IndexV1InsertTest : DbTest() {
 
         insertV2ForComparison(2)
 
-        val repo1 = repoDao.getRepository(1)
-        val repo2 = repoDao.getRepository(2)
+        val repo1 = repoDao.getRepository(1) ?: fail()
+        val repo2 = repoDao.getRepository(2) ?: fail()
         assertEquals(repo1.repository, repo2.repository.copy(repoId = 1))
         assertEquals(repo1.mirrors, repo2.mirrors.map { it.copy(repoId = 1) })
         assertEquals(repo1.antiFeatures, repo2.antiFeatures)

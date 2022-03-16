@@ -36,11 +36,11 @@ class RepositoryTest : DbTest() {
         assertRepoEquals(repo2, repos[1])
 
         // remove first repo and check that the database only returns one
-        repoDao.removeRepository(repos[0].repository)
+        repoDao.deleteRepository(repos[0].repository)
         assertEquals(1, repoDao.getRepositories().size)
 
         // remove second repo as well and check that all associated data got removed as well
-        repoDao.removeRepository(repos[1].repository)
+        repoDao.deleteRepository(repos[1].repository)
         assertEquals(0, repoDao.getRepositories().size)
         assertEquals(0, repoDao.getMirrors().size)
         assertEquals(0, repoDao.getAntiFeatures().size)

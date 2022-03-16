@@ -13,9 +13,9 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.v2.MirrorV2
+import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.RepoV2
 
 public interface RepositoryDao {
@@ -50,6 +50,17 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun insertReleaseChannels(repoFeature: List<ReleaseChannel>)
 
     @Transaction
+    fun insertEmptyRepo(address: String): Long {
+        val repo = CoreRepository(
+            name = "",
+            icon = null,
+            address = address,
+            timestamp = System.currentTimeMillis(),
+        )
+        return insert(repo)
+    }
+
+    @Transaction
     override fun insert(repository: RepoV2): Long {
         val repoId = insert(repository.toCoreRepository())
         insertRepoTables(repoId, repository)
@@ -72,12 +83,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     @Transaction
     @Query("SELECT * FROM CoreRepository WHERE repoId = :repoId")
-    fun getRepository(repoId: Long): Repository
+    fun getRepository(repoId: Long): Repository?
 
     @Transaction
     fun updateRepository(repoId: Long, jsonObject: JsonObject) {
         // get existing repo
-        val repo = getRepository(repoId)
+        val repo = getRepository(repoId) ?: error("Repo $repoId does not exist")
         // update repo with JSON diff
         updateRepository(applyDiff(repo.repository, jsonObject))
         // replace mirror list, if it is in the diff
@@ -217,6 +228,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun deleteReleaseChannel(repoId: Long, name: String)
 
     @Delete
-    fun removeRepository(repository: CoreRepository)
+    fun deleteRepository(repository: CoreRepository)
+
+    @Query("DELETE FROM CoreRepository WHERE repoId = :repoId")
+    fun deleteRepository(repoId: Long)
 
 }
