@@ -1,4 +1,4 @@
-package org.fdroid.index
+package org.fdroid.index.v2
 
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json

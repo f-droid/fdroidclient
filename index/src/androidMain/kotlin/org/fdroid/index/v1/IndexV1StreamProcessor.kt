@@ -1,4 +1,4 @@
-package org.fdroid.index
+package org.fdroid.index.v1
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
@@ -11,15 +11,11 @@ import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.decodeFromStream
 import org.fdroid.index.DEFAULT_LOCALE
 import org.fdroid.index.IndexParser
-import org.fdroid.index.v1.AppV1
-import org.fdroid.index.v1.IndexV1
-import org.fdroid.index.v1.IndexV1StreamReceiver
-import org.fdroid.index.v1.PackageV1
+import org.fdroid.index.DEFAULT_LOCALE
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.getV1ReleaseChannels
 import org.fdroid.index.mapInto
-import org.fdroid.index.v1.RepoV1
-import org.fdroid.index.v1.Requests
+import org.fdroid.index.mapValuesNotNull
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.LocalizedTextV2
@@ -30,6 +26,7 @@ import java.io.InputStream
 @OptIn(ExperimentalSerializationApi::class)
 public class IndexV1StreamProcessor(
     private val indexStreamReceiver: IndexV1StreamReceiver,
+    private val certificate: String?,
     private val locale: String = DEFAULT_LOCALE,
     private val json: Json = IndexParser.json,
     private val getAndLogReadBytes: () -> Long? = { null },
@@ -71,7 +68,7 @@ public class IndexV1StreamProcessor(
                 categories = emptyMap(),
                 releaseChannels = emptyMap()
             )
-            indexStreamReceiver.receive(repoId, repoV2)
+            indexStreamReceiver.receive(repoId, repoV2, repo.version, certificate)
         }
 
         private fun deserializeRequests(decoder: JsonDecoder, index: Int, repoId: Long) {
@@ -162,9 +159,11 @@ public class IndexV1StreamProcessor(
                     whatsNew = if (isFirstVersion) appDataMap[packageName]?.whatsNew else null
                 )
                 if (isFirstVersion) {
-                    indexStreamReceiver.updateAppMetadata(repoId,
+                    indexStreamReceiver.updateAppMetadata(
+                        repoId,
                         packageName,
-                        packageVersionV1.signer)
+                        packageVersionV1.signer
+                    )
                 }
                 isFirstVersion = false
                 val versionId = packageVersionV2.file.sha256

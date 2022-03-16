@@ -1,13 +1,10 @@
-package org.fdroid.index
+package org.fdroid.index.v2
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import kotlinx.serialization.json.encodeToStream
-import org.fdroid.index.v2.IndexStreamReceiver
-import org.fdroid.index.v2.IndexV2
-import org.fdroid.index.v2.PackageV2
-import org.fdroid.index.v2.RepoV2
+import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -17,6 +14,7 @@ import java.io.FileOutputStream
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 private const val INDEX_V2 = "src/commonTest/resources/index-v2.json"
 
@@ -34,13 +32,17 @@ internal class IndexStreamProcessorTest {
     @Test
     fun testStreamProcessing() {
         val file = File(INDEX_V2)
+        assumeTrue(file.isFile)
         val indexParsed: IndexV2 = FileInputStream(file).use { json.decodeFromStream(it) }
 
         val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexStreamProcessor(testStreamReceiver, json)
-        FileInputStream(file).use { streamProcessor.process(1, it) }
+        val certificate = "foo bar"
+        val streamProcessor = IndexStreamProcessor(testStreamReceiver, certificate, json)
+        FileInputStream(file).use { streamProcessor.process(1, 42, it) }
 
         assertEquals(indexParsed.repo, testStreamReceiver.repo)
+        assertTrue(testStreamReceiver.calledOnStreamEnded)
+        assertEquals(certificate, testStreamReceiver.certificate)
         assertEquals(indexParsed.packages.size, testStreamReceiver.packages.size)
         indexParsed.packages.entries.forEach { (packageName, packageV2) ->
             assertEquals(packageV2, testStreamReceiver.packages[packageName])
@@ -54,6 +56,7 @@ internal class IndexStreamProcessorTest {
     @Test
     fun testReorderedStreamProcessing() {
         val file = File(INDEX_V2)
+        assumeTrue(file.isFile)
         val indexParsed: IndexV2 = FileInputStream(file).use { json.decodeFromStream(it) }
         val newFile = folder.newFile()
         // write out parsed index in reverse order (repo after packages)
@@ -65,11 +68,14 @@ internal class IndexStreamProcessorTest {
             outputStream.write("}".encodeToByteArray())
         }
         val testStreamReceiver = ReorderedTestStreamReceiver()
-        val streamProcessor = IndexStreamProcessor(testStreamReceiver, json)
-        FileInputStream(newFile).use { streamProcessor.process(1, it) }
+        val certificate = "foo bar"
+        val streamProcessor = IndexStreamProcessor(testStreamReceiver, certificate, json)
+        FileInputStream(newFile).use { streamProcessor.process(1, 42, it) }
 
         assertTrue(testStreamReceiver.repoReceived)
+        assertTrue(testStreamReceiver.calledOnStreamEnded)
         assertEquals(indexParsed.repo, testStreamReceiver.repo)
+        assertEquals(certificate, testStreamReceiver.certificate)
         assertEquals(indexParsed.packages.size, testStreamReceiver.packages.size)
         indexParsed.packages.entries.forEach { (packageName, packageV2) ->
             assertEquals(packageV2, testStreamReceiver.packages[packageName])
@@ -78,22 +84,30 @@ internal class IndexStreamProcessorTest {
 
     private open class TestStreamReceiver : IndexStreamReceiver {
         var repo: RepoV2? = null
+        var certificate: String? = null
         val packages = HashMap<String, PackageV2>()
+        var calledOnStreamEnded: Boolean = false
 
-        override fun receive(repoId: Long, repo: RepoV2) {
+        override fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?) {
             this.repo = repo
+            this.certificate = certificate
         }
 
         override fun receive(repoId: Long, packageId: String, p: PackageV2) {
             packages[packageId] = p
+        }
+
+        override fun onStreamEnded(repoId: Long) {
+            if (calledOnStreamEnded) fail()
+            calledOnStreamEnded = true
         }
     }
 
     private class ReorderedTestStreamReceiver : TestStreamReceiver() {
         var repoReceived: Boolean = false
 
-        override fun receive(repoId: Long, repo: RepoV2) {
-            super.receive(repoId, repo)
+        override fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?) {
+            super.receive(repoId, repo, version, certificate)
             assertFalse(repoReceived)
             repoReceived = true
         }

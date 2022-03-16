@@ -1,4 +1,4 @@
-package org.fdroid.index
+package org.fdroid.index.v2
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
@@ -14,16 +14,20 @@ import java.io.InputStream
 @OptIn(ExperimentalSerializationApi::class)
 public class IndexStreamProcessor(
     private val indexStreamReceiver: IndexStreamReceiver,
+    private val certificate: String?,
     private val json: Json = IndexParser.json,
     private val getAndLogReadBytes: () -> Long? = { null },
 ) {
 
-    public fun process(repoId: Long, inputStream: InputStream) {
-        json.decodeFromStream(IndexStreamSerializer(repoId), inputStream)
+    public fun process(repoId: Long, version: Int, inputStream: InputStream) {
+        json.decodeFromStream(IndexStreamSerializer(repoId, version), inputStream)
         getAndLogReadBytes()
     }
 
-    private inner class IndexStreamSerializer(val repoId: Long) : KSerializer<IndexV2?> {
+    private inner class IndexStreamSerializer(
+        val repoId: Long,
+        val version: Int,
+    ) : KSerializer<IndexV2?> {
         override val descriptor = IndexV2.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): IndexV2? {
@@ -48,13 +52,15 @@ public class IndexStreamProcessor(
                 else -> error("Unexpected startIndex: $startIndex")
             }
             decoder.endStructure(descriptor)
+            indexStreamReceiver.onStreamEnded(repoId)
             return null
         }
 
         private fun deserializeRepo(decoder: JsonDecoder, index: Int, repoId: Long) {
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV2.serializer())
-            indexStreamReceiver.receive(repoId, repo)
+            // TODO this replaces the index and thus removes all data, not good when repo is second
+            indexStreamReceiver.receive(repoId, repo, version, certificate)
         }
 
         private fun deserializePackages(decoder: JsonDecoder, index: Int, repoId: Long) {

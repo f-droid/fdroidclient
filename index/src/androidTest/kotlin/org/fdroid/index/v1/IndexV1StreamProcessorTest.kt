@@ -1,9 +1,8 @@
-package org.fdroid.index
+package org.fdroid.index.v1
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.fdroid.index.v1.IndexV1StreamReceiver
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.IndexV2
@@ -12,6 +11,7 @@ import org.fdroid.index.v2.PackageV2
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
+import org.junit.Assume.assumeTrue
 import org.junit.Test
 import java.io.File
 import java.io.FileInputStream
@@ -30,10 +30,12 @@ internal class IndexV1StreamProcessorTest {
     fun testFDroidStreamProcessing() {
         val file1 = File("src/commonTest/resources/index-v1.json")
         val file2 = File("src/commonTest/resources/index-v2.json")
+        assumeTrue(file1.isFile)
+        assumeTrue(file2.isFile)
         val indexParsed: IndexV2 = FileInputStream(file2).use { json.decodeFromStream(it) }
 
         val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, json = json)
+        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null, json = json)
         FileInputStream(file1).use { streamProcessor.process(1, it) }
 
         assertEquals(indexParsed.repo, testStreamReceiver.repo)
@@ -65,8 +67,9 @@ internal class IndexV1StreamProcessorTest {
 
     private fun testStreamProcessing(filePath1: String) {
         val file1 = File(filePath1)
+        assumeTrue(file1.isFile)
         val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, json = json)
+        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null, json = json)
         FileInputStream(file1).use { streamProcessor.process(1, it) }
     }
 
@@ -74,7 +77,7 @@ internal class IndexV1StreamProcessorTest {
         var repo: RepoV2? = null
         val packages = HashMap<String, PackageV2>()
 
-        override fun receive(repoId: Long, repo: RepoV2) {
+        override fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?) {
             this.repo = repo
         }
 

@@ -44,6 +44,7 @@ public data class AppV1(
     val packageName: String,
     val lastUpdated: Long? = null, // missing in wind repo,
     val localized: Map<String, Localized>? = null,
+    val allowedAPKSigningKeys: List<String>? = null, // guardian repo only, not needed for client?
 ) {
     public fun toMetadataV2(
         preferredSigner: String?,

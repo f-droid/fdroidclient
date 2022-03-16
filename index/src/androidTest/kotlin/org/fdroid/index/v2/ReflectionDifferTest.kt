@@ -1,9 +1,7 @@
-package org.fdroid.index
+package org.fdroid.index.v2
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.index.v2.FileV2
-import org.fdroid.index.v2.LocalizedTextV2
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
