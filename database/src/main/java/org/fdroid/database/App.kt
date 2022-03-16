@@ -35,7 +35,7 @@ data class AppMetadata(
     val sourceCode: String? = null,
     val issueTracker: String? = null,
     val translation: String? = null,
-    val preferredSigner: String? = null,
+    val preferredSigner: String? = null, // TODO use platformSig if an APK matches it
     val video: LocalizedTextV2? = null,
     @Embedded(prefix = "author_") val author: Author? = Author(),
     @Embedded(prefix = "donation_") val donation: Donation? = Donation(),
