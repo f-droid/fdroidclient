@@ -2,9 +2,9 @@ package org.fdroid.index.v1
 
 import android.content.Context
 import org.fdroid.database.DbV1StreamReceiver
-import org.fdroid.database.FDroidDatabase
+import org.fdroid.database.FDroidDatabaseHolder
+import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.download.Downloader
-import org.fdroid.index.IndexV1StreamProcessor
 import java.io.File
 import java.io.IOException
 
@@ -15,18 +15,19 @@ public class IndexV1Updater(
     private val downloader: Downloader,
     ) {
 
-    private val db: FDroidDatabase = FDroidDatabase.getDb(context, "test") // TODO final name
+    private val db: FDroidDatabaseInt =
+        FDroidDatabaseHolder.getDb(context) as FDroidDatabaseInt // TODO final name
 
     @Throws(IOException::class, InterruptedException::class)
     fun update(address: String, expectedSigningFingerprint: String?) {
-        val repoId = db.getRepositoryDaoInt().insertEmptyRepo(address)
+        val repoId = db.getRepositoryDao().insertEmptyRepo(address)
         try {
             update(repoId, null, expectedSigningFingerprint)
         } catch (e: Throwable) {
-            db.getRepositoryDaoInt().deleteRepository(repoId)
+            db.getRepositoryDao().deleteRepository(repoId)
             throw e
         }
-        db.getRepositoryDaoInt().getRepositories().forEach { println(it) }
+        db.getRepositoryDao().getRepositories().forEach { println(it) }
     }
 
     @Throws(IOException::class, InterruptedException::class)
@@ -39,9 +40,12 @@ public class IndexV1Updater(
         downloader.download()
         val verifier = IndexV1Verifier(file, certificate, fingerprint)
         db.runInTransaction {
-            verifier.getStreamAndVerify { inputStream ->
-                val streamProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db))
+            val cert = verifier.getStreamAndVerify { inputStream ->
+                val streamProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db), certificate)
                 streamProcessor.process(repoId, inputStream)
+            }
+            if (certificate == null) {
+                db.getRepositoryDao().updateRepository(repoId, cert)
             }
         }
     }

@@ -5,15 +5,15 @@ import org.fdroid.index.v2.PackageV2
 import org.fdroid.index.v2.RepoV2
 
 internal class DbStreamReceiver(
-    private val db: FDroidDatabase,
+    private val db: FDroidDatabaseInt,
 ) : IndexStreamReceiver {
 
-    override fun receive(repoId: Long, repo: RepoV2) {
-        db.getRepositoryDaoInt().replace(repoId, repo)
+    override fun receive(repoId: Long, repo: RepoV2, certificate: String?) {
+        db.getRepositoryDao().replace(repoId, repo, certificate)
     }
 
     override fun receive(repoId: Long, packageId: String, p: PackageV2) {
-        db.getAppDaoInt().insert(repoId, packageId, p.metadata)
+        db.getAppDao().insert(repoId, packageId, p.metadata)
         db.getVersionDaoInt().insert(repoId, packageId, p.versions)
     }
 

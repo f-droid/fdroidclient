@@ -6,7 +6,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.serialization.SerializationException
 import org.apache.commons.io.input.CountingInputStream
-import org.fdroid.index.IndexV1StreamProcessor
+import org.fdroid.index.v1.IndexV1StreamProcessor
 import org.fdroid.index.v2.IndexStreamProcessor
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -25,7 +25,7 @@ class IndexV1InsertTest : DbTest() {
         val fileSize = c.resources.assets.openFd("index-v1.json").use { it.length }
         val inputStream = CountingInputStream(c.resources.assets.open("index-v1.json"))
         var currentByteCount: Long = 0
-        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db)) {
+        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db), null) {
             val bytesRead = inputStream.byteCount
             val bytesSinceLastCall = bytesRead - currentByteCount
             if (bytesSinceLastCall > 0) {
@@ -109,7 +109,7 @@ class IndexV1InsertTest : DbTest() {
     private fun insertV2ForComparison(repoId: Long) {
         val c = getApplicationContext<Context>()
         val inputStream = CountingInputStream(c.resources.assets.open("index-v2.json"))
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db))
+        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db), null)
         db.runInTransaction {
             inputStream.use { indexStream ->
                 indexProcessor.process(repoId, indexStream)
@@ -121,7 +121,7 @@ class IndexV1InsertTest : DbTest() {
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
         val c = getApplicationContext<Context>()
         val cIn = CountingInputStream(c.resources.assets.open("index-v1.json"))
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db)) {
+        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db), null) {
             if (cIn.byteCount > 824096) throw SerializationException()
             cIn.byteCount
         }

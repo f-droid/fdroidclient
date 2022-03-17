@@ -22,7 +22,7 @@ class IndexV2InsertTest : DbTest() {
         val fileSize = c.resources.assets.openFd("index-v2.json").use { it.length }
         val inputStream = CountingInputStream(c.resources.assets.open("index-v2.json"))
         var currentByteCount: Long = 0
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db)) {
+        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db), null) {
             val bytesRead = inputStream.byteCount
             val bytesSinceLastCall = bytesRead - currentByteCount
             if (bytesSinceLastCall > 0) {
@@ -59,7 +59,7 @@ class IndexV2InsertTest : DbTest() {
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
         val c = getApplicationContext<Context>()
         val cIn = CountingInputStream(c.resources.assets.open("index-v2.json"))
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db)) {
+        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db), null) {
             if (cIn.byteCount > 824096) throw SerializationException()
             cIn.byteCount
         }

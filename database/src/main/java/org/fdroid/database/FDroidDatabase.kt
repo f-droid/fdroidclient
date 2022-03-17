@@ -20,32 +20,45 @@ import androidx.room.TypeConverters
     // versions
     Version::class,
     VersionedString::class,
+], views = [
+    LocalizedIcon::class,
 ], version = 1)
 @TypeConverters(Converters::class)
-internal abstract class FDroidDatabase internal constructor() : RoomDatabase() {
-    abstract fun getRepositoryDaoInt(): RepositoryDaoInt
-    abstract fun getAppDaoInt(): AppDaoInt
+internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(), FDroidDatabase {
+    abstract override fun getRepositoryDao(): RepositoryDaoInt
+    abstract override fun getAppDao(): AppDaoInt
     abstract fun getVersionDaoInt(): VersionDaoInt
+}
 
-    companion object {
-        // Singleton prevents multiple instances of database opening at the same time.
-        @Volatile
-        private var INSTANCE: FDroidDatabase? = null
+public interface FDroidDatabase {
+    fun getRepositoryDao(): RepositoryDao
+    fun getAppDao(): AppDao
+    fun runInTransaction(body: Runnable)
+}
 
-        fun getDb(context: Context, name: String = "fdroid_db"): FDroidDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    FDroidDatabase::class.java,
-                    name,
-                ).build()
-                INSTANCE = instance
-                // return instance
-                instance
-            }
-        }
+public object FDroidDatabaseHolder {
+    // Singleton prevents multiple instances of database opening at the same time.
+    @Volatile
+    private var INSTANCE: FDroidDatabaseInt? = null
+
+    @JvmStatic
+    public fun getDb(context: Context): FDroidDatabase {
+        return getDb(context, "test")
     }
 
+    internal fun getDb(context: Context, name: String = "fdroid_db"): FDroidDatabase {
+        // if the INSTANCE is not null, then return it,
+        // if it is, then create the database
+        return INSTANCE ?: synchronized(this) {
+            val instance = Room.databaseBuilder(
+                context.applicationContext,
+                FDroidDatabaseInt::class.java,
+                name,
+            )//.allowMainThreadQueries() // TODO remove before release
+                .build()
+            INSTANCE = instance
+            // return instance
+            instance
+        }
+    }
 }

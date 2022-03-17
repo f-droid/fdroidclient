@@ -21,24 +21,26 @@ data class CoreRepository(
     val address: String,
     val timestamp: Long,
     val description: LocalizedTextV2 = emptyMap(),
+    val certificate: String?,
 )
 
-fun RepoV2.toCoreRepository(repoId: Long = 0) = CoreRepository(
+fun RepoV2.toCoreRepository(repoId: Long = 0, certificate: String? = null) = CoreRepository(
     repoId = repoId,
     name = name,
     icon = icon,
     address = address,
     timestamp = timestamp,
     description = description,
+    certificate = certificate,
 )
 
 data class Repository(
-    @Embedded val repository: CoreRepository,
+    @Embedded internal val repository: CoreRepository,
     @Relation(
         parentColumn = "repoId",
         entityColumn = "repoId",
     )
-    val mirrors: List<Mirror>,
+    internal val mirrors: List<Mirror>,
     @Relation(
         parentColumn = "repoId",
         entityColumn = "repoId",
@@ -54,7 +56,17 @@ data class Repository(
         entityColumn = "repoId",
     )
     val releaseChannels: List<ReleaseChannel>,
-)
+) {
+    val repoId: Long get() = repository.repoId
+    val name: String get() = repository.name
+    val icon: FileV2? get() = repository.icon
+    val address: String get() = repository.address
+    val timestamp: Long get() = repository.timestamp
+    val description: LocalizedTextV2 get() = repository.description
+    val certificate: String? get() = repository.certificate
+
+    fun getMirrors() = mirrors.map { it.toDownloadMirror() }
+}
 
 @Entity(
     primaryKeys = ["repoId", "url"],
@@ -69,7 +81,12 @@ data class Mirror(
     val repoId: Long,
     val url: String,
     val location: String? = null,
-)
+) {
+    fun toDownloadMirror() = org.fdroid.download.Mirror(
+        baseUrl = url,
+        location = location,
+    )
+}
 
 fun MirrorV2.toMirror(repoId: Long) = Mirror(
     repoId = repoId,
@@ -78,7 +95,7 @@ fun MirrorV2.toMirror(repoId: Long) = Mirror(
 )
 
 @Entity(
-    primaryKeys = ["repoId", "name"],
+    primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
         parentColumns = ["repoId"],
@@ -88,22 +105,24 @@ fun MirrorV2.toMirror(repoId: Long) = Mirror(
 )
 data class AntiFeature(
     val repoId: Long,
-    val name: String,
+    val id: String,
     @Embedded(prefix = "icon_") val icon: FileV2? = null,
+    val name: LocalizedTextV2,
     val description: LocalizedTextV2,
 )
 
 fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
     AntiFeature(
         repoId = repoId,
-        name = it.key,
+        id = it.key,
         icon = it.value.icon,
+        name = it.value.name,
         description = it.value.description,
     )
 }
 
 @Entity(
-    primaryKeys = ["repoId", "name"],
+    primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
         parentColumns = ["repoId"],
@@ -113,22 +132,24 @@ fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
 )
 data class Category(
     val repoId: Long,
-    val name: String,
+    val id: String,
     @Embedded(prefix = "icon_") val icon: FileV2? = null,
+    val name: LocalizedTextV2,
     val description: LocalizedTextV2,
 )
 
 fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
     Category(
         repoId = repoId,
-        name = it.key,
+        id = it.key,
         icon = it.value.icon,
+        name = it.value.name,
         description = it.value.description,
     )
 }
 
 @Entity(
-    primaryKeys = ["repoId", "name"],
+    primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
         parentColumns = ["repoId"],
@@ -138,15 +159,17 @@ fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
 )
 data class ReleaseChannel(
     val repoId: Long,
-    val name: String,
+    val id: String,
     @Embedded(prefix = "icon_") val icon: FileV2? = null,
+    val name: LocalizedTextV2,
     val description: LocalizedTextV2,
 )
 
 fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
     ReleaseChannel(
         repoId = repoId,
-        name = it.key,
+        id = it.key,
+        name = it.value.name,
         description = it.value.description,
     )
 }

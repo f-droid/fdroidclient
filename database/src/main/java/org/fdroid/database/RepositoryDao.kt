@@ -1,6 +1,7 @@
 package org.fdroid.database
 
 import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -28,7 +29,15 @@ public interface RepositoryDao {
      * Use when replacing an existing repo with a full index.
      * This removes all existing index data associated with this repo from the database.
      */
-    fun replace(repoId: Long, repository: RepoV2)
+    fun replace(repoId: Long, repository: RepoV2, certificate: String?)
+
+    fun getRepository(repoId: Long): Repository?
+    fun insertEmptyRepo(address:String): Long
+    fun deleteRepository(repoId: Long)
+    fun getRepositories(): List<Repository>
+    fun getLiveRepositories(): LiveData<List<Repository>>
+    // FIXME: We probably want unique categories here flattened by repo weight
+    fun getLiveCategories(): LiveData<List<Category>>
 }
 
 @Dao
@@ -50,12 +59,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun insertReleaseChannels(repoFeature: List<ReleaseChannel>)
 
     @Transaction
-    fun insertEmptyRepo(address: String): Long {
+    override fun insertEmptyRepo(address: String): Long {
         val repo = CoreRepository(
             name = "",
             icon = null,
             address = address,
             timestamp = System.currentTimeMillis(),
+            certificate = null,
         )
         return insert(repo)
     }
@@ -68,8 +78,8 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @Transaction
-    override fun replace(repoId: Long, repository: RepoV2) {
-        val newRepoId = insert(repository.toCoreRepository(repoId))
+    override fun replace(repoId: Long, repository: RepoV2, certificate: String?) {
+        val newRepoId = insert(repository.toCoreRepository(repoId, certificate))
         require(newRepoId == repoId) { "New repoId $newRepoId did not match old $repoId" }
         insertRepoTables(repoId, repository)
     }
@@ -83,7 +93,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     @Transaction
     @Query("SELECT * FROM CoreRepository WHERE repoId = :repoId")
-    fun getRepository(repoId: Long): Repository?
+    override fun getRepository(repoId: Long): Repository?
 
     @Transaction
     fun updateRepository(repoId: Long, jsonObject: JsonObject) {
@@ -103,36 +113,36 @@ internal interface RepositoryDaoInt : RepositoryDao {
         }
         // diff and update the antiFeatures
         diffAndUpdateTable(
-            jsonObject,
-            "antiFeatures",
-            repo.antiFeatures,
-            { name -> AntiFeature(repoId, name, null, emptyMap()) },
-            { item -> item.name },
-            { deleteAntiFeatures(repoId) },
-            { name -> deleteAntiFeature(repoId, name) },
-            { list -> insertAntiFeatures(list) },
+            jsonObject = jsonObject,
+            key = "antiFeatures",
+            itemList = repo.antiFeatures,
+            newItem = { key -> AntiFeature(repoId, key, null, emptyMap(), emptyMap()) },
+            keyGetter = { item -> item.id },
+            deleteAll = { deleteAntiFeatures(repoId) },
+            deleteOne = { key -> deleteAntiFeature(repoId, key) },
+            insertReplace = { list -> insertAntiFeatures(list) },
         )
         // diff and update the categories
         diffAndUpdateTable(
-            jsonObject,
-            "categories",
-            repo.categories,
-            { name -> Category(repoId, name, null, emptyMap()) },
-            { item -> item.name },
-            { deleteCategories(repoId) },
-            { name -> deleteCategory(repoId, name) },
-            { list -> insertCategories(list) },
+            jsonObject = jsonObject,
+            key = "categories",
+            itemList = repo.categories,
+            newItem = { key -> Category(repoId, key, null, emptyMap(), emptyMap()) },
+            keyGetter = { item -> item.id },
+            deleteAll = { deleteCategories(repoId) },
+            deleteOne = { key -> deleteCategory(repoId, key) },
+            insertReplace = { list -> insertCategories(list) },
         )
         // diff and update the releaseChannels
         diffAndUpdateTable(
-            jsonObject,
-            "releaseChannels",
-            repo.releaseChannels,
-            { name -> ReleaseChannel(repoId, name, null, emptyMap()) },
-            { item -> item.name },
-            { deleteReleaseChannels(repoId) },
-            { name -> deleteReleaseChannel(repoId, name) },
-            { list -> insertReleaseChannels(list) },
+            jsonObject = jsonObject,
+            key = "releaseChannels",
+            itemList = repo.releaseChannels,
+            newItem = { key -> ReleaseChannel(repoId, key, null, emptyMap(), emptyMap()) },
+            keyGetter = { item -> item.id },
+            deleteAll = { deleteReleaseChannels(repoId) },
+            deleteOne = { key -> deleteReleaseChannel(repoId, key) },
+            insertReplace = { list -> insertReleaseChannels(list) },
         )
     }
 
@@ -179,9 +189,16 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Update
     fun updateRepository(repo: CoreRepository): Int
 
+    @Query("UPDATE CoreRepository SET certificate = :certificate WHERE repoId = :repoId")
+    fun updateRepository(repoId: Long, certificate: String)
+
     @Transaction
     @Query("SELECT * FROM CoreRepository")
-    fun getRepositories(): List<Repository>
+    override fun getRepositories(): List<Repository>
+
+    @Transaction
+    @Query("SELECT * FROM CoreRepository")
+    override fun getLiveRepositories(): LiveData<List<Repository>>
 
     @VisibleForTesting
     @Query("SELECT * FROM Mirror")
@@ -200,20 +217,26 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun deleteAntiFeatures(repoId: Long)
 
     @VisibleForTesting
-    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId AND name = :name")
-    fun deleteAntiFeature(repoId: Long, name: String)
+    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId AND id = :id")
+    fun deleteAntiFeature(repoId: Long, id: String)
 
     @VisibleForTesting
     @Query("SELECT * FROM Category")
     fun getCategories(): List<Category>
+
+    @RewriteQueriesToDropUnusedColumns
+    @Query("""SELECT * FROM Category
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""")
+    override fun getLiveCategories(): LiveData<List<Category>>
 
     @VisibleForTesting
     @Query("DELETE FROM Category WHERE repoId = :repoId")
     fun deleteCategories(repoId: Long)
 
     @VisibleForTesting
-    @Query("DELETE FROM Category WHERE repoId = :repoId AND name = :name")
-    fun deleteCategory(repoId: Long, name: String)
+    @Query("DELETE FROM Category WHERE repoId = :repoId AND id = :id")
+    fun deleteCategory(repoId: Long, id: String)
 
     @VisibleForTesting
     @Query("SELECT * FROM ReleaseChannel")
@@ -224,13 +247,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun deleteReleaseChannels(repoId: Long)
 
     @VisibleForTesting
-    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId AND name = :name")
-    fun deleteReleaseChannel(repoId: Long, name: String)
+    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId AND id = :id")
+    fun deleteReleaseChannel(repoId: Long, id: String)
 
     @Delete
     fun deleteRepository(repository: CoreRepository)
 
     @Query("DELETE FROM CoreRepository WHERE repoId = :repoId")
-    fun deleteRepository(repoId: Long)
+    override fun deleteRepository(repoId: Long)
 
 }
