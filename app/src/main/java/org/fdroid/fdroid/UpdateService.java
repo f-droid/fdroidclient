@@ -37,21 +37,27 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.CompatibilityChecker;
+import org.fdroid.CompatibilityCheckerImpl;
+import org.fdroid.database.Repository;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.InstalledAppProviderService;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.DownloaderFactory;
+import org.fdroid.index.v1.IndexUpdateListener;
+import org.fdroid.index.v1.IndexUpdateResult;
+import org.fdroid.index.v1.IndexUpdaterKt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -251,27 +257,18 @@ public class UpdateService extends JobIntentService {
     }
 
     /**
-     * Return a {@link List} of all {@link Repo}s that have either a local
-     * canonical URL or a local mirror URL.  These are repos that can be
-     * updated and used without using the Internet.
-     */
-    public static List<Repo> getLocalRepos(Context context) {
-        return getLocalRepos(RepoProvider.Helper.all(context));
-    }
-
-    /**
      * Return the repos in the {@code repos} {@link List} that have either a
      * local canonical URL or a local mirror URL.  These are repos that can be
      * updated and used without using the Internet.
      */
-    public static List<Repo> getLocalRepos(List<Repo> repos) {
-        ArrayList<Repo> localRepos = new ArrayList<>();
-        for (Repo repo : repos) {
-            if (isLocalRepoAddress(repo.address)) {
+    public static List<Repository> getLocalRepos(List<Repository> repos) {
+        ArrayList<Repository> localRepos = new ArrayList<>();
+        for (Repository repo : repos) {
+            if (isLocalRepoAddress(repo.getAddress())) {
                 localRepos.add(repo);
             } else {
-                for (String mirrorAddress : repo.getMirrorList()) {
-                    if (isLocalRepoAddress(mirrorAddress)) {
+                for (Mirror mirror : repo.getMirrors()) {
+                    if (!mirror.isHttp()) {
                         localRepos.add(repo);
                         break;
                     }
@@ -422,10 +419,10 @@ public class UpdateService extends JobIntentService {
 
         try {
             final Preferences fdroidPrefs = Preferences.get();
-
-            // Grab some preliminary information, then we can release the
-            // database while we do all the downloading, etc...
-            List<Repo> repos = RepoProvider.Helper.all(this);
+            // always get repos fresh from DB, because
+            // * when an update is requested early at app start, the repos above might not be available, yet
+            // * when an update is requested when adding a new repo, it might not be in the FDroidApp list, yet
+            List<Repository> repos = db.getRepositoryDao().getRepositories();
 
             // See if it's time to actually do anything yet...
             int netState = ConnectivityMonitorService.getNetworkState(this);
@@ -433,7 +430,7 @@ public class UpdateService extends JobIntentService {
                 Utils.debugLog(TAG, "skipping internet check, this is local: " + address);
             } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
                 // keep track of repos that have a local copy in case internet is not available
-                List<Repo> localRepos = getLocalRepos(repos);
+                List<Repository> localRepos = getLocalRepos(repos);
                 if (localRepos.size() > 0) {
                     repos = localRepos;
                 } else {
@@ -447,7 +444,7 @@ public class UpdateService extends JobIntentService {
                 Utils.debugLog(TAG, "manually requested or forced update");
                 if (forcedUpdate) {
                     DBHelper.resetTransient(this);
-                    InstalledAppProviderService.compareToPackageManager(this);
+                    // InstalledAppProviderService.compareToPackageManager(this);
                 }
             } else if (!fdroidPrefs.isBackgroundDownloadAllowed() && !fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
@@ -464,34 +461,33 @@ public class UpdateService extends JobIntentService {
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
-            for (final Repo repo : repos) {
-                if (!repo.inuse) {
-                    continue;
-                }
-                if (singleRepoUpdate && !repo.address.equals(address)) {
+            for (final Repository repo : repos) {
+                if (!repo.getEnabled()) continue;
+                if (!singleRepoUpdate && repo.isSwap()) continue;
+                if (singleRepoUpdate && !repo.getAddress().equals(address)) {
                     unchangedRepos++;
                     continue;
                 }
-                if (!singleRepoUpdate && repo.isSwap) {
-                    continue;
-                }
-
-                sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
+                sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.getAddress()));
 
                 try {
-                    IndexUpdater updater = new IndexV1Updater(this, repo);
-                    if (Preferences.get().isForceOldIndexEnabled() || !updater.update()) {
-                        updater = new IndexUpdater(getBaseContext(), repo);
-                        updater.update();
-                    }
-
-                    if (updater.hasChanged()) {
+                    final String canonicalUri = IndexUpdaterKt.getCanonicalUri(repo).toString();
+                    final IndexUpdateListener listener = new UpdateServiceListener(this, canonicalUri);
+                    final CompatibilityChecker compatChecker =
+                            new CompatibilityCheckerImpl(getPackageManager(), Preferences.get().forceTouchApps());
+                    // TODO try new v2 index first
+                    final org.fdroid.index.v1.IndexV1Updater updater = new org.fdroid.index.v1.IndexV1Updater(
+                            getApplicationContext(), DownloaderFactory.INSTANCE, compatChecker);
+                    final long repoId = repo.getRepoId();
+                    final String certificate = Objects.requireNonNull(repo.getCertificate());
+                    IndexUpdateResult result = updater.update(repoId, certificate, listener);
+                    if (result == IndexUpdateResult.UNCHANGED) {
+                        unchangedRepos++;
+                    } else if (result == IndexUpdateResult.PROCESSED) {
                         updatedRepos++;
                         changes = true;
-                    } else {
-                        unchangedRepos++;
                     }
-                } catch (IndexUpdater.UpdateException e) {
+                } catch (Exception e) {
                     errorRepos++;
                     Throwable cause = e.getCause();
                     if (cause == null) {
@@ -499,7 +495,7 @@ public class UpdateService extends JobIntentService {
                     } else {
                         repoErrors.add(e.getLocalizedMessage() + " ⇨ " + cause.getLocalizedMessage());
                     }
-                    Log.e(TAG, "Error updating repository " + repo.address);
+                    Log.e(TAG, "Error updating repository " + repo.getAddress());
                     e.printStackTrace();
                 }
 
@@ -560,6 +556,7 @@ public class UpdateService extends JobIntentService {
      * to be updated, it is queued last.
      */
     public static void autoDownloadUpdates(Context context) {
+        // TODO adapt to new DB
         List<App> canUpdate = AppProvider.Helper.findCanUpdate(context, Schema.AppMetadataTable.Cols.ALL);
         String packageName = context.getPackageName();
         App updateLastApp = null;
@@ -588,9 +585,9 @@ public class UpdateService extends JobIntentService {
         }
     }
 
-    public static void reportDownloadProgress(Context context, IndexUpdater updater,
+    public static void reportDownloadProgress(Context context, String indexUrl,
                                               long bytesRead, long totalBytes) {
-        Utils.debugLog(TAG, "Downloading " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
+        Utils.debugLog(TAG, "Downloading " + indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
         int percent = -1;
         if (totalBytes > 0) {
@@ -599,27 +596,26 @@ public class UpdateService extends JobIntentService {
         String message;
         if (totalBytes == -1) {
             message = context.getString(R.string.status_download_unknown_size,
-                    updater.indexUrl, downloadedSizeFriendly);
+                    indexUrl, downloadedSizeFriendly);
             percent = -1;
         } else {
             String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
             message = context.getString(R.string.status_download,
-                    updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
+                    indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
         }
         sendStatus(context, STATUS_INFO, message, percent);
     }
 
-    public static void reportProcessIndexProgress(Context context, IndexUpdater updater,
-                                                  long bytesRead, long totalBytes) {
-        Utils.debugLog(TAG, "Processing " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
+    public static void reportProcessIndexProgress(Context context, String indexUrl, long bytesRead, long totalBytes) {
+        Utils.debugLog(TAG, "Processing " + indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSize = Utils.getFriendlySize(bytesRead);
         String totalSize = Utils.getFriendlySize(totalBytes);
         int percent = -1;
         if (totalBytes > 0) {
             percent = Utils.getPercent(bytesRead, totalBytes);
         }
-        String message = context.getString(R.string.status_processing_xml_percent,
-                updater.indexUrl, downloadedSize, totalSize, percent);
+        String message = context.getString(R.string.status_processing_xml_percent, indexUrl, downloadedSize,
+                totalSize, percent);
         sendStatus(context, STATUS_INFO, message, percent);
     }
 
@@ -631,12 +627,11 @@ public class UpdateService extends JobIntentService {
      * "Saving app details" sent to the user. If you know how many apps you have
      * processed, then a message of "Saving app details (x/total)" is displayed.
      */
-    public static void reportProcessingAppsProgress(Context context, IndexUpdater updater,
-                                                    int appsSaved, int totalApps) {
-        Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
+    public static void reportProcessingAppsProgress(Context context, String indexUrl, int appsSaved, int totalApps) {
+        Utils.debugLog(TAG, "Committing " + indexUrl + "(" + appsSaved + "/" + totalApps + ")");
         if (totalApps > 0) {
             String message = context.getString(R.string.status_inserting_x_apps,
-                    appsSaved, totalApps, updater.indexUrl);
+                    appsSaved, totalApps, indexUrl);
             sendStatus(context, STATUS_INFO, message, Utils.getPercent(appsSaved, totalApps));
         } else {
             String message = context.getString(R.string.status_inserting_apps);

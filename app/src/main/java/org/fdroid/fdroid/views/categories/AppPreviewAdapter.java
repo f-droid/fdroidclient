@@ -1,18 +1,20 @@
 package org.fdroid.fdroid.views.categories;
 
-import android.database.Cursor;
 import android.view.ViewGroup;
 
+import org.fdroid.database.AppOverviewItem;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
+import java.util.List;
+
 class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
 
-    private Cursor cursor;
+    private List<AppOverviewItem> items = Collections.emptyList();
     private final AppCompatActivity activity;
 
     AppPreviewAdapter(AppCompatActivity activity) {
@@ -28,21 +30,20 @@ class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     @Override
     public void onBindViewHolder(@NonNull AppCardController holder, int position) {
-        cursor.moveToPosition(position);
-        holder.bindApp(new App(cursor));
+        holder.bindApp(items.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return cursor == null ? 0 : cursor.getCount();
+        return items.size();
     }
 
-    public void setAppCursor(Cursor cursor) {
-        if (this.cursor == cursor) {
+    void setAppCursor(List<AppOverviewItem> items) {
+        if (this.items == items) {
             //don't notify when the cursor did not change
             return;
         }
-        this.cursor = cursor;
+        this.items = items;
         notifyDataSetChanged();
     }
 }

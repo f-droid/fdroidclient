@@ -2,25 +2,28 @@ package org.fdroid.fdroid.views.main;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.categories.AppCardController;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.fdroid.database.AppOverviewItem;
+
+import java.util.List;
+
 public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
 
-    private Cursor cursor;
+    private List<AppOverviewItem> apps;
     private final AppCompatActivity activity;
     private final RecyclerView.ItemDecoration appListDecorator;
 
@@ -95,22 +98,21 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
 
     @Override
     public void onBindViewHolder(@NonNull AppCardController holder, int position) {
-        cursor.moveToPosition(position);
-        final App app = new App(cursor);
+        final AppOverviewItem app = apps.get(position);
         holder.bindApp(app);
     }
 
     @Override
     public int getItemCount() {
-        return cursor == null ? 0 : cursor.getCount();
+        return apps == null ? 0 : apps.size();
     }
 
-    public void setAppsCursor(Cursor cursor) {
-        if (this.cursor == cursor) {
-            //don't notify when the cursor did not change
+    public void setApps(@Nullable List<AppOverviewItem> apps) {
+        if (this.apps == apps) {
+            //don't notify when the apps did not change
             return;
         }
-        this.cursor = cursor;
+        this.apps = apps;
         notifyDataSetChanged();
     }
 

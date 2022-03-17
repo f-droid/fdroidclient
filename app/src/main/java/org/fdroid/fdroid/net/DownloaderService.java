@@ -33,12 +33,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
 
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
 
@@ -248,8 +250,14 @@ public class DownloaderService extends Service {
 
         try {
             activeCanonicalUrl = canonicalUrl.toString();
-            final Repo repo = RepoProvider.Helper.findById(this, repoId);
-            downloader = DownloaderFactory.create(repo, canonicalUrl, localFile);
+            Repository repo = FDroidApp.getRepo(repoId);
+            if (repo == null) {
+                // right after the app gets re-recreated downloads get re-triggered, so repo can still be null
+                FDroidDatabase db = DBHelper.getDb(getApplicationContext());
+                repo = db.getRepositoryDao().getRepository(repoId);
+                if (repo == null) return; // repo might have been deleted in the meantime
+            }
+            downloader = DownloaderFactory.INSTANCE.create(repo, canonicalUrl, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {

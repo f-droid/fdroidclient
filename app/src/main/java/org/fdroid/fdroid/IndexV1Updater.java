@@ -25,7 +25,6 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -41,7 +40,6 @@ import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
@@ -49,7 +47,6 @@ import org.fdroid.fdroid.data.RepoPersister;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.RepoPushRequest;
 import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.net.DownloaderFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +60,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 /**
  * Receives the index data about all available apps and packages via the V1
@@ -105,43 +101,42 @@ public class IndexV1Updater extends IndexUpdater {
     @Override
     public boolean update() throws IndexUpdater.UpdateException {
         File destFile = null;
-        Downloader downloader;
+        // Downloader downloader;
         try {
             destFile = File.createTempFile("dl-", "", context.getCacheDir());
             destFile.deleteOnExit(); // this probably does nothing, but maybe...
+            // TODO we don't use that anymore
             // read file name from file
-            downloader = DownloaderFactory.createWithTryFirstMirror(repo, Uri.parse(indexUrl), destFile);
-            downloader.setCacheTag(repo.lastetag);
-            downloader.setListener(downloadListener);
-            downloader.download();
-            hasChanged = downloader.hasChanged();
+            //    downloader = DownloaderFactory.createWithTryFirstMirror(repo, Uri.parse(indexUrl), destFile);
+            //    downloader.setCacheTag(repo.lastetag);
+            //    downloader.setListener(downloadListener);
+            //    downloader.download();
+            // hasChanged = downloader.hasChanged();
 
             if (!hasChanged) {
                 return true;
             }
 
-            processDownloadedIndex(destFile, downloader.getCacheTag());
+            // processDownloadedIndex(destFile, downloader.getCacheTag());
         } catch (IOException e) {
             if (destFile != null) {
                 FileUtils.deleteQuietly(destFile);
             }
             throw new IndexUpdater.UpdateException(repo, "Error getting F-Droid index file", e);
-        } catch (InterruptedException e) {
-            // ignored if canceled, the local database just won't be updated
         } // TODO is it safe to delete destFile in finally block?
 
         return true;
     }
 
-    private void processDownloadedIndex(File outputFile, String cacheTag)
-            throws IOException, IndexUpdater.UpdateException {
-        JarFile jarFile = new JarFile(outputFile, true);
-        JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
-        InputStream indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                processIndexListener, (int) indexEntry.getSize());
-        processIndexV1(indexInputStream, indexEntry, cacheTag);
-        jarFile.close();
-    }
+    //private void processDownloadedIndex(File outputFile, String cacheTag)
+    //        throws IOException, IndexUpdater.UpdateException {
+    //    JarFile jarFile = new JarFile(outputFile, true);
+    //    JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
+    //    InputStream indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
+    //            processIndexListener, (int) indexEntry.getSize());
+    //    processIndexV1(indexInputStream, indexEntry, cacheTag);
+    //    jarFile.close();
+    //}
 
     /**
      * Get the standard {@link ObjectMapper} instance used for parsing {@code index-v1.json}.
