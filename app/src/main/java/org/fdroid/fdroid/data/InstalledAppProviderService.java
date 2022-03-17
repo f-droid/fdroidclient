@@ -355,6 +355,7 @@ public class InstalledAppProviderService extends JobIntentService {
      *             into the database when under test.
      */
     static void insertAppIntoDb(Context context, PackageInfo packageInfo, String hashType, String hash) {
+        if (true) return;
         Log.d(TAG, "insertAppIntoDb " + packageInfo.packageName);
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues contentValues = new ContentValues();

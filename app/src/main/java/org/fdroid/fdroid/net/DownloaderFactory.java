@@ -3,8 +3,10 @@ package org.fdroid.fdroid.net;
 import android.content.ContentResolver;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.fdroid.database.Repository;
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.HttpDownloader;
@@ -12,7 +14,6 @@ import org.fdroid.download.HttpManager;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,32 +22,25 @@ import java.util.List;
 
 import info.guardianproject.netcipher.NetCipher;
 
-public class DownloaderFactory {
+public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
 
     private static final String TAG = "DownloaderFactory";
     // TODO move to application object or inject where needed
+    public static final DownloaderFactory INSTANCE = new DownloaderFactory();
     public static final HttpManager HTTP_MANAGER =
             new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, NetCipher.getProxy());
 
-    /**
-     * Same as {@link #create(Repo, Uri, File)}, but trying canonical address first.
-     * <p>
-     * See https://gitlab.com/fdroid/fdroidclient/-/issues/1708 for why this is still needed.
-     */
-    public static Downloader createWithTryFirstMirror(Repo repo, Uri uri, File destFile)
-            throws IOException {
-        Mirror tryFirst = new Mirror(repo.address);
-        List<Mirror> mirrors = Mirror.fromStrings(repo.getMirrorList());
-        return create(repo, mirrors, uri, destFile, tryFirst);
-    }
-
-    public static Downloader create(Repo repo, Uri uri, File destFile) throws IOException {
-        List<Mirror> mirrors = Mirror.fromStrings(repo.getMirrorList());
+    @NonNull
+    @Override
+    public Downloader create(Repository repo, @NonNull Uri uri, @NonNull File destFile) throws IOException {
+        List<Mirror> mirrors = repo.getMirrors();
         return create(repo, mirrors, uri, destFile, null);
     }
 
-    private static Downloader create(Repo repo, List<Mirror> mirrors, Uri uri, File destFile,
-                                     @Nullable Mirror tryFirst) throws IOException {
+    @NonNull
+    @Override
+    protected Downloader create(@NonNull Repository repo, @NonNull List<Mirror> mirrors, @NonNull Uri uri,
+                                @NonNull File destFile, @Nullable Mirror tryFirst) throws IOException {
         Downloader downloader;
 
         String scheme = uri.getScheme();
@@ -57,11 +51,11 @@ public class DownloaderFactory {
         } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             downloader = new LocalFileDownloader(uri, destFile);
         } else {
-            String path = uri.toString().replace(repo.address, "");
+            String path = uri.toString().replace(repo.getAddress(), "");
             Utils.debugLog(TAG, "Using suffix " + path + " with mirrors " + mirrors);
             Proxy proxy = NetCipher.getProxy();
             DownloadRequest request =
-                    new DownloadRequest(path, mirrors, proxy, repo.username, repo.password, tryFirst);
+                    new DownloadRequest(path, mirrors, proxy, repo.getUsername(), repo.getPassword(), tryFirst);
             downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
         }
         return downloader;

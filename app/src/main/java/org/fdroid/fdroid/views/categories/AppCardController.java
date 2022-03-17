@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.categories;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,9 +17,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.ConfigurationCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.database.AppOverviewItem;
 
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout
@@ -51,7 +55,7 @@ public class AppCardController extends RecyclerView.ViewHolder
     private final TextView newTag;
 
     @Nullable
-    private App currentApp;
+    private AppOverviewItem currentApp;
 
     private final AppCompatActivity activity;
 
@@ -68,10 +72,16 @@ public class AppCardController extends RecyclerView.ViewHolder
         itemView.setOnClickListener(this);
     }
 
-    public void bindApp(@NonNull App app) {
+    public void bindApp(@NonNull AppOverviewItem app) {
+        if (App.systemLocaleList == null) {
+            App.systemLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+        }
         currentApp = app;
 
-        summary.setText(Utils.formatAppNameAndSummary(app.name, app.summary));
+        String name = app.getName(App.systemLocaleList);
+        summary.setText(
+                Utils.formatAppNameAndSummary(name == null ? "" : name, app.getSummary(App.systemLocaleList))
+        );
 
         if (newTag != null) {
             if (isConsideredNew(app)) {
@@ -83,13 +93,11 @@ public class AppCardController extends RecyclerView.ViewHolder
         Utils.setIconFromRepoOrPM(app, icon, icon.getContext());
     }
 
-    private boolean isConsideredNew(@NonNull App app) {
-        //noinspection SimplifiableIfStatement
-        if (app.added == null || app.lastUpdated == null || !app.added.equals(app.lastUpdated)) {
+    private boolean isConsideredNew(@NonNull AppOverviewItem app) {
+        if (app.getAdded() != app.getLastUpdated()) {
             return false;
         }
-
-        return Utils.daysSince(app.added) <= DAYS_TO_CONSIDER_NEW;
+        return Utils.daysSince(app.getAdded()) <= DAYS_TO_CONSIDER_NEW;
     }
 
     /**
@@ -102,7 +110,7 @@ public class AppCardController extends RecyclerView.ViewHolder
         }
 
         Intent intent = new Intent(activity, AppDetailsActivity.class);
-        intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.packageName);
+        intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.getPackageName());
         Pair<View, String> iconTransitionPair = Pair.create((View) icon,
                 activity.getString(R.string.transition_app_item_icon));
 
