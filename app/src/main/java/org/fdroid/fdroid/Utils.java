@@ -55,11 +55,16 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.encode.Contents;
 import com.google.zxing.encode.QRCodeEncoder;
 
+import org.fdroid.database.AppOverviewItem;
+import org.fdroid.database.Repository;
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.xml.sax.XMLReader;
 
 import java.io.Closeable;
@@ -70,6 +75,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.Charset;
@@ -98,10 +104,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Consumer;
+import androidx.core.util.Supplier;
 import androidx.core.view.DisplayCompat;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import info.guardianproject.netcipher.NetCipher;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import vendored.org.apache.commons.codec.binary.Hex;
 import vendored.org.apache.commons.codec.digest.DigestUtils;
@@ -494,6 +508,31 @@ public final class Utils {
         app.loadWithGlide(context).apply(iconRequestOptions).into(iv);
     }
 
+    @Deprecated
+    public static void setIconFromRepoOrPM(@NonNull AppOverviewItem app, ImageView iv, Context context) {
+        String iconPath = app.getIcon(App.systemLocaleList);
+        if (iconPath == null) return;
+        if (iconRequestOptions == null) {
+            iconRequestOptions = new RequestOptions()
+                    .error(R.drawable.ic_repo_app_default)
+                    .fallback(R.drawable.ic_repo_app_default);
+        }
+        iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
+
+        Repository repo = FDroidApp.getRepo(app.getRepoId());
+        if (repo == null) return;
+        if (repo.getAddress().startsWith("content://")) {
+            // TODO check if this works
+            String uri = repo.getAddress() + TreeUriDownloader.ESCAPED_SLASH + iconPath;
+            Glide.with(context).load(uri).apply(iconRequestOptions).into(iv);
+        } else {
+            List<Mirror> mirrors = repo.getMirrors();
+            Proxy proxy = NetCipher.getProxy();
+            DownloadRequest request = new DownloadRequest(iconPath, mirrors, proxy, null, null);
+            Glide.with(context).load(request).apply(iconRequestOptions).into(iv);
+        }
+    }
+
     /**
      * Get the checksum hash of the file {@code file} using the algorithm in {@code hashAlgo}.
      * {@code file} must exist on the filesystem and {@code hashAlgo} must be supported
@@ -640,8 +679,20 @@ public final class Utils {
         return (int) TimeUnit.MILLISECONDS.toDays(msDiff);
     }
 
+    /**
+     * Calculate the number of days since the given date.
+     */
+    public static int daysSince(long ms) {
+        long msDiff = Calendar.getInstance().getTimeInMillis() - ms;
+        return (int) TimeUnit.MILLISECONDS.toDays(msDiff);
+    }
+
     public static String formatLastUpdated(@NonNull Resources res, @NonNull Date date) {
-        long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
+        return formatLastUpdated(res, date.getTime());
+    }
+
+    public static String formatLastUpdated(@NonNull Resources res, long date) {
+        long msDiff = Calendar.getInstance().getTimeInMillis() - date;
         long days = msDiff / DateUtils.DAY_IN_MILLIS;
         long weeks = msDiff / (DateUtils.DAY_IN_MILLIS * 7);
         long months = msDiff / (DateUtils.DAY_IN_MILLIS * 30);
@@ -916,6 +967,33 @@ public final class Utils {
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorReturnItem(Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888))
                 .doOnError(throwable -> Log.e(TAG, "Could not encode QR as bitmap", throwable));
+    }
+
+    public static <T> Disposable runOffUiThread(Supplier<T> supplier, Consumer<T> consumer) {
+        return Single.fromCallable(supplier::get)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(consumer::accept);
+    }
+
+    public static Disposable runOffUiThread(Runnable runnable) {
+        return Single.fromCallable(() -> {
+            runnable.run();
+            return true;
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+    }
+
+    public static <T> void observeOnce(LiveData<T> liveData, LifecycleOwner lifecycleOwner, Consumer<T> consumer) {
+        liveData.observe(lifecycleOwner, new Observer<T>() {
+            @Override
+            public void onChanged(T t) {
+                consumer.accept(t);
+                liveData.removeObserver(this);
+            }
+        });
     }
 
     /**

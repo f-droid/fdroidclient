@@ -33,6 +33,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -51,12 +52,15 @@ import org.acra.config.CoreConfigurationBuilder;
 import org.acra.config.DialogConfigurationBuilder;
 import org.acra.config.MailSenderConfigurationBuilder;
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.FDroidDatabaseHolder;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppProviderService;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
@@ -79,8 +83,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
+
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FDroidApp extends Application implements androidx.work.Configuration.Provider {
 
@@ -99,6 +108,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static volatile String ssid;
     public static volatile String bssid;
     public static volatile Repo repo = new Repo();
+
+    public static volatile List<Repository> repos;
 
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
@@ -241,7 +252,15 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             currentLocale = newConfig.getLocales().toString();
         }
         if (!TextUtils.equals(lastLocale, currentLocale)) {
-            UpdateService.forceUpdateRepo(this);
+            FDroidDatabase db = DBHelper.getDb(this.getApplicationContext());
+            Single.fromCallable(() -> {
+                long now = System.currentTimeMillis();
+                LocaleListCompat locales =
+                    ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+            db.afterLocalesChanged(locales);
+                Log.d(TAG, "Updating DB locales took: " + (System.currentTimeMillis() - now) + "ms");
+                return true;
+            }).subscribeOn(Schedulers.io()).subscribe();
         }
         atStartTime.edit().putString(lastLocaleKey, currentLocale).apply();
     }
@@ -316,6 +335,11 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             }
         }
 
+        // keep a static copy of the repositories around and in-sync
+        // not how one would normally do this, but it is a common pattern in this codebase
+        FDroidDatabase db = FDroidDatabaseHolder.getDb(this);
+        db.getRepositoryDao().getLiveRepositories().observeForever(repositories -> repos = repositories);
+
         PRNGFixes.apply();
 
         applyTheme();
@@ -331,7 +355,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             preferences.setForceOldIndex(true);
         }
 
-        InstalledAppProviderService.compareToPackageManager(this);
+        // TODO should not be needed anymore
+        //InstalledAppProviderService.compareToPackageManager(this);
 
         // If the user changes the preference to do with filtering anti-feature apps,
         // it is easier to just notify a change in the app provider,
@@ -523,6 +548,15 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         if (preferences.isTorEnabled()) {
             OrbotHelper.requestStartTor(context);
         }
+    }
+
+    @Nullable
+    public static Repository getRepo(long repoId) {
+        if (repos == null) return null;
+        for (Repository r : repos) {
+            if (r.getRepoId() == repoId) return r;
+        }
+        return null;
     }
 
     public static Context getInstance() {

@@ -28,7 +28,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.res.Resources.NotFoundException;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
@@ -46,7 +45,6 @@ import org.fdroid.fdroid.data.RepoXMLHandler;
 import org.fdroid.fdroid.data.Schema.RepoTable;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.InstallerService;
-import org.fdroid.fdroid.net.DownloaderFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -134,10 +132,11 @@ public class IndexUpdater {
         try {
             destFile = File.createTempFile("dl-", "", context.getCacheDir());
             destFile.deleteOnExit(); // this probably does nothing, but maybe...
-            downloader = DownloaderFactory.createWithTryFirstMirror(repo, Uri.parse(indexUrl), destFile);
-            downloader.setCacheTag(repo.lastetag);
-            downloader.setListener(downloadListener);
-            downloader.download();
+            // TODO we don't use this anymore
+            //    downloader = DownloaderFactory.createWithTryFirstMirror(repo, Uri.parse(indexUrl), destFile);
+            //    downloader.setCacheTag(repo.lastetag);
+            //    downloader.setListener(downloadListener);
+            //    downloader.download();
 
         } catch (IOException e) {
             if (destFile != null) {
@@ -147,9 +146,6 @@ public class IndexUpdater {
             }
 
             throw new UpdateException(repo, "Error getting F-Droid index file", e);
-        } catch (InterruptedException e) {
-            // ignored if canceled, the local database just won't be updated
-            e.printStackTrace();
         } // TODO is it safe to delete destFile in finally block?
         return new Pair<>(downloader, destFile);
     }
@@ -255,19 +251,19 @@ public class IndexUpdater {
     protected final ProgressListener downloadListener = new ProgressListener() {
         @Override
         public void onProgress(long bytesRead, long totalBytes) {
-            UpdateService.reportDownloadProgress(context, IndexUpdater.this, bytesRead, totalBytes);
+            UpdateService.reportDownloadProgress(context, indexUrl, bytesRead, totalBytes);
         }
     };
 
     protected final ProgressListener processIndexListener = new ProgressListener() {
         @Override
         public void onProgress(long bytesRead, long totalBytes) {
-            UpdateService.reportProcessIndexProgress(context, IndexUpdater.this, bytesRead, totalBytes);
+            UpdateService.reportProcessIndexProgress(context, indexUrl, bytesRead, totalBytes);
         }
     };
 
     protected void notifyProcessingApps(int appsSaved, int totalApps) {
-        UpdateService.reportProcessingAppsProgress(context, this, appsSaved, totalApps);
+        UpdateService.reportProcessingAppsProgress(context, indexUrl, appsSaved, totalApps);
     }
 
     protected void notifyCommittingToDb() {

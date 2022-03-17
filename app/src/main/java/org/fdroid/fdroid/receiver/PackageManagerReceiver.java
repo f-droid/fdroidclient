@@ -24,6 +24,8 @@ public class PackageManagerReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        // TODO might not be needed anymore
+        if (true) return;
         if (intent != null) {
             String action = intent.getAction();
             if (Intent.ACTION_PACKAGE_ADDED.equals(action)) {
