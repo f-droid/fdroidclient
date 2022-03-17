@@ -1,8 +1,11 @@
 package org.fdroid.database
 
+import androidx.core.os.LocaleListCompat
+import androidx.room.DatabaseView
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Relation
 import org.fdroid.index.v2.Author
 import org.fdroid.index.v2.Donation
 import org.fdroid.index.v2.FileV2
@@ -72,6 +75,46 @@ data class App(
     val screenshots: Screenshots? = null,
 )
 
+public data class AppOverviewItem(
+    public val repoId: Long,
+    public val packageId: String,
+    public val added: Long,
+    public val lastUpdated: Long,
+    private val name: LocalizedTextV2? = null,
+    private val summary: LocalizedTextV2? = null,
+    @Relation(
+        parentColumn = "packageId",
+        entityColumn = "packageId",
+    )
+    internal val localizedIcon: List<LocalizedIcon>? = null,
+) {
+    public fun getName(localeList: LocaleListCompat) = name.getBestLocale(localeList)
+    public fun getSummary(localeList: LocaleListCompat) = summary.getBestLocale(localeList)
+    public fun getIcon(localeList: LocaleListCompat) =
+        localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
+}
+
+internal fun <T> Map<String, T>?.getBestLocale(localeList: LocaleListCompat): T? {
+    if (isNullOrEmpty()) return null
+    val firstMatch = localeList.getFirstMatch(keys.toTypedArray()) ?: error("not empty: $keys")
+    val tag = firstMatch.toLanguageTag()
+    // try first matched tag first (usually has region tag, e.g. de-DE)
+    return get(tag) ?: run {
+        // split away region tag and try language only
+        val langTag = tag.split('-')[0]
+        // try language, then English and then just take the first of the list
+        get(langTag) ?: get("en-US") ?: get("en") ?: values.first()
+    }
+}
+
+interface IFile {
+    val type: String
+    val locale: String
+    val name: String
+    val sha256: String?
+    val size: Long?
+}
+
 @Entity(
     primaryKeys = ["repoId", "packageId", "type", "locale"],
     foreignKeys = [ForeignKey(
@@ -84,12 +127,12 @@ data class App(
 data class LocalizedFile(
     val repoId: Long,
     val packageId: String,
-    val type: String,
-    val locale: String,
-    val name: String,
-    val sha256: String? = null,
-    val size: Long? = null,
-)
+    override val type: String,
+    override val locale: String,
+    override val name: String,
+    override val sha256: String? = null,
+    override val size: Long? = null,
+) : IFile
 
 fun LocalizedFileV2.toLocalizedFile(
     repoId: Long,
@@ -107,15 +150,26 @@ fun LocalizedFileV2.toLocalizedFile(
     )
 }
 
-fun List<LocalizedFile>.toLocalizedFileV2(type: String): LocalizedFileV2? = filter { file ->
-    file.type == type
-}.associate { file ->
-    file.locale to FileV2(
-        name = file.name,
-        sha256 = file.sha256,
-        size = file.size,
-    )
-}.ifEmpty { null }
+fun List<IFile>.toLocalizedFileV2(type: String? = null): LocalizedFileV2? {
+    return (if (type != null) filter { file -> file.type == type } else this).associate { file ->
+        file.locale to FileV2(
+            name = file.name,
+            sha256 = file.sha256,
+            size = file.size,
+        )
+    }.ifEmpty { null }
+}
+
+@DatabaseView("SELECT * FROM LocalizedFile WHERE type='icon'")
+data class LocalizedIcon(
+    val repoId: Long,
+    val packageId: String,
+    override val type: String,
+    override val locale: String,
+    override val name: String,
+    override val sha256: String? = null,
+    override val size: Long? = null,
+) : IFile
 
 @Entity(
     primaryKeys = ["repoId", "packageId", "type", "locale", "name"],

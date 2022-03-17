@@ -1,6 +1,7 @@
 package org.fdroid.database
 
 import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,6 +15,9 @@ import org.fdroid.index.v2.Screenshots
 public interface AppDao {
     fun insert(repoId: Long, packageId: String, app: MetadataV2)
     fun getApp(repoId: Long, packageId: String): App
+    fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
+    fun getAppOverviewItems(category: String, limit: Int = 50): LiveData<List<AppOverviewItem>>
+    fun getNumberOfAppsInCategory(category: String): Int
 }
 
 @Dao
@@ -100,6 +104,48 @@ internal interface AppDaoInt : AppDao {
 
     @Query("SELECT * FROM LocalizedFileList")
     fun getLocalizedFileLists(): List<LocalizedFileList>
+
+    // sort order from F-Droid
+    //table + "." + Cols.IS_LOCALIZED + " DESC"
+    //+ ", " + table + "." + Cols.NAME + " IS NULL ASC"
+    //+ ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
+    //+ "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
+    //+ "        THEN 1 ELSE 0 END"
+    //+ ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
+    //+ ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
+    //+ ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
+    //+ "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
+    //+ "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
+    //+ "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
+    //+ "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
+    //+ "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
+    //+ "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
+    //+ "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
+    //+ "        THEN 1 ELSE 0 END"
+    //+ ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
+    //+ "        AND date((SELECT " + RepoTable.Cols.LAST_UPDATED + " FROM " + RepoTable.NAME
+    //+ "                  WHERE _id=" + table + "." + Cols.REPO_ID
+    //+ "                  ),'-" + AppCardController.DAYS_TO_CONSIDER_NEW + " days') "
+    //+ "          < date(" + lastUpdated + ")"
+    //+ "        THEN 0 ELSE 1 END"
+    //+ ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
+    //+ ", " + lastUpdated + " DESC"
+    //+ ", " + added + " ASC");
+    @Transaction
+    @Query("""SELECT repoId, packageId, added, lastUpdated, name, summary FROM AppMetadata
+        ORDER BY name IS NULL ASC, summary IS NULL ASC, lastUpdated DESC, added ASC LIMIT :limit""")
+    override fun getAppOverviewItems(limit: Int): LiveData<List<AppOverviewItem>>
+
+    @Transaction
+    // TODO maybe it makes sense to split categories into their own table for this?
+    @Query("""SELECT repoId, packageId, added, lastUpdated, name, summary FROM AppMetadata
+        WHERE categories  LIKE '%' || :category || '%'
+        ORDER BY name IS NULL ASC, summary IS NULL ASC, lastUpdated DESC, added ASC LIMIT :limit""")
+    override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
+
+    // FIXME don't over report the same app twice (e.g. in several repos)
+    @Query("SELECT COUNT(*) FROM AppMetadata WHERE categories  LIKE '%' || :category || '%'")
+    override fun getNumberOfAppsInCategory(category: String): Int
 
     @VisibleForTesting
     @Query("DELETE FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")

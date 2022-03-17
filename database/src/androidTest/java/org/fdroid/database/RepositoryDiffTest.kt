@@ -40,7 +40,7 @@ class RepositoryDiffTest : DbTest() {
             }
             """.trimIndent()
         testDiff(repo, json) { repos ->
-            assertEquals(updateTimestamp, repos[0].repository.timestamp)
+            assertEquals(updateTimestamp, repos[0].timestamp)
             assertRepoEquals(repo.copy(timestamp = updateTimestamp), repos[0])
         }
     }
@@ -55,9 +55,9 @@ class RepositoryDiffTest : DbTest() {
         repoDao.insert(getRandomRepo())
 
         // check that the repo got added and retrieved as expected
-        var repos = repoDao.getRepositories().sortedBy { it.repository.repoId }
+        var repos = repoDao.getRepositories().sortedBy { it.repoId }
         assertEquals(2, repos.size)
-        val repoId = repos[0].repository.repoId
+        val repoId = repos[0].repoId
 
         val updateTimestamp = Random.nextLong()
         val json = """
@@ -71,10 +71,10 @@ class RepositoryDiffTest : DbTest() {
         repoDao.updateRepository(repoId, diff)
 
         // fetch repos again and check that the result is as expected
-        repos = repoDao.getRepositories().sortedBy { it.repository.repoId }
+        repos = repoDao.getRepositories().sortedBy { it.repoId }
         assertEquals(2, repos.size)
-        assertEquals(repoId, repos[0].repository.repoId)
-        assertEquals(updateTimestamp, repos[0].repository.timestamp)
+        assertEquals(repoId, repos[0].repoId)
+        assertEquals(updateTimestamp, repos[0].timestamp)
         assertRepoEquals(repo.copy(timestamp = updateTimestamp), repos[0])
     }
 
@@ -88,7 +88,7 @@ class RepositoryDiffTest : DbTest() {
             }
             """.trimIndent()
         testDiff(repo, json) { repos ->
-            assertEquals(updateIcon, repos[0].repository.icon)
+            assertEquals(updateIcon, repos[0].icon)
             assertRepoEquals(repo.copy(icon = updateIcon), repos[0])
         }
     }
@@ -103,7 +103,7 @@ class RepositoryDiffTest : DbTest() {
             }
             """.trimIndent()
         testDiff(repo, json) { repos ->
-            assertEquals(updateIcon, repos[0].repository.icon)
+            assertEquals(updateIcon, repos[0].icon)
             assertRepoEquals(repo.copy(icon = updateIcon), repos[0])
         }
     }
@@ -117,7 +117,7 @@ class RepositoryDiffTest : DbTest() {
             }
             """.trimIndent()
         testDiff(repo, json) { repos ->
-            assertEquals(null, repos[0].repository.icon)
+            assertEquals(null, repos[0].icon)
             assertRepoEquals(repo.copy(icon = null), repos[0])
         }
     }
@@ -137,7 +137,7 @@ class RepositoryDiffTest : DbTest() {
             """.trimIndent()
         testDiff(repo, json) { repos ->
             val expectedMirrors = updateMirrors.map { mirror ->
-                mirror.toMirror(repos[0].repository.repoId)
+                mirror.toMirror(repos[0].repoId)
             }.toSet()
             assertEquals(expectedMirrors, repos[0].mirrors.toSet())
             assertRepoEquals(repo.copy(mirrors = updateMirrors), repos[0])
@@ -155,7 +155,7 @@ class RepositoryDiffTest : DbTest() {
             """.trimIndent()
         val expectedText = if (updateText == null) emptyMap() else mapOf("en" to "foo")
         testDiff(repo, json) { repos ->
-            assertEquals(expectedText, repos[0].repository.description)
+            assertEquals(expectedText, repos[0].description)
             assertRepoEquals(repo.copy(description = expectedText), repos[0])
         }
     }
@@ -163,10 +163,14 @@ class RepositoryDiffTest : DbTest() {
     @Test
     fun antiFeaturesDiff() {
         val repo = getRandomRepo().copy(antiFeatures = getRandomMap {
-            getRandomString() to AntiFeatureV2(getRandomFileV2(), getRandomLocalizedTextV2())
+            getRandomString() to AntiFeatureV2(
+                icon = getRandomFileV2(),
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
         })
         val antiFeatures = repo.antiFeatures.randomDiff {
-            AntiFeatureV2(getRandomFileV2(), getRandomLocalizedTextV2())
+            AntiFeatureV2(getRandomFileV2(), getRandomLocalizedTextV2(), getRandomLocalizedTextV2())
         }
         val json = """
             {
@@ -176,7 +180,7 @@ class RepositoryDiffTest : DbTest() {
         testDiff(repo, json) { repos ->
             val expectedFeatures = repo.antiFeatures.applyDiff(antiFeatures)
             val expectedRepoAntiFeatures =
-                expectedFeatures.toRepoAntiFeatures(repos[0].repository.repoId)
+                expectedFeatures.toRepoAntiFeatures(repos[0].repoId)
             assertEquals(expectedRepoAntiFeatures.toSet(), repos[0].antiFeatures.toSet())
             assertRepoEquals(repo.copy(antiFeatures = expectedFeatures), repos[0])
         }
@@ -190,10 +194,14 @@ class RepositoryDiffTest : DbTest() {
     @Test
     fun categoriesDiff() {
         val repo = getRandomRepo().copy(categories = getRandomMap {
-            getRandomString() to CategoryV2(getRandomFileV2(), getRandomLocalizedTextV2())
+            getRandomString() to CategoryV2(
+                icon = getRandomFileV2(),
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
         })
         val categories = repo.categories.randomDiff {
-            CategoryV2(getRandomFileV2(), getRandomLocalizedTextV2())
+            CategoryV2(getRandomFileV2(), getRandomLocalizedTextV2(), getRandomLocalizedTextV2())
         }
         val json = """
             {
@@ -203,7 +211,7 @@ class RepositoryDiffTest : DbTest() {
         testDiff(repo, json) { repos ->
             val expectedFeatures = repo.categories.applyDiff(categories)
             val expectedRepoCategories =
-                expectedFeatures.toRepoCategories(repos[0].repository.repoId)
+                expectedFeatures.toRepoCategories(repos[0].repoId)
             assertEquals(expectedRepoCategories.toSet(), repos[0].categories.toSet())
             assertRepoEquals(repo.copy(categories = expectedFeatures), repos[0])
         }
@@ -217,10 +225,13 @@ class RepositoryDiffTest : DbTest() {
     @Test
     fun releaseChannelsDiff() {
         val repo = getRandomRepo().copy(releaseChannels = getRandomMap {
-            getRandomString() to ReleaseChannelV2(getRandomLocalizedTextV2())
+            getRandomString() to ReleaseChannelV2(
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
         })
         val releaseChannels = repo.releaseChannels.randomDiff {
-            ReleaseChannelV2(getRandomLocalizedTextV2())
+            ReleaseChannelV2(getRandomLocalizedTextV2(), getRandomLocalizedTextV2())
         }
         val json = """
             {
@@ -230,7 +241,7 @@ class RepositoryDiffTest : DbTest() {
         testDiff(repo, json) { repos ->
             val expectedFeatures = repo.releaseChannels.applyDiff(releaseChannels)
             val expectedRepoReleaseChannels =
-                expectedFeatures.toRepoReleaseChannel(repos[0].repository.repoId)
+                expectedFeatures.toRepoReleaseChannel(repos[0].repoId)
             assertEquals(expectedRepoReleaseChannels.toSet(), repos[0].releaseChannels.toSet())
             assertRepoEquals(repo.copy(releaseChannels = expectedFeatures), repos[0])
         }
@@ -248,16 +259,16 @@ class RepositoryDiffTest : DbTest() {
         // check that the repo got added and retrieved as expected
         var repos = repoDao.getRepositories()
         assertEquals(1, repos.size)
-        val repoId = repos[0].repository.repoId
+        val repoId = repos[0].repoId
 
         // decode diff from JSON and update DB with it
-        val diff = j.parseToJsonElement(json).jsonObject //  Json.decodeFromString<RepoDiffV2>(json)
+        val diff = j.parseToJsonElement(json).jsonObject
         repoDao.updateRepository(repoId, diff)
 
         // fetch repos again and check that the result is as expected
-        repos = repoDao.getRepositories().sortedBy { it.repository.repoId }
+        repos = repoDao.getRepositories().sortedBy { it.repoId }
         assertEquals(1, repos.size)
-        assertEquals(repoId, repos[0].repository.repoId)
+        assertEquals(repoId, repos[0].repoId)
         repoChecker(repos)
     }
 

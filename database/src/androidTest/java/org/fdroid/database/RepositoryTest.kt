@@ -30,7 +30,7 @@ class RepositoryTest : DbTest() {
         repoDao.insert(repo2)
 
         // check that both repos got added and retrieved as expected
-        repos = repoDao.getRepositories().sortedBy { it.repository.repoId }
+        repos = repoDao.getRepositories().sortedBy { it.repoId }
         assertEquals(2, repos.size)
         assertRepoEquals(repo1, repos[0])
         assertRepoEquals(repo2, repos[1])
@@ -62,12 +62,28 @@ class RepositoryTest : DbTest() {
         assertEquals(1, versionDao.getAppVersions(repoId, packageId).size)
         assertTrue(versionDao.getVersionedStrings(repoId, packageId).isNotEmpty())
 
-        repoDao.replace(repoId, getRandomRepo())
+        val cert = getRandomString()
+        repoDao.replace(repoId, getRandomRepo(), cert)
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(0, appDao.getAppMetadata().size)
         assertEquals(0, appDao.getLocalizedFiles().size)
         assertEquals(0, appDao.getLocalizedFileLists().size)
         assertEquals(0, versionDao.getAppVersions(repoId, packageId).size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageId).size)
+
+        assertEquals(cert, repoDao.getRepository(repoId)?.certificate)
+    }
+
+    @Test
+    fun certGetsUpdates() {
+        val repoId = repoDao.insert(getRandomRepo())
+        assertEquals(1, repoDao.getRepositories().size)
+        assertEquals(null, repoDao.getRepositories()[0].certificate)
+
+        val cert = getRandomString()
+        repoDao.updateRepository(repoId, cert)
+
+        assertEquals(1, repoDao.getRepositories().size)
+        assertEquals(cert, repoDao.getRepositories()[0].certificate)
     }
 }
