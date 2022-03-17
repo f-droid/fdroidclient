@@ -211,8 +211,8 @@ class HttpManagerTest {
             httpManager.getBytes(downloadRequest)
         }
 
-        // HEAD tries another mirror, but GET throws, so no retry
-        assertEquals(3, mockEngine.requestHistory.size)
+        // HEAD and GET try another mirror, so 4 requests
+        assertEquals(4, mockEngine.requestHistory.size)
         mockEngine.responseHistory.forEach { response ->
             assertEquals(TemporaryRedirect, response.statusCode)
         }

@@ -1,7 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.multiplatform'
     id 'com.android.library'
-    id "org.jlleitschuh.gradle.ktlint" version "10.1.0"
+    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
 }
 
 group = 'org.fdroid'
@@ -22,7 +22,7 @@ kotlin {
     else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
     ext {
-        ktor_version = "1.6.7" //"2.0.0-beta-1"
+        ktor_version = "1.6.8" //"2.0.0-beta-1"
     }
 
     sourceSets {

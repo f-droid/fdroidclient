@@ -1,5 +1,6 @@
 package org.fdroid.download
 
+import io.ktor.utils.io.errors.IOException
 import org.fdroid.runSuspend
 import kotlin.random.Random
 import kotlin.test.Test
@@ -19,6 +20,20 @@ class MirrorChooserTest {
         val result = mirrorChooser.mirrorRequest(downloadRequest) { mirror, url ->
             assertTrue { mirrors.contains(mirror) }
             assertEquals(mirror.getUrl(downloadRequest.path), url)
+            expectedResult
+        }
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
+    fun testFallbackToNextMirror() = runSuspend {
+        val mirrorChooser = MirrorChooserRandom()
+        val expectedResult = Random.nextInt()
+
+        val result = mirrorChooser.mirrorRequest(downloadRequest) { mirror, url ->
+            assertEquals(mirror.getUrl(downloadRequest.path), url)
+            // fails with all except last mirror
+            if (mirror != downloadRequest.mirrors.last()) throw IOException("foo")
             expectedResult
         }
         assertEquals(expectedResult, result)

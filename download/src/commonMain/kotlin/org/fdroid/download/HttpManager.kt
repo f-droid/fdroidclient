@@ -22,6 +22,7 @@ import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
 import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
+import io.ktor.http.Url
 import io.ktor.http.contentLength
 import io.ktor.util.InternalAPI
 import io.ktor.util.encodeBase64
@@ -127,8 +128,8 @@ public open class HttpManager @JvmOverloads constructor(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
         receiver: suspend (ByteArray) -> Unit,
-    ) {
-        get(request, skipFirstBytes).execute { response ->
+    ): Unit = mirrorChooser.mirrorRequest(request) { mirror, url ->
+        getHttpStatement(request, mirror, url, skipFirstBytes).execute { response ->
             if (skipFirstBytes != null && response.status != PartialContent) {
                 throw NoResumeException()
             }
@@ -143,22 +144,22 @@ public open class HttpManager @JvmOverloads constructor(
         }
     }
 
-    internal suspend fun get(
+    private suspend fun getHttpStatement(
         request: DownloadRequest,
+        mirror: Mirror,
+        url: Url,
         skipFirstBytes: Long? = null,
     ): HttpStatement {
         val authString = constructBasicAuthValue(request)
-        return mirrorChooser.mirrorRequest(request) { mirror, url ->
-            resetProxyIfNeeded(request.proxy, mirror)
-            log.debug { "GET $url" }
-            httpClient.get(url) {
-                // add authorization header from username / password if set
-                if (authString != null) header(Authorization, authString)
-                // increase connect timeout if using Tor mirror
-                if (mirror.isOnion()) timeout { connectTimeoutMillis = 20_000 }
-                // add range header if set
-                if (skipFirstBytes != null) header(Range, "bytes=$skipFirstBytes-")
-            }
+        resetProxyIfNeeded(request.proxy, mirror)
+        log.debug { "GET $url" }
+        return httpClient.get(url) {
+            // add authorization header from username / password if set
+            if (authString != null) header(Authorization, authString)
+            // increase connect timeout if using Tor mirror
+            if (mirror.isOnion()) timeout { connectTimeoutMillis = 20_000 }
+            // add range header if set
+            if (skipFirstBytes != null) header(Range, "bytes=$skipFirstBytes-")
         }
     }
 
@@ -169,7 +170,9 @@ public open class HttpManager @JvmOverloads constructor(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
     ): ByteReadChannel {
-        return get(request, skipFirstBytes).receive()
+        return mirrorChooser.mirrorRequest(request) { mirror, url ->
+            getHttpStatement(request, mirror, url, skipFirstBytes).receive()
+        }
     }
 
     /**
