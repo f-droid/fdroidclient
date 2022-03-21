@@ -1,16 +1,23 @@
 package org.fdroid.database
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.fdroid.database.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.database.test.TestRepoUtils.getRandomRepo
+import org.fdroid.database.test.TestUtils.getOrAwaitValue
 import org.fdroid.database.test.TestUtils.getRandomString
 import org.fdroid.database.test.TestVersionUtils.getRandomPackageVersionV2
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 class VersionTest : DbTest() {
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val packageId = getRandomString()
     private val versionId = getRandomString()
@@ -55,7 +62,7 @@ class VersionTest : DbTest() {
         versionDao.insert(repoId, packageId, version2, packageVersion2)
 
         // get app versions from DB and assign them correctly
-        val appVersions = versionDao.getAppVersions(repoId, packageId)
+        val appVersions = versionDao.getAppVersions(packageId).getOrAwaitValue() ?: fail()
         assertEquals(2, appVersions.size)
         val appVersion = if (version1 == appVersions[0].version.versionId) {
             appVersions[0]

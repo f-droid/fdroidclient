@@ -73,7 +73,39 @@ data class App(
     val promoGraphic: LocalizedFileV2? = null,
     val tvBanner: LocalizedFileV2? = null,
     val screenshots: Screenshots? = null,
-)
+) {
+    public fun getName(localeList: LocaleListCompat) = metadata.name.getBestLocale(localeList)
+    public fun getSummary(localeList: LocaleListCompat) = metadata.summary.getBestLocale(localeList)
+    public fun getDescription(localeList: LocaleListCompat) =
+        metadata.description.getBestLocale(localeList)
+
+    public fun getVideo(localeList: LocaleListCompat) = metadata.video.getBestLocale(localeList)
+
+    public fun getIcon(localeList: LocaleListCompat) = icon.getBestLocale(localeList)
+    public fun getFeatureGraphic(localeList: LocaleListCompat) =
+        featureGraphic.getBestLocale(localeList)
+
+    public fun getPromoGraphic(localeList: LocaleListCompat) =
+        promoGraphic.getBestLocale(localeList)
+
+    public fun getTvBanner(localeList: LocaleListCompat) = tvBanner.getBestLocale(localeList)
+
+    // TODO remove ?.map { it.name } when client can handle FileV2
+    public fun getPhoneScreenshots(localeList: LocaleListCompat) =
+        screenshots?.phone.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+
+    public fun getSevenInchScreenshots(localeList: LocaleListCompat) =
+        screenshots?.sevenInch.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+
+    public fun getTenInchScreenshots(localeList: LocaleListCompat) =
+        screenshots?.tenInch.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+
+    public fun getTvScreenshots(localeList: LocaleListCompat) =
+        screenshots?.tv.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+
+    public fun getWearScreenshots(localeList: LocaleListCompat) =
+        screenshots?.wear.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+}
 
 public data class AppOverviewItem(
     public val repoId: Long,

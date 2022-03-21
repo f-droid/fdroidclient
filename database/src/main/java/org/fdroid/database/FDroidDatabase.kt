@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import kotlinx.coroutines.Dispatchers
 
 @Database(entities = [
     // repo
@@ -28,12 +29,13 @@ import androidx.room.TypeConverters
 internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(), FDroidDatabase {
     abstract override fun getRepositoryDao(): RepositoryDaoInt
     abstract override fun getAppDao(): AppDaoInt
-    abstract fun getVersionDaoInt(): VersionDaoInt
+    abstract override fun getVersionDao(): VersionDaoInt
 }
 
 public interface FDroidDatabase {
     fun getRepositoryDao(): RepositoryDao
     fun getAppDao(): AppDao
+    fun getVersionDao(): VersionDao
     fun runInTransaction(body: Runnable)
 }
 
@@ -41,6 +43,8 @@ public object FDroidDatabaseHolder {
     // Singleton prevents multiple instances of database opening at the same time.
     @Volatile
     private var INSTANCE: FDroidDatabaseInt? = null
+
+    internal val dispatcher get() = Dispatchers.IO
 
     @JvmStatic
     public fun getDb(context: Context): FDroidDatabase {
