@@ -1107,7 +1107,7 @@ public class AppProvider extends FDroidProvider {
      * @see #updateSuggestedFromLatest(String)
      */
     private void updateSuggestedFromUpstream(@Nullable String packageName) {
-        Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
+        // Utils.debugLog(TAG, "Calculating suggested versions for all NON-INSTALLED apps which specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();
@@ -1165,7 +1165,7 @@ public class AppProvider extends FDroidProvider {
      * @see #updateSuggestedFromUpstream(String)
      */
     private void updateSuggestedFromLatest(@Nullable String packageName) {
-        Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
+        // Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = getApkTableName();
         final String app = getTableName();

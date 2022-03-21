@@ -94,7 +94,9 @@
 
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/app__tts__cancel_download"
-                    android:src="@android:drawable/ic_menu_close_clear_cancel" />
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/progress_label"
@@ -104,7 +106,7 @@
 
                     android:contentDescription="@string/downloading"
                     android:focusable="true"
-                    android:text="@string/downloading"
+                    android:text="@string/loading"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
                 <TextView
@@ -123,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
-
+                    android:indeterminate="true"
                     android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
@@ -145,6 +147,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     tools:text="Uninstall" />
 
                 <com.google.android.material.button.MaterialButton
@@ -156,6 +160,8 @@
 
                     android:layout_weight="0"
                     android:ellipsize="marquee"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     tools:text="Open" />
             </LinearLayout>
         </RelativeLayout>
@@ -175,6 +181,8 @@
             android:textIsSelectable="true"
             android:textStyle="bold"
             android:background="?attr/detailPanel"
+            android:visibility="gone"
+            tools:visibility="visible"
             tools:text="App summary, one line - outlining what this app does" />
 
         <TextView
@@ -189,6 +197,8 @@
             android:paddingRight="8dp"
             android:paddingBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:visibility="gone"
+            tools:visibility="visible"
             tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes" />
 
 
@@ -211,6 +221,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <TextView
@@ -256,7 +267,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
-            android:text="@string/more" />
+            android:text="@string/more"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

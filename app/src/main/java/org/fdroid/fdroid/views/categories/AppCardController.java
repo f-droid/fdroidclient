@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.categories;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 
 import androidx.annotation.NonNull;
@@ -17,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.os.ConfigurationCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -73,15 +70,10 @@ public class AppCardController extends RecyclerView.ViewHolder
     }
 
     public void bindApp(@NonNull AppOverviewItem app) {
-        if (App.systemLocaleList == null) {
-            App.systemLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
-        }
         currentApp = app;
 
-        String name = app.getName(App.systemLocaleList);
-        summary.setText(
-                Utils.formatAppNameAndSummary(name == null ? "" : name, app.getSummary(App.systemLocaleList))
-        );
+        String name = app.getName();
+        summary.setText(Utils.formatAppNameAndSummary(name == null ? "" : name, app.getSummary()));
 
         if (newTag != null) {
             if (isConsideredNew(app)) {

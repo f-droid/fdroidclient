@@ -77,6 +77,7 @@ public class ObfInstallerService extends IntentService {
             File extracted = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                     zipEntry.getName());
             FileUtils.copyInputStreamToFile(zipFile.getInputStream(zipEntry), extracted);
+            // Since we delete the file here, it won't show as installed anymore
             zip.delete();
             sendPostInstallAndCompleteIntents(canonicalUri, apk, extracted);
         } catch (IOException e) {

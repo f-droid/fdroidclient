@@ -56,7 +56,7 @@ public class ApkProvider extends FDroidProvider {
                     .buildUpon()
                     .appendPath(PATH_APK_FROM_REPO)
                     .appendPath(Long.toString(apk.appId))
-                    .appendPath(Integer.toString(apk.versionCode))
+                    .appendPath(Long.toString(apk.versionCode))
                     .build();
         }
 
@@ -92,6 +92,7 @@ public class ApkProvider extends FDroidProvider {
          * rather than returning a null and triggering a {@link NullPointerException}.
          */
         @Nullable
+        @Deprecated
         public static Apk findSuggestedApk(Context context, App app) {
             String mostAppropriateSignature = app.getMostAppropriateSignature();
             Apk apk = findApkFromAnyRepo(context, app.packageName, app.autoInstallVersionCode,
@@ -273,11 +274,11 @@ public class ApkProvider extends FDroidProvider {
         return getApkFromAnyRepoUri(apk.packageName, apk.versionCode, null);
     }
 
-    public static Uri getApkFromAnyRepoUri(String packageName, int versionCode, @Nullable String signature) {
+    public static Uri getApkFromAnyRepoUri(String packageName, long versionCode, @Nullable String signature) {
         Uri.Builder builder = getContentUri()
                 .buildUpon()
                 .appendPath(PATH_APK_FROM_ANY_REPO)
-                .appendPath(Integer.toString(versionCode))
+                .appendPath(Long.toString(versionCode))
                 .appendPath(packageName);
 
         if (signature != null) {

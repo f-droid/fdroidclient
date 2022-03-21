@@ -21,6 +21,7 @@
 
 package org.fdroid.fdroid.views;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
@@ -30,11 +31,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.ContentObserver;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -46,18 +47,21 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import org.fdroid.database.AppPrefs;
+import org.fdroid.database.AppVersion;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.FDroidDatabaseHolder;
+import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefsProvider;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
@@ -65,7 +69,10 @@ import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -89,9 +96,16 @@ public class AppDetailsActivity extends AppCompatActivity
     protected BluetoothAdapter bluetoothAdapter;
 
     private FDroidApp fdroidApp;
-    private App app;
+    private FDroidDatabase db;
+    private volatile App app;
+    @Nullable
+    private volatile List<Apk> versions;
+    @Nullable
+    private volatile AppPrefs appPrefs;
+    private String packageName;
     private RecyclerView recyclerView;
     private AppDetailsRecyclerViewAdapter adapter;
+    private CompatibilityChecker checker;
     private LocalBroadcastManager localBroadcastManager;
     private AppUpdateStatusManager.AppUpdateStatus currentStatus;
 
@@ -105,7 +119,7 @@ public class AppDetailsActivity extends AppCompatActivity
     private static String visiblePackageName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
 
@@ -117,12 +131,6 @@ public class AppDetailsActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false); // clear title
         supportPostponeEnterTransition();
 
-        String packageName = getPackageNameFromIntent(getIntent());
-        if (!resetCurrentApp(packageName)) {
-            finish();
-            return;
-        }
-
         bluetoothAdapter = getBluetoothAdapter();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
@@ -132,8 +140,11 @@ public class AppDetailsActivity extends AppCompatActivity
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         lm.setStackFromEnd(false);
 
-        // Has to be invoked after AppDetailsRecyclerViewAdapter is created.
-        refreshStatus();
+        packageName = getPackageNameFromIntent(getIntent());
+        if (packageName == null || TextUtils.isEmpty(packageName)) {
+            finish();
+            return;
+        }
 
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);
@@ -147,13 +158,11 @@ public class AppDetailsActivity extends AppCompatActivity
                     }
                 }
         );
-
-        // Load the feature graphic, if present
-        final FeatureImage featureImage = (FeatureImage) findViewById(R.id.feature_graphic);
-        RequestOptions displayImageOptions = new RequestOptions();
-        String featureGraphicUrl = app.getFeatureGraphicUrl(this);
-        featureImage.loadImageAndDisplay(displayImageOptions,
-                featureGraphicUrl, app.getIconUrl(this));
+        checker = new CompatibilityChecker(this);
+        db = FDroidDatabaseHolder.getDb(getApplicationContext());
+        db.getAppDao().getApp(packageName).observe(this, this::onAppChanged);
+        db.getVersionDao().getAppVersions(packageName).observe(this, this::onVersionsChanged);
+        db.getAppPrefsDao().getAppPrefs(packageName).observe(this, this::onAppPrefsChanged);
     }
 
     private String getPackageNameFromIntent(Intent intent) {
@@ -170,14 +179,12 @@ public class AppDetailsActivity extends AppCompatActivity
      * refresh the notifications, so they are displayed again.
      */
     private void updateNotificationsForApp() {
-        if (app != null) {
-            AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
-            for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
-                if (status.status == AppUpdateStatusManager.Status.Installed) {
-                    ausm.removeApk(status.getCanonicalUrl());
-                } else {
-                    ausm.refreshApk(status.getCanonicalUrl());
-                }
+        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
+        for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+            if (status.status == AppUpdateStatusManager.Status.Installed) {
+                ausm.removeApk(status.getCanonicalUrl());
+            } else {
+                ausm.refreshApk(status.getCanonicalUrl());
             }
         }
     }
@@ -185,15 +192,7 @@ public class AppDetailsActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        if (app != null) {
-            visiblePackageName = app.packageName;
-        }
-
-        appObserver = new AppObserver(new Handler());
-        getContentResolver().registerContentObserver(
-                AppProvider.getHighestPriorityMetadataUri(app.packageName),
-                true,
-                appObserver);
+        visiblePackageName = packageName;
 
         updateNotificationsForApp();
         refreshStatus();
@@ -209,7 +208,7 @@ public class AppDetailsActivity extends AppCompatActivity
      */
     private void refreshStatus() {
         AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
-        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses = ausm.getByPackageName(app.packageName).iterator();
+        Iterator<AppUpdateStatusManager.AppUpdateStatus> statuses = ausm.getByPackageName(packageName).iterator();
         if (statuses.hasNext()) {
             AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
             updateAppStatus(status, false);
@@ -228,8 +227,6 @@ public class AppDetailsActivity extends AppCompatActivity
         super.onStop();
         visiblePackageName = null;
 
-        getContentResolver().unregisterContentObserver(appObserver);
-
         // When leaving the app details, make sure to refresh app status for this app, since
         // we might want to show notifications for it now.
         updateNotificationsForApp();
@@ -247,17 +244,17 @@ public class AppDetailsActivity extends AppCompatActivity
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        if (app == null) {
-            return true;
-        }
+        final AppPrefs prefs = appPrefs;
+        if (prefs == null) return true;
+
         MenuItem itemIgnoreAll = menu.findItem(R.id.action_ignore_all);
-        if (itemIgnoreAll != null) {
-            itemIgnoreAll.setChecked(app.getPrefs(this).ignoreAllUpdates);
-        }
+        itemIgnoreAll.setChecked(prefs.getIgnoreAllUpdates());
         MenuItem itemIgnoreThis = menu.findItem(R.id.action_ignore_this);
-        if (itemIgnoreThis != null) {
-            itemIgnoreThis.setVisible(app.hasUpdates());
-            itemIgnoreThis.setChecked(app.getPrefs(this).ignoreThisUpdate >= app.autoInstallVersionCode);
+        if (itemIgnoreAll.isChecked()) {
+            itemIgnoreThis.setEnabled(false);
+        } else if (app != null && versions != null) {
+            itemIgnoreThis.setVisible(app.hasUpdates(versions, appPrefs));
+            itemIgnoreThis.setChecked(prefs.shouldIgnoreUpdate(app.autoInstallVersionCode));
         }
         return true;
     }
@@ -289,7 +286,8 @@ public class AppDetailsActivity extends AppCompatActivity
                     app.name, app.summary, app.packageName);
 
             Intent uriIntent = new Intent(Intent.ACTION_SEND);
-            uriIntent.setData(app.getShareUri(this));
+            Uri shareUri = app.getShareUri();
+            if (shareUri != null) uriIntent.setData(shareUri);
             uriIntent.putExtra(Intent.EXTRA_TITLE, app.name);
 
             Intent textIntent = new Intent(Intent.ACTION_SEND);
@@ -320,18 +318,15 @@ public class AppDetailsActivity extends AppCompatActivity
             }
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
-            app.getPrefs(this).ignoreAllUpdates ^= true;
-            item.setChecked(app.getPrefs(this).ignoreAllUpdates);
-            AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
+            final AppPrefs prefs = Objects.requireNonNull(appPrefs);
+            Utils.runOffUiThread(() -> db.getAppPrefsDao().update(prefs.toggleIgnoreAllUpdates()));
+            AppUpdateStatusManager.getInstance(this).checkForUpdates();
             return true;
         } else if (item.getItemId() == R.id.action_ignore_this) {
-            if (app.getPrefs(this).ignoreThisUpdate >= app.autoInstallVersionCode) {
-                app.getPrefs(this).ignoreThisUpdate = 0;
-            } else {
-                app.getPrefs(this).ignoreThisUpdate = app.autoInstallVersionCode;
-            }
-            item.setChecked(app.getPrefs(this).ignoreThisUpdate > 0);
-            AppPrefsProvider.Helper.update(this, app, app.getPrefs(this));
+            final AppPrefs prefs = Objects.requireNonNull(appPrefs);
+            Utils.runOffUiThread(() ->
+                    db.getAppPrefsDao().update(prefs.toggleIgnoreVersionCodeUpdate(app.autoInstallVersionCode)));
+            AppUpdateStatusManager.getInstance(this).checkForUpdates();
             return true;
         } else if (item.getItemId() == android.R.id.home) {
             onBackPressed();
@@ -360,8 +355,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 break;
             case REQUEST_PERMISSION_DIALOG:
                 if (resultCode == AppCompatActivity.RESULT_OK) {
-                    Uri uri = data.getData();
-                    Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
+                    Apk apk = data.getParcelableExtra(Installer.EXTRA_APK);
                     InstallManagerService.queue(this, app, apk);
                 }
                 break;
@@ -371,12 +365,6 @@ public class AppDetailsActivity extends AppCompatActivity
                 }
                 break;
         }
-    }
-
-    @Override
-    public void installApk() {
-        Apk apkToInstall = ApkProvider.Helper.findSuggestedApk(this, app);
-        installApk(apkToInstall);
     }
 
     // Install the version of this app denoted by 'app.curApk'.
@@ -575,11 +563,15 @@ public class AppDetailsActivity extends AppCompatActivity
                     // on different operating systems. As such, we'll just update our view now. It may
                     // happen again in our appObserver, but that will only cause a little more load
                     // on the system, it shouldn't cause a different UX.
-                    onAppChanged();
+                    if (app != null) {
+                        PackageInfo packageInfo = getPackageInfo(app.packageName);
+                        app.setInstalled(packageInfo);
+                        onAppChanged(app);
+                    }
                     break;
                 case Installer.ACTION_INSTALL_INTERRUPTED:
                     adapter.clearProgress();
-                    onAppChanged();
+                    if (app != null) onAppChanged(app);
 
                     String errorMessage =
                             intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
@@ -633,7 +625,12 @@ public class AppDetailsActivity extends AppCompatActivity
                     break;
                 case Installer.ACTION_UNINSTALL_COMPLETE:
                     adapter.clearProgress();
-                    onAppChanged();
+                    if (app != null) {
+                        app.installedSig = null;
+                        app.installedVersionCode = 0;
+                        app.installedVersionName = null;
+                        onAppChanged(app);
+                    }
                     unregisterUninstallReceiver();
                     break;
                 case Installer.ACTION_UNINSTALL_INTERRUPTED:
@@ -684,47 +681,75 @@ public class AppDetailsActivity extends AppCompatActivity
      * status for this {@code packageName}, to prevent any lingering open ones from
      * messing up any action that the user might take.  They sometimes might not get
      * removed while F-Droid was in the background.
-     * <p>
-     * Shows a {@link Toast} if no {@link App} was found matching {@code packageName}.
-     *
-     * @return whether the {@link App} for a given {@code packageName} is still available
      */
-    private boolean resetCurrentApp(String packageName) {
-        if (TextUtils.isEmpty(packageName)) {
-            return false;
+    private void onAppChanged(@Nullable org.fdroid.database.App dbApp) {
+        if (dbApp == null) {
+            Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            PackageInfo packageInfo = getPackageInfo(dbApp.getPackageName());
+            app = new App(dbApp, packageInfo);
+            onAppChanged(app);
         }
-        app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
+    }
 
+    private void onAppChanged(App app) {
+        // as receivers don't get unregistered properly,
+        // it can happen that we call this while destroyed
+        if (isDestroyed()) return;
+        // update app info from versions (in case they loaded before the app)
+        if (appPrefs != null) {
+            updateAppInfo(app, versions, appPrefs);
+        }
+        // Load the feature graphic, if present
+        final FeatureImage featureImage = findViewById(R.id.feature_graphic);
+        DownloadRequest featureGraphicUrl = app.getFeatureGraphicDownloadRequest();
+        featureImage.loadImageAndDisplay(featureGraphicUrl, app.getIconDownloadRequest(this));
         //
         AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
-        for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+        for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
             if (status.status == AppUpdateStatusManager.Status.Installed) {
                 ausm.removeApk(status.getCanonicalUrl());
             }
         }
-        if (app == null) {
-            Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
-            return false;
-        }
-
-        return true;
     }
 
-    private void onAppChanged() {
-        recyclerView.post(new Runnable() {
-            @Override
-            public void run() {
-                String packageName = app != null ? app.packageName : null;
-                if (!resetCurrentApp(packageName)) {
-                    AppDetailsActivity.this.finish();
-                    return;
-                }
-                AppDetailsRecyclerViewAdapter adapter = (AppDetailsRecyclerViewAdapter) recyclerView.getAdapter();
-                adapter.updateItems(app);
-                refreshStatus();
-                supportInvalidateOptionsMenu();
-            }
-        });
+    private void onVersionsChanged(List<AppVersion> appVersions) {
+        List<Apk> apks = new ArrayList<>(appVersions.size());
+        for (AppVersion appVersion : appVersions) {
+            Apk apk = new Apk(appVersion);
+            apk.setCompatibility(checker);
+            apks.add(apk);
+        }
+        versions = apks;
+        if (app != null && appPrefs != null) updateAppInfo(app, apks, appPrefs);
+    }
+
+    private void onAppPrefsChanged(AppPrefs appPrefs) {
+        this.appPrefs = appPrefs;
+        if (app != null) updateAppInfo(app, versions, appPrefs);
+    }
+
+    private void updateAppInfo(App app, @Nullable List<Apk> apks, AppPrefs appPrefs) {
+        // This gets called two times: before versions are loaded and after versions are loaded
+        // This is to show something as soon as possible as loading many versions can take time.
+        // If versions are not available, we use an empty list temporarily.
+        List<Apk> apkList = apks == null ? new ArrayList<>() : apks;
+        app.update(this, apkList, appPrefs);
+        adapter.updateItems(app, apkList, appPrefs);
+        refreshStatus();
+        supportInvalidateOptionsMenu();
+    }
+
+    @Nullable
+    @SuppressLint("PackageManagerGetSignatures")
+    private PackageInfo getPackageInfo(String packageName) {
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return packageInfo;
     }
 
     @Override
@@ -799,9 +824,9 @@ public class AppDetailsActivity extends AppCompatActivity
         Apk apk = app.installedApk;
         if (apk == null) {
             apk = app.getMediaApkifInstalled(getApplicationContext());
-            if (apk == null) {
+            if (apk == null && versions != null) {
                 // When the app isn't a media file - the above workaround refers to this.
-                apk = app.getInstalledApk(this);
+                apk = app.getInstalledApk(this, versions);
                 if (apk == null) {
                     Log.d(TAG, "Couldn't find installed apk for " + app.packageName);
                     Toast.makeText(this, R.string.uninstall_error_unknown, Toast.LENGTH_SHORT).show();
@@ -820,27 +845,6 @@ public class AppDetailsActivity extends AppCompatActivity
             return;
         }
         startUninstall();
-    }
-
-    // observer to update view when package has been installed/deleted
-    private AppObserver appObserver;
-
-    class AppObserver extends ContentObserver {
-
-        AppObserver(Handler handler) {
-            super(handler);
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            onChange(selfChange, null);
-        }
-
-        @Override
-        public void onChange(boolean selfChange, Uri uri) {
-            onAppChanged();
-        }
-
     }
 
 }
