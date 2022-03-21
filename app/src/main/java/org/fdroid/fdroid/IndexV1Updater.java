@@ -242,7 +242,7 @@ public class IndexV1Updater extends IndexUpdater {
 
         if (TextUtils.isEmpty(platformSigCache)) {
             PackageInfo androidPackageInfo = Utils.getPackageInfoWithSignatures(context, "android");
-            platformSigCache = Utils.getPackageSig(androidPackageInfo);
+            platformSigCache = Utils.getPackageSigner(androidPackageInfo);
         }
 
         RepoPersister repoPersister = new RepoPersister(context, repo);

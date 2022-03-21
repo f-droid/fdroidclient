@@ -309,7 +309,7 @@ public final class LocalRepoManager {
     /**
      * Extracts the icon from an APK and writes it to the repo as a PNG
      */
-    private void copyIconToRepo(Drawable drawable, String packageName, int versionCode) {
+    private void copyIconToRepo(Drawable drawable, String packageName, long versionCode) {
         Bitmap bitmap;
         if (drawable instanceof BitmapDrawable) {
             bitmap = ((BitmapDrawable) drawable).getBitmap();
@@ -331,7 +331,7 @@ public final class LocalRepoManager {
         }
     }
 
-    private File getIconFile(String packageName, int versionCode) {
+    private File getIconFile(String packageName, long versionCode) {
         return new File(iconsDir, App.getIconName(packageName, versionCode));
     }
 

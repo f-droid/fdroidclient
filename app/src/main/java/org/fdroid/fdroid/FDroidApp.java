@@ -371,7 +371,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         preferences.registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                AppProvider.Helper.calcSuggestedApks(FDroidApp.this);
+                AppUpdateStatusManager.getInstance(FDroidApp.this).checkForUpdates();
             }
         });
 

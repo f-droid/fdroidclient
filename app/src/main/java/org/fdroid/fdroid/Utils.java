@@ -23,7 +23,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -65,6 +64,7 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.net.TreeUriDownloader;
+import org.fdroid.index.v2.FileV2;
 import org.xml.sax.XMLReader;
 
 import java.io.Closeable;
@@ -80,7 +80,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
@@ -386,6 +385,11 @@ public final class Utils {
         return Uri.parse("package:" + packageName);
     }
 
+    /**
+     * This is only needed for making a fingerprint from the {@code pubkey}
+     * entry in {@code index.xml}.
+     **/
+    @Deprecated
     public static String calcFingerprint(String keyHexString) {
         if (TextUtils.isEmpty(keyHexString)
                 || keyHexString.matches(".*[^a-fA-F0-9].*")) {
@@ -445,36 +449,29 @@ public final class Utils {
     /**
      * Get the fingerprint used to represent an APK signing key in F-Droid.
      * This is a custom fingerprint algorithm that was kind of accidentally
-     * created, but is still in use.
+     * created.  It is now here only for backwards compatibility.
      *
-     * @see #getPackageSig(PackageInfo)
      * @see org.fdroid.fdroid.data.Apk#sig
      */
+    @Deprecated
     public static String getsig(byte[] rawCertBytes) {
         return DigestUtils.md5Hex(Hex.encodeHexString(rawCertBytes).getBytes());
     }
 
     /**
-     * Get the fingerprint used to represent an APK signing key in F-Droid.
-     * This is a custom fingerprint algorithm that was kind of accidentally
-     * created, but is still in use.
+     * Get the standard, lowercase SHA-256 fingerprint used to represent an
+     * APK or JAR signing key. <b>NOTE</b>: this does not handle signers that
+     * have multiple X.509 signing certificates.
      *
-     * @see #getsig(byte[])
      * @see org.fdroid.fdroid.data.Apk#sig
+     * @see PackageInfo#signatures
      */
-    public static String getPackageSig(PackageInfo info) {
+    @Nullable
+    public static String getPackageSigner(PackageInfo info) {
         if (info == null || info.signatures == null || info.signatures.length < 1) {
-            return "";
+            return null;
         }
-        Signature sig = info.signatures[0];
-        String sigHash = "";
-        try {
-            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
-            sigHash = hash.getHash();
-        } catch (NoSuchAlgorithmException e) {
-            // ignore
-        }
-        return sigHash;
+        return DigestUtils.sha256Hex(info.signatures[0].toByteArray());
     }
 
     /**
@@ -499,18 +496,25 @@ public final class Utils {
      * @see Preferences#isBackgroundDownloadAllowed()
      */
     public static void setIconFromRepoOrPM(@NonNull App app, ImageView iv, Context context) {
-        if (iconRequestOptions == null) {
-            iconRequestOptions = new RequestOptions()
-                    .error(R.drawable.ic_repo_app_default)
-                    .fallback(R.drawable.ic_repo_app_default);
+        long repoId = app.repoId;
+        String iconPath = app.iconFromApk;
+        if (iconPath == null) {
+            Glide.with(context).clear(iv);
+            iv.setImageResource(R.drawable.ic_repo_app_default);
+        } else {
+            loadWithGlide(context, repoId, iconPath, iv);
         }
-        iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
-        app.loadWithGlide(context).apply(iconRequestOptions).into(iv);
     }
 
     @Deprecated
     public static void setIconFromRepoOrPM(@NonNull AppOverviewItem app, ImageView iv, Context context) {
-        String iconPath = app.getIcon(App.systemLocaleList);
+        long repoId = app.getRepoId();
+        FileV2 iconFile = app.getIcon(App.getLocales());
+        String iconPath = iconFile == null ? null : iconFile.getName();
+        loadWithGlide(context, repoId, iconPath, iv);
+    }
+
+    private static void loadWithGlide(Context context, long repoId, String iconPath, ImageView iv) {
         if (iconPath == null) return;
         if (iconRequestOptions == null) {
             iconRequestOptions = new RequestOptions()
@@ -519,7 +523,7 @@ public final class Utils {
         }
         iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
 
-        Repository repo = FDroidApp.getRepo(app.getRepoId());
+        Repository repo = FDroidApp.getRepo(repoId);
         if (repo == null) return;
         if (repo.getAddress().startsWith("content://")) {
             // TODO check if this works

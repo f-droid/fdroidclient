@@ -31,6 +31,7 @@ import android.os.Build;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
@@ -43,6 +44,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
@@ -357,6 +359,20 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean getUnstableUpdates() {
         return preferences.getBoolean(PREF_UNSTABLE_UPDATES, IGNORED_B);
+    }
+
+    public String getReleaseChannel() {
+        if (getUnstableUpdates()) return Apk.RELEASE_CHANNEL_BETA;
+        else return Apk.RELEASE_CHANNEL_STABLE;
+    }
+
+    /**
+     * In the backend, stable/production release channel is the default, so it expects null or empty list.
+     */
+    @Nullable
+    public List<String> getBackendReleaseChannels() {
+        if (getUnstableUpdates()) return Collections.singletonList(Apk.RELEASE_CHANNEL_BETA);
+        else return null;
     }
 
     public void setUnstableUpdates(boolean value) {

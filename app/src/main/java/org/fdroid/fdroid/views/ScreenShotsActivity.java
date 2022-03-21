@@ -19,11 +19,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 
+import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Full screen view of an apps screenshots to swipe through. This will always
@@ -35,14 +38,17 @@ import org.fdroid.fdroid.data.AppProvider;
  */
 public class ScreenShotsActivity extends AppCompatActivity {
 
-    private static final String EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME";
+    private static final String EXTRA_REPO_ID = "EXTRA_REPO_ID";
+    private static final String EXTRA_SCREENSHOT_LIST = "EXTRA_SCREENSHOT_LIST";
     private static final String EXTRA_START_POSITION = "EXTRA_START_POSITION";
 
     private static boolean allowDownload = true;
 
-    public static Intent getStartIntent(Context context, String packageName, int startPosition) {
+    public static Intent getStartIntent(Context context, long repoId, ArrayList<String> screenshots,
+                                        int startPosition) {
         Intent intent = new Intent(context, ScreenShotsActivity.class);
-        intent.putExtra(EXTRA_PACKAGE_NAME, packageName);
+        intent.putExtra(EXTRA_REPO_ID, repoId);
+        intent.putStringArrayListExtra(EXTRA_SCREENSHOT_LIST, screenshots);
         intent.putExtra(EXTRA_START_POSITION, startPosition);
         return intent;
     }
@@ -55,14 +61,12 @@ public class ScreenShotsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots);
 
-        String packageName = getIntent().getStringExtra(EXTRA_PACKAGE_NAME);
+        long repoId = getIntent().getLongExtra(EXTRA_REPO_ID, 1);
+        List<String> screenshots = getIntent().getStringArrayListExtra(EXTRA_SCREENSHOT_LIST);
         int startPosition = getIntent().getIntExtra(EXTRA_START_POSITION, 0);
 
-        App app = AppProvider.Helper.findHighestPriorityMetadata(getContentResolver(), packageName);
-        String[] screenshots = app.getAllScreenshots(this);
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.screenshot_view_pager);
-        ScreenShotPagerAdapter adapter = new ScreenShotPagerAdapter(getSupportFragmentManager(), screenshots);
+        ScreenShotPagerAdapter adapter = new ScreenShotPagerAdapter(getSupportFragmentManager(), repoId, screenshots);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(startPosition);
 
@@ -84,21 +88,23 @@ public class ScreenShotsActivity extends AppCompatActivity {
 
     private static class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
 
-        private final String[] screenshots;
+        private final long repoId;
+        private final List<String> screenshots;
 
-        ScreenShotPagerAdapter(FragmentManager fragmentManager, String[] screenshots) {
+        ScreenShotPagerAdapter(FragmentManager fragmentManager, long repoId, List<String> screenshots) {
             super(fragmentManager);
+            this.repoId = repoId;
             this.screenshots = screenshots;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return ScreenShotPageFragment.newInstance(screenshots[position]);
+            return ScreenShotPageFragment.newInstance(repoId, screenshots.get(position));
         }
 
         @Override
         public int getCount() {
-            return screenshots.length;
+            return screenshots.size();
         }
     }
 
@@ -107,22 +113,26 @@ public class ScreenShotsActivity extends AppCompatActivity {
      */
     public static class ScreenShotPageFragment extends Fragment {
 
+        private static final String ARG_REPO_ID = "ARG_REPO_ID";
         private static final String ARG_SCREENSHOT_URL = "ARG_SCREENSHOT_URL";
 
-        static ScreenShotPageFragment newInstance(String screenshotUrl) {
+        static ScreenShotPageFragment newInstance(long repoId, @NonNull String screenshotUrl) {
             ScreenShotPageFragment fragment = new ScreenShotPageFragment();
             Bundle args = new Bundle();
+            args.putLong(ARG_REPO_ID, repoId);
             args.putString(ARG_SCREENSHOT_URL, screenshotUrl);
             fragment.setArguments(args);
             return fragment;
         }
 
+        private long repoId;
         private String screenshotUrl;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            screenshotUrl = getArguments() != null ? getArguments().getString(ARG_SCREENSHOT_URL) : null;
+            repoId = requireArguments().getLong(ARG_REPO_ID);
+            screenshotUrl = requireArguments().getString(ARG_SCREENSHOT_URL);
         }
 
         @Nullable
@@ -131,9 +141,10 @@ public class ScreenShotsActivity extends AppCompatActivity {
                                  @Nullable Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);
 
+            DownloadRequest request = App.getDownloadRequest(repoId, screenshotUrl);
             ImageView screenshotView = (ImageView) rootView.findViewById(R.id.screenshot);
             Glide.with(this)
-                    .load(screenshotUrl)
+                    .load(request)
                     .onlyRetrieveFromCache(!allowDownload)
                     .error(R.drawable.screenshot_placeholder)
                     .fallback(R.drawable.screenshot_placeholder)

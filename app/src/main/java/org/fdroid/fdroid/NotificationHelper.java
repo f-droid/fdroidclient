@@ -14,7 +14,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.StyleSpan;
 
 import androidx.annotation.NonNull;
@@ -29,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
+import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
@@ -523,7 +523,8 @@ public class NotificationHelper {
                                        String notificationTag) {
         final Point largeIconSize = getLargeIconSize();
 
-        if (TextUtils.isEmpty(entry.app.getIconUrl(context))) return;
+        DownloadRequest request = entry.app.getIconDownloadRequest(context);
+        if (request == null) return;
 
         if (entry.status == AppUpdateStatusManager.Status.Downloading
                 || entry.status == AppUpdateStatusManager.Status.Installing) {
@@ -553,7 +554,7 @@ public class NotificationHelper {
         } else {
             Glide.with(context)
                     .asBitmap()
-                    .load(entry.app.getIconUrl(context))
+                    .load(request)
                     .into(new CustomTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
