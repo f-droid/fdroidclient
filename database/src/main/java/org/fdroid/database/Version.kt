@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -56,7 +57,17 @@ data class AppVersion(
     val usesPermission: List<PermissionV2>? = null,
     val usesPermissionSdk23: List<PermissionV2>? = null,
     val features: List<FeatureV2>? = null,
-)
+) {
+    val packageId get() = version.packageId
+    val featureNames get() = features?.map { it.name }?.toTypedArray() ?: emptyArray()
+    val nativeCode get() = version.manifest.nativecode?.toTypedArray() ?: emptyArray()
+    val antiFeatureNames: Array<String>
+        get() {
+            return version.antiFeatures?.map { it.key }?.toTypedArray() ?: emptyArray()
+        }
+
+    fun getWhatsNew(localeList: LocaleListCompat) = version.whatsNew.getBestLocale(localeList)
+}
 
 data class AppManifest(
     val versionName: String,

@@ -2,11 +2,17 @@ package org.fdroid.database
 
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.distinctUntilChanged
+import androidx.lifecycle.liveData
+import androidx.lifecycle.map
+import androidx.lifecycle.switchMap
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.MetadataV2
@@ -14,7 +20,13 @@ import org.fdroid.index.v2.Screenshots
 
 public interface AppDao {
     fun insert(repoId: Long, packageId: String, app: MetadataV2)
-    fun getApp(repoId: Long, packageId: String): App
+
+    /**
+     * Gets the app from the DB. If more than one app with this [packageId] exists,
+     * the one from the repository with the highest weight is returned.
+     */
+    fun getApp(packageId: String): LiveData<App?>
+    fun getApp(repoId: Long, packageId: String): App?
     fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
     fun getAppOverviewItems(category: String, limit: Int = 50): LiveData<List<AppOverviewItem>>
     fun getNumberOfAppsInCategory(category: String): Int
@@ -67,25 +79,58 @@ internal interface AppDaoInt : AppDao {
     @Query("UPDATE AppMetadata SET preferredSigner = :preferredSigner WHERE repoId = :repoId AND packageId = :packageId")
     fun updatePreferredSigner(repoId: Long, packageId: String, preferredSigner: String?)
 
-    @Transaction
-    override fun getApp(repoId: Long, packageId: String): App {
+    override fun getApp(packageId: String): LiveData<App?> {
+        return getRepoIdForPackage(packageId).distinctUntilChanged().switchMap { repoId ->
+            if (repoId == null) MutableLiveData(null)
+            else getLiveApp(repoId, packageId)
+        }
+    }
+
+    @Query("""SELECT repoId FROM RepositoryPreferences
+        JOIN AppMetadata AS app USING(repoId)
+        WHERE app.packageId = :packageId AND enabled = 1 ORDER BY weight DESC LIMIT 1""")
+    fun getRepoIdForPackage(packageId: String): LiveData<Long?>
+
+    fun getLiveApp(repoId: Long, packageId: String): LiveData<App?> = liveData(dispatcher) {
+        // TODO maybe observe those as well?
         val localizedFiles = getLocalizedFiles(repoId, packageId)
         val localizedFileList = getLocalizedFileLists(repoId, packageId)
-        return App(
-            metadata = getAppMetadata(repoId, packageId),
-            icon = localizedFiles.toLocalizedFileV2("icon"),
-            featureGraphic = localizedFiles.toLocalizedFileV2("featureGraphic"),
-            promoGraphic = localizedFiles.toLocalizedFileV2("promoGraphic"),
-            tvBanner = localizedFiles.toLocalizedFileV2("tvBanner"),
-            screenshots = if (localizedFileList.isEmpty()) null else Screenshots(
-                phone = localizedFileList.toLocalizedFileListV2("phone"),
-                sevenInch = localizedFileList.toLocalizedFileListV2("sevenInch"),
-                tenInch = localizedFileList.toLocalizedFileListV2("tenInch"),
-                wear = localizedFileList.toLocalizedFileListV2("wear"),
-                tv = localizedFileList.toLocalizedFileListV2("tv"),
-            )
-        )
+        val liveData: LiveData<App?> =
+            getLiveAppMetadata(repoId, packageId).distinctUntilChanged().map {
+                getApp(it, localizedFiles, localizedFileList)
+            }
+        emitSource(liveData)
     }
+
+    @Transaction
+    override fun getApp(repoId: Long, packageId: String): App? {
+        val metadata = getAppMetadata(repoId, packageId)
+        val localizedFiles = getLocalizedFiles(repoId, packageId)
+        val localizedFileList = getLocalizedFileLists(repoId, packageId)
+        return getApp(metadata, localizedFiles, localizedFileList)
+    }
+
+    private fun getApp(
+        metadata: AppMetadata,
+        localizedFiles: List<LocalizedFile>?,
+        localizedFileList: List<LocalizedFileList>?,
+    ) = App(
+        metadata = metadata,
+        icon = localizedFiles?.toLocalizedFileV2("icon"),
+        featureGraphic = localizedFiles?.toLocalizedFileV2("featureGraphic"),
+        promoGraphic = localizedFiles?.toLocalizedFileV2("promoGraphic"),
+        tvBanner = localizedFiles?.toLocalizedFileV2("tvBanner"),
+        screenshots = if (localizedFileList.isNullOrEmpty()) null else Screenshots(
+            phone = localizedFileList.toLocalizedFileListV2("phone"),
+            sevenInch = localizedFileList.toLocalizedFileListV2("sevenInch"),
+            tenInch = localizedFileList.toLocalizedFileListV2("tenInch"),
+            wear = localizedFileList.toLocalizedFileListV2("wear"),
+            tv = localizedFileList.toLocalizedFileListV2("tv"),
+        )
+    )
+
+    @Query("SELECT * FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
+    fun getLiveAppMetadata(repoId: Long, packageId: String): LiveData<AppMetadata>
 
     @Query("SELECT * FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
     fun getAppMetadata(repoId: Long, packageId: String): AppMetadata

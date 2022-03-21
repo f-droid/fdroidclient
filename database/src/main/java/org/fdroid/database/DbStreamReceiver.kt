@@ -14,7 +14,7 @@ internal class DbStreamReceiver(
 
     override fun receive(repoId: Long, packageId: String, p: PackageV2) {
         db.getAppDao().insert(repoId, packageId, p.metadata)
-        db.getVersionDaoInt().insert(repoId, packageId, p.versions)
+        db.getVersionDao().insert(repoId, packageId, p.versions)
     }
 
 }

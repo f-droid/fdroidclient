@@ -12,6 +12,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+import kotlin.test.assertTrue
 import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
@@ -28,7 +30,7 @@ class AppTest : DbTest() {
         val metadataV2 = getRandomMetadataV2()
         appDao.insert(repoId, packageId, metadataV2)
 
-        val app = appDao.getApp(repoId, packageId)
+        val app = appDao.getApp(repoId, packageId) ?: fail()
         val metadata = metadataV2.toAppMetadata(repoId, packageId)
         assertEquals(metadata.author, app.metadata.author)
         assertEquals(metadata.donation, app.metadata.donation)
@@ -38,6 +40,8 @@ class AppTest : DbTest() {
         assertEquals(metadataV2.promoGraphic, app.promoGraphic)
         assertEquals(metadataV2.tvBanner, app.tvBanner)
         assertScreenshotsEqual(metadataV2.screenshots, app.screenshots)
+
+        assertEquals(metadata, appDao.getApp(packageId).getOrAwaitValue()?.metadata)
 
         appDao.deleteAppMetadata(repoId, packageId)
         assertEquals(0, appDao.getAppMetadata().size)
@@ -87,6 +91,37 @@ class AppTest : DbTest() {
 
         val apps4 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
         assertEquals(4, apps4.size)
+    }
+
+    @Test
+    fun testAppByRepoWeight() {
+        val repoId1 = repoDao.insert(getRandomRepo())
+        val repoId2 = repoDao.insert(getRandomRepo())
+        val metadata1 = getRandomMetadataV2()
+        val metadata2 = metadata1.copy(lastUpdated = metadata1.lastUpdated + 1)
+
+        // app is only in one repo, so returns it's repoId
+        appDao.insert(repoId1, packageId, metadata1)
+        assertEquals(repoId1, appDao.getRepoIdForPackage(packageId).getOrAwaitValue())
+
+        // ensure second repo has a higher weight
+        val repoPrefs1 = repoDao.getRepositoryPreferences(repoId1) ?: fail()
+        val repoPrefs2 = repoDao.getRepositoryPreferences(repoId2) ?: fail()
+        assertTrue(repoPrefs1.weight < repoPrefs2.weight)
+
+        // app is now in repo with higher weight, so it's repoId gets returned
+        appDao.insert(repoId2, packageId, metadata2)
+        assertEquals(repoId2, appDao.getRepoIdForPackage(packageId).getOrAwaitValue())
+        assertEquals(appDao.getApp(repoId2, packageId)?.metadata,
+            appDao.getApp(packageId).getOrAwaitValue()?.metadata)
+        assertScreenshotsEqual(appDao.getApp(repoId2, packageId)?.screenshots,
+            appDao.getApp(packageId).getOrAwaitValue()?.screenshots)
+        assertEquals(appDao.getApp(repoId2, packageId)?.icon,
+            appDao.getApp(packageId).getOrAwaitValue()?.icon)
+        assertEquals(appDao.getApp(repoId2, packageId)?.featureGraphic,
+            appDao.getApp(packageId).getOrAwaitValue()?.featureGraphic)
+        assertNotEquals(appDao.getApp(repoId1, packageId),
+            appDao.getApp(packageId).getOrAwaitValue())
     }
 
 }

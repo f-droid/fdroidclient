@@ -21,7 +21,7 @@ internal class DbV1StreamReceiver(
     }
 
     override fun receive(repoId: Long, packageId: String, v: Map<String, PackageVersionV2>) {
-        db.getVersionDaoInt().insert(repoId, packageId, v)
+        db.getVersionDao().insert(repoId, packageId, v)
     }
 
     override fun updateRepo(
