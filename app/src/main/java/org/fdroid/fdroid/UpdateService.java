@@ -64,6 +64,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
@@ -577,9 +578,9 @@ public class UpdateService extends JobIntentService {
 
     private void showAppUpdatesNotification(List<App> canUpdate) {
         if (canUpdate.size() > 0) {
-            List<Apk> apksToUpdate = new ArrayList<>(canUpdate.size());
+            List<Pair<App, Apk>> apksToUpdate = new ArrayList<>(canUpdate.size());
             for (App app : canUpdate) {
-                apksToUpdate.add(ApkProvider.Helper.findSuggestedApk(this, app));
+                apksToUpdate.add(new Pair<>(app, ApkProvider.Helper.findSuggestedApk(this, app)));
             }
             appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
         }

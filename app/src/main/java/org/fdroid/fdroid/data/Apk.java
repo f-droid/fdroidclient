@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Parcel;
@@ -17,17 +18,28 @@ import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.fdroid.database.AppManifest;
+import org.fdroid.database.AppVersion;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.CompatibilityChecker;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.net.TreeUriDownloader;
+import org.fdroid.index.v2.PermissionV2;
+import org.fdroid.index.v2.SignerV2;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.zip.ZipFile;
 
 import androidx.annotation.NonNull;
@@ -58,12 +70,14 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
     @JsonIgnore
     public static final int SDK_VERSION_MIN_VALUE = 0;
+    public static final String RELEASE_CHANNEL_BETA = "Beta";
+    public static final String RELEASE_CHANNEL_STABLE = "Stable";
 
     // these are never set by the Apk/package index metadata
     @JsonIgnore
     protected String repoAddress;
     @JsonIgnore
-    int repoVersion;
+    long repoVersion;
     @JsonIgnore
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
     @JsonIgnore
@@ -76,8 +90,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String packageName;
     @Nullable
     public String versionName;
-    public int versionCode;
-    public int size; // Size in bytes - 0 means we don't know!
+    public long versionCode;
+    public long size; // Size in bytes - 0 means we don't know!
     @NonNull
     public String hash; // checksum of the APK, in lowercase hex
     public String hashType;
@@ -89,6 +103,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String obbPatchFile;
     public String obbPatchFileSha256;
     public Date added;
+    public List<String> releaseChannels;
     /**
      * The array of the names of the permissions that this APK requests. This is the
      * same data as {@link android.content.pm.PackageInfo#requestedPermissions}. Note this
@@ -101,8 +116,15 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String[] nativecode; // null if empty or unknown
 
     /**
-     * ID (md5 sum of public key) of signature. Might be null, in the
-     * transition to this field existing.
+     * Standard SHA-256 fingerprint of the X.509 signing certificate.  This can
+     * be fetched in a few different ways:
+     * <ul>
+     *     <li><code>apksigner verify --print-certs example.apk</code></li>
+     *     <li><code>jarsigner -verify -verbose -certs index-v1.jar</code></li>
+     *     <li><code>keytool -list -v -keystore keystore.jks</code></li>
+     * </ul>
+     *
+     * @see <a href="https://source.android.com/security/apksigning/v3#apk-signature-scheme-v3-block"><tt>signer</tt> in APK Signature Scheme v3</a>
      */
     public String sig;
 
@@ -118,6 +140,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String[] incompatibleReasons;
 
     public String[] antiFeatures;
+
+    public String whatsNew;
 
     /**
      * The numeric primary key of the Metadata table, which is used to join apks.
@@ -164,6 +188,26 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
         // If we are being created from an InstalledApp, it is because we couldn't load it from the
         // apk table in the database, indicating it is not available in any of our repos.
+        repoId = 0;
+    }
+
+    /**
+     * Creates a dummy APK from what is currently installed.
+     */
+    public Apk(@NonNull PackageInfo packageInfo) {
+        packageName = packageInfo.packageName;
+        versionName = packageInfo.versionName;
+        versionCode = packageInfo.versionCode;
+        releaseChannels = Collections.emptyList();
+
+        // zero for "we don't know". If we require this in the future,
+        // then we could look up the file on disk if required.
+        size = 0;
+
+        // Same as size. We could look this up if required but not needed at time of writing.
+        installedFile = null;
+
+        // We couldn't load it from the database, indicating it is not available in any of our repos.
         repoId = 0;
     }
 
@@ -258,6 +302,59 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         }
     }
 
+    public Apk(AppVersion v) {
+        Repository repo = Objects.requireNonNull(FDroidApp.getRepo(v.getRepoId()));
+        repoAddress = repo.getAddress();
+        repoVersion = repo.getVersion();
+        hash = v.getFile().getSha256();
+        hashType = "sha256";
+        added = new Date(v.getAdded());
+        features = v.getFeatureNames().toArray(new String[0]);
+        packageName = v.getPackageName();
+        compatible = v.isCompatible();
+        AppManifest manifest = v.getManifest();
+        minSdkVersion = manifest.getUsesSdk() == null ?
+                SDK_VERSION_MIN_VALUE : manifest.getUsesSdk().getMinSdkVersion();
+        targetSdkVersion = manifest.getUsesSdk() == null ?
+                minSdkVersion : manifest.getUsesSdk().getTargetSdkVersion();
+        maxSdkVersion = manifest.getMaxSdkVersion() == null ? SDK_VERSION_MAX_VALUE : manifest.getMaxSdkVersion();
+        List<String> channels = v.getReleaseChannels();
+        if (channels.isEmpty()) {
+            // no channels means stable
+            releaseChannels = Collections.singletonList(RELEASE_CHANNEL_STABLE);
+        } else {
+            releaseChannels = channels;
+        }
+        // obbMainFile = cursor.getString(i);
+        // obbMainFileSha256 = cursor.getString(i);
+        // obbPatchFile = cursor.getString(i);
+        // obbPatchFileSha256 = cursor.getString(i);
+        apkName = v.getFile().getName();
+        setRequestedPermissions(v.getUsesPermission(), 0);
+        setRequestedPermissions(v.getUsesPermissionSdk23(), 23);
+        nativecode = v.getNativeCode().toArray(new String[0]);
+        repoId = v.getRepoId();
+        SignerV2 signer = v.getManifest().getSigner();
+        sig = signer == null ? null : signer.getSha256().get(0);
+        size = v.getFile().getSize() == null ? 0 : v.getFile().getSize();
+        srcname = v.getSrc() == null ? null : v.getSrc().getName();
+        versionName = manifest.getVersionName();
+        versionCode = manifest.getVersionCode();
+        antiFeatures = v.getAntiFeatureKeys().toArray(new String[0]);
+        whatsNew = v.getWhatsNew(App.getLocales());
+    }
+
+    public void setCompatibility(CompatibilityChecker checker) {
+        final List<String> reasons = checker.getIncompatibleReasons(this);
+        if (reasons.isEmpty()) {
+            compatible = true;
+            incompatibleReasons = null;
+        } else {
+            compatible = false;
+            incompatibleReasons = reasons.toArray(new String[reasons.size()]);
+        }
+    }
+
     private void checkRepoAddress() {
         if (repoAddress == null || apkName == null) {
             throw new IllegalStateException(
@@ -283,8 +380,33 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     @JsonIgnore  // prevent tests from failing due to nulls in checkRepoAddress()
     public String getCanonicalUrl() {
         checkRepoAddress();
-        Repo repo = new Repo(repoAddress);
-        return repo.getFileUrl(apkName);
+        String address = repoAddress;
+        /* Each String in pathElements might contain a /, should keep these as path elements */
+        List<String> elements = new ArrayList<>();
+        Collections.addAll(elements, apkName.split("/"));
+        /*
+         * Storage Access Framework URLs have this wacky URL-encoded path within the URL path.
+         *
+         * i.e.
+         * content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo
+         *
+         * Currently don't know a better way to identify these than by content:// prefix,
+         * seems the Android SDK expects apps to consider them as opaque identifiers.
+         */
+        if (address.startsWith("content://")) {
+            StringBuilder result = new StringBuilder(address);
+            for (String element : elements) {
+                result.append(TreeUriDownloader.ESCAPED_SLASH);
+                result.append(element);
+            }
+            return result.toString();
+        } else { // Normal URL
+            Uri.Builder result = Uri.parse(address).buildUpon();
+            for (String element : elements) {
+                result.appendPath(element);
+            }
+            return result.build().toString();
+        }
     }
 
     /**
@@ -380,10 +502,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     @Override
     @TargetApi(19)
     public int compareTo(@NonNull Apk apk) {
-        if (Build.VERSION.SDK_INT < 19) {
-            return Integer.valueOf(versionCode).compareTo(apk.versionCode);
-        }
-        return Integer.compare(versionCode, apk.versionCode);
+        return Long.compare(versionCode, apk.versionCode);
     }
 
     @Override
@@ -395,8 +514,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.packageName);
         dest.writeString(this.versionName);
-        dest.writeInt(this.versionCode);
-        dest.writeInt(this.size);
+        dest.writeLong(this.versionCode);
+        dest.writeLong(this.size);
         dest.writeLong(this.repoId);
         dest.writeString(this.hash);
         dest.writeString(this.hashType);
@@ -416,7 +535,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeString(this.apkName);
         dest.writeSerializable(this.installedFile);
         dest.writeString(this.srcname);
-        dest.writeInt(this.repoVersion);
+        dest.writeLong(this.repoVersion);
         dest.writeString(this.repoAddress);
         dest.writeStringArray(this.incompatibleReasons);
         dest.writeStringArray(this.antiFeatures);
@@ -426,8 +545,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     protected Apk(Parcel in) {
         this.packageName = in.readString();
         this.versionName = in.readString();
-        this.versionCode = in.readInt();
-        this.size = in.readInt();
+        this.versionCode = in.readLong();
+        this.size = in.readLong();
         this.repoId = in.readLong();
         this.hash = in.readString();
         this.hashType = in.readString();
@@ -448,7 +567,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.apkName = in.readString();
         this.installedFile = (SanitizedFile) in.readSerializable();
         this.srcname = in.readString();
-        this.repoVersion = in.readInt();
+        this.repoVersion = in.readLong();
         this.repoAddress = in.readString();
         this.incompatibleReasons = in.createStringArray();
         this.antiFeatures = in.createStringArray();
@@ -496,13 +615,11 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     @JsonProperty("uses-permission")
     @SuppressWarnings("unused")
     private void setUsesPermission(Object[][] permissions) {
-        setRequestedPermissions(permissions, 0);
     }
 
     @JsonProperty("uses-permission-sdk-23")
     @SuppressWarnings("unused")
     private void setUsesPermissionSdk23(Object[][] permissions) {
-        setRequestedPermissions(permissions, 23);
     }
 
     /**
@@ -517,18 +634,18 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      *
      * @see Manifest.permission#READ_EXTERNAL_STORAGE
      */
-    private void setRequestedPermissions(Object[][] permissions, int minSdk) {
+    private void setRequestedPermissions(List<PermissionV2> permissions, int minSdk) {
         HashSet<String> set = new HashSet<>();
         if (requestedPermissions != null) {
             Collections.addAll(set, requestedPermissions);
         }
-        for (Object[] versions : permissions) {
+        for (PermissionV2 versions : permissions) {
             int maxSdk = Integer.MAX_VALUE;
-            if (versions[1] != null) {
-                maxSdk = (int) versions[1];
+            if (versions.getMaxSdkVersion() != null) {
+                maxSdk = versions.getMaxSdkVersion();
             }
             if (minSdk <= Build.VERSION.SDK_INT && Build.VERSION.SDK_INT <= maxSdk) {
-                set.add((String) versions[0]);
+                set.add(versions.getName());
             }
         }
         if (Build.VERSION.SDK_INT >= 16 && set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {

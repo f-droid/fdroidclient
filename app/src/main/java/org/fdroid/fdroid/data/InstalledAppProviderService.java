@@ -364,7 +364,7 @@ public class InstalledAppProviderService extends JobIntentService {
         contentValues.put(InstalledAppTable.Cols.VERSION_NAME, packageInfo.versionName);
         contentValues.put(InstalledAppTable.Cols.APPLICATION_LABEL,
                 InstalledAppProvider.getApplicationLabel(context, packageInfo.packageName));
-        contentValues.put(InstalledAppTable.Cols.SIGNATURE, Utils.getPackageSig(packageInfo));
+        contentValues.put(InstalledAppTable.Cols.SIGNATURE, Utils.getPackageSigner(packageInfo));
         contentValues.put(InstalledAppTable.Cols.LAST_UPDATE_TIME, packageInfo.lastUpdateTime);
 
         contentValues.put(InstalledAppTable.Cols.HASH_TYPE, hashType);

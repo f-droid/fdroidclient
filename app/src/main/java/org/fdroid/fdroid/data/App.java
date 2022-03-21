@@ -27,11 +27,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
+import org.fdroid.database.Repository;
 import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.Mirror;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.net.TreeUriDownloader;
+import org.fdroid.index.v2.FileV2;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -56,6 +61,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import info.guardianproject.netcipher.NetCipher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -93,6 +100,15 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     public static LocaleListCompat systemLocaleList;
 
+    public static LocaleListCompat getLocales() {
+        LocaleListCompat cached = systemLocaleList;
+        if (cached == null) {
+            cached = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+            systemLocaleList = cached;
+        }
+        return cached;
+    }
+
     // these properties are not from the index metadata, but represent the state on the device
     /**
      * True if compatible with the device (i.e. if at least one apk is)
@@ -110,9 +126,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     private long id;
     @JsonIgnore
-    private AppPrefs prefs;
+    private org.fdroid.database.AppPrefs prefs;
     @JsonIgnore
-    @NonNull
     public String preferredSigner;
     @JsonIgnore
     public boolean isApk;
@@ -192,6 +207,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      *
      * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersion">CurrentVersion</a>
      */
+    @Deprecated
     public String suggestedVersionName;
 
     /**
@@ -201,6 +217,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      *
      * @see <a href="https://f-droid.org/docs/Build_Metadata_Reference/#CurrentVersionCode">CurrentVersionCode</a>
      */
+    @Deprecated
     public int suggestedVersionCode = Integer.MIN_VALUE;
 
     /**
@@ -231,21 +248,23 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * List of anti-features (as defined in the metadata documentation) or null if there aren't any.
      */
+    @Nullable
     public String[] antiFeatures;
 
     /**
      * Requires root access (only ever used for root)
      */
+    @Nullable
     @Deprecated
     public String[] requirements;
 
     /**
      * URL to download the app's icon. (Set only from localized block, see also
-     * {@link #iconFromApk} and {@link #getIconUrl(Context)}
+     * {@link #iconFromApk} and {@link #getIconPath(Context)} (Context)}
      */
     private String iconUrl;
 
-    public static String getIconName(String packageName, int versionCode) {
+    public static String getIconName(String packageName, long versionCode) {
         return packageName + "_" + versionCode + ".png";
     }
 
@@ -412,6 +431,109 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     Log.e(TAG, "Unknown column name " + n);
             }
         }
+    }
+
+    public App(final org.fdroid.database.App app, @Nullable PackageInfo packageInfo) {
+        id = 0;
+        repoId = app.getRepoId();
+        compatible = app.getMetadata().isCompatible();
+        packageName = app.getPackageName();
+        name = app.getName() == null ? "" : app.getName();
+        summary = app.getSummary() == null ? "" : app.getSummary();
+        String desc = app.getDescription(getLocales());
+        setDescription(desc == null ? "" : desc);
+        license = app.getMetadata().getLicense();
+        authorName = app.getMetadata().getAuthorName();
+        authorEmail = app.getMetadata().getAuthorEmail();
+        webSite = app.getMetadata().getWebSite();
+        issueTracker = app.getMetadata().getIssueTracker();
+        sourceCode = app.getMetadata().getSourceCode();
+        translation = app.getMetadata().getTranslation();
+        video = app.getVideo(getLocales());
+        changelog = app.getMetadata().getChangelog();
+        List<String> donateList = app.getMetadata().getDonate();
+        if (donateList != null && !donateList.isEmpty()) {
+            donate = donateList.get(0);
+        }
+        bitcoin = app.getMetadata().getBitcoin();
+        litecoin = app.getMetadata().getLitecoin();
+        flattrID = app.getMetadata().getFlattrID();
+        liberapay = app.getMetadata().getLiberapay();
+        openCollective = app.getMetadata().getBitcoin();
+        preferredSigner = app.getMetadata().getPreferredSigner();
+        added = new Date(app.getMetadata().getAdded());
+        lastUpdated = new Date(app.getMetadata().getLastUpdated());
+        FileV2 icon = app.getIcon(getLocales());
+        iconUrl = icon == null ? null : icon.getName();
+        iconFromApk = icon == null ? null : icon.getName();
+        FileV2 featureGraphic = app.getFeatureGraphic(getLocales());
+        this.featureGraphic = featureGraphic == null ? null : featureGraphic.getName();
+        FileV2 promoGraphic = app.getPromoGraphic(getLocales());
+        this.promoGraphic = promoGraphic == null ? null : promoGraphic.getName();
+        FileV2 tvBanner = app.getPromoGraphic(getLocales());
+        this.tvBanner = tvBanner == null ? null : tvBanner.getName();
+        List<FileV2> phoneFiles = app.getPhoneScreenshots(getLocales());
+        phoneScreenshots = new String[phoneFiles.size()];
+        for (int i = 0; i < phoneFiles.size(); i++) {
+            phoneScreenshots[i] = phoneFiles.get(i).getName();
+        }
+        List<FileV2> sevenInchFiles = app.getSevenInchScreenshots(getLocales());
+        sevenInchScreenshots = new String[sevenInchFiles.size()];
+        for (int i = 0; i < sevenInchFiles.size(); i++) {
+            phoneScreenshots[i] = sevenInchFiles.get(i).getName();
+        }
+        List<FileV2> tenInchFiles = app.getTenInchScreenshots(getLocales());
+        tenInchScreenshots = new String[tenInchFiles.size()];
+        for (int i = 0; i < tenInchFiles.size(); i++) {
+            phoneScreenshots[i] = tenInchFiles.get(i).getName();
+        }
+        List<FileV2> tvFiles = app.getTvScreenshots(getLocales());
+        tvScreenshots = new String[tvFiles.size()];
+        for (int i = 0; i < tvFiles.size(); i++) {
+            phoneScreenshots[i] = tvFiles.get(i).getName();
+        }
+        List<FileV2> wearFiles = app.getWearScreenshots(getLocales());
+        wearScreenshots = new String[wearFiles.size()];
+        for (int i = 0; i < wearFiles.size(); i++) {
+            phoneScreenshots[i] = wearFiles.get(i).getName();
+        }
+        setInstalled(packageInfo);
+    }
+
+    public void setInstalled(@Nullable PackageInfo packageInfo) {
+        installedVersionCode = packageInfo == null ? 0 : packageInfo.versionCode;
+        installedVersionName = packageInfo == null ? null : packageInfo.versionName;
+        installedSig = packageInfo == null ? null : Utils.getPackageSigner(packageInfo);
+    }
+
+    /**
+     * Updates this App instance with information from the APKs.
+     *
+     * @param apks The APKs available for this app.
+     */
+    public void update(Context context, List<Apk> apks, org.fdroid.database.AppPrefs appPrefs) {
+        this.prefs = appPrefs;
+        for (Apk apk: apks) {
+            boolean apkIsInstalled = (apk.versionCode == installedVersionCode &&
+                    TextUtils.equals(apk.sig, installedSig)) || (!apk.isApk() && apk.isMediaInstalled(context));
+            if (apkIsInstalled) {
+                installedApk = apk;
+                installedVersionCode = (int) apk.versionCode;
+                installedVersionName = apk.versionName;
+                break;
+            }
+        }
+        Apk apk = findSuggestedApk(apks, appPrefs);
+        if (apk == null) return;
+        // update the autoInstallVersionCode, if needed
+        if (autoInstallVersionCode <= 0 && installedVersionCode < apk.versionCode) {
+            // FIXME versionCode is a long nowadays
+            autoInstallVersionCode = (int) apk.versionCode;
+            autoInstallVersionName = apk.versionName;
+        }
+        antiFeatures = apk.antiFeatures;
+        whatsNew = apk.whatsNew;
+        isApk = apk.isApk();
     }
 
     /**
@@ -729,57 +851,59 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * Get the URL with the standard path for displaying in a browser.
      */
-    @NonNull
-    public Uri getShareUri(Context context) {
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return Uri.parse(repo.address).buildUpon()
-                .path(String.format("/packages/%s/", packageName))
+    @Nullable
+    public Uri getShareUri() {
+        Repository repo = FDroidApp.getRepo(repoId);
+        if (repo == null || repo.getWebBaseUrl() == null) return null;
+        return Uri.parse(repo.getWebBaseUrl()).buildUpon()
+                .path(packageName)
                 .build();
     }
 
     public RequestBuilder<Drawable> loadWithGlide(Context context) {
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        if (repo.address.startsWith("content://")) {
-            return Glide.with(context).load(getIconUrl(context, repo));
-        } else if (repo.address.startsWith("file://")) {
-            return Glide.with(context).load(getIconUrl(context, repo));
+        Repository repo = FDroidApp.getRepo(repoId);
+        if (repo.getAddress().startsWith("content://")) {
+            String sb = repo.getAddress() + TreeUriDownloader.ESCAPED_SLASH + getIconPath(context);
+            return Glide.with(context).load(sb);
+        } else if (repo.getAddress().startsWith("file://")) {
+            return Glide.with(context).load(getIconPath(context));
         } else {
-            return Glide.with(context).load(getDownloadRequest(context, repo));
+            String path = getIconPath(context);
+            return Glide.with(context).load(getDownloadRequest(repo, path));
         }
     }
 
     @Nullable
-    @Deprecated // not taking mirrors into account
-    public String getIconUrl(Context context, Repo repo) {
-        if (TextUtils.isEmpty(iconUrl)) {
-            if (TextUtils.isEmpty(iconFromApk)) {
-                return null;
-            }
-            if (iconFromApk.endsWith(".xml")) {
-                // We cannot use xml ressources as icons. F-Droid server should not include them
-                // https://gitlab.com/fdroid/fdroidserver/issues/344
-                return null;
-            }
-            String iconsDir;
-            if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
-                iconsDir = Utils.getIconsDir(context, 1.0);
-            } else {
-                iconsDir = Utils.FALLBACK_ICONS_DIR;
-            }
-            return repo.getFileUrl(iconsDir, iconFromApk);
+    public DownloadRequest getIconDownloadRequest(Context context) {
+        String path = getIconPath(context);
+        return getDownloadRequest(repoId, path);
+    }
+
+    @Nullable
+    public DownloadRequest getFeatureGraphicDownloadRequest() {
+        if (TextUtils.isEmpty(featureGraphic)) {
+            return null;
         }
-        return repo.getFileUrl(packageName, iconUrl);
+        String path = featureGraphic;
+        return getDownloadRequest(repoId, path);
     }
 
     @Nullable
-    @Deprecated // not taking mirrors into account
-    public String getIconUrl(Context context) {
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return getIconUrl(context, repo);
+    public static DownloadRequest getDownloadRequest(long repoId, @Nullable String path) {
+        if (path == null) return null;
+        Repository repo = FDroidApp.getRepo(repoId);
+        if (repo == null) return null;
+        return getDownloadRequest(repo, path);
     }
 
     @Nullable
-    public DownloadRequest getDownloadRequest(Context context, Repo repo) {
+    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable String path) {
+        if (path == null) return null;
+        List<Mirror> mirrors = repo.getMirrors();
+        return new DownloadRequest(path, mirrors, NetCipher.getProxy(), null, null);
+    }
+
+    private String getIconPath(Context context) {
         String path;
         if (TextUtils.isEmpty(iconUrl)) {
             if (TextUtils.isEmpty(iconFromApk)) {
@@ -790,51 +914,35 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 // https://gitlab.com/fdroid/fdroidserver/issues/344
                 return null;
             }
-            String iconsDir;
-            if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
-                iconsDir = Utils.getIconsDir(context, 1.0);
-            } else {
-                iconsDir = Utils.FALLBACK_ICONS_DIR;
-            }
-            path = repo.getPath(iconsDir, iconFromApk);
+            String iconsDir = Utils.getIconsDir(context, 1.0);
+            path = getPath(iconsDir, iconFromApk);
         } else {
-            path = repo.getPath(packageName, iconUrl);
+            path = iconUrl;
         }
-        return repo.getDownloadRequest(path);
+        return path;
     }
 
-    @Nullable
-    public DownloadRequest getDownloadRequest(Context context) {
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return getDownloadRequest(context, repo);
-    }
-
-    public String getFeatureGraphicUrl(Context context) {
-        if (TextUtils.isEmpty(featureGraphic)) {
-            return null;
+    /**
+     * Gets the path relative to the repo root.
+     * Can be used to create URLs for use with mirrors.
+     * Attention: This does NOT encode for use in URLs.
+     */
+    public static String getPath(String... pathElements) {
+        /* Each String in pathElements might contain a /, should keep these as path elements */
+        ArrayList<String> elements = new ArrayList<>();
+        for (String element : pathElements) {
+            Collections.addAll(elements, element.split("/"));
         }
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return repo.getFileUrl(packageName, featureGraphic);
-    }
-
-    public String getPromoGraphic(Context context) {
-        if (TextUtils.isEmpty(promoGraphic)) {
-            return null;
+        // build up path WITHOUT encoding the segments, this will happen later when turned into URL
+        StringBuilder sb = new StringBuilder();
+        for (String element : elements) {
+            sb.append(element).append("/");
         }
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return repo.getFileUrl(packageName, promoGraphic);
+        sb.deleteCharAt(sb.length() - 1); // remove trailing slash
+        return sb.toString();
     }
 
-    public String getTvBanner(Context context) {
-        if (TextUtils.isEmpty(tvBanner)) {
-            return null;
-        }
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
-        return repo.getFileUrl(packageName, tvBanner);
-    }
-
-    public String[] getAllScreenshots(Context context) {
-        Repo repo = RepoProvider.Helper.findById(context, repoId);
+    public ArrayList<String> getAllScreenshots() {
         ArrayList<String> list = new ArrayList<>();
         if (phoneScreenshots != null) {
             Collections.addAll(list, phoneScreenshots);
@@ -851,13 +959,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         if (wearScreenshots != null) {
             Collections.addAll(list, wearScreenshots);
         }
-        String[] result = new String[list.size()];
-        int i = 0;
-        for (String url : list) {
-            result[i] = repo.getFileUrl(packageName, url);
-            i++;
-        }
-        return result;
+        return list;
     }
 
     /**
@@ -1041,6 +1143,36 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         }
     }
 
+    /**
+     * Attempts to find the installed {@link Apk} in the given list of APKs. If not found, will lookup the
+     * the details of the installed app and use that to instantiate an {@link Apk} to be returned.
+     * <p>
+     * Cases where an {@link Apk} will not be found in the database and for which we fall back to
+     * the {@link PackageInfo} include:
+     * <li>System apps which are provided by a repository, but for which the version code bundled
+     * with the system is not included in the repository.</li>
+     * <li>Regular apps from a repository, where the installed version is old enough that it is no
+     * longer available in the repository.</li>
+     */
+    @Nullable
+    public Apk getInstalledApk(Context context, List<Apk> apks) {
+        try {
+            PackageInfo pi = context.getPackageManager().getPackageInfo(packageName, 0);
+            // If we are here, the package is actually installed, so we better find something
+            Apk foundApk = null;
+            for (Apk apk : apks) {
+                if (apk.versionCode == pi.versionCode) {
+                    foundApk = apk;
+                    break;
+                }
+            }
+            if (foundApk == null) foundApk = new Apk(pi);
+            return foundApk;
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
+
     public boolean isValid() {
         if (TextUtils.isEmpty(this.name)
                 || TextUtils.isEmpty(this.packageName)) {
@@ -1132,22 +1264,8 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * @return The installed media {@link Apk} if it exists, null otherwise.
      */
     public Apk getMediaApkifInstalled(Context context) {
-        // This is always null for media files. We could skip the code below completely if it wasn't
         if (this.installedApk != null && !this.installedApk.isApk() && this.installedApk.isMediaInstalled(context)) {
             return this.installedApk;
-        }
-        // This code comes from AppDetailsRecyclerViewAdapter
-        final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.packageName);
-        for (final Apk apk : apks) {
-            boolean allowByCompatability = apk.compatible || Preferences.get().showIncompatibleVersions();
-            boolean allowBySig = this.installedSig == null || TextUtils.equals(this.installedSig, apk.sig);
-            if (allowByCompatability && allowBySig) {
-                if (!apk.isApk()) {
-                    if (apk.isMediaInstalled(context)) {
-                        return apk;
-                    }
-                }
-            }
         }
         return null;
     }
@@ -1155,6 +1273,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * True if there are new versions (apks) available
      */
+    @Deprecated
     public boolean hasUpdates() {
         boolean updates = false;
         if (autoInstallVersionCode > 0) {
@@ -1163,22 +1282,82 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return updates;
     }
 
-    public AppPrefs getPrefs(Context context) {
-        if (prefs == null) {
-            prefs = AppPrefsProvider.Helper.getPrefsOrDefault(context, this);
+    /**
+     * True if there are new versions (apks) available
+     */
+    public boolean hasUpdates(List<Apk> sortedApks, org.fdroid.database.AppPrefs appPrefs) {
+        Apk suggestedApk = findSuggestedApk(sortedApks, appPrefs);
+        boolean updates = false;
+        if (suggestedApk != null) {
+            updates = installedVersionCode > 0 && installedVersionCode < suggestedApk.versionCode;
         }
-        return prefs;
+        return updates;
+    }
+
+    @Nullable
+    public Apk findSuggestedApk(List<Apk> apks, org.fdroid.database.AppPrefs appPrefs) {
+        String releaseChannel;
+        if (appPrefs.getReleaseChannels().contains(Apk.RELEASE_CHANNEL_BETA)) {
+            releaseChannel = Apk.RELEASE_CHANNEL_BETA;
+        } else {
+            releaseChannel = Preferences.get().getReleaseChannel();
+        }
+        return findSuggestedApk(apks, releaseChannel);
+    }
+
+    /**
+     * Finds the APK we suggest to install.
+     * @param apks a list of APKs sorted by version code (highest first).
+     * @param releaseChannel the key of the release channel to be considered.
+     * @return The Apk we suggest to install or null, if we didn't find any.
+     */
+    @Nullable
+    public Apk findSuggestedApk(List<Apk> apks, String releaseChannel) {
+        final String mostAppropriateSignature = getMostAppropriateSignature();
+        Apk apk = null;
+        for (Apk a : apks) {
+            // only consider compatible APKs
+            if (!a.compatible) continue;
+            // if we have a signature, but it doesn't match, don't use this APK
+            if (mostAppropriateSignature != null && !a.sig.equals(mostAppropriateSignature)) continue;
+            // if the signature matches and we want the highest version code, take this as list is sorted.
+            if (a.releaseChannels.contains(releaseChannel)) {
+                apk = a;
+                break;
+            }
+        }
+        // use the first of the list, before we don't choose anything
+        if (apk == null && apks.size() > 0) {
+            apk = apks.get(0);
+        }
+        return apk;
+    }
+
+    @Deprecated
+    public AppPrefs getPrefs(Context context) {
+        return AppPrefs.createDefault();
     }
 
     /**
      * True if there are new versions (apks) available and the user wants
      * to be notified about them
      */
+    @Deprecated
     public boolean canAndWantToUpdate(Context context) {
         boolean canUpdate = hasUpdates();
-        AppPrefs prefs = getPrefs(context);
-        boolean wantsUpdate = !prefs.ignoreAllUpdates && prefs.ignoreThisUpdate < autoInstallVersionCode;
+        final org.fdroid.database.AppPrefs prefs = this.prefs;
+        boolean wantsUpdate = prefs == null || !prefs.shouldIgnoreUpdate(autoInstallVersionCode);
         return canUpdate && wantsUpdate;
+    }
+
+    /**
+     * True if there are new versions (apks) available and the user wants to be notified about them
+     */
+    public boolean canAndWantToUpdate(@Nullable Apk suggestedApk) {
+        if (suggestedApk == null) return false;
+        if (installedVersionCode >= suggestedApk.versionCode) return false;
+        final org.fdroid.database.AppPrefs prefs = this.prefs;
+        return prefs == null || !prefs.shouldIgnoreUpdate(autoInstallVersionCode);
     }
 
     /**
@@ -1458,4 +1637,10 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
         return null;
     }
+
+    @Override
+    public String toString() {
+        return toContentValues().toString();
+    }
+
 }

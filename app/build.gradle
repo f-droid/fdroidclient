@@ -143,6 +143,7 @@ android {
 
 dependencies {
     implementation project(":libs:download")
+    implementation project(":libs:index")
     implementation project(":libs:database")
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.preference:preference:1.2.0'

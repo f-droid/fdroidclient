@@ -2,7 +2,6 @@ package org.fdroid.fdroid;
 
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +11,6 @@ import android.os.Parcelable;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
@@ -29,6 +27,7 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.TaskStackBuilder;
+import androidx.core.util.Pair;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
@@ -269,9 +268,9 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    private void addApkInternal(@NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
+    private void addApkInternal(@NonNull App app, @NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
         Utils.debugLog(LOGTAG, "Add APK " + apk.apkName + " with state " + status.name());
-        AppUpdateStatus entry = createAppEntry(apk, status, intent);
+        AppUpdateStatus entry = createAppEntry(app, apk, status, intent);
         setEntryContentIntentIfEmpty(entry);
         appMapping.put(entry.getCanonicalUrl(), entry);
         notifyAdd(entry);
@@ -317,20 +316,18 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    private AppUpdateStatus createAppEntry(Apk apk, Status status, PendingIntent intent) {
+    private AppUpdateStatus createAppEntry(App app, Apk apk, Status status, PendingIntent intent) {
         synchronized (appMapping) {
-            ContentResolver resolver = context.getContentResolver();
-            App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repoId);
             AppUpdateStatus ret = new AppUpdateStatus(app, apk, status, intent);
             appMapping.put(apk.getCanonicalUrl(), ret);
             return ret;
         }
     }
 
-    public void addApks(List<Apk> apksToUpdate, Status status) {
+    public void addApks(List<Pair<App, Apk>> apksToUpdate, Status status) {
         startBatchUpdates();
-        for (Apk apk : apksToUpdate) {
-            addApk(apk, status, null);
+        for (Pair<App, Apk> pair : apksToUpdate) {
+            addApk(pair.first, pair.second, status, null);
         }
         endBatchUpdates(status);
     }
@@ -342,7 +339,7 @@ public final class AppUpdateStatusManager {
      * @param status        The current status of the app
      * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
      */
-    public void addApk(Apk apk, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
+    public void addApk(App app, Apk apk, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
         if (apk == null) {
             return;
         }
@@ -351,8 +348,10 @@ public final class AppUpdateStatusManager {
             AppUpdateStatus entry = appMapping.get(apk.getCanonicalUrl());
             if (entry != null) {
                 updateApkInternal(entry, status, pendingIntent);
+            } else if (app != null) {
+                addApkInternal(app, apk, status, pendingIntent);
             } else {
-                addApkInternal(apk, status, pendingIntent);
+                Utils.debugLog(LOGTAG, "Found no entry for " + apk.packageName + " and app was null.");
             }
         }
     }
@@ -434,11 +433,11 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    public void setApkError(Apk apk, String errorText) {
+    public void setApkError(App app, Apk apk, String errorText) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(apk.getCanonicalUrl());
             if (entry == null) {
-                entry = createAppEntry(apk, Status.InstallError, null);
+                entry = createAppEntry(app, apk, Status.InstallError, null);
             }
             entry.status = Status.InstallError;
             entry.errorText = errorText;

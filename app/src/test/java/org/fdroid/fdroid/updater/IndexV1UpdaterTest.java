@@ -152,7 +152,7 @@ public class IndexV1UpdaterTest extends FDroidProviderTest {
                         Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME,
                 });
         assertEquals("localized icon takes precedence", TESTY_CANONICAL_URL + "/"
-                + app.packageName + "/en-US/icon.png", app.getIconUrl(context));
+                + app.packageName + "/en-US/icon.png", app.iconFromApk);
     }
 
     @Test(expected = IndexUpdater.SigningException.class)

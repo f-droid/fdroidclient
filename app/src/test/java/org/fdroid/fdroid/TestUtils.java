@@ -29,6 +29,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 
 import androidx.test.core.app.ApplicationProvider;
 
@@ -96,6 +97,39 @@ public class TestUtils {
         values.put(Schema.ApkTable.Cols.REPO_ID, repoId);
         Uri uri = Assert.insertApk(context, app, versionCode, values);
         return ApkProvider.Helper.findByUri(context, uri, Schema.ApkTable.Cols.ALL);
+    }
+
+    public static Apk getApk(long appId, int versionCode) {
+        return getApk(appId, versionCode, "signature", null);
+    }
+
+    public static Apk getApk(long appId, int versionCode, String signature, String releaseChannel) {
+        Apk apk = new Apk();
+        apk.appId = appId;
+        apk.repoAddress = "http://www.example.com/fdroid/repo";
+        apk.versionCode = versionCode;
+        apk.repoId = 1;
+        apk.versionName = "The good one";
+        apk.hash = "11111111aaaaaaaa";
+        apk.apkName = "Test Apk";
+        apk.size = 10000;
+        apk.compatible = true;
+        apk.sig = signature;
+        apk.releaseChannels = releaseChannel == null ?
+                null : Collections.singletonList(releaseChannel);
+        return apk;
+    }
+
+    public static App getApp() {
+        App app = new App();
+        app.packageName = "com.example.app";
+        app.name = "Test App";
+        app.repoId = 1;
+        app.summary = "test summary";
+        app.description = "test description";
+        app.license = "GPL?";
+        app.compatible = true;
+        return app;
     }
 
     public static App insertApp(Context context, String packageName, String appName, int suggestedVersionCode,

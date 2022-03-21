@@ -279,7 +279,7 @@ public class Repo extends ValueObject {
      * Can be used to create URLs for use with mirrors.
      * Attention: This does NOT encode for use in URLs.
      */
-    public String getPath(String... pathElements) {
+    public static String getPath(String... pathElements) {
         /* Each String in pathElements might contain a /, should keep these as path elements */
         ArrayList<String> elements = new ArrayList<>();
         for (String element : pathElements) {
