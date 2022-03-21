@@ -9,6 +9,7 @@ import org.fdroid.database.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
@@ -18,39 +19,47 @@ class RepositoryTest : DbTest() {
     fun insertAndDeleteTwoRepos() {
         // insert first repo
         val repo1 = getRandomRepo()
-        repoDao.insert(repo1)
+        val repoId1 = repoDao.insert(repo1)
 
         // check that first repo got added and retrieved as expected
         var repos = repoDao.getRepositories()
         assertEquals(1, repos.size)
         assertRepoEquals(repo1, repos[0])
+        val repositoryPreferences1 = repoDao.getRepositoryPreferences(repoId1)
+        assertEquals(repoId1, repositoryPreferences1?.repoId)
 
         // insert second repo
         val repo2 = getRandomRepo()
-        repoDao.insert(repo2)
+        val repoId2 = repoDao.insert(repo2)
 
         // check that both repos got added and retrieved as expected
         repos = repoDao.getRepositories().sortedBy { it.repoId }
         assertEquals(2, repos.size)
         assertRepoEquals(repo1, repos[0])
         assertRepoEquals(repo2, repos[1])
+        val repositoryPreferences2 = repoDao.getRepositoryPreferences(repoId2)
+        assertEquals(repoId2, repositoryPreferences2?.repoId)
+        assertEquals(repositoryPreferences1?.weight?.plus(1), repositoryPreferences2?.weight)
 
         // remove first repo and check that the database only returns one
-        repoDao.deleteRepository(repos[0].repository)
+        repoDao.deleteRepository(repos[0].repository.repoId)
         assertEquals(1, repoDao.getRepositories().size)
 
         // remove second repo as well and check that all associated data got removed as well
-        repoDao.deleteRepository(repos[1].repository)
+        repoDao.deleteRepository(repos[1].repository.repoId)
         assertEquals(0, repoDao.getRepositories().size)
         assertEquals(0, repoDao.getMirrors().size)
         assertEquals(0, repoDao.getAntiFeatures().size)
         assertEquals(0, repoDao.getCategories().size)
         assertEquals(0, repoDao.getReleaseChannels().size)
+        assertNull(repoDao.getRepositoryPreferences(repoId1))
+        assertNull(repoDao.getRepositoryPreferences(repoId2))
     }
 
     @Test
     fun replacingRepoRemovesAllAssociatedData() {
         val repoId = repoDao.insert(getRandomRepo())
+        val repositoryPreferences = repoDao.getRepositoryPreferences(repoId)
         val packageId = getRandomString()
         val versionId = getRandomString()
         appDao.insert(repoId, packageId, getRandomMetadataV2())
@@ -72,6 +81,7 @@ class RepositoryTest : DbTest() {
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageId).size)
 
         assertEquals(cert, repoDao.getRepository(repoId)?.certificate)
+        assertEquals(repositoryPreferences, repoDao.getRepositoryPreferences(repoId))
     }
 
     @Test

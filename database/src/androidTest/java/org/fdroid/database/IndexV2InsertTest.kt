@@ -37,8 +37,9 @@ class IndexV2InsertTest : DbTest() {
         }
 
         db.runInTransaction {
+            val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
             inputStream.use { indexStream ->
-                indexProcessor.process(1, indexStream)
+                indexProcessor.process(repoId, indexStream)
             }
         }
         assertTrue(repoDao.getRepositories().size == 1)

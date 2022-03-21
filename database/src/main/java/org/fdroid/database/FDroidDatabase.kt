@@ -13,6 +13,7 @@ import androidx.room.TypeConverters
     AntiFeature::class,
     Category::class,
     ReleaseChannel::class,
+    RepositoryPreferences::class,
     // packages
     AppMetadata::class,
     LocalizedFile::class,

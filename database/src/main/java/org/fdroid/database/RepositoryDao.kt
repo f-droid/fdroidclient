@@ -3,7 +3,6 @@ package org.fdroid.database
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
@@ -32,10 +31,21 @@ public interface RepositoryDao {
     fun replace(repoId: Long, repository: RepoV2, certificate: String?)
 
     fun getRepository(repoId: Long): Repository?
-    fun insertEmptyRepo(address:String): Long
+    fun insertEmptyRepo(
+        address: String,
+        username: String? = null,
+        password: String? = null,
+    ): Long
+
     fun deleteRepository(repoId: Long)
     fun getRepositories(): List<Repository>
     fun getLiveRepositories(): LiveData<List<Repository>>
+    fun countAppsPerRepository(repoId: Long): Int
+    fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
+    fun updateUserMirrors(repoId: Long, mirrors: List<String>)
+    fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
+    fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
+
     // FIXME: We probably want unique categories here flattened by repo weight
     fun getLiveCategories(): LiveData<List<Category>>
 }
@@ -58,8 +68,15 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Insert(onConflict = REPLACE)
     fun insertReleaseChannels(repoFeature: List<ReleaseChannel>)
 
+    @Insert(onConflict = REPLACE)
+    fun insert(repositoryPreferences: RepositoryPreferences)
+
     @Transaction
-    override fun insertEmptyRepo(address: String): Long {
+    override fun insertEmptyRepo(
+        address: String,
+        username: String?,
+        password: String?,
+    ): Long {
         val repo = CoreRepository(
             name = "",
             icon = null,
@@ -67,14 +84,31 @@ internal interface RepositoryDaoInt : RepositoryDao {
             timestamp = System.currentTimeMillis(),
             certificate = null,
         )
-        return insert(repo)
+        val repoId = insert(repo)
+        val currentMaxWeight = getMaxRepositoryWeight()
+        val repositoryPreferences = RepositoryPreferences(
+            repoId = repoId,
+            weight = currentMaxWeight + 1,
+            lastUpdated = null,
+            username = username,
+            password = password,
+        )
+        insert(repositoryPreferences)
+        return repoId
     }
 
     @Transaction
     override fun insert(repository: RepoV2): Long {
         val repoId = insert(repository.toCoreRepository())
+        insertRepositoryPreferences(repoId)
         insertRepoTables(repoId, repository)
         return repoId
+    }
+
+    private fun insertRepositoryPreferences(repoId: Long) {
+        val currentMaxWeight = getMaxRepositoryWeight()
+        val repositoryPreferences = RepositoryPreferences(repoId, currentMaxWeight + 1)
+        insert(repositoryPreferences)
     }
 
     @Transaction
@@ -192,6 +226,21 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("UPDATE CoreRepository SET certificate = :certificate WHERE repoId = :repoId")
     fun updateRepository(repoId: Long, certificate: String)
 
+    @Update
+    fun updateRepositoryPreferences(preferences: RepositoryPreferences)
+
+    @Query("UPDATE RepositoryPreferences SET enabled = :enabled WHERE repoId = :repoId")
+    override fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
+
+    @Query("UPDATE RepositoryPreferences SET userMirrors = :mirrors WHERE repoId = :repoId")
+    override fun updateUserMirrors(repoId: Long, mirrors: List<String>)
+
+    @Query("UPDATE RepositoryPreferences SET username = :username, password = :password WHERE repoId = :repoId")
+    override fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
+
+    @Query("UPDATE RepositoryPreferences SET disabledMirrors = :disabledMirrors WHERE repoId = :repoId")
+    override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
+
     @Transaction
     @Query("SELECT * FROM CoreRepository")
     override fun getRepositories(): List<Repository>
@@ -212,6 +261,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("SELECT * FROM AntiFeature")
     fun getAntiFeatures(): List<AntiFeature>
 
+    @Query("SELECT * FROM RepositoryPreferences WHERE repoId = :repoId")
+    fun getRepositoryPreferences(repoId: Long): RepositoryPreferences?
+
+    @Query("SELECT MAX(weight) FROM RepositoryPreferences")
+    fun getMaxRepositoryWeight(): Int
+
     @VisibleForTesting
     @Query("DELETE FROM AntiFeature WHERE repoId = :repoId")
     fun deleteAntiFeatures(repoId: Long)
@@ -229,6 +284,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""")
     override fun getLiveCategories(): LiveData<List<Category>>
+
+    @Query("SELECT COUNT(*) FROM AppMetadata WHERE repoId = :repoId")
+    override fun countAppsPerRepository(repoId: Long): Int
 
     @VisibleForTesting
     @Query("DELETE FROM Category WHERE repoId = :repoId")
@@ -250,10 +308,18 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId AND id = :id")
     fun deleteReleaseChannel(repoId: Long, id: String)
 
-    @Delete
-    fun deleteRepository(repository: CoreRepository)
+    @Transaction
+    override fun deleteRepository(repoId: Long) {
+        deleteCoreRepository(repoId)
+        // we don't use cascading delete for preferences,
+        // so we can replace index data on full updates
+        deleteRepositoryPreferences(repoId)
+    }
 
     @Query("DELETE FROM CoreRepository WHERE repoId = :repoId")
-    override fun deleteRepository(repoId: Long)
+    fun deleteCoreRepository(repoId: Long)
+
+    @Query("DELETE FROM RepositoryPreferences WHERE repoId = :repoId")
+    fun deleteRepositoryPreferences(repoId: Long)
 
 }

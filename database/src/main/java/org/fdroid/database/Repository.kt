@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -56,6 +57,11 @@ data class Repository(
         entityColumn = "repoId",
     )
     val releaseChannels: List<ReleaseChannel>,
+    @Relation(
+        parentColumn = "repoId",
+        entityColumn = "repoId",
+    )
+    internal val preferences: RepositoryPreferences,
 ) {
     val repoId: Long get() = repository.repoId
     val name: String get() = repository.name
@@ -65,7 +71,25 @@ data class Repository(
     val description: LocalizedTextV2 get() = repository.description
     val certificate: String? get() = repository.certificate
 
-    fun getMirrors() = mirrors.map { it.toDownloadMirror() }
+    val weight: Int get() = preferences.weight
+    val enabled: Boolean get() = preferences.enabled
+    val lastUpdated: Long? get() = preferences.lastUpdated
+    val lastETag: String? get() = preferences.lastETag
+    val userMirrors: List<String> get() = preferences.userMirrors ?: emptyList()
+    val disabledMirrors: List<String> get() = preferences.disabledMirrors ?: emptyList()
+    val username: String? get() = preferences.username
+    val password: String? get() = preferences.password
+    val isSwap: Boolean get() = preferences.isSwap
+
+    @JvmOverloads
+    fun getMirrors(includeUserMirrors: Boolean = true) = mirrors.map {
+        it.toDownloadMirror()
+    } + listOf(org.fdroid.download.Mirror(address)) + // FIXME decide whether we need to add this
+        if (includeUserMirrors) userMirrors.map {
+            org.fdroid.download.Mirror(it)
+        } else emptyList()
+
+    fun getDescription(localeList: LocaleListCompat) = description.getBestLocale(localeList)
 }
 
 @Entity(
@@ -173,3 +197,17 @@ fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
         description = it.value.description,
     )
 }
+
+@Entity
+data class RepositoryPreferences(
+    @PrimaryKey internal val repoId: Long,
+    val weight: Int,
+    val enabled: Boolean = true,
+    val lastUpdated: Long? = System.currentTimeMillis(), // TODO set this after repo updates
+    val lastETag: String? = null,
+    val userMirrors: List<String>? = null,
+    val disabledMirrors: List<String>? = null,
+    val username: String? = null,
+    val password: String? = null,
+    val isSwap: Boolean = false, // TODO remove
+)

@@ -4,50 +4,84 @@ import android.content.Context
 import org.fdroid.database.DbV1StreamReceiver
 import org.fdroid.database.FDroidDatabaseHolder
 import org.fdroid.database.FDroidDatabaseInt
-import org.fdroid.download.Downloader
+import org.fdroid.download.DownloaderFactory
 import java.io.File
 import java.io.IOException
 
+internal const val SIGNED_FILE_NAME = "index-v1.jar"
+
 // TODO should this live here and cause a dependency on download lib or in dedicated module?
 public class IndexV1Updater(
-    context: Context,
-    private val file: File,
-    private val downloader: Downloader,
-    ) {
+    private val context: Context,
+    private val downloaderFactory: DownloaderFactory,
+) {
 
     private val db: FDroidDatabaseInt =
         FDroidDatabaseHolder.getDb(context) as FDroidDatabaseInt // TODO final name
 
     @Throws(IOException::class, InterruptedException::class)
-    fun update(address: String, expectedSigningFingerprint: String?) {
-        val repoId = db.getRepositoryDao().insertEmptyRepo(address)
+    fun updateNewRepo(
+        repoId: Long,
+        expectedSigningFingerprint: String?,
+        updateListener: IndexUpdateListener? = null,
+    ): IndexUpdateResult {
+        return update(repoId, null, expectedSigningFingerprint, updateListener)
+    }
+
+    @Throws(IOException::class, InterruptedException::class)
+    fun update(
+        repoId: Long,
+        certificate: String,
+        updateListener: IndexUpdateListener? = null,
+    ): IndexUpdateResult {
+        return update(repoId, certificate, null, updateListener)
+    }
+
+    @Throws(IOException::class, InterruptedException::class)
+    private fun update(
+        repoId: Long,
+        certificate: String?,
+        fingerprint: String?,
+        updateListener: IndexUpdateListener?,
+    ): IndexUpdateResult {
+        val repo =
+            db.getRepositoryDao().getRepository(repoId) ?: error("Unexpected repoId: $repoId")
+        val uri = repo.getCanonicalUri()
+        val file = File.createTempFile("dl-", "", context.cacheDir)
+        val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
+            cacheTag = repo.lastETag
+            updateListener?.let { setListener(updateListener::onDownloadProgress) }
+        }
         try {
-            update(repoId, null, expectedSigningFingerprint)
-        } catch (e: Throwable) {
-            db.getRepositoryDao().deleteRepository(repoId)
-            throw e
-        }
-        db.getRepositoryDao().getRepositories().forEach { println(it) }
-    }
+            downloader.download()
+            // TODO in MirrorChooser don't try again on 404
+            //  when tryFirstMirror is set == isRepoDownload
+            if (!downloader.hasChanged()) return IndexUpdateResult.UNCHANGED
+            val eTag = downloader.cacheTag
 
-    @Throws(IOException::class, InterruptedException::class)
-    fun update(repoId: Long, certificate: String) {
-        update(repoId, certificate, null)
-    }
-
-    @Throws(IOException::class, InterruptedException::class)
-    private fun update(repoId: Long, certificate: String?, fingerprint: String?) {
-        downloader.download()
-        val verifier = IndexV1Verifier(file, certificate, fingerprint)
-        db.runInTransaction {
-            val cert = verifier.getStreamAndVerify { inputStream ->
-                val streamProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db), certificate)
-                streamProcessor.process(repoId, inputStream)
+            val verifier = IndexV1Verifier(file, certificate, fingerprint)
+            db.runInTransaction {
+                val cert = verifier.getStreamAndVerify { inputStream ->
+                    updateListener?.onStartProcessing() // TODO maybe do more fine-grained reporting
+                    val streamProcessor =
+                        IndexV1StreamProcessor(DbV1StreamReceiver(db), certificate)
+                    streamProcessor.process(repoId, inputStream)
+                }
+                // update certificate, if we didn't have any before
+                if (certificate == null) {
+                    db.getRepositoryDao().updateRepository(repoId, cert)
+                }
+                // update RepositoryPreferences with timestamp and ETag (for v1)
+                val updatedPrefs = repo.preferences.copy(
+                    lastUpdated = System.currentTimeMillis(),
+                    lastETag = eTag,
+                )
+                db.getRepositoryDao().updateRepositoryPreferences(updatedPrefs)
             }
-            if (certificate == null) {
-                db.getRepositoryDao().updateRepository(repoId, cert)
-            }
+        } finally {
+            file.delete()
         }
+        return IndexUpdateResult.PROCESSED
     }
 
 }
