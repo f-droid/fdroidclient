@@ -14,6 +14,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
@@ -46,7 +47,7 @@ class CategoriesViewBinder implements Observer<List<Category>> {
 
     CategoriesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
-        FDroidDatabase db = FDroidDatabaseHolder.getDb(activity);
+        FDroidDatabase db = DBHelper.getDb(activity);
         Transformations.distinctUntilChanged(db.getRepositoryDao().getLiveCategories()).observe(activity, this);
 
         View categoriesView = activity.getLayoutInflater().inflate(R.layout.main_tab_categories, parent, true);

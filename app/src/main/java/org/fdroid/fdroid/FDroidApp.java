@@ -53,7 +53,6 @@ import org.acra.config.DialogConfigurationBuilder;
 import org.acra.config.MailSenderConfigurationBuilder;
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.database.FDroidDatabase;
-import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
@@ -337,7 +336,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
         // keep a static copy of the repositories around and in-sync
         // not how one would normally do this, but it is a common pattern in this codebase
-        FDroidDatabase db = FDroidDatabaseHolder.getDb(this);
+        FDroidDatabase db = DBHelper.getDb(this);
         db.getRepositoryDao().getLiveRepositories().observeForever(repositories -> repos = repositories);
 
         PRNGFixes.apply();

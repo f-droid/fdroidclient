@@ -251,7 +251,7 @@ public class RepoProvider extends FDroidProvider {
             int appCount = resolver.delete(appUri, null, null);
             Utils.debugLog(TAG, "Removed " + appCount + " apps from repo " + repo.address + ".");
 
-            AppUpdateStatusManager.getInstance(context).removeAllByRepo(repo);
+            AppUpdateStatusManager.getInstance(context).removeAllByRepo(repo.id);
 
             AppProvider.Helper.recalculatePreferredMetadata(context);
         }

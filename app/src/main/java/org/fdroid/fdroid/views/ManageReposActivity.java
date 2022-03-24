@@ -22,12 +22,10 @@ package org.fdroid.fdroid.views;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.database.Cursor;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -43,10 +41,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,17 +50,21 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.fdroid.database.Repository;
+import org.fdroid.database.RepositoryDao;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.AddRepoIntentService;
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema.RepoTable;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,28 +72,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.concurrent.Callable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.ContextCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.RecyclerView;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class ManageReposActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
+public class ManageReposActivity extends AppCompatActivity implements RepoAdapter.RepoItemListener {
     private static final String TAG = "ManageReposActivity";
 
     public static final String EXTRA_FINISH_AFTER_ADDING_REPO = "finishAfterAddingRepo";
@@ -102,9 +103,10 @@ public class ManageReposActivity extends AppCompatActivity
 
     private enum AddRepoState {
         DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_ADD_MIRROR, EXISTS_ALREADY_MIRROR,
-        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
-        IS_SWAP
+        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL
     }
+
+    private RepositoryDao repositoryDao;
 
     /**
      * True if activity started with an intent such as from QR code. False if
@@ -118,6 +120,7 @@ public class ManageReposActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+        repositoryDao = DBHelper.getDb(this).getRepositoryDao();
 
         super.onCreate(savedInstanceState);
 
@@ -149,17 +152,10 @@ public class ManageReposActivity extends AppCompatActivity
             }
         });
 
-        final ListView repoList = (ListView) findViewById(R.id.list);
-        repoAdapter = new RepoAdapter(this);
-        repoAdapter.setEnabledListener(this);
+        final RecyclerView repoList = (RecyclerView) findViewById(R.id.list);
+        RepoAdapter repoAdapter = new RepoAdapter(this);
         repoList.setAdapter(repoAdapter);
-        repoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Repo repo = new Repo((Cursor) repoList.getItemAtPosition(position));
-                editRepo(repo);
-            }
-        });
+        repositoryDao.getLiveRepositories().observe(this, repoAdapter::updateItems);
     }
 
     @Override
@@ -182,9 +178,6 @@ public class ManageReposActivity extends AppCompatActivity
 
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
-
-        // Starts a new or restarts an existing Loader in this manager
-        getSupportLoaderManager().restartLoader(0, null, this);
     }
 
     @Override
@@ -287,8 +280,8 @@ public class ManageReposActivity extends AppCompatActivity
     private class AddRepo {
 
         private final Context context;
-        private final HashMap<String, Repo> urlRepoMap = new HashMap<>();
-        private final HashMap<String, Repo> fingerprintRepoMap = new HashMap<>();
+        private final HashMap<String, Repository> urlRepoMap = new HashMap<>();
+        private final HashMap<String, Repository> fingerprintRepoMap = new HashMap<>();
         private final AlertDialog addRepoDialog;
         private final TextView overwriteMessage;
         private final ColorStateList defaultTextColour;
@@ -306,14 +299,17 @@ public class ManageReposActivity extends AppCompatActivity
 
             context = ManageReposActivity.this;
 
-            for (Repo repo : RepoProvider.Helper.all(context)) {
-                urlRepoMap.put(repo.address, repo);
-                for (String url : repo.getMirrorList()) {
-                    urlRepoMap.put(url, repo);
+            for (Repository repo : FDroidApp.repos) {
+                urlRepoMap.put(repo.getAddress(), repo);
+                for (Mirror mirror : repo.getAllMirrors()) {
+                    urlRepoMap.put(mirror.getBaseUrl(), repo);
                 }
-                if (!TextUtils.isEmpty(repo.fingerprint)
-                        && TextUtils.equals(getRepoType(newAddress), getRepoType(repo.address))) {
-                    fingerprintRepoMap.put(repo.fingerprint, repo);
+                if (!TextUtils.isEmpty(repo.getCertificate())
+                        && TextUtils.equals(getRepoType(newAddress), getRepoType(repo.getAddress()))) {
+                    String fingerprint = repo.getFingerprint();
+                    if (fingerprint != null) {
+                        fingerprintRepoMap.put(fingerprint.toLowerCase(Locale.ENGLISH), repo);
+                    }
                 }
             }
 
@@ -376,18 +372,11 @@ public class ManageReposActivity extends AppCompatActivity
 
                             String fp = fingerprintEditText.getText().toString();
                             // remove any whitespace from fingerprint
-                            fp = fp.replaceAll("\\s", "");
+                            fp = fp.replaceAll("\\s", "").toLowerCase(Locale.ENGLISH);
+                            if (TextUtils.isEmpty(fp)) fp = null;
 
                             switch (addRepoState) {
                                 case DOESNT_EXIST:
-                                    prepareToCreateNewRepo(url, fp, username, password);
-                                    break;
-
-                                case IS_SWAP:
-                                    Utils.debugLog(TAG, "Removing existing swap repo " + url
-                                            + " before adding new repo.");
-                                    Repo repo = RepoProvider.Helper.findByAddress(context, url);
-                                    RepoProvider.Helper.remove(context, repo.getId());
                                     prepareToCreateNewRepo(url, fp, username, password);
                                     break;
 
@@ -395,11 +384,11 @@ public class ManageReposActivity extends AppCompatActivity
                                 case EXISTS_UPGRADABLE_TO_SIGNED:
                                 case EXISTS_ADD_MIRROR:
                                     updateAndEnableExistingRepo(url, fp);
-                                    finishedAddingRepo();
+                                    finishedAddingRepo(url, fp);
                                     break;
 
                                 default:
-                                    finishedAddingRepo();
+                                    finishedAddingRepo(url, fp);
                                     break;
                             }
                         }
@@ -477,9 +466,10 @@ public class ManageReposActivity extends AppCompatActivity
                 // Don't bother dealing with this exception yet, as this is called every time
                 // a letter is added to the repo URL text input. We don't want to display a message
                 // to the user until they try to save the repo.
+                return;
             }
 
-            Repo repo = fingerprintRepoMap.get(fingerprint);
+            Repository repo = fingerprintRepoMap.get(fingerprint.toLowerCase(Locale.ENGLISH));
             if (repo == null) {
                 repo = urlRepoMap.get(uri);
             }
@@ -487,18 +477,17 @@ public class ManageReposActivity extends AppCompatActivity
             if (repo == null) {
                 repoDoesntExist();
             } else {
-                if (repo.isSwap) {
-                    repoIsSwap(repo);
-                } else if (repo.fingerprint == null && fingerprint.length() > 0) {
+                if (repo.getFingerprint() == null && fingerprint.length() > 0) {
                     upgradingToSigned(repo);
-                } else if (repo.fingerprint != null && !repo.fingerprint.equalsIgnoreCase(fingerprint)) {
+                } else if (repo.getFingerprint() != null && !repo.getFingerprint().equalsIgnoreCase(fingerprint)) {
                     repoFingerprintDoesntMatch(repo);
                 } else {
-                    if (repo.getMirrorList().contains(uri) && !TextUtils.equals(repo.address, uri) && repo.inuse) {
+                    Repository mirrorRepo = urlRepoMap.get(uri);
+                    if (repo.equals(mirrorRepo) && !TextUtils.equals(repo.getAddress(), uri) && repo.getEnabled()) {
                         repoExistsAlreadyMirror(repo);
-                    } else if (!TextUtils.equals(repo.address, uri) && repo.inuse) {
+                    } else if (!TextUtils.equals(repo.getAddress(), uri) && repo.getEnabled()) {
                         repoExistsAddMirror(repo);
-                    } else if (repo.inuse) {
+                    } else if (repo.getEnabled()) {
                         repoExistsAndEnabled(repo);
                     } else {
                         repoExistsAndDisabled(repo);
@@ -511,15 +500,11 @@ public class ManageReposActivity extends AppCompatActivity
             updateUi(null, AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
         }
 
-        private void repoIsSwap(Repo repo) {
-            updateUi(repo, AddRepoState.IS_SWAP, 0, false, R.string.repo_add_add, true);
-        }
-
         /**
          * Same address with different fingerprint, this could be malicious, so display a message
          * force the user to manually delete the repo before adding this one.
          */
-        private void repoFingerprintDoesntMatch(Repo repo) {
+        private void repoFingerprintDoesntMatch(Repository repo) {
             updateUi(repo, AddRepoState.EXISTS_FINGERPRINT_MISMATCH,
                     R.string.repo_delete_to_overwrite,
                     true, R.string.overwrite, false);
@@ -530,32 +515,32 @@ public class ManageReposActivity extends AppCompatActivity
                     R.string.repo_add_add, false);
         }
 
-        private void repoExistsAndDisabled(Repo repo) {
+        private void repoExistsAndDisabled(Repository repo) {
             updateUi(repo, AddRepoState.EXISTS_DISABLED,
                     R.string.repo_exists_enable, false, R.string.enable, true);
         }
 
-        private void repoExistsAndEnabled(Repo repo) {
+        private void repoExistsAndEnabled(Repository repo) {
             updateUi(repo, AddRepoState.EXISTS_ENABLED, R.string.repo_exists_and_enabled, false,
                     R.string.ok, true);
         }
 
-        private void repoExistsAddMirror(Repo repo) {
+        private void repoExistsAddMirror(Repository repo) {
             updateUi(repo, AddRepoState.EXISTS_ADD_MIRROR, R.string.repo_exists_add_mirror, false,
                     R.string.repo_add_mirror, true);
         }
 
-        private void repoExistsAlreadyMirror(Repo repo) {
+        private void repoExistsAlreadyMirror(Repository repo) {
             updateUi(repo, AddRepoState.EXISTS_ALREADY_MIRROR, 0, false, R.string.ok, true);
         }
 
-        private void upgradingToSigned(Repo repo) {
+        private void upgradingToSigned(Repository repo) {
             updateUi(repo, AddRepoState.EXISTS_UPGRADABLE_TO_SIGNED, R.string.repo_exists_add_fingerprint,
                     false, R.string.add_key, true);
         }
 
-        private void updateUi(Repo repo, AddRepoState state, int messageRes, boolean redMessage, int addTextRes,
-                              boolean addEnabled) {
+        private void updateUi(@Nullable Repository repo, AddRepoState state, int messageRes, boolean redMessage,
+                              int addTextRes, boolean addEnabled) {
             if (addRepoState != state) {
                 addRepoState = state;
 
@@ -563,7 +548,7 @@ public class ManageReposActivity extends AppCompatActivity
                 if (repo == null) {
                     name = '"' + getString(R.string.unknown) + '"';
                 } else {
-                    name = repo.name;
+                    name = repo.getName(App.getLocales());
                 }
 
                 if (messageRes > 0) {
@@ -582,10 +567,11 @@ public class ManageReposActivity extends AppCompatActivity
                 addButton.setText(addTextRes);
                 addButton.setEnabled(addEnabled);
 
-                if (Build.VERSION.SDK_INT >= 15 && addRepoState == AddRepoState.EXISTS_ALREADY_MIRROR) {
+                if (addRepoState == AddRepoState.EXISTS_ALREADY_MIRROR) {
                     addButton.callOnClick();
-                    editRepo(repo);
-                    String msg = getString(R.string.repo_exists_and_enabled, repo.address);
+                    if (repo != null) editRepo(repo);
+                    Objects.requireNonNull(repo); // should be non-null in this addRepoState
+                    String msg = getString(R.string.repo_exists_and_enabled, repo.getAddress());
                     Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
                 }
             }
@@ -594,7 +580,7 @@ public class ManageReposActivity extends AppCompatActivity
         /**
          * Adds a new repo to the database.
          */
-        private void prepareToCreateNewRepo(final String originalAddress, final String fingerprint,
+        private void prepareToCreateNewRepo(final String originalAddress, @Nullable final String fingerprint,
                                             final String username, final String password) {
             final View addRepoForm = addRepoDialog.findViewById(R.id.add_repo_form);
             addRepoForm.setVisibility(View.GONE);
@@ -702,7 +688,7 @@ public class ManageReposActivity extends AppCompatActivity
                                 textSearching.setText("");
                                 skip.setText(R.string.cancel);
                                 skip.setOnClickListener(null);
-                                validateRepoDetails(newAddress, fingerprint);
+                                validateRepoDetails(newAddress, fingerprint == null ? "" : fingerprint);
                             } else {
                                 // create repo without username/password
                                 createNewRepo(newAddress, fingerprint);
@@ -725,77 +711,73 @@ public class ManageReposActivity extends AppCompatActivity
         /**
          * Create a repository without a username or password.
          */
-        private void createNewRepo(String address, String fingerprint) {
+        private void createNewRepo(String address, @Nullable String fingerprint) {
             createNewRepo(address, fingerprint, null, null);
         }
 
-        private void createNewRepo(String address, String fingerprint,
+        private void createNewRepo(String address, @Nullable String fingerprint,
                                    final String username, final String password) {
             try {
                 address = AddRepoIntentService.normalizeUrl(address);
             } catch (URISyntaxException e) {
                 // Leave address as it was.
             }
-            ContentValues values = new ContentValues(4);
-            values.put(RepoTable.Cols.ADDRESS, address);
-            if (!TextUtils.isEmpty(fingerprint)) {
-                values.put(RepoTable.Cols.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
-            }
+            if (address == null) return;
 
-            if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-                values.put(RepoTable.Cols.USERNAME, username);
-                values.put(RepoTable.Cols.PASSWORD, password);
-            }
+            final String repoAddress = address;
 
-            RepoProvider.Helper.insert(context, values);
-            finishedAddingRepo();
-            Toast.makeText(context, getString(R.string.repo_added, address), Toast.LENGTH_SHORT).show();
+            Disposable disposable = Single.fromCallable(
+                    () -> repositoryDao.insertEmptyRepo(repoAddress, username, password)
+            )
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(repoId -> {
+                        finishedAddingRepo(repoAddress, fingerprint);
+                        Toast.makeText(context, getString(R.string.repo_added, repoAddress), Toast.LENGTH_SHORT)
+                                .show();
+                    });
+            compositeDisposable.add(disposable);
         }
 
         /**
          * Seeing as this repo already exists, we will force it to be enabled again.
          */
-        private void updateAndEnableExistingRepo(String url, String fingerprint) {
+        private void updateAndEnableExistingRepo(String url, @Nullable String fingerprint) {
             if (fingerprint != null) {
                 fingerprint = fingerprint.trim();
                 if (TextUtils.isEmpty(fingerprint)) {
                     fingerprint = null;
                 } else {
-                    fingerprint = fingerprint.toUpperCase(Locale.ENGLISH);
+                    fingerprint = fingerprint.toLowerCase(Locale.ENGLISH);
                 }
             }
 
             Utils.debugLog(TAG, "Enabling existing repo: " + url);
-            Repo repo = fingerprintRepoMap.get(fingerprint);
+            Repository repo = fingerprintRepoMap.get(fingerprint);
             if (repo == null) {
-                repo = RepoProvider.Helper.findByAddress(context, url);
+                repo = urlRepoMap.get(url);
             }
-
-            ContentValues values = new ContentValues(2);
-            values.put(RepoTable.Cols.IN_USE, 1);
-            values.put(RepoTable.Cols.FINGERPRINT, fingerprint);
-            if (!TextUtils.equals(url, repo.address)) {
-                boolean addUserMirror = true;
-                for (String mirror : repo.getMirrorList()) {
-                    if (TextUtils.equals(mirror, url)) {
-                        addUserMirror = false;
-                    }
-                }
-                if (addUserMirror) {
-                    if (repo.userMirrors == null) {
-                        repo.userMirrors = new String[]{url};
-                    } else {
-                        int last = repo.userMirrors.length;
-                        repo.userMirrors = Arrays.copyOf(repo.userMirrors, last + 1);
-                        repo.userMirrors[last] = url;
-                    }
-                    values.put(RepoTable.Cols.USER_MIRRORS, Utils.serializeCommaSeparatedString(repo.userMirrors));
+            // return if this repo is gone
+            if (repo == null) return;
+            // return if a repo with that exact same address already exists
+            if (TextUtils.equals(url, repo.getAddress())) return;
+            // return if this address is already a mirror
+            for (Mirror mirror : repo.getAllMirrors()) {
+                if (TextUtils.equals(mirror.getBaseUrl(), url)) {
+                    return;
                 }
             }
-            RepoProvider.Helper.update(context, repo, values);
+            ArrayList<String> userMirrors = new ArrayList<>(repo.getUserMirrors());
+            userMirrors.add(url);
 
+            final long repoId = repo.getRepoId();
+            runOffUiThread(() -> {
+                repositoryDao.updateUserMirrors(repoId, userMirrors);
+                return true;
+            });
+            // TODO does this change get reflected?
             notifyDataSetChanged();
-            finishedAddingRepo();
+            finishedAddingRepo(url, fingerprint);
         }
 
         /**
@@ -803,8 +785,9 @@ public class ManageReposActivity extends AppCompatActivity
          * will set a result and finish. Otherwise, we'll updateViews the list of repos
          * to reflect the newly created repo.
          */
-        private void finishedAddingRepo() {
-            UpdateService.updateNow(ManageReposActivity.this);
+        private void finishedAddingRepo(String address, @Nullable String fingerprint) {
+            String f = fingerprint == null ? null : fingerprint.toLowerCase(Locale.ENGLISH);
+            UpdateService.updateNewRepoNow(ManageReposActivity.this, address, f);
             if (addRepoDialog.isShowing()) {
                 addRepoDialog.dismiss();
             }
@@ -849,30 +832,9 @@ public class ManageReposActivity extends AppCompatActivity
         }
     }
 
-    private RepoAdapter repoAdapter;
-
-    @NonNull
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        Uri uri = RepoProvider.allExceptSwapUri();
-        final String[] projection = {
-                RepoTable.Cols._ID,
-                RepoTable.Cols.NAME,
-                RepoTable.Cols.SIGNING_CERT,
-                RepoTable.Cols.FINGERPRINT,
-                RepoTable.Cols.IN_USE,
-        };
-        return new CursorLoader(this, uri, projection, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> cursorLoader, Cursor cursor) {
-        repoAdapter.swapCursor(cursor);
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> cursorLoader) {
-        repoAdapter.swapCursor(null);
+    public void onClicked(Repository repo) {
+        editRepo(repo);
     }
 
     /**
@@ -891,17 +853,19 @@ public class ManageReposActivity extends AppCompatActivity
      * update the repos if you toggled on on.
      */
     @Override
-    public void onSetEnabled(Repo repo, boolean isEnabled) {
-        if (repo.inuse != isEnabled) {
-            ContentValues values = new ContentValues(1);
-            values.put(RepoTable.Cols.IN_USE, isEnabled ? 1 : 0);
-            RepoProvider.Helper.update(this, repo, values);
+    public void onSetEnabled(Repository repo, boolean isEnabled) {
+        if (repo.getEnabled() != isEnabled) {
+            runOffUiThread(() -> {
+                repositoryDao.setRepositoryEnabled(repo.getRepoId(), isEnabled);
+                return true;
+            });
 
             if (isEnabled) {
-                UpdateService.updateNow(this);
+                UpdateService.updateRepoNow(this, repo.getAddress());
             } else {
-                RepoProvider.Helper.purgeApps(this, repo);
-                String notification = getString(R.string.repo_disabled_notification, repo.name);
+                AppUpdateStatusManager.getInstance(this).removeAllByRepo(repo.getRepoId());
+                // RepoProvider.Helper.purgeApps(this, repo);
+                String notification = getString(R.string.repo_disabled_notification, repo.getName(App.getLocales()));
                 Toast.makeText(this, notification, Toast.LENGTH_LONG).show();
             }
         }
@@ -909,9 +873,9 @@ public class ManageReposActivity extends AppCompatActivity
 
     public static final int SHOW_REPO_DETAILS = 1;
 
-    public void editRepo(Repo repo) {
+    public void editRepo(Repository repo) {
         Intent intent = new Intent(this, RepoDetailsActivity.class);
-        intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getId());
+        intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getRepoId());
         startActivityForResult(intent, SHOW_REPO_DETAILS);
     }
 
@@ -922,7 +886,15 @@ public class ManageReposActivity extends AppCompatActivity
      * repo, and wanting the switch to be changed to on).
      */
     private void notifyDataSetChanged() {
-        getSupportLoaderManager().restartLoader(0, null, this);
+        // TODO still needed?
+    }
+
+    private <T> void runOffUiThread(Callable<T> r) {
+        Disposable disposable = Single.fromCallable(r)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+        compositeDisposable.add(disposable);
     }
 
     /**
