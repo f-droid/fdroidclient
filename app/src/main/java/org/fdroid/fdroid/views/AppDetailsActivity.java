@@ -50,7 +50,6 @@ import com.google.android.material.appbar.MaterialToolbar;
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.FDroidDatabase;
-import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.CompatibilityChecker;
@@ -159,7 +158,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 }
         );
         checker = new CompatibilityChecker(this);
-        db = FDroidDatabaseHolder.getDb(getApplicationContext());
+        db = DBHelper.getDb(getApplicationContext());
         db.getAppDao().getApp(packageName).observe(this, this::onAppChanged);
         db.getVersionDao().getAppVersions(packageName).observe(this, this::onVersionsChanged);
         db.getAppPrefsDao().getAppPrefs(packageName).observe(this, this::onAppPrefsChanged);

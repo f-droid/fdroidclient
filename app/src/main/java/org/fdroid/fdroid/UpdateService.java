@@ -57,10 +57,10 @@ import org.fdroid.index.v1.IndexUpdaterKt;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -77,6 +77,8 @@ public class UpdateService extends JobIntentService {
     public static final String LOCAL_ACTION_STATUS = "status";
 
     public static final String EXTRA_MESSAGE = "msg";
+    public static final String EXTRA_REPO_ID = "repoId";
+    public static final String EXTRA_REPO_FINGERPRINT = "fingerprint";
     public static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
     public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
@@ -112,8 +114,13 @@ public class UpdateService extends JobIntentService {
     }
 
     public static void updateRepoNow(Context context, String address) {
+        updateNewRepoNow(context, address, null);
+    }
+
+    public static void updateNewRepoNow(Context context, String address, @Nullable String fingerprint) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
+        intent.putExtra(EXTRA_REPO_FINGERPRINT, fingerprint);
         if (!TextUtils.isEmpty(address)) {
             intent.setData(Uri.parse(address));
         }
@@ -416,6 +423,8 @@ public class UpdateService extends JobIntentService {
         final long startTime = System.currentTimeMillis();
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
         boolean forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
+        long repoId = intent.getLongExtra(EXTRA_REPO_ID, -1);
+        String fingerprint = intent.getStringExtra(EXTRA_REPO_FINGERPRINT);
         String address = intent.getDataString();
 
         try {
@@ -461,11 +470,10 @@ public class UpdateService extends JobIntentService {
             int errorRepos = 0;
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
-            boolean singleRepoUpdate = !TextUtils.isEmpty(address);
+            boolean singleRepoUpdate = !TextUtils.isEmpty(address) || repoId > 0;
             for (final Repository repo : repos) {
                 if (!repo.getEnabled()) continue;
-                if (!singleRepoUpdate && repo.isSwap()) continue;
-                if (singleRepoUpdate && !repo.getAddress().equals(address)) {
+                if (singleRepoUpdate && !repo.getAddress().equals(address) && repo.getRepoId() != repoId) {
                     unchangedRepos++;
                     continue;
                 }
@@ -479,9 +487,14 @@ public class UpdateService extends JobIntentService {
                     // TODO try new v2 index first
                     final org.fdroid.index.v1.IndexV1Updater updater = new org.fdroid.index.v1.IndexV1Updater(
                             getApplicationContext(), DownloaderFactory.INSTANCE, compatChecker);
-                    final long repoId = repo.getRepoId();
-                    final String certificate = Objects.requireNonNull(repo.getCertificate());
-                    IndexUpdateResult result = updater.update(repoId, certificate, listener);
+                    final long currentRepoId = repo.getRepoId();
+                    final IndexUpdateResult result;
+                    if (repo.getCertificate() == null) {
+                        // This is a new repo without a certificate
+                        result = updater.updateNewRepo(currentRepoId, fingerprint, listener);
+                    } else {
+                        result = updater.update(currentRepoId, repo.getCertificate(), listener);
+                    }
                     if (result == IndexUpdateResult.UNCHANGED) {
                         unchangedRepos++;
                     } else if (result == IndexUpdateResult.PROCESSED) {

@@ -32,13 +32,13 @@ import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AddRepoIntentService;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -196,11 +196,11 @@ public class TreeUriScannerIntentService extends IntentService {
         destFile.delete();
 
         Log.i(TAG, "Found a valid, signed index-v1.json");
-        for (Repo repo : RepoProvider.Helper.all(context)) {
-            if (fingerprint.equals(repo.fingerprint)) {
-                Log.i(TAG, repo.address + " has the SAME fingerprint: " + fingerprint);
+        for (Repository repo : FDroidApp.repos) {
+            if (fingerprint.equals(repo.getFingerprint())) {
+                Log.i(TAG, repo.getAddress() + " has the SAME fingerprint: " + fingerprint);
             } else {
-                Log.i(TAG, repo.address + " different fingerprint");
+                Log.i(TAG, repo.getAddress() + " different fingerprint");
             }
         }
 

@@ -11,7 +11,6 @@ import android.os.Parcelable;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -208,12 +207,12 @@ public final class AppUpdateStatusManager {
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
     }
 
-    public void removeAllByRepo(Repo repo) {
+    public void removeAllByRepo(long repoId) {
         boolean hasRemovedSome = false;
         Iterator<AppUpdateStatus> it = getAll().iterator();
         while (it.hasNext()) {
             AppUpdateStatus status = it.next();
-            if (status.apk.repoId == repo.getId()) {
+            if (status.apk.repoId == repoId) {
                 it.remove();
                 hasRemovedSome = true;
             }

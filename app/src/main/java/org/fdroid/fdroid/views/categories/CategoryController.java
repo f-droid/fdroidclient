@@ -24,8 +24,8 @@ import com.bumptech.glide.Glide;
 
 import org.fdroid.database.AppOverviewItem;
 import org.fdroid.database.FDroidDatabase;
-import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
@@ -57,7 +57,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
         super(itemView);
 
         this.activity = activity;
-        db = FDroidDatabaseHolder.getDb(activity);
+        db = DBHelper.getDb(activity);
 
         appCardsAdapter = new AppPreviewAdapter(activity);
 

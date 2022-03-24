@@ -31,6 +31,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.VisibleForTesting;
+import androidx.annotation.WorkerThread;
+
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.FDroidDatabaseHolder;
+import org.fdroid.database.InitialRepository;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -70,6 +76,28 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static DBHelper instance;
     private static final String DATABASE_NAME = "fdroid";
+
+    public static FDroidDatabase getDb(Context context) {
+        return FDroidDatabaseHolder.getDb(context, "fdroid_db", db -> prePopulateDb(context, db));
+    }
+
+    @WorkerThread
+    @VisibleForTesting
+    static void prePopulateDb(Context context, FDroidDatabase db) {
+        List<String> initialRepos = DBHelper.loadInitialRepos(context);
+        for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
+            InitialRepository repo = new InitialRepository(
+                    initialRepos.get(i), // name
+                    initialRepos.get(i + 1), // address
+                    initialRepos.get(i + 2), // description
+                    initialRepos.get(i + 7),  // certificate
+                    Integer.parseInt(initialRepos.get(i + 3)), // version
+                    initialRepos.get(i + 4).equals("1"), // enabled
+                    Integer.parseInt(initialRepos.get(i + 5))  // weight
+            );
+            db.getRepositoryDao().insert(repo);
+        }
+    }
 
     private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME
             + " ( "
