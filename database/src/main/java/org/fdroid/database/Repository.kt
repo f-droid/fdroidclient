@@ -4,8 +4,10 @@ import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.Relation
+import org.fdroid.index.IndexUtils.getFingerprint
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.FileV2
@@ -81,13 +83,32 @@ data class Repository(
     val password: String? get() = preferences.password
     val isSwap: Boolean get() = preferences.isSwap
 
+    @delegate:Ignore
+    val fingerprint: String? by lazy {
+        certificate?.let { getFingerprint(it) }
+    }
+
+    /**
+     * Returns official and user-added mirrors without the [disabledMirrors].
+     */
+    fun getMirrors(): List<org.fdroid.download.Mirror> {
+        return getAllMirrors(true).filter {
+            !disabledMirrors.contains(it.baseUrl)
+        }
+    }
+
+    /**
+     * Returns all mirrors, including [disabledMirrors].
+     */
     @JvmOverloads
-    fun getMirrors(includeUserMirrors: Boolean = true) = mirrors.map {
-        it.toDownloadMirror()
-    } + listOf(org.fdroid.download.Mirror(address)) + // FIXME decide whether we need to add this
-        if (includeUserMirrors) userMirrors.map {
+    fun getAllMirrors(includeUserMirrors: Boolean = true): List<org.fdroid.download.Mirror> {
+        // FIXME decide whether we need to add our own address here
+        return listOf(org.fdroid.download.Mirror(address)) + mirrors.map {
+            it.toDownloadMirror()
+        } + if (includeUserMirrors) userMirrors.map {
             org.fdroid.download.Mirror(it)
         } else emptyList()
+    }
 
     fun getDescription(localeList: LocaleListCompat) = description.getBestLocale(localeList)
 }
@@ -210,4 +231,17 @@ data class RepositoryPreferences(
     val username: String? = null,
     val password: String? = null,
     val isSwap: Boolean = false, // TODO remove
+)
+
+/**
+ * A [Repository] which the [FDroidDatabase] gets pre-populated with.
+ */
+data class InitialRepository(
+    val name: String,
+    val address: String,
+    val description: String,
+    val certificate: String,
+    val version: Int,
+    val enabled: Boolean,
+    val weight: Int,
 )
