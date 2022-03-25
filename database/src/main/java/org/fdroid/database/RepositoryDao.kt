@@ -6,6 +6,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
+import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.serialization.json.JsonArray
@@ -19,6 +20,8 @@ import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.RepoV2
 
 public interface RepositoryDao {
+    fun insert(initialRepo: InitialRepository)
+
     /**
      * Use when inserting a new repo for the first time.
      */
@@ -72,13 +75,34 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun insert(repositoryPreferences: RepositoryPreferences)
 
     @Transaction
+    override fun insert(initialRepo: InitialRepository) {
+        val repo = CoreRepository(
+            name = initialRepo.name,
+            address = initialRepo.address,
+            icon = null,
+            timestamp = -1,
+            description = mapOf("en-US" to initialRepo.description),
+            certificate = initialRepo.certificate,
+            //version = initialRepo.version, // TODO add version
+        )
+        val repoId = insert(repo)
+        val repositoryPreferences = RepositoryPreferences(
+            repoId = repoId,
+            weight = initialRepo.weight,
+            lastUpdated = null,
+            enabled = initialRepo.enabled,
+        )
+        insert(repositoryPreferences)
+    }
+
+    @Transaction
     override fun insertEmptyRepo(
         address: String,
         username: String?,
         password: String?,
     ): Long {
         val repo = CoreRepository(
-            name = "",
+            name = address,
             icon = null,
             address = address,
             timestamp = System.currentTimeMillis(),

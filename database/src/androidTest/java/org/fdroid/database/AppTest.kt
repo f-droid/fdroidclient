@@ -13,6 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -74,23 +75,22 @@ class AppTest : DbTest() {
         assertEquals(icons2,
             apps.find { it.packageId == packageId2 }?.localizedIcon?.toLocalizedFileV2())
 
-        // app without icon is returned as well
+        // app without icon is not returned
         appDao.insert(repoId, packageId3, app3)
         val apps3 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
-        assertEquals(3, apps3.size)
+        assertEquals(2, apps3.size)
         assertEquals(icons1,
             apps3.find { it.packageId == packageId1 }?.localizedIcon?.toLocalizedFileV2())
         assertEquals(icons2,
             apps3.find { it.packageId == packageId2 }?.localizedIcon?.toLocalizedFileV2())
-        assertEquals(emptyList(), apps3.find { it.packageId == packageId3 }!!.localizedIcon)
+        assertNull(apps3.find { it.packageId == packageId3 })
 
-        // app4 is the same as app1
+        // app4 is the same as app1 and thus will not be shown again
         val repoId2 = repoDao.insert(getRandomRepo())
         val app4 = getRandomMetadataV2().copy(name = name2, icon = icons2)
         appDao.insert(repoId2, packageId1, app4)
-
         val apps4 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
-        assertEquals(4, apps4.size)
+        assertEquals(2, apps4.size)
     }
 
     @Test

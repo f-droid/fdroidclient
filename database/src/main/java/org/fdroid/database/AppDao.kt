@@ -177,31 +177,45 @@ internal interface AppDaoInt : AppDao {
     //+ ", " + lastUpdated + " DESC"
     //+ ", " + added + " ASC");
     @Transaction
-    @Query("""SELECT repoId, packageId, added, lastUpdated, name, summary FROM AppMetadata
-        ORDER BY name IS NULL ASC, summary IS NULL ASC, lastUpdated DESC, added ASC LIMIT :limit""")
+    @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
+        FROM AppMetadata AS app
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        JOIN LocalizedIcon AS icon USING (repoId, packageId)
+        WHERE pref.enabled = 1 GROUP BY packageId
+        ORDER BY app.name IS NULL ASC, summary IS NULL ASC, app.lastUpdated DESC, added ASC
+        LIMIT :limit""")
     override fun getAppOverviewItems(limit: Int): LiveData<List<AppOverviewItem>>
 
     @Transaction
     // TODO maybe it makes sense to split categories into their own table for this?
-    @Query("""SELECT repoId, packageId, added, lastUpdated, name, summary FROM AppMetadata
-        WHERE categories  LIKE '%' || :category || '%'
-        ORDER BY name IS NULL ASC, summary IS NULL ASC, lastUpdated DESC, added ASC LIMIT :limit""")
+    @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
+        FROM AppMetadata AS app
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        JOIN LocalizedIcon AS icon USING (repoId, packageId)
+        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%' GROUP BY packageId
+        ORDER BY app.name IS NULL ASC, summary IS NULL ASC, app.lastUpdated DESC, added ASC
+        LIMIT :limit""")
     override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
 
     // FIXME don't over report the same app twice (e.g. in several repos)
-    @Query("SELECT COUNT(*) FROM AppMetadata WHERE categories  LIKE '%' || :category || '%'")
+    @Query("""SELECT COUNT(*) FROM AppMetadata
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND categories LIKE '%' || :category || '%'""")
     override fun getNumberOfAppsInCategory(category: String): Int
 
     @VisibleForTesting
     @Query("DELETE FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
     fun deleteAppMetadata(repoId: Long, packageId: String)
 
+    @VisibleForTesting
     @Query("SELECT COUNT(*) FROM AppMetadata")
     fun countApps(): Int
 
+    @VisibleForTesting
     @Query("SELECT COUNT(*) FROM LocalizedFile")
     fun countLocalizedFiles(): Int
 
+    @VisibleForTesting
     @Query("SELECT COUNT(*) FROM LocalizedFileList")
     fun countLocalizedFileLists(): Int
 
