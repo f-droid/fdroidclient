@@ -9,6 +9,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
 import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.index.v2.PackageVersionV2
@@ -59,14 +60,7 @@ internal interface VersionDaoInt : VersionDao {
         // TODO we should probably react to changes of versioned strings as well
         val versionedStrings = getVersionedStrings(packageId)
         val liveData = getVersions(packageId).distinctUntilChanged().map { versions ->
-            versions.map { version ->
-                AppVersion(
-                    version = version,
-                    usesPermission = versionedStrings.getPermissions(version),
-                    usesPermissionSdk23 = versionedStrings.getPermissionsSdk23(version),
-                    features = versionedStrings.getFeatures(version),
-                )
-            }
+            versions.map { version -> version.toAppVersion(versionedStrings) }
         }
         emitSource(liveData)
     }
@@ -74,28 +68,39 @@ internal interface VersionDaoInt : VersionDao {
     @Transaction
     override fun getAppVersions(repoId: Long, packageId: String): List<AppVersion> {
         val versionedStrings = getVersionedStrings(repoId, packageId)
-        return getVersions(repoId, packageId).map { version ->
-            AppVersion(
-                version = version,
-                usesPermission = versionedStrings.getPermissions(version),
-                usesPermissionSdk23 = versionedStrings.getPermissionsSdk23(version),
-                features = versionedStrings.getFeatures(version),
-            )
+        return getVersions(repoId, packageId).map {
+                version -> version.toAppVersion(versionedStrings)
         }
     }
 
-    @Query("""SELECT * FROM Version WHERE packageId = :packageId
+    @RewriteQueriesToDropUnusedColumns
+    @Query("""SELECT * FROM Version
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND packageId = :packageId
         ORDER BY manifest_versionCode DESC""")
     fun getVersions(packageId: String): LiveData<List<Version>>
 
     @Query("SELECT * FROM Version WHERE repoId = :repoId AND packageId = :packageId")
     fun getVersions(repoId: Long, packageId: String): List<Version>
 
-    @Query("SELECT * FROM VersionedString WHERE packageId = :packageId")
+    @RewriteQueriesToDropUnusedColumns
+    @Query("""SELECT * FROM Version
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND packageId IN (:packageNames)
+        ORDER BY manifest_versionCode DESC, pref.weight DESC""")
+    fun getVersions(packageNames: List<String>): List<Version>
+
+    @RewriteQueriesToDropUnusedColumns
+    @Query("""SELECT * FROM VersionedString
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND packageId = :packageId""")
     fun getVersionedStrings(packageId: String): List<VersionedString>
 
     @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageId = :packageId")
     fun getVersionedStrings(repoId: Long, packageId: String): List<VersionedString>
+
+    @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId")
+    fun getVersionedStrings(repoId: Long, packageId: String, versionId: String): List<VersionedString>
 
     @VisibleForTesting
     @Query("DELETE FROM Version WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId")

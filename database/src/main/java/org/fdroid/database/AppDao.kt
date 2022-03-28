@@ -203,6 +203,14 @@ internal interface AppDaoInt : AppDao {
         WHERE pref.enabled = 1 AND categories LIKE '%' || :category || '%'""")
     override fun getNumberOfAppsInCategory(category: String): Int
 
+    /**
+     * Used by [UpdateChecker] to get specific apps with available updates.
+     */
+    @Transaction
+    @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
+        FROM AppMetadata AS app WHERE repoId = :repoId AND packageId = :packageId""")
+    fun getAppOverviewItem(repoId: Long, packageId: String): AppOverviewItem?
+
     @VisibleForTesting
     @Query("DELETE FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
     fun deleteAppMetadata(repoId: Long, packageId: String)

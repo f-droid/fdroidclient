@@ -2,7 +2,7 @@ package org.fdroid.index.v1
 
 import android.content.Context
 import org.fdroid.database.DbV1StreamReceiver
-import org.fdroid.database.FDroidDatabaseHolder
+import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.download.DownloaderFactory
 import java.io.File
@@ -13,11 +13,11 @@ internal const val SIGNED_FILE_NAME = "index-v1.jar"
 // TODO should this live here and cause a dependency on download lib or in dedicated module?
 public class IndexV1Updater(
     private val context: Context,
+    database: FDroidDatabase,
     private val downloaderFactory: DownloaderFactory,
 ) {
 
-    private val db: FDroidDatabaseInt =
-        FDroidDatabaseHolder.getDb(context) as FDroidDatabaseInt // TODO final name
+    private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
 
     @Throws(IOException::class, InterruptedException::class)
     fun updateNewRepo(

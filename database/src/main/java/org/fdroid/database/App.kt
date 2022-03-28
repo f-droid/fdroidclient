@@ -112,8 +112,8 @@ public data class AppOverviewItem(
     public val packageId: String,
     public val added: Long,
     public val lastUpdated: Long,
-    private val name: LocalizedTextV2? = null,
-    private val summary: LocalizedTextV2? = null,
+    internal val name: LocalizedTextV2? = null,
+    internal val summary: LocalizedTextV2? = null,
     @Relation(
         parentColumn = "packageId",
         entityColumn = "packageId",
@@ -124,6 +124,23 @@ public data class AppOverviewItem(
     public fun getSummary(localeList: LocaleListCompat) = summary.getBestLocale(localeList)
     public fun getIcon(localeList: LocaleListCompat) =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
+}
+
+public data class UpdatableApp(
+    public val packageId: String,
+    public val installedVersionCode: Long,
+    public val upgrade: AppVersion,
+    internal val name: LocalizedTextV2? = null,
+    public val summary: String? = null,
+    @Relation(
+        parentColumn = "packageId",
+        entityColumn = "packageId",
+    )
+    internal val localizedIcon: List<LocalizedIcon>? = null,
+) {
+    public fun getName(localeList: LocaleListCompat) = name.getBestLocale(localeList)
+    public fun getIcon(localeList: LocaleListCompat) =
+        localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)
 }
 
 internal fun <T> Map<String, T>?.getBestLocale(localeList: LocaleListCompat): T? {
@@ -192,7 +209,11 @@ fun List<IFile>.toLocalizedFileV2(type: String? = null): LocalizedFileV2? {
     }.ifEmpty { null }
 }
 
-@DatabaseView("SELECT * FROM LocalizedFile WHERE type='icon'")
+// TODO write test that ensures that in case of the same locale,
+//  only the one from the repo with higher weight is returned
+@DatabaseView("""SELECT * FROM LocalizedFile
+    JOIN RepositoryPreferences AS prefs USING (repoId)
+    WHERE type='icon' GROUP BY repoId, packageId, locale HAVING MAX(prefs.weight)""")
 data class LocalizedIcon(
     val repoId: Long,
     val packageId: String,

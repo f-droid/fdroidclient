@@ -23,7 +23,7 @@ abstract class DbTest {
     private val testCoroutineDispatcher = Dispatchers.Unconfined
 
     @Before
-    fun createDb() {
+    open fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, FDroidDatabaseInt::class.java).build()
         repoDao = db.getRepositoryDao()
