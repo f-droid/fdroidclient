@@ -37,7 +37,14 @@ data class Version(
     val releaseChannels: List<String>? = emptyList(),
     val antiFeatures: Map<String, LocalizedTextV2>? = null,
     val whatsNew: LocalizedTextV2? = null,
-)
+) {
+    fun toAppVersion(versionedStrings: List<VersionedString>) = AppVersion(
+        version = this,
+        usesPermission = versionedStrings.getPermissions(this),
+        usesPermissionSdk23 = versionedStrings.getPermissionsSdk23(this),
+        features = versionedStrings.getFeatures(this),
+    )
+}
 
 fun PackageVersionV2.toVersion(repoId: Long, packageId: String, versionId: String) = Version(
     repoId = repoId,
