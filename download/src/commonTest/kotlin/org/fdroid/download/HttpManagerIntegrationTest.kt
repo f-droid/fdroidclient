@@ -12,7 +12,7 @@ import kotlin.test.assertFailsWith
 class HttpManagerIntegrationTest {
 
     private val userAgent = getRandomString()
-    private val mirrors = listOf(Mirror("http://example.org"), Mirror("http://example.net/"))
+    private val mirrors = listOf(Mirror("https://example.org"), Mirror("https://example.net/"))
     private val downloadRequest = DownloadRequest("", mirrors)
 
     @Test

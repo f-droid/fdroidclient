@@ -4,6 +4,8 @@ import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.engine.okhttp.OkHttpConfig
+import okhttp3.ConnectionSpec.Companion.MODERN_TLS
+import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
 import okhttp3.Dns
 import okhttp3.internal.tls.OkHostnameVerifier
 import java.net.InetAddress
@@ -21,6 +23,7 @@ internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
                     // use default hostname verifier
                     OkHostnameVerifier.verify(hostname, session)
                 }
+                connectionSpecs(listOf(RESTRICTED_TLS, MODERN_TLS))
             }
         }
     }
