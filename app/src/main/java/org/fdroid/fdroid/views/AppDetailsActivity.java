@@ -540,7 +540,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     && !TextUtils.equals(status.getCanonicalUrl(), currentStatus.getCanonicalUrl())) {
                 Utils.debugLog(TAG, "Ignoring app status change because it belongs to "
                         + status.getCanonicalUrl() + " not " + currentStatus.getCanonicalUrl());
-            } else if (status != null && !TextUtils.equals(status.apk.packageName, app.packageName)) {
+            } else if (status != null && app != null && !TextUtils.equals(status.apk.packageName, app.packageName)) {
                 Utils.debugLog(TAG, "Ignoring app status change because it belongs to "
                         + status.apk.packageName + " not " + app.packageName);
             } else {

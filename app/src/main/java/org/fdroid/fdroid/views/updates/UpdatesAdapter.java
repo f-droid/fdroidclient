@@ -1,20 +1,22 @@
 package org.fdroid.fdroid.views.updates;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager;
 
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.UpdatableApp;
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.updates.items.AppStatus;
 import org.fdroid.fdroid.views.updates.items.AppUpdateData;
 import org.fdroid.fdroid.views.updates.items.KnownVulnApp;
@@ -23,18 +25,20 @@ import org.fdroid.fdroid.views.updates.items.UpdateableAppsHeader;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**
  * Manages the following types of information:
@@ -63,26 +67,23 @@ import androidx.recyclerview.widget.RecyclerView;
  * repopulate it from the original source lists of data. When this is done, the adapter will notify
  * the recycler view that its data has changed. Sometimes it will also ask the recycler view to
  * scroll to the newly added item (if attached to the recycler view).
- * <p>
- * TODO: If a user downloads an old version of an app (resulting in a new update being available
- * instantly), then we need to refresh the list of apps to update.
  */
-public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-        implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    private static final int LOADER_CAN_UPDATE = 289753982;
-    private static final int LOADER_KNOWN_VULN = 520389740;
+public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final AdapterDelegatesManager<List<AppUpdateData>> delegatesManager = new AdapterDelegatesManager<>();
-    private final List<AppUpdateData> items = new ArrayList<>();
 
     private final AppCompatActivity activity;
+    private final DbUpdateChecker updateChecker;
 
+    private final List<AppUpdateData> items = new ArrayList<>();
     private final List<AppStatus> appsToShowStatus = new ArrayList<>();
     private final List<UpdateableApp> updateableApps = new ArrayList<>();
     private final List<KnownVulnApp> knownVulnApps = new ArrayList<>();
 
+    // This is lost on configuration changes e.g. rotating the screen.
     private boolean showAllUpdateableApps = false;
+    @Nullable
+    private Disposable disposable;
 
     public UpdatesAdapter(AppCompatActivity activity) {
         this.activity = activity;
@@ -90,9 +91,29 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
                 .addDelegate(new UpdateableApp.Delegate(activity))
                 .addDelegate(new UpdateableAppsHeader.Delegate(activity))
-                .addDelegate(new KnownVulnApp.Delegate(activity));
+                .addDelegate(new KnownVulnApp.Delegate(activity, this::loadUpdatableApps));
 
-        initLoaders();
+        FDroidDatabase db = DBHelper.getDb(activity);
+        updateChecker = new DbUpdateChecker(db, activity.getPackageManager());
+        loadUpdatableApps();
+    }
+
+    private void loadUpdatableApps() {
+        List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+        if (disposable != null) disposable.dispose();
+        disposable = Single.fromCallable(() -> updateChecker.getUpdatableApps(releaseChannels))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onCanUpdateLoadFinished);
+    }
+
+    public boolean canViewAllUpdateableApps() {
+        return showAllUpdateableApps;
+    }
+
+    public void toggleAllUpdateableApps() {
+        showAllUpdateableApps = !showAllUpdateableApps;
+        refreshItems();
     }
 
     /**
@@ -110,71 +131,72 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 status.status == AppUpdateStatusManager.Status.ReadyToInstall;
     }
 
+    private void onCanUpdateLoadFinished(List<UpdatableApp> apps) {
+        updateableApps.clear();
+        knownVulnApps.clear();
+
+        for (UpdatableApp updatableApp: apps) {
+            App app = new App(updatableApp);
+            Apk apk = new Apk(updatableApp.getUpdate());
+            if (updatableApp.getHasKnownVulnerability()) {
+                app.installedApk = apk;
+                knownVulnApps.add(new KnownVulnApp(activity, app, apk));
+            } else {
+                updateableApps.add(new UpdateableApp(activity, app, apk));
+            }
+        }
+        refreshItems();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void refreshItems() {
+        populateAppStatuses();
+        populateItems();
+        notifyDataSetChanged();
+    }
+
     /**
      * Adds items from the {@link AppUpdateStatusManager} to {@link UpdatesAdapter#appsToShowStatus}.
-     * Note that this will then subsequently rebuild the underlying adapter data structure by
-     * invoking {@link UpdatesAdapter#populateItems}. However as per the populateItems method, it
-     * does not know how best to notify the recycler view of any changes. That is up to the caller
-     * of this method.
      */
     private void populateAppStatuses() {
+        appsToShowStatus.clear();
         for (AppUpdateStatusManager.AppUpdateStatus status : AppUpdateStatusManager.getInstance(activity).getAll()) {
             if (shouldShowStatus(status)) {
                 appsToShowStatus.add(new AppStatus(activity, status));
             }
         }
-
-        Collections.sort(appsToShowStatus, new Comparator<AppStatus>() {
-            @Override
-            public int compare(AppStatus o1, AppStatus o2) {
-                return o1.status.app.name.compareTo(o2.status.app.name);
-            }
-        });
-
-        populateItems();
-    }
-
-    public boolean canViewAllUpdateableApps() {
-        return showAllUpdateableApps;
-    }
-
-    public void toggleAllUpdateableApps() {
-        showAllUpdateableApps = !showAllUpdateableApps;
-        populateItems();
+        //noinspection ComparatorCombinators
+        Collections.sort(appsToShowStatus, (o1, o2) -> o1.status.app.name.compareTo(o2.status.app.name));
     }
 
     /**
-     * Completely rebuilds the underlying data structure used by this adapter. Note however, that
-     * this does not notify the recycler view of any changes. Thus, it is up to other methods which
-     * initiate a call to this method to make sure they appropriately notify the recyler view.
+     * Completely rebuilds the underlying data structure used by this adapter.
      */
     private void populateItems() {
         items.clear();
 
-        Set<String> toShowStatusPackageNames = new HashSet<>(appsToShowStatus.size());
+        Set<String> toShowStatusUrls = new HashSet<>(appsToShowStatus.size());
         for (AppStatus app : appsToShowStatus) {
-            toShowStatusPackageNames.add(app.status.app.packageName);
+            // Show status
             items.add(app);
+            toShowStatusUrls.add(app.status.getCanonicalUrl());
         }
-
-        if (updateableApps != null) {
-            // Only count/show apps which are not shown above in the "Apps to show status" list.
-            List<UpdateableApp> updateableAppsToShow = new ArrayList<>(updateableApps.size());
-            for (UpdateableApp app : updateableApps) {
-                if (!toShowStatusPackageNames.contains(app.app.packageName)) {
-                    updateableAppsToShow.add(app);
-                }
-            }
-
-            if (updateableAppsToShow.size() > 0) {
-                items.add(new UpdateableAppsHeader(activity, this, updateableAppsToShow));
-
-                if (showAllUpdateableApps) {
-                    items.addAll(updateableAppsToShow);
-                }
+        // Show apps that are in state UpdateAvailable below the statuses
+        List<UpdateableApp> updateableAppsToShow = new ArrayList<>(updateableApps.size());
+        for (UpdateableApp app : updateableApps) {
+            if (!toShowStatusUrls.contains(app.apk.getCanonicalUrl())) {
+                updateableAppsToShow.add(app);
             }
         }
-
+        if (updateableAppsToShow.size() > 0) {
+            // show header, if there's apps to update
+            items.add(new UpdateableAppsHeader(activity, this, updateableAppsToShow));
+            // show all items, if "Show All" was clicked
+            if (showAllUpdateableApps) {
+                items.addAll(updateableAppsToShow);
+            }
+        }
+        // add vulnerable apps at the bottom
         items.addAll(knownVulnApps);
     }
 
@@ -199,89 +221,24 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         delegatesManager.onBindViewHolder(items, position, holder);
     }
 
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Uri uri;
-        switch (id) {
-            case LOADER_CAN_UPDATE:
-                uri = AppProvider.getCanUpdateUri();
-                break;
-
-            case LOADER_KNOWN_VULN:
-                uri = AppProvider.getInstalledWithKnownVulnsUri();
-                break;
-
-            default:
-                throw new IllegalStateException("Unknown loader requested: " + id);
-        }
-
-        return new CursorLoader(
-                activity, uri, Schema.AppMetadataTable.Cols.ALL, null, null, Schema.AppMetadataTable.Cols.NAME);
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-        switch (loader.getId()) {
-            case LOADER_CAN_UPDATE:
-                onCanUpdateLoadFinished(cursor);
-                break;
-
-            case LOADER_KNOWN_VULN:
-                onKnownVulnLoadFinished(cursor);
-                break;
-        }
-
-        populateItems();
-        notifyDataSetChanged();
-    }
-
-    private void onCanUpdateLoadFinished(Cursor cursor) {
-        updateableApps.clear();
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            updateableApps.add(new UpdateableApp(activity, new App(cursor)));
-            cursor.moveToNext();
-        }
-    }
-
-    private void onKnownVulnLoadFinished(Cursor cursor) {
-        knownVulnApps.clear();
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            knownVulnApps.add(new KnownVulnApp(activity, new App(cursor)));
-            cursor.moveToNext();
-        }
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-    }
-
     /**
      * If this adapter is "active" then it is part of the current UI that the user is looking to.
      * Under those circumstances, we want to make sure it is up to date, and also listen to the
      * correct set of broadcasts.
-     * Doesn't listen for {@link AppUpdateStatusManager#BROADCAST_APPSTATUS_CHANGED} because the
-     * individual items in the recycler view will listen for the appropriate changes in state and
-     * update themselves accordingly (if they are displayed).
      */
     public void setIsActive() {
-        appsToShowStatus.clear();
-        populateAppStatuses();
-        notifyDataSetChanged();
+        loadUpdatableApps();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_ADDED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
+        filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
 
         LocalBroadcastManager.getInstance(activity).registerReceiver(receiverAppStatusChanges, filter);
     }
 
-    public void stopListeningForStatusUpdates() {
+    void stopListeningForStatusUpdates() {
         LocalBroadcastManager.getInstance(activity).unregisterReceiver(receiverAppStatusChanges);
     }
 
@@ -302,12 +259,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * We need to rerun our database query to get a list of apps to update.
      */
     private void onUpdateableAppsChanged() {
-        initLoaders();
-    }
-
-    private void initLoaders() {
-        activity.getSupportLoaderManager().initLoader(LOADER_CAN_UPDATE, null, this);
-        activity.getSupportLoaderManager().initLoader(LOADER_KNOWN_VULN, null, this);
+        loadUpdatableApps();
     }
 
     /**
@@ -315,20 +267,15 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * some which are ready to install.
      */
     private void onFoundAppsReadyToInstall() {
-        populateAppStatuses();
-        notifyDataSetChanged();
+        refreshItems();
     }
 
     private void onAppStatusAdded() {
-        appsToShowStatus.clear();
-        populateAppStatuses();
-        notifyDataSetChanged();
+        refreshItems();
     }
 
     private void onAppStatusRemoved() {
-        appsToShowStatus.clear();
-        populateAppStatuses();
-        notifyDataSetChanged();
+        loadUpdatableApps();
     }
 
     private final BroadcastReceiver receiverAppStatusChanges = new BroadcastReceiver() {
@@ -338,6 +285,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 return;
             }
             switch (intent.getAction()) {
+                case AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED:
+                    if (intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false)) {
+                        refreshItems();
+                    }
+                    break;
+
                 case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
                     onManyAppStatusesChanged(intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE));
                     break;
@@ -353,11 +306,4 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     };
 
-    /**
-     * If an item representing an {@link org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus} is dismissed,
-     * then we should rebuild the list of app statuses and update the adapter.
-     */
-    public void refreshStatuses() {
-        onAppStatusRemoved();
-    }
 }

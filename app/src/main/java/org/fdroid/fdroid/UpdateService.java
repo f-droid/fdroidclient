@@ -37,37 +37,38 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.fdroid.CompatibilityChecker;
-import org.fdroid.CompatibilityCheckerImpl;
-import org.fdroid.database.Repository;
-import org.fdroid.download.Mirror;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.installer.InstallManagerService;
-import org.fdroid.fdroid.net.BluetoothDownloader;
-import org.fdroid.fdroid.net.ConnectivityMonitorService;
-import org.fdroid.fdroid.net.DownloaderFactory;
-import org.fdroid.index.v1.IndexUpdateListener;
-import org.fdroid.index.v1.IndexUpdateResult;
-import org.fdroid.index.v1.IndexUpdaterKt;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.util.Pair;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import org.fdroid.CompatibilityChecker;
+import org.fdroid.CompatibilityCheckerImpl;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
+import org.fdroid.database.UpdatableApp;
+import org.fdroid.database.DbUpdateChecker;
+import org.fdroid.download.Mirror;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.DBHelper;
+import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.net.BluetoothDownloader;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.DownloaderFactory;
+import org.fdroid.index.IndexUpdateResult;
+import org.fdroid.index.RepoUpdater;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class UpdateService extends JobIntentService {
@@ -105,6 +106,7 @@ public class UpdateService extends JobIntentService {
 
     private static UpdateService updateService;
 
+    private FDroidDatabase db;
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
     private AppUpdateStatusManager appUpdateStatusManager;
@@ -290,6 +292,7 @@ public class UpdateService extends JobIntentService {
     public void onCreate() {
         super.onCreate();
         updateService = this;
+        db = DBHelper.getDb(getApplicationContext());
 
         notificationManager = ContextCompat.getSystemService(this, NotificationManager.class);
 
@@ -477,43 +480,33 @@ public class UpdateService extends JobIntentService {
                     unchangedRepos++;
                     continue;
                 }
+                // TODO reject update if repo.getLastUpdated() is too recent
+
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.getAddress()));
 
-                try {
-                    final String canonicalUri = IndexUpdaterKt.getCanonicalUri(repo).toString();
-                    final IndexUpdateListener listener = new UpdateServiceListener(this, canonicalUri);
-                    final CompatibilityChecker compatChecker =
-                            new CompatibilityCheckerImpl(getPackageManager(), Preferences.get().forceTouchApps());
-                    // TODO try new v2 index first
-                    final org.fdroid.index.v1.IndexV1Updater updater = new org.fdroid.index.v1.IndexV1Updater(
-                            getApplicationContext(), DownloaderFactory.INSTANCE, compatChecker);
-                    final long currentRepoId = repo.getRepoId();
-                    final IndexUpdateResult result;
-                    if (repo.getCertificate() == null) {
-                        // This is a new repo without a certificate
-                        result = updater.updateNewRepo(currentRepoId, fingerprint, listener);
-                    } else {
-                        result = updater.update(currentRepoId, repo.getCertificate(), listener);
-                    }
-                    if (result == IndexUpdateResult.UNCHANGED) {
-                        unchangedRepos++;
-                    } else if (result == IndexUpdateResult.PROCESSED) {
-                        updatedRepos++;
-                        changes = true;
-                    }
-                } catch (Exception e) {
+                final CompatibilityChecker compatChecker =
+                        new CompatibilityCheckerImpl(getPackageManager(), Preferences.get().forceTouchApps());
+                final RepoUpdater repoUpdater = new RepoUpdater(getApplicationContext().getCacheDir(), db,
+                        DownloaderFactory.INSTANCE, compatChecker, new UpdateServiceListener(UpdateService.this));
+                final IndexUpdateResult result = repoUpdater.update(repo, fingerprint);
+                if (result instanceof IndexUpdateResult.Unchanged) {
+                    unchangedRepos++;
+                } else if (result instanceof IndexUpdateResult.Processed) {
+                    updatedRepos++;
+                    changes = true;
+                } else if (result instanceof IndexUpdateResult.Error) {
                     errorRepos++;
+                    Exception e = ((IndexUpdateResult.Error) result).getE();
                     Throwable cause = e.getCause();
                     if (cause == null) {
                         repoErrors.add(e.getLocalizedMessage());
                     } else {
                         repoErrors.add(e.getLocalizedMessage() + " ⇨ " + cause.getLocalizedMessage());
                     }
-                    Log.e(TAG, "Error updating repository " + repo.getAddress());
-                    e.printStackTrace();
+                    Log.e(TAG, "Error updating repository " + repo.getAddress(), e);
                 }
-
                 // now that downloading the index is done, start downloading updates
+                // TODO why are we checking for updates several times (in loop and below)
                 if (changes && fdroidPrefs.isAutoDownloadEnabled() && fdroidPrefs.isBackgroundDownloadAllowed()) {
                     autoDownloadUpdates(this);
                 }
@@ -521,12 +514,8 @@ public class UpdateService extends JobIntentService {
 
             if (!changes) {
                 Utils.debugLog(TAG, "Not checking app details or compatibility, because repos were up to date.");
-            } else {
-                notifyContentProviders();
-
-                if (fdroidPrefs.isUpdateNotificationEnabled() && !fdroidPrefs.isAutoDownloadEnabled()) {
-                    performUpdateNotification();
-                }
+            } else if (fdroidPrefs.isUpdateNotificationEnabled() && !fdroidPrefs.isAutoDownloadEnabled()) {
+                appUpdateStatusManager.checkForUpdates();
             }
 
             fdroidPrefs.setLastUpdateCheck(System.currentTimeMillis());
@@ -553,49 +542,34 @@ public class UpdateService extends JobIntentService {
         Log.i(TAG, "Updating repo(s) complete, took " + time / 1000 + " seconds to complete.");
     }
 
-    private void notifyContentProviders() {
-        getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-        getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
-    }
-
-    private void performUpdateNotification() {
-        List<App> canUpdate = AppProvider.Helper.findCanUpdate(this, Schema.AppMetadataTable.Cols.ALL);
-        if (canUpdate.size() > 0) {
-            showAppUpdatesNotification(canUpdate);
-        }
-    }
-
     /**
      * Queues all apps needing update.  If this app itself (e.g. F-Droid) needs
      * to be updated, it is queued last.
      */
-    public static void autoDownloadUpdates(Context context) {
-        // TODO adapt to new DB
-        List<App> canUpdate = AppProvider.Helper.findCanUpdate(context, Schema.AppMetadataTable.Cols.ALL);
-        String packageName = context.getPackageName();
-        App updateLastApp = null;
-        Apk updateLastApk = null;
-        for (App app : canUpdate) {
-            if (TextUtils.equals(packageName, app.packageName)) {
-                updateLastApp = app;
-                updateLastApk = ApkProvider.Helper.findSuggestedApk(context, app);
-                continue;
-            }
-            Apk apk = ApkProvider.Helper.findSuggestedApk(context, app);
-            InstallManagerService.queue(context, app, apk);
-        }
-        if (updateLastApp != null && updateLastApk != null) {
-            InstallManagerService.queue(context, updateLastApp, updateLastApk);
-        }
+    public static Disposable autoDownloadUpdates(Context context) {
+        DbUpdateChecker updateChecker = new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
+        List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+        return Single.fromCallable(() -> updateChecker.getUpdatableApps(releaseChannels))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(updatableApps -> downloadUpdates(context, updatableApps));
     }
 
-    private void showAppUpdatesNotification(List<App> canUpdate) {
-        if (canUpdate.size() > 0) {
-            List<Pair<App, Apk>> apksToUpdate = new ArrayList<>(canUpdate.size());
-            for (App app : canUpdate) {
-                apksToUpdate.add(new Pair<>(app, ApkProvider.Helper.findSuggestedApk(this, app)));
+    private static void downloadUpdates(Context context, List<UpdatableApp> apps) {
+        String ourPackageName = context.getPackageName();
+        App updateLastApp = null;
+        Apk updateLastApk = null;
+        for (UpdatableApp app : apps) {
+            // update our own APK at the end
+            if (TextUtils.equals(ourPackageName, app.getUpdate().getPackageName())) {
+                updateLastApp = new App(app);
+                updateLastApk = new Apk(app.getUpdate());
+                continue;
             }
-            appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
+            InstallManagerService.queue(context, new App(app), new Apk(app.getUpdate()));
+        }
+        if (updateLastApp != null) {
+            InstallManagerService.queue(context, updateLastApp, updateLastApk);
         }
     }
 

@@ -15,7 +15,6 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import org.acra.ACRA;
-import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Schema.InstalledAppTable;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -49,9 +48,9 @@ import io.reactivex.rxjava3.subjects.PublishSubject;
  * {@link #deleteAppFromDb(Context, String)} are both static methods to enable easy testing
  * of this stuff.
  * <p>
- * This also updates the {@link AppUpdateStatusManager.Status status} of any
+ * This also updates the {@link org.fdroid.fdroid.AppUpdateStatusManager.Status status} of any
  * package installs that are still in progress.  Most importantly, this
- * provides the final {@link AppUpdateStatusManager.Status#Installed status update}
+ * provides the final {@link org.fdroid.fdroid.AppUpdateStatusManager.Status#Installed status update}
  * to mark the end of the installation process.  It also errors out installation
  * processes where some outside factor uninstalled the package while the F-Droid
  * process was underway, e.g. uninstalling via {@code adb}, updates via Google
@@ -283,15 +282,16 @@ public class InstalledAppProviderService extends JobIntentService {
     protected void onHandleWork(@NonNull Intent intent) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
-        AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
+        //AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
         String packageName = intent.getData().getSchemeSpecificPart();
         final String action = intent.getAction();
         if (ACTION_INSERT.equals(action)) {
             PackageInfo packageInfo = getPackageInfo(intent, packageName);
             if (packageInfo != null) {
-                for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
-                    ausm.updateApk(status.getCanonicalUrl(), AppUpdateStatusManager.Status.Installed, null);
-                }
+                //for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+                // these cause duplicate events, do we really need this?
+                // ausm.updateApk(status.getCanonicalUrl(), AppUpdateStatusManager.Status.Installed, null);
+                //}
                 File apk = getPathToInstalledApk(packageInfo);
                 if (apk == null) {
                     return;
@@ -310,9 +310,10 @@ public class InstalledAppProviderService extends JobIntentService {
             }
         } else if (ACTION_DELETE.equals(action)) {
             deleteAppFromDb(this, packageName);
-            for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
-                ausm.updateApk(status.getCanonicalUrl(), AppUpdateStatusManager.Status.InstallError, null);
-            }
+            //for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(packageName)) {
+            // these cause duplicate events, do we really need this?
+            // ausm.updateApk(status.getCanonicalUrl(), AppUpdateStatusManager.Status.InstallError, null);
+            //}
         }
         packageChangeNotifier.onNext(packageName);
     }

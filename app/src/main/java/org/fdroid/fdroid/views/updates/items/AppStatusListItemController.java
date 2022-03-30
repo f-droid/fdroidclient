@@ -82,7 +82,7 @@ public class AppStatusListItemController extends AppListItemController {
                             public void onClick(View view) {
                                 manager.addApk(appUpdateStatus.app, appUpdateStatus.apk, appUpdateStatus.status,
                                         appUpdateStatus.intent);
-                                adapter.refreshStatuses();
+                                adapter.refreshItems();
                             }
                         }).show();
                         break;
@@ -90,7 +90,7 @@ public class AppStatusListItemController extends AppListItemController {
             }
         }
 
-        adapter.refreshStatuses();
+        adapter.refreshItems();
     }
 
 }
