@@ -4,11 +4,13 @@ import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.fdroid.database.AppPrefs;
+import org.fdroid.database.AppPrefsDao;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefs;
-import org.fdroid.fdroid.data.AppPrefsProvider;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
@@ -16,6 +18,8 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 /**
  * Very trimmed down list item. Only displays the app icon, name, and a download button.
@@ -43,26 +47,35 @@ public class UpdateableAppListItemController extends AppListItemController {
 
     @Override
     protected void onDismissApp(@NonNull final App app, UpdatesAdapter adapter) {
-        final AppPrefs prefs = app.getPrefs(activity);
-        prefs.ignoreThisUpdate = app.autoInstallVersionCode;
+        AppPrefsDao appPrefsDao = DBHelper.getDb(activity).getAppPrefsDao();
+        LiveData<AppPrefs> liveData = appPrefsDao.getAppPrefs(app.packageName);
+        liveData.observe(activity, new Observer<AppPrefs>() {
+            @Override
+            public void onChanged(org.fdroid.database.AppPrefs appPrefs) {
+                Utils.runOffUiThread(() -> {
+                    AppPrefs newPrefs = appPrefs.toggleIgnoreVersionCodeUpdate(app.autoInstallVersionCode);
+                    appPrefsDao.update(newPrefs);
+                    return newPrefs;
+                }, newPrefs -> {
+                        showUndoSnackBar(appPrefsDao, newPrefs);
+                        AppUpdateStatusManager.getInstance(activity).checkForUpdates();
+                    });
+                liveData.removeObserver(this);
+            }
+        });
+    }
 
+    private void showUndoSnackBar(AppPrefsDao appPrefsDao, AppPrefs appPrefs) {
         Snackbar.make(
                 itemView,
                 R.string.app_list__dismiss_app_update,
                 Snackbar.LENGTH_LONG
         )
-                .setAction(R.string.undo, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        prefs.ignoreThisUpdate = 0;
-                        AppPrefsProvider.Helper.update(activity, app, prefs);
-                    }
-                })
+                .setAction(R.string.undo, view -> Utils.runOffUiThread(() -> {
+                    AppPrefs newPrefs = appPrefs.toggleIgnoreVersionCodeUpdate(0);
+                    appPrefsDao.update(newPrefs);
+                    return true;
+                }, result -> AppUpdateStatusManager.getInstance(activity).checkForUpdates()))
                 .show();
-
-
-        // The act of updating here will trigger a re-query of the "can update" apps, so no need to do anything else
-        // to update the UI in response to this.
-        AppPrefsProvider.Helper.update(activity, app, prefs);
     }
 }

@@ -50,7 +50,7 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
         }
 
         cursor.moveToPosition(position);
-        holder.bindModel(new App(cursor));
+        holder.bindModel(new App(cursor), null, null);
     }
 
     @Override

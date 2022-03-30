@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.database.Repository;
+import org.fdroid.database.UpdatableApp;
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
@@ -431,6 +432,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                     Log.e(TAG, "Unknown column name " + n);
             }
         }
+    }
+
+    public App(final UpdatableApp app) {
+        id = 0;
+        repoId = app.getUpdate().getRepoId();
+        packageName = app.getPackageName();
+        name = app.getName() == null ? "" : app.getName();
+        summary = app.getSummary() == null ? "" : app.getSummary();
+        installedVersionCode = (int) app.getInstalledVersionCode();
+        autoInstallVersionCode = (int) app.getUpdate().getManifest().getVersionCode();
+        FileV2 icon = app.getIcon(getLocales());
+        iconUrl = icon == null ? null : icon.getName();
+        iconFromApk = icon == null ? null : icon.getName();
     }
 
     public App(final org.fdroid.database.App app, @Nullable PackageInfo packageInfo) {
@@ -1111,36 +1125,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         apkJar.close();
 
         apk.sig = Utils.getsig(rawCertBytes);
-    }
-
-    /**
-     * Attempts to find the installed {@link Apk} from the database. If not found, will lookup the
-     * {@link InstalledAppProvider} to find the details of the installed app and use that to
-     * instantiate an {@link Apk} to be returned.
-     * <p>
-     * Cases where an {@link Apk} will not be found in the database and for which we fall back to
-     * the {@link InstalledAppProvider} include:
-     * <li>System apps which are provided by a repository, but for which the version code bundled
-     * with the system is not included in the repository.</li>
-     * <li>Regular apps from a repository, where the installed version is old enough that it is no
-     * longer available in the repository.</li>
-     */
-    @Nullable
-    public Apk getInstalledApk(Context context) {
-        try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(this.packageName, 0);
-            Apk apk = ApkProvider.Helper.findApkFromAnyRepo(context, pi.packageName, pi.versionCode);
-            if (apk == null) {
-                InstalledApp installedApp = InstalledAppProvider.Helper.findByPackageName(context, pi.packageName);
-                if (installedApp == null) {
-                    throw new IllegalStateException("No installed app found when trying to uninstall");
-                }
-                apk = new Apk(installedApp);
-            }
-            return apk;
-        } catch (PackageManager.NameNotFoundException e) {
-            return null;
-        }
     }
 
     /**
