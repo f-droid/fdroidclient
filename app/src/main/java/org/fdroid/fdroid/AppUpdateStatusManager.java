@@ -9,8 +9,14 @@ import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import org.fdroid.database.UpdatableApp;
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -26,8 +32,9 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.TaskStackBuilder;
-import androidx.core.util.Pair;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * Manages the state of APKs that are being installed or that have updates available.
@@ -109,6 +116,7 @@ public final class AppUpdateStatusManager {
     }
 
     private static AppUpdateStatusManager instance;
+    private final MutableLiveData<Integer> numUpdatableApps = new MutableLiveData<>();
 
     public static class AppUpdateStatus implements Parcelable {
         public final App app;
@@ -199,12 +207,19 @@ public final class AppUpdateStatusManager {
 
     private final Context context;
     private final LocalBroadcastManager localBroadcastManager;
+    private final DbUpdateChecker updateChecker;
     private final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
+    @Nullable
+    private Disposable disposable;
     private boolean isBatchUpdating;
 
     private AppUpdateStatusManager(Context context) {
         this.context = context;
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
+        updateChecker = new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
+        // let's check number of updatable apps at the beginning, so the badge can show the right number
+        // then we can also use the populated entries in other places to show updates
+        disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableAppsNoNotify);
     }
 
     public void removeAllByRepo(long repoId) {
@@ -254,8 +269,39 @@ public final class AppUpdateStatusManager {
         return returnValues;
     }
 
+    /**
+     * Returns the version of the given package name that can be installed or is installing at the moment.
+     * If this returns null, no updates are available and no installs in progress.
+     */
+    @Nullable
+    public String getInstallableVersion(String packageName) {
+        for (AppUpdateStatusManager.AppUpdateStatus status : getByPackageName(packageName)) {
+            AppUpdateStatusManager.Status s = status.status;
+            if (s != AppUpdateStatusManager.Status.DownloadInterrupted &&
+                    s != AppUpdateStatusManager.Status.Installed &&
+                    s != AppUpdateStatusManager.Status.InstallError) {
+                return status.apk.versionName;
+            }
+        }
+        return null;
+    }
+
+    public LiveData<Integer> getNumUpdatableApps() {
+        return numUpdatableApps;
+    }
+
+    public void setNumUpdatableApps(int num) {
+        numUpdatableApps.postValue(num);
+    }
+
     private void updateApkInternal(@NonNull AppUpdateStatus entry, @NonNull Status status, PendingIntent intent) {
-        Utils.debugLog(LOGTAG, "Update APK " + entry.apk.apkName + " state to " + status.name());
+        if (status == Status.UpdateAvailable && entry.status.ordinal() > status.ordinal()) {
+            Utils.debugLog(LOGTAG, "Not updating APK " + entry.apk.apkName + " state to " + status.name());
+            // If we have this entry in a more advanced state already, don't downgrade it
+            return;
+        } else {
+            Utils.debugLog(LOGTAG, "Update APK " + entry.apk.apkName + " state to " + status.name());
+        }
         boolean isStatusUpdate = entry.status != status;
         entry.status = status;
         entry.intent = intent;
@@ -264,6 +310,8 @@ public final class AppUpdateStatusManager {
 
         if (status == Status.Installed) {
             InstallManagerService.removePendingInstall(context, entry.getCanonicalUrl());
+            // After an app got installed, update available updates
+            checkForUpdates();
         }
     }
 
@@ -323,12 +371,39 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    public void addApks(List<Pair<App, Apk>> apksToUpdate, Status status) {
-        startBatchUpdates();
-        for (Pair<App, Apk> pair : apksToUpdate) {
-            addApk(pair.first, pair.second, status, null);
+    public void checkForUpdates() {
+        if (disposable != null) disposable.dispose();
+        disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableApps);
+    }
+
+    private List<UpdatableApp> getUpdatableApps() {
+        List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+        return updateChecker.getUpdatableApps(releaseChannels);
+    }
+
+    private void addUpdatableApps(List<UpdatableApp> canUpdate) {
+        if (canUpdate.size() > 0) {
+            startBatchUpdates();
+            for (UpdatableApp app : canUpdate) {
+                addApk(new App(app), new Apk(app.getUpdate()), Status.UpdateAvailable, null);
+            }
+            endBatchUpdates(Status.UpdateAvailable);
         }
-        endBatchUpdates(status);
+        setNumUpdatableApps(canUpdate.size());
+    }
+
+    private void addUpdatableAppsNoNotify(List<UpdatableApp> canUpdate) {
+        synchronized (appMapping) {
+            isBatchUpdating = true;
+            try {
+                for (UpdatableApp app : canUpdate) {
+                    addApk(new App(app), new Apk(app.getUpdate()), Status.UpdateAvailable, null);
+                }
+                setNumUpdatableApps(canUpdate.size());
+            } finally {
+                isBatchUpdating = false;
+            }
+        }
     }
 
     /**

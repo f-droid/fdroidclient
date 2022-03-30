@@ -26,7 +26,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
@@ -106,6 +105,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     @Nullable
     private App currentApp;
+    @Nullable
+    private Apk currentApk;
 
     @Nullable
     private AppUpdateStatus currentStatus;
@@ -123,7 +124,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             installButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onActionButtonPressed(currentApp);
+                    onActionButtonPressed(currentApp, currentApk);
                 }
             });
 
@@ -163,7 +164,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 @Override
                 public void onClick(View v) {
                     actionButton.setEnabled(false);
-                    onActionButtonPressed(currentApp);
+                    onActionButtonPressed(currentApp, currentApk);
                 }
             });
         }
@@ -184,23 +185,26 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         return currentStatus;
     }
 
-    public void bindModel(@NonNull App app) {
+    public void bindModel(@NonNull App app, Apk apk, @Nullable AppUpdateStatus s) {
         currentApp = app;
+        if (apk == null) throw new IllegalStateException(); // TODO remove at the end and make Apk @NonNull
+        currentApk = apk;
 
         if (actionButton != null) actionButton.setEnabled(true);
 
         Utils.setIconFromRepoOrPM(app, icon, activity);
 
-        // Figures out the current install/update/download/etc status for the app we are viewing.
-        // Then, asks the view to update itself to reflect this status.
-        Iterator<AppUpdateStatus> statuses =
-                AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
-        if (statuses.hasNext()) {
-            AppUpdateStatus status = statuses.next();
-            updateAppStatus(app, status);
-        } else {
-            updateAppStatus(app, null);
+        AppUpdateStatus status = s;
+        if (status == null) {
+            // Figures out the current install/update/download/etc status for the app we are viewing.
+            // Then, asks the view to update itself to reflect this status.
+            Iterator<AppUpdateStatus> statuses =
+                    AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
+            if (statuses.hasNext()) {
+                status = statuses.next();
+            }
         }
+        updateAppStatus(app, status);
 
         final LocalBroadcastManager broadcastManager =
                 LocalBroadcastManager.getInstance(activity.getApplicationContext());
@@ -265,6 +269,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         if (actionButton != null) {
             if (viewState.shouldShowActionButton()) {
                 actionButton.setVisibility(View.VISIBLE);
+                actionButton.setEnabled(true);
                 actionButton.setText(viewState.getActionButtonText());
             } else {
                 actionButton.setVisibility(View.GONE);
@@ -274,6 +279,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         if (secondaryButton != null) {
             if (viewState.shouldShowSecondaryButton()) {
                 secondaryButton.setVisibility(View.VISIBLE);
+                secondaryButton.setEnabled(true);
                 secondaryButton.setText(viewState.getSecondaryButtonText());
             } else {
                 secondaryButton.setVisibility(View.GONE);
@@ -399,6 +405,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 .setStatusText(activity.getString(R.string.notification_content_single_installed));
 
         if (activity.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
+            Utils.debugLog(TAG, "Not showing 'Open' button for " + app.packageName + " because no intent.");
             state.showActionButton(activity.getString(R.string.menu_launch));
         }
 
@@ -478,13 +485,13 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             if (currentApp == null) {
                 return;
             }
-
+            if (secondaryButton != null) secondaryButton.setEnabled(false);
             onSecondaryButtonPressed(currentApp);
         }
     };
 
-    protected void onActionButtonPressed(App app) {
-        if (app == null) {
+    protected void onActionButtonPressed(App app, Apk apk) {
+        if (app == null || apk == null) {
             return;
         }
 
@@ -530,8 +537,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             Installer installer = InstallerFactory.create(activity, currentStatus.apk);
             installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
-            final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
-            InstallManagerService.queue(activity, app, suggestedApk);
+            InstallManagerService.queue(activity, app, apk);
         }
     }
 

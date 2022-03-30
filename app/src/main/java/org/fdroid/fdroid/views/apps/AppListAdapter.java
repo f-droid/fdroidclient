@@ -43,7 +43,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     public void onBindViewHolder(@NonNull StandardAppListItemController holder, int position) {
         cursor.moveToPosition(position);
         final App app = new App(cursor);
-        holder.bindModel(app);
+        holder.bindModel(app, null, null);
 
         if (app.isDisabledByAntiFeatures(activity)) {
             holder.itemView.setVisibility(View.GONE);
