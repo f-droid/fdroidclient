@@ -20,6 +20,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.database.AppVersion;
+import org.fdroid.database.DbUpdateChecker;
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.Preferences;
@@ -27,6 +39,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
@@ -36,16 +49,10 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.util.Pair;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * Supports the following layouts:
@@ -110,6 +117,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     @Nullable
     private AppUpdateStatus currentStatus;
+    @Nullable
+    private Disposable disposable;
 
     @TargetApi(21)
     public AppListItemController(final AppCompatActivity activity, View itemView) {
@@ -185,9 +194,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         return currentStatus;
     }
 
-    public void bindModel(@NonNull App app, Apk apk, @Nullable AppUpdateStatus s) {
+    public void bindModel(@NonNull App app, @Nullable Apk apk, @Nullable AppUpdateStatus s) {
         currentApp = app;
-        if (apk == null) throw new IllegalStateException(); // TODO remove at the end and make Apk @NonNull
         currentApk = apk;
 
         if (actionButton != null) actionButton.setEnabled(true);
@@ -490,8 +498,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
     };
 
-    protected void onActionButtonPressed(App app, Apk apk) {
-        if (app == null || apk == null) {
+    protected void onActionButtonPressed(App app, @Nullable Apk apk) {
+        if (app == null) {
             return;
         }
 
@@ -537,7 +545,17 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             Installer installer = InstallerFactory.create(activity, currentStatus.apk);
             installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
-            InstallManagerService.queue(activity, app, apk);
+            FDroidDatabase db = DBHelper.getDb(activity);
+            DbUpdateChecker updateChecker = new DbUpdateChecker(db, activity.getPackageManager());
+            List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+            if (disposable != null) disposable.dispose();
+            disposable = Utils.runOffUiThread(() -> {
+                AppVersion version = updateChecker.getSuggestedVersion(app.packageName,
+                        app.preferredSigner, releaseChannels);
+                return version == null ? null : new Apk(version);
+            }, receivedApk -> {
+                    if (receivedApk != null) InstallManagerService.queue(activity, app, receivedApk);
+                });
         }
     }
 
