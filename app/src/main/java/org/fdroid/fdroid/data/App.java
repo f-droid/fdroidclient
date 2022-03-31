@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.apache.commons.io.filefilter.RegexFileFilter;
+import org.fdroid.database.AppListItem;
 import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
 import org.fdroid.download.DownloadRequest;
@@ -512,6 +513,19 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             phoneScreenshots[i] = wearFiles.get(i).getName();
         }
         setInstalled(packageInfo);
+    }
+
+    public App(AppListItem item) {
+        repoId = item.getRepoId();
+        packageName = item.getPackageName();
+        name = item.getName() == null ? "" : item.getName();
+        summary = item.getSummary() == null ? "" : item.getSummary();
+        FileV2 iconFile = item.getIcon(getLocales());
+        iconFromApk = iconFile == null ? null : iconFile.getName();
+        installedVersionCode = item.getInstalledVersionCode() == null ? 0 : item.getInstalledVersionCode().intValue();
+        installedVersionName = item.getInstalledVersionName();
+        antiFeatures = item.getAntiFeatureKeys().toArray(new String[0]);
+        compatible = item.isCompatible();
     }
 
     public void setInstalled(@Nullable PackageInfo packageInfo) {
