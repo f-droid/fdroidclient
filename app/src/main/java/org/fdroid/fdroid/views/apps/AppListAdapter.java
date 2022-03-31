@@ -1,34 +1,37 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Schema;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.fdroid.database.AppListItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
 class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController> {
 
-    private Cursor cursor;
+    private final List<AppListItem> items = new ArrayList<>();
     private Runnable hasHiddenAppsCallback;
     private final AppCompatActivity activity;
 
     AppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
-        setHasStableIds(true);
     }
 
-    public void setAppCursor(Cursor cursor) {
-        this.cursor = cursor;
+    void setItems(List<AppListItem> items) {
+        this.items.clear();
+        this.items.addAll(items);
         notifyDataSetChanged();
     }
 
-    public void setHasHiddenAppsCallback(Runnable callback) {
+    void setHasHiddenAppsCallback(Runnable callback) {
         hasHiddenAppsCallback = callback;
     }
 
@@ -41,8 +44,8 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
 
     @Override
     public void onBindViewHolder(@NonNull StandardAppListItemController holder, int position) {
-        cursor.moveToPosition(position);
-        final App app = new App(cursor);
+        AppListItem appItem = items.get(position);
+        final App app = new App(appItem);
         holder.bindModel(app, null, null);
 
         if (app.isDisabledByAntiFeatures(activity)) {
@@ -69,13 +72,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     }
 
     @Override
-    public long getItemId(int position) {
-        cursor.moveToPosition(position);
-        return cursor.getLong(cursor.getColumnIndexOrThrow(Schema.AppMetadataTable.Cols.ROW_ID));
-    }
-
-    @Override
     public int getItemCount() {
-        return cursor == null ? 0 : cursor.getCount();
+        return items.size();
     }
 }
