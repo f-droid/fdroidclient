@@ -5,7 +5,10 @@ import androidx.room.DatabaseView
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Ignore
 import androidx.room.Relation
+import org.fdroid.database.Converters.fromStringToLocalizedTextV2
+import org.fdroid.database.Converters.fromStringToMapOfLocalizedTextV2
 import org.fdroid.index.v2.Author
 import org.fdroid.index.v2.Donation
 import org.fdroid.index.v2.FileV2
@@ -122,6 +125,48 @@ public data class AppOverviewItem(
 ) {
     public fun getName(localeList: LocaleListCompat) = name.getBestLocale(localeList)
     public fun getSummary(localeList: LocaleListCompat) = summary.getBestLocale(localeList)
+    public fun getIcon(localeList: LocaleListCompat) =
+        localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
+}
+
+public data class AppListItem @JvmOverloads constructor(
+    public val repoId: Long,
+    public val packageId: String,
+    internal val name: String?,
+    internal val summary: String?,
+    internal val antiFeatures: String?,
+    @Relation(
+        parentColumn = "packageId",
+        entityColumn = "packageId",
+    )
+    internal val localizedIcon: List<LocalizedIcon>?,
+    /**
+     * If true, this this app has at least one version that is compatible with this device.
+     */
+    @Ignore // TODO actually get this from the DB (probably needs post-processing).
+    public val isCompatible: Boolean = true,
+    /**
+     * The name of the installed version, null if this app is not installed.
+     */
+    @Ignore
+    public val installedVersionName: String? = null,
+    @Ignore
+    public val installedVersionCode: Long? = null,
+) {
+    public fun getName(localeList: LocaleListCompat): String? {
+        // queries for this class return a larger number, so we convert on demand
+        return fromStringToLocalizedTextV2(name).getBestLocale(localeList)
+    }
+
+    public fun getSummary(localeList: LocaleListCompat): String? {
+        // queries for this class return a larger number, so we convert on demand
+        return fromStringToLocalizedTextV2(summary).getBestLocale(localeList)
+    }
+
+    public fun getAntiFeatureNames(): List<String> {
+        return fromStringToMapOfLocalizedTextV2(antiFeatures)?.map { it.key } ?: emptyList()
+    }
+
     public fun getIcon(localeList: LocaleListCompat) =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
 }

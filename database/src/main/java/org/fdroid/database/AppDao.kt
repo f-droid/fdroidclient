@@ -1,5 +1,7 @@
 package org.fdroid.database
 
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +13,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RoomWarnings.CURSOR_MISMATCH
 import androidx.room.Transaction
 import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.index.v2.LocalizedFileListV2
@@ -29,6 +32,14 @@ public interface AppDao {
     fun getApp(repoId: Long, packageId: String): App?
     fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
     fun getAppOverviewItems(category: String, limit: Int = 50): LiveData<List<AppOverviewItem>>
+    fun getAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+    fun getAppListItems(
+        packageManager: PackageManager,
+        category: String,
+    ): LiveData<List<AppListItem>>
+
+    fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+
     fun getNumberOfAppsInCategory(category: String): Int
 }
 
@@ -197,8 +208,69 @@ internal interface AppDaoInt : AppDao {
         LIMIT :limit""")
     override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
 
-    // FIXME don't over report the same app twice (e.g. in several repos)
-    @Query("""SELECT COUNT(*) FROM AppMetadata
+    override fun getAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>> {
+        return getAppListItems().map(packageManager)
+    }
+
+    private fun LiveData<List<AppListItem>>.map(
+        packageManager: PackageManager,
+        installedPackages: Map<String, PackageInfo> = packageManager.getInstalledPackages(0)
+            .associateBy { packageInfo -> packageInfo.packageName },
+    ) = map { items ->
+        items.map { item ->
+            val packageInfo = installedPackages[item.packageId]
+            if (packageInfo == null) item else item.copy(
+                installedVersionName = packageInfo.versionName,
+                installedVersionCode = packageInfo.getVersionCode(),
+            )
+        }
+    }
+
+    @Transaction
+    @Query("""SELECT repoId, packageId, app.name, summary, version.antiFeatures
+        FROM AppMetadata AS app
+        JOIN Version AS version USING (repoId, packageId)
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1
+        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        ORDER BY app.lastUpdated DESC""")
+    fun getAppListItems(): LiveData<List<AppListItem>>
+
+    override fun getAppListItems(
+        packageManager: PackageManager,
+        category: String,
+    ): LiveData<List<AppListItem>> {
+        return getAppListItems(category).map(packageManager)
+    }
+
+    // TODO maybe it makes sense to split categories into their own table for this?
+    @Transaction
+    @Query("""SELECT repoId, packageId, app.name, summary, version.antiFeatures
+        FROM AppMetadata AS app
+        JOIN Version AS version USING (repoId, packageId)
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
+        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        ORDER BY app.lastUpdated DESC""")
+    fun getAppListItems(category: String): LiveData<List<AppListItem>>
+
+    @Transaction
+    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @Query("""SELECT repoId, packageId, app.name, summary
+        FROM AppMetadata AS app
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND packageId IN (:packageNames)
+        GROUP BY packageId HAVING MAX(pref.weight)""")
+    fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>
+
+    override fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>> {
+        val installedPackages = packageManager.getInstalledPackages(0)
+            .associateBy { packageInfo -> packageInfo.packageName }
+        val packageNames = installedPackages.keys.toList()
+        return getAppListItems(packageNames).map(packageManager, installedPackages)
+    }
+
+    @Query("""SELECT COUNT(DISTINCT packageId) FROM AppMetadata
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories LIKE '%' || :category || '%'""")
     override fun getNumberOfAppsInCategory(category: String): Int
