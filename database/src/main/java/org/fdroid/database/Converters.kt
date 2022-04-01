@@ -6,7 +6,7 @@ import kotlinx.serialization.builtins.serializer
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.v2.LocalizedTextV2
 
-internal class Converters {
+internal object Converters {
 
     private val localizedTextV2Serializer = MapSerializer(String.serializer(), String.serializer())
     private val mapOfLocalizedTextV2Serializer =

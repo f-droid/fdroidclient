@@ -48,8 +48,6 @@ public interface RepositoryDao {
     fun updateUserMirrors(repoId: Long, mirrors: List<String>)
     fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
     fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
-
-    // FIXME: We probably want unique categories here flattened by repo weight
     fun getLiveCategories(): LiveData<List<Category>>
 }
 
