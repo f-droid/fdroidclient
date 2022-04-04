@@ -1,0 +1,2 @@
+* Opravena chyba, která odstraňovala aplikace z repozitářů (#568)
+* Výrazně rychlejší aktualizace obsahu repozitářů

@@ -1,14 +1,14 @@
-F-Droid je instalovatelný katalog softwarových libre
-aplikací pro Android. Klient F-Droid usnadní listování, instalaci, a uchovává znalost aktualizací na Vašem zařízení.
+F-Droid je katalog svobodných aplikací pro Android. S klientem F-Droid je snadné listovat v katalogu aplikací, instalovat je a udržovat je aktuální.
 
-Spojuje se s repozitáři kompatibilními s F-Droid. Výchozí repozitář je hostován na f-droid.org, jenž obsahuje pouze důvěryhodný libre software.
+Dokáže použít jakýkoli repozitář ve správném formátu. Výchozí repozitář (k dispozici na f-droid.org) obsahuje pouze důvěryhodný svobodný software.
 
-Sám Android je otevřený v tom smyslu, že jste svobodní instalovat APK odkud chcete, ale existují dobré důvody k používání F-Droid jako správce aplikací libre softwaru:
+Sám Android je otevřený v tom smyslu, že máte svobodu instalovat aplikace z APK odkudkoli, ale existují dobré důvody proč používat F-Droid jako správce vašich svobodných aplikací:
 
-* Obdržíte oznámení o aktualizaci, jakmile je dostupná
-* Volitelně stáhne a instaluje automaticky
-* Uchovává znalost starších a beta verzí
-* Vyřadí applikace nekompatibilní se zařízením
-* Najde aplikace skrze kategorie a prohledávatelné popisy
-* Poskytne přístup k souvisejícím URL o darech, zdrojovém kódu, atd.
-* Kontroluje signaturu indexu repozitáře a kontrolní sumy APK
+
+* Pošle vám oznámení o aktualizaci, jakmile je dostupná
+* Volitelné automatické aktualizace
+* Procházejte starší a beta verze
+* Dokáže vyřadit aplikace nekompatibilní se zařízením
+* Umí vyhledávat aplikace dle kategorií a popisků
+* Poskytne přístup k souvisejícím odkazům na zdrojový kód, stránku na příspěvky atd.
+* Zkontroluje podpis obsahu repozitáře a hash APK
