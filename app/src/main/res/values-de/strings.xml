@@ -133,7 +133,7 @@
     <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander
         halten.
     </string>
-    <string name="swap_join_same_wifi">Bitte mit dem gleichen WLAN wie Ihr Freund verbinden</string>
+    <string name="swap_join_same_wifi">Bitte mit demselben WLAN wie Ihr Freund verbinden</string>
     <string name="swap">Apps tauschen</string>
     <string name="swap_no_wifi_network">Noch kein Netzwerk</string>
     <string name="swap_view_available_networks">Antippen, um verfügbare Netzwerke zu öffnen</string>
