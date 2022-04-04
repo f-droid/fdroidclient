@@ -477,7 +477,7 @@
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
     <string name="repo_exists_add_mirror">هذه نسخة من %1$s، هل تريد إضافتها كمرآة؟</string>
     <string name="antinosourcesince">لم يعد الكود المصدري متاحًا، ولا توجد تحديثات ممكنة.</string>
-    <string name="panic_hide_warning_message">في حال الهلع، سيؤدي هذا إلى إزالة %1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
+    <string name="panic_hide_warning_message">في حالة الهلع ، سيؤدي هذا إلى إزالة%1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
     <string name="share_repository">مشاركة المستودع</string>
     <string name="send_install_history">إرسال سجل التثبيت</string>
     <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
@@ -568,5 +568,5 @@
     <string name="app_list_results_hidden_antifeature_settings">تم إخفاء بعض النتائج استنادا إلى إعدادات مكافحة الميزات.</string>
     <string name="antiupstreamnonfree">المصدر ليس حر</string>
     <string name="antiothers">الميزات المضادة الأخرى</string>
-    <string name="antinsfw">هذا التطبيق يحوي محتوى يمنع نشره للعامة او اي مكان</string>
+    <string name="antinsfw">يحتوي هذا التطبيق على محتوى لا يجب نشره أو رؤيته في كل مكان</string>
 </resources>
