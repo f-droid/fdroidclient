@@ -1,0 +1,3 @@
+* Merkittäviä käyttöliittymäparannuksia, erityisesti käytettäessä arkistoa
+
+* Korjattu kaatumisvikoja
