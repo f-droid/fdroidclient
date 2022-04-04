@@ -526,4 +526,5 @@
     <string name="antitrack">Theo dõi</string>
     <string name="antinonfreenet">Dịch vụ mạng không tự do</string>
     <string name="antiothers">Tính năng không mong muốn khác</string>
+    <string name="antinsfw">Ứng dụng này chứa nội dung không nên được công khai ở mọi nơi</string>
 </resources>
