@@ -33,7 +33,7 @@
     <string name="app_not_installed">Ekki uppsett</string>
     <string name="app_inst_known_source">Uppsett (frá %s)</string>
     <string name="app_inst_unknown_source">Uppsett (af óþekktum uppruna)</string>
-    <string name="added_on">Bætti við %s</string>
+    <string name="added_on">Bætt við %s</string>
     <string name="ok">Í lagi</string>
     <string name="yes">Já</string>
     <string name="no">Nei</string>
@@ -548,4 +548,5 @@
     <string name="antiknownvuln">Þekktir veikleikar</string>
     <string name="antinosource">Grunnkóði ekki lengur til taks</string>
     <string name="antiothers">Aðrir neikvæðir eiginleikar</string>
+    <string name="antinsfw">Þetta forrit inniheldur efni sem ekki ætti að gefa út eða birta opinberlega</string>
 </resources>
