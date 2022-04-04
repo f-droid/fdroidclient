@@ -218,7 +218,7 @@
     <string name="pref_language_default">Predefinita di sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
-    <string name="category_Connectivity">Connessione</string>
+    <string name="category_Connectivity">Connettività</string>
     <string name="category_Graphics">Grafica</string>
     <string name="category_Money">Finanze</string>
     <string name="category_Sports_Health">Sport e salute</string>
@@ -308,7 +308,7 @@
     <string name="notification_action_update">Aggiorna</string>
     <string name="notification_action_cancel">Annulla</string>
     <string name="notification_action_install">Installa</string>
-    <string name="main_menu__swap_nearby">Vicini</string>
+    <string name="main_menu__swap_nearby">Qui vicino</string>
     <string name="preference_category__my_apps">Le mie app</string>
     <string name="preference_manage_installed_apps">Gestisci le applicazioni installate</string>
     <string name="latest__empty_state__never_updated">Una volta aggiornata la tua lista delle applicazioni, le ultime applicazioni dovrebbero apparire qui</string>
@@ -539,5 +539,5 @@
     <string name="antinosource">Il codice sorgente non è più disponibile</string>
     <string name="antiupstreamnonfree">Non libero a monte</string>
     <string name="antiothers">Altre anti-caratteristiche</string>
-    <string name="antinsfw">Questa app contiene contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
+    <string name="antinsfw">Questa app ha contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
 </resources>
