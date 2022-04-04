@@ -36,8 +36,6 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.download.HttpPoster;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.DownloaderFactory;
 
@@ -265,7 +263,6 @@ public class FDroidMetricsWorker extends Worker {
                 return p1.packageName.compareTo(p2.packageName);
             }
         });
-        App[] installedApps = InstalledAppProvider.Helper.all(context);
         EVENTS.add(getDeviceEvent(weekStart, "isPrivilegedInstallerEnabled",
                 Preferences.get().isPrivilegedInstallerEnabled()));
         EVENTS.add(getDeviceEvent(weekStart, "Build.VERSION.SDK_INT", Build.VERSION.SDK_INT));
@@ -274,15 +271,6 @@ public class FDroidMetricsWorker extends Worker {
         }
 
         for (PackageInfo packageInfo : packageInfoList) {
-            boolean found = false;
-            for (App app : installedApps) {
-                if (packageInfo.packageName.equals(app.packageName)) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) continue;
-
             if (isTimestampInReportingWeek(weekStart, packageInfo.firstInstallTime)) {
                 addFirstInstallEvent(pm, packageInfo);
             }
