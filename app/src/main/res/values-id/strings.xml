@@ -4,7 +4,7 @@
     <string name="installIncompatible">Aplikasi tidak kompatibel dengan perangkat Anda, tetap pasang\?</string>
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
-    <string name="enable_nfc_send">Aktifkan Pengiriman Via NFC…</string>
+    <string name="enable_nfc_send">Aktifkan Pengiriman NFC…</string>
     <string name="cache_downloaded">Simpan cache aplikasi</string>
     <string name="updates">Pembaruan</string>
     <string name="unstable_updates">Pembaruan tidak stabil</string>
@@ -29,7 +29,7 @@
     <string name="app_inst_known_source">Terpasang (dari %s)</string>
     <string name="app_inst_unknown_source">Terpasang (dari sumber tidak dikenal)</string>
     <string name="added_on">Ditambahkan pada %s</string>
-    <string name="ok">Oke</string>
+    <string name="ok">OKE</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="repo_add_title">Tambahkan repositori baru</string>
@@ -112,7 +112,7 @@
     <string name="permissions">Izin</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
     <string name="theme">Tema</string>
-    <string name="unsigned">Tidak bertanda tangan</string>
+    <string name="unsigned">Tidak tertanda tangan</string>
     <string name="unverified">Tidak terverifikasi</string>
     <string name="repo_details">Repositori</string>
     <string name="repo_url">Alamat</string>
@@ -164,8 +164,8 @@
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Konektivitas</string>
     <string name="category_Development">Pengembangan</string>
-    <string name="category_Games">Game</string>
-    <string name="category_Graphics">Grafik</string>
+    <string name="category_Games">Permainan</string>
+    <string name="category_Graphics">Grafis</string>
     <string name="category_Internet">Internet</string>
     <string name="category_Money">Finansial</string>
     <string name="category_Multimedia">Multimedia</string>
@@ -268,7 +268,7 @@
     <string name="keep_install_history_summary">Simpan catatan semua pemasangan dan pencopotan di dalam penyimpanan privat</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>
     <string name="update_auto_install_summary">Mengunduh dan memperbarui aplikasi di latar belakang, akan menampilkan notifikasi</string>
-    <string name="warning_no_internet">Tidak bisa memperbarui, apakah Anda tersambung ke Internet\?</string>
+    <string name="warning_no_internet">Tidak bisa memperbarui, apakah anda tersambung ke Internet\?</string>
     <string name="versions">Versi</string>
     <string name="app_details_donate_prompt">%1$s dibuat oleh %2$s. Belikan mereka kopi!</string>
     <string name="repositories_summary">Tambahkan sumber tambahan aplikasi</string>
@@ -491,7 +491,7 @@
     <string name="menu_show_install_history">Tampilkan riwayat pemasangan</string>
     <string name="menu_show_fdroid_metrics_report">Tampilkan laporan metrik</string>
     <string name="toast_metrics_in_install_history">Laporan Metrik %s dapat dilihat dalam bagian Riwayat Pemasangan</string>
-    <string name="send_to_fdroid_metrics_summary">Kirim data perminggu secara anonim ke Metrik F-Droid (memerlukan Tetapkan riwayat pemasangan)</string>
+    <string name="send_to_fdroid_metrics_summary">Kirim data perminggu secara anonim ke Metrik F-Droid (memerlukan Simpanan riwayat pemasangan)</string>
     <string name="send_to_fdroid_metrics">Kirim data penggunaan</string>
     <string name="fdroid_metrics_report">Laporan Metrik %s</string>
     <string name="install_history_and_metrics">Pasang riwayat dan metrik</string>
@@ -518,4 +518,5 @@
     <string name="antiknownvuln">Kerentanan yang Diketahui</string>
     <string name="antinosource">Kode Sumber Tidak Lagi Tersedia</string>
     <string name="antiothers">Anti-fitur lainnya</string>
+    <string name="antinsfw">Aplikasi ini berisi konten yang tidak boleh dipublikasikan atau terlihat di mana-mana</string>
 </resources>
