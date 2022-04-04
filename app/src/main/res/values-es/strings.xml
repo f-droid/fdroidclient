@@ -320,7 +320,7 @@
     </plurals>
     <string name="app__install_downloaded_update">Actualizar</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
-    <string name="updates__tts__download_app">Actualizaciones</string>
+    <string name="updates__tts__download_app">Descargar</string>
     <string name="update_all">Actualizar todo</string>
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
@@ -536,4 +536,5 @@
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
     <string name="antiothers">Otras anti-característcas</string>
+    <string name="antinsfw">Esta app contiene contenido que no debería ser publicitado o visible en cualquier lugar</string>
 </resources>
