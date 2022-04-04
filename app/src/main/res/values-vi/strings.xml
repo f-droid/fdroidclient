@@ -434,7 +434,7 @@
     <string name="send_install_history">Gửi lịch sử cài đặt</string>
     <string name="send_history_csv">%s lịch sử cài đặt dưới dạng CSV</string>
     <string name="disabled">Đã tắt</string>
-    <string name="prompt_to_send_crash_reports">Hỏi để gửi báo cáo lỗi</string>
+    <string name="prompt_to_send_crash_reports">Hỏi trước khi gửi báo cáo sự cố</string>
     <string name="swap_stopping">Đang dừng lại…</string>
     <string name="swap_starting">Đang bắt đầu…</string>
     <string name="swap_stopping_hotspot">Đang dừng điểm phát sóng…</string>
