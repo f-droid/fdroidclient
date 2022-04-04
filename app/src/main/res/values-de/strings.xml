@@ -534,4 +534,5 @@
     <string name="antitrack">Tracking</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
     <string name="antiothers">Andere unerwünschte Merkmale</string>
+    <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
 </resources>
