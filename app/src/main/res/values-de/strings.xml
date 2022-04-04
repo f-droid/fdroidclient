@@ -300,7 +300,7 @@
     <string name="app_version_x_available">Version %1$s verfügbar</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="clear_search">Suche löschen</string>
-    <string name="main_menu__latest_apps">Apps</string>
+    <string name="main_menu__latest_apps">Neues</string>
     <string name="main_menu__categories">Kategorien</string>
     <string name="main_menu__updates">Aufgaben</string>
     <string name="main_menu__swap_nearby">Umfeld</string>
