@@ -534,4 +534,5 @@
     <string name="antinonfreeassets">Recursos no gratuïts</string>
     <string name="antiupstreamnonfree">Upstream no lliure</string>
     <string name="antiothers">Altres anti-característiques</string>
+    <string name="antinsfw">Aquesta aplicació conté contingut que no s\'ha de fer públic ni visible a tot arreu</string>
 </resources>
