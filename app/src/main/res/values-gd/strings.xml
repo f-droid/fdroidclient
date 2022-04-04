@@ -54,9 +54,9 @@
     </plurals>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Seall %d</item>
-        <item quantity="two">Seall a h-uile %d dhiubh</item>
-        <item quantity="few">Seall a h-uile %d dhiubh</item>
-        <item quantity="other">Seall a h-uile %d dhiubh</item>
+        <item quantity="two">Seall gach %d dhiubh</item>
+        <item quantity="few">Seall gach %d dhiubh</item>
+        <item quantity="other">Seall gach %d dhiubh</item>
     </plurals>
     <string name="panic_exit_title">Fàg an aplacaid</string>
     <string name="panic_settings_summary">Na gnìomhan a thèid a ghabhail air èiginn</string>
@@ -97,8 +97,8 @@
     <string name="show_anti_feature_apps_on">Seall aplacaidean a dh’fheumas droch-ghleusan</string>
     <string name="show_anti_feature_apps">Gabh a-staigh aplacaidean le droch-ghleusan</string>
     <string name="show_incompat_versions_on">Seall tionndaidhean dhen aplacaid nach eil co-chòrdail leis an uidheam</string>
-    <string name="show_incompat_versions">Gabh a-staigh tionndaidhean nach eil co-chòrdail</string>
-    <string name="appcompatibility">Co-chòrdalachd na h-aplacaid</string>
+    <string name="show_incompat_versions">Gabh a-staigh tionndaidhean neo-chòrdail</string>
+    <string name="appcompatibility">Co-chòrdalachd nan aplacaidean</string>
     <string name="search_hint">Lorg sna h-aplacaidean</string>
     <string name="expert_on">Seall fiosrachadh a bharrachd is cuir an comas roghainnean a bharrachd</string>
     <string name="expert">Modh eòlaiche</string>
@@ -128,7 +128,7 @@
     <string name="main_menu__updates">Ùrachaidhean</string>
     <string name="main_menu__swap_nearby">Am fagas</string>
     <string name="main_menu__categories">Roinnean-seòrsa</string>
-    <string name="main_menu__latest_apps">Am fear as ùire</string>
+    <string name="main_menu__latest_apps">As ùire</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="menu_flattr">Flattr</string>
@@ -250,7 +250,7 @@
     <string name="local_repo_name_summary">An tiotal air an ionaid-thasgaidh ionadail agad: %s</string>
     <string name="local_repo_name">Ainm an ionaid-thasgaidh ionadail agad</string>
     <string name="notify_on">Seall brath nuair a bhios ùrachaidhean ri fhaighinn</string>
-    <string name="notify">Seall na h-ùrachaidhean a tha ri fhaighinn</string>
+    <string name="notify">Seall nuair a bhios ùrachadh ann</string>
     <string name="update_auto_install_summary">Luchdaich a-nuas is ùraich aplacaidean sa chùlaibh, a’ sealltainn brath</string>
     <string name="update_auto_install">Stàlaich ùrachaidhean gu fèin-obrachail</string>
     <string name="update_auto_download_summary">Thèid ùrachaidhean a luchdadh a-nuas gu fèin-obrachail agus bheir thu brath gus an stàladh</string>
@@ -263,9 +263,9 @@
     <string name="update_interval">Eadaramh nan ùrachaidhean fèin-obrachail</string>
     <string name="other">Eile</string>
     <string name="force_old_index_summary">Ma tha bugaichean no duilgheadas leis a’ cho-chòrdalachd ann, cleachd inneacs XML nan aplacaidean</string>
-    <string name="force_old_index">Spàrr seann-fhòrmat an inneacsaidh air</string>
+    <string name="force_old_index">Spàrr seann-fhòrmat inneics air</string>
     <string name="send_version_and_uuid_summary">Gabh a-staigh tionndadh na h-aplacaid seo agus ID àraidh tuaireamach leis an luchdadh a-nuas, thèid seo a chur an sàs an ath-thuras a thòisicheas tu an aplacaid às ùr.</string>
-    <string name="send_version_and_uuid">Cuir an tionndadh ’s an UUID dha na frithealaichean</string>
+    <string name="send_version_and_uuid">Cuir tionndadh ’s UUID gu frithealaichean</string>
     <string name="toast_metrics_in_install_history">Chì thu aithris meatrachd %s ann an sealladair eachdraidh nan stàlaidhean</string>
     <string name="send_to_fdroid_metrics_summary">Cuiridh seo dàta gun urra gu meatrachd F-Droid gach seachdain (feumaidh seo “Cùm eachdraidh nan stàlaidhean”)</string>
     <string name="send_to_fdroid_metrics">Cuir dàta a’ chleachdaidh</string>
@@ -277,7 +277,7 @@
     <string name="crash_dialog_comment_prompt">’S urrainn dhut barrachd fiosrachaidh is beachdan a chur ris an-seo:</string>
     <string name="crash_dialog_text">Thachair mearachd ris nach robh dùil a spàrr stad air an aplacaid. A bheil thu airson am fiosrachadh a chur air a’ phost-d airson cuideachadh le càradh an duilgheadais\?</string>
     <string name="crash_dialog_title">Thuislich F-Droid</string>
-    <string name="theme_follow_system">Lean air an t-siostam</string>
+    <string name="theme_follow_system">Fear an t-siostaim</string>
     <string name="theme_dark">Dorcha</string>
     <string name="theme_light">Soilleir</string>
     <string name="keep_forever">Gu bràth</string>
@@ -292,7 +292,7 @@
     <string name="interval_12h">Thoir sùil airson ùrachaidhean gach 12 uair a thìde</string>
     <string name="interval_4h">Thoir sùil airson ùrachaidhean gach 4 uairean a thìde</string>
     <string name="interval_1h">Thoir sùil airson ùrachaidhean gach uair a thìde</string>
-    <string name="interval_never">Chan eil ùrachadh aplacaide fèin-obrachail ann</string>
+    <string name="interval_never">Na ùraich na h-aplacaidean gu fèin-obrachail idir</string>
     <string name="uninstalling">’Ga dhì-stàladh…</string>
     <string name="installing">’Ga stàladh…</string>
     <string name="app__tts__downloading_progress">’Ga luchdadh a-nuas, %1$d%% deiseil</string>
@@ -392,7 +392,7 @@
     <string name="category_Security">Tèarainteachd</string>
     <string name="category_Reading">Leughadh</string>
     <string name="category_Navigation">Seòladaireachd</string>
-    <string name="category_Multimedia">Ioma-mheadhanan</string>
+    <string name="category_Multimedia">Meadhanan</string>
     <string name="category_Money">Airgead</string>
     <string name="category_Internet">Eadar-lìon</string>
     <string name="category_Graphics">Grafaigeachd</string>
@@ -431,7 +431,7 @@
     <string name="unverified">Gun dearbhadh</string>
     <string name="unsigned">Gun soidhneadh</string>
     <string name="use_pure_black_dark_theme_summary">Cha mholamaid seo ach do sgrìnichean OLED.</string>
-    <string name="use_pure_black_dark_theme">Cleachd cùlaibh dubh leis an ùrlar dhorcha</string>
+    <string name="use_pure_black_dark_theme">Cuir cùlaibh dubh air an ùrlar dhorcha</string>
     <string name="theme">Ùrlar</string>
     <string name="no_handler_app">Chan eil aplacaid ri làimh dhut a làimhsicheadh %s.</string>
     <string name="permissions">Ceadan</string>
@@ -522,7 +522,7 @@
     <string name="updates">Ùrachaidhean</string>
     <string name="cache_downloaded">Cùm na h-aplacaidean san tasgadan</string>
     <string name="prompt_to_send_crash_reports_summary">Cruinnich dàta mu thuislidhean is iarr gun dèid an chur dhan luchd-leasachaidh</string>
-    <string name="prompt_to_send_crash_reports">Faighnich dhìom an cuirinn aithrisean air tuislidhean</string>
+    <string name="prompt_to_send_crash_reports">Iarr aithrisean air tuislidhean</string>
     <string name="enable_nfc_send">Cuir an comas an cur le NFC…</string>
     <string name="delete">Sguab às</string>
     <string name="by_author_format">le %s</string>
@@ -545,4 +545,6 @@
     <string name="antidisabledalgorithm">Soidhneadh le algairim nach eil sàbhailte</string>
     <string name="antiknownvuln">So-leòntachd aithnichte</string>
     <string name="antinosource">Chan eil am bun-tùs ri fhaighinn tuilleadh</string>
+    <string name="antinsfw">Tha susbaint san aplacaid seo nach bu chòir fhoillseachadh no a bhith ri fhaicinn air feadh an àite</string>
+    <string name="antiothers">Droch-ghleusan eile</string>
 </resources>
