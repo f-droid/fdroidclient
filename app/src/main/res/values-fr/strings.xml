@@ -250,7 +250,7 @@
     <string name="status_inserting_apps">Enregistrement des détails de l\'appli</string>
     <string name="crash_dialog_title">F-Droid s’est arrêté de manière inattendue</string>
     <string name="crash_dialog_comment_prompt">Vous pouvez ajouter des informations supplémentaires :</string>
-    <string name="crash_dialog_text">Une erreur inattendue s’est produite entraînant l’arrêt de l’appli. Souhaitez envoyer les détails par courriel afin d’aider à corriger la situation \?</string>
+    <string name="crash_dialog_text">Une erreur inattendue s’est produite provoquant l’arrêt de l’application. Souhaitez signaler cette erreur par courriel afin d’aider à corriger ce problème \?</string>
     <string name="antinonfreeassetslist">Cette appli comprend des éléments qui ne sont pas libres</string>
     <string name="menu_email">Envoyer un courriel à l’auteur</string>
     <string name="useTor">Utilisez Tor</string>
@@ -454,7 +454,7 @@
     <string name="install_history">Historique d\'installation</string>
     <string name="install_history_summary">Afficher le journal privé des installations et désinstallations</string>
     <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
-    <string name="send_version_and_uuid_summary">Inclure dans cette version de cette appli et un identifiant unique aléatoire lors du téléchargement. Prendra effet au prochain redémarrage de l’appli.</string>
+    <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage est nécessaire.</string>
     <string name="share_repository">Partager le dépôt</string>
     <string name="send_install_history">Envoyer l\'historique des installations</string>
     <string name="send_installed_apps">Partager les applis installées</string>
@@ -537,4 +537,5 @@
     <string name="antinonfreead">Addons payants</string>
     <string name="antinonfreeassets">Composants non libres</string>
     <string name="antiothers">Autres Antifonctions</string>
+    <string name="antinsfw">Cette application contient des contenus qui ne doivent pas être rendus publics ni visibles partout.</string>
 </resources>
