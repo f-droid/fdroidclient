@@ -54,7 +54,7 @@
     <string name="category_Security">الأمان</string>
     <string name="category_System">النظام</string>
     <string name="app_name">اف-درويد</string>
-    <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علما أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
+    <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولًا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علمًا أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
     <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
@@ -87,7 +87,7 @@
     <string name="less">تقليل</string>
     <string name="back">رجوع</string>
     <string name="overwrite">استبدال</string>
-    <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً إختر واحدة !</string>
+    <string name="bluetooth_activity_not_found">لا توجد طريقة إرسال بلوتوث، فضلاً اختر واحدة!</string>
     <string name="bad_fingerprint">البصمة خاطئة</string>
     <string name="invalid_url">هذا ليس عنوان URL صالح للاستخدام.</string>
     <string name="malformed_repo_uri">تجاهل عناوين URI للمستودعات  التالفة : %s</string>
@@ -117,14 +117,13 @@
     <string name="show_incompat_versions">إضافة الإصدارات غير المتوافقة</string>
     <string name="show_incompat_versions_on">إظهار إصدارات التطبيق غير المتوافقة مع الجهاز</string>
     <string name="local_repo_running">اف-درويد على استعداد للتبديل</string>
-    <string name="touch_to_configure_local_repo">إستخدم اللمس لعرض تفاصيل والسماح للآخرين لمبادلة التطبيقات الخاصة بك.
-    </string>
+    <string name="touch_to_configure_local_repo">استخدم اللمس لعرض تفاصيل والسماح للآخرين بمبادلة التطبيقات الخاصة بك.</string>
     <string name="adding_apks_format">إضافة %s إلى مستودع…</string>
     <string name="writing_index_jar">كتابة توقيع ملف الفهرس (index.jar) …</string>
     <string name="linking_apks">ربط ملفات APK التي في المستودعات…</string>
     <string name="copying_icons">نسخ أيقونات التطبيق في المستودعات …</string>
     <string name="icon">أيقونة</string>
-    <string name="useTor">إستخدم شبكة تور (Tor)</string>
+    <string name="useTor">استخدم شبكة تور (Tor)</string>
     <string name="useTorSummary">إجبار حركة التحميل من خلال تور لزيادة الخصوصية. تطبيق أوربوت مطلوب</string>
     <string name="proxy">خدمة الوكيل (البروكسي)</string>
     <string name="enable_proxy_title">تمكين وكيل (البروكسي) HTTP</string>
@@ -348,9 +347,9 @@
         <item quantity="other">عرض الكل %d</item>
     </plurals>
     <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
-    <string name="force_old_index_summary">في حالة وجود أخطاء أو أخطاء تكامل، إستخدم أرشفة تطبيق XML</string>
+    <string name="force_old_index_summary">في حالة وجود أخطاء أو أخطاء تكامل، استخدم أرشفة تطبيق XML</string>
     <string name="app_details__incompatible_mismatched_signature">توقيع مختلف عن التطبيق المُثبت</string>
-    <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\" .</string>
+    <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">لا نسخ مع توقعيات متوافقة</string>
     <string name="app_details__no_versions__none_compatible_with_device">لا نسخ متكاملة مع الجهاز</string>
     <string name="app_details__no_versions__explain_incompatible_signatures">النسخة المُثبتة غير متوافقة مع أي نسخة متوفرة. إلغاء ثبيت التطبيق سوف يمكنك من رؤية وتثبيت النسخ المتكاملة. هذا يحدث عادةً حينما يتم تثبيت التطبيق من خلال متجر جوجل بلاي أو أي مصدر أخر, إذا تم توقيعها بتوقيع مختلف.</string>
@@ -360,7 +359,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة في %1$s. نحن نوصي بإلغاء تثبيت هذا التطبيق في الحال.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
     <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة البرامج، التطبيقات الأخيرة سوف تظهر هنا</string>
-    <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، الطبيقات الأخيرة سوف تظهر هنا</string>
+    <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، التطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="antifeatures">مضاد الخصائص</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
@@ -449,16 +448,16 @@
     </plurals>
     <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
     <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
-    <string name="use_bluetooth">إستخدم البلوتوث</string>
+    <string name="use_bluetooth">استخدم البلوتوث</string>
     <string name="swap_toast_hotspot_enabled">تم تفعيل نقطة الواي فاي</string>
     <string name="swap_toast_could_not_enable_hotspot">تعذر تشغيل نقطة الواي فاي !</string>
     <string name="over_wifi">على الواي فاي</string>
     <string name="over_data">في وضع بيانات الجوال</string>
-    <string name="over_network_always_summary">إستخدم دائما هذا الإتصال عند توفره</string>
+    <string name="over_network_always_summary">استخدم دائما هذا الاتصال عند توفره</string>
     <string name="over_network_never_summary">لا تقم بتنزيل أي شيء باستخدام هذا الاتصال</string>
     <string name="over_network_on_demand_summary">استخدم هذا الاتصال فقط عندما أنقر للتنزيل</string>
-    <string name="repo_exists_add_fingerprint">%1$s تم إعداده بالفعل ، وهذا سوف يضيف معلومات أساسية جديدة.</string>
-    <string name="repo_exists_enable">%1$s تم إعداده بالفعل ، الرجاء التأكيد بانك تريد إعادة تمكينه.</string>
+    <string name="repo_exists_add_fingerprint">%1$s تم إعداده بالفعل، وهذا سوف يضيف معلومات أساسية جديدة.</string>
+    <string name="repo_exists_enable">%1$s تم إعداده بالفعل، الرجاء التأكيد بأنك تريد إعادة تمكينه.</string>
     <string name="repo_exists_and_enabled">%1$s تم إعداده وتفعيله.</string>
     <string name="antidisabledalgorithmlist">هذا التطبيق لديه توقيع أمان ضعيف</string>
     <string name="antiknownvulnlist">يحتوي هذا التطبيق على ثغرة أمنية معروفة</string>
@@ -474,11 +473,11 @@
     <string name="install_history">تاريخ التثبيت</string>
     <string name="install_history_summary">عرض السجل الخاص لجميع عمليات التثبيت وعمليات الإزالة</string>
     <string name="send_version_and_uuid">إرسال نسخة و عنوان UUID إلى الخوادم</string>
-    <string name="send_version_and_uuid_summary">تضمين إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل ، يسري مفعوله عند إعادة تشغيل التطبيق التالية.</string>
+    <string name="send_version_and_uuid_summary">تضمين إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل، يسري مفعوله عند إعادة تشغيل التطبيق التالية.</string>
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
-    <string name="repo_exists_add_mirror">هذه نسخة من %1$s ، هل تريد إضافتها كمرآة؟</string>
-    <string name="antinosourcesince">لم يعد الكود المصدري متاحا ، ولا توجد تحديثات ممكنة.</string>
-    <string name="panic_hide_warning_message">في حالة الهلع ، سيؤدي هذا إلى إزالة%1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
+    <string name="repo_exists_add_mirror">هذه نسخة من %1$s، هل تريد إضافتها كمرآة؟</string>
+    <string name="antinosourcesince">لم يعد الكود المصدري متاحًا، ولا توجد تحديثات ممكنة.</string>
+    <string name="panic_hide_warning_message">في حال الهلع، سيؤدي هذا إلى إزالة %1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
     <string name="share_repository">مشاركة المستودع</string>
     <string name="send_install_history">إرسال سجل التثبيت</string>
     <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
@@ -487,7 +486,7 @@
     <string name="app_size">الحجم: %1$s</string>
     <string name="send_installed_apps">شارك التطبيقات المثبّتة</string>
     <string name="menu_open">إفتح</string>
-    <string name="app_suggested">اقتراحات</string>
+    <string name="app_suggested">مقترح</string>
     <string name="send_installed_apps_csv">التطبيقات المثبتة بواسطة F-Droid  كملف CSV</string>
     <string name="menu_downgrade">تراجع عن الترقية</string>
     <string name="scan_removable_storage_title">مسح ذاكرة التخزين القابلة للإزالة</string>
@@ -553,7 +552,7 @@
     <string name="banner_no_data_or_wifi">لم يتم تمكين البيانات أو WiFi</string>
     <string name="banner_no_internet">لا يوجد إنترنت</string>
     <string name="share_apk_error">تعذر مشاركة ملف التطبيق</string>
-    <string name="has_disallow_install_unknown_sources">لا يمكن إضافة مصادر غير معروفة بواسطة هذا المستخدم ، بما في ذلك عمليات اضافة مستودعات جديدة</string>
+    <string name="has_disallow_install_unknown_sources">لا يمكن إضافة مصادر غير معروفة بواسطة هذا المستخدم، بما في ذلك عمليات اضافة مستودعات جديدة</string>
     <string name="has_disallow_install_unknown_sources_globally">لا يسمح مسؤول جهازك بتثبيت التطبيقات من مصادر غير معروفة، والتي تتضمن مستودعات جديدة</string>
     <string name="swap_wifi_vpn_conflict">يتعارض مع VPN النشط!</string>
     <string name="antinosource_key">لا يوجد مصدر منذ</string>
