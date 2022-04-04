@@ -524,4 +524,5 @@
     <string name="antiknownvuln">Ismert sérülékenység</string>
     <string name="antinosource">Már nem elérhető forráskód</string>
     <string name="antiothers">Egyéb előnytelen funkciók</string>
+    <string name="antinsfw">Ez az alkalmazás olyan tartalommal rendelkezik, amelyet nem szabad mindenhol megjeleníteni</string>
 </resources>
