@@ -319,7 +319,7 @@
         <item quantity="many">Обновлено %1$d дней назад</item>
         <item quantity="other">Обновлено %1$d дней назад</item>
     </plurals>
-    <string name="app_details_donate_prompt">%1$s создано %2$s. Купите им кофе!</string>
+    <string name="app_details_donate_prompt">Угостите %2$s кофе за создание %1$s!</string>
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендована)</string>
     <string name="app__install_downloaded_update">Обновить</string>
     <plurals name="updates__download_updates_for_apps">
@@ -547,4 +547,5 @@
     <string name="antinosource">Исходный код больше не доступен</string>
     <string name="antiknownvuln">Известная уязвимость</string>
     <string name="antiothers">Прочие анти-функции</string>
+    <string name="antinsfw">Это приложение содержит контент, который не следует разглашать или повсеместно демонстрировать</string>
 </resources>
