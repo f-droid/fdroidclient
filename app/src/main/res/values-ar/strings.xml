@@ -569,4 +569,5 @@
     <string name="app_list_results_hidden_antifeature_settings">تم إخفاء بعض النتائج استنادا إلى إعدادات مكافحة الميزات.</string>
     <string name="antiupstreamnonfree">المصدر ليس حر</string>
     <string name="antiothers">الميزات المضادة الأخرى</string>
+    <string name="antinsfw">هذا التطبيق يحوي محتوى يمنع نشره للعامة او اي مكان</string>
 </resources>
