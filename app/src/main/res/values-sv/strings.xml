@@ -401,7 +401,7 @@
     <string name="panic_destructive_actions">Destruktiva åtgärder</string>
     <string name="panic_hide_title">Dölj %s</string>
     <string name="panic_hide_summary">Appen kommer att döljas</string>
-    <string name="preventScreenshots_summary">Förhindrar skärmdumpar och döljer appinnehåll från senaste skärmar-fönstret</string>
+    <string name="preventScreenshots_summary">Blockerar skärmdumpar från att tas och döljer appinnehåll från de senaste apparnas skärm</string>
     <string name="panic_app_setting_title">Panikknappapp</string>
     <string name="sort_search">Sortera sökning</string>
     <string name="menu_liberapay">Liberapay</string>
