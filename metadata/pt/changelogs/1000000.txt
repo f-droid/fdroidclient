@@ -4,4 +4,4 @@
 
 * Nova tradução em tibetano
 
-* Remove apps e categorias relacionadas após desativar um repositório
+* Remove aplicações e categorias relacionadas após desativar um repositório
