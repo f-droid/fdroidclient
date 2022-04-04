@@ -322,8 +322,8 @@
     <string name="updates__hide_updateable_apps">Peida rakendused</string>
     <string name="updates__show_updateable_apps">Kuva rakendused</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Laadi alla %1$d rakenduse värskendus.</item>
-        <item quantity="other">Laadi alla %1$d rakenduse värskendus.</item>
+        <item quantity="one">Värskenduse allalaadimine %1$d äpile.</item>
+        <item quantity="other">Värskenduste allalaadimine %1$d äppidele.</item>
     </plurals>
     <string name="versions">Versioonid</string>
     <string name="clear_search">Tühjenda otsing</string>
@@ -350,7 +350,7 @@
     <string name="app__tts__downloading_progress">Allalaadimine, %1$d%% valmis</string>
     <plurals name="notification_summary_more">
         <item quantity="one">veel +%1$d…</item>
-        <item quantity="other">veel +%1$d…</item>
+        <item quantity="other">+%1$d veel…</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Valmis paigaldamiseks</string>
     <string name="notification_title_single_ready_to_install_update">Värskendused on valmis paigalduseks</string>
