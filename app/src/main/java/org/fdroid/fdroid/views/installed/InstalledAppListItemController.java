@@ -2,10 +2,10 @@ package org.fdroid.fdroid.views.installed;
 
 import android.view.View;
 
+import org.fdroid.database.AppPrefs;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefs;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 
@@ -49,15 +49,10 @@ public class InstalledAppListItemController extends AppListItemController {
      */
     @Nullable
     private CharSequence getIgnoreStatus(@NonNull App app) {
-        AppPrefs prefs = app.getPrefs(activity);
-        if (prefs.ignoreAllUpdates) {
+        AppPrefs prefs = app.prefs;
+        if (prefs != null && prefs.shouldIgnoreUpdate(app.autoInstallVersionCode)) {
             return activity.getString(R.string.installed_app__updates_ignored);
-        } else if (prefs.ignoreThisUpdate > 0 && prefs.ignoreThisUpdate == app.autoInstallVersionCode) {
-            return activity.getString(
-                    R.string.installed_app__updates_ignored_for_suggested_version,
-                    app.getAutoInstallVersionName());
         }
-
         return null;
     }
 }
