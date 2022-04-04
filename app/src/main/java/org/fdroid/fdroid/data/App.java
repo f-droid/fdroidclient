@@ -128,7 +128,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     @JsonIgnore
     private long id;
     @JsonIgnore
-    private org.fdroid.database.AppPrefs prefs;
+    public org.fdroid.database.AppPrefs prefs;
     @JsonIgnore
     public String preferredSigner;
     @JsonIgnore
