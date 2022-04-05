@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import org.fdroid.fdroid.net.DownloaderService;
+
 /**
  * For security purposes we need to ensure that all Intent objects we give to a PendingIntent are
  * explicitly set to be delivered to an F-Droid class.
@@ -14,7 +16,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
-        String canonicalUrl = intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL);
+        String canonicalUrl = intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL);
         switch (intent.getAction()) {
             case NotificationHelper.BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED:
                 manager.clearAllUpdates();

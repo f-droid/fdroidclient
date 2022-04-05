@@ -40,6 +40,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
@@ -53,8 +54,7 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
-import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.HttpDownloader;
+import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.qr.CameraCharacteristicsChecker;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -274,7 +274,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
-                new IntentFilter(Downloader.ACTION_INTERRUPTED));
+                new IntentFilter(DownloaderService.ACTION_INTERRUPTED));
 
         wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
         wifiApControl = WifiApControl.getInstance(this);
@@ -466,12 +466,22 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
         Uri uri = intent.getData();
-        if (uri != null && !HttpDownloader.isSwapUrl(uri) && !BluetoothDownloader.isBluetoothUri(uri)) {
+        if (uri != null && !isSwapUrl(uri) && !BluetoothDownloader.isBluetoothUri(uri)) {
             String msg = getString(R.string.swap_toast_invalid_url, uri);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             return;
         }
         confirmSwapConfig = new NewRepoConfig(this, intent);
+    }
+
+    private static boolean isSwapUrl(Uri uri) {
+        return isSwapUrl(uri.getHost(), uri.getPort());
+    }
+
+    private static boolean isSwapUrl(String host, int port) {
+        return port > 1023 // only root can use <= 1023, so never a swap repo
+                && host.matches("[0-9.]+") // host must be an IP address
+                && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
     }
 
     public void promptToSelectWifiNetwork() {
@@ -1496,7 +1506,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             Repo repo = RepoProvider.Helper.findByUrl(context, intent.getData(), null);
             if (repo != null && repo.isSwap) {
-                setUpConnectingProgressText(intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
+                setUpConnectingProgressText(intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE));
             }
         }
     };

@@ -1,0 +1,10 @@
+ktlint {
+    version = "0.43.2"
+    android = true
+    enableExperimentalRules = false
+    verbose = true
+    disabledRules = [
+            "import-ordering",
+            "no-blank-line-before-rbrace",
+    ]
+}

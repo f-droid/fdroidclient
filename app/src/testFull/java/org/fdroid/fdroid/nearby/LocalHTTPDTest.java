@@ -39,7 +39,6 @@ import android.text.TextUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.HttpDownloader;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -74,6 +73,8 @@ import static org.junit.Assert.assertTrue;
 @SuppressWarnings("LineLength")
 @RunWith(RobolectricTestRunner.class)
 public class LocalHTTPDTest {
+
+    private static final String HEADER_FIELD_ETAG = "ETag";
 
     private static ClassLoader classLoader;
     private static LocalHTTPD localHttpd;
@@ -217,7 +218,7 @@ public class LocalHTTPDTest {
         assertEquals(indexFile.length(), connection.getContentLength());
         assertNotEquals(0, connection.getContentLength());
 
-        String etag = connection.getHeaderField(HttpDownloader.HEADER_FIELD_ETAG);
+        String etag = connection.getHeaderField(HEADER_FIELD_ETAG);
         assertFalse(TextUtils.isEmpty(etag));
 
         assertEquals(200, connection.getResponseCode());

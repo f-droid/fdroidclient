@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
 
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.FDroidApp;
 
 import java.io.BufferedInputStream;
@@ -11,9 +12,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.ProtocolException;
 
+import androidx.annotation.NonNull;
 import androidx.documentfile.provider.DocumentFile;
 
 /**
@@ -46,9 +47,8 @@ public class TreeUriDownloader extends Downloader {
     private final Uri treeUri;
     private final DocumentFile documentFile;
 
-    TreeUriDownloader(Uri uri, File destFile)
-            throws FileNotFoundException, MalformedURLException {
-        super(uri, destFile);
+    TreeUriDownloader(Uri uri, File destFile) {
+        super(destFile);
         context = FDroidApp.getInstance();
         String path = uri.getEncodedPath();
         int lastEscapedSlash = path.lastIndexOf(ESCAPED_SLASH);
@@ -72,12 +72,13 @@ public class TreeUriDownloader extends Downloader {
      * <p>
      * Example:
      */
+    @NonNull
     @Override
-    protected InputStream getDownloadersInputStream() throws IOException {
+    protected InputStream getInputStream(boolean resumable) throws IOException {
         try {
             InputStream inputStream = context.getContentResolver().openInputStream(treeUri);
             if (inputStream == null) {
-                return null;
+                throw new IOException("InputStream was null");
             } else {
                 return new BufferedInputStream(inputStream);
             }
@@ -102,6 +103,6 @@ public class TreeUriDownloader extends Downloader {
     }
 
     @Override
-    protected void close() {
+    public void close() {
     }
 }

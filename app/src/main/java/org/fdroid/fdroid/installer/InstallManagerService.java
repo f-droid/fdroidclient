@@ -15,14 +15,12 @@ import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.AppUpdateStatusManager;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
@@ -71,7 +69,7 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * <li>for a {@code String} ID, use {@code canonicalUrl}, {@link Uri#toString()}, or
  * {@link Intent#getDataString()}
  * <li>for an {@code int} ID, use {@link String#hashCode()} or {@link Uri#hashCode()}
- * <li>for an {@link Intent} extra, use {@link org.fdroid.fdroid.net.Downloader#EXTRA_CANONICAL_URL} and include a
+ * <li>for an {@link Intent} extra, use {@link Downloader#EXTRA_CANONICAL_URL} and include a
  * {@link String} instance
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
@@ -206,9 +204,6 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        FDroidApp.resetMirrorVars();
-        DownloaderService.setTimeout(FDroidApp.getTimeout());
-
         appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
 
         registerPackageDownloaderReceivers(canonicalUrl);
@@ -219,15 +214,15 @@ public class InstallManagerService extends Service {
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queueUsingRandomMirror(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl);
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
-            sendBroadcast(intent.getData(), Downloader.ACTION_STARTED, apkFilePath);
-            sendBroadcast(intent.getData(), Downloader.ACTION_COMPLETE, apkFilePath);
+            sendBroadcast(intent.getData(), DownloaderService.ACTION_STARTED, apkFilePath);
+            sendBroadcast(intent.getData(), DownloaderService.ACTION_COMPLETE, apkFilePath);
         } else {
             Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
             apkFilePath.delete();
-            DownloaderService.queueUsingRandomMirror(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl);
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
@@ -236,7 +231,7 @@ public class InstallManagerService extends Service {
     private void sendBroadcast(Uri uri, String action, File file) {
         Intent intent = new Intent(action);
         intent.setData(uri);
-        intent.putExtra(Downloader.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
+        intent.putExtra(DownloaderService.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
         localBroadcastManager.sendBroadcast(intent);
     }
 
@@ -268,16 +263,16 @@ public class InstallManagerService extends Service {
                     return;
                 }
                 String action = intent.getAction();
-                if (Downloader.ACTION_STARTED.equals(action)) {
+                if (DownloaderService.ACTION_STARTED.equals(action)) {
                     Utils.debugLog(TAG, action + " " + intent);
-                } else if (Downloader.ACTION_PROGRESS.equals(action)) {
+                } else if (DownloaderService.ACTION_PROGRESS.equals(action)) {
 
-                    long bytesRead = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
-                    long totalBytes = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    long bytesRead = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
+                    long totalBytes = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
                     appUpdateStatusManager.updateApkProgress(canonicalUrl, totalBytes, bytesRead);
-                } else if (Downloader.ACTION_COMPLETE.equals(action)) {
+                } else if (DownloaderService.ACTION_COMPLETE.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
-                    File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                    File localFile = new File(intent.getStringExtra(DownloaderService.EXTRA_DOWNLOAD_PATH));
                     Uri localApkUri = Uri.fromFile(localFile);
                     Utils.debugLog(TAG, "OBB download completed " + intent.getDataString()
                             + " to " + localApkUri);
@@ -303,16 +298,16 @@ public class InstallManagerService extends Service {
                     } finally {
                         FileUtils.deleteQuietly(localFile);
                     }
-                } else if (Downloader.ACTION_INTERRUPTED.equals(action)) {
+                } else if (DownloaderService.ACTION_INTERRUPTED.equals(action)) {
                     localBroadcastManager.unregisterReceiver(this);
-                } else if (Downloader.ACTION_CONNECTION_FAILED.equals(action)) {
-                    DownloaderService.queueUsingDifferentMirror(context, repoId, canonicalUrl);
+                } else if (DownloaderService.ACTION_CONNECTION_FAILED.equals(action)) {
+                    localBroadcastManager.unregisterReceiver(this);
                 } else {
                     throw new RuntimeException("intent action not handled!");
                 }
             }
         };
-        DownloaderService.queueUsingRandomMirror(this, repoId, obbUrlString);
+        DownloaderService.queue(this, repoId, obbUrlString);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }
@@ -332,10 +327,9 @@ public class InstallManagerService extends Service {
                 }
                 Uri canonicalUri = intent.getData();
                 String canonicalUrl = intent.getDataString();
-                long repoId = intent.getLongExtra(Downloader.EXTRA_REPO_ID, 0);
 
                 switch (intent.getAction()) {
-                    case Downloader.ACTION_STARTED:
+                    case DownloaderService.ACTION_STARTED:
                         // App should currently be in the "PendingDownload" state, so this changes it to "Downloading".
                         Intent intentObject = new Intent(context, InstallManagerService.class);
                         intentObject.setAction(ACTION_CANCEL);
@@ -344,17 +338,17 @@ public class InstallManagerService extends Service {
                         appUpdateStatusManager.updateApk(canonicalUrl,
                                 AppUpdateStatusManager.Status.Downloading, action);
                         break;
-                    case Downloader.ACTION_PROGRESS:
-                        long bytesRead = intent.getLongExtra(Downloader.EXTRA_BYTES_READ, 0);
-                        long totalBytes = intent.getLongExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    case DownloaderService.ACTION_PROGRESS:
+                        long bytesRead = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
+                        long totalBytes = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
                         appUpdateStatusManager.updateApkProgress(canonicalUrl, totalBytes, bytesRead);
                         break;
-                    case Downloader.ACTION_COMPLETE:
-                        File localFile = new File(intent.getStringExtra(Downloader.EXTRA_DOWNLOAD_PATH));
+                    case DownloaderService.ACTION_COMPLETE:
+                        File localFile = new File(intent.getStringExtra(DownloaderService.EXTRA_DOWNLOAD_PATH));
                         Uri localApkUri = Uri.fromFile(localFile);
 
                         Utils.debugLog(TAG, "download completed of "
-                                + intent.getStringExtra(Downloader.EXTRA_MIRROR_URL) + " to " + localApkUri);
+                                + intent.getStringExtra(DownloaderService.EXTRA_MIRROR_URL) + " to " + localApkUri);
                         appUpdateStatusManager.updateApk(canonicalUrl,
                                 AppUpdateStatusManager.Status.ReadyToInstall, null);
 
@@ -366,24 +360,11 @@ public class InstallManagerService extends Service {
                             InstallerService.install(context, localApkUri, canonicalUri, apk);
                         }
                         break;
-                    case Downloader.ACTION_INTERRUPTED:
+                    case DownloaderService.ACTION_INTERRUPTED:
+                    case DownloaderService.ACTION_CONNECTION_FAILED:
                         appUpdateStatusManager.setDownloadError(canonicalUrl,
-                                intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
+                                intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE));
                         localBroadcastManager.unregisterReceiver(this);
-                        break;
-                    case Downloader.ACTION_CONNECTION_FAILED:
-                        // TODO move this logic into DownloaderService to hide the mirror URL stuff from this class
-                        try {
-                            String currentUrlString = FDroidApp.getNewMirrorOnError(
-                                    intent.getStringExtra(Downloader.EXTRA_MIRROR_URL),
-                                    RepoProvider.Helper.findById(InstallManagerService.this, repoId));
-                            DownloaderService.queue(context, currentUrlString, repoId, canonicalUrl);
-                            DownloaderService.setTimeout(FDroidApp.getTimeout());
-                        } catch (IOException e) {
-                            appUpdateStatusManager.setDownloadError(canonicalUrl,
-                                    intent.getStringExtra(Downloader.EXTRA_ERROR_MESSAGE));
-                            localBroadcastManager.unregisterReceiver(this);
-                        }
                         break;
                     default:
                         throw new RuntimeException("intent action not handled!");

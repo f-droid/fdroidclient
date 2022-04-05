@@ -4,18 +4,27 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestOptions;
 
-import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.glide.DownloadRequestLoader;
+import org.fdroid.download.glide.HttpGlideUrlLoader;
 import org.fdroid.fdroid.Preferences;
 
 import androidx.annotation.NonNull;
+
+import java.io.InputStream;
+
+import info.guardianproject.netcipher.NetCipher;
 
 /**
  * The one time initialization of Glide.
@@ -29,7 +38,16 @@ public class FDroidGlideModule extends AppGlideModule {
                 BitmapTransitionOptions.withCrossFade())
                 .setDefaultRequestOptions(new RequestOptions()
                         .format(DecodeFormat.PREFER_RGB_565)
-                        .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed())
-                        .timeout(FDroidApp.getTimeout()));
+                        .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed()));
+    }
+
+    @Override
+    public void registerComponents(@NonNull Context context, @NonNull  Glide glide, Registry registry) {
+        HttpGlideUrlLoader.Factory urlLoaderFactory =
+                new HttpGlideUrlLoader.Factory(DownloaderFactory.HTTP_MANAGER, NetCipher::getProxy);
+        registry.replace(GlideUrl.class, InputStream.class, urlLoaderFactory);
+        DownloadRequestLoader.Factory requestLoaderFactory =
+                new DownloadRequestLoader.Factory(DownloaderFactory.HTTP_MANAGER);
+        registry.append(DownloadRequest.class, InputStream.class, requestLoaderFactory);
     }
 }

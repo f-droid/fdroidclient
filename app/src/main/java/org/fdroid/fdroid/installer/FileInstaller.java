@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import androidx.annotation.NonNull;
 
@@ -53,7 +54,7 @@ public class FileInstaller extends Installer {
     protected void installPackageInternal(Uri localApkUri, Uri canonicalUri) {
         Intent installIntent = new Intent(context, FileInstallerActivity.class);
         installIntent.setAction(FileInstallerActivity.ACTION_INSTALL_FILE);
-        installIntent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        installIntent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());
         installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 

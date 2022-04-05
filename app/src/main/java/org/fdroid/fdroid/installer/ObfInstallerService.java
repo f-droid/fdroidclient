@@ -13,6 +13,7 @@ import android.webkit.MimeTypeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class ObfInstallerService extends IntentService {
     public static void install(Context context, Uri canonicalUri, Apk apk, File path) {
         Intent intent = new Intent(context, ObfInstallerService.class);
         intent.setAction(ACTION_INSTALL_OBF);
-        intent.putExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());
         intent.putExtra(Installer.EXTRA_APK, apk);
         intent.putExtra(EXTRA_OBF_PATH, path.getAbsolutePath());
         context.startService(intent);
@@ -52,7 +53,7 @@ public class ObfInstallerService extends IntentService {
             Log.e(TAG, "received invalid intent: " + intent);
             return;
         }
-        Uri canonicalUri = Uri.parse(intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
+        Uri canonicalUri = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
         final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         final String path = intent.getStringExtra(EXTRA_OBF_PATH);
         final String extension = MimeTypeMap.getFileExtensionFromUrl(path);

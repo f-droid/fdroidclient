@@ -59,6 +59,7 @@ import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
+import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -430,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
 
             // Check if we have moved into the ReadyToInstall or Installed state.
             AppUpdateStatus status = manager.get(
-                    intent.getStringExtra(org.fdroid.fdroid.net.Downloader.EXTRA_CANONICAL_URL));
+                    intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
             boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
             if (isStatusChange
                     && status != null

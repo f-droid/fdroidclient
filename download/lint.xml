@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- TODO bump our targetSdkVersion when we are ready for it -->
+    <issue id="ExpiredTargetSdkVersion" severity="ignore"/>
+</lint>

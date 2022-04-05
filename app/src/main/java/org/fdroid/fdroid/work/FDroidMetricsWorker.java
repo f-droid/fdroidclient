@@ -33,12 +33,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.download.HttpPoster;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
-import org.fdroid.fdroid.net.HttpPoster;
+import org.fdroid.fdroid.net.DownloaderFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -130,8 +131,11 @@ public class FDroidMetricsWorker extends Worker {
         // TODO check useTor preference and force-submit over Tor.
         String json = generateReport(getApplicationContext());
         try {
-            HttpPoster httpPoster = new HttpPoster("https://metrics.cleaninsights.org/cleaninsights.php");
-            httpPoster.post(json);
+            if (json != null) {
+                HttpPoster httpPoster =
+                        new HttpPoster(DownloaderFactory.HTTP_MANAGER, "https://metrics.cleaninsights.org/cleaninsights.php");
+                httpPoster.post(json);
+            }
             return ListenableWorker.Result.success();
         } catch (IOException e) {
             e.printStackTrace();

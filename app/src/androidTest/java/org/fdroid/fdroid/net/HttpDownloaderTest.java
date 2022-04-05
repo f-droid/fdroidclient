@@ -1,16 +1,27 @@
 
 package org.fdroid.fdroid.net;
 
-import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
+
+import androidx.core.util.Pair;
+
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.HttpDownloader;
+import org.fdroid.download.HttpManager;
+import org.fdroid.download.Mirror;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.Utils;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -21,38 +32,41 @@ import static org.junit.Assert.fail;
 public class HttpDownloaderTest {
     private static final String TAG = "HttpDownloaderTest";
 
-    static final String[] URLS;
+    private final HttpManager httpManager = new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, null);
+    private static final Collection<Pair<String, String>> URLS;
 
     // https://developer.android.com/reference/javax/net/ssl/SSLContext
     static {
-        ArrayList<String> tempUrls = new ArrayList<>(Arrays.asList(
-                "https://f-droid.org/repo/index-v1.jar",
+        ArrayList<Pair<String, String>> tempUrls = new ArrayList<>(Arrays.asList(
+                new Pair<>("https://f-droid.org/repo", "index-v1.jar"),
                 // sites that use SNI for HTTPS
-                "https://mirrors.kernel.org/debian/dists/stable/Release",
-                "https://fdroid.tetaneutral.net/fdroid/repo/index-v1.jar",
-                "https://ftp.fau.de/fdroid/repo/index-v1.jar",
-                //"https://microg.org/fdroid/repo/index-v1.jar",
-                //"https://grobox.de/fdroid/repo/index.jar",
-                "https://guardianproject.info/fdroid/repo/index-v1.jar"
+                new Pair<>("https://mirrors.edge.kernel.org/", "debian/dists/stable/Release"),
+                new Pair<>("https://fdroid.tetaneutral.net/fdroid/repo/", "index-v1.jar"),
+                new Pair<>("https://ftp.fau.de/fdroid/repo/", "index-v1.jar"),
+                new Pair<>("https://ftp.fau.de/fdroid/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg"),
+                //new Pair<>("https://microg.org/fdroid/repo/index-v1.jar"),
+                //new Pair<>("https://grobox.de/fdroid/repo/index.jar"),
+                new Pair<>("https://guardianproject.info/fdroid/repo", "index-v1.jar")
         ));
         if (Build.VERSION.SDK_INT >= 22) {
             tempUrls.addAll(Arrays.asList(
-                    "https://en.wikipedia.org/wiki/Index.html", // no SNI but weird ipv6 lookup issues
-                    "https://mirror.cyberbits.eu/fdroid/repo/index-v1.jar"  // TLSv1.2 only and SNI
+                    new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"), // no SNI but weird ipv6 lookup issues
+                    new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", "index-v1.jar")  // TLSv1.2 only and SNI
             ));
         }
-        URLS = tempUrls.toArray(new String[tempUrls.size()]);
+        URLS = tempUrls;
     }
 
     private boolean receivedProgress;
 
     @Test
     public void downloadUninterruptedTest() throws IOException, InterruptedException {
-        for (String urlString : URLS) {
-            Log.i(TAG, "URL: " + urlString);
-            Uri uri = Uri.parse(urlString);
+        for (Pair<String, String> pair : URLS) {
+            Log.i(TAG, "URL: " + pair.first + pair.second);
             File destFile = File.createTempFile("dl-", "");
-            HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
+            List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList(pair.first));
+            DownloadRequest request = new DownloadRequest(pair.second, mirrors, null, null, null);
+            HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
             httpDownloader.download();
             assertTrue(destFile.exists());
             assertTrue(destFile.canRead());
@@ -63,11 +77,12 @@ public class HttpDownloaderTest {
     @Test
     public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(1);
-        String urlString = "https://f-droid.org/repo/index.jar";
+        String path = "index.jar";
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.fau.de/fdroid/repo/"));
         receivedProgress = false;
-        Uri uri = Uri.parse(urlString);
         File destFile = File.createTempFile("dl-", "");
-        final HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
+        final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
+        final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long totalBytes) {
@@ -95,9 +110,11 @@ public class HttpDownloaderTest {
 
     @Test
     public void downloadHttpBasicAuth() throws IOException, InterruptedException {
-        Uri uri = Uri.parse("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        String path = "myusername/supersecretpassword";
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(uri, destFile, "myusername", "supersecretpassword");
+        final DownloadRequest request = new DownloadRequest(path, mirrors, null, "myusername", "supersecretpassword");
+        HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.download();
         assertTrue(destFile.exists());
         assertTrue(destFile.canRead());
@@ -106,9 +123,12 @@ public class HttpDownloaderTest {
 
     @Test(expected = IOException.class)
     public void downloadHttpBasicAuthWrongPassword() throws IOException, InterruptedException {
-        Uri uri = Uri.parse("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        String path = "myusername/supersecretpassword";
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(uri, destFile, "myusername", "wrongpassword");
+        final DownloadRequest request =
+                new DownloadRequest(path, mirrors, null, "myusername", "wrongpassword");
+        HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.download();
         assertFalse(destFile.exists());
         destFile.deleteOnExit();
@@ -116,9 +136,12 @@ public class HttpDownloaderTest {
 
     @Test(expected = IOException.class)
     public void downloadHttpBasicAuthWrongUsername() throws IOException, InterruptedException {
-        Uri uri = Uri.parse("https://httpbin.org/basic-auth/myusername/supersecretpassword");
+        String path = "myusername/supersecretpassword";
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
-        HttpDownloader httpDownloader = new HttpDownloader(uri, destFile, "wrongusername", "supersecretpassword");
+        final DownloadRequest request =
+                new DownloadRequest(path, mirrors, null, "wrongusername", "supersecretpassword");
+        HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.download();
         assertFalse(destFile.exists());
         destFile.deleteOnExit();
@@ -127,9 +150,11 @@ public class HttpDownloaderTest {
     @Test
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(2);
-        Uri uri = Uri.parse("https://f-droid.org/repo/index.jar");
+        String path = "index.jar";
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://f-droid.org/repo/"));
         File destFile = File.createTempFile("dl-", "");
-        final HttpDownloader httpDownloader = new HttpDownloader(uri, destFile);
+        final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
+        final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
         httpDownloader.setListener(new ProgressListener() {
             @Override
             public void onProgress(long bytesRead, long totalBytes) {

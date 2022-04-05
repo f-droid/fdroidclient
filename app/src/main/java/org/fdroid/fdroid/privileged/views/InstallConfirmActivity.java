@@ -37,8 +37,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -79,8 +77,7 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 
         appName.setText(app.name);
-        Glide.with(this)
-                .load(app.getIconUrl(this))
+        app.loadWithGlide(this)
                 .apply(Utils.getAlwaysShowIconRequestOptions())
                 .into(appIcon);
 

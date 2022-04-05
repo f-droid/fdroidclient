@@ -45,6 +45,7 @@ import java.util.HashSet;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
@@ -92,6 +93,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     private MirrorAdapter adapterToNotify;
 
+    @Nullable
     private Disposable disposable;
 
     /**
@@ -136,7 +138,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         userMirrorListView.setLayoutManager(new LinearLayoutManager(this));
         userMirrorListView.setAdapter(new MirrorAdapter(repo, repo.userMirrors));
 
-        if (repo.address.startsWith("content://")) {
+        if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
             // no need to show a QR Code, it is not shareable
             return;
         }
@@ -155,7 +157,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        disposable.dispose();
+        if (disposable != null) disposable.dispose();
         super.onDestroy();
     }
 

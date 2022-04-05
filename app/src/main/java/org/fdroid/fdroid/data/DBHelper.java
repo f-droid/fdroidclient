@@ -1496,9 +1496,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /**
      * Insert a new repo into the database.  This also initializes the list of
-     * "mirror" URLs. There should always be at least one URL there, since the
-     * logic in {@link org.fdroid.fdroid.FDroidApp#switchUrlToNewMirror(String, Repo)}
-     * expects at least one entry in the mirrors list.
+     * "mirror" URLs. There should always be at least one URL there.
      */
     private void insertRepo(SQLiteDatabase db, String name, String address,
                             String description, String version, String enabled,
