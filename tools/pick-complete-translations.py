@@ -16,8 +16,8 @@ def get_paths_tuple(locale):
         'app/src/main/res/values-%s/strings.xml' % re.sub(r'-', r'-r', locale),
     )
 
+
 projectbasedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(projectbasedir)
 
 repo = git.Repo(projectbasedir)
 weblate = repo.remotes.weblate
@@ -48,18 +48,29 @@ for locale in app:
 for locale in metadata:
     metadata_locales[locale['code']] = locale
 
+print('%10s' % 'locale', 'app %', 'failing', 'meta %', 'failing', sep='\t')
 for locale in sorted(app_locales.keys(), reverse=True):
     a = app_locales.get(locale)
     m = metadata_locales.get(locale)
     if m:
-        print('%10s' % locale, a['translated_percent'], a['failing'], m['translated_percent'], m['failing'],
-              sep='\t')
+        print(
+            '%10s' % locale,
+            a['translated_percent'],
+            a['failing'],
+            m['translated_percent'],
+            m['failing'],
+            sep='\t',
+            end='',
+        )
     else:
         print('%10s' % locale, a['translated_percent'], a['failing'], sep='\t')
-    if a is not None and a['translated_percent'] == 100 and a['failing'] == 0 \
-       and m is not None and m['translated_percent'] == 100 and m['failing'] == 0:
-        print(locale)
+    if (a is not None and a['translated_percent'] == 100 and a['failing'] == 0) or (
+        m is not None and m['translated_percent'] == 100 and m['failing'] == 0
+    ):
+        print('\t<--- selected')
         merge_locales.append(locale)
+    else:
+        print()
 
 if not merge_locales:
     sys.exit()
@@ -76,11 +87,38 @@ merge_weblate.checkout()
 email_pattern = re.compile(r'by (.*?) <(.*)>$')
 
 for locale in sorted(merge_locales):
-    commits = list(repo.iter_commits(
-        str(weblate.refs.master) + '...' + str(upstream.refs.master),
-        paths=get_paths_tuple(locale), max_count=10))
+    a = app_locales.get(locale)
+    m = metadata_locales.get(locale)
+    paths = get_paths_tuple(locale)
+    commits = list(
+        repo.iter_commits(
+            str(weblate.refs.master) + '...' + str(upstream.refs.master),
+            paths=paths,
+            max_count=10,
+        )
+    )
+
     for commit in reversed(commits):
-        repo.git.cherry_pick(str(commit))
-        m = email_pattern.search(commit.summary)
-        if m:
-            email = m.group(1) + ' <' + m.group(2) + '>'
+        has_a = False
+        has_m = False
+        for i in commit.iter_items(repo, commit.hexsha, paths=[paths[2]]):
+            if (
+                i.hexsha == commit.hexsha
+                and a['translated_percent'] == 100
+                and a['failing'] == 0
+            ):
+                has_a = True
+            break
+        for i in commit.iter_items(repo, commit.hexsha, paths=paths[0:1]):
+            if (
+                i.hexsha == commit.hexsha
+                and m['translated_percent'] == 100
+                and m['failing'] == 0
+            ):
+                has_m = True
+            break
+        if has_a or has_m:
+            repo.git.cherry_pick(str(commit))
+        match = email_pattern.search(commit.summary)
+        if match:
+            email = match.group(1) + ' <' + match.group(2) + '>'
