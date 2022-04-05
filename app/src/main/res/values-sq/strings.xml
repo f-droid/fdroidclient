@@ -511,4 +511,20 @@
     <string name="banner_no_internet">Pa Internet</string>
     <string name="banner_no_data_or_wifi">Pa të Dhëna ose WiFi aktive</string>
     <string name="share_apk_error">S’u nda dot kartelë aplikacioni</string>
+    <string name="antiads">Reklama</string>
+    <string name="antitrack">Gjurmim</string>
+    <string name="antinonfreead">Shtesa Jo të Lira</string>
+    <string name="antinonfreenet">Shërbime Rrjeti Jo të Lira</string>
+    <string name="antinonfreedep">Varësi Jo të Lira</string>
+    <string name="antinonfreeassets">Elementë Jo të Lirë</string>
+    <string name="antiupstreamnonfree">“Upstream” Jo i Lirë</string>
+    <string name="antiknownvuln">Cenueshmëri e Ditur</string>
+    <string name="antiothers">Antiveçori të Tjera</string>
+    <string name="antidisabledalgorithm">Nënshkruar Duke Përdorur Një Algoritëm Jo të Parrezik</string>
+    <string name="swap_wifi_vpn_conflict">Përplaset me një VPN aktive!</string>
+    <string name="has_disallow_install_unknown_sources_globally">Përgjegjësi i pajisjes tuaj nuk lejon instalim aplikacionesh nga burime të panjohur, që përfshijnë depo të reja</string>
+    <string name="app_list_results_hidden_antifeature_settings">Disa përfundime u fshehën, bazuar në rregullimet tuaja për “antiveçoritë”.</string>
+    <string name="has_disallow_install_unknown_sources">Burimet e panjohura, që përfshijnë depo të reja, s’mund të shtohen nga ky përdorues</string>
+    <string name="antinosource">Kod Burim Jo Më i Passhëm</string>
+    <string name="antinsfw">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>
 </resources>

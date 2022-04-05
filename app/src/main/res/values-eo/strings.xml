@@ -538,4 +538,5 @@
     <string name="antinonfreeassets">Nelibera enhavo</string>
     <string name="antiknownvuln">Konata sekureca vundeblo</string>
     <string name="antiothers">Aliaj fiebloj</string>
+    <string name="antinsfw">Tiu ĉi aplikaĵo liveras enhavon, kiu ne estas taŭga por rigardi publike</string>
 </resources>

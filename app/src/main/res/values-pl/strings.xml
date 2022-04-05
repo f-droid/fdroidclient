@@ -546,4 +546,5 @@
     <string name="antitrack">Śledzenie</string>
     <string name="antinonfreeassets">Niewolne zasoby</string>
     <string name="antiothers">Inne niepożądane funkcje</string>
+    <string name="antinsfw">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
 </resources>

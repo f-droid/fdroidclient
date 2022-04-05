@@ -1,17 +1,17 @@
-* Revisão do menu Partilhar
+* Menu Partilhar revisto
 
-* Fluxo de trabalho e a navegação melhoradas com muitas correções
+* Fluxo de trabalho e a navegação melhoradas e muitas correções
 
 * Melhorias em "material"
 
-* Apps sem ícone PNG são agora mostradas na Última aba
+* As aplicações sem ícone PNG são agora mostradas na última aba
 
 * Gestão de ícones melhorada com dados/WiFi limitados
 
-* Melhorada a partilha off-line e nas proximidades
+* Suporte a mais digitalizadores de códigos de barras
 
 * Permitir escolher que características indesejadas mostrar
 
-* Bloqueada adição de novos repositórios quando a instalação de "Fontes desconhecidas" está desativado
+* Bloqueada adição de repositórios quando a instalação de "Fontes desconhecidas" está desativada
 
 * Removida configuração "permitir pedidos push"

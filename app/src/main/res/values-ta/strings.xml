@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="installIncompatible">உங்கள் சாதனத்துடன் பொருந்தாத பயன்பாடு, எப்படியும் நிறுவவா\?</string>
+    <string name="installIncompatible">உஞ்சாதனத்துடன் ஒவ்வாத செயலி, எப்படியும் நிறுவவா\?</string>
     <string name="version">பதிப்பு</string>
     <string name="delete">நீக்கு</string>
     <string name="cache_downloaded">பிடிதரவிலுள்ள செயலிகளை வைத்திரு</string>
@@ -15,10 +15,10 @@
     <string name="login_password">கடவுச்சொல்</string>
     <string name="repo_edit_credentials">கடவுச்சொல்லை மாற்று</string>
     <string name="repo_error_empty_username">வெற்று பயனர்பெயர், நற்சான்றிதழ்கள் மாற்றப்படவில்லை</string>
-    <string name="main_menu__swap_nearby">அருகிலுள்ளவை</string>
-    <string name="app_details">பயன்பாட்டு விவரங்கள்</string>
+    <string name="main_menu__swap_nearby">அருகில்</string>
+    <string name="app_details">செயலி விவரங்கள்</string>
     <string name="no_such_app">அத்தகைய செயலி ஏதுமில்லை.</string>
-    <string name="about_title">எஃப்-டிராய்டு பற்றி</string>
+    <string name="about_title">எஃப்-ட்ராய்டு பற்றி</string>
     <string name="about_version">பதிப்பு</string>
     <string name="about_site">இணையதளம்</string>
     <string name="about_source">மூல குறியீடு</string>
@@ -41,7 +41,7 @@
     <string name="enable">இயக்கு</string>
     <string name="overwrite">மேலெழுது</string>
     <string name="repo_add_url">களஞ்சிய முகவரி</string>
-    <string name="invalid_url">இது சரியான உரலி அல்ல.</string>
+    <string name="invalid_url">இது செல்லக்கூடிய உரலியல்ல.</string>
     <string name="menu_manage">களஞ்சியங்கள்</string>
     <string name="menu_settings">அமைப்புகள்</string>
     <string name="menu_search">தேடு</string>
@@ -49,10 +49,10 @@
     <string name="menu_share">பகிர்</string>
     <string name="menu_install">நிறுவு</string>
     <string name="menu_uninstall">அகற்று</string>
-    <string name="menu_ignore_all">எல்லா புதுப்பிப்புகளையும் புறக்கணி</string>
+    <string name="menu_ignore_all">புதுப்பிப்புகளெதையும் புறக்கணி</string>
     <string name="menu_ignore_this">இப்புதுப்பிப்பை புறக்கணி</string>
     <string name="menu_website">வலைத்தளம்</string>
-    <string name="menu_email">உருவாக்கியவருக்கு மின்னஞ்சலிடு</string>
+    <string name="menu_email">இயற்றுநருக்கு மின்னஞ்சலிடு</string>
     <string name="menu_issues">சிக்கல்கள்</string>
     <string name="menu_changelog">மாற்றக்குறிப்பு</string>
     <string name="menu_source">மூல குறியீடு</string>
@@ -62,9 +62,9 @@
     <string name="menu_flattr">பிளாட்ர்</string>
     <string name="details_notinstalled">நிறுவப்படவில்லை</string>
     <string name="antiadslist">இந்த பயன்பாட்டில் விளம்பரம் உள்ளது</string>
-    <string name="antitracklist">இந்த பயன்பாடு உங்கள் செயல்பாட்டைக் கண்காணித்து அறிக்கையிடுகிறது</string>
+    <string name="antitracklist">இச்செயலி உம் செயல்பாட்டைக் தடமறிந்து அறிக்கையிடுகிறது</string>
     <string name="menu_launch">திற</string>
-    <string name="main_menu__latest_apps">சமீபத்தியது</string>
+    <string name="main_menu__latest_apps">புதியவை</string>
     <string name="main_menu__categories">பிரிவுகள்</string>
     <string name="category_Internet">இணையம்</string>
     <string name="category_Money">பணம்</string>
@@ -72,13 +72,13 @@
     <string name="notification_action_install">நிறுவு</string>
     <string name="repo_details">களஞ்சியம்</string>
     <string name="SignatureMismatch">புதிய பதிப்பு பழைய ஒரு வேறு விசை யுடன் ஒப்பமிடப்பட்டுள்ளது. புதிய பதிப்பை நிறுவ, பழையது முதலில் நிறுவல் நீக்கப்பட வேண்டும். தயவுசெய்து இதைச் செய்து மீண்டும் முயலவும். (நிறுவல் நீக்கம் செயலி சேமித்த உள் தரவை அழித்துவிடும் என்பதை குறித்துக்கொள்க)</string>
-    <string name="enable_proxy_summary">அனைத்து பிணைய கோரிக்கைகளுக்கும் HTTP ப்ராக்ஸியை உள்ளமைக்கவும்</string>
-    <string name="proxy_host">ப்ராக்ஸி ஹோஸ்ட்</string>
-    <string name="proxy_host_summary">உங்கள் ப்ராக்ஸியின் ஹோஸ்ட்பெயர் (எ.கா. 127.0.0.1)</string>
-    <string name="proxy_port">ப்ராக்ஸி போர்ட்</string>
-    <string name="proxy_port_summary">உங்கள் ப்ராக்ஸியின் போர்ட் எண் (எ.கா. 8118)</string>
+    <string name="enable_proxy_summary">அனைத்து பிணைய கோரிக்கைகளுக்கும் HTTP பதிலியை உள்ளமை</string>
+    <string name="proxy_host">பதிலி புரவன்</string>
+    <string name="proxy_host_summary">உம் பதிலியின் புரவன்பெயர் (எ.கா. 127.0.0.1)</string>
+    <string name="proxy_port">பதிலி புறை</string>
+    <string name="proxy_port_summary">உம் பதிலியின் புறை எண் (எ.கா. 8118)</string>
     <string name="status_processing_xml_percent">%1$s இலிருந்து %2$s / %3$s (%4$d %%) செயலாக்குகிறது</string>
-    <string name="status_inserting_apps">பயன்பாட்டு விவரங்களைச் சேமிக்கிறது</string>
+    <string name="status_inserting_apps">செயலி விவரங்களைச் சேமிக்கிறது</string>
     <string name="theme_light">ஒளி</string>
     <string name="theme_dark">இருள்</string>
     <string name="notification_action_cancel">ரத்துசெய்</string>
@@ -86,20 +86,20 @@
     <string name="disabled">முடக்கப்பட்டது</string>
     <string name="next">அடுத்து</string>
     <string name="installing">நிறுவுகிறது…</string>
-    <string name="install_confirm_update">முன்பே உள்ள இந்தப் பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
-    <string name="install_confirm_update_system">உள்ளமைக்கப்பட்ட பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். புதுப்பிக்கப்பட்ட பயன்பாடு இதற்கான அணுகலைப் பெறும்:</string>
+    <string name="install_confirm_update">முன்பே உள்ள இச்செயலியில் புதுப்பிப்பை நிறுவ வேண்டுமா\? ஏற்கனவேயுள்ள உம் தரவு தொலையாது. புதுப்பிக்கப்பட்ட செயலி இதற்கு அணுகல் பெறும்:</string>
+    <string name="install_confirm_update_system">சேரக்கட்டிய செயலியில் புதுப்பிப்பை நிறுவ வேண்டுமா\? ஏற்கனவேயுள்ள உம் தரவு தொலையாது. புதுப்பிக்கப்பட்ட செயலி இதற்கு அணுகல் பெறும்:</string>
     <string name="install_confirm_update_no_perms">முன்பே உள்ள இந்தப் பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்கமாட்டீர்கள். இதற்குத் தனிப்பட்ட அணுகல் எதுவும் தேவையில்லை.</string>
     <string name="install_confirm_update_system_no_perms">உள்ளமைக்கப்பட்ட பயன்பாட்டில் புதுப்பிப்பை நிறுவ விரும்புகிறீர்களா? ஏற்கனவே உள்ள உங்கள் தரவை இழக்க மாட்டீர்கள். இதற்குத் தனிப்பட்ட அணுகல் எதுவும் தேவையில்லை.</string>
     <string name="uninstall_confirm">இந்தப் பயன்பாட்டை நிறுவல் நீக்க விரும்புகிறீர்களா?</string>
     <string name="uninstall_update_confirm">ஆரம்பநிலைப் பதிப்பாக இந்தப் பயன்பாட்டை மாற்றியமைக்கவா? எல்லா தரவும் அகற்றப்படும்.</string>
     <string name="uninstalling">நிறுவலை நீக்குகிறது…</string>
     <string name="allPerms">எல்லாம்</string>
-    <string name="no_permissions">அனுமதிகள் இல்லை</string>
+    <string name="no_permissions">அனுமதிகளில்லை</string>
     <string name="loading">ஏற்றுகிறது…</string>
     <string name="allow">அனுமதி</string>
     <string name="swap_connecting">இணைக்கிறது</string>
     <string name="permissions">அனுமதிகள்</string>
-    <string name="wifi">வைஃபை</string>
+    <string name="wifi">அருகலை</string>
     <string name="requires_features">தேவை: %1$s</string>
     <string name="repo_last_update">கடைசியாக புதுப்பிக்கப்பட்டது</string>
     <string name="useTor">டார் பயன்படுத்து</string>
@@ -111,7 +111,7 @@
     <string name="menu_liberapay">லிபராபே</string>
     <string name="panic_app_setting_none">ஒன்றுமில்லை</string>
     <string name="updates__app_with_known_vulnerability__ignore">புறக்கணி</string>
-    <string name="antifeatures">எதிர்ப்பு அம்சங்கள்</string>
+    <string name="antifeatures">எதிரம்சங்கள்</string>
     <string name="app__install_downloaded_update">புதுப்பிப்பு</string>
     <string name="notification_title_summary_downloading">பதிவிறக்குகிறது…</string>
     <string name="keep_forever">என்றென்றும்</string>
@@ -122,12 +122,12 @@
     <string name="repo_url">முகவரி</string>
     <string name="unsigned">கையொப்பமிடவில்லை</string>
     <string name="icon">உருவம்</string>
-    <string name="app_name">எஃப்-டிராய்டு</string>
+    <string name="app_name">எஃப்-ட்ராய்டு</string>
     <string name="notification_action_update">புதுப்பிப்பு</string>
     <string name="category_Writing">எழுதுதல்</string>
     <string name="category_Time">நேரம்</string>
     <string name="category_Security">பாதுகாப்பு</string>
-    <string name="category_Science_Education">அறிவியல் மற்றும் கல்வி</string>
+    <string name="category_Science_Education">அறிவியலும் கல்வியும்</string>
     <string name="category_Reading">படித்தல்</string>
     <string name="category_Phone_SMS">தொலைபேசி &amp; குறுஞ்செய்திச் சேவை</string>
     <string name="category_Navigation">வழிசெலுத்தல்</string>
@@ -157,7 +157,7 @@
     <string name="over_network_on_demand_summary">இவ்விணைப்பைப் பதிவிறக்க சொடுக்கினால் மட்டுமே பயன்படுத்து</string>
     <string name="over_network_always_summary">கிடைக்கும்போது எப்போதும் இவ்விணைப்பைப் பயன்படுத்து</string>
     <string name="over_data">தரவுக்கு மேல்</string>
-    <string name="over_wifi">வைஃபை வழியாக</string>
+    <string name="over_wifi">அருகலை வழியாக</string>
     <string name="update_interval">தானியங்கி புதுப்பிப்பு இடைவெளி</string>
     <string name="force_old_index_summary">பிழைகள் அல்லது ஒவ்வுமைச் சிக்கல்கள் இருந்தால், XML செயலி குறியீட்டை பயன்படுத்து</string>
     <string name="force_old_index">பழைய அடைவு வடிவமைப்பை கட்டாயப்படுத்து</string>
@@ -171,7 +171,7 @@
     <string name="prompt_to_send_crash_reports">சிதைவறிக்கைகளை அனுப்பத் தூண்டு</string>
     <string name="enable_nfc_send">என்எப்சி அனுப்புஎன்பதை இயக்கு…</string>
     <string name="details_new_in_version">%s பதிப்பில் புதியது</string>
-    <string name="panic_hide_summary">பயன்பாடு தன்னை மறைக்கும்</string>
+    <string name="panic_hide_summary">செயலி தன்னை மறைக்கும்</string>
     <string name="antiupstreamnonfreelist">மேல்நீரோட்ட மூல குறியீடு முற்றிலும் இலவசம் அல்ல</string>
     <string name="nearby_splash__find_people_button">அருகிலுள்ளவர்களைக் கண்டறி</string>
     <string name="nearby_splash__download_apps_from_people_nearby">இணையம் இல்லையா\? உமக்கருகிலுள்ளவர்களிடமிருந்து செயலிகளைப் பெறுங்கள்!</string>
@@ -180,7 +180,7 @@
     <string name="install_error_unknown">தெரியாத பிழைகாரணமாக நிறுவுவதில் தோல்வி</string>
     <string name="empty_search_available_app_list">பொருந்தும் செயலிகள் எவையுங்கிடைக்கவில்லை.</string>
     <string name="empty_can_update_app_list">வாழ்த்துக்கள்!
-\nஉங்கள் பயன்பாடுகள் புதுப்பித்த நிலையில் உள்ளன.</string>
+\nஉம் செயலிகள் தேதிக்கேற்றவை.</string>
     <string name="empty_installed_app_list">செயலிகள் ஏதும் நிறுவப்படவில்லை.
 \n
 \nஉங்கள் சாதனத்தில் செயலிகள் உள்ளன, ஆனால் அவை எஃப்-டிராய்டிலிருந்து கிடைக்கவில்லை. உங்கள் களஞ்சியங்களை நீங்கள் புதுப்பிக்க வேண்டியதினாலோ களஞ்சியங்களில் உண்மையிலேயே செயலிகள் இல்லாததாலோ இது இருக்கக்கூடும்.</string>
@@ -190,41 +190,41 @@
     </plurals>
     <string name="wifi_ap">பகிரலை</string>
     <string name="share_repository">பங்கு களஞ்சியம்</string>
-    <string name="unsigned_description">அதாவது பயன்பாடுகளின் பட்டியலை சரிபார்க்க முடியவில்லை. கையொப்பமிடப்படாத குறியீடுகளிலிருந்து பதிவிறக்கம் செய்யப்பட்ட பயன்பாடுகளில் நீங்கள் கவனமாக இருக்க வேண்டும்.</string>
+    <string name="unsigned_description">அதாவது செயலிகளின் பட்டியலைச் சரிபார்க்க முடியவில்லை. ஒப்பமிடப்படா குறியீடுகளிலிருந்து பதிவிறக்கப்பட்ட செயலிகளிலிடம் நீங்கள் கவனமாக இருக்க வேண்டும்.</string>
     <string name="global_error_updating_repos">புதுப்பித்தலின் போது பிழை: %s</string>
     <string name="repos_unchanged">அனைத்து களஞ்சியங்களும் புதுப்பித்த நிலையில் உள்ளன</string>
     <string name="status_connecting_to_repo">இதனுடன் இணைக்கிறது
 \n%1$s</string>
     <string name="status_download_unknown_size">பதிவிறக்குகிறது
-\n%2$s இருந்து
-\n%1$s</string>
+\n%2$sஐ
+\n%1$sஇலிருந்து</string>
     <string name="status_download">பதிவிறக்குகிறது
-\n%2$s / %3$s (%4$d %%) இருந்து
-\n%1$s</string>
+\n%2$s / %3$s (%4$d %%)ஐ
+\n%1$sஇலிருந்து</string>
     <string name="panic_app_dialog_message">அழிவுகரமான பீதி பொத்தான் செயல்களைத் தூண்டுவதற்கு %1$s அனுமதிக்க விரும்புகிறீர்களா\?</string>
     <string name="enable_proxy_title">HTTP பதிலியை இயக்கு</string>
     <string name="repo_confirm_delete_title">களஞ்சியத்தை நீக்கவா\?</string>
-    <string name="repo_not_yet_updated">இந்த களஞ்சியம் இன்னும் பயன்படுத்தப்படவில்லை. அது வழங்கும் பயன்பாடுகளைப் பார்க்க நீங்கள் அதை செயல்படுத்த வேண்டும்.</string>
+    <string name="repo_not_yet_updated">இக்களஞ்சியம் இன்னும் பயன்படுத்தப்படவில்லை. அது வழங்கும் செயலிகளைப் பார்க்க நீங்கள் அதை இயக்க வேண்டும்.</string>
     <string name="repo_user_mirrors">பயனர் கண்ணாடிகள்</string>
     <string name="repo_official_mirrors">அதிகாரப்பூர்வ கண்ணாடிகள்</string>
     <string name="repo_description">விரித்துரைத்தல்</string>
     <string name="repo_fingerprint">கையொப்பமிடும் விசையின் கைரேகை (எஸ்.ஏ.-256)</string>
-    <string name="repo_num_apps">பயன்பாடுகளின் எண்ணிக்கை</string>
+    <string name="repo_num_apps">செயலி எண்ணிக்கை</string>
     <string name="use_pure_black_dark_theme_summary">ஓலெட் திரைகளுக்கு மட்டுமே பரிந்துரைக்கப்படுகிறது.</string>
     <string name="use_pure_black_dark_theme">இருண்ட தோற்றத்தில் தூய கருப்பு பின்னணியைப் பயன்படுத்து</string>
     <string name="theme">தோற்றம்</string>
     <string name="all_other_repos_fine">மற்ற அனைத்து களஞ்சியங்களும் பிழைகளை உருவாக்கவில்லை.</string>
-    <string name="banner_no_data_or_wifi">தரவு அல்லது வைஃபை இயக்கப்படவில்லை</string>
+    <string name="banner_no_data_or_wifi">தரவு அல்லது அருகலை இயக்கப்படவில்லை</string>
     <string name="banner_no_internet">இணையம் இல்லை</string>
-    <string name="banner_updating_repositories">களஞ்சியங்களை புதுப்பித்தல்</string>
+    <string name="banner_updating_repositories">களஞ்சியங்களைப் புதுப்பிக்கிறது</string>
     <string name="download_404">கோரப்பட்ட கோப்பு காணப்படவில்லை.</string>
     <string name="hide_on_long_search_press_summary">தேடல் பொத்தானை நீண்ட நேரம் அழுத்துவது பயன்பாட்டை மறைக்கும்</string>
     <string name="hide_on_long_search_press_title">தேடல் பொத்தான் கொண்டு மறை</string>
-    <string name="hiding_dialog_warning">எச்சரிக்கை: முகப்புத் திரையில் உள்ள எந்தவொரு பயன்பாட்டு குறுக்குவழியும் அகற்றப்படும் மற்றும் கைமுறையாக மீண்டும் சேர்க்கப்பட வேண்டும்.</string>
+    <string name="hiding_dialog_warning">எச்சரிக்கை: முகப்புத் திரையிலுள்ள எந்தவொரு செயலி குறுக்குவழியும் நீக்கப்படும் மற்றும் கைமுறையாக மறுசேர்க்கப்பட வேண்டும்.</string>
     <string name="hiding_dialog_title">மறை %s இப்போது</string>
     <string name="hiding_calculator">கணக்கிடு</string>
     <string name="panic_exit_title">பயன்பாட்டிலிருந்து வெளியேறு</string>
-    <string name="deleting_repo">நடப்பு ரெப்போவை நீக்குகிறது…</string>
+    <string name="deleting_repo">தற்போதைய களஞ்சியத்தை அழிக்கிறது…</string>
     <string name="panic_reset_repos_summary">களஞ்சியவமைப்பை இயல்புநிலைக்குத் திரும்ப கட்டாயப்படுத்து</string>
     <string name="panic_reset_repos_title">களஞ்சியங்களை அகரமாக்கு</string>
     <string name="panic_hide_warning_title">மீட்டெடுப்பது எப்படி என்பதை நினைவில் கொள்ளுங்கள்</string>
@@ -233,34 +233,34 @@
     <string name="panic_apps_to_uninstall">செயலிகள் நிறுவல் நீக்கப்பட்டு தரவனைத்துமழிக்கப்படவுள்ளன</string>
     <string name="panic_will_be_wiped">நிறுவல் நீக்கப்பட்டு தரவனைத்துமழிக்கப்படும்</string>
     <string name="panic_destructive_actions">அழிவுகரமான செயல்கள்</string>
-    <string name="panic_exit_summary">இந்த பயன்பாடு மூடப்படும்</string>
+    <string name="panic_exit_summary">இச்செயலி மூடப்படும்</string>
     <string name="panic_settings_summary">அவசரகாலத்தில் எடுக்கப்படவேண்டிய நடவடிக்கைகள்</string>
     <string name="panic_settings">பீதி பொத்தான் அமைப்புகள்</string>
     <string name="touch_to_configure_local_repo">விவரங்களைக் காண மற்றும் உங்கள் செயலிகளை இடமாற்ற மற்றவர்களை அனுமதிக்க தொடவும்.</string>
     <string name="panic_app_dialog_title">பீதி செயலியை உறுதிசெய்</string>
     <string name="panic_app_setting_summary">செயலி ஏதும் அமைக்கப்படவில்லை</string>
-    <string name="panic_app_unknown_app">அறியப்படாத பயன்பாடு</string>
-    <string name="panic_app_setting_title">பீதி பொத்தான் பயன்பாடு</string>
+    <string name="panic_app_unknown_app">அறியப்படாத செயலி</string>
+    <string name="panic_app_setting_title">பீதி பொத்தான் செயலி</string>
     <string name="preventScreenshots_summary">திரைபிடிப்பு எடுத்துக்கொள்ளுவதிலிருந்து தடுக்கிறது மற்றும் அண்மைச் செயலிகள் திரையிலிருந்து செயலி உள்ளடக்கத்தை மறைக்கிறது</string>
     <string name="preventScreenshots_title">திரைப்பிடிப்புகளைத் தவிர்</string>
     <string name="privacy">தனியுரிமை</string>
-    <string name="proxy">ப்ராக்ஸி</string>
+    <string name="proxy">பதிலி</string>
     <string name="useTorSummary">அதிகரித்த தனியுரிமைக்கு டார் மூலம் போக்குவரத்தை கட்டாயப்படுத்து. ஆர்பாட் தேவை</string>
     <string name="try_again">மீண்டும் முயற்சி செய்</string>
-    <string name="copying_icons">ரெப்போவில் பயன்பாட்டு படவுருக்களை நகலெடுக்கிறது…</string>
-    <string name="linking_apks">APK களை ரெப்போவில் இணைக்கிறது…</string>
+    <string name="copying_icons">களஞ்சியத்தினுள் செயலி படவுருக்களை நகலெடுக்கிறது…</string>
+    <string name="linking_apks">APKகளை களஞ்சியத்தில் இணைக்கிறது…</string>
     <string name="writing_index_jar">கையொப்பமிட்ட அடைவு கோப்பு (அடைவு.jar) எழுதுகிறது…</string>
-    <string name="adding_apks_format">ரெப்போவில் %s ஐச் சேர்த்தல்…</string>
-    <string name="local_repo_running">எஃப்-டிராய்டு இடமாற்றம் செய்ய தயார்</string>
+    <string name="adding_apks_format">களஞ்சியத்தில் %s ஐச் சேர்த்தல்…</string>
+    <string name="local_repo_running">எஃப்-ட்ராய்டு இடமாற்ற தயார்</string>
     <string name="local_repo">உள்ளக களஞ்சியம்</string>
-    <string name="force_touch_apps_on">வன்பொருள் ஆதரவு எதுவாக இருந்தாலும் தொடுதிரை தேவைப்படும் பயன்பாடுகளைக் காண்பி</string>
+    <string name="force_touch_apps_on">வன்பொருள் ஆதரவு பொருட்படுத்தாமல் தொடுதிரை தேவைப்படும் செயலிகளைக் காண்பி</string>
     <string name="force_touch_apps">தொடுதிரை செயலிகளை உள்ளடக்கு</string>
-    <string name="show_anti_feature_apps_on">எதிர்ப்பு அம்சங்கள் தேவைப்படும் பயன்பாடுகளைக் காட்டு</string>
-    <string name="show_anti_feature_apps">எதிர்ப்பம்ச செயலிகளைச் உள்ளடக்கு</string>
-    <string name="show_incompat_versions_on">சாதனத்துடன் பொருந்தாத பயன்பாட்டு பதிப்புகளைக் காண்பி</string>
-    <string name="show_incompat_versions">ஒவ்வாத பதிப்புகளைச் சேர்</string>
-    <string name="appcompatibility">பயன்பாட்டு பொருந்தக்கூடிய தன்மை</string>
-    <string name="search_hint">பயன்பாடுகளைத் தேடு</string>
+    <string name="show_anti_feature_apps_on">எதிரம்சங்கள் தேவைப்படும் செயலிகளைக் காட்டு</string>
+    <string name="show_anti_feature_apps">எதிரம்ச செயலிகளை உள்ளடக்கு</string>
+    <string name="show_incompat_versions_on">சாதனத்துடன் ஒவ்வா செயலி பதிப்புகளைக் காண்பி</string>
+    <string name="show_incompat_versions">ஒவ்வா பதிப்புகளை உள்ளடக்கு</string>
+    <string name="appcompatibility">செயலி ஒவ்வுமை</string>
+    <string name="search_hint">செயலிகளைத் தேடு</string>
     <string name="expert_on">கூடுதல் தகவலைக் காண்பி மற்றும் கூடுதல் அமைப்புகளை இயக்கு</string>
     <string name="expert">நிபுணர் முறை</string>
     <string name="display">காட்சி</string>
@@ -268,9 +268,9 @@
     <string name="antiknownvulnlist">இந்த பயன்பாட்டில் அறியப்பட்ட பாதுகாப்பு பாதிப்பு உள்ளது</string>
     <string name="antidisabledalgorithmlist">இந்த பயன்பாட்டில் பலவீனமான பாதுகாப்பு கையொப்பம் உள்ளது</string>
     <string name="antinonfreeassetslist">இந்த பயன்பாட்டில் இலவச மற்ற சொத்துக்கள் உள்ளன</string>
-    <string name="antinonfreedeplist">இந்த பயன்பாடு மற்ற இலவச பயன்பாடுகளைப் பொறுத்தது</string>
-    <string name="antinonfreenetlist">இந்த பயன்பாடு இலவசமற்ற பிணைய சேவைகளை ஊக்குவிக்கிறது</string>
-    <string name="antinonfreeadlist">இந்த பயன்பாடு இலவசமற்ற துணைப்-பயன்பாட்டாளர்கள் ஊக்குவிக்கிறது</string>
+    <string name="antinonfreedeplist">இச்செயலி மற்ற இலவச செயலிகளைச் சார்ந்துள்ளது</string>
+    <string name="antinonfreenetlist">இச்செயலி இலவசமற்ற பிணைய சேவைகளை ஊக்குவிக்கிறது</string>
+    <string name="antinonfreeadlist">இச்செயலி இலவசமற்ற துணை-நிரல்களை ஊக்குவிக்கிறது</string>
     <string name="antifeatureswarning">இச்செயலியில் நீங்கள் விரும்பாத அம்சங்கள் உள்ளன.</string>
     <string name="preference_category__my_apps">எனது செயலிகள்</string>
     <string name="categories__empty_state__no_categories">காண்பிக்க எந்த வகைகளும் இல்லை</string>
@@ -302,7 +302,7 @@
     <string name="add_key">விசையைச் சேர்</string>
     <string name="versions">பதிப்புகள்</string>
     <string name="repo_add_mirror">கண்ணாடியைச் சேர்</string>
-    <string name="updates_disabled_by_settings">தரவு/வைஃபை அமைப்புகளால் முடக்கப்பட்ட அனைத்து புதுப்பிப்புகளும்</string>
+    <string name="updates_disabled_by_settings">தரவு/அருகலை அமைப்புகளால் முடக்கப்பட்ட அனைத்து புதுப்பிப்புகளும்</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">%1$d செயலிக்கான புதுப்பிப்பைப் பதிவிறக்கு.</item>
         <item quantity="other">%1$d செயலிகளுக்கான புதுப்பிப்புகளைப் பதிவிறக்கு.</item>
@@ -313,7 +313,7 @@
     <string name="app_repository">களஞ்சியம்: %1$s</string>
     <string name="app_recommended_version_installed">பதிப்பு %1$s (பரிந்துரைக்கப்படுகிறது)</string>
     <string name="app_version_x_installed">பதிப்பு %1$s</string>
-    <string name="app_details__no_versions__show_incompat_versions">ஒவ்வாத பதிப்புகளை இங்கே எப்படியும் காட்ட, \"%1$s\" அமைப்பை இயக்கு.</string>
+    <string name="app_details__no_versions__show_incompat_versions">ஒவ்வா பதிப்புகளை இங்கே எப்படியும் காட்ட, \"%1$s\" அமைப்பை இயக்கு.</string>
     <string name="app_details_donate_prompt_unknown_author">ஒரு காபி %1$s டெவலப்பர்கள் வாங்க!</string>
     <string name="scan_removable_storage_summary">எஸ்டி கார்டுகள் மற்றும் யூ.எஸ்.பி கட்டைவிரல் இயக்ககங்கள் போன்ற நீக்கக்கூடிய சேமிப்பகத்தில் தொகுப்பு களஞ்சியங்களைத் தேடுங்கள்</string>
     <string name="scan_removable_storage_toast">ஸ்கேனிங் %s…</string>
@@ -324,23 +324,23 @@
     <string name="updates__hide_updateable_apps">செயலிகளை மறை</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s உடன் பாதிப்பைக் கண்டோம். புதிய பதிப்பிற்கு உடனடியாக புதுப்பிக்க பரிந்துரைக்கிறோம்.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s உடன் பாதிப்பைக் கண்டோம். இச்செயலியை உடனடியாக நிறுவல் நீக்க பரிந்துரைக்கிறோம்.</string>
-    <string name="send_installed_apps_csv">CSV கோப்பாக எஃப்-டிராய்டு நிறுவிய செயலிகள்</string>
+    <string name="send_installed_apps_csv">CSV கோப்பாக எஃப்-ட்ராய்டு நிறுவிய செயலிகள்</string>
     <string name="app_list__dismiss_vulnerable_app">பாதிப்பு புறக்கணிக்கப்பட்டது</string>
     <string name="app_list_download_ready">பதிவிறக்கம் செய்யப்பட்டது, நிறுவ தயாராக உள்ளது</string>
-    <string name="app_permission_storage">இதை சேமிப்பகத்தில் நிறுவ எஃப்-டிராய்டுக்கு சேமிப்பனுமதி தேவை. நிறுவலைத் தொடர அடுத்த திரையில் இதனை அனுமதிக்கவும்.</string>
+    <string name="app_permission_storage">இதைச் சேமிப்பகத்தில் நிறுவ எஃப்-ட்ராய்டுக்கு சேமிப்பனுமதி தேவை. நிறுவலைத் தொடர அடுத்த திரையில் இதனை அனுமதிக்கவும்.</string>
     <string name="app_installed_media">கோப்பு நிறுவப்பட்டது %s</string>
-    <string name="app_incompatible">பொருந்தாது</string>
+    <string name="app_incompatible">ஒவ்வாதது</string>
     <string name="app_suggested">பரிந்துரைக்கப்படுகிறது</string>
     <string name="about_forum">ஆதரவு மன்றம்</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">நிறுவப்பட்ட பதிப்பு கிடைக்கக்கூடிய எப்பதிப்புகளுடனும் ஒவ்வாது. செயலியை நிறுவல் நீக்குவது இணக்கமான பதிப்புகளைக் காணவும் நிறுவவும் உதவும். வேறு சான்றிதழால் ஒப்பமிடப்பட்டால், Google Play அல்லது பிற மூலங்கள் வழியாக நிறுவப்பட்ட செயலிகளுடன் இது பெரும்பாலும் நிகழ்கிறது.</string>
-    <string name="app_details__no_versions__none_compatible_with_device">சாதனத்துடன் இணக்கமான பதிப்புகள் இல்லை</string>
-    <string name="app_details__no_versions__no_compatible_signatures">இணக்கமான கையொப்பத்துடன் பதிப்புகள் இல்லை</string>
-    <string name="app_details__incompatible_mismatched_signature">நிறுவப்பட்ட பதிப்புக்கு வெவ்வேறு கையொப்பம்</string>
-    <string name="scan_removable_storage_title">நீக்கக்கூடிய சேமிப்பிடத்தை ஸ்கேன் செய்யுங்கள்</string>
+    <string name="app_details__no_versions__explain_incompatible_signatures">நிறுவப்பட்ட பதிப்பு கிடைக்கக்கூடிய எப்பதிப்புகளுடனும் ஒவ்வாது. செயலியை நிறுவல் நீக்குவது ஒவ்வும் பதிப்புகளைக் காணவும் நிறுவவும் உதவும். வேறு சான்றிதழால் ஒப்பமிடப்பட்டால், Google Play அல்லது பிற மூலங்கள் வழியாக நிறுவப்பட்ட செயலிகளுடன் இது பெரும்பாலும் நிகழ்கிறது.</string>
+    <string name="app_details__no_versions__none_compatible_with_device">சாதனத்துடன் ஒவ்வும் பதிப்புகளில்லை</string>
+    <string name="app_details__no_versions__no_compatible_signatures">ஒவ்வும் ஒப்பத்துடன் பதிப்புகளில்லை</string>
+    <string name="app_details__incompatible_mismatched_signature">நிறுவப்பட்ட பதிப்புக்கு வேறு ஒப்பம்</string>
+    <string name="scan_removable_storage_title">நீக்கக்கூடிய சேமிப்பிடத்தை வருடு</string>
     <string name="local_repo_https_on">உள்ளக களஞ்சியத்திற்கு மறைகுறியாக்கப்பட்ட HTTPS:// இணைப்பைப் பயன்படுத்து</string>
     <string name="local_repo_name">உங்கள் உள்ளக களஞ்சியத்தின் பெயர்</string>
     <string name="system_installer_on">தொகுப்புகளை நிறுவ, புதுப்பிக்க மற்றும் நீக்க சிறப்புரிமை நீட்டிப்பைப் பயன்படுத்து</string>
-    <string name="send_to_fdroid_metrics_summary">அநாமதேய தரவை வாரந்தோறும் எஃப்-டிராய்டு அளவீடுகளுக்கு அனுப்புகிறது (நிறுவல் வரலாற்றை வைத்திரு தேவை)</string>
+    <string name="send_to_fdroid_metrics_summary">அநாமதேய தரவை வாரந்தோறும் எஃப்-ட்ராய்டு அளவீடுகளுக்கு அனுப்புகிறது (நிறுவல் வரலாற்றை வைத்திரு தேவை)</string>
     <string name="send_to_fdroid_metrics">பயன்பாட்டு தரவை அனுப்பு</string>
     <string name="fdroid_metrics_report">%s அளவீட்டு அறிக்கை</string>
     <string name="install_history_and_metrics">நிறுவல் வரலாறு மற்றும் அளவீடுகள்</string>
@@ -350,53 +350,53 @@
     <string name="notification_title_summary_install_error">நிறுவுதல் தோல்வியுற்றது</string>
     <string name="notification_title_single_update_available">புதுப்பிப்பு கிடைக்கிறது</string>
     <string name="crash_dialog_text">எதிர்பாராமல் ஏற்பட்ட பிழை செயலியை நிறுத்துமாறு கட்டாயப்படுத்தியது. சிக்கலைச் சரிசெய்ய உதவும் விவரங்களை மின்னஞ்சலிட விரும்புகிறீரா\?</string>
-    <string name="crash_dialog_title">எஃப்-டிராய்டு செயலிழந்தது</string>
+    <string name="crash_dialog_title">எஃப்-ட்ராய்டு செயலிழந்தது</string>
     <string name="swap_send_fdroid">F-Droid அனுப்பு</string>
     <string name="apps">செயலிகள்</string>
-    <string name="category_Sports_Health">விளையாட்டு மற்றும் சுகாதாரம்</string>
+    <string name="category_Sports_Health">விளையாட்டும் உடல்நலமும்</string>
     <string name="category_Multimedia">பல்லூடகம்</string>
     <string name="unverified">சரிபார்க்கப்படாதது</string>
     <string name="warning_no_internet">புதுப்பிக்க முடியவில்லை, நீங்கள் இணையத்துடன் இணைக்கப்பட்டுள்ளீர்களா\?</string>
     <string name="updates__tts__download_app">தரவிறக்கம்</string>
     <string name="app_list__name__successfully_installed">%1$s நிறுவப்பட்டுள்ளது</string>
-    <string name="app_list__name__downloading_in_progress">பதிவிறக்குகிறது %1$s</string>
+    <string name="app_list__name__downloading_in_progress">%1$sஐப் பதிவிறக்குகிறது</string>
     <string name="swap_dont_show_again">இதை மீண்டும் காட்ட வேண்டாம்</string>
-    <string name="swap_welcome">எஃப்-டிராய்டுக்கு வரவேற்கிறோம்!</string>
+    <string name="swap_welcome">எஃப்-ட்ராய்டுக்கு வரவேற்கிறோம்!</string>
     <string name="category_Development">வளர்ச்சி</string>
     <string name="preference_manage_installed_apps">நிறுவப்பட்ட செயலிகளை நிர்வகி</string>
     <plurals name="details_last_update_years">
-        <item quantity="one">புதுப்பிக்கப்பட்டது %1$d ஆண்டு முன்பு</item>
-        <item quantity="other">புதுப்பிக்கப்பட்டது %1$d ஆண்டுகளுக்கு முன்பு</item>
+        <item quantity="one">%1$d ஆண்டு முன்பு புதுப்பிக்கப்பட்டது</item>
+        <item quantity="other">%1$d ஆண்டுகள் முன்பு புதுப்பிக்கப்பட்டது</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">புதுப்பிக்கப்பட்டது %1$d மாதத்திற்கு முன்பு</item>
-        <item quantity="other">புதுப்பிக்கப்பட்டது %1$d மாதங்களுக்கு முன்பு</item>
+        <item quantity="one">%1$d மாதம் முன்பு புதுப்பிக்கப்பட்டது</item>
+        <item quantity="other">%1$d மாதங்கள் முன்பு புதுப்பிக்கப்பட்டது</item>
     </plurals>
     <string name="perm_costs_money">இது உங்களுக்கு பணம் செலவாகும்</string>
     <string name="swap_toast_closing_nearby_after_timeout">அது சும்மா இருந்ததால் அருகில் மூடப்பட்டது.</string>
     <string name="swap_not_visible_bluetooth">புளூடூத் வழியாக தெரியவில்லை</string>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">புதுப்பிக்கப்பட்டது %1$d வாரத்திற்கு முன்பு</item>
-        <item quantity="other">புதுப்பிக்கப்பட்டது %1$d வாரங்களுக்கு முன்பு</item>
+        <item quantity="one">%1$d வாரம் முன்பு புதுப்பிக்கப்பட்டது</item>
+        <item quantity="other">%1$d வாரங்கள் முன்பு புதுப்பிக்கப்பட்டது</item>
     </plurals>
     <plurals name="details_last_update_days">
-        <item quantity="one">புதுப்பிக்கப்பட்டது %1$d நாள் முன்பு</item>
-        <item quantity="other">புதுப்பிக்கப்பட்டது %1$d நாட்களுக்கு முன்பு</item>
+        <item quantity="one">%1$d நாள் முன்பு புதுப்பிக்கப்பட்டது</item>
+        <item quantity="other">%1$d நாட்கள் முன்பு புதுப்பிக்கப்பட்டது</item>
     </plurals>
     <string name="app_list__dismiss_installing_app">நிறுவல் ரத்து செய்யப்பட்டது</string>
     <string name="undo">முந்தய நிலைக்குச் செல்</string>
-    <string name="warning_scaning_qr_code">உங்கள் கேமரா ஒரு தானியங்கு ஃபோகஸ் இருப்பதாகத் தெரியவில்லை. குறியீட்டை ஸ்கேன் செய்வது கடினமாக இருக்கலாம்.</string>
+    <string name="warning_scaning_qr_code">உங்கள் படக்கருவியிடம் தானியங்குக்குவியம் இருப்பதாகத் தெரியவில்லை. குறியீட்டை வருடுவது கடினமாக இருக்கலாம்.</string>
     <string name="details_last_updated_today">இன்று புதுப்பிக்கப்பட்டது</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">%2$s பிரிவில் %1$d பயன்பாட்டைக் காண்க</item>
-        <item quantity="other">%2$s வகையிலிருந்து அனைத்து %1$d பயன்பாடுகளையும் காண்க</item>
+        <item quantity="one">%2$s பிரிவில் %1$d செயலியைக் காண்க</item>
+        <item quantity="other">%2$s வகையிலிருந்து அனைத்து %1$d செயலிகளையும் காண்க</item>
     </plurals>
     <string name="tts_category_name">வகை %1$s</string>
-    <string name="notification_channel_updates_description">பயன்பாடு மற்றும் களஞ்சிய புதுப்பிப்பு அறிவிப்புகளைக் காட்டுகிறது.</string>
+    <string name="notification_channel_updates_description">செயலி மற்றும் களஞ்சிய புதுப்பிப்பு அறிவிப்புகளைக் காட்டும்.</string>
     <string name="notification_channel_updates_title">புதுப்பிப்புகள்</string>
     <string name="notification_channel_swaps_description">பி 2 பி பயன்பாட்டை மாற்றும் அறிவிப்புகளைக் காட்டுகிறது.</string>
     <string name="notification_channel_swaps_title">இடமாற்றுகள்</string>
-    <string name="notification_channel_installs_description">பயன்பாட்டு நிறுவல் அறிவிப்புகளை காண்பிக்கும்.</string>
+    <string name="notification_channel_installs_description">செயலி நிறுவலறிவிப்புகளைக் காண்பிக்கும்.</string>
     <string name="notification_channel_installs_title">நிறுவல்கள்</string>
     <string name="notification_title_summary_installed">வெற்றிகரமாக நிறுவப்பட்டது</string>
     <string name="notification_title_summary_installing">நிறுவுகிறது</string>
@@ -405,8 +405,8 @@
     <string name="notification_title_summary_downloading_update">புதுப்பிப்பைப் பதிவிறக்குகிறது…</string>
     <string name="notification_title_summary_update_available">புதுப்பிப்பு கிடைக்கிறது</string>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d பயன்பாடு நிறுவப்பட்டது</item>
-        <item quantity="other">%1$d பயன்பாடுகள் நிறுவப்பட்டது</item>
+        <item quantity="one">%1$d செயலி நிறுவப்பட்டது</item>
+        <item quantity="other">%1$d செயலிகள் நிறுவப்பட்டன</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d புதுப்பிப்பு</item>
@@ -435,8 +435,8 @@
     <string name="interval_1d">புதுப்பிப்புகளை தினமும் சரிபார்க்கவும்</string>
     <string name="interval_12h">ஒவ்வொரு 12 மணி நேரத்திற்கும் புதுப்பிப்புகளைச் சரிபார்க்கவும்</string>
     <string name="interval_4h">ஒவ்வொரு 4 மணி நேரத்திற்கும் புதுப்பிப்புகளைச் சரிபார்க்கவும்</string>
-    <string name="interval_1h">புதுப்பிப்புகளை மணிநேரத்திற்கு சரிபார்க்கவும்</string>
-    <string name="interval_never">தானியங்கி பயன்பாட்டு புதுப்பிப்புகள் இல்லை</string>
+    <string name="interval_1h">புதுப்பிப்புகளை மணிநேரத்திற்குச் சரிபார்</string>
+    <string name="interval_never">தானியங்கி செயலி புதுப்பிப்புகள் இல்லை</string>
     <string name="app__tts__downloading_progress">பதிவிறக்குகிறது, %1$d%% முடிந்தது</string>
     <string name="downloading">பதிவிறக்குகிறது…</string>
     <string name="perms_description_app">வழங்கியது %1$s.</string>
@@ -445,40 +445,40 @@
     <string name="download_pending">பதிவிறக்கத் தொடங்க காத்திருக்கிறது…</string>
     <string name="download_error">பதிவிறக்கம் தோல்வியடைந்தது!</string>
     <string name="install_confirm">அணுகல் தேவை</string>
-    <string name="swap_toast_could_not_enable_hotspot">வைஃபை ஹாட்ஸ்பாட்டை இயக்க முடியவில்லை!</string>
-    <string name="swap_toast_hotspot_enabled">வைஃபை ஹாட்ஸ்பாட் இயக்கப்பட்டது</string>
-    <string name="swap_toast_invalid_url">மாற்றுவதற்கான செல்லுபடியாகாத யுஆர்எல்: %1$s</string>
+    <string name="swap_toast_could_not_enable_hotspot">அருகலை பகிரலையை இயக்க முடியவில்லை!</string>
+    <string name="swap_toast_hotspot_enabled">அருகலை பகிரலை இயக்கப்பட்டது</string>
+    <string name="swap_toast_invalid_url">இடமாற்ற செல்லாத உரலி: %1$s</string>
     <string name="swap_toast_find_removeable_storage">நீக்கக்கூடிய உங்கள் எஸ்டி கார்டு அல்லது யுஎஸ்பியைத் தேர்வு செய்யவும்</string>
     <string name="swap_toast_not_removable_storage">அந்த தேர்வு எந்த நீக்கக்கூடிய சேமிப்பு சாதனங்கள் பொருந்தவில்லை, மீண்டும் முயற்சி!</string>
     <string name="swap_toast_using_path">பயன்படுத்துதல் %1$s</string>
     <string name="not_visible_nearby_description">அருகிலுள்ள சாதனங்களுடன் மாற்றுவதற்கு முன், உங்கள் சாதனத்தைக் காணும்படி செய்யுங்கள்.</string>
     <string name="not_visible_nearby">அருகில் இயக்கப்படவில்லை</string>
-    <string name="swap_connection_misc_error">சாதனத்துடன் இணைக்கும்போது பிழை ஏற்பட்டது, அதனுடன் இடமாற்றம் செய்ய முடியாது!</string>
+    <string name="swap_connection_misc_error">சாதனத்துடன் இணைக்கும்போது பிழை ஏற்பட்டது, அதனுடன் இடமாற்ற முடியாது!</string>
     <string name="use_bluetooth">புளூடூத் பயன்படுத்தவும்</string>
-    <string name="swap_qr_isnt_for_swap">நீங்கள் ஸ்கேன் செய்த க்யூஆர் குறியீடு ஒரு இடமாற்றக் குறியீடு போல் இல்லை.</string>
+    <string name="swap_qr_isnt_for_swap">நீங்கள் வருடிய விரைவுக்குறி ஓர் இடமாற்றக் குறியீடு போல் தெரியவில்லை.</string>
     <string name="swap_confirm">இடமாற்று உறுதிபடுத்தவும்</string>
-    <string name="swap_no_peers_nearby">இடமாற்றம் செய்ய அருகிலுள்ளவர்களைக் கண்டறிய முடியவில்லை.</string>
+    <string name="swap_no_peers_nearby">இடமாற்ற அருகிலுள்ளவர்களைக் கண்டறிய முடியவில்லை.</string>
     <string name="swap_cant_find_peers">நீங்கள் யாரைத் தேடுகிறீர்கள் என்று கண்டுபிடிக்க முடியவில்லையா\?</string>
     <string name="swap_wifi_device_name">சாதனத்தின் பெயர்</string>
-    <string name="swap_not_visible_wifi">வைஃபை வழியாக தெரியவில்லை</string>
-    <string name="swap_stopping_wifi">வைஃபை நிறுத்துகிறது…</string>
-    <string name="swap_setting_up_wifi">வைஃபை அமைக்கிறது…</string>
-    <string name="swap_visible_wifi">வைஃபை வழியாக தெரியும்</string>
+    <string name="swap_not_visible_wifi">அருகலை வழியாக தெரியவில்லை</string>
+    <string name="swap_stopping_wifi">அருகலையை நிறுத்துகிறது…</string>
+    <string name="swap_setting_up_wifi">அருகலையை அமைக்கிறது…</string>
+    <string name="swap_visible_wifi">அருகலை வழியாக தெரியும்</string>
     <string name="swap_error_cannot_start_bluetooth">ப்ளூடூத் தொடங்க முடியவில்லை!</string>
     <string name="swap_setting_up_bluetooth">புளூடூத் அமைக்கிறது…</string>
     <string name="swap_visible_bluetooth">ப்ளூடூத் வழியாக தெரியும்</string>
     <string name="swap_stopping">நிறுத்துகிறது…</string>
     <string name="swap_intro">உமக்கருகிலுள்ளவர்களுடன் இணைந்து செயலிகளை வர்த்தகஞ்செய்.</string>
-    <string name="swap_nearby">அருகிலுள்ள இடமாற்று</string>
+    <string name="swap_nearby">அருகே இடமாற்று</string>
     <string name="swap_scanning_for_peers">அருகிலுள்ளவர்களுக்காக தேடுகிறது…</string>
     <string name="swap_people_nearby">அருகிலுள்ளவர்கள்</string>
     <string name="swap_scan_qr">QR குறியீடு</string>
-    <string name="swap_choose_apps">பயன்பாடுகளைத் தேர்வுசெய்க</string>
-    <string name="swap_scan_or_type_url">ஒரு நபர் குறியீட்டை ஸ்கேன் செய்ய வேண்டும், அல்லது மற்றவரின் URL ஐ உலாவியில் தட்டச்சு செய்ய வேண்டும்.</string>
-    <string name="swap_confirm_connect">நீங்கள் இப்போது %1$s இருந்து பயன்பாடுகள் பெற விரும்புகிறீர்களா\?</string>
+    <string name="swap_choose_apps">செயலிகளைத் தேர்வுசெய்</string>
+    <string name="swap_scan_or_type_url">ஒருவர் குறியீட்டை வருடவோ மற்றவரின் உரலியை உலாவியில் தட்டச்சிடவோ வேண்டும்.</string>
+    <string name="swap_confirm_connect">தாங்கள் இப்போது %1$s இருந்து செயலிகள் பெற விரும்புகிறீரா\?</string>
     <string name="open_qr_code_scanner">QR ஸ்கேனரைத் திறக்கவும்</string>
-    <string name="swap_switch_to_wifi">வைஃபை பிணையத்திற்கு மாற தட்டவும்</string>
-    <string name="swap_view_available_networks">கிடைக்கக்கூடிய நெட்வொர்க்குகளைத் திறக்க தட்டவும்</string>
+    <string name="swap_switch_to_wifi">அருகலை பிணையத்திற்கு மாற தட்டு</string>
+    <string name="swap_view_available_networks">கிடைக்கக்கூடிய பிணையங்களைத் திறக்க தட்டு</string>
     <string name="swap_stopping_hotspot">ஹாட்ஸ்பாட் நிறுத்துகிறது…</string>
     <string name="swap_setting_up_hotspot">ஹாட்ஸ்பாட் அமைக்கிறது…</string>
     <string name="swap_hidden_wifi_ssid">(மறைக்கப்பட்டுள்ளது)</string>
@@ -487,30 +487,30 @@
     <string name="category_Theming">கருப்பொருள்</string>
     <string name="swap_no_wifi_network">இன்னும் பிணையம் இல்லை</string>
     <string name="swap_success">இடமாற்று வெற்றி!</string>
-    <string name="swap">பயன்பாடுகளை இடமாற்று</string>
+    <string name="swap">செயலிகளை இடமாற்று</string>
     <string name="swap_join_this_hotspot">உங்கள் ஹாட்ஸ்பாட்டில் சேர உங்கள் நண்பருக்கு உதவுங்கள்</string>
-    <string name="swap_join_same_wifi_desc">வைஃபை பயன்படுத்தி இடமாற்றம் செய்ய, நீங்கள் ஒரே பிணையத்தில் இருப்பதை உறுதிப்படுத்தவும். ஒரே நெட்வொர்க்கிற்கு அணுகல் இல்லையென்றால், உங்களில் ஒருவர் வைஃபை ஹாட்ஸ்பாட்டை உருவாக்கலாம்.</string>
+    <string name="swap_join_same_wifi_desc">அருகலை பயன்படுத்தி இடமாற்றம, நீங்கள் ஒரே பிணையத்தில் இருப்பதை நிச்சயப்படுத்துக. அதே பிணையத்திற்கு அணுகல் இல்லையெனில், உங்களில் ஒருவர் அருகலை பகிரலையை உருவாக்கலாம்.</string>
     <string name="swap_join_same_wifi">உங்கள் நண்பரின் அதே Wi-Fi இல் சேரவும்</string>
-    <string name="swap_nfc_description">உங்கள் நண்பரிடம் எஃப்-டிராய்டு இருந்து NFC இயக்கப்பட்டிருந்தால் உங்கள் சாதனங்களை ஒன்றாகத் தொடவும்.</string>
-    <string name="swap_nfc_title">இடமாற்றம் செய்யத் தொடவும்</string>
+    <string name="swap_nfc_description">உங்கள் நண்பரிடம் எஃப்-ட்ராய்டு இருந்து NFC இயக்கப்பட்டிருந்தால் உங்கள் சாதனங்களை ஒன்றாகத் தொடவும்.</string>
+    <string name="swap_nfc_title">இடமாற்ற தொடு</string>
     <string name="nearby_splash__request_permission">முயற்சிகவும்</string>
-    <string name="nearby_splash__document_tree">ரெப்போக்கள் மற்றும் கண்ணாடிகளுக்கு யுஎஸ்பி ஓடிஜியைத் தேடவும்.</string>
-    <string name="nearby_splash__read_external_storage">ரெப்போக்கள் மற்றும் கண்ணாடிகள் எஸ்டி கார்டைத் தேடவும்.</string>
+    <string name="nearby_splash__document_tree">களஞ்சியங்கள் மற்றும் கண்ணாடிகளுக்கு USB OTGஐத் தேடு.</string>
+    <string name="nearby_splash__read_external_storage">களஞ்சியங்கள் மற்றும் கண்ணாடிகளுக்கு SD அட்டையைத் தேடு.</string>
     <string name="nearby_splash__both_parties_need_fdroid">இரு தரப்பினரும் அருகில் பயன்படுத்த %1$s தேவை.</string>
     <string name="repo_searching_address">இல் தொகுப்பு களஞ்சியத்தைத் தேடுகிறது
 \n%1$s</string>
     <string name="repo_added">தொகுப்பு களஞ்சியத்தை சேமித்தது %1$s.</string>
     <string name="repo_disabled_notification">முடக்கப்பட்டது %1$s.
 \n
-\nஇந்த களஞ்சியத்திலிருந்து பயன்பாடுகளை நிறுவ நீங்கள் மீண்டும் இயக்க வேண்டும்.</string>
-    <string name="repo_confirm_delete_body">ஒரு களஞ்சியத்தை நீக்குவது என்பது அதிலிருந்து பயன்பாடுகள் இனி கிடைக்காது.
+\nஇக்களஞ்சியத்திலிருந்து செயலிகளை நிறுவ நீங்கள் இதை மீண்டுமியக்க வேண்டும்.</string>
+    <string name="repo_confirm_delete_body">ஒரு களஞ்சியத்தை நீக்குதல் என்றால் அதிலிருந்து செயலிகள் இனி கிடைக்காது.
 \n
-\nகுறிப்பு: முன்பு நிறுவப்பட்ட அனைத்து பயன்பாடுகளும் உங்கள் சாதனத்தில் இருக்கும்.</string>
-    <string name="no_handler_app">%s கையாளக்கூடிய எந்த பயன்பாடும் உங்களிடம் இல்லை.</string>
-    <string name="status_inserting_x_apps">%3$s இலிருந்து பயன்பாட்டு விவரங்களை (%1$d / %2$d) சேமிக்கிறது</string>
+\nகுறிப்பு: முன்பு நிறுவப்பட்ட அனைத்து செயலிகளும் உஞ்சாதனத்திலிருக்கும்.</string>
+    <string name="no_handler_app">%sஐக் கையாளக்கூடிய எச்செயலியும் உம்மிடமில்லை.</string>
+    <string name="status_inserting_x_apps">%3$s இலிருந்து செயலி விவரங்களைச் (%1$d / %2$d) சேமிக்கிறது</string>
     <string name="hiding_dialog_message">துவக்கத்திலிருந்து %1$s ஐ அகற்ற விரும்புகிறீர்களா\? போலி %3$s பயன்பாட்டில் \"%2$d\" எனத் தட்டச்சு செய்தால் மட்டுமே அதை மீட்டெடுக்க முடியும்.</string>
     <string name="panic_hide_warning_message">ஒரு பீதி நிகழ்வில், இது %1$s ஐ துவக்கியிலிருந்து அகற்றும். போலி %3$s பயன்பாட்டில் \"%2$d\" எனத் தட்டச்சு செய்தால் மட்டுமே அதை மீட்டெடுக்க முடியும்.</string>
-    <string name="app_list_results_hidden_antifeature_settings">உங்கள் எதிப்பம்ச அமைப்புகளினால் சில முடிவுகள் மறைக்கப்பட்டன.</string>
+    <string name="app_list_results_hidden_antifeature_settings">உங்கள் எதிரம்ச அமைப்புகளினால் சில முடிவுகள் மறைக்கப்பட்டன.</string>
     <string name="has_disallow_install_unknown_sources_globally">உங்கள் சாதன நிர்வாகி அறியாத மூலங்களிலிருந்து செயலிகள் நிறுவுவதை அனுமதிக்கவில்லை, அது புதிய களஞ்சியங்களையும் உள்ளடக்கும்</string>
     <string name="antinosource_key">NoSourceSince</string>
     <string name="antiads">விளம்பரங்கள்</string>
@@ -527,4 +527,5 @@
     <string name="swap_wifi_vpn_conflict">செயலிலுள்ள விபியென்னுடன் முரண்கள்!</string>
     <string name="share_apk_error">செயலி கோப்பைப் பகிர முடியவில்லை</string>
     <string name="antiothers">பிற எதிரம்சங்கள்</string>
+    <string name="antinsfw">தெரியக்கூடா அ பொது கவனத்திற்குக் கொண்டுவரக்கூடா உள்ளடக்கங்களை இச்செயலி கொண்டுள்ளது</string>
 </resources>

@@ -252,7 +252,7 @@
     <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
     <string name="menu_email">Escriviu un correu electrònic a l\'autor</string>
     <string name="swap_stopping_wifi">S\'està aturant la connexió Wi-Fi…</string>
-    <string name="useTor">Usi Tor</string>
+    <string name="useTor">Utilitza Tor</string>
     <string name="useTorSummary">Força el tràfic de baixada mitjançant Tor per millorar la privadesa. Requereix l\'Orbot</string>
     <string name="repo_provider">Repositori: %s</string>
     <string name="update_auto_download">Actualitzacions automàtiques</string>
@@ -268,7 +268,7 @@
     <string name="installing">S\'està instal·lant…</string>
     <string name="uninstalling">S\'està desinstal·lant…</string>
     <string name="keep_hour">1 hora</string>
-    <string name="keep_install_history">Mantingueu l\'historial d\'instal·lació</string>
+    <string name="keep_install_history">Manté l\'historial d\'instal·lacions</string>
     <string name="keep_install_history_summary">Desa un informe de totes les instal·lacions i desinstal·lacions en un emmagatzemament privat</string>
     <string name="update_auto_install">Instal·la les actualitzacions automàticament</string>
     <string name="update_auto_install_summary">Baixa i actualitza aplicacions en segon pla, mostrant una notificació</string>
@@ -534,4 +534,5 @@
     <string name="antinonfreeassets">Recursos no gratuïts</string>
     <string name="antiupstreamnonfree">Upstream no lliure</string>
     <string name="antiothers">Altres anti-característiques</string>
+    <string name="antinsfw">Aquesta aplicació conté contingut que no s\'ha de fer públic ni visible a tot arreu</string>
 </resources>

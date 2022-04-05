@@ -115,7 +115,7 @@
     <string name="category_Navigation">Навігація</string>
     <string name="category_Phone_SMS">Дзвінки та SMS</string>
     <string name="category_Reading">Читання</string>
-    <string name="category_Science_Education">Освіта та наука</string>
+    <string name="category_Science_Education">Освіта й наука</string>
     <string name="category_Security">Безпека</string>
     <string name="category_Sports_Health">Спорт і здоров\'я</string>
     <string name="category_System">Система</string>
@@ -402,7 +402,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Ми виявили вразливість з %1$s. Ми рекомендуємо оновлення до найновішої версії негайно.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Знехтувати</string>
     <string name="privacy">Приватність</string>
-    <string name="preventScreenshots_title">Запобігання знімків екрану</string>
+    <string name="preventScreenshots_title">Запобігання зніманню екрана</string>
     <string name="panic_app_unknown_app">невідомий застосунок</string>
     <string name="panic_app_setting_summary">Жодного застосунку не встановлено</string>
     <string name="panic_app_setting_none">Жоден</string>
@@ -543,4 +543,5 @@
     <string name="antinonfreeassets">Невільні засоби</string>
     <string name="antiknownvuln">Відома вразливість</string>
     <string name="antiothers">Інші небажані функції</string>
+    <string name="antinsfw">Цей застосунок містить вміст, який не слід оприлюднювати чи бачити всім</string>
 </resources>

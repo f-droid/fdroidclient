@@ -1,0 +1,4 @@
+* Podporuje instalaci médií, souborů bezdrátových aktualizací, ZIP souborů atd.
+* Plná podpora APK souborů podepsaných několika klíči
+* Nový Tibetský překlad
+* Odstraní aplikace a kategorie poskytované odebraným repozitářem

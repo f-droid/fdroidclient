@@ -542,4 +542,5 @@
     <string name="antinonfreeassets">Nesvobodná aktiva</string>
     <string name="antinosource">Zdrojový kód již není dostupný</string>
     <string name="antiothers">Další anti-funkce</string>
+    <string name="antinsfw">Tato aplikace obsahuje obsah, který by neměl bý publikovaný či viditelný kdekoli</string>
 </resources>
