@@ -35,6 +35,8 @@ data class AppMetadata(
     val name: LocalizedTextV2? = null,
     val summary: LocalizedTextV2? = null,
     val description: LocalizedTextV2? = null,
+    val localizedName: String? = null,
+    val localizedSummary: String? = null,
     val webSite: String? = null,
     val changelog: String? = null,
     val license: String? = null,
@@ -46,9 +48,20 @@ data class AppMetadata(
     @Embedded(prefix = "author_") val author: Author? = Author(),
     @Embedded(prefix = "donation_") val donation: Donation? = Donation(),
     val categories: List<String>? = null,
+    /**
+     * Whether the app is compatible with the current device.
+     * This value will be computed and is always false until that happened.
+     * So to always get correct data, this MUST happen within the same transaction
+     * that adds the [AppMetadata].
+     */
+    val isCompatible: Boolean,
 )
 
-fun MetadataV2.toAppMetadata(repoId: Long, packageId: String) = AppMetadata(
+fun MetadataV2.toAppMetadata(
+    repoId: Long,
+    packageId: String,
+    isCompatible: Boolean = false,
+) = AppMetadata(
     repoId = repoId,
     packageId = packageId,
     added = added,
@@ -67,6 +80,7 @@ fun MetadataV2.toAppMetadata(repoId: Long, packageId: String) = AppMetadata(
     author = if (author?.isNull == true) null else author,
     donation = if (donation?.isNull == true) null else donation,
     categories = categories,
+    isCompatible = isCompatible,
 )
 
 data class App(
@@ -143,8 +157,7 @@ public data class AppListItem @JvmOverloads constructor(
     /**
      * If true, this this app has at least one version that is compatible with this device.
      */
-    @Ignore // TODO actually get this from the DB (probably needs post-processing).
-    public val isCompatible: Boolean = true,
+    public val isCompatible: Boolean,
     /**
      * The name of the installed version, null if this app is not installed.
      */

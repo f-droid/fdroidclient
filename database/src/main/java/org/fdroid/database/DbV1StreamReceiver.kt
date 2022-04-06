@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import org.fdroid.CompatibilityChecker
 import org.fdroid.index.v1.IndexV1StreamReceiver
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
@@ -10,6 +11,7 @@ import org.fdroid.index.v2.RepoV2
 
 internal class DbV1StreamReceiver(
     private val db: FDroidDatabaseInt,
+    private val compatibilityChecker: CompatibilityChecker,
 ) : IndexV1StreamReceiver {
 
     override fun receive(repoId: Long, repo: RepoV2, certificate: String?) {
@@ -21,7 +23,9 @@ internal class DbV1StreamReceiver(
     }
 
     override fun receive(repoId: Long, packageId: String, v: Map<String, PackageVersionV2>) {
-        db.getVersionDao().insert(repoId, packageId, v)
+        db.getVersionDao().insert(repoId, packageId, v) {
+            compatibilityChecker.isCompatible(it.manifest)
+        }
     }
 
     override fun updateRepo(
@@ -34,6 +38,8 @@ internal class DbV1StreamReceiver(
         repoDao.insertAntiFeatures(antiFeatures.toRepoAntiFeatures(repoId))
         repoDao.insertCategories(categories.toRepoCategories(repoId))
         repoDao.insertReleaseChannels(releaseChannels.toRepoReleaseChannel(repoId))
+
+        db.getAppDao().updateCompatibility(repoId)
     }
 
     override fun updateAppMetadata(repoId: Long, packageId: String, preferredSigner: String?) {

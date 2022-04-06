@@ -25,7 +25,7 @@ class IndexV1InsertTest : DbTest() {
         val fileSize = c.resources.assets.openFd("index-v1.json").use { it.length }
         val inputStream = CountingInputStream(c.resources.assets.open("index-v1.json"))
         var currentByteCount: Long = 0
-        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db), null) {
+        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db) { true }, null) {
             val bytesRead = inputStream.byteCount
             val bytesSinceLastCall = bytesRead - currentByteCount
             if (bytesSinceLastCall > 0) {
@@ -84,10 +84,10 @@ class IndexV1InsertTest : DbTest() {
         val localizedFileLists2 = localizedFileLists.count { it.repoId == 2L }
         assertEquals(localizedFileLists1, localizedFileLists2)
 
-        appMetadata.filter { it.repoId ==2L }.forEach { m ->
+        appMetadata.filter { it.repoId == 2L }.forEach { m ->
             val metadata1 = appDao.getAppMetadata(1, m.packageId)
             val metadata2 = appDao.getAppMetadata(2, m.packageId)
-            assertEquals(metadata1, metadata2.copy(repoId = 1))
+            assertEquals(metadata1, metadata2.copy(repoId = 1, isCompatible = true))
 
             val lFiles1 = appDao.getLocalizedFiles(1, m.packageId).toSet()
             val lFiles2 = appDao.getLocalizedFiles(2, m.packageId)
@@ -111,7 +111,7 @@ class IndexV1InsertTest : DbTest() {
     private fun insertV2ForComparison() {
         val c = getApplicationContext<Context>()
         val inputStream = CountingInputStream(c.resources.assets.open("index-v2.json"))
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db), null)
+        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db) { true }, null)
         db.runInTransaction {
             val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
             inputStream.use { indexStream ->
@@ -124,7 +124,7 @@ class IndexV1InsertTest : DbTest() {
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
         val c = getApplicationContext<Context>()
         val cIn = CountingInputStream(c.resources.assets.open("index-v1.json"))
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db), null) {
+        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db) { true }, null) {
             if (cIn.byteCount > 824096) throw SerializationException()
             cIn.byteCount
         }

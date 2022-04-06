@@ -15,8 +15,13 @@ import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.index.v2.PackageVersionV2
 
 public interface VersionDao {
-    fun insert(repoId: Long, packageId: String, packageVersions: Map<String, PackageVersionV2>)
-    fun insert(repoId: Long, packageId: String, versionId: String, packageVersion: PackageVersionV2)
+    fun insert(
+        repoId: Long,
+        packageId: String,
+        packageVersions: Map<String, PackageVersionV2>,
+        checkIfCompatible: (PackageVersionV2) -> Boolean,
+    )
+
     fun getAppVersions(packageId: String): LiveData<List<AppVersion>>
     fun getAppVersions(repoId: Long, packageId: String): List<AppVersion>
 }
@@ -29,21 +34,24 @@ internal interface VersionDaoInt : VersionDao {
         repoId: Long,
         packageId: String,
         packageVersions: Map<String, PackageVersionV2>,
+        checkIfCompatible: (PackageVersionV2) -> Boolean,
     ) {
         // TODO maybe the number of queries here can be reduced
-        packageVersions.entries.forEach { (versionId, packageVersion) ->
-            insert(repoId, packageId, versionId, packageVersion)
+        packageVersions.entries.iterator().forEach { (versionId, packageVersion) ->
+            val isCompatible = checkIfCompatible(packageVersion)
+            insert(repoId, packageId, versionId, packageVersion, isCompatible)
         }
     }
 
     @Transaction
-    override fun insert(
+    fun insert(
         repoId: Long,
         packageId: String,
         versionId: String,
         packageVersion: PackageVersionV2,
+        isCompatible: Boolean,
     ) {
-        val version = packageVersion.toVersion(repoId, packageId, versionId)
+        val version = packageVersion.toVersion(repoId, packageId, versionId, isCompatible)
         insert(version)
         insert(packageVersion.manifest.getVersionedStrings(version))
     }
@@ -68,8 +76,8 @@ internal interface VersionDaoInt : VersionDao {
     @Transaction
     override fun getAppVersions(repoId: Long, packageId: String): List<AppVersion> {
         val versionedStrings = getVersionedStrings(repoId, packageId)
-        return getVersions(repoId, packageId).map {
-                version -> version.toAppVersion(versionedStrings)
+        return getVersions(repoId, packageId).map { version ->
+            version.toAppVersion(versionedStrings)
         }
     }
 
@@ -100,7 +108,11 @@ internal interface VersionDaoInt : VersionDao {
     fun getVersionedStrings(repoId: Long, packageId: String): List<VersionedString>
 
     @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId")
-    fun getVersionedStrings(repoId: Long, packageId: String, versionId: String): List<VersionedString>
+    fun getVersionedStrings(
+        repoId: Long,
+        packageId: String,
+        versionId: String,
+    ): List<VersionedString>
 
     @VisibleForTesting
     @Query("DELETE FROM Version WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId")

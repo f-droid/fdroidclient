@@ -8,6 +8,7 @@ import org.fdroid.database.test.TestUtils.getRandomString
 import org.fdroid.database.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.random.Random
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -64,7 +65,7 @@ class RepositoryTest : DbTest() {
         val versionId = getRandomString()
         appDao.insert(repoId, packageId, getRandomMetadataV2())
         val packageVersion = getRandomPackageVersionV2()
-        versionDao.insert(repoId, packageId, versionId, packageVersion)
+        versionDao.insert(repoId, packageId, versionId, packageVersion, Random.nextBoolean())
 
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(1, appDao.getAppMetadata().size)
