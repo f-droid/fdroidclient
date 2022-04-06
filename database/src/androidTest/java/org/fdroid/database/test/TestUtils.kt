@@ -2,60 +2,37 @@ package org.fdroid.database.test
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import org.fdroid.database.Repository
+import org.fdroid.database.toCoreRepository
+import org.fdroid.database.toMirror
+import org.fdroid.database.toRepoAntiFeatures
+import org.fdroid.database.toRepoCategories
+import org.fdroid.database.toRepoReleaseChannel
+import org.fdroid.index.v2.RepoV2
+import org.junit.Assert
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
-import kotlin.random.Random
+import kotlin.test.assertEquals
 
 object TestUtils {
 
-    private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-
-    fun getRandomString(length: Int = Random.nextInt(1, 128)) = (1..length)
-        .map { Random.nextInt(0, charPool.size) }
-        .map(charPool::get)
-        .joinToString("")
-
-    fun <T> getRandomList(
-        size: Int = Random.nextInt(0, 23),
-        factory: () -> T,
-    ): List<T> = if (size == 0) emptyList() else buildList {
-        repeat(size) {
-            add(factory())
-        }
-    }
-
-    fun <A, B> getRandomMap(
-        size: Int = Random.nextInt(0, 23),
-        factory: () -> Pair<A, B>,
-    ): Map<A, B> = if (size == 0) emptyMap() else buildMap {
-        repeat(size) {
-            val pair = factory()
-            put(pair.first, pair.second)
-        }
-    }
-
-    fun <T> T.orNull(): T? {
-        return if (Random.nextBoolean()) null else this
-    }
-
-    /**
-     * Create a map diff by adding or removing keys. Note that this does not change keys.
-     */
-    fun <T> Map<String, T?>.randomDiff(factory: () -> T): Map<String, T?> = buildMap {
-        if (this@randomDiff.isNotEmpty()) {
-            // remove random keys
-            while (Random.nextBoolean()) put(this@randomDiff.keys.random(), null)
-            // Note: we don't replace random keys, because we can't easily diff inside T
-        }
-        // add random keys
-        while (Random.nextBoolean()) put(getRandomString(), factory())
-    }
-
-    fun <T> Map<String, T>.applyDiff(diff: Map<String, T?>): Map<String, T> = toMutableMap().apply {
-        diff.entries.forEach { (key, value) ->
-            if (value == null) remove(key)
-            else set(key, value)
-        }
+    fun assertRepoEquals(repoV2: RepoV2, repo: Repository) {
+        val repoId = repo.repoId
+        // mirrors
+        val expectedMirrors = repoV2.mirrors.map { it.toMirror(repoId) }.toSet()
+        Assert.assertEquals(expectedMirrors, repo.mirrors.toSet())
+        // anti-features
+        val expectedAntiFeatures = repoV2.antiFeatures.toRepoAntiFeatures(repoId).toSet()
+        assertEquals(expectedAntiFeatures, repo.antiFeatures.toSet())
+        // categories
+        val expectedCategories = repoV2.categories.toRepoCategories(repoId).toSet()
+        assertEquals(expectedCategories, repo.categories.toSet())
+        // release channels
+        val expectedReleaseChannels = repoV2.releaseChannels.toRepoReleaseChannel(repoId).toSet()
+        assertEquals(expectedReleaseChannels, repo.releaseChannels.toSet())
+        // core repo
+        val coreRepo = repoV2.toCoreRepository().copy(repoId = repoId)
+        assertEquals(coreRepo, repo.repository)
     }
 
     fun <T> LiveData<T>.getOrAwaitValue(): T? {

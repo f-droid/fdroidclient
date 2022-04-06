@@ -4,6 +4,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
+import org.fdroid.test.TestRepoUtils.getRandomFileV2
+import org.fdroid.test.TestRepoUtils.getRandomRepo
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -12,8 +14,8 @@ class ReflectionTest {
 
     @Test
     fun testRepository() {
-        val repo = TestUtils2.getRandomRepo().toCoreRepository()
-        val icon = TestUtils2.getRandomFileV2()
+        val repo = getRandomRepo().toCoreRepository()
+        val icon = getRandomFileV2()
         val description = if (Random.nextBoolean()) mapOf("de" to null, "en" to "foo") else null
         val json = """
             {
