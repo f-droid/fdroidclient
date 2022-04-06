@@ -1,3 +1,11 @@
+### 1.15-alpha0 (2022-04-06)
+
+* Total overhaul of downloading logic for improved performance and mirrors support.
+
+* Screenshots and graphics are now downloaded from mirrors.
+
+* Reduced a privacy leak with TLS Sessions
+
 ### 1.14 (2022-01-24)
 
 * Install Osmand map files without requiring Osmand have Storage permission.
