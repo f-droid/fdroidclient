@@ -2,12 +2,12 @@ package org.fdroid.database
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.fdroid.database.test.TestAppUtils.assertScreenshotsEqual
-import org.fdroid.database.test.TestAppUtils.getRandomMetadataV2
-import org.fdroid.database.test.TestRepoUtils.getRandomFileV2
-import org.fdroid.database.test.TestRepoUtils.getRandomRepo
 import org.fdroid.database.test.TestUtils.getOrAwaitValue
-import org.fdroid.database.test.TestUtils.getRandomString
+import org.fdroid.test.TestAppUtils.assertScreenshotsEqual
+import org.fdroid.test.TestAppUtils.getRandomMetadataV2
+import org.fdroid.test.TestRepoUtils.getRandomFileV2
+import org.fdroid.test.TestRepoUtils.getRandomRepo
+import org.fdroid.test.TestUtils.getRandomString
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
