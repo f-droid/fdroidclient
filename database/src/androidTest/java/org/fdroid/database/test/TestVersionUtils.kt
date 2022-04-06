@@ -47,9 +47,7 @@ internal object TestVersionUtils {
             PermissionV2(getRandomString(), Random.nextInt().orNull())
         },
         nativeCode = getRandomList(Random.nextInt(0, 4)) { getRandomString() },
-        features = getRandomList {
-            FeatureV2(getRandomString(), Random.nextInt().orNull())
-        },
+        features = getRandomList { FeatureV2(getRandomString()) },
     )
 
 }

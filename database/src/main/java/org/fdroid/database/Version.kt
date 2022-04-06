@@ -4,7 +4,6 @@ import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import org.fdroid.database.VersionedStringType.FEATURE
 import org.fdroid.database.VersionedStringType.PERMISSION
 import org.fdroid.database.VersionedStringType.PERMISSION_SDK_23
 import org.fdroid.index.v2.FeatureV2
@@ -37,16 +36,21 @@ data class Version(
     val releaseChannels: List<String>? = emptyList(),
     val antiFeatures: Map<String, LocalizedTextV2>? = null,
     val whatsNew: LocalizedTextV2? = null,
+    val isCompatible: Boolean,
 ) {
     fun toAppVersion(versionedStrings: List<VersionedString>) = AppVersion(
         version = this,
         usesPermission = versionedStrings.getPermissions(this),
         usesPermissionSdk23 = versionedStrings.getPermissionsSdk23(this),
-        features = versionedStrings.getFeatures(this),
     )
 }
 
-fun PackageVersionV2.toVersion(repoId: Long, packageId: String, versionId: String) = Version(
+fun PackageVersionV2.toVersion(
+    repoId: Long,
+    packageId: String,
+    versionId: String,
+    isCompatible: Boolean,
+) = Version(
     repoId = repoId,
     packageId = packageId,
     versionId = versionId,
@@ -57,16 +61,16 @@ fun PackageVersionV2.toVersion(repoId: Long, packageId: String, versionId: Strin
     releaseChannels = releaseChannels,
     antiFeatures = antiFeatures,
     whatsNew = whatsNew,
+    isCompatible = isCompatible,
 )
 
 data class AppVersion(
     val version: Version,
     val usesPermission: List<PermissionV2>? = null,
     val usesPermissionSdk23: List<PermissionV2>? = null,
-    val features: List<FeatureV2>? = null,
 ) {
     val packageId get() = version.packageId
-    val featureNames get() = features?.map { it.name }?.toTypedArray() ?: emptyArray()
+    val featureNames get() = version.manifest.features?.toTypedArray() ?: emptyArray()
     val nativeCode get() = version.manifest.nativecode?.toTypedArray() ?: emptyArray()
     val antiFeatureNames: Array<String>
         get() {
@@ -83,7 +87,18 @@ data class AppManifest(
     val maxSdkVersion: Int? = null,
     @Embedded(prefix = "signer_") val signer: SignatureV2? = null,
     val nativecode: List<String>? = emptyList(),
-)
+    val features: List<String>? = emptyList(),
+) {
+    internal fun toManifestV2(): ManifestV2 = ManifestV2(
+        versionName = versionName,
+        versionCode = versionCode,
+        usesSdk = usesSdk,
+        maxSdkVersion = maxSdkVersion,
+        signer = signer,
+        nativeCode = nativecode ?: emptyList(),
+        features = features?.map { FeatureV2(it) } ?: emptyList(),
+    )
+}
 
 fun ManifestV2.toManifest() = AppManifest(
     versionName = versionName,
@@ -92,12 +107,12 @@ fun ManifestV2.toManifest() = AppManifest(
     maxSdkVersion = maxSdkVersion,
     signer = signer,
     nativecode = nativeCode,
+    features = features.map { it.name },
 )
 
 enum class VersionedStringType {
     PERMISSION,
     PERMISSION_SDK_23,
-    FEATURE,
 }
 
 @Entity(
@@ -132,21 +147,9 @@ fun List<PermissionV2>.toVersionedString(
     )
 }
 
-fun List<FeatureV2>.toVersionedString(version: Version) = map { feature ->
-    VersionedString(
-        repoId = version.repoId,
-        packageId = version.packageId,
-        versionId = version.versionId,
-        type = FEATURE,
-        name = feature.name,
-        version = feature.version,
-    )
-}
-
 fun ManifestV2.getVersionedStrings(version: Version): List<VersionedString> {
     return usesPermission.toVersionedString(version, PERMISSION) +
-        usesPermissionSdk23.toVersionedString(version, PERMISSION_SDK_23) +
-        features.toVersionedString(version)
+        usesPermissionSdk23.toVersionedString(version, PERMISSION_SDK_23)
 }
 
 fun List<VersionedString>.getPermissions(version: Version) = mapNotNull { v ->
@@ -163,15 +166,6 @@ fun List<VersionedString>.getPermissionsSdk23(version: Version) = mapNotNull { v
         PermissionV2(
             name = v.name,
             maxSdkVersion = v.version,
-        )
-    }
-}
-
-fun List<VersionedString>.getFeatures(version: Version) = mapNotNull { v ->
-    v.map(version, FEATURE) {
-        FeatureV2(
-            name = v.name,
-            version = v.version,
         )
     }
 }

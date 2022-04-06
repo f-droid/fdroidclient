@@ -224,7 +224,7 @@ data class RepositoryPreferences(
     @PrimaryKey internal val repoId: Long,
     val weight: Int,
     val enabled: Boolean = true,
-    val lastUpdated: Long? = System.currentTimeMillis(), // TODO set this after repo updates
+    val lastUpdated: Long? = System.currentTimeMillis(),
     val lastETag: String? = null,
     val userMirrors: List<String>? = null,
     val disabledMirrors: List<String>? = null,

@@ -10,6 +10,7 @@ import org.fdroid.database.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.random.Random
 import kotlin.test.assertEquals
 import kotlin.test.fail
 
@@ -27,21 +28,25 @@ class VersionTest : DbTest() {
         val repoId = repoDao.insert(getRandomRepo())
         appDao.insert(repoId, packageId, getRandomMetadataV2())
         val packageVersion = getRandomPackageVersionV2()
-        versionDao.insert(repoId, packageId, versionId, packageVersion)
+        val isCompatible = Random.nextBoolean()
+        versionDao.insert(repoId, packageId, versionId, packageVersion, isCompatible)
 
         val appVersions = versionDao.getAppVersions(repoId, packageId)
         assertEquals(1, appVersions.size)
         val appVersion = appVersions[0]
         assertEquals(versionId, appVersion.version.versionId)
-        assertEquals(packageVersion.toVersion(repoId, packageId, versionId), appVersion.version)
+        val version = packageVersion.toVersion(repoId, packageId, versionId, isCompatible)
+        assertEquals(version, appVersion.version)
         val manifest = packageVersion.manifest
         assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission?.toSet())
         assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23?.toSet())
-        assertEquals(manifest.features.toSet(), appVersion.features?.toSet())
+        assertEquals(
+            manifest.features.map { it.name }.toSet(),
+            appVersion.version.manifest.features?.toSet()
+        )
 
         val versionedStrings = versionDao.getVersionedStrings(repoId, packageId)
-        val expectedSize =
-            manifest.usesPermission.size + manifest.usesPermissionSdk23.size + manifest.features.size
+        val expectedSize = manifest.usesPermission.size + manifest.usesPermissionSdk23.size
         assertEquals(expectedSize, versionedStrings.size)
 
         versionDao.deleteAppVersion(repoId, packageId, versionId)
@@ -55,11 +60,13 @@ class VersionTest : DbTest() {
         val repoId = repoDao.insert(getRandomRepo())
         appDao.insert(repoId, packageId, getRandomMetadataV2())
         val packageVersion1 = getRandomPackageVersionV2()
-        val version1 = getRandomString()
-        versionDao.insert(repoId, packageId, version1, packageVersion1)
         val packageVersion2 = getRandomPackageVersionV2()
+        val version1 = getRandomString()
         val version2 = getRandomString()
-        versionDao.insert(repoId, packageId, version2, packageVersion2)
+        val isCompatible1 = Random.nextBoolean()
+        val isCompatible2 = Random.nextBoolean()
+        versionDao.insert(repoId, packageId, version1, packageVersion1, isCompatible1)
+        versionDao.insert(repoId, packageId, version2, packageVersion2, isCompatible2)
 
         // get app versions from DB and assign them correctly
         val appVersions = versionDao.getAppVersions(packageId).getOrAwaitValue() ?: fail()
@@ -72,19 +79,27 @@ class VersionTest : DbTest() {
         } else appVersions[1]
 
         // check first version matches
-        assertEquals(packageVersion1.toVersion(repoId, packageId, version1), appVersion.version)
+        val exVersion1 = packageVersion1.toVersion(repoId, packageId, version1, isCompatible1)
+        assertEquals(exVersion1, appVersion.version)
         val manifest = packageVersion1.manifest
         assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission?.toSet())
         assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23?.toSet())
-        assertEquals(manifest.features.toSet(), appVersion.features?.toSet())
+        assertEquals(
+            manifest.features.map { it.name }.toSet(),
+            appVersion.version.manifest.features?.toSet()
+        )
 
         // check second version matches
-        assertEquals(packageVersion2.toVersion(repoId, packageId, version2), appVersion2.version)
+        val exVersion2 = packageVersion2.toVersion(repoId, packageId, version2, isCompatible2)
+        assertEquals(exVersion2, appVersion2.version)
         val manifest2 = packageVersion2.manifest
         assertEquals(manifest2.usesPermission.toSet(), appVersion2.usesPermission?.toSet())
         assertEquals(manifest2.usesPermissionSdk23.toSet(),
             appVersion2.usesPermissionSdk23?.toSet())
-        assertEquals(manifest2.features.toSet(), appVersion2.features?.toSet())
+        assertEquals(
+            manifest.features.map { it.name }.toSet(),
+            appVersion.version.manifest.features?.toSet()
+        )
 
         // delete app and check that all associated data also gets deleted
         appDao.deleteAppMetadata(repoId, packageId)

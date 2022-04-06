@@ -29,7 +29,7 @@ class UpdateCheckerTest : DbTest() {
     @Test
     fun testGetUpdates() {
         val inputStream = CountingInputStream(context.resources.assets.open("index-v1.json"))
-        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db), null)
+        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db) { true }, null)
 
         db.runInTransaction {
             val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")

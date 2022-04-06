@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build
+import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.index.IndexUtils
 
 public class UpdateChecker(
@@ -14,9 +15,16 @@ public class UpdateChecker(
 
     private val appDao = db.getAppDao() as AppDaoInt
     private val versionDao = db.getVersionDao() as VersionDaoInt
+    private val compatibilityChecker = CompatibilityCheckerImpl(packageManager)
 
-    fun getUpdatableApps(): List<UpdatableApp> {
+    /**
+     * Returns a list of apps that can be updated.
+     * @param releaseChannels optional list of release channels to consider on top of stable.
+     * If this is null or empty, only versions without channel (stable) will be considered.
+     */
+    fun getUpdatableApps(releaseChannels: List<String>? = null): List<UpdatableApp> {
         val updatableApps = ArrayList<UpdatableApp>()
+
         @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
         val installedPackages = packageManager.getInstalledPackages(GET_SIGNATURES)
         val packageNames = installedPackages.map { it.packageName }
@@ -27,7 +35,7 @@ public class UpdateChecker(
         }
         installedPackages.iterator().forEach { packageInfo ->
             val versions = versionsByPackage[packageInfo.packageName] ?: return@forEach // continue
-            val version = getVersion(versions, packageInfo)
+            val version = getVersion(versions, packageInfo, releaseChannels)
             if (version != null) {
                 val versionCode = packageInfo.getVersionCode()
                 val app = getUpdatableApp(version, versionCode)
@@ -37,8 +45,14 @@ public class UpdateChecker(
         return updatableApps
     }
 
+    /**
+     * Returns an [AppVersion] for the given [packageName] that is an update
+     * or null if there is none.
+     * @param releaseChannels optional list of release channels to consider on top of stable.
+     * If this is null or empty, only versions without channel (stable) will be considered.
+     */
     @SuppressLint("PackageManagerGetSignatures")
-    fun getUpdate(packageName: String): AppVersion? {
+    fun getUpdate(packageName: String, releaseChannels: List<String>? = null): AppVersion? {
         val versions = versionDao.getVersions(listOf(packageName))
         if (versions.isEmpty()) return null
         val packageInfo = try {
@@ -47,7 +61,7 @@ public class UpdateChecker(
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
-        val version = getVersion(versions, packageInfo) ?: return null
+        val version = getVersion(versions, packageInfo, releaseChannels) ?: return null
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
             packageId = version.packageId,
@@ -56,7 +70,11 @@ public class UpdateChecker(
         return version.toAppVersion(versionedStrings)
     }
 
-    private fun getVersion(versions: List<Version>, packageInfo: PackageInfo?): Version? {
+    private fun getVersion(
+        versions: List<Version>,
+        packageInfo: PackageInfo?,
+        releaseChannels: List<String>?,
+    ): Version? {
         val versionCode = packageInfo?.getVersionCode() ?: 0
         // the below is rather expensive, so we only do that when there's update candidates
         // TODO handle signingInfo.signingCertificateHistory as well
@@ -69,8 +87,15 @@ public class UpdateChecker(
         versions.iterator().forEach versions@{ version ->
             // if version code is not higher than installed skip package as list is sorted
             if (version.manifest.versionCode <= versionCode) return null
-            // not considering beta versions for now
-            if (!version.releaseChannels.isNullOrEmpty()) return@versions
+            // check release channels if they are not empty
+            if (!version.releaseChannels.isNullOrEmpty()) {
+                // if release channels are not empty (stable) don't consider this version
+                if (releaseChannels == null) return@versions
+                // don't consider version with non-matching release channel
+                if (releaseChannels.intersect(version.releaseChannels).isEmpty()) return@versions
+            }
+            // skip incompatible versions
+            if (!compatibilityChecker.isCompatible(version.manifest)) return@versions
             val canInstall = if (packageInfo == null) {
                 true // take first one with highest version code and repo weight
             } else {

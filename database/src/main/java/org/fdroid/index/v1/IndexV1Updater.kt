@@ -1,6 +1,7 @@
 package org.fdroid.index.v1
 
 import android.content.Context
+import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbV1StreamReceiver
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidDatabaseInt
@@ -15,6 +16,7 @@ public class IndexV1Updater(
     private val context: Context,
     database: FDroidDatabase,
     private val downloaderFactory: DownloaderFactory,
+    private val compatibilityChecker: CompatibilityChecker,
 ) {
 
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
@@ -63,8 +65,8 @@ public class IndexV1Updater(
             db.runInTransaction {
                 val cert = verifier.getStreamAndVerify { inputStream ->
                     updateListener?.onStartProcessing() // TODO maybe do more fine-grained reporting
-                    val streamProcessor =
-                        IndexV1StreamProcessor(DbV1StreamReceiver(db), certificate)
+                    val streamReceiver = DbV1StreamReceiver(db, compatibilityChecker)
+                    val streamProcessor = IndexV1StreamProcessor(streamReceiver, certificate)
                     streamProcessor.process(repoId, inputStream)
                 }
                 // update certificate, if we didn't have any before

@@ -48,7 +48,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     override fun insert(repoId: Long, packageId: String, app: MetadataV2) {
-        insert(app.toAppMetadata(repoId, packageId))
+        insert(app.toAppMetadata(repoId, packageId, false))
         app.icon.insert(repoId, packageId, "icon")
         app.featureGraphic.insert(repoId, packageId, "featureGraphic")
         app.promoGraphic.insert(repoId, packageId, "promoGraphic")
@@ -89,6 +89,20 @@ internal interface AppDaoInt : AppDao {
      */
     @Query("UPDATE AppMetadata SET preferredSigner = :preferredSigner WHERE repoId = :repoId AND packageId = :packageId")
     fun updatePreferredSigner(repoId: Long, packageId: String, preferredSigner: String?)
+
+    /**
+     * Updates the [AppMetadata.isCompatible] flag
+     * based on whether at least one [AppVersion] is compatible.
+     * This needs to run within the transaction that adds [AppMetadata] to the DB.
+     * Otherwise the compatibility is wrong.
+     */
+    @Query("""UPDATE AppMetadata
+        SET isCompatible = (
+            SELECT TOTAL(isCompatible) > 0 FROM Version
+            WHERE repoId = :repoId AND AppMetadata.packageId = Version.packageId
+        )
+        WHERE repoId = :repoId""")
+    fun updateCompatibility(repoId: Long)
 
     override fun getApp(packageId: String): LiveData<App?> {
         return getRepoIdForPackage(packageId).distinctUntilChanged().switchMap { repoId ->
@@ -227,7 +241,8 @@ internal interface AppDaoInt : AppDao {
     }
 
     @Transaction
-    @Query("""SELECT repoId, packageId, app.name, summary, version.antiFeatures
+    @Query("""
+        SELECT repoId, packageId, app.name, summary, version.antiFeatures, app.isCompatible
         FROM AppMetadata AS app
         JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
@@ -245,7 +260,8 @@ internal interface AppDaoInt : AppDao {
 
     // TODO maybe it makes sense to split categories into their own table for this?
     @Transaction
-    @Query("""SELECT repoId, packageId, app.name, summary, version.antiFeatures
+    @Query("""
+        SELECT repoId, packageId, app.name, summary, version.antiFeatures, app.isCompatible
         FROM AppMetadata AS app
         JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
@@ -256,7 +272,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
-    @Query("""SELECT repoId, packageId, app.name, summary
+    @Query("""SELECT repoId, packageId, app.name, summary, app.isCompatible
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageId IN (:packageNames)
