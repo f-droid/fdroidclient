@@ -23,15 +23,10 @@ public interface RepositoryDao {
     fun insert(initialRepo: InitialRepository)
 
     /**
-     * Use when inserting a new repo for the first time.
-     */
-    fun insert(repository: RepoV2): Long
-
-    /**
      * Use when replacing an existing repo with a full index.
      * This removes all existing index data associated with this repo from the database.
      */
-    fun replace(repoId: Long, repository: RepoV2, certificate: String?)
+    fun replace(repoId: Long, repository: RepoV2, version: Int, certificate: String?)
 
     fun getRepository(repoId: Long): Repository?
     fun insertEmptyRepo(
@@ -79,9 +74,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
             address = initialRepo.address,
             icon = null,
             timestamp = -1,
+            version = initialRepo.version,
             description = mapOf("en-US" to initialRepo.description),
             certificate = initialRepo.certificate,
-            //version = initialRepo.version, // TODO add version
         )
         val repoId = insert(repo)
         val repositoryPreferences = RepositoryPreferences(
@@ -104,6 +99,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             icon = null,
             address = address,
             timestamp = System.currentTimeMillis(),
+            version = null,
             certificate = null,
         )
         val repoId = insert(repo)
@@ -120,8 +116,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @Transaction
-    override fun insert(repository: RepoV2): Long {
-        val repoId = insert(repository.toCoreRepository())
+    @VisibleForTesting
+    fun insert(repository: RepoV2): Long {
+        val repoId = insert(repository.toCoreRepository(version = 0))
         insertRepositoryPreferences(repoId)
         insertRepoTables(repoId, repository)
         return repoId
@@ -134,8 +131,8 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @Transaction
-    override fun replace(repoId: Long, repository: RepoV2, certificate: String?) {
-        val newRepoId = insert(repository.toCoreRepository(repoId, certificate))
+    override fun replace(repoId: Long, repository: RepoV2, version: Int, certificate: String?) {
+        val newRepoId = insert(repository.toCoreRepository(repoId, version, certificate))
         require(newRepoId == repoId) { "New repoId $newRepoId did not match old $repoId" }
         insertRepoTables(repoId, repository)
     }

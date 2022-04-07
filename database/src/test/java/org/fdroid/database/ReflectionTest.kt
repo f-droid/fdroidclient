@@ -14,7 +14,7 @@ class ReflectionTest {
 
     @Test
     fun testRepository() {
-        val repo = getRandomRepo().toCoreRepository()
+        val repo = getRandomRepo().toCoreRepository(version = 42)
         val icon = getRandomFileV2()
         val description = if (Random.nextBoolean()) mapOf("de" to null, "en" to "foo") else null
         val json = """

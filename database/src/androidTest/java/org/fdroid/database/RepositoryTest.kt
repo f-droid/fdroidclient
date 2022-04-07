@@ -73,7 +73,7 @@ class RepositoryTest : DbTest() {
         assertTrue(versionDao.getVersionedStrings(repoId, packageId).isNotEmpty())
 
         val cert = getRandomString()
-        repoDao.replace(repoId, getRandomRepo(), cert)
+        repoDao.replace(repoId, getRandomRepo(), 42, cert)
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(0, appDao.getAppMetadata().size)
         assertEquals(0, appDao.getLocalizedFiles().size)

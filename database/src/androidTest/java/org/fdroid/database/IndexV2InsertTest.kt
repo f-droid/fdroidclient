@@ -39,7 +39,7 @@ class IndexV2InsertTest : DbTest() {
         db.runInTransaction {
             val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
             inputStream.use { indexStream ->
-                indexProcessor.process(repoId, indexStream)
+                indexProcessor.process(repoId, 42, indexStream)
             }
         }
         assertTrue(repoDao.getRepositories().size == 1)
@@ -68,7 +68,7 @@ class IndexV2InsertTest : DbTest() {
         assertFailsWith<SerializationException> {
             db.runInTransaction {
                 cIn.use { indexStream ->
-                    indexProcessor.process(1, indexStream)
+                    indexProcessor.process(1, 42, indexStream)
                 }
             }
         }
