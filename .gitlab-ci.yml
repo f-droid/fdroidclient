@@ -153,6 +153,7 @@ pages:
   stage: deploy
   only:
     - master
+    - index-v2-new-libs
   script:
     - ./gradlew :libs:download:dokkaHtml :libs:index:dokkaHtml :libs:database:dokkaHtml
     - mkdir -p public/libs
@@ -169,6 +170,7 @@ deploy_nightly:
   stage: deploy
   only:
     - master
+    - index-v2-new-libs
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
     - apt-get install -t bullseye-backports fdroidserver
@@ -180,8 +182,8 @@ deploy_nightly:
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_URL}-nightly/-/raw/master/fdroid/repo</item>" >> app/src/main/res/values/default_repos.xml
     - cat config/nightly-repo/repo.xml >> app/src/main/res/values/default_repos.xml
-    - export DB=`sed -n 's,.*version *= *\([0-9][0-9]*\).*,\1,p' libs/database/src/main/java/org/fdroid/database/FDroidDatabase.kt`
-    - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-8)`
+    - export DB=1
+    - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-9)`
     - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," app/build.gradle
     # build the APKs!
     - ./gradlew assembleDebug
