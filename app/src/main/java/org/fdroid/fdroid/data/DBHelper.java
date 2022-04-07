@@ -228,7 +228,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "primary key(" + ApkAntiFeatureJoinTable.Cols.APK_ID + ", " + ApkAntiFeatureJoinTable.Cols.ANTI_FEATURE_ID + ") "
             + " );";
 
-    protected static final int DB_VERSION = 85;
+    protected static final int DB_VERSION = 86;
 
     private final Context context;
 

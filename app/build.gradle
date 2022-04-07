@@ -54,7 +54,7 @@ android {
             minifyEnabled true
             shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
-            buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"' // String needs both quotes
+            buildConfigField "String", "ACRA_REPORT_EMAIL", '"contact-project+grote-fdroidclient-31538990-issue-@incoming.gitlab.com"' // String needs both quotes
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
