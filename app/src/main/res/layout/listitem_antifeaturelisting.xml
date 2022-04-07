@@ -20,8 +20,8 @@
         android:id="@+id/anti_feature_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/anti_feature_icon" />
+        android:layout_toEndOf="@id/anti_feature_icon" />
 
 </RelativeLayout>
