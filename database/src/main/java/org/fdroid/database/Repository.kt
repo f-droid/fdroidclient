@@ -23,16 +23,22 @@ data class CoreRepository(
     @Embedded(prefix = "icon_") val icon: FileV2?,
     val address: String,
     val timestamp: Long,
+    val version: Int?,
     val description: LocalizedTextV2 = emptyMap(),
     val certificate: String?,
 )
 
-fun RepoV2.toCoreRepository(repoId: Long = 0, certificate: String? = null) = CoreRepository(
+fun RepoV2.toCoreRepository(
+    repoId: Long = 0,
+    version: Int,
+    certificate: String? = null,
+) = CoreRepository(
     repoId = repoId,
     name = name,
     icon = icon,
     address = address,
     timestamp = timestamp,
+    version = version,
     description = description,
     certificate = certificate,
 )
@@ -70,6 +76,7 @@ data class Repository(
     val icon: FileV2? get() = repository.icon
     val address: String get() = repository.address
     val timestamp: Long get() = repository.timestamp
+    val version: Int get() = repository.version ?: 0
     val description: LocalizedTextV2 get() = repository.description
     val certificate: String? get() = repository.certificate
 

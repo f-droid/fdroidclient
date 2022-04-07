@@ -31,7 +31,8 @@ object TestUtils {
         val expectedReleaseChannels = repoV2.releaseChannels.toRepoReleaseChannel(repoId).toSet()
         assertEquals(expectedReleaseChannels, repo.releaseChannels.toSet())
         // core repo
-        val coreRepo = repoV2.toCoreRepository().copy(repoId = repoId)
+        val coreRepo = repoV2.toCoreRepository(version = repo.repository.version!!)
+            .copy(repoId = repoId)
         assertEquals(coreRepo, repo.repository)
     }
 

@@ -10,8 +10,8 @@ internal class DbStreamReceiver(
     private val compatibilityChecker: CompatibilityChecker,
 ) : IndexStreamReceiver {
 
-    override fun receive(repoId: Long, repo: RepoV2, certificate: String?) {
-        db.getRepositoryDao().replace(repoId, repo, certificate)
+    override fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?) {
+        db.getRepositoryDao().replace(repoId, repo, version, certificate)
     }
 
     override fun receive(repoId: Long, packageId: String, p: PackageV2) {

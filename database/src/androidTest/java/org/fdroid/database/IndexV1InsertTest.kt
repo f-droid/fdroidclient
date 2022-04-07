@@ -58,7 +58,8 @@ class IndexV1InsertTest : DbTest() {
         println("Versions: " + versionDao.countAppVersions())
         println("Perms/Features: " + versionDao.countVersionedStrings())
 
-        insertV2ForComparison()
+        val version = repoDao.getRepositories()[0].repository.version ?: fail()
+        insertV2ForComparison(version)
 
         val repo1 = repoDao.getRepository(1) ?: fail()
         val repo2 = repoDao.getRepository(2) ?: fail()
@@ -108,14 +109,14 @@ class IndexV1InsertTest : DbTest() {
     }
 
     @Suppress("SameParameterValue")
-    private fun insertV2ForComparison() {
+    private fun insertV2ForComparison(version: Int) {
         val c = getApplicationContext<Context>()
         val inputStream = CountingInputStream(c.resources.assets.open("index-v2.json"))
         val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db) { true }, null)
         db.runInTransaction {
             val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
             inputStream.use { indexStream ->
-                indexProcessor.process(repoId, indexStream)
+                indexProcessor.process(repoId, version, indexStream)
             }
         }
     }
@@ -132,7 +133,7 @@ class IndexV1InsertTest : DbTest() {
         assertFailsWith<SerializationException> {
             db.runInTransaction {
                 cIn.use { indexStream ->
-                    indexProcessor.process(1, indexStream)
+                    indexProcessor.process(1, 42, indexStream)
                 }
             }
         }
