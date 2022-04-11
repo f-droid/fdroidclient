@@ -1,5 +1,8 @@
 package org.fdroid.database
 
+import android.content.res.Resources
+import androidx.core.os.ConfigurationCompat.getLocales
+import androidx.core.os.LocaleListCompat
 import org.fdroid.CompatibilityChecker
 import org.fdroid.index.v1.IndexV1StreamReceiver
 import org.fdroid.index.v2.AntiFeatureV2
@@ -14,12 +17,14 @@ internal class DbV1StreamReceiver(
     private val compatibilityChecker: CompatibilityChecker,
 ) : IndexV1StreamReceiver {
 
+    private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
+
     override fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?) {
         db.getRepositoryDao().replace(repoId, repo, version, certificate)
     }
 
     override fun receive(repoId: Long, packageId: String, m: MetadataV2) {
-        db.getAppDao().insert(repoId, packageId, m)
+        db.getAppDao().insert(repoId, packageId, m, locales)
     }
 
     override fun receive(repoId: Long, packageId: String, v: Map<String, PackageVersionV2>) {
@@ -39,7 +44,7 @@ internal class DbV1StreamReceiver(
         repoDao.insertCategories(categories.toRepoCategories(repoId))
         repoDao.insertReleaseChannels(releaseChannels.toRepoReleaseChannel(repoId))
 
-        db.getAppDao().updateCompatibility(repoId)
+        db.afterUpdatingRepo(repoId)
     }
 
     override fun updateAppMetadata(repoId: Long, packageId: String, preferredSigner: String?) {

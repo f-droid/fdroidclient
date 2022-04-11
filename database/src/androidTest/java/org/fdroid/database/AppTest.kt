@@ -8,6 +8,7 @@ import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomFileV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString
+import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -64,8 +65,10 @@ internal class AppTest : DbTest() {
         val app1 = getRandomMetadataV2().copy(name = name1, icon = icons1)
         val app2 = getRandomMetadataV2().copy(name = name2, icon = icons2)
         val app3 = getRandomMetadataV2().copy(name = name3, icon = null)
-        appDao.insert(repoId, packageId1, app1)
-        appDao.insert(repoId, packageId2, app2)
+        appDao.insert(repoId, packageId1, app1, locales)
+        appDao.insert(repoId, packageId2, app2, locales)
+        versionDao.insert(repoId, packageId1, "1", getRandomPackageVersionV2(), true)
+        versionDao.insert(repoId, packageId2, "2", getRandomPackageVersionV2(), true)
 
         // icons of both apps are returned correctly
         val apps = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
@@ -77,6 +80,7 @@ internal class AppTest : DbTest() {
 
         // app without icon is not returned
         appDao.insert(repoId, packageId3, app3)
+        versionDao.insert(repoId, packageId3, "3", getRandomPackageVersionV2(), true)
         val apps3 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
         assertEquals(2, apps3.size)
         assertEquals(icons1,

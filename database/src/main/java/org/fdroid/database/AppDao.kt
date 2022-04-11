@@ -2,7 +2,10 @@ package org.fdroid.database
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import androidx.annotation.VisibleForTesting
+import androidx.core.os.ConfigurationCompat.getLocales
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.distinctUntilChanged
@@ -22,7 +25,12 @@ import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.Screenshots
 
 public interface AppDao {
-    public fun insert(repoId: Long, packageId: String, app: MetadataV2)
+    public fun insert(
+        repoId: Long,
+        packageId: String,
+        app: MetadataV2,
+        locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
+    )
 
     /**
      * Gets the app from the DB. If more than one app with this [packageId] exists,
@@ -36,10 +44,15 @@ public interface AppDao {
         limit: Int = 50,
     ): LiveData<List<AppOverviewItem>>
 
-    public fun getAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+    public fun getAppListItems(
+        packageManager: PackageManager,
+        sortOrder: AppListSortOrder,
+    ): LiveData<List<AppListItem>>
+
     public fun getAppListItems(
         packageManager: PackageManager,
         category: String,
+        sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>>
 
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
@@ -47,11 +60,20 @@ public interface AppDao {
     public fun getNumberOfAppsInCategory(category: String): Int
 }
 
+public enum class AppListSortOrder {
+    LAST_UPDATED, NAME
+}
+
 @Dao
 internal interface AppDaoInt : AppDao {
 
     @Transaction
-    override fun insert(repoId: Long, packageId: String, app: MetadataV2) {
+    override fun insert(
+        repoId: Long,
+        packageId: String,
+        app: MetadataV2,
+        locales: LocaleListCompat,
+    ) {
         insert(app.toAppMetadata(repoId, packageId, false))
         app.icon.insert(repoId, packageId, "icon")
         app.featureGraphic.insert(repoId, packageId, "featureGraphic")
@@ -108,6 +130,10 @@ internal interface AppDaoInt : AppDao {
         )
         WHERE repoId = :repoId""")
     fun updateCompatibility(repoId: Long)
+
+    @Query("""UPDATE AppMetadata SET localizedName = :name, localizedSummary = :summary
+        WHERE repoId = :repoId AND packageId = :packageId""")
+    fun updateAppMetadata(repoId: Long, packageId: String, name: String?, summary: String?)
 
     override fun getApp(packageId: String): LiveData<App?> {
         return getRepoIdForPackage(packageId).distinctUntilChanged().switchMap { repoId ->
@@ -181,28 +207,40 @@ internal interface AppDaoInt : AppDao {
     fun getLocalizedFileLists(): List<LocalizedFileList>
 
     @Transaction
-    @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
+    @Query("""SELECT repoId, packageId, app.added, app.lastUpdated, localizedName,
+             localizedSummary, version.antiFeatures
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
+        JOIN Version AS version USING (repoId, packageId)
         JOIN LocalizedIcon AS icon USING (repoId, packageId)
-        WHERE pref.enabled = 1 GROUP BY packageId
-        ORDER BY app.name IS NULL ASC, summary IS NULL ASC, app.lastUpdated DESC, added ASC
+        WHERE pref.enabled = 1
+        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        ORDER BY localizedName IS NULL ASC, localizedSummary IS NULL ASC, app.lastUpdated DESC, app.added ASC
         LIMIT :limit""")
     override fun getAppOverviewItems(limit: Int): LiveData<List<AppOverviewItem>>
 
     @Transaction
     // TODO maybe it makes sense to split categories into their own table for this?
-    @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
+    @Query("""SELECT repoId, packageId, app.added, app.lastUpdated, localizedName,
+             localizedSummary, version.antiFeatures
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
+        JOIN Version AS version USING (repoId, packageId)
         JOIN LocalizedIcon AS icon USING (repoId, packageId)
-        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%' GROUP BY packageId
-        ORDER BY app.name IS NULL ASC, summary IS NULL ASC, app.lastUpdated DESC, added ASC
+        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
+        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        ORDER BY localizedName IS NULL ASC, localizedSummary IS NULL ASC, app.lastUpdated DESC, app.added ASC
         LIMIT :limit""")
     override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
 
-    override fun getAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>> {
-        return getAppListItems().map(packageManager)
+    override fun getAppListItems(
+        packageManager: PackageManager,
+        sortOrder: AppListSortOrder,
+    ): LiveData<List<AppListItem>> {
+        return when (sortOrder) {
+            AppListSortOrder.LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
+            AppListSortOrder.NAME -> getAppListItemsByName().map(packageManager)
+        }
     }
 
     private fun LiveData<List<AppListItem>>.map(
@@ -221,41 +259,75 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageId, app.name, summary, version.antiFeatures, app.isCompatible
+        SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
+               app.isCompatible
+        FROM AppMetadata AS app
+        JOIN Version AS version USING (repoId, packageId)
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1
+        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        ORDER BY localizedName COLLATE NOCASE ASC""")
+    fun getAppListItemsByName(): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query("""
+        SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
+               app.isCompatible
         FROM AppMetadata AS app
         JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1
         GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
         ORDER BY app.lastUpdated DESC""")
-    fun getAppListItems(): LiveData<List<AppListItem>>
+    fun getAppListItemsByLastUpdated(): LiveData<List<AppListItem>>
 
     override fun getAppListItems(
         packageManager: PackageManager,
         category: String,
+        sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>> {
-        return getAppListItems(category).map(packageManager)
+        return when (sortOrder) {
+            AppListSortOrder.LAST_UPDATED -> {
+                getAppListItemsByLastUpdated(category).map(packageManager)
+            }
+            AppListSortOrder.NAME -> getAppListItemsByName(category).map(packageManager)
+        }
     }
 
     // TODO maybe it makes sense to split categories into their own table for this?
     @Transaction
     @Query("""
-        SELECT repoId, packageId, app.name, summary, version.antiFeatures, app.isCompatible
+        SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
+               app.isCompatible
         FROM AppMetadata AS app
         JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
         GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
         ORDER BY app.lastUpdated DESC""")
-    fun getAppListItems(category: String): LiveData<List<AppListItem>>
+    fun getAppListItemsByLastUpdated(category: String): LiveData<List<AppListItem>>
+
+    // TODO maybe it makes sense to split categories into their own table for this?
+    @Transaction
+    @Query("""
+        SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
+               app.isCompatible
+        FROM AppMetadata AS app
+        JOIN Version AS version USING (repoId, packageId)
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
+        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        ORDER BY localizedName COLLATE NOCASE ASC""")
+    fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
 
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
-    @Query("""SELECT repoId, packageId, app.name, summary, app.isCompatible
+    @Query("""SELECT repoId, packageId, localizedName, localizedSummary, app.isCompatible
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageId IN (:packageNames)
-        GROUP BY packageId HAVING MAX(pref.weight)""")
+        GROUP BY packageId HAVING MAX(pref.weight)
+        ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>
 
     override fun getInstalledAppListItems(
@@ -276,7 +348,9 @@ internal interface AppDaoInt : AppDao {
      * Used by [UpdateChecker] to get specific apps with available updates.
      */
     @Transaction
-    @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
+    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @Query("""SELECT repoId, packageId, added, app.lastUpdated, localizedName,
+             localizedSummary
         FROM AppMetadata AS app WHERE repoId = :repoId AND packageId = :packageId""")
     fun getAppOverviewItem(repoId: Long, packageId: String): AppOverviewItem?
 
