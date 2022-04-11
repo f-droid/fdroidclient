@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.adapterdelegates3.AdapterDelegatesManager;
+import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.data.App;

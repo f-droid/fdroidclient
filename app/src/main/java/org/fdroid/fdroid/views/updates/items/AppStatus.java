@@ -2,7 +2,7 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
+import com.hannesdorfmann.adapterdelegates4.AdapterDelegate;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
