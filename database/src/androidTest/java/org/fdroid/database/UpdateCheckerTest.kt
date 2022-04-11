@@ -13,7 +13,7 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
 @RunWith(AndroidJUnit4::class)
-class UpdateCheckerTest : DbTest() {
+internal class UpdateCheckerTest : DbTest() {
 
     private lateinit var context: Context
     private lateinit var updateChecker: UpdateChecker

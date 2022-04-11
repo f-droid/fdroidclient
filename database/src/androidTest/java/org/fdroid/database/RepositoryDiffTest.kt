@@ -26,7 +26,7 @@ import kotlin.test.assertEquals
  * Tests that repository diffs get applied to the database correctly.
  */
 @RunWith(AndroidJUnit4::class)
-class RepositoryDiffTest : DbTest() {
+internal class RepositoryDiffTest : DbTest() {
 
     private val j = Json
 
@@ -37,8 +37,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "timestamp": $updateTimestamp
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             assertEquals(updateTimestamp, repos[0].timestamp)
             assertRepoEquals(repo.copy(timestamp = updateTimestamp), repos[0])
@@ -63,8 +62,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "timestamp": $updateTimestamp
-            }
-            """.trimIndent()
+            }""".trimIndent()
 
         // decode diff from JSON and update DB with it
         val diff = j.parseToJsonElement(json).jsonObject // Json.decodeFromString<RepoDiffV2>(json)
@@ -85,8 +83,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "icon": ${Json.encodeToString(updateIcon)}
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             assertEquals(updateIcon, repos[0].icon)
             assertRepoEquals(repo.copy(icon = updateIcon), repos[0])
@@ -100,8 +97,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "icon": { "name": "${updateIcon.name}" }
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             assertEquals(updateIcon, repos[0].icon)
             assertRepoEquals(repo.copy(icon = updateIcon), repos[0])
@@ -114,8 +110,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "icon": null
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             assertEquals(null, repos[0].icon)
             assertRepoEquals(repo.copy(icon = null), repos[0])
@@ -133,8 +128,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "mirrors": ${Json.encodeToString(updateMirrors)}
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             val expectedMirrors = updateMirrors.map { mirror ->
                 mirror.toMirror(repos[0].repoId)
@@ -151,8 +145,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "description": ${Json.encodeToString(updateText)}
-            }
-            """.trimIndent()
+            }""".trimIndent()
         val expectedText = if (updateText == null) emptyMap() else mapOf("en" to "foo")
         testDiff(repo, json) { repos ->
             assertEquals(expectedText, repos[0].description)
@@ -175,8 +168,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "antiFeatures": ${Json.encodeToString(antiFeatures)}
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             val expectedFeatures = repo.antiFeatures.applyDiff(antiFeatures)
             val expectedRepoAntiFeatures =
@@ -206,8 +198,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "categories": ${Json.encodeToString(categories)}
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             val expectedFeatures = repo.categories.applyDiff(categories)
             val expectedRepoCategories =
@@ -236,8 +227,7 @@ class RepositoryDiffTest : DbTest() {
         val json = """
             {
               "releaseChannels": ${Json.encodeToString(releaseChannels)}
-            }
-            """.trimIndent()
+            }""".trimIndent()
         testDiff(repo, json) { repos ->
             val expectedFeatures = repo.releaseChannels.applyDiff(releaseChannels)
             val expectedRepoReleaseChannels =

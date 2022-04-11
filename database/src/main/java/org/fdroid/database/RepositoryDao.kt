@@ -20,30 +20,30 @@ import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.RepoV2
 
 public interface RepositoryDao {
-    fun insert(initialRepo: InitialRepository)
+    public fun insert(initialRepo: InitialRepository)
 
     /**
      * Use when replacing an existing repo with a full index.
      * This removes all existing index data associated with this repo from the database.
      */
-    fun replace(repoId: Long, repository: RepoV2, version: Int, certificate: String?)
+    public fun replace(repoId: Long, repository: RepoV2, version: Int, certificate: String?)
 
-    fun getRepository(repoId: Long): Repository?
-    fun insertEmptyRepo(
+    public fun getRepository(repoId: Long): Repository?
+    public fun insertEmptyRepo(
         address: String,
         username: String? = null,
         password: String? = null,
     ): Long
 
-    fun deleteRepository(repoId: Long)
-    fun getRepositories(): List<Repository>
-    fun getLiveRepositories(): LiveData<List<Repository>>
-    fun countAppsPerRepository(repoId: Long): Int
-    fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
-    fun updateUserMirrors(repoId: Long, mirrors: List<String>)
-    fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
-    fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
-    fun getLiveCategories(): LiveData<List<Category>>
+    public fun deleteRepository(repoId: Long)
+    public fun getRepositories(): List<Repository>
+    public fun getLiveRepositories(): LiveData<List<Repository>>
+    public fun countAppsPerRepository(repoId: Long): Int
+    public fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
+    public fun updateUserMirrors(repoId: Long, mirrors: List<String>)
+    public fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
+    public fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
+    public fun getLiveCategories(): LiveData<List<Category>>
 }
 
 @Dao
@@ -254,10 +254,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("UPDATE RepositoryPreferences SET userMirrors = :mirrors WHERE repoId = :repoId")
     override fun updateUserMirrors(repoId: Long, mirrors: List<String>)
 
-    @Query("UPDATE RepositoryPreferences SET username = :username, password = :password WHERE repoId = :repoId")
+    @Query("""UPDATE RepositoryPreferences SET username = :username, password = :password
+        WHERE repoId = :repoId""")
     override fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
 
-    @Query("UPDATE RepositoryPreferences SET disabledMirrors = :disabledMirrors WHERE repoId = :repoId")
+    @Query("""UPDATE RepositoryPreferences SET disabledMirrors = :disabledMirrors
+        WHERE repoId = :repoId""")
     override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
 
     @Transaction

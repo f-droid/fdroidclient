@@ -7,6 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.every
 import io.mockk.mockkObject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -14,7 +15,8 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-abstract class DbTest {
+@OptIn(ExperimentalCoroutinesApi::class)
+internal abstract class DbTest {
 
     internal lateinit var repoDao: RepositoryDaoInt
     internal lateinit var appDao: AppDaoInt

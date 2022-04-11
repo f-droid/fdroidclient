@@ -14,7 +14,7 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 
-object TestUtils {
+internal object TestUtils {
 
     fun assertRepoEquals(repoV2: RepoV2, repo: Repository) {
         val repoId = repo.repoId

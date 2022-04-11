@@ -17,7 +17,7 @@ import kotlin.test.assertTrue
 import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
-class IndexV1InsertTest : DbTest() {
+internal class IndexV1InsertTest : DbTest() {
 
     @Test
     fun testStreamIndexV1IntoDb() {

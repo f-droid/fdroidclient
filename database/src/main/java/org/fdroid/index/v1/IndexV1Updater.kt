@@ -22,7 +22,7 @@ public class IndexV1Updater(
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
 
     @Throws(IOException::class, InterruptedException::class)
-    fun updateNewRepo(
+    public fun updateNewRepo(
         repoId: Long,
         expectedSigningFingerprint: String?,
         updateListener: IndexUpdateListener? = null,
@@ -31,7 +31,7 @@ public class IndexV1Updater(
     }
 
     @Throws(IOException::class, InterruptedException::class)
-    fun update(
+    public fun update(
         repoId: Long,
         certificate: String,
         updateListener: IndexUpdateListener? = null,

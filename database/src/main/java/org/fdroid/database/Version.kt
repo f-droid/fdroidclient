@@ -25,7 +25,7 @@ import org.fdroid.index.v2.UsesSdkV2
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class Version(
+public data class Version(
     val repoId: Long,
     val packageId: String,
     val versionId: String,
@@ -38,14 +38,14 @@ data class Version(
     val whatsNew: LocalizedTextV2? = null,
     val isCompatible: Boolean,
 ) {
-    fun toAppVersion(versionedStrings: List<VersionedString>) = AppVersion(
+    internal fun toAppVersion(versionedStrings: List<VersionedString>): AppVersion = AppVersion(
         version = this,
         usesPermission = versionedStrings.getPermissions(this),
         usesPermissionSdk23 = versionedStrings.getPermissionsSdk23(this),
     )
 }
 
-fun PackageVersionV2.toVersion(
+internal fun PackageVersionV2.toVersion(
     repoId: Long,
     packageId: String,
     versionId: String,
@@ -64,23 +64,31 @@ fun PackageVersionV2.toVersion(
     isCompatible = isCompatible,
 )
 
-data class AppVersion(
-    val version: Version,
+public data class AppVersion(
+    internal val version: Version,
     val usesPermission: List<PermissionV2>? = null,
     val usesPermissionSdk23: List<PermissionV2>? = null,
 ) {
-    val packageId get() = version.packageId
-    val featureNames get() = version.manifest.features?.toTypedArray() ?: emptyArray()
-    val nativeCode get() = version.manifest.nativecode?.toTypedArray() ?: emptyArray()
-    val antiFeatureNames: Array<String>
+    public val repoId: Long get() = version.repoId
+    public val packageId: String get() = version.packageId
+    public val added: Long get() = version.added
+    public val isCompatible: Boolean get() = version.isCompatible
+    public val manifest: AppManifest get() = version.manifest
+    public val file: FileV1 get() = version.file
+    public val src: FileV2? get() = version.src
+    public val featureNames: List<String> get() = version.manifest.features ?: emptyList()
+    public val nativeCode: List<String> get() = version.manifest.nativecode ?: emptyList()
+    public val releaseChannels: List<String> = version.releaseChannels ?: emptyList()
+    val antiFeatureNames: List<String>
         get() {
-            return version.antiFeatures?.map { it.key }?.toTypedArray() ?: emptyArray()
+            return version.antiFeatures?.map { it.key } ?: emptyList()
         }
 
-    fun getWhatsNew(localeList: LocaleListCompat) = version.whatsNew.getBestLocale(localeList)
+    public fun getWhatsNew(localeList: LocaleListCompat): String? =
+        version.whatsNew.getBestLocale(localeList)
 }
 
-data class AppManifest(
+public data class AppManifest(
     val versionName: String,
     val versionCode: Long,
     @Embedded(prefix = "usesSdk_") val usesSdk: UsesSdkV2? = null,
@@ -100,7 +108,7 @@ data class AppManifest(
     )
 }
 
-fun ManifestV2.toManifest() = AppManifest(
+internal fun ManifestV2.toManifest() = AppManifest(
     versionName = versionName,
     versionCode = versionCode,
     usesSdk = usesSdk,
@@ -110,7 +118,7 @@ fun ManifestV2.toManifest() = AppManifest(
     features = features.map { it.name },
 )
 
-enum class VersionedStringType {
+internal enum class VersionedStringType {
     PERMISSION,
     PERMISSION_SDK_23,
 }
@@ -124,7 +132,7 @@ enum class VersionedStringType {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class VersionedString(
+internal data class VersionedString(
     val repoId: Long,
     val packageId: String,
     val versionId: String,
@@ -133,7 +141,7 @@ data class VersionedString(
     val version: Int? = null,
 )
 
-fun List<PermissionV2>.toVersionedString(
+internal fun List<PermissionV2>.toVersionedString(
     version: Version,
     type: VersionedStringType,
 ) = map { permission ->
@@ -147,12 +155,12 @@ fun List<PermissionV2>.toVersionedString(
     )
 }
 
-fun ManifestV2.getVersionedStrings(version: Version): List<VersionedString> {
+internal fun ManifestV2.getVersionedStrings(version: Version): List<VersionedString> {
     return usesPermission.toVersionedString(version, PERMISSION) +
         usesPermissionSdk23.toVersionedString(version, PERMISSION_SDK_23)
 }
 
-fun List<VersionedString>.getPermissions(version: Version) = mapNotNull { v ->
+internal fun List<VersionedString>.getPermissions(version: Version) = mapNotNull { v ->
     v.map(version, PERMISSION) {
         PermissionV2(
             name = v.name,
@@ -161,7 +169,7 @@ fun List<VersionedString>.getPermissions(version: Version) = mapNotNull { v ->
     }
 }
 
-fun List<VersionedString>.getPermissionsSdk23(version: Version) = mapNotNull { v ->
+internal fun List<VersionedString>.getPermissionsSdk23(version: Version) = mapNotNull { v ->
     v.map(version, PERMISSION_SDK_23) {
         PermissionV2(
             name = v.name,

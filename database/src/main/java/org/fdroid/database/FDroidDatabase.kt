@@ -45,14 +45,14 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
 }
 
 public interface FDroidDatabase {
-    fun getRepositoryDao(): RepositoryDao
-    fun getAppDao(): AppDao
-    fun getVersionDao(): VersionDao
-    fun runInTransaction(body: Runnable)
+    public fun getRepositoryDao(): RepositoryDao
+    public fun getAppDao(): AppDao
+    public fun getVersionDao(): VersionDao
+    public fun runInTransaction(body: Runnable)
 }
 
 public fun interface FDroidFixture {
-    fun prePopulateDb(db: FDroidDatabase)
+    public fun prePopulateDb(db: FDroidDatabase)
 }
 
 public object FDroidDatabaseHolder {
@@ -81,7 +81,7 @@ public object FDroidDatabaseHolder {
                 FDroidDatabaseInt::class.java,
                 name,
             ).fallbackToDestructiveMigration()
-            //.allowMainThreadQueries() // TODO remove before release
+            // .allowMainThreadQueries() // TODO remove before release
             if (fixture != null) builder.addCallback(FixtureCallback(fixture))
             val instance = builder.build()
             INSTANCE = instance

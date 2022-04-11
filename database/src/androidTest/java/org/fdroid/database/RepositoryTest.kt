@@ -14,7 +14,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
-class RepositoryTest : DbTest() {
+internal class RepositoryTest : DbTest() {
 
     @Test
     fun insertAndDeleteTwoRepos() {

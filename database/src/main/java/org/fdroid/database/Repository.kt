@@ -17,7 +17,7 @@ import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 
 @Entity
-data class CoreRepository(
+public data class CoreRepository(
     @PrimaryKey(autoGenerate = true) val repoId: Long = 0,
     val name: String,
     @Embedded(prefix = "icon_") val icon: FileV2?,
@@ -28,7 +28,7 @@ data class CoreRepository(
     val certificate: String?,
 )
 
-fun RepoV2.toCoreRepository(
+internal fun RepoV2.toCoreRepository(
     repoId: Long = 0,
     version: Int,
     certificate: String? = null,
@@ -43,7 +43,7 @@ fun RepoV2.toCoreRepository(
     certificate = certificate,
 )
 
-data class Repository(
+public data class Repository(
     @Embedded internal val repository: CoreRepository,
     @Relation(
         parentColumn = "repoId",
@@ -98,7 +98,7 @@ data class Repository(
     /**
      * Returns official and user-added mirrors without the [disabledMirrors].
      */
-    fun getMirrors(): List<org.fdroid.download.Mirror> {
+    public fun getMirrors(): List<org.fdroid.download.Mirror> {
         return getAllMirrors(true).filter {
             !disabledMirrors.contains(it.baseUrl)
         }
@@ -108,7 +108,7 @@ data class Repository(
      * Returns all mirrors, including [disabledMirrors].
      */
     @JvmOverloads
-    fun getAllMirrors(includeUserMirrors: Boolean = true): List<org.fdroid.download.Mirror> {
+    public fun getAllMirrors(includeUserMirrors: Boolean = true): List<org.fdroid.download.Mirror> {
         // FIXME decide whether we need to add our own address here
         return listOf(org.fdroid.download.Mirror(address)) + mirrors.map {
             it.toDownloadMirror()
@@ -117,7 +117,8 @@ data class Repository(
         } else emptyList()
     }
 
-    fun getDescription(localeList: LocaleListCompat) = description.getBestLocale(localeList)
+    public fun getDescription(localeList: LocaleListCompat): String? =
+        description.getBestLocale(localeList)
 }
 
 @Entity(
@@ -129,18 +130,18 @@ data class Repository(
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class Mirror(
+public data class Mirror(
     val repoId: Long,
     val url: String,
     val location: String? = null,
 ) {
-    fun toDownloadMirror() = org.fdroid.download.Mirror(
+    public fun toDownloadMirror(): org.fdroid.download.Mirror = org.fdroid.download.Mirror(
         baseUrl = url,
         location = location,
     )
 }
 
-fun MirrorV2.toMirror(repoId: Long) = Mirror(
+internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
     repoId = repoId,
     url = url,
     location = location,
@@ -155,7 +156,7 @@ fun MirrorV2.toMirror(repoId: Long) = Mirror(
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class AntiFeature(
+public data class AntiFeature(
     val repoId: Long,
     val id: String,
     @Embedded(prefix = "icon_") val icon: FileV2? = null,
@@ -163,7 +164,7 @@ data class AntiFeature(
     val description: LocalizedTextV2,
 )
 
-fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
+internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
     AntiFeature(
         repoId = repoId,
         id = it.key,
@@ -182,7 +183,7 @@ fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class Category(
+public data class Category(
     val repoId: Long,
     val id: String,
     @Embedded(prefix = "icon_") val icon: FileV2? = null,
@@ -190,7 +191,7 @@ data class Category(
     val description: LocalizedTextV2,
 )
 
-fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
+internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
     Category(
         repoId = repoId,
         id = it.key,
@@ -209,7 +210,7 @@ fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class ReleaseChannel(
+public data class ReleaseChannel(
     val repoId: Long,
     val id: String,
     @Embedded(prefix = "icon_") val icon: FileV2? = null,
@@ -217,7 +218,7 @@ data class ReleaseChannel(
     val description: LocalizedTextV2,
 )
 
-fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
+internal fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
     ReleaseChannel(
         repoId = repoId,
         id = it.key,
@@ -227,7 +228,7 @@ fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
 }
 
 @Entity
-data class RepositoryPreferences(
+public data class RepositoryPreferences(
     @PrimaryKey internal val repoId: Long,
     val weight: Int,
     val enabled: Boolean = true,
@@ -243,7 +244,7 @@ data class RepositoryPreferences(
 /**
  * A [Repository] which the [FDroidDatabase] gets pre-populated with.
  */
-data class InitialRepository(
+public data class InitialRepository(
     val name: String,
     val address: String,
     val description: String,

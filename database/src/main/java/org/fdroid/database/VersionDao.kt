@@ -15,15 +15,15 @@ import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.index.v2.PackageVersionV2
 
 public interface VersionDao {
-    fun insert(
+    public fun insert(
         repoId: Long,
         packageId: String,
         packageVersions: Map<String, PackageVersionV2>,
         checkIfCompatible: (PackageVersionV2) -> Boolean,
     )
 
-    fun getAppVersions(packageId: String): LiveData<List<AppVersion>>
-    fun getAppVersions(repoId: Long, packageId: String): List<AppVersion>
+    public fun getAppVersions(packageId: String): LiveData<List<AppVersion>>
+    public fun getAppVersions(repoId: Long, packageId: String): List<AppVersion>
 }
 
 @Dao
@@ -107,7 +107,8 @@ internal interface VersionDaoInt : VersionDao {
     @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageId = :packageId")
     fun getVersionedStrings(repoId: Long, packageId: String): List<VersionedString>
 
-    @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId")
+    @Query("""SELECT * FROM VersionedString
+        WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId""")
     fun getVersionedStrings(
         repoId: Long,
         packageId: String,
@@ -115,7 +116,8 @@ internal interface VersionDaoInt : VersionDao {
     ): List<VersionedString>
 
     @VisibleForTesting
-    @Query("DELETE FROM Version WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId")
+    @Query("""DELETE FROM Version
+        WHERE repoId = :repoId AND packageId = :packageId AND versionId = :versionId""")
     fun deleteAppVersion(repoId: Long, packageId: String, versionId: String)
 
     @Query("SELECT COUNT(*) FROM Version")

@@ -22,25 +22,29 @@ import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.Screenshots
 
 public interface AppDao {
-    fun insert(repoId: Long, packageId: String, app: MetadataV2)
+    public fun insert(repoId: Long, packageId: String, app: MetadataV2)
 
     /**
      * Gets the app from the DB. If more than one app with this [packageId] exists,
      * the one from the repository with the highest weight is returned.
      */
-    fun getApp(packageId: String): LiveData<App?>
-    fun getApp(repoId: Long, packageId: String): App?
-    fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
-    fun getAppOverviewItems(category: String, limit: Int = 50): LiveData<List<AppOverviewItem>>
-    fun getAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
-    fun getAppListItems(
+    public fun getApp(packageId: String): LiveData<App?>
+    public fun getApp(repoId: Long, packageId: String): App?
+    public fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
+    public fun getAppOverviewItems(
+        category: String,
+        limit: Int = 50,
+    ): LiveData<List<AppOverviewItem>>
+
+    public fun getAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+    public fun getAppListItems(
         packageManager: PackageManager,
         category: String,
     ): LiveData<List<AppListItem>>
 
-    fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+    public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
-    fun getNumberOfAppsInCategory(category: String): Int
+    public fun getNumberOfAppsInCategory(category: String): Int
 }
 
 @Dao
@@ -87,7 +91,8 @@ internal interface AppDaoInt : AppDao {
     /**
      * This is needed to support v1 streaming and shouldn't be used for something else.
      */
-    @Query("UPDATE AppMetadata SET preferredSigner = :preferredSigner WHERE repoId = :repoId AND packageId = :packageId")
+    @Query("""UPDATE AppMetadata SET preferredSigner = :preferredSigner
+        WHERE repoId = :repoId AND packageId = :packageId""")
     fun updatePreferredSigner(repoId: Long, packageId: String, preferredSigner: String?)
 
     /**
@@ -175,32 +180,6 @@ internal interface AppDaoInt : AppDao {
     @Query("SELECT * FROM LocalizedFileList")
     fun getLocalizedFileLists(): List<LocalizedFileList>
 
-    // sort order from F-Droid
-    //table + "." + Cols.IS_LOCALIZED + " DESC"
-    //+ ", " + table + "." + Cols.NAME + " IS NULL ASC"
-    //+ ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
-    //+ "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
-    //+ "        THEN 1 ELSE 0 END"
-    //+ ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-    //+ ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-    //+ ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-    //+ "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-    //+ "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-    //+ "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-    //+ "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-    //+ "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-    //+ "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-    //+ "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-    //+ "        THEN 1 ELSE 0 END"
-    //+ ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
-    //+ "        AND date((SELECT " + RepoTable.Cols.LAST_UPDATED + " FROM " + RepoTable.NAME
-    //+ "                  WHERE _id=" + table + "." + Cols.REPO_ID
-    //+ "                  ),'-" + AppCardController.DAYS_TO_CONSIDER_NEW + " days') "
-    //+ "          < date(" + lastUpdated + ")"
-    //+ "        THEN 0 ELSE 1 END"
-    //+ ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
-    //+ ", " + lastUpdated + " DESC"
-    //+ ", " + added + " ASC");
     @Transaction
     @Query("""SELECT repoId, packageId, added, app.lastUpdated, app.name, summary
         FROM AppMetadata AS app
@@ -279,7 +258,9 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageId HAVING MAX(pref.weight)""")
     fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>
 
-    override fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>> {
+    override fun getInstalledAppListItems(
+        packageManager: PackageManager,
+    ): LiveData<List<AppListItem>> {
         val installedPackages = packageManager.getInstalledPackages(0)
             .associateBy { packageInfo -> packageInfo.packageName }
         val packageNames = installedPackages.keys.toList()
