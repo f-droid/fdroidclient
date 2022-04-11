@@ -27,7 +27,7 @@ import org.fdroid.index.v2.Screenshots
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class AppMetadata(
+public data class AppMetadata(
     val repoId: Long,
     val packageId: String,
     val added: Long,
@@ -57,7 +57,7 @@ data class AppMetadata(
     val isCompatible: Boolean,
 )
 
-fun MetadataV2.toAppMetadata(
+internal fun MetadataV2.toAppMetadata(
     repoId: Long,
     packageId: String,
     isCompatible: Boolean = false,
@@ -83,7 +83,7 @@ fun MetadataV2.toAppMetadata(
     isCompatible = isCompatible,
 )
 
-data class App(
+public data class App(
     val metadata: AppMetadata,
     val icon: LocalizedFileV2? = null,
     val featureGraphic: LocalizedFileV2? = null,
@@ -91,37 +91,43 @@ data class App(
     val tvBanner: LocalizedFileV2? = null,
     val screenshots: Screenshots? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat) = metadata.name.getBestLocale(localeList)
-    public fun getSummary(localeList: LocaleListCompat) = metadata.summary.getBestLocale(localeList)
-    public fun getDescription(localeList: LocaleListCompat) =
+    public fun getName(localeList: LocaleListCompat): String? =
+        metadata.name.getBestLocale(localeList)
+
+    public fun getSummary(localeList: LocaleListCompat): String? =
+        metadata.summary.getBestLocale(localeList)
+
+    public fun getDescription(localeList: LocaleListCompat): String? =
         metadata.description.getBestLocale(localeList)
 
-    public fun getVideo(localeList: LocaleListCompat) = metadata.video.getBestLocale(localeList)
+    public fun getVideo(localeList: LocaleListCompat): String? =
+        metadata.video.getBestLocale(localeList)
 
-    public fun getIcon(localeList: LocaleListCompat) = icon.getBestLocale(localeList)
-    public fun getFeatureGraphic(localeList: LocaleListCompat) =
+    public fun getIcon(localeList: LocaleListCompat): FileV2? = icon.getBestLocale(localeList)
+    public fun getFeatureGraphic(localeList: LocaleListCompat): FileV2? =
         featureGraphic.getBestLocale(localeList)
 
-    public fun getPromoGraphic(localeList: LocaleListCompat) =
+    public fun getPromoGraphic(localeList: LocaleListCompat): FileV2? =
         promoGraphic.getBestLocale(localeList)
 
-    public fun getTvBanner(localeList: LocaleListCompat) = tvBanner.getBestLocale(localeList)
+    public fun getTvBanner(localeList: LocaleListCompat): FileV2? =
+        tvBanner.getBestLocale(localeList)
 
     // TODO remove ?.map { it.name } when client can handle FileV2
-    public fun getPhoneScreenshots(localeList: LocaleListCompat) =
-        screenshots?.phone.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+    public fun getPhoneScreenshots(localeList: LocaleListCompat): List<String> =
+        screenshots?.phone.getBestLocale(localeList)?.map { it.name } ?: emptyList()
 
-    public fun getSevenInchScreenshots(localeList: LocaleListCompat) =
-        screenshots?.sevenInch.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+    public fun getSevenInchScreenshots(localeList: LocaleListCompat): List<String> =
+        screenshots?.sevenInch.getBestLocale(localeList)?.map { it.name } ?: emptyList()
 
-    public fun getTenInchScreenshots(localeList: LocaleListCompat) =
-        screenshots?.tenInch.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+    public fun getTenInchScreenshots(localeList: LocaleListCompat): List<String> =
+        screenshots?.tenInch.getBestLocale(localeList)?.map { it.name } ?: emptyList()
 
-    public fun getTvScreenshots(localeList: LocaleListCompat) =
-        screenshots?.tv.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+    public fun getTvScreenshots(localeList: LocaleListCompat): List<String> =
+        screenshots?.tv.getBestLocale(localeList)?.map { it.name } ?: emptyList()
 
-    public fun getWearScreenshots(localeList: LocaleListCompat) =
-        screenshots?.wear.getBestLocale(localeList)?.map { it.name }?.toTypedArray()
+    public fun getWearScreenshots(localeList: LocaleListCompat): List<String> =
+        screenshots?.wear.getBestLocale(localeList)?.map { it.name } ?: emptyList()
 }
 
 public data class AppOverviewItem(
@@ -137,9 +143,9 @@ public data class AppOverviewItem(
     )
     internal val localizedIcon: List<LocalizedIcon>? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat) = name.getBestLocale(localeList)
-    public fun getSummary(localeList: LocaleListCompat) = summary.getBestLocale(localeList)
-    public fun getIcon(localeList: LocaleListCompat) =
+    public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)
+    public fun getSummary(localeList: LocaleListCompat): String? = summary.getBestLocale(localeList)
+    public fun getIcon(localeList: LocaleListCompat): String? =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
 }
 
@@ -180,7 +186,7 @@ public data class AppListItem @JvmOverloads constructor(
         return fromStringToMapOfLocalizedTextV2(antiFeatures)?.map { it.key } ?: emptyList()
     }
 
-    public fun getIcon(localeList: LocaleListCompat) =
+    public fun getIcon(localeList: LocaleListCompat): String? =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
 }
 
@@ -196,8 +202,8 @@ public data class UpdatableApp(
     )
     internal val localizedIcon: List<LocalizedIcon>? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat) = name.getBestLocale(localeList)
-    public fun getIcon(localeList: LocaleListCompat) =
+    public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)
+    public fun getIcon(localeList: LocaleListCompat): FileV2? =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)
 }
 
@@ -214,7 +220,7 @@ internal fun <T> Map<String, T>?.getBestLocale(localeList: LocaleListCompat): T?
     }
 }
 
-interface IFile {
+internal interface IFile {
     val type: String
     val locale: String
     val name: String
@@ -231,7 +237,7 @@ interface IFile {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class LocalizedFile(
+internal data class LocalizedFile(
     val repoId: Long,
     val packageId: String,
     override val type: String,
@@ -241,7 +247,7 @@ data class LocalizedFile(
     override val size: Long? = null,
 ) : IFile
 
-fun LocalizedFileV2.toLocalizedFile(
+internal fun LocalizedFileV2.toLocalizedFile(
     repoId: Long,
     packageId: String,
     type: String,
@@ -257,7 +263,7 @@ fun LocalizedFileV2.toLocalizedFile(
     )
 }
 
-fun List<IFile>.toLocalizedFileV2(type: String? = null): LocalizedFileV2? {
+internal fun List<IFile>.toLocalizedFileV2(type: String? = null): LocalizedFileV2? {
     return (if (type != null) filter { file -> file.type == type } else this).associate { file ->
         file.locale to FileV2(
             name = file.name,
@@ -272,7 +278,7 @@ fun List<IFile>.toLocalizedFileV2(type: String? = null): LocalizedFileV2? {
 @DatabaseView("""SELECT * FROM LocalizedFile
     JOIN RepositoryPreferences AS prefs USING (repoId)
     WHERE type='icon' GROUP BY repoId, packageId, locale HAVING MAX(prefs.weight)""")
-data class LocalizedIcon(
+public data class LocalizedIcon(
     val repoId: Long,
     val packageId: String,
     override val type: String,
@@ -291,7 +297,7 @@ data class LocalizedIcon(
         onDelete = ForeignKey.CASCADE,
     )],
 )
-data class LocalizedFileList(
+internal data class LocalizedFileList(
     val repoId: Long,
     val packageId: String,
     val type: String,
@@ -301,7 +307,7 @@ data class LocalizedFileList(
     val size: Long? = null,
 )
 
-fun LocalizedFileListV2.toLocalizedFileList(
+internal fun LocalizedFileListV2.toLocalizedFileList(
     repoId: Long,
     packageId: String,
     type: String,
@@ -319,7 +325,7 @@ fun LocalizedFileListV2.toLocalizedFileList(
     }
 }
 
-fun List<LocalizedFileList>.toLocalizedFileListV2(type: String): LocalizedFileListV2? {
+internal fun List<LocalizedFileList>.toLocalizedFileListV2(type: String): LocalizedFileListV2? {
     val map = HashMap<String, List<FileV2>>()
     iterator().forEach { file ->
         if (file.type != type) return@forEach

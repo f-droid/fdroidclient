@@ -18,7 +18,7 @@ import kotlin.test.assertTrue
 import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
-class AppTest : DbTest() {
+internal class AppTest : DbTest() {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()

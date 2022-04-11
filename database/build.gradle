@@ -2,11 +2,11 @@ plugins {
     id 'kotlin-android'
     id 'com.android.library'
     id 'kotlin-kapt'
-//    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
+    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         minSdkVersion 22
@@ -41,6 +41,8 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += "-Xexplicit-api=strict"
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     aaptOptions {
         // needed only for instrumentation tests: assets.openFd()
@@ -81,3 +83,5 @@ dependencies {
 
     androidTestImplementation 'commons-io:commons-io:2.6'
 }
+
+apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"

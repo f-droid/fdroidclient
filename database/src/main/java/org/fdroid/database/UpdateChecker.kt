@@ -22,7 +22,7 @@ public class UpdateChecker(
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
      */
-    fun getUpdatableApps(releaseChannels: List<String>? = null): List<UpdatableApp> {
+    public fun getUpdatableApps(releaseChannels: List<String>? = null): List<UpdatableApp> {
         val updatableApps = ArrayList<UpdatableApp>()
 
         @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
@@ -52,7 +52,7 @@ public class UpdateChecker(
      * If this is null or empty, only versions without channel (stable) will be considered.
      */
     @SuppressLint("PackageManagerGetSignatures")
-    fun getUpdate(packageName: String, releaseChannels: List<String>? = null): AppVersion? {
+    public fun getUpdate(packageName: String, releaseChannels: List<String>? = null): AppVersion? {
         val versions = versionDao.getVersions(listOf(packageName))
         if (versions.isEmpty()) return null
         val packageInfo = try {

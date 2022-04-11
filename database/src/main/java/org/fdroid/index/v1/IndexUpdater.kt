@@ -10,16 +10,12 @@ public enum class IndexUpdateResult {
 }
 
 public interface IndexUpdateListener {
-    fun onDownloadProgress(bytesRead: Long, totalBytes: Long)
-    fun onStartProcessing()
-
+    public fun onDownloadProgress(bytesRead: Long, totalBytes: Long)
+    public fun onStartProcessing()
 }
 
-public class IndexUpdater {
-}
+public class IndexUpdater
 
-
-public fun Repository.getCanonicalUri(): Uri = Uri.parse(address)
-    .buildUpon()
+public fun Repository.getCanonicalUri(): Uri = Uri.parse(address).buildUpon()
     .appendPath(SIGNED_FILE_NAME)
     .build()

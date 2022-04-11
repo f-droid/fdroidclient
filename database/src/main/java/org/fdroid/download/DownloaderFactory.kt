@@ -6,6 +6,9 @@ import org.fdroid.database.Repository
 import java.io.File
 import java.io.IOException
 
+/**
+ * This is in the database library, because only that knows about the [Repository] class.
+ */
 public abstract class DownloaderFactory {
 
     /**
@@ -14,7 +17,7 @@ public abstract class DownloaderFactory {
      * See https://gitlab.com/fdroid/fdroidclient/-/issues/1708 for why this is still needed.
      */
     @Throws(IOException::class)
-    fun createWithTryFirstMirror(repo: Repository, uri: Uri, destFile: File): Downloader {
+    public fun createWithTryFirstMirror(repo: Repository, uri: Uri, destFile: File): Downloader {
         val tryFirst = repo.getMirrors().find { mirror ->
             mirror.baseUrl == repo.address
         }
@@ -26,7 +29,7 @@ public abstract class DownloaderFactory {
     }
 
     @Throws(IOException::class)
-    abstract fun create(repo: Repository, uri: Uri, destFile: File): Downloader
+    public abstract fun create(repo: Repository, uri: Uri, destFile: File): Downloader
 
     @Throws(IOException::class)
     protected abstract fun create(

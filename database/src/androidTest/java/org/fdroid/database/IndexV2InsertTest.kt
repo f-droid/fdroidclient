@@ -14,7 +14,7 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
-class IndexV2InsertTest : DbTest() {
+internal class IndexV2InsertTest : DbTest() {
 
     @Test
     fun testStreamIndexV2IntoDb() {
