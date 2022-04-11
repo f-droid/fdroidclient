@@ -1,13 +1,15 @@
 package org.fdroid.database
 
+import android.content.res.Resources
+import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
+import androidx.room.ColumnInfo
 import androidx.room.DatabaseView
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
 import androidx.room.Relation
-import org.fdroid.database.Converters.fromStringToLocalizedTextV2
 import org.fdroid.database.Converters.fromStringToMapOfLocalizedTextV2
 import org.fdroid.index.v2.Author
 import org.fdroid.index.v2.Donation
@@ -61,6 +63,7 @@ internal fun MetadataV2.toAppMetadata(
     repoId: Long,
     packageId: String,
     isCompatible: Boolean = false,
+    locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
 ) = AppMetadata(
     repoId = repoId,
     packageId = packageId,
@@ -69,6 +72,8 @@ internal fun MetadataV2.toAppMetadata(
     name = name,
     summary = summary,
     description = description,
+    localizedName = name.getBestLocale(locales),
+    localizedSummary = summary.getBestLocale(locales),
     webSite = webSite,
     changelog = changelog,
     license = license,
@@ -91,12 +96,8 @@ public data class App(
     val tvBanner: LocalizedFileV2? = null,
     val screenshots: Screenshots? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat): String? =
-        metadata.name.getBestLocale(localeList)
-
-    public fun getSummary(localeList: LocaleListCompat): String? =
-        metadata.summary.getBestLocale(localeList)
-
+    public fun getName(): String? = metadata.localizedName
+    public fun getSummary(): String? = metadata.localizedSummary
     public fun getDescription(localeList: LocaleListCompat): String? =
         metadata.description.getBestLocale(localeList)
 
@@ -135,25 +136,30 @@ public data class AppOverviewItem(
     public val packageId: String,
     public val added: Long,
     public val lastUpdated: Long,
-    internal val name: LocalizedTextV2? = null,
-    internal val summary: LocalizedTextV2? = null,
+    @ColumnInfo(name = "localizedName")
+    public val name: String? = null,
+    @ColumnInfo(name = "localizedSummary")
+    public val summary: String? = null,
+    internal val antiFeatures: Map<String, LocalizedTextV2>? = null,
     @Relation(
         parentColumn = "packageId",
         entityColumn = "packageId",
     )
     internal val localizedIcon: List<LocalizedIcon>? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)
-    public fun getSummary(localeList: LocaleListCompat): String? = summary.getBestLocale(localeList)
     public fun getIcon(localeList: LocaleListCompat): String? =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
+
+    val antiFeatureNames: List<String> get() = antiFeatures?.map { it.key } ?: emptyList()
 }
 
-public data class AppListItem @JvmOverloads constructor(
+public data class AppListItem constructor(
     public val repoId: Long,
     public val packageId: String,
-    internal val name: String?,
-    internal val summary: String?,
+    @ColumnInfo(name = "localizedName")
+    public val name: String? = null,
+    @ColumnInfo(name = "localizedSummary")
+    public val summary: String? = null,
     internal val antiFeatures: String?,
     @Relation(
         parentColumn = "packageId",
@@ -167,21 +173,11 @@ public data class AppListItem @JvmOverloads constructor(
     /**
      * The name of the installed version, null if this app is not installed.
      */
-    @Ignore
+    @get:Ignore
     public val installedVersionName: String? = null,
-    @Ignore
+    @get:Ignore
     public val installedVersionCode: Long? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat): String? {
-        // queries for this class return a larger number, so we convert on demand
-        return fromStringToLocalizedTextV2(name).getBestLocale(localeList)
-    }
-
-    public fun getSummary(localeList: LocaleListCompat): String? {
-        // queries for this class return a larger number, so we convert on demand
-        return fromStringToLocalizedTextV2(summary).getBestLocale(localeList)
-    }
-
     public fun getAntiFeatureNames(): List<String> {
         return fromStringToMapOfLocalizedTextV2(antiFeatures)?.map { it.key } ?: emptyList()
     }
@@ -194,7 +190,7 @@ public data class UpdatableApp(
     public val packageId: String,
     public val installedVersionCode: Long,
     public val upgrade: AppVersion,
-    internal val name: LocalizedTextV2? = null,
+    public val name: String? = null,
     public val summary: String? = null,
     @Relation(
         parentColumn = "packageId",
@@ -202,7 +198,6 @@ public data class UpdatableApp(
     )
     internal val localizedIcon: List<LocalizedIcon>? = null,
 ) {
-    public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)
     public fun getIcon(localeList: LocaleListCompat): FileV2? =
         localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)
 }

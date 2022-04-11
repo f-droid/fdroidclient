@@ -1,7 +1,9 @@
 package org.fdroid.database
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.Log
+import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -42,12 +44,29 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
     abstract override fun getRepositoryDao(): RepositoryDaoInt
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt
+    fun afterUpdatingRepo(repoId: Long) {
+        getAppDao().updateCompatibility(repoId)
+    }
 }
 
 public interface FDroidDatabase {
     public fun getRepositoryDao(): RepositoryDao
     public fun getAppDao(): AppDao
     public fun getVersionDao(): VersionDao
+    public fun afterLocalesChanged() {
+        val appDao = getAppDao() as AppDaoInt
+        val locales = getLocales(Resources.getSystem().configuration)
+        runInTransaction {
+            appDao.getAppMetadata().forEach { appMetadata ->
+                appDao.updateAppMetadata(
+                    repoId = appMetadata.repoId,
+                    packageId = appMetadata.packageId,
+                    name = appMetadata.name.getBestLocale(locales),
+                    summary = appMetadata.summary.getBestLocale(locales),
+                )
+            }
+        }
+    }
     public fun runInTransaction(body: Runnable)
 }
 
