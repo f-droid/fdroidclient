@@ -1,5 +1,6 @@
 package org.fdroid.test
 
+import org.fdroid.index.v2.IndexV2
 import kotlin.random.Random
 
 public object TestUtils {
@@ -33,5 +34,27 @@ public object TestUtils {
     public fun <T> T.orNull(): T? {
         return if (Random.nextBoolean()) null else this
     }
+
+    public fun IndexV2.sorted(): IndexV2 = copy(
+        packages = packages.toSortedMap().mapValues { entry ->
+            entry.value.copy(
+                metadata = entry.value.metadata.copy(
+                    name = entry.value.metadata.name?.toSortedMap(),
+                    summary = entry.value.metadata.summary?.toSortedMap(),
+                    description = entry.value.metadata.description?.toSortedMap(),
+                    icon = entry.value.metadata.icon?.toSortedMap(),
+                ),
+                versions = entry.value.versions.mapValues {
+                    val pv = it.value
+                    pv.copy(
+                        manifest = pv.manifest.copy(
+                            usesPermission = pv.manifest.usesPermission.sortedBy { p -> p.name },
+                            usesPermissionSdk23 = pv.manifest.usesPermissionSdk23.sortedBy { p -> p.name }
+                        )
+                    )
+                }
+            )
+        }
+    )
 
 }

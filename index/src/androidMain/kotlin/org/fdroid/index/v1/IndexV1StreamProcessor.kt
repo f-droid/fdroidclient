@@ -11,7 +11,6 @@ import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.decodeFromStream
 import org.fdroid.index.DEFAULT_LOCALE
 import org.fdroid.index.IndexParser
-import org.fdroid.index.DEFAULT_LOCALE
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.getV1ReleaseChannels
 import org.fdroid.index.mapInto
@@ -22,6 +21,18 @@ import org.fdroid.index.v2.LocalizedTextV2
 import org.fdroid.index.v2.PackageVersionV2
 import java.io.InputStream
 
+/**
+ * Processes a indexV1 stream and calls the given [indexStreamReceiver] while parsing it.
+ * Attention: This requires the following canonical top-level order in the JSON
+ * as produced by `fdroidserver`.
+ * * repo
+ * * requests
+ * * apps
+ * * packages
+ *
+ * Any other order of those elements will produce unexpected results
+ * or throw [IllegalArgumentException].
+ */
 @Suppress("DEPRECATION")
 @OptIn(ExperimentalSerializationApi::class)
 public class IndexV1StreamProcessor(
@@ -29,37 +40,49 @@ public class IndexV1StreamProcessor(
     private val certificate: String?,
     private val locale: String = DEFAULT_LOCALE,
     private val json: Json = IndexParser.json,
-    private val getAndLogReadBytes: () -> Long? = { null },
 ) {
 
-    public fun process(repoId: Long, inputStream: InputStream) {
-        json.decodeFromStream(IndexStreamSerializer(repoId), inputStream)
-        getAndLogReadBytes()
+    public fun process(inputStream: InputStream) {
+        json.decodeFromStream(IndexStreamSerializer(), inputStream)
     }
 
-    private inner class IndexStreamSerializer(val repoId: Long) : KSerializer<IndexV1?> {
+    private inner class IndexStreamSerializer : KSerializer<IndexV1?> {
         override val descriptor = IndexV1.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): IndexV1? {
-            getAndLogReadBytes()
             decoder as? JsonDecoder ?: error("Can be deserialized only by JSON")
 
             decoder.beginStructure(descriptor)
-            var index = decoder.decodeElementIndex(descriptor)
-            deserializeRepo(decoder, index, repoId)
-            index = decoder.decodeElementIndex(descriptor)
-            deserializeRequests(decoder, index, repoId)
-            index = decoder.decodeElementIndex(descriptor)
-            val appDataMap = deserializeApps(decoder, index, repoId)
-            index = decoder.decodeElementIndex(descriptor)
-            deserializePackages(decoder, index, repoId, appDataMap)
+            val index0 = decoder.decodeElementIndex(descriptor)
+            deserializeRepo(decoder, index0)
+            val index1 = decoder.decodeElementIndex(descriptor)
+            if (index1 == DECODE_DONE) {
+                updateRepoData(emptyMap())
+                decoder.endStructure(descriptor)
+                return null
+            }
+            deserializeRequests(decoder, index1)
+            val index2 = decoder.decodeElementIndex(descriptor)
+            if (index2 == DECODE_DONE) {
+                updateRepoData(emptyMap())
+                decoder.endStructure(descriptor)
+                return null
+            }
+            val appDataMap = deserializeApps(decoder, index2)
+            val index3 = decoder.decodeElementIndex(descriptor)
+            if (index3 == DECODE_DONE) {
+                updateRepoData(appDataMap)
+                decoder.endStructure(descriptor)
+                return null
+            }
+            deserializePackages(decoder, index3, appDataMap)
             decoder.endStructure(descriptor)
 
             updateRepoData(appDataMap)
             return null
         }
 
-        private fun deserializeRepo(decoder: JsonDecoder, index: Int, repoId: Long) {
+        private fun deserializeRepo(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV1.serializer())
             val repoV2 = repo.toRepoV2(
@@ -68,32 +91,27 @@ public class IndexV1StreamProcessor(
                 categories = emptyMap(),
                 releaseChannels = emptyMap()
             )
-            indexStreamReceiver.receive(repoId, repoV2, repo.version, certificate)
+            indexStreamReceiver.receive(repoV2, repo.version, certificate)
         }
 
-        private fun deserializeRequests(decoder: JsonDecoder, index: Int, repoId: Long) {
+        private fun deserializeRequests(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("requests"))
             decoder.decodeSerializableValue(Requests.serializer())
             // we ignore the requests here, don't act on them
         }
 
-        private fun deserializeApps(
-            decoder: JsonDecoder,
-            index: Int,
-            repoId: Long,
-        ): Map<String, AppData> {
+        private fun deserializeApps(decoder: JsonDecoder, index: Int): Map<String, AppData> {
             require(index == descriptor.getElementIndex("apps"))
             val appDataMap = HashMap<String, AppData>()
             val mapDescriptor = descriptor.getElementDescriptor(index)
             val compositeDecoder = decoder.beginStructure(mapDescriptor)
             while (true) {
-                getAndLogReadBytes()
                 val packageIndex = compositeDecoder.decodeElementIndex(descriptor)
                 if (packageIndex == DECODE_DONE) break
                 val appV1 =
                     decoder.decodeSerializableElement(descriptor, packageIndex, AppV1.serializer())
                 val appV2 = appV1.toMetadataV2(null, locale)
-                indexStreamReceiver.receive(repoId, appV1.packageName, appV2)
+                indexStreamReceiver.receive(appV1.packageName, appV2)
                 appDataMap[appV1.packageName] = AppData(
                     antiFeatures = appV1.antiFeatures.associateWith { emptyMap() },
                     whatsNew = appV1.localized?.mapValuesNotNull { it.value.whatsNew },
@@ -108,20 +126,17 @@ public class IndexV1StreamProcessor(
         private fun deserializePackages(
             decoder: JsonDecoder,
             index: Int,
-            repoId: Long,
             appDataMap: Map<String, AppData>,
         ) {
             require(index == descriptor.getElementIndex("packages"))
             val mapDescriptor = descriptor.getElementDescriptor(index)
             val compositeDecoder = decoder.beginStructure(mapDescriptor)
             while (true) {
-                getAndLogReadBytes()
                 val packageIndex = compositeDecoder.decodeElementIndex(descriptor)
                 if (packageIndex == DECODE_DONE) break
                 readPackageMapEntry(
                     decoder = compositeDecoder as JsonDecoder,
                     index = packageIndex,
-                    repoId = repoId,
                     appDataMap = appDataMap,
                 )
             }
@@ -131,7 +146,6 @@ public class IndexV1StreamProcessor(
         private fun readPackageMapEntry(
             decoder: JsonDecoder,
             index: Int,
-            repoId: Long,
             appDataMap: Map<String, AppData>,
         ) {
             val packageName = decoder.decodeStringElement(descriptor, index)
@@ -142,7 +156,6 @@ public class IndexV1StreamProcessor(
             val compositeDecoder = decoder.beginStructure(listDescriptor)
             var isFirstVersion = true
             while (true) {
-                getAndLogReadBytes()
                 val packageIndex = compositeDecoder.decodeElementIndex(descriptor)
                 if (packageIndex == DECODE_DONE) break
                 val packageVersionV1 = decoder.decodeSerializableElement(
@@ -159,17 +172,13 @@ public class IndexV1StreamProcessor(
                     whatsNew = if (isFirstVersion) appDataMap[packageName]?.whatsNew else null
                 )
                 if (isFirstVersion) {
-                    indexStreamReceiver.updateAppMetadata(
-                        repoId,
-                        packageName,
-                        packageVersionV1.signer
-                    )
+                    indexStreamReceiver.updateAppMetadata(packageName, packageVersionV1.signer)
                 }
                 isFirstVersion = false
                 val versionId = packageVersionV2.file.sha256
                 versions[versionId] = packageVersionV2
             }
-            indexStreamReceiver.receive(repoId, packageName, versions)
+            indexStreamReceiver.receive(packageName, versions)
             compositeDecoder.endStructure(listDescriptor)
         }
 
@@ -177,17 +186,11 @@ public class IndexV1StreamProcessor(
             val antiFeatures = HashMap<String, AntiFeatureV2>()
             val categories = HashMap<String, CategoryV2>()
             appDataMap.values.forEach { appData ->
-                appData.antiFeatures.keys.mapInto(
-                    antiFeatures,
-                    AntiFeatureV2(name = emptyMap(), description = emptyMap())
-                )
-                appData.categories.mapInto(
-                    categories,
-                    CategoryV2(name = emptyMap(), description = emptyMap())
-                )
+                appData.antiFeatures.mapInto(antiFeatures)
+                appData.categories.mapInto(categories)
             }
             val releaseChannels = getV1ReleaseChannels()
-            indexStreamReceiver.updateRepo(repoId, antiFeatures, categories, releaseChannels)
+            indexStreamReceiver.updateRepo(antiFeatures, categories, releaseChannels)
         }
 
         override fun serialize(encoder: Encoder, value: IndexV1?) {

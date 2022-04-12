@@ -10,12 +10,11 @@ import org.fdroid.index.v2.RepoV2
 @Deprecated("Use IndexV2 instead")
 public interface IndexV1StreamReceiver {
 
-    public fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?)
-    public fun receive(repoId: Long, packageId: String, m: MetadataV2)
-    public fun receive(repoId: Long, packageId: String, v: Map<String, PackageVersionV2>)
+    public fun receive(repo: RepoV2, version: Int, certificate: String?)
+    public fun receive(packageId: String, m: MetadataV2)
+    public fun receive(packageId: String, v: Map<String, PackageVersionV2>)
 
     public fun updateRepo(
-        repoId: Long,
         antiFeatures: Map<String, AntiFeatureV2>,
         categories: Map<String, CategoryV2>,
         releaseChannels: Map<String, ReleaseChannelV2>,
@@ -25,6 +24,6 @@ public interface IndexV1StreamReceiver {
      * Updates [MetadataV2.preferredSigner] with the given [preferredSigner]
      * for the given [packageId].
      */
-    public fun updateAppMetadata(repoId: Long, packageId: String, preferredSigner: String?)
+    public fun updateAppMetadata(packageId: String, preferredSigner: String?)
 
 }

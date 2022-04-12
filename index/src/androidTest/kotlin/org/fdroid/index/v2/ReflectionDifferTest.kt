@@ -1,7 +1,7 @@
 package org.fdroid.index.v2
 
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
+import org.fdroid.index.IndexParser.json
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -15,14 +15,14 @@ internal class ReflectionDifferTest {
             put("en", "bar")
             put("de-DE", "foo bar")
         }
-        val json = """
+        val jsonInput = """
             {
               "de": "foo",
               "en": null,
               "en-US": "bar"
             }
         """.trimIndent()
-        val diff = Json.parseToJsonElement(json).jsonObject
+        val diff = json.parseToJsonElement(jsonInput).jsonObject
         val result = ReflectionDiffer.applyDiff(old, diff)
 
         assertEquals(3, result.size)
@@ -38,13 +38,13 @@ internal class ReflectionDifferTest {
             sha256 = "bar",
             size = Random.nextLong()
         )
-        val json = """
+        val jsonInput = """
             {
               "name": "foo bar",
               "size": null
             }
         """.trimIndent()
-        val diff = Json.parseToJsonElement(json).jsonObject
+        val diff = json.parseToJsonElement(jsonInput).jsonObject
         val result = ReflectionDiffer.applyDiff(old, diff)
 
         assertEquals("foo bar", result.name)

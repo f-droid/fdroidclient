@@ -1,12 +1,16 @@
 package org.fdroid.index.v1
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.descriptors.element
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.encoding.encodeCollection
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonArray
@@ -84,7 +88,7 @@ public data class PackageV1(
 @Serializable(with = PermissionV1Serializer::class)
 public data class PermissionV1(
     val name: String,
-    val maxSdk: Int?,
+    val maxSdk: Int? = null,
 )
 
 internal class PermissionV1Serializer : KSerializer<PermissionV1> {
@@ -102,8 +106,12 @@ internal class PermissionV1Serializer : KSerializer<PermissionV1> {
         return PermissionV1(name, maxSdk)
     }
 
+    @OptIn(ExperimentalSerializationApi::class)
     override fun serialize(encoder: Encoder, value: PermissionV1) {
-        TODO("Not yet implemented")
+        encoder.encodeCollection(JsonArray.serializer().descriptor, 2) {
+            encodeStringElement(descriptor, 0, value.name)
+            encodeNullableSerializableElement(descriptor, 1, Int.serializer(), value.maxSdk)
+        }
     }
 
 }

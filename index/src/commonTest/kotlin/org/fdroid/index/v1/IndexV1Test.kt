@@ -1,40 +1,46 @@
 package org.fdroid.index.v1
 
 import com.goncalossilva.resources.Resource
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
-import org.junit.Assume.assumeTrue
+import org.fdroid.index.IndexParser.parseV1
+import org.fdroid.test.TestDataEmptyV1
+import org.fdroid.test.TestDataMaxV1
+import org.fdroid.test.TestDataMidV1
+import org.fdroid.test.TestDataMinV1
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 internal class IndexV1Test {
 
     @Test
-    fun testIndexV1() {
-        val indexRes = Resource("src/commonTest/resources/index-v1.json")
-        assumeTrue(indexRes.exists())
+    fun testIndexEmptyV1() {
+        val indexRes = Resource("src/sharedTest/resources/index-empty-v1.json")
         val indexStr = indexRes.readText()
-        val index = Json.decodeFromString<IndexV1>(indexStr)
+        val index = parseV1(indexStr)
+        assertEquals(TestDataEmptyV1.index, index)
+    }
 
-        val indexArchiveRes = Resource("src/commonTest/resources/fdroid-archive/index-v1.json")
-        assumeTrue(indexArchiveRes.exists())
-        val indexArchiveStr = indexArchiveRes.readText()
-        assumeTrue(indexRes.exists())
-        Json.decodeFromString<IndexV1>(indexArchiveStr)
+    @Test
+    fun testIndexMinV1() {
+        val indexRes = Resource("src/sharedTest/resources/index-min-v1.json")
+        val indexStr = indexRes.readText()
+        val index = parseV1(indexStr)
+        assertEquals(TestDataMinV1.index, index)
+    }
 
-        val indexGuardianRes = Resource("src/commonTest/resources/guardian/index-v1.json")
-        assumeTrue(indexGuardianRes.exists())
-        val indexGuardianStr = indexGuardianRes.readText()
-        Json.decodeFromString<IndexV1>(indexGuardianStr)
+    @Test
+    fun testIndexMidV1() {
+        val indexRes = Resource("src/sharedTest/resources/index-mid-v1.json")
+        val indexStr = indexRes.readText()
+        val index = parseV1(indexStr)
+        assertEquals(TestDataMidV1.index, index)
+    }
 
-        val indexIzzyRes = Resource("src/commonTest/resources/izzy/index-v1.json")
-        assumeTrue(indexIzzyRes.exists())
-        val indexIzzyStr = indexIzzyRes.readText()
-        Json.decodeFromString<IndexV1>(indexIzzyStr)
-
-        val indexWindRes = Resource("src/commonTest/resources/wind/index-v1.json")
-        assumeTrue(indexWindRes.exists())
-        val indexWindStr = indexWindRes.readText()
-        Json.decodeFromString<IndexV1>(indexWindStr)
+    @Test
+    fun testIndexMaxV1() {
+        val indexRes = Resource("src/sharedTest/resources/index-max-v1.json")
+        val indexStr = indexRes.readText()
+        val index = parseV1(indexStr)
+        assertEquals(TestDataMaxV1.index, index)
     }
 
 }

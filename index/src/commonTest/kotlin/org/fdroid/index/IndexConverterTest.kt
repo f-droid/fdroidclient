@@ -1,40 +1,51 @@
 package org.fdroid.index
 
 import com.goncalossilva.resources.Resource
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
-import org.fdroid.index.v1.IndexV1
+import org.fdroid.index.IndexParser.parseV1
 import org.fdroid.index.v2.IndexV2
-import org.junit.Assume.assumeTrue
+import org.fdroid.test.TestDataEmptyV2
+import org.fdroid.test.TestDataMaxV2
+import org.fdroid.test.TestDataMidV2
+import org.fdroid.test.TestDataMinV2
+import org.fdroid.test.TestUtils.sorted
+import org.fdroid.test.v1compat
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class IndexConverterTest {
 
     @Test
-    fun testToIndexV2() {
-        val res1 = Resource("src/commonTest/resources/index-v1.json")
-        assumeTrue(res1.exists())
-        val indexV1Str = res1.readText()
-        val indexV1 = Json.decodeFromString<IndexV1>(indexV1Str)
+    fun testEmpty() {
+        testConversation("src/sharedTest/resources/index-empty-v1.json",
+            TestDataEmptyV2.index.v1compat())
+    }
+
+    @Test
+    fun testMin() {
+        testConversation("src/sharedTest/resources/index-min-v1.json",
+            TestDataMinV2.index.v1compat())
+    }
+
+    @Test
+    fun testMid() {
+        testConversation("src/sharedTest/resources/index-mid-v1.json",
+            TestDataMidV2.indexCompat)
+    }
+
+    @Test
+    fun testMax() {
+        testConversation("src/sharedTest/resources/index-max-v1.json",
+            TestDataMaxV2.indexCompat)
+    }
+
+    private fun testConversation(file: String, expectedIndex: IndexV2) {
+        val indexV1Res = Resource(file)
+        val indexV1Str = indexV1Res.readText()
+        val indexV1 = parseV1(indexV1Str)
 
         val v2 = IndexConverter().toIndexV2(indexV1)
 
-        val res2 = Resource("src/commonTest/resources/index-v2.json")
-        assumeTrue(res2.exists())
-        val indexV2Str = res2.readText()
-        val indexV2 = Json.decodeFromString<IndexV2>(indexV2Str)
-
-        assertEquals(
-            indexV2.repo,
-            v2.repo.copy(
-                antiFeatures = emptyMap(), categories = emptyMap(), releaseChannels = emptyMap()
-            )
-        ) // TODO remove copies when test data is fixed
-        assertEquals(indexV2.packages.size, v2.packages.size)
-        indexV2.packages.keys.forEach { packageName ->
-            assertEquals(indexV2.packages[packageName], v2.packages[packageName])
-        }
+        assertEquals(expectedIndex.sorted(), v2.sorted())
     }
 
 }

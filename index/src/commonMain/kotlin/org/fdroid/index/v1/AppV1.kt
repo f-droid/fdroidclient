@@ -78,8 +78,8 @@ public data class AppV1(
             litecoin = litecoin,
             flattrID = flattrID,
         ).takeIf { !it.isNull },
-        icon = icon?.let { mapOf(locale to FileV2("/icons/$it")) }
-            ?: localized.toLocalizedFileV2 { it.icon },
+        icon = localized.toLocalizedFileV2 { it.icon }
+            ?: icon?.let { mapOf(locale to FileV2("/icons/$it")) },
         featureGraphic = localized.toLocalizedFileV2 { it.featureGraphic },
         promoGraphic = localized.toLocalizedFileV2 { it.promoGraphic },
         tvBanner = localized.toLocalizedFileV2 { it.tvBanner },

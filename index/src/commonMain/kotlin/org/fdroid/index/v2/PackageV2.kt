@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PackageV2(
     val metadata: MetadataV2,
-    val versions: Map<String, PackageVersionV2>,
+    val versions: Map<String, PackageVersionV2> = emptyMap(),
 )
 
 @Serializable

@@ -39,14 +39,8 @@ public class IndexConverter(
                     it.hash to it.toPackageVersionV2(versionReleaseChannels, appAntiFeatures, wn)
                 } ?: emptyMap(),
             )
-            appAntiFeatures.keys.mapInto(
-                antiFeatures,
-                AntiFeatureV2(name = emptyMap(), description = emptyMap())
-            )
-            app.categories.mapInto(
-                categories,
-                CategoryV2(name = emptyMap(), description = emptyMap())
-            )
+            appAntiFeatures.mapInto(antiFeatures)
+            app.categories.mapInto(categories)
             packagesV2[app.packageName] = packageV2
         }
         return IndexV2(
@@ -62,14 +56,29 @@ public class IndexConverter(
 
 }
 
-internal fun <T> Collection<String>.mapInto(map: HashMap<String, T>, value: T) {
+internal fun <T> Collection<String>.mapInto(map: HashMap<String, T>, valueGetter: (String) -> T) {
     forEach { key ->
-        if (!map.containsKey(key)) map[key] = value
+        if (!map.containsKey(key)) map[key] = valueGetter(key)
     }
 }
 
-internal fun getV1ReleaseChannels() = mapOf(
-    RELEASE_CHANNEL_BETA to ReleaseChannelV2(emptyMap(), emptyMap())
+internal fun List<String>.mapInto(map: HashMap<String, CategoryV2>) {
+    mapInto(map) { key ->
+        CategoryV2(name = mapOf(DEFAULT_LOCALE to key))
+    }
+}
+
+internal fun Map<String, LocalizedTextV2>.mapInto(map: HashMap<String, AntiFeatureV2>) {
+    keys.mapInto(map) { key ->
+        AntiFeatureV2(name = mapOf(DEFAULT_LOCALE to key))
+    }
+}
+
+public fun getV1ReleaseChannels(): Map<String, ReleaseChannelV2> = mapOf(
+    RELEASE_CHANNEL_BETA to ReleaseChannelV2(
+        name = mapOf(DEFAULT_LOCALE to RELEASE_CHANNEL_BETA),
+        description = emptyMap(),
+    )
 )
 
 internal fun <T> Map<String, Localized>.mapValuesNotNull(

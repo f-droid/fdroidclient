@@ -12,26 +12,20 @@ import org.fdroid.index.IndexParser
 import java.io.InputStream
 
 @OptIn(ExperimentalSerializationApi::class)
-public class IndexStreamProcessor(
-    private val indexStreamReceiver: IndexStreamReceiver,
+public class IndexV2StreamProcessor(
+    private val indexStreamReceiver: IndexV2StreamReceiver,
     private val certificate: String?,
     private val json: Json = IndexParser.json,
-    private val getAndLogReadBytes: () -> Long? = { null },
 ) {
 
-    public fun process(repoId: Long, version: Int, inputStream: InputStream) {
-        json.decodeFromStream(IndexStreamSerializer(repoId, version), inputStream)
-        getAndLogReadBytes()
+    public fun process(version: Int, inputStream: InputStream) {
+        json.decodeFromStream(IndexStreamSerializer(version), inputStream)
     }
 
-    private inner class IndexStreamSerializer(
-        val repoId: Long,
-        val version: Int,
-    ) : KSerializer<IndexV2?> {
+    private inner class IndexStreamSerializer(val version: Int) : KSerializer<IndexV2?> {
         override val descriptor = IndexV2.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): IndexV2? {
-            getAndLogReadBytes()
             decoder as? JsonDecoder ?: error("Can be deserialized only by JSON")
 
             decoder.beginStructure(descriptor)
@@ -40,49 +34,47 @@ public class IndexStreamProcessor(
 
             when (val startIndex = decoder.decodeElementIndex(descriptor)) {
                 repoIndex -> {
-                    deserializeRepo(decoder, startIndex, repoId)
+                    deserializeRepo(decoder, startIndex)
                     val index = decoder.decodeElementIndex(descriptor)
-                    deserializePackages(decoder, index, repoId)
+                    if (index == packagesIndex) deserializePackages(decoder, index)
                 }
                 packagesIndex -> {
-                    deserializePackages(decoder, startIndex, repoId)
+                    deserializePackages(decoder, startIndex)
                     val index = decoder.decodeElementIndex(descriptor)
-                    deserializeRepo(decoder, index, repoId)
+                    if (index == repoIndex) deserializeRepo(decoder, index)
                 }
                 else -> error("Unexpected startIndex: $startIndex")
             }
             decoder.endStructure(descriptor)
-            indexStreamReceiver.onStreamEnded(repoId)
+            indexStreamReceiver.onStreamEnded()
             return null
         }
 
-        private fun deserializeRepo(decoder: JsonDecoder, index: Int, repoId: Long) {
+        private fun deserializeRepo(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV2.serializer())
-            // TODO this replaces the index and thus removes all data, not good when repo is second
-            indexStreamReceiver.receive(repoId, repo, version, certificate)
+            indexStreamReceiver.receive(repo, version, certificate)
         }
 
-        private fun deserializePackages(decoder: JsonDecoder, index: Int, repoId: Long) {
+        private fun deserializePackages(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("packages"))
             val mapDescriptor = descriptor.getElementDescriptor(index)
             val compositeDecoder = decoder.beginStructure(mapDescriptor)
             while (true) {
-                getAndLogReadBytes()
                 val packageIndex = compositeDecoder.decodeElementIndex(descriptor)
                 if (packageIndex == CompositeDecoder.DECODE_DONE) break
-                readMapEntry(compositeDecoder, packageIndex, repoId)
+                readMapEntry(compositeDecoder, packageIndex)
             }
             compositeDecoder.endStructure(mapDescriptor)
         }
 
-        private fun readMapEntry(decoder: CompositeDecoder, index: Int, repoId: Long) {
+        private fun readMapEntry(decoder: CompositeDecoder, index: Int) {
             val packageName = decoder.decodeStringElement(descriptor, index)
             decoder.decodeElementIndex(descriptor)
             val packageV2 = decoder.decodeSerializableElement(
                 descriptor, index + 1, PackageV2.serializer()
             )
-            indexStreamReceiver.receive(repoId, packageName, packageV2)
+            indexStreamReceiver.receive(packageName, packageV2)
         }
 
         override fun serialize(encoder: Encoder, value: IndexV2?) {

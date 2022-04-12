@@ -21,7 +21,7 @@ public data class FileV2(
 @Serializable
 public data class IndexV2(
     val repo: RepoV2,
-    val packages: Map<String, PackageV2>,
+    val packages: Map<String, PackageV2> = emptyMap(),
 )
 
 @Serializable

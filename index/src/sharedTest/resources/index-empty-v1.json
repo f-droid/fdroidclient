@@ -1,0 +1,10 @@
+{
+  "repo": {
+    "timestamp": 23,
+    "version": 23,
+    "name": "EmptyV1",
+    "icon": "empty-v1.png",
+    "address": "https://empty-v1.org",
+    "description": "This is a repo with empty data."
+  }
+}

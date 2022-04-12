@@ -13,9 +13,9 @@ import org.fdroid.index.v2.RepoV2
 @Serializable
 public data class IndexV1(
     val repo: RepoV1,
-    val requests: Requests,
-    val apps: List<AppV1>,
-    val packages: Map<String, List<PackageV1>>,
+    val requests: Requests = Requests(emptyList(), emptyList()),
+    val apps: List<AppV1> = emptyList(),
+    val packages: Map<String, List<PackageV1>> = emptyMap(),
 )
 
 @Serializable

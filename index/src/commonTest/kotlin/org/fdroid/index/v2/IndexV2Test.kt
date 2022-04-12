@@ -1,33 +1,48 @@
 package org.fdroid.index.v2
 
 import com.goncalossilva.resources.Resource
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
-import org.junit.Assume.assumeTrue
+import org.fdroid.index.IndexParser.parseV2
+import org.fdroid.test.TestDataEmptyV2
+import org.fdroid.test.TestDataMaxV2
+import org.fdroid.test.TestDataMidV2
+import org.fdroid.test.TestDataMinV2
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 internal class IndexV2Test {
 
     @Test
-    fun testIndexV2() {
-        val entryRes = Resource("src/commonTest/resources/entry.json")
-        assumeTrue(entryRes.exists())
-        val entryStr = entryRes.readText()
-        val entry = Json.decodeFromString<EntryV2>(entryStr)
-
-        val indexRes = Resource("src/commonTest/resources/index-v2.json")
-        assumeTrue(indexRes.exists())
-        val indexStr = indexRes.readText()
-        val index = Json.decodeFromString<IndexV2>(indexStr)
+    fun testEmpty() {
+        testIndexEquality("src/sharedTest/resources/index-empty-v2.json", TestDataEmptyV2.index)
     }
 
     @Test
-    fun testDiffV2() {
-//        val diff1Res = Resource("src/commonTest/resources/tmp.json")
-//        assumeTrue(diff1Res.exists())
-//        val diff1Str = diff1Res.readText()
-//        val diff1 = Json.decodeFromString<DiffV2>(diff1Str)
-//        println(diff1)
+    fun testMin() {
+        testIndexEquality("src/sharedTest/resources/index-min-v2.json", TestDataMinV2.index)
+    }
+
+    @Test
+    fun testMinReordered() {
+        testIndexEquality("src/sharedTest/resources/index-min-reordered-v2.json",
+            TestDataMinV2.index)
+    }
+
+    @Test
+    fun testMid() {
+        testIndexEquality("src/sharedTest/resources/index-mid-v2.json", TestDataMidV2.index)
+    }
+
+    @Test
+    fun testMax() {
+        testIndexEquality("src/sharedTest/resources/index-max-v2.json", TestDataMaxV2.index)
+    }
+
+    private fun testIndexEquality(file: String, expectedIndex: IndexV2) {
+        val indexV2Res = Resource(file)
+        val indexV2Str = indexV2Res.readText()
+        val indexV2 = parseV2(indexV2Str)
+
+        assertEquals(expectedIndex, indexV2)
     }
 
 }
