@@ -348,7 +348,10 @@ public class UtilsTest {
     public void testGetAntifeatureSQLFilterWithNone() {
         Context context = ApplicationProvider.getApplicationContext();
         Preferences.setupForTests(context);
-        assertEquals("fdroid_app.antiFeatures IS NULL", Utils.getAntifeatureSQLFilter(context));
+        assertEquals(
+                "fdroid_app.antiFeatures IS NULL OR (fdroid_app.antiFeatures NOT LIKE '%_anti_others_%')",
+                Utils.getAntifeatureSQLFilter(context)
+        );
     }
 
     @Test
