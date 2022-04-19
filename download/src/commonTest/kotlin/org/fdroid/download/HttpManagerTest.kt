@@ -9,9 +9,9 @@ import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondError
 import io.ktor.client.engine.mock.respondOk
 import io.ktor.client.engine.mock.respondRedirect
-import io.ktor.client.features.ClientRequestException
-import io.ktor.client.features.RedirectResponseException
-import io.ktor.client.features.ServerResponseException
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.RedirectResponseException
+import io.ktor.client.plugins.ServerResponseException
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.Range

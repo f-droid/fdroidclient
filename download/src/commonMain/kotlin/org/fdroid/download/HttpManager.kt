@@ -1,44 +1,42 @@
 package org.fdroid.download
 
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
+import io.ktor.client.call.body
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.ProxyConfig
-import io.ktor.client.features.HttpTimeout
-import io.ktor.client.features.ResponseException
-import io.ktor.client.features.UserAgent
-import io.ktor.client.features.defaultRequest
-import io.ktor.client.features.timeout
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.ResponseException
+import io.ktor.client.plugins.UserAgent
+import io.ktor.client.plugins.timeout
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.basicAuth
 import io.ktor.client.request.get
 import io.ktor.client.request.head
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
+import io.ktor.client.request.prepareGet
+import io.ktor.client.request.setBody
+import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.HttpStatement
-import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.ContentType
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
 import io.ktor.http.HttpHeaders.Range
+import io.ktor.http.HttpMessageBuilder
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.Url
 import io.ktor.http.contentLength
-import io.ktor.util.InternalAPI
-import io.ktor.util.encodeBase64
 import io.ktor.util.toByteArray
 import io.ktor.utils.io.ByteChannel
 import io.ktor.utils.io.ByteReadChannel
-import io.ktor.utils.io.charsets.Charsets
 import io.ktor.utils.io.close
 import io.ktor.utils.io.core.isEmpty
 import io.ktor.utils.io.core.readBytes
-import io.ktor.utils.io.core.toByteArray
-import io.ktor.utils.io.readRemaining
 import io.ktor.utils.io.writeFully
 import mu.KotlinLogging
 import kotlin.coroutines.cancellation.CancellationException
-import kotlin.jvm.JvmOverloads
 
 internal expect fun getHttpClientEngineFactory(): HttpClientEngineFactory<*>
 
@@ -82,12 +80,6 @@ public open class HttpManager @JvmOverloads constructor(
                 agent = userAgent
             }
             install(HttpTimeout)
-            defaultRequest {
-                // add query string parameters if existing
-                parameters?.forEach { (key, value) ->
-                    parameter(key, value)
-                }
-            }
         }
     }
 
@@ -98,14 +90,14 @@ public open class HttpManager @JvmOverloads constructor(
      * However, due to non-standard ETags on mirrors, change detection is unreliable.
      */
     public suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
-        val authString = constructBasicAuthValue(request)
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->
                 resetProxyIfNeeded(request.proxy, mirror)
                 log.debug { "HEAD $url" }
                 httpClient.head(url) {
+                    addQueryParameters()
                     // add authorization header from username / password if set
-                    if (authString != null) header(Authorization, authString)
+                    basicAuth(request)
                     // increase connect timeout if using Tor mirror
                     if (mirror.isOnion()) timeout { connectTimeoutMillis = 10_000 }
                 }
@@ -133,7 +125,7 @@ public open class HttpManager @JvmOverloads constructor(
             if (skipFirstBytes != null && response.status != PartialContent) {
                 throw NoResumeException()
             }
-            val channel: ByteReadChannel = response.receive()
+            val channel: ByteReadChannel = response.body()
             val limit = 8L * 1024L
             while (!channel.isClosedForRead) {
                 val packet = channel.readRemaining(limit)
@@ -150,12 +142,12 @@ public open class HttpManager @JvmOverloads constructor(
         url: Url,
         skipFirstBytes: Long? = null,
     ): HttpStatement {
-        val authString = constructBasicAuthValue(request)
         resetProxyIfNeeded(request.proxy, mirror)
         log.debug { "GET $url" }
-        return httpClient.get(url) {
+        return httpClient.prepareGet(url) {
+            addQueryParameters()
             // add authorization header from username / password if set
-            if (authString != null) header(Authorization, authString)
+            basicAuth(request)
             // increase connect timeout if using Tor mirror
             if (mirror.isOnion()) timeout { connectTimeoutMillis = 20_000 }
             // add range header if set
@@ -170,8 +162,9 @@ public open class HttpManager @JvmOverloads constructor(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
     ): ByteReadChannel {
+        // TODO check if closed
         return mirrorChooser.mirrorRequest(request) { mirror, url ->
-            getHttpStatement(request, mirror, url, skipFirstBytes).receive()
+            getHttpStatement(request, mirror, url, skipFirstBytes).body()
         }
     }
 
@@ -195,9 +188,11 @@ public open class HttpManager @JvmOverloads constructor(
 
     public suspend fun post(url: String, json: String, proxy: ProxyConfig? = null) {
         resetProxyIfNeeded(proxy)
-        httpClient.post<HttpResponse>(url) {
+        httpClient.post {
+            addQueryParameters()
+            url(url)
             header(ContentType, "application/json; utf-8")
-            body = json
+            setBody(json)
         }
     }
 
@@ -216,14 +211,17 @@ public open class HttpManager @JvmOverloads constructor(
         }
     }
 
-    @OptIn(InternalAPI::class) // ktor 2.0 remove
-    private fun constructBasicAuthValue(request: DownloadRequest): String? {
-        if (request.username == null || request.password == null) return null
-        val authString = "${request.username}:${request.password}"
-        val authBuf = authString.toByteArray(Charsets.UTF_8).encodeBase64()
-        return "Basic $authBuf"
+    private fun HttpMessageBuilder.basicAuth(request: DownloadRequest) {
+        // non-null if hasCredentials is true
+        if (request.hasCredentials) basicAuth(request.username!!, request.password!!)
     }
 
+    private fun HttpRequestBuilder.addQueryParameters() {
+        // add query string parameters if existing
+        this@HttpManager.parameters?.forEach { (key, value) ->
+            parameter(key, value)
+        }
+    }
 }
 
 public class NoResumeException : Exception()

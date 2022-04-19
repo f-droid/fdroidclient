@@ -23,7 +23,7 @@ package org.fdroid.download
 
 import android.annotation.TargetApi
 import android.os.Build.VERSION.SDK_INT
-import io.ktor.client.features.ResponseException
+import io.ktor.client.plugins.ResponseException
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging

@@ -1,6 +1,6 @@
 package org.fdroid.download
 
-import io.ktor.client.features.ResponseException
+import io.ktor.client.plugins.ResponseException
 import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.Url
 import io.ktor.utils.io.errors.IOException

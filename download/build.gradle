@@ -22,7 +22,7 @@ kotlin {
 //    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
     ext {
-        ktor_version = "1.6.8" //"2.0.0-beta-1"
+        ktor_version = "2.0.0"
     }
 
     sourceSets {
@@ -102,7 +102,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
-        disable "InvalidPackage" // FIXME remove when Ktor 2.0 has been released
+        disable "InvalidPackage"
     }
 }
 
