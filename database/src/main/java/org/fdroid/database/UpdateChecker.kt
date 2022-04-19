@@ -85,6 +85,10 @@ public class UpdateChecker(
             }?.toSet()
         }
         versions.iterator().forEach versions@{ version ->
+            // if the installed version has a known vulnerability, we return it as well
+            if (version.manifest.versionCode == versionCode && version.hasKnownVulnerability) {
+                return version
+            }
             // if version code is not higher than installed skip package as list is sorted
             if (version.manifest.versionCode <= versionCode) return null
             // check release channels if they are not empty
@@ -121,6 +125,7 @@ public class UpdateChecker(
             packageId = version.packageId,
             installedVersionCode = installedVersionCode,
             upgrade = version.toAppVersion(versionedStrings),
+            hasKnownVulnerability = version.hasKnownVulnerability,
             name = appOverviewItem.name,
             summary = appOverviewItem.summary,
             localizedIcon = appOverviewItem.localizedIcon,
