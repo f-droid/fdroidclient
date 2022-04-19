@@ -1,3 +1,9 @@
+### 1.15-alpha1 (2022-04-19)
+
+* Fix crashes in new download code
+
+* Fix Anti-Feature listing being broken in RTL layouts #2279 (thanks @TheLastProject!)
+
 ### 1.15-alpha0 (2022-04-06)
 
 * Total overhaul of downloading logic for improved performance and mirrors support.
