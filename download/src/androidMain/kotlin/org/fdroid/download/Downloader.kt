@@ -169,7 +169,7 @@ public abstract class Downloader constructor(
     @Throws(InterruptedException::class)
     private fun throwExceptionIfInterrupted() {
         if (cancelled) {
-            log.debug { "Received interrupt, cancelling download" }
+            log.info { "Received interrupt, cancelling download" }
             Thread.currentThread().interrupt()
             throw InterruptedException()
         }

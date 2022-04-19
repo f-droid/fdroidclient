@@ -93,7 +93,7 @@ public open class HttpManager @JvmOverloads constructor(
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->
                 resetProxyIfNeeded(request.proxy, mirror)
-                log.debug { "HEAD $url" }
+                log.info { "HEAD $url" }
                 httpClient.head(url) {
                     addQueryParameters()
                     // add authorization header from username / password if set
@@ -143,7 +143,7 @@ public open class HttpManager @JvmOverloads constructor(
         skipFirstBytes: Long? = null,
     ): HttpStatement {
         resetProxyIfNeeded(request.proxy, mirror)
-        log.debug { "GET $url" }
+        log.info { "GET $url" }
         return httpClient.prepareGet(url) {
             addQueryParameters()
             // add authorization header from username / password if set

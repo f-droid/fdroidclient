@@ -169,6 +169,7 @@ dependencies {
     implementation 'commons-net:commons-net:3.6'
     implementation 'ch.acra:acra:4.9.1'
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
+    implementation "org.slf4j:slf4j-android:1.7.36"
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
