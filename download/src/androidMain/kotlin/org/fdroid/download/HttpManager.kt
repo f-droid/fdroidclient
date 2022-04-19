@@ -19,7 +19,7 @@ internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
                     dns(NoDns())
                 }
                 hostnameVerifier { hostname, session ->
-                    session.sessionContext.sessionTimeout = 60
+                    session?.sessionContext?.sessionTimeout = 60
                     // use default hostname verifier
                     OkHostnameVerifier.verify(hostname, session)
                 }
