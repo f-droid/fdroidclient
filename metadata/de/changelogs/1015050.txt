@@ -1,0 +1,5 @@
+* Vollständige Überarbeitung der Download-Logik für verbesserte Leistung und Spiegelserver-Unterstützung.
+
+* Screenshots und Grafiken werden jetzt von Spiegelservern heruntergeladen.
+
+* Ein Datenschutzleck mit TLS-Sitzungen wurde beseitigt.
