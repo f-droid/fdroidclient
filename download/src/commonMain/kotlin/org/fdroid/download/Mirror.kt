@@ -3,10 +3,8 @@ package org.fdroid.download
 import io.ktor.http.URLBuilder
 import io.ktor.http.URLParserException
 import io.ktor.http.Url
-import io.ktor.http.pathComponents
+import io.ktor.http.appendPathSegments
 import mu.KotlinLogging
-import kotlin.jvm.JvmOverloads
-import kotlin.jvm.JvmStatic
 
 public data class Mirror @JvmOverloads constructor(
     private val baseUrl: String,
@@ -14,7 +12,7 @@ public data class Mirror @JvmOverloads constructor(
 ) {
     public val url: Url by lazy {
         try {
-            URLBuilder(baseUrl).build()
+            URLBuilder(baseUrl.trimEnd('/')).build()
             // we fall back to a non-existent URL if someone tries to sneak in an invalid mirror URL to crash us
             // to make it easier for potential callers
         } catch (e: URLParserException) {
@@ -29,7 +27,7 @@ public data class Mirror @JvmOverloads constructor(
     }
 
     public fun getUrl(path: String): Url {
-        return URLBuilder(url).pathComponents(path).build()
+        return URLBuilder(url).appendPathSegments(path).build()
     }
 
     public fun isOnion(): Boolean = url.isOnion()

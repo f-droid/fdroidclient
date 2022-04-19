@@ -22,7 +22,7 @@ kotlin {
 //    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
     ext {
-        ktor_version = "1.6.8" //"2.0.0-beta-1"
+        ktor_version = "2.0.0"
     }
 
     sourceSets {
@@ -62,13 +62,13 @@ kotlin {
                     transitive = false // we don't need all that it pulls in, just the basics
                 }
                 implementation "com.github.bumptech.glide:annotations:4.12.0"
-                implementation 'ch.qos.logback:logback-classic:1.2.10'
             }
         }
         androidTest {
             dependencies {
                 implementation 'org.json:json:20211205'
                 implementation 'junit:junit:4.13.2'
+                implementation 'ch.qos.logback:logback-classic:1.2.10'
             }
         }
         androidAndroidTest {
@@ -102,7 +102,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
-        disable "InvalidPackage" // FIXME remove when Ktor 2.0 has been released
+        disable "InvalidPackage"
     }
 }
 

@@ -23,7 +23,7 @@ package org.fdroid.download
 
 import android.annotation.TargetApi
 import android.os.Build.VERSION.SDK_INT
-import io.ktor.client.features.ResponseException
+import io.ktor.client.plugins.ResponseException
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
@@ -131,7 +131,7 @@ public class HttpDownloader constructor(
         // calculatedEtag == expectedETag (ETag calculated from server response matches expected ETag)
         if (!headInfo.eTagChanged || calculatedEtag == expectedETag) {
             // ETag has not changed, don't download again
-            log.debug { "${request.path} cached, not downloading." }
+            log.info { "${request.path} cached, not downloading." }
             hasChanged = false
             return
         }
@@ -144,12 +144,12 @@ public class HttpDownloader constructor(
                 "Warning: " + outputFile.absolutePath + " not deleted"
             }
         } else if (fileLength == fileSize && outputFile.isFile) {
-            log.debug { "Already have outputFile, not download. ${outputFile.absolutePath}" }
+            log.info { "Already have outputFile, not download. ${outputFile.absolutePath}" }
             return // already have it!
         } else if (fileLength > 0) {
             resumable = true
         }
-        log.debug { "downloading ${request.path} (is resumable: $resumable)" }
+        log.info { "downloading ${request.path} (is resumable: $resumable)" }
         runBlocking {
             try {
                 downloadFromBytesReceiver(resumable)
