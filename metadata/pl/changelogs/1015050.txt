@@ -1,0 +1,5 @@
+* Całkowita przebudowa logiki pobierania w celu poprawy wydajności i obsługi kopii lustrzanych
+
+* Zrzuty ekranu i grafiki są teraz pobierane z serwerów lustrzanych
+
+* Zmniejszono wyciek prywatności dzięki sesjom TLS

@@ -514,4 +514,13 @@
     <string name="antitrack">Sporing</string>
     <string name="antinonfreenet">Ikke-frie netværkstjenester</string>
     <string name="app_list_results_hidden_antifeature_settings">Nogle resultater blev skjult på grund af dine antifeature-indstillinger.</string>
+    <string name="antinonfreead">Ikke frie tilføjelser</string>
+    <string name="antiknownvuln">Kendt sårbarhed</string>
+    <string name="antiothers">Andre antifunktioner</string>
+    <string name="antiupstreamnonfree">Ikke fri opstrøm</string>
+    <string name="antinonfreeassets">Ikke frie genstande</string>
+    <string name="antidisabledalgorithm">Signeret med en usikker algoritme</string>
+    <string name="antinsfw">Denne app har et indhold som ikke bør publiceres eller være synlig overalt</string>
+    <string name="antinonfreedep">Ikke frie afhængigheder</string>
+    <string name="antinosource">Kildekode ikke længre tilgængelig</string>
 </resources>

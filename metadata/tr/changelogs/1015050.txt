@@ -1,0 +1,5 @@
+* İyileştirilmiş performans ve yansı desteği için indirme mantığı tamamen elden geçirildi
+
+* Ekran görüntüleri ve grafikler artık yansılardan indiriliyor
+
+* TLS oturumları ile bir gizlilik sızıntısı azaltıldı
