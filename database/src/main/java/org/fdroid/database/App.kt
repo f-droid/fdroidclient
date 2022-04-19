@@ -190,6 +190,11 @@ public data class UpdatableApp(
     public val packageId: String,
     public val installedVersionCode: Long,
     public val upgrade: AppVersion,
+    /**
+     * If true, this is not necessarily an update (contrary to the class name),
+     * but an app with the `KnownVuln` anti-feature.
+     */
+    public val hasKnownVulnerability: Boolean,
     public val name: String? = null,
     public val summary: String? = null,
     @Relation(

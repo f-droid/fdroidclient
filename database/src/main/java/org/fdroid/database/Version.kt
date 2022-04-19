@@ -16,6 +16,8 @@ import org.fdroid.index.v2.PermissionV2
 import org.fdroid.index.v2.SignatureV2
 import org.fdroid.index.v2.UsesSdkV2
 
+private const val ANTI_FEATURE_KNOWN_VULNERABILITY = "KnownVuln"
+
 @Entity(
     primaryKeys = ["repoId", "packageId", "versionId"],
     foreignKeys = [ForeignKey(
@@ -38,6 +40,9 @@ public data class Version(
     val whatsNew: LocalizedTextV2? = null,
     val isCompatible: Boolean,
 ) {
+    val hasKnownVulnerability: Boolean
+        get() = antiFeatures?.contains(ANTI_FEATURE_KNOWN_VULNERABILITY) == true
+
     internal fun toAppVersion(versionedStrings: List<VersionedString>): AppVersion = AppVersion(
         version = this,
         usesPermission = versionedStrings.getPermissions(this),
