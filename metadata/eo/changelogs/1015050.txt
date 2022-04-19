@@ -1,0 +1,5 @@
+• tute rekonstruita logiko de elŝuto por pliigi rendimenton kaj subtenon por spegul-serviloj
+
+• ekrankopioj kaj grafikoj nun estas elŝutataj el spegul-serviloj
+
+• malpliigita privatec-likado kun TLS-seancoj
