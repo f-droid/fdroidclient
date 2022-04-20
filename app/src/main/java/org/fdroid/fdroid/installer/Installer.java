@@ -34,7 +34,6 @@ import android.util.Log;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
@@ -97,9 +96,8 @@ public abstract class Installer {
             // no permission screen needed!
             return null;
         }
-        Uri uri = ApkProvider.getApkFromAnyRepoUri(apk);
         Intent intent = new Intent(context, InstallConfirmActivity.class);
-        intent.setData(uri);
+        intent.putExtra(Installer.EXTRA_APK, apk);
 
         return intent;
     }
