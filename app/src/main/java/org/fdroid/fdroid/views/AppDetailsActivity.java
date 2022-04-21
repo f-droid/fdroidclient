@@ -250,12 +250,15 @@ public class AppDetailsActivity extends AppCompatActivity
         MenuItem itemIgnoreAll = menu.findItem(R.id.action_ignore_all);
         itemIgnoreAll.setChecked(prefs.getIgnoreAllUpdates());
         MenuItem itemIgnoreThis = menu.findItem(R.id.action_ignore_this);
+        MenuItem itemBeta = menu.findItem(R.id.action_release_channel_beta);
         if (itemIgnoreAll.isChecked()) {
             itemIgnoreThis.setEnabled(false);
+            itemBeta.setEnabled(false);
         } else if (app != null && versions != null) {
             itemIgnoreThis.setVisible(app.hasUpdates(versions, appPrefs));
             itemIgnoreThis.setChecked(prefs.shouldIgnoreUpdate(app.autoInstallVersionCode));
         }
+        itemBeta.setChecked(prefs.getReleaseChannels().contains(Apk.RELEASE_CHANNEL_BETA));
         return true;
     }
 
@@ -327,6 +330,13 @@ public class AppDetailsActivity extends AppCompatActivity
             Utils.runOffUiThread(() ->
                     db.getAppPrefsDao().update(prefs.toggleIgnoreVersionCodeUpdate(app.autoInstallVersionCode)));
             AppUpdateStatusManager.getInstance(this).checkForUpdates();
+            return true;
+        } else if (item.getItemId() == R.id.action_release_channel_beta) {
+            final AppPrefs prefs = Objects.requireNonNull(appPrefs);
+            Utils.runOffUiThread(() -> {
+                db.getAppPrefsDao().update(prefs.toggleReleaseChannel(Apk.RELEASE_CHANNEL_BETA));
+                return true; // we don't really care about the result here
+            }, result -> AppUpdateStatusManager.getInstance(this).checkForUpdates());
             return true;
         } else if (item.getItemId() == android.R.id.home) {
             onBackPressed();

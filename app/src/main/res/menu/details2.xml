@@ -19,4 +19,9 @@
         android:title="@string/menu_ignore_this"
         android:checkable="true"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_release_channel_beta"
+        android:title="@string/menu_release_channel_beta"
+        android:checkable="true"
+        app:showAsAction="never" />
 </menu>
