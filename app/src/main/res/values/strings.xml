@@ -223,6 +223,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_select_for_wipe">Select for wipe</string>
     <string name="menu_ignore_all">Ignore All Updates</string>
     <string name="menu_ignore_this">Ignore This Update</string>
+    <string name="menu_release_channel_beta">Allow Beta Updates</string>
     <string name="menu_website">Website</string>
     <string name="menu_email">E-Mail Author</string>
     <!-- The title for the link that points to the issue tracker for this app -->
