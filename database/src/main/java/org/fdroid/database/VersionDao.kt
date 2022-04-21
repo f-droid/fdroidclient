@@ -91,11 +91,18 @@ internal interface VersionDaoInt : VersionDao {
     @Query("SELECT * FROM Version WHERE repoId = :repoId AND packageId = :packageId")
     fun getVersions(repoId: Long, packageId: String): List<Version>
 
+    /**
+     * Used for finding versions that are an update,
+     * so takes [AppPrefs.ignoreVersionCodeUpdate] into account.
+     */
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM Version
-        JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND packageId IN (:packageNames)
-        ORDER BY manifest_versionCode DESC, pref.weight DESC""")
+        JOIN RepositoryPreferences USING (repoId)
+        LEFT JOIN AppPrefs USING (packageId)
+        WHERE RepositoryPreferences.enabled = 1 AND
+              manifest_versionCode > COALESCE(AppPrefs.ignoreVersionCodeUpdate, 0) AND
+              packageId IN (:packageNames)
+        ORDER BY manifest_versionCode DESC, RepositoryPreferences.weight DESC""")
     fun getVersions(packageNames: List<String>): List<Version>
 
     @RewriteQueriesToDropUnusedColumns
