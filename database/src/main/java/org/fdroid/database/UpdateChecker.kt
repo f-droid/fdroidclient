@@ -15,6 +15,7 @@ public class UpdateChecker(
 
     private val appDao = db.getAppDao() as AppDaoInt
     private val versionDao = db.getVersionDao() as VersionDaoInt
+    private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
     private val compatibilityChecker = CompatibilityCheckerImpl(packageManager)
 
     /**
@@ -34,8 +35,9 @@ public class UpdateChecker(
             list.add(version)
         }
         installedPackages.iterator().forEach { packageInfo ->
-            val versions = versionsByPackage[packageInfo.packageName] ?: return@forEach // continue
-            val version = getVersion(versions, packageInfo, releaseChannels)
+            val packageName = packageInfo.packageName
+            val versions = versionsByPackage[packageName] ?: return@forEach // continue
+            val version = getVersion(versions, packageName, packageInfo, releaseChannels)
             if (version != null) {
                 val versionCode = packageInfo.getVersionCode()
                 val app = getUpdatableApp(version, versionCode)
@@ -61,7 +63,7 @@ public class UpdateChecker(
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
-        val version = getVersion(versions, packageInfo, releaseChannels) ?: return null
+        val version = getVersion(versions, packageName, packageInfo, releaseChannels) ?: return null
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
             packageId = version.packageId,
@@ -72,6 +74,7 @@ public class UpdateChecker(
 
     private fun getVersion(
         versions: List<Version>,
+        packageName: String,
         packageInfo: PackageInfo?,
         releaseChannels: List<String>?,
     ): Version? {
@@ -84,6 +87,7 @@ public class UpdateChecker(
                 IndexUtils.getPackageSignature(it.toByteArray())
             }?.toSet()
         }
+        val appPrefs by lazy { appPrefsDao.getAppPrefsOrNull(packageName) }
         versions.iterator().forEach versions@{ version ->
             // if the installed version has a known vulnerability, we return it as well
             if (version.manifest.versionCode == versionCode && version.hasKnownVulnerability) {
@@ -91,15 +95,20 @@ public class UpdateChecker(
             }
             // if version code is not higher than installed skip package as list is sorted
             if (version.manifest.versionCode <= versionCode) return null
-            // check release channels if they are not empty
-            if (!version.releaseChannels.isNullOrEmpty()) {
-                // if release channels are not empty (stable) don't consider this version
-                if (releaseChannels == null) return@versions
-                // don't consider version with non-matching release channel
-                if (releaseChannels.intersect(version.releaseChannels).isEmpty()) return@versions
-            }
             // skip incompatible versions
-            if (!compatibilityChecker.isCompatible(version.manifest)) return@versions
+            if (!compatibilityChecker.isCompatible(version.manifest.toManifestV2())) return@versions
+            // only check release channels if they are not empty
+            if (!version.releaseChannels.isNullOrEmpty()) {
+                // add release channels from AppPrefs into the ones we allow
+                val channels = releaseChannels?.toMutableSet() ?: LinkedHashSet()
+                if (!appPrefs?.releaseChannels.isNullOrEmpty()) {
+                    channels.addAll(appPrefs!!.releaseChannels)
+                }
+                // if allowed releases channels are empty (only stable) don't consider this version
+                if (channels.isEmpty()) return@versions
+                // don't consider version with non-matching release channel
+                if (channels.intersect(version.releaseChannels).isEmpty()) return@versions
+            }
             val canInstall = if (packageInfo == null) {
                 true // take first one with highest version code and repo weight
             } else {

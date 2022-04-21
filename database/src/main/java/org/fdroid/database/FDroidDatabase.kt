@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 import androidx.core.os.ConfigurationCompat.getLocales
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -15,7 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @Database(
-    version = 1, // TODO set version to 1 before release and wipe old schemas
+    version = 2, // TODO set version to 1 before release and wipe old schemas
     entities = [
         // repo
         CoreRepository::class,
@@ -31,12 +32,14 @@ import kotlinx.coroutines.launch
         // versions
         Version::class,
         VersionedString::class,
+        // app user preferences
+        AppPrefs::class,
     ],
     views = [
         LocalizedIcon::class,
     ],
     autoMigrations = [
-        // AutoMigration (from = 1, to = 2) // seems to require Java 11
+        AutoMigration(from = 1, to = 2)
     ],
 )
 @TypeConverters(Converters::class)
@@ -44,6 +47,7 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
     abstract override fun getRepositoryDao(): RepositoryDaoInt
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt
+    abstract override fun getAppPrefsDao(): AppPrefsDaoInt
     fun afterUpdatingRepo(repoId: Long) {
         getAppDao().updateCompatibility(repoId)
     }
@@ -53,6 +57,7 @@ public interface FDroidDatabase {
     public fun getRepositoryDao(): RepositoryDao
     public fun getAppDao(): AppDao
     public fun getVersionDao(): VersionDao
+    public fun getAppPrefsDao(): AppPrefsDao
     public fun afterLocalesChanged() {
         val appDao = getAppDao() as AppDaoInt
         val locales = getLocales(Resources.getSystem().configuration)
@@ -67,6 +72,7 @@ public interface FDroidDatabase {
             }
         }
     }
+
     public fun runInTransaction(body: Runnable)
 }
 
@@ -99,8 +105,7 @@ public object FDroidDatabaseHolder {
                 context.applicationContext,
                 FDroidDatabaseInt::class.java,
                 name,
-            ).fallbackToDestructiveMigration()
-            // .allowMainThreadQueries() // TODO remove before release
+            )
             if (fixture != null) builder.addCallback(FixtureCallback(fixture))
             val instance = builder.build()
             INSTANCE = instance
