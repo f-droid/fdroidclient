@@ -65,8 +65,8 @@ public class InstalledAppProvider extends FDroidProvider {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         cachedInfo.put(
-                                cursor.getString(cursor.getColumnIndex(Cols.Package.NAME)),
-                                cursor.getLong(cursor.getColumnIndex(Cols.LAST_UPDATE_TIME))
+                                cursor.getString(cursor.getColumnIndexOrThrow(Cols.Package.NAME)),
+                                cursor.getLong(cursor.getColumnIndexOrThrow(Cols.LAST_UPDATE_TIME))
                         );
                         cursor.moveToNext();
                     }
@@ -176,7 +176,7 @@ public class InstalledAppProvider extends FDroidProvider {
                         null, null, null);
                 if (cursor != null) {
                     if (cursor.moveToFirst()) {
-                        signatures.add(cursor.getString(cursor.getColumnIndex(Cols.SIGNATURE)));
+                        signatures.add(cursor.getString(cursor.getColumnIndexOrThrow(Cols.SIGNATURE)));
                     }
                     cursor.close();
                 }

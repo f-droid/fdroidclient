@@ -71,7 +71,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     @Override
     public long getItemId(int position) {
         cursor.moveToPosition(position);
-        return cursor.getLong(cursor.getColumnIndex(Schema.AppMetadataTable.Cols.ROW_ID));
+        return cursor.getLong(cursor.getColumnIndexOrThrow(Schema.AppMetadataTable.Cols.ROW_ID));
     }
 
     @Override
