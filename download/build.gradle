@@ -2,6 +2,7 @@ plugins {
     id 'org.jetbrains.kotlin.multiplatform'
     id 'com.android.library'
     id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
+    id 'com.vanniktech.maven.publish'
 }
 
 group = 'org.fdroid'
@@ -12,6 +13,7 @@ kotlin {
         compilations.all {
             kotlinOptions.jvmTarget = '1.8'
         }
+        publishLibraryVariants("release")
     }
 //    def hostOs = System.getProperty("os.name")
 //    def isMingwX64 = hostOs.startsWith("Windows")
@@ -90,7 +92,10 @@ kotlin {
 
 android {
     compileSdkVersion 30
-    sourceSets.main.manifest.srcFile('src/androidMain/AndroidManifest.xml')
+    sourceSets {
+        main.manifest.srcFile('src/androidMain/AndroidManifest.xml')
+        getByName("androidTest").java.srcDir(file("src/androidAndroidTest/kotlin"))
+    }
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 25
@@ -104,6 +109,10 @@ android {
     lintOptions {
         disable "InvalidPackage"
     }
+}
+
+signing {
+    useGpgCmd()
 }
 
 apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"

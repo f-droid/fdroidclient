@@ -15,6 +15,16 @@ for Android.
 You can [download the application](https://f-droid.org/FDroid.apk) directly
 from our site or [browse it in the repo](https://f-droid.org/app/org.fdroid.fdroid).
 
+## Libraries
+
+Core F-Droid functionality is split into re-usable libraries
+to make using F-Droid technology in your own projects as easy as possible.
+
+Note that all libraries are still in alpha stage.
+While they work, their public APIs are still subject to change.
+
+* [download](download) library for handling (multi-platform) HTTP download of repository indexes and APKs
+
 ## Contributing
 
 See our [Contributing doc](CONTRIBUTING.md) for information on how to report
@@ -39,6 +49,7 @@ to what Google Play does.
 This used to be the case, but no longer is. Now the [Privileged
 Extension](https://gitlab.com/fdroid/privileged-extension) is the one that should be placed in
 the system. It can be bundled with a ROM or installed via a zip.
+
 ## License
 
 This program is Free Software: You can use, study share and improve it at your

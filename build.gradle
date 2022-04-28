@@ -6,11 +6,18 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20"
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
     }
 }
 allprojects {
     repositories {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
+    }
+    // use new Sonatype server for mavenCentral publishing
+    plugins.withId("com.vanniktech.maven.publish") {
+        mavenPublish {
+            sonatypeHost = "S01"
+        }
     }
 }
