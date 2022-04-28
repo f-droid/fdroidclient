@@ -48,10 +48,10 @@ internal class RepositoryDiffTest : DbTest() {
     fun timestampDiffTwoReposInDb() {
         // insert repo
         val repo = getRandomRepo()
-        repoDao.insert(repo)
+        repoDao.insertOrReplace(repo)
 
         // insert another repo before updating
-        repoDao.insert(getRandomRepo())
+        repoDao.insertOrReplace(getRandomRepo())
 
         // check that the repo got added and retrieved as expected
         var repos = repoDao.getRepositories().sortedBy { it.repoId }
@@ -244,7 +244,7 @@ internal class RepositoryDiffTest : DbTest() {
 
     private fun testDiff(repo: RepoV2, json: String, repoChecker: (List<Repository>) -> Unit) {
         // insert repo
-        repoDao.insert(repo)
+        repoDao.insertOrReplace(repo)
 
         // check that the repo got added and retrieved as expected
         var repos = repoDao.getRepositories()

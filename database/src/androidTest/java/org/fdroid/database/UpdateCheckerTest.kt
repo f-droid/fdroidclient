@@ -25,16 +25,16 @@ internal class UpdateCheckerTest : DbTest() {
         updateChecker = UpdateChecker(db, context.packageManager)
     }
 
-    @OptIn(ExperimentalTime::class)
     @Test
+    @OptIn(ExperimentalTime::class)
     fun testGetUpdates() {
         val inputStream = CountingInputStream(context.resources.assets.open("index-v1.json"))
-        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db) { true }, null)
+        val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
+        val indexProcessor = IndexV1StreamProcessor(DbV1StreamReceiver(db, { true }, repoId), null)
 
         db.runInTransaction {
-            val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
             inputStream.use { indexStream ->
-                indexProcessor.process(repoId, indexStream)
+                indexProcessor.process(indexStream)
             }
         }
 

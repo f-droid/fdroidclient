@@ -65,9 +65,9 @@ public class IndexV1Updater(
             db.runInTransaction {
                 val cert = verifier.getStreamAndVerify { inputStream ->
                     updateListener?.onStartProcessing() // TODO maybe do more fine-grained reporting
-                    val streamReceiver = DbV1StreamReceiver(db, compatibilityChecker)
+                    val streamReceiver = DbV1StreamReceiver(db, compatibilityChecker, repoId)
                     val streamProcessor = IndexV1StreamProcessor(streamReceiver, certificate)
-                    streamProcessor.process(repoId, inputStream)
+                    streamProcessor.process(inputStream)
                 }
                 // update certificate, if we didn't have any before
                 if (certificate == null) {

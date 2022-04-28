@@ -28,7 +28,7 @@ internal class AppTest : DbTest() {
 
     @Test
     fun insertGetDeleteSingleApp() {
-        val repoId = repoDao.insert(getRandomRepo())
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
         val metadataV2 = getRandomMetadataV2()
         appDao.insert(repoId, packageId, metadataV2)
 
@@ -53,7 +53,7 @@ internal class AppTest : DbTest() {
 
     @Test
     fun testAppOverViewItem() {
-        val repoId = repoDao.insert(getRandomRepo())
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
         val packageId1 = getRandomString()
         val packageId2 = getRandomString()
         val packageId3 = getRandomString()
@@ -90,7 +90,7 @@ internal class AppTest : DbTest() {
         assertNull(apps3.find { it.packageId == packageId3 })
 
         // app4 is the same as app1 and thus will not be shown again
-        val repoId2 = repoDao.insert(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         val app4 = getRandomMetadataV2().copy(name = name2, icon = icons2)
         appDao.insert(repoId2, packageId1, app4)
         val apps4 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
@@ -99,8 +99,8 @@ internal class AppTest : DbTest() {
 
     @Test
     fun testAppByRepoWeight() {
-        val repoId1 = repoDao.insert(getRandomRepo())
-        val repoId2 = repoDao.insert(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         val metadata1 = getRandomMetadataV2()
         val metadata2 = metadata1.copy(lastUpdated = metadata1.lastUpdated + 1)
 
