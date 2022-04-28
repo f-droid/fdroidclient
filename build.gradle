@@ -14,4 +14,10 @@ allprojects {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
     }
+    // use new Sonatype server for mavenCentral publishing
+    plugins.withId("com.vanniktech.maven.publish") {
+        mavenPublish {
+            sonatypeHost = "S01"
+        }
+    }
 }
