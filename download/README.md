@@ -15,6 +15,22 @@ and replace `[version]` with the [latest version](gradle.properties):
 
     implementation 'org.fdroid:download:[version]'
 
+## Development
+
+You can list available gradle tasks by running the following command in the project root.
+
+    ./gradlew :download:tasks
+
+### Making releases
+
+Bump version number in [`gradle.properties`](gradle.properties), ensure you didn't break a public API and run:
+
+    ./gradlew :download:check :download:connectedCheck
+    ./gradlew :download:publish
+    ./gradlew closeAndReleaseRepository
+
+See https://github.com/vanniktech/gradle-maven-publish-plugin#gradle-maven-publish-plugin for more information.
+
 ## License
 
 Licensed under the Apache License, Version 2.0 (the "License");

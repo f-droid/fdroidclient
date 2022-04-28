@@ -20,6 +20,9 @@ from our site or [browse it in the repo](https://f-droid.org/app/org.fdroid.fdro
 Core F-Droid functionality is split into re-usable libraries
 to make using F-Droid technology in your own projects as easy as possible.
 
+Note that all libraries are still in alpha stage.
+While they work, their public APIs are still subject to change.
+
 * [download](download) library for handling (multi-platform) HTTP download of repository indexes and APKs
 
 ## Contributing
