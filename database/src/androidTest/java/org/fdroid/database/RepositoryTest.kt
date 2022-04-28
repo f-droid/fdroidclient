@@ -20,7 +20,7 @@ internal class RepositoryTest : DbTest() {
     fun insertAndDeleteTwoRepos() {
         // insert first repo
         val repo1 = getRandomRepo()
-        val repoId1 = repoDao.insert(repo1)
+        val repoId1 = repoDao.insertOrReplace(repo1)
 
         // check that first repo got added and retrieved as expected
         var repos = repoDao.getRepositories()
@@ -31,7 +31,7 @@ internal class RepositoryTest : DbTest() {
 
         // insert second repo
         val repo2 = getRandomRepo()
-        val repoId2 = repoDao.insert(repo2)
+        val repoId2 = repoDao.insertOrReplace(repo2)
 
         // check that both repos got added and retrieved as expected
         repos = repoDao.getRepositories().sortedBy { it.repoId }
@@ -58,8 +58,8 @@ internal class RepositoryTest : DbTest() {
     }
 
     @Test
-    fun replacingRepoRemovesAllAssociatedData() {
-        val repoId = repoDao.insert(getRandomRepo())
+    fun clearingRepoRemovesAllAssociatedData() {
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
         val repositoryPreferences = repoDao.getRepositoryPreferences(repoId)
         val packageId = getRandomString()
         val versionId = getRandomString()
@@ -72,22 +72,20 @@ internal class RepositoryTest : DbTest() {
         assertEquals(1, versionDao.getAppVersions(repoId, packageId).size)
         assertTrue(versionDao.getVersionedStrings(repoId, packageId).isNotEmpty())
 
-        val cert = getRandomString()
-        repoDao.replace(repoId, getRandomRepo(), 42, cert)
+        repoDao.clear(repoId)
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(0, appDao.getAppMetadata().size)
         assertEquals(0, appDao.getLocalizedFiles().size)
         assertEquals(0, appDao.getLocalizedFileLists().size)
         assertEquals(0, versionDao.getAppVersions(repoId, packageId).size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageId).size)
-
-        assertEquals(cert, repoDao.getRepository(repoId)?.certificate)
+        // preferences are not touched by clearing
         assertEquals(repositoryPreferences, repoDao.getRepositoryPreferences(repoId))
     }
 
     @Test
-    fun certGetsUpdates() {
-        val repoId = repoDao.insert(getRandomRepo())
+    fun certGetsUpdated() {
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(null, repoDao.getRepositories()[0].certificate)
 

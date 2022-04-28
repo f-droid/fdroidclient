@@ -12,29 +12,35 @@ import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 
+/**
+ * Note that this class expects that its [receive] method with [RepoV2] gets called first.
+ * A different order of calls is not supported.
+ */
+@Deprecated("Use DbV2StreamReceiver instead")
 internal class DbV1StreamReceiver(
     private val db: FDroidDatabaseInt,
     private val compatibilityChecker: CompatibilityChecker,
+    private val repoId: Long,
 ) : IndexV1StreamReceiver {
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
 
-    override fun receive(repoId: Long, repo: RepoV2, version: Int, certificate: String?) {
-        db.getRepositoryDao().replace(repoId, repo, version, certificate)
+    override fun receive(repo: RepoV2, version: Int, certificate: String?) {
+        db.getRepositoryDao().clear(repoId)
+        db.getRepositoryDao().update(repoId, repo, version, certificate)
     }
 
-    override fun receive(repoId: Long, packageId: String, m: MetadataV2) {
+    override fun receive(packageId: String, m: MetadataV2) {
         db.getAppDao().insert(repoId, packageId, m, locales)
     }
 
-    override fun receive(repoId: Long, packageId: String, v: Map<String, PackageVersionV2>) {
+    override fun receive(packageId: String, v: Map<String, PackageVersionV2>) {
         db.getVersionDao().insert(repoId, packageId, v) {
             compatibilityChecker.isCompatible(it.manifest)
         }
     }
 
     override fun updateRepo(
-        repoId: Long,
         antiFeatures: Map<String, AntiFeatureV2>,
         categories: Map<String, CategoryV2>,
         releaseChannels: Map<String, ReleaseChannelV2>,
@@ -47,7 +53,7 @@ internal class DbV1StreamReceiver(
         db.afterUpdatingRepo(repoId)
     }
 
-    override fun updateAppMetadata(repoId: Long, packageId: String, preferredSigner: String?) {
+    override fun updateAppMetadata(packageId: String, preferredSigner: String?) {
         db.getAppDao().updatePreferredSigner(repoId, packageId, preferredSigner)
     }
 

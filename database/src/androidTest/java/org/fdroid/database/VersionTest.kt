@@ -25,7 +25,7 @@ internal class VersionTest : DbTest() {
 
     @Test
     fun insertGetDeleteSingleVersion() {
-        val repoId = repoDao.insert(getRandomRepo())
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageId, getRandomMetadataV2())
         val packageVersion = getRandomPackageVersionV2()
         val isCompatible = Random.nextBoolean()
@@ -57,7 +57,7 @@ internal class VersionTest : DbTest() {
     @Test
     fun insertGetDeleteTwoVersions() {
         // insert two versions along with required objects
-        val repoId = repoDao.insert(getRandomRepo())
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageId, getRandomMetadataV2())
         val packageVersion1 = getRandomPackageVersionV2()
         val packageVersion2 = getRandomPackageVersionV2()

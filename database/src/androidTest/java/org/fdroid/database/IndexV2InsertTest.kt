@@ -6,7 +6,8 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.serialization.SerializationException
 import org.apache.commons.io.input.CountingInputStream
-import org.fdroid.index.v2.IndexStreamProcessor
+import org.fdroid.CompatibilityChecker
+import org.fdroid.index.v2.IndexV2StreamProcessor
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.math.roundToInt
@@ -22,7 +23,7 @@ internal class IndexV2InsertTest : DbTest() {
         val fileSize = c.resources.assets.openFd("index-v2.json").use { it.length }
         val inputStream = CountingInputStream(c.resources.assets.open("index-v2.json"))
         var currentByteCount: Long = 0
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db) { true }, null) {
+        val compatibilityChecker = CompatibilityChecker {
             val bytesRead = inputStream.byteCount
             val bytesSinceLastCall = bytesRead - currentByteCount
             if (bytesSinceLastCall > 0) {
@@ -33,13 +34,15 @@ internal class IndexV2InsertTest : DbTest() {
             // the stream gets read in big chunks, but ensure they are not too big, e.g. entire file
             assertTrue(bytesSinceLastCall < 400_000, "$bytesSinceLastCall")
             currentByteCount = bytesRead
-            bytesRead
+            true
         }
+        val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
+        val streamReceiver = DbV2StreamReceiver(db, compatibilityChecker, repoId)
+        val indexProcessor = IndexV2StreamProcessor(streamReceiver, null)
 
         db.runInTransaction {
-            val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
             inputStream.use { indexStream ->
-                indexProcessor.process(repoId, 42, indexStream)
+                indexProcessor.process(42, indexStream)
             }
         }
         assertTrue(repoDao.getRepositories().size == 1)
@@ -60,15 +63,17 @@ internal class IndexV2InsertTest : DbTest() {
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
         val c = getApplicationContext<Context>()
         val cIn = CountingInputStream(c.resources.assets.open("index-v2.json"))
-        val indexProcessor = IndexStreamProcessor(DbStreamReceiver(db) { true }, null) {
+        val compatibilityChecker = CompatibilityChecker {
             if (cIn.byteCount > 824096) throw SerializationException()
-            cIn.byteCount
+            true
         }
-
         assertFailsWith<SerializationException> {
             db.runInTransaction {
+                val repoId = db.getRepositoryDao().insertEmptyRepo("http://example.org")
+                val streamReceiver = DbV2StreamReceiver(db, compatibilityChecker, repoId)
+                val indexProcessor = IndexV2StreamProcessor(streamReceiver, null)
                 cIn.use { indexStream ->
-                    indexProcessor.process(1, 42, indexStream)
+                    indexProcessor.process(42, indexStream)
                 }
             }
         }

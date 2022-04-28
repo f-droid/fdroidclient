@@ -25,8 +25,15 @@ public interface RepositoryDao {
     /**
      * Use when replacing an existing repo with a full index.
      * This removes all existing index data associated with this repo from the database.
+     * @throws IllegalStateException if no repo with the given [repoId] exists.
      */
-    public fun replace(repoId: Long, repository: RepoV2, version: Int, certificate: String?)
+    public fun clear(repoId: Long)
+
+    /**
+     * Updates an existing repo with new data from a full index update.
+     * Call [clear] first to ensure old data was removed.
+     */
+    public fun update(repoId: Long, repository: RepoV2, version: Int, certificate: String?)
 
     public fun getRepository(repoId: Long): Repository?
     public fun insertEmptyRepo(
@@ -50,7 +57,10 @@ public interface RepositoryDao {
 internal interface RepositoryDaoInt : RepositoryDao {
 
     @Insert(onConflict = REPLACE)
-    fun insert(repository: CoreRepository): Long
+    fun insertOrReplace(repository: CoreRepository): Long
+
+    @Update
+    fun update(repository: CoreRepository)
 
     @Insert(onConflict = REPLACE)
     fun insertMirrors(mirrors: List<Mirror>)
@@ -78,7 +88,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             description = mapOf("en-US" to initialRepo.description),
             certificate = initialRepo.certificate,
         )
-        val repoId = insert(repo)
+        val repoId = insertOrReplace(repo)
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
             weight = initialRepo.weight,
@@ -102,7 +112,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             version = null,
             certificate = null,
         )
-        val repoId = insert(repo)
+        val repoId = insertOrReplace(repo)
         val currentMaxWeight = getMaxRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
@@ -117,8 +127,8 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     @Transaction
     @VisibleForTesting
-    fun insert(repository: RepoV2): Long {
-        val repoId = insert(repository.toCoreRepository(version = 0))
+    fun insertOrReplace(repository: RepoV2): Long {
+        val repoId = insertOrReplace(repository.toCoreRepository(version = 0))
         insertRepositoryPreferences(repoId)
         insertRepoTables(repoId, repository)
         return repoId
@@ -131,9 +141,15 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @Transaction
-    override fun replace(repoId: Long, repository: RepoV2, version: Int, certificate: String?) {
-        val newRepoId = insert(repository.toCoreRepository(repoId, version, certificate))
-        require(newRepoId == repoId) { "New repoId $newRepoId did not match old $repoId" }
+    override fun clear(repoId: Long) {
+        val repo = getRepository(repoId) ?: error("repo with id $repoId does not exist")
+        // this clears all foreign key associated data since the repo gets replaced
+        insertOrReplace(repo.repository)
+    }
+
+    @Transaction
+    override fun update(repoId: Long, repository: RepoV2, version: Int, certificate: String?) {
+        update(repository.toCoreRepository(repoId, version, certificate))
         insertRepoTables(repoId, repository)
     }
 
