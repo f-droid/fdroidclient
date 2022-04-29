@@ -58,6 +58,18 @@ internal class RepositoryTest : DbTest() {
     }
 
     @Test
+    fun insertTwoReposAndClearAll() {
+        val repo1 = getRandomRepo()
+        val repo2 = getRandomRepo()
+        repoDao.insertOrReplace(repo1)
+        repoDao.insertOrReplace(repo2)
+        assertEquals(2, repoDao.getRepositories().size)
+
+        repoDao.clearAll()
+        assertEquals(0, repoDao.getRepositories().size)
+    }
+
+    @Test
     fun clearingRepoRemovesAllAssociatedData() {
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         val repositoryPreferences = repoDao.getRepositoryPreferences(repoId)
