@@ -20,14 +20,23 @@ import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.RepoV2
 
 public interface RepositoryDao {
+    /**
+     * Inserts a new [InitialRepository] from a fixture.
+     */
     public fun insert(initialRepo: InitialRepository)
 
     /**
      * Use when replacing an existing repo with a full index.
-     * This removes all existing index data associated with this repo from the database.
+     * This removes all existing index data associated with this repo from the database,
+     * but does not touch repository preferences.
      * @throws IllegalStateException if no repo with the given [repoId] exists.
      */
     public fun clear(repoId: Long)
+
+    /**
+     * Removes all repos and their preferences.
+     */
+    public fun clearAll()
 
     /**
      * Updates an existing repo with new data from a full index update.
@@ -145,6 +154,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
         val repo = getRepository(repoId) ?: error("repo with id $repoId does not exist")
         // this clears all foreign key associated data since the repo gets replaced
         insertOrReplace(repo.repository)
+    }
+
+    @Transaction
+    override fun clearAll() {
+        deleteAllCoreRepositories()
+        deleteAllRepositoryPreferences()
     }
 
     @Transaction
@@ -356,7 +371,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("DELETE FROM CoreRepository WHERE repoId = :repoId")
     fun deleteCoreRepository(repoId: Long)
 
+    @Query("DELETE FROM CoreRepository")
+    fun deleteAllCoreRepositories()
+
     @Query("DELETE FROM RepositoryPreferences WHERE repoId = :repoId")
     fun deleteRepositoryPreferences(repoId: Long)
+
+    @Query("DELETE FROM RepositoryPreferences")
+    fun deleteAllRepositoryPreferences()
 
 }
