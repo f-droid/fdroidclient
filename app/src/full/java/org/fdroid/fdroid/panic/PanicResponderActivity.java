@@ -8,7 +8,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.InstalledApp;
@@ -95,8 +97,9 @@ public class PanicResponderActivity extends AppCompatActivity {
             lbm.registerReceiver(receiver, Installer.getUninstallIntentFilter(lastToUninstall));
 
             for (String packageName : wipeList) {
-                InstalledApp installedApp = InstalledAppProvider.Helper.findByPackageName(context, packageName);
-                InstallerService.uninstall(context, new Apk(installedApp));
+                Apk apk = new Apk();
+                apk.packageName = packageName;
+                InstallerService.uninstall(context, apk);
             }
 
             // wait for apps to uninstall before triggering final responses
@@ -139,30 +142,7 @@ public class PanicResponderActivity extends AppCompatActivity {
     }
 
     static void resetRepos(Context context) {
-        HashSet<String> enabledAddresses = new HashSet<>();
-        HashSet<String> disabledAddresses = new HashSet<>();
-        String[] defaultReposItems = DBHelper.loadInitialRepos(context).toArray(new String[0]);
-        for (int i = 1; i < defaultReposItems.length; i += DBHelper.REPO_XML_ITEM_COUNT) {
-            if ("1".equals(defaultReposItems[i + 3])) {
-                enabledAddresses.add(defaultReposItems[i]);
-            } else {
-                disabledAddresses.add(defaultReposItems[i]);
-            }
-        }
-
-        List<Repo> repos = RepoProvider.Helper.all(context);
-        for (Repo repo : repos) {
-            ContentValues values = new ContentValues(1);
-            if (enabledAddresses.contains(repo.address)) {
-                values.put(Schema.RepoTable.Cols.IN_USE, true);
-                RepoProvider.Helper.update(context, repo, values);
-            } else if (disabledAddresses.contains(repo.address)) {
-                values.put(Schema.RepoTable.Cols.IN_USE, false);
-                RepoProvider.Helper.update(context, repo, values);
-            } else {
-                RepoProvider.Helper.remove(context, repo.getId());
-            }
-        }
+        DBHelper.resetRepos(context);
     }
 
     private void exitAndClear() {
