@@ -22,6 +22,7 @@ public data class CoreRepository(
     val name: String,
     @Embedded(prefix = "icon_") val icon: FileV2?,
     val address: String,
+    val webBaseUrl: String? = null,
     val timestamp: Long,
     val version: Int?,
     val description: LocalizedTextV2 = emptyMap(),
@@ -37,6 +38,7 @@ internal fun RepoV2.toCoreRepository(
     name = name,
     icon = icon,
     address = address,
+    webBaseUrl = webBaseUrl,
     timestamp = timestamp,
     version = version,
     description = description,
@@ -75,6 +77,7 @@ public data class Repository(
     val name: String get() = repository.name
     val icon: FileV2? get() = repository.icon
     val address: String get() = repository.address
+    val webBaseUrl: String? get() = repository.webBaseUrl
     val timestamp: Long get() = repository.timestamp
     val version: Int get() = repository.version ?: 0
     val description: LocalizedTextV2 get() = repository.description

@@ -16,7 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @Database(
-    version = 2, // TODO set version to 1 before release and wipe old schemas
+    version = 3, // TODO set version to 1 before release and wipe old schemas
     entities = [
         // repo
         CoreRepository::class,
@@ -38,8 +38,12 @@ import kotlinx.coroutines.launch
     views = [
         LocalizedIcon::class,
     ],
+    exportSchema = true,
     autoMigrations = [
-        AutoMigration(from = 1, to = 2)
+        // TODO remove auto-migrations
+        AutoMigration(from = 1, to = 2),
+        AutoMigration(from = 1, to = 3),
+        AutoMigration(from = 2, to = 3),
     ],
 )
 @TypeConverters(Converters::class)
