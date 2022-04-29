@@ -58,7 +58,6 @@ import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ApkFileProvider;
@@ -251,17 +250,21 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             currentLocale = newConfig.getLocales().toString();
         }
         if (!TextUtils.equals(lastLocale, currentLocale)) {
-            FDroidDatabase db = DBHelper.getDb(this.getApplicationContext());
-            Single.fromCallable(() -> {
-                long now = System.currentTimeMillis();
-                LocaleListCompat locales =
-                    ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
-            db.afterLocalesChanged(locales);
-                Log.d(TAG, "Updating DB locales took: " + (System.currentTimeMillis() - now) + "ms");
-                return true;
-            }).subscribeOn(Schedulers.io()).subscribe();
+            onLanguageChanged(getApplicationContext());
         }
         atStartTime.edit().putString(lastLocaleKey, currentLocale).apply();
+    }
+
+    public static void onLanguageChanged(Context context) {
+        FDroidDatabase db = DBHelper.getDb(context);
+        Single.fromCallable(() -> {
+            long now = System.currentTimeMillis();
+            LocaleListCompat locales =
+                    ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+            db.afterLocalesChanged(locales);
+            Log.d(TAG, "Updating DB locales took: " + (System.currentTimeMillis() - now) + "ms");
+            return true;
+        }).subscribeOn(Schedulers.io()).subscribe();
     }
 
     @Override
@@ -363,7 +366,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         preferences.registerAppsRequiringAntiFeaturesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+                // TODO check if anything else needs updating/reloading
             }
         });
 
