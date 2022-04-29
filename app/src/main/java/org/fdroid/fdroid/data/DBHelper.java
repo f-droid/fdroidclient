@@ -31,6 +31,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.AnyThread;
 import androidx.annotation.VisibleForTesting;
 import androidx.annotation.WorkerThread;
 
@@ -97,6 +98,15 @@ public class DBHelper extends SQLiteOpenHelper {
             );
             db.getRepositoryDao().insert(repo);
         }
+    }
+
+    @AnyThread
+    public static void resetRepos(Context context) {
+        FDroidDatabase db = getDb(context);
+        Utils.runOffUiThread(() -> db.runInTransaction(() -> {
+            db.getRepositoryDao().clearAll();
+            prePopulateDb(context, db);
+        }));
     }
 
     private static final String CREATE_TABLE_PACKAGE = "CREATE TABLE " + PackageTable.NAME

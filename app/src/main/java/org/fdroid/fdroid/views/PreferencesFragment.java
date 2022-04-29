@@ -49,7 +49,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.work.CleanCacheWorker;
@@ -325,12 +324,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_LANGUAGE:
                 entrySummary(key);
                 if (changing) {
-                    AppCompatActivity activity = (AppCompatActivity) getActivity();
+                    AppCompatActivity activity = (AppCompatActivity) requireActivity();
                     Languages.setLanguage(activity);
-
-                    RepoProvider.Helper.clearEtags(getActivity());
-                    UpdateService.updateNow(getActivity());
-
+                    FDroidApp.onLanguageChanged(activity.getApplicationContext());
                     Languages.forceChangeLanguage(activity);
                 }
                 break;

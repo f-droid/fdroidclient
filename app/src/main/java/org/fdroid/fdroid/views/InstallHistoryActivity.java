@@ -32,11 +32,10 @@ import android.widget.TextView;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.apache.commons.io.IOUtils;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 
@@ -140,10 +139,10 @@ public class InstallHistoryActivity extends AppCompatActivity {
                 if (showingInstallHistory) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("Repos:\n");
-                    for (Repo repo : RepoProvider.Helper.all(this)) {
-                        if (repo.inuse) {
+                    for (Repository repo: FDroidApp.repos) {
+                        if (repo.getEnabled()) {
                             stringBuilder.append("* ");
-                            stringBuilder.append(repo.address);
+                            stringBuilder.append(repo.getAddress());
                             stringBuilder.append('\n');
                         }
                     }
