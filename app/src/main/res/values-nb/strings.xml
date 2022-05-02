@@ -237,8 +237,8 @@
     <string name="swap_connection_misc_error">En feil inntraff under tilkobling til enheten, klarer ikke å sirkulere med
         den.
     </string>
-    <string name="install_confirm_update">Ønsker du å installere en oppdatering for denne eksisterende appen? Du mister ingen eksisterende data. Den oppdaterte appen får tilgangen spesifisert nedenfor.</string>
-    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering for denne innebygde appen? Du mister ingen eksisterende data. Den oppdaterte appen får tilgangen spesifisert nedenfor.</string>
+    <string name="install_confirm_update">Ønsker du å installere en oppdatering for dette eksisterende programmet\? Du mister ingen eksisterende data. Det oppdaterte programmet vil få tilgang til:</string>
+    <string name="install_confirm_update_system">Ønsker du å installere en oppdatering for dette innebygde programmet\? Du mister ingen eksisterende data. Det oppdaterte programmet får tilgang til:</string>
     <string name="install_confirm_update_no_perms">Vil du installere en oppdatering av denne eksisterende appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
     <string name="install_confirm_update_system_no_perms">Vil du installere en oppdatering av denne innebygde appen? De eksisterende dataene dine går ikke tapt. Dette krever ingen spesiell tilgang.</string>
     <string name="login_name">Brukernavn</string>
@@ -539,4 +539,5 @@
     <string name="antidisabledalgorithm">Signert med en utrygg algoritme</string>
     <string name="antiknownvuln">Kjent sårbarhet</string>
     <string name="antinosource">Kilden er ikke lenger tilgjengelig</string>
+    <string name="antinsfw">Programmet inneholder innhold ledelsen i F-Droid synes bør sensureres</string>
 </resources>
