@@ -123,8 +123,8 @@ public class SwapRepoTest {
             FDroidApp.initWifiSettings();
             FDroidApp.ipAddressString = "127.0.0.1";
             FDroidApp.subnetInfo = new SubnetUtils("127.0.0.0/8").getInfo();
-            FDroidApp.repo.name = "test";
-            FDroidApp.repo.address = "http://" + FDroidApp.ipAddressString + ":" + FDroidApp.port + "/fdroid/repo";
+            String address = "http://" + FDroidApp.ipAddressString + ":" + FDroidApp.port + "/fdroid/repo";
+            FDroidApp.repo = FDroidApp.createSwapRepo(address, null);
 
             LocalRepoService.runProcess(context, new String[]{context.getPackageName()});
             File indexJarFile = LocalRepoManager.get(context).getIndexJar();
@@ -147,7 +147,7 @@ public class SwapRepoTest {
             assertFalse(TextUtils.isEmpty(signingCert));
             assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
-            Repo repo = MultiIndexUpdaterTest.createRepo(FDroidApp.repo.name, FDroidApp.repo.address,
+            Repo repo = MultiIndexUpdaterTest.createRepo("", FDroidApp.repo.getAddress(),
                     context, signingCert);
             IndexUpdater updater = new IndexUpdater(context, repo);
             updater.update();
@@ -175,13 +175,6 @@ public class SwapRepoTest {
             if (localHttpd != null) {
                 localHttpd.stop();
             }
-        }
-    }
-
-    class TestLocalRepoService extends LocalRepoService {
-        @Override
-        protected void onHandleIntent(Intent intent) {
-            super.onHandleIntent(intent);
         }
     }
 }

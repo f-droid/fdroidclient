@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -361,26 +362,8 @@ public final class Utils {
         return b.build();
     }
 
-    @Deprecated
-    public static Uri getSharingUri(Repo repo) {
-        if (TextUtils.isEmpty(repo.address)) {
-            return Uri.parse("http://wifi-not-enabled");
-        }
-        Uri localRepoUri = getLocalRepoUri(repo);
-        Uri.Builder b = localRepoUri.buildUpon();
-        b.scheme(localRepoUri.getScheme().replaceFirst("http", "fdroidrepo"));
-        b.appendQueryParameter("swap", "1");
-        if (!TextUtils.isEmpty(FDroidApp.bssid)) {
-            b.appendQueryParameter("bssid", FDroidApp.bssid);
-            if (!TextUtils.isEmpty(FDroidApp.ssid)) {
-                b.appendQueryParameter("ssid", FDroidApp.ssid);
-            }
-        }
-        return b.build();
-    }
-
     public static Uri getSharingUri(Repository repo) {
-        if (TextUtils.isEmpty(repo.getAddress())) {
+        if (repo == null || TextUtils.isEmpty(repo.getAddress())) {
             return Uri.parse("http://wifi-not-enabled");
         }
         Uri localRepoUri = getLocalRepoUri(repo);
@@ -800,6 +783,18 @@ public final class Utils {
             Log.e(TAG, "Could not get client version name", e);
         }
         return versionName;
+    }
+
+    public static String getApplicationLabel(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
+        ApplicationInfo appInfo;
+        try {
+            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            return appInfo.loadLabel(pm).toString();
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Utils.debugLog(TAG, "Could not get application label: " + e.getMessage());
+        }
+        return packageName; // all else fails, return packageName
     }
 
     public static String getUserAgent() {

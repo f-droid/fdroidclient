@@ -1,11 +1,13 @@
 package org.fdroid.fdroid.nearby;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiConfiguration;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -178,7 +180,8 @@ public class StartSwapView extends SwapView {
     }
 
     private void uiInitBluetooth() {
-        if (bluetooth != null) {
+        if (bluetooth != null && ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
 
             viewBluetoothId = (TextView) findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
