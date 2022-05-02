@@ -522,4 +522,5 @@
     <string name="antidisabledalgorithm">Ondertekend met een onveilige sleutel</string>
     <string name="antiads">Advertenties</string>
     <string name="antinosource">Bron code niet langer beschikbaar</string>
+    <string name="antiknownvuln">Bekende Kwetsbaarheid</string>
 </resources>
