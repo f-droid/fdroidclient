@@ -255,7 +255,13 @@ public class DownloaderService extends Service {
                 // right after the app gets re-recreated downloads get re-triggered, so repo can still be null
                 FDroidDatabase db = DBHelper.getDb(getApplicationContext());
                 repo = db.getRepositoryDao().getRepository(repoId);
-                if (repo == null) return; // repo might have been deleted in the meantime
+                if (repo == null) {
+                    String canonical = canonicalUrl.toString();
+                    if (canonical.startsWith("http://1") && canonical.contains(":8888/")) {
+                        String address = canonical.split(":8888/")[0] + ":8888/";
+                        repo = FDroidApp.createSwapRepo(address, null); // fake repo for swap
+                    } else return; // repo might have been deleted in the meantime
+                }
             }
             downloader = DownloaderFactory.INSTANCE.create(repo, canonicalUrl, localFile);
             downloader.setListener(new ProgressListener() {

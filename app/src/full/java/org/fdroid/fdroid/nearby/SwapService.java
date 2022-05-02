@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,18 +15,27 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import org.fdroid.database.Repository;
+import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NotificationHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.nearby.peers.Peer;
+import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.net.DownloaderService;
+import org.fdroid.index.IndexParser;
+import org.fdroid.index.IndexParserKt;
+import org.fdroid.index.SigningException;
+import org.fdroid.index.v1.IndexV1;
+import org.fdroid.index.v1.IndexV1Verifier;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -49,6 +57,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import kotlin.Pair;
 
 /**
  * Central service which manages all of the different moving parts of swap
@@ -71,6 +80,8 @@ public class SwapService extends Service {
     @NonNull
     private final Set<String> appsToSwap = new HashSet<>();
     private final Set<Peer> activePeers = new HashSet<>();
+    private final MutableLiveData<IndexV1> index = new MutableLiveData<>();
+    private final MutableLiveData<Exception> indexError = new MutableLiveData<>();
 
     private static LocalBroadcastManager localBroadcastManager;
     private static SharedPreferences swapPreferences;
@@ -103,44 +114,55 @@ public class SwapService extends Service {
         }
     }
 
-    public void connectTo(@NonNull Peer peer) {
+    private void connectTo(@NonNull Peer peer) {
         if (peer != this.peer) {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
         peerRepo = ensureRepoExists(peer);
-        UpdateService.updateRepoNow(this, peer.getRepoAddress());
+        try {
+            updateRepo(peer, peerRepo);
+        } catch (Exception e) {
+            Log.e(TAG, "Error updating repo.", e);
+            indexError.postValue(e);
+        }
     }
 
-    private Repo ensureRepoExists(@NonNull Peer peer) {
-        // TODO: newRepoConfig.getParsedUri() will include a fingerprint, which may not match with
-        // the repos address in the database. Not sure on best behaviour in this situation.
-        Repo repo = RepoProvider.Helper.findByAddress(this, peer.getRepoAddress());
-        if (repo == null) {
-            ContentValues values = new ContentValues(6);
-
-            // The name/description is not really required, as swap repos are not shown in the
-            // "Manage repos" UI on other device. Doesn't hurt to put something there though,
-            // on the off chance that somebody is looking through the sqlite database which
-            // contains the repos...
-            values.put(Schema.RepoTable.Cols.NAME, peer.getName());
-            values.put(Schema.RepoTable.Cols.ADDRESS, peer.getRepoAddress());
-            values.put(Schema.RepoTable.Cols.DESCRIPTION, "");
-            String fingerprint = peer.getFingerprint();
-            if (!TextUtils.isEmpty(fingerprint)) {
-                values.put(Schema.RepoTable.Cols.FINGERPRINT, peer.getFingerprint());
-            }
-            values.put(Schema.RepoTable.Cols.IN_USE, 1);
-            values.put(Schema.RepoTable.Cols.IS_SWAP, true);
-            Uri uri = RepoProvider.Helper.insert(this, values);
-            repo = RepoProvider.Helper.get(this, uri);
+    private void updateRepo(@NonNull Peer peer, Repository repo)
+            throws IOException, InterruptedException, SigningException {
+        Uri uri = Uri.parse(repo.getAddress()).buildUpon().appendPath("index-v1.jar").build();
+        File swapJarFile =
+                File.createTempFile("swap", "", getApplicationContext().getCacheDir());
+        try {
+            Downloader downloader =
+                    DownloaderFactory.INSTANCE.createWithTryFirstMirror(repo, uri, swapJarFile);
+            downloader.download();
+            IndexV1Verifier verifier = new IndexV1Verifier(swapJarFile, null, peer.getFingerprint());
+            Pair<String, IndexV1> pair = verifier.getStreamAndVerify(inputStream ->
+                    IndexParserKt.parseV1(IndexParser.INSTANCE, inputStream)
+            );
+            index.postValue(pair.getSecond());
+            startPollingConnectedSwapRepo();
+        } finally {
+            //noinspection ResultOfMethodCallIgnored
+            swapJarFile.delete();
         }
+    }
 
-        return repo;
+    private Repository ensureRepoExists(@NonNull Peer peer) {
+        return FDroidApp.createSwapRepo(peer.getRepoAddress(), null);
     }
 
     @Nullable
-    public Repo getPeerRepo() {
+    public Repository getPeerRepo() {
         return peerRepo;
+    }
+
+    public LiveData<IndexV1> getIndex() {
+        return index;
+    }
+
+    public LiveData<Exception> getIndexError() {
+        return indexError;
     }
 
     // =================================================
@@ -152,7 +174,7 @@ public class SwapService extends Service {
     private Peer peer;
 
     @Nullable
-    private Repo peerRepo;
+    private Repository peerRepo;
 
     public void swapWith(Peer peer) {
         this.peer = peer;
@@ -341,11 +363,9 @@ public class SwapService extends Service {
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
         localBroadcastManager.registerReceiver(onWifiChange, new IntentFilter(WifiStateChangeService.BROADCAST));
-        localBroadcastManager.registerReceiver(bluetoothStatus, new IntentFilter(BluetoothManager.ACTION_STATUS));
         localBroadcastManager.registerReceiver(bluetoothPeerFound, new IntentFilter(BluetoothManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bonjourPeerFound, new IntentFilter(BonjourManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bonjourPeerRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
-        localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
 
         if (getHotspotActivatedUserPreference()) {
             WifiApControl wifiApControl = WifiApControl.getInstance(this);
@@ -362,13 +382,13 @@ public class SwapService extends Service {
         BonjourManager.setVisible(this, getWifiVisibleUserPreference() || getHotspotActivatedUserPreference());
     }
 
-    private void askServerToSwapWithUs(final Repo repo) {
+    private void askServerToSwapWithUs(final Repository repo) {
         compositeDisposable.add(
                 Completable.fromAction(() -> {
                     String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
                     HttpURLConnection conn = null;
                     try {
-                        URL url = new URL(repo.address.replace("/fdroid/repo", "/request-swap"));
+                        URL url = new URL(repo.getAddress().replace("/fdroid/repo", "/request-swap"));
                         conn = (HttpURLConnection) url.openConnection();
                         conn.setRequestMethod("POST");
                         conn.setDoInput(true);
@@ -381,7 +401,7 @@ public class SwapService extends Service {
                         }
 
                         int responseCode = conn.getResponseCode();
-                        Utils.debugLog(TAG, "Asking server at " + repo.address + " to swap with us in return (by " +
+                        Utils.debugLog(TAG, "Asking server at " + repo.getAddress() + " to swap with us in return (by " +
                                 "POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\"): " + responseCode);
                     } finally {
                         if (conn != null) {
@@ -393,7 +413,7 @@ public class SwapService extends Service {
                         .observeOn(AndroidSchedulers.mainThread())
                         .onErrorComplete(e -> {
                             Intent intent = new Intent(DownloaderService.ACTION_INTERRUPTED);
-                            intent.setData(Uri.parse(repo.address));
+                            intent.setData(Uri.parse(repo.getAddress()));
                             intent.putExtra(DownloaderService.EXTRA_ERROR_MESSAGE, e.getLocalizedMessage());
                             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
                             return true;
@@ -409,7 +429,6 @@ public class SwapService extends Service {
      */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        deleteAllSwapRepos();
         Intent startUiIntent = new Intent(this, SwapWorkflowActivity.class);
         startUiIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startUiIntent);
@@ -430,7 +449,6 @@ public class SwapService extends Service {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         localBroadcastManager.unregisterReceiver(onWifiChange);
-        localBroadcastManager.unregisterReceiver(bluetoothStatus);
         localBroadcastManager.unregisterReceiver(bluetoothPeerFound);
         localBroadcastManager.unregisterReceiver(bonjourPeerFound);
         localBroadcastManager.unregisterReceiver(bonjourPeerRemoved);
@@ -467,8 +485,6 @@ public class SwapService extends Service {
         }
         ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE);
 
-        deleteAllSwapRepos();
-
         super.onDestroy();
     }
 
@@ -482,24 +498,6 @@ public class SwapService extends Service {
                 .setSmallIcon(R.drawable.ic_nearby)
                 .setContentIntent(contentIntent)
                 .build();
-    }
-
-    /**
-     * For now, swap repos are only trusted as long as swapping is active.  They
-     * should have a long lived trust based on the signing key, but that requires
-     * that the repos are stored in the database by fingerprint, not by URL address.
-     *
-     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/295">TOFU in swap</a>
-     * @see <a href="https://gitlab.com/fdroid/fdroidclient/issues/703">
-     * signing key fingerprint should be sole ID for repos in the database</a>
-     */
-    private void deleteAllSwapRepos() {
-        for (Repo repo : RepoProvider.Helper.all(this)) {
-            if (repo.isSwap) {
-                Utils.debugLog(TAG, "Removing stale swap repo: " + repo.address + " - " + repo.fingerprint);
-                RepoProvider.Helper.remove(this, repo.getId());
-            }
-        }
     }
 
     private void startPollingConnectedSwapRepo() {
@@ -571,44 +569,6 @@ public class SwapService extends Service {
             restartWiFiServices();
         }
     };
-
-    private final BroadcastReceiver bluetoothStatus = new SwapStateChangeReceiver();
-    private final BroadcastReceiver localRepoStatus = new SwapStateChangeReceiver();
-
-    /**
-     * When swapping is setup, then start the index polling.
-     */
-    private class SwapStateChangeReceiver extends BroadcastReceiver {
-        private final BroadcastReceiver pollForUpdatesReceiver = new PollForUpdatesReceiver();
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int bluetoothStatus = intent.getIntExtra(BluetoothManager.ACTION_STATUS, -1);
-            int wifiStatus = intent.getIntExtra(LocalRepoService.EXTRA_STATUS, -1);
-            if (bluetoothStatus == BluetoothManager.STATUS_STARTED
-                    || wifiStatus == LocalRepoService.STATUS_STARTED) {
-                localBroadcastManager.registerReceiver(pollForUpdatesReceiver,
-                        new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
-            } else {
-                localBroadcastManager.unregisterReceiver(pollForUpdatesReceiver);
-            }
-        }
-    }
-
-    /**
-     * Reschedule an index update if the last one was successful.
-     */
-    private class PollForUpdatesReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1)) {
-                case UpdateService.STATUS_COMPLETE_AND_SAME:
-                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                    startPollingConnectedSwapRepo();
-                    break;
-            }
-        }
-    }
 
     /**
      * Handle events if the user or system changes the Bluetooth setup outside of F-Droid.

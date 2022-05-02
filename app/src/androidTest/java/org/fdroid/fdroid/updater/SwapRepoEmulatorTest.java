@@ -67,15 +67,15 @@ public class SwapRepoEmulatorTest {
             Preferences.setupForTests(context);
 
             FDroidApp.initWifiSettings();
-            assertNull(FDroidApp.repo.address);
+            assertNull(FDroidApp.repo.getAddress());
 
             final CountDownLatch latch = new CountDownLatch(1);
             new Thread() {
                 @Override
                 public void run() {
-                    while (FDroidApp.repo.address == null) {
+                    while (FDroidApp.repo.getAddress() == null) {
                         try {
-                            Log.i(TAG, "Waiting for IP address... " + FDroidApp.repo.address);
+                            Log.i(TAG, "Waiting for IP address... " + FDroidApp.repo.getAddress());
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             // ignored
@@ -85,7 +85,7 @@ public class SwapRepoEmulatorTest {
                 }
             }.start();
             latch.await(10, TimeUnit.MINUTES);
-            assertNotNull(FDroidApp.repo.address);
+            assertNotNull(FDroidApp.repo.getAddress());
 
             LocalRepoService.runProcess(context, new String[]{context.getPackageName()});
             Log.i(TAG, "REPO: " + FDroidApp.repo);
@@ -108,25 +108,24 @@ public class SwapRepoEmulatorTest {
             assertFalse(TextUtils.isEmpty(signingCert));
             assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
-            Repo repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
+            Repo repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
             while (repoToDelete != null) {
                 Log.d(TAG, "Removing old test swap repo matching this one: " + repoToDelete.address);
                 RepoProvider.Helper.remove(context, repoToDelete.getId());
-                repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
+                repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
             }
 
             ContentValues values = new ContentValues(4);
             values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
-            values.put(Schema.RepoTable.Cols.ADDRESS, FDroidApp.repo.address);
-            values.put(Schema.RepoTable.Cols.NAME, FDroidApp.repo.name);
+            values.put(Schema.RepoTable.Cols.ADDRESS, FDroidApp.repo.getAddress());
+            values.put(Schema.RepoTable.Cols.NAME, "");
             values.put(Schema.RepoTable.Cols.IS_SWAP, true);
             final String lastEtag = UUID.randomUUID().toString();
             values.put(Schema.RepoTable.Cols.LAST_ETAG, lastEtag);
             RepoProvider.Helper.insert(context, values);
-            Repo repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
+            Repo repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
             assertTrue(repo.isSwap);
             assertNotEquals(-1, repo.getId());
-            assertTrue(repo.name.startsWith(FDroidApp.repo.name));
             assertEquals(lastEtag, repo.lastetag);
             assertNull(repo.lastUpdated);
 
@@ -136,7 +135,7 @@ public class SwapRepoEmulatorTest {
             updater.update();
             assertTrue(updater.hasChanged());
 
-            repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
+            repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
             final Date lastUpdated = repo.lastUpdated;
             assertTrue("repo lastUpdated should be updated", new Date(2019, 5, 13).compareTo(repo.lastUpdated) > 0);
 

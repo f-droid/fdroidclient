@@ -156,12 +156,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName className, IBinder binder) {
             service = ((SwapService.Binder) binder).getService();
+            service.getIndex().observe(SwapWorkflowActivity.this, index ->
+                    onRepoUpdateSuccess());
+            service.getIndexError().observe(SwapWorkflowActivity.this, e ->
+                    onRepoUpdateError(e));
             showRelevantView();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName className) {
             finish();
+            service.getIndex().removeObservers(SwapWorkflowActivity.this);
+            service.getIndexError().removeObservers(SwapWorkflowActivity.this);
             service = null;
         }
     };
@@ -273,8 +279,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         backstack.clear();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        localBroadcastManager.registerReceiver(downloaderInterruptedReceiver,
-                new IntentFilter(DownloaderService.ACTION_INTERRUPTED));
 
         wifiManager = ContextCompat.getSystemService(getApplicationContext(), WifiManager.class);
         wifiApControl = WifiApControl.getInstance(this);
@@ -287,7 +291,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         compositeDisposable.dispose();
-        localBroadcastManager.unregisterReceiver(downloaderInterruptedReceiver);
         unbindService(serviceConnection);
         super.onDestroy();
     }
@@ -387,15 +390,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     return true;
                 }
                 currentView.setCurrentFilterString(newFilter);
-                if (currentView instanceof SelectAppsView) {
-                    getSupportLoaderManager().restartLoader(currentView.getLayoutResId(), null,
-                            (SelectAppsView) currentView);
-                } else if (currentView instanceof SwapSuccessView) {
-                    getSupportLoaderManager().restartLoader(currentView.getLayoutResId(), null,
-                            (SwapSuccessView) currentView);
-                } else {
-                    throw new IllegalStateException(currentView.getClass() + " does not have Loader!");
-                }
                 return true;
             }
 
@@ -413,8 +407,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         localBroadcastManager.registerReceiver(onWifiStateChanged,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
         localBroadcastManager.registerReceiver(localRepoStatus, new IntentFilter(LocalRepoService.ACTION_STATUS));
-        localBroadcastManager.registerReceiver(repoUpdateReceiver,
-                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
         localBroadcastManager.registerReceiver(bonjourFound, new IntentFilter(BonjourManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bonjourRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
         localBroadcastManager.registerReceiver(bonjourStatusReceiver, new IntentFilter(BonjourManager.ACTION_STATUS));
@@ -440,7 +432,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         localBroadcastManager.unregisterReceiver(onWifiStateChanged);
         localBroadcastManager.unregisterReceiver(localRepoStatus);
-        localBroadcastManager.unregisterReceiver(repoUpdateReceiver);
         localBroadcastManager.unregisterReceiver(bonjourFound);
         localBroadcastManager.unregisterReceiver(bonjourRemoved);
         localBroadcastManager.unregisterReceiver(bonjourStatusReceiver);
@@ -1451,65 +1442,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     };
 
-    /**
-     * Listens for feedback about a repo update process taking place.
-     * Tracks an index.jar download and show the progress messages
-     */
-    private final BroadcastReceiver repoUpdateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String message = intent.getStringExtra(UpdateService.EXTRA_MESSAGE);
-            if (message == null) {
-                CharSequence[] repoErrors = intent.getCharSequenceArrayExtra(UpdateService.EXTRA_REPO_ERRORS);
-                if (repoErrors != null) {
-                    StringBuilder msgBuilder = new StringBuilder();
-                    for (CharSequence error : repoErrors) {
-                        if (msgBuilder.length() > 0) {
-                            msgBuilder.append(" + ");
-                        }
-                        msgBuilder.append(error);
-                    }
-                    message = msgBuilder.toString();
-                }
-            }
-            setUpConnectingProgressText(message);
-
-            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
-            Button tryAgainButton = container.findViewById(R.id.try_again);
-            if (progressBar == null || tryAgainButton == null) {
-                return;
-            }
-
-            int status = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-            if (status == UpdateService.STATUS_ERROR_GLOBAL ||
-                    status == UpdateService.STATUS_ERROR_LOCAL ||
-                    status == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
-                progressBar.setVisibility(View.GONE);
-                tryAgainButton.setVisibility(View.VISIBLE);
-                getSwapService().removeCurrentPeerFromActive();
-                return;
-            } else {
-                progressBar.setVisibility(View.VISIBLE);
-                tryAgainButton.setVisibility(View.GONE);
-                getSwapService().addCurrentPeerToActive();
-            }
-
-            if (status == UpdateService.STATUS_COMPLETE_AND_SAME
-                    || status == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
-                inflateSwapView(R.layout.swap_success);
-            }
+    private void onRepoUpdateSuccess() {
+        ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+        Button tryAgainButton = container.findViewById(R.id.try_again);
+        if (progressBar != null && tryAgainButton != null) {
+            progressBar.setVisibility(View.VISIBLE);
+            tryAgainButton.setVisibility(View.GONE);
         }
-    };
+        getSwapService().addCurrentPeerToActive();
+        inflateSwapView(R.layout.swap_success);
+    }
 
-    private final BroadcastReceiver downloaderInterruptedReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Repo repo = RepoProvider.Helper.findByUrl(context, intent.getData(), null);
-            if (repo != null && repo.isSwap) {
-                setUpConnectingProgressText(intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE));
-            }
+    private void onRepoUpdateError(Exception e) {
+        ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+        Button tryAgainButton = container.findViewById(R.id.try_again);
+        if (progressBar != null && tryAgainButton != null) {
+            progressBar.setVisibility(View.GONE);
+            tryAgainButton.setVisibility(View.VISIBLE);
         }
-    };
+        String msg = e.getMessage() == null ? "Error updating repo " + e : e.getMessage();
+        setUpConnectingProgressText(msg);
+        getSwapService().removeCurrentPeerFromActive();
+    }
 
     private void setUpConnectingView() {
         TextView heading = container.findViewById(R.id.progress_text);
