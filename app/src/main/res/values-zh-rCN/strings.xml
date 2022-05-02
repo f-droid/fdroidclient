@@ -512,5 +512,5 @@
     <string name="antidisabledalgorithm">使用不安全算法签名</string>
     <string name="antinosource">源代码不再可用</string>
     <string name="antiothers">其他负特征</string>
-    <string name="antinsfw">此应用包含的内容不应被宣传或随处可见</string>
+    <string name="antinsfw">此应用包含不应宣扬或随处可见的内容</string>
 </resources>
