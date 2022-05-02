@@ -1,0 +1,7 @@
+* utilitzar canals de notificació per al control de gra fi (@Isira-Seneviratne)
+* Millora de la selecció d'idiomes amb múltiples llocs (@spacecowboy/@bubu)
+* L'última pestanya mostrarà millors resultats en dispositius no anglesos
+* actualitzacions de les biblioteques bàsiques (Jackson, androidx, gradle, etc.)
+* suport d'etiqueta blanca polit
+
+Gràcies nous col·laboradors! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

@@ -1,0 +1,3 @@
+* Corregiu la preferència de la barra de cerca en versions recents d'Android (gràcies @dkanada)
+* Gestionar els permisos dividits de l'API 29: la ubicació fina ara implica una ubicació gruixuda
+* Definiu regles de còpia de seguretat per evitar desar el repo d'intercanvi

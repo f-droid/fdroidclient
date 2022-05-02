@@ -1,0 +1,1 @@
+* Les unitats flaix USB OTG es poden utilitzar com a repos i miralls propers

@@ -1,0 +1,5 @@
+* Revisió total de la lògica de descàrrega per millorar el rendiment i el suport de miralls.
+
+* Les captures de pantalla i els gràfics ara es descarreguen de miralls.
+
+* Reducció d'una fuita de privadesa amb sessions TLS

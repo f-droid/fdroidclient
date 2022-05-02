@@ -1,0 +1,7 @@
+* Millora de la vinculació dels URL a les descripcions d'aplicacions
+
+* Millora del maneig de SDCards i USG-OTG a prop
+
+* Codi modernitzat i PNGs canviats a vectors (gràcies @isira-seneviratne!)
+
+* Reconèixer URL de devolució més llargs per donar suport a gitCDN / RawGit / etc miralls

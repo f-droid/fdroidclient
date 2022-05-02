@@ -1,0 +1,4 @@
+* gestioneu la configuració de permisos d'Android 10 per aturar les sol·licituds de fonts desconegudes
+* El teclat s'obre quan s'esborra la cerca
+* Sincronització de traduccions amb cadenes d'Android
+* forçar dominis de repo comuns a HTTPS (GitLab, GitHub, Amazon)
