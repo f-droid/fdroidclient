@@ -541,5 +541,5 @@
     <string name="antinosource">Código-fonte não está mais disponível</string>
     <string name="antinonfreeassets">Conteúdos não livres</string>
     <string name="antiothers">Outras características indesejadas</string>
-    <string name="antinsfw">Este aplicativo contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string name="antinsfw">Este aplicativo contém conteúdo impróprio para menores de idade</string>
 </resources>
