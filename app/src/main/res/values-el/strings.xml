@@ -541,4 +541,5 @@
     <string name="antiupstreamnonfree">Upstream Μη Δωρεάν</string>
     <string name="share_apk_error">Δεν ήταν δυνατή η κοινή χρήση του αρχείου εφαρμογής</string>
     <string name="antidisabledalgorithm">Υπογραφή με χρήση μη ασφαλούς αλγόριθμου</string>
+    <string name="antinsfw">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>
 </resources>
