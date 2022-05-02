@@ -13,7 +13,7 @@
     <string name="notify_on">更新可用时显示通知</string>
     <string name="system_installer">特权扩展</string>
     <string name="app_details">应用详情</string>
-    <string name="no_such_app">没有此类应用。</string>
+    <string name="no_such_app">找不到此应用。</string>
     <string name="about_title">关于 F-Droid</string>
     <string name="about_site">网站</string>
     <string name="about_version">版本</string>
@@ -233,7 +233,7 @@
     <string name="theme_light">浅色</string>
     <string name="theme_dark">深色</string>
     <string name="about_license">许可</string>
-    <string name="empty_search_available_app_list">没有符合条件的应用可用。</string>
+    <string name="empty_search_available_app_list">没有相符的应用。</string>
     <string name="status_inserting_apps">正在保存应用详细信息</string>
     <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">此应用包含非自由资源</string>
@@ -437,7 +437,7 @@
     <string name="about_forum">支持论坛</string>
     <string name="app_size">大小：%1$s</string>
     <string name="menu_downgrade">降级</string>
-    <string name="app_suggested">建议</string>
+    <string name="app_suggested">推荐</string>
     <string name="send_installed_apps_csv">通过 F-Droid 安装的应用列表，以 CSV 格式文件存储</string>
     <string name="menu_open">打开</string>
     <string name="updates_disabled_by_settings">由于数据/WiFi 设置全部更新已禁用</string>
@@ -483,13 +483,13 @@
     <string name="notification_channel_swaps_title">交换</string>
     <string name="menu_show_install_history">显示安装历史</string>
     <string name="menu_show_fdroid_metrics_report">显示指标报告</string>
-    <string name="toast_metrics_in_install_history">可以在安装历史查看器中查看 %s 份指标报告</string>
+    <string name="toast_metrics_in_install_history">可以在安装历史查看器中查看 %s 指标报告</string>
     <string name="send_to_fdroid_metrics_summary">每周发送匿名数据到 F-Droid Metrics（需要保存安装历史）</string>
     <string name="send_to_fdroid_metrics">发送使用数据</string>
-    <string name="fdroid_metrics_report">%s 份指标报告</string>
+    <string name="fdroid_metrics_report">%s 指标报告</string>
     <string name="install_history_and_metrics">安装历史和指标</string>
-    <string name="send_fdroid_metrics_json">以 JSON 文件发送 %s 份指标报告</string>
-    <string name="send_fdroid_metrics_report">发送 %s 份指标报告</string>
+    <string name="send_fdroid_metrics_json">以 JSON 文件发送 %s 指标报告</string>
+    <string name="send_fdroid_metrics_report">发送 %s 指标报告</string>
     <string name="theme_follow_system">跟随系统</string>
     <string name="use_pure_black_dark_theme_summary">仅推荐用于 OLED 屏幕。</string>
     <string name="use_pure_black_dark_theme">在深色主题中使用纯黑色背景</string>
@@ -510,6 +510,6 @@
     <string name="antinonfreedep">非自由依赖项</string>
     <string name="antiupstreamnonfree">上游代码非自由</string>
     <string name="antidisabledalgorithm">使用不安全算法签名</string>
-    <string name="antinosource">源码不再可用</string>
+    <string name="antinosource">源代码不再可用</string>
     <string name="antiothers">其他负特征</string>
 </resources>
