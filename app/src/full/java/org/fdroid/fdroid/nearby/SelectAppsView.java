@@ -1,12 +1,12 @@
 package org.fdroid.fdroid.nearby;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
@@ -14,25 +14,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.Schema.InstalledAppTable;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.cursoradapter.widget.CursorAdapter;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 
-public class SelectAppsView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.InstalledAppProvider;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+public class SelectAppsView extends SwapView {
 
     public SelectAppsView(Context context) {
         super(context);
@@ -58,26 +59,28 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
     protected void onFinishInflate() {
         super.onFinishInflate();
         listView = findViewById(R.id.list);
-        adapter = new AppListAdapter(listView, getContext(),
-                getContext().getContentResolver().query(InstalledAppProvider.getContentUri(),
-                        null, null, null, null));
+        List<PackageInfo> packages = getContext().getPackageManager().getInstalledPackages(0);
+        adapter = new AppListAdapter(listView, packages);
 
         listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
-        // either reconnect with an existing loader or start a new one
-        getActivity().getSupportLoaderManager().initLoader(R.layout.swap_select_apps, null, this);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 toggleAppSelected(position);
             }
         });
+        afterAppsLoaded();
+    }
+
+    @Override
+    public void setCurrentFilterString(String currentFilterString) {
+        super.setCurrentFilterString(currentFilterString);
+        adapter.setSearchTerm(currentFilterString);
     }
 
     private void toggleAppSelected(int position) {
-        Cursor c = (Cursor) adapter.getItem(position);
-        String packageName = c.getString(c.getColumnIndex(InstalledAppTable.Cols.Package.NAME));
+        String packageName = adapter.getItem(position).packageName;
         if (getActivity().getSwapService().hasSelectedPackage(packageName)) {
             getActivity().getSwapService().deselectPackage(packageName);
             adapter.updateCheckedIndicatorView(position, false);
@@ -88,40 +91,21 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         LocalRepoService.create(getContext(), getActivity().getSwapService().getAppsToSwap());
     }
 
-    @Override
-    public CursorLoader onCreateLoader(int id, Bundle args) {
-        Uri uri;
-        if (TextUtils.isEmpty(currentFilterString)) {
-            uri = InstalledAppProvider.getContentUri();
-        } else {
-            uri = InstalledAppProvider.getSearchUri(currentFilterString);
-        }
-        return new CursorLoader(getActivity(), uri, null, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        adapter.swapCursor(cursor);
-
+    public void afterAppsLoaded() {
         for (int i = 0; i < listView.getCount(); i++) {
-            Cursor c = (Cursor) listView.getItemAtPosition(i);
-            String packageName = c.getString(c.getColumnIndex(InstalledAppTable.Cols.Package.NAME));
+            InstalledApp app = (InstalledApp) listView.getItemAtPosition(i);
             getActivity().getSwapService().ensureFDroidSelected();
             for (String selected : getActivity().getSwapService().getAppsToSwap()) {
-                if (TextUtils.equals(packageName, selected)) {
+                if (TextUtils.equals(app.packageName, selected)) {
                     listView.setItemChecked(i, true);
                 }
             }
         }
     }
 
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        adapter.swapCursor(null);
-    }
+    private class AppListAdapter extends BaseAdapter {
 
-    private class AppListAdapter extends CursorAdapter {
-
+        private final Context context = SelectAppsView.this.getContext();
         @Nullable
         private LayoutInflater inflater;
 
@@ -131,9 +115,31 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         @NonNull
         private final ListView listView;
 
-        AppListAdapter(@NonNull ListView listView, @NonNull Context context, @Nullable Cursor c) {
-            super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
+        private final List<InstalledApp> allPackages;
+        private final List<InstalledApp> filteredPackages = new ArrayList<>();
+
+        AppListAdapter(@NonNull ListView listView, List<PackageInfo> packageInfos) {
             this.listView = listView;
+            allPackages = new ArrayList<>(packageInfos.size());
+            for (PackageInfo packageInfo : packageInfos) {
+                allPackages.add(new InstalledApp(context, packageInfo));
+            }
+            filteredPackages.addAll(allPackages);
+        }
+
+        void setSearchTerm(@Nullable String searchTerm) {
+            filteredPackages.clear();
+            if (TextUtils.isEmpty(searchTerm)) {
+                filteredPackages.addAll(allPackages);
+            } else {
+                String query = requireNonNull(searchTerm).toLowerCase(Locale.US);
+                for (InstalledApp app: allPackages) {
+                    if (app.name.toLowerCase(Locale.US).contains(query)) {
+                        filteredPackages.add(app);
+                    }
+                }
+            }
+            notifyDataSetChanged();
         }
 
         @NonNull
@@ -153,34 +159,31 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
         }
 
         @Override
-        public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            View view = getInflater(context).inflate(R.layout.select_local_apps_list_item, parent, false);
-            bindView(view, context, cursor);
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view = convertView == null ?
+                    getInflater(context).inflate(R.layout.select_local_apps_list_item, parent, false) :
+                    convertView;
+            bindView(view, context, position);
             return view;
         }
 
-        @Override
-        public void bindView(final View view, final Context context, final Cursor cursor) {
+        public void bindView(final View view, final Context context, final int position) {
+            InstalledApp app = getItem(position);
 
             TextView packageView = (TextView) view.findViewById(R.id.package_name);
             TextView labelView = (TextView) view.findViewById(R.id.application_label);
             ImageView iconView = (ImageView) view.findViewById(android.R.id.icon);
 
-            String packageName = cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.Package.NAME));
-            String appLabel = cursor.getString(cursor.getColumnIndex(InstalledAppTable.Cols.APPLICATION_LABEL));
-
             Drawable icon;
             try {
-                icon = context.getPackageManager().getApplicationIcon(packageName);
+                icon = context.getPackageManager().getApplicationIcon(app.packageName);
             } catch (PackageManager.NameNotFoundException e) {
                 icon = getDefaultAppIcon(context);
             }
 
-            packageView.setText(packageName);
-            labelView.setText(appLabel);
+            packageView.setText(app.packageName);
+            labelView.setText(app.name);
             iconView.setImageDrawable(icon);
-
-            final int listPosition = cursor.getPosition();
 
             // Since v11, the Android SDK provided the ability to show selected list items
             // by highlighting their background. Prior to this, we need to handle this ourselves
@@ -190,12 +193,12 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                 CheckBox checkBox = (CheckBox) checkBoxView;
                 checkBox.setOnCheckedChangeListener(null);
 
-                checkBox.setChecked(listView.isItemChecked(listPosition));
+                checkBox.setChecked(listView.isItemChecked(position));
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        listView.setItemChecked(listPosition, isChecked);
-                        toggleAppSelected(listPosition);
+                        listView.setItemChecked(position, isChecked);
+                        toggleAppSelected(position);
                     }
                 });
             }
@@ -209,5 +212,35 @@ public class SelectAppsView extends SwapView implements LoaderManager.LoaderCall
                 final int childIndex = position - firstListItemPosition;
             }
         }
+
+        @Override
+        public int getCount() {
+            return filteredPackages.size();
+        }
+
+        @Override
+        public InstalledApp getItem(int position) {
+            return filteredPackages.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return getItem(position).hashCode();
+        }
     }
+
+    private static class InstalledApp {
+        final String packageName;
+        final String name;
+
+        InstalledApp(String packageName, String name) {
+            this.packageName = packageName;
+            this.name = name;
+        }
+
+        InstalledApp(Context context, PackageInfo packageInfo) {
+            this(packageInfo.packageName, Utils.getApplicationLabel(context, packageInfo.packageName));
+        }
+    }
+
 }

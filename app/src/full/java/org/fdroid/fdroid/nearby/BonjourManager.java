@@ -181,7 +181,7 @@ public class BonjourManager {
                 HashMap<String, String> values = new HashMap<>();
                 values.put(BonjourPeer.PATH, "/fdroid/repo");
                 values.put(BonjourPeer.NAME, localRepoName);
-                values.put(BonjourPeer.FINGERPRINT, FDroidApp.repo.fingerprint);
+                values.put(BonjourPeer.FINGERPRINT, FDroidApp.repo.getFingerprint());
                 String type;
                 if (useHttps) {
                     values.put(BonjourPeer.TYPE, "fdroidrepos");

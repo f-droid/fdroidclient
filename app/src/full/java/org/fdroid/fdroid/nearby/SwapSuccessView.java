@@ -6,12 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,38 +15,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.cursoradapter.widget.CursorAdapter;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.net.DownloaderService;
+import org.fdroid.index.v1.AppV1;
+import org.fdroid.index.v1.IndexV1;
+import org.fdroid.index.v1.PackageV1;
+import org.fdroid.index.v1.PermissionV1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This is a view that shows a listing of all apps in the swap repo that this
@@ -58,7 +52,7 @@ import java.util.List;
  * {@link org.fdroid.fdroid.views.apps.AppListActivity}'s plumbing.
  */
 // TODO merge this with AppListActivity, perhaps there could be AppListView?
-public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCallbacks<Cursor> {
+public class SwapSuccessView extends SwapView {
     private static final String TAG = "SwapAppsView";
 
     public SwapSuccessView(Context context) {
@@ -78,7 +72,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private Repo repo;
+    private Repository repo;
     private AppListAdapter adapter;
 
     @Override
@@ -86,16 +80,62 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         super.onFinishInflate();
         repo = getActivity().getSwapService().getPeerRepo();
 
-        adapter = new AppListAdapter(getContext(), getContext().getContentResolver().query(
-                AppProvider.getRepoUri(repo), AppMetadataTable.Cols.ALL, null, null, null));
-        ListView listView = findViewById(R.id.list);
+        adapter = new AppListAdapter();
+        RecyclerView listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
 
-        // either reconnect with an existing loader or start a new one
-        getActivity().getSupportLoaderManager().initLoader(R.layout.swap_success, null, this);
+        getActivity().getSwapService().getIndex().observe(getActivity(), this::onIndexReceived);
 
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+    }
+
+    private void onIndexReceived(IndexV1 indexV1) {
+        List<App> apps = new ArrayList<>(indexV1.getApps().size());
+        HashMap<String, Apk> apks = new HashMap<>(indexV1.getApps().size());
+        CompatibilityChecker checker = new CompatibilityChecker(getContext());
+        for (AppV1 a : indexV1.getApps()) {
+            App app = new App();
+            app.name = a.getName();
+            app.packageName = a.getPackageName();
+            app.iconUrl = "icons/" + a.getIcon();
+            try {
+                PackageInfo  packageInfo = getContext().getPackageManager().getPackageInfo(app.packageName, 0);
+                app.installedVersionCode = packageInfo.versionCode;
+            } catch (PackageManager.NameNotFoundException ignored) {
+            }
+            Apk apk = new Apk();
+            List<PackageV1> packages = indexV1.getPackages().get(app.packageName);
+            if (packages != null && packages.get(0) != null) {
+                PackageV1 packageV1 = packages.get(0);
+                if (packageV1.getVersionCode() != null) {
+                    app.autoInstallVersionCode = packageV1.getVersionCode().intValue();
+                }
+                if (packageV1.getVersionCode() != null) {
+                    apk.versionCode = packageV1.getVersionCode();
+                }
+                apk.versionName = packageV1.getVersionName();
+                apk.apkName = packageV1.getApkName();
+                apk.hashType = packageV1.getHashType();
+                apk.hash = packageV1.getHash();
+                ArrayList<String> permissions =
+                        new ArrayList<>(packageV1.getUsesPermission().size());
+                for (PermissionV1 perm : packageV1.getUsesPermission()) {
+                    permissions.add(perm.getName());
+                }
+                apk.requestedPermissions = permissions.toArray(new String[0]);
+            }
+
+            apk.repoId = Long.MAX_VALUE;
+            apk.packageName = app.packageName;
+            apk.repoAddress = repo.getAddress();
+            apk.setCompatibility(checker);
+            app.compatible = apk.compatible;
+
+            apps.add(app);
+            apks.put(app.packageName, apk);
+        }
+        adapter.setApps(apps, apks);
     }
 
     /**
@@ -109,30 +149,12 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
     }
 
-    @NonNull
-    @Override
-    public CursorLoader onCreateLoader(int id, Bundle args) {
-        Uri uri = TextUtils.isEmpty(currentFilterString)
-                ? AppProvider.getRepoUri(repo)
-                : AppProvider.getSearchUri(repo, currentFilterString);
+    private class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.ViewHolder> {
 
-        return new CursorLoader(getActivity(), uri, AppMetadataTable.Cols.ALL,
-                null, null, AppMetadataTable.Cols.NAME);
-    }
+        private final List<App> apps = new ArrayList<>();
+        private final Map<String, Apk> apks = new HashMap<>();
 
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-        adapter.swapCursor(cursor);
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        adapter.swapCursor(null);
-    }
-
-    private class AppListAdapter extends CursorAdapter {
-
-        private class ViewHolder {
+        private class ViewHolder extends RecyclerView.ViewHolder {
 
             private final LocalBroadcastManager localBroadcastManager;
 
@@ -177,6 +199,7 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                             statusInstalled.setVisibility(View.VISIBLE);
                             btnInstall.setVisibility(View.GONE);
                             break;
+                        case DownloaderService.ACTION_CONNECTION_FAILED:
                         case DownloaderService.ACTION_INTERRUPTED:
                             localBroadcastManager.unregisterReceiver(this);
                             if (intent.hasExtra(DownloaderService.EXTRA_ERROR_MESSAGE)) {
@@ -195,34 +218,21 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                 }
             }
 
-            private final ContentObserver appObserver = new ContentObserver(new Handler()) {
-                @Override
-                public void onChange(boolean selfChange) {
-                    AppCompatActivity activity = getActivity();
-                    if (activity != null && app != null) {
-                        app = AppProvider.Helper.findSpecificApp(
-                                activity.getContentResolver(),
-                                app.packageName,
-                                app.repoId,
-                                AppMetadataTable.Cols.ALL);
-                        resetView();
-                    }
-                }
-            };
-
-            ViewHolder() {
+            ViewHolder(View view) {
+                super(view);
                 localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
+                progressView = (ProgressBar) view.findViewById(R.id.progress);
+                nameView = (TextView) view.findViewById(R.id.name);
+                iconView = (ImageView) view.findViewById(android.R.id.icon);
+                btnInstall = (Button) view.findViewById(R.id.btn_install);
+                statusInstalled = (TextView) view.findViewById(R.id.status_installed);
+                statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
             }
 
             public void setApp(@NonNull App app) {
                 if (this.app == null || !this.app.packageName.equals(app.packageName)) {
                     this.app = app;
-
-                    List<Apk> availableApks = ApkProvider.Helper.findAppVersionsByRepo(getActivity(), app, repo);
-                    if (availableApks.size() > 0) {
-                        // Swap repos only add one version of an app, so we will just ask for the first apk.
-                        this.apk = availableApks.get(0);
-                    }
+                    this.apk = apks.get(this.app.packageName);
 
                     if (apk != null) {
                         localBroadcastManager.registerReceiver(new DownloadReceiver(),
@@ -268,15 +278,6 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                             }
                         }, Installer.getInstallIntentFilter(apk.getCanonicalUrl()));
                     }
-
-                    // NOTE: Instead of continually unregistering and re-registering the observer
-                    // (with a different URI), this could equally be done by only having one
-                    // registration in the constructor, and using the ContentObserver.onChange(boolean, URI)
-                    // method and inspecting the URI to see if it matches. However, this was only
-                    // implemented on API-16, so leaving like this for now.
-                    getActivity().getContentResolver().unregisterContentObserver(appObserver);
-                    getActivity().getContentResolver().registerContentObserver(
-                            AppProvider.getSpecificAppUri(this.app.packageName, this.app.repoId), true, appObserver);
                 }
                 resetView();
             }
@@ -301,11 +302,9 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             };
 
             private void resetView() {
-
                 if (app == null) {
                     return;
                 }
-
                 progressView.setVisibility(View.GONE);
                 progressView.setIndeterminate(true);
 
@@ -313,7 +312,9 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
                     nameView.setText(app.name);
                 }
 
-                app.loadWithGlide(iconView.getContext())
+                String path = app.getIconPath(getContext());
+                Glide.with(iconView.getContext())
+                        .load(App.getDownloadRequest(repo, path))
                         .apply(Utils.getAlwaysShowIconRequestOptions())
                         .into(iconView);
 
@@ -357,44 +358,30 @@ public class SwapSuccessView extends SwapView implements LoaderManager.LoaderCal
             }
         }
 
-        @Nullable
-        private LayoutInflater inflater;
-
-        AppListAdapter(@NonNull Context context, @Nullable Cursor c) {
-            super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
-        }
-
         @NonNull
-        private LayoutInflater getInflater(Context context) {
-            if (inflater == null) {
-                inflater = ContextCompat.getSystemService(context, LayoutInflater.class);
-            }
-            return inflater;
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.swap_app_list_item, parent, false);
+            return new ViewHolder(view);
         }
 
         @Override
-        public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            View view = getInflater(context).inflate(R.layout.swap_app_list_item, parent, false);
-
-            ViewHolder holder = new ViewHolder();
-
-            holder.progressView = (ProgressBar) view.findViewById(R.id.progress);
-            holder.nameView = (TextView) view.findViewById(R.id.name);
-            holder.iconView = (ImageView) view.findViewById(android.R.id.icon);
-            holder.btnInstall = (Button) view.findViewById(R.id.btn_install);
-            holder.statusInstalled = (TextView) view.findViewById(R.id.status_installed);
-            holder.statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
-
-            view.setTag(holder);
-            bindView(view, context, cursor);
-            return view;
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.setApp(apps.get(position));
         }
 
         @Override
-        public void bindView(final View view, final Context context, final Cursor cursor) {
-            ViewHolder holder = (ViewHolder) view.getTag();
-            final App app = new App(cursor);
-            holder.setApp(app);
+        public int getItemCount() {
+            return apps.size();
+        }
+
+        void setApps(List<App> apps, Map<String, Apk> apks) {
+            this.apps.clear();
+            this.apps.addAll(apps);
+            this.apks.clear();
+            this.apks.putAll(apks);
+            notifyDataSetChanged();
         }
     }
 

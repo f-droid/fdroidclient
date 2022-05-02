@@ -4,13 +4,12 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
+import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
@@ -103,30 +102,13 @@ public class LocalRepoService extends IntentService {
             final LocalRepoManager lrm = LocalRepoManager.get(context);
             broadcast(context, STATUS_PROGRESS, R.string.deleting_repo);
             lrm.deleteRepo();
-            for (String app : selectedApps) {
-                broadcast(context, STATUS_PROGRESS, context.getString(R.string.adding_apks_format, app));
-                lrm.addApp(context, app);
-            }
-            String urlString = Utils.getSharingUri(FDroidApp.repo).toString();
-            lrm.writeIndexPage(urlString);
-            broadcast(context, STATUS_PROGRESS, R.string.writing_index_jar);
-            lrm.writeIndexJar();
             broadcast(context, STATUS_PROGRESS, R.string.linking_apks);
-            lrm.copyApksToRepo();
-            broadcast(context, STATUS_PROGRESS, R.string.copying_icons);
-            // run the icon copy without progress, its not a blocker
-            new Thread() {
-                @Override
-                public void run() {
-                    android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_LOWEST);
-                    lrm.copyIconsToRepo();
-                }
-            }.start();
-
+            String urlString = Utils.getSharingUri(FDroidApp.repo).toString();
+            lrm.generateIndex(urlString, selectedApps);
             broadcast(context, STATUS_STARTED, null);
-        } catch (IOException | XmlPullParserException | LocalRepoKeyStore.InitException e) {
+        } catch (Exception e) {
             broadcast(context, STATUS_ERROR, e.getLocalizedMessage());
-            e.printStackTrace();
+            Log.e(TAG, "Error creating repo", e);
         }
     }
 

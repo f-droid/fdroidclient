@@ -1,11 +1,13 @@
 package org.fdroid.fdroid.nearby;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -19,6 +21,7 @@ import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 
 import java.lang.ref.WeakReference;
 
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
@@ -72,6 +75,11 @@ public class BluetoothManager {
      * so make sure {@link android.content.BroadcastReceiver}s handle duplicates.
      */
     public static void start(final Context context) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) !=
+                PackageManager.PERMISSION_GRANTED) {
+            // TODO we either throw away that Bluetooth code or properly request permissions here
+            return;
+        }
         BluetoothManager.context = new WeakReference<>(context);
         if (handlerThread != null && handlerThread.isAlive()) {
             sendBroadcast(STATUS_STARTED, null);

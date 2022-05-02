@@ -59,7 +59,6 @@ import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
@@ -68,6 +67,7 @@ import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
+import org.fdroid.index.IndexFormatVersion;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -105,7 +105,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static volatile SubnetUtils.SubnetInfo subnetInfo;
     public static volatile String ssid;
     public static volatile String bssid;
-    public static volatile Repo repo = new Repo();
+    public static volatile Repository repo;
 
     public static volatile List<Repository> repos;
 
@@ -230,7 +230,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         subnetInfo = UNSET_SUBNET_INFO;
         ssid = "";
         bssid = "";
-        repo = new Repo();
+        repo = null;
     }
 
     @Override
@@ -559,6 +559,11 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             if (r.getRepoId() == repoId) return r;
         }
         return null;
+    }
+
+    public static Repository createSwapRepo(String address, String certificate) {
+        long now = System.currentTimeMillis();
+        return new Repository(42L, address, now, IndexFormatVersion.ONE, certificate, 20001L, 42, now);
     }
 
     public static Context getInstance() {

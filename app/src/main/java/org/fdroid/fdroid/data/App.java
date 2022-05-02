@@ -264,7 +264,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      * URL to download the app's icon. (Set only from localized block, see also
      * {@link #iconFromApk} and {@link #getIconPath(Context)} (Context)}
      */
-    private String iconUrl;
+    public String iconUrl;
 
     public static String getIconName(String packageName, long versionCode) {
         return packageName + "_" + versionCode + ".png";
@@ -934,7 +934,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         return new DownloadRequest(path, mirrors, NetCipher.getProxy(), null, null);
     }
 
-    private String getIconPath(Context context) {
+    public String getIconPath(Context context) {
         String path;
         if (TextUtils.isEmpty(iconUrl)) {
             if (TextUtils.isEmpty(iconFromApk)) {

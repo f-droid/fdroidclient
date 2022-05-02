@@ -11,12 +11,13 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -202,27 +203,26 @@ public class WifiStateChangeService extends Worker {
                 } else {
                     scheme = "http";
                 }
-                Repo repo = new Repo();
-                repo.name = Preferences.get().getLocalRepoName();
-                repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
+                Context context = WifiStateChangeService.this.getApplicationContext();
+                String address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
+                // the fingerprint for the local repo's signing key
+                LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
+                Certificate localCert = localRepoKeyStore.getCertificate();
+                String cert = localCert == null ?
+                        null : Hasher.hex(localCert).toLowerCase(Locale.US);
+                Repository repo = FDroidApp.createSwapRepo(address, cert);
 
                 if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
                     return;
                 }
 
-                Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoManager lrm = LocalRepoManager.get(context);
                 lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.repo).toString());
 
                 if (isInterrupted()) { // can be canceled by a change via WifiStateChangeReceiver
                     return;
                 }
-
-                // the fingerprint for the local repo's signing key
-                LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
-                Certificate localCert = localRepoKeyStore.getCertificate();
-                repo.fingerprint = Utils.calcFingerprint(localCert);
 
                 FDroidApp.repo = repo;
 
