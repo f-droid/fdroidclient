@@ -462,9 +462,9 @@
     <string name="app_list__dismiss_installing_app">설치 취소됨</string>
     <string name="menu_select_for_wipe">선택해서 지우기</string>
     <string name="try_again">다시 시도</string>
-    <string name="panic_will_be_wiped">재설치되고 모든 데이터가 지워집니다</string>
-    <string name="panic_apps_to_uninstall">재설치되고 모든 데이터가 지워질 앱</string>
-    <string name="panic_add_apps_to_uninstall">재설치되고 모든 데이터가 지워질 앱을 추가하십시로</string>
+    <string name="panic_will_be_wiped">삭제되고 모든 데이터가 지워집니다</string>
+    <string name="panic_apps_to_uninstall">삭제되고 모든 데이터가 지워질 앱</string>
+    <string name="panic_add_apps_to_uninstall">삭제되고 모든 데이터가 지워질 앱을 추가하십시로</string>
     <string name="panic_reset_repos_title">레포지터리 리셋</string>
     <string name="panic_reset_repos_summary">레포지터리 설정 강제 초기화</string>
     <string name="swap_visible_hotspot">핫스팟을 통해 보임</string>
