@@ -414,9 +414,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
         }
 
-        // find and process provisions if any.
-        Provisioner.scanAndProcess(getApplicationContext());
-
         // if the underlying OS version has changed, then fully rebuild the database
         SharedPreferences atStartTime = getAtStartTimeSharedPreferences();
         if (Build.VERSION.SDK_INT != atStartTime.getInt("build-version", Build.VERSION.SDK_INT)) {
