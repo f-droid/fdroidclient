@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="installIncompatible">יישומון זו אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה?</string>
+    <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
     <string name="enable_nfc_send">הפעלת שליחה עם NFC…</string>
