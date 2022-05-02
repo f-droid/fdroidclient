@@ -1,1 +1,1 @@
-* Unidades USB OTG pode ser usadas como repositórios e espelhos no Por Perto
+* Unidades flash USB OTG podem ser usadas como repositórios e espelhos em Por Perto

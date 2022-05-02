@@ -1,4 +1,4 @@
-* Suporte dos temas embutidos do Android (@proletarius101)
+* Suporte aos temas embutidos do Android (@proletarius101)
 
 * Novas notificações: "Sem Internet" e "Sem dados ou Wi-Fi ativados"
 
