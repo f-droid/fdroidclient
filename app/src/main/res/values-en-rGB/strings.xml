@@ -509,4 +509,5 @@
     <string name="send_fdroid_metrics_report">Send %s metrics report</string>
     <string name="banner_no_data_or_wifi">No Data or Wi-Fi enabled</string>
     <string name="banner_no_internet">No Internet</string>
+    <string name="antinsfw">This app contains content that should not be publicised or visible everywhere</string>
 </resources>
