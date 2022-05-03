@@ -107,7 +107,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
-        disable "InvalidPackage"
+        checkReleaseBuilds false
+        abortOnError true
+
+        htmlReport true
+        xmlReport false
+        textReport true
+
+        lintConfig file("lint.xml")
     }
 }
 
