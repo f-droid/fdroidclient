@@ -108,7 +108,7 @@ public data class AppManifest(
         usesSdk = usesSdk,
         maxSdkVersion = maxSdkVersion,
         signer = signer,
-        nativeCode = nativecode ?: emptyList(),
+        nativecode = nativecode ?: emptyList(),
         features = features?.map { FeatureV2(it) } ?: emptyList(),
     )
 }
@@ -119,7 +119,7 @@ internal fun ManifestV2.toManifest() = AppManifest(
     usesSdk = usesSdk,
     maxSdkVersion = maxSdkVersion,
     signer = signer,
-    nativecode = nativeCode,
+    nativecode = nativecode,
     features = features.map { it.name },
 )
 

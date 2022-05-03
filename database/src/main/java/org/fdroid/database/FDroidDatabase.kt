@@ -16,7 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @Database(
-    version = 3, // TODO set version to 1 before release and wipe old schemas
+    version = 4, // TODO set version to 1 before release and wipe old schemas
     entities = [
         // repo
         CoreRepository::class,
@@ -109,7 +109,7 @@ public object FDroidDatabaseHolder {
                 context.applicationContext,
                 FDroidDatabaseInt::class.java,
                 name,
-            )
+            ).fallbackToDestructiveMigration() // TODO remove before release
             if (fixture != null) builder.addCallback(FixtureCallback(fixture))
             val instance = builder.build()
             INSTANCE = instance

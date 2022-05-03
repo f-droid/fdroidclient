@@ -5,14 +5,11 @@ import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.room.ColumnInfo
 import androidx.room.DatabaseView
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
 import androidx.room.Relation
 import org.fdroid.database.Converters.fromStringToMapOfLocalizedTextV2
-import org.fdroid.index.v2.Author
-import org.fdroid.index.v2.Donation
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
@@ -47,8 +44,17 @@ public data class AppMetadata(
     val translation: String? = null,
     val preferredSigner: String? = null, // TODO use platformSig if an APK matches it
     val video: LocalizedTextV2? = null,
-    @Embedded(prefix = "author_") val author: Author? = Author(),
-    @Embedded(prefix = "donation_") val donation: Donation? = Donation(),
+    val authorName: String? = null,
+    val authorEmail: String? = null,
+    val authorWebSite: String? = null,
+    val authorPhone: String? = null,
+    val donate: List<String>? = null,
+    val liberapayID: String? = null,
+    val liberapay: String? = null,
+    val openCollective: String? = null,
+    val bitcoin: String? = null,
+    val litecoin: String? = null,
+    val flattrID: String? = null,
     val categories: List<String>? = null,
     /**
      * Whether the app is compatible with the current device.
@@ -82,8 +88,17 @@ internal fun MetadataV2.toAppMetadata(
     translation = translation,
     preferredSigner = preferredSigner,
     video = video,
-    author = if (author?.isNull == true) null else author,
-    donation = if (donation?.isNull == true) null else donation,
+    authorName = authorName,
+    authorEmail = authorEmail,
+    authorWebSite = authorWebSite,
+    authorPhone = authorPhone,
+    donate = donate,
+    liberapayID = liberapayID,
+    liberapay = liberapay,
+    openCollective = openCollective,
+    bitcoin = bitcoin,
+    litecoin = litecoin,
+    flattrID = flattrID,
     categories = categories,
     isCompatible = isCompatible,
 )
