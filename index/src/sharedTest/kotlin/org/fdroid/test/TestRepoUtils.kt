@@ -38,8 +38,8 @@ public object TestRepoUtils {
         }
 
     public fun getRandomRepo(): RepoV2 = RepoV2(
-        name = getRandomString(),
-        icon = getRandomFileV2(),
+        name = getRandomLocalizedTextV2(),
+        icon = getRandomLocalizedFileV2(),
         address = getRandomString(),
         description = getRandomLocalizedTextV2(),
         mirrors = getRandomList { getRandomMirror() },

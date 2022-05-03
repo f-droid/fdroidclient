@@ -74,7 +74,7 @@ public data class PackageV1(
             signer = signer?.let { SignatureV2(listOf(it)) },
             usesPermission = usesPermission.map { PermissionV2(it.name, it.maxSdk) },
             usesPermissionSdk23 = usesPermission23.map { PermissionV2(it.name, it.maxSdk) },
-            nativeCode = nativeCode ?: emptyList(),
+            nativecode = nativeCode ?: emptyList(),
             features = features?.map { FeatureV2(it) } ?: emptyList(),
         ),
         releaseChannels = releaseChannels,

@@ -1,6 +1,8 @@
 package org.fdroid.test
 
 import org.fdroid.index.v2.IndexV2
+import org.fdroid.index.v2.MetadataV2
+import org.fdroid.index.v2.Screenshots
 import kotlin.random.Random
 
 public object TestUtils {
@@ -38,23 +40,36 @@ public object TestUtils {
     public fun IndexV2.sorted(): IndexV2 = copy(
         packages = packages.toSortedMap().mapValues { entry ->
             entry.value.copy(
-                metadata = entry.value.metadata.copy(
-                    name = entry.value.metadata.name?.toSortedMap(),
-                    summary = entry.value.metadata.summary?.toSortedMap(),
-                    description = entry.value.metadata.description?.toSortedMap(),
-                    icon = entry.value.metadata.icon?.toSortedMap(),
-                ),
+                metadata = entry.value.metadata.sort(),
                 versions = entry.value.versions.mapValues {
                     val pv = it.value
                     pv.copy(
                         manifest = pv.manifest.copy(
                             usesPermission = pv.manifest.usesPermission.sortedBy { p -> p.name },
-                            usesPermissionSdk23 = pv.manifest.usesPermissionSdk23.sortedBy { p -> p.name }
+                            usesPermissionSdk23 = pv.manifest.usesPermissionSdk23.sortedBy { p ->
+                                p.name
+                            }
                         )
                     )
                 }
             )
         }
+    )
+
+    public fun MetadataV2.sort(): MetadataV2 = copy(
+        name = name?.toSortedMap(),
+        summary = summary?.toSortedMap(),
+        description = description?.toSortedMap(),
+        icon = icon?.toSortedMap(),
+        screenshots = screenshots?.sort(),
+    )
+
+    public fun Screenshots.sort(): Screenshots = copy(
+        phone = phone?.toSortedMap(),
+        sevenInch = sevenInch?.toSortedMap(),
+        tenInch = tenInch?.toSortedMap(),
+        wear = wear?.toSortedMap(),
+        tv = tv?.toSortedMap(),
     )
 
 }

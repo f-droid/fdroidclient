@@ -10,7 +10,7 @@ import org.fdroid.index.v2.RepoV2
 @Deprecated("Use IndexV2 instead")
 public interface IndexV1StreamReceiver {
 
-    public fun receive(repo: RepoV2, version: Int, certificate: String?)
+    public fun receive(repo: RepoV2, version: Long, certificate: String?)
     public fun receive(packageId: String, m: MetadataV2)
     public fun receive(packageId: String, v: Map<String, PackageVersionV2>)
 

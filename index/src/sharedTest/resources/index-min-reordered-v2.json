@@ -23,11 +23,15 @@
     }
   },
   "repo": {
-    "name": "MinV1",
     "icon": {
-      "name": "/icons/min-v1.png",
-      "sha256": "74758e480ae76297c8947f107db9ea03d2933c9d5c110d02046977cf78d43def",
-      "size": 0
+      "en-US": {
+        "name": "/icons/min-v1.png",
+        "sha256": "74758e480ae76297c8947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+        "size": 0
+      }
+    },
+    "name": {
+      "en-US": "MinV1"
     },
     "address": "https://min-v1.org",
     "description": {

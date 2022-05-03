@@ -59,7 +59,7 @@ internal class IndexV1StreamProcessorTest {
         var repo: RepoV2? = null
         val packages = HashMap<String, PackageV2>()
 
-        override fun receive(repo: RepoV2, version: Int, certificate: String?) {
+        override fun receive(repo: RepoV2, version: Long, certificate: String?) {
             this.repo = repo
         }
 

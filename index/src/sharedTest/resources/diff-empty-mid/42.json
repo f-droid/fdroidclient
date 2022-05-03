@@ -49,8 +49,7 @@
         }
       },
       "System": {
-        "name": {
-        }
+        "name": {}
       }
     }
   },
@@ -87,11 +86,8 @@
       },
       "versions": {
         "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf": {
-          "added": 0,
           "file": {
-            "name": "/org.fdroid.min1_42.apk",
-            "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
-            "size": 1337
+            "name": "/org.fdroid.min1_42.apk"
           },
           "src": {
             "name": "/org.fdroid.min1_42.zip",
@@ -412,8 +408,7 @@
             ]
           },
           "antiFeatures": {
-            "FakeAntiFeature": {
-            }
+            "FakeAntiFeature": {}
           }
         },
         "c062a9642fde08aacabbfa4cab1ab5773c83f4e6b81551ffd92027d2b20f37d3": {

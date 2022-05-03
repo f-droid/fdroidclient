@@ -6,9 +6,25 @@ import kotlinx.serialization.Serializable
 public data class EntryV2(
     val timestamp: Long,
     val version: Long,
-    val maxAge: Int,
-    val index: FileV2,
-    val diffs: Map<String, FileV2>,
+    val maxAge: Int? = null,
+    val index: EntryFileV2,
+    val diffs: Map<String, EntryFileV2> = emptyMap(),
+) {
+    /**
+     * @return the diff for the given [timestamp] or null if none exists
+     * in which case the full [index] should be used.
+     */
+    public fun getDiff(timestamp: Long): EntryFileV2? {
+        return diffs[timestamp.toString()]
+    }
+}
+
+@Serializable
+public data class EntryFileV2(
+    val name: String,
+    val sha256: String,
+    val size: Long,
+    val numPackages: Int,
 )
 
 @Serializable
@@ -26,8 +42,8 @@ public data class IndexV2(
 
 @Serializable
 public data class RepoV2(
-    val name: String,
-    val icon: FileV2? = null,
+    val name: LocalizedTextV2 = emptyMap(),
+    val icon: LocalizedFileV2 = emptyMap(),
     val address: String,
     val webBaseUrl: String? = null,
     val description: LocalizedTextV2 = emptyMap(),

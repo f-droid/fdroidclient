@@ -1,6 +1,5 @@
 package org.fdroid.index.v2
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -86,9 +85,8 @@ public data class ManifestV2(
     val signer: SignatureV2? = null, // TODO really null?
     val usesPermission: List<PermissionV2> = emptyList(),
     val usesPermissionSdk23: List<PermissionV2> = emptyList(),
-    @SerialName("nativecode")
-    val nativeCode: List<String> = emptyList(),
-    val features: List<FeatureV2> = emptyList(), // TODO can probably be a List<String> again
+    val nativecode: List<String> = emptyList(),
+    val features: List<FeatureV2> = emptyList(),
 )
 
 @Serializable

@@ -91,7 +91,7 @@ public class IndexV1StreamProcessor(
                 categories = emptyMap(),
                 releaseChannels = emptyMap()
             )
-            indexStreamReceiver.receive(repoV2, repo.version, certificate)
+            indexStreamReceiver.receive(repoV2, repo.version.toLong(), certificate)
         }
 
         private fun deserializeRequests(decoder: JsonDecoder, index: Int) {

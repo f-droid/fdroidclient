@@ -36,8 +36,8 @@ public data class RepoV1(
         categories: Map<String, CategoryV2>,
         releaseChannels: Map<String, ReleaseChannelV2>,
     ): RepoV2 = RepoV2(
-        name = name,
-        icon = FileV2("/icons/$icon"),
+        name = mapOf(locale to name),
+        icon = mapOf(locale to FileV2("/icons/$icon")),
         address = address,
         webBaseUrl = null,
         description = mapOf(locale to description),

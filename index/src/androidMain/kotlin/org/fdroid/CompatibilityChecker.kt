@@ -37,9 +37,9 @@ public class CompatibilityCheckerImpl(
     }
 
     private fun isNativeCodeCompatible(manifest: ManifestV2): Boolean {
-        if (manifest.nativeCode.isNullOrEmpty()) return true
+        if (manifest.nativecode.isNullOrEmpty()) return true
         SUPPORTED_ABIS.forEach { supportedAbi ->
-            if (manifest.nativeCode.contains(supportedAbi)) return true
+            if (manifest.nativecode.contains(supportedAbi)) return true
         }
         return false
     }

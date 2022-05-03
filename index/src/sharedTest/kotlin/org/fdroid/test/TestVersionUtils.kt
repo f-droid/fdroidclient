@@ -46,7 +46,7 @@ internal object TestVersionUtils {
         usesPermissionSdk23 = getRandomList {
             PermissionV2(getRandomString(), Random.nextInt().orNull())
         },
-        nativeCode = getRandomList(Random.nextInt(0, 4)) { getRandomString() },
+        nativecode = getRandomList(Random.nextInt(0, 4)) { getRandomString() },
         features = getRandomList { FeatureV2(getRandomString()) },
     )
 

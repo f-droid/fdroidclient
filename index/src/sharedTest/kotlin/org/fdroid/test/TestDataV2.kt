@@ -27,8 +27,9 @@ internal fun IndexV2.v1compat() = copy(
 )
 
 internal fun RepoV2.v1compat() = copy(
+    name = name.filterKeys { it == LOCALE },
     description = description.filterKeys { it == LOCALE },
-    icon = icon?.v1compat(),
+    icon = icon.filterKeys { it == LOCALE }.mapValues { it.value.v1compat() },
     webBaseUrl = null,
     mirrors = mirrors.map { MirrorV2(it.url) },
     categories = categories.mapValues { CategoryV2(name = mapOf(LOCALE to it.key)) },
@@ -88,11 +89,13 @@ internal object TestDataEmptyV2 {
     val repo = RepoV2(
         timestamp = 23,
         address = "https://empty-v1.org",
-        name = "EmptyV1",
-        icon = FileV2(
-            name = "/icons/empty-v1.png",
-            sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
-            size = 32492,
+        name = mapOf(LOCALE to "EmptyV1"),
+        icon = mapOf(
+            LOCALE to FileV2(
+                name = "/icons/empty-v1.png",
+                sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+                size = 32492,
+            ),
         ),
         webBaseUrl = null,
         description = mapOf(LOCALE to "This is a repo with empty data."),
@@ -111,11 +114,14 @@ internal object TestDataMinV2 {
 
     val repo = RepoV2(
         timestamp = 42,
-        name = "MinV1",
-        icon = FileV2(
-            name = "/icons/min-v1.png",
-            sha256 = "74758e480ae76297c8947f107db9ea03d2933c9d5c110d02046977cf78d43def",
-            size = 0,
+        name = mapOf(LOCALE to "MinV1"),
+        icon = mapOf(
+            LOCALE to
+                FileV2(
+                    name = "/icons/min-v1.png",
+                    sha256 = "74758e480ae76297c8947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                    size = 0,
+                ),
         ),
         address = "https://min-v1.org",
         description = mapOf(LOCALE to "This is a repo with minimal data."),
@@ -156,11 +162,21 @@ internal object TestDataMidV2 {
 
     val repo = RepoV2(
         timestamp = 1337,
-        name = "MidV1",
-        icon = FileV2(
-            name = "/icons/mid-v1.png",
-            sha256 = "74758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
-            size = 234232352235,
+        name = mapOf(
+            LOCALE to "MidV1",
+            "de" to "MitteV1",
+        ),
+        icon = mapOf(
+            LOCALE to FileV2(
+                name = "/icons/mid-v1.png",
+                sha256 = "74758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                size = 234232352235,
+            ),
+            "de" to FileV2(
+                name = "/icons/mitte-v1.png",
+                sha256 = "34758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                size = 132352235,
+            ),
         ),
         address = "https://mid-v1.org",
         description = mapOf(
@@ -208,7 +224,7 @@ internal object TestDataMidV2 {
             versionCode = 1,
             versionName = "1",
             usesPermission = listOf(PermissionV2("perm")),
-            nativeCode = listOf("x86"),
+            nativecode = listOf("x86"),
             features = listOf(FeatureV2("feature")),
         ),
         antiFeatures = mapOf("AntiFeature" to mapOf(LOCALE to "reason")),
@@ -374,7 +390,7 @@ internal object TestDataMidV2 {
             usesPermissionSdk23 = listOf(
                 PermissionV2(name = "android.permission.ACCESS_COARSE_LOCATION")
             ),
-            nativeCode = listOf("fakeNativeCode"),
+            nativecode = listOf("fakeNativeCode"),
             features = listOf(FeatureV2("fake feature")),
         ),
         src = FileV2(
@@ -687,11 +703,18 @@ internal object TestDataMaxV2 {
 
     val repo = RepoV2(
         timestamp = Long.MAX_VALUE,
-        name = "MaxV1",
-        icon = FileV2(
-            name = "/icons/max-v1.png",
-            sha256 = "14758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
-            size = Long.MAX_VALUE,
+        name = mapOf(LOCALE to "MaxV1", "de_DE" to "MaximumV1"),
+        icon = mapOf(
+            LOCALE to FileV2(
+                name = "/icons/max-v1.png",
+                sha256 = "14758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                size = Long.MAX_VALUE,
+            ),
+            "de_DE" to FileV2(
+                name = "/icons/maximal-v1.png",
+                sha256 = "12758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                size = Long.MAX_VALUE - 1,
+            ),
         ),
         address = "https://max-v1.org",
         webBaseUrl = "https://www.max-v1.org",
@@ -798,7 +821,7 @@ internal object TestDataMaxV2 {
         manifest = TestDataMidV2.version2_2.manifest.copy(
             usesPermission = emptyList(),
             usesPermissionSdk23 = emptyList(),
-            nativeCode = emptyList(),
+            nativecode = emptyList(),
             features = emptyList(),
         ),
         whatsNew = mapOf(
@@ -1007,7 +1030,7 @@ internal object TestDataMaxV2 {
                     maxSdkVersion = Int.MAX_VALUE,
                 ),
             ),
-            nativeCode = listOf("x86", "x86_64"),
+            nativecode = listOf("x86", "x86_64"),
             features = listOf(FeatureV2("feature"), FeatureV2("feature2")),
         ),
         releaseChannels = listOf("Beta", "Alpha"),

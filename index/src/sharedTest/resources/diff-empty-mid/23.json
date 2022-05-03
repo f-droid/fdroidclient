@@ -49,8 +49,7 @@
         }
       },
       "System": {
-        "name": {
-        }
+        "name": {}
       }
     }
   },
@@ -412,8 +411,7 @@
             ]
           },
           "antiFeatures": {
-            "FakeAntiFeature": {
-            }
+            "FakeAntiFeature": {}
           }
         },
         "c062a9642fde08aacabbfa4cab1ab5773c83f4e6b81551ffd92027d2b20f37d3": {

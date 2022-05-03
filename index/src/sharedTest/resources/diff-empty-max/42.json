@@ -1,5 +1,4 @@
 {
-  "unknownKey": "should get ignored",
   "repo": {
     "name": {
       "en-US": "MaxV1",
@@ -36,16 +35,13 @@
     "timestamp": 9223372036854775807,
     "antiFeatures": {
       "VeryBad": {
-        "name": {
-        }
+        "name": {}
       },
       "Dont,Show,This": {
-        "name": {
-        }
+        "name": {}
       },
       "NotNice": {
-        "name": {
-        }
+        "name": {}
       },
       "AntiFeature": {
         "icon": {
@@ -115,12 +111,10 @@
         }
       },
       "NoMoreSystem": {
-        "name": {
-        }
+        "name": {}
       },
       "OneMore": {
-        "name": {
-        }
+        "name": {}
       }
     },
     "releaseChannels": {
@@ -175,11 +169,8 @@
       },
       "versions": {
         "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf": {
-          "added": 0,
           "file": {
-            "name": "/org.fdroid.min1_42.apk",
-            "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
-            "size": 1337
+            "name": "/org.fdroid.min1_42.apk"
           },
           "src": {
             "name": "/org.fdroid.min1_42.zip",
@@ -488,8 +479,7 @@
             ]
           },
           "antiFeatures": {
-            "AddOne": {
-            }
+            "AddOne": {}
           }
         },
         "7ebfd5eb76f9ec95ba955e549260fe930dc38fb99ed3532f92c93b879aca5610": {
@@ -831,16 +821,11 @@
             "Alpha"
           ],
           "antiFeatures": {
-            "AntiFeature": {
-            },
-            "NonFreeNet": {
-            },
-            "NotNice": {
-            },
-            "VeryBad": {
-            },
-            "Dont,Show,This": {
-            },
+            "AntiFeature": {},
+            "NonFreeNet": {},
+            "NotNice": {},
+            "VeryBad": {},
+            "Dont,Show,This": {},
             "anti-feature": {
               "en-US": "bla",
               "de": "blubb"
