@@ -153,9 +153,7 @@
         "categories": [
           "Cat1"
         ],
-        "author": {
-          "name": "App1 author"
-        },
+        "authorName": "App1 author",
         "icon": {
           "en-US": {
             "name": "/icons/icon-min1.png",
@@ -230,12 +228,12 @@
           "NoMoreSystem",
           "OneMore"
         ],
-        "donation": {
-          "url": "https://f-droid.org/donate",
-          "liberapayID": "27859",
-          "openCollective": "F-Droid-Euro",
-          "flattrID": "343053"
-        },
+        "donate": [
+          "https://f-droid.org/donate"
+        ],
+        "liberapayID": "27859",
+        "openCollective": "F-Droid-Euro",
+        "flattrID": "343053",
         "icon": {
           "en-US": {
             "name": "/org.fdroid.fdroid/en-US/new icon",
@@ -600,21 +598,19 @@
           "Cat2",
           "Cat3"
         ],
-        "author": {
-          "name": "App3 author",
-          "email": "email",
-          "website": "website",
-          "phone": "phone"
-        },
-        "donation": {
-          "url": "donate",
-          "liberapayID": "liberapayID",
-          "liberapay": "liberapay",
-          "openCollective": "openCollective",
-          "bitcoin": "bitcoin",
-          "litecoin": "litecoin",
-          "flattrID": "flattrID"
-        },
+        "authorName": "App3 author",
+        "authorEmail": "email",
+        "authorWebSite": "website",
+        "authorPhone": "phone",
+        "donate": [
+          "donate"
+        ],
+        "liberapayID": "liberapayID",
+        "liberapay": "liberapay",
+        "openCollective": "openCollective",
+        "bitcoin": "bitcoin",
+        "litecoin": "litecoin",
+        "flattrID": "flattrID",
         "icon": {
           "en": {
             "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",

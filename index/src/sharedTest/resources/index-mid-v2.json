@@ -49,7 +49,7 @@
       "metadata": {
         "name": {
           "en-US": "App1",
-          "de" : "app 1 name"
+          "de": "app 1 name"
         },
         "summary": {
           "en-US": "App1 summary",
@@ -66,9 +66,7 @@
         "categories": [
           "Cat1"
         ],
-        "author": {
-          "name": "App1 author"
-        },
+        "authorName": "App1 author",
         "icon": {
           "en-US": {
             "name": "/icons/icon-min1.png",
@@ -165,12 +163,12 @@
         "categories": [
           "System"
         ],
-        "donation": {
-          "url": "https://f-droid.org/donate",
-          "liberapayID": "27859",
-          "openCollective": "F-Droid-Euro",
-          "flattrID": "343053"
-        },
+        "donate": [
+          "https://f-droid.org/donate"
+        ],
+        "liberapayID": "27859",
+        "openCollective": "F-Droid-Euro",
+        "flattrID": "343053",
         "icon": {
           "en-US": {
             "name": "/icons/org.fdroid.fdroid.1014050.png",

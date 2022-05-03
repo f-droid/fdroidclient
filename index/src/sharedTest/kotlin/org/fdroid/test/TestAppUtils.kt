@@ -1,7 +1,5 @@
 package org.fdroid.test
 
-import org.fdroid.index.v2.Author
-import org.fdroid.index.v2.Donation
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.MetadataV2
@@ -31,8 +29,17 @@ public object TestAppUtils {
         translation = getRandomString().orNull(),
         preferredSigner = getRandomString().orNull(),
         video = getRandomLocalizedTextV2().orNull(),
-        author = getRandomAuthor().orNull(),
-        donation = getRandomDonation().orNull(),
+        authorName = getRandomString().orNull(),
+        authorEmail = getRandomString().orNull(),
+        authorWebSite = getRandomString().orNull(),
+        authorPhone = getRandomString().orNull(),
+        donate = getRandomList(Random.nextInt(0, 3)) { getRandomString() },
+        liberapay = getRandomString().orNull(),
+        liberapayID = getRandomString().orNull(),
+        openCollective = getRandomString().orNull(),
+        bitcoin = getRandomString().orNull(),
+        litecoin = getRandomString().orNull(),
+        flattrID = getRandomString().orNull(),
         icon = getRandomLocalizedFileV2().orNull(),
         featureGraphic = getRandomLocalizedFileV2().orNull(),
         promoGraphic = getRandomLocalizedFileV2().orNull(),
@@ -40,23 +47,6 @@ public object TestAppUtils {
         categories = getRandomList { getRandomString() }.orNull()
             ?: emptyList(),
         screenshots = getRandomScreenshots().orNull(),
-    )
-
-    public fun getRandomAuthor(): Author = Author(
-        name = getRandomString().orNull(),
-        email = getRandomString().orNull(),
-        website = getRandomString().orNull(),
-        phone = getRandomString().orNull(),
-    )
-
-    public fun getRandomDonation(): Donation = Donation(
-        url = getRandomString().orNull(),
-        liberapay = getRandomString().orNull(),
-        liberapayID = getRandomString().orNull(),
-        openCollective = getRandomString().orNull(),
-        bitcoin = getRandomString().orNull(),
-        litecoin = getRandomString().orNull(),
-        flattrID = getRandomString().orNull(),
     )
 
     public fun getRandomScreenshots(): Screenshots? = Screenshots(

@@ -3,9 +3,7 @@ package org.fdroid.test
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.getV1ReleaseChannels
 import org.fdroid.index.v2.AntiFeatureV2
-import org.fdroid.index.v2.Author
 import org.fdroid.index.v2.CategoryV2
-import org.fdroid.index.v2.Donation
 import org.fdroid.index.v2.FeatureV2
 import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.FileV2
@@ -263,7 +261,7 @@ internal object TestDataMidV2 {
                 LOCALE to "App1",
                 "de" to "app 1 name",
             ),
-            author = Author(name = "App1 author"),
+            authorName = "App1 author",
             license = "GPLv3",
             webSite = "http://min1.test.org",
             icon = mapOf(
@@ -574,12 +572,10 @@ internal object TestDataMidV2 {
             translation = "https://hosted.weblate.org/projects/f-droid/f-droid",
             issueTracker = "https://gitlab.com/fdroid/fdroidclient/issues",
             sourceCode = "https://gitlab.com/fdroid/fdroidclient",
-            donation = Donation(
-                url = "https://f-droid.org/donate",
-                liberapayID = "27859",
-                openCollective = "F-Droid-Euro",
-                flattrID = "343053",
-            ),
+            donate = listOf("https://f-droid.org/donate"),
+            liberapayID = "27859",
+            openCollective = "F-Droid-Euro",
+            flattrID = "343053",
             preferredSigner = "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
             license = "GPL-3.0-or-later",
             webSite = "https://f-droid.org",
@@ -1053,21 +1049,17 @@ internal object TestDataMaxV2 {
             translation = "translation3",
             preferredSigner = "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
             categories = listOf("Cat1", "Cat2", "Cat3"),
-            author = Author(
-                name = "App3 author",
-                email = "email",
-                website = "website",
-                phone = "phone",
-            ),
-            donation = Donation(
-                url = "donate",
-                liberapayID = "liberapayID",
-                liberapay = "liberapay",
-                openCollective = "openCollective",
-                bitcoin = "bitcoin",
-                litecoin = "litecoin",
-                flattrID = "flattrID",
-            ),
+            authorName = "App3 author",
+            authorEmail = "email",
+            authorWebSite = "website",
+            authorPhone = "phone",
+            donate = listOf("donate"),
+            liberapayID = "liberapayID",
+            liberapay = "liberapay",
+            openCollective = "openCollective",
+            bitcoin = "bitcoin",
+            litecoin = "litecoin",
+            flattrID = "flattrID",
             icon = mapOf(
                 "en" to FileV2(
                     name = "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahl" +

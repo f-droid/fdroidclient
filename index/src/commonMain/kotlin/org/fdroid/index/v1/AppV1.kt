@@ -3,8 +3,6 @@ package org.fdroid.index.v1
 import kotlinx.serialization.Serializable
 import org.fdroid.index.DEFAULT_LOCALE
 import org.fdroid.index.mapValuesNotNull
-import org.fdroid.index.v2.Author
-import org.fdroid.index.v2.Donation
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
@@ -63,21 +61,17 @@ public data class AppV1(
         translation = translation,
         preferredSigner = preferredSigner,
         categories = categories,
-        author = Author(
-            name = authorName,
-            email = authorEmail,
-            website = authorWebSite,
-            phone = authorPhone,
-        ).takeIf { !it.isNull },
-        donation = Donation(
-            url = donate,
-            liberapayID = liberapayID,
-            liberapay = liberapay,
-            openCollective = openCollective,
-            bitcoin = bitcoin,
-            litecoin = litecoin,
-            flattrID = flattrID,
-        ).takeIf { !it.isNull },
+        authorName = authorName,
+        authorEmail = authorEmail,
+        authorWebSite = authorWebSite,
+        authorPhone = authorPhone,
+        donate = if (donate == null) emptyList() else listOf(donate),
+        liberapayID = liberapayID,
+        liberapay = liberapay,
+        openCollective = openCollective,
+        bitcoin = bitcoin,
+        litecoin = litecoin,
+        flattrID = flattrID,
         icon = localized.toLocalizedFileV2 { it.icon }
             ?: icon?.let { mapOf(locale to FileV2("/icons/$it")) },
         featureGraphic = localized.toLocalizedFileV2 { it.featureGraphic },

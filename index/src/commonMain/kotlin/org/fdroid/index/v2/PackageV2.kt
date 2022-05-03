@@ -24,8 +24,17 @@ public data class MetadataV2(
     val translation: String? = null,
     val preferredSigner: String? = null,
     val categories: List<String> = emptyList(),
-    val author: Author? = null,
-    val donation: Donation? = null,
+    val authorName: String? = null,
+    val authorEmail: String? = null,
+    val authorWebSite: String? = null,
+    val authorPhone: String? = null,
+    val donate: List<String> = emptyList(),
+    val liberapayID: String? = null,
+    val liberapay: String? = null,
+    val openCollective: String? = null,
+    val bitcoin: String? = null,
+    val litecoin: String? = null,
+    val flattrID: String? = null,
     val icon: LocalizedFileV2? = null,
     val featureGraphic: LocalizedFileV2? = null,
     val promoGraphic: LocalizedFileV2? = null,
@@ -33,35 +42,6 @@ public data class MetadataV2(
     val video: LocalizedTextV2? = null,
     val screenshots: Screenshots? = null,
 )
-
-@Serializable
-public data class Author(
-    val name: String? = null,
-    val email: String? = null,
-    val website: String? = null,
-    val phone: String? = null,
-) {
-    internal constructor() : this(null, null, null, null)
-
-    val isNull: Boolean get() = (name == null && email == null && website == null && phone == null)
-}
-
-@Serializable
-public data class Donation(
-    val url: String? = null,
-    val liberapayID: String? = null,
-    val liberapay: String? = null,
-    val openCollective: String? = null,
-    val bitcoin: String? = null,
-    val litecoin: String? = null,
-    val flattrID: String? = null,
-) {
-    internal constructor() : this(null, null, null, null, null, null, null)
-
-    val isNull: Boolean
-        get() = url == null && liberapayID == null && liberapay == null &&
-            openCollective == null && bitcoin == null && litecoin == null && flattrID == null
-}
 
 @Serializable
 public data class Screenshots(
