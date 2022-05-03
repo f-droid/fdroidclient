@@ -165,7 +165,7 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.3'
     implementation 'info.guardianproject.netcipher:netcipher:2.2.0-alpha'
     implementation 'info.guardianproject.panic:panic:1.0'
-    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-io:commons-io:2.7'
     implementation 'commons-net:commons-net:3.6'
     implementation 'ch.acra:acra:4.9.1'
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
