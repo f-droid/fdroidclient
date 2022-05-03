@@ -1,0 +1,7 @@
+* Evitar que s'utilitzi HTTP ETag com a galeta de seguiment
+
+* Disseny de captures de pantalla millorat
+
+* Netejar correctament els fitxers temporals i a la memòria cau
+
+* Correccions del mode fosc

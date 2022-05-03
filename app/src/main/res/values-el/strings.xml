@@ -24,7 +24,7 @@
     <string name="no">Όχι</string>
     <string name="repo_add_title">Προσθήκη νέου αποθετηρίου</string>
     <string name="repo_add_add">Προσθήκη</string>
-    <string name="cancel">Ακύρωση</string>
+    <string name="cancel">Άκυρο</string>
     <string name="enable">Ενεργοποίηση</string>
     <string name="add_key">Προσθήκη κλειδιού</string>
     <string name="overwrite">Αντικατάσταση</string>
@@ -541,4 +541,5 @@
     <string name="antiupstreamnonfree">Upstream Μη Δωρεάν</string>
     <string name="share_apk_error">Δεν ήταν δυνατή η κοινή χρήση του αρχείου εφαρμογής</string>
     <string name="antidisabledalgorithm">Υπογραφή με χρήση μη ασφαλούς αλγόριθμου</string>
+    <string name="antinsfw">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>
 </resources>

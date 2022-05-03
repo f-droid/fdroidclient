@@ -1,0 +1,7 @@
+* Interruptors afegits a RepoDetails per apagar qualsevol o totes les rèpliques (#1696)
+
+* Elecció de mirall aleatori per a cada descàrrega de paquet / APK
+
+* Totes les descàrregues d'APK emmagatzemades a la memòria cau per-repo, no per rèplica
+
+* Manegeu els ETags Apache i NGINX en comprovar si l'índex és actual (#1708)

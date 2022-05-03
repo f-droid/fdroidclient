@@ -1,7 +1,7 @@
-* major overhaul of swap UI, to prepare for rewriting guts
-* show "undo" after swiping away items from the Updates tab (thanks @Hocuri!)
-* fix issues with "Latest" display caused by mishandling time zones #1757
-* ignore all unimportant crashes in background services
-* overhauled nearby swap using the device's hotspot AP
-* add new panic responses: app uninstalls and reset repos to default
-* USB OTG flash drives can be used as nearby repos and mirrors
+* Remodelação geral da IU de troca, prepararada para se reescrever
+* Mostrar "anular" depois de remover itens do separador «Atualização» (obrigado @Hocuri!)
+* Corrigido problemas com a exibição de "Último" causado pelo mau tratamento das zonas horárias #1757
+* Ignorar todos os erros sem importância nos serviços em segundo
+* Remodelado swap nas proximidades usando o AP do PA
+* Adicionar novas respostas de pânico: desinstala app e redefine repositórios para predefinição
+* Unidades flash USB OTG

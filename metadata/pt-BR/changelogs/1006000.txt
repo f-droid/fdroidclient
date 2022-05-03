@@ -1,12 +1,12 @@
-* Handle implied READ_EXTERNAL_STORAGE permissions, which trigger a
-  permissions prompt on installs with Privileged Extension (#1702)
+* Lida com permissões READ_EXTERNAL_STORAGE implícitas, que acionam um
+  pedido de permissões em instalações com extensão privilegiada (#1702)
 
-* Index data sanetized to reduce possible threats from the server
+* Dados de índice sanados para reduzir possíveis ameaças do servidor
 
-* "Read Timeout" triggers mirror use when reads are slow
+* "Read Timeout" aciona o uso do espelho
 
-* Fix missing icons for those not using Wi-Fi (#1592)
+* Corrige ícones ausentes quando não se usa Wi-Fi (#1592)
 
-* Use separate titles for Updates pref and Updates tab, to help translation
+* Usa títulos separados para preferências e guia de atualizações, para ajudar na tradução
 
-* UI fixes from @ConnyDuck (#1636, #1618)
+* Correções na interface por @ConnyDuck (#1636, #1618)

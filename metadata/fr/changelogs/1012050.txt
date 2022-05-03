@@ -1,0 +1,13 @@
+*Description de la langue de l'application respecte complètement la liste dans les paramètres de langue d'Android
+
+*Le dernier onglet montre les applications basé sur les paramètres de langue, trié par plus récent (@TheLastProject @IzzySoft)
+
+*Les résultats de recherche sont bien amélioré (@Tvax @gcbrown76)
+
+*Le nettoyage du cache est plus fiable
+
+*Le programme du nettoyage du cache est efficace(@Isira-Seneviratne)
+
+*Révision de l'adresse internet d'analyze du dépôt … (@projectgus)
+
+*Métriques

@@ -449,7 +449,7 @@
     <string name="swap_toast_invalid_url">URL inválido para trocas: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Ponto de acesso Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
-    <string name="send_history_csv">Histórico de instalações de %s em ficheiro CSV</string>
+    <string name="send_history_csv">%s histórico de instalações como ficheiro CSV</string>
     <string name="send_version_and_uuid_summary">Inclui a versão da aplicação e uma ID aleatória única ao descarregar. Surte efeito após reiniciar a aplicação.</string>
     <string name="send_installed_apps">Partilhar aplicações instaladas</string>
     <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid como ficheiro CSV</string>
@@ -528,4 +528,5 @@
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
     <string name="antiothers">Outras características indesejadas</string>
+    <string name="antinsfw">Esta aplicação contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
 </resources>

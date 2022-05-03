@@ -33,7 +33,7 @@
     <string name="menu_search">تلاش</string>
     <string name="menu_add_repo">نیا ذخیرہ</string>
     <string name="menu_launch">کھولیں</string>
-    <string name="menu_share">دوسروں کو تقسیم کرنا</string>
+    <string name="menu_share">تقسیم کرے</string>
     <string name="menu_install">اسٹال کریں</string>
     <string name="menu_uninstall">ان انسٹال</string>
     <string name="menu_upgrade">اپڈیٹ</string>
@@ -68,7 +68,7 @@
     <string name="notification_action_update">اپڈیٹ</string>
     <string name="swap_dont_show_again">دوبارا نہ دکھایں</string>
     <string name="swap_welcome">ایف - ڈرائڈ میں خوش آمدید</string>
-    <string name="category_Writing">لیکھنا</string>
+    <string name="category_Writing">لکهائی</string>
     <string name="category_Time">وقت</string>
     <string name="category_Security">سیکوریٹی</string>
     <string name="category_Science_Education">سائنس اور تعلیم</string>
@@ -253,7 +253,7 @@
     <string name="latest__empty_state__never_updated">ایک بار جب آپ کی ایپس کی فہرست اپ ڈیٹ ہو جائے تو تازہ ترین ایپس کو یہاں دکھانا چاہیے۔</string>
     <string name="latest__empty_state__no_recent_apps">کوئی حالیہ ایپس نہیں ملی</string>
     <string name="antinosourcesince">سورس کوڈ اب دستیاب نہیں ہے ، کوئی اپ ڈیٹ ممکن نہیں ہے۔</string>
-    <string name="antiknownvulnlist">اس ایپ میں سیکیورٹی کی ایک نامعلوم کمزوری ہے۔</string>
+    <string name="antiknownvulnlist">اس ایپ میں سیکیورٹی کی ایک معلوم کمزوری ہے۔</string>
     <string name="expert_on">‫اضافی معلومات دکھائیں اور اضافی ترتیبات کو فعال کریں۔</string>
     <string name="display">ڈسپلے</string>
     <string name="theme_light">روشنی</string>
@@ -377,4 +377,10 @@
     <string name="panic_add_apps_to_uninstall">ایپس کو انسٹال اور مسح کرنے کے لیے شامل کریں۔</string>
     <string name="panic_apps_to_uninstall">ایپس کو ان انسٹال کیا جائے اور تمام ڈیٹا مٹا دیا جائے۔</string>
     <string name="panic_will_be_wiped">انسٹال ہو جائے گا اور تمام ڈیٹا حذف ہو جائے گا۔</string>
+    <string name="antiads">اشتہارات</string>
+    <string name="swap_people_nearby">قریبی لوگ</string>
+    <string name="antitrack">ٹریکنگ</string>
+    <string name="nearby_splash__request_permission">کوشش کرو</string>
+    <string name="swap_scanning_for_peers">قریبی لوگوں کے لیے تلاش۔ ۔ ۔</string>
+    <string name="swap_nearby">قریبی تبادلہ</string>
 </resources>

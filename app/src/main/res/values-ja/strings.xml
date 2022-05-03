@@ -515,4 +515,5 @@
     <string name="antidisabledalgorithm">安全でないアルゴリズムで署名されました</string>
     <string name="antinosource">ソースコードはもう利用できません</string>
     <string name="antiothers">他の好ましくない機能</string>
+    <string name="antinsfw">このアプリにはあらゆる場所に公開できるわけではないコンテンツが含まれている</string>
 </resources>

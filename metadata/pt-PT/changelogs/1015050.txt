@@ -1,0 +1,5 @@
+* Revisão total da lógica de descarregamentos para um melhor desempenho e suporte a servidores-espelho.
+
+* Agora as capturas de ecrã e imagens são descarregados de servidores espelho.
+
+* "Vazamento de privacidade" reduzido em sessões de TLS

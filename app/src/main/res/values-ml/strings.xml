@@ -4,11 +4,11 @@
     <string name="updates">പുതുക്കലുകള്‍</string>
     <string name="ok">ശരി</string>
     <string name="yes">അതെ</string>
-    <string name="no">ഇല്ല</string>
+    <string name="no">അല്ല</string>
     <string name="back">പിന്നോട്ട്</string>
     <string name="cancel">റദ്ദാക്കുക</string>
     <string name="menu_manage">സംഭരണികള്‍</string>
-    <string name="menu_settings">ക്രമീകരണം</string>
+    <string name="menu_settings">ക്രമീകരണങ്ങൾ</string>
     <string name="menu_search">തിരയൽ</string>
     <string name="menu_add_repo">ശേഖരണം ചേര്‍ക്കുക</string>
     <string name="menu_launch">തുറക്കുക</string>
@@ -515,4 +515,7 @@
     <string name="has_disallow_install_unknown_sources">ഈ ഉപയോക്താവിന് അജ്ഞാത ഉറവിടങ്ങൾ ചേർക്കാനാകില്ല, അതിൽ പുതിയ സംഭരണികൾ ഉൾപ്പെടുന്നു</string>
     <string name="has_disallow_install_unknown_sources_globally">അജ്ഞാത ഉറവിടങ്ങളിൽ നിന്നുള്ള ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങളുടെ ഉപകരണ അഡ്‌മിൻ അനുവദിക്കുന്നില്ല, അതിൽ പുതിയ സംഭരണികൾ  ഉൾപ്പെടുന്നു</string>
     <string name="antiads">പരസ്യങ്ങള്‍</string>
+    <string name="antiothers">മറ്റ് ആൻ്റിവയറസുകൾ</string>
+    <string name="antinonfreenet">സൗജന്യമല്ലാത്ത നെറ്റ്‌വർക്ക് സേവനങ്ങൾ</string>
+    <string name="antinonfreead">സൗജന്യമല്ലാത്ത ആഡോണുകൾ</string>
 </resources>

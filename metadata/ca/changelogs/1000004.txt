@@ -1,0 +1,7 @@
+* Gestos de lliscament afegits a la pestanya Actualitzacions
+
+* Mostra els advertiments amb accions a la pestanya Actualitzacions per a KnownVulns
+
+* Traduccions actualitzades
+
+* Correccions fosques de la interfície d'usuari

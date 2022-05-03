@@ -1,7 +1,7 @@
-* use notification channels for fine-grained control (@Isira-Seneviratne)
-* share apps using Direct Share from App Details (@fynngodau)
-* Latest Tab will show better results on non-English devices
-* updates to core libraries (Jackson, androidx, gradle, etc)
-* polish whitelabeling support
+* utilizar canais de notificação para controle de granulação fina (@Isira-Seneviratne)
+* compartilhar apps usando o Direct Share para Detalhes de Apps (@fynngodau)
+* O guia mais recente irá mostrar melhores resultados em aparelhos que não sejam em idioma inglês
+* atualizações das bibliotecas centrais (Jackson, androidx, gradle, etc)
+* suporte de rótulos brancos polidos
 
-Thanks new contributors! @fynngodau @projectgus @glennmen @Isira-Seneviratne
+Obrigado aos novos colaboradores! @fynngodau @projectgus @glennmennmen @Isira-Seneviratne

@@ -1,0 +1,3 @@
+* Esmenar errors que impedeixen que les traduccions es mostrin a Android >= 7.0
+
+* Esmenar la fallada d'actualització DB de 1.0-alfa3 → 1.0-alpha4 #1181

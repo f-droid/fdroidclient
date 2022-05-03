@@ -3,8 +3,7 @@ para Android. O aplicativo cliente F-Droid facilita a navegação,
 instalação e acompanhamento de atualizações no seu dispositivo.
 
 Ele se conecta a qualquer repositório compatível com o F-Droid.
-O repositório padrão é hospedado no f-droid.org, que contém apenas
-o software livre de boa-fé.
+O repositório padrão é hospedado no f-droid.org, que contém apenas software livre de boa-fé.
 
 O Android em si é aberto no sentido de que você é livre para
 instalar APKs de qualquer lugar que desejar, mas há muitas boas

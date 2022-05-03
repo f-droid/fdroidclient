@@ -1,0 +1,12 @@
+* La langue de description d'application respecte maintenant complètement la liste de langues d'Android
+Paramètres de langue
+
+* Les résultats du dernier onglet de la liste sont basés sur la langue paramétrée
+
+* Le dernier onglet montre les résultats triés par ancienneté (@TheLastProject @IzzySoft)
+
+* Modernisation de la prise en charge des thèmes et concordance avec les thème intégré à Android (@proletarius101)
+
+* Grande amélioration des résultats de recherche (@Tvax@gcbrown76)
+
+* Cache amélioré

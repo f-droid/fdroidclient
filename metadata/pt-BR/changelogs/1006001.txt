@@ -1,4 +1,4 @@
-* Botões adicionados ao RepoDetails para desligar um ou todos os espelhos (#1696)
+* Botões adicionados aos «Detalhes de Repositório» para desligar um ou todos os espelhos (#1696)
 
 * Escolha de espelho aleatório para cada pacote/download de APK
 

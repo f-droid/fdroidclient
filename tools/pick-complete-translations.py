@@ -11,9 +11,15 @@ import sys
 
 def get_paths_tuple(locale):
     return (
-        'metadata/%s/*.txt' % locale,
-        'metadata/%s/changelogs/*.txt' % locale,
-        'app/src/main/res/values-%s/strings.xml' % re.sub(r'-', r'-r', locale),
+        'metadata/%s/*.txt' % locale.replace('_', '-'),
+        'metadata/%s/changelogs/*.txt' % locale.replace('_', '-'),
+        'app/src/main/res/values-%s/strings.xml'
+        % (
+            locale.replace('Hant_HK', 'HK')
+            .replace('Hans', 'CN')
+            .replace('Hant', 'TW')
+            .replace('_', '-r')
+        ),
     )
 
 
@@ -36,7 +42,7 @@ r.raise_for_status()
 metadata = r.json()
 
 
-#with open('f-droid-metadata.json') as fp:
+# with open('f-droid-metadata.json') as fp:
 #    metadata = json.load(fp)
 
 app_locales = dict()
@@ -77,8 +83,11 @@ if not merge_locales:
 
 if 'merge_weblate' in repo.heads:
     merge_weblate = repo.heads['merge_weblate']
-    repo.create_tag('previous_merge_weblate', ref=merge_weblate,
-                    message=('Automatically created by %s' % __file__))
+    repo.create_tag(
+        'previous_merge_weblate',
+        ref=merge_weblate,
+        message=('Automatically created by %s' % __file__),
+    )
 else:
     merge_weblate = repo.create_head('merge_weblate')
 merge_weblate.set_commit(upstream.refs.master)
