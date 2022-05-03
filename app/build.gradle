@@ -165,7 +165,7 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.3'
     implementation 'info.guardianproject.netcipher:netcipher:2.2.0-alpha'
     implementation 'info.guardianproject.panic:panic:1.0'
-    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-io:commons-io:2.7'
     implementation 'commons-net:commons-net:3.6'
     implementation 'ch.acra:acra:4.9.1'
     implementation 'com.hannesdorfmann:adapterdelegates3:3.0.1'
@@ -174,9 +174,9 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
 
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.1'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.4'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.4'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.4'
 
     implementation "com.github.bumptech.glide:glide:4.12.0"
     annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
