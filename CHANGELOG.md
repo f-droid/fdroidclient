@@ -1,3 +1,11 @@
+### 1.15 (2022-05-03)
+
+* Set navigation bar color to black in dark theme (@ConnyDuck)
+
+* Published org.fdroid:download lib to share our privacy and mirroring tricks.
+
+* Bumped Jackson to v2.11.4 and commons-io to v2.7
+
 ### 1.15-alpha1 (2022-04-19)
 
 * Fix crashes in new download code
