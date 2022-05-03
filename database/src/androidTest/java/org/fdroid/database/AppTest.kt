@@ -34,8 +34,6 @@ internal class AppTest : DbTest() {
 
         val app = appDao.getApp(repoId, packageId) ?: fail()
         val metadata = metadataV2.toAppMetadata(repoId, packageId)
-        assertEquals(metadata.author, app.metadata.author)
-        assertEquals(metadata.donation, app.metadata.donation)
         assertEquals(metadata, app.metadata)
         assertEquals(metadataV2.icon, app.icon)
         assertEquals(metadataV2.featureGraphic, app.featureGraphic)
