@@ -11,6 +11,7 @@ import org.fdroid.index.IndexUtils.getFingerprint
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.FileV2
+import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.LocalizedTextV2
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
@@ -19,12 +20,13 @@ import org.fdroid.index.v2.RepoV2
 @Entity
 public data class CoreRepository(
     @PrimaryKey(autoGenerate = true) val repoId: Long = 0,
-    val name: String,
-    @Embedded(prefix = "icon_") val icon: FileV2?,
+    val name: LocalizedTextV2 = emptyMap(),
+    val icon: LocalizedFileV2?,
     val address: String,
     val webBaseUrl: String? = null,
     val timestamp: Long,
     val version: Int?,
+    val maxAge: Int?,
     val description: LocalizedTextV2 = emptyMap(),
     val certificate: String?,
 )
@@ -41,6 +43,7 @@ internal fun RepoV2.toCoreRepository(
     webBaseUrl = webBaseUrl,
     timestamp = timestamp,
     version = version,
+    maxAge = null,
     description = description,
     certificate = certificate,
 )
@@ -74,13 +77,13 @@ public data class Repository(
     internal val preferences: RepositoryPreferences,
 ) {
     val repoId: Long get() = repository.repoId
-    val name: String get() = repository.name
-    val icon: FileV2? get() = repository.icon
+    internal val name: LocalizedTextV2 get() = repository.name
+    internal val icon: LocalizedFileV2? get() = repository.icon
     val address: String get() = repository.address
     val webBaseUrl: String? get() = repository.webBaseUrl
     val timestamp: Long get() = repository.timestamp
     val version: Int get() = repository.version ?: 0
-    val description: LocalizedTextV2 get() = repository.description
+    internal val description: LocalizedTextV2 get() = repository.description
     val certificate: String? get() = repository.certificate
 
     val weight: Int get() = preferences.weight
@@ -120,8 +123,11 @@ public data class Repository(
         } else emptyList()
     }
 
+    public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)
     public fun getDescription(localeList: LocaleListCompat): String? =
         description.getBestLocale(localeList)
+
+    public fun getIcon(localeList: LocaleListCompat): FileV2? = icon.getBestLocale(localeList)
 }
 
 @Entity(
