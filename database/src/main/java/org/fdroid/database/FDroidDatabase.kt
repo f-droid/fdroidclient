@@ -16,7 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @Database(
-    version = 4, // TODO set version to 1 before release and wipe old schemas
+    version = 5, // TODO set version to 1 before release and wipe old schemas
     entities = [
         // repo
         CoreRepository::class,

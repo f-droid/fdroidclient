@@ -89,11 +89,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Transaction
     override fun insert(initialRepo: InitialRepository) {
         val repo = CoreRepository(
-            name = initialRepo.name,
+            name = mapOf("en-US" to initialRepo.name),
             address = initialRepo.address,
             icon = null,
             timestamp = -1,
             version = initialRepo.version,
+            maxAge = null,
             description = mapOf("en-US" to initialRepo.description),
             certificate = initialRepo.certificate,
         )
@@ -114,11 +115,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
         password: String?,
     ): Long {
         val repo = CoreRepository(
-            name = address,
+            name = mapOf("en-US" to address),
             icon = null,
             address = address,
             timestamp = System.currentTimeMillis(),
             version = null,
+            maxAge = null,
             certificate = null,
         )
         val repoId = insertOrReplace(repo)

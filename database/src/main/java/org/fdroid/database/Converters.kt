@@ -26,6 +26,16 @@ internal object Converters {
     }
 
     @TypeConverter
+    fun fromStringToLocalizedFileV2(value: String?): LocalizedFileV2? {
+        return value?.let { json.decodeFromString(localizedFileV2Serializer, it) }
+    }
+
+    @TypeConverter
+    fun localizedFileV2toString(file: LocalizedFileV2?): String? {
+        return file?.let { json.encodeToString(localizedFileV2Serializer, it) }
+    }
+
+    @TypeConverter
     fun fromStringToMapOfLocalizedTextV2(value: String?): Map<String, LocalizedTextV2>? {
         return value?.let { json.decodeFromString(mapOfLocalizedTextV2Serializer, it) }
     }
