@@ -4,11 +4,14 @@ import androidx.room.TypeConverter
 import kotlinx.serialization.builtins.MapSerializer
 import kotlinx.serialization.builtins.serializer
 import org.fdroid.index.IndexParser.json
+import org.fdroid.index.v2.FileV2
+import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.LocalizedTextV2
 
 internal object Converters {
 
     private val localizedTextV2Serializer = MapSerializer(String.serializer(), String.serializer())
+    private val localizedFileV2Serializer = MapSerializer(String.serializer(), FileV2.serializer())
     private val mapOfLocalizedTextV2Serializer =
         MapSerializer(String.serializer(), localizedTextV2Serializer)
 
@@ -34,12 +37,16 @@ internal object Converters {
 
     @TypeConverter
     fun fromStringToListString(value: String?): List<String> {
-        return value?.split(',') ?: emptyList()
+        return value?.split(',')?.filter { it.isNotEmpty() } ?: emptyList()
     }
 
     @TypeConverter
     fun listStringToString(text: List<String>?): String? {
         if (text.isNullOrEmpty()) return null
-        return text.joinToString(",") { it.replace(',', '_') }
+        return text.joinToString(
+            prefix = ",",
+            separator = ",",
+            postfix = ",",
+        ) { it.replace(',', '_') }
     }
 }

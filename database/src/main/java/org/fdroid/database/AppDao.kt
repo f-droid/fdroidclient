@@ -227,7 +227,7 @@ internal interface AppDaoInt : AppDao {
         JOIN RepositoryPreferences AS pref USING (repoId)
         JOIN Version AS version USING (repoId, packageId)
         JOIN LocalizedIcon AS icon USING (repoId, packageId)
-        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
+        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
         GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
         ORDER BY localizedName IS NULL ASC, localizedSummary IS NULL ASC, app.lastUpdated DESC, app.added ASC
         LIMIT :limit""")
@@ -302,7 +302,7 @@ internal interface AppDaoInt : AppDao {
         FROM AppMetadata AS app
         JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
+        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
         GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
         ORDER BY app.lastUpdated DESC""")
     fun getAppListItemsByLastUpdated(category: String): LiveData<List<AppListItem>>
@@ -315,7 +315,7 @@ internal interface AppDaoInt : AppDao {
         FROM AppMetadata AS app
         JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND categories  LIKE '%' || :category || '%'
+        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
         GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
@@ -341,7 +341,7 @@ internal interface AppDaoInt : AppDao {
 
     @Query("""SELECT COUNT(DISTINCT packageId) FROM AppMetadata
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND categories LIKE '%' || :category || '%'""")
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'""")
     override fun getNumberOfAppsInCategory(category: String): Int
 
     /**
