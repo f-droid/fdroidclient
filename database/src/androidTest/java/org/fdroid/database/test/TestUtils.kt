@@ -2,12 +2,18 @@ package org.fdroid.database.test
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import org.fdroid.database.App
+import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
 import org.fdroid.database.toCoreRepository
 import org.fdroid.database.toMirror
 import org.fdroid.database.toRepoAntiFeatures
 import org.fdroid.database.toRepoCategories
 import org.fdroid.database.toRepoReleaseChannel
+import org.fdroid.index.v2.FeatureV2
+import org.fdroid.index.v2.ManifestV2
+import org.fdroid.index.v2.MetadataV2
+import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.RepoV2
 import org.junit.Assert
 import java.util.concurrent.CountDownLatch
@@ -35,6 +41,59 @@ internal object TestUtils {
             .copy(repoId = repoId)
         assertEquals(coreRepo, repo.repository)
     }
+
+    internal fun App.toMetadataV2() = MetadataV2(
+        added = metadata.added,
+        lastUpdated = metadata.lastUpdated,
+        name = metadata.name,
+        summary = metadata.summary,
+        description = metadata.description,
+        webSite = metadata.webSite,
+        changelog = metadata.changelog,
+        license = metadata.license,
+        sourceCode = metadata.sourceCode,
+        issueTracker = metadata.issueTracker,
+        translation = metadata.translation,
+        preferredSigner = metadata.preferredSigner,
+        video = metadata.video,
+        authorName = metadata.authorName,
+        authorEmail = metadata.authorEmail,
+        authorWebSite = metadata.authorWebSite,
+        authorPhone = metadata.authorPhone,
+        donate = metadata.donate ?: emptyList(),
+        liberapayID = metadata.liberapayID,
+        liberapay = metadata.liberapay,
+        openCollective = metadata.openCollective,
+        bitcoin = metadata.bitcoin,
+        litecoin = metadata.litecoin,
+        flattrID = metadata.flattrID,
+        categories = metadata.categories ?: emptyList(),
+        icon = icon,
+        featureGraphic = featureGraphic,
+        promoGraphic = promoGraphic,
+        tvBanner = tvBanner,
+        screenshots = screenshots,
+    )
+
+    fun AppVersion.toPackageVersionV2() = PackageVersionV2(
+        added = added,
+        file = file,
+        src = src,
+        manifest = ManifestV2(
+            versionName = manifest.versionName,
+            versionCode = manifest.versionCode,
+            usesSdk = manifest.usesSdk,
+            maxSdkVersion = manifest.maxSdkVersion,
+            signer = manifest.signer,
+            usesPermission = usesPermission?.sortedBy { it.name } ?: emptyList(),
+            usesPermissionSdk23 = usesPermissionSdk23?.sortedBy { it.name } ?: emptyList(),
+            nativecode = manifest.nativecode?.sorted() ?: emptyList(),
+            features = manifest.features?.map { FeatureV2(it) } ?: emptyList(),
+        ),
+        releaseChannels = releaseChannels,
+        antiFeatures = version.antiFeatures ?: emptyMap(),
+        whatsNew = version.whatsNew ?: emptyMap(),
+    )
 
     fun <T> LiveData<T>.getOrAwaitValue(): T? {
         val data = arrayOfNulls<Any>(1)

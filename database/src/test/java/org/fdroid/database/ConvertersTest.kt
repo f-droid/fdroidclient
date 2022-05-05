@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import org.fdroid.test.TestRepoUtils.getRandomLocalizedFileV2
 import org.fdroid.test.TestUtils.getRandomList
 import org.fdroid.test.TestUtils.getRandomString
 import kotlin.test.Test
@@ -26,6 +27,15 @@ internal class ConvertersTest {
         assertNull(Converters.listStringToString(null))
         val convertedList = Converters.fromStringToListString(str)
         assertEquals(list, convertedList)
+    }
+
+    @Test
+    fun testFileV2Conversion() {
+        val file = getRandomLocalizedFileV2()
+
+        val str = Converters.localizedFileV2toString(file)
+        val convertedFile = Converters.fromStringToLocalizedFileV2(str)
+        assertEquals(file, convertedFile)
     }
 
 }

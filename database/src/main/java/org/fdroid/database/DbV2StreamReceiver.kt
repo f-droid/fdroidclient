@@ -10,8 +10,8 @@ import org.fdroid.index.v2.RepoV2
 
 internal class DbV2StreamReceiver(
     private val db: FDroidDatabaseInt,
-    private val compatibilityChecker: CompatibilityChecker,
     private val repoId: Long,
+    private val compatibilityChecker: CompatibilityChecker,
 ) : IndexV2StreamReceiver {
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)

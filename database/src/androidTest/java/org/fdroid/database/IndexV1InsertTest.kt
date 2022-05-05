@@ -1,149 +1,88 @@
 package org.fdroid.database
 
-import android.content.Context
-import android.util.Log
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.serialization.SerializationException
 import org.apache.commons.io.input.CountingInputStream
-import org.fdroid.CompatibilityChecker
+import org.fdroid.index.IndexConverter
 import org.fdroid.index.v1.IndexV1StreamProcessor
 import org.fdroid.index.v1.IndexV1StreamReceiver
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
-import org.fdroid.index.v2.IndexV2StreamProcessor
 import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
+import org.fdroid.test.TestDataEmptyV1
+import org.fdroid.test.TestDataMaxV1
+import org.fdroid.test.TestDataMidV1
+import org.fdroid.test.TestDataMinV1
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.math.roundToInt
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
-import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 internal class IndexV1InsertTest : DbTest() {
 
-    @Test
-    fun testStreamIndexV1IntoDb() {
-        val c = getApplicationContext<Context>()
-        val fileSize = c.resources.assets.openFd("index-v1.json").use { it.length }
-        val inputStream = CountingInputStream(c.resources.assets.open("index-v1.json"))
-        var currentByteCount: Long = 0
-        val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
-        val streamReceiver = TestStreamReceiver(repoId) {
-            val bytesRead = inputStream.byteCount
-            val bytesSinceLastCall = bytesRead - currentByteCount
-            if (bytesSinceLastCall > 0) {
-                val percent = ((bytesRead.toDouble() / fileSize) * 100).roundToInt()
-                Log.e("IndexV1InsertTest",
-                    "Stream bytes read: $bytesRead ($percent%) +$bytesSinceLastCall")
-            }
-            // the stream gets read in big chunks, but ensure they are not too big, e.g. entire file
-            assertTrue(bytesSinceLastCall < 600_000, "$bytesSinceLastCall")
-            currentByteCount = bytesRead
-        }
-        val indexProcessor = IndexV1StreamProcessor(streamReceiver, null)
+    private val indexConverter = IndexConverter()
 
+    @Test
+    fun testStreamEmptyIntoDb() {
+        val repoId = streamIndex("resources/index-empty-v1.json")
+        assertEquals(1, repoDao.getRepositories().size)
+        val index = indexConverter.toIndexV2(TestDataEmptyV1.index)
+        assertDbEquals(repoId, index)
+    }
+
+    @Test
+    fun testStreamMinIntoDb() {
+        val repoId = streamIndex("resources/index-min-v1.json")
+        assertTrue(repoDao.getRepositories().size == 1)
+        val index = indexConverter.toIndexV2(TestDataMinV1.index)
+        assertDbEquals(repoId, index)
+    }
+
+    @Test
+    fun testStreamMidIntoDb() {
+        val repoId = streamIndex("resources/index-mid-v1.json")
+        assertTrue(repoDao.getRepositories().size == 1)
+        val index = indexConverter.toIndexV2(TestDataMidV1.index)
+        assertDbEquals(repoId, index)
+    }
+
+    @Test
+    fun testStreamMaxIntoDb() {
+        val repoId = streamIndex("resources/index-max-v1.json")
+        assertTrue(repoDao.getRepositories().size == 1)
+        val index = indexConverter.toIndexV2(TestDataMaxV1.index)
+        assertDbEquals(repoId, index)
+    }
+
+    private fun streamIndex(path: String): Long {
+        val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
+        val streamReceiver = TestStreamReceiver(repoId)
+        val indexProcessor = IndexV1StreamProcessor(streamReceiver, null)
         db.runInTransaction {
-            inputStream.use { indexStream ->
+            assets.open(path).use { indexStream ->
                 indexProcessor.process(indexStream)
             }
         }
-        assertTrue(repoDao.getRepositories().size == 1)
-        assertTrue(appDao.countApps() > 0)
-        assertTrue(appDao.countLocalizedFiles() > 0)
-        assertTrue(appDao.countLocalizedFileLists() > 0)
-        assertTrue(versionDao.countAppVersions() > 0)
-        assertTrue(versionDao.countVersionedStrings() > 0)
-
-        println("Apps: " + appDao.countApps())
-        println("LocalizedFiles: " + appDao.countLocalizedFiles())
-        println("LocalizedFileLists: " + appDao.countLocalizedFileLists())
-        println("Versions: " + versionDao.countAppVersions())
-        println("Perms/Features: " + versionDao.countVersionedStrings())
-
-        val version = repoDao.getRepositories()[0].repository.version ?: fail()
-        insertV2ForComparison(version)
-
-        val repo1 = repoDao.getRepository(1) ?: fail()
-        val repo2 = repoDao.getRepository(2) ?: fail()
-        assertEquals(repo1.repository, repo2.repository.copy(repoId = 1))
-        assertEquals(repo1.mirrors, repo2.mirrors.map { it.copy(repoId = 1) })
-        // TODO enable when better test data
-//        assertEquals(repo1.antiFeatures, repo2.antiFeatures)
-//        assertEquals(repo1.categories, repo2.categories)
-//        assertEquals(repo1.releaseChannels, repo2.releaseChannels)
-
-        val appMetadata = appDao.getAppMetadata()
-        val appMetadata1 = appMetadata.count { it.repoId == 1L }
-        val appMetadata2 = appMetadata.count { it.repoId == 2L }
-        assertEquals(appMetadata1, appMetadata2)
-
-        val localizedFiles = appDao.getLocalizedFiles()
-        val localizedFiles1 = localizedFiles.count { it.repoId == 1L }
-        val localizedFiles2 = localizedFiles.count { it.repoId == 2L }
-        assertEquals(localizedFiles1, localizedFiles2)
-
-        val localizedFileLists = appDao.getLocalizedFileLists()
-        val localizedFileLists1 = localizedFileLists.count { it.repoId == 1L }
-        val localizedFileLists2 = localizedFileLists.count { it.repoId == 2L }
-        assertEquals(localizedFileLists1, localizedFileLists2)
-
-        appMetadata.filter { it.repoId == 2L }.forEach { m ->
-            val metadata1 = appDao.getAppMetadata(1, m.packageId)
-            val metadata2 = appDao.getAppMetadata(2, m.packageId)
-            assertEquals(metadata1, metadata2.copy(repoId = 1, isCompatible = true))
-
-            val lFiles1 = appDao.getLocalizedFiles(1, m.packageId).toSet()
-            val lFiles2 = appDao.getLocalizedFiles(2, m.packageId)
-            assertEquals(lFiles1, lFiles2.map { it.copy(repoId = 1) }.toSet())
-
-            val lFileLists1 = appDao.getLocalizedFileLists(1, m.packageId).toSet()
-            val lFileLists2 = appDao.getLocalizedFileLists(2, m.packageId)
-            assertEquals(lFileLists1, lFileLists2.map { it.copy(repoId = 1) }.toSet())
-
-            val version1 = versionDao.getVersions(1, m.packageId).toSet()
-            val version2 = versionDao.getVersions(2, m.packageId)
-            assertEquals(version1, version2.map { it.copy(repoId = 1) }.toSet())
-
-            val vStrings1 = versionDao.getVersionedStrings(1, m.packageId).toSet()
-            val vStrings2 = versionDao.getVersionedStrings(2, m.packageId)
-            assertEquals(vStrings1, vStrings2.map { it.copy(repoId = 1) }.toSet())
-        }
-    }
-
-    @Suppress("SameParameterValue")
-    private fun insertV2ForComparison(version: Int) {
-        val c = getApplicationContext<Context>()
-        val inputStream = CountingInputStream(c.resources.assets.open("index-v2.json"))
-        val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
-        val indexProcessor = IndexV2StreamProcessor(DbV2StreamReceiver(db, { true }, repoId), null)
-        db.runInTransaction {
-            inputStream.use { indexStream ->
-                indexProcessor.process(version, indexStream)
-            }
-        }
+        return repoId
     }
 
     @Test
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
-        val c = getApplicationContext<Context>()
-        val cIn = CountingInputStream(c.resources.assets.open("index-v1.json"))
-        val compatibilityChecker = CompatibilityChecker {
-            if (cIn.byteCount > 824096) throw SerializationException()
-            true
-        }
-        val indexProcessor =
-            IndexV2StreamProcessor(DbV2StreamReceiver(db, compatibilityChecker, 1), null)
-
+        val cIn = CountingInputStream(assets.open("resources/index-max-v1.json"))
         assertFailsWith<SerializationException> {
             db.runInTransaction {
+                val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
+                val streamReceiver = TestStreamReceiver(repoId) {
+                    if (cIn.byteCount > 0) throw SerializationException()
+                }
+                val indexProcessor = IndexV1StreamProcessor(streamReceiver, null)
                 cIn.use { indexStream ->
-                    indexProcessor.process(42, indexStream)
+                    indexProcessor.process(indexStream)
                 }
             }
         }
@@ -155,11 +94,12 @@ internal class IndexV1InsertTest : DbTest() {
         assertTrue(versionDao.countVersionedStrings() == 0)
     }
 
+    @Suppress("DEPRECATION")
     inner class TestStreamReceiver(
         repoId: Long,
-        private val callback: () -> Unit,
+        private val callback: () -> Unit = {},
     ) : IndexV1StreamReceiver {
-        private val streamReceiver = DbV1StreamReceiver(db, { true }, repoId)
+        private val streamReceiver = DbV1StreamReceiver(db, repoId) { true }
         override fun receive(repo: RepoV2, version: Int, certificate: String?) {
             streamReceiver.receive(repo, version, certificate)
             callback()

@@ -19,8 +19,8 @@ import org.fdroid.index.v2.RepoV2
 @Deprecated("Use DbV2StreamReceiver instead")
 internal class DbV1StreamReceiver(
     private val db: FDroidDatabaseInt,
-    private val compatibilityChecker: CompatibilityChecker,
     private val repoId: Long,
+    private val compatibilityChecker: CompatibilityChecker,
 ) : IndexV1StreamReceiver {
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)

@@ -9,11 +9,10 @@ import androidx.room.Query
 import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
 import androidx.room.Update
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
-import kotlinx.serialization.json.jsonObject
+import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
+import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
@@ -187,23 +186,25 @@ internal interface RepositoryDaoInt : RepositoryDao {
         val repo = getRepository(repoId) ?: error("Repo $repoId does not exist")
         // update repo with JSON diff
         updateRepository(applyDiff(repo.repository, jsonObject))
-        // replace mirror list, if it is in the diff
-        if (jsonObject.containsKey("mirrors")) {
-            val mirrorArray = jsonObject["mirrors"] as JsonArray
-            val mirrors = json.decodeFromJsonElement<List<MirrorV2>>(mirrorArray).map {
-                it.toMirror(repoId)
-            }
-            // delete and re-insert mirrors, because it is easier than diffing
-            deleteMirrors(repoId)
-            insertMirrors(mirrors)
-        }
+        // replace mirror list (if it is in the diff)
+        diffAndUpdateListTable(
+            jsonObject = jsonObject,
+            jsonObjectKey = "mirrors",
+            listParser = { mirrorArray ->
+                json.decodeFromJsonElement<List<MirrorV2>>(mirrorArray).map {
+                    it.toMirror(repoId)
+                }
+            },
+            deleteList = { deleteMirrors(repoId) },
+            insertNewList = { mirrors -> insertMirrors(mirrors) },
+        )
         // diff and update the antiFeatures
         diffAndUpdateTable(
             jsonObject = jsonObject,
-            key = "antiFeatures",
+            jsonObjectKey = "antiFeatures",
             itemList = repo.antiFeatures,
+            itemFinder = { key, item -> item.id == key },
             newItem = { key -> AntiFeature(repoId, key, null, emptyMap(), emptyMap()) },
-            keyGetter = { item -> item.id },
             deleteAll = { deleteAntiFeatures(repoId) },
             deleteOne = { key -> deleteAntiFeature(repoId, key) },
             insertReplace = { list -> insertAntiFeatures(list) },
@@ -211,10 +212,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
         // diff and update the categories
         diffAndUpdateTable(
             jsonObject = jsonObject,
-            key = "categories",
+            jsonObjectKey = "categories",
             itemList = repo.categories,
+            itemFinder = { key, item -> item.id == key },
             newItem = { key -> Category(repoId, key, null, emptyMap(), emptyMap()) },
-            keyGetter = { item -> item.id },
             deleteAll = { deleteCategories(repoId) },
             deleteOne = { key -> deleteCategory(repoId, key) },
             insertReplace = { list -> insertCategories(list) },
@@ -222,54 +223,14 @@ internal interface RepositoryDaoInt : RepositoryDao {
         // diff and update the releaseChannels
         diffAndUpdateTable(
             jsonObject = jsonObject,
-            key = "releaseChannels",
+            jsonObjectKey = "releaseChannels",
             itemList = repo.releaseChannels,
+            itemFinder = { key, item -> item.id == key },
             newItem = { key -> ReleaseChannel(repoId, key, null, emptyMap(), emptyMap()) },
-            keyGetter = { item -> item.id },
             deleteAll = { deleteReleaseChannels(repoId) },
             deleteOne = { key -> deleteReleaseChannel(repoId, key) },
             insertReplace = { list -> insertReleaseChannels(list) },
         )
-    }
-
-    /**
-     * Applies the diff from [JsonObject] identified by the given [key] of the given [jsonObject]
-     * to the given [itemList] and updates the DB as needed.
-     *
-     * @param newItem A function to produce a new [T] which typically contains the primary key(s).
-     */
-    private fun <T : Any> diffAndUpdateTable(
-        jsonObject: JsonObject,
-        key: String,
-        itemList: List<T>,
-        newItem: (String) -> T,
-        keyGetter: (T) -> String,
-        deleteAll: () -> Unit,
-        deleteOne: (String) -> Unit,
-        insertReplace: (List<T>) -> Unit,
-    ) {
-        if (!jsonObject.containsKey(key)) return
-        if (jsonObject[key] == JsonNull) {
-            deleteAll()
-        } else {
-            val features = jsonObject[key]?.jsonObject ?: error("no $key object")
-            val list = itemList.toMutableList()
-            features.entries.forEach { (key, value) ->
-                if (value is JsonNull) {
-                    list.removeAll { keyGetter(it) == key }
-                    deleteOne(key)
-                } else {
-                    val index = list.indexOfFirst { keyGetter(it) == key }
-                    val item = if (index == -1) null else list[index]
-                    if (item == null) {
-                        list.add(applyDiff(newItem(key), value.jsonObject))
-                    } else {
-                        list[index] = applyDiff(item, value.jsonObject)
-                    }
-                }
-            }
-            insertReplace(list)
-        }
     }
 
     @Update

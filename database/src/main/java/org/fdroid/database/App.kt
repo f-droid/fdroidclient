@@ -327,18 +327,23 @@ internal fun LocalizedFileListV2.toLocalizedFileList(
     packageId: String,
     type: String,
 ): List<LocalizedFileList> = flatMap { (locale, files) ->
-    files.map { file ->
-        LocalizedFileList(
-            repoId = repoId,
-            packageId = packageId,
-            type = type,
-            locale = locale,
-            name = file.name,
-            sha256 = file.sha256,
-            size = file.size,
-        )
-    }
+    files.map { file -> file.toLocalizedFileList(repoId, packageId, type, locale) }
 }
+
+internal fun FileV2.toLocalizedFileList(
+    repoId: Long,
+    packageId: String,
+    type: String,
+    locale: String,
+) = LocalizedFileList(
+    repoId = repoId,
+    packageId = packageId,
+    type = type,
+    locale = locale,
+    name = name,
+    sha256 = sha256,
+    size = size,
+)
 
 internal fun List<LocalizedFileList>.toLocalizedFileListV2(type: String): LocalizedFileListV2? {
     val map = HashMap<String, List<FileV2>>()
