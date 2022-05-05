@@ -18,10 +18,20 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RoomWarnings.CURSOR_MISMATCH
 import androidx.room.Transaction
+import androidx.room.Update
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.decodeFromJsonElement
+import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
+import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
 import org.fdroid.database.FDroidDatabaseHolder.dispatcher
+import org.fdroid.index.IndexParser.json
+import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.MetadataV2
+import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.Screenshots
 
 public interface AppDao {
@@ -63,6 +73,23 @@ public interface AppDao {
 public enum class AppListSortOrder {
     LAST_UPDATED, NAME
 }
+
+/**
+ * A list of unknown fields in [MetadataV2] that we don't allow for [AppMetadata].
+ *
+ * We are applying reflection diffs against internal database classes
+ * and need to prevent the untrusted external JSON input to modify internal fields in those classes.
+ * This list must always hold the names of all those internal FIELDS for [AppMetadata].
+ */
+private val DENY_LIST = listOf("packageId", "repoId")
+
+/**
+ * A list of unknown fields in [LocalizedFileV2] or [LocalizedFileListV2]
+ * that we don't allow for [LocalizedFile] or [LocalizedFileList].
+ *
+ * Similar to [DENY_LIST].
+ */
+private val DENY_FILE_LIST = listOf("packageId", "repoId", "type")
 
 @Dao
 internal interface AppDaoInt : AppDao {
@@ -110,6 +137,95 @@ internal interface AppDaoInt : AppDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertLocalizedFileLists(localizedFiles: List<LocalizedFileList>)
 
+    @Transaction
+    fun updateApp(
+        repoId: Long,
+        packageId: String,
+        jsonObject: JsonObject?,
+        locales: LocaleListCompat,
+    ) {
+        if (jsonObject == null) {
+            // this app is gone, we need to delete it
+            deleteAppMetadata(repoId, packageId)
+            return
+        }
+        val metadata = getAppMetadata(repoId, packageId)
+        if (metadata == null) { // new app
+            val metadataV2: MetadataV2 = json.decodeFromJsonElement(jsonObject)
+            insert(repoId, packageId, metadataV2)
+        } else { // diff against existing app
+            // ensure that diff does not include internal keys
+            DENY_LIST.forEach { forbiddenKey ->
+                if (jsonObject.containsKey(forbiddenKey)) throw SerializationException(forbiddenKey)
+            }
+            // diff metadata
+            val diffedApp = applyDiff(metadata, jsonObject)
+            val updatedApp =
+                if (jsonObject.containsKey("name") || jsonObject.containsKey("summary")) {
+                    diffedApp.copy(
+                        localizedName = diffedApp.name.getBestLocale(locales),
+                        localizedSummary = diffedApp.summary.getBestLocale(locales),
+                    )
+                } else diffedApp
+            updateAppMetadata(updatedApp)
+            // diff localizedFiles
+            val localizedFiles = getLocalizedFiles(repoId, packageId)
+            localizedFiles.diffAndUpdate(repoId, packageId, "icon", jsonObject)
+            localizedFiles.diffAndUpdate(repoId, packageId, "featureGraphic", jsonObject)
+            localizedFiles.diffAndUpdate(repoId, packageId, "promoGraphic", jsonObject)
+            localizedFiles.diffAndUpdate(repoId, packageId, "tvBanner", jsonObject)
+            // diff localizedFileLists
+            val screenshots = jsonObject["screenshots"]
+            if (screenshots is JsonNull) {
+                deleteLocalizedFileLists(repoId, packageId)
+            } else if (screenshots is JsonObject) {
+                diffAndUpdateLocalizedFileList(repoId, packageId, "phone", screenshots)
+                diffAndUpdateLocalizedFileList(repoId, packageId, "sevenInch", screenshots)
+                diffAndUpdateLocalizedFileList(repoId, packageId, "tenInch", screenshots)
+                diffAndUpdateLocalizedFileList(repoId, packageId, "wear", screenshots)
+                diffAndUpdateLocalizedFileList(repoId, packageId, "tv", screenshots)
+            }
+        }
+    }
+
+    private fun List<LocalizedFile>.diffAndUpdate(
+        repoId: Long,
+        packageId: String,
+        type: String,
+        jsonObject: JsonObject,
+    ) = diffAndUpdateTable(
+        jsonObject = jsonObject,
+        jsonObjectKey = type,
+        itemList = filter { it.type == type },
+        itemFinder = { locale, item -> item.locale == locale },
+        newItem = { locale -> LocalizedFile(repoId, packageId, type, locale, "") },
+        deleteAll = { deleteLocalizedFiles(repoId, packageId, type) },
+        deleteOne = { locale -> deleteLocalizedFile(repoId, packageId, type, locale) },
+        insertReplace = { list -> insert(list) },
+        isNewItemValid = { it.name.isNotEmpty() },
+        keyDenyList = DENY_FILE_LIST,
+    )
+
+    private fun diffAndUpdateLocalizedFileList(
+        repoId: Long,
+        packageId: String,
+        type: String,
+        jsonObject: JsonObject,
+    ) {
+        diffAndUpdateListTable(
+            jsonObject = jsonObject,
+            jsonObjectKey = type,
+            listParser = { locale, jsonArray ->
+                json.decodeFromJsonElement<List<FileV2>>(jsonArray).map {
+                    it.toLocalizedFileList(repoId, packageId, type, locale)
+                }
+            },
+            deleteAll = { deleteLocalizedFileLists(repoId, packageId, type) },
+            deleteList = { locale -> deleteLocalizedFileList(repoId, packageId, type, locale) },
+            insertNewList = { _, fileLists -> insertLocalizedFileLists(fileLists) },
+        )
+    }
+
     /**
      * This is needed to support v1 streaming and shouldn't be used for something else.
      */
@@ -134,6 +250,9 @@ internal interface AppDaoInt : AppDao {
     @Query("""UPDATE AppMetadata SET localizedName = :name, localizedSummary = :summary
         WHERE repoId = :repoId AND packageId = :packageId""")
     fun updateAppMetadata(repoId: Long, packageId: String, name: String?, summary: String?)
+
+    @Update
+    fun updateAppMetadata(appMetadata: AppMetadata): Int
 
     override fun getApp(packageId: String): LiveData<App?> {
         return getRepoIdForPackage(packageId).distinctUntilChanged().switchMap { repoId ->
@@ -160,7 +279,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     override fun getApp(repoId: Long, packageId: String): App? {
-        val metadata = getAppMetadata(repoId, packageId)
+        val metadata = getAppMetadata(repoId, packageId) ?: return null
         val localizedFiles = getLocalizedFiles(repoId, packageId)
         val localizedFileList = getLocalizedFileLists(repoId, packageId)
         return getApp(metadata, localizedFiles, localizedFileList)
@@ -189,7 +308,7 @@ internal interface AppDaoInt : AppDao {
     fun getLiveAppMetadata(repoId: Long, packageId: String): LiveData<AppMetadata>
 
     @Query("SELECT * FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
-    fun getAppMetadata(repoId: Long, packageId: String): AppMetadata
+    fun getAppMetadata(repoId: Long, packageId: String): AppMetadata?
 
     @Query("SELECT * FROM AppMetadata")
     fun getAppMetadata(): List<AppMetadata>
@@ -354,9 +473,28 @@ internal interface AppDaoInt : AppDao {
         FROM AppMetadata AS app WHERE repoId = :repoId AND packageId = :packageId""")
     fun getAppOverviewItem(repoId: Long, packageId: String): AppOverviewItem?
 
-    @VisibleForTesting
     @Query("DELETE FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
     fun deleteAppMetadata(repoId: Long, packageId: String)
+
+    @Query("""DELETE FROM LocalizedFile
+        WHERE repoId = :repoId AND packageId = :packageId AND type = :type""")
+    fun deleteLocalizedFiles(repoId: Long, packageId: String, type: String)
+
+    @Query("""DELETE FROM LocalizedFile
+        WHERE repoId = :repoId AND packageId = :packageId AND type = :type AND locale = :locale""")
+    fun deleteLocalizedFile(repoId: Long, packageId: String, type: String, locale: String)
+
+    @Query("""DELETE FROM LocalizedFileList
+        WHERE repoId = :repoId AND packageId = :packageId""")
+    fun deleteLocalizedFileLists(repoId: Long, packageId: String)
+
+    @Query("""DELETE FROM LocalizedFileList
+        WHERE repoId = :repoId AND packageId = :packageId AND type = :type""")
+    fun deleteLocalizedFileLists(repoId: Long, packageId: String, type: String)
+
+    @Query("""DELETE FROM LocalizedFileList
+        WHERE repoId = :repoId AND packageId = :packageId AND type = :type AND locale = :locale""")
+    fun deleteLocalizedFileList(repoId: Long, packageId: String, type: String, locale: String)
 
     @VisibleForTesting
     @Query("SELECT COUNT(*) FROM AppMetadata")

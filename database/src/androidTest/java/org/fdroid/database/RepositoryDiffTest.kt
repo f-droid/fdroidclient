@@ -77,47 +77,6 @@ internal class RepositoryDiffTest : DbTest() {
     }
 
     @Test
-    fun iconDiff() {
-        val repo = getRandomRepo()
-        val updateIcon = getRandomFileV2()
-        val json = """
-            {
-              "icon": ${Json.encodeToString(updateIcon)}
-            }""".trimIndent()
-        testDiff(repo, json) { repos ->
-            assertEquals(updateIcon, repos[0].icon)
-            assertRepoEquals(repo.copy(icon = updateIcon), repos[0])
-        }
-    }
-
-    @Test
-    fun iconPartialDiff() {
-        val repo = getRandomRepo()
-        val updateIcon = repo.icon!!.copy(name = getRandomString())
-        val json = """
-            {
-              "icon": { "name": "${updateIcon.name}" }
-            }""".trimIndent()
-        testDiff(repo, json) { repos ->
-            assertEquals(updateIcon, repos[0].icon)
-            assertRepoEquals(repo.copy(icon = updateIcon), repos[0])
-        }
-    }
-
-    @Test
-    fun iconRemoval() {
-        val repo = getRandomRepo()
-        val json = """
-            {
-              "icon": null
-            }""".trimIndent()
-        testDiff(repo, json) { repos ->
-            assertEquals(null, repos[0].icon)
-            assertRepoEquals(repo.copy(icon = null), repos[0])
-        }
-    }
-
-    @Test
     fun mirrorDiff() {
         val repo = getRandomRepo()
         val updateMirrors = repo.mirrors.toMutableList().apply {
