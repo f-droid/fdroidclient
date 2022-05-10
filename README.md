@@ -12,7 +12,7 @@ for Android.
 
 ## Direct download
 
-You can [download the application](https://f-droid.org/FDroid.apk) directly
+You can [download the application](https://f-droid.org/F-Droid.apk) directly
 from our site or [browse it in the repo](https://f-droid.org/app/org.fdroid.fdroid).
 
 ## Libraries
