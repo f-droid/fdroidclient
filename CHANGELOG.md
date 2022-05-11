@@ -1,3 +1,7 @@
+### 1.15 (2022-05-11)
+
+* Revert to commons-io v2.6, fixing #2406
+
 ### 1.15 (2022-05-03)
 
 * Set navigation bar color to black in dark theme (@ConnyDuck)
