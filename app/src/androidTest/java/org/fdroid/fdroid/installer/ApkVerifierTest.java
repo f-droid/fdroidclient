@@ -19,6 +19,10 @@
 
 package org.fdroid.fdroid.installer;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import android.app.Instrumentation;
 import android.net.Uri;
 import android.os.Build;
@@ -26,6 +30,7 @@ import android.util.Log;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
+
 import org.fdroid.fdroid.AssetUtils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;
@@ -39,10 +44,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.TreeSet;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * This test checks the ApkVerifier by parsing a repo from permissionsRepo.xml
@@ -110,14 +111,14 @@ public class ApkVerifierTest {
         if (Build.VERSION.SDK_INT >= 23) {
             permissionsList.add("android.permission.ACCESS_FINE_LOCATION");
         }
-        apk.requestedPermissions = permissionsList.toArray(new String[permissionsList.size()]);
+        apk.requestedPermissions = permissionsList.toArray(new String[0]);
 
         Uri uri = Uri.fromFile(minMaxApk);
         ApkVerifier apkVerifier = new ApkVerifier(instrumentation.getContext(), uri, apk);
         apkVerifier.verifyApk();
 
         permissionsList.add("ADDITIONAL_PERMISSION");
-        apk.requestedPermissions = permissionsList.toArray(new String[permissionsList.size()]);
+        apk.requestedPermissions = permissionsList.toArray(new String[0]);
         apkVerifier.verifyApk();
     }
 
@@ -307,7 +308,7 @@ public class ApkVerifierTest {
                         + Build.VERSION.SDK_INT + ")");
             }
         }
-        String[] expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
+        String[] expectedPermissions = expectedSet.toArray(new String[0]);
         assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
 
         String[] badPermissions = Arrays.copyOf(expectedPermissions, expectedPermissions.length + 1);
@@ -383,7 +384,7 @@ public class ApkVerifierTest {
                         + Build.VERSION.SDK_INT + ")");
             }
         }
-        String[] expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
+        String[] expectedPermissions = expectedSet.toArray(new String[0]);
         assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
 
         expectedSet = new TreeSet<>(Arrays.asList(

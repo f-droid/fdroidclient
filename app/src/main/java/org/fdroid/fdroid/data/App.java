@@ -16,6 +16,11 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 
@@ -39,11 +44,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.os.ConfigurationCompat;
-import androidx.core.os.LocaleListCompat;
 
 /**
  * Represents an application, its availability, and its current installed state.

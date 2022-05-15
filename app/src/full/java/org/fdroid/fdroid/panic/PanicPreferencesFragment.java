@@ -15,13 +15,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.TypedValue;
 
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.installer.PrivilegedInstaller;
-
-import java.util.ArrayList;
-import java.util.Set;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -32,6 +25,14 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
+
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
+
+import java.util.ArrayList;
+import java.util.Set;
+
 import info.guardianproject.panic.Panic;
 import info.guardianproject.panic.PanicResponder;
 
@@ -174,8 +175,8 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
             entryValues.add(resolveInfo.activityInfo.packageName);
         }
 
-        prefApp.setEntries(entries.toArray(new CharSequence[entries.size()]));
-        prefApp.setEntryValues(entryValues.toArray(new CharSequence[entryValues.size()]));
+        prefApp.setEntries(entries.toArray(new CharSequence[0]));
+        prefApp.setEntryValues(entryValues.toArray(new CharSequence[0]));
         prefApp.setDefaultValue(Panic.PACKAGE_NAME_NONE);
 
         if (entries.size() <= 1) {
