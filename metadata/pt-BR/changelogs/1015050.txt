@@ -1,0 +1,5 @@
+* Revisão total da lógica de download para melhor desempenho e com suporte a espelhos.
+
+* Capturas de tela e gráficos agora são baixados de espelhos.
+
+* "Vazamento de privacidade" reduzido em sessões TLS
