@@ -6,12 +6,12 @@
 
 * App-uri fără iconi PNG acum în Latest Tab (@ashutoshgngwr)
 
-* Gestionare îmbunătățită a pictogramelor cu setări limitate de date/WiFi.
+* Gestionare mai bună a pictogramelor cu setări limitate de date/WiFi.
 
 *Partajare offline, în apropiere
 
-* Permite să alegi ce antifațe se afișează
+* Permite să alegi ce caracteristici nedorite se afișează
 
-* Blocare add de noi repoziții când adminul dispozitivului refuză "Surse necunoscute"
+* Blocare adăugării de depozite atunci când adminul dispozitivului refuză "Surse necunoscute"
 
 * Eliminarea "Allow Push Requests"
