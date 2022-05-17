@@ -23,6 +23,15 @@ internal class HttpManagerInstrumentationTest {
 
     private val userAgent = getRandomString()
 
+    @Test
+    fun testCleartext() = runSuspend {
+        val httpManager = HttpManager(userAgent, null)
+        val mirror = Mirror("http://neverssl.com")
+        val downloadRequest = DownloadRequest("/", listOf(mirror))
+
+        httpManager.getBytes(downloadRequest)
+    }
+
     @Test(expected = SSLHandshakeException::class)
     fun testNoTls10() = runSuspend {
         val httpManager = HttpManager(userAgent, null)

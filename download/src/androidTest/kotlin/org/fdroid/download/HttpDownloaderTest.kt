@@ -1,13 +1,9 @@
 package org.fdroid.download
 
-import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.ProxyBuilder
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondOk
-import io.ktor.client.engine.okhttp.OkHttp
-import io.ktor.client.engine.okhttp.OkHttpConfig
 import io.ktor.client.utils.buildHeaders
 import io.ktor.http.HttpHeaders.ContentLength
 import io.ktor.http.HttpHeaders.ETag
@@ -17,7 +13,6 @@ import io.ktor.http.HttpMethod.Companion.Head
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.headersOf
-import okhttp3.ConnectionSpec.Companion.CLEARTEXT
 import org.fdroid.get
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
@@ -163,16 +158,7 @@ internal class HttpDownloaderTest {
 
         val file = folder.newFile()
 
-        val clientFactory = object : HttpClientEngineFactory<OkHttpConfig> {
-            override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine = OkHttp.create {
-                block()
-                config {
-                    // onion connections are considered cleartext, so we need to allow that
-                    connectionSpecs(listOf(CLEARTEXT))
-                }
-            }
-        }
-        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = clientFactory)
+        val httpManager = HttpManager(userAgent, null)
         // tor-project.org
         val torHost = "http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion"
         val proxy = ProxyBuilder.socks("localhost", TOR_SOCKS_PORT)
