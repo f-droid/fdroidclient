@@ -344,7 +344,7 @@ public class LocalHTTPD extends NanoHTTPD {
 
         if (session.getMethod() == Method.POST) {
             try {
-                session.parseBody(new HashMap<String, String>());
+                session.parseBody(new HashMap<>());
             } catch (IOException e) {
                 return newFixedLengthResponse(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT,
                         "Internal server error, check logcat on server for details.");
