@@ -2,11 +2,13 @@ package org.fdroid.download
 
 import mu.KotlinLogging
 import org.fdroid.fdroid.ProgressListener
+import org.fdroid.fdroid.isMatching
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import java.security.MessageDigest
 
 public abstract class Downloader constructor(
     @JvmField
@@ -17,6 +19,13 @@ public abstract class Downloader constructor(
         private val log = KotlinLogging.logger {}
     }
 
+    protected var fileSize: Long? = null
+
+    /**
+     * If not null, this is the expected sha256 hash of the [outputFile] after download.
+     */
+    protected var sha256: String? = null
+
     /**
      * If you ask for the cacheTag before calling download(), you will get the
      * same one you passed in (if any). If you call it after download(), you
@@ -25,6 +34,7 @@ public abstract class Downloader constructor(
      * If this cacheTag matches that returned by the server, then no download will
      * take place, and a status code of 304 will be returned by download().
      */
+    @Deprecated("Used only for v1 repos")
     public var cacheTag: String? = null
 
     @Volatile
@@ -36,13 +46,24 @@ public abstract class Downloader constructor(
     /**
      * Call this to start the download.
      * Never call this more than once. Create a new [Downloader], if you need to download again!
+     *
+     * @totalSize must be set to what the index tells us the size will be
+     * @sha256 must be set to the sha256 hash from the index and only be null for `entry.jar`.
      */
+    @Throws(IOException::class, InterruptedException::class)
+    public abstract fun download(totalSize: Long, sha256: String? = null)
+
+    /**
+     * Call this to start the download.
+     * Never call this more than once. Create a new [Downloader], if you need to download again!
+     */
+    @Deprecated("Use only for v1 repos")
     @Throws(IOException::class, InterruptedException::class)
     public abstract fun download()
 
     @Throws(IOException::class)
     protected abstract fun getInputStream(resumable: Boolean): InputStream
-    protected open suspend fun getBytes(resumable: Boolean, receiver: (ByteArray) -> Unit) {
+    protected open suspend fun getBytes(resumable: Boolean, receiver: BytesReceiver) {
         throw NotImplementedError()
     }
 
@@ -57,6 +78,7 @@ public abstract class Downloader constructor(
      * After calling [download], this returns true if a new file was downloaded and
      * false if the file on the server has not changed and thus was not downloaded.
      */
+    @Deprecated("Only for v1 repos")
     public abstract fun hasChanged(): Boolean
     public abstract fun close()
 
@@ -88,17 +110,28 @@ public abstract class Downloader constructor(
     @Throws(InterruptedException::class, IOException::class, NoResumeException::class)
     protected suspend fun downloadFromBytesReceiver(isResume: Boolean) {
         try {
+            val messageDigest: MessageDigest? = if (sha256 == null) null else {
+                MessageDigest.getInstance("SHA-256")
+            }
             FileOutputStream(outputFile, isResume).use { outputStream ->
                 var bytesCopied = outputFile.length()
                 var lastTimeReported = 0L
                 val bytesTotal = totalDownloadSize()
-                getBytes(isResume) { bytes ->
+                getBytes(isResume) { bytes, numTotalBytes ->
                     // Getting the input stream is slow(ish) for HTTP downloads, so we'll check if
                     // we were interrupted before proceeding to the download.
                     throwExceptionIfInterrupted()
                     outputStream.write(bytes)
+                    messageDigest?.update(bytes)
                     bytesCopied += bytes.size
-                    lastTimeReported = reportProgress(lastTimeReported, bytesCopied, bytesTotal)
+                    val total = if (bytesTotal == -1L) numTotalBytes ?: -1L else bytesTotal
+                    lastTimeReported = reportProgress(lastTimeReported, bytesCopied, total)
+                }
+                // check if expected sha256 hash matches
+                sha256?.let { expectedHash ->
+                    if (!messageDigest.isMatching(expectedHash)) {
+                        throw IOException("Hash not matching")
+                    }
                 }
                 // force progress reporting at the end
                 reportProgress(0L, bytesCopied, bytesTotal)
@@ -119,6 +152,9 @@ public abstract class Downloader constructor(
      */
     @Throws(IOException::class, InterruptedException::class)
     private fun copyInputToOutputStream(input: InputStream, output: OutputStream) {
+        val messageDigest: MessageDigest? = if (sha256 == null) null else {
+            MessageDigest.getInstance("SHA-256")
+        }
         try {
             var bytesCopied = outputFile.length()
             var lastTimeReported = 0L
@@ -128,9 +164,16 @@ public abstract class Downloader constructor(
             while (numBytes >= 0) {
                 throwExceptionIfInterrupted()
                 output.write(buffer, 0, numBytes)
+                messageDigest?.update(buffer, 0, numBytes)
                 bytesCopied += numBytes
                 lastTimeReported = reportProgress(lastTimeReported, bytesCopied, bytesTotal)
                 numBytes = input.read(buffer)
+            }
+            // check if expected sha256 hash matches
+            sha256?.let { expectedHash ->
+                if (!messageDigest.isMatching(expectedHash)) {
+                    throw IOException("Hash not matching")
+                }
             }
             // force progress reporting at the end
             reportProgress(0L, bytesCopied, bytesTotal)
@@ -175,4 +218,8 @@ public abstract class Downloader constructor(
         }
     }
 
+}
+
+public fun interface BytesReceiver {
+    public suspend fun receive(bytes: ByteArray, numTotalBytes: Long?)
 }

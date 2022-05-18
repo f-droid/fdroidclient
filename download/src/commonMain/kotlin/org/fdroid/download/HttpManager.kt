@@ -119,9 +119,10 @@ public open class HttpManager @JvmOverloads constructor(
     public suspend fun get(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
-        receiver: suspend (ByteArray) -> Unit,
+        receiver: BytesReceiver,
     ): Unit = mirrorChooser.mirrorRequest(request) { mirror, url ->
         getHttpStatement(request, mirror, url, skipFirstBytes).execute { response ->
+            val contentLength = response.contentLength()
             if (skipFirstBytes != null && response.status != PartialContent) {
                 throw NoResumeException()
             }
@@ -130,7 +131,7 @@ public open class HttpManager @JvmOverloads constructor(
             while (!channel.isClosedForRead) {
                 val packet = channel.readRemaining(limit)
                 while (!packet.isEmpty) {
-                    receiver(packet.readBytes())
+                    receiver.receive(packet.readBytes(), contentLength)
                 }
             }
         }
@@ -179,7 +180,7 @@ public open class HttpManager @JvmOverloads constructor(
         skipFirstBytes: Long? = null,
     ): ByteArray {
         val channel = ByteChannel()
-        get(request, skipFirstBytes) { bytes ->
+        get(request, skipFirstBytes) { bytes, _ ->
             channel.writeFully(bytes)
         }
         channel.close()
@@ -225,3 +226,4 @@ public open class HttpManager @JvmOverloads constructor(
 }
 
 public class NoResumeException : Exception()
+public class NotFoundException(e: Throwable? = null) : Exception(e)

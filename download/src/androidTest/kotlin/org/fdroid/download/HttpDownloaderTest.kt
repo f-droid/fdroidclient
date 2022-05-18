@@ -19,6 +19,7 @@ import org.fdroid.runSuspend
 import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
+import java.io.IOException
 import java.net.BindException
 import java.net.ServerSocket
 import kotlin.random.Random
@@ -31,7 +32,7 @@ import kotlin.test.fail
 
 private const val TOR_SOCKS_PORT = 9050
 
-@Suppress("BlockingMethodInNonBlockingContext")
+@Suppress("BlockingMethodInNonBlockingContext", "DEPRECATION")
 internal class HttpDownloaderTest {
 
     @get:Rule
@@ -51,6 +52,39 @@ internal class HttpDownloaderTest {
         val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
         val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
         httpDownloader.download()
+
+        assertContentEquals(bytes, file.readBytes())
+    }
+
+    @Test
+    fun testDownloadWithCorrectHash() = runSuspend {
+        val file = folder.newFile()
+        val bytes = "We know the hash for this string".encodeToByteArray()
+        var progressReported = false
+
+        val mockEngine = MockEngine { respond(bytes) }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
+        httpDownloader.setListener { _, totalBytes ->
+            assertEquals(bytes.size.toLong(), totalBytes)
+            progressReported = true
+        }
+        httpDownloader.download(bytes.size.toLong(),
+            "e3802e5f8ae3dc7bbf5f1f4f7fb825d9bce9d1ddce50ac564fcbcfdeb31f1b90")
+
+        assertContentEquals(bytes, file.readBytes())
+        assertTrue(progressReported)
+    }
+
+    @Test(expected = IOException::class)
+    fun testDownloadWithWrongHash() = runSuspend {
+        val file = folder.newFile()
+        val bytes = "We know the hash for this string".encodeToByteArray()
+
+        val mockEngine = MockEngine { respond(bytes) }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
+        httpDownloader.download(bytes.size.toLong(), "This is not the right hash")
 
         assertContentEquals(bytes, file.readBytes())
     }

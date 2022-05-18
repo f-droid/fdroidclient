@@ -16,6 +16,6 @@ package org.fdroid.fdroid
  *  * `int`s, i.e. [String.hashCode]
  *
  */
-public interface ProgressListener {
+public fun interface ProgressListener {
     public fun onProgress(bytesRead: Long, totalBytes: Long)
 }

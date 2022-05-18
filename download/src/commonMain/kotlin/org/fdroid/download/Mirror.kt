@@ -7,7 +7,7 @@ import io.ktor.http.appendPathSegments
 import mu.KotlinLogging
 
 public data class Mirror @JvmOverloads constructor(
-    private val baseUrl: String,
+    val baseUrl: String,
     val location: String? = null,
 ) {
     public val url: Url by lazy {
@@ -33,6 +33,8 @@ public data class Mirror @JvmOverloads constructor(
     public fun isOnion(): Boolean = url.isOnion()
 
     public fun isLocal(): Boolean = url.isLocal()
+
+    public fun isHttp(): Boolean = url.protocol.name.startsWith("http")
 
     public companion object {
         @JvmStatic
