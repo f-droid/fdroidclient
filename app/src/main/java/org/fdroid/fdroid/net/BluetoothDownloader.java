@@ -91,8 +91,16 @@ public class BluetoothDownloader extends Downloader {
 
     @Override
     public long totalDownloadSize() {
+        if (getFileSize() != null) return getFileSize();
         FileDetails details = getFileDetails();
         return details != null ? details.getFileSize() : -1;
+    }
+
+    @Override
+    public void download(long totalSize, @Nullable String sha256) throws IOException, InterruptedException {
+        setFileSize(totalSize);
+        setSha256(sha256);
+        download();
     }
 
     @Override

@@ -18,6 +18,7 @@ import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpHeaders.UserAgent
 import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.HttpStatusCode.Companion.InternalServerError
+import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.HttpStatusCode.Companion.TemporaryRedirect
@@ -37,7 +38,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
-class HttpManagerTest {
+internal class HttpManagerTest {
 
     private val userAgent = getRandomString()
     private val mirrors = listOf(Mirror("http://example.org"), Mirror("http://example.net/"))
@@ -195,7 +196,29 @@ class HttpManagerTest {
         // assert there is only one request per API call using one of the mirrors
         assertEquals(2, mockEngine.requestHistory.size)
         mockEngine.requestHistory.forEach { request ->
-            println(mockEngine.requestHistory)
+            val url = request.url.toString()
+            assertTrue(url == "http://example.org/foo" || url == "http://example.net/foo")
+        }
+    }
+
+    @Test
+    fun testNoMoreMirrorsWhenRepoDownloadNotFound() = runSuspend {
+        val downloadRequest = downloadRequest.copy(tryFirstMirror = mirrors[0])
+        val mockEngine = MockEngine { respond("", NotFound) }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
+
+        assertTrue(downloadRequest.tryFirstMirror != null)
+
+        assertNull(httpManager.head(downloadRequest))
+        val e = assertFailsWith<ClientRequestException> {
+            httpManager.getBytes(downloadRequest)
+        }
+
+        // assert that the exception reflects the NotFound error
+        assertEquals(NotFound, e.response.status)
+        // assert there is only one request per API call using one of the mirrors
+        assertEquals(2, mockEngine.requestHistory.size)
+        mockEngine.requestHistory.forEach { request ->
             val url = request.url.toString()
             assertTrue(url == "http://example.org/foo" || url == "http://example.net/foo")
         }

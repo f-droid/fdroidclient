@@ -2,6 +2,7 @@ package org.fdroid.download
 
 import io.ktor.client.plugins.ResponseException
 import io.ktor.http.HttpStatusCode.Companion.Forbidden
+import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.Url
 import io.ktor.utils.io.errors.IOException
 import mu.KotlinLogging
@@ -43,6 +44,8 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
             } catch (e: ResponseException) {
                 // don't try other mirrors if we got Forbidden response, but supplied credentials
                 if (downloadRequest.hasCredentials && e.response.status == Forbidden) throw e
+                // don't try other mirrors if we got NotFount response and downloaded a repo
+                if (downloadRequest.tryFirstMirror != null && e.response.status == NotFound) throw e
                 // also throw if this is the last mirror to try, otherwise try next
                 throwOnLastMirror(e, index == downloadRequest.mirrors.size - 1)
             } catch (e: IOException) {

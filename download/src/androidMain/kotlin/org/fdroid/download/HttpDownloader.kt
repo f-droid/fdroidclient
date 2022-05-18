@@ -21,10 +21,8 @@
  */
 package org.fdroid.download
 
-import android.annotation.TargetApi
-import android.os.Build.VERSION.SDK_INT
 import io.ktor.client.plugins.ResponseException
-import kotlinx.coroutines.DelicateCoroutinesApi
+import io.ktor.http.HttpStatusCode.Companion.NotFound
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import java.io.File
@@ -45,21 +43,28 @@ public class HttpDownloader constructor(
         val log = KotlinLogging.logger {}
     }
 
+    @Deprecated("Only for v1 repos")
     private var hasChanged = false
-    private var fileSize = -1L
 
     override fun getInputStream(resumable: Boolean): InputStream {
         throw NotImplementedError("Use getInputStreamSuspend instead.")
     }
 
     @Throws(IOException::class, NoResumeException::class)
-    override suspend fun getBytes(resumable: Boolean, receiver: (ByteArray) -> Unit) {
+    protected override suspend fun getBytes(resumable: Boolean, receiver: BytesReceiver) {
         val skipBytes = if (resumable) outputFile.length() else null
         return try {
             httpManager.get(request, skipBytes, receiver)
         } catch (e: ResponseException) {
-            throw IOException(e)
+            if (e.response.status == NotFound) throw NotFoundException(e)
+            else throw IOException(e)
         }
+    }
+
+    public override fun download(totalSize: Long, sha256: String?) {
+        this.fileSize = totalSize
+        this.sha256 = sha256
+        downloadToFile()
     }
 
     /**
@@ -98,9 +103,9 @@ public class HttpDownloader constructor(
      *
      * @see [Cookieless cookies](http://lucb1e.com/rp/cookielesscookies)
      */
-    @OptIn(DelicateCoroutinesApi::class)
+    @Suppress("DEPRECATION")
     @Throws(IOException::class, InterruptedException::class)
-    override fun download() {
+    public override fun download() {
         val headInfo = runBlocking {
             httpManager.head(request, cacheTag) ?: throw IOException()
         }
@@ -137,9 +142,13 @@ public class HttpDownloader constructor(
         }
 
         hasChanged = true
+        downloadToFile()
+    }
+
+    private fun downloadToFile() {
         var resumable = false
         val fileLength = outputFile.length()
-        if (fileLength > fileSize) {
+        if (fileLength > fileSize ?: -1) {
             if (!outputFile.delete()) log.warn {
                 "Warning: " + outputFile.absolutePath + " not deleted"
             }
@@ -163,15 +172,10 @@ public class HttpDownloader constructor(
         }
     }
 
-    @TargetApi(24)
-    public override fun totalDownloadSize(): Long {
-        return if (SDK_INT < 24) {
-            fileSize.toInt().toLong() // TODO why?
-        } else {
-            fileSize
-        }
-    }
+    protected override fun totalDownloadSize(): Long = fileSize ?: -1L
 
+    @Suppress("DEPRECATION")
+    @Deprecated("Only for v1 repos")
     override fun hasChanged(): Boolean {
         return hasChanged
     }
