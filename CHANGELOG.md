@@ -1,4 +1,8 @@
-### 1.15 (2022-05-11)
+### 1.15.2 (2022-05-18)
+
+* Re-enable HTTP for nearby swapping, fixing #2402
+
+### 1.15.1 (2022-05-11)
 
 * Revert to commons-io v2.6, fixing #2406
 
