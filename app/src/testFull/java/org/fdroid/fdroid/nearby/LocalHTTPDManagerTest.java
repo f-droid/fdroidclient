@@ -20,11 +20,12 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 
+/**
+ * Test that this can start and stop the webserver.
+ */
 @RunWith(RobolectricTestRunner.class)
 public class LocalHTTPDManagerTest {
 
-    // TODO
-    @Ignore("This hangs with Java 11")
     @Test
     public void testStartStop() throws InterruptedException {
         ShadowLog.stream = System.out;
@@ -62,7 +63,7 @@ public class LocalHTTPDManagerTest {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!Utils.isServerSocketInUse(port)) {
+                while (Utils.isServerSocketInUse(port)) {
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
