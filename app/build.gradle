@@ -123,7 +123,6 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError true
-        disable 'MissingQuantity' // TODO fix in weblate, update translations and then remove the disable here
 
         htmlReport true
         xmlReport false
