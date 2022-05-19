@@ -1,4 +1,4 @@
-package org.fdroid.index.v1
+package org.fdroid.index.v2
 
 import org.fdroid.index.SigningException
 import org.fdroid.test.VerifierConstants.CERTIFICATE
@@ -10,21 +10,32 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
-internal class IndexV1VerifierTest {
+internal class IndexV2VerifierTest {
 
     @Test
-    fun testNoCertWithFingerprint() {
-        val file = File("$VERIFICATION_DIR/valid-v1.jar")
+    fun testNoCertAndFingerprintAllowed() {
+        val file = File("$VERIFICATION_DIR/valid-v2.jar")
         assertFailsWith<IllegalArgumentException> {
-            IndexV1Verifier(file, CERTIFICATE, FINGERPRINT)
+            IndexV2Verifier(file, CERTIFICATE, FINGERPRINT)
         }
     }
 
     @Test
     fun testValid() {
-        val file = File("$VERIFICATION_DIR/valid-v1.jar")
+        val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV1Verifier(file, null, null)
+        val verifier = IndexV2Verifier(file, null, null)
+        val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
+            assertEquals("foo\n", inputStream.readBytes().decodeToString())
+        }
+        assertEquals(CERTIFICATE, certificate)
+    }
+
+    @Test
+    fun testValidApkSigner() {
+        val file = File("$VERIFICATION_DIR/valid-apksigner-v2.jar")
+
+        val verifier = IndexV2Verifier(file, null, null)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -33,9 +44,9 @@ internal class IndexV1VerifierTest {
 
     @Test
     fun testValidMatchesFingerprint() {
-        val file = File("$VERIFICATION_DIR/valid-v1.jar")
+        val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV1Verifier(file, null, FINGERPRINT)
+        val verifier = IndexV2Verifier(file, null, FINGERPRINT)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -44,9 +55,9 @@ internal class IndexV1VerifierTest {
 
     @Test
     fun testValidWrongFingerprint() {
-        val file = File("$VERIFICATION_DIR/valid-v1.jar")
+        val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV1Verifier(file, null, "foo bar")
+        val verifier = IndexV2Verifier(file, null, "foo bar")
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { inputStream ->
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
@@ -57,9 +68,9 @@ internal class IndexV1VerifierTest {
 
     @Test
     fun testValidWithExpectedCertificate() {
-        val file = File("$VERIFICATION_DIR/valid-v1.jar")
+        val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV1Verifier(file, CERTIFICATE, null)
+        val verifier = IndexV2Verifier(file, CERTIFICATE, null)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -68,9 +79,9 @@ internal class IndexV1VerifierTest {
 
     @Test
     fun testValidWithWrongCertificate() {
-        val file = File("$VERIFICATION_DIR/valid-v1.jar")
+        val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV1Verifier(file, FINGERPRINT, null)
+        val verifier = IndexV2Verifier(file, FINGERPRINT, null)
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { inputStream ->
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
@@ -83,7 +94,7 @@ internal class IndexV1VerifierTest {
     fun testUnsigned() {
         val file = File("$VERIFICATION_DIR/unsigned.jar")
 
-        val verifier = IndexV1Verifier(file, null, null)
+        val verifier = IndexV2Verifier(file, null, null)
         assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { inputStream ->
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
@@ -93,13 +104,11 @@ internal class IndexV1VerifierTest {
 
     @Test
     fun testInvalid() {
-        val file = File("$VERIFICATION_DIR/invalid-v1.jar")
+        val file = File("$VERIFICATION_DIR/invalid-v2.jar")
 
-        val verifier = IndexV1Verifier(file, null, null)
+        val verifier = IndexV2Verifier(file, null, null)
         assertFailsWith<SigningException> {
-            verifier.getStreamAndVerify { inputStream ->
-                assertEquals("foo\n", inputStream.readBytes().decodeToString())
-            }
+            verifier.getStreamAndVerify { }
         }
     }
 
@@ -107,37 +116,42 @@ internal class IndexV1VerifierTest {
     fun testWrongEntry() {
         val file = File("$VERIFICATION_DIR/invalid-wrong-entry-v1.jar")
 
-        val verifier = IndexV1Verifier(file, null, null)
+        val verifier = IndexV2Verifier(file, null, null)
         val e = assertFailsWith<SigningException> {
-            verifier.getStreamAndVerify { inputStream ->
-                assertEquals("foo\n", inputStream.readBytes().decodeToString())
-            }
+            verifier.getStreamAndVerify { }
         }
-        assertTrue(e.message!!.contains("index-v1.json"))
+        assertTrue(e.message!!.contains("entry.json"))
+    }
+
+    @Test
+    fun testSHA1Digest() {
+        val file = File("$VERIFICATION_DIR/invalid-SHA1-SHA1withRSA-v2.jar")
+
+        val verifier = IndexV2Verifier(file, null, null)
+        val e = assertFailsWith<SigningException> {
+            verifier.getStreamAndVerify { }
+        }
+        assertTrue(e.message!!.contains("Unsupported digest"))
     }
 
     @Test
     fun testMD5Digest() {
-        val file = File("$VERIFICATION_DIR/invalid-MD5-SHA1withRSA-v1.jar")
+        val file = File("$VERIFICATION_DIR/invalid-MD5-SHA1withRSA-v2.jar")
 
-        val verifier = IndexV1Verifier(file, null, null)
+        val verifier = IndexV2Verifier(file, null, null)
         val e = assertFailsWith<SigningException> {
-            verifier.getStreamAndVerify { inputStream ->
-                assertEquals("foo\n", inputStream.readBytes().decodeToString())
-            }
+            verifier.getStreamAndVerify { }
         }
         assertTrue(e.message!!.contains("Unsupported digest"))
     }
 
     @Test
     fun testMD5SignatureAlgo() {
-        val file = File("$VERIFICATION_DIR/invalid-MD5-MD5withRSA-v1.jar")
+        val file = File("$VERIFICATION_DIR/invalid-MD5-MD5withRSA-v2.jar")
 
-        val verifier = IndexV1Verifier(file, null, null)
+        val verifier = IndexV2Verifier(file, null, null)
         val e = assertFailsWith<SigningException> {
-            verifier.getStreamAndVerify { inputStream ->
-                assertEquals("foo\n", inputStream.readBytes().decodeToString())
-            }
+            verifier.getStreamAndVerify { }
         }
         assertTrue(e.message!!.contains("Unsupported digest"))
     }

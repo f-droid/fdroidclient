@@ -1,15 +1,18 @@
-package org.fdroid.index.v1
+package org.fdroid.index.v2
 
 import org.fdroid.index.JarIndexVerifier
 import org.fdroid.index.SigningException
 import java.io.File
 import java.util.jar.Attributes
 
-private const val JSON_FILE_NAME = "index-v1.json"
-private const val SUPPORTED_DIGEST = "SHA1-Digest"
+private const val JSON_FILE_NAME = "entry.json"
+private val FORBIDDEN_DIGESTS = listOf(
+    "MD5-Digest",
+    "SHA1-Digest",
+)
 
 /**
- * Verifies the old Index V1.
+ * Verifies the Index V2.
  *
  * @param jarFile the signed jar file to verify.
  * @param expectedSigningCertificate The signing certificate of the repo encoded in lower case hex,
@@ -20,7 +23,7 @@ private const val SUPPORTED_DIGEST = "SHA1-Digest"
  * Even if [expectedSigningFingerprint] is null, the fingerprint might be known and can be used to
  * verify that it matches the signing certificate.
  */
-public class IndexV1Verifier(
+public class IndexV2Verifier(
     jarFile: File,
     expectedSigningCertificate: String?,
     expectedSigningFingerprint: String?,
@@ -31,7 +34,7 @@ public class IndexV1Verifier(
     @Throws(SigningException::class)
     protected override fun checkAttributes(attributes: Attributes) {
         attributes.keys.forEach { key ->
-            if (key.toString() != SUPPORTED_DIGEST) {
+            if (key.toString() in FORBIDDEN_DIGESTS) {
                 throw SigningException("Unsupported digest: $key")
             }
         }
