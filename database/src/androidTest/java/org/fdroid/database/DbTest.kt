@@ -14,9 +14,12 @@ import kotlinx.coroutines.test.setMain
 import org.fdroid.database.test.TestUtils.assertRepoEquals
 import org.fdroid.database.test.TestUtils.toMetadataV2
 import org.fdroid.database.test.TestUtils.toPackageVersionV2
+import org.fdroid.index.v1.IndexV1StreamProcessor
 import org.fdroid.index.v2.IndexV2
+import org.fdroid.index.v2.IndexV2FullStreamProcessor
 import org.fdroid.test.TestUtils.sort
 import org.fdroid.test.TestUtils.sorted
+import org.fdroid.test.VerifierConstants.CERTIFICATE
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
@@ -56,6 +59,40 @@ internal abstract class DbTest {
     @Throws(IOException::class)
     fun closeDb() {
         db.close()
+    }
+
+    protected fun streamIndexV1IntoDb(
+        indexAssetPath: String,
+        address: String = "https://f-droid.org/repo",
+        certificate: String = CERTIFICATE,
+        lastTimestamp: Long = -1,
+    ): Long {
+        val repoId = db.getRepositoryDao().insertEmptyRepo(address)
+        val streamReceiver = DbV1StreamReceiver(db, repoId) { true }
+        val indexProcessor = IndexV1StreamProcessor(streamReceiver, certificate, lastTimestamp)
+        db.runInTransaction {
+            assets.open(indexAssetPath).use { indexStream ->
+                indexProcessor.process(indexStream)
+            }
+        }
+        return repoId
+    }
+
+    protected fun streamIndexV2IntoDb(
+        indexAssetPath: String,
+        address: String = "https://f-droid.org/repo",
+        version: Long = 42L,
+        certificate: String = CERTIFICATE,
+    ): Long {
+        val repoId = db.getRepositoryDao().insertEmptyRepo(address)
+        val streamReceiver = DbV2StreamReceiver(db, repoId) { true }
+        val indexProcessor = IndexV2FullStreamProcessor(streamReceiver, certificate)
+        db.runInTransaction {
+            assets.open(indexAssetPath).use { indexStream ->
+                indexProcessor.process(version, indexStream) {}
+            }
+        }
+        return repoId
     }
 
     /**

@@ -17,6 +17,8 @@ import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 
+public enum class IndexFormatVersion { ONE, TWO }
+
 @Entity
 public data class CoreRepository(
     @PrimaryKey(autoGenerate = true) val repoId: Long = 0,
@@ -25,7 +27,8 @@ public data class CoreRepository(
     val address: String,
     val webBaseUrl: String? = null,
     val timestamp: Long,
-    val version: Int?,
+    val version: Long?,
+    val formatVersion: IndexFormatVersion?,
     val maxAge: Int?,
     val description: LocalizedTextV2 = emptyMap(),
     val certificate: String?,
@@ -33,7 +36,8 @@ public data class CoreRepository(
 
 internal fun RepoV2.toCoreRepository(
     repoId: Long = 0,
-    version: Int,
+    version: Long,
+    formatVersion: IndexFormatVersion? = null,
     certificate: String? = null,
 ) = CoreRepository(
     repoId = repoId,
@@ -43,6 +47,7 @@ internal fun RepoV2.toCoreRepository(
     webBaseUrl = webBaseUrl,
     timestamp = timestamp,
     version = version,
+    formatVersion = formatVersion,
     maxAge = null,
     description = description,
     certificate = certificate,
@@ -82,7 +87,8 @@ public data class Repository(
     val address: String get() = repository.address
     val webBaseUrl: String? get() = repository.webBaseUrl
     val timestamp: Long get() = repository.timestamp
-    val version: Int get() = repository.version ?: 0
+    val version: Long get() = repository.version ?: 0
+    val formatVersion: IndexFormatVersion? get() = repository.formatVersion
     internal val description: LocalizedTextV2 get() = repository.description
     val certificate: String? get() = repository.certificate
 
@@ -258,7 +264,7 @@ public data class InitialRepository(
     val address: String,
     val description: String,
     val certificate: String,
-    val version: Int,
+    val version: Long,
     val enabled: Boolean,
     val weight: Int,
 )

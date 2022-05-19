@@ -66,7 +66,7 @@ internal class RepositoryDiffTest : DbTest() {
 
         // decode diff from JSON and update DB with it
         val diff = j.parseToJsonElement(json).jsonObject // Json.decodeFromString<RepoDiffV2>(json)
-        repoDao.updateRepository(repoId, diff)
+        repoDao.updateRepository(repoId, 42, diff)
 
         // fetch repos again and check that the result is as expected
         repos = repoDao.getRepositories().sortedBy { it.repoId }
@@ -212,7 +212,7 @@ internal class RepositoryDiffTest : DbTest() {
 
         // decode diff from JSON and update DB with it
         val diff = j.parseToJsonElement(json).jsonObject
-        repoDao.updateRepository(repoId, diff)
+        repoDao.updateRepository(repoId, 42, diff)
 
         // fetch repos again and check that the result is as expected
         repos = repoDao.getRepositories().sortedBy { it.repoId }

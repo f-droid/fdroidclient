@@ -6,7 +6,6 @@ import org.fdroid.index.IndexParser
 import org.fdroid.index.parseV2
 import org.fdroid.index.v2.IndexV2
 import org.fdroid.index.v2.IndexV2DiffStreamProcessor
-import org.fdroid.index.v2.IndexV2StreamProcessor
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
@@ -300,28 +299,16 @@ internal class IndexV2DiffTest : DbTest() {
 
     private fun testDiff(startPath: String, diffStream: InputStream, endIndex: IndexV2) {
         // stream start index into the DB
-        val repoId = streamIndex(startPath)
+        val repoId = streamIndexV2IntoDb(startPath)
 
         // apply diff stream to the DB
         val streamReceiver = DbV2DiffStreamReceiver(db, repoId) { true }
         val streamProcessor = IndexV2DiffStreamProcessor(streamReceiver)
         db.runInTransaction {
-            streamProcessor.process(diffStream)
+            streamProcessor.process(42, diffStream) {}
         }
         // assert that changed DB data is equal to given endIndex
         assertDbEquals(repoId, endIndex)
-    }
-
-    private fun streamIndex(path: String): Long {
-        val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
-        val streamReceiver = DbV2StreamReceiver(db, repoId) { true }
-        val indexProcessor = IndexV2StreamProcessor(streamReceiver, null)
-        db.runInTransaction {
-            assets.open(path).use { indexStream ->
-                indexProcessor.process(42, indexStream)
-            }
-        }
-        return repoId
     }
 
 }

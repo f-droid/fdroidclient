@@ -15,8 +15,8 @@ internal class DbV2DiffStreamReceiver(
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
 
-    override fun receiveRepoDiff(repoJsonObject: JsonObject) {
-        db.getRepositoryDao().updateRepository(repoId, repoJsonObject)
+    override fun receiveRepoDiff(version: Long, repoJsonObject: JsonObject) {
+        db.getRepositoryDao().updateRepository(repoId, version, repoJsonObject)
     }
 
     override fun receivePackageMetadataDiff(packageId: String, packageJsonObject: JsonObject?) {
