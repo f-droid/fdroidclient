@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import org.fdroid.CompatibilityChecker
+import org.fdroid.database.IndexFormatVersion.ONE
 import org.fdroid.index.v1.IndexV1StreamReceiver
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
@@ -25,9 +26,9 @@ internal class DbV1StreamReceiver(
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
 
-    override fun receive(repo: RepoV2, version: Int, certificate: String?) {
+    override fun receive(repo: RepoV2, version: Long, certificate: String?) {
         db.getRepositoryDao().clear(repoId)
-        db.getRepositoryDao().update(repoId, repo, version, certificate)
+        db.getRepositoryDao().update(repoId, repo, version, ONE, certificate)
     }
 
     override fun receive(packageId: String, m: MetadataV2) {

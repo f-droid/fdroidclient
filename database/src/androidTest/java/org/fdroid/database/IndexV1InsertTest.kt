@@ -62,7 +62,7 @@ internal class IndexV1InsertTest : DbTest() {
     private fun streamIndex(path: String): Long {
         val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")
         val streamReceiver = TestStreamReceiver(repoId)
-        val indexProcessor = IndexV1StreamProcessor(streamReceiver, null)
+        val indexProcessor = IndexV1StreamProcessor(streamReceiver, null, -1)
         db.runInTransaction {
             assets.open(path).use { indexStream ->
                 indexProcessor.process(indexStream)
@@ -80,7 +80,7 @@ internal class IndexV1InsertTest : DbTest() {
                 val streamReceiver = TestStreamReceiver(repoId) {
                     if (cIn.byteCount > 0) throw SerializationException()
                 }
-                val indexProcessor = IndexV1StreamProcessor(streamReceiver, null)
+                val indexProcessor = IndexV1StreamProcessor(streamReceiver, null, -1)
                 cIn.use { indexStream ->
                     indexProcessor.process(indexStream)
                 }
@@ -100,7 +100,7 @@ internal class IndexV1InsertTest : DbTest() {
         private val callback: () -> Unit = {},
     ) : IndexV1StreamReceiver {
         private val streamReceiver = DbV1StreamReceiver(db, repoId) { true }
-        override fun receive(repo: RepoV2, version: Int, certificate: String?) {
+        override fun receive(repo: RepoV2, version: Long, certificate: String?) {
             streamReceiver.receive(repo, version, certificate)
             callback()
         }

@@ -25,23 +25,9 @@ public interface RepositoryDao {
     public fun insert(initialRepo: InitialRepository)
 
     /**
-     * Use when replacing an existing repo with a full index.
-     * This removes all existing index data associated with this repo from the database,
-     * but does not touch repository preferences.
-     * @throws IllegalStateException if no repo with the given [repoId] exists.
-     */
-    public fun clear(repoId: Long)
-
-    /**
      * Removes all repos and their preferences.
      */
     public fun clearAll()
-
-    /**
-     * Updates an existing repo with new data from a full index update.
-     * Call [clear] first to ensure old data was removed.
-     */
-    public fun update(repoId: Long, repository: RepoV2, version: Int, certificate: String?)
 
     public fun getRepository(repoId: Long): Repository?
     public fun insertEmptyRepo(
@@ -93,6 +79,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             icon = null,
             timestamp = -1,
             version = initialRepo.version,
+            formatVersion = null,
             maxAge = null,
             description = mapOf("en-US" to initialRepo.description),
             certificate = initialRepo.certificate,
@@ -117,8 +104,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
             name = mapOf("en-US" to address),
             icon = null,
             address = address,
-            timestamp = System.currentTimeMillis(),
+            timestamp = -1,
             version = null,
+            formatVersion = null,
             maxAge = null,
             certificate = null,
         )
@@ -150,8 +138,14 @@ internal interface RepositoryDaoInt : RepositoryDao {
         insert(repositoryPreferences)
     }
 
+    /**
+     * Use when replacing an existing repo with a full index.
+     * This removes all existing index data associated with this repo from the database,
+     * but does not touch repository preferences.
+     * @throws IllegalStateException if no repo with the given [repoId] exists.
+     */
     @Transaction
-    override fun clear(repoId: Long) {
+    fun clear(repoId: Long) {
         val repo = getRepository(repoId) ?: error("repo with id $repoId does not exist")
         // this clears all foreign key associated data since the repo gets replaced
         insertOrReplace(repo.repository)
@@ -163,9 +157,19 @@ internal interface RepositoryDaoInt : RepositoryDao {
         deleteAllRepositoryPreferences()
     }
 
+    /**
+     * Updates an existing repo with new data from a full index update.
+     * Call [clear] first to ensure old data was removed.
+     */
     @Transaction
-    override fun update(repoId: Long, repository: RepoV2, version: Int, certificate: String?) {
-        update(repository.toCoreRepository(repoId, version, certificate))
+    fun update(
+        repoId: Long,
+        repository: RepoV2,
+        version: Long,
+        formatVersion: IndexFormatVersion,
+        certificate: String?,
+    ) {
+        update(repository.toCoreRepository(repoId, version, formatVersion, certificate))
         insertRepoTables(repoId, repository)
     }
 
@@ -181,11 +185,11 @@ internal interface RepositoryDaoInt : RepositoryDao {
     override fun getRepository(repoId: Long): Repository?
 
     @Transaction
-    fun updateRepository(repoId: Long, jsonObject: JsonObject) {
+    fun updateRepository(repoId: Long, version: Long, jsonObject: JsonObject) {
         // get existing repo
         val repo = getRepository(repoId) ?: error("Repo $repoId does not exist")
         // update repo with JSON diff
-        updateRepository(applyDiff(repo.repository, jsonObject))
+        updateRepository(applyDiff(repo.repository, jsonObject).copy(version = version))
         // replace mirror list (if it is in the diff)
         diffAndUpdateListTable(
             jsonObject = jsonObject,
