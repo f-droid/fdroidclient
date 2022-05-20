@@ -1,9 +1,10 @@
+image: registry.gitlab.com/fdroid/fdroidserver:buildserver-bullseye
+
 stages:
   - test
   - deploy
 
 .base:
-  image: registry.gitlab.com/fdroid/fdroidserver:buildserver-bullseye
   before_script:
     - test -e /etc/apt/sources.list.d/bullseye-backports.list
         || echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list
@@ -141,6 +142,20 @@ kvm 22 default x86:
   <<: *test-template
   <<: *kvm-template
 
+pages:
+  extends: .base
+  stage: deploy
+  only:
+    - master
+  script:
+    - ./gradlew :download:dokkaHtml :index:dokkaHtml
+    - mkdir public
+    - touch public/index.html
+    - cp -r download/build/dokka/html public/download
+    - cp -r index/build/dokka/html public/index
+  artifacts:
+    paths:
+      - public
 
 deploy_nightly:
   extends: .base
