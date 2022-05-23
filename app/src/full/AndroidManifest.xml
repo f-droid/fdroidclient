@@ -68,9 +68,6 @@
             android:launchMode="singleTask"
             android:parentActivityName=".views.main.MainActivity"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity
@@ -83,10 +80,6 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity
