@@ -27,6 +27,18 @@ internal class IndexV1StreamProcessorTest {
             TestDataEmptyV2.index.v1compat())
     }
 
+    @Test(expected = OldIndexException::class)
+    fun testEmptyEqualTimestamp() {
+        testStreamProcessing("src/sharedTest/resources/index-empty-v1.json",
+            TestDataEmptyV2.index.v1compat(), TestDataEmptyV2.index.repo.timestamp)
+    }
+
+    @Test(expected = OldIndexException::class)
+    fun testEmptyHigherTimestamp() {
+        testStreamProcessing("src/sharedTest/resources/index-empty-v1.json",
+            TestDataEmptyV2.index.v1compat(), TestDataEmptyV2.index.repo.timestamp + 1)
+    }
+
     @Test
     fun testMin() {
         testStreamProcessing("src/sharedTest/resources/index-min-v1.json",
@@ -45,10 +57,14 @@ internal class IndexV1StreamProcessorTest {
             TestDataMaxV2.indexCompat)
     }
 
-    private fun testStreamProcessing(filePath: String, indexV2: IndexV2) {
+    private fun testStreamProcessing(
+        filePath: String,
+        indexV2: IndexV2,
+        lastTimestamp: Long = indexV2.repo.timestamp - 1,
+    ) {
         val file = File(filePath)
         val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null)
+        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null, lastTimestamp)
         FileInputStream(file).use { streamProcessor.process(it) }
         assertEquals(indexV2.repo, testStreamReceiver.repo)
         assertEquals(indexV2.packages, testStreamReceiver.packages)

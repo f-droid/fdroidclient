@@ -2,6 +2,7 @@ package org.fdroid.index.v1
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.encoding.CompositeDecoder.Companion.DECODE_DONE
 import kotlinx.serialization.encoding.Decoder
@@ -38,10 +39,12 @@ import java.io.InputStream
 public class IndexV1StreamProcessor(
     private val indexStreamReceiver: IndexV1StreamReceiver,
     private val certificate: String?,
+    private val lastTimestamp: Long,
     private val locale: String = DEFAULT_LOCALE,
     private val json: Json = IndexParser.json,
 ) {
 
+    @Throws(SerializationException::class, OldIndexException::class)
     public fun process(inputStream: InputStream) {
         json.decodeFromStream(IndexStreamSerializer(), inputStream)
     }
@@ -85,6 +88,9 @@ public class IndexV1StreamProcessor(
         private fun deserializeRepo(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV1.serializer())
+            if (lastTimestamp >= repo.timestamp) {
+                throw OldIndexException("Old repo ${repo.address} ${repo.timestamp}")
+            }
             val repoV2 = repo.toRepoV2(
                 locale = DEFAULT_LOCALE,
                 antiFeatures = emptyMap(),
@@ -206,3 +212,5 @@ private class AppData(
     val suggestedVersionCode: Long?,
     val categories: List<String>,
 )
+
+internal class OldIndexException(val msg: String) : Exception(msg)
