@@ -25,7 +25,7 @@ kotlin {
 //    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
     ext {
-        ktor_version = "2.0.0"
+        ktor_version = "2.0.3"
     }
 
     sourceSets {
@@ -69,9 +69,9 @@ kotlin {
         }
         androidTest {
             dependencies {
-                implementation 'org.json:json:20211205'
+                implementation 'org.json:json:20220320'
                 implementation 'junit:junit:4.13.2'
-                implementation 'ch.qos.logback:logback-classic:1.2.10'
+                implementation 'ch.qos.logback:logback-classic:1.2.11'
             }
         }
         androidAndroidTest {
