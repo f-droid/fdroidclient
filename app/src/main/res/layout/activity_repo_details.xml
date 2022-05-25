@@ -126,7 +126,6 @@
                     android:id="@+id/button_edit_credentials"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="showChangePasswordDialog"
                     android:text="@string/repo_edit_credentials" />
 
             <!-- Signature (or "unsigned" if none) -->

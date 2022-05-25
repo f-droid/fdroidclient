@@ -833,8 +833,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(RepoTable.NAME, projection, RepoTable.Cols.PRIORITY + " > 4", null, null, null, RepoTable.Cols._ID);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            String signingCert = cursor.getString(cursor.getColumnIndex(RepoTable.Cols.SIGNING_CERT));
-            String address = cursor.getString(cursor.getColumnIndex(RepoTable.Cols.ADDRESS));
+            String signingCert = cursor.getString(cursor.getColumnIndexOrThrow(RepoTable.Cols.SIGNING_CERT));
+            String address = cursor.getString(cursor.getColumnIndexOrThrow(RepoTable.Cols.ADDRESS));
             updateRepoPriority(db, signingCert, address, priority);
             cursor.moveToNext();
             priority++;
@@ -1474,7 +1474,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("PRAGMA table_info(" + table + ")", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             if (name.equalsIgnoreCase(field)) {
                 found = true;
                 break;

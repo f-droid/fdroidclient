@@ -33,7 +33,7 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
 
         cursor.moveToPosition(position);
         // TODO this should be based on Schema.InstalledAppProvider.Cols._ID
-        return cursor.getLong(cursor.getColumnIndex(BaseColumns._ID));
+        return cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID));
     }
 
     @NonNull

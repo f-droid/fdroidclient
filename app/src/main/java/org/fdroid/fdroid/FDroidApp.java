@@ -47,8 +47,9 @@ import com.bumptech.glide.Glide;
 
 import org.acra.ACRA;
 import org.acra.ReportField;
-import org.acra.ReportingInteractionMode;
-import org.acra.annotation.ReportsCrashes;
+import org.acra.config.CoreConfigurationBuilder;
+import org.acra.config.DialogConfigurationBuilder;
+import org.acra.config.MailSenderConfigurationBuilder;
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
@@ -81,26 +82,6 @@ import androidx.core.content.ContextCompat;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
-@ReportsCrashes(mailTo = BuildConfig.ACRA_REPORT_EMAIL,
-        mode = ReportingInteractionMode.DIALOG,
-        reportDialogClass = org.fdroid.fdroid.acra.CrashReportActivity.class,
-        reportSenderFactoryClasses = org.fdroid.fdroid.acra.CrashReportSenderFactory.class,
-        customReportContent = {
-                ReportField.USER_COMMENT,
-                ReportField.PACKAGE_NAME,
-                ReportField.APP_VERSION_NAME,
-                ReportField.ANDROID_VERSION,
-                ReportField.PRODUCT,
-                ReportField.BRAND,
-                ReportField.PHONE_MODEL,
-                ReportField.DISPLAY,
-                ReportField.TOTAL_MEM_SIZE,
-                ReportField.AVAILABLE_MEM_SIZE,
-                ReportField.CUSTOM_DATA,
-                ReportField.STACK_TRACE_HASH,
-                ReportField.STACK_TRACE,
-        }
-)
 public class FDroidApp extends Application implements androidx.work.Configuration.Provider {
 
     private static final String TAG = "FDroidApp";
@@ -302,7 +283,34 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         Preferences preferences = Preferences.get();
 
         if (preferences.promptToSendCrashReports()) {
-            ACRA.init(this);
+            ACRA.init(this, new CoreConfigurationBuilder()
+                    .withReportContent(
+                            ReportField.USER_COMMENT,
+                            ReportField.PACKAGE_NAME,
+                            ReportField.APP_VERSION_NAME,
+                            ReportField.ANDROID_VERSION,
+                            ReportField.PRODUCT,
+                            ReportField.BRAND,
+                            ReportField.PHONE_MODEL,
+                            ReportField.DISPLAY,
+                            ReportField.TOTAL_MEM_SIZE,
+                            ReportField.AVAILABLE_MEM_SIZE,
+                            ReportField.CUSTOM_DATA,
+                            ReportField.STACK_TRACE_HASH,
+                            ReportField.STACK_TRACE
+                    )
+                    .withPluginConfigurations(
+                            new MailSenderConfigurationBuilder()
+                                    .withMailTo(BuildConfig.ACRA_REPORT_EMAIL)
+                                    .build(),
+                            new DialogConfigurationBuilder()
+                                    .withResTheme(R.style.Theme_App)
+                                    .withTitle(getString(R.string.crash_dialog_title))
+                                    .withText(getString(R.string.crash_dialog_text))
+                                    .withCommentPrompt(getString(R.string.crash_dialog_comment_prompt))
+                                    .build()
+                    )
+            );
             if (isAcraProcess() || HidingManager.isHidden(this)) {
                 return;
             }

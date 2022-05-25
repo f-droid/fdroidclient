@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
+import com.hannesdorfmann.adapterdelegates4.AdapterDelegate;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
