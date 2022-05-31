@@ -46,27 +46,17 @@ stages:
   after_script:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
 
-# Run the most important first. Then we can decide whether to ignore
-# the style tests if the rest of the more meaningful tests pass.
 test_lint_pmd_checkstyle:
   <<: *test-template
   script:
-    - export EXITVALUE=0
-    - function set_error() { export EXITVALUE=1; printf "\x1b[31mERROR `history|tail -2|head -1|cut -b 6-500`\x1b[0m\n"; }
-    - ./gradlew assemble
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew testDebugUnitTest testFullDebugUnitTest || set_error
-    - ./gradlew lint || set_error
-    - ./gradlew pmd || set_error
-    - ./gradlew checkstyle || set_error
-    - ./gradlew ktlintCheck || set_error
-    - ./tools/check-format-strings.py || set_error
-    - ./tools/check-fastlane-whitespace.py || set_error
-    - ./tools/remove-unused-and-blank-translations.py || set_error
+    - ./gradlew lint pmd checkstyle ktlintCheck testDebugUnitTest testFullDebugUnitTest
+    - ./tools/check-format-strings.py
+    - ./tools/check-fastlane-whitespace.py
+    - ./tools/remove-unused-and-blank-translations.py
     - echo "These are unused or blank translations that should be removed:"
-    - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml || set_error
-    - exit $EXITVALUE
+    - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml
 
 errorprone:
   extends: .base
