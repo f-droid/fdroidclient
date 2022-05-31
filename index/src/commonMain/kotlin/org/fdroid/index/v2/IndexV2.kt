@@ -38,7 +38,12 @@ public data class FileV2(
 public data class IndexV2(
     val repo: RepoV2,
     val packages: Map<String, PackageV2> = emptyMap(),
-)
+) {
+    public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
+        repo.walkFiles(fileConsumer)
+        packages.values.forEach { it.walkFiles(fileConsumer) }
+    }
+}
 
 @Serializable
 public data class RepoV2(
@@ -52,7 +57,13 @@ public data class RepoV2(
     val antiFeatures: Map<String, AntiFeatureV2> = emptyMap(),
     val categories: Map<String, CategoryV2> = emptyMap(),
     val releaseChannels: Map<String, ReleaseChannelV2> = emptyMap(),
-)
+) {
+    public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
+        icon.values.forEach { fileConsumer(it) }
+        antiFeatures.values.forEach { fileConsumer(it.icon) }
+        categories.values.forEach { fileConsumer(it.icon) }
+    }
+}
 
 public typealias LocalizedTextV2 = Map<String, String>
 public typealias LocalizedFileV2 = Map<String, FileV2>

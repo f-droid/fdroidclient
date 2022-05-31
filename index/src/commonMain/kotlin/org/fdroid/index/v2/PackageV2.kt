@@ -6,7 +6,12 @@ import kotlinx.serialization.Serializable
 public data class PackageV2(
     val metadata: MetadataV2,
     val versions: Map<String, PackageVersionV2> = emptyMap(),
-)
+) {
+    public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
+        metadata.walkFiles(fileConsumer)
+        versions.values.forEach { it.walkFiles(fileConsumer) }
+    }
+}
 
 @Serializable
 public data class MetadataV2(
@@ -40,7 +45,19 @@ public data class MetadataV2(
     val tvBanner: LocalizedFileV2? = null,
     val video: LocalizedTextV2? = null,
     val screenshots: Screenshots? = null,
-)
+) {
+    public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
+        icon?.values?.forEach { fileConsumer(it) }
+        featureGraphic?.values?.forEach { fileConsumer(it) }
+        promoGraphic?.values?.forEach { fileConsumer(it) }
+        tvBanner?.values?.forEach { fileConsumer(it) }
+        screenshots?.phone?.values?.forEach { it.forEach(fileConsumer) }
+        screenshots?.sevenInch?.values?.forEach { it.forEach(fileConsumer) }
+        screenshots?.tenInch?.values?.forEach { it.forEach(fileConsumer) }
+        screenshots?.wear?.values?.forEach { it.forEach(fileConsumer) }
+        screenshots?.tv?.values?.forEach { it.forEach(fileConsumer) }
+    }
+}
 
 @Serializable
 public data class Screenshots(
@@ -63,7 +80,11 @@ public data class PackageVersionV2(
     val releaseChannels: List<String> = emptyList(),
     val antiFeatures: Map<String, LocalizedTextV2> = emptyMap(),
     val whatsNew: LocalizedTextV2 = emptyMap(),
-)
+) {
+    public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
+        fileConsumer(src)
+    }
+}
 
 /**
  * Like [FileV2] with the only difference that the [sha256] hash can not be null.
