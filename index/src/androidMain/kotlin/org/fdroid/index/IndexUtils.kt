@@ -1,5 +1,7 @@
 package org.fdroid.index
 
+import android.content.pm.PackageInfo
+import android.os.Build
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -32,6 +34,15 @@ public object IndexUtils {
         }
         messageDigest.update(bytes)
         return messageDigest.digest()
+    }
+
+    internal fun PackageInfo.getVersionCode(): Long {
+        return if (Build.VERSION.SDK_INT >= 28) {
+            longVersionCode
+        } else {
+            @Suppress("DEPRECATION") // we use the new one above, if available
+            versionCode.toLong()
+        }
     }
 
 }

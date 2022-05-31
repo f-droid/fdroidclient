@@ -5,7 +5,7 @@ import org.fdroid.index.SigningException
 import java.io.File
 import java.util.jar.Attributes
 
-private const val JSON_FILE_NAME = "index-v1.json"
+internal const val JSON_FILE_NAME = "index-v1.json"
 private const val SUPPORTED_DIGEST = "SHA1-Digest"
 
 /**
