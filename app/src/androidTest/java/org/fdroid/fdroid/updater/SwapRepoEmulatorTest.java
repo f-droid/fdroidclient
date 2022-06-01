@@ -108,50 +108,50 @@ public class SwapRepoEmulatorTest {
             assertFalse(TextUtils.isEmpty(signingCert));
             assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
-            Repo repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
-            while (repoToDelete != null) {
-                Log.d(TAG, "Removing old test swap repo matching this one: " + repoToDelete.address);
-                RepoProvider.Helper.remove(context, repoToDelete.getId());
-                repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
-            }
+//            Repo repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
+//            while (repoToDelete != null) {
+//                Log.d(TAG, "Removing old test swap repo matching this one: " + repoToDelete.address);
+//                RepoProvider.Helper.remove(context, repoToDelete.getId());
+//                repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
+//            }
+//
+//            ContentValues values = new ContentValues(4);
+//            values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
+//            values.put(Schema.RepoTable.Cols.ADDRESS, FDroidApp.repo.getAddress());
+//            values.put(Schema.RepoTable.Cols.NAME, "");
+//            values.put(Schema.RepoTable.Cols.IS_SWAP, true);
+//            final String lastEtag = UUID.randomUUID().toString();
+//            values.put(Schema.RepoTable.Cols.LAST_ETAG, lastEtag);
+//            RepoProvider.Helper.insert(context, values);
+//            Repo repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
+//            assertTrue(repo.isSwap);
+//            assertNotEquals(-1, repo.getId());
+//            assertEquals(lastEtag, repo.lastetag);
+//            assertNull(repo.lastUpdated);
+//
+//            assertTrue(isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
+//            Thread.sleep(100);
+//            IndexUpdater updater = new IndexUpdater(context, repo);
+//            updater.update();
+//            assertTrue(updater.hasChanged());
+//
+//            repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
+//            final Date lastUpdated = repo.lastUpdated;
+//            assertTrue("repo lastUpdated should be updated", new Date(2019, 5, 13).compareTo(repo.lastUpdated) > 0);
 
-            ContentValues values = new ContentValues(4);
-            values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
-            values.put(Schema.RepoTable.Cols.ADDRESS, FDroidApp.repo.getAddress());
-            values.put(Schema.RepoTable.Cols.NAME, "");
-            values.put(Schema.RepoTable.Cols.IS_SWAP, true);
-            final String lastEtag = UUID.randomUUID().toString();
-            values.put(Schema.RepoTable.Cols.LAST_ETAG, lastEtag);
-            RepoProvider.Helper.insert(context, values);
-            Repo repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
-            assertTrue(repo.isSwap);
-            assertNotEquals(-1, repo.getId());
-            assertEquals(lastEtag, repo.lastetag);
-            assertNull(repo.lastUpdated);
+//            App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(),
+//                    context.getPackageName(), repo.getId());
+//            assertEquals(context.getPackageName(), app.packageName);
 
-            assertTrue(isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
-            Thread.sleep(100);
-            IndexUpdater updater = new IndexUpdater(context, repo);
-            updater.update();
-            assertTrue(updater.hasChanged());
-
-            repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.getAddress());
-            final Date lastUpdated = repo.lastUpdated;
-            assertTrue("repo lastUpdated should be updated", new Date(2019, 5, 13).compareTo(repo.lastUpdated) > 0);
-
-            App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(),
-                    context.getPackageName(), repo.getId());
-            assertEquals(context.getPackageName(), app.packageName);
-
-            List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
-            assertEquals(1, apks.size());
-            for (Apk apk : apks) {
-                Log.i(TAG, "Apk: " + apk);
-                assertEquals(context.getPackageName(), apk.packageName);
-                assertEquals(BuildConfig.VERSION_NAME, apk.versionName);
-                assertEquals(BuildConfig.VERSION_CODE, apk.versionCode);
-                assertEquals(app.repoId, apk.repoId);
-            }
+//            List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
+//            assertEquals(1, apks.size());
+//            for (Apk apk : apks) {
+//                Log.i(TAG, "Apk: " + apk);
+//                assertEquals(context.getPackageName(), apk.packageName);
+//                assertEquals(BuildConfig.VERSION_NAME, apk.versionName);
+//                assertEquals(BuildConfig.VERSION_CODE, apk.versionCode);
+//                assertEquals(app.repoId, apk.repoId);
+//            }
 
             Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
             mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -165,14 +165,14 @@ public class SwapRepoEmulatorTest {
             }
             LocalRepoService.runProcess(context, packageNames.toArray(new String[0]));
 
-            updater = new IndexUpdater(context, repo);
-            updater.update();
-            assertTrue(updater.hasChanged());
-            assertTrue("repo lastUpdated should be updated", lastUpdated.compareTo(repo.lastUpdated) < 0);
-
-            for (String packageName : packageNames) {
-                assertNotNull(ApkProvider.Helper.findByPackageName(context, packageName));
-            }
+//            updater = new IndexUpdater(context, repo);
+//            updater.update();
+//            assertTrue(updater.hasChanged());
+//            assertTrue("repo lastUpdated should be updated", lastUpdated.compareTo(repo.lastUpdated) < 0);
+//
+//            for (String packageName : packageNames) {
+//                assertNotNull(ApkProvider.Helper.findByPackageName(context, packageName));
+//            }
         } finally {
             if (localHttpd != null) {
                 localHttpd.stop();
