@@ -38,7 +38,8 @@ public class LocalRepoKeyStoreTest {
         JarOutputStream jo = new JarOutputStream(bo);
         JarEntry je = new JarEntry(IndexUpdater.DATA_FILE_NAME);
         jo.putNextEntry(je);
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("smallRepo.xml");
+        InputStream inputStream =
+                getClass().getClassLoader().getResourceAsStream("all_fields_index-v1.json");
         IOUtils.copy(inputStream, jo);
         jo.close();
         bo.close();
@@ -53,7 +54,7 @@ public class LocalRepoKeyStoreTest {
         JarFile jarFile = new JarFile(xmlIndexJar, true);
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexUpdater.DATA_FILE_NAME);
         byte[] data = IOUtils.toByteArray(jarFile.getInputStream(indexEntry));
-        assertEquals(17187, data.length);
+        assertEquals(6431, data.length);
         assertNotNull(IndexUpdater.getSigningCertFromJar(indexEntry));
     }
 }

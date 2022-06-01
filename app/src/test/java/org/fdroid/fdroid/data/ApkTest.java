@@ -26,13 +26,11 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class ApkTest {
-    public static final String TAG = "ApkTest";
 
-    private static ContextWrapper context;
+    private final ContextWrapper context = ApplicationProvider.getApplicationContext();
 
     @Before
     public final void setUp() {
-        context = ApplicationProvider.getApplicationContext();
         ShadowMimeTypeMap mimeTypeMap = Shadows.shadowOf(MimeTypeMap.getSingleton());
         mimeTypeMap.addExtensionMimeTypMapping("apk", "application/vnd.android.package-archive");
         mimeTypeMap.addExtensionMimeTypMapping("obf", "application/octet-stream");

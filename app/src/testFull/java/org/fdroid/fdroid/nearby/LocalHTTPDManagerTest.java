@@ -1,6 +1,12 @@
 package org.fdroid.fdroid.nearby;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
@@ -12,12 +18,6 @@ import org.robolectric.shadows.ShadowLog;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 
 /**
