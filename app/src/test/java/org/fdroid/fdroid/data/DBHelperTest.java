@@ -5,11 +5,14 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.io.IOUtils;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.InitialRepository;
+import org.fdroid.database.RepositoryDao;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.TestUtils;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.robolectric.RobolectricTestRunner;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -25,10 +28,17 @@ import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 public class DBHelperTest {
-    static final String TAG = "DBHelperTest";
+
+    private static final String TAG = "DBHelperTest";
+
+    private final Context context = ApplicationProvider.getApplicationContext();
 
     private List<String> getReposFromXml(String xml) throws IOException, XmlPullParserException {
         File additionalReposXml = File.createTempFile("." + context.getPackageName() + "-DBHelperTest_",
@@ -43,11 +53,26 @@ public class DBHelperTest {
         return DBHelper.parseAdditionalReposXml(additionalReposXml);
     }
 
-    protected Context context;
+    @Test
+    public void testDefaultReposAddedToDb() {
+        FDroidDatabase db = mock(FDroidDatabase.class);
+        RepositoryDao repoDao = mock(RepositoryDao.class);
+        when(db.getRepositoryDao()).thenReturn(repoDao);
 
-    @Before
-    public final void setupBase() {
-        context = ApplicationProvider.getApplicationContext();
+        // pre-populate the DB
+        DBHelper.prePopulateDb(context, db);
+
+        // verify that all default repos were added to DB
+        int numRepos = getDefaultRepoCount();
+        verify(repoDao, times(numRepos)).insert(ArgumentMatchers.any(InitialRepository.class));
+    }
+
+    /**
+     * Returns the number of repos in app/src/main/res/default_repo.xml
+     */
+    private int getDefaultRepoCount() {
+        int itemCount = context.getResources().getStringArray(R.array.default_repos).length;
+        return itemCount / DBHelper.REPO_XML_ITEM_COUNT;
     }
 
     @Test

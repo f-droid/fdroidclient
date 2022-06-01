@@ -2,8 +2,6 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.Signature;
 import android.database.Cursor;
 
 import org.fdroid.fdroid.data.AppProvider;
@@ -18,12 +16,10 @@ import org.robolectric.RobolectricTestRunner;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Random;
 import java.util.TimeZone;
 
 import androidx.loader.content.CursorLoader;
 import androidx.test.core.app.ApplicationProvider;
-import vendored.org.apache.commons.codec.digest.DigestUtils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -183,9 +179,6 @@ public class UtilsTest {
                 "6e8a584e004c6cd26d3822a04b0591e355dc5d07b5a3d0f8e309443f47ad1208", SHA_256));
         assertTrue(Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("install_history_all"),
                 "4ad118d4a600dcc104834635d248a89e337fc91b173163d646996b9c54d77372", SHA_256));
-        assertFalse("wrong sha256 value",
-                Utils.isFileMatchingHash(TestUtils.copyResourceToTempFile("simpleIndex.jar"),
-                        "6e8a584e004c6cd26d3822a04b0591e355dc5d07b5a3d0f8e309443f47ad1208", SHA_256));
 
         File f = TestUtils.copyResourceToTempFile("additional_repos.xml");
         assertTrue(Utils.isFileMatchingHash(f,
@@ -253,19 +246,6 @@ public class UtilsTest {
 
     @Test
     public void testGetFileHexDigest() throws IOException {
-        File f = TestUtils.copyResourceToTempFile("largeRepo.xml");
-        assertEquals("df1754aa4b56c86c06d7842dfd02064f0781c1f740f489d3fc158bb541c8d197",
-                Utils.getFileHexDigest(f, "sha256"));
-        f = TestUtils.copyResourceToTempFile("masterKeyIndex.jar");
-        assertEquals("625d5aedcd0499fe04ebab81f3c7ae30c236cee653a914ffb587d890198f3aba",
-                Utils.getFileHexDigest(f, "sha256"));
-        f = TestUtils.copyResourceToTempFile("index.fdroid.2016-10-30.jar");
-        assertEquals("c138b503c6475aa749585d0e3ad4dba3546b6d33ec485efd8ac8bd603d93fedb",
-                Utils.getFileHexDigest(f, "sha-256"));
-        f = TestUtils.copyResourceToTempFile("index.fdroid.2016-11-10.jar");
-        assertEquals("93bea45814fd8955cabb957e7a3f8790d6c568eaa16fa30425c2d26c60490bde",
-                Utils.getFileHexDigest(f, "SHA-256"));
-
         // zero size file should have a stable hex digest file
         assertEquals("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
                 Utils.getFileHexDigest(File.createTempFile("asdf", "asdf"), SHA_256));
@@ -305,42 +285,6 @@ public class UtilsTest {
                 assertEquals(dateString + " failed to parse", 1511740800000L, date.getTime());
                 assertEquals("time zones should match", -((h * 60) + m), date.getTimezoneOffset());
             }
-        }
-    }
-
-    /**
-     * Test the replacement for the ancient fingerprint algorithm.
-     *
-     * @see org.fdroid.fdroid.data.Apk#sig
-     */
-    @Test
-    public void testGetsig() {
-        /*
-         * I don't fully understand the loop used here. I've copied it verbatim
-         * from getsig.java bundled with FDroidServer. I *believe* it is taking
-         * the raw byte encoding of the certificate & converting it to a byte
-         * array of the hex representation of the original certificate byte
-         * array. This is then MD5 sum'd. It's a really bad way to be doing this
-         * if I'm right... If I'm not right, I really don't know! see lines
-         * 67->75 in getsig.java bundled with Fdroidserver
-         */
-        for (int length : new int[]{256, 345, 1233, 4032, 12092}) {
-            byte[] rawCertBytes = new byte[length];
-            new Random().nextBytes(rawCertBytes);
-            final byte[] fdroidSig = new byte[rawCertBytes.length * 2];
-            for (int j = 0; j < rawCertBytes.length; j++) {
-                byte v = rawCertBytes[j];
-                int d = (v >> 4) & 0xF;
-                fdroidSig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
-                d = v & 0xF;
-                fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
-            }
-            String sig = DigestUtils.md5Hex(fdroidSig);
-            assertEquals(sig, Utils.getsig(rawCertBytes));
-
-            PackageInfo packageInfo = new PackageInfo();
-            packageInfo.signatures = new Signature[]{new Signature(rawCertBytes)};
-            assertEquals(sig, Utils.getPackageSig(packageInfo));
         }
     }
 

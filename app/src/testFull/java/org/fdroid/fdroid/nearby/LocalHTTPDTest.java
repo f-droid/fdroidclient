@@ -168,23 +168,13 @@ public class LocalHTTPDTest {
         assertTrue(string.indexOf("test.html") > 0);
         connection.disconnect();
 
-        IOUtils.copy(classLoader.getResourceAsStream("index.microg.jar"),
-                new FileOutputStream(new File(webRoot, "index.microg.jar")));
-        url = new URL(baseUrl + "/index.microg.jar");
-        connection = (HttpURLConnection) url.openConnection();
-        assertEquals(200, connection.getResponseCode());
-        byte[] actual = IOUtils.toByteArray(connection.getInputStream());
-        byte[] expected = IOUtils.toByteArray(classLoader.getResourceAsStream("index.microg.jar"));
-        Assert.assertArrayEquals(expected, actual);
-        connection.disconnect();
-
         IOUtils.copy(classLoader.getResourceAsStream("extendedPerms.xml"),
                 new FileOutputStream(new File(webRoot, "extendedPerms.xml")));
         url = new URL(baseUrl + "/extendedPerms.xml");
         connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
-        actual = IOUtils.toByteArray(connection.getInputStream());
-        expected = IOUtils.toByteArray(classLoader.getResourceAsStream("extendedPerms.xml"));
+        byte[] actual = IOUtils.toByteArray(connection.getInputStream());
+        byte[] expected = IOUtils.toByteArray(classLoader.getResourceAsStream("extendedPerms.xml"));
         Assert.assertArrayEquals(expected, actual);
         connection.disconnect();
     }
