@@ -6,17 +6,17 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import org.fdroid.database.VersionedStringType.PERMISSION
 import org.fdroid.database.VersionedStringType.PERMISSION_SDK_23
-import org.fdroid.index.v2.FeatureV2
+import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
 import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedTextV2
 import org.fdroid.index.v2.ManifestV2
+import org.fdroid.index.v2.PackageManifest
+import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.PermissionV2
-import org.fdroid.index.v2.SignatureV2
+import org.fdroid.index.v2.SignerV2
 import org.fdroid.index.v2.UsesSdkV2
-
-private const val ANTI_FEATURE_KNOWN_VULNERABILITY = "KnownVuln"
 
 @Entity(
     primaryKeys = ["repoId", "packageId", "versionId"],
@@ -35,12 +35,15 @@ public data class Version(
     @Embedded(prefix = "file_") val file: FileV1,
     @Embedded(prefix = "src_") val src: FileV2? = null,
     @Embedded(prefix = "manifest_") val manifest: AppManifest,
-    val releaseChannels: List<String>? = emptyList(),
+    override val releaseChannels: List<String>? = emptyList(),
     val antiFeatures: Map<String, LocalizedTextV2>? = null,
     val whatsNew: LocalizedTextV2? = null,
     val isCompatible: Boolean,
-) {
-    val hasKnownVulnerability: Boolean
+) : PackageVersion {
+    override val versionCode: Long get() = manifest.versionCode
+    override val signer: SignerV2? get() = manifest.signer
+    override val packageManifest: PackageManifest get() = manifest
+    override val hasKnownVulnerability: Boolean
         get() = antiFeatures?.contains(ANTI_FEATURE_KNOWN_VULNERABILITY) == true
 
     internal fun toAppVersion(versionedStrings: List<VersionedString>): AppVersion = AppVersion(
@@ -97,20 +100,13 @@ public data class AppManifest(
     val versionName: String,
     val versionCode: Long,
     @Embedded(prefix = "usesSdk_") val usesSdk: UsesSdkV2? = null,
-    val maxSdkVersion: Int? = null,
-    @Embedded(prefix = "signer_") val signer: SignatureV2? = null,
-    val nativecode: List<String>? = emptyList(),
+    override val maxSdkVersion: Int? = null,
+    @Embedded(prefix = "signer_") val signer: SignerV2? = null,
+    override val nativecode: List<String>? = emptyList(),
     val features: List<String>? = emptyList(),
-) {
-    internal fun toManifestV2(): ManifestV2 = ManifestV2(
-        versionName = versionName,
-        versionCode = versionCode,
-        usesSdk = usesSdk,
-        maxSdkVersion = maxSdkVersion,
-        signer = signer,
-        nativecode = nativecode ?: emptyList(),
-        features = features?.map { FeatureV2(it) } ?: emptyList(),
-    )
+) : PackageManifest {
+    override val minSdkVersion: Int? get() = usesSdk?.minSdkVersion
+    override val featureNames: List<String>? get() = features
 }
 
 internal fun ManifestV2.toManifest() = AppManifest(

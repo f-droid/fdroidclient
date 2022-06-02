@@ -19,7 +19,7 @@ import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.database.VersionedStringType.PERMISSION
 import org.fdroid.database.VersionedStringType.PERMISSION_SDK_23
 import org.fdroid.index.IndexParser.json
-import org.fdroid.index.v2.ManifestV2
+import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.PermissionV2
 import org.fdroid.index.v2.ReflectionDiffer
@@ -88,7 +88,7 @@ internal interface VersionDaoInt : VersionDao {
         repoId: Long,
         packageId: String,
         versionsDiffMap: Map<String, JsonObject?>?,
-        checkIfCompatible: (ManifestV2) -> Boolean,
+        checkIfCompatible: (PackageManifest) -> Boolean,
     ) {
         if (versionsDiffMap == null) { // no more versions, delete all
             deleteAppVersion(repoId, packageId)
@@ -100,7 +100,7 @@ internal interface VersionDaoInt : VersionDao {
                 if (version == null) { // new version, parse normally
                     val packageVersionV2: PackageVersionV2 =
                         json.decodeFromJsonElement(jsonObject)
-                    val isCompatible = checkIfCompatible(packageVersionV2.manifest)
+                    val isCompatible = checkIfCompatible(packageVersionV2.packageManifest)
                     insert(repoId, packageId, versionId, packageVersionV2, isCompatible)
                 } else { // diff against existing version
                     diffVersion(version, jsonObject, checkIfCompatible)
@@ -112,7 +112,7 @@ internal interface VersionDaoInt : VersionDao {
     private fun diffVersion(
         version: Version,
         jsonObject: JsonObject,
-        checkIfCompatible: (ManifestV2) -> Boolean,
+        checkIfCompatible: (PackageManifest) -> Boolean,
     ) {
         // ensure that diff does not include internal keys
         DENY_LIST.forEach { forbiddenKey ->
@@ -123,7 +123,7 @@ internal interface VersionDaoInt : VersionDao {
         }
         // diff version
         val diffedVersion = ReflectionDiffer.applyDiff(version, jsonObject)
-        val isCompatible = checkIfCompatible(diffedVersion.manifest.toManifestV2())
+        val isCompatible = checkIfCompatible(diffedVersion.packageManifest)
         update(diffedVersion.copy(isCompatible = isCompatible))
         // diff versioned strings
         val manifest = jsonObject["manifest"]

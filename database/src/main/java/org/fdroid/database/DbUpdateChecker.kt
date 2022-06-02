@@ -6,9 +6,10 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build
 import org.fdroid.CompatibilityCheckerImpl
-import org.fdroid.index.IndexUtils
+import org.fdroid.PackagePreference
+import org.fdroid.UpdateChecker
 
-public class UpdateChecker(
+public class DbUpdateChecker(
     db: FDroidDatabase,
     private val packageManager: PackageManager,
 ) {
@@ -17,6 +18,7 @@ public class UpdateChecker(
     private val versionDao = db.getVersionDao() as VersionDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
     private val compatibilityChecker = CompatibilityCheckerImpl(packageManager)
+    private val updateChecker = UpdateChecker(compatibilityChecker)
 
     /**
      * Returns a list of apps that can be updated.
@@ -37,7 +39,7 @@ public class UpdateChecker(
         installedPackages.iterator().forEach { packageInfo ->
             val packageName = packageInfo.packageName
             val versions = versionsByPackage[packageName] ?: return@forEach // continue
-            val version = getVersion(versions, packageName, packageInfo, releaseChannels)
+            val version = getVersion(versions, packageName, packageInfo, null, releaseChannels)
             if (version != null) {
                 val versionCode = packageInfo.getVersionCode()
                 val app = getUpdatableApp(version, versionCode)
@@ -48,13 +50,17 @@ public class UpdateChecker(
     }
 
     /**
-     * Returns an [AppVersion] for the given [packageName] that is an update
+     * Returns an [AppVersion] for the given [packageName] that is an update or new install
      * or null if there is none.
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
      */
     @SuppressLint("PackageManagerGetSignatures")
-    public fun getUpdate(packageName: String, releaseChannels: List<String>? = null): AppVersion? {
+    public fun getSuggestedVersion(
+        packageName: String,
+        preferredSigner: String? = null,
+        releaseChannels: List<String>? = null,
+    ): AppVersion? {
         val versions = versionDao.getVersions(listOf(packageName))
         if (versions.isEmpty()) return null
         val packageInfo = try {
@@ -63,7 +69,8 @@ public class UpdateChecker(
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
-        val version = getVersion(versions, packageName, packageInfo, releaseChannels) ?: return null
+        val version = getVersion(versions, packageName, packageInfo, preferredSigner,
+            releaseChannels) ?: return null
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
             packageId = version.packageId,
@@ -76,50 +83,27 @@ public class UpdateChecker(
         versions: List<Version>,
         packageName: String,
         packageInfo: PackageInfo?,
+        preferredSigner: String?,
         releaseChannels: List<String>?,
     ): Version? {
-        val versionCode = packageInfo?.getVersionCode() ?: 0
-        // the below is rather expensive, so we only do that when there's update candidates
-        // TODO handle signingInfo.signingCertificateHistory as well
-        @Suppress("DEPRECATION")
-        val signatures by lazy {
-            packageInfo?.signatures?.map {
-                IndexUtils.getPackageSignature(it.toByteArray())
-            }?.toSet()
+        val preferencesGetter: (() -> PackagePreference?) = {
+            appPrefsDao.getAppPrefsOrNull(packageName)
         }
-        val appPrefs by lazy { appPrefsDao.getAppPrefsOrNull(packageName) }
-        versions.iterator().forEach versions@{ version ->
-            // if the installed version has a known vulnerability, we return it as well
-            if (version.manifest.versionCode == versionCode && version.hasKnownVulnerability) {
-                return version
-            }
-            // if version code is not higher than installed skip package as list is sorted
-            if (version.manifest.versionCode <= versionCode) return null
-            // skip incompatible versions
-            if (!compatibilityChecker.isCompatible(version.manifest.toManifestV2())) return@versions
-            // only check release channels if they are not empty
-            if (!version.releaseChannels.isNullOrEmpty()) {
-                // add release channels from AppPrefs into the ones we allow
-                val channels = releaseChannels?.toMutableSet() ?: LinkedHashSet()
-                if (!appPrefs?.releaseChannels.isNullOrEmpty()) {
-                    channels.addAll(appPrefs!!.releaseChannels)
-                }
-                // if allowed releases channels are empty (only stable) don't consider this version
-                if (channels.isEmpty()) return@versions
-                // don't consider version with non-matching release channel
-                if (channels.intersect(version.releaseChannels).isEmpty()) return@versions
-            }
-            val canInstall = if (packageInfo == null) {
-                true // take first one with highest version code and repo weight
-            } else {
-                // TODO also support AppPrefs with ignoring updates
-                val versionSignatures = version.manifest.signer?.sha256?.toSet()
-                signatures == versionSignatures
-            }
-            // no need to see other versions, we got the highest version code per sorting
-            if (canInstall) return version
+        return if (packageInfo == null) {
+            updateChecker.getSuggestedVersion(
+                versions = versions,
+                preferredSigner = preferredSigner,
+                releaseChannels = releaseChannels,
+                preferencesGetter = preferencesGetter,
+            )
+        } else {
+            updateChecker.getUpdate(
+                versions = versions,
+                packageInfo = packageInfo,
+                releaseChannels = releaseChannels,
+                preferencesGetter = preferencesGetter,
+            )
         }
-        return null
     }
 
     private fun getUpdatableApp(version: Version, installedVersionCode: Long): UpdatableApp? {
