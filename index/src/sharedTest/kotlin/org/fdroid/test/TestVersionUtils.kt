@@ -5,7 +5,7 @@ import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.ManifestV2
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.PermissionV2
-import org.fdroid.index.v2.SignatureV2
+import org.fdroid.index.v2.SignerV2
 import org.fdroid.index.v2.UsesSdkV2
 import org.fdroid.test.TestRepoUtils.getRandomFileV2
 import org.fdroid.test.TestRepoUtils.getRandomLocalizedTextV2
@@ -37,7 +37,7 @@ internal object TestVersionUtils {
             targetSdkVersion = Random.nextInt(),
         ),
         maxSdkVersion = Random.nextInt().orNull(),
-        signer = SignatureV2(getRandomList(Random.nextInt(1, 3)) {
+        signer = SignerV2(getRandomList(Random.nextInt(1, 3)) {
             getRandomString(64)
         }).orNull(),
         usesPermission = getRandomList {

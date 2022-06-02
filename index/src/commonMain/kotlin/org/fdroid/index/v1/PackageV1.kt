@@ -22,7 +22,7 @@ import org.fdroid.index.v2.LocalizedTextV2
 import org.fdroid.index.v2.ManifestV2
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.PermissionV2
-import org.fdroid.index.v2.SignatureV2
+import org.fdroid.index.v2.SignerV2
 import org.fdroid.index.v2.UsesSdkV2
 
 @Serializable
@@ -71,7 +71,7 @@ public data class PackageV1(
                 targetSdkVersion = targetSdkVersion ?: minSdkVersion ?: 1,
             ),
             maxSdkVersion = maxSdkVersion,
-            signer = signer?.let { SignatureV2(listOf(it)) },
+            signer = signer?.let { SignerV2(listOf(it)) },
             usesPermission = usesPermission.map { PermissionV2(it.name, it.maxSdk) },
             usesPermissionSdk23 = usesPermission23.map { PermissionV2(it.name, it.maxSdk) },
             nativecode = nativeCode ?: emptyList(),

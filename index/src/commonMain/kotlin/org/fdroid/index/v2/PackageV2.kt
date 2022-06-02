@@ -71,16 +71,32 @@ public data class Screenshots(
         get() = phone == null && sevenInch == null && tenInch == null && wear == null && tv == null
 }
 
+public interface PackageVersion {
+    public val versionCode: Long
+    public val signer: SignerV2?
+    public val releaseChannels: List<String>?
+    public val packageManifest: PackageManifest
+    public val hasKnownVulnerability: Boolean
+}
+
+public const val ANTI_FEATURE_KNOWN_VULNERABILITY: String = "KnownVuln"
+
 @Serializable
 public data class PackageVersionV2(
     val added: Long,
     val file: FileV1,
     val src: FileV2? = null,
     val manifest: ManifestV2,
-    val releaseChannels: List<String> = emptyList(),
+    override val releaseChannels: List<String> = emptyList(),
     val antiFeatures: Map<String, LocalizedTextV2> = emptyMap(),
     val whatsNew: LocalizedTextV2 = emptyMap(),
-) {
+) : PackageVersion {
+    override val versionCode: Long = manifest.versionCode
+    override val signer: SignerV2? = manifest.signer
+    override val packageManifest: PackageManifest = manifest
+    override val hasKnownVulnerability: Boolean
+        get() = antiFeatures.contains(ANTI_FEATURE_KNOWN_VULNERABILITY)
+
     public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
         fileConsumer(src)
     }
@@ -97,18 +113,28 @@ public data class FileV1(
     val size: Long? = null,
 )
 
+public interface PackageManifest {
+    public val minSdkVersion: Int?
+    public val maxSdkVersion: Int?
+    public val featureNames: List<String>?
+    public val nativecode: List<String>?
+}
+
 @Serializable
 public data class ManifestV2(
     val versionName: String,
     val versionCode: Long,
     val usesSdk: UsesSdkV2? = null,
-    val maxSdkVersion: Int? = null,
-    val signer: SignatureV2? = null, // TODO really null?
+    override val maxSdkVersion: Int? = null,
+    val signer: SignerV2? = null, // yes this can be null for stuff like non-apps
     val usesPermission: List<PermissionV2> = emptyList(),
     val usesPermissionSdk23: List<PermissionV2> = emptyList(),
-    val nativecode: List<String> = emptyList(),
+    override val nativecode: List<String> = emptyList(),
     val features: List<FeatureV2> = emptyList(),
-)
+) : PackageManifest {
+    override val minSdkVersion: Int? = usesSdk?.minSdkVersion
+    override val featureNames: List<String> = features.map { it.name }
+}
 
 @Serializable
 public data class UsesSdkV2(
@@ -117,7 +143,7 @@ public data class UsesSdkV2(
 )
 
 @Serializable
-public data class SignatureV2(
+public data class SignerV2(
     val sha256: List<String>,
     val hasMultipleSigners: Boolean = false,
 )

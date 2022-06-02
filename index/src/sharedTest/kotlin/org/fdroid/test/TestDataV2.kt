@@ -17,7 +17,7 @@ import org.fdroid.index.v2.PermissionV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 import org.fdroid.index.v2.Screenshots
-import org.fdroid.index.v2.SignatureV2
+import org.fdroid.index.v2.SignerV2
 import org.fdroid.index.v2.UsesSdkV2
 
 internal const val LOCALE = "en-US"
@@ -72,7 +72,7 @@ internal fun PackageVersionV2.v1compat() = copy(
     src = src?.v1compat(),
     manifest = manifest.copy(
         signer = if (manifest.signer?.sha256?.size ?: 0 <= 1) manifest.signer else {
-            SignatureV2(manifest.signer?.sha256?.subList(0, 1) ?: error(""))
+            SignerV2(manifest.signer?.sha256?.subList(0, 1) ?: error(""))
         }
     ),
     releaseChannels = releaseChannels.filter { it == RELEASE_CHANNEL_BETA },
@@ -245,7 +245,7 @@ internal object TestDataMidV2 {
                 targetSdkVersion = 32,
             ),
             maxSdkVersion = 4568,
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf"),
             ),
         ),
@@ -315,7 +315,7 @@ internal object TestDataMidV2 {
                 minSdkVersion = 22,
                 targetSdkVersion = 25,
             ),
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
             usesPermission = listOf(
@@ -366,7 +366,7 @@ internal object TestDataMidV2 {
                 minSdkVersion = 22,
                 targetSdkVersion = 25,
             ),
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
             usesPermission = listOf(
@@ -416,7 +416,7 @@ internal object TestDataMidV2 {
                 minSdkVersion = 22,
                 targetSdkVersion = 25,
             ),
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
             usesPermission = listOf(
@@ -463,7 +463,7 @@ internal object TestDataMidV2 {
                 minSdkVersion = 22,
                 targetSdkVersion = 25,
             ),
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
             usesPermission = listOf(
@@ -510,7 +510,7 @@ internal object TestDataMidV2 {
                 minSdkVersion = 22,
                 targetSdkVersion = 25,
             ),
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
             usesPermission = listOf(
@@ -839,7 +839,7 @@ internal object TestDataMaxV2 {
                 minSdkVersion = 22,
                 targetSdkVersion = 25,
             ),
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
             usesPermission = listOf(
@@ -999,7 +999,7 @@ internal object TestDataMaxV2 {
                 targetSdkVersion = 25,
             ),
             maxSdkVersion = Int.MAX_VALUE,
-            signer = SignatureV2(
+            signer = SignerV2(
                 sha256 = listOf(
                     "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
                     "33238d512c1e3eb2d6569f4a3bfbf5523418b22e0a3ed1552770abb9a9c9ccvb",

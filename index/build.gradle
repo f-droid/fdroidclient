@@ -70,6 +70,7 @@ kotlin {
         androidTest {
             dependencies {
                 implementation 'junit:junit:4.13.2'
+                implementation 'io.mockk:mockk:1.12.4'
             }
         }
         androidAndroidTest {
@@ -104,6 +105,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 

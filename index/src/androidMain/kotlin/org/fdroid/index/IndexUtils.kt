@@ -36,7 +36,7 @@ public object IndexUtils {
         return messageDigest.digest()
     }
 
-    internal fun PackageInfo.getVersionCode(): Long {
+    public fun PackageInfo.getVersionCode(): Long {
         return if (Build.VERSION.SDK_INT >= 28) {
             longVersionCode
         } else {
