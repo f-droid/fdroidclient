@@ -2,18 +2,19 @@ package org.fdroid.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import org.fdroid.PackagePreference
 
 @Entity
 public data class AppPrefs(
     @PrimaryKey
     val packageId: String,
-    val ignoreVersionCodeUpdate: Long = 0,
+    override val ignoreVersionCodeUpdate: Long = 0,
     // This is named like this, because it hit a Room bug when joining with Version table
     // which had exactly the same field.
     internal val appPrefReleaseChannels: List<String>? = null,
-) {
+) : PackagePreference {
     public val ignoreAllUpdates: Boolean get() = ignoreVersionCodeUpdate == Long.MAX_VALUE
-    public val releaseChannels: List<String> get() = appPrefReleaseChannels ?: emptyList()
+    public override val releaseChannels: List<String> get() = appPrefReleaseChannels ?: emptyList()
     public fun shouldIgnoreUpdate(versionCode: Long): Boolean =
         ignoreVersionCodeUpdate >= versionCode
 

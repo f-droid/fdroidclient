@@ -464,7 +464,7 @@ internal interface AppDaoInt : AppDao {
     override fun getNumberOfAppsInCategory(category: String): Int
 
     /**
-     * Used by [UpdateChecker] to get specific apps with available updates.
+     * Used by [DbUpdateChecker] to get specific apps with available updates.
      */
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here

@@ -10,15 +10,15 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
 @RunWith(AndroidJUnit4::class)
-internal class UpdateCheckerTest : DbTest() {
+internal class DbUpdateCheckerTest : DbTest() {
 
-    private lateinit var updateChecker: UpdateChecker
+    private lateinit var updateChecker: DbUpdateChecker
 
     @Before
     override fun createDb() {
         super.createDb()
         // TODO mock packageManager and maybe move to unit tests
-        updateChecker = UpdateChecker(db, context.packageManager)
+        updateChecker = DbUpdateChecker(db, context.packageManager)
     }
 
     @Test
