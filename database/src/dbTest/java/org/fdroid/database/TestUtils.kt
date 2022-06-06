@@ -1,15 +1,7 @@
-package org.fdroid.database.test
+package org.fdroid.database
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import org.fdroid.database.App
-import org.fdroid.database.AppVersion
-import org.fdroid.database.Repository
-import org.fdroid.database.toCoreRepository
-import org.fdroid.database.toMirror
-import org.fdroid.database.toRepoAntiFeatures
-import org.fdroid.database.toRepoCategories
-import org.fdroid.database.toRepoReleaseChannel
 import org.fdroid.index.v2.FeatureV2
 import org.fdroid.index.v2.ManifestV2
 import org.fdroid.index.v2.MetadataV2

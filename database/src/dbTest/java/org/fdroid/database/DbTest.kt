@@ -4,16 +4,14 @@ import android.content.Context
 import android.content.res.AssetManager
 import androidx.core.os.LocaleListCompat
 import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import io.mockk.every
 import io.mockk.mockkObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.setMain
-import org.fdroid.database.test.TestUtils.assertRepoEquals
-import org.fdroid.database.test.TestUtils.toMetadataV2
-import org.fdroid.database.test.TestUtils.toPackageVersionV2
+import org.fdroid.database.TestUtils.assertRepoEquals
+import org.fdroid.database.TestUtils.toMetadataV2
+import org.fdroid.database.TestUtils.toPackageVersionV2
 import org.fdroid.index.v1.IndexV1StreamProcessor
 import org.fdroid.index.v2.IndexV2
 import org.fdroid.index.v2.IndexV2FullStreamProcessor
@@ -22,13 +20,11 @@ import org.fdroid.test.TestUtils.sorted
 import org.fdroid.test.VerifierConstants.CERTIFICATE
 import org.junit.After
 import org.junit.Before
-import org.junit.runner.RunWith
 import java.io.IOException
 import java.util.Locale
 import kotlin.test.assertEquals
 import kotlin.test.fail
 
-@RunWith(AndroidJUnit4::class)
 @OptIn(ExperimentalCoroutinesApi::class)
 internal abstract class DbTest {
 
@@ -38,18 +34,18 @@ internal abstract class DbTest {
     internal lateinit var db: FDroidDatabaseInt
     private val testCoroutineDispatcher = Dispatchers.Unconfined
 
-    protected val context: Context = ApplicationProvider.getApplicationContext()
+    protected val context: Context = getApplicationContext()
     protected val assets: AssetManager = context.resources.assets
     protected val locales = LocaleListCompat.create(Locale.US)
 
     @Before
     open fun createDb() {
-        db = Room.inMemoryDatabaseBuilder(context, FDroidDatabaseInt::class.java).build()
+        db = Room.inMemoryDatabaseBuilder(context, FDroidDatabaseInt::class.java)
+            .allowMainThreadQueries()
+            .build()
         repoDao = db.getRepositoryDao()
         appDao = db.getAppDao()
         versionDao = db.getVersionDao()
-
-        Dispatchers.setMain(testCoroutineDispatcher)
 
         mockkObject(FDroidDatabaseHolder)
         every { FDroidDatabaseHolder.dispatcher } returns testCoroutineDispatcher

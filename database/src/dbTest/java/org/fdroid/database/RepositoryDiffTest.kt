@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.database.test.TestUtils.assertRepoEquals
+import org.fdroid.database.TestUtils.assertRepoEquals
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.ReleaseChannelV2

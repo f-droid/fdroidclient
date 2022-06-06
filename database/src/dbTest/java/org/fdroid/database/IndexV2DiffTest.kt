@@ -22,54 +22,54 @@ internal class IndexV2DiffTest : DbTest() {
     @Test
     @Ignore("use for testing specific index on demand")
     fun testBrokenIndexDiff() {
-        val endPath = "resources/tmp/index-end.json"
+        val endPath = "tmp/index-end.json"
         val endIndex = IndexParser.parseV2(assets.open(endPath))
         testDiff(
-            startPath = "resources/tmp/index-start.json",
-            diffPath = "resources/tmp/diff.json",
+            startPath = "tmp/index-start.json",
+            diffPath = "tmp/diff.json",
             endIndex = endIndex,
         )
     }
 
     @Test
     fun testEmptyToMin() = testDiff(
-        startPath = "resources/index-empty-v2.json",
-        diffPath = "resources/diff-empty-min/23.json",
+        startPath = "index-empty-v2.json",
+        diffPath = "diff-empty-min/23.json",
         endIndex = TestDataMinV2.index,
     )
 
     @Test
     fun testEmptyToMid() = testDiff(
-        startPath = "resources/index-empty-v2.json",
-        diffPath = "resources/diff-empty-mid/23.json",
+        startPath = "index-empty-v2.json",
+        diffPath = "diff-empty-mid/23.json",
         endIndex = TestDataMidV2.index,
     )
 
     @Test
     fun testEmptyToMax() = testDiff(
-        startPath = "resources/index-empty-v2.json",
-        diffPath = "resources/diff-empty-max/23.json",
+        startPath = "index-empty-v2.json",
+        diffPath = "diff-empty-max/23.json",
         endIndex = TestDataMaxV2.index,
     )
 
     @Test
     fun testMinToMid() = testDiff(
-        startPath = "resources/index-min-v2.json",
-        diffPath = "resources/diff-empty-mid/42.json",
+        startPath = "index-min-v2.json",
+        diffPath = "diff-empty-mid/42.json",
         endIndex = TestDataMidV2.index,
     )
 
     @Test
     fun testMinToMax() = testDiff(
-        startPath = "resources/index-min-v2.json",
-        diffPath = "resources/diff-empty-max/42.json",
+        startPath = "index-min-v2.json",
+        diffPath = "diff-empty-max/42.json",
         endIndex = TestDataMaxV2.index,
     )
 
     @Test
     fun testMidToMax() = testDiff(
-        startPath = "resources/index-mid-v2.json",
-        diffPath = "resources/diff-empty-max/1337.json",
+        startPath = "index-mid-v2.json",
+        diffPath = "diff-empty-max/1337.json",
         endIndex = TestDataMaxV2.index,
     )
 
@@ -81,7 +81,7 @@ internal class IndexV2DiffTest : DbTest() {
           }
         }""".trimIndent()
         testJsonDiff(
-            startPath = "resources/index-min-v2.json",
+            startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index.copy(packages = emptyMap()),
         )
@@ -102,7 +102,7 @@ internal class IndexV2DiffTest : DbTest() {
           }
         }""".trimIndent()
         testJsonDiff(
-            startPath = "resources/index-min-v2.json",
+            startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index.copy(
                 packages = TestDataMinV2.index.packages.mapValues {
@@ -125,7 +125,7 @@ internal class IndexV2DiffTest : DbTest() {
           }
         }""".trimIndent()
         testJsonDiff(
-            startPath = "resources/index-min-v2.json",
+            startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index.copy(
                 packages = TestDataMinV2.index.packages.mapValues {
@@ -146,7 +146,7 @@ internal class IndexV2DiffTest : DbTest() {
           "unknownKey": "should get ignored" 
         }""".trimIndent()
         testJsonDiff(
-            startPath = "resources/index-min-v2.json",
+            startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index.copy(
                 packages = emptyMap()
@@ -164,7 +164,7 @@ internal class IndexV2DiffTest : DbTest() {
           }
         }""".trimIndent()
         testJsonDiff(
-            startPath = "resources/index-min-v2.json",
+            startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index.copy(
                 packages = TestDataMinV2.index.packages.mapValues {
@@ -183,7 +183,7 @@ internal class IndexV2DiffTest : DbTest() {
           }
         }""".trimIndent()
         testJsonDiff(
-            startPath = "resources/index-min-v2.json",
+            startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index,
         )
@@ -202,7 +202,7 @@ internal class IndexV2DiffTest : DbTest() {
         }""".trimIndent()
         assertFailsWith<SerializationException> {
             testJsonDiff(
-                startPath = "resources/index-min-v2.json",
+                startPath = "index-min-v2.json",
                 diff = diffRepoIdJson,
                 endIndex = TestDataMinV2.index,
             )
@@ -218,7 +218,7 @@ internal class IndexV2DiffTest : DbTest() {
         }""".trimIndent()
         assertFailsWith<SerializationException> {
             testJsonDiff(
-                startPath = "resources/index-min-v2.json",
+                startPath = "index-min-v2.json",
                 diff = diffPackageIdJson,
                 endIndex = TestDataMinV2.index,
             )
@@ -229,21 +229,21 @@ internal class IndexV2DiffTest : DbTest() {
     fun testVersionsDenyKeyList() {
         assertFailsWith<SerializationException> {
             testJsonDiff(
-                startPath = "resources/index-min-v2.json",
+                startPath = "index-min-v2.json",
                 diff = getMinVersionJson(""""packageId": "foo""""),
                 endIndex = TestDataMinV2.index,
             )
         }
         assertFailsWith<SerializationException> {
             testJsonDiff(
-                startPath = "resources/index-min-v2.json",
+                startPath = "index-min-v2.json",
                 diff = getMinVersionJson(""""repoId": 1"""),
                 endIndex = TestDataMinV2.index,
             )
         }
         assertFailsWith<SerializationException> {
             testJsonDiff(
-                startPath = "resources/index-min-v2.json",
+                startPath = "index-min-v2.json",
                 diff = getMinVersionJson(""""versionId": "bar""""),
                 endIndex = TestDataMinV2.index,
             )
@@ -278,7 +278,7 @@ internal class IndexV2DiffTest : DbTest() {
             )
         )
         testJsonDiff(
-            startPath = "resources/index-mid-v2.json",
+            startPath = "index-mid-v2.json",
             diff = diffRepoIdJson,
             endIndex = TestDataMidV2.index.copy(
                 packages = mapOf(

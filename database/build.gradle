@@ -29,15 +29,24 @@ android {
     }
     sourceSets {
         androidTest {
+            java.srcDirs += "src/dbTest/java"
             java.srcDirs += "src/sharedTest/kotlin"
+            assets.srcDirs += "src/sharedTest/resources"
         }
         test {
+            java.srcDirs += "src/dbTest/java"
             java.srcDirs += "src/sharedTest/kotlin"
+            assets.srcDirs += "src/sharedTest/resources"
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -58,7 +67,7 @@ dependencies {
     implementation project(":download")
     implementation project(":index")
 
-    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
 
     def room_version = "2.4.2"
@@ -71,16 +80,20 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
 
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'io.mockk:mockk:1.12.4'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'androidx.test:core:1.4.0'
+    testImplementation 'androidx.test.ext:junit:1.1.3'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.robolectric:robolectric:4.8.1'
+    testImplementation 'commons-io:commons-io:2.6'
 
-    androidTestImplementation 'io.mockk:mockk-android:1.12.3'
+    androidTestImplementation 'io.mockk:mockk-android:1.12.3' // 1.12.4 has strange error
     androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2'
-
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'commons-io:commons-io:2.6'
 }
 

@@ -53,8 +53,8 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/index-min-v2.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "index-min-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
@@ -72,8 +72,8 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-mid/entry.jar",
-            jsonPath = "resources/index-mid-v2.json",
+            entryPath = "diff-empty-mid/entry.jar",
+            jsonPath = "index-mid-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMid.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
@@ -86,8 +86,8 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-max/entry.jar",
-            jsonPath = "resources/index-max-v2.json",
+            entryPath = "diff-empty-max/entry.jar",
+            jsonPath = "index-max-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMax.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
@@ -97,11 +97,11 @@ internal class IndexV2UpdaterTest : DbTest() {
 
     @Test
     fun testDiffMinToMid() {
-        val repoId = streamIndexV2IntoDb("resources/index-min-v2.json")
+        val repoId = streamIndexV2IntoDb("index-min-v2.json")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-mid/entry.jar",
-            jsonPath = "resources/diff-empty-mid/42.json",
+            entryPath = "diff-empty-mid/entry.jar",
+            jsonPath = "diff-empty-mid/42.json",
             entryFileV2 = TestDataEntryV2.emptyToMid.diffs["42"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
@@ -111,12 +111,12 @@ internal class IndexV2UpdaterTest : DbTest() {
 
     @Test
     fun testDiffEmptyToMin() {
-        val repoId = streamIndexV2IntoDb("resources/index-empty-v2.json")
+        val repoId = streamIndexV2IntoDb("index-empty-v2.json")
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/diff-empty-min/23.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "diff-empty-min/23.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
@@ -126,12 +126,12 @@ internal class IndexV2UpdaterTest : DbTest() {
 
     @Test
     fun testDiffMidToMax() {
-        val repoId = streamIndexV2IntoDb("resources/index-mid-v2.json")
+        val repoId = streamIndexV2IntoDb("index-mid-v2.json")
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-max/entry.jar",
-            jsonPath = "resources/diff-empty-max/1337.json",
+            entryPath = "diff-empty-max/entry.jar",
+            jsonPath = "diff-empty-max/1337.json",
             entryFileV2 = TestDataEntryV2.emptyToMax.diffs["1337"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
@@ -141,12 +141,12 @@ internal class IndexV2UpdaterTest : DbTest() {
 
     @Test
     fun testSameTimestampUnchanged() {
-        val repoId = streamIndexV2IntoDb("resources/index-min-v2.json")
+        val repoId = streamIndexV2IntoDb("index-min-v2.json")
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/diff-empty-min/23.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "diff-empty-min/23.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
@@ -156,12 +156,12 @@ internal class IndexV2UpdaterTest : DbTest() {
 
     @Test
     fun testHigherTimestampUnchanged() {
-        val repoId = streamIndexV2IntoDb("resources/index-mid-v2.json")
+        val repoId = streamIndexV2IntoDb("index-mid-v2.json")
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/diff-empty-min/23.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "diff-empty-min/23.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
@@ -171,15 +171,15 @@ internal class IndexV2UpdaterTest : DbTest() {
 
     @Test
     fun testNoDiffFoundIndexFallback() {
-        val repoId = streamIndexV2IntoDb("resources/index-empty-v2.json")
+        val repoId = streamIndexV2IntoDb("index-empty-v2.json")
         repoDao.updateRepository(repoId, CERTIFICATE)
         // fake timestamp of internal repo, so we will fail to find a diff in entry.json
         val newRepo = repoDao.getRepository(repoId)?.repository?.copy(timestamp = 22) ?: fail()
         repoDao.updateRepository(newRepo)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/index-min-v2.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "index-min-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.index
         )
         val result = indexUpdater.update(repo).noError()
@@ -192,8 +192,8 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/index-min-v2.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "index-min-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.index
         )
         val result = indexUpdater.updateNewRepo(repo, "wrong fingerprint")
@@ -206,8 +206,8 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-min/entry.jar",
-            jsonPath = "resources/index-min-v2.json",
+            entryPath = "diff-empty-min/entry.jar",
+            jsonPath = "index-min-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMin.index
         )
         val result = indexUpdater.update(repo)
@@ -221,11 +221,11 @@ internal class IndexV2UpdaterTest : DbTest() {
      */
     @Test
     fun testV1ToV2ForcesFullUpdateEvenIfDiffExists() {
-        val repoId = streamIndexV1IntoDb("resources/index-min-v1.json")
+        val repoId = streamIndexV1IntoDb("index-min-v1.json")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "resources/diff-empty-mid/entry.jar",
-            jsonPath = "resources/index-mid-v2.json",
+            entryPath = "diff-empty-mid/entry.jar",
+            jsonPath = "index-mid-v2.json",
             entryFileV2 = TestDataEntryV2.emptyToMid.index,
         )
         val result = indexUpdater.update(repo).noError()

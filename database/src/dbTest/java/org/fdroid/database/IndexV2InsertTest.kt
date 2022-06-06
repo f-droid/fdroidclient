@@ -20,42 +20,42 @@ internal class IndexV2InsertTest : DbTest() {
 
     @Test
     fun testStreamEmptyIntoDb() {
-        val repoId = streamIndexV2IntoDb("resources/index-empty-v2.json")
+        val repoId = streamIndexV2IntoDb("index-empty-v2.json")
         assertEquals(1, repoDao.getRepositories().size)
         assertDbEquals(repoId, TestDataEmptyV2.index)
     }
 
     @Test
     fun testStreamMinIntoDb() {
-        val repoId = streamIndexV2IntoDb("resources/index-min-v2.json")
+        val repoId = streamIndexV2IntoDb("index-min-v2.json")
         assertEquals(1, repoDao.getRepositories().size)
         assertDbEquals(repoId, TestDataMinV2.index)
     }
 
     @Test
     fun testStreamMinReorderedIntoDb() {
-        val repoId = streamIndexV2IntoDb("resources/index-min-reordered-v2.json")
+        val repoId = streamIndexV2IntoDb("index-min-reordered-v2.json")
         assertEquals(1, repoDao.getRepositories().size)
         assertDbEquals(repoId, TestDataMinV2.index)
     }
 
     @Test
     fun testStreamMidIntoDb() {
-        val repoId = streamIndexV2IntoDb("resources/index-mid-v2.json")
+        val repoId = streamIndexV2IntoDb("index-mid-v2.json")
         assertEquals(1, repoDao.getRepositories().size)
         assertDbEquals(repoId, TestDataMidV2.index)
     }
 
     @Test
     fun testStreamMaxIntoDb() {
-        val repoId = streamIndexV2IntoDb("resources/index-max-v2.json")
+        val repoId = streamIndexV2IntoDb("index-max-v2.json")
         assertEquals(1, repoDao.getRepositories().size)
         assertDbEquals(repoId, TestDataMaxV2.index)
     }
 
     @Test
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
-        val cIn = CountingInputStream(assets.open("resources/index-max-v2.json"))
+        val cIn = CountingInputStream(assets.open("index-max-v2.json"))
         val compatibilityChecker = CompatibilityChecker {
             if (cIn.byteCount > 0) throw SerializationException()
             true
