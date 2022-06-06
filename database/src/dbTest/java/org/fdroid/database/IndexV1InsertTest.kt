@@ -29,7 +29,7 @@ internal class IndexV1InsertTest : DbTest() {
 
     @Test
     fun testStreamEmptyIntoDb() {
-        val repoId = streamIndex("resources/index-empty-v1.json")
+        val repoId = streamIndex("index-empty-v1.json")
         assertEquals(1, repoDao.getRepositories().size)
         val index = indexConverter.toIndexV2(TestDataEmptyV1.index)
         assertDbEquals(repoId, index)
@@ -37,7 +37,7 @@ internal class IndexV1InsertTest : DbTest() {
 
     @Test
     fun testStreamMinIntoDb() {
-        val repoId = streamIndex("resources/index-min-v1.json")
+        val repoId = streamIndex("index-min-v1.json")
         assertTrue(repoDao.getRepositories().size == 1)
         val index = indexConverter.toIndexV2(TestDataMinV1.index)
         assertDbEquals(repoId, index)
@@ -45,7 +45,7 @@ internal class IndexV1InsertTest : DbTest() {
 
     @Test
     fun testStreamMidIntoDb() {
-        val repoId = streamIndex("resources/index-mid-v1.json")
+        val repoId = streamIndex("index-mid-v1.json")
         assertTrue(repoDao.getRepositories().size == 1)
         val index = indexConverter.toIndexV2(TestDataMidV1.index)
         assertDbEquals(repoId, index)
@@ -53,7 +53,7 @@ internal class IndexV1InsertTest : DbTest() {
 
     @Test
     fun testStreamMaxIntoDb() {
-        val repoId = streamIndex("resources/index-max-v1.json")
+        val repoId = streamIndex("index-max-v1.json")
         assertTrue(repoDao.getRepositories().size == 1)
         val index = indexConverter.toIndexV2(TestDataMaxV1.index)
         assertDbEquals(repoId, index)
@@ -73,7 +73,7 @@ internal class IndexV1InsertTest : DbTest() {
 
     @Test
     fun testExceptionWhileStreamingDoesNotSaveIntoDb() {
-        val cIn = CountingInputStream(assets.open("resources/index-max-v1.json"))
+        val cIn = CountingInputStream(assets.open("index-max-v1.json"))
         assertFailsWith<SerializationException> {
             db.runInTransaction {
                 val repoId = db.getRepositoryDao().insertEmptyRepo("https://f-droid.org/repo")

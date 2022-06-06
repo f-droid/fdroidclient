@@ -2,7 +2,7 @@ package org.fdroid.database
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.fdroid.database.test.TestUtils.getOrAwaitValue
+import org.fdroid.database.TestUtils.getOrAwaitValue
 import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString

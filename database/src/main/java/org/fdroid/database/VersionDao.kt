@@ -116,7 +116,6 @@ internal interface VersionDaoInt : VersionDao {
     ) {
         // ensure that diff does not include internal keys
         DENY_LIST.forEach { forbiddenKey ->
-            println("$forbiddenKey ${jsonObject.keys}")
             if (jsonObject.containsKey(forbiddenKey)) {
                 throw SerializationException(forbiddenKey)
             }

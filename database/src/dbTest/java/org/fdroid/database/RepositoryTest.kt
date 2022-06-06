@@ -1,7 +1,7 @@
 package org.fdroid.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import org.fdroid.database.test.TestUtils.assertRepoEquals
+import org.fdroid.database.TestUtils.assertRepoEquals
 import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString
