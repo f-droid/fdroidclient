@@ -330,11 +330,13 @@ internal interface AppDaoInt : AppDao {
              localizedSummary, version.antiFeatures
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
-        JOIN Version AS version USING (repoId, packageId)
-        JOIN LocalizedIcon AS icon USING (repoId, packageId)
+        LEFT JOIN Version AS version USING (repoId, packageId)
+        LEFT JOIN LocalizedIcon AS icon USING (repoId, packageId)
         WHERE pref.enabled = 1
-        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
-        ORDER BY localizedName IS NULL ASC, localizedSummary IS NULL ASC, app.lastUpdated DESC, app.added ASC
+        GROUP BY packageId HAVING MAX(pref.weight)
+            AND MAX(COALESCE(version.manifest_versionCode, ${Long.MAX_VALUE}))
+        ORDER BY localizedName IS NULL ASC, icon.packageId IS NULL ASC,
+            localizedSummary IS NULL ASC, app.lastUpdated DESC
         LIMIT :limit""")
     override fun getAppOverviewItems(limit: Int): LiveData<List<AppOverviewItem>>
 
@@ -344,11 +346,13 @@ internal interface AppDaoInt : AppDao {
              localizedSummary, version.antiFeatures
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
-        JOIN Version AS version USING (repoId, packageId)
-        JOIN LocalizedIcon AS icon USING (repoId, packageId)
+        LEFT JOIN Version AS version USING (repoId, packageId)
+        LEFT JOIN LocalizedIcon AS icon USING (repoId, packageId)
         WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
-        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
-        ORDER BY localizedName IS NULL ASC, localizedSummary IS NULL ASC, app.lastUpdated DESC, app.added ASC
+        GROUP BY packageId HAVING MAX(pref.weight)
+            AND MAX(COALESCE(version.manifest_versionCode, ${Long.MAX_VALUE}))
+        ORDER BY localizedName IS NULL ASC, icon.packageId IS NULL ASC,
+            localizedSummary IS NULL ASC, app.lastUpdated DESC
         LIMIT :limit""")
     override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
 

@@ -14,7 +14,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
-import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -25,6 +24,35 @@ internal class AppTest : DbTest() {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val packageId = getRandomString()
+    private val packageId1 = getRandomString()
+    private val packageId2 = getRandomString()
+    private val packageId3 = getRandomString()
+    private val name1 = mapOf("en-US" to "1")
+    private val name2 = mapOf("en-US" to "2")
+    private val name3 = mapOf("en-US" to "3")
+    private val icons1 = mapOf("foo" to getRandomFileV2(), "bar" to getRandomFileV2())
+    private val icons2 = mapOf("23" to getRandomFileV2(), "42" to getRandomFileV2())
+    private val app1 = getRandomMetadataV2().copy(
+        name = name1,
+        icon = icons1,
+        summary = null,
+        lastUpdated = 10,
+        categories = listOf("A", "B")
+    )
+    private val app2 = getRandomMetadataV2().copy(
+        name = name2,
+        icon = icons2,
+        summary = name2,
+        lastUpdated = 20,
+        categories = listOf("A")
+    )
+    private val app3 = getRandomMetadataV2().copy(
+        name = name3,
+        icon = null,
+        summary = name3,
+        lastUpdated = 30,
+        categories = listOf("A", "B")
+    )
 
     @Test
     fun insertGetDeleteSingleApp() {
@@ -50,19 +78,8 @@ internal class AppTest : DbTest() {
     }
 
     @Test
-    fun testAppOverViewItem() {
+    fun testAppOverViewItemSortOrder() {
         val repoId = repoDao.insertOrReplace(getRandomRepo())
-        val packageId1 = getRandomString()
-        val packageId2 = getRandomString()
-        val packageId3 = getRandomString()
-        val name1 = mapOf("en-US" to "1")
-        val name2 = mapOf("en-US" to "2")
-        val name3 = mapOf("en-US" to "3")
-        val icons1 = mapOf("foo" to getRandomFileV2(), "bar" to getRandomFileV2())
-        val icons2 = mapOf("23" to getRandomFileV2(), "42" to getRandomFileV2())
-        val app1 = getRandomMetadataV2().copy(name = name1, icon = icons1)
-        val app2 = getRandomMetadataV2().copy(name = name2, icon = icons2)
-        val app3 = getRandomMetadataV2().copy(name = name3, icon = null)
         appDao.insert(repoId, packageId1, app1, locales)
         appDao.insert(repoId, packageId2, app2, locales)
         versionDao.insert(repoId, packageId1, "1", getRandomPackageVersionV2(), true)
@@ -71,28 +88,120 @@ internal class AppTest : DbTest() {
         // icons of both apps are returned correctly
         val apps = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
         assertEquals(2, apps.size)
-        assertEquals(icons1,
-            apps.find { it.packageId == packageId1 }?.localizedIcon?.toLocalizedFileV2())
-        assertEquals(icons2,
-            apps.find { it.packageId == packageId2 }?.localizedIcon?.toLocalizedFileV2())
+        // app 2 is first, because has icon and summary
+        assertEquals(packageId2, apps[0].packageId)
+        assertEquals(icons2, apps[0].localizedIcon?.toLocalizedFileV2())
+        // app 1 is next, because has icon
+        assertEquals(packageId1, apps[1].packageId)
+        assertEquals(icons1, apps[1].localizedIcon?.toLocalizedFileV2())
 
-        // app without icon is not returned
+        // app without icon is returned last
         appDao.insert(repoId, packageId3, app3)
         versionDao.insert(repoId, packageId3, "3", getRandomPackageVersionV2(), true)
         val apps3 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
-        assertEquals(2, apps3.size)
-        assertEquals(icons1,
-            apps3.find { it.packageId == packageId1 }?.localizedIcon?.toLocalizedFileV2())
-        assertEquals(icons2,
-            apps3.find { it.packageId == packageId2 }?.localizedIcon?.toLocalizedFileV2())
-        assertNull(apps3.find { it.packageId == packageId3 })
+        assertEquals(3, apps3.size)
+        assertEquals(packageId2, apps3[0].packageId)
+        assertEquals(packageId1, apps3[1].packageId)
+        assertEquals(packageId3, apps3[2].packageId)
+        assertEquals(emptyList(), apps3[2].localizedIcon)
 
-        // app4 is the same as app1 and thus will not be shown again
+        // app1b is the same as app1 (but in another repo) and thus will not be shown again
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val app4 = getRandomMetadataV2().copy(name = name2, icon = icons2)
-        appDao.insert(repoId2, packageId1, app4)
+        val app1b = app1.copy(name = name2, icon = icons2, summary = name2)
+        appDao.insert(repoId2, packageId1, app1b)
+        // note that we don't insert a version here
         val apps4 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
-        assertEquals(2, apps4.size)
+        assertEquals(3, apps4.size)
+
+        // app3b is the same as app3, but has an icon, so is not last anymore
+        val app3b = app3.copy(icon = icons2)
+        appDao.insert(repoId2, packageId3, app3b)
+        // note that we don't insert a version here
+        val apps5 = appDao.getAppOverviewItems().getOrAwaitValue() ?: fail()
+        assertEquals(3, apps5.size)
+        assertEquals(packageId3, apps5[0].packageId)
+        assertEquals(emptyList(), apps5[0].antiFeatureNames)
+        assertEquals(packageId2, apps5[1].packageId)
+        assertEquals(packageId1, apps5[2].packageId)
+    }
+
+    @Test
+    fun testAppOverViewItemSortOrderWithCategories() {
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageId1, app1, locales)
+        appDao.insert(repoId, packageId2, app2, locales)
+        versionDao.insert(repoId, packageId1, "1", getRandomPackageVersionV2(), true)
+        versionDao.insert(repoId, packageId2, "2", getRandomPackageVersionV2(), true)
+
+        // icons of both apps are returned correctly
+        val apps = appDao.getAppOverviewItems("A").getOrAwaitValue() ?: fail()
+        assertEquals(2, apps.size)
+        // app 2 is first, because has icon and summary
+        assertEquals(packageId2, apps[0].packageId)
+        assertEquals(icons2, apps[0].localizedIcon?.toLocalizedFileV2())
+        // app 1 is next, because has icon
+        assertEquals(packageId1, apps[1].packageId)
+        assertEquals(icons1, apps[1].localizedIcon?.toLocalizedFileV2())
+
+        // only one app is returned for category B
+        assertEquals(1, appDao.getAppOverviewItems("B").getOrAwaitValue()?.size ?: fail())
+
+        // app without icon is returned last
+        appDao.insert(repoId, packageId3, app3)
+        versionDao.insert(repoId, packageId3, "3", getRandomPackageVersionV2(), true)
+        val apps3 = appDao.getAppOverviewItems("A").getOrAwaitValue() ?: fail()
+        assertEquals(3, apps3.size)
+        assertEquals(packageId2, apps3[0].packageId)
+        assertEquals(packageId1, apps3[1].packageId)
+        assertEquals(packageId3, apps3[2].packageId)
+        assertEquals(emptyList(), apps3[2].localizedIcon)
+
+        // app1b is the same as app1 (but in another repo) and thus will not be shown again
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val app1b = app1.copy(name = name2, icon = icons2, summary = name2)
+        appDao.insert(repoId2, packageId1, app1b)
+        // note that we don't insert a version here
+        val apps4 = appDao.getAppOverviewItems("A").getOrAwaitValue() ?: fail()
+        assertEquals(3, apps4.size)
+
+        // app3b is the same as app3, but has an icon, so is not last anymore
+        val app3b = app3.copy(icon = icons2)
+        appDao.insert(repoId2, packageId3, app3b)
+        // note that we don't insert a version here
+        val apps5 = appDao.getAppOverviewItems("A").getOrAwaitValue() ?: fail()
+        assertEquals(3, apps5.size)
+        assertEquals(packageId3, apps5[0].packageId)
+        assertEquals(emptyList(), apps5[0].antiFeatureNames)
+        assertEquals(packageId2, apps5[1].packageId)
+        assertEquals(packageId1, apps5[2].packageId)
+
+        // only two apps are returned for category B
+        assertEquals(2, appDao.getAppOverviewItems("B").getOrAwaitValue()?.size)
+    }
+
+    @Test
+    fun testAppOverViewItemOnlyFromEnabledRepos() {
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageId1, app1, locales)
+        appDao.insert(repoId, packageId2, app2, locales)
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageId3, app3, locales)
+
+        // 3 apps from 2 repos
+        assertEquals(3, appDao.getAppOverviewItems().getOrAwaitValue()?.size)
+        assertEquals(3, appDao.getAppOverviewItems("A").getOrAwaitValue()?.size)
+
+        // only 1 app after disabling first repo
+        repoDao.setRepositoryEnabled(repoId, false)
+        assertEquals(1, appDao.getAppOverviewItems().getOrAwaitValue()?.size)
+        assertEquals(1, appDao.getAppOverviewItems("A").getOrAwaitValue()?.size)
+        assertEquals(1, appDao.getAppOverviewItems("B").getOrAwaitValue()?.size)
+
+        // no more apps after disabling all repos
+        repoDao.setRepositoryEnabled(repoId2, false)
+        assertEquals(0, appDao.getAppOverviewItems().getOrAwaitValue()?.size)
+        assertEquals(0, appDao.getAppOverviewItems("A").getOrAwaitValue()?.size)
+        assertEquals(0, appDao.getAppOverviewItems("B").getOrAwaitValue()?.size)
     }
 
     @Test

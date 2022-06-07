@@ -71,6 +71,9 @@ public class IndexV1Updater(
                 )
                 repoDao.updateRepositoryPreferences(updatedPrefs)
             }
+        } catch (e: OldIndexException) {
+            if (e.isSameTimestamp) return IndexUpdateResult.Unchanged
+            else throw e
         } finally {
             file.delete()
         }
