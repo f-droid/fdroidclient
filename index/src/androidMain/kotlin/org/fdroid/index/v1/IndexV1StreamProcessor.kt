@@ -89,7 +89,8 @@ public class IndexV1StreamProcessor(
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV1.serializer())
             if (lastTimestamp >= repo.timestamp) {
-                throw OldIndexException("Old repo ${repo.address} ${repo.timestamp}")
+                throw OldIndexException(lastTimestamp == repo.timestamp,
+                    "Old repo ${repo.address} ${repo.timestamp}")
             }
             val repoV2 = repo.toRepoV2(
                 locale = DEFAULT_LOCALE,
@@ -213,4 +214,4 @@ private class AppData(
     val categories: List<String>,
 )
 
-internal class OldIndexException(val msg: String) : Exception(msg)
+public class OldIndexException(public val isSameTimestamp: Boolean, msg: String) : Exception(msg)
