@@ -17,21 +17,23 @@ import kotlin.random.Random
 
 internal object TestVersionUtils {
 
-    fun getRandomPackageVersionV2() = PackageVersionV2(
+    fun getRandomPackageVersionV2(
+        versionCode: Long = Random.nextLong(1, Long.MAX_VALUE),
+    ) = PackageVersionV2(
         added = Random.nextLong(),
         file = getRandomFileV2(false).let {
             FileV1(it.name, it.sha256!!, it.size)
         },
         src = getRandomFileV2().orNull(),
-        manifest = getRandomManifestV2(),
+        manifest = getRandomManifestV2(versionCode),
         releaseChannels = getRandomList { getRandomString() },
         antiFeatures = getRandomMap { getRandomString() to getRandomLocalizedTextV2() },
         whatsNew = getRandomLocalizedTextV2(),
     )
 
-    fun getRandomManifestV2() = ManifestV2(
+    fun getRandomManifestV2(versionCode: Long) = ManifestV2(
         versionName = getRandomString(),
-        versionCode = Random.nextLong(),
+        versionCode = versionCode,
         usesSdk = UsesSdkV2(
             minSdkVersion = Random.nextInt(),
             targetSdkVersion = Random.nextInt(),
