@@ -30,6 +30,7 @@ internal abstract class DbTest {
 
     internal lateinit var repoDao: RepositoryDaoInt
     internal lateinit var appDao: AppDaoInt
+    internal lateinit var appPrefsDao: AppPrefsDaoInt
     internal lateinit var versionDao: VersionDaoInt
     internal lateinit var db: FDroidDatabaseInt
     private val testCoroutineDispatcher = Dispatchers.Unconfined
@@ -45,6 +46,7 @@ internal abstract class DbTest {
             .build()
         repoDao = db.getRepositoryDao()
         appDao = db.getAppDao()
+        appPrefsDao = db.getAppPrefsDao()
         versionDao = db.getVersionDao()
 
         mockkObject(FDroidDatabaseHolder)

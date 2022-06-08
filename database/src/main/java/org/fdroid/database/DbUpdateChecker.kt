@@ -73,7 +73,7 @@ public class DbUpdateChecker(
             releaseChannels) ?: return null
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
-            packageId = version.packageId,
+            packageName = version.packageId,
             versionId = version.versionId,
         )
         return version.toAppVersion(versionedStrings)
@@ -109,7 +109,7 @@ public class DbUpdateChecker(
     private fun getUpdatableApp(version: Version, installedVersionCode: Long): UpdatableApp? {
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
-            packageId = version.packageId,
+            packageName = version.packageId,
             versionId = version.versionId,
         )
         val appOverviewItem =

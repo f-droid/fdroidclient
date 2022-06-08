@@ -11,6 +11,7 @@ import org.junit.Assert
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
+import kotlin.test.fail
 
 internal object TestUtils {
 
@@ -106,4 +107,7 @@ internal object TestUtils {
         return data[0] as T?
     }
 
+    fun <T> LiveData<T>.getOrFail(): T {
+        return getOrAwaitValue() ?: fail()
+    }
 }
