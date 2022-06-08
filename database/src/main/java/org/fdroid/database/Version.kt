@@ -4,6 +4,7 @@ import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Relation
 import org.fdroid.database.VersionedStringType.PERMISSION
 import org.fdroid.database.VersionedStringType.PERMISSION_SDK_23
 import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
@@ -48,8 +49,7 @@ public data class Version(
 
     internal fun toAppVersion(versionedStrings: List<VersionedString>): AppVersion = AppVersion(
         version = this,
-        usesPermission = versionedStrings.getPermissions(this),
-        usesPermissionSdk23 = versionedStrings.getPermissionsSdk23(this),
+        versionedStrings = versionedStrings,
     )
 }
 
@@ -72,10 +72,13 @@ internal fun PackageVersionV2.toVersion(
     isCompatible = isCompatible,
 )
 
-public data class AppVersion(
-    internal val version: Version,
-    val usesPermission: List<PermissionV2>? = null,
-    val usesPermissionSdk23: List<PermissionV2>? = null,
+public data class AppVersion internal constructor(
+    @Embedded internal val version: Version,
+    @Relation(
+        parentColumn = "versionId",
+        entityColumn = "versionId",
+    )
+    internal val versionedStrings: List<VersionedString>?,
 ) {
     public val repoId: Long get() = version.repoId
     public val packageId: String get() = version.packageId
@@ -84,9 +87,12 @@ public data class AppVersion(
     public val manifest: AppManifest get() = version.manifest
     public val file: FileV1 get() = version.file
     public val src: FileV2? get() = version.src
+    public val usesPermission: List<PermissionV2>? get() = versionedStrings?.getPermissions(version)
+    public val usesPermissionSdk23: List<PermissionV2>?
+        get() = versionedStrings?.getPermissionsSdk23(version)
     public val featureNames: List<String> get() = version.manifest.features ?: emptyList()
     public val nativeCode: List<String> get() = version.manifest.nativecode ?: emptyList()
-    public val releaseChannels: List<String> = version.releaseChannels ?: emptyList()
+    public val releaseChannels: List<String> get() = version.releaseChannels ?: emptyList()
     val antiFeatureNames: List<String>
         get() {
             return version.antiFeatures?.map { it.key } ?: emptyList()
