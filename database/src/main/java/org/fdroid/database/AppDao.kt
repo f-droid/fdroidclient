@@ -7,14 +7,10 @@ import androidx.annotation.VisibleForTesting
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.distinctUntilChanged
-import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import androidx.lifecycle.switchMap
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import androidx.room.RoomWarnings.CURSOR_MISMATCH
 import androidx.room.Transaction
@@ -23,32 +19,64 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
+import org.fdroid.database.AppListSortOrder.LAST_UPDATED
+import org.fdroid.database.AppListSortOrder.NAME
 import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
 import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
-import org.fdroid.database.FDroidDatabaseHolder.dispatcher
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
-import org.fdroid.index.v2.Screenshots
 
 public interface AppDao {
+    /**
+     * Inserts an app into the DB.
+     * This is usually from a full index v2 via [MetadataV2].
+     *
+     * Note: The app is considered to be not compatible until [Version]s are added
+     * and [updateCompatibility] was called.
+     *
+     * @param locales supported by the current system configuration.
+     */
     public fun insert(
         repoId: Long,
-        packageId: String,
+        packageName: String,
         app: MetadataV2,
         locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
     )
 
     /**
-     * Gets the app from the DB. If more than one app with this [packageId] exists,
+     * Updates the [AppMetadata.isCompatible] flag
+     * based on whether at least one [AppVersion] is compatible.
+     * This needs to run within the transaction that adds [AppMetadata] to the DB (e.g. [insert]).
+     * Otherwise the compatibility is wrong.
+     */
+    public fun updateCompatibility(repoId: Long)
+
+    /**
+     * Gets the app from the DB. If more than one app with this [packageName] exists,
      * the one from the repository with the highest weight is returned.
      */
-    public fun getApp(packageId: String): LiveData<App?>
-    public fun getApp(repoId: Long, packageId: String): App?
+    public fun getApp(packageName: String): LiveData<App?>
+
+    /**
+     * Gets an app from a specific [Repository] or null,
+     * if none is found with the given [packageName],
+     */
+    public fun getApp(repoId: Long, packageName: String): App?
+
+    /**
+     * Returns a limited number of apps with limited data.
+     * Apps without name, icon or summary are at the end (or excluded if limit is too small).
+     * Includes anti-features from the version with the highest version code.
+     */
     public fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
+
+    /**
+     * Returns a limited number of apps with limited data within the given [category].
+     */
     public fun getAppOverviewItems(
         category: String,
         limit: Int = 50,
@@ -97,21 +125,21 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     override fun insert(
         repoId: Long,
-        packageId: String,
+        packageName: String,
         app: MetadataV2,
         locales: LocaleListCompat,
     ) {
-        insert(app.toAppMetadata(repoId, packageId, false))
-        app.icon.insert(repoId, packageId, "icon")
-        app.featureGraphic.insert(repoId, packageId, "featureGraphic")
-        app.promoGraphic.insert(repoId, packageId, "promoGraphic")
-        app.tvBanner.insert(repoId, packageId, "tvBanner")
+        insert(app.toAppMetadata(repoId, packageName, false, locales))
+        app.icon.insert(repoId, packageName, "icon")
+        app.featureGraphic.insert(repoId, packageName, "featureGraphic")
+        app.promoGraphic.insert(repoId, packageName, "promoGraphic")
+        app.tvBanner.insert(repoId, packageName, "tvBanner")
         app.screenshots?.let {
-            it.phone.insert(repoId, packageId, "phone")
-            it.sevenInch.insert(repoId, packageId, "sevenInch")
-            it.tenInch.insert(repoId, packageId, "tenInch")
-            it.wear.insert(repoId, packageId, "wear")
-            it.tv.insert(repoId, packageId, "tv")
+            it.phone.insert(repoId, packageName, "phone")
+            it.sevenInch.insert(repoId, packageName, "sevenInch")
+            it.tenInch.insert(repoId, packageName, "tenInch")
+            it.wear.insert(repoId, packageName, "wear")
+            it.tv.insert(repoId, packageName, "tv")
         }
     }
 
@@ -128,13 +156,13 @@ internal interface AppDaoInt : AppDao {
         }
     }
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = REPLACE)
     fun insert(appMetadata: AppMetadata)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = REPLACE)
     fun insert(localizedFiles: List<LocalizedFile>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = REPLACE)
     fun insertLocalizedFileLists(localizedFiles: List<LocalizedFileList>)
 
     @Transaction
@@ -229,23 +257,18 @@ internal interface AppDaoInt : AppDao {
     /**
      * This is needed to support v1 streaming and shouldn't be used for something else.
      */
+    @Deprecated("Only for v1 index")
     @Query("""UPDATE AppMetadata SET preferredSigner = :preferredSigner
         WHERE repoId = :repoId AND packageId = :packageId""")
     fun updatePreferredSigner(repoId: Long, packageId: String, preferredSigner: String?)
 
-    /**
-     * Updates the [AppMetadata.isCompatible] flag
-     * based on whether at least one [AppVersion] is compatible.
-     * This needs to run within the transaction that adds [AppMetadata] to the DB.
-     * Otherwise the compatibility is wrong.
-     */
     @Query("""UPDATE AppMetadata
         SET isCompatible = (
             SELECT TOTAL(isCompatible) > 0 FROM Version
             WHERE repoId = :repoId AND AppMetadata.packageId = Version.packageId
         )
         WHERE repoId = :repoId""")
-    fun updateCompatibility(repoId: Long)
+    override fun updateCompatibility(repoId: Long)
 
     @Query("""UPDATE AppMetadata SET localizedName = :name, localizedSummary = :summary
         WHERE repoId = :repoId AND packageId = :packageId""")
@@ -254,116 +277,93 @@ internal interface AppDaoInt : AppDao {
     @Update
     fun updateAppMetadata(appMetadata: AppMetadata): Int
 
-    override fun getApp(packageId: String): LiveData<App?> {
-        return getRepoIdForPackage(packageId).distinctUntilChanged().switchMap { repoId ->
-            if (repoId == null) MutableLiveData(null)
-            else getLiveApp(repoId, packageId)
-        }
-    }
-
-    @Query("""SELECT repoId FROM RepositoryPreferences
-        JOIN AppMetadata AS app USING(repoId)
-        WHERE app.packageId = :packageId AND enabled = 1 ORDER BY weight DESC LIMIT 1""")
-    fun getRepoIdForPackage(packageId: String): LiveData<Long?>
-
-    fun getLiveApp(repoId: Long, packageId: String): LiveData<App?> = liveData(dispatcher) {
-        // TODO maybe observe those as well?
-        val localizedFiles = getLocalizedFiles(repoId, packageId)
-        val localizedFileList = getLocalizedFileLists(repoId, packageId)
-        val liveData: LiveData<App?> =
-            getLiveAppMetadata(repoId, packageId).distinctUntilChanged().map {
-                getApp(it, localizedFiles, localizedFileList)
-            }
-        emitSource(liveData)
-    }
+    @Transaction
+    @Query("""SELECT AppMetadata.* FROM AppMetadata
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE packageId = :packageName
+        ORDER BY pref.weight DESC LIMIT 1""")
+    override fun getApp(packageName: String): LiveData<App?>
 
     @Transaction
-    override fun getApp(repoId: Long, packageId: String): App? {
-        val metadata = getAppMetadata(repoId, packageId) ?: return null
-        val localizedFiles = getLocalizedFiles(repoId, packageId)
-        val localizedFileList = getLocalizedFileLists(repoId, packageId)
-        return getApp(metadata, localizedFiles, localizedFileList)
-    }
+    @Query("""SELECT * FROM AppMetadata
+        WHERE repoId = :repoId AND packageId = :packageName""")
+    override fun getApp(repoId: Long, packageName: String): App?
 
-    private fun getApp(
-        metadata: AppMetadata,
-        localizedFiles: List<LocalizedFile>?,
-        localizedFileList: List<LocalizedFileList>?,
-    ) = App(
-        metadata = metadata,
-        icon = localizedFiles?.toLocalizedFileV2("icon"),
-        featureGraphic = localizedFiles?.toLocalizedFileV2("featureGraphic"),
-        promoGraphic = localizedFiles?.toLocalizedFileV2("promoGraphic"),
-        tvBanner = localizedFiles?.toLocalizedFileV2("tvBanner"),
-        screenshots = if (localizedFileList.isNullOrEmpty()) null else Screenshots(
-            phone = localizedFileList.toLocalizedFileListV2("phone"),
-            sevenInch = localizedFileList.toLocalizedFileListV2("sevenInch"),
-            tenInch = localizedFileList.toLocalizedFileListV2("tenInch"),
-            wear = localizedFileList.toLocalizedFileListV2("wear"),
-            tv = localizedFileList.toLocalizedFileListV2("tv"),
-        )
-    )
+    /**
+     * Used for diffing.
+     */
+    @Query("SELECT * FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageName")
+    fun getAppMetadata(repoId: Long, packageName: String): AppMetadata?
 
-    @Query("SELECT * FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
-    fun getLiveAppMetadata(repoId: Long, packageId: String): LiveData<AppMetadata>
-
-    @Query("SELECT * FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
-    fun getAppMetadata(repoId: Long, packageId: String): AppMetadata?
-
+    /**
+     * Used for updating best locales.
+     */
     @Query("SELECT * FROM AppMetadata")
     fun getAppMetadata(): List<AppMetadata>
 
+    /**
+     * used for diffing
+     */
     @Query("SELECT * FROM LocalizedFile WHERE repoId = :repoId AND packageId = :packageId")
     fun getLocalizedFiles(repoId: Long, packageId: String): List<LocalizedFile>
 
-    @Query("SELECT * FROM LocalizedFileList WHERE repoId = :repoId AND packageId = :packageId")
-    fun getLocalizedFileLists(repoId: Long, packageId: String): List<LocalizedFileList>
-
-    @Query("SELECT * FROM LocalizedFile")
-    fun getLocalizedFiles(): List<LocalizedFile>
-
-    @Query("SELECT * FROM LocalizedFileList")
-    fun getLocalizedFileLists(): List<LocalizedFileList>
-
     @Transaction
     @Query("""SELECT repoId, packageId, app.added, app.lastUpdated, localizedName,
-             localizedSummary, version.antiFeatures
+            localizedSummary, version.antiFeatures
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
-        LEFT JOIN Version AS version USING (repoId, packageId)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
         LEFT JOIN LocalizedIcon AS icon USING (repoId, packageId)
         WHERE pref.enabled = 1
         GROUP BY packageId HAVING MAX(pref.weight)
-            AND MAX(COALESCE(version.manifest_versionCode, ${Long.MAX_VALUE}))
         ORDER BY localizedName IS NULL ASC, icon.packageId IS NULL ASC,
             localizedSummary IS NULL ASC, app.lastUpdated DESC
         LIMIT :limit""")
     override fun getAppOverviewItems(limit: Int): LiveData<List<AppOverviewItem>>
 
     @Transaction
-    // TODO maybe it makes sense to split categories into their own table for this?
     @Query("""SELECT repoId, packageId, app.added, app.lastUpdated, localizedName,
              localizedSummary, version.antiFeatures
         FROM AppMetadata AS app
         JOIN RepositoryPreferences AS pref USING (repoId)
-        LEFT JOIN Version AS version USING (repoId, packageId)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
         LEFT JOIN LocalizedIcon AS icon USING (repoId, packageId)
         WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
         GROUP BY packageId HAVING MAX(pref.weight)
-            AND MAX(COALESCE(version.manifest_versionCode, ${Long.MAX_VALUE}))
         ORDER BY localizedName IS NULL ASC, icon.packageId IS NULL ASC,
             localizedSummary IS NULL ASC, app.lastUpdated DESC
         LIMIT :limit""")
     override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
 
+    /**
+     * Used by [DbUpdateChecker] to get specific apps with available updates.
+     */
+    @Transaction
+    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @Query("""SELECT repoId, packageId, added, app.lastUpdated, localizedName,
+             localizedSummary
+        FROM AppMetadata AS app WHERE repoId = :repoId AND packageId = :packageId""")
+    fun getAppOverviewItem(repoId: Long, packageId: String): AppOverviewItem?
+
+    //
+    // AppListItems
+    //
+
     override fun getAppListItems(
         packageManager: PackageManager,
         sortOrder: AppListSortOrder,
-    ): LiveData<List<AppListItem>> {
-        return when (sortOrder) {
-            AppListSortOrder.LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
-            AppListSortOrder.NAME -> getAppListItemsByName().map(packageManager)
-        }
+    ): LiveData<List<AppListItem>> = when (sortOrder) {
+        LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
+        NAME -> getAppListItemsByName().map(packageManager)
+    }
+
+    override fun getAppListItems(
+        packageManager: PackageManager,
+        category: String,
+        sortOrder: AppListSortOrder,
+    ): LiveData<List<AppListItem>> = when (sortOrder) {
+        LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
+        NAME -> getAppListItemsByName(category).map(packageManager)
     }
 
     private fun LiveData<List<AppListItem>>.map(
@@ -385,10 +385,10 @@ internal interface AppDaoInt : AppDao {
         SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
                app.isCompatible
         FROM AppMetadata AS app
-        JOIN Version AS version USING (repoId, packageId)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1
-        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        GROUP BY packageId HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(): LiveData<List<AppListItem>>
 
@@ -397,49 +397,34 @@ internal interface AppDaoInt : AppDao {
         SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
                app.isCompatible
         FROM AppMetadata AS app
-        JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
         WHERE pref.enabled = 1
-        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        GROUP BY packageId HAVING MAX(pref.weight)
         ORDER BY app.lastUpdated DESC""")
     fun getAppListItemsByLastUpdated(): LiveData<List<AppListItem>>
 
-    override fun getAppListItems(
-        packageManager: PackageManager,
-        category: String,
-        sortOrder: AppListSortOrder,
-    ): LiveData<List<AppListItem>> {
-        return when (sortOrder) {
-            AppListSortOrder.LAST_UPDATED -> {
-                getAppListItemsByLastUpdated(category).map(packageManager)
-            }
-            AppListSortOrder.NAME -> getAppListItemsByName(category).map(packageManager)
-        }
-    }
-
-    // TODO maybe it makes sense to split categories into their own table for this?
     @Transaction
     @Query("""
         SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
                app.isCompatible
         FROM AppMetadata AS app
-        JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
-        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'
+        GROUP BY packageId HAVING MAX(pref.weight)
         ORDER BY app.lastUpdated DESC""")
     fun getAppListItemsByLastUpdated(category: String): LiveData<List<AppListItem>>
 
-    // TODO maybe it makes sense to split categories into their own table for this?
     @Transaction
     @Query("""
         SELECT repoId, packageId, localizedName, localizedSummary, version.antiFeatures,
                app.isCompatible
         FROM AppMetadata AS app
-        JOIN Version AS version USING (repoId, packageId)
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
-        GROUP BY packageId HAVING MAX(pref.weight) AND MAX(version.manifest_versionCode)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'
+        GROUP BY packageId HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
 
@@ -466,16 +451,6 @@ internal interface AppDaoInt : AppDao {
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'""")
     override fun getNumberOfAppsInCategory(category: String): Int
-
-    /**
-     * Used by [DbUpdateChecker] to get specific apps with available updates.
-     */
-    @Transaction
-    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
-    @Query("""SELECT repoId, packageId, added, app.lastUpdated, localizedName,
-             localizedSummary
-        FROM AppMetadata AS app WHERE repoId = :repoId AND packageId = :packageId""")
-    fun getAppOverviewItem(repoId: Long, packageId: String): AppOverviewItem?
 
     @Query("DELETE FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
     fun deleteAppMetadata(repoId: Long, packageId: String)
