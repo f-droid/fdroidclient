@@ -1,6 +1,7 @@
 package org.fdroid.test
 
 import org.fdroid.index.v2.IndexV2
+import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.Screenshots
 import kotlin.random.Random
@@ -65,11 +66,15 @@ public object TestUtils {
     )
 
     public fun Screenshots.sort(): Screenshots = copy(
-        phone = phone?.toSortedMap(),
-        sevenInch = sevenInch?.toSortedMap(),
-        tenInch = tenInch?.toSortedMap(),
-        wear = wear?.toSortedMap(),
-        tv = tv?.toSortedMap(),
+        phone = phone?.sort(),
+        sevenInch = sevenInch?.sort(),
+        tenInch = tenInch?.sort(),
+        wear = wear?.sort(),
+        tv = tv?.sort(),
     )
+
+    public fun LocalizedFileListV2.sort(): LocalizedFileListV2 {
+        return toSortedMap().mapValues { entry -> entry.value.sortedBy { it.name } }
+    }
 
 }
