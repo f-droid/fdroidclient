@@ -86,9 +86,9 @@ internal class RepositoryTest : DbTest() {
 
         repoDao.clear(repoId)
         assertEquals(1, repoDao.getRepositories().size)
-        assertEquals(0, appDao.getAppMetadata().size)
-        assertEquals(0, appDao.getLocalizedFiles().size)
-        assertEquals(0, appDao.getLocalizedFileLists().size)
+        assertEquals(0, appDao.countApps())
+        assertEquals(0, appDao.countLocalizedFiles())
+        assertEquals(0, appDao.countLocalizedFileLists())
         assertEquals(0, versionDao.getAppVersions(repoId, packageId).size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageId).size)
         // preferences are not touched by clearing

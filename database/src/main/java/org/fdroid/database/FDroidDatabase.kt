@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 import androidx.core.os.ConfigurationCompat.getLocales
+import androidx.core.os.LocaleListCompat
 import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
@@ -16,7 +17,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @Database(
-    version = 6, // TODO set version to 1 before release and wipe old schemas
+    version = 8, // TODO set version to 1 before release and wipe old schemas
     entities = [
         // repo
         CoreRepository::class,
@@ -37,6 +38,7 @@ import kotlinx.coroutines.launch
     ],
     views = [
         LocalizedIcon::class,
+        HighestVersion::class,
     ],
     exportSchema = true,
     autoMigrations = [
@@ -45,6 +47,8 @@ import kotlinx.coroutines.launch
         AutoMigration(from = 1, to = 3),
         AutoMigration(from = 2, to = 3),
         AutoMigration(from = 5, to = 6),
+        AutoMigration(from = 6, to = 7),
+        AutoMigration(from = 7, to = 8),
     ],
 )
 @TypeConverters(Converters::class)
@@ -63,9 +67,10 @@ public interface FDroidDatabase {
     public fun getAppDao(): AppDao
     public fun getVersionDao(): VersionDao
     public fun getAppPrefsDao(): AppPrefsDao
-    public fun afterLocalesChanged() {
+    public fun afterLocalesChanged(
+        locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
+    ) {
         val appDao = getAppDao() as AppDaoInt
-        val locales = getLocales(Resources.getSystem().configuration)
         runInTransaction {
             appDao.getAppMetadata().forEach { appMetadata ->
                 appDao.updateAppMetadata(

@@ -1,6 +1,7 @@
 package org.fdroid.database
 
 import androidx.core.os.LocaleListCompat
+import androidx.room.DatabaseView
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -123,6 +124,14 @@ internal fun ManifestV2.toManifest() = AppManifest(
     signer = signer,
     nativecode = nativecode,
     features = features.map { it.name },
+)
+
+@DatabaseView("""SELECT repoId, packageId, antiFeatures FROM Version
+    GROUP BY repoId, packageId HAVING MAX(manifest_versionCode)""")
+internal class HighestVersion(
+    val repoId: Long,
+    val packageId: String,
+    val antiFeatures: Map<String, LocalizedTextV2>? = null,
 )
 
 internal enum class VersionedStringType {

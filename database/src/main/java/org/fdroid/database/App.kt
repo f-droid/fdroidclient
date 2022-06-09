@@ -5,6 +5,7 @@ import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.room.ColumnInfo
 import androidx.room.DatabaseView
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
@@ -103,16 +104,54 @@ internal fun MetadataV2.toAppMetadata(
     isCompatible = isCompatible,
 )
 
-public data class App(
-    val metadata: AppMetadata,
-    val icon: LocalizedFileV2? = null,
-    val featureGraphic: LocalizedFileV2? = null,
-    val promoGraphic: LocalizedFileV2? = null,
-    val tvBanner: LocalizedFileV2? = null,
-    val screenshots: Screenshots? = null,
+public data class App internal constructor(
+    @Embedded val metadata: AppMetadata,
+    @Relation(
+        parentColumn = "packageId",
+        entityColumn = "packageId",
+    )
+    private val localizedFiles: List<LocalizedFile>? = null,
+    @Relation(
+        parentColumn = "packageId",
+        entityColumn = "packageId",
+    )
+    private val localizedFileLists: List<LocalizedFileList>? = null,
 ) {
-    public fun getName(): String? = metadata.localizedName
-    public fun getSummary(): String? = metadata.localizedSummary
+    val icon: LocalizedFileV2? get() = getLocalizedFile("icon")
+    val featureGraphic: LocalizedFileV2? get() = getLocalizedFile("featureGraphic")
+    val promoGraphic: LocalizedFileV2? get() = getLocalizedFile("promoGraphic")
+    val tvBanner: LocalizedFileV2? get() = getLocalizedFile("tvBanner")
+    val screenshots: Screenshots?
+        get() = if (localizedFileLists.isNullOrEmpty()) null else Screenshots(
+            phone = getLocalizedFileList("phone"),
+            sevenInch = getLocalizedFileList("sevenInch"),
+            tenInch = getLocalizedFileList("tenInch"),
+            wear = getLocalizedFileList("wear"),
+            tv = getLocalizedFileList("tv"),
+        ).takeIf { !it.isNull }
+
+    private fun getLocalizedFile(type: String): LocalizedFileV2? {
+        return localizedFiles?.filter { localizedFile ->
+            localizedFile.repoId == metadata.repoId && localizedFile.type == type
+        }?.toLocalizedFileV2()
+    }
+
+    private fun getLocalizedFileList(type: String): LocalizedFileListV2? {
+        val map = HashMap<String, List<FileV2>>()
+        localizedFileLists?.iterator()?.forEach { file ->
+            if (file.repoId != metadata.repoId || file.type != type) return@forEach
+            val list = map.getOrPut(file.locale) { ArrayList() } as ArrayList
+            list.add(FileV2(
+                name = file.name,
+                sha256 = file.sha256,
+                size = file.size,
+            ))
+        }
+        return map.ifEmpty { null }
+    }
+
+    public val name: String? get() = metadata.localizedName
+    public val summary: String? get() = metadata.localizedSummary
     public fun getDescription(localeList: LocaleListCompat): String? =
         metadata.description.getBestLocale(localeList)
 
@@ -162,8 +201,9 @@ public data class AppOverviewItem(
     )
     internal val localizedIcon: List<LocalizedIcon>? = null,
 ) {
-    public fun getIcon(localeList: LocaleListCompat): String? =
-        localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
+    public fun getIcon(localeList: LocaleListCompat): FileV2? = localizedIcon?.filter { icon ->
+        icon.repoId == repoId
+    }?.toLocalizedFileV2().getBestLocale(localeList)
 
     val antiFeatureNames: List<String> get() = antiFeatures?.map { it.key } ?: emptyList()
 }
@@ -197,8 +237,9 @@ public data class AppListItem constructor(
         return fromStringToMapOfLocalizedTextV2(antiFeatures)?.map { it.key } ?: emptyList()
     }
 
-    public fun getIcon(localeList: LocaleListCompat): String? =
-        localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)?.name
+    public fun getIcon(localeList: LocaleListCompat): FileV2? = localizedIcon?.filter { icon ->
+        icon.repoId == repoId
+    }?.toLocalizedFileV2().getBestLocale(localeList)
 }
 
 public data class UpdatableApp(
@@ -212,14 +253,11 @@ public data class UpdatableApp(
     public val hasKnownVulnerability: Boolean,
     public val name: String? = null,
     public val summary: String? = null,
-    @Relation(
-        parentColumn = "packageId",
-        entityColumn = "packageId",
-    )
     internal val localizedIcon: List<LocalizedIcon>? = null,
 ) {
-    public fun getIcon(localeList: LocaleListCompat): FileV2? =
-        localizedIcon?.toLocalizedFileV2().getBestLocale(localeList)
+    public fun getIcon(localeList: LocaleListCompat): FileV2? = localizedIcon?.filter { icon ->
+        icon.repoId == upgrade.repoId
+    }?.toLocalizedFileV2().getBestLocale(localeList)
 }
 
 internal fun <T> Map<String, T>?.getBestLocale(localeList: LocaleListCompat): T? {
@@ -297,19 +335,18 @@ internal fun LocalizedFileV2.toLocalizedFile(
     )
 }
 
-internal fun List<IFile>.toLocalizedFileV2(type: String? = null): LocalizedFileV2? {
-    return (if (type != null) filter { file -> file.type == type } else this).associate { file ->
-        file.locale to FileV2(
-            name = file.name,
-            sha256 = file.sha256,
-            size = file.size,
-        )
-    }.ifEmpty { null }
-}
+internal fun List<IFile>.toLocalizedFileV2(): LocalizedFileV2? = associate { file ->
+    file.locale to FileV2(
+        name = file.name,
+        sha256 = file.sha256,
+        size = file.size,
+    )
+}.ifEmpty { null }
 
-@DatabaseView("""SELECT * FROM LocalizedFile
-    JOIN RepositoryPreferences AS prefs USING (repoId)
-    WHERE type='icon' GROUP BY repoId, packageId, locale HAVING MAX(prefs.weight)""")
+// We can't restrict this query further (e.g. only from enabled repos or max weight),
+// because we are using this via @Relation on packageName for specific repos.
+// When filtering the result for only the repoId we are interested in, we'd get no icons.
+@DatabaseView("SELECT * FROM LocalizedFile WHERE type='icon'")
 public data class LocalizedIcon(
     val repoId: Long,
     val packageId: String,
@@ -361,17 +398,3 @@ internal fun FileV2.toLocalizedFileList(
     sha256 = sha256,
     size = size,
 )
-
-internal fun List<LocalizedFileList>.toLocalizedFileListV2(type: String): LocalizedFileListV2? {
-    val map = HashMap<String, List<FileV2>>()
-    iterator().forEach { file ->
-        if (file.type != type) return@forEach
-        val list = map.getOrPut(file.locale) { ArrayList() } as ArrayList
-        list.add(FileV2(
-            name = file.name,
-            sha256 = file.sha256,
-            size = file.size,
-        ))
-    }
-    return map.ifEmpty { null }
-}
