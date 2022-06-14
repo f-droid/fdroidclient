@@ -106,4 +106,18 @@ internal class IndexV1Test {
         }.also { assertContains(it.message!!, "packages") }
     }
 
+    @Test
+    fun testGuardianProjectV1() {
+        val indexRes = Resource("$assetPath/guardianproject_index-v1.json")
+        val indexStr = indexRes.readText()
+        parseV1(indexStr)
+    }
+
+    @Test
+    fun testLocalizedV1() {
+        val indexRes = Resource("$assetPath/localized.json")
+        val indexStr = indexRes.readText()
+        parseV1(indexStr)
+    }
+
 }

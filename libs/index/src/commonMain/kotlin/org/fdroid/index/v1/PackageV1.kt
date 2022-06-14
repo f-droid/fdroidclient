@@ -100,7 +100,7 @@ internal class PermissionV1Serializer : KSerializer<PermissionV1> {
     override fun deserialize(decoder: Decoder): PermissionV1 {
         val jsonInput = decoder as? JsonDecoder ?: error("Can be deserialized only by JSON")
         val jsonArray = jsonInput.decodeJsonElement().jsonArray
-        if (jsonArray.size != 2) throw IllegalArgumentException()
+        if (jsonArray.size < 2) throw IllegalArgumentException("Invalid array: $jsonArray")
         val name = jsonArray[0].jsonPrimitive.content
         val maxSdk = jsonArray[1].jsonPrimitive.intOrNull
         return PermissionV1(name, maxSdk)
