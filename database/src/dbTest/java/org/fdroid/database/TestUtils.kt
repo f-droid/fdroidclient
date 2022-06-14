@@ -11,9 +11,16 @@ import org.junit.Assert
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 import kotlin.test.fail
 
 internal object TestUtils {
+
+    fun assertTimestampRecent(timestamp: Long?) {
+        assertNotNull(timestamp)
+        assertTrue(System.currentTimeMillis() - timestamp < 2000)
+    }
 
     fun assertRepoEquals(repoV2: RepoV2, repo: Repository) {
         val repoId = repo.repoId
