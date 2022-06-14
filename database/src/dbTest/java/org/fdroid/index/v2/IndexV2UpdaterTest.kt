@@ -10,6 +10,7 @@ import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbTest
 import org.fdroid.database.IndexFormatVersion.TWO
 import org.fdroid.database.Repository
+import org.fdroid.database.TestUtils.assertTimestampRecent
 import org.fdroid.download.Downloader
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.index.IndexUpdateResult
@@ -27,6 +28,7 @@ import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -65,6 +67,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val updatedRepo = repoDao.getRepository(repoId) ?: fail()
         assertEquals(TWO, updatedRepo.formatVersion)
         assertEquals(CERTIFICATE, updatedRepo.certificate)
+        assertTimestampRecent(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test
@@ -79,6 +82,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
         assertDbEquals(repoId, TestDataMidV2.index)
+        assertTimestampRecent(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test
@@ -93,6 +97,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
         assertDbEquals(repoId, TestDataMaxV2.index)
+        assertTimestampRecent(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test
@@ -107,6 +112,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
         assertDbEquals(repoId, TestDataMidV2.index)
+        assertTimestampRecent(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test
@@ -122,6 +128,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
         assertDbEquals(repoId, TestDataMinV2.index)
+        assertTimestampRecent(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test
@@ -137,6 +144,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
         assertDbEquals(repoId, TestDataMaxV2.index)
+        assertTimestampRecent(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test
@@ -152,6 +160,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Unchanged, result)
         assertDbEquals(repoId, TestDataMinV2.index)
+        assertNull(repoDao.getRepository(repoId)?.lastUpdated)
     }
 
     @Test

@@ -96,6 +96,8 @@ public interface AppDao {
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
     public fun getNumberOfAppsInCategory(category: String): Int
+
+    public fun getNumberOfAppsInRepository(repoId: Long): Int
 }
 
 public enum class AppListSortOrder {
@@ -451,6 +453,9 @@ internal interface AppDaoInt : AppDao {
         JOIN RepositoryPreferences AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'""")
     override fun getNumberOfAppsInCategory(category: String): Int
+
+    @Query("SELECT COUNT(*) FROM AppMetadata WHERE repoId = :repoId")
+    override fun getNumberOfAppsInRepository(repoId: Long): Int
 
     @Query("DELETE FROM AppMetadata WHERE repoId = :repoId AND packageId = :packageId")
     fun deleteAppMetadata(repoId: Long, packageId: String)

@@ -127,4 +127,19 @@ internal class AppDaoTest : AppTest() {
         assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
     }
 
+    @Test
+    fun testGetNumberOfAppsInRepository() {
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        assertEquals(0, appDao.getNumberOfAppsInRepository(repoId))
+
+        appDao.insert(repoId, packageName1, app1, locales)
+        assertEquals(1, appDao.getNumberOfAppsInRepository(repoId))
+
+        appDao.insert(repoId, packageName2, app2, locales)
+        assertEquals(2, appDao.getNumberOfAppsInRepository(repoId))
+
+        appDao.insert(repoId, packageName3, app3, locales)
+        assertEquals(3, appDao.getNumberOfAppsInRepository(repoId))
+    }
+
 }

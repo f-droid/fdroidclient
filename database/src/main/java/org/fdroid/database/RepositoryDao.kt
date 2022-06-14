@@ -21,30 +21,76 @@ import org.fdroid.index.v2.RepoV2
 public interface RepositoryDao {
     /**
      * Inserts a new [InitialRepository] from a fixture.
+     *
+     * @return the [Repository.repoId] of the inserted repo.
      */
-    public fun insert(initialRepo: InitialRepository)
+    public fun insert(initialRepo: InitialRepository): Long
 
     /**
-     * Removes all repos and their preferences.
+     * Inserts an empty [Repository] for an initial update.
+     *
+     * @return the [Repository.repoId] of the inserted repo.
      */
-    public fun clearAll()
-
-    public fun getRepository(repoId: Long): Repository?
     public fun insertEmptyRepo(
         address: String,
         username: String? = null,
         password: String? = null,
     ): Long
 
-    public fun deleteRepository(repoId: Long)
+    /**
+     * Returns the repository with the given [repoId] or null, if none was found with that ID.
+     */
+    public fun getRepository(repoId: Long): Repository?
+
+    /**
+     * Returns a list of all [Repository]s in the database.
+     */
     public fun getRepositories(): List<Repository>
+
+    /**
+     * Same as [getRepositories], but does return a [LiveData].
+     */
     public fun getLiveRepositories(): LiveData<List<Repository>>
-    public fun countAppsPerRepository(repoId: Long): Int
-    public fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
-    public fun updateUserMirrors(repoId: Long, mirrors: List<String>)
-    public fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
-    public fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
+
+    /**
+     * Returns a live data of all categories declared by all [Repository]s.
+     */
     public fun getLiveCategories(): LiveData<List<Category>>
+
+    /**
+     * Enables or disables the repository with the given [repoId].
+     * Data from disabled repositories is ignored in many queries.
+     */
+    public fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
+
+    /**
+     * Updates the user-defined mirrors of the repository with the given [repoId].
+     * The existing mirrors get overwritten with the given [mirrors].
+     */
+    public fun updateUserMirrors(repoId: Long, mirrors: List<String>)
+
+    /**
+     * Updates the user name and password (for basic authentication)
+     * of the repository with the given [repoId].
+     * The existing user name and password get overwritten with the given [username] and [password].
+     */
+    public fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
+
+    /**
+     * Updates the disabled mirrors of the repository with the given [repoId].
+     * The existing disabled mirrors get overwritten with the given [disabledMirrors].
+     */
+    public fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
+
+    /**
+     * Removes a [Repository] with the given [repoId] with all associated data from the database.
+     */
+    public fun deleteRepository(repoId: Long)
+
+    /**
+     * Removes all repos and their preferences.
+     */
+    public fun clearAll()
 }
 
 @Dao
@@ -72,7 +118,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun insert(repositoryPreferences: RepositoryPreferences)
 
     @Transaction
-    override fun insert(initialRepo: InitialRepository) {
+    override fun insert(initialRepo: InitialRepository): Long {
         val repo = CoreRepository(
             name = mapOf("en-US" to initialRepo.name),
             address = initialRepo.address,
@@ -92,6 +138,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             enabled = initialRepo.enabled,
         )
         insert(repositoryPreferences)
+        return repoId
     }
 
     @Transaction
@@ -125,37 +172,38 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     @Transaction
     @VisibleForTesting
-    fun insertOrReplace(repository: RepoV2): Long {
-        val repoId = insertOrReplace(repository.toCoreRepository(version = 0))
-        insertRepositoryPreferences(repoId)
+    fun insertOrReplace(repository: RepoV2, version: Long = 0): Long {
+        val repoId = insertOrReplace(repository.toCoreRepository(version = version))
+        val currentMaxWeight = getMaxRepositoryWeight()
+        val repositoryPreferences = RepositoryPreferences(repoId, currentMaxWeight + 1)
+        insert(repositoryPreferences)
         insertRepoTables(repoId, repository)
         return repoId
     }
 
-    private fun insertRepositoryPreferences(repoId: Long) {
-        val currentMaxWeight = getMaxRepositoryWeight()
-        val repositoryPreferences = RepositoryPreferences(repoId, currentMaxWeight + 1)
-        insert(repositoryPreferences)
-    }
-
-    /**
-     * Use when replacing an existing repo with a full index.
-     * This removes all existing index data associated with this repo from the database,
-     * but does not touch repository preferences.
-     * @throws IllegalStateException if no repo with the given [repoId] exists.
-     */
-    @Transaction
-    fun clear(repoId: Long) {
-        val repo = getRepository(repoId) ?: error("repo with id $repoId does not exist")
-        // this clears all foreign key associated data since the repo gets replaced
-        insertOrReplace(repo.repository)
-    }
+    @Query("SELECT MAX(weight) FROM RepositoryPreferences")
+    fun getMaxRepositoryWeight(): Int
 
     @Transaction
-    override fun clearAll() {
-        deleteAllCoreRepositories()
-        deleteAllRepositoryPreferences()
-    }
+    @Query("SELECT * FROM CoreRepository WHERE repoId = :repoId")
+    override fun getRepository(repoId: Long): Repository?
+
+    @Transaction
+    @Query("SELECT * FROM CoreRepository")
+    override fun getRepositories(): List<Repository>
+
+    @Transaction
+    @Query("SELECT * FROM CoreRepository")
+    override fun getLiveRepositories(): LiveData<List<Repository>>
+
+    @Query("SELECT * FROM RepositoryPreferences WHERE repoId = :repoId")
+    fun getRepositoryPreferences(repoId: Long): RepositoryPreferences?
+
+    @RewriteQueriesToDropUnusedColumns
+    @Query("""SELECT * FROM Category
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""")
+    override fun getLiveCategories(): LiveData<List<Category>>
 
     /**
      * Updates an existing repo with new data from a full index update.
@@ -180,10 +228,25 @@ internal interface RepositoryDaoInt : RepositoryDao {
         insertReleaseChannels(repository.releaseChannels.toRepoReleaseChannel(repoId))
     }
 
-    @Transaction
-    @Query("SELECT * FROM CoreRepository WHERE repoId = :repoId")
-    override fun getRepository(repoId: Long): Repository?
+    @Update
+    fun updateRepository(repo: CoreRepository): Int
 
+    /**
+     * Updates the certificate for the [Repository] with the given [repoId].
+     * This should be used for V1 index updating where we only get the full cert
+     * after reading the entire index file.
+     * V2 index should use [update] instead as there the certificate is known
+     * before reading full index.
+     */
+    @Query("UPDATE CoreRepository SET certificate = :certificate WHERE repoId = :repoId")
+    fun updateRepository(repoId: Long, certificate: String)
+
+    @Update
+    fun updateRepositoryPreferences(preferences: RepositoryPreferences)
+
+    /**
+     * Used to update an existing repository with a given [jsonObject] JSON diff.
+     */
     @Transaction
     fun updateRepository(repoId: Long, version: Long, jsonObject: JsonObject) {
         // get existing repo
@@ -237,15 +300,6 @@ internal interface RepositoryDaoInt : RepositoryDao {
         )
     }
 
-    @Update
-    fun updateRepository(repo: CoreRepository): Int
-
-    @Query("UPDATE CoreRepository SET certificate = :certificate WHERE repoId = :repoId")
-    fun updateRepository(repoId: Long, certificate: String)
-
-    @Update
-    fun updateRepositoryPreferences(preferences: RepositoryPreferences)
-
     @Query("UPDATE RepositoryPreferences SET enabled = :enabled WHERE repoId = :repoId")
     override fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
 
@@ -261,73 +315,6 @@ internal interface RepositoryDaoInt : RepositoryDao {
     override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
 
     @Transaction
-    @Query("SELECT * FROM CoreRepository")
-    override fun getRepositories(): List<Repository>
-
-    @Transaction
-    @Query("SELECT * FROM CoreRepository")
-    override fun getLiveRepositories(): LiveData<List<Repository>>
-
-    @VisibleForTesting
-    @Query("SELECT * FROM Mirror")
-    fun getMirrors(): List<Mirror>
-
-    @VisibleForTesting
-    @Query("DELETE FROM Mirror WHERE repoId = :repoId")
-    fun deleteMirrors(repoId: Long)
-
-    @VisibleForTesting
-    @Query("SELECT * FROM AntiFeature")
-    fun getAntiFeatures(): List<AntiFeature>
-
-    @Query("SELECT * FROM RepositoryPreferences WHERE repoId = :repoId")
-    fun getRepositoryPreferences(repoId: Long): RepositoryPreferences?
-
-    @Query("SELECT MAX(weight) FROM RepositoryPreferences")
-    fun getMaxRepositoryWeight(): Int
-
-    @VisibleForTesting
-    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId")
-    fun deleteAntiFeatures(repoId: Long)
-
-    @VisibleForTesting
-    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId AND id = :id")
-    fun deleteAntiFeature(repoId: Long, id: String)
-
-    @VisibleForTesting
-    @Query("SELECT * FROM Category")
-    fun getCategories(): List<Category>
-
-    @RewriteQueriesToDropUnusedColumns
-    @Query("""SELECT * FROM Category
-        JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""")
-    override fun getLiveCategories(): LiveData<List<Category>>
-
-    @Query("SELECT COUNT(*) FROM AppMetadata WHERE repoId = :repoId")
-    override fun countAppsPerRepository(repoId: Long): Int
-
-    @VisibleForTesting
-    @Query("DELETE FROM Category WHERE repoId = :repoId")
-    fun deleteCategories(repoId: Long)
-
-    @VisibleForTesting
-    @Query("DELETE FROM Category WHERE repoId = :repoId AND id = :id")
-    fun deleteCategory(repoId: Long, id: String)
-
-    @VisibleForTesting
-    @Query("SELECT * FROM ReleaseChannel")
-    fun getReleaseChannels(): List<ReleaseChannel>
-
-    @VisibleForTesting
-    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId")
-    fun deleteReleaseChannels(repoId: Long)
-
-    @VisibleForTesting
-    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId AND id = :id")
-    fun deleteReleaseChannel(repoId: Long, id: String)
-
-    @Transaction
     override fun deleteRepository(repoId: Long) {
         deleteCoreRepository(repoId)
         // we don't use cascading delete for preferences,
@@ -338,13 +325,90 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("DELETE FROM CoreRepository WHERE repoId = :repoId")
     fun deleteCoreRepository(repoId: Long)
 
-    @Query("DELETE FROM CoreRepository")
-    fun deleteAllCoreRepositories()
-
     @Query("DELETE FROM RepositoryPreferences WHERE repoId = :repoId")
     fun deleteRepositoryPreferences(repoId: Long)
 
+    @Query("DELETE FROM CoreRepository")
+    fun deleteAllCoreRepositories()
+
     @Query("DELETE FROM RepositoryPreferences")
     fun deleteAllRepositoryPreferences()
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM Mirror WHERE repoId = :repoId")
+    fun deleteMirrors(repoId: Long)
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId")
+    fun deleteAntiFeatures(repoId: Long)
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId AND id = :id")
+    fun deleteAntiFeature(repoId: Long, id: String)
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM Category WHERE repoId = :repoId")
+    fun deleteCategories(repoId: Long)
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM Category WHERE repoId = :repoId AND id = :id")
+    fun deleteCategory(repoId: Long, id: String)
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId")
+    fun deleteReleaseChannels(repoId: Long)
+
+    /**
+     * Used for diffing.
+     */
+    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId AND id = :id")
+    fun deleteReleaseChannel(repoId: Long, id: String)
+
+    /**
+     * Use when replacing an existing repo with a full index.
+     * This removes all existing index data associated with this repo from the database,
+     * but does not touch repository preferences.
+     * @throws IllegalStateException if no repo with the given [repoId] exists.
+     */
+    @Transaction
+    fun clear(repoId: Long) {
+        val repo = getRepository(repoId) ?: error("repo with id $repoId does not exist")
+        // this clears all foreign key associated data since the repo gets replaced
+        insertOrReplace(repo.repository)
+    }
+
+    @Transaction
+    override fun clearAll() {
+        deleteAllCoreRepositories()
+        deleteAllRepositoryPreferences()
+    }
+
+    @VisibleForTesting
+    @Query("SELECT COUNT(*) FROM Mirror")
+    fun countMirrors(): Int
+
+    @VisibleForTesting
+    @Query("SELECT COUNT(*) FROM AntiFeature")
+    fun countAntiFeatures(): Int
+
+    @VisibleForTesting
+    @Query("SELECT COUNT(*) FROM Category")
+    fun countCategories(): Int
+
+    @VisibleForTesting
+    @Query("SELECT COUNT(*) FROM ReleaseChannel")
+    fun countReleaseChannels(): Int
 
 }

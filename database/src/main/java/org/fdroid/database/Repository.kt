@@ -121,8 +121,7 @@ public data class Repository(
      */
     @JvmOverloads
     public fun getAllMirrors(includeUserMirrors: Boolean = true): List<org.fdroid.download.Mirror> {
-        // FIXME decide whether we need to add our own address here
-        return listOf(org.fdroid.download.Mirror(address)) + mirrors.map {
+        return mirrors.map {
             it.toDownloadMirror()
         } + if (includeUserMirrors) userMirrors.map {
             org.fdroid.download.Mirror(it)
