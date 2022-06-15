@@ -57,7 +57,7 @@ class ApkVerifier {
         this.pm = context.getPackageManager();
     }
 
-    public void verifyApk() throws ApkVerificationException, ApkPermissionUnequalException {
+    void verifyApk() throws ApkVerificationException, ApkPermissionUnequalException {
         Utils.debugLog(TAG, "localApkUri.getPath: " + localApkUri.getPath());
 
         // parse downloaded apk file locally
@@ -105,7 +105,7 @@ class ApkVerifier {
      * data format is {@link String} arrays but they are in effect sets. This is the
      * same data format as {@link android.content.pm.PackageInfo#requestedPermissions}
      */
-    public static boolean requestedPermissionsEqual(@Nullable String[] expected, @Nullable String[] actual) {
+    static boolean requestedPermissionsEqual(@Nullable String[] expected, @Nullable String[] actual) {
         Utils.debugLog(TAG, "Checking permissions");
         Utils.debugLog(TAG, "Expected:\n  " + (expected == null ? "None" : TextUtils.join("\n  ", expected)));
         Utils.debugLog(TAG, "Actual:\n  " + (actual == null ? "None" : TextUtils.join("\n  ", actual)));
@@ -124,25 +124,17 @@ class ApkVerifier {
         return expectedSet.equals(actualSet);
     }
 
-    public static class ApkVerificationException extends Exception {
+    static class ApkVerificationException extends Exception {
 
         ApkVerificationException(String message) {
             super(message);
         }
-
-        ApkVerificationException(Throwable cause) {
-            super(cause);
-        }
     }
 
-    public static class ApkPermissionUnequalException extends Exception {
+    static class ApkPermissionUnequalException extends Exception {
 
         ApkPermissionUnequalException(String message) {
             super(message);
-        }
-
-        ApkPermissionUnequalException(Throwable cause) {
-            super(cause);
         }
     }
 

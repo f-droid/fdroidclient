@@ -432,35 +432,6 @@
             android:theme="@style/AppThemeTransparent" />
 
         <provider
-            android:name="org.fdroid.fdroid.data.AppProvider"
-            android:authorities="${applicationId}.data.AppProvider"
-            android:exported="false" />
-        <provider
-            android:name="org.fdroid.fdroid.data.RepoProvider"
-            android:authorities="${applicationId}.data.RepoProvider"
-            android:exported="false" />
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <provider
-            android:name="org.fdroid.fdroid.data.ApkProvider"
-            android:authorities="${applicationId}.data.ApkProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.AppPrefsProvider"
-            android:authorities="${applicationId}.data.AppPrefsProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.PackageIdProvider"
-            android:authorities="${applicationId}.data.PackageIdProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.CategoryProvider"
-            android:authorities="${applicationId}.data.CategoryProvider"
-            android:exported="false" />
-
-        <provider
             android:name="org.fdroid.fdroid.installer.ApkFileProvider"
             android:authorities="${applicationId}.installer.ApkFileProvider"
             android:exported="false"

@@ -44,7 +44,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import androidx.annotation.NonNull;
@@ -87,8 +86,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private LiveData<List<AppListItem>> itemsLiveData;
 
     private interface SortClause {
-        String WORDS = Cols.NAME;
-        String LAST_UPDATED = Cols.LAST_UPDATED;
+        String WORDS = "Name";
+        String LAST_UPDATED = "LastUpdated";
     }
 
     @Override

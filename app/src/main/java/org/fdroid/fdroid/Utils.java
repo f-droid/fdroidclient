@@ -62,7 +62,6 @@ import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.fdroid.index.v2.FileV2;
 import org.xml.sax.XMLReader;
@@ -86,7 +85,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
@@ -94,7 +92,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -1044,58 +1041,4 @@ public final class Utils {
         }
     }
 
-    /**
-     * Returns a list of unwanted anti-features from a list of acceptable anti-features
-     * Basically: all anti-features minus the ones that are okay.
-     */
-    private static List<String> unwantedAntifeatures(Context context, Set<String> acceptableAntifeatures) {
-        List<String> antiFeatures = new ArrayList<>(
-                Arrays.asList(context.getResources().getStringArray(R.array.antifeaturesValues))
-        );
-
-        antiFeatures.removeAll(acceptableAntifeatures);
-
-        return antiFeatures;
-    }
-
-    /**
-     * Returns a SQL filter to use in Cursors to filter out everything with non-acceptable antifeatures
-     *
-     * @param context
-     * @return String
-     */
-    public static String getAntifeatureSQLFilter(Context context) {
-        List<String> unwantedAntifeatures = Utils.unwantedAntifeatures(
-                context,
-                Preferences.get().showAppsWithAntiFeatures()
-        );
-
-        StringBuilder antiFeatureFilter = new StringBuilder(Schema.AppMetadataTable.NAME)
-                .append(".")
-                .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
-                .append(" IS NULL");
-
-        if (!unwantedAntifeatures.isEmpty()) {
-            antiFeatureFilter.append(" OR (");
-
-            for (int i = 0; i < unwantedAntifeatures.size(); i++) {
-                String unwantedAntifeature = unwantedAntifeatures.get(i);
-
-                if (i > 0) {
-                    antiFeatureFilter.append(" AND ");
-                }
-
-                antiFeatureFilter.append(Schema.AppMetadataTable.NAME)
-                        .append(".")
-                        .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
-                        .append(" NOT LIKE '%")
-                        .append(unwantedAntifeature)
-                        .append("%'");
-            }
-
-            antiFeatureFilter.append(")");
-        }
-
-        return antiFeatureFilter.toString();
-    }
 }

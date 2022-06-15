@@ -2,7 +2,6 @@ package org.fdroid.fdroid.data;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -37,11 +36,6 @@ public class ObbUrlActivity extends AppCompatActivity {
             String action = intent.getAction();
             String packageName = componentName.getPackageName();
             Apk apk = null;
-
-            PackageInfo packageInfo = Utils.getPackageInfo(this, packageName);
-            if (packageInfo != null) {
-                apk = ApkProvider.Helper.findApkFromAnyRepo(this, packageName, packageInfo.versionCode);
-            }
 
             if (apk == null) {
                 Utils.debugLog(TAG, "got null APK for " + packageName);

@@ -4,8 +4,6 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.database.Cursor;
 
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +16,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.TimeZone;
 
-import androidx.loader.content.CursorLoader;
 import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
@@ -286,28 +283,5 @@ public class UtilsTest {
                 assertEquals("time zones should match", -((h * 60) + m), date.getTimezoneOffset());
             }
         }
-    }
-
-    @Test
-    public void testGetAntifeatureSQLFilterWithNone() {
-        Context context = ApplicationProvider.getApplicationContext();
-        Preferences.setupForTests(context);
-        assertEquals(
-                "fdroid_app.antiFeatures IS NULL OR (fdroid_app.antiFeatures NOT LIKE '%_anti_others_%')",
-                Utils.getAntifeatureSQLFilter(context)
-        );
-    }
-
-    @Test
-    public void testGetAntifeatureSQLFilter() {
-        CursorLoader cursorLoader = new CursorLoader(
-                context,
-                AppProvider.getLatestTabUri(),
-                Schema.AppMetadataTable.Cols.ALL,
-                Utils.getAntifeatureSQLFilter(context),
-                null,
-                null);
-        cursor = cursorLoader.loadInBackground();
-        assertNotNull(cursor);
     }
 }
