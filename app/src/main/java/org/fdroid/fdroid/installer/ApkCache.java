@@ -27,8 +27,6 @@ import android.net.Uri;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -57,11 +55,9 @@ public class ApkCache {
      * out during the install process. Most likely, apkFile was just downloaded,
      * so it should still be in the RAM disk cache.
      */
-    public static SanitizedFile copyApkFromCacheToFiles(Context context, File apkFile, Apk expectedApk)
+    static SanitizedFile copyApkFromCacheToFiles(Context context, File apkFile, Apk expectedApk)
             throws IOException {
-        App app = AppProvider.Helper.findHighestPriorityMetadata(context.getContentResolver(),
-                expectedApk.packageName);
-        String name = app == null ? expectedApk.packageName : app.name;
+        String name = expectedApk.packageName;
         String apkFileName = name + "-" + expectedApk.versionName + ".apk";
         return copyApkToFiles(context, apkFile, apkFileName, true, expectedApk.hash, expectedApk.hashType);
     }

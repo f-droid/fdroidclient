@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
@@ -16,8 +15,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.data.ShadowApp;
 import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
@@ -75,11 +72,6 @@ public class SwapRepoTest {
         };
 
         Preferences.setupForTests(context);
-    }
-
-    @After
-    public final void tearDownBase() {
-        DBHelper.clearDbHelperSingleton();
     }
 
     /**
@@ -143,15 +135,15 @@ public class SwapRepoTest {
             //updater.processDownloadedFile(indexJarFile);
 
             boolean foundRepo = false;
-            for (Repo repoFromDb : RepoProvider.Helper.all(context)) {
-                if (TextUtils.equals(repo.address, repoFromDb.address)) {
-                    foundRepo = true;
-                    repo = repoFromDb;
-                }
-            }
+            //for (Repo repoFromDb : RepoProvider.Helper.all(context)) {
+            //    if (TextUtils.equals(repo.address, repoFromDb.address)) {
+            //        foundRepo = true;
+            //        repo = repoFromDb;
+            //    }
+            //}
             assertTrue(foundRepo);
 
-            assertNotEquals(-1, repo.getId());
+            //assertNotEquals(-1, repo.getId());
             //List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
             //assertEquals(1, apks.size());
             //for (Apk apk : apks) {
@@ -171,11 +163,9 @@ public class SwapRepoTest {
      * that ensures it includes the primary key from the database.
      */
     static Repo createRepo(String name, String uri, Context context, String signingCert) {
-        ContentValues values = new ContentValues(3);
-        values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
-        values.put(Schema.RepoTable.Cols.ADDRESS, uri);
-        values.put(Schema.RepoTable.Cols.NAME, name);
-        RepoProvider.Helper.insert(context, values);
-        return RepoProvider.Helper.findByAddress(context, uri);
+        //values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
+        //values.put(Schema.RepoTable.Cols.ADDRESS, uri);
+        //values.put(Schema.RepoTable.Cols.NAME, name);
+        return new Repo();
     }
 }

@@ -23,24 +23,17 @@ import android.app.Instrumentation;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-import androidx.annotation.NonNull;
+
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import org.fdroid.fdroid.AssetUtils;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoXMLHandler;
-import org.fdroid.fdroid.mock.RepoDetails;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -69,7 +62,6 @@ public class ApkVerifierTest {
     File sdk14Apk;
     File minMaxApk;
     private File extendedPermissionsApk;
-    private File extendedPermsXml;
 
     @Before
     public void setUp() {
@@ -89,14 +81,14 @@ public class ApkVerifierTest {
                 "org.fdroid.extendedpermissionstest.apk",
                 dir
         );
-        extendedPermsXml = AssetUtils.copyAssetToDir(instrumentation.getContext(),
+        File extendedPermsXml = AssetUtils.copyAssetToDir(instrumentation.getContext(),
                 "extendedPerms.xml",
                 dir
         );
         assertTrue(sdk14Apk.exists());
         assertTrue(minMaxApk.exists());
         assertTrue(extendedPermissionsApk.exists());
-        assertTrue(extendedPermsXml.exists());
+        assertTrue(extendedPermsXml.exists()); // TODO remove file when test was ported
     }
 
     @Test
@@ -106,50 +98,6 @@ public class ApkVerifierTest {
         String[] perms = new String[]{"Blah"};
         assertFalse(ApkVerifier.requestedPermissionsEqual(perms, null));
         assertFalse(ApkVerifier.requestedPermissionsEqual(null, perms));
-    }
-
-    @Test
-    public void testWithoutPrefix() {
-        Apk apk = new Apk();
-        apk.packageName = "org.fdroid.permissions.sdk14";
-        apk.targetSdkVersion = 14;
-        ArrayList<String> noPrefixPermissionsList = new ArrayList<>(Arrays.asList(
-                "AUTHENTICATE_ACCOUNTS",
-                "MANAGE_ACCOUNTS",
-                "READ_PROFILE",
-                "WRITE_PROFILE",
-                "GET_ACCOUNTS",
-                "READ_CONTACTS",
-                "WRITE_CONTACTS",
-                "WRITE_EXTERNAL_STORAGE",
-                "READ_EXTERNAL_STORAGE",
-                "INTERNET",
-                "ACCESS_NETWORK_STATE",
-                "NFC",
-                "READ_SYNC_SETTINGS",
-                "WRITE_SYNC_SETTINGS",
-                "WRITE_CALL_LOG", // implied-permission!
-                "READ_CALL_LOG" // implied-permission!
-        ));
-        if (Build.VERSION.SDK_INT >= 29) {
-            noPrefixPermissionsList.add("android.permission.ACCESS_MEDIA_LOCATION");
-        }
-        String[] noPrefixPermissions = noPrefixPermissionsList.toArray(new String[0]);
-
-        for (int i = 0; i < noPrefixPermissions.length; i++) {
-            noPrefixPermissions[i] = RepoXMLHandler.fdroidToAndroidPermission(noPrefixPermissions[i]);
-        }
-        apk.requestedPermissions = noPrefixPermissions;
-
-        Uri uri = Uri.fromFile(sdk14Apk);
-        ApkVerifier apkVerifier = new ApkVerifier(instrumentation.getContext(), uri, apk);
-
-        try {
-            apkVerifier.verifyApk();
-        } catch (ApkVerifier.ApkVerificationException | ApkVerifier.ApkPermissionUnequalException e) {
-            e.printStackTrace();
-            fail(e.getMessage());
-        }
     }
 
     @Test(expected = ApkVerifier.ApkPermissionUnequalException.class)
@@ -296,9 +244,8 @@ public class ApkVerifierTest {
     }
 
     @Test
-    public void testExtendedPerms() throws IOException,
-            ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
-        RepoDetails actualDetails = getFromFile(extendedPermsXml);
+    public void testExtendedPerms()
+            throws ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
         HashSet<String> expectedSet = new HashSet<>(Arrays.asList(
                 "android.permission.ACCESS_NETWORK_STATE",
                 "android.permission.ACCESS_WIFI_STATE",
@@ -327,7 +274,8 @@ public class ApkVerifierTest {
                 expectedSet.add("android.permission.CALL_PHONE");
             }
         }
-        Apk apk = actualDetails.apks.get(0);
+        // TODO get this from "extendedPerms.xml" and use setRequestedPermissions
+        Apk apk = new Apk();
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
@@ -355,8 +303,7 @@ public class ApkVerifierTest {
     }
 
     @Test
-    public void testImpliedPerms() throws IOException {
-        RepoDetails actualDetails = getFromFile(extendedPermsXml);
+    public void testImpliedPerms() {
         TreeSet<String> expectedSet = new TreeSet<>(Arrays.asList(
                 "android.permission.ACCESS_NETWORK_STATE",
                 "android.permission.ACCESS_WIFI_STATE",
@@ -383,7 +330,8 @@ public class ApkVerifierTest {
         if (Build.VERSION.SDK_INT >= 29) {
             expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
-        Apk apk = actualDetails.apks.get(1);
+        // TODO get this from "extendedPerms.xml" and use setRequestedPermissions
+        Apk apk = new Apk();
         Log.i(TAG, "APK: " + apk.apkName);
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
@@ -423,7 +371,8 @@ public class ApkVerifierTest {
             expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
         expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
-        apk = actualDetails.apks.get(2);
+        // TODO get this from "extendedPerms.xml" and use setRequestedPermissions
+        apk = new Apk();
         Log.i(TAG, "APK: " + apk.apkName);
         actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
@@ -441,14 +390,4 @@ public class ApkVerifierTest {
         assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
     }
 
-    @NonNull
-    private RepoDetails getFromFile(File indexFile) throws IOException {
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(indexFile);
-            return RepoDetails.getFromFile(inputStream, Repo.PUSH_REQUEST_IGNORE);
-        } finally {
-            Utils.closeQuietly(inputStream);
-        }
-    }
 }

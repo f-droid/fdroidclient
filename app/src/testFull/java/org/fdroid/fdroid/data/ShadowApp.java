@@ -6,7 +6,7 @@ import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
 
 @Implements(App.class)
-public class ShadowApp extends ValueObject {
+public class ShadowApp {
 
     @Implementation
     protected static int[] getMinTargetMaxSdkVersions(Context context, String packageName) {

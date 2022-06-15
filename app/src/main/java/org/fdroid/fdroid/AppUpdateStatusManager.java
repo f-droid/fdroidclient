@@ -38,8 +38,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * Manages the state of APKs that are being installed or that have updates available.
- * This also ensures the state is saved across F-Droid restarts, and repopulates
- * based on {@link org.fdroid.fdroid.data.Schema.InstalledAppTable} data, APKs that
+ * This also ensures the state is saved across F-Droid restarts, APKs that
  * are present in the cache, and the {@code apks-pending-install}
  * {@link SharedPreferences} instance.
  * <p>

@@ -2,10 +2,8 @@ package org.fdroid.fdroid.data;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -25,7 +23,6 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.fdroid.index.v2.PermissionV2;
@@ -58,7 +55,7 @@ import androidx.annotation.Nullable;
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
  */
-public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
+public class Apk implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
     @JsonIgnore
@@ -164,97 +161,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
 
         // We couldn't load it from the database, indicating it is not available in any of our repos.
         repoId = 0;
-    }
-
-    public Apk(Cursor cursor) {
-
-        checkCursorPosition(cursor);
-
-        for (int i = 0; i < cursor.getColumnCount(); i++) {
-            switch (cursor.getColumnName(i)) {
-                case Cols.APP_ID:
-                    appId = cursor.getLong(i);
-                    break;
-                case Cols.HASH:
-                    hash = cursor.getString(i);
-                    break;
-                case Cols.HASH_TYPE:
-                    hashType = cursor.getString(i);
-                    break;
-                case Cols.ADDED_DATE:
-                    added = Utils.parseDate(cursor.getString(i), null);
-                    break;
-                case Cols.FEATURES:
-                    features = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.Package.PACKAGE_NAME:
-                    packageName = cursor.getString(i);
-                    break;
-                case Cols.IS_COMPATIBLE:
-                    compatible = cursor.getInt(i) == 1;
-                    break;
-                case Cols.MIN_SDK_VERSION:
-                    minSdkVersion = cursor.getInt(i);
-                    break;
-                case Cols.TARGET_SDK_VERSION:
-                    targetSdkVersion = cursor.getInt(i);
-                    break;
-                case Cols.MAX_SDK_VERSION:
-                    maxSdkVersion = cursor.getInt(i);
-                    break;
-                case Cols.OBB_MAIN_FILE:
-                    obbMainFile = cursor.getString(i);
-                    break;
-                case Cols.OBB_MAIN_FILE_SHA256:
-                    obbMainFileSha256 = cursor.getString(i);
-                    break;
-                case Cols.OBB_PATCH_FILE:
-                    obbPatchFile = cursor.getString(i);
-                    break;
-                case Cols.OBB_PATCH_FILE_SHA256:
-                    obbPatchFileSha256 = cursor.getString(i);
-                    break;
-                case Cols.NAME:
-                    apkName = cursor.getString(i);
-                    break;
-                case Cols.REQUESTED_PERMISSIONS:
-                    requestedPermissions = convertToRequestedPermissions(cursor.getString(i));
-                    break;
-                case Cols.NATIVE_CODE:
-                    nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.INCOMPATIBLE_REASONS:
-                    incompatibleReasons = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.REPO_ID:
-                    repoId = cursor.getInt(i);
-                    break;
-                case Cols.SIGNATURE:
-                    sig = cursor.getString(i);
-                    break;
-                case Cols.SIZE:
-                    size = cursor.getInt(i);
-                    break;
-                case Cols.SOURCE_NAME:
-                    srcname = cursor.getString(i);
-                    break;
-                case Cols.VERSION_NAME:
-                    versionName = cursor.getString(i);
-                    break;
-                case Cols.VERSION_CODE:
-                    versionCode = cursor.getInt(i);
-                    break;
-                case Cols.Repo.VERSION:
-                    repoVersion = cursor.getInt(i);
-                    break;
-                case Cols.Repo.ADDRESS:
-                    repoAddress = cursor.getString(i);
-                    break;
-                case Cols.AntiFeatures.ANTI_FEATURES:
-                    antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-            }
-        }
     }
 
     public Apk(AppVersion v) {
@@ -421,40 +327,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     @Override
-    public String toString() {
-        return toContentValues().toString();
-    }
-
-    public ContentValues toContentValues() {
-        ContentValues values = new ContentValues();
-        values.put(Cols.APP_ID, appId);
-        values.put(Cols.VERSION_NAME, versionName);
-        values.put(Cols.VERSION_CODE, versionCode);
-        values.put(Cols.REPO_ID, repoId);
-        values.put(Cols.HASH, hash);
-        values.put(Cols.HASH_TYPE, hashType);
-        values.put(Cols.SIGNATURE, sig);
-        values.put(Cols.SOURCE_NAME, srcname);
-        values.put(Cols.SIZE, size);
-        values.put(Cols.NAME, apkName);
-        values.put(Cols.MIN_SDK_VERSION, minSdkVersion);
-        values.put(Cols.TARGET_SDK_VERSION, targetSdkVersion);
-        values.put(Cols.MAX_SDK_VERSION, maxSdkVersion);
-        values.put(Cols.OBB_MAIN_FILE, obbMainFile);
-        values.put(Cols.OBB_MAIN_FILE_SHA256, obbMainFileSha256);
-        values.put(Cols.OBB_PATCH_FILE, obbPatchFile);
-        values.put(Cols.OBB_PATCH_FILE_SHA256, obbPatchFileSha256);
-        values.put(Cols.ADDED_DATE, Utils.formatDate(added, ""));
-        values.put(Cols.REQUESTED_PERMISSIONS, Utils.serializeCommaSeparatedString(requestedPermissions));
-        values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
-        values.put(Cols.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
-        values.put(Cols.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
-        values.put(Cols.AntiFeatures.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
-        values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
-        return values;
-    }
-
-    @Override
     @TargetApi(19)
     public int compareTo(@NonNull Apk apk) {
         return Long.compare(versionCode, apk.versionCode);
@@ -540,18 +412,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             return new Apk[size];
         }
     };
-
-    private String[] convertToRequestedPermissions(String permissionsFromDb) {
-        String[] array = Utils.parseCommaSeparatedString(permissionsFromDb);
-        if (array != null) {
-            HashSet<String> requestedPermissionsSet = new HashSet<>();
-            for (String permission : array) {
-                requestedPermissionsSet.add(RepoXMLHandler.fdroidToAndroidPermission(permission));
-            }
-            return requestedPermissionsSet.toArray(new String[requestedPermissionsSet.size()]);
-        }
-        return null;
-    }
 
     /**
      * Set the Package Name property while ensuring it is sanitized.

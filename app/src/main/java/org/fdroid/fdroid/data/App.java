@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.data;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -8,12 +7,9 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
-import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
-import android.os.LocaleList;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -25,7 +21,6 @@ import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.fdroid.database.AppListItem;
 import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
@@ -35,24 +30,18 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
 import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.fdroid.index.v2.FileV2;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 
 import info.guardianproject.netcipher.NetCipher;
@@ -75,7 +64,7 @@ import androidx.core.os.LocaleListCompat;
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
  */
-public class App extends ValueObject implements Comparable<App>, Parcelable {
+public class App implements Comparable<App>, Parcelable {
 
     @JsonIgnore
     private static final String TAG = "App";
@@ -83,7 +72,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * {@link LocaleListCompat} for finding the right app description material.
      * It is set globally static to a) cache this value, since there are thousands
-     * of {@link App} entries, and b) make it easy to test {@link #setLocalized(Map)} )}
+     * of {@link App} entries, and b) make it easy to test}
      */
     @JsonIgnore
     public static LocaleListCompat systemLocaleList;
@@ -210,9 +199,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
-     * emphasise that setting it wont do anything. In order to change this,
-     * you need to change {@link #autoInstallVersionCode} to an APK which is
-     * in the {@link Schema.ApkTable} table.
+     * emphasise that setting it wont do anything.
      */
     private String autoInstallVersionName;
 
@@ -229,7 +216,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     /**
      * List of categories (as defined in the metadata documentation) or null if there aren't any.
      * This is only populated when parsing a repository. If you need to know about the categories
-     * an app is in any other part of F-Droid, use the {@link CategoryProvider}.
+     * an app is in any other part of F-Droid, use the database.
      */
     public String[] categories;
 
@@ -252,173 +239,12 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      */
     public String iconUrl;
 
-    public static String getIconName(String packageName, long versionCode) {
-        return packageName + "_" + versionCode + ".png";
-    }
-
     @Override
     public int compareTo(@NonNull App app) {
         return name.compareToIgnoreCase(app.name);
     }
 
     public App() {
-    }
-
-    public App(final Cursor cursor) {
-
-        checkCursorPosition(cursor);
-
-        final int cursorColumnCount = cursor.getColumnCount();
-        for (int i = 0; i < cursorColumnCount; i++) {
-            final String n = cursor.getColumnName(i);
-            switch (n) {
-                case Cols.ROW_ID:
-                    id = cursor.getLong(i);
-                    break;
-                case Cols.REPO_ID:
-                    repoId = cursor.getLong(i);
-                    break;
-                case Cols.IS_COMPATIBLE:
-                    compatible = cursor.getInt(i) == 1;
-                    break;
-                case Cols.Package.PACKAGE_NAME:
-                    packageName = cursor.getString(i);
-                    break;
-                case Cols.NAME:
-                    name = cursor.getString(i);
-                    break;
-                case Cols.SUMMARY:
-                    summary = cursor.getString(i);
-                    break;
-                case Cols.ICON:
-                    iconFromApk = cursor.getString(i);
-                    break;
-                case Cols.DESCRIPTION:
-                    description = cursor.getString(i);
-                    break;
-                case Cols.WHATSNEW:
-                    whatsNew = cursor.getString(i);
-                    break;
-                case Cols.LICENSE:
-                    license = cursor.getString(i);
-                    break;
-                case Cols.AUTHOR_NAME:
-                    authorName = cursor.getString(i);
-                    break;
-                case Cols.AUTHOR_EMAIL:
-                    authorEmail = cursor.getString(i);
-                    break;
-                case Cols.WEBSITE:
-                    webSite = cursor.getString(i);
-                    break;
-                case Cols.ISSUE_TRACKER:
-                    issueTracker = cursor.getString(i);
-                    break;
-                case Cols.SOURCE_CODE:
-                    sourceCode = cursor.getString(i);
-                    break;
-                case Cols.TRANSLATION:
-                    translation = cursor.getString(i);
-                    break;
-                case Cols.VIDEO:
-                    video = cursor.getString(i);
-                    break;
-                case Cols.CHANGELOG:
-                    changelog = cursor.getString(i);
-                    break;
-                case Cols.DONATE:
-                    donate = cursor.getString(i);
-                    break;
-                case Cols.BITCOIN:
-                    bitcoin = cursor.getString(i);
-                    break;
-                case Cols.LITECOIN:
-                    litecoin = cursor.getString(i);
-                    break;
-                case Cols.FLATTR_ID:
-                    flattrID = cursor.getString(i);
-                    break;
-                case Cols.LIBERAPAY:
-                    liberapay = cursor.getString(i);
-                    break;
-                case Cols.OPEN_COLLECTIVE:
-                    openCollective = cursor.getString(i);
-                    break;
-                case Cols.AutoInstallApk.VERSION_NAME:
-                    autoInstallVersionName = cursor.getString(i);
-                    break;
-                case Cols.PREFERRED_SIGNER:
-                    preferredSigner = cursor.getString(i);
-                    break;
-                case Cols.AUTO_INSTALL_VERSION_CODE:
-                    autoInstallVersionCode = cursor.getInt(i);
-                    break;
-                case Cols.SUGGESTED_VERSION_CODE:
-                    suggestedVersionCode = cursor.getInt(i);
-                    break;
-                case Cols.SUGGESTED_VERSION_NAME:
-                    suggestedVersionName = cursor.getString(i);
-                    break;
-                case Cols.ADDED:
-                    added = Utils.parseDate(cursor.getString(i), null);
-                    break;
-                case Cols.LAST_UPDATED:
-                    lastUpdated = Utils.parseDate(cursor.getString(i), null);
-                    break;
-                case Cols.ANTI_FEATURES:
-                    antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.REQUIREMENTS:
-                    requirements = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.ICON_URL:
-                    iconUrl = cursor.getString(i);
-                    break;
-                case Cols.FEATURE_GRAPHIC:
-                    featureGraphic = cursor.getString(i);
-                    break;
-                case Cols.PROMO_GRAPHIC:
-                    promoGraphic = cursor.getString(i);
-                    break;
-                case Cols.TV_BANNER:
-                    tvBanner = cursor.getString(i);
-                    break;
-                case Cols.PHONE_SCREENSHOTS:
-                    phoneScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.SEVEN_INCH_SCREENSHOTS:
-                    sevenInchScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.TEN_INCH_SCREENSHOTS:
-                    tenInchScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.TV_SCREENSHOTS:
-                    tvScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.WEAR_SCREENSHOTS:
-                    wearScreenshots = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.IS_APK:
-                    isApk = cursor.getInt(i) == 1;
-                    break;
-                case Cols.IS_LOCALIZED:
-                    isLocalized = cursor.getInt(i) == 1;
-                    break;
-                case Cols.InstalledApp.VERSION_CODE:
-                    installedVersionCode = cursor.getInt(i);
-                    break;
-                case Cols.InstalledApp.VERSION_NAME:
-                    installedVersionName = cursor.getString(i);
-                    break;
-                case Cols.InstalledApp.SIGNATURE:
-                    installedSig = cursor.getString(i);
-                    break;
-                case "_id":
-                    break;
-                default:
-                    Log.e(TAG, "Unknown column name " + n);
-            }
-        }
     }
 
     public App(final UpdatableApp app) {
@@ -574,255 +400,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     /**
-     * {@link #liberapay} was originally included using a numeric ID, now it is a
-     * username. This should not override {@link #liberapay} if that is already set.
-     */
-    @JsonProperty("liberapayID")
-    void setLiberapayID(String liberapayId) {  // NOPMD
-        if (TextUtils.isEmpty(liberapayId) || !TextUtils.isEmpty(liberapay)) {
-            return;
-        }
-        try {
-            int id = Integer.parseInt(liberapayId);
-            if (id > 0) {
-                liberapay = "~" + liberapayId;
-            }
-        } catch (NumberFormatException e) {
-            // ignored
-        }
-    }
-
-    /**
-     * Parses the {@code localized} block in the incoming index metadata,
-     * choosing the best match in terms of locale/language while filling as
-     * many fields as possible.  It first sets up a locale list based on user
-     * preference and the locales available for this app, then picks the texts
-     * based on that list.  One thing that makes this tricky is that any given
-     * locale block in the index might not have all the fields.  So when filling
-     * out each value, it needs to go through the whole preference list each time,
-     * rather than just taking the whole block for a specific locale.  This is to
-     * ensure that there is something to show, as often as possible.
-     * <p>
-     * It is still possible that the fields will be loaded directly by Jackson
-     * without any locale info.  This comes from the old-style, inline app metadata
-     * fields that do not have locale info.  They should not be used if the
-     * {@code localized} block is included in the index.  Also, null strings in
-     * the {@code localized} block should not overwrite Name/Summary/Description
-     * strings with empty/null if they were set directly by Jackson.
-     * <ol>
-     * <li>the country variant {@code de-AT} from the user locale list
-     * <li>only the language {@code de} from the above locale
-     * <li>next locale in the user's preference list ({@code >= android-24})
-     * <li>{@code en-US} since its the most common English for software
-     * <li>the first available {@code en} locale
-     * </ol>
-     * <p>
-     * The system-wide language preference list was added in {@code android-24}.
-     *
-     * @see <a href="https://developer.android.com/guide/topics/resources/multilingual-support">Android language and locale resolution overview</a>
-     */
-    @JsonProperty("localized")
-    void setLocalized(Map<String, Map<String, Object>> localized) { // NOPMD
-        if (systemLocaleList == null) {
-            systemLocaleList = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
-        }
-        Set<String> supportedLocales = localized.keySet();
-        setIsLocalized(supportedLocales);
-        String value = getLocalizedEntry(localized, supportedLocales, "whatsNew");
-        if (!TextUtils.isEmpty(value)) {
-            whatsNew = value;
-        }
-
-        value = getLocalizedEntry(localized, supportedLocales, "video");
-        if (!TextUtils.isEmpty(value)) {
-            video = value.trim();
-        }
-        value = getLocalizedEntry(localized, supportedLocales, "name");
-        if (!TextUtils.isEmpty(value)) {
-            name = value.trim();
-        }
-        value = getLocalizedEntry(localized, supportedLocales, "summary");
-        if (!TextUtils.isEmpty(value)) {
-            summary = value.trim();
-        }
-        value = getLocalizedEntry(localized, supportedLocales, "description");
-        if (!TextUtils.isEmpty(value)) {
-            description = formatDescription(value);
-        }
-        value = getLocalizedGraphicsEntry(localized, supportedLocales, "icon");
-        if (!TextUtils.isEmpty(value)) {
-            iconUrl = value;
-        }
-
-        featureGraphic = getLocalizedGraphicsEntry(localized, supportedLocales, "featureGraphic");
-        promoGraphic = getLocalizedGraphicsEntry(localized, supportedLocales, "promoGraphic");
-        tvBanner = getLocalizedGraphicsEntry(localized, supportedLocales, "tvBanner");
-
-        wearScreenshots = getLocalizedListEntry(localized, supportedLocales, "wearScreenshots");
-        phoneScreenshots = getLocalizedListEntry(localized, supportedLocales, "phoneScreenshots");
-        sevenInchScreenshots = getLocalizedListEntry(localized, supportedLocales, "sevenInchScreenshots");
-        tenInchScreenshots = getLocalizedListEntry(localized, supportedLocales, "tenInchScreenshots");
-        tvScreenshots = getLocalizedListEntry(localized, supportedLocales, "tvScreenshots");
-    }
-
-    /**
-     * Sets the boolean flag {@link #isLocalized} if this app entry has an localized
-     * entry in one of the user's current locales.
-     *
-     * @see org.fdroid.fdroid.views.main.WhatsNewViewBinder#onCreateLoader(int, android.os.Bundle)
-     */
-    private void setIsLocalized(Set<String> supportedLocales) {
-        isLocalized = false;
-        for (int i = 0; i < systemLocaleList.size(); i++) {
-            String language = systemLocaleList.get(i).getLanguage();
-            for (String supportedLocale : supportedLocales) {
-                if (language.equals(supportedLocale.split("-")[0])) {
-                    isLocalized = true;
-                    return;
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the right localized version of this entry, based on an imitation of
-     * the logic that Android uses.
-     *
-     * @see LocaleList
-     */
-    private String getLocalizedEntry(Map<String, Map<String, Object>> localized,
-                                     Set<String> supportedLocales, @NonNull String key) {
-        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
-        if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
-            for (Object entry : localizedLocaleMap.values()) {
-                return (String) entry; // NOPMD
-            }
-        }
-        return null;
-    }
-
-    private String getLocalizedGraphicsEntry(Map<String, Map<String, Object>> localized,
-                                             Set<String> supportedLocales, @NonNull String key) {
-        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
-        if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
-            for (String locale : localizedLocaleMap.keySet()) {
-                return locale + "/" + localizedLocaleMap.get(locale); // NOPMD
-            }
-        }
-        return null;
-    }
-
-    private String[] getLocalizedListEntry(Map<String, Map<String, Object>> localized,
-                                           Set<String> supportedLocales, @NonNull String key) {
-        Map<String, Object> localizedLocaleMap = getLocalizedLocaleMap(localized, supportedLocales, key);
-        if (localizedLocaleMap != null && !localizedLocaleMap.isEmpty()) {
-            for (String locale : localizedLocaleMap.keySet()) {
-                ArrayList<String> entry = (ArrayList<String>) localizedLocaleMap.get(locale);
-                if (entry != null && entry.size() > 0) {
-                    String[] result = new String[entry.size()];
-                    int i = 0;
-                    for (String e : entry) {
-                        result[i] = locale + "/" + key + "/" + e;
-                        i++;
-                    }
-                    return result;
-                }
-            }
-        }
-        return new String[0];
-    }
-
-    /**
-     * Return one matching entry from the {@code localized} block in the app entry
-     * in the index JSON.
-     */
-    private Map<String, Object> getLocalizedLocaleMap(Map<String, Map<String, Object>> localized,
-                                                      Set<String> supportedLocales, @NonNull String key) {
-        String[] localesToUse = getLocalesForKey(localized, supportedLocales, key);
-        if (localesToUse.length > 0) {
-            Locale firstMatch = systemLocaleList.getFirstMatch(localesToUse);
-            if (firstMatch != null) {
-                for (String languageTag : new String[]{toLanguageTag(firstMatch), null}) {
-                    if (languageTag == null) {
-                        languageTag = getFallbackLanguageTag(firstMatch, localesToUse); // NOPMD
-                    }
-                    Map<String, Object> localeEntry = localized.get(languageTag);
-                    if (localeEntry != null && localeEntry.containsKey(key)) {
-                        Object value = localeEntry.get(key);
-                        if (value != null) {
-                            Map<String, Object> localizedLocaleMap = new HashMap<>();
-                            localizedLocaleMap.put(languageTag, value);
-                            return localizedLocaleMap;
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Replace with {@link Locale#toLanguageTag()} once
-     * {@link android.os.Build.VERSION_CODES#LOLLIPOP} is {@code minSdkVersion}
-     */
-    private String toLanguageTag(Locale firstMatch) {
-        if (Build.VERSION.SDK_INT < 21) {
-            return firstMatch.toString().replace("_", "-");
-        } else {
-            return firstMatch.toLanguageTag();
-        }
-    }
-
-    /**
-     * Get all locales that have an entry for {@code key}.
-     */
-    private String[] getLocalesForKey(Map<String, Map<String, Object>> localized,
-                                      Set<String> supportedLocales, @NonNull String key) {
-        Set<String> localesToUse = new HashSet<>();
-        for (String locale : supportedLocales) {
-            Map<String, Object> localeEntry = localized.get(locale);
-            if (localeEntry != null && localeEntry.get(key) != null) {
-                localesToUse.add(locale);
-            }
-        }
-        return localesToUse.toArray(new String[0]);
-    }
-
-    /**
-     * Look for the first language-country match for languages with multiple scripts.
-     * Then look for a language-only match, for when there is no exact
-     * {@link Locale} match.  Then try a locale with the same language, but
-     * different country. If there are still no matches, return the {@code en-US}
-     * entry. If all else fails, try to return the first existing English locale.
-     */
-    private String getFallbackLanguageTag(Locale firstMatch, String[] localesToUse) {
-        final String firstMatchLanguageCountry = firstMatch.getLanguage() + "-" + firstMatch.getCountry();
-        for (String languageTag : localesToUse) {
-            if (languageTag.equals(firstMatchLanguageCountry)) {
-                return languageTag;
-            }
-        }
-        final String firstMatchLanguage = firstMatch.getLanguage();
-        String englishLastResort = null;
-        for (String languageTag : localesToUse) {
-            if (languageTag.equals(firstMatchLanguage)) {
-                return languageTag;
-            } else if ("en-US".equals(languageTag)) {
-                englishLastResort = languageTag;
-            }
-        }
-        for (String languageTag : localesToUse) {
-            String languageToUse = languageTag.split("-")[0];
-            if (firstMatchLanguage.equals(languageToUse)) {
-                return languageTag;
-            } else if (englishLastResort == null && "en".equals(languageToUse)) {
-                englishLastResort = languageTag;
-            }
-        }
-        return englishLastResort;
-    }
-
-    /**
      * Returns the app description text with all newlines replaced by {@code <br>}
      */
     public static String formatDescription(String description) {
@@ -954,29 +531,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 + "/Android/obb/" + packageName);
     }
 
-    public static void initInstalledObbFiles(Apk apk) {
-        File obbdir = getObbDir(apk.packageName);
-        FileFilter filter = new RegexFileFilter("(main|patch)\\.[0-9-][0-9]*\\." + apk.packageName + "\\.obb");
-        File[] files = obbdir.listFiles(filter);
-        if (files == null) {
-            return;
-        }
-        Arrays.sort(files);
-        for (File f : files) {
-            String filename = f.getName();
-            String[] segments = filename.split("\\.");
-            if (Integer.parseInt(segments[1]) <= apk.versionCode) {
-                if ("main".equals(segments[0])) {
-                    apk.obbMainFile = filename;
-                    apk.obbMainFileSha256 = Utils.getFileHexDigest(f, apk.hashType);
-                } else if ("patch".equals(segments[0])) {
-                    apk.obbPatchFile = filename;
-                    apk.obbPatchFileSha256 = Utils.getFileHexDigest(f, apk.hashType);
-                }
-            }
-        }
-    }
-
     /**
      * Attempts to find the installed {@link Apk} in the given list of APKs. If not found, will lookup the
      * the details of the installed app and use that to instantiate an {@link Apk} to be returned.
@@ -1024,58 +578,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         final File apkFile = this.installedApk.installedFile;
         return !(apkFile == null || !apkFile.canRead());
 
-    }
-
-    public ContentValues toContentValues() {
-
-        final ContentValues values = new ContentValues();
-        // Intentionally don't put "ROW_ID" in here, because we don't ever want to change that
-        // primary key generated by sqlite.
-        values.put(Cols.Package.PACKAGE_NAME, packageName);
-        values.put(Cols.NAME, name);
-        values.put(Cols.REPO_ID, repoId);
-        values.put(Cols.SUMMARY, summary);
-        values.put(Cols.ICON, iconFromApk);
-        values.put(Cols.ICON_URL, iconUrl);
-        values.put(Cols.DESCRIPTION, description);
-        values.put(Cols.WHATSNEW, whatsNew);
-        values.put(Cols.LICENSE, license);
-        values.put(Cols.AUTHOR_NAME, authorName);
-        values.put(Cols.AUTHOR_EMAIL, authorEmail);
-        values.put(Cols.WEBSITE, webSite);
-        values.put(Cols.ISSUE_TRACKER, issueTracker);
-        values.put(Cols.SOURCE_CODE, sourceCode);
-        values.put(Cols.TRANSLATION, translation);
-        values.put(Cols.VIDEO, video);
-        values.put(Cols.CHANGELOG, changelog);
-        values.put(Cols.DONATE, donate);
-        values.put(Cols.BITCOIN, bitcoin);
-        values.put(Cols.LITECOIN, litecoin);
-        values.put(Cols.FLATTR_ID, flattrID);
-        values.put(Cols.LIBERAPAY, liberapay);
-        values.put(Cols.OPEN_COLLECTIVE, openCollective);
-        values.put(Cols.ADDED, Utils.formatDate(added, ""));
-        values.put(Cols.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
-        values.put(Cols.PREFERRED_SIGNER, preferredSigner);
-        values.put(Cols.AUTO_INSTALL_VERSION_CODE, autoInstallVersionCode);
-        values.put(Cols.SUGGESTED_VERSION_NAME, suggestedVersionName);
-        values.put(Cols.SUGGESTED_VERSION_CODE, suggestedVersionCode);
-        values.put(Cols.ForWriting.Categories.CATEGORIES, Utils.serializeCommaSeparatedString(categories));
-        values.put(Cols.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
-        values.put(Cols.REQUIREMENTS, Utils.serializeCommaSeparatedString(requirements));
-        values.put(Cols.FEATURE_GRAPHIC, featureGraphic);
-        values.put(Cols.PROMO_GRAPHIC, promoGraphic);
-        values.put(Cols.TV_BANNER, tvBanner);
-        values.put(Cols.PHONE_SCREENSHOTS, Utils.serializeCommaSeparatedString(phoneScreenshots));
-        values.put(Cols.SEVEN_INCH_SCREENSHOTS, Utils.serializeCommaSeparatedString(sevenInchScreenshots));
-        values.put(Cols.TEN_INCH_SCREENSHOTS, Utils.serializeCommaSeparatedString(tenInchScreenshots));
-        values.put(Cols.TV_SCREENSHOTS, Utils.serializeCommaSeparatedString(tvScreenshots));
-        values.put(Cols.WEAR_SCREENSHOTS, Utils.serializeCommaSeparatedString(wearScreenshots));
-        values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
-        values.put(Cols.IS_APK, isApk ? 1 : 0);
-        values.put(Cols.IS_LOCALIZED, isLocalized ? 1 : 0);
-
-        return values;
     }
 
     public boolean isInstalled(Context context) {
@@ -1165,23 +667,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
             apk = apks.get(0);
         }
         return apk;
-    }
-
-    @Deprecated
-    public AppPrefs getPrefs(Context context) {
-        return AppPrefs.createDefault();
-    }
-
-    /**
-     * True if there are new versions (apks) available and the user wants
-     * to be notified about them
-     */
-    @Deprecated
-    public boolean canAndWantToUpdate(Context context) {
-        boolean canUpdate = hasUpdates();
-        final org.fdroid.database.AppPrefs prefs = this.prefs;
-        boolean wantsUpdate = prefs == null || !prefs.shouldIgnoreUpdate(autoInstallVersionCode);
-        return canUpdate && wantsUpdate;
     }
 
     /**
@@ -1463,11 +948,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
         }
 
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return toContentValues().toString();
     }
 
 }
