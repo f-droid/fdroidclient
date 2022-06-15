@@ -3,7 +3,6 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -45,24 +44,16 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import info.guardianproject.netcipher.NetCipher;
 
@@ -80,11 +71,6 @@ import androidx.core.os.LocaleListCompat;
  * They are mapped to JSON field names, the {@code fdroidserver} internal variable
  * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
  * decorated with {@code @JsonIgnore} are not directly mapped.
- * <p>
- * <b>NOTE:</b>If an instance variable is only meant for internal state, and not for
- * representing data coming from the server, then it must also be decorated with
- * {@code @JsonIgnore} to prevent abuse!  The tests for
- * {@link org.fdroid.fdroid.IndexV1Updater} will also have to be updated.
  *
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
@@ -968,50 +954,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 + "/Android/obb/" + packageName);
     }
 
-    private void setFromPackageInfo(PackageManager pm, PackageInfo packageInfo) {
-
-        this.packageName = packageInfo.packageName;
-        final String installerPackageName = pm.getInstallerPackageName(packageName);
-        CharSequence installerPackageLabel = null;
-        if (!TextUtils.isEmpty(installerPackageName)) {
-            try {
-                ApplicationInfo installerAppInfo = pm.getApplicationInfo(installerPackageName,
-                        PackageManager.GET_META_DATA);
-                installerPackageLabel = installerAppInfo.loadLabel(pm);
-            } catch (PackageManager.NameNotFoundException e) {
-                Log.w(TAG, "Could not get app info: " + installerPackageName, e);
-            }
-        }
-        if (TextUtils.isEmpty(installerPackageLabel)) {
-            installerPackageLabel = installerPackageName;
-        }
-
-        ApplicationInfo appInfo = packageInfo.applicationInfo;
-        final CharSequence appDescription = appInfo.loadDescription(pm);
-        if (TextUtils.isEmpty(appDescription)) {
-            this.summary = "(installed by " + installerPackageLabel + ")";
-        } else if (appDescription.length() > 40) {
-            this.summary = (String) appDescription.subSequence(0, 40);
-        } else {
-            this.summary = (String) appDescription;
-        }
-        this.added = new Date(packageInfo.firstInstallTime);
-        this.lastUpdated = new Date(packageInfo.lastUpdateTime);
-        this.description = "<p>";
-        if (!TextUtils.isEmpty(appDescription)) {
-            this.description += appDescription + "\n";
-        }
-        this.description += "(installed by " + installerPackageLabel
-                + ", first installed on " + this.added
-                + ", last updated on " + this.lastUpdated + ")</p>";
-
-        this.name = (String) appInfo.loadLabel(pm);
-        this.iconFromApk = getIconName(packageName, packageInfo.versionCode);
-        this.installedVersionName = packageInfo.versionName;
-        this.installedVersionCode = packageInfo.versionCode;
-        this.compatible = true;
-    }
-
     public static void initInstalledObbFiles(Apk apk) {
         File obbdir = getObbDir(apk.packageName);
         FileFilter filter = new RegexFileFilter("(main|patch)\\.[0-9-][0-9]*\\." + apk.packageName + "\\.obb");
@@ -1033,79 +975,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
                 }
             }
         }
-    }
-
-    @SuppressWarnings("EmptyForIteratorPad")
-    private void initInstalledApk(Context context, Apk apk, PackageInfo packageInfo, SanitizedFile apkFile)
-            throws IOException, CertificateEncodingException {
-        apk.compatible = true;
-        apk.versionName = packageInfo.versionName;
-        apk.versionCode = packageInfo.versionCode;
-        apk.added = this.added;
-        int[] minTargetMax = getMinTargetMaxSdkVersions(context, packageName);
-        apk.minSdkVersion = minTargetMax[0];
-        apk.targetSdkVersion = minTargetMax[1];
-        apk.maxSdkVersion = minTargetMax[2];
-        apk.packageName = this.packageName;
-        apk.requestedPermissions = packageInfo.requestedPermissions;
-        apk.apkName = apk.packageName + "_" + apk.versionCode + ".apk";
-
-        initInstalledObbFiles(apk);
-
-        final FeatureInfo[] features = packageInfo.reqFeatures;
-        if (features != null && features.length > 0) {
-            apk.features = new String[features.length];
-            for (int i = 0; i < features.length; i++) {
-                apk.features[i] = features[i].name;
-            }
-        }
-
-        if (!apkFile.canRead()) {
-            return;
-        }
-
-        apk.installedFile = apkFile;
-        JarFile apkJar = new JarFile(apkFile);
-        HashSet<String> abis = new HashSet<>(3);
-        Pattern pattern = Pattern.compile("^lib/([a-z0-9-]+)/.*");
-        for (Enumeration<JarEntry> jarEntries = apkJar.entries(); jarEntries.hasMoreElements(); ) {
-            JarEntry jarEntry = jarEntries.nextElement();
-            Matcher matcher = pattern.matcher(jarEntry.getName());
-            if (matcher.matches()) {
-                abis.add(matcher.group(1));
-            }
-        }
-        apk.nativecode = abis.toArray(new String[abis.size()]);
-
-        final JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
-
-        if (aSignedEntry == null) {
-            apkJar.close();
-            throw new CertificateEncodingException("null signed entry!");
-        }
-
-        final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
-        byte[] buff = new byte[2048];
-        //noinspection StatementWithEmptyBody
-        while (tmpIn.read(buff, 0, buff.length) != -1) {
-            /*
-             * NOP - apparently have to READ from the JarEntry before you can
-             * call getCerficates() and have it return != null. Yay Java.
-             */
-        }
-        tmpIn.close();
-
-        if (aSignedEntry.getCertificates() == null
-                || aSignedEntry.getCertificates().length == 0) {
-            apkJar.close();
-            throw new CertificateEncodingException("No Certificates found!");
-        }
-
-        final Certificate signer = aSignedEntry.getCertificates()[0];
-        byte[] rawCertBytes = signer.getEncoded();
-        apkJar.close();
-
-        apk.sig = Utils.getsig(rawCertBytes);
     }
 
     /**
@@ -1382,14 +1251,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     /**
-     * @see App#autoInstallVersionName for why this uses a getter while other member variables are
-     * publicly accessible.
-     */
-    public String getAutoInstallVersionName() {
-        return autoInstallVersionName;
-    }
-
-    /**
      * {@link PackageManager} doesn't give us {@code minSdkVersion}, {@code targetSdkVersion},
      * and {@code maxSdkVersion}, so we have to parse it straight from {@code <uses-sdk>} in
      * {@code AndroidManifest.xml}.  If {@code targetSdkVersion} is not set, then it is
@@ -1397,6 +1258,7 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
      *
      * @see <a href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a>
      */
+    @SuppressWarnings("unused") // TODO port to lib
     private static int[] getMinTargetMaxSdkVersions(Context context, String packageName) {
         int minSdkVersion = Apk.SDK_VERSION_MIN_VALUE;
         int targetSdkVersion = Apk.SDK_VERSION_MIN_VALUE;

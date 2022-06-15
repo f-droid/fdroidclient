@@ -23,6 +23,8 @@ public final class TreeUriUtils {
     public static final String TAG = "TreeUriUtils";
 
     private static final String PRIMARY_VOLUME_NAME = "primary";
+    public static final String SIGNED_FILE_NAME = "index-v1.jar";
+    public static final String DATA_FILE_NAME = "index-v1.json";
 
     @Nullable
     public static String getFullPathFromTreeUri(Context context, @Nullable final Uri treeUri) {

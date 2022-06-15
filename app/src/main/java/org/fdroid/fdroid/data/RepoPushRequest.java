@@ -48,9 +48,6 @@ public class RepoPushRequest {
      * Create a new instance.  {@code request} is validated against the list of
      * valid install requests.  {@code packageName} has a safety validation to
      * make sure that only valid Android/Java Package Name characters are included.
-     * If validation fails, the the values are set to {@code null}, which are
-     * handled in {@link org.fdroid.fdroid.IndexV1Updater#processRepoPushRequests(List)}
-     * or {@link org.fdroid.fdroid.IndexUpdater#processRepoPushRequests(List)}
      */
     public RepoPushRequest(String request, String packageName, @Nullable String versionCode) {
         if (VALID_REQUESTS.contains(request)) {

@@ -239,7 +239,6 @@ public class DownloaderService extends Service {
      *
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
-     * @see org.fdroid.fdroid.IndexV1Updater#update()
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();

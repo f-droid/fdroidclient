@@ -890,8 +890,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     /**
-     * Helper method used by both the genuine {@link AppProvider} and the temporary version used
-     * by the repo updater ({@link TempAppProvider}).
+     * Helper method used by the genuine {@link AppProvider}.
      * <p>
      * Query the database table specified by {@code uri}, which is usually (always?)
      * {@link AppMetadataTable} with specified {@code selection} and {@code sortOrder}.
