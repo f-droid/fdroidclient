@@ -467,7 +467,6 @@ public class DBHelper extends SQLiteOpenHelper {
         addAuthorToApp(db, oldVersion);
         useMaxValueInMaxSdkVersion(db, oldVersion);
         requireTimestampInRepos(db, oldVersion);
-        recreateInstalledAppTable(db, oldVersion);
         addTargetSdkVersionToApk(db, oldVersion);
         migrateAppPrimaryKeyToRowId(db, oldVersion);
         removeApkPackageNameColumn(db, oldVersion);
@@ -1466,24 +1465,6 @@ public class DBHelper extends SQLiteOpenHelper {
         Utils.debugLog(TAG, "Ensuring indexes exist for " + RepoTable.NAME);
         db.execSQL("CREATE INDEX IF NOT EXISTS repo_id_isSwap on " + RepoTable.NAME + " (" +
                 RepoTable.Cols._ID + ", " + RepoTable.Cols.IS_SWAP + ");");
-    }
-
-    /**
-     * If any column was added or removed, just drop the table, create it again
-     * and let the cache be filled from scratch by {@link InstalledAppProviderService}
-     * For DB versions older than 43, this will create the {@link InstalledAppProvider}
-     * table for the first time.
-     */
-    private void recreateInstalledAppTable(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion >= 56) {
-            return;
-        }
-        Utils.debugLog(TAG, "(re)creating 'installed app' database table.");
-        if (tableExists(db, "fdroid_installedApp")) {
-            db.execSQL("DROP TABLE fdroid_installedApp;");
-        }
-
-        db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
     private void addTargetSdkVersionToApk(SQLiteDatabase db, int oldVersion) {
