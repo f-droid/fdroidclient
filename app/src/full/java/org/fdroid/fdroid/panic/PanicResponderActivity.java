@@ -1,31 +1,21 @@
 package org.fdroid.fdroid.panic;
 
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
-import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.InstalledApp;
-import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 

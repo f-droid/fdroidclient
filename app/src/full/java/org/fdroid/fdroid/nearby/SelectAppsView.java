@@ -27,7 +27,6 @@ import androidx.core.content.ContextCompat;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.InstalledAppProvider;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -565,39 +565,6 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
     }
 
     /**
-     * Instantiate from a locally installed package.
-     * <p>
-     * Initializes an {@link App} instances from an APK file. Since the file
-     * could in the cache, and files can disappear from the cache at any time,
-     * this needs to be quite defensive ensuring that {@code apkFile} still
-     * exists.
-     */
-    @Nullable
-    public static App getInstance(Context context, PackageManager pm, InstalledApp installedApp, String packageName)
-            throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
-        App app = new App();
-        PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
-        SanitizedFile apkFile = SanitizedFile.knownSanitized(packageInfo.applicationInfo.publicSourceDir);
-        app.installedApk = new Apk();
-        if (installedApp != null) {
-            app.installedApk.hashType = installedApp.getHashType();
-            app.installedApk.hash = installedApp.getHash();
-        } else if (apkFile.canRead()) {
-            String hashType = "sha256";
-            String hash = Utils.getFileHexDigest(apkFile, hashType);
-            if (TextUtils.isEmpty(hash)) {
-                return null;
-            }
-            app.installedApk.hashType = hashType;
-            app.installedApk.hash = hash;
-        }
-
-        app.setFromPackageInfo(pm, packageInfo);
-        app.initInstalledApk(context, app.installedApk, packageInfo, apkFile);
-        return app;
-    }
-
-    /**
      * In order to format all in coming descriptions before they are written
      * out to the database and used elsewhere, this is needed to intercept
      * the setting of {@link App#description} to insert the format method.
