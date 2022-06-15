@@ -456,11 +456,6 @@
             android:exported="false" />
 
         <provider
-            android:name="org.fdroid.fdroid.data.InstalledAppProvider"
-            android:authorities="${applicationId}.data.InstalledAppProvider"
-            android:exported="false" />
-
-        <provider
             android:name="org.fdroid.fdroid.data.AppPrefsProvider"
             android:authorities="${applicationId}.data.AppPrefsProvider"
             android:exported="false" />
@@ -512,15 +507,6 @@
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.PackageManagerReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_CHANGED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
         <receiver
             android:name=".NotificationBroadcastReceiver"
             android:exported="false">
@@ -568,11 +554,6 @@
         <service
             android:name=".installer.ObfInstallerService"
             android:exported="false" />
-
-        <service
-            android:name=".data.InstalledAppProviderService"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".AddRepoIntentService"
             android:exported="false" />
