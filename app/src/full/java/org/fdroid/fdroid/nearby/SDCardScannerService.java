@@ -30,9 +30,8 @@ import android.os.Environment;
 import android.os.Process;
 import android.util.Log;
 
-import org.fdroid.fdroid.IndexUpdater;
-import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.index.SigningException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -153,7 +152,7 @@ public class SDCardScannerService extends IntentService {
             if (file.isDirectory()) {
                 searchDirectory(file);
             } else {
-                if (IndexV1Updater.SIGNED_FILE_NAME.equals(file.getName())) {
+                if (TreeUriUtils.SIGNED_FILE_NAME.equals(file.getName())) {
                     registerRepo(file);
                 }
             }
@@ -165,7 +164,7 @@ public class SDCardScannerService extends IntentService {
         try {
             inputStream = new FileInputStream(file);
             TreeUriScannerIntentService.registerRepo(this, inputStream, Uri.fromFile(file.getParentFile()));
-        } catch (IOException | IndexUpdater.SigningException e) {
+        } catch (IOException | SigningException e) {
             e.printStackTrace();
         } finally {
             Utils.closeQuietly(inputStream);

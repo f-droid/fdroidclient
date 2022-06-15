@@ -35,16 +35,18 @@ import org.apache.commons.io.IOUtils;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.IndexUpdater;
-import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.index.SigningException;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.CodeSigner;
 import java.security.cert.Certificate;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
@@ -130,7 +132,7 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     /**
-     * Recursively search for {@link IndexV1Updater#SIGNED_FILE_NAME} starting
+     * Recursively search for {@link TreeUriUtils#SIGNED_FILE_NAME} starting
      * from the given directory, looking at files first before recursing into
      * directories.  This is "depth last" since the index file is much more
      * likely to be shallow than deep, and there can be a lot of files to
@@ -148,7 +150,7 @@ public class TreeUriScannerIntentService extends IntentService {
             if (documentFile.isDirectory()) {
                 dirs.add(documentFile);
             } else if (!foundIndex) {
-                if (IndexV1Updater.SIGNED_FILE_NAME.equals(documentFile.getName())) {
+                if (TreeUriUtils.SIGNED_FILE_NAME.equals(documentFile.getName())) {
                     registerRepo(documentFile);
                     foundIndex = true;
                 }
@@ -160,7 +162,7 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     /**
-     * For all files called {@link IndexV1Updater#SIGNED_FILE_NAME} found, check
+     * For all files called {@link TreeUriUtils#SIGNED_FILE_NAME} found, check
      * the JAR signature and read the fingerprint of the signing certificate.
      * The fingerprint is then used to find whether this local repo is a mirror
      * of an existing repo, or a totally new repo.  In order to verify the
@@ -173,7 +175,7 @@ public class TreeUriScannerIntentService extends IntentService {
         try {
             inputStream = getContentResolver().openInputStream(index.getUri());
             registerRepo(this, inputStream, index.getParentFile().getUri());
-        } catch (IOException | IndexUpdater.SigningException e) {
+        } catch (IOException | SigningException e) {
             e.printStackTrace();
         } finally {
             Utils.closeQuietly(inputStream);
@@ -181,16 +183,16 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     public static void registerRepo(Context context, InputStream inputStream, Uri repoUri)
-            throws IOException, IndexUpdater.SigningException {
+            throws IOException, SigningException {
         if (inputStream == null) {
             return;
         }
-        File destFile = File.createTempFile("dl-", IndexV1Updater.SIGNED_FILE_NAME, context.getCacheDir());
+        File destFile = File.createTempFile("dl-", TreeUriUtils.SIGNED_FILE_NAME, context.getCacheDir());
         FileUtils.copyInputStreamToFile(inputStream, destFile);
         JarFile jarFile = new JarFile(destFile, true);
-        JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1Updater.DATA_FILE_NAME);
+        JarEntry indexEntry = (JarEntry) jarFile.getEntry(TreeUriUtils.DATA_FILE_NAME);
         IOUtils.readLines(jarFile.getInputStream(indexEntry));
-        Certificate certificate = IndexUpdater.getSigningCertFromJar(indexEntry);
+        Certificate certificate = getSigningCertFromJar(indexEntry);
         String fingerprint = Utils.calcFingerprint(certificate);
         Log.i(TAG, "Got fingerprint: " + fingerprint);
         destFile.delete();
@@ -206,5 +208,26 @@ public class TreeUriScannerIntentService extends IntentService {
 
         AddRepoIntentService.addRepo(context, repoUri, fingerprint);
         // TODO rework IndexUpdater.getSigningCertFromJar to work for here
+    }
+
+    /**
+     * FDroid's index.jar is signed using a particular format and does not allow lots of
+     * signing setups that would be valid for a regular jar.  This validates those
+     * restrictions.
+     */
+    static X509Certificate getSigningCertFromJar(JarEntry jarEntry) throws SigningException {
+        final CodeSigner[] codeSigners = jarEntry.getCodeSigners();
+        if (codeSigners == null || codeSigners.length == 0) {
+            throw new SigningException("No signature found in index");
+        }
+        /* we could in theory support more than 1, but as of now we do not */
+        if (codeSigners.length > 1) {
+            throw new SigningException("index.jar must be signed by a single code signer!");
+        }
+        List<? extends Certificate> certs = codeSigners[0].getSignerCertPath().getCertificates();
+        if (certs.size() != 1) {
+            throw new SigningException("index.jar code signers must only have a single certificate!");
+        }
+        return (X509Certificate) certs.get(0);
     }
 }
