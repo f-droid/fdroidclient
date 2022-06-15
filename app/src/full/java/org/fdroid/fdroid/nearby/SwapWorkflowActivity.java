@@ -40,21 +40,16 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
-import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.qr.CameraCharacteristicsChecker;
 import org.fdroid.fdroid.views.main.MainActivity;
 

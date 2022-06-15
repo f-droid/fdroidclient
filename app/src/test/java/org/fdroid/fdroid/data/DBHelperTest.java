@@ -330,11 +330,8 @@ public class DBHelperTest {
                 assertEquals(shouldBeRepos.get(i), initialRepos.get(i));
             }
         } finally {
-            for (Repo repo : RepoProvider.Helper.all(context, new String[]{Schema.RepoTable.Cols._ID})) {
-                RepoProvider.Helper.remove(context, repo.getId());
-            }
+            //noinspection ResultOfMethodCallIgnored
             additionalReposXmlFile.delete();
-            DBHelper.clearDbHelperSingleton();
         }
     }
 }
