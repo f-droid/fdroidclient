@@ -54,11 +54,6 @@ import androidx.annotation.Nullable;
  * They are mapped to JSON field names, the {@code fdroidserver} internal variable
  * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
  * decorated with {@code @JsonIgnore} are not directly mapped.
- * <p>
- * <b>NOTE:</b>If an instance variable is only meant for internal state, and not for
- * representing data coming from the server, then it must also be decorated with
- * {@code @JsonIgnore} to prevent abuse!  The tests for
- * {@link org.fdroid.fdroid.IndexV1Updater} will also have to be updated.
  *
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>

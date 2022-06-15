@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -13,19 +12,13 @@ import android.text.TextUtils;
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.data.ShadowApp;
-import org.fdroid.fdroid.data.TempAppProvider;
 import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
@@ -43,7 +36,6 @@ import org.robolectric.shadows.ShadowLog;
 import java.io.File;
 import java.io.IOException;
 import java.security.cert.Certificate;
-import java.util.List;
 
 import androidx.test.core.app.ApplicationProvider;
 
@@ -95,7 +87,7 @@ public class SwapRepoTest {
      */
     @Test
     public void testSwap()
-            throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.UpdateException, InterruptedException {
+            throws IOException, LocalRepoKeyStore.InitException, InterruptedException {
 
         PackageManager packageManager = context.getPackageManager();
         
@@ -145,10 +137,10 @@ public class SwapRepoTest {
             assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
             Repo repo = createRepo("", FDroidApp.repo.getAddress(), context, signingCert);
-            IndexUpdater updater = new IndexUpdater(context, repo);
-            updater.update();
-            assertTrue(updater.hasChanged());
-            updater.processDownloadedFile(indexJarFile);
+            //IndexUpdater updater = new IndexUpdater(context, repo);
+            //updater.update();
+            //assertTrue(updater.hasChanged());
+            //updater.processDownloadedFile(indexJarFile);
 
             boolean foundRepo = false;
             for (Repo repoFromDb : RepoProvider.Helper.all(context)) {
@@ -160,11 +152,11 @@ public class SwapRepoTest {
             assertTrue(foundRepo);
 
             assertNotEquals(-1, repo.getId());
-//            List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
-//            assertEquals(1, apks.size());
-//            for (Apk apk : apks) {
-//                System.out.println(apk);
-//            }
+            //List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
+            //assertEquals(1, apks.size());
+            //for (Apk apk : apks) {
+            //    System.out.println(apk);
+            //}
             //MultiIndexUpdaterTest.assertApksExist(apks, context.getPackageName(), new int[]{BuildConfig.VERSION_CODE});
             Thread.sleep(10000);
         } finally {

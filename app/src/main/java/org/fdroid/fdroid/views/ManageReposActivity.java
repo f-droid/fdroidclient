@@ -56,7 +56,6 @@ import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -621,7 +620,8 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
                         return Pair.create(statusCode, addressWithoutIndex);
                     }
 
-                    final Uri uri = builder.appendPath(IndexUpdater.SIGNED_FILE_NAME).build();
+                    // check for v1 index as this is the last one we can still handle
+                    final Uri uri = builder.appendPath("index-v1.jar").build();
 
                     try {
                         final URL url = new URL(uri.toString());

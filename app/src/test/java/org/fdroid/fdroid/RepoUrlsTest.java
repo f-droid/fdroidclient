@@ -119,21 +119,19 @@ public class RepoUrlsTest {
 
     @Test
     public void testIndexUrls() {
-        testReposWithFile(IndexUpdater.SIGNED_FILE_NAME, tr -> {
+        testReposWithFile("index.jar", tr -> {
             Repo repo = new Repo();
             repo.address = tr.repoUrl;
-            IndexUpdater updater = new IndexUpdater(context, repo);
-            return updater.getIndexUrl(repo);
+            return repo.getFileUrl("index.jar");
         });
     }
 
     @Test
     public void testIndexV1Urls() {
-        testReposWithFile(IndexV1Updater.SIGNED_FILE_NAME, tr -> {
+        testReposWithFile("index-v1.jar", tr -> {
             Repo repo = new Repo();
             repo.address = tr.repoUrl;
-            IndexV1Updater updater = new IndexV1Updater(context, repo);
-            return updater.getIndexUrl(repo);
+            return repo.getFileUrl("index-v1.jar");
         });
     }
 

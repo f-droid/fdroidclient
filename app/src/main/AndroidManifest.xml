@@ -444,16 +444,6 @@
             android:name="org.fdroid.fdroid.data.ApkProvider"
             android:authorities="${applicationId}.data.ApkProvider"
             android:exported="false" />
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <provider
-            android:name="org.fdroid.fdroid.data.TempApkProvider"
-            android:authorities="${applicationId}.data.TempApkProvider"
-            android:exported="false" />
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <provider
-            android:name="org.fdroid.fdroid.data.TempAppProvider"
-            android:authorities="${applicationId}.data.TempAppProvider"
-            android:exported="false" />
 
         <provider
             android:name="org.fdroid.fdroid.data.AppPrefsProvider"
