@@ -225,5 +225,14 @@ public open class HttpManager @JvmOverloads constructor(
     }
 }
 
+/**
+ * Thrown if we tried to resume a download, but the current mirror server does not offer resuming.
+ */
 public class NoResumeException : Exception()
+
+/**
+ * Thrown when a file was not found.
+ * Catching this is useful when checking if a new index version exists
+ * and then falling back to an older version.
+ */
 public class NotFoundException(e: Throwable? = null) : Exception(e)

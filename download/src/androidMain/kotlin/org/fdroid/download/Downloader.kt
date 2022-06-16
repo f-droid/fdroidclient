@@ -61,7 +61,7 @@ public abstract class Downloader constructor(
     @Throws(IOException::class, InterruptedException::class)
     public abstract fun download()
 
-    @Throws(IOException::class)
+    @Throws(IOException::class, NotFoundException::class)
     protected abstract fun getInputStream(resumable: Boolean): InputStream
     protected open suspend fun getBytes(resumable: Boolean, receiver: BytesReceiver) {
         throw NotImplementedError()
