@@ -74,7 +74,8 @@ class ApkVerifier {
 
         // check if the apk has the expected packageName
         if (!TextUtils.equals(localApkInfo.packageName, expectedApk.packageName)) {
-            throw new ApkVerificationException("Apk file has unexpected packageName!");
+            throw new ApkVerificationException("Apk file has unexpected packageName! " +
+                    localApkInfo.packageName);
         }
 
         if (localApkInfo.versionCode < 0) {
@@ -83,7 +84,7 @@ class ApkVerifier {
 
         // verify permissions, important for unattended installer
         if (!requestedPermissionsEqual(expectedApk.requestedPermissions, localApkInfo.requestedPermissions)) {
-            throw new ApkPermissionUnequalException("Permissions in APK and index.xml do not match!");
+            throw new ApkPermissionUnequalException("Permissions in APK and index do not match!");
         }
 
         int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
