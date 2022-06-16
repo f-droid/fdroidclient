@@ -17,9 +17,6 @@ import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.fasterxml.jackson.annotation.JacksonInject;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.fdroid.database.AppListItem;
 import org.fdroid.database.Repository;
@@ -66,7 +63,6 @@ import androidx.core.os.LocaleListCompat;
  */
 public class App implements Comparable<App>, Parcelable {
 
-    @JsonIgnore
     private static final String TAG = "App";
 
     /**
@@ -74,7 +70,6 @@ public class App implements Comparable<App>, Parcelable {
      * It is set globally static to a) cache this value, since there are thousands
      * of {@link App} entries, and b) make it easy to test}
      */
-    @JsonIgnore
     public static LocaleListCompat systemLocaleList;
 
     public static LocaleListCompat getLocales() {
@@ -90,29 +85,19 @@ public class App implements Comparable<App>, Parcelable {
     /**
      * True if compatible with the device (i.e. if at least one apk is)
      */
-    @JsonIgnore
     public boolean compatible;
-    @JsonIgnore
     public Apk installedApk; // might be null if not installed
-    @JsonIgnore
     public String installedSig;
-    @JsonIgnore
     public int installedVersionCode;
-    @JsonIgnore
     public String installedVersionName;
-    @JsonIgnore
     private long id;
-    @JsonIgnore
     public org.fdroid.database.AppPrefs prefs;
-    @JsonIgnore
     public String preferredSigner;
-    @JsonIgnore
     public boolean isApk;
 
     /**
      * Has this {@code App} been localized into one of the user's current locales.
      */
-    @JsonIgnore
     boolean isLocalized;
 
     /**
@@ -122,7 +107,6 @@ public class App implements Comparable<App>, Parcelable {
      * the highest priority. The UI doesn't care normally _which_ repo provided the metadata.
      * This is required for getting the full URL to the various graphics and screenshots.
      */
-    @JacksonInject("repoId")
     public long repoId;
 
     // the remaining properties are set directly from the index metadata
@@ -130,7 +114,6 @@ public class App implements Comparable<App>, Parcelable {
     public String name = "Unknown";
 
     public String summary = "Unknown application";
-    @JsonProperty("icon")
     public String iconFromApk;
 
     public String description;
@@ -250,7 +233,7 @@ public class App implements Comparable<App>, Parcelable {
     public App(final UpdatableApp app) {
         id = 0;
         repoId = app.getUpdate().getRepoId();
-        packageName = app.getPackageName();
+        setPackageName(app.getPackageName());
         name = app.getName() == null ? "" : app.getName();
         summary = app.getSummary() == null ? "" : app.getSummary();
         installedVersionCode = (int) app.getInstalledVersionCode();
@@ -264,7 +247,7 @@ public class App implements Comparable<App>, Parcelable {
         id = 0;
         repoId = app.getRepoId();
         compatible = app.getMetadata().isCompatible();
-        packageName = app.getPackageName();
+        setPackageName(app.getPackageName());
         name = app.getName() == null ? "" : app.getName();
         summary = app.getSummary() == null ? "" : app.getSummary();
         String desc = app.getDescription(getLocales());
@@ -329,7 +312,7 @@ public class App implements Comparable<App>, Parcelable {
 
     public App(AppListItem item) {
         repoId = item.getRepoId();
-        packageName = item.getPackageName();
+        setPackageName(item.getPackageName());
         name = item.getName() == null ? "" : item.getName();
         summary = item.getSummary() == null ? "" : item.getSummary();
         FileV2 iconFile = item.getIcon(getLocales());
@@ -381,7 +364,6 @@ public class App implements Comparable<App>, Parcelable {
      * out to the database and used elsewhere, this is needed to intercept
      * the setting of {@link App#description} to insert the format method.
      */
-    @JsonProperty("description")
     private void setDescription(String description) { // NOPMD
         this.description = formatDescription(description);
     }
@@ -389,7 +371,6 @@ public class App implements Comparable<App>, Parcelable {
     /**
      * Set the Package Name property while ensuring it is sanitized.
      */
-    @JsonProperty("packageName")
     void setPackageName(String packageName) {
         if (Utils.isSafePackageName(packageName)) {
             this.packageName = packageName;
@@ -919,7 +900,6 @@ public class App implements Comparable<App>, Parcelable {
         this.id = in.readLong();
     }
 
-    @JsonIgnore
     public static final Parcelable.Creator<App> CREATOR = new Parcelable.Creator<App>() {
         @Override
         public App createFromParcel(Parcel source) {

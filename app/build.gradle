@@ -12,9 +12,6 @@ def getVersionName = { ->
     return stdout.toString().trim()
 }
 
-def isCi = "true" == System.getenv("CI")
-def preDexEnabled = "true" == System.getProperty("pre-dex", "true")
-
 def fullApplicationId = "org.fdroid.fdroid"
 def basicApplicationId = "org.fdroid.basic"
 // yes, this actually needs both quotes https://stackoverflow.com/a/41391841
@@ -169,10 +166,6 @@ dependencies {
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
-
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.4'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.4'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.4'
 
     implementation "com.github.bumptech.glide:glide:4.12.0"
     annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
