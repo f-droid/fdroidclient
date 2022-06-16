@@ -47,7 +47,12 @@ internal class IndexV2UpdaterTest : DbTest() {
     @Before
     override fun createDb() {
         super.createDb()
-        indexUpdater = IndexV2Updater(db, tempFileProvider, downloaderFactory, compatibilityChecker)
+        indexUpdater = IndexV2Updater(
+            database = db,
+            tempFileProvider = tempFileProvider,
+            downloaderFactory = downloaderFactory,
+            compatibilityChecker = compatibilityChecker,
+        )
     }
 
     @Test

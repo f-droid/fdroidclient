@@ -121,11 +121,17 @@ public data class Repository(
      */
     @JvmOverloads
     public fun getAllMirrors(includeUserMirrors: Boolean = true): List<org.fdroid.download.Mirror> {
-        return mirrors.map {
+        val all = mirrors.map {
             it.toDownloadMirror()
         } + if (includeUserMirrors) userMirrors.map {
             org.fdroid.download.Mirror(it)
         } else emptyList()
+        // whether or not the repo address is part of the mirrors is not yet standardized,
+        // so we may need to add it to the list ourselves
+        val hasCanonicalMirror = all.find { it.baseUrl == address } != null
+        return if (hasCanonicalMirror) all else all.toMutableList().apply {
+            add(0, org.fdroid.download.Mirror(address))
+        }
     }
 
     public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)

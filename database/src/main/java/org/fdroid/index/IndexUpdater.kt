@@ -1,5 +1,6 @@
 package org.fdroid.index
 
+import android.net.Uri
 import org.fdroid.database.IndexFormatVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.Downloader
@@ -17,6 +18,21 @@ public sealed class IndexUpdateResult {
 public interface IndexUpdateListener {
     public fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long)
     public fun onUpdateProgress(repo: Repository, appsProcessed: Int, totalApps: Int)
+}
+
+public fun interface RepoUriBuilder {
+    /**
+     * Returns an [Uri] for downloading a file from the [Repository].
+     * Allowing different implementations for this is useful for exotic repository locations
+     * that do not allow for simple concatenation.
+     */
+    public fun getUri(repo: Repository, vararg pathElements: String): Uri
+}
+
+internal val defaultRepoUriBuilder = RepoUriBuilder { repo, pathElements ->
+    val builder = Uri.parse(repo.address).buildUpon()
+    pathElements.forEach { builder.appendEncodedPath(it) }
+    builder.build()
 }
 
 public fun interface TempFileProvider {

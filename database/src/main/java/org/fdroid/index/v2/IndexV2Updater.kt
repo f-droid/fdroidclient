@@ -1,6 +1,5 @@
 package org.fdroid.index.v2
 
-import android.net.Uri
 import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbV2DiffStreamReceiver
 import org.fdroid.database.DbV2StreamReceiver
@@ -15,20 +14,19 @@ import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexUpdateListener
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.IndexUpdater
+import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.TempFileProvider
+import org.fdroid.index.defaultRepoUriBuilder
 import org.fdroid.index.parseEntryV2
 import org.fdroid.index.setIndexUpdateListener
 
 internal const val SIGNED_FILE_NAME = "entry.jar"
 
-private fun Repository.getUri(fileName: String): Uri = Uri.parse(address).buildUpon()
-    .appendEncodedPath(fileName.trimStart('/'))
-    .build()
-
 public class IndexV2Updater(
     database: FDroidDatabase,
     private val tempFileProvider: TempFileProvider,
     private val downloaderFactory: DownloaderFactory,
+    private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     private val compatibilityChecker: CompatibilityChecker,
     private val listener: IndexUpdateListener? = null,
 ) : IndexUpdater() {
@@ -64,7 +62,7 @@ public class IndexV2Updater(
         certificate: String?,
         fingerprint: String?,
     ): Pair<String, EntryV2> {
-        val uri = repo.getUri(SIGNED_FILE_NAME)
+        val uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME)
         val file = tempFileProvider.createTempFile()
         val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
             setIndexUpdateListener(listener, repo)
@@ -86,7 +84,7 @@ public class IndexV2Updater(
         repoVersion: Long,
         streamProcessor: IndexV2StreamProcessor,
     ): IndexUpdateResult {
-        val uri = repo.getUri(entryFile.name)
+        val uri = repoUriBuilder.getUri(repo, entryFile.name.trimStart('/'))
         val file = tempFileProvider.createTempFile()
         val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
             setIndexUpdateListener(listener, repo)
