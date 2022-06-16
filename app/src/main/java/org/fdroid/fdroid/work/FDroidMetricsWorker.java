@@ -158,21 +158,9 @@ public class FDroidMetricsWorker extends Worker {
         return ((weekNumber * DateUtils.WEEK_IN_MILLIS) + diff) / 1000L;
     }
 
-    static boolean isTimestampInReportingWeek(long timestamp) {
-        return isTimestampInReportingWeek(getReportingWeekStart(), timestamp);
-    }
-
     static boolean isTimestampInReportingWeek(long weekStart, long timestamp) {
         long weekEnd = weekStart + DateUtils.WEEK_IN_MILLIS;
         return weekStart < timestamp && timestamp < weekEnd;
-    }
-
-    static long getVersionCode(PackageInfo packageInfo) {
-        if (Build.VERSION.SDK_INT < 28) {
-            return packageInfo.versionCode;
-        } else {
-            return packageInfo.getLongVersionCode();
-        }
     }
 
     /**
@@ -364,7 +352,6 @@ public class FDroidMetricsWorker extends Worker {
         final long period_start;
         final long period_end;
         long times = 0;
-        String value;
 
         MatomoEvent(long timestamp) {
             period_end = toCleanInsightsTimestamp(timestamp);
@@ -387,7 +374,6 @@ public class FDroidMetricsWorker extends Worker {
             json.put("period_start", period_start);
             json.put("period_end", period_end);
             json.put("times", times);
-            json.put("value", value);
             return json;
         }
 
@@ -405,7 +391,7 @@ public class FDroidMetricsWorker extends Worker {
 
         @Override
         public int hashCode() {
-            return Objects.hash(category, action, name, period_start, period_end, times, value);
+            return Objects.hash(category, action, name, period_start, period_end, times);
         }
     }
 

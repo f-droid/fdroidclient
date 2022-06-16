@@ -13,15 +13,12 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.ShadowApp;
 import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -36,9 +33,7 @@ import java.security.cert.Certificate;
 
 import androidx.test.core.app.ApplicationProvider;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.robolectric.Shadows.shadowOf;
 
@@ -49,7 +44,6 @@ import static org.robolectric.Shadows.shadowOf;
  */
 @Ignore
 @RunWith(RobolectricTestRunner.class)
-@Config(shadows = ShadowApp.class)
 public class SwapRepoTest {
 
     private LocalHTTPD localHttpd;

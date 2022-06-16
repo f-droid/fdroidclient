@@ -12,17 +12,13 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
 public class WorkManagerTestRule extends TestWatcher {
-    Context targetContext;
-    Context testContext;
-    Configuration configuration;
     WorkManager workManager;
 
     @Override
     protected void starting(Description description) {
         final Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-        targetContext = instrumentation.getTargetContext();
-        testContext = instrumentation.getContext();
-        configuration = new Configuration.Builder()
+        Context targetContext = instrumentation.getTargetContext();
+        Configuration configuration = new Configuration.Builder()
                 .setMinimumLoggingLevel(Log.DEBUG)
                 .setExecutor(new SynchronousExecutor())
                 .build();

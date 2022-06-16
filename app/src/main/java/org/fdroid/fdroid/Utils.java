@@ -19,13 +19,11 @@
 
 package org.fdroid.fdroid;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -77,28 +75,23 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Consumer;
 import androidx.core.util.Supplier;
@@ -142,8 +135,6 @@ public final class Utils {
     private static Pattern safePackageNamePattern;
 
     private static Handler toastHandler;
-
-    public static final String FALLBACK_ICONS_DIR = "icons";
 
     /*
      * @param dpiMultiplier Lets you grab icons for densities larger or
@@ -377,13 +368,6 @@ public final class Utils {
     }
 
     /**
-     * Create a standard {@link PackageManager} {@link Uri} for pointing to an app.
-     */
-    public static Uri getPackageUri(String packageName) {
-        return Uri.parse("package:" + packageName);
-    }
-
-    /**
      * This is only needed for making a fingerprint from the {@code pubkey}
      * entry in {@code index.xml}.
      **/
@@ -566,19 +550,6 @@ public final class Utils {
         return null;
     }
 
-    public static int parseInt(String str, int fallback) {
-        if (str == null || str.length() == 0) {
-            return fallback;
-        }
-        int result;
-        try {
-            result = Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            result = fallback;
-        }
-        return result;
-    }
-
     @Nullable
     public static String[] parseCommaSeparatedString(String values) {
         return values == null || values.length() == 0 ? null : values.split(",");
@@ -671,14 +642,6 @@ public final class Utils {
             safePackageNamePattern = Pattern.compile("[a-zA-Z0-9._]+");
         }
         return safePackageNamePattern.matcher(packageName).matches();
-    }
-
-    /**
-     * Calculate the number of days since the given date.
-     */
-    public static int daysSince(@NonNull Date date) {
-        long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
-        return (int) TimeUnit.MILLISECONDS.toDays(msDiff);
     }
 
     /**
@@ -811,74 +774,6 @@ public final class Utils {
             debugLog(TAG, "Could not get PackageInfo: ", e);
         }
         return null;
-    }
-
-    /**
-     * Try to get the {@link PackageInfo} with signature info for the {@code packageName} provided.
-     *
-     * @return null on failure
-     */
-    @SuppressLint("PackageManagerGetSignatures")
-    public static PackageInfo getPackageInfoWithSignatures(Context context, String packageName) {
-        try {
-            return context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
-        } catch (PackageManager.NameNotFoundException e) {
-            debugLog(TAG, "Could not get PackageInfo: ", e);
-        }
-        return null;
-    }
-
-    /**
-     * Useful for debugging during development, so that arbitrary queries can be made, and their
-     * results inspected in the debugger.
-     */
-    @SuppressWarnings("unused")
-    @RequiresApi(api = 11)
-    public static List<Map<String, String>> dumpCursor(Cursor cursor) {
-        List<Map<String, String>> data = new ArrayList<>();
-
-        if (cursor == null) {
-            return data;
-        }
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            Map<String, String> row = new HashMap<>(cursor.getColumnCount());
-            for (String col : cursor.getColumnNames()) {
-                int i = cursor.getColumnIndex(col);
-                switch (cursor.getType(i)) {
-                    case Cursor.FIELD_TYPE_NULL:
-                        row.put(col, null);
-                        break;
-
-                    case Cursor.FIELD_TYPE_INTEGER:
-                        row.put(col, Integer.toString(cursor.getInt(i)));
-                        break;
-
-                    case Cursor.FIELD_TYPE_FLOAT:
-                        row.put(col, Double.toString(cursor.getFloat(i)));
-                        break;
-
-                    case Cursor.FIELD_TYPE_STRING:
-                        row.put(col, cursor.getString(i));
-                        break;
-
-                    case Cursor.FIELD_TYPE_BLOB:
-                        row.put(col, new String(cursor.getBlob(i), Charset.defaultCharset()));
-                        break;
-                }
-            }
-            data.add(row);
-            cursor.moveToNext();
-        }
-
-        cursor.close();
-        return data;
-    }
-
-    public static int dpToPx(int dp, Context ctx) {
-        Resources r = ctx.getResources();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
     /**

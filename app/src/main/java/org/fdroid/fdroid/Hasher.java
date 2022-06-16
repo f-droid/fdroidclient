@@ -20,10 +20,6 @@
 
 package org.fdroid.fdroid;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
@@ -32,7 +28,6 @@ import java.security.cert.CertificateEncodingException;
 public class Hasher {
 
     private MessageDigest digest;
-    private File file;
     private final byte[] array;
     private String hashCache;
 
@@ -56,24 +51,7 @@ public class Hasher {
         if (hashCache != null) {
             return hashCache;
         }
-        if (file != null) {
-            byte[] buffer = new byte[1024];
-            int read;
-            InputStream input = null;
-            try {
-                input = new BufferedInputStream(new FileInputStream(file));
-                while ((read = input.read(buffer)) > 0) { // NOPMD Avoid assignments in operands
-                    digest.update(buffer, 0, read);
-                }
-            } catch (Exception e) {
-                hashCache = "";
-                return hashCache;
-            } finally {
-                Utils.closeQuietly(input);
-            }
-        } else {
-            digest.update(array);
-        }
+        digest.update(array);
         hashCache = hex(digest.digest());
         return hashCache;
     }
@@ -100,7 +78,7 @@ public class Hasher {
         return new String(csig);
     }
 
-    public static byte[] unhex(String data) {
+    static byte[] unhex(String data) {
         byte[] rawdata = new byte[data.length() / 2];
         for (int i = 0; i < data.length(); i++) {
             char halfbyte = data.charAt(i);
