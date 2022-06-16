@@ -18,9 +18,7 @@
 
 package org.fdroid.fdroid;
 
-import android.app.AlarmManager;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
@@ -32,7 +30,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Process;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -173,43 +170,28 @@ public class UpdateService extends JobIntentService {
                 interval != Preferences.UPDATE_INTERVAL_DISABLED
                         && !(data == Preferences.OVER_NETWORK_NEVER && wifi == Preferences.OVER_NETWORK_NEVER);
 
-        if (Build.VERSION.SDK_INT < 21) {
-            Intent intent = new Intent(context, UpdateService.class);
-            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
-
-            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarm.cancel(pending);
-            if (scheduleNewJob) {
-                alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                        SystemClock.elapsedRealtime() + 5000, interval, pending);
-                Utils.debugLog(TAG, "Update scheduler alarm set");
-            } else {
-                Utils.debugLog(TAG, "Update scheduler alarm not set");
-            }
+        Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
+        JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
+        ComponentName componentName = new ComponentName(context, UpdateJobService.class);
+        JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
+                .setRequiresDeviceIdle(true)
+                .setPeriodic(interval);
+        if (Build.VERSION.SDK_INT >= 26) {
+            builder.setRequiresBatteryNotLow(true)
+                    .setRequiresStorageNotLow(true);
+        }
+        if (data == Preferences.OVER_NETWORK_ALWAYS && wifi == Preferences.OVER_NETWORK_ALWAYS) {
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
         } else {
-            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
-            JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
-            ComponentName componentName = new ComponentName(context, UpdateJobService.class);
-            JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
-                    .setRequiresDeviceIdle(true)
-                    .setPeriodic(interval);
-            if (Build.VERSION.SDK_INT >= 26) {
-                builder.setRequiresBatteryNotLow(true)
-                        .setRequiresStorageNotLow(true);
-            }
-            if (data == Preferences.OVER_NETWORK_ALWAYS && wifi == Preferences.OVER_NETWORK_ALWAYS) {
-                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
-            } else {
-                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
-            }
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
+        }
 
-            jobScheduler.cancel(JOB_ID);
-            if (scheduleNewJob) {
-                jobScheduler.schedule(builder.build());
-                Utils.debugLog(TAG, "Update scheduler alarm set");
-            } else {
-                Utils.debugLog(TAG, "Update scheduler alarm not set");
-            }
+        jobScheduler.cancel(JOB_ID);
+        if (scheduleNewJob) {
+            jobScheduler.schedule(builder.build());
+            Utils.debugLog(TAG, "Update scheduler alarm set");
+        } else {
+            Utils.debugLog(TAG, "Update scheduler alarm not set");
         }
     }
 

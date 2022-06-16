@@ -50,7 +50,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -251,9 +250,7 @@ public class FDroidMetricsWorker extends Worker {
         EVENTS.add(getDeviceEvent(weekStart, "isPrivilegedInstallerEnabled",
                 Preferences.get().isPrivilegedInstallerEnabled()));
         EVENTS.add(getDeviceEvent(weekStart, "Build.VERSION.SDK_INT", Build.VERSION.SDK_INT));
-        if (Build.VERSION.SDK_INT >= 21) {
-            EVENTS.add(getDeviceEvent(weekStart, "Build.SUPPORTED_ABIS", Arrays.toString(Build.SUPPORTED_ABIS)));
-        }
+        EVENTS.add(getDeviceEvent(weekStart, "Build.SUPPORTED_ABIS", Arrays.toString(Build.SUPPORTED_ABIS)));
 
         for (PackageInfo packageInfo : packageInfoList) {
             if (isTimestampInReportingWeek(weekStart, packageInfo.firstInstallTime)) {
@@ -425,11 +422,7 @@ public class FDroidMetricsWorker extends Worker {
 
         @Override
         public int hashCode() {
-            if (Build.VERSION.SDK_INT >= 19) {
-                return Objects.hash(applicationId, versionCode, action);
-            } else {
-                return new Random().nextInt(); // quick kludge
-            }
+            return Objects.hash(applicationId, versionCode, action);
         }
 
         @Override

@@ -106,11 +106,9 @@ public class TreeUriScannerIntentService extends IntentService {
         }
         Uri uri = intent.getData();
         if (uri != null) {
-            if (Build.VERSION.SDK_INT >= 19) {
-                ContentResolver contentResolver = context.getContentResolver();
-                int perms = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
-                contentResolver.takePersistableUriPermission(uri, perms);
-            }
+            ContentResolver contentResolver = context.getContentResolver();
+            int perms = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
+            contentResolver.takePersistableUriPermission(uri, perms);
             String msg = String.format(context.getString(R.string.swap_toast_using_path), uri.toString());
             Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
             scan(context, uri);

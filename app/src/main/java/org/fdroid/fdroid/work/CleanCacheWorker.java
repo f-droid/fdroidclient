@@ -7,7 +7,6 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
 
-import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
@@ -208,10 +207,6 @@ public class CleanCacheWorker extends Worker {
                 clearOldFiles(file, millisAgo);
             }
             deleteFileAndLog(f);
-        } else if (Build.VERSION.SDK_INT <= 21) {
-            if (FileUtils.isFileOlder(f, olderThan)) {
-                deleteFileAndLog(f);
-            }
         } else {
             Impl21.deleteIfOld(f, olderThan);
         }

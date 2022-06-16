@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Outline;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -137,24 +136,22 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 }
             });
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                installButton.setOutlineProvider(new ViewOutlineProvider() {
-                    @Override
-                    public void getOutline(View view, Outline outline) {
-                        float density = activity.getResources().getDisplayMetrics().density;
+            installButton.setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View view, Outline outline) {
+                    float density = activity.getResources().getDisplayMetrics().density;
 
-                        // This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
-                        // This is because the default "download & install" and "downloaded & ready to install"
-                        // icons are smaller than the "downloading progress" button. Hence, we can't just use
-                        // the width/height of the view to calculate the outline size.
-                        int xPadding = (int) (8 * density);
-                        int yPadding = (int) (9 * density);
-                        int right = installButton.getWidth() - xPadding;
-                        int bottom = installButton.getHeight() - yPadding;
-                        outline.setOval(xPadding, yPadding, right, bottom);
-                    }
-                });
-            }
+                    // This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
+                    // This is because the default "download & install" and "downloaded & ready to install"
+                    // icons are smaller than the "downloading progress" button. Hence, we can't just use
+                    // the width/height of the view to calculate the outline size.
+                    int xPadding = (int) (8 * density);
+                    int yPadding = (int) (9 * density);
+                    int right = installButton.getWidth() - xPadding;
+                    int bottom = installButton.getHeight() - yPadding;
+                    outline.setOval(xPadding, yPadding, right, bottom);
+                }
+            });
         }
 
         icon = (ImageView) itemView.findViewById(R.id.icon);

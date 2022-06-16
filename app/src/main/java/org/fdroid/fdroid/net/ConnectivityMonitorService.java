@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -27,8 +26,7 @@ import java.util.Enumeration;
  * unmetered internet available, based on
  * {@link android.net.ConnectivityManager#CONNECTIVITY_ACTION}
  * <p>
- * {@link Build.VERSION_CODES#N Android 7.0} removed
- * {@link android.net.ConnectivityManager#CONNECTIVITY_ACTION} so this will
+ * Android 7.0 removed {@link android.net.ConnectivityManager#CONNECTIVITY_ACTION} so this will
  * need to be totally changed to support that.
  *
  * @see <a href="https://developer.android.com/topic/performance/background-optimization">Background Optimizations</a>
@@ -53,8 +51,7 @@ public class ConnectivityMonitorService extends JobIntentService {
     /**
      * Register the {@link BroadcastReceiver} which also starts this
      * {@code Service} since it is a sticky broadcast. This cannot be
-     * registered in the manifest, since {@link Build.VERSION_CODES#N Android 7.0}
-     * makes that not work.
+     * registered in the manifest, since Android 7.0 makes that not work.
      */
     public static void registerAndStart(Context context) {
         context.registerReceiver(CONNECTIVITY_RECEIVER, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -85,7 +82,7 @@ public class ConnectivityMonitorService extends JobIntentService {
         }
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
-        if (activeNetwork == null && Build.VERSION.SDK_INT >= 21 && cm.getAllNetworks().length == 0) {
+        if (activeNetwork == null && cm.getAllNetworks().length == 0) {
             try {
                 Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
                 while (networkInterfaces.hasMoreElements()) {

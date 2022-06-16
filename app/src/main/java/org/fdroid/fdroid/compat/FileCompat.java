@@ -25,15 +25,7 @@ public class FileCompat {
     private static final String TAG = "FileCompat";
 
     public static boolean symlink(SanitizedFile source, SanitizedFile dest) {
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            symlinkOs(source, dest);
-        } else if (Build.VERSION.SDK_INT >= 15) {
-            symlinkLibcore(source, dest);
-        } else {
-            symlinkRuntime(source, dest);
-        }
-
+        symlinkOs(source, dest);
         return dest.exists();
     }
 
