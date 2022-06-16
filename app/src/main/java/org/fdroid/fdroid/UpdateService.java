@@ -63,10 +63,8 @@ import org.fdroid.index.RepoUpdater;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -225,41 +223,7 @@ public class UpdateService extends JobIntentService {
         return updateService != null;
     }
 
-    private static volatile boolean isScheduleIfStillOnWifiRunning;
-
-    /**
-     * Waits for a period of time for the WiFi to settle, then if the WiFi is
-     * still active, it schedules an update.  This is to encourage the use of
-     * unlimited networks over metered networks for index updates and auto
-     * downloads of app updates. Starting with {@code android-21}, this uses
-     * {@link android.app.job.JobScheduler} instead.
-     *
-     * @return a {@link Completable} that schedules the update. If this process is already running,
-     * a {@code Completable} that completes immediately is returned.
-     */
-    @NonNull
-    public static Completable scheduleIfStillOnWifi(Context context) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            throw new IllegalStateException("This should never be used on android-21 or newer!");
-        }
-        if (isScheduleIfStillOnWifiRunning || !Preferences.get().isBackgroundDownloadAllowed()) {
-            return Completable.complete();
-        }
-        isScheduleIfStillOnWifiRunning = true;
-
-        return Completable.timer(2, TimeUnit.MINUTES)
-                .andThen(Completable.fromAction(() -> {
-                    if (Preferences.get().isBackgroundDownloadAllowed()) {
-                        Utils.debugLog(TAG, "scheduling update because there is good internet");
-                        schedule(context);
-                    }
-                    isScheduleIfStillOnWifiRunning = false;
-                }))
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public static void stopNow(Context context) {
+    public static void stopNow() {
         if (updateService != null) {
             updateService.stopSelf(JOB_ID);
             updateService = null;
@@ -592,19 +556,6 @@ public class UpdateService extends JobIntentService {
             message = context.getString(R.string.status_download,
                     indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
         }
-        sendStatus(context, STATUS_INFO, message, percent);
-    }
-
-    public static void reportProcessIndexProgress(Context context, String indexUrl, long bytesRead, long totalBytes) {
-        Utils.debugLog(TAG, "Processing " + indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
-        String downloadedSize = Utils.getFriendlySize(bytesRead);
-        String totalSize = Utils.getFriendlySize(totalBytes);
-        int percent = -1;
-        if (totalBytes > 0) {
-            percent = Utils.getPercent(bytesRead, totalBytes);
-        }
-        String message = context.getString(R.string.status_processing_xml_percent, indexUrl, downloadedSize,
-                totalSize, percent);
         sendStatus(context, STATUS_INFO, message, percent);
     }
 

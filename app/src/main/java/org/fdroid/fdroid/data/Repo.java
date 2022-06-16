@@ -44,8 +44,6 @@ import java.util.List;
  */
 public class Repo {
 
-    public static final int PUSH_REQUEST_IGNORE = 0;
-
     public String address;
 
     @Deprecated // not taking mirrors into account

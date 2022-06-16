@@ -113,7 +113,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
-    public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
@@ -137,7 +136,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final int DEFAULT_PROXY_PORT = 8118; // TODO move to preferences.xml
     private static final int DEFAULT_LAST_UPDATE_CHECK = -1;
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
-    private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
     private static final boolean DEFAULT_PANIC_EXIT = true;
 
     private static final boolean IGNORED_B = false;
@@ -215,14 +213,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      */
     public boolean isPrivilegedInstallerEnabled() {
         return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, true);
-    }
-
-    public boolean isPostPrivilegedInstall() {
-        return preferences.getBoolean(PREF_POST_PRIVILEGED_INSTALL, DEFAULT_POST_PRIVILEGED_INSTALL);
-    }
-
-    public void setPostPrivilegedInstall(boolean postInstall) {
-        preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall).apply();
     }
 
     /**
@@ -338,16 +328,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    public long getLastUpdateCheck() {
+    long getLastUpdateCheck() {
         return preferences.getLong(PREF_LAST_UPDATE_CHECK, DEFAULT_LAST_UPDATE_CHECK);
     }
 
-    public void setLastUpdateCheck(long lastUpdateCheck) {
+    void setLastUpdateCheck(long lastUpdateCheck) {
         preferences.edit().putLong(PREF_LAST_UPDATE_CHECK, lastUpdateCheck).apply();
-    }
-
-    public void resetLastUpdateCheck() {
-        setLastUpdateCheck(DEFAULT_LAST_UPDATE_CHECK);
     }
 
     /**
@@ -611,12 +597,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         showAppsRequiringAntiFeaturesListeners.remove(listener);
     }
 
-    public void registerUnstableUpdatesChangeListener(ChangeListener listener) {
+    void registerUnstableUpdatesChangeListener(ChangeListener listener) {
         unstableUpdatesListeners.add(listener);
-    }
-
-    public void unregisterUnstableUpdatesChangeListener(ChangeListener listener) {
-        unstableUpdatesListeners.remove(listener);
     }
 
     @Override
@@ -646,14 +628,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 }
                 break;
         }
-    }
-
-    public void registerLocalRepoNameListeners(ChangeListener listener) {
-        localRepoNameListeners.add(listener);
-    }
-
-    public void unregisterLocalRepoNameListeners(ChangeListener listener) {
-        localRepoNameListeners.remove(listener);
     }
 
     public void registerLocalRepoHttpsListeners(ChangeListener listener) {

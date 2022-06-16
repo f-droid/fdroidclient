@@ -542,25 +542,6 @@ public class App implements Comparable<App>, Parcelable {
         }
     }
 
-    public boolean isValid() {
-        if (TextUtils.isEmpty(this.name)
-                || TextUtils.isEmpty(this.packageName)) {
-            return false;
-        }
-
-        if (this.installedApk == null) {
-            return false;
-        }
-
-        if (TextUtils.isEmpty(this.installedApk.sig)) {
-            return false;
-        }
-
-        final File apkFile = this.installedApk.installedFile;
-        return !(apkFile == null || !apkFile.canRead());
-
-    }
-
     public boolean isInstalled(Context context) {
         // First check isApk() before isMediaInstalled() because the latter is quite expensive,
         // hitting the database for each apk version, then the disk to check for installed media.
