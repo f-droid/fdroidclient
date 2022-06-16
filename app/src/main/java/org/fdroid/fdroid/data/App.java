@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -21,13 +22,10 @@ import com.bumptech.glide.RequestBuilder;
 import org.fdroid.database.AppListItem;
 import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
-import org.fdroid.download.DownloadRequest;
-import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.fdroid.index.v2.FileV2;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -40,8 +38,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
-import info.guardianproject.netcipher.NetCipher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -399,50 +395,47 @@ public class App implements Comparable<App>, Parcelable {
                 .build();
     }
 
-    public RequestBuilder<Drawable> loadWithGlide(Context context) {
+    public RequestBuilder<Drawable> loadWithGlide(Context context, String path) {
+        return loadWithGlide(context, repoId, path);
+    }
+
+    public static RequestBuilder<Drawable> loadWithGlide(Context context, long repoId, String path) {
         Repository repo = FDroidApp.getRepo(repoId);
         if (repo == null) { // This is also used for apps that do not have a repo
             return Glide.with(context).load((Drawable) null);
         }
-        if (repo.getAddress().startsWith("content://")) {
-            String sb = repo.getAddress() + TreeUriDownloader.ESCAPED_SLASH + getIconPath(context);
+        if (repo == null) {
+            Log.e(TAG, "Repo not found: " + repoId);
+            return Glide.with(context).load(R.drawable.ic_repo_app_default);
+        }
+        String address = Utils.getRepoAddress(repo);
+        if (address.startsWith("content://")) {
+            String sb = Utils.getUri(address, path.split("/")).toString();
             return Glide.with(context).load(sb);
-        } else if (repo.getAddress().startsWith("file://")) {
-            return Glide.with(context).load(getIconPath(context));
+        } else if (address.startsWith("file://")) {
+            return Glide.with(context).load(path);
         } else {
-            String path = getIconPath(context);
-            return Glide.with(context).load(getDownloadRequest(repo, path));
+            return Glide.with(context).load(Utils.getDownloadRequest(repo, path));
         }
     }
 
-    @Nullable
-    public DownloadRequest getIconDownloadRequest(Context context) {
-        String path = getIconPath(context);
-        return getDownloadRequest(repoId, path);
-    }
-
-    @Nullable
-    public DownloadRequest getFeatureGraphicDownloadRequest() {
-        if (TextUtils.isEmpty(featureGraphic)) {
-            return null;
-        }
-        String path = featureGraphic;
-        return getDownloadRequest(repoId, path);
-    }
-
-    @Nullable
-    public static DownloadRequest getDownloadRequest(long repoId, @Nullable String path) {
-        if (path == null) return null;
+    public static RequestBuilder<Bitmap> loadBitmapWithGlide(Context context, long repoId,
+                                                             String path) {
         Repository repo = FDroidApp.getRepo(repoId);
-        if (repo == null) return null;
-        return getDownloadRequest(repo, path);
-    }
-
-    @Nullable
-    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable String path) {
-        if (path == null) return null;
-        List<Mirror> mirrors = repo.getMirrors();
-        return new DownloadRequest(path, mirrors, NetCipher.getProxy(), null, null);
+        if (repo == null) {
+            Log.e(TAG, "Repo not found: " + repoId);
+            return Glide.with(context).asBitmap().load(R.drawable.ic_repo_app_default);
+        }
+        String address = Utils.getRepoAddress(repo);
+        if (address.startsWith("content://")) {
+            String sb = path == null ?
+                    null : Utils.getUri(address, path.split("/")).toString();
+            return Glide.with(context).asBitmap().load(sb);
+        } else if (address.startsWith("file://")) {
+            return Glide.with(context).asBitmap().load(path);
+        } else {
+            return Glide.with(context).asBitmap().load(Utils.getDownloadRequest(repo, path));
+        }
     }
 
     public String getIconPath(Context context) {

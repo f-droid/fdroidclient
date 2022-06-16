@@ -8,10 +8,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
@@ -41,8 +39,8 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final ScreenShotViewHolder vh = (ScreenShotViewHolder) holder;
-        DownloadRequest request = App.getDownloadRequest(repoId, screenshots.get(position));
-        Glide.with(vh.itemView).load(request).apply(displayImageOptions).into(vh.image);
+        App.loadWithGlide(vh.itemView.getContext(), repoId, screenshots.get(position))
+                .apply(displayImageOptions).into(vh.image);
     }
 
     @NonNull

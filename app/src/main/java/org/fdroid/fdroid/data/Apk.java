@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Parcel;
@@ -20,13 +19,11 @@ import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
-import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.fdroid.index.v2.PermissionV2;
 import org.fdroid.index.v2.SignerV2;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -62,6 +59,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
 
     // these are never set by the Apk/package index metadata
     public String repoAddress;
+    public String canonicalRepoAddress;
     long repoVersion;
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
     public boolean compatible; // True if compatible with the device.
@@ -154,7 +152,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
 
     public Apk(AppVersion v) {
         Repository repo = Objects.requireNonNull(FDroidApp.getRepo(v.getRepoId()));
-        repoAddress = repo.getAddress();
+        repoAddress = Utils.getRepoAddress(repo);
+        canonicalRepoAddress = repo.getAddress();
         repoVersion = repo.getVersion();
         hash = v.getFile().getSha256();
         hashType = "sha256";
@@ -229,33 +228,13 @@ public class Apk implements Comparable<Apk>, Parcelable {
      */
     public String getCanonicalUrl() {
         checkRepoAddress();
-        String address = repoAddress;
         /* Each String in pathElements might contain a /, should keep these as path elements */
-        List<String> elements = new ArrayList<>();
-        Collections.addAll(elements, apkName.split("/"));
-        /*
-         * Storage Access Framework URLs have this wacky URL-encoded path within the URL path.
-         *
-         * i.e.
-         * content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo
-         *
-         * Currently don't know a better way to identify these than by content:// prefix,
-         * seems the Android SDK expects apps to consider them as opaque identifiers.
-         */
-        if (address.startsWith("content://")) {
-            StringBuilder result = new StringBuilder(address);
-            for (String element : elements) {
-                result.append(TreeUriDownloader.ESCAPED_SLASH);
-                result.append(element);
-            }
-            return result.toString();
-        } else { // Normal URL
-            Uri.Builder result = Uri.parse(address).buildUpon();
-            for (String element : elements) {
-                result.appendPath(element);
-            }
-            return result.build().toString();
-        }
+        return Utils.getUri(canonicalRepoAddress, apkName.split("/")).toString();
+    }
+
+    public String getDownloadUrl() {
+        checkRepoAddress();
+        return Utils.getUri(repoAddress, apkName.split("/")).toString();
     }
 
     /**
@@ -352,6 +331,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         dest.writeString(this.srcname);
         dest.writeLong(this.repoVersion);
         dest.writeString(this.repoAddress);
+        dest.writeString(this.canonicalRepoAddress);
         dest.writeStringArray(this.incompatibleReasons);
         dest.writeStringArray(this.antiFeatures);
         dest.writeLong(this.appId);
@@ -384,6 +364,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         this.srcname = in.readString();
         this.repoVersion = in.readLong();
         this.repoAddress = in.readString();
+        this.canonicalRepoAddress = in.readString();
         this.incompatibleReasons = in.createStringArray();
         this.antiFeatures = in.createStringArray();
         this.appId = in.readLong();

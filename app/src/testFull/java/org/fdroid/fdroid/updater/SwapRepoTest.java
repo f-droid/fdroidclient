@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -9,11 +8,11 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
@@ -24,7 +23,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLog;
 
 import java.io.File;
@@ -122,7 +120,7 @@ public class SwapRepoTest {
             assertFalse(TextUtils.isEmpty(signingCert));
             assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
-            Repo repo = createRepo("", FDroidApp.repo.getAddress(), context, signingCert);
+            //Repo repo = createRepo("", FDroidApp.repo.getAddress(), context, signingCert);
             //IndexUpdater updater = new IndexUpdater(context, repo);
             //updater.update();
             //assertTrue(updater.hasChanged());
@@ -156,10 +154,7 @@ public class SwapRepoTest {
      * Creates a real instance of {@code Repo} by loading it from the database,
      * that ensures it includes the primary key from the database.
      */
-    static Repo createRepo(String name, String uri, Context context, String signingCert) {
-        //values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
-        //values.put(Schema.RepoTable.Cols.ADDRESS, uri);
-        //values.put(Schema.RepoTable.Cols.NAME, name);
-        return new Repo();
+    static Repository createRepo(String uri, String signingCert) {
+        return FDroidApp.createSwapRepo(uri, signingCert);
     }
 }

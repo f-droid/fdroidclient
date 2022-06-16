@@ -243,7 +243,9 @@ public class DownloaderService extends Service {
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
         final long repoId = intent.getLongExtra(DownloaderService.EXTRA_REPO_ID, 0);
-        final Uri canonicalUrl = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
+        final Uri canonicalUrl = intent.getData();
+        final Uri downloadUrl =
+                Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
         final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
         sendBroadcast(uri, DownloaderService.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
@@ -262,7 +264,7 @@ public class DownloaderService extends Service {
                     } else return; // repo might have been deleted in the meantime
                 }
             }
-            downloader = DownloaderFactory.INSTANCE.create(repo, canonicalUrl, localFile);
+            downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {
@@ -331,7 +333,8 @@ public class DownloaderService extends Service {
      * @param canonicalUrl the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, long repoId, String canonicalUrl) {
+    public static void queue(Context context, long repoId, String canonicalUrl,
+                             String downloadUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
@@ -340,7 +343,7 @@ public class DownloaderService extends Service {
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(canonicalUrl));
         intent.putExtra(DownloaderService.EXTRA_REPO_ID, repoId);
-        intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUrl);
+        intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, downloadUrl);
         context.startService(intent);
     }
 

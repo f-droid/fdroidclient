@@ -29,7 +29,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
-import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
@@ -522,9 +521,6 @@ public class NotificationHelper {
                                        String notificationTag) {
         final Point largeIconSize = getLargeIconSize();
 
-        DownloadRequest request = entry.app.getIconDownloadRequest(context);
-        if (request == null) return;
-
         if (entry.status == AppUpdateStatusManager.Status.Downloading
                 || entry.status == AppUpdateStatusManager.Status.Installing) {
             Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
@@ -551,9 +547,7 @@ public class NotificationHelper {
                         }
                     });
         } else {
-            Glide.with(context)
-                    .asBitmap()
-                    .load(request)
+            App.loadBitmapWithGlide(context, entry.app.repoId, entry.app.getIconPath(context))
                     .into(new CustomTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

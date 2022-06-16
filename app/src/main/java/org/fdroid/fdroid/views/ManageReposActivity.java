@@ -63,7 +63,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +71,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
@@ -451,7 +451,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
          * repo matches and display a relevant message to the user if that is the case. There
          * are many different cases to handle:
          * <ul>
-         * <li> a signed repo with a {@link Repo#address URL} and fingerprint that matches
+         * <li> a signed repo with a {@link Repository#getAddress()} URL} and fingerprint that matches
          * <li> a signed repo with a matching fingerprint and URL that matches a mirror
          * <li> a signed repo with a matching fingerprint, but the URL doesn't match any known mirror
          * <li>an unsigned repo and no fingerprint was supplied
@@ -726,9 +726,15 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
 
             final String repoAddress = address;
 
-            Disposable disposable = Single.fromCallable(
-                    () -> repositoryDao.insertEmptyRepo(repoAddress, username, password)
-            )
+            Disposable disposable = Single.fromCallable(() -> {
+                long repoId = repositoryDao.insertEmptyRepo(repoAddress, username, password);
+                // add content:// Uri as a user mirror,
+                // so downloading from it will work when offline
+                if (repoAddress.startsWith("content://")) {
+                    repositoryDao.updateUserMirrors(repoId, Collections.singletonList(repoAddress));
+                }
+                return repoId;
+            })
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(repoId -> {

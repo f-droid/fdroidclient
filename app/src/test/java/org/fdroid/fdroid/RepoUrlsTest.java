@@ -20,8 +20,6 @@
 package org.fdroid.fdroid;
 
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.mock.MockApk;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -119,26 +117,26 @@ public class RepoUrlsTest {
 
     @Test
     public void testIndexUrls() {
-        testReposWithFile("index.jar", tr -> {
-            Repo repo = new Repo();
-            repo.address = tr.repoUrl;
-            return repo.getFileUrl("index.jar");
-        });
+        testReposWithFile("index.jar", tr ->
+                Utils.getUri(tr.repoUrl, "index.jar").toString()
+        );
     }
 
     @Test
     public void testIndexV1Urls() {
-        testReposWithFile("index-v1.jar", tr -> {
-            Repo repo = new Repo();
-            repo.address = tr.repoUrl;
-            return repo.getFileUrl("index-v1.jar");
-        });
+        testReposWithFile("index-v1.jar", tr ->
+                Utils.getUri(tr.repoUrl, "index-v1.jar").toString()
+        );
     }
 
     @Test
     public void testApkUrls() {
         testReposWithFile(APK_NAME, tr -> {
-            Apk apk = new MockApk(APK_NAME, 1, tr.repoUrl, APK_NAME);
+            Apk apk = new Apk();
+            apk.apkName = APK_NAME;
+            apk.versionCode = 1;
+            apk.repoAddress = tr.repoUrl;
+            apk.canonicalRepoAddress = tr.repoUrl;
             return apk.getCanonicalUrl();
         });
     }

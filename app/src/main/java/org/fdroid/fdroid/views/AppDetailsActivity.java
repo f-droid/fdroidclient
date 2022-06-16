@@ -49,7 +49,6 @@ import com.google.android.material.appbar.MaterialToolbar;
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.FDroidDatabase;
-import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
@@ -711,8 +710,7 @@ public class AppDetailsActivity extends AppCompatActivity
         }
         // Load the feature graphic, if present
         final FeatureImage featureImage = findViewById(R.id.feature_graphic);
-        DownloadRequest featureGraphicUrl = app.getFeatureGraphicDownloadRequest();
-        featureImage.loadImageAndDisplay(featureGraphicUrl, app.getIconDownloadRequest(this));
+        featureImage.loadImageAndDisplay(app);
         //
         AppUpdateStatusManager ausm = AppUpdateStatusManager.getInstance(this);
         for (AppUpdateStatusManager.AppUpdateStatus status : ausm.getByPackageName(app.packageName)) {
