@@ -63,6 +63,8 @@ android {
             applicationIdSuffix ".debug"
             resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
+            // testProguardFiles gets partially ignored for instrumentation tests
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
             println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
         }
     }

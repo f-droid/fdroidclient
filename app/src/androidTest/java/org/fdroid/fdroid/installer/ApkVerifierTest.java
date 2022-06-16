@@ -29,6 +29,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import org.fdroid.fdroid.AssetUtils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.index.v2.PermissionV2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,10 +58,10 @@ import static org.junit.Assert.fail;
 public class ApkVerifierTest {
     public static final String TAG = "ApkVerifierTest";
 
-    Instrumentation instrumentation;
+    private Instrumentation instrumentation;
 
-    File sdk14Apk;
-    File minMaxApk;
+    private File sdk14Apk;
+    private File minMaxApk;
     private File extendedPermissionsApk;
 
     @Before
@@ -81,14 +82,9 @@ public class ApkVerifierTest {
                 "org.fdroid.extendedpermissionstest.apk",
                 dir
         );
-        File extendedPermsXml = AssetUtils.copyAssetToDir(instrumentation.getContext(),
-                "extendedPerms.xml",
-                dir
-        );
         assertTrue(sdk14Apk.exists());
         assertTrue(minMaxApk.exists());
         assertTrue(extendedPermissionsApk.exists());
-        assertTrue(extendedPermsXml.exists()); // TODO remove file when test was ported
     }
 
     @Test
@@ -274,8 +270,30 @@ public class ApkVerifierTest {
                 expectedSet.add("android.permission.CALL_PHONE");
             }
         }
-        // TODO get this from "extendedPerms.xml" and use setRequestedPermissions
         Apk apk = new Apk();
+        apk.packageName = "urzip.at.or.at.urzip";
+        ArrayList<PermissionV2> perms = new ArrayList<>();
+        perms.add(new PermissionV2("android.permission.READ_EXTERNAL_STORAGE", 18));
+        perms.add(new PermissionV2("android.permission.WRITE_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_NETWORK_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_EXTERNAL_STORAGE", 18));
+        perms.add(new PermissionV2("android.permission.WRITE_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_WIFI_STATE", null));
+        perms.add(new PermissionV2("android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.MANAGE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.INTERNET", null));
+        perms.add(new PermissionV2("android.permission.AUTHENTICATE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.GET_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.READ_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_STATS", null));
+        apk.setRequestedPermissions(perms, 0);
+        ArrayList<PermissionV2> perms23 = new ArrayList<>();
+        perms23.add(new PermissionV2("android.permission.CAMERA", null));
+        perms23.add(new PermissionV2("android.permission.CALL_PHONE", 23));
+        apk.setRequestedPermissions(perms23, 23);
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
@@ -330,9 +348,28 @@ public class ApkVerifierTest {
         if (Build.VERSION.SDK_INT >= 29) {
             expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
-        // TODO get this from "extendedPerms.xml" and use setRequestedPermissions
         Apk apk = new Apk();
-        Log.i(TAG, "APK: " + apk.apkName);
+        apk.packageName = "urzip.at.or.at.urzip";
+        apk.targetSdkVersion = 24;
+        ArrayList<PermissionV2> perms = new ArrayList<>();
+        perms.add(new PermissionV2("android.permission.READ_EXTERNAL_STORAGE", 18));
+        perms.add(new PermissionV2("android.permission.WRITE_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_NETWORK_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_EXTERNAL_STORAGE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_WIFI_STATE", null));
+        perms.add(new PermissionV2("android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.MANAGE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.INTERNET", null));
+        perms.add(new PermissionV2("android.permission.AUTHENTICATE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.GET_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.READ_CALENDAR", null));
+        perms.add(new PermissionV2("org.dmfs.permission.READ_TASKS", null));
+        perms.add(new PermissionV2("org.dmfs.permission.WRITE_TASKS", null));
+        apk.setRequestedPermissions(perms, 0);
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
@@ -371,9 +408,26 @@ public class ApkVerifierTest {
             expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
         expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
-        // TODO get this from "extendedPerms.xml" and use setRequestedPermissions
         apk = new Apk();
-        Log.i(TAG, "APK: " + apk.apkName);
+        apk.packageName = "urzip.at.or.at.urzip";
+        apk.targetSdkVersion = 23;
+        perms = new ArrayList<>();
+        perms.add(new PermissionV2("android.permission.WRITE_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_NETWORK_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_EXTERNAL_STORAGE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_WIFI_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.MANAGE_ACCOUNTS", null));
+        perms.add(new PermissionV2("android.permission.INTERNET", null));
+        perms.add(new PermissionV2("android.permission.AUTHENTICATE_ACCOUNTS", null));
+        perms.add(new PermissionV2("android.permission.GET_ACCOUNTS", null));
+        perms.add(new PermissionV2("android.permission.READ_CALENDAR", null));
+        perms.add(new PermissionV2("org.dmfs.permission.READ_TASKS", null));
+        perms.add(new PermissionV2("org.dmfs.permission.WRITE_TASKS", null));
+        apk.setRequestedPermissions(perms, 0);
         actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
