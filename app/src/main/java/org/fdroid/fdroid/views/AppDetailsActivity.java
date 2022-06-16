@@ -119,7 +119,7 @@ public class AppDetailsActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp = (FDroidApp) getApplication();
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
 
         super.onCreate(savedInstanceState);

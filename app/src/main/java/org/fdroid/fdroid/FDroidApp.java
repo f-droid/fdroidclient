@@ -178,24 +178,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO;
     }
 
-    public void applyDialogTheme(AppCompatActivity activity) {
-        activity.setTheme(getCurDialogThemeResId());
-        setSecureWindow(activity);
-    }
-
     public void setSecureWindow(AppCompatActivity activity) {
         if (Preferences.get().preventScreenshots()) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        }
-    }
-
-    private static int getCurDialogThemeResId() {
-        switch (curTheme) {
-            case dark:
-            case night:
-                return R.style.MinWithDialogBaseThemeDark;
-            default:
-                return R.style.MinWithDialogBaseThemeLight;
         }
     }
 
@@ -453,8 +438,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
      * <p>
      * This is helpful for bailing out of the {@link FDroidApp#onCreate} method early, preventing
      * problems that arise from executing the code twice. This happens due to the `android:process`
-     * statement in AndroidManifest.xml causes another process to be created to run
-     * {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things to be
+     * statement in AndroidManifest.xml causes another process to be created to run ACRA.
+     * This was causing lots of things to be
      * started/run twice including {@link CleanCacheWorker} and {@link WifiStateChangeService}.
      * <p>
      * Note that it is not perfect, because some devices seem to not provide a list of running app

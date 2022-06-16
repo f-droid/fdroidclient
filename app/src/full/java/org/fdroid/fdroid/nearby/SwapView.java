@@ -82,11 +82,6 @@ public class SwapView extends RelativeLayout {
         return (SwapWorkflowActivity) getContext();
     }
 
-    @ColorInt
-    public int getToolbarColour() {
-        return toolbarColor;
-    }
-
     public String getToolbarTitle() {
         return toolbarTitle;
     }

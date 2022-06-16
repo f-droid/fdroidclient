@@ -118,13 +118,6 @@
                 android:value=".views.main.MainActivity" />
         </activity>
 
-        <activity
-            android:name=".acra.CrashReportActivity"
-            android:excludeFromRecents="true"
-            android:finishOnTaskLaunch="true"
-            android:launchMode="singleInstance"
-            android:process=":error_report" />
-
         <activity android:name=".views.ScreenShotsActivity" />
 
         <activity

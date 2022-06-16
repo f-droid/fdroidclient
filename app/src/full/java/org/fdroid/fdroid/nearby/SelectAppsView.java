@@ -82,10 +82,8 @@ public class SelectAppsView extends SwapView {
         String packageName = adapter.getItem(position).packageName;
         if (getActivity().getSwapService().hasSelectedPackage(packageName)) {
             getActivity().getSwapService().deselectPackage(packageName);
-            adapter.updateCheckedIndicatorView(position, false);
         } else {
             getActivity().getSwapService().selectPackage(packageName);
-            adapter.updateCheckedIndicatorView(position, true);
         }
         LocalRepoService.create(getContext(), getActivity().getSwapService().getAppsToSwap());
     }
@@ -200,15 +198,6 @@ public class SelectAppsView extends SwapView {
                         toggleAppSelected(position);
                     }
                 });
-            }
-        }
-
-        public void updateCheckedIndicatorView(int position, boolean checked) {
-            final int firstListItemPosition = listView.getFirstVisiblePosition();
-            final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
-
-            if (position >= firstListItemPosition && position <= lastListItemPosition) {
-                final int childIndex = position - firstListItemPosition;
             }
         }
 

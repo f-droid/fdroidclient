@@ -24,13 +24,12 @@ import androidx.test.uiautomator.UiWatcher;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("MemberName")
-public class UiWatchers {
+class UiWatchers {
     private static final String LOG_TAG = UiWatchers.class.getSimpleName();
-    private final List<String> mErrors = new ArrayList<String>();
+    private final List<String> mErrors = new ArrayList<>();
 
     /**
      * We can use the UiDevice registerWatcher to register a small script to be executed when the
@@ -120,26 +119,18 @@ public class UiWatchers {
         Log.i(LOG_TAG, "Registered GUI Exception watchers");
     }
 
-    public void onAnrDetected(String errorText) {
+    private void onAnrDetected(String errorText) {
         mErrors.add(errorText);
     }
 
-    public void onCrashDetected(String errorText) {
+    private void onCrashDetected(String errorText) {
         mErrors.add(errorText);
-    }
-
-    public void reset() {
-        mErrors.clear();
-    }
-
-    public List<String> getErrors() {
-        return Collections.unmodifiableList(mErrors);
     }
 
     /**
      * Current implementation ignores the exception and continues.
      */
-    public void postHandler(String buttonText) {
+    private void postHandler(String buttonText) {
         // TODO: Add custom error logging here
         String formatedOutput = String.format("UI Exception Message: %-20s\n", UiDevice
                 .getInstance().getCurrentPackageName());

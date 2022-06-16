@@ -170,15 +170,6 @@ public class StartSwapView extends SwapView {
         });
     }
 
-    private void uiShowNotSearchingForPeers() {
-        peopleNearbyProgress.setVisibility(View.GONE);
-        if (peopleNearbyList.getAdapter().getCount() > 0) {
-            peopleNearbyText.setText(getContext().getString(R.string.swap_people_nearby));
-        } else {
-            peopleNearbyText.setText(getContext().getString(R.string.swap_no_peers_nearby));
-        }
-    }
-
     private void uiInitBluetooth() {
         if (bluetooth != null && ContextCompat.checkSelfPermission(getContext(),
                 Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
