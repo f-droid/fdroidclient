@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -296,11 +295,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         }
 
         boolean needsEnableNfcMenuItem;
-        if (Build.VERSION.SDK_INT < 16) {
-            needsEnableNfcMenuItem = !nfcAdapter.isEnabled();
-        } else {
-            needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
-        }
+        needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
 
         menuItem.setVisible(needsEnableNfcMenuItem);
     }

@@ -26,10 +26,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -110,13 +108,6 @@ public class MainActivity extends AppCompatActivity {
         pager.setHasFixedSize(true);
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
-
-        // Without this, the focus is completely busted on pre 15 devices. Trying to use them
-        // without this ends up with each child view showing for a fraction of a second, then
-        // reverting back to the "Latest" screen again, in completely non-deterministic ways.
-        if (Build.VERSION.SDK_INT <= 15) {
-            pager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
-        }
 
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {

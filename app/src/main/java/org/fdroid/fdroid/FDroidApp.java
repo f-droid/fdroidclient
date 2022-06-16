@@ -56,7 +56,6 @@ import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
-import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkFileProvider;
@@ -327,23 +326,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         FDroidDatabase db = DBHelper.getDb(this);
         db.getRepositoryDao().getLiveRepositories().observeForever(repositories -> repos = repositories);
 
-        PRNGFixes.apply();
-
         applyTheme();
 
         configureProxy(preferences);
-
-
-        // bug specific to exactly 5.0 makes it only work with the old index
-        // which includes an ugly, hacky workaround
-        // https://gitlab.com/fdroid/fdroidclient/issues/1014
-        if (Build.VERSION.SDK_INT == 21) {
-            preferences.setExpertMode(true);
-            preferences.setForceOldIndex(true);
-        }
-
-        // TODO should not be needed anymore
-        //InstalledAppProviderService.compareToPackageManager(this);
 
         // If the user changes the preference to do with filtering anti-feature apps,
         // it is easier to just notify a change in the app provider,
@@ -393,9 +378,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         if (!TextUtils.equals(packageName, unset)) {
             int modeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                     | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
-            if (Build.VERSION.SDK_INT >= 19) {
-                modeFlags |= Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
-            }
+            modeFlags |= Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
             grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
         }
 

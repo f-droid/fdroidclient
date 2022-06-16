@@ -99,13 +99,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
         // works only when being installed as system-app
         // https://code.google.com/p/android/issues/detail?id=42253
 
-        if (Build.VERSION.SDK_INT < 16) {
-            intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(uri);
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-            intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-        } else if (Build.VERSION.SDK_INT < 24) {
+        if (Build.VERSION.SDK_INT < 24) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
             intent.setData(uri);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);

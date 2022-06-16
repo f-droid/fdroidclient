@@ -4,11 +4,7 @@ import android.content.Context;
 
 public abstract class CameraCharacteristicsChecker {
     public static CameraCharacteristicsChecker getInstance(final Context context) {
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            return new CameraCharacteristicsMinApiLevel21(context);
-        } else {
-            return new CameraCharacteristicsMaxApiLevel20();
-        }
+        return new CameraCharacteristicsMinApiLevel21(context);
     }
 
     public abstract boolean hasAutofocus();

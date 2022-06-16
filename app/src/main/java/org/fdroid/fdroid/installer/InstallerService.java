@@ -23,7 +23,6 @@ package org.fdroid.fdroid.installer;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -150,9 +149,7 @@ public class InstallerService extends JobIntentService {
      * @param apk     {@link Apk} instance of the app that will be uninstalled
      */
     public static void uninstall(Context context, @NonNull Apk apk) {
-        if (Build.VERSION.SDK_INT >= 19) {
-            Objects.requireNonNull(apk);
-        }
+        Objects.requireNonNull(apk);
 
         Installer.sendBroadcastUninstall(context, apk, Installer.ACTION_UNINSTALL_STARTED);
 

@@ -441,17 +441,14 @@ public class Apk implements Comparable<Apk>, Parcelable {
                 set.add(versions.getName());
             }
         }
-        if (Build.VERSION.SDK_INT >= 16 && set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             set.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
         if (Build.VERSION.SDK_INT >= 29) {
             if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 set.add(Manifest.permission.ACCESS_COARSE_LOCATION);
             }
-            if (targetSdkVersion >= 29) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 29,
-                // so we don't make any changes for apps targetting 29 or above
-            } else {
+            if (targetSdkVersion < 29) {
                 // TODO: Change the strings below to Manifest.permission once we target SDK 29.
                 if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
@@ -463,12 +460,11 @@ public class Apk implements Comparable<Apk>, Parcelable {
                     set.add("android.permission.ACCESS_MEDIA_LOCATION");
                 }
             }
+            // Else do nothing. The targetSdk for the below split-permissions is set to 29,
+            // so we don't make any changes for apps targetting 29 or above
         }
         if (Build.VERSION.SDK_INT >= 31) {
-            if (targetSdkVersion >= 31) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 31,
-                // so we don't make any changes for apps targetting 31 or above
-            } else {
+            if (targetSdkVersion < 31) {
                 // TODO: Change the strings below to Manifest.permission once we target SDK 31.
                 if (set.contains(Manifest.permission.BLUETOOTH) ||
                         set.contains(Manifest.permission.BLUETOOTH_ADMIN)) {
@@ -477,6 +473,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
                     set.add("android.permission.BLUETOOTH_ADVERTISE");
                 }
             }
+            // Else do nothing. The targetSdk for the below split-permissions is set to 31,
+            // so we don't make any changes for apps targetting 31 or above
         }
 
         requestedPermissions = set.toArray(new String[set.size()]);
