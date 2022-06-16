@@ -141,10 +141,6 @@ final public class WifiApControl {
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	private static String getDeviceName(WifiManager wifiManager) {
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-			Log.w(TAG, "Older device - falling back to the default device name: " + FALLBACK_DEVICE);
-			return FALLBACK_DEVICE;
-		}
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			Log.w(TAG, "6.0 or later, unaccessible MAC - falling back to the default device name: " + FALLBACK_DEVICE);
 			return FALLBACK_DEVICE;

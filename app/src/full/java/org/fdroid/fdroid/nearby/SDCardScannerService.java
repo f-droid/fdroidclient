@@ -88,29 +88,21 @@ public class SDCardScannerService extends IntentService {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
         HashSet<File> files = new HashSet<>();
-        if (Build.VERSION.SDK_INT < 21) {
-            if (Environment.isExternalStorageRemovable()) {
-                File sdcard = Environment.getExternalStorageDirectory();
-                String state = Environment.getExternalStorageState();
-                Collections.addAll(files, checkExternalStorage(sdcard, state));
+        for (File f : getExternalFilesDirs(null)) {
+            Log.i(TAG, "getExternalFilesDirs " + f);
+            if (f == null || !f.isDirectory()) {
+                continue;
             }
-        } else {
-            for (File f : getExternalFilesDirs(null)) {
-                Log.i(TAG, "getExternalFilesDirs " + f);
-                if (f == null || !f.isDirectory()) {
-                    continue;
-                }
-                Log.i(TAG, "getExternalFilesDirs " + f);
-                if (Environment.isExternalStorageRemovable(f)) {
-                    String state = Environment.getExternalStorageState(f);
-                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                            == PackageManager.PERMISSION_GRANTED) {
-                        // remove Android/data/org.fdroid.fdroid/files to get root
-                        File sdcard = f.getParentFile().getParentFile().getParentFile().getParentFile();
-                        Collections.addAll(files, checkExternalStorage(sdcard, state));
-                    } else {
-                        Collections.addAll(files, checkExternalStorage(f, state));
-                    }
+            Log.i(TAG, "getExternalFilesDirs " + f);
+            if (Environment.isExternalStorageRemovable(f)) {
+                String state = Environment.getExternalStorageState(f);
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    // remove Android/data/org.fdroid.fdroid/files to get root
+                    File sdcard = f.getParentFile().getParentFile().getParentFile().getParentFile();
+                    Collections.addAll(files, checkExternalStorage(sdcard, state));
+                } else {
+                    Collections.addAll(files, checkExternalStorage(f, state));
                 }
             }
         }

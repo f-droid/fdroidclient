@@ -27,7 +27,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StatFs;
@@ -181,11 +180,7 @@ public final class Utils {
             return 50 * 1024 * 1024; // just return a minimal amount
         }
         StatFs stat = new StatFs(statDir.getPath());
-        if (Build.VERSION.SDK_INT < 18) {
-            return (long) stat.getAvailableBlocks() * (long) stat.getBlockSize();
-        } else {
-            return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
-        }
+        return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
     }
 
     public static long getImageCacheDirTotalMemory(Context context) {
@@ -197,11 +192,7 @@ public final class Utils {
             return 100 * 1024 * 1024; // just return a minimal amount
         }
         StatFs stat = new StatFs(statDir.getPath());
-        if (Build.VERSION.SDK_INT < 18) {
-            return (long) stat.getBlockCount() * (long) stat.getBlockSize();
-        } else {
-            return stat.getBlockCountLong() * stat.getBlockSizeLong();
-        }
+        return stat.getBlockCountLong() * stat.getBlockSizeLong();
     }
 
     public static void copy(InputStream input, OutputStream output) throws IOException {

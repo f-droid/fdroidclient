@@ -5,7 +5,6 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class CompatibilityChecker {
             }
         }
 
-        cpuAbis = SupportedArchitectures.getAbis();
+        cpuAbis = Build.SUPPORTED_ABIS;
     }
 
     private boolean compatibleApi(@Nullable String[] nativecode) {

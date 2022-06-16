@@ -3,7 +3,6 @@ package org.fdroid.fdroid;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 
@@ -32,12 +31,6 @@ public class NfcNotEnabledActivity extends AppCompatActivity {
         }
     }
 
-    // this API was added in 4.0 aka Ice Cream Sandwich
-    @TargetApi(14)
-    private void doOnIceCreamSandwich(Intent intent) {
-        intent.setAction(Settings.ACTION_NFCSHARING_SETTINGS);
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
@@ -46,11 +39,7 @@ public class NfcNotEnabledActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         final Intent intent = new Intent();
-        if (Build.VERSION.SDK_INT >= 16) {
-            doOnJellybean(intent);
-        } else {
-            doOnIceCreamSandwich(intent);
-        }
+        doOnJellybean(intent);
         startActivity(intent);
         finish();
     }

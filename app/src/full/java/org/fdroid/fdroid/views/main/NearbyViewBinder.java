@@ -96,26 +96,19 @@ public class NearbyViewBinder {
             }
         });
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            File[] dirs = activity.getExternalFilesDirs("");
-            if (dirs != null) {
-                for (File dir : dirs) {
-                    if (dir != null && Environment.isExternalStorageRemovable(dir)) {
-                        String state = Environment.getExternalStorageState(dir);
-                        if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)
-                                || Environment.MEDIA_MOUNTED.equals(state)) {
-                            // remove Android/data/org.fdroid.fdroid/files to get root
-                            externalStorage = dir.getParentFile().getParentFile().getParentFile().getParentFile();
-                            break;
-                        }
+        File[] dirs = activity.getExternalFilesDirs("");
+        if (dirs != null) {
+            for (File dir : dirs) {
+                if (dir != null && Environment.isExternalStorageRemovable(dir)) {
+                    String state = Environment.getExternalStorageState(dir);
+                    if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)
+                            || Environment.MEDIA_MOUNTED.equals(state)) {
+                        // remove Android/data/org.fdroid.fdroid/files to get root
+                        externalStorage = dir.getParentFile().getParentFile().getParentFile().getParentFile();
+                        break;
                     }
                 }
             }
-        } else if (Environment.isExternalStorageRemovable() &&
-                (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED_READ_ONLY)
-                        || Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))) {
-            Log.i(TAG, "<21 isExternalStorageRemovable MEDIA_MOUNTED");
-            externalStorage = Environment.getExternalStorageDirectory();
         }
 
         final String writeExternalStorage = Manifest.permission.WRITE_EXTERNAL_STORAGE;

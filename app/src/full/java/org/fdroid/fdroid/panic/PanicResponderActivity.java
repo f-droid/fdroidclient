@@ -137,8 +137,6 @@ public class PanicResponderActivity extends AppCompatActivity {
 
     private void exitAndClear() {
         ExitActivity.exitAndRemoveFromRecentApps(this);
-        if (Build.VERSION.SDK_INT >= 21) {
-            finishAndRemoveTask();
-        }
+        finishAndRemoveTask();
     }
 }

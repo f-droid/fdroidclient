@@ -10,7 +10,6 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -615,22 +614,15 @@ public class AppDetailsRecyclerViewAdapter
                             String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
                                     FilenameUtils.getExtension(installedFile.getName()));
                             viewIntent.setDataAndType(uri, mimeType);
-                            if (Build.VERSION.SDK_INT < 19) {
-                                viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            } else {
-                                viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                                        | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                            }
+                            viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
                             if (context.getPackageManager().queryIntentActivities(viewIntent, 0).size() > 0) {
                                 buttonPrimaryView.setText(R.string.menu_open);
-                                buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        try {
-                                            context.startActivity(viewIntent);
-                                        } catch (ActivityNotFoundException e) {
-                                            e.printStackTrace();
-                                        }
+                                buttonPrimaryView.setOnClickListener(v -> {
+                                    try {
+                                        context.startActivity(viewIntent);
+                                    } catch (ActivityNotFoundException e) {
+                                        e.printStackTrace();
                                     }
                                 });
                             } else {

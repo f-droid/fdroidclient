@@ -34,7 +34,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -782,9 +781,6 @@ public class AppDetailsActivity extends AppCompatActivity
     private BluetoothAdapter getBluetoothAdapter() {
         // to use the new, recommended way of getting the adapter
         // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
-        if (Build.VERSION.SDK_INT < 18) {
-            return BluetoothAdapter.getDefaultAdapter();
-        }
         return ContextCompat.getSystemService(this, BluetoothManager.class).getAdapter();
     }
 

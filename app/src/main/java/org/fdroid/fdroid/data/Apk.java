@@ -441,49 +441,42 @@ public class Apk implements Comparable<Apk>, Parcelable {
                 set.add(versions.getName());
             }
         }
-        if (Build.VERSION.SDK_INT >= 16 && set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             set.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
         if (Build.VERSION.SDK_INT >= 29) {
             if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 set.add(Manifest.permission.ACCESS_COARSE_LOCATION);
             }
-            if (targetSdkVersion >= 29) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 29,
-                // so we don't make any changes for apps targetting 29 or above
-            } else {
-                // TODO: Change the strings below to Manifest.permission once we target SDK 29.
+            if (targetSdkVersion < 29) {
                 if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                    set.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
                 }
                 if (set.contains(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                    set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                    set.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
                 }
                 if (set.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                    set.add("android.permission.ACCESS_MEDIA_LOCATION");
+                    set.add(Manifest.permission.ACCESS_MEDIA_LOCATION);
                 }
             }
+            // Else do nothing. The targetSdk for the below split-permissions is set to 29,
+            // so we don't make any changes for apps targetting 29 or above
         }
         if (Build.VERSION.SDK_INT >= 31) {
-            if (targetSdkVersion >= 31) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 31,
-                // so we don't make any changes for apps targetting 31 or above
-            } else {
-                // TODO: Change the strings below to Manifest.permission once we target SDK 31.
+            if (targetSdkVersion < 31) {
                 if (set.contains(Manifest.permission.BLUETOOTH) ||
                         set.contains(Manifest.permission.BLUETOOTH_ADMIN)) {
-                    set.add("android.permission.BLUETOOTH_SCAN");
-                    set.add("android.permission.BLUETOOTH_CONNECT");
-                    set.add("android.permission.BLUETOOTH_ADVERTISE");
+                    set.add(Manifest.permission.BLUETOOTH_SCAN);
+                    set.add(Manifest.permission.BLUETOOTH_CONNECT);
+                    set.add(Manifest.permission.BLUETOOTH_ADVERTISE);
                 }
             }
+            // Else do nothing. The targetSdk for the above split-permissions is set to 31,
+            // so we don't make any changes for apps targetting 31 or above
         }
         if (Build.VERSION.SDK_INT >= 33) {
-            if (targetSdkVersion >= 33) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 33,
-                // so we don't make any changes for apps targetting 33 or above
-            } else {
-                // TODO: Change the strings below to Manifest.permission once we target SDK 31.
+            if (targetSdkVersion < 33) {
+                // TODO: Change the strings below to Manifest.permission once we compile with SDK 33
                 if (set.contains(Manifest.permission.BODY_SENSORS)) {
                     set.add("android.permission.BODY_SENSORS_BACKGROUND");
                 }
@@ -494,6 +487,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
                     set.add("android.permission.READ_MEDIA_IMAGES");
                 }
             }
+            // Else do nothing. The targetSdk for the above split-permissions is set to 33,
+            // so we don't make any changes for apps targetting 33 or above
         }
 
         requestedPermissions = set.toArray(new String[set.size()]);

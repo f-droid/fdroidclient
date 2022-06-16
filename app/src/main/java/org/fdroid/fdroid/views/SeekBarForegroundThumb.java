@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 
 import org.fdroid.fdroid.R;
@@ -17,7 +16,6 @@ import androidx.core.content.ContextCompat;
  */
 public class SeekBarForegroundThumb extends AppCompatSeekBar {
     private Drawable tickMark;
-    private Context context;
 
     public SeekBarForegroundThumb(Context context) {
         super(context);
@@ -35,16 +33,7 @@ public class SeekBarForegroundThumb extends AppCompatSeekBar {
     }
 
     private void init(Context context) {
-        this.context = context;
         tickMark = ContextCompat.getDrawable(context, R.drawable.seekbar_tickmark);
-    }
-
-    private Drawable getThumbCompat() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            return getThumb();
-        } else {
-            return context.getResources().getDrawable(R.drawable.seekbar_thumb);
-        }
     }
 
     @Override
@@ -59,7 +48,7 @@ public class SeekBarForegroundThumb extends AppCompatSeekBar {
             if (count > 1) {
                 final int w = tickMark.getIntrinsicWidth();
                 final int h = tickMark.getIntrinsicHeight();
-                final int halfThumbW = getThumbCompat().getIntrinsicWidth() / 2;
+                final int halfThumbW = getThumb().getIntrinsicWidth() / 2;
                 final int halfW = w >= 0 ? w / 2 : 1;
                 final int halfH = h >= 0 ? h / 2 : 1;
                 tickMark.setBounds(-halfW, -halfH, halfW, halfH);
