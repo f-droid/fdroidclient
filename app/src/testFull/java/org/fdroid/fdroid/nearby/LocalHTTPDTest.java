@@ -168,13 +168,13 @@ public class LocalHTTPDTest {
         assertTrue(string.indexOf("test.html") > 0);
         connection.disconnect();
 
-        IOUtils.copy(classLoader.getResourceAsStream("extendedPerms.xml"),
-                new FileOutputStream(new File(webRoot, "extendedPerms.xml")));
-        url = new URL(baseUrl + "/extendedPerms.xml");
+        IOUtils.copy(classLoader.getResourceAsStream("additional_repos.xml"),
+                new FileOutputStream(new File(webRoot, "additional_repos.xml")));
+        url = new URL(baseUrl + "/additional_repos.xml");
         connection = (HttpURLConnection) url.openConnection();
         assertEquals(200, connection.getResponseCode());
         byte[] actual = IOUtils.toByteArray(connection.getInputStream());
-        byte[] expected = IOUtils.toByteArray(classLoader.getResourceAsStream("extendedPerms.xml"));
+        byte[] expected = IOUtils.toByteArray(classLoader.getResourceAsStream("additional_repos.xml"));
         Assert.assertArrayEquals(expected, actual);
         connection.disconnect();
     }

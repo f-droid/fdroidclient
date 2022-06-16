@@ -41,6 +41,7 @@ import java.util.zip.ZipFile;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 /**
  * Represents a single package of an application. This represents one particular
@@ -448,8 +449,10 @@ public class Apk implements Comparable<Apk>, Parcelable {
      * so they are not included here.
      *
      * @see Manifest.permission#READ_EXTERNAL_STORAGE
+     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/data/etc/platform.xml">platform.xml</a>
      */
-    private void setRequestedPermissions(List<PermissionV2> permissions, int minSdk) {
+    @VisibleForTesting
+    public void setRequestedPermissions(List<PermissionV2> permissions, int minSdk) {
         HashSet<String> set = new HashSet<>();
         if (requestedPermissions != null) {
             Collections.addAll(set, requestedPermissions);
