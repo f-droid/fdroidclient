@@ -24,13 +24,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.download.HttpPoster;
@@ -38,6 +32,9 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.DownloaderFactory;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -281,13 +278,10 @@ public class FDroidMetricsWorker extends Worker {
         EVENTS.addAll(parseInstallHistoryCsv(context, weekStart));
         cleanInsightsReport.events = EVENTS.toArray(new MatomoEvent[0]);
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            return mapper.writeValueAsString(cleanInsightsReport);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            return cleanInsightsReport.getJsonString();
+        } catch (JSONException e) {
+            Log.e(TAG, "Error getting json string", e);
         }
         return null;
     }
@@ -300,14 +294,23 @@ public class FDroidMetricsWorker extends Worker {
      * @see <a href="https://matomo.org/docs/event-tracking/">Matomo Event Tracking</a>
      */
     private static class CleanInsightsReport {
-        @JsonProperty
         MatomoEvent[] events = new MatomoEvent[0];
-        @JsonProperty
         final long idsite = 3; // NOPMD
-        @JsonProperty
         final String lang = Locale.getDefault().getLanguage();
-        @JsonProperty
         final String ua = Utils.getUserAgent();
+
+        private String getJsonString() throws JSONException {
+            JSONObject json = new JSONObject();
+            JSONArray array = new JSONArray();
+            for (MatomoEvent event : events) {
+                array.put(event.getJSONObject());
+            }
+            json.put("events", array);
+            json.put("idsite", idsite);
+            json.put("lang", lang);
+            json.put("ua", ua);
+            return json.toString(2);
+        }
     }
 
     private static void addFirstInstallEvent(PackageManager pm, PackageInfo packageInfo) {
@@ -354,21 +357,13 @@ public class FDroidMetricsWorker extends Worker {
      * @see <a href="https://matomo.org/docs/event-tracking/">Matomo Event Tracking</a>
      */
     @SuppressWarnings("checkstyle:MemberName")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     static class MatomoEvent {
-        @JsonProperty
         String category;
-        @JsonProperty
         String action;
-        @JsonProperty
         String name;
-        @JsonProperty
         final long period_start;
-        @JsonProperty
         final long period_end;
-        @JsonProperty
         long times = 0;
-        @JsonProperty
         String value;
 
         MatomoEvent(long timestamp) {
@@ -382,6 +377,18 @@ public class FDroidMetricsWorker extends Worker {
             action = rawEvent.action;
             name = rawEvent.applicationId;
             times = 1;
+        }
+
+        private JSONObject getJSONObject() throws JSONException {
+            JSONObject json = new JSONObject();
+            json.put("category", category);
+            json.put("action", action);
+            json.put("name", name);
+            json.put("period_start", period_start);
+            json.put("period_end", period_end);
+            json.put("times", times);
+            json.put("value", value);
+            return json;
         }
 
         @Override

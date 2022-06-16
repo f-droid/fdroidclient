@@ -12,10 +12,6 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import org.fdroid.database.AppManifest;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.Repository;
@@ -59,24 +55,16 @@ import androidx.annotation.VisibleForTesting;
 public class Apk implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
-    @JsonIgnore
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
-    @JsonIgnore
     public static final int SDK_VERSION_MIN_VALUE = 0;
     public static final String RELEASE_CHANNEL_BETA = "Beta";
     public static final String RELEASE_CHANNEL_STABLE = "Stable";
 
     // these are never set by the Apk/package index metadata
-    @JsonIgnore
     public String repoAddress;
-    @JsonIgnore
     long repoVersion;
-    @JsonIgnore
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
-    @JsonIgnore
     public boolean compatible; // True if compatible with the device.
-
-    @JacksonInject("repoId")
     public long repoId; // the database ID of the repo it comes from
 
     // these come directly from the index metadata
@@ -172,7 +160,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         hashType = "sha256";
         added = new Date(v.getAdded());
         features = v.getFeatureNames().toArray(new String[0]);
-        packageName = v.getPackageName();
+        setPackageName(v.getPackageName());
         compatible = v.isCompatible();
         AppManifest manifest = v.getManifest();
         minSdkVersion = manifest.getUsesSdk() == null ?
@@ -239,7 +227,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
      *
      * @see org.fdroid.fdroid.installer.InstallManagerService
      */
-    @JsonIgnore  // prevent tests from failing due to nulls in checkRepoAddress()
     public String getCanonicalUrl() {
         checkRepoAddress();
         String address = repoAddress;
@@ -417,8 +404,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
     /**
      * Set the Package Name property while ensuring it is sanitized.
      */
-    @JsonProperty("packageName")
-    @SuppressWarnings("unused")
     void setPackageName(String packageName) {
         if (Utils.isSafePackageName(packageName)) {
             this.packageName = packageName;
@@ -426,16 +411,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
             throw new IllegalArgumentException("Repo index package entry includes unsafe packageName: '"
                     + packageName + "'");
         }
-    }
-
-    @JsonProperty("uses-permission")
-    @SuppressWarnings("unused")
-    private void setUsesPermission(Object[][] permissions) {
-    }
-
-    @JsonProperty("uses-permission-sdk-23")
-    @SuppressWarnings("unused")
-    private void setUsesPermissionSdk23(Object[][] permissions) {
     }
 
     /**
