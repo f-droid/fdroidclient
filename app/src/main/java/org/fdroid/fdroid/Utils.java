@@ -135,6 +135,52 @@ public final class Utils {
 
     private static Handler toastHandler;
 
+    @NonNull
+    public static Uri getUri(String repoAddress, String... pathElements) {
+        /*
+         * Storage Access Framework URLs have this wacky URL-encoded path within the URL path.
+         *
+         * i.e.
+         * content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo
+         *
+         * Currently don't know a better way to identify these than by content:// prefix,
+         * seems the Android SDK expects apps to consider them as opaque identifiers.
+         *
+         * Note: This hack works for the external storage documents provider for now,
+         *       but will most likely fail for other providers.
+         *       Using DocumentFile off the UiThread can be used to build path Uris reliably.
+         */
+        if (repoAddress.startsWith("content://")) {
+            StringBuilder result = new StringBuilder(repoAddress);
+            for (String element : pathElements) {
+                result.append(TreeUriDownloader.ESCAPED_SLASH);
+                result.append(element);
+            }
+            return Uri.parse(result.toString());
+        } else { // Normal URL
+            Uri.Builder result = Uri.parse(repoAddress).buildUpon();
+            for (String element : pathElements) {
+                result.appendPath(element);
+            }
+            return result.build();
+        }
+    }
+
+    /**
+     * Returns the repository address. Usually this is {@link Repository#getAddress()},
+     * but in case of a content:// repo, we need to take its local Uri instead.
+     */
+    public static String getRepoAddress(Repository repository) {
+        List<Mirror> mirrors = repository.getAllMirrors();
+        if (mirrors.size() == 2 && mirrors.get(1).getBaseUrl().startsWith("content://")) {
+            return mirrors.get(1).getBaseUrl();
+        } else {
+            String address = repository.getAddress();
+            if (address.endsWith("/")) return address.substring(0, address.length() - 1);
+            return address;
+        }
+    }
+
     /*
      * @param dpiMultiplier Lets you grab icons for densities larger or
      * smaller than that of your device by some fraction. Useful, for example,
@@ -488,26 +534,39 @@ public final class Utils {
     }
 
     private static void loadWithGlide(Context context, long repoId, String iconPath, ImageView iv) {
-        if (iconPath == null) return;
+        if (iconPath == null) {
+            Glide.with(context).clear(iv);
+            return;
+        }
         if (iconRequestOptions == null) {
             iconRequestOptions = new RequestOptions()
                     .error(R.drawable.ic_repo_app_default)
                     .fallback(R.drawable.ic_repo_app_default);
         }
-        iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
+        RequestOptions options = iconRequestOptions.onlyRetrieveFromCache(
+                !Preferences.get().isBackgroundDownloadAllowed());
 
         Repository repo = FDroidApp.getRepo(repoId);
-        if (repo == null) return;
-        if (repo.getAddress().startsWith("content://")) {
-            // TODO check if this works
-            String uri = repo.getAddress() + TreeUriDownloader.ESCAPED_SLASH + iconPath;
-            Glide.with(context).load(uri).apply(iconRequestOptions).into(iv);
-        } else {
-            List<Mirror> mirrors = repo.getMirrors();
-            Proxy proxy = NetCipher.getProxy();
-            DownloadRequest request = new DownloadRequest(iconPath, mirrors, proxy, null, null);
-            Glide.with(context).load(request).apply(iconRequestOptions).into(iv);
+        if (repo == null) {
+            Glide.with(context).clear(iv);
+            return;
         }
+        String address = getRepoAddress(repo);
+        if (address.startsWith("content://")) {
+            String uri = getUri(address, iconPath.split("/")).toString();
+            Glide.with(context).load(uri).apply(options).into(iv);
+        } else {
+            DownloadRequest request = getDownloadRequest(repo, iconPath);
+            Glide.with(context).load(request).apply(options).into(iv);
+        }
+    }
+
+    @Nullable
+    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable String path) {
+        if (path == null) return null;
+        List<Mirror> mirrors = repo.getMirrors();
+        Proxy proxy = NetCipher.getProxy();
+        return new DownloadRequest(path, mirrors, proxy, repo.getUsername(), repo.getPassword());
     }
 
     /**

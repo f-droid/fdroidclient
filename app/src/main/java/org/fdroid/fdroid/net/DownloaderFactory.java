@@ -51,11 +51,12 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
         } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             downloader = new LocalFileDownloader(uri, destFile);
         } else {
-            String path = uri.toString().replace(repo.getAddress(), "");
+            String repoAddress = Utils.getRepoAddress(repo);
+            String path = uri.toString().replace(repoAddress, "");
             Utils.debugLog(TAG, "Using suffix " + path + " with mirrors " + mirrors);
             Proxy proxy = NetCipher.getProxy();
-            DownloadRequest request =
-                    new DownloadRequest(path, mirrors, proxy, repo.getUsername(), repo.getPassword(), tryFirst);
+            DownloadRequest request = new DownloadRequest(path, mirrors, proxy, repo.getUsername(),
+                    repo.getPassword(), tryFirst);
             downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
         }
         return downloader;

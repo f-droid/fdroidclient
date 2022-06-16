@@ -57,6 +57,7 @@ import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.index.IndexUpdateResult;
 import org.fdroid.index.RepoUpdater;
+import org.fdroid.index.RepoUriBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -431,10 +432,15 @@ public class UpdateService extends JobIntentService {
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.getAddress()));
 
+                final RepoUriBuilder repoUriBuilder = (repository, pathElements) -> {
+                    String address1 = Utils.getRepoAddress(repository);
+                    return Utils.getUri(address1, pathElements);
+                };
                 final CompatibilityChecker compatChecker =
                         new CompatibilityCheckerImpl(getPackageManager(), Preferences.get().forceTouchApps());
+                final UpdateServiceListener listener = new UpdateServiceListener(UpdateService.this);
                 final RepoUpdater repoUpdater = new RepoUpdater(getApplicationContext().getCacheDir(), db,
-                        DownloaderFactory.INSTANCE, compatChecker, new UpdateServiceListener(UpdateService.this));
+                        DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
                 final IndexUpdateResult result = repoUpdater.update(repo, fingerprint);
                 if (result instanceof IndexUpdateResult.Unchanged) {
                     unchangedRepos++;

@@ -17,9 +17,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
-
-import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -141,10 +138,8 @@ public class ScreenShotsActivity extends AppCompatActivity {
                                  @Nullable Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);
 
-            DownloadRequest request = App.getDownloadRequest(repoId, screenshotUrl);
             ImageView screenshotView = (ImageView) rootView.findViewById(R.id.screenshot);
-            Glide.with(this)
-                    .load(request)
+            App.loadWithGlide(requireContext(), repoId, screenshotUrl)
                     .onlyRetrieveFromCache(!allowDownload)
                     .error(R.drawable.screenshot_placeholder)
                     .fallback(R.drawable.screenshot_placeholder)
