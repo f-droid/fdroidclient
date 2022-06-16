@@ -14,6 +14,7 @@ public class RepoUpdater(
     tempDir: File,
     db: FDroidDatabase,
     downloaderFactory: DownloaderFactory,
+    repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     compatibilityChecker: CompatibilityChecker,
     listener: IndexUpdateListener,
 ) {
@@ -26,8 +27,22 @@ public class RepoUpdater(
      * A list of [IndexUpdater]s to try, sorted by newest first.
      */
     private val indexUpdater = listOf(
-        IndexV2Updater(db, tempFileProvider, downloaderFactory, compatibilityChecker, listener),
-        IndexV1Updater(db, tempFileProvider, downloaderFactory, compatibilityChecker, listener),
+        IndexV2Updater(
+            database = db,
+            tempFileProvider = tempFileProvider,
+            downloaderFactory = downloaderFactory,
+            repoUriBuilder = repoUriBuilder,
+            compatibilityChecker = compatibilityChecker,
+            listener = listener,
+        ),
+        IndexV1Updater(
+            database = db,
+            tempFileProvider = tempFileProvider,
+            downloaderFactory = downloaderFactory,
+            repoUriBuilder = repoUriBuilder,
+            compatibilityChecker = compatibilityChecker,
+            listener = listener,
+        ),
     )
 
     public fun update(
