@@ -214,7 +214,7 @@ public class InstallManagerService extends Service {
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queue(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl());
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
             sendBroadcast(intent.getData(), DownloaderService.ACTION_STARTED, apkFilePath);
@@ -222,7 +222,7 @@ public class InstallManagerService extends Service {
         } else {
             Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
             apkFilePath.delete();
-            DownloaderService.queue(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl());
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
@@ -307,7 +307,7 @@ public class InstallManagerService extends Service {
                 }
             }
         };
-        DownloaderService.queue(this, repoId, obbUrlString);
+        DownloaderService.queue(this, repoId, obbUrlString, obbUrlString);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }

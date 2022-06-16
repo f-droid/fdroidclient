@@ -129,6 +129,7 @@ public class SwapSuccessView extends SwapView {
             apk.repoId = Long.MAX_VALUE;
             apk.packageName = app.packageName;
             apk.repoAddress = repo.getAddress();
+            apk.canonicalRepoAddress = repo.getAddress();
             apk.setCompatibility(checker);
             app.compatible = apk.compatible;
 
@@ -314,7 +315,7 @@ public class SwapSuccessView extends SwapView {
 
                 String path = app.getIconPath(getContext());
                 Glide.with(iconView.getContext())
-                        .load(App.getDownloadRequest(repo, path))
+                        .load(Utils.getDownloadRequest(repo, path))
                         .apply(Utils.getAlwaysShowIconRequestOptions())
                         .into(iconView);
 

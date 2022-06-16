@@ -43,6 +43,7 @@ public class ApkTest {
         Apk apk = new Apk();
         apk.apkName = "test.apk";
         apk.repoAddress = "https://example.com/fdroid/repo";
+        apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertTrue(apk.isApk());
         apk.getMediaInstallPath(context);
     }
@@ -52,6 +53,7 @@ public class ApkTest {
         Apk apk = new Apk();
         apk.apkName = "org.fdroid.fdroid.privileged.ota_2110.zip";
         apk.repoAddress = "https://example.com/fdroid/repo";
+        apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertFalse(apk.isApk());
         copyResourceFileToCache(apk);
         File path = apk.getMediaInstallPath(context);
@@ -63,6 +65,7 @@ public class ApkTest {
         Apk apk = new Apk();
         apk.apkName = "Norway_bouvet_europe_2.obf";
         apk.repoAddress = "https://example.com/fdroid/repo";
+        apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertFalse(apk.isApk());
         File path = apk.getMediaInstallPath(context);
         assertEquals(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), path);
@@ -73,6 +76,7 @@ public class ApkTest {
         Apk apk = new Apk();
         apk.apkName = "Norway_bouvet_europe_2.obf.zip";
         apk.repoAddress = "https://example.com/fdroid/repo";
+        apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertFalse(apk.isApk());
         copyResourceFileToCache(apk);
         File path = apk.getMediaInstallPath(context);

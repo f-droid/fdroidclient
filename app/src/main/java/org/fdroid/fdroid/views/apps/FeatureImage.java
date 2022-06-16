@@ -2,13 +2,14 @@ package org.fdroid.fdroid.views.apps;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import androidx.annotation.ColorInt;
@@ -17,14 +18,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import org.fdroid.download.DownloadRequest;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
 import java.util.Random;
 
@@ -247,32 +248,30 @@ public class FeatureImage extends AppCompatImageView {
         return path;
     }
 
-    public void loadImageAndDisplay(@Nullable DownloadRequest featureImageToShow, @Nullable DownloadRequest fallbackImageToExtractColours) {
+    public void loadImageAndDisplay(App app) {
         setColour(ContextCompat.getColor(getContext(), R.color.fdroid_blue));
-        if (featureImageToShow != null) {
-            loadImageAndDisplay(featureImageToShow);
-        } else if (fallbackImageToExtractColours != null) {
-            loadImageAndExtractColour(fallbackImageToExtractColours);
+
+        if (!TextUtils.isEmpty(app.featureGraphic)) {
+            app.loadWithGlide(getContext(), app.featureGraphic).into(this);
+        } else {
+            String path = app.getIconPath(getContext());
+            loadImageAndExtractColour(app.loadWithGlide(getContext(), path));
         }
     }
 
-    private void loadImageAndExtractColour(DownloadRequest request) {
-        Glide.with(getContext()).asBitmap().load(request).listener(new RequestListener<Bitmap>() {
+    private void loadImageAndExtractColour(RequestBuilder<Drawable> request) {
+        request.listener(new RequestListener<Drawable>() {
             @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object o, Target<Bitmap> target, boolean b) {
+            public boolean onLoadFailed(@Nullable GlideException e, Object o, Target<Drawable> target, boolean b) {
                 setColorAndAnimateChange(Color.LTGRAY);
                 return false;
             }
 
             @Override
-            public boolean onResourceReady(Bitmap loadedImage, Object o, Target<Bitmap> target, DataSource dataSource, boolean b) {
+            public boolean onResourceReady(Drawable loadedImage, Object o, Target<Drawable> target, DataSource dataSource, boolean b) {
                 return false;
             }
         }).into(this);
 
-    }
-
-    public void loadImageAndDisplay(DownloadRequest request) {
-        Glide.with(getContext()).load(request).into(this);
     }
 }

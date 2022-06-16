@@ -49,6 +49,7 @@ public class TestUtils {
         Apk apk = new Apk();
         apk.appId = appId;
         apk.repoAddress = "http://www.example.com/fdroid/repo";
+        apk.canonicalRepoAddress = "http://www.example.com/fdroid/repo";
         apk.versionCode = versionCode;
         apk.repoId = 1;
         apk.versionName = "The good one";
