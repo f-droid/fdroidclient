@@ -77,15 +77,11 @@ import java.net.Socket;
 import java.security.MessageDigest;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -113,16 +109,6 @@ public final class Utils {
     private static final String TAG = "Utils";
 
     private static final int BUFFER_SIZE = 4096;
-
-    // The date format used for storing dates (e.g. lastupdated, added) in the
-    // database.
-    public static final SimpleDateFormat DATE_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-
-    private static final SimpleDateFormat TIME_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
-
-    private static final TimeZone UTC = TimeZone.getTimeZone("Etc/GMT");
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
@@ -275,7 +261,7 @@ public final class Utils {
         }
     }
 
-    public static boolean copyQuietly(File inFile, File outFile) {
+    private static boolean copyQuietly(File inFile, File outFile) {
         InputStream input = null;
         OutputStream output = null;
         try {
@@ -404,20 +390,6 @@ public final class Utils {
         return b.build();
     }
 
-    /**
-     * This is only needed for making a fingerprint from the {@code pubkey}
-     * entry in {@code index.xml}.
-     **/
-    @Deprecated
-    public static String calcFingerprint(String keyHexString) {
-        if (TextUtils.isEmpty(keyHexString)
-                || keyHexString.matches(".*[^a-fA-F0-9].*")) {
-            Log.e(TAG, "Signing key certificate was blank or contained a non-hex-digit!");
-            return null;
-        }
-        return calcFingerprint(Hasher.unhex(keyHexString));
-    }
-
     public static String calcFingerprint(Certificate cert) {
         if (cert == null) {
             return null;
@@ -463,18 +435,6 @@ public final class Utils {
             return false;
         }
         return hash.equals(getFileHexDigest(file, hashType));
-    }
-
-    /**
-     * Get the fingerprint used to represent an APK signing key in F-Droid.
-     * This is a custom fingerprint algorithm that was kind of accidentally
-     * created.  It is now here only for backwards compatibility.
-     *
-     * @see org.fdroid.fdroid.data.Apk#sig
-     */
-    @Deprecated
-    public static String getsig(byte[] rawCertBytes) {
-        return DigestUtils.md5Hex(Hex.encodeHexString(rawCertBytes).getBytes());
     }
 
     /**
@@ -586,7 +546,7 @@ public final class Utils {
      * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
      */
     @Nullable
-    public static String getFileHexDigest(File file, String hashAlgo) {
+    static String getFileHexDigest(File file, String hashAlgo) {
         try {
             return Hex.encodeHexString(DigestUtils.digest(DigestUtils.getDigest(hashAlgo), file));
         } catch (IOException e) {
@@ -598,67 +558,6 @@ public final class Utils {
             }
         }
         return null;
-    }
-
-    @Nullable
-    public static String[] parseCommaSeparatedString(String values) {
-        return values == null || values.length() == 0 ? null : values.split(",");
-    }
-
-    @Nullable
-    public static String serializeCommaSeparatedString(@Nullable String[] values) {
-        return values == null || values.length == 0 ? null : TextUtils.join(",", values);
-    }
-
-    private static Date parseDateFormat(DateFormat format, String str, Date fallback) {
-        if (str == null || str.length() == 0) {
-            return fallback;
-        }
-        Date result;
-        try {
-            format.setTimeZone(UTC);
-            result = format.parse(str);
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | ParseException e) {
-            e.printStackTrace();
-            result = fallback;
-        }
-        return result;
-    }
-
-    private static String formatDateFormat(DateFormat format, Date date, String fallback) {
-        if (date == null) {
-            return fallback;
-        }
-        format.setTimeZone(UTC);
-        return format.format(date);
-    }
-
-    /**
-     * Parses a date string into UTC time
-     */
-    public static Date parseDate(String str, Date fallback) {
-        return parseDateFormat(DATE_FORMAT, str, fallback);
-    }
-
-    /**
-     * Formats UTC time into a date string
-     */
-    public static String formatDate(Date date, String fallback) {
-        return formatDateFormat(DATE_FORMAT, date, fallback);
-    }
-
-    /**
-     * Parses a date/time string into UTC time
-     */
-    public static Date parseTime(String str, Date fallback) {
-        return parseDateFormat(TIME_FORMAT, str, fallback);
-    }
-
-    /**
-     * Formats UTC time into a date/time string
-     */
-    public static String formatTime(Date date, String fallback) {
-        return formatDateFormat(TIME_FORMAT, date, fallback);
     }
 
     /**
@@ -707,11 +606,11 @@ public final class Utils {
     }
 
     public static String formatLastUpdated(@NonNull Resources res, long date) {
-        long msDiff = Calendar.getInstance().getTimeInMillis() - date;
-        long days = msDiff / DateUtils.DAY_IN_MILLIS;
-        long weeks = msDiff / (DateUtils.DAY_IN_MILLIS * 7);
-        long months = msDiff / (DateUtils.DAY_IN_MILLIS * 30);
-        long years = msDiff / (DateUtils.DAY_IN_MILLIS * 365);
+        double msDiff = System.currentTimeMillis() - date;
+        long days = Math.round(msDiff / DateUtils.DAY_IN_MILLIS);
+        long weeks = Math.round(msDiff / (DateUtils.WEEK_IN_MILLIS));
+        long months = Math.round(msDiff / (DateUtils.DAY_IN_MILLIS * 30));
+        long years = Math.round(msDiff / (DateUtils.YEAR_IN_MILLIS));
 
         if (days < 1) {
             return res.getString(R.string.details_last_updated_today);
