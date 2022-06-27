@@ -15,6 +15,7 @@ kotlin {
         compilations.all {
             kotlinOptions.jvmTarget = '1.8'
         }
+        publishLibraryVariants("release")
     }
 //    def hostOs = System.getProperty("os.name")
 //    def isMingwX64 = hostOs.startsWith("Windows")
@@ -64,6 +65,7 @@ kotlin {
         androidMain {
             dependencies {
                 implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.21"
+                implementation 'androidx.core:core-ktx:1.8.0'
                 implementation "org.slf4j:slf4j-android:1.7.36"
             }
         }
@@ -109,6 +111,10 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+}
+
+signing {
+    useGpgCmd()
 }
 
 import org.jetbrains.dokka.gradle.DokkaTask
