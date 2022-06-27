@@ -10,6 +10,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
 import androidx.room.Relation
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.Converters.fromStringToMapOfLocalizedTextV2
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.LocalizedFileListV2
@@ -258,38 +259,6 @@ public data class UpdatableApp(
     public fun getIcon(localeList: LocaleListCompat): FileV2? = localizedIcon?.filter { icon ->
         icon.repoId == upgrade.repoId
     }?.toLocalizedFileV2().getBestLocale(localeList)
-}
-
-internal fun <T> Map<String, T>?.getBestLocale(localeList: LocaleListCompat): T? {
-    if (isNullOrEmpty()) return null
-    val firstMatch = localeList.getFirstMatch(keys.toTypedArray()) ?: return null
-    val tag = firstMatch.toLanguageTag()
-    // try first matched tag first (usually has region tag, e.g. de-DE)
-    return get(tag) ?: run {
-        // split away stuff like script and try language and region only
-        val langCountryTag = "${firstMatch.language}-${firstMatch.country}"
-        getOrStartsWith(langCountryTag) ?: run {
-            // split away region tag and try language only
-            val langTag = firstMatch.language
-            // try language, then English and then just take the first of the list
-            getOrStartsWith(langTag) ?: get("en-US") ?: get("en") ?: values.first()
-        }
-    }
-}
-
-/**
- * Returns the value from the map with the given key or if that key is not contained in the map,
- * tries the first map key that starts with the given key.
- * If nothing matches, null is returned.
- *
- * This is useful when looking for a language tag like `fr_CH` and falling back to `fr`
- * in a map that has `fr_FR` as a key.
- */
-private fun <T> Map<String, T>.getOrStartsWith(s: String): T? = get(s) ?: run {
-    entries.forEach { (key, value) ->
-        if (key.startsWith(s)) return value
-    }
-    return null
 }
 
 internal interface IFile {

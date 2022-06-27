@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.every
 import io.mockk.mockk
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.database.AppListSortOrder.NAME
 import org.fdroid.database.TestUtils.getOrFail

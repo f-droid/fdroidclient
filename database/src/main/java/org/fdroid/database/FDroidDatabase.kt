@@ -15,6 +15,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.fdroid.LocaleChooser.getBestLocale
 
 @Database(
     version = 8, // TODO set version to 1 before release and wipe old schemas

@@ -19,6 +19,7 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.database.AppListSortOrder.NAME
 import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
