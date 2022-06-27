@@ -1,6 +1,7 @@
 package org.fdroid.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.TestUtils.getOrAwaitValue
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.index.v2.MetadataV2

@@ -6,6 +6,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Relation
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.VersionedStringType.PERMISSION
 import org.fdroid.database.VersionedStringType.PERMISSION_SDK_23
 import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
