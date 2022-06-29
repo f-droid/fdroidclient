@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import org.fdroid.LocaleChooser.getBestLocale
 
 @Database(
-    version = 8, // TODO set version to 1 before release and wipe old schemas
+    version = 9, // TODO set version to 1 before release and wipe old schemas
     entities = [
         // repo
         CoreRepository::class,
@@ -29,6 +29,7 @@ import org.fdroid.LocaleChooser.getBestLocale
         RepositoryPreferences::class,
         // packages
         AppMetadata::class,
+        AppMetadataFts::class,
         LocalizedFile::class,
         LocalizedFileList::class,
         // versions
@@ -50,6 +51,7 @@ import org.fdroid.LocaleChooser.getBestLocale
         AutoMigration(from = 5, to = 6),
         AutoMigration(from = 6, to = 7),
         AutoMigration(from = 7, to = 8),
+        AutoMigration(from = 8, to = 9),
     ],
 )
 @TypeConverters(Converters::class)

@@ -35,6 +35,107 @@ internal class AppListItemsTest : AppTest() {
     )
 
     @Test
+    fun testSearchQuery() {
+        val app1 = app1.copy(name = mapOf("en-US" to "One"), summary = mapOf("en-US" to "Onearry"))
+        val app2 = app2.copy(name = mapOf("en-US" to "Two"), summary = mapOf("de" to "Zfassung"))
+        val app3 = app3.copy(name = mapOf("de-DE" to "Drei"), summary = mapOf("de" to "Zfassung"))
+        // insert three apps in a random order
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName1, app1, locales)
+        appDao.insert(repoId, packageName3, app3, locales)
+        appDao.insert(repoId, packageName2, app2, locales)
+
+        // nothing is installed
+        every { pm.getInstalledPackages(0) } returns emptyList()
+
+        // get first app by search, sort order doesn't matter
+        appDao.getAppListItems(pm, "One", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+
+        // get second app by search, sort order doesn't matter
+        appDao.getAppListItems(pm, "Two", NAME).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app2, apps[0])
+        }
+
+        // get second and third app by searching for summary
+        appDao.getAppListItems(pm, "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(2, apps.size)
+            // sort-order isn't fixes, yet
+            if (apps[0].packageId == packageName2) {
+                assertEquals(app2, apps[0])
+                assertEquals(app3, apps[1])
+            } else {
+                assertEquals(app3, apps[0])
+                assertEquals(app2, apps[1])
+            }
+        }
+
+        // empty search for unknown search term
+        appDao.getAppListItems(pm, "foo bar", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(0, apps.size)
+        }
+    }
+
+    @Test
+    fun testSearchQueryInCategory() {
+        val app1 = app1.copy(name = mapOf("en-US" to "One"), summary = mapOf("en-US" to "Onearry"))
+        val app2 = app2.copy(name = mapOf("en-US" to "Two"), summary = mapOf("de" to "Zfassung"))
+        val app3 = app3.copy(name = mapOf("de-DE" to "Drei"), summary = mapOf("de" to "Zfassung"))
+        // insert three apps in a random order
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName1, app1, locales)
+        appDao.insert(repoId, packageName3, app3, locales)
+        appDao.insert(repoId, packageName2, app2, locales)
+
+        // nothing is installed
+        every { pm.getInstalledPackages(0) } returns emptyList()
+
+        // get first app by search, sort order doesn't matter
+        appDao.getAppListItems(pm, "A", "One", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+
+        // get second app by search, sort order doesn't matter
+        appDao.getAppListItems(pm, "A", "Two", NAME).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app2, apps[0])
+        }
+
+        // get second and third app by searching for summary
+        appDao.getAppListItems(pm, "A", "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(2, apps.size)
+            // sort-order isn't fixes, yet
+            if (apps[0].packageId == packageName2) {
+                assertEquals(app2, apps[0])
+                assertEquals(app3, apps[1])
+            } else {
+                assertEquals(app3, apps[0])
+                assertEquals(app2, apps[1])
+            }
+        }
+
+        // get third app by searching for summary in category B only
+        appDao.getAppListItems(pm, "B", "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app3, apps[0])
+        }
+
+        // empty search for unknown category
+        appDao.getAppListItems(pm, "C", "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(0, apps.size)
+        }
+
+        // empty search for unknown search term
+        appDao.getAppListItems(pm, "A", "foo bar", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(0, apps.size)
+        }
+    }
+
+    @Test
     fun testSortOrderByLastUpdated() {
         // insert three apps in a random order
         val repoId = repoDao.insertOrReplace(getRandomRepo())
@@ -46,7 +147,7 @@ internal class AppListItemsTest : AppTest() {
         every { pm.getInstalledPackages(0) } returns emptyList()
 
         // get apps sorted by last updated
-        appDao.getAppListItems(pm, LAST_UPDATED).getOrFail().let { apps ->
+        appDao.getAppListItems(pm, "", LAST_UPDATED).getOrFail().let { apps ->
             assertEquals(3, apps.size)
             // we expect apps to be sorted by last updated descending
             appPairs.sortedByDescending { (_, metadataV2) ->
@@ -70,7 +171,7 @@ internal class AppListItemsTest : AppTest() {
         every { pm.getInstalledPackages(0) } returns emptyList()
 
         // get apps sorted by name ascending
-        appDao.getAppListItems(pm, NAME).getOrFail().let { apps ->
+        appDao.getAppListItems(pm, null, NAME).getOrFail().let { apps ->
             assertEquals(3, apps.size)
             // we expect apps to be sorted by last updated descending
             appPairs.sortedBy { (_, metadataV2) ->
@@ -100,8 +201,8 @@ internal class AppListItemsTest : AppTest() {
 
         // get apps sorted by name and last update, test on both lists
         listOf(
-            appDao.getAppListItems(pm, NAME).getOrFail(),
-            appDao.getAppListItems(pm, LAST_UPDATED).getOrFail(),
+            appDao.getAppListItems(pm, "", NAME).getOrFail(),
+            appDao.getAppListItems(pm, null, LAST_UPDATED).getOrFail(),
         ).forEach { apps ->
             assertEquals(2, apps.size)
             // the installed app should have app data

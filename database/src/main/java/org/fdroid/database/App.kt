@@ -8,6 +8,7 @@ import androidx.room.DatabaseView
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Fts4
 import androidx.room.Ignore
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
@@ -103,6 +104,17 @@ internal fun MetadataV2.toAppMetadata(
     flattrID = flattrID,
     categories = categories,
     isCompatible = isCompatible,
+)
+
+@Entity
+@Fts4(contentEntity = AppMetadata::class)
+internal data class AppMetadataFts(
+    val repoId: Long,
+    val packageId: String,
+    @ColumnInfo(name = "localizedName")
+    val name: String? = null,
+    @ColumnInfo(name = "localizedSummary")
+    val summary: String? = null,
 )
 
 public data class App internal constructor(
