@@ -83,14 +83,24 @@ public interface AppDao {
         limit: Int = 50,
     ): LiveData<List<AppOverviewItem>>
 
+    /**
+     * Returns a list of all [AppListItem] sorted by the given [sortOrder],
+     * or a subset of [AppListItem]s filtered by the given [searchQuery] if it is non-null.
+     * In the later case, the [sortOrder] gets ignored.
+     */
     public fun getAppListItems(
         packageManager: PackageManager,
+        searchQuery: String?,
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>>
 
+    /**
+     * Like [getAppListItems], but further filter items by the given [category].
+     */
     public fun getAppListItems(
         packageManager: PackageManager,
         category: String,
+        searchQuery: String?,
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>>
 
@@ -354,19 +364,25 @@ internal interface AppDaoInt : AppDao {
 
     override fun getAppListItems(
         packageManager: PackageManager,
+        searchQuery: String?,
         sortOrder: AppListSortOrder,
-    ): LiveData<List<AppListItem>> = when (sortOrder) {
-        LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
-        NAME -> getAppListItemsByName().map(packageManager)
+    ): LiveData<List<AppListItem>> {
+        return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
+            LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
+            NAME -> getAppListItemsByName().map(packageManager)
+        } else getAppListItems(searchQuery)
     }
 
     override fun getAppListItems(
         packageManager: PackageManager,
         category: String,
+        searchQuery: String?,
         sortOrder: AppListSortOrder,
-    ): LiveData<List<AppListItem>> = when (sortOrder) {
-        LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
-        NAME -> getAppListItemsByName(category).map(packageManager)
+    ): LiveData<List<AppListItem>> {
+        return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
+            LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
+            NAME -> getAppListItemsByName(category).map(packageManager)
+        } else getAppListItems(category, searchQuery)
     }
 
     private fun LiveData<List<AppListItem>>.map(
@@ -382,6 +398,31 @@ internal interface AppDaoInt : AppDao {
             )
         }
     }
+
+    @Transaction
+    @Query("""
+        SELECT repoId, packageId, app.localizedName, app.localizedSummary, version.antiFeatures,
+               app.isCompatible
+        FROM AppMetadata AS app
+        JOIN AppMetadataFts USING (repoId, packageId)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND AppMetadataFts MATCH '"*' || :searchQuery || '*"'
+        GROUP BY packageId HAVING MAX(pref.weight)""")
+    fun getAppListItems(searchQuery: String): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query("""
+        SELECT repoId, packageId, app.localizedName, app.localizedSummary, version.antiFeatures,
+               app.isCompatible
+        FROM AppMetadata AS app
+        JOIN AppMetadataFts USING (repoId, packageId)
+        LEFT JOIN HighestVersion AS version USING (repoId, packageId)
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
+              AppMetadataFts MATCH '"*' || :searchQuery || '*"'
+        GROUP BY packageId HAVING MAX(pref.weight)""")
+    fun getAppListItems(category: String, searchQuery: String): LiveData<List<AppListItem>>
 
     @Transaction
     @Query("""
