@@ -2,6 +2,7 @@ package org.fdroid.index.v2
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.encoding.CompositeDecoder
 import kotlinx.serialization.encoding.CompositeDecoder.Companion.DECODE_DONE
 import kotlinx.serialization.encoding.Decoder
@@ -19,6 +20,7 @@ public class IndexV2FullStreamProcessor(
     private val json: Json = IndexParser.json,
 ) : IndexV2StreamProcessor {
 
+    @Throws(SerializationException::class, IllegalStateException::class)
     public override fun process(
         version: Long,
         inputStream: InputStream,

@@ -1,5 +1,10 @@
 package org.fdroid.index.v2
 
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonObject
 import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexParser.json
@@ -12,7 +17,9 @@ import java.io.File
 import java.io.FileInputStream
 import kotlin.reflect.full.primaryConstructor
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 internal class ReflectionDifferTest {
 
@@ -57,6 +64,74 @@ internal class ReflectionDifferTest {
         startPath = "src/sharedTest/resources/index-mid-v2.json",
         endPath = "src/sharedTest/resources/index-max-v2.json",
     )
+
+    @Test
+    fun testClassWithoutPrimaryConstructor() {
+        class NoConstructor {
+            @Suppress("ConvertSecondaryConstructorToPrimary", "UNUSED_PARAMETER")
+            constructor(i: Int)
+        }
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(NoConstructor(0), JsonObject(emptyMap()))
+        }.also { assertContains(it.message!!, "no primary constructor") }
+    }
+
+    @Test
+    fun testNoMemberForConstructorParameter() {
+        @Suppress("UNUSED_PARAMETER")
+        class NoConstructor(i: Int)
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(NoConstructor(0), JsonObject(emptyMap()))
+        }.also { assertContains(it.message!!, "no member property for constructor") }
+    }
+
+    @Test
+    fun testNullingRequiredParameter() {
+        data class Required(val test: String)
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(
+                Required("foo"),
+                JsonObject(mapOf("test" to JsonNull))
+            )
+        }.also { assertContains(it.message!!, "not nullable: test") }
+    }
+
+    @Test
+    fun testWrongTypes() {
+        data class Types(val str: String? = null, val i: Int? = null, val l: Long? = null)
+
+        // string as object
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(
+                Types(str = "foo"),
+                JsonObject(mapOf("str" to JsonObject(emptyMap())))
+            )
+        }.also { assertContains(it.message!!, "str no string") }
+
+        // int as string
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(
+                Types(i = 23),
+                JsonObject(mapOf("i" to JsonPrimitive("test")))
+            )
+        }.also { assertContains(it.message!!, "i no int") }
+
+        // int as long
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(
+                Types(i = 23),
+                JsonObject(mapOf("i" to JsonPrimitive(Long.MAX_VALUE)))
+            )
+        }.also { assertContains(it.message!!, "i no int") }
+
+        // long as array
+        assertFailsWith<SerializationException> {
+            ReflectionDiffer.applyDiff(
+                Types(l = 23L),
+                JsonObject(mapOf("l" to JsonArray(emptyList())))
+            )
+        }.also { assertContains(it.message!!, "l no long") }
+    }
 
     private fun testDiff(diffPath: String, startPath: String, endPath: String) {
         val diffFile = File(diffPath)

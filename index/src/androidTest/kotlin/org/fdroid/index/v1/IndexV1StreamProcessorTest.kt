@@ -1,5 +1,6 @@
 package org.fdroid.index.v1
 
+import kotlinx.serialization.SerializationException
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.IndexV2
@@ -14,9 +15,13 @@ import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.v1compat
 import org.junit.Test
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileInputStream
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
 import kotlin.test.fail
 
 internal class IndexV1StreamProcessorTest {
@@ -57,6 +62,65 @@ internal class IndexV1StreamProcessorTest {
             TestDataMaxV2.indexCompat)
     }
 
+    @Test
+    fun testMalformedIndex() {
+        // empty dict
+        assertFailsWith<IllegalArgumentException> {
+            testStreamError("{ }")
+        }.also { assertContains(it.message!!, "Failed requirement") }
+
+        // garbage input
+        assertFailsWith<SerializationException> {
+            testStreamError("{ 23^^%*dfDFG568 }")
+        }
+
+        // empty repo dict
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                "repo": {}
+            }""".trimIndent())
+        }.also { assertContains(it.message!!, "timestamp") }
+
+        // timestamp not a number
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                "repo": { "timestamp": "string" }
+            }""".trimIndent())
+        }.also { assertContains(it.message!!, "numeric literal") }
+
+        // remember valid repo for further tests
+        val validRepo = """
+            "repo": {
+                    "timestamp": 42,
+                    "version": 23,
+                    "name": "foo",
+                    "icon": "bar",
+                    "address": "https://example.com",
+                    "description": "desc"
+                }
+        """.trimIndent()
+
+        // apps is dict
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                $validRepo,
+                "requests": {"install": [], "uninstall": []},
+                "apps": {}
+            }""".trimIndent())
+        }.also { assertContains(it.message!!, "apps") }
+
+        // packages is list
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                $validRepo,
+                "requests": {"install": [], "uninstall": []},
+                "apps": [],
+                "packages": []
+            }""".trimIndent())
+        }.also { assertContains(it.message!!, "packages") }
+
+    }
+
     private fun testStreamProcessing(
         filePath: String,
         indexV2: IndexV2,
@@ -68,6 +132,14 @@ internal class IndexV1StreamProcessorTest {
         FileInputStream(file).use { streamProcessor.process(it) }
         assertEquals(indexV2.repo, testStreamReceiver.repo)
         assertEquals(indexV2.packages, testStreamReceiver.packages)
+    }
+
+    private fun testStreamError(index: String) {
+        val testStreamReceiver = TestStreamReceiver()
+        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null, -1)
+        ByteArrayInputStream(index.encodeToByteArray()).use { streamProcessor.process(it) }
+        assertNull(testStreamReceiver.repo)
+        assertEquals(0, testStreamReceiver.packages.size)
     }
 
     @Suppress("DEPRECATION")

@@ -2,14 +2,17 @@ package org.fdroid.index.v2
 
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.int
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import kotlinx.serialization.json.long
+import kotlinx.serialization.json.longOrNull
 import kotlinx.serialization.serializer
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
@@ -28,10 +31,10 @@ public object ReflectionDiffer {
     @Throws(SerializationException::class)
     public fun applyDiff(
         obj: Map<String, *>,
-        diff: JsonObject?,
+        diff: JsonObject,
         isFileV2: Boolean = false,
     ): Map<String, *> = obj.toMutableMap().apply {
-        diff?.entries?.forEach { (key, value) ->
+        diff.entries.forEach { (key, value) ->
             when (value) {
                 is JsonNull -> remove(key)
                 is JsonPrimitive -> set(key, value.jsonPrimitive.content)
@@ -45,7 +48,7 @@ public object ReflectionDiffer {
                 }
                 else -> e("unsupported map value: $value")
             }
-        } ?: e("no object")
+        }
     }
 
     @Throws(SerializationException::class)
@@ -67,22 +70,26 @@ public object ReflectionDiffer {
             }
             @Suppress("UNCHECKED_CAST")
             params[parameter] = when (prop.returnType.classifier) {
-                Int::class -> diff[prop.name]?.jsonPrimitive?.int ?: e("${prop.name} no int")
-                Long::class -> diff[prop.name]?.jsonPrimitive?.long ?: e("${prop.name} no long")
-                String::class -> diff[prop.name]?.jsonPrimitive?.content
+                Int::class -> diff[prop.name]?.primitiveOrNull()?.intOrNull
+                    ?: e("${prop.name} no int")
+                Long::class -> diff[prop.name]?.primitiveOrNull()?.longOrNull
+                    ?: e("${prop.name} no long")
+                String::class -> diff[prop.name]?.primitiveOrNull()?.contentOrNull
                     ?: e("${prop.name} no string")
-                List::class -> diff[prop.name]?.jsonArray?.map { it.jsonPrimitive.content }
-                Map::class -> if (prop.name == "icon") applyDiff( // yes this is super hacky
-                    prop.getter.call(obj) as? Map<String, *> ?: emptyMap<String, FileV2>(),
-                    diff[prop.name]?.jsonObject ?: e("${prop.name} no map"),
-                    true
+                List::class -> diff[prop.name]?.jsonArrayOrNull()?.map {
+                    it.primitiveOrNull()?.contentOrNull ?: e("${prop.name} non-primitive array")
+                } ?: e("${prop.name} no array")
+                Map::class -> if (prop.name == "icon") applyDiff(
+                    obj = prop.getter.call(obj) as? Map<String, *> ?: emptyMap<String, FileV2>(),
+                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no map"),
+                    isFileV2 = true, // yes this is super hacky
                 ) else applyDiff(
-                    prop.getter.call(obj) as? Map<String, *> ?: emptyMap<String, String>(),
-                    diff[prop.name]?.jsonObject ?: e("${prop.name} no map")
+                    obj = prop.getter.call(obj) as? Map<String, *> ?: emptyMap<String, String>(),
+                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no map"),
                 )
                 else -> {
                     val newObj = prop.getter.call(obj)
-                    val jsonObject = diff[prop.name] as JsonObject
+                    val jsonObject = diff[prop.name] as? JsonObject ?: e("${prop.name} no dict")
                     if (newObj == null) {
                         val factory = (prop.returnType.classifier as KClass<*>).primaryConstructor!!
                         constructFromJson(factory, jsonObject)
@@ -95,6 +102,12 @@ public object ReflectionDiffer {
         return constructor.callBy(params)
     }
 
+    /**
+     * Used when the diff introduces a new object.
+     * As the object did not exist before, we can not apply a diff to it,
+     * but must construct it from scratch.
+     * We use the given [factory] for that which is typically a constructor of the object <T>.
+     */
     @Throws(SerializationException::class)
     internal fun <T : Any> constructFromJson(
         factory: KFunction<T>,
@@ -112,21 +125,44 @@ public object ReflectionDiffer {
                 return@forEach
             }
             params[prop] = when (prop.type.classifier) {
-                Int::class -> diff[prop.name]?.jsonPrimitive?.int ?: e("no int")
-                Long::class -> diff[prop.name]?.jsonPrimitive?.long ?: e("no long")
-                String::class -> diff[prop.name]?.jsonPrimitive?.content ?: e("no string")
-                List::class -> diff[prop.name]?.jsonArray?.map { it.jsonPrimitive.content }
+                Int::class -> diff[prop.name]?.primitiveOrNull()?.intOrNull
+                    ?: e("${prop.name} no int")
+                Long::class -> diff[prop.name]?.primitiveOrNull()?.longOrNull
+                    ?: e("${prop.name} no long")
+                String::class -> diff[prop.name]?.primitiveOrNull()?.contentOrNull
+                    ?: e("${prop.name} no string")
+                List::class -> diff[prop.name]?.jsonArrayOrNull()?.map {
+                    it.primitiveOrNull()?.contentOrNull ?: e("${prop.name} non-primitive array")
+                } ?: e("${prop.name} no array")
                 Map::class -> applyDiff(
                     obj = HashMap<String, String>(),
-                    diff = diff[prop.name]?.jsonObject!!,
+                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no dict"),
                 )
                 else -> constructFromJson(
                     factory = (prop.type.classifier as KClass<*>).primaryConstructor!!,
-                    diff = diff[prop.name]?.jsonObject!!,
+                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no dict"),
                 )
             }
         }
         return factory.callBy(params)
+    }
+
+    private fun JsonElement.primitiveOrNull(): JsonPrimitive? = try {
+        jsonPrimitive
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+
+    private fun JsonElement.jsonArrayOrNull(): JsonArray? = try {
+        jsonArray
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+
+    private fun JsonElement.jsonObjectOrNull(): JsonObject? = try {
+        jsonObject
+    } catch (e: IllegalArgumentException) {
+        null
     }
 
     @Throws(SerializationException::class)

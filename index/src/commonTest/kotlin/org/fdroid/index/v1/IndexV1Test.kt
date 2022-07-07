@@ -1,13 +1,16 @@
 package org.fdroid.index.v1
 
 import com.goncalossilva.resources.Resource
+import kotlinx.serialization.SerializationException
 import org.fdroid.index.IndexParser.parseV1
 import org.fdroid.test.TestDataEmptyV1
 import org.fdroid.test.TestDataMaxV1
 import org.fdroid.test.TestDataMidV1
 import org.fdroid.test.TestDataMinV1
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 internal class IndexV1Test {
 
@@ -41,6 +44,65 @@ internal class IndexV1Test {
         val indexStr = indexRes.readText()
         val index = parseV1(indexStr)
         assertEquals(TestDataMaxV1.index, index)
+    }
+
+    @Test
+    fun testMalformedV1() {
+        // empty json dict
+        assertFailsWith<SerializationException> {
+            parseV1("{}")
+        }.also { assertContains(it.message!!, "repo") }
+
+        // garbage input
+        assertFailsWith<SerializationException> {
+            parseV1("efoj324#FD@(DJ#@DLKWf")
+        }
+
+        // empty repo dict
+        assertFailsWith<SerializationException> {
+            parseV1("""{
+                "repo": {}
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "timestamp") }
+
+        // timestamp not a number
+        assertFailsWith<SerializationException> {
+            parseV1("""{
+                "repo": { "timestamp": "string" }
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "numeric literal") }
+
+        // remember valid repo for further tests
+        val validRepo = """
+            "repo": {
+                    "timestamp": 42,
+                    "version": 23,
+                    "name": "foo",
+                    "icon": "bar",
+                    "address": "https://example.com",
+                    "description": "desc"
+                }
+        """.trimIndent()
+
+        // apps is dict
+        assertFailsWith<SerializationException> {
+            parseV1("""{
+                $validRepo,
+                "apps": {}
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "apps") }
+
+        // packages is list
+        assertFailsWith<SerializationException> {
+            parseV1("""{
+                $validRepo,
+                "packages": []
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "packages") }
     }
 
 }

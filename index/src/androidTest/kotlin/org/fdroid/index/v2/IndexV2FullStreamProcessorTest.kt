@@ -1,6 +1,7 @@
 package org.fdroid.index.v2
 
 import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.SerializationException
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
@@ -9,9 +10,12 @@ import org.fdroid.test.TestUtils.getRandomString
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileInputStream
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -48,10 +52,61 @@ internal class IndexV2FullStreamProcessorTest {
         testStreamProcessing("src/sharedTest/resources/index-max-v2.json", TestDataMaxV2.index, 3)
     }
 
+    @Test
+    fun testMalformedIndex() {
+        // empty dict
+        assertFailsWith<IllegalStateException> {
+            testStreamError("{ }")
+        }.also { assertContains(it.message!!, "Unexpected startIndex") }
+
+        // garbage input
+        assertFailsWith<SerializationException> {
+            testStreamError("{ 23^^%*dfDFG568 }")
+        }
+
+        // repo is a number
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                "repo": 1
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "object") }
+
+        // repo is empty
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                "repo": { }
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "timestamp") }
+
+        // repo misses address
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                "repo": {
+                    "timestamp": 23
+                }
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "address") }
+
+        // packages is list
+        assertFailsWith<SerializationException> {
+            testStreamError("""{
+                "repo": {
+                    "timestamp": 23,
+                    "address": "http://example.com"
+                },
+                "packages": []
+            }""".trimIndent()
+            )
+        }.also { assertContains(it.message!!, "object") }
+    }
+
     /**
      * Tests that index parsed with a stream receiver is equal to the expected test data.
      */
-    fun testStreamProcessing(filePath: String, index: IndexV2, expectedNumApps: Int) {
+    private fun testStreamProcessing(filePath: String, index: IndexV2, expectedNumApps: Int) {
         val file = File(filePath)
         val testStreamReceiver = TestStreamReceiver()
         val certificate = getRandomString()
@@ -68,6 +123,23 @@ internal class IndexV2FullStreamProcessorTest {
         assertEquals(certificate, testStreamReceiver.certificate)
         assertEquals(index.packages, testStreamReceiver.packages)
         assertEquals(expectedNumApps, totalApps)
+    }
+
+    private fun testStreamError(str: String) {
+        val testStreamReceiver = TestStreamReceiver()
+        val certificate = getRandomString()
+        val streamProcessor = IndexV2FullStreamProcessor(testStreamReceiver, certificate)
+        var totalApps = 0
+        ByteArrayInputStream(str.encodeToByteArray()).use {
+            streamProcessor.process(42, it) { numAppsProcessed ->
+                totalApps = numAppsProcessed
+            }
+        }
+
+        assertTrue(testStreamReceiver.calledOnStreamEnded)
+        assertEquals(certificate, testStreamReceiver.certificate)
+        assertEquals(0, testStreamReceiver.packages.size)
+        assertEquals(0, totalApps)
     }
 
     private open class TestStreamReceiver : IndexV2StreamReceiver {

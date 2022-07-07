@@ -90,6 +90,34 @@ internal class BestLocaleTest {
         )
     }
 
+    @Test
+    fun testInvalidLocales() {
+        // underscores
+        assertEquals(
+            "en-US",
+            getMap("de_AT", "de_DE", "en-US").getBestLocale(getLocaleList("en-US, de-DE")),
+        )
+
+        // different case
+        assertEquals(
+            "en-US",
+            getMap("DE_at", "dE_De", "en-US").getBestLocale(getLocaleList("en-US, de-DE")),
+        )
+
+        // garbage in given locales
+        assertEquals(
+            "en-US",
+            getMap(
+                "foo-Bar",
+                "324;kfj4297h4c2oj",
+                "2342142143",
+                "de_DE",
+                "#$%#!$^#&^%#*",
+                "en-US",
+            ).getBestLocale(getLocaleList("en-US, de-DE")),
+        )
+    }
+
     private fun getLocaleList(tags: String): LocaleListCompat {
         return LocaleListCompat.forLanguageTags(tags)
     }
