@@ -139,6 +139,23 @@ public class RepoXMLHandler extends DefaultHandler {
                     }
                 }
             }
+            if (Build.VERSION.SDK_INT >= 33) {
+                if (curapk.targetSdkVersion >= 33) {
+                    // Do nothing. The targetSdk for the below split-permissions is set to 33,
+                    // so we don't make any changes for apps targetting 33 or above
+                } else {
+                    // TODO: Change the strings below to Manifest.permission once we target SDK 33.
+                    if (requestedPermissionsSet.contains(Manifest.permission.BODY_SENSORS)) {
+                        requestedPermissionsSet.add("android.permission.BODY_SENSORS_BACKGROUND");
+                    }
+                    if (requestedPermissionsSet.contains(Manifest.permission.READ_EXTERNAL_STORAGE) ||
+                            requestedPermissionsSet.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        requestedPermissionsSet.add("android.permission.READ_MEDIA_AUDIO");
+                        requestedPermissionsSet.add("android.permission.READ_MEDIA_VIDEO");
+                        requestedPermissionsSet.add("android.permission.READ_MEDIA_IMAGES");
+                    }
+                }
+            }
             int size = requestedPermissionsSet.size();
             curapk.requestedPermissions = requestedPermissionsSet.toArray(new String[size]);
             requestedPermissionsSet.clear();
