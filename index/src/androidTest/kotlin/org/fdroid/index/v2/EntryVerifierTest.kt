@@ -10,13 +10,13 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
-internal class IndexV2VerifierTest {
+internal class EntryVerifierTest {
 
     @Test
     fun testNoCertAndFingerprintAllowed() {
         val file = File("$VERIFICATION_DIR/valid-v2.jar")
         assertFailsWith<IllegalArgumentException> {
-            IndexV2Verifier(file, CERTIFICATE, FINGERPRINT)
+            EntryVerifier(file, CERTIFICATE, FINGERPRINT)
         }
     }
 
@@ -24,7 +24,7 @@ internal class IndexV2VerifierTest {
     fun testValid() {
         val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -35,7 +35,7 @@ internal class IndexV2VerifierTest {
     fun testValidApkSigner() {
         val file = File("$VERIFICATION_DIR/valid-apksigner-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -46,7 +46,7 @@ internal class IndexV2VerifierTest {
     fun testValidMatchesFingerprint() {
         val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, FINGERPRINT)
+        val verifier = EntryVerifier(file, null, FINGERPRINT)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -57,7 +57,7 @@ internal class IndexV2VerifierTest {
     fun testValidWrongFingerprint() {
         val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, "foo bar")
+        val verifier = EntryVerifier(file, null, "foo bar")
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { inputStream ->
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
@@ -70,7 +70,7 @@ internal class IndexV2VerifierTest {
     fun testValidWithExpectedCertificate() {
         val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV2Verifier(file, CERTIFICATE, null)
+        val verifier = EntryVerifier(file, CERTIFICATE, null)
         val (certificate, _) = verifier.getStreamAndVerify { inputStream ->
             assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
@@ -81,7 +81,7 @@ internal class IndexV2VerifierTest {
     fun testValidWithWrongCertificate() {
         val file = File("$VERIFICATION_DIR/valid-v2.jar")
 
-        val verifier = IndexV2Verifier(file, FINGERPRINT, null)
+        val verifier = EntryVerifier(file, FINGERPRINT, null)
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { inputStream ->
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
@@ -94,7 +94,7 @@ internal class IndexV2VerifierTest {
     fun testUnsigned() {
         val file = File("$VERIFICATION_DIR/unsigned.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { inputStream ->
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
@@ -106,7 +106,7 @@ internal class IndexV2VerifierTest {
     fun testInvalid() {
         val file = File("$VERIFICATION_DIR/invalid-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { }
         }
@@ -116,7 +116,7 @@ internal class IndexV2VerifierTest {
     fun testWrongEntry() {
         val file = File("$VERIFICATION_DIR/invalid-wrong-entry-v1.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { }
         }
@@ -127,7 +127,7 @@ internal class IndexV2VerifierTest {
     fun testSHA1Digest() {
         val file = File("$VERIFICATION_DIR/invalid-SHA1-SHA1withRSA-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { }
         }
@@ -138,7 +138,7 @@ internal class IndexV2VerifierTest {
     fun testMD5Digest() {
         val file = File("$VERIFICATION_DIR/invalid-MD5-SHA1withRSA-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { }
         }
@@ -149,7 +149,7 @@ internal class IndexV2VerifierTest {
     fun testMD5SignatureAlgo() {
         val file = File("$VERIFICATION_DIR/invalid-MD5-MD5withRSA-v2.jar")
 
-        val verifier = IndexV2Verifier(file, null, null)
+        val verifier = EntryVerifier(file, null, null)
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { }
         }

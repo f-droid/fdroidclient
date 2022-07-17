@@ -12,9 +12,9 @@ private val FORBIDDEN_DIGESTS = listOf(
 )
 
 /**
- * Verifies the Index V2.
+ * Verifies the `entry.jar` file of Index V2.
  *
- * @param jarFile the signed jar file to verify.
+ * @param jarFile the signed `entry.jar` file to verify.
  * @param expectedSigningCertificate The signing certificate of the repo encoded in lower case hex,
  * if it is known already. This should only be null if the repo is unknown.
  * Then we trust it on first use (TOFU).
@@ -23,7 +23,7 @@ private val FORBIDDEN_DIGESTS = listOf(
  * Even if [expectedSigningFingerprint] is null, the fingerprint might be known and can be used to
  * verify that it matches the signing certificate.
  */
-public class IndexV2Verifier(
+public class EntryVerifier(
     jarFile: File,
     expectedSigningCertificate: String?,
     expectedSigningFingerprint: String?,
