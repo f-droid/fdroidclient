@@ -2,6 +2,7 @@ plugins {
     id 'kotlin-android'
     id 'com.android.library'
     id 'kotlin-kapt'
+    id 'org.jetbrains.dokka'
     id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
 }
 
@@ -95,6 +96,16 @@ dependencies {
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'commons-io:commons-io:2.6'
+}
+
+import org.jetbrains.dokka.gradle.DokkaTask
+tasks.withType(DokkaTask).configureEach {
+    pluginsMapConfiguration.set(
+            ["org.jetbrains.dokka.base.DokkaBase": """{
+                "customAssets": ["${file("${rootProject.rootDir}/logo-icon.svg")}"],
+                "footerMessage": "© 2010-2022 F-Droid Limited and Contributors"
+            }"""]
+    )
 }
 
 apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"

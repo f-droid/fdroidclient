@@ -148,11 +148,12 @@ pages:
   only:
     - master
   script:
-    - ./gradlew :download:dokkaHtml :index:dokkaHtml
+    - ./gradlew :download:dokkaHtml :index:dokkaHtml :database:dokkaHtml
     - mkdir public
     - touch public/index.html
     - cp -r download/build/dokka/html public/download
     - cp -r index/build/dokka/html public/index
+    - cp -r database/build/dokka/html public/database
   artifacts:
     paths:
       - public
