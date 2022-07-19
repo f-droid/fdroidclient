@@ -33,7 +33,7 @@ public class DbUpdateChecker(
         val packageNames = installedPackages.map { it.packageName }
         val versionsByPackage = HashMap<String, ArrayList<Version>>(packageNames.size)
         versionDao.getVersions(packageNames).forEach { version ->
-            val list = versionsByPackage.getOrPut(version.packageId) { ArrayList() }
+            val list = versionsByPackage.getOrPut(version.packageName) { ArrayList() }
             list.add(version)
         }
         installedPackages.iterator().forEach { packageInfo ->
@@ -73,7 +73,7 @@ public class DbUpdateChecker(
             releaseChannels) ?: return null
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
-            packageName = version.packageId,
+            packageName = version.packageName,
             versionId = version.versionId,
         )
         return version.toAppVersion(versionedStrings)
@@ -109,15 +109,16 @@ public class DbUpdateChecker(
     private fun getUpdatableApp(version: Version, installedVersionCode: Long): UpdatableApp? {
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
-            packageName = version.packageId,
+            packageName = version.packageName,
             versionId = version.versionId,
         )
         val appOverviewItem =
-            appDao.getAppOverviewItem(version.repoId, version.packageId) ?: return null
+            appDao.getAppOverviewItem(version.repoId, version.packageName) ?: return null
         return UpdatableApp(
-            packageId = version.packageId,
+            repoId = version.repoId,
+            packageName = version.packageName,
             installedVersionCode = installedVersionCode,
-            upgrade = version.toAppVersion(versionedStrings),
+            update = version.toAppVersion(versionedStrings),
             hasKnownVulnerability = version.hasKnownVulnerability,
             name = appOverviewItem.name,
             summary = appOverviewItem.summary,

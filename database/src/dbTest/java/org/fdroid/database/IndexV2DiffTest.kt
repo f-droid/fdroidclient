@@ -207,11 +207,11 @@ internal class IndexV2DiffTest : DbTest() {
                 endIndex = TestDataMinV2.index,
             )
         }
-        val diffPackageIdJson = """{
+        val diffPackageNameJson = """{
           "packages": {
             "org.fdroid.min1": {
               "metadata": {
-                "packageId": "foo"
+                "packageName": "foo"
               }
             }
           }
@@ -219,7 +219,7 @@ internal class IndexV2DiffTest : DbTest() {
         assertFailsWith<SerializationException> {
             testJsonDiff(
                 startPath = "index-min-v2.json",
-                diff = diffPackageIdJson,
+                diff = diffPackageNameJson,
                 endIndex = TestDataMinV2.index,
             )
         }
@@ -230,7 +230,7 @@ internal class IndexV2DiffTest : DbTest() {
         assertFailsWith<SerializationException> {
             testJsonDiff(
                 startPath = "index-min-v2.json",
-                diff = getMinVersionJson(""""packageId": "foo""""),
+                diff = getMinVersionJson(""""packageName": "foo""""),
                 endIndex = TestDataMinV2.index,
             )
         }

@@ -64,7 +64,7 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
             assertEquals(2, apps.size)
             // sort-order isn't fixes, yet
-            if (apps[0].packageId == packageName2) {
+            if (apps[0].packageName == packageName2) {
                 assertEquals(app2, apps[0])
                 assertEquals(app3, apps[1])
             } else {
@@ -109,7 +109,7 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "A", "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
             assertEquals(2, apps.size)
             // sort-order isn't fixes, yet
-            if (apps[0].packageId == packageName2) {
+            if (apps[0].packageName == packageName2) {
                 assertEquals(app2, apps[0])
                 assertEquals(app3, apps[1])
             } else {
@@ -153,7 +153,7 @@ internal class AppListItemsTest : AppTest() {
             appPairs.sortedByDescending { (_, metadataV2) ->
                 metadataV2.lastUpdated
             }.forEachIndexed { i, pair ->
-                assertEquals(pair.first, apps[i].packageId)
+                assertEquals(pair.first, apps[i].packageName)
                 assertEquals(pair.second, apps[i])
             }
         }
@@ -177,7 +177,7 @@ internal class AppListItemsTest : AppTest() {
             appPairs.sortedBy { (_, metadataV2) ->
                 metadataV2.name.getBestLocale(locales)
             }.forEachIndexed { i, pair ->
-                assertEquals(pair.first, apps[i].packageId)
+                assertEquals(pair.first, apps[i].packageName)
                 assertEquals(pair.second, apps[i])
             }
         }
@@ -206,8 +206,8 @@ internal class AppListItemsTest : AppTest() {
         ).forEach { apps ->
             assertEquals(2, apps.size)
             // the installed app should have app data
-            val installed = if (apps[0].packageId == packageName1) apps[1] else apps[0]
-            val other = if (apps[0].packageId == packageName1) apps[0] else apps[1]
+            val installed = if (apps[0].packageName == packageName1) apps[1] else apps[0]
+            val other = if (apps[0].packageName == packageName1) apps[0] else apps[1]
             assertEquals(packageInfo2.versionName, installed.installedVersionName)
             assertEquals(packageInfo2.getVersionCode(), installed.installedVersionCode)
             assertNull(other.installedVersionName)
@@ -239,7 +239,7 @@ internal class AppListItemsTest : AppTest() {
         // now only one is not compatible
         getItems { apps ->
             assertEquals(2, apps.size)
-            if (apps[0].packageId == packageName1) {
+            if (apps[0].packageName == packageName1) {
                 assertTrue(apps[0].isCompatible)
                 assertFalse(apps[1].isCompatible)
             } else {
@@ -259,7 +259,7 @@ internal class AppListItemsTest : AppTest() {
         getItems { apps ->
             assertEquals(1, apps.size)
             assertNull(apps[0].antiFeatures)
-            assertEquals(emptyList(), apps[0].getAntiFeatureNames())
+            assertEquals(emptyList(), apps[0].antiFeatureKeys)
         }
 
         // app gets a version
@@ -270,7 +270,7 @@ internal class AppListItemsTest : AppTest() {
         // note that installed versions don't contain anti-features, so they are ignored
         getItems(alsoInstalled = false) { apps ->
             assertEquals(1, apps.size)
-            assertEquals(version1.antiFeatures.map { it.key }, apps[0].getAntiFeatureNames())
+            assertEquals(version1.antiFeatures.map { it.key }, apps[0].antiFeatureKeys)
         }
 
         // app gets another version
@@ -281,7 +281,7 @@ internal class AppListItemsTest : AppTest() {
         // note that installed versions don't contain anti-features, so they are ignored
         getItems(alsoInstalled = false) { apps ->
             assertEquals(1, apps.size)
-            assertEquals(version1.antiFeatures.map { it.key }, apps[0].getAntiFeatureNames())
+            assertEquals(version1.antiFeatures.map { it.key }, apps[0].antiFeatureKeys)
         }
     }
 
@@ -328,7 +328,7 @@ internal class AppListItemsTest : AppTest() {
         // app from repo with highest weight is returned (app1)
         getItems { apps ->
             assertEquals(1, apps.size)
-            assertEquals(packageName, apps[0].packageId)
+            assertEquals(packageName, apps[0].packageName)
             assertEquals(app1, apps[0])
         }
     }
@@ -347,8 +347,8 @@ internal class AppListItemsTest : AppTest() {
             appDao.getAppListItemsByLastUpdated("B").getOrFail(),
         ).forEach { apps ->
             assertEquals(2, apps.size)
-            assertNotEquals(packageName2, apps[0].packageId)
-            assertNotEquals(packageName2, apps[1].packageId)
+            assertNotEquals(packageName2, apps[0].packageName)
+            assertNotEquals(packageName2, apps[1].packageName)
         }
 
         // no app is in category C

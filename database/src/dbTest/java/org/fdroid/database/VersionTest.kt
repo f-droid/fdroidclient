@@ -61,8 +61,8 @@ internal class VersionTest : DbTest() {
         assertEquals(versionId1, appVersion.version.versionId)
         assertEquals(getVersion1(repoId), appVersion.version)
         val manifest = packageVersion1.manifest
-        assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission?.toSet())
-        assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23?.toSet())
+        assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission.toSet())
+        assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23.toSet())
         assertEquals(
             manifest.features.map { it.name }.toSet(),
             appVersion.version.manifest.features?.toSet()
@@ -98,8 +98,8 @@ internal class VersionTest : DbTest() {
         // check first version matches
         assertEquals(getVersion1(repoId), appVersion.version)
         val manifest = packageVersion1.manifest
-        assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission?.toSet())
-        assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23?.toSet())
+        assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission.toSet())
+        assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23.toSet())
         assertEquals(
             manifest.features.map { it.name }.toSet(),
             appVersion.version.manifest.features?.toSet()
@@ -108,9 +108,9 @@ internal class VersionTest : DbTest() {
         // check second version matches
         assertEquals(getVersion2(repoId), appVersion2.version)
         val manifest2 = packageVersion2.manifest
-        assertEquals(manifest2.usesPermission.toSet(), appVersion2.usesPermission?.toSet())
+        assertEquals(manifest2.usesPermission.toSet(), appVersion2.usesPermission.toSet())
         assertEquals(manifest2.usesPermissionSdk23.toSet(),
-            appVersion2.usesPermissionSdk23?.toSet())
+            appVersion2.usesPermissionSdk23.toSet())
         assertEquals(
             manifest.features.map { it.name }.toSet(),
             appVersion.version.manifest.features?.toSet()

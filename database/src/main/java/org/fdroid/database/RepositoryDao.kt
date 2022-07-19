@@ -13,6 +13,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
 import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
+import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff

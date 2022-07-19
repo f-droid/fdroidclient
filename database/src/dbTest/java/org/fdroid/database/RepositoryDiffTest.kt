@@ -107,7 +107,7 @@ internal class RepositoryDiffTest : DbTest() {
             }""".trimIndent()
         val expectedText = if (updateText == null) emptyMap() else mapOf("en" to "foo")
         testDiff(repo, json) { repos ->
-            assertEquals(expectedText, repos[0].description)
+            assertEquals(expectedText, repos[0].repository.description)
             assertRepoEquals(repo.copy(description = expectedText), repos[0])
         }
     }
@@ -139,7 +139,34 @@ internal class RepositoryDiffTest : DbTest() {
 
     @Test
     fun antiFeatureKeyChangeDiff() {
-        // TODO test with changing keys
+        val antiFeatureKey = getRandomString()
+        val antiFeature = AntiFeatureV2(
+            icon = getRandomFileV2(),
+            name = getRandomLocalizedTextV2(),
+            description = getRandomLocalizedTextV2(),
+        )
+        val antiFeatures = mapOf(antiFeatureKey to antiFeature)
+        val repo = getRandomRepo().copy(antiFeatures = antiFeatures)
+
+        @Suppress("UNCHECKED_CAST")
+        val newAntiFeatures = mapOf(antiFeatureKey to antiFeature.copy(
+            icon = null,
+            name = getRandomLocalizedTextV2(),
+            description = getRandomLocalizedTextV2(),
+        ))
+        val json = """
+            {
+              "antiFeatures": {
+                  "$antiFeatureKey": ${Json.encodeToString(newAntiFeatures)}
+              }
+            }""".trimIndent()
+        testDiff(repo, json) { repos ->
+            val expectedFeatures = repo.antiFeatures.applyDiff(antiFeatures)
+            val expectedRepoAntiFeatures =
+                expectedFeatures.toRepoAntiFeatures(repos[0].repoId)
+            assertEquals(expectedRepoAntiFeatures.toSet(), repos[0].antiFeatures.toSet())
+            assertRepoEquals(repo.copy(antiFeatures = expectedFeatures), repos[0])
+        }
     }
 
     @Test
@@ -168,11 +195,6 @@ internal class RepositoryDiffTest : DbTest() {
     }
 
     @Test
-    fun categoriesKeyChangeDiff() {
-        // TODO test with changing keys
-    }
-
-    @Test
     fun releaseChannelsDiff() {
         val repo = getRandomRepo().copy(releaseChannels = getRandomMap {
             getRandomString() to ReleaseChannelV2(
@@ -194,11 +216,6 @@ internal class RepositoryDiffTest : DbTest() {
             assertEquals(expectedRepoReleaseChannels.toSet(), repos[0].releaseChannels.toSet())
             assertRepoEquals(repo.copy(releaseChannels = expectedFeatures), repos[0])
         }
-    }
-
-    @Test
-    fun releaseChannelKeyChangeDiff() {
-        // TODO test with changing keys
     }
 
     private fun testDiff(repo: RepoV2, json: String, repoChecker: (List<Repository>) -> Unit) {

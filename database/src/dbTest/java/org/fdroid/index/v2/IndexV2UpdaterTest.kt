@@ -8,11 +8,11 @@ import io.mockk.just
 import io.mockk.mockk
 import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbTest
-import org.fdroid.database.IndexFormatVersion.TWO
 import org.fdroid.database.Repository
 import org.fdroid.database.TestUtils.assertTimestampRecent
 import org.fdroid.download.Downloader
 import org.fdroid.download.DownloaderFactory
+import org.fdroid.index.IndexFormatVersion.TWO
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider

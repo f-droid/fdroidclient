@@ -55,7 +55,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(emptyList(), actualRepo.categories)
         assertEquals(emptyList(), actualRepo.releaseChannels)
         assertNull(actualRepo.formatVersion)
-        assertNull(actualRepo.icon)
+        assertNull(actualRepo.repository.icon)
         assertNull(actualRepo.lastUpdated)
         assertNull(actualRepo.webBaseUrl)
     }
@@ -79,7 +79,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(emptyList(), actualRepo.categories)
         assertEquals(emptyList(), actualRepo.releaseChannels)
         assertNull(actualRepo.formatVersion)
-        assertNull(actualRepo.icon)
+        assertNull(actualRepo.repository.icon)
         assertNull(actualRepo.lastUpdated)
         assertNull(actualRepo.webBaseUrl)
     }
@@ -230,17 +230,17 @@ internal class RepositoryDaoTest : DbTest() {
         // insert one repo with one app with one version
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         val repositoryPreferences = repoDao.getRepositoryPreferences(repoId)
-        val packageId = getRandomString()
+        val packageName = getRandomString()
         val versionId = getRandomString()
-        appDao.insert(repoId, packageId, getRandomMetadataV2())
+        appDao.insert(repoId, packageName, getRandomMetadataV2())
         val packageVersion = getRandomPackageVersionV2()
-        versionDao.insert(repoId, packageId, versionId, packageVersion, Random.nextBoolean())
+        versionDao.insert(repoId, packageName, versionId, packageVersion, Random.nextBoolean())
 
         // data is there as expected
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(1, appDao.getAppMetadata().size)
-        assertEquals(1, versionDao.getAppVersions(repoId, packageId).size)
-        assertTrue(versionDao.getVersionedStrings(repoId, packageId).isNotEmpty())
+        assertEquals(1, versionDao.getAppVersions(repoId, packageName).size)
+        assertTrue(versionDao.getVersionedStrings(repoId, packageName).isNotEmpty())
 
         // clearing the repo removes apps and versions
         repoDao.clear(repoId)
@@ -248,8 +248,8 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(0, appDao.countApps())
         assertEquals(0, appDao.countLocalizedFiles())
         assertEquals(0, appDao.countLocalizedFileLists())
-        assertEquals(0, versionDao.getAppVersions(repoId, packageId).size)
-        assertEquals(0, versionDao.getVersionedStrings(repoId, packageId).size)
+        assertEquals(0, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(0, versionDao.getVersionedStrings(repoId, packageName).size)
         // preferences are not touched by clearing
         assertEquals(repositoryPreferences, repoDao.getRepositoryPreferences(repoId))
     }

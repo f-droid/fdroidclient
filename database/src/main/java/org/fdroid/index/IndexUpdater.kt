@@ -1,12 +1,16 @@
 package org.fdroid.index
 
 import android.net.Uri
-import org.fdroid.database.IndexFormatVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.Downloader
 import org.fdroid.download.NotFoundException
 import java.io.File
 import java.io.IOException
+
+/**
+ * The currently known (and supported) format versions of the F-Droid index.
+ */
+public enum class IndexFormatVersion { ONE, TWO }
 
 public sealed class IndexUpdateResult {
     public object Unchanged : IndexUpdateResult()
@@ -40,10 +44,21 @@ public fun interface TempFileProvider {
     public fun createTempFile(): File
 }
 
+/**
+ * A class to update information of a [Repository] in the database with a new downloaded index.
+ */
 public abstract class IndexUpdater {
 
+    /**
+     * The [IndexFormatVersion] used by this updater.
+     * One updater usually handles exactly one format version.
+     * If you need a higher level of abstraction, check [RepoUpdater].
+     */
     public abstract val formatVersion: IndexFormatVersion
 
+    /**
+     * Updates a new [repo] for the first time.
+     */
     public fun updateNewRepo(
         repo: Repository,
         expectedSigningFingerprint: String?,
@@ -51,6 +66,9 @@ public abstract class IndexUpdater {
         update(repo, null, expectedSigningFingerprint)
     }
 
+    /**
+     * Updates an existing [repo] with a known [Repository.certificate].
+     */
     public fun update(
         repo: Repository,
     ): IndexUpdateResult = catchExceptions {
