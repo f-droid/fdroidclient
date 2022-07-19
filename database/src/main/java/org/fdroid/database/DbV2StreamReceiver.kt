@@ -5,12 +5,18 @@ import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import kotlinx.serialization.SerializationException
 import org.fdroid.CompatibilityChecker
-import org.fdroid.database.IndexFormatVersion.TWO
+import org.fdroid.index.IndexFormatVersion.TWO
 import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.IndexV2StreamReceiver
 import org.fdroid.index.v2.PackageV2
 import org.fdroid.index.v2.RepoV2
 
+/**
+ * Receives a stream of IndexV2 data and stores it in the DB.
+ *
+ * Note: This should only be used once.
+ * If you want to process a second stream, create a new instance.
+ */
 internal class DbV2StreamReceiver(
     private val db: FDroidDatabaseInt,
     private val repoId: Long,
@@ -34,11 +40,11 @@ internal class DbV2StreamReceiver(
     }
 
     @Synchronized
-    override fun receive(packageId: String, p: PackageV2) {
+    override fun receive(packageName: String, p: PackageV2) {
         p.walkFiles(nonNullFileV2)
         clearRepoDataIfNeeded()
-        db.getAppDao().insert(repoId, packageId, p.metadata, locales)
-        db.getVersionDao().insert(repoId, packageId, p.versions) {
+        db.getAppDao().insert(repoId, packageName, p.metadata, locales)
+        db.getVersionDao().insert(repoId, packageName, p.versions) {
             compatibilityChecker.isCompatible(it.manifest)
         }
     }

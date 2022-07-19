@@ -4,10 +4,10 @@ import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbV1StreamReceiver
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidDatabaseInt
-import org.fdroid.database.IndexFormatVersion
-import org.fdroid.database.IndexFormatVersion.ONE
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloaderFactory
+import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.IndexFormatVersion.ONE
 import org.fdroid.index.IndexUpdateListener
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.IndexUpdater

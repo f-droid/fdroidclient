@@ -10,6 +10,10 @@ import org.fdroid.index.v2.IndexV2Updater
 import java.io.File
 import java.io.FileNotFoundException
 
+/**
+ * Updates a [Repository] with a downloaded index, detects changes and chooses the right
+ * [IndexUpdater] automatically.
+ */
 public class RepoUpdater(
     tempDir: File,
     db: FDroidDatabase,
@@ -45,6 +49,11 @@ public class RepoUpdater(
         ),
     )
 
+    /**
+     * Updates the given [repo].
+     * If [Repository.certificate] is null,
+     * the repo is considered to be new this being the first update.
+     */
     public fun update(
         repo: Repository,
         fingerprint: String? = null,

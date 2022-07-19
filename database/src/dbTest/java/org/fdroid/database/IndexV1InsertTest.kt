@@ -105,13 +105,13 @@ internal class IndexV1InsertTest : DbTest() {
             callback()
         }
 
-        override fun receive(packageId: String, m: MetadataV2) {
-            streamReceiver.receive(packageId, m)
+        override fun receive(packageName: String, m: MetadataV2) {
+            streamReceiver.receive(packageName, m)
             callback()
         }
 
-        override fun receive(packageId: String, v: Map<String, PackageVersionV2>) {
-            streamReceiver.receive(packageId, v)
+        override fun receive(packageName: String, v: Map<String, PackageVersionV2>) {
+            streamReceiver.receive(packageName, v)
             callback()
         }
 
@@ -124,8 +124,8 @@ internal class IndexV1InsertTest : DbTest() {
             callback()
         }
 
-        override fun updateAppMetadata(packageId: String, preferredSigner: String?) {
-            streamReceiver.updateAppMetadata(packageId, preferredSigner)
+        override fun updateAppMetadata(packageName: String, preferredSigner: String?) {
+            streamReceiver.updateAppMetadata(packageName, preferredSigner)
             callback()
         }
 

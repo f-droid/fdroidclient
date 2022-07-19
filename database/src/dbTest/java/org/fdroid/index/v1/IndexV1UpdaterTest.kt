@@ -78,20 +78,20 @@ internal class IndexV1UpdaterTest : DbTest() {
             assertNull(appDao.getApp(packageName).getOrAwaitValue())
         }
         appDao.getAppMetadata().forEach { app ->
-            val numVersions = versionDao.getVersions(listOf(app.packageId)).size
+            val numVersions = versionDao.getVersions(listOf(app.packageName)).size
             assertTrue(numVersions > 0)
         }
         assertEquals(1497639511824, updatedRepo.timestamp)
         assertEquals(TESTY_CANONICAL_URL, updatedRepo.address)
-        assertEquals("non-public test repo", updatedRepo.name.values.first())
+        assertEquals("non-public test repo", updatedRepo.repository.name.values.first())
         assertEquals(18, updatedRepo.version)
-        assertEquals("/icons/fdroid-icon.png", updatedRepo.icon?.values?.first()?.name)
+        assertEquals("/icons/fdroid-icon.png", updatedRepo.repository.icon?.values?.first()?.name)
         val description = "This is a repository of apps to be used with F-Droid. " +
             "Applications in this repository are either official binaries built " +
             "by the original application developers, or are binaries built " +
             "from source by the admin of f-droid.org using the tools on " +
             "https://gitlab.com/u/fdroid. "
-        assertEquals(description, updatedRepo.description.values.first())
+        assertEquals(description, updatedRepo.repository.description.values.first())
         assertEquals(
             setOf(TESTY_CANONICAL_URL, "http://frkcchxlcvnb4m5a.onion/fdroid/repo"),
             updatedRepo.mirrors.map { it.url }.toSet(),
@@ -109,7 +109,7 @@ internal class IndexV1UpdaterTest : DbTest() {
         }
         assertNotNull(protoVersion)
         assertEquals("/io.proto.player-1.apk", protoVersion.version.file.name)
-        val perms = protoVersion.usesPermission?.map { it.name } ?: fail()
+        val perms = protoVersion.usesPermission.map { it.name }
         assertTrue(perms.contains(Manifest.permission.READ_EXTERNAL_STORAGE))
         assertTrue(perms.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE))
         assertFalse(perms.contains(Manifest.permission.READ_CALENDAR))

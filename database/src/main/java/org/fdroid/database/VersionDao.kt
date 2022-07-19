@@ -44,7 +44,7 @@ public interface VersionDao {
  * and need to prevent the untrusted external JSON input to modify internal fields in those classes.
  * This list must always hold the names of all those internal FIELDS for [Version].
  */
-private val DENY_LIST = listOf("packageId", "repoId", "versionId")
+private val DENY_LIST = listOf("packageName", "repoId", "versionId")
 
 @Dao
 internal interface VersionDaoInt : VersionDao {
@@ -56,7 +56,6 @@ internal interface VersionDaoInt : VersionDao {
         packageVersions: Map<String, PackageVersionV2>,
         checkIfCompatible: (PackageVersionV2) -> Boolean,
     ) {
-        // TODO maybe the number of queries here can be reduced
         packageVersions.entries.iterator().forEach { (versionId, packageVersion) ->
             val isCompatible = checkIfCompatible(packageVersion)
             insert(repoId, packageName, versionId, packageVersion, isCompatible)
@@ -128,7 +127,7 @@ internal interface VersionDaoInt : VersionDao {
         // diff versioned strings
         val manifest = jsonObject["manifest"]
         if (manifest is JsonNull) { // no more manifest, delete all versionedStrings
-            deleteVersionedStrings(version.repoId, version.packageId, version.versionId)
+            deleteVersionedStrings(version.repoId, version.packageName, version.versionId)
         } else if (manifest is JsonObject) {
             diffVersionedStrings(version, manifest, "usesPermission", PERMISSION)
             diffVersionedStrings(version, manifest, "usesPermissionSdk23",
@@ -149,7 +148,7 @@ internal interface VersionDaoInt : VersionDao {
             list.toVersionedString(version, type)
         },
         deleteList = {
-            deleteVersionedStrings(version.repoId, version.packageId, version.versionId, type)
+            deleteVersionedStrings(version.repoId, version.packageName, version.versionId, type)
         },
         insertNewList = { versionedStrings -> insert(versionedStrings) },
     )
@@ -158,7 +157,7 @@ internal interface VersionDaoInt : VersionDao {
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM Version
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND packageId = :packageName
+        WHERE pref.enabled = 1 AND packageName = :packageName
         ORDER BY manifest_versionCode DESC, pref.weight DESC""")
     override fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
 
@@ -167,11 +166,11 @@ internal interface VersionDaoInt : VersionDao {
      */
     @Transaction
     @Query("""SELECT * FROM Version
-        WHERE repoId = :repoId AND packageId = :packageName""")
+        WHERE repoId = :repoId AND packageName = :packageName""")
     fun getAppVersions(repoId: Long, packageName: String): List<AppVersion>
 
     @Query("""SELECT * FROM Version
-        WHERE repoId = :repoId AND packageId = :packageName AND versionId = :versionId""")
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun getVersion(repoId: Long, packageName: String, versionId: String): Version?
 
     /**
@@ -181,37 +180,37 @@ internal interface VersionDaoInt : VersionDao {
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM Version
         JOIN RepositoryPreferences AS pref USING (repoId)
-        LEFT JOIN AppPrefs USING (packageId)
+        LEFT JOIN AppPrefs USING (packageName)
         WHERE pref.enabled = 1 AND
               manifest_versionCode > COALESCE(AppPrefs.ignoreVersionCodeUpdate, 0) AND
-              packageId IN (:packageNames)
+              packageName IN (:packageNames)
         ORDER BY manifest_versionCode DESC, pref.weight DESC""")
     fun getVersions(packageNames: List<String>): List<Version>
 
-    @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageId = :packageName")
+    @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageName = :packageName")
     fun getVersionedStrings(repoId: Long, packageName: String): List<VersionedString>
 
     @Query("""SELECT * FROM VersionedString
-        WHERE repoId = :repoId AND packageId = :packageName AND versionId = :versionId""")
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun getVersionedStrings(
         repoId: Long,
         packageName: String,
         versionId: String,
     ): List<VersionedString>
 
-    @Query("""DELETE FROM Version WHERE repoId = :repoId AND packageId = :packageName""")
+    @Query("""DELETE FROM Version WHERE repoId = :repoId AND packageName = :packageName""")
     fun deleteAppVersion(repoId: Long, packageName: String)
 
     @Query("""DELETE FROM Version
-        WHERE repoId = :repoId AND packageId = :packageName AND versionId = :versionId""")
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun deleteAppVersion(repoId: Long, packageName: String, versionId: String)
 
     @Query("""DELETE FROM VersionedString
-        WHERE repoId = :repoId AND packageId = :packageName AND versionId = :versionId""")
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun deleteVersionedStrings(repoId: Long, packageName: String, versionId: String)
 
     @Query("""DELETE FROM VersionedString WHERE repoId = :repoId
-        AND packageId = :packageName AND versionId = :versionId AND type = :type""")
+        AND packageName = :packageName AND versionId = :versionId AND type = :type""")
     fun deleteVersionedStrings(
         repoId: Long,
         packageName: String,

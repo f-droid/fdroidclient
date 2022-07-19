@@ -19,15 +19,15 @@ internal class DbV2DiffStreamReceiver(
         db.getRepositoryDao().updateRepository(repoId, version, repoJsonObject)
     }
 
-    override fun receivePackageMetadataDiff(packageId: String, packageJsonObject: JsonObject?) {
-        db.getAppDao().updateApp(repoId, packageId, packageJsonObject, locales)
+    override fun receivePackageMetadataDiff(packageName: String, packageJsonObject: JsonObject?) {
+        db.getAppDao().updateApp(repoId, packageName, packageJsonObject, locales)
     }
 
     override fun receiveVersionsDiff(
-        packageId: String,
+        packageName: String,
         versionsDiffMap: Map<String, JsonObject?>?,
     ) {
-        db.getVersionDao().update(repoId, packageId, versionsDiffMap) {
+        db.getVersionDao().update(repoId, packageName, versionsDiffMap) {
             compatibilityChecker.isCompatible(it)
         }
     }

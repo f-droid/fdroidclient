@@ -126,10 +126,10 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.getAppOverviewItems().getOrFail().let { apps ->
             assertEquals(2, apps.size)
             // app 2 is first, because has icon and summary
-            assertEquals(packageName2, apps[0].packageId)
+            assertEquals(packageName2, apps[0].packageName)
             assertEquals(icons2, apps[0].localizedIcon?.toLocalizedFileV2())
             // app 1 is next, because has icon
-            assertEquals(packageName1, apps[1].packageId)
+            assertEquals(packageName1, apps[1].packageName)
             assertEquals(icons1, apps[1].localizedIcon?.toLocalizedFileV2())
         }
 
@@ -138,9 +138,9 @@ internal class AppOverviewItemsTest : AppTest() {
         versionDao.insert(repoId, packageName3, "3", getRandomPackageVersionV2(), true)
         appDao.getAppOverviewItems().getOrFail().let { apps ->
             assertEquals(3, apps.size)
-            assertEquals(packageName2, apps[0].packageId)
-            assertEquals(packageName1, apps[1].packageId)
-            assertEquals(packageName3, apps[2].packageId)
+            assertEquals(packageName2, apps[0].packageName)
+            assertEquals(packageName1, apps[1].packageName)
+            assertEquals(packageName3, apps[2].packageName)
             assertEquals(emptyList(), apps[2].localizedIcon)
         }
 
@@ -157,10 +157,10 @@ internal class AppOverviewItemsTest : AppTest() {
         // note that we don't insert a version here
         appDao.getAppOverviewItems().getOrFail().let { apps ->
             assertEquals(3, apps.size)
-            assertEquals(packageName3, apps[0].packageId)
-            assertEquals(emptyList(), apps[0].antiFeatureNames)
-            assertEquals(packageName2, apps[1].packageId)
-            assertEquals(packageName1, apps[2].packageId)
+            assertEquals(packageName3, apps[0].packageName)
+            assertEquals(emptyList(), apps[0].antiFeatureKeys)
+            assertEquals(packageName2, apps[1].packageName)
+            assertEquals(packageName1, apps[2].packageName)
         }
     }
 
@@ -176,10 +176,10 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.getAppOverviewItems("A").getOrFail().let { apps ->
             assertEquals(2, apps.size)
             // app 2 is first, because has icon and summary
-            assertEquals(packageName2, apps[0].packageId)
+            assertEquals(packageName2, apps[0].packageName)
             assertEquals(icons2, apps[0].localizedIcon?.toLocalizedFileV2())
             // app 1 is next, because has icon
-            assertEquals(packageName1, apps[1].packageId)
+            assertEquals(packageName1, apps[1].packageName)
             assertEquals(icons1, apps[1].localizedIcon?.toLocalizedFileV2())
         }
 
@@ -191,9 +191,9 @@ internal class AppOverviewItemsTest : AppTest() {
         versionDao.insert(repoId, packageName3, "3", getRandomPackageVersionV2(), true)
         appDao.getAppOverviewItems("A").getOrFail().let { apps ->
             assertEquals(3, apps.size)
-            assertEquals(packageName2, apps[0].packageId)
-            assertEquals(packageName1, apps[1].packageId)
-            assertEquals(packageName3, apps[2].packageId)
+            assertEquals(packageName2, apps[0].packageName)
+            assertEquals(packageName1, apps[1].packageName)
+            assertEquals(packageName3, apps[2].packageName)
             assertEquals(emptyList(), apps[2].localizedIcon)
         }
 
@@ -210,10 +210,10 @@ internal class AppOverviewItemsTest : AppTest() {
         // note that we don't insert a version here
         appDao.getAppOverviewItems("A").getOrFail().let { apps ->
             assertEquals(3, apps.size)
-            assertEquals(packageName3, apps[0].packageId)
-            assertEquals(emptyList(), apps[0].antiFeatureNames)
-            assertEquals(packageName2, apps[1].packageId)
-            assertEquals(packageName1, apps[2].packageId)
+            assertEquals(packageName3, apps[0].packageName)
+            assertEquals(emptyList(), apps[0].antiFeatureKeys)
+            assertEquals(packageName2, apps[1].packageName)
+            assertEquals(packageName1, apps[2].packageName)
         }
 
         // only two apps are returned for category B

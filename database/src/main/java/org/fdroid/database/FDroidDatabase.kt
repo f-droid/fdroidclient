@@ -1,24 +1,19 @@
 package org.fdroid.database
 
-import android.content.Context
 import android.content.res.Resources
-import android.util.Log
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
-import androidx.room.AutoMigration
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.fdroid.LocaleChooser.getBestLocale
+import java.util.Locale
 
 @Database(
-    version = 9, // TODO set version to 1 before release and wipe old schemas
+    // When bumping this version, please make sure to add one (or more) migration(s) below!
+    // Consider also providing tests for that migration.
+    // Don't forget to commit the new schema to the git repo as well.
+    version = 1,
     entities = [
         // repo
         CoreRepository::class,
@@ -44,14 +39,7 @@ import org.fdroid.LocaleChooser.getBestLocale
     ],
     exportSchema = true,
     autoMigrations = [
-        // TODO remove auto-migrations
-        AutoMigration(from = 1, to = 2),
-        AutoMigration(from = 1, to = 3),
-        AutoMigration(from = 2, to = 3),
-        AutoMigration(from = 5, to = 6),
-        AutoMigration(from = 6, to = 7),
-        AutoMigration(from = 7, to = 8),
-        AutoMigration(from = 8, to = 9),
+        // add future migrations here (if they are easy enough to be done automatically)
     ],
 )
 @TypeConverters(Converters::class)
@@ -60,25 +48,13 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt
     abstract override fun getAppPrefsDao(): AppPrefsDaoInt
-    fun afterUpdatingRepo(repoId: Long) {
-        getAppDao().updateCompatibility(repoId)
-    }
-}
-
-public interface FDroidDatabase {
-    public fun getRepositoryDao(): RepositoryDao
-    public fun getAppDao(): AppDao
-    public fun getVersionDao(): VersionDao
-    public fun getAppPrefsDao(): AppPrefsDao
-    public fun afterLocalesChanged(
-        locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
-    ) {
-        val appDao = getAppDao() as AppDaoInt
+    override fun afterLocalesChanged(locales: LocaleListCompat) {
+        val appDao = getAppDao()
         runInTransaction {
             appDao.getAppMetadata().forEach { appMetadata ->
                 appDao.updateAppMetadata(
                     repoId = appMetadata.repoId,
-                    packageId = appMetadata.packageId,
+                    packageName = appMetadata.packageName,
                     name = appMetadata.name.getBestLocale(locales),
                     summary = appMetadata.summary.getBestLocale(locales),
                 )
@@ -86,64 +62,35 @@ public interface FDroidDatabase {
         }
     }
 
+    /**
+     * Call this after updating the data belonging to the given [repoId],
+     * so the [AppMetadata.isCompatible] can be recalculated in case new versions were added.
+     */
+    fun afterUpdatingRepo(repoId: Long) {
+        getAppDao().updateCompatibility(repoId)
+    }
+}
+
+/**
+ * The F-Droid database offering methods to retrieve the various data access objects.
+ */
+public interface FDroidDatabase {
+    public fun getRepositoryDao(): RepositoryDao
+    public fun getAppDao(): AppDao
+    public fun getVersionDao(): VersionDao
+    public fun getAppPrefsDao(): AppPrefsDao
+
+    /**
+     * Call this after the system [Locale]s have changed.
+     * If this isn't called, the cached localized app metadata (e.g. name, summary) will be wrong.
+     */
+    public fun afterLocalesChanged(
+        locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
+    )
+
+    /**
+     * Call this to run all of the given [body] inside a database transaction.
+     * Please run as little code as possible to keep the time the database is blocked minimal.
+     */
     public fun runInTransaction(body: Runnable)
-}
-
-public fun interface FDroidFixture {
-    public fun prePopulateDb(db: FDroidDatabase)
-}
-
-public object FDroidDatabaseHolder {
-    // Singleton prevents multiple instances of database opening at the same time.
-    @Volatile
-    private var INSTANCE: FDroidDatabaseInt? = null
-
-    internal val TAG = FDroidDatabase::class.simpleName
-    internal val dispatcher get() = Dispatchers.IO
-
-    @JvmStatic
-    public fun getDb(context: Context, fixture: FDroidFixture?): FDroidDatabase {
-        return getDb(context, "test", fixture)
-    }
-
-    internal fun getDb(
-        context: Context,
-        name: String = "fdroid_db",
-        fixture: FDroidFixture? = null,
-    ): FDroidDatabase {
-        // if the INSTANCE is not null, then return it,
-        // if it is, then create the database
-        return INSTANCE ?: synchronized(this) {
-            val builder = Room.databaseBuilder(
-                context.applicationContext,
-                FDroidDatabaseInt::class.java,
-                name,
-            ).fallbackToDestructiveMigration() // TODO remove before release
-            if (fixture != null) builder.addCallback(FixtureCallback(fixture))
-            val instance = builder.build()
-            INSTANCE = instance
-            // return instance
-            instance
-        }
-    }
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private class FixtureCallback(private val fixture: FDroidFixture) : RoomDatabase.Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-            GlobalScope.launch(dispatcher) {
-                synchronized(this) {
-                    val database = INSTANCE ?: error("DB not yet initialized")
-                    fixture.prePopulateDb(database)
-                    Log.d(TAG, "Loaded fixtures")
-                }
-            }
-        }
-
-        // TODO remove before release
-        override fun onDestructiveMigration(db: SupportSQLiteDatabase) {
-            onCreate(db)
-        }
-    }
-
 }

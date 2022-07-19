@@ -21,18 +21,23 @@ import org.fdroid.index.v2.PermissionV2
 import org.fdroid.index.v2.SignerV2
 import org.fdroid.index.v2.UsesSdkV2
 
+/**
+ * A database table entity representing the version of an [App]
+ * identified by its [versionCode] and [signer].
+ * This holds the data of [PackageVersionV2].
+ */
 @Entity(
-    primaryKeys = ["repoId", "packageId", "versionId"],
+    primaryKeys = ["repoId", "packageName", "versionId"],
     foreignKeys = [ForeignKey(
         entity = AppMetadata::class,
-        parentColumns = ["repoId", "packageId"],
-        childColumns = ["repoId", "packageId"],
+        parentColumns = ["repoId", "packageName"],
+        childColumns = ["repoId", "packageName"],
         onDelete = ForeignKey.CASCADE,
     )],
 )
-public data class Version(
+internal data class Version(
     val repoId: Long,
-    val packageId: String,
+    val packageName: String,
     val versionId: String,
     val added: Long,
     @Embedded(prefix = "file_") val file: FileV1,
@@ -57,12 +62,12 @@ public data class Version(
 
 internal fun PackageVersionV2.toVersion(
     repoId: Long,
-    packageId: String,
+    packageName: String,
     versionId: String,
     isCompatible: Boolean,
 ) = Version(
     repoId = repoId,
-    packageId = packageId,
+    packageName = packageName,
     versionId = versionId,
     added = added,
     file = file,
@@ -74,6 +79,9 @@ internal fun PackageVersionV2.toVersion(
     isCompatible = isCompatible,
 )
 
+/**
+ * A version of an [App] identified by [AppManifest.versionCode] and [AppManifest.signer].
+ */
 public data class AppVersion internal constructor(
     @Embedded internal val version: Version,
     @Relation(
@@ -83,38 +91,44 @@ public data class AppVersion internal constructor(
     internal val versionedStrings: List<VersionedString>?,
 ) {
     public val repoId: Long get() = version.repoId
-    public val packageId: String get() = version.packageId
+    public val packageName: String get() = version.packageName
     public val added: Long get() = version.added
     public val isCompatible: Boolean get() = version.isCompatible
     public val manifest: AppManifest get() = version.manifest
     public val file: FileV1 get() = version.file
     public val src: FileV2? get() = version.src
-    public val usesPermission: List<PermissionV2>? get() = versionedStrings?.getPermissions(version)
-    public val usesPermissionSdk23: List<PermissionV2>?
-        get() = versionedStrings?.getPermissionsSdk23(version)
+    public val usesPermission: List<PermissionV2>
+        get() = versionedStrings?.getPermissions(version) ?: emptyList()
+    public val usesPermissionSdk23: List<PermissionV2>
+        get() = versionedStrings?.getPermissionsSdk23(version) ?: emptyList()
     public val featureNames: List<String> get() = version.manifest.features ?: emptyList()
     public val nativeCode: List<String> get() = version.manifest.nativecode ?: emptyList()
     public val releaseChannels: List<String> get() = version.releaseChannels ?: emptyList()
-    val antiFeatureNames: List<String>
-        get() {
-            return version.antiFeatures?.map { it.key } ?: emptyList()
-        }
+    public val antiFeatureKeys: List<String>
+        get() = version.antiFeatures?.map { it.key } ?: emptyList()
 
     public fun getWhatsNew(localeList: LocaleListCompat): String? =
         version.whatsNew.getBestLocale(localeList)
+
+    public fun getAntiFeatureReason(antiFeatureKey: String, localeList: LocaleListCompat): String? {
+        return version.antiFeatures?.get(antiFeatureKey)?.getBestLocale(localeList)
+    }
 }
 
+/**
+ * The manifest information of an [AppVersion].
+ */
 public data class AppManifest(
-    val versionName: String,
-    val versionCode: Long,
-    @Embedded(prefix = "usesSdk_") val usesSdk: UsesSdkV2? = null,
-    override val maxSdkVersion: Int? = null,
-    @Embedded(prefix = "signer_") val signer: SignerV2? = null,
-    override val nativecode: List<String>? = emptyList(),
-    val features: List<String>? = emptyList(),
+    public val versionName: String,
+    public val versionCode: Long,
+    @Embedded(prefix = "usesSdk_") public val usesSdk: UsesSdkV2? = null,
+    public override val maxSdkVersion: Int? = null,
+    @Embedded(prefix = "signer_") public val signer: SignerV2? = null,
+    public override val nativecode: List<String>? = emptyList(),
+    public val features: List<String>? = emptyList(),
 ) : PackageManifest {
-    override val minSdkVersion: Int? get() = usesSdk?.minSdkVersion
-    override val featureNames: List<String>? get() = features
+    public override val minSdkVersion: Int? get() = usesSdk?.minSdkVersion
+    public override val featureNames: List<String>? get() = features
 }
 
 internal fun ManifestV2.toManifest() = AppManifest(
@@ -127,11 +141,11 @@ internal fun ManifestV2.toManifest() = AppManifest(
     features = features.map { it.name },
 )
 
-@DatabaseView("""SELECT repoId, packageId, antiFeatures FROM Version
-    GROUP BY repoId, packageId HAVING MAX(manifest_versionCode)""")
+@DatabaseView("""SELECT repoId, packageName, antiFeatures FROM Version
+    GROUP BY repoId, packageName HAVING MAX(manifest_versionCode)""")
 internal class HighestVersion(
     val repoId: Long,
-    val packageId: String,
+    val packageName: String,
     val antiFeatures: Map<String, LocalizedTextV2>? = null,
 )
 
@@ -141,17 +155,17 @@ internal enum class VersionedStringType {
 }
 
 @Entity(
-    primaryKeys = ["repoId", "packageId", "versionId", "type", "name"],
+    primaryKeys = ["repoId", "packageName", "versionId", "type", "name"],
     foreignKeys = [ForeignKey(
         entity = Version::class,
-        parentColumns = ["repoId", "packageId", "versionId"],
-        childColumns = ["repoId", "packageId", "versionId"],
+        parentColumns = ["repoId", "packageName", "versionId"],
+        childColumns = ["repoId", "packageName", "versionId"],
         onDelete = ForeignKey.CASCADE,
     )],
 )
 internal data class VersionedString(
     val repoId: Long,
-    val packageId: String,
+    val packageName: String,
     val versionId: String,
     val type: VersionedStringType,
     val name: String,
@@ -164,7 +178,7 @@ internal fun List<PermissionV2>.toVersionedString(
 ) = map { permission ->
     VersionedString(
         repoId = version.repoId,
-        packageId = version.packageId,
+        packageName = version.packageName,
         versionId = version.versionId,
         type = type,
         name = permission.name,
@@ -200,7 +214,7 @@ private fun <T> VersionedString.map(
     wantedType: VersionedStringType,
     factory: () -> T,
 ): T? {
-    return if (repoId != v.repoId || packageId != v.packageId || versionId != v.versionId ||
+    return if (repoId != v.repoId || packageName != v.packageName || versionId != v.versionId ||
         type != wantedType
     ) null
     else factory()

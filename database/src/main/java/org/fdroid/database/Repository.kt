@@ -8,6 +8,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
+import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexUtils.getFingerprint
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
@@ -18,10 +19,8 @@ import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 
-public enum class IndexFormatVersion { ONE, TWO }
-
 @Entity
-public data class CoreRepository(
+internal data class CoreRepository(
     @PrimaryKey(autoGenerate = true) val repoId: Long = 0,
     val name: LocalizedTextV2 = emptyMap(),
     val icon: LocalizedFileV2?,
@@ -54,7 +53,7 @@ internal fun RepoV2.toCoreRepository(
     certificate = certificate,
 )
 
-public data class Repository(
+public data class Repository internal constructor(
     @Embedded internal val repository: CoreRepository,
     @Relation(
         parentColumn = "repoId",
@@ -65,46 +64,106 @@ public data class Repository(
         parentColumn = "repoId",
         entityColumn = "repoId",
     )
-    val antiFeatures: List<AntiFeature>,
+    internal val antiFeatures: List<AntiFeature>,
     @Relation(
         parentColumn = "repoId",
         entityColumn = "repoId",
     )
-    val categories: List<Category>,
+    internal val categories: List<Category>,
     @Relation(
         parentColumn = "repoId",
         entityColumn = "repoId",
     )
-    val releaseChannels: List<ReleaseChannel>,
+    internal val releaseChannels: List<ReleaseChannel>,
     @Relation(
         parentColumn = "repoId",
         entityColumn = "repoId",
     )
     internal val preferences: RepositoryPreferences,
 ) {
-    val repoId: Long get() = repository.repoId
-    internal val name: LocalizedTextV2 get() = repository.name
-    internal val icon: LocalizedFileV2? get() = repository.icon
-    val address: String get() = repository.address
-    val webBaseUrl: String? get() = repository.webBaseUrl
-    val timestamp: Long get() = repository.timestamp
-    val version: Long get() = repository.version ?: 0
-    val formatVersion: IndexFormatVersion? get() = repository.formatVersion
-    internal val description: LocalizedTextV2 get() = repository.description
-    val certificate: String? get() = repository.certificate
+    /**
+     * Used to create a minimal version of a [Repository].
+     */
+    public constructor(
+        repoId: Long,
+        address: String,
+        timestamp: Long,
+        formatVersion: IndexFormatVersion,
+        certificate: String?,
+        version: Long,
+        weight: Int,
+        lastUpdated: Long,
+    ) : this(
+        repository = CoreRepository(
+            repoId = repoId,
+            icon = null,
+            address = address,
+            timestamp = timestamp,
+            formatVersion = formatVersion,
+            maxAge = 42,
+            certificate = certificate,
+            version = version,
+        ),
+        mirrors = emptyList(),
+        antiFeatures = emptyList(),
+        categories = emptyList(),
+        releaseChannels = emptyList(),
+        preferences = RepositoryPreferences(
+            repoId = repoId,
+            weight = weight,
+            lastUpdated = lastUpdated,
+        )
+    )
 
-    val weight: Int get() = preferences.weight
-    val enabled: Boolean get() = preferences.enabled
-    val lastUpdated: Long? get() = preferences.lastUpdated
-    val lastETag: String? get() = preferences.lastETag
-    val userMirrors: List<String> get() = preferences.userMirrors ?: emptyList()
-    val disabledMirrors: List<String> get() = preferences.disabledMirrors ?: emptyList()
-    val username: String? get() = preferences.username
-    val password: String? get() = preferences.password
-    val isSwap: Boolean get() = preferences.isSwap
+    public val repoId: Long get() = repository.repoId
+    public val address: String get() = repository.address
+    public val webBaseUrl: String? get() = repository.webBaseUrl
+    public val timestamp: Long get() = repository.timestamp
+    public val version: Long get() = repository.version ?: 0
+    public val formatVersion: IndexFormatVersion? get() = repository.formatVersion
+    public val certificate: String? get() = repository.certificate
 
+    public fun getName(localeList: LocaleListCompat): String? =
+        repository.name.getBestLocale(localeList)
+
+    public fun getDescription(localeList: LocaleListCompat): String? =
+        repository.description.getBestLocale(localeList)
+
+    public fun getIcon(localeList: LocaleListCompat): FileV2? =
+        repository.icon.getBestLocale(localeList)
+
+    public fun getAntiFeatures(): Map<String, AntiFeature> {
+        return antiFeatures.associateBy { antiFeature -> antiFeature.id }
+    }
+
+    public fun getCategories(): Map<String, Category> {
+        return categories.associateBy { category -> category.id }
+    }
+
+    public fun getReleaseChannels(): Map<String, ReleaseChannel> {
+        return releaseChannels.associateBy { releaseChannel -> releaseChannel.id }
+    }
+
+    public val weight: Int get() = preferences.weight
+    public val enabled: Boolean get() = preferences.enabled
+    public val lastUpdated: Long? get() = preferences.lastUpdated
+    public val userMirrors: List<String> get() = preferences.userMirrors ?: emptyList()
+    public val disabledMirrors: List<String> get() = preferences.disabledMirrors ?: emptyList()
+    public val username: String? get() = preferences.username
+    public val password: String? get() = preferences.password
+
+    @Suppress("DEPRECATION")
+    @Deprecated("Only used for v1 index", ReplaceWith(""))
+    public val lastETag: String?
+        get() = preferences.lastETag
+
+    /**
+     * The fingerprint for the [certificate].
+     * This gets calculated on first call and is an expensive operation.
+     * Subsequent calls re-use the
+     */
     @delegate:Ignore
-    val fingerprint: String? by lazy {
+    public val fingerprint: String? by lazy {
         certificate?.let { getFingerprint(it) }
     }
 
@@ -134,14 +193,11 @@ public data class Repository(
             add(0, org.fdroid.download.Mirror(address))
         }
     }
-
-    public fun getName(localeList: LocaleListCompat): String? = name.getBestLocale(localeList)
-    public fun getDescription(localeList: LocaleListCompat): String? =
-        description.getBestLocale(localeList)
-
-    public fun getIcon(localeList: LocaleListCompat): FileV2? = icon.getBestLocale(localeList)
 }
 
+/**
+ * A database table to store repository mirror information.
+ */
 @Entity(
     primaryKeys = ["repoId", "url"],
     foreignKeys = [ForeignKey(
@@ -151,12 +207,12 @@ public data class Repository(
         onDelete = ForeignKey.CASCADE,
     )],
 )
-public data class Mirror(
+internal data class Mirror(
     val repoId: Long,
     val url: String,
     val location: String? = null,
 ) {
-    public fun toDownloadMirror(): org.fdroid.download.Mirror = org.fdroid.download.Mirror(
+    fun toDownloadMirror(): org.fdroid.download.Mirror = org.fdroid.download.Mirror(
         baseUrl = url,
         location = location,
     )
@@ -168,6 +224,24 @@ internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
     location = location,
 )
 
+/**
+ * An attribute belonging to a [Repository].
+ */
+public abstract class RepoAttribute {
+    public abstract val icon: FileV2?
+    internal abstract val name: LocalizedTextV2
+    internal abstract val description: LocalizedTextV2
+
+    public fun getName(localeList: LocaleListCompat): String? =
+        name.getBestLocale(localeList)
+
+    public fun getDescription(localeList: LocaleListCompat): String? =
+        description.getBestLocale(localeList)
+}
+
+/**
+ * An anti-feature belonging to a [Repository].
+ */
 @Entity(
     primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
@@ -177,13 +251,13 @@ internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
         onDelete = ForeignKey.CASCADE,
     )],
 )
-public data class AntiFeature(
-    val repoId: Long,
-    val id: String,
-    @Embedded(prefix = "icon_") val icon: FileV2? = null,
-    val name: LocalizedTextV2,
-    val description: LocalizedTextV2,
-)
+public data class AntiFeature internal constructor(
+    internal val repoId: Long,
+    internal val id: String,
+    @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
+    override val name: LocalizedTextV2,
+    override val description: LocalizedTextV2,
+) : RepoAttribute()
 
 internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
     AntiFeature(
@@ -195,6 +269,9 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
     )
 }
 
+/**
+ * A category of apps belonging to a [Repository].
+ */
 @Entity(
     primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
@@ -204,13 +281,13 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-public data class Category(
-    val repoId: Long,
-    val id: String,
-    @Embedded(prefix = "icon_") val icon: FileV2? = null,
-    val name: LocalizedTextV2,
-    val description: LocalizedTextV2,
-)
+public data class Category internal constructor(
+    internal val repoId: Long,
+    public val id: String,
+    @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
+    override val name: LocalizedTextV2,
+    override val description: LocalizedTextV2,
+) : RepoAttribute()
 
 internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
     Category(
@@ -222,6 +299,9 @@ internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
     )
 }
 
+/**
+ * A release-channel for apps belonging to a [Repository].
+ */
 @Entity(
     primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
@@ -232,12 +312,12 @@ internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
     )],
 )
 public data class ReleaseChannel(
-    val repoId: Long,
-    val id: String,
-    @Embedded(prefix = "icon_") val icon: FileV2? = null,
-    val name: LocalizedTextV2,
-    val description: LocalizedTextV2,
-)
+    internal val repoId: Long,
+    internal val id: String,
+    @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
+    override val name: LocalizedTextV2,
+    override val description: LocalizedTextV2,
+) : RepoAttribute()
 
 internal fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
     ReleaseChannel(
@@ -249,21 +329,20 @@ internal fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = 
 }
 
 @Entity
-public data class RepositoryPreferences(
+internal data class RepositoryPreferences(
     @PrimaryKey internal val repoId: Long,
     val weight: Int,
     val enabled: Boolean = true,
     val lastUpdated: Long? = System.currentTimeMillis(),
-    val lastETag: String? = null,
+    @Deprecated("Only used for indexV1") val lastETag: String? = null,
     val userMirrors: List<String>? = null,
     val disabledMirrors: List<String>? = null,
     val username: String? = null,
     val password: String? = null,
-    val isSwap: Boolean = false, // TODO remove
 )
 
 /**
- * A [Repository] which the [FDroidDatabase] gets pre-populated with.
+ * A reduced version of [Repository] used to pre-populate the [FDroidDatabase].
  */
 public data class InitialRepository(
     val name: String,

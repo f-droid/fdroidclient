@@ -42,7 +42,7 @@ internal class DbUpdateCheckerTest : DbTest() {
         val appVersion = updateChecker.getSuggestedVersion(packageInfo.packageName)
         val expectedVersion = TestDataMinV2.version.toVersion(
             repoId = repoId,
-            packageId = packageInfo.packageName,
+            packageName = packageInfo.packageName,
             versionId = TestDataMinV2.version.file.sha256,
             isCompatible = true,
         )
@@ -75,8 +75,8 @@ internal class DbUpdateCheckerTest : DbTest() {
         val appVersions = updateChecker.getUpdatableApps()
         assertEquals(1, appVersions.size)
         assertEquals(0, appVersions[0].installedVersionCode)
-        assertEquals(TestDataMinV2.packageName, appVersions[0].packageId)
-        assertEquals(TestDataMinV2.version.file.sha256, appVersions[0].upgrade.version.versionId)
+        assertEquals(TestDataMinV2.packageName, appVersions[0].packageName)
+        assertEquals(TestDataMinV2.version.file.sha256, appVersions[0].update.version.versionId)
     }
 
 }

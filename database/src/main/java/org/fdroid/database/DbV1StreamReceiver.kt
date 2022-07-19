@@ -4,7 +4,7 @@ import android.content.res.Resources
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import org.fdroid.CompatibilityChecker
-import org.fdroid.database.IndexFormatVersion.ONE
+import org.fdroid.index.IndexFormatVersion.ONE
 import org.fdroid.index.v1.IndexV1StreamReceiver
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
@@ -31,12 +31,12 @@ internal class DbV1StreamReceiver(
         db.getRepositoryDao().update(repoId, repo, version, ONE, certificate)
     }
 
-    override fun receive(packageId: String, m: MetadataV2) {
-        db.getAppDao().insert(repoId, packageId, m, locales)
+    override fun receive(packageName: String, m: MetadataV2) {
+        db.getAppDao().insert(repoId, packageName, m, locales)
     }
 
-    override fun receive(packageId: String, v: Map<String, PackageVersionV2>) {
-        db.getVersionDao().insert(repoId, packageId, v) {
+    override fun receive(packageName: String, v: Map<String, PackageVersionV2>) {
+        db.getVersionDao().insert(repoId, packageName, v) {
             compatibilityChecker.isCompatible(it.manifest)
         }
     }
@@ -54,8 +54,8 @@ internal class DbV1StreamReceiver(
         db.afterUpdatingRepo(repoId)
     }
 
-    override fun updateAppMetadata(packageId: String, preferredSigner: String?) {
-        db.getAppDao().updatePreferredSigner(repoId, packageId, preferredSigner)
+    override fun updateAppMetadata(packageName: String, preferredSigner: String?) {
+        db.getAppDao().updatePreferredSigner(repoId, packageName, preferredSigner)
     }
 
 }

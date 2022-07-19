@@ -5,11 +5,11 @@ import org.fdroid.database.DbV2DiffStreamReceiver
 import org.fdroid.database.DbV2StreamReceiver
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidDatabaseInt
-import org.fdroid.database.IndexFormatVersion
-import org.fdroid.database.IndexFormatVersion.ONE
-import org.fdroid.database.IndexFormatVersion.TWO
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloaderFactory
+import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.IndexFormatVersion.ONE
+import org.fdroid.index.IndexFormatVersion.TWO
 import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexUpdateListener
 import org.fdroid.index.IndexUpdateResult
