@@ -1,0 +1,19 @@
+{
+  "repo": {
+    "name": {
+      "en-US": "EmptyV1"
+    },
+    "icon": {
+      "en-US": {
+        "name": "/icons/empty-v1.png",
+        "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+        "size": 32492
+      }
+    },
+    "address": "https://empty-v1.org",
+    "description": {
+      "en-US": "This is a repo with empty data."
+    },
+    "timestamp": 23
+  }
+}

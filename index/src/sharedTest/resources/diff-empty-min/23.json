@@ -1,0 +1,42 @@
+{
+  "repo": {
+    "name": {
+      "en-US": "MinV1"
+    },
+    "icon": {
+      "en-US": {
+        "name": "/icons/min-v1.png",
+        "sha256": "74758e480ae76297c8947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+        "size": 0
+      }
+    },
+    "address": "https://min-v1.org",
+    "description": {
+      "en-US": "This is a repo with minimal data."
+    },
+    "timestamp": 42
+  },
+  "packages": {
+    "org.fdroid.min1": {
+      "metadata": {
+        "added": 0,
+        "lastUpdated": 0,
+        "license": ""
+      },
+      "versions": {
+        "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf": {
+          "added": 0,
+          "file": {
+            "name": "/org.fdroid.min1_23.apk",
+            "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+            "size": 1337
+          },
+          "manifest": {
+            "versionName": "0",
+            "versionCode": 1
+          }
+        }
+      }
+    }
+  }
+}

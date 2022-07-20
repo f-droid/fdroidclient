@@ -1,0 +1,31 @@
+{
+  "version": 9223372036854775807,
+  "timestamp": 9223372036854775807,
+  "maxAge": 2147483647,
+  "index": {
+    "name": "../index-max-v2.json",
+    "sha256": "36cbdb2f3134d94a210e457332e1945a237d8b8e642ae1276ffa419a9375665a",
+    "size": 29863,
+    "numPackages": 3
+  },
+  "diffs": {
+    "23": {
+      "name": "/23.json",
+      "sha256": "521fe7e85ad77d0611e71bb5b96736d614ba8e62af43921eb05f05f30673f0c0",
+      "size": 29739,
+      "numPackages": 3
+    },
+    "42": {
+      "name": "/42.json",
+      "sha256": "363aaaf7289828b94b684f2b1e2b8c2b9e4f1ad1f9ea3ffb99d53a87918a5a69",
+      "size": 29601,
+      "numPackages": 3
+    },
+    "1337": {
+      "name": "/1337.json",
+      "sha256": "d0f14afad781d10b9d8f3e163ff26f99f769cb273a6a9d9757eac3f11d1a5d04",
+      "size": 20395,
+      "numPackages": 2
+    }
+  }
+}

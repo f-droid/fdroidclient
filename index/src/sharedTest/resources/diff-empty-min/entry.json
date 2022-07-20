@@ -1,0 +1,19 @@
+{
+  "version": 20001,
+  "timestamp": 42,
+  "maxAge": 7,
+  "index": {
+    "name": "../index-min-v2.json",
+    "sha256": "851ecda085ed53adab25f761a9dbf4c09d59e5bff9c9d5530814d56445ae30f2",
+    "size": 912,
+    "numPackages": 1
+  },
+  "diffs": {
+    "23": {
+      "name": "/23.json",
+      "sha256": "b7fc69156cbd42aef1ec3f0a5a943868ccb4b62775bce71fa8cc06cc63ad425b",
+      "size": 911,
+      "numPackages": 1
+    }
+  }
+}

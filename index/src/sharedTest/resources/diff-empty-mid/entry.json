@@ -1,0 +1,24 @@
+{
+  "version": 20001,
+  "timestamp": 1337,
+  "index": {
+    "name": "../index-mid-v2.json",
+    "sha256": "561630a90ec9bcc29bc133cbd14b2d14d94124bb043c8d48effbad9d18d482fb",
+    "size": 22756,
+    "numPackages": 2
+  },
+  "diffs": {
+    "23": {
+      "name": "/23.json",
+      "sha256": "1e19080fa0bdf37c7ea71106e97f0b0452da89edf37f638229582dc9a871e7c9",
+      "size": 22732,
+      "numPackages": 2
+    },
+    "42": {
+      "name": "/42.json",
+      "sha256": "26203adba4fb64bbaf39743dfb8fc8d3d9f17ed809461beb6b7215dce278f263",
+      "size": 22594,
+      "numPackages": 2
+    }
+  }
+}
