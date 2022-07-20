@@ -15,17 +15,17 @@ public interface IndexV2DiffStreamReceiver {
      *
      * If the given [packageJsonObject] is null, the package should be removed.
      */
-    public fun receivePackageMetadataDiff(packageId: String, packageJsonObject: JsonObject?)
+    public fun receivePackageMetadataDiff(packageName: String, packageJsonObject: JsonObject?)
 
     /**
-     * Receives the diff for all versions of the give n [packageId]
+     * Receives the diff for all versions of the give n [packageName]
      * as a map of versions IDs to the diff [JsonObject].
      * This is called once for each package in the index diff (if versions have changed).
      *
      * If an entry in the given [versionsDiffMap] is null,
      * the version with that ID should be removed.
      */
-    public fun receiveVersionsDiff(packageId: String, versionsDiffMap: Map<String, JsonObject?>?)
+    public fun receiveVersionsDiff(packageName: String, versionsDiffMap: Map<String, JsonObject?>?)
 
     /**
      * Called when the stream has been processed to its end.

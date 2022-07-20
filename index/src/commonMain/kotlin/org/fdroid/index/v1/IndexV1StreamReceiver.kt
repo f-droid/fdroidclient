@@ -11,8 +11,8 @@ import org.fdroid.index.v2.RepoV2
 public interface IndexV1StreamReceiver {
 
     public fun receive(repo: RepoV2, version: Long, certificate: String?)
-    public fun receive(packageId: String, m: MetadataV2)
-    public fun receive(packageId: String, v: Map<String, PackageVersionV2>)
+    public fun receive(packageName: String, m: MetadataV2)
+    public fun receive(packageName: String, v: Map<String, PackageVersionV2>)
 
     public fun updateRepo(
         antiFeatures: Map<String, AntiFeatureV2>,
@@ -22,8 +22,8 @@ public interface IndexV1StreamReceiver {
 
     /**
      * Updates [MetadataV2.preferredSigner] with the given [preferredSigner]
-     * for the given [packageId].
+     * for the given [packageName].
      */
-    public fun updateAppMetadata(packageId: String, preferredSigner: String?)
+    public fun updateAppMetadata(packageName: String, preferredSigner: String?)
 
 }

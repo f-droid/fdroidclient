@@ -12,7 +12,7 @@ public interface IndexV2StreamReceiver {
      * Receives one [PackageV2] from the index stream.
      * This is called once for each package in the index.
      */
-    public fun receive(packageId: String, p: PackageV2)
+    public fun receive(packageName: String, p: PackageV2)
 
     /**
      * Called when the stream has been processed to its end.

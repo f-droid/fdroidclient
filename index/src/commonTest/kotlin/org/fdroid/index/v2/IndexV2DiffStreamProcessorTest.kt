@@ -81,24 +81,28 @@ internal class IndexV2DiffStreamProcessorTest {
             indexMap["repo"] = repoJsonObject
         }
 
-        override fun receivePackageMetadataDiff(packageId: String, packageJsonObject: JsonObject?) {
+        override fun receivePackageMetadataDiff(
+            packageName: String,
+            packageJsonObject: JsonObject?,
+        ) {
             if (packageJsonObject == null) {
-                packages[packageId] = JsonNull
+                packages[packageName] = JsonNull
             } else {
                 val packageV2 = HashMap<String, JsonElement>(2)
                 packageV2["metadata"] = packageJsonObject
-                packages[packageId] = JsonObject(packageV2)
+                packages[packageName] = JsonObject(packageV2)
             }
         }
 
         override fun receiveVersionsDiff(
-            packageId: String,
+            packageName: String,
             versionsDiffMap: Map<String, JsonObject?>?,
         ) {
-            val packageV2 = HashMap<String, JsonElement>(packages[packageId]?.jsonObject ?: fail())
+            val packageV2 =
+                HashMap<String, JsonElement>(packages[packageName]?.jsonObject ?: fail())
             val versions = versionsDiffMap?.mapValues { it.value ?: JsonNull }
             packageV2["versions"] = versions?.let { JsonObject(it) } ?: JsonNull
-            packages[packageId] = JsonObject(packageV2)
+            packages[packageName] = JsonObject(packageV2)
         }
 
         override fun onStreamEnded() {

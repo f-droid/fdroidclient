@@ -153,8 +153,8 @@ internal class IndexV2FullStreamProcessorTest {
             this.certificate = certificate
         }
 
-        override fun receive(packageId: String, p: PackageV2) {
-            packages[packageId] = p
+        override fun receive(packageName: String, p: PackageV2) {
+            packages[packageName] = p
         }
 
         override fun onStreamEnded() {

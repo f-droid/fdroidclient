@@ -151,15 +151,15 @@ internal class IndexV1StreamProcessorTest {
             this.repo = repo
         }
 
-        override fun receive(packageId: String, m: MetadataV2) {
-            packages[packageId] = PackageV2(
+        override fun receive(packageName: String, m: MetadataV2) {
+            packages[packageName] = PackageV2(
                 metadata = m,
                 versions = emptyMap(),
             )
         }
 
-        override fun receive(packageId: String, v: Map<String, PackageVersionV2>) {
-            packages[packageId] = packages[packageId]!!.copy(versions = v)
+        override fun receive(packageName: String, v: Map<String, PackageVersionV2>) {
+            packages[packageName] = packages[packageName]!!.copy(versions = v)
         }
 
         override fun updateRepo(
@@ -174,9 +174,9 @@ internal class IndexV1StreamProcessorTest {
             ) ?: fail()
         }
 
-        override fun updateAppMetadata(packageId: String, preferredSigner: String?) {
-            val currentPackage = packages[packageId] ?: fail()
-            packages[packageId] = currentPackage.copy(
+        override fun updateAppMetadata(packageName: String, preferredSigner: String?) {
+            val currentPackage = packages[packageName] ?: fail()
+            packages[packageName] = currentPackage.copy(
                 metadata = currentPackage.metadata.copy(preferredSigner = preferredSigner),
             )
         }
