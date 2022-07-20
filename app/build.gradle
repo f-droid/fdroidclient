@@ -142,7 +142,9 @@ android {
 }
 
 dependencies {
-    implementation project(":download")
+    implementation project(":libs:download")
+    implementation project(":libs:index")
+    implementation project(":libs:database")
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
