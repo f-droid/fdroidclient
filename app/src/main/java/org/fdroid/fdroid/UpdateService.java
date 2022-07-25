@@ -451,10 +451,13 @@ public class UpdateService extends JobIntentService {
                     errorRepos++;
                     Exception e = ((IndexUpdateResult.Error) result).getE();
                     Throwable cause = e.getCause();
+                    String repoName = repo.getName(App.getLocales());
+                    String repoPrefix = repoName == null ? "" : repoName + ": ";
                     if (cause == null) {
-                        repoErrors.add(e.getLocalizedMessage());
+                        repoErrors.add(repoPrefix + e.getLocalizedMessage());
                     } else {
-                        repoErrors.add(e.getLocalizedMessage() + " ⇨ " + cause.getLocalizedMessage());
+                        repoErrors.add(repoPrefix + e.getLocalizedMessage() + " ⇨ " +
+                                cause.getLocalizedMessage());
                     }
                     Log.e(TAG, "Error updating repository " + repo.getAddress(), e);
                 }
