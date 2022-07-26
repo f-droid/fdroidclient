@@ -9,7 +9,23 @@ import kotlin.test.assertTrue
 /**
  * This class is not to test actual mirror behavior (done elsewhere), but to test the [Mirror] class.
  */
-class MirrorTest {
+internal class MirrorTest {
+
+    @Test
+    fun testGetUrl() {
+        assertEquals(
+            "https://example.org/entry.jar",
+            Mirror("https://example.org/").getUrl("/entry.jar").toString()
+        )
+        assertEquals(
+            "https://example.org/entry.jar",
+            Mirror("https://example.org").getUrl("/entry.jar").toString()
+        )
+        assertEquals(
+            "https://gitlab.com/fdroidclient/fdroid/repo/entry.jar",
+            Mirror("https://gitlab.com/fdroidclient/fdroid/repo").getUrl("/entry.jar").toString()
+        )
+    }
 
     @Test
     fun testInvalidUrlDoesNotCrash() {

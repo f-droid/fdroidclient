@@ -27,7 +27,8 @@ public data class Mirror @JvmOverloads constructor(
     }
 
     public fun getUrl(path: String): Url {
-        return URLBuilder(url).appendPathSegments(path).build()
+        // Since Ktor 2.0 this adds double slash if not trimming slash from path
+        return URLBuilder(url).appendPathSegments(path.trimStart('/')).build()
     }
 
     public fun isOnion(): Boolean = url.isOnion()
