@@ -172,7 +172,7 @@ deploy_nightly:
     # add this nightly repo as a enabled repo
     - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
-    - echo "<item>${CI_PROJECT_URL}-nightly/raw/master/fdroid/repo</item>" >> app/src/main/res/values/default_repos.xml
+    - echo "<item>${CI_PROJECT_URL}-nightly/-/raw/master/fdroid/repo</item>" >> app/src/main/res/values/default_repos.xml
     - cat config/nightly-repo/repo.xml >> app/src/main/res/values/default_repos.xml
     - export DB=`sed -n 's,.*version *= *\([0-9][0-9]*\).*,\1,p' libs/database/src/main/java/org/fdroid/database/FDroidDatabase.kt`
     - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-8)`
