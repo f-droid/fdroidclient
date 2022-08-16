@@ -1,6 +1,6 @@
 plugins {
     id 'org.jetbrains.kotlin.multiplatform'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.21'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.10'
     id 'com.android.library'
     id 'org.jetbrains.dokka'
     id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
@@ -36,11 +36,11 @@ kotlin {
         }
         commonMain {
             dependencies {
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0"
                 implementation 'io.github.microutils:kotlin-logging:2.1.21'
 
                 implementation project(":libs:download")
-                implementation "io.ktor:ktor-io:2.0.3"
+                implementation "io.ktor:ktor-io:2.1.0"
             }
         }
         commonTest {
@@ -61,8 +61,10 @@ kotlin {
             }
         }
         androidMain {
+            // needed because of https://issuetracker.google.com/issues/231701341
+            kotlin.srcDir("src/commonMain/kotlin")
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.21"
+                implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
                 implementation 'androidx.core:core-ktx:1.8.0'
                 implementation "org.slf4j:slf4j-android:1.7.36"
             }
