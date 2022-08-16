@@ -25,7 +25,7 @@ kotlin {
 //    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
     ext {
-        ktor_version = "2.0.3"
+        ktor_version = "2.1.0"
     }
 
     sourceSets {
@@ -59,6 +59,8 @@ kotlin {
             }
         }
         androidMain {
+            // needed because of https://issuetracker.google.com/issues/231701341
+            kotlin.srcDir("src/commonMain/kotlin")
             dependencies {
                 implementation "io.ktor:ktor-client-okhttp:$ktor_version"
                 implementation("com.github.bumptech.glide:glide:4.12.0") {
@@ -68,7 +70,10 @@ kotlin {
             }
         }
         androidTest {
+            // needed because of https://issuetracker.google.com/issues/231701341
+            kotlin.srcDir("src/commonTest/kotlin")
             dependencies {
+                implementation kotlin('test')
                 implementation 'org.json:json:20220320'
                 implementation 'junit:junit:4.13.2'
                 implementation 'ch.qos.logback:logback-classic:1.2.11'
