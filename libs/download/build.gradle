@@ -24,10 +24,6 @@ kotlin {
 //    else if (isMingwX64) nativeTarget = mingwX64("native")
 //    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
-    ext {
-        ktor_version = "2.0.3"
-    }
-
     sourceSets {
         all {
             languageSettings {
@@ -37,20 +33,20 @@ kotlin {
         }
         commonMain {
             dependencies {
-                api "io.ktor:ktor-client-core:$ktor_version"
+                api "io.ktor:ktor-client-core:2.1.3"
                 implementation 'io.github.microutils:kotlin-logging:2.1.21'
             }
         }
         commonTest {
             dependencies {
                 implementation kotlin('test')
-                implementation "io.ktor:ktor-client-mock:$ktor_version"
+                implementation "io.ktor:ktor-client-mock:2.1.3"
             }
         }
         // JVM is disabled for now, because Android app is including it instead of Android library
         jvmMain {
             dependencies {
-                implementation "io.ktor:ktor-client-cio:$ktor_version"
+                implementation "io.ktor:ktor-client-cio:2.1.3"
             }
         }
         jvmTest {
@@ -59,8 +55,10 @@ kotlin {
             }
         }
         androidMain {
+            // needed because of https://issuetracker.google.com/issues/231701341
+            kotlin.srcDir("src/commonMain/kotlin")
             dependencies {
-                implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+                implementation "io.ktor:ktor-client-okhttp:2.1.3"
                 implementation("com.github.bumptech.glide:glide:4.12.0") {
                     transitive = false // we don't need all that it pulls in, just the basics
                 }
@@ -68,7 +66,10 @@ kotlin {
             }
         }
         androidTest {
+            // needed because of https://issuetracker.google.com/issues/231701341
+            kotlin.srcDir("src/commonTest/kotlin")
             dependencies {
+                implementation kotlin('test')
                 implementation 'org.json:json:20220320'
                 implementation 'junit:junit:4.13.2'
                 implementation 'ch.qos.logback:logback-classic:1.2.11'
@@ -82,7 +83,7 @@ kotlin {
         }
         nativeMain {
             dependencies {
-                implementation "io.ktor:ktor-client-curl:$ktor_version"
+                implementation "io.ktor:ktor-client-curl:2.1.3"
             }
         }
         nativeTest {
