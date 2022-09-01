@@ -62,13 +62,17 @@ public class IndexV2Updater(
         certificate: String?,
         fingerprint: String?,
     ): Pair<String, Entry> {
-        val uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME)
         val file = tempFileProvider.createTempFile()
-        val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
+        val downloader = downloaderFactory.createWithTryFirstMirror(
+            repo = repo,
+            uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME),
+            indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME"),
+            destFile = file,
+        ).apply {
             setIndexUpdateListener(listener, repo)
         }
         try {
-            downloader.download(-1L)
+            downloader.download()
             val verifier = EntryVerifier(file, certificate, fingerprint)
             return verifier.getStreamAndVerify { inputStream ->
                 IndexParser.parseEntry(inputStream)
@@ -84,13 +88,17 @@ public class IndexV2Updater(
         repoVersion: Long,
         streamProcessor: IndexV2StreamProcessor,
     ): IndexUpdateResult {
-        val uri = repoUriBuilder.getUri(repo, entryFile.name.trimStart('/'))
         val file = tempFileProvider.createTempFile()
-        val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
+        val downloader = downloaderFactory.createWithTryFirstMirror(
+            repo = repo,
+            uri = repoUriBuilder.getUri(repo, entryFile.name.trimStart('/')),
+            indexFile = entryFile,
+            destFile = file,
+        ).apply {
             setIndexUpdateListener(listener, repo)
         }
         try {
-            downloader.download(entryFile.size, entryFile.sha256)
+            downloader.download()
             file.inputStream().use { inputStream ->
                 val repoDao = db.getRepositoryDao()
                 db.runInTransaction {
