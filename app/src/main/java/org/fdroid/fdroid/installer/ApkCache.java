@@ -59,7 +59,7 @@ public class ApkCache {
             throws IOException {
         String name = expectedApk.packageName;
         String apkFileName = name + "-" + expectedApk.versionName + ".apk";
-        return copyApkToFiles(context, apkFile, apkFileName, true, expectedApk.hash, expectedApk.hashType);
+        return copyApkToFiles(context, apkFile, apkFileName, true, expectedApk.apkFile.getSha256(), "sha256");
     }
 
     /**
@@ -133,7 +133,7 @@ public class ApkCache {
      */
     public static boolean apkIsCached(File apkFile, Apk apkToCheck) {
         return apkFile.length() == apkToCheck.size &&
-                Utils.isFileMatchingHash(apkFile, apkToCheck.hash, apkToCheck.hashType);
+                Utils.isFileMatchingHash(apkFile, apkToCheck.apkFile.getSha256(), "sha256");
     }
 
     /**

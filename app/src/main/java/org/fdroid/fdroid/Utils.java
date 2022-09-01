@@ -52,6 +52,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.encode.Contents;
 import com.google.zxing.encode.QRCodeEncoder;
 
+import org.fdroid.IndexFile;
 import org.fdroid.database.AppOverviewItem;
 import org.fdroid.database.Repository;
 import org.fdroid.download.DownloadRequest;
@@ -77,6 +78,7 @@ import java.net.Socket;
 import java.security.MessageDigest;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
@@ -475,27 +477,20 @@ public final class Utils {
      * @see Preferences#isBackgroundDownloadAllowed()
      */
     public static void setIconFromRepoOrPM(@NonNull App app, ImageView iv, Context context) {
-        long repoId = app.repoId;
-        String iconPath = app.iconFromApk;
-        if (iconPath == null) {
-            Glide.with(context).clear(iv);
-            iv.setImageResource(R.drawable.ic_repo_app_default);
-        } else {
-            loadWithGlide(context, repoId, iconPath, iv);
-        }
+        loadWithGlide(context, app.repoId, app.iconFile, iv);
     }
 
     @Deprecated
     public static void setIconFromRepoOrPM(@NonNull AppOverviewItem app, ImageView iv, Context context) {
         long repoId = app.getRepoId();
-        FileV2 iconFile = app.getIcon(App.getLocales());
-        String iconPath = iconFile == null ? null : iconFile.getName();
-        loadWithGlide(context, repoId, iconPath, iv);
+        IndexFile iconFile = app.getIcon(App.getLocales());
+        loadWithGlide(context, repoId, iconFile, iv);
     }
 
-    private static void loadWithGlide(Context context, long repoId, String iconPath, ImageView iv) {
-        if (iconPath == null) {
+    public static void loadWithGlide(Context context, long repoId, @Nullable IndexFile file, ImageView iv) {
+        if (file == null) {
             Glide.with(context).clear(iv);
+            iv.setImageResource(R.drawable.ic_repo_app_default);
             return;
         }
         if (iconRequestOptions == null) {
@@ -513,15 +508,24 @@ public final class Utils {
         }
         String address = getRepoAddress(repo);
         if (address.startsWith("content://")) {
-            String uri = getUri(address, iconPath.split("/")).toString();
+            String uri = getUri(address, file.getName().split("/")).toString();
             Glide.with(context).load(uri).apply(options).into(iv);
         } else {
-            DownloadRequest request = getDownloadRequest(repo, iconPath);
+            DownloadRequest request = getDownloadRequest(repo, file);
             Glide.with(context).load(request).apply(options).into(iv);
         }
     }
 
     @Nullable
+    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable IndexFile file) {
+        if (file == null) return null;
+        List<Mirror> mirrors = repo.getMirrors();
+        Proxy proxy = NetCipher.getProxy();
+        return new DownloadRequest(file, mirrors, proxy, repo.getUsername(), repo.getPassword());
+    }
+
+    @Nullable
+    @Deprecated
     public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable String path) {
         if (path == null) return null;
         List<Mirror> mirrors = repo.getMirrors();
@@ -852,6 +856,23 @@ public final class Utils {
                 liveData.removeObserver(this);
             }
         });
+    }
+
+    public static ArrayList<String> toString(@Nullable List<FileV2> files) {
+        if (files == null) return new ArrayList<>(0);
+        ArrayList<String> list = new ArrayList<>(files.size());
+        for (FileV2 file : files) {
+            list.add(file.serialize());
+        }
+        return list;
+    }
+
+    public static List<FileV2> fileV2FromStrings(List<String> list) {
+        ArrayList<FileV2> files = new ArrayList<>(list.size());
+        for (String s : list) {
+            files.add(FileV2.deserialize(s));
+        }
+        return files;
     }
 
     /**

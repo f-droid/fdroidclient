@@ -7,6 +7,7 @@ import android.webkit.MimeTypeMap;
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
+import org.fdroid.index.v2.FileV1;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import org.robolectric.shadows.ShadowMimeTypeMap;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import androidx.test.core.app.ApplicationProvider;
 
@@ -41,7 +43,7 @@ public class ApkTest {
     @Test(expected = IllegalStateException.class)
     public void testGetMediaInstallPathWithApk() {
         Apk apk = new Apk();
-        apk.apkName = "test.apk";
+        apk.apkFile = new FileV1("test.apk", "hash", null, null);
         apk.repoAddress = "https://example.com/fdroid/repo";
         apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertTrue(apk.isApk());
@@ -51,7 +53,7 @@ public class ApkTest {
     @Test
     public void testGetMediaInstallPathWithOta() throws IOException {
         Apk apk = new Apk();
-        apk.apkName = "org.fdroid.fdroid.privileged.ota_2110.zip";
+        apk.apkFile = new FileV1("org.fdroid.fdroid.privileged.ota_2110.zip", "hash", null, null);
         apk.repoAddress = "https://example.com/fdroid/repo";
         apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertFalse(apk.isApk());
@@ -63,7 +65,7 @@ public class ApkTest {
     @Test
     public void testGetMediaInstallPathWithObf() {
         Apk apk = new Apk();
-        apk.apkName = "Norway_bouvet_europe_2.obf";
+        apk.apkFile = new FileV1("Norway_bouvet_europe_2.obf", "hash", null, null);
         apk.repoAddress = "https://example.com/fdroid/repo";
         apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertFalse(apk.isApk());
@@ -74,7 +76,7 @@ public class ApkTest {
     @Test
     public void testGetMediaInstallPathWithObfZip() throws IOException {
         Apk apk = new Apk();
-        apk.apkName = "Norway_bouvet_europe_2.obf.zip";
+        apk.apkFile = new FileV1("Norway_bouvet_europe_2.obf.zip", "hash", null, null);
         apk.repoAddress = "https://example.com/fdroid/repo";
         apk.canonicalRepoAddress = "https://example.com/fdroid/repo";
         assertFalse(apk.isApk());
@@ -84,7 +86,8 @@ public class ApkTest {
     }
 
     private void copyResourceFileToCache(Apk apk) throws IOException {
-        FileUtils.copyInputStreamToFile(getClass().getClassLoader().getResource(apk.apkName).openStream(),
+        URL res = getClass().getClassLoader().getResource(apk.apkFile.getName());
+        FileUtils.copyInputStreamToFile(res.openStream(),
                 ApkCache.getApkDownloadPath(context, apk.getCanonicalUrl()));
     }
 }

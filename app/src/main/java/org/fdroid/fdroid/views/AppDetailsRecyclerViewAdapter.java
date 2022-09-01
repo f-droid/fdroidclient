@@ -63,6 +63,7 @@ import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
 import org.fdroid.fdroid.views.main.MainActivity;
+import org.fdroid.index.v2.FileV2;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -148,8 +149,8 @@ public class AppDetailsRecyclerViewAdapter
                 compatibleVersionsDifferentSig.add(apk);
                 if (allowBySig) {
                     versions.add(apk);
-                    if (!versionsExpandTracker.containsKey(apk.apkName)) {
-                        versionsExpandTracker.put(apk.apkName, false);
+                    if (!versionsExpandTracker.containsKey(apk.getApkPath())) {
+                        versionsExpandTracker.put(apk.getApkPath(), false);
                     }
                 }
             }
@@ -713,7 +714,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void onScreenshotClick(int position) {
-            ArrayList<String> screenshots = Objects.requireNonNull(app).getAllScreenshots();
+            List<FileV2> screenshots = Objects.requireNonNull(app).getAllScreenshots();
             context.startActivity(ScreenShotsActivity.getStartIntent(context, app.repoId, screenshots, position));
         }
 
@@ -1104,7 +1105,8 @@ public class AppDetailsRecyclerViewAdapter
                     TextUtils.equals(apk.sig, app.installedSig);
             boolean isApkSuggested = apk.equals(suggestedApk);
             boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
-                    downloadedApk.compareTo(apk) == 0 && TextUtils.equals(apk.apkName, downloadedApk.apkName);
+                    downloadedApk.compareTo(apk) == 0 &&
+                    TextUtils.equals(apk.getApkPath(), downloadedApk.getApkPath());
             boolean isApkInstalledDummy = apk.versionCode == app.installedVersionCode &&
                     apk.compatible && apk.size == 0 && apk.maxSdkVersion == -1;
 
@@ -1198,7 +1200,7 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Expand the view if it was previously expanded or when downloading
-            expand(versionsExpandTracker.get(apk.apkName) || isApkDownloading);
+            expand(versionsExpandTracker.get(apk.getApkPath()) || isApkDownloading);
 
             // Toggle expanded view when clicking the whole version item,
             // unless it's an installed app version dummy item - it doesn't
@@ -1293,7 +1295,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private void expand(boolean expand) {
-            versionsExpandTracker.put(apk.apkName, expand);
+            versionsExpandTracker.put(apk.getApkPath(), expand);
             expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
             versionCode.setVisibility(expand ? View.VISIBLE : View.GONE);
             expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
@@ -1314,7 +1316,7 @@ public class AppDetailsRecyclerViewAdapter
                 return;
             }
 
-            boolean expand = !versionsExpandTracker.get(apk.apkName);
+            boolean expand = !versionsExpandTracker.get(apk.getApkPath());
             expand(expand);
 
             if (expand) {

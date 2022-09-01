@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import org.apache.commons.io.input.BoundedInputStream;
+import org.fdroid.IndexFile;
 import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.BluetoothClient;
@@ -39,8 +40,8 @@ public class BluetoothDownloader extends Downloader {
                 && Pattern.matches("([0-9A-F]{2}-)+[0-9A-F]{2}", uri.getHost());
     }
 
-    public BluetoothDownloader(Uri uri, File destFile) throws IOException {
-        super(destFile);
+    BluetoothDownloader(Uri uri, IndexFile indexFile, File destFile) throws IOException {
+        super(indexFile, destFile);
         String macAddress = uri.getHost().replace("-", ":");
         this.connection = new BluetoothClient(macAddress).openConnection();
         this.sourcePath = uri.getPath();
@@ -91,16 +92,9 @@ public class BluetoothDownloader extends Downloader {
 
     @Override
     public long totalDownloadSize() {
-        if (getFileSize() != null) return getFileSize();
+        if (getIndexFile().getSize() != null) return getIndexFile().getSize();
         FileDetails details = getFileDetails();
         return details != null ? details.getFileSize() : -1;
-    }
-
-    @Override
-    public void download(long totalSize, @Nullable String sha256) throws IOException, InterruptedException {
-        setFileSize(totalSize);
-        setSha256(sha256);
-        download();
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import androidx.annotation.ColorInt;
@@ -25,6 +24,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 
 import java.util.Random;
@@ -251,11 +251,10 @@ public class FeatureImage extends AppCompatImageView {
     public void loadImageAndDisplay(App app) {
         setColour(ContextCompat.getColor(getContext(), R.color.fdroid_blue));
 
-        if (!TextUtils.isEmpty(app.featureGraphic)) {
-            app.loadWithGlide(getContext(), app.featureGraphic).into(this);
+        if (app.featureGraphic == null) {
+            loadImageAndExtractColour(app.loadWithGlide(getContext(), app.iconFile));
         } else {
-            String path = app.getIconPath(getContext());
-            loadImageAndExtractColour(app.loadWithGlide(getContext(), path));
+            Utils.loadWithGlide(getContext(), app.repoId, app.featureGraphic, this);
         }
     }
 

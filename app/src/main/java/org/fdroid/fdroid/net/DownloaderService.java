@@ -43,6 +43,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.index.v2.FileV1;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,11 +64,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 /**
  * DownloaderService is a service that handles asynchronous download requests
  * (expressed as {@link Intent}s) on demand.  Clients send download requests
- * through {@link #queue(Context, long, String)} calls.  The
+ * through {@link #queue(Context, long, String, String, FileV1)}  calls.  The
  * service is started as needed, it handles each {@code Intent} using a worker
  * thread, and stops itself when it runs out of work.  Requests can be canceled
  * using {@link #cancel(Context, String)}.  If this service is killed during
- * operation, it will receive the queued {@link #queue(Context, long, String)}
+ * operation, it will receive the queued {@link #queue(Context, long, String, String, FileV1)}
  * and {@link #cancel(Context, String)} requests again due to
  * {@link Service#START_REDELIVER_INTENT}.  Bad requests will be ignored,
  * including on restart after killing via {@link Service#START_NOT_STICKY}.
@@ -123,6 +124,7 @@ public class DownloaderService extends Service {
      * @see android.content.Intent#EXTRA_ORIGINATING_URI
      */
     public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL";
+    private static final String EXTRA_INDEX_FILE_V1 = "org.fdroid.fdroid.net.Downloader.extra.INDEX_FILE_V1";
 
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
@@ -246,6 +248,7 @@ public class DownloaderService extends Service {
         final Uri canonicalUrl = intent.getData();
         final Uri downloadUrl =
                 Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
+        final FileV1 fileV1 = FileV1.deserialize(intent.getStringExtra(DownloaderService.EXTRA_INDEX_FILE_V1));
         final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
         sendBroadcast(uri, DownloaderService.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
@@ -264,7 +267,7 @@ public class DownloaderService extends Service {
                     } else return; // repo might have been deleted in the meantime
                 }
             }
-            downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, localFile);
+            downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, fileV1, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {
@@ -334,7 +337,7 @@ public class DownloaderService extends Service {
      * @see #cancel(Context, String)
      */
     public static void queue(Context context, long repoId, String canonicalUrl,
-                             String downloadUrl) {
+                             String downloadUrl, FileV1 fileV1) {
         if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
@@ -344,6 +347,7 @@ public class DownloaderService extends Service {
         intent.setData(Uri.parse(canonicalUrl));
         intent.putExtra(DownloaderService.EXTRA_REPO_ID, repoId);
         intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, downloadUrl);
+        intent.putExtra(DownloaderService.EXTRA_INDEX_FILE_V1, fileV1.serialize());
         context.startService(intent);
     }
 
@@ -354,7 +358,7 @@ public class DownloaderService extends Service {
      *
      * @param context      this app's {@link Context}
      * @param canonicalUrl The URL to remove from the download queue
-     * @see #queue(Context, long, String)
+     * @see #queue(Context, long, String, String, FileV1
      */
     public static void cancel(Context context, String canonicalUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) {

@@ -4,6 +4,7 @@ import android.content.ContextWrapper;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.index.v2.FileV1;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,6 @@ import static org.junit.Assert.assertFalse;
 
 @RunWith(RobolectricTestRunner.class)
 public class FileInstallerTest {
-    public static final String TAG = "FileInstallerTest";
 
     private ContextWrapper context;
 
@@ -31,7 +31,7 @@ public class FileInstallerTest {
     @Test
     public void testInstallOtaZip() {
         Apk apk = new Apk();
-        apk.apkName = "org.fdroid.fdroid.privileged.ota_2010.zip";
+        apk.apkFile = new FileV1("org.fdroid.fdroid.privileged.ota_2010.zip", "hash", null, null);
         apk.packageName = "org.fdroid.fdroid.privileged.ota";
         apk.versionCode = 2010;
         assertFalse(apk.isApk());
