@@ -1,0 +1,1088 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "f1f130c0399a294d24dfbff7810f1628",
+    "entities": [
+      {
+        "tableName": "CoreRepository",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `icon` TEXT, `address` TEXT NOT NULL, `webBaseUrl` TEXT, `timestamp` INTEGER NOT NULL, `version` INTEGER, `formatVersion` TEXT, `maxAge` INTEGER, `description` TEXT NOT NULL, `certificate` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "address",
+            "columnName": "address",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "webBaseUrl",
+            "columnName": "webBaseUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "formatVersion",
+            "columnName": "formatVersion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "maxAge",
+            "columnName": "maxAge",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "certificate",
+            "columnName": "certificate",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Mirror",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `url` TEXT NOT NULL, `location` TEXT, PRIMARY KEY(`repoId`, `url`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "location",
+            "columnName": "location",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "url"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CoreRepository",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId"
+            ],
+            "referencedColumns": [
+              "repoId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "AntiFeature",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `icon` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CoreRepository",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId"
+            ],
+            "referencedColumns": [
+              "repoId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Category",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `icon` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CoreRepository",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId"
+            ],
+            "referencedColumns": [
+              "repoId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "ReleaseChannel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `icon` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CoreRepository",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId"
+            ],
+            "referencedColumns": [
+              "repoId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "RepositoryPreferences",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `weight` INTEGER NOT NULL, `enabled` INTEGER NOT NULL, `lastUpdated` INTEGER, `lastETag` TEXT, `userMirrors` TEXT, `disabledMirrors` TEXT, `username` TEXT, `password` TEXT, PRIMARY KEY(`repoId`))",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enabled",
+            "columnName": "enabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdated",
+            "columnName": "lastUpdated",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastETag",
+            "columnName": "lastETag",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userMirrors",
+            "columnName": "userMirrors",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "disabledMirrors",
+            "columnName": "disabledMirrors",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "AppMetadata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `added` INTEGER NOT NULL, `lastUpdated` INTEGER NOT NULL, `name` TEXT, `summary` TEXT, `description` TEXT, `localizedName` TEXT, `localizedSummary` TEXT, `webSite` TEXT, `changelog` TEXT, `license` TEXT, `sourceCode` TEXT, `issueTracker` TEXT, `translation` TEXT, `preferredSigner` TEXT, `video` TEXT, `authorName` TEXT, `authorEmail` TEXT, `authorWebSite` TEXT, `authorPhone` TEXT, `donate` TEXT, `liberapayID` TEXT, `liberapay` TEXT, `openCollective` TEXT, `bitcoin` TEXT, `litecoin` TEXT, `flattrID` TEXT, `categories` TEXT, `isCompatible` INTEGER NOT NULL, PRIMARY KEY(`repoId`, `packageName`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "added",
+            "columnName": "added",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdated",
+            "columnName": "lastUpdated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "summary",
+            "columnName": "summary",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localizedName",
+            "columnName": "localizedName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localizedSummary",
+            "columnName": "localizedSummary",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "webSite",
+            "columnName": "webSite",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "changelog",
+            "columnName": "changelog",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "license",
+            "columnName": "license",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sourceCode",
+            "columnName": "sourceCode",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "issueTracker",
+            "columnName": "issueTracker",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "translation",
+            "columnName": "translation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "preferredSigner",
+            "columnName": "preferredSigner",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "video",
+            "columnName": "video",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "authorName",
+            "columnName": "authorName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "authorEmail",
+            "columnName": "authorEmail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "authorWebSite",
+            "columnName": "authorWebSite",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "authorPhone",
+            "columnName": "authorPhone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "donate",
+            "columnName": "donate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "liberapayID",
+            "columnName": "liberapayID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "liberapay",
+            "columnName": "liberapay",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "openCollective",
+            "columnName": "openCollective",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "bitcoin",
+            "columnName": "bitcoin",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "litecoin",
+            "columnName": "litecoin",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flattrID",
+            "columnName": "flattrID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "categories",
+            "columnName": "categories",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isCompatible",
+            "columnName": "isCompatible",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "packageName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "CoreRepository",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId"
+            ],
+            "referencedColumns": [
+              "repoId"
+            ]
+          }
+        ]
+      },
+      {
+        "ftsVersion": "FTS4",
+        "ftsOptions": {
+          "tokenizer": "simple",
+          "tokenizerArgs": [],
+          "contentTable": "AppMetadata",
+          "languageIdColumnName": "",
+          "matchInfo": "FTS4",
+          "notIndexedColumns": [],
+          "prefixSizes": [],
+          "preferredOrder": "ASC"
+        },
+        "contentSyncTriggers": [
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_BEFORE_UPDATE BEFORE UPDATE ON `AppMetadata` BEGIN DELETE FROM `AppMetadataFts` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_BEFORE_DELETE BEFORE DELETE ON `AppMetadata` BEGIN DELETE FROM `AppMetadataFts` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_AFTER_UPDATE AFTER UPDATE ON `AppMetadata` BEGIN INSERT INTO `AppMetadataFts`(`docid`, `repoId`, `packageName`, `localizedName`, `localizedSummary`) VALUES (NEW.`rowid`, NEW.`repoId`, NEW.`packageName`, NEW.`localizedName`, NEW.`localizedSummary`); END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_AFTER_INSERT AFTER INSERT ON `AppMetadata` BEGIN INSERT INTO `AppMetadataFts`(`docid`, `repoId`, `packageName`, `localizedName`, `localizedSummary`) VALUES (NEW.`rowid`, NEW.`repoId`, NEW.`packageName`, NEW.`localizedName`, NEW.`localizedSummary`); END"
+        ],
+        "tableName": "AppMetadataFts",
+        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `localizedName` TEXT, `localizedSummary` TEXT, content=`AppMetadata`)",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "localizedName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "summary",
+            "columnName": "localizedSummary",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "LocalizedFile",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `type` TEXT NOT NULL, `locale` TEXT NOT NULL, `name` TEXT NOT NULL, `sha256` TEXT, `size` INTEGER, `ipfsCidV1` TEXT, PRIMARY KEY(`repoId`, `packageName`, `type`, `locale`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "locale",
+            "columnName": "locale",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sha256",
+            "columnName": "sha256",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "size",
+            "columnName": "size",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ipfsCidV1",
+            "columnName": "ipfsCidV1",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "packageName",
+            "type",
+            "locale"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "AppMetadata",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId",
+              "packageName"
+            ],
+            "referencedColumns": [
+              "repoId",
+              "packageName"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "LocalizedFileList",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `type` TEXT NOT NULL, `locale` TEXT NOT NULL, `name` TEXT NOT NULL, `sha256` TEXT, `size` INTEGER, `ipfsCidV1` TEXT, PRIMARY KEY(`repoId`, `packageName`, `type`, `locale`, `name`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "locale",
+            "columnName": "locale",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sha256",
+            "columnName": "sha256",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "size",
+            "columnName": "size",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ipfsCidV1",
+            "columnName": "ipfsCidV1",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "packageName",
+            "type",
+            "locale",
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "AppMetadata",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId",
+              "packageName"
+            ],
+            "referencedColumns": [
+              "repoId",
+              "packageName"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Version",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `versionId` TEXT NOT NULL, `added` INTEGER NOT NULL, `releaseChannels` TEXT, `antiFeatures` TEXT, `whatsNew` TEXT, `isCompatible` INTEGER NOT NULL, `file_name` TEXT NOT NULL, `file_sha256` TEXT NOT NULL, `file_size` INTEGER, `file_ipfsCidV1` TEXT, `src_name` TEXT, `src_sha256` TEXT, `src_size` INTEGER, `src_ipfsCidV1` TEXT, `manifest_versionName` TEXT NOT NULL, `manifest_versionCode` INTEGER NOT NULL, `manifest_maxSdkVersion` INTEGER, `manifest_nativecode` TEXT, `manifest_features` TEXT, `manifest_usesSdk_minSdkVersion` INTEGER, `manifest_usesSdk_targetSdkVersion` INTEGER, `manifest_signer_sha256` TEXT, `manifest_signer_hasMultipleSigners` INTEGER, PRIMARY KEY(`repoId`, `packageName`, `versionId`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "versionId",
+            "columnName": "versionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "added",
+            "columnName": "added",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "releaseChannels",
+            "columnName": "releaseChannels",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "antiFeatures",
+            "columnName": "antiFeatures",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "whatsNew",
+            "columnName": "whatsNew",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isCompatible",
+            "columnName": "isCompatible",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "file.name",
+            "columnName": "file_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "file.sha256",
+            "columnName": "file_sha256",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "file.size",
+            "columnName": "file_size",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "file.ipfsCidV1",
+            "columnName": "file_ipfsCidV1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "src.name",
+            "columnName": "src_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "src.sha256",
+            "columnName": "src_sha256",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "src.size",
+            "columnName": "src_size",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "src.ipfsCidV1",
+            "columnName": "src_ipfsCidV1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.versionName",
+            "columnName": "manifest_versionName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "manifest.versionCode",
+            "columnName": "manifest_versionCode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "manifest.maxSdkVersion",
+            "columnName": "manifest_maxSdkVersion",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.nativecode",
+            "columnName": "manifest_nativecode",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.features",
+            "columnName": "manifest_features",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.usesSdk.minSdkVersion",
+            "columnName": "manifest_usesSdk_minSdkVersion",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.usesSdk.targetSdkVersion",
+            "columnName": "manifest_usesSdk_targetSdkVersion",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.signer.sha256",
+            "columnName": "manifest_signer_sha256",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "manifest.signer.hasMultipleSigners",
+            "columnName": "manifest_signer_hasMultipleSigners",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "packageName",
+            "versionId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "AppMetadata",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId",
+              "packageName"
+            ],
+            "referencedColumns": [
+              "repoId",
+              "packageName"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "VersionedString",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `versionId` TEXT NOT NULL, `type` TEXT NOT NULL, `name` TEXT NOT NULL, `version` INTEGER, PRIMARY KEY(`repoId`, `packageName`, `versionId`, `type`, `name`), FOREIGN KEY(`repoId`, `packageName`, `versionId`) REFERENCES `Version`(`repoId`, `packageName`, `versionId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "repoId",
+            "columnName": "repoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "versionId",
+            "columnName": "versionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "repoId",
+            "packageName",
+            "versionId",
+            "type",
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "Version",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "repoId",
+              "packageName",
+              "versionId"
+            ],
+            "referencedColumns": [
+              "repoId",
+              "packageName",
+              "versionId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "AppPrefs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`packageName` TEXT NOT NULL, `ignoreVersionCodeUpdate` INTEGER NOT NULL, `appPrefReleaseChannels` TEXT, PRIMARY KEY(`packageName`))",
+        "fields": [
+          {
+            "fieldPath": "packageName",
+            "columnName": "packageName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ignoreVersionCodeUpdate",
+            "columnName": "ignoreVersionCodeUpdate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "appPrefReleaseChannels",
+            "columnName": "appPrefReleaseChannels",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "packageName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [
+      {
+        "viewName": "LocalizedIcon",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT * FROM LocalizedFile WHERE type='icon'"
+      },
+      {
+        "viewName": "HighestVersion",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT repoId, packageName, antiFeatures FROM Version\n    GROUP BY repoId, packageName HAVING MAX(manifest_versionCode)"
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f1f130c0399a294d24dfbff7810f1628')"
+    ]
+  }
+}
