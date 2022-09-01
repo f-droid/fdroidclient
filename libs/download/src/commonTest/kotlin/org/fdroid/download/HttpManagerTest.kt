@@ -209,7 +209,9 @@ internal class HttpManagerTest {
 
         assertTrue(downloadRequest.tryFirstMirror != null)
 
-        assertNull(httpManager.head(downloadRequest))
+        assertFailsWith<NotFoundException> {
+            httpManager.head(downloadRequest)
+        }
         val e = assertFailsWith<ClientRequestException> {
             httpManager.getBytes(downloadRequest)
         }
