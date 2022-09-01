@@ -2,6 +2,7 @@ package org.fdroid.fdroid;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV1;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,20 +42,19 @@ public class TestUtils {
         }
     }
 
-    public static Apk getApk(long appId, int versionCode) {
-        return getApk(appId, versionCode, "signature", null);
+    public static Apk getApk(int versionCode) {
+        return getApk(versionCode, "signature", null);
     }
 
-    public static Apk getApk(long appId, int versionCode, String signature, String releaseChannel) {
+    public static Apk getApk(int versionCode, String signature, String releaseChannel) {
         Apk apk = new Apk();
-        apk.appId = appId;
         apk.repoAddress = "http://www.example.com/fdroid/repo";
         apk.canonicalRepoAddress = "http://www.example.com/fdroid/repo";
         apk.versionCode = versionCode;
         apk.repoId = 1;
         apk.versionName = "The good one";
         apk.hash = "11111111aaaaaaaa";
-        apk.apkName = "Test Apk";
+        apk.apkFile = new FileV1("Test Apk", "hash", null, null);
         apk.size = 10000;
         apk.compatible = true;
         apk.sig = signature;

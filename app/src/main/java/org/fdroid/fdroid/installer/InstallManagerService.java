@@ -15,7 +15,6 @@ import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
@@ -69,7 +68,7 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * <li>for a {@code String} ID, use {@code canonicalUrl}, {@link Uri#toString()}, or
  * {@link Intent#getDataString()}
  * <li>for an {@code int} ID, use {@link String#hashCode()} or {@link Uri#hashCode()}
- * <li>for an {@link Intent} extra, use {@link Downloader#EXTRA_CANONICAL_URL} and include a
+ * <li>for an {@link Intent} extra, use {@link DownloaderService#EXTRA_CANONICAL_URL} and include a
  * {@link String} instance
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
@@ -214,7 +213,7 @@ public class InstallManagerService extends Service {
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl());
+            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl(), apk.apkFile);
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
             sendBroadcast(intent.getData(), DownloaderService.ACTION_STARTED, apkFilePath);
@@ -222,7 +221,7 @@ public class InstallManagerService extends Service {
         } else {
             Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
             apkFilePath.delete();
-            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl());
+            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl(), apk.apkFile);
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
@@ -307,7 +306,7 @@ public class InstallManagerService extends Service {
                 }
             }
         };
-        DownloaderService.queue(this, repoId, obbUrlString, obbUrlString);
+        DownloaderService.queue(this, repoId, obbUrlString, obbUrlString, null);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }

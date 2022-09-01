@@ -19,6 +19,7 @@ import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.index.v2.FileV1;
 import org.fdroid.index.v2.PermissionV2;
 import org.fdroid.index.v2.SignerV2;
 
@@ -60,7 +61,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
     // these are never set by the Apk/package index metadata
     public String repoAddress;
     public String canonicalRepoAddress;
-    long repoVersion;
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
     public boolean compatible; // True if compatible with the device.
     public long repoId; // the database ID of the repo it comes from
@@ -107,13 +107,20 @@ public class Apk implements Comparable<Apk>, Parcelable {
      */
     public String sig;
 
-    public String apkName; // F-Droid style APK name
+    /**
+     * Can be null when created with {@link #Apk(PackageInfo)}
+     * which happens only for showing an installed version
+     * in {@link org.fdroid.fdroid.views.AppDetailsActivity}.
+     */
+    @Nullable
+    public FileV1 apkFile;
 
     /**
      * If not null, this is the name of the source tarball for the
      * application. Null indicates that it's a developer's binary
      * build - otherwise it's built from source.
      */
+    @Nullable
     public String srcname;
 
     public String[] incompatibleReasons;
@@ -121,11 +128,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
     public String[] antiFeatures;
 
     public String whatsNew;
-
-    /**
-     * The numeric primary key of the Metadata table, which is used to join apks.
-     */
-    public long appId;
 
     public Apk() {
     }
@@ -154,9 +156,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
         Repository repo = Objects.requireNonNull(FDroidApp.getRepo(v.getRepoId()));
         repoAddress = Utils.getRepoAddress(repo);
         canonicalRepoAddress = repo.getAddress();
-        repoVersion = repo.getVersion();
-        hash = v.getFile().getSha256();
-        hashType = "sha256";
         added = new Date(v.getAdded());
         features = v.getFeatureNames().toArray(new String[0]);
         setPackageName(v.getPackageName());
@@ -174,11 +173,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         } else {
             releaseChannels = channels;
         }
-        // obbMainFile = cursor.getString(i);
-        // obbMainFileSha256 = cursor.getString(i);
-        // obbPatchFile = cursor.getString(i);
-        // obbPatchFileSha256 = cursor.getString(i);
-        apkName = v.getFile().getName();
+        apkFile = v.getFile();
         setRequestedPermissions(v.getUsesPermission(), 0);
         setRequestedPermissions(v.getUsesPermissionSdk23(), 23);
         nativecode = v.getNativeCode().toArray(new String[0]);
@@ -205,16 +200,21 @@ public class Apk implements Comparable<Apk>, Parcelable {
     }
 
     private void checkRepoAddress() {
-        if (repoAddress == null || apkName == null) {
+        if (repoAddress == null || apkFile == null) {
             throw new IllegalStateException(
                     "Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and "
                             + "Schema.ApkTable.Cols.NAME set in order to calculate URL "
                             + "[package: " + packageName
                             + ", versionCode: " + versionCode
-                            + ", apkName: " + apkName
+                            + ", apkName: " + getApkPath()
                             + ", repoAddress: " + repoAddress
                             + ", repoId: " + repoId + "]");
         }
+    }
+
+    @Nullable
+    public String getApkPath() {
+        return apkFile == null ? "" : apkFile.getName();
     }
 
     /**
@@ -229,12 +229,12 @@ public class Apk implements Comparable<Apk>, Parcelable {
     public String getCanonicalUrl() {
         checkRepoAddress();
         /* Each String in pathElements might contain a /, should keep these as path elements */
-        return Utils.getUri(canonicalRepoAddress, apkName.split("/")).toString();
+        return Utils.getUri(canonicalRepoAddress, getApkPath().split("/")).toString();
     }
 
     public String getDownloadUrl() {
         checkRepoAddress();
-        return Utils.getUri(repoAddress, apkName.split("/")).toString();
+        return Utils.getUri(repoAddress, getApkPath().split("/")).toString();
     }
 
     /**
@@ -311,8 +311,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
         dest.writeLong(this.versionCode);
         dest.writeLong(this.size);
         dest.writeLong(this.repoId);
-        dest.writeString(this.hash);
-        dest.writeString(this.hashType);
         dest.writeInt(this.minSdkVersion);
         dest.writeInt(this.targetSdkVersion);
         dest.writeInt(this.maxSdkVersion);
@@ -326,15 +324,13 @@ public class Apk implements Comparable<Apk>, Parcelable {
         dest.writeStringArray(this.nativecode);
         dest.writeString(this.sig);
         dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
-        dest.writeString(this.apkName);
+        dest.writeString(this.apkFile.serialize());
         dest.writeSerializable(this.installedFile);
         dest.writeString(this.srcname);
-        dest.writeLong(this.repoVersion);
         dest.writeString(this.repoAddress);
         dest.writeString(this.canonicalRepoAddress);
         dest.writeStringArray(this.incompatibleReasons);
         dest.writeStringArray(this.antiFeatures);
-        dest.writeLong(this.appId);
     }
 
     protected Apk(Parcel in) {
@@ -343,8 +339,6 @@ public class Apk implements Comparable<Apk>, Parcelable {
         this.versionCode = in.readLong();
         this.size = in.readLong();
         this.repoId = in.readLong();
-        this.hash = in.readString();
-        this.hashType = in.readString();
         this.minSdkVersion = in.readInt();
         this.targetSdkVersion = in.readInt();
         this.maxSdkVersion = in.readInt();
@@ -359,15 +353,13 @@ public class Apk implements Comparable<Apk>, Parcelable {
         this.nativecode = in.createStringArray();
         this.sig = in.readString();
         this.compatible = in.readByte() != 0;
-        this.apkName = in.readString();
+        this.apkFile = FileV1.deserialize(in.readString());
         this.installedFile = (SanitizedFile) in.readSerializable();
         this.srcname = in.readString();
-        this.repoVersion = in.readLong();
         this.repoAddress = in.readString();
         this.canonicalRepoAddress = in.readString();
         this.incompatibleReasons = in.createStringArray();
         this.antiFeatures = in.createStringArray();
-        this.appId = in.readLong();
     }
 
     public static final Parcelable.Creator<Apk> CREATOR = new Parcelable.Creator<Apk>() {
@@ -536,7 +528,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
     }
 
     public File getInstalledMediaFile(Context context) {
-        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName));
+        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(getApkPath()));
     }
 
     /**
@@ -554,7 +546,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
      * @return true if this is an apk instead of a non-apk/media file
      */
     public boolean isApk() {
-        return apkName == null
-                || apkName.substring(apkName.length() - 4).toLowerCase(Locale.ENGLISH).endsWith(".apk");
+        return apkFile == null
+                || apkFile.getName().substring(apkFile.getName().length() - 4)
+                .toLowerCase(Locale.ENGLISH).endsWith(".apk");
     }
 }

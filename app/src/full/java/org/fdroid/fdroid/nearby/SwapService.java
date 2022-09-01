@@ -33,6 +33,7 @@ import org.fdroid.index.IndexParserKt;
 import org.fdroid.index.SigningException;
 import org.fdroid.index.v1.IndexV1;
 import org.fdroid.index.v1.IndexV1Verifier;
+import org.fdroid.index.v2.FileV2;
 
 import java.io.File;
 import java.io.IOException;
@@ -130,11 +131,12 @@ public class SwapService extends Service {
     private void updateRepo(@NonNull Peer peer, Repository repo)
             throws IOException, InterruptedException, SigningException {
         Uri uri = Uri.parse(repo.getAddress()).buildUpon().appendPath("index-v1.jar").build();
+        FileV2 indexFile = FileV2.fromPath("/index-v1.jar");
         File swapJarFile =
                 File.createTempFile("swap", "", getApplicationContext().getCacheDir());
         try {
             Downloader downloader =
-                    DownloaderFactory.INSTANCE.createWithTryFirstMirror(repo, uri, swapJarFile);
+                    DownloaderFactory.INSTANCE.createWithTryFirstMirror(repo, uri, indexFile, swapJarFile);
             downloader.download();
             IndexV1Verifier verifier = new IndexV1Verifier(swapJarFile, null, peer.getFingerprint());
             Pair<String, IndexV1> pair = verifier.getStreamAndVerify(inputStream ->

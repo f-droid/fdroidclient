@@ -548,7 +548,7 @@ public class NotificationHelper {
                         }
                     });
         } else {
-            App.loadBitmapWithGlide(context, entry.app.repoId, entry.app.getIconPath(context))
+            App.loadBitmapWithGlide(context, entry.app.repoId, entry.app.getIconPath())
                     .into(new CustomTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

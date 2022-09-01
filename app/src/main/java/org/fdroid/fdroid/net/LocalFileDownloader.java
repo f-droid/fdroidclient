@@ -3,10 +3,10 @@ package org.fdroid.fdroid.net;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.fdroid.IndexFile;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.NotFoundException;
 
@@ -31,8 +31,8 @@ public class LocalFileDownloader extends Downloader {
     private InputStream inputStream;
     private final File sourceFile;
 
-    LocalFileDownloader(Uri uri, File destFile) {
-        super(destFile);
+    LocalFileDownloader(Uri uri, IndexFile indexFile, File destFile) {
+        super(indexFile, destFile);
         sourceFile = new File(uri.getPath());
     }
 
@@ -71,13 +71,6 @@ public class LocalFileDownloader extends Downloader {
     @Override
     protected long totalDownloadSize() {
         return sourceFile.length();
-    }
-
-    @Override
-    public void download(long totalSize, @Nullable String sha256) throws IOException, InterruptedException {
-        setFileSize(totalSize);
-        setSha256(sha256);
-        download();
     }
 
     @Override
