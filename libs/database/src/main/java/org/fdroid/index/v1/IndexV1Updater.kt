@@ -15,6 +15,7 @@ import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.TempFileProvider
 import org.fdroid.index.defaultRepoUriBuilder
 import org.fdroid.index.setIndexUpdateListener
+import org.fdroid.index.v2.FileV2
 
 internal const val SIGNED_FILE_NAME = "index-v1.jar"
 
@@ -41,9 +42,13 @@ public class IndexV1Updater(
         require(formatVersion == null || formatVersion == ONE) {
             "Format downgrade not allowed for ${repo.address}"
         }
-        val uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME)
         val file = tempFileProvider.createTempFile()
-        val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
+        val downloader = downloaderFactory.createWithTryFirstMirror(
+            repo = repo,
+            uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME),
+            indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME"),
+            destFile = file,
+        ).apply {
             cacheTag = repo.lastETag
             setIndexUpdateListener(listener, repo)
         }
