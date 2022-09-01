@@ -19,6 +19,7 @@ import android.util.Log;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 
+import org.fdroid.IndexFile;
 import org.fdroid.database.AppListItem;
 import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
@@ -86,15 +87,9 @@ public class App implements Comparable<App>, Parcelable {
     public String installedSig;
     public int installedVersionCode;
     public String installedVersionName;
-    private long id;
     public org.fdroid.database.AppPrefs prefs;
     public String preferredSigner;
     public boolean isApk;
-
-    /**
-     * Has this {@code App} been localized into one of the user's current locales.
-     */
-    boolean isLocalized;
 
     /**
      * This is primarily for the purpose of saving app metadata when parsing an index.xml file.
@@ -110,7 +105,6 @@ public class App implements Comparable<App>, Parcelable {
     public String name = "Unknown";
 
     public String summary = "Unknown application";
-    public String iconFromApk;
 
     public String description;
 
@@ -119,15 +113,15 @@ public class App implements Comparable<App>, Parcelable {
      */
     public String whatsNew;
 
-    public String featureGraphic;
-    public String promoGraphic;
-    public String tvBanner;
+    public FileV2 featureGraphic;
+    private FileV2 promoGraphic;
+    private FileV2 tvBanner;
 
-    public String[] phoneScreenshots = new String[0];
-    public String[] sevenInchScreenshots = new String[0];
-    public String[] tenInchScreenshots = new String[0];
-    public String[] tvScreenshots = new String[0];
-    public String[] wearScreenshots = new String[0];
+    public List<FileV2> phoneScreenshots = Collections.emptyList();
+    private List<FileV2> sevenInchScreenshots = Collections.emptyList();
+    private List<FileV2> tenInchScreenshots = Collections.emptyList();
+    private List<FileV2> tvScreenshots = Collections.emptyList();
+    private List<FileV2> wearScreenshots = Collections.emptyList();
 
     public String license;
 
@@ -205,18 +199,7 @@ public class App implements Comparable<App>, Parcelable {
     @Nullable
     public String[] antiFeatures;
 
-    /**
-     * Requires root access (only ever used for root)
-     */
-    @Nullable
-    @Deprecated
-    public String[] requirements;
-
-    /**
-     * URL to download the app's icon. (Set only from localized block, see also
-     * {@link #iconFromApk} and {@link #getIconPath(Context)} (Context)}
-     */
-    public String iconUrl;
+    public FileV2 iconFile;
 
     @Override
     public int compareTo(@NonNull App app) {
@@ -227,20 +210,16 @@ public class App implements Comparable<App>, Parcelable {
     }
 
     public App(final UpdatableApp app) {
-        id = 0;
         repoId = app.getUpdate().getRepoId();
         setPackageName(app.getPackageName());
         name = app.getName() == null ? "" : app.getName();
         summary = app.getSummary() == null ? "" : app.getSummary();
         installedVersionCode = (int) app.getInstalledVersionCode();
         autoInstallVersionCode = (int) app.getUpdate().getManifest().getVersionCode();
-        FileV2 icon = app.getIcon(getLocales());
-        iconUrl = icon == null ? null : icon.getName();
-        iconFromApk = icon == null ? null : icon.getName();
+        iconFile = app.getIcon(getLocales());
     }
 
     public App(final org.fdroid.database.App app, @Nullable PackageInfo packageInfo) {
-        id = 0;
         repoId = app.getRepoId();
         compatible = app.getMetadata().isCompatible();
         setPackageName(app.getPackageName());
@@ -269,40 +248,15 @@ public class App implements Comparable<App>, Parcelable {
         preferredSigner = app.getMetadata().getPreferredSigner();
         added = new Date(app.getMetadata().getAdded());
         lastUpdated = new Date(app.getMetadata().getLastUpdated());
-        FileV2 icon = app.getIcon(getLocales());
-        iconUrl = icon == null ? null : icon.getName();
-        iconFromApk = icon == null ? null : icon.getName();
-        FileV2 featureGraphic = app.getFeatureGraphic(getLocales());
-        this.featureGraphic = featureGraphic == null ? null : featureGraphic.getName();
-        FileV2 promoGraphic = app.getPromoGraphic(getLocales());
-        this.promoGraphic = promoGraphic == null ? null : promoGraphic.getName();
-        FileV2 tvBanner = app.getPromoGraphic(getLocales());
-        this.tvBanner = tvBanner == null ? null : tvBanner.getName();
-        List<FileV2> phoneFiles = app.getPhoneScreenshots(getLocales());
-        phoneScreenshots = new String[phoneFiles.size()];
-        for (int i = 0; i < phoneFiles.size(); i++) {
-            phoneScreenshots[i] = phoneFiles.get(i).getName();
-        }
-        List<FileV2> sevenInchFiles = app.getSevenInchScreenshots(getLocales());
-        sevenInchScreenshots = new String[sevenInchFiles.size()];
-        for (int i = 0; i < sevenInchFiles.size(); i++) {
-            phoneScreenshots[i] = sevenInchFiles.get(i).getName();
-        }
-        List<FileV2> tenInchFiles = app.getTenInchScreenshots(getLocales());
-        tenInchScreenshots = new String[tenInchFiles.size()];
-        for (int i = 0; i < tenInchFiles.size(); i++) {
-            phoneScreenshots[i] = tenInchFiles.get(i).getName();
-        }
-        List<FileV2> tvFiles = app.getTvScreenshots(getLocales());
-        tvScreenshots = new String[tvFiles.size()];
-        for (int i = 0; i < tvFiles.size(); i++) {
-            phoneScreenshots[i] = tvFiles.get(i).getName();
-        }
-        List<FileV2> wearFiles = app.getWearScreenshots(getLocales());
-        wearScreenshots = new String[wearFiles.size()];
-        for (int i = 0; i < wearFiles.size(); i++) {
-            phoneScreenshots[i] = wearFiles.get(i).getName();
-        }
+        iconFile = app.getIcon(getLocales());
+        featureGraphic = app.getFeatureGraphic(getLocales());
+        promoGraphic = app.getPromoGraphic(getLocales());
+        tvBanner = app.getPromoGraphic(getLocales());
+        phoneScreenshots = app.getPhoneScreenshots(getLocales());
+        sevenInchScreenshots = app.getSevenInchScreenshots(getLocales());
+        tenInchScreenshots = app.getTenInchScreenshots(getLocales());
+        tvScreenshots = app.getTvScreenshots(getLocales());
+        wearScreenshots = app.getWearScreenshots(getLocales());
         setInstalled(packageInfo);
     }
 
@@ -311,8 +265,7 @@ public class App implements Comparable<App>, Parcelable {
         setPackageName(item.getPackageName());
         name = item.getName() == null ? "" : item.getName();
         summary = item.getSummary() == null ? "" : item.getSummary();
-        FileV2 iconFile = item.getIcon(getLocales());
-        iconFromApk = iconFile == null ? null : iconFile.getName();
+        iconFile = item.getIcon(getLocales());
         installedVersionCode = item.getInstalledVersionCode() == null ? 0 : item.getInstalledVersionCode().intValue();
         installedVersionName = item.getInstalledVersionName();
         antiFeatures = item.getAntiFeatureKeys().toArray(new String[0]);
@@ -367,7 +320,7 @@ public class App implements Comparable<App>, Parcelable {
     /**
      * Set the Package Name property while ensuring it is sanitized.
      */
-    void setPackageName(String packageName) {
+    private void setPackageName(String packageName) {
         if (Utils.isSafePackageName(packageName)) {
             this.packageName = packageName;
         } else {
@@ -379,7 +332,7 @@ public class App implements Comparable<App>, Parcelable {
     /**
      * Returns the app description text with all newlines replaced by {@code <br>}
      */
-    public static String formatDescription(String description) {
+    private static String formatDescription(String description) {
         return description.replace("\n", "<br>");
     }
 
@@ -395,11 +348,11 @@ public class App implements Comparable<App>, Parcelable {
                 .build();
     }
 
-    public RequestBuilder<Drawable> loadWithGlide(Context context, String path) {
-        return loadWithGlide(context, repoId, path);
+    public RequestBuilder<Drawable> loadWithGlide(Context context, IndexFile file) {
+        return loadWithGlide(context, repoId, file);
     }
 
-    public static RequestBuilder<Drawable> loadWithGlide(Context context, long repoId, String path) {
+    public static RequestBuilder<Drawable> loadWithGlide(Context context, long repoId, IndexFile file) {
         Repository repo = FDroidApp.getRepo(repoId);
         if (repo == null) {
             Log.e(TAG, "Repo not found: " + repoId);
@@ -407,12 +360,12 @@ public class App implements Comparable<App>, Parcelable {
         }
         String address = Utils.getRepoAddress(repo);
         if (address.startsWith("content://")) {
-            String sb = Utils.getUri(address, path.split("/")).toString();
+            String sb = Utils.getUri(address, file.getName().split("/")).toString();
             return Glide.with(context).load(sb);
         } else if (address.startsWith("file://")) {
-            return Glide.with(context).load(path);
+            return Glide.with(context).load(file);
         } else {
-            return Glide.with(context).load(Utils.getDownloadRequest(repo, path));
+            return Glide.with(context).load(Utils.getDownloadRequest(repo, file));
         }
     }
 
@@ -435,23 +388,18 @@ public class App implements Comparable<App>, Parcelable {
         }
     }
 
-    public String getIconPath(Context context) {
-        String path;
-        if (TextUtils.isEmpty(iconUrl)) {
-            if (TextUtils.isEmpty(iconFromApk)) {
-                return null;
-            }
-            if (iconFromApk.endsWith(".xml")) {
-                // We cannot use xml resources as icons. F-Droid server should not include them
-                // https://gitlab.com/fdroid/fdroidserver/issues/344
-                return null;
-            }
-            String iconsDir = Utils.getIconsDir(context, 1.0);
-            path = getPath(iconsDir, iconFromApk);
+    public String getIconPath() {
+        if (iconFile == null) {
+            return null;
+        } else if (TextUtils.isEmpty(iconFile.getName())) {
+            return null;
+        } else if (iconFile.getName().endsWith(".xml")) {
+            // We cannot use xml resources as icons. F-Droid server should not include them
+            // https://gitlab.com/fdroid/fdroidserver/issues/344
+            return null;
         } else {
-            path = iconUrl;
+            return iconFile.getName();
         }
-        return path;
     }
 
     /**
@@ -474,23 +422,12 @@ public class App implements Comparable<App>, Parcelable {
         return sb.toString();
     }
 
-    public ArrayList<String> getAllScreenshots() {
-        ArrayList<String> list = new ArrayList<>();
-        if (phoneScreenshots != null) {
-            Collections.addAll(list, phoneScreenshots);
-        }
-        if (sevenInchScreenshots != null) {
-            Collections.addAll(list, sevenInchScreenshots);
-        }
-        if (tenInchScreenshots != null) {
-            Collections.addAll(list, tenInchScreenshots);
-        }
-        if (tvScreenshots != null) {
-            Collections.addAll(list, tvScreenshots);
-        }
-        if (wearScreenshots != null) {
-            Collections.addAll(list, wearScreenshots);
-        }
+    public List<FileV2> getAllScreenshots() {
+        ArrayList<FileV2> list = new ArrayList<>(phoneScreenshots);
+        list.addAll(sevenInchScreenshots);
+        list.addAll(tenInchScreenshots);
+        list.addAll(tvScreenshots);
+        list.addAll(wearScreenshots);
         return list;
     }
 
@@ -734,10 +671,6 @@ public class App implements Comparable<App>, Parcelable {
         return new int[]{minSdkVersion, targetSdkVersion, maxSdkVersion};
     }
 
-    public long getId() {
-        return id;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -771,7 +704,7 @@ public class App implements Comparable<App>, Parcelable {
         dest.writeString(this.name);
         dest.writeLong(this.repoId);
         dest.writeString(this.summary);
-        dest.writeString(this.iconFromApk);
+        dest.writeString(this.iconFile == null ? null : this.iconFile.serialize());
         dest.writeString(this.description);
         dest.writeString(this.whatsNew);
         dest.writeString(this.license);
@@ -798,23 +731,19 @@ public class App implements Comparable<App>, Parcelable {
         dest.writeLong(this.lastUpdated != null ? this.lastUpdated.getTime() : -1);
         dest.writeStringArray(this.categories);
         dest.writeStringArray(this.antiFeatures);
-        dest.writeStringArray(this.requirements);
-        dest.writeString(this.iconUrl);
-        dest.writeString(this.featureGraphic);
-        dest.writeString(this.promoGraphic);
-        dest.writeString(this.tvBanner);
-        dest.writeStringArray(this.phoneScreenshots);
-        dest.writeStringArray(this.sevenInchScreenshots);
-        dest.writeStringArray(this.tenInchScreenshots);
-        dest.writeStringArray(this.tvScreenshots);
-        dest.writeStringArray(this.wearScreenshots);
+        dest.writeString(this.featureGraphic == null ? null : this.featureGraphic.serialize());
+        dest.writeString(this.promoGraphic == null ? null : this.promoGraphic.serialize());
+        dest.writeString(this.tvBanner == null ? null : this.tvBanner.serialize());
+        dest.writeStringList(Utils.toString(this.phoneScreenshots));
+        dest.writeStringList(Utils.toString(this.sevenInchScreenshots));
+        dest.writeStringList(Utils.toString(this.tenInchScreenshots));
+        dest.writeStringList(Utils.toString(this.tvScreenshots));
+        dest.writeStringList(Utils.toString(this.wearScreenshots));
         dest.writeByte(this.isApk ? (byte) 1 : (byte) 0);
-        dest.writeByte(this.isLocalized ? (byte) 1 : (byte) 0);
         dest.writeString(this.installedVersionName);
         dest.writeInt(this.installedVersionCode);
         dest.writeParcelable(this.installedApk, flags);
         dest.writeString(this.installedSig);
-        dest.writeLong(this.id);
     }
 
     protected App(Parcel in) {
@@ -823,7 +752,7 @@ public class App implements Comparable<App>, Parcelable {
         this.name = in.readString();
         this.repoId = in.readLong();
         this.summary = in.readString();
-        this.iconFromApk = in.readString();
+        this.iconFile = FileV2.deserialize(in.readString());
         this.description = in.readString();
         this.whatsNew = in.readString();
         this.license = in.readString();
@@ -852,23 +781,19 @@ public class App implements Comparable<App>, Parcelable {
         this.lastUpdated = tmpLastUpdated == -1 ? null : new Date(tmpLastUpdated);
         this.categories = in.createStringArray();
         this.antiFeatures = in.createStringArray();
-        this.requirements = in.createStringArray();
-        this.iconUrl = in.readString();
-        this.featureGraphic = in.readString();
-        this.promoGraphic = in.readString();
-        this.tvBanner = in.readString();
-        this.phoneScreenshots = in.createStringArray();
-        this.sevenInchScreenshots = in.createStringArray();
-        this.tenInchScreenshots = in.createStringArray();
-        this.tvScreenshots = in.createStringArray();
-        this.wearScreenshots = in.createStringArray();
+        this.featureGraphic = FileV2.deserialize(in.readString());
+        this.promoGraphic = FileV2.deserialize(in.readString());
+        this.tvBanner = FileV2.deserialize(in.readString());
+        this.phoneScreenshots = Utils.fileV2FromStrings(in.createStringArrayList());
+        this.sevenInchScreenshots = Utils.fileV2FromStrings(in.createStringArrayList());
+        this.tenInchScreenshots = Utils.fileV2FromStrings(in.createStringArrayList());
+        this.tvScreenshots = Utils.fileV2FromStrings(in.createStringArrayList());
+        this.wearScreenshots = Utils.fileV2FromStrings(in.createStringArrayList());
         this.isApk = in.readByte() != 0;
-        this.isLocalized = in.readByte() != 0;
         this.installedVersionName = in.readString();
         this.installedVersionCode = in.readInt();
         this.installedApk = in.readParcelable(Apk.class.getClassLoader());
         this.installedSig = in.readString();
-        this.id = in.readLong();
     }
 
     public static final Parcelable.Creator<App> CREATOR = new Parcelable.Creator<App>() {

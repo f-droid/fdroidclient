@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.index.v2.FileV1;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -133,7 +134,7 @@ public class RepoUrlsTest {
     public void testApkUrls() {
         testReposWithFile(APK_NAME, tr -> {
             Apk apk = new Apk();
-            apk.apkName = APK_NAME;
+            apk.apkFile = new FileV1(APK_NAME, "hash", null, null);
             apk.versionCode = 1;
             apk.repoAddress = tr.repoUrl;
             apk.canonicalRepoAddress = tr.repoUrl;

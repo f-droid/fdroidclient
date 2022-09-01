@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV2;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
  */
 class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final long repoId;
-    private final List<String> screenshots;
+    private final List<FileV2> screenshots;
     private final RequestOptions displayImageOptions;
     private final Listener listener;
 

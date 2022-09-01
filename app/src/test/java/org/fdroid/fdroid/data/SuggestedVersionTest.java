@@ -38,9 +38,9 @@ public class SuggestedVersionTest {
         App singleApp = TestUtils.getApp();
         singleApp.installedVersionCode = 1;
         singleApp.installedSig = TestUtils.FDROID_SIG;
-        Apk apk1 = TestUtils.getApk(singleApp.getId(), 1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk2 = TestUtils.getApk(singleApp.getId(), 2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk3 = TestUtils.getApk(singleApp.getId(), 3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_BETA);
+        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_BETA);
         List<Apk> apks = new ArrayList<>();
         apks.add(apk3);
         apks.add(apk2);
@@ -57,11 +57,11 @@ public class SuggestedVersionTest {
         App singleApp = TestUtils.getApp();
         singleApp.installedVersionCode = 0;
 
-        Apk apk1 = TestUtils.getApk(singleApp.getId(), 1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk2 = TestUtils.getApk(singleApp.getId(), 2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk3 = TestUtils.getApk(singleApp.getId(), 3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk4 = TestUtils.getApk(singleApp.getId(), 4, TestUtils.UPSTREAM_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk5 = TestUtils.getApk(singleApp.getId(), 5, TestUtils.UPSTREAM_SIG, Apk.RELEASE_CHANNEL_BETA);
+        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk4 = TestUtils.getApk(4, TestUtils.UPSTREAM_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk5 = TestUtils.getApk(5, TestUtils.UPSTREAM_SIG, Apk.RELEASE_CHANNEL_BETA);
         List<Apk> apks = new ArrayList<>();
         apks.add(apk5);
         apks.add(apk4);
@@ -80,8 +80,8 @@ public class SuggestedVersionTest {
         assertSuggested(singleApp, apks, 3, Apk.RELEASE_CHANNEL_STABLE);
 
         // This adds the "suggestedVersionCode" version of the app, but signed by f-droid.
-        Apk apk4f = TestUtils.getApk(singleApp.getId(), 4, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk5f = TestUtils.getApk(singleApp.getId(), 5, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_BETA);
+        Apk apk4f = TestUtils.getApk(4, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk5f = TestUtils.getApk(5, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_BETA);
         apks.clear();
         apks.add(apk5);
         apks.add(apk5f);

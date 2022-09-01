@@ -294,12 +294,13 @@ public final class AppUpdateStatusManager {
     }
 
     private void updateApkInternal(@NonNull AppUpdateStatus entry, @NonNull Status status, PendingIntent intent) {
+        String apkName = entry.apk.apkFile.getName();
         if (status == Status.UpdateAvailable && entry.status.ordinal() > status.ordinal()) {
-            Utils.debugLog(LOGTAG, "Not updating APK " + entry.apk.apkName + " state to " + status.name());
+            Utils.debugLog(LOGTAG, "Not updating APK " + apkName + " state to " + status.name());
             // If we have this entry in a more advanced state already, don't downgrade it
             return;
         } else {
-            Utils.debugLog(LOGTAG, "Update APK " + entry.apk.apkName + " state to " + status.name());
+            Utils.debugLog(LOGTAG, "Update APK " + apkName + " state to " + status.name());
         }
         boolean isStatusUpdate = entry.status != status;
         entry.status = status;
@@ -315,7 +316,8 @@ public final class AppUpdateStatusManager {
     }
 
     private void addApkInternal(@NonNull App app, @NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
-        Utils.debugLog(LOGTAG, "Add APK " + apk.apkName + " with state " + status.name());
+        String apkName = apk.apkFile.getName();
+        Utils.debugLog(LOGTAG, "Add APK " + apkName + " with state " + status.name());
         AppUpdateStatus entry = createAppEntry(app, apk, status, intent);
         setEntryContentIntentIfEmpty(entry);
         appMapping.put(entry.getCanonicalUrl(), entry);
@@ -463,7 +465,7 @@ public final class AppUpdateStatusManager {
             InstallManagerService.removePendingInstall(context, canonicalUrl);
             AppUpdateStatus entry = appMapping.remove(canonicalUrl);
             if (entry != null) {
-                Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.apkName);
+                Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.apkFile.getName());
                 notifyRemove(entry);
             }
         }
@@ -473,7 +475,7 @@ public final class AppUpdateStatusManager {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(canonicalUrl);
             if (entry != null) {
-                Utils.debugLog(LOGTAG, "Refresh APK " + entry.apk.apkName);
+                Utils.debugLog(LOGTAG, "Refresh APK " + entry.apk.apkFile.getName());
                 notifyChange(entry, true);
             }
         }

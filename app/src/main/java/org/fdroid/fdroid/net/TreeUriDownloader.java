@@ -1,9 +1,9 @@
 package org.fdroid.fdroid.net;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
 
+import org.fdroid.IndexFile;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.NotFoundException;
 import org.fdroid.fdroid.FDroidApp;
@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.net.ProtocolException;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.documentfile.provider.DocumentFile;
 
 /**
@@ -34,7 +33,6 @@ import androidx.documentfile.provider.DocumentFile;
  * @see <a href="https://developer.android.com/guide/topics/providers/document-provider.html">Open Files using Storage Access Framework</a>
  * @see <a href="https://developer.android.com/training/articles/scoped-directory-access.html">Using Scoped Directory Access</a>
  */
-@TargetApi(21)
 public class TreeUriDownloader extends Downloader {
     public static final String TAG = "TreeUriDownloader";
 
@@ -49,8 +47,8 @@ public class TreeUriDownloader extends Downloader {
     private final Uri treeUri;
     private final DocumentFile documentFile;
 
-    TreeUriDownloader(Uri uri, File destFile) {
-        super(destFile);
+    TreeUriDownloader(Uri uri, IndexFile indexFile, File destFile) {
+        super(indexFile, destFile);
         context = FDroidApp.getInstance();
         String path = uri.getEncodedPath();
         int lastEscapedSlash = path.lastIndexOf(ESCAPED_SLASH);
@@ -102,14 +100,7 @@ public class TreeUriDownloader extends Downloader {
 
     @Override
     protected long totalDownloadSize() {
-        return getFileSize() != null ? getFileSize() : documentFile.length();
-    }
-
-    @Override
-    public void download(long totalSize, @Nullable String sha256) throws IOException, InterruptedException {
-        setFileSize(totalSize);
-        setSha256(sha256);
-        downloadFromStream(false);
+        return getIndexFile().getSize() != null ? getIndexFile().getSize() : documentFile.length();
     }
 
     @Override

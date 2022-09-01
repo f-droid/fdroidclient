@@ -20,9 +20,10 @@ import androidx.viewpager.widget.ViewPager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV2;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,11 +42,11 @@ public class ScreenShotsActivity extends AppCompatActivity {
 
     private static boolean allowDownload = true;
 
-    public static Intent getStartIntent(Context context, long repoId, ArrayList<String> screenshots,
+    public static Intent getStartIntent(Context context, long repoId, List<FileV2> screenshots,
                                         int startPosition) {
         Intent intent = new Intent(context, ScreenShotsActivity.class);
         intent.putExtra(EXTRA_REPO_ID, repoId);
-        intent.putStringArrayListExtra(EXTRA_SCREENSHOT_LIST, screenshots);
+        intent.putStringArrayListExtra(EXTRA_SCREENSHOT_LIST, Utils.toString(screenshots));
         intent.putExtra(EXTRA_START_POSITION, startPosition);
         return intent;
     }
@@ -59,7 +60,8 @@ public class ScreenShotsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_screenshots);
 
         long repoId = getIntent().getLongExtra(EXTRA_REPO_ID, 1);
-        List<String> screenshots = getIntent().getStringArrayListExtra(EXTRA_SCREENSHOT_LIST);
+        List<String> list = getIntent().getStringArrayListExtra(EXTRA_SCREENSHOT_LIST);
+        List<FileV2> screenshots = Utils.fileV2FromStrings(list);
         int startPosition = getIntent().getIntExtra(EXTRA_START_POSITION, 0);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.screenshot_view_pager);
@@ -86,9 +88,9 @@ public class ScreenShotsActivity extends AppCompatActivity {
     private static class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
 
         private final long repoId;
-        private final List<String> screenshots;
+        private final List<FileV2> screenshots;
 
-        ScreenShotPagerAdapter(FragmentManager fragmentManager, long repoId, List<String> screenshots) {
+        ScreenShotPagerAdapter(FragmentManager fragmentManager, long repoId, List<FileV2> screenshots) {
             super(fragmentManager);
             this.repoId = repoId;
             this.screenshots = screenshots;
@@ -113,23 +115,23 @@ public class ScreenShotsActivity extends AppCompatActivity {
         private static final String ARG_REPO_ID = "ARG_REPO_ID";
         private static final String ARG_SCREENSHOT_URL = "ARG_SCREENSHOT_URL";
 
-        static ScreenShotPageFragment newInstance(long repoId, @NonNull String screenshotUrl) {
+        static ScreenShotPageFragment newInstance(long repoId, @NonNull FileV2 screenshotUrl) {
             ScreenShotPageFragment fragment = new ScreenShotPageFragment();
             Bundle args = new Bundle();
             args.putLong(ARG_REPO_ID, repoId);
-            args.putString(ARG_SCREENSHOT_URL, screenshotUrl);
+            args.putString(ARG_SCREENSHOT_URL, screenshotUrl.serialize());
             fragment.setArguments(args);
             return fragment;
         }
 
         private long repoId;
-        private String screenshotUrl;
+        private FileV2 screenshot;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             repoId = requireArguments().getLong(ARG_REPO_ID);
-            screenshotUrl = requireArguments().getString(ARG_SCREENSHOT_URL);
+            screenshot = FileV2.deserialize(requireArguments().getString(ARG_SCREENSHOT_URL));
         }
 
         @Nullable
@@ -139,7 +141,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.activity_screenshots_page, container, false);
 
             ImageView screenshotView = (ImageView) rootView.findViewById(R.id.screenshot);
-            App.loadWithGlide(requireContext(), repoId, screenshotUrl)
+            App.loadWithGlide(requireContext(), repoId, screenshot)
                     .onlyRetrieveFromCache(!allowDownload)
                     .error(R.drawable.screenshot_placeholder)
                     .fallback(R.drawable.screenshot_placeholder)

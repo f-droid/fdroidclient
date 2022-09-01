@@ -191,7 +191,7 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
         appName.setText(app.name);
         ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
-        app.loadWithGlide(this, app.getIconPath(this))
+        app.loadWithGlide(this, app.iconFile)
                 .apply(Utils.getAlwaysShowIconRequestOptions())
                 .into(appIcon);
     }

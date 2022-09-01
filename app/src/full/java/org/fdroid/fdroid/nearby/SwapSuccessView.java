@@ -40,6 +40,8 @@ import org.fdroid.index.v1.AppV1;
 import org.fdroid.index.v1.IndexV1;
 import org.fdroid.index.v1.PackageV1;
 import org.fdroid.index.v1.PermissionV1;
+import org.fdroid.index.v2.FileV1;
+import org.fdroid.index.v2.FileV2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,7 +100,7 @@ public class SwapSuccessView extends SwapView {
             App app = new App();
             app.name = a.getName();
             app.packageName = a.getPackageName();
-            app.iconUrl = "icons/" + a.getIcon();
+            app.iconFile = FileV2.fromPath("icons/" + a.getIcon());
             try {
                 PackageInfo  packageInfo = getContext().getPackageManager().getPackageInfo(app.packageName, 0);
                 app.installedVersionCode = packageInfo.versionCode;
@@ -115,9 +117,7 @@ public class SwapSuccessView extends SwapView {
                     apk.versionCode = packageV1.getVersionCode();
                 }
                 apk.versionName = packageV1.getVersionName();
-                apk.apkName = packageV1.getApkName();
-                apk.hashType = packageV1.getHashType();
-                apk.hash = packageV1.getHash();
+                apk.apkFile = new FileV1("/" + packageV1.getApkName(), packageV1.getHash(), packageV1.getSize(), null);
                 ArrayList<String> permissions =
                         new ArrayList<>(packageV1.getUsesPermission().size());
                 for (PermissionV1 perm : packageV1.getUsesPermission()) {
@@ -313,9 +313,8 @@ public class SwapSuccessView extends SwapView {
                     nameView.setText(app.name);
                 }
 
-                String path = app.getIconPath(getContext());
                 Glide.with(iconView.getContext())
-                        .load(Utils.getDownloadRequest(repo, path))
+                        .load(Utils.getDownloadRequest(repo, app.iconFile))
                         .apply(Utils.getAlwaysShowIconRequestOptions())
                         .into(iconView);
 

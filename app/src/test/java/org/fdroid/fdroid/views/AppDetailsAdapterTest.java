@@ -17,6 +17,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,7 +58,9 @@ public class AppDetailsAdapterTest {
     @Test
     public void appWithScreenshots() {
         App app = TestUtils.getApp();
-        app.phoneScreenshots = new String[]{"screenshot1.png", "screenshot2.png"};
+        app.phoneScreenshots = new ArrayList<>(2);
+        app.phoneScreenshots.add(FileV2.fromPath("screenshot1.png"));
+        app.phoneScreenshots.add(FileV2.fromPath("screenshot2.png"));
 
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
         adapter.updateItems(app, Collections.emptyList(), appPrefs);
@@ -71,9 +74,9 @@ public class AppDetailsAdapterTest {
         App app = TestUtils.getApp();
         app.preferredSigner = "eaa1d713b9c2a0475234a86d6539f910";
         List<Apk> apks = new ArrayList<>();
-        apks.add(TestUtils.getApk(app.getId(), 1));
-        apks.add(TestUtils.getApk(app.getId(), 2));
-        apks.add(TestUtils.getApk(app.getId(), 3));
+        apks.add(TestUtils.getApk(1));
+        apks.add(TestUtils.getApk(2));
+        apks.add(TestUtils.getApk(3));
         app.installedApk = apks.get(0);
 
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
