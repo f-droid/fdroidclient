@@ -1,6 +1,11 @@
 package org.fdroid.index.v2
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import org.fdroid.IndexFile
+import org.fdroid.index.IndexParser.json
 
 @Serializable
 public data class EntryV2(
@@ -21,18 +26,46 @@ public data class EntryV2(
 
 @Serializable
 public data class EntryFileV2(
-    val name: String,
-    val sha256: String,
-    val size: Long,
+    override val name: String,
+    override val sha256: String,
+    override val size: Long,
+    @SerialName("ipfsCIDV1")
+    override val ipfsCidV1: String? = null,
     val numPackages: Int,
-)
+) : IndexFile {
+    public companion object {
+        public fun deserialize(string: String): EntryFileV2 {
+            return json.decodeFromString(string)
+        }
+    }
+
+    public override fun serialize(): String {
+        return json.encodeToString(this)
+    }
+}
 
 @Serializable
 public data class FileV2(
-    val name: String,
-    val sha256: String? = null,
-    val size: Long? = null,
-)
+    override val name: String,
+    override val sha256: String? = null,
+    override val size: Long? = null,
+    @SerialName("ipfsCIDV1")
+    override val ipfsCidV1: String? = null,
+) : IndexFile {
+    public companion object {
+        @JvmStatic
+        public fun deserialize(string: String?): FileV2? {
+            if (string == null) return null
+            return json.decodeFromString(string)
+        }
+        @JvmStatic
+        public fun fromPath(path: String): FileV2 = FileV2(path)
+    }
+
+    public override fun serialize(): String {
+        return json.encodeToString(this)
+    }
+}
 
 @Serializable
 public data class IndexV2(
