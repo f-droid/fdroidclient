@@ -33,18 +33,19 @@ import java.util.Date
 /**
  * Download files over HTTP, with support for proxies, `.onion` addresses, HTTP Basic Auth, etc.
  */
+@Deprecated("Only for v1 repos")
 public class HttpDownloader constructor(
     private val httpManager: HttpManager,
     private val request: DownloadRequest,
     destFile: File,
-) : Downloader(destFile) {
+) : Downloader(request.indexFile, destFile) {
 
     private companion object {
         val log = KotlinLogging.logger {}
     }
 
-    @Deprecated("Only for v1 repos")
     private var hasChanged = false
+    private var fileSize: Long? = request.indexFile.size
 
     override fun getInputStream(resumable: Boolean): InputStream {
         throw NotImplementedError("Use getInputStreamSuspend instead.")
@@ -59,12 +60,6 @@ public class HttpDownloader constructor(
             if (e.response.status == NotFound) throw NotFoundException(e)
             else throw IOException(e)
         }
-    }
-
-    public override fun download(totalSize: Long, sha256: String?) {
-        this.fileSize = totalSize
-        this.sha256 = sha256
-        downloadToFile()
     }
 
     /**
@@ -112,7 +107,7 @@ public class HttpDownloader constructor(
         }
         val expectedETag = cacheTag
         cacheTag = headInfo.eTag
-        fileSize = headInfo.contentLength ?: -1
+        fileSize = headInfo.contentLength ?: request.indexFile.size ?: -1
 
         // If the ETag does not match, it could be because the file is on a mirror
         // running a different webserver, e.g. Apache vs Nginx.
@@ -137,7 +132,7 @@ public class HttpDownloader constructor(
         // calculatedEtag == expectedETag (ETag calculated from server response matches expected ETag)
         if (!headInfo.eTagChanged || calculatedEtag == expectedETag) {
             // ETag has not changed, don't download again
-            log.info { "${request.path} cached, not downloading." }
+            log.info { "${request.indexFile.name} cached, not downloading." }
             hasChanged = false
             return
         }
@@ -149,7 +144,7 @@ public class HttpDownloader constructor(
     private fun downloadToFile() {
         var resumable = false
         val fileLength = outputFile.length()
-        if (fileLength > fileSize ?: -1) {
+        if (fileLength > (fileSize ?: -1)) {
             if (!outputFile.delete()) log.warn {
                 "Warning: " + outputFile.absolutePath + " not deleted"
             }
@@ -159,7 +154,7 @@ public class HttpDownloader constructor(
         } else if (fileLength > 0) {
             resumable = true
         }
-        log.info { "downloading ${request.path} (is resumable: $resumable)" }
+        log.info { "downloading ${request.indexFile.name} (is resumable: $resumable)" }
         runBlocking {
             try {
                 downloadFromBytesReceiver(resumable)

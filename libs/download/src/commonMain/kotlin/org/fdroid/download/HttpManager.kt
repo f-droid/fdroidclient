@@ -25,6 +25,7 @@ import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
 import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpMessageBuilder
+import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.Url
 import io.ktor.http.contentLength
@@ -104,6 +105,7 @@ public open class HttpManager @JvmOverloads constructor(
             }
         } catch (e: ResponseException) {
             log.warn(e) { "Error getting HEAD" }
+            if (e.response.status == NotFound) throw NotFoundException()
             return null
         }
         val contentLength = response.contentLength()
