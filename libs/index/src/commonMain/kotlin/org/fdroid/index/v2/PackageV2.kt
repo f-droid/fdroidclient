@@ -1,6 +1,11 @@
 package org.fdroid.index.v2
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import org.fdroid.IndexFile
+import org.fdroid.index.IndexParser
 
 @Serializable
 public data class PackageV2(
@@ -108,10 +113,23 @@ public data class PackageVersionV2(
  */
 @Serializable
 public data class FileV1(
-    val name: String,
-    val sha256: String,
-    val size: Long? = null,
-)
+    override val name: String,
+    override val sha256: String,
+    override val size: Long? = null,
+    @SerialName("ipfsCIDv1")
+    override val ipfsCidV1: String? = null,
+) : IndexFile {
+    public companion object {
+        @JvmStatic
+        public fun deserialize(string: String): FileV1 {
+            return IndexParser.json.decodeFromString(string)
+        }
+    }
+
+    public override fun serialize(): String {
+        return IndexParser.json.encodeToString(this)
+    }
+}
 
 public interface PackageManifest {
     public val minSdkVersion: Int?
