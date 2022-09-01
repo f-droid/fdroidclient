@@ -23,3 +23,18 @@ fun get(mockEngine: MockEngine) = object : HttpClientEngineFactory<MockEngineCon
         return mockEngine
     }
 }
+
+internal fun getIndexFile(
+    name: String,
+    sha256: String? = null,
+    size: Long? = null,
+    ipfsCidV1: String? = null,
+): IndexFile {
+    return object : IndexFile {
+        override val name: String = name
+        override val sha256: String? = sha256
+        override val size: Long? = size
+        override val ipfsCidV1: String? = ipfsCidV1
+        override fun serialize(): String = error("Not yet implemented")
+    }
+}
