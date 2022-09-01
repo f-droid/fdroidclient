@@ -3,6 +3,7 @@ package org.fdroid.database
 import android.content.res.Resources
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -13,7 +14,7 @@ import java.util.Locale
     // When bumping this version, please make sure to add one (or more) migration(s) below!
     // Consider also providing tests for that migration.
     // Don't forget to commit the new schema to the git repo as well.
-    version = 1,
+    version = 2,
     entities = [
         // repo
         CoreRepository::class,
@@ -40,6 +41,7 @@ import java.util.Locale
     exportSchema = true,
     autoMigrations = [
         // add future migrations here (if they are easy enough to be done automatically)
+        AutoMigration(from = 1, to = 2)
     ],
 )
 @TypeConverters(Converters::class)
