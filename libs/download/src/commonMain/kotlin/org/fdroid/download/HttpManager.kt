@@ -49,8 +49,9 @@ public open class HttpManager @JvmOverloads constructor(
     private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
 ) {
 
-    private companion object {
+    internal companion object {
         val log = KotlinLogging.logger {}
+        const val READ_BUFFER = 8 * 1024
     }
 
     private var httpClient = getNewHttpClient(proxyConfig)
@@ -122,18 +123,23 @@ public open class HttpManager @JvmOverloads constructor(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
         receiver: BytesReceiver,
-    ): Unit = mirrorChooser.mirrorRequest(request) { mirror, url ->
-        getHttpStatement(request, mirror, url, skipFirstBytes).execute { response ->
-            val contentLength = response.contentLength()
-            if (skipFirstBytes != null && response.status != PartialContent) {
-                throw NoResumeException()
-            }
-            val channel: ByteReadChannel = response.body()
-            val limit = 8L * 1024L
-            while (!channel.isClosedForRead) {
-                val packet = channel.readRemaining(limit)
-                while (!packet.isEmpty) {
-                    receiver.receive(packet.readBytes(), contentLength)
+    ) {
+        // remember what we've read already, so we can pass it to the next mirror if needed
+        var skipBytes = skipFirstBytes ?: 0L
+        mirrorChooser.mirrorRequest(request) { mirror, url ->
+            getHttpStatement(request, mirror, url, skipBytes).execute { response ->
+                val contentLength = response.contentLength()
+                if (skipBytes > 0L && response.status != PartialContent) {
+                    throw NoResumeException()
+                }
+                val channel: ByteReadChannel = response.body()
+                while (!channel.isClosedForRead) {
+                    val packet = channel.readRemaining(READ_BUFFER.toLong())
+                    while (!packet.isEmpty) {
+                        val readBytes = packet.readBytes()
+                        skipBytes += readBytes.size
+                        receiver.receive(readBytes, contentLength)
+                    }
                 }
             }
         }
@@ -143,7 +149,7 @@ public open class HttpManager @JvmOverloads constructor(
         request: DownloadRequest,
         mirror: Mirror,
         url: Url,
-        skipFirstBytes: Long? = null,
+        skipFirstBytes: Long,
     ): HttpStatement {
         resetProxyIfNeeded(request.proxy, mirror)
         log.info { "GET $url" }
@@ -154,7 +160,7 @@ public open class HttpManager @JvmOverloads constructor(
             // increase connect timeout if using Tor mirror
             if (mirror.isOnion()) timeout { connectTimeoutMillis = 20_000 }
             // add range header if set
-            if (skipFirstBytes != null) header(Range, "bytes=$skipFirstBytes-")
+            if (skipFirstBytes > 0) header(Range, "bytes=$skipFirstBytes-")
         }
     }
 
@@ -167,7 +173,7 @@ public open class HttpManager @JvmOverloads constructor(
     ): ByteReadChannel {
         // TODO check if closed
         return mirrorChooser.mirrorRequest(request) { mirror, url ->
-            getHttpStatement(request, mirror, url, skipFirstBytes).body()
+            getHttpStatement(request, mirror, url, skipFirstBytes ?: 0L).body()
         }
     }
 
