@@ -3,15 +3,18 @@ package org.fdroid.download
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.ProxyBuilder
+import io.ktor.client.engine.config
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.MockEngineConfig
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondError
 import io.ktor.client.engine.mock.respondOk
 import io.ktor.client.engine.mock.respondRedirect
+import io.ktor.client.network.sockets.SocketTimeoutException
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.RedirectResponseException
 import io.ktor.client.plugins.ServerResponseException
+import io.ktor.client.request.HttpRequestData
 import io.ktor.http.HttpHeaders.Authorization
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.Range
@@ -24,6 +27,10 @@ import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.HttpStatusCode.Companion.TemporaryRedirect
 import io.ktor.http.Url
 import io.ktor.http.headersOf
+import io.ktor.utils.io.core.internal.ChunkBuffer
+import io.ktor.utils.io.core.writeFully
+import org.fdroid.TestByteReadChannel
+import org.fdroid.download.HttpManager.Companion.READ_BUFFER
 import org.fdroid.get
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
@@ -122,13 +129,7 @@ internal class HttpManagerTest {
 
         var requestNum = 1
         val mockEngine = MockEngine { request ->
-            assertNotNull(request.headers[Range])
-            val (fromStr, endStr) = request.headers[Range]!!
-                .replace("bytes=", "")
-                .split('-')
-            val from =
-                fromStr.toIntOrNull() ?: fail("No valid content range ${request.headers[Range]}")
-            assertEquals("", endStr)
+            val from = request.getByteRangeFrom()
             assertEquals(skipBytes, from)
             if (requestNum++ == 1) respond(content.copyOfRange(from, content.size), PartialContent)
             else respond(content, OK)
@@ -144,6 +145,50 @@ internal class HttpManagerTest {
         assertFailsWith<NoResumeException> {
             httpManager.getBytes(downloadRequest, skipBytes.toLong())
         }
+    }
+
+    @Test
+    fun testResumeDownloadWhenMirrorFailOver() = runSuspend {
+        val failBytes = READ_BUFFER
+        val content = Random.nextBytes(failBytes * 2)
+
+        val readChannel = object : TestByteReadChannel() {
+            var wasRead = 0
+            override val availableForRead: Int = 4096
+            override suspend fun readAvailable(dst: ChunkBuffer): Int {
+                // We allow three reads. Only the first two give us the first half of content.
+                // While the third seems to be required, it isn't filling the buffer
+                // before we throw the exception, so it isn't considered.
+                if (wasRead == 3) throw SocketTimeoutException("boom!")
+                dst.writeFully(content, wasRead * 4096, 4096)
+                wasRead++
+                return 4096
+            }
+        }
+
+        val mockEngine = MockEngine.config {
+            reuseHandlers = false
+            addHandler {
+                respond(readChannel, OK)
+            }
+            addHandler { request ->
+                val from = request.getByteRangeFrom()
+                assertEquals(failBytes, from)
+                respond(content.copyOfRange(from, content.size), PartialContent)
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
+
+        var chunk = 0
+        httpManager.get(downloadRequest) { bytes, _ ->
+            // we expect two chunks: 0 and 1
+            // the first is the first half of content and the second is the second half
+            val offset = chunk * READ_BUFFER
+            val expectedBytes = content.copyOfRange(offset, offset + READ_BUFFER)
+            assertContentEquals(expectedBytes, bytes)
+            chunk++
+        }
+        assertEquals(2, chunk)
     }
 
     @Test
@@ -313,6 +358,14 @@ internal class HttpManagerTest {
         assertNull(httpManager.currentProxy)
 
         assertEquals(2, numEngines)
+    }
+
+    private fun HttpRequestData.getByteRangeFrom(): Int {
+        val (fromStr, endStr) = (headers[Range] ?: fail("No Range header"))
+            .replace("bytes=", "")
+            .split('-')
+        assertEquals("", endStr)
+        return fromStr.toIntOrNull() ?: fail("No valid content range ${headers[Range]}")
     }
 
 }
