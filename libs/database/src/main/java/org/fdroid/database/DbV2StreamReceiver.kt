@@ -29,6 +29,9 @@ internal class DbV2StreamReceiver(
         if (fileV2 != null) {
             if (fileV2.sha256 == null) throw SerializationException("${fileV2.name} has no sha256")
             if (fileV2.size == null) throw SerializationException("${fileV2.name} has no size")
+            if (!fileV2.name.startsWith('/')) {
+                throw SerializationException("${fileV2.name} does not start with /")
+            }
         }
     }
 
