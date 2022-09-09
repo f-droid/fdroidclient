@@ -130,6 +130,11 @@ internal class IndexV1UpdaterTest : DbTest() {
         val result = indexUpdater.updateNewRepo(repo, "not the right fingerprint")
         assertIs<IndexUpdateResult.Error>(result)
         assertIs<SigningException>(result.e)
+
+        // check that the DB transaction was rolled back and the DB wasn't changed
+        assertEquals(repo, repoDao.getRepository(repoId) ?: fail())
+        assertEquals(0, appDao.countApps())
+        assertEquals(0, versionDao.countAppVersions())
     }
 
     @Test
