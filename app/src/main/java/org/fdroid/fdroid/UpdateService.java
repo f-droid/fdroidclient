@@ -58,7 +58,10 @@ import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.index.IndexUpdateResult;
 import org.fdroid.index.RepoUpdater;
 import org.fdroid.index.RepoUriBuilder;
+import org.fdroid.index.TempFileProvider;
+import org.fdroid.index.v1.IndexV1Updater;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -439,9 +442,19 @@ public class UpdateService extends JobIntentService {
                 final CompatibilityChecker compatChecker =
                         new CompatibilityCheckerImpl(getPackageManager(), Preferences.get().forceTouchApps());
                 final UpdateServiceListener listener = new UpdateServiceListener(UpdateService.this);
-                final RepoUpdater repoUpdater = new RepoUpdater(getApplicationContext().getCacheDir(), db,
-                        DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
-                final IndexUpdateResult result = repoUpdater.update(repo, fingerprint);
+                final File cacheDir = getApplicationContext().getCacheDir();
+                final IndexUpdateResult result;
+                if (Preferences.get().isForceOldIndexEnabled()) {
+                    final TempFileProvider tempFileProvider = () ->
+                            File.createTempFile("dl-", "", cacheDir);
+                    final IndexV1Updater updater = new IndexV1Updater(db, tempFileProvider,
+                            DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
+                    result = updater.updateNewRepo(repo, fingerprint);
+                } else {
+                    final RepoUpdater updater = new RepoUpdater(cacheDir, db,
+                            DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
+                    result = updater.update(repo, fingerprint);
+                }
                 if (result instanceof IndexUpdateResult.Unchanged) {
                     unchangedRepos++;
                 } else if (result instanceof IndexUpdateResult.Processed) {

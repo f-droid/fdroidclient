@@ -199,10 +199,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_FORCE_OLD_INDEX, IGNORED_B);
     }
 
-    public void setForceOldIndex(boolean flag) {
-        preferences.edit().putBoolean(PREF_FORCE_OLD_INDEX, flag).apply();
-    }
-
     /**
      * Whether to use the Privileged Installer, based on if it is installed.  Only the disabled
      * state is stored as a preference since the enabled state is based entirely on the presence
