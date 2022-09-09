@@ -182,27 +182,27 @@ internal interface RepositoryDaoInt : RepositoryDao {
         return repoId
     }
 
-    @Query("SELECT MAX(weight) FROM RepositoryPreferences")
+    @Query("SELECT MAX(weight) FROM ${RepositoryPreferences.TABLE}")
     fun getMaxRepositoryWeight(): Int
 
     @Transaction
-    @Query("SELECT * FROM CoreRepository WHERE repoId = :repoId")
+    @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")
     override fun getRepository(repoId: Long): Repository?
 
     @Transaction
-    @Query("SELECT * FROM CoreRepository")
+    @Query("SELECT * FROM ${CoreRepository.TABLE}")
     override fun getRepositories(): List<Repository>
 
     @Transaction
-    @Query("SELECT * FROM CoreRepository")
+    @Query("SELECT * FROM ${CoreRepository.TABLE}")
     override fun getLiveRepositories(): LiveData<List<Repository>>
 
-    @Query("SELECT * FROM RepositoryPreferences WHERE repoId = :repoId")
+    @Query("SELECT * FROM ${RepositoryPreferences.TABLE} WHERE repoId = :repoId")
     fun getRepositoryPreferences(repoId: Long): RepositoryPreferences?
 
     @RewriteQueriesToDropUnusedColumns
-    @Query("""SELECT * FROM Category
-        JOIN RepositoryPreferences AS pref USING (repoId)
+    @Query("""SELECT * FROM ${Category.TABLE}
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""")
     override fun getLiveCategories(): LiveData<List<Category>>
 
@@ -239,7 +239,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
      * V2 index should use [update] instead as there the certificate is known
      * before reading full index.
      */
-    @Query("UPDATE CoreRepository SET certificate = :certificate WHERE repoId = :repoId")
+    @Query("UPDATE ${CoreRepository.TABLE} SET certificate = :certificate WHERE repoId = :repoId")
     fun updateRepository(repoId: Long, certificate: String)
 
     @Update
@@ -301,17 +301,18 @@ internal interface RepositoryDaoInt : RepositoryDao {
         )
     }
 
-    @Query("UPDATE RepositoryPreferences SET enabled = :enabled WHERE repoId = :repoId")
+    @Query("UPDATE ${RepositoryPreferences.TABLE} SET enabled = :enabled WHERE repoId = :repoId")
     override fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
 
-    @Query("UPDATE RepositoryPreferences SET userMirrors = :mirrors WHERE repoId = :repoId")
+    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET userMirrors = :mirrors
+        WHERE repoId = :repoId""")
     override fun updateUserMirrors(repoId: Long, mirrors: List<String>)
 
-    @Query("""UPDATE RepositoryPreferences SET username = :username, password = :password
+    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET username = :username, password = :password
         WHERE repoId = :repoId""")
     override fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
 
-    @Query("""UPDATE RepositoryPreferences SET disabledMirrors = :disabledMirrors
+    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET disabledMirrors = :disabledMirrors
         WHERE repoId = :repoId""")
     override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
 
@@ -323,58 +324,58 @@ internal interface RepositoryDaoInt : RepositoryDao {
         deleteRepositoryPreferences(repoId)
     }
 
-    @Query("DELETE FROM CoreRepository WHERE repoId = :repoId")
+    @Query("DELETE FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")
     fun deleteCoreRepository(repoId: Long)
 
-    @Query("DELETE FROM RepositoryPreferences WHERE repoId = :repoId")
+    @Query("DELETE FROM ${RepositoryPreferences.TABLE} WHERE repoId = :repoId")
     fun deleteRepositoryPreferences(repoId: Long)
 
-    @Query("DELETE FROM CoreRepository")
+    @Query("DELETE FROM ${CoreRepository.TABLE}")
     fun deleteAllCoreRepositories()
 
-    @Query("DELETE FROM RepositoryPreferences")
+    @Query("DELETE FROM ${RepositoryPreferences.TABLE}")
     fun deleteAllRepositoryPreferences()
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM Mirror WHERE repoId = :repoId")
+    @Query("DELETE FROM ${Mirror.TABLE} WHERE repoId = :repoId")
     fun deleteMirrors(repoId: Long)
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId")
+    @Query("DELETE FROM ${AntiFeature.TABLE} WHERE repoId = :repoId")
     fun deleteAntiFeatures(repoId: Long)
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM AntiFeature WHERE repoId = :repoId AND id = :id")
+    @Query("DELETE FROM ${AntiFeature.TABLE} WHERE repoId = :repoId AND id = :id")
     fun deleteAntiFeature(repoId: Long, id: String)
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM Category WHERE repoId = :repoId")
+    @Query("DELETE FROM ${Category.TABLE} WHERE repoId = :repoId")
     fun deleteCategories(repoId: Long)
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM Category WHERE repoId = :repoId AND id = :id")
+    @Query("DELETE FROM ${Category.TABLE} WHERE repoId = :repoId AND id = :id")
     fun deleteCategory(repoId: Long, id: String)
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId")
+    @Query("DELETE FROM ${ReleaseChannel.TABLE} WHERE repoId = :repoId")
     fun deleteReleaseChannels(repoId: Long)
 
     /**
      * Used for diffing.
      */
-    @Query("DELETE FROM ReleaseChannel WHERE repoId = :repoId AND id = :id")
+    @Query("DELETE FROM ${ReleaseChannel.TABLE} WHERE repoId = :repoId AND id = :id")
     fun deleteReleaseChannel(repoId: Long, id: String)
 
     /**
@@ -397,19 +398,19 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @VisibleForTesting
-    @Query("SELECT COUNT(*) FROM Mirror")
+    @Query("SELECT COUNT(*) FROM ${Mirror.TABLE}")
     fun countMirrors(): Int
 
     @VisibleForTesting
-    @Query("SELECT COUNT(*) FROM AntiFeature")
+    @Query("SELECT COUNT(*) FROM ${AntiFeature.TABLE}")
     fun countAntiFeatures(): Int
 
     @VisibleForTesting
-    @Query("SELECT COUNT(*) FROM Category")
+    @Query("SELECT COUNT(*) FROM ${Category.TABLE}")
     fun countCategories(): Int
 
     @VisibleForTesting
-    @Query("SELECT COUNT(*) FROM ReleaseChannel")
+    @Query("SELECT COUNT(*) FROM ${ReleaseChannel.TABLE}")
     fun countReleaseChannels(): Int
 
 }

@@ -34,6 +34,7 @@ public interface MinimalApp {
  * This largely represents [MetadataV2] in a database table.
  */
 @Entity(
+    tableName = AppMetadata.TABLE,
     primaryKeys = ["repoId", "packageName"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
@@ -79,7 +80,11 @@ public data class AppMetadata(
      * that adds the [AppMetadata].
      */
     public val isCompatible: Boolean,
-)
+) {
+    internal companion object {
+        const val TABLE = "AppMetadata"
+    }
+}
 
 internal fun MetadataV2.toAppMetadata(
     repoId: Long,
@@ -119,7 +124,7 @@ internal fun MetadataV2.toAppMetadata(
     isCompatible = isCompatible,
 )
 
-@Entity
+@Entity(tableName = AppMetadataFts.TABLE)
 @Fts4(contentEntity = AppMetadata::class)
 internal data class AppMetadataFts(
     val repoId: Long,
@@ -128,7 +133,11 @@ internal data class AppMetadataFts(
     val name: String? = null,
     @ColumnInfo(name = "localizedSummary")
     val summary: String? = null,
-)
+) {
+    internal companion object {
+        const val TABLE = "AppMetadataFts"
+    }
+}
 
 /**
  * A class to represent all data of an App.
@@ -340,6 +349,7 @@ internal interface IFile {
 }
 
 @Entity(
+    tableName = LocalizedFile.TABLE,
     primaryKeys = ["repoId", "packageName", "type", "locale"],
     foreignKeys = [ForeignKey(
         entity = AppMetadata::class,
@@ -356,7 +366,11 @@ internal data class LocalizedFile(
     override val name: String,
     override val sha256: String? = null,
     override val size: Long? = null,
-) : IFile
+) : IFile {
+    internal companion object {
+        const val TABLE = "LocalizedFile"
+    }
+}
 
 internal fun LocalizedFileV2.toLocalizedFile(
     repoId: Long,
@@ -385,7 +399,8 @@ internal fun List<IFile>.toLocalizedFileV2(): LocalizedFileV2? = associate { fil
 // We can't restrict this query further (e.g. only from enabled repos or max weight),
 // because we are using this via @Relation on packageName for specific repos.
 // When filtering the result for only the repoId we are interested in, we'd get no icons.
-@DatabaseView("SELECT * FROM LocalizedFile WHERE type='icon'")
+@DatabaseView(viewName = LocalizedIcon.TABLE,
+    value = "SELECT * FROM ${LocalizedFile.TABLE} WHERE type='icon'")
 internal data class LocalizedIcon(
     val repoId: Long,
     val packageName: String,
@@ -394,9 +409,14 @@ internal data class LocalizedIcon(
     override val name: String,
     override val sha256: String? = null,
     override val size: Long? = null,
-) : IFile
+) : IFile {
+    internal companion object {
+        const val TABLE = "LocalizedIcon"
+    }
+}
 
 @Entity(
+    tableName = LocalizedFileList.TABLE,
     primaryKeys = ["repoId", "packageName", "type", "locale", "name"],
     foreignKeys = [ForeignKey(
         entity = AppMetadata::class,
@@ -413,7 +433,11 @@ internal data class LocalizedFileList(
     val name: String,
     val sha256: String? = null,
     val size: Long? = null,
-)
+) {
+    internal companion object {
+        const val TABLE = "LocalizedFileList"
+    }
+}
 
 internal fun LocalizedFileListV2.toLocalizedFileList(
     repoId: Long,

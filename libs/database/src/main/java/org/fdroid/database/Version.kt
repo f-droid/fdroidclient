@@ -27,6 +27,7 @@ import org.fdroid.index.v2.UsesSdkV2
  * This holds the data of [PackageVersionV2].
  */
 @Entity(
+    tableName = Version.TABLE,
     primaryKeys = ["repoId", "packageName", "versionId"],
     foreignKeys = [ForeignKey(
         entity = AppMetadata::class,
@@ -48,6 +49,10 @@ internal data class Version(
     val whatsNew: LocalizedTextV2? = null,
     val isCompatible: Boolean,
 ) : PackageVersion {
+    internal companion object {
+        const val TABLE = "Version"
+    }
+
     override val versionCode: Long get() = manifest.versionCode
     override val signer: SignerV2? get() = manifest.signer
     override val packageManifest: PackageManifest get() = manifest
@@ -141,13 +146,18 @@ internal fun ManifestV2.toManifest() = AppManifest(
     features = features.map { it.name },
 )
 
-@DatabaseView("""SELECT repoId, packageName, antiFeatures FROM Version
+@DatabaseView(viewName = HighestVersion.TABLE,
+    value = """SELECT repoId, packageName, antiFeatures FROM ${Version.TABLE}
     GROUP BY repoId, packageName HAVING MAX(manifest_versionCode)""")
 internal class HighestVersion(
     val repoId: Long,
     val packageName: String,
     val antiFeatures: Map<String, LocalizedTextV2>? = null,
-)
+) {
+    internal companion object {
+        const val TABLE = "HighestVersion"
+    }
+}
 
 internal enum class VersionedStringType {
     PERMISSION,
@@ -155,6 +165,7 @@ internal enum class VersionedStringType {
 }
 
 @Entity(
+    tableName = VersionedString.TABLE,
     primaryKeys = ["repoId", "packageName", "versionId", "type", "name"],
     foreignKeys = [ForeignKey(
         entity = Version::class,
@@ -170,7 +181,11 @@ internal data class VersionedString(
     val type: VersionedStringType,
     val name: String,
     val version: Int? = null,
-)
+) {
+    internal companion object {
+        const val TABLE = "VersionedString"
+    }
+}
 
 internal fun List<PermissionV2>.toVersionedString(
     version: Version,

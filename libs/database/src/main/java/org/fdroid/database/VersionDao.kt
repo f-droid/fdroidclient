@@ -155,8 +155,8 @@ internal interface VersionDaoInt : VersionDao {
 
     @Transaction
     @RewriteQueriesToDropUnusedColumns
-    @Query("""SELECT * FROM Version
-        JOIN RepositoryPreferences AS pref USING (repoId)
+    @Query("""SELECT * FROM ${Version.TABLE}
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageName = :packageName
         ORDER BY manifest_versionCode DESC, pref.weight DESC""")
     override fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
@@ -165,11 +165,11 @@ internal interface VersionDaoInt : VersionDao {
      * Only use for testing, not sorted, does take disabled repos into account.
      */
     @Transaction
-    @Query("""SELECT * FROM Version
+    @Query("""SELECT * FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName""")
     fun getAppVersions(repoId: Long, packageName: String): List<AppVersion>
 
-    @Query("""SELECT * FROM Version
+    @Query("""SELECT * FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun getVersion(repoId: Long, packageName: String, versionId: String): Version?
 
@@ -178,19 +178,20 @@ internal interface VersionDaoInt : VersionDao {
      * so takes [AppPrefs.ignoreVersionCodeUpdate] into account.
      */
     @RewriteQueriesToDropUnusedColumns
-    @Query("""SELECT * FROM Version
-        JOIN RepositoryPreferences AS pref USING (repoId)
-        LEFT JOIN AppPrefs USING (packageName)
+    @Query("""SELECT * FROM ${Version.TABLE}
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+        LEFT JOIN ${AppPrefs.TABLE} AS appPrefs USING (packageName)
         WHERE pref.enabled = 1 AND
-              manifest_versionCode > COALESCE(AppPrefs.ignoreVersionCodeUpdate, 0) AND
+              manifest_versionCode > COALESCE(appPrefs.ignoreVersionCodeUpdate, 0) AND
               packageName IN (:packageNames)
         ORDER BY manifest_versionCode DESC, pref.weight DESC""")
     fun getVersions(packageNames: List<String>): List<Version>
 
-    @Query("SELECT * FROM VersionedString WHERE repoId = :repoId AND packageName = :packageName")
+    @Query("""SELECT * FROM ${VersionedString.TABLE}
+        WHERE repoId = :repoId AND packageName = :packageName""")
     fun getVersionedStrings(repoId: Long, packageName: String): List<VersionedString>
 
-    @Query("""SELECT * FROM VersionedString
+    @Query("""SELECT * FROM ${VersionedString.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun getVersionedStrings(
         repoId: Long,
@@ -198,18 +199,18 @@ internal interface VersionDaoInt : VersionDao {
         versionId: String,
     ): List<VersionedString>
 
-    @Query("""DELETE FROM Version WHERE repoId = :repoId AND packageName = :packageName""")
+    @Query("""DELETE FROM ${Version.TABLE} WHERE repoId = :repoId AND packageName = :packageName""")
     fun deleteAppVersion(repoId: Long, packageName: String)
 
-    @Query("""DELETE FROM Version
+    @Query("""DELETE FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun deleteAppVersion(repoId: Long, packageName: String, versionId: String)
 
-    @Query("""DELETE FROM VersionedString
+    @Query("""DELETE FROM ${VersionedString.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")
     fun deleteVersionedStrings(repoId: Long, packageName: String, versionId: String)
 
-    @Query("""DELETE FROM VersionedString WHERE repoId = :repoId
+    @Query("""DELETE FROM ${VersionedString.TABLE} WHERE repoId = :repoId
         AND packageName = :packageName AND versionId = :versionId AND type = :type""")
     fun deleteVersionedStrings(
         repoId: Long,
@@ -218,10 +219,10 @@ internal interface VersionDaoInt : VersionDao {
         type: VersionedStringType,
     )
 
-    @Query("SELECT COUNT(*) FROM Version")
+    @Query("SELECT COUNT(*) FROM ${Version.TABLE}")
     fun countAppVersions(): Int
 
-    @Query("SELECT COUNT(*) FROM VersionedString")
+    @Query("SELECT COUNT(*) FROM ${VersionedString.TABLE}")
     fun countVersionedStrings(): Int
 
 }

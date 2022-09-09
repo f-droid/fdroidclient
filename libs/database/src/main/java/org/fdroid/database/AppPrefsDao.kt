@@ -22,10 +22,10 @@ internal interface AppPrefsDaoInt : AppPrefsDao {
         }
     }
 
-    @Query("SELECT * FROM AppPrefs WHERE packageName = :packageName")
+    @Query("SELECT * FROM ${AppPrefs.TABLE} WHERE packageName = :packageName")
     fun getLiveAppPrefs(packageName: String): LiveData<AppPrefs?>
 
-    @Query("SELECT * FROM AppPrefs WHERE packageName = :packageName")
+    @Query("SELECT * FROM ${AppPrefs.TABLE} WHERE packageName = :packageName")
     fun getAppPrefsOrNull(packageName: String): AppPrefs?
 
     @Insert(onConflict = REPLACE)

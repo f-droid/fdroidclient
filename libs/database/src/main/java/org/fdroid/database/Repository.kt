@@ -19,7 +19,7 @@ import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 
-@Entity
+@Entity(tableName = CoreRepository.TABLE)
 internal data class CoreRepository(
     @PrimaryKey(autoGenerate = true) val repoId: Long = 0,
     val name: LocalizedTextV2 = emptyMap(),
@@ -32,7 +32,11 @@ internal data class CoreRepository(
     val maxAge: Int?,
     val description: LocalizedTextV2 = emptyMap(),
     val certificate: String?,
-)
+) {
+    internal companion object {
+        const val TABLE = "CoreRepository"
+    }
+}
 
 internal fun RepoV2.toCoreRepository(
     repoId: Long = 0,
@@ -199,6 +203,7 @@ public data class Repository internal constructor(
  * A database table to store repository mirror information.
  */
 @Entity(
+    tableName = Mirror.TABLE,
     primaryKeys = ["repoId", "url"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
@@ -212,6 +217,10 @@ internal data class Mirror(
     val url: String,
     val location: String? = null,
 ) {
+    internal companion object {
+        const val TABLE = "Mirror"
+    }
+
     fun toDownloadMirror(): org.fdroid.download.Mirror = org.fdroid.download.Mirror(
         baseUrl = url,
         location = location,
@@ -243,6 +252,7 @@ public abstract class RepoAttribute {
  * An anti-feature belonging to a [Repository].
  */
 @Entity(
+    tableName = AntiFeature.TABLE,
     primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
@@ -257,7 +267,11 @@ public data class AntiFeature internal constructor(
     @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2,
-) : RepoAttribute()
+) : RepoAttribute() {
+    internal companion object {
+        const val TABLE = "AntiFeature"
+    }
+}
 
 internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
     AntiFeature(
@@ -273,6 +287,7 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
  * A category of apps belonging to a [Repository].
  */
 @Entity(
+    tableName = Category.TABLE,
     primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
@@ -287,7 +302,11 @@ public data class Category internal constructor(
     @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2,
-) : RepoAttribute()
+) : RepoAttribute() {
+    internal companion object {
+        const val TABLE = "Category"
+    }
+}
 
 internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
     Category(
@@ -303,6 +322,7 @@ internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
  * A release-channel for apps belonging to a [Repository].
  */
 @Entity(
+    tableName = ReleaseChannel.TABLE,
     primaryKeys = ["repoId", "id"],
     foreignKeys = [ForeignKey(
         entity = CoreRepository::class,
@@ -317,7 +337,11 @@ public data class ReleaseChannel(
     @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2,
-) : RepoAttribute()
+) : RepoAttribute() {
+    internal companion object {
+        const val TABLE = "ReleaseChannel"
+    }
+}
 
 internal fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = map {
     ReleaseChannel(
@@ -328,7 +352,7 @@ internal fun Map<String, ReleaseChannelV2>.toRepoReleaseChannel(repoId: Long) = 
     )
 }
 
-@Entity
+@Entity(tableName = RepositoryPreferences.TABLE)
 internal data class RepositoryPreferences(
     @PrimaryKey internal val repoId: Long,
     val weight: Int,
@@ -339,7 +363,11 @@ internal data class RepositoryPreferences(
     val disabledMirrors: List<String>? = null,
     val username: String? = null,
     val password: String? = null,
-)
+) {
+    internal companion object {
+        const val TABLE = "RepositoryPreferences"
+    }
+}
 
 /**
  * A reduced version of [Repository] used to pre-populate the [FDroidDatabase].

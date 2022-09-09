@@ -8,7 +8,7 @@ import org.fdroid.PackagePreference
  * User-defined preferences related to [App]s that get stored in the database,
  * so they can be used for queries.
  */
-@Entity
+@Entity(tableName = AppPrefs.TABLE)
 public data class AppPrefs(
     @PrimaryKey
     val packageName: String,
@@ -17,6 +17,10 @@ public data class AppPrefs(
     // which had exactly the same field.
     internal val appPrefReleaseChannels: List<String>? = null,
 ) : PackagePreference {
+    internal companion object {
+        const val TABLE = "AppPrefs"
+    }
+
     public val ignoreAllUpdates: Boolean get() = ignoreVersionCodeUpdate == Long.MAX_VALUE
     public override val releaseChannels: List<String> get() = appPrefReleaseChannels ?: emptyList()
     public fun shouldIgnoreUpdate(versionCode: Long): Boolean =
