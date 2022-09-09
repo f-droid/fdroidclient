@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package org.fdroid.index.v1
 
+import mu.KotlinLogging
 import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbV1StreamReceiver
 import org.fdroid.database.FDroidDatabase
@@ -18,7 +21,6 @@ import org.fdroid.index.setIndexUpdateListener
 
 internal const val SIGNED_FILE_NAME = "index-v1.jar"
 
-@Suppress("DEPRECATION")
 public class IndexV1Updater(
     database: FDroidDatabase,
     private val tempFileProvider: TempFileProvider,
@@ -28,6 +30,7 @@ public class IndexV1Updater(
     private val listener: IndexUpdateListener? = null,
 ) : IndexUpdater() {
 
+    private val log = KotlinLogging.logger {}
     public override val formatVersion: IndexFormatVersion = ONE
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
 
@@ -36,10 +39,11 @@ public class IndexV1Updater(
         certificate: String?,
         fingerprint: String?,
     ): IndexUpdateResult {
-        // don't allow repository downgrades
-        val formatVersion = repo.repository.formatVersion
-        require(formatVersion == null || formatVersion == ONE) {
-            "Format downgrade not allowed for ${repo.address}"
+        // Normally, we shouldn't allow repository downgrades and assert the condition below.
+        // However, F-Droid is concerned that late v2 bugs will require users to downgrade to v1,
+        // as it happened already with the migration from v0 to v1.
+        if (repo.formatVersion != null && repo.formatVersion != ONE) {
+            log.error { "Format downgrade for ${repo.address}" }
         }
         val uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME)
         val file = tempFileProvider.createTempFile()
