@@ -15,6 +15,7 @@ import org.fdroid.download.HttpDownloaderV2;
 import org.fdroid.download.HttpManager;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.index.IndexFormatVersion;
 
@@ -64,7 +65,10 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
             Proxy proxy = NetCipher.getProxy();
             DownloadRequest request = new DownloadRequest(indexFile, mirrors, proxy,
                     repo.getUsername(), repo.getPassword(), tryFirst);
-            if (repo.getFormatVersion() == null || repo.getFormatVersion() == IndexFormatVersion.ONE) {
+            boolean oldIndex = Preferences.get().isForceOldIndexEnabled();
+            boolean v1OrUnknown = repo.getFormatVersion() == null ||
+                    repo.getFormatVersion() == IndexFormatVersion.ONE;
+            if (oldIndex || v1OrUnknown) {
                 //noinspection deprecation
                 downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
             } else {
