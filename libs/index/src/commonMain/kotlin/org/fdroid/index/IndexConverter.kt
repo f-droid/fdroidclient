@@ -26,7 +26,6 @@ public class IndexConverter(
             val appAntiFeatures: Map<String, LocalizedTextV2> =
                 app.antiFeatures.associateWith { emptyMap() }
             val whatsNew: LocalizedTextV2? = app.localized?.mapValuesNotNull { it.value.whatsNew }
-            var isFirstVersion = true
             val packageV2 = PackageV2(
                 metadata = app.toMetadataV2(preferredSigner, defaultLocale),
                 versions = versions?.associate {
@@ -34,8 +33,7 @@ public class IndexConverter(
                     val suggestedVersionCode = app.suggestedVersionCode?.toLongOrNull() ?: 0
                     val versionReleaseChannels = if (versionCode > suggestedVersionCode)
                         listOf(RELEASE_CHANNEL_BETA) else emptyList()
-                    val wn = if (isFirstVersion) whatsNew else null
-                    isFirstVersion = false
+                    val wn = if (suggestedVersionCode == versionCode) whatsNew else null
                     it.hash to it.toPackageVersionV2(versionReleaseChannels, appAntiFeatures, wn)
                 } ?: emptyMap(),
             )

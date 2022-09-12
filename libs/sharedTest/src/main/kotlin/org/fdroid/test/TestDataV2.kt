@@ -71,7 +71,7 @@ fun PackageV2.v1compat(overrideLocale: Boolean = false) = copy(
 fun PackageVersionV2.v1compat() = copy(
     src = src?.v1compat(),
     manifest = manifest.copy(
-        signer = if (manifest.signer?.sha256?.size ?: 0 <= 1) manifest.signer else {
+        signer = if ((manifest.signer?.sha256?.size ?: 0) <= 1) manifest.signer else {
             SignerV2(manifest.signer?.sha256?.subList(0, 1) ?: error(""))
         }
     ),
@@ -824,12 +824,10 @@ object TestDataMaxV2 {
             nativecode = emptyList(),
             features = emptyList(),
         ),
-        whatsNew = mapOf(
-            "ch" to "This is new!",
-        ),
         antiFeatures = mapOf(
             "AddOne" to mapOf(LOCALE to "was added this update"),
         ),
+        releaseChannels = listOf(RELEASE_CHANNEL_BETA),
     )
     val version2_3 = TestDataMidV2.version2_3.copy(
         manifest = TestDataMidV2.version2_3.manifest.copy(
@@ -866,6 +864,11 @@ object TestDataMaxV2 {
         ),
         antiFeatures = mapOf(
             "AddOne" to mapOf(LOCALE to "was added this update"),
+        ),
+        whatsNew = mapOf(
+            "ch" to "This is new!",
+            "de" to "das ist neu",
+            "en-US" to "this is new",
         ),
     )
     val version2_4 = TestDataMidV2.version2_4.copy(
@@ -1042,10 +1045,6 @@ object TestDataMaxV2 {
             "Dont,Show,This" to emptyMap(),
             "anti-feature" to mapOf(LOCALE to "bla", "de" to "blubb"),
             "anti-feature2" to mapOf("de" to "blabla"),
-        ),
-        whatsNew = mapOf(
-            LOCALE to "this is new",
-            "de" to "das ist neu",
         ),
     )
     val app3 = PackageV2(

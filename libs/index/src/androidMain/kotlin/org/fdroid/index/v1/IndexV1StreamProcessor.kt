@@ -176,7 +176,9 @@ public class IndexV1StreamProcessor(
                 val packageVersionV2 = packageVersionV1.toPackageVersionV2(
                     releaseChannels = releaseChannels,
                     appAntiFeatures = appDataMap[packageName]?.antiFeatures ?: emptyMap(),
-                    whatsNew = if (isFirstVersion) appDataMap[packageName]?.whatsNew else null
+                    whatsNew = if (suggestedVersionCode == versionCode) {
+                        appDataMap[packageName]?.whatsNew
+                    } else null
                 )
                 if (isFirstVersion) {
                     indexStreamReceiver.updateAppMetadata(packageName, packageVersionV1.signer)

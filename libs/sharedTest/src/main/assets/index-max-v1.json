@@ -68,7 +68,7 @@
       "openCollective": "F-Droid-Euro",
       "flattrID": "343053",
       "suggestedVersionName": "1.14",
-      "suggestedVersionCode": "1014050",
+      "suggestedVersionCode": "1014003",
       "license": "GPL-3.0-or-later",
       "webSite": "https://fdroid.org",
       "added": 1295222400000,
@@ -86,7 +86,8 @@
           "summary": "new summary"
         },
         "de": {
-          "summary": "Der App-Store, der Freiheit und Privatsphäre respektiert"
+          "summary": "Der App-Store, der Freiheit und Privatsphäre respektiert",
+          "whatsNew": "das ist neu"
         },
         "en-US": {
           "description": "F-Droid is an installable catalogue of libre software",
@@ -99,7 +100,8 @@
             "screenshot-updates.png"
           ],
           "featureGraphic": "featureGraphic_PTun9TO4cMFOeiqbvQSrkdcxNUcOFQCymMIaj9UJOAY=.jpg",
-          "summary": "new summary in en-US"
+          "summary": "new summary in en-US",
+          "whatsNew": "this is new"
         }
       }
     },
