@@ -293,7 +293,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""SELECT ${AppMetadata.TABLE}.* FROM ${AppMetadata.TABLE}
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE packageName = :packageName
+        WHERE packageName = :packageName AND pref.enabled = 1
         ORDER BY pref.weight DESC LIMIT 1""")
     override fun getApp(packageName: String): LiveData<App?>
 
