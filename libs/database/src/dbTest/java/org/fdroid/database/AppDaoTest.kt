@@ -57,6 +57,24 @@ internal class AppDaoTest : AppTest() {
     }
 
     @Test
+    fun testGetSameAppFromTwoReposOneDisabled() {
+        // insert same app into two repos (repoId2 has highest weight)
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        appDao.insert(repoId2, packageName, app2, locales)
+
+        // app from repo with highest weight gets returned
+        assertEquals(app2, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // repo with highest weight gets disabled
+        repoDao.setRepositoryEnabled(repoId2, false)
+
+        // now app from repo with lower weight is returned
+        assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+    }
+
+    @Test
     fun testUpdateCompatibility() {
         // insert two apps with one version each
         val repoId = repoDao.insertOrReplace(getRandomRepo())
