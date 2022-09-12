@@ -137,8 +137,8 @@ public open class HttpManager @JvmOverloads constructor(
                     val packet = channel.readRemaining(READ_BUFFER.toLong())
                     while (!packet.isEmpty) {
                         val readBytes = packet.readBytes()
-                        skipBytes += readBytes.size
                         receiver.receive(readBytes, contentLength)
+                        skipBytes += readBytes.size
                     }
                 }
             }

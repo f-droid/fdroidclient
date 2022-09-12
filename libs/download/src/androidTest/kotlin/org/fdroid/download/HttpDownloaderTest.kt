@@ -1,6 +1,7 @@
 package org.fdroid.download
 
 import io.ktor.client.engine.ProxyBuilder
+import io.ktor.client.engine.config
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondOk
@@ -119,6 +120,40 @@ internal class HttpDownloaderTest {
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
         assertEquals(2, mockEngine.responseHistory.size)
+    }
+
+    /**
+     * Tests resuming a download with hash verification.
+     * This can fail if the hashing doesn't take the already downloaded bytes into account.
+     */
+    @Test
+    fun testResumeWithHashSuccess() = runSuspend {
+        val file = folder.newFile()
+        val firstBytes =
+            "These are the first bytes that were already downloaded.".encodeToByteArray()
+        file.writeBytes(firstBytes)
+        val secondBytes =
+            "These are the last bytes that still need to be downloaded.".encodeToByteArray()
+        val totalSize = firstBytes.size + secondBytes.size
+        // specifying the sha256 hash forces its validation
+        val sha256 = "efabb260da949061c88173c19f369b4aa0eaa82003c7c2dec08b5dfe75525368"
+        val downloadRequest = DownloadRequest(getIndexFile("foo/bar", sha256), mirrors)
+
+        val mockEngine = MockEngine.config {
+            reuseHandlers = false
+            addHandler {
+                respond("", OK, headers = headersOf(ContentLength, "$totalSize"))
+            }
+            addHandler {
+                respond(secondBytes, PartialContent)
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
+        // this throws if the hash doesn't match while downloading
+        httpDownloader.download()
+
+        assertContentEquals(firstBytes + secondBytes, file.readBytes())
     }
 
     @Test
