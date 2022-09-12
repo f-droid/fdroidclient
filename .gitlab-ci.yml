@@ -148,11 +148,12 @@ pages:
   only:
     - master
   script:
-    - ./gradlew :download:dokkaHtml :index:dokkaHtml
-    - mkdir public
-    - touch public/index.html
-    - cp -r download/build/dokka/html public/download
-    - cp -r index/build/dokka/html public/index
+    - ./gradlew :libs:download:dokkaHtml :libs:index:dokkaHtml :libs:database:dokkaHtml
+    - mkdir -p public/libs
+    - touch public/index.html public/libs/index.html
+    - cp -r libs/download/build/dokka/html public/libs/download
+    - cp -r libs/index/build/dokka/html public/libs/index
+    - cp -r libs/database/build/dokka/html public/libs/database
   artifacts:
     paths:
       - public
@@ -173,8 +174,8 @@ deploy_nightly:
     - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
     - echo "<item>${CI_PROJECT_URL}-nightly/raw/master/fdroid/repo</item>" >> app/src/main/res/values/default_repos.xml
     - cat config/nightly-repo/repo.xml >> app/src/main/res/values/default_repos.xml
-    - export DB=`sed -n 's,.*DB_VERSION *= *\([0-9][0-9]*\).*,\1,p' app/src/main/java/org/fdroid/fdroid/data/DBHelper.java`
-    - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b4-8)`
+    - export DB=`sed -n 's,.*version *= *\([0-9][0-9]*\).*,\1,p' libs/database/src/main/java/org/fdroid/database/FDroidDatabase.kt`
+    - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-8)`
     - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," app/build.gradle
     # build the APKs!
     - ./gradlew assembleDebug

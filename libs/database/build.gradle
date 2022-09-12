@@ -1,0 +1,109 @@
+plugins {
+    id 'kotlin-android'
+    id 'com.android.library'
+    id 'kotlin-kapt'
+    id 'org.jetbrains.dokka'
+    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
+}
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+
+        consumerProguardFiles "consumer-rules.pro"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments disableAnalytics: 'true'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/dbTest/java"
+        }
+        test {
+            java.srcDirs += "src/dbTest/java"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += "-Xexplicit-api=strict"
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+    aaptOptions {
+        // needed only for instrumentation tests: assets.openFd()
+        noCompress "json"
+    }
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+dependencies {
+    implementation project(":libs:download")
+    implementation project(":libs:index")
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    implementation 'io.github.microutils:kotlin-logging:2.1.21'
+    implementation "org.slf4j:slf4j-android:1.7.36"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+
+    testImplementation project(":libs:sharedTest")
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'io.mockk:mockk:1.12.4'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'androidx.test:core:1.4.0'
+    testImplementation 'androidx.test.ext:junit:1.1.3'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.robolectric:robolectric:4.8.1'
+    testImplementation 'commons-io:commons-io:2.6'
+
+    androidTestImplementation project(":libs:sharedTest")
+    androidTestImplementation 'io.mockk:mockk-android:1.12.3' // 1.12.4 has strange error
+    androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'commons-io:commons-io:2.6'
+}
+
+import org.jetbrains.dokka.gradle.DokkaTask
+tasks.withType(DokkaTask).configureEach {
+    pluginsMapConfiguration.set(
+            ["org.jetbrains.dokka.base.DokkaBase": """{
+                "customAssets": ["${file("${rootProject.rootDir}/logo-icon.svg")}"],
+                "footerMessage": "© 2010-2022 F-Droid Limited and Contributors"
+            }"""]
+    )
+}
+
+apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"
