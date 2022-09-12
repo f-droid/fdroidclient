@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.text.Editable;
 import android.text.Spanned;
@@ -124,7 +123,6 @@ public class CategoryTextWatcher implements TextWatcher {
      * In addition, also adds a {@link TtsSpan} to indicate to screen readers that the category
      * span has semantic meaning representing a category.
      */
-    @TargetApi(21)
     private void prepareSpans(Editable textToSpannify) {
         if (textToSpannify == null) {
             return;

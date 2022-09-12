@@ -158,7 +158,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             default:
                 // `Set by Battery Saver` for Q above (inclusive), `Use system default` for Q below
                 // https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                if (Build.VERSION.SDK_INT <= 28) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);

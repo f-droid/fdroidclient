@@ -85,9 +85,7 @@ public class NearbyViewBinder {
             @Override
             public void onClick(View v) {
                 final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
-                if (Build.VERSION.SDK_INT >= 23
-                        && PackageManager.PERMISSION_GRANTED
-                        != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
+                if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
                     ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
                             MainActivity.REQUEST_LOCATION_PERMISSIONS);
                 } else {
@@ -119,13 +117,9 @@ public class NearbyViewBinder {
             Button requestReadExternalStorage = swapView.findViewById(R.id.request_read_external_storage_button);
             requestReadExternalStorage.setVisibility(View.VISIBLE);
             requestReadExternalStorage.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = 21)
                 @Override
                 public void onClick(View v) {
-                    if (Build.VERSION.SDK_INT >= 23
-                            && (externalStorage == null || !externalStorage.canRead())
-                            && PackageManager.PERMISSION_GRANTED
-                            != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
+                    if ((externalStorage == null || !externalStorage.canRead()) && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
                         ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
                                 MainActivity.REQUEST_STORAGE_PERMISSIONS);
                     } else {

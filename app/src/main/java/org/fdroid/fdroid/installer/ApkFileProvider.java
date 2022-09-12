@@ -61,7 +61,7 @@ public class ApkFileProvider extends FileProvider {
 
     public static Uri getSafeUri(Context context, PackageInfo packageInfo) throws IOException {
         SanitizedFile tempApkFile = ApkCache.copyInstalledApkToFiles(context, packageInfo);
-        return getSafeUri(context, tempApkFile, Build.VERSION.SDK_INT >= 23);
+        return getSafeUri(context, tempApkFile, true);
     }
 
     /**

@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.work;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Process;
 import android.system.ErrnoException;
 import android.system.Os;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.ExistingWorkPolicy;
@@ -63,9 +61,7 @@ public class CleanCacheWorker extends Worker {
         final Constraints.Builder constraintsBuilder = new Constraints.Builder()
                 .setRequiresCharging(true)
                 .setRequiresBatteryNotLow(true);
-        if (Build.VERSION.SDK_INT >= 23) {
-            constraintsBuilder.setRequiresDeviceIdle(true);
-        }
+        constraintsBuilder.setRequiresDeviceIdle(true);
         final PeriodicWorkRequest cleanCache =
                 new PeriodicWorkRequest.Builder(CleanCacheWorker.class, interval, TimeUnit.MILLISECONDS)
                         .setConstraints(constraintsBuilder.build())
@@ -217,7 +213,6 @@ public class CleanCacheWorker extends Worker {
         Utils.debugLog(TAG, "Deleted file: " + file);
     }
 
-    @RequiresApi(api = 21)
     private static class Impl21 {
         /**
          * Recursively delete files in {@code f} that were last used

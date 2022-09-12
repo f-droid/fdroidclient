@@ -53,7 +53,6 @@ public class StartSwapView extends SwapView {
         super(context, attrs, defStyleAttr);
     }
 
-    @TargetApi(21)
     public StartSwapView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }

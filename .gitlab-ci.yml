@@ -144,7 +144,7 @@ errorprone:
   <<: *test-template
   <<: *kvm-connected-template
 
-kvm 22 default x86:
+kvm 23 default x86:
   <<: *test-template
   <<: *kvm-template
 

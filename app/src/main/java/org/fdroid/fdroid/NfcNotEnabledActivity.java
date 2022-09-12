@@ -1,6 +1,5 @@
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ public class NfcNotEnabledActivity extends AppCompatActivity {
      * needed for NDEF. Therefore, we detect the current state of NFC,
      * and steer the user accordingly.
      */
-    @TargetApi(16)
     private void doOnJellybean(Intent intent) {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {

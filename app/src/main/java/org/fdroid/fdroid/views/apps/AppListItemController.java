@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -119,7 +118,6 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     @Nullable
     private Disposable disposable;
 
-    @TargetApi(21)
     public AppListItemController(final AppCompatActivity activity, View itemView) {
         super(itemView);
         this.activity = activity;

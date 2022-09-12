@@ -19,7 +19,6 @@
 package org.fdroid.fdroid.privileged.views;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -115,7 +114,6 @@ public class AppSecurityPermissions {
             super(info);
         }
 
-        @TargetApi(22)
         public Drawable loadGroupIcon(Context context, PackageManager pm) {
             Drawable iconDrawable;
             if (icon != 0) {
@@ -341,7 +339,6 @@ public class AppSecurityPermissions {
      * doesn't currently hold this permission. On older devices that don't support
      * this concept, permissions are never "new permissions".
      */
-    @TargetApi(16)
     private static boolean isNewPermission(PackageInfo installedPkgInfo, int existingFlags) {
         if (installedPkgInfo == null) {
             return false;
@@ -423,7 +420,6 @@ public class AppSecurityPermissions {
         return permView;
     }
 
-    @TargetApi(23)
     private boolean isDisplayablePermission(PermissionInfo pInfo, int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
