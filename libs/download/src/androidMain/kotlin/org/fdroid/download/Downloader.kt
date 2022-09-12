@@ -5,6 +5,7 @@ import org.fdroid.IndexFile
 import org.fdroid.fdroid.ProgressListener
 import org.fdroid.fdroid.isMatching
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
@@ -97,8 +98,10 @@ public abstract class Downloader constructor(
             val messageDigest: MessageDigest? = if (indexFile.sha256 == null) null else {
                 MessageDigest.getInstance("SHA-256")
             }
+            var bytesCopied = outputFile.length()
+            // read pre-downloaded bytes (if any) for hash to match
+            if (bytesCopied > 0 && messageDigest != null) outputFile.initDigest(messageDigest)
             FileOutputStream(outputFile, isResume).use { outputStream ->
-                var bytesCopied = outputFile.length()
                 var lastTimeReported = 0L
                 val bytesTotal = totalDownloadSize()
                 getBytes(isResume) { bytes, numTotalBytes ->
@@ -141,6 +144,9 @@ public abstract class Downloader constructor(
         }
         try {
             var bytesCopied = outputFile.length()
+            // read pre-downloaded bytes (if any) for hash to match
+            if (bytesCopied > 0 && messageDigest != null) outputFile.initDigest(messageDigest)
+
             var lastTimeReported = 0L
             val bytesTotal = totalDownloadSize()
             val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
@@ -199,6 +205,18 @@ public abstract class Downloader constructor(
             log.info { "Received interrupt, cancelling download" }
             Thread.currentThread().interrupt()
             throw InterruptedException()
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun File.initDigest(messageDigest: MessageDigest) {
+        FileInputStream(this).use { inputStream ->
+            val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+            var bytes = inputStream.read(buffer)
+            while (bytes >= 0) {
+                messageDigest.update(buffer, 0, bytes)
+                bytes = inputStream.read(buffer)
+            }
         }
     }
 
