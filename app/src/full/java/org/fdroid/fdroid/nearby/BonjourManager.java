@@ -306,9 +306,6 @@ public class BonjourManager {
      * if the device is too old.
      */
     public static boolean isVpnActive(Context context) {
-        if (Build.VERSION.SDK_INT < 23) {
-            return false;
-        }
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         Network activeNetwork = cm.getActiveNetwork();
         NetworkCapabilities caps = cm.getNetworkCapabilities(activeNetwork);

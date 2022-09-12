@@ -73,7 +73,6 @@ import androidx.documentfile.provider.DocumentFile;
  * @see <a href="https://developer.android.com/training/articles/scoped-directory-access.html">Using Scoped Directory Access</a>
  * @see <a href="https://developer.android.com/guide/topics/providers/document-provider.html">Open Files using Storage Access Framework</a>
  */
-@TargetApi(21)
 public class TreeUriScannerIntentService extends IntentService {
     public static final String TAG = "TreeUriScannerIntentSer";
 

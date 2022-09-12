@@ -495,7 +495,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         if (Build.VERSION.SDK_INT >= 26) {
                             showTetheringSettings();
-                        } else if (Build.VERSION.SDK_INT >= 23 && !Settings.System.canWrite(getBaseContext())) {
+                        } else if (!Settings.System.canWrite(getBaseContext())) {
                             requestWriteSettingsPermission();
                         } else {
                             setupWifiAP();
@@ -661,7 +661,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @TargetApi(23)
     public void requestWriteSettingsPermission() {
         Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
                 Uri.parse("package:" + getPackageName()));
@@ -670,8 +669,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void sendFDroid() {
-        if (bluetoothAdapter == null
-                || Build.VERSION.SDK_INT >= 23 // TODO make Bluetooth work with content:// URIs
+        if (bluetoothAdapter == null // TODO make Bluetooth work with content:// URIs
                 || (!bluetoothAdapter.isEnabled() && LocalHTTPDManager.isAlive())) {
             inflateSwapView(R.layout.swap_send_fdroid);
         } else {
@@ -809,7 +807,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 }
             }
         } else if (requestCode == REQUEST_WRITE_SETTINGS_PERMISSION) {
-            if (Build.VERSION.SDK_INT >= 23 && Settings.System.canWrite(this)) {
+            if (Settings.System.canWrite(this)) {
                 setupWifiAP();
             }
         } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SWAP) {

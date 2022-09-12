@@ -1,6 +1,5 @@
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -31,7 +30,6 @@ public class NfcHelper {
         return false;
     }
 
-    @TargetApi(16)
     public static void setAndroidBeam(AppCompatActivity activity, String packageName) {
         PackageManager pm = activity.getPackageManager();
         NfcAdapter nfcAdapter = getAdapter(activity);
@@ -49,7 +47,6 @@ public class NfcHelper {
         }
     }
 
-    @TargetApi(16)
     public static void disableAndroidBeam(AppCompatActivity activity) {
         NfcAdapter nfcAdapter = getAdapter(activity);
         if (nfcAdapter != null) {

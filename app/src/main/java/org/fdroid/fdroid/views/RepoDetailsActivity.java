@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views;
 
-import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -176,7 +175,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    @TargetApi(14)
     private void setNfc() {
         if (NfcHelper.setPushMessage(this, Utils.getSharingUri(repo))) {
             findViewById(android.R.id.content).post(new Runnable() {
@@ -284,7 +282,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         return true;
     }
 
-    @TargetApi(16)
     private void prepareNfcMenuItems(Menu menu) {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
