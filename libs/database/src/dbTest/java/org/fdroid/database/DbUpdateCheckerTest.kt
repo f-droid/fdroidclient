@@ -6,8 +6,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.every
 import io.mockk.mockk
 import org.fdroid.index.RELEASE_CHANNEL_BETA
+import org.fdroid.index.v2.SignerV2
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
+import org.fdroid.test.TestRepoUtils.getRandomRepo
+import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -15,7 +18,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
 @RunWith(AndroidJUnit4::class)
-internal class DbUpdateCheckerTest : DbTest() {
+internal class DbUpdateCheckerTest : AppTest() {
 
     private lateinit var updateChecker: DbUpdateChecker
     private val packageManager: PackageManager = mockk()
@@ -30,7 +33,7 @@ internal class DbUpdateCheckerTest : DbTest() {
     override fun createDb() {
         super.createDb()
         every { packageManager.systemAvailableFeatures } returns emptyArray()
-        updateChecker = DbUpdateChecker(db, packageManager)
+        updateChecker = DbUpdateChecker(db, packageManager) { true }
     }
 
     @Test
@@ -65,6 +68,62 @@ internal class DbUpdateCheckerTest : DbTest() {
             preferredSigner = TestDataMidV2.version1_2.signer!!.sha256[0],
         )
         assertEquals(TestDataMidV2.version1_2.versionCode, appVersion2!!.version.versionCode)
+    }
+
+    @Test
+    fun testSuggestedVersionRespectsPreferredSigner() {
+        // insert one app into the repo
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName, app1.copy(), locales)
+
+        // two version have two different signers (correct format doesn't matter here)
+        val signer1 = SignerV2(listOf("foo", "bar"))
+        val signer2 = SignerV2(listOf("justOneSigner"))
+
+        // add two versions with the same version code, but different signers
+        val packageVersion1 = getRandomPackageVersionV2(versionCode = 42)
+        val packageVersion2 = getRandomPackageVersionV2(versionCode = 42)
+        val versionId1 = packageVersion1.file.sha256
+        val versionId2 = packageVersion2.file.sha256
+        val version1 = packageVersion1.copy(
+            manifest = packageVersion1.manifest.copy(signer = signer1),
+            releaseChannels = emptyList(),
+        ).toVersion(repoId, packageName, versionId1, true)
+        val version2 = packageVersion2.copy(
+            manifest = packageVersion2.manifest.copy(signer = signer2),
+            releaseChannels = emptyList(),
+        ).toVersion(repoId, packageName, versionId2, true)
+        versionDao.insert(version1)
+        versionDao.insert(version2)
+
+        // nothing is currently installed
+        every { packageManager.getPackageInfo(packageName, any()) } returns null
+
+        // if signer of first version is preferred first version is suggested as update
+        assertEquals(
+            version1,
+            updateChecker.getSuggestedVersion(
+                packageName = packageName,
+                preferredSigner = signer1.sha256[0]
+            )?.version,
+        )
+
+        // if second signer of first version is preferred first version is suggested as update
+        assertEquals(
+            version1,
+            updateChecker.getSuggestedVersion(
+                packageName = packageName,
+                preferredSigner = signer1.sha256[1]
+            )?.version,
+        )
+
+        // if signer of second version is preferred second version is suggested as update
+        assertEquals(
+            version2,
+            updateChecker.getSuggestedVersion(packageName,
+                preferredSigner = signer2.sha256[0]
+            )?.version,
+        )
     }
 
     @Test

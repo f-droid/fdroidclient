@@ -5,19 +5,20 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build
+import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.PackagePreference
 import org.fdroid.UpdateChecker
 
-public class DbUpdateChecker(
+public class DbUpdateChecker @JvmOverloads constructor(
     db: FDroidDatabase,
     private val packageManager: PackageManager,
+    compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(packageManager),
 ) {
 
     private val appDao = db.getAppDao() as AppDaoInt
     private val versionDao = db.getVersionDao() as VersionDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
-    private val compatibilityChecker = CompatibilityCheckerImpl(packageManager)
     private val updateChecker = UpdateChecker(compatibilityChecker)
 
     /**
