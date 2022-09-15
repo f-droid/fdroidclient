@@ -287,6 +287,10 @@ public data class AppListItem internal constructor(
      */
     public val isCompatible: Boolean,
     /**
+     * The signer, this app prefers to use for new installs.
+     */
+    public val preferredSigner: String? = null,
+    /**
      * The name of the installed version, null if this app is not installed.
      */
     @get:Ignore

@@ -270,6 +270,7 @@ public class App implements Comparable<App>, Parcelable {
         installedVersionName = item.getInstalledVersionName();
         antiFeatures = item.getAntiFeatureKeys().toArray(new String[0]);
         compatible = item.isCompatible();
+        preferredSigner = item.getPreferredSigner();
     }
 
     public void setInstalled(@Nullable PackageInfo packageInfo) {
