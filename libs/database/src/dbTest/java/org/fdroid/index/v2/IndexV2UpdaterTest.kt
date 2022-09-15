@@ -16,7 +16,7 @@ import org.fdroid.index.IndexFormatVersion.TWO
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
-import org.fdroid.test.TestDataEntryV2
+import org.fdroid.test.TestDataEntry
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
@@ -62,7 +62,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "index-min-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -82,7 +82,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-mid/entry.jar",
             jsonPath = "index-mid-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMid.index
+            indexFileV2 = TestDataEntry.emptyToMid.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -97,7 +97,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-max/entry.jar",
             jsonPath = "index-max-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMax.index
+            indexFileV2 = TestDataEntry.emptyToMax.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -112,7 +112,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-mid/entry.jar",
             jsonPath = "diff-empty-mid/42.json",
-            indexFileV2 = TestDataEntryV2.emptyToMid.diffs["42"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMid.diffs["42"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -128,7 +128,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "diff-empty-min/23.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.diffs["23"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -144,7 +144,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-max/entry.jar",
             jsonPath = "diff-empty-max/1337.json",
-            indexFileV2 = TestDataEntryV2.emptyToMax.diffs["1337"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMax.diffs["1337"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -160,7 +160,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "diff-empty-min/23.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.diffs["23"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Unchanged, result)
@@ -176,7 +176,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "diff-empty-min/23.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.diffs["23"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Unchanged, result)
@@ -194,7 +194,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "index-min-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -208,7 +208,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "index-min-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.updateNewRepo(repo, "wrong fingerprint")
         assertTrue(result is IndexUpdateResult.Error)
@@ -222,7 +222,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-min/entry.jar",
             jsonPath = "index-min-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.update(repo)
         assertTrue(result is IndexUpdateResult.Error)
@@ -240,7 +240,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             repoId = repoId,
             entryPath = "diff-empty-mid/entry.jar",
             jsonPath = "index-mid-v2.json",
-            indexFileV2 = TestDataEntryV2.emptyToMid.index,
+            indexFileV2 = TestDataEntry.emptyToMid.index,
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)

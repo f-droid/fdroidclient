@@ -8,7 +8,7 @@ import org.fdroid.IndexFile
 import org.fdroid.index.IndexParser.json
 
 @Serializable
-public data class EntryV2(
+public data class Entry(
     val timestamp: Long,
     val version: Long,
     val maxAge: Int? = null,
