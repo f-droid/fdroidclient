@@ -40,9 +40,11 @@
     "categories": {
       "Cat1": {
         "icon": {
-          "name": "/icons/cat2.png",
-          "sha256": "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
-          "size": 9223372036854775807
+          "en-US": {
+            "name": "/icons/cat2.png",
+            "sha256": "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+            "size": 9223372036854775807
+          }
         },
         "name": {
           "en-US": "Cat1"

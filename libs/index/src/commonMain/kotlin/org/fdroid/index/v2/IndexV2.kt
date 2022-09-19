@@ -58,6 +58,7 @@ public data class FileV2(
             if (string == null) return null
             return json.decodeFromString(string)
         }
+
         @JvmStatic
         public fun fromPath(path: String): FileV2 = FileV2(path)
     }
@@ -93,8 +94,8 @@ public data class RepoV2(
 ) {
     public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
         icon.values.forEach { fileConsumer(it) }
-        antiFeatures.values.forEach { fileConsumer(it.icon) }
-        categories.values.forEach { fileConsumer(it.icon) }
+        antiFeatures.values.forEach { it.icon.values.forEach { icon -> fileConsumer(icon) } }
+        categories.values.forEach { it.icon.values.forEach { icon -> fileConsumer(icon) } }
     }
 }
 
@@ -110,14 +111,14 @@ public data class MirrorV2(
 
 @Serializable
 public data class AntiFeatureV2(
-    val icon: FileV2? = null,
+    val icon: LocalizedFileV2 = emptyMap(),
     val name: LocalizedTextV2,
     val description: LocalizedTextV2 = emptyMap(),
 )
 
 @Serializable
 public data class CategoryV2(
-    val icon: FileV2? = null,
+    val icon: LocalizedFileV2 = emptyMap(),
     val name: LocalizedTextV2,
     val description: LocalizedTextV2 = emptyMap(),
 )

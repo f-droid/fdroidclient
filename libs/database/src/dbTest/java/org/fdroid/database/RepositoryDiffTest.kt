@@ -11,7 +11,7 @@ import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 import org.fdroid.test.DiffUtils.applyDiff
 import org.fdroid.test.DiffUtils.randomDiff
-import org.fdroid.test.TestRepoUtils.getRandomFileV2
+import org.fdroid.test.TestRepoUtils.getRandomLocalizedFileV2
 import org.fdroid.test.TestRepoUtils.getRandomLocalizedTextV2
 import org.fdroid.test.TestRepoUtils.getRandomMirror
 import org.fdroid.test.TestRepoUtils.getRandomRepo
@@ -116,13 +116,17 @@ internal class RepositoryDiffTest : DbTest() {
     fun antiFeaturesDiff() {
         val repo = getRandomRepo().copy(antiFeatures = getRandomMap {
             getRandomString() to AntiFeatureV2(
-                icon = getRandomFileV2(),
+                icon = getRandomLocalizedFileV2(),
                 name = getRandomLocalizedTextV2(),
                 description = getRandomLocalizedTextV2(),
             )
         })
         val antiFeatures = repo.antiFeatures.randomDiff {
-            AntiFeatureV2(getRandomFileV2(), getRandomLocalizedTextV2(), getRandomLocalizedTextV2())
+            AntiFeatureV2(
+                icon = getRandomLocalizedFileV2(),
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
         }
         val json = """
             {
@@ -141,7 +145,7 @@ internal class RepositoryDiffTest : DbTest() {
     fun antiFeatureKeyChangeDiff() {
         val antiFeatureKey = getRandomString()
         val antiFeature = AntiFeatureV2(
-            icon = getRandomFileV2(),
+            icon = getRandomLocalizedFileV2(),
             name = getRandomLocalizedTextV2(),
             description = getRandomLocalizedTextV2(),
         )
@@ -150,7 +154,7 @@ internal class RepositoryDiffTest : DbTest() {
 
         @Suppress("UNCHECKED_CAST")
         val newAntiFeatures = mapOf(antiFeatureKey to antiFeature.copy(
-            icon = null,
+            icon = emptyMap(),
             name = getRandomLocalizedTextV2(),
             description = getRandomLocalizedTextV2(),
         ))
@@ -173,13 +177,17 @@ internal class RepositoryDiffTest : DbTest() {
     fun categoriesDiff() {
         val repo = getRandomRepo().copy(categories = getRandomMap {
             getRandomString() to CategoryV2(
-                icon = getRandomFileV2(),
+                icon = getRandomLocalizedFileV2(),
                 name = getRandomLocalizedTextV2(),
                 description = getRandomLocalizedTextV2(),
             )
         })
         val categories = repo.categories.randomDiff {
-            CategoryV2(getRandomFileV2(), getRandomLocalizedTextV2(), getRandomLocalizedTextV2())
+            CategoryV2(
+                icon = getRandomLocalizedFileV2(),
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
         }
         val json = """
             {
