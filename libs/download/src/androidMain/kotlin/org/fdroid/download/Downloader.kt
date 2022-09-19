@@ -43,7 +43,7 @@ public abstract class Downloader constructor(
      * Call this to start the download.
      * Never call this more than once. Create a new [Downloader], if you need to download again!
      */
-    @Throws(IOException::class, InterruptedException::class)
+    @Throws(IOException::class, InterruptedException::class, NotFoundException::class)
     public abstract fun download()
 
     @Throws(IOException::class, NotFoundException::class)
@@ -92,7 +92,12 @@ public abstract class Downloader constructor(
     }
 
     @Suppress("BlockingMethodInNonBlockingContext")
-    @Throws(InterruptedException::class, IOException::class, NoResumeException::class)
+    @Throws(
+        InterruptedException::class,
+        IOException::class,
+        NoResumeException::class,
+        NotFoundException::class,
+    )
     protected suspend fun downloadFromBytesReceiver(isResume: Boolean) {
         try {
             val messageDigest: MessageDigest? = if (indexFile.sha256 == null) null else {

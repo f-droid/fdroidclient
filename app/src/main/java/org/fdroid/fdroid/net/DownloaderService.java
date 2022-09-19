@@ -36,6 +36,7 @@ import android.util.LogPrinter;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
+import org.fdroid.download.NotFoundException;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
@@ -284,7 +285,7 @@ public class DownloaderService extends Service {
             sendBroadcast(uri, DownloaderService.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                | ProtocolException | UnknownHostException e) {
+                | ProtocolException | UnknownHostException | NotFoundException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, "CONNECTION_FAILED: " + e.getLocalizedMessage());
             sendBroadcast(uri, DownloaderService.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
