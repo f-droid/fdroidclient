@@ -46,14 +46,14 @@ object TestRepoUtils {
         timestamp = System.currentTimeMillis(),
         antiFeatures = TestUtils.getRandomMap {
             getRandomString() to AntiFeatureV2(
-                icon = getRandomFileV2(),
+                icon = getRandomLocalizedFileV2(),
                 name = getRandomLocalizedTextV2(),
                 description = getRandomLocalizedTextV2(),
             )
         },
         categories = TestUtils.getRandomMap {
             getRandomString() to CategoryV2(
-                icon = getRandomFileV2(),
+                icon = getRandomLocalizedFileV2(),
                 name = getRandomLocalizedTextV2(),
                 description = getRandomLocalizedTextV2(),
             )

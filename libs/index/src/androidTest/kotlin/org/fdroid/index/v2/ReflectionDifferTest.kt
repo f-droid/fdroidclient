@@ -14,6 +14,7 @@ import org.fdroid.test.DiffUtils.clean
 import org.fdroid.test.DiffUtils.cleanMetadata
 import org.fdroid.test.DiffUtils.cleanRepo
 import org.fdroid.test.DiffUtils.cleanVersion
+import org.fdroid.test.LOCALE
 import java.io.File
 import java.io.FileInputStream
 import kotlin.reflect.full.primaryConstructor
@@ -65,6 +66,55 @@ internal class ReflectionDifferTest {
         startPath = "$assetPath/index-mid-v2.json",
         endPath = "$assetPath/index-max-v2.json",
     )
+
+    @Test
+    fun testLocalizedFileV2() {
+        val category1 = CategoryV2(
+            name = mapOf(LOCALE to "Cat1"),
+            icon = mapOf(LOCALE to FileV2(
+                name = "file1",
+                sha256 = "hash",
+                size = 1,
+            )),
+        )
+        val category2 = CategoryV2(
+            name = mapOf(LOCALE to "Cat2"),
+        )
+        val diff1 = JsonObject(
+            mapOf("icon" to JsonObject(
+                mapOf(LOCALE to JsonObject(
+                    mapOf("name" to JsonPrimitive("file1b"))
+                ))
+            ))
+        )
+        val diff2 = JsonObject(
+            mapOf("icon" to JsonObject(
+                mapOf(LOCALE to JsonObject(
+                    mapOf(
+                        "name" to JsonPrimitive("file2"),
+                        "sha256" to JsonPrimitive("hash2"),
+                        "size" to JsonPrimitive(2L),
+                    )
+                ))
+            ))
+        )
+        val diffedCat1 = ReflectionDiffer.applyDiff(category1, diff1)
+        val diffedCat2 = ReflectionDiffer.applyDiff(category2, diff2)
+        val diffedIcon1 = diffedCat1.icon[LOCALE]
+        val diffedIcon2 = diffedCat2.icon[LOCALE]
+        val expectedIcon1 = FileV2(
+            name = "file1b",
+            sha256 = "hash",
+            size = 1,
+        )
+        val expectedIcon2 = FileV2(
+            name = "file2",
+            sha256 = "hash2",
+            size = 2,
+        )
+        assertEquals(expectedIcon1, diffedIcon1)
+        assertEquals(expectedIcon2, diffedIcon2)
+    }
 
     @Test
     fun testClassWithoutPrimaryConstructor() {
