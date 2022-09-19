@@ -20,6 +20,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
+import org.fdroid.download.NotFoundException;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NotificationHelper;
 import org.fdroid.fdroid.Preferences;
@@ -129,7 +130,7 @@ public class SwapService extends Service {
     }
 
     private void updateRepo(@NonNull Peer peer, Repository repo)
-            throws IOException, InterruptedException, SigningException {
+            throws IOException, InterruptedException, SigningException, NotFoundException {
         Uri uri = Uri.parse(repo.getAddress()).buildUpon().appendPath("index-v1.jar").build();
         FileV2 indexFile = FileV2.fromPath("/index-v1.jar");
         File swapJarFile =

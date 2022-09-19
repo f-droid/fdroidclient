@@ -91,6 +91,7 @@ public open class HttpManager @JvmOverloads constructor(
      * This is useful for checking if the repository index has changed before downloading it again.
      * However, due to non-standard ETags on mirrors, change detection is unreliable.
      */
+    @Throws(NotFoundException::class)
     public suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->

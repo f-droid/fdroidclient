@@ -51,7 +51,7 @@ public class HttpDownloader constructor(
         throw NotImplementedError("Use getInputStreamSuspend instead.")
     }
 
-    @Throws(IOException::class, NoResumeException::class)
+    @Throws(IOException::class, NoResumeException::class, NotFoundException::class)
     protected override suspend fun getBytes(resumable: Boolean, receiver: BytesReceiver) {
         val skipBytes = if (resumable) outputFile.length() else null
         return try {
