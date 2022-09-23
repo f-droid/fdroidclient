@@ -835,7 +835,10 @@ public final class Utils {
         return Single.fromCallable(supplier::get)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(consumer::accept);
+                .subscribe(consumer::accept, e -> {
+                    Log.e(TAG, "Could not run off UI thread: ", e);
+                    consumer.accept(null);
+                });
     }
 
     public static Disposable runOffUiThread(Runnable runnable) {
