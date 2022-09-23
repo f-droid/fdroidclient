@@ -372,7 +372,7 @@ internal interface AppDaoInt : AppDao {
         return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
             LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
             NAME -> getAppListItemsByName().map(packageManager)
-        } else getAppListItems(searchQuery)
+        } else getAppListItems(searchQuery).map(packageManager)
     }
 
     override fun getAppListItems(
@@ -384,7 +384,7 @@ internal interface AppDaoInt : AppDao {
         return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
             LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
             NAME -> getAppListItemsByName(category).map(packageManager)
-        } else getAppListItems(category, searchQuery)
+        } else getAppListItems(category, searchQuery).map(packageManager)
     }
 
     private fun LiveData<List<AppListItem>>.map(
