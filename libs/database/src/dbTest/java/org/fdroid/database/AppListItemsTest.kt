@@ -45,8 +45,14 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName3, app3, locales)
         appDao.insert(repoId, packageName2, app2, locales)
 
-        // nothing is installed
-        every { pm.getInstalledPackages(0) } returns emptyList()
+        // one of the apps is installed
+        @Suppress("DEPRECATION")
+        val packageInfo2 = PackageInfo().apply {
+            packageName = packageName2
+            versionName = getRandomString()
+            versionCode = Random.nextInt(1, Int.MAX_VALUE)
+        }
+        every { pm.getInstalledPackages(0) } returns listOf(packageInfo2)
 
         // get first app by search, sort order doesn't matter
         appDao.getAppListItems(pm, "One", LAST_UPDATED).getOrFail().let { apps ->
@@ -58,6 +64,8 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
+            assertEquals(packageInfo2.getVersionCode(), apps[0].installedVersionCode)
+            assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
         // get second and third app by searching for summary
@@ -90,8 +98,14 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName3, app3, locales)
         appDao.insert(repoId, packageName2, app2, locales)
 
-        // nothing is installed
-        every { pm.getInstalledPackages(0) } returns emptyList()
+        // one of the apps is installed
+        @Suppress("DEPRECATION")
+        val packageInfo2 = PackageInfo().apply {
+            packageName = packageName2
+            versionName = getRandomString()
+            versionCode = Random.nextInt(1, Int.MAX_VALUE)
+        }
+        every { pm.getInstalledPackages(0) } returns listOf(packageInfo2)
 
         // get first app by search, sort order doesn't matter
         appDao.getAppListItems(pm, "A", "One", LAST_UPDATED).getOrFail().let { apps ->
@@ -103,6 +117,8 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "A", "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
+            assertEquals(packageInfo2.getVersionCode(), apps[0].installedVersionCode)
+            assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
         // get second and third app by searching for summary
