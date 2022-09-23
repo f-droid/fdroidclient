@@ -391,7 +391,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
             userMirrorList.setVisibility(View.GONE);
         }
 
-        if (repo.getLastETag() != null) {
+        if (repo.getLastUpdated() != null) {
             updateViewForExistingRepo(repoView);
         } else {
             setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
