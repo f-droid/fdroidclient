@@ -37,7 +37,7 @@ kotlin {
         }
         commonMain {
             dependencies {
-                implementation "io.ktor:ktor-client-core:$ktor_version"
+                api "io.ktor:ktor-client-core:$ktor_version"
                 implementation 'io.github.microutils:kotlin-logging:2.1.21'
             }
         }
