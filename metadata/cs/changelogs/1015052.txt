@@ -1,0 +1,5 @@
+* Celková revize logiky stahování pro zlepšení výkonu a podpory zrcadel.
+
+* Snímky obrazovky a grafika se nyní stahují ze zrcadel,
+
+* Snížení úniku soukromí pomocí TLS Sessions
