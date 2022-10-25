@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.mock;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.RepoPushRequest;
@@ -15,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import androidx.annotation.NonNull;
 
@@ -65,10 +64,7 @@ public class RepoDetails implements RepoXMLHandler.IndexReceiver {
     @NonNull
     public static RepoDetails getFromFile(InputStream inputStream, int pushRequests) {
         try {
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            SAXParser parser = factory.newSAXParser();
-            XMLReader reader = parser.getXMLReader();
+            XMLReader reader = Utils.newXMLReaderInstance();
             RepoDetails repoDetails = new RepoDetails();
             MockRepo mockRepo = new MockRepo(100, pushRequests);
             RepoXMLHandler handler = new RepoXMLHandler(mockRepo, repoDetails);

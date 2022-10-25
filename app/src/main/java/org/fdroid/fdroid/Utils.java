@@ -60,6 +60,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.data.Schema;
+import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import java.io.Closeable;
@@ -93,6 +94,10 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -1001,5 +1006,16 @@ public final class Utils {
         }
 
         return antiFeatureFilter.toString();
+    }
+
+    /**
+     * @see <a href="https://brianlaskey.info/blog/coding/java/2022/01/22/saxparser-xxe.html">XML External Entity Prevention in Java’s default SAXParser</a>
+     */
+    public static XMLReader newXMLReaderInstance() throws SAXException, ParserConfigurationException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        SAXParser parser = factory.newSAXParser();
+        XMLReader reader = parser.getXMLReader();
+        return reader;
     }
 }

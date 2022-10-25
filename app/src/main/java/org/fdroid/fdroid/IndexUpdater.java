@@ -65,8 +65,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import androidx.annotation.NonNull;
 
@@ -220,10 +218,7 @@ public class IndexUpdater {
                     processIndexListener, (int) indexEntry.getSize());
 
             // Process the index...
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            final SAXParser parser = factory.newSAXParser();
-            final XMLReader reader = parser.getXMLReader();
+            final XMLReader reader = Utils.newXMLReaderInstance();
             final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo, createIndexReceiver());
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
