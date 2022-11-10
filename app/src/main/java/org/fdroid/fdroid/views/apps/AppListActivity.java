@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -88,8 +89,9 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private LiveData<List<AppListItem>> itemsLiveData;
 
     private interface SortClause {
-        String WORDS = "Name";
-        String LAST_UPDATED = "LastUpdated";
+        // these get used as settings keys, so changing them requires a migration
+        String WORDS = "name";
+        String LAST_UPDATED = "lastUpdated";
     }
 
     @Override
@@ -144,6 +146,9 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
                         sortClauseSelected = SortClause.WORDS;
                         sortImage.setImageResource(R.drawable.ic_sort);
                         break;
+                    default:
+                        Log.e("AppListActivity", "Unknown sort clause: " + sortClauseSelected);
+                        sortClauseSelected = SortClause.LAST_UPDATED;
                 }
                 putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
                 loadItems();
