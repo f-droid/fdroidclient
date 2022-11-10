@@ -68,11 +68,12 @@ public class InstallerService extends JobIntentService {
 
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
+        final App app = intent.getParcelableExtra(Installer.EXTRA_APP);
         final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         if (apk == null) {
             return;
         }
-        Installer installer = InstallerFactory.create(this, apk);
+        Installer installer = InstallerFactory.create(this, app, apk);
 
         if (ACTION_INSTALL.equals(intent.getAction())) {
             Uri uri = intent.getData();
@@ -120,13 +121,14 @@ public class InstallerService extends JobIntentService {
      * @see #uninstall(Context, Apk)
      * @see InstallManagerService
      */
-    public static void install(Context context, Uri localApkUri, Uri canonicalUri, Apk apk) {
-        Installer.sendBroadcastInstall(context, canonicalUri, Installer.ACTION_INSTALL_STARTED, apk,
-                null, null);
+    public static void install(Context context, Uri localApkUri, Uri canonicalUri, App app, Apk apk) {
+        Installer.sendBroadcastInstall(context, canonicalUri, Installer.ACTION_INSTALL_STARTED, app,
+                apk, null, null);
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_INSTALL);
         intent.setData(localApkUri);
         intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        intent.putExtra(Installer.EXTRA_APP, app);
         intent.putExtra(Installer.EXTRA_APK, apk);
         enqueueWork(context, intent);
     }
@@ -148,13 +150,14 @@ public class InstallerService extends JobIntentService {
      * @param context this app's {@link Context}
      * @param apk     {@link Apk} instance of the app that will be uninstalled
      */
-    public static void uninstall(Context context, @NonNull Apk apk) {
+    public static void uninstall(Context context, @NonNull App app, @NonNull Apk apk) {
         Objects.requireNonNull(apk);
 
-        Installer.sendBroadcastUninstall(context, apk, Installer.ACTION_UNINSTALL_STARTED);
+        Installer.sendBroadcastUninstall(context, app, apk, Installer.ACTION_UNINSTALL_STARTED);
 
         Intent intent = new Intent(context, InstallerService.class);
         intent.setAction(ACTION_UNINSTALL);
+        intent.putExtra(Installer.EXTRA_APP, app);
         intent.putExtra(Installer.EXTRA_APK, apk);
         enqueueWork(context, intent);
     }

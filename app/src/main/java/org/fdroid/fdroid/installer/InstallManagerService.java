@@ -354,9 +354,10 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         registerInstallReceiver(canonicalUrl);
 
+                        App app = appUpdateStatusManager.getApp(canonicalUrl);
                         Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
                         if (apk != null) {
-                            InstallerService.install(context, localApkUri, canonicalUri, apk);
+                            InstallerService.install(context, localApkUri, canonicalUri, app, apk);
                         }
                         break;
                     case DownloaderService.ACTION_INTERRUPTED:
@@ -389,6 +390,7 @@ public class InstallManagerService extends Service {
                     return;
                 }
                 String canonicalUrl = intent.getDataString();
+                App app;
                 Apk apk;
                 switch (intent.getAction()) {
                     case Installer.ACTION_INSTALL_STARTED:
@@ -410,20 +412,22 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_INTERRUPTED:
+                        app = intent.getParcelableExtra(Installer.EXTRA_APP);
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            appUpdateStatusManager.setApkError(null, apk, errorMessage);
+                            appUpdateStatusManager.setApkError(app, apk, errorMessage);
                         } else {
                             appUpdateStatusManager.removeApk(canonicalUrl);
                         }
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_USER_INTERACTION:
+                        app = intent.getParcelableExtra(Installer.EXTRA_APP);
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         PendingIntent installPendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
-                        appUpdateStatusManager.addApk(null, apk, AppUpdateStatusManager.Status.ReadyToInstall, installPendingIntent);
+                        appUpdateStatusManager.addApk(app, apk, AppUpdateStatusManager.Status.ReadyToInstall, installPendingIntent);
                         break;
                     default:
                         throw new RuntimeException("intent action not handled!");

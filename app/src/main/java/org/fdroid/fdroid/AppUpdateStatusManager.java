@@ -444,6 +444,17 @@ public final class AppUpdateStatusManager {
     }
 
     @Nullable
+    public App getApp(String canonicalUrl) {
+        synchronized (appMapping) {
+            AppUpdateStatus entry = appMapping.get(canonicalUrl);
+            if (entry != null) {
+                return entry.app;
+            }
+            return null;
+        }
+    }
+
+    @Nullable
     public Apk getApk(String canonicalUrl) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(canonicalUrl);

@@ -426,7 +426,7 @@ public class AppDetailsActivity extends AppCompatActivity
     }
 
     private void initiateInstall(Apk apk) {
-        Installer installer = InstallerFactory.create(this, apk);
+        Installer installer = InstallerFactory.create(this, app, apk);
         Intent intent = installer.getPermissionScreen();
         if (intent != null) {
             // permission screen required
@@ -440,7 +440,7 @@ public class AppDetailsActivity extends AppCompatActivity
 
     private void startUninstall() {
         registerUninstallReceiver();
-        InstallerService.uninstall(this, app.installedApk);
+        InstallerService.uninstall(this, app, app.installedApk);
     }
 
     private void registerUninstallReceiver() {
@@ -837,7 +837,7 @@ public class AppDetailsActivity extends AppCompatActivity
             }
             app.installedApk = apk;
         }
-        Installer installer = InstallerFactory.create(this, apk);
+        Installer installer = InstallerFactory.create(this, app, apk);
         Intent intent = installer.getUninstallScreen();
         if (intent != null) {
             // uninstall screen required

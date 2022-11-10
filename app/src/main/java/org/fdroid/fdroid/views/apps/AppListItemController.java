@@ -537,7 +537,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
             Uri canonicalUri = Uri.parse(canonicalUrl);
             broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(canonicalUri));
-            Installer installer = InstallerFactory.create(activity, currentStatus.apk);
+            Installer installer = InstallerFactory.create(activity, currentStatus.app, currentStatus.apk);
             installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
             FDroidDatabase db = DBHelper.getDb(activity);

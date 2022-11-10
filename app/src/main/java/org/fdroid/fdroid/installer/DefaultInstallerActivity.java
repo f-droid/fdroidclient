@@ -32,6 +32,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,8 +66,9 @@ public class DefaultInstallerActivity extends FragmentActivity {
 
         Intent intent = getIntent();
         String action = intent.getAction();
+        App app = intent.getParcelableExtra(Installer.EXTRA_APP);
         Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-        installer = new DefaultInstaller(this, apk);
+        installer = new DefaultInstaller(this, app, apk);
         if (ACTION_INSTALL_PACKAGE.equals(action)) {
             Uri localApkUri = intent.getData();
             canonicalUri = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));

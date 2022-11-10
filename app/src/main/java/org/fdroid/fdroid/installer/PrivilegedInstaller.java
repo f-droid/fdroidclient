@@ -35,6 +35,7 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
@@ -251,8 +252,8 @@ public class PrivilegedInstaller extends Installer {
                         "device owner has marked the package as uninstallable.");
     }
 
-    PrivilegedInstaller(Context context, @NonNull Apk apk) {
-        super(context, apk);
+    PrivilegedInstaller(Context context, App app, @NonNull Apk apk) {
+        super(context, app, apk);
     }
 
     private static boolean isExtensionInstalled(Context context) {

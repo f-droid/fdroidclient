@@ -25,14 +25,15 @@ import android.content.Intent;
 import android.net.Uri;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import androidx.annotation.NonNull;
 
 public class FileInstaller extends Installer {
 
-    public FileInstaller(Context context, @NonNull Apk apk) {
-        super(context, apk);
+    public FileInstaller(Context context, @NonNull App app, @NonNull Apk apk) {
+        super(context, app, apk);
     }
 
     @Override
@@ -55,6 +56,7 @@ public class FileInstaller extends Installer {
         Intent installIntent = new Intent(context, FileInstallerActivity.class);
         installIntent.setAction(FileInstallerActivity.ACTION_INSTALL_FILE);
         installIntent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        installIntent.putExtra(Installer.EXTRA_APP, app);
         installIntent.putExtra(Installer.EXTRA_APK, apk);
         installIntent.setData(localApkUri);
 
@@ -72,6 +74,7 @@ public class FileInstaller extends Installer {
     protected void uninstallPackage() {
         Intent uninstallIntent = new Intent(context, FileInstallerActivity.class);
         uninstallIntent.setAction(FileInstallerActivity.ACTION_UNINSTALL_FILE);
+        uninstallIntent.putExtra(Installer.EXTRA_APP, app);
         uninstallIntent.putExtra(Installer.EXTRA_APK, apk);
         PendingIntent uninstallPendingIntent = PendingIntent.getActivity(
                 context.getApplicationContext(),
