@@ -3,12 +3,12 @@ package org.fdroid.fdroid.panic;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
@@ -87,9 +87,11 @@ public class PanicResponderActivity extends AppCompatActivity {
             lbm.registerReceiver(receiver, Installer.getUninstallIntentFilter(lastToUninstall));
 
             for (String packageName : wipeList) {
+                App app = new App();
                 Apk apk = new Apk();
+                app.packageName = packageName;
                 apk.packageName = packageName;
-                InstallerService.uninstall(context, apk);
+                InstallerService.uninstall(context, app, apk);
             }
 
             // wait for apps to uninstall before triggering final responses

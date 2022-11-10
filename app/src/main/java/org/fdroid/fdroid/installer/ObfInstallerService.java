@@ -13,6 +13,7 @@ import android.webkit.MimeTypeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
@@ -38,10 +39,11 @@ public class ObfInstallerService extends IntentService {
         super("ObfInstallerService");
     }
 
-    public static void install(Context context, Uri canonicalUri, Apk apk, File path) {
+    public static void install(Context context, Uri canonicalUri, App app, Apk apk, File path) {
         Intent intent = new Intent(context, ObfInstallerService.class);
         intent.setAction(ACTION_INSTALL_OBF);
         intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        intent.putExtra(Installer.EXTRA_APP, app);
         intent.putExtra(Installer.EXTRA_APK, apk);
         intent.putExtra(EXTRA_OBF_PATH, path.getAbsolutePath());
         context.startService(intent);
@@ -54,15 +56,16 @@ public class ObfInstallerService extends IntentService {
             return;
         }
         Uri canonicalUri = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
+        final App app = intent.getParcelableExtra(Installer.EXTRA_APP);
         final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         final String path = intent.getStringExtra(EXTRA_OBF_PATH);
         final String extension = MimeTypeMap.getFileExtensionFromUrl(path);
         if ("obf".equals(extension)) {
-            sendPostInstallAndCompleteIntents(canonicalUri, apk, new File(path));
+            sendPostInstallAndCompleteIntents(canonicalUri, app, apk, new File(path));
             return;
         }
         if (!"zip".equals(extension)) {
-            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, apk,
+            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, app, apk,
                     "Only .obf and .zip files are supported: " + path);
             return;
         }
@@ -70,7 +73,7 @@ public class ObfInstallerService extends IntentService {
             File zip = new File(path);
             ZipFile zipFile = new ZipFile(zip);
             if (zipFile.size() < 1) {
-                sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, apk,
+                sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, app, apk,
                         "Corrupt or empty ZIP file!");
             }
             ZipEntry zipEntry = zipFile.entries().nextElement();
@@ -79,15 +82,15 @@ public class ObfInstallerService extends IntentService {
             FileUtils.copyInputStreamToFile(zipFile.getInputStream(zipEntry), extracted);
             // Since we delete the file here, it won't show as installed anymore
             zip.delete();
-            sendPostInstallAndCompleteIntents(canonicalUri, apk, extracted);
+            sendPostInstallAndCompleteIntents(canonicalUri, app, apk, extracted);
         } catch (IOException e) {
             e.printStackTrace();
-            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, apk, e.getMessage());
+            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, app, apk, e.getMessage());
         }
     }
 
-    private void sendBroadcastInstall(String action, Uri canonicalUri, Apk apk, String msg) {
-        Installer.sendBroadcastInstall(this, canonicalUri, action, apk, null, msg);
+    private void sendBroadcastInstall(String action, Uri canonicalUri, App app, Apk apk, String msg) {
+        Installer.sendBroadcastInstall(this, canonicalUri, action, app, apk, null, msg);
     }
 
     /**
@@ -97,7 +100,7 @@ public class ObfInstallerService extends IntentService {
      * When this was written, OsmAnd only supported importing OBF files via a
      * {@code file:///} URL, so this disables {@link android.os.FileUriExposedException}.
      */
-    void sendPostInstallAndCompleteIntents(Uri canonicalUri, Apk apk, File file) {
+    void sendPostInstallAndCompleteIntents(Uri canonicalUri, App app, Apk apk, File file) {
         if (Build.VERSION.SDK_INT >= 24) {
             try {
                 Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
@@ -122,10 +125,10 @@ public class ObfInstallerService extends IntentService {
                 | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
-            sendBroadcastInstall(Installer.ACTION_INSTALL_COMPLETE, canonicalUri, apk, null);
+            sendBroadcastInstall(Installer.ACTION_INSTALL_COMPLETE, canonicalUri, app, apk, null);
         } else {
             Log.i(TAG, "No AppCompatActivity available to handle " + intent);
-            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, apk, null);
+            sendBroadcastInstall(Installer.ACTION_INSTALL_INTERRUPTED, canonicalUri, app, apk, null);
         }
     }
 }

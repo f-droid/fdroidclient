@@ -73,7 +73,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
             InstallManagerService.queue(activity, app, currentApk);
         } else {
             manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
-            InstallerService.uninstall(activity, installedApk);
+            InstallerService.uninstall(activity, app, installedApk);
         }
     }
 
