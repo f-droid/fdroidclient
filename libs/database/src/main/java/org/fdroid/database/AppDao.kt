@@ -403,8 +403,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, app.localizedName, app.localizedSummary, version.antiFeatures,
-               app.isCompatible, app.preferredSigner
+        SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -415,8 +415,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, app.localizedName, app.localizedSummary, version.antiFeatures,
-               app.isCompatible, app.preferredSigner
+        SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -428,8 +428,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible, app.preferredSigner
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
@@ -440,8 +440,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible, app.preferredSigner
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -452,8 +452,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible, app.preferredSigner
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -464,8 +464,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible, app.preferredSigner
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -476,8 +476,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
-    @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.isCompatible,
-                     app.preferredSigner
+    @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+                     app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageName IN (:packageNames)

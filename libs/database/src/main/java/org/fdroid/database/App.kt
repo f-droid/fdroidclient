@@ -276,6 +276,7 @@ public data class AppListItem internal constructor(
     public override val name: String? = null,
     @ColumnInfo(name = "localizedSummary")
     public override val summary: String? = null,
+    public val lastUpdated: Long,
     internal val antiFeatures: String?,
     @Relation(
         parentColumn = "packageName",
