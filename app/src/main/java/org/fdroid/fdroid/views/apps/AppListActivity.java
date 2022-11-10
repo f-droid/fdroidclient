@@ -54,7 +54,9 @@ import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -253,6 +255,21 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private void onAppsLoaded(List<AppListItem> items) {
         setShowHiddenAppsNotice(false);
         appAdapter.setHasHiddenAppsCallback(() -> setShowHiddenAppsNotice(true));
+        // DB doesn't support search result sorting, so do own sort if we searched
+        if (searchTerms != null) {
+            Collections.sort(items, (o1, o2) -> {
+                if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
+                    return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
+                } else if (sortClauseSelected.equals(SortClause.WORDS)) {
+                    String n1 = (o1.getName() == null ? "" : o1.getName())
+                            .toLowerCase(Locale.getDefault());
+                    String n2 = (o2.getName() == null ? "" : o2.getName())
+                            .toLowerCase(Locale.getDefault());
+                    return n1.compareTo(n2);
+                }
+                return 0;
+            });
+        }
         appAdapter.setItems(items);
         if (items.size() > 0) {
             emptyState.setVisibility(View.GONE);
