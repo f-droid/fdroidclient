@@ -382,7 +382,8 @@ public final class AppUpdateStatusManager {
         return updateChecker.getUpdatableApps(releaseChannels);
     }
 
-    private void addUpdatableApps(List<UpdatableApp> canUpdate) {
+    private void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate) {
+        if (canUpdate == null) return;
         if (canUpdate.size() > 0) {
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
