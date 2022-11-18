@@ -37,7 +37,7 @@
 -keep class org.codehaus.** { *; }
 -keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
 public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *; }
--keep public class your.class.** {
+-keep public class org.fdroid.** {
   *;
 }
 
