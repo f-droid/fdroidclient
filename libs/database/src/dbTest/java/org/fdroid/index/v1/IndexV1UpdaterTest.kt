@@ -191,8 +191,8 @@ internal class IndexV1UpdaterTest : DbTest() {
 
     @Suppress("DEPRECATION")
     private fun downloadIndex(repo: Repository, jar: String) {
-        val uri = Uri.parse("${repo.address}/index-v1.jar")
-        val indexFile = FileV2.fromPath("/index-v1.jar")
+        val uri = Uri.parse("${repo.address}/$SIGNED_FILE_NAME")
+        val indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME")
 
         val jarFile = tmpFolder.newFile()
         assets.open(jar).use { inputStream ->

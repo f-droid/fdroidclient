@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.index.SigningException;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
+import org.fdroid.index.v1.IndexV1VerifierKt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -29,9 +31,6 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(RobolectricTestRunner.class)
 public class LocalRepoKeyStoreTest {
 
-    private static final String SIGNED_FILE_NAME = "index.jar";
-    private static final String DATA_FILE_NAME = "index.xml";
-
     @Test
     public void testSignZip() throws IOException, LocalRepoKeyStore.InitException, SigningException {
         Context context = ApplicationProvider.getApplicationContext();
@@ -39,7 +38,7 @@ public class LocalRepoKeyStoreTest {
         File xmlIndexJarUnsigned = File.createTempFile(getClass().getName(), "unsigned.jar");
         BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
         JarOutputStream jo = new JarOutputStream(bo);
-        JarEntry je = new JarEntry(DATA_FILE_NAME);
+        JarEntry je = new JarEntry(IndexV1VerifierKt.DATA_FILE_NAME);
         jo.putNextEntry(je);
         InputStream inputStream =
                 getClass().getClassLoader().getResourceAsStream("all_fields_index-v1.json");
@@ -51,11 +50,11 @@ public class LocalRepoKeyStoreTest {
         Certificate localCert = localRepoKeyStore.getCertificate();
         assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
 
-        File xmlIndexJar = File.createTempFile(getClass().getName(), SIGNED_FILE_NAME);
+        File xmlIndexJar = File.createTempFile(getClass().getName(), IndexV1UpdaterKt.SIGNED_FILE_NAME);
         localRepoKeyStore.signZip(xmlIndexJarUnsigned, xmlIndexJar);
 
         JarFile jarFile = new JarFile(xmlIndexJar, true);
-        JarEntry indexEntry = (JarEntry) jarFile.getEntry(DATA_FILE_NAME);
+        JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1VerifierKt.DATA_FILE_NAME);
         byte[] data = IOUtils.toByteArray(jarFile.getInputStream(indexEntry));
         assertEquals(6431, data.length);
         assertNotNull(TreeUriScannerIntentService.getSigningCertFromJar(indexEntry));

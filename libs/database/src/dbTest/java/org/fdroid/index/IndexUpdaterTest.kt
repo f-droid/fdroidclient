@@ -2,6 +2,7 @@ package org.fdroid.index
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.fdroid.database.Repository
+import org.fdroid.index.v2.SIGNED_FILE_NAME
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
@@ -21,8 +22,8 @@ internal class IndexUpdaterTest {
             weight = 0,
             lastUpdated = 23L,
         )
-        val uri = defaultRepoUriBuilder.getUri(repo, "entry.jar")
-        assertEquals("http://example.org/entry.jar", uri.toString())
+        val uri = defaultRepoUriBuilder.getUri(repo, SIGNED_FILE_NAME)
+        assertEquals("http://example.org/$SIGNED_FILE_NAME", uri.toString())
     }
 
 }

@@ -33,6 +33,7 @@ import org.fdroid.index.IndexParser;
 import org.fdroid.index.IndexParserKt;
 import org.fdroid.index.SigningException;
 import org.fdroid.index.v1.IndexV1;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
 import org.fdroid.index.v1.IndexV1Verifier;
 import org.fdroid.index.v2.FileV2;
 
@@ -131,8 +132,11 @@ public class SwapService extends Service {
 
     private void updateRepo(@NonNull Peer peer, Repository repo)
             throws IOException, InterruptedException, SigningException, NotFoundException {
-        Uri uri = Uri.parse(repo.getAddress()).buildUpon().appendPath("index-v1.jar").build();
-        FileV2 indexFile = FileV2.fromPath("/index-v1.jar");
+        Uri uri = Uri.parse(repo.getAddress())
+                .buildUpon()
+                .appendPath(IndexV1UpdaterKt.SIGNED_FILE_NAME)
+                .build();
+        FileV2 indexFile = FileV2.fromPath("/" + IndexV1UpdaterKt.SIGNED_FILE_NAME);
         File swapJarFile =
                 File.createTempFile("swap", "", getApplicationContext().getCacheDir());
         try {

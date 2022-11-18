@@ -34,7 +34,7 @@ public class IndexV1Creator(
     public override fun createRepo(): IndexV1 {
         prepareIconFolders()
         val index = createIndex()
-        val indexJsonFile = File(repoDir, JSON_FILE_NAME)
+        val indexJsonFile = File(repoDir, DATA_FILE_NAME)
         indexJsonFile.outputStream().use { outputStream ->
             IndexParser.json.encodeToStream(index, outputStream)
         }

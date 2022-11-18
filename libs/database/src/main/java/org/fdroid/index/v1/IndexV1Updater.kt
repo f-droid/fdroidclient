@@ -20,7 +20,7 @@ import org.fdroid.index.defaultRepoUriBuilder
 import org.fdroid.index.setIndexUpdateListener
 import org.fdroid.index.v2.FileV2
 
-internal const val SIGNED_FILE_NAME = "index-v1.jar"
+public const val SIGNED_FILE_NAME: String = "index-v1.jar"
 
 public class IndexV1Updater(
     database: FDroidDatabase,

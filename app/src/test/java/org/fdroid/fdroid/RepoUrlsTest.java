@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
 import org.fdroid.index.v2.FileV1;
 import org.junit.Before;
 import org.junit.Test;
@@ -125,8 +126,8 @@ public class RepoUrlsTest {
 
     @Test
     public void testIndexV1Urls() {
-        testReposWithFile("index-v1.jar", tr ->
-                Utils.getUri(tr.repoUrl, "index-v1.jar").toString()
+        testReposWithFile(IndexV1UpdaterKt.SIGNED_FILE_NAME, tr ->
+                Utils.getUri(tr.repoUrl, IndexV1UpdaterKt.SIGNED_FILE_NAME).toString()
         );
     }
 

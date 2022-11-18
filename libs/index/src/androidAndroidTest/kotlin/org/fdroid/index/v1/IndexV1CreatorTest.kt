@@ -33,7 +33,7 @@ internal class IndexV1CreatorTest {
         val indexCreator = IndexV1Creator(context.packageManager, repoDir, packageNames, repo)
         val indexV1 = indexCreator.createRepo()
 
-        val indexFile = File(repoDir, JSON_FILE_NAME)
+        val indexFile = File(repoDir, DATA_FILE_NAME)
         assertTrue(indexFile.exists())
         val indexStr = indexFile.readBytes().decodeToString()
         assertEquals(indexV1, IndexParser.parseV1(indexStr))

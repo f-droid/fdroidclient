@@ -38,6 +38,8 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.index.SigningException;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
+import org.fdroid.index.v1.IndexV1VerifierKt;
 
 import java.io.File;
 import java.io.IOException;
@@ -129,7 +131,7 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     /**
-     * Recursively search for {@link TreeUriUtils#SIGNED_FILE_NAME} starting
+     * Recursively search for {@link IndexV1UpdaterKt#SIGNED_FILE_NAME} starting
      * from the given directory, looking at files first before recursing into
      * directories.  This is "depth last" since the index file is much more
      * likely to be shallow than deep, and there can be a lot of files to
@@ -147,7 +149,7 @@ public class TreeUriScannerIntentService extends IntentService {
             if (documentFile.isDirectory()) {
                 dirs.add(documentFile);
             } else if (!foundIndex) {
-                if (TreeUriUtils.SIGNED_FILE_NAME.equals(documentFile.getName())) {
+                if (IndexV1UpdaterKt.SIGNED_FILE_NAME.equals(documentFile.getName())) {
                     registerRepo(documentFile);
                     foundIndex = true;
                 }
@@ -159,7 +161,7 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     /**
-     * For all files called {@link TreeUriUtils#SIGNED_FILE_NAME} found, check
+     * For all files called {@link IndexV1UpdaterKt#SIGNED_FILE_NAME} found, check
      * the JAR signature and read the fingerprint of the signing certificate.
      * The fingerprint is then used to find whether this local repo is a mirror
      * of an existing repo, or a totally new repo.  In order to verify the
@@ -184,10 +186,10 @@ public class TreeUriScannerIntentService extends IntentService {
         if (inputStream == null) {
             return;
         }
-        File destFile = File.createTempFile("dl-", TreeUriUtils.SIGNED_FILE_NAME, context.getCacheDir());
+        File destFile = File.createTempFile("dl-", IndexV1UpdaterKt.SIGNED_FILE_NAME, context.getCacheDir());
         FileUtils.copyInputStreamToFile(inputStream, destFile);
         JarFile jarFile = new JarFile(destFile, true);
-        JarEntry indexEntry = (JarEntry) jarFile.getEntry(TreeUriUtils.DATA_FILE_NAME);
+        JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1VerifierKt.DATA_FILE_NAME);
         IOUtils.readLines(jarFile.getInputStream(indexEntry));
         Certificate certificate = getSigningCertFromJar(indexEntry);
         String fingerprint = Utils.calcFingerprint(certificate);

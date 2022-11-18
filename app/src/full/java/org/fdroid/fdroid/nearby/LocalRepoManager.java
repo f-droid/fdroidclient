@@ -16,6 +16,8 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.index.v1.AppV1;
 import org.fdroid.index.v1.IndexV1;
 import org.fdroid.index.v1.IndexV1Creator;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
+import org.fdroid.index.v1.IndexV1VerifierKt;
 import org.fdroid.index.v1.PackageV1;
 import org.fdroid.index.v1.RepoV1;
 
@@ -94,7 +96,7 @@ public final class LocalRepoManager {
         fdroidDirCaps = new SanitizedFile(webRoot, "FDROID");
         repoDir = new SanitizedFile(fdroidDir, "repo");
         repoDirCaps = new SanitizedFile(fdroidDirCaps, "REPO");
-        indexJar = new SanitizedFile(repoDir, "index-v1.jar");
+        indexJar = new SanitizedFile(repoDir, IndexV1UpdaterKt.SIGNED_FILE_NAME);
         indexJarUnsigned = new SanitizedFile(repoDir, "index-v1.unsigned.jar");
 
         if (!fdroidDir.exists() && !fdroidDir.mkdir()) {
@@ -257,7 +259,7 @@ public final class LocalRepoManager {
         IndexV1 indexV1 = creator.createRepo();
         cacheApps(indexV1);
         writeIndexPage(address);
-        SanitizedFile indexJson = new SanitizedFile(repoDir, "index-v1.json");
+        SanitizedFile indexJson = new SanitizedFile(repoDir, IndexV1VerifierKt.DATA_FILE_NAME);
         writeIndexJar(indexJson);
     }
 

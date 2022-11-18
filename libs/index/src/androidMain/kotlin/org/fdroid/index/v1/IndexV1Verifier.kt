@@ -5,7 +5,7 @@ import org.fdroid.index.SigningException
 import java.io.File
 import java.util.jar.Attributes
 
-internal const val JSON_FILE_NAME = "index-v1.json"
+public const val DATA_FILE_NAME: String = "index-v1.json"
 private const val SUPPORTED_DIGEST = "SHA1-Digest"
 
 /**
@@ -26,7 +26,7 @@ public class IndexV1Verifier(
     expectedSigningFingerprint: String?,
 ) : JarIndexVerifier(jarFile, expectedSigningCertificate, expectedSigningFingerprint) {
 
-    protected override val jsonFileName: String = JSON_FILE_NAME
+    protected override val jsonFileName: String = DATA_FILE_NAME
 
     @Throws(SigningException::class)
     protected override fun checkAttributes(attributes: Attributes) {
