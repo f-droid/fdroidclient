@@ -568,6 +568,23 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                 }
             }
         }
+        if (Build.VERSION.SDK_INT >= 33) {
+            if (targetSdkVersion >= 33) {
+                // Do nothing. The targetSdk for the below split-permissions is set to 33,
+                // so we don't make any changes for apps targetting 33 or above
+            } else {
+                // TODO: Change the strings below to Manifest.permission once we target SDK 31.
+                if (set.contains(Manifest.permission.BODY_SENSORS)) {
+                    set.add("android.permission.BODY_SENSORS_BACKGROUND");
+                }
+                if (set.contains(Manifest.permission.READ_EXTERNAL_STORAGE) ||
+                        set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    set.add("android.permission.READ_MEDIA_AUDIO");
+                    set.add("android.permission.READ_MEDIA_VIDEO");
+                    set.add("android.permission.READ_MEDIA_IMAGES");
+                }
+            }
+        }
 
         requestedPermissions = set.toArray(new String[set.size()]);
     }
