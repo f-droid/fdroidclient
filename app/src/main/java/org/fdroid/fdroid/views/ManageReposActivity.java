@@ -63,6 +63,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
 
 import java.io.File;
 import java.io.IOException;
@@ -621,7 +622,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
                     }
 
                     // check for v1 index as this is the last one we can still handle
-                    final Uri uri = builder.appendPath("index-v1.jar").build();
+                    final Uri uri = builder.appendPath(IndexV1UpdaterKt.SIGNED_FILE_NAME).build();
 
                     try {
                         final URL url = new URL(uri.toString());

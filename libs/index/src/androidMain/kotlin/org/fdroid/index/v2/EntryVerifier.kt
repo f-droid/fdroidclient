@@ -5,7 +5,7 @@ import org.fdroid.index.SigningException
 import java.io.File
 import java.util.jar.Attributes
 
-private const val JSON_FILE_NAME = "entry.json"
+public const val JSON_FILE_NAME: String = "entry.json"
 private val FORBIDDEN_DIGESTS = listOf(
     "MD5-Digest",
     "SHA1-Digest",

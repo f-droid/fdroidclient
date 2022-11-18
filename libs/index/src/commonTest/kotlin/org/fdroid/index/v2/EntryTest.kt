@@ -19,17 +19,17 @@ internal class EntryTest {
 
     @Test
     fun testEmptyToMin() {
-        testEntryEquality("$assetPath/diff-empty-min/entry.json", TestDataEntry.emptyToMin)
+        testEntryEquality("$assetPath/diff-empty-min/$JSON_FILE_NAME", TestDataEntry.emptyToMin)
     }
 
     @Test
     fun testEmptyToMid() {
-        testEntryEquality("$assetPath/diff-empty-mid/entry.json", TestDataEntry.emptyToMid)
+        testEntryEquality("$assetPath/diff-empty-mid/$JSON_FILE_NAME", TestDataEntry.emptyToMid)
     }
 
     @Test
     fun testEmptyToMax() {
-        testEntryEquality("$assetPath/diff-empty-max/entry.json", TestDataEntry.emptyToMax)
+        testEntryEquality("$assetPath/diff-empty-max/$JSON_FILE_NAME", TestDataEntry.emptyToMax)
     }
 
     @Test

@@ -60,7 +60,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
             indexFileV2 = TestDataEntry.emptyToMin.index
         )
@@ -80,7 +80,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-mid/entry.jar",
+            entryPath = "diff-empty-mid/$SIGNED_FILE_NAME",
             jsonPath = "index-mid-v2.json",
             indexFileV2 = TestDataEntry.emptyToMid.index
         )
@@ -95,7 +95,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-max/entry.jar",
+            entryPath = "diff-empty-max/$SIGNED_FILE_NAME",
             jsonPath = "index-max-v2.json",
             indexFileV2 = TestDataEntry.emptyToMax.index
         )
@@ -110,7 +110,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = streamIndexV2IntoDb("index-min-v2.json")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-mid/entry.jar",
+            entryPath = "diff-empty-mid/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-mid/42.json",
             indexFileV2 = TestDataEntry.emptyToMid.diffs["42"] ?: fail()
         )
@@ -126,7 +126,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-min/23.json",
             indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
@@ -142,7 +142,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-max/entry.jar",
+            entryPath = "diff-empty-max/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-max/1337.json",
             indexFileV2 = TestDataEntry.emptyToMax.diffs["1337"] ?: fail()
         )
@@ -158,7 +158,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-min/23.json",
             indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
@@ -174,7 +174,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-min/23.json",
             indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
@@ -192,7 +192,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(newRepo)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
             indexFileV2 = TestDataEntry.emptyToMin.index
         )
@@ -206,7 +206,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
             indexFileV2 = TestDataEntry.emptyToMin.index
         )
@@ -220,7 +220,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
             indexFileV2 = TestDataEntry.emptyToMin.index
         )
@@ -238,7 +238,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = streamIndexV1IntoDb("index-min-v1.json")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-mid/entry.jar",
+            entryPath = "diff-empty-mid/$SIGNED_FILE_NAME",
             jsonPath = "index-mid-v2.json",
             indexFileV2 = TestDataEntry.emptyToMid.index,
         )
@@ -261,7 +261,7 @@ internal class IndexV2UpdaterTest : DbTest() {
         val entryFile = tmpFolder.newFile()
         val indexFile = tmpFolder.newFile()
         val repo = repoDao.getRepository(repoId) ?: fail()
-        val entryUri = Uri.parse("${repo.address}/entry.jar")
+        val entryUri = Uri.parse("${repo.address}/$SIGNED_FILE_NAME")
         val indexUri = Uri.parse("${repo.address}/${indexFileV2.name.trimStart('/')}")
 
         assets.open(entryPath).use { inputStream ->

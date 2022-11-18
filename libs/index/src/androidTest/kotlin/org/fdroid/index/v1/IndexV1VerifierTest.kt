@@ -113,7 +113,7 @@ internal class IndexV1VerifierTest {
                 assertEquals("foo\n", inputStream.readBytes().decodeToString())
             }
         }
-        assertTrue(e.message!!.contains("index-v1.json"))
+        assertTrue(e.message!!.contains(JSON_FILE_NAME))
     }
 
     @Test

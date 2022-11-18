@@ -13,6 +13,7 @@ import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
 import org.junit.Test;
 
 import java.io.File;
@@ -38,20 +39,20 @@ public class HttpDownloaderTest {
     // https://developer.android.com/reference/javax/net/ssl/SSLContext
     static {
         ArrayList<Pair<String, String>> tempUrls = new ArrayList<>(Arrays.asList(
-                new Pair<>("https://f-droid.org/repo", "index-v1.jar"),
+                new Pair<>("https://f-droid.org/repo", IndexV1UpdaterKt.SIGNED_FILE_NAME),
                 // sites that use SNI for HTTPS
                 new Pair<>("https://mirrors.edge.kernel.org/", "debian/dists/stable/Release"),
-                new Pair<>("https://fdroid.tetaneutral.net/fdroid/repo/", "index-v1.jar"),
-                new Pair<>("https://ftp.fau.de/fdroid/repo/", "index-v1.jar"),
+                new Pair<>("https://fdroid.tetaneutral.net/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
+                new Pair<>("https://ftp.fau.de/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
                 new Pair<>("https://ftp.fau.de/fdroid/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg"),
                 //new Pair<>("https://microg.org/fdroid/repo/index-v1.jar"),
                 //new Pair<>("https://grobox.de/fdroid/repo/index.jar"),
-                new Pair<>("https://guardianproject.info/fdroid/repo", "index-v1.jar")
+                new Pair<>("https://guardianproject.info/fdroid/repo", IndexV1UpdaterKt.SIGNED_FILE_NAME)
         ));
         if (Build.VERSION.SDK_INT >= 22) {
             tempUrls.addAll(Arrays.asList(
                     new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"), // no SNI but weird ipv6 lookup issues
-                    new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", "index-v1.jar")  // TLSv1.2 only and SNI
+                    new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)  // TLSv1.2 only and SNI
             ));
         }
         URLS = tempUrls;
