@@ -34,7 +34,7 @@
     <string name="no">Não</string>
     <string name="repo_add_title">Adicionar novo repositório</string>
     <string name="repo_add_add">Adicionar</string>
-    <string name="cancel">Anular</string>
+    <string name="cancel">Cancelar</string>
     <string name="enable">Ativar</string>
     <string name="add_key">Adicionar chave</string>
     <string name="overwrite">Sobrescrever</string>
@@ -60,7 +60,7 @@
     <string name="antiadslist">Este aplicativo contém anúncios</string>
     <string name="antitracklist">Este aplicativo rastreia e relata sua atividade</string>
     <string name="antinonfreeadlist">Este aplicativo promove complementos não livres</string>
-    <string name="antinonfreenetlist">Este aplicativo promove serviços de rede não livres</string>
+    <string name="antinonfreenetlist">Este aplicativo promove ou depende inteiramente em um serviço de rede não gratuito</string>
     <string name="antinonfreedeplist">Este aplicativo depende de aplicativos não livres</string>
     <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre</string>
     <string name="display">Aparência do F-Droid</string>
@@ -425,11 +425,11 @@
     <string name="hiding_dialog_warning">Atenção: Todos os atalhos de aplicativos na tela inicial também serão removidos e precisarão ser re-adicionados manualmente.</string>
     <string name="hide_on_long_search_press_title">Esconder o botão de busca</string>
     <string name="hide_on_long_search_press_summary">Pressionar o botão de busca por um longo tempo vai esconder o app</string>
-    <string name="sort_search">Classificação da pesquisa</string>
+    <string name="sort_search">Classificar pesquisa</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Poderá ser difícil escanear o código.</string>
     <string name="repo_add_mirror">Adicionar espelho</string>
-    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar ele como um mirror?</string>
+    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar como um mirror\?</string>
     <string name="show_anti_feature_apps">Incluir aplicativos com características indesejadas</string>
     <string name="force_touch_apps">Incluir aplicativos de tela sensível ao toque</string>
     <string name="force_touch_apps_on">Mostrar aplicativos que exigem tela sensível ao toque, independentemente se há suporte ao hardware</string>
@@ -445,7 +445,7 @@
     <string name="over_network_on_demand_summary">Apenas usar essa conexão quando eu clicar para baixar</string>
     <string name="over_network_never_summary">Nunca baixe nada usando essa conexão</string>
     <string name="repo_exists_add_fingerprint">%1$s já está configurado, isto irá adicionar nova informação de chave.</string>
-    <string name="repo_exists_enable">%1$s já esta ativado, confirme que você quer reativar ele.</string>
+    <string name="repo_exists_enable">%1$s já esta ativado, confirme que você quer reativá-lo.</string>
     <string name="repo_exists_and_enabled">%1$s já está configurado e ativado.</string>
     <string name="repo_delete_to_overwrite">Primeiro apague %1$s para poder adicionar isso com uma chave conflitante.</string>
     <string name="antidisabledalgorithmlist">Este aplicativo tem uma assinatura de segurança fraca</string>
