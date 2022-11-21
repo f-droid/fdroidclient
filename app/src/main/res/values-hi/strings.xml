@@ -204,7 +204,7 @@
     <string name="menu_flattr">Flattr</string>
     <string name="antiadslist">इस एप्लिकेशन में विज्ञापन शामिल हैं</string>
     <string name="antinonfreeadlist">यह ऐप नॉन-फ्री ऐड-ऑन को बढ़ावा देता है</string>
-    <string name="antinonfreenetlist">यह ऐप गैर-मुक्त नेटवर्क सेवाओं को बढ़ावा देता है</string>
+    <string name="antinonfreenetlist">यह ऐप पूरी तरह से गैर-मुक्त नेटवर्क सेवाओं का प्रचार करता है या उन पर निर्भर करता है</string>
     <string name="antinonfreedeplist">यह ऐप अन्य नॉन-फ्री ऐप पर निर्भर करता है</string>
     <string name="antiupstreamnonfreelist">अपस्ट्रीम सोर्स कोड पूरी तरह से फ्री नहीं है</string>
     <string name="antinonfreeassetslist">इस ऐप में गैर-मुक्त संपत्ति है</string>
@@ -526,4 +526,5 @@
     <string name="antinosource">स्रोत कोड अब उपलब्ध नहीं है</string>
     <string name="swap_wifi_vpn_conflict">सक्रिय वीपीएन के साथ संघर्ष!</string>
     <string name="antiothers">अन्य विरोधी सुविधाएं</string>
+    <string name="antinsfw">इस ऐप में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
 </resources>
