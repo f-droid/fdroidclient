@@ -39,7 +39,7 @@
     <string name="antiadslist">Esta aplicación contén publicidade</string>
     <string name="antitracklist">Esta aplicación rexistra e informa da túa actividade</string>
     <string name="antinonfreeadlist">Esta aplicación promociona engadidos que non son libres ou de balde</string>
-    <string name="antinonfreenetlist">Esta aplicación promove servizos de rede que non son libres</string>
+    <string name="antinonfreenetlist">Esta aplicación promove ou depende completamente dun servizo de rede non libre</string>
     <string name="antinonfreedeplist">Esta aplicación depende doutras aplicacións non libres</string>
     <string name="display">Amosar</string>
     <string name="expert">Modo experto</string>
