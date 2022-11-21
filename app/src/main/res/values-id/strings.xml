@@ -121,7 +121,7 @@
     <string name="repo_last_update">Pembaruan terakhir</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="menu_settings">Setelan</string>
+    <string name="menu_settings">Pengaturan</string>
     <string name="unsigned_description">Ini berarti jika daftar aplikasi tidak dapat diverifikasi. Anda harus berhati-hati dengan aplikasi yang diunduh dari indeks yang tidak bertanda tangan.</string>
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.
@@ -135,8 +135,8 @@
     <string name="downloading">Mengunduh…</string>
     <string name="login_title">Diperlukan autentikasi</string>
     <string name="login_name">Nama pengguna</string>
-    <string name="login_password">Sandi</string>
-    <string name="repo_edit_credentials">Ubah Sandi</string>
+    <string name="login_password">Kata Sandi</string>
+    <string name="repo_edit_credentials">Ubah Kata Sandi</string>
     <string name="repo_error_empty_username">Nama pengguna kosong, kredensial tidak berubah</string>
     <string name="about_license">Lisensi</string>
     <string name="local_repo_running">F-Droid siap bertukar</string>
@@ -249,7 +249,7 @@
     <string name="theme_light">Terang</string>
     <string name="theme_dark">Gelap</string>
     <string name="crash_dialog_title">F-Droid telah berhenti</string>
-    <string name="crash_dialog_text">Terjadi kesalahan yang tidak terduga yang memaksa aplikasi untuk berhenti. Maukah mengirimkan detail melalui email untuk membantu memperbaiki masalah ini\?</string>
+    <string name="crash_dialog_text">Terjadi kesalahan yang tidak terduga yang memaksa aplikasi untuk berhenti. Maukah mengirimkan detail melalui e-mail untuk membantu memperbaiki masalah ini\?</string>
     <string name="crash_dialog_comment_prompt">Anda bisa menambahkan informasi ekstra dan komentar di sini:</string>
     <string name="update_auto_download">Otomatis unduh pembaruan</string>
     <string name="update_auto_download_summary">Pembaruan diunduh secara otomatis dan Anda akan diberi tahu untuk memasangnya</string>
@@ -417,8 +417,8 @@
     <string name="repo_official_mirrors">Mirror resmi</string>
     <string name="repo_user_mirrors">Mirror pengguna</string>
     <string name="warning_scaning_qr_code">Kamera Anda sepertinya tidak memiliki fokus otomatis. Mungkin akan sulit untuk memindai kode.</string>
-    <string name="over_wifi">Menggunakan Wi-Fi</string>
-    <string name="over_data">Menggunakan data seluler</string>
+    <string name="over_wifi">Melalui Wi-Fi</string>
+    <string name="over_data">Melalui data seluler</string>
     <string name="over_network_always_summary">Selalu gunakan koneksi ini jika tersedia</string>
     <string name="over_network_on_demand_summary">Hanya gunakan koneksi ini saat saya klik unduh</string>
     <string name="over_network_never_summary">Jangan pernah mengunduh apapun dengan koneksi ini</string>
@@ -433,12 +433,12 @@
     <string name="hide_all_notifications">Sembunyikan semua notifikasi</string>
     <string name="hide_all_notifications_summary">Cegah semua tindakan agar tidak tampil di status bar dan panel notifikasi.</string>
     <string name="send_install_history">Kirim Riwayat Pemasangan</string>
-    <string name="send_history_csv">%s riwayat pemasangan sebagai berkas CSV</string>
+    <string name="send_history_csv">Riwayat pemasangan %s sebagai berkas CSV</string>
     <string name="install_history">Riwayat pemasangan</string>
     <string name="install_history_summary">Lihat log privat dari semua pemasangan dan pencopotan</string>
     <string name="send_version_and_uuid">Kirim versi dan UUID ke server</string>
     <string name="send_version_and_uuid_summary">Sertakan versi aplikasi ini dan ID unik acak saat mengunduh, akan berdampak setelah aplikasi dimulai ulang.</string>
-    <string name="about_forum">Forum bantuan</string>
+    <string name="about_forum">Forum dukungan</string>
     <string name="app_suggested">Disarankan</string>
     <string name="app_size">Ukuran: %1$s</string>
     <string name="send_installed_apps">Bagikan aplikasi yang terpasang</string>
@@ -494,7 +494,7 @@
     <string name="send_to_fdroid_metrics_summary">Kirim data perminggu secara anonim ke Metrik F-Droid (memerlukan Simpanan riwayat pemasangan)</string>
     <string name="send_to_fdroid_metrics">Kirim data penggunaan</string>
     <string name="fdroid_metrics_report">Laporan Metrik %s</string>
-    <string name="install_history_and_metrics">Pasang riwayat dan metrik</string>
+    <string name="install_history_and_metrics">Riwayat pemasangan dan metrik</string>
     <string name="send_fdroid_metrics_json">Laporan metrik %s sebagai berkas JSON</string>
     <string name="send_fdroid_metrics_report">Kirim Laporan Metrik %s</string>
     <string name="theme_follow_system">Ikuti sistem</string>
