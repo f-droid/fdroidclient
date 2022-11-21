@@ -450,7 +450,7 @@
     <string name="install_history">Installationsverlauf</string>
     <string name="install_history_summary">Das private Protokoll zu allen Installationen und Deinstallationen ansehen</string>
     <string name="send_version_and_uuid">Version und UUID an Server senden</string>
-    <string name="prompt_to_send_crash_reports">Auf Nachfrage Absturzbericht senden</string>
+    <string name="prompt_to_send_crash_reports">Absturzbericht anfordern</string>
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
     <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
     <string name="share_repository">Paketquelle teilen</string>
