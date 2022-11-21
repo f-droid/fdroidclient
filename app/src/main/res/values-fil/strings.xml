@@ -386,7 +386,7 @@
     <string name="swap_no_peers_nearby">Walang makitang taong malapit na pwedeng makipagpalitan.</string>
     <string name="swap_qr_isnt_for_swap">Mukhang di yata code ng palitan ang na-scan mong QR code.</string>
     <string name="menu_show_fdroid_metrics_report">Ipakita ang ulat ng metriks</string>
-    <string name="antinonfreenetlist">Nagpo-promote ng mga di-libreng serbisyong pang-network ang app na ito</string>
+    <string name="antinonfreenetlist">Ang app na ito\'y nagtataguyod o ganap na nakasalalay sa isa o ilang di-libreng serbisyong pang-network</string>
     <string name="antinonfreedeplist">Dumedepende sa ibang mga di-libreng app ang app na ito</string>
     <string name="linking_apks">Nili-link ang mga APK sa repo…</string>
     <string name="try_again">Subukan uli</string>
@@ -401,9 +401,9 @@
     <string name="swap_scan_qr">QR Code</string>
     <string name="unknown">Di-alam</string>
     <string name="swap_cant_find_peers">Di makita ang hinahanap-hanap mo\?</string>
-    <string name="repo_confirm_delete_body">Kapag binura mo ang isang repositoryo, hindi mo na makikita ang mga app na nandito.
+    <string name="repo_confirm_delete_body">Sa pag-bura ng isang repositoryo, \'di na makikita ang mga app nito.
 \n
-\nTandaan: Mananatili pa rin sa device mo ang mga na-install mo na na app.</string>
+\nTandaan: Mananatili pa rin ang mga na-install mo na app sa iyong device.</string>
     <string name="nearby_splash__request_permission">Subukan</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Walang internet\? Kumuha ng mga app mula sa taong malapit sa\'yo!</string>
     <string name="nearby_splash__read_external_storage">Maghanap sa SD card para sa mga repo at mirror.</string>
@@ -474,8 +474,8 @@
         <item quantity="other">%1$d (na) update</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d ang na-install</item>
-        <item quantity="other">%1$d ang na-install</item>
+        <item quantity="one">%1$d app ay na-install</item>
+        <item quantity="other">%1$d mga app ay na-install</item>
     </plurals>
     <string name="notification_title_summary_update_available">May update</string>
     <string name="notification_title_summary_downloading">Dina-download…</string>
@@ -525,4 +525,6 @@
     <string name="install_confirm_update_no_perms">Gusto mo bang i-install ang update ng app na ito\? Hindi mawawala ang kasalukuyang data mo. Wala itong espesyal na kailangan.</string>
     <string name="perms_new_perm_prefix">Bago:</string>
     <string name="interval_1w">Tumingin ng update kada linggo</string>
+    <string name="antiothers">Ibang mga di-gustong tampok</string>
+    <string name="antinsfw">Ang app na ito\'y naglalaman ng mga bagay na \'di dapat ilathalain o nakikita sa kahit saan</string>
 </resources>
