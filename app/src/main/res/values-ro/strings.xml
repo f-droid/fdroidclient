@@ -82,7 +82,7 @@
     <string name="search_hint">Caută aplicații</string>
     <string name="antinonfreeassetslist">Aceasta aplicație conține resurse ce nu sunt la disponibile la liber</string>
     <string name="antinonfreedeplist">Aplicația depinde de alte aplicații ce nu sunt software liber</string>
-    <string name="antinonfreenetlist">Aplicația promovează servicii de rețea ce nu sunt accesibile la liber</string>
+    <string name="antinonfreenetlist">Aplicația promovează sau depinde de servicii de rețea ce nu sunt libere</string>
     <string name="antinonfreeadlist">Aplicația promovează anexe ce nu sunt software liber</string>
     <string name="antitracklist">Aplicația îți înregistrează și raportează activitatea undeva</string>
     <string name="menu_flattr">Flattr</string>

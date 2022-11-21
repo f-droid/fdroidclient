@@ -1,0 +1,5 @@
+* Revizuirea totală a logicii de descărcare pentru îmbunătățirea performanței și a suportului pentru servere de rezervă.
+
+* Capturile de ecran și grafica sunt acum descărcate de pe serverele de rezervă.
+
+* Reducerea unei scurgeri de confidențialitate cu sesiuni TLS
