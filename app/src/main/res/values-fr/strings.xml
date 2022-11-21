@@ -530,7 +530,7 @@
     <string name="antidisabledalgorithm">Signé par un algorithme non sécurisé</string>
     <string name="antinosource">Le code source n\'est plus disponible</string>
     <string name="antinonfreedep">Dépendances non libres</string>
-    <string name="antiupstreamnonfree">Amont non libre</string>
+    <string name="antiupstreamnonfree">Code en amont non libre</string>
     <string name="antiknownvuln">Contient des vulnérabilités connues</string>
     <string name="app_list_results_hidden_antifeature_settings">Certains résultats ont été masqués pour respecter vos paramètres d\'anti-fonctionnalité.</string>
     <string name="antiads">Publicités</string>
