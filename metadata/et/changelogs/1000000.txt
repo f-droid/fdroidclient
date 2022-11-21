@@ -1,0 +1,7 @@
+* Meedia, OTA, ZIP, jt. failide tugi
+
+* Mitme võtmega signeeritud APK failide täielik tugi
+
+* Uus tõlge tiibeti keelde
+
+* Hoidla keelamisel seotud rakenduste ja kategooriate eemaldamine
