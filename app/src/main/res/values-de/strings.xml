@@ -352,8 +352,8 @@
     <string name="app__tts__downloading_progress">Herunterladen, %1$d%% abgeschlossen</string>
     <string name="menu_license">Lizenz: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d weitere…</item>
-        <item quantity="other">+%1$d weitere…</item>
+        <item quantity="one">+%1$d weitere …</item>
+        <item quantity="other">+%1$d weitere …</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Aktualisierung</item>
@@ -531,7 +531,7 @@
     <string name="antinonfreedep">Nicht-quelloffene Abhängigkeiten</string>
     <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Antifeature-Einstellungen ausgeblendet.</string>
     <string name="antiads">Werbung</string>
-    <string name="antitrack">Tracking</string>
+    <string name="antitrack">Überwachung</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
     <string name="antiothers">Andere unerwünschte Merkmale</string>
     <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
