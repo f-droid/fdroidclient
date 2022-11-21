@@ -55,7 +55,7 @@
     <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
     <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
     <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-vapaita lisäosia</string>
-    <string name="antinonfreenetlist">Tämä sovellus tukee ei-vapaita verkkopalveluja</string>
+    <string name="antinonfreenetlist">Tämä sovellus tukee tai on täysin riippuvainen ei-vapaasta verkkopalvelusta</string>
     <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista, ei-vapaista sovelluksista</string>
     <string name="display">Näyttö</string>
     <string name="expert">Asiantuntijatila</string>
