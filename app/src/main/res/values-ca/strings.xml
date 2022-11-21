@@ -55,7 +55,7 @@
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
     <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
     <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>
-    <string name="antinonfreenetlist">Aquesta aplicació promou serveis de xarxa no lliures</string>
+    <string name="antinonfreenetlist">Aquesta aplicació promou un servei de xarxa no lliure, o en depèn completament</string>
     <string name="antinonfreedeplist">Aquesta aplicació depèn d\'altres aplicacions no lliures</string>
     <string name="antiupstreamnonfreelist">El codi font no és del tot lliure</string>
     <string name="display">Pantalla</string>
