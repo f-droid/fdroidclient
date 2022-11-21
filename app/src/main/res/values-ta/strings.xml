@@ -269,7 +269,7 @@
     <string name="antidisabledalgorithmlist">இந்த பயன்பாட்டில் பலவீனமான பாதுகாப்பு கையொப்பம் உள்ளது</string>
     <string name="antinonfreeassetslist">இந்த பயன்பாட்டில் இலவச மற்ற சொத்துக்கள் உள்ளன</string>
     <string name="antinonfreedeplist">இச்செயலி மற்ற இலவச செயலிகளைச் சார்ந்துள்ளது</string>
-    <string name="antinonfreenetlist">இச்செயலி இலவசமற்ற பிணைய சேவைகளை ஊக்குவிக்கிறது</string>
+    <string name="antinonfreenetlist">இந்த ஆப்ஸ் ஊக்குவிக்கிறது அல்லது முற்றிலும் இலவச நெட்வொர்க் சேவையை சார்ந்துள்ளது</string>
     <string name="antinonfreeadlist">இச்செயலி இலவசமற்ற துணை-நிரல்களை ஊக்குவிக்கிறது</string>
     <string name="antifeatureswarning">இச்செயலியில் நீங்கள் விரும்பாத அம்சங்கள் உள்ளன.</string>
     <string name="preference_category__my_apps">எனது செயலிகள்</string>
