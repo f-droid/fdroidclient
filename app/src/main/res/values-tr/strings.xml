@@ -57,7 +57,7 @@
     <string name="antiadslist">Bu uygulama reklam içerir</string>
     <string name="antitracklist">Bu uygulama etkinliğinizi izler ve bildirir</string>
     <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentilere teşvik eder</string>
-    <string name="antinonfreenetlist">Bu uygulama özgür olmayan ağ hizmetlerine teşvik eder</string>
+    <string name="antinonfreenetlist">Bu uygulama özgür olmayan bir ağ hizmetine teşvik eder veya tamamen buna bağlıdır</string>
     <string name="antinonfreedeplist">Bu uygulama özgür olmayan başka uygulamalara bağımlıdır</string>
     <string name="antiupstreamnonfreelist">Kaynak kod tamamen özgür değildir</string>
     <string name="display">Görüntüleme</string>
