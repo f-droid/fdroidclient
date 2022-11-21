@@ -44,7 +44,7 @@
     <string name="details_notinstalled">Nie zainstalowane</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
-    <string name="antinonfreenetlist">Ta aplikacja promuje niewolne usługi sieciowe</string>
+    <string name="antinonfreenetlist">Ta aplikacja promuje lub całkowicie zależy od niewolnej usługi sieciowej</string>
     <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
     <string name="antiupstreamnonfreelist">Upstreamowy kod źródłowy nie jest w pełni wolny</string>
     <string name="display">Wyświetlanie</string>
@@ -176,7 +176,7 @@
     <string name="swap_choose_apps">Wybierz aplikacje</string>
     <string name="swap_scan_qr">Kod QR</string>
     <string name="swap_people_nearby">Osoby w pobliżu</string>
-    <string name="swap_scanning_for_peers">Szukam osób w pobliżu…</string>
+    <string name="swap_scanning_for_peers">Szukanie osób w pobliżu…</string>
     <string name="swap_nearby">Wymiana w pobliżu</string>
     <string name="swap_intro">Połącz się i wymieniaj aplikacje z osobami w pobliżu.</string>
     <string name="swap_visible_bluetooth">Widoczny przez Bluetooth</string>
@@ -336,7 +336,7 @@
         <item quantity="many">Zaktualizowano %1$d dni temu</item>
         <item quantity="other">Zaktualizowano %1$d dni temu</item>
     </plurals>
-    <string name="app_list__name__successfully_installed">%1$s zainstalowano</string>
+    <string name="app_list__name__successfully_installed">Zainstalowano %1$s</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu\? Pobierz aplikacje od osób w pobliżu!</string>
     <string name="nearby_splash__find_people_button">Znajdź osoby w pobliżu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obydwie strony potrzebują %1$s, aby użyć wymiany w pobliżu.</string>
@@ -444,7 +444,7 @@
     <string name="repo_official_mirrors">Oficjalne serwery lustrzane</string>
     <string name="repo_user_mirrors">Serwery lustrzane użytkownika</string>
     <string name="use_bluetooth">Użyj Bluetooth</string>
-    <string name="swap_toast_invalid_url">Błędny URL wymiany: %1$s</string>
+    <string name="swap_toast_invalid_url">Nieprawidłowy URL wymiany: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Włączono hotspot Wi-Fi</string>
     <string name="swap_toast_could_not_enable_hotspot">Nie można włączyć hotspota Wi-Fi!</string>
     <string name="over_wifi">Przez Wi-Fi</string>
@@ -477,14 +477,14 @@
     <string name="app_repository">Repozytorium: %1$s</string>
     <string name="scan_removable_storage_title">Skanuj pamięć wymienną</string>
     <string name="scan_removable_storage_toast">Skanowanie %s…</string>
-    <string name="scan_removable_storage_summary">Szukaj repozytoriów pakietów na nośnikach wymiennych, takich jak karty SD i pamięci USB</string>
-    <string name="nearby_splash__read_external_storage">Wyszukaj repozytoria i kopie lustrzane na karcie SD.</string>
+    <string name="scan_removable_storage_summary">Szukaj repozytoriów pakietów na nośnikach wymiennych, takich jak karty pamięci i urządzenia USB</string>
+    <string name="nearby_splash__read_external_storage">Wyszukaj repozytoria i kopie lustrzane na karcie pamięci.</string>
     <string name="nearby_splash__request_permission">Wypróbuj</string>
     <string name="not_visible_nearby">Wymiana w pobliżu nie jest włączona</string>
     <string name="not_visible_nearby_description">Przed wymianą z urządzeniami w pobliżu ustaw swoje urządzenie jako widoczne.</string>
     <string name="swap_toast_using_path">Korzystasz z %1$s</string>
     <string name="swap_toast_not_removable_storage">Ten wybór nie pasuje do żadnych wymiennych urządzeń pamięci masowej, spróbuj ponownie!</string>
-    <string name="swap_toast_find_removeable_storage">Wybierz wymienną kartę SD lub USB</string>
+    <string name="swap_toast_find_removeable_storage">Wybierz wymienną kartę pamięci lub USB</string>
     <string name="main_menu__updates">Aktualizacje</string>
     <string name="menu_translation">Tłumaczenie</string>
     <string name="undo">Cofnij</string>
@@ -505,8 +505,8 @@
     <string name="swap_stopping">Zatrzymywanie…</string>
     <string name="disabled">Wyłączone</string>
     <string name="swap_error_cannot_start_bluetooth">Nie można włączyć Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Wymiana w pobliżu zamknięta z powodu bezczynności.</string>
-    <string name="nearby_splash__document_tree">Wyszukaj USB OTG dla repozytoriów i serwerów lustrzanych.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Wyłączono wymianę w pobliżu z powodu bezczynności</string>
+    <string name="nearby_splash__document_tree">Wyszukaj repozytoria i kopie lustrzane na USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Wyświetla powiadomienia o aktualizacjach aplikacji i repozytorium.</string>
     <string name="notification_channel_updates_title">Aktualizacje</string>
