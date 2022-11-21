@@ -59,7 +59,7 @@
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de su actividad</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
-    <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
+    <string name="antinonfreenetlist">Esta aplicación promueve o depende completamente de un servicio de red no libre</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
     <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
     <string name="display">Presentación</string>
