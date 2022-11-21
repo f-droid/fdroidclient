@@ -1,0 +1,7 @@
+* Vylepšené odkazování adres URL v popisech aplikací
+
+* Vylepšená práce s kartami SDCards a USG-OTG v aplikaci Nearby
+
+* Modernizace kódu a přechod z PNG na vektory (díky @isira-seneviratne!)
+
+* Rozpoznávání delších adres URL repozitářů pro podporu zrcadel GitCDN/RawGit/atd

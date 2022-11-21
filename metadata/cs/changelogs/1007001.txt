@@ -1,0 +1,5 @@
+* přepracovaná výměna v okolí pomocí hotspotu zařízení
+
+* přidání nových panických reakcí: odinstalování aplikace a obnovení výchozího nastavení úložiště
+
+* oprava podpory proxy serverů při prvním spuštění

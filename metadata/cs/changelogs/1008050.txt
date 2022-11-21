@@ -1,0 +1,9 @@
+* nová konfigurace oprávnění Androidu 10 k zastavení výzev Neznámé zdroje #1833
+* Zpracování nových "rozdělených oprávnění": jemné umístění znamená hrubé umístění
+* Oprava předvoleb vyhledávacího panelu na posledních verzích Androidu (díky @dkanada)
+* Nastavení pravidel pro zálohování, aby se zabránilo ukládání odkládacího repozitáře
+* Otevření klávesnice při vymazání vyhledávání
+* synchronizace překladu s řetězci Androidu
+* vynucení běžných domén repo na HTTPS (GitLab, GitHub, Amazon)
+* standardní vlnovkový efekt na odkazy v detailech aplikace
+* zobrazení výchozí ikony pro aplikace bez ikony

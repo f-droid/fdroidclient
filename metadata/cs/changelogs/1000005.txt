@@ -1,0 +1,3 @@
+* Oprava chyby zabraňující zobrazování překladů na Androidu >= 7.0
+
+* Oprava pádu aktualizace DB z verze 1.0-alpha3 → 1.0-alpha4 #1181

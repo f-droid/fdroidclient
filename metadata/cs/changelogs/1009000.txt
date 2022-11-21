@@ -1,0 +1,5 @@
+* Odstraněna podpora "Android App Link", protože nemůže pracovat s F-Droidem a spouštěla úniky DNS.
+* Archiv repos mají nyní nižší prioritu než Repo (vyšší na obrazovce Spravovat úložiště), opravují problémy, kde hledali ikony, snímky obrazovky a další informace v archivu spíše než samotné úložiště.
+* Zastavte oříznutí obrázku záhlaví funkce (díky @ByteHamster!)
+* Aby navigační lišta odpovídala tmavému režimu (díky @MatthieuB!)
+* Vyčištěný zastaralý kód (díky @Isira-Seneviratne!)

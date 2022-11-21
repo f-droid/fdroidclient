@@ -1,0 +1,4 @@
+* zpracovat konfiguraci oprávnění Androidu 10 pro zastavení výzev Neznámé zdroje
+* klávesnice se otevře při vymazání vyhledávání
+* synchronizace překladu s řetězci systému Android
+* vynucení domén běžných repozitářů na HTTPS (GitLab, GitHub, Amazon)

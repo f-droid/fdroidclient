@@ -1,0 +1,19 @@
+Verze 1.3.1
+* Velká generální oprava jádra v okolí / Swap instalatérské práce
+
+* Podpora TLSv1.3, pokud ji zařízení podporuje
+
+Verze 1.3
+* Spolehlivější tlačítka a aktualizace stavu
+
+* Přepracování nastavení včetně nových ovládacích prvků využití dat
+
+* Baterie vědomé operace na pozadí v systému Android 5.0 a novější
+
+* Sdílet položku nabídky pro repo operace
+
+* Vypněte zprávy o selhání v Nastavení
+
+* Prohlížeč historie instalace, pokud je povoleno protokolování
+
+* A spousta dalších
