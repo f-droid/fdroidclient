@@ -54,7 +54,7 @@
     <string name="menu_ignore_this">Ignorar esta Atualização</string>
     <string name="menu_website">Página web</string>
     <string name="menu_issues">Problemas</string>
-    <string name="menu_source">Código Fonte</string>
+    <string name="menu_source">Código-fonte</string>
     <string name="menu_upgrade">Atualizar</string>
     <string name="details_notinstalled">Não instalado</string>
     <string name="antiadslist">Este aplicativo contém anúncios</string>
@@ -281,7 +281,7 @@
     <string name="versions">Versões</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café para os desenvolvedores do %1$s!</string>
     <string name="app_details_donate_prompt">%1$s é criado por %2$s. Pague um café para eles!</string>
-    <string name="repositories_summary">Acrescentar fontes adicionais de aplicativos</string>
+    <string name="repositories_summary">Adicionar fontes de aplicativos</string>
     <string name="notification_title_single_update_available">Atualização Disponível</string>
     <string name="notification_title_single_ready_to_install">Pronto para instalar</string>
     <string name="notification_title_single_ready_to_install_update">A atualização está pronta para ser instalada</string>
