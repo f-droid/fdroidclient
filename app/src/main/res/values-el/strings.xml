@@ -24,7 +24,7 @@
     <string name="no">Όχι</string>
     <string name="repo_add_title">Προσθήκη νέου αποθετηρίου</string>
     <string name="repo_add_add">Προσθήκη</string>
-    <string name="cancel">Άκυρο</string>
+    <string name="cancel">Ακυρο</string>
     <string name="enable">Ενεργοποίηση</string>
     <string name="add_key">Προσθήκη κλειδιού</string>
     <string name="overwrite">Αντικατάσταση</string>
