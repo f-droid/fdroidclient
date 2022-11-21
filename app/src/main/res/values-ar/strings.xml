@@ -105,7 +105,7 @@
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
     <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاصة بك</string>
     <string name="antinonfreeadlist">هذا التطبيق يحمل إضافات غير حرة</string>
-    <string name="antinonfreenetlist">هذا التطبيق يحمل خدمات شبكة غير حرة</string>
+    <string name="antinonfreenetlist">هذا التطبيق يروج أو يعتمد كليا على خدمة شبكة غير حرة</string>
     <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
     <string name="antiupstreamnonfreelist">شفرة المصدر المنشطة ليست حرة تماماً</string>
     <string name="antinonfreeassetslist">هذا التطبيق يحتوي على أصول غير الحرة</string>
