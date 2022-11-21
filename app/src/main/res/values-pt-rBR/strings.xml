@@ -34,7 +34,7 @@
     <string name="no">Não</string>
     <string name="repo_add_title">Adicionar novo repositório</string>
     <string name="repo_add_add">Adicionar</string>
-    <string name="cancel">Cancela</string>
+    <string name="cancel">Anular</string>
     <string name="enable">Ativar</string>
     <string name="add_key">Adicionar chave</string>
     <string name="overwrite">Sobrescrever</string>
@@ -358,7 +358,7 @@
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">mais +%1$d…</item>
+        <item quantity="one">maior +%1$d…</item>
         <item quantity="other">mais +%1$d…</item>
     </plurals>
     <plurals name="notification_summary_updates">
@@ -541,5 +541,5 @@
     <string name="antinosource">Código-fonte não está mais disponível</string>
     <string name="antinonfreeassets">Conteúdos não livres</string>
     <string name="antiothers">Outras características indesejadas</string>
-    <string name="antinsfw">Este aplicativo contém conteúdo impróprio para menores de idade</string>
+    <string name="antinsfw">Esta aplicativo contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
 </resources>
