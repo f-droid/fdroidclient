@@ -51,7 +51,7 @@
     <string name="antiadslist">此应用包含广告</string>
     <string name="antitracklist">此应用会记录并报告你的活动</string>
     <string name="antinonfreeadlist">此应用推广非自由的附加组件</string>
-    <string name="antinonfreenetlist">此应用推广非自由的网络服务</string>
+    <string name="antinonfreenetlist">此应用推广或完全依赖于非自由的网络服务</string>
     <string name="antinonfreedeplist">此应用依赖于其它非自由应用</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
