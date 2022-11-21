@@ -224,7 +224,7 @@
     <string name="malformed_repo_uri">Hunsa gallaða URI-slóð hugbúnaðarsafns: %s</string>
     <string name="antitracklist">Þetta forrit fylgist með og gefur skýrslu um hegðun þína</string>
     <string name="antinonfreeadlist">Þetta forrit ýtir undir notkun ófrjálsra viðbóta</string>
-    <string name="antinonfreenetlist">Þetta forrit ýtir undir notkun ófrjálsrar þjónustu</string>
+    <string name="antinonfreenetlist">Þetta forrit ýtir undir eða er háð notkun ófrjálsrar netþjónustu</string>
     <string name="antinonfreedeplist">Þetta forrit er háð öðrum ófrjálsum forritum</string>
     <string name="antiupstreamnonfreelist">Grunnkóði útgefanda er ekki fullkomlega frjáls</string>
     <string name="antinonfreeassetslist">Þetta forrit inniheldur ófrjáls tilföng</string>
