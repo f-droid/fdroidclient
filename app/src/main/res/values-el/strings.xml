@@ -50,7 +50,7 @@
     <string name="antiadslist">Αυτή η εφαρμογή περιέχει διαφημίσεις</string>
     <string name="antitracklist">Αυτή η εφαρμογή παρακολουθεί και αναφέρει την δραστηριότητα σας</string>
     <string name="antinonfreeadlist">Αυτή η εφαρμογή προωθεί μη-ελεύθερα πρόσθετα</string>
-    <string name="antinonfreenetlist">Αυτή η εφαρμογή προωθεί μη ελεύθερες υπηρεσίες δικτύου</string>
+    <string name="antinonfreenetlist">Αυτή η εφαρμογή προωθεί ή εξαρτάται εξ ολοκλήρου από μια μη δωρεάν υπηρεσία δικτύου</string>
     <string name="antinonfreedeplist">Αυτή η εφαρμογή εξαρτάται από άλλες μη-ελεύθερες εφαρμογές</string>
     <string name="antiupstreamnonfreelist">Ο αρχικός πηγαίος κώδικας δεν είναι εξ ολοκλήρου ελεύθερος</string>
     <string name="display">Εμφάνιση</string>
