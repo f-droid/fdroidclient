@@ -6,11 +6,11 @@
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Изпращане по NFC…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
-    <string name="updates">Нови</string>
+    <string name="updates">Обновяване</string>
     <string name="other">Друго</string>
     <string name="update_interval">Интервал за автоматично обновяване</string>
     <string name="notify">Показване на новите издания</string>
-    <string name="notify_on">Показва се известие при ново издание</string>
+    <string name="notify_on">Показва се известие ако е налично ново издание</string>
     <string name="system_installer">Инсталиране чрез системни разрешения</string>
     <string name="system_installer_on">Ползване на системни права за инсталиране, обновяване и премахване на приложения</string>
     <string name="local_repo_name">Име на местното хранилище</string>
@@ -25,7 +25,7 @@
     <string name="app_not_installed">Неинсталирана</string>
     <string name="app_inst_known_source">Инсталирано (от %s)</string>
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
-    <string name="added_on">Добавена на %s</string>
+    <string name="added_on">Добавено на %s</string>
     <string name="ok">OK</string>
     <string name="yes"> Да</string>
     <string name="no">Не</string>
@@ -54,16 +54,16 @@
     <string name="antiadslist">Приложението съдържа реклами</string>
     <string name="antitracklist">Приложението следи и докладва действията ви</string>
     <string name="antinonfreeadlist">Приложението насърчава използване на добавки със затворен код</string>
-    <string name="antinonfreenetlist">Приложението насърчава използване на несвободни мрежови услуги</string>
-    <string name="antinonfreedeplist">Приложението зависи от други несвободни приложения</string>
+    <string name="antinonfreenetlist">Приложението насърчава или изцяло зависи от несвободна мрежова услуга</string>
+    <string name="antinonfreedeplist">Приложението зависи от приложения със затворен код</string>
     <string name="antiupstreamnonfreelist">Изходният код не е напълно свободен</string>
     <string name="display">Изглед</string>
     <string name="expert">Експертен режим</string>
-    <string name="expert_on">Показва допълнителна информация и настройки</string>
+    <string name="expert_on">Показва се допълнителна информация и настройки</string>
     <string name="search_hint">Търсене на приложения</string>
     <string name="appcompatibility">Съвместимост на приложението</string>
-    <string name="show_incompat_versions">Включи несъвместими версии</string>
-    <string name="show_incompat_versions_on">Показва и версиите, които са несъвместими с устройството</string>
+    <string name="show_incompat_versions">Несъвместими издания</string>
+    <string name="show_incompat_versions_on">Показват се и несъвместимите с устройството издания</string>
     <string name="local_repo">Местно хранилище</string>
     <string name="deleting_repo">Изтриване на хранилището…</string>
     <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
@@ -91,7 +91,7 @@
     <string name="repo_description">Описание</string>
     <string name="repo_last_update">Последна актуализация</string>
     <string name="repo_name">Име</string>
-    <string name="repo_not_yet_updated">Хранилището не е било използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
+    <string name="repo_not_yet_updated">Хранилището все още не е използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
     <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
     <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.
 \n
@@ -111,8 +111,8 @@
     <string name="category_Science_Education">Наука и образование</string>
     <string name="category_Security">Сигурност</string>
     <string name="category_System">Системни</string>
-    <string name="swap_nfc_description">Акочовекът с вас има F-Droid и е включил NFC, докоснете телефоните си.</string>
-    <string name="swap_join_same_wifi">Свържете се към една и съща Wi-Fi мрежа с приятеля си</string>
+    <string name="swap_nfc_description">Ако човекът с вас разполага с F-Droid и е включил NFC, докоснете телефоните си.</string>
+    <string name="swap_join_same_wifi">Свържете се към една и съща безжична мрежа с приятеля си</string>
     <string name="swap">Разменяне</string>
     <string name="swap_view_available_networks">(Натиснете за преглед на наличните мрежи)</string>
     <string name="open_qr_code_scanner">Отваряне на четец на QR кодове</string>
@@ -152,7 +152,7 @@
     <string name="swap_choose_apps">Изберете приложения</string>
     <string name="swap_wifi_device_name">Име на устройството</string>
     <string name="swap_cant_find_peers">Не откривате когото търсите\?</string>
-    <string name="uninstall_confirm">Искате ли да деинсталирате това приложение?</string>
+    <string name="uninstall_confirm">Искате ли да премахнете приложението\?</string>
     <string name="unstable_updates">Нестабилни издания</string>
     <string name="unstable_updates_summary">Предлага се обновяване с нестабилни издания</string>
     <string name="category_Connectivity">Свързаност</string>
@@ -175,10 +175,10 @@
     <string name="swap_intro">Свързване и обмяна на приложения с хора около вас.</string>
     <string name="swap_no_peers_nearby">Наоколо не са открити хора с които да размените приложения.</string>
     <string name="swap_people_nearby">Хора наблизо</string>
-    <string name="swap_visible_wifi">Видими сте чрез Wi-Fi</string>
+    <string name="swap_visible_wifi">Видими сте през безжична мрежа</string>
     <string name="swap_not_visible_bluetooth">Не сте видими чрез Bluetooth</string>
     <string name="swap_visible_bluetooth">Видими сте чрез Bluetooth</string>
-    <string name="swap_not_visible_wifi">Не сте видими чрез Wi-Fi</string>
+    <string name="swap_not_visible_wifi">Не сте видими през безжична мрежа</string>
     <string name="swap_setting_up_wifi">Настройване на Wi-Fi…</string>
     <string name="swap_setting_up_bluetooth">Настройване на Bluetooth…</string>
     <string name="swap_nearby">Размяна с у-ва наблизо</string>
@@ -186,8 +186,8 @@
     <string name="touch_to_configure_local_repo">Натиснете за детайли или да позволите размяна на приложение.</string>
     <string name="swap_nfc_title">Докоснете за размяна</string>
     <string name="swap_success">Размяната е успешна!</string>
-    <string name="swap_switch_to_wifi">Натиснете за смяна на Wi-Fi мрежата</string>
-    <string name="swap_dont_show_again">Не показвай повече</string>
+    <string name="swap_switch_to_wifi">Натиснете за смяна на безжичната мрежа</string>
+    <string name="swap_dont_show_again">Без повторно показване</string>
     <string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
     <string name="app_incompatible">Несъвместимо</string>
     <string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
@@ -203,7 +203,7 @@
     <string name="permissions">Разрешения</string>
     <string name="repo_details">Хранилище</string>
     <string name="repo_url">Адрес</string>
-    <string name="swap_join_same_wifi_desc">За осъществяване на размяна чрез Wi-Fi е необходимо да сте в една мрежа. Ако нямате достъп до една и съща мрежа един от вас може да създаде безжична точка.</string>
+    <string name="swap_join_same_wifi_desc">За осъществяване на размяна чрез безжична мрежа е необходимо да сте в една мрежа. Ако нямате достъп до обща мрежа един от вас може да създаде безжична точка.</string>
     <string name="swap_confirm_connect">Желаете ли да получите приложения от %1$s?</string>
     <string name="swap_qr_isnt_for_swap">Сканираният QR код не е код за размяна.</string>
     <string name="status_processing_xml_percent">Обработени %2$s / %3$s (%4$d%%) от %1$s</string>
@@ -227,7 +227,7 @@
     <string name="overwrite">Презаписване</string>
     <string name="repo_provider">Хранилище: %s</string>
     <string name="menu_email">Изпращане на писмо до автора</string>
-    <string name="antinonfreeassetslist">Приложението съдържа несвободни компоненти</string>
+    <string name="antinonfreeassetslist">Приложението съдържа ресурси със затворен код</string>
     <string name="writing_index_jar">Записва се засекретеният индекс файл (index.jar)…</string>
     <string name="useTor">Използване на мрежата на Tor</string>
     <string name="useTorSummary">Използва се мрежата на Tor за повишаване на анонимността. Изисква Орбот</string>
@@ -257,12 +257,12 @@
     <string name="keep_install_history">Дневник за инсталиранията</string>
     <string name="keep_install_history_summary">Запазване на дневник за всичко инсталирано и премахвано</string>
     <string name="update_auto_download_summary">Новите издания се изтеглят автоматично и се показва известие</string>
-    <string name="update_auto_install_summary">Изтегля и обновява приложения на заден фон, показвайки известие</string>
+    <string name="update_auto_install_summary">Приложения се изтеглят и се обновяват на заден фон, показвайки известие</string>
     <string name="app_details_donate_prompt_unknown_author">Почерпете разработчиците на %1$s с кафе!</string>
     <string name="app_details_donate_prompt">Авторът на %1$s е %2$s. Почерпете ги кафе!</string>
-    <string name="app_version_x_available">Версия %1$s е достъпна</string>
-    <string name="app_version_x_installed">Версия %1$s</string>
-    <string name="app_recommended_version_installed">Версия %1$s (Препоръчителна)</string>
+    <string name="app_version_x_available">Издание %1$s е налично</string>
+    <string name="app_version_x_installed">Издание %1$s</string>
+    <string name="app_recommended_version_installed">Издание %1$s (Препоръчително)</string>
     <string name="app_new">Ново</string>
     <string name="app__install_downloaded_update">Обновяване</string>
     <string name="app_list__name__downloading_in_progress">Изтегля се %1$s</string>
@@ -279,7 +279,7 @@
     </plurals>
     <string name="versions">Издания</string>
     <string name="clear_search">Изчистване на търсенето</string>
-    <string name="repositories_summary">Добавяне на допълнителни източници на приложения</string>
+    <string name="repositories_summary">Добавят се допълнителни източници на приложения</string>
     <string name="main_menu__latest_apps">Последни</string>
     <string name="main_menu__categories">Категории</string>
     <string name="main_menu__swap_nearby">Наблизо</string>
@@ -287,7 +287,7 @@
     <string name="preference_manage_installed_apps">Управление на инсталирани приложения</string>
     <string name="preference_category__my_apps">Моите приложения</string>
     <string name="details_new_in_version">Новото в издание %s</string>
-    <string name="antifeatureswarning">Някои от свойствата на приложението може да не ви допаднат.</string>
+    <string name="antifeatureswarning">Някои от характеристиките на приложението може да не ви допаднат.</string>
     <string name="antifeatures">Анти-функции</string>
     <string name="by_author_format">от %s</string>
     <string name="force_old_index_summary">В случай на грешки или несъвместимост, се използва списък на приложенията в XML</string>
@@ -329,7 +329,7 @@
     <string name="notification_title_summary_installed">Успешно инсталирано</string>
     <string name="tts_category_name">Категория %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Показва %1$d приложение в категорията %2$s</item>
+        <item quantity="one">Показва %1$d приложение от категорията %2$s</item>
         <item quantity="other">Показва всички %1$d приложения от категорията %2$s</item>
     </plurals>
     <string name="details_last_updated_today">Обновено днес</string>
@@ -375,7 +375,7 @@
     <string name="app_details__incompatible_mismatched_signature">Различен подпис от инсталираното издание</string>
     <string name="app_details__no_versions__no_compatible_signatures">Няма издания със съвместим подпис</string>
     <string name="app_details__no_versions__none_compatible_with_device">Няма съвместими с устройството издания</string>
-    <string name="app_details__no_versions__show_incompat_versions">Включете настройката „%1$s“ за показване на несъвместимите издания.</string>
+    <string name="app_details__no_versions__show_incompat_versions">За да се показват и несъвместимите издания включете настройката „%1$s“.</string>
     <string name="app_list_download_ready">Изтeглено и готово за инсталиране</string>
     <string name="app_list__dismiss_downloading_app">Спряно изтегляне</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Открита е уязвимост в %1$s. Препоръчваме незабавно обновяване до последно издание.</string>
@@ -408,12 +408,12 @@
     <string name="install_history">Дневник на инсталирания</string>
     <string name="install_history_summary">Частен дневник на всяко инсталиране и премахване</string>
     <string name="send_version_and_uuid">Изпращане на издание и UUID към сървърите</string>
-    <string name="over_wifi">През Wi-Fi</string>
+    <string name="over_wifi">През безжична мрежа</string>
     <string name="over_data">През мобилни данни</string>
-    <string name="over_network_always_summary">Винаги се използва тази връзка, когато е налична</string>
-    <string name="over_network_on_demand_summary">Тази връзка се използва само при ръчно изтегляне</string>
-    <string name="over_network_never_summary">Тази връзка никога не се използва за изтегляне</string>
-    <string name="app_suggested">Предложено</string>
+    <string name="over_network_always_summary">Винаги да се изтегля през тази връзка, когато е налична</string>
+    <string name="over_network_on_demand_summary">През тази връзка да се изтегля само ръчно</string>
+    <string name="over_network_never_summary">Никога да не се изтегля през тази връзка</string>
+    <string name="app_suggested">Препоръчително</string>
     <string name="app_size">Размер: %1$s</string>
     <string name="send_installed_apps">Сподели инсталираните приложения</string>
     <string name="send_installed_apps_csv">Приложенията инсталирани от F-Droid като CSV файл</string>
@@ -421,8 +421,8 @@
     <string name="repo_add_mirror">Добави огледално хранилище</string>
     <string name="sort_search">Сортирай търсенето</string>
     <string name="menu_open">Отвори</string>
-    <string name="antiknownvulnlist">Приложението има известна уязвимост в сигурността</string>
-    <string name="show_anti_feature_apps">Включи приложенията с anti-feature</string>
+    <string name="antiknownvulnlist">Приложението има позната уязвимост в сигурността</string>
+    <string name="show_anti_feature_apps">Приложения с анти-функции</string>
     <string name="show_anti_feature_apps_on">Покажи приложения които имат anti-features</string>
     <string name="hiding_calculator">Калкулатор</string>
     <string name="hiding_dialog_title">Скрий %s Сега</string>
@@ -430,11 +430,11 @@
     <string name="app_details__no_versions__explain_incompatible_signatures">Инсталираната версия не е съвместима, с които и да е други версии на разположение. Деинсталиране на апликацията ще Ви позволи да видите и инсталирате съвместими версии. Това често се случва с апликации инсталирани чрез Google Play или от други източници, ако те са подписани с различен сертификат.</string>
     <string name="app_list__dismiss_app_update">Обновлението е пренебрегнато</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимостта е пренебрегната</string>
-    <string name="panic_exit_title">Излез от апликацията</string>
+    <string name="panic_exit_title">Излизане от приложението</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Камерата няма автоматичен фокус. Сканирането на кода може да бъде затруднено.</string>
     <string name="share_repository">Сподели хранилище</string>
-    <string name="updates_disabled_by_settings">Всички обновления са изключени от настройките за Wi-Fi и мобилни данни</string>
+    <string name="updates_disabled_by_settings">Всички обновявания са изключени от настройките за безжична мрежа и мобилни данни</string>
     <string name="nearby_splash__request_permission">Пробване</string>
     <string name="swap_toast_using_path">Използва се %1$s</string>
     <string name="main_menu__updates">Нови</string>
@@ -446,7 +446,7 @@
     <string name="swap_hidden_wifi_ssid">(скрито)</string>
     <string name="disabled">Изключено</string>
     <string name="swap_toast_could_not_enable_hotspot">Безжичната точка за достъп не може да бъде включена!</string>
-    <string name="swap_toast_hotspot_enabled">Включена точка за достъп през Wi-Fi</string>
+    <string name="swap_toast_hotspot_enabled">Включена точка за достъп през безжична мрежа</string>
     <string name="swap_toast_invalid_url">Невалиден URL адрес за размяна: %1$s</string>
     <string name="swap_toast_find_removeable_storage">Изберете вашата сменяема SD карта или USB</string>
     <string name="swap_toast_not_removable_storage">Този избор не съвпада с никакви преносими устройства за съхранение, опитайте отново!</string>
@@ -459,7 +459,7 @@
     <string name="swap_visible_hotspot">Видим чрез точка за достъп</string>
     <string name="hide_on_long_search_press_title">Скриване с бутон за търсене</string>
     <string name="panic_hide_warning_title">Запомнете как да възстановите</string>
-    <string name="force_touch_apps">Включи приложенията за тъчскрийн</string>
+    <string name="force_touch_apps">Приложения за сензорен екран</string>
     <string name="nearby_splash__document_tree">Търсене в USB памет за хранилища и огледала.</string>
     <string name="nearby_splash__read_external_storage">Търсене в SD картата за хранилища и огледала.</string>
     <string name="repo_user_mirrors">Потребителски огледала</string>
@@ -469,7 +469,7 @@
     <string name="panic_reset_repos_summary">Връщане на настройките на хранилището по подразбиране</string>
     <string name="panic_reset_repos_title">Нулиране на хранилища</string>
     <string name="panic_add_apps_to_uninstall">Добавете приложения за деинсталиране и изтриване</string>
-    <string name="panic_apps_to_uninstall">Приложения за деинсталиране и всичките им данни изтрити</string>
+    <string name="panic_apps_to_uninstall">Приложения, които да бъдат премахнати с прилежащите им данни</string>
     <string name="panic_will_be_wiped">Ще бъде деинсталирано и всички данни ще бъдат изтрити</string>
     <string name="panic_app_setting_none">Няма</string>
     <string name="force_touch_apps_on">Покажи приложения изискаващи тъчскрийн независимо от хардуерната поддръжка</string>
