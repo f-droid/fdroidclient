@@ -57,7 +57,7 @@
     <string name="antiadslist">Это приложение содержит рекламу</string>
     <string name="antitracklist">Это приложение отслеживает и сообщает о вашей деятельности</string>
     <string name="antinonfreeadlist">Это приложение популяризует дополнения с закрытым исходным кодом</string>
-    <string name="antinonfreenetlist">Это приложение популяризует несвободные сетевые сервисы</string>
+    <string name="antinonfreenetlist">Это приложение популяризирует несвободные сетевые сервисы или полностью от них зависит</string>
     <string name="antinonfreedeplist">Это приложение зависит от других несвободных приложений</string>
     <string name="antiupstreamnonfreelist">Оригинальный исходный код не является полностью свободным</string>
     <string name="display">Вид</string>
@@ -269,7 +269,7 @@
     <string name="keep_install_history_summary">Сохранять журнал всех установок и удалений в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
     <string name="versions">Версии</string>
-    <string name="app_details_donate_prompt_unknown_author">Купите разработчику %1$s чашечку кофе!</string>
+    <string name="app_details_donate_prompt_unknown_author">Угостите разработчика %1$s чашечкой кофе:)</string>
     <string name="update_all">Обновить все</string>
     <string name="updates__hide_updateable_apps">Скрыть приложения</string>
     <string name="updates__show_updateable_apps">Показать приложения</string>
@@ -319,7 +319,7 @@
         <item quantity="many">Обновлено %1$d дней назад</item>
         <item quantity="other">Обновлено %1$d дней назад</item>
     </plurals>
-    <string name="app_details_donate_prompt">Угостите %2$s кофе за создание %1$s!</string>
+    <string name="app_details_donate_prompt">Угостите %2$s чашечкой кофе за создание %1$s:)</string>
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендована)</string>
     <string name="app__install_downloaded_update">Обновить</string>
     <plurals name="updates__download_updates_for_apps">
@@ -328,7 +328,7 @@
         <item quantity="many">Скачать обновления для %1$d приложений.</item>
         <item quantity="other">Скачать обновления для %1$d приложений.</item>
     </plurals>
-    <string name="app_list__name__downloading_in_progress">Загружается %1$s</string>
+    <string name="app_list__name__downloading_in_progress">%1$s загружается</string>
     <string name="updates__tts__download_app">Скачать</string>
     <string name="installed_app__updates_ignored">Обновления игнорируются</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
@@ -542,7 +542,7 @@
     <string name="antinonfreeassets">Несвободные активы</string>
     <string name="antidisabledalgorithm">Подписано с использованием небезопасного алгоритма</string>
     <string name="antiads">Реклама</string>
-    <string name="app_list_results_hidden_antifeature_settings">Некоторые результаты были скрыты в соответствии с вашими настройками анти-функций.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Некоторые результаты были скрыты исходя из ваших настроек анти-функций.</string>
     <string name="antitrack">Отслеживание</string>
     <string name="antinosource">Исходный код больше не доступен</string>
     <string name="antiknownvuln">Известная уязвимость</string>
