@@ -39,13 +39,13 @@
     <string name="antiadslist">Esta aplicación contén publicidade</string>
     <string name="antitracklist">Esta aplicación rexistra e informa da túa actividade</string>
     <string name="antinonfreeadlist">Esta aplicación promociona engadidos que non son libres ou de balde</string>
-    <string name="antinonfreenetlist">Esta aplicación promove servizos de rede que non son libres</string>
+    <string name="antinonfreenetlist">Esta aplicación promove ou depende completamente dun servizo de rede non libre</string>
     <string name="antinonfreedeplist">Esta aplicación depende doutras aplicacións non libres</string>
     <string name="display">Amosar</string>
     <string name="expert">Modo experto</string>
     <string name="search_hint">Procurar aplicacións</string>
     <string name="appcompatibility">Compatibilidade das aplicacións</string>
-    <string name="show_incompat_versions">Inclúe versións incompatíbeis</string>
+    <string name="show_incompat_versions">Incluír versións incompatibles</string>
     <string name="status_download">Estase a baixar
 \n%2$s / %3$s (%4$d%%) dende
 \n%1$s</string>
@@ -254,7 +254,7 @@
     <string name="update_auto_install">Instalar as actualizacións de xeito automático</string>
     <string name="update_auto_install_summary">Baixar e actualizar aplicacións en segundo plano, amosando unha notificación</string>
     <string name="system_installer">Extensión privilexiada</string>
-    <string name="local_repo_name_summary">O título anunciado do teu repositorio local: %s</string>
+    <string name="local_repo_name_summary">O título anunciado do seu repositorio local: %s</string>
     <string name="login_title">Requírese autenticación</string>
     <string name="login_name">Nome de usuario</string>
     <string name="login_password">Contrasinal</string>
@@ -332,7 +332,7 @@
     <string name="crash_dialog_comment_prompt">Pode engadir información adicional e comentarios aquí:</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d máis…</item>
-        <item quantity="other">+%1$d máis…</item>
+        <item quantity="other">+%1$d moito máis…</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Disposto para actualizar</string>
     <string name="notification_title_single_ready_to_install_update">Actualización disposta para instalar</string>
@@ -515,16 +515,16 @@
     <string name="antidisabledalgorithm">Asinado usando un algoritmo inseguro</string>
     <string name="antitrack">Seguimento</string>
     <string name="antinonfreead">Complementos non libres</string>
-    <string name="antinosource">Código fonte xa non dispoñíbel</string>
+    <string name="antinosource">O código fonte xa non está dispoñible</string>
     <string name="antinsfw">Esta aplicación contén contido que non debe ser divulgado ou visíbel en todos os lugares</string>
     <string name="theme_follow_system">Usar a do sistema</string>
     <string name="toast_metrics_in_install_history">O reporte de métricas %s pode ser visto no visor do historial de instalación</string>
     <string name="antiothers">Outras funcións indesexadas</string>
-    <string name="swap_wifi_vpn_conflict">Conflitos con VPN activa!</string>
+    <string name="swap_wifi_vpn_conflict">Conflitos coa VPN activa!</string>
     <string name="antinonfreenet">Servizos de rede non libres</string>
     <string name="antinonfreeassets">Activos non libres</string>
     <string name="antinonfreedep">Dependencias non libres</string>
-    <string name="share_apk_error">Non é posíbel compartillar o ficheiro da aplicación</string>
+    <string name="share_apk_error">Non se puido compartilo ficheiro da aplicación</string>
     <string name="app_list_results_hidden_antifeature_settings">Algúns resultados foron ocultados seguindo a súa configuración de funcións indesexadas.</string>
     <string name="antiupstreamnonfree">Código fonte non libre</string>
 </resources>

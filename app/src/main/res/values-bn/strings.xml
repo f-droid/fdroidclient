@@ -410,7 +410,7 @@
     <string name="status_inserting_x_apps">%3$s থেকে অ্যাপের তথ্য সংরক্ষণ করা হচ্ছে (%1$d/%2$d)</string>
     <string name="download_404">অনুরোধকৃত নথি পাওয়া যায়নি।</string>
     <string name="copying_icons">ভাণ্ডারে অ্যাপ আইকন অনুলিপিত হচ্ছে…</string>
-    <string name="antinonfreenetlist">এই অ্যাপ অ-মুক্ত নেটওয়ার্ক সেবা নিতে উৎসাহিত করে</string>
+    <string name="antinonfreenetlist">এই অ্যাপ অ-মুক্ত নেটওয়ার্ক সেবা নিতে উৎসাহিত করে বা নির্ভর করে</string>
     <string name="invalid_url">এটা একটি সঠিক সংযোগ নয়।</string>
     <string name="repo_exists_and_enabled">%1$s আগে থেকেই শুরু ও সক্রিয়।</string>
     <string name="updates_disabled_by_settings">তথ্য/ওয়াইফাই পছন্দ দিয়ে হালনাগাদ নিষ্ক্রিয়</string>
@@ -525,4 +525,6 @@
     <string name="antidisabledalgorithm">অনিরাপদভাবে স্বাক্ষরিত</string>
     <string name="antitrack">নজরদারী</string>
     <string name="antinonfreenet">অ-মুক্ত নেটওয়ার্ক সেবা</string>
+    <string name="antiothers">অন্যান্য অপবৈশিষ্ট্য</string>
+    <string name="antinsfw">এই অ্যাপে এমন বস্তু আছে যা সর্বত্র প্রচারিত বা দৃশ্যমান হওয়া উচিত নয়</string>
 </resources>

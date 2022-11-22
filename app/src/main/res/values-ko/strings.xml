@@ -57,7 +57,7 @@
     <string name="antiadslist">이 앱에는 광고를 포함합니다</string>
     <string name="antitracklist">이 앱은 당신의 활동을 추적하여 보고합니다</string>
     <string name="antinonfreeadlist">이 앱은 자유롭지 않은 부가 기능을 권장하고 있습니다</string>
-    <string name="antinonfreenetlist">이 앱은 자유롭지 않은 네트워크 서비스를 권장하고 있습니다</string>
+    <string name="antinonfreenetlist">이 앱은 무료가 아닌 네트워크 서비스를 홍보하거나 전적으로 의존합니다</string>
     <string name="antinonfreedeplist">이 앱은 다른 자유롭지 않은 앱에 의존합니다</string>
     <string name="antiupstreamnonfreelist">업스트림 소스 코드가 완전히 자유롭지 않습니다</string>
     <string name="display">표시</string>
@@ -503,4 +503,17 @@
     <string name="has_disallow_install_unknown_sources">알 수 없는 출처는 새 저장소를 포함하여, 이 사용자에 의해 추가될 수 없습니다</string>
     <string name="has_disallow_install_unknown_sources_globally">기기 관리자에 새 저장소를 포함하여, 알 수 없는 출처로부터의 앱 설치를 허용하지 않습니다</string>
     <string name="swap_wifi_vpn_conflict">활성 VPN과 충돌합니다!</string>
+    <string name="antitrack">추적</string>
+    <string name="antinonfreead">무료가 아닌 애드온</string>
+    <string name="antinonfreenet">무료가 아닌 네트워크 서비스</string>
+    <string name="antinonfreedep">무료가 아닌 종속성</string>
+    <string name="antiupstreamnonfree">무료가 아닌 업스트림</string>
+    <string name="antidisabledalgorithm">안전하지 않은 알고리즘을 사용하여 서명됨</string>
+    <string name="antiknownvuln">알려진 취약점</string>
+    <string name="antiothers">다른 안티 기능</string>
+    <string name="antiads">광고</string>
+    <string name="antinosource">더 이상 사용할 수 없는 소스 코드</string>
+    <string name="app_list_results_hidden_antifeature_settings">일부 결과는 기능 제한 설정에 따라 숨겨졌습니다.</string>
+    <string name="antinsfw">이 앱에는 모든 곳에서 공개되거나 표시되어서는 안 되는 콘텐츠가 포함되어 있습니다</string>
+    <string name="antinonfreeassets">비자유 자산</string>
 </resources>

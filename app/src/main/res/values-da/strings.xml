@@ -79,7 +79,7 @@
     <string name="antiadslist">Appen indeholder reklamer</string>
     <string name="antitracklist">Denne app sporer og indberetter din aktivitet</string>
     <string name="antinonfreeadlist">Appen fremmer ikke-frie tilføjelser</string>
-    <string name="antinonfreenetlist">Appen fremmer ikke-frie netværkstjenester</string>
+    <string name="antinonfreenetlist">Appen promoverer eller afhænger af en ikke-fri netværkstjeneste</string>
     <string name="antinonfreedeplist">Denne app er afhængig af andre ikke-frie apps</string>
     <string name="antiupstreamnonfreelist">Opstrømskildekoden er ikke fuldstændig fri</string>
     <string name="display">Vis</string>

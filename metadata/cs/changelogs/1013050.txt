@@ -1,0 +1,17 @@
+* Podpora motivů vázaná na vestavěné motivy Androidu (@proletarius101)
+
+* Nová oznámení v horním banneru: "Není internet" a "Nejsou povolena data ani WiFi"
+
+* Vylepšená práce s repozitáři a zrcadly USB-OTG a SD karet
+
+* Zastavení opakovaných aktualizací knihovny Trichrome
+
+* Další změny v souladu s Material Designem (@proletarius101)
+
+* Vylepšení odznaku OpenCollective (@ConnyDuck)
+
+* Přepracování načítání ikon pomocí Glide (@proletarius101)
+
+* Nová adaptivní ikona (@12people)
+
+* Modernizace kódu (@Isira-Seneviratne)

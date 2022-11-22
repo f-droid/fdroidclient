@@ -1,0 +1,15 @@
+* Automatické vymazání mezipaměti při nedostatku místa v úložišti
+
+* Vylepšený výkon na zařízeních s malou pamětí
+
+* Všechna stahování respektují nastavení "Pouze na Wi-Fi"
+
+* Snížení využití paměti, když zařízení dochází baterie
+
+* Vlastní zrcadla u libovolných repozitářů kliknutím na odkaz, skenováním QR kódu atd.
+
+* Spousta oprav a vylepšení Swap/Nearby
+
+* Oprava jedné z příčin opakujících se oznámení o aktualizacích (#1271)
+
+* Zajistit, aby F-Droid rozpoznával nightly URL F-Droidu z GitLabu

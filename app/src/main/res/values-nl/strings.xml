@@ -31,7 +31,7 @@
     <string name="no">Nee</string>
     <string name="repo_add_title">Voeg een nieuwe applicatiebron toe</string>
     <string name="repo_add_add">Toevoegen</string>
-    <string name="cancel">Annuleren</string>
+    <string name="cancel">Annuleer</string>
     <string name="enable">Inschakelen</string>
     <string name="add_key">Voeg een sleutel toe</string>
     <string name="overwrite">Schrijf over</string>
@@ -57,7 +57,7 @@
     <string name="antiadslist">Deze app bevat advertenties</string>
     <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert ze</string>
     <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
-    <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerkdiensten</string>
+    <string name="antinonfreenetlist">Deze app promoot of is afhankelijk van niet-vrije netwerkdiensten</string>
     <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
     <string name="antiupstreamnonfreelist">De broncode stroomopwaarts is niet helemaal vrij (open-bron)</string>
     <string name="display">Weergave</string>
@@ -517,10 +517,19 @@
     <string name="banner_no_internet">Geen internet</string>
     <string name="share_apk_error">App bestand kon niet worden gedeeld</string>
     <string name="swap_wifi_vpn_conflict">In strijd met actieve VPN!</string>
-    <string name="has_disallow_install_unknown_sources">Onbekende bronnen kunnen niet worden toegevoegd door deze gebruiker, waaronder nieuwe pakketbronnen.</string>
-    <string name="has_disallow_install_unknown_sources_globally">Uw apparaatbeheerder staat het installeren van apps uit onbekende bronnen niet toe, waaronder nieuwe pakketbronnen.</string>
+    <string name="has_disallow_install_unknown_sources">Onbekende bronnen kunnen niet worden toegevoegd door deze gebruiker, waaronder nieuwe pakketbronnen</string>
+    <string name="has_disallow_install_unknown_sources_globally">Uw apparaatbeheerder staat het installeren van apps uit onbekende bronnen niet toe, waaronder nieuwe pakketbronnen</string>
     <string name="antidisabledalgorithm">Ondertekend met een onveilige sleutel</string>
     <string name="antiads">Advertenties</string>
     <string name="antinosource">Bron code niet langer beschikbaar</string>
     <string name="antiknownvuln">Bekende Kwetsbaarheid</string>
+    <string name="antinonfreenet">Niet-vrije netwerkdiensten</string>
+    <string name="antinonfreeassets">Niet-vrije assets</string>
+    <string name="antiothers">Andere anti-features</string>
+    <string name="antitrack">Tracking</string>
+    <string name="antinsfw">Deze app bevat content die ergens anders niet gepubliceerd of getoond mag worden</string>
+    <string name="antinonfreead">Niet-vrije add-ons</string>
+    <string name="app_list_results_hidden_antifeature_settings">Sommige resultaten zijn verborgen gebaseerd op je antifeature-instellingen.</string>
+    <string name="antiupstreamnonfree">Upstream niet-vrij</string>
+    <string name="antinonfreedep">Niet-vrije afhankelijkheden</string>
 </resources>

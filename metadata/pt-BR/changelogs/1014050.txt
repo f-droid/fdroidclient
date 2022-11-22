@@ -1,0 +1,17 @@
+* Revisão do menu Compartilhar
+
+* Fluxo de trabalho e navegação aprimorados com muitas correções
+
+* Melhorias no Material Design
+
+* Apps sem ícone .PNG agora são exibidos na guia mais recente
+
+* Gestão de ícones melhorada com dados/WiFi limitados
+
+* Suporte a mais leitores de código de barras
+
+* Permitir escolher que características indesejadas mostrar
+
+* Bloqueado adição de repositórios quando a instalação de "Fontes desconhecidas" está desativada
+
+*Remover a função "Permitir solicitações push"

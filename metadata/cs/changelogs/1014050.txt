@@ -1,0 +1,17 @@
+* Přepracujte nabídku sdílení tak, aby používala vestavěné možnosti, jako je Nearby.
+
+* Vylepšený pracovní postup a navigace v blízkosti s mnoha opravami chyb
+
+* Vylepšení Material designu (@proletarius101)
+
+* Aplikace bez ikon aplikací PNG se nyní zobrazují na kartě Nejnovější (@ashutoshgngwr)
+
+* Lepší správa ikon s omezeným nastavením Data/WiFi
+
+* Podpora více čteček čárových kódů (@Lugerun)
+
+* Umožňuje vybrat, které funkce AntiFeatures se mají zobrazit
+
+* Zablokovat přidávání repozitářů, pokud správce zařízení zakáže "Neznámé zdroje"
+
+* Odstranění nastavení "Povolit požadavky Push"

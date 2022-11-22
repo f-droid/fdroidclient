@@ -1,0 +1,17 @@
+* Spolehlivější tlačítka a aktualizace stavu
+
+* Přepracování nastavení včetně nových ovládacích prvků pro používání dat
+
+* Provoz na pozadí s ohledem na baterii v systému Android 5.0 a novějším
+
+* Položka nabídky sdílení pro úložiště
+
+* Vypnutí hlášení o pádu v Nastavení
+
+* Instalace prohlížeče historie při zapnutém protokolování
+
+* Klikací seznam Anti-Features, přidán NoSourceSince
+
+* Systém Android 4.0 je nyní minimálně podporován
+
+* A spousta dalších

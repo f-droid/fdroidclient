@@ -4,4 +4,4 @@
 
 * Nouvelles préférences de confidentialité : Prévention des captures d'écrans ; sortie en cas de panique
 
-* Nouvelles langues : Coréen (ko) and Vietnamien (vi)
+* Nouvelles langues : Coréen (ko) et Vietnamien (vi)

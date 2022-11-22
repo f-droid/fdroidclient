@@ -52,14 +52,14 @@
     <string name="menu_ignore_all">Ignorar todas las actualizaciones</string>
     <string name="menu_ignore_this">Ignorar esta actualización</string>
     <string name="menu_website">Página web</string>
-    <string name="menu_issues">Incidencias</string>
+    <string name="menu_issues">Problemas</string>
     <string name="menu_source">Código fuente</string>
     <string name="menu_upgrade">Actualizar</string>
     <string name="details_notinstalled">No instalado</string>
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de su actividad</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
-    <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
+    <string name="antinonfreenetlist">Esta aplicación promueve o depende completamente de un servicio de red no libre</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
     <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
     <string name="display">Presentación</string>

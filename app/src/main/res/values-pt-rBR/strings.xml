@@ -34,7 +34,7 @@
     <string name="no">Não</string>
     <string name="repo_add_title">Adicionar novo repositório</string>
     <string name="repo_add_add">Adicionar</string>
-    <string name="cancel">Cancela</string>
+    <string name="cancel">Cancelar</string>
     <string name="enable">Ativar</string>
     <string name="add_key">Adicionar chave</string>
     <string name="overwrite">Sobrescrever</string>
@@ -54,13 +54,13 @@
     <string name="menu_ignore_this">Ignorar esta Atualização</string>
     <string name="menu_website">Página web</string>
     <string name="menu_issues">Problemas</string>
-    <string name="menu_source">Código Fonte</string>
+    <string name="menu_source">Código-fonte</string>
     <string name="menu_upgrade">Atualizar</string>
     <string name="details_notinstalled">Não instalado</string>
     <string name="antiadslist">Este aplicativo contém anúncios</string>
     <string name="antitracklist">Este aplicativo rastreia e relata sua atividade</string>
     <string name="antinonfreeadlist">Este aplicativo promove complementos não livres</string>
-    <string name="antinonfreenetlist">Este aplicativo promove serviços de rede não livres</string>
+    <string name="antinonfreenetlist">Este aplicativo promove ou depende inteiramente em um serviço de rede não gratuito</string>
     <string name="antinonfreedeplist">Este aplicativo depende de aplicativos não livres</string>
     <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre</string>
     <string name="display">Aparência do F-Droid</string>
@@ -281,7 +281,7 @@
     <string name="versions">Versões</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café para os desenvolvedores do %1$s!</string>
     <string name="app_details_donate_prompt">%1$s é criado por %2$s. Pague um café para eles!</string>
-    <string name="repositories_summary">Acrescentar fontes adicionais de aplicativos</string>
+    <string name="repositories_summary">Adicionar fontes de aplicativos</string>
     <string name="notification_title_single_update_available">Atualização Disponível</string>
     <string name="notification_title_single_ready_to_install">Pronto para instalar</string>
     <string name="notification_title_single_ready_to_install_update">A atualização está pronta para ser instalada</string>
@@ -358,7 +358,7 @@
     <string name="app__tts__downloading_progress">Baixando, %1$d%% completo</string>
     <string name="menu_license">Licença: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">mais +%1$d…</item>
+        <item quantity="one">maior +%1$d…</item>
         <item quantity="other">mais +%1$d…</item>
     </plurals>
     <plurals name="notification_summary_updates">
@@ -425,11 +425,11 @@
     <string name="hiding_dialog_warning">Atenção: Todos os atalhos de aplicativos na tela inicial também serão removidos e precisarão ser re-adicionados manualmente.</string>
     <string name="hide_on_long_search_press_title">Esconder o botão de busca</string>
     <string name="hide_on_long_search_press_summary">Pressionar o botão de busca por um longo tempo vai esconder o app</string>
-    <string name="sort_search">Classificação da pesquisa</string>
+    <string name="sort_search">Classificar pesquisa</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Poderá ser difícil escanear o código.</string>
     <string name="repo_add_mirror">Adicionar espelho</string>
-    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar ele como um mirror?</string>
+    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar como um mirror\?</string>
     <string name="show_anti_feature_apps">Incluir aplicativos com características indesejadas</string>
     <string name="force_touch_apps">Incluir aplicativos de tela sensível ao toque</string>
     <string name="force_touch_apps_on">Mostrar aplicativos que exigem tela sensível ao toque, independentemente se há suporte ao hardware</string>
@@ -445,7 +445,7 @@
     <string name="over_network_on_demand_summary">Apenas usar essa conexão quando eu clicar para baixar</string>
     <string name="over_network_never_summary">Nunca baixe nada usando essa conexão</string>
     <string name="repo_exists_add_fingerprint">%1$s já está configurado, isto irá adicionar nova informação de chave.</string>
-    <string name="repo_exists_enable">%1$s já esta ativado, confirme que você quer reativar ele.</string>
+    <string name="repo_exists_enable">%1$s já esta ativado, confirme que você quer reativá-lo.</string>
     <string name="repo_exists_and_enabled">%1$s já está configurado e ativado.</string>
     <string name="repo_delete_to_overwrite">Primeiro apague %1$s para poder adicionar isso com uma chave conflitante.</string>
     <string name="antidisabledalgorithmlist">Este aplicativo tem uma assinatura de segurança fraca</string>
@@ -541,5 +541,5 @@
     <string name="antinosource">Código-fonte não está mais disponível</string>
     <string name="antinonfreeassets">Conteúdos não livres</string>
     <string name="antiothers">Outras características indesejadas</string>
-    <string name="antinsfw">Este aplicativo contém conteúdo impróprio para menores de idade</string>
+    <string name="antinsfw">Esta aplicativo contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
 </resources>

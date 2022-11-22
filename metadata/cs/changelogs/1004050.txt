@@ -1,0 +1,11 @@
+* Obrovské přepracování seznamu "Verze" v "Podrobnosti o aplikaci" a mnoho dalších vylepšení uživatelského rozhraní díky novému přispěvateli @wsdfhjxc.
+
+* Oprava navigace pomocí klávesnice/D-padu na mnoha místech, díky novému přispěvateli @doeffinger
+
+* Zobrazení tlačítka "Otevřít", pokud jsou média nainstalována a lze je zobrazit
+
+* Přidání tlačítka Sdílet do "Nainstalované aplikace" pro export seznamu CSV
+
+* Přidání klikacího seznamu APK na indexovou stránku swapu HTML
+
+* A spousta dalších

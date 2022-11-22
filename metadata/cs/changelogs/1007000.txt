@@ -1,0 +1,11 @@
+* Zásadní revize uživatelského rozhraní swapu, příprava na přepsání
+
+* Zobrazení "Undo" po přejetí pryč z karty "Updates" (díky @Hocuri!)
+
+* Oprava zpracování ETag při připojování k zrcadlům NGINX #1737
+
+* Oprava problémů se zobrazením "Nejnovější" způsobených špatnou manipulací s časovými pásmy #1757
+
+* Ignorování všech nedůležitých pádů služeb na pozadí
+
+* Nepoužívat Důvěryhodné rozšíření, pokud je vypnuto v "Nastavení"

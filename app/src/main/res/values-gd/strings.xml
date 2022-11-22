@@ -109,7 +109,7 @@
     <string name="antinonfreeassetslist">Tha maoin nach eil saor am broinn na h-aplacaid seo</string>
     <string name="antiupstreamnonfreelist">Chan eil bun-tùs an upstream saor gu tur</string>
     <string name="antinonfreedeplist">Tha an aplacaid seo an eisimeil air aplacaidean eile nach eil saor</string>
-    <string name="antinonfreenetlist">Brosnaichidh an aplacaid seo seirbheisean lìonraidh nach eil saor</string>
+    <string name="antinonfreenetlist">Tha an aplacaid seo a’ brosnachadh no an eisimeil gu lèir air seirbheis lìonraidh nach eil saor</string>
     <string name="antinonfreeadlist">Brosnaichidh an aplacaid seo tuilleadain nach eil saor</string>
     <string name="antitracklist">Nì an aplacaid seo tracadh ort is nì i aithris air do ghnìomhachd</string>
     <string name="antiadslist">Tha sanasachd am broinn na h-aplacaid seo</string>

@@ -57,7 +57,7 @@
     <string name="antiadslist">Denna app innehåller reklam</string>
     <string name="antitracklist">Denna app spårar och rapporterar om din aktivitet</string>
     <string name="antinonfreeadlist">Denna app uppmuntrar icke-fria tillägg</string>
-    <string name="antinonfreenetlist">Denna app uppmuntrar icke-fria nätverkstjänster</string>
+    <string name="antinonfreenetlist">Den här appen främjar eller är helt beroende av en icke-fri nätverkstjänst</string>
     <string name="antinonfreedeplist">Denna app är beroende av andra icke-fria appar</string>
     <string name="antiupstreamnonfreelist">Källkoden från uppström är inte fullständigt fri</string>
     <string name="display">Visning</string>
@@ -154,7 +154,7 @@
     <string name="status_download_unknown_size">Hämtar
 \n%2$s från
 \n%1$s</string>
-    <string name="banner_updating_repositories">Uppdaterar förråd</string>
+    <string name="banner_updating_repositories">Uppdaterar filförråden</string>
     <string name="permissions">Behörigheter</string>
     <string name="repo_details">Förråd</string>
     <string name="repo_url">Adress</string>
@@ -439,7 +439,7 @@
     <string name="warning_scaning_qr_code">Din kamera verkar inte ha autofokus. Det kan bli svårt att skanna koden.</string>
     <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
     <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
-    <string name="hide_all_notifications">Dölj alla aviseringar</string>
+    <string name="hide_all_notifications">Göm alla aviseringar</string>
     <string name="hide_all_notifications_summary">Förhindra att alla åtgärder visas i statusfältet och aviseringsfönstret.</string>
     <string name="install_history">Installationshistorik</string>
     <string name="install_history_summary">Visa privat logg av samtliga installationer och avinstallationer</string>

@@ -46,7 +46,7 @@
     <string name="repos_unchanged">Visos repozitorijos yra atnaujintos</string>
     <string name="global_error_updating_repos">Klaida atnaujinant: %s</string>
     <string name="theme">Apipavidalinimas</string>
-    <string name="repo_num_apps">Programėlių kiekis</string>
+    <string name="repo_num_apps">Programėlių skaičius</string>
     <string name="repo_description">Aprašas</string>
     <string name="repo_last_update">Paskutinis patikrinimas</string>
     <string name="repo_name">Pavadinimas</string>
@@ -125,7 +125,7 @@
     <string name="antifeatureswarning">Šioje programėlėje yra ypatybių, kurios jums gali nepatikti.</string>
     <string name="antiadslist">Šioje programėlėje yra reklamų</string>
     <string name="antinonfreeadlist">Ši programėlė skatina įdiegti nelaisvus papildinius</string>
-    <string name="antinonfreenetlist">Ši programėlė skatina nelaisvas tinklo paslaugas</string>
+    <string name="antinonfreenetlist">Ši programa reklamuoja arba visiškai priklauso nuo nelaisvo tinklo paslaugos</string>
     <string name="antinonfreedeplist">Ši programėlė priklauso nuo nelaisvų programėlių</string>
     <string name="antiknownvulnlist">Šioje programėlėje yra žinomas saugumo pažeidžiamumas</string>
     <string name="antinosourcesince">Pirminis kodas daugiau nebeprieinamas, atnaujinimai negalimi.</string>
@@ -537,4 +537,5 @@
     <string name="antitrack">Sekimas</string>
     <string name="antiknownvuln">Žinomas pažeidžiamumas</string>
     <string name="antiothers">Kitos anti-ypatybės</string>
+    <string name="antinsfw">Šioje programėlėje yra turinio, kuris neturėtų būti viešinamas ar visur matomas</string>
 </resources>

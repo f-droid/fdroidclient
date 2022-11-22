@@ -1,0 +1,13 @@
+* Podporována výměna prostřednictvím karet SD
+
+* Opravy a vylepšení funkce Nearby Swap
+
+* Další vylepšení "Podrobnosti o aplikaci"
+
+* Aktualizace jazyka a překladů aplikací Nearby a Swap
+
+* Vylepšená logika výběru ikon aplikací
+
+* Přidání repozitářů prostřednictvím integrovaného souboru additional_repos.xml od ROM, OEM, výrobce.
+
+* Zobrazení kódu verze v rozšířených položkách seznamu verzí v režimu Expert

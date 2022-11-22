@@ -58,7 +58,7 @@
     <string name="antiadslist">Questa app contiene pubblicità</string>
     <string name="antitracklist">Questa app monitora e riferisce sulle tue attività</string>
     <string name="antinonfreeadlist">Questa app promuove add-on non liberi</string>
-    <string name="antinonfreenetlist">Questa app promuove servizi di rete non liberi</string>
+    <string name="antinonfreenetlist">Questa app promuove o dipende completamente da un servizio di rete non libero</string>
     <string name="antinonfreedeplist">Questa app dipende da altre app non libere</string>
     <string name="antiupstreamnonfreelist">Il codice sorgente a monte non è completamente libero</string>
     <string name="display">Mostra</string>

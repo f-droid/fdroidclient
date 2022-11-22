@@ -1,0 +1,12 @@
+* Zpracování implicitních oprávnění READ_EXTERNAL_STORAGE, které vyvolávají chybu.
+  oprávnění u instalací s oprávněným rozšířením (#1702)
+
+* Data indexu jsou sanetizována, aby se snížily možné hrozby ze serveru
+
+* "Read Timeout" spouští použití zrcadla, když je čtení pomalé
+
+* Oprava chybějících ikon pro ty, kteří nepoužívají Wi-Fi (#1592)
+
+* Použijte samostatné názvy pro předvolbu Aktualizace a kartu Aktualizace, abyste usnadnili překlad
+
+* Opravy rozhraní od @ConnyDuck (#1636, #1618)

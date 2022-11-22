@@ -1,0 +1,5 @@
+* Refonte total du fonctionnement des téléchargements pour améliorer les performances et la prise en charge.
+
+* Les captures d'écran et les images sont maintenant téléchargées depuis les miroirs.
+
+* Reduction d'une fuite de donnée avec les sessions TLS

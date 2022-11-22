@@ -61,7 +61,7 @@
     <string name="antiadslist">יישומון זה מכיל פרסום</string>
     <string name="antitracklist">יישומון זה עוקב ומדווח על פעילותך</string>
     <string name="antinonfreeadlist">יישומון זה מקדם תוספים שאינם חופשיים</string>
-    <string name="antinonfreenetlist">יישומון זה מקדם שירותי רשת שאינם חופשיים</string>
+    <string name="antinonfreenetlist">יישומון זה מקדם או תלוי בשירות רשת שאינו חופשי</string>
     <string name="antinonfreedeplist">יישומון זה תלוי ביישומונים אחרים שאינם חופשיים</string>
     <string name="antiupstreamnonfreelist">קוד המקור בתצורתו המקורית אינו חופשי לחלוטין</string>
     <string name="display">תצוגה</string>

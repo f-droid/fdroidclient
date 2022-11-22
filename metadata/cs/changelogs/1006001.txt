@@ -1,0 +1,7 @@
+* Do RepoDetails byly přidány přepínače pro vypnutí všech zrcadel (#1696)
+
+* Výběr náhodného zrcadla pro každý balíček/APK ke stažení
+
+* Všechny stažené soubory APK jsou ukládány do mezipaměti pro jednotlivé repozitáře, nikoli pro jednotlivá zrcadla
+
+* Zpracování ETagů Apache a NGINX při kontrole aktuálnosti indexu (#1708)

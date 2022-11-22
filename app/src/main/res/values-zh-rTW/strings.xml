@@ -72,7 +72,7 @@
     <string name="antiadslist">此應用程式含有廣告</string>
     <string name="antitracklist">本應用程式會追蹤和彙報您的行為</string>
     <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
-    <string name="antinonfreenetlist">此應用程式推廣非自由的網路服務</string>
+    <string name="antinonfreenetlist">此應用程式推廣或完全依賴於非自由的網路服務</string>
     <string name="antinonfreedeplist">此應用程式依賴其他非自由的應用程式</string>
     <string name="antiupstreamnonfreelist">上游原始碼並非完全自由</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
@@ -295,7 +295,7 @@
     <string name="clear_search">清除搜尋</string>
     <string name="main_menu__latest_apps">最新</string>
     <string name="main_menu__categories">分類</string>
-    <string name="main_menu__swap_nearby">Nearby</string>
+    <string name="main_menu__swap_nearby">鄰近</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>

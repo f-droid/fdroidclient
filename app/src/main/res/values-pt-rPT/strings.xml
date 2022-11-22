@@ -70,7 +70,7 @@
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antitracklist">Esta aplicação monitoriza e reporta a sua atividade</string>
     <string name="antinonfreeadlist">Esta aplicação promove add-ons não livres</string>
-    <string name="antinonfreenetlist">Esta aplicação promove serviços de rede não livres</string>
+    <string name="antinonfreenetlist">Esta aplicação promove ou depende inteiramente de um serviço de rede não livre</string>
     <string name="antinonfreedeplist">Esta aplicação depende de aplicações não livres</string>
     <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
     <string name="display">Exibição</string>

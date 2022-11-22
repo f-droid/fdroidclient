@@ -69,10 +69,10 @@
     <string name="details_notinstalled">Tidak terpasang</string>
     <string name="antiadslist">Aplikasi ini berisi iklan</string>
     <string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
-    <string name="antinonfreeadlist">Aplikasi ini mempromosikan ekstensi berbayar</string>
-    <string name="antinonfreenetlist">Aplikasi ini mempromosikan layanan jaringan berbayar</string>
-    <string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi berbayar lainnya</string>
-    <string name="antiupstreamnonfreelist">Kode sumber utama tidak sepenuhnya Gratis</string>
+    <string name="antinonfreeadlist">Aplikasi ini mempromosikan ekstensi non-bebas</string>
+    <string name="antinonfreenetlist">Aplikasi ini mempromosikan atau bergantung pada layanan jaringan non-bebas</string>
+    <string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi non-bebas lainnya</string>
+    <string name="antiupstreamnonfreelist">Kode sumber utama tidak sepenuhnya Bebas</string>
     <string name="display">Tampilan</string>
     <string name="expert">Mode tingkat lanjut</string>
     <string name="expert_on">Menampilkan info ekstra dan mengaktifkan setelan ekstra</string>
@@ -102,7 +102,7 @@
     <string name="status_download_unknown_size">Mengunduh
 \n%2$s dari
 \n%1$s</string>
-    <string name="banner_updating_repositories">Memperbarui repostori</string>
+    <string name="banner_updating_repositories">Memperbarui repositori</string>
     <string name="status_processing_xml_percent">Memproses %2$s / %3$s (%4$d%%) dari %1$s</string>
     <string name="status_connecting_to_repo">Menghubungkan ke
 \n%1$s</string>
@@ -121,7 +121,7 @@
     <string name="repo_last_update">Pembaruan terakhir</string>
     <string name="repo_name">Nama</string>
     <string name="unknown">Tidak diketahui</string>
-    <string name="menu_settings">Setelan</string>
+    <string name="menu_settings">Pengaturan</string>
     <string name="unsigned_description">Ini berarti jika daftar aplikasi tidak dapat diverifikasi. Anda harus berhati-hati dengan aplikasi yang diunduh dari indeks yang tidak bertanda tangan.</string>
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.
@@ -135,15 +135,15 @@
     <string name="downloading">Mengunduh…</string>
     <string name="login_title">Diperlukan autentikasi</string>
     <string name="login_name">Nama pengguna</string>
-    <string name="login_password">Sandi</string>
-    <string name="repo_edit_credentials">Ubah Sandi</string>
+    <string name="login_password">Kata Sandi</string>
+    <string name="repo_edit_credentials">Ubah Kata Sandi</string>
     <string name="repo_error_empty_username">Nama pengguna kosong, kredensial tidak berubah</string>
     <string name="about_license">Lisensi</string>
     <string name="local_repo_running">F-Droid siap bertukar</string>
     <string name="system_installer">Ekstensi Istimewa</string>
     <string name="repo_provider">Repositori: %s</string>
     <string name="menu_email">Pembuat Email</string>
-    <string name="antinonfreeassetslist">Aplikasi ini mengandung aset berbayar</string>
+    <string name="antinonfreeassetslist">Aplikasi ini mengandung aset non-bebas</string>
     <string name="touch_to_configure_local_repo">Sentuh untuk melihat detail dan izinkan orang lain untuk menukar aplikasi Anda.</string>
     <string name="useTor">Gunakan Tor</string>
     <string name="useTorSummary">Paksa lalu lintas pengunduhan melalui Tor untuk meningkatkan privasi. Membutuhkan Orbot</string>
@@ -249,7 +249,7 @@
     <string name="theme_light">Terang</string>
     <string name="theme_dark">Gelap</string>
     <string name="crash_dialog_title">F-Droid telah berhenti</string>
-    <string name="crash_dialog_text">Terjadi kesalahan yang tidak terduga yang memaksa aplikasi untuk berhenti. Maukah mengirimkan detail melalui email untuk membantu memperbaiki masalah ini\?</string>
+    <string name="crash_dialog_text">Terjadi kesalahan yang tidak terduga yang memaksa aplikasi untuk berhenti. Maukah mengirimkan detail melalui e-mail untuk membantu memperbaiki masalah ini\?</string>
     <string name="crash_dialog_comment_prompt">Anda bisa menambahkan informasi ekstra dan komentar di sini:</string>
     <string name="update_auto_download">Otomatis unduh pembaruan</string>
     <string name="update_auto_download_summary">Pembaruan diunduh secara otomatis dan Anda akan diberi tahu untuk memasangnya</string>
@@ -417,8 +417,8 @@
     <string name="repo_official_mirrors">Mirror resmi</string>
     <string name="repo_user_mirrors">Mirror pengguna</string>
     <string name="warning_scaning_qr_code">Kamera Anda sepertinya tidak memiliki fokus otomatis. Mungkin akan sulit untuk memindai kode.</string>
-    <string name="over_wifi">Menggunakan Wi-Fi</string>
-    <string name="over_data">Menggunakan data seluler</string>
+    <string name="over_wifi">Melalui Wi-Fi</string>
+    <string name="over_data">Melalui data seluler</string>
     <string name="over_network_always_summary">Selalu gunakan koneksi ini jika tersedia</string>
     <string name="over_network_on_demand_summary">Hanya gunakan koneksi ini saat saya klik unduh</string>
     <string name="over_network_never_summary">Jangan pernah mengunduh apapun dengan koneksi ini</string>
@@ -433,12 +433,12 @@
     <string name="hide_all_notifications">Sembunyikan semua notifikasi</string>
     <string name="hide_all_notifications_summary">Cegah semua tindakan agar tidak tampil di status bar dan panel notifikasi.</string>
     <string name="send_install_history">Kirim Riwayat Pemasangan</string>
-    <string name="send_history_csv">%s riwayat pemasangan sebagai berkas CSV</string>
+    <string name="send_history_csv">Riwayat pemasangan %s sebagai berkas CSV</string>
     <string name="install_history">Riwayat pemasangan</string>
     <string name="install_history_summary">Lihat log privat dari semua pemasangan dan pencopotan</string>
     <string name="send_version_and_uuid">Kirim versi dan UUID ke server</string>
     <string name="send_version_and_uuid_summary">Sertakan versi aplikasi ini dan ID unik acak saat mengunduh, akan berdampak setelah aplikasi dimulai ulang.</string>
-    <string name="about_forum">Forum bantuan</string>
+    <string name="about_forum">Forum dukungan</string>
     <string name="app_suggested">Disarankan</string>
     <string name="app_size">Ukuran: %1$s</string>
     <string name="send_installed_apps">Bagikan aplikasi yang terpasang</string>
@@ -494,7 +494,7 @@
     <string name="send_to_fdroid_metrics_summary">Kirim data perminggu secara anonim ke Metrik F-Droid (memerlukan Simpanan riwayat pemasangan)</string>
     <string name="send_to_fdroid_metrics">Kirim data penggunaan</string>
     <string name="fdroid_metrics_report">Laporan Metrik %s</string>
-    <string name="install_history_and_metrics">Pasang riwayat dan metrik</string>
+    <string name="install_history_and_metrics">Riwayat pemasangan dan metrik</string>
     <string name="send_fdroid_metrics_json">Laporan metrik %s sebagai berkas JSON</string>
     <string name="send_fdroid_metrics_report">Kirim Laporan Metrik %s</string>
     <string name="theme_follow_system">Ikuti sistem</string>
@@ -507,13 +507,13 @@
     <string name="has_disallow_install_unknown_sources_globally">Admin perangkat Anda tidak mengizinkan pemasangan aplikasi dari sumber yang tidak dikenal, termasuk repo baru</string>
     <string name="swap_wifi_vpn_conflict">Konflik dengan VPN aktif!</string>
     <string name="antiads">Iklan</string>
-    <string name="antinonfreenet">Layanan Jaringan Tidak Gratis</string>
+    <string name="antinonfreenet">Layanan Jaringan Non-Bebas</string>
     <string name="app_list_results_hidden_antifeature_settings">Beberapa hasil disembunyikan berdasarkan pengaturan antifitur anda.</string>
     <string name="antitrack">Pelacakan</string>
-    <string name="antinonfreead">Tambahan Tidak Gratis</string>
-    <string name="antiupstreamnonfree">Upstream Tidak Gratis</string>
-    <string name="antinonfreeassets">Aset Tidak Gratis</string>
-    <string name="antinonfreedep">Ketergantungan Tidak Gratis</string>
+    <string name="antinonfreead">Tambahan Non-Bebas</string>
+    <string name="antiupstreamnonfree">Upstream Non-Bebas</string>
+    <string name="antinonfreeassets">Aset Non-Bebas</string>
+    <string name="antinonfreedep">Ketergantungan Non-Bebas</string>
     <string name="antidisabledalgorithm">Ditandatangani Menggunakan Algoritma Tidak Aman</string>
     <string name="antiknownvuln">Kerentanan yang Diketahui</string>
     <string name="antinosource">Kode Sumber Tidak Lagi Tersedia</string>

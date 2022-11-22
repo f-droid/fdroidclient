@@ -60,7 +60,7 @@
     <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
     <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>
     <string name="antinonfreeadlist">Táto aplikácia propaguje neslobodné doplnky</string>
-    <string name="antinonfreenetlist">Táto aplikácia propaguje neslobodné sieťové služby</string>
+    <string name="antinonfreenetlist">Táto aplikácia propaguje alebo je plne závislá na neslobodných sieťových službách</string>
     <string name="antinonfreedeplist">Táto aplikácia závisí na iných neslobodných aplikáciách</string>
     <string name="antiupstreamnonfreelist">Originálny zdrojový kód nie je úplne slobodný</string>
     <string name="display">Zobraziť</string>

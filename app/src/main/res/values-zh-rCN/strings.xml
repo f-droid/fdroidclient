@@ -51,7 +51,7 @@
     <string name="antiadslist">此应用包含广告</string>
     <string name="antitracklist">此应用会记录并报告你的活动</string>
     <string name="antinonfreeadlist">此应用推广非自由的附加组件</string>
-    <string name="antinonfreenetlist">此应用推广非自由的网络服务</string>
+    <string name="antinonfreenetlist">此应用推广或完全依赖于非自由的网络服务</string>
     <string name="antinonfreedeplist">此应用依赖于其它非自由应用</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
@@ -289,7 +289,7 @@
     <string name="updates__hide_updateable_apps">隐藏应用</string>
     <string name="updates__show_updateable_apps">显示应用</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">为 %1$d 个应用下载更新。</item>
+        <item quantity="other">下载 %1$d 个应用的更新。</item>
     </plurals>
     <string name="versions">版本</string>
     <string name="clear_search">清除搜索</string>
@@ -346,7 +346,7 @@
         <item quantity="other">更新于 %1$d 周前</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="other">更新于 %1$d 月前</item>
+        <item quantity="other">更新于 %1$d 个月前</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="other">更新于 %1$d 年前</item>

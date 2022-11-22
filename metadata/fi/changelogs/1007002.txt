@@ -1,0 +1,1 @@
+* USB OTG-muistitikkuja voidaan käyttää lähistöllä olevina arkistoina ja peileinä
