@@ -29,6 +29,19 @@
         <item>@string/antiothers_key</item>
     </string-array>
 
+    <string-array name="antifeaturesValuesDefault">
+        <item>@string/antiads_key</item>
+        <item>@string/antitrack_key</item>
+        <item>@string/antinonfreead_key</item>
+        <item>@string/antinonfreenet_key</item>
+        <item>@string/antinonfreedep_key</item>
+        <item>@string/antiupstreamnonfree_key</item>
+        <item>@string/antinonfreeassets_key</item>
+        <item>@string/antidisabledalgorithm_key</item>
+        <item>@string/antiknownvuln_key</item>
+        <item>@string/antinosource_key</item>
+    </string-array>
+
     <string-array name="antifeaturesNames">
         <item>@string/antiads</item>
         <item>@string/antitrack</item>

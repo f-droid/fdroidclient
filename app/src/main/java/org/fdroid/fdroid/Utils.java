@@ -604,8 +604,9 @@ public final class Utils {
      * "sans-serif-light". Doesn't mandate any font sizes or any other styles, that is up to the
      * {@link android.widget.TextView} which it ends up being displayed in.
      */
-    public static CharSequence formatAppNameAndSummary(String appName, String summary) {
-        String toFormat = appName + ' ' + summary;
+    public static CharSequence formatAppNameAndSummary(String appName, @Nullable String summary) {
+        String toFormat = appName;
+        if (summary != null) toFormat += ' ' + summary;
         CharacterStyle normal = new TypefaceSpan("sans-serif");
         CharacterStyle light = new TypefaceSpan("sans-serif-light");
 
