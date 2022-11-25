@@ -3,7 +3,7 @@ package org.fdroid.index.v2
 import kotlinx.serialization.Serializable
 
 @Serializable
-public data class EntryV2(
+public data class Entry(
     val timestamp: Long,
     val version: Long,
     val maxAge: Int? = null,

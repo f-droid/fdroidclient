@@ -3,7 +3,7 @@ package org.fdroid.index
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.fdroid.index.v1.IndexV1
-import org.fdroid.index.v2.EntryV2
+import org.fdroid.index.v2.Entry
 import org.fdroid.index.v2.IndexV2
 
 public object IndexParser {
@@ -36,7 +36,7 @@ public object IndexParser {
     }
 
     @JvmStatic
-    public fun parseEntryV2(str: String): EntryV2 {
+    public fun parseEntry(str: String): Entry {
         return json.decodeFromString(str)
     }
 

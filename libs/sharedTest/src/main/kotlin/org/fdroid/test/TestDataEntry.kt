@@ -1,11 +1,11 @@
 package org.fdroid.test
 
+import org.fdroid.index.v2.Entry
 import org.fdroid.index.v2.EntryFileV2
-import org.fdroid.index.v2.EntryV2
 
-object TestDataEntryV2 {
+object TestDataEntry {
 
-    val empty = EntryV2(
+    val empty = Entry(
         timestamp = 23,
         version = 20001,
         index = EntryFileV2(
@@ -16,7 +16,7 @@ object TestDataEntryV2 {
         ),
     )
 
-    val emptyToMin = EntryV2(
+    val emptyToMin = Entry(
         timestamp = 42,
         version = 20001,
         maxAge = 7,
@@ -36,7 +36,7 @@ object TestDataEntryV2 {
         ),
     )
 
-    val emptyToMid = EntryV2(
+    val emptyToMid = Entry(
         timestamp = 1337,
         version = 20001,
         index = EntryFileV2(
@@ -61,7 +61,7 @@ object TestDataEntryV2 {
         ),
     )
 
-    val emptyToMax = EntryV2(
+    val emptyToMax = Entry(
         timestamp = Long.MAX_VALUE,
         version = Long.MAX_VALUE,
         maxAge = Int.MAX_VALUE,

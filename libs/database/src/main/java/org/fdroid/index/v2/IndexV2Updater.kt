@@ -17,7 +17,7 @@ import org.fdroid.index.IndexUpdater
 import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.TempFileProvider
 import org.fdroid.index.defaultRepoUriBuilder
-import org.fdroid.index.parseEntryV2
+import org.fdroid.index.parseEntry
 import org.fdroid.index.setIndexUpdateListener
 
 internal const val SIGNED_FILE_NAME = "entry.jar"
@@ -39,7 +39,7 @@ public class IndexV2Updater(
         certificate: String?,
         fingerprint: String?,
     ): IndexUpdateResult {
-        val (cert, entry) = getCertAndEntryV2(repo, certificate, fingerprint)
+        val (cert, entry) = getCertAndEntry(repo, certificate, fingerprint)
         // don't process repos that we already did process in the past
         if (entry.timestamp <= repo.timestamp) return IndexUpdateResult.Unchanged
         // get diff, if available
@@ -57,11 +57,11 @@ public class IndexV2Updater(
         }
     }
 
-    private fun getCertAndEntryV2(
+    private fun getCertAndEntry(
         repo: Repository,
         certificate: String?,
         fingerprint: String?,
-    ): Pair<String, EntryV2> {
+    ): Pair<String, Entry> {
         val uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME)
         val file = tempFileProvider.createTempFile()
         val downloader = downloaderFactory.createWithTryFirstMirror(repo, uri, file).apply {
@@ -71,7 +71,7 @@ public class IndexV2Updater(
             downloader.download(-1L)
             val verifier = EntryVerifier(file, certificate, fingerprint)
             return verifier.getStreamAndVerify { inputStream ->
-                IndexParser.parseEntryV2(inputStream)
+                IndexParser.parseEntry(inputStream)
             }
         } finally {
             file.delete()
