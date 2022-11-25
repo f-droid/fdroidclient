@@ -3,7 +3,7 @@ package org.fdroid.index
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.decodeFromStream
 import org.fdroid.index.v1.IndexV1
-import org.fdroid.index.v2.EntryV2
+import org.fdroid.index.v2.Entry
 import org.fdroid.index.v2.IndexV2
 import java.io.InputStream
 
@@ -18,6 +18,6 @@ public fun IndexParser.parseV2(inputStream: InputStream): IndexV2 {
 }
 
 @OptIn(ExperimentalSerializationApi::class)
-public fun IndexParser.parseEntryV2(inputStream: InputStream): EntryV2 {
+public fun IndexParser.parseEntry(inputStream: InputStream): Entry {
     return json.decodeFromStream(inputStream)
 }
