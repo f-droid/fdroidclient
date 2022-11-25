@@ -331,9 +331,9 @@
               "en-US": "was added this update"
             }
           },
-          "whatsNew": {
-            "ch": "This is new!"
-          }
+          "releaseChannels": [
+            "Beta"
+          ]
         },
         "c062a9642fde08aacabbfa4cab1ab5773c83f4e6b81551ffd92027d2b20f37d3": {
           "added": 1635169849000,
@@ -404,6 +404,11 @@
             "AddOne": {
               "en-US": "was added this update"
             }
+          },
+          "whatsNew": {
+            "ch": "This is new!",
+            "de": "das ist neu",
+            "en-US": "this is new"
           }
         },
         "3243c24ee95be0fce0830d72e7d2605e3e24f6ccf4ee72a7c8e720fccd7621a1": {
@@ -848,10 +853,6 @@
             "anti-feature2": {
               "de": "blabla"
             }
-          },
-          "whatsNew": {
-            "en-US": "this is new",
-            "de": "das ist neu"
           }
         }
       }

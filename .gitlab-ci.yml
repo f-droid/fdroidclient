@@ -4,6 +4,13 @@ stages:
   - test
   - deploy
 
+# only create a pipeline if it is a merge request, not for plain
+# branches, unless that branch is master.
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
 .base:
   before_script:
     - test -e /etc/apt/sources.list.d/bullseye-backports.list
@@ -132,9 +139,8 @@ errorprone:
   tags:
     - fdroid
     - kvm
-  only:
-    variables:
-      - $RUN_KVM_JOBS
+  rules:
+    - if: $RUN_KVM_JOBS
   <<: *test-template
   <<: *kvm-connected-template
 

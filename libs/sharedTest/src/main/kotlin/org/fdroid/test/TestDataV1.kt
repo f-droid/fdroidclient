@@ -437,6 +437,7 @@ object TestDataMaxV1 {
         webSite = "https://fdroid.org",
         binaries = "https://fdroid.org/binaries",
         name = "F-DroidX",
+        suggestedVersionCode = "1014003",
         localized = mapOf(
             "ch" to Localized(
                 description = "new desc",
@@ -447,6 +448,7 @@ object TestDataMaxV1 {
             ),
             "de" to Localized(
                 summary = "Der App-Store, der Freiheit und Privatsphäre respektiert",
+                whatsNew = "das ist neu",
             ),
             "en-US" to Localized(
                 description = "F-Droid is an installable catalogue of libre software",
@@ -460,6 +462,7 @@ object TestDataMaxV1 {
                 ),
                 featureGraphic = "featureGraphic_PTun9TO4cMFOeiqbvQSrkdcxNUcOFQCymMIaj9UJOAY=.jpg",
                 icon = "new icon",
+                whatsNew = "this is new",
             ),
         ),
     )
