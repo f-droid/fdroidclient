@@ -7,23 +7,6 @@
          <trust file=".*-javadoc[.]jar" regex="true"/>
          <trust file=".*-sources[.]jar" regex="true"/>
       </trusted-artifacts>
-      <ignored-keys>
-         <ignored-key id="3967d4eda591b991" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="02216ed811210daa" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="5f7786df73e61f56" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="bf984b4145ea13f7" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="eb380dc13c39f675" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="fefe78456eddc34a" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="4dbf5995d492505d" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="280d66a55f5316c5" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="d9c565aa72ba2fdd" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="cb43338e060cf9fa" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="d89d05374952262b" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="6a65176a0fb1cd0b" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="dea3d207428ef16d" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="c1b12a5d99c0729d" reason="Key couldn't be downloaded from any key server"/>
-         <ignored-key id="056aca74d46000bf" reason="Key couldn't be downloaded from any key server"/>
-      </ignored-keys>
       <trusted-keys>
          <trusted-key id="0394681addddb4f6388a64d295123567c1886c47" group="ch.acra" name="acra" version="4.9.1"/>
          <trusted-key id="042b29e928995b9db963c636c7ca19b7b620d787" group="org.apache.maven" name="maven-ant-tasks" version="2.1.3"/>
