@@ -104,6 +104,7 @@ public class HttpDownloader constructor(
      * @see [Cookieless cookies](http://lucb1e.com/rp/cookielesscookies)
      */
     @Suppress("DEPRECATION")
+    @Deprecated("Use only for v1 repos")
     @Throws(IOException::class, InterruptedException::class)
     public override fun download() {
         val headInfo = runBlocking {
