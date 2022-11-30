@@ -337,7 +337,7 @@ public class PrivilegedInstaller extends Installer {
                     }
 
                     privService.installPackage(localApkUri, ACTION_INSTALL_REPLACE_EXISTING,
-                            null, callback);
+                            PRIVILEGED_EXTENSION_PACKAGE_NAME, callback);
                 } catch (RemoteException e) {
                     Log.e(TAG, "RemoteException", e);
                     sendBroadcastInstall(canonicalUri, ACTION_INSTALL_INTERRUPTED,
