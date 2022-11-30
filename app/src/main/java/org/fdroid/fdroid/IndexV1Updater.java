@@ -104,6 +104,11 @@ public class IndexV1Updater extends IndexUpdater {
      */
     @Override
     public boolean update() throws IndexUpdater.UpdateException {
+
+        if (repo.isSwap) {
+            // swap repos do not support index-v1
+            return false;
+        }
         File destFile = null;
         Downloader downloader;
         try {
