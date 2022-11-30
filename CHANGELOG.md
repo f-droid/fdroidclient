@@ -1,3 +1,13 @@
+### 1.15.4 (2022-11-30)
+
+* Simplify swap index.jar signing to use plain SHA1withRSA
+
+* Ignore XML DTDs and External Entities in index.jar
+
+* Set F-Droid Privileged Extension as the APK installer
+
+* Fix swap, it does not work yet with index-v1.jar
+
 ### 1.15.3 (2022-10-25)
 
 * Handle API 33 split-permissions
