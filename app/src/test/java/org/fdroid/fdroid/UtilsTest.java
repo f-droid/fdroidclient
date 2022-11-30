@@ -14,12 +14,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.XMLReader;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import androidx.loader.content.CursorLoader;
 import androidx.test.core.app.ApplicationProvider;
@@ -362,5 +369,25 @@ public class UtilsTest {
                 null);
         cursor = cursorLoader.loadInBackground();
         assertNotNull(cursor);
+    }
+
+    @Test(expected = SAXParseException.class)
+    public void testXMLReaderXXEFileAccess() throws ParserConfigurationException, SAXException, IOException {
+        String xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" +
+                "  <!DOCTYPE foo [  \n" +
+                "    <!ELEMENT foo ANY >\n" +
+                "    <!ENTITY xxe SYSTEM \"file:///etc/hosts\" >]><foo>&xxe;</foo>";
+        final XMLReader reader = Utils.newXMLReaderInstance();
+        reader.parse(new InputSource(new StringReader(xml)));
+    }
+
+    @Test(expected = SAXParseException.class)
+    public void testXMLReaderXXEUrlAccess() throws ParserConfigurationException, SAXException, IOException {
+        String xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" +
+                "  <!DOCTYPE foo [  \n" +
+                "    <!ELEMENT foo ANY >\n" +
+                "    <!ENTITY xxe SYSTEM \"https://example.com\" >]><foo>&xxe;</foo>";
+        final XMLReader reader = Utils.newXMLReaderInstance();
+        reader.parse(new InputSource(new StringReader(xml)));
     }
 }

@@ -60,6 +60,9 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.data.Schema;
+import org.xml.sax.DTDHandler;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
@@ -1009,13 +1012,36 @@ public final class Utils {
     }
 
     /**
-     * @see <a href="https://brianlaskey.info/blog/coding/java/2022/01/22/saxparser-xxe.html">XML External Entity Prevention in Java’s default SAXParser</a>
+     * This is an Android-specific way to disable XXE, because the SAX stuff
+     * seems to be too old to support these methods:
+     *
+     * @see <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html">XML External Entity Prevention Cheat Sheet</a>
      */
     public static XMLReader newXMLReaderInstance() throws SAXException, ParserConfigurationException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setNamespaceAware(true);
+
         SAXParser parser = factory.newSAXParser();
         XMLReader reader = parser.getXMLReader();
+        reader.setDTDHandler(new DTDHandler() {
+            @Override
+            public void notationDecl(String name, String publicId, String systemId) throws SAXException {
+                throw new org.xml.sax.SAXParseException("DTDs are not used!", publicId, systemId, -1, -1);
+            }
+
+            @Override
+            public void unparsedEntityDecl(String name, String publicId, String systemId, String notationName)
+                    throws SAXException {
+                throw new org.xml.sax.SAXParseException("DTDs are not used!", publicId, systemId, -1, -1);
+            }
+        });
+        reader.setEntityResolver(new EntityResolver() {
+            @Override
+            public InputSource resolveEntity(String publicId, String systemId) throws IOException, SAXException {
+                throw new org.xml.sax.SAXParseException("XML Entities are not used!", publicId, systemId, -1, -1);
+            }
+        });
+
         return reader;
     }
 }
