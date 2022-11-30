@@ -59,6 +59,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Provider;
 import java.security.Security;
+import java.security.Signature;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
@@ -500,11 +501,7 @@ public class ZipSigner {
     private void writeSignatureBlock(KeySet keySet, byte[] signatureFileBytes, OutputStream out)
             throws IOException, GeneralSecurityException {
         if (keySet.getSigBlockTemplate() != null) {
-
-            // Can't use default Signature on Android.  Although it generates a signature that can be verified by jarsigner,
-            // the recovery program appears to require a specific algorithm/mode/padding.  So we use the custom ZipSignature instead.
-            // Signature signature = Signature.getInstance("SHA1withRSA");
-            ZipSignature signature = new ZipSignature();
+            Signature signature = Signature.getInstance("SHA1withRSA");
             signature.initSign(keySet.getPrivateKey());
             signature.update(signatureFileBytes);
             byte[] signatureBytes = signature.sign();
