@@ -121,7 +121,7 @@ public class SwapService extends Service {
         if (peer != this.peer) {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
-        peerRepo = ensureRepoExists(peer);
+        peerRepo = FDroidApp.createSwapRepo(peer.getRepoAddress(), null);
         try {
             updateRepo(peer, peerRepo);
         } catch (Exception e) {
@@ -153,10 +153,6 @@ public class SwapService extends Service {
             //noinspection ResultOfMethodCallIgnored
             swapJarFile.delete();
         }
-    }
-
-    private Repository ensureRepoExists(@NonNull Peer peer) {
-        return FDroidApp.createSwapRepo(peer.getRepoAddress(), null);
     }
 
     @Nullable
