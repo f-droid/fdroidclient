@@ -911,4 +911,16 @@ public final class Utils {
         }
     }
 
+    public static boolean isPortInUse(String host, int port) {
+        boolean result = false;
+
+        try {
+            (new Socket(host, port)).close();
+            result = true;
+        } catch (IOException e) {
+            // Could not connect.
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

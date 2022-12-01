@@ -54,12 +54,7 @@ public class PreferencesTest {
     public void setup() {
         ShadowLog.stream = System.out;
 
-        String sharedPreferencesName = CONTEXT.getPackageName() + "_preferences_defaults";
-        PreferenceManager pm = new PreferenceManager(CONTEXT);
-        pm.setSharedPreferencesName(sharedPreferencesName);
-        pm.setSharedPreferencesMode(Context.MODE_PRIVATE);
-        pm.inflateFromResource(CONTEXT, R.xml.preferences, null);
-        defaults = pm.getSharedPreferences();
+        defaults = getSharedPreferences(CONTEXT);
         assertTrue(defaults.getAll().size() > 0);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(CONTEXT);
@@ -70,6 +65,15 @@ public class PreferencesTest {
         SharedPreferences defaultValueSp = CONTEXT.getSharedPreferences(PreferenceManager.KEY_HAS_SET_DEFAULT_VALUES,
                 Context.MODE_PRIVATE);
         defaultValueSp.edit().remove(PreferenceManager.KEY_HAS_SET_DEFAULT_VALUES).commit();
+    }
+
+    public static SharedPreferences getSharedPreferences(Context context) {
+        String sharedPreferencesName = context.getPackageName() + "_preferences_defaults";
+        PreferenceManager pm = new PreferenceManager(context);
+        pm.setSharedPreferencesName(sharedPreferencesName);
+        pm.setSharedPreferencesMode(Context.MODE_PRIVATE);
+        pm.inflateFromResource(context, R.xml.preferences, null);
+        return pm.getSharedPreferences();
     }
 
     /**

@@ -34,19 +34,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.JobIntentService;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import org.fdroid.CompatibilityChecker;
 import org.fdroid.CompatibilityCheckerImpl;
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
-import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -65,6 +58,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.JobIntentService;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -118,14 +117,18 @@ public class UpdateService extends JobIntentService {
         updateNewRepoNow(context, address, null);
     }
 
-    public static void updateNewRepoNow(Context context, String address, @Nullable String fingerprint) {
+    public static Intent getIntent(Context context, String address, @Nullable String fingerprint) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
         intent.putExtra(EXTRA_REPO_FINGERPRINT, fingerprint);
         if (!TextUtils.isEmpty(address)) {
             intent.setData(Uri.parse(address));
         }
-        enqueueWork(context, intent);
+        return intent;
+    }
+
+    public static void updateNewRepoNow(Context context, String address, @Nullable String fingerprint) {
+        enqueueWork(context, getIntent(context, address, fingerprint));
     }
 
     /**

@@ -24,8 +24,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.Socket;
 import java.security.cert.Certificate;
 import java.util.HashSet;
 import java.util.List;
@@ -103,7 +101,7 @@ public class SwapRepoEmulatorTest {
             assertFalse(TextUtils.isEmpty(signingCert));
             assertFalse(TextUtils.isEmpty(fingerprint));
 
-            assertTrue(isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
+            assertTrue(Utils.isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
             Thread.sleep(100);
 
             File swapJarFile = File.createTempFile("swap", "", context.getCacheDir());
@@ -149,19 +147,6 @@ public class SwapRepoEmulatorTest {
             }
         }
         assertFalse(localHttpd.isAlive());
-    }
-
-    private boolean isPortInUse(String host, int port) {
-        boolean result = false;
-
-        try {
-            (new Socket(host, port)).close();
-            result = true;
-        } catch (IOException e) {
-            // Could not connect.
-            e.printStackTrace();
-        }
-        return result;
     }
 
     private boolean isSystemPackage(ResolveInfo resolveInfo) {
