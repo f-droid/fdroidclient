@@ -57,7 +57,7 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt nicht-quelloffene Netzwerkdienste</string>
+    <string name="antinonfreenetlist">Diese App bewirbt oder hängt vollständig von einem nicht-quelloffenen Netzwerkdienst ab</string>
     <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
@@ -352,8 +352,8 @@
     <string name="app__tts__downloading_progress">Herunterladen, %1$d%% abgeschlossen</string>
     <string name="menu_license">Lizenz: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d weitere…</item>
-        <item quantity="other">+%1$d weitere…</item>
+        <item quantity="one">+%1$d weitere …</item>
+        <item quantity="other">+%1$d weitere …</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Aktualisierung</item>
@@ -450,7 +450,7 @@
     <string name="install_history">Installationsverlauf</string>
     <string name="install_history_summary">Das private Protokoll zu allen Installationen und Deinstallationen ansehen</string>
     <string name="send_version_and_uuid">Version und UUID an Server senden</string>
-    <string name="prompt_to_send_crash_reports">Auf Nachfrage Absturzbericht senden</string>
+    <string name="prompt_to_send_crash_reports">Absturzbericht anfordern</string>
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
     <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
     <string name="share_repository">Paketquelle teilen</string>
@@ -531,7 +531,7 @@
     <string name="antinonfreedep">Nicht-quelloffene Abhängigkeiten</string>
     <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Antifeature-Einstellungen ausgeblendet.</string>
     <string name="antiads">Werbung</string>
-    <string name="antitrack">Tracking</string>
+    <string name="antitrack">Überwachung</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
     <string name="antiothers">Andere unerwünschte Merkmale</string>
     <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>

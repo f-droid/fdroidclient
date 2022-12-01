@@ -1,0 +1,15 @@
+* Secara otomatis memangkas atau menghapus cache ketika ruang penyimpanan rendah
+
+* Peningkatan kinerja pada perangkat memori rendah
+
+* Buat semua unduhan mengikuti preferensi "Hanya di Wi-Fi"
+
+* Mengurangi penggunaan memori saat perangkat hampir habis
+
+* Tambahkan mirror khusus ke repo apa pun dengan mengklik tautan, memindai kode QR, dll.
+
+* Banyak perbaikan bug dan peningkatan di Swap/Nearby
+
+* Perbaiki salah satu penyebab notifikasi pembaruan berulang (#1271)
+
+* Membuat F-Droid mengenali URL nightly F-Droid dari GitLab

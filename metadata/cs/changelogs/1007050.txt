@@ -1,0 +1,7 @@
+* zásadní přepracování swapového uživatelského rozhraní, aby se připravil na přepsání vnitřností
+* zobrazit "zpět" po přejetí prstem z karty Aktualizace (díky @Hocuri!)
+* opravit problémy s "nejnovějším" zobrazením způsobeným nesprávným zpracováním časových pásem #1757
+* ignorovat všechny nedůležité havárie v pozadí služby
+* přepracovaný blízký swap pomocí přístupového bodu zařízení
+* přidat nové panické reakce: aplikace odinstaluje a resetuje repo na výchozí
+* USB OTG flash disky lze použít jako blízké úložiště a zrcadla

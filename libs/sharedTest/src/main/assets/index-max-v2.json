@@ -1,0 +1,861 @@
+{
+  "unknownKey": "should get ignored",
+  "repo": {
+    "name": {
+      "en-US": "MaxV1",
+      "de_DE": "MaximumV1"
+    },
+    "icon": {
+      "en-US": {
+        "name": "/icons/max-v1.png",
+        "sha256": "14758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+        "size": 9223372036854775807
+      },
+      "de_DE": {
+        "name": "/icons/maximal-v1.png",
+        "sha256": "12758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+        "size": 9223372036854775806
+      }
+    },
+    "address": "https://max-v1.org",
+    "webBaseUrl": "https://www.max-v1.org",
+    "description": {
+      "en-US": "This is a repo with maximum data.",
+      "de": "Dies ist ein Repo mit maximaler Datendichte."
+    },
+    "mirrors": [
+      {
+        "url": "https://max-v1.com",
+        "location": "us"
+      },
+      {
+        "url": "https://max-v1.org",
+        "location": "nl"
+      }
+    ],
+    "timestamp": 9223372036854775807,
+    "antiFeatures": {
+      "VeryBad": {
+        "name": {
+        }
+      },
+      "Dont,Show,This": {
+        "name": {
+        }
+      },
+      "NotNice": {
+        "name": {
+        }
+      },
+      "AntiFeature": {
+        "icon": {
+          "name": "/icons/antifeature.png",
+          "sha256": "24758e480ae66297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+          "size": 254916
+        },
+        "name": {
+          "en-US": "AntiFeature"
+        },
+        "description": {
+          "en-US": "A bad anti-feature, we can't show to users."
+        }
+      },
+      "NonFreeNet": {
+        "name": {
+          "en-US": "NonFreeNet"
+        }
+      },
+      "AddOne": {
+        "name": {
+          "en-US": "AddOne anti feature"
+        },
+        "description": {
+          "en-US": "A bad anti-feature, that was added in an update."
+        }
+      }
+    },
+    "categories": {
+      "Cat3": {
+        "icon": {
+          "name": "/icons/cat3.png",
+          "sha256": "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+          "size": 9223372036854775807
+        },
+        "name": {
+          "en-US": "Cat3"
+        },
+        "description": {
+          "en-US": "Cat3"
+        }
+      },
+      "Cat2": {
+        "icon": {
+          "name": "/icons/cat2.png",
+          "sha256": "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+          "size": 9223372036854775807
+        },
+        "name": {
+          "en-US": "Cat3"
+        },
+        "description": {
+          "en-US": "Cat3"
+        }
+      },
+      "Cat1": {
+        "icon": {
+          "name": "/icons/cat1.png",
+          "sha256": "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+          "size": 9223372036854775807
+        },
+        "name": {
+          "en-US": "Cat1"
+        },
+        "description": {
+          "en-US": "Cat1"
+        }
+      },
+      "NoMoreSystem": {
+        "name": {
+        }
+      },
+      "OneMore": {
+        "name": {
+        }
+      }
+    },
+    "releaseChannels": {
+      "Alpha": {
+        "name": {
+          "de": "channel name alpha"
+        },
+        "description": {
+          "de-DE": "channel desc alpha"
+        }
+      },
+      "Beta": {
+        "name": {
+          "en-US": "channel name"
+        },
+        "description": {
+          "en-US": "channel desc"
+        }
+      }
+    }
+  },
+  "packages": {
+    "org.fdroid.min1": {
+      "metadata": {
+        "name": {
+          "en-US": "App1",
+          "de": "app 1 name"
+        },
+        "summary": {
+          "en-US": "App1 summary",
+          "de": "App1 Zusammenfassung"
+        },
+        "description": {
+          "en-US": "App1 description",
+          "de": "App1 beschreibung"
+        },
+        "added": 1234567890,
+        "lastUpdated": 1234567891,
+        "webSite": "http://min1.test.org",
+        "license": "GPLv3",
+        "categories": [
+          "Cat1"
+        ],
+        "authorName": "App1 author",
+        "icon": {
+          "en-US": {
+            "name": "/icons/icon-min1.png",
+            "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+            "size": 1337
+          }
+        }
+      },
+      "versions": {
+        "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf": {
+          "added": 0,
+          "file": {
+            "name": "/org.fdroid.min1_42.apk",
+            "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+            "size": 1337
+          },
+          "src": {
+            "name": "/org.fdroid.min1_42.zip",
+            "sha256": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+            "size": 1338
+          },
+          "manifest": {
+            "versionName": "24",
+            "versionCode": 24,
+            "usesSdk": {
+              "minSdkVersion": 21,
+              "targetSdkVersion": 32
+            },
+            "maxSdkVersion": 4568,
+            "signer": {
+              "sha256": [
+                "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf"
+              ]
+            }
+          },
+          "releaseChannels": [
+            "Beta"
+          ],
+          "antiFeatures": {
+            "AntiFeature": {
+              "en-US": "reason"
+            }
+          }
+        }
+      }
+    },
+    "org.fdroid.fdroid": {
+      "metadata": {
+        "name": {
+          "en-US": "F-DroidX",
+          "ch": "new name"
+        },
+        "summary": {
+          "en-US": "new summary in en-US",
+          "ch": "new summary",
+          "de": "Der App-Store, der Freiheit und Privatsphäre respektiert"
+        },
+        "description": {
+          "en-US": "F-Droid is an installable catalogue of libre software",
+          "ch": "new desc"
+        },
+        "added": 1295222400000,
+        "lastUpdated": 1643250075000,
+        "webSite": "https://fdroid.org",
+        "changelog": "https://gitlab.com/fdroid/fdroidclient/raw/HEAD/CHANGELOG.md",
+        "license": "GPL-3.0-or-later",
+        "sourceCode": "https://gitlab.com/fdroid/fdroidclient",
+        "issueTracker": "https://gitlab.com/fdroid/fdroidclient/issues",
+        "translation": "https://hosted.weblate.org/projects/f-droid/f-droid",
+        "preferredSigner": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "categories": [
+          "NoMoreSystem",
+          "OneMore"
+        ],
+        "donate": [
+          "https://f-droid.org/donate"
+        ],
+        "liberapayID": "27859",
+        "openCollective": "F-Droid-Euro",
+        "flattrID": "343053",
+        "icon": {
+          "en-US": {
+            "name": "/org.fdroid.fdroid/en-US/new icon",
+            "sha256": "324a109b2352138c3699760e1683385d1ed50ce526fc7982f8d65757743374ba",
+            "size": 2233
+          }
+        },
+        "featureGraphic": {
+          "en-US": {
+            "name": "/org.fdroid.fdroid/en-US/featureGraphic_PTun9TO4cMFOeiqbvQSrkdcxNUcOFQCymMIaj9UJOAY=.jpg",
+            "sha256": "424a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+            "size": 4237
+          }
+        },
+        "screenshots": {
+          "phone": {
+            "en-US": [
+              {
+                "name": "/org.fdroid.fdroid/en-US/phoneScreenshots/screenshot-app-details.png",
+                "sha256": "424a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+                "size": 4237
+              },
+              {
+                "name": "/org.fdroid.fdroid/en-US/phoneScreenshots/screenshot-dark-details.png",
+                "sha256": "424a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+                "size": 44287
+              },
+              {
+                "name": "/org.fdroid.fdroid/en-US/phoneScreenshots/screenshot-dark-home.png",
+                "sha256": "424a109b2352138c3699760e1673385d0ed50ce526fc7982f8d65757743374bf",
+                "size": 4587
+              },
+              {
+                "name": "/org.fdroid.fdroid/en-US/phoneScreenshots/screenshot-search.png",
+                "sha256": "424a109b2352138c3694760e1683385d0ed50ce526fc7982f8d65757743374bf",
+                "size": 2857
+              },
+              {
+                "name": "/org.fdroid.fdroid/en-US/phoneScreenshots/screenshot-updates.png",
+                "sha256": "424a109b2352138c3699750e1683385d0ed50ce526fc7982f8d65757743374bf",
+                "size": 485286
+              }
+            ]
+          },
+          "tenInch": {
+            "ch": [
+              {
+                "name": "/org.fdroid.fdroid/ch/tenInchScreenshots/new screenshots",
+                "sha256": "54758e380ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": -9223372036854775808
+              }
+            ]
+          }
+        }
+      },
+      "versions": {
+        "b4282febf5558d43c7c51a00478961f6df1b6d59e0a6674974cdacb792683e5d": {
+          "added": 1642785071000,
+          "file": {
+            "name": "/org.fdroid.fdroid_1014005.apk",
+            "sha256": "b4282febf5558d43c7c51a00478961f6df1b6d59e0a6674974cdacb792683e5d",
+            "size": 8382606
+          },
+          "src": {
+            "name": "/org.fdroid.fdroid_1014005_src.tar.gz",
+            "sha256": "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d07",
+            "size": 8165519
+          },
+          "manifest": {
+            "versionName": "1.14-alpha5",
+            "versionCode": 1014005,
+            "usesSdk": {
+              "minSdkVersion": 22,
+              "targetSdkVersion": 25
+            },
+            "signer": {
+              "sha256": [
+                "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+              ]
+            }
+          },
+          "antiFeatures": {
+            "AddOne": {
+              "en-US": "was added this update"
+            }
+          },
+          "releaseChannels": [
+            "Beta"
+          ]
+        },
+        "c062a9642fde08aacabbfa4cab1ab5773c83f4e6b81551ffd92027d2b20f37d3": {
+          "added": 1635169849000,
+          "file": {
+            "name": "/org.fdroid.fdroid_1014003.apk",
+            "sha256": "c062a9642fde08aacabbfa4cab1ab5773c83f4e6b81551ffd92027d2b20f37d3",
+            "size": 8276110
+          },
+          "src": {
+            "name": "/org.fdroid.fdroid_1014003_src.tar.gz",
+            "sha256": "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cb067d510ac6f3e0d07",
+            "size": 8165519
+          },
+          "manifest": {
+            "versionName": "1.14-alpha3",
+            "versionCode": 1014003,
+            "usesSdk": {
+              "minSdkVersion": 22,
+              "targetSdkVersion": 25
+            },
+            "signer": {
+              "sha256": [
+                "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.ACCESS_MEDIA"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_STATE",
+                "maxSdkVersion": 32
+              },
+              {
+                "name": "android.permission.READ_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.NFC"
+              },
+              {
+                "name": "android.permission.USB_PERMISSION",
+                "maxSdkVersion": 22
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.READ_MY_ASS"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE"
+              }
+            ],
+            "usesPermissionSdk23": [
+              {
+                "name": "android.permission.ACCESS_FINE_LOCATION"
+              },
+              {
+                "name": "android.permission.ACCESS_COARSE_LOCATION",
+                "maxSdkVersion": 3
+              }
+            ]
+          },
+          "antiFeatures": {
+            "AddOne": {
+              "en-US": "was added this update"
+            }
+          },
+          "whatsNew": {
+            "ch": "This is new!",
+            "de": "das ist neu",
+            "en-US": "this is new"
+          }
+        },
+        "3243c24ee95be0fce0830d72e7d2605e3e24f6ccf4ee72a7c8e720fccd7621a1": {
+          "added": 1632281731000,
+          "file": {
+            "name": "/org.fdroid.fdroid_1014002.apk",
+            "sha256": "3243c24ee95be0fce0830d72e7d2605e3e24f6ccf4ee72a7c8e720fccd7621a1",
+            "size": 8284386
+          },
+          "src": {
+            "name": "/org.fdroid.fdroid_1014002_src.tar.gz",
+            "sha256": "7c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cb067d510ac6f3e0d07",
+            "size": 7165519
+          },
+          "manifest": {
+            "versionName": "1.14-alpha2",
+            "versionCode": 1014002,
+            "usesSdk": {
+              "minSdkVersion": 22,
+              "targetSdkVersion": 25
+            },
+            "signer": {
+              "sha256": [
+                "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "android.permission.ACCESS_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.ACCESS_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.BLUETOOTH"
+              },
+              {
+                "name": "android.permission.BLUETOOTH_ADMIN"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.READ_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_SETTINGS"
+              },
+              {
+                "name": "android.permission.NFC"
+              },
+              {
+                "name": "android.permission.USB_PERMISSION",
+                "maxSdkVersion": 22
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE"
+              }
+            ],
+            "usesPermissionSdk23": [
+              {
+                "name": "android.permission.ACCESS_COARSE_LOCATION"
+              }
+            ]
+          },
+          "antiFeatures": {
+            "AddOne": {
+            }
+          }
+        },
+        "7ebfd5eb76f9ec95ba955e549260fe930dc38fb99ed3532f92c93b879aca5610": {
+          "added": 1632281729000,
+          "file": {
+            "name": "/org.fdroid.fdroid_1014001.apk",
+            "sha256": "7ebfd5eb76f9ec95ba955e549260fe930dc38fb99ed3532f92c93b879aca5610",
+            "size": 8272166
+          },
+          "src": {
+            "name": "/org.fdroid.fdroid_1014001_src.tar.gz",
+            "sha256": "6c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cb067d510ac6f3e0d07",
+            "size": 6165519
+          },
+          "manifest": {
+            "versionName": "1.14-alpha1",
+            "versionCode": 1014001,
+            "usesSdk": {
+              "minSdkVersion": 22,
+              "targetSdkVersion": 25
+            },
+            "signer": {
+              "sha256": [
+                "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "android.permission.ACCESS_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.ACCESS_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.BLUETOOTH"
+              },
+              {
+                "name": "android.permission.BLUETOOTH_ADMIN"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.READ_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_SETTINGS"
+              },
+              {
+                "name": "android.permission.NFC"
+              },
+              {
+                "name": "android.permission.USB_PERMISSION",
+                "maxSdkVersion": 22
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE"
+              }
+            ],
+            "usesPermissionSdk23": [
+              {
+                "name": "android.permission.ACCESS_COARSE_LOCATION"
+              }
+            ]
+          },
+          "antiFeatures": {
+            "AddOne": {
+              "en-US": "was added this update"
+            }
+          }
+        }
+      }
+    },
+    "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y": {
+      "metadata": {
+        "name": {
+          "en-US": "App3",
+          "en": "en "
+        },
+        "summary": {
+          "en-US": "App3 summary",
+          "en": "en "
+        },
+        "description": {
+          "en-US": "App3 description",
+          "en": "en "
+        },
+        "added": 1234567890,
+        "lastUpdated": 9223372036854775807,
+        "webSite": "http://min1.test.org",
+        "changelog": "changeLog3",
+        "license": "GPLv3",
+        "sourceCode": "source code3",
+        "issueTracker": "tracker3",
+        "translation": "translation3",
+        "preferredSigner": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "categories": [
+          "Cat1",
+          "Cat2",
+          "Cat3"
+        ],
+        "authorName": "App3 author",
+        "authorEmail": "email",
+        "authorWebSite": "website",
+        "authorPhone": "phone",
+        "donate": [
+          "donate"
+        ],
+        "liberapayID": "liberapayID",
+        "liberapay": "liberapay",
+        "openCollective": "openCollective",
+        "bitcoin": "bitcoin",
+        "litecoin": "litecoin",
+        "flattrID": "flattrID",
+        "icon": {
+          "en": {
+            "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
+            "sha256": "32758e380aeg6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+            "size": 2253245
+          }
+        },
+        "featureGraphic": {
+          "en": {
+            "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
+            "sha256": "54758e380ae762f7c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+            "size": 32453245
+          }
+        },
+        "promoGraphic": {
+          "en": {
+            "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
+            "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+            "size": 4523325
+          }
+        },
+        "tvBanner": {
+          "en": {
+            "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
+            "sha256": "54758e380aeh6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+            "size": 32453245
+          }
+        },
+        "video": {
+          "en": "en "
+        },
+        "screenshots": {
+          "phone": {
+            "en": [
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/phoneScreenshots/en phoneScreenshots",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              },
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/phoneScreenshots/en phoneScreenshots2",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              }
+            ]
+          },
+          "sevenInch": {
+            "en": [
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/sevenInchScreenshots/en sevenInchScreenshots",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              },
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/sevenInchScreenshots/en sevenInchScreenshots2",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              }
+            ]
+          },
+          "tenInch": {
+            "en": [
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/tenInchScreenshots/en tenInchScreenshots",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              },
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/tenInchScreenshots/en tenInchScreenshots2",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              }
+            ]
+          },
+          "wear": {
+            "en": [
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/wearScreenshots/en wearScreenshots",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              },
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/wearScreenshots/en wearScreenshots2",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              }
+            ]
+          },
+          "tv": {
+            "en": [
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/tvScreenshots/en tvScreenshots",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              },
+              {
+                "name": "/Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/tvScreenshots/en tvScreenshots2",
+                "sha256": "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
+                "size": 0
+              }
+            ]
+          }
+        }
+      },
+      "versions": {
+        "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06": {
+          "added": 1643250075000,
+          "file": {
+            "name": "/org.fdroid.fdroid_1014050.apk",
+            "sha256": "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06",
+            "size": 8165518
+          },
+          "src": {
+            "name": "/org.fdroid.fdroid_1014050_src.tar.gz",
+            "sha256": "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06",
+            "size": 8165518
+          },
+          "manifest": {
+            "versionName": "1.14",
+            "versionCode": 1014050,
+            "usesSdk": {
+              "minSdkVersion": 22,
+              "targetSdkVersion": 25
+            },
+            "maxSdkVersion": 2147483647,
+            "signer": {
+              "sha256": [
+                "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+                "33238d512c1e3eb2d6569f4a3bfbf5523418b22e0a3ed1552770abb9a9c9ccvb"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "android.permission.ACCESS_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.ACCESS_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_NETWORK_STATE"
+              },
+              {
+                "name": "android.permission.CHANGE_WIFI_STATE"
+              },
+              {
+                "name": "android.permission.BLUETOOTH"
+              },
+              {
+                "name": "android.permission.BLUETOOTH_ADMIN"
+              },
+              {
+                "name": "android.permission.RECEIVE_BOOT_COMPLETED"
+              },
+              {
+                "name": "android.permission.READ_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_EXTERNAL_STORAGE"
+              },
+              {
+                "name": "android.permission.WRITE_SETTINGS"
+              },
+              {
+                "name": "android.permission.NFC"
+              },
+              {
+                "name": "android.permission.USB_PERMISSION",
+                "maxSdkVersion": 22
+              },
+              {
+                "name": "android.permission.WAKE_LOCK"
+              },
+              {
+                "name": "android.permission.FOREGROUND_SERVICE"
+              }
+            ],
+            "usesPermissionSdk23": [
+              {
+                "name": "android.permission.ACCESS_COARSE_LOCATION"
+              },
+              {
+                "name": "android.permission.USB_PERMISSION",
+                "maxSdkVersion": 2147483647
+              }
+            ],
+            "nativecode": [
+              "x86",
+              "x86_64"
+            ],
+            "features": [
+              {
+                "name": "feature"
+              },
+              {
+                "name": "feature2"
+              }
+            ]
+          },
+          "releaseChannels": [
+            "Beta",
+            "Alpha"
+          ],
+          "antiFeatures": {
+            "AntiFeature": {
+            },
+            "NonFreeNet": {
+            },
+            "NotNice": {
+            },
+            "VeryBad": {
+            },
+            "Dont,Show,This": {
+            },
+            "anti-feature": {
+              "en-US": "bla",
+              "de": "blubb"
+            },
+            "anti-feature2": {
+              "de": "blabla"
+            }
+          }
+        }
+      }
+    }
+  }
+}

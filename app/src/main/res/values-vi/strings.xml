@@ -57,7 +57,7 @@
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
     <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
     <string name="antinonfreeadlist">Ứng dụng này khuyến khích các phần mở rộng không tự do</string>
-    <string name="antinonfreenetlist">Ứng dụng này khuyến khích các dịch vụ mạng không tự do</string>
+    <string name="antinonfreenetlist">Ứng dụng này khuyến khích hoặc phụ thuộc hoàn toàn vào một dịch vụ mạng không tự do</string>
     <string name="antinonfreedeplist">Ứng dụng này phụ thuộc vào các ứng dụng không tự do khác</string>
     <string name="antiupstreamnonfreelist">Mã nguồn không hoàn toàn tự do</string>
     <string name="display">Hiển thị</string>

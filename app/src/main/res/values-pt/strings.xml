@@ -218,8 +218,8 @@
     <string name="antifeatures">Características indesejadas</string>
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antinonfreeadlist">Esta aplicação promove add-ons não livres</string>
-    <string name="antinonfreenetlist">Esta aplicação promove serviços de rede não livres</string>
-    <string name="antinonfreedeplist">Esta aplicação depende de aplicações não livres</string>
+    <string name="antinonfreenetlist">Esta aplicação promove ou depende inteiramente de um serviço de rede não livre</string>
+    <string name="antinonfreedeplist">Esta aplicação depende de outras aplicações não livres</string>
     <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
     <string name="antinonfreeassetslist">Esta aplicação contém conteúdo não livre</string>
     <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
@@ -514,7 +514,7 @@
     <string name="swap_wifi_vpn_conflict">Conflitos com VPN ativa!</string>
     <string name="has_disallow_install_unknown_sources">Não podem ser adicionadas fontes desconhecidas por este utilizador, o que inclui novos repositórios</string>
     <string name="has_disallow_install_unknown_sources_globally">O administrador do seu dispositivo não permite a instalação de aplicações de fontes desconhecidas que incluem novos repositórios</string>
-    <string name="antinosource">Código-fonte já não disponível</string>
+    <string name="antinosource">Código-fonte já não está disponível</string>
     <string name="antiads">Anúncios</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
     <string name="antinonfreedep">Dependências não livres</string>

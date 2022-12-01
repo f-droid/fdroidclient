@@ -57,7 +57,7 @@
     <string name="antiadslist">このアプリは広告を表示します</string>
     <string name="antitracklist">このアプリはあなたの操作を記録し報告します</string>
     <string name="antinonfreeadlist">このアプリは不自由なアドオンを推奨します</string>
-    <string name="antinonfreenetlist">このアプリは不自由なネットワークサービスを推奨します</string>
+    <string name="antinonfreenetlist">このアプリは自由でないネットワークサービスを推奨しているか、完全に依存しています</string>
     <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依存します</string>
     <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>

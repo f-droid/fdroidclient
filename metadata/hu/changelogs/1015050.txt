@@ -1,0 +1,5 @@
+* A letöltési logika teljes átdolgozása a továbbfejlesztett teljesítmény és a tükörkiszolgálók támogatása érdekében.
+
+* A képernyőképek és a grafikák most már tükörkiszolgálókról kerülnek letöltésre.
+
+* Csökkentett adatvédelmi szivárgások a TLS munkamenetekkel

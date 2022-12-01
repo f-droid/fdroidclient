@@ -1,0 +1,7 @@
+* Zabránit použití HTTP ETag jako sledovacího souboru cookie
+
+* Vylepšené rozvržení snímků obrazovky
+
+* Správné čištění dočasných souborů a souborů v mezipaměti
+
+* Opravy tmavého režimu

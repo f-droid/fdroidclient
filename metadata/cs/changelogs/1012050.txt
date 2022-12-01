@@ -1,0 +1,13 @@
+* Lokalizace popisu aplikace plně respektuje seznamy v nastavení jazyka systému Android
+
+* Na kartě Nejnovější se zobrazují aplikace podle nastavení jazyka, nejnovější jsou seřazeny jako první (@TheLastProject @IzzySoft)
+
+* Výrazně vylepšeny výsledky vyhledávání (@Tvax @gcbrown76)
+
+* Spolehlivější čištění mezipaměti
+
+* Efektivní plánování čištění mezipaměti (@Isira-Seneviratne)
+
+* Přepracování parsování URL repo pro spolehlivé přidávání repo (@projectgus)
+
+* Volitelné zapnutí F-Droid Metrics

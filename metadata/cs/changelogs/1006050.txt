@@ -1,0 +1,13 @@
+* Na kartě Nejnovější jsou nyní zvýrazněny aplikace, které poskytují popisy, překlady, snímky obrazovky
+
+* Automatické stahování ze zrcadel pro urychlení stahování a snížení zátěže f-droid.org
+
+* Zakázání zrcadel pomocí nových přepínačů v RepoDetails (#1696)
+
+* Efektivnější ukládání do mezipaměti pro stahování (pro jednotlivé repozitáře; na různých webových serverech #1708)
+
+* Oprava instalací vyžadujících Unknown Sources s privilegovaným rozšířením (#1702)
+
+* Oprava chybějících ikon pro ty, kteří nepoužívají Wi-Fi (#1592)
+
+* Vylepšené překlady pro kartu Aktualizace vs. předvolby

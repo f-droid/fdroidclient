@@ -152,7 +152,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="banner_updating_repositories">Oppdaterer arkiver</string>
+    <string name="banner_updating_repositories">Oppdaterer pakkebrønner …</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="repo_details">Pakkebrønn</string>
     <string name="repo_url">Adresse</string>
@@ -503,7 +503,7 @@
     <string name="swap_toast_closing_nearby_after_timeout">I nærheten lukket på grunn av inaktivitet.</string>
     <string name="nearby_splash__document_tree">Søk USB OTG for pakkebrønner og speil.</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="notification_channel_swaps_description">Viser P2P-apputvekslingsvarsler.</string>
+    <string name="notification_channel_swaps_description">Viser merknader for likemannsprogramutveksling.</string>
     <string name="notification_channel_swaps_title">Bytte</string>
     <string name="notification_channel_updates_description">Viser program- og pakkebrønns-oppdateringsmerknader.</string>
     <string name="notification_channel_updates_title">Oppdateringer</string>

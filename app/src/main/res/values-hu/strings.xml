@@ -45,7 +45,7 @@
     <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
     <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
     <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
-    <string name="antinonfreenetlist">Az alkalmazás nem szabad hálózati szolgáltatásokat támogat</string>
+    <string name="antinonfreenetlist">Az alkalmazás nem szabad hálózati szolgáltatást támogat vagy teljesen attól függ</string>
     <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
     <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
     <string name="display">Megjelenés</string>

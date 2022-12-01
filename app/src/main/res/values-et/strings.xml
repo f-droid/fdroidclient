@@ -122,7 +122,7 @@
     <string name="details_notinstalled">Pole paigaldatud</string>
     <string name="antiadslist">Selles rakenduses on reklaame</string>
     <string name="antinonfreeadlist">See rakendus edendab mitte-vabu laiendusi</string>
-    <string name="antinonfreenetlist">See rakendus eelistab mitte-vabu võrguteenuseid</string>
+    <string name="antinonfreenetlist">See rakendus eelistab mitte-vabu võrguteenuseid või sõltub neist täielikult</string>
     <string name="antinonfreedeplist">See rakendus sõltub teistest mitte-vabadest rakendustest</string>
     <string name="antiupstreamnonfreelist">Ülesvoolu lähtekood ei ole täiesti vaba</string>
     <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu komponente</string>

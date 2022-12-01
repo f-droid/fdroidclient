@@ -64,9 +64,9 @@
     <string name="other">غير ذلك</string>
     <string name="update_interval">تحديث الفاصل الزمني التلقائي</string>
     <string name="update_auto_download">جلب التحديثات تلقائياً</string>
-    <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً و أنت تتلقي إشعار لتثبيتها</string>
+    <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً وأنت تتلقى إشعار لتثبيتها</string>
     <string name="notify">إظهار التحديثات المتوفرة</string>
-    <string name="notify_on">أظهر إشعارا عندما تتوفر هناك تحديثات</string>
+    <string name="notify_on">أظهر إشعارًا عندما تتوفر هناك تحديثات</string>
     <string name="system_installer">ملحقات متميزة</string>
     <string name="system_installer_on">استخدام الملحقات المميزة لتثبيت وتحديث وإزالة الحزم</string>
     <string name="local_repo_name_summary">عنوان المعلن لديك في المستودعات المحلية: %s</string>
@@ -105,7 +105,7 @@
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
     <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاصة بك</string>
     <string name="antinonfreeadlist">هذا التطبيق يحمل إضافات غير حرة</string>
-    <string name="antinonfreenetlist">هذا التطبيق يحمل خدمات شبكة غير حرة</string>
+    <string name="antinonfreenetlist">هذا التطبيق يروج أو يعتمد كليًّا على خدمة شبكة غير حرة</string>
     <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
     <string name="antiupstreamnonfreelist">شفرة المصدر المنشطة ليست حرة تماماً</string>
     <string name="antinonfreeassetslist">هذا التطبيق يحتوي على أصول غير الحرة</string>
@@ -258,15 +258,15 @@
     <string name="keep_month">شهر</string>
     <string name="keep_year">سنة</string>
     <string name="keep_forever">إلى الأبد</string>
-    <string name="theme_light">ابيض</string>
-    <string name="theme_dark">اسود</string>
+    <string name="theme_light">فاتحة</string>
+    <string name="theme_dark">داكنة</string>
     <string name="crash_dialog_title">لقد تعطل اف-درويد</string>
     <string name="crash_dialog_text">حدث خطأ غير متوقع أجبَر التطبيق على التوقف. هل ترغب في إرسال بريد إلكتروني بالتفاصيل للمساعدة في حل المشكلة ؟</string>
     <string name="crash_dialog_comment_prompt">يمكنك إضافة معلومات وتعليقات إضافية هنا:</string>
     <string name="keep_install_history">الحفاظ على تاريخ التثبيت</string>
     <string name="keep_install_history_summary">تخزين سجل عن جميع التثبيتات و إلغاء التثبيتات في مخزن خاص</string>
     <string name="update_auto_install">تثبيت التحديثات تلقائياً</string>
-    <string name="update_auto_install_summary">تنزيل وتثبيت تحديثات التطبيقات التي تُظهر إشعارا في الخلفية</string>
+    <string name="update_auto_install_summary">تنزيل وتثبيت تحديثات التطبيقات في الخلفية، مع إظهار إشعار</string>
     <string name="versions">النُسخ</string>
     <string name="warning_no_internet">لا يمكن التحديث. تَحقّق من ربطك بالإنترنت ؟</string>
     <string name="main_menu__swap_nearby">قريبة منك</string>
@@ -315,7 +315,7 @@
     <string name="details_last_updated_today">حُدِّث اليوم</string>
     <string name="updates__tts__download_app">تحميل</string>
     <string name="by_author_format">بواسطة %s</string>
-    <string name="app_details_donate_prompt_unknown_author">اشتري لمطوري  %1$s كأسا من القهوة!</string>
+    <string name="app_details_donate_prompt_unknown_author">اشتري لمطوري %1$s كأسًا من القهوة!</string>
     <string name="app__tts__cancel_download">ألغ التحميل</string>
     <string name="installed_app__updates_ignored">تم تجاهل التحديثات</string>
     <string name="installed_app__updates_ignored_for_suggested_version">تم تجاهل التحديثات للنسخة %1$s</string>
@@ -332,7 +332,7 @@
     <string name="download_404">الملف المطلوب غير موجود.</string>
     <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
     <string name="tts_category_name">الفئة %1$s</string>
-    <string name="app_details_donate_prompt">%1$s تم تطويره من طرف %2$s. إشتري لهم مشروبا !</string>
+    <string name="app_details_donate_prompt">تم تطوير %1$s من طرف %2$s. اشترِ لهم مشروبًا!</string>
     <string name="app_installed_media">تم تثبيت الملف على %s</string>
     <string name="app_list_download_ready">تم تنزيله و جاهز للتثبيت</string>
     <string name="app_list__dismiss_downloading_app">تم إلغاء التنزيل</string>
@@ -453,7 +453,7 @@
     <string name="swap_toast_could_not_enable_hotspot">تعذر تشغيل نقطة الواي فاي !</string>
     <string name="over_wifi">على الواي فاي</string>
     <string name="over_data">في وضع بيانات الجوال</string>
-    <string name="over_network_always_summary">استخدم دائما هذا الاتصال عند توفره</string>
+    <string name="over_network_always_summary">دائمًا استخدم هذا الاتصال عند توفره</string>
     <string name="over_network_never_summary">لا تقم بتنزيل أي شيء باستخدام هذا الاتصال</string>
     <string name="over_network_on_demand_summary">استخدم هذا الاتصال فقط عندما أنقر للتنزيل</string>
     <string name="repo_exists_add_fingerprint">%1$s تم إعداده بالفعل، وهذا سوف يضيف معلومات أساسية جديدة.</string>

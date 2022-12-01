@@ -56,8 +56,7 @@
     <string name="show_incompat_versions">Zahrnout nekompatibilní verze</string>
     <string name="local_repo">Místní repozitář</string>
     <string name="local_repo_running">F-Droid je připraven k výměně</string>
-    <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním si přetáhnout tvé aplikace.
-    </string>
+    <string name="touch_to_configure_local_repo">Dotykem zobrazíte detaily a umožníte ostatním si přetáhnout vaše aplikace.</string>
     <string name="deleting_repo">Odstraňuji místní repozitář…</string>
     <string name="adding_apks_format">Přidávám %s do repozitáře…</string>
     <string name="writing_index_jar">Zapisuji podepsaný soubor s indexem (index.jar)…</string>
@@ -126,7 +125,7 @@
     <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
     <string name="menu_changelog">Seznam změn</string>
     <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
-    <string name="antinonfreenetlist">Tato aplikace propaguje nesvobodné síťové služby</string>
+    <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nesvobodné síťové službě</string>
     <string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
     <string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
     <string name="appcompatibility">Kompatibilita aplikace</string>
@@ -182,7 +181,7 @@
     </string>
     <string name="empty_can_update_app_list">Gratulujeme!\nVšechny nainstalované aplikace jsou aktuální.</string>
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
-    <string name="uninstall_error_unknown">Chyba deinstalace kvůli neznámé chybě</string>
+    <string name="uninstall_error_unknown">Chyba odinstalace kvůli neznámé chybě</string>
     <string name="swap_join_this_hotspot">Pomoz přátelům s připojením k hotspotu</string>
     <string name="swap">Vyměnit aplikace</string>
     <string name="swap_success">Výměna úspěšná!</string>
@@ -252,10 +251,10 @@
     <string name="swap_stopping_wifi">Odpojení Wi-Fi…</string>
     <string name="swap_no_peers_nearby">V blízkosti nenalezen nikdo pro výměnu aplikací.</string>
     <string name="swap_connection_misc_error">Došlo k chybě při připojování k přístroji, zdá se že nelze vyměňovat aplikace!</string>
-    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této existující aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
-    <string name="install_confirm_update_system">Chcete nainstalovat aktualizaci této integrované aplikace? Stávající data nebudou ztracena. Aktualizovaná aplikace získá přístup k následujícímu:</string>
-    <string name="install_confirm_update_no_perms">Chcete nainstalovat aktualizaci této existující aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
-    <string name="install_confirm_update_system_no_perms">Chcete nainstalovat aktualizaci této integrované aplikace? Vaše existující data nebudou ztracena. Není vyžadován žádný zvláštní přístup.</string>
+    <string name="install_confirm_update">Chcete nainstalovat aktualizaci této existující aplikace\? Stávající data budou zachována. Aktualizovaná aplikace získá přístup k následujícímu:</string>
+    <string name="install_confirm_update_system">Chcete nainstalovat aktualizaci této integrované aplikace\? Vaše stávající data budou zachována. Aktualizovaná aplikace získá přístup k následujícímu:</string>
+    <string name="install_confirm_update_no_perms">Chcete nainstalovat aktualizaci této existující aplikace\? Vaše stávající data budou zachována. Není vyžadován žádný zvláštní přístup.</string>
+    <string name="install_confirm_update_system_no_perms">Chcete nainstalovat aktualizaci této integrované aplikace\? Vaše stávající data budou zachována. Není vyžadován žádný zvláštní přístup.</string>
     <string name="download_pending">Čekání na spuštění stahování…</string>
     <string name="install_error_notify_title">Chyba instalace %s</string>
     <string name="uninstall_error_notify_title">Chyba odinstalace %s</string>
@@ -276,8 +275,8 @@
     <string name="update_auto_install_summary">Stahovat a aktualizovat aplikace na pozadí, zobrazovat upozornění</string>
     <string name="versions">Verze</string>
     <string name="warning_no_internet">Nedaří se aktualizovat – jste připojení k Internetu?</string>
-    <string name="app_details_donate_prompt_unknown_author">Koupit vývojářům kávu za %1$s!</string>
-    <string name="app_details_donate_prompt">%1$s vytvořil %2$s. Kup mu kávu!</string>
+    <string name="app_details_donate_prompt_unknown_author">Kupte vývojářům aplikace %1$s kávu!</string>
+    <string name="app_details_donate_prompt">%1$s vytvořil vývojář %2$s. Kupte mu kávu!</string>
     <string name="app_version_x_available">Je dostupná verze %1$s</string>
     <string name="app_version_x_installed">Verze %1$s</string>
     <string name="clear_search">Vymazat hledání</string>

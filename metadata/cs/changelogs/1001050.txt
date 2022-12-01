@@ -1,0 +1,7 @@
+* Podpora oficiálních zrcadel pro libovolné repozitáře s automatickým výběrem na základě dostupnosti
+
+* Spousta vylepšení rozhraní, včetně vylepšení stability a opravy chyb
+
+* Nové předvolby soukromí: Zabránit pořizování snímků obrazovky; ukončení při panice
+
+* Nové jazyky: korejština (ko) a vietnamština (vi)

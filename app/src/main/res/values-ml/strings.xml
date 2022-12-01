@@ -4,12 +4,12 @@
     <string name="updates">പുതുക്കലുകള്‍</string>
     <string name="ok">ശരി</string>
     <string name="yes">അതെ</string>
-    <string name="no">അല്ല</string>
-    <string name="back">പിന്നോട്ട്</string>
+    <string name="no">ഇല്ല</string>
+    <string name="back">തിരികെ</string>
     <string name="cancel">റദ്ദാക്കുക</string>
     <string name="menu_manage">സംഭരണികള്‍</string>
     <string name="menu_settings">ക്രമീകരണങ്ങൾ</string>
-    <string name="menu_search">തിരയൽ</string>
+    <string name="menu_search">തിരയുക</string>
     <string name="menu_add_repo">ശേഖരണം ചേര്‍ക്കുക</string>
     <string name="menu_launch">തുറക്കുക</string>
     <string name="menu_share">പങ്കിടുക</string>
@@ -63,7 +63,7 @@
     <string name="category_Sports_Health">കായികവും ആരോഗ്യവും</string>
     <string name="category_System">ഉപകരണ സംബന്ധം</string>
     <string name="swap_send_fdroid">ഈ ആപ്പ് അയക്കുക</string>
-    <string name="apps">ആപ്പുകൾ</string>
+    <string name="apps">പ്രയോഗങ്ങൾ</string>
     <string name="crash_dialog_title">എഫ്-ഡ്രോയ്ഡ് തകര്‍ന്നു</string>
     <string name="crash_dialog_text">പ്രയോഗം നിർത്തുന്നതില്‍ ഒരു അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. പ്രശ്നം പരിഹരിക്കാൻ സഹായിക്കുന്നതിന് വിശദാംശങ്ങൾ ഇ-മെയിൽ ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
     <string name="notification_title_single_update_available">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>
@@ -84,7 +84,7 @@
     <string name="update_auto_download">പുതുക്കലുകള്‍ സ്വതവേ ലഭ്യമാക്കുക</string>
     <string name="update_auto_download_summary">പുതുക്കലുകള്‍ സ്വതവേ ഡൗൺലോഡ് ചെയ്യുകയും അവ സ്ഥാപിക്കാന്‍ നിങ്ങളെ വിവരം അറിയിക്കുകയും ചെയ്യുക</string>
     <string name="update_auto_install">പുതുക്കലുകള്‍ സ്വതവേ സ്ഥാപിക്കുക</string>
-    <string name="update_auto_install_summary">ആപ്പുകൾ ഒരു അറിയിപ്പ് കാട്ടി, പിന്നണിയിൽ ഡൗൺലോഡ് ചെയ്ത് പുതുക്കുക</string>
+    <string name="update_auto_install_summary">ഒരു അറിയിപ്പ് കാണിക്കുന്ന പശ്ചാത്തലത്തിൽ പ്രയോഗങ്ങൾ ഡൗൺലോഡ് ചെയ്‌ത് പുതുക്കുക</string>
     <string name="notify">ലഭ്യമായ പുതുക്കലുകള്‍ കാണിക്കുക</string>
     <string name="notify_on">പുതുക്കലുകൾ ലഭ്യമാകുമ്പോൾ ഒരു അറിയിപ്പ് കാണിക്കുക</string>
     <string name="system_installer">പ്രത്യേകാധികാരമുള്ള കൂട്ടിച്ചേര്‍പ്പ്</string>
@@ -163,10 +163,10 @@
     <string name="details_new_in_version">%s പതിപ്പില്‍ പുതിയത്</string>
     <string name="antifeatureswarning">ഈ പ്രയോഗത്തില്‍ നിങ്ങൾ ഇഷ്ടപ്പെടാതിരിക്കാവുന്ന സവിശേഷതകളുണ്ട്.</string>
     <string name="antifeatures">വിരുദ്ധ സവിശേഷതകൾ</string>
-    <string name="antiadslist">ഈ പ്രയോഗത്തില്‍ പരസ്യം നൽകിയിരിക്കുന്നു</string>
+    <string name="antiadslist">ഈ പ്രയോഗത്തില്‍ പരസ്യം അടങ്ങിയിരിക്കുന്നു</string>
     <string name="antinonfreeadlist">ഈ പ്രയോഗം സ്വതന്ത്രമല്ലാത്ത ആഡ്-ഓണുകള്‍ പ്രോത്സാഹിപ്പിക്കുന്നു</string>
-    <string name="antinonfreenetlist">ഈ പ്രയോഗം സ്വതന്ത്രമല്ലാത്ത നെറ്റ്‌വര്‍ക് സേവനങ്ങള്‍ പ്രോത്സാഹിപ്പിക്കുന്നു</string>
-    <string name="antinonfreedeplist">ഈ പ്രയോഗം സ്വതന്ത്രമല്ലാത്ത മറ്റു പ്രയോഗങ്ങളെ ആശ്രയിക്കുന്നു</string>
+    <string name="antinonfreenetlist">ഈ പ്രയോഗം സൗജന്യമല്ലാത്ത നെറ്റ്‌വര്‍ക് സേവനങ്ങള്‍ പ്രോത്സാഹിപ്പിക്കുന്നു അല്ലെങ്കിൽ പൂർണ്ണമായും ആശ്രയിക്കുന്നു</string>
+    <string name="antinonfreedeplist">ഈ പ്രയോഗം സൗജന്യമല്ലാത്ത മറ്റു പ്രയോഗങ്ങളെ ആശ്രയിക്കുന്നു</string>
     <string name="antiupstreamnonfreelist">അപ്സ്ട്രീം സോഴ്സ് കോഡ് പൂർണ്ണമായും സ്വതന്ത്രമല്ല</string>
     <string name="antinonfreeassetslist">ഈ പ്രയോഹം സ്വതന്ത്രമല്ലാത്ത ആസ്തികള്‍ ഉപയോഗിക്കുന്നു</string>
     <string name="display">പ്രദര്‍ശനം</string>
@@ -196,7 +196,7 @@
 \n %2$s നെ 
 \n %1$s ല്‍ നിന്ന്</string>
     <string name="download_404">അഭ്യർത്ഥിച്ച ഫയൽ കണ്ടെത്തിയില്ല.</string>
-    <string name="banner_updating_repositories">ആപ്പ് ശേഖരണം പുതുക്കുന്നു</string>
+    <string name="banner_updating_repositories">ശേഖരണം പുതുക്കുന്നു</string>
     <string name="status_connecting_to_repo">ബന്ധിപ്പിക്കുന്നു 
 \n %1$s ലേക്ക്</string>
     <string name="repos_unchanged">എല്ലാ സംഭരണികളും കാലികമാണ്</string>
@@ -442,7 +442,7 @@
     <string name="prompt_to_send_crash_reports_summary">ആപ്പിൽ തകർച്ച ഉണ്ടായാൽ വിവരങ്ങൾ ശേഖരിച്ചു ആപ്പ് വികസിപ്പിച്ചവർക്ക്‌ അയക്കാൻ ആവശ്യപ്പെടുക</string>
     <string name="install_history">ഇൻസ്റ്റാൾ ചരിത്രം</string>
     <string name="install_history_summary">എല്ലാ സജ്ജമാക്കലിന്റെയും ഒഴിവാക്കലിന്റെയും സ്വകാര്യ രേഖ കാണുക</string>
-    <string name="send_version_and_uuid">തിരിച്ചറിയൽ യു.യു.ഐ.ഡി യും പതിപ്പ് വിവരങ്ങളും സർവറിലേക്കു അയക്കുക</string>
+    <string name="send_version_and_uuid">പതിപ്പും UUID-യും സെർവറുകളിലേക്ക് അയയ്ക്കുക</string>
     <string name="send_version_and_uuid_summary">ആപ്പിന്റെ പതിപ്പ് വിവരവും തിരിച്ചറിയാലിനായി ക്രമത്തിൽ പെടാത്ത ഒരു സംഖ്യയും ഡൌൺലോഡ് ചെയ്യുമ്പോൾ ഉൾപെടുത്തുക, ഇത് ആപ്പിന്റെ അടുത്ത ഉപയോഗം മുതൽ പ്രതിഫലിക്കും.</string>
     <string name="share_repository">ആപ്പ് ശേഖരണം പങ്കിടുക</string>
     <string name="antinosourcesince">സോഴ്സ് കോഡ് ഇനി മുതൽ ലഭ്യമല്ല, നവീകരണം അസാധ്യമാണ്.</string>
@@ -489,14 +489,14 @@
     <string name="swap_error_cannot_start_bluetooth">ബ്ലൂടൂത്ത് സജ്ജമാക്കാൻ സാധിച്ചില്ല!</string>
     <string name="swap_toast_closing_nearby_after_timeout">പ്രവർത്തനശൂന്യമായതിനാൽ സമീപ ഇടപാടുകൾ നിർത്തി വെച്ചു.</string>
     <string name="nearby_splash__document_tree">ആപ്പ് സംഭരണ വിവരവും പകര-സർവർ വിവരവും യു.എസ്‌.ബീ ഓ.ടി.ജിയിൽ തിരയുക.</string>
-    <string name="menu_opencollective">ഓപ്പൺ കലക്ടീവ്</string>
+    <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">അപ്ലിക്കേഷനും ശേഖരണ അപ്‌ഡേറ്റ് അറിയിപ്പുകളും പ്രദർശിപ്പിക്കുന്നു.</string>
     <string name="notification_channel_updates_title">അപ്‌ഡേറ്റുകൾ</string>
     <string name="notification_channel_swaps_description">P2P അപ്ലിക്കേഷൻ സ്വാപ്പിംഗ് അറിയിപ്പുകൾ പ്രദർശിപ്പിക്കുന്നു.</string>
     <string name="notification_channel_swaps_title">സ്വാപ്പുകൾ</string>
     <string name="notification_channel_installs_description">അപ്ലിക്കേഷൻ ഇൻസ്റ്റാളേഷൻ അറിയിപ്പുകൾ പ്രദർശിപ്പിക്കുന്നു.</string>
     <string name="notification_channel_installs_title">ഇൻസ്റ്റാളേഷനുകൾ</string>
-    <string name="install_history_and_metrics">സ്ഥാപനം ചരിത്രവും റിപ്പോർട്ടും</string>
+    <string name="install_history_and_metrics">ചരിത്രവും മെട്രിക്കുകളും ഇൻസ്റ്റാൾ ചെയ്യുക</string>
     <string name="send_fdroid_metrics_json">%s മെട്രിക്സ് റിപ്പോർട്ട് ജെസൺ ഫയൽ ആയിട്ട്</string>
     <string name="send_fdroid_metrics_report">%s അളവുകളുടെ റിപ്പോർട്ട് അയക്കയുക</string>
     <string name="theme_follow_system">സിസ്റ്റം സ്ഥിരസ്ഥിതി പിന്തുടരുക</string>
@@ -515,7 +515,16 @@
     <string name="has_disallow_install_unknown_sources">ഈ ഉപയോക്താവിന് അജ്ഞാത ഉറവിടങ്ങൾ ചേർക്കാനാകില്ല, അതിൽ പുതിയ സംഭരണികൾ ഉൾപ്പെടുന്നു</string>
     <string name="has_disallow_install_unknown_sources_globally">അജ്ഞാത ഉറവിടങ്ങളിൽ നിന്നുള്ള ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യാൻ നിങ്ങളുടെ ഉപകരണ അഡ്‌മിൻ അനുവദിക്കുന്നില്ല, അതിൽ പുതിയ സംഭരണികൾ  ഉൾപ്പെടുന്നു</string>
     <string name="antiads">പരസ്യങ്ങള്‍</string>
-    <string name="antiothers">മറ്റ് ആൻ്റിവയറസുകൾ</string>
+    <string name="antiothers">മറ്റ് വിരുദ്ധ സവിശേഷതകൾ</string>
     <string name="antinonfreenet">സൗജന്യമല്ലാത്ത നെറ്റ്‌വർക്ക് സേവനങ്ങൾ</string>
     <string name="antinonfreead">സൗജന്യമല്ലാത്ത ആഡോണുകൾ</string>
+    <string name="antinonfreedep">സൗജന്യമല്ലാത്ത ആശ്രിതത്വങ്ങൾ</string>
+    <string name="antiknownvuln">അറിയപ്പെടുന്ന ദുർബലത</string>
+    <string name="antinosource">സോഴ്സ് കോഡ് ഇനി ലഭ്യമല്ല</string>
+    <string name="app_list_results_hidden_antifeature_settings">നിങ്ങളുടെ ആന്റിഫീച്ചർ ക്രമീകരണങ്ങളനുസരിച്ച് ചില ഫലങ്ങൾ മറച്ചിരിക്കുന്നു.</string>
+    <string name="antinsfw">എല്ലായിടത്തും പരസ്യപ്പെടുത്താനോ ദൃശ്യമാകാനോ പാടില്ലാത്ത ഉള്ളടക്കം ഈ പ്രയോഗത്തിൽ അടങ്ങിയിരിക്കുന്നു</string>
+    <string name="antitrack">പിന്തുടരുക</string>
+    <string name="antiupstreamnonfree">സൗജന്യമല്ലാത്ത അപ്സ്ട്രീം</string>
+    <string name="antidisabledalgorithm">സുരക്ഷിതമല്ലാത്ത അൽഗോരിതം ഉപയോഗിച്ചാണ് ഒപ്പിട്ടത്</string>
+    <string name="antinonfreeassets">സൗജന്യമല്ലാത്ത ആസ്തികൾ</string>
 </resources>

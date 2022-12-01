@@ -739,6 +739,9 @@ public class App extends ValueObject implements Comparable<App>, Parcelable {
 
     public RequestBuilder<Drawable> loadWithGlide(Context context) {
         Repo repo = RepoProvider.Helper.findById(context, repoId);
+        if (repo == null) { // This is also used for apps that do not have a repo
+            return Glide.with(context).load((Drawable) null);
+        }
         if (repo.address.startsWith("content://")) {
             return Glide.with(context).load(getIconUrl(context, repo));
         } else if (repo.address.startsWith("file://")) {

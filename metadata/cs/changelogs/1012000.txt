@@ -1,0 +1,12 @@
+* Lokalizace popisu aplikace nyní plně respektuje seznamy jazyků v nastavení jazyka
+  systému Android
+
+* Nejnovější karta zobrazuje výsledky na základě nastavení jazyka
+
+* Na kartě Nejnovější se nyní zobrazují výsledky seřazené jako první nejnovější (@TheLastProject @IzzySoft)
+
+* Podpora motivů modernizována a navázána na vestavěné motivy Androidu (@proletarius101)
+
+* Výsledky vyhledávání výrazně vylepšeny (@Tvax @gcbrown76)
+
+* Umožnit Androidu efektivně plánovat operace čištění mezipaměti na pozadí (@Isira-Seneviratne)

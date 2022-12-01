@@ -1,6 +1,6 @@
 F-Droid é 1.0!
 
-Esta versão inclui muitas grandes mudanças:
+Esta versão inclui muitas e grandes mudanças:
 
 * Fluxo totalmente revisado para atualização de aplicativos
 

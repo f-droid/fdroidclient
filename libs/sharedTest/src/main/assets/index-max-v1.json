@@ -1,0 +1,602 @@
+{
+  "repo": {
+    "timestamp": 9223372036854775807,
+    "version": 2147483647,
+    "maxage": 2147483647,
+    "name": "MaxV1",
+    "icon": "max-v1.png",
+    "address": "https://max-v1.org",
+    "description": "This is a repo with maximum data.",
+    "mirrors": [
+      "https://max-v1.com",
+      "https://max-v1.org"
+    ]
+  },
+  "requests": {
+    "install": [
+      "installThis",
+      "installThat"
+    ],
+    "uninstall": [
+      "uninstallThis"
+    ]
+  },
+  "apps": [
+    {
+      "categories": [
+        "Cat1"
+      ],
+      "antiFeatures": [
+        "AntiFeature"
+      ],
+      "summary": "App1 summary",
+      "description": "App1 description",
+      "name": "App1",
+      "authorName": "App1 author",
+      "license": "GPLv3",
+      "webSite": "http://min1.test.org",
+      "added": 1234567890,
+      "icon": "icon-min1.png",
+      "packageName": "org.fdroid.min1",
+      "lastUpdated": 1234567891,
+      "localized": {
+        "de": {
+          "description": "App1 beschreibung",
+          "name": "app 1 name",
+          "summary": "App1 Zusammenfassung"
+        }
+      }
+    },
+    {
+      "categories": [
+        "NoMoreSystem",
+        "OneMore"
+      ],
+      "antiFeatures": [
+        "AddOne"
+      ],
+      "summary": "new summary",
+      "description": "new description",
+      "changelog": "https://gitlab.com/fdroid/fdroidclient/raw/HEAD/CHANGELOG.md",
+      "translation": "https://hosted.weblate.org/projects/f-droid/f-droid",
+      "issueTracker": "https://gitlab.com/fdroid/fdroidclient/issues",
+      "sourceCode": "https://gitlab.com/fdroid/fdroidclient",
+      "binaries": "https://fdroid.org/binaries",
+      "name": "F-DroidX",
+      "donate": "https://f-droid.org/donate",
+      "liberapayID": "27859",
+      "openCollective": "F-Droid-Euro",
+      "flattrID": "343053",
+      "suggestedVersionName": "1.14",
+      "suggestedVersionCode": "1014003",
+      "license": "GPL-3.0-or-later",
+      "webSite": "https://fdroid.org",
+      "added": 1295222400000,
+      "icon": "org.fdroid.fdroid.1014050.png",
+      "packageName": "org.fdroid.fdroid",
+      "lastUpdated": 1643250075000,
+      "localized": {
+        "ch": {
+          "description": "new desc",
+          "name": "new name",
+          "whatsNew": "This is new!",
+          "tenInchScreenshots": [
+            "new screenshots"
+          ],
+          "summary": "new summary"
+        },
+        "de": {
+          "summary": "Der App-Store, der Freiheit und Privatsphäre respektiert",
+          "whatsNew": "das ist neu"
+        },
+        "en-US": {
+          "description": "F-Droid is an installable catalogue of libre software",
+          "icon": "new icon",
+          "phoneScreenshots": [
+            "screenshot-app-details.png",
+            "screenshot-dark-details.png",
+            "screenshot-dark-home.png",
+            "screenshot-search.png",
+            "screenshot-updates.png"
+          ],
+          "featureGraphic": "featureGraphic_PTun9TO4cMFOeiqbvQSrkdcxNUcOFQCymMIaj9UJOAY=.jpg",
+          "summary": "new summary in en-US",
+          "whatsNew": "this is new"
+        }
+      }
+    },
+    {
+      "categories": [
+        "Cat1",
+        "Cat2",
+        "Cat3"
+      ],
+      "antiFeatures": [
+        "AntiFeature",
+        "NonFreeNet",
+        "NotNice",
+        "VeryBad",
+        "Dont,Show,This"
+      ],
+      "summary": "App3 summary",
+      "description": "App3 description",
+      "changelog": "changeLog3",
+      "translation": "translation3",
+      "issueTracker": "tracker3",
+      "sourceCode": "source code3",
+      "binaries": "binaries3",
+      "name": "App3",
+      "authorName": "App3 author",
+      "authorEmail": "email",
+      "authorWebSite": "website",
+      "authorPhone": "phone",
+      "donate": "donate",
+      "liberapayID": "liberapayID",
+      "liberapay": "liberapay",
+      "openCollective": "openCollective",
+      "bitcoin": "bitcoin",
+      "litecoin": "litecoin",
+      "flattrID": "flattrID",
+      "suggestedVersionName": "1.0",
+      "suggestedVersionCode": "-9223372036854775808",
+      "license": "GPLv3",
+      "webSite": "http://min1.test.org",
+      "added": 1234567890,
+      "icon": "icon-max1.png",
+      "packageName": "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y",
+      "lastUpdated": 9223372036854775807,
+      "localized": {
+        "en-US": {
+          "whatsNew": "this is new"
+        },
+        "de": {
+          "whatsNew": "das ist neu"
+        },
+        "en": {
+          "description": "en ",
+          "name": "en ",
+          "icon": "en ",
+          "video": "en ",
+          "phoneScreenshots": [
+            "en phoneScreenshots",
+            "en phoneScreenshots2"
+          ],
+          "sevenInchScreenshots": [
+            "en sevenInchScreenshots",
+            "en sevenInchScreenshots2"
+          ],
+          "tenInchScreenshots": [
+            "en tenInchScreenshots",
+            "en tenInchScreenshots2"
+          ],
+          "wearScreenshots": [
+            "en wearScreenshots",
+            "en wearScreenshots2"
+          ],
+          "tvScreenshots": [
+            "en tvScreenshots",
+            "en tvScreenshots2"
+          ],
+          "featureGraphic": "en ",
+          "promoGraphic": "en ",
+          "tvBanner": "en ",
+          "summary": "en "
+        }
+      },
+      "allowedAPKSigningKeys": [
+        "key1, key2"
+      ]
+    }
+  ],
+  "packages": {
+    "org.fdroid.min1": [
+      {
+        "added": 2342,
+        "apkName": "org.fdroid.min1_23_2.apk",
+        "hash": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+        "hashType": "sha256",
+        "packageName": "org.fdroid.min1",
+        "size": 1338,
+        "srcname": "org.fdroid.min1_23_2.zip",
+        "uses-permission": [
+          [
+            "perm",
+            null
+          ]
+        ],
+        "versionCode": 1,
+        "versionName": "1",
+        "nativecode": [
+          "x86"
+        ],
+        "features": [
+          "feature"
+        ],
+        "antiFeatures": [
+          "anti-feature"
+        ]
+      },
+      {
+        "apkName": "org.fdroid.min1_42.apk",
+        "hash": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+        "hashType": "sha256",
+        "minSdkVersion": 21,
+        "maxSdkVersion": 4568,
+        "targetSdkVersion": 32,
+        "packageName": "org.fdroid.min1",
+        "sig": "old",
+        "signer": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+        "size": 1337,
+        "srcname": "org.fdroid.min1_42.zip",
+        "versionCode": 24,
+        "versionName": "24"
+      }
+    ],
+    "org.fdroid.fdroid": [
+      {
+        "added": 1642785071000,
+        "apkName": "org.fdroid.fdroid_1014005.apk",
+        "hash": "b4282febf5558d43c7c51a00478961f6df1b6d59e0a6674974cdacb792683e5d",
+        "hashType": "sha256",
+        "minSdkVersion": 22,
+        "targetSdkVersion": 25,
+        "packageName": "org.fdroid.fdroid",
+        "sig": "9063aaadfff9cfd811a9c72fb5012f28",
+        "signer": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "size": 8382606,
+        "srcname": "org.fdroid.fdroid_1014005_src.tar.gz",
+        "versionCode": 1014005,
+        "versionName": "1.14-alpha5",
+        "nativecode": [
+        ],
+        "features": [
+        ],
+        "antiFeatures": [
+        ]
+      },
+      {
+        "added": 1635169849000,
+        "apkName": "org.fdroid.fdroid_1014003.apk",
+        "hash": "c062a9642fde08aacabbfa4cab1ab5773c83f4e6b81551ffd92027d2b20f37d3",
+        "hashType": "sha256",
+        "minSdkVersion": 22,
+        "targetSdkVersion": 25,
+        "packageName": "org.fdroid.fdroid",
+        "sig": "9063aaadfff9cfd811a9c72fb5012f28",
+        "signer": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "size": 8276110,
+        "srcname": "org.fdroid.fdroid_1014003_src.tar.gz",
+        "uses-permission": [
+          [
+            "android.permission.ACCESS_MEDIA",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            32
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.USB_PERMISSION",
+            22
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.READ_MY_ASS",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_FINE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            3
+          ]
+        ],
+        "versionCode": 1014003,
+        "versionName": "1.14-alpha3"
+      },
+      {
+        "added": 1632281731000,
+        "apkName": "org.fdroid.fdroid_1014002.apk",
+        "hash": "3243c24ee95be0fce0830d72e7d2605e3e24f6ccf4ee72a7c8e720fccd7621a1",
+        "hashType": "sha256",
+        "minSdkVersion": 22,
+        "targetSdkVersion": 25,
+        "packageName": "org.fdroid.fdroid",
+        "sig": "9063aaadfff9cfd811a9c72fb5012f28",
+        "signer": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "size": 8284386,
+        "srcname": "org.fdroid.fdroid_1014002_src.tar.gz",
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.USB_PERMISSION",
+            22
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ]
+        ],
+        "versionCode": 1014002,
+        "versionName": "1.14-alpha2"
+      },
+      {
+        "added": 1632281729000,
+        "apkName": "org.fdroid.fdroid_1014001.apk",
+        "hash": "7ebfd5eb76f9ec95ba955e549260fe930dc38fb99ed3532f92c93b879aca5610",
+        "hashType": "sha256",
+        "minSdkVersion": 22,
+        "targetSdkVersion": 25,
+        "packageName": "org.fdroid.fdroid",
+        "sig": "9063aaadfff9cfd811a9c72fb5012f28",
+        "signer": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "size": 8272166,
+        "srcname": "org.fdroid.fdroid_1014001_src.tar.gz",
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.USB_PERMISSION",
+            22
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ]
+        ],
+        "versionCode": 1014001,
+        "versionName": "1.14-alpha1"
+      }
+    ],
+    "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moodahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5UngohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raephoowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y": [
+      {
+        "added": 1643250075000,
+        "apkName": "org.fdroid.fdroid_1014050.apk",
+        "hash": "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06",
+        "hashType": "sha256",
+        "minSdkVersion": 22,
+        "maxSdkVersion": 2147483647,
+        "targetSdkVersion": 25,
+        "packageName": "org.fdroid.fdroid",
+        "sig": "9063aaadfff9cfd811a9c72fb5012f28",
+        "signer": "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+        "size": 8165518,
+        "srcname": "org.fdroid.fdroid_1014050_src.tar.gz",
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "android.permission.ACCESS_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.ACCESS_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_NETWORK_STATE",
+            null
+          ],
+          [
+            "android.permission.CHANGE_WIFI_STATE",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH",
+            null
+          ],
+          [
+            "android.permission.BLUETOOTH_ADMIN",
+            null
+          ],
+          [
+            "android.permission.RECEIVE_BOOT_COMPLETED",
+            null
+          ],
+          [
+            "android.permission.READ_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+            null
+          ],
+          [
+            "android.permission.WRITE_SETTINGS",
+            null
+          ],
+          [
+            "android.permission.NFC",
+            null
+          ],
+          [
+            "android.permission.USB_PERMISSION",
+            22
+          ],
+          [
+            "android.permission.WAKE_LOCK",
+            null
+          ],
+          [
+            "android.permission.FOREGROUND_SERVICE",
+            null
+          ]
+        ],
+        "uses-permission-sdk-23": [
+          [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            null
+          ],
+          [
+            "android.permission.USB_PERMISSION",
+            2147483647
+          ]
+        ],
+        "versionCode": 1014050,
+        "versionName": "1.14",
+        "nativecode": [
+          "x86",
+          "x86_64"
+        ],
+        "features": [
+          "feature",
+          "feature2"
+        ],
+        "antiFeatures": [
+          "anti-feature",
+          "anti-feature2"
+        ]
+      }
+    ]
+  }
+}

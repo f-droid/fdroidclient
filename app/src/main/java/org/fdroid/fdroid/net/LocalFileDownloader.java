@@ -3,6 +3,7 @@ package org.fdroid.fdroid.net;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -67,6 +68,13 @@ public class LocalFileDownloader extends Downloader {
     @Override
     protected long totalDownloadSize() {
         return sourceFile.length();
+    }
+
+    @Override
+    public void download(long totalSize, @Nullable String sha256) throws IOException, InterruptedException {
+        setFileSize(totalSize);
+        setSha256(sha256);
+        download();
     }
 
     @Override

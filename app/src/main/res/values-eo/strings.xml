@@ -41,7 +41,7 @@
     <string name="antiadslist">Tiu ĉi aplikaĵo enhavas reklamojn</string>
     <string name="antitracklist">Tiu ĉi aplikaĵo spuras kaj raportas vian agadon</string>
     <string name="antinonfreeadlist">Tiu ĉi aplikaĵo favoras neliberajn aldonaĵojn</string>
-    <string name="antinonfreenetlist">Tiu ĉi aplikaĵo favoras neliberajn retservojn</string>
+    <string name="antinonfreenetlist">Tiu ĉi aplikaĵo favoras aŭ dependas tute de neliberaj retservoj</string>
     <string name="antinonfreedeplist">Tiu ĉi aplikaĵo dependas de aliaj neliberaj aplikaĵoj</string>
     <string name="antiupstreamnonfreelist">La fontkodo ne estas tute libera</string>
     <string name="display">Aspekto</string>
@@ -168,7 +168,7 @@
 \nVi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn el ĝi.</string>
     <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al la reto: %s</string>
     <string name="pref_language">Lingvo</string>
-    <string name="pref_language_default">Sistema implicita</string>
+    <string name="pref_language_default">Laŭ operaciumo</string>
     <string name="wifi">Vifio</string>
     <string name="wifi_ap">Retkaptejo</string>
     <string name="category_Connectivity">Konekteco</string>
@@ -517,7 +517,7 @@
     <string name="menu_show_install_history">Montri historion de instaloj</string>
     <string name="menu_show_fdroid_metrics_report">Montri raporton pri uzado</string>
     <string name="send_to_fdroid_metrics">Sendi datumojn pri uzado</string>
-    <string name="theme_follow_system">Sistema</string>
+    <string name="theme_follow_system">Laŭ operaciumo</string>
     <string name="use_pure_black_dark_theme_summary">Konsilinda nur por ekranoj OLED.</string>
     <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela etoso</string>
     <string name="banner_no_data_or_wifi">Neniu interreta konekto aktiva</string>

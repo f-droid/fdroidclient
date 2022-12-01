@@ -1,0 +1,7 @@
+* použití oznamovacích kanálů pro jemnou kontrolu (@Isira-Seneviratne)
+* Vylepšený výběr jazyka s více místními jazyky (@spacecowboy/@bubu)
+* Nejnovější karta bude zobrazovat lepší výsledky na neanglických zařízeních
+* aktualizace základních knihoven (Jackson, androidx, gradle atd.)
+* podpora polského whitelabelingu
+
+Díky novým přispěvatelům! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

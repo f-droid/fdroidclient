@@ -31,7 +31,7 @@
     <string name="search_hint">Пошук застосунків</string>
     <string name="appcompatibility">Сумісність застосунків</string>
     <string name="app_name">F-Droid</string>
-    <string name="installIncompatible">Додатки несумісний з вашим пристроєм, все одно встановити\?</string>
+    <string name="installIncompatible">Застосунок несумісний з вашим пристроєм, усе одно встановити\?</string>
     <string name="delete">Видалити</string>
     <string name="other">Інше</string>
     <string name="update_interval">Інтервал автооновлення</string>
@@ -77,7 +77,7 @@
     <string name="bad_fingerprint">Неправильний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє про ваші дії</string>
-    <string name="antinonfreedeplist">Додатки залежить від інших не вільних застосунків</string>
+    <string name="antinonfreedeplist">Ця програма залежить від інших пропрієтарних програм</string>
     <string name="expert_on">Показати додаткові відомості та ввімкнути розширені параметри</string>
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>
@@ -129,7 +129,7 @@
     <string name="swap_scan_qr">QR-код</string>
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
-    <string name="apps">Додатки</string>
+    <string name="apps">Застосунки</string>
     <string name="swap_connecting">Підключення</string>
     <string name="loading">Завантаження…</string>
     <string name="newPerms">Нові</string>
@@ -159,7 +159,7 @@
     <string name="choose_bt_send">Виберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
-    <string name="antinonfreenetlist">Цей застосунок просуває невільні мережні послуги</string>
+    <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від невільної мережної служби</string>
     <string name="antiupstreamnonfreelist">Джерельний код випуску частково не вільний</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
@@ -201,7 +201,7 @@
     <string name="install_confirm_update_system">Дійсно встановити оновлення для цієї вбудованої програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
     <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявної програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
     <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цієї вбудованої програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
-    <string name="uninstall_update_confirm">Відновити заводську версію цього додатка? Усі дані буде видалено.</string>
+    <string name="uninstall_update_confirm">Відновити заводську версію цього застосунку\? Усі дані буде вилучено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного застосунку не встановлено.
 \n
@@ -223,7 +223,7 @@
 \n%1$s</string>
     <string name="more">Докладніше</string>
     <string name="less">Згорнути</string>
-    <string name="menu_settings">Налаштування</string>
+    <string name="menu_settings">Параметри</string>
     <string name="permissions">Дозволи</string>
     <string name="category_Connectivity">Зв\'язок</string>
     <string name="touch_to_configure_local_repo">Натиснути для перегляду деталей та дозволити іншим обмінюватись вашими застосунками.</string>
@@ -417,9 +417,9 @@
     <string name="panic_app_dialog_message">Ви впевнені, що бажаєте дозволити %1$s виконувати дію тривожної кнопки?</string>
     <string name="panic_settings">Налаштування тривожної кнопки</string>
     <string name="panic_settings_summary">Заходи, які необхідно вжити в екстрених випадках</string>
-    <string name="panic_exit_summary">Додатки буде закрито</string>
+    <string name="panic_exit_summary">Застосунки буде закрито</string>
     <string name="panic_destructive_actions">Деструктивні дії</string>
-    <string name="panic_hide_summary">Додатки приховає себе</string>
+    <string name="panic_hide_summary">Застосунок сховає сам себе</string>
     <string name="panic_hide_warning_title">Запам\'ятайте, як відновити</string>
     <string name="hiding_calculator">Калькулятор</string>
     <string name="hiding_dialog_title">Приховати %s зараз</string>
