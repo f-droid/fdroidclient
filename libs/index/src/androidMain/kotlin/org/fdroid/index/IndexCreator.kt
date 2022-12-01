@@ -72,6 +72,10 @@ public abstract class IndexCreator<T>(
     /**
      * Symlinks the APK to the repo. Does not support split APKs.
      * @return the name of the linked/copied APK file.
+     *
+     * Roboletric apparently does not support Os.symlink, and some devices might
+     * have wonky implementations.  Copying is slower and takes more disk space,
+     * but is much more reliable.  So it is a workable fallback.
      */
     protected fun copyApkToRepo(packageInfo: PackageInfo): File {
         val packageName = packageInfo.packageName
@@ -79,6 +83,9 @@ public abstract class IndexCreator<T>(
         val apkName = "${packageName}_$versionCode.apk"
         val apkFile = File(repoDir, apkName)
         symlink(packageInfo.applicationInfo.publicSourceDir, apkFile.absolutePath)
+        if (!apkFile.exists()) {
+            File(packageInfo.applicationInfo.publicSourceDir).copyTo(apkFile)
+        }
         return apkFile
     }
 
