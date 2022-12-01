@@ -2,6 +2,7 @@ package org.fdroid.database
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.every
 import io.mockk.mockk
@@ -64,7 +65,7 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
-            assertEquals(packageInfo2.getVersionCode(), apps[0].installedVersionCode)
+            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2), apps[0].installedVersionCode)
             assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
@@ -117,7 +118,7 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "A", "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
-            assertEquals(packageInfo2.getVersionCode(), apps[0].installedVersionCode)
+            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2), apps[0].installedVersionCode)
             assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
@@ -225,7 +226,10 @@ internal class AppListItemsTest : AppTest() {
             val installed = if (apps[0].packageName == packageName1) apps[1] else apps[0]
             val other = if (apps[0].packageName == packageName1) apps[0] else apps[1]
             assertEquals(packageInfo2.versionName, installed.installedVersionName)
-            assertEquals(packageInfo2.getVersionCode(), installed.installedVersionCode)
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo2),
+                installed.installedVersionCode
+            )
             assertNull(other.installedVersionName)
             assertNull(other.installedVersionCode)
         }
@@ -406,7 +410,10 @@ internal class AppListItemsTest : AppTest() {
             assertEquals(1, apps.size)
             assertEquals(app1, apps[0])
             // version code and version name gets taken from supplied packageInfo
-            assertEquals(packageInfo1.getVersionCode(), apps[0].installedVersionCode)
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo1),
+                apps[0].installedVersionCode
+            )
             assertEquals(packageInfo1.versionName, apps[0].installedVersionName)
         }
 
