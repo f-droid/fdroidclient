@@ -1,8 +1,6 @@
 package org.fdroid.fdroid;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,6 +19,7 @@ import android.text.style.StyleSpan;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
@@ -69,24 +68,26 @@ public class NotificationHelper {
         appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
         notificationManager = NotificationManagerCompat.from(context);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            final NotificationChannel installChannel = new NotificationChannel(CHANNEL_INSTALLS,
-                    context.getString(R.string.notification_channel_installs_title),
-                    NotificationManager.IMPORTANCE_LOW);
-            installChannel.setDescription(context.getString(R.string.notification_channel_installs_description));
+        final NotificationChannelCompat installChannel = new NotificationChannelCompat.Builder(CHANNEL_INSTALLS,
+                NotificationManagerCompat.IMPORTANCE_LOW)
+                .setName(context.getString(R.string.notification_channel_installs_title))
+                .setDescription(context.getString(R.string.notification_channel_installs_description))
+                .build();
 
-            final NotificationChannel swapChannel = new NotificationChannel(CHANNEL_SWAPS,
-                    context.getString(R.string.notification_channel_swaps_title),
-                    NotificationManager.IMPORTANCE_LOW);
-            swapChannel.setDescription(context.getString(R.string.notification_channel_swaps_description));
+        final NotificationChannelCompat swapChannel = new NotificationChannelCompat.Builder(CHANNEL_SWAPS,
+                NotificationManagerCompat.IMPORTANCE_LOW)
+                .setName(context.getString(R.string.notification_channel_swaps_title))
+                .setDescription(context.getString(R.string.notification_channel_swaps_description))
+                .build();
 
-            final NotificationChannel updateChannel = new NotificationChannel(CHANNEL_UPDATES,
-                    context.getString(R.string.notification_channel_updates_title),
-                    NotificationManager.IMPORTANCE_LOW);
-            updateChannel.setDescription(context.getString(R.string.notification_channel_updates_description));
+        final NotificationChannelCompat updateChannel = new NotificationChannelCompat.Builder(CHANNEL_UPDATES,
+                NotificationManagerCompat.IMPORTANCE_LOW)
+                .setName(context.getString(R.string.notification_channel_updates_title))
+                .setDescription(context.getString(R.string.notification_channel_updates_description))
+                .build();
 
-            notificationManager.createNotificationChannels(Arrays.asList(installChannel, swapChannel, updateChannel));
-        }
+        notificationManager.createNotificationChannelsCompat(Arrays.asList(installChannel, swapChannel,
+                updateChannel));
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
