@@ -130,24 +130,32 @@ public class SwapService extends Service {
         }
     }
 
-    private void updateRepo(@NonNull Peer peer, Repository repo)
-            throws IOException, InterruptedException, SigningException, NotFoundException {
+    /**
+     * {@code swapJarFile} is a path where the downloaded data will be written
+     * to, but this method will not delete it afterwards.
+     */
+    public static IndexV1 getVerifiedRepoIndex(Repository repo, String expectedSigningFingerprint, File swapJarFile)
+            throws SigningException, IOException, NotFoundException, InterruptedException {
         Uri uri = Uri.parse(repo.getAddress())
                 .buildUpon()
                 .appendPath(IndexV1UpdaterKt.SIGNED_FILE_NAME)
                 .build();
         FileV2 indexFile = FileV2.fromPath("/" + IndexV1UpdaterKt.SIGNED_FILE_NAME);
+        Downloader downloader =
+                DownloaderFactory.INSTANCE.createWithTryFirstMirror(repo, uri, indexFile, swapJarFile);
+        downloader.download();
+        IndexV1Verifier verifier = new IndexV1Verifier(swapJarFile, null, expectedSigningFingerprint);
+        return verifier.getStreamAndVerify(inputStream ->
+                IndexParserKt.parseV1(IndexParser.INSTANCE, inputStream)
+        ).getSecond();
+    }
+
+    private void updateRepo(@NonNull Peer peer, Repository repo)
+            throws IOException, InterruptedException, SigningException, NotFoundException {
         File swapJarFile =
                 File.createTempFile("swap", "", getApplicationContext().getCacheDir());
         try {
-            Downloader downloader =
-                    DownloaderFactory.INSTANCE.createWithTryFirstMirror(repo, uri, indexFile, swapJarFile);
-            downloader.download();
-            IndexV1Verifier verifier = new IndexV1Verifier(swapJarFile, null, peer.getFingerprint());
-            Pair<String, IndexV1> pair = verifier.getStreamAndVerify(inputStream ->
-                    IndexParserKt.parseV1(IndexParser.INSTANCE, inputStream)
-            );
-            index.postValue(pair.getSecond());
+            index.postValue(getVerifiedRepoIndex(repo, peer.getFingerprint(), swapJarFile));
             startPollingConnectedSwapRepo();
         } finally {
             //noinspection ResultOfMethodCallIgnored

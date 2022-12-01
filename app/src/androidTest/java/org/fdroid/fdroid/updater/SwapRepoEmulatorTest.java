@@ -4,14 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.os.Looper;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.filters.LargeTest;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
@@ -21,14 +17,9 @@ import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
-import org.fdroid.fdroid.net.DownloaderFactory;
-import org.fdroid.index.IndexParser;
-import org.fdroid.index.IndexParserKt;
+import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.index.v1.IndexV1;
-import org.fdroid.index.v1.IndexV1UpdaterKt;
-import org.fdroid.index.v1.IndexV1Verifier;
 import org.fdroid.index.v1.PackageV1;
-import org.fdroid.index.v2.FileV2;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -42,13 +33,14 @@ import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
-import kotlin.Pair;
 
 @LargeTest
 public class SwapRepoEmulatorTest {
@@ -114,21 +106,8 @@ public class SwapRepoEmulatorTest {
             assertTrue(isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
             Thread.sleep(100);
 
-            Uri uri = Uri.parse(FDroidApp.repo.getAddress())
-                    .buildUpon()
-                    .appendPath(IndexV1UpdaterKt.SIGNED_FILE_NAME)
-                    .build();
-            FileV2 indexFile = FileV2.fromPath("/" + IndexV1UpdaterKt.SIGNED_FILE_NAME);
             File swapJarFile = File.createTempFile("swap", "", context.getCacheDir());
-            Downloader downloader =
-                    DownloaderFactory.INSTANCE.createWithTryFirstMirror(FDroidApp.repo, uri, indexFile, swapJarFile);
-            downloader.download();
-            IndexV1Verifier verifier = new IndexV1Verifier(swapJarFile, null, fingerprint);
-            Pair<String, IndexV1> pair = verifier.getStreamAndVerify(inputStream ->
-                    IndexParserKt.parseV1(IndexParser.INSTANCE, inputStream)
-            );
-            assertEquals(signingCert, pair.getFirst());
-            IndexV1 indexV1 = pair.getSecond();
+            IndexV1 indexV1 = SwapService.getVerifiedRepoIndex(FDroidApp.repo, fingerprint, swapJarFile);
             assertEquals(1, indexV1.getApps().size());
             assertEquals(context.getPackageName(), indexV1.getApps().get(0).getPackageName());
             long firstTimestamp = indexV1.getRepo().getTimestamp();
@@ -159,14 +138,7 @@ public class SwapRepoEmulatorTest {
             LocalRepoService.runProcess(context, packageNames.toArray(new String[0]));
 
             swapJarFile = File.createTempFile("swap", "", context.getCacheDir());
-            downloader =
-                    DownloaderFactory.INSTANCE.createWithTryFirstMirror(FDroidApp.repo, uri, indexFile, swapJarFile);
-            downloader.download();
-            verifier = new IndexV1Verifier(swapJarFile, null, fingerprint);
-            pair = verifier.getStreamAndVerify(inputStream ->
-                    IndexParserKt.parseV1(IndexParser.INSTANCE, inputStream)
-            );
-            indexV1 = pair.getSecond();
+            indexV1 = SwapService.getVerifiedRepoIndex(FDroidApp.repo, fingerprint, swapJarFile);
             assertTrue(firstTimestamp < indexV1.getRepo().getTimestamp());
             for (String packageName : packageNames) {
                 assertNotNull(indexV1.getPackages().get(packageName));
