@@ -20,7 +20,6 @@ import org.fdroid.fdroid.nearby.LocalRepoService;
 import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.index.v1.IndexV1;
 import org.fdroid.index.v1.PackageV1;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -47,7 +46,6 @@ public class SwapRepoEmulatorTest {
     /**
      * @see org.fdroid.fdroid.nearby.WifiStateChangeService.WifiInfoThread#run()
      */
-    @Ignore
     @Test
     public void testSwap() throws Exception {
         Looper.prepare();
@@ -86,7 +84,7 @@ public class SwapRepoEmulatorTest {
 
             localHttpd = new LocalHTTPD(
                     context,
-                    null,
+                    FDroidApp.ipAddressString,
                     FDroidApp.port,
                     LocalRepoManager.get(context).getWebRoot(),
                     false);
