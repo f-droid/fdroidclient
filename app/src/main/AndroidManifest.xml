@@ -71,9 +71,6 @@
             android:excludeFromRecents="true"
             android:label="@string/menu_install"
             android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity
@@ -86,9 +83,6 @@
             android:label="@string/menu_manage"
             android:launchMode="singleTask"
             android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity
@@ -102,9 +96,6 @@
             android:label="@string/repo_details"
             android:parentActivityName=".views.ManageReposActivity"
             android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.ManageReposActivity" />
         </activity>
 
         <activity
@@ -113,9 +104,6 @@
             android:exported="true"
             android:label="@string/app_details"
             android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity android:name=".views.ScreenShotsActivity" />
@@ -408,16 +396,10 @@
         <activity
             android:name=".views.installed.InstalledAppsActivity"
             android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
         <activity
             android:name=".views.InstallHistoryActivity"
             android:parentActivityName=".views.main.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.main.MainActivity" />
         </activity>
 
         <activity
