@@ -1,3 +1,38 @@
+### 1.16-alpha0 (2022-04-19)
+
+* Huge overhaul of download, index, and database code.
+
+* Fixes: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
+  #2412 #2436 #2442 #2443 #2444 #1971
+
+* Known bugs: #2446 #2447 #2475
+
+### 1.15.4 (2022-11-30)
+
+* Simplify swap index.jar signing to use plain SHA1withRSA
+
+* Ignore XML DTDs and External Entities in index.jar
+
+* Set F-Droid Privileged Extension as the APK installer
+
+* Fix swap, it does not work yet with index-v1.jar
+
+### 1.15.3 (2022-10-25)
+
+* Handle API 33 split-permissions
+
+* Fix crash when loading icons for apps without repo
+
+* Allow nearby swap using modern index formats.
+
+### 1.15.2 (2022-05-18)
+
+* Re-enable HTTP for nearby swapping, fixing #2402
+
+### 1.15.1 (2022-05-11)
+
+* Revert to commons-io v2.6, fixing #2406
+
 ### 1.15 (2022-05-03)
 
 * Set navigation bar color to black in dark theme (@ConnyDuck)
