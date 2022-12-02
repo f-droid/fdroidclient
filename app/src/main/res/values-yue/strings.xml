@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="ok">確定</string>
     <string name="app_name">F-Droid</string>
     <string name="updates">更新</string>
@@ -131,16 +131,16 @@
     <string name="repo_last_update">對上一次更新</string>
     <string name="pref_language">語言</string>
     <string name="pref_language_default">系統預設噉樣</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">網絡</string>
-    <string tools:ignore="UnusedResources" name="category_Games">遊戲</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">圖像</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">互聯網</string>
-    <string tools:ignore="UnusedResources" name="category_Money">理財</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">多媒體</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">電話同短訊</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">開卷</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">科學與教育</string>
-    <string tools:ignore="UnusedResources" name="category_Security">保密</string>
+    <string name="category_Connectivity">網絡</string>
+    <string name="category_Games">遊戲</string>
+    <string name="category_Graphics">圖像</string>
+    <string name="category_Internet">互聯網</string>
+    <string name="category_Money">理財</string>
+    <string name="category_Multimedia">多媒體</string>
+    <string name="category_Phone_SMS">電話同短訊</string>
+    <string name="category_Reading">開卷</string>
+    <string name="category_Science_Education">科學與教育</string>
+    <string name="category_Security">保密</string>
     <string name="wifi">Wi-Fi</string>
     <string name="swap_welcome">歡迎使用 F-Droid！</string>
     <string name="swap_dont_show_again">唔使再顯示呢個畫面喇</string>
@@ -150,16 +150,16 @@
     <string name="notification_title_summary_install_error">安裝唔到</string>
     <string name="notification_action_cancel">取消</string>
     <string name="notification_action_install">安裝</string>
-    <string tools:ignore="UnusedResources" name="category_Development">開發</string>
-    <string tools:ignore="UnusedResources" name="category_Time">時間</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">寫作</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">導航</string>
+    <string name="category_Development">開發</string>
+    <string name="category_Time">時間</string>
+    <string name="category_Writing">寫作</string>
+    <string name="category_Navigation">導航</string>
     <string name="app_details">App 嘅詳細資料</string>
     <string name="about_title">關於 F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_System">系統</string>
+    <string name="category_System">系統</string>
     <string name="antitracklist">呢個 app 會追蹤同報告您嘅活動</string>
     <string name="warning_no_internet">更新唔到噃，您連咗上網未？</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">運動與健康</string>
+    <string name="category_Sports_Health">運動與健康</string>
     <string name="swap_send_fdroid">傳送 F-Droid</string>
     <string name="crash_dialog_text">發生預期之外嘅錯誤，導致彈 app。您想唔想將詳情電郵畀我哋，幫手修正個問題？</string>
     <string name="SignatureMismatch">新版本簽署嘅金鑰同舊版本唔同。要安裝新版本嘅話，就要解除安裝舊版本先。請您先解除安裝舊版本，然後再試下啦。(注意：解除安裝會抹走晒個 app 儲存嘅所有內部資料)</string>
@@ -218,7 +218,7 @@
     <string name="unsigned_description">即係話 app 清單驗證唔到。下載未簽署索引上面嘅 app 要小心。</string>
     <string name="unknown">未知</string>
     <string name="wifi_ap">流動熱點</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">佈景主題</string>
+    <string name="category_Theming">佈景主題</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">睇晒全部 %d 個</item>
     </plurals>
