@@ -544,4 +544,5 @@
     <string name="antiknownvuln">Відома вразливість</string>
     <string name="antiothers">Інші небажані функції</string>
     <string name="antinsfw">Цей застосунок містить вміст, який не слід оприлюднювати чи бачити всім</string>
+    <string name="menu_release_channel_beta">Дозволити бета-оновлення</string>
 </resources>
