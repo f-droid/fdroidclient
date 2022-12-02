@@ -549,4 +549,5 @@
     <string name="antinosource">Grunnkóði ekki lengur til taks</string>
     <string name="antiothers">Aðrir neikvæðir eiginleikar</string>
     <string name="antinsfw">Þetta forrit inniheldur efni sem ekki ætti að gefa út eða birta opinberlega</string>
+    <string name="menu_release_channel_beta">Leyfa uppfærslur á beta-prófunarútgáfum</string>
 </resources>
