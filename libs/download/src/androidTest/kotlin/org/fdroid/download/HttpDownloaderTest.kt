@@ -1,6 +1,7 @@
 package org.fdroid.download
 
 import io.ktor.client.engine.ProxyBuilder
+import io.ktor.client.engine.config
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondOk
@@ -14,6 +15,7 @@ import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.headersOf
 import org.fdroid.get
+import org.fdroid.getIndexFile
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
 import org.junit.Assume.assumeTrue
@@ -41,7 +43,7 @@ internal class HttpDownloaderTest {
     private val userAgent = getRandomString()
     private val mirror1 = Mirror("http://example.org")
     private val mirrors = listOf(mirror1)
-    private val downloadRequest = DownloadRequest("foo/bar", mirrors)
+    private val downloadRequest = DownloadRequest(getIndexFile("foo/bar"), mirrors)
 
     @Test
     fun testDownload() = runSuspend {
@@ -60,6 +62,12 @@ internal class HttpDownloaderTest {
     fun testDownloadWithCorrectHash() = runSuspend {
         val file = folder.newFile()
         val bytes = "We know the hash for this string".encodeToByteArray()
+        val indexFile = getIndexFile(
+            name = "/foo/bar",
+            sha256 = "e3802e5f8ae3dc7bbf5f1f4f7fb825d9bce9d1ddce50ac564fcbcfdeb31f1b90",
+            size = bytes.size.toLong(),
+        )
+        val downloadRequest = DownloadRequest(indexFile, mirrors = mirrors)
         var progressReported = false
 
         val mockEngine = MockEngine { respond(bytes) }
@@ -69,8 +77,7 @@ internal class HttpDownloaderTest {
             assertEquals(bytes.size.toLong(), totalBytes)
             progressReported = true
         }
-        httpDownloader.download(bytes.size.toLong(),
-            "e3802e5f8ae3dc7bbf5f1f4f7fb825d9bce9d1ddce50ac564fcbcfdeb31f1b90")
+        httpDownloader.download()
 
         assertContentEquals(bytes, file.readBytes())
         assertTrue(progressReported)
@@ -80,11 +87,17 @@ internal class HttpDownloaderTest {
     fun testDownloadWithWrongHash() = runSuspend {
         val file = folder.newFile()
         val bytes = "We know the hash for this string".encodeToByteArray()
+        val indexFile = getIndexFile(
+            name = "/foo/bar",
+            sha256 = "This is not the right hash",
+            size = bytes.size.toLong(),
+        )
+        val downloadRequest = DownloadRequest(indexFile, mirrors = mirrors)
 
         val mockEngine = MockEngine { respond(bytes) }
         val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = get(mockEngine))
         val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
-        httpDownloader.download(bytes.size.toLong(), "This is not the right hash")
+        httpDownloader.download()
 
         assertContentEquals(bytes, file.readBytes())
     }
@@ -107,6 +120,40 @@ internal class HttpDownloaderTest {
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
         assertEquals(2, mockEngine.responseHistory.size)
+    }
+
+    /**
+     * Tests resuming a download with hash verification.
+     * This can fail if the hashing doesn't take the already downloaded bytes into account.
+     */
+    @Test
+    fun testResumeWithHashSuccess() = runSuspend {
+        val file = folder.newFile()
+        val firstBytes =
+            "These are the first bytes that were already downloaded.".encodeToByteArray()
+        file.writeBytes(firstBytes)
+        val secondBytes =
+            "These are the last bytes that still need to be downloaded.".encodeToByteArray()
+        val totalSize = firstBytes.size + secondBytes.size
+        // specifying the sha256 hash forces its validation
+        val sha256 = "efabb260da949061c88173c19f369b4aa0eaa82003c7c2dec08b5dfe75525368"
+        val downloadRequest = DownloadRequest(getIndexFile("foo/bar", sha256), mirrors)
+
+        val mockEngine = MockEngine.config {
+            reuseHandlers = false
+            addHandler {
+                respond("", OK, headers = headersOf(ContentLength, "$totalSize"))
+            }
+            addHandler {
+                respond(secondBytes, PartialContent)
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
+        val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
+        // this throws if the hash doesn't match while downloading
+        httpDownloader.download()
+
+        assertContentEquals(firstBytes + secondBytes, file.readBytes())
     }
 
     @Test

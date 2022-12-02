@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/listPreferredItemHeight"
     android:orientation="horizontal"
+    android:background="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:paddingLeft="?attr/listPreferredItemPaddingLeft"
     android:paddingStart="?attr/listPreferredItemPaddingLeft"

@@ -187,11 +187,11 @@ object TestDataMidV2 {
         categories = mapOf(
             "Cat1" to CategoryV2(
                 name = mapOf(LOCALE to "Cat1"),
-                icon = FileV2(
+                icon = mapOf(LOCALE to FileV2(
                     name = "/icons/cat2.png",
                     sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                     size = Long.MAX_VALUE,
-                ),
+                )),
             ),
             "System" to CategoryV2(
                 name = emptyMap(),
@@ -737,11 +737,11 @@ object TestDataMaxV2 {
                 name = emptyMap(),
             ),
             "AntiFeature" to AntiFeatureV2(
-                icon = FileV2(
+                icon = mapOf(LOCALE to FileV2(
                     name = "/icons/antifeature.png",
                     sha256 = "24758e480ae66297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                     size = 254916,
-                ),
+                )),
                 name = mapOf(LOCALE to "AntiFeature"),
                 description = mapOf(LOCALE to "A bad anti-feature, we can't show to users."),
             ),
@@ -756,29 +756,29 @@ object TestDataMaxV2 {
         categories = mapOf(
             "Cat3" to CategoryV2(
                 name = mapOf(LOCALE to "Cat3"),
-                icon = FileV2(
+                icon = mapOf(LOCALE to FileV2(
                     name = "/icons/cat3.png",
                     sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                     size = Long.MAX_VALUE,
-                ),
+                )),
                 description = mapOf(LOCALE to "Cat3"),
             ),
             "Cat2" to CategoryV2(
                 name = mapOf(LOCALE to "Cat3"),
-                icon = FileV2(
+                icon = mapOf(LOCALE to FileV2(
                     name = "/icons/cat2.png",
                     sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                     size = Long.MAX_VALUE,
-                ),
+                )),
                 description = mapOf(LOCALE to "Cat3"),
             ),
             "Cat1" to CategoryV2(
                 name = mapOf(LOCALE to "Cat1"),
-                icon = FileV2(
+                icon = mapOf(LOCALE to FileV2(
                     name = "/icons/cat1.png",
                     sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                     size = Long.MAX_VALUE,
-                ),
+                )),
                 description = mapOf(LOCALE to "Cat1"),
             ),
             "NoMoreSystem" to CategoryV2(

@@ -3,6 +3,7 @@ package org.fdroid.fdroid.panic;
 import android.view.View;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.installed.InstalledAppListItemController;
@@ -33,7 +34,7 @@ public class SelectInstalledAppListItemController extends InstalledAppListItemCo
     }
 
     @Override
-    protected void onActionButtonPressed(App app) {
-        super.onActionButtonPressed(app);
+    protected void onActionButtonPressed(App app, Apk currentApk) {
+        super.onActionButtonPressed(app, currentApk);
     }
 }

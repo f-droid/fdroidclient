@@ -80,7 +80,8 @@
         app:layout_constraintTop_toTopOf="@id/search_card"
         app:layout_constraintBottom_toBottomOf="@id/search_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_card"/>
+        app:layout_constraintStart_toEndOf="@+id/search_card"
+        app:tint="?attr/colorControlNormal"/>
 
     <TextView
         android:id="@+id/hiddenAppNotice"

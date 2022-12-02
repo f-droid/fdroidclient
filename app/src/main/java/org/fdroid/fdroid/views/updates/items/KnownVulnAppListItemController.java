@@ -6,22 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppPrefs;
-import org.fdroid.fdroid.data.AppPrefsProvider;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
-import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,8 +27,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * (e.g. uninstall, update, disable).
  */
 public class KnownVulnAppListItemController extends AppListItemController {
-    public KnownVulnAppListItemController(AppCompatActivity activity, View itemView) {
+    private final Runnable refreshApps;
+
+    KnownVulnAppListItemController(AppCompatActivity activity, Runnable refreshApps, View itemView) {
         super(activity, itemView);
+        this.refreshApps = refreshApps;
     }
 
     @NonNull
@@ -45,8 +41,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
         String mainText;
         String actionButtonText;
 
-        Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
-        if (shouldUpgradeInsteadOfUninstall(app, suggestedApk)) {
+        if (shouldUpgradeInsteadOfUninstall(app)) {
             mainText = activity.getString(R.string.updates__app_with_known_vulnerability__prompt_upgrade, app.name);
             actionButtonText = activity.getString(R.string.menu_upgrade);
         } else {
@@ -56,72 +51,35 @@ public class KnownVulnAppListItemController extends AppListItemController {
 
         return new AppListItemState(app)
                 .setMainText(mainText)
-                .showActionButton(actionButtonText)
-                .showSecondaryButton(activity.getString(R.string.updates__app_with_known_vulnerability__ignore));
+                .showActionButton(actionButtonText);
     }
 
-    private boolean shouldUpgradeInsteadOfUninstall(@NonNull App app, @Nullable Apk suggestedApk) {
-        return suggestedApk != null && app.installedVersionCode < suggestedApk.versionCode;
+    private boolean shouldUpgradeInsteadOfUninstall(@NonNull App app) {
+        return app.installedVersionCode < app.autoInstallVersionCode;
     }
 
     @Override
-    protected void onActionButtonPressed(@NonNull App app) {
-        Apk installedApk = app.getInstalledApk(activity);
+    protected void onActionButtonPressed(@NonNull App app, Apk currentApk) {
+        Apk installedApk = app.installedApk;
         if (installedApk == null) {
             throw new IllegalStateException(
                     "Tried to update or uninstall app with known vulnerability but it doesn't seem to be installed");
         }
 
-        Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
-        if (shouldUpgradeInsteadOfUninstall(app, suggestedApk)) {
-            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
+        LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
+        if (shouldUpgradeInsteadOfUninstall(app)) {
             manager.registerReceiver(installReceiver,
-                    Installer.getInstallIntentFilter(suggestedApk.getCanonicalUrl()));
-            InstallManagerService.queue(activity, app, suggestedApk);
+                    Installer.getInstallIntentFilter(currentApk.getCanonicalUrl()));
+            InstallManagerService.queue(activity, app, currentApk);
         } else {
-            LocalBroadcastManager manager = LocalBroadcastManager.getInstance(activity);
             manager.registerReceiver(installReceiver, Installer.getUninstallIntentFilter(app.packageName));
-            InstallerService.uninstall(activity, installedApk);
+            InstallerService.uninstall(activity, app, installedApk);
         }
     }
 
     @Override
     public boolean canDismiss() {
-        return true;
-    }
-
-    @Override
-    protected void onDismissApp(@NonNull final App app, UpdatesAdapter adapter) {
-        this.ignoreVulnerableApp(app);
-    }
-
-    @Override
-    protected void onSecondaryButtonPressed(@NonNull App app) {
-        this.ignoreVulnerableApp(app);
-    }
-
-    private void ignoreVulnerableApp(@NonNull final App app) {
-        setIgnoreVulnerableApp(app, true);
-
-        Snackbar.make(
-                itemView,
-                R.string.app_list__dismiss_vulnerable_app,
-                Snackbar.LENGTH_LONG
-        )
-                .setAction(R.string.undo, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        setIgnoreVulnerableApp(app, false);
-                    }
-                })
-                .show();
-    }
-
-    private void setIgnoreVulnerableApp(@NonNull App app, boolean ignore) {
-        AppPrefs prefs = app.getPrefs(activity);
-        prefs.ignoreVulnerabilities = ignore;
-        AppPrefsProvider.Helper.update(activity, app, prefs);
-        refreshUpdatesList();
+        return false;
     }
 
     private void unregisterInstallReceiver() {
@@ -133,7 +91,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
      * apps with known vulnerabilities (i.e. this app should no longer be in that list).
      */
     private void refreshUpdatesList() {
-        activity.getContentResolver().notifyChange(AppProvider.getInstalledWithKnownVulnsUri(), null);
+        refreshApps.run();
     }
 
     private final BroadcastReceiver installReceiver = new BroadcastReceiver() {

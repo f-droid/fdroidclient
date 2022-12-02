@@ -181,7 +181,7 @@ public class BonjourManager {
                 HashMap<String, String> values = new HashMap<>();
                 values.put(BonjourPeer.PATH, "/fdroid/repo");
                 values.put(BonjourPeer.NAME, localRepoName);
-                values.put(BonjourPeer.FINGERPRINT, FDroidApp.repo.fingerprint);
+                values.put(BonjourPeer.FINGERPRINT, FDroidApp.repo.getFingerprint());
                 String type;
                 if (useHttps) {
                     values.put(BonjourPeer.TYPE, "fdroidrepos");
@@ -306,9 +306,6 @@ public class BonjourManager {
      * if the device is too old.
      */
     public static boolean isVpnActive(Context context) {
-        if (Build.VERSION.SDK_INT < 23) {
-            return false;
-        }
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         Network activeNetwork = cm.getActiveNetwork();
         NetworkCapabilities caps = cm.getNetworkCapabilities(activeNetwork);

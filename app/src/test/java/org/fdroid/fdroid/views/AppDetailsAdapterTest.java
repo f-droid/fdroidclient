@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views;
 import static org.junit.Assert.assertEquals;
 
 import android.app.Application;
-import android.content.ContentValues;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -12,52 +11,45 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.core.app.ApplicationProvider;
 
-import org.fdroid.fdroid.Assert;
+import org.fdroid.database.AppPrefs;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProviderTest;
-import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.FDroidProviderTest;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProviderTest;
-import org.junit.After;
+import org.fdroid.index.v2.FileV2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)
-public class AppDetailsAdapterTest extends FDroidProviderTest {
+public class AppDetailsAdapterTest {
 
-    private App app;
-    private Context themeContext;
+    private final AppPrefs appPrefs = new AppPrefs("com.example.app", 0, null);
+    private Context context;
 
     @Before
     public void setup() {
-        Preferences.setupForTests(context);
-
-        Repo repo = RepoProviderTest.insertRepo(context, "http://www.example.com/fdroid/repo", "", "", "Test Repo");
-        app = AppProviderTest.insertApp(contentResolver, context, "com.example.app", "Test App",
-                new ContentValues(), repo.getId());
-
         // Must manually set the theme again here other than in AndroidManifest,xml
         // https://github.com/mozilla-mobile/fenix/pull/15646#issuecomment-707345798
         ApplicationProvider.getApplicationContext().setTheme(R.style.Theme_App);
-        themeContext = new ContextThemeWrapper(ApplicationProvider.getApplicationContext(), R.style.Theme_App);
-    }
+        context = new ContextThemeWrapper(ApplicationProvider.getApplicationContext(), R.style.Theme_App);
 
-    @After
-    public void teardown() {
-        DBHelper.clearDbHelperSingleton();
+        Preferences.setupForTests(context);
     }
 
     @Test
     public void appWithNoVersionsOrScreenshots() {
+        App app = TestUtils.getApp();
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
+        adapter.updateItems(TestUtils.getApp(), Collections.emptyList(), appPrefs);
         populateViewHolders(adapter);
 
         assertEquals(3, adapter.getItemCount());
@@ -65,32 +57,40 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
 
     @Test
     public void appWithScreenshots() {
-        app.phoneScreenshots = new String[]{"screenshot1.png", "screenshot2.png"};
+        App app = TestUtils.getApp();
+        app.phoneScreenshots = new ArrayList<>(2);
+        app.phoneScreenshots.add(FileV2.fromPath("screenshot1.png"));
+        app.phoneScreenshots.add(FileV2.fromPath("screenshot2.png"));
 
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
+        adapter.updateItems(app, Collections.emptyList(), appPrefs);
         populateViewHolders(adapter);
 
         assertEquals(4, adapter.getItemCount());
-
     }
 
     @Test
     public void appWithVersions() {
-        Assert.insertApk(context, app, 1);
-        Assert.insertApk(context, app, 2);
-        Assert.insertApk(context, app, 3);
+        App app = TestUtils.getApp();
+        app.preferredSigner = "eaa1d713b9c2a0475234a86d6539f910";
+        List<Apk> apks = new ArrayList<>();
+        apks.add(TestUtils.getApk(1));
+        apks.add(TestUtils.getApk(2));
+        apks.add(TestUtils.getApk(3));
+        app.installedApk = apks.get(0);
 
         AppDetailsRecyclerViewAdapter adapter = new AppDetailsRecyclerViewAdapter(context, app, dummyCallbacks);
+        adapter.updateItems(app, apks, appPrefs);
         populateViewHolders(adapter);
 
-        // Starts collapsed, now showing versions at all.
-        assertEquals(3, adapter.getItemCount());
+        // Starts collapsed, not showing versions at all. (also showing permissions)
+        assertEquals(4, adapter.getItemCount());
 
         adapter.setShowVersions(true);
-        assertEquals(6, adapter.getItemCount());
+        assertEquals(7, adapter.getItemCount());
 
         adapter.setShowVersions(false);
-        assertEquals(3, adapter.getItemCount());
+        assertEquals(4, adapter.getItemCount());
     }
 
     /**
@@ -99,7 +99,7 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
      * out for us .
      */
     private void populateViewHolders(RecyclerView.Adapter<RecyclerView.ViewHolder> adapter) {
-        ViewGroup parent = (ViewGroup) LayoutInflater.from(themeContext).inflate(R.layout.app_details2_links, null);
+        ViewGroup parent = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.app_details2_links, null);
         for (int i = 0; i < adapter.getItemCount(); i++) {
             RecyclerView.ViewHolder viewHolder = adapter.createViewHolder(parent, adapter.getItemViewType(i));
             adapter.bindViewHolder(viewHolder, i);
@@ -124,11 +124,6 @@ public class AppDetailsAdapterTest extends FDroidProviderTest {
 
         @Override
         public void openUrl(String url) {
-
-        }
-
-        @Override
-        public void installApk() {
 
         }
 

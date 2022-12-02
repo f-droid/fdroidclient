@@ -31,8 +31,8 @@ internal object TestUtils {
         val expectedAntiFeatures = repoV2.antiFeatures.toRepoAntiFeatures(repoId).toSet()
         assertEquals(expectedAntiFeatures, repo.antiFeatures.toSet())
         // categories
-        val expectedCategories = repoV2.categories.toRepoCategories(repoId).toSet()
-        assertEquals(expectedCategories, repo.categories.toSet())
+        val expectedCategories = repoV2.categories.toRepoCategories(repoId).sortedBy { it.id }
+        assertEquals(expectedCategories, repo.categories.sortedBy { it.id })
         // release channels
         val expectedReleaseChannels = repoV2.releaseChannels.toRepoReleaseChannel(repoId).toSet()
         assertEquals(expectedReleaseChannels, repo.releaseChannels.toSet())

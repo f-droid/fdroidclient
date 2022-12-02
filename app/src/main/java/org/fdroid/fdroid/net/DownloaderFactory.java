@@ -3,67 +3,98 @@ package org.fdroid.fdroid.net;
 import android.content.ContentResolver;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.fdroid.IndexFile;
+import org.fdroid.database.Repository;
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.HttpDownloader;
+import org.fdroid.download.HttpDownloaderV2;
 import org.fdroid.download.HttpManager;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
+import org.fdroid.index.IndexFormatVersion;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.Proxy;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import info.guardianproject.netcipher.NetCipher;
 
-public class DownloaderFactory {
+public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
 
     private static final String TAG = "DownloaderFactory";
     // TODO move to application object or inject where needed
+    public static final DownloaderFactory INSTANCE = new DownloaderFactory();
     public static final HttpManager HTTP_MANAGER =
             new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, NetCipher.getProxy());
 
-    /**
-     * Same as {@link #create(Repo, Uri, File)}, but trying canonical address first.
-     * <p>
-     * See https://gitlab.com/fdroid/fdroidclient/-/issues/1708 for why this is still needed.
-     */
-    public static Downloader createWithTryFirstMirror(Repo repo, Uri uri, File destFile)
-            throws IOException {
-        Mirror tryFirst = new Mirror(repo.address);
-        List<Mirror> mirrors = Mirror.fromStrings(repo.getMirrorList());
-        return create(repo, mirrors, uri, destFile, tryFirst);
+    @NonNull
+    @Override
+    public Downloader create(Repository repo, @NonNull Uri uri, @NonNull IndexFile indexFile,
+                             @NonNull File destFile) throws IOException {
+        List<Mirror> mirrors = repo.getMirrors();
+        return create(repo, mirrors, uri, indexFile, destFile, null);
     }
 
-    public static Downloader create(Repo repo, Uri uri, File destFile) throws IOException {
-        List<Mirror> mirrors = Mirror.fromStrings(repo.getMirrorList());
-        return create(repo, mirrors, uri, destFile, null);
-    }
-
-    private static Downloader create(Repo repo, List<Mirror> mirrors, Uri uri, File destFile,
-                                     @Nullable Mirror tryFirst) throws IOException {
+    @NonNull
+    @Override
+    protected Downloader create(@NonNull Repository repo, @NonNull List<Mirror> mirrors, @NonNull Uri uri,
+                                @NonNull IndexFile indexFile, @NonNull File destFile,
+                                @Nullable Mirror tryFirst) throws IOException {
         Downloader downloader;
 
         String scheme = uri.getScheme();
         if (BluetoothDownloader.SCHEME.equals(scheme)) {
-            downloader = new BluetoothDownloader(uri, destFile);
+            downloader = new BluetoothDownloader(uri, indexFile, destFile);
         } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
-            downloader = new TreeUriDownloader(uri, destFile);
+            downloader = new TreeUriDownloader(uri, indexFile, destFile);
         } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
-            downloader = new LocalFileDownloader(uri, destFile);
+            downloader = new LocalFileDownloader(uri, indexFile, destFile);
         } else {
-            String path = uri.toString().replace(repo.address, "");
+            String repoAddress = Utils.getRepoAddress(repo);
+            String path = uri.toString().replace(repoAddress, "");
             Utils.debugLog(TAG, "Using suffix " + path + " with mirrors " + mirrors);
             Proxy proxy = NetCipher.getProxy();
-            DownloadRequest request =
-                    new DownloadRequest(path, mirrors, proxy, repo.username, repo.password, tryFirst);
-            downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
+            DownloadRequest request = new DownloadRequest(indexFile, mirrors, proxy,
+                    repo.getUsername(), repo.getPassword(), tryFirst);
+            boolean oldIndex = Preferences.get().isForceOldIndexEnabled();
+            boolean v1OrUnknown = repo.getFormatVersion() == null ||
+                    repo.getFormatVersion() == IndexFormatVersion.ONE;
+            if (oldIndex || v1OrUnknown) {
+                //noinspection deprecation
+                downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
+            } else {
+                DownloadRequest r;
+                if (request.getIndexFile().getIpfsCidV1() == null) r = request;
+                else {
+                    // add IPFS gateways to mirrors, because have have a CIDv1
+                    List<Mirror> m = new ArrayList<>(mirrors);
+                    m.addAll(IPFS_MIRRORS);
+                    r = new DownloadRequest(request.getIndexFile(), m, proxy, repo.getUsername(),
+                            repo.getPassword(), tryFirst);
+                }
+                downloader = new HttpDownloaderV2(HTTP_MANAGER, r, destFile);
+            }
         }
         return downloader;
     }
+
+    private static final List<Mirror> IPFS_MIRRORS = Arrays.asList(
+            new Mirror("https://ipfs.eth.aragon.network/ipfs/", null, true),
+            new Mirror("https://gateway.ipfs.io/ipfs/", null, true),
+            new Mirror("https://ipfs.io/ipfs/", null, true),
+            new Mirror("https://cloudflare-ipfs.com/ipfs/", null, true),
+            new Mirror("https://ipfs.fleek.co/ipfs/", null, true),
+            new Mirror("https://gateway.pinata.cloud/ipfs/", null, true),
+            new Mirror("https://ipfs.filebase.io/ipfs/", null, true)
+    );
+
 }

@@ -30,9 +30,9 @@ import android.os.Environment;
 import android.os.Process;
 import android.util.Log;
 
-import org.fdroid.fdroid.IndexUpdater;
-import org.fdroid.fdroid.IndexV1Updater;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.index.SigningException;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -89,29 +89,21 @@ public class SDCardScannerService extends IntentService {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
 
         HashSet<File> files = new HashSet<>();
-        if (Build.VERSION.SDK_INT < 21) {
-            if (Environment.isExternalStorageRemovable()) {
-                File sdcard = Environment.getExternalStorageDirectory();
-                String state = Environment.getExternalStorageState();
-                Collections.addAll(files, checkExternalStorage(sdcard, state));
+        for (File f : getExternalFilesDirs(null)) {
+            Log.i(TAG, "getExternalFilesDirs " + f);
+            if (f == null || !f.isDirectory()) {
+                continue;
             }
-        } else {
-            for (File f : getExternalFilesDirs(null)) {
-                Log.i(TAG, "getExternalFilesDirs " + f);
-                if (f == null || !f.isDirectory()) {
-                    continue;
-                }
-                Log.i(TAG, "getExternalFilesDirs " + f);
-                if (Environment.isExternalStorageRemovable(f)) {
-                    String state = Environment.getExternalStorageState(f);
-                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                            == PackageManager.PERMISSION_GRANTED) {
-                        // remove Android/data/org.fdroid.fdroid/files to get root
-                        File sdcard = f.getParentFile().getParentFile().getParentFile().getParentFile();
-                        Collections.addAll(files, checkExternalStorage(sdcard, state));
-                    } else {
-                        Collections.addAll(files, checkExternalStorage(f, state));
-                    }
+            Log.i(TAG, "getExternalFilesDirs " + f);
+            if (Environment.isExternalStorageRemovable(f)) {
+                String state = Environment.getExternalStorageState(f);
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    // remove Android/data/org.fdroid.fdroid/files to get root
+                    File sdcard = f.getParentFile().getParentFile().getParentFile().getParentFile();
+                    Collections.addAll(files, checkExternalStorage(sdcard, state));
+                } else {
+                    Collections.addAll(files, checkExternalStorage(f, state));
                 }
             }
         }
@@ -153,7 +145,7 @@ public class SDCardScannerService extends IntentService {
             if (file.isDirectory()) {
                 searchDirectory(file);
             } else {
-                if (IndexV1Updater.SIGNED_FILE_NAME.equals(file.getName())) {
+                if (IndexV1UpdaterKt.SIGNED_FILE_NAME.equals(file.getName())) {
                     registerRepo(file);
                 }
             }
@@ -165,7 +157,7 @@ public class SDCardScannerService extends IntentService {
         try {
             inputStream = new FileInputStream(file);
             TreeUriScannerIntentService.registerRepo(this, inputStream, Uri.fromFile(file.getParentFile()));
-        } catch (IOException | IndexUpdater.SigningException e) {
+        } catch (IOException | SigningException e) {
             e.printStackTrace();
         } finally {
             Utils.closeQuietly(inputStream);

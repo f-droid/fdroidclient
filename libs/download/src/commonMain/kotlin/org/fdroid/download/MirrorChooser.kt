@@ -1,5 +1,6 @@
 package org.fdroid.download
 
+import io.ktor.client.network.sockets.SocketTimeoutException
 import io.ktor.client.plugins.ResponseException
 import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.HttpStatusCode.Companion.NotFound
@@ -38,7 +39,16 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
             orderMirrors(downloadRequest)
         }
         mirrors.forEachIndexed { index, mirror ->
-            val url = mirror.getUrl(downloadRequest.path)
+            val ipfsCidV1 = downloadRequest.indexFile.ipfsCidV1
+            val url = if (mirror.isIpfsGateway) {
+                if (ipfsCidV1 == null) {
+                    val e = IOException("Got IPFS gateway without CID")
+                    throwOnLastMirror(e, index == mirrors.size - 1)
+                    return@forEachIndexed
+                } else mirror.getUrl(ipfsCidV1)
+            } else {
+                mirror.getUrl(downloadRequest.indexFile.name)
+            }
             try {
                 return request(mirror, url)
             } catch (e: ResponseException) {
@@ -47,9 +57,11 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
                 // don't try other mirrors if we got NotFount response and downloaded a repo
                 if (downloadRequest.tryFirstMirror != null && e.response.status == NotFound) throw e
                 // also throw if this is the last mirror to try, otherwise try next
-                throwOnLastMirror(e, index == downloadRequest.mirrors.size - 1)
+                throwOnLastMirror(e, index == mirrors.size - 1)
             } catch (e: IOException) {
-                throwOnLastMirror(e, index == downloadRequest.mirrors.size - 1)
+                throwOnLastMirror(e, index == mirrors.size - 1)
+            } catch (e: SocketTimeoutException) {
+                throwOnLastMirror(e, index == mirrors.size - 1)
             }
         }
         error("Reached code that was thought to be unreachable.")

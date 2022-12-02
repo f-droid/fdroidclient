@@ -32,6 +32,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,8 +66,9 @@ public class DefaultInstallerActivity extends FragmentActivity {
 
         Intent intent = getIntent();
         String action = intent.getAction();
+        App app = intent.getParcelableExtra(Installer.EXTRA_APP);
         Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-        installer = new DefaultInstaller(this, apk);
+        installer = new DefaultInstaller(this, app, apk);
         if (ACTION_INSTALL_PACKAGE.equals(action)) {
             Uri localApkUri = intent.getData();
             canonicalUri = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
@@ -99,13 +101,7 @@ public class DefaultInstallerActivity extends FragmentActivity {
         // works only when being installed as system-app
         // https://code.google.com/p/android/issues/detail?id=42253
 
-        if (Build.VERSION.SDK_INT < 16) {
-            intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(uri);
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-            intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
-        } else if (Build.VERSION.SDK_INT < 24) {
+        if (Build.VERSION.SDK_INT < 24) {
             intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
             intent.setData(uri);
             intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);

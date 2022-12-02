@@ -54,7 +54,7 @@ public class AppStatus extends AppUpdateData {
         protected void onBindViewHolder(@NonNull List<AppUpdateData> items, int position,
                                         @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
             AppStatus app = (AppStatus) items.get(position);
-            ((AppStatusListItemController) holder).bindModel(app.status.app);
+            ((AppStatusListItemController) holder).bindModel(app.status.app, app.status.apk, app.status);
         }
     }
 

@@ -85,9 +85,7 @@ public class NearbyViewBinder {
             @Override
             public void onClick(View v) {
                 final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
-                if (Build.VERSION.SDK_INT >= 23
-                        && PackageManager.PERMISSION_GRANTED
-                        != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
+                if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
                     ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
                             MainActivity.REQUEST_LOCATION_PERMISSIONS);
                 } else {
@@ -96,26 +94,19 @@ public class NearbyViewBinder {
             }
         });
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            File[] dirs = activity.getExternalFilesDirs("");
-            if (dirs != null) {
-                for (File dir : dirs) {
-                    if (dir != null && Environment.isExternalStorageRemovable(dir)) {
-                        String state = Environment.getExternalStorageState(dir);
-                        if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)
-                                || Environment.MEDIA_MOUNTED.equals(state)) {
-                            // remove Android/data/org.fdroid.fdroid/files to get root
-                            externalStorage = dir.getParentFile().getParentFile().getParentFile().getParentFile();
-                            break;
-                        }
+        File[] dirs = activity.getExternalFilesDirs("");
+        if (dirs != null) {
+            for (File dir : dirs) {
+                if (dir != null && Environment.isExternalStorageRemovable(dir)) {
+                    String state = Environment.getExternalStorageState(dir);
+                    if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)
+                            || Environment.MEDIA_MOUNTED.equals(state)) {
+                        // remove Android/data/org.fdroid.fdroid/files to get root
+                        externalStorage = dir.getParentFile().getParentFile().getParentFile().getParentFile();
+                        break;
                     }
                 }
             }
-        } else if (Environment.isExternalStorageRemovable() &&
-                (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED_READ_ONLY)
-                        || Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))) {
-            Log.i(TAG, "<21 isExternalStorageRemovable MEDIA_MOUNTED");
-            externalStorage = Environment.getExternalStorageDirectory();
         }
 
         final String writeExternalStorage = Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -126,13 +117,9 @@ public class NearbyViewBinder {
             Button requestReadExternalStorage = swapView.findViewById(R.id.request_read_external_storage_button);
             requestReadExternalStorage.setVisibility(View.VISIBLE);
             requestReadExternalStorage.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = 21)
                 @Override
                 public void onClick(View v) {
-                    if (Build.VERSION.SDK_INT >= 23
-                            && (externalStorage == null || !externalStorage.canRead())
-                            && PackageManager.PERMISSION_GRANTED
-                            != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
+                    if ((externalStorage == null || !externalStorage.canRead()) && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
                         ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
                                 MainActivity.REQUEST_STORAGE_PERMISSIONS);
                     } else {

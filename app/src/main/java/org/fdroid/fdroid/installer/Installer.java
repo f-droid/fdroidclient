@@ -34,7 +34,7 @@ import android.util.Log;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
@@ -53,6 +53,7 @@ public abstract class Installer {
     private static final String TAG = "Installer";
 
     final Context context;
+    final App app;
     final Apk apk;
 
     public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".installer";
@@ -67,6 +68,7 @@ public abstract class Installer {
     public static final String ACTION_UNINSTALL_INTERRUPTED = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_INTERRUPTED";
     public static final String ACTION_UNINSTALL_USER_INTERACTION = "org.fdroid.fdroid.installer.Installer.action.UNINSTALL_USER_INTERACTION";
 
+    public static final String EXTRA_APP = "org.fdroid.fdroid.installer.Installer.extra.APP";
     public static final String EXTRA_APK = "org.fdroid.fdroid.installer.Installer.extra.APK";
     public static final String EXTRA_USER_INTERACTION_PI = "org.fdroid.fdroid.installer.Installer.extra.USER_INTERACTION_PI";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.installer.Installer.extra.ERROR_MESSAGE";
@@ -75,8 +77,9 @@ public abstract class Installer {
      * @param apk must be included so that all the phases of the install process
      *            can get all the data about the app, even after F-Droid was killed
      */
-    Installer(Context context, @NonNull Apk apk) {
+    Installer(Context context, @NonNull App app, @NonNull Apk apk) {
         this.context = context;
+        this.app = app;
         this.apk = apk;
     }
 
@@ -97,9 +100,9 @@ public abstract class Installer {
             // no permission screen needed!
             return null;
         }
-        Uri uri = ApkProvider.getApkFromAnyRepoUri(apk);
         Intent intent = new Intent(context, InstallConfirmActivity.class);
-        intent.setData(uri);
+        intent.putExtra(Installer.EXTRA_APP, app);
+        intent.putExtra(Installer.EXTRA_APK, apk);
 
         return intent;
     }
@@ -149,34 +152,37 @@ public abstract class Installer {
             Utils.debugLog(TAG, "Falling back to default installer for uninstall");
             Intent intent = new Intent(context, DefaultInstallerActivity.class);
             intent.setAction(DefaultInstallerActivity.ACTION_UNINSTALL_PACKAGE);
+            intent.putExtra(Installer.EXTRA_APP, app);
             intent.putExtra(Installer.EXTRA_APK, apk);
             return intent;
         }
 
         Intent intent = new Intent(context, UninstallDialogActivity.class);
+        intent.putExtra(Installer.EXTRA_APP, app);
         intent.putExtra(Installer.EXTRA_APK, apk);
 
         return intent;
     }
 
     void sendBroadcastInstall(Uri canonicalUri, String action, PendingIntent pendingIntent) {
-        sendBroadcastInstall(context, canonicalUri, action, apk, pendingIntent, null);
+        sendBroadcastInstall(context, canonicalUri, action, app, apk, pendingIntent, null);
     }
 
     void sendBroadcastInstall(Uri canonicalUri, String action) {
-        sendBroadcastInstall(context, canonicalUri, action, apk, null, null);
+        sendBroadcastInstall(context, canonicalUri, action, app, apk, null, null);
     }
 
     void sendBroadcastInstall(Uri canonicalUri, String action, String errorMessage) {
-        sendBroadcastInstall(context, canonicalUri, action, apk, null, errorMessage);
+        sendBroadcastInstall(context, canonicalUri, action, app, apk, null, errorMessage);
     }
 
     static void sendBroadcastInstall(Context context,
-                                     Uri canonicalUri, String action, Apk apk,
+                                     Uri canonicalUri, String action, App app, Apk apk,
                                      PendingIntent pendingIntent, String errorMessage) {
         Intent intent = new Intent(action);
         intent.setData(canonicalUri);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
+        intent.putExtra(Installer.EXTRA_APP, app);
         intent.putExtra(Installer.EXTRA_APK, apk);
         if (!TextUtils.isEmpty(errorMessage)) {
             intent.putExtra(Installer.EXTRA_ERROR_MESSAGE, errorMessage);
@@ -197,19 +203,20 @@ public abstract class Installer {
     }
 
     private void sendBroadcastUninstall(String action, PendingIntent pendingIntent, String errorMessage) {
-        sendBroadcastUninstall(context, apk, action, pendingIntent, errorMessage);
+        sendBroadcastUninstall(context, app, apk, action, pendingIntent, errorMessage);
     }
 
-    static void sendBroadcastUninstall(Context context, Apk apk, String action) {
-        sendBroadcastUninstall(context, apk, action, null, null);
+    static void sendBroadcastUninstall(Context context, App app, Apk apk, String action) {
+        sendBroadcastUninstall(context, app, apk, action, null, null);
     }
 
-    private static void sendBroadcastUninstall(Context context, Apk apk, String action,
+    private static void sendBroadcastUninstall(Context context, App app, Apk apk, String action,
                                                PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", apk.packageName, null);
 
         Intent intent = new Intent(action);
         intent.setData(uri); // for broadcast filtering
+        intent.putExtra(Installer.EXTRA_APP, app);
         intent.putExtra(Installer.EXTRA_APK, apk);
         intent.putExtra(Installer.EXTRA_USER_INTERACTION_PI, pendingIntent);
         if (!TextUtils.isEmpty(errorMessage)) {
@@ -302,7 +309,7 @@ public abstract class Installer {
             if (isUnattended()) {
                 Log.e(TAG, e.getMessage(), e);
                 Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
-                DefaultInstaller defaultInstaller = new DefaultInstaller(context, apk);
+                DefaultInstaller defaultInstaller = new DefaultInstaller(context, app, apk);
                 defaultInstaller.installPackageInternal(sanitizedUri, canonicalUri);
                 return;
             }

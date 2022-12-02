@@ -18,9 +18,7 @@
 
 package org.fdroid.fdroid;
 
-import android.app.AlarmManager;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
@@ -32,35 +30,43 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Process;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.CompatibilityChecker;
+import org.fdroid.CompatibilityCheckerImpl;
+import org.fdroid.database.DbUpdateChecker;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
+import org.fdroid.database.UpdatableApp;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.InstalledAppProviderService;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.DownloaderFactory;
+import org.fdroid.index.IndexUpdateResult;
+import org.fdroid.index.RepoUpdater;
+import org.fdroid.index.RepoUriBuilder;
+import org.fdroid.index.TempFileProvider;
+import org.fdroid.index.v1.IndexV1Updater;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class UpdateService extends JobIntentService {
@@ -70,6 +76,8 @@ public class UpdateService extends JobIntentService {
     public static final String LOCAL_ACTION_STATUS = "status";
 
     public static final String EXTRA_MESSAGE = "msg";
+    public static final String EXTRA_REPO_ID = "repoId";
+    public static final String EXTRA_REPO_FINGERPRINT = "fingerprint";
     public static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
     public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
@@ -96,6 +104,7 @@ public class UpdateService extends JobIntentService {
 
     private static UpdateService updateService;
 
+    private FDroidDatabase db;
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
     private AppUpdateStatusManager appUpdateStatusManager;
@@ -105,12 +114,21 @@ public class UpdateService extends JobIntentService {
     }
 
     public static void updateRepoNow(Context context, String address) {
+        updateNewRepoNow(context, address, null);
+    }
+
+    public static Intent getIntent(Context context, String address, @Nullable String fingerprint) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
+        intent.putExtra(EXTRA_REPO_FINGERPRINT, fingerprint);
         if (!TextUtils.isEmpty(address)) {
             intent.setData(Uri.parse(address));
         }
-        enqueueWork(context, intent);
+        return intent;
+    }
+
+    public static void updateNewRepoNow(Context context, String address, @Nullable String fingerprint) {
+        enqueueWork(context, getIntent(context, address, fingerprint));
     }
 
     /**
@@ -159,43 +177,28 @@ public class UpdateService extends JobIntentService {
                 interval != Preferences.UPDATE_INTERVAL_DISABLED
                         && !(data == Preferences.OVER_NETWORK_NEVER && wifi == Preferences.OVER_NETWORK_NEVER);
 
-        if (Build.VERSION.SDK_INT < 21) {
-            Intent intent = new Intent(context, UpdateService.class);
-            PendingIntent pending = PendingIntent.getService(context, 0, intent, 0);
-
-            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarm.cancel(pending);
-            if (scheduleNewJob) {
-                alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
-                        SystemClock.elapsedRealtime() + 5000, interval, pending);
-                Utils.debugLog(TAG, "Update scheduler alarm set");
-            } else {
-                Utils.debugLog(TAG, "Update scheduler alarm not set");
-            }
+        Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
+        JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
+        ComponentName componentName = new ComponentName(context, UpdateJobService.class);
+        JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
+                .setRequiresDeviceIdle(true)
+                .setPeriodic(interval);
+        if (Build.VERSION.SDK_INT >= 26) {
+            builder.setRequiresBatteryNotLow(true)
+                    .setRequiresStorageNotLow(true);
+        }
+        if (data == Preferences.OVER_NETWORK_ALWAYS && wifi == Preferences.OVER_NETWORK_ALWAYS) {
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
         } else {
-            Utils.debugLog(TAG, "Using android-21 JobScheduler for updates");
-            JobScheduler jobScheduler = ContextCompat.getSystemService(context, JobScheduler.class);
-            ComponentName componentName = new ComponentName(context, UpdateJobService.class);
-            JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
-                    .setRequiresDeviceIdle(true)
-                    .setPeriodic(interval);
-            if (Build.VERSION.SDK_INT >= 26) {
-                builder.setRequiresBatteryNotLow(true)
-                        .setRequiresStorageNotLow(true);
-            }
-            if (data == Preferences.OVER_NETWORK_ALWAYS && wifi == Preferences.OVER_NETWORK_ALWAYS) {
-                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
-            } else {
-                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
-            }
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
+        }
 
-            jobScheduler.cancel(JOB_ID);
-            if (scheduleNewJob) {
-                jobScheduler.schedule(builder.build());
-                Utils.debugLog(TAG, "Update scheduler alarm set");
-            } else {
-                Utils.debugLog(TAG, "Update scheduler alarm not set");
-            }
+        jobScheduler.cancel(JOB_ID);
+        if (scheduleNewJob) {
+            jobScheduler.schedule(builder.build());
+            Utils.debugLog(TAG, "Update scheduler alarm set");
+        } else {
+            Utils.debugLog(TAG, "Update scheduler alarm not set");
         }
     }
 
@@ -209,41 +212,7 @@ public class UpdateService extends JobIntentService {
         return updateService != null;
     }
 
-    private static volatile boolean isScheduleIfStillOnWifiRunning;
-
-    /**
-     * Waits for a period of time for the WiFi to settle, then if the WiFi is
-     * still active, it schedules an update.  This is to encourage the use of
-     * unlimited networks over metered networks for index updates and auto
-     * downloads of app updates. Starting with {@code android-21}, this uses
-     * {@link android.app.job.JobScheduler} instead.
-     *
-     * @return a {@link Completable} that schedules the update. If this process is already running,
-     * a {@code Completable} that completes immediately is returned.
-     */
-    @NonNull
-    public static Completable scheduleIfStillOnWifi(Context context) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            throw new IllegalStateException("This should never be used on android-21 or newer!");
-        }
-        if (isScheduleIfStillOnWifiRunning || !Preferences.get().isBackgroundDownloadAllowed()) {
-            return Completable.complete();
-        }
-        isScheduleIfStillOnWifiRunning = true;
-
-        return Completable.timer(2, TimeUnit.MINUTES)
-                .andThen(Completable.fromAction(() -> {
-                    if (Preferences.get().isBackgroundDownloadAllowed()) {
-                        Utils.debugLog(TAG, "scheduling update because there is good internet");
-                        schedule(context);
-                    }
-                    isScheduleIfStillOnWifiRunning = false;
-                }))
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public static void stopNow(Context context) {
+    public static void stopNow() {
         if (updateService != null) {
             updateService.stopSelf(JOB_ID);
             updateService = null;
@@ -251,27 +220,18 @@ public class UpdateService extends JobIntentService {
     }
 
     /**
-     * Return a {@link List} of all {@link Repo}s that have either a local
-     * canonical URL or a local mirror URL.  These are repos that can be
-     * updated and used without using the Internet.
-     */
-    public static List<Repo> getLocalRepos(Context context) {
-        return getLocalRepos(RepoProvider.Helper.all(context));
-    }
-
-    /**
      * Return the repos in the {@code repos} {@link List} that have either a
      * local canonical URL or a local mirror URL.  These are repos that can be
      * updated and used without using the Internet.
      */
-    public static List<Repo> getLocalRepos(List<Repo> repos) {
-        ArrayList<Repo> localRepos = new ArrayList<>();
-        for (Repo repo : repos) {
-            if (isLocalRepoAddress(repo.address)) {
+    public static List<Repository> getLocalRepos(List<Repository> repos) {
+        ArrayList<Repository> localRepos = new ArrayList<>();
+        for (Repository repo : repos) {
+            if (isLocalRepoAddress(repo.getAddress())) {
                 localRepos.add(repo);
             } else {
-                for (String mirrorAddress : repo.getMirrorList()) {
-                    if (isLocalRepoAddress(mirrorAddress)) {
+                for (Mirror mirror : repo.getMirrors()) {
+                    if (!mirror.isHttp()) {
                         localRepos.add(repo);
                         break;
                     }
@@ -285,6 +245,7 @@ public class UpdateService extends JobIntentService {
     public void onCreate() {
         super.onCreate();
         updateService = this;
+        db = DBHelper.getDb(getApplicationContext());
 
         notificationManager = ContextCompat.getSystemService(this, NotificationManager.class);
 
@@ -418,14 +379,16 @@ public class UpdateService extends JobIntentService {
         final long startTime = System.currentTimeMillis();
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
         boolean forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
+        long repoId = intent.getLongExtra(EXTRA_REPO_ID, -1);
+        String fingerprint = intent.getStringExtra(EXTRA_REPO_FINGERPRINT);
         String address = intent.getDataString();
 
         try {
             final Preferences fdroidPrefs = Preferences.get();
-
-            // Grab some preliminary information, then we can release the
-            // database while we do all the downloading, etc...
-            List<Repo> repos = RepoProvider.Helper.all(this);
+            // always get repos fresh from DB, because
+            // * when an update is requested early at app start, the repos above might not be available, yet
+            // * when an update is requested when adding a new repo, it might not be in the FDroidApp list, yet
+            List<Repository> repos = db.getRepositoryDao().getRepositories();
 
             // See if it's time to actually do anything yet...
             int netState = ConnectivityMonitorService.getNetworkState(this);
@@ -433,7 +396,7 @@ public class UpdateService extends JobIntentService {
                 Utils.debugLog(TAG, "skipping internet check, this is local: " + address);
             } else if (netState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE) {
                 // keep track of repos that have a local copy in case internet is not available
-                List<Repo> localRepos = getLocalRepos(repos);
+                List<Repository> localRepos = getLocalRepos(repos);
                 if (localRepos.size() > 0) {
                     repos = localRepos;
                 } else {
@@ -446,8 +409,9 @@ public class UpdateService extends JobIntentService {
             } else if ((manualUpdate || forcedUpdate) && fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "manually requested or forced update");
                 if (forcedUpdate) {
-                    DBHelper.resetTransient(this);
-                    InstalledAppProviderService.compareToPackageManager(this);
+                    DBHelper.resetRepos(this);
+                    // TODO check if we still need something like this:
+                    // InstalledAppProviderService.compareToPackageManager(this);
                 }
             } else if (!fdroidPrefs.isBackgroundDownloadAllowed() && !fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
@@ -463,47 +427,58 @@ public class UpdateService extends JobIntentService {
             int errorRepos = 0;
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
-            boolean singleRepoUpdate = !TextUtils.isEmpty(address);
-            for (final Repo repo : repos) {
-                if (!repo.inuse) {
-                    continue;
-                }
-                if (singleRepoUpdate && !repo.address.equals(address)) {
+            boolean singleRepoUpdate = !TextUtils.isEmpty(address) || repoId > 0;
+            for (final Repository repo : repos) {
+                if (!repo.getEnabled()) continue;
+                if (singleRepoUpdate && !repo.getAddress().equals(address) && repo.getRepoId() != repoId) {
                     unchangedRepos++;
                     continue;
                 }
-                if (!singleRepoUpdate && repo.isSwap) {
-                    continue;
+                // TODO reject update if repo.getLastUpdated() is too recent
+
+                sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.getAddress()));
+
+                final RepoUriBuilder repoUriBuilder = (repository, pathElements) -> {
+                    String address1 = Utils.getRepoAddress(repository);
+                    return Utils.getUri(address1, pathElements);
+                };
+                final CompatibilityChecker compatChecker =
+                        new CompatibilityCheckerImpl(getPackageManager(), Preferences.get().forceTouchApps());
+                final UpdateServiceListener listener = new UpdateServiceListener(UpdateService.this);
+                final File cacheDir = getApplicationContext().getCacheDir();
+                final IndexUpdateResult result;
+                if (Preferences.get().isForceOldIndexEnabled()) {
+                    final TempFileProvider tempFileProvider = () ->
+                            File.createTempFile("dl-", "", cacheDir);
+                    final IndexV1Updater updater = new IndexV1Updater(db, tempFileProvider,
+                            DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
+                    result = updater.updateNewRepo(repo, fingerprint);
+                } else {
+                    final RepoUpdater updater = new RepoUpdater(cacheDir, db,
+                            DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
+                    result = updater.update(repo, fingerprint);
                 }
-
-                sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
-
-                try {
-                    IndexUpdater updater = new IndexV1Updater(this, repo);
-                    if (Preferences.get().isForceOldIndexEnabled() || !updater.update()) {
-                        updater = new IndexUpdater(getBaseContext(), repo);
-                        updater.update();
-                    }
-
-                    if (updater.hasChanged()) {
-                        updatedRepos++;
-                        changes = true;
-                    } else {
-                        unchangedRepos++;
-                    }
-                } catch (IndexUpdater.UpdateException e) {
+                if (result instanceof IndexUpdateResult.Unchanged) {
+                    unchangedRepos++;
+                } else if (result instanceof IndexUpdateResult.Processed) {
+                    updatedRepos++;
+                    changes = true;
+                } else if (result instanceof IndexUpdateResult.Error) {
                     errorRepos++;
+                    Exception e = ((IndexUpdateResult.Error) result).getE();
                     Throwable cause = e.getCause();
+                    String repoName = repo.getName(App.getLocales());
+                    String repoPrefix = repoName == null ? "" : repoName + ": ";
                     if (cause == null) {
-                        repoErrors.add(e.getLocalizedMessage());
+                        repoErrors.add(repoPrefix + e.getLocalizedMessage());
                     } else {
-                        repoErrors.add(e.getLocalizedMessage() + " ⇨ " + cause.getLocalizedMessage());
+                        repoErrors.add(repoPrefix + e.getLocalizedMessage() + " ⇨ " +
+                                cause.getLocalizedMessage());
                     }
-                    Log.e(TAG, "Error updating repository " + repo.address);
-                    e.printStackTrace();
+                    Log.e(TAG, "Error updating repository " + repo.getAddress(), e);
                 }
-
                 // now that downloading the index is done, start downloading updates
+                // TODO why are we checking for updates several times (in loop and below)
                 if (changes && fdroidPrefs.isAutoDownloadEnabled() && fdroidPrefs.isBackgroundDownloadAllowed()) {
                     autoDownloadUpdates(this);
                 }
@@ -511,12 +486,8 @@ public class UpdateService extends JobIntentService {
 
             if (!changes) {
                 Utils.debugLog(TAG, "Not checking app details or compatibility, because repos were up to date.");
-            } else {
-                notifyContentProviders();
-
-                if (fdroidPrefs.isUpdateNotificationEnabled() && !fdroidPrefs.isAutoDownloadEnabled()) {
-                    performUpdateNotification();
-                }
+            } else if (fdroidPrefs.isUpdateNotificationEnabled() && !fdroidPrefs.isAutoDownloadEnabled()) {
+                appUpdateStatusManager.checkForUpdates();
             }
 
             fdroidPrefs.setLastUpdateCheck(System.currentTimeMillis());
@@ -543,54 +514,40 @@ public class UpdateService extends JobIntentService {
         Log.i(TAG, "Updating repo(s) complete, took " + time / 1000 + " seconds to complete.");
     }
 
-    private void notifyContentProviders() {
-        getContentResolver().notifyChange(AppProvider.getContentUri(), null);
-        getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
-    }
-
-    private void performUpdateNotification() {
-        List<App> canUpdate = AppProvider.Helper.findCanUpdate(this, Schema.AppMetadataTable.Cols.ALL);
-        if (canUpdate.size() > 0) {
-            showAppUpdatesNotification(canUpdate);
-        }
-    }
-
     /**
      * Queues all apps needing update.  If this app itself (e.g. F-Droid) needs
      * to be updated, it is queued last.
      */
-    public static void autoDownloadUpdates(Context context) {
-        List<App> canUpdate = AppProvider.Helper.findCanUpdate(context, Schema.AppMetadataTable.Cols.ALL);
-        String packageName = context.getPackageName();
+    public static Disposable autoDownloadUpdates(Context context) {
+        DbUpdateChecker updateChecker = new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
+        List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+        return Single.fromCallable(() -> updateChecker.getUpdatableApps(releaseChannels))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(updatableApps -> downloadUpdates(context, updatableApps));
+    }
+
+    private static void downloadUpdates(Context context, List<UpdatableApp> apps) {
+        String ourPackageName = context.getPackageName();
         App updateLastApp = null;
         Apk updateLastApk = null;
-        for (App app : canUpdate) {
-            if (TextUtils.equals(packageName, app.packageName)) {
-                updateLastApp = app;
-                updateLastApk = ApkProvider.Helper.findSuggestedApk(context, app);
+        for (UpdatableApp app : apps) {
+            // update our own APK at the end
+            if (TextUtils.equals(ourPackageName, app.getUpdate().getPackageName())) {
+                updateLastApp = new App(app);
+                updateLastApk = new Apk(app.getUpdate());
                 continue;
             }
-            Apk apk = ApkProvider.Helper.findSuggestedApk(context, app);
-            InstallManagerService.queue(context, app, apk);
+            InstallManagerService.queue(context, new App(app), new Apk(app.getUpdate()));
         }
-        if (updateLastApp != null && updateLastApk != null) {
+        if (updateLastApp != null) {
             InstallManagerService.queue(context, updateLastApp, updateLastApk);
         }
     }
 
-    private void showAppUpdatesNotification(List<App> canUpdate) {
-        if (canUpdate.size() > 0) {
-            List<Apk> apksToUpdate = new ArrayList<>(canUpdate.size());
-            for (App app : canUpdate) {
-                apksToUpdate.add(ApkProvider.Helper.findSuggestedApk(this, app));
-            }
-            appUpdateStatusManager.addApks(apksToUpdate, AppUpdateStatusManager.Status.UpdateAvailable);
-        }
-    }
-
-    public static void reportDownloadProgress(Context context, IndexUpdater updater,
+    public static void reportDownloadProgress(Context context, String indexUrl,
                                               long bytesRead, long totalBytes) {
-        Utils.debugLog(TAG, "Downloading " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
+        Utils.debugLog(TAG, "Downloading " + indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
         int percent = -1;
         if (totalBytes > 0) {
@@ -599,27 +556,13 @@ public class UpdateService extends JobIntentService {
         String message;
         if (totalBytes == -1) {
             message = context.getString(R.string.status_download_unknown_size,
-                    updater.indexUrl, downloadedSizeFriendly);
+                    indexUrl, downloadedSizeFriendly);
             percent = -1;
         } else {
             String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
             message = context.getString(R.string.status_download,
-                    updater.indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
+                    indexUrl, downloadedSizeFriendly, totalSizeFriendly, percent);
         }
-        sendStatus(context, STATUS_INFO, message, percent);
-    }
-
-    public static void reportProcessIndexProgress(Context context, IndexUpdater updater,
-                                                  long bytesRead, long totalBytes) {
-        Utils.debugLog(TAG, "Processing " + updater.indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
-        String downloadedSize = Utils.getFriendlySize(bytesRead);
-        String totalSize = Utils.getFriendlySize(totalBytes);
-        int percent = -1;
-        if (totalBytes > 0) {
-            percent = Utils.getPercent(bytesRead, totalBytes);
-        }
-        String message = context.getString(R.string.status_processing_xml_percent,
-                updater.indexUrl, downloadedSize, totalSize, percent);
         sendStatus(context, STATUS_INFO, message, percent);
     }
 
@@ -631,12 +574,11 @@ public class UpdateService extends JobIntentService {
      * "Saving app details" sent to the user. If you know how many apps you have
      * processed, then a message of "Saving app details (x/total)" is displayed.
      */
-    public static void reportProcessingAppsProgress(Context context, IndexUpdater updater,
-                                                    int appsSaved, int totalApps) {
-        Utils.debugLog(TAG, "Committing " + updater.indexUrl + "(" + appsSaved + "/" + totalApps + ")");
+    public static void reportProcessingAppsProgress(Context context, String indexUrl, int appsSaved, int totalApps) {
+        Utils.debugLog(TAG, "Committing " + indexUrl + "(" + appsSaved + "/" + totalApps + ")");
         if (totalApps > 0) {
             String message = context.getString(R.string.status_inserting_x_apps,
-                    appsSaved, totalApps, updater.indexUrl);
+                    appsSaved, totalApps, indexUrl);
             sendStatus(context, STATUS_INFO, message, Utils.getPercent(appsSaved, totalApps));
         } else {
             String message = context.getString(R.string.status_inserting_apps);

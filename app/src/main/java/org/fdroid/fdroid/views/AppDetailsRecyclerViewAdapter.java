@@ -10,7 +10,6 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -31,30 +30,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.commons.io.FilenameUtils;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.privileged.views.AppDiff;
-import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
-import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
-import org.fdroid.fdroid.views.main.MainActivity;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -70,6 +49,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.apache.commons.io.FilenameUtils;
+import org.fdroid.database.AppPrefs;
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
+import org.fdroid.fdroid.views.main.MainActivity;
+import org.fdroid.index.v2.FileV2;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -84,8 +86,6 @@ public class AppDetailsRecyclerViewAdapter
         void disableAndroidBeam();
 
         void openUrl(String url);
-
-        void installApk();
 
         void installApk(Apk apk);
 
@@ -107,59 +107,58 @@ public class AppDetailsRecyclerViewAdapter
     private static final int VIEWTYPE_VERSION = 7;
 
     private final Context context;
-    @NonNull
+    @Nullable
     private App app;
     private final AppDetailsRecyclerViewAdapterCallbacks callbacks;
     private RecyclerView recyclerView;
-    private List<Object> items;
-    private List<Apk> versions;
-    private List<Apk> compatibleVersionsDifferentSig;
+    private final List<Object> items = new ArrayList<>();
+    private final List<Apk> versions = new ArrayList<>();
+    private final List<Apk> compatibleVersionsDifferentSig = new ArrayList<>();
     private boolean showVersions;
 
     private HeaderViewHolder headerView;
 
     private Apk downloadedApk;
+    @Nullable
+    private Apk suggestedApk;
     private final HashMap<String, Boolean> versionsExpandTracker = new HashMap<>();
 
-    public AppDetailsRecyclerViewAdapter(Context context, @NonNull App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
+    public AppDetailsRecyclerViewAdapter(Context context, @Nullable App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
         this.context = context;
         this.callbacks = callbacks;
         this.app = app;
-        updateItems(app);
+        // add header early for icon transition animation
+        addItem(VIEWTYPE_HEADER);
     }
 
-    public void updateItems(@NonNull App app) {
+    public void updateItems(@NonNull App app, @NonNull List<Apk> apks, @NonNull AppPrefs appPrefs) {
         this.app = app;
 
+        items.clear();
+        versions.clear();
+
         // Get versions
-        versions = new ArrayList<>();
-        compatibleVersionsDifferentSig = new ArrayList<>();
-        final List<Apk> apks = ApkProvider.Helper.findByPackageName(context, this.app.packageName);
-        ensureInstalledApkExists(apks);
+        compatibleVersionsDifferentSig.clear();
+        addInstalledApkIfExists(apks);
         boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
         for (final Apk apk : apks) {
             boolean allowByCompatibility = apk.compatible || showIncompatibleVersions;
-            boolean allowBySig = this.app.installedSig == null || showIncompatibleVersions || TextUtils.equals(this.app.installedSig, apk.sig);
+            String installedSig = app.installedSig;
+            boolean allowBySig = installedSig == null || showIncompatibleVersions || TextUtils.equals(installedSig, apk.sig);
             if (allowByCompatibility) {
                 compatibleVersionsDifferentSig.add(apk);
                 if (allowBySig) {
                     versions.add(apk);
-                    if (!versionsExpandTracker.containsKey(apk.apkName)) {
-                        versionsExpandTracker.put(apk.apkName, false);
+                    if (!versionsExpandTracker.containsKey(apk.getApkPath())) {
+                        versionsExpandTracker.put(apk.getApkPath(), false);
                     }
                 }
             }
         }
+        suggestedApk = app.findSuggestedApk(apks, appPrefs);
 
-        if (items == null) {
-            items = new ArrayList<>();
-        } else {
-            items.clear();
-        }
         addItem(VIEWTYPE_HEADER);
-        if (app.getAllScreenshots(context).length > 0) {
-            addItem(VIEWTYPE_SCREENSHOTS);
-        }
+        if (app.getAllScreenshots().size() > 0) addItem(VIEWTYPE_SCREENSHOTS);
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
@@ -171,12 +170,12 @@ public class AppDetailsRecyclerViewAdapter
                 setShowVersions(true);
             }
         }
-
         notifyDataSetChanged();
     }
 
-    private void ensureInstalledApkExists(final List<Apk> apks) {
-        Apk installedApk = app.getInstalledApk(this.context);
+    private void addInstalledApkIfExists(final List<Apk> apks) {
+        if (app == null) return;
+        Apk installedApk = app.getInstalledApk(context, apks);
         // These conditions should be enough to determine if the installedApk
         // is a generated dummy or a proper APK containing data from a repository.
         if (installedApk != null && installedApk.added == null && installedApk.sig == null) {
@@ -238,26 +237,15 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private boolean shouldShowPermissions() {
+        if (app == null) return false;
         // Figure out if we should show permissions section
-        Apk curApk = getSuggestedApk();
+        Apk curApk = app.installedApk == null ? suggestedApk : app.installedApk;
         final boolean curApkCompatible = curApk != null && curApk.compatible;
         return versions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions());
     }
 
-    private Apk getSuggestedApk() {
-        Apk curApk = null;
-        String appropriateSig = app.getMostAppropriateSignature();
-        for (int i = 0; i < versions.size(); i++) {
-            final Apk apk = versions.get(i);
-            if (apk.versionCode == app.autoInstallVersionCode && TextUtils.equals(apk.sig, appropriateSig)) {
-                curApk = apk;
-                break;
-            }
-        }
-        return curApk;
-    }
-
     private boolean shouldShowDonate() {
+        if (app == null) return false;
         return uriIsSetAndCanBeOpened(app.donate) ||
                 uriIsSetAndCanBeOpened(app.getBitcoinUri()) ||
                 uriIsSetAndCanBeOpened(app.getLitecoinUri()) ||
@@ -493,6 +481,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel() {
+            if (app == null) return;
             Utils.setIconFromRepoOrPM(app, iconView, iconView.getContext());
             titleView.setText(app.name);
             if (!TextUtils.isEmpty(app.authorName)) {
@@ -511,8 +500,10 @@ public class AppDetailsRecyclerViewAdapter
 
             if (!TextUtils.isEmpty(app.summary)) {
                 summaryView.setText(app.summary);
+                summaryView.setVisibility(View.VISIBLE);
+            } else {
+                summaryView.setVisibility(View.GONE);
             }
-            Apk suggestedApk = getSuggestedApk();
             if (suggestedApk == null || TextUtils.isEmpty(app.whatsNew)) {
                 whatsNewView.setVisibility(View.GONE);
                 summaryView.setBackgroundResource(0); // make background of summary transparent
@@ -555,7 +546,8 @@ public class AppDetailsRecyclerViewAdapter
             descriptionView.post(new Runnable() {
                 @Override
                 public void run() {
-                    if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES && app.antiFeatures == null) {
+                    boolean hasNoAntiFeatures = app.antiFeatures == null || app.antiFeatures.length == 0;
+                    if (descriptionView.getLineCount() <= HeaderViewHolder.MAX_LINES && hasNoAntiFeatures) {
                         descriptionMoreView.setVisibility(View.GONE);
                     } else {
                         descriptionMoreView.setVisibility(View.VISIBLE);
@@ -592,17 +584,17 @@ public class AppDetailsRecyclerViewAdapter
                 buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        callbacks.installApk();
+                        callbacks.installApk(suggestedApk);
                     }
                 });
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
-                if (app.canAndWantToUpdate(context) && suggestedApk != null) {
+                if (app.canAndWantToUpdate(suggestedApk) && suggestedApk != null) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
                     buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            callbacks.installApk();
+                            callbacks.installApk(suggestedApk);
                         }
                     });
                 } else {
@@ -623,22 +615,15 @@ public class AppDetailsRecyclerViewAdapter
                             String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
                                     FilenameUtils.getExtension(installedFile.getName()));
                             viewIntent.setDataAndType(uri, mimeType);
-                            if (Build.VERSION.SDK_INT < 19) {
-                                viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            } else {
-                                viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
-                                        | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                            }
+                            viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
+                                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
                             if (context.getPackageManager().queryIntentActivities(viewIntent, 0).size() > 0) {
                                 buttonPrimaryView.setText(R.string.menu_open);
-                                buttonPrimaryView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        try {
-                                            context.startActivity(viewIntent);
-                                        } catch (ActivityNotFoundException e) {
-                                            e.printStackTrace();
-                                        }
+                                buttonPrimaryView.setOnClickListener(v -> {
+                                    try {
+                                        context.startActivity(viewIntent);
+                                    } catch (ActivityNotFoundException e) {
+                                        e.printStackTrace();
                                     }
                                 });
                             } else {
@@ -671,10 +656,12 @@ public class AppDetailsRecyclerViewAdapter
             if (app.antiFeatures == null || app.antiFeatures.length == 0) {
                 antiFeaturesSectionView.setVisibility(View.GONE);
             } else if (descriptionIsExpanded) {
+                antiFeaturesSectionView.setVisibility(View.VISIBLE);
                 antiFeaturesWarningView.setVisibility(View.GONE);
                 antiFeaturesLabelView.setVisibility(View.VISIBLE);
                 antiFeaturesListingView.setVisibility(View.VISIBLE);
             } else {
+                antiFeaturesSectionView.setVisibility(View.VISIBLE);
                 antiFeaturesWarningView.setVisibility(View.VISIBLE);
                 antiFeaturesLabelView.setVisibility(View.GONE);
                 antiFeaturesListingView.setVisibility(View.GONE);
@@ -716,9 +703,10 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
+            if (app == null) return;
             LinearLayoutManager lm = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(lm);
-            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(itemView.getContext(), app, this);
+            ScreenShotsRecyclerViewAdapter adapter = new ScreenShotsRecyclerViewAdapter(app, this);
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setNestedScrollingEnabled(false);
@@ -726,7 +714,8 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void onScreenshotClick(int position) {
-            context.startActivity(ScreenShotsActivity.getStartIntent(context, app.packageName, position));
+            List<FileV2> screenshots = Objects.requireNonNull(app).getAllScreenshots();
+            context.startActivity(ScreenShotsActivity.getStartIntent(context, app.repoId, screenshots, position));
         }
 
         private class ItemDecorator extends RecyclerView.ItemDecoration {
@@ -761,6 +750,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
+            if (app == null) return;
             if (TextUtils.isEmpty(app.authorName)) {
                 donateHeading.setText(context.getString(R.string.app_details_donate_prompt_unknown_author, app.name));
             } else {
@@ -945,7 +935,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private boolean hasCompatibleApksDifferentSigs() {
-            return compatibleVersionsDifferentSig != null && compatibleVersionsDifferentSig.size() > 0;
+            return compatibleVersionsDifferentSig.size() > 0;
         }
     }
 
@@ -971,9 +961,11 @@ public class AppDetailsRecyclerViewAdapter
             headerView.setText(R.string.permissions);
             updateExpandableItem(false);
             contentView.removeAllViews();
-            AppDiff appDiff = new AppDiff(context, versions.get(0));
-            AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.apkPackageInfo);
-            contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
+            if (!versions.isEmpty()) {
+                AppDiff appDiff = new AppDiff(context, versions.get(0));
+                AppSecurityPermissions perms = new AppSecurityPermissions(context, appDiff.apkPackageInfo);
+                contentView.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
+            }
         }
 
         @DrawableRes
@@ -990,6 +982,7 @@ public class AppDetailsRecyclerViewAdapter
 
         @Override
         public void bindModel() {
+            if (app == null) return;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -1104,15 +1097,16 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         public void bindModel(final Apk apk) {
+            if (app == null) return;
             this.apk = apk;
 
             boolean isAppInstalled = app.isInstalled(context);
             boolean isApkInstalled = apk.versionCode == app.installedVersionCode &&
                     TextUtils.equals(apk.sig, app.installedSig);
-            boolean isApkSuggested = apk.versionCode == app.autoInstallVersionCode &&
-                    TextUtils.equals(apk.sig, app.getMostAppropriateSignature());
+            boolean isApkSuggested = apk.equals(suggestedApk);
             boolean isApkDownloading = callbacks.isAppDownloading() && downloadedApk != null &&
-                    downloadedApk.compareTo(apk) == 0 && TextUtils.equals(apk.apkName, downloadedApk.apkName);
+                    downloadedApk.compareTo(apk) == 0 &&
+                    TextUtils.equals(apk.getApkPath(), downloadedApk.getApkPath());
             boolean isApkInstalledDummy = apk.versionCode == app.installedVersionCode &&
                     apk.compatible && apk.size == 0 && apk.maxSdkVersion == -1;
 
@@ -1143,10 +1137,11 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Repository name, APK size and required Android version
-            Repo repo = RepoProvider.Helper.findById(context, apk.repoId);
+            Repository repo = FDroidApp.getRepo(apk.repoId);
             if (repo != null) {
                 repository.setVisibility(View.VISIBLE);
-                repository.setText(String.format(context.getString(R.string.app_repository), repo.getName()));
+                String name = repo.getName(App.getLocales());
+                repository.setText(String.format(context.getString(R.string.app_repository), name));
             } else {
                 repository.setVisibility(View.INVISIBLE);
             }
@@ -1205,7 +1200,7 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Expand the view if it was previously expanded or when downloading
-            expand(versionsExpandTracker.get(apk.apkName) || isApkDownloading);
+            expand(versionsExpandTracker.get(apk.getApkPath()) || isApkDownloading);
 
             // Toggle expanded view when clicking the whole version item,
             // unless it's an installed app version dummy item - it doesn't
@@ -1245,6 +1240,7 @@ public class AppDetailsRecyclerViewAdapter
                 return context.getResources().getString(R.string.requires_features,
                         TextUtils.join(", ", apk.incompatibleReasons));
             } else {
+                Objects.requireNonNull(app);
                 boolean mismatchedSig = app.installedSig != null
                         && !TextUtils.equals(app.installedSig, apk.sig);
                 if (mismatchedSig) {
@@ -1299,7 +1295,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private void expand(boolean expand) {
-            versionsExpandTracker.put(apk.apkName, expand);
+            versionsExpandTracker.put(apk.getApkPath(), expand);
             expandedLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
             versionCode.setVisibility(expand ? View.VISIBLE : View.GONE);
             expandArrow.setImageDrawable(ContextCompat.getDrawable(context, expand ?
@@ -1320,7 +1316,7 @@ public class AppDetailsRecyclerViewAdapter
                 return;
             }
 
-            boolean expand = !versionsExpandTracker.get(apk.apkName);
+            boolean expand = !versionsExpandTracker.get(apk.getApkPath());
             expand(expand);
 
             if (expand) {

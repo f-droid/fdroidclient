@@ -28,21 +28,22 @@ public class StandardAppListItemController extends AppListItemController {
     @Override
     protected AppListItemState getCurrentViewState(
             @NonNull App app, @Nullable AppUpdateStatusManager.AppUpdateStatus appStatus) {
-
+        AppUpdateStatusManager updateStatusManager = AppUpdateStatusManager.getInstance(itemView.getContext());
+        String versionName = updateStatusManager.getInstallableVersion(app.packageName);
         return super.getCurrentViewState(app, appStatus)
-                .setStatusText(getStatusText(app))
-                .setShowInstallButton(shouldShowInstall(app));
+                .setStatusText(getStatusText(app, versionName))
+                .setShowInstallButton(shouldShowInstall(app, versionName));
     }
 
     @Nullable
-    private CharSequence getStatusText(@NonNull App app) {
+    private CharSequence getStatusText(@NonNull App app, @Nullable String versionName) {
         if (!app.compatible) {
             return activity.getString(R.string.app_incompatible);
         } else if (app.antiFeatures != null && app.antiFeatures.length > 0) {
             return activity.getString(R.string.antifeatures);
-        } else if (app.isInstalled(activity.getApplicationContext())) {
-            if (app.canAndWantToUpdate(activity)) {
-                return activity.getString(R.string.app_version_x_available, app.getAutoInstallVersionName());
+        } else if (app.installedVersionName != null) {
+            if (versionName != null) {
+                return activity.getString(R.string.app_version_x_available, versionName);
             } else {
                 return activity.getString(R.string.app_version_x_installed, app.installedVersionName);
             }
@@ -51,8 +52,8 @@ public class StandardAppListItemController extends AppListItemController {
         return null;
     }
 
-    private boolean shouldShowInstall(@NonNull App app) {
-        boolean installable = app.canAndWantToUpdate(activity) || !app.isInstalled(activity.getApplicationContext());
+    private boolean shouldShowInstall(@NonNull App app, @Nullable String versionName) {
+        boolean installable = versionName != null || app.installedVersionName == null;
         boolean shouldAllow = app.compatible && (app.antiFeatures == null || app.antiFeatures.length == 0);
 
         return installable && shouldAllow;

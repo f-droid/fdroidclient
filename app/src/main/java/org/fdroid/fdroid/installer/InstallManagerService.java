@@ -15,7 +15,6 @@ import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.fdroid.download.Downloader;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
@@ -69,7 +68,7 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * <li>for a {@code String} ID, use {@code canonicalUrl}, {@link Uri#toString()}, or
  * {@link Intent#getDataString()}
  * <li>for an {@code int} ID, use {@link String#hashCode()} or {@link Uri#hashCode()}
- * <li>for an {@link Intent} extra, use {@link Downloader#EXTRA_CANONICAL_URL} and include a
+ * <li>for an {@link Intent} extra, use {@link DownloaderService#EXTRA_CANONICAL_URL} and include a
  * {@link String} instance
  * </ul></p>
  * The implementations of {@link Uri#toString()} and {@link Intent#getDataString()} both
@@ -204,7 +203,7 @@ public class InstallManagerService extends Service {
             return START_NOT_STICKY;
         }
 
-        appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.Downloading, null);
+        appUpdateStatusManager.addApk(app, apk, AppUpdateStatusManager.Status.Downloading, null);
 
         registerPackageDownloaderReceivers(canonicalUrl);
         getMainObb(canonicalUrl, apk);
@@ -214,7 +213,7 @@ public class InstallManagerService extends Service {
         long apkFileSize = apkFilePath.length();
         if (!apkFilePath.exists() || apkFileSize < apk.size) {
             Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queue(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl(), apk.apkFile);
         } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
             Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
             sendBroadcast(intent.getData(), DownloaderService.ACTION_STARTED, apkFilePath);
@@ -222,7 +221,7 @@ public class InstallManagerService extends Service {
         } else {
             Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
             apkFilePath.delete();
-            DownloaderService.queue(this, apk.repoId, canonicalUrl);
+            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl(), apk.apkFile);
         }
 
         return START_REDELIVER_INTENT; // if killed before completion, retry Intent
@@ -307,7 +306,7 @@ public class InstallManagerService extends Service {
                 }
             }
         };
-        DownloaderService.queue(this, repoId, obbUrlString);
+        DownloaderService.queue(this, repoId, obbUrlString, obbUrlString, null);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
     }
@@ -355,9 +354,10 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         registerInstallReceiver(canonicalUrl);
 
+                        App app = appUpdateStatusManager.getApp(canonicalUrl);
                         Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
                         if (apk != null) {
-                            InstallerService.install(context, localApkUri, canonicalUri, apk);
+                            InstallerService.install(context, localApkUri, canonicalUri, app, apk);
                         }
                         break;
                     case DownloaderService.ACTION_INTERRUPTED:
@@ -390,6 +390,7 @@ public class InstallManagerService extends Service {
                     return;
                 }
                 String canonicalUrl = intent.getDataString();
+                App app;
                 Apk apk;
                 switch (intent.getAction()) {
                     case Installer.ACTION_INSTALL_STARTED:
@@ -411,20 +412,22 @@ public class InstallManagerService extends Service {
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_INTERRUPTED:
+                        app = intent.getParcelableExtra(Installer.EXTRA_APP);
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         String errorMessage =
                                 intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
                         if (!TextUtils.isEmpty(errorMessage)) {
-                            appUpdateStatusManager.setApkError(apk, errorMessage);
+                            appUpdateStatusManager.setApkError(app, apk, errorMessage);
                         } else {
                             appUpdateStatusManager.removeApk(canonicalUrl);
                         }
                         localBroadcastManager.unregisterReceiver(this);
                         break;
                     case Installer.ACTION_INSTALL_USER_INTERACTION:
+                        app = intent.getParcelableExtra(Installer.EXTRA_APP);
                         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
                         PendingIntent installPendingIntent = intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
-                        appUpdateStatusManager.addApk(apk, AppUpdateStatusManager.Status.ReadyToInstall, installPendingIntent);
+                        appUpdateStatusManager.addApk(app, apk, AppUpdateStatusManager.Status.ReadyToInstall, installPendingIntent);
                         break;
                     default:
                         throw new RuntimeException("intent action not handled!");
@@ -448,9 +451,9 @@ public class InstallManagerService extends Service {
      *
      * @param context this app's {@link Context}
      */
-    public static void queue(Context context, App app, @NonNull Apk apk) {
+    public static void queue(Context context, @NonNull App app, @NonNull Apk apk) {
         String canonicalUrl = apk.getCanonicalUrl();
-        AppUpdateStatusManager.getInstance(context).addApk(apk, AppUpdateStatusManager.Status.PendingInstall, null);
+        AppUpdateStatusManager.getInstance(context).addApk(app, apk, AppUpdateStatusManager.Status.PendingInstall, null);
         putPendingInstall(context, canonicalUrl, apk.packageName);
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + canonicalUrl);
         Intent intent = new Intent(context, InstallManagerService.class);

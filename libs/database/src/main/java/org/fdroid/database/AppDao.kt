@@ -293,7 +293,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""SELECT ${AppMetadata.TABLE}.* FROM ${AppMetadata.TABLE}
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE packageName = :packageName
+        WHERE packageName = :packageName AND pref.enabled = 1
         ORDER BY pref.weight DESC LIMIT 1""")
     override fun getApp(packageName: String): LiveData<App?>
 
@@ -372,7 +372,7 @@ internal interface AppDaoInt : AppDao {
         return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
             LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
             NAME -> getAppListItemsByName().map(packageManager)
-        } else getAppListItems(searchQuery)
+        } else getAppListItems(searchQuery).map(packageManager)
     }
 
     override fun getAppListItems(
@@ -384,7 +384,7 @@ internal interface AppDaoInt : AppDao {
         return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
             LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
             NAME -> getAppListItemsByName(category).map(packageManager)
-        } else getAppListItems(category, searchQuery)
+        } else getAppListItems(category, searchQuery).map(packageManager)
     }
 
     private fun LiveData<List<AppListItem>>.map(
@@ -403,8 +403,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, app.localizedName, app.localizedSummary, version.antiFeatures,
-               app.isCompatible
+        SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -415,8 +415,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, app.localizedName, app.localizedSummary, version.antiFeatures,
-               app.isCompatible
+        SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -428,8 +428,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
@@ -440,8 +440,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -452,8 +452,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -464,8 +464,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, version.antiFeatures,
-               app.isCompatible
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
+               version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -476,7 +476,8 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
-    @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.isCompatible
+    @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+                     app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageName IN (:packageNames)
@@ -492,6 +493,10 @@ internal interface AppDaoInt : AppDao {
         val packageNames = installedPackages.keys.toList()
         return getAppListItems(packageNames).map(packageManager, installedPackages)
     }
+
+    //
+    // Misc Queries
+    //
 
     @Query("""SELECT COUNT(DISTINCT packageName) FROM ${AppMetadata.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)

@@ -3,67 +3,55 @@ package org.fdroid.fdroid.updater;
 import android.content.ContentResolver;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.TestUtils;
+import org.fdroid.fdroid.PreferencesTest;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.data.ShadowApp;
-import org.fdroid.fdroid.data.TempAppProvider;
 import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
-import org.junit.After;
+import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLog;
 
 import java.io.File;
 import java.io.IOException;
 import java.security.cert.Certificate;
-import java.util.List;
+import java.util.Locale;
 
+import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.robolectric.Shadows.shadowOf;
 
 /**
- * This test almost works, it needs to have the {@link android.content.ContentProvider}
- * and {@link ContentResolver} stuff worked out.  It currently fails as
- * {@code updater.update()}.
+ * This test uses the swap repo setup as a fake repo to test {@link UpdateService}.
  */
-@Ignore
 @RunWith(RobolectricTestRunner.class)
-@Config(shadows = ShadowApp.class)
-public class SwapRepoTest {
+public class UpdateServiceTest {
+    public static final String TAG = "UpdateService";
 
     private LocalHTTPD localHttpd;
 
-    
     protected ContentResolver contentResolver;
     protected ContextWrapper context;
 
@@ -72,7 +60,7 @@ public class SwapRepoTest {
         ShadowLog.stream = System.out;
 
         contentResolver = ApplicationProvider.getApplicationContext().getContentResolver();
-        
+
         context = new ContextWrapper(ApplicationProvider.getApplicationContext()) {
             @Override
             public ContentResolver getContentResolver() {
@@ -80,17 +68,7 @@ public class SwapRepoTest {
             }
         };
 
-        TestUtils.registerContentProvider(ApkProvider.getAuthority(), ApkProvider.class);
-        TestUtils.registerContentProvider(AppProvider.getAuthority(), AppProvider.class);
-        TestUtils.registerContentProvider(RepoProvider.getAuthority(), RepoProvider.class);
-        TestUtils.registerContentProvider(TempAppProvider.getAuthority(), TempAppProvider.class);
-
         Preferences.setupForTests(context);
-    }
-
-    @After
-    public final void tearDownBase() {
-        DBHelper.clearDbHelperSingleton();
     }
 
     /**
@@ -98,42 +76,50 @@ public class SwapRepoTest {
      */
     @Test
     public void testSwap()
-            throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.UpdateException, InterruptedException {
+            throws IOException, LocalRepoKeyStore.InitException, InterruptedException {
 
         PackageManager packageManager = context.getPackageManager();
-        
+
         ApplicationInfo appInfo = new ApplicationInfo();
         appInfo.flags = 0;
         appInfo.packageName = context.getPackageName();
         appInfo.minSdkVersion = 10;
         appInfo.targetSdkVersion = 23;
-        appInfo.sourceDir = getClass().getClassLoader().getResource("F-Droid.apk").getPath();
-        appInfo.publicSourceDir = getClass().getClassLoader().getResource("F-Droid.apk").getPath();
+        File build = new File(getClass().getClassLoader().getResource("").getPath(), "../../../..");
+        File apk = new File(build.getCanonicalFile(), "outputs/apk/full/debug/app-full-debug.apk");
+        Log.i(TAG, "outputs " + apk + " " + apk.isDirectory());
+        appInfo.sourceDir = apk.getCanonicalPath();
+        appInfo.publicSourceDir = apk.getCanonicalPath();
         System.out.println("appInfo.sourceDir " + appInfo.sourceDir);
         appInfo.name = "F-Droid";
 
         PackageInfo packageInfo = new PackageInfo();
         packageInfo.packageName = appInfo.packageName;
         packageInfo.applicationInfo = appInfo;
+        packageInfo.signatures = new Signature[1];
+        packageInfo.signatures[0] = new Signature("fake".getBytes());
         packageInfo.versionCode = 1002001;
         packageInfo.versionName = "1.2-fake";
         shadowOf(packageManager).addPackage(packageInfo);
 
         try {
+            String host = null; // null basically means localhost
             FDroidApp.initWifiSettings();
+            FDroidApp.networkState = ConnectivityMonitorService.FLAG_NET_NO_LIMIT;
             FDroidApp.ipAddressString = "127.0.0.1";
             FDroidApp.subnetInfo = new SubnetUtils("127.0.0.0/8").getInfo();
-            FDroidApp.repo.name = "test";
-            FDroidApp.repo.address = "http://" + FDroidApp.ipAddressString + ":" + FDroidApp.port + "/fdroid/repo";
+            String address = "http://" + FDroidApp.ipAddressString + ":" + FDroidApp.port + "/fdroid/repo";
+            FDroidApp.repo = FDroidApp.createSwapRepo(address, null);  // TODO create a regular repo, not swap
 
             LocalRepoService.runProcess(context, new String[]{context.getPackageName()});
+            Log.i(TAG, "REPO: " + FDroidApp.repo);
             File indexJarFile = LocalRepoManager.get(context).getIndexJar();
             System.out.println("indexJarFile:" + indexJarFile);
             assertTrue(indexJarFile.isFile());
 
             localHttpd = new LocalHTTPD(
                     context,
-                    FDroidApp.ipAddressString,
+                    host,
                     FDroidApp.port,
                     LocalRepoManager.get(context).getWebRoot(),
                     false);
@@ -143,45 +129,56 @@ public class SwapRepoTest {
 
             LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
             Certificate localCert = localRepoKeyStore.getCertificate();
+            String fingerprint = Utils.calcFingerprint(localCert).toLowerCase(Locale.ROOT);
             String signingCert = Hasher.hex(localCert);
             assertFalse(TextUtils.isEmpty(signingCert));
-            assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
+            assertFalse(TextUtils.isEmpty(fingerprint));
 
-            Repo repo = MultiIndexUpdaterTest.createRepo(FDroidApp.repo.name, FDroidApp.repo.address,
-                    context, signingCert);
-            IndexUpdater updater = new IndexUpdater(context, repo);
-            updater.update();
-            assertTrue(updater.hasChanged());
-            updater.processDownloadedFile(indexJarFile);
+            assertTrue(Utils.isPortInUse(host, FDroidApp.port));
+            Thread.sleep(100);
 
-            boolean foundRepo = false;
-            for (Repo repoFromDb : RepoProvider.Helper.all(context)) {
-                if (TextUtils.equals(repo.address, repoFromDb.address)) {
-                    foundRepo = true;
-                    repo = repoFromDb;
+            Log.i(TAG, "FDroidApp.networkState " + FDroidApp.networkState);
+            SharedPreferences prefs = PreferencesTest.getSharedPreferences(context);
+            prefs.edit()
+                    .putInt(Preferences.PREF_OVER_DATA, Preferences.OVER_NETWORK_ALWAYS)
+                    .putInt(Preferences.PREF_OVER_WIFI, Preferences.OVER_NETWORK_ALWAYS)
+                    .commit();
+            final Intent intent = UpdateService.getIntent(context, address, fingerprint);
+            final TestUpdateService testUpdateService = Robolectric.buildService(TestUpdateService.class,
+                    intent).bind().get();
+            Thread t = new Thread() {
+                @Override
+                public void run() {
+                    testUpdateService.onCreate();
+                    testUpdateService.onHandleWork(intent);
                 }
-            }
-            assertTrue(foundRepo);
+            };
+            t.start();
+            t.join(10000);
 
-            assertNotEquals(-1, repo.getId());
-            List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
-            assertEquals(1, apks.size());
-            for (Apk apk : apks) {
-                System.out.println(apk);
-            }
-            //MultiIndexUpdaterTest.assertApksExist(apks, context.getPackageName(), new int[]{BuildConfig.VERSION_CODE});
-            Thread.sleep(10000);
+            // TODO test what is in the repo.
+            // TODO add app/src/test/assets/urzip.apk to the repo, then test another update
+            // TODO test various PREF_OVER_DATA and PREF_OVER_WIFI combos
+            Thread.sleep(1000);
         } finally {
             if (localHttpd != null) {
                 localHttpd.stop();
             }
         }
+        assertFalse(localHttpd.isAlive());
     }
 
     class TestLocalRepoService extends LocalRepoService {
         @Override
         protected void onHandleIntent(Intent intent) {
             super.onHandleIntent(intent);
+        }
+    }
+
+    static class TestUpdateService extends UpdateService {
+        @Override
+        public void onHandleWork(@NonNull Intent intent) {
+            super.onHandleWork(intent);
         }
     }
 }

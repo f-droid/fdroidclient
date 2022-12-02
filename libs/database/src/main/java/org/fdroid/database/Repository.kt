@@ -237,7 +237,7 @@ internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
  * An attribute belonging to a [Repository].
  */
 public abstract class RepoAttribute {
-    public abstract val icon: FileV2?
+    public abstract val icon: LocalizedFileV2
     internal abstract val name: LocalizedTextV2
     internal abstract val description: LocalizedTextV2
 
@@ -264,7 +264,7 @@ public abstract class RepoAttribute {
 public data class AntiFeature internal constructor(
     internal val repoId: Long,
     internal val id: String,
-    @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
+    override val icon: LocalizedFileV2,
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2,
 ) : RepoAttribute() {
@@ -299,7 +299,7 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
 public data class Category internal constructor(
     internal val repoId: Long,
     public val id: String,
-    @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
+    override val icon: LocalizedFileV2,
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2,
 ) : RepoAttribute() {
@@ -334,7 +334,7 @@ internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
 public data class ReleaseChannel(
     internal val repoId: Long,
     internal val id: String,
-    @Embedded(prefix = "icon_") public override val icon: FileV2? = null,
+    override val icon: LocalizedFileV2 = emptyMap(),
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2,
 ) : RepoAttribute() {

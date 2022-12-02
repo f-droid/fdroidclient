@@ -60,9 +60,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -80,9 +80,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-mid/entry.jar",
+            entryPath = "diff-empty-mid/$SIGNED_FILE_NAME",
             jsonPath = "index-mid-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMid.index
+            indexFileV2 = TestDataEntry.emptyToMid.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -95,9 +95,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-max/entry.jar",
+            entryPath = "diff-empty-max/$SIGNED_FILE_NAME",
             jsonPath = "index-max-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMax.index
+            indexFileV2 = TestDataEntry.emptyToMax.index
         )
         val result = indexUpdater.updateNewRepo(repo, FINGERPRINT).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -110,9 +110,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = streamIndexV2IntoDb("index-min-v2.json")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-mid/entry.jar",
+            entryPath = "diff-empty-mid/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-mid/42.json",
-            entryFileV2 = TestDataEntry.emptyToMid.diffs["42"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMid.diffs["42"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -126,9 +126,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-min/23.json",
-            entryFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -142,9 +142,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-max/entry.jar",
+            entryPath = "diff-empty-max/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-max/1337.json",
-            entryFileV2 = TestDataEntry.emptyToMax.diffs["1337"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMax.diffs["1337"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -158,9 +158,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-min/23.json",
-            entryFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Unchanged, result)
@@ -174,9 +174,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(repoId, CERTIFICATE)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "diff-empty-min/23.json",
-            entryFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Unchanged, result)
@@ -192,9 +192,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoDao.updateRepository(newRepo)
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -206,9 +206,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.updateNewRepo(repo, "wrong fingerprint")
         assertTrue(result is IndexUpdateResult.Error)
@@ -220,9 +220,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-min/entry.jar",
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
             jsonPath = "index-min-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMin.index
+            indexFileV2 = TestDataEntry.emptyToMin.index
         )
         val result = indexUpdater.update(repo)
         assertTrue(result is IndexUpdateResult.Error)
@@ -238,9 +238,9 @@ internal class IndexV2UpdaterTest : DbTest() {
         val repoId = streamIndexV1IntoDb("index-min-v1.json")
         val repo = prepareUpdate(
             repoId = repoId,
-            entryPath = "diff-empty-mid/entry.jar",
+            entryPath = "diff-empty-mid/$SIGNED_FILE_NAME",
             jsonPath = "index-mid-v2.json",
-            entryFileV2 = TestDataEntry.emptyToMid.index,
+            indexFileV2 = TestDataEntry.emptyToMid.index,
         )
         val result = indexUpdater.update(repo).noError()
         assertEquals(IndexUpdateResult.Processed, result)
@@ -255,13 +255,14 @@ internal class IndexV2UpdaterTest : DbTest() {
         repoId: Long,
         entryPath: String,
         jsonPath: String,
-        entryFileV2: EntryFileV2,
+        indexFileV2: EntryFileV2,
     ): Repository {
+        val entryFileV2 = FileV2.fromPath("/$SIGNED_FILE_NAME")
         val entryFile = tmpFolder.newFile()
         val indexFile = tmpFolder.newFile()
         val repo = repoDao.getRepository(repoId) ?: fail()
-        val entryUri = Uri.parse("${repo.address}/entry.jar")
-        val indexUri = Uri.parse("${repo.address}/${entryFileV2.name.trimStart('/')}")
+        val entryUri = Uri.parse("${repo.address}/$SIGNED_FILE_NAME")
+        val indexUri = Uri.parse("${repo.address}/${indexFileV2.name.trimStart('/')}")
 
         assets.open(entryPath).use { inputStream ->
             entryFile.outputStream().use { inputStream.copyTo(it) }
@@ -272,13 +273,13 @@ internal class IndexV2UpdaterTest : DbTest() {
 
         every { tempFileProvider.createTempFile() } returnsMany listOf(entryFile, indexFile)
         every {
-            downloaderFactory.createWithTryFirstMirror(repo, entryUri, entryFile)
+            downloaderFactory.createWithTryFirstMirror(repo, entryUri, entryFileV2, entryFile)
         } returns downloader
-        every { downloader.download(-1) } just Runs
+        every { downloader.download() } just Runs
         every {
-            downloaderFactory.createWithTryFirstMirror(repo, indexUri, indexFile)
+            downloaderFactory.createWithTryFirstMirror(repo, indexUri, indexFileV2, indexFile)
         } returns downloader
-        every { downloader.download(entryFileV2.size, entryFileV2.sha256) } just Runs
+        every { downloader.download() } just Runs
 
         return repo
     }

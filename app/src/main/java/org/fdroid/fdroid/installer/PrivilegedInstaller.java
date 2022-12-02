@@ -35,6 +35,7 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 import org.fdroid.fdroid.privileged.IPrivilegedService;
 
@@ -68,67 +69,60 @@ public class PrivilegedInstaller extends Installer {
 
     private static final String TAG = "PrivilegedInstaller";
 
-    public static final String PRIVILEGED_EXTENSION_SERVICE_INTENT
+    private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT
             = "org.fdroid.fdroid.privileged.IPrivilegedService";
     public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = BuildConfig.PRIVILEGED_EXTENSION_PACKAGE_NAME;
 
-    public static final int IS_EXTENSION_INSTALLED_NO = 0;
+    private static final int IS_EXTENSION_INSTALLED_NO = 0;
     public static final int IS_EXTENSION_INSTALLED_YES = 1;
-    public static final int IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
+    private static final int IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
 
     // From AOSP source code
-    public static final int ACTION_INSTALL_REPLACE_EXISTING = 2;
+    private static final int ACTION_INSTALL_REPLACE_EXISTING = 2;
 
     /**
      * Following return codes are copied from AOSP 5.1 source code
      */
-    public static final int INSTALL_SUCCEEDED = 1;
-    public static final int INSTALL_FAILED_ALREADY_EXISTS = -1;
-    public static final int INSTALL_FAILED_INVALID_APK = -2;
-    public static final int INSTALL_FAILED_INVALID_URI = -3;
-    public static final int INSTALL_FAILED_INSUFFICIENT_STORAGE = -4;
-    public static final int INSTALL_FAILED_DUPLICATE_PACKAGE = -5;
-    public static final int INSTALL_FAILED_NO_SHARED_USER = -6;
-    public static final int INSTALL_FAILED_UPDATE_INCOMPATIBLE = -7;
-    public static final int INSTALL_FAILED_SHARED_USER_INCOMPATIBLE = -8;
-    public static final int INSTALL_FAILED_MISSING_SHARED_LIBRARY = -9;
-    public static final int INSTALL_FAILED_REPLACE_COULDNT_DELETE = -10;
-    public static final int INSTALL_FAILED_DEXOPT = -11;
-    public static final int INSTALL_FAILED_OLDER_SDK = -12;
-    public static final int INSTALL_FAILED_CONFLICTING_PROVIDER = -13;
-    public static final int INSTALL_FAILED_NEWER_SDK = -14;
-    public static final int INSTALL_FAILED_TEST_ONLY = -15;
-    public static final int INSTALL_FAILED_CPU_ABI_INCOMPATIBLE = -16;
-    public static final int INSTALL_FAILED_MISSING_FEATURE = -17;
-    public static final int INSTALL_FAILED_CONTAINER_ERROR = -18;
-    public static final int INSTALL_FAILED_INVALID_INSTALL_LOCATION = -19;
-    public static final int INSTALL_FAILED_MEDIA_UNAVAILABLE = -20;
-    public static final int INSTALL_FAILED_VERIFICATION_TIMEOUT = -21;
-    public static final int INSTALL_FAILED_VERIFICATION_FAILURE = -22;
-    public static final int INSTALL_FAILED_PACKAGE_CHANGED = -23;
-    public static final int INSTALL_FAILED_UID_CHANGED = -24;
-    public static final int INSTALL_FAILED_VERSION_DOWNGRADE = -25;
-    public static final int INSTALL_PARSE_FAILED_NOT_APK = -100;
-    public static final int INSTALL_PARSE_FAILED_BAD_MANIFEST = -101;
-    public static final int INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION = -102;
-    public static final int INSTALL_PARSE_FAILED_NO_CERTIFICATES = -103;
-    public static final int INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES = -104;
-    public static final int INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING = -105;
-    public static final int INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME = -106;
-    public static final int INSTALL_PARSE_FAILED_BAD_SHARED_USER_ID = -107;
-    public static final int INSTALL_PARSE_FAILED_MANIFEST_MALFORMED = -108;
-    public static final int INSTALL_PARSE_FAILED_MANIFEST_EMPTY = -109;
-    public static final int INSTALL_FAILED_INTERNAL_ERROR = -110;
-    public static final int INSTALL_FAILED_USER_RESTRICTED = -111;
-    public static final int INSTALL_FAILED_DUPLICATE_PERMISSION = -112;
-    public static final int INSTALL_FAILED_NO_MATCHING_ABIS = -113;
-    /**
-     * Internal return code for NativeLibraryHelper methods to indicate that the package
-     * being processed did not contain any native code. This is placed here only so that
-     * it can belong to the same value space as the other install failure codes.
-     */
-    public static final int NO_NATIVE_LIBRARIES = -114;
-    public static final int INSTALL_FAILED_ABORTED = -115;
+    private static final int INSTALL_SUCCEEDED = 1;
+    private static final int INSTALL_FAILED_ALREADY_EXISTS = -1;
+    private static final int INSTALL_FAILED_INVALID_APK = -2;
+    private static final int INSTALL_FAILED_INVALID_URI = -3;
+    private static final int INSTALL_FAILED_INSUFFICIENT_STORAGE = -4;
+    private static final int INSTALL_FAILED_DUPLICATE_PACKAGE = -5;
+    private static final int INSTALL_FAILED_NO_SHARED_USER = -6;
+    private static final int INSTALL_FAILED_UPDATE_INCOMPATIBLE = -7;
+    private static final int INSTALL_FAILED_SHARED_USER_INCOMPATIBLE = -8;
+    private static final int INSTALL_FAILED_MISSING_SHARED_LIBRARY = -9;
+    private static final int INSTALL_FAILED_REPLACE_COULDNT_DELETE = -10;
+    private static final int INSTALL_FAILED_DEXOPT = -11;
+    private static final int INSTALL_FAILED_OLDER_SDK = -12;
+    private static final int INSTALL_FAILED_CONFLICTING_PROVIDER = -13;
+    private static final int INSTALL_FAILED_NEWER_SDK = -14;
+    private static final int INSTALL_FAILED_TEST_ONLY = -15;
+    private static final int INSTALL_FAILED_CPU_ABI_INCOMPATIBLE = -16;
+    private static final int INSTALL_FAILED_MISSING_FEATURE = -17;
+    private static final int INSTALL_FAILED_CONTAINER_ERROR = -18;
+    private static final int INSTALL_FAILED_INVALID_INSTALL_LOCATION = -19;
+    private static final int INSTALL_FAILED_MEDIA_UNAVAILABLE = -20;
+    private static final int INSTALL_FAILED_VERIFICATION_TIMEOUT = -21;
+    private static final int INSTALL_FAILED_VERIFICATION_FAILURE = -22;
+    private static final int INSTALL_FAILED_PACKAGE_CHANGED = -23;
+    private static final int INSTALL_FAILED_UID_CHANGED = -24;
+    private static final int INSTALL_FAILED_VERSION_DOWNGRADE = -25;
+    private static final int INSTALL_PARSE_FAILED_NOT_APK = -100;
+    private static final int INSTALL_PARSE_FAILED_BAD_MANIFEST = -101;
+    private static final int INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION = -102;
+    private static final int INSTALL_PARSE_FAILED_NO_CERTIFICATES = -103;
+    private static final int INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES = -104;
+    private static final int INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING = -105;
+    private static final int INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME = -106;
+    private static final int INSTALL_PARSE_FAILED_BAD_SHARED_USER_ID = -107;
+    private static final int INSTALL_PARSE_FAILED_MANIFEST_MALFORMED = -108;
+    private static final int INSTALL_PARSE_FAILED_MANIFEST_EMPTY = -109;
+    private static final int INSTALL_FAILED_INTERNAL_ERROR = -110;
+    private static final int INSTALL_FAILED_USER_RESTRICTED = -111;
+    private static final int INSTALL_FAILED_DUPLICATE_PERMISSION = -112;
+    private static final int INSTALL_FAILED_NO_MATCHING_ABIS = -113;
 
     private static final HashMap<Integer, String> INSTALL_RETURN_CODES;
 
@@ -233,12 +227,11 @@ public class PrivilegedInstaller extends Installer {
                         "not match any of the ABIs supported by the system.");
     }
 
-    public static final int DELETE_SUCCEEDED = 1;
-    public static final int DELETE_FAILED_INTERNAL_ERROR = -1;
-    public static final int DELETE_FAILED_DEVICE_POLICY_MANAGER = -2;
-    public static final int DELETE_FAILED_USER_RESTRICTED = -3;
-    public static final int DELETE_FAILED_OWNER_BLOCKED = -4;
-    public static final int DELETE_FAILED_ABORTED = -5;
+    private static final int DELETE_SUCCEEDED = 1;
+    private static final int DELETE_FAILED_INTERNAL_ERROR = -1;
+    private static final int DELETE_FAILED_DEVICE_POLICY_MANAGER = -2;
+    private static final int DELETE_FAILED_USER_RESTRICTED = -3;
+    private static final int DELETE_FAILED_OWNER_BLOCKED = -4;
 
     private static final HashMap<Integer, String> UNINSTALL_RETURN_CODES;
 
@@ -259,11 +252,11 @@ public class PrivilegedInstaller extends Installer {
                         "device owner has marked the package as uninstallable.");
     }
 
-    public PrivilegedInstaller(Context context, @NonNull Apk apk) {
-        super(context, apk);
+    PrivilegedInstaller(Context context, App app, @NonNull Apk apk) {
+        super(context, app, apk);
     }
 
-    public static boolean isExtensionInstalled(Context context) {
+    private static boolean isExtensionInstalled(Context context) {
         PackageManager pm = context.getPackageManager();
         try {
             pm.getPackageInfo(PRIVILEGED_EXTENSION_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
@@ -317,7 +310,7 @@ public class PrivilegedInstaller extends Installer {
 
                 IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
-                    public void handleResult(String packageName, int returnCode) throws RemoteException {
+                    public void handleResult(String packageName, int returnCode) {
                         if (returnCode == INSTALL_SUCCEEDED) {
                             sendBroadcastInstall(canonicalUri, ACTION_INSTALL_COMPLETE);
                         } else {
@@ -363,7 +356,7 @@ public class PrivilegedInstaller extends Installer {
 
                 IPrivilegedCallback callback = new IPrivilegedCallback.Stub() {
                     @Override
-                    public void handleResult(String packageName, int returnCode) throws RemoteException {
+                    public void handleResult(String packageName, int returnCode) {
                         if (returnCode == DELETE_SUCCEEDED) {
                             sendBroadcastUninstall(ACTION_UNINSTALL_COMPLETE);
                         } else {

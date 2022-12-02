@@ -31,6 +31,7 @@ import android.os.Build;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
@@ -43,6 +44,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
@@ -111,7 +113,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
-    public static final String PREF_POST_PRIVILEGED_INSTALL = "postPrivilegedInstall";
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
@@ -135,7 +136,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final int DEFAULT_PROXY_PORT = 8118; // TODO move to preferences.xml
     private static final int DEFAULT_LAST_UPDATE_CHECK = -1;
     private static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
-    private static final boolean DEFAULT_POST_PRIVILEGED_INSTALL = false;
     private static final boolean DEFAULT_PANIC_EXIT = true;
 
     private static final boolean IGNORED_B = false;
@@ -199,10 +199,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_FORCE_OLD_INDEX, IGNORED_B);
     }
 
-    public void setForceOldIndex(boolean flag) {
-        preferences.edit().putBoolean(PREF_FORCE_OLD_INDEX, flag).apply();
-    }
-
     /**
      * Whether to use the Privileged Installer, based on if it is installed.  Only the disabled
      * state is stored as a preference since the enabled state is based entirely on the presence
@@ -213,14 +209,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      */
     public boolean isPrivilegedInstallerEnabled() {
         return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, true);
-    }
-
-    public boolean isPostPrivilegedInstall() {
-        return preferences.getBoolean(PREF_POST_PRIVILEGED_INSTALL, DEFAULT_POST_PRIVILEGED_INSTALL);
-    }
-
-    public void setPostPrivilegedInstall(boolean postInstall) {
-        preferences.edit().putBoolean(PREF_POST_PRIVILEGED_INSTALL, postInstall).apply();
     }
 
     /**
@@ -336,16 +324,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    public long getLastUpdateCheck() {
+    long getLastUpdateCheck() {
         return preferences.getLong(PREF_LAST_UPDATE_CHECK, DEFAULT_LAST_UPDATE_CHECK);
     }
 
-    public void setLastUpdateCheck(long lastUpdateCheck) {
+    void setLastUpdateCheck(long lastUpdateCheck) {
         preferences.edit().putLong(PREF_LAST_UPDATE_CHECK, lastUpdateCheck).apply();
-    }
-
-    public void resetLastUpdateCheck() {
-        setLastUpdateCheck(DEFAULT_LAST_UPDATE_CHECK);
     }
 
     /**
@@ -357,6 +341,20 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean getUnstableUpdates() {
         return preferences.getBoolean(PREF_UNSTABLE_UPDATES, IGNORED_B);
+    }
+
+    public String getReleaseChannel() {
+        if (getUnstableUpdates()) return Apk.RELEASE_CHANNEL_BETA;
+        else return Apk.RELEASE_CHANNEL_STABLE;
+    }
+
+    /**
+     * In the backend, stable/production release channel is the default, so it expects null or empty list.
+     */
+    @Nullable
+    public List<String> getBackendReleaseChannels() {
+        if (getUnstableUpdates()) return Collections.singletonList(Apk.RELEASE_CHANNEL_BETA);
+        else return null;
     }
 
     public void setUnstableUpdates(boolean value) {
@@ -595,12 +593,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         showAppsRequiringAntiFeaturesListeners.remove(listener);
     }
 
-    public void registerUnstableUpdatesChangeListener(ChangeListener listener) {
+    void registerUnstableUpdatesChangeListener(ChangeListener listener) {
         unstableUpdatesListeners.add(listener);
-    }
-
-    public void unregisterUnstableUpdatesChangeListener(ChangeListener listener) {
-        unstableUpdatesListeners.remove(listener);
     }
 
     @Override
@@ -630,14 +624,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 }
                 break;
         }
-    }
-
-    public void registerLocalRepoNameListeners(ChangeListener listener) {
-        localRepoNameListeners.add(listener);
-    }
-
-    public void unregisterLocalRepoNameListeners(ChangeListener listener) {
-        localRepoNameListeners.remove(listener);
     }
 
     public void registerLocalRepoHttpsListeners(ChangeListener listener) {

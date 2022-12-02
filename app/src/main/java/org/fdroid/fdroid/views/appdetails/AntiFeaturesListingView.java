@@ -21,7 +21,6 @@ package org.fdroid.fdroid.views.appdetails;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,11 +78,7 @@ public class AntiFeaturesListingView extends RecyclerView {
                     @Override
                     public void onClick(View v) {
                         Intent i = new Intent(Intent.ACTION_VIEW);
-                        if (Build.VERSION.SDK_INT >= 21) {
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-                        } else {
-                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-                        }
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                         i.setData(Uri.parse("https://f-droid.org/docs/Anti-Features#" + antiFeatureName));
                         getContext().startActivity(i);
                     }

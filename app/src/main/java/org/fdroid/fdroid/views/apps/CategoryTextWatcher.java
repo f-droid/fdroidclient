@@ -1,8 +1,6 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextWatcher;
@@ -125,30 +123,25 @@ public class CategoryTextWatcher implements TextWatcher {
      * In addition, also adds a {@link TtsSpan} to indicate to screen readers that the category
      * span has semantic meaning representing a category.
      */
-    @TargetApi(21)
     private void prepareSpans(Editable textToSpannify) {
         if (textToSpannify == null) {
             return;
         }
 
         removeSpans(textToSpannify, CategorySpan.class);
-        if (Build.VERSION.SDK_INT >= 21) {
-            removeSpans(textToSpannify, TtsSpan.class);
-        }
+        removeSpans(textToSpannify, TtsSpan.class);
 
         int colonIndex = textToSpannify.toString().indexOf(':');
         if (colonIndex > 0) {
             CategorySpan span = new CategorySpan(context);
             textToSpannify.setSpan(span, 0, colonIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                // For accessibility reasons, make this more clear to screen readers that the
-                // span we just added semantically represents a category.
-                CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
-                TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name,
-                        categoryName)).build();
-                textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
+            // For accessibility reasons, make this more clear to screen readers that the
+            // span we just added semantically represents a category.
+            CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
+            TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name,
+                    categoryName)).build();
+            textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 

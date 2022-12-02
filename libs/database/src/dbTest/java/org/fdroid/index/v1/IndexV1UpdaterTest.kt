@@ -19,6 +19,7 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
 import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
+import org.fdroid.index.v2.FileV2
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -190,7 +191,8 @@ internal class IndexV1UpdaterTest : DbTest() {
 
     @Suppress("DEPRECATION")
     private fun downloadIndex(repo: Repository, jar: String) {
-        val uri = Uri.parse("${repo.address}/index-v1.jar")
+        val uri = Uri.parse("${repo.address}/$SIGNED_FILE_NAME")
+        val indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME")
 
         val jarFile = tmpFolder.newFile()
         assets.open(jar).use { inputStream ->
@@ -198,7 +200,7 @@ internal class IndexV1UpdaterTest : DbTest() {
         }
         every { tempFileProvider.createTempFile() } returns jarFile
         every {
-            downloaderFactory.createWithTryFirstMirror(repo, uri, jarFile)
+            downloaderFactory.createWithTryFirstMirror(repo, uri, indexFile, jarFile)
         } returns downloader
         every { downloader.cacheTag = null } just Runs
         every { downloader.download() } just Runs

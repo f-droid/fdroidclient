@@ -19,17 +19,14 @@
 
 package org.fdroid.fdroid;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StatFs;
@@ -55,11 +52,16 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.encode.Contents;
 import com.google.zxing.encode.QRCodeEncoder;
 
+import org.fdroid.IndexFile;
+import org.fdroid.database.AppOverviewItem;
+import org.fdroid.database.Repository;
+import org.fdroid.download.DownloadRequest;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.net.TreeUriDownloader;
+import org.fdroid.index.v2.FileV2;
 import org.xml.sax.XMLReader;
 
 import java.io.Closeable;
@@ -70,38 +72,36 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Consumer;
+import androidx.core.util.Supplier;
 import androidx.core.view.DisplayCompat;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import info.guardianproject.netcipher.NetCipher;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import vendored.org.apache.commons.codec.binary.Hex;
 import vendored.org.apache.commons.codec.digest.DigestUtils;
@@ -111,16 +111,6 @@ public final class Utils {
     private static final String TAG = "Utils";
 
     private static final int BUFFER_SIZE = 4096;
-
-    // The date format used for storing dates (e.g. lastupdated, added) in the
-    // database.
-    public static final SimpleDateFormat DATE_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-
-    private static final SimpleDateFormat TIME_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.ENGLISH);
-
-    private static final TimeZone UTC = TimeZone.getTimeZone("Etc/GMT");
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB",
@@ -133,7 +123,51 @@ public final class Utils {
 
     private static Handler toastHandler;
 
-    public static final String FALLBACK_ICONS_DIR = "icons";
+    @NonNull
+    public static Uri getUri(String repoAddress, String... pathElements) {
+        /*
+         * Storage Access Framework URLs have this wacky URL-encoded path within the URL path.
+         *
+         * i.e.
+         * content://authority/tree/313E-1F1C%3A/document/313E-1F1C%3Aguardianproject.info%2Ffdroid%2Frepo
+         *
+         * Currently don't know a better way to identify these than by content:// prefix,
+         * seems the Android SDK expects apps to consider them as opaque identifiers.
+         *
+         * Note: This hack works for the external storage documents provider for now,
+         *       but will most likely fail for other providers.
+         *       Using DocumentFile off the UiThread can be used to build path Uris reliably.
+         */
+        if (repoAddress.startsWith("content://")) {
+            StringBuilder result = new StringBuilder(repoAddress);
+            for (String element : pathElements) {
+                result.append(TreeUriDownloader.ESCAPED_SLASH);
+                result.append(element);
+            }
+            return Uri.parse(result.toString());
+        } else { // Normal URL
+            Uri.Builder result = Uri.parse(repoAddress).buildUpon();
+            for (String element : pathElements) {
+                result.appendPath(element);
+            }
+            return result.build();
+        }
+    }
+
+    /**
+     * Returns the repository address. Usually this is {@link Repository#getAddress()},
+     * but in case of a content:// repo, we need to take its local Uri instead.
+     */
+    public static String getRepoAddress(Repository repository) {
+        List<Mirror> mirrors = repository.getAllMirrors();
+        if (mirrors.size() == 2 && mirrors.get(1).getBaseUrl().startsWith("content://")) {
+            return mirrors.get(1).getBaseUrl();
+        } else {
+            String address = repository.getAddress();
+            if (address.endsWith("/")) return address.substring(0, address.length() - 1);
+            return address;
+        }
+    }
 
     /*
      * @param dpiMultiplier Lets you grab icons for densities larger or
@@ -180,11 +214,7 @@ public final class Utils {
             return 50 * 1024 * 1024; // just return a minimal amount
         }
         StatFs stat = new StatFs(statDir.getPath());
-        if (Build.VERSION.SDK_INT < 18) {
-            return (long) stat.getAvailableBlocks() * (long) stat.getBlockSize();
-        } else {
-            return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
-        }
+        return stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
     }
 
     public static long getImageCacheDirTotalMemory(Context context) {
@@ -196,11 +226,7 @@ public final class Utils {
             return 100 * 1024 * 1024; // just return a minimal amount
         }
         StatFs stat = new StatFs(statDir.getPath());
-        if (Build.VERSION.SDK_INT < 18) {
-            return (long) stat.getBlockCount() * (long) stat.getBlockSize();
-        } else {
-            return stat.getBlockCountLong() * stat.getBlockSizeLong();
-        }
+        return stat.getBlockCountLong() * stat.getBlockSizeLong();
     }
 
     public static void copy(InputStream input, OutputStream output) throws IOException {
@@ -237,7 +263,7 @@ public final class Utils {
         }
     }
 
-    public static boolean copyQuietly(File inFile, File outFile) {
+    private static boolean copyQuietly(File inFile, File outFile) {
         InputStream input = null;
         OutputStream output = null;
         try {
@@ -330,26 +356,27 @@ public final class Utils {
         for (int i = 2; i < fingerprint.length(); i = i + 2) {
             displayFP.append(" ").append(fingerprint.substring(i, i + 2));
         }
-        return displayFP.toString();
+        return displayFP.toString().toUpperCase(Locale.US);
     }
 
     @NonNull
-    public static Uri getLocalRepoUri(Repo repo) {
-        if (TextUtils.isEmpty(repo.address)) {
+    public static Uri getLocalRepoUri(Repository repo) {
+        if (TextUtils.isEmpty(repo.getAddress())) {
             return Uri.parse("http://wifi-not-enabled");
         }
-        Uri uri = Uri.parse(repo.address);
+        Uri uri = Uri.parse(repo.getAddress());
         Uri.Builder b = uri.buildUpon();
-        if (!TextUtils.isEmpty(repo.fingerprint)) {
-            b.appendQueryParameter("fingerprint", repo.fingerprint);
+        if (!TextUtils.isEmpty(repo.getCertificate())) {
+            String fingerprint = DigestUtils.sha256Hex(repo.getCertificate());
+            b.appendQueryParameter("fingerprint", fingerprint);
         }
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https" : "http";
         b.scheme(scheme);
         return b.build();
     }
 
-    public static Uri getSharingUri(Repo repo) {
-        if (TextUtils.isEmpty(repo.address)) {
+    public static Uri getSharingUri(Repository repo) {
+        if (repo == null || TextUtils.isEmpty(repo.getAddress())) {
             return Uri.parse("http://wifi-not-enabled");
         }
         Uri localRepoUri = getLocalRepoUri(repo);
@@ -363,22 +390,6 @@ public final class Utils {
             }
         }
         return b.build();
-    }
-
-    /**
-     * Create a standard {@link PackageManager} {@link Uri} for pointing to an app.
-     */
-    public static Uri getPackageUri(String packageName) {
-        return Uri.parse("package:" + packageName);
-    }
-
-    public static String calcFingerprint(String keyHexString) {
-        if (TextUtils.isEmpty(keyHexString)
-                || keyHexString.matches(".*[^a-fA-F0-9].*")) {
-            Log.e(TAG, "Signing key certificate was blank or contained a non-hex-digit!");
-            return null;
-        }
-        return calcFingerprint(Hasher.unhex(keyHexString));
     }
 
     public static String calcFingerprint(Certificate cert) {
@@ -429,38 +440,19 @@ public final class Utils {
     }
 
     /**
-     * Get the fingerprint used to represent an APK signing key in F-Droid.
-     * This is a custom fingerprint algorithm that was kind of accidentally
-     * created, but is still in use.
+     * Get the standard, lowercase SHA-256 fingerprint used to represent an
+     * APK or JAR signing key. <b>NOTE</b>: this does not handle signers that
+     * have multiple X.509 signing certificates.
      *
-     * @see #getPackageSig(PackageInfo)
      * @see org.fdroid.fdroid.data.Apk#sig
+     * @see PackageInfo#signatures
      */
-    public static String getsig(byte[] rawCertBytes) {
-        return DigestUtils.md5Hex(Hex.encodeHexString(rawCertBytes).getBytes());
-    }
-
-    /**
-     * Get the fingerprint used to represent an APK signing key in F-Droid.
-     * This is a custom fingerprint algorithm that was kind of accidentally
-     * created, but is still in use.
-     *
-     * @see #getsig(byte[])
-     * @see org.fdroid.fdroid.data.Apk#sig
-     */
-    public static String getPackageSig(PackageInfo info) {
+    @Nullable
+    public static String getPackageSigner(PackageInfo info) {
         if (info == null || info.signatures == null || info.signatures.length < 1) {
-            return "";
+            return null;
         }
-        Signature sig = info.signatures[0];
-        String sigHash = "";
-        try {
-            Hasher hash = new Hasher("MD5", sig.toCharsString().getBytes());
-            sigHash = hash.getHash();
-        } catch (NoSuchAlgorithmException e) {
-            // ignore
-        }
-        return sigHash;
+        return DigestUtils.sha256Hex(info.signatures[0].toByteArray());
     }
 
     /**
@@ -485,13 +477,60 @@ public final class Utils {
      * @see Preferences#isBackgroundDownloadAllowed()
      */
     public static void setIconFromRepoOrPM(@NonNull App app, ImageView iv, Context context) {
+        loadWithGlide(context, app.repoId, app.iconFile, iv);
+    }
+
+    @Deprecated
+    public static void setIconFromRepoOrPM(@NonNull AppOverviewItem app, ImageView iv, Context context) {
+        long repoId = app.getRepoId();
+        IndexFile iconFile = app.getIcon(App.getLocales());
+        loadWithGlide(context, repoId, iconFile, iv);
+    }
+
+    public static void loadWithGlide(Context context, long repoId, @Nullable IndexFile file, ImageView iv) {
+        if (file == null) {
+            Glide.with(context).clear(iv);
+            iv.setImageResource(R.drawable.ic_repo_app_default);
+            return;
+        }
         if (iconRequestOptions == null) {
             iconRequestOptions = new RequestOptions()
                     .error(R.drawable.ic_repo_app_default)
                     .fallback(R.drawable.ic_repo_app_default);
         }
-        iconRequestOptions.onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed());
-        app.loadWithGlide(context).apply(iconRequestOptions).into(iv);
+        RequestOptions options = iconRequestOptions.onlyRetrieveFromCache(
+                !Preferences.get().isBackgroundDownloadAllowed());
+
+        Repository repo = FDroidApp.getRepo(repoId);
+        if (repo == null) {
+            Glide.with(context).clear(iv);
+            return;
+        }
+        String address = getRepoAddress(repo);
+        if (address.startsWith("content://")) {
+            String uri = getUri(address, file.getName().split("/")).toString();
+            Glide.with(context).load(uri).apply(options).into(iv);
+        } else {
+            DownloadRequest request = getDownloadRequest(repo, file);
+            Glide.with(context).load(request).apply(options).into(iv);
+        }
+    }
+
+    @Nullable
+    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable IndexFile file) {
+        if (file == null) return null;
+        List<Mirror> mirrors = repo.getMirrors();
+        Proxy proxy = NetCipher.getProxy();
+        return new DownloadRequest(file, mirrors, proxy, repo.getUsername(), repo.getPassword());
+    }
+
+    @Nullable
+    @Deprecated
+    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable String path) {
+        if (path == null) return null;
+        List<Mirror> mirrors = repo.getMirrors();
+        Proxy proxy = NetCipher.getProxy();
+        return new DownloadRequest(path, mirrors, proxy, repo.getUsername(), repo.getPassword());
     }
 
     /**
@@ -511,7 +550,7 @@ public final class Utils {
      * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
      */
     @Nullable
-    public static String getFileHexDigest(File file, String hashAlgo) {
+    static String getFileHexDigest(File file, String hashAlgo) {
         try {
             return Hex.encodeHexString(DigestUtils.digest(DigestUtils.getDigest(hashAlgo), file));
         } catch (IOException e) {
@@ -523,80 +562,6 @@ public final class Utils {
             }
         }
         return null;
-    }
-
-    public static int parseInt(String str, int fallback) {
-        if (str == null || str.length() == 0) {
-            return fallback;
-        }
-        int result;
-        try {
-            result = Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            result = fallback;
-        }
-        return result;
-    }
-
-    @Nullable
-    public static String[] parseCommaSeparatedString(String values) {
-        return values == null || values.length() == 0 ? null : values.split(",");
-    }
-
-    @Nullable
-    public static String serializeCommaSeparatedString(@Nullable String[] values) {
-        return values == null || values.length == 0 ? null : TextUtils.join(",", values);
-    }
-
-    private static Date parseDateFormat(DateFormat format, String str, Date fallback) {
-        if (str == null || str.length() == 0) {
-            return fallback;
-        }
-        Date result;
-        try {
-            format.setTimeZone(UTC);
-            result = format.parse(str);
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | ParseException e) {
-            e.printStackTrace();
-            result = fallback;
-        }
-        return result;
-    }
-
-    private static String formatDateFormat(DateFormat format, Date date, String fallback) {
-        if (date == null) {
-            return fallback;
-        }
-        format.setTimeZone(UTC);
-        return format.format(date);
-    }
-
-    /**
-     * Parses a date string into UTC time
-     */
-    public static Date parseDate(String str, Date fallback) {
-        return parseDateFormat(DATE_FORMAT, str, fallback);
-    }
-
-    /**
-     * Formats UTC time into a date string
-     */
-    public static String formatDate(Date date, String fallback) {
-        return formatDateFormat(DATE_FORMAT, date, fallback);
-    }
-
-    /**
-     * Parses a date/time string into UTC time
-     */
-    public static Date parseTime(String str, Date fallback) {
-        return parseDateFormat(TIME_FORMAT, str, fallback);
-    }
-
-    /**
-     * Formats UTC time into a date/time string
-     */
-    public static String formatTime(Date date, String fallback) {
-        return formatDateFormat(TIME_FORMAT, date, fallback);
     }
 
     /**
@@ -635,17 +600,21 @@ public final class Utils {
     /**
      * Calculate the number of days since the given date.
      */
-    public static int daysSince(@NonNull Date date) {
-        long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
+    public static int daysSince(long ms) {
+        long msDiff = Calendar.getInstance().getTimeInMillis() - ms;
         return (int) TimeUnit.MILLISECONDS.toDays(msDiff);
     }
 
     public static String formatLastUpdated(@NonNull Resources res, @NonNull Date date) {
-        long msDiff = Calendar.getInstance().getTimeInMillis() - date.getTime();
-        long days = msDiff / DateUtils.DAY_IN_MILLIS;
-        long weeks = msDiff / (DateUtils.DAY_IN_MILLIS * 7);
-        long months = msDiff / (DateUtils.DAY_IN_MILLIS * 30);
-        long years = msDiff / (DateUtils.DAY_IN_MILLIS * 365);
+        return formatLastUpdated(res, date.getTime());
+    }
+
+    public static String formatLastUpdated(@NonNull Resources res, long date) {
+        double msDiff = System.currentTimeMillis() - date;
+        long days = Math.round(msDiff / DateUtils.DAY_IN_MILLIS);
+        long weeks = Math.round(msDiff / (DateUtils.WEEK_IN_MILLIS));
+        long months = Math.round(msDiff / (DateUtils.DAY_IN_MILLIS * 30));
+        long years = Math.round(msDiff / (DateUtils.YEAR_IN_MILLIS));
 
         if (days < 1) {
             return res.getString(R.string.details_last_updated_today);
@@ -730,6 +699,18 @@ public final class Utils {
         return versionName;
     }
 
+    public static String getApplicationLabel(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
+        ApplicationInfo appInfo;
+        try {
+            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            return appInfo.loadLabel(pm).toString();
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Utils.debugLog(TAG, "Could not get application label: " + e.getMessage());
+        }
+        return packageName; // all else fails, return packageName
+    }
+
     public static String getUserAgent() {
         return "F-Droid " + BuildConfig.VERSION_NAME;
     }
@@ -746,74 +727,6 @@ public final class Utils {
             debugLog(TAG, "Could not get PackageInfo: ", e);
         }
         return null;
-    }
-
-    /**
-     * Try to get the {@link PackageInfo} with signature info for the {@code packageName} provided.
-     *
-     * @return null on failure
-     */
-    @SuppressLint("PackageManagerGetSignatures")
-    public static PackageInfo getPackageInfoWithSignatures(Context context, String packageName) {
-        try {
-            return context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
-        } catch (PackageManager.NameNotFoundException e) {
-            debugLog(TAG, "Could not get PackageInfo: ", e);
-        }
-        return null;
-    }
-
-    /**
-     * Useful for debugging during development, so that arbitrary queries can be made, and their
-     * results inspected in the debugger.
-     */
-    @SuppressWarnings("unused")
-    @RequiresApi(api = 11)
-    public static List<Map<String, String>> dumpCursor(Cursor cursor) {
-        List<Map<String, String>> data = new ArrayList<>();
-
-        if (cursor == null) {
-            return data;
-        }
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            Map<String, String> row = new HashMap<>(cursor.getColumnCount());
-            for (String col : cursor.getColumnNames()) {
-                int i = cursor.getColumnIndex(col);
-                switch (cursor.getType(i)) {
-                    case Cursor.FIELD_TYPE_NULL:
-                        row.put(col, null);
-                        break;
-
-                    case Cursor.FIELD_TYPE_INTEGER:
-                        row.put(col, Integer.toString(cursor.getInt(i)));
-                        break;
-
-                    case Cursor.FIELD_TYPE_FLOAT:
-                        row.put(col, Double.toString(cursor.getFloat(i)));
-                        break;
-
-                    case Cursor.FIELD_TYPE_STRING:
-                        row.put(col, cursor.getString(i));
-                        break;
-
-                    case Cursor.FIELD_TYPE_BLOB:
-                        row.put(col, new String(cursor.getBlob(i), Charset.defaultCharset()));
-                        break;
-                }
-            }
-            data.add(row);
-            cursor.moveToNext();
-        }
-
-        cursor.close();
-        return data;
-    }
-
-    public static int dpToPx(int dp, Context ctx) {
-        Resources r = ctx.getResources();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
     /**
@@ -918,6 +831,55 @@ public final class Utils {
                 .doOnError(throwable -> Log.e(TAG, "Could not encode QR as bitmap", throwable));
     }
 
+    public static <T> Disposable runOffUiThread(Supplier<T> supplier, Consumer<T> consumer) {
+        return Single.fromCallable(supplier::get)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError(throwable -> Log.e(TAG, "Error running off UiThread", throwable))
+                .subscribe(consumer::accept, e -> {
+                    Log.e(TAG, "Could not run off UI thread: ", e);
+                    consumer.accept(null);
+                });
+    }
+
+    public static Disposable runOffUiThread(Runnable runnable) {
+        return Single.fromCallable(() -> {
+            runnable.run();
+            return true;
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError(throwable -> Log.e(TAG, "Error running off UiThread", throwable))
+                .subscribe();
+    }
+
+    public static <T> void observeOnce(LiveData<T> liveData, LifecycleOwner lifecycleOwner, Consumer<T> consumer) {
+        liveData.observe(lifecycleOwner, new Observer<T>() {
+            @Override
+            public void onChanged(T t) {
+                consumer.accept(t);
+                liveData.removeObserver(this);
+            }
+        });
+    }
+
+    public static ArrayList<String> toString(@Nullable List<FileV2> files) {
+        if (files == null) return new ArrayList<>(0);
+        ArrayList<String> list = new ArrayList<>(files.size());
+        for (FileV2 file : files) {
+            list.add(file.serialize());
+        }
+        return list;
+    }
+
+    public static List<FileV2> fileV2FromStrings(List<String> list) {
+        ArrayList<FileV2> files = new ArrayList<>(list.size());
+        for (String s : list) {
+            files.add(FileV2.deserialize(s));
+        }
+        return files;
+    }
+
     /**
      * Keep an instance of this class as an field in an AppCompatActivity for figuring out whether the on
      * screen keyboard is currently visible or not.
@@ -949,58 +911,16 @@ public final class Utils {
         }
     }
 
-    /**
-     * Returns a list of unwanted anti-features from a list of acceptable anti-features
-     * Basically: all anti-features minus the ones that are okay.
-     */
-    private static List<String> unwantedAntifeatures(Context context, Set<String> acceptableAntifeatures) {
-        List<String> antiFeatures = new ArrayList<>(
-                Arrays.asList(context.getResources().getStringArray(R.array.antifeaturesValues))
-        );
+    public static boolean isPortInUse(String host, int port) {
+        boolean result = false;
 
-        antiFeatures.removeAll(acceptableAntifeatures);
-
-        return antiFeatures;
-    }
-
-    /**
-     * Returns a SQL filter to use in Cursors to filter out everything with non-acceptable antifeatures
-     *
-     * @param context
-     * @return String
-     */
-    public static String getAntifeatureSQLFilter(Context context) {
-        List<String> unwantedAntifeatures = Utils.unwantedAntifeatures(
-                context,
-                Preferences.get().showAppsWithAntiFeatures()
-        );
-
-        StringBuilder antiFeatureFilter = new StringBuilder(Schema.AppMetadataTable.NAME)
-                .append(".")
-                .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
-                .append(" IS NULL");
-
-        if (!unwantedAntifeatures.isEmpty()) {
-            antiFeatureFilter.append(" OR (");
-
-            for (int i = 0; i < unwantedAntifeatures.size(); i++) {
-                String unwantedAntifeature = unwantedAntifeatures.get(i);
-
-                if (i > 0) {
-                    antiFeatureFilter.append(" AND ");
-                }
-
-                antiFeatureFilter.append(Schema.AppMetadataTable.NAME)
-                        .append(".")
-                        .append(Schema.AppMetadataTable.Cols.ANTI_FEATURES)
-                        .append(" NOT LIKE '%")
-                        .append(unwantedAntifeature)
-                        .append("%'");
-            }
-
-            antiFeatureFilter.append(")");
+        try {
+            (new Socket(host, port)).close();
+            result = true;
+        } catch (IOException e) {
+            // Could not connect.
+            e.printStackTrace();
         }
-
-        return antiFeatureFilter.toString();
+        return result;
     }
 }

@@ -120,7 +120,7 @@ internal class EntryVerifierTest {
         val e = assertFailsWith<SigningException> {
             verifier.getStreamAndVerify { }
         }
-        assertTrue(e.message!!.contains("entry.json"))
+        assertTrue(e.message!!.contains(DATA_FILE_NAME))
     }
 
     @Test

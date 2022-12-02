@@ -29,6 +29,7 @@ import android.view.ContextThemeWrapper;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.installer.Installer;
 
 import androidx.annotation.Nullable;
@@ -50,6 +51,7 @@ public class UninstallDialogActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         final Intent intent = getIntent();
+        final App app = intent.getParcelableExtra(Installer.EXTRA_APP);
         final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
 
         PackageManager pm = getPackageManager();
@@ -89,6 +91,7 @@ public class UninstallDialogActivity extends FragmentActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent data = new Intent();
+                        data.putExtra(Installer.EXTRA_APP, app);
                         data.putExtra(Installer.EXTRA_APK, apk);
                         setResult(AppCompatActivity.RESULT_OK, intent);
                         finish();

@@ -49,7 +49,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.work.CleanCacheWorker;
@@ -325,12 +324,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_LANGUAGE:
                 entrySummary(key);
                 if (changing) {
-                    AppCompatActivity activity = (AppCompatActivity) getActivity();
+                    AppCompatActivity activity = (AppCompatActivity) requireActivity();
                     Languages.setLanguage(activity);
-
-                    RepoProvider.Helper.clearEtags(getActivity());
-                    UpdateService.updateNow(getActivity());
-
+                    FDroidApp.onLanguageChanged(activity.getApplicationContext());
                     Languages.forceChangeLanguage(activity);
                 }
                 break;
@@ -474,14 +470,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         // by the time the user boots, opens F-Droid, and views this settings page, then there
         // is no benefit showing it to them (it will only be disabled and we can't offer any
         // way to easily install from here.
-        if (Build.VERSION.SDK_INT > 19 && !installed) {
-            if (pref != null) {
-                otherPrefGroup.removePreference(pref);
-            }
+        if (!installed) {
+            otherPrefGroup.removePreference(pref);
         } else {
-            pref.setEnabled(installed);
-            pref.setDefaultValue(installed);
-            pref.setChecked(enabled && installed);
+            pref.setEnabled(true);
+            pref.setDefaultValue(true);
+            pref.setChecked(enabled);
 
             pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -585,8 +579,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
 
         if (updateIntervalPrevious != updateIntervalSeekBar.getValue()) {
             UpdateService.schedule(getActivity());
-        } else if (Build.VERSION.SDK_INT >= 21 &&
-                (overWifiPrevious != overWifiSeekBar.getValue() || overDataPrevious != overDataSeekBar.getValue())) {
+        } else if (overWifiPrevious != overWifiSeekBar.getValue() || overDataPrevious != overDataSeekBar.getValue()) {
             UpdateService.schedule(getActivity());
         }
     }

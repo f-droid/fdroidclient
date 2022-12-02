@@ -12,9 +12,6 @@ def getVersionName = { ->
     return stdout.toString().trim()
 }
 
-def isCi = "true" == System.getenv("CI")
-def preDexEnabled = "true" == System.getProperty("pre-dex", "true")
-
 def fullApplicationId = "org.fdroid.fdroid"
 def basicApplicationId = "org.fdroid.basic"
 // yes, this actually needs both quotes https://stackoverflow.com/a/41391841
@@ -28,7 +25,7 @@ android {
         versionName getVersionName()
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        minSdkVersion 22
+        minSdkVersion 23
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         /*
@@ -63,6 +60,8 @@ android {
             applicationIdSuffix ".debug"
             resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
+            // testProguardFiles gets partially ignored for instrumentation tests
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
             println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
         }
     }
@@ -103,9 +102,6 @@ android {
                     showStandardStreams = true
                 }
                 systemProperty 'robolectric.dependency.repo.url', 'https://repo1.maven.org/maven2'
-
-                // hack to avoid memory leak crashes
-                forkEvery = 1
             }
         }
     }
@@ -143,6 +139,8 @@ android {
 
 dependencies {
     implementation project(":libs:download")
+    implementation project(":libs:index")
+    implementation project(":libs:database")
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.preference:preference:1.2.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
@@ -168,10 +166,6 @@ dependencies {
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
-
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.11.4'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.4'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.4'
 
     implementation "com.github.bumptech.glide:glide:4.12.0"
     annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"

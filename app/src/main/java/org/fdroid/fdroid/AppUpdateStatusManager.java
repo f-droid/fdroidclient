@@ -2,7 +2,6 @@ package org.fdroid.fdroid;
 
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +9,14 @@ import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import org.fdroid.database.UpdatableApp;
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.DownloaderService;
@@ -31,10 +34,11 @@ import androidx.annotation.Nullable;
 import androidx.core.app.TaskStackBuilder;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import io.reactivex.rxjava3.disposables.Disposable;
+
 /**
  * Manages the state of APKs that are being installed or that have updates available.
- * This also ensures the state is saved across F-Droid restarts, and repopulates
- * based on {@link org.fdroid.fdroid.data.Schema.InstalledAppTable} data, APKs that
+ * This also ensures the state is saved across F-Droid restarts, APKs that
  * are present in the cache, and the {@code apks-pending-install}
  * {@link SharedPreferences} instance.
  * <p>
@@ -111,6 +115,7 @@ public final class AppUpdateStatusManager {
     }
 
     private static AppUpdateStatusManager instance;
+    private final MutableLiveData<Integer> numUpdatableApps = new MutableLiveData<>();
 
     public static class AppUpdateStatus implements Parcelable {
         public final App app;
@@ -201,20 +206,27 @@ public final class AppUpdateStatusManager {
 
     private final Context context;
     private final LocalBroadcastManager localBroadcastManager;
+    private final DbUpdateChecker updateChecker;
     private final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
+    @Nullable
+    private Disposable disposable;
     private boolean isBatchUpdating;
 
     private AppUpdateStatusManager(Context context) {
         this.context = context;
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
+        updateChecker = new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
+        // let's check number of updatable apps at the beginning, so the badge can show the right number
+        // then we can also use the populated entries in other places to show updates
+        disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableAppsNoNotify);
     }
 
-    public void removeAllByRepo(Repo repo) {
+    public void removeAllByRepo(long repoId) {
         boolean hasRemovedSome = false;
         Iterator<AppUpdateStatus> it = getAll().iterator();
         while (it.hasNext()) {
             AppUpdateStatus status = it.next();
-            if (status.apk.repoId == repo.getId()) {
+            if (status.apk.repoId == repoId) {
                 it.remove();
                 hasRemovedSome = true;
             }
@@ -256,8 +268,40 @@ public final class AppUpdateStatusManager {
         return returnValues;
     }
 
+    /**
+     * Returns the version of the given package name that can be installed or is installing at the moment.
+     * If this returns null, no updates are available and no installs in progress.
+     */
+    @Nullable
+    public String getInstallableVersion(String packageName) {
+        for (AppUpdateStatusManager.AppUpdateStatus status : getByPackageName(packageName)) {
+            AppUpdateStatusManager.Status s = status.status;
+            if (s != AppUpdateStatusManager.Status.DownloadInterrupted &&
+                    s != AppUpdateStatusManager.Status.Installed &&
+                    s != AppUpdateStatusManager.Status.InstallError) {
+                return status.apk.versionName;
+            }
+        }
+        return null;
+    }
+
+    public LiveData<Integer> getNumUpdatableApps() {
+        return numUpdatableApps;
+    }
+
+    public void setNumUpdatableApps(int num) {
+        numUpdatableApps.postValue(num);
+    }
+
     private void updateApkInternal(@NonNull AppUpdateStatus entry, @NonNull Status status, PendingIntent intent) {
-        Utils.debugLog(LOGTAG, "Update APK " + entry.apk.apkName + " state to " + status.name());
+        String apkName = entry.apk.getApkPath();
+        if (status == Status.UpdateAvailable && entry.status.ordinal() > status.ordinal()) {
+            Utils.debugLog(LOGTAG, "Not updating APK " + apkName + " state to " + status.name());
+            // If we have this entry in a more advanced state already, don't downgrade it
+            return;
+        } else {
+            Utils.debugLog(LOGTAG, "Update APK " + apkName + " state to " + status.name());
+        }
         boolean isStatusUpdate = entry.status != status;
         entry.status = status;
         entry.intent = intent;
@@ -266,12 +310,15 @@ public final class AppUpdateStatusManager {
 
         if (status == Status.Installed) {
             InstallManagerService.removePendingInstall(context, entry.getCanonicalUrl());
+            // After an app got installed, update available updates
+            checkForUpdates();
         }
     }
 
-    private void addApkInternal(@NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
-        Utils.debugLog(LOGTAG, "Add APK " + apk.apkName + " with state " + status.name());
-        AppUpdateStatus entry = createAppEntry(apk, status, intent);
+    private void addApkInternal(@NonNull App app, @NonNull Apk apk, @NonNull Status status, PendingIntent intent) {
+        String apkName = apk.getApkPath();
+        Utils.debugLog(LOGTAG, "Add APK " + apkName + " with state " + status.name());
+        AppUpdateStatus entry = createAppEntry(app, apk, status, intent);
         setEntryContentIntentIfEmpty(entry);
         appMapping.put(entry.getCanonicalUrl(), entry);
         notifyAdd(entry);
@@ -317,22 +364,48 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    private AppUpdateStatus createAppEntry(Apk apk, Status status, PendingIntent intent) {
+    private AppUpdateStatus createAppEntry(App app, Apk apk, Status status, PendingIntent intent) {
         synchronized (appMapping) {
-            ContentResolver resolver = context.getContentResolver();
-            App app = AppProvider.Helper.findSpecificApp(resolver, apk.packageName, apk.repoId);
             AppUpdateStatus ret = new AppUpdateStatus(app, apk, status, intent);
             appMapping.put(apk.getCanonicalUrl(), ret);
             return ret;
         }
     }
 
-    public void addApks(List<Apk> apksToUpdate, Status status) {
-        startBatchUpdates();
-        for (Apk apk : apksToUpdate) {
-            addApk(apk, status, null);
+    public void checkForUpdates() {
+        if (disposable != null) disposable.dispose();
+        disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableApps);
+    }
+
+    private List<UpdatableApp> getUpdatableApps() {
+        List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+        return updateChecker.getUpdatableApps(releaseChannels);
+    }
+
+    private void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate) {
+        if (canUpdate == null) return;
+        if (canUpdate.size() > 0) {
+            startBatchUpdates();
+            for (UpdatableApp app : canUpdate) {
+                addApk(new App(app), new Apk(app.getUpdate()), Status.UpdateAvailable, null);
+            }
+            endBatchUpdates(Status.UpdateAvailable);
         }
-        endBatchUpdates(status);
+        setNumUpdatableApps(canUpdate.size());
+    }
+
+    private void addUpdatableAppsNoNotify(List<UpdatableApp> canUpdate) {
+        synchronized (appMapping) {
+            isBatchUpdating = true;
+            try {
+                for (UpdatableApp app : canUpdate) {
+                    addApk(new App(app), new Apk(app.getUpdate()), Status.UpdateAvailable, null);
+                }
+                setNumUpdatableApps(canUpdate.size());
+            } finally {
+                isBatchUpdating = false;
+            }
+        }
     }
 
     /**
@@ -342,7 +415,7 @@ public final class AppUpdateStatusManager {
      * @param status        The current status of the app
      * @param pendingIntent Action when notification is clicked. Can be null for default action(s)
      */
-    public void addApk(Apk apk, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
+    public void addApk(App app, Apk apk, @NonNull Status status, @Nullable PendingIntent pendingIntent) {
         if (apk == null) {
             return;
         }
@@ -351,8 +424,10 @@ public final class AppUpdateStatusManager {
             AppUpdateStatus entry = appMapping.get(apk.getCanonicalUrl());
             if (entry != null) {
                 updateApkInternal(entry, status, pendingIntent);
+            } else if (app != null) {
+                addApkInternal(app, apk, status, pendingIntent);
             } else {
-                addApkInternal(apk, status, pendingIntent);
+                Utils.debugLog(LOGTAG, "Found no entry for " + apk.packageName + " and app was null.");
             }
         }
     }
@@ -366,6 +441,17 @@ public final class AppUpdateStatusManager {
             if (entry != null) {
                 updateApkInternal(entry, status, pendingIntent);
             }
+        }
+    }
+
+    @Nullable
+    public App getApp(String canonicalUrl) {
+        synchronized (appMapping) {
+            AppUpdateStatus entry = appMapping.get(canonicalUrl);
+            if (entry != null) {
+                return entry.app;
+            }
+            return null;
         }
     }
 
@@ -391,7 +477,7 @@ public final class AppUpdateStatusManager {
             InstallManagerService.removePendingInstall(context, canonicalUrl);
             AppUpdateStatus entry = appMapping.remove(canonicalUrl);
             if (entry != null) {
-                Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.apkName);
+                Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.getApkPath());
                 notifyRemove(entry);
             }
         }
@@ -401,7 +487,7 @@ public final class AppUpdateStatusManager {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(canonicalUrl);
             if (entry != null) {
-                Utils.debugLog(LOGTAG, "Refresh APK " + entry.apk.apkName);
+                Utils.debugLog(LOGTAG, "Refresh APK " + entry.apk.getApkPath());
                 notifyChange(entry, true);
             }
         }
@@ -434,11 +520,11 @@ public final class AppUpdateStatusManager {
         }
     }
 
-    public void setApkError(Apk apk, String errorText) {
+    public void setApkError(App app, Apk apk, String errorText) {
         synchronized (appMapping) {
             AppUpdateStatus entry = appMapping.get(apk.getCanonicalUrl());
             if (entry == null) {
-                entry = createAppEntry(apk, Status.InstallError, null);
+                entry = createAppEntry(app, apk, Status.InstallError, null);
             }
             entry.status = Status.InstallError;
             entry.errorText = errorText;

@@ -11,10 +11,11 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.util.Arrays;
@@ -47,7 +48,6 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
     private int networkState = ConnectivityMonitorService.FLAG_NET_NO_LIMIT;
     private int overDataState;
     private int overWiFiState;
-    private List<Repo> localRepos;
 
     private final SharedPreferences preferences;
 
@@ -86,7 +86,6 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
 
         overDataState = Preferences.get().getOverData();
         overWiFiState = Preferences.get().getOverWifi();
-        localRepos = UpdateService.getLocalRepos(context);
         preferences.registerOnSharedPreferenceChangeListener(dataWifiChangeListener);
 
         setBannerTextAndVisibility();
@@ -108,8 +107,6 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
      * mirror on a USB OTG thumb drive.  Local repos on system partitions are
      * not treated as local mirrors here, they are shipped as part of the
      * device, and users are generally not aware of them.
-     *
-     * @see org.fdroid.fdroid.data.DBHelper#loadAdditionalRepos(String)
      */
     private void setBannerTextAndVisibility() {
         if (updateServiceStatus == UpdateService.STATUS_INFO) {
@@ -121,11 +118,11 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
             setVisibility(View.VISIBLE);
         } else if (overDataState == Preferences.OVER_NETWORK_NEVER
                 && overWiFiState == Preferences.OVER_NETWORK_NEVER) {
-            localRepos = UpdateService.getLocalRepos(getContext());
+            List<Repository> localRepos = UpdateService.getLocalRepos(FDroidApp.repos);
             boolean hasLocalNonSystemRepos = true;
             final List<String> systemPartitions = Arrays.asList("odm", "oem", "product", "system", "vendor");
-            for (Repo repo : localRepos) {
-                for (String segment : Uri.parse(repo.address).getPathSegments()) {
+            for (Repository repo : localRepos) {
+                for (String segment : Uri.parse(repo.getAddress()).getPathSegments()) {
                     if (systemPartitions.contains(segment)) {
                         hasLocalNonSystemRepos = false;
                     }

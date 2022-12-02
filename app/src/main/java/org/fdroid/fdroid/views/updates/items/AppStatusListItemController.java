@@ -80,8 +80,9 @@ public class AppStatusListItemController extends AppListItemController {
                         ).setAction(R.string.undo, new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                manager.addApk(appUpdateStatus.apk, appUpdateStatus.status, appUpdateStatus.intent);
-                                adapter.refreshStatuses();
+                                manager.addApk(appUpdateStatus.app, appUpdateStatus.apk, appUpdateStatus.status,
+                                        appUpdateStatus.intent);
+                                adapter.refreshItems();
                             }
                         }).show();
                         break;
@@ -89,7 +90,7 @@ public class AppStatusListItemController extends AppListItemController {
             }
         }
 
-        adapter.refreshStatuses();
+        adapter.refreshItems();
     }
 
 }

@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,25 +8,29 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV2;
+
+import java.util.List;
 
 /**
  * Loads and displays the small screenshots that are inline in {@link AppDetailsActivity}
  */
 class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final String[] screenshots;
+    private final long repoId;
+    private final List<FileV2> screenshots;
     private final RequestOptions displayImageOptions;
     private final Listener listener;
 
-    ScreenShotsRecyclerViewAdapter(Context context, App app, Listener listener) {
+    ScreenShotsRecyclerViewAdapter(App app, Listener listener) {
         super();
+        this.repoId = app.repoId;
         this.listener = listener;
 
-        screenshots = app.getAllScreenshots(context);
+        screenshots = app.getAllScreenshots();
 
         displayImageOptions = new RequestOptions()
                 .fallback(R.drawable.screenshot_placeholder)
@@ -37,7 +40,8 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final ScreenShotViewHolder vh = (ScreenShotViewHolder) holder;
-        Glide.with(vh.itemView).load(screenshots[position]).apply(displayImageOptions).into(vh.image);
+        App.loadWithGlide(vh.itemView.getContext(), repoId, screenshots.get(position))
+                .apply(displayImageOptions).into(vh.image);
     }
 
     @NonNull
@@ -50,7 +54,7 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemCount() {
-        return screenshots.length;
+        return screenshots.size();
     }
 
     public interface Listener {

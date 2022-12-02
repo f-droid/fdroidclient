@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.apps;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Outline;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,14 +18,26 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.database.AppVersion;
+import org.fdroid.database.DbUpdateChecker;
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
@@ -37,16 +47,10 @@ import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.util.Pair;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * Supports the following layouts:
@@ -106,11 +110,14 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
     @Nullable
     private App currentApp;
+    @Nullable
+    private Apk currentApk;
 
     @Nullable
     private AppUpdateStatus currentStatus;
+    @Nullable
+    private Disposable disposable;
 
-    @TargetApi(21)
     public AppListItemController(final AppCompatActivity activity, View itemView) {
         super(itemView);
         this.activity = activity;
@@ -123,28 +130,26 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             installButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onActionButtonPressed(currentApp);
+                    onActionButtonPressed(currentApp, currentApk);
                 }
             });
 
-            if (Build.VERSION.SDK_INT >= 21) {
-                installButton.setOutlineProvider(new ViewOutlineProvider() {
-                    @Override
-                    public void getOutline(View view, Outline outline) {
-                        float density = activity.getResources().getDisplayMetrics().density;
+            installButton.setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View view, Outline outline) {
+                    float density = activity.getResources().getDisplayMetrics().density;
 
-                        // This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
-                        // This is because the default "download & install" and "downloaded & ready to install"
-                        // icons are smaller than the "downloading progress" button. Hence, we can't just use
-                        // the width/height of the view to calculate the outline size.
-                        int xPadding = (int) (8 * density);
-                        int yPadding = (int) (9 * density);
-                        int right = installButton.getWidth() - xPadding;
-                        int bottom = installButton.getHeight() - yPadding;
-                        outline.setOval(xPadding, yPadding, right, bottom);
-                    }
-                });
-            }
+                    // This is a bit hacky/hardcoded/too-specific to the particular icons we're using.
+                    // This is because the default "download & install" and "downloaded & ready to install"
+                    // icons are smaller than the "downloading progress" button. Hence, we can't just use
+                    // the width/height of the view to calculate the outline size.
+                    int xPadding = (int) (8 * density);
+                    int yPadding = (int) (9 * density);
+                    int right = installButton.getWidth() - xPadding;
+                    int bottom = installButton.getHeight() - yPadding;
+                    outline.setOval(xPadding, yPadding, right, bottom);
+                }
+            });
         }
 
         icon = (ImageView) itemView.findViewById(R.id.icon);
@@ -163,7 +168,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 @Override
                 public void onClick(View v) {
                     actionButton.setEnabled(false);
-                    onActionButtonPressed(currentApp);
+                    onActionButtonPressed(currentApp, currentApk);
                 }
             });
         }
@@ -184,23 +189,25 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         return currentStatus;
     }
 
-    public void bindModel(@NonNull App app) {
+    public void bindModel(@NonNull App app, @Nullable Apk apk, @Nullable AppUpdateStatus s) {
         currentApp = app;
+        currentApk = apk;
 
         if (actionButton != null) actionButton.setEnabled(true);
 
         Utils.setIconFromRepoOrPM(app, icon, activity);
 
-        // Figures out the current install/update/download/etc status for the app we are viewing.
-        // Then, asks the view to update itself to reflect this status.
-        Iterator<AppUpdateStatus> statuses =
-                AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
-        if (statuses.hasNext()) {
-            AppUpdateStatus status = statuses.next();
-            updateAppStatus(app, status);
-        } else {
-            updateAppStatus(app, null);
+        AppUpdateStatus status = s;
+        if (status == null) {
+            // Figures out the current install/update/download/etc status for the app we are viewing.
+            // Then, asks the view to update itself to reflect this status.
+            Iterator<AppUpdateStatus> statuses =
+                    AppUpdateStatusManager.getInstance(activity).getByPackageName(app.packageName).iterator();
+            if (statuses.hasNext()) {
+                status = statuses.next();
+            }
         }
+        updateAppStatus(app, status);
 
         final LocalBroadcastManager broadcastManager =
                 LocalBroadcastManager.getInstance(activity.getApplicationContext());
@@ -265,6 +272,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         if (actionButton != null) {
             if (viewState.shouldShowActionButton()) {
                 actionButton.setVisibility(View.VISIBLE);
+                actionButton.setEnabled(true);
                 actionButton.setText(viewState.getActionButtonText());
             } else {
                 actionButton.setVisibility(View.GONE);
@@ -274,6 +282,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         if (secondaryButton != null) {
             if (viewState.shouldShowSecondaryButton()) {
                 secondaryButton.setVisibility(View.VISIBLE);
+                secondaryButton.setEnabled(true);
                 secondaryButton.setText(viewState.getSecondaryButtonText());
             } else {
                 secondaryButton.setVisibility(View.GONE);
@@ -399,6 +408,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 .setStatusText(activity.getString(R.string.notification_content_single_installed));
 
         if (activity.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
+            Utils.debugLog(TAG, "Not showing 'Open' button for " + app.packageName + " because no intent.");
             state.showActionButton(activity.getString(R.string.menu_launch));
         }
 
@@ -478,12 +488,12 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             if (currentApp == null) {
                 return;
             }
-
+            if (secondaryButton != null) secondaryButton.setEnabled(false);
             onSecondaryButtonPressed(currentApp);
         }
     };
 
-    protected void onActionButtonPressed(App app) {
+    protected void onActionButtonPressed(App app, @Nullable Apk apk) {
         if (app == null) {
             return;
         }
@@ -527,11 +537,20 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
             Uri canonicalUri = Uri.parse(canonicalUrl);
             broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(canonicalUri));
-            Installer installer = InstallerFactory.create(activity, currentStatus.apk);
+            Installer installer = InstallerFactory.create(activity, currentStatus.app, currentStatus.apk);
             installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
-            final Apk suggestedApk = ApkProvider.Helper.findSuggestedApk(activity, app);
-            InstallManagerService.queue(activity, app, suggestedApk);
+            FDroidDatabase db = DBHelper.getDb(activity);
+            DbUpdateChecker updateChecker = new DbUpdateChecker(db, activity.getPackageManager());
+            List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
+            if (disposable != null) disposable.dispose();
+            disposable = Utils.runOffUiThread(() -> {
+                AppVersion version = updateChecker.getSuggestedVersion(app.packageName,
+                        app.preferredSigner, releaseChannels);
+                return version == null ? null : new Apk(version);
+            }, receivedApk -> {
+                    if (receivedApk != null) InstallManagerService.queue(activity, app, receivedApk);
+                });
         }
     }
 

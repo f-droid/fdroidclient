@@ -1,10 +1,10 @@
 package org.fdroid.fdroid.views.installed;
 
-import android.database.Cursor;
-import android.provider.BaseColumns;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.fdroid.database.AppListItem;
+import org.fdroid.database.AppPrefs;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
@@ -13,27 +13,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppListItemController> {
 
     protected final AppCompatActivity activity;
 
-    @Nullable
-    private Cursor cursor;
+    private final List<App> items = new ArrayList<>();
 
     protected InstalledAppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
-        setHasStableIds(true);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        if (cursor == null) {
-            return 0;
-        }
-
-        cursor.moveToPosition(position);
-        // TODO this should be based on Schema.InstalledAppProvider.Cols._ID
-        return cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID));
     }
 
     @NonNull
@@ -45,30 +35,36 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
 
     @Override
     public void onBindViewHolder(@NonNull InstalledAppListItemController holder, int position) {
-        if (cursor == null) {
-            return;
-        }
-
-        cursor.moveToPosition(position);
-        holder.bindModel(new App(cursor));
+        App app = items.get(position);
+        holder.bindModel(app, null, null);
     }
 
     @Override
     public int getItemCount() {
-        return cursor == null ? 0 : cursor.getCount();
+        return items.size();
     }
 
-    public void setApps(@Nullable Cursor cursor) {
-        this.cursor = cursor;
+    public void setApps(@NonNull List<AppListItem> items) {
+        this.items.clear();
+        for (AppListItem item: items) {
+            this.items.add(new App(item));
+        }
         notifyDataSetChanged();
     }
 
-    @Nullable
-    public App getItem(int position) {
-        if (cursor == null) {
-            return null;
+    public void updateItem(AppListItem item, AppPrefs appPrefs) {
+        for (int i = 0; i < items.size(); i++) {
+            App app = items.get(i);
+            if (app.packageName.equals(item.getPackageName())) {
+                app.prefs = appPrefs;
+                notifyItemChanged(i);
+                break;
+            }
         }
-        cursor.moveToPosition(position);
-        return new App(cursor);
+    }
+
+    @Nullable
+    App getItem(int position) {
+        return items.get(position);
     }
 }

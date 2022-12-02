@@ -20,7 +20,6 @@
 package org.fdroid.fdroid.panic;
 
 import android.annotation.SuppressLint;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,27 +28,30 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import org.fdroid.database.AppListItem;
+import org.fdroid.database.AppPrefsDao;
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SelectInstalledAppsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+import java.util.List;
+
+public class SelectInstalledAppsActivity extends AppCompatActivity {
 
     private InstalledAppListAdapter adapter;
     private RecyclerView appList;
     private TextView emptyState;
     private int checkId;
 
+    private FDroidDatabase db;
     private Preferences prefs;
 
     @Override
@@ -74,6 +76,9 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
         appList.setAdapter(adapter);
 
         emptyState = findViewById(R.id.empty_state);
+
+        db = DBHelper.getDb(this);
+        db.getAppDao().getInstalledAppListItems(getPackageManager()).observe(this, this::onLoadFinished);
     }
 
     @Override
@@ -81,20 +86,10 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
         super.onResume();
 
         prefs = Preferences.get();
-
-        // Starts a new or restarts an existing Loader in this manager
-        getSupportLoaderManager().restartLoader(0, null, this);
     }
 
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this, InstalledAppProvider.getAllAppsUri(), null, null, null, null);
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-        adapter.setApps(cursor);
+    public void onLoadFinished(List<AppListItem> items) {
+        adapter.setApps(items);
 
         if (adapter.getItemCount() == 0) {
             appList.setVisibility(View.GONE);
@@ -103,13 +98,15 @@ public class SelectInstalledAppsActivity extends AppCompatActivity implements Lo
             appList.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
         }
-    }
 
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        adapter.setApps(null);
+        // load app prefs for each app off the UiThread and update item if updates are ignored
+        AppPrefsDao appPrefsDao = db.getAppPrefsDao();
+        for (AppListItem item : items) {
+            Utils.observeOnce(appPrefsDao.getAppPrefs(item.getPackageName()), this, appPrefs -> {
+                if (appPrefs.getIgnoreVersionCodeUpdate() > 0) adapter.updateItem(item, appPrefs);
+            });
+        }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

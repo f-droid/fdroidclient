@@ -1,10 +1,10 @@
 package org.fdroid.download
 
 import io.ktor.client.engine.ProxyConfig
-import kotlin.jvm.JvmOverloads
+import org.fdroid.IndexFile
 
 public data class DownloadRequest @JvmOverloads constructor(
-    val path: String,
+    val indexFile: IndexFile,
     val mirrors: List<Mirror>,
     val proxy: ProxyConfig? = null,
     val username: String? = null,
@@ -19,5 +19,24 @@ public data class DownloadRequest @JvmOverloads constructor(
      */
     val tryFirstMirror: Mirror? = null,
 ) {
+    @JvmOverloads
+    @Deprecated("Use other constructor instead")
+    public constructor(
+        path: String,
+        mirrors: List<Mirror>,
+        proxy: ProxyConfig? = null,
+        username: String? = null,
+        password: String? = null,
+        tryFirstMirror: Mirror? = null,
+    ) : this(object : IndexFile {
+        override val name = path
+        override val sha256: String? = null
+        override val size = 0L
+        override val ipfsCidV1: String? = null
+        override fun serialize(): String {
+            throw NotImplementedError("Serialization is not implemented.")
+        }
+    }, mirrors, proxy, username, password, tryFirstMirror)
+
     val hasCredentials: Boolean = username != null && password != null
 }

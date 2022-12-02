@@ -70,6 +70,8 @@ kotlin {
             }
         }
         androidTest {
+            // needed because of https://issuetracker.google.com/issues/231701341
+            kotlin.srcDir("src/commonTest/kotlin")
             dependencies {
                 implementation 'junit:junit:4.13.2'
                 implementation 'io.mockk:mockk:1.12.4'

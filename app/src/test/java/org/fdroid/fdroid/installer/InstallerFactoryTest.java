@@ -4,6 +4,8 @@ import android.content.ContextWrapper;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV1;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,10 +29,12 @@ public class InstallerFactoryTest {
     @Test
     public void testApkInstallerInstance() {
         for (String filename : new String[]{"test.apk", "A.APK", "b.ApK"}) {
+            App app = new App();
+            app.packageName = "test";
             Apk apk = new Apk();
-            apk.apkName = filename;
+            apk.apkFile = new FileV1(filename, "hash", null, null);
             apk.packageName = "test";
-            Installer installer = InstallerFactory.create(context, apk);
+            Installer installer = InstallerFactory.create(context, app, apk);
             assertEquals(filename + " should use a DefaultInstaller",
                     DefaultInstaller.class,
                     installer.getClass());
@@ -40,10 +44,12 @@ public class InstallerFactoryTest {
     @Test
     public void testFileInstallerInstance() {
         for (String filename : new String[]{"org.fdroid.fdroid.privileged.ota_2110.zip", "test.ZIP"}) {
+            App app = new App();
+            app.packageName = "cafe0088";
             Apk apk = new Apk();
-            apk.apkName = filename;
+            apk.apkFile = new FileV1(filename, "hash", null, null);
             apk.packageName = "cafe0088";
-            Installer installer = InstallerFactory.create(context, apk);
+            Installer installer = InstallerFactory.create(context, app, apk);
             assertEquals("should be a FileInstaller",
                     FileInstaller.class,
                     installer.getClass());

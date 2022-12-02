@@ -24,6 +24,7 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
+        android:id="@+id/badge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="24dp"
@@ -43,7 +44,7 @@
         android:textSize="16sp"
         android:textColor="?attr/installedApps"
         android:ellipsize="end"
-        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintStart_toEndOf="@+id/badge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="8dp"

@@ -23,11 +23,9 @@ package org.fdroid.fdroid.views.apps;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -39,31 +37,32 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import org.fdroid.database.AppListItem;
+import org.fdroid.database.AppListSortOrder;
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.main.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Provides scrollable listing of apps for search and category views.
  */
-public class AppListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
-        CategoryTextWatcher.SearchTermsChangedListener {
+public class AppListActivity extends AppCompatActivity implements CategoryTextWatcher.SearchTermsChangedListener {
 
     public static final String TAG = "AppListActivity";
 
@@ -85,11 +84,14 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     private EditText searchInput;
     private ImageView sortImage;
     private View hiddenAppNotice;
+    private FDroidDatabase db;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
+    private LiveData<List<AppListItem>> itemsLiveData;
 
     private interface SortClause {
-        String WORDS = Cols.NAME;
-        String LAST_UPDATED = Cols.LAST_UPDATED;
+        // these get used as settings keys, so changing them requires a migration
+        String WORDS = "name";
+        String LAST_UPDATED = "lastUpdated";
     }
 
     @Override
@@ -101,6 +103,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
 
         setContentView(R.layout.activity_app_list);
 
+        db = DBHelper.getDb(this.getApplicationContext());
         keyboardStateMonitor = new Utils.KeyboardStateMonitor(findViewById(R.id.app_list_root));
 
         savedSearchSettings = getSavedSearchSettings(this);
@@ -128,28 +131,27 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         });
 
         sortImage = (ImageView) findViewById(R.id.sort);
-        final Drawable lastUpdated = DrawableCompat.wrap(ContextCompat.getDrawable(this,
-                R.drawable.ic_last_updated)).mutate();
-        final Drawable words = DrawableCompat.wrap(ContextCompat.getDrawable(AppListActivity.this,
-                R.drawable.ic_sort)).mutate();
-        sortImage.setImageDrawable(SortClause.WORDS.equals(sortClauseSelected) ? words : lastUpdated);
+        sortImage.setImageResource(
+                SortClause.WORDS.equals(sortClauseSelected) ? R.drawable.ic_sort : R.drawable.ic_last_updated
+        );
         sortImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (sortClauseSelected) {
                     case SortClause.WORDS:
                         sortClauseSelected = SortClause.LAST_UPDATED;
-                        DrawableCompat.setTint(lastUpdated, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(lastUpdated);
+                        sortImage.setImageResource(R.drawable.ic_last_updated);
                         break;
                     case SortClause.LAST_UPDATED:
                         sortClauseSelected = SortClause.WORDS;
-                        DrawableCompat.setTint(words, FDroidApp.isAppThemeLight() ? Color.BLACK : Color.WHITE);
-                        sortImage.setImageDrawable(words);
+                        sortImage.setImageResource(R.drawable.ic_sort);
                         break;
+                    default:
+                        Log.e("AppListActivity", "Unknown sort clause: " + sortClauseSelected);
+                        sortClauseSelected = SortClause.LAST_UPDATED;
                 }
                 putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
-                getSupportLoaderManager().restartLoader(0, null, AppListActivity.this);
+                loadItems();
                 appView.scrollToPosition(0);
             }
         });
@@ -197,6 +199,7 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         appView.setAdapter(appAdapter);
 
         parseIntentForSearchQuery();
+        loadItems();
     }
 
     @Override
@@ -219,8 +222,22 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
             // experience where the user scrolls through the apps in the category.
             appView.requestFocus();
         }
+    }
 
-        getSupportLoaderManager().initLoader(0, null, this);
+    private void loadItems() {
+        if (itemsLiveData != null) {
+            itemsLiveData.removeObserver(this::onAppsLoaded);
+        }
+        AppListSortOrder sortOrder =
+                SortClause.WORDS.equals(sortClauseSelected) ? AppListSortOrder.NAME : AppListSortOrder.LAST_UPDATED;
+        if (category == null) {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), searchTerms,
+                    sortOrder);
+        } else {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), category,
+                    searchTerms, sortOrder);
+        }
+        itemsLiveData.observe(this, this::onAppsLoaded);
     }
 
     private CharSequence getSearchText(@Nullable String category, @Nullable String searchTerms) {
@@ -240,25 +257,26 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
         hiddenAppNotice.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(
-                this,
-                AppProvider.getSearchUri(searchTerms, category),
-                AppMetadataTable.Cols.ALL,
-                null,
-                null,
-                getSortOrder()
-        );
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
+    private void onAppsLoaded(List<AppListItem> items) {
         setShowHiddenAppsNotice(false);
         appAdapter.setHasHiddenAppsCallback(() -> setShowHiddenAppsNotice(true));
-        appAdapter.setAppCursor(cursor);
-        if (cursor.getCount() > 0) {
+        // DB doesn't support search result sorting, so do own sort if we searched
+        if (searchTerms != null) {
+            Collections.sort(items, (o1, o2) -> {
+                if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
+                    return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
+                } else if (sortClauseSelected.equals(SortClause.WORDS)) {
+                    String n1 = (o1.getName() == null ? "" : o1.getName())
+                            .toLowerCase(Locale.getDefault());
+                    String n2 = (o2.getName() == null ? "" : o2.getName())
+                            .toLowerCase(Locale.getDefault());
+                    return n1.compareTo(n2);
+                }
+                return 0;
+            });
+        }
+        appAdapter.setItems(items);
+        if (items.size() > 0) {
             emptyState.setVisibility(View.GONE);
             appView.setVisibility(View.VISIBLE);
         } else {
@@ -268,102 +286,16 @@ public class AppListActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        appAdapter.setAppCursor(null);
-    }
-
-    @Override
     public void onSearchTermsChanged(@Nullable String category, @NonNull String searchTerms) {
         this.category = category;
         this.searchTerms = searchTerms;
         appView.scrollToPosition(0);
-        getSupportLoaderManager().restartLoader(0, null, this);
+        loadItems();
         if (TextUtils.isEmpty(searchTerms)) {
             removeSavedSearchSettings(this, SEARCH_TERMS_KEY);
         } else {
             putSavedSearchSettings(this, SEARCH_TERMS_KEY, searchTerms);
         }
-    }
-
-    private String getSortOrder() {
-        final String table = AppMetadataTable.NAME;
-        final String nameCol = table + "." + AppMetadataTable.Cols.NAME;
-        final String summaryCol = table + "." + AppMetadataTable.Cols.SUMMARY;
-        final String packageCol = Cols.Package.PACKAGE_NAME;
-
-        if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
-            return table + "." + Cols.LAST_UPDATED + " DESC"
-                    + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
-                    + ", " + table + "." + Cols.ADDED + " ASC"
-                    + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                    + ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
-                    + "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
-                    + "        THEN 1 ELSE 0 END"
-                    + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-                    + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-                    + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
-                    + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-                    + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-                    + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-                    + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-                    + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-                    + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-                    + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-                    + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-                    + "        THEN 1 ELSE 0 END";
-        }
-
-        // prevent SQL injection https://en.wikipedia.org/wiki/SQL_injection#Escaping
-        final String[] terms = searchTerms.trim().replaceAll("[\\x1a\0\n\r\"';\\\\]+", " ").split("\\s+");
-        if (terms.length == 0 || terms[0].equals("")) {
-            return table + "." + Cols.NAME + " COLLATE LOCALIZED ";
-        }
-
-        boolean potentialPackageName = false;
-        StringBuilder packageNameFirstCase = new StringBuilder();
-        if (terms[0].length() > 2 && terms[0].substring(1, terms[0].length() - 1).contains(".")) {
-            potentialPackageName = true;
-            packageNameFirstCase.append(String.format("%s LIKE '%%%s%%' ",
-                    packageCol, terms[0]));
-        }
-        StringBuilder titleCase = new StringBuilder(String.format("%s like '%%%s%%'", nameCol, terms[0]));
-        StringBuilder summaryCase = new StringBuilder(String.format("%s like '%%%s%%'", summaryCol, terms[0]));
-        StringBuilder packageNameCase = new StringBuilder(String.format("%s like '%%%s%%'", packageCol, terms[0]));
-        for (int i = 1; i < terms.length; i++) {
-            if (potentialPackageName) {
-                packageNameCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
-            }
-            titleCase.append(String.format(" and %s like '%%%s%%'", nameCol, terms[i]));
-            summaryCase.append(String.format(" and %s like '%%%s%%'", summaryCol, terms[i]));
-        }
-        String sortOrder;
-        if (packageNameCase.length() > 0) {
-            sortOrder = String.format("CASE WHEN %s THEN 0 WHEN %s THEN 1 WHEN %s THEN 2 ELSE 3 END",
-                    packageNameCase.toString(), titleCase.toString(), summaryCase.toString());
-        } else {
-            sortOrder = String.format("CASE WHEN %s THEN 1 WHEN %s THEN 2 ELSE 3 END",
-                    titleCase.toString(), summaryCase.toString());
-        }
-        return sortOrder
-                + ", " + table + "." + Cols.IS_LOCALIZED + " DESC"
-                + ", " + table + "." + Cols.ADDED + " ASC"
-                + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                + ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
-                + "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
-                + "        THEN 1 ELSE 0 END"
-                + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-                + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-                + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
-                + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-                + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-                + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-                + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-                + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-                + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-                + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-                + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-                + "        THEN 1 ELSE 0 END"
-                + ", " + table + "." + Cols.LAST_UPDATED + " DESC";
     }
 
     public static void putSavedSearchSettings(Context context, String key, String searchTerms) {

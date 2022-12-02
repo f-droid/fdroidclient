@@ -23,22 +23,17 @@
 package org.fdroid.fdroid.views.main;
 
 import android.app.SearchManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,7 +41,6 @@ import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
-import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -59,7 +53,6 @@ import org.fdroid.fdroid.nearby.SwapService;
 import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
-import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
@@ -116,13 +109,6 @@ public class MainActivity extends AppCompatActivity {
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
 
-        // Without this, the focus is completely busted on pre 15 devices. Trying to use them
-        // without this ends up with each child view showing for a fraction of a second, then
-        // reverting back to the "Latest" screen again, in completely non-deterministic ways.
-        if (Build.VERSION.SDK_INT <= 15) {
-            pager.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
-        }
-
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
@@ -137,12 +123,9 @@ public class MainActivity extends AppCompatActivity {
         updatesBadge = bottomNavigation.getOrCreateBadge(R.id.updates);
         updatesBadge.setVisible(false);
 
-        IntentFilter updateableAppsFilter = new IntentFilter(AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED);
-        updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
-        updateableAppsFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
-        LocalBroadcastManager.getInstance(this).registerReceiver(onUpdateableAppsChanged, updateableAppsFilter);
-
         initialRepoUpdateIfRequired();
+
+        AppUpdateStatusManager.getInstance(this).getNumUpdatableApps().observe(this, this::refreshUpdatesBadge);
 
         Intent intent = getIntent();
         handleSearchOrAppViewIntent(intent);
@@ -368,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshUpdatesBadge(int canUpdateCount) {
-        if (canUpdateCount == 0) {
+        if (canUpdateCount <= 0) {
             updatesBadge.setVisible(false);
             updatesBadge.clearNumber();
         } else {
@@ -393,62 +376,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * There are a bunch of reasons why we would get notified about app statuses.
-     * The ones we are interested in are those which would result in the "items requiring user interaction"
-     * to increase or decrease:
-     * * Change in status to:
-     * * {@link AppUpdateStatusManager.Status#ReadyToInstall} (Causes the count to go UP by one)
-     * * {@link AppUpdateStatusManager.Status#Installed} (Causes the count to go DOWN by one)
-     */
-    private final BroadcastReceiver onUpdateableAppsChanged = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            boolean updateBadge = false;
-
-            AppUpdateStatusManager manager = AppUpdateStatusManager.getInstance(context);
-
-            String reason = intent.getStringExtra(AppUpdateStatusManager.EXTRA_REASON_FOR_CHANGE);
-            switch (intent.getAction()) {
-                // Apps which are added/removed from the list due to becoming ready to install or a repo being
-                // disabled both cause us to increase/decrease our badge count respectively.
-                case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
-                    if (AppUpdateStatusManager.REASON_READY_TO_INSTALL.equals(reason) ||
-                            AppUpdateStatusManager.REASON_REPO_DISABLED.equals(reason)) {
-                        updateBadge = true;
-                    }
-                    break;
-
-                // Apps which were previously "Ready to install" but have been removed. We need to lower our badge
-                // count in response to this.
-                case AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED:
-                    AppUpdateStatus status = intent.getParcelableExtra(AppUpdateStatusManager.EXTRA_STATUS);
-                    if (status != null && status.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                        updateBadge = true;
-                    }
-                    break;
-            }
-
-            // Check if we have moved into the ReadyToInstall or Installed state.
-            AppUpdateStatus status = manager.get(
-                    intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
-            boolean isStatusChange = intent.getBooleanExtra(AppUpdateStatusManager.EXTRA_IS_STATUS_UPDATE, false);
-            if (isStatusChange
-                    && status != null
-                    && (status.status == AppUpdateStatusManager.Status.ReadyToInstall || status.status == AppUpdateStatusManager.Status.Installed)) { // NOCHECKSTYLE LineLength
-                updateBadge = true;
-            }
-
-            if (updateBadge) {
-                int count = 0;
-                for (AppUpdateStatus s : manager.getAll()) {
-                    if (s.status == AppUpdateStatusManager.Status.ReadyToInstall) {
-                        count++;
-                    }
-                }
-
-                refreshUpdatesBadge(count);
-            }
-        }
-    };
 }

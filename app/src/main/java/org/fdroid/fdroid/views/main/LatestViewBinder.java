@@ -1,8 +1,6 @@
 package org.fdroid.fdroid.views.main;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -11,26 +9,31 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.fdroid.database.AppOverviewItem;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
-import org.fdroid.fdroid.data.Schema.RepoTable;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.views.categories.AppCardController;
 
-import java.util.Date;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.Transformations;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -38,19 +41,31 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
  */
-class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    private static final int LOADER_ID = 978015789;
+class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListener {
 
     private final LatestAdapter latestAdapter;
     private final AppCompatActivity activity;
     private final TextView emptyState;
     private final RecyclerView appList;
+    private final FDroidDatabase db;
 
     private ProgressBar progressBar;
 
     LatestViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
+        activity.getLifecycle().addObserver(new DefaultLifecycleObserver() {
+            @Override
+            public void onCreate(@NonNull LifecycleOwner owner) {
+                Preferences.get().registerAppsRequiringAntiFeaturesChangeListener(LatestViewBinder.this);
+            }
+
+            @Override
+            public void onDestroy(@NonNull LifecycleOwner owner) {
+                Preferences.get().unregisterAppsRequiringAntiFeaturesChangeListener(LatestViewBinder.this);
+            }
+        });
+        db = DBHelper.getDb(activity);
+        Transformations.distinctUntilChanged(db.getAppDao().getAppOverviewItems(200)).observe(activity, this);
 
         View latestView = activity.getLayoutInflater().inflate(R.layout.main_tab_latest, parent, true);
 
@@ -95,69 +110,13 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                 }
             }
         });
-
-        activity.getSupportLoaderManager().initLoader(LOADER_ID, null, this);
-    }
-
-    /**
-     * Sort by localized first so users see entries in their language,
-     * then sort by highlighted fields, then sort by whether the app is new,
-     * then if it has WhatsNew/Changelog entries, then by when it was last
-     * updated.  Last, it sorts by the date the app was added, putting older
-     * ones first, to give preference to apps that have been maintained in
-     * F-Droid longer.
-     *
-     * @see AppProvider#getLatestTabUri()
-     */
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (id != LOADER_ID) {
-            return null;
-        }
-        final String table = AppMetadataTable.NAME;
-        final String added = table + "." + Cols.ADDED;
-        final String lastUpdated = table + "." + Cols.LAST_UPDATED;
-        return new CursorLoader(
-                activity,
-                AppProvider.getLatestTabUri(),
-                AppMetadataTable.Cols.ALL,
-                Utils.getAntifeatureSQLFilter(activity),
-                null,
-                table + "." + Cols.IS_LOCALIZED + " DESC"
-                        + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                        + ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
-                        + "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
-                        + "        THEN 1 ELSE 0 END"
-                        + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-                        + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-                        + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-                        + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-                        + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-                        + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-                        + "        THEN 1 ELSE 0 END"
-                        + ", CASE WHEN date(" + added + ")  >= date(" + lastUpdated + ")"
-                        + "        AND date((SELECT " + RepoTable.Cols.LAST_UPDATED + " FROM " + RepoTable.NAME
-                        + "                  WHERE _id=" + table + "." + Cols.REPO_ID
-                        + "                  ),'-" + AppCardController.DAYS_TO_CONSIDER_NEW + " days') "
-                        + "          < date(" + lastUpdated + ")"
-                        + "        THEN 0 ELSE 1 END"
-                        + ", " + table + "." + Cols.WHATSNEW + " IS NULL ASC"
-                        + ", " + lastUpdated + " DESC"
-                        + ", " + added + " ASC");
     }
 
     @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-        if (loader.getId() != LOADER_ID) {
-            return;
-        }
-
-        latestAdapter.setAppsCursor(cursor);
+    public void onChanged(List<AppOverviewItem> items) {
+        // filter out anti-features first
+        filterApps(items);
+        latestAdapter.setApps(items);
 
         if (latestAdapter.getItemCount() == 0) {
             emptyState.setVisibility(View.VISIBLE);
@@ -167,6 +126,48 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onPreferenceChange() {
+        // reload and re-filter apps from DB when anti-feature settings change
+        LiveData<List<AppOverviewItem>> liveData = db.getAppDao().getAppOverviewItems(200);
+        liveData.observe(activity, new Observer<List<AppOverviewItem>>() {
+            @Override
+            public void onChanged(List<AppOverviewItem> items) {
+                LatestViewBinder.this.onChanged(items);
+                liveData.removeObserver(this);
+            }
+        });
+    }
+
+    private void filterApps(List<AppOverviewItem> items) {
+        List<String> antiFeatures = Arrays.asList(activity.getResources().getStringArray(R.array.antifeaturesValues));
+        Set<String> shownAntiFeatures = Preferences.get().showAppsWithAntiFeatures();
+        String otherAntiFeatures = activity.getResources().getString(R.string.antiothers_key);
+        boolean showOtherAntiFeatures = shownAntiFeatures.contains(otherAntiFeatures);
+        Iterator<AppOverviewItem> iterator = items.iterator();
+        while (iterator.hasNext()) {
+            AppOverviewItem item = iterator.next();
+            if (isFilteredByAntiFeature(item, antiFeatures, shownAntiFeatures, showOtherAntiFeatures)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    private boolean isFilteredByAntiFeature(AppOverviewItem item, List<String> antiFeatures,
+                                            Set<String> showAntiFeatures, boolean showOther) {
+        for (String antiFeature : item.getAntiFeatureKeys()) {
+            // is it part of the known anti-features?
+            if (antiFeatures.contains(antiFeature)) {
+                // it gets filtered not part of the ones that we show
+                if (!showAntiFeatures.contains(antiFeature)) return true;
+            } else if (!showOther) {
+                // gets filtered if we should no show unknown anti-features
+                return true;
+            }
+        }
+        return false;
     }
 
     private void explainEmptyStateToUser() {
@@ -187,11 +188,20 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         emptyStateText.append(activity.getString(R.string.latest__empty_state__no_recent_apps));
         emptyStateText.append("\n\n");
 
-        int repoCount = RepoProvider.Helper.countEnabledRepos(activity);
+        int repoCount = 0;
+        Long lastUpdate = null;
+        for (Repository repo : FDroidApp.repos) {
+            if (repo.getEnabled()) {
+                repoCount++;
+                if (lastUpdate == null && repo.getLastUpdated() != null) lastUpdate = repo.getLastUpdated();
+                else if (lastUpdate != null && repo.getLastUpdated() != null && repo.getLastUpdated() > lastUpdate) {
+                    lastUpdate = repo.getLastUpdated();
+                }
+            }
+        }
         if (repoCount == 0) {
             emptyStateText.append(activity.getString(R.string.latest__empty_state__no_enabled_repos));
         } else {
-            Date lastUpdate = RepoProvider.Helper.lastUpdate(activity);
             if (lastUpdate == null) {
                 emptyStateText.append(activity.getString(R.string.latest__empty_state__never_updated));
             } else {
@@ -200,14 +210,5 @@ class LatestViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
         }
 
         emptyState.setText(emptyStateText.toString());
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        if (loader.getId() != LOADER_ID) {
-            return;
-        }
-
-        latestAdapter.setAppsCursor(null);
     }
 }

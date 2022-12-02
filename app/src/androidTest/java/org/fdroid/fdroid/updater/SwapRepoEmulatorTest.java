@@ -1,49 +1,40 @@
 package org.fdroid.fdroid.updater;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Looper;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.filters.LargeTest;
 import android.text.TextUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.IndexUpdater;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.data.Schema;
 import org.fdroid.fdroid.nearby.LocalHTTPD;
 import org.fdroid.fdroid.nearby.LocalRepoKeyStore;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
 import org.fdroid.fdroid.nearby.LocalRepoService;
-import org.junit.Ignore;
+import org.fdroid.fdroid.nearby.SwapService;
+import org.fdroid.index.v1.IndexV1;
+import org.fdroid.index.v1.PackageV1;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.Socket;
 import java.security.cert.Certificate;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.UUID;
+import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -55,10 +46,8 @@ public class SwapRepoEmulatorTest {
     /**
      * @see org.fdroid.fdroid.nearby.WifiStateChangeService.WifiInfoThread#run()
      */
-    @Ignore
     @Test
-    public void testSwap()
-            throws IOException, LocalRepoKeyStore.InitException, IndexUpdater.UpdateException, InterruptedException {
+    public void testSwap() throws Exception {
         Looper.prepare();
         LocalHTTPD localHttpd = null;
         try {
@@ -67,15 +56,16 @@ public class SwapRepoEmulatorTest {
             Preferences.setupForTests(context);
 
             FDroidApp.initWifiSettings();
-            assertNull(FDroidApp.repo.address);
+            assertNull(FDroidApp.repo);
 
             final CountDownLatch latch = new CountDownLatch(1);
             new Thread() {
                 @Override
                 public void run() {
-                    while (FDroidApp.repo.address == null) {
+                    while (FDroidApp.repo == null) {
                         try {
-                            Log.i(TAG, "Waiting for IP address... " + FDroidApp.repo.address);
+                            String address = FDroidApp.repo == null ? null : FDroidApp.repo.getAddress();
+                            Log.i(TAG, "Waiting for IP address... " + address);
                             Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             // ignored
@@ -85,7 +75,7 @@ public class SwapRepoEmulatorTest {
                 }
             }.start();
             latch.await(10, TimeUnit.MINUTES);
-            assertNotNull(FDroidApp.repo.address);
+            assertNotNull(FDroidApp.repo.getAddress());
 
             LocalRepoService.runProcess(context, new String[]{context.getPackageName()});
             Log.i(TAG, "REPO: " + FDroidApp.repo);
@@ -94,7 +84,7 @@ public class SwapRepoEmulatorTest {
 
             localHttpd = new LocalHTTPD(
                     context,
-                    null,
+                    FDroidApp.ipAddressString,
                     FDroidApp.port,
                     LocalRepoManager.get(context).getWebRoot(),
                     false);
@@ -104,54 +94,31 @@ public class SwapRepoEmulatorTest {
 
             LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
             Certificate localCert = localRepoKeyStore.getCertificate();
+            String fingerprint = Utils.calcFingerprint(localCert).toLowerCase(Locale.ROOT);
             String signingCert = Hasher.hex(localCert);
             assertFalse(TextUtils.isEmpty(signingCert));
-            assertFalse(TextUtils.isEmpty(Utils.calcFingerprint(localCert)));
+            assertFalse(TextUtils.isEmpty(fingerprint));
 
-            Repo repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
-            while (repoToDelete != null) {
-                Log.d(TAG, "Removing old test swap repo matching this one: " + repoToDelete.address);
-                RepoProvider.Helper.remove(context, repoToDelete.getId());
-                repoToDelete = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
-            }
-
-            ContentValues values = new ContentValues(4);
-            values.put(Schema.RepoTable.Cols.SIGNING_CERT, signingCert);
-            values.put(Schema.RepoTable.Cols.ADDRESS, FDroidApp.repo.address);
-            values.put(Schema.RepoTable.Cols.NAME, FDroidApp.repo.name);
-            values.put(Schema.RepoTable.Cols.IS_SWAP, true);
-            final String lastEtag = UUID.randomUUID().toString();
-            values.put(Schema.RepoTable.Cols.LAST_ETAG, lastEtag);
-            RepoProvider.Helper.insert(context, values);
-            Repo repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
-            assertTrue(repo.isSwap);
-            assertNotEquals(-1, repo.getId());
-            assertTrue(repo.name.startsWith(FDroidApp.repo.name));
-            assertEquals(lastEtag, repo.lastetag);
-            assertNull(repo.lastUpdated);
-
-            assertTrue(isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
+            assertTrue(Utils.isPortInUse(FDroidApp.ipAddressString, FDroidApp.port));
             Thread.sleep(100);
-            IndexUpdater updater = new IndexUpdater(context, repo);
-            updater.update();
-            assertTrue(updater.hasChanged());
 
-            repo = RepoProvider.Helper.findByAddress(context, FDroidApp.repo.address);
-            final Date lastUpdated = repo.lastUpdated;
-            assertTrue("repo lastUpdated should be updated", new Date(2019, 5, 13).compareTo(repo.lastUpdated) > 0);
+            File swapJarFile = File.createTempFile("swap", "", context.getCacheDir());
+            IndexV1 indexV1 = SwapService.getVerifiedRepoIndex(FDroidApp.repo, fingerprint, swapJarFile);
+            assertEquals(1, indexV1.getApps().size());
+            assertEquals(context.getPackageName(), indexV1.getApps().get(0).getPackageName());
+            long firstTimestamp = indexV1.getRepo().getTimestamp();
 
-            App app = AppProvider.Helper.findSpecificApp(context.getContentResolver(),
-                    context.getPackageName(), repo.getId());
-            assertEquals(context.getPackageName(), app.packageName);
-
-            List<Apk> apks = ApkProvider.Helper.findByRepo(context, repo, Schema.ApkTable.Cols.ALL);
+            assertEquals(1, indexV1.getPackages().size());
+            List<PackageV1> apks = indexV1.getPackages().get(context.getPackageName());
+            assertNotNull(apks);
             assertEquals(1, apks.size());
-            for (Apk apk : apks) {
+            for (PackageV1 apk : apks) {
                 Log.i(TAG, "Apk: " + apk);
-                assertEquals(context.getPackageName(), apk.packageName);
-                assertEquals(BuildConfig.VERSION_NAME, apk.versionName);
-                assertEquals(BuildConfig.VERSION_CODE, apk.versionCode);
-                assertEquals(app.repoId, apk.repoId);
+                assertNotNull(apk.getVersionCode());
+                long versionCode = apk.getVersionCode();
+                assertEquals(context.getPackageName(), apk.getPackageName());
+                assertEquals(BuildConfig.VERSION_NAME, apk.getVersionName());
+                assertEquals(BuildConfig.VERSION_CODE, versionCode);
             }
 
             Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -166,35 +133,18 @@ public class SwapRepoEmulatorTest {
             }
             LocalRepoService.runProcess(context, packageNames.toArray(new String[0]));
 
-            updater = new IndexUpdater(context, repo);
-            updater.update();
-            assertTrue(updater.hasChanged());
-            assertTrue("repo lastUpdated should be updated", lastUpdated.compareTo(repo.lastUpdated) < 0);
-
+            swapJarFile = File.createTempFile("swap", "", context.getCacheDir());
+            indexV1 = SwapService.getVerifiedRepoIndex(FDroidApp.repo, fingerprint, swapJarFile);
+            assertTrue(firstTimestamp < indexV1.getRepo().getTimestamp());
             for (String packageName : packageNames) {
-                assertNotNull(ApkProvider.Helper.findByPackageName(context, packageName));
+                assertNotNull(indexV1.getPackages().get(packageName));
             }
         } finally {
             if (localHttpd != null) {
                 localHttpd.stop();
             }
         }
-        if (localHttpd != null) {
-            assertFalse(localHttpd.isAlive());
-        }
-    }
-
-    private boolean isPortInUse(String host, int port) {
-        boolean result = false;
-
-        try {
-            (new Socket(host, port)).close();
-            result = true;
-        } catch (IOException e) {
-            // Could not connect.
-            e.printStackTrace();
-        }
-        return result;
+        assertFalse(localHttpd.isAlive());
     }
 
     private boolean isSystemPackage(ResolveInfo resolveInfo) {

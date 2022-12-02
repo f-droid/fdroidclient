@@ -19,7 +19,6 @@
 package org.fdroid.fdroid.privileged.views;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -29,7 +28,6 @@ import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Parcel;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -116,11 +114,10 @@ public class AppSecurityPermissions {
             super(info);
         }
 
-        @TargetApi(22)
         public Drawable loadGroupIcon(Context context, PackageManager pm) {
             Drawable iconDrawable;
             if (icon != 0) {
-                iconDrawable = (Build.VERSION.SDK_INT < 22) ? loadIcon(pm) : loadUnbadgedIcon(pm);
+                iconDrawable = loadUnbadgedIcon(pm);
             } else {
                 iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
             }
@@ -264,9 +261,6 @@ public class AppSecurityPermissions {
     }
 
     private int[] getRequestedPermissionFlags(PackageInfo info) {
-        if (Build.VERSION.SDK_INT < 16) {
-            return new int[info.requestedPermissions.length];
-        }
         return info.requestedPermissionsFlags;
     }
 
@@ -345,9 +339,8 @@ public class AppSecurityPermissions {
      * doesn't currently hold this permission. On older devices that don't support
      * this concept, permissions are never "new permissions".
      */
-    @TargetApi(16)
     private static boolean isNewPermission(PackageInfo installedPkgInfo, int existingFlags) {
-        if (installedPkgInfo == null || Build.VERSION.SDK_INT < 16) {
+        if (installedPkgInfo == null) {
             return false;
         }
 
@@ -420,15 +413,13 @@ public class AppSecurityPermissions {
     private PermissionItemView getPermissionItemView(MyPermissionGroupInfo grp, MyPermissionInfo perm,
                                                      boolean first, CharSequence newPermPrefix) {
         PermissionItemView permView = (PermissionItemView) inflater.inflate(
-                Build.VERSION.SDK_INT >= 17 &&
-                        (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
+                (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
                         ? R.layout.app_permission_item_money : R.layout.app_permission_item,
                 null);
         permView.setPermission(grp, perm, first, newPermPrefix);
         return permView;
     }
 
-    @TargetApi(23)
     private boolean isDisplayablePermission(PermissionInfo pInfo, int existingReqFlags) {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;

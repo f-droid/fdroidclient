@@ -14,6 +14,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
@@ -40,6 +41,7 @@ public class FileInstallerActivity extends FragmentActivity {
     // for the broadcasts
     private FileInstaller installer;
 
+    private App app;
     private Apk apk;
     private Uri localApkUri;
     /**
@@ -56,8 +58,9 @@ public class FileInstallerActivity extends FragmentActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         localApkUri = intent.getData();
+        app = intent.getParcelableExtra(Installer.EXTRA_APP);
         apk = intent.getParcelableExtra(Installer.EXTRA_APK);
-        installer = new FileInstaller(this, apk);
+        installer = new FileInstaller(this, app, apk);
         if (ACTION_INSTALL_FILE.equals(action)) {
             canonicalUri = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
             if (hasStoragePermission()) {
@@ -182,7 +185,7 @@ public class FileInstallerActivity extends FragmentActivity {
      */
     private boolean postInstall(Uri canonicalUri, Apk apk, File path) {
         if (path.getName().endsWith(".obf") || path.getName().endsWith(".obf.zip")) {
-            ObfInstallerService.install(this, canonicalUri, apk, path);
+            ObfInstallerService.install(this, canonicalUri, app, apk, path);
             return true;
         }
         return false;

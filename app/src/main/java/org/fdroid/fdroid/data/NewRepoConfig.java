@@ -25,7 +25,6 @@ public class NewRepoConfig {
 
     private String uriString;
     private String host;
-    private int port = -1;
     private String username;
     private String password;
     private String fingerprint;
@@ -62,7 +61,6 @@ public class NewRepoConfig {
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
         String scheme = uri.getScheme();
         host = uri.getHost();
-        port = uri.getPort();
         if (TextUtils.isEmpty(scheme) || (TextUtils.isEmpty(host) && !"file".equals(scheme))) {
             errorMessage = String.format(context.getString(R.string.malformed_repo_uri), uri);
             Log.i(TAG, errorMessage);
@@ -124,10 +122,6 @@ public class NewRepoConfig {
 
     public String getSsid() {
         return ssid;
-    }
-
-    public int getPort() {
-        return port;
     }
 
     public String getRepoUriString() {

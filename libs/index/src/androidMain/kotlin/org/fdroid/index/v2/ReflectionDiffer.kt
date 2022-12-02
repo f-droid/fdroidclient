@@ -17,8 +17,10 @@ import kotlinx.serialization.serializer
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 import kotlin.reflect.KParameter
+import kotlin.reflect.KType
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.full.primaryConstructor
+import kotlin.reflect.typeOf
 
 /**
  * A class using Kotlin reflection to implement JSON Merge Patch (RFC 7386) against data classes.
@@ -29,31 +31,8 @@ import kotlin.reflect.full.primaryConstructor
 public object ReflectionDiffer {
 
     @Throws(SerializationException::class)
-    public fun applyDiff(
-        obj: Map<String, *>,
-        diff: JsonObject,
-        isFileV2: Boolean = false,
-    ): Map<String, *> = obj.toMutableMap().apply {
-        diff.entries.forEach { (key, value) ->
-            when (value) {
-                is JsonNull -> remove(key)
-                is JsonPrimitive -> set(key, value.jsonPrimitive.content)
-                is JsonObject -> {
-                    val newValue: Any = if (isFileV2) {
-                        constructFromJson(FileV2::class.primaryConstructor!!, value.jsonObject)
-                    } else {
-                        applyDiff(HashMap<String, LocalizedTextV2>(), value.jsonObject)
-                    }
-                    set(key, newValue)
-                }
-                else -> e("unsupported map value: $value")
-            }
-        }
-    }
-
-    @Throws(SerializationException::class)
     public fun <T : Any> applyDiff(obj: T, diff: JsonObject): T {
-        val constructor = obj::class.primaryConstructor ?: e("no primary constructor")
+        val constructor = obj::class.primaryConstructor ?: e("no primary constructor ${obj::class}")
         val params = HashMap<KParameter, Any?>()
         constructor.parameters.forEach { parameter ->
             val prop = obj::class.memberProperties.find { memberProperty ->
@@ -79,14 +58,7 @@ public object ReflectionDiffer {
                 List::class -> diff[prop.name]?.jsonArrayOrNull()?.map {
                     it.primitiveOrNull()?.contentOrNull ?: e("${prop.name} non-primitive array")
                 } ?: e("${prop.name} no array")
-                Map::class -> if (prop.name == "icon") applyDiff(
-                    obj = prop.getter.call(obj) as? Map<String, *> ?: emptyMap<String, FileV2>(),
-                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no map"),
-                    isFileV2 = true, // yes this is super hacky
-                ) else applyDiff(
-                    obj = prop.getter.call(obj) as? Map<String, *> ?: emptyMap<String, String>(),
-                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no map"),
-                )
+                Map::class -> diffMap(prop.returnType, prop.getter.call(obj), prop.name, diff)
                 else -> {
                     val newObj = prop.getter.call(obj)
                     val jsonObject = diff[prop.name] as? JsonObject ?: e("${prop.name} no dict")
@@ -134,10 +106,7 @@ public object ReflectionDiffer {
                 List::class -> diff[prop.name]?.jsonArrayOrNull()?.map {
                     it.primitiveOrNull()?.contentOrNull ?: e("${prop.name} non-primitive array")
                 } ?: e("${prop.name} no array")
-                Map::class -> applyDiff(
-                    obj = HashMap<String, String>(),
-                    diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no dict"),
-                )
+                Map::class -> diffMap(prop.type, null, prop.name, diff)
                 else -> constructFromJson(
                     factory = (prop.type.classifier as KClass<*>).primaryConstructor!!,
                     diff = diff[prop.name]?.jsonObjectOrNull() ?: e("${prop.name} no dict"),
@@ -145,6 +114,93 @@ public object ReflectionDiffer {
             }
         }
         return factory.callBy(params)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun <T> diffMap(type: KType, obj: T?, key: String?, diff: JsonObject) = when (type) {
+        typeOf<LocalizedTextV2>() -> applyTextDiff(
+            obj = obj as? LocalizedTextV2 ?: HashMap(),
+            diff = diff[key]?.jsonObjectOrNull() ?: e("$key no map"),
+        )
+        typeOf<LocalizedTextV2?>() -> applyTextDiff(
+            obj = obj as? LocalizedTextV2? ?: HashMap(),
+            diff = diff[key]?.jsonObjectOrNull() ?: e("$key no map"),
+        )
+        typeOf<LocalizedFileV2>() -> applyFileDiff(
+            obj = obj as? LocalizedFileV2 ?: HashMap(),
+            diff = diff[key]?.jsonObjectOrNull() ?: e("$key no map"),
+        )
+        typeOf<LocalizedFileV2?>() -> applyFileDiff(
+            obj = obj as? LocalizedFileV2? ?: HashMap(),
+            diff = diff[key]?.jsonObjectOrNull() ?: e("$key no map"),
+        )
+        typeOf<Map<String, LocalizedTextV2>>() -> applyMapTextDiff(
+            obj = obj as? Map<String, LocalizedTextV2> ?: HashMap(),
+            diff = diff[key]?.jsonObjectOrNull() ?: e("$key no map"),
+        )
+        typeOf<Map<String, LocalizedTextV2>?>() -> applyMapTextDiff(
+            obj = obj as? Map<String, LocalizedTextV2>? ?: HashMap(),
+            diff = diff[key]?.jsonObjectOrNull() ?: e("$key no map"),
+        )
+        else -> e("Unknown map: $key: $type = ${diff[key]}")
+    }
+
+    @Throws(SerializationException::class)
+    private fun applyTextDiff(
+        obj: LocalizedTextV2,
+        diff: JsonObject,
+    ): LocalizedTextV2 = obj.toMutableMap().apply {
+        diff.entries.forEach { (locale, textElement) ->
+            if (textElement is JsonNull) {
+                remove(locale)
+                return@forEach
+            }
+            val text = textElement.primitiveOrNull()?.contentOrNull
+                ?: throw SerializationException("no string: $textElement")
+            set(locale, text)
+        }
+    }
+
+    @Throws(SerializationException::class)
+    private fun applyFileDiff(
+        obj: LocalizedFileV2,
+        diff: JsonObject,
+    ): LocalizedFileV2 = obj.toMutableMap().apply {
+        diff.entries.forEach { (locale, fileV2Element) ->
+            if (fileV2Element is JsonNull) {
+                remove(locale)
+                return@forEach
+            }
+            val fileV2Object = fileV2Element.jsonObjectOrNull()
+                ?: throw SerializationException("no FileV2: $fileV2Element")
+            val fileV2 = if (locale in obj) {
+                applyDiff(obj[locale] as FileV2, fileV2Object)
+            } else {
+                constructFromJson(FileV2::class.primaryConstructor!!, fileV2Object)
+            }
+            set(locale, fileV2)
+        }
+    }
+
+    @Throws(SerializationException::class)
+    private fun applyMapTextDiff(
+        obj: Map<String, LocalizedTextV2>,
+        diff: JsonObject,
+    ): Map<String, LocalizedTextV2> = obj.toMutableMap().apply {
+        diff.entries.forEach { (key, localizedTextElement) ->
+            if (localizedTextElement is JsonNull) {
+                remove(key)
+                return@forEach
+            }
+            val localizedTextObject = localizedTextElement.jsonObjectOrNull()
+                ?: throw SerializationException("no FileV2: $localizedTextElement")
+            val localizedText = if (key in obj) {
+                applyTextDiff(obj[key] as LocalizedTextV2, localizedTextObject)
+            } else {
+                applyTextDiff(HashMap(), localizedTextObject)
+            }
+            set(key, localizedText)
+        }
     }
 
     private fun JsonElement.primitiveOrNull(): JsonPrimitive? = try {

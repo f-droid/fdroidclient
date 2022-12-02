@@ -3,10 +3,8 @@ package org.fdroid.fdroid.views.categories;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -14,28 +12,33 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.fdroid.database.AppOverviewItem;
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
-import org.fdroid.fdroid.data.Schema.AppMetadataTable.Cols;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class CategoryController extends RecyclerView.ViewHolder implements LoaderManager.LoaderCallbacks<Cursor> {
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
+public class CategoryController extends RecyclerView.ViewHolder {
     private final Button viewAll;
     private final TextView heading;
     private final FeatureImage image;
@@ -43,16 +46,18 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
     private final FrameLayout background;
 
     private final AppCompatActivity activity;
-    private final LoaderManager loaderManager;
-    private static final int NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW = 20;
+    private final FDroidDatabase db;
+    static final int NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW = 20;
 
     private String currentCategory;
+    @Nullable
+    private Disposable disposable;
 
-    CategoryController(final AppCompatActivity activity, LoaderManager loaderManager, View itemView) {
+    CategoryController(final AppCompatActivity activity, View itemView) {
         super(itemView);
 
         this.activity = activity;
-        this.loaderManager = loaderManager;
+        db = DBHelper.getDb(activity);
 
         appCardsAdapter = new AppPreviewAdapter(activity);
 
@@ -73,7 +78,8 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         return categoryNameId == 0 ? categoryName : context.getString(categoryNameId);
     }
 
-    void bindModel(@NonNull String categoryName) {
+    void bindModel(@NonNull String categoryName, LiveData<List<AppOverviewItem>> liveData) {
+        loadAppItems(liveData);
         currentCategory = categoryName;
 
         String translatedName = translateCategory(activity, categoryName);
@@ -81,9 +87,7 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
 
         viewAll.setVisibility(View.INVISIBLE);
-
-        loaderManager.initLoader(currentCategory.hashCode(), null, this);
-        loaderManager.initLoader(currentCategory.hashCode() + 1, null, this);
+        loadNumAppsInCategory();
 
         @ColorInt int backgroundColour = getBackgroundColour(activity, categoryName);
         background.setBackgroundColor(backgroundColour);
@@ -96,6 +100,26 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
             image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
             Glide.with(activity).load(categoryImageId).into(image);
         }
+    }
+
+    private void loadAppItems(LiveData<List<AppOverviewItem>> liveData) {
+        setIsRecyclable(false);
+        liveData.observe(activity, new Observer<List<AppOverviewItem>>() {
+            @Override
+            public void onChanged(List<AppOverviewItem> items) {
+                appCardsAdapter.setAppCursor(items);
+                setIsRecyclable(true);
+                liveData.removeObserver(this);
+            }
+        });
+    }
+
+    private void loadNumAppsInCategory() {
+        if (disposable != null) disposable.dispose();
+        disposable = Single.fromCallable(() -> db.getAppDao().getNumberOfAppsInCategory(currentCategory))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::setNumAppsInCategory);
     }
 
     /**
@@ -130,94 +154,13 @@ public class CategoryController extends RecyclerView.ViewHolder implements Loade
         return Color.HSVToColor(hsv);
     }
 
-    /**
-     * Return either the total apps in the category, or the entries to display
-     * for a category, depending on the value of {@code id}.  This uses a sort
-     * similar to the one in {@link org.fdroid.fdroid.views.main.LatestViewBinder#onCreateLoader(int, Bundle)}.
-     * The difference is that this does not treat "new" app any differently.
-     *
-     * @see AppProvider#getCategoryUri(String)
-     * @see AppProvider#getTopFromCategoryUri(String, int)
-     * @see AppProvider#query(android.net.Uri, String[], String, String[], String)
-     * @see AppProvider#TOP_FROM_CATEGORY
-     * @see org.fdroid.fdroid.views.main.LatestViewBinder#onCreateLoader(int, Bundle)
-     */
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        final String table = Schema.AppMetadataTable.NAME;
-        final String added = table + "." + Cols.ADDED;
-        final String lastUpdated = table + "." + Cols.LAST_UPDATED;
-        if (id == currentCategory.hashCode() + 1) {
-            return new CursorLoader(
-                    activity,
-                    AppProvider.getCategoryUri(currentCategory),
-                    new String[]{Schema.AppMetadataTable.Cols._COUNT},
-                    Utils.getAntifeatureSQLFilter(activity),
-                    null,
-                    null
-            );
-        } else {
-            return new CursorLoader(
-                    activity,
-                    AppProvider.getTopFromCategoryUri(currentCategory, NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW),
-                    new String[]{
-                            Schema.AppMetadataTable.Cols.NAME,
-                            Schema.AppMetadataTable.Cols.Package.PACKAGE_NAME,
-                            Schema.AppMetadataTable.Cols.SUMMARY,
-                            Schema.AppMetadataTable.Cols.ICON_URL,
-                            Schema.AppMetadataTable.Cols.ICON,
-                            Schema.AppMetadataTable.Cols.REPO_ID,
-                    },
-                    Utils.getAntifeatureSQLFilter(activity),
-                    null,
-                    table + "." + Cols.IS_LOCALIZED + " DESC"
-                            + ", " + table + "." + Cols.NAME + " IS NULL ASC"
-                            + ", CASE WHEN " + table + "." + Cols.ICON + " IS NULL"
-                            + "        AND " + table + "." + Cols.ICON_URL + " IS NULL"
-                            + "        THEN 1 ELSE 0 END"
-                            + ", " + table + "." + Cols.SUMMARY + " IS NULL ASC"
-                            + ", " + table + "." + Cols.DESCRIPTION + " IS NULL ASC"
-                            + ", CASE WHEN " + table + "." + Cols.PHONE_SCREENSHOTS + " IS NULL"
-                            + "        AND " + table + "." + Cols.SEVEN_INCH_SCREENSHOTS + " IS NULL"
-                            + "        AND " + table + "." + Cols.TEN_INCH_SCREENSHOTS + " IS NULL"
-                            + "        AND " + table + "." + Cols.TV_SCREENSHOTS + " IS NULL"
-                            + "        AND " + table + "." + Cols.WEAR_SCREENSHOTS + " IS NULL"
-                            + "        AND " + table + "." + Cols.FEATURE_GRAPHIC + " IS NULL"
-                            + "        AND " + table + "." + Cols.PROMO_GRAPHIC + " IS NULL"
-                            + "        AND " + table + "." + Cols.TV_BANNER + " IS NULL"
-                            + "        THEN 1 ELSE 0 END"
-                            + ", " + lastUpdated + " DESC"
-                            + ", " + added + " ASC"
-            );
-        }
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
-        int topAppsId = currentCategory.hashCode();
-        int countAllAppsId = topAppsId + 1;
-
-        // Anything other than these IDs indicates that the loader which just finished
-        // is no longer the one this view holder is interested in, due to the user having
-        // scrolled away already during the asynchronous query being run.
-        if (loader.getId() == topAppsId) {
-            appCardsAdapter.setAppCursor(cursor);
-        } else if (loader.getId() == countAllAppsId) {
-            cursor.moveToFirst();
-            int numAppsInCategory = cursor.getInt(0);
-            viewAll.setVisibility(View.VISIBLE);
-            Resources r = activity.getResources();
-            viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory,
-                    numAppsInCategory));
-            viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory,
-                    numAppsInCategory, currentCategory));
-        }
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        appCardsAdapter.setAppCursor(null);
+    private void setNumAppsInCategory(int numAppsInCategory) {
+        viewAll.setVisibility(View.VISIBLE);
+        Resources r = activity.getResources();
+        viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory,
+                numAppsInCategory));
+        viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory,
+                numAppsInCategory, currentCategory));
     }
 
     @SuppressWarnings("FieldCanBeLocal")

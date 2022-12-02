@@ -33,14 +33,18 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.LogPrinter;
 
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
+import org.fdroid.download.NotFoundException;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.index.v2.FileV1;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,11 +65,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 /**
  * DownloaderService is a service that handles asynchronous download requests
  * (expressed as {@link Intent}s) on demand.  Clients send download requests
- * through {@link #queue(Context, long, String)} calls.  The
+ * through {@link #queue(Context, long, String, String, FileV1)}  calls.  The
  * service is started as needed, it handles each {@code Intent} using a worker
  * thread, and stops itself when it runs out of work.  Requests can be canceled
  * using {@link #cancel(Context, String)}.  If this service is killed during
- * operation, it will receive the queued {@link #queue(Context, long, String)}
+ * operation, it will receive the queued {@link #queue(Context, long, String, String, FileV1)}
  * and {@link #cancel(Context, String)} requests again due to
  * {@link Service#START_REDELIVER_INTENT}.  Bad requests will be ignored,
  * including on restart after killing via {@link Service#START_NOT_STICKY}.
@@ -121,6 +125,7 @@ public class DownloaderService extends Service {
      * @see android.content.Intent#EXTRA_ORIGINATING_URI
      */
     public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL";
+    private static final String EXTRA_INDEX_FILE_V1 = "org.fdroid.fdroid.net.Downloader.extra.INDEX_FILE_V1";
 
     private volatile Looper serviceLooper;
     private static volatile ServiceHandler serviceHandler;
@@ -237,19 +242,33 @@ public class DownloaderService extends Service {
      *
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
-     * @see org.fdroid.fdroid.IndexV1Updater#update()
      */
     private void handleIntent(Intent intent) {
         final Uri uri = intent.getData();
         final long repoId = intent.getLongExtra(DownloaderService.EXTRA_REPO_ID, 0);
-        final Uri canonicalUrl = Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
+        final Uri canonicalUrl = intent.getData();
+        final Uri downloadUrl =
+                Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
+        final FileV1 fileV1 = FileV1.deserialize(intent.getStringExtra(DownloaderService.EXTRA_INDEX_FILE_V1));
         final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
         sendBroadcast(uri, DownloaderService.ACTION_STARTED, localFile, repoId, canonicalUrl);
 
         try {
             activeCanonicalUrl = canonicalUrl.toString();
-            final Repo repo = RepoProvider.Helper.findById(this, repoId);
-            downloader = DownloaderFactory.create(repo, canonicalUrl, localFile);
+            Repository repo = FDroidApp.getRepo(repoId);
+            if (repo == null) {
+                // right after the app gets re-recreated downloads get re-triggered, so repo can still be null
+                FDroidDatabase db = DBHelper.getDb(getApplicationContext());
+                repo = db.getRepositoryDao().getRepository(repoId);
+                if (repo == null) {
+                    String canonical = canonicalUrl.toString();
+                    if (canonical.startsWith("http://1") && canonical.contains(":8888/")) {
+                        String address = canonical.split(":8888/")[0] + ":8888/";
+                        repo = FDroidApp.createSwapRepo(address, null); // fake repo for swap
+                    } else return; // repo might have been deleted in the meantime
+                }
+            }
+            downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, fileV1, localFile);
             downloader.setListener(new ProgressListener() {
                 @Override
                 public void onProgress(long bytesRead, long totalBytes) {
@@ -266,7 +285,7 @@ public class DownloaderService extends Service {
             sendBroadcast(uri, DownloaderService.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                | ProtocolException | UnknownHostException e) {
+                | ProtocolException | UnknownHostException | NotFoundException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, "CONNECTION_FAILED: " + e.getLocalizedMessage());
             sendBroadcast(uri, DownloaderService.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
@@ -318,7 +337,8 @@ public class DownloaderService extends Service {
      * @param canonicalUrl the URL used as the unique ID throughout F-Droid
      * @see #cancel(Context, String)
      */
-    public static void queue(Context context, long repoId, String canonicalUrl) {
+    public static void queue(Context context, long repoId, String canonicalUrl,
+                             String downloadUrl, FileV1 fileV1) {
         if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
@@ -327,7 +347,8 @@ public class DownloaderService extends Service {
         intent.setAction(ACTION_QUEUE);
         intent.setData(Uri.parse(canonicalUrl));
         intent.putExtra(DownloaderService.EXTRA_REPO_ID, repoId);
-        intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUrl);
+        intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, downloadUrl);
+        intent.putExtra(DownloaderService.EXTRA_INDEX_FILE_V1, fileV1.serialize());
         context.startService(intent);
     }
 
@@ -338,7 +359,7 @@ public class DownloaderService extends Service {
      *
      * @param context      this app's {@link Context}
      * @param canonicalUrl The URL to remove from the download queue
-     * @see #queue(Context, long, String)
+     * @see #queue(Context, long, String, String, FileV1
      */
     public static void cancel(Context context, String canonicalUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) {

@@ -45,12 +45,8 @@ public class UsbDeviceAttachedReceiver extends BroadcastReceiver {
     public static final String TAG = "UsbDeviceAttachedReceiv";
 
 
-    @RequiresApi(api = 19)
     @Override
     public void onReceive(final Context context, Intent intent) {
-        if (Build.VERSION.SDK_INT < 19) {
-            return;
-        }
 
         if (intent == null || TextUtils.isEmpty(intent.getAction())
                 || !UsbManager.ACTION_USB_DEVICE_ATTACHED.equals(intent.getAction())) {

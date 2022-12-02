@@ -33,6 +33,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -51,13 +52,12 @@ import org.acra.config.CoreConfigurationBuilder;
 import org.acra.config.DialogConfigurationBuilder;
 import org.acra.config.MailSenderConfigurationBuilder;
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
-import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.InstalledAppProviderService;
-import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
@@ -66,6 +66,7 @@ import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
+import org.fdroid.index.IndexFormatVersion;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -79,8 +80,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.ConfigurationCompat;
+import androidx.core.os.LocaleListCompat;
+
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FDroidApp extends Application implements androidx.work.Configuration.Provider {
 
@@ -98,7 +104,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static volatile SubnetUtils.SubnetInfo subnetInfo;
     public static volatile String ssid;
     public static volatile String bssid;
-    public static volatile Repo repo = new Repo();
+    public static volatile Repository repo;
+
+    public static volatile List<Repository> repos;
 
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
@@ -150,7 +158,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             default:
                 // `Set by Battery Saver` for Q above (inclusive), `Use system default` for Q below
                 // https://medium.com/androiddevelopers/appcompat-v23-2-daynight-d10f90c83e94
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                if (Build.VERSION.SDK_INT <= 28) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
@@ -169,24 +177,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO;
     }
 
-    public void applyDialogTheme(AppCompatActivity activity) {
-        activity.setTheme(getCurDialogThemeResId());
-        setSecureWindow(activity);
-    }
-
     public void setSecureWindow(AppCompatActivity activity) {
         if (Preferences.get().preventScreenshots()) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        }
-    }
-
-    private static int getCurDialogThemeResId() {
-        switch (curTheme) {
-            case dark:
-            case night:
-                return R.style.MinWithDialogBaseThemeDark;
-            default:
-                return R.style.MinWithDialogBaseThemeLight;
         }
     }
 
@@ -221,7 +214,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         subnetInfo = UNSET_SUBNET_INFO;
         ssid = "";
         bssid = "";
-        repo = new Repo();
+        repo = null;
     }
 
     @Override
@@ -241,9 +234,21 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             currentLocale = newConfig.getLocales().toString();
         }
         if (!TextUtils.equals(lastLocale, currentLocale)) {
-            UpdateService.forceUpdateRepo(this);
+            onLanguageChanged(getApplicationContext());
         }
         atStartTime.edit().putString(lastLocaleKey, currentLocale).apply();
+    }
+
+    public static void onLanguageChanged(Context context) {
+        FDroidDatabase db = DBHelper.getDb(context);
+        Single.fromCallable(() -> {
+            long now = System.currentTimeMillis();
+            LocaleListCompat locales =
+                    ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+            db.afterLocalesChanged(locales);
+            Log.d(TAG, "Updating DB locales took: " + (System.currentTimeMillis() - now) + "ms");
+            return true;
+        }).subscribeOn(Schedulers.io()).subscribe();
     }
 
     @Override
@@ -316,22 +321,14 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             }
         }
 
-        PRNGFixes.apply();
+        // keep a static copy of the repositories around and in-sync
+        // not how one would normally do this, but it is a common pattern in this codebase
+        FDroidDatabase db = DBHelper.getDb(this);
+        db.getRepositoryDao().getLiveRepositories().observeForever(repositories -> repos = repositories);
 
         applyTheme();
 
         configureProxy(preferences);
-
-
-        // bug specific to exactly 5.0 makes it only work with the old index
-        // which includes an ugly, hacky workaround
-        // https://gitlab.com/fdroid/fdroidclient/issues/1014
-        if (Build.VERSION.SDK_INT == 21) {
-            preferences.setExpertMode(true);
-            preferences.setForceOldIndex(true);
-        }
-
-        InstalledAppProviderService.compareToPackageManager(this);
 
         // If the user changes the preference to do with filtering anti-feature apps,
         // it is easier to just notify a change in the app provider,
@@ -339,14 +336,14 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         preferences.registerAppsRequiringAntiFeaturesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+                // TODO check if anything else needs updating/reloading
             }
         });
 
         preferences.registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
             @Override
             public void onPreferenceChange() {
-                AppProvider.Helper.calcSuggestedApks(FDroidApp.this);
+                AppUpdateStatusManager.getInstance(FDroidApp.this).checkForUpdates();
             }
         });
 
@@ -381,9 +378,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         if (!TextUtils.equals(packageName, unset)) {
             int modeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION
                     | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
-            if (Build.VERSION.SDK_INT >= 19) {
-                modeFlags |= Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
-            }
+            modeFlags |= Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
             grantUriPermission(packageName, InstallHistoryService.LOG_URI, modeFlags);
         }
 
@@ -426,8 +421,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
      * <p>
      * This is helpful for bailing out of the {@link FDroidApp#onCreate} method early, preventing
      * problems that arise from executing the code twice. This happens due to the `android:process`
-     * statement in AndroidManifest.xml causes another process to be created to run
-     * {@link org.fdroid.fdroid.acra.CrashReportActivity}. This was causing lots of things to be
+     * statement in AndroidManifest.xml causes another process to be created to run ACRA.
+     * This was causing lots of things to be
      * started/run twice including {@link CleanCacheWorker} and {@link WifiStateChangeService}.
      * <p>
      * Note that it is not perfect, because some devices seem to not provide a list of running app
@@ -523,6 +518,20 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         if (preferences.isTorEnabled()) {
             OrbotHelper.requestStartTor(context);
         }
+    }
+
+    @Nullable
+    public static Repository getRepo(long repoId) {
+        if (repos == null) return null;
+        for (Repository r : repos) {
+            if (r.getRepoId() == repoId) return r;
+        }
+        return null;
+    }
+
+    public static Repository createSwapRepo(String address, String certificate) {
+        long now = System.currentTimeMillis();
+        return new Repository(42L, address, now, IndexFormatVersion.ONE, certificate, 20001L, 42, now);
     }
 
     public static Context getInstance() {

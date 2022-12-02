@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.main;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
@@ -40,7 +39,6 @@ public class SettingsView extends FrameLayout {
         setId(R.id.preference_fragment_parent);
     }
 
-    @TargetApi(21)
     public SettingsView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         setId(R.id.preference_fragment_parent);

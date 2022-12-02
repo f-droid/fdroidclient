@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.compat;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.system.ErrnoException;
 import android.util.Log;
 
@@ -11,8 +9,6 @@ import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
-import androidx.annotation.RequiresApi;
 
 /**
  * This class works only with {@link SanitizedFile} instances to enforce
@@ -25,15 +21,7 @@ public class FileCompat {
     private static final String TAG = "FileCompat";
 
     public static boolean symlink(SanitizedFile source, SanitizedFile dest) {
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            symlinkOs(source, dest);
-        } else if (Build.VERSION.SDK_INT >= 15) {
-            symlinkLibcore(source, dest);
-        } else {
-            symlinkRuntime(source, dest);
-        }
-
+        symlinkOs(source, dest);
         return dest.exists();
     }
 
@@ -42,10 +30,8 @@ public class FileCompat {
      * not attempt to load this class at runtime. Otherwise, using the Os.symlink method will cause
      * a VerifyError to be thrown at runtime when the FileCompat class is first used.
      */
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private static class Symlink21 {
 
-        @TargetApi(21)
         void symlink(SanitizedFile source, SanitizedFile dest) {
             try {
                 android.system.Os.symlink(source.getAbsolutePath(), dest.getAbsolutePath());
@@ -56,7 +42,6 @@ public class FileCompat {
 
     }
 
-    @TargetApi(21)
     static void symlinkOs(SanitizedFile source, SanitizedFile dest) {
         new Symlink21().symlink(source, dest);
     }

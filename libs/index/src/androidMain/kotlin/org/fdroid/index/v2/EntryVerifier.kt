@@ -5,7 +5,7 @@ import org.fdroid.index.SigningException
 import java.io.File
 import java.util.jar.Attributes
 
-private const val JSON_FILE_NAME = "entry.json"
+public const val DATA_FILE_NAME: String = "entry.json"
 private val FORBIDDEN_DIGESTS = listOf(
     "MD5-Digest",
     "SHA1-Digest",
@@ -29,7 +29,7 @@ public class EntryVerifier(
     expectedSigningFingerprint: String?,
 ) : JarIndexVerifier(jarFile, expectedSigningCertificate, expectedSigningFingerprint) {
 
-    protected override val jsonFileName: String = JSON_FILE_NAME
+    protected override val jsonFileName: String = DATA_FILE_NAME
 
     @Throws(SigningException::class)
     protected override fun checkAttributes(attributes: Attributes) {

@@ -8,8 +8,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.database.Repository;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -76,14 +76,14 @@ public class AddRepoIntentService extends IntentService {
         }
 
         String fingerprint = uri.getQueryParameter("fingerprint");
-        for (Repo repo : RepoProvider.Helper.all(this)) {
-            if (repo.inuse && TextUtils.equals(fingerprint, repo.fingerprint)) {
-                if (TextUtils.equals(urlString, repo.address)) {
+        for (Repository repo : FDroidApp.repos) {
+            if (repo.getEnabled() && TextUtils.equals(fingerprint, repo.getFingerprint())) {
+                if (TextUtils.equals(urlString, repo.getAddress())) {
                     Utils.debugLog(TAG, urlString + " already added as a repo");
                     return;
                 } else {
-                    for (String mirrorUrl : repo.getMirrorList()) {
-                        if (urlString.startsWith(mirrorUrl)) {
+                    for (Mirror mirror : repo.getMirrors()) {
+                        if (urlString.startsWith(mirror.getBaseUrl())) {
                             Utils.debugLog(TAG, urlString + " already added as a mirror");
                             return;
                         }

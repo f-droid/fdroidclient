@@ -1,6 +1,11 @@
 package org.fdroid.index.v2
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import org.fdroid.IndexFile
+import org.fdroid.index.IndexParser.json
 
 @Serializable
 public data class Entry(
@@ -21,18 +26,47 @@ public data class Entry(
 
 @Serializable
 public data class EntryFileV2(
-    val name: String,
-    val sha256: String,
-    val size: Long,
+    override val name: String,
+    override val sha256: String,
+    override val size: Long,
+    @SerialName("ipfsCIDv1")
+    override val ipfsCidV1: String? = null,
     val numPackages: Int,
-)
+) : IndexFile {
+    public companion object {
+        public fun deserialize(string: String): EntryFileV2 {
+            return json.decodeFromString(string)
+        }
+    }
+
+    public override fun serialize(): String {
+        return json.encodeToString(this)
+    }
+}
 
 @Serializable
 public data class FileV2(
-    val name: String,
-    val sha256: String? = null,
-    val size: Long? = null,
-)
+    override val name: String,
+    override val sha256: String? = null,
+    override val size: Long? = null,
+    @SerialName("ipfsCIDv1")
+    override val ipfsCidV1: String? = null,
+) : IndexFile {
+    public companion object {
+        @JvmStatic
+        public fun deserialize(string: String?): FileV2? {
+            if (string == null) return null
+            return json.decodeFromString(string)
+        }
+
+        @JvmStatic
+        public fun fromPath(path: String): FileV2 = FileV2(path)
+    }
+
+    public override fun serialize(): String {
+        return json.encodeToString(this)
+    }
+}
 
 @Serializable
 public data class IndexV2(
@@ -60,8 +94,8 @@ public data class RepoV2(
 ) {
     public fun walkFiles(fileConsumer: (FileV2?) -> Unit) {
         icon.values.forEach { fileConsumer(it) }
-        antiFeatures.values.forEach { fileConsumer(it.icon) }
-        categories.values.forEach { fileConsumer(it.icon) }
+        antiFeatures.values.forEach { it.icon.values.forEach { icon -> fileConsumer(icon) } }
+        categories.values.forEach { it.icon.values.forEach { icon -> fileConsumer(icon) } }
     }
 }
 
@@ -77,14 +111,14 @@ public data class MirrorV2(
 
 @Serializable
 public data class AntiFeatureV2(
-    val icon: FileV2? = null,
+    val icon: LocalizedFileV2 = emptyMap(),
     val name: LocalizedTextV2,
     val description: LocalizedTextV2 = emptyMap(),
 )
 
 @Serializable
 public data class CategoryV2(
-    val icon: FileV2? = null,
+    val icon: LocalizedFileV2 = emptyMap(),
     val name: LocalizedTextV2,
     val description: LocalizedTextV2 = emptyMap(),
 )

@@ -50,7 +50,6 @@ public class SwapView extends RelativeLayout {
         a.recycle();
     }
 
-    @TargetApi(21)
     public SwapView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         final TypedArray a = context.obtainStyledAttributes(

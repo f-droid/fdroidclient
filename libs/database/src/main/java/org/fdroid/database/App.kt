@@ -186,6 +186,7 @@ public data class App internal constructor(
                 name = file.name,
                 sha256 = file.sha256,
                 size = file.size,
+                ipfsCidV1 = file.ipfsCidV1,
             ))
         }
         return map.ifEmpty { null }
@@ -275,6 +276,7 @@ public data class AppListItem internal constructor(
     public override val name: String? = null,
     @ColumnInfo(name = "localizedSummary")
     public override val summary: String? = null,
+    public val lastUpdated: Long,
     internal val antiFeatures: String?,
     @Relation(
         parentColumn = "packageName",
@@ -285,6 +287,10 @@ public data class AppListItem internal constructor(
      * If true, this this app has at least one version that is compatible with this device.
      */
     public val isCompatible: Boolean,
+    /**
+     * The signer, this app prefers to use for new installs.
+     */
+    public val preferredSigner: String? = null,
     /**
      * The name of the installed version, null if this app is not installed.
      */
@@ -346,6 +352,7 @@ internal interface IFile {
     val name: String
     val sha256: String?
     val size: Long?
+    val ipfsCidV1: String?
 }
 
 @Entity(
@@ -366,6 +373,7 @@ internal data class LocalizedFile(
     override val name: String,
     override val sha256: String? = null,
     override val size: Long? = null,
+    override val ipfsCidV1: String? = null,
 ) : IFile {
     internal companion object {
         const val TABLE = "LocalizedFile"
@@ -385,6 +393,7 @@ internal fun LocalizedFileV2.toLocalizedFile(
         name = file.name,
         sha256 = file.sha256,
         size = file.size,
+        ipfsCidV1 = file.ipfsCidV1,
     )
 }
 
@@ -393,6 +402,7 @@ internal fun List<IFile>.toLocalizedFileV2(): LocalizedFileV2? = associate { fil
         name = file.name,
         sha256 = file.sha256,
         size = file.size,
+        ipfsCidV1 = file.ipfsCidV1,
     )
 }.ifEmpty { null }
 
@@ -409,6 +419,7 @@ internal data class LocalizedIcon(
     override val name: String,
     override val sha256: String? = null,
     override val size: Long? = null,
+    override val ipfsCidV1: String? = null,
 ) : IFile {
     internal companion object {
         const val TABLE = "LocalizedIcon"
@@ -433,6 +444,7 @@ internal data class LocalizedFileList(
     val name: String,
     val sha256: String? = null,
     val size: Long? = null,
+    val ipfsCidV1: String? = null,
 ) {
     internal companion object {
         const val TABLE = "LocalizedFileList"
@@ -460,4 +472,5 @@ internal fun FileV2.toLocalizedFileList(
     name = name,
     sha256 = sha256,
     size = size,
+    ipfsCidV1 = ipfsCidV1,
 )

@@ -14,7 +14,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.StyleSpan;
 
 import androidx.annotation.NonNull;
@@ -523,8 +522,6 @@ public class NotificationHelper {
                                        String notificationTag) {
         final Point largeIconSize = getLargeIconSize();
 
-        if (TextUtils.isEmpty(entry.app.getIconUrl(context))) return;
-
         if (entry.status == AppUpdateStatusManager.Status.Downloading
                 || entry.status == AppUpdateStatusManager.Status.Installing) {
             Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
@@ -551,9 +548,7 @@ public class NotificationHelper {
                         }
                     });
         } else {
-            Glide.with(context)
-                    .asBitmap()
-                    .load(entry.app.getIconUrl(context))
+            App.loadBitmapWithGlide(context, entry.app.repoId, entry.app.getIconPath())
                     .into(new CustomTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

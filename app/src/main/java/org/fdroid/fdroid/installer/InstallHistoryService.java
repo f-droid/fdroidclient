@@ -112,7 +112,7 @@ public class InstallHistoryService extends IntentService {
         long timestamp = System.currentTimeMillis();
         Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
         String packageName = apk.packageName;
-        int versionCode = apk.versionCode;
+        long versionCode = apk.versionCode;
 
         List<String> values = new ArrayList<>(4);
         values.add(String.valueOf(timestamp));

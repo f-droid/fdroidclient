@@ -23,24 +23,18 @@ import android.app.Instrumentation;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-import androidx.annotation.NonNull;
+
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import org.fdroid.fdroid.AssetUtils;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoXMLHandler;
-import org.fdroid.fdroid.mock.RepoDetails;
+import org.fdroid.index.v2.PermissionV2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -64,12 +58,11 @@ import static org.junit.Assert.fail;
 public class ApkVerifierTest {
     public static final String TAG = "ApkVerifierTest";
 
-    Instrumentation instrumentation;
+    private Instrumentation instrumentation;
 
-    File sdk14Apk;
-    File minMaxApk;
+    private File sdk14Apk;
+    private File minMaxApk;
     private File extendedPermissionsApk;
-    private File extendedPermsXml;
 
     @Before
     public void setUp() {
@@ -89,14 +82,9 @@ public class ApkVerifierTest {
                 "org.fdroid.extendedpermissionstest.apk",
                 dir
         );
-        extendedPermsXml = AssetUtils.copyAssetToDir(instrumentation.getContext(),
-                "extendedPerms.xml",
-                dir
-        );
         assertTrue(sdk14Apk.exists());
         assertTrue(minMaxApk.exists());
         assertTrue(extendedPermissionsApk.exists());
-        assertTrue(extendedPermsXml.exists());
     }
 
     @Test
@@ -106,50 +94,6 @@ public class ApkVerifierTest {
         String[] perms = new String[]{"Blah"};
         assertFalse(ApkVerifier.requestedPermissionsEqual(perms, null));
         assertFalse(ApkVerifier.requestedPermissionsEqual(null, perms));
-    }
-
-    @Test
-    public void testWithoutPrefix() {
-        Apk apk = new Apk();
-        apk.packageName = "org.fdroid.permissions.sdk14";
-        apk.targetSdkVersion = 14;
-        ArrayList<String> noPrefixPermissionsList = new ArrayList<>(Arrays.asList(
-                "AUTHENTICATE_ACCOUNTS",
-                "MANAGE_ACCOUNTS",
-                "READ_PROFILE",
-                "WRITE_PROFILE",
-                "GET_ACCOUNTS",
-                "READ_CONTACTS",
-                "WRITE_CONTACTS",
-                "WRITE_EXTERNAL_STORAGE",
-                "READ_EXTERNAL_STORAGE",
-                "INTERNET",
-                "ACCESS_NETWORK_STATE",
-                "NFC",
-                "READ_SYNC_SETTINGS",
-                "WRITE_SYNC_SETTINGS",
-                "WRITE_CALL_LOG", // implied-permission!
-                "READ_CALL_LOG" // implied-permission!
-        ));
-        if (Build.VERSION.SDK_INT >= 29) {
-            noPrefixPermissionsList.add("android.permission.ACCESS_MEDIA_LOCATION");
-        }
-        String[] noPrefixPermissions = noPrefixPermissionsList.toArray(new String[0]);
-
-        for (int i = 0; i < noPrefixPermissions.length; i++) {
-            noPrefixPermissions[i] = RepoXMLHandler.fdroidToAndroidPermission(noPrefixPermissions[i]);
-        }
-        apk.requestedPermissions = noPrefixPermissions;
-
-        Uri uri = Uri.fromFile(sdk14Apk);
-        ApkVerifier apkVerifier = new ApkVerifier(instrumentation.getContext(), uri, apk);
-
-        try {
-            apkVerifier.verifyApk();
-        } catch (ApkVerifier.ApkVerificationException | ApkVerifier.ApkPermissionUnequalException e) {
-            e.printStackTrace();
-            fail(e.getMessage());
-        }
     }
 
     @Test(expected = ApkVerifier.ApkPermissionUnequalException.class)
@@ -296,9 +240,8 @@ public class ApkVerifierTest {
     }
 
     @Test
-    public void testExtendedPerms() throws IOException,
-            ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
-        RepoDetails actualDetails = getFromFile(extendedPermsXml);
+    public void testExtendedPerms()
+            throws ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
         HashSet<String> expectedSet = new HashSet<>(Arrays.asList(
                 "android.permission.ACCESS_NETWORK_STATE",
                 "android.permission.ACCESS_WIFI_STATE",
@@ -327,7 +270,30 @@ public class ApkVerifierTest {
                 expectedSet.add("android.permission.CALL_PHONE");
             }
         }
-        Apk apk = actualDetails.apks.get(0);
+        Apk apk = new Apk();
+        apk.packageName = "urzip.at.or.at.urzip";
+        ArrayList<PermissionV2> perms = new ArrayList<>();
+        perms.add(new PermissionV2("android.permission.READ_EXTERNAL_STORAGE", 18));
+        perms.add(new PermissionV2("android.permission.WRITE_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_NETWORK_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_EXTERNAL_STORAGE", 18));
+        perms.add(new PermissionV2("android.permission.WRITE_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_WIFI_STATE", null));
+        perms.add(new PermissionV2("android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.MANAGE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.INTERNET", null));
+        perms.add(new PermissionV2("android.permission.AUTHENTICATE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.GET_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.READ_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_STATS", null));
+        apk.setRequestedPermissions(perms, 0);
+        ArrayList<PermissionV2> perms23 = new ArrayList<>();
+        perms23.add(new PermissionV2("android.permission.CAMERA", null));
+        perms23.add(new PermissionV2("android.permission.CALL_PHONE", 23));
+        apk.setRequestedPermissions(perms23, 23);
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
@@ -355,8 +321,7 @@ public class ApkVerifierTest {
     }
 
     @Test
-    public void testImpliedPerms() throws IOException {
-        RepoDetails actualDetails = getFromFile(extendedPermsXml);
+    public void testImpliedPerms() {
         TreeSet<String> expectedSet = new TreeSet<>(Arrays.asList(
                 "android.permission.ACCESS_NETWORK_STATE",
                 "android.permission.ACCESS_WIFI_STATE",
@@ -383,8 +348,28 @@ public class ApkVerifierTest {
         if (Build.VERSION.SDK_INT >= 29) {
             expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
-        Apk apk = actualDetails.apks.get(1);
-        Log.i(TAG, "APK: " + apk.apkName);
+        Apk apk = new Apk();
+        apk.packageName = "urzip.at.or.at.urzip";
+        apk.targetSdkVersion = 24;
+        ArrayList<PermissionV2> perms = new ArrayList<>();
+        perms.add(new PermissionV2("android.permission.READ_EXTERNAL_STORAGE", 18));
+        perms.add(new PermissionV2("android.permission.WRITE_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_NETWORK_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_EXTERNAL_STORAGE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_WIFI_STATE", null));
+        perms.add(new PermissionV2("android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.MANAGE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.INTERNET", null));
+        perms.add(new PermissionV2("android.permission.AUTHENTICATE_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.GET_ACCOUNTS", 22));
+        perms.add(new PermissionV2("android.permission.READ_CALENDAR", null));
+        perms.add(new PermissionV2("org.dmfs.permission.READ_TASKS", null));
+        perms.add(new PermissionV2("org.dmfs.permission.WRITE_TASKS", null));
+        apk.setRequestedPermissions(perms, 0);
         HashSet<String> actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
@@ -423,8 +408,26 @@ public class ApkVerifierTest {
             expectedSet.add("android.permission.ACCESS_MEDIA_LOCATION");
         }
         expectedPermissions = expectedSet.toArray(new String[expectedSet.size()]);
-        apk = actualDetails.apks.get(2);
-        Log.i(TAG, "APK: " + apk.apkName);
+        apk = new Apk();
+        apk.packageName = "urzip.at.or.at.urzip";
+        apk.targetSdkVersion = 23;
+        perms = new ArrayList<>();
+        perms.add(new PermissionV2("android.permission.WRITE_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_NETWORK_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_EXTERNAL_STORAGE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.ACCESS_WIFI_STATE", null));
+        perms.add(new PermissionV2("android.permission.WRITE_CALENDAR", null));
+        perms.add(new PermissionV2("android.permission.READ_CONTACTS", null));
+        perms.add(new PermissionV2("android.permission.READ_SYNC_SETTINGS", null));
+        perms.add(new PermissionV2("android.permission.MANAGE_ACCOUNTS", null));
+        perms.add(new PermissionV2("android.permission.INTERNET", null));
+        perms.add(new PermissionV2("android.permission.AUTHENTICATE_ACCOUNTS", null));
+        perms.add(new PermissionV2("android.permission.GET_ACCOUNTS", null));
+        perms.add(new PermissionV2("android.permission.READ_CALENDAR", null));
+        perms.add(new PermissionV2("org.dmfs.permission.READ_TASKS", null));
+        perms.add(new PermissionV2("org.dmfs.permission.WRITE_TASKS", null));
+        apk.setRequestedPermissions(perms, 0);
         actualSet = new HashSet<>(Arrays.asList(apk.requestedPermissions));
         for (String permission : expectedSet) {
             if (!actualSet.contains(permission)) {
@@ -441,14 +444,4 @@ public class ApkVerifierTest {
         assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
     }
 
-    @NonNull
-    private RepoDetails getFromFile(File indexFile) throws IOException {
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(indexFile);
-            return RepoDetails.getFromFile(inputStream, Repo.PUSH_REQUEST_IGNORE);
-        } finally {
-            Utils.closeQuietly(inputStream);
-        }
-    }
 }

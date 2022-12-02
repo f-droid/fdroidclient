@@ -1,20 +1,20 @@
 package org.fdroid.fdroid.views.main;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.fdroid.database.Category;
+import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.CategoryProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
@@ -25,11 +25,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.Transformations;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -39,10 +37,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
  * Will start a loader to get the list of categories from the database and populate a recycler
  * view with relevant info about each.
  */
-class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
+class CategoriesViewBinder implements Observer<List<Category>> {
     public static final String TAG = "CategoriesViewBinder";
-
-    private static final int LOADER_ID = 429820532;
 
     private final CategoryAdapter categoryAdapter;
     private final AppCompatActivity activity;
@@ -51,10 +47,12 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
 
     CategoriesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
+        FDroidDatabase db = DBHelper.getDb(activity);
+        Transformations.distinctUntilChanged(db.getRepositoryDao().getLiveCategories()).observe(activity, this);
 
         View categoriesView = activity.getLayoutInflater().inflate(R.layout.main_tab_categories, parent, true);
 
-        categoryAdapter = new CategoryAdapter(activity, activity.getSupportLoaderManager());
+        categoryAdapter = new CategoryAdapter(activity, db);
 
         emptyState = (TextView) categoriesView.findViewById(R.id.empty_state);
 
@@ -92,49 +90,17 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
                 }
             }
         });
-
-        activity.getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
-    }
-
-    @NonNull
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        if (id != LOADER_ID) {
-            throw new IllegalArgumentException("id != LOADER_ID");
-        }
-
-        return new CursorLoader(
-                activity,
-                CategoryProvider.getAllCategories(),
-                Schema.CategoryTable.Cols.ALL,
-                null,
-                null,
-                null
-        );
     }
 
     /**
-     * Reads all categories from the cursor and stores them in memory to provide to the {@link CategoryAdapter}.
-     * <p>
-     * It does this so it is easier to deal with localized/unlocalized categories without having
-     * to store the localized version in the database. It is not expected that the list of categories
-     * will grow so large as to make this a performance concern. If it does in the future, the
-     * {@link CategoryAdapter} can be reverted to wrap the cursor again, and localized category
-     * names can be stored in the database (allowing sorting in their localized form).
+     * Gets all categories from the DB and stores them in memory to provide to the {@link CategoryAdapter}.
      */
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        if (loader.getId() != LOADER_ID || cursor == null) {
-            return;
+    public void onChanged(List<Category> categories) {
+        List<String> categoryNames = new ArrayList<>(categories.size());
+        for (Category c : categories) {
+            categoryNames.add(c.getId());
         }
-
-        List<String> categoryNames = new ArrayList<>(cursor.getCount());
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            categoryNames.add(cursor.getString(cursor.getColumnIndex(Schema.CategoryTable.Cols.NAME)));
-            cursor.moveToNext();
-        }
-
         Collections.sort(categoryNames, new Comparator<String>() {
             @Override
             public int compare(String categoryOne, String categoryTwo) {
@@ -153,15 +119,6 @@ class CategoriesViewBinder implements LoaderManager.LoaderCallbacks<Cursor> {
             emptyState.setVisibility(View.GONE);
             categoriesList.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        if (loader.getId() != LOADER_ID) {
-            return;
-        }
-
-        categoryAdapter.setCategories(Collections.<String>emptyList());
     }
 
 }

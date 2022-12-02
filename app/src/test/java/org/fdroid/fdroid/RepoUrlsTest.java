@@ -20,9 +20,8 @@
 package org.fdroid.fdroid;
 
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.FDroidProviderTest;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.mock.MockApk;
+import org.fdroid.index.v1.IndexV1UpdaterKt;
+import org.fdroid.index.v2.FileV1;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,9 +29,14 @@ import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
 
+import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
 @RunWith(RobolectricTestRunner.class)
-public class RepoUrlsTest extends FDroidProviderTest {
-    public static final String TAG = "RepoUrlsTest";
+public class RepoUrlsTest {
+
+    private final Context context = ApplicationProvider.getApplicationContext();
 
     /**
      * Private class describing a repository URL we're going to test, and
@@ -40,9 +44,9 @@ public class RepoUrlsTest extends FDroidProviderTest {
      */
     private static class TestRepo {
         // Repo URL for the test case
-        public String repoUrl;
+        String repoUrl;
         // String format pattern for generating file URLs, should contain a single %s for the filename
-        public String fileUrlPattern;
+        String fileUrlPattern;
 
         TestRepo(String repoUrl, String fileUrlPattern) {
             this.repoUrl = repoUrl;
@@ -115,38 +119,27 @@ public class RepoUrlsTest extends FDroidProviderTest {
 
     @Test
     public void testIndexUrls() {
-        testReposWithFile(IndexUpdater.SIGNED_FILE_NAME, new GetFileFromRepo() {
-            @Override
-            public String get(TestRepo tr) {
-                Repo repo = new Repo();
-                repo.address = tr.repoUrl;
-                IndexUpdater updater = new IndexUpdater(context, repo);
-                return updater.getIndexUrl(repo);
-            }
-        });
+        testReposWithFile("index.jar", tr ->
+                Utils.getUri(tr.repoUrl, "index.jar").toString()
+        );
     }
 
     @Test
     public void testIndexV1Urls() {
-        testReposWithFile(IndexV1Updater.SIGNED_FILE_NAME, new GetFileFromRepo() {
-            @Override
-            public String get(TestRepo tr) {
-                Repo repo = new Repo();
-                repo.address = tr.repoUrl;
-                IndexV1Updater updater = new IndexV1Updater(context, repo);
-                return updater.getIndexUrl(repo);
-            }
-        });
+        testReposWithFile(IndexV1UpdaterKt.SIGNED_FILE_NAME, tr ->
+                Utils.getUri(tr.repoUrl, IndexV1UpdaterKt.SIGNED_FILE_NAME).toString()
+        );
     }
 
     @Test
     public void testApkUrls() {
-        testReposWithFile(APK_NAME, new GetFileFromRepo() {
-            @Override
-            public String get(TestRepo tr) {
-                Apk apk = new MockApk(APK_NAME, 1, tr.repoUrl, APK_NAME);
-                return apk.getCanonicalUrl();
-            }
+        testReposWithFile(APK_NAME, tr -> {
+            Apk apk = new Apk();
+            apk.apkFile = new FileV1(APK_NAME, "hash", null, null);
+            apk.versionCode = 1;
+            apk.repoAddress = tr.repoUrl;
+            apk.canonicalRepoAddress = tr.repoUrl;
+            return apk.getCanonicalUrl();
         });
     }
 }

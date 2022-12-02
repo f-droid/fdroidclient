@@ -118,13 +118,6 @@
                 android:value=".views.main.MainActivity" />
         </activity>
 
-        <activity
-            android:name=".acra.CrashReportActivity"
-            android:excludeFromRecents="true"
-            android:finishOnTaskLaunch="true"
-            android:launchMode="singleInstance"
-            android:process=":error_report" />
-
         <activity android:name=".views.ScreenShotsActivity" />
 
         <activity
@@ -432,50 +425,6 @@
             android:theme="@style/AppThemeTransparent" />
 
         <provider
-            android:name="org.fdroid.fdroid.data.AppProvider"
-            android:authorities="${applicationId}.data.AppProvider"
-            android:exported="false" />
-        <provider
-            android:name="org.fdroid.fdroid.data.RepoProvider"
-            android:authorities="${applicationId}.data.RepoProvider"
-            android:exported="false" />
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <provider
-            android:name="org.fdroid.fdroid.data.ApkProvider"
-            android:authorities="${applicationId}.data.ApkProvider"
-            android:exported="false" />
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <provider
-            android:name="org.fdroid.fdroid.data.TempApkProvider"
-            android:authorities="${applicationId}.data.TempApkProvider"
-            android:exported="false" />
-        <!-- Note: AppThemeTransparent, this activity shows dialogs only -->
-        <provider
-            android:name="org.fdroid.fdroid.data.TempAppProvider"
-            android:authorities="${applicationId}.data.TempAppProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.InstalledAppProvider"
-            android:authorities="${applicationId}.data.InstalledAppProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.AppPrefsProvider"
-            android:authorities="${applicationId}.data.AppPrefsProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.PackageIdProvider"
-            android:authorities="${applicationId}.data.PackageIdProvider"
-            android:exported="false" />
-
-        <provider
-            android:name="org.fdroid.fdroid.data.CategoryProvider"
-            android:authorities="${applicationId}.data.CategoryProvider"
-            android:exported="false" />
-
-        <provider
             android:name="org.fdroid.fdroid.installer.ApkFileProvider"
             android:authorities="${applicationId}.installer.ApkFileProvider"
             android:exported="false"
@@ -510,15 +459,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
                 <category android:name="android.intent.category.HOME" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receiver.PackageManagerReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_CHANGED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
             </intent-filter>
         </receiver>
         <receiver
@@ -568,11 +508,6 @@
         <service
             android:name=".installer.ObfInstallerService"
             android:exported="false" />
-
-        <service
-            android:name=".data.InstalledAppProviderService"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".AddRepoIntentService"
             android:exported="false" />

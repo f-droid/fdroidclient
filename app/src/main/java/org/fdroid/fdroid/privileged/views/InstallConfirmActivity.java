@@ -22,7 +22,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,14 +36,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import org.fdroid.database.AppDao;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Schema;
+import org.fdroid.fdroid.data.DBHelper;
+import org.fdroid.fdroid.installer.Installer;
 
 /**
  * NOTES:
@@ -68,19 +67,8 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
     private static final String TAB_ID_ALL = "all";
     private static final String TAB_ID_NEW = "new";
 
-    private App app;
-
     private void startInstallConfirm() {
-        View appSnippet = findViewById(R.id.app_snippet);
-        TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
-        ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
-
-        appName.setText(app.name);
-        app.loadWithGlide(this)
-                .apply(Utils.getAlwaysShowIconRequestOptions())
-                .into(appIcon);
-
         tabHost.setup();
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         TabsAdapter adapter = new TabsAdapter(this, tabHost, viewPager);
@@ -179,10 +167,9 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         super.onCreate(icicle);
 
         intent = getIntent();
-        Uri uri = intent.getData();
-        Apk apk = ApkProvider.Helper.findByUri(this, uri, Schema.ApkTable.Cols.ALL);
-        app = AppProvider.Helper.findSpecificApp(getContentResolver(),
-                apk.packageName, apk.repoId, Schema.AppMetadataTable.Cols.ALL);
+        Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+        AppDao appDao = DBHelper.getDb(this).getAppDao();
+        Utils.runOffUiThread(() -> appDao.getApp(apk.repoId, apk.packageName), this::onAppLoaded);
 
         appDiff = new AppDiff(this, apk);
 
@@ -196,6 +183,17 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
         installConfirm.setVisibility(View.INVISIBLE);
 
         startInstallConfirm();
+    }
+
+    private void onAppLoaded(org.fdroid.database.App dbApp) {
+        App app = new App(dbApp, null);
+        View appSnippet = findViewById(R.id.app_snippet);
+        TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
+        appName.setText(app.name);
+        ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
+        app.loadWithGlide(this, app.iconFile)
+                .apply(Utils.getAlwaysShowIconRequestOptions())
+                .into(appIcon);
     }
 
     // Generic handling when pressing back key

@@ -1,11 +1,8 @@
 package org.fdroid.fdroid.data;
 
 import android.Manifest;
-import android.annotation.TargetApi;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Parcel;
@@ -13,25 +10,31 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import org.fdroid.database.AppManifest;
+import org.fdroid.database.AppVersion;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.CompatibilityChecker;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Schema.ApkTable.Cols;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.index.v2.FileV1;
+import org.fdroid.index.v2.PermissionV2;
+import org.fdroid.index.v2.SignerV2;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.zip.ZipFile;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 /**
  * Represents a single package of an application. This represents one particular
@@ -42,42 +45,31 @@ import androidx.annotation.Nullable;
  * They are mapped to JSON field names, the {@code fdroidserver} internal variable
  * names, and the {@code fdroiddata} YAML field names.  Only the instance variables
  * decorated with {@code @JsonIgnore} are not directly mapped.
- * <p>
- * <b>NOTE:</b>If an instance variable is only meant for internal state, and not for
- * representing data coming from the server, then it must also be decorated with
- * {@code @JsonIgnore} to prevent abuse!  The tests for
- * {@link org.fdroid.fdroid.IndexV1Updater} will also have to be updated.
  *
  * @see <a href="https://gitlab.com/fdroid/fdroiddata">fdroiddata</a>
  * @see <a href="https://gitlab.com/fdroid/fdroidserver">fdroidserver</a>
  */
-public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
+public class Apk implements Comparable<Apk>, Parcelable {
 
     // Using only byte-range keeps it only 8-bits in the SQLite database
-    @JsonIgnore
     public static final int SDK_VERSION_MAX_VALUE = Byte.MAX_VALUE;
-    @JsonIgnore
     public static final int SDK_VERSION_MIN_VALUE = 0;
+    public static final String RELEASE_CHANNEL_BETA = "Beta";
+    public static final String RELEASE_CHANNEL_STABLE = "Stable";
 
     // these are never set by the Apk/package index metadata
-    @JsonIgnore
-    protected String repoAddress;
-    @JsonIgnore
-    int repoVersion;
-    @JsonIgnore
+    public String repoAddress;
+    public String canonicalRepoAddress;
     public SanitizedFile installedFile; // the .apk file on this device's filesystem
-    @JsonIgnore
     public boolean compatible; // True if compatible with the device.
-
-    @JacksonInject("repoId")
     public long repoId; // the database ID of the repo it comes from
 
     // these come directly from the index metadata
     public String packageName;
     @Nullable
     public String versionName;
-    public int versionCode;
-    public int size; // Size in bytes - 0 means we don't know!
+    public long versionCode;
+    public long size; // Size in bytes - 0 means we don't know!
     @NonNull
     public String hash; // checksum of the APK, in lowercase hex
     public String hashType;
@@ -89,6 +81,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String obbPatchFile;
     public String obbPatchFileSha256;
     public Date added;
+    public List<String> releaseChannels;
     /**
      * The array of the names of the permissions that this APK requests. This is the
      * same data as {@link android.content.pm.PackageInfo#requestedPermissions}. Note this
@@ -101,174 +94,126 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public String[] nativecode; // null if empty or unknown
 
     /**
-     * ID (md5 sum of public key) of signature. Might be null, in the
-     * transition to this field existing.
+     * Standard SHA-256 fingerprint of the X.509 signing certificate.  This can
+     * be fetched in a few different ways:
+     * <ul>
+     *     <li><code>apksigner verify --print-certs example.apk</code></li>
+     *     <li><code>jarsigner -verify -verbose -certs index-v1.jar</code></li>
+     *     <li><code>keytool -list -v -keystore keystore.jks</code></li>
+     * </ul>
+     *
+     * @see <a href="https://source.android.com/security/apksigning/v3#apk-signature-scheme-v3-block"><tt>signer</tt> in APK Signature Scheme v3</a>
      */
     public String sig;
 
-    public String apkName; // F-Droid style APK name
+    /**
+     * Can be null when created with {@link #Apk(PackageInfo)}
+     * which happens only for showing an installed version
+     * in {@link org.fdroid.fdroid.views.AppDetailsActivity}.
+     */
+    @Nullable
+    public FileV1 apkFile;
 
     /**
      * If not null, this is the name of the source tarball for the
      * application. Null indicates that it's a developer's binary
      * build - otherwise it's built from source.
      */
+    @Nullable
     public String srcname;
 
     public String[] incompatibleReasons;
 
     public String[] antiFeatures;
 
-    /**
-     * The numeric primary key of the Metadata table, which is used to join apks.
-     */
-    public long appId;
+    public String whatsNew;
 
     public Apk() {
     }
 
     /**
-     * If you need an {@link Apk} but it is no longer in the database any more (e.g. because the
-     * version you have installed is no longer in the repository metadata) then you can instantiate
-     * an {@link Apk} via an {@link InstalledApp} instance.
-     * <p>
-     * Note: Many of the fields on this instance will not be known in this circumstance. Currently
-     * the only things that are known are:
-     * <p>
-     * <ul>
-     * <li>{@link Apk#packageName}
-     * <li>{@link Apk#versionName}
-     * <li>{@link Apk#versionCode}
-     * <li>{@link Apk#hash}
-     * <li>{@link Apk#hashType}
-     * </ul>
-     * <p>
-     * This could instead be implemented by accepting a {@link PackageInfo} and it would get much
-     * the same information, but it wouldn't have the hash of the package. Seeing as we've already
-     * done the hard work to calculate that hash and stored it in the database, we may as well use
-     * that.
+     * Creates a dummy APK from what is currently installed.
      */
-    public Apk(@NonNull InstalledApp app) {
-        packageName = app.getPackageName();
-        versionName = app.getVersionName();
-        versionCode = app.getVersionCode();
-        hash = app.getHash(); // checksum of the APK, in lowercase hex
-        hashType = app.getHashType();
+    public Apk(@NonNull PackageInfo packageInfo) {
+        packageName = packageInfo.packageName;
+        versionName = packageInfo.versionName;
+        versionCode = packageInfo.versionCode;
+        releaseChannels = Collections.emptyList();
 
-        // zero for "we don't know". If we require this in the future, then we could look up the
-        // file on disk if required.
+        // zero for "we don't know". If we require this in the future,
+        // then we could look up the file on disk if required.
         size = 0;
 
         // Same as size. We could look this up if required but not needed at time of writing.
         installedFile = null;
 
-        // If we are being created from an InstalledApp, it is because we couldn't load it from the
-        // apk table in the database, indicating it is not available in any of our repos.
+        // We couldn't load it from the database, indicating it is not available in any of our repos.
         repoId = 0;
     }
 
-    public Apk(Cursor cursor) {
+    public Apk(AppVersion v) {
+        Repository repo = Objects.requireNonNull(FDroidApp.getRepo(v.getRepoId()));
+        repoAddress = Utils.getRepoAddress(repo);
+        canonicalRepoAddress = repo.getAddress();
+        added = new Date(v.getAdded());
+        features = v.getFeatureNames().toArray(new String[0]);
+        setPackageName(v.getPackageName());
+        compatible = v.isCompatible();
+        AppManifest manifest = v.getManifest();
+        minSdkVersion = manifest.getUsesSdk() == null ?
+                SDK_VERSION_MIN_VALUE : manifest.getUsesSdk().getMinSdkVersion();
+        targetSdkVersion = manifest.getUsesSdk() == null ?
+                minSdkVersion : manifest.getUsesSdk().getTargetSdkVersion();
+        maxSdkVersion = manifest.getMaxSdkVersion() == null ? SDK_VERSION_MAX_VALUE : manifest.getMaxSdkVersion();
+        List<String> channels = v.getReleaseChannels();
+        if (channels.isEmpty()) {
+            // no channels means stable
+            releaseChannels = Collections.singletonList(RELEASE_CHANNEL_STABLE);
+        } else {
+            releaseChannels = channels;
+        }
+        apkFile = v.getFile();
+        setRequestedPermissions(v.getUsesPermission(), 0);
+        setRequestedPermissions(v.getUsesPermissionSdk23(), 23);
+        nativecode = v.getNativeCode().toArray(new String[0]);
+        repoId = v.getRepoId();
+        SignerV2 signer = v.getManifest().getSigner();
+        sig = signer == null ? null : signer.getSha256().get(0);
+        size = v.getFile().getSize() == null ? 0 : v.getFile().getSize();
+        srcname = v.getSrc() == null ? null : v.getSrc().getName();
+        versionName = manifest.getVersionName();
+        versionCode = manifest.getVersionCode();
+        antiFeatures = v.getAntiFeatureKeys().toArray(new String[0]);
+        whatsNew = v.getWhatsNew(App.getLocales());
+    }
 
-        checkCursorPosition(cursor);
-
-        for (int i = 0; i < cursor.getColumnCount(); i++) {
-            switch (cursor.getColumnName(i)) {
-                case Cols.APP_ID:
-                    appId = cursor.getLong(i);
-                    break;
-                case Cols.HASH:
-                    hash = cursor.getString(i);
-                    break;
-                case Cols.HASH_TYPE:
-                    hashType = cursor.getString(i);
-                    break;
-                case Cols.ADDED_DATE:
-                    added = Utils.parseDate(cursor.getString(i), null);
-                    break;
-                case Cols.FEATURES:
-                    features = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.Package.PACKAGE_NAME:
-                    packageName = cursor.getString(i);
-                    break;
-                case Cols.IS_COMPATIBLE:
-                    compatible = cursor.getInt(i) == 1;
-                    break;
-                case Cols.MIN_SDK_VERSION:
-                    minSdkVersion = cursor.getInt(i);
-                    break;
-                case Cols.TARGET_SDK_VERSION:
-                    targetSdkVersion = cursor.getInt(i);
-                    break;
-                case Cols.MAX_SDK_VERSION:
-                    maxSdkVersion = cursor.getInt(i);
-                    break;
-                case Cols.OBB_MAIN_FILE:
-                    obbMainFile = cursor.getString(i);
-                    break;
-                case Cols.OBB_MAIN_FILE_SHA256:
-                    obbMainFileSha256 = cursor.getString(i);
-                    break;
-                case Cols.OBB_PATCH_FILE:
-                    obbPatchFile = cursor.getString(i);
-                    break;
-                case Cols.OBB_PATCH_FILE_SHA256:
-                    obbPatchFileSha256 = cursor.getString(i);
-                    break;
-                case Cols.NAME:
-                    apkName = cursor.getString(i);
-                    break;
-                case Cols.REQUESTED_PERMISSIONS:
-                    requestedPermissions = convertToRequestedPermissions(cursor.getString(i));
-                    break;
-                case Cols.NATIVE_CODE:
-                    nativecode = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.INCOMPATIBLE_REASONS:
-                    incompatibleReasons = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-                case Cols.REPO_ID:
-                    repoId = cursor.getInt(i);
-                    break;
-                case Cols.SIGNATURE:
-                    sig = cursor.getString(i);
-                    break;
-                case Cols.SIZE:
-                    size = cursor.getInt(i);
-                    break;
-                case Cols.SOURCE_NAME:
-                    srcname = cursor.getString(i);
-                    break;
-                case Cols.VERSION_NAME:
-                    versionName = cursor.getString(i);
-                    break;
-                case Cols.VERSION_CODE:
-                    versionCode = cursor.getInt(i);
-                    break;
-                case Cols.Repo.VERSION:
-                    repoVersion = cursor.getInt(i);
-                    break;
-                case Cols.Repo.ADDRESS:
-                    repoAddress = cursor.getString(i);
-                    break;
-                case Cols.AntiFeatures.ANTI_FEATURES:
-                    antiFeatures = Utils.parseCommaSeparatedString(cursor.getString(i));
-                    break;
-            }
+    public void setCompatibility(CompatibilityChecker checker) {
+        final List<String> reasons = checker.getIncompatibleReasons(this);
+        if (reasons.isEmpty()) {
+            compatible = true;
+            incompatibleReasons = null;
+        } else {
+            compatible = false;
+            incompatibleReasons = reasons.toArray(new String[reasons.size()]);
         }
     }
 
     private void checkRepoAddress() {
-        if (repoAddress == null || apkName == null) {
+        if (repoAddress == null || apkFile == null) {
             throw new IllegalStateException(
                     "Apk needs to have both Schema.ApkTable.Cols.REPO_ADDRESS and "
                             + "Schema.ApkTable.Cols.NAME set in order to calculate URL "
                             + "[package: " + packageName
                             + ", versionCode: " + versionCode
-                            + ", apkName: " + apkName
+                            + ", apkName: " + getApkPath()
                             + ", repoAddress: " + repoAddress
                             + ", repoId: " + repoId + "]");
         }
+    }
+
+    @Nullable
+    public String getApkPath() {
+        return apkFile == null ? "" : apkFile.getName();
     }
 
     /**
@@ -280,11 +225,15 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      *
      * @see org.fdroid.fdroid.installer.InstallManagerService
      */
-    @JsonIgnore  // prevent tests from failing due to nulls in checkRepoAddress()
     public String getCanonicalUrl() {
         checkRepoAddress();
-        Repo repo = new Repo(repoAddress);
-        return repo.getFileUrl(apkName);
+        /* Each String in pathElements might contain a /, should keep these as path elements */
+        return Utils.getUri(canonicalRepoAddress, getApkPath().split("/")).toString();
+    }
+
+    public String getDownloadUrl() {
+        checkRepoAddress();
+        return Utils.getUri(repoAddress, getApkPath().split("/")).toString();
     }
 
     /**
@@ -344,46 +293,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     @Override
-    public String toString() {
-        return toContentValues().toString();
-    }
-
-    public ContentValues toContentValues() {
-        ContentValues values = new ContentValues();
-        values.put(Cols.APP_ID, appId);
-        values.put(Cols.VERSION_NAME, versionName);
-        values.put(Cols.VERSION_CODE, versionCode);
-        values.put(Cols.REPO_ID, repoId);
-        values.put(Cols.HASH, hash);
-        values.put(Cols.HASH_TYPE, hashType);
-        values.put(Cols.SIGNATURE, sig);
-        values.put(Cols.SOURCE_NAME, srcname);
-        values.put(Cols.SIZE, size);
-        values.put(Cols.NAME, apkName);
-        values.put(Cols.MIN_SDK_VERSION, minSdkVersion);
-        values.put(Cols.TARGET_SDK_VERSION, targetSdkVersion);
-        values.put(Cols.MAX_SDK_VERSION, maxSdkVersion);
-        values.put(Cols.OBB_MAIN_FILE, obbMainFile);
-        values.put(Cols.OBB_MAIN_FILE_SHA256, obbMainFileSha256);
-        values.put(Cols.OBB_PATCH_FILE, obbPatchFile);
-        values.put(Cols.OBB_PATCH_FILE_SHA256, obbPatchFileSha256);
-        values.put(Cols.ADDED_DATE, Utils.formatDate(added, ""));
-        values.put(Cols.REQUESTED_PERMISSIONS, Utils.serializeCommaSeparatedString(requestedPermissions));
-        values.put(Cols.FEATURES, Utils.serializeCommaSeparatedString(features));
-        values.put(Cols.NATIVE_CODE, Utils.serializeCommaSeparatedString(nativecode));
-        values.put(Cols.INCOMPATIBLE_REASONS, Utils.serializeCommaSeparatedString(incompatibleReasons));
-        values.put(Cols.AntiFeatures.ANTI_FEATURES, Utils.serializeCommaSeparatedString(antiFeatures));
-        values.put(Cols.IS_COMPATIBLE, compatible ? 1 : 0);
-        return values;
-    }
-
-    @Override
-    @TargetApi(19)
     public int compareTo(@NonNull Apk apk) {
-        if (Build.VERSION.SDK_INT < 19) {
-            return Integer.valueOf(versionCode).compareTo(apk.versionCode);
-        }
-        return Integer.compare(versionCode, apk.versionCode);
+        return Long.compare(versionCode, apk.versionCode);
     }
 
     @Override
@@ -395,11 +306,9 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.packageName);
         dest.writeString(this.versionName);
-        dest.writeInt(this.versionCode);
-        dest.writeInt(this.size);
+        dest.writeLong(this.versionCode);
+        dest.writeLong(this.size);
         dest.writeLong(this.repoId);
-        dest.writeString(this.hash);
-        dest.writeString(this.hashType);
         dest.writeInt(this.minSdkVersion);
         dest.writeInt(this.targetSdkVersion);
         dest.writeInt(this.maxSdkVersion);
@@ -413,24 +322,21 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         dest.writeStringArray(this.nativecode);
         dest.writeString(this.sig);
         dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
-        dest.writeString(this.apkName);
+        dest.writeString(this.apkFile.serialize());
         dest.writeSerializable(this.installedFile);
         dest.writeString(this.srcname);
-        dest.writeInt(this.repoVersion);
         dest.writeString(this.repoAddress);
+        dest.writeString(this.canonicalRepoAddress);
         dest.writeStringArray(this.incompatibleReasons);
         dest.writeStringArray(this.antiFeatures);
-        dest.writeLong(this.appId);
     }
 
     protected Apk(Parcel in) {
         this.packageName = in.readString();
         this.versionName = in.readString();
-        this.versionCode = in.readInt();
-        this.size = in.readInt();
+        this.versionCode = in.readLong();
+        this.size = in.readLong();
         this.repoId = in.readLong();
-        this.hash = in.readString();
-        this.hashType = in.readString();
         this.minSdkVersion = in.readInt();
         this.targetSdkVersion = in.readInt();
         this.maxSdkVersion = in.readInt();
@@ -445,14 +351,13 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         this.nativecode = in.createStringArray();
         this.sig = in.readString();
         this.compatible = in.readByte() != 0;
-        this.apkName = in.readString();
+        this.apkFile = FileV1.deserialize(in.readString());
         this.installedFile = (SanitizedFile) in.readSerializable();
         this.srcname = in.readString();
-        this.repoVersion = in.readInt();
         this.repoAddress = in.readString();
+        this.canonicalRepoAddress = in.readString();
         this.incompatibleReasons = in.createStringArray();
         this.antiFeatures = in.createStringArray();
-        this.appId = in.readLong();
     }
 
     public static final Parcelable.Creator<Apk> CREATOR = new Parcelable.Creator<Apk>() {
@@ -467,23 +372,9 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
         }
     };
 
-    private String[] convertToRequestedPermissions(String permissionsFromDb) {
-        String[] array = Utils.parseCommaSeparatedString(permissionsFromDb);
-        if (array != null) {
-            HashSet<String> requestedPermissionsSet = new HashSet<>();
-            for (String permission : array) {
-                requestedPermissionsSet.add(RepoXMLHandler.fdroidToAndroidPermission(permission));
-            }
-            return requestedPermissionsSet.toArray(new String[requestedPermissionsSet.size()]);
-        }
-        return null;
-    }
-
     /**
      * Set the Package Name property while ensuring it is sanitized.
      */
-    @JsonProperty("packageName")
-    @SuppressWarnings("unused")
     void setPackageName(String packageName) {
         if (Utils.isSafePackageName(packageName)) {
             this.packageName = packageName;
@@ -491,18 +382,6 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
             throw new IllegalArgumentException("Repo index package entry includes unsafe packageName: '"
                     + packageName + "'");
         }
-    }
-
-    @JsonProperty("uses-permission")
-    @SuppressWarnings("unused")
-    private void setUsesPermission(Object[][] permissions) {
-        setRequestedPermissions(permissions, 0);
-    }
-
-    @JsonProperty("uses-permission-sdk-23")
-    @SuppressWarnings("unused")
-    private void setUsesPermissionSdk23(Object[][] permissions) {
-        setRequestedPermissions(permissions, 23);
     }
 
     /**
@@ -516,64 +395,59 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * so they are not included here.
      *
      * @see Manifest.permission#READ_EXTERNAL_STORAGE
+     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/data/etc/platform.xml">platform.xml</a>
      */
-    private void setRequestedPermissions(Object[][] permissions, int minSdk) {
+    @VisibleForTesting
+    public void setRequestedPermissions(List<PermissionV2> permissions, int minSdk) {
         HashSet<String> set = new HashSet<>();
         if (requestedPermissions != null) {
             Collections.addAll(set, requestedPermissions);
         }
-        for (Object[] versions : permissions) {
+        for (PermissionV2 versions : permissions) {
             int maxSdk = Integer.MAX_VALUE;
-            if (versions[1] != null) {
-                maxSdk = (int) versions[1];
+            if (versions.getMaxSdkVersion() != null) {
+                maxSdk = versions.getMaxSdkVersion();
             }
             if (minSdk <= Build.VERSION.SDK_INT && Build.VERSION.SDK_INT <= maxSdk) {
-                set.add((String) versions[0]);
+                set.add(versions.getName());
             }
         }
-        if (Build.VERSION.SDK_INT >= 16 && set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             set.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         }
         if (Build.VERSION.SDK_INT >= 29) {
             if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 set.add(Manifest.permission.ACCESS_COARSE_LOCATION);
             }
-            if (targetSdkVersion >= 29) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 29,
-                // so we don't make any changes for apps targetting 29 or above
-            } else {
-                // TODO: Change the strings below to Manifest.permission once we target SDK 29.
+            if (targetSdkVersion < 29) {
                 if (set.contains(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                    set.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
                 }
                 if (set.contains(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                    set.add("android.permission.ACCESS_BACKGROUND_LOCATION");
+                    set.add(Manifest.permission.ACCESS_BACKGROUND_LOCATION);
                 }
                 if (set.contains(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                    set.add("android.permission.ACCESS_MEDIA_LOCATION");
+                    set.add(Manifest.permission.ACCESS_MEDIA_LOCATION);
                 }
             }
+            // Else do nothing. The targetSdk for the below split-permissions is set to 29,
+            // so we don't make any changes for apps targetting 29 or above
         }
         if (Build.VERSION.SDK_INT >= 31) {
-            if (targetSdkVersion >= 31) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 31,
-                // so we don't make any changes for apps targetting 31 or above
-            } else {
-                // TODO: Change the strings below to Manifest.permission once we target SDK 31.
+            if (targetSdkVersion < 31) {
                 if (set.contains(Manifest.permission.BLUETOOTH) ||
                         set.contains(Manifest.permission.BLUETOOTH_ADMIN)) {
-                    set.add("android.permission.BLUETOOTH_SCAN");
-                    set.add("android.permission.BLUETOOTH_CONNECT");
-                    set.add("android.permission.BLUETOOTH_ADVERTISE");
+                    set.add(Manifest.permission.BLUETOOTH_SCAN);
+                    set.add(Manifest.permission.BLUETOOTH_CONNECT);
+                    set.add(Manifest.permission.BLUETOOTH_ADVERTISE);
                 }
             }
+            // Else do nothing. The targetSdk for the above split-permissions is set to 31,
+            // so we don't make any changes for apps targetting 31 or above
         }
         if (Build.VERSION.SDK_INT >= 33) {
-            if (targetSdkVersion >= 33) {
-                // Do nothing. The targetSdk for the below split-permissions is set to 33,
-                // so we don't make any changes for apps targetting 33 or above
-            } else {
-                // TODO: Change the strings below to Manifest.permission once we target SDK 31.
+            if (targetSdkVersion < 33) {
+                // TODO: Change the strings below to Manifest.permission once we compile with SDK 33
                 if (set.contains(Manifest.permission.BODY_SENSORS)) {
                     set.add("android.permission.BODY_SENSORS_BACKGROUND");
                 }
@@ -584,6 +458,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
                     set.add("android.permission.READ_MEDIA_IMAGES");
                 }
             }
+            // Else do nothing. The targetSdk for the above split-permissions is set to 33,
+            // so we don't make any changes for apps targetting 33 or above
         }
 
         requestedPermissions = set.toArray(new String[set.size()]);
@@ -650,7 +526,7 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
     }
 
     public File getInstalledMediaFile(Context context) {
-        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(this.apkName));
+        return new File(this.getMediaInstallPath(context), SanitizedFile.sanitizeFileName(getApkPath()));
     }
 
     /**
@@ -668,7 +544,8 @@ public class Apk extends ValueObject implements Comparable<Apk>, Parcelable {
      * @return true if this is an apk instead of a non-apk/media file
      */
     public boolean isApk() {
-        return apkName == null
-                || apkName.substring(apkName.length() - 4).toLowerCase(Locale.ENGLISH).endsWith(".apk");
+        return apkFile == null
+                || apkFile.getName().substring(apkFile.getName().length() - 4)
+                .toLowerCase(Locale.ENGLISH).endsWith(".apk");
     }
 }

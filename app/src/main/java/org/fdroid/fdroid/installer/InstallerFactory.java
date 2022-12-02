@@ -24,6 +24,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Apk;
 
 import androidx.annotation.NonNull;
@@ -38,10 +39,11 @@ public class InstallerFactory {
      * case to install the "F-Droid Privileged Extension" ExtensionInstaller.
      *
      * @param context current {@link Context}
+     * @param app     to be installed, always required.
      * @param apk     to be installed, always required.
      * @return instance of an Installer
      */
-    public static Installer create(Context context, @NonNull Apk apk) {
+    public static Installer create(Context context, @NonNull App app, @NonNull Apk apk) {
         if (TextUtils.isEmpty(apk.packageName)) {
             throw new IllegalArgumentException("Apk.packageName must not be empty: " + apk);
         }
@@ -49,12 +51,12 @@ public class InstallerFactory {
         Installer installer;
         if (!apk.isApk()) {
             Utils.debugLog(TAG, "Using FileInstaller for non-apk file");
-            installer = new FileInstaller(context, apk);
+            installer = new FileInstaller(context, app, apk);
         } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
-            installer = new PrivilegedInstaller(context, apk);
+            installer = new PrivilegedInstaller(context, app, apk);
         } else {
-            installer = new DefaultInstaller(context, apk);
+            installer = new DefaultInstaller(context, app, apk);
         }
 
         return installer;

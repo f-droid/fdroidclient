@@ -19,7 +19,11 @@
 -keep class junit.** { *; }
 -dontwarn junit.**
 
-# This is necessary so that RemoteWorkManager can be initialized (also marked with @Keep)
--keep class androidx.work.multiprocess.RemoteWorkManagerClient {
-    public <init>(...);
+-keep class androidx.arch.core.executor.ArchTaskExecutor {*;}
+
+-keep class org.fdroid.download.Mirror {
+    public static *** fromStrings(***);
 }
+
+# This is necessary so that RemoteWorkManager can be initialized (also marked with @Keep)
+-keep class androidx.work.WorkManager { *; }
