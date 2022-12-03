@@ -29,6 +29,8 @@
 
 package kellinwood.security.zipsigner;
 
+import android.util.Base64;
+
 import kellinwood.logging.LoggerInterface;
 import kellinwood.logging.LoggerManager;
 import kellinwood.zipio.ZioEntry;
@@ -441,11 +443,11 @@ public class ZipSigner {
 
                 Attributes attr = null;
                 if (input != null) {
-                    java.util.jar.Attributes inAttr = input.getAttributes(name);
+                    Attributes inAttr = input.getAttributes(name);
                     if (inAttr != null) attr = new Attributes(inAttr);
                 }
                 if (attr == null) attr = new Attributes();
-                attr.putValue("SHA1-Digest", Base64.encode(md.digest()));
+                attr.putValue("SHA1-Digest", Base64.encodeToString(md.digest(), Base64.NO_WRAP));
                 output.getEntries().put(name, attr);
             }
         }
@@ -473,7 +475,7 @@ public class ZipSigner {
         manifest.write(print);
         print.flush();
 
-        out.write(("SHA1-Digest-Manifest: " + Base64.encode(md.digest()) + "\r\n\r\n").getBytes());
+        out.write(("SHA1-Digest-Manifest: " + Base64.encodeToString(md.digest(), Base64.NO_WRAP) + "\r\n\r\n").getBytes());
 
         Map<String, Attributes> entries = manifest.getEntries();
         for (Map.Entry<String, Attributes> entry : entries.entrySet()) {
@@ -489,9 +491,8 @@ public class ZipSigner {
             print.flush();
 
             out.write(nameEntry.getBytes());
-            out.write(("SHA1-Digest: " + Base64.encode(md.digest()) + "\r\n\r\n").getBytes());
+            out.write(("SHA1-Digest: " + Base64.encodeToString(md.digest(), Base64.NO_WRAP) + "\r\n\r\n").getBytes());
         }
-
     }
 
     /**

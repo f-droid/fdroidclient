@@ -1,9 +1,10 @@
 
 package kellinwood.security.zipsigner.optional;
 
+import android.util.Base64;
+
 import kellinwood.logging.LoggerInterface;
 import kellinwood.logging.LoggerManager;
-import kellinwood.security.zipsigner.Base64;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -84,7 +85,7 @@ public class PasswordObfuscator {
             w.write(password);
             w.flush();
             byte[] encoded = cipher.doFinal(baos.toByteArray());
-            return Base64.encode(encoded);
+            return Base64.encodeToString(encoded, Base64.NO_WRAP);
         } catch (Exception x) {
             logger.error("Failed to obfuscate password", x);
         }
@@ -105,7 +106,7 @@ public class PasswordObfuscator {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             SecretKeySpec skeySpec = new SecretKeySpec(x.getBytes(), "AES");
             cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-            byte[] bytes = cipher.doFinal(Base64.decode(password.getBytes()));
+            byte[] bytes = cipher.doFinal(Base64.decode(password.getBytes(), Base64.NO_WRAP));
             BufferedReader r = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(bytes)));
             char[] cb = new char[128];
             int length = 0;
