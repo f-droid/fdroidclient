@@ -191,7 +191,7 @@
     <string name="antifeatures">Anti-veçori</string>
     <string name="antiadslist">Ky aplikacion përmban reklama</string>
     <string name="antinonfreeadlist">Ky aplikacion rekomandon shtesa jo të lira</string>
-    <string name="antinonfreenetlist">Ky aplikacion rekomandon shërbime rrjeti jo të lira</string>
+    <string name="antinonfreenetlist">Ky aplikacion promovon ose varet tërësusht nga shërbime rrjeti jo të lira</string>
     <string name="antinonfreedeplist">Ky aplikacion varet nga aplikacione të tjera jo të lira</string>
     <string name="antiupstreamnonfreelist">Kodi burim origjinal s’është plotësisht i Lirë</string>
     <string name="antinonfreeassetslist">Ky aplikacion përmban elementë jo të lirë</string>
