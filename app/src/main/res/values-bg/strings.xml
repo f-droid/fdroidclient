@@ -531,4 +531,5 @@
     <string name="antinonfreenet">Несвободни мрежови услуги</string>
     <string name="antiothers">Други анти-функции</string>
     <string name="antinsfw">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
+    <string name="menu_release_channel_beta">Разрешаване на издания бета</string>
 </resources>
