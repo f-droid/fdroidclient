@@ -145,7 +145,7 @@
     <string name="bad_fingerprint">Неважећи отисак</string>
     <string name="invalid_url">URL је неважећи.</string>
     <string name="menu_changelog">Евиденција промена</string>
-    <string name="banner_updating_repositories">Ажурирање репозиторијума</string>
+    <string name="banner_updating_repositories">Ажурирање репозиторијума…</string>
     <string name="status_processing_xml_percent">Обрада %2$s/%3$s (%4$d%%) од %1$s</string>
     <string name="pref_language">Језик</string>
     <string name="pref_language_default">Подразумевани системски</string>
@@ -200,7 +200,7 @@
     <string name="swap_scan_or_type_url">Једно од вас треба да скенира кôд или да у прегледачу унесе URL друге особе.</string>
     <string name="swap_switch_to_wifi">Додирните да бисте се пребацили на Wi-Fi мрежу</string>
     <string name="empty_can_update_app_list">Честитамо!
-\nАпликације су ажуриране.</string>
+\nАпликације су ажурне.</string>
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражење људи у близини…</string>
     <string name="empty_installed_app_list">Нема инсталираних апликација.
@@ -250,7 +250,7 @@
     <string name="swap_stopping_wifi">Заустављање Wi-Fi-а…</string>
     <string name="repo_provider">Репозиторијум: %s</string>
     <string name="update_auto_download">Аутоматски преузимај ажурирања</string>
-    <string name="update_auto_download_summary">Ажурирања се аутоматски преузимају, и бићете обавештени када треба да се инсталирају</string>
+    <string name="update_auto_download_summary">Ажурирања се аутоматски преузимају и бићете обавештени када буду спремна за инсталацију</string>
     <string name="download_pending">Чека се почетак преузимања…</string>
     <string name="keep_hour">1 сат</string>
     <string name="keep_day">1 дан</string>
@@ -447,7 +447,7 @@
     <string name="hide_on_long_search_press_title">Сакриј дугметом за претрагу</string>
     <string name="hide_on_long_search_press_summary">Дуги притисак на дугме за претрагу ће сакрити апликацију</string>
     <string name="warning_scaning_qr_code">Ваша камера нема аутоматско фокусирање. Скенирање кода може бити тешко.</string>
-    <string name="show_anti_feature_apps">Укључи апликације са непоузданим функцијама</string>
+    <string name="show_anti_feature_apps">Апликације са непоузданим функцијама</string>
     <string name="show_anti_feature_apps_on">Приказује апликације које захтевају непоуздане функције</string>
     <string name="repo_add_mirror">Додај резервни извор</string>
     <string name="repo_exists_add_mirror">Ово је копија репозиторијума %1$s. Желите ли да је додате као резервни извор\?</string>
@@ -476,7 +476,7 @@
     <string name="not_visible_nearby">Функција „У близини” није омогућена</string>
     <string name="not_visible_nearby_description">Пре размене са уређајима у близини, укључите видљивост свог уређаја.</string>
     <string name="scan_removable_storage_toast">Скенира се %s…</string>
-    <string name="main_menu__updates">Ажурирања</string>
+    <string name="main_menu__updates">Новости</string>
     <string name="menu_translation">Превод</string>
     <string name="undo">Опозови</string>
     <string name="app_list__dismiss_installing_app">Инсталација је отказана</string>
@@ -508,9 +508,9 @@
     <string name="notification_channel_installs_title">Инсталације</string>
     <string name="send_to_fdroid_metrics">Шаљи податке о коришћењу</string>
     <string name="toast_metrics_in_install_history">%s статистички извештај је доступан у прегледу историје инсталација</string>
-    <string name="theme_follow_system">Подразумевана системска</string>
+    <string name="theme_follow_system">Системска</string>
     <string name="use_pure_black_dark_theme_summary">Препоручује се само на OLED екранима.</string>
-    <string name="use_pure_black_dark_theme">Користи потпуно црну позадину у тамној теми</string>
+    <string name="use_pure_black_dark_theme">Потпуно црна позадина у тамној теми</string>
     <string name="banner_no_data_or_wifi">Wi-Fi или мобилни подаци су онемогућени</string>
     <string name="banner_no_internet">Нема интернет везе</string>
     <string name="menu_show_install_history">Прикажи историју инсталација</string>
@@ -537,4 +537,5 @@
     <string name="antinosource">Изворни кôд више није доступан</string>
     <string name="antiothers">Друге непоуздане функције</string>
     <string name="antinsfw">Ова апликација садржи садржај који не би требало бити јавно доступан</string>
+    <string name="menu_release_channel_beta">Дозволи ажурирања на бета верзије</string>
 </resources>
