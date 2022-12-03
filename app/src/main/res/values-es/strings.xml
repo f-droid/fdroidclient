@@ -537,4 +537,5 @@
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
     <string name="antiothers">Otras anti-característcas</string>
     <string name="antinsfw">Esta app contiene contenido que no debería ser publicitado o visible en cualquier lugar</string>
+    <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
 </resources>

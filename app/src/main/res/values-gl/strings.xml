@@ -527,4 +527,5 @@
     <string name="share_apk_error">Non se puido compartilo ficheiro da aplicación</string>
     <string name="app_list_results_hidden_antifeature_settings">Algúns resultados foron ocultados seguindo a súa configuración de funcións indesexadas.</string>
     <string name="antiupstreamnonfree">Código fonte non libre</string>
+    <string name="menu_release_channel_beta">Permitir Actualizacións Beta</string>
 </resources>
