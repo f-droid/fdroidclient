@@ -537,5 +537,5 @@
     <string name="antinonfreead">Addons non libres</string>
     <string name="antinonfreeassets">Composants non libres</string>
     <string name="antiothers">Autres Antifonctions</string>
-    <string name="antinsfw">Cette application contient des contenus qui ne doivent pas être rendus publics ni visibles partout.</string>
+    <string name="antinsfw">Cette application contient des contenus qui ne doivent pas être rendus publics ni visibles partout</string>
 </resources>
