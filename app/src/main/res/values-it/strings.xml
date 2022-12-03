@@ -540,4 +540,5 @@
     <string name="antiupstreamnonfree">Non libero a monte</string>
     <string name="antiothers">Altre anti-caratteristiche</string>
     <string name="antinsfw">Questa app ha contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
+    <string name="menu_release_channel_beta">Permetti aggiornamenti Beta</string>
 </resources>
