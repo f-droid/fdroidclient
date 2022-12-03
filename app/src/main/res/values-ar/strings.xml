@@ -62,20 +62,20 @@
     <string name="unstable_updates">تحديثات غير مستقرة</string>
     <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات الغير المستقرة</string>
     <string name="other">غير ذلك</string>
-    <string name="update_interval">تحديث الفاصل الزمني التلقائي</string>
+    <string name="update_interval">الفاصل الزمني للتحديث التلقائي</string>
     <string name="update_auto_download">جلب التحديثات تلقائياً</string>
     <string name="update_auto_download_summary">التحديثات تُحمل تلقائياً وأنت تتلقى إشعار لتثبيتها</string>
     <string name="notify">إظهار التحديثات المتوفرة</string>
-    <string name="notify_on">أظهر إشعارًا عندما تتوفر هناك تحديثات</string>
+    <string name="notify_on">أظهر إشعارًا عند توفر التحديثات</string>
     <string name="system_installer">ملحقات متميزة</string>
     <string name="system_installer_on">استخدام الملحقات المميزة لتثبيت وتحديث وإزالة الحزم</string>
-    <string name="local_repo_name_summary">عنوان المعلن لديك في المستودعات المحلية: %s</string>
-    <string name="local_repo_https_on">استخدام تشفير HTTPS: // المتصل بالمستودعات المحلية</string>
+    <string name="local_repo_name_summary">العنوان المعلن لمستودعك المحلي: %s</string>
+    <string name="local_repo_https_on">استخدام تشفير HTTPS: // للاتصال بالمستودعات المحلية</string>
     <string name="login_title">يستلزم التوثيق</string>
     <string name="login_name">اسم المستخدم</string>
     <string name="login_password">كلمة المرور</string>
     <string name="repo_edit_credentials">تغيير كلمة المرور</string>
-    <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات الاعتماد</string>
+    <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات التوثيق</string>
     <string name="no_such_app">لم يتم العثور على مثل هذا التطبيق.</string>
     <string name="about_title">معلومات عن اف-درويد</string>
     <string name="about_source">الشفرة المصدرية</string>
@@ -149,9 +149,7 @@
     <string name="repo_url">العنوان</string>
     <string name="repo_fingerprint">بصمة توقيع المفتاح (SHA-256)</string>
     <string name="unsigned_description">هذا يعني أن قائمة التطبيقات لا يمكن التحقق منها. يجب أن تكون حذرا مع التطبيقات التي تم تنزيلها من أرشفة غير موقعة.</string>
-    <string name="repo_not_yet_updated">لم يتم استخدام هذا المستودع حتى الآن.
-        تحتاج إلى تمكينها من عرض التطبيقات التي يقدمها.
-    </string>
+    <string name="repo_not_yet_updated">لم يتم استخدام هذا المستودع حتى الآن. تحتاج إلى تشغيله من اجل عرض التطبيقات التي يقدمها.</string>
     <string name="repo_confirm_delete_body">يعني حذف مستودع أن التطبيقات منه لن تكون متاحة بعد الآن.
 \n
 \nملاحظة: ستظل جميع التطبيقات المثبتة مسبقًا على جهازك.</string>
@@ -347,7 +345,7 @@
         <item quantity="other">عرض الكل %d</item>
     </plurals>
     <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
-    <string name="force_old_index_summary">في حالة وجود أخطاء أو أخطاء تكامل، استخدم أرشفة تطبيق XML</string>
+    <string name="force_old_index_summary">في حالة وجود أخطاء أو مشاكل في التوافق، استخدم أرشفة تطبيق XML</string>
     <string name="app_details__incompatible_mismatched_signature">توقيع مختلف عن التطبيق المُثبت</string>
     <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signatures">لا نسخ مع توقعيات متوافقة</string>
@@ -472,8 +470,8 @@
     <string name="hide_all_notifications_summary">منع جميع الإجراءات من الظهور في شريط المعلومات ودرج الإشعارات.</string>
     <string name="install_history">تاريخ التثبيت</string>
     <string name="install_history_summary">عرض السجل الخاص لجميع عمليات التثبيت وعمليات الإزالة</string>
-    <string name="send_version_and_uuid">إرسال نسخة و عنوان UUID إلى الخوادم</string>
-    <string name="send_version_and_uuid_summary">تضمين إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل، يسري مفعوله عند إعادة تشغيل التطبيق التالية.</string>
+    <string name="send_version_and_uuid">إرسال رقم النسخة و عنوان UUID إلى الخوادم</string>
+    <string name="send_version_and_uuid_summary">إضافة إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل، يأخذ مفعوله عند إعادة تشغيل التطبيق التالية.</string>
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
     <string name="repo_exists_add_mirror">هذه نسخة من %1$s، هل تريد إضافتها كمرآة؟</string>
     <string name="antinosourcesince">لم يعد الكود المصدري متاحًا، ولا توجد تحديثات ممكنة.</string>
@@ -547,7 +545,7 @@
     <string name="send_fdroid_metrics_json">%s تقرير المقاييس كملف JSON</string>
     <string name="send_fdroid_metrics_report">إرسال تقرير %s القياسات</string>
     <string name="theme_follow_system">اتبع مظهر النظام</string>
-    <string name="use_pure_black_dark_theme_summary">يوصى به فقط لشاشات OLED.</string>
+    <string name="use_pure_black_dark_theme_summary">يوصى به لشاشات OLED فقط.</string>
     <string name="use_pure_black_dark_theme">استخدم خلفية سوداء نقية في المظهر داكن</string>
     <string name="banner_no_data_or_wifi">لم يتم تمكين البيانات أو WiFi</string>
     <string name="banner_no_internet">لا يوجد إنترنت</string>
