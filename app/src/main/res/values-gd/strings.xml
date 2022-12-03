@@ -503,7 +503,7 @@
     <string name="notification_title_summary_downloading_update">A’ luchdadh a-nuas an ùrachaidh…</string>
     <string name="notification_title_summary_downloading">’Ga luchdadh a-nuas…</string>
     <string name="notification_title_summary_update_available">Tha ùrachadh ri fhaighinn</string>
-    <string name="notification_content_single_installed">Chaidh a stàladh</string>
+    <string name="notification_content_single_installed">air a stàladh</string>
     <string name="notification_content_single_installing">A’ stàladh “%1$s”…</string>
     <string name="notification_content_single_downloading_update">A’ luchdadh a-nuas ùrachadh air “%1$s”…</string>
     <string name="notification_content_single_downloading">A’ luchdadh a-nuas “%1$s”…</string>
