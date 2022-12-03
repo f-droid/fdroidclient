@@ -548,5 +548,5 @@
     <string name="antiknownvuln">Известная уязвимость</string>
     <string name="antiothers">Прочие анти-функции</string>
     <string name="antinsfw">Это приложение содержит контент, который не следует разглашать или повсеместно демонстрировать</string>
-    <string name="menu_release_channel_beta">Разрешить бета-обновления</string>
+    <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
 </resources>
