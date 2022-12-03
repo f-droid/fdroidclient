@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Новая версия приложения подписана другим ключом. Для её установки необходимо удалить старую. Пожалуйста, сделайте это и попробуйте снова. (Учтите, что при удалении приложения все его данные будут потеряны)</string>
-    <string name="installIncompatible">Приложение несовместимо с вашим устройством. Всё равно установить\?</string>
+    <string name="SignatureMismatch">Новая версия приложения подписана другим ключом. Для ее установки необходимо удалить старую. Пожалуйста, сделайте это и попробуйте снова. (Учтите, что при удалении приложения все его данные будут потеряны)</string>
+    <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить\?</string>
     <string name="version">Версия</string>
     <string name="delete">Удалить</string>
     <string name="enable_nfc_send">Включить отправку по NFC…</string>
@@ -15,7 +15,7 @@
     <string name="system_installer_on">Использовать привилегированное расширение для установки, обновления и удаления пакетов</string>
     <string name="local_repo_name">Название вашего локального репозитория</string>
     <string name="local_repo_name_summary">Публичное название вашего локального репозитория: %s</string>
-    <string name="local_repo_https_on">Использовать защищённое HTTPS:// соединение для локального репозитория</string>
+    <string name="local_repo_https_on">Использовать защищенное HTTPS:// соединение для локального репозитория</string>
     <string name="app_details">Описание приложения</string>
     <string name="no_such_app">Приложение не найдено.</string>
     <string name="about_title">О F-Droid</string>
@@ -141,7 +141,7 @@
     <string name="interval_1w">Проверять обновления еженедельно</string>
     <string name="interval_2w">Проверять обновления каждые 2 недели</string>
     <string name="theme_light">Светлая</string>
-    <string name="theme_dark">Тёмная</string>
+    <string name="theme_dark">Темная</string>
     <string name="unstable_updates">Нестабильные обновления</string>
     <string name="unstable_updates_summary">Предлагать обновления до нестабильных версий</string>
     <string name="pref_language">Язык</string>
@@ -151,7 +151,7 @@
     <string name="category_Sports_Health">Спорт и здоровье</string>
     <string name="category_Time">Часы</string>
     <string name="app_name">F-Droid</string>
-    <string name="banner_updating_repositories">Обновление списков</string>
+    <string name="banner_updating_repositories">Обновление репозиториев</string>
     <string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
     <string name="install_error_unknown">Не удалось установить из-за неизвестной ошибки</string>
     <string name="uninstall_error_unknown">Не удалось удалить из-за неизвестной ошибки</string>
@@ -178,7 +178,7 @@
     <string name="status_download_unknown_size">Загрузка
 \n%2$s из
 \n%1$s</string>
-    <string name="repo_added">Сохранён репозиторий пакетов %1$s.</string>
+    <string name="repo_added">Сохранен репозиторий пакетов %1$s.</string>
     <string name="about_license">Лицензия</string>
     <string name="status_inserting_apps">Сохранение информации о приложениях</string>
     <string name="category_Connectivity">Связь</string>
@@ -186,12 +186,12 @@
     <string name="login_name">Имя пользователя</string>
     <string name="login_password">Пароль</string>
     <string name="repo_edit_credentials">Изменить пароль</string>
-    <string name="repo_error_empty_username">Не задано имя пользователя, учётные данные не изменены</string>
+    <string name="repo_error_empty_username">Не задано имя пользователя, учетные данные не изменены</string>
     <string name="repo_searching_address">Поиск репозитория пакетов в
 \n%1$s</string>
     <string name="wifi_ap">Точка доступа</string>
     <string name="category_Theming">Оформление</string>
-    <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Пожалуйста, создайте отчёт об ошибке!</string>
+    <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Пожалуйста, создайте отчет об ошибке!</string>
     <string name="downloading">Загрузка…</string>
     <string name="menu_email">Написать автору</string>
     <string name="antinonfreeassetslist">Это приложение содержит несвободные компоненты</string>
@@ -215,7 +215,7 @@
     <string name="uninstall_confirm">Удалить приложение?</string>
     <string name="download_error">Загрузка не удалась!</string>
     <string name="perms_new_perm_prefix">Новые:</string>
-    <string name="crash_dialog_title">Произошёл сбой F-Droid</string>
+    <string name="crash_dialog_title">Произошел сбой F-Droid</string>
     <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с
         подробностями, чтобы помочь исправить эту ошибку?
     </string>
@@ -223,7 +223,7 @@
     <string name="useTor">Использовать Tor</string>
     <string name="useTorSummary">Перенаправлять трафик через Tor для повышения конфиденциальности. Необходим Orbot</string>
     <string name="repo_provider">Репозиторий: %s</string>
-    <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включён NFC, приложите устройства друг к другу.</string>
+    <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включен NFC, приложите устройства друг к другу.</string>
     <string name="swap_join_this_hotspot">Помогите своему другу подключиться к вашей точке доступа</string>
     <string name="swap_nfc_title">Нажмите для обмена</string>
     <string name="swap_join_same_wifi_desc">Для обмена с использованием Wi-Fi убедитесь, что вы находитесь в одной сети. Если у вас нет доступа к одной сети, один из вас может создать точку доступа Wi-Fi.</string>
@@ -448,7 +448,7 @@
     <string name="swap_toast_could_not_enable_hotspot">Не удалось включить точку доступа Wi-Fi!</string>
     <string name="repo_exists_add_fingerprint">%1$s уже настроен, это действие добавит новую информацию о ключе.</string>
     <string name="repo_exists_enable">%1$s уже настроен, подтвердите, что вы хотите снова его включить.</string>
-    <string name="repo_exists_and_enabled">%1$s уже настроен и включён.</string>
+    <string name="repo_exists_and_enabled">%1$s уже настроен и включен.</string>
     <string name="repo_delete_to_overwrite">Сначала удалите %1$s, чтобы добавить его с конфликтующим ключом.</string>
     <string name="over_wifi">Через Wi-Fi</string>
     <string name="over_data">Через мобильную сеть</string>
@@ -459,7 +459,7 @@
     <string name="antidisabledalgorithmlist">Это приложение имеет слабую сигнатуру безопасности</string>
     <string name="hide_all_notifications">Скрыть все уведомления</string>
     <string name="hide_all_notifications_summary">Запретить показ всех действий в строке состояния и панели уведомлений.</string>
-    <string name="prompt_to_send_crash_reports">Запрос на отправку отчётов о сбоях</string>
+    <string name="prompt_to_send_crash_reports">Запрос на отправку отчетов о сбоях</string>
     <string name="prompt_to_send_crash_reports_summary">Сбор информации о сбоях и запрос на отправку ее разработчику</string>
     <string name="install_history">История установок</string>
     <string name="install_history_summary">Просмотреть журнал всех установок и удалений</string>
@@ -478,16 +478,16 @@
     <string name="app_size">Размер: %1$s</string>
     <string name="menu_downgrade">Понизить версию</string>
     <string name="scan_removable_storage_toast">Сканирование %s…</string>
-    <string name="scan_removable_storage_summary">Искать репозитории на съёмных носителях, таких как SD-карты и USB-накопители</string>
+    <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
     <string name="app_repository">Репозиторий: %1$s</string>
-    <string name="scan_removable_storage_title">Сканировать съёмное хранилище</string>
+    <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
     <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
     <string name="nearby_splash__request_permission">Попробовать</string>
-    <string name="not_visible_nearby">Режим «Поблизости» не включён</string>
+    <string name="not_visible_nearby">Режим \'Поблизости\' не включен</string>
     <string name="not_visible_nearby_description">Перед обменом с соседними устройствами сделайте ваше устройство видимым.</string>
     <string name="swap_toast_using_path">С помощью %1$s</string>
-    <string name="swap_toast_not_removable_storage">Этот выбор не подходит ни к одному из съёмных носителей, попробуйте еще раз!</string>
-    <string name="swap_toast_find_removeable_storage">Выберите съёмную SD-карту или USB-накопитель</string>
+    <string name="swap_toast_not_removable_storage">Этот выбор не подходит ни к одному из съемных носителей, попробуйте еще раз!</string>
+    <string name="swap_toast_find_removeable_storage">Выберите съемную SD-карту или USB-накопитель</string>
     <string name="main_menu__updates">Обновления</string>
     <string name="menu_translation">Перевод</string>
     <string name="undo">Вернуть</string>
@@ -507,8 +507,8 @@
     <string name="swap_starting">Начинаем…</string>
     <string name="swap_stopping">Останавливаем…</string>
     <string name="disabled">Отключено</string>
-    <string name="swap_error_cannot_start_bluetooth">Не удаётся запустить Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим «Поблизости» был отключён.</string>
+    <string name="swap_error_cannot_start_bluetooth">Не удается запустить Bluetooth!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Поблизости\' был отключен.</string>
     <string name="nearby_splash__document_tree">Поиск репозиториев и зеркал через USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Отображает уведомления об обновлении приложений и репозиториев.</string>
@@ -519,13 +519,13 @@
     <string name="notification_channel_installs_title">Установка приложений</string>
     <string name="menu_show_install_history">Показать историю установок</string>
     <string name="send_to_fdroid_metrics">Отправлять данные об использовании</string>
-    <string name="menu_show_fdroid_metrics_report">Показать статистический отчёт</string>
-    <string name="toast_metrics_in_install_history">Статистический отчёт %s доступен в средстве просмотра истории установок</string>
-    <string name="send_to_fdroid_metrics_summary">Еженедельно отправлять анонимные данные в F-Droid Metrics (работает при включенной опции «Хранить историю установок»)</string>
-    <string name="fdroid_metrics_report">Статистический отчёт %s</string>
+    <string name="menu_show_fdroid_metrics_report">Показать статистический отчет</string>
+    <string name="toast_metrics_in_install_history">Статистический отчет %s доступен в средстве просмотра истории установок</string>
+    <string name="send_to_fdroid_metrics_summary">Еженедельно отправлять анонимные данные в F-Droid Metrics (работает при включенной опции \'Хранить историю установок\')</string>
+    <string name="fdroid_metrics_report">Статистический отчет %s</string>
     <string name="install_history_and_metrics">История установок и статистика</string>
-    <string name="send_fdroid_metrics_json">%s статистический отчёт в виде JSON-файла</string>
-    <string name="send_fdroid_metrics_report">Отправить статистический отчёт %s</string>
+    <string name="send_fdroid_metrics_json">%s статистический отчет в виде JSON-файла</string>
+    <string name="send_fdroid_metrics_report">Отправить статистический отчет %s</string>
     <string name="theme_follow_system">Как в системе</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендуется только для экранов OLED.</string>
     <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
