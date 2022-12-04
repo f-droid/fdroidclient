@@ -141,7 +141,7 @@
     <string name="swap_confirm_connect">¿Quiere obtener aplicaciones desde %1$s ahora\?</string>
     <string name="app_name">F-Droid</string>
     <string name="about_source">Código fuente</string>
-    <string name="app_incompatible">Incompatible</string>
+    <string name="app_incompatible">No compatible</string>
     <string name="links">Enlaces</string>
     <string name="back">Volver</string>
     <string name="bad_fingerprint">Huella digital incorrecta</string>
@@ -283,8 +283,9 @@
     <string name="main_menu__categories">Categorías</string>
     <string name="main_menu__swap_nearby">Cercano</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Ver (%d)</item>
-        <item quantity="other">Ver todas (%d)</item>
+        <item quantity="one">Ver %d</item>
+        <item quantity="many">Ver todo %d</item>
+        <item quantity="other">Ver todo %d</item>
     </plurals>
     <string name="notification_title_single_update_available">Actualización disponible</string>
     <string name="notification_title_single_ready_to_install">Listo para instalar</string>
@@ -315,8 +316,9 @@
     <string name="preference_manage_installed_apps">Gestionar las aplicaciones instaladas</string>
     <string name="tts_category_name">Categoría %1$s</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Ver la única aplicación en la %2$s categoría</item>
-        <item quantity="other">Ver todas %1$d aplicaciones en la %2$s categoría</item>
+        <item quantity="one">Ver la aplicación %1$d en la categoría %2$s</item>
+        <item quantity="many">Ver todas las %1$d aplicaciones de la categoría %2$s</item>
+        <item quantity="other">Ver todas las %1$d aplicaciones de la categoría %2$s</item>
     </plurals>
     <string name="app__install_downloaded_update">Actualizar</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
@@ -325,16 +327,18 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descargar la actualización para %1$d app.</item>
-        <item quantity="other">Descargar actualizaciones para %1$d apps.</item>
+        <item quantity="one">Descargar la actualización para %1$d aplicación.</item>
+        <item quantity="many">Descargar las actualizaciones para %1$d aplicaciones.</item>
+        <item quantity="other">Descargar las actualizaciones para %1$d aplicaciones.</item>
     </plurals>
     <string name="details_new_in_version">Novedades en la versión %s</string>
     <string name="antifeatureswarning">Esta aplicación tiene características que podrían no gustarle.</string>
     <string name="antifeatures">Características controvertidas</string>
     <string name="details_last_updated_today">Actualizada hoy</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Actualizada ayer</item>
-        <item quantity="other">Actualizada hace %1$d días</item>
+        <item quantity="one">Actualizado hace %1$d día</item>
+        <item quantity="many">Actualizado hace %1$d días</item>
+        <item quantity="other">Actualizado hace %1$d días</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s se ha instalado</string>
     <string name="nearby_splash__download_apps_from_people_nearby">¿No tiene Internet\? ¡Descargue aplicaciones de gente cercana!</string>
@@ -354,26 +358,32 @@
     <string name="menu_license">Licencia: %s</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d más…</item>
-        <item quantity="other">+%1$d más…</item>
+        <item quantity="many">+%1$d muchos más…</item>
+        <item quantity="other">+%1$d muchos más…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d actualización</item>
+        <item quantity="many">%1$d actualizaciones</item>
         <item quantity="other">%1$d actualizaciones</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d aplicación instalada</item>
-        <item quantity="other">%1$d aplicaciones instaladas</item>
+        <item quantity="one">%1$d Aplicación instalada</item>
+        <item quantity="many">%1$d Aplicaciones instaladas</item>
+        <item quantity="other">%1$d Aplicaciones instaladas</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Actualizado hace una semana</item>
+        <item quantity="one">Actualizado hace %1$d semana</item>
+        <item quantity="many">Actualizado hace %1$d semanas</item>
         <item quantity="other">Actualizado hace %1$d semanas</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Actualizado hace un mes</item>
-        <item quantity="other">Actualizado hace %1$d meses</item>
+        <item quantity="one">Actualizado hace %1$d mes</item>
+        <item quantity="many">Actualizado hace %1$d varios meses</item>
+        <item quantity="other">Actualizado hace %1$d varios meses</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Actualizado hace un año</item>
+        <item quantity="one">Actualizado hace %1$d año</item>
+        <item quantity="many">Actualizado hace %1$d años</item>
         <item quantity="other">Actualizado hace %1$d años</item>
     </plurals>
     <string name="by_author_format">por %s</string>
