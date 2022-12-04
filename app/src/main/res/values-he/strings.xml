@@ -329,10 +329,10 @@
     <string name="keep_year">שנה</string>
     <string name="keep_forever">תמיד</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">עוד +%1$d…</item>
-        <item quantity="two">עוד +%1$d…</item>
-        <item quantity="many">עוד +%1$d…</item>
-        <item quantity="other">עוד +%1$d…</item>
+        <item quantity="one">עוד %1$d…</item>
+        <item quantity="two">עוד %1$d…</item>
+        <item quantity="many">עוד %1$d…</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="notification_title_single_ready_to_install">מוכן להתקנה</string>
     <string name="notification_title_single_ready_to_install_update">עדכון מוכן להתקנה</string>
