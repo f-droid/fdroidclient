@@ -536,4 +536,5 @@
     <string name="antinonfreenet">Servicii de rețea ne-libere</string>
     <string name="antiothers">Alte Anti-features</string>
     <string name="antinsfw">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
+    <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
 </resources>
