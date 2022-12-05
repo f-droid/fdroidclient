@@ -528,4 +528,5 @@
     <string name="share_apk_error">செயலி கோப்பைப் பகிர முடியவில்லை</string>
     <string name="antiothers">பிற எதிரம்சங்கள்</string>
     <string name="antinsfw">தெரியக்கூடா அ பொது கவனத்திற்குக் கொண்டுவரக்கூடா உள்ளடக்கங்களை இச்செயலி கொண்டுள்ளது</string>
+    <string name="menu_release_channel_beta">பீட்டா புதுப்பிப்புகளை அனுமதிக்கவும்</string>
 </resources>
