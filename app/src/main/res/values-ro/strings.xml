@@ -297,7 +297,7 @@
     <string name="antifeatures">Caracteristici negative</string>
     <string name="antifeatureswarning">Această aplicație are caracteristici ce ar putea să nu vă placă.</string>
     <string name="details_new_in_version">Nou în versiunea %s</string>
-    <string name="preference_manage_installed_apps">gestionează aplicațiile instalate</string>
+    <string name="preference_manage_installed_apps">Gestionează aplicațiile instalate</string>
     <string name="preference_category__my_apps">Aplicațiile mele</string>
     <string name="categories__empty_state__no_categories">Nici o categorie de arătat</string>
     <string name="latest__empty_state__no_enabled_repos">Odată ce ai activat și actualizat un depozit, cele mai noi aplicații ar trebui să apară aici</string>
