@@ -5,7 +5,7 @@
     <string name="version">Έκδοση</string>
     <string name="delete">Διαγραφή</string>
     <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
-    <string name="cache_downloaded">Διατήρηση των εφαρμογών προσωρινά αποθηκευμένες</string>
+    <string name="cache_downloaded">Διατήρηση προσωρινά αποθηκευμένων εφαρμογών</string>
     <string name="updates">Ενημερώσεις</string>
     <string name="other">Άλλο</string>
     <string name="update_interval">Συχνότητα ενημέρωσης</string>
@@ -125,12 +125,12 @@
     <string name="next">Επόμενο</string>
     <string name="skip">Παράβλεψη</string>
     <string name="proxy">Διακομιστής μεσολάβησης</string>
-    <string name="enable_proxy_title">Ενεργοποίηση διακομιστή μεσολάβησης HTTP</string>
+    <string name="enable_proxy_title">Ενεργοποίηση μεσολαβητή HTTP</string>
     <string name="enable_proxy_summary">Ρύθμιση διακομιστή μεσολάβησης HTTP για όλες τις αιτήσεις δικτύου</string>
     <string name="proxy_host">Διακομιστής μεσολάβησης</string>
-    <string name="proxy_host_summary">Ρυθμίστε το όνομα του διακομιστή μεσολάβησης (π.χ. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Το όνομα του διακομιστή μεσολάβησης σας (π.χ. 127.0.0.1)</string>
     <string name="proxy_port">Θύρα διακομιστή μεσολάβησης</string>
-    <string name="proxy_port_summary">Αριθμός θύρας του διακομιστή σας μεσολάβησης (π.χ. 8118)</string>
+    <string name="proxy_port_summary">Αριθμός θύρας του διακομιστή μεσολάβησης σας (π.χ. 8118)</string>
     <string name="status_download_unknown_size">Λήψη
 \n%2$s από
 \n%1$s</string>
@@ -474,7 +474,7 @@
     <string name="app_repository">Αποθετήριο: %1$s</string>
     <string name="scan_removable_storage_title">Σάρωση αφαιρούμενου χώρου αποθήκευσης</string>
     <string name="scan_removable_storage_toast">Σάρωση %s…</string>
-    <string name="scan_removable_storage_summary">Αναζήτηση αποθετηρίου σε αφαιρούμενα μέσα αποθήκευσης όπως κάρτες SD και φλασάκια USB</string>
+    <string name="scan_removable_storage_summary">Αναζήτηση αποθετηρίου σε αφαιρούμενα μέσα αποθήκευσης όπως κάρτες SD και ράβδους αποθήκευσης USB</string>
     <string name="menu_translation">Μετάφραση</string>
     <string name="main_menu__updates">Ενημερώσεις</string>
     <string name="nearby_splash__read_external_storage">Αναζήτηση κάρτας SD για αποθετήρια και καθρέφτες.</string>
