@@ -1,18 +1,13 @@
-F-Droid es un catálogo instalable de aplicaciones de software libre para Android. 
-La aplicación cliente de F-Droid facilita la navegación, la instalación 
-y el seguimiento de las actualizaciones en tu dispositivo.
+F-Droid es un catálogo instalable de aplicaciones de software libre para Android. La aplicación de cliente F-Droid facilita la navegación, la instalación y el seguimiento de las actualizaciones en su dispositivo.
 
-Se conecta a cualquier repositorio compatible con F-Droid. El repositorio predeterminado 
-está alojado en f-droid.org, que contiene solamente, de buena fe, software libre.
+Se conecta a cualquier repositorio compatible con F-Droid. El repositorio predeterminado está alojado en f-droid.org, que contiene solo software libre de buena fe.
 
-Android en sí mismo es abierto en el sentido de que permite instalar aplicaciones 
-desde cualquier lugar que desee, pero hay muchas buenas razones para usar 
-F-Droid como su gestor de aplicaciones de software libre:
+Android en sí mismo es abierto en el sentido de que puede instalar APK desde cualquier lugar que desee, pero hay muchas buenas razones para usar F-Droid como su administrador de aplicaciones de software libre:
 
-* Recibir notificaciones cuando hay actualizaciones disponibles 
-* Opcionalmente descargar e instalar actualizaciones automáticamente 
-* Llevar un seguimiento de versiones antiguas o betas 
-* Filtrar aplicaciones que no son compatibles con el dispositivo 
-* Encontrar aplicaciones a través de categorías y búsqueda de descripciones 
-* Acceso a URLs asociadas para donaciones, código fuente, etc. 
-* Mantener la seguridad comprobando las firmas del índice del repo y las funciones «hash» de los ejecutables APK
+* Reciba notificaciones cuando haya actualizaciones disponibles
+* Opcionalmente, descargue e instale actualizaciones automáticamente
+* Realice un seguimiento de las versiones anteriores y beta
+* Filtrar aplicaciones incompatibles con el dispositivo
+* Encuentra aplicaciones a través de categorías y descripciones que se pueden buscar
+* Acceda a URL asociadas para donaciones, código fuente, etc.
+* Manténgase seguro al verificar las firmas del índice de repositorios y los hashes de APK
