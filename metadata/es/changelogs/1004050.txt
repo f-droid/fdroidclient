@@ -1,0 +1,13 @@
+* Renovación de la lista de "Versiones" y muchas otras mejoras en la interfaz, gracias al nuevo colaborador @wsdfhjxc
+
+* Se corrigió la navegación del teclado/D-pad, gracias al nuevo colaborador @doeffinger
+
+* Mostrar "Abrir" cuando el soporte esté instalado y visible
+
+* Se agregó Compartir a "Aplicaciones instaladas" para exportar la lista CSV
+
+* Se agregó la lista de APK a la página de índice HTML
+
+* Vuelva a intentar la descarga del índice
+
+* Se corrigió "Enviar F-Droid a través de Bluetooth"

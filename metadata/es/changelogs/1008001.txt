@@ -1,0 +1,4 @@
+* Admite la configuración de permisos de Android 10 para dejar de mostrar mensajes de fuentes desconocidas
+* El teclado se abre al final de la búsqueda
+* Sincronización de traducciones de Android
+* HTTPS forzado en repositorios comunes (GitLab, GitHub, Amazon)

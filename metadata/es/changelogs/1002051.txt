@@ -1,0 +1,17 @@
+* Truncar o borrar automáticamente la memoria caché cuando la memoria es baja
+
+* Rendimiento mejorado en dispositivos con poca memoria
+
+* Todas las descargas respetan la política de "Solo Wi-Fi"
+
+* Uso de memoria reducido cuando la memoria es baja
+
+* Agregue espejos personalizados a cada repositorio a través de enlaces, códigos QR, etc.
+
+* Selección de espejo automática mejorada
+
+* Muchas correcciones y adiciones de intercambio directo
+
+* Causa fija para notificaciones de actualizaciones recurrentes (#1271)
+
+* F-Droid reconoce las URL nocturnas de F-Droid de GitLab

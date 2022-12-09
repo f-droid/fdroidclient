@@ -1,0 +1,9 @@
+* Permiso de configuración de Android 10 para fuentes desconocidas #1833
+* Apoyarte «permisos divididos»
+* Barra discreta arreglada en versiones recientes de Android (gracias a @dkanada)
+* Regla para respaldar depósitos
+* El teclado se abre al final de la búsqueda
+* Synchronisation de traduction Android
+* HTTPS forzado en dominios (GitLab, GitHub, Amazon)
+* Onda estándar en los detalles de la aplicación
+* Mostrar ícono predeterminado para aplicaciones sin ícono

@@ -1,0 +1,7 @@
+* Rediseño importante de la interfaz, para prepararse para la reescritura de las agallas.
+* Mostrar "deshacer" después de eliminar elementos de la pestaña Actualizaciones (¡gracias @Hocuri!)
+* Solucionados problemas de visualización de la "Última" por mala gestión de zonas horarias #1757
+* Ignora bloqueos sin importancia en servicios en segundo plano
+* Intercambio cercano revisado usando dispositivo AP
+* Agregar nuevas respuestas de pánico
+* Las unidades USB OTG se pueden usar en repositorios

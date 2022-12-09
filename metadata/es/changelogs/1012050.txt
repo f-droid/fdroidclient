@@ -1,7 +1,13 @@
-* La descripción de la aplicación respeta la lista en la Configuración de Idioma de Android
-* La pestaña Lo último muestra las aplicaciones basadas en la Configuracion de Idioma, ordenando las nuevas primero(@TheLastProject@IzzySoft)
-* Búsqueda mejorada(@Tvax@gcbrown76)
-* Limpieza de caché confiable
-* Programa de manera eficiente la limpieza de caché(@Isira-Seneviratne)
-* Revisión de análisis de URLs de repositorios para agregar repositorios confiables(@projectgus)
-* Telemetria F-droid opcional
+*La descripción del idioma de la aplicación respeta completamente la lista en la configuración de idioma de Android
+
+*La última pestaña muestra las aplicaciones según la configuración de idioma, ordenadas por las más recientes (@TheLastProject @IzzySoft)
+
+*Los resultados de búsqueda han mejorado mucho (@Tvax @gcbrown76)
+
+*La limpieza de caché es más confiable
+
+*El programa de limpieza de caché es efectivo(@Isira-Seneviratne)
+
+*Dirección web de análisis de repositorio revisada… (@projectgus)
+
+*Métrica
