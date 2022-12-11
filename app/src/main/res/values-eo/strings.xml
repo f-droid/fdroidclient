@@ -539,4 +539,5 @@
     <string name="antiknownvuln">Konata sekureca vundeblo</string>
     <string name="antiothers">Aliaj fiebloj</string>
     <string name="antinsfw">Tiu ĉi aplikaĵo liveras enhavon, kiu ne estas taŭga por rigardi publike</string>
+    <string name="menu_release_channel_beta">Ĝisdatigi al beta-versioj</string>
 </resources>
