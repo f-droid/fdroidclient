@@ -57,6 +57,7 @@ import org.fdroid.database.Repository;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.ContentProviderMigrator;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
@@ -414,6 +415,17 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         if (Preferences.get().isScanRemovableStorageEnabled()) {
             SDCardScannerService.scan(this);
         }
+
+        // Migrate repos from old content providers to new Room-based DB.
+        // Added end of 2022 for alphas, can be removed after sufficient time has passed.
+        Utils.runOffUiThread(() -> {
+            ContentProviderMigrator migrator = ContentProviderMigrator.INSTANCE;
+            if (migrator.needsMigration(this)) {
+                migrator.migrateOldRepos(this, db);
+                migrator.removeOldDb(this);
+                UpdateService.forceUpdateRepo(this);
+            }
+        });
     }
 
     /**

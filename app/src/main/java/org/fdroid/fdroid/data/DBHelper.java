@@ -81,6 +81,16 @@ public class DBHelper {
         }
     }
 
+    /**
+     * Removes all index data related to apps from the DB.
+     * Leaves repositories, their preferences as well as app preferences in place.
+     */
+    @AnyThread
+    public static void resetTransient(Context context) {
+        FDroidDatabase db = getDb(context);
+        Utils.runOffUiThread(() -> db.getAppDao().clearAll());
+    }
+
     @AnyThread
     public static void resetRepos(Context context) {
         FDroidDatabase db = getDb(context);

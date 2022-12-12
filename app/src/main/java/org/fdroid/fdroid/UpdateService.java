@@ -406,11 +406,7 @@ public class UpdateService extends JobIntentService {
                 }
             } else if ((manualUpdate || forcedUpdate) && fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "manually requested or forced update");
-                if (forcedUpdate) {
-                    DBHelper.resetRepos(this);
-                    // TODO check if we still need something like this:
-                    // InstalledAppProviderService.compareToPackageManager(this);
-                }
+                if (forcedUpdate) DBHelper.resetTransient(this);
             } else if (!fdroidPrefs.isBackgroundDownloadAllowed() && !fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
                 return;
