@@ -209,6 +209,11 @@ internal class VersionTest : DbTest() {
         appPrefs = appPrefs.toggleIgnoreAllUpdates()
         appPrefsDao.update(appPrefs)
         assertEquals(1, versionDao.getVersions(listOf(packageName)).size)
+
+        // clear all apps and their versions
+        appDao.clearAll()
+        assertEquals(0, versionDao.countAppVersions())
+        assertEquals(0, versionDao.countVersionedStrings())
     }
 
     @Test

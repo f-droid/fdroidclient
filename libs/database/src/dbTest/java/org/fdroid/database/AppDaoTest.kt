@@ -54,6 +54,12 @@ internal class AppDaoTest : AppTest() {
 
         // if repo is not given, app from repo with highest weight is returned
         assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // clear all apps
+        appDao.clearAll()
+        assertEquals(0, appDao.countApps())
+        assertEquals(0, appDao.countLocalizedFiles())
+        assertEquals(0, appDao.countLocalizedFileLists())
     }
 
     @Test
