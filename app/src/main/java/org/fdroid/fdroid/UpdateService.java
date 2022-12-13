@@ -76,7 +76,6 @@ public class UpdateService extends JobIntentService {
     public static final String LOCAL_ACTION_STATUS = "status";
 
     public static final String EXTRA_MESSAGE = "msg";
-    public static final String EXTRA_REPO_ID = "repoId";
     public static final String EXTRA_REPO_FINGERPRINT = "fingerprint";
     public static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
@@ -379,7 +378,6 @@ public class UpdateService extends JobIntentService {
         final long startTime = System.currentTimeMillis();
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
         boolean forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
-        long repoId = intent.getLongExtra(EXTRA_REPO_ID, -1);
         String fingerprint = intent.getStringExtra(EXTRA_REPO_FINGERPRINT);
         String address = intent.getDataString();
 
@@ -427,14 +425,13 @@ public class UpdateService extends JobIntentService {
             int errorRepos = 0;
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
             boolean changes = false;
-            boolean singleRepoUpdate = !TextUtils.isEmpty(address) || repoId > 0;
+            boolean singleRepoUpdate = !TextUtils.isEmpty(address);
             for (final Repository repo : repos) {
                 if (!repo.getEnabled()) continue;
-                if (singleRepoUpdate && !repo.getAddress().equals(address) && repo.getRepoId() != repoId) {
+                if (singleRepoUpdate && !repo.getAddress().equals(address)) {
                     unchangedRepos++;
                     continue;
                 }
-                // TODO reject update if repo.getLastUpdated() is too recent
 
                 sendStatus(this, STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.getAddress()));
 
