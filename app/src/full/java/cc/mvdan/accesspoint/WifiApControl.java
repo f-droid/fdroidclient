@@ -16,14 +16,13 @@
 
 package cc.mvdan.accesspoint;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
+
+import org.fdroid.fdroid.BuildConfig;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -35,7 +34,6 @@ import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -67,21 +65,28 @@ final public class WifiApControl {
 	private static Method setWifiApEnabledMethod;
 
 	static {
-		for (Method method : WifiManager.class.getDeclaredMethods()) {
-			switch (method.getName()) {
-			case "getWifiApConfiguration":
-				getWifiApConfigurationMethod = method;
-				break;
-			case "getWifiApState":
-				getWifiApStateMethod = method;
-				break;
-			case "isWifiApEnabled":
-				isWifiApEnabledMethod = method;
-				break;
-			case "setWifiApEnabled":
-				setWifiApEnabledMethod = method;
-				break;
+		try {
+			for (Method method : WifiManager.class.getDeclaredMethods()) {
+				switch (method.getName()) {
+					case "getWifiApConfiguration":
+						getWifiApConfigurationMethod = method;
+						break;
+					case "getWifiApState":
+						getWifiApStateMethod = method;
+						break;
+					case "isWifiApEnabled":
+						isWifiApEnabledMethod = method;
+						break;
+					case "setWifiApEnabled":
+						setWifiApEnabledMethod = method;
+						break;
+				}
 			}
+		} catch (Exception e) {
+			if (BuildConfig.DEBUG) {
+				throw e;
+			}
+			Log.e(TAG, "WifiManager failed to init", e);
 		}
 	}
 
@@ -134,7 +139,15 @@ final public class WifiApControl {
 				Log.e(TAG, "6.0 or later, but haven't been granted WRITE_SETTINGS!");
 				return null;
 			}
-			instance = new WifiApControl(context);
+			try {
+				instance = new WifiApControl(context);
+				instance.isEnabled();  // make sure this instance works
+			} catch (Exception e) {
+				if (BuildConfig.DEBUG) {
+					throw e;
+				}
+				Log.e(TAG, "WifiManager failed to init", e);
+			}
 		}
 		return instance;
 	}

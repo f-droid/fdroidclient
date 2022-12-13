@@ -261,13 +261,7 @@ public class WifiStateChangeService extends Worker {
             }
             FDroidApp.bssid = wifiInfo.getBSSID();
         } else {
-            WifiApControl wifiApControl = null;
-            try {
-                wifiApControl = WifiApControl.getInstance(context);
-                wifiApControl.isEnabled();
-            } catch (NullPointerException e) {
-                wifiApControl = null;
-            }
+            WifiApControl wifiApControl = WifiApControl.getInstance(context);
             Utils.debugLog(TAG, "WifiApControl: " + wifiApControl);
             if (wifiApControl == null && FDroidApp.ipAddressString != null) {
                 wifiInfo = wifiManager.getConnectionInfo();
