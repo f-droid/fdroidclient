@@ -25,6 +25,9 @@ import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.Utils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -67,21 +70,28 @@ final public class WifiApControl {
 	private static Method setWifiApEnabledMethod;
 
 	static {
-		for (Method method : WifiManager.class.getDeclaredMethods()) {
-			switch (method.getName()) {
-			case "getWifiApConfiguration":
-				getWifiApConfigurationMethod = method;
-				break;
-			case "getWifiApState":
-				getWifiApStateMethod = method;
-				break;
-			case "isWifiApEnabled":
-				isWifiApEnabledMethod = method;
-				break;
-			case "setWifiApEnabled":
-				setWifiApEnabledMethod = method;
-				break;
+		try {
+			for (Method method : WifiManager.class.getDeclaredMethods()) {
+				switch (method.getName()) {
+					case "getWifiApConfiguration":
+						getWifiApConfigurationMethod = method;
+						break;
+					case "getWifiApState":
+						getWifiApStateMethod = method;
+						break;
+					case "isWifiApEnabled":
+						isWifiApEnabledMethod = method;
+						break;
+					case "setWifiApEnabled":
+						setWifiApEnabledMethod = method;
+						break;
+				}
 			}
+		} catch (Exception e) {
+			if (BuildConfig.DEBUG) {
+				throw e;
+			}
+			e.printStackTrace();
 		}
 	}
 
@@ -134,7 +144,15 @@ final public class WifiApControl {
 				Log.e(TAG, "6.0 or later, but haven't been granted WRITE_SETTINGS!");
 				return null;
 			}
-			instance = new WifiApControl(context);
+			try {
+				instance = new WifiApControl(context);
+				instance.isEnabled();  // make sure this instance works
+			} catch (Exception e) {
+				if (BuildConfig.DEBUG) {
+					throw e;
+				}
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}
@@ -176,11 +194,24 @@ final public class WifiApControl {
 		return FALLBACK_DEVICE;
 	}
 
-	private static byte[] macAddressToByteArray(String macString) {
-		String[] mac = macString.split("[:\\s-]");
-		byte[] macAddress = new byte[6];
-		for (int i = 0; i < mac.length; i++) {
-			macAddress[i] = Integer.decode("0x" + mac[i]).byteValue();
+	/**
+	 * On some buggy systems, {@link android.net.wifi.WifiInfo()#getMacAddress()}
+	 * will return the MAC with a leading "0x".  Other systems might have other
+	 * bugs, so this double-checks the lengths.
+	 */
+	protected static byte[] macAddressToByteArray(String macString) {
+		String[] mac = macString.trim().replaceAll("[^A-Fa-fx0-9]+", ":").split(":");
+		byte[] macAddress = new byte[]{0, 0, 0, 0, 0, 0};
+		int length = 6;
+		if (mac.length < length) {
+			length = mac.length;
+		}
+		for (int i = 0; i < length; i++) {
+			try {
+				macAddress[i] = Integer.decode("0x" + mac[i]).byteValue();
+			} catch (NumberFormatException e) {
+				Utils.debugLog(TAG, e.getMessage());
+			}
 		}
 		return macAddress;
 	}
