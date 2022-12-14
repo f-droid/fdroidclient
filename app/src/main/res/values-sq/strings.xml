@@ -21,7 +21,7 @@
     <string name="more">Më tepër</string>
     <string name="less">Më pak</string>
     <string name="back">Mbrapsht</string>
-    <string name="cancel">Anulo</string>
+    <string name="cancel">Anuloje</string>
     <string name="enable">Aktivizoje</string>
     <string name="overwrite">Mbishkruaje</string>
     <string name="bluetooth_activity_not_found">S’u gjet ndonjë mënyrë dërgimi me Bluetooth, zgjidhni një!</string>
@@ -527,4 +527,5 @@
     <string name="has_disallow_install_unknown_sources">Burimet e panjohura, që përfshijnë depo të reja, s’mund të shtohen nga ky përdorues</string>
     <string name="antinosource">Kod Burim Jo Më i Passhëm</string>
     <string name="antinsfw">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>
+    <string name="menu_release_channel_beta">Lejo Përditësime Beta</string>
 </resources>
