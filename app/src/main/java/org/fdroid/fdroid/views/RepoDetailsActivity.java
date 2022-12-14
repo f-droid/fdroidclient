@@ -545,13 +545,15 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
             final String itemMirror = mirror.getBaseUrl();
             boolean enabled = true;
-            for (String disabled : repo.getDisabledMirrors()) {
+            for (String disabled : disabledMirrors) {
                 if (TextUtils.equals(itemMirror, disabled)) {
                     enabled = false;
                     break;
                 }
             }
             CompoundButton switchView = holder.view.findViewById(R.id.repo_switch);
+            // reset recycled CheckedChangeListener before checking to avoid bugs
+            switchView.setOnCheckedChangeListener(null);
             switchView.setChecked(enabled);
             switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -567,10 +569,11 @@ public class RepoDetailsActivity extends AppCompatActivity {
                     if (disabledMirrors.size() == totalMirrors) {
                         // if all mirrors are disabled, re-enable canonical repo as mirror
                         disabledMirrors.remove(repo.getAddress());
-                        adapterToNotify.notifyItemChanged(0);
+                        adapterToNotify.notifyDataSetChanged();
                     }
+                    ArrayList<String> toDisableMirrors = new ArrayList<>(disabledMirrors);
                     runOffUiThread(() -> {
-                        repositoryDao.updateDisabledMirrors(repo.getRepoId(), new ArrayList<>(disabledMirrors));
+                        repositoryDao.updateDisabledMirrors(repo.getRepoId(), toDisableMirrors);
                         return true;
                     });
                 }
