@@ -144,15 +144,6 @@ final public class WifiApControl {
 		return FALLBACK_DEVICE;
 	}
 
-	private static byte[] macAddressToByteArray(String macString) {
-		String[] mac = macString.split("[:\\s-]");
-		byte[] macAddress = new byte[6];
-		for (int i = 0; i < mac.length; i++) {
-			macAddress[i] = Integer.decode("0x" + mac[i]).byteValue();
-		}
-		return macAddress;
-	}
-
 	private static Object invokeQuietly(Method method, Object receiver, Object... args) {
 		try {
 			return method.invoke(receiver, args);
