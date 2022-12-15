@@ -5,12 +5,12 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_PERMISSIONS
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build.VERSION.SDK_INT
+import androidx.core.content.pm.PackageInfoCompat
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.encodeToStream
 import org.fdroid.index.IndexCreator
 import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexUtils.getPackageSignature
-import org.fdroid.index.IndexUtils.getVersionCode
 import java.io.File
 import java.io.IOException
 
@@ -85,8 +85,10 @@ public class IndexV1Creator(
         val signer = getPackageSignature(packageInfo.signatures[0].toByteArray())
         return PackageV1(
             packageName = packageInfo.packageName,
-            versionCode = packageInfo.getVersionCode(),
-            versionName = packageInfo.versionName ?: packageInfo.getVersionCode().toString(),
+            versionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
+            versionName = packageInfo.versionName ?: PackageInfoCompat.getLongVersionCode(
+                packageInfo
+            ).toString(),
             apkName = apkName,
             hash = hash,
             hashType = "sha256",

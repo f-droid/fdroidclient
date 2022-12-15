@@ -2,8 +2,8 @@ package org.fdroid
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
+import androidx.core.content.pm.PackageInfoCompat
 import org.fdroid.index.IndexUtils.getPackageSignature
-import org.fdroid.index.IndexUtils.getVersionCode
 import org.fdroid.index.v2.PackageVersion
 
 public interface PackagePreference {
@@ -40,7 +40,7 @@ public class UpdateChecker(
             @Suppress("DEPRECATION")
             packageInfo.signatures.map { getPackageSignature(it.toByteArray()) }.toSet()
         },
-        installedVersionCode = packageInfo.getVersionCode(),
+        installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
         allowedReleaseChannels = releaseChannels,
         preferencesGetter = preferencesGetter,
     )

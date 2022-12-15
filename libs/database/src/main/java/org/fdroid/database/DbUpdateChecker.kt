@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
-import android.os.Build
+import androidx.core.content.pm.PackageInfoCompat
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.PackagePreference
@@ -42,7 +42,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
             val versions = versionsByPackage[packageName] ?: return@forEach // continue
             val version = getVersion(versions, packageName, packageInfo, null, releaseChannels)
             if (version != null) {
-                val versionCode = packageInfo.getVersionCode()
+                val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
                 val app = getUpdatableApp(version, versionCode)
                 if (app != null) updatableApps.add(app)
             }
@@ -125,14 +125,5 @@ public class DbUpdateChecker @JvmOverloads constructor(
             summary = appOverviewItem.summary,
             localizedIcon = appOverviewItem.localizedIcon,
         )
-    }
-}
-
-internal fun PackageInfo.getVersionCode(): Long {
-    return if (Build.VERSION.SDK_INT >= 28) {
-        longVersionCode
-    } else {
-        @Suppress("DEPRECATION") // we use the new one above, if available
-        versionCode.toLong()
     }
 }

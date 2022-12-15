@@ -4,6 +4,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import androidx.annotation.VisibleForTesting
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData
@@ -396,7 +397,7 @@ internal interface AppDaoInt : AppDao {
             val packageInfo = installedPackages[item.packageName]
             if (packageInfo == null) item else item.copy(
                 installedVersionName = packageInfo.versionName,
-                installedVersionCode = packageInfo.getVersionCode(),
+                installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
             )
         }
     }

@@ -8,7 +8,7 @@ import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.system.Os.symlink
-import org.fdroid.index.IndexUtils.getVersionCode
+import androidx.core.content.pm.PackageInfoCompat
 import org.fdroid.index.IndexUtils.toHex
 import java.io.File
 import java.io.IOException
@@ -50,7 +50,7 @@ public abstract class IndexCreator<T>(
      */
     protected fun copyIconToRepo(packageInfo: PackageInfo): String {
         val packageName = packageInfo.packageName
-        val versionCode = packageInfo.getVersionCode()
+        val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
         val drawable = packageInfo.applicationInfo.loadIcon(packageManager)
         val bitmap: Bitmap
         if (drawable is BitmapDrawable) {
@@ -79,7 +79,7 @@ public abstract class IndexCreator<T>(
      */
     protected fun copyApkToRepo(packageInfo: PackageInfo): File {
         val packageName = packageInfo.packageName
-        val versionCode = packageInfo.getVersionCode()
+        val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
         val apkName = "${packageName}_$versionCode.apk"
         val apkFile = File(repoDir, apkName)
         symlink(packageInfo.applicationInfo.publicSourceDir, apkFile.absolutePath)
