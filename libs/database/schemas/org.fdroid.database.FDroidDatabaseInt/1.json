@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "beaebd71355e07ce5f0500c19d9045fd",
+    "identityHash": "f1f130c0399a294d24dfbff7810f1628",
     "entities": [
       {
         "tableName": "CoreRepository",
@@ -131,7 +131,7 @@
       },
       {
         "tableName": "AntiFeature",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `icon_name` TEXT, `icon_sha256` TEXT, `icon_size` INTEGER, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `icon` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "repoId",
@@ -146,6 +146,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
@@ -156,24 +162,6 @@
             "columnName": "description",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "icon.name",
-            "columnName": "icon_name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "icon.sha256",
-            "columnName": "icon_sha256",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "icon.size",
-            "columnName": "icon_size",
-            "affinity": "INTEGER",
-            "notNull": false
           }
         ],
         "primaryKey": {
@@ -200,7 +188,7 @@
       },
       {
         "tableName": "Category",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `icon_name` TEXT, `icon_sha256` TEXT, `icon_size` INTEGER, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `icon` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "repoId",
@@ -215,6 +203,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
@@ -225,24 +219,6 @@
             "columnName": "description",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "icon.name",
-            "columnName": "icon_name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "icon.sha256",
-            "columnName": "icon_sha256",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "icon.size",
-            "columnName": "icon_size",
-            "affinity": "INTEGER",
-            "notNull": false
           }
         ],
         "primaryKey": {
@@ -269,7 +245,7 @@
       },
       {
         "tableName": "ReleaseChannel",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `icon_name` TEXT, `icon_sha256` TEXT, `icon_size` INTEGER, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `id` TEXT NOT NULL, `icon` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, PRIMARY KEY(`repoId`, `id`), FOREIGN KEY(`repoId`) REFERENCES `CoreRepository`(`repoId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "repoId",
@@ -284,6 +260,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "icon",
+            "columnName": "icon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
@@ -294,24 +276,6 @@
             "columnName": "description",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "icon.name",
-            "columnName": "icon_name",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "icon.sha256",
-            "columnName": "icon_sha256",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "icon.size",
-            "columnName": "icon_size",
-            "affinity": "INTEGER",
-            "notNull": false
           }
         ],
         "primaryKey": {
@@ -666,7 +630,7 @@
       },
       {
         "tableName": "LocalizedFile",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `type` TEXT NOT NULL, `locale` TEXT NOT NULL, `name` TEXT NOT NULL, `sha256` TEXT, `size` INTEGER, PRIMARY KEY(`repoId`, `packageName`, `type`, `locale`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `type` TEXT NOT NULL, `locale` TEXT NOT NULL, `name` TEXT NOT NULL, `sha256` TEXT, `size` INTEGER, `ipfsCidV1` TEXT, PRIMARY KEY(`repoId`, `packageName`, `type`, `locale`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "repoId",
@@ -708,6 +672,12 @@
             "fieldPath": "size",
             "columnName": "size",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ipfsCidV1",
+            "columnName": "ipfsCidV1",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -739,7 +709,7 @@
       },
       {
         "tableName": "LocalizedFileList",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `type` TEXT NOT NULL, `locale` TEXT NOT NULL, `name` TEXT NOT NULL, `sha256` TEXT, `size` INTEGER, PRIMARY KEY(`repoId`, `packageName`, `type`, `locale`, `name`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `type` TEXT NOT NULL, `locale` TEXT NOT NULL, `name` TEXT NOT NULL, `sha256` TEXT, `size` INTEGER, `ipfsCidV1` TEXT, PRIMARY KEY(`repoId`, `packageName`, `type`, `locale`, `name`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "repoId",
@@ -781,6 +751,12 @@
             "fieldPath": "size",
             "columnName": "size",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ipfsCidV1",
+            "columnName": "ipfsCidV1",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -813,7 +789,7 @@
       },
       {
         "tableName": "Version",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `versionId` TEXT NOT NULL, `added` INTEGER NOT NULL, `releaseChannels` TEXT, `antiFeatures` TEXT, `whatsNew` TEXT, `isCompatible` INTEGER NOT NULL, `file_name` TEXT NOT NULL, `file_sha256` TEXT NOT NULL, `file_size` INTEGER, `src_name` TEXT, `src_sha256` TEXT, `src_size` INTEGER, `manifest_versionName` TEXT NOT NULL, `manifest_versionCode` INTEGER NOT NULL, `manifest_maxSdkVersion` INTEGER, `manifest_nativecode` TEXT, `manifest_features` TEXT, `manifest_usesSdk_minSdkVersion` INTEGER, `manifest_usesSdk_targetSdkVersion` INTEGER, `manifest_signer_sha256` TEXT, `manifest_signer_hasMultipleSigners` INTEGER, PRIMARY KEY(`repoId`, `packageName`, `versionId`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, `versionId` TEXT NOT NULL, `added` INTEGER NOT NULL, `releaseChannels` TEXT, `antiFeatures` TEXT, `whatsNew` TEXT, `isCompatible` INTEGER NOT NULL, `file_name` TEXT NOT NULL, `file_sha256` TEXT NOT NULL, `file_size` INTEGER, `file_ipfsCidV1` TEXT, `src_name` TEXT, `src_sha256` TEXT, `src_size` INTEGER, `src_ipfsCidV1` TEXT, `manifest_versionName` TEXT NOT NULL, `manifest_versionCode` INTEGER NOT NULL, `manifest_maxSdkVersion` INTEGER, `manifest_nativecode` TEXT, `manifest_features` TEXT, `manifest_usesSdk_minSdkVersion` INTEGER, `manifest_usesSdk_targetSdkVersion` INTEGER, `manifest_signer_sha256` TEXT, `manifest_signer_hasMultipleSigners` INTEGER, PRIMARY KEY(`repoId`, `packageName`, `versionId`), FOREIGN KEY(`repoId`, `packageName`) REFERENCES `AppMetadata`(`repoId`, `packageName`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "repoId",
@@ -882,6 +858,12 @@
             "notNull": false
           },
           {
+            "fieldPath": "file.ipfsCidV1",
+            "columnName": "file_ipfsCidV1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "src.name",
             "columnName": "src_name",
             "affinity": "TEXT",
@@ -897,6 +879,12 @@
             "fieldPath": "src.size",
             "columnName": "src_size",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "src.ipfsCidV1",
+            "columnName": "src_ipfsCidV1",
+            "affinity": "TEXT",
             "notNull": false
           },
           {
@@ -1094,7 +1082,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'beaebd71355e07ce5f0500c19d9045fd')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f1f130c0399a294d24dfbff7810f1628')"
     ]
   }
 }
