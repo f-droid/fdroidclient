@@ -244,7 +244,7 @@ public class App implements Comparable<App>, Parcelable {
         litecoin = app.getMetadata().getLitecoin();
         flattrID = app.getMetadata().getFlattrID();
         liberapay = app.getMetadata().getLiberapay();
-        openCollective = app.getMetadata().getBitcoin();
+        openCollective = app.getMetadata().getOpenCollective();
         preferredSigner = app.getMetadata().getPreferredSigner();
         added = new Date(app.getMetadata().getAdded());
         lastUpdated = new Date(app.getMetadata().getLastUpdated());
