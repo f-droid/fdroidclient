@@ -4,4 +4,4 @@
 * Ignore les plantages sans importance dans les services d'arrière-plan
 * Révisé l'échange à proximité à l'aide de l'AP de l'appareil
 * Ajouter de nouvelles réponses de panique
-* Les lecteurs USB OTG peut être utilisé en dépots
+* Les lecteurs USB OTG peut être utilisé en dépôts
