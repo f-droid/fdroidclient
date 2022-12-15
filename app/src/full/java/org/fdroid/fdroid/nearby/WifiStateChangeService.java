@@ -346,7 +346,8 @@ public class WifiStateChangeService extends Worker {
                     }
                 }
             }
-        } catch (SocketException e) {
+        } catch (NullPointerException | SocketException e) {
+            // NetworkInterface.getNetworkInterfaces() can throw a NullPointerException internally
             Log.e(TAG, "Could not get ip address", e);
         }
     }
