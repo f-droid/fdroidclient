@@ -99,7 +99,7 @@ public class HttpDownloader constructor(
      * @see [Cookieless cookies](http://lucb1e.com/rp/cookielesscookies)
      */
     @OptIn(DelicateCoroutinesApi::class)
-    @Throws(IOException::class, InterruptedException::class)
+    @Throws(IOException::class, NotFoundException::class, InterruptedException::class)
     override fun download() {
         val headInfo = runBlocking {
             httpManager.head(request, cacheTag) ?: throw IOException()

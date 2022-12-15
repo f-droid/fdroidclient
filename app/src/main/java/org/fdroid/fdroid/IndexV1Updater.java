@@ -42,6 +42,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.download.Downloader;
+import org.fdroid.download.NotFoundException;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
@@ -126,6 +127,9 @@ public class IndexV1Updater extends IndexUpdater {
                 FileUtils.deleteQuietly(destFile);
             }
             throw new IndexUpdater.UpdateException(repo, "Error getting F-Droid index file", e);
+        } catch (NotFoundException e) {
+            // did not find an index
+            return false;
         } catch (InterruptedException e) {
             // ignored if canceled, the local database just won't be updated
         } // TODO is it safe to delete destFile in finally block?

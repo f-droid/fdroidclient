@@ -25,6 +25,7 @@ import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
 import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpMessageBuilder
+import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.Url
 import io.ktor.http.contentLength
@@ -89,6 +90,7 @@ public open class HttpManager @JvmOverloads constructor(
      * This is useful for checking if the repository index has changed before downloading it again.
      * However, due to non-standard ETags on mirrors, change detection is unreliable.
      */
+    @Throws(NotFoundException::class)
     public suspend fun head(request: DownloadRequest, eTag: String? = null): HeadInfo? {
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->
@@ -104,6 +106,7 @@ public open class HttpManager @JvmOverloads constructor(
             }
         } catch (e: ResponseException) {
             log.warn(e) { "Error getting HEAD" }
+            if (e.response.status == NotFound) throw NotFoundException()
             return null
         }
         val contentLength = response.contentLength()
@@ -225,3 +228,10 @@ public open class HttpManager @JvmOverloads constructor(
 }
 
 public class NoResumeException : Exception()
+
+/**
+ * Thrown when a file was not found.
+ * Catching this is useful when checking if a new index version exists
+ * and then falling back to an older version.
+ */
+public class NotFoundException(e: Throwable? = null) : Exception(e)

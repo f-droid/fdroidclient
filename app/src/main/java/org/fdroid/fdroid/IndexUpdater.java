@@ -126,7 +126,8 @@ public class IndexUpdater {
         return hasChanged;
     }
 
-    private Pair<Downloader, File> downloadIndex() throws UpdateException {
+    private Pair<Downloader, File> downloadIndex() throws UpdateException,
+            org.fdroid.download.NotFoundException {
         File destFile = null;
         Downloader downloader = null;
         try {
@@ -161,19 +162,23 @@ public class IndexUpdater {
      * @throws UpdateException All error states will come from here.
      */
     public boolean update() throws UpdateException {
-        final Pair<Downloader, File> pair = downloadIndex();
-        final Downloader downloader = pair.first;
-        final File destFile = pair.second;
-        hasChanged = downloader.hasChanged();
+        try {
+            final Pair<Downloader, File> pair = downloadIndex();
+            final Downloader downloader = pair.first;
+            final File destFile = pair.second;
+            hasChanged = downloader.hasChanged();
 
-        if (hasChanged) {
-            // Don't worry about checking the status code for 200. If it was a
-            // successful download, then we will have a file ready to use:
-            cacheTag = downloader.getCacheTag();
-            processDownloadedFile(destFile);
-            processRepoPushRequests(repoPushRequestList);
+            if (hasChanged) {
+                // Don't worry about checking the status code for 200. If it was a
+                // successful download, then we will have a file ready to use:
+                cacheTag = downloader.getCacheTag();
+                processDownloadedFile(destFile);
+                processRepoPushRequests(repoPushRequestList);
+            }
+            return true;
+        } catch (org.fdroid.download.NotFoundException e) {
+            return false;
         }
-        return true;
     }
 
     private ContentValues repoDetailsToSave;

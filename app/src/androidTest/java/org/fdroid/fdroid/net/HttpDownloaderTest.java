@@ -10,6 +10,7 @@ import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.HttpDownloader;
 import org.fdroid.download.HttpManager;
 import org.fdroid.download.Mirror;
+import org.fdroid.download.NotFoundException;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
@@ -60,7 +61,7 @@ public class HttpDownloaderTest {
     private boolean receivedProgress;
 
     @Test
-    public void downloadUninterruptedTest() throws IOException, InterruptedException {
+    public void downloadUninterruptedTest() throws Exception {
         for (Pair<String, String> pair : URLS) {
             Log.i(TAG, "URL: " + pair.first + pair.second);
             File destFile = File.createTempFile("dl-", "");
@@ -75,7 +76,7 @@ public class HttpDownloaderTest {
     }
 
     @Test
-    public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
+    public void downloadUninterruptedTestWithProgress() throws Exception {
         final CountDownLatch latch = new CountDownLatch(1);
         String path = "index.jar";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.fau.de/fdroid/repo/"));
@@ -95,7 +96,7 @@ public class HttpDownloaderTest {
                 try {
                     httpDownloader.download();
                     latch.countDown();
-                } catch (IOException | InterruptedException e) {
+                } catch (IOException | NotFoundException | InterruptedException e) {
                     e.printStackTrace();
                     fail();
                 }
@@ -109,7 +110,7 @@ public class HttpDownloaderTest {
     }
 
     @Test
-    public void downloadHttpBasicAuth() throws IOException, InterruptedException {
+    public void downloadHttpBasicAuth() throws Exception {
         String path = "myusername/supersecretpassword";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
@@ -122,7 +123,7 @@ public class HttpDownloaderTest {
     }
 
     @Test(expected = IOException.class)
-    public void downloadHttpBasicAuthWrongPassword() throws IOException, InterruptedException {
+    public void downloadHttpBasicAuthWrongPassword() throws Exception {
         String path = "myusername/supersecretpassword";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
@@ -135,7 +136,7 @@ public class HttpDownloaderTest {
     }
 
     @Test(expected = IOException.class)
-    public void downloadHttpBasicAuthWrongUsername() throws IOException, InterruptedException {
+    public void downloadHttpBasicAuthWrongUsername() throws Exception {
         String path = "myusername/supersecretpassword";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://httpbin.org/basic-auth/"));
         File destFile = File.createTempFile("dl-", "");
@@ -148,7 +149,7 @@ public class HttpDownloaderTest {
     }
 
     @Test
-    public void downloadThenCancel() throws IOException, InterruptedException {
+    public void downloadThenCancel() throws Exception {
         final CountDownLatch latch = new CountDownLatch(2);
         String path = "index.jar";
         List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://f-droid.org/repo/"));
@@ -168,7 +169,7 @@ public class HttpDownloaderTest {
                 try {
                     httpDownloader.download();
                     fail();
-                } catch (IOException e) {
+                } catch (IOException | NotFoundException e) {
                     e.printStackTrace();
                     fail();
                 } catch (InterruptedException e) {
