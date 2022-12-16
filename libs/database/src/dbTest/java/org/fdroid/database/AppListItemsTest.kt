@@ -65,7 +65,8 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
-            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2), apps[0].installedVersionCode)
+            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
+                apps[0].installedVersionCode)
             assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
@@ -118,7 +119,8 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "A", "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
-            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2), apps[0].installedVersionCode)
+            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
+                apps[0].installedVersionCode)
             assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
