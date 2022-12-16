@@ -527,4 +527,5 @@
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiothers">Outras características indesejadas</string>
     <string name="antinsfw">Esta aplicação contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
 </resources>

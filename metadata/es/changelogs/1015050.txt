@@ -1,0 +1,5 @@
+* Revisión completa de cómo funcionan las descargas para mejorar el rendimiento y el soporte.
+
+* Las capturas de pantalla y las imágenes ahora se descargan de espejos.
+
+* Reducción de una fuga de datos con sesiones TLS

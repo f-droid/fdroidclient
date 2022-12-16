@@ -1,0 +1,19 @@
+* Botones y actualizaciones de estado más confiables
+
+* Revisión de la configuración, incluidos nuevos controles de uso de datos
+
+* Operación en segundo plano consciente de la batería en Android 5.0 y más reciente
+
+* Compartir elemento de menú para repositorios
+
+* Desactiva los informes de fallas en Configuración
+
+* Instale el visor de historial cuando el registro está habilitado
+
+* Lista de anticaracterísticas en las que se puede hacer clic, agregada NoSourceSince
+
+* Android 4.0 es ahora el mínimo soportado 
+
+* Grandes mejoras para las versiones personalizadas de F-Droid de marca blanca
+
+* Configuración experta para enviar la versión de depuración + UUID en la descarga

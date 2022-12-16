@@ -1,0 +1,17 @@
+* Revisar el menú Compartir para usar opciones integradas como Cercano
+
+* Flujo de trabajo y navegación cercanos mejorados con muchas correcciones de errores
+
+* Mejoras en el diseño de materiales (@proletarius101)
+
+* Las aplicaciones sin iconos de aplicaciones PNG ahora se muestran en la última pestaña (@ashutoshgngwr)
+
+* Mejor administración de íconos con configuraciones limitadas de datos/WiFi
+
+* Admite más escáneres de códigos de barras (@Lugerun)
+
+* Permitir elegir qué AntiFeatures mostrar
+
+* Bloquee la adición de repositorios cuando el administrador del dispositivo no permita "Fuentes desconocidas"
+
+* Eliminar la configuración "Permitir solicitudes de inserción"

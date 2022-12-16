@@ -1,0 +1,12 @@
+* La localización de la descripción de la aplicación ahora respeta las listas de idiomas en Android
+  ajustes de idioma
+
+* La pestaña "Novedades" enumera los resultados según la configuración de idioma
+
+* La pestaña "Novedades" ahora muestra primero los resultados más recientes (@TheLastProject @IzzySoft)
+
+* Modernización del soporte de temas y conexión a temas de Android (@proletarius101)
+
+* Resultados de búsqueda mejorados (@Tvax @gcbrown76)
+
+* Permita que Android realice una programación y limpieza de caché más eficientes en segundo plano (@Isira-Seneviratne)

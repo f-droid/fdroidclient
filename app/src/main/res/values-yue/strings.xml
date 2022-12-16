@@ -517,4 +517,5 @@
     <string name="swap_toast_not_removable_storage">搵唔到即插即用嘅機，請再試過啦！</string>
     <string name="theme_light">白頭浪</string>
     <string name="theme_dark">黑眼睛</string>
+    <string name="menu_release_channel_beta">准用測試版更新</string>
 </resources>

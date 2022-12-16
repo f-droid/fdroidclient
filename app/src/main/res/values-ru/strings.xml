@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Новая версия приложения подписана другим ключом. Для ее установки необходимо удалить старую. Пожалуйста, сделайте это и попробуйте снова. (Учтите, что при удалении приложения все его данные будут потеряны)</string>
-    <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить?</string>
+    <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить\?</string>
     <string name="version">Версия</string>
     <string name="delete">Удалить</string>
     <string name="enable_nfc_send">Включить отправку по NFC…</string>
@@ -548,4 +548,5 @@
     <string name="antiknownvuln">Известная уязвимость</string>
     <string name="antiothers">Прочие анти-функции</string>
     <string name="antinsfw">Это приложение содержит контент, который не следует разглашать или повсеместно демонстрировать</string>
+    <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
 </resources>

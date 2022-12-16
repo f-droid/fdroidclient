@@ -555,4 +555,5 @@
     <string name="antiupstreamnonfree">A monte (upstream) non lìberu</string>
     <string name="antiothers">Àteras anti-funtzionalidades</string>
     <string name="antinsfw">Custa aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
+    <string name="menu_release_channel_beta">Permite sos agiornamentos beta</string>
 </resources>

@@ -77,7 +77,7 @@
     <string name="bad_fingerprint">Неправильний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє про ваші дії</string>
-    <string name="antinonfreedeplist">Ця програма залежить від інших пропрієтарних програм</string>
+    <string name="antinonfreedeplist">Цей застосунок залежить від інших пропрієтарних застосунків</string>
     <string name="expert_on">Показати додаткові відомості та ввімкнути розширені параметри</string>
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>
@@ -158,7 +158,7 @@
     <string name="bluetooth_activity_not_found">Жодного методу надсилання через Bluetooth не знайдено, виберіть один з них!</string>
     <string name="choose_bt_send">Виберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
-    <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
+    <string name="antinonfreeadlist">Цей застосунок пропонує пропрієтарні доповнення</string>
     <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від невільної мережної служби</string>
     <string name="antiupstreamnonfreelist">Джерельний код випуску частково не вільний</string>
     <string name="display">Вигляд</string>
@@ -197,10 +197,10 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="install_confirm_update">Дійсно встановити оновлення для цієї наявної програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
-    <string name="install_confirm_update_system">Дійсно встановити оновлення для цієї вбудованої програми? Існуючі дані втрачено не буде. Оновлена програма отримає доступ до:</string>
-    <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявної програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
-    <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цієї вбудованої програми? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного застосунку \? Існуючі дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
+    <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого застосунку\? Існуючі дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
+    <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявного застосунку\? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цього вбудованого застосунку\? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
     <string name="uninstall_update_confirm">Відновити заводську версію цього застосунку\? Усі дані буде вилучено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного застосунку не встановлено.
@@ -490,8 +490,8 @@
     <string name="menu_select_for_wipe">Виберіть для очищення</string>
     <string name="try_again">Спробувати знову</string>
     <string name="panic_will_be_wiped">Буде видалено зі всіма даними</string>
-    <string name="panic_apps_to_uninstall">Програми, які потрібно видалити та їх дані</string>
-    <string name="panic_add_apps_to_uninstall">Додайте програми, які потрібно видалити разом з даними</string>
+    <string name="panic_apps_to_uninstall">Застосунки, які потрібно видалити та їх дані</string>
+    <string name="panic_add_apps_to_uninstall">Додати застосунки, які потрібно видалити разом з даними</string>
     <string name="panic_reset_repos_title">Скинути репозиторії</string>
     <string name="panic_reset_repos_summary">Примусове повернення репозиторію до початкового стану</string>
     <string name="swap_visible_hotspot">Видно через точку доступу</string>
@@ -533,7 +533,7 @@
     <string name="antiads">Оголошення</string>
     <string name="antinosource_key">NoSourceSince</string>
     <string name="antitrack">Відстеження</string>
-    <string name="antinonfreead">Невільні додатки</string>
+    <string name="antinonfreead">Пропрієтарні Доповнення</string>
     <string name="antinosource">Джерельний код більше недоступний</string>
     <string name="app_list_results_hidden_antifeature_settings">Деякі результати сховано через ваші налаштування небажаних функцій.</string>
     <string name="antinonfreenet">Невільні мережеві послуги</string>

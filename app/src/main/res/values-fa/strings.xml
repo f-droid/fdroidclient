@@ -36,7 +36,7 @@
     <string name="antiadslist">این کاره دارای تبلیغات است</string>
     <string name="antitracklist">این کاره، فعّالیتتان را ردیابی و گزارش می‌کند</string>
     <string name="antinonfreeadlist">این کاره، افزونه‌های ناآزاد را تبلیغ می‌کند</string>
-    <string name="antinonfreenetlist">این کاره، خدمات شبکه‌های ناآزاد را ترویج می‌کند</string>
+    <string name="antinonfreenetlist">این کاره، خدمت شبکه‌ای ناآزاد را ترویج کرده یا کاملاً به آن وابسته است</string>
     <string name="antinonfreedeplist">این کاره به دیگر کاره‌های ناآزاد وابسته است</string>
     <string name="antiupstreamnonfreelist">کد مبدأ بالادستی کاملاً آزاد نیست</string>
     <string name="display">نمایش</string>
@@ -528,4 +528,5 @@
     <string name="antinosource">کد مبدأ دیگر موجود نیست</string>
     <string name="antiothers">دیگر پادویژگی‌ها</string>
     <string name="antinsfw">این کاره محتوایی دارد که نباید عمومی شده یا همه‌حا نمایان باشد</string>
+    <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
 </resources>

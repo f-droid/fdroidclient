@@ -1,18 +1,13 @@
-F-Droid est un catalogue installable de logiciels d’application 
-libres pour Android. L’appli client F-Droid facilite la navigation,
-l’installation, ainsi que le suivi des mises à jour sur votre appareil.
+F-Droid est un catalogue installable d’application libres pour Android. L’application client F-Droid facilite la navigation, l’installation, ainsi que le suivi des mises à jour sur votre appareil.
 
-Elle se connecte à n’importe quel dépôt compatible avec F-Droid. Le dépôt par
-défaut est hébergé sur f-droid.org et ne propose que de véritables logiciels libres.
+Elle se connecte à n’importe quel dépôt compatible avec F-Droid. Le dépôt par défaut est hébergé sur f-droid.org et ne propose que de véritables applications libres.
 
-Android même est ouvert dans la mesure où vous êtes libre d’installer
-des APK quelque en soit la provenance, mais les raisons ne manquent pas d’utiliser
-F-Droid en tant que gestionnaire de vos logiciels d’application libres :
+Android même est ouvert dans la mesure où vous êtes libre d’installer des fichiers APK quelle qu'en soit la provenance, mais les raisons ne manquent pas d’utiliser F-Droid en tant que gestionnaire de vos applications libres :
 
-* Être informé de la présence de mises à jour
-* Télécharger et installer facultativement et automatiquement les mises à jour
-* Effectuer le suivi des versions anciennes et bêta
-* Filtrer les applis incompatibles avec l’appareil
-* Trouver des applis par catégorie ou recherche dans les descriptions
-* Accéder aux URL connexes pour les dons, le code source, etc.
-* Garantir la sécurité en vérifiant les signatures des indices de dépôt et les hachages d’APK
+* Être informé lorsque des mises à jour sont disponibles
+* Il est possible de télécharger et installer les mises à jour automatiquement
+* Suivi des anciennes versions et des versions bêta
+* Filtre les applis incompatibles avec l’appareil
+* Recherche d'applications par catégorie et depuis leur description
+* Accès aux URL connexes pour faire un don, accéder au code source, etc.
+* Sécurité garantie avec la vérification des signatures des indices de dépôt et les hachages d’APK

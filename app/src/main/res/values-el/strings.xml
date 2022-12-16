@@ -5,7 +5,7 @@
     <string name="version">Έκδοση</string>
     <string name="delete">Διαγραφή</string>
     <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
-    <string name="cache_downloaded">Διατήρηση των εφαρμογών προσωρινά αποθηκευμένες</string>
+    <string name="cache_downloaded">Διατήρηση προσωρινά αποθηκευμένων εφαρμογών</string>
     <string name="updates">Ενημερώσεις</string>
     <string name="other">Άλλο</string>
     <string name="update_interval">Συχνότητα ενημέρωσης</string>
@@ -58,7 +58,7 @@
     <string name="expert_on">Προβολή επιπλέον πληροφοριών και ενεργοποίηση επιπλέον ρυθμίσεων</string>
     <string name="search_hint">Αναζήτηση εφαρμογών</string>
     <string name="appcompatibility">Συμβατότητα εφαρμογής</string>
-    <string name="show_incompat_versions">Να περιλαμβάνονται μη συμβατές εκδόσεις</string>
+    <string name="show_incompat_versions">Συμπερίληψη ασύμβατων εκδόσεων</string>
     <string name="show_incompat_versions_on">Προβολή εκδόσεων εφαρμογών ασύμβατων με τη συσκευή</string>
     <string name="status_download">Λήψη
 \n%2$s / %3$s (%4$d%%) από
@@ -95,8 +95,8 @@
     <string name="unstable_updates_summary">Πρόταση ενημερώσεων σε ασταθείς εκδόσεις</string>
     <string name="system_installer">Επέκταση με δικαιώματα συστήματος</string>
     <string name="system_installer_on">Χρησιμοποιήστε την επέκταση με δικαιώματα συστήματος για να εγκαταστήσετε, ενημερώσετε και καταργήσετε πακέτα</string>
-    <string name="local_repo_name">Όνομα του Αποθετηρίου σας</string>
-    <string name="local_repo_name_summary">Ο διαφημιζόμενος τίτλος του τοπικού αποθετηρίου σας: %s</string>
+    <string name="local_repo_name">Όνομα του τοπικού σας αποθετηρίου</string>
+    <string name="local_repo_name_summary">Ο διαφημιζόμενος τίτλος του τοπικού σας αποθετηρίου: %s</string>
     <string name="local_repo_https_on">Χρήση κρυπτογραφημένης σύνδεσης HTTPS:// για το τοπικό αποθετήριο</string>
     <string name="about_source">Πηγαίος κώδικας</string>
     <string name="app_incompatible">Μη συμβατό</string>
@@ -125,12 +125,12 @@
     <string name="next">Επόμενο</string>
     <string name="skip">Παράβλεψη</string>
     <string name="proxy">Διακομιστής μεσολάβησης</string>
-    <string name="enable_proxy_title">Ενεργοποίηση διακομιστή μεσολάβησης HTTP</string>
+    <string name="enable_proxy_title">Ενεργοποίηση μεσολαβητή HTTP</string>
     <string name="enable_proxy_summary">Ρύθμιση διακομιστή μεσολάβησης HTTP για όλες τις αιτήσεις δικτύου</string>
     <string name="proxy_host">Διακομιστής μεσολάβησης</string>
-    <string name="proxy_host_summary">Ρυθμίστε το όνομα του διακομιστή μεσολάβησης (π.χ. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Το όνομα του διακομιστή μεσολάβησης σας (π.χ. 127.0.0.1)</string>
     <string name="proxy_port">Θύρα διακομιστή μεσολάβησης</string>
-    <string name="proxy_port_summary">Αριθμός θύρας του διακομιστή σας μεσολάβησης (π.χ. 8118)</string>
+    <string name="proxy_port_summary">Αριθμός θύρας του διακομιστή μεσολάβησης σας (π.χ. 8118)</string>
     <string name="status_download_unknown_size">Λήψη
 \n%2$s από
 \n%1$s</string>
@@ -229,7 +229,7 @@
     <string name="perms_description_app">Παρέχεται από %1$s.</string>
     <string name="downloading">Λήψη…</string>
     <string name="interval_never">Να μη γίνονται αυτόματες ενημερώσεις εφαρμογών</string>
-    <string name="interval_1h">Να γίνεται έλεγχος για ενημερώσεις ωριάια</string>
+    <string name="interval_1h">Να γίνεται έλεγχος για ενημερώσεις ωριαία</string>
     <string name="interval_4h">Να γίνεται έλεγχος για ενημερώσεις κάθε 4 ώρες</string>
     <string name="interval_12h">Να γίνεται έλεγχος για ενημερώσεις κάθε 12 ώρες</string>
     <string name="interval_1d">Να γίνεται έλεγχος για ενημερώσεις ημερήσια</string>
@@ -430,7 +430,7 @@
     <string name="over_wifi">Mέσω Wi-Fi</string>
     <string name="over_data">Μέσω δεδομένων κινητής τηλεφωνίας</string>
     <string name="over_network_always_summary">Να χρησιμοποιείται πάντα αυτή η σύνδεση, όταν είναι διαθέσιμη</string>
-    <string name="over_network_on_demand_summary">Να χρησιμοποιείται μόνο αυτή η σύνδεση όταν επιλέγω να κάνω λήψη</string>
+    <string name="over_network_on_demand_summary">Να χρησιμοποιείται αυτή η σύνδεση μόνο όταν επιλέγω να κάνω λήψη</string>
     <string name="over_network_never_summary">Να μην γίνεται ποτέ λήψη όταν χρησιμοποιείται αυτή η σύνδεση</string>
     <string name="send_installed_apps">Μοιραστείτε εγκατεστημένες εφαρμογές</string>
     <string name="send_installed_apps_csv">Εφαρμογές εγκατεστημένες από το F-Droid ως αρχείο CSV</string>
@@ -447,8 +447,8 @@
     <string name="antidisabledalgorithmlist">Αυτή η εφαρμογή έχει αδύναμη υπογραφή ασφαλείας</string>
     <string name="antiknownvulnlist">Αυτή η εφαρμογή περιέχει μια γνωστή ευπάθεια ασφαλείας</string>
     <string name="antinosourcesince">Ο πηγαίος κώδικας δεν είναι πλέον διαθέσιμος, η ενημέρωση δεν είναι πλέον δυνατή.</string>
-    <string name="show_anti_feature_apps">Να περιλαμβάνονται εφαρμογές που περιέχουν ανεπιθύμητα χαρακτηριστικά</string>
-    <string name="show_anti_feature_apps_on">Εμφάνιση εφαρμογών που απαιτούν αντι-χαρακτηριστικά</string>
+    <string name="show_anti_feature_apps">Συμπερίληψη εφαρμογών με αντι-χαρακτηριστικά</string>
+    <string name="show_anti_feature_apps_on">Εμφάνιση εφαρμογών που απαιτούν ανεπιθύμητα χαρακτηριστικά</string>
     <string name="force_touch_apps">Να περιληφθούν εφαρμογές που χρησιμοποιούν οθόνη αφής</string>
     <string name="force_touch_apps_on">Εμφάνιση εφαρμογών οι οποίες απαιτούν τη χρήση οθόνης αφής, ανεξάρτητα από τις απαιτήσεις υλισμικού</string>
     <string name="panic_hide_warning_title">Να θυμάσαι τον τρόπο επαναφοράς</string>
@@ -474,7 +474,7 @@
     <string name="app_repository">Αποθετήριο: %1$s</string>
     <string name="scan_removable_storage_title">Σάρωση αφαιρούμενου χώρου αποθήκευσης</string>
     <string name="scan_removable_storage_toast">Σάρωση %s…</string>
-    <string name="scan_removable_storage_summary">Αναζήτηση αποθετηρίου σε αφαιρούμενα μέσα αποθήκευσης όπως κάρτες SD και φλασάκια USB</string>
+    <string name="scan_removable_storage_summary">Αναζήτηση αποθετηρίου σε αφαιρούμενα μέσα αποθήκευσης όπως κάρτες SD και ράβδους αποθήκευσης USB</string>
     <string name="menu_translation">Μετάφραση</string>
     <string name="main_menu__updates">Ενημερώσεις</string>
     <string name="nearby_splash__read_external_storage">Αναζήτηση κάρτας SD για αποθετήρια και καθρέφτες.</string>
@@ -542,4 +542,5 @@
     <string name="share_apk_error">Δεν ήταν δυνατή η κοινή χρήση του αρχείου εφαρμογής</string>
     <string name="antidisabledalgorithm">Υπογραφή με χρήση μη ασφαλούς αλγόριθμου</string>
     <string name="antinsfw">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>
+    <string name="menu_release_channel_beta">Να επιτρέπονται οι ενημερώσεις Beta</string>
 </resources>

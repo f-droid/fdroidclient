@@ -517,4 +517,5 @@
     <string name="main_menu__updates">更新</string>
     <string name="menu_show_fdroid_metrics_report">顯示指標回報</string>
     <string name="panic_hide_warning_message">在緊急情況下，在桌面的 %1$s 將被移除。只有從僞造的 %3$s 應用程式中輸入 \"%2$d\" 才可以將其還原。</string>
+    <string name="menu_release_channel_beta">允许 Beta 更新</string>
 </resources>

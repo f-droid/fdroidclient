@@ -527,4 +527,5 @@
     <string name="swap_wifi_vpn_conflict">सक्रिय वीपीएन के साथ संघर्ष!</string>
     <string name="antiothers">अन्य विरोधी सुविधाएं</string>
     <string name="antinsfw">इस ऐप में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
+    <string name="menu_release_channel_beta">बीटा अपडेट की अनुमति दें</string>
 </resources>

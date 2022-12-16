@@ -9,4 +9,4 @@ Android mem estas malferma tiel, ke vi povas instali aplikaĵojn de iu ajn fonto
 • filtri aplikaĵojn nekongruajn kun via aparato
 • esplori aplikaĵojn laŭ kategorioj kaj per serĉeblaj priskriboj
 • aliri ligilojn por donaci, fontkodo, ktp.
-• esti sekura per kontroli signaturojn kaj kontrolsumojn (haketaĵojn) de apoj
+• esti sekura per kontroli signaturojn de la deponeja indekso kaj haketaĵojn de apoj
