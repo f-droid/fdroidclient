@@ -16,18 +16,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public final class ContentProviderMigrator {
+final class ContentProviderMigrator {
 
     private static final String OLD_DB_NAME = "fdroid";
 
-    public boolean needsMigration(Context context) {
+    boolean needsMigration(Context context) {
         for (String db : context.databaseList()) {
             if (OLD_DB_NAME.equals(db)) return true;
         }
         return false;
     }
 
-    public void migrateOldRepos(Context context, FDroidDatabase db) {
+    void migrateOldRepos(Context context, FDroidDatabase db) {
         RepositoryDao repoDao = db.getRepositoryDao();
         List<Repository> repos = repoDao.getRepositories();
         int weight = repos.isEmpty() ? 0 : repos.get(repos.size() - 1).getWeight();
@@ -86,7 +86,7 @@ public final class ContentProviderMigrator {
         }
     }
 
-    public void removeOldDb(Context context) {
+    void removeOldDb(Context context) {
         context.deleteDatabase(OLD_DB_NAME);
     }
 

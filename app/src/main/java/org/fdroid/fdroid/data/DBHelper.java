@@ -34,6 +34,7 @@ import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.database.InitialRepository;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -78,6 +79,14 @@ public class DBHelper {
                     Integer.parseInt(initialRepos.get(i + 5))  // weight
             );
             db.getRepositoryDao().insert(repo);
+        }
+        // Migrate repos from old content providers to new Room-based DB.
+        // Added end of 2022 for alphas, can be removed after sufficient time has passed.
+        ContentProviderMigrator migrator = new ContentProviderMigrator();
+        if (migrator.needsMigration(context)) {
+            migrator.migrateOldRepos(context, db);
+            migrator.removeOldDb(context);
+            UpdateService.forceUpdateRepo(context);
         }
     }
 
