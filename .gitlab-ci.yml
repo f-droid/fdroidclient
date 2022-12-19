@@ -60,6 +60,7 @@ test_lint_pmd_checkstyle:
   script:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    # the tasks "lint", "test", etc don't always include everything
     - ./gradlew lint pmd checkstyle ktlintCheck testDebugUnitTest testFullDebugUnitTest
 
 tools scripts:

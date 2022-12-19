@@ -62,6 +62,7 @@ android {
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
         debug {
+            getIsDefault().set(true)
             manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
             applicationIdSuffix ".debug"
             resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
@@ -75,6 +76,7 @@ android {
     flavorDimensions "base"
     productFlavors {
         full {
+            getIsDefault().set(true)
             dimension "base"
             applicationId fullApplicationId
             resValue "string", "applicationId", fullApplicationId
