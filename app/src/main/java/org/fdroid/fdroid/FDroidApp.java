@@ -419,7 +419,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         // Migrate repos from old content providers to new Room-based DB.
         // Added end of 2022 for alphas, can be removed after sufficient time has passed.
         Utils.runOffUiThread(() -> {
-            ContentProviderMigrator migrator = ContentProviderMigrator.INSTANCE;
+            ContentProviderMigrator migrator = new ContentProviderMigrator();
             if (migrator.needsMigration(this)) {
                 migrator.migrateOldRepos(this, db);
                 migrator.removeOldDb(this);
