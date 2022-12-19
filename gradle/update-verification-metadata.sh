@@ -71,7 +71,10 @@ function regenerateVerificationMetadata() {
   rm -f gradle/verification-keyring-dryrun.keys
   rm -f gradle/verification-metadata.dryrun.xml
 }
+
+sed -Ei 's,key-servers enabled="[^"]+",key-servers enabled="true",' gradle/verification-metadata.xml
 regenerateVerificationMetadata
+sed -Ei 's,key-servers enabled="[^"]+",key-servers enabled="false",' gradle/verification-metadata.xml
 
 echo
 echo "Done. Please check that these changes look correct ('git diff')"
