@@ -165,6 +165,7 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.3' // newer version need minSdk 24 or library desugering
     implementation 'info.guardianproject.netcipher:netcipher:2.2.0-alpha'
     implementation 'info.guardianproject.panic:panic:1.0'
+    //noinspection GradleDependency -> Commons IO > 2.5 uses java.nio.file, which requires desugaring
     implementation 'commons-io:commons-io:2.6'
     implementation 'commons-net:commons-net:3.6'
     implementation 'ch.acra:acra-mail:5.9.0'
