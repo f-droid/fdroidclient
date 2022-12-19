@@ -1,3 +1,9 @@
+### 1.15.5 (2022-12-19)
+
+* Fix swap to use index-v1.jar when available #2476
+
+* Fix random crashes related to WifiApControl
+
 ### 1.15.4 (2022-11-30)
 
 * Simplify swap index.jar signing to use plain SHA1withRSA
