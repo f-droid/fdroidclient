@@ -1,4 +1,16 @@
-### 1.16-alpha0 (2022-04-19)
+### 1.16-alpha0 (2022-12-19)
+
+* Migrate custom repo configuration to new database (#2485)
+
+* Fix random crashes related to WiFi (#2495 #2477)
+
+* Fix disabling of repo mirrors when there are many (#2490)
+
+* Fix OpenCollective links
+
+* Small bits of code modernization
+
+### 1.16-alpha0 (2022-12-02)
 
 * Huge overhaul of download, index, and database code.
 
@@ -6,6 +18,12 @@
   #2412 #2436 #2442 #2443 #2444 #1971
 
 * Known bugs: #2446 #2447 #2475
+
+### 1.15.5 (2022-12-19)
+
+* Fix swap to use index-v1.jar when available #2476
+
+* Fix random crashes related to WifiApControl
 
 ### 1.15.4 (2022-11-30)
 
