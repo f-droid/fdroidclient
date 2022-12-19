@@ -34,6 +34,7 @@ import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.database.InitialRepository;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -79,6 +80,24 @@ public class DBHelper {
             );
             db.getRepositoryDao().insert(repo);
         }
+        // Migrate repos from old content providers to new Room-based DB.
+        // Added end of 2022 for alphas, can be removed after sufficient time has passed.
+        ContentProviderMigrator migrator = new ContentProviderMigrator();
+        if (migrator.needsMigration(context)) {
+            migrator.migrateOldRepos(context, db);
+            migrator.removeOldDb(context);
+            UpdateService.forceUpdateRepo(context);
+        }
+    }
+
+    /**
+     * Removes all index data related to apps from the DB.
+     * Leaves repositories, their preferences as well as app preferences in place.
+     */
+    @AnyThread
+    public static void resetTransient(Context context) {
+        FDroidDatabase db = getDb(context);
+        Utils.runOffUiThread(() -> db.getAppDao().clearAll());
     }
 
     @AnyThread
