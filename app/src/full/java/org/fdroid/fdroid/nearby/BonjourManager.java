@@ -14,8 +14,10 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.peers.BonjourPeer;
 
@@ -178,6 +180,10 @@ public class BonjourManager {
             }
 
             private void handleVisible(String localRepoName, boolean useHttps) {
+                if (FDroidApp.repo == null) {
+                    sendBroadcast(STATUS_ERROR, context.getString(R.string.swap_no_wifi_network));
+                    return;
+                }
                 HashMap<String, String> values = new HashMap<>();
                 values.put(BonjourPeer.PATH, "/fdroid/repo");
                 values.put(BonjourPeer.NAME, localRepoName);
