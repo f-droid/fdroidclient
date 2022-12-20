@@ -121,7 +121,8 @@ public data class FileV1(
 ) : IndexFile {
     public companion object {
         @JvmStatic
-        public fun deserialize(string: String): FileV1 {
+        public fun deserialize(string: String?): FileV1? {
+            if (string == null) return null
             return IndexParser.json.decodeFromString(string)
         }
     }
