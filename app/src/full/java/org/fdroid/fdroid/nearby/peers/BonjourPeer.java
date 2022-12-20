@@ -29,7 +29,7 @@ public class BonjourPeer extends WifiPeer {
     public static BonjourPeer getInstance(ServiceInfo serviceInfo) {
         String type = serviceInfo.getPropertyString(TYPE);
         String fingerprint = serviceInfo.getPropertyString(FINGERPRINT);
-        if (type == null || !type.startsWith("fdroidrepo")
+        if (type == null || !type.startsWith("fdroidrepo") || FDroidApp.repo == null
                 || TextUtils.equals(FDroidApp.repo.getFingerprint(), fingerprint)) {
             return null;
         }
