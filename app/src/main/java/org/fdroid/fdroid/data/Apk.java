@@ -322,7 +322,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         dest.writeStringArray(this.nativecode);
         dest.writeString(this.sig);
         dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
-        dest.writeString(this.apkFile.serialize());
+        dest.writeString(this.apkFile != null ? this.apkFile.serialize() : null);
         dest.writeSerializable(this.installedFile);
         dest.writeString(this.srcname);
         dest.writeString(this.repoAddress);
