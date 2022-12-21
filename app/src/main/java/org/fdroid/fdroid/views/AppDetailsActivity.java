@@ -48,6 +48,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
@@ -721,7 +722,8 @@ public class AppDetailsActivity extends AppCompatActivity
     private void onVersionsChanged(List<AppVersion> appVersions) {
         List<Apk> apks = new ArrayList<>(appVersions.size());
         for (AppVersion appVersion : appVersions) {
-            Apk apk = new Apk(appVersion);
+            Repository repo = FDroidApp.getRepo(appVersion.getRepoId());
+            Apk apk = new Apk(appVersion, repo);
             apk.setCompatibility(checker);
             apks.add(apk);
         }

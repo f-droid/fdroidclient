@@ -19,7 +19,6 @@ import org.fdroid.database.AppVersion;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.CompatibilityChecker;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.index.v2.FileV1;
@@ -33,7 +32,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.zip.ZipFile;
 
 /**
@@ -151,8 +149,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
         repoId = 0;
     }
 
-    public Apk(AppVersion v) {
-        Repository repo = Objects.requireNonNull(FDroidApp.getRepo(v.getRepoId()));
+    public Apk(AppVersion v, Repository repo) {
+        if (v.getRepoId() != repo.getRepoId()) throw new IllegalArgumentException();
         repoAddress = Utils.getRepoAddress(repo);
         canonicalRepoAddress = repo.getAddress();
         added = new Date(v.getAdded());

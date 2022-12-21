@@ -9,9 +9,11 @@ import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
 import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.fdroid.data.Apk;
@@ -377,6 +379,7 @@ public final class AppUpdateStatusManager {
         disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableApps);
     }
 
+    @WorkerThread
     private List<UpdatableApp> getUpdatableApps() {
         List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
         return updateChecker.getUpdatableApps(releaseChannels);
@@ -387,7 +390,8 @@ public final class AppUpdateStatusManager {
         if (canUpdate.size() > 0) {
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
-                addApk(new App(app), new Apk(app.getUpdate()), Status.UpdateAvailable, null);
+                Repository repo = FDroidApp.getRepo(app.getUpdate().getRepoId());
+                addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
             }
             endBatchUpdates(Status.UpdateAvailable);
         }
@@ -399,7 +403,8 @@ public final class AppUpdateStatusManager {
             isBatchUpdating = true;
             try {
                 for (UpdatableApp app : canUpdate) {
-                    addApk(new App(app), new Apk(app.getUpdate()), Status.UpdateAvailable, null);
+                    Repository repo = FDroidApp.getRepo(app.getUpdate().getRepoId());
+                    addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
                 }
                 setNumUpdatableApps(canUpdate.size());
             } finally {
