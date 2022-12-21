@@ -585,9 +585,8 @@ public class AppDetailsActivity extends AppCompatActivity
                     if (!TextUtils.isEmpty(errorMessage) && !isFinishing()) {
                         Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
 
-                        String title = String.format(
-                                getString(R.string.install_error_notify_title),
-                                app.name);
+                        String title = getString(R.string.install_error_notify_title,
+                                app == null ? "" : app.name);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
                         alertBuilder.setTitle(title);
