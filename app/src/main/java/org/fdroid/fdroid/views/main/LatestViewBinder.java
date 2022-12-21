@@ -183,6 +183,10 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
             appList.setVisibility(View.GONE);
             return;
         }
+        if (UpdateService.isUpdatingForced()) {
+            emptyState.setText(R.string.latest__empty_state__upgrading);
+            return;
+        }
 
         StringBuilder emptyStateText = new StringBuilder();
         emptyStateText.append(activity.getString(R.string.latest__empty_state__no_recent_apps));

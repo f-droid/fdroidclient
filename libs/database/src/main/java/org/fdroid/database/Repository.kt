@@ -177,7 +177,7 @@ public data class Repository internal constructor(
     public fun getMirrors(): List<org.fdroid.download.Mirror> {
         return getAllMirrors(true).filter {
             !disabledMirrors.contains(it.baseUrl)
-        }
+        }.ifEmpty { listOf(org.fdroid.download.Mirror(address)) }
     }
 
     /**

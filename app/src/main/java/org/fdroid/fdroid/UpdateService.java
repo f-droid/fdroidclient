@@ -102,6 +102,7 @@ public class UpdateService extends JobIntentService {
     private static final int NOTIFY_ID_UPDATING = 0;
 
     private static UpdateService updateService;
+    private static boolean isForcedUpdate;
 
     private FDroidDatabase db;
     private NotificationManager notificationManager;
@@ -211,6 +212,15 @@ public class UpdateService extends JobIntentService {
         return updateService != null;
     }
 
+    /**
+     * Whether or not a forced repo update is currently in progress.
+     * This is typically the case when the phone was updated to a new major OS version
+     * or the client DB was updated, so that all data needed to be purged.
+     */
+    public static boolean isUpdatingForced() {
+        return updateService != null && isForcedUpdate;
+    }
+
     public static void stopNow() {
         if (updateService != null) {
             updateService.stopSelf(JOB_ID);
@@ -261,6 +271,7 @@ public class UpdateService extends JobIntentService {
         super.onDestroy();
         notificationManager.cancel(NOTIFY_ID_UPDATING);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(updateStatusReceiver);
+        isForcedUpdate = false;
         updateService = null;
     }
 
@@ -378,6 +389,7 @@ public class UpdateService extends JobIntentService {
         final long startTime = System.currentTimeMillis();
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
         boolean forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
+        isForcedUpdate = forcedUpdate;
         String fingerprint = intent.getStringExtra(EXTRA_REPO_FINGERPRINT);
         String address = intent.getDataString();
 
@@ -402,6 +414,7 @@ public class UpdateService extends JobIntentService {
                     if (manualUpdate) {
                         Utils.showToastFromService(this, getString(R.string.warning_no_internet), Toast.LENGTH_SHORT);
                     }
+                    isForcedUpdate = false;
                     return;
                 }
             } else if ((manualUpdate || forcedUpdate) && fdroidPrefs.isOnDemandDownloadAllowed()) {
@@ -409,6 +422,7 @@ public class UpdateService extends JobIntentService {
                 if (forcedUpdate) DBHelper.resetTransient(this);
             } else if (!fdroidPrefs.isBackgroundDownloadAllowed() && !fdroidPrefs.isOnDemandDownloadAllowed()) {
                 Utils.debugLog(TAG, "don't run update");
+                isForcedUpdate = false;
                 return;
             }
 
@@ -503,6 +517,7 @@ public class UpdateService extends JobIntentService {
             sendStatus(this, STATUS_ERROR_GLOBAL, e.getMessage());
         }
 
+        isForcedUpdate = false;
         long time = System.currentTimeMillis() - startTime;
         Log.i(TAG, "Updating repo(s) complete, took " + time / 1000 + " seconds to complete.");
     }

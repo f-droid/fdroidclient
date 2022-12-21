@@ -84,6 +84,7 @@ public class DBHelper {
         // Added end of 2022 for alphas, can be removed after sufficient time has passed.
         ContentProviderMigrator migrator = new ContentProviderMigrator();
         if (migrator.needsMigration(context)) {
+            Log.d(TAG, "Migrating DB...");
             migrator.migrateOldRepos(context, db);
             migrator.removeOldDb(context);
             UpdateService.forceUpdateRepo(context);
