@@ -1,0 +1,26 @@
+apply plugin: 'pmd'
+
+pmd {
+    toolVersion = '6.20.0'
+    consoleOutput = true
+}
+
+task pmdMain(type: Pmd) {
+    dependsOn 'assembleDebug'
+    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-main.xml")
+    ruleSets = [] // otherwise defaults clash with the list in rules.xml
+    source 'src/main/java'
+    include '**/*.java'
+    exclude '**/vendored/**/*.java'
+}
+
+task pmdTest(type: Pmd) {
+    dependsOn 'assembleDebug'
+    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-test.xml")
+    ruleSets = [] // otherwise defaults clash with the list in rules.xml
+    source 'src/test/java', 'src/androidTest/java'
+    include '**/*.java'
+    exclude '**/vendored/**/*.java'
+}
+
+task pmd(dependsOn: [pmdMain, pmdTest]) {}

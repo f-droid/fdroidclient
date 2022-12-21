@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'checkstyle'
-apply plugin: 'pmd'
+
+// add -Pstrict.release to the gradle command line to enable
+if (project.hasProperty('strict.release')) {
+    println "Running strict release"
+} else {
+    apply from: '../config/checkstyle/checkstyle.gradle'
+    apply from: '../config/pmd/pmd.gradle'
+}
 
 /* gets the version name from the latest Git tag */
 def getVersionName = { ->
@@ -56,6 +62,7 @@ android {
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
         debug {
+            getIsDefault().set(true)
             manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
             applicationIdSuffix ".debug"
             resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
@@ -69,6 +76,7 @@ android {
     flavorDimensions "base"
     productFlavors {
         full {
+            getIsDefault().set(true)
             dimension "base"
             applicationId fullApplicationId
             resValue "string", "applicationId", fullApplicationId
@@ -191,40 +199,3 @@ dependencies {
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'androidx.work:work-testing:2.7.1'
 }
-
-checkstyle {
-    toolVersion = '7.2'
-}
-
-task checkstyle(type: Checkstyle) {
-    configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
-    source 'src/main/java', 'src/test/java', 'src/androidTest/java'
-    include '**/*.java'
-
-    classpath = files()
-}
-
-pmd {
-    toolVersion = '6.20.0'
-    consoleOutput = true
-}
-
-task pmdMain(type: Pmd) {
-    dependsOn 'assembleDebug'
-    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-main.xml")
-    ruleSets = [] // otherwise defaults clash with the list in rules.xml
-    source 'src/main/java'
-    include '**/*.java'
-    exclude '**/vendored/**/*.java'
-}
-
-task pmdTest(type: Pmd) {
-    dependsOn 'assembleDebug'
-    ruleSetFiles = files("${project.rootDir}/config/pmd/rules.xml", "${project.rootDir}/config/pmd/rules-test.xml")
-    ruleSets = [] // otherwise defaults clash with the list in rules.xml
-    source 'src/test/java', 'src/androidTest/java'
-    include '**/*.java'
-    exclude '**/vendored/**/*.java'
-}
-
-task pmd(dependsOn: [pmdMain, pmdTest]) {}

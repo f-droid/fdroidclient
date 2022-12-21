@@ -3,6 +3,12 @@
     <!-- TODO bump our targetSdkVersion when we are ready for it -->
     <issue id="ExpiredTargetSdkVersion" severity="ignore"/>
 
+    <!-- TODO This should be handled as part of an overhaul of Bluetooth swap -->
+    <issue id="MissingPermission" severity="">
+      <ignore path="src/full/java/org/fdroid/fdroid/nearby/BluetoothManager.java"/>
+      <ignore path="src/full/java/org/fdroid/fdroid/nearby/SwapWorkflowActivity.java"/>
+    </issue>
+
     <!-- Our translations are crowd-sourced -->
     <issue id="MissingTranslation" severity="ignore"/>
 
