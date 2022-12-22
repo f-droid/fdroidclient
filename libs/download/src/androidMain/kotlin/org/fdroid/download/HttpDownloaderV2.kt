@@ -62,24 +62,20 @@ public class HttpDownloaderV2 constructor(
         var resumable = false
         val fileLength = outputFile.length()
         if (fileLength > (request.indexFile.size ?: -1)) {
-            if (!outputFile.delete()) log.warn {
-                "Warning: " + outputFile.absolutePath + " not deleted"
-            }
+            if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
         } else if (fileLength == request.indexFile.size && outputFile.isFile) {
-            log.info { "Already have outputFile, not download. ${outputFile.absolutePath}" }
+            log.debug { "Already have outputFile, not downloading: ${outputFile.name}" }
             return // already have it!
         } else if (fileLength > 0) {
             resumable = true
         }
-        log.info { "downloading ${request.indexFile.name} (is resumable: $resumable)" }
+        log.debug { "Downloading ${request.indexFile.name} (is resumable: $resumable)" }
         runBlocking {
             try {
                 downloadFromBytesReceiver(resumable)
             } catch (e: NoResumeException) {
                 require(resumable) { "Got $e even though download was not resumable" }
-                if (!outputFile.delete()) log.warn {
-                    "Warning: " + outputFile.absolutePath + " not deleted"
-                }
+                if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
                 downloadFromBytesReceiver(false)
             }
         }

@@ -68,9 +68,11 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
     }
 
     private fun throwOnLastMirror(e: Exception, wasLastMirror: Boolean) {
-        log.warn(e) {
-            if (wasLastMirror) "Last mirror, rethrowing..."
-            else "Trying other mirror now..."
+        log.info {
+            val info = if (e is ResponseException) e.response.status.toString()
+            else e::class.simpleName ?: ""
+            if (wasLastMirror) "Last mirror, rethrowing... ($info)"
+            else "Trying other mirror now... ($info)"
         }
         if (wasLastMirror) throw e
     }
