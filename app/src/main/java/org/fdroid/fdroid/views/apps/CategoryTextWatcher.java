@@ -113,6 +113,7 @@ public class CategoryTextWatcher implements TextWatcher {
      */
     private void removeLeadingCharacters(Editable searchText, int end) {
         widget.removeTextChangedListener(this);
+        if (searchText.length() < end) end = searchText.length();
         searchText.replace(0, end, "");
         widget.addTextChangedListener(this);
     }
