@@ -28,6 +28,7 @@ import androidx.test.core.app.ApplicationProvider;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -201,8 +202,8 @@ public class DBHelperTest {
 
         List<String> repos = getReposFromXml(validXml);
         assertEquals(2 * DBHelper.REPO_XML_ITEM_COUNT, repos.size());
-        assertEquals("Repo Name", repos.get(8));
-        assertEquals("https://www.oem0.com/yeah/repo", repos.get(9));
+        assertEquals("Repo Name", repos.get(7));
+        assertEquals("https://www.oem0.com/yeah/repo", repos.get(8));
     }
 
     @Test
@@ -228,7 +229,6 @@ public class DBHelperTest {
                 "I'm the first oem repo.",
                 "22",
                 "1",
-                "0",  // priority is inserted by DBHelper.parseAdditionalReposXml()
                 "ignore",
                 "fffff2313aaaaabcccc111");
         List<String> oem1 = Arrays.asList(
@@ -237,7 +237,6 @@ public class DBHelperTest {
                 "Who is the first repo?",
                 "22",
                 "0",
-                "0",  // priority is inserted by DBHelper.parseAdditionalReposXml()
                 "ignore",
                 "ddddddd2313aaaaabcccc111");
         List<String> shouldBeRepos = new LinkedList<>();
@@ -259,6 +258,7 @@ public class DBHelperTest {
             if (oemEtcDir.canWrite() || new File("/").canWrite()) {
                 oemEtcPackageDir.mkdirs();
             }
+            assumeTrue(oemEtcPackageDir.isDirectory());
             if (TextUtils.isEmpty(System.getenv("CI")) && !oemEtcPackageDir.isDirectory()) {
                 Log.e(TAG, "Cannot create " + oemEtcDir + ", skipping test!");
                 return;
@@ -308,9 +308,9 @@ public class DBHelperTest {
 
             // Construct the repos that we should have loaded
             List<String> oem0 = Arrays.asList("oem0Name", "https://www.oem0.com/yeah/repo", "I'm the first oem repo.",
-                    "22", "1", "0", "ignore", "fffff2313aaaaabcccc111");
+                    "22", "1", "ignore", "fffff2313aaaaabcccc111");
             List<String> oem1 = Arrays.asList("oem1MyNameIs", "https://www.mynameis.com/rapper/repo", "Who is the first repo?",
-                    "22", "0", "0", "ignore", "ddddddd2313aaaaabcccc111");
+                    "22", "0", "ignore", "ddddddd2313aaaaabcccc111");
 
             String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
 
