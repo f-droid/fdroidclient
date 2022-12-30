@@ -158,7 +158,7 @@
     <string name="bluetooth_activity_not_found">Жодного методу надсилання через Bluetooth не знайдено, виберіть один з них!</string>
     <string name="choose_bt_send">Виберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
-    <string name="antinonfreeadlist">Цей застосунок пропонує пропрієтарні доповнення</string>
+    <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
     <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від невільної мережної служби</string>
     <string name="antiupstreamnonfreelist">Джерельний код випуску частково не вільний</string>
     <string name="display">Вигляд</string>
@@ -197,9 +197,9 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного застосунку \? Існуючі дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
-    <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого застосунку\? Існуючі дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
-    <string name="install_confirm_update_no_perms">Хочете встановити оновлення для наявного застосунку\? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
+    <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого застосунку\? Наявні дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
+    <string name="install_confirm_update_no_perms">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані втрачено не буде. Спеціальний доступ не потрібен.</string>
     <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цього вбудованого застосунку\? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
     <string name="uninstall_update_confirm">Відновити заводську версію цього застосунку\? Усі дані буде вилучено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
@@ -533,7 +533,7 @@
     <string name="antiads">Оголошення</string>
     <string name="antinosource_key">NoSourceSince</string>
     <string name="antitrack">Відстеження</string>
-    <string name="antinonfreead">Пропрієтарні Доповнення</string>
+    <string name="antinonfreead">Невільні додатки</string>
     <string name="antinosource">Джерельний код більше недоступний</string>
     <string name="app_list_results_hidden_antifeature_settings">Деякі результати сховано через ваші налаштування небажаних функцій.</string>
     <string name="antinonfreenet">Невільні мережеві послуги</string>
