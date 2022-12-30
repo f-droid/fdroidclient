@@ -1,13 +1,7 @@
 * Rénovation de la liste "Versions", et nombreuses autres améliorations de l'interface, grâce au nouveau contributeur @wsdfhjxc
-
 * Correction de la navigation clavier/D-pad, grâce au nouveau contributeur @doeffinger
-
 * Afficher "Ouvrir" lorsque le support est installé et visible
-
 * Ajout de Partager à "Applications installées" pour exporter la liste CSV
-
 * Ajout d'une liste d'APK à la page d'index HTML
-
-* Retente le téléchargement d'index
-
+* Réessaye le téléchargement d'index
 * Correction de "Envoyer F-Droid via Bluetooth"
