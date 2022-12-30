@@ -548,4 +548,5 @@
     <string name="antiothers">Inne niepożądane funkcje</string>
     <string name="antinsfw">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
     <string name="menu_release_channel_beta">Zezwalaj na aktualizacje wersji beta</string>
+    <string name="latest__empty_state__upgrading">Aktualizowanie bazy danych…</string>
 </resources>
