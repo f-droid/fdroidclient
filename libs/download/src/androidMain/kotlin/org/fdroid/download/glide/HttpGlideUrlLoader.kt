@@ -31,7 +31,8 @@ public class HttpGlideUrlLoader(
         height: Int,
         options: Options,
     ): LoadData<InputStream> {
-        log.warn { "Not using mirrors when loading $glideUrl" }
+        if (log.isDebugEnabled) log.warn { "Not using mirrors when loading $glideUrl" }
+        else log.warn { "Not using mirrors for load" }
         return LoadData(glideUrl, HttpFetcher(httpManager, glideUrl, proxyGetter()))
     }
 

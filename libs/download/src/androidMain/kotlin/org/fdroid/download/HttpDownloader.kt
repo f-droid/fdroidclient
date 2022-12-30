@@ -132,7 +132,7 @@ public class HttpDownloader constructor(
         // calculatedEtag == expectedETag (ETag calculated from server response matches expected ETag)
         if (!headInfo.eTagChanged || calculatedEtag == expectedETag) {
             // ETag has not changed, don't download again
-            log.info { "${request.indexFile.name} cached, not downloading." }
+            log.debug { "${request.indexFile.name} cached, not downloading." }
             hasChanged = false
             return
         }
@@ -145,24 +145,20 @@ public class HttpDownloader constructor(
         var resumable = false
         val fileLength = outputFile.length()
         if (fileLength > (fileSize ?: -1)) {
-            if (!outputFile.delete()) log.warn {
-                "Warning: " + outputFile.absolutePath + " not deleted"
-            }
+            if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
         } else if (fileLength == fileSize && outputFile.isFile) {
-            log.info { "Already have outputFile, not download. ${outputFile.absolutePath}" }
+            log.debug { "Already have outputFile, not downloading: ${outputFile.name}" }
             return // already have it!
         } else if (fileLength > 0) {
             resumable = true
         }
-        log.info { "downloading ${request.indexFile.name} (is resumable: $resumable)" }
+        log.debug { "Downloading ${request.indexFile.name} (is resumable: $resumable)" }
         runBlocking {
             try {
                 downloadFromBytesReceiver(resumable)
             } catch (e: NoResumeException) {
                 require(resumable) { "Got $e even though download was not resumable" }
-                if (!outputFile.delete()) log.warn {
-                    "Warning: " + outputFile.absolutePath + " not deleted"
-                }
+                if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
                 downloadFromBytesReceiver(false)
             }
         }

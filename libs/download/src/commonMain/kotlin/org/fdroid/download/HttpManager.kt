@@ -96,7 +96,7 @@ public open class HttpManager @JvmOverloads constructor(
         val response: HttpResponse = try {
             mirrorChooser.mirrorRequest(request) { mirror, url ->
                 resetProxyIfNeeded(request.proxy, mirror)
-                log.info { "HEAD $url" }
+                log.debug { "HEAD $url" }
                 httpClient.head(url) {
                     addQueryParameters()
                     // add authorization header from username / password if set
@@ -106,7 +106,7 @@ public open class HttpManager @JvmOverloads constructor(
                 }
             }
         } catch (e: ResponseException) {
-            log.warn(e) { "Error getting HEAD" }
+            log.warn { "Error getting HEAD: ${e.response.status}" }
             if (e.response.status == NotFound) throw NotFoundException()
             return null
         }
@@ -153,7 +153,7 @@ public open class HttpManager @JvmOverloads constructor(
         skipFirstBytes: Long,
     ): HttpStatement {
         resetProxyIfNeeded(request.proxy, mirror)
-        log.info { "GET $url" }
+        log.debug { "GET $url" }
         return httpClient.prepareGet(url) {
             addQueryParameters()
             // add authorization header from username / password if set
@@ -209,13 +209,13 @@ public open class HttpManager @JvmOverloads constructor(
     private fun resetProxyIfNeeded(proxyConfig: ProxyConfig?, mirror: Mirror? = null) {
         // force no-proxy when trying to hit a local mirror
         val newProxy = if (mirror.isLocal() && proxyConfig != null) {
-            if (currentProxy != null) log.info {
+            if (currentProxy != null) log.debug {
                 "Forcing mirror to null, because mirror is local: $mirror"
             }
             null
         } else proxyConfig
         if (currentProxy != newProxy) {
-            log.info { "Switching proxy from [$currentProxy] to [$newProxy]" }
+            log.debug { "Switching proxy from [$currentProxy] to [$newProxy]" }
             httpClient.close()
             httpClient = getNewHttpClient(newProxy)
         }
