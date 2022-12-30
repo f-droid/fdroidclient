@@ -309,6 +309,7 @@
     <string name="main_menu__swap_nearby">Por perto</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver %d</item>
+        <item quantity="many">Ver todas as %d</item>
         <item quantity="other">Ver todas as %d</item>
     </plurals>
     <string name="app_recommended_version_installed">Versão %1$s (Recomendada)</string>
@@ -324,6 +325,7 @@
     <string name="updates__show_updateable_apps">Mostrar aplicativos</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Baixar atualização para %1$d aplicativo.</item>
+        <item quantity="many">Baixar atualizações para %1$d aplicativos.</item>
         <item quantity="other">Baixar atualização para %1$d aplicativos.</item>
     </plurals>
     <string name="preference_category__my_apps">Meus aplicativos</string>
@@ -331,6 +333,7 @@
     <string name="tts_category_name">Categoria %1$s</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Ver %1$d aplicativo na categoria %2$s</item>
+        <item quantity="many">Ver todos os %1$d aplicativos da categoria %2$s</item>
         <item quantity="other">Ver todos os %1$d aplicativos da categoria %2$s</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s instalado</string>
@@ -351,6 +354,7 @@
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Atualizado %1$d dia atrás</item>
+        <item quantity="many">Atualizados %1$d dias atrás</item>
         <item quantity="other">Atualizados %1$d dias atrás</item>
     </plurals>
     <string name="menu_video">Vídeo</string>
@@ -359,26 +363,32 @@
     <string name="menu_license">Licença: %s</string>
     <plurals name="notification_summary_more">
         <item quantity="one">maior +%1$d…</item>
+        <item quantity="many">maiores +%1$d…</item>
         <item quantity="other">mais +%1$d…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Atualização</item>
+        <item quantity="many">%1$d Atualizações</item>
         <item quantity="other">%1$d Atualizações</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d Aplicativo instalado</item>
+        <item quantity="many">%1$d Aplicativos instalados</item>
         <item quantity="other">%1$d Aplicativos instalados</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Atualizado %1$d semana atrás</item>
+        <item quantity="many">Atualizado %1$d semanas atrás</item>
         <item quantity="other">Atualizado %1$d semanas atrás</item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Atualizado %1$d mês atrás</item>
+        <item quantity="many">Atualizado %1$d meses atrás</item>
         <item quantity="other">Atualizado %1$d meses atrás</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">Atualizado %1$d ano atrás</item>
+        <item quantity="many">Atualizado %1$d anos atrás</item>
         <item quantity="other">Atualizado %1$d anos atrás</item>
     </plurals>
     <string name="by_author_format">por %s</string>
@@ -543,4 +553,5 @@
     <string name="antiothers">Outras características indesejadas</string>
     <string name="antinsfw">Esta aplicativo contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
+    <string name="latest__empty_state__upgrading">Atualizando banco de dados…</string>
 </resources>
