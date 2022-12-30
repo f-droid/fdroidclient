@@ -1,4 +1,14 @@
-### 1.16-alpha0 (2022-12-19)
+### 1.16-alpha2 (2022-12-30)
+
+* Show upgrade notice after resetting the DB due to F-Droid or OS update.
+
+* Stop logging app URLs and filenames (#2500)
+
+* Use new strict release process which does not load dev tools during build
+
+* Fix numerous crashes
+
+### 1.16-alpha1 (2022-12-19)
 
 * Migrate custom repo configuration to new database (#2485)
 
