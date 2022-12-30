@@ -515,4 +515,5 @@
     <string name="antiothers">其他反特徵</string>
     <string name="antinsfw">此應用可能包含裸露、暴力、色情或冒犯等不適宜公眾場合的內容</string>
     <string name="menu_release_channel_beta">允許測試版更新</string>
+    <string name="latest__empty_state__upgrading">正在升級資料庫……</string>
 </resources>
