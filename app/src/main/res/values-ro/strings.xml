@@ -17,7 +17,7 @@
     <string name="no">Nu</string>
     <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
-    <string name="cancel">Renunță</string>
+    <string name="cancel">Anulaţi</string>
     <string name="enable">Activează</string>
     <string name="menu_search">Căutați</string>
     <string name="menu_launch">Deschideți</string>
@@ -537,4 +537,5 @@
     <string name="antiothers">Alte Anti-features</string>
     <string name="antinsfw">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
     <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
+    <string name="latest__empty_state__upgrading">Se actualizează baza de date…</string>
 </resources>
