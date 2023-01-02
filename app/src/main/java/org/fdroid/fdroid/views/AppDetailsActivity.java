@@ -826,9 +826,12 @@ public class AppDetailsActivity extends AppCompatActivity
         Apk apk = app.installedApk;
         if (apk == null) {
             apk = app.getMediaApkifInstalled(getApplicationContext());
-            if (apk == null && versions != null) {
-                // When the app isn't a media file - the above workaround refers to this.
-                apk = app.getInstalledApk(this, versions);
+            if (apk == null) {
+                List<Apk> versions = this.versions;
+                if (versions != null) {
+                    // When the app isn't a media file - the above workaround refers to this.
+                    apk = app.getInstalledApk(this, versions);
+                }
                 if (apk == null) {
                     Log.d(TAG, "Couldn't find installed apk for " + app.packageName);
                     Toast.makeText(this, R.string.uninstall_error_unknown, Toast.LENGTH_SHORT).show();
