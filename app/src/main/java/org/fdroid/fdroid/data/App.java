@@ -552,8 +552,13 @@ public class App implements Comparable<App>, Parcelable {
             if (!a.compatible) continue;
             // if we have a signature, but it doesn't match, don't use this APK
             if (mostAppropriateSignature != null && !a.sig.equals(mostAppropriateSignature)) continue;
+            // stable release channel is always allowed, otherwise must include given channel
+            final String stable = Apk.RELEASE_CHANNEL_STABLE;
+            boolean isReleaseChannelAllowed = stable.equals(releaseChannel) ?
+                    a.releaseChannels.contains(stable) :
+                    a.releaseChannels.contains(stable) || a.releaseChannels.contains(releaseChannel);
             // if the signature matches and we want the highest version code, take this as list is sorted.
-            if (a.releaseChannels.contains(releaseChannel)) {
+            if (isReleaseChannelAllowed) {
                 apk = a;
                 break;
             }
