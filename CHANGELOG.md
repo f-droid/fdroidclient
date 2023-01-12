@@ -1,3 +1,9 @@
+### 1.15.6 (2023-01-13)
+
+* Fix crash when app is downloading an app or updating repos in background #2482
+
+* Only load WifiApControl if it is going to be used, avoiding potential crashes.
+
 ### 1.15.5 (2022-12-19)
 
 * Fix swap to use index-v1.jar when available #2476
