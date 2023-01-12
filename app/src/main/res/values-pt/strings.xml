@@ -58,7 +58,7 @@
     <string name="unverified">Não verificada</string>
     <string name="repo_details">Repositório</string>
     <string name="repo_last_update">Última atualização</string>
-    <string name="not_on_same_wifi">O seu aparelho não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
+    <string name="not_on_same_wifi">O seu dispositivo não está ligado à mesma rede Wi-Fi do repositório local que acabou de adicionar! Tente ligar-se a esta rede: %s</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Sports_Health">Desporto e saúde</string>
     <string name="category_System">Sistema</string>
@@ -527,6 +527,6 @@
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiothers">Outras características indesejadas</string>
     <string name="antinsfw">Esta aplicação contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
-    <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
-    <string name="latest__empty_state__upgrading">Atualizando o banco de dados…</string>
+    <string name="menu_release_channel_beta">Permitir atualizações Beta</string>
+    <string name="latest__empty_state__upgrading">A atualizar a base de dados…</string>
 </resources>
