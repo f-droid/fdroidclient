@@ -163,8 +163,9 @@
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">A descarregar atualização para %1$d aplicação.</item>
-        <item quantity="other">A descarregar atualizações para %1$d aplicações.</item>
+        <item quantity="one">Descarregar atualização para %1$d aplicação.</item>
+        <item quantity="many">Descarregar atualizações para %1$d aplicações.</item>
+        <item quantity="other">Descarregar atualizações para %1$d aplicações.</item>
     </plurals>
     <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme as definições de Wi-Fi/dados móveis</string>
     <string name="repo_add_title">Adicionar novo repositório</string>
@@ -318,6 +319,7 @@
     <string name="category_Theming">Temas</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver (%d)</item>
+        <item quantity="many">Ver todas (%d)</item>
         <item quantity="other">Ver todas (%d)</item>
     </plurals>
     <string name="empty_installed_app_list">Não existem aplicações instaladas.
@@ -424,10 +426,12 @@
     <string name="notification_content_single_installed">Instalação feita com sucesso</string>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d atualização</item>
+        <item quantity="many">%1$d atualizações</item>
         <item quantity="other">%1$d atualizações</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d aplicação instalada</item>
+        <item quantity="many">%1$d aplicações instaladas</item>
         <item quantity="other">%1$d aplicações instaladas</item>
     </plurals>
     <string name="notification_title_summary_update_available">Atualização disponível</string>
