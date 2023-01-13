@@ -527,4 +527,6 @@
     <string name="antinonfreenet">Dịch vụ mạng không tự do</string>
     <string name="antiothers">Tính năng không mong muốn khác</string>
     <string name="antinsfw">Ứng dụng này chứa nội dung không nên được công khai ở mọi nơi</string>
+    <string name="latest__empty_state__upgrading">Đang nâng cấp cơ sở dữ liệu…</string>
+    <string name="menu_release_channel_beta">Cho phép bản cập nhật beta</string>
 </resources>

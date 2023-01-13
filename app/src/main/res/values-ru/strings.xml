@@ -294,7 +294,7 @@
     <string name="app_version_x_installed">Версия %1$s</string>
     <string name="app_new">Новое</string>
     <string name="app_list__name__successfully_installed">%1$s установлено</string>
-    <string name="categories__empty_state__no_categories">Нет категорий для показа</string>
+    <string name="categories__empty_state__no_categories">Нет категорий для отображения</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Показать %d</item>
         <item quantity="few">Показать все %d</item>

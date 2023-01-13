@@ -1,0 +1,6 @@
+* Modernização completa do código de descarregamento, índice e base de dados.   Deve ser mais rápido e mais resiliente, usando menos largura de banda. Também é mais fácil de manter com um conjunto de testes muito melhorado.
+
+* Correções: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
+  #2412 #2436 #2442 #2443 #2444 #1971
+
+* Novo idioma: cantonês (yue)

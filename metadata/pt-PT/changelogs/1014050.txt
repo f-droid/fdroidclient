@@ -1,13 +1,17 @@
-* Revisão do menu Partilhar.
+* Menu Partilhar revisto
 
-* Fluxo de trabalho e a navegação nas proximidades melhoradas com muitas correções.
+* Fluxo de trabalho e a navegação melhoradas e muitas correções
 
-* Melhorias no design do material (@proletarius101)
+* Melhorias em "material"
 
-* Apps sem ícone em PNG são agora mostradas na Última Aba (@ashutoshgngwr)
+* As aplicações sem ícone PNG são agora mostradas na última aba
 
-* Melhorada a partilha off-line e nas proximidades
+* Gestão de ícones melhorada com dados/WiFi limitados
 
-* Bloqueada a adição de novos repositórios quando o administrador do aparelho não permite instalação de "Fontes desconhecidas"
+* Suporte a mais digitalizadores de códigos de barras
 
-* Corrigida falha ao usar repositórios com nome de utilizador/palavra-passe
+* Permitir escolher que características indesejadas mostrar
+
+* Bloqueada adição de repositórios quando a instalação de "Fontes desconhecidas" está desativada
+
+* Removida configuração "permitir pedidos push"

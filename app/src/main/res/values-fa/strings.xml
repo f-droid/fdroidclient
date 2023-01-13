@@ -148,7 +148,7 @@
     <string name="category_Internet">اینترنت</string>
     <string name="category_Money">مالی</string>
     <string name="category_Multimedia">چندرسانه‌ای</string>
-    <string name="category_Navigation">ناوش</string>
+    <string name="category_Navigation">ناوبری</string>
     <string name="category_Phone_SMS">تلفن و پیامک</string>
     <string name="category_Reading">خواندن</string>
     <string name="category_Science_Education">علم و آموزش</string>
@@ -529,4 +529,5 @@
     <string name="antiothers">دیگر پادویژگی‌ها</string>
     <string name="antinsfw">این کاره محتوایی دارد که نباید عمومی شده یا همه‌حا نمایان باشد</string>
     <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
+    <string name="latest__empty_state__upgrading">ارتقا دادن پایگاه داده…</string>
 </resources>

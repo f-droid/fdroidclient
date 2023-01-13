@@ -1,0 +1,17 @@
+* Otomatis memangkas atau menghapus cache ktka ruang penyimpanan rendah
+
+* Peningkatan kinerja pd perangkat memori rendah
+
+* Buat semua unduhan menghormati preferensi "Hanya pada Wi-Fi"
+
+* Mengurangi penggunaan memori saat perangkat hampir hbs
+
+* Tambah mirror khusus ke repo dgn klik tautan, pindai kode QR, dll.
+
+* Pemilihan cermin otomatis ditingkatkan
+
+* Perbaikan kutu Tukar/Di Sekitar
+
+* Perbaiki penyebab notifikasi pembaruan berulang (#1271)
+
+* Buat F-Droid kenali URL malam F-Droid dr GitLab

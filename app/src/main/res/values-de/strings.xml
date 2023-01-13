@@ -19,7 +19,7 @@
     <string name="app_details">App-Details</string>
     <string name="no_such_app">Keine solche App gefunden.</string>
     <string name="about_title">Über F-Droid</string>
-    <string name="about_site">Internetseite</string>
+    <string name="about_site">Website</string>
     <string name="about_version">Version</string>
     <string name="app_installed">Installiert</string>
     <string name="app_not_installed">Nicht installiert</string>
@@ -536,4 +536,5 @@
     <string name="antiothers">Andere unerwünschte Merkmale</string>
     <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
     <string name="menu_release_channel_beta">Beta-Updates zulassen</string>
+    <string name="latest__empty_state__upgrading">Datenbank wird aktualisiert…</string>
 </resources>

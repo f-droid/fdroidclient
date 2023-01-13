@@ -520,4 +520,5 @@
     <string name="antiothers">Anti-fitur lainnya</string>
     <string name="antinsfw">Aplikasi ini berisi konten yang tidak boleh dipublikasikan atau terlihat di mana-mana</string>
     <string name="menu_release_channel_beta">Perbolehkan Pembaruan Beta</string>
+    <string name="latest__empty_state__upgrading">Meningkatkan basis data…</string>
 </resources>
