@@ -41,6 +41,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nullable;
+
 /**
  * WifiApControl provides control over Wi-Fi APs using the singleton pattern.
  * Even though isSupported should be reliable, the underlying hidden APIs that
@@ -63,32 +65,6 @@ final public class WifiApControl {
 	private static Method getWifiApStateMethod;
 	private static Method isWifiApEnabledMethod;
 	private static Method setWifiApEnabledMethod;
-
-	static {
-		try {
-			for (Method method : WifiManager.class.getDeclaredMethods()) {
-				switch (method.getName()) {
-					case "getWifiApConfiguration":
-						getWifiApConfigurationMethod = method;
-						break;
-					case "getWifiApState":
-						getWifiApStateMethod = method;
-						break;
-					case "isWifiApEnabled":
-						isWifiApEnabledMethod = method;
-						break;
-					case "setWifiApEnabled":
-						setWifiApEnabledMethod = method;
-						break;
-				}
-			}
-		} catch (Exception e) {
-			if (BuildConfig.DEBUG) {
-				throw e;
-			}
-			Log.e(TAG, "WifiManager failed to init", e);
-		}
-	}
 
 	public static final int WIFI_AP_STATE_DISABLING = 10;
 	public static final int WIFI_AP_STATE_DISABLED  = 11;
@@ -133,6 +109,7 @@ final public class WifiApControl {
 
 	// getInstance is a standard singleton instance getter, constructing
 	// the actual class when first called.
+	@Nullable
 	public static WifiApControl getInstance(Context context) {
 		if (instance == null) {
 			if (!Settings.System.canWrite(context)) {
@@ -140,13 +117,30 @@ final public class WifiApControl {
 				return null;
 			}
 			try {
+				for (Method method : WifiManager.class.getDeclaredMethods()) {
+					switch (method.getName()) {
+						case "getWifiApConfiguration":
+							getWifiApConfigurationMethod = method;
+							break;
+						case "getWifiApState":
+							getWifiApStateMethod = method;
+							break;
+						case "isWifiApEnabled":
+							isWifiApEnabledMethod = method;
+							break;
+						case "setWifiApEnabled":
+							setWifiApEnabledMethod = method;
+							break;
+					}
+				}
 				instance = new WifiApControl(context);
 				instance.isEnabled();  // make sure this instance works
-			} catch (Exception e) {
+			} catch (Throwable e) {
 				if (BuildConfig.DEBUG) {
 					throw e;
 				}
 				Log.e(TAG, "WifiManager failed to init", e);
+				return null;
 			}
 		}
 		return instance;
