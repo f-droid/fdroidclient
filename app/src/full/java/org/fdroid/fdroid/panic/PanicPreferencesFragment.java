@@ -31,6 +31,8 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import info.guardianproject.panic.Panic;
@@ -164,10 +166,8 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
     private void showPanicApp(String packageName) {
         // Fill list of available panic apps
-        ArrayList<CharSequence> entries = new ArrayList<>();
-        ArrayList<CharSequence> entryValues = new ArrayList<>();
-        entries.add(0, getString(R.string.panic_app_setting_none));
-        entryValues.add(0, Panic.PACKAGE_NAME_NONE);
+        List<CharSequence> entries = new ArrayList<>(Collections.singletonList(getString(R.string.panic_app_setting_none)));
+        List<CharSequence> entryValues = new ArrayList<>(Collections.singletonList(Panic.PACKAGE_NAME_NONE));
 
         for (ResolveInfo resolveInfo : PanicResponder.resolveTriggerApps(pm)) {
             if (resolveInfo.activityInfo == null) continue;

@@ -15,8 +15,7 @@ import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.operator.jcajce.JcaDigestCalculatorProviderBuilder;
 import org.bouncycastle.util.Store;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 /**
  *
@@ -29,12 +28,9 @@ public class SignatureBlockGenerator {
      */
     public static byte[] generate(KeySet keySet, byte[] content) {
         try {
-            List certList = new ArrayList();
             CMSTypedData msg = new CMSProcessableByteArray(content);
 
-            certList.add(keySet.getPublicKey());
-
-            Store certs = new JcaCertStore(certList);
+            Store certs = new JcaCertStore(Collections.singletonList(keySet.getPublicKey()));
 
             CMSSignedDataGenerator gen = new CMSSignedDataGenerator();
 
