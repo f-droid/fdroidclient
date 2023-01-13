@@ -10,6 +10,10 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
+
 import org.fdroid.database.AppManifest;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.Repository;
@@ -31,10 +35,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.zip.ZipFile;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
 
 /**
  * Represents a single package of an application. This represents one particular
@@ -462,7 +462,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
             // so we don't make any changes for apps targetting 33 or above
         }
 
-        requestedPermissions = set.toArray(new String[set.size()]);
+        requestedPermissions = set.toArray(new String[0]);
     }
 
     /**

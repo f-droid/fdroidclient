@@ -7,6 +7,8 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.text.TextUtils;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -14,8 +16,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public final class Languages {
     public static final String TAG = "Languages";
@@ -136,7 +136,7 @@ public final class Languages {
      * match what is returned by {@link Languages#getSupportedLocales()}.
      */
     public String[] getAllNames() {
-        return nameMap.values().toArray(new String[nameMap.size()]);
+        return nameMap.values().toArray(new String[0]);
     }
 
     /**
@@ -144,7 +144,7 @@ public final class Languages {
      */
     public String[] getSupportedLocales() {
         Set<String> keys = nameMap.keySet();
-        return keys.toArray(new String[keys.size()]);
+        return keys.toArray(new String[0]);
     }
 
     private String capitalize(final String line) {
