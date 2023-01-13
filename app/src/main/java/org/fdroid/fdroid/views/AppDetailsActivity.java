@@ -48,6 +48,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
@@ -585,9 +586,8 @@ public class AppDetailsActivity extends AppCompatActivity
                     if (!TextUtils.isEmpty(errorMessage) && !isFinishing()) {
                         Log.e(TAG, "install aborted with errorMessage: " + errorMessage);
 
-                        String title = String.format(
-                                getString(R.string.install_error_notify_title),
-                                app.name);
+                        String title = getString(R.string.install_error_notify_title,
+                                app == null ? "" : app.name);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
                         alertBuilder.setTitle(title);
@@ -722,7 +722,8 @@ public class AppDetailsActivity extends AppCompatActivity
     private void onVersionsChanged(List<AppVersion> appVersions) {
         List<Apk> apks = new ArrayList<>(appVersions.size());
         for (AppVersion appVersion : appVersions) {
-            Apk apk = new Apk(appVersion);
+            Repository repo = FDroidApp.getRepo(appVersion.getRepoId());
+            Apk apk = new Apk(appVersion, repo);
             apk.setCompatibility(checker);
             apks.add(apk);
         }
@@ -825,9 +826,12 @@ public class AppDetailsActivity extends AppCompatActivity
         Apk apk = app.installedApk;
         if (apk == null) {
             apk = app.getMediaApkifInstalled(getApplicationContext());
-            if (apk == null && versions != null) {
-                // When the app isn't a media file - the above workaround refers to this.
-                apk = app.getInstalledApk(this, versions);
+            if (apk == null) {
+                List<Apk> versions = this.versions;
+                if (versions != null) {
+                    // When the app isn't a media file - the above workaround refers to this.
+                    apk = app.getInstalledApk(this, versions);
+                }
                 if (apk == null) {
                     Log.d(TAG, "Couldn't find installed apk for " + app.packageName);
                     Toast.makeText(this, R.string.uninstall_error_unknown, Toast.LENGTH_SHORT).show();

@@ -111,7 +111,7 @@ public class AddRepoIntentService extends IntentService {
      */
     public static String normalizeUrl(String urlString) throws URISyntaxException {
         if (TextUtils.isEmpty(urlString)) {
-            return null;
+            throw new URISyntaxException("null", "Uri was empty");
         }
         return normalizeUrl(Uri.parse(urlString));
     }

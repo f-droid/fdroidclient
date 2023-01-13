@@ -58,13 +58,11 @@ public class NotificationHelper {
 
     private final Context context;
     private final NotificationManagerCompat notificationManager;
-    private final AppUpdateStatusManager appUpdateStatusManager;
     private final ArrayList<AppUpdateStatusManager.AppUpdateStatus> updates = new ArrayList<>();
     private final ArrayList<AppUpdateStatusManager.AppUpdateStatus> installed = new ArrayList<>();
 
     NotificationHelper(Context context) {
         this.context = context;
-        appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
         notificationManager = NotificationManagerCompat.from(context);
 
         final NotificationChannelCompat installChannel = new NotificationChannelCompat.Builder(CHANNEL_INSTALLS,
@@ -100,6 +98,7 @@ public class NotificationHelper {
                     return;
                 }
 
+                AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
                 AppUpdateStatusManager.AppUpdateStatus entry;
                 String url;
                 switch (intent.getAction()) {
@@ -160,6 +159,7 @@ public class NotificationHelper {
         updates.clear();
         installed.clear();
 
+        AppUpdateStatusManager appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
         for (AppUpdateStatusManager.AppUpdateStatus entry : appUpdateStatusManager.getAll()) {
             if (entry.status == AppUpdateStatusManager.Status.Installed) {
                 installed.add(entry);

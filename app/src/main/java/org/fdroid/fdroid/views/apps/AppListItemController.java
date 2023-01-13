@@ -30,8 +30,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.AppUpdateStatusManager.AppUpdateStatus;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -547,7 +549,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             disposable = Utils.runOffUiThread(() -> {
                 AppVersion version = updateChecker.getSuggestedVersion(app.packageName,
                         app.preferredSigner, releaseChannels);
-                return version == null ? null : new Apk(version);
+                if (version == null) return null;
+                Repository repo = FDroidApp.getRepo(version.getRepoId());
+                return new Apk(version, repo);
             }, receivedApk -> {
                     if (receivedApk != null) InstallManagerService.queue(activity, app, receivedApk);
                 });

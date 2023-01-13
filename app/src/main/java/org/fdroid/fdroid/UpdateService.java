@@ -541,13 +541,15 @@ public class UpdateService extends JobIntentService {
         App updateLastApp = null;
         Apk updateLastApk = null;
         for (UpdatableApp app : apps) {
+            Repository repo = FDroidApp.getRepo(app.getUpdate().getRepoId());
+            if (repo == null) continue; // repo could have been removed in the meantime
             // update our own APK at the end
             if (TextUtils.equals(ourPackageName, app.getUpdate().getPackageName())) {
                 updateLastApp = new App(app);
-                updateLastApk = new Apk(app.getUpdate());
+                updateLastApk = new Apk(app.getUpdate(), repo);
                 continue;
             }
-            InstallManagerService.queue(context, new App(app), new Apk(app.getUpdate()));
+            InstallManagerService.queue(context, new App(app), new Apk(app.getUpdate(), repo));
         }
         if (updateLastApp != null) {
             InstallManagerService.queue(context, updateLastApp, updateLastApk);

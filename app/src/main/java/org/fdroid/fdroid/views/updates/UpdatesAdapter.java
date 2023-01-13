@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager;
 
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.UpdatableApp;
@@ -133,7 +135,8 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         for (UpdatableApp updatableApp: apps) {
             App app = new App(updatableApp);
-            Apk apk = new Apk(updatableApp.getUpdate());
+            Repository repo = FDroidApp.getRepo(updatableApp.getUpdate().getRepoId());
+            Apk apk = new Apk(updatableApp.getUpdate(), repo);
             if (updatableApp.getHasKnownVulnerability()) {
                 app.installedApk = apk;
                 knownVulnApps.add(new KnownVulnApp(activity, app, apk));
