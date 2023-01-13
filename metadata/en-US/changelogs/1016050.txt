@@ -1,7 +1,7 @@
+Complete modernization of download, index, and database code. Faster and more resilient while using less bandwidth. Also more maintainable with a greatly improved test suite. Fixes lots of crashes and long-standing bugs.
 
-* Complete modernization of download, index, and database code.  Should be faster and more resilient while using less bandwidth.  It is also more maintainable with a greatly improved test suite.
+* Works better on affordable devices with less memory
 
-* Fixes: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
-  #2412 #2436 #2442 #2443 #2444 #1971
+* Fixes #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
 
 * New language: Cantonese (yue)

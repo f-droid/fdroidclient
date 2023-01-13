@@ -1,3 +1,13 @@
+### 1.16-alpha3 (2023-01-13)
+
+* Fix assorted crashes, including one related to WiFi Hotspot mode #2477
+
+* Fix including additional repos from the ROM #2503
+
+* Handle users with a thousand apps or more installed #2505
+
+* Fix release channel logic so stable updates are always allowed #2508
+
 ### 1.16-alpha2 (2022-12-30)
 
 * Show upgrade notice after resetting the DB due to F-Droid or OS update.
@@ -28,6 +38,12 @@
   #2412 #2436 #2442 #2443 #2444 #1971
 
 * Known bugs: #2446 #2447 #2475
+
+### 1.15.6 (2023-01-13)
+
+* Fix crash when app is downloading an app or updating repos in background #2482
+
+* Only load WifiApControl if it is going to be used, avoiding potential crashes.
 
 ### 1.15.5 (2022-12-19)
 
