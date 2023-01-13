@@ -139,7 +139,8 @@ public class DBHelper {
         List<String> defaultRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
         if (defaultRepos.size() % REPO_XML_ITEM_COUNT != 0) {
             throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
-                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
+                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT +
+                    ") != 0, FYI the priority item was removed in v1.16");
         }
 
         List<String> repos = new ArrayList<>(additionalRepos.size() + defaultRepos.size());
