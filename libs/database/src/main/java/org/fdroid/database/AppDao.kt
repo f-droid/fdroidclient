@@ -8,6 +8,7 @@ import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.map
 import androidx.room.Dao
 import androidx.room.Insert
@@ -480,6 +481,9 @@ internal interface AppDaoInt : AppDao {
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
 
+    /**
+     * Warning: Can not be called with more than 999 [packageNames].
+     */
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
@@ -497,7 +501,40 @@ internal interface AppDaoInt : AppDao {
         val installedPackages = packageManager.getInstalledPackages(0)
             .associateBy { packageInfo -> packageInfo.packageName }
         val packageNames = installedPackages.keys.toList()
-        return getAppListItems(packageNames).map(packageManager, installedPackages)
+        return if (packageNames.size <= 999) {
+            getAppListItems(packageNames).map(packageManager, installedPackages)
+        } else {
+            AppListLiveData().apply {
+                packageNames.chunked(999) { addSource(getAppListItems(it)) }
+            }.map(packageManager, installedPackages)
+        }
+    }
+
+    private class AppListLiveData : MediatorLiveData<List<AppListItem>>() {
+        private val list = ArrayList<LiveData<List<AppListItem>>>()
+
+        /**
+         * Adds the given [liveData] and updates [getValue] with a union of all lists
+         * once all added [liveData]s changed to a non-null list value.
+         */
+        fun addSource(liveData: LiveData<List<AppListItem>>) {
+            list.add(liveData)
+            addSource(liveData) {
+                var shouldUpdate = true
+                val result = list.flatMap {
+                    it.value ?: run {
+                        shouldUpdate = false
+                        emptyList()
+                    }
+                }
+                if (shouldUpdate) value = result.sortedWith { i1, i2 ->
+                    // we need to re-sort the result, because each liveData is only sorted in itself
+                    val n1 = i1.name ?: ""
+                    val n2 = i2.name ?: ""
+                    n1.compareTo(n2, ignoreCase = true)
+                }
+            }
+        }
     }
 
     //

@@ -20,6 +20,7 @@ import kotlin.random.Random
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
@@ -424,6 +425,45 @@ internal class AppListItemsTest : AppTest() {
         appDao.getInstalledAppListItems(pm).getOrFail().let { apps ->
             assertEquals(0, apps.size)
         }
+    }
+
+    @Test
+    fun testGetInstalledAppListItemsMaxVars() {
+        // insert an app
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName, app1, locales)
+
+        val packageInfoCreator = { name: String ->
+            @Suppress("DEPRECATION")
+            PackageInfo().apply {
+                packageName = name
+                versionName = name
+                versionCode = Random.nextInt(1, Int.MAX_VALUE)
+            }
+        }
+        val packageInfo = packageInfoCreator(packageName)
+
+        // sqlite has a maximum number of 999 variables that can be used in a query
+        val listPackageInfo = listOf(packageInfo)
+        val packageInfoOk = MutableList(999) { packageInfoCreator(getRandomString()) }
+        val packageInfoNotOk1 = MutableList(1000) { packageInfoCreator(getRandomString()) }
+        val packageInfoNotOk2 = MutableList(5000) { packageInfoCreator(getRandomString()) }
+
+        // app gets returned no matter how many packages are installed
+        every { pm.getInstalledPackages(0) } returns packageInfoOk + listPackageInfo
+        assertEquals(1, appDao.getInstalledAppListItems(pm).getOrFail().size)
+        every { pm.getInstalledPackages(0) } returns packageInfoNotOk1 + listPackageInfo
+        assertEquals(1, appDao.getInstalledAppListItems(pm).getOrFail().size)
+        every { pm.getInstalledPackages(0) } returns packageInfoNotOk2 + listPackageInfo
+        assertEquals(1, appDao.getInstalledAppListItems(pm).getOrFail().size)
+
+        // ensure they have version info set
+        every { pm.getInstalledPackages(0) } returns packageInfoOk + listPackageInfo
+        assertNotNull(appDao.getInstalledAppListItems(pm).getOrFail()[0].installedVersionName)
+        every { pm.getInstalledPackages(0) } returns packageInfoNotOk1 + listPackageInfo
+        assertNotNull(appDao.getInstalledAppListItems(pm).getOrFail()[0].installedVersionName)
+        every { pm.getInstalledPackages(0) } returns packageInfoNotOk2 + listPackageInfo
+        assertNotNull(appDao.getInstalledAppListItems(pm).getOrFail()[0].installedVersionName)
     }
 
     /**

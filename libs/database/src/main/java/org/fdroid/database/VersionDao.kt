@@ -177,6 +177,11 @@ internal interface VersionDaoInt : VersionDao {
      * Used for finding versions that are an update,
      * so takes [AppPrefs.ignoreVersionCodeUpdate] into account.
      */
+    fun getVersions(packageNames: List<String>): List<Version> {
+        return if (packageNames.size <= 999) getVersionsInternal(packageNames)
+        else packageNames.chunked(999).flatMap { getVersionsInternal(it) }
+    }
+
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM ${Version.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
@@ -185,7 +190,7 @@ internal interface VersionDaoInt : VersionDao {
               manifest_versionCode > COALESCE(appPrefs.ignoreVersionCodeUpdate, 0) AND
               packageName IN (:packageNames)
         ORDER BY manifest_versionCode DESC, pref.weight DESC""")
-    fun getVersions(packageNames: List<String>): List<Version>
+    fun getVersionsInternal(packageNames: List<String>): List<Version>
 
     @Query("""SELECT * FROM ${VersionedString.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName""")
