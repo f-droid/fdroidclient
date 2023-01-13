@@ -102,6 +102,22 @@ public class SuggestedVersionTest {
         assertSuggested(app, apks, suggestedVersion, releaseChannel, true);
     }
 
+    @Test
+    public void testIncompatibleWithBeta() {
+        App singleApp = TestUtils.getApp();
+        singleApp.installedVersionCode = 1;
+        singleApp.installedSig = TestUtils.FDROID_SIG;
+        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        apk3.compatible = false;
+        List<Apk> apks = new ArrayList<>();
+        apks.add(apk3);
+        apks.add(apk2);
+        apks.add(apk1);
+        assertSuggested(singleApp, apks, 2, Apk.RELEASE_CHANNEL_BETA);
+    }
+
     /**
      * Checks that the app exists, that its suggested version code is correct, and that the apk which is "suggested"
      * has the correct signature.
