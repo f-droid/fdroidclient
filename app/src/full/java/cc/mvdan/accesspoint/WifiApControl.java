@@ -46,8 +46,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
-import javax.annotation.Nullable;
-
 /**
  * WifiApControl provides control over Wi-Fi APs using the singleton pattern.
  * Even though isSupported should be reliable, the underlying hidden APIs that
@@ -114,7 +112,6 @@ final public class WifiApControl {
 
 	// getInstance is a standard singleton instance getter, constructing
 	// the actual class when first called.
-	@Nullable
 	public static WifiApControl getInstance(Context context) {
 		if (instance == null) {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.System.canWrite(context)) {
