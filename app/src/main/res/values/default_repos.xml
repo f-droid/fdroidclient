@@ -15,8 +15,6 @@
         <item>13</item>
         <!-- enabled -->
         <item>0</item>
-        <!-- priority -->
-        <item>1</item>
         <!-- push requests -->
         <item>ignore</item>
         <!-- pubkey -->
@@ -35,8 +33,6 @@
         <item>13</item>
         <!-- enabled -->
         <item>1</item>
-        <!-- priority -->
-        <item>2</item>
         <!-- push requests -->
         <item>ignore</item>
         <!-- pubkey -->
@@ -56,8 +52,6 @@
         <item>13</item>
         <!-- enabled -->
         <item>0</item>
-        <!-- priority -->
-        <item>3</item>
         <!-- push requests -->
         <item>ignore</item>
         <!-- pubkey -->
@@ -78,8 +72,6 @@
         <item>13</item>
         <!-- enabled -->
         <item>0</item>
-        <!-- priority -->
-        <item>4</item>
         <!-- push requests -->
         <item>ignore</item>
         <!-- pubkey -->

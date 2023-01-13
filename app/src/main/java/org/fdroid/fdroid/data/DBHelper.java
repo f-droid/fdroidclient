@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -58,7 +59,7 @@ import java.util.List;
 public class DBHelper {
 
     private static final String TAG = "DBHelper";
-    static final int REPO_XML_ITEM_COUNT = 8;
+    static final int REPO_XML_ITEM_COUNT = 7;
 
     public static FDroidDatabase getDb(Context context) {
         return FDroidDatabaseHolder.getDb(context, "fdroid_db", db -> prePopulateDb(context, db));
@@ -68,15 +69,16 @@ public class DBHelper {
     @VisibleForTesting
     static void prePopulateDb(Context context, FDroidDatabase db) {
         List<String> initialRepos = DBHelper.loadInitialRepos(context);
+        int weight = 1;
         for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
             InitialRepository repo = new InitialRepository(
                     initialRepos.get(i), // name
                     initialRepos.get(i + 1), // address
                     initialRepos.get(i + 2), // description
-                    initialRepos.get(i + 7),  // certificate
+                    initialRepos.get(i + 6),  // certificate
                     Integer.parseInt(initialRepos.get(i + 3)), // version
                     initialRepos.get(i + 4).equals("1"), // enabled
-                    Integer.parseInt(initialRepos.get(i + 5))  // weight
+                    weight++ // weight
             );
             db.getRepositoryDao().insert(repo);
         }
@@ -125,22 +127,33 @@ public class DBHelper {
      */
     static List<String> loadInitialRepos(Context context) throws IllegalArgumentException {
         String packageName = context.getPackageName();
-        List<String> initialRepos = DBHelper.loadAdditionalRepos(packageName);
-        List<String> defaultRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
-        initialRepos.addAll(defaultRepos);
 
-        if (initialRepos.size() % REPO_XML_ITEM_COUNT != 0) {
-            throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
-                    initialRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
+        // get additional repos from OS (lowest priority/weight)
+        List<String> additionalRepos = DBHelper.loadAdditionalRepos(packageName);
+        if (additionalRepos.size() % REPO_XML_ITEM_COUNT != 0) {
+            throw new IllegalArgumentException("additional_repos.xml has wrong item count: " +
+                    additionalRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT + ") != 0");
         }
+
+        // get our own default repos (higher priority/weight)
+        List<String> defaultRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
+        if (defaultRepos.size() % REPO_XML_ITEM_COUNT != 0) {
+            throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
+                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT +
+                    ") != 0, FYI the priority item was removed in v1.16");
+        }
+
+        List<String> repos = new ArrayList<>(additionalRepos.size() + defaultRepos.size());
+        repos.addAll(additionalRepos);
+        repos.addAll(defaultRepos);
 
         final int descriptionIndex = 2;
-        for (int i = descriptionIndex; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
-            String description = initialRepos.get(i);
-            initialRepos.set(i, description.replaceAll("\\s+", " "));
+        for (int i = descriptionIndex; i < repos.size(); i += REPO_XML_ITEM_COUNT) {
+            String description = repos.get(i);
+            repos.set(i, description.replaceAll("\\s+", " "));
         }
 
-        return initialRepos;
+        return repos;
     }
 
     /**
@@ -207,11 +220,6 @@ public class DBHelper {
             eventType = parser.next();
         }
         xmlInputStream.close();
-
-        final int priorityIndex = 5;
-        for (int i = priorityIndex; i < repoItems.size(); i += REPO_XML_ITEM_COUNT) {
-            repoItems.add(i, "0");
-        }
 
         if (repoItems.size() % REPO_XML_ITEM_COUNT == 0) {
             return repoItems;
