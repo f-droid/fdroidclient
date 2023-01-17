@@ -33,10 +33,11 @@ final class ContentProviderMigrator {
         int weight = repos.isEmpty() ? 0 : repos.get(repos.size() - 1).getWeight();
 
         try (SQLiteDatabase oldDb = new ContentProviderDbHelper(context).getReadableDatabase()) {
-            String[] projection = new String[]{"address", "pubkey", "inuse", "userMirrors", "disabledMirrors",
+            String[] projection = new String[]{"name", "address", "pubkey", "inuse", "userMirrors", "disabledMirrors",
                     "username", "password"};
             try (Cursor c = oldDb.query("fdroid_repo", projection, null, null, null, null, null)) {
                 while (c.moveToNext()) {
+                    String name = c.getString(c.getColumnIndexOrThrow("name"));
                     String address = c.getString(c.getColumnIndexOrThrow("address"));
                     String certificateDb = c.getString(c.getColumnIndexOrThrow("pubkey"));
                     if (certificateDb == null) continue;
@@ -59,7 +60,7 @@ final class ContentProviderMigrator {
                     }
                     // add new repo if not existing
                     if (repo == null) { // new repo to be added to new DB
-                        InitialRepository newRepo = new InitialRepository("", address, "", certificate,
+                        InitialRepository newRepo = new InitialRepository(name, address, "", certificate,
                                 0, enabled, ++weight);
                         long repoId = repoDao.insert(newRepo);
                         repo = ObjectsCompat.requireNonNull(repoDao.getRepository(repoId));
