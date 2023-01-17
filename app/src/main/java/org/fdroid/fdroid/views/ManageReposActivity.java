@@ -265,7 +265,24 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             String msg = getDisallowInstallUnknownSourcesErrorMessage(this);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
         } else {
-            new AddRepo(newAddress, newFingerprint, username, password);
+            // temporary hack until we clean up this activity
+            if (FDroidApp.repos == null) {
+                Utils.runOffUiThread(() -> {
+                    while (FDroidApp.repos == null) {
+                        if (isFinishing() || isDestroyed()) return false;
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            Log.e(TAG, "Interrupted while waiting for repos ", e);
+                        }
+                    }
+                    return true;
+                }, (result) -> {
+                        if (result) new AddRepo(newAddress, newFingerprint, username, password);
+                    });
+            } else {
+                new AddRepo(newAddress, newFingerprint, username, password);
+            }
         }
     }
 
