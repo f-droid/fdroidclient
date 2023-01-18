@@ -623,11 +623,11 @@ public final class Utils {
 
         if (days < 1) {
             return res.getString(R.string.details_last_updated_today);
-        } else if (weeks < 1) {
+        } else if (weeks < 3) {
             return res.getQuantityString(R.plurals.details_last_update_days, (int) days, days);
-        } else if (months < 1) {
+        } else if (months < 2) {
             return res.getQuantityString(R.plurals.details_last_update_weeks, (int) weeks, weeks);
-        } else if (years < 1) {
+        } else if (years < 2) {
             return res.getQuantityString(R.plurals.details_last_update_months, (int) months, months);
         } else {
             return res.getQuantityString(R.plurals.details_last_update_years, (int) years, years);

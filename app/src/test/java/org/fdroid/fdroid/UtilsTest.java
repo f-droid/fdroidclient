@@ -191,5 +191,13 @@ public class UtilsTest {
                 "Updated 3 days ago",
                 Utils.formatLastUpdated(res, now - 234834870L)
         );
+        assertEquals(
+                "Updated 13 days ago",
+                Utils.formatLastUpdated(res, now - DateUtils.DAY_IN_MILLIS * 13 - offset)
+        );
+        assertEquals(
+                "Updated 7 months ago",
+                Utils.formatLastUpdated(res, now - DateUtils.DAY_IN_MILLIS * 30 * 7 + offset)
+        );
     }
 }
