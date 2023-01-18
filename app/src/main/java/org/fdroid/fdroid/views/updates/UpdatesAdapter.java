@@ -101,7 +101,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private void loadUpdatableApps() {
         List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
         if (disposable != null) disposable.dispose();
-        disposable = Utils.runOffUiThread(() -> updateChecker.getUpdatableApps(releaseChannels),
+        disposable = Utils.runOffUiThread(() -> updateChecker.getUpdatableApps(releaseChannels, true),
                 this::onCanUpdateLoadFinished);
     }
 

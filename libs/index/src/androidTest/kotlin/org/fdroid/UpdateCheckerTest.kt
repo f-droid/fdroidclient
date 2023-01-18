@@ -71,7 +71,8 @@ internal class UpdateCheckerTest {
         // version with empty release channels gets returned
         assertEquals(version3, updateChecker.getUpdate(versions))
         // version with empty release channels gets returned when allowing also beta
-        assertEquals(version3,
+        assertEquals(
+            version3,
             updateChecker.getUpdate(versions, allowedReleaseChannels = betaChannels)
         )
         // version with empty release channels gets returned when allow list is empty
@@ -134,9 +135,30 @@ internal class UpdateCheckerTest {
     fun installedVulnerableVersionAlwaysReturned() {
         val version3 = version3.copy(hasKnownVulnerability = true)
         val versions = listOf(version3, version2, version1)
-        assertEquals(version3, updateChecker.getUpdate(versions))
-        assertEquals(version3, updateChecker.getUpdate(versions, installedVersionCode = 3))
-        assertEquals(version3, updateChecker.getUpdate(versions, installedVersionCode = 2))
+        assertEquals(
+            version3,
+            updateChecker.getUpdate(versions, includeKnownVulnerabilities = true)
+        )
+        assertEquals(
+            version3,
+            updateChecker.getUpdate(
+                versions,
+                installedVersionCode = 3,
+                includeKnownVulnerabilities = true,
+            )
+        )
+        assertEquals(
+            version3,
+            updateChecker.getUpdate(
+                versions,
+                installedVersionCode = 2,
+                includeKnownVulnerabilities = true,
+            )
+        )
+        // when not asking for known vulnerabilities, version3 isn't returned (no update here)
+        assertNull(
+            updateChecker.getUpdate(versions, installedVersionCode = 3)
+        )
     }
 
     private fun getWithAllowReleaseChannels(
