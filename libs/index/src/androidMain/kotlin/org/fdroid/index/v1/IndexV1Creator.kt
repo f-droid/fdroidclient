@@ -11,6 +11,7 @@ import kotlinx.serialization.json.encodeToStream
 import org.fdroid.index.IndexCreator
 import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexUtils.getPackageSigner
+import org.fdroid.index.IndexUtils.getsig
 import java.io.File
 import java.io.IOException
 
@@ -82,6 +83,7 @@ public class IndexV1Creator(
         val apk = copyApkToRepo(packageInfo)
         val hash = hashFile(apk)
         val apkName = apk.name
+        val sig = getsig(packageInfo.signatures[0].toByteArray())
         val signer = getPackageSigner(packageInfo.signatures[0].toByteArray())
         return PackageV1(
             packageName = packageInfo.packageName,
@@ -92,7 +94,7 @@ public class IndexV1Creator(
             apkName = apkName,
             hash = hash,
             hashType = "sha256",
-            sig = signer, // should be some custom MD5/hex thing, but it works without...
+            sig = sig,
             signer = signer,
             size = File(packageInfo.applicationInfo.publicSourceDir).length(),
             minSdkVersion = if (SDK_INT >= 24) packageInfo.applicationInfo.minSdkVersion else null,

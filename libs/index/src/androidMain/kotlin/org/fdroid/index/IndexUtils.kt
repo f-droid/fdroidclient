@@ -25,6 +25,22 @@ public object IndexUtils {
         return sha256(signerBytes).toHex()
     }
 
+    /**
+     * Get the fingerprint used to represent an APK signing key in F-Droid.
+     * This is a custom fingerprint algorithm that was kind of accidentally
+     * created.  It is now here only for backwards compatibility.  It should
+     * only ever be used for writing the `sig` value out to
+     * `index-v1.json`.
+     *
+     * @see getPackageSigner
+     * @see org.fdroid.fdroid.Utils.getPackageSigner
+     * @see org.fdroid.fdroid.data.Apk
+     */
+    @Deprecated("Only here for backwards compatibility when writing out index-v1.json")
+    public fun getsig(signerBytes: ByteArray): String {
+        return md5(signerBytes.toHex().encodeToByteArray()).toHex()
+    }
+
     internal fun String.decodeHex(): ByteArray {
         check(length % 2 == 0) { "Must have an even length" }
         return chunked(2)
@@ -39,6 +55,17 @@ public object IndexUtils {
     internal fun sha256(bytes: ByteArray): ByteArray {
         val messageDigest: MessageDigest = try {
             MessageDigest.getInstance("SHA-256")
+        } catch (e: NoSuchAlgorithmException) {
+            throw AssertionError(e)
+        }
+        messageDigest.update(bytes)
+        return messageDigest.digest()
+    }
+
+    @Deprecated("Only here for backwards compatibility when writing out index-v1.json")
+    internal fun md5(bytes: ByteArray): ByteArray {
+        val messageDigest: MessageDigest = try {
+            MessageDigest.getInstance("MD5")
         } catch (e: NoSuchAlgorithmException) {
             throw AssertionError(e)
         }
