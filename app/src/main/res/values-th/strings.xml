@@ -346,10 +346,10 @@
     <string name="app_new">ใหม่</string>
     <string name="app_suggested">แนะนำ</string>
     <string name="about_forum">ฟอรัมการสนับสนุน</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">รุ่นที่ติดตั้งเข้ากันไม่ได้กับรุ่นที่มีอยู่ การถอนการติดตั้งแอปจะช่วยให้คุณสามารถดูและติดตั้งรุ่นที่เข้ากันได้ สิ่งนี้มักเกิดขึ้นกับแอปที่ติดตั้งผ่าน Google Play หรือแหล่งที่มาอื่น ๆ หากมีการลงนามโดยใบรับรองอื่น</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">รุ่นที่ติดตั้งเข้ากันไม่ได้กับรุ่นที่มีอยู่ การถอนการติดตั้งแอปจะช่วยให้คุณสามารถดูและติดตั้งรุ่นที่เข้ากันได้ สิ่งนี้มักเกิดขึ้นกับแอปที่ติดตั้งผ่าน Google Play หรือแหล่งที่มาอื่น ๆ หากมีการลงนามโดยใบรับรองอื่น</string>
     <string name="app_details__no_versions__none_compatible_with_device">ไม่มีรุ่นที่เข้ากันได้กับอุปกรณ์</string>
-    <string name="app_details__no_versions__no_compatible_signatures">ไม่มีรุ่นที่มีลายเซ็นที่เข้ากันได้</string>
-    <string name="app_details__incompatible_mismatched_signature">ลายเซ็นแตกต่างไปจากเวอร์ชันที่ถูกติดตั้ง</string>
+    <string name="app_details__no_versions__no_compatible_signers">ไม่มีรุ่นที่มีลายเซ็นที่เข้ากันได้</string>
+    <string name="app_details__incompatible_mismatched_signers">ลายเซ็นแตกต่างไปจากเวอร์ชันที่ถูกติดตั้ง</string>
     <string name="app_details_donate_prompt">%1$s ถูกสร้างโดย %2$s ซื้อกาแฟให้พวกเขาได้นะ!</string>
     <string name="app_details_donate_prompt_unknown_author">ซื้อกาแฟให้นักพัฒนาแอป %1$s!</string>
     <string name="scan_removable_storage_summary">มองหาเเพ็กเกจเเหล่งเเอพบนหน่วยวามจำที่ถอดออกได้ อย่าง SD Cards เเละ ยูเอสบีทรัมป์ไดร์ฟ</string>

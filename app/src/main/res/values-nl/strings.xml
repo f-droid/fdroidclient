@@ -379,11 +379,11 @@
     <string name="app_installed_media">Bestand geïnstalleerd op %s</string>
     <string name="app_permission_storage">F-Droid heeft opslagtoestemming nodig om dit op de opslagruimte te installeren. Geef deze toestemming op het volgende scherm om de installatie verder te zetten.</string>
     <string name="status_inserting_x_apps">Appgegevens van %3$s worden opgeslagen (%1$d/%2$d)</string>
-    <string name="app_details__incompatible_mismatched_signature">Ondertekening verschilt van geïnstalleerde versie</string>
+    <string name="app_details__incompatible_mismatched_signers">Ondertekening verschilt van geïnstalleerde versie</string>
     <string name="app_details__no_versions__show_incompat_versions">Schakel de instelling \"%1$s\" in om incompatibele versies hier toch weer te geven.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Er zijn geen versies met een compatibele ondertekening</string>
+    <string name="app_details__no_versions__no_compatible_signers">Er zijn geen versies met een compatibele ondertekening</string>
     <string name="app_details__no_versions__none_compatible_with_device">Er zijn met dit apparaat geen versies compatibel</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">De geïnstalleerde versie is niet compatibel met de beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna je ze kan installeren. Dit gebeurt vaak wanneer uw apps installeert via Google Play of andere bronnen, en deze door een ander certificaat zijn ondertekend.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">De geïnstalleerde versie is niet compatibel met de beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna je ze kan installeren. Dit gebeurt vaak wanneer uw apps installeert via Google Play of andere bronnen, en deze door een ander certificaat zijn ondertekend.</string>
     <string name="app_list__dismiss_app_update">Update genegeerd</string>
     <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
     <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>

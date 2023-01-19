@@ -319,11 +319,11 @@
     <string name="by_author_format">od %s</string>
     <string name="force_old_index">vynutit původní formát rejstříku</string>
     <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou, použít XML rejstřík aplikací</string>
-    <string name="app_details__incompatible_mismatched_signature">Rozdílný podpis oproti nainstalované verzi</string>
+    <string name="app_details__incompatible_mismatched_signers">Rozdílný podpis oproti nainstalované verzi</string>
     <string name="app_details__no_versions__show_incompat_versions">Pro zobrazení nekompatibilních verzí i tak, zapněte v nastavení „%1$s“.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Není k dispozici žádná veze s kompatibilním podpisem</string>
+    <string name="app_details__no_versions__no_compatible_signers">Není k dispozici žádná veze s kompatibilním podpisem</string>
     <string name="app_details__no_versions__none_compatible_with_device">Není k dispozici verze kompatibilní s tímto zařízením</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Nainstalovaná verze není kompatibilní s žádnou dostupnou verzí. Odinstalace aplikace vám umožní zobrazit a nainstalovat kompatibilní verzi. K tomuto dochází často u aplikací nainstalovaných prostřednictvím služby Google Play a dalších zdrojů, pokud jsou podepsány odlišným certifikátem.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Nainstalovaná verze není kompatibilní s žádnou dostupnou verzí. Odinstalace aplikace vám umožní zobrazit a nainstalovat kompatibilní verzi. K tomuto dochází často u aplikací nainstalovaných prostřednictvím služby Google Play a dalších zdrojů, pokud jsou podepsány odlišným certifikátem.</string>
     <string name="app__tts__cancel_download">Zrušit stahování</string>
     <string name="app_installed_media">Soubor nainstalován do %s</string>
     <string name="app_permission_storage">Pro instalaci tohoto do úložiště potřebuje F-Droid oprávnění. Umožněte to na následující obrazovce a instalace bude moci pokračovat.</string>

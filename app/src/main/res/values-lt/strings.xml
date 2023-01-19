@@ -233,7 +233,7 @@
     <string name="menu_ignore_all">Nepaisyti visų atnaujinimų</string>
     <string name="menu_ignore_this">Nepaisyti šio atnaujinimo</string>
     <string name="menu_issues">Klaidos</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Nėra versijų su suderinamu parašu</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nėra versijų su suderinamu parašu</string>
     <string name="app_permission_storage">F-Droid reikia leidimo diegti į pasirinktą saugyklą. Norėdami tęsti leiskite tai kitame pasirinkimo lange.</string>
     <string name="send_installed_apps_csv">Programėlės, kurias F-Droid įdiegė kaip CSV failą</string>
     <string name="bluetooth_activity_not_found">Nerasta Bluetooth siuntimo metodų, pasirinkite metodą!</string>
@@ -345,7 +345,7 @@
     <string name="local_repo_https_on">Vietinei repozitorijai naudoti šifruotą HTTPS:// ryšį</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Programėlėje %1$s rastas pažeidžiamumas. Rekomenduojame nedelsiant šią programėlę atnaujinti.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Programėlėje %1$s rastas pažeidžiamumas. Rekomenduojame nedelsiant šią programėlę pašalinti.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Įdiegta versija nėra suderinama su jokia prieinama versija. Pašalinę programėlę, galėsite matyti ir įsidiegti suderinamas versijas. Taip dažnai nutinka su programėlėmis, kurios buvo įdiegtos per „Google Play“ arba iš kitų šaltinių, kuomet jos būna pasirašytos kitokiu liudijimu.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Įdiegta versija nėra suderinama su jokia prieinama versija. Pašalinę programėlę, galėsite matyti ir įsidiegti suderinamas versijas. Taip dažnai nutinka su programėlėmis, kurios buvo įdiegtos per „Google Play“ arba iš kitų šaltinių, kuomet jos būna pasirašytos kitokiu liudijimu.</string>
     <string name="send_history_csv">%s įdiegimų istoriją kaip CSV failą</string>
     <string name="scan_removable_storage_summary">Ieškoti paketų saugyklų keičiamosiose laikmenose, tokiose kaip SD kortelės ar USB atmintukai</string>
     <string name="proxy_port_summary">Jūsų įgaliotojo serverio prievado numeris (pvz., 8118)</string>
@@ -424,7 +424,7 @@
     <string name="panic_apps_to_uninstall">Programėlės, kurios bus išdiegtos ir visi jų duomenys pašalinti</string>
     <string name="panic_will_be_wiped">Bus išdiegti ir visi duomenys pašalinti</string>
     <string name="panic_settings_summary">Veiksmai, kurie turėtų būti įvykdyti nelaimės atveju</string>
-    <string name="app_details__incompatible_mismatched_signature">Skiriasi parašas nuo įdiegtos versijos</string>
+    <string name="app_details__incompatible_mismatched_signers">Skiriasi parašas nuo įdiegtos versijos</string>
     <string name="send_version_and_uuid_summary">Pridėti šios programėlės versiją ir atsitiktinai sugeneruotą ID parsisiunčiant, pakeitimas suveikia restartavus programėlę.</string>
     <string name="open_qr_code_scanner">Atidaryti QR kodo skenavimą</string>
     <string name="swap_scan_qr">QR kodas</string>

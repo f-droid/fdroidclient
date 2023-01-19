@@ -45,7 +45,7 @@
     <string name="login_password">Password</string>
     <string name="repo_edit_credentials">Palitan ang password</string>
     <string name="app_details_donate_prompt">Ginawa ni/ng %2$s ang %1$s. Bilhan mo sila ng kape!</string>
-    <string name="app_details__incompatible_mismatched_signature">Magkaibang pirma sa naka-install na bersyon</string>
+    <string name="app_details__incompatible_mismatched_signers">Magkaibang pirma sa naka-install na bersyon</string>
     <string name="about_title">Tungkol sa F-Droid</string>
     <string name="other">Karagdagan</string>
     <string name="over_data">Gamit data</string>
@@ -53,7 +53,7 @@
     <string name="repo_error_empty_username">Blangkong username, di nagbago ang credentials</string>
     <string name="no_such_app">Walang nakitang app.</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ipakita pa rin ang mga di-compatible na bersyon dito, buksan ang \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Walang bersyon na may compatible na pirma</string>
+    <string name="app_details__no_versions__no_compatible_signers">Walang bersyon na may compatible na pirma</string>
     <string name="about_version">Bersyon</string>
     <string name="about_site">Website</string>
     <string name="about_forum">Forum ng suporta</string>
@@ -196,7 +196,7 @@
     <string name="system_installer_on">Gamitin ang Dugtong ng Pribilehiyo para mag-install, mag-update, at magtanggal ng mga package</string>
     <string name="app_details__no_versions__none_compatible_with_device">Walang bersyong compatible sa device</string>
     <string name="has_disallow_install_unknown_sources_globally">Ipinagbabawal ng device admin ang pag-install mula sa mga di-kilalang source, kasama doon ang mga bagong repo</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Di-compatible ang naka-install na bersyon sa kahit anong mga bersyon na meron. Kapag binura mo ang naturang app, makikita mo at mai-install ang mga compatible na bersyon. Madalas itong mangyari sa mga app na na-install gamit ang Google Play o sa ibang mga source, kung pirmado sila ng ibang certificate.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Di-compatible ang naka-install na bersyon sa kahit anong mga bersyon na meron. Kapag binura mo ang naturang app, makikita mo at mai-install ang mga compatible na bersyon. Madalas itong mangyari sa mga app na na-install gamit ang Google Play o sa ibang mga source, kung pirmado sila ng ibang certificate.</string>
     <string name="send_installed_apps">Ibahagi ang mga naka-install na app</string>
     <string name="app_repository">Repositoryo: %1$s</string>
     <string name="app_size">Laki: %1$s</string>

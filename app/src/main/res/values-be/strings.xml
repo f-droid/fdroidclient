@@ -395,11 +395,11 @@
     <string name="status_inserting_x_apps">Захаванне падрабязнасцяў (%1$d/%2$d) з %3$s</string>
     <string name="app_installed_media">Файл усталяваны ў %s</string>
     <string name="app_permission_storage">F-Droid патрабуецца дазвол на ўсталёўку гэтага ў сховішча. Калі ласка, дайце дазвол на наступным экране для працягу ўсталёўкі.</string>
-    <string name="app_details__incompatible_mismatched_signature">Подпіс адрозніваецца ад подпіса ўсталяванай версіі</string>
+    <string name="app_details__incompatible_mismatched_signers">Подпіс адрозніваецца ад подпіса ўсталяванай версіі</string>
     <string name="app_details__no_versions__show_incompat_versions">Каб заўсёды паказваць несумяшчальныя версіі, ўключыце параметр «%1$s».</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Версіі з сумяшчальным подпісам адсутнічаюць</string>
+    <string name="app_details__no_versions__no_compatible_signers">Версіі з сумяшчальным подпісам адсутнічаюць</string>
     <string name="app_details__no_versions__none_compatible_with_device">Версіі, сумяшчальныя з прыладай, адсутнічаюць</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Усталяваная версія несумяшчальная з даступнымі версіямі. Выдаленне праграмы дазволіць убачыць і ўсталяваць сумяшчальныя версіі. Гэта часта адбываецца з праграмамі, што ўсталёўваюцца праз Google Play ці іншыя крыніцы і падпісваюцца рознымі сертыфікатамі.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Усталяваная версія несумяшчальная з даступнымі версіямі. Выдаленне праграмы дазволіць убачыць і ўсталяваць сумяшчальныя версіі. Гэта часта адбываецца з праграмамі, што ўсталёўваюцца праз Google Play ці іншыя крыніцы і падпісваюцца рознымі сертыфікатамі.</string>
     <string name="empty_search_available_app_list">Няма супадзенняў сярод даступных праграм.</string>
     <string name="app_list__dismiss_app_update">Абнаўленне ігнаруецца</string>
     <string name="app_list__dismiss_vulnerable_app">Уразлівасць ігнаруецца</string>

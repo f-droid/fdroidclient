@@ -379,11 +379,11 @@
     <string name="app_installed_media">ഫയൽ %s ൽ പതിപ്പിച്ചു</string>
     <string name="app_permission_storage">സ്റ്റോറേജിലേക്കു ഇൻസ്റ്റാൾ ചെയ്യുന്നതിന് എഫ് -ഡ്രോയിഡിന് സ്റ്റോറേജ് അനുമതി ആവശ്യമാണ്. അത് അടുത്ത സ്‌ക്രീനിൽ അനുവദിച്ച ശേഷം ഇൻസ്റ്റാൾ തുടരൂ.</string>
     <string name="empty_search_available_app_list">യോജ്യമായ ആപ്പ്ളിക്കേഷൻ ലഭ്യമല്ല.</string>
-    <string name="app_details__incompatible_mismatched_signature">ഉള്ള വേർഷന്റേതുമായി വ്യത്യാസമുള്ള സിഗ്നേച്ചർ</string>
+    <string name="app_details__incompatible_mismatched_signers">ഉള്ള വേർഷന്റേതുമായി വ്യത്യാസമുള്ള സിഗ്നേച്ചർ</string>
     <string name="app_details__no_versions__show_incompat_versions">പൊരുത്തപ്പെടാത്ത പതിപ്പുകളും എന്തായാലും കാണുന്നതിനായി \"%1$s\" ക്രമീകരിക്കുക.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">സിഗ്നേച്ചർ പൊരുത്തപ്പെടുന്ന പതിപ്പുകൾ ഇല്ല</string>
+    <string name="app_details__no_versions__no_compatible_signers">സിഗ്നേച്ചർ പൊരുത്തപ്പെടുന്ന പതിപ്പുകൾ ഇല്ല</string>
     <string name="app_details__no_versions__none_compatible_with_device">ഉപകരണത്തിന് യോജിക്കുന്ന പതിപ്പുകൾ ഇല്ല</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">ഉള്ള പതിപ്പും(വേർഷൻ) ലഭ്യമായ പതിപ്പുകളും പൊരുത്തപ്പെടില്ല. ആപ്പ് അൺഇൻസ്റ്റാൾ ചെയ്തു കളഞ്ഞാൽ യോജ്യമായ പതിപ്പുകൾ കാണാം. വ്യത്യാസപ്പെട്ട സർട്ടിഫിക്കേറ്റ് ഉള്ള ആപ്പ് ഗൂഗിൾ പ്ലേ വഴിയോ മറ്റു മാർഗങ്ങളിലോ ഇൻസ്റ്റാൾ ചെയ്താൽ ഇതു സംഭവിക്കാം.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">ഉള്ള പതിപ്പും(വേർഷൻ) ലഭ്യമായ പതിപ്പുകളും പൊരുത്തപ്പെടില്ല. ആപ്പ് അൺഇൻസ്റ്റാൾ ചെയ്തു കളഞ്ഞാൽ യോജ്യമായ പതിപ്പുകൾ കാണാം. വ്യത്യാസപ്പെട്ട സർട്ടിഫിക്കേറ്റ് ഉള്ള ആപ്പ് ഗൂഗിൾ പ്ലേ വഴിയോ മറ്റു മാർഗങ്ങളിലോ ഇൻസ്റ്റാൾ ചെയ്താൽ ഇതു സംഭവിക്കാം.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s ൽ ഞങ്ങൾ ഒരു സുരക്ഷാ ദൗർബല്യം കണ്ടെത്തി. ഇത് ഉടൻ തന്നെ ഒഴിവാക്കാൻ നിർദ്ദേശിക്കുന്നു.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s ൽ ഞങ്ങൾ ഒരു സുരക്ഷാ ദൗർബല്യം കണ്ടെത്തി. ഉടൻ തന്നെ അതിന്റെ ഏറ്റവും പുതിയ പതിപ്പിലേക്കു മാറാൻ ആവശ്യപ്പെടുന്നു.</string>
     <string name="updates__app_with_known_vulnerability__ignore">അവഗണിക്കുക</string>

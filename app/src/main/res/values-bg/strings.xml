@@ -372,8 +372,8 @@
         <item quantity="other">+%1$d повече…</item>
     </plurals>
     <string name="force_old_index">Принудителен стар формат на индексиране</string>
-    <string name="app_details__incompatible_mismatched_signature">Различен подпис от инсталираното издание</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Няма издания със съвместим подпис</string>
+    <string name="app_details__incompatible_mismatched_signers">Различен подпис от инсталираното издание</string>
+    <string name="app_details__no_versions__no_compatible_signers">Няма издания със съвместим подпис</string>
     <string name="app_details__no_versions__none_compatible_with_device">Няма издания съвместими с устройството</string>
     <string name="app_details__no_versions__show_incompat_versions">За да се показват и несъвместимите издания включете настройката „%1$s“.</string>
     <string name="app_list_download_ready">Изтeглено и готово за инсталиране</string>
@@ -427,7 +427,7 @@
     <string name="hiding_calculator">Калкулатор</string>
     <string name="hiding_dialog_title">Скрий %s Сега</string>
     <string name="use_bluetooth">Използване Bluetooth</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Инсталираната версия не е съвместима, с които и да е други версии на разположение. Деинсталиране на апликацията ще Ви позволи да видите и инсталирате съвместими версии. Това често се случва с апликации инсталирани чрез Google Play или от други източници, ако те са подписани с различен сертификат.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Инсталираната версия не е съвместима, с които и да е други версии на разположение. Деинсталиране на апликацията ще Ви позволи да видите и инсталирате съвместими версии. Това често се случва с апликации инсталирани чрез Google Play или от други източници, ако те са подписани с различен сертификат.</string>
     <string name="app_list__dismiss_app_update">Обновлението е пренебрегнато</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимостта е пренебрегната</string>
     <string name="panic_exit_title">Излизане от приложението</string>

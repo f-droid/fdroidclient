@@ -395,11 +395,11 @@
     </plurals>
     <string name="force_old_index">Þvinga gamla yfirlitssniðið</string>
     <string name="force_old_index_summary">Ef um er að ræða galla eða vandamál með samhæfni, má nota XML-yfirlitsvísi forritsins</string>
-    <string name="app_details__incompatible_mismatched_signature">Undirritun er önnur en á uppsettri útgáfu</string>
+    <string name="app_details__incompatible_mismatched_signers">Undirritun er önnur en á uppsettri útgáfu</string>
     <string name="app_details__no_versions__show_incompat_versions">Til að birta hér samt ósamhæfðar útgáfur, virkjaðu þá \"%1$s\" stillinguna.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Engin útgáfa með samhæfða undirritun</string>
+    <string name="app_details__no_versions__no_compatible_signers">Engin útgáfa með samhæfða undirritun</string>
     <string name="app_details__no_versions__none_compatible_with_device">Engar útgáfur samhæfanlegar við tækið</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Uppsetta útgáfan er ekki samhæfð við neinar tiltækar útgáfur. Ef þú hendir forritinu út, geturðu skoðað og sett upp samhæfða útgáfu. Þetta gerist oft með forrit sem sett eru upp í gegnum Google Play eða aðrar slíkar leiðir, ef forritin eru undirrituð með mismunandi skilríkjum.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Uppsetta útgáfan er ekki samhæfð við neinar tiltækar útgáfur. Ef þú hendir forritinu út, geturðu skoðað og sett upp samhæfða útgáfu. Þetta gerist oft með forrit sem sett eru upp í gegnum Google Play eða aðrar slíkar leiðir, ef forritin eru undirrituð með mismunandi skilríkjum.</string>
     <string name="app_installed_media">Skrá sett upp í %s</string>
     <string name="app_permission_storage">F-Droid þarf aðgang að gagnageymslum til að geta sett þetta upp í geymsluminni. Þú ættir að heimila þetta á næsta skjá til þess að halda áfram með uppsetninguna.</string>
     <string name="app_list_download_ready">Þegar sótt, tilbúið til uppsetningar</string>

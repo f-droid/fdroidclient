@@ -389,10 +389,10 @@
     <string name="app_installed_media">Fichier installé sur %s</string>
     <string name="app_permission_storage">F-droid requiert l\'accès au stockage pour effectuer l\'installation. Veuillez accorder cette autorisation sur l\'écran suivant afin de poursuivre  l\'installation.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Aucune version compatible avec votre appareil</string>
-    <string name="app_details__incompatible_mismatched_signature">La signature diffère de la version déjà installée</string>
+    <string name="app_details__incompatible_mismatched_signers">La signature diffère de la version déjà installée</string>
     <string name="app_details__no_versions__show_incompat_versions">Pour tout de même afficher ici les versions incompatibles, activez la préférence « %1$s ».</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Aucune version ne possède une signature compatible</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et installer les versions compatibles. Ce problème est fréquent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
+    <string name="app_details__no_versions__no_compatible_signers">Aucune version ne possède une signature compatible</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et installer les versions compatibles. Ce problème est fréquent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
     <string name="app_list__dismiss_app_update">Mise à jour ignorée</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnérabilité ignorée</string>
     <string name="app_list__dismiss_downloading_app">Téléchargement annulé</string>

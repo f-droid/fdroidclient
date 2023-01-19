@@ -55,11 +55,11 @@
     <string name="no_such_app">No se encontró tal aplicación.</string>
     <string name="app_details_donate_prompt_unknown_author">¡Comprá un café para los desarrolladores de %1$s!</string>
     <string name="app_details_donate_prompt">%1$s es hecho por %2$s. ¡Comprales un café!</string>
-    <string name="app_details__incompatible_mismatched_signature">Firma distinta a la versión instalada</string>
+    <string name="app_details__incompatible_mismatched_signers">Firma distinta a la versión instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para mostrar versiones incompatibles acá de todas formas, habilitá el ajuste \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">No hay versiones con una firma compatible</string>
+    <string name="app_details__no_versions__no_compatible_signers">No hay versiones con una firma compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con este dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada no es compatible con ninguna versión disponible. Desinstalando la aplicación te va a permitir ver e instalar versiones compatibles. Esto ocurre frecuentemente con aplicaciones instaladas desde Google Play u otros orígenes, si son firmadas con un certificado diferente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada no es compatible con ninguna versión disponible. Desinstalando la aplicación te va a permitir ver e instalar versiones compatibles. Esto ocurre frecuentemente con aplicaciones instaladas desde Google Play u otros orígenes, si son firmadas con un certificado diferente.</string>
     <string name="about_title">Acerca de F-Droid</string>
     <string name="about_version">Versión</string>
     <string name="about_site">Sitio web</string>

@@ -392,7 +392,7 @@
     <string name="install_history">Installasie geskiedenis</string>
     <string name="install_history_summary">Wys die private joernaal van alle instellasies en verwyderings</string>
     <string name="send_version_and_uuid">Stuur weergawe en UUID na servers</string>
-    <string name="app_details__incompatible_mismatched_signature">Verskillende kenmerkwaarde as geïnstalleerde weergawe</string>
+    <string name="app_details__incompatible_mismatched_signers">Verskillende kenmerkwaarde as geïnstalleerde weergawe</string>
     <string name="app_details__no_versions__show_incompat_versions">Om onversoenbare weergawes in elk geval te wys, aktiveer die \"%1$s\" instelling.</string>
     <string name="disabled">Gedeaktiveer</string>
     <string name="allow">Laat toe</string>
@@ -502,9 +502,9 @@
     <string name="app_repository">Bewaarplek: %1$s</string>
     <string name="app_suggested">Voorgestel</string>
     <string name="about_forum">Ondersteuningsforum</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Die geïnstalleerde weergawe is nie versoenbaar met enige beskikbare weergawes nie. As u die app deïnstalleer, kan u versoenbare weergawes sien en installeer. Dit kom dikwels voor by programme wat via Google Play of ander bronne geïnstalleer word, as dit deur \'n ander sertifikaat onderteken word.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Die geïnstalleerde weergawe is nie versoenbaar met enige beskikbare weergawes nie. As u die app deïnstalleer, kan u versoenbare weergawes sien en installeer. Dit kom dikwels voor by programme wat via Google Play of ander bronne geïnstalleer word, as dit deur \'n ander sertifikaat onderteken word.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Geen weergawes versoenbaar met die toestel nie</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Geen weergawes met versoenbare handtekening nie</string>
+    <string name="app_details__no_versions__no_compatible_signers">Geen weergawes met versoenbare handtekening nie</string>
     <string name="over_wifi">Oor Wi-Fi</string>
     <string name="send_fdroid_metrics_report">Stuur %s Statistieke Verslag</string>
     <string name="menu_show_install_history">Wys instelasie geskiedenis</string>

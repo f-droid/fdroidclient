@@ -359,11 +359,11 @@
     <string name="app_permission_storage">F-Droid 需要存储权限以安装到存储。请在下一个界面允许此权限以继续进行安装。</string>
     <string name="app_list_download_ready">已下载，安装准备就绪</string>
     <string name="status_inserting_x_apps">正在从 %3$s 保存应用的详细信息 (%1$d/%2$d)</string>
-    <string name="app_details__incompatible_mismatched_signature">与已安装版本签名不符</string>
+    <string name="app_details__incompatible_mismatched_signers">与已安装版本签名不符</string>
     <string name="app_details__no_versions__show_incompat_versions">若要在这里显示不兼容的版本，请启用“%1$s”设置。</string>
-    <string name="app_details__no_versions__no_compatible_signatures">没有具有兼容签名的版本</string>
+    <string name="app_details__no_versions__no_compatible_signers">没有具有兼容签名的版本</string>
     <string name="app_details__no_versions__none_compatible_with_device">没有与设备兼容的版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">已安装的版本与可用的任何版本都不兼容。卸载该应用将使你可以查看和安装兼容的版本。这种情况常发生在通过 Google Play 或其他存储库安装的应用上，它们可能经由不同的证书签名。</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">已安装的版本与可用的任何版本都不兼容。卸载该应用将使你可以查看和安装兼容的版本。这种情况常发生在通过 Google Play 或其他存储库安装的应用上，它们可能经由不同的证书签名。</string>
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>

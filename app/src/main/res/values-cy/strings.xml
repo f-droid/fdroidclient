@@ -73,7 +73,7 @@
     <string name="no_such_app">Ni chanfuwyd y fath ap.</string>
     <string name="app_details_donate_prompt_unknown_author">Prynu paned i ddatblygwyr %1$s!</string>
     <string name="app_details_donate_prompt">Crëwyd %1$s gan %2$s. Pryna paned iddyn nhw!</string>
-    <string name="app_details__incompatible_mismatched_signature">Llofnod gwahanol i\'r fersiwn a osodwyd</string>
+    <string name="app_details__incompatible_mismatched_signers">Llofnod gwahanol i\'r fersiwn a osodwyd</string>
     <string name="about_title">Ynghylch F-Droid</string>
     <string name="about_version">Fersiwn</string>
     <string name="about_site">Gwefan</string>
@@ -422,9 +422,9 @@
     <string name="system_installer_on">Defnyddio\'r Estyniad Breintiedig i osod, diweddaru a thynnu pecynnau</string>
     <string name="scan_removable_storage_summary">Edrych am ystorfeydd pecynnau ar storfeydd gellir eu tynnu, megis cof bach USB a chardiau SD</string>
     <string name="app_details__no_versions__show_incompat_versions">I ddangos fersiynau anghydnaws yma beth bynnag, galluoga\'r gosodiad \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Dim fersiynau gyda llofnod cydnaws</string>
+    <string name="app_details__no_versions__no_compatible_signers">Dim fersiynau gyda llofnod cydnaws</string>
     <string name="app_details__no_versions__none_compatible_with_device">Dim fersiynau yn gydnaws â\'r ddyfais</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Dyw\'r fersiwn wedi\'i gosod ddim yn gydnaws ag unrhyw fersiynau ar gael. Bydd dadosod yr ap yn dy alluogi i weld a gosod fersiynau cydnaws. Mae hyn yn aml yn digwydd gydag apiau a osodwyd o Google Play neu ffynonellau eraill am y\'i llofnodwyd gyda thystysgrif wahanol.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Dyw\'r fersiwn wedi\'i gosod ddim yn gydnaws ag unrhyw fersiynau ar gael. Bydd dadosod yr ap yn dy alluogi i weld a gosod fersiynau cydnaws. Mae hyn yn aml yn digwydd gydag apiau a osodwyd o Google Play neu ffynonellau eraill am y\'i llofnodwyd gyda thystysgrif wahanol.</string>
     <string name="about_forum">Fforwm cymorth</string>
     <string name="about_source">Cod gwreiddiol</string>
     <string name="about_license">Trwydded</string>

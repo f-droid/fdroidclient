@@ -283,8 +283,8 @@
     <string name="update_auto_install_summary">사용자에게 알리고, 백그라운드에서 업데이트 앱을 다운로드 및 설치합니다</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s의 개발자에게 후원해주세요!</string>
     <string name="app_details_donate_prompt">%1$s 앱은 %2$s님이 만들었습니다. 그들에게 후원해주세요!</string>
-    <string name="app_details__incompatible_mismatched_signature">설치된 버전의 서명과 다름</string>
-    <string name="app_details__no_versions__no_compatible_signatures">호환되는 서명으로 된 버전이 없습니다</string>
+    <string name="app_details__incompatible_mismatched_signers">설치된 버전의 서명과 다름</string>
+    <string name="app_details__no_versions__no_compatible_signers">호환되는 서명으로 된 버전이 없습니다</string>
     <string name="app_details__no_versions__none_compatible_with_device">기기와 호환되는 버전이 없습니다</string>
     <string name="app_version_x_available">버전 %1$s 사용 가능</string>
     <string name="app_version_x_installed">버전 %1$s</string>
@@ -368,7 +368,7 @@
         <item quantity="other">%1$d년 전에 업데이트됨</item>
     </plurals>
     <string name="app_details__no_versions__show_incompat_versions">어쨌든 여기에 호환되지 않는 버전을 보여주려면, \"%1$s\" 설정을 활성화하세요.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">설치된 버전은 모든 사용 가능한 버전과 호환되지 않습니다. 앱을 제거하는 것은 호환되는 버전을 보고 설치할 수 있도록 합니다. 이는 때때로, 앱들이 다른 인증서으로 서명되어 있다면, Google Play 또는 다른 출처를 통해 설치된 앱에서 발생합니다.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">설치된 버전은 모든 사용 가능한 버전과 호환되지 않습니다. 앱을 제거하는 것은 호환되는 버전을 보고 설치할 수 있도록 합니다. 이는 때때로, 앱들이 다른 인증서으로 서명되어 있다면, Google Play 또는 다른 출처를 통해 설치된 앱에서 발생합니다.</string>
     <string name="app_permission_storage">F-Droid는 이것을 저장공간에 설치하려면 저장공간 권한이 필요합니다. 설치를 계속하려면 다음 화면에서 그것을 허용해주세요.</string>
     <string name="app_list__dismiss_vulnerable_app">취약점이 무시됨</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">우리는 %1$s으로 취약점을 찾았습니다. 우리는 즉시 이 앱을 제거할 것을 권장합니다.</string>

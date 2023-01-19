@@ -363,11 +363,11 @@
     <string name="app_installed_media">%sにファイルをインストールしました</string>
     <string name="app_permission_storage">F-Droidがストレージにインストールするためにはストレージの権限が必要です。インストールを続行するには次の画面で許可してください。</string>
     <string name="status_inserting_x_apps">%3$sよりアプリの詳細(%1$d/%2$d)を保存中</string>
-    <string name="app_details__incompatible_mismatched_signature">インストールされたバージョンと署名が異なります</string>
+    <string name="app_details__incompatible_mismatched_signers">インストールされたバージョンと署名が異なります</string>
     <string name="app_details__no_versions__show_incompat_versions">ここに互換性のないバージョンを表示するには、「%1$s」設定を有効にします。</string>
-    <string name="app_details__no_versions__no_compatible_signatures">互換性のある署名のバージョンがありません</string>
+    <string name="app_details__no_versions__no_compatible_signers">互換性のある署名のバージョンがありません</string>
     <string name="app_details__no_versions__none_compatible_with_device">端末と互換性のあるバージョンがありません</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">インストールされているバージョンは、利用可能なバージョンと互換性がありません。アプリをアンインストールすると、互換性のあるバージョンを表示したりインストールすることができます。これは多くの場合、Google Playやその他のソースからインストールされたアプリが、別の証明書で署名されている場合に発生します。</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">インストールされているバージョンは、利用可能なバージョンと互換性がありません。アプリをアンインストールすると、互換性のあるバージョンを表示したりインストールすることができます。これは多くの場合、Google Playやその他のソースからインストールされたアプリが、別の証明書で署名されている場合に発生します。</string>
     <string name="app_list__dismiss_app_update">アップデートを無視しました</string>
     <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>

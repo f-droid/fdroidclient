@@ -91,11 +91,11 @@
     <string name="about_forum">सहाय्यता</string>
     <string name="about_site">संकेतस्थळ</string>
     <string name="about_version">आवृत्ती</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">स्थापना झालेली आवृत्ती उपलब्ध असणाऱ्या कोणत्याही आवृत्तीशी संगत नाही. अँपची अस्थापना केल्यास तुम्ही संगत आवृत्या पाहू तसेच स्थापित देखील करू शकता. गुगल प्ले द्वारे अथवा अन्य इतर ठिकाणाहून स्थापित केलेले अँप्स जर अन्य प्रमाणित हस्ताक्षर असल्यास हे बहुतांशी पाहावयास मिळते.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">स्थापना झालेली आवृत्ती उपलब्ध असणाऱ्या कोणत्याही आवृत्तीशी संगत नाही. अँपची अस्थापना केल्यास तुम्ही संगत आवृत्या पाहू तसेच स्थापित देखील करू शकता. गुगल प्ले द्वारे अथवा अन्य इतर ठिकाणाहून स्थापित केलेले अँप्स जर अन्य प्रमाणित हस्ताक्षर असल्यास हे बहुतांशी पाहावयास मिळते.</string>
     <string name="app_details__no_versions__none_compatible_with_device">यंत्रासाठी एकही आवृत्ती उपलब्ध नाही</string>
     <string name="app_details__no_versions__show_incompat_versions">विसंगत आवृत्ती देखील दाखवण्यासाठी, \"%1$s\" सेटिंग सक्षम .</string>
-    <string name="app_details__no_versions__no_compatible_signatures">हस्ताक्षरीत असणारी एकही अनुकूल आवृत्ती</string>
-    <string name="app_details__incompatible_mismatched_signature">स्थापित आवृत्तीसाठी वेगळे हस्ताक्षर</string>
+    <string name="app_details__no_versions__no_compatible_signers">हस्ताक्षरीत असणारी एकही अनुकूल आवृत्ती</string>
+    <string name="app_details__incompatible_mismatched_signers">स्थापित आवृत्तीसाठी वेगळे हस्ताक्षर</string>
     <string name="app_details_donate_prompt">%1$s,%2$sद्वारे विकसित करण्यात . त्यांच्यासाठी एक कॉफी खरीदी करा!</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s च्या विकासकांसाठी एक कॉफी खरेदी करा!</string>
     <string name="update_auto_install">स्वयंचलितरीत्या अद्यापनाची स्थापना</string>

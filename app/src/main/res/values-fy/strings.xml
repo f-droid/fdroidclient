@@ -246,7 +246,7 @@
     <string name="app_inst_known_source">Ynstallearre (fan %s)</string>
     <string name="app_details__no_versions__none_compatible_with_device">Gjin ferzjes dy kompatibel binne mei dit apparaat</string>
     <string name="app_incompatible">Net kompatibel</string>
-    <string name="app_details__incompatible_mismatched_signature">Ûndertekening wykt ôf fan de ynstallearre ferzje</string>
+    <string name="app_details__incompatible_mismatched_signers">Ûndertekening wykt ôf fan de ynstallearre ferzje</string>
     <string name="login_title">Ferifikaasje nedich</string>
     <string name="no_such_app">Gjin app mei dy namme fûn.</string>
     <string name="repo_error_empty_username">Brûkersnamme is leech, brûkersgegevens binne net feroare</string>
@@ -272,6 +272,6 @@
     <string name="install_history_and_metrics">Ynstallaasje skiednis en gegevens</string>
     <string name="choose_bt_send">Ferstjoeringsmetoade foar Bluetooth Selektearje</string>
     <string name="bluetooth_activity_not_found">Gjin ferstjoeringsmetoade foar Bluetooth fûn, selektearje der ien!</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Gjin ferzjes mei komptabele ûndertekening</string>
+    <string name="app_details__no_versions__no_compatible_signers">Gjin ferzjes mei komptabele ûndertekening</string>
     <string name="app_details__no_versions__show_incompat_versions">Om hjir dochs ynkompatibele ferzjes sjen te litten, set de \"%1$s\" ynstelling op wier.</string>
 </resources>

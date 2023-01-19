@@ -370,10 +370,10 @@
     <string name="app_list__dismiss_app_update">Pembaruan diabaikan</string>
     <string name="app_list__dismiss_downloading_app">Pengunduhan dibatalkan</string>
     <string name="updates__app_with_known_vulnerability__ignore">Abaikan</string>
-    <string name="app_details__incompatible_mismatched_signature">Tanda tangan berbeda dengan versi yang terpasang</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Tidak ada versi dengan tanda tangan yang cocok</string>
+    <string name="app_details__incompatible_mismatched_signers">Tanda tangan berbeda dengan versi yang terpasang</string>
+    <string name="app_details__no_versions__no_compatible_signers">Tidak ada versi dengan tanda tangan yang cocok</string>
     <string name="app_details__no_versions__none_compatible_with_device">Tidak ada versi yang kompatibel dengan perangkat ini</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Versi yang terpasang tidak kompatibel dengan semua versi yang tersedia. Menghapus aplikasi akan memungkinkan Anda melihat dan memasang versi yang kompatibel. Ini biasanya terjadi pada aplikasi yang terinstal melalui Google Play atau sumber lain, jika aplikasi tersebut ditandatangani dengan sertifikat berbeda.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Versi yang terpasang tidak kompatibel dengan semua versi yang tersedia. Menghapus aplikasi akan memungkinkan Anda melihat dan memasang versi yang kompatibel. Ini biasanya terjadi pada aplikasi yang terinstal melalui Google Play atau sumber lain, jika aplikasi tersebut ditandatangani dengan sertifikat berbeda.</string>
     <string name="app_list__dismiss_vulnerable_app">Kerentanan diabaikan</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan celah keamanan dengan %1$s. Kami sarankan menghapus aplikasi ini segera.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan celah keamanan dengan %1$s. Kami sarankan untuk segera memperbarui aplikasi ke versi terbaru.</string>

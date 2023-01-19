@@ -46,7 +46,7 @@ public class TestUtils {
         return getApk(versionCode, "signature", null);
     }
 
-    public static Apk getApk(int versionCode, String signature, String releaseChannel) {
+    public static Apk getApk(int versionCode, String signer, String releaseChannel) {
         Apk apk = new Apk();
         apk.repoAddress = "http://www.example.com/fdroid/repo";
         apk.canonicalRepoAddress = "http://www.example.com/fdroid/repo";
@@ -57,7 +57,7 @@ public class TestUtils {
         apk.apkFile = new FileV1("Test Apk", "hash", null, null);
         apk.size = 10000;
         apk.compatible = true;
-        apk.sig = signature;
+        apk.signer = signer;
         apk.releaseChannels = releaseChannel == null ?
                 null : Collections.singletonList(releaseChannel);
         return apk;

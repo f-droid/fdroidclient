@@ -378,11 +378,11 @@
     <string name="download_404">No s\'ha trobat l\'arxiu sol·licitat.</string>
     <string name="force_old_index">Força el format d\'índex antic</string>
     <string name="force_old_index_summary">En cas d\'errors o problemes de compatibilitat, utilitzeu l\'índex d\'aplicació XML</string>
-    <string name="app_details__incompatible_mismatched_signature">Signatura diferent de la versió instal·lada</string>
+    <string name="app_details__incompatible_mismatched_signers">Signatura diferent de la versió instal·lada</string>
     <string name="app_details__no_versions__show_incompat_versions">Per mostrar igualment versions no compatibles, habiliteu «%1$s» a les opcions.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">No hi ha cap versió amb signatura compatible</string>
+    <string name="app_details__no_versions__no_compatible_signers">No hi ha cap versió amb signatura compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hi ha cap versió compatible amb el dispositiu</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La versió instal·lada no és compatible amb cap versió disponible. Desinstal·leu la versió actual i podreu instal·lar versions compatibles. Això succeeix amb versions del Google Play o altres fonts que tenen un certificat i signatura diferent.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La versió instal·lada no és compatible amb cap versió disponible. Desinstal·leu la versió actual i podreu instal·lar versions compatibles. Això succeeix amb versions del Google Play o altres fonts que tenen un certificat i signatura diferent.</string>
     <string name="app_installed_media">Fitxer instal·lat a %s</string>
     <string name="app_permission_storage">F-Droid necessita permisos d\'emmagatzematge per instal·lar. Doneu permisos a la pantalla següent per procedir amb la instal·lació.</string>
     <string name="app_list_download_ready">S\'ha baixat i ja es pot instal·lar</string>

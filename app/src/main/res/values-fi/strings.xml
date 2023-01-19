@@ -351,9 +351,9 @@
     <string name="over_network_always_summary">Käytä aina tätä yhteyttä, kun se on saatavilla</string>
     <string name="over_network_on_demand_summary">Käytä tätä yhteyttä vain, kun klikkaan \'Lataa\'</string>
     <string name="over_network_never_summary">Älä koskaan lataa mitään käyttäen tätä yhteyttä</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Ei versioita joilla yhteensopiva allekirjoitus</string>
+    <string name="app_details__no_versions__no_compatible_signers">Ei versioita joilla yhteensopiva allekirjoitus</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ei versioita jotka ovat yhteensopivia laitteen kanssa</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Asennettu versio ei ole yhteensopiva yhdenkään saatavilla olevan version kanssa. Poistamalla seovelluksen voit selata ja asentaa yhteensopivan version. Näin käy usein Google Playstä tai muista lähteistä asennettujen sovellusten kohdalla, mikäli ne on allekirjoitettu eri sertifikaatilla.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Asennettu versio ei ole yhteensopiva yhdenkään saatavilla olevan version kanssa. Poistamalla seovelluksen voit selata ja asentaa yhteensopivan version. Näin käy usein Google Playstä tai muista lähteistä asennettujen sovellusten kohdalla, mikäli ne on allekirjoitettu eri sertifikaatilla.</string>
     <string name="app__tts__cancel_download">Peruuta lataus</string>
     <string name="app_installed_media">Tiedosto asennettu polkuun %s</string>
     <string name="app_permission_storage">F-Droid tarvitsee tämän asentamiseen oikeuden tallennustilaan. Ole hyvä ja myönnä oikeus seuraavassa ruudussa jatkaaksesi asennusta.</string>
@@ -435,7 +435,7 @@
         <item quantity="one">Päivitetty %1$d vuosi sitten</item>
         <item quantity="other">Päivitetty %1$d vuotta sitten</item>
     </plurals>
-    <string name="app_details__incompatible_mismatched_signature">Poikkeava allekirjoitus asennettuun versioon nähden</string>
+    <string name="app_details__incompatible_mismatched_signers">Poikkeava allekirjoitus asennettuun versioon nähden</string>
     <string name="app_details__no_versions__show_incompat_versions">Nähdäksesi yhteensopimattomatkin versiot, käytä \"%1$s\" asetusta.</string>
     <string name="prompt_to_send_crash_reports">Pyydä lähettämään kaatumisraportteja</string>
     <string name="prompt_to_send_crash_reports_summary">Kerää tietoja kaatumisista ja pyydä lähettämään ne kehittäjälle</string>

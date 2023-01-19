@@ -102,11 +102,11 @@
     <string name="no_such_app">Er is geen dergelijke app gevonden.</string>
     <string name="app_details_donate_prompt_unknown_author">Schenk de ontwikkelaars van %1$s een kopje koffie!</string>
     <string name="app_details_donate_prompt">%1$s is gemaakt door %2$s. Schenk ze een kopje koffie!</string>
-    <string name="app_details__incompatible_mismatched_signature">Ondertekening verschilt van geïnstalleerde versie</string>
+    <string name="app_details__incompatible_mismatched_signers">Ondertekening verschilt van geïnstalleerde versie</string>
     <string name="app_details__no_versions__show_incompat_versions">Schakel de instelling \"%1$s\" in om incompatibele versies hier toch weer te geven.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Er zijn geen versies met een compatibele ondertekening beschikbaar</string>
+    <string name="app_details__no_versions__no_compatible_signers">Er zijn geen versies met een compatibele ondertekening beschikbaar</string>
     <string name="app_details__no_versions__none_compatible_with_device">Er zijn met dit apparaat geen versies compatibel</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">De geïnstalleerde versie is niet compatibel met de beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna u ze kan installeren. Dit gebeurt vaak met apps die geïnstalleerd zijn via Google Play of andere bronnen, als ze met een ander certificaat zijn ondertekend.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">De geïnstalleerde versie is niet compatibel met de beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna u ze kan installeren. Dit gebeurt vaak met apps die geïnstalleerd zijn via Google Play of andere bronnen, als ze met een ander certificaat zijn ondertekend.</string>
     <string name="about_version">Versie</string>
     <string name="about_site">Website</string>
     <string name="about_source">Broncode</string>

@@ -295,8 +295,8 @@
     <string name="hide_all_notifications_summary">Ne prikazuj radnje u statusnoj traci i ploči s obavijestima.</string>
     <string name="send_install_history">Šalji povijest instalacija</string>
     <string name="install_history">Povijest instalacija</string>
-    <string name="app_details__incompatible_mismatched_signature">Različit potpis u odnosu na instaliranu verziju</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Nema verzija s kompatibilnim potpisom</string>
+    <string name="app_details__incompatible_mismatched_signers">Različit potpis u odnosu na instaliranu verziju</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nema verzija s kompatibilnim potpisom</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nema verzija kompatibilnih s uređajem</string>
     <string name="about_forum">Forum podrške</string>
     <string name="app_suggested">Predloženo</string>
@@ -484,7 +484,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Pronašli smo sigurnosnu prijetnju u %1$s. Preporučujemo da odmah ažurirate ovu aplikaciju na najnoviju verziju.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Pronašli smo sigurnosnu prijetnju u %1$s. Preporučujemo da odmah deinstalirate ovu aplikaciju.</string>
     <string name="app_permission_storage">F-Droid zahtjeva dopuštenje pristupa pohrani kako bi ovo instalirao u pohranu uređaja. Dopustite pristup pohrani na sljedećem zaslonu kako biste nastavili s instalacijom.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Instalirana verzija nije kompatibilna s nijednom dostupnom verzijom. Deinstaliranje aplikacije omogućiti će vam pregled i instaliranje kompatibilnih verzija. Ovo se često događa s aplikacijama instaliranim putem Google Play ili drugih izvora, ako su potpisane drugim certifikatom.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Instalirana verzija nije kompatibilna s nijednom dostupnom verzijom. Deinstaliranje aplikacije omogućiti će vam pregled i instaliranje kompatibilnih verzija. Ovo se često događa s aplikacijama instaliranim putem Google Play ili drugih izvora, ako su potpisane drugim certifikatom.</string>
     <string name="app_details__no_versions__show_incompat_versions">Za prikaz nekompatibilnih verzija omogućite postavku \"%1$s\".</string>
     <string name="scan_removable_storage_summary">Traži repozitorije paketa na prijenosnoj pohrani kao što su SD kartice i USB pohrana</string>
     <string name="theme_follow_system">Slijedi sustav</string>

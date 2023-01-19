@@ -373,11 +373,11 @@
     <string name="status_inserting_x_apps">Uygulama ayrıntıları kaydediliyor (%1$d/%2$d) kaynak %3$s</string>
     <string name="app_installed_media">Dosya %s konumuna yüklendi</string>
     <string name="app_permission_storage">F-Droid bunu depolaya yüklemek için depolama iznine ihtiyaç duyuyor. Yüklemeye devam etmek için lütfen bir sonraki ekranda izin verin.</string>
-    <string name="app_details__incompatible_mismatched_signature">Yüklü sürümden farklı imza</string>
+    <string name="app_details__incompatible_mismatched_signers">Yüklü sürümden farklı imza</string>
     <string name="app_details__no_versions__show_incompat_versions">Uyumsuz sürümleri burada yine de göstermek için, \"%1$s\" ayarını etkinleştirin.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Uyumlu imzaya sahip sürüm yok</string>
+    <string name="app_details__no_versions__no_compatible_signers">Uyumlu imzaya sahip sürüm yok</string>
     <string name="app_details__no_versions__none_compatible_with_device">Cihazla uyumlu sürüm yok</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Yüklü sürüm hiçbir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip kurmanızı sağlayacaktır. Bu genellikle, Google Play veya diğer kaynaklar aracılığıyla yüklenmiş uygulamalarda farklı bir sertifika ile imzalandığında oluşur.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Yüklü sürüm hiçbir kullanılabilir sürümle uyumlu değil. Uygulamayı kaldırmak, uyumlu sürümleri görüntüleyip kurmanızı sağlayacaktır. Bu genellikle, Google Play veya diğer kaynaklar aracılığıyla yüklenmiş uygulamalarda farklı bir sertifika ile imzalandığında oluşur.</string>
     <string name="app_list__dismiss_app_update">Güncelleme yok sayıldı</string>
     <string name="app_list__dismiss_vulnerable_app">Güvenlik açığı yok sayıldı</string>
     <string name="app_list__dismiss_downloading_app">İndirme iptal edildi</string>

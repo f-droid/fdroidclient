@@ -277,11 +277,11 @@
     <string name="update_auto_install_summary">Tải và cập nhật ứng dụng trong nền và hiển thị thông báo</string>
     <string name="app_details_donate_prompt_unknown_author">Hãy mua một ly cà phê cho nhà phát triển ứng dụng %1$s!</string>
     <string name="app_details_donate_prompt">%1$s được %2$s tạo ra. Hãy mua một ly cà phê cho họ!</string>
-    <string name="app_details__incompatible_mismatched_signature">Chữ kí ứng dụng khác với phiên bản đã cài đặt</string>
+    <string name="app_details__incompatible_mismatched_signers">Chữ kí ứng dụng khác với phiên bản đã cài đặt</string>
     <string name="app_details__no_versions__show_incompat_versions">Để hiển thị cả những phiên bản không tương tích, hãy bật tuỳ chọn \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Không phiên bản nào có chữ kí tương thích</string>
+    <string name="app_details__no_versions__no_compatible_signers">Không phiên bản nào có chữ kí tương thích</string>
     <string name="app_details__no_versions__none_compatible_with_device">Không phiên bản nào tương thích với thiết bị</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Phiên bản đã cài đặt không tương thích với bất kì phiên bản nào ở đây. Việc gỡ bỏ ứng dụng này sẽ giúp bạn xem và cài đặt các phiên bản tương thích. Trường hợp này hay xảy ra với các ứng dụng cài từ Cửa hàng Play hoặc các nguồn khác nếu ứng dụng được kí bởi chứng chỉ khác.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Phiên bản đã cài đặt không tương thích với bất kì phiên bản nào ở đây. Việc gỡ bỏ ứng dụng này sẽ giúp bạn xem và cài đặt các phiên bản tương thích. Trường hợp này hay xảy ra với các ứng dụng cài từ Cửa hàng Play hoặc các nguồn khác nếu ứng dụng được kí bởi chứng chỉ khác.</string>
     <string name="app_version_x_available">Đã có phiên bản %1$s</string>
     <string name="app_version_x_installed">Phiên bản %1$s</string>
     <string name="app_recommended_version_installed">Phiên bản %1$s (Khuyên dùng)</string>

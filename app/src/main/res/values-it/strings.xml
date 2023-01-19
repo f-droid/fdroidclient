@@ -397,11 +397,11 @@
     <string name="app_installed_media">File installato in %s</string>
     <string name="status_inserting_x_apps">Salvataggio dettagli app (%1$d/%2$d) da %3$s</string>
     <string name="app_permission_storage">F-Droid ha bisogno dell\'autorizzazione di archiviazione per installare questo nella memoria. Per favore abilitala nella prossima schermata per procedere con l\'installazione.</string>
-    <string name="app_details__incompatible_mismatched_signature">La firma non coincide con quella della versione installata</string>
+    <string name="app_details__incompatible_mismatched_signers">La firma non coincide con quella della versione installata</string>
     <string name="app_details__no_versions__show_incompat_versions">Per mostrare comunque le versioni incompatibili, abilita l\'impostazione \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Nessuna versione con una firma compatibile</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nessuna versione con una firma compatibile</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nessuna versione compatibile con il dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La versione installata non è compatibile con nessuna versione disponibile. Disinstallare l\'applicazione ti permetterà di visualizzare ed installare le versioni compatibili. Questo accade spesso con applicazioni installate da Google Play o da altre sorgenti se firmate con un certificato differente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La versione installata non è compatibile con nessuna versione disponibile. Disinstallare l\'applicazione ti permetterà di visualizzare ed installare le versioni compatibili. Questo accade spesso con applicazioni installate da Google Play o da altre sorgenti se firmate con un certificato differente.</string>
     <string name="app_list__dismiss_app_update">Aggiornamento ignorato</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilità ignorata</string>
     <string name="app_list__dismiss_downloading_app">Download annullato</string>

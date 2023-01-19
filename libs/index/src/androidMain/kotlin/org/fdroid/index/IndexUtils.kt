@@ -8,8 +8,21 @@ public object IndexUtils {
         return sha256(certificate.decodeHex()).toHex()
     }
 
-    public fun getPackageSignature(signatureBytes: ByteArray): String {
-        return sha256(signatureBytes).toHex()
+    /**
+     * Get the standard, lowercase SHA-256 fingerprint used to represent an
+     * APK or JAR signing key. **NOTE**: this does not handle signers that
+     * have multiple X.509 signing certificates.
+     * <p>
+     * Calling the X.509 signing certificate the "signature" is incorrect, e.g.
+     * [android.content.pm.PackageInfo.signatures] or [android.content.pm.Signature].
+     * The Android docs about APK signatures call this the "signer".
+     *
+     * @see org.fdroid.fdroid.data.Apk#signer
+     * @see android.content.pm.PackageInfo#signatures
+     * @see <a href="https://source.android.com/docs/security/features/apksigning/v2">APK Signature Scheme v2</a>
+     */
+    public fun getPackageSigner(signerBytes: ByteArray): String {
+        return sha256(signerBytes).toHex()
     }
 
     internal fun String.decodeHex(): ByteArray {

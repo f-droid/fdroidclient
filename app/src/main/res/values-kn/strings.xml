@@ -192,11 +192,11 @@
     <string name="app_list_download_ready">ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗಿದೆ, ಸ್ಥಾಪಿಸಲು ಸಿದ್ಧವಾಗಿದೆ</string>
     <string name="app_installed_media">ಫೈಲ್ ಅನ್ನು %s ಗೆ ಸ್ಥಾಪಿಸಲಾಗಿದೆ</string>
     <string name="app_permission_storage">ಇದನ್ನು ಶೇಖರಣೆಗೆ ಸ್ಥಾಪಿಸಲು ಎಫ್-ಡ್ರಾಯಿಡ್‌ಗೆ ಶೇಖರಣಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ. ಅನುಸ್ಥಾಪನೆಯೊಂದಿಗೆ ಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ ಅದನ್ನು ಅನುಮತಿಸಿ.</string>
-    <string name="app_details__incompatible_mismatched_signature">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಗೆ ವಿಭಿನ್ನ ಸಹಿ</string>
+    <string name="app_details__incompatible_mismatched_signers">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಗೆ ವಿಭಿನ್ನ ಸಹಿ</string>
     <string name="app_details__no_versions__show_incompat_versions">ಹೇಗಾದರೂ ಹೊಂದಾಣಿಕೆಯಾಗದ ಆವೃತ್ತಿಗಳನ್ನು ಇಲ್ಲಿ ತೋರಿಸಲು, \"%1$s\" ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">ಹೊಂದಾಣಿಕೆಯ ಸಹಿಯೊಂದಿಗೆ ಯಾವುದೇ ಆವೃತ್ತಿಗಳಿಲ್ಲ</string>
+    <string name="app_details__no_versions__no_compatible_signers">ಹೊಂದಾಣಿಕೆಯ ಸಹಿಯೊಂದಿಗೆ ಯಾವುದೇ ಆವೃತ್ತಿಗಳಿಲ್ಲ</string>
     <string name="app_details__no_versions__none_compatible_with_device">ಯಾವುದೇ ಆವೃತ್ತಿಗಳು ಸಾಧನದೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಯು ಲಭ್ಯವಿರುವ ಯಾವುದೇ ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಅಸ್ಥಾಪಿಸುವುದರಿಂದ ಹೊಂದಾಣಿಕೆಯ ಆವೃತ್ತಿಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತು ಸ್ಥಾಪಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ. ಗೂಗಲ್ ಪ್ಲೇ ಅಥವಾ ಇತರ ಮೂಲಗಳ ಮೂಲಕ ಸ್ಥಾಪಿಸಲಾದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಬೇರೆ ಪ್ರಮಾಣಪತ್ರದಿಂದ ಸಹಿ ಮಾಡಿದ್ದರೆ ಇದು ಹೆಚ್ಚಾಗಿ ಸಂಭವಿಸುತ್ತದೆ.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಯು ಲಭ್ಯವಿರುವ ಯಾವುದೇ ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಅಸ್ಥಾಪಿಸುವುದರಿಂದ ಹೊಂದಾಣಿಕೆಯ ಆವೃತ್ತಿಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತು ಸ್ಥಾಪಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ. ಗೂಗಲ್ ಪ್ಲೇ ಅಥವಾ ಇತರ ಮೂಲಗಳ ಮೂಲಕ ಸ್ಥಾಪಿಸಲಾದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಬೇರೆ ಪ್ರಮಾಣಪತ್ರದಿಂದ ಸಹಿ ಮಾಡಿದ್ದರೆ ಇದು ಹೆಚ್ಚಾಗಿ ಸಂಭವಿಸುತ್ತದೆ.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s ನೊಂದಿಗೆ ದುರ್ಬಲತೆಯನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿದ್ದೇವೆ. ಈ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ತಕ್ಷಣ ಅಸ್ಥಾಪಿಸಲು ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s ನೊಂದಿಗೆ ದುರ್ಬಲತೆಯನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿದ್ದೇವೆ. ಹೊಸ ಆವೃತ್ತಿಗೆ ತಕ್ಷಣ ನವೀಕರಿಸಲು ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ.</string>
     <string name="updates__app_with_known_vulnerability__ignore">ನಿರ್ಲಕ್ಷಿಸಿ</string>

@@ -408,8 +408,8 @@
     <string name="over_network_always_summary">Увек користи ову везу, ако је доступна</string>
     <string name="over_network_on_demand_summary">Користи ову везу само за преузимање</string>
     <string name="over_network_never_summary">Никада не преузимај са ове везе</string>
-    <string name="app_details__incompatible_mismatched_signature">Инсталирана верзија има други потпис</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Нема верзија са компатибилним потписом</string>
+    <string name="app_details__incompatible_mismatched_signers">Инсталирана верзија има други потпис</string>
+    <string name="app_details__no_versions__no_compatible_signers">Нема верзија са компатибилним потписом</string>
     <string name="app_details__no_versions__none_compatible_with_device">Нема верзија које су компатибилне са уређајем</string>
     <string name="sort_search">Сортирај претрагу</string>
     <string name="menu_open">Отвори</string>
@@ -418,7 +418,7 @@
     <string name="repo_exists_and_enabled">Репозиторијум %1$s је већ подешен и омогућен.</string>
     <string name="repo_delete_to_overwrite">Прво избришите %1$s да бисте додали репозиторијум са другим кључем.</string>
     <string name="app_details__no_versions__show_incompat_versions">Да бисте приказали некомпатибилне верзије, омогућите опцију „%1$s”.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Инсталирана верзија није компатибилна ни са једном доступном верзијом. Ако деинсталирате апликацију, моћи ћете да погледате и инсталирате компатибилне верзије. Ово се често дешава са апликацијама инсталираним преко Google Play-а или из других извора, ако су потписане другим сертификатом.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Инсталирана верзија није компатибилна ни са једном доступном верзијом. Ако деинсталирате апликацију, моћи ћете да погледате и инсталирате компатибилне верзије. Ово се често дешава са апликацијама инсталираним преко Google Play-а или из других извора, ако су потписане другим сертификатом.</string>
     <string name="privacy">Приватност</string>
     <string name="preventScreenshots_title">Спречи снимке екрана</string>
     <string name="preventScreenshots_summary">Блокира прављење снимака екрана и сакрива садржај апликације из недавних апликација</string>

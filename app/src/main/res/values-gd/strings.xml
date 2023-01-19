@@ -229,11 +229,11 @@
     <string name="about_site">Làrach-lìn</string>
     <string name="about_version">Tionndadh</string>
     <string name="about_title">Mu F-Droid</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Chan eil an tionndadh stàlaichte co-chòrdail le tionndadh sam bith a tha ri fhaighinn. Ma dhì-stàlaicheas tu an aplacaid, ’s urrainn dhut tionndaidhean co-chòrdail a shealltainn ’s a stàladh. Tachraidh seo gu tric le aplacaidean a chaidh a stàladh o Google Play no tùs eile ma chaidh an soidhneadh le teisteanas eile.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Chan eil an tionndadh stàlaichte co-chòrdail le tionndadh sam bith a tha ri fhaighinn. Ma dhì-stàlaicheas tu an aplacaid, ’s urrainn dhut tionndaidhean co-chòrdail a shealltainn ’s a stàladh. Tachraidh seo gu tric le aplacaidean a chaidh a stàladh o Google Play no tùs eile ma chaidh an soidhneadh le teisteanas eile.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Chan eil tionndadh ann a tha co-chòrdail leis an uidheam</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Chan eil tionndadh le soidhneadh co-chòrdail ann</string>
+    <string name="app_details__no_versions__no_compatible_signers">Chan eil tionndadh le soidhneadh co-chòrdail ann</string>
     <string name="app_details__no_versions__show_incompat_versions">Airson na tionndaidhean nach eil co-chòrdail a shealltainn an-seo co-dhiù, cuir an comas an roghainn “%1$s”.</string>
-    <string name="app_details__incompatible_mismatched_signature">Tha an soidhneadh diofraichte on tionndadh stàlaichte</string>
+    <string name="app_details__incompatible_mismatched_signers">Tha an soidhneadh diofraichte on tionndadh stàlaichte</string>
     <string name="app_details_donate_prompt">Chaidh %1$s a chruthachadh le %2$s. Ceannaich cupan cofaidh dhaibh!</string>
     <string name="app_details_donate_prompt_unknown_author">Ceannaich cupan cofaidh do luchd-leasachaidh %1$s!</string>
     <string name="no_such_app">Cha deach aplacaid dhen leithid a lorg.</string>

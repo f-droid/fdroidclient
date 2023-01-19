@@ -262,9 +262,9 @@
     <string name="force_old_index_summary">Abban az esetben, ha hibák vagy kompatibilitási problémák vannak, használja az XML alkalmazás indexet</string>
     <string name="app_details_donate_prompt_unknown_author">Vegyen egy kávét a(z) %1$s fejlesztőinek!</string>
     <string name="app_details__no_versions__show_incompat_versions">Az inkompatibilis verziók megjelenítéséhez engedélyezze az „%1$s” beállítást.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Nem található kompatibilis aláírással rendelkező verzió</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nem található kompatibilis aláírással rendelkező verzió</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nem található az eszközével kompatibilis verzió</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">A telepített verzió nem kompatibilis egyetlen elérhető verzióval sem. Az alkalmazás törlése lehetőséget ad a kompatibilis verziók megtekintésére, és telepítésére. Ez gyakran olyan alkalmazásoknál fordul elő, amik a Google Play áruházból, vagy egyéb forrásból lettek telepítve, és egy másik tanúsítvánnyal vannak aláírva.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">A telepített verzió nem kompatibilis egyetlen elérhető verzióval sem. Az alkalmazás törlése lehetőséget ad a kompatibilis verziók megtekintésére, és telepítésére. Ez gyakran olyan alkalmazásoknál fordul elő, amik a Google Play áruházból, vagy egyéb forrásból lettek telepítve, és egy másik tanúsítvánnyal vannak aláírva.</string>
     <string name="app_permission_storage">Az F-Droidnak tárhely engedéllyel kell rendelkeznie, hogy erre a tárhelyre telepíthessen. A telepítés folytatásához engedélyezze a következő képernyőn.</string>
     <string name="app_list_download_ready">Letöltve, készen áll a telepítésre</string>
     <string name="app_list__dismiss_app_update">Frissítés figyelmen kívül hagyva</string>
@@ -298,7 +298,7 @@
     <string name="by_author_format">Készítette: %s</string>
     <string name="force_old_index">Régi indexformátum kényszerítése</string>
     <string name="app_details_donate_prompt">A(z) %1$s alkalmazást %2$s készítette. Vegyen nekik egy kávét!</string>
-    <string name="app_details__incompatible_mismatched_signature">A telepített verziótól eltérő aláírás</string>
+    <string name="app_details__incompatible_mismatched_signers">A telepített verziótól eltérő aláírás</string>
     <string name="app_version_x_available">%1$s verzió elérhető</string>
     <string name="app_version_x_installed">%1$s verzió</string>
     <string name="app_recommended_version_installed">%1$s verzió (ajánlott)</string>

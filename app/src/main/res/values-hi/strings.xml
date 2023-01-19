@@ -288,11 +288,11 @@
     <string name="status_inserting_x_apps">एप्लिकेशन विवरण सहेजना (%1$d /%2$d) %3$s से</string>
     <string name="app_installed_media">%s पर फ़ाइल स्थापित की गई</string>
     <string name="app_permission_storage">F-Droid को स्टोरेज में इसे इंस्टॉल करने के लिए स्टोरेज अनुमति की आवश्यकता होती है। कृपया इसे अगली स्क्रीन पर संस्थापन के साथ आगे बढ़ने दें।</string>
-    <string name="app_details__incompatible_mismatched_signature">स्थापित संस्करण के लिए अलग हस्ताक्षर</string>
+    <string name="app_details__incompatible_mismatched_signers">स्थापित संस्करण के लिए अलग हस्ताक्षर</string>
     <string name="app_details__no_versions__show_incompat_versions">वैसे भी असंगत संस्करण दिखाने के लिए, \"%1$s\" सेटिंग सक्षम करें।</string>
-    <string name="app_details__no_versions__no_compatible_signatures">संगत हस्ताक्षर के साथ कोई संस्करण नहीं</string>
+    <string name="app_details__no_versions__no_compatible_signers">संगत हस्ताक्षर के साथ कोई संस्करण नहीं</string>
     <string name="app_details__no_versions__none_compatible_with_device">डिवाइस के साथ संगत कोई संस्करण नहीं</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">स्थापित संस्करण किसी भी उपलब्ध संस्करण के साथ संगत नहीं है। एप्लिकेशन को अनइंस्टॉल करने से आप संगत संस्करण देख और इंस्टॉल कर पाएंगे। यह अक्सर Google Play या अन्य स्रोतों के माध्यम से इंस्टॉल किए गए एप्लिकेशन के साथ होता है, अगर वे एक अलग प्रमाण पत्र द्वारा हस्ताक्षरित हैं।</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">स्थापित संस्करण किसी भी उपलब्ध संस्करण के साथ संगत नहीं है। एप्लिकेशन को अनइंस्टॉल करने से आप संगत संस्करण देख और इंस्टॉल कर पाएंगे। यह अक्सर Google Play या अन्य स्रोतों के माध्यम से इंस्टॉल किए गए एप्लिकेशन के साथ होता है, अगर वे एक अलग प्रमाण पत्र द्वारा हस्ताक्षरित हैं।</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">हमें%1$s के साथ भेद्यता मिली। हम इस ऐप को तुरंत अनइंस्टॉल करने की सलाह देते हैं।</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">हमें%1$s के साथ भेद्यता मिली। हम तुरंत नवीनतम संस्करण को अपडेट करने की सलाह देते हैं।</string>
     <string name="updates__app_with_known_vulnerability__ignore">नज़रअंदाज़ करना</string>

@@ -392,11 +392,11 @@
     <string name="status_inserting_x_apps">Zapisywanie szczegółów aplikacji (%1$d/%2$d) z %3$s</string>
     <string name="app_installed_media">Plik zainstalowany w %s</string>
     <string name="app_permission_storage">F-Droid potrzebuje uprawnienia dostępu do pamięci, aby zainstalować to w pamięci. Zezwól na to na następnym ekranie, aby kontynuować instalację.</string>
-    <string name="app_details__incompatible_mismatched_signature">Inny podpis niż zainstalowanej wersji</string>
+    <string name="app_details__incompatible_mismatched_signers">Inny podpis niż zainstalowanej wersji</string>
     <string name="app_details__no_versions__show_incompat_versions">Aby mimo to pokazać niezgodne wersje, włącz opcję „%1$s” w ustawieniach.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Brak wersji ze zgodnym podpisem</string>
+    <string name="app_details__no_versions__no_compatible_signers">Brak wersji ze zgodnym podpisem</string>
     <string name="app_details__no_versions__none_compatible_with_device">Brak wersji zgodnych z urządzeniem</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Zainstalowana wersja nie jest zgodna z żadną dostępną wersją. Odinstalowanie aplikacji umożliwi podgląd i zainstalowanie zgodnych wersji. Dzieje się tak często w przypadku aplikacji zainstalowanych przez Google Play lub inne źródła, jeśli są one podpisane innym certyfikatem.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Zainstalowana wersja nie jest zgodna z żadną dostępną wersją. Odinstalowanie aplikacji umożliwi podgląd i zainstalowanie zgodnych wersji. Dzieje się tak często w przypadku aplikacji zainstalowanych przez Google Play lub inne źródła, jeśli są one podpisane innym certyfikatem.</string>
     <string name="app_list__dismiss_app_update">Zignorowano aktualizację</string>
     <string name="app_list__dismiss_vulnerable_app">Zignorowano podatność</string>
     <string name="app_list__dismiss_downloading_app">Anulowano pobieranie</string>
