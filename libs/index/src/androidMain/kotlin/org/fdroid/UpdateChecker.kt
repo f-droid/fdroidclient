@@ -19,19 +19,20 @@ public class UpdateChecker(
      * Returns a [PackageVersion] for the given [packageInfo] that is the suggested update
      * or null if there is no suitable update in [versions].
      *
-     * Special case: A version with the [PackageInfo.getLongVersionCode] will be returned
-     * if [PackageVersion.hasKnownVulnerability] is true, even if there is no update.
-     *
      * @param versions a **sorted** list of [PackageVersion] with highest version code first.
      * @param packageInfo needs to be retrieved with [GET_SIGNING_CERTIFICATES]
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
      * @param preferencesGetter an optional way to consider additional per app preferences
+     * @param includeKnownVulnerabilities if true,
+     * versions with the [PackageInfo.getLongVersionCode] will be returned
+     * if [PackageVersion.hasKnownVulnerability] is true, even without real update.
      */
     public fun <T : PackageVersion> getUpdate(
         versions: List<T>,
         packageInfo: PackageInfo,
         releaseChannels: List<String>? = null,
+        includeKnownVulnerabilities: Boolean = false,
         preferencesGetter: (() -> PackagePreference?)? = null,
     ): T? = getUpdate(
         versions = versions,
@@ -43,6 +44,7 @@ public class UpdateChecker(
         installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
         allowedReleaseChannels = releaseChannels,
         preferencesGetter = preferencesGetter,
+        includeKnownVulnerabilities = includeKnownVulnerabilities,
     )
 
     /**
@@ -73,9 +75,6 @@ public class UpdateChecker(
      * for the given [installedVersionCode] or suggested for new installed if the given code is 0,
      * or null if there is no suitable candidate in [versions].
      *
-     * Special case: A version with the [installedVersionCode] will be returned
-     * if [PackageVersion.hasKnownVulnerability] is true, even if there is no update.
-     *
      * @param versions a **sorted** list of [PackageVersion] with highest version code first.
      * @param allowedSignersGetter should return set of SHA-256 hashes of the signing certificates
      * in lower-case hex. Only versions from these signers will be considered for installation.
@@ -83,22 +82,25 @@ public class UpdateChecker(
      * If the set of signers is empty, no signers will be allowed, i.e. only apps without signer.
      * @param allowedReleaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
-     * @param preferencesGetter an optional way to consider additional per app preferences
+     * @param preferencesGetter an optional way to consider additional per app preferences.
+     * @param includeKnownVulnerabilities if true, versions with the [installedVersionCode]
+     * will be returned if [PackageVersion.hasKnownVulnerability] is true, even without real update.
      */
     public fun <T : PackageVersion> getUpdate(
         versions: List<T>,
         allowedSignersGetter: (() -> Set<String>?)? = null,
         installedVersionCode: Long = 0,
         allowedReleaseChannels: List<String>? = null,
+        includeKnownVulnerabilities: Boolean = false,
         preferencesGetter: (() -> PackagePreference?)? = null,
     ): T? {
         // getting signatures is rather expensive, so we only do that when there's update candidates
         val allowedSigners by lazy { allowedSignersGetter?.let { it() } }
         versions.iterator().forEach versions@{ version ->
             // if the installed version has a known vulnerability, we return it as well
-            if (version.versionCode == installedVersionCode && version.hasKnownVulnerability) {
-                return version
-            }
+            if (includeKnownVulnerabilities &&
+                version.versionCode == installedVersionCode && version.hasKnownVulnerability
+            ) return version
             // if version code is not higher than installed skip package as list is sorted
             if (version.versionCode <= installedVersionCode) return null
             // we don't support versions that have multiple signers
