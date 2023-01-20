@@ -1,0 +1,5 @@
+* Total overhaling av nedlastings­logikken, for betre yting og spegelstøtte
+
+* Skjermbilete og anna grafikk kan no lastast ned frå speglar
+
+* Redusert personvern-lekkasje med TLS-økter

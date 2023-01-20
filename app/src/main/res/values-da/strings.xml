@@ -523,4 +523,6 @@
     <string name="antinsfw">Denne app har et indhold som ikke bør publiceres eller være synlig overalt</string>
     <string name="antinonfreedep">Ikke frie afhængigheder</string>
     <string name="antinosource">Kildekode ikke længre tilgængelig</string>
+    <string name="latest__empty_state__upgrading">Opgraderer database…</string>
+    <string name="menu_release_channel_beta">Tillad betaopdateringer</string>
 </resources>

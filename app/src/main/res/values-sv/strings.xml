@@ -529,4 +529,5 @@
     <string name="antiothers">Andra antifunktioner</string>
     <string name="antinsfw">Denna app har ett innehåll som inte bör publiceras eller vara synligt var som helst</string>
     <string name="menu_release_channel_beta">Tillåt betauppdateringar</string>
+    <string name="latest__empty_state__upgrading">Uppgraderar databas…</string>
 </resources>

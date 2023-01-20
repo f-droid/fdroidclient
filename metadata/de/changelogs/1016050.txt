@@ -1,0 +1,7 @@
+Komplette Modernisierung von Download, Index, und Datenbankprogrammierung. Schneller und stabiler bei geringerem Bandbreitenbedarf. Auch besser wartbar mit einer stark verbesserten Test-Suite. Behebung zahlreicher Abstürze und langjähriger Bugs.
+
+* Funktioniert besser auf günstigen Geräten mit wenig Speicher *
+
+* Korrekturen #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Neue Sprache: Kantonesisch (Yue)

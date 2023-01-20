@@ -60,7 +60,7 @@
     <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
     <string name="unstable_updates">تحديثات غير مستقرة</string>
-    <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات الغير المستقرة</string>
+    <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات غير المستقرة</string>
     <string name="other">غير ذلك</string>
     <string name="update_interval">الفاصل الزمني للتحديث التلقائي</string>
     <string name="update_auto_download">جلب التحديثات تلقائياً</string>
@@ -567,4 +567,6 @@
     <string name="antiupstreamnonfree">المصدر ليس حر</string>
     <string name="antiothers">الميزات المضادة الأخرى</string>
     <string name="antinsfw">يحتوي هذا التطبيق على محتوى لا يجب نشره أو رؤيته في كل مكان</string>
+    <string name="latest__empty_state__upgrading">جارٍ ترقية قاعدة البيانات…</string>
+    <string name="menu_release_channel_beta">السماح بتحديثات النسخة التجريبية (بيتا)</string>
 </resources>

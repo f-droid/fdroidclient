@@ -218,7 +218,7 @@
     <string name="antifeatures">Antifunksjonalitet</string>
     <string name="antiadslist">Appen inneheld reklame</string>
     <string name="antinonfreeadlist">Appen marknadsfører ufrie tillegg</string>
-    <string name="antinonfreenetlist">Appen marknadsfører ufrie nett-tenester</string>
+    <string name="antinonfreenetlist">Appen marknadsfører eller er heilt avhengig av ufrie nett-tenester</string>
     <string name="antinonfreedeplist">Appen er avhengig av andre ufrie appar</string>
     <string name="antiupstreamnonfreelist">Kjeldekoden til oppstraums­appen er ikkje heilt fri</string>
     <string name="antinonfreeassetslist">Appen inneheld ufrie ressursar</string>
@@ -510,4 +510,23 @@
     <string name="use_pure_black_dark_theme">Bruk heilt svart bakgrunn i mørkt tema</string>
     <string name="banner_no_data_or_wifi">Ikkje mobildata/Wi-Fi</string>
     <string name="banner_no_internet">Manglar Internett-tilgang</string>
+    <string name="has_disallow_install_unknown_sources">Ukjente kjelder kan ikkje leggast til av denne brukaren. Dette gjeld òg nye pakkebrønnar</string>
+    <string name="antinonfreenet">Ufrie nettverktenester</string>
+    <string name="share_apk_error">Kunne ikkje dele programfil</string>
+    <string name="menu_release_channel_beta">Tillat betaoppdateringar</string>
+    <string name="antitrack">Sporing</string>
+    <string name="latest__empty_state__upgrading">Oppgraderer database…</string>
+    <string name="antiads">Reklame</string>
+    <string name="antinonfreead">Ufrie tillegg</string>
+    <string name="antiknownvuln">Kjent sårbarheit</string>
+    <string name="antinonfreedep">Ufrie avhengigheiter</string>
+    <string name="antinonfreeassets">Ufrie gjenstandar</string>
+    <string name="antinosource">Kjeldekoden er ikkje lenger tilgjengeleg</string>
+    <string name="swap_wifi_vpn_conflict">I konflikt med aktiv VPN!</string>
+    <string name="antidisabledalgorithm">Signert med ein utrygg algoritme</string>
+    <string name="antinsfw">Appen inneheld potensielt støytande innhald</string>
+    <string name="app_list_results_hidden_antifeature_settings">Nokre søkjetreff er gøymde, grunna innstillingane dine for antifunksjonalitet.</string>
+    <string name="has_disallow_install_unknown_sources_globally">Administratoren av eininga di tillèt ikkje installering av appar frå ukjende kjelder. Dette gjeld òg nye pakkebrønnar.</string>
+    <string name="antiupstreamnonfree">Ufri oppstraums­kode</string>
+    <string name="antiothers">Annan antifunksjonalitet</string>
 </resources>

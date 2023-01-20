@@ -1,0 +1,7 @@
+Fullstendig modernisering av program­koden for nedlasting, indeksering og databasen. Er no raskare og meir robust, men brukar mindre bandbreidd. Er òg lettare å vedlikehalda, og med sterkt forbetra testar. Dette fiksar fleire krasjar og eldre feil.
+
+* Fungerer betre på billige einingar med lite minne
+
+* Rette følgjande feil: #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Ny omsetjing: kantonesisk (yue)

@@ -220,7 +220,7 @@
 \nLaitteessasi on sovelluksia, mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sovelluslähteesi tarvitsee päivittää tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
     <string name="empty_can_update_app_list">Onnittelut!
 \nKaikki sovelluksesi ovat ajan tasalla.</string>
-    <string name="unsigned_description">Tämä tarkoittaa sitä, ettei sovelluslistausta voitu vahvistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
+    <string name="unsigned_description">Tämä tarkoittaa, ettei sovelluslistausta voitu vahvistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
@@ -529,4 +529,6 @@
     <string name="antinosource">Lähdekoodi Ei enää saatavilla</string>
     <string name="antiothers">Muut antiominaisuudet</string>
     <string name="antinsfw">Sovelluksessa on sisältöä, jota ei tulisi julkaista tai näyttää kaikkialla</string>
+    <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
+    <string name="menu_release_channel_beta">Salli beta-päivitykset</string>
 </resources>

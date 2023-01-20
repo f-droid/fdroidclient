@@ -1,5 +1,20 @@
-* Temastøtte kopla til innebygde Android-tema (@proletarius101)
+* Tema-støtte knytt til innebygde Android-tema (@proletarius101)
 
-* Nye varslingsmeldingar: «Manglar Internett-tilgang» og «Ikkje mobildata/Wi-Fi»
+* Nye toppbanner-varslingar: «Manglar Internett-tilgang» og «Ikkje mobildata/Wi-Fi»
 
-* Forbetra handtering av pakkebrønnar og speglar på USB-OTG og SD-kort
+
+* Handterer USB OTG og SD-kort som som pakkebrønnar og speglar betre
+
+* Stoppa gjentekne oppdateringar av Trichrome-biblioteket
+
+
+* Endringar for å følgja Material-designet (@proletarius101)
+
+
+* Forbetra OpenCollective-merke (@ConnyDuck)
+
+* Forbetra ikonlasting med Glide (@proletarius101)
+
+* Nytt adaptivt ikon (@12people)
+
+* Modernisert programkode (@Isira-Seneviratne)

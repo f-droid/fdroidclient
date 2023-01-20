@@ -540,4 +540,6 @@
     <string name="antiknownvuln">Kjent sårbarhet</string>
     <string name="antinosource">Kilden er ikke lenger tilgjengelig</string>
     <string name="antinsfw">Programmet inneholder innhold ledelsen i F-Droid synes bør sensureres</string>
+    <string name="latest__empty_state__upgrading">Oppgraderer database…</string>
+    <string name="menu_release_channel_beta">Tillat betaoppdateringer</string>
 </resources>

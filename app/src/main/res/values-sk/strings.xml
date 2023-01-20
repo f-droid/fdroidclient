@@ -18,9 +18,9 @@
     <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
     <string name="system_installer">Rozšírenie Oprávnení</string>
     <string name="system_installer_on">Používať Privilegované Rozšírenie F-Droidu na inštaláciu, aktualizácie a odstránenie balíkov</string>
-    <string name="local_repo_name">Meno Váško lokálneho archívu</string>
-    <string name="local_repo_name_summary">Zverejnený názov lokálneho archívu: %s</string>
-    <string name="local_repo_https_on">Použiť šifrované HTTPS:// pripojenie pre lokálny archív</string>
+    <string name="local_repo_name">Meno Vášho lokálneho repozitára</string>
+    <string name="local_repo_name_summary">Zverejnený názov lokálneho repozitára: %s</string>
+    <string name="local_repo_https_on">Použiť šifrované HTTPS:// pripojenie pre lokálny repozitár</string>
     <string name="app_details">Detaily aplikácie</string>
     <string name="no_such_app">Aplikácia sa nenašla.</string>
     <string name="about_title">O F-Droide</string>
@@ -529,11 +529,11 @@
     <string name="share_apk_error">Nepodarilo sa zdieľať súbor aplikácie</string>
     <string name="theme_follow_system">Následovať systém</string>
     <string name="notification_channel_installs_title">Inštalácie</string>
-    <string name="notification_channel_installs_description">Zobrazí upozornenia inštalácií aplikácií.</string>
+    <string name="notification_channel_installs_description">Zobrazí notifikácie inštalácií aplikácií.</string>
     <string name="notification_channel_swaps_title">Swapy</string>
     <string name="notification_channel_swaps_description">Zobrazí upozornenia výmen P2P aplikácií.</string>
     <string name="notification_channel_updates_title">Aktualizácie</string>
-    <string name="notification_channel_updates_description">Zobrazí upozornenia aktualizácií aplikácií a repozitárov.</string>
+    <string name="notification_channel_updates_description">Zobrazí upozornenia aktualizácií aplikácie a repozitáru.</string>
     <string name="send_fdroid_metrics_json">%s hlásenie metriky ako súbor JSON</string>
     <string name="banner_no_data_or_wifi">Bez povolenia dát alebo WiFi</string>
     <string name="swap_wifi_vpn_conflict">Konflikty s aktívnou VPN!</string>
@@ -553,4 +553,6 @@
     <string name="antitrack">Sledovanie</string>
     <string name="has_disallow_install_unknown_sources">Neznáme zdroje nemôžu byť pridané týmto užívateľom, to zahŕňa aj nové repozitáre</string>
     <string name="menu_show_install_history">Ukázať históriu inštalácií</string>
+    <string name="menu_release_channel_beta">Povoliť Beta aktualizácie</string>
+    <string name="latest__empty_state__upgrading">Prebieha upgrade databázy…</string>
 </resources>

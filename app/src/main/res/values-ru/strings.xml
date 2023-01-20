@@ -231,10 +231,10 @@
     <string name="swap_active_hotspot">%1$s (ваша точка доступа)</string>
     <string name="swap_switch_to_wifi">Нажмите, чтобы переключиться на сеть Wi-Fi</string>
     <string name="swap_scan_or_type_url">Одному из вас следует отсканировать код или ввести в браузере URL другого участника.</string>
-    <string name="swap_people_nearby">Люди поблизости</string>
-    <string name="swap_scanning_for_peers">Поиск людей поблизости…</string>
-    <string name="swap_nearby">Обмен поблизости</string>
-    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с людьми поблизости.</string>
+    <string name="swap_people_nearby">Люди вокруг</string>
+    <string name="swap_scanning_for_peers">Поиск людей вокруг…</string>
+    <string name="swap_nearby">Обмен вокруг</string>
+    <string name="swap_intro">Подключитесь и обменивайтесь приложениями с людьми рядом с вами.</string>
     <string name="swap_visible_bluetooth">Видимый через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Настройка Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Не видимый через Bluetooth</string>
@@ -245,7 +245,7 @@
     <string name="swap_cant_find_peers">Не можете найти того, кого ищете?</string>
     <string name="swap_send_fdroid">Отправить F-Droid</string>
     <string name="apps">Приложения</string>
-    <string name="swap_no_peers_nearby">Не удается найти людей поблизости.</string>
+    <string name="swap_no_peers_nearby">Не удается найти людей вокруг.</string>
     <string name="swap_confirm">Подтвердить обмен</string>
     <string name="swap_qr_isnt_for_swap">QR-код, который вы отсканировали, не похож на код обмена.</string>
     <string name="swap_connection_misc_error">При подключении к устройству произошла ошибка, невозможно провести с ним обмен!</string>
@@ -281,8 +281,8 @@
     <string name="details_new_in_version">Новое в версии %s</string>
     <string name="preference_category__my_apps">Мои приложения</string>
     <string name="installed_apps__activity_title">Установленные приложения</string>
-    <string name="main_menu__swap_nearby">Поблизости</string>
-    <string name="nearby_splash__find_people_button">Найти людей поблизости</string>
+    <string name="main_menu__swap_nearby">Вокруг</string>
+    <string name="nearby_splash__find_people_button">Найти людей вокруг</string>
     <string name="notification_title_single_update_available">Доступно обновление</string>
     <string name="notification_title_single_ready_to_install_update">Обновление готово к установке</string>
     <string name="notification_title_summary_ready_to_install">Готово к установке</string>
@@ -301,7 +301,7 @@
         <item quantity="many">Показать все %d</item>
         <item quantity="other">Показать все %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей поблизости!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
     <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>
@@ -346,7 +346,7 @@
         <item quantity="other">Посмотреть %1$d приложений в категории %2$s</item>
     </plurals>
     <string name="latest__empty_state__no_recent_apps">Не найдено недавних приложений</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Для использования \'Поблизости\' обеим сторонам необходим %1$s.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Чтобы воспользоваться Вокруг обеим сторонам необходим %1$s.</string>
     <string name="menu_video">Видео</string>
     <string name="app__tts__cancel_download">Отменить загрузку</string>
     <string name="app__tts__downloading_progress">Скачано %1$d%%</string>
@@ -483,7 +483,7 @@
     <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
     <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
     <string name="nearby_splash__request_permission">Попробовать</string>
-    <string name="not_visible_nearby">Режим \'Поблизости\' не включен</string>
+    <string name="not_visible_nearby">Режим Вокруг не включен</string>
     <string name="not_visible_nearby_description">Перед обменом с соседними устройствами сделайте ваше устройство видимым.</string>
     <string name="swap_toast_using_path">С помощью %1$s</string>
     <string name="swap_toast_not_removable_storage">Этот выбор не подходит ни к одному из съемных носителей, попробуйте еще раз!</string>
@@ -508,7 +508,7 @@
     <string name="swap_stopping">Останавливаем…</string>
     <string name="disabled">Отключено</string>
     <string name="swap_error_cannot_start_bluetooth">Не удается запустить Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Из-за неиспользования режим \'Поблизости\' был отключен.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Режим Вокруг был отключен поскольку не использовался.</string>
     <string name="nearby_splash__document_tree">Поиск репозиториев и зеркал через USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Отображает уведомления об обновлении приложений и репозиториев.</string>

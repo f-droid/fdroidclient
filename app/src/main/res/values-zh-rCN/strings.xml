@@ -514,5 +514,5 @@
     <string name="antiothers">其他负特征</string>
     <string name="antinsfw">此应用包含不应宣扬或随处可见的内容</string>
     <string name="menu_release_channel_beta">允许测试版更新</string>
-    <string name="latest__empty_state__upgrading">更新数据库中…</string>
+    <string name="latest__empty_state__upgrading">正在升级数据库……</string>
 </resources>

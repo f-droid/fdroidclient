@@ -538,4 +538,6 @@
     <string name="antiknownvuln">Tuntud turvanõrkus</string>
     <string name="antiothers">Muud omadused, mis ei sobi</string>
     <string name="antinsfw">Selles rakenduses on sisu, mida ei saa kõikjal avaldada ega peaks olema kõikjalt vaadatav</string>
+    <string name="latest__empty_state__upgrading">Andmebaasi uuendamine…</string>
+    <string name="menu_release_channel_beta">Kaasa uuendamiseks ka beeta-versioonid</string>
 </resources>
