@@ -218,7 +218,7 @@
     <string name="antifeatures">Antifunksjonalitet</string>
     <string name="antiadslist">Appen inneheld reklame</string>
     <string name="antinonfreeadlist">Appen marknadsfører ufrie tillegg</string>
-    <string name="antinonfreenetlist">Appen marknadsfører ufrie nett-tenester</string>
+    <string name="antinonfreenetlist">Appen marknadsfører eller er heilt avhengig av ufrie nett-tenester</string>
     <string name="antinonfreedeplist">Appen er avhengig av andre ufrie appar</string>
     <string name="antiupstreamnonfreelist">Kjeldekoden til oppstraums­appen er ikkje heilt fri</string>
     <string name="antinonfreeassetslist">Appen inneheld ufrie ressursar</string>
@@ -523,4 +523,10 @@
     <string name="antinonfreeassets">Ufrie gjenstandar</string>
     <string name="antinosource">Kjeldekoden er ikkje lenger tilgjengeleg</string>
     <string name="swap_wifi_vpn_conflict">I konflikt med aktiv VPN!</string>
+    <string name="antidisabledalgorithm">Signert med ein utrygg algoritme</string>
+    <string name="antinsfw">Appen inneheld potensielt støytande innhald</string>
+    <string name="app_list_results_hidden_antifeature_settings">Nokre søkjetreff er gøymde, grunna innstillingane dine for antifunksjonalitet.</string>
+    <string name="has_disallow_install_unknown_sources_globally">Administratoren av eininga di tillèt ikkje installering av appar frå ukjende kjelder. Dette gjeld òg nye pakkebrønnar.</string>
+    <string name="antiupstreamnonfree">Ufri oppstraums­kode</string>
+    <string name="antiothers">Annan antifunksjonalitet</string>
 </resources>

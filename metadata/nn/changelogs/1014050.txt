@@ -1,0 +1,17 @@
+* Forbetra delemenyen til å bruka innebygde alternativ, som «I nærleiken»
+
+* Forbetra arbeidsflyt og navigering for «I nærleiken» – mange feilrettingar
+
+* Forbetringar i Material-designet (@proletarius101)
+
+* Òg appar utan PNG-appikon vert no viste under «Nyaste» (@ashutoshgngwr)
+
+* Betre ikonhandsaming ved avgrensingar i mobildata/Wi-Fi
+
+* Støtte for fleire strekkode­skannarar (@Lugerun)
+
+* Mogleg å velja kva antifunksjonalitet som skal visast
+
+* Ikkje lenger mogleg å leggja til nye pakke­brønnar viss eininga er sett opp til å ikkje godta appar frå «ukjende kjelder»
+
+* Fjerna innstillinga «Tillat push-førespurnadar»
