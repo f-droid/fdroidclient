@@ -1,6 +1,6 @@
 F-Droid ist ein installierbarer Katalog mit Libre Software Apps für Android. Die F-Droid-App vereinfacht die Suche nach Apps, deren Installation und sorgt dafür, dass sie auf dem neusten Stand bleiben.
 
-Sie verbindet sich mit jeder mit F-Droid kompatiblen Paketquelle. Die Standardquelle wird auf f-droid.org gehosted, die ausschließlich echte freie und quelloffene Software enthält.
+Sie verbindet sich mit jeder mit F-Droid kompatiblen Paketquelle. Die Standardquelle wird auf f-droid.org gehostet, die ausschließlich echte freie und quelloffene Software enthält.
 
 Android selbst ist dahingehend offen, dass jeder die Wahl hat, woher er APKs installieren möchte. Es gibt aber viele gute Gründe, F-Droid als App-Manager für freie Software zu verwenden:
 
@@ -9,5 +9,5 @@ Android selbst ist dahingehend offen, dass jeder die Wahl hat, woher er APKs ins
 * Vorgänger- und Beta-Versionen überblicken 
 * Mit dem Gerät inkompatible Apps aussortieren
 * Apps nach Kategorien und durchsuchbaren Beschreibungen finden 
-* Auf URLs zugreifen, die mit Quelltext, Spendenmöglichkeiten, usw. verknüpft sind 
+* Auf URLs zugreifen, die mit Quelltext, Spendenmöglichkeiten usw. verknüpft sind 
 * Durch Überprüfung von Quell-Signaturen und APK-Hashes geschützt bleiben

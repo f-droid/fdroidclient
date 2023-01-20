@@ -2,7 +2,7 @@
 
 * Verbesserter Umfeld-Workflow und Steuerung mit vielen Fehlerkorrekturen
 
-* Verbesserungen beim Material Design (@proletarius101)
+* Verbesserungen beim Materialdesign (@proletarius101)
 
 * Apps ohne PNG-Symbole werden jetzt unter „Neues“ angezeigt (@ashutoshgngwr)
 
@@ -12,4 +12,6 @@
 
 * Ermöglicht die Auswahl der anzuzeigenden unerwünschten Merkmale.
 
-* …
+* Hinzufügen von Repos blockieren, wenn der Geräteadministrator „Unbekannte Quellen“ nicht zulässt
+
+* Einstellung „Push-Anfragen zulassen“ entfernt
