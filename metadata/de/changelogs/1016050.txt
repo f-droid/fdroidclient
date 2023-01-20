@@ -1,6 +1,6 @@
-* Komplette Modernisierung von Download, Index, und Datenbankprogrammierung.
+* Komplette Modernisierung von Download, Index, und Datenbankprogrammierung.  Er sollte schneller und stabiler sein und weniger Bandbreite verbrauchen.  Außerdem ist es mit einer stark verbesserten Test-Suite besser wartbar.
 
-* Lösungen: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
+* Korrekturen: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
   #2412 #2436 #2442 #2443 #2444 #1971
 
 * Neue Sprache: Kantonesisch (Yue)
