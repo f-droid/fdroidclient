@@ -527,4 +527,5 @@
     <string name="antiothers">Diğer Karşıt-özellikler</string>
     <string name="antinsfw">Bu uygulama, herkese duyurulmaması veya her yerde görünmemesi gereken içerik içeriyor</string>
     <string name="menu_release_channel_beta">Beta Güncellemelerine İzin Ver</string>
+    <string name="latest__empty_state__upgrading">Veri tabanı yükseltiliyor…</string>
 </resources>
