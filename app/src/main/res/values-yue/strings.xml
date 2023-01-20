@@ -518,4 +518,5 @@
     <string name="theme_light">白頭浪</string>
     <string name="theme_dark">黑眼睛</string>
     <string name="menu_release_channel_beta">准用測試版更新</string>
+    <string name="latest__empty_state__upgrading">升級緊資料庫…</string>
 </resources>
