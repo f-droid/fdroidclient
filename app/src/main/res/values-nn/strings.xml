@@ -510,4 +510,17 @@
     <string name="use_pure_black_dark_theme">Bruk heilt svart bakgrunn i mørkt tema</string>
     <string name="banner_no_data_or_wifi">Ikkje mobildata/Wi-Fi</string>
     <string name="banner_no_internet">Manglar Internett-tilgang</string>
+    <string name="has_disallow_install_unknown_sources">Ukjente kjelder kan ikkje leggast til av denne brukaren. Dette gjeld òg nye pakkebrønnar</string>
+    <string name="antinonfreenet">Ufrie nettverktenester</string>
+    <string name="share_apk_error">Kunne ikkje dele programfil</string>
+    <string name="menu_release_channel_beta">Tillat betaoppdateringar</string>
+    <string name="antitrack">Sporing</string>
+    <string name="latest__empty_state__upgrading">Oppgraderer database…</string>
+    <string name="antiads">Reklame</string>
+    <string name="antinonfreead">Ufrie tillegg</string>
+    <string name="antiknownvuln">Kjent sårbarheit</string>
+    <string name="antinonfreedep">Ufrie avhengigheiter</string>
+    <string name="antinonfreeassets">Ufrie gjenstandar</string>
+    <string name="antinosource">Kjeldekoden er ikkje lenger tilgjengeleg</string>
+    <string name="swap_wifi_vpn_conflict">I konflikt med aktiv VPN!</string>
 </resources>
