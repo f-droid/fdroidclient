@@ -216,7 +216,7 @@
     <string name="notification_action_cancel">Cancelar</string>
     <string name="notification_action_install">Instalar</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
-    <string name="antinonfreenetlist">Esta aplicación promueve servicios no libres</string>
+    <string name="antinonfreenetlist">Esta aplicación promueve o depende completamente de servicios de red no-libres</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras aplicaciones no libres</string>
     <string name="antiupstreamnonfreelist">El codigo fuente de subida no es completamente libre</string>
     <string name="antinonfreeassetslist">Esta aplicación contiene recursos no libres</string>
@@ -510,4 +510,20 @@
     <string name="use_pure_black_dark_theme">Usar un fondo negro puro en el tema oscuro</string>
     <string name="banner_no_data_or_wifi">Sin datos o WiFi activo</string>
     <string name="banner_no_internet">Sin Internet</string>
+    <string name="antidisabledalgorithm">Firmado Usando Un Algoritmo Inseguro</string>
+    <string name="has_disallow_install_unknown_sources_globally">El administrador de tu dispositivo no permite instalar apps de orígenes desconocidos, esto incluye nuevos respositorios</string>
+    <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
+    <string name="antiads">Publicidad</string>
+    <string name="antitrack">Rastreo</string>
+    <string name="antinonfreead">Extensiones No-Libres</string>
+    <string name="antinonfreenet">Servicios de Red No-Libres</string>
+    <string name="antiknownvuln">Vulnerabilidad Conocida</string>
+    <string name="antinosource">Código Fuente Ya No Disponible</string>
+    <string name="antiothers">Otros Anti-features</string>
+    <string name="share_apk_error">No se pudo compartir el archivo de la aplicación</string>
+    <string name="swap_wifi_vpn_conflict">¡Conflictos con la VPN activa!</string>
+    <string name="has_disallow_install_unknown_sources">Este usuario no puede agregar fuentes desconocidas, esto incluye nuevos repositorios</string>
+    <string name="menu_release_channel_beta">Permitir Actualizaciones Beta</string>
+    <string name="antinonfreedep">Dependencias No-Libres</string>
+    <string name="app_list_results_hidden_antifeature_settings">Respetando tus configuraciones anti-feature no se muestran algunos resultados.</string>
 </resources>
