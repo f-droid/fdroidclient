@@ -160,7 +160,7 @@
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
     <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від невільної мережної служби</string>
-    <string name="antiupstreamnonfreelist">Джерельний код випуску частково не вільний</string>
+    <string name="antiupstreamnonfreelist">Частина початкового коду невільна</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
     <string name="show_incompat_versions_on">Показувати версії застосунків, які несумісні з цим пристроєм</string>
