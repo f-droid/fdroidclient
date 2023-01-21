@@ -1,3 +1,13 @@
+### 1.16-alpha4 (2023-01-21)
+
+* Improved swap support when connecting with older F-Droid releases. 
+
+* Stop downloading updates for app with known-vulnerabilities but no update.  #2488
+
+* Migrate repo names #2513
+
+* Wait for database to be available when adding a new repo on slow devices.
+
 ### 1.16-alpha3 (2023-01-13)
 
 * Fix assorted crashes, including one related to WiFi Hotspot mode #2477
