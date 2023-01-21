@@ -4,8 +4,6 @@
         <item>13</item>
         <!-- enabled -->
         <item>1</item>
-        <!-- priority -->
-        <item>5</item>
         <!-- push requests -->
         <item>ignore</item>
         <!-- pubkey -->
