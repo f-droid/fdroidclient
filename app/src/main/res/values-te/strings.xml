@@ -340,13 +340,13 @@
     <string name="scan_removable_storage_summary">SD కార్డులు మరియు USB థంబ్ డ్రైవ్‌లు వంటి తొలగించగల నిల్వపై ప్యాకేజీ రెపోల కోసం చూడండి</string>
     <string name="repo_error_empty_username">ఖాళీ వినియోగదారు పేరు, ఆధారాలు మార్చబడలేదు</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s కాఫీ డెవలపర్‌లను కొనండి!</string>
-    <string name="app_details__incompatible_mismatched_signature">వ్యవస్థాపించిన సంస్కరణకు భిన్నమైన సంతకం</string>
+    <string name="app_details__incompatible_mismatched_signers">వ్యవస్థాపించిన సంస్కరణకు భిన్నమైన సంతకం</string>
     <string name="app_details__no_versions__show_incompat_versions">ఏమైనప్పటికీ ఇక్కడ అనుకూలత లేని సంస్కరణలను చూపించడానికి, \"%1$s\" సెట్టింగ్‌ను ప్రారంభించండి.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">వ్యవస్థాపించిన సంస్కరణ అందుబాటులో ఉన్న ఏ సంస్కరణలతోనూ అనుకూలంగా లేదు. అనువర్తనాన్ని అన్‌ఇన్‌స్టాల్ చేయడం వలన అనుకూల సంస్కరణలను వీక్షించడానికి మరియు ఇన్‌స్టాల్ చేయడానికి మిమ్మల్ని అనుమతిస్తుంది. ఇది తరచుగా Google Play ద్వారా ఇన్‌స్టాల్ చేయబడిన అనువర్తనాలతో సంభవిస్తుంది.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">వ్యవస్థాపించిన సంస్కరణ అందుబాటులో ఉన్న ఏ సంస్కరణలతోనూ అనుకూలంగా లేదు. అనువర్తనాన్ని అన్‌ఇన్‌స్టాల్ చేయడం వలన అనుకూల సంస్కరణలను వీక్షించడానికి మరియు ఇన్‌స్టాల్ చేయడానికి మిమ్మల్ని అనుమతిస్తుంది. ఇది తరచుగా Google Play ద్వారా ఇన్‌స్టాల్ చేయబడిన అనువర్తనాలతో సంభవిస్తుంది.</string>
     <string name="app_permission_storage">దీన్ని నిల్వ చేయడానికి ఇన్‌స్టాల్ చేయడానికి F-Droid కి నిల్వ అనుమతి అవసరం. సంస్థాపనతో కొనసాగడానికి దయచేసి తదుపరి స్క్రీన్‌లో దీన్ని అనుమతించండి.</string>
     <string name="send_installed_apps">ఇన్‌స్టాల్ చేసిన అనువర్తనాలను భాగస్వామ్యం చేయండి</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">మేము%1$s తో హానిని కనుగొన్నాము. ఈ అనువర్తనాన్ని వెంటనే అన్‌ఇన్‌స్టాల్ చేయాలని మేము సిఫార్సు చేస్తున్నాము.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">అనుకూల సంతకంతో సంస్కరణలు లేవు</string>
+    <string name="app_details__no_versions__no_compatible_signers">అనుకూల సంతకంతో సంస్కరణలు లేవు</string>
     <string name="app_details__no_versions__none_compatible_with_device">పరికరంతో అనుకూలమైన సంస్కరణలు లేవు</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">మేము%1$s తో హానిని కనుగొన్నాము. సరికొత్త సంస్కరణకు వెంటనే నవీకరించమని మేము సిఫార్సు చేస్తున్నాము.</string>
     <plurals name="updates__download_updates_for_apps">

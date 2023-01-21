@@ -365,9 +365,9 @@
     </plurals>
     <string name="force_old_index">Gennemtving gammelt indeksformat</string>
     <string name="force_old_index_summary">Hvis der er fejl eller problemer med kompatibilitet, så brug XML-app-indekset</string>
-    <string name="app_details__incompatible_mismatched_signature">Anden signatur end installeret version</string>
+    <string name="app_details__incompatible_mismatched_signers">Anden signatur end installeret version</string>
     <string name="app_details__no_versions__show_incompat_versions">Aktiver indstillingen \"%1$s\", hvis du alligevel vil se uforenelige versioner her.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Ingen versioner med kompatibel signatur</string>
+    <string name="app_details__no_versions__no_compatible_signers">Ingen versioner med kompatibel signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ingen versioner, der er kompatibel med enheden</string>
     <string name="app_installed_media">Fil installeret til %s</string>
     <string name="app_permission_storage">F-Droid skal have adgang til lagring for at installere til dette lagermedium. Tillad det på den næste skærm for at fortsætte installationen.</string>
@@ -445,7 +445,7 @@
     <string name="panic_hide_warning_title">Husk hvordan der gendannes</string>
     <string name="nearby_splash__read_external_storage">Søg på SD-kortet efter depoter og spejle.</string>
     <string name="repo_exists_and_enabled">%1$s er allerede opsat og aktiveret.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Den installerede version er ikke kompatibel med nogen af de tilgængelige versioner. Hvis du afinstallerer appen kan du se og installere kompatible versioner. Dette sker ofte med apps installeret via Google Play eller andre kilder, hvis de er signeret med et andet certifikat.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Den installerede version er ikke kompatibel med nogen af de tilgængelige versioner. Hvis du afinstallerer appen kan du se og installere kompatible versioner. Dette sker ofte med apps installeret via Google Play eller andre kilder, hvis de er signeret med et andet certifikat.</string>
     <string name="repo_exists_enable">%1$s er allerede opsat, bekræft at den skal gen-aktiveres.</string>
     <string name="panic_app_dialog_message">Er du sikker på, at du vil tillade %1$s at trigge destruktive panikknaphandlinger\?</string>
     <string name="hiding_dialog_message">Er du sikker på, at du vil fjerne %1$s fra startskærmen\? Genvejen kan kun genoprettes ved at taste \"%2$d\" i den falske app %3$s.</string>

@@ -3,7 +3,7 @@ package org.fdroid
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.GET_SIGNING_CERTIFICATES
 import androidx.core.content.pm.PackageInfoCompat
-import org.fdroid.index.IndexUtils.getPackageSignature
+import org.fdroid.index.IndexUtils.getPackageSigner
 import org.fdroid.index.v2.PackageVersion
 
 public interface PackagePreference {
@@ -39,7 +39,7 @@ public class UpdateChecker(
         allowedSignersGetter = {
             // always gives us the oldest signer, even if they rotated certs by now
             @Suppress("DEPRECATION")
-            packageInfo.signatures.map { getPackageSignature(it.toByteArray()) }.toSet()
+            packageInfo.signatures.map { getPackageSigner(it.toByteArray()) }.toSet()
         },
         installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
         allowedReleaseChannels = releaseChannels,
@@ -94,7 +94,7 @@ public class UpdateChecker(
         includeKnownVulnerabilities: Boolean = false,
         preferencesGetter: (() -> PackagePreference?)? = null,
     ): T? {
-        // getting signatures is rather expensive, so we only do that when there's update candidates
+        // getting signers is rather expensive, so we only do that when there's update candidates
         val allowedSigners by lazy { allowedSignersGetter?.let { it() } }
         versions.iterator().forEach versions@{ version ->
             // if the installed version has a known vulnerability, we return it as well
@@ -120,7 +120,7 @@ public class UpdateChecker(
             if (!hasAllowedReleaseChannel) return@versions
             // check if this version's signer is allowed
             val versionSigners = version.signer?.sha256?.toSet()
-            // F-Droid allows versions without signature 🤦, allow those and if no allowed signers
+            // F-Droid allows versions without a signer entry, allow those and if no allowed signers
             if (versionSigners != null && allowedSigners != null) {
                 if (versionSigners.intersect(allowedSigners!!).isEmpty()) return@versions
             }

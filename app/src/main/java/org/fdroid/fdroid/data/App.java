@@ -84,7 +84,7 @@ public class App implements Comparable<App>, Parcelable {
      */
     public boolean compatible;
     public Apk installedApk; // might be null if not installed
-    public String installedSig;
+    public String installedSigner;
     public int installedVersionCode;
     public String installedVersionName;
     public org.fdroid.database.AppPrefs prefs;
@@ -276,7 +276,7 @@ public class App implements Comparable<App>, Parcelable {
     public void setInstalled(@Nullable PackageInfo packageInfo) {
         installedVersionCode = packageInfo == null ? 0 : packageInfo.versionCode;
         installedVersionName = packageInfo == null ? null : packageInfo.versionName;
-        installedSig = packageInfo == null ? null : Utils.getPackageSigner(packageInfo);
+        installedSigner = packageInfo == null ? null : Utils.getPackageSigner(packageInfo);
     }
 
     /**
@@ -288,7 +288,7 @@ public class App implements Comparable<App>, Parcelable {
         this.prefs = appPrefs;
         for (Apk apk: apks) {
             boolean apkIsInstalled = (apk.versionCode == installedVersionCode &&
-                    TextUtils.equals(apk.sig, installedSig)) || (!apk.isApk() && apk.isMediaInstalled(context));
+                    TextUtils.equals(apk.signer, installedSigner)) || (!apk.isApk() && apk.isMediaInstalled(context));
             if (apkIsInstalled) {
                 installedApk = apk;
                 installedVersionCode = (int) apk.versionCode;
@@ -539,25 +539,26 @@ public class App implements Comparable<App>, Parcelable {
 
     /**
      * Finds the APK we suggest to install.
+     *
      * @param apks a list of APKs sorted by version code (highest first).
      * @param releaseChannel the key of the release channel to be considered.
      * @return The Apk we suggest to install or null, if we didn't find any.
      */
     @Nullable
     public Apk findSuggestedApk(List<Apk> apks, String releaseChannel) {
-        final String mostAppropriateSignature = getMostAppropriateSignature();
+        final String mostAppropriateSigner = getMostAppropriateSigner();
         Apk apk = null;
         for (Apk a : apks) {
             // only consider compatible APKs
             if (!a.compatible) continue;
-            // if we have a signature, but it doesn't match, don't use this APK
-            if (mostAppropriateSignature != null && !a.sig.equals(mostAppropriateSignature)) continue;
+            // if we have a signer, but it doesn't match, don't use this APK
+            if (mostAppropriateSigner != null && !a.signer.equals(mostAppropriateSigner)) continue;
             // stable release channel is always allowed, otherwise must include given channel
             final String stable = Apk.RELEASE_CHANNEL_STABLE;
             boolean isReleaseChannelAllowed = stable.equals(releaseChannel) ?
                     a.releaseChannels.contains(stable) :
                     a.releaseChannels.contains(stable) || a.releaseChannels.contains(releaseChannel);
-            // if the signature matches and we want the highest version code, take this as list is sorted.
+            // if signer matches and we want the highest version code, take this as list is sorted
             if (isReleaseChannelAllowed) {
                 apk = a;
                 break;
@@ -752,7 +753,7 @@ public class App implements Comparable<App>, Parcelable {
         dest.writeString(this.installedVersionName);
         dest.writeInt(this.installedVersionCode);
         dest.writeParcelable(this.installedApk, flags);
-        dest.writeString(this.installedSig);
+        dest.writeString(this.installedSigner);
     }
 
     protected App(Parcel in) {
@@ -802,7 +803,7 @@ public class App implements Comparable<App>, Parcelable {
         this.installedVersionName = in.readString();
         this.installedVersionCode = in.readInt();
         this.installedApk = in.readParcelable(Apk.class.getClassLoader());
-        this.installedSig = in.readString();
+        this.installedSigner = in.readString();
     }
 
     public static final Parcelable.Creator<App> CREATOR = new Parcelable.Creator<App>() {
@@ -818,19 +819,20 @@ public class App implements Comparable<App>, Parcelable {
     };
 
     /**
-     * Choose the signature which we should encourage the user to install.
-     * Usually, we want the {@link #preferredSigner} rather than any random signature.
-     * However, if the app is installed, then we override this and instead want to only encourage
-     * the user to try and install versions with that signature (because thats all the OS will let
-     * them do).
+     * Choose the APK Signing Certificate aka "signer" which we should
+     * encourage the user to install. Usually, we want the
+     * {@link #preferredSigner} rather than any random signer. However, if the
+     * package is installed, then we override this and instead want to only
+     * encourage the user to try and install versions with that signer (because
+     * that is all the OS will let them do).
      * <p>
      * Will return null for any {@link App} which represents media (instead of an apk) and thus
      * doesn't have a signer.
      */
     @Nullable
-    public String getMostAppropriateSignature() {
-        if (!TextUtils.isEmpty(installedSig)) {
-            return installedSig;
+    public String getMostAppropriateSigner() {
+        if (!TextUtils.isEmpty(installedSigner)) {
+            return installedSigner;
         } else if (!TextUtils.isEmpty(preferredSigner)) {
             return preferredSigner;
         }

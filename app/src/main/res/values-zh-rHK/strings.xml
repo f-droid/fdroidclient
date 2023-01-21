@@ -363,11 +363,11 @@
     <plurals name="notification_summary_more">
         <item quantity="other">還有 %1$d 則通知…</item>
     </plurals>
-    <string name="app_details__incompatible_mismatched_signature">簽署與已安裝的版本不相符</string>
+    <string name="app_details__incompatible_mismatched_signers">簽署與已安裝的版本不相符</string>
     <string name="app_details__no_versions__show_incompat_versions">如要在此顯示不相容的版本，請啟用「%1$s」的設定。</string>
-    <string name="app_details__no_versions__no_compatible_signatures">沒有含相容簽署的版本</string>
+    <string name="app_details__no_versions__no_compatible_signers">沒有含相容簽署的版本</string>
     <string name="app_details__no_versions__none_compatible_with_device">沒有與裝置相容的版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">已安裝的程式版本與可供安裝的版本並不相容。卸載現有的應用程式將讓您檢視及安裝相容的版本。此問題通常出現於透過 Google Play 或其他途徑安裝，並使用不同認證的應用程式。</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">已安裝的程式版本與可供安裝的版本並不相容。卸載現有的應用程式將讓您檢視及安裝相容的版本。此問題通常出現於透過 Google Play 或其他途徑安裝，並使用不同認證的應用程式。</string>
     <string name="disabled">已停用</string>
     <string name="allow">允許</string>
     <string name="scan_removable_storage_title">掃描可移動存儲</string>

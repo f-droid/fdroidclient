@@ -403,8 +403,8 @@ public class AppDetailsActivity extends AppCompatActivity
             alert.show();
             return;
         }
-        if (app.installedSig != null && apk.sig != null
-                && !apk.sig.equals(app.installedSig)) {
+        if (app.installedSigner != null && apk.signer != null
+                && !apk.signer.equals(app.installedSigner)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     R.string.ok,
@@ -632,7 +632,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 case Installer.ACTION_UNINSTALL_COMPLETE:
                     adapter.clearProgress();
                     if (app != null) {
-                        app.installedSig = null;
+                        app.installedSigner = null;
                         app.installedVersionCode = 0;
                         app.installedVersionName = null;
                         onAppChanged(app);

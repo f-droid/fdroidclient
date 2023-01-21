@@ -160,11 +160,11 @@
     <string name="over_network_always_summary">Vienmēr izmantot šo savienojumu, kad tas ir pieejams</string>
     <string name="over_network_on_demand_summary">Izmantot tikai šo savienojumu, kad es nospiežu lai lejupielādētu</string>
     <string name="over_network_never_summary">Nekad nelejupielādēt jebko izmantojot šo savienojumu</string>
-    <string name="app_details__incompatible_mismatched_signature">Cits paraksts nekā ieinstelētajai versijai</string>
+    <string name="app_details__incompatible_mismatched_signers">Cits paraksts nekā ieinstelētajai versijai</string>
     <string name="app_details__no_versions__show_incompat_versions">Lai uzrādītu nesaderīgu versiju tik un tā, iespējoiet \"%1$s\" iestatījumu.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Nav versiju ar saderīgu parakstu</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nav versiju ar saderīgu parakstu</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nav versiju saderīga ar šo ierīci</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Ieinstelētā versija nav saderīga ar jebkuru pieejamu versiju. Atinstalējot aplikāciju ļaus jums apskatīt un ieinstalēt saderīgu versiju. Šīs parasti notiek ar aplikācijām, kuras tika ieinstalētas izmantojot Google Play veikalu vai no kāda cita avota, ja tie ir tikuši parakstīti ar citu sertifikātu.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Ieinstelētā versija nav saderīga ar jebkuru pieejamu versiju. Atinstalējot aplikāciju ļaus jums apskatīt un ieinstalēt saderīgu versiju. Šīs parasti notiek ar aplikācijām, kuras tika ieinstalētas izmantojot Google Play veikalu vai no kāda cita avota, ja tie ir tikuši parakstīti ar citu sertifikātu.</string>
     <string name="about_forum">Atbalsta forums</string>
     <string name="app_suggested">Ieteiktie</string>
     <string name="app_permission_storage">F-Droid ir nepieciešams krātuves piekļuve lai ieinstalētu šo uz krātuves. Lūdzu atļaut to nākamējā paziņojumā lai varētu turpināt ar lejupielādi.</string>

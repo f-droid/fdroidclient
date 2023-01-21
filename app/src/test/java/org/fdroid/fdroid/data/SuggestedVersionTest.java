@@ -37,10 +37,10 @@ public class SuggestedVersionTest {
     public void singleRepoSingleSig() {
         App singleApp = TestUtils.getApp();
         singleApp.installedVersionCode = 1;
-        singleApp.installedSig = TestUtils.FDROID_SIG;
-        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_BETA);
+        singleApp.installedSigner = TestUtils.FDROID_SIGNER;
+        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_BETA);
         List<Apk> apks = new ArrayList<>();
         apks.add(apk3);
         apks.add(apk2);
@@ -53,15 +53,15 @@ public class SuggestedVersionTest {
     }
 
     @Test
-    public void singleRepoMultiSig() {
+    public void singleRepoMultiSigner() {
         App singleApp = TestUtils.getApp();
         singleApp.installedVersionCode = 0;
 
-        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk4 = TestUtils.getApk(4, TestUtils.UPSTREAM_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk5 = TestUtils.getApk(5, TestUtils.UPSTREAM_SIG, Apk.RELEASE_CHANNEL_BETA);
+        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk4 = TestUtils.getApk(4, TestUtils.UPSTREAM_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk5 = TestUtils.getApk(5, TestUtils.UPSTREAM_SIGNER, Apk.RELEASE_CHANNEL_BETA);
         List<Apk> apks = new ArrayList<>();
         apks.add(apk5);
         apks.add(apk4);
@@ -75,13 +75,13 @@ public class SuggestedVersionTest {
 
         // Now install v1 with the f-droid signature. In response, we should only suggest
         // apps with that sig in the future. That is, version 4 from upstream is not considered.
-        singleApp.installedSig = TestUtils.FDROID_SIG;
+        singleApp.installedSigner = TestUtils.FDROID_SIGNER;
         singleApp.installedVersionCode = 1;
         assertSuggested(singleApp, apks, 3, Apk.RELEASE_CHANNEL_STABLE);
 
         // This adds the "suggestedVersionCode" version of the app, but signed by f-droid.
-        Apk apk4f = TestUtils.getApk(4, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk5f = TestUtils.getApk(5, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_BETA);
+        Apk apk4f = TestUtils.getApk(4, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk5f = TestUtils.getApk(5, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_BETA);
         apks.clear();
         apks.add(apk5);
         apks.add(apk5f);
@@ -106,10 +106,10 @@ public class SuggestedVersionTest {
     public void testIncompatibleWithBeta() {
         App singleApp = TestUtils.getApp();
         singleApp.installedVersionCode = 1;
-        singleApp.installedSig = TestUtils.FDROID_SIG;
-        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
-        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIG, Apk.RELEASE_CHANNEL_STABLE);
+        singleApp.installedSigner = TestUtils.FDROID_SIGNER;
+        Apk apk1 = TestUtils.getApk(1, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk2 = TestUtils.getApk(2, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
+        Apk apk3 = TestUtils.getApk(3, TestUtils.FDROID_SIGNER, Apk.RELEASE_CHANNEL_STABLE);
         apk3.compatible = false;
         List<Apk> apks = new ArrayList<>();
         apks.add(apk3);
@@ -122,8 +122,8 @@ public class SuggestedVersionTest {
      * Checks that the app exists, that its suggested version code is correct, and that the apk which is "suggested"
      * has the correct signature.
      * <p>
-     * If {@param installedSig} is null then {@param installedVersion} is ignored and the signature of the suggested
-     * apk is not checked.
+     * If {@param installedSigner} is null then {@param installedVersion} is
+     * ignored and the signature of the suggested APK is not checked.
      */
     public void assertSuggested(App app, List<Apk> apks, int suggestedVersion,
                                 String releaseChannel, boolean hasUpdates) {
@@ -131,8 +131,8 @@ public class SuggestedVersionTest {
         assertNotNull(suggestedApk);
         assertEquals("Suggested version on App", suggestedVersion, suggestedApk.versionCode);
 
-        if (app.installedSig != null) {
-            assertEquals("Installed signature on Apk", app.installedSig, suggestedApk.sig);
+        if (app.installedSigner != null) {
+            assertEquals("Installed signature on Apk", app.installedSigner, suggestedApk.signer);
         }
         assertTrue(app.canAndWantToUpdate(suggestedApk));
         AppPrefs appPrefs = new AppPrefs(app.packageName, 0, Collections.singletonList(releaseChannel));

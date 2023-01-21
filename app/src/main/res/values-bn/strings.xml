@@ -332,8 +332,8 @@
     </plurals>
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s সংস্করণের জন্য হালনাগাদ উপেক্ষাকৃত</string>
     <string name="app_details__no_versions__none_compatible_with_device">এই যন্ত্রের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
-    <string name="app_details__no_versions__no_compatible_signatures">এই স্বাক্ষরের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
-    <string name="app_details__incompatible_mismatched_signature">ইন্সটলকৃত সংস্করণ থেকে আলাদা স্বাক্ষর</string>
+    <string name="app_details__no_versions__no_compatible_signers">এই স্বাক্ষরের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
+    <string name="app_details__incompatible_mismatched_signers">ইন্সটলকৃত সংস্করণ থেকে আলাদা স্বাক্ষর</string>
     <string name="repo_error_empty_username">খালি নাম, যাচাইকরণ তথ্য পাল্টানো হয়নি</string>
     <string name="send_fdroid_metrics_report">%s পরিসংখ্যান প্রতিবেদন পাঠাও</string>
     <plurals name="details_last_update_years">
@@ -395,7 +395,7 @@
     <string name="empty_installed_app_list">কোনো অ্যাপ ইন্সটল করা নেই।
 \n
 \nতোমার কাছে অন্যান্য অ্যাপ আছে, কিন্তু সেগুলো এফ-ড্রয়েডের না। ভাণ্ডারগুলোর হালনাগাদের প্রয়োজনীয়তা এর কারণ হতে পারে অথবা ভাণ্ডারগুলোতে আসলেই হয়তো তোমার অ্যাপগুলো নেই।</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">ইন্সটলকৃত সংস্করণ অন্য কোনো সংস্করণের সাথে অসামঞ্জস্যপূর্ণ। এই অ্যাপ মুছলে তোমাকে অন্যান্য সামঞ্জস্যপূর্ণ সংস্করণ দেখতে ও ইন্সটল করতে দিবে। গুগল প্লে বা অন্য জায়গা থেকে অ্যাপ ইন্সটল করলে বেশিরভাগ সময় এমন হয়, বিশেষত অন্য অনুমতিপত্র দিয়ে স্বাক্ষর করা হলে।</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">ইন্সটলকৃত সংস্করণ অন্য কোনো সংস্করণের সাথে অসামঞ্জস্যপূর্ণ। এই অ্যাপ মুছলে তোমাকে অন্যান্য সামঞ্জস্যপূর্ণ সংস্করণ দেখতে ও ইন্সটল করতে দিবে। গুগল প্লে বা অন্য জায়গা থেকে অ্যাপ ইন্সটল করলে বেশিরভাগ সময় এমন হয়, বিশেষত অন্য অনুমতিপত্র দিয়ে স্বাক্ষর করা হলে।</string>
     <string name="interval_2w">প্রতি ২ সপ্তাহে হালনাগাদ আছে কিনা দেখো</string>
     <string name="interval_12h">প্রতি ১২ ঘণ্টায় হালনাগাদ আছে কিনা দেখো</string>
     <string name="interval_4h">প্রতি ৪ ঘণ্টায় হালনাগাদ আছে কিনা দেখো</string>

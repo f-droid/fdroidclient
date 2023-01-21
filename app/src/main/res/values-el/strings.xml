@@ -332,11 +332,11 @@
     <string name="force_old_index_summary">Σε περίπτωση που υπάρχουν σφάλματα ή ασυμβατότητες, χρήση του ευρετηρίου εφαρμογών XML</string>
     <string name="app_details_donate_prompt_unknown_author">Κεράστε στους προγραμματιστές του %1$s ένα καφέ!</string>
     <string name="app_details_donate_prompt">Το %1$s αναπτύσσεται από το %2$s. Κεράστε τους ένα καφέ!</string>
-    <string name="app_details__incompatible_mismatched_signature">Διαφορετική υπογραφή από την εγκατεστημένη έκδοση</string>
+    <string name="app_details__incompatible_mismatched_signers">Διαφορετική υπογραφή από την εγκατεστημένη έκδοση</string>
     <string name="app_details__no_versions__show_incompat_versions">Για εμφάνιση ασύμβατων εκδόσεων εδώ, ενεργοποιήστε την \"%1$s\" επιλογή.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Δεν υπάρχουν εκδόσεις με συμβατή υπογραφή</string>
+    <string name="app_details__no_versions__no_compatible_signers">Δεν υπάρχουν εκδόσεις με συμβατή υπογραφή</string>
     <string name="app_details__no_versions__none_compatible_with_device">Δεν υπάρχουν συμβατές εκδόσεις με τη συσκευή</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Η εγκατεστημένη έκδοση δεν είναι συμβατή με τις διαθέσιμες εκδόσεις. Απεγκαθιστώντας την εφαρμογή θα δείτε τις συμβατές εκδόσεις. Αυτό συμβαίνει όταν η εγκατάσταση έγινε από το Play Store ή άλλη πηγή με διαφορετικό πιστοποιητικό.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Η εγκατεστημένη έκδοση δεν είναι συμβατή με τις διαθέσιμες εκδόσεις. Απεγκαθιστώντας την εφαρμογή θα δείτε τις συμβατές εκδόσεις. Αυτό συμβαίνει όταν η εγκατάσταση έγινε από το Play Store ή άλλη πηγή με διαφορετικό πιστοποιητικό.</string>
     <string name="app_installed_media">Το εγκαταστάθηκε στο %s</string>
     <string name="app_permission_storage">Το F-Droid χρειάζεται άδεια για τον χώρο αποθήκευσης για να εγκαταστήσει αυτό. Παρακαλώ επιτρέψτε την άδεια στην επόμενη οθόνη για να προχωρήσει η εγκατάσταση.</string>
     <string name="app_list_download_ready">Έγινε η λήψη, έτοιμο για εγκατάσταση</string>

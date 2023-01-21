@@ -40,7 +40,7 @@
     <string name="no_such_app">搵唔到呢個 app。</string>
     <string name="app_details_donate_prompt_unknown_author">請 %1$s 嘅開發人員歎返杯咖啡啦！</string>
     <string name="app_details_donate_prompt">%1$s 源自 %2$s 創造。不如請佢哋歎返杯咖啡啦！</string>
-    <string name="app_details__incompatible_mismatched_signature">簽署同安裝咗嘅版本唔同</string>
+    <string name="app_details__incompatible_mismatched_signers">簽署同安裝咗嘅版本唔同</string>
     <string name="app_details__no_versions__show_incompat_versions">若要喺呢度照顯示唔兼容嘅版本，請啟用「%1$s」設定。</string>
     <string name="app_details__no_versions__none_compatible_with_device">冇同部機兼容嘅版本</string>
     <string name="about_version">版本</string>
@@ -169,8 +169,8 @@
     <string name="over_data">用數據</string>
     <string name="repo_edit_credentials">更改密碼</string>
     <string name="notify_on">出咗更新嘅時候顯示通知</string>
-    <string name="app_details__no_versions__no_compatible_signatures">冇簽署兼容嘅版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">安裝咗嘅版本同提供嘅版本無一兼容。解除安裝個 app 可以等您睇到同安裝兼容嘅版本。噉情形通常係個 app 經由 Google Play 或其他來源安裝，而佢哋係用唔同嘅憑證簽署。</string>
+    <string name="app_details__no_versions__no_compatible_signers">冇簽署兼容嘅版本</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">安裝咗嘅版本同提供嘅版本無一兼容。解除安裝個 app 可以等您睇到同安裝兼容嘅版本。噉情形通常係個 app 經由 Google Play 或其他來源安裝，而佢哋係用唔同嘅憑證簽署。</string>
     <string name="menu_license">版權協議：%s</string>
     <string name="menu_source">原始碼</string>
     <string name="main_menu__updates">進度</string>

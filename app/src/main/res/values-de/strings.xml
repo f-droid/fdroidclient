@@ -383,11 +383,11 @@
     <string name="app_installed_media">Datei wurde nach %s installiert</string>
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
     <string name="status_inserting_x_apps">App-Details (%1$d/%2$d) von %3$s speichern</string>
-    <string name="app_details__incompatible_mismatched_signature">Abweichende Signatur zur installierten Version</string>
+    <string name="app_details__incompatible_mismatched_signers">Abweichende Signatur zur installierten Version</string>
     <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Keine Versionen mit kompatibler Signatur</string>
+    <string name="app_details__no_versions__no_compatible_signers">Keine Versionen mit kompatibler Signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>
     <string name="app_list__dismiss_app_update">Aktualisierung ignoriert</string>
     <string name="app_list__dismiss_vulnerable_app">Sicherheitslücke ignoriert</string>
     <string name="app_list__dismiss_downloading_app">Herunterladen abgebrochen</string>

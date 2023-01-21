@@ -346,11 +346,11 @@
     </plurals>
     <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
     <string name="force_old_index_summary">في حالة وجود أخطاء أو مشاكل في التوافق، استخدم أرشفة تطبيق XML</string>
-    <string name="app_details__incompatible_mismatched_signature">توقيع مختلف عن التطبيق المُثبت</string>
+    <string name="app_details__incompatible_mismatched_signers">توقيع مختلف عن التطبيق المُثبت</string>
     <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">لا نسخ مع توقعيات متوافقة</string>
+    <string name="app_details__no_versions__no_compatible_signers">لا نسخ مع توقعيات متوافقة</string>
     <string name="app_details__no_versions__none_compatible_with_device">لا نسخ متكاملة مع الجهاز</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">النسخة المُثبتة غير متوافقة مع أي نسخة متوفرة. إلغاء ثبيت التطبيق سوف يمكنك من رؤية وتثبيت النسخ المتكاملة. هذا يحدث عادةً حينما يتم تثبيت التطبيق من خلال متجر جوجل بلاي أو أي مصدر أخر, إذا تم توقيعها بتوقيع مختلف.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">النسخة المُثبتة غير متوافقة مع أي نسخة متوفرة. إلغاء ثبيت التطبيق سوف يمكنك من رؤية وتثبيت النسخ المتكاملة. هذا يحدث عادةً حينما يتم تثبيت التطبيق من خلال متجر جوجل بلاي أو أي مصدر أخر, إذا تم توقيعها بتوقيع مختلف.</string>
     <string name="app_permission_storage">أف-درويد يحتاج لإذن التخزين لكي يثبت هذا. من فضلك إسمح بذلك في الشاشة التالية لكي تُكمل مع التثبيت.</string>
     <string name="app_list__dismiss_app_update">التحديث تم تجاهله</string>
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>

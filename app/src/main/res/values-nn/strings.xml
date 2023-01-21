@@ -120,11 +120,11 @@
     <string name="no_such_app">Fann ikkje app.</string>
     <string name="app_details_donate_prompt_unknown_author">Spander ein kaffi på utviklarane av %1$s!</string>
     <string name="app_details_donate_prompt">%1$s er laga av %2$s. Spander ein kaffi på dei!</string>
-    <string name="app_details__incompatible_mismatched_signature">Ulik signatur enn i installert versjon</string>
+    <string name="app_details__incompatible_mismatched_signers">Ulik signatur enn i installert versjon</string>
     <string name="app_details__no_versions__show_incompat_versions">Viss du likevel vil visa inkompatible versjonar her, slå på innstillinga «%1$s».</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Ingen versjonar med kompatibel signatur</string>
+    <string name="app_details__no_versions__no_compatible_signers">Ingen versjonar med kompatibel signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ingen versjonar som er kompatible med eininga</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Den installerte versjonen er ikkje kompatibel med nokon tilgjengeleg versjon. Viss du avinstallerer appen, kan du visa og installera kompatible versjonar. Dette problemet skjer ofte med appar som er installerte via Google Play eller andre kjelder og som er signerte med eit anna sertifikat.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Den installerte versjonen er ikkje kompatibel med nokon tilgjengeleg versjon. Viss du avinstallerer appen, kan du visa og installera kompatible versjonar. Dette problemet skjer ofte med appar som er installerte via Google Play eller andre kjelder og som er signerte med eit anna sertifikat.</string>
     <string name="about_version">Versjon</string>
     <string name="about_site">Heimeside</string>
     <string name="about_forum">Brukarforum</string>

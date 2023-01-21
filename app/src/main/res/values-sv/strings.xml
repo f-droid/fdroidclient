@@ -375,11 +375,11 @@
     <string name="app_permission_storage">F-Droid behöver lagringstillstånd för att installera detta till lagring. Vänligen tillåt det på nästa skärm för att fortsätta med installationen.</string>
     <string name="app_list_download_ready">Hämtad, redo att installeras</string>
     <string name="status_inserting_x_apps">Sparar appdetaljer (%1$d/%2$d) från %3$s</string>
-    <string name="app_details__incompatible_mismatched_signature">Olika signaturer till installerad version</string>
+    <string name="app_details__incompatible_mismatched_signers">Olika signaturer till installerad version</string>
     <string name="app_details__no_versions__show_incompat_versions">För att visa inkompatibla versioner här ändå, aktivera inställningen \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Inga versioner med kompatibel signatur</string>
+    <string name="app_details__no_versions__no_compatible_signers">Inga versioner med kompatibel signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Inga versioner är kompatibla med enheten</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Den installerade versionen är inte kompatibel med några tillgängliga versioner. Om du avinstallerar appen kan du visa och installera kompatibla versioner. Det här händer ofta med appar installerade via Google Play eller andra källor, om de är signerade med ett annat certifikat.</string>
     <string name="app_list__dismiss_app_update">Uppdatering ignorerad</string>
     <string name="app_list__dismiss_vulnerable_app">Sårbarhet ignorerad</string>
     <string name="app_list__dismiss_downloading_app">Hämtning avbruten</string>

@@ -126,9 +126,9 @@
     <string name="no_such_app">Nobena aplikacija s tem imenom ni bila najdena.</string>
     <string name="app_details_donate_prompt_unknown_author">Kupite razvijalcem od %1$s kavo!</string>
     <string name="app_details_donate_prompt">%1$s je bila ustvarjeno od %2$s. Kupi jim kavo!</string>
-    <string name="app_details__incompatible_mismatched_signature">Različna overitev nameščenih verzij</string>
+    <string name="app_details__incompatible_mismatched_signers">Različna overitev nameščenih verzij</string>
     <string name="app_details__no_versions__show_incompat_versions">Če želite vseeno pokazati nekompatibilne verzije, omogočite v nastavitvah možnost \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Nobena verzija ni kompatibilna z overitvijo</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nobena verzija ni kompatibilna z overitvijo</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nobena verzija ni kompatibilna z napravo</string>
     <string name="about_source">Izvorna koda</string>
     <string name="about_license">Licenca</string>
@@ -498,7 +498,7 @@
         <item quantity="other">Preglej vse %1$d aplikacije v %2$s kategoriji</item>
     </plurals>
     <string name="nearby_splash__both_parties_need_fdroid">Obe strani potrebujeta %1$s za uporabo funkcije Blizu.</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Nameščena različica ni kompatibilna s katerokoli razpoložljivo različico. Odstranitev aplikacije bo omogočila, da pregledate in namestite kompatibilne različice. To se pogosto zgodi z aplikacijami, nameščenimi preko Google Play ali ostalih virov, če so podpisane z drugim certifikatom.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Nameščena različica ni kompatibilna s katerokoli razpoložljivo različico. Odstranitev aplikacije bo omogočila, da pregledate in namestite kompatibilne različice. To se pogosto zgodi z aplikacijami, nameščenimi preko Google Play ali ostalih virov, če so podpisane z drugim certifikatom.</string>
     <string name="prompt_to_send_crash_reports">Vprašaj za pošiljanje poročil o zrušitvah</string>
     <string name="swap_toast_using_path">Uporaba %1$s</string>
     <string name="swap_toast_not_removable_storage">Ta izbira se ne ujema s katerokoli od odstranljivih pomnilniških medijev, poskusi znova!</string>

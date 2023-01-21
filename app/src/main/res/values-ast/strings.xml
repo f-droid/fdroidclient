@@ -371,11 +371,11 @@
     <string name="status_inserting_x_apps">Guardando los detalles de les aplicaciones (%1$d/%2$d) de: %3$s</string>
     <string name="app_installed_media">File installed to %s</string>
     <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
-    <string name="app_details__incompatible_mismatched_signature">Different signature to installed version</string>
+    <string name="app_details__incompatible_mismatched_signers">Different signature to installed version</string>
     <string name="app_details__no_versions__show_incompat_versions">To show incompatible versions here anyway, enable the \"%1$s\" setting.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">No versions with compatible signature</string>
+    <string name="app_details__no_versions__no_compatible_signers">No versions with compatible signature</string>
     <string name="app_details__no_versions__none_compatible_with_device">No versions compatible with device</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La versión instalada nun ye compatible con nenguna versión disponible. La desinstalación de l\'aplicación va permitite ver ya instalar les versiones compatibles. Esto ocurre davezu coles aplicaciones instales per Google Play u otros oríxenes, si tán firmaes con un certificáu estremáu.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada nun ye compatible con nenguna versión disponible. La desinstalación de l\'aplicación va permitite ver ya instalar les versiones compatibles. Esto ocurre davezu coles aplicaciones instales per Google Play u otros oríxenes, si tán firmaes con un certificáu estremáu.</string>
     <string name="app_list__dismiss_app_update">Update ignored</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerability ignored</string>
     <string name="app_list__dismiss_downloading_app">Download canceled</string>

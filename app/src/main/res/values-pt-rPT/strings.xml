@@ -376,11 +376,11 @@
     <string name="app_permission_storage">F-Droid necessita de aceder ao armazenamento. Por favor conceda essa permissão no próximo ecrã para continuar com a instalação.</string>
     <string name="app_list_download_ready">Descarregada e pronta para instalar</string>
     <string name="status_inserting_x_apps">A guardar detalhes da aplicação (%1$d/%2$d) de %3$s</string>
-    <string name="app_details__incompatible_mismatched_signature">Assinatura diferente da versão instalada</string>
+    <string name="app_details__incompatible_mismatched_signers">Assinatura diferente da versão instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ainda assim mostrar versões incompatíveis, ative a opção \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Não existem versões com uma assinatura compatível</string>
+    <string name="app_details__no_versions__no_compatible_signers">Não existem versões com uma assinatura compatível</string>
     <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o aparelho</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">A versão instalada não é compatível com as versões disponíveis. Desinstalar a app permite-o ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar apps através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com as versões disponíveis. Desinstalar a app permite-o ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar apps através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
     <string name="app_list__dismiss_app_update">Atualização ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>

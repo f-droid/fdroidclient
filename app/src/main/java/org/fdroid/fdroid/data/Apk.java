@@ -102,7 +102,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
      *
      * @see <a href="https://source.android.com/security/apksigning/v3#apk-signature-scheme-v3-block"><tt>signer</tt> in APK Signature Scheme v3</a>
      */
-    public String sig;
+    public String signer;
 
     /**
      * Can be null when created with {@link #Apk(PackageInfo)}
@@ -176,7 +176,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         nativecode = v.getNativeCode().toArray(new String[0]);
         repoId = v.getRepoId();
         SignerV2 signer = v.getManifest().getSigner();
-        sig = signer == null ? null : signer.getSha256().get(0);
+        this.signer = signer == null ? null : signer.getSha256().get(0);
         size = v.getFile().getSize() == null ? 0 : v.getFile().getSize();
         srcname = v.getSrc() == null ? null : v.getSrc().getName();
         versionName = manifest.getVersionName();
@@ -318,7 +318,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         dest.writeStringArray(this.requestedPermissions);
         dest.writeStringArray(this.features);
         dest.writeStringArray(this.nativecode);
-        dest.writeString(this.sig);
+        dest.writeString(this.signer);
         dest.writeByte(this.compatible ? (byte) 1 : (byte) 0);
         dest.writeString(this.apkFile != null ? this.apkFile.serialize() : null);
         dest.writeSerializable(this.installedFile);
@@ -347,7 +347,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         this.requestedPermissions = in.createStringArray();
         this.features = in.createStringArray();
         this.nativecode = in.createStringArray();
-        this.sig = in.readString();
+        this.signer = in.readString();
         this.compatible = in.readByte() != 0;
         this.apkFile = FileV1.deserialize(in.readString());
         this.installedFile = (SanitizedFile) in.readSerializable();

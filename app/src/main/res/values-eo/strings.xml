@@ -386,11 +386,11 @@
     <string name="status_inserting_x_apps">Konservado de aplikaĵaj detaloj (%1$d/%2$d) el %3$s</string>
     <string name="app_installed_media">Dosiero instalita al %s</string>
     <string name="app_permission_storage">F‑Droid bezonas aliron al konservejo por instali ĝin tien. Permesu tion ĉi sur la sekva ekrano por pluigi instaladon.</string>
-    <string name="app_details__incompatible_mismatched_signature">Alia subskribo ol instalita versio</string>
+    <string name="app_details__incompatible_mismatched_signers">Alia subskribo ol instalita versio</string>
     <string name="app_details__no_versions__show_incompat_versions">Por montri nekongruajn versiojn tie ĉe malgraŭ tio, enŝaltu la agordon “%1$s”.</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Neniu versio kun kongrua subskribo</string>
+    <string name="app_details__no_versions__no_compatible_signers">Neniu versio kun kongrua subskribo</string>
     <string name="app_details__no_versions__none_compatible_with_device">Neniu versio kongrua kun la aparato</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
     <string name="app_list__dismiss_app_update">Ĝisdatigo ignorata</string>
     <string name="app_list__dismiss_vulnerable_app">Sekurec-fliko ignorata</string>
     <string name="app_list__dismiss_downloading_app">Elŝuto nuligita</string>

@@ -384,11 +384,11 @@
     <string name="about_forum">Дэмжлэгийн форум</string>
     <string name="about_site">Вэбсайт</string>
     <string name="about_version">Хувилбар</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Суулгасан хувилбар нь аль ч хувилбартай тохирохгүй байна. Програмыг устгаснаар тохирох хувилбаруудыг үзэх, суулгах боломжтой болно. Энэ нь ихэвчлэн өөр гэрчилгээгээр гарын үсэг зурсан тохиолдолд Google Play эсвэл бусад эх сурвалжаар суулгасан програмуудад тохиолддог.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Суулгасан хувилбар нь аль ч хувилбартай тохирохгүй байна. Програмыг устгаснаар тохирох хувилбаруудыг үзэх, суулгах боломжтой болно. Энэ нь ихэвчлэн өөр гэрчилгээгээр гарын үсэг зурсан тохиолдолд Google Play эсвэл бусад эх сурвалжаар суулгасан програмуудад тохиолддог.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Төхөөрөмжтэй тохирох хувилбар алга</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Тохирох гарын үсэг бүхий хувилбар байхгүй</string>
+    <string name="app_details__no_versions__no_compatible_signers">Тохирох гарын үсэг бүхий хувилбар байхгүй</string>
     <string name="app_details__no_versions__show_incompat_versions">Таарахгүй хувилбаруудыг энд харуулахын тулд \"%1$s\" тохиргоог идэвхжүүлээрэй.</string>
-    <string name="app_details__incompatible_mismatched_signature">Суулгасан хувилбарт өөр гарын үсэг</string>
+    <string name="app_details__incompatible_mismatched_signers">Суулгасан хувилбарт өөр гарын үсэг</string>
     <string name="app_details_donate_prompt">%1$s нь %2$s бүтээсэн. Тэдэнд кофе худалдаж аваарай!</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s кофе үйлдвэрлэгчдийг худалдаж аваарай!</string>
     <string name="no_such_app">Ийм програм олдсонгүй.</string>

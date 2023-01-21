@@ -262,9 +262,9 @@
     <string name="repo_error_empty_username">Nome de usuario baleiro, non se mudaron as credenciais</string>
     <string name="app_details_donate_prompt_unknown_author">Convida a un café ós desenvolvedores do %1$s!</string>
     <string name="app_details_donate_prompt">%1$s foi creado por %2$s. Págalles un café!</string>
-    <string name="app_details__incompatible_mismatched_signature">A sinatura non coincide ca da versión instalada</string>
+    <string name="app_details__incompatible_mismatched_signers">A sinatura non coincide ca da versión instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para amosar versións incompatíbeis aquí de todos xeitos, activa a opción \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">Non hai versións con sinatura compatíbel</string>
+    <string name="app_details__no_versions__no_compatible_signers">Non hai versións con sinatura compatíbel</string>
     <string name="app_details__no_versions__none_compatible_with_device">Non hai versión compatíbeis co dispositivo</string>
     <string name="about_license">Licenza</string>
     <string name="app_version_x_available">Versión %1$s dispoñíbel</string>
@@ -366,7 +366,7 @@
         <item quantity="one">Actualizado hai %1$d día</item>
         <item quantity="other">Actualizado hai %1$d días</item>
     </plurals>
-    <string name="app_details__no_versions__explain_incompatible_signatures">A versión instalada non é compatíbel con ningunha das versións dispoñíbeis. Desinstalar a aplicación permitirache ollar e instalar as versións compatíbeis. Isto acontece acotío con aplicacións instaladas através da Google Play ou outras fontes, se foron asinadas cun certificado diferente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">A versión instalada non é compatíbel con ningunha das versións dispoñíbeis. Desinstalar a aplicación permitirache ollar e instalar as versións compatíbeis. Isto acontece acotío con aplicacións instaladas através da Google Play ou outras fontes, se foron asinadas cun certificado diferente.</string>
     <string name="app_permission_storage">O F-Droid precisa permiso para acceder ó almacenamento. Por favor concede ese permiso na seguinte pantalla para proseguer ca instalación.</string>
     <string name="latest__empty_state__never_updated">Unha vez que a listaxe de aplicacións estiver actualizada, as aplicacións máis recentes serán amosadas aquí</string>
     <string name="latest__empty_state__no_enabled_repos">Unha vez que habilites e actualices un repositorio, as aplicacións máis recentes serán amosadas aquí</string>

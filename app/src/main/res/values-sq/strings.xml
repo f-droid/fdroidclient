@@ -119,11 +119,11 @@
     <string name="no_such_app">S’u gjet aplikacion i tillë.</string>
     <string name="app_details_donate_prompt_unknown_author">Qerasini zhvilluesit e %1$s një kafe!</string>
     <string name="app_details_donate_prompt">%1$s është krijuar nga %2$s. Qerasini një kafe!</string>
-    <string name="app_details__incompatible_mismatched_signature">Nënshkrim i ndryshëm te versioni i instaluar</string>
+    <string name="app_details__incompatible_mismatched_signers">Nënshkrim i ndryshëm te versioni i instaluar</string>
     <string name="app_details__no_versions__show_incompat_versions">Për të shfaqur këtu versione të papërputhshëm, sido që të jetë, aktivizoni rregullimin \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signatures">S’ka versione me nënshkrim të përputhshëm</string>
+    <string name="app_details__no_versions__no_compatible_signers">S’ka versione me nënshkrim të përputhshëm</string>
     <string name="app_details__no_versions__none_compatible_with_device">S’ka versione të përputhshëm me pajisjen</string>
-    <string name="app_details__no_versions__explain_incompatible_signatures">Versioni i instaluar s’është i përputhshëm me ndonjë version të gatshëm. Çinstalimi i aplikacionit do t’ju bëjë të mundur të shihni dhe instaloni versione të përputhshëm. Kjo shpesh ndodh me aplikacione të instaluar përmes Google Play ose burime të tjera, nëse janë të nënshkruar me një dëshmi tjetër.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Versioni i instaluar s’është i përputhshëm me ndonjë version të gatshëm. Çinstalimi i aplikacionit do t’ju bëjë të mundur të shihni dhe instaloni versione të përputhshëm. Kjo shpesh ndodh me aplikacione të instaluar përmes Google Play ose burime të tjera, nëse janë të nënshkruar me një dëshmi tjetër.</string>
     <string name="about_site">Sajt</string>
     <string name="app_installed">I instaluar</string>
     <string name="app_not_installed">Jo i instaluar</string>
