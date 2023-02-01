@@ -45,6 +45,8 @@
         <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$1.class"/>
         <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$2.class"/>
         <ignore path="org/apache/commons/net/util/TrustManagerUtils$TrustManager.class"/>
+        <ignore path="\*/bcpkix-jdk15to18-1.71.jar"/>
+        <ignore path="\*/commons-net-3.6.jar"/>
     </issue>
 
     <issue id="PluralsCandidate" severity="error"/>
