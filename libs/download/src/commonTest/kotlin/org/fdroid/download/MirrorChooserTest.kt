@@ -59,6 +59,20 @@ class MirrorChooserTest {
     }
 
     @Test
+    fun testFallbackToNextMirrorWithNoResumeException() = runSuspend {
+        val mirrorChooser = MirrorChooserRandom()
+        val expectedResult = Random.nextInt()
+
+        val result = mirrorChooser.mirrorRequest(downloadRequest) { mirror, url ->
+            assertEquals(mirror.getUrl(downloadRequest.indexFile.name), url)
+            // fails with all except last mirror
+            if (mirror != downloadRequest.mirrors.last()) throw NoResumeException()
+            expectedResult
+        }
+        assertEquals(expectedResult, result)
+    }
+
+    @Test
     fun testMirrorChooserRandom() {
         val mirrorChooser = MirrorChooserRandom()
 
