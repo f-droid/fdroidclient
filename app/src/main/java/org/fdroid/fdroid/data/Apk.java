@@ -85,7 +85,9 @@ public class Apk implements Comparable<Apk>, Parcelable {
      * same data as {@link android.content.pm.PackageInfo#requestedPermissions}. Note this
      * does not mean that all these permissions have been granted, only requested.  For
      * example, a regular app can request a system permission, but it won't be granted it.
+     * Set this to null for no permissions.
      */
+    @Nullable
     public String[] requestedPermissions;
     public String[] features; // null if empty or unknown
 
@@ -460,7 +462,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
             // so we don't make any changes for apps targetting 33 or above
         }
 
-        requestedPermissions = set.toArray(new String[0]);
+        String[] perms = set.toArray(new String[0]);
+        requestedPermissions = perms.length == 0 ? null : perms;
     }
 
     /**
