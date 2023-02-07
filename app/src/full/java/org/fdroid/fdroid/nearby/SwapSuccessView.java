@@ -123,6 +123,7 @@ public class SwapSuccessView extends SwapView {
                     permissions.add(perm.getName());
                 }
                 apk.requestedPermissions = permissions.toArray(new String[0]);
+                if (apk.requestedPermissions.length == 0) apk.requestedPermissions = null;
             }
 
             apk.repoId = Long.MAX_VALUE;
