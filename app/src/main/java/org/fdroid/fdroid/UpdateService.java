@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -128,6 +129,7 @@ public class UpdateService extends JobIntentService {
         return intent;
     }
 
+    @UiThread
     public static void updateNewRepoNow(Context context, String address, @Nullable String fingerprint) {
         enqueueWork(context, getIntent(context, address, fingerprint));
     }
@@ -137,6 +139,7 @@ public class UpdateService extends JobIntentService {
      * when the system language changes, or the underlying OS was upgraded.
      * This wipes the existing database before running the update!
      */
+    @UiThread
     public static void forceUpdateRepo(Context context) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_FORCED_UPDATE, true);
@@ -152,6 +155,7 @@ public class UpdateService extends JobIntentService {
      *
      * @see JobIntentService#enqueueWork(Context, Class, int, Intent)
      */
+    @UiThread
     private static void enqueueWork(Context context, @NonNull Intent intent) {
         if (FDroidApp.networkState > 0 && !Preferences.get().isOnDemandDownloadAllowed()) {
             Toast.makeText(context, R.string.updates_disabled_by_settings, Toast.LENGTH_LONG).show();
