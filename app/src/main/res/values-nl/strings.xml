@@ -503,13 +503,13 @@
     <string name="notification_channel_installs_title">Installaties</string>
     <string name="menu_show_install_history">Installatie geschiedenis tonen</string>
     <string name="menu_show_fdroid_metrics_report">Statistiek Verslag tonen</string>
-    <string name="toast_metrics_in_install_history">Het %s Statistiek verslag is zichtbaar in de Installatie Geschiedenis scherm</string>
+    <string name="toast_metrics_in_install_history">Het %s Statistiekverslag is zichtbaar in het Installatie Geschiedenisscherm</string>
     <string name="send_to_fdroid_metrics_summary">Verstuur anonieme gegevens wekelijks naar F-Droid Statistieken (vereist het Behoud van Installatie geschiedenis)</string>
     <string name="send_to_fdroid_metrics">Verstuur gebruik data</string>
-    <string name="fdroid_metrics_report">%s Statistiek Verslag</string>
-    <string name="install_history_and_metrics">Installatie historie en statistieken</string>
+    <string name="fdroid_metrics_report">%s Statistiekverslag</string>
+    <string name="install_history_and_metrics">Installatiegeschiedenis en statistieken</string>
     <string name="send_fdroid_metrics_json">%s statistiekverslag als JSON bestand</string>
-    <string name="send_fdroid_metrics_report">Verstuur %s Statistiek Verslag</string>
+    <string name="send_fdroid_metrics_report">Verstuur %s statistiekverslag</string>
     <string name="theme_follow_system">Volg systeem</string>
     <string name="use_pure_black_dark_theme_summary">Alleen aanbevolen voor OLED-schermen.</string>
     <string name="use_pure_black_dark_theme">Gebruik puur zwarte achtergrond bij donker thema</string>
