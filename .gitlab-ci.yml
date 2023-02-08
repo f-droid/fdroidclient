@@ -58,6 +58,9 @@ workflow:
 test_lint_pmd_checkstyle:
   <<: *test-template
   script:
+    # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
+    - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2024,'
+          /usr/lib/jvm/default-java/conf/security/java.security
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     # the tasks "lint", "test", etc don't always include everything
