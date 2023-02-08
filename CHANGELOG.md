@@ -1,3 +1,9 @@
+### 1.16 (2023-02-08)
+
+* Fix crashes reported via ACRA
+
+* Fix extra install prompt for zero permission apps #2525
+
 ### 1.16-alpha4 (2023-01-21)
 
 * Improved swap support when connecting with older F-Droid releases. 
