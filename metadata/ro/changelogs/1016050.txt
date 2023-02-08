@@ -1,6 +1,7 @@
-* Modernizarea completă a procesului de descărcare, indexului, și codul bazei de date.
+Modernizarea completă a codului de descărcare, a indexului și a bazei de date. Mai rapid și mai rezistent, utilizând în același timp mai puțină lățime de bandă. De asemenea, mai ușor de întreținut cu o suită de teste mult îmbunătățită. Corectează o mulțime de blocaje și bug-uri de lungă durată.
 
-* Remedieri: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
-  #2412 #2436 #2442 #2443 #2444 #1971
+* Funcționează mai bine pe dispozitive ieftine cu mai puțină memorie
 
-* O nouă limbă: cantoneză (yue)
+* Corectează #649 #860 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Limbă nouă: Cantonese (yue)
