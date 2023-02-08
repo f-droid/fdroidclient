@@ -279,7 +279,7 @@
     <string name="app_version_x_available">版本 %1$s 可用</string>
     <string name="app_version_x_installed">版本 %1$s</string>
     <string name="app_recommended_version_installed">版本 %1$s（推荐使用）</string>
-    <string name="app_new">新品</string>
+    <string name="app_new">新上架</string>
     <string name="app__tts__cancel_download">取消下載</string>
     <string name="app__install_downloaded_update">更新</string>
     <string name="installed_apps__activity_title">已安装的应用</string>
@@ -303,7 +303,7 @@
     <string name="preference_category__my_apps">我的应用</string>
     <string name="details_new_in_version">版本 %s 的更新内容</string>
     <string name="antifeatureswarning">此应用有一些你未必喜欢的特征。</string>
-    <string name="antifeatures">负特征</string>
+    <string name="antifeatures">负面特征</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
@@ -363,7 +363,7 @@
     <string name="app_details__no_versions__show_incompat_versions">若要在这里显示不兼容的版本，请启用“%1$s”设置。</string>
     <string name="app_details__no_versions__no_compatible_signers">没有兼容签名的版本</string>
     <string name="app_details__no_versions__none_compatible_with_device">没有与设备兼容的版本</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">已安装的版本与可用的任何版本都不兼容。卸载该应用将使你可以查看和安装兼容的版本。这种情况常发生在通过 Google Play 或其他存储库安装的应用上，它们可能经由不同的证书签名。</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">已安装的版本与可用的任何版本都不兼容。卸载该应用将使你可以查看和安装兼容的版本。通过 Google Play 或其他来源安装的应用通常会出现这种情况，它们可能经由不同的证书签名。</string>
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
