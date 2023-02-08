@@ -1,6 +1,6 @@
-* Modernización completa del código de descarga, índice y base de datos.
+* Modernización completa del código de descarga, indexación y base de datos.  Debería ser más rápido y más duradero mientras usa menos ancho de banda.  También es más fácil de mantener con herramientas de prueba mejoradas.
 
 * Correcciones: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
   #2412 #2436 #2442 #2443 #2444 #1971
 
-* Nueva lengua: Cantonés (yue)
+* Nuevo idioma: cantonés (yue)

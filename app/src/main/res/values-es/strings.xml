@@ -394,11 +394,11 @@
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
     <string name="app_installed_media">Archivo instalado en %s</string>
     <string name="app_permission_storage">F-Droid necesita permiso para instalar esto en su almacenamiento. Por favor, permita en la siguiente pantalla que se continúe con la instalación.</string>
-    <string name="app_details__incompatible_mismatched_signers">La firma no coincide con la de la versión instalada</string>
+    <string name="app_details__incompatible_mismatched_signers">Firmante diferente a la versión instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para mostrar versiones incompatibles aquí de todos modos, habilita la opción \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">No hay versiones con una firma compatible</string>
+    <string name="app_details__no_versions__no_compatible_signers">No hay versiones con el firmante compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con el dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada no es compatible con ninguna de las versiones disponibles. Desinstalar la aplicación le permitirá ver e instalar las versiones compatibles. Esto ocurre a menudo con aplicaciones instaladas a través de Google Play o de otras fuentes, que pueden haberse firmado con un certificado diferente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada no es compatible con ninguna de las versiones disponibles. Desinstalar la aplicación te permitirá ver e instalar versiones compatibles. Esto suele ocurrir con las aplicaciones instaladas a través de Google Play u otras fuentes, si están firmadas por un certificado diferente.</string>
     <string name="app_list__dismiss_app_update">Actualización ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidad ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
