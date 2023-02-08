@@ -320,6 +320,7 @@
     <string name="updates__show_updateable_apps">Afficher les applications</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Télécharger la mise à jour pour %1$d application.</item>
+        <item quantity="many">Télécharger les mises à jour pour %1$d applications.</item>
         <item quantity="other">Télécharger les mises à jour pour %1$d applications.</item>
     </plurals>
     <string name="preference_category__my_apps">Mes applis</string>
@@ -329,6 +330,7 @@
     <string name="antifeatures">Antifonctions</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Afficher (%d)</item>
+        <item quantity="many">Tout afficher (%d)</item>
         <item quantity="other">Tout afficher (%d)</item>
     </plurals>
     <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet \? Installez des applications depuis les appareils à proximité !</string>
@@ -337,10 +339,12 @@
     <string name="tts_category_name">Catégorie %1$s</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Afficher l\'application %1$d de la catégorie %2$s</item>
+        <item quantity="many">Afficher toutes les applications %1$d de la catégorie %2$s</item>
         <item quantity="other">Afficher toutes les applications %1$d de la catégorie %2$s</item>
     </plurals>
     <plurals name="details_last_update_days">
         <item quantity="one">Mis à jour il y a %1$d jour</item>
+        <item quantity="many">Mis à jour il y a %1$d jours</item>
         <item quantity="other">Mis à jour il y a %1$d jours</item>
     </plurals>
     <string name="latest__empty_state__no_recent_apps">Aucune application récente trouvée</string>
@@ -358,26 +362,32 @@
     <string name="app__tts__downloading_progress">Téléchargement, %1$d%% terminé</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d autre…</item>
+        <item quantity="many">+%1$d autres…</item>
         <item quantity="other">+%1$d autres…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Mise à jour</item>
+        <item quantity="many">%1$d Mises à jour</item>
         <item quantity="other">%1$d Mises à jour</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d appli installée</item>
+        <item quantity="many">%1$d applis installées</item>
         <item quantity="other">%1$d applis installées</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Mis à jour il y a %1$d semaine</item>
+        <item quantity="many">Mis à jour il y a %1$d semaines</item>
         <item quantity="other">Mis à jour il y a %1$d semaines</item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Mis à jour il y a %1$d mois</item>
+        <item quantity="many">Mis à jour il y a %1$d mois</item>
         <item quantity="other">Mis à jour il y a %1$d mois</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">Mis à jour il y a %1$d an</item>
+        <item quantity="many">Mis à jour il y a %1$d ans</item>
         <item quantity="other">Mis à jour il y a %1$d ans</item>
     </plurals>
     <string name="by_author_format">par %s</string>
@@ -392,7 +402,7 @@
     <string name="app_details__incompatible_mismatched_signers">La signature diffère de la version déjà installée</string>
     <string name="app_details__no_versions__show_incompat_versions">Pour tout de même afficher ici les versions incompatibles, activez la préférence « %1$s ».</string>
     <string name="app_details__no_versions__no_compatible_signers">Aucune version ne possède une signature compatible</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et installer les versions compatibles. Ce problème est fréquent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La version installée n\'est compatible avec aucune des versions disponibles. Désinstaller cette application vous permettra de consulter et d\'installer les versions compatibles. Ce problème arrive souvent avec les applications installées depuis Google Play ou d\'autres sources, si elles sont signées à l\'aide d\'un certificat différent.</string>
     <string name="app_list__dismiss_app_update">Mise à jour ignorée</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnérabilité ignorée</string>
     <string name="app_list__dismiss_downloading_app">Téléchargement annulé</string>
@@ -522,8 +532,8 @@
     <string name="banner_no_data_or_wifi">Pas de Données ou Wi-Fi actif</string>
     <string name="banner_no_internet">Aucune connexion Internet</string>
     <string name="share_apk_error">Impossible de partager le fichier de l\'appli</string>
-    <string name="has_disallow_install_unknown_sources">Les sources inconnues ne peuvent pas être ajoutées par cet utilisateur et cette règle s\'applique aux nouveaux dépôts.</string>
-    <string name="has_disallow_install_unknown_sources_globally">L\'administrateur de votre appareil n\'autorise pas l\'installation d\'applications provenant de sources inconnues et cette règle s\'applique aux nouveaux dépôts.</string>
+    <string name="has_disallow_install_unknown_sources">L\'utilisateur n\'est pas autorisé à ajouter des sources inconnues et cette règle s\'applique aux nouveaux dépôts.</string>
+    <string name="has_disallow_install_unknown_sources_globally">La sécurité de votre appareil est paramétrée pour interdire l\'installation d\'applications provenant de sources inconnues et cette règle s\'applique aux nouveaux dépôts.</string>
     <string name="swap_wifi_vpn_conflict">Conflit avec le VPN actif !</string>
     <string name="antitrack">Traçage</string>
     <string name="antinonfreenet">Services réseaux non libres</string>
@@ -534,9 +544,10 @@
     <string name="antiknownvuln">Contient des vulnérabilités connues</string>
     <string name="app_list_results_hidden_antifeature_settings">Certains résultats ont été masqués pour respecter vos paramètres d\'anti-fonctionnalité.</string>
     <string name="antiads">Publicités</string>
-    <string name="antinonfreead">Addons non libres</string>
+    <string name="antinonfreead">Extensions non libres</string>
     <string name="antinonfreeassets">Composants non libres</string>
     <string name="antiothers">Autres Antifonctions</string>
     <string name="antinsfw">Cette application contient des contenus qui ne doivent pas être rendus publics ni visibles partout</string>
     <string name="menu_release_channel_beta">Autoriser les mises à jour Bêta</string>
+    <string name="latest__empty_state__upgrading">Mise à jour de la base de données…</string>
 </resources>

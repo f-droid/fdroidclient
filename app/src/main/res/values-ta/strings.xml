@@ -332,10 +332,10 @@
     <string name="app_incompatible">ஒவ்வாதது</string>
     <string name="app_suggested">பரிந்துரைக்கப்படுகிறது</string>
     <string name="about_forum">ஆதரவு மன்றம்</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">நிறுவப்பட்ட பதிப்பு கிடைக்கக்கூடிய எப்பதிப்புகளுடனும் ஒவ்வாது. செயலியை நிறுவல் நீக்குவது ஒவ்வும் பதிப்புகளைக் காணவும் நிறுவவும் உதவும். வேறு சான்றிதழால் ஒப்பமிடப்பட்டால், Google Play அல்லது பிற மூலங்கள் வழியாக நிறுவப்பட்ட செயலிகளுடன் இது பெரும்பாலும் நிகழ்கிறது.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">நிறுவப்பட்ட பதிப்பு கிடைக்கக்கூடிய பதிப்புகளுடன் இணக்கமாக இல்லை. பயன்பாட்டை நிறுவல் நீக்குவது இணக்கமான பதிப்புகளைப் பார்க்கவும் நிறுவவும் உதவும். Google Play பிற மூலங்கள் வழியாக நிறுவப்பட்ட பயன்பாடுகள், வேறு சான்றிதழின் மூலம் கையொப்பமிடப்பட்டிருந்தால், இது அடிக்கடி நிகழ்கிறது.</string>
     <string name="app_details__no_versions__none_compatible_with_device">சாதனத்துடன் ஒவ்வும் பதிப்புகளில்லை</string>
-    <string name="app_details__no_versions__no_compatible_signers">ஒவ்வும் ஒப்பத்துடன் பதிப்புகளில்லை</string>
-    <string name="app_details__incompatible_mismatched_signers">நிறுவப்பட்ட பதிப்புக்கு வேறு ஒப்பம்</string>
+    <string name="app_details__no_versions__no_compatible_signers">இணக்கமான கையொப்பத்துடன் பதிப்புகள் இல்லை</string>
+    <string name="app_details__incompatible_mismatched_signers">நிறுவப்பட்ட பதிப்பிற்கு வேறு கையொப்பமிடுபவர்</string>
     <string name="scan_removable_storage_title">நீக்கக்கூடிய சேமிப்பிடத்தை வருடு</string>
     <string name="local_repo_https_on">உள்ளக களஞ்சியத்திற்கு மறைகுறியாக்கப்பட்ட HTTPS:// இணைப்பைப் பயன்படுத்து</string>
     <string name="local_repo_name">உங்கள் உள்ளக களஞ்சியத்தின் பெயர்</string>
@@ -529,4 +529,5 @@
     <string name="antiothers">பிற எதிரம்சங்கள்</string>
     <string name="antinsfw">தெரியக்கூடா அ பொது கவனத்திற்குக் கொண்டுவரக்கூடா உள்ளடக்கங்களை இச்செயலி கொண்டுள்ளது</string>
     <string name="menu_release_channel_beta">பீட்டா புதுப்பிப்புகளை அனுமதிக்கவும்</string>
+    <string name="latest__empty_state__upgrading">தரவுத்தளத்தை மேம்படுத்துகிறது…</string>
 </resources>

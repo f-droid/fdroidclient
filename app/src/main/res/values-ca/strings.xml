@@ -535,4 +535,6 @@
     <string name="antiupstreamnonfree">Upstream no lliure</string>
     <string name="antiothers">Altres anti-característiques</string>
     <string name="antinsfw">El contingut d\'aquesta aplicació pot no ser adequat per divulgar-lo o veure\'l arreu</string>
+    <string name="latest__empty_state__upgrading">S\'està actualitzant la base de dades…</string>
+    <string name="menu_release_channel_beta">Permet actualitzar a versions Beta</string>
 </resources>

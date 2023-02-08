@@ -394,11 +394,11 @@
     <string name="status_inserting_x_apps">Aplikazioaren xehetasunak gordetzen (%1$d/%2$d) %3$s(e)tik</string>
     <string name="app_installed_media">Fitxategia hemen instalatu da: %s</string>
     <string name="app_permission_storage">F-droidek biltegira sarbidea behar du hau bertan instalatzeko. Eman baimena hurrengo pantailan instalazioarekin jarraitzeko.</string>
-    <string name="app_details__incompatible_mismatched_signers">Instalatutako bertsioaren sinadura desberdina da</string>
+    <string name="app_details__incompatible_mismatched_signers">Instalatutako bertsioaren sinatzailea ezberdina da</string>
     <string name="app_details__no_versions__show_incompat_versions">Edonola ere bertsio ez bateragarriak erakusteko, gaitu \"%1$s\" ezarpena.</string>
-    <string name="app_details__no_versions__no_compatible_signers">Ez dago bateragarria den sinadura duen bertsiorik</string>
+    <string name="app_details__no_versions__no_compatible_signers">Sinatzailearekin bateragarri diren bertsiorik ez</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ez dago gailuarekin bateragarria den bertsiorik</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Instalatutako bertsioa ez da bateragarria eskuragarri duden bertsioekin. Aplikazioa desinstalatzeak bertsio bateragarriak ikusi eta instalatzea ahalbidetuko dizu. Hau Gogle Play edo beste iturrietatik instalatutako aplikazioekin gertatu ohi da, ziurtagiri desberdin batekin sinatu direlako.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Instalatutako bertsioa ez da bateragarria eskuragarri dauden bertsioekin. Aplikazioa desinstalatzeak bertsio bateragarriak ikusi eta instalatzea baimentzen zaitu. Hau Gogle Play edo beste iturrietatik instalatutako aplikazioekin gertatu ohi da, ziurtagiri desberdin batekin sinatu direlako.</string>
     <string name="app_list__dismiss_app_update">Eguneraketa ezikusia</string>
     <string name="app_list__dismiss_vulnerable_app">Ahultasun ezikusia</string>
     <string name="app_list__dismiss_downloading_app">Deskarga utzita</string>
@@ -548,4 +548,6 @@
     <string name="antinosource">Jatorrizko kodea ez dago erabilgarri</string>
     <string name="antiothers">Beste anti-ezaugarriak</string>
     <string name="antinsfw">Aplikazio honek edonon argitaratu edo ikusgai egon behar ez den edukia du</string>
+    <string name="menu_release_channel_beta">Beta eguneraketak baimendu</string>
+    <string name="latest__empty_state__upgrading">Datu-basearen eguneraketak aplikatzen…</string>
 </resources>

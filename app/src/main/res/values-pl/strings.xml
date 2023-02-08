@@ -115,7 +115,7 @@
     <string name="update_interval">Interwał automatycznej aktualizacji</string>
     <string name="notify_on">Wyświetlaj powiadomienie, gdy aktualizacje są dostępne</string>
     <string name="app_incompatible">Niezgodna</string>
-    <string name="app_installed">Zainstalowane</string>
+    <string name="app_installed">Zainstalowana</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
     <string name="app_inst_unknown_source">Zainstalowano (z nieznanego źródła)</string>
     <string name="links">Linki</string>
@@ -396,7 +396,7 @@
     <string name="app_details__no_versions__show_incompat_versions">Aby mimo to pokazać niezgodne wersje, włącz opcję „%1$s” w ustawieniach.</string>
     <string name="app_details__no_versions__no_compatible_signers">Brak wersji ze zgodnym podpisem</string>
     <string name="app_details__no_versions__none_compatible_with_device">Brak wersji zgodnych z urządzeniem</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Zainstalowana wersja nie jest zgodna z żadną dostępną wersją. Odinstalowanie aplikacji umożliwi podgląd i zainstalowanie zgodnych wersji. Dzieje się tak często w przypadku aplikacji zainstalowanych przez Google Play lub inne źródła, jeśli są one podpisane innym certyfikatem.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Zainstalowana wersja nie jest zgodna z żadną dostępną wersją. Odinstalowanie aplikacji umożliwi podgląd i zainstalowanie zgodnych wersji. Dzieje się tak często w przypadku aplikacji zainstalowanych przez Google Play lub inne źródła, jeśli są podpisane innym certyfikatem.</string>
     <string name="app_list__dismiss_app_update">Zignorowano aktualizację</string>
     <string name="app_list__dismiss_vulnerable_app">Zignorowano podatność</string>
     <string name="app_list__dismiss_downloading_app">Anulowano pobieranie</string>

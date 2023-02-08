@@ -333,7 +333,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s সংস্করণের জন্য হালনাগাদ উপেক্ষাকৃত</string>
     <string name="app_details__no_versions__none_compatible_with_device">এই যন্ত্রের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
     <string name="app_details__no_versions__no_compatible_signers">এই স্বাক্ষরের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
-    <string name="app_details__incompatible_mismatched_signers">ইন্সটলকৃত সংস্করণ থেকে আলাদা স্বাক্ষর</string>
+    <string name="app_details__incompatible_mismatched_signers">ইন্সটলকৃত সংস্করণ থেকে ভিন্ন স্বাক্ষর</string>
     <string name="repo_error_empty_username">খালি নাম, যাচাইকরণ তথ্য পাল্টানো হয়নি</string>
     <string name="send_fdroid_metrics_report">%s পরিসংখ্যান প্রতিবেদন পাঠাও</string>
     <plurals name="details_last_update_years">
@@ -527,4 +527,6 @@
     <string name="antinonfreenet">অ-মুক্ত নেটওয়ার্ক সেবা</string>
     <string name="antiothers">অন্যান্য অপবৈশিষ্ট্য</string>
     <string name="antinsfw">এই অ্যাপে এমন বস্তু আছে যা সর্বত্র প্রচারিত বা দৃশ্যমান হওয়া উচিত নয়</string>
+    <string name="latest__empty_state__upgrading">তথ্যভাণ্ডার হালনাগাদ করা হচ্ছে…</string>
+    <string name="menu_release_channel_beta">পরীক্ষামূলক হালনাগাদ অনুমোদন করো</string>
 </resources>

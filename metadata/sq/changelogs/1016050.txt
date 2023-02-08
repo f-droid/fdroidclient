@@ -1,0 +1,6 @@
+* Modernizim i plotë i kodit për shkarkime, tregues dhe bazë të dhënash.
+
+* Ndreqje: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
+  #2412 #2436 #2442 #2443 #2444 #1971
+
+* Gjuhë e re: Kantoneze (yue)

@@ -85,7 +85,7 @@
     <string name="antiadslist">Ova aplikacija sadržava oglase</string>
     <string name="antitracklist">Ova aplikacija prati i javlja Vašu aktivnost</string>
     <string name="antinonfreeadlist">Ova aplikacija promovira neslobodne dodatke</string>
-    <string name="antinonfreenetlist">Ova aplikacija promovira neslobodne mrežne usluge</string>
+    <string name="antinonfreenetlist">Ova aplikacija promovira ili potpuno ovisi o neslobodnom mrežnom uslugom</string>
     <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim neslobodnim aplikacijama</string>
     <string name="antiupstreamnonfreelist">Uzvodni izvorni kod nije u potpunosti otvoren/slobodan</string>
     <string name="antinonfreeassetslist">Ova aplikacija sadrži neslobodne resurse</string>
@@ -220,11 +220,11 @@
     <string name="swap_nearby">Obližnja razmjena</string>
     <string name="swap_intro">Spojite se i mjenjajte aplikacije s ljudima blizu Vas.</string>
     <string name="swap_visible_bluetooth">Vidljiv preko Bluetootha</string>
-    <string name="swap_setting_up_bluetooth">Postavljam Bluetooth…</string>
+    <string name="swap_setting_up_bluetooth">Postavljanje Bluetootha …</string>
     <string name="swap_not_visible_bluetooth">Nije vidljivo preko Bluetootha</string>
     <string name="swap_visible_wifi">Vidljivo preko Wi-Fi</string>
-    <string name="swap_setting_up_wifi">Postavljam Wi-Fi…</string>
-    <string name="swap_stopping_wifi">Zaustavljam Wi-Fi…</string>
+    <string name="swap_setting_up_wifi">Postavljanje Wi-Fi-a …</string>
+    <string name="swap_stopping_wifi">Prekidanje Wi-Fi-a …</string>
     <string name="swap_not_visible_wifi">Nije vidljivo preko Wi-Fi</string>
     <string name="swap_wifi_device_name">Ime uređja</string>
     <string name="swap_cant_find_peers">Ne možete naći koga tražite?</string>
@@ -293,7 +293,7 @@
     <string name="prompt_to_send_crash_reports_summary">Skupi podatke o rušenju i pitaj za slanje razvijatelju</string>
     <string name="hide_all_notifications">Sakrij sve obavijesti</string>
     <string name="hide_all_notifications_summary">Ne prikazuj radnje u statusnoj traci i ploči s obavijestima.</string>
-    <string name="send_install_history">Šalji povijest instalacija</string>
+    <string name="send_install_history">Pošalji povijest instalacija</string>
     <string name="install_history">Povijest instalacija</string>
     <string name="app_details__incompatible_mismatched_signers">Različit potpis u odnosu na instaliranu verziju</string>
     <string name="app_details__no_versions__no_compatible_signers">Nema verzija s kompatibilnim potpisom</string>
@@ -328,9 +328,9 @@
     <string name="hiding_dialog_title">Sakrij %s sada</string>
     <string name="hide_on_long_search_press_title">Sakrij s tipkom za pretraživanje</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+još %1$d…</item>
-        <item quantity="few">+još %1$d…</item>
-        <item quantity="other">+još %1$d…</item>
+        <item quantity="one">+ još %1$d …</item>
+        <item quantity="few">+ još %1$d …</item>
+        <item quantity="other">+ još %1$d …</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Spremno za instalaciju</string>
     <string name="notification_title_single_ready_to_install_update">Ažuriranje spremno za instalaciju</string>
@@ -517,20 +517,22 @@
     <string name="swap_toast_using_path">Koristi se %1$s</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Pogledaj (%d)</item>
-        <item quantity="few">Pogledaj sve (%d)</item>
-        <item quantity="other">Pogledaj sve (%d)</item>
+        <item quantity="few">Pogledaj sva (%d)</item>
+        <item quantity="other">Pogledaj svih (%d)</item>
     </plurals>
     <string name="use_pure_black_dark_theme_summary">Preporučuje se samo za OLED ekrane.</string>
     <string name="use_pure_black_dark_theme">Koristi potpuno crnu pozadinu u tamnoj temi</string>
-    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot uključen</string>
-    <string name="send_fdroid_metrics_report">Pošalji metrički izvještaj %s</string>
+    <string name="swap_toast_hotspot_enabled">WiFi Hotspot je uključen</string>
+    <string name="send_fdroid_metrics_report">Pošalji %s metrički izvještaj</string>
     <string name="send_fdroid_metrics_json">%s metrički izvještaj kao JSON datoteka</string>
     <string name="install_history_and_metrics">Povijest instalacije i metrike</string>
     <string name="menu_show_install_history">Prikaži povijest instalacija</string>
-    <string name="send_to_fdroid_metrics">Pošalji podatke o upotrebi</string>
-    <string name="banner_no_data_or_wifi">Nije WiFi, niti Mobilna Mreža, uključena</string>
+    <string name="send_to_fdroid_metrics">Pošalji podatke o korištenju</string>
+    <string name="banner_no_data_or_wifi">Podaci ili WiFi nisu uključeni</string>
     <string name="menu_show_fdroid_metrics_report">Prikaži metrički izvještaj</string>
-    <string name="send_to_fdroid_metrics_summary">Sedmično šalje anonimne podatke F-Droid Metrikama (zahtjeva da se povijest o instalacijama sadrži)</string>
-    <string name="fdroid_metrics_report">%s Metrički Izvještaj</string>
+    <string name="send_to_fdroid_metrics_summary">Tjedno šalje anonimne podatke F-Droid metrikama (zahtjeva da se povijest o instalacijama sadrži)</string>
+    <string name="fdroid_metrics_report">%s metrički izvještaj</string>
     <string name="toast_metrics_in_install_history">Izvještaj metrike %s je moguće vidjeti u Pregledniku za povijest instalacija</string>
+    <string name="antitrack">Praćenje</string>
+    <string name="antiads">Oglasi</string>
 </resources>

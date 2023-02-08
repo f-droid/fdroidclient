@@ -386,9 +386,9 @@
         <item quantity="many">Оновлено %1$d років тому</item>
         <item quantity="other">Оновлено %1$d років тому</item>
     </plurals>
-    <string name="app_details__incompatible_mismatched_signers">Різний підпис до встановленої версії</string>
+    <string name="app_details__incompatible_mismatched_signers">Різний підписник установленої версії</string>
     <string name="app_details__no_versions__show_incompat_versions">Щоб усе одно показувати тут несумісні версії, увімкніть параметр \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">Немає версій із сумісним підписом</string>
+    <string name="app_details__no_versions__no_compatible_signers">Немає версій із сумісним підписником</string>
     <string name="app_details__no_versions__none_compatible_with_device">Немає сумісних із пристроєм версій</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Установлена версія несумісна з будь-якими доступними версіями. Якщо видалити застосунок, ви зможете переглядати та встановлювати сумісні версії. Це часто трапляється з застосунками, встановленими через Google Play або з інших джерел, якщо вони підписані іншим сертифікатом.</string>
     <string name="app_installed_media">Файл встановлено в %s</string>

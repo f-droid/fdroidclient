@@ -398,9 +398,9 @@
     <string name="status_inserting_x_apps">פרטי היישומון נשמרים (%1$d/%2$d) מתוך %3$s</string>
     <string name="app_installed_media">הקובץ הותקן אל %s</string>
     <string name="app_permission_storage">ל־F-Droid נדרשת הרשאה לגשת לאחסון כדי להתקין זאת לאחסון. נא להרשות זאת במסך הבא כדי להמשיך בהתקנה.</string>
-    <string name="app_details__incompatible_mismatched_signers">חתימה שונה מהגרסה המותקנת</string>
+    <string name="app_details__incompatible_mismatched_signers">חותם שונה מהגרסה המותקנת</string>
     <string name="app_details__no_versions__show_incompat_versions">כדי להציג את הגרסה נטולת התמיכה להלן בכל מקרה, יש להפעיל את ההגדרה „%1$s“.</string>
-    <string name="app_details__no_versions__no_compatible_signers">אין גרסאות עם חתימה תואמת</string>
+    <string name="app_details__no_versions__no_compatible_signers">אין גרסאות עם חותם תואם</string>
     <string name="app_details__no_versions__none_compatible_with_device">אין גרסאות תואמות להתקן זה</string>
     <string name="app_details__no_versions__explain_incompatible_signers">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">מצאנו חולשה אצל %1$s. אנו ממליצים להסיר את היישומון הזה מיידית.</string>

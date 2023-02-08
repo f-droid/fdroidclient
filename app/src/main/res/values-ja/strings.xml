@@ -517,4 +517,5 @@
     <string name="antiothers">他の好ましくない機能</string>
     <string name="antinsfw">このアプリにはあらゆる場所に公開できるわけではないコンテンツが含まれている</string>
     <string name="menu_release_channel_beta">ベータ版へのアップデートを許可する</string>
+    <string name="latest__empty_state__upgrading">データベースの更新中…</string>
 </resources>

@@ -493,4 +493,5 @@
     <string name="notification_channel_swaps_title">Uitwisselingen</string>
     <string name="notification_channel_installs_description">Toont installatiemeldingen van apps.</string>
     <string name="notification_channel_installs_title">Installaties</string>
+    <string name="send_fdroid_metrics_report">Verstuur verslag van %s statistieken</string>
 </resources>

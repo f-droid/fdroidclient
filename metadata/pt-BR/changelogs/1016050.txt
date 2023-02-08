@@ -1,4 +1,4 @@
-Modernização completa do código de descarga, índice e banco de dados. Mais rápido e mais resiliente, usando menos largura de banda. Também mais fácil de manter com um conjunto de testes muito melhorado. Corrige muitas falhas e bugs de longa data.
+Modernização completa do código de downloads, índice e banco de dados. Mais rápido e mais resiliente, usando menos largura de banda. Também mais fácil de manter com um conjunto de testes muito melhorado. Corrige muitas falhas e bugs de longa data.
 
 * Funciona melhor em dispositivos acessíveis com menos memória
 

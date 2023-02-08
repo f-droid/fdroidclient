@@ -539,4 +539,5 @@
     <string name="antiothers">Kitos anti-ypatybės</string>
     <string name="antinsfw">Šioje programėlėje yra turinio, kuris neturėtų būti viešinamas ar visur matomas</string>
     <string name="menu_release_channel_beta">Leisti beta atnaujinimus</string>
+    <string name="latest__empty_state__upgrading">Naujinama duomenų bazė…</string>
 </resources>

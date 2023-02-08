@@ -373,9 +373,9 @@
     <string name="app_installed_media">پرونده در %s نصب شد</string>
     <string name="app_permission_storage">اف‌دروید برای نصب روی ذخیره‌ساز، نیاز به اجازهٔ ذخیره‌سازی دارد. لطفاً برای ادامهٔ نصب، این اجازه را در صفحهٔ بعدی بدهید.</string>
     <string name="status_inserting_x_apps">ذخیره کردن جزییات کاره (%1$d/%2$d) از %3$s</string>
-    <string name="app_details__incompatible_mismatched_signers">امضای متفاوت با نگارشِ نصب‌شده</string>
+    <string name="app_details__incompatible_mismatched_signers">امضاکنندهٔ متفاوت با نگارشِ نصب‌شده</string>
     <string name="app_details__no_versions__show_incompat_versions">برای نمایش نگارش‌های ناسازگار، تنظیمات «%1$s» را به کار بیندازید.</string>
-    <string name="app_details__no_versions__no_compatible_signers">هیچ نگارشی با امضای سازگار وجود ندارد</string>
+    <string name="app_details__no_versions__no_compatible_signers">هیچ نگارشی با امضاکنندهٔ سازگار وجود ندارد</string>
     <string name="app_details__no_versions__none_compatible_with_device">هیچ نگارش سازگار با افزاره‌ای وجود ندارد</string>
     <string name="app_details__no_versions__explain_incompatible_signers">نگارش نصب‌شده با هیچ نگارش موجودی سازگار نیست. حذف نصب کاره، شما را قادر به مشاهده و نصب نگارش‌های سازگار می‌کند. این مشکل اغلب با کاره‌های نصب‌شده از گوگل‌پلی یا دیگر منابعی رخ می‌دهد که با گواهی‌نامهٔ متفاوتی امضا شده‌اند.</string>
     <string name="app_list__dismiss_app_update">از به‌روز رسانی چشم‌پوشی شد</string>

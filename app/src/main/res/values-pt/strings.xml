@@ -120,11 +120,11 @@
     <string name="no_such_app">Aplicação não encontrada.</string>
     <string name="app_details_donate_prompt_unknown_author">Pague um café aos programadores de %1$s!</string>
     <string name="app_details_donate_prompt">%1$s foi criado por %2$s. Pode oferecer um café!</string>
-    <string name="app_details__incompatible_mismatched_signers">Assinatura diferente da versão instalada</string>
+    <string name="app_details__incompatible_mismatched_signers">Signatário diferente da versão instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ainda assim mostrar versões incompatíveis, ative a opção \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">Não existem versões com uma assinatura compatível</string>
+    <string name="app_details__no_versions__no_compatible_signers">Sem versões com um signatário compatível</string>
     <string name="app_details__no_versions__none_compatible_with_device">Não existem versões compatíveis com o aparelho</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com as versões disponíveis. Desinstalar a app permite-o ver e instalar as versões compatíveis. Normalmente, isto ocorre se instalar apps através da Google Play ou de outras fontes, caso tenham sido assinadas com um certificado distinto.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com as versões disponíveis. Se desinstalar a aplicação poderá ver e instalar as versões compatíveis. Normalmente isto ocorre se instalar aplicações através da Google Play ou de outras fontes, caso as aplicações tenham sido assinadas com um certificado diferente.</string>
     <string name="about_version">Versão</string>
     <string name="about_site">Site</string>
     <string name="about_forum">Fórum de suporte</string>
@@ -415,6 +415,7 @@
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d mais…</item>
+        <item quantity="many">+%1$d mais…</item>
         <item quantity="other">+%1$d mais …</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Pronta a instalar</string>
