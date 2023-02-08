@@ -115,7 +115,7 @@
     <string name="update_interval">Interwał automatycznej aktualizacji</string>
     <string name="notify_on">Wyświetlaj powiadomienie, gdy aktualizacje są dostępne</string>
     <string name="app_incompatible">Niezgodna</string>
-    <string name="app_installed">Zainstalowane</string>
+    <string name="app_installed">Zainstalowana</string>
     <string name="app_inst_known_source">Zainstalowano (z %s)</string>
     <string name="app_inst_unknown_source">Zainstalowano (z nieznanego źródła)</string>
     <string name="links">Linki</string>
