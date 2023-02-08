@@ -1,6 +1,5 @@
-* Modernización completa del código de descarga, indexación y base de datos.  Debería ser más rápido y más duradero mientras usa menos ancho de banda.  También es más fácil de mantener con herramientas de prueba mejoradas.
+* Modernización completa de los códigos de descarga, índice y base de datos. Más rápido y resistente a la vez que utiliza menos ancho de banda. También más fácil de mantener con un conjunto de pruebas muy mejorado. Corrige muchos fallos y errores antiguos.
 
-* Correcciones: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
-  #2412 #2436 #2442 #2443 #2444 #1971
+* Correcciones: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2436 #2442 #2443 #2444 #1971
 
 * Nuevo idioma: cantonés (yue)
