@@ -415,6 +415,7 @@
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d mais…</item>
+        <item quantity="many">+%1$d mais…</item>
         <item quantity="other">+%1$d mais …</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Pronta a instalar</string>
