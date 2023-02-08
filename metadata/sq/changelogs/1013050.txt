@@ -1,0 +1,17 @@
+* Mbulimi i temave u lidh me tema të brendshme të Android-it (@proletarius101)
+
+* Njoftime të reja banderolë në krye: “Pa Internet” dhe “Pa aktivizim Të Dhënash ose WiFi”
+
+* U përmirësua trajtimi i depove dhe pasqyrave USB-OTG dhe SD Card
+
+* Reshtje e përditësimeve të përsëritura për Trichrome Library
+
+* Më tepër ndryshime për të ndjekur Material Design (@proletarius101)
+
+* Përmirësim i stemës OpenCollective (@ConnyDuck)
+
+* Ripunim ngarkimi ikonash duke përdorur Glide (@proletarius101)
+
+* Ikonë e re përshtatëse (@12people)
+
+* Modernizim kodi (@Isira-Seneviratne)

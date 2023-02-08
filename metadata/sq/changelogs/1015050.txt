@@ -1,0 +1,5 @@
+* Ripunim tërësor i logjikës së shkarkimeve, për mbulim më të mirë të funksionimit dhe pasqyrave.
+
+* Foto ekrani dhe elementë grafikë tanimë shkarkohen që nga pasqyrat.
+
+* U reduktua një rrjedhje të dhënash privatësie me Sesione TLS

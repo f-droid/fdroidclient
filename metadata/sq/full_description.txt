@@ -17,5 +17,5 @@ përmes të cilit mund të:
 * Lini jashtë aplikacione të papërputhshëm me pajisjen
 * Gjeni aplikacione përmes kategorish dhe përshkrimesh të kërkueshëm
 * Të përdorni URL shoqëruese, për dhurime, kod burim, etj.
-* Të jini të parrezikuar, përmes marrjesh nënshkrimet treguesish
-  deposh dhe hashesh APK-sh
+* Të jini të parrezikr, përmes marrjesh nënshkrimet treguesish
+deposh dhe hashesh APK-sh

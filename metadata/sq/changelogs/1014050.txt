@@ -1,0 +1,17 @@
+* Ripunim i menusë “Ndarje Me të Tjerë”, për të përdorur mundësitë e brendshme, bie fjala, Atypari
+
+* U përmirësua funksionimi i Atyparit dhe lëvizja, me plot ndreqje të metash
+
+* Përmirësime të lidhura me Material Design (@proletarius101)
+
+* Aplikacione pa ikona PNG aplikacioni tani shfaqen te Skeda e atyre të Përdorur Së Fundi (@ashutoshgngwr)
+
+* Administrim më i mirë i ikonave me rregullimet për Të dhëna/WiFi të kufizuar
+
+* Mbulim i më shumë skanerave kodesh me vija (@Lugerun)
+
+* Lejim i shfaqjes për zgjedhje të cilave Antiveçori
+
+* Bllokim shtimi deposh, kur përgjegjësi i pajisjes s’ka lejuar “Burime të Panjohura”
+
+* Heqje e rregullimit “Lejo Kërkesa Push”
