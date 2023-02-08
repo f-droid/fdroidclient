@@ -532,4 +532,6 @@
     <string name="app_list_results_hidden_antifeature_settings">Sommige resultaten zijn verborgen gebaseerd op je antifeature-instellingen.</string>
     <string name="antiupstreamnonfree">Upstream niet-vrij</string>
     <string name="antinonfreedep">Niet-vrije afhankelijkheden</string>
+    <string name="latest__empty_state__upgrading">Database upgraden…</string>
+    <string name="menu_release_channel_beta">Sta Beta-updates toe</string>
 </resources>
