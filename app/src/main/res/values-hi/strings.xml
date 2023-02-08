@@ -63,7 +63,7 @@
     <string name="perms_new_perm_prefix">नया:</string>
     <string name="download_error">डाउनलोड असफल!</string>
     <string name="uninstall_confirm">क्‍या आप इस ऐप्स  को अनइंस्‍टॉल करना चाहते हैं?</string>
-    <string name="uninstall_update_confirm">इस ऐप्लिकेशन को फ़ैक्टरी वर्शन से बदलें? सभी डेटा निकाल दिया जाएगा.</string>
+    <string name="uninstall_update_confirm">इस ऐप्लिकेशन को फ़ैक्टरी वर्शन से बदलें\? सभी डेटा निकाल दिया जाएगा।</string>
     <string name="perm_costs_money">यह तुम्हारे पैसे खर्च कर सकता हैं</string>
     <string name="allPerms">सभी</string>
     <string name="newPerms">नया</string>
@@ -116,7 +116,7 @@
     <string name="repo_add_url">रिपॉजिटरी पता</string>
     <string name="repo_add_fingerprint">अंगुली की छाप(वैकल्पिक)</string>
     <string name="pref_language_default">सिस्टम डिफ़ॉलट</string>
-    <string name="SignatureMismatch">नया संस्करण किसी दूसरी \'की\' से साईन हुआ है। इस नये संस्करण को स्थापित करने के लिए पुराने वाले को अनस्थापित करें। इसे करें और दुबारा कोशिश करें। (याद रखें की एप्प को अनस्थापित करने के बाद ऐप्लिकेशन का डेटा नष्ट हो जायेगा)</string>
+    <string name="SignatureMismatch">नया संस्करण किसी दूसरी \'की\' से साईन हुआ है। इस नये संस्करण को इंस्टॉल करने के लिए पुराने वाले को अनइंस्टॉल करें। इसे करें और दुबारा कोशिश करें। (याद रखें की एप्प को अनइंस्टॉल करने के बाद ऐप्लिकेशन का डेटा नष्ट हो जायेगा)</string>
     <string name="keep_install_history">इंस्टॉल इतिहास देखें</string>
     <string name="keep_install_history_summary">एक निजी स्टोर में सभी इंस्टॉल और अनइंस्टॉल का लॉग स्टोर करें</string>
     <string name="menu_settings">सैटिंगस्</string>
@@ -177,7 +177,7 @@
     <string name="send_install_history">इंस्टॉल इतिहास भेजें</string>
     <string name="send_history_csv">%s सीएसवी फ़ाइल के रूप में इतिहास स्थापित करें</string>
     <string name="install_history">इंस्टॉल इतिहास</string>
-    <string name="install_history_summary">सभी स्थापनाओं और अस्थापनाओं का निजी लॉग देखें</string>
+    <string name="install_history_summary">सभी इंस्टॉल और अनइंस्टॉल का निजी लॉग देखें</string>
     <string name="send_version_and_uuid">सर्वर पर संस्करण और यू-यू-आईडी भेजें</string>
     <string name="send_version_and_uuid_summary">इस ऐप के संस्करण को शामिल करें और डाउनलोड करते समय एक यादृच्छिक, अद्वितीय आईडी, अगले ऐप पुनरारंभ पर प्रभाव लेेता है।</string>
     <string name="force_old_index">पुराने इंडेक्स प्रारूप को बाध्य करें</string>
@@ -288,9 +288,9 @@
     <string name="status_inserting_x_apps">एप्लिकेशन विवरण सहेजना (%1$d /%2$d) %3$s से</string>
     <string name="app_installed_media">%s पर फ़ाइल स्थापित की गई</string>
     <string name="app_permission_storage">F-Droid को स्टोरेज में इसे इंस्टॉल करने के लिए स्टोरेज अनुमति की आवश्यकता होती है। कृपया इसे अगली स्क्रीन पर संस्थापन के साथ आगे बढ़ने दें।</string>
-    <string name="app_details__incompatible_mismatched_signers">स्थापित संस्करण के लिए अलग हस्ताक्षर</string>
+    <string name="app_details__incompatible_mismatched_signers">स्थापित संस्करण से अलग हस्ताक्षरित</string>
     <string name="app_details__no_versions__show_incompat_versions">वैसे भी असंगत संस्करण दिखाने के लिए, \"%1$s\" सेटिंग सक्षम करें।</string>
-    <string name="app_details__no_versions__no_compatible_signers">संगत हस्ताक्षर के साथ कोई संस्करण नहीं</string>
+    <string name="app_details__no_versions__no_compatible_signers">संगत हस्ताक्षरित से कोई संस्करण नहीं</string>
     <string name="app_details__no_versions__none_compatible_with_device">डिवाइस के साथ संगत कोई संस्करण नहीं</string>
     <string name="app_details__no_versions__explain_incompatible_signers">स्थापित संस्करण किसी भी उपलब्ध संस्करण के साथ संगत नहीं है। एप्लिकेशन को अनइंस्टॉल करने से आप संगत संस्करण देख और इंस्टॉल कर पाएंगे। यह अक्सर Google Play या अन्य स्रोतों के माध्यम से इंस्टॉल किए गए एप्लिकेशन के साथ होता है, अगर वे एक अलग प्रमाण पत्र द्वारा हस्ताक्षरित हैं।</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">हमें%1$s के साथ भेद्यता मिली। हम इस ऐप को तुरंत अनइंस्टॉल करने की सलाह देते हैं।</string>
@@ -359,9 +359,9 @@
     <string name="menu_translation">अनुवाद</string>
     <string name="menu_select_for_wipe">पोंछने के लिए चयन करें</string>
     <string name="try_again">पुन: प्रयास करें</string>
-    <string name="panic_will_be_wiped">अनइंस्टॉल कर दिया जाएगा और सभी डेटा हटा दिए गए हैं</string>
-    <string name="panic_apps_to_uninstall">ऐप्स को अनइंस्टॉल किया जाना चाहिए और सभी डेटा मिटा दिए जाएंगे</string>
-    <string name="panic_add_apps_to_uninstall">अनइंस्टॉल और मिटाए गए एप्लिकेशन जोड़ें</string>
+    <string name="panic_will_be_wiped">अनइंस्टॉल कर दिया जाएगा और सभी डेटा हटा दिया जाएगा</string>
+    <string name="panic_apps_to_uninstall">ऐप्स अनइंस्टॉल किये जाने वाले हैं और इनका सभी डेटा मिटा दिया जाएगा</string>
+    <string name="panic_add_apps_to_uninstall">अनइंस्टॉल किए जाने वाले और मिटाए जाने वाले एप्लिकेशन शामिल करें</string>
     <string name="panic_reset_repos_title">रेपो को रीसेट करें</string>
     <string name="panic_reset_repos_summary">रेपो सेटअप को वापस डिफॉल्ट करने के लिए मजबूर करें</string>
     <plurals name="details_last_update_months">
@@ -528,4 +528,5 @@
     <string name="antiothers">अन्य विरोधी सुविधाएं</string>
     <string name="antinsfw">इस ऐप में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
     <string name="menu_release_channel_beta">बीटा अपडेट की अनुमति दें</string>
+    <string name="latest__empty_state__upgrading">डेटाबेस का नवीनीकरण किया जा रहा…</string>
 </resources>
