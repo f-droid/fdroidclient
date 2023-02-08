@@ -510,4 +510,7 @@
     <string name="banner_no_data_or_wifi">ಡೇಟಾ ಅಥವಾ ವೈಫೈ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿಲ್ಲ</string>
     <string name="banner_no_internet">ಇಂಟರ್ನೆಟ್ ಇಲ್ಲ</string>
     <string name="apps">ಆ್ಯಪ್</string>
+    <string name="has_disallow_install_unknown_sources">ಹೊಸ ರೆಪೋಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಈ ಬಳಕೆದಾರನಿಂದ ಅಜ್ಞಾತ ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
+    <string name="app_list_results_hidden_antifeature_settings">ನಿಮ್ಮ ಆಂಟಿಫೀಚರ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಆಧರಿಸಿ ಕೆಲವು ಫಲಿತಾಂಶಗಳನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ.</string>
+    <string name="has_disallow_install_unknown_sources_globally">ಹೊಸ ರೆಪೊಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಅಜ್ಞಾತ ಮೂಲಗಳಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ನಿಮ್ಮ ಸಾಧನ ನಿರ್ವಾಹಕರು ಅನುಮತಿಸುವುದಿಲ್ಲ</string>
 </resources>
