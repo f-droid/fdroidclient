@@ -548,4 +548,5 @@
     <string name="antinosource">Jatorrizko kodea ez dago erabilgarri</string>
     <string name="antiothers">Beste anti-ezaugarriak</string>
     <string name="antinsfw">Aplikazio honek edonon argitaratu edo ikusgai egon behar ez den edukia du</string>
+    <string name="menu_release_channel_beta">Beta eguneraketak baimendu</string>
 </resources>
