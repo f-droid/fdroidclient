@@ -273,8 +273,8 @@
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones de F-Droid</string>
     <string name="warning_no_internet">No se puede actualizar. ¿Está conectado a Internet\?</string>
     <string name="versions">Versiones</string>
-    <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>
-    <string name="app_details_donate_prompt">%2$s han creado %1$s. ¡Invítelos a un café!</string>
+    <string name="app_details_donate_prompt_unknown_author">¡Cómprale a los desarrolladores de %1$s un café!</string>
+    <string name="app_details_donate_prompt">%2$s fue creado por %1$s. ¡Cómprales un café!</string>
     <string name="repositories_summary">Añadir orígenes adicionales de aplicaciones</string>
     <string name="app_version_x_available">Versión %1$s disponible</string>
     <string name="app_version_x_installed">Versión %1$s</string>
