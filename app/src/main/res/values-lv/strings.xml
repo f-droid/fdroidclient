@@ -39,10 +39,10 @@
     <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_search">Meklēt</string>
-    <string name="menu_add_repo">Jauns Repozitorijs</string>
+    <string name="menu_add_repo">Jauns repozitorijs</string>
     <string name="menu_launch">Atvērt</string>
     <string name="menu_share">Dalīties</string>
-    <string name="menu_install">Instalēt</string>
+    <string name="menu_install">Uzstādīt</string>
     <string name="menu_uninstall">Izdzēst</string>
     <string name="menu_ignore_all">Ignorēt visus atjauninājumus</string>
     <string name="menu_ignore_this">Ignorēt šo atjauninājumu</string>
@@ -89,7 +89,7 @@
     <string name="next">Tālāk</string>
     <string name="skip">Izlaist</string>
     <string name="pref_language_default">Sistēmas</string>
-    <string name="newPerms">Jauna!</string>
+    <string name="newPerms">Jauna</string>
     <string name="notification_action_update">Atjaunināt</string>
     <string name="notification_action_cancel">Atcelt</string>
     <string name="notification_action_install">Instalēt</string>
@@ -197,7 +197,7 @@
     <string name="allPerms">Visas</string>
     <string name="loading">Notiek ielāde…</string>
     <string name="allow">Atļaut</string>
-    <string name="swap_connecting">Notiek savienojuma izveide</string>
+    <string name="swap_connecting">Savienojas</string>
     <string name="repo_exists_enable">%1$s ir jau iestatīts, apstiprini, ka vēlies to atkārtoti aktivizēt.</string>
     <string name="repo_exists_and_enabled">%1$s ir jau iestatīts un aktivizēts.</string>
     <string name="enable_proxy_summary">Iestatiet HTTP Proxy priekš visiem tīkla pieprasījumiem</string>
@@ -258,7 +258,7 @@
     <string name="download_error">Lejupielāde neizdevās!</string>
     <string name="perm_costs_money">Šis var jums maksāt naudu</string>
     <string name="install_confirm">vajag piekļuvi pie</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Dalīšanās aizvērta, jo tā bija nenodarbināta</string>
+    <string name="swap_toast_closing_nearby_after_timeout">\'Tuvumā\' funkcija tika atslēgta, jo netika izmantota.</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi karstpunkts ieslēgts</string>
     <string name="swap_toast_using_path">Izmanto %1$s</string>
     <string name="not_visible_nearby">Dalīšanās nav ieslēgta</string>
@@ -328,19 +328,19 @@
     <string name="repos_unchanged">Visas krātuves ir atjauninātas</string>
     <string name="status_connecting_to_repo">Savienojas ar
 \n%1$s</string>
-    <string name="banner_updating_repositories">Atjauno krātuves</string>
+    <string name="banner_updating_repositories">Atjaunina repozitorijus</string>
     <string name="hide_on_long_search_press_summary">Ilgi spiežot meklēšanas pogu paslēps lietotni</string>
     <string name="hide_on_long_search_press_title">Paslēpt ar meklēšanas pogu</string>
     <string name="panic_hide_warning_message">Panikas gadījumā, šis noņems %1$s no sākum ekrāna. Tikai ierakstot \"%2$d\" neīstajā %3$s lietotnē to atjaunos.</string>
     <string name="hiding_dialog_warning">Brīdinājums: tiks noņemts arī jebkurš lietotnes īsceļš sākuma ekrānā, un tas būs jāpievieno manuāli.</string>
     <string name="hiding_dialog_title">Paslēpt %s Tagad</string>
     <string name="hiding_calculator">Kalkulators</string>
-    <string name="panic_hide_warning_title">Iegaumējiet, kā atgriez</string>
-    <string name="panic_hide_summary">Lietotne paslēps sevi</string>
+    <string name="panic_hide_warning_title">Iegaumēt, kā atjaunot</string>
+    <string name="panic_hide_summary">Lietotne slēps sevi</string>
     <string name="panic_hide_title">Paslēpt %s</string>
     <string name="panic_add_apps_to_uninstall">Pievienot lietotnes kuras atinstalēs un notīrīs</string>
     <string name="panic_apps_to_uninstall">Lietotnes kuras atinstalēs un izdzēsīs visus datus</string>
-    <string name="panic_will_be_wiped">Tiks atinstalēta un visi dati izdzēsti</string>
+    <string name="panic_will_be_wiped">Tiks izdzēsts un visi dati iznīcināti</string>
     <string name="panic_destructive_actions">Destruktīvas Darbības</string>
     <string name="panic_exit_summary">Šī lietotne būs aizvērta</string>
     <string name="panic_exit_title">Iziet no lietotnes</string>
@@ -375,7 +375,7 @@
     <string name="antiknownvulnlist">Šī lietotne satur zināmu drošības ievainojamību</string>
     <string name="antidisabledalgorithmlist">Šai lietotnei ir vājš drošības paraksts</string>
     <string name="antinonfreeadlist">Šī lietotne atbalsta ne-brīvus paplašinājumus</string>
-    <string name="antinonfreenetlist">Šī lietotne atbalsta ne-brīvus tīklus</string>
+    <string name="antinonfreenetlist">Šī lietotne reklamē jeb ir pilnībā atkarīga no maksas tīkla pakalpojumiem</string>
     <string name="antinonfreedeplist">Šī lietotne ir atkarīga no citām ne-brīvām lietotnēm</string>
     <string name="antinonfreeassetslist">Šī lietotne satur ne-brīvas sastāvdaļas</string>
     <string name="antiupstreamnonfreelist">Augšējā avota kods nav pilnībā brīvs</string>
@@ -411,4 +411,14 @@
     <string name="installed_apps__activity_title">Instalētās Aplikācijas</string>
     <string name="scan_removable_storage_toast">Skenē %s…</string>
     <string name="apps">Lietotnes</string>
+    <string name="has_disallow_install_unknown_sources_globally">Jūsu ierīces administrators neļauj uzstādīt lietotnes no nezināmiem avotiem, un šis noteikums attiecas arī uz jauniem repozitorijiem</string>
+    <string name="menu_opencollective">OpenCollective</string>
+    <string name="panic_settings_summary">Darbības, kas jāveic ārkārtas gadījumā</string>
+    <string name="scan_removable_storage_summary">Meklēt pakotnes repozitorijus noņemamā krātuvē, piemēram, SD kartē, USB zibatmiņā vai diskā</string>
+    <string name="send_installed_apps_csv">Lietotnes, ko F-Droid uzstādīja no CSV faila</string>
+    <string name="menu_release_channel_beta">Ļaut atjaunināt un uzstādīt beta versijas</string>
+    <string name="menu_show_fdroid_metrics_report">Rādīt metrikas statistiskas atskaiti</string>
+    <string name="app_list_results_hidden_antifeature_settings">Dažas lietotnes tika paslēptas, pamatojoties uz jūsu anti-funkcijas iestatījumiem.</string>
+    <string name="has_disallow_install_unknown_sources">Šis lietotājs nevar pievienot nezināmus avotus, un šis noteikums attiecas arī uz jauniem repozitorijiem</string>
+    <string name="menu_select_for_wipe">Izvēlieties, lai tīrīt</string>
 </resources>
