@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">ਐਫਡਰਾਇਡ</string>
     <string name="SignatureMismatch">ਨਵੇਂ ਸੰਸਕਰਣ ਵਿੱਚ ਪੁਰਾਣੇ ਨਾਲ਼ੋਂ ਇੱਕ ਵੱਖਰੀ ਕੁੰਜੀ ਦੇ ਨਾਲ ਦਸਤਖਤ ਕੀਤੇ ਗਏ ਹਨ. ਨਵਾਂ ਸੰਸਕਰਣ ਇੰਸਟਾਲ ਕਰਨ ਲਈ, ਪੁਰਾਣੇ ਨੂੰ ਪਹਿਲਾਂ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਪਵੇਗਾ। ਕ੍ਰਿਪਾ ਕਰਕੇ ਇਹ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ। (ਯਾਦ ਰੱਖੋ ਕਿ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਨਾਲ ਐਪ ਦੁਆਰਾ ਸਟੋਰ ਕੀਤਾ ਕੋਈ ਵੀ ਅੰਦਰੂਨੀ ਡਾਟਾ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ)</string>
     <string name="installIncompatible">ਐਪ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਫਿਰ ਵੀ ਇੰਸਟਾਲ ਕਰੋ\?</string>
@@ -100,7 +100,7 @@
     <string name="repo_name">ਨਾਮ</string>
     <string name="panic_app_setting_summary">ਕੋਈ ਐਪ ਸੈੱਟ ਨਹੀਂ ਕੀਤੀ ਗਈ ਹੈ</string>
     <string name="repo_details">ਰਿਪੌਜ਼ਟਰੀ</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">ਖੇਡਾਂ ਅਤੇ ਸਿਹਤ</string>
+    <string name="category_Sports_Health">ਖੇਡਾਂ ਅਤੇ ਸਿਹਤ</string>
     <string name="uninstall_error_unknown">ਕਿਸੇ ਅਗਿਆਤ ਤਰੁੱਟੀ ਕਾਰਨ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ</string>
     <string name="system_install_denied_permissions">ਐਕਸਟੈਂਸ਼ਨ ਨੂੰ ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਅਨੁਮਤੀਆਂ ਨਹੀਂ ਦਿੱਤੀਆਂ ਗਈਆਂ ਹਨ! ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਬੱਗ ਰਿਪੋਰਟ ਬਣਾਓ!</string>
     <string name="share_apk_error">ਐਪ ਫ਼ਾਈਲ ਨੂੰ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
@@ -163,7 +163,7 @@
     <string name="hiding_dialog_message">ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਤੌਰ \'ਤੇ ਲਾਂਚਰ ਤੋਂ %1$s ਨੂੰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ\? ਸਿਰਫ਼ ਜਾਅਲੀ %3$s ਐਪ ਵਿੱਚ \"%2$d\" ਟਾਈਪ ਕਰਨ ਨਾਲ ਇਸਨੂੰ ਰੀਸਟੋਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।</string>
     <string name="hide_on_long_search_press_title">ਖੋਜ ਬਟਨ ਨਾਲ ਲੁਕਾਓ</string>
     <string name="unverified">ਗੈਰ-ਪ੍ਰਮਾਣਿਤ</string>
-    <string tools:ignore="UnusedResources" name="category_System">ਸਿਸਟਮ</string>
+    <string name="category_System">ਸਿਸਟਮ</string>
     <string name="status_download_unknown_size">%1$s ਤੋਂ 
 \n%2$s 
 \nਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ</string>
@@ -444,7 +444,7 @@
     <string name="repo_confirm_delete_body">ਰਿਪੌਜ਼ਟਰੀ ਨੂੰ ਮਿਟਾਉਣ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਇਸ ਤੋਂ ਐਪਸ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੋਣਗੇ।
 \n
 \nਨੋਟ: ਪਹਿਲਾਂ ਸਥਾਪਿਤ ਕੀਤੀਆਂ ਸਾਰੀਆਂ ਐਪਾਂ ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਰਹਿਣਗੀਆਂ।</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">ਥੀਮਿੰਗ</string>
+    <string name="category_Theming">ਥੀਮਿੰਗ</string>
     <string name="repo_searching_address">%1$s
 \n\'ਤੇ ਪੈਕੇਜ ਰਿਪੋਜ਼ਟਰੀ ਲੱਭ ਰਿਹਾ ਹੈ</string>
     <string name="share_repository">ਰਿਪੌਜ਼ਟਰੀ ਸਾਂਝੀ ਕਰੋ</string>
