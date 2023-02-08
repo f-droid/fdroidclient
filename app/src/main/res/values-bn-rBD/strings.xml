@@ -514,4 +514,6 @@
     <string name="has_disallow_install_unknown_sources_globally">তোমার যন্ত্রের ব্যবস্থাপক অজানা উৎস থেকে অ্যাপ ইন্সটল করতে দেয় না, এছাড়া নতুন ভাণ্ডার যোগ করতেও বাধা দেয়</string>
     <string name="swap_wifi_vpn_conflict">সক্রিয় ভিপিএনের সাথে সমস্যা হচ্ছে!</string>
     <string name="apps">অ্যাপস</string>
+    <string name="antiknownvuln">পরিচিত দুর্বলতা</string>
+    <string name="antiads">বিজ্ঞাপন</string>
 </resources>
