@@ -55,11 +55,11 @@
     <string name="no_such_app">No se encontró tal aplicación.</string>
     <string name="app_details_donate_prompt_unknown_author">¡Comprá un café para los desarrolladores de %1$s!</string>
     <string name="app_details_donate_prompt">%1$s es hecho por %2$s. ¡Comprales un café!</string>
-    <string name="app_details__incompatible_mismatched_signers">Firma distinta a la versión instalada</string>
+    <string name="app_details__incompatible_mismatched_signers">La firma es distinta a la versión instalada</string>
     <string name="app_details__no_versions__show_incompat_versions">Para mostrar versiones incompatibles acá de todas formas, habilitá el ajuste \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">No hay versiones con una firma compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con este dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada no es compatible con ninguna versión disponible. Desinstalando la aplicación te va a permitir ver e instalar versiones compatibles. Esto ocurre frecuentemente con aplicaciones instaladas desde Google Play u otros orígenes, si son firmadas con un certificado diferente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada no es compatible con ninguna versión disponible. Desinstalar la aplicación te permite ver e instalar versiones compatibles. Esto ocurre frecuentemente con aplicaciones instaladas desde Google Play u otros orígenes, si son firmadas con un certificado diferente.</string>
     <string name="about_title">Acerca de F-Droid</string>
     <string name="about_version">Versión</string>
     <string name="about_site">Sitio web</string>
@@ -67,7 +67,7 @@
     <string name="about_source">Código fuente</string>
     <string name="about_license">Licencia</string>
     <string name="app_suggested">Sugerido</string>
-    <string name="app_incompatible">Incompatible</string>
+    <string name="app_incompatible">Aplicación Incompatible</string>
     <string name="app_installed">Instalada</string>
     <string name="app_new">Nuevo</string>
     <string name="app_not_installed">No instalada</string>
@@ -102,8 +102,9 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descargar actualización para %1$d aplicación.</item>
-        <item quantity="other">Descargar actualizaciones para %1$d aplicaciones.</item>
+        <item quantity="one">Descargar actualización para %1$d aplicaciónes.</item>
+        <item quantity="many"></item>
+        <item quantity="other"></item>
     </plurals>
     <string name="updates_disabled_by_settings">Actualizaciones deshabilitadas por configuración de Datos/WiFi</string>
     <string name="ok">Aceptar</string>
@@ -325,7 +326,8 @@
     <string name="category_Theming">Personalización</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver %d</item>
-        <item quantity="other">Ver todos %d</item>
+        <item quantity="many">Ver todo %d</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="empty_installed_app_list">Ninguna aplicación instalada.
 \n
@@ -422,7 +424,8 @@
     <string name="crash_dialog_comment_prompt">Podés añadir información extra y comentarios acá:</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d más…</item>
-        <item quantity="other">+%1$d más…</item>
+        <item quantity="many">+%1$d más…</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Listo para instalar</string>
     <string name="notification_title_single_ready_to_install_update">Actualización lista para instalar</string>
@@ -433,11 +436,13 @@
     <string name="notification_content_single_installed">Instalado exitósamente</string>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Actualización</item>
-        <item quantity="other">%1$d Actualizaciones</item>
+        <item quantity="many">%1$d Actualizaciónes</item>
+        <item quantity="other"></item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d aplicación instalada</item>
-        <item quantity="other">%1$d aplicaciones instaladas</item>
+        <item quantity="many">%1$d aplicaciónes instaladas</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="notification_title_summary_update_available">Actualización disponible</string>
     <string name="notification_title_summary_downloading">Descargando…</string>
@@ -449,25 +454,30 @@
     <string name="tts_category_name">Categoría %1$s</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Ver %1$d aplicación en categoría %2$s</item>
-        <item quantity="other">Ver todas las %1$d aplicaciones de la categoría %2$s</item>
+        <item quantity="many">Ver %1$d aplicaciónes en categoría %2$s</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="details_last_updated_today">Actualizados hoy</string>
     <string name="warning_scaning_qr_code">Tu cámara no parece tener autofoco. Puede ser difícil escanear el código.</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Actualizada hace %1$d día</item>
-        <item quantity="other">Actualizadas hace %1$d días</item>
+        <item quantity="many">Actualizada hace %1$d días</item>
+        <item quantity="other"></item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Actualizada hace %1$d semana</item>
-        <item quantity="other">Actualizadas hace %1$d semanas</item>
+        <item quantity="many">Actualizada hace %1$d semanas</item>
+        <item quantity="other"></item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Actualizada hace %1$d mes</item>
-        <item quantity="other">Actualizadas hace %1$d meses</item>
+        <item quantity="many">Actualizada hace %1$d meses</item>
+        <item quantity="other"></item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">Actualizada hace %1$d año</item>
-        <item quantity="other">Actualizadas hace %1$d años</item>
+        <item quantity="many">Actualizada hace %1$d años</item>
+        <item quantity="other"></item>
     </plurals>
     <string name="undo">Deshacer</string>
     <string name="app_list__dismiss_installing_app">Instalación cancelada</string>
@@ -525,5 +535,8 @@
     <string name="has_disallow_install_unknown_sources">Este usuario no puede agregar fuentes desconocidas, esto incluye nuevos repositorios</string>
     <string name="menu_release_channel_beta">Permitir Actualizaciones Beta</string>
     <string name="antinonfreedep">Dependencias No-Libres</string>
-    <string name="app_list_results_hidden_antifeature_settings">Respetando tus configuraciones anti-feature no se muestran algunos resultados.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Algunos resultados se ocultaron en función de la configuración de la antifunción.</string>
+    <string name="antinonfreeassets">No-Libre Assets</string>
+    <string name="antinsfw">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
+    <string name="antiupstreamnonfree">Upstream No-Libre</string>
 </resources>

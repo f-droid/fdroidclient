@@ -137,7 +137,7 @@
     <string name="swap_no_wifi_network">No hay red aún</string>
     <string name="swap_view_available_networks">Tocar para abrir las redes disponibles</string>
     <string name="open_qr_code_scanner">Abrir el escáner de códigos QR</string>
-    <string name="swap_welcome">Le damos la bienvenida a F-Droid.</string>
+    <string name="swap_welcome">¡Le damos la bienvenida a F-Droid!</string>
     <string name="swap_confirm_connect">¿Quiere obtener aplicaciones desde %1$s ahora\?</string>
     <string name="app_name">F-Droid</string>
     <string name="about_source">Código fuente</string>
