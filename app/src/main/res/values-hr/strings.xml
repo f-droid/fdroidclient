@@ -527,7 +527,7 @@
     <string name="send_fdroid_metrics_json">%s metrički izvještaj kao JSON datoteka</string>
     <string name="install_history_and_metrics">Povijest instalacije i metrike</string>
     <string name="menu_show_install_history">Prikaži povijest instalacija</string>
-    <string name="send_to_fdroid_metrics">Pošalji podatke o upotrebi</string>
+    <string name="send_to_fdroid_metrics">Pošalji podatke o korištenju</string>
     <string name="banner_no_data_or_wifi">Podaci ili WiFi nisu uključeni</string>
     <string name="menu_show_fdroid_metrics_report">Prikaži metrički izvještaj</string>
     <string name="send_to_fdroid_metrics_summary">Tjedno šalje anonimne podatke F-Droid metrikama (zahtjeva da se povijest o instalacijama sadrži)</string>
