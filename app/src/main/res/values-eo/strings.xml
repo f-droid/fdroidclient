@@ -390,12 +390,12 @@
     <string name="app_details__no_versions__show_incompat_versions">Por montri nekongruajn versiojn tie ĉe malgraŭ tio, enŝaltu la agordon “%1$s”.</string>
     <string name="app_details__no_versions__no_compatible_signers">Neniu versio kun kongrua subskribo</string>
     <string name="app_details__no_versions__none_compatible_with_device">Neniu versio kongrua kun la aparato</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">La instalita versio ne kongruas kun ĉiuj disponeblaj versioj. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas ĉe aplikaĵoj instalitaj el Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">La instalita versio ne kongruas kun ĉiu disponebla versio. Malinstalado de aplikaĵo ebligos al vi vidigi kaj instali kongruajn versiojn. Tio ĉi ofte okazas kun aplikaĵoj instalitaj el la vendejo Google Play aŭ aliaj fontoj, se ili estas subskribitaj per alia atestilo.</string>
     <string name="app_list__dismiss_app_update">Ĝisdatigo ignorata</string>
     <string name="app_list__dismiss_vulnerable_app">Sekurec-fliko ignorata</string>
     <string name="app_list__dismiss_downloading_app">Elŝuto nuligita</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Oni trovis sekurec-problemon en %1$s. Estas konsilinde senprokraste malinstali tiun ĉi aplikaĵon.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Oni trovis sekurecan problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi ĝin al la plej nova versio.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Trovis sekurecan problemon en %1$s. Estas konsilinde senprokraste malinstali tiun ĉi aplikaĵon.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Trovis sekurecan problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi la aplikaĵon al la plej nova versio.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignori</string>
     <string name="privacy">Privateco</string>
     <string name="preventScreenshots_title">Bloki ekrankopiojn</string>
@@ -540,4 +540,5 @@
     <string name="antiothers">Aliaj fiebloj</string>
     <string name="antinsfw">Tiu ĉi aplikaĵo liveras enhavon, kiu ne estas taŭga por rigardi publike</string>
     <string name="menu_release_channel_beta">Ĝisdatigi al beta-versioj</string>
+    <string name="latest__empty_state__upgrading">Promociado de datumbazo…</string>
 </resources>

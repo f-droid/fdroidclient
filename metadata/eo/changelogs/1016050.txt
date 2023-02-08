@@ -1,0 +1,7 @@
+Plene modernigita kodo por elŝuti, indeksi k datumbazo; pli rapida, senmalfunkcia kaj uzas malpli da interret-transigo.Estas ankaŭ pli facile prizorgebla danke al plibonigita testaro. Riparis plurajn malnovajn paneojn kaj erarojn.
+
+• funkcias pli bone ĉe malgrand-memoraj aparatoj
+
+• erar-riparoj: #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+• nova lingvo: kantona (yue)
