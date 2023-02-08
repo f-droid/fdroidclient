@@ -24,6 +24,8 @@
 package org.fdroid.fdroid.data;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.AnyThread;
@@ -89,7 +91,8 @@ public class DBHelper {
             Log.d(TAG, "Migrating DB...");
             migrator.migrateOldRepos(context, db);
             migrator.removeOldDb(context);
-            UpdateService.forceUpdateRepo(context);
+            // force update on UiThread in case we need to show Toasts
+            new Handler(Looper.getMainLooper()).post(() -> UpdateService.forceUpdateRepo(context));
         }
     }
 

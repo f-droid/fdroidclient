@@ -3,7 +3,9 @@ package org.fdroid.fdroid.data;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.core.util.ObjectsCompat;
 
@@ -32,9 +34,10 @@ final class ContentProviderMigrator {
         List<Repository> repos = repoDao.getRepositories();
         int weight = repos.isEmpty() ? 0 : repos.get(repos.size() - 1).getWeight();
 
-        try (SQLiteDatabase oldDb = new ContentProviderDbHelper(context).getReadableDatabase()) {
+        try (ContentProviderDbHelper helper = new ContentProviderDbHelper(context)) {
             String[] projection = new String[]{"name", "address", "pubkey", "inuse", "userMirrors", "disabledMirrors",
                     "username", "password"};
+            SQLiteDatabase oldDb = helper.getReadableDatabase();
             try (Cursor c = oldDb.query("fdroid_repo", projection, null, null, null, null, null)) {
                 while (c.moveToNext()) {
                     String name = c.getString(c.getColumnIndexOrThrow("name"));
@@ -83,6 +86,10 @@ final class ContentProviderMigrator {
                         repoDao.updateUsernameAndPassword(repo.getRepoId(), username, password);
                     }
                 }
+            } catch (SQLiteException e) {
+                if (e.getMessage() != null && e.getMessage().contains("disabledMirrors")) {
+                    Log.e("DbHelper", "disabledMirrors column missing. Can't migrate. ", e);
+                } else throw e;
             }
         }
     }
