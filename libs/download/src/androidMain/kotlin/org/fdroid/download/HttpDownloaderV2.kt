@@ -74,7 +74,6 @@ public class HttpDownloaderV2 constructor(
             try {
                 downloadFromBytesReceiver(resumable)
             } catch (e: NoResumeException) {
-                require(resumable) { "Got $e even though download was not resumable" }
                 if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
                 downloadFromBytesReceiver(false)
             }

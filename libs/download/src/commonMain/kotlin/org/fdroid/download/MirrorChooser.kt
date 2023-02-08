@@ -62,6 +62,9 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
                 throwOnLastMirror(e, index == mirrors.size - 1)
             } catch (e: SocketTimeoutException) {
                 throwOnLastMirror(e, index == mirrors.size - 1)
+            } catch (e: NoResumeException) {
+                // continue to next mirror, if we need to resume, but this one doesn't support it
+                throwOnLastMirror(e, index == mirrors.size - 1)
             }
         }
         error("Reached code that was thought to be unreachable.")

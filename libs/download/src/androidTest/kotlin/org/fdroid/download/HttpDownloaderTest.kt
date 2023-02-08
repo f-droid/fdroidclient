@@ -5,15 +5,20 @@ import io.ktor.client.engine.config
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondOk
+import io.ktor.client.network.sockets.SocketTimeoutException
 import io.ktor.client.utils.buildHeaders
 import io.ktor.http.HttpHeaders.ContentLength
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
+import io.ktor.http.HttpHeaders.Range
 import io.ktor.http.HttpMethod.Companion.Get
 import io.ktor.http.HttpMethod.Companion.Head
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.headersOf
+import io.ktor.utils.io.core.internal.ChunkBuffer
+import io.ktor.utils.io.core.writeFully
+import org.fdroid.TestByteReadChannel
 import org.fdroid.get
 import org.fdroid.getIndexFile
 import org.fdroid.getRandomString
@@ -120,6 +125,71 @@ internal class HttpDownloaderTest {
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
         assertEquals(2, mockEngine.responseHistory.size)
+    }
+
+    /**
+     * Tests that a failed download in one mirror will be automatically resumed
+     * with the next mirror and then restarted if that mirror doesn't support [PartialContent].
+     */
+    @Test
+    fun testMirrorNoResume() = runSuspend {
+        // we need at least two mirrors
+        val mirror2 = Mirror("http://example.net")
+        val mirrors = listOf(mirror1, mirror2)
+        val downloadRequest = DownloadRequest(getIndexFile("foo/bar"), mirrors)
+
+        val file = folder.newFile()
+        val firstBytes = Random.nextBytes(DEFAULT_BUFFER_SIZE)
+        val secondBytes = Random.nextBytes(1024)
+        val totalSize = firstBytes.size + secondBytes.size
+        val readChannel = object : TestByteReadChannel() {
+            var wasRead = 0
+            override val availableForRead: Int = DEFAULT_BUFFER_SIZE / 2
+            override suspend fun readAvailable(dst: ChunkBuffer): Int {
+                // We allow three reads. Only the first two give us the firstBytes.
+                // While the third seems to be required for throwing an exception,
+                // it isn't filling the buffer when we finally throw,
+                // so it isn't considered as transferred bytes.
+                if (wasRead == 3) throw SocketTimeoutException("boom!")
+                dst.writeFully(
+                    source = firstBytes + Random.nextBytes(availableForRead),
+                    offset = wasRead * availableForRead,
+                    length = availableForRead,
+                )
+                wasRead++
+                return availableForRead
+            }
+        }
+
+        val mockEngine = MockEngine.config {
+            reuseHandlers = false
+            // first response reads from channel that errors after sending firstBytes
+            addHandler {
+                respond(readChannel, OK, headers = headersOf(ContentLength, "$totalSize"))
+            }
+            // second request tries to resume, but doesn't get PartialContent response
+            addHandler {
+                assertEquals("bytes=$DEFAULT_BUFFER_SIZE-", it.headers[Range])
+                respond(
+                    content = firstBytes + secondBytes,
+                    status = OK,
+                    headers = headersOf(ContentLength, "$totalSize"),
+                )
+            }
+            // download is tried again without resuming
+            addHandler {
+                respond(
+                    content = firstBytes + secondBytes,
+                    status = OK,
+                    headers = headersOf(ContentLength, "$totalSize"),
+                )
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
+        val httpDownloader = HttpDownloaderV2(httpManager, downloadRequest, file)
+        httpDownloader.download()
+
+        assertContentEquals(firstBytes + secondBytes, file.readBytes())
     }
 
     /**
