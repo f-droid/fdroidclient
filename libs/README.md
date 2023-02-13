@@ -7,7 +7,7 @@ Note that all libraries are still in alpha stage.
 While they work, their public APIs are still subject to change.
 
 * [download](libs/download) library for handling (multi-platform) HTTP download
-  of repository indexes and APKs
+  of repository indexes, APKs and image assets
 * [index](libs/index) library for parsing/verifying/creating repository indexes
 * [database](libs/database) library to store and query F-Droid related information
   in a Room-based database on Android
@@ -71,7 +71,7 @@ and replace `[version]` with the [latest version](libs/database/gradle.propertie
 
 You can list available gradle tasks by running the following command in the project root.
 
-    ./gradlew :download:tasks
+    ./gradlew :libs:download:tasks
 
 Replace `download` with the name of the library you want to view tasks for.
 
@@ -80,8 +80,8 @@ Replace `download` with the name of the library you want to view tasks for.
 Bump version number in the library's [`gradle.properties`](gradle.properties),
 ensure you didn't break a public API and run:
 
-    ./gradlew :download:check :index:connectedCheck
-    ./gradlew :download:publish
+    ./gradlew :libs:download:check :libs:download:connectedCheck
+    ./gradlew :libs:download:publish
     ./gradlew closeAndReleaseRepository
 
 Replace `download` with the name of the library you want to publish.

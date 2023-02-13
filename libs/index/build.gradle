@@ -7,9 +7,6 @@ plugins {
     id 'com.vanniktech.maven.publish'
 }
 
-group = 'org.fdroid'
-version = '0.1'
-
 kotlin {
     android {
         compilations.all {
