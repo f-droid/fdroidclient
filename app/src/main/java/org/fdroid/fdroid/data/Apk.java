@@ -431,7 +431,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
                 }
             }
             // Else do nothing. The targetSdk for the below split-permissions is set to 29,
-            // so we don't make any changes for apps targetting 29 or above
+            // so we don't make any changes for apps targeting 29 or above
         }
         if (Build.VERSION.SDK_INT >= 31) {
             if (targetSdkVersion < 31) {
@@ -443,7 +443,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
                 }
             }
             // Else do nothing. The targetSdk for the above split-permissions is set to 31,
-            // so we don't make any changes for apps targetting 31 or above
+            // so we don't make any changes for apps targeting 31 or above
         }
         if (Build.VERSION.SDK_INT >= 33) {
             if (targetSdkVersion < 33) {
@@ -459,7 +459,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
                 }
             }
             // Else do nothing. The targetSdk for the above split-permissions is set to 33,
-            // so we don't make any changes for apps targetting 33 or above
+            // so we don't make any changes for apps targeting 33 or above
         }
 
         String[] perms = set.toArray(new String[0]);
