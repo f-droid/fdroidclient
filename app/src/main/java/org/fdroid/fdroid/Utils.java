@@ -529,15 +529,6 @@ public final class Utils {
         return new DownloadRequest(file, mirrors, proxy, repo.getUsername(), repo.getPassword());
     }
 
-    @Nullable
-    @Deprecated
-    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable String path) {
-        if (path == null) return null;
-        List<Mirror> mirrors = repo.getMirrors();
-        Proxy proxy = NetCipher.getProxy();
-        return new DownloadRequest(path, mirrors, proxy, repo.getUsername(), repo.getPassword());
-    }
-
     /**
      * Get the checksum hash of the file {@code file} using the algorithm in {@code hashAlgo}.
      * {@code file} must exist on the filesystem and {@code hashAlgo} must be supported

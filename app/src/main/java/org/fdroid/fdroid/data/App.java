@@ -374,7 +374,7 @@ public class App implements Comparable<App>, Parcelable {
     }
 
     public static RequestBuilder<Bitmap> loadBitmapWithGlide(Context context, long repoId,
-                                                             String path) {
+                                                             IndexFile file) {
         Repository repo = FDroidApp.getRepo(repoId);
         if (repo == null) {
             Log.e(TAG, "Repo not found: " + repoId);
@@ -382,13 +382,13 @@ public class App implements Comparable<App>, Parcelable {
         }
         String address = Utils.getRepoAddress(repo);
         if (address.startsWith("content://")) {
-            String sb = path == null ?
-                    null : Utils.getUri(address, path.split("/")).toString();
+            String sb = file == null ?
+                    null : Utils.getUri(address, file.getName().split("/")).toString();
             return Glide.with(context).asBitmap().load(sb);
         } else if (address.startsWith("file://")) {
-            return Glide.with(context).asBitmap().load(path);
+            return Glide.with(context).asBitmap().load(file.getName());
         } else {
-            return Glide.with(context).asBitmap().load(Utils.getDownloadRequest(repo, path));
+            return Glide.with(context).asBitmap().load(Utils.getDownloadRequest(repo, file));
         }
     }
 
