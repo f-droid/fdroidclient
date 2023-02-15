@@ -65,7 +65,8 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
             Proxy proxy = NetCipher.getProxy();
             DownloadRequest request = new DownloadRequest(indexFile, mirrors, proxy,
                     repo.getUsername(), repo.getPassword(), tryFirst);
-            boolean oldIndex = Preferences.get().isForceOldIndexEnabled();
+            Preferences prefs = Preferences.get();
+            boolean oldIndex = prefs.isForceOldIndexEnabled();
             boolean v1OrUnknown = repo.getFormatVersion() == null ||
                     repo.getFormatVersion() == IndexFormatVersion.ONE;
             if (oldIndex || v1OrUnknown) {
@@ -73,9 +74,9 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
                 downloader = new HttpDownloader(HTTP_MANAGER, request, destFile);
             } else {
                 DownloadRequest r;
-                if (request.getIndexFile().getIpfsCidV1() == null) r = request;
+                if (request.getIndexFile().getIpfsCidV1() == null || !prefs.isIpfsEnabled()) r = request;
                 else {
-                    // add IPFS gateways to mirrors, because have have a CIDv1
+                    // add IPFS gateways to mirrors, because have have a CIDv1 and IPFS is enabled in preferences
                     List<Mirror> m = new ArrayList<>(mirrors);
                     m.addAll(IPFS_MIRRORS);
                     r = new DownloadRequest(request.getIndexFile(), m, proxy, repo.getUsername(),
