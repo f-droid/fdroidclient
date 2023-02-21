@@ -89,7 +89,7 @@ public class DBHelper {
         ContentProviderMigrator migrator = new ContentProviderMigrator();
         if (migrator.needsMigration(context)) {
             Log.d(TAG, "Migrating DB...");
-            migrator.migrateOldRepos(context, db);
+            migrator.runMigrations(context, db);
             migrator.removeOldDb(context);
             // force update on UiThread in case we need to show Toasts
             new Handler(Looper.getMainLooper()).post(() -> UpdateService.forceUpdateRepo(context));
