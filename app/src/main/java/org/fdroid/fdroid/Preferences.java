@@ -101,6 +101,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
     public static final String PREF_SEND_TO_FDROID_METRICS = "sendToFdroidMetrics";
+    public static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
@@ -515,6 +516,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 return DEFAULT_PROXY_PORT;
             }
         }
+    }
+
+    public boolean isIpfsEnabled() {
+        return preferences.getBoolean(PREF_USE_IPFS_GATEWAYS, IGNORED_B);
     }
 
     public boolean preventScreenshots() {
