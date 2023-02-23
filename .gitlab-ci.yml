@@ -85,6 +85,18 @@ errorprone:
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
+database schema:
+  stage: test
+  image: debian:bullseye-backports
+  script:
+    - apt-get update
+    - apt-get -qy --no-install-recommends install default-jdk-headless git sdkmanager
+    - export ANDROID_HOME=/opt/android-sdk
+    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
+    - sdkmanager "platforms;android-$ANDROID_COMPILE_SDK" "build-tools;30.0.3"
+    - ./gradlew :libs:database:kaptDebugKotlin
+    - git --no-pager diff --exit-code
+
 # Run the tests in the emulator.  Each step is broken out to run on
 # its own since the CI runner can have limited RAM, and the emulator
 # can take a while to start.
