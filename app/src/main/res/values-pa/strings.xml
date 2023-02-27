@@ -529,4 +529,6 @@
     <string name="enable_proxy_summary">ਸਾਰੀਆਂ ਨੈੱਟਵਰਕ ਬੇਨਤੀਆਂ ਲਈ HTTP ਪ੍ਰੌਕਸੀ ਦੀ ਕਨਫਿਗਰ ਕਰੋ</string>
     <string name="proxy_host">ਪ੍ਰੌਕਸੀ ਹੋਸਟ</string>
     <string name="theme_dark">ਗੂੜ੍ਹਾ</string>
+    <string name="use_ipfs_gateways_summary">ਆਈਪੀਐਫਐਸ ਮਿਰਰਾਂ ਤੋਂ ਫਾਈਲਾਂ ਡਾਊਨਲੋਡ ਕਰੋ, ਜੇਕਰ ਰੈਪੋ ਦੁਆਰਾ ਸਮਰਥਿਤ ਹੈ।</string>
+    <string name="use_ipfs_gateways">IPFS ਗੇਟਵੇ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
 </resources>
