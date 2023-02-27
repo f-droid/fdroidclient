@@ -20,6 +20,19 @@
     <string name="up_to_maxsdk">1.0-%s</string>
     <string name="minsdk_up_to_maxsdk">%1$s-%2$s</string>
 
+    <string name="antiads_key">Ads</string>
+    <string name="antitrack_key">Tracking</string>
+    <string name="antinonfreenet_key">NonFreeNet</string>
+    <string name="antinonfreead_key">NonFreeAdd</string>
+    <string name="antinonfreedep_key">NonFreeDep</string>
+    <string name="antiupstreamnonfree_key">UpstreamNonFree</string>
+    <string name="antinonfreeassets_key">NonFreeAssets</string>
+    <string name="antidisabledalgorithm_key">DisabledAlgorithm</string>
+    <string name="antiknownvuln_key">KnownVuln</string>
+    <string name="antinosource_key">NoSourceSince</string>
+    <string name="antinsfw_key">NSFW</string>
+    <string name="antiothers_key">_anti_others_</string>
+
     <!-- The unset value is set to a string that is impossible to be a valid Java package name. This
      prevents abuse by creating malware with the same packageName as the unset string. -->
     <string name="install_history_reader_packageName_UNSET">1-THIS MEANS NO APP IS GRANTED ACCESS!</string>

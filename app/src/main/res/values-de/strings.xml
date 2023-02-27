@@ -4,7 +4,7 @@
     <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible App. Trotzdem installieren\?</string>
     <string name="version">Version</string>
     <string name="delete">Löschen</string>
-    <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
+    <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
     <string name="cache_downloaded">Zwischengespeicherte Apps aufbewahren</string>
     <string name="updates">Aktualisierungen</string>
     <string name="other">Sonstiges</string>
@@ -70,11 +70,11 @@
     <string name="local_repo">Lokale Paketquelle</string>
     <string name="local_repo_running">F-Droid ist zum Tausch bereit</string>
     <string name="touch_to_configure_local_repo">Berühren, um die Details anzusehen und anderen einen App-Tausch mit Ihnen zu ermöglichen.</string>
-    <string name="deleting_repo">Aktuelle Paketquelle löschen …</string>
-    <string name="adding_apks_format">%s zur Paketquelle hinzufügen …</string>
-    <string name="writing_index_jar">Signierte Indexdatei (index.jar) schreiben …</string>
-    <string name="linking_apks">APKs mit der Paketquelle verknüpfen …</string>
-    <string name="copying_icons">App-Symbole in die Paketquelle kopieren …</string>
+    <string name="deleting_repo">Aktuelle Paketquelle löschen …</string>
+    <string name="adding_apks_format">%s zur Paketquelle hinzufügen …</string>
+    <string name="writing_index_jar">Signierte Indexdatei (index.jar) schreiben …</string>
+    <string name="linking_apks">APKs mit der Paketquelle verknüpfen …</string>
+    <string name="copying_icons">App-Symbole in die Paketquelle kopieren …</string>
     <string name="icon">Symbol</string>
     <string name="next">Weiter</string>
     <string name="skip">Überspringen</string>
@@ -204,13 +204,13 @@
     <string name="swap_choose_apps">Apps auswählen</string>
     <string name="swap_scan_qr">QR-Code</string>
     <string name="swap_people_nearby">Leute in Ihrer Nähe</string>
-    <string name="swap_scanning_for_peers">Nach Tauschpartnern suchen …</string>
+    <string name="swap_scanning_for_peers">Nach Tauschpartnern suchen …</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="swap_visible_bluetooth">Über Bluetooth sichtbar</string>
-    <string name="swap_setting_up_bluetooth">Bluetooth einrichten …</string>
+    <string name="swap_setting_up_bluetooth">Bluetooth einrichten …</string>
     <string name="swap_not_visible_bluetooth">Über Bluetooth nicht sichtbar</string>
     <string name="swap_visible_wifi">Über WLAN sichtbar</string>
-    <string name="swap_setting_up_wifi">WLAN einrichten …</string>
+    <string name="swap_setting_up_wifi">WLAN einrichten …</string>
     <string name="swap_not_visible_wifi">Über WLAN nicht sichtbar</string>
     <string name="swap_scan_or_type_url">Eine Person muss den Code scannen oder die Adresse der anderen in einen Browser
         eingeben.
@@ -225,7 +225,7 @@
         Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.
     </string>
     <string name="swap_nearby">Direktübertragung</string>
-    <string name="loading">Laden …</string>
+    <string name="loading">Laden …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
     <string name="install_confirm">benötigt Zugriff auf</string>
     <string name="install_confirm_update">Möchtest du ein Update für diese vorhandene App installieren? Deine vorhandenen Daten bleiben erhalten. Die aktualisierte App erhält Zugriff auf:</string>
@@ -238,7 +238,7 @@
     <string name="uninstall_confirm">Möchtest du diese App deinstallieren?</string>
     <string name="download_error">Herunterladen fehlgeschlagen!</string>
     <string name="perms_description_app">Bereitgestellt von %1$s.</string>
-    <string name="downloading">Herunterladen …</string>
+    <string name="downloading">Herunterladen …</string>
     <string name="login_title">Legitimierung erforderlich</string>
     <string name="login_name">Benutzername</string>
     <string name="login_password">Passwort</string>
@@ -255,10 +255,10 @@
     <string name="repo_provider">Paketquelle: %s</string>
     <string name="useTor">Tor verwenden</string>
     <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
-    <string name="swap_stopping_wifi">WLAN anhalten …</string>
+    <string name="swap_stopping_wifi">WLAN anhalten …</string>
     <string name="update_auto_download">Automatisch abrufen</string>
     <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, um sie zu installieren</string>
-    <string name="download_pending">Start der Übertragung abwarten …</string>
+    <string name="download_pending">Start der Übertragung abwarten …</string>
     <string name="keep_hour">1 Stunde</string>
     <string name="keep_day">1 Tag</string>
     <string name="keep_week">1 Woche</string>
@@ -267,8 +267,8 @@
     <string name="keep_forever">Immer</string>
     <string name="install_error_notify_title">Fehler beim Installieren von %s</string>
     <string name="uninstall_error_notify_title">Fehler beim Deinstallieren von %s</string>
-    <string name="installing">Installation …</string>
-    <string name="uninstalling">Deinstallation …</string>
+    <string name="installing">Installation …</string>
+    <string name="uninstalling">Deinstallation……</string>
     <string name="update_auto_install">Automatisch installieren</string>
     <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren</string>
     <string name="keep_install_history">Installationsverlauf aufbewahren</string>
@@ -282,13 +282,13 @@
     <string name="notification_title_single_ready_to_install">Bereit zum Installieren</string>
     <string name="notification_title_single_ready_to_install_update">Aktualisierung bereit zum Installieren</string>
     <string name="notification_title_single_install_error">Installation fehlgeschlagen</string>
-    <string name="notification_content_single_downloading">»%1$s« herunterladen …</string>
-    <string name="notification_content_single_downloading_update">»%1$s«-Aktualisierung herunterladen …</string>
-    <string name="notification_content_single_installing">»%1$s« installieren …</string>
+    <string name="notification_content_single_downloading">»%1$s« herunterladen …</string>
+    <string name="notification_content_single_downloading_update">»%1$s«-Aktualisierung herunterladen …</string>
+    <string name="notification_content_single_installing">»%1$s« installieren …</string>
     <string name="notification_content_single_installed">Erfolgreich installiert</string>
     <string name="notification_title_summary_update_available">Aktualisierung abrufbar</string>
-    <string name="notification_title_summary_downloading">Herunterladen …</string>
-    <string name="notification_title_summary_downloading_update">Aktualisierung herunterladen …</string>
+    <string name="notification_title_summary_downloading">Herunterladen …</string>
+    <string name="notification_title_summary_downloading_update">Aktualisierung herunterladen …</string>
     <string name="notification_title_summary_ready_to_install">Bereit zum Installieren</string>
     <string name="notification_title_summary_ready_to_install_update">Aktualisierung bereit zum Installieren</string>
     <string name="notification_title_summary_installing">Installation läuft</string>
@@ -352,8 +352,8 @@
     <string name="app__tts__downloading_progress">Herunterladen, %1$d%% abgeschlossen</string>
     <string name="menu_license">Lizenz: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d weitere …</item>
-        <item quantity="other">+%1$d weitere …</item>
+        <item quantity="one">+%1$d weiteres …</item>
+        <item quantity="other">+%1$d weitere …</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d Aktualisierung</item>
@@ -422,17 +422,17 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="panic_hide_warning_title">Wiederherstellungsmethode merken</string>
     <string name="warning_scaning_qr_code">Ihre Kamera scheint keinen Autofokus zu haben. Es könnte schwierig sein, den Code zu scannen.</string>
-    <string name="repo_add_mirror">Mirror hinzufügen</string>
+    <string name="repo_add_mirror">Spiegelserver hinzufügen</string>
     <string name="repo_exists_add_fingerprint">%1$s ist bereits eingerichtet, dies fügt neue Schlüsselinformationen hinzu.</string>
     <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie die erneute Aktivierung.</string>
     <string name="repo_exists_and_enabled">%1$s ist bereits eingerichtet und aktiviert.</string>
-    <string name="repo_exists_add_mirror">Dies ist eine Kopie von %1$s, als Spiegel hinzufügen?</string>
+    <string name="repo_exists_add_mirror">Dies ist eine Kopie von %1$s, als Spiegelserver hinzufügen\?</string>
     <string name="show_anti_feature_apps">Apps mit unerwünschten Merkmalen</string>
     <string name="show_anti_feature_apps_on">Apps anzeigen, die unerwünschte Merkmale besitzen</string>
     <string name="force_touch_apps">Touchscreen-Apps einbeziehen</string>
     <string name="force_touch_apps_on">Apps anzeigen, die unabhängig von der Hardwareunterstützung einen Touchscreen benötigen</string>
-    <string name="repo_official_mirrors">Offizielle Spiegel</string>
-    <string name="repo_user_mirrors">Benutzer-Spiegel</string>
+    <string name="repo_official_mirrors">Offizielle Spiegelserver</string>
+    <string name="repo_user_mirrors">Benutzer-Spiegelserver</string>
     <string name="repo_delete_to_overwrite">Löschen Sie zuerst %1$s, um es mit einem widersprüchlichen Schlüssel hinzuzufügen.</string>
     <string name="use_bluetooth">Bluetooth nutzen</string>
     <string name="swap_toast_hotspot_enabled">WLAN-Hotspot aktiviert</string>
@@ -468,14 +468,14 @@
     <string name="app_repository">Paketquelle: %1$s</string>
     <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
     <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>
-    <string name="nearby_splash__read_external_storage">SD-Karten nach Paketquellen und Spiegel durchsuchen.</string>
+    <string name="nearby_splash__read_external_storage">SD-Karten nach Paketquellen und Spiegelserver durchsuchen.</string>
     <string name="nearby_splash__request_permission">Ausprobieren</string>
     <string name="swap_toast_using_path">Verwendung von %1$s</string>
     <string name="swap_toast_not_removable_storage">Diese Wahl passte zu keinem Wechselspeichermedium, versuchen Sie es noch einmal!</string>
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
     <string name="not_visible_nearby">Direkttausch nicht aktiviert</string>
     <string name="not_visible_nearby_description">Vor dem Tausch mit benachbarten Geräten müssen Sie Ihr Gerät sichtbar machen.</string>
-    <string name="scan_removable_storage_toast">%s durchsuchen …</string>
+    <string name="scan_removable_storage_toast">%s durchsuchen …</string>
     <string name="menu_translation">Übersetzung</string>
     <string name="menu_select_for_wipe">Zum Löschen auswählen</string>
     <string name="try_again">Erneut versuchen</string>
@@ -487,16 +487,16 @@
     <string name="swap_visible_hotspot">Sichtbar über Hotspot</string>
     <string name="swap_blank_wifi_ssid">(leer)</string>
     <string name="swap_hidden_wifi_ssid">(versteckt)</string>
-    <string name="swap_setting_up_hotspot">Hotspot einrichten …</string>
-    <string name="swap_stopping_hotspot">Hotspot beenden …</string>
-    <string name="swap_starting">Starten …</string>
-    <string name="swap_stopping">Anhalten …</string>
+    <string name="swap_setting_up_hotspot">Hotspot einrichten …</string>
+    <string name="swap_stopping_hotspot">Hotspot beenden …</string>
+    <string name="swap_starting">Starten …</string>
+    <string name="swap_stopping">Anhalten …</string>
     <string name="disabled">Deaktiviert</string>
     <string name="swap_error_cannot_start_bluetooth">Bluetooth kann nicht gestartet werden!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Direkt wurde beendet, da es nicht benutzt wurde.</string>
     <string name="undo">Rückgängig</string>
     <string name="app_list__dismiss_installing_app">Installation abgebrochen</string>
-    <string name="nearby_splash__document_tree">USB OTG nach Paketquellen und Spiegel durchsuchen.</string>
+    <string name="nearby_splash__document_tree">USB OTG nach Paketquellen und Spiegelserver durchsuchen.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_title">Tauschen</string>
     <string name="notification_channel_installs_description">Zeigt Benachrichtigungen zur App-Installation an.</string>
@@ -536,5 +536,7 @@
     <string name="antiothers">Andere unerwünschte Merkmale</string>
     <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
     <string name="menu_release_channel_beta">Beta-Updates zulassen</string>
-    <string name="latest__empty_state__upgrading">Datenbank wird aktualisiert…</string>
+    <string name="latest__empty_state__upgrading">Datenbank wird aktualisiert …</string>
+    <string name="use_ipfs_gateways_summary">Dateien von IPFS-Spiegelservern herunterladen, wenn dies von der Paketquelle unterstützt wird.</string>
+    <string name="use_ipfs_gateways">IPFS-Gateways verwenden</string>
 </resources>

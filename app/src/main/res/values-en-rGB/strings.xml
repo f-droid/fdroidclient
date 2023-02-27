@@ -275,7 +275,7 @@
     <string name="antinonfreeassetslist">This app contains non-free assets</string>
     <string name="antiupstreamnonfreelist">The upstream source code is not entirely Free</string>
     <string name="antinonfreedeplist">This app depends on other non-free apps</string>
-    <string name="antinonfreenetlist">This app promotes non-free network services</string>
+    <string name="antinonfreenetlist">This app promotes or depends entirely on a non-free network service</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
     <string name="antiadslist">This app contains advertising</string>
     <string name="antifeatures">Anti-features</string>
@@ -373,9 +373,9 @@
     <string name="about_version">Version</string>
     <string name="app_details__no_versions__explain_incompatible_signers">The installed version is not compatible with any available versions. Uninstalling the app will enable you to view and install compatible versions. This often occurs with apps installed via Google Play or other sources, if they are signed by a different certificate.</string>
     <string name="app_details__no_versions__none_compatible_with_device">No versions compatible with device</string>
-    <string name="app_details__no_versions__no_compatible_signers">No versions with compatible signature</string>
+    <string name="app_details__no_versions__no_compatible_signers">No versions with compatible signer</string>
     <string name="app_details__no_versions__show_incompat_versions">To show incompatible versions here anyway, enable the ‘%1$s’ setting.</string>
-    <string name="app_details__incompatible_mismatched_signers">Different signature to installed version</string>
+    <string name="app_details__incompatible_mismatched_signers">Different signer to installed version</string>
     <string name="app_details_donate_prompt">%1$s is created by %2$s. Buy them a coffee!</string>
     <string name="app_details_donate_prompt_unknown_author">Buy the developers of %1$s a coffee!</string>
     <string name="no_such_app">No such app found.</string>
@@ -510,4 +510,23 @@
     <string name="banner_no_data_or_wifi">No Data or Wi-Fi enabled</string>
     <string name="banner_no_internet">No Internet</string>
     <string name="antinsfw">This app contains content that should not be publicised or visible everywhere</string>
+    <string name="app_list_results_hidden_antifeature_settings">Some results were hidden based on your antifeature settings.</string>
+    <string name="antiads">Ads</string>
+    <string name="antiknownvuln">Known Vulnerability</string>
+    <string name="antinosource">Source Code No Longer Available</string>
+    <string name="latest__empty_state__upgrading">Upgrading database…</string>
+    <string name="antinonfreeassets">Non-Free Assets</string>
+    <string name="antinonfreedep">Non-Free Dependencies</string>
+    <string name="antiupstreamnonfree">Upstream Non-Free</string>
+    <string name="antidisabledalgorithm">Signed Using An Unsafe Algorithm</string>
+    <string name="share_apk_error">Could not share app file</string>
+    <string name="antinonfreenet">Non-Free Network Services</string>
+    <string name="menu_release_channel_beta">Allow Beta Updates</string>
+    <string name="antitrack">Tracking</string>
+    <string name="antinonfreead">Non-Free Addons</string>
+    <string name="antiothers">Other Anti-features</string>
+    <string name="swap_wifi_vpn_conflict">Conflicts with active VPN!</string>
+    <string name="apps">Apps</string>
+    <string name="has_disallow_install_unknown_sources_globally">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
+    <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
 </resources>

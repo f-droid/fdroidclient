@@ -20,7 +20,7 @@
     <string name="repo_error_empty_username">खाली उपयोगकर्ता नाम, साख नहीं बदली</string>
     <string name="app_details">ऐप्प विवरण</string>
     <string name="no_such_app">ऐसा कोई एप्लिकेशन नहीं मिला |</string>
-    <string name="about_title">F-Droid के बारे में</string>
+    <string name="about_title">एफ-ड्रॉइड के बारे में</string>
     <string name="about_version">संस्करण</string>
     <string name="about_site">वेबसाइट</string>
     <string name="about_source">सोर्स कोड</string>
@@ -46,7 +46,7 @@
     <string name="overwrite">ऊपर लिखना</string>
     <string name="theme_light">रोशनी</string>
     <string name="theme_dark">अंधेरा</string>
-    <string name="crash_dialog_title">F-Droid क्रैश हो गया है</string>
+    <string name="crash_dialog_title">एफ-ड्रॉइड क्रैश हो गया है</string>
     <string name="crash_dialog_text">एक अप्रत्याशित त्रुटि के कारण एप्लीकेशन बंद हो गयी है| क्या आप ईमेल पर डिटेलस भेज कर इस मुद्दे को सुलझाने में मदद करना चाहते हैं\?</string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
     <string name="app_name">F-Droid</string>
@@ -83,7 +83,7 @@
     <string name="swap_not_visible_wifi">वाई-फाई के माध्यम से दिखाई नहीं दे रहा है</string>
     <string name="swap_wifi_device_name">उपकरण का नाम</string>
     <string name="swap_cant_find_peers">नहीं धुंद प् रहे जिसकी आप तलाश कर रहे है?</string>
-    <string name="swap_send_fdroid">F-Droid भेजे</string>
+    <string name="swap_send_fdroid">एफ-ड्रॉइड भेजे</string>
     <string name="apps">ऐप्स</string>
     <string name="swap_no_peers_nearby">अदला-बदली के लिए आस पास के लोग नहीं खोज पाए|</string>
     <string name="swap_join_this_hotspot">हॉटस्पॉट से जुडने मैं अपने दोस्त की सहयता करें</string>
@@ -94,7 +94,7 @@
     <string name="swap_view_available_networks">उपलब्ध नेटवर्क्स को खोलने के लिए स्पर्श करें</string>
     <string name="swap_switch_to_wifi">वाई-फाई नेटवर्क बदलने के लिए स्पर्श करे</string>
     <string name="open_qr_code_scanner">QR स्कैनर खोले</string>
-    <string name="swap_welcome">F-Droid में आपका स्वागत है!</string>
+    <string name="swap_welcome">एफ-ड्रॉइड में आपका स्वागत है!</string>
     <string name="swap_confirm_connect">क्या आप अभी %1$s से ऐप्स लेना चाहते हैं\?</string>
     <string name="swap_dont_show_again">इसे फिर से ना दिखाएँ</string>
     <string name="swap_scan_or_type_url">एक व्यक्ति को ये कोड स्कैन करना होगा या यूआरएल को ब्राउज़र मैं टाइप करना होगा|</string>
@@ -123,9 +123,9 @@
     <string name="menu_search">खोजें</string>
     <string name="menu_share">साझा करें</string>
     <string name="main_menu__latest_apps">सबसे नया</string>
-    <string name="main_menu__categories">श्रेणियां (कैटिगरीज़)</string>
+    <string name="main_menu__categories">श्रेणियां</string>
     <string name="skip">छोड़ें</string>
-    <string name="pref_language">भाषा (लैन्गवेज)</string>
+    <string name="pref_language">भाषा</string>
     <string name="category_Games">गेम्स</string>
     <string name="category_Internet">इंटरनेट</string>
     <string name="category_Money">धन</string>
@@ -159,7 +159,7 @@
     <string name="category_Development">विकास</string>
     <string name="category_Graphics">ग्राफिक्स</string>
     <string name="category_Multimedia">मल्टीमीडिया</string>
-    <string name="category_Phone_SMS">फ़ोन तथा SMS</string>
+    <string name="category_Phone_SMS">फ़ोन तथा एसएमएस</string>
     <string name="category_Science_Education">विज्ञान और शिक्षा</string>
     <string name="category_Time">समय</string>
     <string name="notification_action_install">इन्स्टॉल करें</string>

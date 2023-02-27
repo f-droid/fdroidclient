@@ -128,7 +128,7 @@
     <string name="swap">Обмен приложениями</string>
     <string name="swap_no_wifi_network">Сеть отсутствует</string>
     <string name="swap_view_available_networks">Нажмите, чтобы открыть доступные сети</string>
-    <string name="open_qr_code_scanner">Открыть сканер QR-кода</string>
+    <string name="open_qr_code_scanner">Открыть сканер QR-кодов</string>
     <string name="swap_welcome">Добро пожаловать в F-Droid!</string>
     <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас?</string>
     <string name="about_source">Исходный код</string>
@@ -526,7 +526,7 @@
     <string name="install_history_and_metrics">История установок и статистика</string>
     <string name="send_fdroid_metrics_json">%s статистический отчет в виде JSON-файла</string>
     <string name="send_fdroid_metrics_report">Отправить статистический отчет %s</string>
-    <string name="theme_follow_system">Как в системе</string>
+    <string name="theme_follow_system">Определена системой</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендуется только для экранов OLED.</string>
     <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
     <string name="banner_no_data_or_wifi">Передача данных или WiFi отключены</string>
@@ -550,4 +550,6 @@
     <string name="antinsfw">Это приложение содержит контент, который не следует разглашать или повсеместно демонстрировать</string>
     <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
     <string name="latest__empty_state__upgrading">Обновление базы данных…</string>
+    <string name="use_ipfs_gateways">Используйте шлюзы IPFS</string>
+    <string name="use_ipfs_gateways_summary">Загрузите файлы с зеркал IPFS, если это поддерживается репозиторием.</string>
 </resources>

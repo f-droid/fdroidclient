@@ -398,8 +398,8 @@
     <string name="hide_on_long_search_press_title">用搜索按钮隐藏</string>
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
     <string name="warning_scaning_qr_code">你的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
-    <string name="show_anti_feature_apps">包括带有负特征的应用</string>
-    <string name="show_anti_feature_apps_on">显示包含负特征的应用</string>
+    <string name="show_anti_feature_apps">包括带有负面特征的应用</string>
+    <string name="show_anti_feature_apps_on">显示包含负面特征的应用</string>
     <string name="repo_add_mirror">添加镜像</string>
     <string name="force_touch_apps">包括触屏应用</string>
     <string name="force_touch_apps_on">显示需要触屏的应用，无论硬件是否支持</string>
@@ -502,17 +502,18 @@
     <string name="antiknownvuln">含有已知漏洞</string>
     <string name="antiads">广告</string>
     <string name="antinonfreead">非自由附加组件</string>
-    <string name="app_list_results_hidden_antifeature_settings">根据你的负特征设置，一些结果被隐藏了。</string>
-    <string name="antinosource_key">源码自下列日期起不可得</string>
+    <string name="app_list_results_hidden_antifeature_settings">根据你的负面特征设置，一些结果被隐藏了。</string>
     <string name="antinonfreenet">非自由网络服务</string>
-    <string name="antitrack">跟踪用户</string>
+    <string name="antitrack">追踪用户</string>
     <string name="antinonfreeassets">非自由资产</string>
     <string name="antinonfreedep">非自由依赖项</string>
     <string name="antiupstreamnonfree">上游代码非自由</string>
     <string name="antidisabledalgorithm">使用不安全算法签名</string>
     <string name="antinosource">源代码不再可用</string>
-    <string name="antiothers">其他负特征</string>
+    <string name="antiothers">其他负面特征</string>
     <string name="antinsfw">此应用包含不应宣扬或随处可见的内容</string>
     <string name="menu_release_channel_beta">允许测试版更新</string>
     <string name="latest__empty_state__upgrading">正在升级数据库……</string>
+    <string name="use_ipfs_gateways">使用 IPFS 网关</string>
+    <string name="use_ipfs_gateways_summary">如存储库支持，从 IPFS 镜像下载文件。</string>
 </resources>

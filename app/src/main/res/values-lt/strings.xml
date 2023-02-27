@@ -528,7 +528,6 @@
     <string name="antiupstreamnonfree">Ne atviro kodo pradinis kodas</string>
     <string name="antinonfreeassets">Ne atviro kodo resursai</string>
     <string name="antidisabledalgorithm">Pasirašyta naudojant nesaugų algoritmą</string>
-    <string name="antinosource_key">NoSourceSince</string>
     <string name="antinosource">Pirminis kodas nebepasiekiamas</string>
     <string name="app_list_results_hidden_antifeature_settings">Kai kurie rezultatai buvo paslėpti atsižvelgiant į jūsų nepageidaujamų ypatybių nustatymus.</string>
     <string name="antiads">Skelbimai</string>

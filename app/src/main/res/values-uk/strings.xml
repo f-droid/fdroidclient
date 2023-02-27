@@ -531,7 +531,6 @@
     <string name="has_disallow_install_unknown_sources_globally">Адміністратор пристрою не дозволяє встановлювати застосунки з невідомих джерел, що містять нові репозиторії</string>
     <string name="swap_wifi_vpn_conflict">Конфлікти з активною VPN!</string>
     <string name="antiads">Оголошення</string>
-    <string name="antinosource_key">NoSourceSince</string>
     <string name="antitrack">Відстеження</string>
     <string name="antinonfreead">Невільні додатки</string>
     <string name="antinosource">Джерельний код більше недоступний</string>
@@ -546,4 +545,6 @@
     <string name="antinsfw">Цей застосунок містить вміст, який не слід оприлюднювати чи бачити всім</string>
     <string name="menu_release_channel_beta">Дозволити бета-оновлення</string>
     <string name="latest__empty_state__upgrading">Оновлення бази даних…</string>
+    <string name="use_ipfs_gateways">Використовувати IPFS-шлюзи</string>
+    <string name="use_ipfs_gateways_summary">Завантажуйте файли з IPFS-дзеркал, якщо вони підтримуються репозиторієм.</string>
 </resources>

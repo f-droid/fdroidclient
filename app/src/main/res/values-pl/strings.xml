@@ -517,7 +517,7 @@
     <string name="menu_show_install_history">Pokaż historię instalacji</string>
     <string name="menu_show_fdroid_metrics_report">Pokaż raport metryk</string>
     <string name="toast_metrics_in_install_history">Raport metryk %s jest widoczny w przeglądarce historii instalacji</string>
-    <string name="send_to_fdroid_metrics_summary">Wysyła co tydzień anonimowe dane do F-Droid Metrics (wymaga Przechowuj historię instalacji)</string>
+    <string name="send_to_fdroid_metrics_summary">Wysyłaj co tydzień anonimowe dane do F-Droid Metrics (wymaga Przechowuj historię instalacji)</string>
     <string name="send_to_fdroid_metrics">Wysyłaj dane o użytkowaniu</string>
     <string name="fdroid_metrics_report">Raport metryk %s</string>
     <string name="install_history_and_metrics">Historia instalacji i metryki</string>
@@ -542,11 +542,12 @@
     <string name="antinosource">Kod źródłowy jest już niedostępny</string>
     <string name="app_list_results_hidden_antifeature_settings">Niektóre wyniki zostały ukryte na podstawie Twoich ustawień niepożądanych funkcji.</string>
     <string name="antiads">Reklamy</string>
-    <string name="antinosource_key">NoSourceSince</string>
     <string name="antitrack">Śledzenie</string>
     <string name="antinonfreeassets">Niewolne zasoby</string>
     <string name="antiothers">Inne niepożądane funkcje</string>
     <string name="antinsfw">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
     <string name="menu_release_channel_beta">Zezwalaj na aktualizacje wersji beta</string>
     <string name="latest__empty_state__upgrading">Aktualizowanie bazy danych…</string>
+    <string name="use_ipfs_gateways">Używaj bramek IPFS</string>
+    <string name="use_ipfs_gateways_summary">Pobieraj pliki z serwerów lustrzanych IPFS, jeśli są obsługiwane przez repozytorium</string>
 </resources>

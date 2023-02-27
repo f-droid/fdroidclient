@@ -295,11 +295,11 @@
     <string name="update_auto_install_summary">Laadi alla ja värskenda rakendusi taustal ning kuva teavitus</string>
     <string name="app_details_donate_prompt_unknown_author">Osta %1$s  arendajatele kohvi!</string>
     <string name="app_details_donate_prompt">%1$s loojad on %2$s. Osta neile kohvi!</string>
-    <string name="app_details__incompatible_mismatched_signers">Signatuur erineb paigaldatud versiooni omast</string>
+    <string name="app_details__incompatible_mismatched_signers">Paigaldatud versioonil on teine allkirjastaja</string>
     <string name="app_details__no_versions__show_incompat_versions">Mitteühilduvate versioonide siin kuvamiseks lülita sisse \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">Ühilduvate signatuuridega versioone ei ole</string>
+    <string name="app_details__no_versions__no_compatible_signers">Ühilduvate allkirjastajatega versioone ei ole</string>
     <string name="app_details__no_versions__none_compatible_with_device">Seadmega ühilduvaid versioone ei ole</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Paigaldatud versioon ei ühildu mitte ühegi kättesaadava versiooniga. Rakenduse eemaldamine lubab sul vaadata ja paigaldada ühilduvaid versioone. Seda juhtub tihti rakendustega, mis on paigaldatud Google Playst või teistest allikatest, kui nad on signeeritud erineva sertifikaadiga.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Paigaldatud versioon ei ühildu mitte ühegi saadaval oleva versiooniga. Rakenduse eemaldamine lubab sul vaadata ja paigaldada ühilduvaid versioone. Seda juhtub tihti rakendustega, mis on paigaldatud Google Playst või teistest allikatest, kui nad on allkirjastatud erineva sertifikaadiga.</string>
     <string name="app_version_x_available">Versioon %1$s on saadaval</string>
     <string name="app_version_x_installed">Versioon %1$s</string>
     <string name="app_recommended_version_installed">Versioon %1$s (soovitatav)</string>
@@ -540,4 +540,6 @@
     <string name="antinsfw">Selles rakenduses on sisu, mida ei saa kõikjal avaldada ega peaks olema kõikjalt vaadatav</string>
     <string name="latest__empty_state__upgrading">Andmebaasi uuendamine…</string>
     <string name="menu_release_channel_beta">Kaasa uuendamiseks ka beeta-versioonid</string>
+    <string name="use_ipfs_gateways">Kasuta IPFS lüüse</string>
+    <string name="use_ipfs_gateways_summary">Kui hoidla sellist võimalust pakub, siis laadi failid alla IPFS peegelserveritest.</string>
 </resources>

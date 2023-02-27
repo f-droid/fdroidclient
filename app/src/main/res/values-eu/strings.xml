@@ -550,4 +550,6 @@
     <string name="antinsfw">Aplikazio honek edonon argitaratu edo ikusgai egon behar ez den edukia du</string>
     <string name="menu_release_channel_beta">Beta eguneraketak baimendu</string>
     <string name="latest__empty_state__upgrading">Datu-basearen eguneraketak aplikatzen…</string>
+    <string name="use_ipfs_gateways">Erabili IPFS atebideak</string>
+    <string name="use_ipfs_gateways_summary">Deskargatu fitxategiak IPFSren ispiluetatik, biltegiarekin bateragarria bada.</string>
 </resources>

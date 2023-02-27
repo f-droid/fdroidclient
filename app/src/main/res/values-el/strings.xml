@@ -544,4 +544,6 @@
     <string name="antinsfw">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>
     <string name="menu_release_channel_beta">Να επιτρέπονται οι ενημερώσεις Beta</string>
     <string name="latest__empty_state__upgrading">Αναβάθμιση βάσης δεδομένων…</string>
+    <string name="use_ipfs_gateways">Χρησιμοποιήστε πύλες IPFS</string>
+    <string name="use_ipfs_gateways_summary">Λήψη αρχείων από πηγές IPFS, εάν υποστηρίζονται από το repo.</string>
 </resources>

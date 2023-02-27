@@ -1,0 +1,13 @@
+F-Droid er et installerbart katalog over frie softwareapps til Android. F-Droid-appen gør det nemt at gennemse, installere og holde styr på opdateringer på din enhed.
+
+Appen opretter forbindelse til alle F-Droid-kompatible depoter. Standard-depotet er hostet på f-droid.org, som kun indeholder ægte fri software.
+
+Android i sig selv er åben i den forstand, at du frit kan installere APK'er når du finder dem, men der er mange gode grunde til at bruge F-Droid som appmanager til fri software:
+
+* Få besked, når opdateringer er tilgængelige
+* Du kan vælge at downloade og installere opdateringer automatisk
+* Hold styr på ældre versioner og betaversioner
+* Frasorter apps, der er inkompatible med enheden
+* Find apps via kategorier og søgbare beskrivelser
+* Få adgang til links til donationer, kildekode osv.
+* Forbliv sikker ved at tjekke depot-indekssignaturer og APK-hash

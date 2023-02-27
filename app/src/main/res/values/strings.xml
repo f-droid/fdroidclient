@@ -283,18 +283,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="details_new_in_version">New in version %s</string>
 
     <string name="antifeatureswarning">This app has features you may not like.</string>
-    <string name="antiads_key" translatable="false">Ads</string>
-    <string name="antitrack_key" translatable="false">Tracking</string>
-    <string name="antinonfreenet_key" translatable="false">NonFreeNet</string>
-    <string name="antinonfreead_key" translatable="false">NonFreeAdd</string>
-    <string name="antinonfreedep_key" translatable="false">NonFreeDep</string>
-    <string name="antiupstreamnonfree_key" translatable="false">UpstreamNonFree</string>
-    <string name="antinonfreeassets_key" translatable="false">NonFreeAssets</string>
-    <string name="antidisabledalgorithm_key" translatable="false">DisabledAlgorithm</string>
-    <string name="antiknownvuln_key" translatable="false">KnownVuln</string>
-    <string name="antinosource_key" translatable="false">NoSourceSince</string>
-    <string name="antinsfw_key" translatable="false">NSFW</string>
-    <string name="antiothers_key" translatable="false">_anti_others_</string>
     <string name="antifeatures">Anti-features</string>
     <string name="antiads">Ads</string>
     <string name="antitrack">Tracking</string>

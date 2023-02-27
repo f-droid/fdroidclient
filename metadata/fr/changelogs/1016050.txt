@@ -1,6 +1,7 @@
-* Modernisation complète du code de téléchargement, de l'indice, et de la base de données. Cela devrait être plus rapide et plus résilient lors de l'utilisation de la bande passante réduite. C'est aussi plus facile à maintenir avec une suite de tests grandement améliorée.
+Modernisation complète du code de téléchargement, de l'indice, et de la base de données. Plus rapide et plus résilient lors de l'utilisation de la bande passante réduite. Aussi plus facile à maintenir avec une suite de tests grandement améliorée. Correction des bogues.
 
-* Corrections : #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353 #2370
-  #2412 #2436 #2442 #2443 #2444 #1971
+* Fonctionne mieux sur les appareils avec moins de mémoire
+
+* Corrections #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #24312 #2436 #2442 #2443 #2444 …
 
 * Nouvelle langue : le cantonais (yue)
