@@ -546,4 +546,6 @@
     <string name="antinsfw">Цей застосунок містить вміст, який не слід оприлюднювати чи бачити всім</string>
     <string name="menu_release_channel_beta">Дозволити бета-оновлення</string>
     <string name="latest__empty_state__upgrading">Оновлення бази даних…</string>
+    <string name="use_ipfs_gateways">Використовувати IPFS-шлюзи</string>
+    <string name="use_ipfs_gateways_summary">Завантажуйте файли з IPFS-дзеркал, якщо вони підтримуються репозиторієм.</string>
 </resources>
