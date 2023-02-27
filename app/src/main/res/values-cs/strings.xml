@@ -544,4 +544,6 @@
     <string name="antinsfw">Tato aplikace obsahuje obsah, který by neměl bý publikovaný či viditelný kdekoli</string>
     <string name="menu_release_channel_beta">Povolit beta aktualizace</string>
     <string name="latest__empty_state__upgrading">Aktualizace databáze…</string>
+    <string name="use_ipfs_gateways">Používat brány IPFS</string>
+    <string name="use_ipfs_gateways_summary">Stahovat soubory ze zrcadel IPFS, pokud je repozitář podporuje.</string>
 </resources>
