@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="updates">نواں کرن</string>
     <string name="yes">ہاں</string>
     <string name="cancel">رد کرو</string>
@@ -52,8 +52,8 @@
     <string name="repo_name">ناں</string>
     <string name="unknown">نامعلوم</string>
     <string name="wifi_ap">ہوٹ‌سپوٹ</string>
-    <string tools:ignore="UnusedResources" name="category_Time">سماں</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">تھیم کردے</string>
+    <string name="category_Time">سماں</string>
+    <string name="category_Theming">تھیم کردے</string>
     <string name="swap_blank_wifi_ssid">(خالی)</string>
     <string name="swap_hidden_wifi_ssid">(لُکواں)</string>
     <string name="disabled">ایوگ بݨایا</string>
@@ -68,14 +68,14 @@
     <string name="notification_title_summary_installing">اینسٹال کر رِہا اے</string>
     <string name="notification_channel_swaps_title">سویپ</string>
     <string name="undo">موڑو</string>
-    <string tools:ignore="UnusedResources" name="category_Money">پیسے</string>
+    <string name="category_Money">پیسے</string>
     <string name="prompt_to_send_crash_reports_summary">کریش بارے ڈیٹا اِکتر کرو تے ڈِویلوپر نوں بھیجیو</string>
     <string name="back">پچھے</string>
     <string name="menu_install">اینسٹال کرو</string>
     <string name="main_menu__swap_nearby">نیڑے تیڑے</string>
     <string name="pref_language_default">سسٹم دا مول</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">فون</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">پڑھن</string>
+    <string name="category_Phone_SMS">فون</string>
+    <string name="category_Reading">پڑھن</string>
     <string name="notification_action_cancel">رد کرو</string>
     <string name="prompt_to_send_crash_reports">کریش رپورٹاں بھیجݨ توں پہلاں پُچھّو</string>
     <string name="about_source">سروت دا کوڈ</string>
@@ -83,11 +83,11 @@
     <string name="preference_manage_installed_apps">اینسٹال کیتیاں اَیپاں دیاں سیٹنگاں</string>
     <string name="details_notinstalled">انسٹال نہیں کیتی گئی</string>
     <string name="next">اگے</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">میڈیا</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">وگیان تے سکھیا</string>
-    <string tools:ignore="UnusedResources" name="category_Security">سرکھیا</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">لکھݨ</string>
-    <string tools:ignore="UnusedResources" name="category_Games">کھیڈاں</string>
+    <string name="category_Multimedia">میڈیا</string>
+    <string name="category_Science_Education">وگیان تے سکھیا</string>
+    <string name="category_Security">سرکھیا</string>
+    <string name="category_Writing">لکھݨ</string>
+    <string name="category_Games">کھیڈاں</string>
     <string name="newPerms">نویں</string>
     <string name="repo_last_update">پچھلا نواں کرن</string>
     <string name="swap_send_fdroid">ایف‌ڈروئیڈ بھیجیو</string>
@@ -100,7 +100,7 @@
     <string name="app_new">نویں</string>
     <string name="notification_action_install">اینسٹال کرو</string>
     <string name="about_title">ایف‌ڈروئیڈ بارے</string>
-    <string tools:ignore="UnusedResources" name="category_System">سِسٹم</string>
+    <string name="category_System">سِسٹم</string>
     <string name="crash_dialog_title">ایف‌ڈروئیڈ کریش ہوگیا</string>
     <string name="SignatureMismatch">نویں سنسکرݨ وچ پراݨے لئی اِکّ وکھری کنجی دے نال دستخط کیتے گئے ہن۔ نویں سنسکرݨ اینسٹال کرن لئی، پراݨے نوں پہلااں ان‌اینسٹال کرنا پوےگا۔ کرپا کرکے ایہہ کرو تے دبارہ کوشِش کرو۔ (یاد رکھو کہ ان‌اینسٹال کرن نال اَیپ دوارا سٹور کیتا کوئی وی اندرونی ڈیٹا مٹا دتا جاوےگا)</string>
     <string name="by_author_format">ولوں %s</string>
@@ -145,21 +145,21 @@
     <string name="menu_flattr">فلیٹر</string>
     <string name="menu_opencollective">اوپن‌کلیکٹیوَ</string>
     <string name="menu_settings">سیٹنگاں</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">نقشہ نویسی</string>
+    <string name="category_Navigation">نقشہ نویسی</string>
     <string name="ok">ٹھیک اے</string>
     <string name="no">نہیں</string>
     <string name="menu_uninstall">ہٹاؤ</string>
     <string name="menu_search">کھوجو</string>
     <string name="menu_share">سانجھا کرو</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">گریفک</string>
+    <string name="category_Graphics">گریفک</string>
     <string name="menu_add_repo">نواں ذخیرہ</string>
     <string name="menu_launch">کھولھو</string>
     <string name="main_menu__latest_apps">حالیہ</string>
     <string name="skip">چھڈو</string>
     <string name="pref_language">بولی</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">جوڑن</string>
-    <string tools:ignore="UnusedResources" name="category_Development">ڈیویلپ کرن</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">اِنٹرنیٹ</string>
+    <string name="category_Connectivity">جوڑن</string>
+    <string name="category_Development">ڈیویلپ کرن</string>
+    <string name="category_Internet">اِنٹرنیٹ</string>
     <string name="swap_welcome">ایف‌ڈروئیڈ تے سواگت اے!</string>
     <string name="swap_dont_show_again">ایہہ مُڑ نا دِکھاؤ</string>
     <string name="app_details">ویروے</string>
@@ -224,7 +224,7 @@
     <string name="repo_confirm_delete_title">ذخیرہ مٹاؤ؟</string>
     <string name="share_repository">ذخیرہ سانجھ کرو</string>
     <string name="requires_features">لوڑدے اے: %1$s</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">کھیڈاں تے سِہت</string>
+    <string name="category_Sports_Health">کھیڈاں تے سِہت</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">%d ویکھو</item>
         <item quantity="other">ساریاں %d ویکھو</item>
