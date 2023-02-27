@@ -538,4 +538,6 @@
     <string name="antinsfw">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
     <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
     <string name="latest__empty_state__upgrading">Se actualizează baza de date…</string>
+    <string name="use_ipfs_gateways">Utilizare portaluri IPFS</string>
+    <string name="use_ipfs_gateways_summary">Se descarcă fișiere de pe serverele de rezervă IPFS, dacă sunt suportate de depozite.</string>
 </resources>
