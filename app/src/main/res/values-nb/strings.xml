@@ -152,7 +152,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="banner_updating_repositories">Oppdaterer pakkebrønner …</string>
+    <string name="banner_updating_repositories">Oppdaterer pakkebrønner</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="repo_details">Pakkebrønn</string>
     <string name="repo_url">Adresse</string>

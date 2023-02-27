@@ -298,7 +298,7 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Прикажи (%d)</item>
         <item quantity="few">Прикажи (%d)</item>
-        <item quantity="other"></item>
+        <item quantity="other">Прикажи (%d)</item>
     </plurals>
     <string name="notification_title_summary_ready_to_install_update">Освежење је спремно за уградњу</string>
     <string name="app_recommended_version_installed">Издање %1$s (препоручено)</string>
@@ -318,7 +318,7 @@
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Преузми освежење за %1$d програм.</item>
         <item quantity="few">Преузми освежење за %1$d програма.</item>
-        <item quantity="other"></item>
+        <item quantity="other">Преузми освежење за %1$d програма.</item>
     </plurals>
     <string name="details_new_in_version">Ново у издању %s</string>
     <string name="antifeatureswarning">Овај програм има могућности које вам се можда неће свидети.</string>
@@ -326,12 +326,12 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Прикажи %1$d програм из врсте %2$s</item>
         <item quantity="few">Прикажи %1$d програма из врсте %2$s</item>
-        <item quantity="other"></item>
+        <item quantity="other">Прикажи %1$d програма из врсте %2$s</item>
     </plurals>
     <plurals name="details_last_update_days">
         <item quantity="one">Освежено пре %1$d дан</item>
         <item quantity="few">Освежено пре %1$d дана</item>
-        <item quantity="other"></item>
+        <item quantity="other">Освежено пре %1$d дана</item>
     </plurals>
     <string name="app_list__name__successfully_installed">Програм %1$s је уграђен</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немате везу са интернетом\? Преузмите програме од људи у близини!</string>
@@ -350,32 +350,32 @@
     <plurals name="notification_summary_more">
         <item quantity="one">+ још %1$d…</item>
         <item quantity="few">+ још %1$d…</item>
-        <item quantity="other"></item>
+        <item quantity="other">+ још %1$d…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d освежење</item>
         <item quantity="few">%1$d освежења</item>
-        <item quantity="other"></item>
+        <item quantity="other">%1$d освежења</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d програм је уграђен</item>
         <item quantity="few">%1$d програма је уграђено</item>
-        <item quantity="other"></item>
+        <item quantity="other">%1$d програма је уграђено</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Освежено је пре %1$d недељу</item>
         <item quantity="few">Освежено је пре %1$d недеља</item>
-        <item quantity="other"></item>
+        <item quantity="other">Освежено је пре %1$d недеља</item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Освежено је пре %1$d месец</item>
         <item quantity="few">Освежено је пре %1$d месеци</item>
-        <item quantity="other"></item>
+        <item quantity="other">Освежено је пре %1$d месеци</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">Освежено је пре %1$d годину</item>
         <item quantity="few">Освежено је пре %1$d година</item>
-        <item quantity="other"></item>
+        <item quantity="other">Освежено је пре %1$d година</item>
     </plurals>
     <string name="force_old_index">Наметни стари облик списка</string>
     <string name="force_old_index_summary">Користи списак програма ИксМЛ у случају проблема са усклађеношћу</string>
