@@ -1,3 +1,11 @@
+### 1.16.1 (2023-02-27)
+
+* Add IPFS as opt-in Expert Setting, with selected IPFS Gateways built-in #2504
+
+* Migrate ignored updates from old DB, #2538
+
+* Big translation update
+
 ### 1.16 (2023-02-08)
 
 * Fix crashes reported via ACRA
