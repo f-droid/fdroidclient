@@ -298,7 +298,6 @@
         <item quantity="other">%1$d اَیپ اینسٹال کیتیاں گیاں</item>
     </plurals>
     <string name="send_version_and_uuid_summary">ایس اَیپ دا ورژن تے اِک بے ترتیب ولکھݨ شناختی شامل کرو جدوں ڈاؤن‌لوڈ کردے او، ایہہ اَیپ ریسٹارٹ توں بعد لاگو ہووےگا۔</string>
-    <string name="app_details__incompatible_mismatched_signature">اینسٹال دے ورژن لئی ایہدے دستخط وکھرے</string>
     <string name="antinonfreeassets">کجھ چیزاں نہیں مفت اے</string>
     <string name="antiknownvuln">جاݨی جاندی کمزوری</string>
     <string name="antiothers">ہور چیزاں نہیں چنگیاں</string>
