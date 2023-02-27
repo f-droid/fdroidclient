@@ -53,7 +53,7 @@
     <string name="repo_error_empty_username">Blangkong username, di nagbago ang credentials</string>
     <string name="no_such_app">Walang nakitang app.</string>
     <string name="app_details__no_versions__show_incompat_versions">Para ipakita pa rin ang mga di-compatible na bersyon dito, buksan ang \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">Walang bersyon na may compatible na pirma</string>
+    <string name="app_details__no_versions__no_compatible_signers">Walang mga bersyon na may compatible na pirma</string>
     <string name="about_version">Bersyon</string>
     <string name="about_site">Website</string>
     <string name="about_forum">Forum ng suporta</string>
@@ -527,4 +527,6 @@
     <string name="interval_1w">Tumingin ng update kada linggo</string>
     <string name="antiothers">Ibang mga di-gustong tampok</string>
     <string name="antinsfw">Ang app na ito\'y naglalaman ng mga bagay na \'di dapat ilathalain o nakikita sa kahit saan</string>
+    <string name="latest__empty_state__upgrading">Inaupgrade ang database…</string>
+    <string name="menu_release_channel_beta">Payagan ang mga Beta Updates</string>
 </resources>
