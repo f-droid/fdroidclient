@@ -192,7 +192,7 @@
     <string name="send_history_csv">%s لئی اینسٹال دا اتیت سی‌ایس‌وی فائل</string>
     <string name="send_to_fdroid_metrics">ورتوں بارے ڈیتا بھیجو</string>
     <string name="system_installer">ادھِکار ایکسٹینشن</string>
-    <string name="scan_removable_storage_toast">سکین کیتے رِہے اے…</string>
+    <string name="scan_removable_storage_toast">سکین کیتے رِہے اے%s …</string>
     <string name="app_suggested">سجھاۓ</string>
     <string name="app_inst_known_source">اینسٹال کیتی گئی (%s توں)</string>
     <string name="app_version_x_available">ورژن %1$s اُپلبدھ اے</string>
