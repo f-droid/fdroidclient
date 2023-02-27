@@ -550,4 +550,6 @@
     <string name="antinsfw">היישומון הזה מכיל תוכן שלא מיועד לכל קהל בכל מקום</string>
     <string name="menu_release_channel_beta">לאפשר עדכוני בטא</string>
     <string name="latest__empty_state__upgrading">מסד הנתונים משתדרג…</string>
+    <string name="use_ipfs_gateways">להשתמש בשערי גישה מסוג IPFS</string>
+    <string name="use_ipfs_gateways_summary">להוריד קבצים מאתרי מראה ב־IPFS, אם המאגר תומך בזה.</string>
 </resources>
