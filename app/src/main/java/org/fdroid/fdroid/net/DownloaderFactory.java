@@ -89,13 +89,9 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
     }
 
     private static final List<Mirror> IPFS_MIRRORS = Arrays.asList(
-            new Mirror("https://ipfs.eth.aragon.network/ipfs/", null, true),
-            new Mirror("https://gateway.ipfs.io/ipfs/", null, true),
-            new Mirror("https://ipfs.io/ipfs/", null, true),
-            new Mirror("https://cloudflare-ipfs.com/ipfs/", null, true),
-            new Mirror("https://ipfs.fleek.co/ipfs/", null, true),
-            new Mirror("https://gateway.pinata.cloud/ipfs/", null, true),
-            new Mirror("https://ipfs.filebase.io/ipfs/", null, true)
+            new Mirror("https://4everland.io/ipfs/", null, true),
+            new Mirror("https://ipfs.joaoleitao.org/ipfs/", null, true),
+            new Mirror("https://ipfs.jpu.jp/ipfs/", null, true)
     );
 
 }
