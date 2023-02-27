@@ -533,4 +533,6 @@
     <string name="antinsfw">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
     <string name="menu_release_channel_beta">Разрешаване на издания бета</string>
     <string name="latest__empty_state__upgrading">Преформатиране на данните…</string>
+    <string name="use_ipfs_gateways">Използване на шлюз на IPFS</string>
+    <string name="use_ipfs_gateways_summary">Файловете се изтеглят от огледала на IPFS, ако хранилището го поддържа.</string>
 </resources>
