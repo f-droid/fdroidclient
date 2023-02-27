@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 #
 # cherry-pick complete translations from weblate
+#
+# This is too hard to get working right, so really, this should be
+# punted to the translators.  Weblate can automatically file a merge
+# request when a language hits 100% translated and 0% failed.
+#
+# This will probably fail to cherry-pick if a commit contains more
+# than one language.  In that case, reset everything, then manually
+# cherry-pick that one commit and push it.  Then run this again.
 
 import git
 import os
@@ -99,15 +107,12 @@ for locale in sorted(merge_locales):
     a = app_locales.get(locale)
     m = metadata_locales.get(locale)
     paths = get_paths_tuple(locale)
-    commits = list(
-        repo.iter_commits(
-            str(weblate.refs.master) + '...' + str(upstream.refs.master),
-            paths=paths,
-            max_count=10,
-        )
-    )
-
-    for commit in reversed(commits):
+    for commit in repo.iter_commits(
+        str(weblate.refs.master) + '...' + str(upstream.refs.master),
+        paths=paths,
+        max_count=10,
+        reverse=True,
+    ):
         has_a = False
         has_m = False
         for i in commit.iter_items(repo, commit.hexsha, paths=[paths[2]]):
