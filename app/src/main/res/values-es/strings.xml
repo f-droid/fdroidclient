@@ -549,4 +549,6 @@
     <string name="antinsfw">Esta app contiene contenido que no debería ser publicitado o visible en cualquier lugar</string>
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
+    <string name="use_ipfs_gateways">Utilizar las pasarelas IPFS</string>
+    <string name="use_ipfs_gateways_summary">Descargar los archivos de réplicas IPFS, si el repositorio lo admite.</string>
 </resources>

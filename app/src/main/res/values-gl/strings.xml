@@ -529,4 +529,6 @@
     <string name="antiupstreamnonfree">Código fonte non libre</string>
     <string name="menu_release_channel_beta">Permitir Actualizacións Beta</string>
     <string name="latest__empty_state__upgrading">Actualizando base de datos…</string>
+    <string name="use_ipfs_gateways">Usela pasarelas IPFS</string>
+    <string name="use_ipfs_gateways_summary">Descargalos ficheiros dende as réplicas IPFS, se o repo o admite.</string>
 </resources>
