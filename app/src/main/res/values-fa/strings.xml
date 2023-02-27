@@ -521,7 +521,6 @@
     <string name="antidisabledalgorithm">امضا شده با الگوریتمی ناامن</string>
     <string name="antiknownvuln">آسیب‌پذیری شناخته</string>
     <string name="app_list_results_hidden_antifeature_settings">برخی نتیجه‌ها بر پایهٔ تنظیمات پادویژگیتان پنهان شده‌اند.</string>
-    <string name="antinosource_key">بدون منبع از</string>
     <string name="antitrack">ردیابی</string>
     <string name="antinonfreead">افزونه‌های ناآزاد</string>
     <string name="antinonfreedep">وابستگی‌های ناآزاد</string>

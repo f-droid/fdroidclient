@@ -542,7 +542,6 @@
     <string name="antinosource">Kod źródłowy jest już niedostępny</string>
     <string name="app_list_results_hidden_antifeature_settings">Niektóre wyniki zostały ukryte na podstawie Twoich ustawień niepożądanych funkcji.</string>
     <string name="antiads">Reklamy</string>
-    <string name="antinosource_key">NoSourceSince</string>
     <string name="antitrack">Śledzenie</string>
     <string name="antinonfreeassets">Niewolne zasoby</string>
     <string name="antiothers">Inne niepożądane funkcje</string>

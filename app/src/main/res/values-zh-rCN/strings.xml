@@ -503,7 +503,6 @@
     <string name="antiads">广告</string>
     <string name="antinonfreead">非自由附加组件</string>
     <string name="app_list_results_hidden_antifeature_settings">根据你的负面特征设置，一些结果被隐藏了。</string>
-    <string name="antinosource_key">源码自下列日期起不可得</string>
     <string name="antinonfreenet">非自由网络服务</string>
     <string name="antitrack">追踪用户</string>
     <string name="antinonfreeassets">非自由资产</string>

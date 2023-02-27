@@ -512,7 +512,6 @@
     <string name="panic_hide_warning_message">ஒரு பீதி நிகழ்வில், இது %1$s ஐ துவக்கியிலிருந்து அகற்றும். போலி %3$s பயன்பாட்டில் \"%2$d\" எனத் தட்டச்சு செய்தால் மட்டுமே அதை மீட்டெடுக்க முடியும்.</string>
     <string name="app_list_results_hidden_antifeature_settings">உங்கள் எதிரம்ச அமைப்புகளினால் சில முடிவுகள் மறைக்கப்பட்டன.</string>
     <string name="has_disallow_install_unknown_sources_globally">உங்கள் சாதன நிர்வாகி அறியாத மூலங்களிலிருந்து செயலிகள் நிறுவுவதை அனுமதிக்கவில்லை, அது புதிய களஞ்சியங்களையும் உள்ளடக்கும்</string>
-    <string name="antinosource_key">NoSourceSince</string>
     <string name="antiads">விளம்பரங்கள்</string>
     <string name="antitrack">தடமறிதல்</string>
     <string name="antinonfreenet">இலவசமற்ற பிணைய சேவைகள்</string>

@@ -534,7 +534,6 @@
     <string name="swap_wifi_vpn_conflict">סותר VPN פעיל!</string>
     <string name="has_disallow_install_unknown_sources">למשתמש הזה אין אפשרות להוסיף מקורות לא ידועים, לרבות מאגרים חדשים</string>
     <string name="has_disallow_install_unknown_sources_globally">הנהלת המכשיר שלך לא מאפשרת התקנת יישומים ממקורות לא ידועים, לרבות מאגרים חדשים</string>
-    <string name="antinosource_key">אין קוד מקור מאז</string>
     <string name="app_list_results_hidden_antifeature_settings">חלק מהתוצאות הוסתרו עקב הגדרות התכונות השליליות שהגדרת.</string>
     <string name="antitrack">מעקב</string>
     <string name="antiads">פרסומות</string>
