@@ -515,4 +515,6 @@
     <string name="antinsfw">此应用包含不应宣扬或随处可见的内容</string>
     <string name="menu_release_channel_beta">允许测试版更新</string>
     <string name="latest__empty_state__upgrading">正在升级数据库……</string>
+    <string name="use_ipfs_gateways">使用 IPFS 网关</string>
+    <string name="use_ipfs_gateways_summary">如存储库支持，从 IPFS 镜像下载文件。</string>
 </resources>
