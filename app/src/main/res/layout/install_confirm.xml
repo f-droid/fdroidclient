@@ -42,6 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="?attr/dividerHorizontal"
         android:visibility="gone" />
 
     <FrameLayout
@@ -107,6 +108,7 @@
         android:showDividers="beginning">
 
         <LinearLayout
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:measureWithLargestChild="true"
@@ -121,6 +123,7 @@
 
             <Button
                 android:id="@+id/cancel_button"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -130,6 +133,7 @@
 
             <Button
                 android:id="@+id/ok_button"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

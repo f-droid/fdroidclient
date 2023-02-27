@@ -34,12 +34,10 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_repo_app_default"
+                    android:src="@drawable/ic_repo_app_default"
                     android:transitionName="@string/transition_app_item_icon" />
 
                 <!-- Name, Author (optional), Updated date -->
@@ -48,10 +46,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@id/icon"
-                    android:layout_toRightOf="@id/icon"
                     android:orientation="vertical">
 
                     <TextView
@@ -91,29 +87,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/app__tts__cancel_download"
-                    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/progress_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
                     android:contentDescription="@string/downloading"
                     android:focusable="true"
-                    android:text="@string/downloading"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+                    android:text="@string/loading"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
                 <TextView
                     android:id="@+id/progress_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toStartOf="@id/progress_cancel"
-                    android:layout_toLeftOf="@id/progress_cancel"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     tools:text="500%" />
 
                 <ProgressBar
@@ -123,9 +118,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_toStartOf="@id/progress_cancel"
-                    android:layout_toLeftOf="@id/progress_cancel" />
+                    android:indeterminate="true"
+                    android:layout_toStartOf="@id/progress_cancel" />
             </RelativeLayout>
 
             <!-- Install, Uninstall, Update, Open buttons -->
@@ -146,6 +140,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     tools:text="Uninstall" />
 
                 <com.google.android.material.button.MaterialButton
@@ -154,9 +150,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     tools:text="Open" />
             </LinearLayout>
         </RelativeLayout>
@@ -176,6 +173,8 @@
             android:textIsSelectable="true"
             android:textStyle="bold"
             android:background="?attr/detailPanel"
+            android:visibility="gone"
+            tools:visibility="visible"
             tools:text="App summary, one line - outlining what this app does" />
 
         <TextView
@@ -190,8 +189,9 @@
             android:paddingRight="8dp"
             android:paddingBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:visibility="gone"
+            tools:visibility="visible"
             tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes" />
-
 
         <TextView
             android:id="@+id/description"
@@ -212,6 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <TextView
@@ -219,14 +220,13 @@
                 style="@style/DetailsAntiFeaturesWarningStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_warning"
-                android:drawableLeft="@drawable/ic_warning"
                 android:drawablePadding="10dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:gravity="center_vertical"
                 android:text="@string/antifeatureswarning"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:drawableStartCompat="@drawable/ic_warning" />
 
             <TextView
                 android:id="@+id/label_anti_features"
@@ -246,7 +246,7 @@
                 android:id="@+id/anti_features_full_listing"
                 android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -257,7 +257,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
-            android:text="@string/more" />
+            android:text="@string/more"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
