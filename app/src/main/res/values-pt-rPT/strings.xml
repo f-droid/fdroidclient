@@ -531,4 +531,6 @@
     <string name="antinsfw">Esta aplicação contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
     <string name="latest__empty_state__upgrading">Atualizando o banco de dados…</string>
+    <string name="use_ipfs_gateways">Usar gateways de IPFS</string>
+    <string name="use_ipfs_gateways_summary">Descarregar ficheiros de espelhos de IPFS, se forem suportados pelo repo.</string>
 </resources>
