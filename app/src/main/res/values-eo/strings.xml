@@ -408,14 +408,14 @@
     <string name="panic_app_dialog_message">Ĉu vi certas, ke vi volas permesi al %1$s por agordi detruajn agojn de panika butono?</string>
     <string name="allow">Permesi</string>
     <string name="panic_settings">Agordoj pri panika butono</string>
-    <string name="panic_settings_summary">Kion fari okaze de danĝero</string>
+    <string name="panic_settings_summary">Kion fari okaze je danĝero</string>
     <string name="panic_exit_title">Fermi aplikaĵon</string>
-    <string name="panic_exit_summary">La aplikaĵo estos fermita</string>
+    <string name="panic_exit_summary">Fermi tiun ĉi aplikaĵon</string>
     <string name="panic_destructive_actions">Detruaj agoj</string>
     <string name="panic_hide_title">Kaŝi %s</string>
-    <string name="panic_hide_summary">Aplikaĵo kaŝiĝos</string>
+    <string name="panic_hide_summary">Malaperigi F-Droid de aplikaĵlanĉilo</string>
     <string name="panic_hide_warning_title">Memori kiel restarigi</string>
-    <string name="panic_hide_warning_message">En kriza okazo, tio ĉi forigos %1$s el la lanĉilo. Por restarigi la aplikaĵon %1$s, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
+    <string name="panic_hide_warning_message">Post aktivigi la panikan butonon, %1$s estos forigita de la aplikaĵlanĉilo. Por restarigi ĝin, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
     <string name="hiding_calculator">Kalkulilo</string>
     <string name="hiding_dialog_title">Kaŝi %s nun</string>
     <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo\? Por restarigi la aplikaĵon %1$s, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
@@ -486,8 +486,8 @@
     <string name="menu_select_for_wipe">Elektu por forviŝi</string>
     <string name="try_again">Reprovi</string>
     <string name="panic_will_be_wiped">Estos malinstalita kaj ĉiuj datumoj estos forviŝitaj</string>
-    <string name="panic_apps_to_uninstall">Aplikaĵoj por malinstali kaj forviŝi ĉiujn datumojn</string>
-    <string name="panic_add_apps_to_uninstall">Aldoni aplikaĵojn por malinstali kaj forviŝi</string>
+    <string name="panic_apps_to_uninstall">Malinstali kaj forviŝi ĉiujn datumojn de aplikaĵoj</string>
+    <string name="panic_add_apps_to_uninstall">Aldoni aplikaĵojn, kiu estos malinstalita</string>
     <string name="panic_reset_repos_title">Restarigi deponejojn</string>
     <string name="panic_reset_repos_summary">Devigi restarigi implicitajn valorojn de deponejoj</string>
     <string name="swap_visible_hotspot">Videbla per retkaptejo</string>
@@ -541,4 +541,6 @@
     <string name="antinsfw">Tiu ĉi aplikaĵo liveras enhavon, kiu ne estas taŭga por rigardi publike</string>
     <string name="menu_release_channel_beta">Ĝisdatigi al beta-versioj</string>
     <string name="latest__empty_state__upgrading">Promociado de datumbazo…</string>
+    <string name="use_ipfs_gateways">Uzi IPFS-kluzojn</string>
+    <string name="use_ipfs_gateways_summary">Elŝuti dosierojn el spegulserviloj IPFS – se subtenataj de la deponejo.</string>
 </resources>
