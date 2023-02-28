@@ -119,6 +119,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.setSecureWindow(this);
+
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
         repositoryDao = DBHelper.getDb(this).getRepositoryDao();
         appDao = DBHelper.getDb(this).getAppDao();

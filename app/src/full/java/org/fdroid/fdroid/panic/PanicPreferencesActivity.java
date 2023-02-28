@@ -15,6 +15,8 @@ public class PanicPreferencesActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle bundle) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.setSecureWindow(this);
+
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
 
         super.onCreate(bundle);
