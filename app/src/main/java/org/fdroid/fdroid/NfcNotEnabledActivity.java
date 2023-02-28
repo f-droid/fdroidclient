@@ -32,6 +32,8 @@ public class NfcNotEnabledActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.setSecureWindow(this);
+
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
 
         super.onCreate(savedInstanceState);
