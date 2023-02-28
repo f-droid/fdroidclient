@@ -244,7 +244,8 @@ public class AppDetailsActivity extends AppCompatActivity
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         final AppPrefs prefs = appPrefs;
-        if (prefs == null) return true;
+        // don't show menu before appPrefs haven't been loaded
+        if (prefs == null || app == null) return false;
 
         MenuItem itemIgnoreAll = menu.findItem(R.id.action_ignore_all);
         itemIgnoreAll.setChecked(prefs.getIgnoreAllUpdates());
