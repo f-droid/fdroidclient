@@ -162,6 +162,8 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
     @Override
     protected void onCreate(Bundle icicle) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
+        fdroidApp.setSecureWindow(this);
+
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
 
         super.onCreate(icicle);
