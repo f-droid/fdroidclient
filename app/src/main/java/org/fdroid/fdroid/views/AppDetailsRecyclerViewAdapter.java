@@ -560,7 +560,7 @@ public class AppDetailsRecyclerViewAdapter
             updateAntiFeaturesWarning();
 
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
+            buttonPrimaryView.setVisibility((versions.isEmpty() || app.packageName.equals(R.string.applicationId)) ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
             buttonSecondaryView.setOnClickListener(new View.OnClickListener() {
