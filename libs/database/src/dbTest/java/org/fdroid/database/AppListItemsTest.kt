@@ -62,6 +62,12 @@ internal class AppListItemsTest : AppTest() {
             assertEquals(app1, apps[0])
         }
 
+        // get first app by partial search, sort by name
+        appDao.getAppListItems(pm, "On", NAME).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+
         // get second app by search, sort order doesn't matter
         appDao.getAppListItems(pm, "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
@@ -152,6 +158,27 @@ internal class AppListItemsTest : AppTest() {
         // empty search for unknown search term
         appDao.getAppListItems(pm, "A", "foo bar", LAST_UPDATED).getOrFail().let { apps ->
             assertEquals(0, apps.size)
+        }
+    }
+
+    @Test
+    fun testMalformedSearchQuery() {
+        every { pm.getInstalledPackages(0) } returns emptyList()
+
+        // without category
+        appDao.getAppListItems(pm, "\"", LAST_UPDATED).getOrFail().let { apps ->
+            assertTrue(apps.isEmpty())
+        }
+        appDao.getAppListItems(pm, "*simple\"*", NAME).getOrFail().let { apps ->
+            assertTrue(apps.isEmpty())
+        }
+
+        // with category
+        appDao.getAppListItems(pm, "Category", "\"", LAST_UPDATED).getOrFail().let { apps ->
+            assertTrue(apps.isEmpty())
+        }
+        appDao.getAppListItems(pm, "Category", "*simple\"*", NAME).getOrFail().let { apps ->
+            assertTrue(apps.isEmpty())
         }
     }
 
