@@ -28,6 +28,7 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -65,6 +66,7 @@ import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import org.fdroid.fdroid.panic.HidingManager;
+import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.index.IndexFormatVersion;
 
@@ -326,6 +328,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         // note: we need this as soon as possible as lots of other code is relying on it
         FDroidDatabase db = DBHelper.getDb(this);
         db.getRepositoryDao().getLiveRepositories().observeForever(repositories -> repos = repositories);
+
+        // register broadcast receivers
+        registerReceiver(new DeviceStorageReceiver(), new IntentFilter(Intent.ACTION_DEVICE_STORAGE_LOW));
 
         applyTheme();
 

@@ -447,6 +447,8 @@
             android:name=".receiver.StartupReceiver"
             android:exported="false">
             <intent-filter>
+                <!-- Implicit Broadcast Exception
+                https://developer.android.com/guide/components/broadcast-exceptions -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
                 <category android:name="android.intent.category.HOME" />
@@ -456,13 +458,6 @@
             android:name=".NotificationBroadcastReceiver"
             android:exported="false">
             <!-- Doesn't require an intent-filter because it is explicitly invoked via Intent.setClass() -->
-        </receiver>
-        <receiver
-            android:name=".receiver.DeviceStorageReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-            </intent-filter>
         </receiver>
 
         <service
