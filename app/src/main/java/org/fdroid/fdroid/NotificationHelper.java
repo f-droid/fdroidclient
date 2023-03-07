@@ -367,7 +367,8 @@ public class NotificationHelper {
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_UPDATE_CLEARED);
         intentDeleted.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setDeleteIntent(piDeleted);
         loadLargeIconForEntry(entry, builder, NOTIFY_ID_UPDATES, entry.getCanonicalUrl());
         return builder.build();
@@ -408,7 +409,8 @@ public class NotificationHelper {
         // Intent to open main app list
         Intent intentObject = new Intent(context, MainActivity.class);
         intentObject.putExtra(MainActivity.EXTRA_VIEW_UPDATES, true);
-        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, CHANNEL_UPDATES)
@@ -429,7 +431,8 @@ public class NotificationHelper {
 
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED);
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
     }
@@ -455,7 +458,8 @@ public class NotificationHelper {
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_INSTALLED_CLEARED);
         intentDeleted.putExtra(DownloaderService.EXTRA_CANONICAL_URL, entry.getCanonicalUrl());
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setDeleteIntent(piDeleted);
 
         loadLargeIconForEntry(entry, builder, NOTIFY_ID_INSTALLED, entry.getCanonicalUrl());
@@ -487,7 +491,8 @@ public class NotificationHelper {
 
         // Intent to open main app list
         Intent intentObject = new Intent(context, MainActivity.class);
-        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piAction = PendingIntent.getActivity(context, 0, intentObject,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, CHANNEL_INSTALLS)
@@ -505,7 +510,8 @@ public class NotificationHelper {
         }
         Intent intentDeleted = new Intent(BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED);
         intentDeleted.setClass(context, NotificationBroadcastReceiver.class);
-        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent piDeleted = PendingIntent.getBroadcast(context, 0, intentDeleted,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         builder.setDeleteIntent(piDeleted);
         return builder.build();
     }
