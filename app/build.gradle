@@ -26,7 +26,7 @@ def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 android {
     buildToolsVersion "33.0.2"
 
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         versionCode 1016051
@@ -85,6 +85,7 @@ android {
         }
         basic {
             dimension "base"
+            targetSdkVersion 33
             applicationId basicApplicationId
             resValue "string", "applicationId", basicApplicationId
         }
