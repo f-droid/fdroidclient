@@ -167,7 +167,6 @@ dependencies {
 
     implementation 'com.google.zxing:core:3.3.3' // newer version need minSdk 24 or library desugering
     implementation 'info.guardianproject.netcipher:netcipher:2.2.0-alpha'
-    implementation 'info.guardianproject.panic:panic:1.0'
     //noinspection GradleDependency -> Commons IO > 2.5 uses java.nio.file, which requires desugaring
     implementation 'commons-io:commons-io:2.6'
     implementation 'commons-net:commons-net:3.6'
@@ -183,6 +182,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
 
     implementation 'org.bouncycastle:bcprov-jdk15to18:1.71'
+    fullImplementation 'info.guardianproject.panic:panic:1.0'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15to18:1.71'
     fullImplementation 'org.jmdns:jmdns:3.5.5'
     fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
