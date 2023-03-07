@@ -14,6 +14,8 @@ public class DeviceStorageReceiver extends BroadcastReceiver {
         if (intent == null) {
             return;
         }
+        // FIXME apps are strongly encouraged to use the improved Context.getCacheDir() behavior
+        //  so the system can automatically free up storage when needed.
         String action = intent.getAction();
         if (Intent.ACTION_DEVICE_STORAGE_LOW.equals(action)) {
             int percentageFree = Utils.getPercent(Utils.getImageCacheDirAvailableMemory(context),
