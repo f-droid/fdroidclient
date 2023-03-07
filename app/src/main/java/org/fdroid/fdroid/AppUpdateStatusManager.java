@@ -615,7 +615,8 @@ public final class AppUpdateStatusManager {
                 PackageManager pm = context.getPackageManager();
                 Intent intentObject = pm.getLaunchIntentForPackage(entry.app.packageName);
                 if (intentObject != null) {
-                    entry.intent = PendingIntent.getActivity(context, 0, intentObject, 0);
+                    entry.intent = PendingIntent.getActivity(context, 0, intentObject,
+                            PendingIntent.FLAG_IMMUTABLE);
                 } else {
                     entry.intent = getAppDetailsIntent(entry.apk);
                 }
@@ -636,7 +637,8 @@ public final class AppUpdateStatusManager {
         return TaskStackBuilder.create(context)
                 .addParentStack(AppDetailsActivity.class)
                 .addNextIntent(notifyIntent)
-                .getPendingIntent(apk.packageName.hashCode(), PendingIntent.FLAG_UPDATE_CURRENT);
+                .getPendingIntent(apk.packageName.hashCode(), PendingIntent.FLAG_UPDATE_CURRENT |
+                        PendingIntent.FLAG_IMMUTABLE);
     }
 
     private PendingIntent getAppErrorIntent(AppUpdateStatus entry) {
@@ -650,6 +652,6 @@ public final class AppUpdateStatusManager {
                 context,
                 0,
                 errorDialogIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 }

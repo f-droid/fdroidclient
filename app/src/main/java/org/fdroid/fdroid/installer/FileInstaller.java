@@ -64,7 +64,7 @@ public class FileInstaller extends Installer {
                 context.getApplicationContext(),
                 localApkUri.hashCode(),
                 installIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_USER_INTERACTION,
                 installPendingIntent);
@@ -80,7 +80,7 @@ public class FileInstaller extends Installer {
                 context.getApplicationContext(),
                 apk.packageName.hashCode(),
                 uninstallIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         sendBroadcastUninstall(Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
     }
