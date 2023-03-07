@@ -22,14 +22,19 @@
 
 package org.fdroid.fdroid.views.main;
 
+import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -92,6 +97,11 @@ public class MainActivity extends AppCompatActivity {
     private MainViewAdapter adapter;
     private BottomNavigationView bottomNavigation;
     private BadgeDrawable updatesBadge;
+
+    private final ActivityResultLauncher<String> permissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), (isGranted) -> {
+                // no-op
+            });
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -166,6 +176,19 @@ public class MainActivity extends AppCompatActivity {
         // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
         checkForAddRepoIntent(getIntent());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // don't request this in onResume, because the launcher causes a call to that,
+        // even if permission permanently denied, so we'll get an infinite loop
+        if (Build.VERSION.SDK_INT >= 33) {
+            String notificationPerm = Manifest.permission.POST_NOTIFICATIONS;
+            if (ContextCompat.checkSelfPermission(this, notificationPerm) != PackageManager.PERMISSION_GRANTED) {
+                permissionLauncher.launch(notificationPerm);
+            }
+        }
     }
 
     @Override
