@@ -210,7 +210,7 @@ public abstract class Installer {
         sendBroadcastUninstall(context, app, apk, action, null, null);
     }
 
-    private static void sendBroadcastUninstall(Context context, App app, Apk apk, String action,
+    static void sendBroadcastUninstall(Context context, App app, Apk apk, String action,
                                                PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", apk.packageName, null);
 
