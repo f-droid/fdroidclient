@@ -28,6 +28,7 @@ public class PackageManagerCompat {
     private static final String TAG = "PackageManagerCompat";
 
     public static void setInstaller(Context context, PackageManager mPm, String packageName) {
+        if (Build.VERSION.SDK_INT >= 30) return; // not working anymore on this SDK level
         try {
             if (Build.VERSION.SDK_INT >= 24 && PrivilegedInstaller.isDefault(context)) {
                 mPm.setInstallerPackageName(packageName, PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);

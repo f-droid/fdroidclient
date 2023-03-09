@@ -60,6 +60,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkFileProvider;
 import org.fdroid.fdroid.installer.InstallHistoryService;
+import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
@@ -108,6 +109,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static volatile Repository repo;
 
     public static volatile List<Repository> repos;
+    public static volatile SessionInstallManager sessionInstallManager;
 
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
 
@@ -341,6 +343,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
         CleanCacheWorker.schedule(this);
 
+        sessionInstallManager = new SessionInstallManager(getApplicationContext());
         notificationHelper = new NotificationHelper(getApplicationContext());
 
         if (preferences.isIndexNeverUpdated()) {

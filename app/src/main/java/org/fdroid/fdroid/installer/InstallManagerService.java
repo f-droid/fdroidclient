@@ -357,6 +357,7 @@ public class InstallManagerService extends Service {
 
                         App app = appUpdateStatusManager.getApp(canonicalUrl);
                         Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
+                        Log.e(TAG, "InstallManagerService: INSTALL : " + apk); // TODO remove
                         if (apk != null) {
                             InstallerService.install(context, localApkUri, canonicalUri, app, apk);
                         }
