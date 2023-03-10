@@ -18,8 +18,6 @@ def getVersionName = { ->
     return stdout.toString().trim()
 }
 
-def fullApplicationId = "org.fdroid.fdroid"
-def basicApplicationId = "org.fdroid.basic"
 // yes, this actually needs both quotes https://stackoverflow.com/a/41391841
 def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
@@ -31,6 +29,7 @@ android {
     defaultConfig {
         versionCode 1016051
         versionName getVersionName()
+        applicationId "org.fdroid"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         minSdkVersion 23
@@ -67,7 +66,6 @@ android {
             getIsDefault().set(true)
             manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
             applicationIdSuffix ".debug"
-            resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
             // testProguardFiles gets partially ignored for instrumentation tests
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
@@ -80,15 +78,16 @@ android {
         full {
             getIsDefault().set(true)
             dimension "base"
-            applicationId fullApplicationId
-            resValue "string", "applicationId", fullApplicationId
+            applicationIdSuffix ".fdroid"
         }
         basic {
             dimension "base"
             targetSdkVersion 33
-            applicationId basicApplicationId
-            resValue "string", "applicationId", basicApplicationId
+            applicationIdSuffix ".basic"
         }
+    }
+    applicationVariants.all { variant ->
+        variant.resValue  "string", "applicationId", variant.applicationId
     }
 
     compileOptions {
@@ -206,7 +205,7 @@ dependencies {
 
 // org.fdroid.fdroid.updater.UpdateServiceTest needs app-full-debug.apk
 android.productFlavors.all { flavor ->
-    if (flavor.name.equals("full")) {
+    if (flavor.name == "full") {
         project.afterEvaluate { project ->
             def dep = tasks.getByName("assembleFullDebug")
             project.tasks.withType(Test) { task ->
