@@ -65,7 +65,6 @@ android {
             getIsDefault().set(true)
             manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
             applicationIdSuffix ".debug"
-            resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
             // testProguardFiles gets partially ignored for instrumentation tests
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
@@ -79,13 +78,27 @@ android {
             getIsDefault().set(true)
             dimension "base"
             applicationId fullApplicationId
-            resValue "string", "applicationId", fullApplicationId
+            buildTypes {
+                release {
+                    resValue "string", "applicationId", fullApplicationId
+                }
+                debug {
+                    resValue "string", "applicationId", fullApplicationId + buildTypes.debug.applicationIdSuffix
+                }
+            }
         }
         basic {
             dimension "base"
             targetSdkVersion 33
             applicationId basicApplicationId
-            resValue "string", "applicationId", basicApplicationId
+            buildTypes {
+                release {
+                    resValue "string", "applicationId", basicApplicationId
+                }
+                debug {
+                    resValue "string", "applicationId", basicApplicationId + buildTypes.debug.applicationIdSuffix
+                }
+            }
         }
     }
 
