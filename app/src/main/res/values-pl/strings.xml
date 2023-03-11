@@ -421,10 +421,10 @@
     <string name="panic_hide_title">Ukryj %s</string>
     <string name="panic_hide_summary">Aplikacja ukryje się</string>
     <string name="panic_hide_warning_title">Pamiętaj, jak przywrócić</string>
-    <string name="panic_hide_warning_message">W przypadku alarmu spowoduje to usunięcie %1$s z launchera. Jedynie wpisanie „%2$d” w fałszywej aplikacji %3$s może go przywrócić.</string>
+    <string name="panic_hide_warning_message">W przypadku alarmu spowoduje to usunięcie %1$s z launchera. Tylko wpisanie „%2$d” w fałszywej aplikacji %3$s może go przywrócić.</string>
     <string name="hiding_calculator">Kalkulator</string>
     <string name="hiding_dialog_title">Ukryj %s teraz</string>
-    <string name="hiding_dialog_message">Czy na pewno chcesz usunąć %1$s z launchera\? Jedynie wpisanie „%2$d” w fałszywej aplikacji %3$s może go przywrócić.</string>
+    <string name="hiding_dialog_message">Czy na pewno chcesz usunąć %1$s z launchera\? Tylko wpisanie „%2$d” w fałszywej aplikacji %3$s może go przywrócić.</string>
     <string name="hiding_dialog_warning">Ostrzeżenie: Wszelkie skróty aplikacji na ekranie głównym również zostaną usunięte i należy dodać je ponownie ręcznie.</string>
     <string name="hide_on_long_search_press_title">Ukrywaj przyciskiem szukania</string>
     <string name="hide_on_long_search_press_summary">Przytrzymanie przycisku szukania ukryje aplikację</string>
