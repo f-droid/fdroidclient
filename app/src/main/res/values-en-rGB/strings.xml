@@ -529,4 +529,6 @@
     <string name="apps">Apps</string>
     <string name="has_disallow_install_unknown_sources_globally">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
     <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
+    <string name="use_ipfs_gateways">Use IPFS gateways</string>
+    <string name="use_ipfs_gateways_summary">Download files from IPFS mirrors, if supported by the repo.</string>
 </resources>
