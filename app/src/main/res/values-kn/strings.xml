@@ -105,7 +105,7 @@
     <string name="repo_error_empty_username">ಖಾಲಿ ಬಳಕೆದಾರಹೆಸರು, ರುಜುವಾತುಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗಿಲ್ಲ</string>
     <string name="no_such_app">ಅಂತಹ ಯಾವುದೇ ಅಪ್ಲಿಕೇಶನ್ ಕಂಡುಬಂದಿಲ್ಲ.</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s ನ ಅಭಿವರ್ಧಕರಿಗೆ ಒಂದು ಕಪ್ ಕಾಫಿ ನೀಡಿ!</string>
-    <string name="app_details_donate_prompt">%1$s ಅನ್ನು %2$s ನಿಂದ ರಚಿಸಲಾಗಿದೆ. %1$s ನ ಅಭಿವರ್ಧಕರಿಗೆ ಅವರಿಗೆ ಕಾಫಿ ಖರೀದಿಸಿ!</string>
+    <string name="app_details_donate_prompt">%1$s ಅನ್ನು %2$s ಅವರಿಂದ ರಚಿಸಲಾಗಿದೆ. ಅವರಿಗೆ ಕಾಫಿ ಖರೀದಿಸಿ!</string>
     <string name="about_source">ಮೂಲ ಕೋಡ್</string>
     <string name="app_incompatible">ಹೊಂದಾಣಿಕೆಯಾಗುವುದಿಲ್ಲ</string>
     <string name="app_recommended_version_installed">ಆವೃತ್ತಿ%1$s (ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ)</string>
@@ -157,7 +157,7 @@
     <string name="antifeatures">ವಿರೋಧಿ ವೈಶಿಷ್ಟ್ಯಗಳು</string>
     <string name="antiadslist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಜಾಹೀರಾತನ್ನು ಒಳಗೊಂಡಿದೆ</string>
     <string name="antinonfreeadlist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ಆಡ್-ಆನ್‌ಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ</string>
-    <string name="antinonfreenetlist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ನೆಟ್‌ವರ್ಕ್ ಸೇವೆಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ</string>
+    <string name="antinonfreenetlist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ನೆಟ್‌ವರ್ಕ್ ಸೇವೆಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ ಅಥವಾ ಅವಲಂಬಿಸುತ್ತದೆ</string>
     <string name="antinonfreedeplist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಇತರ ಉಚಿತವಲ್ಲದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</string>
     <string name="antiupstreamnonfreelist">ಅಪ್ಸ್ಟ್ರೀಮ್ ಮೂಲ ಕೋಡ್ ಸಂಪೂರ್ಣವಾಗಿ ಉಚಿತವಲ್ಲ</string>
     <string name="antinonfreeassetslist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ಸ್ವತ್ತುಗಳನ್ನು ಒಳಗೊಂಡಿದೆ</string>
@@ -192,11 +192,11 @@
     <string name="app_list_download_ready">ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗಿದೆ, ಸ್ಥಾಪಿಸಲು ಸಿದ್ಧವಾಗಿದೆ</string>
     <string name="app_installed_media">ಫೈಲ್ ಅನ್ನು %s ಗೆ ಸ್ಥಾಪಿಸಲಾಗಿದೆ</string>
     <string name="app_permission_storage">ಇದನ್ನು ಶೇಖರಣೆಗೆ ಸ್ಥಾಪಿಸಲು ಎಫ್-ಡ್ರಾಯಿಡ್‌ಗೆ ಶೇಖರಣಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ. ಅನುಸ್ಥಾಪನೆಯೊಂದಿಗೆ ಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಮುಂದಿನ ಪರದೆಯಲ್ಲಿ ಅದನ್ನು ಅನುಮತಿಸಿ.</string>
-    <string name="app_details__incompatible_mismatched_signers">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಗೆ ವಿಭಿನ್ನ ಸಹಿ</string>
+    <string name="app_details__incompatible_mismatched_signers">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಯಿಂದ ವಿಭಿನ್ನ ಸಹಿ</string>
     <string name="app_details__no_versions__show_incompat_versions">ಹೇಗಾದರೂ ಹೊಂದಾಣಿಕೆಯಾಗದ ಆವೃತ್ತಿಗಳನ್ನು ಇಲ್ಲಿ ತೋರಿಸಲು, \"%1$s\" ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.</string>
     <string name="app_details__no_versions__no_compatible_signers">ಹೊಂದಾಣಿಕೆಯ ಸಹಿಯೊಂದಿಗೆ ಯಾವುದೇ ಆವೃತ್ತಿಗಳಿಲ್ಲ</string>
     <string name="app_details__no_versions__none_compatible_with_device">ಯಾವುದೇ ಆವೃತ್ತಿಗಳು ಸಾಧನದೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಯು ಲಭ್ಯವಿರುವ ಯಾವುದೇ ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಅಸ್ಥಾಪಿಸುವುದರಿಂದ ಹೊಂದಾಣಿಕೆಯ ಆವೃತ್ತಿಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತು ಸ್ಥಾಪಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ. ಗೂಗಲ್ ಪ್ಲೇ ಅಥವಾ ಇತರ ಮೂಲಗಳ ಮೂಲಕ ಸ್ಥಾಪಿಸಲಾದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಬೇರೆ ಪ್ರಮಾಣಪತ್ರದಿಂದ ಸಹಿ ಮಾಡಿದ್ದರೆ ಇದು ಹೆಚ್ಚಾಗಿ ಸಂಭವಿಸುತ್ತದೆ.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">ಸ್ಥಾಪಿಸಲಾದ ಆವೃತ್ತಿಯು ಲಭ್ಯವಿರುವ ಯಾವುದೇ ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಅಸ್ಥಾಪಿಸುವುದರಿಂದ ಹೊಂದಾಣಿಕೆಯ ಆವೃತ್ತಿಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತು ಸ್ಥಾಪಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ. ಗೂಗಲ್ ಪ್ಲೇ ಅಥವಾ ಇತರ ಮೂಲಗಳ ಮೂಲಕ ಸ್ಥಾಪಿಸಲಾದ ಅಪ್ಲಿಕೇಶನ್ಗಳನ್ನು ಬೇರೆ ಪ್ರಮಾಣಪತ್ರದಿಂದ ಸಹಿ ಮಾಡಲಾಗಿದ್ದರೆ ಇದು ಹೆಚ್ಚಾಗಿ ಸಂಭವಿಸುತ್ತದೆ.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s ನೊಂದಿಗೆ ದುರ್ಬಲತೆಯನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿದ್ದೇವೆ. ಈ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ತಕ್ಷಣ ಅಸ್ಥಾಪಿಸಲು ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s ನೊಂದಿಗೆ ದುರ್ಬಲತೆಯನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿದ್ದೇವೆ. ಹೊಸ ಆವೃತ್ತಿಗೆ ತಕ್ಷಣ ನವೀಕರಿಸಲು ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ.</string>
     <string name="updates__app_with_known_vulnerability__ignore">ನಿರ್ಲಕ್ಷಿಸಿ</string>
@@ -513,4 +513,7 @@
     <string name="has_disallow_install_unknown_sources">ಹೊಸ ರೆಪೋಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಈ ಬಳಕೆದಾರನಿಂದ ಅಜ್ಞಾತ ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
     <string name="app_list_results_hidden_antifeature_settings">ನಿಮ್ಮ ಆಂಟಿಫೀಚರ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಆಧರಿಸಿ ಕೆಲವು ಫಲಿತಾಂಶಗಳನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ.</string>
     <string name="has_disallow_install_unknown_sources_globally">ಹೊಸ ರೆಪೊಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಅಜ್ಞಾತ ಮೂಲಗಳಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ನಿಮ್ಮ ಸಾಧನ ನಿರ್ವಾಹಕರು ಅನುಮತಿಸುವುದಿಲ್ಲ</string>
+    <string name="use_ipfs_gateways">IPFS ಗೇಟ್ವೇ ಅನ್ನು ಬಳಸಿರಿ</string>
+    <string name="swap_wifi_vpn_conflict">ಸಕ್ರಿಯ ವಿ.ಪಿ.ಎನ್ ಜೊತೆಗೆ ಸಂಘರ್ಷಿಸುತ್ತದೆ!</string>
+    <string name="use_ipfs_gateways_summary">ರೆಪೊ ಬೆಂಬಲಿಸಿದರೆ IPFS ಕನ್ನಡಿಗಳಿಂದ ಫೈಲ್‌ಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.</string>
 </resources>
