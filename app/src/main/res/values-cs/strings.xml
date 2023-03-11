@@ -317,7 +317,7 @@
     <string name="update_all">Aktualizovat vše</string>
     <string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
     <string name="by_author_format">od %s</string>
-    <string name="force_old_index">vynutit původní formát rejstříku</string>
+    <string name="force_old_index">Vynutit původní formát rejstříku</string>
     <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou, použít XML rejstřík aplikací</string>
     <string name="app_details__incompatible_mismatched_signers">Rozdílný podepisovač oproti nainstalované verzi</string>
     <string name="app_details__no_versions__show_incompat_versions">Pro zobrazení nekompatibilních verzí i tak, zapněte v nastavení „%1$s“.</string>
