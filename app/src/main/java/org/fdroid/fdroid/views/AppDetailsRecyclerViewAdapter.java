@@ -48,6 +48,7 @@ import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.TransitionManager;
 
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.database.AppPrefs;
@@ -420,11 +421,7 @@ public class AppDetailsRecyclerViewAdapter
             descriptionMoreView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Make this "header section" the focused child, so that RecyclerView will use
-                    // it as the anchor in the layout process. Otherwise the RV might select another
-                    // view as the anchor, resulting in that the top of this view is instead scrolled
-                    // off the screen. Refer to LinearLayoutManager.updateAnchorFromChildren(...).
-                    recyclerView.requestChildFocus(itemView, itemView);
+                    TransitionManager.beginDelayedTransition(recyclerView, null);
                     if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
                         descriptionView.setMaxLines(MAX_LINES);
                         descriptionMoreView.setText(R.string.more);
