@@ -1,3 +1,11 @@
+### 1.16.2 (2023-03-14)
+
+* Fix four crashes from ACRA crash reports.
+
+* Fix the "Prevent Screenshots" setting so it works on all screens.
+
+* Translation updates.
+
 ### 1.16.1 (2023-02-27)
 
 * Add IPFS as opt-in Expert Setting, with selected IPFS Gateways built-in #2504
