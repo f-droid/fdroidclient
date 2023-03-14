@@ -232,10 +232,18 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             try {
                 new URL(text);
                 Uri uri = Uri.parse(text);
-                fingerprint = uri.getQueryParameter("fingerprint");
+                try {
+                    fingerprint = uri.getQueryParameter("fingerprint");
+                } catch (UnsupportedOperationException e) {
+                    Log.e(TAG, "Error getting fingerprint ", e);
+                }
                 // uri might contain a QR-style, all uppercase URL:
                 if (TextUtils.isEmpty(fingerprint)) {
-                    fingerprint = uri.getQueryParameter("FINGERPRINT");
+                    try {
+                        fingerprint = uri.getQueryParameter("FINGERPRINT");
+                    } catch (UnsupportedOperationException e) {
+                        Log.e(TAG, "Error getting fingerprint ", e);
+                    }
                 }
 
                 String userInfo = uri.getUserInfo();

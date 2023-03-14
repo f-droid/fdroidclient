@@ -379,7 +379,7 @@ internal interface AppDaoInt : AppDao {
         return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
             LAST_UPDATED -> getAppListItemsByLastUpdated().map(packageManager)
             NAME -> getAppListItemsByName().map(packageManager)
-        } else getAppListItems(searchQuery).map(packageManager)
+        } else getAppListItems(escapeQuery(searchQuery)).map(packageManager)
     }
 
     override fun getAppListItems(
@@ -391,7 +391,12 @@ internal interface AppDaoInt : AppDao {
         return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
             LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
             NAME -> getAppListItemsByName(category).map(packageManager)
-        } else getAppListItems(category, searchQuery).map(packageManager)
+        } else getAppListItems(category, escapeQuery(searchQuery)).map(packageManager)
+    }
+
+    private fun escapeQuery(searchQuery: String): String {
+        val sanitized = searchQuery.replace(Regex.fromLiteral("\""), "\"\"")
+        return "\"*$sanitized*\""
     }
 
     private fun LiveData<List<AppListItem>>.map(
@@ -408,6 +413,9 @@ internal interface AppDaoInt : AppDao {
         }
     }
 
+    /**
+     * Warning: Run [escapeQuery] on the given [searchQuery] before.
+     */
     @Transaction
     @Query("""
         SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
@@ -416,10 +424,13 @@ internal interface AppDaoInt : AppDao {
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND ${AppMetadataFts.TABLE} MATCH '"*' || :searchQuery || '*"'
+        WHERE pref.enabled = 1 AND ${AppMetadataFts.TABLE} MATCH :searchQuery
         GROUP BY packageName HAVING MAX(pref.weight)""")
     fun getAppListItems(searchQuery: String): LiveData<List<AppListItem>>
 
+    /**
+     * Warning: Run [escapeQuery] on the given [searchQuery] before.
+     */
     @Transaction
     @Query("""
         SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
@@ -429,7 +440,7 @@ internal interface AppDaoInt : AppDao {
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
-              ${AppMetadataFts.TABLE} MATCH '"*' || :searchQuery || '*"'
+              ${AppMetadataFts.TABLE} MATCH :searchQuery
         GROUP BY packageName HAVING MAX(pref.weight)""")
     fun getAppListItems(category: String, searchQuery: String): LiveData<List<AppListItem>>
 
