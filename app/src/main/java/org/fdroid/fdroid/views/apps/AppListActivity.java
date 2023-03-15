@@ -44,6 +44,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.main.MainActivity;
 
@@ -57,7 +58,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -269,9 +269,9 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
                     return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
                 } else if (sortClauseSelected.equals(SortClause.WORDS)) {
                     String n1 = (o1.getName() == null ? "" : o1.getName())
-                            .toLowerCase(Locale.getDefault());
+                            .toLowerCase(LocaleCompat.getDefault());
                     String n2 = (o2.getName() == null ? "" : o2.getName())
-                            .toLowerCase(Locale.getDefault());
+                            .toLowerCase(LocaleCompat.getDefault());
                     return n1.compareTo(n2);
                 }
                 return 0;
