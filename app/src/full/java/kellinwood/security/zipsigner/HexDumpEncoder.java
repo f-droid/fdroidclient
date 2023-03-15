@@ -18,6 +18,8 @@
 
 package kellinwood.security.zipsigner;
 
+import org.bouncycastle.util.encoders.HexEncoder;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
