@@ -11,6 +11,7 @@ import org.fdroid.index.v1.IndexV1VerifierKt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -29,6 +30,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk={23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
 public class LocalRepoKeyStoreTest {
 
     @Test
