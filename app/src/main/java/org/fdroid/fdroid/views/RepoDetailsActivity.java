@@ -47,13 +47,13 @@ import org.fdroid.fdroid.NfcNotEnabledActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.Callable;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -413,7 +413,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         disposable = Single.fromCallable(() -> appDao.getNumberOfAppsInRepository(repoId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(appCount -> numApps.setText(String.format(Locale.getDefault(), "%d", appCount)));
+                .subscribe(appCount -> numApps.setText(String.format(LocaleCompat.getDefault(), "%d", appCount)));
 
         setupDescription(repoView, repo);
         setupRepoFingerprint(repoView, repo);

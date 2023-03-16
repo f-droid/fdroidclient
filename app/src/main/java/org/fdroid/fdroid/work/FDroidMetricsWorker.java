@@ -30,6 +30,7 @@ import org.apache.commons.io.FileUtils;
 import org.fdroid.download.HttpPoster;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.json.JSONArray;
@@ -281,7 +282,7 @@ public class FDroidMetricsWorker extends Worker {
     private static class CleanInsightsReport {
         MatomoEvent[] events = new MatomoEvent[0];
         final long idsite = 3; // NOPMD
-        final String lang = Locale.getDefault().getLanguage();
+        final String lang = LocaleCompat.getDefault().getLanguage();
         final String ua = Utils.getUserAgent();
 
         private String getJsonString() throws JSONException {
