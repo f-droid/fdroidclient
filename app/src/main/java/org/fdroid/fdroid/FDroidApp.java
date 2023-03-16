@@ -115,7 +115,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     @Nullable
     public static volatile String queryString;
 
-    // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.bouncycastle.jce.provider.BouncyCastleProvider BOUNCYCASTLE_PROVIDER;
 
     /**
