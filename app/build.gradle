@@ -200,3 +200,15 @@ dependencies {
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'androidx.work:work-testing:2.7.1'
 }
+
+// org.fdroid.fdroid.updater.UpdateServiceTest needs app-full-debug.apk
+android.productFlavors.all { flavor ->
+    if (flavor.name.equals("full")) {
+        project.afterEvaluate { project ->
+            def dep = tasks.getByName("assembleFullDebug")
+            project.tasks.withType(Test) { task ->
+                task.dependsOn dep
+            }
+        }
+    }
+}
