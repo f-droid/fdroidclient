@@ -40,7 +40,7 @@ internal class DbUpdateCheckerTest : AppTest() {
     fun testSuggestedVersion() {
         val repoId = streamIndexV2IntoDb("index-min-v2.json")
         every {
-            packageManager.getPackageInfo(packageInfo.packageName, any())
+            packageManager.getPackageInfo(packageInfo.packageName, any<Int>())
         } returns packageInfo
         val appVersion = updateChecker.getSuggestedVersion(packageInfo.packageName)
         val expectedVersion = TestDataMinV2.version.toVersion(
@@ -55,7 +55,7 @@ internal class DbUpdateCheckerTest : AppTest() {
     @Test
     fun testSuggestedVersionRespectsReleaseChannels() {
         streamIndexV2IntoDb("index-mid-v2.json")
-        every { packageManager.getPackageInfo(packageInfo.packageName, any()) } returns null
+        every { packageManager.getPackageInfo(packageInfo.packageName, any<Int>()) } returns null
 
         // no suggestion version, because all beta
         val appVersion1 = updateChecker.getSuggestedVersion(packageInfo.packageName)
@@ -97,7 +97,7 @@ internal class DbUpdateCheckerTest : AppTest() {
         versionDao.insert(version2)
 
         // nothing is currently installed
-        every { packageManager.getPackageInfo(packageName, any()) } returns null
+        every { packageManager.getPackageInfo(packageName, any<Int>()) } returns null
 
         // if signer of first version is preferred first version is suggested as update
         assertEquals(
@@ -129,7 +129,7 @@ internal class DbUpdateCheckerTest : AppTest() {
     @Test
     fun testGetUpdatableApps() {
         streamIndexV2IntoDb("index-min-v2.json")
-        every { packageManager.getInstalledPackages(any()) } returns listOf(packageInfo)
+        every { packageManager.getInstalledPackages(any<Int>()) } returns listOf(packageInfo)
 
         val appVersions = updateChecker.getUpdatableApps()
         assertEquals(1, appVersions.size)
