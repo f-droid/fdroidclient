@@ -42,10 +42,12 @@
                 android:title="@string/over_data"
                 android:defaultValue="@integer/defaultOverData"
                 android:layout="@layout/preference_seekbar"/>
+        <!-- TODO re-enable once basic can do auto-downloads
         <SwitchPreferenceCompat
                 android:title="@string/update_auto_download"
                 android:summary="@string/update_auto_download_summary"
                 android:key="updateAutoDownload"/>
+        -->
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="updateIntervalSeekBarPosition"
                 android:title="@string/update_interval"
