@@ -11,7 +11,7 @@ java {
 
 // not really an Android library, but index is not publishing for JVM at the moment
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         minSdkVersion 21
     }
