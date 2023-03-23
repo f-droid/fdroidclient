@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    IMPORTANT: If you change anything here, also check if the same change needs to be made in
+               for the basic flavor: basic/res/xml/preferences.xml
+    -->
 
     <PreferenceScreen
         android:key="pref_about"
