@@ -471,7 +471,8 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".net.DownloaderService"
-            android:exported="false" />
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".installer.InstallerService"
             android:exported="false"
@@ -486,10 +487,6 @@
             android:name=".net.ConnectivityMonitorService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <service
-            android:name=".installer.InstallManagerService"
-            android:exported="false" />
 
         <service
             android:name=".installer.InstallHistoryService"

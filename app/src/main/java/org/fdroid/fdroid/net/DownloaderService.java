@@ -22,28 +22,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
 import android.os.PatternMatcher;
-import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.LogPrinter;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
 
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.NotFoundException;
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.installer.InstallManagerService;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.index.v2.FileV1;
 
 import java.io.File;
@@ -68,16 +66,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * through {@link #queue(Context, long, String, String, FileV1)}  calls.  The
  * service is started as needed, it handles each {@code Intent} using a worker
  * thread, and stops itself when it runs out of work.  Requests can be canceled
- * using {@link #cancel(Context, String)}.  If this service is killed during
- * operation, it will receive the queued {@link #queue(Context, long, String, String, FileV1)}
- * and {@link #cancel(Context, String)} requests again due to
- * {@link Service#START_REDELIVER_INTENT}.  Bad requests will be ignored,
+ * using {@link #cancel(Context, String)}.  Bad requests will be ignored,
  * including on restart after killing via {@link Service#START_NOT_STICKY}.
  * <p>
  * This "work queue processor" pattern is commonly used to offload tasks
  * from an application's main thread.  The DownloaderService class exists to
  * simplify this pattern and take care of the mechanics. DownloaderService
- * will receive the Intents, launch a worker thread, and stop the service as
+ * will receive the Intents, use a worker thread, and stop the service as
  * appropriate.
  * <p>
  * All requests are handled on a single worker thread -- they may take as
@@ -94,14 +89,14 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
  * than with APKs since there is not reliable standard for a unique ID for
  * media files, unlike APKs with {@code packageName} and {@code versionCode}.
  *
- * @see android.app.IntentService
+ * @see androidx.core.app.JobIntentService
  * @see org.fdroid.fdroid.installer.InstallManagerService
  */
-public class DownloaderService extends Service {
+public class DownloaderService extends JobIntentService {
     private static final String TAG = "DownloaderService";
+    private static final int JOB_ID = TAG.hashCode();
 
     private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
-    private static final String ACTION_CANCEL = "org.fdroid.fdroid.net.DownloaderService.action.CANCEL";
 
     public static final String ACTION_STARTED = "org.fdroid.fdroid.net.Downloader.action.STARTED";
     public static final String ACTION_PROGRESS = "org.fdroid.fdroid.net.Downloader.action.PROGRESS";
@@ -125,106 +120,39 @@ public class DownloaderService extends Service {
      * @see android.content.Intent#EXTRA_ORIGINATING_URI
      */
     public static final String EXTRA_CANONICAL_URL = "org.fdroid.fdroid.net.Downloader.extra.CANONICAL_URL";
-    private static final String EXTRA_INDEX_FILE_V1 = "org.fdroid.fdroid.net.Downloader.extra.INDEX_FILE_V1";
 
-    private volatile Looper serviceLooper;
-    private static volatile ServiceHandler serviceHandler;
     private static volatile Downloader downloader;
     private static volatile String activeCanonicalUrl;
+    private InstallManagerService installManagerService;
     private LocalBroadcastManager localBroadcastManager;
-
-    private final class ServiceHandler extends Handler {
-        static final String TAG = "ServiceHandler";
-
-        ServiceHandler(Looper looper) {
-            super(looper);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            Utils.debugLog(TAG, "Handling download message with ID of " + msg.what);
-            handleIntent((Intent) msg.obj);
-            stopSelf(msg.arg1);
-        }
-    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         Utils.debugLog(TAG, "Creating downloader service.");
-
-        HandlerThread thread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
-        thread.start();
-
-        serviceLooper = thread.getLooper();
-        if (BuildConfig.DEBUG) {
-            serviceLooper.setMessageLogging(new LogPrinter(Log.DEBUG, ServiceHandler.TAG));
-        }
-        serviceHandler = new ServiceHandler(serviceLooper);
+        installManagerService = InstallManagerService.getInstance(this);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Utils.debugLog(TAG, "Received Intent for downloading: " + intent + " (with a startId of " + startId + ")");
+    protected void onHandleWork(@NonNull Intent intent) {
+        Utils.debugLog(TAG, "Received Intent for downloading: " + intent);
 
-        if (intent == null) {
-            return START_NOT_STICKY;
-        }
-
-        String downloadUrl = intent.getDataString();
-        if (downloadUrl == null) {
-            Utils.debugLog(TAG, "Received Intent with no URI: " + intent);
-            return START_NOT_STICKY;
-        }
-        String canonicalUrl = intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL);
+        String canonicalUrl = intent.getDataString();
         if (canonicalUrl == null) {
-            Utils.debugLog(TAG, "Received Intent with no EXTRA_CANONICAL_URL: " + intent);
-            return START_NOT_STICKY;
+            Utils.debugLog(TAG, "Received Intent with no URI: " + intent);
+            return;
         }
-
-        if (ACTION_CANCEL.equals(intent.getAction())) {
-            Utils.debugLog(TAG, "Cancelling download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
-                    + " downloading from " + downloadUrl);
-            Integer whatToRemove = canonicalUrl.hashCode();
-            if (serviceHandler.hasMessages(whatToRemove)) {
-                Utils.debugLog(TAG, "Removing download with ID of " + whatToRemove
-                        + " from service handler, then sending interrupted event.");
-                serviceHandler.removeMessages(whatToRemove);
-                sendCancelledBroadcast(intent.getData(), canonicalUrl);
-            } else if (isActive(canonicalUrl)) {
-                downloader.cancelDownload();
-            } else {
-                Utils.debugLog(TAG, "ACTION_CANCEL called on something not queued or running"
-                        + " (expected to find message with ID of " + whatToRemove + " in queue).");
-            }
-        } else if (ACTION_QUEUE.equals(intent.getAction())) {
-            Message msg = serviceHandler.obtainMessage();
-            msg.arg1 = startId;
-            msg.obj = intent;
-            msg.what = canonicalUrl.hashCode();
-            serviceHandler.sendMessage(msg);
-            Utils.debugLog(TAG, "Queued download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
-                    + " using " + downloadUrl);
+        if (ACTION_QUEUE.equals(intent.getAction())) {
+            handleIntent(intent);
         } else {
             Utils.debugLog(TAG, "Received Intent with unknown action: " + intent);
         }
-
-        return START_REDELIVER_INTENT; // if killed before completion, retry Intent
     }
 
     @Override
     public void onDestroy() {
-        Utils.debugLog(TAG, "Destroying downloader service. Will move to background and stop our Looper.");
-        serviceLooper.quit(); //NOPMD - this is copied from IntentService, no super call needed
-    }
-
-    /**
-     * This service does not use binding, so no need to implement this method
-     */
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+        Utils.debugLog(TAG, "Destroying downloader service.");
     }
 
     /**
@@ -244,14 +172,20 @@ public class DownloaderService extends Service {
      *               android.content.Context#startService(Intent)}.
      */
     private void handleIntent(Intent intent) {
-        final Uri uri = intent.getData();
-        final long repoId = intent.getLongExtra(DownloaderService.EXTRA_REPO_ID, 0);
         final Uri canonicalUrl = intent.getData();
-        final Uri downloadUrl =
-                Uri.parse(intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
-        final FileV1 fileV1 = FileV1.deserialize(intent.getStringExtra(DownloaderService.EXTRA_INDEX_FILE_V1));
+        final App app = intent.getParcelableExtra(Installer.EXTRA_APP);
+        final Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+        final long repoId = intent.getLongExtra(DownloaderService.EXTRA_REPO_ID, apk.repoId);
+        final String extraUrl = intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL);
+        final Uri downloadUrl = Uri.parse(extraUrl == null ? apk.getDownloadUrl() : extraUrl);
+        final FileV1 fileV1 = apk.apkFile;
         final SanitizedFile localFile = ApkCache.getApkDownloadPath(this, canonicalUrl);
-        sendBroadcast(uri, DownloaderService.ACTION_STARTED, localFile, repoId, canonicalUrl);
+
+        Utils.debugLog(TAG, "Queued download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                + " using " + downloadUrl);
+
+        sendBroadcast(canonicalUrl, DownloaderService.ACTION_STARTED, localFile, repoId, canonicalUrl);
+        installManagerService.onDownloadStarted(canonicalUrl);
 
         try {
             activeCanonicalUrl = canonicalUrl.toString();
@@ -269,30 +203,38 @@ public class DownloaderService extends Service {
                 }
             }
             downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, fileV1, localFile);
-            downloader.setListener(new ProgressListener() {
-                @Override
-                public void onProgress(long bytesRead, long totalBytes) {
-                    Intent intent = new Intent(DownloaderService.ACTION_PROGRESS);
-                    intent.setData(canonicalUrl);
-                    intent.putExtra(DownloaderService.EXTRA_BYTES_READ, bytesRead);
-                    intent.putExtra(DownloaderService.EXTRA_TOTAL_BYTES, totalBytes);
-                    localBroadcastManager.sendBroadcast(intent);
-                }
+            final long[] lastProgressSent = {0};
+            downloader.setListener((bytesRead, totalBytes) -> {
+                // don't send a progress updates out to frequently, to not hit notification rate-limiting
+                // this can cause us to miss critical notification updates
+                long now = System.currentTimeMillis();
+                if (now - lastProgressSent[0] < 1_000) return;
+                lastProgressSent[0] = now;
+                Intent intent1 = new Intent(DownloaderService.ACTION_PROGRESS);
+                intent1.setData(canonicalUrl);
+                intent1.putExtra(DownloaderService.EXTRA_BYTES_READ, bytesRead);
+                intent1.putExtra(DownloaderService.EXTRA_TOTAL_BYTES, totalBytes);
+                localBroadcastManager.sendBroadcast(intent1);
+                installManagerService.onDownloadProgress(canonicalUrl, app, apk, bytesRead, totalBytes);
             });
             downloader.download();
-            sendBroadcast(uri, DownloaderService.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
+            sendBroadcast(canonicalUrl, DownloaderService.ACTION_COMPLETE, localFile, repoId, canonicalUrl);
+            installManagerService.onDownloadComplete(canonicalUrl, localFile, app, apk);
         } catch (InterruptedException e) {
-            sendBroadcast(uri, DownloaderService.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
+            sendBroadcast(canonicalUrl, DownloaderService.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
+            installManagerService.onDownloadFailed(canonicalUrl, null);
         } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
-                | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
-                | ProtocolException | UnknownHostException | NotFoundException e) {
+                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
+                 | ProtocolException | UnknownHostException | NotFoundException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, "CONNECTION_FAILED: " + e.getLocalizedMessage());
-            sendBroadcast(uri, DownloaderService.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
+            sendBroadcast(canonicalUrl, DownloaderService.ACTION_CONNECTION_FAILED, localFile, repoId, canonicalUrl);
+            installManagerService.onDownloadFailed(canonicalUrl, e.getLocalizedMessage());
         } catch (IOException e) {
-            e.printStackTrace();
-            sendBroadcast(uri, DownloaderService.ACTION_INTERRUPTED, localFile,
+            Log.e(TAG, "Error downloading: ", e);
+            sendBroadcast(canonicalUrl, DownloaderService.ACTION_INTERRUPTED, localFile,
                     e.getLocalizedMessage(), repoId, canonicalUrl);
+            installManagerService.onDownloadFailed(canonicalUrl, e.getLocalizedMessage());
         } finally {
             if (downloader != null) {
                 downloader.close();
@@ -300,10 +242,6 @@ public class DownloaderService extends Service {
         }
         downloader = null;
         activeCanonicalUrl = null;
-    }
-
-    private void sendCancelledBroadcast(Uri uri, String canonicalUrl) {
-        sendBroadcast(uri, DownloaderService.ACTION_INTERRUPTED, null, 0, Uri.parse(canonicalUrl));
     }
 
     private void sendBroadcast(Uri uri, String action, File file, long repoId, Uri canonicalUrl) {
@@ -335,10 +273,10 @@ public class DownloaderService extends Service {
      * @param context      this app's {@link Context}
      * @param repoId       the database ID number representing one repo
      * @param canonicalUrl the URL used as the unique ID throughout F-Droid
-     * @see #cancel(Context, String)
+     * @see #cancel(String)
      */
     public static void queue(Context context, long repoId, String canonicalUrl,
-                             String downloadUrl, FileV1 fileV1) {
+                             String downloadUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
@@ -348,8 +286,20 @@ public class DownloaderService extends Service {
         intent.setData(Uri.parse(canonicalUrl));
         intent.putExtra(DownloaderService.EXTRA_REPO_ID, repoId);
         intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, downloadUrl);
-        intent.putExtra(DownloaderService.EXTRA_INDEX_FILE_V1, fileV1.serialize());
-        context.startService(intent);
+        JobIntentService.enqueueWork(context, DownloaderService.class, JOB_ID, intent);
+    }
+
+    public static void queue(Context context, String canonicalUrl, @NonNull App app, @NonNull Apk apk) {
+        if (TextUtils.isEmpty(canonicalUrl) || apk.apkFile == null) {
+            return;
+        }
+        Utils.debugLog(TAG, "Queue download " + canonicalUrl.hashCode() + "/" + canonicalUrl);
+        Intent intent = new Intent(context, DownloaderService.class);
+        intent.setAction(ACTION_QUEUE);
+        intent.setData(Uri.parse(canonicalUrl));
+        intent.putExtra(Installer.EXTRA_APP, app);
+        intent.putExtra(Installer.EXTRA_APK, apk);
+        JobIntentService.enqueueWork(context, DownloaderService.class, JOB_ID, intent);
     }
 
     /**
@@ -357,35 +307,22 @@ public class DownloaderService extends Service {
      * <p>
      * All notifications are sent as an {@link Intent} via local broadcasts to be received by
      *
-     * @param context      this app's {@link Context}
      * @param canonicalUrl The URL to remove from the download queue
-     * @see #queue(Context, long, String, String, FileV1
+     * @see #queue(Context, String, App, Apk)
      */
-    public static void cancel(Context context, String canonicalUrl) {
+    public static void cancel(String canonicalUrl) {
         if (TextUtils.isEmpty(canonicalUrl)) {
             return;
         }
-        Utils.debugLog(TAG, "Send cancel for " + canonicalUrl.hashCode() + "/" + canonicalUrl);
-        Intent intent = new Intent(context, DownloaderService.class);
-        intent.setAction(ACTION_CANCEL);
-        intent.setData(Uri.parse(canonicalUrl));
-        intent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUrl);
-        context.startService(intent);
-    }
-
-    /**
-     * Check if a URL is waiting in the queue for downloading or if actively being downloaded.
-     * This is useful for checking whether to re-register {@link android.content.BroadcastReceiver}s
-     * in {@link android.app.AppCompatActivity#onResume()}.
-     */
-    public static boolean isQueuedOrActive(String canonicalUrl) {
-        if (TextUtils.isEmpty(canonicalUrl)) { //NOPMD - suggests unreadable format
-            return false;
+        Utils.debugLog(TAG, "Cancelling download of " + canonicalUrl.hashCode() + "/" + canonicalUrl
+                + " downloading from " + canonicalUrl);
+        int whatToRemove = canonicalUrl.hashCode();
+        if (isActive(canonicalUrl)) {
+            downloader.cancelDownload();
+        } else {
+            Utils.debugLog(TAG, "ACTION_CANCEL called on something not queued or running"
+                    + " (expected to find message with ID of " + whatToRemove + " in queue).");
         }
-        if (serviceHandler == null) {
-            return false; // this service is not even running
-        }
-        return serviceHandler.hasMessages(canonicalUrl.hashCode()) || isActive(canonicalUrl);
     }
 
     /**
