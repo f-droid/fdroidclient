@@ -432,8 +432,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public boolean isAutoDownloadEnabled() {
-        return !"basic".equals(BuildConfig.FLAVOR) // TODO remove once basic can do auto-downloads
-                && preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, IGNORED_B);
+        return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, IGNORED_B);
     }
 
     /**

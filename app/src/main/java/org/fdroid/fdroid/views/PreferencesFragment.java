@@ -43,7 +43,6 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
@@ -565,7 +564,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
 
         currentKeepCacheTime = Preferences.get().getKeepCacheTime();
 
-        if (!"basic".equals(BuildConfig.FLAVOR)) initAutoFetchUpdatesPreference(); // TODO remove once basic can do it
+        initAutoFetchUpdatesPreference();
         initPrivilegedInstallerPreference();
         initUseTorPreference(getActivity().getApplicationContext());
     }
