@@ -20,7 +20,6 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
-import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 
@@ -311,7 +310,6 @@ public final class AppUpdateStatusManager {
         notifyChange(entry, isStatusUpdate);
 
         if (status == Status.Installed) {
-            InstallManagerService.removePendingInstall(context, entry.getCanonicalUrl());
             // After an app got installed, update available updates
             checkForUpdates();
         }
@@ -324,10 +322,6 @@ public final class AppUpdateStatusManager {
         setEntryContentIntentIfEmpty(entry);
         appMapping.put(entry.getCanonicalUrl(), entry);
         notifyAdd(entry);
-
-        if (status == Status.Installed) {
-            InstallManagerService.removePendingInstall(context, entry.getCanonicalUrl());
-        }
     }
 
     private void notifyChange(String reason) {
@@ -479,7 +473,6 @@ public final class AppUpdateStatusManager {
      */
     public void removeApk(String canonicalUrl) {
         synchronized (appMapping) {
-            InstallManagerService.removePendingInstall(context, canonicalUrl);
             AppUpdateStatus entry = appMapping.remove(canonicalUrl);
             if (entry != null) {
                 Utils.debugLog(LOGTAG, "Remove APK " + entry.apk.getApkPath());
@@ -535,8 +528,6 @@ public final class AppUpdateStatusManager {
             entry.errorText = errorText;
             entry.intent = getAppErrorIntent(entry);
             notifyChange(entry, false);
-
-            InstallManagerService.removePendingInstall(context, entry.getCanonicalUrl());
         }
     }
 
