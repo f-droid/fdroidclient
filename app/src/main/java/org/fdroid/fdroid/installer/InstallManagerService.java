@@ -20,6 +20,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
@@ -157,21 +158,23 @@ public class InstallManagerService {
         getMainObb(canonicalUrl, apk);
         getPatchObb(canonicalUrl, apk);
 
-        File apkFilePath = ApkCache.getApkDownloadPath(context, apk.getCanonicalUrl());
-        long apkFileSize = apkFilePath.length();
-        if (!apkFilePath.exists() || apkFileSize < apk.size) {
-            Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queue(context, canonicalUrl, app, apk);
-        } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
-            Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
-            Uri canonicalUri = Uri.parse(canonicalUrl);
-            onDownloadStarted(canonicalUri);
-            onDownloadComplete(canonicalUri, apkFilePath, app, apk);
-        } else {
-            Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
-            apkFilePath.delete();
-            DownloaderService.queue(context, canonicalUrl, app, apk);
-        }
+        Utils.runOffUiThread(() -> ApkCache.getApkCacheState(context, apk), pair -> {
+            ApkCache.ApkCacheState state = pair.first;
+            SanitizedFile apkFilePath = pair.second;
+            if (state == ApkCache.ApkCacheState.MISS_OR_PARTIAL) {
+                Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
+                DownloaderService.queue(context, canonicalUrl, app, apk);
+            } else if (state == ApkCache.ApkCacheState.CACHED) {
+                Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
+                Uri canonicalUri = Uri.parse(canonicalUrl);
+                onDownloadStarted(canonicalUri);
+                onDownloadComplete(canonicalUri, apkFilePath, app, apk);
+            } else {
+                Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
+                Utils.runOffUiThread(apkFilePath::delete);
+                DownloaderService.queue(context, canonicalUrl, app, apk);
+            }
+        });
     }
 
     public void onDownloadStarted(Uri canonicalUri) {
