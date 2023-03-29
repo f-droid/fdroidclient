@@ -24,6 +24,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 
+import androidx.annotation.WorkerThread;
+import androidx.core.util.Pair;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -36,12 +39,27 @@ public class ApkCache {
 
     private static final String CACHE_DIR = "apks";
 
+    public enum ApkCacheState { MISS_OR_PARTIAL, CACHED, CORRUPTED }
+
+    @WorkerThread
+    static Pair<ApkCacheState, SanitizedFile> getApkCacheState(Context context, Apk apk) {
+        SanitizedFile apkFilePath = getApkDownloadPath(context, apk.getCanonicalUrl());
+        long apkFileSize = apkFilePath.length();
+        if (!apkFilePath.exists() || apkFileSize < apk.size) {
+            return new Pair<>(ApkCacheState.MISS_OR_PARTIAL, apkFilePath);
+        } else if (apkIsCached(apkFilePath, apk)) {
+            return new Pair<>(ApkCacheState.CACHED, apkFilePath);
+        } else {
+            return new Pair<>(ApkCacheState.CORRUPTED, apkFilePath);
+        }
+    }
+
     /**
      * Same as {@link #copyApkFromCacheToFiles(Context, File, Apk)}, except it does not need to
      * verify the hash after copying. This is because we are copying from an installed apk, which
      * other apps do not have permission to modify.
      */
-    public static SanitizedFile copyInstalledApkToFiles(Context context, PackageInfo packageInfo)
+    static SanitizedFile copyInstalledApkToFiles(Context context, PackageInfo packageInfo)
             throws IOException {
         ApplicationInfo appInfo = packageInfo.applicationInfo;
         CharSequence name = context.getPackageManager().getApplicationLabel(appInfo);
