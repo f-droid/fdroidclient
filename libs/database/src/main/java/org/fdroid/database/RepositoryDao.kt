@@ -379,6 +379,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun deleteReleaseChannel(repoId: Long, id: String)
 
     /**
+     * Resets timestamps for *all* repos in the database.
+     * This will cause
+     */
+    @Query("UPDATE ${CoreRepository.TABLE} SET timestamp = -1")
+    fun resetTimestamps()
+
+    /**
      * Use when replacing an existing repo with a full index.
      * This removes all existing index data associated with this repo from the database,
      * but does not touch repository preferences.
