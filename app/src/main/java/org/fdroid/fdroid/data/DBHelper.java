@@ -103,7 +103,7 @@ public class DBHelper {
     @AnyThread
     public static void resetTransient(Context context) {
         FDroidDatabase db = getDb(context);
-        Utils.runOffUiThread(() -> db.getAppDao().clearAll());
+        Utils.runOffUiThread(db::clearAllAppData);
     }
 
     @AnyThread
