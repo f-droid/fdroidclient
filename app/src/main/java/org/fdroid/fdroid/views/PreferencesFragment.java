@@ -438,7 +438,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat
 
                     String versionName = Utils.getVersionName(context);
                     if (versionName != null) {
-                        ((TextView) view.findViewById(R.id.version)).setText(versionName);
+                        TextView versionNameView = view.findViewById(R.id.version);
+                        versionNameView.setText(versionName);
+                        versionNameView.setOnLongClickListener(v -> {
+                            throw new RuntimeException("BOOM!");
+                        });
                     }
                     new MaterialAlertDialogBuilder(context)
                             .setView(view)
