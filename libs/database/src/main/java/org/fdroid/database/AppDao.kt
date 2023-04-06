@@ -111,11 +111,6 @@ public interface AppDao {
     public fun getNumberOfAppsInCategory(category: String): Int
 
     public fun getNumberOfAppsInRepository(repoId: Long): Int
-
-    /**
-     * Removes all apps and associated data from all repositories.
-     */
-    public fun clearAll()
 }
 
 public enum class AppListSortOrder {
@@ -597,6 +592,11 @@ internal interface AppDaoInt : AppDao {
     @Query("SELECT COUNT(*) FROM ${LocalizedFileList.TABLE}")
     fun countLocalizedFileLists(): Int
 
+    /**
+     * Removes all apps and associated data such as versions from the database.
+     * Careful: Doing this without other measures such as calling [RepositoryDaoInt.resetTimestamps]
+     * will cause application of diffs to fail.
+     */
     @Query("DELETE FROM ${AppMetadata.TABLE}")
-    override fun clearAll()
+    fun clearAll()
 }

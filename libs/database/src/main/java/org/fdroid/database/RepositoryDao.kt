@@ -15,6 +15,7 @@ import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
 import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser.json
+import org.fdroid.index.v2.IndexV2Updater
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.RepoV2
@@ -377,6 +378,14 @@ internal interface RepositoryDaoInt : RepositoryDao {
      */
     @Query("DELETE FROM ${ReleaseChannel.TABLE} WHERE repoId = :repoId AND id = :id")
     fun deleteReleaseChannel(repoId: Long, id: String)
+
+    /**
+     * Resets timestamps for *all* repos in the database.
+     * This will use a full index instead of diffs
+     * when updating the repository via [IndexV2Updater].
+     */
+    @Query("UPDATE ${CoreRepository.TABLE} SET timestamp = -1")
+    fun resetTimestamps()
 
     /**
      * Use when replacing an existing repo with a full index.

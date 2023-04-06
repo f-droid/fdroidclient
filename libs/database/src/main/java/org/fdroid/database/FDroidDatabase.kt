@@ -69,6 +69,13 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
     fun afterUpdatingRepo(repoId: Long) {
         getAppDao().updateCompatibility(repoId)
     }
+
+    override fun clearAllAppData() {
+        runInTransaction {
+            getAppDao().clearAll()
+            getRepositoryDao().resetTimestamps()
+        }
+    }
 }
 
 /**
@@ -93,4 +100,11 @@ public interface FDroidDatabase {
      * Please run as little code as possible to keep the time the database is blocked minimal.
      */
     public fun runInTransaction(body: Runnable)
+
+    /**
+     * Removes all apps and associated data (such as versions) from all repositories.
+     * The repository data and app preferences are kept as-is.
+     * Only the timestamp of the last repo update gets reset, so we won't try to apply diffs.
+     */
+    public fun clearAllAppData()
 }
