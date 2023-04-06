@@ -1,3 +1,7 @@
+### 1.16.3 (2023-04-06)
+
+* Fix critical bug that prevents repo updates after Android OS updates (!1210)
+
 ### 1.16.2 (2023-03-14)
 
 * Fix four crashes from ACRA crash reports.
