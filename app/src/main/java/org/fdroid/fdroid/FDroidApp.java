@@ -352,6 +352,13 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         preferences.registerUnstableUpdatesChangeListener(() ->
                 AppUpdateStatusManager.getInstance(FDroidApp.this).checkForUpdates());
 
+        preferences.registerShowIncompatibleListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                // TODO check if anything else needs updating/reloading
+            }
+        });
+
         CleanCacheWorker.schedule(this);
 
         sessionInstallManager = new SessionInstallManager(getApplicationContext());

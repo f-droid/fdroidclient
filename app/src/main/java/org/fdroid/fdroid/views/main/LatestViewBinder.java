@@ -57,11 +57,13 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
             @Override
             public void onCreate(@NonNull LifecycleOwner owner) {
                 Preferences.get().registerAppsRequiringAntiFeaturesChangeListener(LatestViewBinder.this);
+                Preferences.get().registerShowIncompatibleListener(LatestViewBinder.this);
             }
 
             @Override
             public void onDestroy(@NonNull LifecycleOwner owner) {
                 Preferences.get().unregisterAppsRequiringAntiFeaturesChangeListener(LatestViewBinder.this);
+                Preferences.get().unregisterShowIncompatibleListener(LatestViewBinder.this);
             }
         });
         db = DBHelper.getDb(activity);
