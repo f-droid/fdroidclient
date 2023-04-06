@@ -140,7 +140,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
             AppOverviewItem item = iterator.next();
             if (isFilteredByAntiFeature(item, antiFeatures, shownAntiFeatures, showOtherAntiFeatures)) {
                 iterator.remove();
-            } else if (!item.isCompatible()) {
+            } else if (!Preferences.get().showIncompatibleVersions() && !item.isCompatible()) {
                 iterator.remove();
             }
         }
