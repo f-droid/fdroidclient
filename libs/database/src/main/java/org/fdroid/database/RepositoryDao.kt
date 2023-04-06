@@ -15,6 +15,7 @@ import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
 import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser.json
+import org.fdroid.index.v2.IndexV2Updater
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
 import org.fdroid.index.v2.RepoV2
@@ -380,7 +381,8 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     /**
      * Resets timestamps for *all* repos in the database.
-     * This will cause
+     * This will use a full index instead of diffs
+     * when updating the repository via [IndexV2Updater].
      */
     @Query("UPDATE ${CoreRepository.TABLE} SET timestamp = -1")
     fun resetTimestamps()
