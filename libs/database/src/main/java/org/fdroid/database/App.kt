@@ -250,6 +250,10 @@ public data class AppOverviewItem internal constructor(
         entityColumn = "packageName",
     )
     internal val localizedIcon: List<LocalizedIcon>? = null,
+    /**
+     * If true, this this app has at least one version that is compatible with this device.
+     */
+    public val isCompatible: Boolean,
 ) : MinimalApp {
     public override fun getIcon(localeList: LocaleListCompat): FileV2? {
         return localizedIcon?.filter { icon ->

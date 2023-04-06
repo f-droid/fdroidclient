@@ -326,7 +326,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-            localizedSummary, version.antiFeatures
+            localizedSummary, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -340,7 +340,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-             localizedSummary, version.antiFeatures
+             localizedSummary, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
@@ -358,7 +358,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, added, app.lastUpdated, localizedName,
-             localizedSummary
+             localizedSummary, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName""")
     fun getAppOverviewItem(repoId: Long, packageName: String): AppOverviewItem?
 
