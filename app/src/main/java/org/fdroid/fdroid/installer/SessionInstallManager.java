@@ -62,6 +62,9 @@ public class SessionInstallManager extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT >= 31) {
             params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED);
         }
+        if (Build.VERSION.SDK_INT >= 33) {
+            params.setPackageSource(PackageInstaller.PACKAGE_SOURCE_STORE);
+        }
         PackageInstaller installer = context.getPackageManager().getPackageInstaller();
         try {
             int sessionId = installer.createSession(params);
