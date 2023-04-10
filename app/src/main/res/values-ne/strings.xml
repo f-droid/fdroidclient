@@ -3,7 +3,7 @@
     <string name="updates__tts__download_app">डाउनलोड</string>
     <string name="app_list__name__successfully_installed">%1$s स्थापित छ</string>
     <string name="app_list__name__downloading_in_progress">%1$s डाउनलोड गर्दै</string>
-    <string name="about_title">अफ्-ड्रोइड्को बारेमा</string>
+    <string name="about_title_full">अफ्-ड्रोइड्को बारेमा</string>
     <string name="app_details">अनुप्रयोग विवरणहरू</string>
     <string name="notification_action_install">स्थापना गर्नुहोस्</string>
     <string name="notification_action_cancel">रद्द गर्नुहोस्</string>
@@ -47,7 +47,7 @@
     <string name="no">होइन</string>
     <string name="yes">हो</string>
     <string name="ok">ठिक छ</string>
-    <string name="app_name">एफ-ड्रोइड</string>
+    <string name="app_name_full">एफ-ड्रोइड</string>
     <string name="swap_scan_qr">QR कोड</string>
     <string name="installing">स्थापित हुँदै…</string>
     <string name="install_confirm_update">के तपाईँसँग अहिले भईरहेको अनुप्रयोगको एक अपडेट लाई स्थापित गर्न चाहानुहुन्छ? तपाईँको अहिलेको डेटा हराउने छैन। अपडेट भएको अनुप्रयोग पहुँच पाउनेछ मा:</string>

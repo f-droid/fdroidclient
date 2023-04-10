@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ਐਫਡਰਾਇਡ</string>
+    <string name="app_name_full">ਐਫਡਰਾਇਡ</string>
     <string name="SignatureMismatch">ਨਵੇਂ ਸੰਸਕਰਣ ਵਿੱਚ ਪੁਰਾਣੇ ਨਾਲ਼ੋਂ ਇੱਕ ਵੱਖਰੀ ਕੁੰਜੀ ਦੇ ਨਾਲ ਦਸਤਖਤ ਕੀਤੇ ਗਏ ਹਨ. ਨਵਾਂ ਸੰਸਕਰਣ ਇੰਸਟਾਲ ਕਰਨ ਲਈ, ਪੁਰਾਣੇ ਨੂੰ ਪਹਿਲਾਂ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਪਵੇਗਾ। ਕ੍ਰਿਪਾ ਕਰਕੇ ਇਹ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ। (ਯਾਦ ਰੱਖੋ ਕਿ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਨਾਲ ਐਪ ਦੁਆਰਾ ਸਟੋਰ ਕੀਤਾ ਕੋਈ ਵੀ ਅੰਦਰੂਨੀ ਡਾਟਾ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ)</string>
     <string name="installIncompatible">ਐਪ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਫਿਰ ਵੀ ਇੰਸਟਾਲ ਕਰੋ\?</string>
     <string name="version">ਸੰਸਕਰਣ</string>
@@ -151,7 +151,7 @@
     <string name="added_on">%s \'ਤੇ ਸ਼ਾਮਲ ਕੀਤਾ</string>
     <string name="about_version">ਸੰਸਕਰਣ</string>
     <string name="about_site">ਵੈੱਬਸਾਈਟ</string>
-    <string name="about_title">F-Droid ਬਾਰੇ</string>
+    <string name="about_title_full">F-Droid ਬਾਰੇ</string>
     <string name="app_details">ਐਪ ਵੇਰਵੇ</string>
     <string name="notify_on">ਅੱਪਡੇਟ ਉਪਲਬਧ ਹੋਣ \'ਤੇ ਇੱਕ ਸੂਚਨਾ ਵਿਖਾਓ</string>
     <string name="preference_manage_installed_apps">ਇੰਸਟਾਲ ਐਪਾਂ ਨੂੰ ਮੈਨੇਜ ਕਰੋ</string>

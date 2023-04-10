@@ -11,7 +11,7 @@
     <string name="notify_on">Értesítés megjelenítése, ha frissítés érhető el</string>
     <string name="app_details">Alkalmazás részletei</string>
     <string name="no_such_app">Nem található ilyen alkalmazás.</string>
-    <string name="about_title">Az F-Droid névjegye</string>
+    <string name="about_title_full">Az F-Droid névjegye</string>
     <string name="about_site">Weboldal</string>
     <string name="about_version">Verzió</string>
     <string name="app_installed">Telepítve</string>
@@ -68,7 +68,7 @@
 \n
 \nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
     <string name="delete">Törlés</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="enable_nfc_send">NFC küldés engedélyezése…</string>
     <string name="unstable_updates">Instabil frissítések</string>
     <string name="unstable_updates_summary">Frissítések ajánlása instabil verziókra</string>

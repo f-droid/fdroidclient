@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="delete">Устгах</string>
     <string name="cancel">Цуцлах</string>
     <string name="unknown">Тодорхойгүй</string>
@@ -458,7 +458,7 @@
     <string name="updates__tts__download_app">Татаж авах</string>
     <string name="app_list__name__successfully_installed">%1$s суулгасан</string>
     <string name="app_list__name__downloading_in_progress">Татаж байна %1$s</string>
-    <string name="about_title">F-Droid-ийн тухай</string>
+    <string name="about_title_full">F-Droid-ийн тухай</string>
     <string name="app_details">Аппын дэлгэрэнгүй</string>
     <string name="notification_action_install">Суулгах</string>
     <string name="notification_action_cancel">Болих</string>

@@ -17,7 +17,7 @@
     <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
     <string name="app_details">Podrobnosti o aplikaci</string>
     <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
-    <string name="about_title">O aplikaci F-Droid</string>
+    <string name="about_title_full">O aplikaci F-Droid</string>
     <string name="about_site">Webová stránka</string>
     <string name="about_version">Verze</string>
     <string name="app_installed">Nainstalováno</string>
@@ -133,7 +133,7 @@
     <string name="show_incompat_versions_on">Zobrazit verze aplikace které jsou nekompatibilní s tímto zařízením</string>
     <string name="proxy_port_summary">Číslo portu vaší proxy (např. 8118)</string>
     <string name="status_download">Stahování\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Nestabilní aktualizace</string>
     <string name="unstable_updates_summary">Doporučovat aktualizace na nestabilní verze</string>
     <string name="more">Více</string>

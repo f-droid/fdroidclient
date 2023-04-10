@@ -16,7 +16,7 @@
     <string name="local_repo_https_on">連線至本地倉庫時使用 HTTPS:// 加密連線</string>
     <string name="app_details">應用程式詳細資料</string>
     <string name="no_such_app">找不到這樣的應用程式。</string>
-    <string name="about_title">關於 F-Droid</string>
+    <string name="about_title_full">關於 F-Droid</string>
     <string name="about_site">網站</string>
     <string name="about_version">版本</string>
     <string name="app_installed">已安裝</string>
@@ -109,7 +109,7 @@
     <string name="open_qr_code_scanner">開啟 QR Code 掃描器</string>
     <string name="swap_welcome">歡迎使用 F-Droid！</string>
     <string name="swap_confirm_connect">你是否想從 %1$s 取得應用程式？</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">不穩定的更新</string>
     <string name="unstable_updates_summary">建議更新至不穩定的版本</string>
     <string name="about_source">原始碼</string>

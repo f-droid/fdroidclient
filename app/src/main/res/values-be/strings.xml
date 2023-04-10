@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Новая версія падпісаная ключом, адрозным ад старой. Для ўсталёўкі новай версіі неабходна спачатку выдаліць старую. Зрабіце гэта і паспрабуйце зноў. (Майце на ўвазе, што выдаленне праграмы прывядзе да знішчэння ўсіх яе даных)</string>
     <string name="installIncompatible">Праграма несумяшчальная з вашай прыладай. Усё адно ўсталяваць\?</string>
     <string name="version">Версія</string>
@@ -34,7 +34,7 @@
     <string name="no_such_app">Праграмы не знойдзена.</string>
     <string name="app_details_donate_prompt_unknown_author">Ахвяраваць распрацоўшчыкам %1$s на каву.</string>
     <string name="app_details_donate_prompt">%1$s створаны %2$s. Ахвяруйце ім на каву!</string>
-    <string name="about_title">Пра F-Droid</string>
+    <string name="about_title_full">Пра F-Droid</string>
     <string name="about_version">Версія</string>
     <string name="about_site">Сайт</string>
     <string name="about_source">Зыходны код</string>

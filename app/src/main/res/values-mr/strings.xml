@@ -138,7 +138,7 @@
     <string name="updates__tts__download_app">डाउनलोड</string>
     <string name="app_list__name__successfully_installed">%1$s इंंस्टॉल झाले</string>
     <string name="app_list__name__downloading_in_progress">%1$s ला डाउनलोड केले जात आहे</string>
-    <string name="about_title">F-Droid बद्दल</string>
+    <string name="about_title_full">F-Droid बद्दल</string>
     <string name="app_details">ऍपचे विवरण</string>
     <string name="notification_action_install">स्थापना</string>
     <string name="notification_action_cancel">रद्द करा</string>
@@ -170,7 +170,7 @@
     <string name="menu_settings">सेटिंग्ज</string>
     <string name="cancel">रद्द करा</string>
     <string name="ok">ठीक</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="panic_destructive_actions">विध्वंसक</string>
     <string name="panic_exit_summary">हे अँप बंद केले जाईल</string>
     <string name="panic_exit_title">अप्पमधून बाहेर पडा</string>

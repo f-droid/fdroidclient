@@ -228,7 +228,7 @@
     <string name="about_forum">Fòram na taice</string>
     <string name="about_site">Làrach-lìn</string>
     <string name="about_version">Tionndadh</string>
-    <string name="about_title">Mu F-Droid</string>
+    <string name="about_title_full">Mu F-Droid</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Chan eil an tionndadh stàlaichte co-chòrdail le tionndadh sam bith a tha ri fhaighinn. Ma dhì-stàlaicheas tu an aplacaid, ’s urrainn dhut tionndaidhean co-chòrdail a shealltainn ’s a stàladh. Tachraidh seo gu tric le aplacaidean a chaidh a stàladh o Google Play no tùs eile ma chaidh an soidhneadh le teisteanas eile.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Chan eil tionndadh ann a tha co-chòrdail leis an uidheam</string>
     <string name="app_details__no_versions__no_compatible_signers">Chan eil tionndadh le soidhneadh co-chòrdail ann</string>
@@ -529,7 +529,7 @@
     <string name="version">Tionndadh</string>
     <string name="installIncompatible">Chan eil an aplacaid co-chòrdail leis an uidheam agad, an stàlaich thu co-dhiù i\?</string>
     <string name="SignatureMismatch">Chaidh an tionndadh ùr a shoidhneadh le iuchair dhiofraichte on tionndadh roimhe. Airson an tionndadh ùr a stàladh, feumaidh tu an seann-tionndadh a thoirt air falbh an toiseach. Dèan seo is feuch ris a-rithist. (Thoir an aire gun suath an dì-stàladh bàn dàta inntearnail sam bith a chaidh a stòradh leis an aplacaid)</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="apps">Aplacaidean</string>
     <string name="swap_wifi_vpn_conflict">Tha còmhstri le VPN gnìomhach ann!</string>
     <string name="has_disallow_install_unknown_sources">Chan fhaod an cleachdaiche seo tùsan nach aithne dhuinn a chur ris, tha seo a’ gabhail a-staigh ionadan-tasgaidh ùra</string>

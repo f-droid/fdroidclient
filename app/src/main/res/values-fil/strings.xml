@@ -4,7 +4,7 @@
     <string name="yes">Oo</string>
     <string name="back">Balik</string>
     <string name="swap_send_fdroid">I-send ang F-Droid</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="version">Bersyon</string>
     <string name="delete">Burahin</string>
     <string name="enable_nfc_send">Buksan ang NFC Send…</string>
@@ -46,7 +46,7 @@
     <string name="repo_edit_credentials">Palitan ang password</string>
     <string name="app_details_donate_prompt">Ginawa ni/ng %2$s ang %1$s. Bilhan mo sila ng kape!</string>
     <string name="app_details__incompatible_mismatched_signers">Magkaibang pirma sa naka-install na bersyon</string>
-    <string name="about_title">Tungkol sa F-Droid</string>
+    <string name="about_title_full">Tungkol sa F-Droid</string>
     <string name="other">Karagdagan</string>
     <string name="over_data">Gamit data</string>
     <string name="system_installer">Dugtong ng Pribilehiyo</string>

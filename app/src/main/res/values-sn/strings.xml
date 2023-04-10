@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
 
     <string name="version">Vhezheni</string>
     <string name="delete">Dzima</string>
@@ -36,7 +36,7 @@
     <string name="app_details">Zvizere zve App</string>
     <string name="no_such_app">Hapana app yakadaro yawanikwa.</string>
 
-    <string name="about_title">Nezve F-Droid</string>
+    <string name="about_title_full">Nezve F-Droid</string>
     <string name="about_version">Vhezheni</string>
     <string name="about_site">Nezve Website</string>
     <string name="about_source">Nyuko yemurau</string>

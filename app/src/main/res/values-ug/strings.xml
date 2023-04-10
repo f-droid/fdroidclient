@@ -10,7 +10,7 @@
     <string name="notify">ئېرىشىشكە بولىدىغان يېڭىلانمىلارنى كۆرسەت</string>
     <string name="app_details">ئۇيغۇلىما تەپسىلاتلىرى</string>
     <string name="no_such_app">بۇنداق ئۇيغۇلىما تېپىلمىدى.</string>
-    <string name="about_title">ف-درويد ھەققىدە</string>
+    <string name="about_title_full">ف-درويد ھەققىدە</string>
     <string name="about_site">تورتۇرا</string>
     <string name="about_version">نەشىرلىرى</string>
     <string name="app_installed">ئورنىتىلغان</string>
@@ -56,7 +56,7 @@
     </string>
     <string name="no_handler_app">سىزنىڭ %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئۇيغۇلىمىڭىز يوق.</string>
     <string name="theme">ئۇسلۇب</string>
-    <string name="app_name">ف-درويد</string>
+    <string name="app_name_full">ف-درويد</string>
     <string name="back">قايتىش</string>
     <string name="menu_settings">تەڭشەكلەر</string>
     <string name="main_menu__latest_apps">ئەڭ يېڭى</string>

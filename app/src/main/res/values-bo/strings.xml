@@ -39,7 +39,7 @@
     <string name="notification_action_cancel">བརྩི་མེད།</string>
     <string name="notification_action_install">འགྲིག་བཅུག</string>
     <string name="app_details">མཉེས་ཆས་སྐོར་རྒྱས་བཤད།</string>
-    <string name="about_title">ཨེཕ་རོཌ་སྐོར།</string>
+    <string name="about_title_full">ཨེཕ་རོཌ་སྐོར།</string>
     <string name="app_list__name__downloading_in_progress">%1$s ཕབ་ལེན་བྱེད་བཞིན་པ།</string>
     <string name="app_list__name__successfully_installed">%1$s འགྲིག་བཅུག</string>
     <string name="updates__tts__download_app">ཕབ་ལེན།</string>
@@ -266,7 +266,7 @@
     <string name="menu_bitcoin">དྲྭ་དངུལ།</string>
     <string name="menu_litecoin">དྲྭ་རྒྱ་གསང་དངུལ།</string>
     <string name="menu_flattr">ཞལ་འདེབས་འབུལ་ཡུལ་ཕེ་ལེ་ཊར།</string>
-    <string name="app_name">ཨེཕ་རོཌ།</string>
+    <string name="app_name_full">ཨེཕ་རོཌ།</string>
     <string name="updates">གསར་བསྒྱུར་ཁག</string>
     <string name="ok">འགྲིག</string>
     <string name="yes">རེད།</string>

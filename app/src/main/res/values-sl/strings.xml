@@ -30,7 +30,7 @@
     <string name="search_hint">Iskanje aplikacij</string>
     <string name="appcompatibility">Združljivost aplikacij</string>
     <string name="show_incompat_versions">Vključi nekompatibilne verzije</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="installIncompatible">Izgleda, da aplikacija ni kompatibilna z vašo napravo. Ali jo želite vseeno poskusiti namestiti?</string>
     <string name="delete">Izbriši</string>
     <string name="enable_nfc_send">Omogoči NFC pošiljanje…</string>
@@ -73,7 +73,7 @@
     <string name="notification_action_cancel">Prekliči</string>
     <string name="notification_action_install">Namesti</string>
     <string name="app_details">Podrobnosti aplikacije</string>
-    <string name="about_title">Več o F-Droid</string>
+    <string name="about_title_full">Več o F-Droid</string>
     <string name="app_list__name__downloading_in_progress">Prenašanje %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s nameščen</string>
     <string name="more">Več</string>

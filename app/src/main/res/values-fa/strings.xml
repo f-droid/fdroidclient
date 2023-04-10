@@ -8,7 +8,7 @@
     <string name="update_interval">فاصلهٔ به‌روزرسانی‌های خودکار</string>
     <string name="notify_on">نمایش یک آگاهی هنگام موجود بودن به‌روز رسانی‌ها</string>
     <string name="no_such_app">چنین کاره‌ای پیدا نشد.</string>
-    <string name="about_title">دربارهٔ اف‌دروید</string>
+    <string name="about_title_full">دربارهٔ اف‌دروید</string>
     <string name="app_installed">نصب شده</string>
     <string name="app_not_installed">نصب نشده</string>
     <string name="added_on">افزوده در %s</string>
@@ -57,7 +57,7 @@
     <string name="unsigned_description">یعنی فهرست برنامه‌ها نتوانست تأیید شود. باید مراقب کاره‌های بارگرفته از نمایه‌های امضا نشده باشید.</string>
     <string name="unknown">ناشناس</string>
     <string name="requires_features">نیاز دارد: %1$s</string>
-    <string name="app_name">اف‌دروید</string>
+    <string name="app_name_full">اف‌دروید</string>
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شدهٔ کاره در حافظهٔ داخلی را پاک می‌کند)</string>
     <string name="version">نگارش</string>
     <string name="enable_nfc_send">به کار انداختن فرستادن با NFC…</string>

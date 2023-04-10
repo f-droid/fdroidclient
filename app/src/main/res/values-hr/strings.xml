@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Da biste instalirali novu verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno. (Napomena: uklanjanje će obrisati sve interne podatke aplikacije)</string>
     <string name="installIncompatible">Aplikacija nije kompatibilna s Vašim uređajem, ipak instalirati\?</string>
     <string name="version">Verzija</string>
@@ -30,7 +30,7 @@
     <string name="repo_error_empty_username">Prazno korisničko ime, podaci nisu promjenjeni</string>
     <string name="app_details">Detalji aplikacije</string>
     <string name="no_such_app">Nije pronađena takva aplikacija.</string>
-    <string name="about_title">O F-Droidu</string>
+    <string name="about_title_full">O F-Droidu</string>
     <string name="about_version">Verzija</string>
     <string name="about_site">Web stranica</string>
     <string name="about_source">Izvorni kod</string>

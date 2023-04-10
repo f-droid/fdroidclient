@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Versioni i ri është nënshkruar me një tjetër kyç nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutemi, bëjeni dhe riprovoni. (Vini re që çinstalimi do të fshijë çfarëdo të dhëne të brendshme të ruajtur nga aplikacioni)</string>
     <string name="installIncompatible">Aplikacion i papërputhshëm me pajisjen tuaj, të instalohet sido qoftë\?</string>
     <string name="version">Version</string>
@@ -8,7 +8,7 @@
     <string name="updates">Përditësime</string>
     <string name="other">Të tjera</string>
     <string name="update_interval">Interval përditësimesh të vetvetishme</string>
-    <string name="about_title">Mbi F-Droid-in</string>
+    <string name="about_title_full">Mbi F-Droid-in</string>
     <string name="about_version">Version</string>
     <string name="about_source">Kod burim</string>
     <string name="added_on">Shtuar më %s</string>

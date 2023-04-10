@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ایف-ڈیرائڈ</string>
+    <string name="app_name_full">ایف-ڈیرائڈ</string>
     <string name="SignatureMismatch">نیا ورژن پرانے ورژن کیی کے ساتھ دستخط کیا گیا ہے۔ نیا ورژن نصب کرنے کے لیے، پرانے ورژن کی نا تنصیب کرنا ضروری ہے۔ برائے مہربانی یہ کریں اور دوبارہ کوشش کریں۔ (نوٹ کریں کی، ناتنصیب کرنے سے کسی بھی قسم کا اندرونی ڈیٹا جو اطلاقیہ نے محفوظ کیا ہو، مٹا دیا جائے گا)</string>
     <string name="installIncompatible">ایپ آپ کے آلے سے مطابقت نہیں رکھتی ، پھر بھی انسٹال کریں؟</string>
     <string name="version">ورژن</string>
@@ -96,7 +96,7 @@
     <string name="more">مزید</string>
     <string name="updates__tts__download_app">ڈاؤن لوڈ کریں</string>
     <string name="app_list__name__successfully_installed">%1$s انسٹال ہو گیا</string>
-    <string name="about_title">F-Droid کے بارے میں</string>
+    <string name="about_title_full">F-Droid کے بارے میں</string>
     <string name="app_list__name__downloading_in_progress">%1$s ڈاؤن لوڈ ہو رہا ہے</string>
     <string name="notification_title_summary_install_error">لگانا ناکامیاب</string>
     <string name="notification_title_single_update_available">اپ ڈیٹ دستیاب ہے</string>

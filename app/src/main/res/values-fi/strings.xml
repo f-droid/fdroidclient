@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Käytä salattua HTTPS-yhteyttä paikalliselle sovelluslähteelle</string>
     <string name="app_details">Sovelluksen tiedot</string>
     <string name="no_such_app">Sovellusta ei löytynyt.</string>
-    <string name="about_title">Tietoa F-Droidista</string>
+    <string name="about_title_full">Tietoa F-Droidista</string>
     <string name="about_site">Verkkosivu</string>
     <string name="about_version">Versio</string>
     <string name="app_installed">Asennettu</string>
@@ -114,7 +114,7 @@
     <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
     <string name="swap_confirm_connect">Haluatko saada sovelluksia kohteesta %1$s nyt\?</string>
     <string name="unstable_updates_summary">Ehdota päivityksiä epävakaisiin versioihin</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="login_password">Salasana</string>
     <string name="login_name">Käyttäjätunnus</string>
     <string name="repo_edit_credentials">Vaihda salasana</string>

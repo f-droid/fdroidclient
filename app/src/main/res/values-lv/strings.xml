@@ -15,7 +15,7 @@
     <string name="local_repo_https_on">Izmantot šifrētu HTTPS:// savienojumu priekš lokālās repozitorijas</string>
     <string name="app_details">Informācija par programmu</string>
     <string name="no_such_app">Šāda aplikācija netika atrasta.</string>
-    <string name="about_title">Par F-Droid</string>
+    <string name="about_title_full">Par F-Droid</string>
     <string name="about_site">Mājaslapa</string>
     <string name="about_version">Versija</string>
     <string name="app_installed">Ieinstalēts</string>
@@ -80,7 +80,7 @@
     <string name="category_Navigation">Navigācija</string>
     <string name="category_Reading">Lasījumam</string>
     <string name="category_Time">Laiks</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="back">Atpakaļ</string>
     <string name="main_menu__latest_apps">Jaunumi</string>
     <string name="main_menu__categories">Kategorijas</string>

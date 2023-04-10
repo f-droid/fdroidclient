@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="updates">Diweddariadau</string>
     <string name="ok">Iawn</string>
     <string name="yes">Iawn</string>
@@ -74,7 +74,7 @@
     <string name="app_details_donate_prompt_unknown_author">Prynu paned i ddatblygwyr %1$s!</string>
     <string name="app_details_donate_prompt">Crëwyd %1$s gan %2$s. Pryna paned iddyn nhw!</string>
     <string name="app_details__incompatible_mismatched_signers">Llofnod gwahanol i\'r fersiwn a osodwyd</string>
-    <string name="about_title">Ynghylch F-Droid</string>
+    <string name="about_title_full">Ynghylch F-Droid</string>
     <string name="about_version">Fersiwn</string>
     <string name="about_site">Gwefan</string>
     <string name="app_new">Newydd</string>

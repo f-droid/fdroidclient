@@ -18,7 +18,7 @@
     <string name="antitracklist">Dës App verfollegt an deelt Är Aktivitéiten</string>
     <string name="less">Manner</string>
     <string name="more">Méi</string>
-    <string name="about_title">Iwwer F-Droid</string>
+    <string name="about_title_full">Iwwer F-Droid</string>
     <string name="app_details">App-Detailler</string>
     <string name="notification_action_install">Installéieren</string>
     <string name="notification_action_cancel">Ofbriechen</string>
@@ -60,5 +60,5 @@
     <string name="no">Nee</string>
     <string name="yes">Jo</string>
     <string name="ok">OK</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
 </resources>

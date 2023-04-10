@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
     <string name="app_details">App-Details</string>
     <string name="no_such_app">Keine solche App gefunden.</string>
-    <string name="about_title">Über F-Droid</string>
+    <string name="about_title_full">Über F-Droid</string>
     <string name="about_site">Website</string>
     <string name="about_version">Version</string>
     <string name="app_installed">Installiert</string>
@@ -155,7 +155,7 @@
     <string name="category_Time">Zeit</string>
     <string name="install_error_unknown">Installation aufgrund eines unbekannten Fehlers fehlgeschlagen</string>
     <string name="uninstall_error_unknown">Deinstallation wegen unbekanntem Fehler fehlgeschlagen</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Instabile Aktualisierungen</string>
     <string name="unstable_updates_summary">Aktualisierungen für instabile Versionen vorschlagen</string>
     <string name="menu_changelog">Änderungen</string>

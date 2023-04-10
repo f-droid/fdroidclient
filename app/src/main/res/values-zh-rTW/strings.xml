@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">應用程式的新舊版本使用了不同的金鑰簽署。如要安裝新版本，您必須先解除安裝舊版本。請於完成該操作後再試一次(注意：解除安裝將抹除該應用程式內部已存儲的資料)</string>
     <string name="installIncompatible">應用程式與您的裝置不相容。仍要繼續安裝嗎？</string>
     <string name="version">版本</string>
@@ -23,7 +23,7 @@
     <string name="repo_edit_credentials">變更密碼</string>
     <string name="app_details">應用程式詳細資訊</string>
     <string name="no_such_app">沒有此應用程式。</string>
-    <string name="about_title">關於 F-Droid</string>
+    <string name="about_title_full">關於 F-Droid</string>
     <string name="about_version">版本</string>
     <string name="about_site">網站</string>
     <string name="about_source">原始碼</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ఎఫ్-డ్రాయిడ్</string>
+    <string name="app_name_full">ఎఫ్-డ్రాయిడ్</string>
     <string name="updates">నవీకరణలు</string>
     <string name="ok">సరే</string>
     <string name="yes">అవును</string>
@@ -20,7 +20,7 @@
     <string name="notification_action_cancel">రద్దు చేయండి</string>
     <string name="notification_action_install">స్థాపించు</string>
     <string name="app_details">యాప్ వివరాలు</string>
-    <string name="about_title">F-డ్రాయిడ్ గురించి</string>
+    <string name="about_title_full">F-డ్రాయిడ్ గురించి</string>
     <string name="more">మరింత</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Sports_Health">క్రీడలు &amp; ఆరోగ్యం</string>

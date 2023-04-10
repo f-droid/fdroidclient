@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ಎಫ್-ಡ್ರಾಯಿಡ್</string>
+    <string name="app_name_full">ಎಫ್-ಡ್ರಾಯಿಡ್</string>
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಸ್ಥಾಪಿಸಿ</string>
     <string name="notification_title_summary_install_error">ಸ್ಥಾಪನೆ ವಿಫಲವಾಗಿದೆ</string>
@@ -60,7 +60,7 @@
     <string name="app_inst_known_source">ಅನುಸ್ಥಾಪಿಸಲಾಗಿದೆ(%s ನಿಂದ)</string>
     <string name="app_inst_unknown_source">ಅನುಸ್ಥಾಪಿಸಲಾಗಿದೆ (ಗೊತ್ತಿಲ್ಲದ ಮೂಲದಿಂದ)</string>
     <string name="app_version_x_available">%1$s ಆವೃತ್ತಿಯು ಲಭ್ಯವಿದೆ</string>
-    <string name="about_title">ಎಫ್-ಡ್ರಾಯಿಡ್ ಬಗ್ಗೆ</string>
+    <string name="about_title_full">ಎಫ್-ಡ್ರಾಯಿಡ್ ಬಗ್ಗೆ</string>
     <string name="about_version">ಆವೃತ್ತಿ</string>
     <string name="about_site">ಜಾಲತಾಣ</string>
     <string name="about_license">ಪರವಾನಿಗೆ</string>

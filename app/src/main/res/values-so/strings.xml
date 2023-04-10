@@ -11,7 +11,7 @@
     <string name="more">in</string>
     <string name="app_list__name__successfully_installed">%1$s waa lagu</string>
     <string name="app_list__name__downloading_in_progress">Dajinaya %1$s</string>
-    <string name="about_title">Ku saabsan</string>
+    <string name="about_title_full">Ku saabsan</string>
     <string name="app_details">Faahfaahinta</string>
     <string name="notification_action_install">Ku</string>
     <string name="swap_dont_show_again">Mardambe tan ha itusi</string>
@@ -38,7 +38,7 @@
     <string name="menu_search">Raadi</string>
     <string name="back">Ka</string>
     <string name="updates">Cusbonaysiinta</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="crash_dialog_text">Khalad lamafilaan ah oo ku kalifay app-ku inoo istaago ayaa dhacay. Ma jeceshahay inaad e-mail garayso faahfaahinta si aad u caawiso xalinta arinkan\?</string>
     <string name="notification_title_summary_install_error">Ku shubidii ma guulaysanin</string>
     <string name="notification_title_single_update_available">Cusboonaysiin ayaa diyaar ah</string>

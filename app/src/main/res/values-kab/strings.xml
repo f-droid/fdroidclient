@@ -111,7 +111,7 @@
     <string name="theme_dark">Aberkan</string>
     <string name="category_Development">Taneflit</string>
     <string name="category_Phone_SMS">Tiliγri d SMS</string>
-    <string name="about_title">Γef F-Droid</string>
+    <string name="about_title_full">Γef F-Droid</string>
     <string name="app_list__name__successfully_installed">%1$s yebded</string>
     <string name="update_interval">Azilal n uleqqem awurman</string>
     <string name="update_auto_download">Anadi awurman n ileqman</string>
@@ -147,7 +147,7 @@
     <string name="proxy_host">Asenneftaɣ Apṛuksi</string>
     <string name="proxy_port">Tabburt n upṛuksi</string>
     <string name="status_inserting_apps">Rnu tazmilt i usnas</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="menu_uninstall">Kkes</string>
     <string name="preference_manage_installed_apps">Asefrak n isnasen ibedden</string>
     <string name="category_Connectivity">Tuqqniwt</string>

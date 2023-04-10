@@ -14,7 +14,7 @@
     <string name="system_installer">特权扩展</string>
     <string name="app_details">应用详情</string>
     <string name="no_such_app">找不到此应用。</string>
-    <string name="about_title">关于 F-Droid</string>
+    <string name="about_title_full">关于 F-Droid</string>
     <string name="about_site">网站</string>
     <string name="about_version">版本</string>
     <string name="app_installed">已安装</string>
@@ -107,7 +107,7 @@
     <string name="category_Security">安全</string>
     <string name="category_System">系统</string>
     <string name="swap_welcome">欢迎使用 F-Droid！</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">不稳定更新</string>
     <string name="unstable_updates_summary">建议更新至不稳定版本</string>
     <string name="system_installer_on">使用特权扩展安装、更新和卸载应用</string>
