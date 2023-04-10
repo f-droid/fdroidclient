@@ -21,7 +21,7 @@
     <string name="local_repo_https_on">Usar conexão HTTPS:// criptografada para o repositório local</string>
     <string name="app_details">Detalhes do aplicativo</string>
     <string name="no_such_app">O aplicativo não foi encontrado.</string>
-    <string name="about_title">Sobre o F-Droid</string>
+    <string name="about_title_full">Sobre o F-Droid</string>
     <string name="about_site">Página web</string>
     <string name="about_version">Versão</string>
     <string name="app_installed">Instalado</string>
@@ -143,7 +143,7 @@
     <string name="open_qr_code_scanner">Abrir o leitor de código QR</string>
     <string name="swap_welcome">Bem-vindo ao F-Droid!</string>
     <string name="swap_confirm_connect">Você quer obter aplicativos de %1$s agora?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="app_incompatible">Incompatível</string>
     <string name="links">Links</string>
     <string name="back">Voltar</string>

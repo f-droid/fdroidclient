@@ -3,7 +3,7 @@
     <string name="updates">نواں کرن</string>
     <string name="yes">ہاں</string>
     <string name="cancel">رد کرو</string>
-    <string name="app_name">ایف‌ڈروئیڈ</string>
+    <string name="app_name_full">ایف‌ڈروئیڈ</string>
     <string name="delete">مٹاؤ</string>
     <string name="login_name">ورتنوالے دا ناں</string>
     <string name="about_site">ویب‌سائیٹ</string>
@@ -99,7 +99,7 @@
     <string name="wifi">وائی‌فائی</string>
     <string name="app_new">نویں</string>
     <string name="notification_action_install">اینسٹال کرو</string>
-    <string name="about_title">ایف‌ڈروئیڈ بارے</string>
+    <string name="about_title_full">ایف‌ڈروئیڈ بارے</string>
     <string name="category_System">سِسٹم</string>
     <string name="crash_dialog_title">ایف‌ڈروئیڈ کریش ہوگیا</string>
     <string name="SignatureMismatch">نویں سنسکرݨ وچ پراݨے لئی اِکّ وکھری کنجی دے نال دستخط کیتے گئے ہن۔ نویں سنسکرݨ اینسٹال کرن لئی، پراݨے نوں پہلااں ان‌اینسٹال کرنا پوےگا۔ کرپا کرکے ایہہ کرو تے دبارہ کوشِش کرو۔ (یاد رکھو کہ ان‌اینسٹال کرن نال اَیپ دوارا سٹور کیتا کوئی وی اندرونی ڈیٹا مٹا دتا جاوےگا)</string>

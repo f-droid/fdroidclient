@@ -46,7 +46,7 @@
     <string name="more">Mear</string>
     <string name="updates__tts__download_app">Downloade</string>
     <string name="app_list__name__successfully_installed">%1$s is ynstalleare</string>
-    <string name="about_title">Oer F-Droid</string>
+    <string name="about_title_full">Oer F-Droid</string>
     <string name="notification_action_cancel">Ôfbrekke</string>
     <string name="notification_action_update">Fernije</string>
     <string name="newPerms">Nij</string>
@@ -101,7 +101,7 @@
     <string name="no">Nee</string>
     <string name="ok">OK</string>
     <string name="updates">Fernijingen</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="category_Multimedia">Multimedia</string>
     <string name="pref_language_default">Systeem Standert</string>
     <string name="pref_language">Taal</string>

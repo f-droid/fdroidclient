@@ -17,7 +17,7 @@
     <string name="local_repo_https_on">Connexió xifrada (HTTPS://) per als dipòsits locals</string>
     <string name="app_details">Detalls de l\'aplicació</string>
     <string name="no_such_app">No s\'ha trobat l\'aplicació.</string>
-    <string name="about_title">Quant a l\'F-Droid</string>
+    <string name="about_title_full">Quant a l\'F-Droid</string>
     <string name="about_site">Pàgina web</string>
     <string name="about_version">Versió</string>
     <string name="app_installed">Instal·lat</string>
@@ -136,7 +136,7 @@
     <string name="open_qr_code_scanner">Obre l\'escàner de codis QR</string>
     <string name="swap_welcome">Benvingut a F-Droid!</string>
     <string name="swap_confirm_connect">Voleu baixar aplicacions des de %1$s ara?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="about_source">Codi font</string>
     <string name="app_incompatible">no compatible</string>
     <string name="links">Enllaços</string>

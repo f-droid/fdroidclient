@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="version">Տարբերակ</string>
     <string name="delete">Ջնջել</string>
     <string name="updates">Թարմացումներ</string>
@@ -11,7 +11,7 @@
     <string name="login_password">Գաղտնաբառ</string>
     <string name="repo_edit_credentials">Փոխել գաղտնաբառը</string>
     <string name="app_details">Ափփի մանրամասներ</string>
-    <string name="about_title">F-Droidի մասին</string>
+    <string name="about_title_full">F-Droidի մասին</string>
     <string name="about_version">Տարբերակ</string>
     <string name="about_site">Կայք</string>
     <string name="about_license">Արտոնագիր</string>

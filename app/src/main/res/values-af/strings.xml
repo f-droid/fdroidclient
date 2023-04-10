@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Die nuwe weergawe is geteken met \'n ander sleutel as die vorige een. Om die nuwe weergawe te installeer moet die vorige een eers verwyder word. Doen dit asseblief eers en probeer dan weer. (Neem egter kennis dat de-installasie alle interne data wat deur die program gestoor is sal verloor)</string>
     <string name="installIncompatible">Hierdie progam nie aanpasbaar is met you toestel nie. Wil jy in elk geval probeer?</string>
     <string name="version">Weergawe</string>
@@ -32,7 +32,7 @@
     <string name="no_such_app">Daar bestaan nie so program nie.</string>
     <string name="app_details_donate_prompt_unknown_author">Koop vir die ontwikkelaars van %1$s \'n koppie koffie!</string>
     <string name="app_details_donate_prompt">%1$s is geskep deur %2$s. Koop vir hulle \'n koffie!</string>
-    <string name="about_title">Ietsie oor F-Droid</string>
+    <string name="about_title_full">Ietsie oor F-Droid</string>
     <string name="about_version">Weergawe</string>
     <string name="about_site">Webwerf</string>
     <string name="about_source">Bronkode</string>

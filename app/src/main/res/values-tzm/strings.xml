@@ -3,7 +3,7 @@
     <string name="more">Uggar</string>
     <string name="updates__tts__download_app">Agem</string>
     <string name="app_list__name__downloading_in_progress">agam %1$s</string>
-    <string name="about_title">ɣef F-Droid</string>
+    <string name="about_title_full">ɣef F-Droid</string>
     <string name="notification_action_cancel">Sser</string>
     <string name="notification_action_update">Ssedɣi</string>
     <string name="newPerms">amaynu</string>
@@ -29,7 +29,7 @@
     <string name="no">Uhu</string>
     <string name="back">Uɣul</string>
     <string name="cancel">Sser</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="category_Graphics">Tiwwunɣa</string>
     <string name="category_Connectivity">Azday</string>
     <string name="pref_language_default">Angraw s uwnul</string>

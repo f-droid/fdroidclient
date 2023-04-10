@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">എഫ്-ഡ്രോയ്ഡ്</string>
+    <string name="app_name_full">എഫ്-ഡ്രോയ്ഡ്</string>
     <string name="updates">പുതുക്കലുകള്‍</string>
     <string name="ok">ശരി</string>
     <string name="yes">അതെ</string>
@@ -46,7 +46,7 @@
     <string name="notification_action_cancel">റദ്ദാക്കുക</string>
     <string name="notification_action_install">സ്ഥാപിക്കുക</string>
     <string name="app_details">വിശദാംശങ്ങള്‍</string>
-    <string name="about_title">എഫ്-ഡ്രോയ്ഡിനെക്കുറിച്ച്</string>
+    <string name="about_title_full">എഫ്-ഡ്രോയ്ഡിനെക്കുറിച്ച്</string>
     <string name="app_list__name__downloading_in_progress">%1$s ഡൗൺലോഡ് ചെയ്യുന്നു</string>
     <string name="app_list__name__successfully_installed">%1$s നെ സ്ഥാപിച്ചു</string>
     <string name="updates__tts__download_app">ഡൗൺലോഡ് ചെയ്യുക</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="menu_search">খুঁজুন</string>
     <string name="menu_settings">সেটিংস</string>
     <string name="menu_manage">ভাণ্ডার</string>
@@ -74,7 +74,7 @@
     <string name="antitracklist">এই অ্যাপটি আপনার কার্যকলাপ ট্র্যাক করে এবং বলে দেয়</string>
     <string name="app_list__name__successfully_installed">%1$s ইন্সটলকৃত</string>
     <string name="app_list__name__downloading_in_progress">%1$s ডাউনলোড করা হচ্ছে</string>
-    <string name="about_title">এফ-ড্রয়েড সম্পর্কে</string>
+    <string name="about_title_full">এফ-ড্রয়েড সম্পর্কে</string>
     <string name="app_details">অ্যাপের বিবরণ</string>
     <string name="notification_action_install">ইনস্টল</string>
     <string name="notification_action_cancel">বাতিল করুন</string>

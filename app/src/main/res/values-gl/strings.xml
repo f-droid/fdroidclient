@@ -9,7 +9,7 @@
     <string name="notify">Amosar actualizacións dispoñíbeis</string>
     <string name="app_details">Detalles da aplicación</string>
     <string name="no_such_app">Non se atopou esa aplicación.</string>
-    <string name="about_title">Acerca do F-Droid</string>
+    <string name="about_title_full">Acerca do F-Droid</string>
     <string name="about_site">Páxina web</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalada</string>
@@ -54,7 +54,7 @@
     <string name="no_permissions">Sen permisos</string>
     <string name="no_handler_app">Non tes ningunha aplicación dispoñíbel que poida manexar %s.</string>
     <string name="theme">Aparencia</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="unstable_updates">Actualizacións inestábeis</string>

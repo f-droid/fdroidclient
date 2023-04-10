@@ -38,7 +38,7 @@
     <string name="updates__tts__download_app">Descargar</string>
     <string name="app_list__name__successfully_installed">%1$s instalado</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
-    <string name="about_title">Acerca de F-Droid</string>
+    <string name="about_title_full">Acerca de F-Droid</string>
     <string name="app_details">Los Detalles De La Aplicación</string>
     <string name="notification_action_install">Instalar</string>
     <string name="notification_action_cancel">Cancelar</string>
@@ -84,7 +84,7 @@
     <string name="yes">Si</string>
     <string name="ok">Aceptar</string>
     <string name="updates">Actualizaciones</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="notify">Mostrar actualizaciones disponibles</string>
     <string name="theme_dark">Oscuro</string>
     <string name="theme_light">Claro</string>

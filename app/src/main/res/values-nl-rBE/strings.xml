@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="updates">Updates</string>
     <string name="ok">OK</string>
     <string name="yes">Ja</string>
@@ -46,7 +46,7 @@
     <string name="notification_action_cancel">Annuleren</string>
     <string name="notification_action_install">Installeer</string>
     <string name="app_details">App-details</string>
-    <string name="about_title">Over F-Droid</string>
+    <string name="about_title_full">Over F-Droid</string>
     <string name="app_list__name__downloading_in_progress">%1$s wordt gedownload</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
     <string name="updates__tts__download_app">Download</string>

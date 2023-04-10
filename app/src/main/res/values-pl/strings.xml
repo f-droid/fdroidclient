@@ -15,7 +15,7 @@
     <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS dla lokalnego repozytorium</string>
     <string name="app_details">Szczegóły aplikacji</string>
     <string name="no_such_app">Nie znaleziono takiej aplikacji.</string>
-    <string name="about_title">O F-Droid</string>
+    <string name="about_title_full">O F-Droid</string>
     <string name="about_site">Strona internetowa</string>
     <string name="about_version">Wersja</string>
     <string name="app_not_installed">Nie zainstalowano</string>
@@ -107,7 +107,7 @@
     <string name="open_qr_code_scanner">Otwórz skaner QR</string>
     <string name="swap_welcome">Witaj w F-Droid!</string>
     <string name="swap_confirm_connect">Czy chcesz teraz pobrać aplikacje od %1$s\?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby
         zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje
         usunięcie jej danych i ustawień)
