@@ -233,10 +233,22 @@ public abstract class Installer {
      * @see InstallManagerService for more about {@code canonicalUri}
      */
     public static IntentFilter getInstallIntentFilter(Uri canonicalUri) {
-        IntentFilter intentFilter = new IntentFilter();
+        IntentFilter intentFilter = getInstallInteractionIntentFilter(canonicalUri);
         intentFilter.addAction(Installer.ACTION_INSTALL_STARTED);
         intentFilter.addAction(Installer.ACTION_INSTALL_COMPLETE);
         intentFilter.addAction(Installer.ACTION_INSTALL_INTERRUPTED);
+        return intentFilter;
+    }
+
+    /**
+     * Gets an {@link IntentFilter} for user interaction needed events from the install
+     * process based on {@code canonicalUri}, which is the global unique
+     * ID for a package going through the install process.
+     *
+     * @see InstallManagerService for more about {@code canonicalUri}
+     */
+    public static IntentFilter getInstallInteractionIntentFilter(Uri canonicalUri) {
+        IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Installer.ACTION_INSTALL_USER_INTERACTION);
         intentFilter.addDataScheme(canonicalUri.getScheme());
         intentFilter.addDataAuthority(canonicalUri.getHost(), String.valueOf(canonicalUri.getPort()));
