@@ -189,11 +189,13 @@ public class AppDetailsActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         visiblePackageName = packageName;
 
         updateNotificationsForApp();
+        // don't call this in onResume() because while install confirmation dialog gets shown we pause/resume,
+        // so it would get called twice for the same state
         refreshStatus();
         registerAppStatusReceiver();
 
@@ -211,20 +213,18 @@ public class AppDetailsActivity extends AppCompatActivity
         if (statuses.hasNext()) {
             AppUpdateStatusManager.AppUpdateStatus status = statuses.next();
             updateAppStatus(status, false);
+        } else {
+            // no status found, so we should update to reflect that as well
+            updateAppStatus(null, false);
         }
 
         currentStatus = null;
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterAppStatusReceiver();
-    }
-
     protected void onStop() {
         super.onStop();
         visiblePackageName = null;
+        unregisterAppStatusReceiver();
 
         // When leaving the app details, make sure to refresh app status for this app, since
         // we might want to show notifications for it now.
@@ -473,6 +473,10 @@ public class AppDetailsActivity extends AppCompatActivity
     }
 
     private void updateAppStatus(@Nullable AppUpdateStatusManager.AppUpdateStatus newStatus, boolean justReceived) {
+        if (!justReceived && newStatus == null && currentStatus != null) {
+            // clear progress if the state got removed in the meantime (e.g. download canceled)
+            adapter.clearProgress();
+        }
         this.currentStatus = newStatus;
         if (this.currentStatus == null) {
             return;
@@ -495,6 +499,17 @@ public class AppDetailsActivity extends AppCompatActivity
                     adapter.setIndeterminateProgress(R.string.installing);
                     localBroadcastManager.registerReceiver(installReceiver,
                             Installer.getInstallIntentFilter(newStatus.getCanonicalUrl()));
+                } else {
+                    try {
+                        if (newStatus.intent != null) {
+                            localBroadcastManager.registerReceiver(installReceiver,
+                                    Installer.getInstallIntentFilter(newStatus.getCanonicalUrl()));
+                            newStatus.intent.send();
+                        }
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "PI canceled", e);
+                    }
+                    adapter.clearProgress();
                 }
                 break;
 
@@ -510,9 +525,8 @@ public class AppDetailsActivity extends AppCompatActivity
                         Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
                         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                     }
-
-                    adapter.clearProgress();
                 }
+                adapter.clearProgress();
                 break;
 
             case Installing:
