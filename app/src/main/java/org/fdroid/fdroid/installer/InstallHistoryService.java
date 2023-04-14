@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.app.IntentService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -38,15 +37,18 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
- * Saves all activity of installs and uninstalls to the database for later use, like
+ * Saves all activity of installs and uninstalls to a file for later use, like
  * displaying in some kind of history viewer or reporting to a "popularity contest"
  * app tracker.
  */
-public class InstallHistoryService extends IntentService {
+public class InstallHistoryService extends JobIntentService {
     public static final String TAG = "InstallHistoryService";
+    private static final int JOB_ID = TAG.hashCode();
 
     public static final Uri LOG_URI = Uri.parse("content://" + Installer.AUTHORITY + "/install_history/all");
 
@@ -85,10 +87,10 @@ public class InstallHistoryService extends IntentService {
         broadcastReceiver = null;
     }
 
-    public static void queue(Context context, Intent intent) {
+    private static void queue(Context context, Intent intent) {
         Utils.debugLog(TAG, "queue " + intent);
         intent.setClass(context, InstallHistoryService.class);
-        context.startService(intent);
+        JobIntentService.enqueueWork(context, InstallHistoryService.class, JOB_ID, intent);
     }
 
     public static File getInstallHistoryFile(Context context) {
@@ -97,16 +99,9 @@ public class InstallHistoryService extends IntentService {
         return new File(installHistoryDir, "all");
     }
 
-    public InstallHistoryService() {
-        super("InstallHistoryService");
-    }
-
     @Override
-    protected void onHandleIntent(Intent intent) {
+    protected void onHandleWork(@NonNull Intent intent) {
         Utils.debugLog(TAG, "onHandleIntent " + intent);
-        if (intent == null) {
-            return;
-        }
 
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         long timestamp = System.currentTimeMillis();
