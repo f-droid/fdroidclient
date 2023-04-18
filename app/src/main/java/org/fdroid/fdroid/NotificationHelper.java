@@ -202,7 +202,6 @@ public class NotificationHelper {
             } else if (installed.size() == 1) {
                 notification = createInstalledNotification(entry);
                 notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
-                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
                 notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
             }
         } else {
@@ -212,7 +211,6 @@ public class NotificationHelper {
                 notificationManager.notify(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES, notification);
             } else if (updates.size() == 1) {
                 notification = createUpdateNotification(entry);
-                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
                 notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
                 notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
             }
