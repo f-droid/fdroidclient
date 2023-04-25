@@ -99,6 +99,8 @@ android {
                     resValue "string", "applicationId", basicApplicationId + buildTypes.debug.applicationIdSuffix
                 }
             }
+            versionCode 160533
+            versionName "1.16.3-alpha3"
         }
     }
 
