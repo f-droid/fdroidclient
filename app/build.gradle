@@ -84,6 +84,8 @@ android {
             dimension "base"
             targetSdkVersion 33
             applicationIdSuffix ".basic"
+            versionCode 160535
+            versionName "1.16.3-alpha5"
         }
     }
     applicationVariants.all { variant ->
