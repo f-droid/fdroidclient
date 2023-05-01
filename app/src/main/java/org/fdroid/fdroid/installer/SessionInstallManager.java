@@ -10,6 +10,7 @@ import android.content.IntentSender;
 import android.content.pm.PackageInstaller;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -33,6 +34,13 @@ public class SessionInstallManager extends BroadcastReceiver {
             "org.fdroid.fdroid.installer.SessionInstallManager.install";
     private static final String INSTALLER_ACTION_UNINSTALL =
             "org.fdroid.fdroid.installer.SessionInstallManager.uninstall";
+    /**
+     * An intent extra needed only due to a bug in Android 12 (#2599) where our App parcelable in the confirmation
+     * intent causes a crash.
+     * To prevent this, we wrap the App and Apk parcelables in this bundle.
+     */
+    private static final String EXTRA_BUNDLE =
+            "org.fdroid.fdroid.installer.SessionInstallManager.bundle";
 
     private final Context context;
 
@@ -95,8 +103,10 @@ public class SessionInstallManager extends BroadcastReceiver {
         Intent broadcastIntent = new Intent(INSTALLER_ACTION_INSTALL);
         broadcastIntent.setPackage(context.getPackageName());
         broadcastIntent.putExtra(PackageInstaller.EXTRA_SESSION_ID, sessionId);
-        broadcastIntent.putExtra(Installer.EXTRA_APP, app);
-        broadcastIntent.putExtra(Installer.EXTRA_APK, apk);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Installer.EXTRA_APP, app);
+        bundle.putParcelable(Installer.EXTRA_APK, apk);
+        broadcastIntent.putExtra(EXTRA_BUNDLE, bundle);
         broadcastIntent.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri);
         // we are stuffing this intent pretty full, hopefully won't run into the size limit
         broadcastIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
@@ -135,16 +145,17 @@ public class SessionInstallManager extends BroadcastReceiver {
 
     private void onInstallReceived(Intent intent) {
         int sessionId = intent.getIntExtra(PackageInstaller.EXTRA_SESSION_ID, -1);
-        Intent confirmIntent = (Intent) intent.getExtras().get(Intent.EXTRA_INTENT);
+        Intent confirmIntent = (Intent) intent.getParcelableExtra(Intent.EXTRA_INTENT);
 
-        App app = intent.getParcelableExtra(Installer.EXTRA_APP);
-        Apk apk = intent.getParcelableExtra(Installer.EXTRA_APK);
+        Bundle bundle = intent.getBundleExtra(EXTRA_BUNDLE);
+        App app = bundle.getParcelable(Installer.EXTRA_APP);
+        Apk apk = bundle.getParcelable(Installer.EXTRA_APK);
         Uri canonicalUri = intent.getParcelableExtra(DownloaderService.EXTRA_CANONICAL_URL);
 
         int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, Integer.MIN_VALUE);
         String msg = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
 
-        Log.e(TAG, "Received install broadcast for " + app.packageName + " " + status + ": " + msg);
+        Log.i(TAG, "Received install broadcast for " + app.packageName + " " + status + ": " + msg);
 
         if (status == PackageInstaller.STATUS_SUCCESS) {
             String action = Installer.ACTION_INSTALL_COMPLETE;
@@ -164,11 +175,11 @@ public class SessionInstallManager extends BroadcastReceiver {
 
     private void onUninstallReceived(Intent intent) {
         String packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME);
-        Intent confirmIntent = (Intent) intent.getExtras().get(Intent.EXTRA_INTENT);
+        Intent confirmIntent = (Intent) intent.getParcelableExtra(Intent.EXTRA_INTENT);
         int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, Integer.MIN_VALUE);
         String msg = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
 
-        Log.e(TAG, "Received uninstall broadcast for " + packageName + " " + status + ": " + msg);
+        Log.i(TAG, "Received uninstall broadcast for " + packageName + " " + status + ": " + msg);
 
         if (status == PackageInstaller.STATUS_SUCCESS) {
             String action = Installer.ACTION_UNINSTALL_COMPLETE;
