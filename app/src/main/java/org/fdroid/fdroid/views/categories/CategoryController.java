@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -26,10 +27,14 @@ import com.bumptech.glide.Glide;
 import org.fdroid.database.AppOverviewItem;
 import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.apps.FeatureImage;
+import org.fdroid.index.v2.FileV2;
 
 import java.util.List;
 import java.util.Locale;
@@ -41,6 +46,9 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CategoryController extends RecyclerView.ViewHolder {
+
+    private static final String TAG = "CategoryController";
+
     private final Button viewAll;
     private final TextView heading;
     private final FeatureImage image;
@@ -95,13 +103,27 @@ public class CategoryController extends RecyclerView.ViewHolder {
         @ColorInt int backgroundColour = getBackgroundColour(activity, category.getId());
         background.setBackgroundColor(backgroundColour);
 
-        int categoryImageId = getCategoryResource(activity, category.getId(), "drawable", true);
-        if (categoryImageId == 0) {
-            image.setColour(backgroundColour);
-            image.setImageDrawable(null);
+        // try to load image from repo first
+        FileV2 iconFile = category.getIcon(LocaleListCompat.getDefault());
+        Repository repo = FDroidApp.getRepoManager(activity).getRepository(category.getRepoId());
+        if (iconFile != null && repo != null) {
+            Log.i(TAG, "Loading remote image for: " + category.getId());
+            Glide.with(activity)
+                    .load(Utils.getDownloadRequest(repo, iconFile))
+                    .apply(Utils.getAlwaysShowIconRequestOptions())
+                    .into(image);
         } else {
-            image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
-            Glide.with(activity).load(categoryImageId).into(image);
+            // try to get local image resource
+            int categoryImageId = getCategoryResource(activity, category.getId(), "drawable", true);
+            if (categoryImageId == 0) {
+                Log.w(TAG, "No image for: " + category.getId());
+                image.setColour(backgroundColour);
+                image.setImageDrawable(null);
+                Glide.with(activity).clear(image);
+            } else {
+                image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
+                Glide.with(activity).load(categoryImageId).into(image);
+            }
         }
     }
 
