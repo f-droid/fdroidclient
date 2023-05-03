@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import org.fdroid.database.AppOverviewItem;
+import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.DBHelper;
@@ -49,7 +51,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
     private final FDroidDatabase db;
     static final int NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW = 20;
 
-    private String currentCategory;
+    private Category currentCategory;
     @Nullable
     private Disposable disposable;
 
@@ -73,26 +75,27 @@ public class CategoryController extends RecyclerView.ViewHolder {
         appCards.addItemDecoration(new ItemDecorator(activity));
     }
 
-    public static String translateCategory(Context context, String categoryName) {
+    private static String translateCategory(Context context, String categoryName) {
         int categoryNameId = getCategoryResource(context, categoryName, "string", false);
         return categoryNameId == 0 ? categoryName : context.getString(categoryNameId);
     }
 
-    void bindModel(@NonNull String categoryName, LiveData<List<AppOverviewItem>> liveData) {
+    void bindModel(@NonNull Category category, LiveData<List<AppOverviewItem>> liveData) {
         loadAppItems(liveData);
-        currentCategory = categoryName;
+        currentCategory = category;
 
-        String translatedName = translateCategory(activity, categoryName);
-        heading.setText(translatedName);
-        heading.setContentDescription(activity.getString(R.string.tts_category_name, translatedName));
+        String categoryName = category.getName(LocaleListCompat.getDefault());
+        if (categoryName == null) categoryName = translateCategory(activity, category.getId());
+        heading.setText(categoryName);
+        heading.setContentDescription(activity.getString(R.string.tts_category_name, categoryName));
 
         viewAll.setVisibility(View.INVISIBLE);
         loadNumAppsInCategory();
 
-        @ColorInt int backgroundColour = getBackgroundColour(activity, categoryName);
+        @ColorInt int backgroundColour = getBackgroundColour(activity, category.getId());
         background.setBackgroundColor(backgroundColour);
 
-        int categoryImageId = getCategoryResource(activity, categoryName, "drawable", true);
+        int categoryImageId = getCategoryResource(activity, category.getId(), "drawable", true);
         if (categoryImageId == 0) {
             image.setColour(backgroundColour);
             image.setImageDrawable(null);
@@ -116,7 +119,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
 
     private void loadNumAppsInCategory() {
         if (disposable != null) disposable.dispose();
-        disposable = Single.fromCallable(() -> db.getAppDao().getNumberOfAppsInCategory(currentCategory))
+        disposable = Single.fromCallable(() -> db.getAppDao().getNumberOfAppsInCategory(currentCategory.getId()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::setNumAppsInCategory);
@@ -137,15 +140,15 @@ public class CategoryController extends RecyclerView.ViewHolder {
         return context.getResources().getIdentifier("category_" + suffix, resourceType, context.getPackageName());
     }
 
-    public static int getBackgroundColour(Context context, @NonNull String categoryName) {
-        int colourId = getCategoryResource(context, categoryName, "color", true);
+    public static int getBackgroundColour(Context context, @NonNull String categoryId) {
+        int colourId = getCategoryResource(context, categoryId, "color", true);
         if (colourId > 0) {
             return ContextCompat.getColor(context, colourId);
         }
 
         // Seed based on the categoryName, so that each time we try to choose a colour for the same
         // category it will look the same for each different user, and each different session.
-        Random random = new Random(categoryName.toLowerCase(Locale.ENGLISH).hashCode());
+        Random random = new Random(categoryId.toLowerCase(Locale.ENGLISH).hashCode());
 
         float[] hsv = new float[3];
         hsv[0] = random.nextFloat() * 360;
@@ -172,7 +175,9 @@ public class CategoryController extends RecyclerView.ViewHolder {
             }
 
             Intent intent = new Intent(activity, AppListActivity.class);
-            intent.putExtra(AppListActivity.EXTRA_CATEGORY, currentCategory);
+            intent.putExtra(AppListActivity.EXTRA_CATEGORY, currentCategory.getId());
+            intent.putExtra(AppListActivity.EXTRA_CATEGORY_NAME,
+                    currentCategory.getName(LocaleListCompat.getDefault()));
             activity.startActivity(intent);
         }
     };

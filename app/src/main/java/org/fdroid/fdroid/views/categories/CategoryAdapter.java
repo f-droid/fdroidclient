@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.categories;
 import android.view.ViewGroup;
 
 import org.fdroid.database.AppOverviewItem;
+import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.R;
 
@@ -15,21 +16,21 @@ import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-public class CategoryAdapter extends ListAdapter<String, CategoryController> {
+public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
 
     private final AppCompatActivity activity;
     private final FDroidDatabase db;
-    private final HashMap<String, LiveData<List<AppOverviewItem>>> liveData = new HashMap<>();
+    private final HashMap<Category, LiveData<List<AppOverviewItem>>> liveData = new HashMap<>();
 
     public CategoryAdapter(AppCompatActivity activity, FDroidDatabase db) {
-        super(new DiffUtil.ItemCallback<String>() {
+        super(new DiffUtil.ItemCallback<Category>() {
             @Override
-            public boolean areItemsTheSame(String oldItem, String newItem) {
+            public boolean areItemsTheSame(Category oldItem, Category newItem) {
                 return oldItem.equals(newItem);
             }
 
             @Override
-            public boolean areContentsTheSame(String oldItem, String newItem) {
+            public boolean areContentsTheSame(Category oldItem, Category newItem) {
                 return false;
             }
         });
@@ -47,17 +48,17 @@ public class CategoryAdapter extends ListAdapter<String, CategoryController> {
 
     @Override
     public void onBindViewHolder(@NonNull CategoryController holder, int position) {
-        String categoryName = getItem(position);
-        holder.bindModel(categoryName, liveData.get(categoryName));
+        Category category = getItem(position);
+        holder.bindModel(category, liveData.get(category));
     }
 
-    public void setCategories(@NonNull List<String> unlocalizedCategoryNames) {
-        submitList(unlocalizedCategoryNames);
-        for (String name: unlocalizedCategoryNames) {
+    public void setCategories(@NonNull List<Category> categories) {
+        submitList(categories);
+        for (Category category: categories) {
             int num = CategoryController.NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW;
             // we are getting the LiveData here and not in the ViewHolder, so the data gets cached here
             // this prevents reloads when scrolling
-            liveData.put(name, db.getAppDao().getAppOverviewItems(name, num));
+            liveData.put(category, db.getAppDao().getAppOverviewItems(category.getId(), num));
         }
     }
 

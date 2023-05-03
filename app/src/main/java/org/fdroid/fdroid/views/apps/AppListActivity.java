@@ -68,6 +68,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
     public static final String EXTRA_CATEGORY
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY";
+    public static final String EXTRA_CATEGORY_NAME
+            = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY_NAME";
     public static final String EXTRA_SEARCH_TERMS
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
 
@@ -77,7 +79,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
     private RecyclerView appView;
     private AppListAdapter appAdapter;
-    private String category;
+    private String categoryId;
     private String searchTerms;
     private String sortClauseSelected;
     private TextView emptyState;
@@ -213,13 +215,15 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
     private void parseIntentForSearchQuery() {
         Intent intent = getIntent();
-        category = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
+        categoryId = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
+        String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
+                intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
 
-        searchInput.setText(getSearchText(category, searchTerms));
+        searchInput.setText(getSearchText(categoryName, searchTerms));
         searchInput.setSelection(searchInput.getText().length());
 
-        if (category != null) {
+        if (categoryId != null) {
             // Do this so that the search input does not get focus by default. This allows for a user
             // experience where the user scrolls through the apps in the category.
             appView.requestFocus();
@@ -232,11 +236,11 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         }
         AppListSortOrder sortOrder =
                 SortClause.WORDS.equals(sortClauseSelected) ? AppListSortOrder.NAME : AppListSortOrder.LAST_UPDATED;
-        if (category == null) {
+        if (categoryId == null) {
             itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), searchTerms,
                     sortOrder);
         } else {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), category,
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId,
                     searchTerms, sortOrder);
         }
         itemsLiveData.observe(this, this::onAppsLoaded);
@@ -288,8 +292,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     }
 
     @Override
-    public void onSearchTermsChanged(@Nullable String category, @NonNull String searchTerms) {
-        this.category = category;
+    public void onSearchTermsChanged(@Nullable String categoryName, @NonNull String searchTerms) {
+        if (categoryName == null) this.categoryId = null;
         this.searchTerms = searchTerms;
         appView.scrollToPosition(0);
         loadItems();
@@ -300,14 +304,14 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         }
     }
 
-    public static void putSavedSearchSettings(Context context, String key, String searchTerms) {
+    private static void putSavedSearchSettings(Context context, String key, String searchTerms) {
         if (savedSearchSettings == null) {
             savedSearchSettings = getSavedSearchSettings(context);
         }
         savedSearchSettings.edit().putString(key, searchTerms).apply();
     }
 
-    public static void removeSavedSearchSettings(Context context, String key) {
+    private static void removeSavedSearchSettings(Context context, String key) {
         if (savedSearchSettings == null) {
             savedSearchSettings = getSavedSearchSettings(context);
         }

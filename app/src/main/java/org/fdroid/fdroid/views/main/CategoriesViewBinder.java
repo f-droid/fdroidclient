@@ -17,14 +17,12 @@ import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
-import org.fdroid.fdroid.views.categories.CategoryController;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.os.LocaleListCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.Transformations;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,12 +38,10 @@ class CategoriesViewBinder implements Observer<List<Category>> {
     public static final String TAG = "CategoriesViewBinder";
 
     private final CategoryAdapter categoryAdapter;
-    private final AppCompatActivity activity;
     private final TextView emptyState;
     private final RecyclerView categoriesList;
 
     CategoriesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
-        this.activity = activity;
         FDroidDatabase db = DBHelper.getDb(activity);
         Transformations.distinctUntilChanged(db.getRepositoryDao().getLiveCategories()).observe(activity, this);
 
@@ -96,20 +92,15 @@ class CategoriesViewBinder implements Observer<List<Category>> {
      */
     @Override
     public void onChanged(List<Category> categories) {
-        List<String> categoryNames = new ArrayList<>(categories.size());
-        for (Category c : categories) {
-            categoryNames.add(c.getId());
-        }
-        Collections.sort(categoryNames, new Comparator<String>() {
-            @Override
-            public int compare(String categoryOne, String categoryTwo) {
-                String localizedCategoryOne = CategoryController.translateCategory(activity, categoryOne);
-                String localizedCategoryTwo = CategoryController.translateCategory(activity, categoryTwo);
-                return localizedCategoryOne.compareTo(localizedCategoryTwo);
-            }
+        LocaleListCompat localeListCompat = LocaleListCompat.getDefault();
+        Collections.sort(categories, (o1, o2) -> {
+            String name1 = o1.getName(localeListCompat);
+            if (name1 == null) name1 = o1.getId();
+            String name2 = o2.getName(localeListCompat);
+            if (name2 == null) name2 = o2.getId();
+            return name1.compareToIgnoreCase(name2);
         });
-
-        categoryAdapter.setCategories(categoryNames);
+        categoryAdapter.setCategories(categories);
 
         if (categoryAdapter.getItemCount() == 0) {
             emptyState.setVisibility(View.VISIBLE);
