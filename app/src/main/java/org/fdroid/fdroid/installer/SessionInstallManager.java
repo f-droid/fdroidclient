@@ -19,6 +19,7 @@ import androidx.core.util.ObjectsCompat;
 import androidx.documentfile.provider.DocumentFile;
 
 import org.apache.commons.io.IOUtils;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -205,6 +206,40 @@ public class SessionInstallManager extends BroadcastReceiver {
         Apk apk = new Apk();
         apk.packageName = packageName;
         Installer.sendBroadcastUninstall(context, app, apk, action, pendingIntent, errorMessage);
+    }
+
+    /**
+     * Returns true if the {@link SessionInstaller} can be used on this device.
+     */
+    public static boolean canBeUsed() {
+        // We could use the SessionInstaller also with the full flavor,
+        // but for now we limit it to basic to limit potential damage.
+        if (!BuildConfig.FLAVOR.equals("basic")) return false;
+        // We could use the SessionInstaller also on lower versions,
+        // but the benefit of unattended updates only starts with SDK 31.
+        // Before the extra bugs it has aren't worth it.
+        if (Build.VERSION.SDK_INT < 31) return false;
+        // Xiaomi MIUI (at least in version 12) is known to break the PackageInstaller API in several ways.
+        // Disabling MIUI "optimizations" in developer options fixes it, but we can't ask users to do this (bad UX).
+        // Therefore, we have no choice, but to disable it completely for those devices.
+        // See: https://github.com/vvb2060/PackageInstallerTest
+        return !isXiaomiDevice();
+    }
+
+    private static boolean isXiaomiDevice() {
+        return "Xiaomi".equalsIgnoreCase(Build.BRAND) || "Redmi".equalsIgnoreCase(Build.BRAND);
+    }
+
+    public static boolean isTargetSdkSupported(int targetSdk) {
+        if (Build.VERSION.SDK_INT < 31) return false; // not supported below Android 12
+        if (Build.VERSION.SDK_INT == 31 && targetSdk >= 29) return true;
+        if (Build.VERSION.SDK_INT == 32 && targetSdk >= 29) return true;
+        if (Build.VERSION.SDK_INT == 33 && targetSdk >= 30) return true;
+        // This needs to be adjusted as new Android versions are released
+        // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
+        // https://cs.android.com/android/platform/superproject/+/android-13.0.0_r42:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=2095;drc=6aba151873bfae198ef9eceb10f943e18b52d58c
+        // TODO check targetSdk Android 14 sources have been published, just a guess so far
+        return Build.VERSION.SDK_INT == 34 && targetSdk >= 31;
     }
 
 }

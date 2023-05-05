@@ -23,11 +23,11 @@ package org.fdroid.fdroid.installer;
 import android.content.Context;
 import android.text.TextUtils;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.Apk;
-
 import androidx.annotation.NonNull;
+
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 
 public class InstallerFactory {
 
@@ -55,11 +55,8 @@ public class InstallerFactory {
         } else if (PrivilegedInstaller.isDefault(context)) {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
             installer = new PrivilegedInstaller(context, app, apk);
-        } else if (apk.targetSdkVersion >= 29 && SessionInstaller.canBeUsed()) {
-            // Unattended updates only work if app targets at least 30 (when running Android 13 (SDK 33) at least).
-            // However, we already use new installer earlier (for Android 12)
-            // and so we are already the installer of record, so unattended updates will work
-            // once the app bumps the targetSdk.
+        } else if (SessionInstallManager.isTargetSdkSupported(apk.targetSdkVersion)
+                && SessionInstallManager.canBeUsed()) {
             Utils.debugLog(TAG, "using experimental SessionInstaller, because app targets " + apk.targetSdkVersion);
             installer = new SessionInstaller(context, app, apk);
         } else {

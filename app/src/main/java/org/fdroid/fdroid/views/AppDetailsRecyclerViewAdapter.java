@@ -60,6 +60,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
@@ -376,6 +377,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView titleView;
         final TextView authorView;
         final TextView lastUpdateView;
+        final TextView warningView;
         final TextView summaryView;
         final TextView whatsNewView;
         final TextView descriptionView;
@@ -400,6 +402,7 @@ public class AppDetailsRecyclerViewAdapter
             titleView = (TextView) view.findViewById(R.id.title);
             authorView = (TextView) view.findViewById(R.id.author);
             lastUpdateView = (TextView) view.findViewById(R.id.text_last_update);
+            warningView = (TextView) view.findViewById(R.id.warning);
             summaryView = (TextView) view.findViewById(R.id.summary);
             whatsNewView = (TextView) view.findViewById(R.id.latest);
             descriptionView = (TextView) view.findViewById(R.id.description);
@@ -496,6 +499,12 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.GONE);
             }
 
+            if (SessionInstallManager.canBeUsed() && suggestedApk != null
+                    && !SessionInstallManager.isTargetSdkSupported(suggestedApk.targetSdkVersion)) {
+                warningView.setVisibility(View.VISIBLE);
+            } else {
+                warningView.setVisibility(View.GONE);
+            }
             if (!TextUtils.isEmpty(app.summary)) {
                 summaryView.setText(app.summary);
                 summaryView.setVisibility(View.VISIBLE);
