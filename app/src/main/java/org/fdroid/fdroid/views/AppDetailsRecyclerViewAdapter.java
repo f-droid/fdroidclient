@@ -14,6 +14,7 @@ import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.text.format.Formatter;
 import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
@@ -493,7 +494,16 @@ public class AppDetailsRecyclerViewAdapter
             }
             if (app.lastUpdated != null) {
                 Resources res = lastUpdateView.getContext().getResources();
-                lastUpdateView.setText(Utils.formatLastUpdated(res, app.lastUpdated));
+                String lastUpdated = Utils.formatLastUpdated(res, app.lastUpdated);
+                String text;
+                if (Preferences.get().expertMode() && suggestedApk != null && suggestedApk.apkFile != null
+                        && suggestedApk.apkFile.getSize() != null) {
+                    String size = Formatter.formatFileSize(context, suggestedApk.apkFile.getSize());
+                    text = lastUpdated + " (" + size + ")";
+                } else {
+                    text = lastUpdated;
+                }
+                lastUpdateView.setText(text);
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);
