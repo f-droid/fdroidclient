@@ -382,7 +382,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView summaryView;
         final TextView whatsNewView;
         final TextView descriptionView;
-        final TextView descriptionMoreView;
+        final Button descriptionMoreView;
         final View antiFeaturesSectionView;
         final TextView antiFeaturesLabelView;
         final View antiFeaturesWarningView;
@@ -407,7 +407,7 @@ public class AppDetailsRecyclerViewAdapter
             summaryView = (TextView) view.findViewById(R.id.summary);
             whatsNewView = (TextView) view.findViewById(R.id.latest);
             descriptionView = (TextView) view.findViewById(R.id.description);
-            descriptionMoreView = (TextView) view.findViewById(R.id.description_more);
+            descriptionMoreView = (Button) view.findViewById(R.id.description_more);
             antiFeaturesSectionView = view.findViewById(R.id.anti_features_section);
             antiFeaturesLabelView = (TextView) view.findViewById(R.id.label_anti_features);
             antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);

@@ -22,22 +22,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.fdroid.database.AntiFeature;
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import androidx.core.os.LocaleListCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 public class AntiFeaturesListingView extends RecyclerView {
+
+    private static final String TAG = "AntiFeaturesListingView";
 
     public AntiFeaturesListingView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -56,32 +65,48 @@ public class AntiFeaturesListingView extends RecyclerView {
             @Override
             public AntiFeatureItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-                View view = inflater.inflate(R.layout.listitem_antifeaturelisting, null);
+                View view = inflater.inflate(R.layout.listitem_antifeaturelisting, parent, false);
                 return new AntiFeatureItemViewHolder(view);
             }
 
             @Override
             public void onBindViewHolder(@NonNull AntiFeatureItemViewHolder holder, int position) {
-                final String antiFeatureName = app.antiFeatures[position];
-                holder.antiFeatureIcon.setBackgroundDrawable(
-                        ContextCompat.getDrawable(
-                                getContext(),
-                                antiFeatureIcon(
-                                        holder.antiFeatureText.getContext(),
-                                        antiFeatureName
-                                )
-                        )
-                );
-                holder.antiFeatureText.setText(
-                        getAntiFeatureDescriptionText(holder.antiFeatureText.getContext(), antiFeatureName));
-                holder.entireView.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-                        i.setData(Uri.parse("https://f-droid.org/docs/Anti-Features#" + antiFeatureName));
-                        getContext().startActivity(i);
-                    }
+                final String antiFeatureId = app.antiFeatures[position];
+                Repository repo = FDroidApp.getRepo(app.repoId);
+                if (repo == null) return;
+                LocaleListCompat localeList = LocaleListCompat.getDefault();
+                AntiFeature antiFeature = repo.getAntiFeatures().get(antiFeatureId);
+                if (antiFeature == null) {
+                    Log.w(TAG, "Anti-feature not defined in repo: " + antiFeatureId);
+                    holder.antiFeatureText.setText(getAntiFeatureDescriptionText(getContext(), antiFeatureId));
+                    Glide.with(getContext()).clear(holder.antiFeatureIcon);
+                    holder.antiFeatureIcon.setImageResource(antiFeatureIcon(getContext(), antiFeatureId));
+                } else {
+                    // text
+                    String desc = antiFeature.getDescription(localeList);
+                    holder.antiFeatureText.setText(desc == null ?
+                            getAntiFeatureDescriptionText(getContext(), antiFeatureId) : desc);
+                    // icon
+                    int fallbackIcon = antiFeatureIcon(getContext(), antiFeatureId);
+                    app.loadWithGlide(getContext(), antiFeature.getIcon(localeList))
+                            .fallback(fallbackIcon)
+                            .error(fallbackIcon)
+                            .into(holder.antiFeatureIcon);
+                }
+                // reason
+                String reason = app.antiFeatureReasons.get(antiFeatureId);
+                if (reason == null) {
+                    holder.antiFeatureReason.setVisibility(View.GONE);
+                } else {
+                    holder.antiFeatureReason.setText(reason);
+                    holder.antiFeatureReason.setVisibility(View.VISIBLE);
+                }
+                // click
+                holder.entireView.setOnClickListener(v -> {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                    i.setData(Uri.parse("https://f-droid.org/docs/Anti-Features#" + antiFeatureId));
+                    getContext().startActivity(i);
                 });
             }
 
@@ -92,17 +117,19 @@ public class AntiFeaturesListingView extends RecyclerView {
         }, false);
     }
 
-    class AntiFeatureItemViewHolder extends RecyclerView.ViewHolder {
+    static class AntiFeatureItemViewHolder extends RecyclerView.ViewHolder {
 
         private final View entireView;
-        private final View antiFeatureIcon;
+        private final ImageView antiFeatureIcon;
         private final TextView antiFeatureText;
+        private final TextView antiFeatureReason;
 
         AntiFeatureItemViewHolder(View itemView) {
             super(itemView);
             entireView = itemView;
             antiFeatureIcon = itemView.findViewById(R.id.anti_feature_icon);
             antiFeatureText = itemView.findViewById(R.id.anti_feature_text);
+            antiFeatureReason = itemView.findViewById(R.id.anti_feature_reason);
         }
 
     }

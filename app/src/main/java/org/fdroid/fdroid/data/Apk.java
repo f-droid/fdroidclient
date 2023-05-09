@@ -13,6 +13,7 @@ import android.webkit.MimeTypeMap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.core.os.LocaleListCompat;
 
 import org.fdroid.database.AppManifest;
 import org.fdroid.database.AppVersion;
@@ -29,9 +30,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.zip.ZipFile;
 
 /**
@@ -126,6 +129,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
 
     public String[] antiFeatures;
 
+    public Map<String, String> antiFeatureReasons = new HashMap<>();
+
     public String whatsNew;
 
     public Apk() {
@@ -184,6 +189,11 @@ public class Apk implements Comparable<Apk>, Parcelable {
         versionName = manifest.getVersionName();
         versionCode = manifest.getVersionCode();
         antiFeatures = v.getAntiFeatureKeys().toArray(new String[0]);
+        LocaleListCompat localeList = LocaleListCompat.getDefault();
+        antiFeatureReasons.clear();
+        for (String antiFeature: antiFeatures) {
+            antiFeatureReasons.put(antiFeature, v.getAntiFeatureReason(antiFeature, localeList));
+        }
         whatsNew = v.getWhatsNew(App.getLocales());
     }
 

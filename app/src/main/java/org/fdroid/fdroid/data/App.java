@@ -42,7 +42,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -198,6 +200,7 @@ public class App implements Comparable<App>, Parcelable {
      */
     @Nullable
     public String[] antiFeatures;
+    public Map<String, String> antiFeatureReasons = new HashMap<>();
 
     public FileV2 iconFile;
 
@@ -305,6 +308,7 @@ public class App implements Comparable<App>, Parcelable {
             autoInstallVersionName = apk.versionName;
         }
         antiFeatures = apk.antiFeatures;
+        antiFeatureReasons = apk.antiFeatureReasons;
         whatsNew = apk.whatsNew;
         isApk = apk.isApk();
     }
