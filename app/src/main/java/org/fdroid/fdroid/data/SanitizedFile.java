@@ -30,7 +30,7 @@ public class SanitizedFile extends File {
     /**
      * Used by the {@link org.fdroid.fdroid.data.SanitizedFile#knownSanitized(java.io.File)}
      * method, but intentionally kept private so people don't think that any sanitization
-     * will occur by passing a file in - because it wont.
+     * will occur by passing a file in - because it won't.
      */
     private SanitizedFile(File file) {
         super(file.getAbsolutePath());

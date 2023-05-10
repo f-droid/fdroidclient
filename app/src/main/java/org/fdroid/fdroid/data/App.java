@@ -172,7 +172,7 @@ public class App implements Comparable<App>, Parcelable {
 
     /**
      * Unlike other public fields, this is only accessible via a getter, to
-     * emphasise that setting it wont do anything.
+     * emphasise that setting it won't do anything.
      */
     private String autoInstallVersionName;
 

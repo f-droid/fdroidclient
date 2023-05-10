@@ -86,7 +86,7 @@ class MainViewController extends RecyclerView.ViewHolder {
      * <p>
      * Note: It is tricky to attach a {@link Fragment} to a view from this view holder. This is due
      * to the way in which the {@link RecyclerView} will reuse existing views and ask us to
-     * put a settings fragment in there at arbitrary times. Usually it wont be the same view we
+     * put a settings fragment in there at arbitrary times. Usually it won't be the same view we
      * attached the fragment to last time, which causes weirdness. The solution is to use code from
      * the com.lsjwzh.widget.recyclerviewpager.FragmentStatePagerAdapter which manages this.
      * The code has been ported to {@link SettingsView}.

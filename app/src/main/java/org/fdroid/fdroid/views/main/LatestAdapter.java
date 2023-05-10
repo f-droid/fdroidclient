@@ -59,7 +59,7 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
                 layout = R.layout.app_card_list_item;
                 break;
             default:
-                throw new IllegalArgumentException("Unknown view type when rendering \"Whats New\": " + viewType);
+                throw new IllegalArgumentException("Unknown view type when rendering \"What's New\": " + viewType);
         }
 
         return new AppCardController(activity, activity.getLayoutInflater().inflate(layout, parent, false));

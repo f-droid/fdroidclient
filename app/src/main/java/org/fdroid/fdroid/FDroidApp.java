@@ -501,7 +501,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     }
 
     /**
-     * Put proxy settings (or Tor settings) globally into effect based on whats configured in Preferences.
+     * Put proxy settings (or Tor settings) globally into effect based on what's configured in Preferences.
      * <p>
      * Must be called on App startup and after every proxy configuration change.
      */

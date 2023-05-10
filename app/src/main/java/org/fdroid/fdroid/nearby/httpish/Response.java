@@ -30,7 +30,7 @@ public class Response {
 
     /**
      * This class expects 'contentStream' to be open, and ready for use.
-     * It will not close it either. However it will block wile doing things
+     * It will not close it either. However it will block while doing things
      * so you can call a method, wait for it to finish, and then close
      * it afterwards if you like.
      */
