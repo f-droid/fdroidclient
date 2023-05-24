@@ -61,7 +61,7 @@ import org.fdroid.fdroid.views.apps.AppListActivity;
  * Main view shown to users upon starting F-Droid.
  * <p>
  * Shows a bottom navigation bar, with the following entries:
- * + Whats new
+ * + What's new
  * + Categories list
  * + App swap
  * + Updates

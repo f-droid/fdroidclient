@@ -896,7 +896,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         /**
-         * Show a dialog to the user explaining the reaons there are no compatible versions.
+         * Show a dialog to the user explaining the reasons there are no compatible versions.
          * This will either be due to device features (e.g. NFC, API levels, etc) or being signed
          * by a different certificate (as is often the case with apps from Google Play signed by
          * upstream).

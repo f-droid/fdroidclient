@@ -229,7 +229,7 @@ public class FDroidMetricsWorker extends Worker {
                     previousEvent = event;
                 }
             }
-            // TODO add time to INSTALL_COMPLETE evnts, eg INSTALL_COMPLETE - INSTALL_STARTED
+            // TODO add time to INSTALL_COMPLETE events, eg INSTALL_COMPLETE - INSTALL_STARTED
             return toReport;
         } catch (IOException e) {
             // ignored

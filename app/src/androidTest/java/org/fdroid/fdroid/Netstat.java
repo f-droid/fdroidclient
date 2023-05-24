@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
  * <p>
  * 1000 0 54165785 4 cd1e6040 25 4 27 3 -1
  * | | | | | | | | | |--> slow start size threshold,
- * | | | | | | | | | or -1 if the treshold
+ * | | | | | | | | | or -1 if the threshold
  * | | | | | | | | | is >= 0xFFFF
  * | | | | | | | | |----> sending congestion window
  * | | | | | | | |-------> (ack.quick<<1)|ack.pingpong
@@ -111,7 +111,7 @@ public class Netstat {
     */
 
     /**
-     * Method used to question for the connections currently openned
+     * Method used to question for the connections currently opened
      *
      * @return The list of connections (as Connection objects)
      */
@@ -119,7 +119,7 @@ public class Netstat {
 
         final ArrayList<Connection> net = new ArrayList<>();
 
-        // read from /proc/net/tcp the list of currently openned socket connections
+        // read from /proc/net/tcp the list of currently opened socket connections
         try {
             BufferedReader in = new BufferedReader(new FileReader("/proc/net/tcp"));
             String line;
@@ -152,7 +152,7 @@ public class Netstat {
             // ignored
         }
 
-        // read from /proc/net/udp the list of currently openned socket connections
+        // read from /proc/net/udp the list of currently opened socket connections
         try {
             BufferedReader in = new BufferedReader(new FileReader("/proc/net/udp"));
             String line;
@@ -185,7 +185,7 @@ public class Netstat {
             // ignored
         }
 
-        // read from /proc/net/raw the list of currently openned socket connections
+        // read from /proc/net/raw the list of currently opened socket connections
         try {
             BufferedReader in = new BufferedReader(new FileReader("/proc/net/raw"));
             String line;
@@ -222,7 +222,7 @@ public class Netstat {
     }
 
     /**
-     * Informations about a given connection
+     * Information about a given connection
      *
      * @author Ciprian Dobre
      */

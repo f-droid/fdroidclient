@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
  *
  * <ul>
  *   <li>
- *     {@link KnownVulnAppListItemController}: Will be marked as "Ignored" and wont warn the user in the future.
+ *     {@link KnownVulnAppListItemController}: Will be marked as "Ignored" and won't warn the user in the future.
  *   </li>
  *   <li>
  *     {@link UpdateableAppListItemController}: Will get marked as "Ignore this update".
