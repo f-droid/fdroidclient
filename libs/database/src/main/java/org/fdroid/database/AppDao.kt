@@ -12,9 +12,9 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.map
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
-import androidx.room.RoomWarnings.CURSOR_MISMATCH
+import androidx.room.RoomWarnings.Companion.CURSOR_MISMATCH
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.serialization.SerializationException
