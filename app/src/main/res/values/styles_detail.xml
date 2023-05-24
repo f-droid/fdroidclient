@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="DetailsButtonStyleBase" parent="Widget.App.Button.OutlinedButton">
+    <style name="DetailsButtonStyle" parent="Widget.App.Button.OutlinedButton">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:minHeight">32dp</item>
@@ -12,9 +12,9 @@
         <item name="android:paddingRight">18dp</item>
         <item name="textAllCaps">true</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
+        <item name="android:stateListAnimator">@null</item>  <!-- no elevation change on hover -->
+        <item name="android:letterSpacing">0.05</item>
     </style>
-
-    <style name="DetailsButtonStyle" parent="DetailsButtonStyleBase" />
 
     <style name="DetailsPrimaryButtonStyle" parent="Widget.App.Button">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>

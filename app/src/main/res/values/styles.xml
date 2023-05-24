@@ -68,25 +68,24 @@
     </style>
 
     <!-- use this style for a text view that is a caption to a paragraph of text -->
-    <style name="CaptionTextBase">
+    <style name="CaptionText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">4dp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textDirection">locale</item>
     </style>
 
-    <style name="CaptionText" parent="CaptionTextBase" />
-
     <!-- use this style for a text views that is a paragraph of text -->
-    <style name="BodyTextBase">
+    <style name="BodyText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+        <item name="android:textDirection">locale</item>
     </style>
-
-    <style name="BodyText" parent="BodyTextBase" />
 
     <style name="AppListEmptyText">
         <item name="android:id">@android:id/empty</item>
@@ -98,15 +97,14 @@
 
     <!-- Used for supplementary information to show below an app name in app lists, such as
          whether it is incompatible, what version is installed, etc -->
-    <style name="AppListItemStatusTextBase">
+    <style name="AppListItemStatusText">
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?attr/lightGrayTextColor</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
+        <item name="fontFamily">sans-serif-light</item>
     </style>
-
-    <style name="AppListItemStatusText" parent="AppListItemStatusTextBase" />
 
     <style name="AppDetailsLinkBase">
         <item name="android:layout_width">match_parent</item>
