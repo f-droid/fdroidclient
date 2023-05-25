@@ -11,6 +11,7 @@ import org.fdroid.index.v1.IndexV1VerifierKt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -27,8 +28,10 @@ import androidx.test.core.app.ApplicationProvider;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assume.assumeFalse;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk={23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
 public class LocalRepoKeyStoreTest {
 
     @Test
@@ -57,6 +60,8 @@ public class LocalRepoKeyStoreTest {
         JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1VerifierKt.DATA_FILE_NAME);
         byte[] data = IOUtils.toByteArray(jarFile.getInputStream(indexEntry));
         assertEquals(6431, data.length);
+        assumeFalse("Needs SHA1 enabled in order to verify index-v1.jar",
+                    TextUtils.isEmpty(System.getenv("CI")));
         assertNotNull(TreeUriScannerIntentService.getSigningCertFromJar(indexEntry));
     }
 }

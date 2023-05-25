@@ -9,6 +9,7 @@ import org.bouncycastle.cms.CMSSignedDataGenerator;
 import org.bouncycastle.cms.CMSTypedData;
 import org.bouncycastle.cms.SignerInfoGenerator;
 import org.bouncycastle.cms.jcajce.JcaSignerInfoGeneratorBuilder;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.DigestCalculatorProvider;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
@@ -28,16 +29,17 @@ public class SignatureBlockGenerator {
      */
     public static byte[] generate(KeySet keySet, byte[] content) {
         try {
+            BouncyCastleProvider bcp = new BouncyCastleProvider();
             CMSTypedData msg = new CMSProcessableByteArray(content);
 
             Store certs = new JcaCertStore(Collections.singletonList(keySet.getPublicKey()));
 
             CMSSignedDataGenerator gen = new CMSSignedDataGenerator();
 
-            JcaContentSignerBuilder jcaContentSignerBuilder = new JcaContentSignerBuilder(keySet.getSignatureAlgorithm()).setProvider("BC");
+            JcaContentSignerBuilder jcaContentSignerBuilder = new JcaContentSignerBuilder(keySet.getSignatureAlgorithm()).setProvider(bcp);
             ContentSigner sha1Signer = jcaContentSignerBuilder.build(keySet.getPrivateKey());
 
-            JcaDigestCalculatorProviderBuilder jcaDigestCalculatorProviderBuilder = new JcaDigestCalculatorProviderBuilder().setProvider("BC");
+            JcaDigestCalculatorProviderBuilder jcaDigestCalculatorProviderBuilder = new JcaDigestCalculatorProviderBuilder().setProvider(bcp);
             DigestCalculatorProvider digestCalculatorProvider = jcaDigestCalculatorProviderBuilder.build();
 
             JcaSignerInfoGeneratorBuilder jcaSignerInfoGeneratorBuilder = new JcaSignerInfoGeneratorBuilder(digestCalculatorProvider);

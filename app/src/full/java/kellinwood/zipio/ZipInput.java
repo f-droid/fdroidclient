@@ -143,8 +143,12 @@ public class ZipInput implements Closeable {
 
     private void doRead() {
         try {
-
-            long posEOCDR = scanForEOCDR(256);
+            int bufferSize = 256;
+            long fileLength = in.length();
+            if (fileLength < bufferSize) {
+                bufferSize = (int) fileLength;
+            }
+            long posEOCDR = scanForEOCDR(bufferSize);
             in.seek(posEOCDR);
             centralEnd = CentralEnd.read(this);
 

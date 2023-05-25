@@ -62,7 +62,7 @@ public final class LocalRepoKeyStore {
     private static final String INDEX_CERT_ALIAS = "fdroid";
     private static final String HTTP_CERT_ALIAS = "https";
 
-    private static final String DEFAULT_SIG_ALG = "SHA1withRSA";
+    public static final String DEFAULT_SIG_ALG = "SHA1withRSA";
     private static final String DEFAULT_KEY_ALGO = "RSA";
     private static final int DEFAULT_KEY_BITS = 2048;
 
@@ -277,18 +277,18 @@ public final class LocalRepoKeyStore {
         };
     }
 
-    private KeyPair generateRandomKeypair() throws NoSuchAlgorithmException {
+    public static KeyPair generateRandomKeypair() throws NoSuchAlgorithmException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(DEFAULT_KEY_ALGO);
         keyPairGenerator.initialize(DEFAULT_KEY_BITS);
         return keyPairGenerator.generateKeyPair();
     }
 
-    private Certificate generateSelfSignedCertChain(KeyPair kp, X500Name subject)
+    public static Certificate generateSelfSignedCertChain(KeyPair kp, X500Name subject)
             throws CertificateException, OperatorCreationException, IOException {
         return generateSelfSignedCertChain(kp, subject, null);
     }
 
-    private Certificate generateSelfSignedCertChain(KeyPair kp, X500Name subject, String hostname)
+    public static Certificate generateSelfSignedCertChain(KeyPair kp, X500Name subject, String hostname)
             throws CertificateException, OperatorCreationException, IOException {
         SecureRandom rand = new SecureRandom();
         PrivateKey privKey = kp.getPrivate();
