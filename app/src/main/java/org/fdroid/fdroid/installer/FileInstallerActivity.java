@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -104,10 +102,8 @@ public class FileInstallerActivity extends FragmentActivity {
 
     private void showDialog() {
 
-        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
-        ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(theme);
+        // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
         builder.setMessage(R.string.app_permission_storage)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

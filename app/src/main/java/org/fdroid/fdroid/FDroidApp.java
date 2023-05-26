@@ -55,7 +55,6 @@ import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.Preferences.ChangeListener;
-import org.fdroid.fdroid.Preferences.Theme;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ApkFileProvider;
@@ -130,8 +129,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         enableBouncyCastle();
     }
 
-    private static Theme curTheme = Theme.light;
-
     /**
      * Apply pure black background in dark theme setting. Must be called in every activity's
      * {@link AppCompatActivity#onCreate()}, before super.onCreate().
@@ -145,8 +142,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         }
     }
 
-    public void applyTheme() {
-        curTheme = Preferences.get().getTheme();
+    public static void applyTheme() {
+        Preferences.Theme curTheme = Preferences.get().getTheme();
         switch (curTheme) {
             case dark:
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -164,16 +161,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                 }
                 break;
         }
-    }
-
-    //    TODO: ResId no longer exists.
-    public static int getCurThemeResId() {
-        return R.style.Theme_App;
-    }
-
-    @Deprecated // broken, use system (night) resources instead
-    public static boolean isAppThemeLight() {
-        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO;
     }
 
     public void setSecureWindow(AppCompatActivity activity) {
