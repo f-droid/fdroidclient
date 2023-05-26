@@ -640,6 +640,7 @@ public class AppDetailsActivity extends AppCompatActivity
                         app.installedVersionName = null;
                         onAppChanged(app);
                     }
+                    AppUpdateStatusManager.getInstance(context).checkForUpdates();
                     unregisterUninstallReceiver();
                     break;
                 case Installer.ACTION_UNINSTALL_INTERRUPTED:

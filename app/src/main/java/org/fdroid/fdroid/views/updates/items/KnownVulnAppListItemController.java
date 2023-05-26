@@ -101,6 +101,7 @@ public class KnownVulnAppListItemController extends AppListItemController {
                 case Installer.ACTION_INSTALL_COMPLETE:
                 case Installer.ACTION_UNINSTALL_COMPLETE:
                     refreshUpdatesList();
+                    AppUpdateStatusManager.getInstance(context).checkForUpdates();
                     unregisterInstallReceiver();
                     break;
 
