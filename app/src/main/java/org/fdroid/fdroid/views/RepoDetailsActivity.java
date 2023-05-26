@@ -408,6 +408,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         TextView name = repoView.findViewById(R.id.text_repo_name);
         TextView numApps = repoView.findViewById(R.id.text_num_apps);
         TextView lastUpdated = repoView.findViewById(R.id.text_last_update);
+        TextView lastDownloaded = repoView.findViewById(R.id.text_last_update_downloaded);
 
         name.setText(repo.getName(App.getLocales()));
         disposable = Single.fromCallable(() -> appDao.getNumberOfAppsInRepository(repoId))
@@ -419,15 +420,21 @@ public class RepoDetailsActivity extends AppCompatActivity {
         setupRepoFingerprint(repoView, repo);
         setupCredentials(repoView, repo);
 
-        // Repos that existed before this feature was supported will have an
-        // "Unknown" last update until next time they update...
-        if (repo.getLastUpdated() == null) {
+        if (repo.getTimestamp() == -1) {
             lastUpdated.setText(R.string.unknown);
+        } else {
+            int format = DateUtils.isToday(repo.getTimestamp()) ?
+                    DateUtils.FORMAT_SHOW_TIME :
+                    DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE;
+            lastUpdated.setText(DateUtils.formatDateTime(this, repo.getTimestamp(), format));
+        }
+        if (repo.getLastUpdated() == null) {
+            lastDownloaded.setText(R.string.unknown);
         } else {
             int format = DateUtils.isToday(repo.getLastUpdated()) ?
                     DateUtils.FORMAT_SHOW_TIME :
                     DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE;
-            lastUpdated.setText(DateUtils.formatDateTime(this, repo.getLastUpdated(), format));
+            lastDownloaded.setText(DateUtils.formatDateTime(this, repo.getLastUpdated(), format));
         }
     }
 

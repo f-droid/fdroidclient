@@ -427,6 +427,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>
+    <string name="repo_last_update_downloaded">Last update downloaded</string>
     <string name="repo_official_mirrors">Official mirrors</string>
     <string name="repo_user_mirrors">User mirrors</string>
     <string name="repo_name">Name</string>

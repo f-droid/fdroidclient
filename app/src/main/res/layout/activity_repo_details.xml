@@ -83,7 +83,17 @@
                     android:text="@string/repo_last_update" />
 
             <TextView
-                    android:id="@+id/text_last_update"
+                android:id="@+id/text_last_update"
+                style="@style/BodyText" />
+
+            <!-- The last time this repo was checked for updates -->
+            <TextView
+                    android:id="@+id/label_last_update_downloaded"
+                    style="@style/CaptionText"
+                    android:text="@string/repo_last_update_downloaded" />
+
+            <TextView
+                    android:id="@+id/text_last_update_downloaded"
                     style="@style/BodyText" />
 
             <!-- mirrors included in the index -->
