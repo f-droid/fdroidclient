@@ -24,9 +24,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -80,10 +78,8 @@ public class UninstallDialogActivity extends FragmentActivity {
             messageId = R.string.uninstall_confirm;
         }
 
-        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
-        ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(theme);
+        // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
         builder.setTitle(appInfo.loadLabel(pm));
         builder.setIcon(appInfo.loadIcon(pm));
         builder.setPositiveButton(android.R.string.ok,

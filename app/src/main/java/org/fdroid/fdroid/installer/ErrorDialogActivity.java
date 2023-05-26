@@ -22,9 +22,8 @@ package org.fdroid.fdroid.installer;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 
-import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.R;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -44,10 +43,8 @@ public class ErrorDialogActivity extends FragmentActivity {
         final String title = intent.getStringExtra(EXTRA_TITLE);
         final String message = intent.getStringExtra(EXTRA_MESSAGE);
 
-        // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
-        ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(theme);
+        // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
         builder.setTitle(title);
         builder.setNeutralButton(android.R.string.ok,
                 new DialogInterface.OnClickListener() {
