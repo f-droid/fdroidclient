@@ -72,6 +72,14 @@ public class RepoManager @JvmOverloads constructor(
     }
 
     /**
+     * Enables or disables the repository with the given [repoId].
+     * Data from disabled repositories is ignored in many queries.
+     */
+    @WorkerThread
+    public fun setRepositoryEnabled(repoId: Long, enabled: Boolean): Unit =
+        repositoryDao.setRepositoryEnabled(repoId, enabled)
+
+    /**
      * Removes a Repository with the given repoId with all associated data from the database.
      */
     @WorkerThread

@@ -63,6 +63,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.index.RepoManager;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
 
 import java.io.File;
@@ -107,6 +108,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     }
 
     private RepositoryDao repositoryDao;
+    private RepoManager repoManager;
 
     /**
      * True if activity started with an intent such as from QR code. False if
@@ -123,6 +125,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
         repositoryDao = DBHelper.getDb(this).getRepositoryDao();
+        repoManager = FDroidApp.getRepoManager(this);
 
         super.onCreate(savedInstanceState);
 
@@ -873,7 +876,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     public void onSetEnabled(Repository repo, boolean isEnabled) {
         if (repo.getEnabled() != isEnabled) {
             runOffUiThread(() -> {
-                repositoryDao.setRepositoryEnabled(repo.getRepoId(), isEnabled);
+                repoManager.setRepositoryEnabled(repo.getRepoId(), isEnabled);
                 return true;
             });
 
