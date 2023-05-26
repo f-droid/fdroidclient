@@ -157,7 +157,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         final RecyclerView repoList = (RecyclerView) findViewById(R.id.list);
         RepoAdapter repoAdapter = new RepoAdapter(this);
         repoList.setAdapter(repoAdapter);
-        repositoryDao.getLiveRepositories().observe(this, repoAdapter::updateItems);
+        FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, repoAdapter::updateItems);
     }
 
     @Override

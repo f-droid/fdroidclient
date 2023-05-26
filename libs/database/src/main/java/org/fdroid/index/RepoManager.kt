@@ -1,5 +1,8 @@
 package org.fdroid.index
 
+import androidx.annotation.WorkerThread
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -19,9 +22,13 @@ public class RepoManager @JvmOverloads constructor(
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
 
+    private val repositoryDao = db.getRepositoryDao()
+
     private val _repositoriesState: MutableStateFlow<List<Repository>> =
         MutableStateFlow(emptyList())
     public val repositoriesState: StateFlow<List<Repository>> = _repositoriesState.asStateFlow()
+
+    public val liveRepositories: LiveData<List<Repository>> = _repositoriesState.asLiveData()
 
     /**
      * Used internally as a mechanism to wait until repositories are loaded from the DB.
@@ -34,7 +41,7 @@ public class RepoManager @JvmOverloads constructor(
     init {
         // we need to load the repositories first off the UiThread, so it doesn't deadlock
         GlobalScope.launch(coroutineContext) {
-            _repositoriesState.value = db.getRepositoryDao().getRepositories()
+            _repositoriesState.value = repositoryDao.getRepositories()
             repoCountDownLatch.countDown()
             withContext(Dispatchers.Main) {
                 // keep observing the repos from the DB
@@ -62,6 +69,19 @@ public class RepoManager @JvmOverloads constructor(
     public fun getRepositories(): List<Repository> {
         repoCountDownLatch.await()
         return repositoriesState.value
+    }
+
+    /**
+     * Removes a Repository with the given repoId with all associated data from the database.
+     */
+    @WorkerThread
+    public fun deleteRepository(repoId: Long) {
+        repositoryDao.deleteRepository(repoId)
+        // while this gets updated automatically, getting the update may be slow,
+        // so to speed up the UI, we emit the state change right away
+        _repositoriesState.value = _repositoriesState.value.filter { repository ->
+            repository.repoId == repoId
+        }
     }
 
 }
