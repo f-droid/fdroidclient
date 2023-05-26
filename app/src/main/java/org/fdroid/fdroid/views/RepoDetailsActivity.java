@@ -136,7 +136,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         repoView = findViewById(R.id.repo_view);
 
         repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
-        repo = FDroidApp.getRepo(repoId);
+        repo = FDroidApp.getRepoManager(this).getRepository(repoId);
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.getAddress());
@@ -198,7 +198,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
          * have been updated. The safest way to deal with this is to reload the
          * repo object directly from the database.
          */
-        repo = FDroidApp.getRepo(repoId);
+        repo = FDroidApp.getRepoManager(this).getRepository(repoId);
         updateRepoView();
 
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,

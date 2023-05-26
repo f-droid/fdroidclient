@@ -118,7 +118,8 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
             setVisibility(View.VISIBLE);
         } else if (overDataState == Preferences.OVER_NETWORK_NEVER
                 && overWiFiState == Preferences.OVER_NETWORK_NEVER) {
-            List<Repository> localRepos = UpdateService.getLocalRepos(FDroidApp.repos);
+            List<Repository> repos = FDroidApp.getRepoManager(getContext()).getRepositories();
+            List<Repository> localRepos = UpdateService.getLocalRepos(repos);
             boolean hasLocalNonSystemRepos = true;
             final List<String> systemPartitions = Arrays.asList("odm", "oem", "product", "system", "vendor");
             for (Repository repo : localRepos) {

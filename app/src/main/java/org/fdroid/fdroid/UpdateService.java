@@ -545,7 +545,7 @@ public class UpdateService extends JobIntentService {
         App updateLastApp = null;
         Apk updateLastApk = null;
         for (UpdatableApp app : apps) {
-            Repository repo = FDroidApp.getRepo(app.getUpdate().getRepoId());
+            Repository repo = FDroidApp.getRepoManager(context).getRepository(app.getUpdate().getRepoId());
             if (repo == null) continue; // repo could have been removed in the meantime
             // update our own APK at the end
             if (TextUtils.equals(ourPackageName, app.getUpdate().getPackageName())) {

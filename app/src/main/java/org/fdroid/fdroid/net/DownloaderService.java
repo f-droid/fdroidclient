@@ -29,7 +29,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 
-import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.NotFoundException;
@@ -37,7 +36,6 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.installer.ApkCache;
 import org.fdroid.fdroid.installer.InstallManagerService;
@@ -189,18 +187,14 @@ public class DownloaderService extends JobIntentService {
 
         try {
             activeCanonicalUrl = canonicalUrl.toString();
-            Repository repo = FDroidApp.getRepo(repoId);
+            Context context = getApplicationContext();
+            Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
             if (repo == null) {
-                // right after the app gets re-recreated downloads get re-triggered, so repo can still be null
-                FDroidDatabase db = DBHelper.getDb(getApplicationContext());
-                repo = db.getRepositoryDao().getRepository(repoId);
-                if (repo == null) {
-                    String canonical = canonicalUrl.toString();
-                    if (canonical.startsWith("http://1") && canonical.contains(":8888/")) {
-                        String address = canonical.split(":8888/")[0] + ":8888/";
-                        repo = FDroidApp.createSwapRepo(address, null); // fake repo for swap
-                    } else return; // repo might have been deleted in the meantime
-                }
+                String canonical = canonicalUrl.toString();
+                if (canonical.startsWith("http://1") && canonical.contains(":8888/")) {
+                    String address = canonical.split(":8888/")[0] + ":8888/";
+                    repo = FDroidApp.createSwapRepo(address, null); // fake repo for swap
+                } else return; // repo might have been deleted in the meantime
             }
             downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, fileV1, localFile);
             final long[] lastProgressSent = {0};

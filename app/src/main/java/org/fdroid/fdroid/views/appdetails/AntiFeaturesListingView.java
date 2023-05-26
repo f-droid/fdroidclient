@@ -72,7 +72,7 @@ public class AntiFeaturesListingView extends RecyclerView {
             @Override
             public void onBindViewHolder(@NonNull AntiFeatureItemViewHolder holder, int position) {
                 final String antiFeatureId = app.antiFeatures[position];
-                Repository repo = FDroidApp.getRepo(app.repoId);
+                Repository repo = FDroidApp.getRepoManager(getContext()).getRepository(app.repoId);
                 if (repo == null) return;
                 LocaleListCompat localeList = LocaleListCompat.getDefault();
                 AntiFeature antiFeature = repo.getAntiFeatures().get(antiFeatureId);

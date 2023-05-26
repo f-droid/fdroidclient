@@ -69,6 +69,7 @@ import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.index.IndexFormatVersion;
+import org.fdroid.index.RepoManager;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -98,6 +99,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static final String SYSTEM_DIR_NAME = Environment.getRootDirectory().getAbsolutePath();
 
     private static FDroidApp instance;
+    @Nullable
+    private static RepoManager repoManager;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -108,7 +111,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public static volatile String bssid;
     public static volatile Repository repo;
 
-    public static volatile List<Repository> repos;
     public static volatile SessionInstallManager sessionInstallManager;
 
     public static volatile int networkState = ConnectivityMonitorService.FLAG_NET_UNAVAILABLE;
@@ -311,12 +313,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             }
         }
 
-        // keep a static copy of the repositories around and in-sync
-        // not how one would normally do this, but it is a common pattern in this codebase
-        // note: we need this as soon as possible as lots of other code is relying on it
-        FDroidDatabase db = DBHelper.getDb(this);
-        db.getRepositoryDao().getLiveRepositories().observeForever(repositories -> repos = repositories);
-
         // register broadcast receivers
         registerReceiver(new DeviceStorageReceiver(), new IntentFilter(Intent.ACTION_DEVICE_STORAGE_LOW));
 
@@ -515,15 +511,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         }
     }
 
-    @Nullable
-    public static Repository getRepo(long repoId) {
-        if (repos == null) return null;
-        for (Repository r : repos) {
-            if (r.getRepoId() == repoId) return r;
-        }
-        return null;
-    }
-
     public static Repository createSwapRepo(String address, String certificate) {
         long now = System.currentTimeMillis();
         return new Repository(42L, address, now, IndexFormatVersion.ONE, certificate, 20001L, 42, now);
@@ -531,6 +518,11 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     public static Context getInstance() {
         return instance;
+    }
+
+    public static RepoManager getRepoManager(Context context) {
+        if (repoManager == null) repoManager = new RepoManager(DBHelper.getDb(context));
+        return repoManager;
     }
 
     /**

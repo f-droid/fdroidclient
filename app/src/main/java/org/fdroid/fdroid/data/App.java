@@ -345,8 +345,8 @@ public class App implements Comparable<App>, Parcelable {
      * Get the URL with the standard path for displaying in a browser.
      */
     @Nullable
-    public Uri getShareUri() {
-        Repository repo = FDroidApp.getRepo(repoId);
+    public Uri getShareUri(Context context) {
+        Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
         if (repo == null || repo.getWebBaseUrl() == null) return null;
         return Uri.parse(repo.getWebBaseUrl()).buildUpon()
                 .path(packageName)
@@ -358,12 +358,8 @@ public class App implements Comparable<App>, Parcelable {
     }
 
     public static RequestBuilder<Drawable> loadWithGlide(Context context, long repoId, IndexFile file) {
-        Repository repo = FDroidApp.getRepo(repoId);
+        Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
         if (repo == null) { // This is also used for apps that do not have a repo
-            return Glide.with(context).load((Drawable) null);
-        }
-        if (repo == null) {
-            Log.e(TAG, "Repo not found: " + repoId);
             return Glide.with(context).load(R.drawable.ic_repo_app_default);
         }
         String address = Utils.getRepoAddress(repo);
@@ -379,7 +375,7 @@ public class App implements Comparable<App>, Parcelable {
 
     public static RequestBuilder<Bitmap> loadBitmapWithGlide(Context context, long repoId,
                                                              IndexFile file) {
-        Repository repo = FDroidApp.getRepo(repoId);
+        Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
         if (repo == null) {
             Log.e(TAG, "Repo not found: " + repoId);
             return Glide.with(context).asBitmap().load(R.drawable.ic_repo_app_default);

@@ -141,7 +141,7 @@ public class InstallHistoryActivity extends AppCompatActivity {
                 if (showingInstallHistory) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("Repos:\n");
-                    for (Repository repo: FDroidApp.repos) {
+                    for (Repository repo: FDroidApp.getRepoManager(this).getRepositories()) {
                         if (repo.getEnabled()) {
                             stringBuilder.append("* ");
                             stringBuilder.append(repo.getAddress());

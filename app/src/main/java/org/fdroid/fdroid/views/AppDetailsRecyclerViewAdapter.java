@@ -1154,7 +1154,7 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Repository name, APK size and required Android version
-            Repository repo = FDroidApp.getRepo(apk.repoId);
+            Repository repo = FDroidApp.getRepoManager(context).getRepository(apk.repoId);
             if (repo != null) {
                 repository.setVisibility(View.VISIBLE);
                 String name = repo.getName(App.getLocales());
