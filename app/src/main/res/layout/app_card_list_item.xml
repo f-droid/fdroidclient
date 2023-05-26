@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/summary"
             android:lines="2"
+            android:textColor="?android:textColorPrimary"
             android:textSize="14sp"
             android:ellipsize="end"
             android:layout_marginLeft="16dp"

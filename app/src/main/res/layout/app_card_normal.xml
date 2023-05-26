@@ -43,6 +43,8 @@
                 android:layout_alignParentBottom="true"
                 android:ellipsize="end"
                 android:maxLines="3"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/icon"
