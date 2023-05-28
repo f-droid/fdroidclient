@@ -519,7 +519,7 @@
 
 ### 1.3-alpha4 (2018-07-13)
 
-* fix Data/WiFi preferences to properly schedule Updats
+* fix Data/WiFi preferences to properly schedule Updates
 
 * fix Install/Uninstall events for clearer feedback
 
@@ -767,7 +767,7 @@
 
 * Fix installing with Privileged Extension on 7.x
 
-* Detect app updates via sytem OTA updates (#819)
+* Detect app updates via system OTA updates (#819)
 
 ### 0.102.1 (2017-02-24)
 
@@ -989,7 +989,7 @@
 * Don't request the "Write to external storage" permission on 4.4 and later
   since it's not needed to use our own external app directory
 
-* Fix a crash occuring if the user triggered a repo update that got rid of
+* Fix a crash occurring if the user triggered a repo update that got rid of
   more than 450 APKs at once
 
 * Properly cache APK files on the SD card if configured this way
@@ -1052,7 +1052,7 @@
 
 * Show when packages are installed but not via F-Droid (mismatching signature)
 
-* Fix possible backround crash concerning the category list change listener
+* Fix possible background crash concerning the category list change listener
 
 * Add an option to check for repository updates less often
 

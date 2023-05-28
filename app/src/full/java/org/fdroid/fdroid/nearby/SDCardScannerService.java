@@ -52,7 +52,7 @@ import androidx.core.content.ContextCompat;
  * sharable package repos, so it ignores non-removable storage, like the fake
  * emulated sdcard from devices with only built-in storage.  This method will
  * only ever allow for reading repos, never writing.  It also will not work
- * for removeable storage devices plugged in via USB, since do not show up as
+ * for removable storage devices plugged in via USB, since do not show up as
  * "External Storage"
  * <p>
  * Scanning the removable storage requires that the user allowed it.  This
@@ -126,7 +126,7 @@ public class SDCardScannerService extends IntentService {
         }
 
         if (files == null) {
-            Utils.debugLog(TAG, "checkExternalStorage returned blank, F-Droid probaby doesn't have Storage perm!");
+            Utils.debugLog(TAG, "checkExternalStorage returned blank, F-Droid probably doesn't have Storage perm!");
             return new File[0];
         } else {
             return files;

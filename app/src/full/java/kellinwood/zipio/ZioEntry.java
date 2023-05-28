@@ -514,7 +514,7 @@ public class ZioEntry implements Cloneable {
     }
 
     /*
-     * Returns timetamp in Java format
+     * Returns timestamp in Java format
      */
     public long getTime() {
         int year = (int) (((modificationDate >> 9) & 0x007f) + 80);

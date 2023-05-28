@@ -423,7 +423,7 @@ public class LocalHTTPDTest {
                 }
             }
         }
-        Assert.assertEquals("The response status to a reqeuest with 'if-non-match=*' header should be NOT_MODIFIED(304), if the file exists",
+        Assert.assertEquals("The response status to a request with 'if-non-match=*' header should be NOT_MODIFIED(304), if the file exists",
                 304, status);
     }
 
@@ -435,7 +435,7 @@ public class LocalHTTPDTest {
             connection = (HttpURLConnection) url.openConnection();
             connection.addRequestProperty("range", "bytes=10-20");
             connection.addRequestProperty("if-none-match", "*");
-            Assert.assertEquals("The response status to a reqeuest with 'if-non-match=*' header and 'range' header should be NOT_MODIFIED(304),"
+            Assert.assertEquals("The response status to a request with 'if-non-match=*' header and 'range' header should be NOT_MODIFIED(304),"
                     + " if the file exists, because 'if-non-match' header should be given priority", 304, connection.getResponseCode());
         } finally {
             if (connection != null) {

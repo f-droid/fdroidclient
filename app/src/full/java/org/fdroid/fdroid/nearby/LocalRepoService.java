@@ -69,13 +69,13 @@ public class LocalRepoService extends IntentService {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         String[] packageNames = intent.getStringArrayExtra(EXTRA_PACKAGE_NAMES);
         if (packageNames == null || packageNames.length == 0) {
-            Utils.debugLog(TAG, "no packageNames found, quiting");
+            Utils.debugLog(TAG, "no packageNames found, quitting");
             return;
         }
         Arrays.sort(packageNames);
 
         if (Arrays.equals(currentlyProcessedApps, packageNames)) {
-            Utils.debugLog(TAG, "packageNames list unchanged, quiting");
+            Utils.debugLog(TAG, "packageNames list unchanged, quitting");
             return;
         }
         currentlyProcessedApps = packageNames;
