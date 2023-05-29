@@ -9,7 +9,7 @@
 
     <dimen name="details_activity__collapsable_lists__padding__vertical">3dp</dimen>
     <!-- This is in addition to the padding that almost all items in the app details screen have
-         applied. The collapsable lists have a little extra on the sides. -->
+         applied. The collapsible lists have a little extra on the sides. -->
     <dimen name="details_activity__collapsable_lists__padding__horizontal">4dp</dimen>
 
     <dimen name="details_screenshot_height">240dp</dimen>

@@ -533,7 +533,7 @@ public class SwapService extends Service {
     }
 
     /**
-     * Sets or resets the idel timer for {@link #TIMEOUT}ms, once the timer
+     * Sets or resets the idle timer for {@link #TIMEOUT}ms, once the timer
      * expires, this service and all things that rely on it will be stopped.
      */
     public void initTimer() {
