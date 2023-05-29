@@ -9,7 +9,7 @@
     <string name="notify">Rodyti prieinamus atnaujinimus</string>
     <string name="notify_on">Rodyti pranešimą, kai yra prieinami atnaujinimai</string>
     <string name="local_repo_name">Jūsų vietinės repozitorijos pavadinimas</string>
-    <string name="about_title">Apie F-Droid</string>
+    <string name="about_title_full">Apie F-Droid</string>
     <string name="about_site">Svetainė internete</string>
     <string name="about_version">Versija</string>
     <string name="app_installed">Įdiegta</string>
@@ -61,7 +61,7 @@
     <string name="requires_features">Reikalauja: %1$s</string>
     <string name="category_Science_Education">Mokslas ir švietimas</string>
     <string name="swap_welcome">Sveikiname paleidus F-Droid!</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="back">Atgal</string>
     <string name="menu_settings">Nustatymai</string>
     <string name="main_menu__latest_apps">Naujausios</string>

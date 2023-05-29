@@ -29,7 +29,7 @@
     <string name="yes">ⵢⴰⵀ</string>
     <string name="ok">ⵡⴰⵅⵅⴰ</string>
     <string name="updates">ⵜⵉⵙⴷⵖⵉⵏ</string>
-    <string name="app_name">ⴼ-ⴷⵕⵓⵢⴷ</string>
+    <string name="app_name_full">ⴼ-ⴷⵕⵓⵢⴷ</string>
     <string name="app_list__dismiss_downloading_app">ⵉⵙⵙⵔ ⵓⴳⴰⵎ</string>
     <string name="app_list__name__downloading_in_progress">ⴷⴰ ⵉⵜⵜⴰⴳⵎ %1$s</string>
     <string name="app_new">ⴰⵎⴰⵢⵏⵓ</string>

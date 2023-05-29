@@ -17,7 +17,7 @@
     <string name="local_repo_https_on">Користи шифровану везу ХТТПС за местну ризницу</string>
     <string name="app_details">Подаци о програму</string>
     <string name="no_such_app">Програм није пронађен.</string>
-    <string name="about_title">О Ф-дроиду</string>
+    <string name="about_title_full">О Ф-дроиду</string>
     <string name="about_site">Странице веба</string>
     <string name="about_version">Издање</string>
     <string name="app_installed">Уграђено</string>
@@ -135,7 +135,7 @@
     <string name="open_qr_code_scanner">Отвори читач КуР-а</string>
     <string name="swap_welcome">Добро дошли у Ф-дроид!</string>
     <string name="swap_confirm_connect">Желите ли да преузмете програме од %1$s\?</string>
-    <string name="app_name">Ф-дроид</string>
+    <string name="app_name_full">Ф-дроид</string>
     <string name="unstable_updates">Нестабилна освежења</string>
     <string name="unstable_updates_summary">Предлажи освежења на нестабилна издања</string>
     <string name="about_source">Изворни кôд</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="updates">Oppdateringar</string>
     <string name="ok">OK</string>
     <string name="yes">Ja</string>
@@ -46,7 +46,7 @@
     <string name="notification_action_cancel">Avbryt</string>
     <string name="notification_action_install">Installer</string>
     <string name="app_details">Appdetaljar</string>
-    <string name="about_title">Om F-Droid</string>
+    <string name="about_title_full">Om F-Droid</string>
     <string name="app_list__name__downloading_in_progress">Lastar ned %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s er installert</string>
     <string name="updates__tts__download_app">Last ned</string>

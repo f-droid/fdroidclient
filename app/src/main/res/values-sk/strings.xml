@@ -23,7 +23,7 @@
     <string name="local_repo_https_on">Použiť šifrované HTTPS:// pripojenie pre lokálny repozitár</string>
     <string name="app_details">Detaily aplikácie</string>
     <string name="no_such_app">Aplikácia sa nenašla.</string>
-    <string name="about_title">O F-Droide</string>
+    <string name="about_title_full">O F-Droide</string>
     <string name="about_site">Webstránka</string>
     <string name="about_version">Verzia</string>
     <string name="app_installed">Nainštalované</string>
@@ -147,7 +147,7 @@
     <string name="open_qr_code_scanner">Otvoriť skener QR kódov</string>
     <string name="swap_welcome">Víta vás F-Droid!</string>
     <string name="swap_confirm_connect">Chcete získať aplikácie z %1$s hneď?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Nestabilné aktualizácie</string>
     <string name="unstable_updates_summary">Navrhnúť aktualizácie na nestabilné verzie</string>
     <string name="about_source">Zdrojový kód</string>

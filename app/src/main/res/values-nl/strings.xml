@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Gebruik versleutelde HTTPS://-verbinding voor uw lokale applicatiebron</string>
     <string name="app_details">App-details</string>
     <string name="no_such_app">Er is geen dergelijke app gevonden.</string>
-    <string name="about_title">Over F-Droid</string>
+    <string name="about_title_full">Over F-Droid</string>
     <string name="about_site">Website</string>
     <string name="about_version">Versie</string>
     <string name="app_installed">Geïnstalleerd</string>
@@ -163,7 +163,7 @@
     <string name="swap_active_hotspot">%1$s (uw hotspot)</string>
     <string name="swap_switch_to_wifi">Raak aan om naar een Wi-Fi-netwerk over te schakelen</string>
     <string name="swap_dont_show_again">Toon dit niet opnieuw</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="about_source">Broncode</string>
     <string name="category_Connectivity">Connectiviteit</string>
     <string name="category_Graphics">Grafisch</string>

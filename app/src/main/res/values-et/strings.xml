@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Uus versioon on allkirjastatud vana versiooniga võrreldes erineva võtmega. Uue versiooni paigaldamiseks on vaja esmalt eemaldada vana. Palun tee seda ja proovi uuesti. (Tähelepanu: eemaldamisel kustutatakse rakendusega seotud andmed.)</string>
     <string name="installIncompatible">Rakendus ei ühildu su seadmega. Kas paigaldada ta ikkagi?</string>
     <string name="version">Versioon</string>
@@ -28,7 +28,7 @@
     <string name="repo_error_empty_username">Kasutajanimi on tühi, mandaati ei muudetud</string>
     <string name="app_details">Rakenduse andmed</string>
     <string name="no_such_app">Sellist rakendust ei leitud.</string>
-    <string name="about_title">Programmist F-Droid</string>
+    <string name="about_title_full">Programmist F-Droid</string>
     <string name="about_version">Versioon</string>
     <string name="about_site">Veebileht</string>
     <string name="about_source">Lähtekood</string>

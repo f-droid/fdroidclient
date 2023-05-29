@@ -72,8 +72,11 @@ class MainViewController extends RecyclerView.ViewHolder {
         }
     }
 
+    /**
+     * @see CategoriesViewBinder
+     */
     public void bindCategoriesView() {
-        throw new IllegalStateException("unimplemented");
+        new CategoriesViewBinder(activity, frame);
     }
 
     public void bindSwapView() {

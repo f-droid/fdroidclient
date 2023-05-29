@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Шифроване на връзката (HTTPS://) с местното хранилище</string>
     <string name="app_details">Описание на приложението</string>
     <string name="no_such_app">Не е намерено такова приложение.</string>
-    <string name="about_title">Относно F-Droid</string>
+    <string name="about_title_full">Относно F-Droid</string>
     <string name="about_site">Страница</string>
     <string name="about_version">Версия</string>
     <string name="app_installed">Инсталирано</string>
@@ -117,7 +117,7 @@
     <string name="swap_view_available_networks">(Натиснете за преглед на наличните мрежи)</string>
     <string name="open_qr_code_scanner">Отваряне на четец на QR кодове</string>
     <string name="swap_welcome">Добре дошли в F-Droid!</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="theme_dark">Тъмна</string>
     <string name="back">Назад</string>
     <string name="bad_fingerprint">Грешен отпечатък</string>

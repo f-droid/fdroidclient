@@ -19,7 +19,7 @@
     <string name="local_repo_https_on">Imprea sa connessione criptada HTTPS:// pro sos depòsitu locale</string>
     <string name="app_details">Minujas aplicatzione</string>
     <string name="no_such_app">Peruna aplicatzione currispondente.</string>
-    <string name="about_title">A pitzu de F-Droid</string>
+    <string name="about_title_full">A pitzu de F-Droid</string>
     <string name="about_site">Giassu/situ web</string>
     <string name="about_version">Versione</string>
     <string name="app_installed">Installada</string>
@@ -147,7 +147,7 @@
     <string name="open_qr_code_scanner">Aberi s\'iscansidore de còdighes QR</string>
     <string name="swap_welcome">Benènnidu in F-Droid!</string>
     <string name="swap_confirm_connect">Boles retzire como sas aplicatziones dae %1$s?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="app_incompatible">Non cumpatìbile</string>
     <string name="links">Ligàmenes</string>
     <string name="back">In dae segus</string>

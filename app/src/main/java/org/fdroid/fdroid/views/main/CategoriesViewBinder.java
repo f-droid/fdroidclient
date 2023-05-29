@@ -9,7 +9,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
-import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;

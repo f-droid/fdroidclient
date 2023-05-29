@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ok">確定</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="updates">更新</string>
     <string name="installIncompatible">個 app 同您部機唔兼容，係咪都照安裝？</string>
     <string name="version">版本</string>
@@ -155,7 +155,7 @@
     <string name="category_Writing">寫作</string>
     <string name="category_Navigation">導航</string>
     <string name="app_details">App 嘅詳細資料</string>
-    <string name="about_title">關於 F-Droid</string>
+    <string name="about_title_full">關於 F-Droid</string>
     <string name="category_System">系統</string>
     <string name="antitracklist">呢個 app 會追蹤同報告您嘅活動</string>
     <string name="warning_no_internet">更新唔到噃，您連咗上網未？</string>

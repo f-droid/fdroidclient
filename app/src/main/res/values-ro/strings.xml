@@ -7,7 +7,7 @@
     <string name="other">Altele</string>
     <string name="notify">Arată actualizările disponibile</string>
     <string name="app_details">Detalii aplicație</string>
-    <string name="about_title">Despre F-Droid</string>
+    <string name="about_title_full">Despre F-Droid</string>
     <string name="about_site">Site web</string>
     <string name="about_version">Versiune</string>
     <string name="app_installed">Instalată</string>
@@ -36,7 +36,7 @@
     <string name="requires_features">Necesită: %1$s</string>
     <string name="menu_email">E-mail autor</string>
     <string name="SignatureMismatch">Noua versiune este semnată cu o cheie diferită față de versiunea veche. Pentru a putea instala noua versiune, cea veche trebuie întâi dezinstalată. Vă rugam sa faceți asta și să reîncercați. (Nu uitați că procesul de dezinstalare al aplicației o să șteargă datele interne stocate ale acesteia)</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="enable_nfc_send">Activează trimiterea prin NFC…</string>
     <string name="update_interval">Interval actualizări automate</string>
     <string name="unstable_updates">Actualizări instabile</string>

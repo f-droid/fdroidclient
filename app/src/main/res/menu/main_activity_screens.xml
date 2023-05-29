@@ -11,17 +11,24 @@
         android:title="@string/main_menu__latest_apps"
         app:showAsAction="ifRoom|withText" />
     <item
+        android:id="@+id/categories"
+        android:enabled="true"
+        android:icon="@drawable/ic_categories"
+        android:orderInCategory="1"
+        android:title="@string/main_menu__categories"
+        app:showAsAction="ifRoom|withText" />
+    <item
         android:id="@+id/updates"
         android:enabled="true"
         android:icon="@drawable/ic_updates"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="@string/main_menu__updates"
         app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/settings"
         android:enabled="true"
         android:icon="@drawable/ic_settings"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         android:title="@string/menu_settings"
         app:showAsAction="ifRoom|withText" />
 </menu>

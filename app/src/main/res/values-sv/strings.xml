@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Använd krypterad HTTPS://-anslutning för lokalt förråd</string>
     <string name="app_details">Detaljer för app</string>
     <string name="no_such_app">Hittade ingen sådan app.</string>
-    <string name="about_title">Om F-Droid</string>
+    <string name="about_title_full">Om F-Droid</string>
     <string name="about_site">Webbplats</string>
     <string name="about_version">Version</string>
     <string name="app_installed">Installerad</string>
@@ -135,7 +135,7 @@
     <string name="open_qr_code_scanner">Öppna QR-läsare</string>
     <string name="swap_welcome">Välkommen till F-Droid!</string>
     <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Instabila uppdateringar</string>
     <string name="unstable_updates_summary">Föreslå uppdateringar till instabila versioner</string>
     <string name="app_incompatible">Inkompatibel</string>

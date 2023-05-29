@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="version">Útgáfa</string>
     <string name="delete">Eyða</string>
     <string name="login_name">Notandanafn</string>
@@ -23,7 +23,7 @@
     <string name="repo_edit_credentials">Breyta lykilorði</string>
     <string name="app_details">Nánar um forrit</string>
     <string name="no_such_app">Engin slík forrit fundust.</string>
-    <string name="about_title">Um F-Droid</string>
+    <string name="about_title_full">Um F-Droid</string>
     <string name="about_version">Útgáfa</string>
     <string name="about_site">Vefsvæði</string>
     <string name="about_source">Upprunakóði</string>

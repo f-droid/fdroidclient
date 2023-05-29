@@ -17,7 +17,7 @@
     <string name="local_repo_https_on">שימוש בחיבור //:HTTPS עבור מאגר מקומי</string>
     <string name="app_details">פרטי יישומון</string>
     <string name="no_such_app">לא נמצא כזה יישומון.</string>
-    <string name="about_title">על אודות F-Droid</string>
+    <string name="about_title_full">על אודות F-Droid</string>
     <string name="about_site">אתר</string>
     <string name="about_version">גרסה</string>
     <string name="app_installed">מותקן</string>
@@ -154,7 +154,7 @@
     <string name="perms_new_perm_prefix">חדש:</string>
     <string name="perms_description_app">מסופק על ידי %1$s.</string>
     <string name="downloading">מתבצעת הורדה…</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="app_incompatible">אין תאימות</string>
     <string name="back">אחורה</string>
     <string name="repo_searching_address">מתבצע חיפוש אחר מאגר חבילות אצל 

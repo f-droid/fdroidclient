@@ -333,7 +333,8 @@ public class InstallManagerService extends Service {
                         Intent intentObject = new Intent(context, InstallManagerService.class);
                         intentObject.setAction(ACTION_CANCEL);
                         intentObject.setData(canonicalUri);
-                        PendingIntent action = PendingIntent.getService(context, 0, intentObject, 0);
+                        PendingIntent action =
+                                PendingIntent.getService(context, 0, intentObject, PendingIntent.FLAG_IMMUTABLE);
                         appUpdateStatusManager.updateApk(canonicalUrl,
                                 AppUpdateStatusManager.Status.Downloading, action);
                         break;

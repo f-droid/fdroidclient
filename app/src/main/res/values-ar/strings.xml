@@ -53,7 +53,7 @@
     <string name="category_Science_Education">العلوم و التعليم</string>
     <string name="category_Security">الأمان</string>
     <string name="category_System">النظام</string>
-    <string name="app_name">اف-درويد</string>
+    <string name="app_name_full">اف-درويد</string>
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولًا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علمًا أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
@@ -77,7 +77,7 @@
     <string name="repo_edit_credentials">تغيير كلمة المرور</string>
     <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات التوثيق</string>
     <string name="no_such_app">لم يتم العثور على مثل هذا التطبيق.</string>
-    <string name="about_title">معلومات عن اف-درويد</string>
+    <string name="about_title_full">معلومات عن اف-درويد</string>
     <string name="about_source">الشفرة المصدرية</string>
     <string name="about_license">الرخصة</string>
     <string name="app_incompatible">غير متوافق</string>

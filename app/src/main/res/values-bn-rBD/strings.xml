@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="updates">আপডেট</string>
     <string name="ok">ঠিক আছে</string>
     <string name="yes">হ্যাঁ</string>
@@ -332,7 +332,7 @@
     <string name="app_not_installed">ইন্সটল হয়নি</string>
     <string name="about_source">উৎস কোড</string>
     <string name="about_forum">সহায়তা সভা</string>
-    <string name="about_title">এফ-ড্রয়েড সম্পর্কে</string>
+    <string name="about_title_full">এফ-ড্রয়েড সম্পর্কে</string>
     <string name="app_details__no_versions__explain_incompatible_signers">ইন্সটলকৃত সংস্করণ অন্য কোনো সংস্করণের সাথে অসামঞ্জস্যপূর্ণ। এই অ্যাপ মুছলে তোমাকে অন্যান্য সামঞ্জস্যপূর্ণ সংস্করণ দেখতে ও ইন্সটল করতে দিবে। গুগল প্লে বা অন্য জায়গা থেকে অ্যাপ ইন্সটল করলে বেশিরভাগ সময় এমন হয়, বিশেষত অন্য অনুমতিপত্র দিয়ে স্বাক্ষর করা হলে।</string>
     <string name="app_details__no_versions__none_compatible_with_device">এই যন্ত্রের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
     <string name="app_details__no_versions__no_compatible_signers">এই স্বাক্ষরের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>

@@ -31,7 +31,7 @@
     <string name="repo_error_empty_username">အသံုးျပဳသူအမည္ အလြတ္ ႏွင့္ ခြင့္ျပဳထားခ်က္မ်ားမေျပာင္းလဲခဲ့ပါ</string>
     <string name="app_details">App အေသးစိတ္အခ်က္အလက္မ်ား</string>
     <string name="no_such_app">ထိုကဲ့သို႔ app မေတြ႕ပါ.</string>
-    <string name="about_title">F-Droid အေၾကာင္း</string>
+    <string name="about_title_full">F-Droid အေၾကာင္း</string>
     <string name="about_version">ဗားရွင္း</string>
     <string name="about_site">ဝဘ္ဆုိဒ္</string>
     <string name="about_source">ဆို႔စ္ ကုဒ္</string>
@@ -129,7 +129,7 @@
     <string name="repo_name">အမည္</string>
     <string name="unknown">မသိပါ</string>
     <string name="repo_confirm_delete_title">Repository ကိုဖ်က္မလား?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="deleting_repo">ယခုလက္ရွိ ရီပိုကိုဖ်က္ေနသည္.…</string>
     <string name="all_other_repos_fine">တျခားရီပိုအားလံုးသည္ ခ်ိဳ႕ယြင္းခ်က္မ်ားမရွိပါ.</string>
     <string name="global_error_updating_repos">အသစ္မြမ္းမံစဥ္ခ်ိဳ႕ယြင္းခ်က္ - %s</string>

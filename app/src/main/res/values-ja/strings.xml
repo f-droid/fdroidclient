@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">ローカルリポジトリに暗号化されたHTTPS://接続を使用する</string>
     <string name="app_details">アプリの詳細</string>
     <string name="no_such_app">該当するアプリが見つかりませんでした。</string>
-    <string name="about_title">F-Droidについて</string>
+    <string name="about_title_full">F-Droidについて</string>
     <string name="about_site">ウェブサイト</string>
     <string name="about_version">バージョン</string>
     <string name="app_installed">インストール済み</string>
@@ -160,7 +160,7 @@
     <string name="swap_success">正常に交換しました！</string>
     <string name="swap_active_hotspot">%1$s(自分のホットスポット)</string>
     <string name="swap_switch_to_wifi">タップしてWi-Fiネットワークに切り替える</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="swap_dont_show_again">今後表示しない</string>
     <string name="swap_scan_or_type_url">どちらかがコードを読み取るか、URLをブラウザに入力する必要があります。</string>
     <string name="swap_choose_apps">アプリを選択</string>

@@ -24,6 +24,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -48,6 +50,15 @@ public class DefaultInstaller extends Installer {
 
     @Override
     protected void installPackageInternal(Uri localApkUri, Uri canonicalUri) {
+        // ask to enable unknown sources on old Android versions
+        if (Build.VERSION.SDK_INT >= 26 && Build.VERSION.SDK_INT < 31) {
+            if (!context.getPackageManager().canRequestPackageInstalls()) {
+                Intent i = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.setData(Uri.parse("package:" + context.getPackageName()));
+                context.startActivity(i);
+            }
+        }
 
         Intent installIntent = new Intent(context, DefaultInstallerActivity.class);
         installIntent.setAction(DefaultInstallerActivity.ACTION_INSTALL_PACKAGE);
@@ -60,7 +71,7 @@ public class DefaultInstaller extends Installer {
                 context.getApplicationContext(),
                 localApkUri.hashCode(),
                 installIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_USER_INTERACTION,
                 installPendingIntent);
@@ -76,7 +87,7 @@ public class DefaultInstaller extends Installer {
                 context.getApplicationContext(),
                 apk.packageName.hashCode(),
                 uninstallIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         sendBroadcastUninstall(Installer.ACTION_UNINSTALL_USER_INTERACTION, uninstallPendingIntent);
     }

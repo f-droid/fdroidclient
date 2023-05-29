@@ -13,7 +13,7 @@
     <string name="notify_on">Εμφάνιση ειδοποίησης όταν υπάρχουν διαθέσιμες ενημερώσεις</string>
     <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
     <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή.</string>
-    <string name="about_title">Σχετικά με το F-Droid</string>
+    <string name="about_title_full">Σχετικά με το F-Droid</string>
     <string name="about_site">Ιστότοπος</string>
     <string name="about_version">Έκδοση</string>
     <string name="app_installed">Εγκατεστημένο</string>
@@ -90,7 +90,7 @@
         προσθέσατε! Δοκιμάστε να συνδεθείτε σε αυτό το δίκτυο: %s
     </string>
     <string name="requires_features">Απαιτεί: %1$s</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Ασταθείς ενημερώσεις</string>
     <string name="unstable_updates_summary">Πρόταση ενημερώσεων σε ασταθείς εκδόσεις</string>
     <string name="system_installer">Επέκταση με δικαιώματα συστήματος</string>

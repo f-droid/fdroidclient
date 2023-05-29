@@ -42,10 +42,12 @@
                 android:title="@string/over_data"
                 android:defaultValue="@integer/defaultOverData"
                 android:layout="@layout/preference_seekbar"/>
+        <!-- TODO re-enable once basic can do auto-downloads
         <SwitchPreferenceCompat
                 android:title="@string/update_auto_download"
                 android:summary="@string/update_auto_download_summary"
                 android:key="updateAutoDownload"/>
+        -->
         <org.fdroid.fdroid.views.LiveSeekBarPreference
                 android:key="updateIntervalSeekBarPosition"
                 android:title="@string/update_interval"
@@ -68,6 +70,11 @@
                 android:defaultValue="@string/defaultTheme"
                 android:entries="@array/themeNames"
                 android:entryValues="@array/themeValues"/>
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="usePureBlackDarkTheme"
+            android:summary="@string/use_pure_black_dark_theme_summary"
+            android:title="@string/use_pure_black_dark_theme" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/appcompatibility"

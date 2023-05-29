@@ -448,7 +448,7 @@
     <string name="updates__tts__download_app">Download</string>
     <string name="app_list__name__successfully_installed">%1$s installed</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
-    <string name="about_title">About F-Droid</string>
+    <string name="about_title_full">About F-Droid</string>
     <string name="app_details">App Details</string>
     <string name="notification_action_install">Install</string>
     <string name="notification_action_cancel">Cancel</string>
@@ -494,7 +494,7 @@
     <string name="yes">Yes</string>
     <string name="updates">Updates</string>
     <string name="ok">OK</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="theme_follow_system">Follow system</string>
     <string name="use_pure_black_dark_theme_summary">Recommended only for OLED screens.</string>
     <string name="use_pure_black_dark_theme">Use pure black background in dark theme</string>

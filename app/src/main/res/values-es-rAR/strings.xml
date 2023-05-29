@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">La nueva versión está firmada con una llave diferente a la antigua. Para instalar la nueva versión, la antigua debe ser desinstalada primero. Hacé esto y probá de nuevo, por favor. (Tené en cuenta que al desinstalar, todos los datos internos guardados de la aplicación serán eliminados)</string>
     <string name="installIncompatible">Aplicación incompatible con tu dispositivo, ¿instalar igual\?</string>
     <string name="version">Versión</string>
@@ -60,7 +60,7 @@
     <string name="app_details__no_versions__no_compatible_signers">No hay versiones con una firma compatible</string>
     <string name="app_details__no_versions__none_compatible_with_device">No hay versiones compatibles con este dispositivo</string>
     <string name="app_details__no_versions__explain_incompatible_signers">La versión instalada no es compatible con ninguna versión disponible. Desinstalar la aplicación te permite ver e instalar versiones compatibles. Esto ocurre frecuentemente con aplicaciones instaladas desde Google Play u otros orígenes, si son firmadas con un certificado diferente.</string>
-    <string name="about_title">Acerca de F-Droid</string>
+    <string name="about_title_full">Acerca de F-Droid</string>
     <string name="about_version">Versión</string>
     <string name="about_site">Sitio web</string>
     <string name="about_forum">Foro para soporte</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="installIncompatible">Aplikasi tidak kompatibel dengan perangkat Anda, tetap pasang\?</string>
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
@@ -19,7 +19,7 @@
     <string name="local_repo_https_on">Gunakan koneksi HTTPS:// terenkripsi untuk repo lokal</string>
     <string name="app_details">Detail Aplikasi</string>
     <string name="no_such_app">Tidak ditemukan aplikasi yang serupa.</string>
-    <string name="about_title">Tentang F-Droid</string>
+    <string name="about_title_full">Tentang F-Droid</string>
     <string name="about_version">Versi</string>
     <string name="about_site">Situs web</string>
     <string name="about_source">Kode sumber</string>

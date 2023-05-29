@@ -13,7 +13,7 @@
     <string name="notify_on">Bistarazi jakinarazpena eguneraketak eskuragarri daudenean</string>
     <string name="app_details">Aplikazioaren xehetasunak</string>
     <string name="no_such_app">Ez da aplikazio hori aurkitu.</string>
-    <string name="about_title">F-Droid-i buruz</string>
+    <string name="about_title_full">F-Droid-i buruz</string>
     <string name="about_site">Webgunea</string>
     <string name="about_version">Bertsioa</string>
     <string name="app_installed">Instalatuta</string>
@@ -61,7 +61,7 @@
     <string name="repo_name">Izena</string>
     <string name="unknown">Ezezaguna</string>
     <string name="repo_confirm_delete_title">Biltegia ezabatu?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="installIncompatible">Aplikazioa zure gailuarekin bateraezina da, instalatu halere?</string>
     <string name="unstable_updates">Eguneraketa ezegonkorrak</string>
     <string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>

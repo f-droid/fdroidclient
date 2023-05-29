@@ -5,7 +5,7 @@
     <string name="cache_downloaded">Зберігати кешовані застосунки</string>
     <string name="updates">Оновлення</string>
     <string name="notify">Показати наявні оновлення</string>
-    <string name="about_title">Про F-Droid</string>
+    <string name="about_title_full">Про F-Droid</string>
     <string name="about_site">Сайт</string>
     <string name="about_version">Версія</string>
     <string name="app_installed">Установлено</string>
@@ -30,7 +30,7 @@
     <string name="expert">Експертний режим</string>
     <string name="search_hint">Пошук застосунків</string>
     <string name="appcompatibility">Сумісність застосунків</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="installIncompatible">Застосунок несумісний з вашим пристроєм, усе одно встановити\?</string>
     <string name="delete">Видалити</string>
     <string name="other">Інше</string>

@@ -90,7 +90,7 @@ kotlin {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     sourceSets {
         main.manifest.srcFile('src/androidMain/AndroidManifest.xml')
         getByName("androidTest").java.srcDir(file("src/androidAndroidTest/kotlin"))

@@ -18,19 +18,18 @@ def getVersionName = { ->
     return stdout.toString().trim()
 }
 
-def fullApplicationId = "org.fdroid.fdroid"
-def basicApplicationId = "org.fdroid.basic"
 // yes, this actually needs both quotes https://stackoverflow.com/a/41391841
 def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
 android {
     buildToolsVersion "33.0.2"
 
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         versionCode 1016051
         versionName getVersionName()
+        applicationId "org.fdroid"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         minSdkVersion 23
@@ -67,7 +66,6 @@ android {
             getIsDefault().set(true)
             manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
             applicationIdSuffix ".debug"
-            resValue "string", "applicationId", fullApplicationId + applicationIdSuffix
             versionNameSuffix "-debug"
             // testProguardFiles gets partially ignored for instrumentation tests
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
@@ -80,14 +78,16 @@ android {
         full {
             getIsDefault().set(true)
             dimension "base"
-            applicationId fullApplicationId
-            resValue "string", "applicationId", fullApplicationId
+            applicationIdSuffix ".fdroid"
         }
         basic {
             dimension "base"
-            applicationId basicApplicationId
-            resValue "string", "applicationId", basicApplicationId
+            targetSdkVersion 33
+            applicationIdSuffix ".basic"
         }
+    }
+    applicationVariants.all { variant ->
+        variant.resValue  "string", "applicationId", variant.applicationId
     }
 
     compileOptions {
@@ -166,7 +166,6 @@ dependencies {
 
     implementation 'com.google.zxing:core:3.3.3' // newer version need minSdk 24 or library desugering
     implementation 'info.guardianproject.netcipher:netcipher:2.2.0-alpha'
-    implementation 'info.guardianproject.panic:panic:1.0'
     //noinspection GradleDependency -> Commons IO > 2.5 uses java.nio.file, which requires desugaring
     implementation 'commons-io:commons-io:2.6'
     implementation 'commons-net:commons-net:3.6'
@@ -182,6 +181,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:4.12.0"
 
     implementation 'org.bouncycastle:bcprov-jdk15to18:1.71'
+    fullImplementation 'info.guardianproject.panic:panic:1.0'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15to18:1.71'
     fullImplementation 'org.jmdns:jmdns:3.5.5'
     fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
@@ -205,7 +205,7 @@ dependencies {
 
 // org.fdroid.fdroid.updater.UpdateServiceTest needs app-full-debug.apk
 android.productFlavors.all { flavor ->
-    if (flavor.name.equals("full")) {
+    if (flavor.name == "full") {
         project.afterEvaluate { project ->
             def dep = tasks.getByName("assembleFullDebug")
             project.tasks.withType(Test) { task ->

@@ -18,7 +18,7 @@
     <string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
     <string name="app_details">App Details</string>
     <string name="no_such_app">Nun s\'atopó aplicación tala.</string>
-    <string name="about_title">Tocante a F-Droid</string>
+    <string name="about_title_full">Tocante a F-Droid</string>
     <string name="about_site">Sitiu web</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalóse</string>
@@ -136,7 +136,7 @@
     <string name="open_qr_code_scanner">Open QR Scanner</string>
     <string name="swap_welcome">¡Afáyate en F-Droid!</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now\?</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="interval_12h">Cada 12 hores</string>
     <string name="interval_1d">Caldía</string>
     <string name="interval_1w">Cada selmana</string>

@@ -2,7 +2,7 @@
 <resources>
     <string name="ok">Baş e</string>
     <string name="no">Na</string>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="updates">Rojanekirin</string>
     <string name="yes">Erê</string>
     <string name="menu_settings">Sazkarî</string>
@@ -63,6 +63,6 @@
     <string name="swap_send_fdroid">F-Droid bişîne</string>
     <string name="crash_dialog_title">F-Droid têk çû</string>
     <string name="crash_dialog_text">Çewtiyek ne hêvîkirî derket ku sepanê bi zorê rawestand.  Ma tu dixwazî hûrguliyan bi e-nameyê bişînî da ku tu bibî alîkar bo çareseriyê pirsgirêkê bikî\?</string>
-    <string name="about_title">Derbarê F-Droid</string>
+    <string name="about_title_full">Derbarê F-Droid</string>
     <string name="app_list__name__successfully_installed">%1$s hate daxistin</string>
 </resources>

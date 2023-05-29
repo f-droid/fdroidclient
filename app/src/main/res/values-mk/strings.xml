@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Новата верзија е потпишана со различен клуч од стариот. За да ја инсталирате новата верзија, најпрво деинсталирајте ја старата. Ве молиме направете го ова и обидете се повторно. (Имајте во предвид при деинсталирањето се бришат и податоците од апликацијата.)</string>
     <string name="version">Верзија</string>
     <string name="delete">Избриши</string>
@@ -98,7 +98,7 @@
     <string name="repo_add_fingerprint">Отпечаток од прсти (по избор)</string>
     <string name="app_not_installed">Не е инсталирана</string>
     <string name="about_source">Изворен код</string>
-    <string name="about_title">За F-Droid</string>
+    <string name="about_title_full">За F-Droid</string>
     <string name="app_details">Детали за апликацијата</string>
     <string name="repo_edit_credentials">Промени ја лозинката</string>
     <string name="menu_opencollective">OpenCollective</string>
