@@ -65,17 +65,17 @@ dependencies {
     implementation project(":libs:download")
     implementation project(":libs:index")
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
 
-    implementation "androidx.room:room-runtime:2.4.3"
-    implementation "androidx.room:room-ktx:2.4.3"
-    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-runtime:2.5.1"
+    implementation "androidx.room:room-ktx:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
 
     implementation 'io.github.microutils:kotlin-logging:2.1.21'
     implementation "org.slf4j:slf4j-android:1.7.36"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
 
     testImplementation project(":libs:sharedTest")
     testImplementation 'junit:junit:4.13.2'
