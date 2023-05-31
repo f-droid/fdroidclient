@@ -50,8 +50,9 @@ public class DefaultInstaller extends Installer {
 
     @Override
     protected void installPackageInternal(Uri localApkUri, Uri canonicalUri) {
-        // ask to enable unknown sources on old Android versions
-        if (Build.VERSION.SDK_INT >= 26 && Build.VERSION.SDK_INT < 31) {
+        // ask to enable unknown sources on old Android versions (needs to target at least 26 for this to work)
+        if (Build.VERSION.SDK_INT >= 26 && Build.VERSION.SDK_INT < 31 &&
+                context.getApplicationInfo().targetSdkVersion >= 26) {
             if (!context.getPackageManager().canRequestPackageInstalls()) {
                 Intent i = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
