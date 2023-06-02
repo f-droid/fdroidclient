@@ -156,7 +156,7 @@ public class AntiFeaturesListingView extends RecyclerView {
         } else if (antiFeatureName.equals(context.getString(R.string.antinosource_key))) {
             return context.getString(R.string.antinosourcesince);
         } else if (antiFeatureName.equals(context.getString(R.string.antinsfw_key))) {
-            return context.getString(R.string.antinsfw);
+            return context.getString(R.string.antinsfwlist);
         } else {
             return antiFeatureName;
         }

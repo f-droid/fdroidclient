@@ -295,6 +295,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antidisabledalgorithm">Signed Using An Unsafe Algorithm</string>
     <string name="antiknownvuln">Known Vulnerability</string>
     <string name="antinosource">Source Code No Longer Available</string>
+    <string name="antinsfw">Not Safe for Work</string>
     <string name="antiothers">Other Anti-features</string>
     <string name="antiadslist">This app contains advertising</string>
     <string name="antitracklist">This app tracks and reports your activity</string>
@@ -306,7 +307,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antidisabledalgorithmlist">This app has a weak security signature</string>
     <string name="antiknownvulnlist">This app contains a known security vulnerability</string>
     <string name="antinosourcesince">The source code is no longer available, no updates possible.</string>
-    <string name="antinsfw">This app contains content that should not be publicized or visible everywhere</string>
+    <string name="antinsfwlist">This app contains content that should not be publicized or visible everywhere</string>
     <string name="display">Display</string>
 
     <string name="expert">Expert mode</string>
