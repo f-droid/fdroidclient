@@ -9,6 +9,7 @@ import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.Button;
@@ -513,32 +514,29 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             }
             return;
         }
-
+        final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
+        final BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (Installer.ACTION_INSTALL_USER_INTERACTION.equals(intent.getAction())) {
+                    broadcastManager.unregisterReceiver(this);
+                    PendingIntent pendingIntent =
+                            intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
+                    try {
+                        pendingIntent.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        Log.e(TAG, "Error starting pending intent: ", e);
+                    }
+                }
+            }
+        };
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.ReadyToInstall) {
             String canonicalUrl = currentStatus.apk.getCanonicalUrl();
             File apkFilePath = ApkCache.getApkDownloadPath(activity, canonicalUrl);
             Utils.debugLog(TAG, "skip download, we have already downloaded " + currentStatus.apk.getCanonicalUrl() +
                     " to " + apkFilePath);
-
-            final LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(activity);
-            final BroadcastReceiver receiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    broadcastManager.unregisterReceiver(this);
-
-                    if (Installer.ACTION_INSTALL_USER_INTERACTION.equals(intent.getAction())) {
-                        PendingIntent pendingIntent =
-                                intent.getParcelableExtra(Installer.EXTRA_USER_INTERACTION_PI);
-                        try {
-                            pendingIntent.send();
-                        } catch (PendingIntent.CanceledException ignored) {
-                        }
-                    }
-                }
-            };
-
             Uri canonicalUri = Uri.parse(canonicalUrl);
-            broadcastManager.registerReceiver(receiver, Installer.getInstallIntentFilter(canonicalUri));
+            broadcastManager.registerReceiver(receiver, Installer.getInstallInteractionIntentFilter(canonicalUri));
             Installer installer = InstallerFactory.create(activity, currentStatus.app, currentStatus.apk);
             installer.installPackage(Uri.parse(apkFilePath.toURI().toString()), canonicalUri);
         } else {
@@ -553,7 +551,13 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 Repository repo = FDroidApp.getRepo(version.getRepoId());
                 return new Apk(version, repo);
             }, receivedApk -> {
-                    if (receivedApk != null) InstallManagerService.queue(activity, app, receivedApk);
+                    if (receivedApk != null) {
+                        String canonicalUrl = receivedApk.getCanonicalUrl();
+                        Uri canonicalUri = Uri.parse(canonicalUrl);
+                        broadcastManager.registerReceiver(receiver,
+                                Installer.getInstallInteractionIntentFilter(canonicalUri));
+                        InstallManagerService.queue(activity, app, receivedApk);
+                    }
                 });
         }
     }

@@ -1,15 +1,15 @@
 package org.fdroid.fdroid.installer;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
-import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -20,6 +20,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.File;
@@ -35,7 +36,7 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * Manages the whole process when a background update triggers an install or the user
  * requests an APK to be installed.  It handles checking whether the APK is cached,
  * downloading it, putting up and maintaining a {@link Notification}, and more. This
- * {@code Service} tracks packages that are in the process as "Pending Installs".
+ * class tracks packages that are in the process as "Pending Installs".
  * Then {@link DownloaderService} and {@link InstallerService} individually track
  * packages for those phases of the whole install process.  Each of those
  * {@code Services} have their own related events.  For tracking status during the
@@ -45,15 +46,9 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * The {@link App} and {@link Apk} instances are sent via
  * {@link Intent#putExtra(String, android.os.Bundle)}
  * so that Android handles the message queuing and {@link Service} lifecycle for us.
- * For example, if this {@code InstallManagerService} gets killed, Android will cache
+ * For example, if {@link DownloaderService} gets killed, Android will cache
  * and then redeliver the {@link Intent} for us, which includes all of the data needed
  * for {@code InstallManagerService} to do its job for the whole lifecycle of an install.
- * This {@code Service} never stops itself after completing the action, e.g.
- * {@code {@link #stopSelf(int)}}, so {@code Intent}s are sometimes redelivered even
- * though they are no longer valid.  {@link #onStartCommand(Intent, int, int)} checks
- * first that the incoming {@code Intent} is not an invalid, redelivered {@code Intent}.
- * {@link #isPendingInstall(String)} and other checks are used to check whether to
- * process the redelivered {@code Intent} or not.
  * <p>
  * The canonical URL for the APK file to download is also used as the unique ID to
  * represent the download itself throughout F-Droid.  This follows the model
@@ -87,57 +82,55 @@ import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.S
  * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
  */
 @SuppressWarnings("LineLength")
-public class InstallManagerService extends Service {
+public class InstallManagerService {
     private static final String TAG = "InstallManagerService";
 
-    private static final String ACTION_INSTALL = "org.fdroid.fdroid.installer.action.INSTALL";
     private static final String ACTION_CANCEL = "org.fdroid.fdroid.installer.action.CANCEL";
 
-    private static final String EXTRA_APP = "org.fdroid.fdroid.installer.extra.APP";
-    private static final String EXTRA_APK = "org.fdroid.fdroid.installer.extra.APK";
+    @SuppressLint("StaticFieldLeak") // we are using ApplicationContext, so hopefully that's fine
+    private static InstallManagerService instance;
 
-    private static SharedPreferences pendingInstalls;
+    private final Context context;
+    private final LocalBroadcastManager localBroadcastManager;
+    private final AppUpdateStatusManager appUpdateStatusManager;
 
-    private LocalBroadcastManager localBroadcastManager;
-    private AppUpdateStatusManager appUpdateStatusManager;
-    private boolean running = false;
-
-    /**
-     * This service does not use binding, so no need to implement this method
-     */
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    public static InstallManagerService getInstance(Context context) {
+        if (instance == null) {
+            instance = new InstallManagerService(context.getApplicationContext());
+        }
+        return instance;
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        appUpdateStatusManager = AppUpdateStatusManager.getInstance(this);
-        running = true;
-        pendingInstalls = getPendingInstalls(this);
+    public InstallManagerService(Context context) {
+        this.context = context;
+        this.localBroadcastManager = LocalBroadcastManager.getInstance(context);
+        this.appUpdateStatusManager = AppUpdateStatusManager.getInstance(context);
+        // cancel intent can't use LocalBroadcastManager, because it comes from system process
+        IntentFilter cancelFilter = new IntentFilter();
+        cancelFilter.addAction(ACTION_CANCEL);
+        context.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "Received cancel intent: " + intent);
+                if (!ACTION_CANCEL.equals(intent.getAction())) return;
+                cancel(context, intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
+            }
+        }, cancelFilter);
     }
 
-    /**
-     * If this {@link Service} is stopped, then all of the various
-     * {@link BroadcastReceiver}s need to unregister themselves if they get
-     * called.  There can be multiple {@code BroadcastReceiver}s registered,
-     * so it can't be done with a simple call here. So {@link #running} is the
-     * signal to all the existing {@code BroadcastReceiver}s to unregister.
-     */
-    @Override
-    public void onDestroy() {
-        running = false;
-        super.onDestroy();
+    private void onCancel(String canonicalUrl) {
+        DownloaderService.cancel(canonicalUrl);
+        Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
+        if (apk != null) {
+            Utils.debugLog(TAG, "also canceling OBB downloads");
+            DownloaderService.cancel(apk.getPatchObbUrl());
+            DownloaderService.cancel(apk.getMainObbUrl());
+        }
     }
 
     /**
      * This goes through a series of checks to make sure that the incoming
-     * {@link Intent} is still valid.  The default {@link Intent#getAction() action}
-     * in the logic is {@link #ACTION_INSTALL} since it is the most complicate
-     * case.  Since the {@code Intent} will be redelivered by Android if the
-     * app was killed, this needs to check that it still makes sense to handle.
+     * {@link Intent} is still valid.
      * <p>
      * For example, if F-Droid is killed while installing, it might not receive
      * the message that the install completed successfully. The checks need to be
@@ -145,93 +138,93 @@ public class InstallManagerService extends Service {
      * with the same {@link PackageInfo#versionCode}, which happens sometimes,
      * and is allowed by Android.
      */
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Utils.debugLog(TAG, "onStartCommand " + intent);
+    private void queue(String canonicalUrl, String packageName, @NonNull App app, @NonNull Apk apk) {
+        Utils.debugLog(TAG, "queue " + packageName);
 
-        String canonicalUrl = intent.getDataString();
         if (TextUtils.isEmpty(canonicalUrl)) {
             Utils.debugLog(TAG, "empty canonicalUrl, nothing to do");
-            return START_NOT_STICKY;
+            return;
         }
 
-        String action = intent.getAction();
-
-        if (ACTION_CANCEL.equals(action)) {
-            DownloaderService.cancel(this, canonicalUrl);
-            Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
-            if (apk != null) {
-                Utils.debugLog(TAG, "also canceling OBB downloads");
-                DownloaderService.cancel(this, apk.getPatchObbUrl());
-                DownloaderService.cancel(this, apk.getMainObbUrl());
-            }
-            return START_NOT_STICKY;
-        } else if (ACTION_INSTALL.equals(action)) {
-            if (!isPendingInstall(canonicalUrl)) {
-                Log.i(TAG, "Ignoring INSTALL that is not Pending Install: " + intent);
-                return START_NOT_STICKY;
-            }
-        } else {
-            Log.i(TAG, "Ignoring unknown intent action: " + intent);
-            return START_NOT_STICKY;
-        }
-
-        if (!intent.hasExtra(EXTRA_APP) || !intent.hasExtra(EXTRA_APK)) {
-            Utils.debugLog(TAG, canonicalUrl + " did not include both an App and Apk instance, ignoring");
-            return START_NOT_STICKY;
-        }
-
-        if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
-                && !DownloaderService.isQueuedOrActive(canonicalUrl)) {
-            Utils.debugLog(TAG, canonicalUrl + " finished downloading while InstallManagerService was killed.");
-            appUpdateStatusManager.removeApk(canonicalUrl);
-            return START_NOT_STICKY;
-        }
-
-        App app = intent.getParcelableExtra(EXTRA_APP);
-        Apk apk = intent.getParcelableExtra(EXTRA_APK);
-        if (app == null || apk == null) {
-            Utils.debugLog(TAG, "Intent had null EXTRA_APP and/or EXTRA_APK: " + intent);
-            return START_NOT_STICKY;
-        }
-
-        PackageInfo packageInfo = Utils.getPackageInfo(this, apk.packageName);
-        if ((flags & START_FLAG_REDELIVERY) == START_FLAG_REDELIVERY
-                && packageInfo != null && packageInfo.versionCode == apk.versionCode
+        PackageInfo packageInfo = Utils.getPackageInfo(context, packageName);
+        if (packageInfo != null && packageInfo.versionCode == apk.versionCode
                 && TextUtils.equals(packageInfo.versionName, apk.versionName)) {
-            Log.i(TAG, "INSTALL Intent no longer valid since its installed, ignoring: " + intent);
-            return START_NOT_STICKY;
+            Log.i(TAG, "Install action no longer valid since its installed, ignoring: " + packageName);
+            return;
         }
 
         appUpdateStatusManager.addApk(app, apk, AppUpdateStatusManager.Status.Downloading, null);
 
-        registerPackageDownloaderReceivers(canonicalUrl);
         getMainObb(canonicalUrl, apk);
         getPatchObb(canonicalUrl, apk);
 
-        File apkFilePath = ApkCache.getApkDownloadPath(this, apk.getCanonicalUrl());
-        long apkFileSize = apkFilePath.length();
-        if (!apkFilePath.exists() || apkFileSize < apk.size) {
-            Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
-            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl(), apk.apkFile);
-        } else if (ApkCache.apkIsCached(apkFilePath, apk)) {
-            Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
-            sendBroadcast(intent.getData(), DownloaderService.ACTION_STARTED, apkFilePath);
-            sendBroadcast(intent.getData(), DownloaderService.ACTION_COMPLETE, apkFilePath);
-        } else {
-            Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
-            apkFilePath.delete();
-            DownloaderService.queue(this, apk.repoId, canonicalUrl, apk.getDownloadUrl(), apk.apkFile);
-        }
-
-        return START_REDELIVER_INTENT; // if killed before completion, retry Intent
+        Utils.runOffUiThread(() -> ApkCache.getApkCacheState(context, apk), pair -> {
+            ApkCache.ApkCacheState state = pair.first;
+            SanitizedFile apkFilePath = pair.second;
+            if (state == ApkCache.ApkCacheState.MISS_OR_PARTIAL) {
+                Utils.debugLog(TAG, "download " + canonicalUrl + " " + apkFilePath);
+                DownloaderService.queue(context, canonicalUrl, app, apk);
+            } else if (state == ApkCache.ApkCacheState.CACHED) {
+                Utils.debugLog(TAG, "skip download, we have it, straight to install " + canonicalUrl + " " + apkFilePath);
+                Uri canonicalUri = Uri.parse(canonicalUrl);
+                onDownloadStarted(canonicalUri);
+                onDownloadComplete(canonicalUri, apkFilePath, app, apk);
+            } else {
+                Utils.debugLog(TAG, "delete and download again " + canonicalUrl + " " + apkFilePath);
+                Utils.runOffUiThread(apkFilePath::delete);
+                DownloaderService.queue(context, canonicalUrl, app, apk);
+            }
+        });
     }
 
-    private void sendBroadcast(Uri uri, String action, File file) {
-        Intent intent = new Intent(action);
-        intent.setData(uri);
-        intent.putExtra(DownloaderService.EXTRA_DOWNLOAD_PATH, file.getAbsolutePath());
-        localBroadcastManager.sendBroadcast(intent);
+    public void onDownloadStarted(Uri canonicalUri) {
+        // App should currently be in the "PendingDownload" state, so this changes it to "Downloading".
+        appUpdateStatusManager.updateApk(canonicalUri.toString(),
+                AppUpdateStatusManager.Status.Downloading, getDownloadCancelIntent(canonicalUri));
+    }
+
+    public void onDownloadProgress(Uri canonicalUri, App app, Apk apk, long bytesRead, long totalBytes) {
+        if (appUpdateStatusManager.get(canonicalUri.toString()) == null) {
+            // if our app got killed, we need to re-add the APK here
+            appUpdateStatusManager.addApk(app, apk, AppUpdateStatusManager.Status.Downloading,
+                    getDownloadCancelIntent(canonicalUri));
+        }
+        appUpdateStatusManager.updateApkProgress(canonicalUri.toString(), totalBytes, bytesRead);
+    }
+
+    public void onDownloadComplete(Uri canonicalUri, File file, App intentApp, Apk intentApk) {
+        String canonicalUrl = canonicalUri.toString();
+        Uri localApkUri = Uri.fromFile(file);
+
+        Utils.debugLog(TAG, "download completed of " + canonicalUri + " to " + localApkUri);
+        appUpdateStatusManager.updateApk(canonicalUrl,
+                AppUpdateStatusManager.Status.ReadyToInstall, null);
+
+        App app = appUpdateStatusManager.getApp(canonicalUrl);
+        Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
+        if (app == null || apk == null)  {
+            // These may be null if our app was killed and the download job restarted.
+            // Then, we can take the objects we saved in the intent which survive app death.
+            app = intentApp;
+            apk = intentApk;
+        }
+        if (app != null && apk != null) {
+            registerInstallReceiver(canonicalUrl);
+            InstallerService.install(context, localApkUri, canonicalUri, app, apk);
+        } else {
+            Log.e(TAG, "Could not install " + canonicalUrl + " because no app or apk available.");
+        }
+    }
+
+    public void onDownloadFailed(Uri canonicalUri, String errorMsg) {
+        appUpdateStatusManager.setDownloadError(canonicalUri.toString(), errorMsg);
+    }
+
+    private PendingIntent getDownloadCancelIntent(Uri canonicalUri) {
+        Intent intentObject = new Intent(ACTION_CANCEL);
+        intentObject.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());
+        return PendingIntent.getBroadcast(context, 0, intentObject,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     private void getMainObb(final String canonicalUrl, Apk apk) {
@@ -257,10 +250,6 @@ public class InstallManagerService extends Service {
         final BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (!running) {
-                    localBroadcastManager.unregisterReceiver(this);
-                    return;
-                }
                 String action = intent.getAction();
                 if (DownloaderService.ACTION_STARTED.equals(action)) {
                     Utils.debugLog(TAG, action + " " + intent);
@@ -306,75 +295,9 @@ public class InstallManagerService extends Service {
                 }
             }
         };
-        DownloaderService.queue(this, repoId, obbUrlString, obbUrlString, null);
+        DownloaderService.queue(context, repoId, obbUrlString, obbUrlString);
         localBroadcastManager.registerReceiver(downloadReceiver,
                 DownloaderService.getIntentFilter(obbUrlString));
-    }
-
-    /**
-     * Register a {@link BroadcastReceiver} for tracking download progress for a
-     * give {@code canonicalUrl}.  There can be multiple of these registered at a time.
-     */
-    private void registerPackageDownloaderReceivers(String canonicalUrl) {
-
-        BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (!running) {
-                    localBroadcastManager.unregisterReceiver(this);
-                    return;
-                }
-                Uri canonicalUri = intent.getData();
-                String canonicalUrl = intent.getDataString();
-
-                switch (intent.getAction()) {
-                    case DownloaderService.ACTION_STARTED:
-                        // App should currently be in the "PendingDownload" state, so this changes it to "Downloading".
-                        Intent intentObject = new Intent(context, InstallManagerService.class);
-                        intentObject.setAction(ACTION_CANCEL);
-                        intentObject.setData(canonicalUri);
-                        PendingIntent action =
-                                PendingIntent.getService(context, 0, intentObject, PendingIntent.FLAG_IMMUTABLE);
-                        appUpdateStatusManager.updateApk(canonicalUrl,
-                                AppUpdateStatusManager.Status.Downloading, action);
-                        break;
-                    case DownloaderService.ACTION_PROGRESS:
-                        long bytesRead = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
-                        long totalBytes = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
-                        appUpdateStatusManager.updateApkProgress(canonicalUrl, totalBytes, bytesRead);
-                        break;
-                    case DownloaderService.ACTION_COMPLETE:
-                        File localFile = new File(intent.getStringExtra(DownloaderService.EXTRA_DOWNLOAD_PATH));
-                        Uri localApkUri = Uri.fromFile(localFile);
-
-                        Utils.debugLog(TAG, "download completed of "
-                                + intent.getStringExtra(DownloaderService.EXTRA_MIRROR_URL) + " to " + localApkUri);
-                        appUpdateStatusManager.updateApk(canonicalUrl,
-                                AppUpdateStatusManager.Status.ReadyToInstall, null);
-
-                        localBroadcastManager.unregisterReceiver(this);
-                        registerInstallReceiver(canonicalUrl);
-
-                        App app = appUpdateStatusManager.getApp(canonicalUrl);
-                        Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
-                        if (apk != null) {
-                            InstallerService.install(context, localApkUri, canonicalUri, app, apk);
-                        }
-                        break;
-                    case DownloaderService.ACTION_INTERRUPTED:
-                    case DownloaderService.ACTION_CONNECTION_FAILED:
-                        appUpdateStatusManager.setDownloadError(canonicalUrl,
-                                intent.getStringExtra(DownloaderService.EXTRA_ERROR_MESSAGE));
-                        localBroadcastManager.unregisterReceiver(this);
-                        break;
-                    default:
-                        throw new RuntimeException("intent action not handled!");
-                }
-            }
-        };
-
-        localBroadcastManager.registerReceiver(downloadReceiver,
-                DownloaderService.getIntentFilter(canonicalUrl));
     }
 
     /**
@@ -382,14 +305,9 @@ public class InstallManagerService extends Service {
      * give {@link Uri}.  There can be multiple of these registered at a time.
      */
     private void registerInstallReceiver(String canonicalUrl) {
-
         BroadcastReceiver installReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (!running) {
-                    localBroadcastManager.unregisterReceiver(this);
-                    return;
-                }
                 String canonicalUrl = intent.getDataString();
                 App app;
                 Apk apk;
@@ -405,7 +323,7 @@ public class InstallManagerService extends Service {
 
                         if (apkComplete != null && apkComplete.isApk()) {
                             try {
-                                PackageManagerCompat.setInstaller(context, getPackageManager(), apkComplete.packageName);
+                                PackageManagerCompat.setInstaller(context, context.getPackageManager(), apkComplete.packageName);
                             } catch (SecurityException e) {
                                 // Will happen if we fell back to DefaultInstaller for some reason.
                             }
@@ -437,7 +355,7 @@ public class InstallManagerService extends Service {
         };
 
         localBroadcastManager.registerReceiver(installReceiver,
-                Installer.getInstallIntentFilter(canonicalUrl));
+                Installer.getInstallIntentFilter(Uri.parse(canonicalUrl)));
     }
 
     /**
@@ -455,57 +373,11 @@ public class InstallManagerService extends Service {
     public static void queue(Context context, @NonNull App app, @NonNull Apk apk) {
         String canonicalUrl = apk.getCanonicalUrl();
         AppUpdateStatusManager.getInstance(context).addApk(app, apk, AppUpdateStatusManager.Status.PendingInstall, null);
-        putPendingInstall(context, canonicalUrl, apk.packageName);
         Utils.debugLog(TAG, "queue " + app.packageName + " " + apk.versionCode + " from " + canonicalUrl);
-        Intent intent = new Intent(context, InstallManagerService.class);
-        intent.setAction(ACTION_INSTALL);
-        intent.setData(Uri.parse(canonicalUrl));
-        intent.putExtra(EXTRA_APP, app);
-        intent.putExtra(EXTRA_APK, apk);
-        context.startService(intent);
+        InstallManagerService.getInstance(context).queue(canonicalUrl, apk.packageName, app, apk);
     }
 
     public static void cancel(Context context, String canonicalUrl) {
-        removePendingInstall(context, canonicalUrl);
-        Intent intent = new Intent(context, InstallManagerService.class);
-        intent.setAction(ACTION_CANCEL);
-        intent.setData(Uri.parse(canonicalUrl));
-        context.startService(intent);
-    }
-
-    /**
-     * Is the APK that matches the provided {@code hash} still waiting to be
-     * installed?  This restarts the install process for this APK if it was
-     * interrupted somehow, like if F-Droid was killed before the download
-     * completed, or the device lost power in the middle of the install
-     * process.
-     */
-    public boolean isPendingInstall(String canonicalUrl) {
-        return pendingInstalls.contains(canonicalUrl);
-    }
-
-    /**
-     * Mark a given APK as in the process of being installed, with
-     * the {@code canonicalUrl} of the download used as the unique ID,
-     * and the file hash used to verify that things are the same.
-     *
-     * @see #isPendingInstall(String)
-     */
-    public static void putPendingInstall(Context context, String canonicalUrl, String packageName) {
-        if (pendingInstalls == null) {
-            pendingInstalls = getPendingInstalls(context);
-        }
-        pendingInstalls.edit().putString(canonicalUrl, packageName).apply();
-    }
-
-    public static void removePendingInstall(Context context, String canonicalUrl) {
-        if (pendingInstalls == null) {
-            pendingInstalls = getPendingInstalls(context);
-        }
-        pendingInstalls.edit().remove(canonicalUrl).apply();
-    }
-
-    private static SharedPreferences getPendingInstalls(Context context) {
-        return context.getSharedPreferences("pending-installs", Context.MODE_PRIVATE);
+        InstallManagerService.getInstance(context).onCancel(canonicalUrl);
     }
 }

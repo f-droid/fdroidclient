@@ -24,7 +24,6 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 
@@ -203,7 +202,6 @@ public class NotificationHelper {
             } else if (installed.size() == 1) {
                 notification = createInstalledNotification(entry);
                 notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
-                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
                 notificationManager.notify(GROUP_INSTALLED, NOTIFY_ID_INSTALLED, notification);
             }
         } else {
@@ -213,7 +211,6 @@ public class NotificationHelper {
                 notificationManager.notify(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES, notification);
             } else if (updates.size() == 1) {
                 notification = createUpdateNotification(entry);
-                notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
                 notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
                 notificationManager.notify(GROUP_UPDATES, NOTIFY_ID_UPDATES, notification);
             }
@@ -526,48 +523,34 @@ public class NotificationHelper {
                                        NotificationCompat.Builder notificationBuilder,
                                        int notificationId,
                                        String notificationTag) {
-        final Point largeIconSize = getLargeIconSize();
+        App.loadBitmapWithGlide(context, entry.app.repoId, entry.app.iconFile)
+                .fallback(R.drawable.ic_notification_download)
+                .error(R.drawable.ic_notification_download)
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        // update the loaded large icon, but don't expand
+                        notificationBuilder.setLargeIcon(resource);
+                        Notification notification = notificationBuilder.build();
+                        notificationManager.notify(notificationTag, notificationId, notification);
+                    }
 
-        if (entry.status == AppUpdateStatusManager.Status.Downloading
-                || entry.status == AppUpdateStatusManager.Status.Installing) {
-            Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            Drawable downloadIcon = ContextCompat.getDrawable(context, R.drawable.ic_notification_download);
-            if (downloadIcon != null) {
-                downloadIcon.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-                downloadIcon.draw(canvas);
-            }
-            Glide.with(context)
-                    .asBitmap()
-                    .load(bitmap)
-                    .into(new CustomTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                            // update the loaded large icon, but don't expand
-                            notificationBuilder.setLargeIcon(resource);
-                            Notification notification = notificationBuilder.build();
-                            notificationManager.notify(notificationTag, notificationId, notification);
-                        }
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        if (errorDrawable == null) return;
+                        final Point largeIconSize = getLargeIconSize();
+                        Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
+                        Canvas canvas = new Canvas(bitmap);
+                        errorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                        errorDrawable.draw(canvas);
+                        notificationBuilder.setLargeIcon(bitmap);
+                        Notification notification = notificationBuilder.build();
+                        notificationManager.notify(notificationTag, notificationId, notification);
+                    }
 
-                        @Override
-                        public void onLoadCleared(@Nullable Drawable drawable) {
-                        }
-                    });
-        } else {
-            App.loadBitmapWithGlide(context, entry.app.repoId, entry.app.iconFile)
-                    .into(new CustomTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                            // update the loaded large icon, but don't expand
-                            notificationBuilder.setLargeIcon(resource);
-                            Notification notification = notificationBuilder.build();
-                            notificationManager.notify(notificationTag, notificationId, notification);
-                        }
-
-                        @Override
-                        public void onLoadCleared(@Nullable Drawable drawable) {
-                        }
-                    });
-        }
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable drawable) {
+                    }
+                });
     }
 }

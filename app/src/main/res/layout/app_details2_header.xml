@@ -130,7 +130,6 @@
                 android:layout_below="@id/icon_and_name"
                 android:clipToPadding="false"
                 android:gravity="end"
-                android:paddingBottom="4dp"
                 android:visibility="visible">
 
                 <com.google.android.material.button.MaterialButton
@@ -157,6 +156,19 @@
                     tools:text="Open" />
             </LinearLayout>
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/warning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/warning_target_sdk"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_on_primary"
+            android:textSize="15sp"
+            android:visibility="gone"
+            android:background="@color/warning"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/summary"

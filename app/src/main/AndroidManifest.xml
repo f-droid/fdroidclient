@@ -51,6 +51,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
@@ -470,7 +471,8 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".net.DownloaderService"
-            android:exported="false" />
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".installer.InstallerService"
             android:exported="false"
@@ -487,12 +489,9 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service
-            android:name=".installer.InstallManagerService"
-            android:exported="false" />
-
-        <service
             android:name=".installer.InstallHistoryService"
-            android:exported="false" />
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".installer.ObfInstallerService"
             android:exported="false" />
