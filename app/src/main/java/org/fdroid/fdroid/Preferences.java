@@ -209,7 +209,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * @see org.fdroid.fdroid.views.PreferencesFragment#initPrivilegedInstallerPreference()
      */
     public boolean isPrivilegedInstallerEnabled() {
-        return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, true);
+        // only use priv-ext by default with full flavor, because basic isn't allowed to use it
+        // and there's a bug with auto-detection: https://gitlab.com/fdroid/fdroidclient/-/issues/2593
+        return preferences.getBoolean(PREF_PRIVILEGED_INSTALLER, BuildConfig.FLAVOR.equals("full"));
     }
 
     /**
