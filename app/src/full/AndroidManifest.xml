@@ -44,6 +44,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- Some Android ROMs still require Bluetooth permission above SDK 30 -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"
