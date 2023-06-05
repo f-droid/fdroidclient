@@ -54,12 +54,4 @@ public class NfcHelper {
         }
     }
 
-    public static boolean isNdefPushDisabled(AppCompatActivity activity) {
-        NfcAdapter nfcAdapter = getAdapter(activity);
-        if (nfcAdapter != null) {
-            return !nfcAdapter.isNdefPushEnabled();
-        }
-        return false;
-    }
-
 }
