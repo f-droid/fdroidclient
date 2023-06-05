@@ -509,7 +509,7 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.GONE);
             }
 
-            if (SessionInstallManager.canBeUsed() && suggestedApk != null
+            if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
                     && !SessionInstallManager.isTargetSdkSupported(suggestedApk.targetSdkVersion)) {
                 warningView.setVisibility(View.VISIBLE);
             } else {

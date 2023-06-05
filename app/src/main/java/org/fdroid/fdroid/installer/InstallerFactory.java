@@ -56,7 +56,7 @@ public class InstallerFactory {
             Utils.debugLog(TAG, "privileged extension correctly installed -> PrivilegedInstaller");
             installer = new PrivilegedInstaller(context, app, apk);
         } else if (SessionInstallManager.isTargetSdkSupported(apk.targetSdkVersion)
-                && SessionInstallManager.canBeUsed()) {
+                && SessionInstallManager.canBeUsed(context)) {
             Utils.debugLog(TAG, "using experimental SessionInstaller, because app targets " + apk.targetSdkVersion);
             installer = new SessionInstaller(context, app, apk);
         } else {

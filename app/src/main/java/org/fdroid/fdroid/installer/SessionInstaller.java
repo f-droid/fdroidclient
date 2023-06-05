@@ -37,7 +37,7 @@ class SessionInstaller extends Installer {
     @Override
     protected boolean isUnattended() {
         // may not always be unattended, but no easy way to find out up-front
-        return SessionInstallManager.canBeUsed();
+        return SessionInstallManager.canBeUsed(context);
     }
 
 }
