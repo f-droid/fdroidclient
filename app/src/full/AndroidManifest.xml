@@ -54,7 +54,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.NFC" />
     <uses-permission
         android:name="android.permission.USB_PERMISSION"
         android:maxSdkVersion="22" /><!-- maybe unnecessary -->
