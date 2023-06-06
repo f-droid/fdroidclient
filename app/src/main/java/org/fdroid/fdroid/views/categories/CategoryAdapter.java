@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.categories;
 
+import android.util.Log;
 import android.view.ViewGroup;
 
 import org.fdroid.database.AppOverviewItem;
@@ -7,7 +8,9 @@ import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -49,7 +52,7 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
     @Override
     public void onBindViewHolder(@NonNull CategoryController holder, int position) {
         Category category = getItem(position);
-        holder.bindModel(category, liveData.get(category));
+        holder.bindModel(category, liveData.get(category), this::onNoApps);
     }
 
     public void setCategories(@NonNull List<Category> categories) {
@@ -62,4 +65,17 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
         }
     }
 
+    private void onNoApps(Category category) {
+        ArrayList<Category> categories = new ArrayList<>(getCurrentList());
+        Iterator<Category> itr = categories.iterator();
+        while (itr.hasNext()) {
+            Category c = itr.next();
+            if (c.getId().equals(category.getId())) {
+                Log.d("CategoryAdapter", "Removing " + category.getId() + " without apps.");
+                itr.remove();
+                break;
+            }
+        }
+        submitList(categories);
+    }
 }

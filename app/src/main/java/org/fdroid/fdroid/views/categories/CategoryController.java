@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.os.LocaleListCompat;
+import androidx.core.util.Consumer;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -88,7 +89,8 @@ public class CategoryController extends RecyclerView.ViewHolder {
         return categoryNameId == 0 ? categoryName : context.getString(categoryNameId);
     }
 
-    void bindModel(@NonNull Category category, LiveData<List<AppOverviewItem>> liveData) {
+    void bindModel(@NonNull Category category, LiveData<List<AppOverviewItem>> liveData,
+                   Consumer<Category> onNoApps) {
         loadAppItems(liveData);
         currentCategory = category;
 
@@ -98,7 +100,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
         heading.setContentDescription(activity.getString(R.string.tts_category_name, categoryName));
 
         viewAll.setVisibility(View.INVISIBLE);
-        loadNumAppsInCategory();
+        loadNumAppsInCategory(onNoApps);
 
         @ColorInt int backgroundColour = getBackgroundColour(activity, category.getId());
         background.setBackgroundColor(backgroundColour);
@@ -139,12 +141,12 @@ public class CategoryController extends RecyclerView.ViewHolder {
         });
     }
 
-    private void loadNumAppsInCategory() {
+    private void loadNumAppsInCategory(Consumer<Category> onNoApps) {
         if (disposable != null) disposable.dispose();
         disposable = Single.fromCallable(() -> db.getAppDao().getNumberOfAppsInCategory(currentCategory.getId()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setNumAppsInCategory);
+                .subscribe((numApps) -> setNumAppsInCategory(numApps, onNoApps));
     }
 
     /**
@@ -179,13 +181,17 @@ public class CategoryController extends RecyclerView.ViewHolder {
         return Color.HSVToColor(hsv);
     }
 
-    private void setNumAppsInCategory(int numAppsInCategory) {
-        viewAll.setVisibility(View.VISIBLE);
-        Resources r = activity.getResources();
-        viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory,
-                numAppsInCategory));
-        viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory,
-                numAppsInCategory, currentCategory));
+    private void setNumAppsInCategory(int numAppsInCategory, Consumer<Category> onNoApps) {
+        if (numAppsInCategory == 0) {
+            onNoApps.accept(currentCategory);
+        } else {
+            viewAll.setVisibility(View.VISIBLE);
+            Resources r = activity.getResources();
+            viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory,
+                    numAppsInCategory));
+            viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory,
+                    numAppsInCategory, currentCategory));
+        }
     }
 
     @SuppressWarnings("FieldCanBeLocal")

@@ -18,8 +18,10 @@ import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.LocaleListCompat;
@@ -38,10 +40,12 @@ class CategoriesViewBinder implements Observer<List<Category>> {
     public static final String TAG = "CategoriesViewBinder";
 
     private final CategoryAdapter categoryAdapter;
+    private final AppCompatActivity activity;
     private final TextView emptyState;
     private final RecyclerView categoriesList;
 
     CategoriesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
+        this.activity = activity;
         FDroidDatabase db = DBHelper.getDb(activity);
         Transformations.distinctUntilChanged(db.getRepositoryDao().getLiveCategories()).observe(activity, this);
 
@@ -100,7 +104,11 @@ class CategoriesViewBinder implements Observer<List<Category>> {
             if (name2 == null) name2 = o2.getId();
             return name1.compareToIgnoreCase(name2);
         });
-        categoryAdapter.setCategories(categories);
+        // TODO force-adding nightly category here can be removed once fdroidserver LTS supports defining categories
+        ArrayList<Category> c = new ArrayList<>(categories);
+        Map<String, String> name = Collections.singletonMap("en-US", activity.getString(R.string.category_Nightly));
+        c.add(new Category(42L, "nightly", Collections.emptyMap(), name, Collections.emptyMap()));
+        categoryAdapter.setCategories(c);
 
         if (categoryAdapter.getItemCount() == 0) {
             emptyState.setVisibility(View.VISIBLE);
