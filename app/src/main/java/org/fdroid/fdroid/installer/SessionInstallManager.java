@@ -211,7 +211,7 @@ public class SessionInstallManager extends BroadcastReceiver {
     /**
      * Returns true if the {@link SessionInstaller} can be used on this device.
      */
-    public static boolean canBeUsed() {
+    public static boolean canBeUsed(Context context) {
         // We could use the SessionInstaller also with the full flavor,
         // but for now we limit it to basic to limit potential damage.
         if (!BuildConfig.FLAVOR.equals("basic")) return false;
@@ -223,7 +223,11 @@ public class SessionInstallManager extends BroadcastReceiver {
         // Disabling MIUI "optimizations" in developer options fixes it, but we can't ask users to do this (bad UX).
         // Therefore, we have no choice, but to disable it completely for those devices.
         // See: https://github.com/vvb2060/PackageInstallerTest
-        return !isXiaomiDevice();
+        if (isXiaomiDevice()) return false;
+        // We don't use SessionInstaller, if PrivilegedInstaller can be used instead.
+        // This is the last check, because it is the most expensive one
+        // getting PackageInfo and doing service binding.
+        return !PrivilegedInstaller.isDefault(context);
     }
 
     private static boolean isXiaomiDevice() {
