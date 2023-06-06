@@ -45,6 +45,7 @@ public open class HttpManager @JvmOverloads constructor(
     private val userAgent: String,
     queryString: String? = null,
     proxyConfig: ProxyConfig? = null,
+    private val highTimeouts: Boolean = false,
     private val mirrorChooser: MirrorChooser = MirrorChooserRandom(),
     private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
 ) {
@@ -52,6 +53,7 @@ public open class HttpManager @JvmOverloads constructor(
     internal companion object {
         val log = KotlinLogging.logger {}
         const val READ_BUFFER = 8 * 1024
+        private const val TIMEOUT_MILLIS_HIGH = 60_000L
     }
 
     private var httpClient = getNewHttpClient(proxyConfig)
@@ -81,7 +83,13 @@ public open class HttpManager @JvmOverloads constructor(
             install(UserAgent) {
                 agent = userAgent
             }
-            install(HttpTimeout)
+            install(HttpTimeout) {
+                if (highTimeouts || proxyConfig.isTor()) {
+                    connectTimeoutMillis = TIMEOUT_MILLIS_HIGH
+                    socketTimeoutMillis = TIMEOUT_MILLIS_HIGH
+                    requestTimeoutMillis = TIMEOUT_MILLIS_HIGH
+                }
+            }
         }
     }
 
