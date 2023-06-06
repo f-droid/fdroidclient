@@ -285,8 +285,18 @@ public class RepoDetailsActivity extends AppCompatActivity {
     }
 
     private void prepareNfcMenuItems(Menu menu) {
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
-        menuItem.setVisible(NfcHelper.isNdefPushDisabled(this));
+
+        if (nfcAdapter == null) {
+            menuItem.setVisible(false);
+            return;
+        }
+
+        boolean needsEnableNfcMenuItem;
+        needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
+
+        menuItem.setVisible(needsEnableNfcMenuItem);
     }
 
     private void prepareShareMenuItems(Menu menu) {
