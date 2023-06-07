@@ -45,8 +45,8 @@
     <string name="menu_share">Споделяне</string>
     <string name="menu_install">Инсталиране</string>
     <string name="menu_uninstall">Премахване</string>
-    <string name="menu_ignore_all">Пропускане на всички нови издания</string>
-    <string name="menu_ignore_this">Игнорирай актуализацията</string>
+    <string name="menu_ignore_all">Пренебрегване на всички обновявания</string>
+    <string name="menu_ignore_this">Пренебрегване на това обновяване</string>
     <string name="menu_website">Страница</string>
     <string name="menu_issues">Дефекти</string>
     <string name="menu_source">Изходен код</string>
