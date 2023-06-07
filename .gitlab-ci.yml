@@ -78,6 +78,30 @@ tools scripts:
     - echo "These are unused or blank translations that should be removed:"
     - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml
 
+weblate merge conflict:
+  stage: lint
+  image: debian:bookworm-slim
+  rules:
+    - changes:
+        - .gitlab-ci.yml
+        - app/src/*/res/values*/strings.xml
+  script:
+    - apt-get update
+    - apt-get -qy install --no-install-recommends ca-certificates git
+    - git config user.name "$CI_PIPELINE_ID/$CI_JOB_ID"
+    - git config user.email $CI_PROJECT_PATH@f-droid.org
+    - git fetch https://hosted.weblate.org/git/f-droid/f-droid
+    - git checkout -B weblate FETCH_HEAD
+    - export EXITVALUE=0
+    - if ! git rebase $CI_COMMIT_SHA; then
+          export EXITVALUE=1;
+          set -x;
+          while git rebase --skip; do echo; done;
+          set +x;
+      fi
+    - git diff --exit-code
+    - exit $EXITVALUE
+
 errorprone:
   extends: .base
   stage: test
