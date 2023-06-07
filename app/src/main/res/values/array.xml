@@ -26,6 +26,7 @@
         <item>@string/antidisabledalgorithm_key</item>
         <item>@string/antiknownvuln_key</item>
         <item>@string/antinosource_key</item>
+        <item>@string/antinsfw_key</item>
         <item>@string/antiothers_key</item>
     </string-array>
 
@@ -53,6 +54,7 @@
         <item>@string/antidisabledalgorithm</item>
         <item>@string/antiknownvuln</item>
         <item>@string/antinosource</item>
+        <item>@string/antinsfw</item>
         <item>@string/antiothers</item>
     </string-array>
 </resources>

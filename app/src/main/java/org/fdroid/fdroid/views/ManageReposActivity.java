@@ -63,6 +63,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.index.RepoManager;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
 
 import java.io.File;
@@ -107,6 +108,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     }
 
     private RepositoryDao repositoryDao;
+    private RepoManager repoManager;
 
     /**
      * True if activity started with an intent such as from QR code. False if
@@ -123,6 +125,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
         repositoryDao = DBHelper.getDb(this).getRepositoryDao();
+        repoManager = FDroidApp.getRepoManager(this);
 
         super.onCreate(savedInstanceState);
 
@@ -157,7 +160,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         final RecyclerView repoList = (RecyclerView) findViewById(R.id.list);
         RepoAdapter repoAdapter = new RepoAdapter(this);
         repoList.setAdapter(repoAdapter);
-        repositoryDao.getLiveRepositories().observe(this, repoAdapter::updateItems);
+        FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, repoAdapter::updateItems);
     }
 
     @Override
@@ -275,24 +278,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             String msg = getDisallowInstallUnknownSourcesErrorMessage(this);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
         } else {
-            // temporary hack until we clean up this activity
-            if (FDroidApp.repos == null) {
-                Utils.runOffUiThread(() -> {
-                    while (FDroidApp.repos == null) {
-                        if (isFinishing() || isDestroyed()) return false;
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            Log.e(TAG, "Interrupted while waiting for repos ", e);
-                        }
-                    }
-                    return true;
-                }, (result) -> {
-                        if (result) new AddRepo(newAddress, newFingerprint, username, password);
-                    });
-            } else {
-                new AddRepo(newAddress, newFingerprint, username, password);
-            }
+            new AddRepo(newAddress, newFingerprint, username, password);
         }
     }
 
@@ -326,7 +312,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
 
             context = ManageReposActivity.this;
 
-            for (Repository repo : FDroidApp.repos) {
+            for (Repository repo : FDroidApp.getRepoManager(ManageReposActivity.this).getRepositories()) {
                 urlRepoMap.put(repo.getAddress(), repo);
                 for (Mirror mirror : repo.getAllMirrors()) {
                     urlRepoMap.put(mirror.getBaseUrl(), repo);
@@ -890,7 +876,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     public void onSetEnabled(Repository repo, boolean isEnabled) {
         if (repo.getEnabled() != isEnabled) {
             runOffUiThread(() -> {
-                repositoryDao.setRepositoryEnabled(repo.getRepoId(), isEnabled);
+                repoManager.setRepositoryEnabled(repo.getRepoId(), isEnabled);
                 return true;
             });
 

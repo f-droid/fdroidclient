@@ -384,7 +384,7 @@ public final class AppUpdateStatusManager {
         if (canUpdate.size() > 0) {
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
-                Repository repo = FDroidApp.getRepo(app.getUpdate().getRepoId());
+                Repository repo = FDroidApp.getRepoManager(context).getRepository(app.getUpdate().getRepoId());
                 addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
             }
             endBatchUpdates(Status.UpdateAvailable);
@@ -397,7 +397,7 @@ public final class AppUpdateStatusManager {
             isBatchUpdating = true;
             try {
                 for (UpdatableApp app : canUpdate) {
-                    Repository repo = FDroidApp.getRepo(app.getUpdate().getRepoId());
+                    Repository repo = FDroidApp.getRepoManager(context).getRepository(app.getUpdate().getRepoId());
                     addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
                 }
                 setNumUpdatableApps(canUpdate.size());

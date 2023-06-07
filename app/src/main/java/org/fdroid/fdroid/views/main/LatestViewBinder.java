@@ -194,7 +194,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
 
         int repoCount = 0;
         Long lastUpdate = null;
-        for (Repository repo : FDroidApp.repos) {
+        for (Repository repo : FDroidApp.getRepoManager(activity).getRepositories()) {
             if (repo.getEnabled()) {
                 repoCount++;
                 if (lastUpdate == null && repo.getLastUpdated() != null) lastUpdate = repo.getLastUpdated();

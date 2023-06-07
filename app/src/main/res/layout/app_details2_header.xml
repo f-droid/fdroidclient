@@ -256,13 +256,12 @@
             <!-- listing of all anti-features -->
             <org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView
                 android:id="@+id/anti_features_full_listing"
-                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-        <TextView
+        <Button
             android:id="@+id/description_more"
             style="@style/DetailsMoreButtonStyle"
             android:layout_width="wrap_content"

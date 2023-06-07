@@ -241,6 +241,9 @@ public abstract class RepoAttribute {
     internal abstract val name: LocalizedTextV2
     internal abstract val description: LocalizedTextV2
 
+    public fun getIcon(localeList: LocaleListCompat): FileV2? =
+        icon.getBestLocale(localeList)
+
     public fun getName(localeList: LocaleListCompat): String? =
         name.getBestLocale(localeList)
 
@@ -297,7 +300,7 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
     )],
 )
 public data class Category internal constructor(
-    internal val repoId: Long,
+    public val repoId: Long,
     public val id: String,
     override val icon: LocalizedFileV2,
     override val name: LocalizedTextV2,

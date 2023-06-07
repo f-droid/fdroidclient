@@ -197,7 +197,7 @@ public class TreeUriScannerIntentService extends IntentService {
         destFile.delete();
 
         Log.i(TAG, "Found a valid, signed index-v1.json");
-        for (Repository repo : FDroidApp.repos) {
+        for (Repository repo : FDroidApp.getRepoManager(context).getRepositories()) {
             if (fingerprint.equals(repo.getFingerprint())) {
                 Log.i(TAG, repo.getAddress() + " has the SAME fingerprint: " + fingerprint);
             } else {

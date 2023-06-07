@@ -83,7 +83,7 @@
                 android:key="incompatibleVersions"/>
         <MultiSelectListPreference
             android:title="@string/show_anti_feature_apps"
-            android:defaultValue="@array/antifeaturesValues"
+            android:defaultValue="@array/antifeaturesValuesDefault"
             android:key="showAntiFeatures"
             android:entries="@array/antifeaturesNames"
             android:entryValues="@array/antifeaturesValues"/>

@@ -548,7 +548,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 AppVersion version = updateChecker.getSuggestedVersion(app.packageName,
                         app.preferredSigner, releaseChannels);
                 if (version == null) return null;
-                Repository repo = FDroidApp.getRepo(version.getRepoId());
+                Repository repo = FDroidApp.getRepoManager(activity).getRepository(version.getRepoId());
+                if (repo == null) return null;
                 return new Apk(version, repo);
             }, receivedApk -> {
                     if (receivedApk != null) {

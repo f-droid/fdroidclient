@@ -506,7 +506,7 @@ public final class Utils {
         RequestOptions options = iconRequestOptions.onlyRetrieveFromCache(
                 !Preferences.get().isBackgroundDownloadAllowed());
 
-        Repository repo = FDroidApp.getRepo(repoId);
+        Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
         if (repo == null) {
             Glide.with(context).clear(iv);
             return;

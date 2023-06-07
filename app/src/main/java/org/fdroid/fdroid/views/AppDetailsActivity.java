@@ -75,6 +75,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.util.ObjectsCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -289,7 +290,7 @@ public class AppDetailsActivity extends AppCompatActivity
                     app.name, app.summary, app.packageName);
 
             Intent uriIntent = new Intent(Intent.ACTION_SEND);
-            Uri shareUri = app.getShareUri();
+            Uri shareUri = app.getShareUri(this);
             if (shareUri != null) uriIntent.setData(shareUri);
             uriIntent.putExtra(Intent.EXTRA_TITLE, app.name);
 
@@ -740,8 +741,8 @@ public class AppDetailsActivity extends AppCompatActivity
     private void onVersionsChanged(List<AppVersion> appVersions) {
         List<Apk> apks = new ArrayList<>(appVersions.size());
         for (AppVersion appVersion : appVersions) {
-            Repository repo = FDroidApp.getRepo(appVersion.getRepoId());
-            Apk apk = new Apk(appVersion, repo);
+            Repository repo = FDroidApp.getRepoManager(this).getRepository(appVersion.getRepoId());
+            Apk apk = new Apk(appVersion, ObjectsCompat.requireNonNull(repo)); // repo shouldn't go missing here
             apk.setCompatibility(checker);
             apks.add(apk);
         }

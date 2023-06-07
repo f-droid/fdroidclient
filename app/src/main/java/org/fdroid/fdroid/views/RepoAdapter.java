@@ -5,14 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.os.LocaleListCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.index.v2.FileV2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,16 +65,20 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
     class RepoViewHolder extends RecyclerView.ViewHolder {
         private final View rootView;
+        private final ImageView imageView;
         private final CompoundButton switchView;
         private final TextView nameView;
+        private final TextView addressView;
         private final View unsignedView;
         private final View unverifiedView;
 
         RepoViewHolder(@NonNull View view) {
             super(view);
             rootView = view;
+            imageView = view.findViewById(R.id.repo_icon);
             switchView = view.findViewById(R.id.repo_switch);
             nameView = view.findViewById(R.id.repo_name);
+            addressView = view.findViewById(R.id.repo_address);
             unsignedView = view.findViewById(R.id.repo_unsigned);
             unverifiedView = view.findViewById(R.id.repo_unverified);
         }
@@ -89,7 +99,18 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
                     repoItemListener.onSetEnabled(repo, isChecked);
                 }
             });
+            FileV2 iconFile = repo.getIcon(LocaleListCompat.getDefault());
+            if (iconFile == null) {
+                Glide.with(imageView.getContext()).clear(imageView);
+                imageView.setImageResource(R.drawable.ic_repo_app_default);
+            } else {
+                Glide.with(imageView.getContext())
+                        .load(Utils.getDownloadRequest(repo, iconFile))
+                        .apply(Utils.getAlwaysShowIconRequestOptions())
+                        .into(imageView);
+            }
             nameView.setText(repo.getName(App.getLocales()));
+            addressView.setText(repo.getAddress().replace("https://", ""));
             if (repo.getCertificate() != null) {
                 unsignedView.setVisibility(View.GONE);
                 unverifiedView.setVisibility(View.GONE);

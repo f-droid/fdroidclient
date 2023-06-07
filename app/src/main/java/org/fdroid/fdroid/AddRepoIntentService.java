@@ -76,7 +76,7 @@ public class AddRepoIntentService extends IntentService {
         }
 
         String fingerprint = uri.getQueryParameter("fingerprint");
-        for (Repository repo : FDroidApp.repos) {
+        for (Repository repo : FDroidApp.getRepoManager(getApplicationContext()).getRepositories()) {
             if (repo.getEnabled() && TextUtils.equals(fingerprint, repo.getFingerprint())) {
                 if (TextUtils.equals(urlString, repo.getAddress())) {
                     Utils.debugLog(TAG, urlString + " already added as a repo");

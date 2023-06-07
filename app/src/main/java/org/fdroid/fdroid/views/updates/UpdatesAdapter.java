@@ -135,7 +135,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         for (UpdatableApp updatableApp: apps) {
             App app = new App(updatableApp);
-            Repository repo = FDroidApp.getRepo(updatableApp.getUpdate().getRepoId());
+            Repository repo = FDroidApp.getRepoManager(activity).getRepository(updatableApp.getUpdate().getRepoId());
             Apk apk = new Apk(updatableApp.getUpdate(), repo);
             if (updatableApp.getHasKnownVulnerability()) {
                 app.installedApk = apk;
