@@ -346,7 +346,7 @@
     </plurals>
     <string name="force_old_index">تطبيق صيغة الأرشفة القديمة بالقوة</string>
     <string name="force_old_index_summary">في حالة وجود أخطاء أو مشاكل في التوافق، استخدم أرشفة تطبيق XML</string>
-    <string name="app_details__incompatible_mismatched_signers">توقيع مختلف عن التطبيق المُثبت</string>
+    <string name="app_details__incompatible_mismatched_signers">التوقيع مختلف عن التطبيق المُثبت</string>
     <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">لا نسخ مع توقعيات متوافقة</string>
     <string name="app_details__no_versions__none_compatible_with_device">لا نسخ متكاملة مع الجهاز</string>
@@ -568,4 +568,5 @@
     <string name="antinsfw">يحتوي هذا التطبيق على محتوى لا يجب نشره أو رؤيته في كل مكان</string>
     <string name="latest__empty_state__upgrading">جارٍ ترقية قاعدة البيانات…</string>
     <string name="menu_release_channel_beta">السماح بتحديثات النسخة التجريبية (بيتا)</string>
+    <string name="use_ipfs_gateways">استخدام بوابات IPFS</string>
 </resources>
