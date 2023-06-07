@@ -90,7 +90,7 @@
     <string name="invalid_url">این نشانی، معتبر نیست.</string>
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
-    <string name="menu_launch">باز کردن</string>
+    <string name="menu_launch">گشودن</string>
     <string name="menu_ignore_all">چشم‌پوشی از تمام به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">چشم‌پوشی از این به‌روز رسانی</string>
     <string name="menu_website">پایگاه وب</string>
@@ -328,7 +328,7 @@
     <string name="notification_title_summary_installed">با موفّقیت نصب شد</string>
     <string name="notification_title_summary_install_error">نصب شکست خورد</string>
     <string name="notification_action_update">به‌روز رسانی</string>
-    <string name="notification_action_cancel">لغو کردن</string>
+    <string name="notification_action_cancel">لغو</string>
     <string name="notification_action_install">نصب</string>
     <string name="tts_category_name">دستهٔ %1$s</string>
     <plurals name="tts_view_all_in_category">
@@ -529,5 +529,6 @@
     <string name="antinsfw">این کاره محتوایی دارد که نباید عمومی شده یا همه‌حا نمایان باشد</string>
     <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
     <string name="latest__empty_state__upgrading">ارتقا دادن پایگاه داده…</string>
-    <string name="use_ipfs_gateways">استفاده از دروازه IPFS</string>
+    <string name="use_ipfs_gateways">استفاده از دروازه‌های IPFS</string>
+    <string name="use_ipfs_gateways_summary">بارگیری پرونده‌ها از آینه‌های IPFS در صورت پشتیبانی به دست مخزن.</string>
 </resources>
