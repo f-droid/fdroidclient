@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Новая версия приложения подписана другим ключом. Для ее установки необходимо удалить старую. Пожалуйста, сделайте это и попробуйте снова. (Учтите, что при удалении приложения все его данные будут потеряны)</string>
     <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить\?</string>
     <string name="version">Версия</string>
@@ -547,9 +547,15 @@
     <string name="antinosource">Исходный код больше не доступен</string>
     <string name="antiknownvuln">Известная уязвимость</string>
     <string name="antiothers">Прочие анти-функции</string>
-    <string name="antinsfw">Это приложение содержит контент, который не следует разглашать или повсеместно демонстрировать</string>
+    <string name="antinsfw">Небезопасно для работы</string>
     <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
     <string name="latest__empty_state__upgrading">Обновление базы данных…</string>
     <string name="use_ipfs_gateways">Используйте шлюзы IPFS</string>
-    <string name="use_ipfs_gateways_summary">Загрузите файлы с зеркал IPFS, если это поддерживается репозиторием.</string>
+    <string name="use_ipfs_gateways_summary">Загружать файлы с зеркал IPFS, если это поддерживается репозиторием.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">О F-Droid Basic</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Ночные сборки</string>
+    <string name="warning_target_sdk">Это приложение было разработано для старой версии Android и не может быть обновлено автоматически.</string>
+    <string name="antinsfwlist">Это приложение содержит контент, который не должен публиковаться или быть доступным повсеместно</string>
+    <string name="repo_last_update_downloaded">Последнее обновление загружено</string>
 </resources>
