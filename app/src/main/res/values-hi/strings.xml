@@ -3,7 +3,7 @@
     <string name="delete">डिलीट करें</string>
     <string name="enable_nfc_send">NFC ‘द्वारा भेजे’ को सक्षम करें …</string>
     <string name="version">संस्करण</string>
-    <string name="updates">अपडेटस</string>
+    <string name="updates">अपडेट</string>
     <string name="unstable_updates">अस्थिर अपडेट्स</string>
     <string name="unstable_updates_summary">अस्थिर अद्यतनों के सुझाव दें</string>
     <string name="other">अन्य</string>
