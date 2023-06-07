@@ -58,7 +58,7 @@
     <string name="app_version_x_available">出咗版本 %1$s</string>
     <string name="app_version_x_installed">版本 %1$s</string>
     <string name="app_recommended_version_installed">版本 %1$s (推薦)</string>
-    <string name="added_on">喺 %s 加入</string>
+    <string name="added_on">喺 %s 上架</string>
     <string name="app__tts__cancel_download">取消下載</string>
     <string name="app__install_downloaded_update">更新</string>
     <string name="app_installed_media">檔案安裝咗去 %s</string>
@@ -73,8 +73,8 @@
     <string name="send_installed_apps">分享安裝咗嘅 app</string>
     <string name="send_installed_apps_csv">經由 F-Droid 安裝嘅 App 載於 CSV 檔案</string>
     <string name="update_all">全部更新</string>
-    <string name="updates__hide_updateable_apps">隱藏 app</string>
-    <string name="updates__show_updateable_apps">顯示 app</string>
+    <string name="updates__hide_updateable_apps">隱藏啲 app</string>
+    <string name="updates__show_updateable_apps">顯示啲 app</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">下載 %1$d 個 app 嘅更新。</item>
     </plurals>
@@ -519,4 +519,6 @@
     <string name="theme_dark">黑眼睛</string>
     <string name="menu_release_channel_beta">准用測試版更新</string>
     <string name="latest__empty_state__upgrading">升級緊資料庫…</string>
+    <string name="use_ipfs_gateways">用 IPFS 閘道</string>
+    <string name="use_ipfs_gateways_summary">存庫支援嘅話，就喺 IPFS 鏡像度下載檔案。</string>
 </resources>

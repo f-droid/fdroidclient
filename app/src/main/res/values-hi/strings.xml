@@ -3,7 +3,7 @@
     <string name="delete">डिलीट करें</string>
     <string name="enable_nfc_send">NFC ‘द्वारा भेजे’ को सक्षम करें …</string>
     <string name="version">संस्करण</string>
-    <string name="updates">अपडेटस</string>
+    <string name="updates">अपडेट</string>
     <string name="unstable_updates">अस्थिर अपडेट्स</string>
     <string name="unstable_updates_summary">अस्थिर अद्यतनों के सुझाव दें</string>
     <string name="other">अन्य</string>
@@ -49,7 +49,7 @@
     <string name="crash_dialog_title">एफ-ड्रॉइड क्रैश हो गया है</string>
     <string name="crash_dialog_text">एक अप्रत्याशित त्रुटि के कारण एप्लीकेशन बंद हो गयी है| क्या आप ईमेल पर डिटेलस भेज कर इस मुद्दे को सुलझाने में मदद करना चाहते हैं\?</string>
     <string name="crash_dialog_comment_prompt">आप अन्य जानकारी और टिप्पणियाँ यहाँ लिख सकते हैं:</string>
-    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_full">एफ-ड्रॉइड</string>
     <string name="installIncompatible">यह ऐप्लिकेशन आपके डिवाइस के लिए अनुकुल नहीं है, क्या आप इसे फिर भी स्थापित करना चाहते हैं\?</string>
     <string name="interval_1w">साप्ताहिक अपडेट के लिए जाँच करें</string>
     <string name="interval_2w">हर 2 सप्ताह में अपडेट की जाँच करें</string>
@@ -526,9 +526,14 @@
     <string name="antinosource">स्रोत कोड अब उपलब्ध नहीं है</string>
     <string name="swap_wifi_vpn_conflict">सक्रिय वीपीएन के साथ संघर्ष!</string>
     <string name="antiothers">अन्य विरोधी सुविधाएं</string>
-    <string name="antinsfw">इस ऐप में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
+    <string name="antinsfw">काम के लिए सुरक्षित नहीं</string>
     <string name="menu_release_channel_beta">बीटा अपडेट की अनुमति दें</string>
     <string name="latest__empty_state__upgrading">डेटाबेस का नवीनीकरण किया जा रहा…</string>
     <string name="use_ipfs_gateways_summary">रेपो द्वारा समर्थित होने पर, IPFS मिरर से फ़ाइलें डाउनलोड करें।</string>
     <string name="use_ipfs_gateways">IPFS गेटवे का उपयोग करें</string>
+    <string name="about_title_basic">एफ-ड्रॉइड बेसिक के बारे में</string>
+    <string name="repo_last_update_downloaded">अंतिम अपडेट डाउनलोड किया गया</string>
+    <string name="app_name_basic">एफ-ड्रॉइड बेसिक</string>
+    <string name="antinsfwlist">इस एप्लिकेशन में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
+    <string name="warning_target_sdk">यह एप्लिकेशन Android के पुराने संस्करण के लिए बनाया गया था और स्वचालित रूप से अपडेट नहीं किया जा सकता है।</string>
 </resources>

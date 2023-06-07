@@ -535,9 +535,13 @@
     <string name="antinonfreead">Anexe ne-libere</string>
     <string name="antinonfreenet">Servicii de rețea ne-libere</string>
     <string name="antiothers">Alte Anti-features</string>
-    <string name="antinsfw">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
+    <string name="antinsfw">Nerecomandat la locul de muncă</string>
     <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
     <string name="latest__empty_state__upgrading">Se actualizează baza de date…</string>
     <string name="use_ipfs_gateways">Utilizare portaluri IPFS</string>
     <string name="use_ipfs_gateways_summary">Se descarcă fișiere de pe serverele de rezervă IPFS, dacă sunt suportate de depozite.</string>
+    <string name="antinsfwlist">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
+    <string name="about_title_basic">Despre F-Droid Basic</string>
+    <string name="warning_target_sdk">Această aplicație a fost creată pentru o versiune mai veche de Android și nu poate fi actualizată automat.</string>
+    <string name="repo_last_update_downloaded">Ultima actualizare descărcată</string>
 </resources>

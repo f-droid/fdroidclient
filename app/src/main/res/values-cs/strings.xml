@@ -91,9 +91,9 @@
     <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.
 \n
 \nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
-    <string name="repo_disabled_notification">%1$s vypnut.
+    <string name="repo_disabled_notification">%1$s zakázán.
 \n
-\nPro instalaci aplikací z tohoto repozitáře bude nutné jej znovu zapnout.</string>
+\nPro instalaci aplikací z tohoto repozitáře jej znovu povolte.</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
     <string name="category_Development">Vývoj</string>
     <string name="category_Games">Hry</string>
@@ -317,7 +317,7 @@
     <string name="update_all">Aktualizovat vše</string>
     <string name="app_list__name__successfully_installed">%1$s nainstalováno</string>
     <string name="by_author_format">od %s</string>
-    <string name="force_old_index">vynutit původní formát rejstříku</string>
+    <string name="force_old_index">Vynutit původní formát rejstříku</string>
     <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou, použít XML rejstřík aplikací</string>
     <string name="app_details__incompatible_mismatched_signers">Rozdílný podepisovač oproti nainstalované verzi</string>
     <string name="app_details__no_versions__show_incompat_versions">Pro zobrazení nekompatibilních verzí i tak, zapněte v nastavení „%1$s“.</string>

@@ -3,7 +3,7 @@
     <string name="version">Versija</string>
     <string name="delete">Dzēst</string>
     <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC…</string>
-    <string name="cache_downloaded">Paturēt kešotās aplikācijas</string>
+    <string name="cache_downloaded">Paturēt kešatmiņā saglabātās lietotnes</string>
     <string name="updates">Atjauninājumi</string>
     <string name="other">Citi</string>
     <string name="update_interval">Automātisko atjauninājumu intervāls</string>
@@ -14,8 +14,7 @@
     <string name="local_repo_name">Jūsu Lokālā Repozitorija nosaukums</string>
     <string name="local_repo_https_on">Izmantot šifrētu HTTPS:// savienojumu priekš lokālās repozitorijas</string>
     <string name="app_details">Informācija par programmu</string>
-    <string name="no_such_app">Šāda aplikācija netika atrasta.</string>
-    <string name="about_title">Par F-Droid</string>
+    <string name="no_such_app">Šāda lietotne netika atrasta.</string>
     <string name="about_site">Mājaslapa</string>
     <string name="about_version">Versija</string>
     <string name="app_installed">Ieinstalēts</string>
@@ -80,7 +79,6 @@
     <string name="category_Navigation">Navigācija</string>
     <string name="category_Reading">Lasījumam</string>
     <string name="category_Time">Laiks</string>
-    <string name="app_name">F-Droid</string>
     <string name="back">Atpakaļ</string>
     <string name="main_menu__latest_apps">Jaunumi</string>
     <string name="main_menu__categories">Kategorijas</string>
@@ -107,18 +105,18 @@
     <string name="category_System">Sistēmas</string>
     <string name="swap_send_fdroid">Sūtīt F-Droid</string>
     <string name="crash_dialog_title">F-Droid beidza strādāt</string>
-    <string name="crash_dialog_text">Nezināma kļūme lika aplikācijai beigt strādāt. Vai jūs vēlētos nosūtīt e-pastu ar informāciju, lai palīdzētu salabot šo problēmu?</string>
+    <string name="crash_dialog_text">Nezināma kļūme lika lietotnei beigt strādāt. Vai jūs vēlētos nosūtīt e-pastu ar informāciju, lai palīdzētu salabot šo problēmu\?</string>
     <string name="notification_title_single_update_available">Pieejams atjauninājums</string>
     <string name="notification_title_summary_install_error">Instalācija neizdevās</string>
     <string name="SignatureMismatch">Jaunais laidiens ir parakstīts ar atslēgu, kas atšķiras no iepriekšējās. Lai uzstādītu jauno laidienu, vispirms ir jānoņem vecais. Lūgums to izdarīt un mēģināt vēlreiz. (Jāņem vērā, ka noņemšana izdzēsīs visus lietotnes datus)</string>
-    <string name="installIncompatible">Aplikācija nav savietojama ar jūsu ierīci. Vai jūs tāpat vēlaties to instalēt?</string>
+    <string name="installIncompatible">Lietotne nav savietojama ar jūsu ierīci. Vai jūs tāpat vēlaties to instalēt\?</string>
     <string name="by_author_format">autors: %s</string>
     <string name="unstable_updates">Nestabilie atjauninājumi</string>
     <string name="unstable_updates_summary">Piedāvāt atjauninājumus nestabilām versijām</string>
     <string name="keep_install_history">Saglabāt instalācijas vēsturi</string>
     <string name="keep_install_history_summary">Glabāt sarakstu par visām instalēšanām un atinstalēšanām privātajā veikalā</string>
     <string name="force_old_index">Piespiest izmantot veco indeksu formu</string>
-    <string name="force_old_index_summary">Kļūmju vai savietojuma problēmu gadījumā izmantot XML aplikāciju indeksu</string>
+    <string name="force_old_index_summary">Kļūmju vai savietojuma problēmu gadījumā izmantot XML lietotņu indeksu</string>
     <string name="update_auto_download">Automātiski lejupielādēt atjauninājumus</string>
     <string name="update_auto_download_summary">Atjauninājumi tiek lejupielādēti automātiski un jūs tiekat paziņots, lai instalētu</string>
     <string name="update_auto_install">Automātiski instalēt atjauninājumus</string>
@@ -162,9 +160,9 @@
     <string name="over_network_never_summary">Nekad nelejupielādēt jebko izmantojot šo savienojumu</string>
     <string name="app_details__incompatible_mismatched_signers">Cits paraksts nekā ieinstelētajai versijai</string>
     <string name="app_details__no_versions__show_incompat_versions">Lai uzrādītu nesaderīgu versiju tik un tā, iespējoiet \"%1$s\" iestatījumu.</string>
-    <string name="app_details__no_versions__no_compatible_signers">Nav versiju ar saderīgu parakstu</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nav versiju ar saderīgu parakstītāju</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nav versiju saderīga ar šo ierīci</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Ieinstelētā versija nav saderīga ar jebkuru pieejamu versiju. Atinstalējot aplikāciju ļaus jums apskatīt un ieinstalēt saderīgu versiju. Šīs parasti notiek ar aplikācijām, kuras tika ieinstalētas izmantojot Google Play veikalu vai no kāda cita avota, ja tie ir tikuši parakstīti ar citu sertifikātu.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Ieinstalētā versija nav saderīga ar jebkuru pieejamu versiju. Lietotnes atinstalēšana ļaus jums apskatīt un ieinstalēt saderīgu versiju. Šis parasti notiek ar lietotnēm, kuras tika ieinstalētas izmantojot Google Play veikalu vai no kāda cita avota, ja tās ir parakstītas ar citu sertifikātu.</string>
     <string name="about_forum">Atbalsta forums</string>
     <string name="app_suggested">Ieteiktie</string>
     <string name="app_permission_storage">F-Droid ir nepieciešams krātuves piekļuve lai ieinstalētu šo uz krātuves. Lūdzu atļaut to nākamējā paziņojumā lai varētu turpināt ar lejupielādi.</string>
@@ -207,7 +205,7 @@
     <string name="status_inserting_apps">Saglabā lietotnes datus</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Atjauninājumi ignorēti priekš Versijas %1$s</string>
     <string name="installed_app__updates_ignored">Atjauninājumi ignorēti</string>
-    <string name="app_repository">Repositorija: %1$s</string>
+    <string name="app_repository">Krātuve: %1$s</string>
     <string name="scan_removable_storage_title">Pārskatīt noņemamu atmiņu</string>
     <string name="toast_metrics_in_install_history">%s Rādītāju ziņojums ir redzams Instalēšanas Vēstures skatītājā</string>
     <string name="send_to_fdroid_metrics_summary">Katru nedēļu nosūta anonīmus datus F-Droid Rādītājiem (nepieciešams iestatījums \"Saglabāt uzstādīšanas vēsturi\")</string>
@@ -332,7 +330,7 @@
     <string name="hide_on_long_search_press_summary">Ilgi spiežot meklēšanas pogu paslēps lietotni</string>
     <string name="hide_on_long_search_press_title">Paslēpt ar meklēšanas pogu</string>
     <string name="panic_hide_warning_message">Trauksmes gadījumā šis noņems %1$s no sākum ekrāna. Tikai ierakstot \"%2$d\" neīstajā %3$s lietotnē to var atjaunot.</string>
-    <string name="hiding_dialog_warning">Brīdinājums: tiks noņemts arī jebkurš lietotnes īsceļš sākuma ekrānā, un tas būs jāpievieno manuāli.</string>
+    <string name="hiding_dialog_warning">Brīdinājums: tiks noņemta arī jebkura lietotnes īsinājumikona sākuma ekrānā, un tā būs pašrocīgi jāpievieno atkārtoti.</string>
     <string name="hiding_dialog_title">Paslēpt %s Tagad</string>
     <string name="hiding_calculator">Kalkulators</string>
     <string name="panic_hide_warning_title">Iegaumēt, kā atjaunot</string>
@@ -366,7 +364,7 @@
     <string name="show_anti_feature_apps">Iekļaut anti-funkciju lietotnes</string>
     <string name="show_incompat_versions_on">Rādīt lietotnes laidienus, kas nav saderīgi ar ierīci</string>
     <string name="show_incompat_versions">Iekļaut nesaderīgus laidienus</string>
-    <string name="appcompatibility">Aplikāciju saderība</string>
+    <string name="appcompatibility">Lietotņu saderība</string>
     <string name="search_hint">Meklēt lietotnes</string>
     <string name="expert_on">Rādīt papildus informāciju un papildus iestatījumus</string>
     <string name="expert">Eksperta režīms</string>
@@ -374,11 +372,11 @@
     <string name="antinosourcesince">Avota kods vairs nav pieejams, nav iespējami atjauninājumi.</string>
     <string name="antiknownvulnlist">Šī lietotne satur zināmu drošības ievainojamību</string>
     <string name="antidisabledalgorithmlist">Šai lietotnei ir vājš drošības paraksts</string>
-    <string name="antinonfreeadlist">Šī lietotne atbalsta ne-brīvus paplašinājumus</string>
-    <string name="antinonfreenetlist">Šī lietotne reklamē jeb ir pilnībā atkarīga no maksas tīkla pakalpojumiem</string>
+    <string name="antinonfreeadlist">Šī lietotne atbalsta ne-bezmaksas paplašinājumus</string>
+    <string name="antinonfreenetlist">Šī lietotne reklamē vai ir pilnībā atkarīga no maksas tīkla pakalpojumiem</string>
     <string name="antinonfreedeplist">Šī lietotne ir atkarīga no citām ne-brīvām lietotnēm</string>
     <string name="antinonfreeassetslist">Šī lietotne satur ne-brīvas sastāvdaļas</string>
-    <string name="antiupstreamnonfreelist">Augšējā avota kods nav pilnībā brīvs</string>
+    <string name="antiupstreamnonfreelist">Augšējā avota pirmkods nav pilnībā brīvs</string>
     <string name="antifeatures">Anti-funkcijas</string>
     <string name="antifeatureswarning">Šai lietotnei ir funkcijas, kuras jums var nepatikt.</string>
     <string name="details_new_in_version">Jaunumi versijā %s</string>
@@ -397,18 +395,18 @@
     <string name="repo_add_mirror">Pievienot spoguļkrātuvi</string>
     <string name="updates_disabled_by_settings">Visi atjauninājumi izslēgti, dēļ Datu/WiFi Iestatījumiem</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="zero">Lejupielādēt atjauninājumu priekš %1$d aplikācijām.</item>
-        <item quantity="one">Lejupielādēt atjauninājumu priekš %1$d aplikācijas.</item>
-        <item quantity="other">Lejupielādēt atjauninājumu priekš %1$d aplikācijām.</item>
+        <item quantity="zero">Lejupielādēt atjauninājumu priekš %1$d lietotnēm.</item>
+        <item quantity="one">Lejupielādēt atjauninājumu priekš %1$d lietotnes.</item>
+        <item quantity="other">Lejupielādēt atjauninājumu priekš %1$d lietotnēm.</item>
     </plurals>
     <string name="updates__show_updateable_apps">Rādīt lietotnes</string>
     <string name="updates__hide_updateable_apps">Paslēpt lietotnes</string>
     <string name="update_all">Atjaunināt visas</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorēt</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Mēs atradām drošības problēmu ar %1$s. Mēs iesakām atjaunināt šo aplikāciju nekavējoties.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Mēs atradām drošības problēmu ar %1$s. Mēs iesakām atinstalēt šo aplikāciju nekavējoties.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Mēs atradām drošības problēmu ar %1$s. Mēs iesakām nekavējoties atjaunināt šo lietotni uz jaunāko versiju.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Mēs atradām drošības problēmu ar %1$s. Mēs iesakām nekavējoties atinstalēt šo lietotni.</string>
     <string name="send_installed_apps">Kopīgot uzstādītās lietotnes</string>
-    <string name="installed_apps__activity_title">Instalētās Aplikācijas</string>
+    <string name="installed_apps__activity_title">Instalētās Lietotnes</string>
     <string name="scan_removable_storage_toast">Pāŗskata %s…</string>
     <string name="apps">Lietotnes</string>
     <string name="has_disallow_install_unknown_sources_globally">Jūsu ierīces administrators neļauj uzstādīt lietotnes no nezināmiem avotiem, un šis noteikums attiecas arī uz jauniem repozitorijiem</string>
@@ -418,7 +416,7 @@
     <string name="send_installed_apps_csv">F-Droid uzstādīto lietotņu saraksts CSV datnē</string>
     <string name="menu_release_channel_beta">Ļaut atjaunināt un uzstādīt beta versijas</string>
     <string name="menu_show_fdroid_metrics_report">Rādīt metrikas statistiskas atskaiti</string>
-    <string name="app_list_results_hidden_antifeature_settings">Dažas lietotnes tika paslēptas, pamatojoties uz jūsu anti-funkcijas iestatījumiem.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Dažas lietotnes tika paslēptas, pamatojoties uz jūsu anti-funkciju iestatījumiem.</string>
     <string name="has_disallow_install_unknown_sources">Šis lietotājs nevar pievienot nezināmus avotus, un šis noteikums attiecas arī uz jauniem repozitorijiem</string>
     <string name="menu_select_for_wipe">Izvēlieties, lai tīrīt</string>
     <string name="repo_searching_address">Meklē pakotņu krātuvi
@@ -451,4 +449,25 @@
 \n
 \nPiezīme: visas iepriekš uzstādītās lietotnes paliks ierīcē.</string>
     <string name="proxy_host_summary">Starpniekservera saimniekdatora nosaukums (piem., 127.0.0.1)</string>
+    <string name="use_ipfs_gateways">Izmantot IPFS vārtejas</string>
+    <string name="use_ipfs_gateways_summary">Lejupielādēt failus no IPFS spoguļiem, ja to atbalsta repozitorijs.</string>
+    <string name="antitrack">Izsekošana</string>
+    <string name="antinosource">Pirmkods Vairs Nav Pieejams</string>
+    <string name="antiothers">Citas Anti-funkcijas</string>
+    <string name="latest__empty_state__upgrading">Atjaunina datubāzi…</string>
+    <string name="antiads">Reklāmas</string>
+    <string name="antinonfreead">Ne-bezmaksas Paplašinājumi</string>
+    <string name="antinonfreenet">Ne-bezmaksas Tīkla Pakalpojumi</string>
+    <string name="antinonfreedep">Ne-bezmaksas Atkarības</string>
+    <string name="touch_to_configure_local_repo">Pieskarieties, lai skatītu informāciju un ļautu citiem apmainīt jūsu lietotnes.</string>
+    <string name="adding_apks_format">Pievieno %s repozitorijam…</string>
+    <string name="writing_index_jar">Raksta parakstītu indeksa failu (index.jar)…</string>
+    <string name="categories__empty_state__no_categories">Nav kategoriju, ko rādīt</string>
+    <string name="antidisabledalgorithm">Parakstīts, Izmantojot Nedrošu Algoritmu</string>
+    <string name="antinonfreeassets">Ne-bezmaksas Līdzekļi</string>
+    <string name="copying_icons">Lietotņu ikonu kopēšana repozitorijā…</string>
+    <string name="antinsfw">Šī lietotne satur saturu, ko nevajadzētu publiskot vai redzēt visur</string>
+    <string name="linking_apks">Sasaista APK iekš repozitorija…</string>
+    <string name="antiupstreamnonfree">Ne-bezmaksas Augšējais Avots</string>
+    <string name="antiknownvuln">Zināmā Ievainojamība</string>
 </resources>

@@ -1,6 +1,7 @@
-* İndirme, dizin ve veri tabanı kodlarının tam olarak yenilenmesi.
+* İndirme, dizin ve veri tabanı kodlarının tam olarak yenilenmesi. Daha az veri kullanarak daha hızlı ve dengeli. zamandır düzeltilmemiş hatalar ve bir çok çökmeler düzeltildi.
 
-* Düzeltmeler: #649 #860 #1206 #1588 #1710 #1989 #2080 #2081 #2157 #2322 #2353
-  #2370 #2412 #2436 #2442 #2443 #2444 #1971
+* Düşük bellekli ucuz cihazlarda daha iyi çalışma.
+
+* Düzeltmeler: #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
 
 * Yeni dil: Kantonca (yue)

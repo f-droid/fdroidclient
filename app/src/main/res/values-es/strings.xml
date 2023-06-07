@@ -20,7 +20,7 @@
     <string name="local_repo_https_on">Utilizar conexión HTTPS:// cifrada para el repositorio local</string>
     <string name="app_details">Detalles de la aplicación</string>
     <string name="no_such_app">No se encontró la aplicación.</string>
-    <string name="about_title_full">Acerca de F-Droid</string>
+    <string name="about_title_full">Sobre F-Droid</string>
     <string name="about_site">Sitio web</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalado</string>
@@ -546,9 +546,14 @@
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
     <string name="antiothers">Otras anti-característcas</string>
-    <string name="antinsfw">Esta app contiene contenido que no debería ser publicitado o visible en cualquier lugar</string>
+    <string name="antinsfw">No es segura para el trabajo</string>
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
     <string name="use_ipfs_gateways">Utilizar las pasarelas IPFS</string>
     <string name="use_ipfs_gateways_summary">Descargar los archivos de réplicas IPFS, si el repositorio lo admite.</string>
+    <string name="antinsfwlist">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
+    <string name="repo_last_update_downloaded">Última actualización descargada</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">Acerca de F-Droid Basic</string>
+    <string name="warning_target_sdk">Esta aplicación se creó para una versión anterior de Android y no se puede actualizar automáticamente.</string>
 </resources>

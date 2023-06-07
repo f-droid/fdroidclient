@@ -489,7 +489,7 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi hotspot zapnutý</string>
     <string name="swap_toast_could_not_enable_hotspot">Nedarí sa zapnúť Wi-Fi hotspot!</string>
     <string name="share_repository">Zdielať repozitár</string>
-    <string name="nearby_splash__read_external_storage">Hľadať archivy a zrkadlá na SD karte.</string>
+    <string name="nearby_splash__read_external_storage">Hľadať archívy a zrkadlá na SD karte.</string>
     <string name="nearby_splash__request_permission">Skúsiť</string>
     <string name="swap_toast_using_path">Používam %1$s</string>
     <string name="swap_toast_not_removable_storage">Vybratý priečinok neodpovedá žiadnym odpojitelným úložiskom, skúste to znova!</string>
@@ -555,4 +555,6 @@
     <string name="menu_show_install_history">Ukázať históriu inštalácií</string>
     <string name="menu_release_channel_beta">Povoliť Beta aktualizácie</string>
     <string name="latest__empty_state__upgrading">Prebieha upgrade databázy…</string>
+    <string name="use_ipfs_gateways">Použiť IPFS brány</string>
+    <string name="use_ipfs_gateways_summary">Stiahnuť súbory z IPFS zrkadiel, pokiaľ sú podporované repozitárom.</string>
 </resources>

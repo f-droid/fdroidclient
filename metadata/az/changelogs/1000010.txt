@@ -1,0 +1,21 @@
+F-Droid 1.0-dır!
+
+Bu buraxılışda çoxlu böyük dəyişikliklər daxildir:
+
+* Proqramların yenilənməsi üçün tamamilə əsaslı təmir edilmiş iş prosesi
+
+* Tam tərcümə oluna bilən proqram xülasələri və təsvirləri
+
+* Cari buraxılışda dəyişiklikləri göstərmək üçün "Yeniliklər" bölməsi
+
+* Ekran görüntüləri və xüsusiyyət qrafikası
+
+* Media, OTA, ZIP və s. quraşdırılmasına dəstək. fayllar
+
+* İzlənməyə qarşı təkmil qorunma (HTTP ETag, TLS və s.)
+
+* İmtiyazlı Genişləndirmə ilə tam arxa plan yeniləmələri
+
+* Proqram tərtibatçılarına ianələri vurğulayın
+
+* Daha sürətli indeks yeniləmələri

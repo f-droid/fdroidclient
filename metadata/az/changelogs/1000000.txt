@@ -1,0 +1,7 @@
+* Media, OTA, ZIP və digər faylları quraşdırmaq üçün dəstək
+
+* Bir neçə açarla imzalanmış APK paketləri üçün tam dəstək
+
+* Yeni Tibet tərcüməsi
+
+* Söndürülməklə  əlaqəli tətbiqləri və kateqoriyaları silinməsi

@@ -1,0 +1,3 @@
+* Tərcümələrin Android-də görünməsinə mane olan səhvi düzəldin >= 7.0
+
+* 1.0-alpha3 → 1.0-alpha4 #1181-dən məlumatlar bazası təkmilləşdirmə qəzasını düzəldin

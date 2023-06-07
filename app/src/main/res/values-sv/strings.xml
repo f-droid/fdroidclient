@@ -11,7 +11,7 @@
     <string name="update_interval">Automatiskt uppdateringsintervall</string>
     <string name="notify">Visa tillgängliga uppdateringar</string>
     <string name="notify_on">Visa en avisering när uppdateringar är tillgängliga</string>
-    <string name="system_installer">Privileged Extension</string>
+    <string name="system_installer">Privilegierat tillägg</string>
     <string name="system_installer_on">Använd Privilegierat tillägg för att installera, uppdatera och ta bort paket</string>
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
     <string name="local_repo_name_summary">Den annonserade titeln på ditt lokala förråd: %s</string>
@@ -530,4 +530,6 @@
     <string name="antinsfw">Denna app har ett innehåll som inte bör publiceras eller vara synligt var som helst</string>
     <string name="menu_release_channel_beta">Tillåt betauppdateringar</string>
     <string name="latest__empty_state__upgrading">Uppdaterar databas…</string>
+    <string name="use_ipfs_gateways">Använd IPFS-gateways</string>
+    <string name="use_ipfs_gateways_summary">Ladda ner filer från IPFS-speglar, om de stöds av lagringsplatsen.</string>
 </resources>

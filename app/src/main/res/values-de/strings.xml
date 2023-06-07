@@ -142,7 +142,7 @@
     <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
     <string name="about_source">Quellcode</string>
     <string name="app_incompatible">Inkompatibel</string>
-    <string name="links">Verweise</string>
+    <string name="links">Links</string>
     <string name="back">Zurück</string>
     <string name="bad_fingerprint">Falscher Fingerabdruck</string>
     <string name="invalid_url">Das ist keine gültige Adresse.</string>

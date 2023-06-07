@@ -97,10 +97,10 @@
     <string name="enable_nfc_send">Aktivizo NFC Send…</string>
     <string name="cache_downloaded">Mba aplikacione të ruajtur në fshehtinë</string>
     <string name="unstable_updates">Përditësime jo të qëndrueshme</string>
-    <string name="unstable_updates_summary">Sugjeroni përditësime për versione të paqëndrueshëm</string>
+    <string name="unstable_updates_summary">Sugjero përditësime për versione të paqëndrueshëm</string>
     <string name="keep_install_history">Mba historik instalimesh</string>
     <string name="keep_install_history_summary">Ruaj një regjistër të krejt instalimeve dhe çinstalimeve në një depo private</string>
-    <string name="force_old_index">Detyro përdorim format të dikurshëm treguesi</string>
+    <string name="force_old_index">Detyro përdorim formati të dikurshëm treguesi</string>
     <string name="force_old_index_summary">Në rast se ka të meta apo probleme përputhshmërie, përdorni treguesin XML të aplikacionit</string>
     <string name="update_auto_download">Sill vetvetiu përditësime</string>
     <string name="update_auto_download_summary">Përditësimet shkarkohen automatikisht dhe ju njoftoheni për t’i instaluar</string>

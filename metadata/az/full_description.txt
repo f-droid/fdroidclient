@@ -1,0 +1,18 @@
+F-Droid Android platforması üçün pulsuz proqram kataloqudur.
+F-Droid proqramı baxmağı asanlaşdırır
+proqramları quraşdırın, onları quraşdırın və yeniləmələri izləyin.
+
+F-Droid ilə uyğun gələn istənilən repozitoriyaya qoşulmaq mümkündür. Defolt depo f-droid.org-dur,
+yalnız orijinal pulsuz proqram təminatı ehtiva edir.
+
+Android özü APK paketlərinin quraşdırılması mənasında açıqdır
+hər yerdən, lakin F-Droid-i sizin kimi istifadə etmək üçün çox yaxşı səbəblər var
+pulsuz proqram meneceri:
+
+* Bildirişləri yeniləyin
+* Yeniləmələri avtomatik yükləmək və quraşdırmaq imkanı
+* Köhnəlmiş proqramları və onların beta versiyalarını izləmək
+* Cihazla uyğun gəlməyən proqramların yoxlanılması
+* Tətbiqləri kateqoriyalar və təsvirlər üzrə axtarın
+* İanə proqramları ilə əlaqəli bağlantılara daxil olun, mənbə koduna baxın və s
+* Repozitor imzalarını və APK hashlarını yoxlamaqla risk yoxdur
