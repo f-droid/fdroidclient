@@ -171,8 +171,9 @@
     <string name="proxy_host_summary">你代理伺服器的主機名稱（如 127.0.0.1）</string>
     <string name="proxy_port">代理伺服器通訊埠</string>
     <string name="proxy_port_summary">你的代理伺服器通訊埠編號（如：8118）</string>
-    <string name="status_download">正在從 %1$s 下載
-\n %2$s / %3$s (%4$d%%)</string>
+    <string name="status_download">下載中
+\n%2$s / %3$s (%4$d%%)正在從 
+\n%1$s</string>
     <string name="install_confirm">需要存取權</string>
     <string name="install_confirm_update">你要為這個現有的應用程式安裝更新嗎？現有數據將會被保留。更新後的應用程式將取得以下存取權：</string>
     <string name="install_confirm_update_system">你要為這個內置的應用程式安裝更新嗎？現有數據將會被保留。更新後的應用程式將取得以下存取權：</string>
