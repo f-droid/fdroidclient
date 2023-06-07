@@ -207,7 +207,7 @@
     <string name="status_inserting_apps">Saglabā lietotnes datus</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Atjauninājumi ignorēti priekš Versijas %1$s</string>
     <string name="installed_app__updates_ignored">Atjauninājumi ignorēti</string>
-    <string name="app_repository">Repositorija: %1$s</string>
+    <string name="app_repository">Krātuve: %1$s</string>
     <string name="scan_removable_storage_title">Pārskatīt noņemamu atmiņu</string>
     <string name="toast_metrics_in_install_history">%s Rādītāju ziņojums ir redzams Instalēšanas Vēstures skatītājā</string>
     <string name="send_to_fdroid_metrics_summary">Katru nedēļu nosūta anonīmus datus F-Droid Rādītājiem (nepieciešams iestatījums \"Saglabāt uzstādīšanas vēsturi\")</string>
@@ -332,7 +332,7 @@
     <string name="hide_on_long_search_press_summary">Ilgi spiežot meklēšanas pogu paslēps lietotni</string>
     <string name="hide_on_long_search_press_title">Paslēpt ar meklēšanas pogu</string>
     <string name="panic_hide_warning_message">Trauksmes gadījumā šis noņems %1$s no sākum ekrāna. Tikai ierakstot \"%2$d\" neīstajā %3$s lietotnē to var atjaunot.</string>
-    <string name="hiding_dialog_warning">Brīdinājums: tiks noņemts arī jebkurš lietotnes īsceļš sākuma ekrānā, un tas būs jāpievieno manuāli.</string>
+    <string name="hiding_dialog_warning">Brīdinājums: tiks noņemta arī jebkura lietotnes īsinājumikona sākuma ekrānā, un tā būs pašrocīgi jāpievieno atkārtoti.</string>
     <string name="hiding_dialog_title">Paslēpt %s Tagad</string>
     <string name="hiding_calculator">Kalkulators</string>
     <string name="panic_hide_warning_title">Iegaumēt, kā atjaunot</string>
@@ -375,7 +375,7 @@
     <string name="antiknownvulnlist">Šī lietotne satur zināmu drošības ievainojamību</string>
     <string name="antidisabledalgorithmlist">Šai lietotnei ir vājš drošības paraksts</string>
     <string name="antinonfreeadlist">Šī lietotne atbalsta ne-bezmaksas paplašinājumus</string>
-    <string name="antinonfreenetlist">Šī lietotne reklamē jeb ir pilnībā atkarīga no maksas tīkla pakalpojumiem</string>
+    <string name="antinonfreenetlist">Šī lietotne reklamē vai ir pilnībā atkarīga no maksas tīkla pakalpojumiem</string>
     <string name="antinonfreedeplist">Šī lietotne ir atkarīga no citām ne-brīvām lietotnēm</string>
     <string name="antinonfreeassetslist">Šī lietotne satur ne-brīvas sastāvdaļas</string>
     <string name="antiupstreamnonfreelist">Augšējā avota pirmkods nav pilnībā brīvs</string>
