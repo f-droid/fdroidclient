@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare, sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)</string>
     <string name="installIncompatible">S\'aplicatzione no est compatìbile cun su dispositivu tuo, la cheres installare su matessi?</string>
     <string name="version">Versione</string>
@@ -19,7 +19,7 @@
     <string name="local_repo_https_on">Imprea sa connessione criptada HTTPS:// pro sos depòsitu locale</string>
     <string name="app_details">Minujas aplicatzione</string>
     <string name="no_such_app">Peruna aplicatzione currispondente.</string>
-    <string name="about_title_full">A pitzu de F-Droid</string>
+    <string name="about_title_full">Subra de F-Droid</string>
     <string name="about_site">Giassu/situ web</string>
     <string name="about_version">Versione</string>
     <string name="app_installed">Installada</string>
@@ -554,7 +554,15 @@
     <string name="antidisabledalgorithm">Firmadu impreende un\'algoritmu non seguru</string>
     <string name="antiupstreamnonfree">A monte (upstream) non lìberu</string>
     <string name="antiothers">Àteras anti-funtzionalidades</string>
-    <string name="antinsfw">Custa aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
+    <string name="antinsfw">Non segura pro su traballu</string>
     <string name="menu_release_channel_beta">Permite sos agiornamentos beta</string>
     <string name="latest__empty_state__upgrading">Agiornende sa base de datos…</string>
+    <string name="use_ipfs_gateways">Imprea sas pontigras IPFS</string>
+    <string name="use_ipfs_gateways_summary">Iscàrriga sos documentos dae serbidores ispigru IPFS, si sunt suportados dae su depòsitu.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">Subra de F-Droid Basic</string>
+    <string name="antinsfwlist">usta aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Versiones de isvilupu</string>
+    <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
+    <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
 </resources>
