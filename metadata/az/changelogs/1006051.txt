@@ -1,0 +1,3 @@
+* Yenilənmiş lokalizasiyalar
+* Düymə ölçüsü ilə №1678 məsələ düzəldildi
+* Sabit təsadüfi proqram qəzaları
