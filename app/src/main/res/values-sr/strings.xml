@@ -296,6 +296,7 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Прикажи (%d)</item>
         <item quantity="few">Прикажи све (%d)</item>
+        <item quantity="other">Прикажи све (%d)</item>
     </plurals>
     <string name="notification_title_summary_ready_to_install_update">Ажурирање је спремно за инсталацију</string>
     <string name="app_recommended_version_installed">Верзија %1$s (препоручено)</string>
@@ -315,6 +316,7 @@
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Преузми ажурирање за %1$d апликацију.</item>
         <item quantity="few">Преузми ажурирања за %1$d апликација.</item>
+        <item quantity="other">Преузми ажурирања за %1$d апликација.</item>
     </plurals>
     <string name="details_new_in_version">Ново у верзији %s</string>
     <string name="antifeatureswarning">Ова апликација има функције које вам се можда неће свидети.</string>
@@ -322,10 +324,12 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Прикажи %1$d апликацију из категорије %2$s</item>
         <item quantity="few">Прикажи %1$d апликација из категорије %2$s</item>
+        <item quantity="other">Прикажи %1$d апликација из категорије %2$s</item>
     </plurals>
     <plurals name="details_last_update_days">
         <item quantity="one">Ажурирано пре %1$d дан</item>
         <item quantity="few">Ажурирано пре %1$d дана</item>
+        <item quantity="other">Ажурирано пре %1$d дана</item>
     </plurals>
     <string name="app_list__name__successfully_installed">Апликација %1$s је инсталирана</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Немате интернет везу\? Преузмите апликације од људи у близини!</string>
@@ -344,26 +348,32 @@
     <plurals name="notification_summary_more">
         <item quantity="one">+ још %1$d…</item>
         <item quantity="few">+ још %1$d…</item>
+        <item quantity="other">+ још %1$d…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d ажурирање</item>
         <item quantity="few">%1$d ажурирања</item>
+        <item quantity="other">%1$d ажурирања</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d апликација је инсталирана</item>
         <item quantity="few">%1$d апликација је инсталирано</item>
+        <item quantity="other">%1$d апликација је инсталирано</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Ажурирано пре %1$d недељу</item>
         <item quantity="few">Ажурирано пре %1$d недеља</item>
+        <item quantity="other">Ажурирано пре %1$d недеља</item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Ажурирано пре %1$d месец</item>
         <item quantity="few">Ажурирано пре %1$d месеци</item>
+        <item quantity="other">Ажурирано пре %1$d месеци</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">Ажурирано пре %1$d годину</item>
         <item quantity="few">Ажурирано пре %1$d година</item>
+        <item quantity="other">Ажурирано пре %1$d година</item>
     </plurals>
     <string name="force_old_index">Наметни стари формат индекса</string>
     <string name="force_old_index_summary">Користи индекс XML апликације у случају проблема са компатибилношћу</string>
