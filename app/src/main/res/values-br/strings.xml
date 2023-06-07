@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="notification_action_cancel">Nullañ</string>
+    <string name="notification_title_summary_install_error">C\'hwited eo bet ar staliadur</string>
+    <string name="app_name">F-Droid</string>
+    <string name="updates">Hizivadennoù</string>
+    <string name="yes">Ya</string>
+    <string name="next">A-heul</string>
+    <string name="notification_action_update">Hizivat</string>
+    <string name="notification_action_install">Staliañ</string>
+    <string name="about_title">Diwar-benn F-Droid</string>
+    <string name="version">Stumm</string>
+    <string name="by_author_format">dre %s</string>
+    <string name="delete">Dilemel</string>
+    <string name="unstable_updates">Hizivadennoù distabil</string>
+    <string name="keep_install_history">Mirout istor ar staliadurioù</string>
+    <string name="notify_on">Diskouez ur c\'hemenn pa \'vez hizivadennoù hegerz</string>
+    <string name="local_repo_name">Anv o teurel lec\'hel</string>
+    <string name="local_repo_name_summary">%s a zo anv publik o teurel lec\'hel</string>
+    <string name="login_title">Dilesadur rekis</string>
+    <string name="login_name">Anv implijer</string>
+    <string name="repo_edit_credentials">Cheñch ger-tremen</string>
+    <string name="app_details_donate_prompt_unknown_author">Profit ur banne kafe da diorroerien %1$s !</string>
+    <string name="app_details_donate_prompt">%1$s \'zo krouet gant %2$s. Profit ur banne kafe dezhe !</string>
+    <string name="about_version">Stumm</string>
+    <string name="app_suggested">Aliet</string>
+    <string name="app_incompatible">Digenglotus</string>
+    <string name="app_installed">Staliet</string>
+    <string name="app_new">Nevez</string>
+    <string name="app_not_installed">Ket staliet</string>
+    <string name="app_inst_unknown_source">Staliet (eus ur mammenn dianav)</string>
+    <string name="app_version_x_available">Stumm %1$s hegerz</string>
+    <string name="app_version_x_installed">Stumm %1$s</string>
+    <string name="app_list__name__downloading_in_progress">O pellgargañ %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s \'zo staliet</string>
+    <string name="no">Ket</string>
+    <string name="back">Distreiñ</string>
+    <string name="cancel">Nullañ</string>
+    <string name="more">Muioc\'h</string>
+    <string name="less">Nebeutoc\'h</string>
+    <string name="menu_search">Klask</string>
+    <string name="menu_add_repo">Teurel Nevez</string>
+    <string name="menu_launch">Digeriñ</string>
+    <string name="menu_share">Rannañ</string>
+    <string name="menu_install">Staliañ</string>
+    <string name="menu_upgrade">Hizivañ</string>
+    <string name="main_menu__categories">Rummadoù</string>
+    <string name="main_menu__swap_nearby">Nes</string>
+    <string name="details_notinstalled">Ket staliet</string>
+    <string name="skip">Dianav</string>
+    <string name="unsigned">Ket sinet</string>
+    <string name="pref_language">Yezh</string>
+    <string name="pref_language_default">Yezh ar reizhiad</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Kevreadusted</string>
+    <string name="wifi">Wi-Fi</string>
+    <string tools:ignore="UnusedResources" name="category_Games">C\'hoarioù</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">Graferezh</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
+    <string tools:ignore="UnusedResources" name="category_Money">Arc\'hant</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">Merdeiñ</string>
+    <string tools:ignore="UnusedResources" name="category_Reading">Lenn</string>
+    <string tools:ignore="UnusedResources" name="category_Science_Education">Skiantoù ha Deskadurezh</string>
+    <string tools:ignore="UnusedResources" name="category_Security">Surentez</string>
+    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sport ha Yec\'hed</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">Skrivañ</string>
+    <string name="ok">A-du</string>
+    <string name="menu_uninstall">Distaliañ</string>
+    <string name="menu_manage">Teureloù</string>
+    <string name="menu_settings">Arventennoù</string>
+    <string name="main_menu__latest_apps">Nevezintioù</string>
+    <string name="preference_manage_installed_apps">Merañ an arloadoù staliet</string>
+    <string tools:ignore="UnusedResources" name="category_Time">Amzer</string>
+    <string name="repo_last_update">Hizivadenn diwezhañ</string>
+    <string tools:ignore="UnusedResources" name="category_System">Reizhiad</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Diorren</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Liesvedia</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Pellgomz ha SMS</string>
+    <string name="swap_welcome">Donemat war F-Droid !</string>
+    <string name="updates__tts__download_app">Pellgargañ</string>
+    <string name="warning_no_internet">Hizivadenn dibosupl, ha kevreet emaoc\'h da internet \?</string>
+    <string name="newPerms">Nevez</string>
+    <string name="app_details">Munudoù an arload</string>
+    <string name="unverified">Ket gwiriet</string>
+    <string name="repo_details">Teurel</string>
+    <string name="swap_send_fdroid">Kas F-Droid</string>
+    <string name="hide_all_notifications">Kuzhat holl kemennoù</string>
+    <string name="crash_dialog_title">Harzet eo bet F-Droid en un doare dic\'hortoz</string>
+    <string name="notification_title_single_update_available">Un hizivadenn \'zo hegerz</string>
+    <string name="install_history">Istor ar staliadurioù</string>
+    <string name="other">All</string>
+    <string name="over_wifi">Dre Wi-Fi</string>
+    <string name="over_data">Dre ar rouedad hezoug</string>
+    <string name="notify">Diskouez an hizivadennoù hegerz</string>
+    <string name="about_site">Lec\'hienn</string>
+    <string name="about_source">Kod mammennoù</string>
+    <string name="app_inst_known_source">Staliet (eus %s)</string>
+    <string name="local_repo_https_on">Implijout ur c\'hevread sifret HTTPS evit an teurel lec\'hel</string>
+    <string name="no_such_app">Arload ebet kavet.</string>
+    <string name="login_password">Ger-tremen</string>
+    <string name="about_license">Aotre</string>
+    <string name="app_recommended_version_installed">Stumm %1$s (erbedet)</string>
+</resources>
