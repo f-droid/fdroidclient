@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="ok">باشە</string>
+    <string name="no">نەخێر</string>
+    <string name="back">گەڕانەوە</string>
+    <string name="cancel">پاشگەزبونەوە</string>
+    <string name="menu_search">گەڕان</string>
+    <string name="menu_settings">ڕێکخستنەکان</string>
+    <string name="menu_manage">سەرچاوەکان</string>
+    <string name="preference_manage_installed_apps">ڕێکخستنی بەرنامە دابەزێنراوەکان</string>
+    <string name="app_name">ئێف-درۆید</string>
+    <string name="updates">نوێکردنەوەکان</string>
+    <string name="about_title">دەربارەی ئێف-درۆید</string>
+    <string name="app_list__name__downloading_in_progress">دادەگرێت %1$s</string>
+    <string name="app_list__name__successfully_installed">%1$s دابەزێنرا</string>
+    <string name="yes">بەڵێ</string>
+    <string name="more">زیاتر</string>
+    <string name="less">کەمتر</string>
+    <string name="menu_add_repo">سەرچاوەیەکی نوێ</string>
+    <string name="menu_launch">کردنەوە</string>
+    <string name="main_menu__latest_apps">دوایین</string>
+    <string name="skip">فەرامۆشکردن</string>
+    <string name="pref_language_default">بنەڕەتی سیستەم</string>
+    <string tools:ignore="UnusedResources" name="category_Development">پەرپێدەران</string>
+    <string tools:ignore="UnusedResources" name="category_Games">یاری</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">گرافیک</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">ئینتەرنێت</string>
+    <string tools:ignore="UnusedResources" name="category_Money">دراو</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">هەمەڕەنگ</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">دۆزەرەوەکان</string>
+    <string tools:ignore="UnusedResources" name="category_Phone_SMS">تەلەفۆن و نامە</string>
+    <string tools:ignore="UnusedResources" name="category_Reading">خوێندنەوە</string>
+    <string tools:ignore="UnusedResources" name="category_Science_Education">زانست و پەروەردە</string>
+    <string tools:ignore="UnusedResources" name="category_Security">پارێزگاری</string>
+    <string tools:ignore="UnusedResources" name="category_Time">کات</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">نووسین</string>
+    <string name="swap_welcome">بەخێربێی بۆ ئێف-درۆید!</string>
+    <string name="swap_dont_show_again">دووبارە پیشانی مەدەرەوە</string>
+    <string name="newPerms">نوێ</string>
+    <string name="notification_action_install">دابەزاندن</string>
+    <string name="menu_share">بڵاوکردنەوە</string>
+    <string name="menu_uninstall">سڕینەوە</string>
+    <string name="menu_upgrade">نوێکردنەوە</string>
+    <string name="menu_install">دابەزاندن</string>
+    <string name="main_menu__swap_nearby">نزیک</string>
+    <string name="main_menu__categories">بەشەکان</string>
+    <string name="details_notinstalled">دانەبەزێنراو</string>
+    <string name="next">دواتر</string>
+    <string name="notification_action_cancel">پاشگەزبونەوە</string>
+    <string name="pref_language">زمان</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">پەیوەستبوەکان</string>
+    <string name="notification_action_update">نوێکردنەوە</string>
+    <string name="app_details">زانیارییەکانی بەرنامە</string>
+    <string name="updates__tts__download_app">داگرتن</string>
+</resources>
