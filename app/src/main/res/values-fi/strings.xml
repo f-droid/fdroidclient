@@ -531,4 +531,6 @@
     <string name="antinsfw">Sovelluksessa on sisältöä, jota ei tulisi julkaista tai näyttää kaikkialla</string>
     <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
     <string name="menu_release_channel_beta">Salli beta-päivitykset</string>
+    <string name="use_ipfs_gateways">Käytä IPFS yhdyskäytäviä</string>
+    <string name="use_ipfs_gateways_summary">Lataa tiedostoja IPFS-mirroreista, jos repo tukee sitä.</string>
 </resources>
