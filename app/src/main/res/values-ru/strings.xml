@@ -141,7 +141,7 @@
     <string name="interval_1w">Проверять обновления еженедельно</string>
     <string name="interval_2w">Проверять обновления каждые 2 недели</string>
     <string name="theme_light">Светлая</string>
-    <string name="theme_dark">Темная</string>
+    <string name="theme_dark">Тёмная</string>
     <string name="unstable_updates">Нестабильные обновления</string>
     <string name="unstable_updates_summary">Предлагать обновления до нестабильных версий</string>
     <string name="pref_language">Язык</string>
@@ -528,7 +528,7 @@
     <string name="send_fdroid_metrics_report">Отправить статистический отчет %s</string>
     <string name="theme_follow_system">Определена системой</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендуется только для экранов OLED.</string>
-    <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
+    <string name="use_pure_black_dark_theme">Использовать абсолютно чёрный фон в тёмной теме</string>
     <string name="banner_no_data_or_wifi">Передача данных или WiFi отключены</string>
     <string name="banner_no_internet">Нет интернета</string>
     <string name="share_apk_error">Не удалось поделиться файлом приложения</string>
