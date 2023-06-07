@@ -529,4 +529,5 @@
     <string name="antinsfw">این کاره محتوایی دارد که نباید عمومی شده یا همه‌حا نمایان باشد</string>
     <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
     <string name="latest__empty_state__upgrading">ارتقا دادن پایگاه داده…</string>
+    <string name="use_ipfs_gateways">استفاده از دروازه IPFS</string>
 </resources>
