@@ -516,4 +516,6 @@
     <string name="antinsfw">此應用可能包含裸露、暴力、色情或冒犯等不適宜公眾場合的內容</string>
     <string name="menu_release_channel_beta">允許測試版更新</string>
     <string name="latest__empty_state__upgrading">正在升級資料庫……</string>
+    <string name="use_ipfs_gateways">使用 IPFS 閘道</string>
+    <string name="use_ipfs_gateways_summary">從 IPFS 鏡像下載檔案（若軟體庫支援）。</string>
 </resources>
