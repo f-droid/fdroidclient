@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="installIncompatible">Aplikacja niezgodna z Twoim urządzeniem, czy zainstalować ją mimo to\?</string>
     <string name="version">Wersja</string>
     <string name="delete">Usuń</string>
@@ -545,9 +545,15 @@
     <string name="antitrack">Śledzenie</string>
     <string name="antinonfreeassets">Niewolne zasoby</string>
     <string name="antiothers">Inne niepożądane funkcje</string>
-    <string name="antinsfw">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
+    <string name="antinsfw">Nieodpowiednie do przeglądania w miejscu pracy</string>
     <string name="menu_release_channel_beta">Zezwalaj na aktualizacje wersji beta</string>
     <string name="latest__empty_state__upgrading">Aktualizowanie bazy danych…</string>
     <string name="use_ipfs_gateways">Używaj bramek IPFS</string>
     <string name="use_ipfs_gateways_summary">Pobieraj pliki z serwerów lustrzanych IPFS, jeśli są obsługiwane przez repozytorium</string>
+    <string name="about_title_basic">O F-Droid Basic</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="antinsfwlist">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
+    <string name="repo_last_update_downloaded">Ostatnia pobrana aktualizacja</string>
+    <string name="warning_target_sdk">Ta aplikacja została skompilowana dla starszej wersji Androida i nie może być aktualizowana automatycznie.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Kompilacje nightly</string>
 </resources>
