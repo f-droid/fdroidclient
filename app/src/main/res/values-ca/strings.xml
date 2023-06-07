@@ -426,8 +426,8 @@
     <string name="repo_exists_add_mirror">Això és una còpia de %1$s, voleu afegir-la com a rèplica?</string>
     <string name="antidisabledalgorithmlist">La signatura de seguretat de l\'aplicació és feble</string>
     <string name="antiknownvulnlist">Aquesta aplicació té un problema de seguretat conegut</string>
-    <string name="show_anti_feature_apps">Inclou aplicacions amb anti-funcions</string>
-    <string name="show_anti_feature_apps_on">Mostra aplicacions que contenen anti-funcions</string>
+    <string name="show_anti_feature_apps">Inclou aplicacions amb «anti-features»</string>
+    <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen «anti-features»</string>
     <string name="force_touch_apps">Inclou aplicacions per pantalla tàctil</string>
     <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tingui</string>
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
