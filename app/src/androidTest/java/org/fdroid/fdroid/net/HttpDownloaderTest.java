@@ -33,7 +33,7 @@ import static org.junit.Assert.fail;
 public class HttpDownloaderTest {
     private static final String TAG = "HttpDownloaderTest";
 
-    private final HttpManager httpManager = new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, null);
+    private final HttpManager httpManager = new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, null, true);
     private static final Collection<Pair<String, String>> URLS;
 
     // https://developer.android.com/reference/javax/net/ssl/SSLContext
