@@ -541,9 +541,15 @@
     <string name="antinonfreeassets">Nesvobodná aktiva</string>
     <string name="antinosource">Zdrojový kód již není dostupný</string>
     <string name="antiothers">Další anti-funkce</string>
-    <string name="antinsfw">Tato aplikace obsahuje obsah, který by neměl bý publikovaný či viditelný kdekoli</string>
+    <string name="antinsfw">Není bezpečné pro práci</string>
     <string name="menu_release_channel_beta">Povolit beta aktualizace</string>
     <string name="latest__empty_state__upgrading">Aktualizace databáze…</string>
     <string name="use_ipfs_gateways">Používat brány IPFS</string>
     <string name="use_ipfs_gateways_summary">Stahovat soubory ze zrcadel IPFS, pokud je repozitář podporuje.</string>
+    <string name="about_title_basic">O aplikaci F-Droid Basic</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="antinsfwlist">Tato aplikace zahrnuje obsah, který by neměl být zveřejňován nebo viditelný na všech místech</string>
+    <string name="warning_target_sdk">Tato aplikace byla sestavena pro starší verzi systému Android a nelze ji automaticky aktualizovat.</string>
+    <string name="repo_last_update_downloaded">Poslední aktualizace stažena</string>
+    <string name="category_Nightly">Nestabilní sestavení</string>
 </resources>

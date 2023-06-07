@@ -542,9 +542,15 @@
     <string name="antinonfreeassets">Невільні засоби</string>
     <string name="antiknownvuln">Відома вразливість</string>
     <string name="antiothers">Інші небажані функції</string>
-    <string name="antinsfw">Цей застосунок містить вміст, який не слід оприлюднювати чи бачити всім</string>
+    <string name="antinsfw">Небезпечно для роботи</string>
     <string name="menu_release_channel_beta">Дозволити бета-оновлення</string>
     <string name="latest__empty_state__upgrading">Оновлення бази даних…</string>
     <string name="use_ipfs_gateways">Використовувати IPFS-шлюзи</string>
     <string name="use_ipfs_gateways_summary">Завантажуйте файли з IPFS-дзеркал, якщо вони підтримуються репозиторієм.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">Про F-Droid Basic</string>
+    <string name="category_Nightly">Збірки Nightly</string>
+    <string name="antinsfwlist">Цей застосунок містить матеріали, які не повинні бути публічними або видимим повсюдно</string>
+    <string name="warning_target_sdk">Цей застосунок створено для старої версії Android і не може оновлюватися автоматично.</string>
+    <string name="repo_last_update_downloaded">Останнє оновлення завантажено</string>
 </resources>

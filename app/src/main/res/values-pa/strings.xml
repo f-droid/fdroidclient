@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_full">ਐਫਡਰਾਇਡ</string>
+    <string name="app_name_full">ਐਫ-ਡਰਾਇਡ</string>
     <string name="SignatureMismatch">ਨਵੇਂ ਸੰਸਕਰਣ ਵਿੱਚ ਪੁਰਾਣੇ ਨਾਲ਼ੋਂ ਇੱਕ ਵੱਖਰੀ ਕੁੰਜੀ ਦੇ ਨਾਲ ਦਸਤਖਤ ਕੀਤੇ ਗਏ ਹਨ. ਨਵਾਂ ਸੰਸਕਰਣ ਇੰਸਟਾਲ ਕਰਨ ਲਈ, ਪੁਰਾਣੇ ਨੂੰ ਪਹਿਲਾਂ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਪਵੇਗਾ। ਕ੍ਰਿਪਾ ਕਰਕੇ ਇਹ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ। (ਯਾਦ ਰੱਖੋ ਕਿ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਨਾਲ ਐਪ ਦੁਆਰਾ ਸਟੋਰ ਕੀਤਾ ਕੋਈ ਵੀ ਅੰਦਰੂਨੀ ਡਾਟਾ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ)</string>
     <string name="installIncompatible">ਐਪ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਫਿਰ ਵੀ ਇੰਸਟਾਲ ਕਰੋ\?</string>
     <string name="version">ਸੰਸਕਰਣ</string>
@@ -151,7 +151,7 @@
     <string name="added_on">%s \'ਤੇ ਸ਼ਾਮਲ ਕੀਤਾ</string>
     <string name="about_version">ਸੰਸਕਰਣ</string>
     <string name="about_site">ਵੈੱਬਸਾਈਟ</string>
-    <string name="about_title_full">F-Droid ਬਾਰੇ</string>
+    <string name="about_title_full">ਐਫ-ਡਰਾਇਡ ਬਾਰੇ</string>
     <string name="app_details">ਐਪ ਵੇਰਵੇ</string>
     <string name="notify_on">ਅੱਪਡੇਟ ਉਪਲਬਧ ਹੋਣ \'ਤੇ ਇੱਕ ਸੂਚਨਾ ਵਿਖਾਓ</string>
     <string name="preference_manage_installed_apps">ਇੰਸਟਾਲ ਐਪਾਂ ਨੂੰ ਮੈਨੇਜ ਕਰੋ</string>
@@ -414,7 +414,7 @@
     <string name="antinonfreeassetslist">ਇਸ ਐਪ ਵਿੱਚ ਗੈਰ-ਮੁਫ਼ਤ ਸੰਪਤੀਆਂ ਸ਼ਾਮਲ ਹਨ</string>
     <string name="antiknownvulnlist">ਇਸ ਐਪ ਵਿੱਚ ਇੱਕ ਜਾਣੀ ਜਾਂਦੀ ਸੁਰੱਖਿਆ ਕਮਜ਼ੋਰੀ ਸ਼ਾਮਲ ਹੈ</string>
     <string name="antinosourcesince">ਸਰੋਤ ਕੋਡ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਕੋਈ ਅੱਪਡੇਟ ਸੰਭਵ ਨਹੀਂ ਹੈ।</string>
-    <string name="antinsfw">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਸ਼ਾਮਲ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਜਾਂ ਹਰ ਜਗ੍ਹਾ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ ਹੈ</string>
+    <string name="antinsfw">ਕੰਮ ਲਈ ਸੁਰੱਖਿਅਤ ਨਹੀਂ</string>
     <string name="display">ਡਿਸਪਲੇ</string>
     <string name="expert">ਮਾਹਰ ਮੋਡ</string>
     <string name="show_incompat_versions">ਅਸੰਗਤ ਸੰਸਕਰਣ ਸ਼ਾਮਲ ਕਰੋ</string>
@@ -531,4 +531,10 @@
     <string name="theme_dark">ਗੂੜ੍ਹਾ</string>
     <string name="use_ipfs_gateways_summary">ਆਈਪੀਐਫਐਸ ਮਿਰਰਾਂ ਤੋਂ ਫਾਈਲਾਂ ਡਾਊਨਲੋਡ ਕਰੋ, ਜੇਕਰ ਰੈਪੋ ਦੁਆਰਾ ਸਮਰਥਿਤ ਹੈ।</string>
     <string name="use_ipfs_gateways">IPFS ਗੇਟਵੇ ਦੀ ਵਰਤੋਂ ਕਰੋ</string>
+    <string name="app_name_basic">ਐਫ-ਡਰਾਇਡ ਬੇਸਿਕ</string>
+    <string name="about_title_basic">ਐਫ-ਡਰਾਇਡ ਬੇਸਿਕ ਬਾਰੇ</string>
+    <string name="repo_last_update_downloaded">ਤਾਜ਼ਾ ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਕੀਤਾ ਗਿਆ</string>
+    <string name="warning_target_sdk">ਇਹ ਐਪ ਐਂਡਰਾਇਡ ਦੇ ਪੁਰਾਣੇ ਸੰਸਕਰਣ ਲਈ ਬਣਾਈ ਗਈ ਸੀ ਅਤੇ ਇਸ ਨੂੰ ਆਪਣੇ-ਆਪ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
+    <string name="antinsfwlist">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਜਾਂ ਹਰ ਥਾਂ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ</string>
+    <string name="category_Nightly">ਨਾਈਟਲੀ ਬਿਲਡਜ਼</string>
 </resources>
