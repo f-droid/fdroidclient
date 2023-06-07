@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta předchozí. Před instalací nové verze je nutné tu předchozí odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
     <string name="installIncompatible">Aplikace není kompatibilní s vaším zařízením – chcete se přesto pokusit o instalaci?</string>
     <string name="version">Verze</string>
@@ -541,9 +541,15 @@
     <string name="antinonfreeassets">Nesvobodná aktiva</string>
     <string name="antinosource">Zdrojový kód již není dostupný</string>
     <string name="antiothers">Další anti-funkce</string>
-    <string name="antinsfw">Tato aplikace obsahuje obsah, který by neměl bý publikovaný či viditelný kdekoli</string>
+    <string name="antinsfw">Není bezpečné pro práci</string>
     <string name="menu_release_channel_beta">Povolit beta aktualizace</string>
     <string name="latest__empty_state__upgrading">Aktualizace databáze…</string>
     <string name="use_ipfs_gateways">Používat brány IPFS</string>
     <string name="use_ipfs_gateways_summary">Stahovat soubory ze zrcadel IPFS, pokud je repozitář podporuje.</string>
+    <string name="about_title_basic">O aplikaci F-Droid Basic</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="antinsfwlist">Tato aplikace zahrnuje obsah, který by neměl být zveřejňován nebo viditelný na všech místech</string>
+    <string name="warning_target_sdk">Tato aplikace byla sestavena pro starší verzi systému Android a nelze ji automaticky aktualizovat.</string>
+    <string name="repo_last_update_downloaded">Poslední aktualizace stažena</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Nestabilní sestavení</string>
 </resources>
