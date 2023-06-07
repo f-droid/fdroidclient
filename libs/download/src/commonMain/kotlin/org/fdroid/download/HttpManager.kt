@@ -53,7 +53,7 @@ public open class HttpManager @JvmOverloads constructor(
     internal companion object {
         val log = KotlinLogging.logger {}
         const val READ_BUFFER = 8 * 1024
-        private const val TIMEOUT_MILLIS_HIGH = 60_000L
+        private const val TIMEOUT_MILLIS_HIGH = 300_000L
     }
 
     private var httpClient = getNewHttpClient(proxyConfig)
