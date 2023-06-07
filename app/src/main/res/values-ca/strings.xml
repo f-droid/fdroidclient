@@ -536,5 +536,7 @@
     <string name="antiothers">Altres anti-característiques</string>
     <string name="antinsfw">El contingut d\'aquesta aplicació pot no ser adequat per divulgar-lo o veure\'l arreu</string>
     <string name="latest__empty_state__upgrading">S\'està actualitzant la base de dades…</string>
-    <string name="menu_release_channel_beta">Permet actualitzar a versions Beta</string>
+    <string name="menu_release_channel_beta">Permet actualitzar a versions beta</string>
+    <string name="use_ipfs_gateways">Utilitza les passarel·les IPFS</string>
+    <string name="use_ipfs_gateways_summary">Baixa els fitxers de les rèpliques IPFS, si el dipòsit ho permet.</string>
 </resources>
