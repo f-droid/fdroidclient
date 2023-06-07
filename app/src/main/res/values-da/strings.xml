@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F-Droid</string>
     <string name="SignatureMismatch">Den nye version er signeret med en anden nøgle end den gamle. Den gamle version skal afinstalleres før den nye version kan installeres. Gør det og forsøg igen. (NB! Afinstallation sletter alle data appen har lagret internt.)</string>
     <string name="installIncompatible">App ikke kompatibel med din enhed. Installer alligevel\?</string>
     <string name="version">Version</string>
@@ -26,7 +25,6 @@
     <string name="repo_error_empty_username">Tomt brugernavn, akkreditiver uændret</string>
     <string name="app_details">Appdetaljer</string>
     <string name="no_such_app">Ingen sådan app fundet.</string>
-    <string name="about_title">Om F-Droid</string>
     <string name="about_version">Version</string>
     <string name="about_site">Hjemmeside</string>
     <string name="about_source">Kildekode</string>

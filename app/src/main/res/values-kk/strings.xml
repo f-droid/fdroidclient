@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">F-Droid</string>
     <string name="by_author_format">%s жасаған</string>
     <string name="use_ipfs_gateways">IPFS шлюздерін қолдану</string>
     <string name="local_repo_name">Сіздің жергілікті репозиторидің атауы</string>
@@ -81,7 +80,6 @@
     <string name="over_wifi">Wi-Fi арқылы</string>
     <string name="over_data">Ұялы байланыс арқылы</string>
     <string name="no_such_app">Мұндай қосымша жоқ.</string>
-    <string name="about_title">F-Droid туралы</string>
     <string name="updates__tts__download_app">Жүктеп алу</string>
     <string name="app_list__name__successfully_installed">%1$s орнатылды</string>
     <string name="menu_ignore_this">Бұл жаңартуды елемеу</string>

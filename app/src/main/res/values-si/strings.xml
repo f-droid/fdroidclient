@@ -102,7 +102,6 @@
     <string tools:ignore="UnusedResources" name="category_Development">සංවර්ධනය</string>
     <string tools:ignore="UnusedResources" name="category_Multimedia">බහුමාධ්ය</string>
     <string name="swap_welcome">F-Droid වෙත සාදරයෙන් පිළිගනිමු!</string>
-    <string name="about_title">F-Droid ගැන</string>
     <string name="antitracklist">මෙම යෙදුම ඔබගේ ක්‍රියාකාරකම් නිරීක්ෂණය කර වාර්තා කරයි</string>
     <string name="warning_no_internet">යාවත්කාලීන කළ නොහැක, ඔබ අන්තර්ජාලයට සම්බන්ධද\?</string>
     <string tools:ignore="UnusedResources" name="category_System">පද්ධතිය</string>

@@ -8,9 +8,7 @@
     <string name="menu_settings">ڕێکخستنەکان</string>
     <string name="menu_manage">سەرچاوەکان</string>
     <string name="preference_manage_installed_apps">ڕێکخستنی بەرنامە دابەزێنراوەکان</string>
-    <string name="app_name">ئێف-درۆید</string>
     <string name="updates">نوێکردنەوەکان</string>
-    <string name="about_title">دەربارەی ئێف-درۆید</string>
     <string name="app_list__name__downloading_in_progress">دادەگرێت %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s دابەزێنرا</string>
     <string name="yes">بەڵێ</string>

@@ -9,7 +9,6 @@
     <string name="menu_add_repo">ახალი რეპოზიტორია</string>
     <string name="back">უკან</string>
     <string name="menu_search">ძებნა</string>
-    <string name="app_name">F-Droid</string>
     <string name="yes">დიახ</string>
     <string name="cancel">გაუქმება</string>
     <string name="menu_settings">პარამეტრები</string>
@@ -19,7 +18,6 @@
     <string name="delete">წაშლა</string>
     <string name="enable_nfc_send">NFC გაგზავნის ჩართვა…</string>
     <string name="cache_downloaded">დაქეშილი აპების დატოვება</string>
-    <string name="about_title">F-Droid-ის შესახებ</string>
     <string name="app_list__name__downloading_in_progress">%1$s-ის გადმოწერა</string>
     <string name="more">მეტი</string>
     <string name="less">ნაკლები</string>

@@ -2,13 +2,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="notification_action_cancel">Nullañ</string>
     <string name="notification_title_summary_install_error">C\'hwited eo bet ar staliadur</string>
-    <string name="app_name">F-Droid</string>
     <string name="updates">Hizivadennoù</string>
     <string name="yes">Ya</string>
     <string name="next">A-heul</string>
     <string name="notification_action_update">Hizivat</string>
     <string name="notification_action_install">Staliañ</string>
-    <string name="about_title">Diwar-benn F-Droid</string>
     <string name="version">Stumm</string>
     <string name="by_author_format">dre %s</string>
     <string name="delete">Dilemel</string>
