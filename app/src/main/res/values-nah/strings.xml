@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="updates">yancuic mochihua</string>
     <string name="ok">Cualli</string>
     <string name="yes">quemma</string>
@@ -24,12 +24,12 @@
     <string name="skip">pancholoa</string>
     <string name="pref_language">Tlahtolcopa</string>
     <string name="pref_language_default">Sistema por defecto</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Tencuiliztli</string>
-    <string tools:ignore="UnusedResources" name="category_Development">acoquitzaliztli</string>
-    <string tools:ignore="UnusedResources" name="category_Games">patolliztli</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">tlapohuateixiptlatiliztli</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Centilnonotzamatlatl</string>
-    <string tools:ignore="UnusedResources" name="category_Money">tomin</string>
+    <string name="category_Connectivity">Tencuiliztli</string>
+    <string name="category_Development">acoquitzaliztli</string>
+    <string name="category_Games">patolliztli</string>
+    <string name="category_Graphics">tlapohuateixiptlatiliztli</string>
+    <string name="category_Internet">Centilnonotzamatlatl</string>
+    <string name="category_Money">tomin</string>
     <string name="repo_details">Tlaltolmelahuapixcalli</string>
     <string name="repo_last_update">zatlatzacuia mochihua yancuic</string>
     <string name="swap_send_fdroid">Titlani F-Droid</string>
@@ -67,18 +67,18 @@
     <string name="warning_no_internet">Ahmo huel mochihua yancuic ¿tehuatzin, ca titencui centilnonotzamatlatl\?</string>
     <string name="unsigned">Ahmo quipia tocatlaliztli</string>
     <string name="unverified">Ahmo tlachicahualli</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Centlacotontli tlaixiptlayotl ihuan amatlacuiloli</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Acalhuia</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Tepoznonotza ihuan amatlacuiloli</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Amapohualiztli</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Teyolmachtiliztli toltecayotl</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Tlacaconemiliztli</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Cahuitl</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Tlacuilolli</string>
+    <string name="category_Multimedia">Centlacotontli tlaixiptlayotl ihuan amatlacuiloli</string>
+    <string name="category_Navigation">Acalhuia</string>
+    <string name="category_Phone_SMS">Tepoznonotza ihuan amatlacuiloli</string>
+    <string name="category_Reading">Amapohualiztli</string>
+    <string name="category_Science_Education">Teyolmachtiliztli toltecayotl</string>
+    <string name="category_Security">Tlacaconemiliztli</string>
+    <string name="category_Time">Cahuitl</string>
+    <string name="category_Writing">Tlacuilolli</string>
     <string name="not_on_same_wifi">¡Motepoznonotza ahmo ca ipan cenneneuhqui Wi-Fi otitlali! Ximoehecoa tencui inin matlatl:%s</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Momotlaliztli ihuan Pacayeliztli</string>
-    <string tools:ignore="UnusedResources" name="category_System">tlatecpanatlanechicolli</string>
+    <string name="category_Sports_Health">Momotlaliztli ihuan Pacayeliztli</string>
+    <string name="category_System">tlatecpanatlanechicolli</string>
     <string name="swap_welcome">¡Ma ximopanoltica F-Droid!</string>
     <string name="swap_dont_show_again">Ahmo xinechititia occepa</string>
     <string name="newPerms">Yancuic</string>

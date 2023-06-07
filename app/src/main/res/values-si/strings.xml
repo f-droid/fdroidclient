@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="menu_uninstall">අස්ථාපනය කරන්න</string>
     <string name="menu_install">ස්ථාපනය කරන්න</string>
     <string name="menu_share">බෙදාගන්න</string>
@@ -55,16 +55,16 @@
     <string name="app_details">යෙදුම් විස්තර</string>
     <string name="menu_add_repo">නව ගබඩාව</string>
     <string name="preference_manage_installed_apps">ස්ථාපිත යෙදුම් කළමනාකරණය කරන්න</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">දුරකථන සහ කෙටි පණිවිඩ සේවාව</string>
+    <string name="category_Phone_SMS">දුරකථන සහ කෙටි පණිවිඩ සේවාව</string>
     <string name="notification_action_install">ස්ථාපනය කරන්න</string>
     <string name="repo_last_update">අවසාන යාවත්කාලීන කිරීම</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">ග්රැෆික්ස්</string>
-    <string tools:ignore="UnusedResources" name="category_Money">මුදල</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">සංචලනය</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">කියවීම</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">විද්‍යාව සහ අධ්‍යාපනය</string>
-    <string tools:ignore="UnusedResources" name="category_Security">ආරක්ෂාව</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">ක්‍රීඩා සහ සෞඛ්‍ය</string>
+    <string name="category_Graphics">ග්රැෆික්ස්</string>
+    <string name="category_Money">මුදල</string>
+    <string name="category_Navigation">සංචලනය</string>
+    <string name="category_Reading">කියවීම</string>
+    <string name="category_Science_Education">විද්‍යාව සහ අධ්‍යාපනය</string>
+    <string name="category_Security">ආරක්ෂාව</string>
+    <string name="category_Sports_Health">ක්‍රීඩා සහ සෞඛ්‍ය</string>
     <string name="crash_dialog_title">F-Droid බිඳ වැටී ඇත</string>
     <string name="notification_title_single_update_available">යාවත්කාලීන අනුවාදය තිබේ</string>
     <string name="notification_action_update">යාවත්කාලීන කරන්න</string>
@@ -94,17 +94,17 @@
     <string name="menu_manage">ගබඩා</string>
     <string name="menu_upgrade">යාවත්කාලීන කරන්න</string>
     <string name="details_notinstalled">ස්ථාපනය කර නැත</string>
-    <string tools:ignore="UnusedResources" name="category_Time">කාලය</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">ලේඛන</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">සම්බන්ධතාවය</string>
+    <string name="category_Time">කාලය</string>
+    <string name="category_Writing">ලේඛන</string>
+    <string name="category_Connectivity">සම්බන්ධතාවය</string>
     <string name="main_menu__categories">කාණ්ඩ</string>
     <string name="pref_language_default">පද්ධති පෙරනිමිය</string>
-    <string tools:ignore="UnusedResources" name="category_Development">සංවර්ධනය</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">බහුමාධ්ය</string>
+    <string name="category_Development">සංවර්ධනය</string>
+    <string name="category_Multimedia">බහුමාධ්ය</string>
     <string name="swap_welcome">F-Droid වෙත සාදරයෙන් පිළිගනිමු!</string>
     <string name="antitracklist">මෙම යෙදුම ඔබගේ ක්‍රියාකාරකම් නිරීක්ෂණය කර වාර්තා කරයි</string>
     <string name="warning_no_internet">යාවත්කාලීන කළ නොහැක, ඔබ අන්තර්ජාලයට සම්බන්ධද\?</string>
-    <string tools:ignore="UnusedResources" name="category_System">පද්ධතිය</string>
+    <string name="category_System">පද්ධතිය</string>
     <string name="crash_dialog_text">යෙදුම නතර කිරීමට බල කරමින් අනපේක්ෂිත දෝෂයක් සිදු විය. ගැටලුව විසඳා ගැනීමට උදවු කිරීමට විස්තර ඊමේල් කිරීමට ඔබ කැමතිද\?</string>
     <string name="not_on_same_wifi">ඔබගේ උපාංගය ඔබ දැන් එක් කළ ස්ථානීය ගබඩාව හා සමාන Wi-Fi මත නොවේ! මෙම ජාලයට සම්බන්ධ වීමට උත්සාහ කරන්න: %s</string>
     <string name="prompt_to_send_crash_reports_summary">බිඳ වැටීම් පිළිබඳ දත්ත රැස් කර ඒවා සංවර්ධකයා වෙත යැවීමට ඉල්ලා සිටින්න</string>

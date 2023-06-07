@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="no">არა</string>
     <string name="ok">დიახ</string>
     <string name="menu_launch">გახსნა</string>
@@ -28,14 +28,14 @@
     <string name="skip">გამოტოვება</string>
     <string name="unverified">შეუმოწმებელი</string>
     <string name="repo_last_update">ბოლო განახლება</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">შეერთება</string>
+    <string name="category_Connectivity">შეერთება</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">ნავიგაცია</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">ტელეფონი &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">კითხვა</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">სპორტი</string>
-    <string tools:ignore="UnusedResources" name="category_System">სისტემა</string>
-    <string tools:ignore="UnusedResources" name="category_Time">დრო</string>
+    <string name="category_Navigation">ნავიგაცია</string>
+    <string name="category_Phone_SMS">ტელეფონი &amp; SMS</string>
+    <string name="category_Reading">კითხვა</string>
+    <string name="category_Sports_Health">სპორტი</string>
+    <string name="category_System">სისტემა</string>
+    <string name="category_Time">დრო</string>
     <string name="newPerms">ახალი</string>
     <string name="crash_dialog_title">F-Droid-ის შეცდომა</string>
     <string name="notification_action_update">განახლება</string>
@@ -45,20 +45,20 @@
     <string name="main_menu__categories">კატეგორიები</string>
     <string name="preference_manage_installed_apps">დაყენებული აპების მართვა</string>
     <string name="pref_language">ენა</string>
-    <string tools:ignore="UnusedResources" name="category_Security">უსაფრთხოება</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">ჩაწერა</string>
+    <string name="category_Security">უსაფრთხოება</string>
+    <string name="category_Writing">ჩაწერა</string>
     <string name="swap_dont_show_again">აღარ მაჩვენო</string>
     <string name="details_notinstalled">დაყენებული არაა</string>
     <string name="pref_language_default">სისტემის ნაგულისხმები</string>
-    <string tools:ignore="UnusedResources" name="category_Development">პროგრამირება</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">გრაფიკა</string>
-    <string tools:ignore="UnusedResources" name="category_Money">ფული</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">ინერნეტი</string>
-    <string tools:ignore="UnusedResources" name="category_Games">თამაშები</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">მულტიმედია</string>
+    <string name="category_Development">პროგრამირება</string>
+    <string name="category_Graphics">გრაფიკა</string>
+    <string name="category_Money">ფული</string>
+    <string name="category_Internet">ინერნეტი</string>
+    <string name="category_Games">თამაშები</string>
+    <string name="category_Multimedia">მულტიმედია</string>
     <string name="swap_welcome">მოგესალმებით F-Droid-ში!</string>
     <string name="notification_action_install">დაყენება</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">მეცნიერება &amp; განათლება</string>
+    <string name="category_Science_Education">მეცნიერება &amp; განათლება</string>
     <string name="app_details">აპის დეტალები</string>
     <string name="app_list__name__successfully_installed">%1$s დაყენებულია</string>
     <string name="unsigned">ხელმოწერის გარეშე</string>

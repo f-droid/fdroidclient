@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="by_author_format">%s жасаған</string>
     <string name="use_ipfs_gateways">IPFS шлюздерін қолдану</string>
     <string name="local_repo_name">Сіздің жергілікті репозиторидің атауы</string>
@@ -25,13 +25,13 @@
     <string name="display">Көрініс</string>
     <string name="try_again">Қайталап көріңіз</string>
     <string name="useTor">Tor қолдану</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Байланыс</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Графика</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Навигация</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Телефон мен SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Мультимедиа</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Білім мен ғылым</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Спорт пен денсаулық</string>
+    <string name="category_Connectivity">Байланыс</string>
+    <string name="category_Graphics">Графика</string>
+    <string name="category_Navigation">Навигация</string>
+    <string name="category_Phone_SMS">Телефон мен SMS</string>
+    <string name="category_Multimedia">Мультимедиа</string>
+    <string name="category_Science_Education">Білім мен ғылым</string>
+    <string name="category_Sports_Health">Спорт пен денсаулық</string>
     <string name="keep_hour">1 сағат</string>
     <string name="keep_day">1 күн</string>
     <string name="keep_week">1 апта</string>
@@ -68,8 +68,8 @@
     <string name="repo_num_apps">Қосымшалар саны</string>
     <string name="unknown">Белгісіз</string>
     <string name="pref_language">Тіл</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Қауіпсіздік</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Ойындар</string>
+    <string name="category_Security">Қауіпсіздік</string>
+    <string name="category_Games">Ойындар</string>
     <string name="swap_scan_qr">QR-код</string>
     <string name="swap_welcome">F-Droid-қа қош келдіңіз!</string>
     <string name="keep_year">1 жыл</string>
@@ -83,9 +83,9 @@
     <string name="updates__tts__download_app">Жүктеп алу</string>
     <string name="app_list__name__successfully_installed">%1$s орнатылды</string>
     <string name="menu_ignore_this">Бұл жаңартуды елемеу</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Интернет</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Әзірлеу</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Қаржы</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Оқу</string>
-    <string tools:ignore="UnusedResources" name="category_System">Жүйе</string>
+    <string name="category_Internet">Интернет</string>
+    <string name="category_Development">Әзірлеу</string>
+    <string name="category_Money">Қаржы</string>
+    <string name="category_Reading">Оқу</string>
+    <string name="category_System">Жүйе</string>
 </resources>
