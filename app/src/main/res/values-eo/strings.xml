@@ -6,7 +6,7 @@
     <string name="other">Aliaj</string>
     <string name="notify">Montri disponeblajn ĝisdatigojn</string>
     <string name="notify_on">Sciigi kiam ĝisdatigoj estas disponeblaj</string>
-    <string name="app_details">Aplikaĵaj detaloj</string>
+    <string name="app_details">Detaloj de la aplikaĵo</string>
     <string name="no_such_app">Neniu aplikaĵo trovita.</string>
     <string name="about_title">Pri F-Droid</string>
     <string name="about_site">Retejo</string>
@@ -27,7 +27,7 @@
     <string name="menu_manage">Deponejoj</string>
     <string name="menu_search">Serĉi</string>
     <string name="menu_add_repo">Nova deponejo</string>
-    <string name="menu_launch">Ekigi</string>
+    <string name="menu_launch">Komenci</string>
     <string name="menu_share">Kunhavigi</string>
     <string name="menu_install">Instali</string>
     <string name="menu_uninstall">Malinstali</string>
@@ -57,7 +57,7 @@
     <string name="linking_apks">Ligado de APK al la deponejo…</string>
     <string name="copying_icons">Kopiado de aplikaĵ-emblemoj al la deponejo…</string>
     <string name="icon">Emblemo</string>
-    <string name="next">Sekvi</string>
+    <string name="next">Sekven</string>
     <string name="skip">Preterpasi</string>
     <string name="no_permissions">Sen permesoj</string>
     <string name="theme">Etoso</string>
@@ -74,7 +74,7 @@
     <string name="category_Development">Programado</string>
     <string name="category_Games">Ludoj</string>
     <string name="category_Internet">Interreto</string>
-    <string name="category_Multimedia">Plurmedioj</string>
+    <string name="category_Multimedia">Plurmedio</string>
     <string name="category_Navigation">Navigado</string>
     <string name="category_Phone_SMS">Telefono k SMS</string>
     <string name="category_Reading">Legado</string>
@@ -86,11 +86,11 @@
     <string name="open_qr_code_scanner">Malfermi QR-kodan skanilon</string>
     <string name="swap_welcome">Bonvenon al F-Droid!</string>
     <string name="app_name">F-Droid</string>
-    <string name="installIncompatible">Aplikaĵo nekongruas kun via aparato, ĉu instali ĝin malgraŭ tio?</string>
+    <string name="installIncompatible">Aplikaĵo estas nekongrua kun via aparato, ĉu instali ĝin malgraŭ tio\?</string>
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Ofteco de aŭtomataj ĝisdatigoj</string>
-    <string name="SignatureMismatch">La nova versio estas subskribita per malsama ŝlosilo. Por instali la novan version, la malnova devas esti malinstalita unue. Malinstalu la malnovan version kaj reprovu. (Estu konscia, ke malinstalo forigos ĉiujn internajn datumojn konservitajn de la aplikaĵo.)</string>
-    <string name="enable_nfc_send">Aktivigi sendadon tra NFC…</string>
+    <string name="SignatureMismatch">La nova versio estas subskribita per malsama ŝlosilo. Por instali la novan version, oni devas antaŭe malinstali la malnovan ion. Malinstalu la malnovan version kaj reprovu. (Konsciu, ke malinstalo forigos ĉiujn internajn datumojn konservitajn de la aplikaĵo)</string>
+    <string name="enable_nfc_send">Aktivigi sendadon per NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
@@ -202,7 +202,7 @@
     <string name="swap_active_hotspot">%1$s (via retkaptejo)</string>
     <string name="swap_switch_to_wifi">Tuŝu por ŝanĝi al vifio</string>
     <string name="swap_confirm_connect">Ĉu vi volas elŝuti aplikaĵojn el %1$s nun?</string>
-    <string name="swap_dont_show_again">Ne montri ĉi tion denove</string>
+    <string name="swap_dont_show_again">Ne montri ree</string>
     <string name="swap_scan_or_type_url">Unu persono devas skani la kodon aŭ enigi ligilon de la aliulo en la ret‑foliumilon.</string>
     <string name="swap_choose_apps">Elekti aplikaĵojn</string>
     <string name="swap_scan_qr">QR-kodon</string>
@@ -250,9 +250,7 @@
     <string name="theme_light">Hela</string>
     <string name="theme_dark">Malhela</string>
     <string name="crash_dialog_title">F-Droid kolapsis</string>
-    <string name="crash_dialog_text">Senatenda eraro okazis kaj devigis aplikaĵon halti. Ĉu vi volas retmesaĝi detalojn
-        por helpi ripari la eraron?
-    </string>
+    <string name="crash_dialog_text">Neatendita eraro okazis kaj devigis aplikaĵon halti. Ĉu vi volas retpoŝti la detalojn por helpi ripari la eraron\?</string>
     <string name="crash_dialog_comment_prompt">Vi povas aldoni ekstrajn informojn kaj komentojn tien ĉi:</string>
     <string name="useTor">Uzi Tor</string>
     <string name="useTorSummary">Devigi elŝuti per la Tor-reto por plibonigi privatecon, postulas Orbot</string>
@@ -277,12 +275,12 @@
     <string name="update_auto_install_summary">Elŝuti kaj instali ĝisdatigojn de aplikaĵoj fone, montrante sciigon</string>
     <string name="keep_install_history">Konservi historion de instaladoj</string>
     <string name="keep_install_history_summary">Memori historion de instaladoj kaj malinstaladoj en privata konservejo</string>
-    <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita kun la interreto\?</string>
+    <string name="warning_no_internet">Ne povas ĝisdatigi, ĉu vi estas konektita al la interreto\?</string>
     <string name="versions">Versioj</string>
     <string name="app_details_donate_prompt_unknown_author">Bonvolu aĉeti kafon por programistoj de %1$s!</string>
     <string name="app_details_donate_prompt">%1$s estas kreita de %2$s. Bonvolu aĉeti kafon por programistoj!</string>
     <string name="repositories_summary">Aldoni pliajn fontojn de aplikaĵoj</string>
-    <string name="notification_title_single_update_available">Disponebla ĝisdatigo</string>
+    <string name="notification_title_single_update_available">Ĝisdatigo estas disponebla</string>
     <string name="notification_title_single_ready_to_install">Instalpreta</string>
     <string name="notification_title_single_ready_to_install_update">Ĝisdatigo preta por instali</string>
     <string name="notification_title_single_install_error">Instalado fiaskis</string>
@@ -297,14 +295,14 @@
     <string name="notification_title_summary_ready_to_install_update">Ĝisdatigo preta por instali</string>
     <string name="notification_title_summary_installing">Instalado</string>
     <string name="notification_title_summary_installed">Instalado sukcesis</string>
-    <string name="notification_title_summary_install_error">Instalado fiaskis</string>
+    <string name="notification_title_summary_install_error">Instalado malsukcesis</string>
     <string name="notification_action_update">Ĝisdatigi</string>
     <string name="notification_action_cancel">Nuligi</string>
     <string name="notification_action_install">Instali</string>
     <string name="app_version_x_available">Versio %1$s disponebla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="clear_search">Forviŝi serĉon</string>
-    <string name="main_menu__latest_apps">Novaj</string>
+    <string name="main_menu__latest_apps">Novaĵoj</string>
     <string name="main_menu__categories">Kategorioj</string>
     <string name="main_menu__swap_nearby">Proksime</string>
     <plurals name="button_view_all_apps_in_category">
@@ -341,7 +339,7 @@
         <item quantity="one">Ĝisdatigita antaŭ %1$d tago</item>
         <item quantity="other">Ĝisdatigita antaŭ %1$d tagoj</item>
     </plurals>
-    <string name="app_list__name__successfully_installed">%1$s instalita</string>
+    <string name="app_list__name__successfully_installed">%1$s estas instalita</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!
     </string>
     <string name="nearby_splash__find_people_button">Trovi proksimajn ulojn</string>
@@ -418,7 +416,7 @@
     <string name="panic_hide_warning_message">Post aktivigi la panikan butonon, %1$s estos forigita de la aplikaĵlanĉilo. Por restarigi ĝin, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
     <string name="hiding_calculator">Kalkulilo</string>
     <string name="hiding_dialog_title">Kaŝi %s nun</string>
-    <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo\? Por restarigi la aplikaĵon %1$s, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
+    <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo\? Nur tajpi “%2$d” en la ŝajn‑aplikaĵo %3$s restarigos ĝin.</string>
     <string name="hiding_dialog_warning">Averto: ĉiu ligilo ĉe la hejmekrano ankaŭ estos forigita kaj devas esti realdonita permane.</string>
     <string name="hide_on_long_search_press_title">Kaŝi per serĉ-butono</string>
     <string name="hide_on_long_search_press_summary">Kaŝi la aplikaĵon per longe premi la serĉ-butonon</string>
