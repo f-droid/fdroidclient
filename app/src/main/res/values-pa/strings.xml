@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">ਐਫ-ਡਰਾਇਡ</string>
     <string name="SignatureMismatch">ਨਵੇਂ ਸੰਸਕਰਣ ਵਿੱਚ ਪੁਰਾਣੇ ਨਾਲ਼ੋਂ ਇੱਕ ਵੱਖਰੀ ਕੁੰਜੀ ਦੇ ਨਾਲ ਦਸਤਖਤ ਕੀਤੇ ਗਏ ਹਨ. ਨਵਾਂ ਸੰਸਕਰਣ ਇੰਸਟਾਲ ਕਰਨ ਲਈ, ਪੁਰਾਣੇ ਨੂੰ ਪਹਿਲਾਂ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਪਵੇਗਾ। ਕ੍ਰਿਪਾ ਕਰਕੇ ਇਹ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ। (ਯਾਦ ਰੱਖੋ ਕਿ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਨਾਲ ਐਪ ਦੁਆਰਾ ਸਟੋਰ ਕੀਤਾ ਕੋਈ ਵੀ ਅੰਦਰੂਨੀ ਡਾਟਾ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ)</string>
     <string name="installIncompatible">ਐਪ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਨਾਲ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ, ਫਿਰ ਵੀ ਇੰਸਟਾਲ ਕਰੋ\?</string>
@@ -536,5 +536,5 @@
     <string name="repo_last_update_downloaded">ਤਾਜ਼ਾ ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਕੀਤਾ ਗਿਆ</string>
     <string name="warning_target_sdk">ਇਹ ਐਪ ਐਂਡਰਾਇਡ ਦੇ ਪੁਰਾਣੇ ਸੰਸਕਰਣ ਲਈ ਬਣਾਈ ਗਈ ਸੀ ਅਤੇ ਇਸ ਨੂੰ ਆਪਣੇ-ਆਪ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
     <string name="antinsfwlist">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਜਾਂ ਹਰ ਥਾਂ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">ਨਾਈਟਲੀ ਬਿਲਡਜ਼</string>
+    <string name="category_Nightly">ਨਾਈਟਲੀ ਬਿਲਡਜ਼</string>
 </resources>

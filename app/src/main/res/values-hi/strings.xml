@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="delete">डिलीट करें</string>
     <string name="enable_nfc_send">NFC ‘द्वारा भेजे’ को सक्षम करें …</string>
     <string name="version">संस्करण</string>
@@ -536,5 +536,5 @@
     <string name="app_name_basic">एफ-ड्रॉइड बेसिक</string>
     <string name="antinsfwlist">इस एप्लिकेशन में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
     <string name="warning_target_sdk">यह एप्लिकेशन Android के पुराने संस्करण के लिए बनाया गया था और स्वचालित रूप से अपडेट नहीं किया जा सकता है।</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">नाईटली संस्करण</string>
+    <string name="category_Nightly">नाईटली संस्करण</string>
 </resources>

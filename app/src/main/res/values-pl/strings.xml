@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="installIncompatible">Aplikacja niezgodna z Twoim urządzeniem, czy zainstalować ją mimo to\?</string>
     <string name="version">Wersja</string>
     <string name="delete">Usuń</string>
@@ -555,5 +555,5 @@
     <string name="antinsfwlist">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
     <string name="repo_last_update_downloaded">Ostatnia pobrana aktualizacja</string>
     <string name="warning_target_sdk">Ta aplikacja została skompilowana dla starszej wersji Androida i nie może być aktualizowana automatycznie.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Kompilacje nightly</string>
+    <string name="category_Nightly">Kompilacje nightly</string>
 </resources>
