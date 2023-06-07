@@ -1,0 +1,7 @@
+A letöltési, indexelési és adatbázist érintő kódok teljes modernizálása. Gyorsabb és megbízhatóbb, miközben kevesebb sávszélességet használ. Számos összeomlást és régóta fennálló hibát javít.
+
+* Jobban működik a kevesebb memóriával rendelkező eszközökön.
+
+* A következő jegyek javítása: #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Új nyelv: kantoni (yue)

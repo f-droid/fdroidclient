@@ -1,14 +1,8 @@
-Az F-Droid telepíthető szabad szoftveres alkalmazások katalógusa.
-Az F-Droid kliensalkalmazás könnyűvé teszi az alkalmazások tallózását,
-telepítését és azok frissen tartását az eszközén.
+Az F-Droid telepíthető szabad szoftveres alkalmazások katalógusa. Az F-Droid kliensalkalmazás könnyűvé teszi az alkalmazások tallózását, telepítését és azok frissen tartását az eszközén.
 
-Bármely F-Droiddal kompatibilis tárolóhoz képes kapcsolódni.
-Az alapértelmezett tároló az f-droid.org-on található, és csak valóban
-szabad szoftvereket tartalmaz.
+Bármely F-Droiddal kompatibilis tárolóhoz képes kapcsolódni. Az alapértelmezett tároló az f-droid.org-on található, és csak valóban szabad szoftvereket tartalmaz.
 
-Maga az Android abban az értelemben nyílt, hogy szabadon telepíthet
-APK-kat, ahonnan csak szeretne, de számos oka van annak, hogy az
-F-Droidot használja a szabad alkalmazáskezelőjeként:
+Maga az Android abban az értelemben nyílt, hogy szabadon telepíthet APK-kat, ahonnan csak szeretne, de számos oka van annak, hogy az F-Droidot használja a szabad alkalmazáskezelőjeként:
 
 * Kapjon értesítéseket, ha frissítések érhetők el
 * Válaszható módon töltsön le és frissítsen automatikusan
