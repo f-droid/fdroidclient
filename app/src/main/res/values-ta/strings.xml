@@ -529,4 +529,6 @@
     <string name="antinsfw">தெரியக்கூடா அ பொது கவனத்திற்குக் கொண்டுவரக்கூடா உள்ளடக்கங்களை இச்செயலி கொண்டுள்ளது</string>
     <string name="menu_release_channel_beta">பீட்டா புதுப்பிப்புகளை அனுமதிக்கவும்</string>
     <string name="latest__empty_state__upgrading">தரவுத்தளத்தை மேம்படுத்துகிறது…</string>
+    <string name="use_ipfs_gateways_summary">களஞ்சியத்தால் ஆதரிக்கப்பட்டால், IPFS கண்ணாடியிலிருந்து கோப்புகளைப் பதிவிறக்கவும்.</string>
+    <string name="use_ipfs_gateways">IPFS நுழைவாயில்களைப் பயன்படுத்தவும்</string>
 </resources>
