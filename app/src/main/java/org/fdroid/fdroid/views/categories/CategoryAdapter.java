@@ -3,6 +3,12 @@ package org.fdroid.fdroid.views.categories;
 import android.util.Log;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
+
 import org.fdroid.database.AppOverviewItem;
 import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
@@ -13,12 +19,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
-
 public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
 
     private final AppCompatActivity activity;
@@ -28,12 +28,12 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
     public CategoryAdapter(AppCompatActivity activity, FDroidDatabase db) {
         super(new DiffUtil.ItemCallback<Category>() {
             @Override
-            public boolean areItemsTheSame(Category oldItem, Category newItem) {
+            public boolean areItemsTheSame(@NonNull Category oldItem, @NonNull Category newItem) {
                 return oldItem.equals(newItem);
             }
 
             @Override
-            public boolean areContentsTheSame(Category oldItem, Category newItem) {
+            public boolean areContentsTheSame(@NonNull Category oldItem, @NonNull Category newItem) {
                 return false;
             }
         });
@@ -57,7 +57,7 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
 
     public void setCategories(@NonNull List<Category> categories) {
         submitList(categories);
-        for (Category category: categories) {
+        for (Category category : categories) {
             int num = CategoryController.NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW;
             // we are getting the LiveData here and not in the ViewHolder, so the data gets cached here
             // this prevents reloads when scrolling

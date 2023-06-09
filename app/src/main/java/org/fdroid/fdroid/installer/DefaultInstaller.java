@@ -27,11 +27,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 
+import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
-
-import androidx.annotation.NonNull;
 
 /**
  * The default installer of F-Droid. It uses the normal Intents APIs of Android

@@ -1,6 +1,11 @@
 package org.fdroid.fdroid.work;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
@@ -15,11 +20,6 @@ import org.robolectric.RobolectricTestRunner;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Test non-time-based cache deletion methods.  Robolectric is lacking full

@@ -61,7 +61,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
     // these are never set by the Apk/package index metadata
     public String repoAddress;
     public String canonicalRepoAddress;
-    public SanitizedFile installedFile; // the .apk file on this device's filesystem
+    private SanitizedFile installedFile; // the .apk file on this device's filesystem
     public boolean compatible; // True if compatible with the device.
     public long repoId; // the database ID of the repo it comes from
 
@@ -71,15 +71,12 @@ public class Apk implements Comparable<Apk>, Parcelable {
     public String versionName;
     public long versionCode;
     public long size; // Size in bytes - 0 means we don't know!
-    @NonNull
-    public String hash; // checksum of the APK, in lowercase hex
-    public String hashType;
     public int minSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int targetSdkVersion = SDK_VERSION_MIN_VALUE; // 0 if unknown
     public int maxSdkVersion = SDK_VERSION_MAX_VALUE; // "infinity" if not set
-    public String obbMainFile;
+    private String obbMainFile;
     public String obbMainFileSha256;
-    public String obbPatchFile;
+    private String obbPatchFile;
     public String obbPatchFileSha256;
     public Date added;
     public List<String> releaseChannels;
@@ -105,7 +102,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
      *     <li><code>keytool -list -v -keystore keystore.jks</code></li>
      * </ul>
      *
-     * @see <a href="https://source.android.com/security/apksigning/v3#apk-signature-scheme-v3-block"><tt>signer</tt> in APK Signature Scheme v3</a>
+     * @see
+     * <a href="https://source.android.com/security/apksigning/v3#apk-signature-scheme-v3-block"><tt>signer</tt> in APK Signature Scheme v3</a>
      */
     public String signer;
 
@@ -123,15 +121,15 @@ public class Apk implements Comparable<Apk>, Parcelable {
      * build - otherwise it's built from source.
      */
     @Nullable
-    public String srcname;
+    private String srcname;
 
     public String[] incompatibleReasons;
 
-    public String[] antiFeatures;
+    String[] antiFeatures;
 
-    public Map<String, String> antiFeatureReasons = new HashMap<>();
+    Map<String, String> antiFeatureReasons = new HashMap<>();
 
-    public String whatsNew;
+    String whatsNew;
 
     public Apk() {
     }
@@ -191,7 +189,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         antiFeatures = v.getAntiFeatureKeys().toArray(new String[0]);
         LocaleListCompat localeList = LocaleListCompat.getDefault();
         antiFeatureReasons.clear();
-        for (String antiFeature: antiFeatures) {
+        for (String antiFeature : antiFeatures) {
             antiFeatureReasons.put(antiFeature, v.getAntiFeatureReason(antiFeature, localeList));
         }
         whatsNew = v.getWhatsNew(App.getLocales());
@@ -204,7 +202,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
             incompatibleReasons = null;
         } else {
             compatible = false;
-            incompatibleReasons = reasons.toArray(new String[reasons.size()]);
+            incompatibleReasons = reasons.toArray(new String[0]);
         }
     }
 
@@ -385,7 +383,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
     /**
      * Set the Package Name property while ensuring it is sanitized.
      */
-    void setPackageName(String packageName) {
+    private void setPackageName(String packageName) {
         if (Utils.isSafePackageName(packageName)) {
             this.packageName = packageName;
         } else {
@@ -405,7 +403,8 @@ public class Apk implements Comparable<Apk>, Parcelable {
      * so they are not included here.
      *
      * @see Manifest.permission#READ_EXTERNAL_STORAGE
-     * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/data/etc/platform.xml">platform.xml</a>
+     * @see
+     * <a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/data/etc/platform.xml">platform.xml</a>
      */
     @VisibleForTesting
     public void setRequestedPermissions(List<PermissionV2> permissions, int minSdk) {
@@ -511,9 +510,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
             path = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_MOVIES);
         } else if ("zip".equals(fileExtension)) {
-            try {
-                File cachedFile = ApkCache.getApkDownloadPath(context, this.getCanonicalUrl());
-                ZipFile zipFile = new ZipFile(cachedFile);
+            try (ZipFile zipFile = new ZipFile(ApkCache.getApkDownloadPath(context, this.getCanonicalUrl()))) {
                 if (zipFile.size() == 1) {
                     String name = zipFile.entries().nextElement().getName();
                     if (name != null && name.endsWith(".obf")) {

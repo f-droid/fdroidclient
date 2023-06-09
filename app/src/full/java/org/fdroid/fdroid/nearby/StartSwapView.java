@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.nearby;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,13 +13,16 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -32,9 +34,6 @@ import org.fdroid.fdroid.nearby.peers.Peer;
 
 import java.util.ArrayList;
 
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
 
 @SuppressWarnings("LineLength")
@@ -131,12 +130,7 @@ public class StartSwapView extends SwapView {
     private void uiInitButtons() {
         MaterialButton sendFDroidButton = findViewById(R.id.btn_send_fdroid);
         sendFDroidButton.setEllipsize(TextUtils.TruncateAt.END);
-        findViewById(R.id.btn_send_fdroid).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().sendFDroid();
-            }
-        });
+        findViewById(R.id.btn_send_fdroid).setOnClickListener(v -> getActivity().sendFDroid());
     }
 
     /**
@@ -160,12 +154,9 @@ public class StartSwapView extends SwapView {
             }
         }
 
-        peopleNearbyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Peer peer = peopleNearbyAdapter.getItem(position);
-                onPeerSelected(peer);
-            }
+        peopleNearbyList.setOnItemClickListener((parent, view, position, id) -> {
+            Peer peer = peopleNearbyAdapter.getItem(position);
+            onPeerSelected(peer);
         });
     }
 

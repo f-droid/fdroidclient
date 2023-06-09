@@ -1,11 +1,11 @@
 package org.fdroid.fdroid.nearby;
 
-import android.annotation.TargetApi;
+import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
+
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -27,12 +27,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
@@ -62,19 +71,8 @@ import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
-
-import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
 /**
  * This is the core of the UI for the whole nearby swap experience.  Each
@@ -334,16 +332,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             next.setIcon(drawableResId);
         }
         next.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                sendNext();
-                return true;
-            }
+        next.setOnMenuItemClickListener(item -> {
+            sendNext();
+            return true;
         });
     }
 
-    void sendNext() {
+    private void sendNext() {
         int currentLayoutResId = currentView.getLayoutResId();
         switch (currentLayoutResId) {
             case R.layout.swap_select_apps:
@@ -470,36 +465,27 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
     }
 
-    public void promptToSelectWifiNetwork() {
+    private void promptToSelectWifiNetwork() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.swap_join_same_wifi)
                 .setMessage(R.string.swap_join_same_wifi_desc)
-                .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing
-                    }
+                .setNeutralButton(R.string.cancel, (dialog, which) -> {
+                    // Do nothing
                 })
-                .setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
-                        wifiManager.setWifiEnabled(true);
-                        Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
+                .setPositiveButton(R.string.wifi, (dialog, which) -> {
+                    SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
+                    wifiManager.setWifiEnabled(true);
+                    Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 })
-                .setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (Build.VERSION.SDK_INT >= 26) {
-                            showTetheringSettings();
-                        } else if (!Settings.System.canWrite(getBaseContext())) {
-                            requestWriteSettingsPermission();
-                        } else {
-                            setupWifiAP();
-                        }
+                .setNegativeButton(R.string.wifi_ap, (dialog, which) -> {
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        showTetheringSettings();
+                    } else if (!Settings.System.canWrite(getBaseContext())) {
+                        requestWriteSettingsPermission();
+                    } else {
+                        setupWifiAP();
                     }
                 })
                 .create().show();
@@ -1051,12 +1037,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     // TODO: Listen for "Connecting..." state and reflect that in the view too.
     private void setUpJoinWifi() {
-        currentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
-            }
-        });
+        currentView.setOnClickListener(v -> startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK)));
         TextView descriptionView = container.findViewById(R.id.text_description);
         ImageView wifiIcon = container.findViewById(R.id.wifi_icon);
         TextView ssidView = container.findViewById(R.id.wifi_ssid);
@@ -1098,21 +1079,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
         viewWifiNetwork.setOnClickListener(v -> promptToSelectWifiNetwork());
 
-        wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Context context = getApplicationContext();
-                if (isChecked) {
-                    if (wifiApControl != null && wifiApControl.isEnabled()) {
-                        setupWifiAP();
-                    } else {
-                        wifiManager.setWifiEnabled(true);
-                    }
-                    BonjourManager.start(context);
+        wifiSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Context context = getApplicationContext();
+            if (isChecked) {
+                if (wifiApControl != null && wifiApControl.isEnabled()) {
+                    setupWifiAP();
+                } else {
+                    wifiManager.setWifiEnabled(true);
                 }
-                BonjourManager.setVisible(context, isChecked);
-                SwapService.putWifiVisibleUserPreference(isChecked);
+                BonjourManager.start(context);
             }
+            BonjourManager.setVisible(context, isChecked);
+            SwapService.putWifiVisibleUserPreference(isChecked);
         });
 
         scanQrButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));

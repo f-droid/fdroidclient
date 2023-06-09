@@ -7,6 +7,17 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.Transformations;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.fdroid.database.AppOverviewItem;
@@ -26,17 +37,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.Transformations;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * Loads a list of newly added or recently updated apps and displays them to the user.
@@ -74,40 +74,29 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
         layoutManager.setSpanSizeLookup(new LatestAdapter.SpanSizeLookup());
 
-        emptyState = (TextView) latestView.findViewById(R.id.empty_state);
+        emptyState = latestView.findViewById(R.id.empty_state);
 
-        appList = (RecyclerView) latestView.findViewById(R.id.app_list);
+        appList = latestView.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
         appList.setLayoutManager(layoutManager);
         appList.setAdapter(latestAdapter);
 
-        final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) latestView
+        final SwipeRefreshLayout swipeToRefresh = latestView
                 .findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
-        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeToRefresh.setRefreshing(false);
-                UpdateService.updateNow(activity);
-            }
+        swipeToRefresh.setOnRefreshListener(() -> {
+            swipeToRefresh.setRefreshing(false);
+            UpdateService.updateNow(activity);
         });
 
-        FloatingActionButton searchFab = (FloatingActionButton) latestView.findViewById(R.id.fab_search);
-        searchFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(new Intent(activity, AppListActivity.class));
-            }
-        });
-        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (Preferences.get().hideOnLongPressSearch()) {
-                    HidingManager.showHideDialog(activity);
-                    return true;
-                } else {
-                    return false;
-                }
+        FloatingActionButton searchFab = latestView.findViewById(R.id.fab_search);
+        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+        searchFab.setOnLongClickListener(view -> {
+            if (Preferences.get().hideOnLongPressSearch()) {
+                HidingManager.showHideDialog(activity);
+                return true;
+            } else {
+                return false;
             }
         });
     }
@@ -197,8 +186,10 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         for (Repository repo : FDroidApp.getRepoManager(activity).getRepositories()) {
             if (repo.getEnabled()) {
                 repoCount++;
-                if (lastUpdate == null && repo.getLastUpdated() != null) lastUpdate = repo.getLastUpdated();
-                else if (lastUpdate != null && repo.getLastUpdated() != null && repo.getLastUpdated() > lastUpdate) {
+                if (lastUpdate == null && repo.getLastUpdated() != null) {
+                    lastUpdate = repo.getLastUpdated();
+                } else if (lastUpdate != null && repo.getLastUpdated() != null
+                        && repo.getLastUpdated() > lastUpdate) {
                     lastUpdate = repo.getLastUpdated();
                 }
             }

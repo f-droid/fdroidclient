@@ -36,7 +36,7 @@
                 app:srcCompat="@drawable/abc_ic_ab_back_material"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/search"
@@ -52,7 +52,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/clear"
                 app:layout_constraintStart_toEndOf="@+id/back"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/clear"
@@ -62,7 +62,7 @@
                 app:srcCompat="@drawable/ic_clear"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,7 +81,7 @@
         app:layout_constraintBottom_toBottomOf="@id/search_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_card"
-        app:tint="?attr/colorControlNormal"/>
+        app:tint="?attr/colorControlNormal" />
 
     <TextView
         android:id="@+id/hiddenAppNotice"
@@ -98,7 +98,7 @@
         android:drawableStart="@drawable/ic_error"
         android:drawablePadding="4dp"
         android:text="@string/app_list_results_hidden_antifeature_settings"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <!-- Don't center, only show it at the top because a keyboard will usually be shown at the bottom of the screen,
          covering most of this layout. -->
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hiddenAppNotice"
         android:visibility="gone"
         style="@style/AppListEmptyText"
-        android:text="@string/empty_search_available_app_list"/>
+        android:text="@string/empty_search_available_app_list" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/app_list"

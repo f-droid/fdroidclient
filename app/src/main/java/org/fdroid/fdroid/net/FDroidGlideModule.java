@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.NonNull;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
@@ -18,8 +20,6 @@ import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.glide.DownloadRequestLoader;
 import org.fdroid.fdroid.Preferences;
 
-import androidx.annotation.NonNull;
-
 import java.io.InputStream;
 
 /**
@@ -30,15 +30,15 @@ public class FDroidGlideModule extends AppGlideModule {
     @Override
     public void applyOptions(@NonNull Context context, GlideBuilder builder) {
         builder.setDefaultTransitionOptions(Drawable.class,
-                DrawableTransitionOptions.withCrossFade()).setDefaultTransitionOptions(Bitmap.class,
-                BitmapTransitionOptions.withCrossFade())
+                        DrawableTransitionOptions.withCrossFade()).setDefaultTransitionOptions(Bitmap.class,
+                        BitmapTransitionOptions.withCrossFade())
                 .setDefaultRequestOptions(new RequestOptions()
                         .format(DecodeFormat.PREFER_RGB_565)
                         .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed()));
     }
 
     @Override
-    public void registerComponents(@NonNull Context context, @NonNull  Glide glide, Registry registry) {
+    public void registerComponents(@NonNull Context context, @NonNull Glide glide, Registry registry) {
         DownloadRequestLoader.Factory requestLoaderFactory =
                 new DownloadRequestLoader.Factory(DownloaderFactory.HTTP_MANAGER);
         registry.append(DownloadRequest.class, InputStream.class, requestLoaderFactory);

@@ -1,14 +1,20 @@
 package org.fdroid.fdroid.nearby;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import android.util.Log;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Netstat;
 import org.fdroid.fdroid.Utils;
@@ -22,11 +28,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * Test the nearby webserver in the emulator.

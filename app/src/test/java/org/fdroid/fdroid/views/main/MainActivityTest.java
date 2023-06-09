@@ -1,9 +1,9 @@
 package org.fdroid.fdroid.views.main;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+
+import org.junit.Test;
 
 public class MainActivityTest {
 

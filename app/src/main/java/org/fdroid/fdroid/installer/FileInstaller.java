@@ -24,15 +24,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
 
-import androidx.annotation.NonNull;
-
 public class FileInstaller extends Installer {
 
-    public FileInstaller(Context context, @NonNull App app, @NonNull Apk apk) {
+    FileInstaller(Context context, @NonNull App app, @NonNull Apk apk) {
         super(context, app, apk);
     }
 

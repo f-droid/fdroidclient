@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/main_activity_screens"
-        app:labelVisibilityMode="labeled"/>
+        app:labelVisibilityMode="labeled" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_view_pager"

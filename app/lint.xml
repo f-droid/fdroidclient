@@ -1,86 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <!-- TODO bump our targetSdkVersion when we are ready for it -->
-    <issue id="ExpiredTargetSdkVersion" severity="ignore"/>
+    <issue id="ExpiredTargetSdkVersion" severity="ignore" />
 
     <!-- TODO This should be handled as part of an overhaul of Bluetooth swap -->
     <issue id="MissingPermission" severity="">
-      <ignore path="src/full/java/org/fdroid/fdroid/nearby/BluetoothManager.java"/>
-      <ignore path="src/full/java/org/fdroid/fdroid/nearby/SwapWorkflowActivity.java"/>
+        <ignore path="src/full/java/org/fdroid/fdroid/nearby/BluetoothManager.java" />
+        <ignore path="src/full/java/org/fdroid/fdroid/nearby/SwapWorkflowActivity.java" />
     </issue>
 
     <!-- Our translations are crowd-sourced -->
-    <issue id="MissingTranslation" severity="ignore"/>
+    <issue id="MissingTranslation" severity="ignore" />
 
     <!-- to make CI fail on errors until this is fixed
          https://github.com/rtyley/spongycastle/issues/7 -->
-    <issue id="InvalidPackage" severity="warning"/>
+    <issue id="InvalidPackage" severity="warning" />
 
-    <issue id="ImpliedQuantity" severity="error"/>
-    <issue id="DefaultLocale" severity="error"/>
-    <issue id="SimpleDateFormat" severity="error"/>
-    <issue id="NewApi" severity="error"/>
-    <issue id="InlinedApi" severity="error"/>
+    <issue id="ImpliedQuantity" severity="error" />
+    <issue id="DefaultLocale" severity="error" />
+    <issue id="SimpleDateFormat" severity="error" />
+    <issue id="NewApi" severity="error" />
+    <issue id="InlinedApi" severity="error" />
 
     <!-- These are important to us, so promote from warning to error -->
     <issue id="UnusedResources" severity="error">
         <ignore path="src/main/res/drawable/category_**.png" />
-        <ignore path="src/main/res/values/dimens.xml"/>
-        <ignore path="src/main/res/values/styles.xml"/>
-        <ignore path="src/full/res/values/styles.xml"/>
+        <ignore path="src/main/res/values/dimens.xml" />
+        <ignore path="src/main/res/values/styles.xml" />
+        <ignore path="src/full/res/values/styles.xml" />
         <!-- keep a single strings.xml for all build flavors -->
-        <ignore path="src/main/res/values**/strings.xml"/>
+        <ignore path="src/main/res/values**/strings.xml" />
     </issue>
-    <issue id="AppCompatMethod" severity="error"/>
-    <issue id="NestedScrolling" severity="error"/>
-    <issue id="Typos" severity="error"/>
-    <issue id="StringFormatCount" severity="error"/>
-    <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
-    <issue id="GetInstance" severity="error"/>
-    <issue id="PackageManagerGetSignatures" severity="error"/>
-    <issue id="HardwareIds" severity="error"/>
+    <issue id="AppCompatMethod" severity="error" />
+    <issue id="NestedScrolling" severity="error" />
+    <issue id="Typos" severity="error" />
+    <issue id="StringFormatCount" severity="error" />
+    <issue id="UnsafeProtectedBroadcastReceiver" severity="error" />
+    <issue id="GetInstance" severity="error" />
+    <issue id="PackageManagerGetSignatures" severity="error" />
+    <issue id="HardwareIds" severity="error" />
     <issue id="TrustAllX509TrustManager" severity="error">
-      <!-- these come from included libraries -->
-        <ignore path="org/apache/commons/net/ftp/FTPSTrustManager.class"/>
-        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$1.class"/>
-        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$2.class"/>
-        <ignore path="org/apache/commons/net/util/TrustManagerUtils$TrustManager.class"/>
-        <ignore path="\*/bcpkix-jdk15to18-1.71.jar"/>
-        <ignore path="\*/commons-net-3.6.jar"/>
+        <!-- these come from included libraries -->
+        <ignore path="org/apache/commons/net/ftp/FTPSTrustManager.class" />
+        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$1.class" />
+        <ignore path="org/bouncycastle/est/jcajce/JcaJceUtils$2.class" />
+        <ignore path="org/apache/commons/net/util/TrustManagerUtils$TrustManager.class" />
+        <ignore path="\*/bcpkix-jdk15to18-1.71.jar" />
+        <ignore path="\*/commons-net-3.6.jar" />
     </issue>
 
-    <issue id="PluralsCandidate" severity="error"/>
-    <issue id="HardcodedText" severity="error"/>
-    <issue id="RtlCompat" severity="error"/>
-    <issue id="RtlEnabled" severity="error"/>
+    <issue id="PluralsCandidate" severity="error" />
+    <issue id="HardcodedText" severity="error" />
+    <issue id="RtlCompat" severity="error" />
+    <issue id="RtlEnabled" severity="error" />
 
     <!-- both the correct and deprecated locales need to be present for
          them to be recognized on all devices -->
     <issue id="LocaleFolder" severity="error">
-        <ignore path="src/main/res/values-he"/>
-        <ignore path="src/main/res/values-id"/>
+        <ignore path="src/main/res/values-he" />
+        <ignore path="src/main/res/values-id" />
     </issue>
 
     <!-- Weblate doesn't handle these yet: https://github.com/WeblateOrg/weblate/issues/7520 -->
     <issue id="MissingQuantity" severity="error">
-        <ignore path="src/main/res/values-cs"/>
-        <ignore path="src/main/res/values-fr"/>
-        <ignore path="src/main/res/values-lt"/>
-        <ignore path="src/main/res/values-sk"/>
+        <ignore path="src/main/res/values-cs" />
+        <ignore path="src/main/res/values-fr" />
+        <ignore path="src/main/res/values-lt" />
+        <ignore path="src/main/res/values-sk" />
     </issue>
 
     <issue id="SetWorldReadable" severity="error">
-        <ignore path="src/main/java/org/fdroid/fdroid/installer/ApkFileProvider.java"/>
+        <ignore path="src/main/java/org/fdroid/fdroid/installer/ApkFileProvider.java" />
     </issue>
 
     <issue id="ProtectedPermissions" severity="error">
-        <ignore path="src/debug/AndroidManifest.xml"/>
-        <ignore path="src/full/AndroidManifest.xml"/>
+        <ignore path="src/debug/AndroidManifest.xml" />
+        <ignore path="src/full/AndroidManifest.xml" />
     </issue>
 
     <!-- these should be fixed, but it'll be a chunk of work -->
     <issue id="SetTextI18n" severity="error">
-        <ignore path="src/main/java/org/fdroid/fdroid/views/AppDetailsRecyclerViewAdapter.java"/>
-        <ignore path="src/main/java/org/fdroid/fdroid/views/apps/AppListItemController.java"/>
+        <ignore path="src/main/java/org/fdroid/fdroid/views/AppDetailsRecyclerViewAdapter.java" />
+        <ignore path="src/main/java/org/fdroid/fdroid/views/apps/AppListItemController.java" />
     </issue>
 </lint>

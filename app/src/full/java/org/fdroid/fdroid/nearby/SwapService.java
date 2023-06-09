@@ -15,8 +15,14 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.ServiceCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
@@ -49,18 +55,11 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.ServiceCompat;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import cc.mvdan.accesspoint.WifiApControl;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import kotlin.Pair;
 
 /**
  * Central service which manages all of the different moving parts of swap
@@ -396,30 +395,30 @@ public class SwapService extends Service {
     private void askServerToSwapWithUs(final Repository repo) {
         compositeDisposable.add(
                 Completable.fromAction(() -> {
-                    String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
-                    HttpURLConnection conn = null;
-                    try {
-                        URL url = new URL(repo.getAddress().replace("/fdroid/repo", "/request-swap"));
-                        conn = (HttpURLConnection) url.openConnection();
-                        conn.setRequestMethod("POST");
-                        conn.setDoInput(true);
-                        conn.setDoOutput(true);
+                            String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
+                            HttpURLConnection conn = null;
+                            try {
+                                URL url = new URL(repo.getAddress().replace("/fdroid/repo", "/request-swap"));
+                                conn = (HttpURLConnection) url.openConnection();
+                                conn.setRequestMethod("POST");
+                                conn.setDoInput(true);
+                                conn.setDoOutput(true);
 
-                        try (OutputStream outputStream = conn.getOutputStream();
-                             OutputStreamWriter writer = new OutputStreamWriter(outputStream)) {
-                            writer.write("repo=" + swapBackUri);
-                            writer.flush();
-                        }
+                                try (OutputStream outputStream = conn.getOutputStream();
+                                     OutputStreamWriter writer = new OutputStreamWriter(outputStream)) {
+                                    writer.write("repo=" + swapBackUri);
+                                    writer.flush();
+                                }
 
-                        int responseCode = conn.getResponseCode();
-                        Utils.debugLog(TAG, "Asking server at " + repo.getAddress() + " to swap with us in return (by " +
-                                "POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\"): " + responseCode);
-                    } finally {
-                        if (conn != null) {
-                            conn.disconnect();
-                        }
-                    }
-                })
+                                int responseCode = conn.getResponseCode();
+                                Utils.debugLog(TAG, "Asking server at " + repo.getAddress() + " to swap with us in return (by " +
+                                        "POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\"): " + responseCode);
+                            } finally {
+                                if (conn != null) {
+                                    conn.disconnect();
+                                }
+                            }
+                        })
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .onErrorComplete(e -> {
@@ -567,12 +566,7 @@ public class SwapService extends Service {
         }
     }
 
-    private final Preferences.ChangeListener httpsEnabledListener = new Preferences.ChangeListener() {
-        @Override
-        public void onPreferenceChange() {
-            restartWiFiServices();
-        }
-    };
+    private final Preferences.ChangeListener httpsEnabledListener = this::restartWiFiServices;
 
     private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override

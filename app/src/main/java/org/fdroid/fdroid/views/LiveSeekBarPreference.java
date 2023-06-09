@@ -6,10 +6,11 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-
+import androidx.annotation.NonNull;
 import androidx.preference.PreferenceViewHolder;
 import androidx.preference.SeekBarPreference;
+
+import org.fdroid.fdroid.R;
 
 public class LiveSeekBarPreference extends SeekBarPreference {
     private SeekBarLiveUpdater seekBarLiveUpdater;
@@ -37,7 +38,7 @@ public class LiveSeekBarPreference extends SeekBarPreference {
     }
 
     @Override
-    public void onBindViewHolder(final PreferenceViewHolder holder) {
+    public void onBindViewHolder(@NonNull final PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
         View seekBarValue = holder.findViewById(R.id.seekbar_value);
@@ -94,7 +95,7 @@ public class LiveSeekBarPreference extends SeekBarPreference {
         return value;
     }
 
-    public void setSeekBarLiveUpdater(SeekBarLiveUpdater updater) {
+    void setSeekBarLiveUpdater(SeekBarLiveUpdater updater) {
         seekBarLiveUpdater = updater;
     }
 

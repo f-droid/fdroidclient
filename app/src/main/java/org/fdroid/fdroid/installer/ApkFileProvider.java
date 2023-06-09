@@ -25,14 +25,14 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Build;
 
+import androidx.core.content.FileProvider;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
-
-import androidx.core.content.FileProvider;
 
 /**
  * Helper methods for preparing APKs and arbitrary files for installation,
@@ -71,7 +71,7 @@ public class ApkFileProvider extends FileProvider {
      * URI, any other file will always use a {@code file://} URI since F-Droid
      * itself handles their whole installation process.
      */
-    public static Uri getSafeUri(Context context, Uri localApkUri, Apk expectedApk)
+    static Uri getSafeUri(Context context, Uri localApkUri, Apk expectedApk)
             throws IOException {
         File apkFile = new File(localApkUri.getPath());
         SanitizedFile tempApkFile = ApkCache.copyApkFromCacheToFiles(context, apkFile, expectedApk);

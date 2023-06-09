@@ -14,7 +14,9 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.database.Repository;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -30,9 +32,6 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
-
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Manage {@link JmDNS} in a {@link HandlerThread}.  The start process is in

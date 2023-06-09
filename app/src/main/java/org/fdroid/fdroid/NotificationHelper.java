@@ -38,8 +38,8 @@ import java.util.Arrays;
 @SuppressWarnings("LineLength")
 public class NotificationHelper {
     public static final String CHANNEL_SWAPS = "swap-channel";
-    public static final String CHANNEL_INSTALLS = "install-channel";
-    public static final String CHANNEL_UPDATES = "update-channel";
+    private static final String CHANNEL_INSTALLS = "install-channel";
+    static final String CHANNEL_UPDATES = "update-channel";
 
     static final String BROADCAST_NOTIFICATIONS_ALL_UPDATES_CLEARED = "org.fdroid.fdroid.installer.notifications.allupdates.cleared";
     static final String BROADCAST_NOTIFICATIONS_ALL_INSTALLED_CLEARED = "org.fdroid.fdroid.installer.notifications.allinstalled.cleared";
@@ -170,16 +170,12 @@ public class NotificationHelper {
 
     private boolean shouldIgnoreEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
         // Ignore unknown status
-        if (entry.status == AppUpdateStatusManager.Status.DownloadInterrupted) {
-            return true;
-        } else if ((entry.status == AppUpdateStatusManager.Status.Downloading ||
+        // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
+        if (entry.status == AppUpdateStatusManager.Status.DownloadInterrupted) return true;
+        return (entry.status == AppUpdateStatusManager.Status.Downloading ||
                 entry.status == AppUpdateStatusManager.Status.ReadyToInstall ||
                 entry.status == AppUpdateStatusManager.Status.InstallError) &&
-                AppDetailsActivity.isAppVisible(entry.app.packageName)) {
-            // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
-            return true;
-        }
-        return false;
+                AppDetailsActivity.isAppVisible(entry.app.packageName);
     }
 
     private void createNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
@@ -267,13 +263,11 @@ public class NotificationHelper {
                 return context.getString(R.string.notification_title_single_update_available);
             case PendingInstall:
             case Downloading:
+            case Installing:
+            case Installed:
                 return app.name;
             case ReadyToInstall:
                 return context.getString(app.isInstalled(context) ? R.string.notification_title_single_ready_to_install_update : R.string.notification_title_single_ready_to_install);
-            case Installing:
-                return app.name;
-            case Installed:
-                return app.name;
             case InstallError:
                 return context.getString(R.string.notification_title_single_install_error);
         }
@@ -283,18 +277,16 @@ public class NotificationHelper {
     private String getSingleItemContentString(App app, AppUpdateStatusManager.Status status) {
         switch (status) {
             case UpdateAvailable:
+            case ReadyToInstall:
+            case InstallError:
                 return app.name;
             case PendingInstall:
             case Downloading:
                 return context.getString(app.isInstalled(context) ? R.string.notification_content_single_downloading_update : R.string.notification_content_single_downloading, app.name);
-            case ReadyToInstall:
-                return app.name;
             case Installing:
                 return context.getString(R.string.notification_content_single_installing, app.name);
             case Installed:
                 return context.getString(R.string.notification_content_single_installed);
-            case InstallError:
-                return app.name;
         }
         return "";
     }

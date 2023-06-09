@@ -6,15 +6,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
 import java.util.regex.Pattern;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * A very hacky calculator which is barely functional.

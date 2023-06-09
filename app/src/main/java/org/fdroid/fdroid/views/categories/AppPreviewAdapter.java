@@ -2,12 +2,12 @@ package org.fdroid.fdroid.views.categories;
 
 import android.view.ViewGroup;
 
-import org.fdroid.database.AppOverviewItem;
-import org.fdroid.fdroid.R;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.database.AppOverviewItem;
+import org.fdroid.fdroid.R;
 
 import java.util.Collections;
 import java.util.List;

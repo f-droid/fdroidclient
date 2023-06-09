@@ -67,7 +67,9 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="appDetailsAntiFeatureIconColor">#000000</item>
 
-        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface</item>
+        <item name="bottomNavigationStyle">
+            @style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface
+        </item>
 
         <item name="screenshotPlaceholderIconColor">#e8e8e8</item>
 

@@ -156,7 +156,8 @@ public class ApkVerifierTest {
 
         try {
             apkVerifier.verifyApk();
-        } catch (ApkVerifier.ApkVerificationException | ApkVerifier.ApkPermissionUnequalException e) {
+        } catch (ApkVerifier.ApkVerificationException |
+                 ApkVerifier.ApkPermissionUnequalException e) {
             e.printStackTrace();
             fail(e.getMessage());
         }

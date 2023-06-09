@@ -1,12 +1,13 @@
 package org.fdroid.fdroid.views.updates;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.updates.items.AppStatusListItemController;
 import org.fdroid.fdroid.views.updates.items.KnownVulnAppListItemController;
 import org.fdroid.fdroid.views.updates.items.UpdateableAppListItemController;
-
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Certain views within the {@link UpdatesAdapter} can be swiped to dismiss. Depending on which item is swiped, there
@@ -33,12 +34,12 @@ public class UpdatesItemTouchCallback extends ItemTouchHelper.Callback {
 
     private final UpdatesAdapter adapter;
 
-    public UpdatesItemTouchCallback(UpdatesAdapter adapter) {
+    UpdatesItemTouchCallback(UpdatesAdapter adapter) {
         this.adapter = adapter;
     }
 
     @Override
-    public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+    public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
         int swipeFlags = 0;
         if (viewHolder instanceof AppListItemController) {
             AppListItemController controller = (AppListItemController) viewHolder;
@@ -50,13 +51,13 @@ public class UpdatesItemTouchCallback extends ItemTouchHelper.Callback {
     }
 
     @Override
-    public boolean onMove(
-            RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
+                          @NonNull RecyclerView.ViewHolder target) {
         return false;
     }
 
     @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         AppListItemController controller = (AppListItemController) viewHolder;
         controller.onDismiss(adapter);
     }

@@ -3,15 +3,15 @@ package org.fdroid.fdroid.views.installed;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.fdroid.database.AppListItem;
-import org.fdroid.database.AppPrefs;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.database.AppListItem;
+import org.fdroid.database.AppPrefs;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,7 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
 
     public void setApps(@NonNull List<AppListItem> items) {
         this.items.clear();
-        for (AppListItem item: items) {
+        for (AppListItem item : items) {
             this.items.add(new App(item));
         }
         notifyDataSetChanged();

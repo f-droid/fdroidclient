@@ -1,5 +1,8 @@
-
 package org.fdroid.fdroid.net;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import android.os.Build;
 import android.util.Log;
@@ -11,7 +14,6 @@ import org.fdroid.download.HttpDownloader;
 import org.fdroid.download.HttpManager;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
 import org.junit.Test;
@@ -25,10 +27,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class HttpDownloaderTest {
     private static final String TAG = "HttpDownloaderTest";
@@ -84,12 +82,7 @@ public class HttpDownloaderTest {
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
         final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
-        httpDownloader.setListener(new ProgressListener() {
-            @Override
-            public void onProgress(long bytesRead, long totalBytes) {
-                receivedProgress = true;
-            }
-        });
+        httpDownloader.setListener((bytesRead, totalBytes) -> receivedProgress = true);
         new Thread() {
             @Override
             public void run() {
@@ -156,12 +149,9 @@ public class HttpDownloaderTest {
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
         final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
-        httpDownloader.setListener(new ProgressListener() {
-            @Override
-            public void onProgress(long bytesRead, long totalBytes) {
-                receivedProgress = true;
-                latch.countDown();
-            }
+        httpDownloader.setListener((bytesRead, totalBytes) -> {
+            receivedProgress = true;
+            latch.countDown();
         });
         new Thread() {
             @Override

@@ -38,13 +38,22 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.TypefaceSpan;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Consumer;
+import androidx.core.util.Supplier;
+import androidx.core.view.DisplayCompat;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -86,17 +95,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.util.Consumer;
-import androidx.core.util.Supplier;
-import androidx.core.view.DisplayCompat;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import info.guardianproject.netcipher.NetCipher;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -167,34 +165,6 @@ public final class Utils {
             if (address.endsWith("/")) return address.substring(0, address.length() - 1);
             return address;
         }
-    }
-
-    /*
-     * @param dpiMultiplier Lets you grab icons for densities larger or
-     * smaller than that of your device by some fraction. Useful, for example,
-     * if you want to display a 48dp image at twice the size, 96dp, in which
-     * case you'd use a dpiMultiplier of 2.0 to get an image twice as big.
-     */
-    public static String getIconsDir(final Context context, final double dpiMultiplier) {
-        final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        final double dpi = metrics.densityDpi * dpiMultiplier;
-        if (dpi >= 640) {
-            return "icons-640";
-        }
-        if (dpi >= 480) {
-            return "icons-480";
-        }
-        if (dpi >= 320) {
-            return "icons-320";
-        }
-        if (dpi >= 240) {
-            return "icons-240";
-        }
-        if (dpi >= 160) {
-            return "icons-160";
-        }
-
-        return "icons-120";
     }
 
     /**
@@ -543,7 +513,8 @@ public final class Utils {
      * probably warranted. See https://www.gitlab.com/fdroid/fdroidclient/issues/855
      * for more detail.
      *
-     * @see <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
+     * @see
+     * <a href="https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1089#note_822501322">forced to vendor Apache Commons Codec</a>
      */
     @Nullable
     static String getFileHexDigest(File file, String hashAlgo) {
@@ -769,13 +740,7 @@ public final class Utils {
         if (toastHandler == null) {
             toastHandler = new Handler(Looper.getMainLooper());
         }
-        toastHandler.post(new Runnable() {
-
-            @Override
-            public void run() {
-                Toast.makeText(context.getApplicationContext(), msg, length).show();
-            }
-        });
+        toastHandler.post(() -> Toast.makeText(context.getApplicationContext(), msg, length).show());
     }
 
     public static void applySwipeLayoutColors(SwipeRefreshLayout swipeLayout) {
@@ -888,16 +853,12 @@ public final class Utils {
          * @param contentView this must be the top most Container of the layout used by the AppCompatActivity
          */
         public KeyboardStateMonitor(final View contentView) {
-            contentView.getViewTreeObserver().addOnGlobalLayoutListener(
-                    new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            int screenHeight = contentView.getRootView().getHeight();
-                            Rect rect = new Rect();
-                            contentView.getWindowVisibleDisplayFrame(rect);
-                            int keypadHeight = screenHeight - rect.bottom;
-                            visible = keypadHeight >= screenHeight * 0.15;
-                        }
+            contentView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+                        int screenHeight = contentView.getRootView().getHeight();
+                        Rect rect = new Rect();
+                        contentView.getWindowVisibleDisplayFrame(rect);
+                        int keypadHeight = screenHeight - rect.bottom;
+                        visible = keypadHeight >= screenHeight * 0.15;
                     }
             );
         }

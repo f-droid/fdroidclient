@@ -27,6 +27,10 @@ import android.net.Uri;
 import android.os.Process;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 
@@ -36,10 +40,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Saves all activity of installs and uninstalls to a file for later use, like

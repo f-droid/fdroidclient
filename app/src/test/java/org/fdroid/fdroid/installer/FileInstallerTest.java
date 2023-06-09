@@ -1,6 +1,11 @@
 package org.fdroid.fdroid.installer;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 import android.content.ContextWrapper;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.Apk;
@@ -11,11 +16,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowLog;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 @RunWith(RobolectricTestRunner.class)
 public class FileInstallerTest {

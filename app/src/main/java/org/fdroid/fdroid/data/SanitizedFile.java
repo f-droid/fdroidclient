@@ -8,7 +8,6 @@ import java.io.File;
  * doesn't contain illegal characters.
  * Sanitized names are those which only have the following characters: [A-Za-z0-9.-_]
  */
-@SuppressWarnings("serial")
 public class SanitizedFile extends File {
 
     /**

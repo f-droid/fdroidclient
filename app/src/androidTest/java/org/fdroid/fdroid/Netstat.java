@@ -1,5 +1,7 @@
 package org.fdroid.fdroid;
 
+import androidx.annotation.NonNull;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -231,9 +233,9 @@ public class Netstat {
         /**
          * Types of connection protocol
          ***/
-        public static final byte TCP_CONNECTION = 0;
-        public static final byte UDP_CONNECTION = 1;
-        public static final byte RAW_CONNECTION = 2;
+        static final byte TCP_CONNECTION = 0;
+        static final byte UDP_CONNECTION = 1;
+        static final byte RAW_CONNECTION = 2;
         /**
          * <code>serialVersionUID</code>
          */
@@ -282,11 +284,11 @@ public class Netstat {
             return protocol;
         }
 
-        public final void setProtocol(final byte protocol) {
+        final void setProtocol(final byte protocol) {
             this.protocol = protocol;
         }
 
-        public final String getProtocolAsString() {
+        final String getProtocolAsString() {
             switch (protocol) {
                 case TCP_CONNECTION:
                     return "TCP";
@@ -310,7 +312,7 @@ public class Netstat {
             return pid;
         }
 
-        public final void setPID(final int pid) {
+        final void setPID(final int pid) {
             this.pid = pid;
         }
 
@@ -318,7 +320,7 @@ public class Netstat {
             return pname;
         }
 
-        public final void setPName(final String pname) {
+        final void setPName(final String pname) {
             this.pname = pname;
         }
 
@@ -326,7 +328,7 @@ public class Netstat {
             return localPort;
         }
 
-        public final void setLocalPort(final int localPort) {
+        final void setLocalPort(final int localPort) {
             this.localPort = localPort;
         }
 
@@ -334,7 +336,7 @@ public class Netstat {
             return remoteAddress;
         }
 
-        public final void setRemoteAddress(final String remoteAddress) {
+        final void setRemoteAddress(final String remoteAddress) {
             this.remoteAddress = remoteAddress;
         }
 
@@ -342,7 +344,7 @@ public class Netstat {
             return remotePort;
         }
 
-        public final void setRemotePort(final int remotePort) {
+        final void setRemotePort(final int remotePort) {
             this.remotePort = remotePort;
         }
 
@@ -350,22 +352,21 @@ public class Netstat {
             return status;
         }
 
-        public final void setStatus(final String status) {
+        final void setStatus(final String status) {
             this.status = status;
         }
 
+        @NonNull
         public String toString() {
-            StringBuffer buf = new StringBuffer();
-            buf.append("[Prot=").append(getProtocolAsString());
-            buf.append(",POwner=").append(powner);
-            buf.append(",PID=").append(pid);
-            buf.append(",PName=").append(pname);
-            buf.append(",LPort=").append(localPort);
-            buf.append(",RAddress=").append(remoteAddress);
-            buf.append(",RPort=").append(remotePort);
-            buf.append(",Status=").append(status);
-            buf.append("]");
-            return buf.toString();
+            return "[Prot=" + getProtocolAsString() +
+                    ",POwner=" + powner +
+                    ",PID=" + pid +
+                    ",PName=" + pname +
+                    ",LPort=" + localPort +
+                    ",RAddress=" + remoteAddress +
+                    ",RPort=" + remotePort +
+                    ",Status=" + status +
+                    "]";
         }
 
     }

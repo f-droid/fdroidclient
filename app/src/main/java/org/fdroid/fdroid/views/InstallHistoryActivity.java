@@ -29,6 +29,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
+
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.apache.commons.io.IOUtils;
@@ -44,13 +47,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ShareCompat;
-
 public class InstallHistoryActivity extends AppCompatActivity {
     public static final String TAG = "InstallHistoryActivity";
 
-    public static final String EXTRA_SHOW_FDROID_METRICS = "showFDroidMetrics";
+    static final String EXTRA_SHOW_FDROID_METRICS = "showFDroidMetrics";
 
     private boolean showingInstallHistory;
     private MaterialToolbar toolbar;
@@ -141,7 +141,7 @@ public class InstallHistoryActivity extends AppCompatActivity {
                 if (showingInstallHistory) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("Repos:\n");
-                    for (Repository repo: FDroidApp.getRepoManager(this).getRepositories()) {
+                    for (Repository repo : FDroidApp.getRepoManager(this).getRepositories()) {
                         if (repo.getEnabled()) {
                             stringBuilder.append("* ");
                             stringBuilder.append(repo.getAddress());

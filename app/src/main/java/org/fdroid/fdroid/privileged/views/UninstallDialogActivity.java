@@ -19,21 +19,20 @@
 
 package org.fdroid.fdroid.privileged.views;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.installer.Installer;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.installer.Installer;
 
 /**
  * This class provides the confirmation prompt for when the user chooses to
@@ -82,33 +81,21 @@ public class UninstallDialogActivity extends FragmentActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
         builder.setTitle(appInfo.loadLabel(pm));
         builder.setIcon(appInfo.loadIcon(pm));
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent data = new Intent();
-                        data.putExtra(Installer.EXTRA_APP, app);
-                        data.putExtra(Installer.EXTRA_APK, apk);
-                        setResult(AppCompatActivity.RESULT_OK, intent);
-                        finish();
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        setResult(AppCompatActivity.RESULT_CANCELED);
-                        finish();
-                    }
-                });
-        builder.setOnCancelListener(
-                new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        setResult(AppCompatActivity.RESULT_CANCELED);
-                        finish();
-                    }
-                });
+        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> {
+            Intent data = new Intent();
+            data.putExtra(Installer.EXTRA_APP, app);
+            data.putExtra(Installer.EXTRA_APK, apk);
+            setResult(AppCompatActivity.RESULT_OK, intent);
+            finish();
+        });
+        builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+            setResult(AppCompatActivity.RESULT_CANCELED);
+            finish();
+        });
+        builder.setOnCancelListener(dialog -> {
+            setResult(AppCompatActivity.RESULT_CANCELED);
+            finish();
+        });
         builder.setMessage(messageId);
         builder.create().show();
     }

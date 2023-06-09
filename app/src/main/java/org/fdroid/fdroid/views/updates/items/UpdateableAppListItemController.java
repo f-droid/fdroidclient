@@ -2,6 +2,12 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.database.AppPrefs;
@@ -15,12 +21,6 @@ import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-
 /**
  * Very trimmed down list item. Only displays the app icon, name, and a download button.
  * We don't even need to show download progress, because the intention is that as soon as
@@ -28,7 +28,7 @@ import androidx.lifecycle.Observer;
  * {@link AppStatusListItemController}.
  */
 public class UpdateableAppListItemController extends AppListItemController {
-    public UpdateableAppListItemController(AppCompatActivity activity, View itemView) {
+    UpdateableAppListItemController(AppCompatActivity activity, View itemView) {
         super(activity, itemView);
     }
 
@@ -57,9 +57,9 @@ public class UpdateableAppListItemController extends AppListItemController {
                     appPrefsDao.update(newPrefs);
                     return newPrefs;
                 }, newPrefs -> {
-                        showUndoSnackBar(appPrefsDao, newPrefs);
-                        AppUpdateStatusManager.getInstance(activity).checkForUpdates();
-                    });
+                    showUndoSnackBar(appPrefsDao, newPrefs);
+                    AppUpdateStatusManager.getInstance(activity).checkForUpdates();
+                });
                 liveData.removeObserver(this);
             }
         });
@@ -67,10 +67,10 @@ public class UpdateableAppListItemController extends AppListItemController {
 
     private void showUndoSnackBar(AppPrefsDao appPrefsDao, AppPrefs appPrefs) {
         Snackbar.make(
-                itemView,
-                R.string.app_list__dismiss_app_update,
-                Snackbar.LENGTH_LONG
-        )
+                        itemView,
+                        R.string.app_list__dismiss_app_update,
+                        Snackbar.LENGTH_LONG
+                )
                 .setAction(R.string.undo, view -> Utils.runOffUiThread(() -> {
                     AppPrefs newPrefs = appPrefs.toggleIgnoreVersionCodeUpdate(0);
                     appPrefsDao.update(newPrefs);

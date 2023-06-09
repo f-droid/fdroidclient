@@ -9,13 +9,17 @@ import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
+import androidx.core.app.TaskStackBuilder;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.Repository;
 import org.fdroid.database.UpdatableApp;
-import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
@@ -29,11 +33,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.TaskStackBuilder;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import io.reactivex.rxjava3.disposables.Disposable;
 
@@ -85,9 +84,9 @@ public final class AppUpdateStatusManager {
 
     public static final String REASON_READY_TO_INSTALL = "readytoinstall";
     public static final String REASON_UPDATES_AVAILABLE = "updatesavailable";
-    public static final String REASON_CLEAR_ALL_UPDATES = "clearallupdates";
-    public static final String REASON_CLEAR_ALL_INSTALLED = "clearallinstalled";
-    public static final String REASON_REPO_DISABLED = "repodisabled";
+    private static final String REASON_CLEAR_ALL_UPDATES = "clearallupdates";
+    private static final String REASON_CLEAR_ALL_INSTALLED = "clearallinstalled";
+    private static final String REASON_REPO_DISABLED = "repodisabled";
 
     /**
      * If this is present and true, then the broadcast has been sent in response to the {@link AppUpdateStatus#status}
@@ -115,7 +114,7 @@ public final class AppUpdateStatusManager {
         return instance;
     }
 
-    private static AppUpdateStatusManager instance;
+    private static volatile AppUpdateStatusManager instance;
     private final MutableLiveData<Integer> numUpdatableApps = new MutableLiveData<>();
 
     public static class AppUpdateStatus implements Parcelable {
@@ -146,6 +145,7 @@ public final class AppUpdateStatusManager {
         /**
          * Dumps some information about the status for debugging purposes.
          */
+        @NonNull
         public String toString() {
             return app.packageName + " [Status: " + status
                     + ", Progress: " + progressCurrent + " / " + progressMax + ']';
@@ -290,7 +290,7 @@ public final class AppUpdateStatusManager {
         return numUpdatableApps;
     }
 
-    public void setNumUpdatableApps(int num) {
+    private void setNumUpdatableApps(int num) {
         numUpdatableApps.postValue(num);
     }
 

@@ -1,12 +1,17 @@
 package org.fdroid.fdroid.compat;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeTrue;
+
 import android.app.Instrumentation;
 import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import android.util.Log;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.fdroid.fdroid.AssetUtils;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -17,10 +22,6 @@ import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.util.UUID;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeTrue;
 
 
 /**
@@ -77,7 +78,6 @@ public class FileCompatTest {
         FileCompat.symlinkOs(sourceFile, destFile);
         assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
     }
-
 
     /**
      * Prefer internal over external storage, because external tends to be FAT filesystems,

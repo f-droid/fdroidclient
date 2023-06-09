@@ -1,8 +1,18 @@
 package org.fdroid.fdroid.data;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.io.IOUtils;
 import org.fdroid.database.FDroidDatabase;
@@ -20,19 +30,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-import static org.junit.Assume.assumeTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 public class DBHelperTest {
@@ -198,7 +199,7 @@ public class DBHelperTest {
     @Test
     public void parseAdditionalReposXmlSloppyTest() throws IOException, XmlPullParserException {
         InputStream input = TestUtils.class.getClassLoader().getResourceAsStream("ugly_additional_repos.xml");
-        String validXml = IOUtils.toString(input, "UTF-8");
+        String validXml = IOUtils.toString(input, StandardCharsets.UTF_8);
 
         List<String> repos = getReposFromXml(validXml);
         assertEquals(2 * DBHelper.REPO_XML_ITEM_COUNT, repos.size());
@@ -209,7 +210,7 @@ public class DBHelperTest {
     @Test
     public void parseAdditionalReposXmlPositiveTest() throws IOException {
         InputStream input = TestUtils.class.getClassLoader().getResourceAsStream("additional_repos.xml");
-        String reposXmlContent = IOUtils.toString(input, "UTF-8");
+        String reposXmlContent = IOUtils.toString(input, StandardCharsets.UTF_8);
 
         List<String> additionalRepos;
         try {

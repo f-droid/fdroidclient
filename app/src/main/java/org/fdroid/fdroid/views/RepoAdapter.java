@@ -38,8 +38,9 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
         this.repoItemListener = repoItemListener;
     }
 
-    @SuppressLint("NotifyDataSetChanged") // we could do better, but not really worth it at this point
-    public void updateItems(List<Repository> items) {
+    @SuppressLint("NotifyDataSetChanged")
+    // we could do better, but not really worth it at this point
+    void updateItems(List<Repository> items) {
         this.items.clear();
         this.items.addAll(items);
         notifyDataSetChanged();

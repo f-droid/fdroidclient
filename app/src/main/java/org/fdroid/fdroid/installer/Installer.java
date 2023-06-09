@@ -31,6 +31,9 @@ import android.os.PatternMatcher;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
@@ -41,9 +44,6 @@ import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 import org.fdroid.fdroid.privileged.views.UninstallDialogActivity;
 
 import java.io.IOException;
-
-import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Handles the actual install process.  Subclasses implement the details.
@@ -211,7 +211,7 @@ public abstract class Installer {
     }
 
     static void sendBroadcastUninstall(Context context, App app, Apk apk, String action,
-                                               PendingIntent pendingIntent, String errorMessage) {
+                                       PendingIntent pendingIntent, String errorMessage) {
         Uri uri = Uri.fromParts("package", apk.packageName, null);
 
         Intent intent = new Intent(action);
@@ -232,7 +232,7 @@ public abstract class Installer {
      *
      * @see InstallManagerService for more about {@code canonicalUri}
      */
-    public static IntentFilter getInstallIntentFilter(Uri canonicalUri) {
+    static IntentFilter getInstallIntentFilter(Uri canonicalUri) {
         IntentFilter intentFilter = getInstallInteractionIntentFilter(canonicalUri);
         intentFilter.addAction(Installer.ACTION_INSTALL_STARTED);
         intentFilter.addAction(Installer.ACTION_INSTALL_COMPLETE);

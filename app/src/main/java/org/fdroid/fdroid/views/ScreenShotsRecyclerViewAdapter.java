@@ -70,7 +70,7 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         ScreenShotViewHolder(View view) {
             super(view);
-            image = (ImageView) view.findViewById(R.id.image);
+            image = view.findViewById(R.id.image);
             image.setOnClickListener(this);
         }
 
@@ -79,6 +79,7 @@ class ScreenShotsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             listener.onScreenshotClick(getAdapterPosition());
         }
 
+        @NonNull
         @Override
         public String toString() {
             return super.toString() + " screenshot";

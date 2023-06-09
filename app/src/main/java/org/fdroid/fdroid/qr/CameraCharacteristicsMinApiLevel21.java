@@ -14,7 +14,7 @@ public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChe
     private static final String TAG = "CameraCharMinApiLevel21";
     private final CameraManager cameraManager;
 
-    protected CameraCharacteristicsMinApiLevel21(final Context context) {
+    CameraCharacteristicsMinApiLevel21(final Context context) {
         this.cameraManager = ContextCompat.getSystemService(context, CameraManager.class);
     }
 

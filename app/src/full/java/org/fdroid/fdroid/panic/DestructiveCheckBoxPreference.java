@@ -3,11 +3,11 @@ package org.fdroid.fdroid.panic;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import org.fdroid.fdroid.R;
-
 import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.PreferenceViewHolder;
+
+import org.fdroid.fdroid.R;
 
 public class DestructiveCheckBoxPreference extends CheckBoxPreference {
     public DestructiveCheckBoxPreference(Context context, AttributeSet attrs, int defStyleAttr) {

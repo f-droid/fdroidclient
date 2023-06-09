@@ -128,15 +128,9 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             prefs = Preferences.get();
         }
 
-        installButton = (ImageView) itemView.findViewById(R.id.install);
+        installButton = itemView.findViewById(R.id.install);
         if (installButton != null) {
-            installButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onActionButtonPressed(currentApp, currentApk);
-                }
-            });
-
+            installButton.setOnClickListener(v -> onActionButtonPressed(currentApp, currentApk));
             installButton.setOutlineProvider(new ViewOutlineProvider() {
                 @Override
                 public void getOutline(View view, Outline outline) {
@@ -155,24 +149,21 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             });
         }
 
-        icon = (ImageView) itemView.findViewById(R.id.icon);
-        name = (TextView) itemView.findViewById(R.id.app_name);
-        status = (TextView) itemView.findViewById(R.id.status);
-        secondaryStatus = (TextView) itemView.findViewById(R.id.secondary_status);
-        progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar);
-        cancelButton = (ImageButton) itemView.findViewById(R.id.cancel_button);
-        actionButton = (Button) itemView.findViewById(R.id.action_button);
-        secondaryButton = (Button) itemView.findViewById(R.id.secondary_button);
+        icon = itemView.findViewById(R.id.icon);
+        name = itemView.findViewById(R.id.app_name);
+        status = itemView.findViewById(R.id.status);
+        secondaryStatus = itemView.findViewById(R.id.secondary_status);
+        progressBar = itemView.findViewById(R.id.progress_bar);
+        cancelButton = itemView.findViewById(R.id.cancel_button);
+        actionButton = itemView.findViewById(R.id.action_button);
+        secondaryButton = itemView.findViewById(R.id.secondary_button);
         checkBox = itemView.findViewById(R.id.checkbox);
 
         if (actionButton != null) {
             actionButton.setEnabled(true);
-            actionButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    actionButton.setEnabled(false);
-                    onActionButtonPressed(currentApp, currentApk);
-                }
+            actionButton.setOnClickListener(v -> {
+                actionButton.setEnabled(false);
+                onActionButtonPressed(currentApp, currentApk);
             });
         }
 
@@ -392,7 +383,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         }
     }
 
-    protected AppListItemState getViewStateInstalling(@NonNull App app) {
+    private AppListItemState getViewStateInstalling(@NonNull App app) {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__downloading_in_progress, app.name);
 
@@ -402,7 +393,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 .setStatusText(activity.getString(R.string.notification_content_single_installing, app.name));
     }
 
-    protected AppListItemState getViewStateInstalled(@NonNull App app) {
+    private AppListItemState getViewStateInstalled(@NonNull App app) {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__successfully_installed, app.name);
 
@@ -418,7 +409,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         return state;
     }
 
-    protected AppListItemState getViewStateDownloading(@NonNull App app, @NonNull AppUpdateStatus currentStatus) {
+    private AppListItemState getViewStateDownloading(@NonNull App app, @NonNull AppUpdateStatus currentStatus) {
         CharSequence mainText = activity.getString(
                 R.string.app_list__name__downloading_in_progress, app.name);
 
@@ -428,7 +419,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                         Utils.bytesToKb(currentStatus.progressMax));
     }
 
-    protected AppListItemState getViewStateReadyToInstall(@NonNull App app) {
+    private AppListItemState getViewStateReadyToInstall(@NonNull App app) {
         int actionButtonLabel = app.isInstalled(activity.getApplicationContext())
                 ? R.string.app__install_downloaded_update
                 : R.string.menu_install;
@@ -439,7 +430,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 .setStatusText(activity.getString(R.string.app_list_download_ready));
     }
 
-    protected AppListItemState getViewStateDefault(@NonNull App app) {
+    private AppListItemState getViewStateDefault(@NonNull App app) {
         return new AppListItemState(app);
     }
 
@@ -460,7 +451,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             Intent intent = new Intent(activity, AppDetailsActivity.class);
             intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.packageName);
             String transitionAppIcon = activity.getString(R.string.transition_app_item_icon);
-            Pair<View, String> iconTransitionPair = Pair.create((View) icon, transitionAppIcon);
+            Pair<View, String> iconTransitionPair = Pair.create(icon, transitionAppIcon);
             // unchecked since the right type is passed as 2nd varargs arg: Pair<View, String>
             @SuppressWarnings("unchecked")
             Bundle bundle = ActivityOptionsCompat
@@ -492,7 +483,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 return;
             }
             if (secondaryButton != null) secondaryButton.setEnabled(false);
-            onSecondaryButtonPressed(currentApp);
+            onSecondaryButtonPressed();
         }
     };
 
@@ -552,30 +543,25 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
                 if (repo == null) return null;
                 return new Apk(version, repo);
             }, receivedApk -> {
-                    if (receivedApk != null) {
-                        String canonicalUrl = receivedApk.getCanonicalUrl();
-                        Uri canonicalUri = Uri.parse(canonicalUrl);
-                        broadcastManager.registerReceiver(receiver,
-                                Installer.getInstallInteractionIntentFilter(canonicalUri));
-                        InstallManagerService.queue(activity, app, receivedApk);
-                    }
-                });
+                if (receivedApk != null) {
+                    String canonicalUrl = receivedApk.getCanonicalUrl();
+                    Uri canonicalUri = Uri.parse(canonicalUrl);
+                    broadcastManager.registerReceiver(receiver,
+                            Installer.getInstallInteractionIntentFilter(canonicalUri));
+                    InstallManagerService.queue(activity, app, receivedApk);
+                }
+            });
         }
     }
 
     /**
      * To be overridden by subclasses if desired
      */
-    protected void onSecondaryButtonPressed(@NonNull App app) {
+    private void onSecondaryButtonPressed() {
     }
 
     @SuppressWarnings("FieldCanBeLocal")
-    private final View.OnClickListener onCancelDownload = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            cancelDownload();
-        }
-    };
+    private final View.OnClickListener onCancelDownload = v -> cancelDownload();
 
     protected final void cancelDownload() {
         if (currentStatus == null || currentStatus.status != AppUpdateStatusManager.Status.Downloading) {

@@ -60,7 +60,7 @@
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".FDroidApp"
@@ -78,8 +78,7 @@
             android:configChanges="layoutDirection|locale"
             android:excludeFromRecents="true"
             android:label="@string/menu_install"
-            android:parentActivityName=".views.main.MainActivity">
-        </activity>
+            android:parentActivityName=".views.main.MainActivity"></activity>
 
         <activity
             android:name=".privileged.views.UninstallDialogActivity"
@@ -90,8 +89,7 @@
             android:configChanges="layoutDirection|locale"
             android:label="@string/menu_manage"
             android:launchMode="singleTask"
-            android:parentActivityName=".views.main.MainActivity">
-        </activity>
+            android:parentActivityName=".views.main.MainActivity"></activity>
 
         <activity
             android:name=".NfcNotEnabledActivity"
@@ -103,16 +101,14 @@
             android:configChanges="layoutDirection|locale"
             android:label="@string/repo_details"
             android:parentActivityName=".views.ManageReposActivity"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
 
         <activity
             android:name=".views.AppDetailsActivity"
             android:configChanges="layoutDirection|locale"
             android:exported="true"
             android:label="@string/app_details"
-            android:parentActivityName=".views.main.MainActivity">
-        </activity>
+            android:parentActivityName=".views.main.MainActivity"></activity>
 
         <activity android:name=".views.ScreenShotsActivity" />
 
@@ -404,12 +400,10 @@
         <activity android:name=".views.apps.AppListActivity" />
         <activity
             android:name=".views.installed.InstalledAppsActivity"
-            android:parentActivityName=".views.main.MainActivity">
-        </activity>
+            android:parentActivityName=".views.main.MainActivity"></activity>
         <activity
             android:name=".views.InstallHistoryActivity"
-            android:parentActivityName=".views.main.MainActivity">
-        </activity>
+            android:parentActivityName=".views.main.MainActivity"></activity>
 
         <activity
             android:name=".installer.FileInstallerActivity"
@@ -442,8 +436,7 @@
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
-            tools:node="remove">
-        </provider>
+            tools:node="remove"></provider>
 
         <receiver
             android:name=".receiver.StartupReceiver"

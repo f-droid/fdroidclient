@@ -1,12 +1,12 @@
 package org.fdroid.fdroid.data;
 
-import org.junit.Test;
-
-import java.io.File;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assume.assumeTrue;
+
+import org.junit.Test;
+
+import java.io.File;
 
 public class SanitizedFileTest {
 

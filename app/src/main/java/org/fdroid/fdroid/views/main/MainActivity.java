@@ -81,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
-    public static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
+    private static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
 
     static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
-    public static final int REQUEST_STORAGE_ACCESS = 0x40E5;
+    static final int REQUEST_STORAGE_ACCESS = 0x40E5;
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     private BadgeDrawable updatesBadge;
 
     private final ActivityResultLauncher<String> permissionLauncher =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), (isGranted) -> {
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 // no-op
             });
 
@@ -116,12 +116,12 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new MainViewAdapter(this);
 
-        pager = (RecyclerView) findViewById(R.id.main_view_pager);
+        pager = findViewById(R.id.main_view_pager);
         pager.setHasFixedSize(true);
         pager.setLayoutManager(new NonScrollingHorizontalLayoutManager(this));
         pager.setAdapter(adapter);
 
-        bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
 
@@ -217,7 +217,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) { // NOCHECKSTYLE LineLength
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_LOCATION_PERMISSIONS) {
             WifiStateChangeService.start(this, null);

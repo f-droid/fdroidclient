@@ -8,12 +8,12 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.text.style.ReplacementSpan;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.categories.CategoryController;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.categories.CategoryController;
 
 /**
  * This draws a category "chip" in the search text view according to the material design specs
@@ -36,7 +36,7 @@ public class CategorySpan extends ReplacementSpan {
 
     private final Context context;
 
-    public CategorySpan(Context context) {
+    CategorySpan(Context context) {
         super();
         this.context = context;
     }

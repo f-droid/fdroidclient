@@ -8,6 +8,9 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.fdroid.database.Repository;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.views.ManageReposActivity;
@@ -16,9 +19,6 @@ import org.fdroid.fdroid.views.main.MainActivity;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Locale;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * Handles requests to add new repos via URLs.  This is an {@code IntentService}

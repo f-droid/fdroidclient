@@ -1,12 +1,19 @@
 package org.fdroid.fdroid.work;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.app.Instrumentation;
+
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
+
 import com.google.common.util.concurrent.ListenableFuture;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.compat.FileCompatTest;
 import org.junit.Rule;
@@ -15,10 +22,6 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * This test cannot run on Robolectric unfortunately since it does not support

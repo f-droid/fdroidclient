@@ -64,7 +64,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class RepoDetailsActivity extends AppCompatActivity {
     private static final String TAG = "RepoDetailsActivity";
 
-    public static final String ARG_REPO_ID = "repo_id";
+    static final String ARG_REPO_ID = "repo_id";
 
     /**
      * If the repo has been updated at least once, then we will show
@@ -179,12 +179,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     private void setNfc() {
         if (NfcHelper.setPushMessage(this, Utils.getSharingUri(repo))) {
-            findViewById(android.R.id.content).post(new Runnable() {
-                @Override
-                public void run() {
-                    onNewIntent(getIntent());
-                }
-            });
+            findViewById(android.R.id.content).post(() -> onNewIntent(getIntent()));
         }
     }
 
@@ -315,8 +310,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     private void setupDescription(View parent, Repository repo) {
 
-        TextView descriptionLabel = (TextView) parent.findViewById(R.id.label_description);
-        TextView description = (TextView) parent.findViewById(R.id.text_description);
+        TextView descriptionLabel = parent.findViewById(R.id.label_description);
+        TextView description = parent.findViewById(R.id.text_description);
 
         String desc = repo.getDescription(App.getLocales());
         if (desc == null || TextUtils.isEmpty(desc)) {
@@ -331,8 +326,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
     }
 
     private void setupRepoFingerprint(View parent, Repository repo) {
-        TextView repoFingerprintView = (TextView) parent.findViewById(R.id.text_repo_fingerprint);
-        TextView repoFingerprintDescView = (TextView) parent.findViewById(R.id.text_repo_fingerprint_description);
+        TextView repoFingerprintView = parent.findViewById(R.id.text_repo_fingerprint);
+        TextView repoFingerprintDescView = parent.findViewById(R.id.text_repo_fingerprint_description);
 
         String repoFingerprint;
 
@@ -442,26 +437,20 @@ public class RepoDetailsActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.repo_confirm_delete_title)
                 .setMessage(R.string.repo_confirm_delete_body)
-                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        runOffUiThread(() -> {
-                            repositoryDao.deleteRepository(repoId);
-                            return true;
-                        });
-                        finish();
-                    }
-                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing...
-                    }
+                .setPositiveButton(R.string.delete, (dialog, which) -> {
+                    runOffUiThread(() -> {
+                        repositoryDao.deleteRepository(repoId);
+                        return true;
+                    });
+                    finish();
+                }).setNegativeButton(android.R.string.cancel, (dialog, which) -> {
+                            // Do nothing...
                 }
-        ).show();
+                ).show();
     }
 
-    public void showChangePasswordDialog(final View parentView) {
-        final View view = getLayoutInflater().inflate(R.layout.login, null);
+    private void showChangePasswordDialog(final View parentView) {
+        final View view = getLayoutInflater().inflate(R.layout.login, (ViewGroup) parentView, false);
         final AlertDialog credentialsDialog = new AlertDialog.Builder(this).setView(view).create();
         final TextInputLayout nameInputLayout = view.findViewById(R.id.edit_name);
         final TextInputLayout passwordInputLayout = view.findViewById(R.id.edit_password);
@@ -473,34 +462,24 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
         credentialsDialog.setTitle(R.string.repo_edit_credentials);
         credentialsDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                getString(R.string.cancel), (dialog, which) -> dialog.dismiss());
 
         credentialsDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                getString(R.string.ok),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                getString(R.string.ok), (dialog, which) -> {
 
-                        final String name = nameInput.getText().toString();
-                        final String password = passwordInput.getText().toString();
+                    final String name = nameInput.getText().toString();
+                    final String password = passwordInput.getText().toString();
 
-                        if (!TextUtils.isEmpty(name)) {
-                            runOffUiThread(() -> {
-                                repositoryDao.updateUsernameAndPassword(repo.getRepoId(), name, password);
-                                return true;
-                            });
-                            updateRepoView();
-                            dialog.dismiss();
-                        } else {
-                            Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username,
-                                    Toast.LENGTH_LONG).show();
-                        }
+                    if (!TextUtils.isEmpty(name)) {
+                        runOffUiThread(() -> {
+                            repositoryDao.updateUsernameAndPassword(repo.getRepoId(), name, password);
+                            return true;
+                        });
+                        updateRepoView();
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(RepoDetailsActivity.this, R.string.repo_error_empty_username,
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -564,28 +543,25 @@ public class RepoDetailsActivity extends AppCompatActivity {
             // reset recycled CheckedChangeListener before checking to avoid bugs
             switchView.setOnCheckedChangeListener(null);
             switchView.setChecked(enabled);
-            switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        disabledMirrors.remove(itemMirror);
-                    } else {
-                        disabledMirrors.add(itemMirror);
-                    }
-
-                    List<Mirror> mirrors = repo.getAllMirrors(true);
-                    int totalMirrors = mirrors.size();
-                    if (disabledMirrors.size() == totalMirrors) {
-                        // if all mirrors are disabled, re-enable canonical repo as mirror
-                        disabledMirrors.remove(repo.getAddress());
-                        adapterToNotify.notifyDataSetChanged();
-                    }
-                    ArrayList<String> toDisableMirrors = new ArrayList<>(disabledMirrors);
-                    runOffUiThread(() -> {
-                        repositoryDao.updateDisabledMirrors(repo.getRepoId(), toDisableMirrors);
-                        return true;
-                    });
+            switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked) {
+                    disabledMirrors.remove(itemMirror);
+                } else {
+                    disabledMirrors.add(itemMirror);
                 }
+
+                List<Mirror> mirrors = repo.getAllMirrors(true);
+                int totalMirrors = mirrors.size();
+                if (disabledMirrors.size() == totalMirrors) {
+                    // if all mirrors are disabled, re-enable canonical repo as mirror
+                    disabledMirrors.remove(repo.getAddress());
+                    adapterToNotify.notifyDataSetChanged();
+                }
+                ArrayList<String> toDisableMirrors = new ArrayList<>(disabledMirrors);
+                runOffUiThread(() -> {
+                    repositoryDao.updateDisabledMirrors(repo.getRepoId(), toDisableMirrors);
+                    return true;
+                });
             });
 
             View repoUnverified = holder.view.findViewById(R.id.repo_unverified);

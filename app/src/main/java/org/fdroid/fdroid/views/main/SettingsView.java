@@ -4,12 +4,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.PreferencesFragment;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.PreferencesFragment;
 
 /**
  * When attached to the window, the {@link PreferencesFragment} will be added. When detached from

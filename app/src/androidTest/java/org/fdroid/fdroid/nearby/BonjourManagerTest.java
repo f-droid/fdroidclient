@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.nearby;
 
+import static org.junit.Assert.assertTrue;
+
 import android.content.Context;
 
 import androidx.test.core.app.ApplicationProvider;
@@ -14,8 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceListener;
-
-import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class BonjourManagerTest {

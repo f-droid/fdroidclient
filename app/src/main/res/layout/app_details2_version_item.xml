@@ -14,7 +14,8 @@
     android:paddingEnd="4dp"
     android:background="?attr/selectableItemBackground">
 
-    <LinearLayout android:id="@+id/basic_layout"
+    <LinearLayout
+        android:id="@+id/basic_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -29,25 +30,27 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-
-                <TextView android:id="@+id/version"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    tools:text="1.2.3"/>
+                    android:layout_height="match_parent">
 
-                    <TextView android:id="@+id/versionCode"
-                              android:layout_height="wrap_content"
-                              android:layout_width="wrap_content"
-                              android:layout_gravity="center"
-                              android:singleLine="true"
-                              android:textSize="14sp"
-                              android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        tools:text="1.2.3" />
+
+                    <TextView
+                        android:id="@+id/versionCode"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:singleLine="true"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -55,24 +58,29 @@
                     android:layout_height="match_parent"
                     android:paddingTop="3dp">
 
-                    <TextView android:id="@+id/status_installed"
+                    <TextView
+                        android:id="@+id/status_installed"
                         style="@style/AppVersionStatus"
                         android:background="@drawable/app_version_item_status_installed"
                         android:textColor="#19c878"
                         android:textStyle="bold"
                         android:text="@string/app_installed" />
 
-                    <include layout="@layout/app_status_suggested"
+                    <include
+                        layout="@layout/app_status_suggested"
                         android:id="@+id/status_suggested" />
 
-                    <TextView android:id="@+id/status_incompatible"
+                    <TextView
+                        android:id="@+id/status_incompatible"
                         style="@style/AppVersionStatus"
                         android:background="@drawable/app_version_item_status_incompatible"
                         android:textColor="#d86758"
                         android:text="@string/app_incompatible" />
                 </LinearLayout>
             </LinearLayout>
-            <TextView android:id="@+id/added"
+
+            <TextView
+                android:id="@+id/added"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
@@ -81,13 +89,15 @@
                 tools:text="Added on 31/12/2050" />
         </LinearLayout>
 
-        <ImageView android:id="@+id/expand_arrow"
+        <ImageView
+            android:id="@+id/expand_arrow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/ic_expand_more" />
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/expanded_layout"
+    <LinearLayout
+        android:id="@+id/expanded_layout"
         android:orientation="vertical"
         android:layout_below="@id/basic_layout"
         android:layout_width="match_parent"
@@ -108,7 +118,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp">
 
-                <TextView android:id="@+id/repository"
+                <TextView
+                    android:id="@+id/repository"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
@@ -117,7 +128,8 @@
                     android:textSize="12sp"
                     tools:text="F-Droid" />
 
-                <TextView android:id="@+id/size"
+                <TextView
+                    android:id="@+id/size"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
@@ -126,7 +138,8 @@
                     android:textSize="12sp"
                     tools:text="Size: 4.8 MiB" />
 
-                <TextView android:id="@+id/api"
+                <TextView
+                    android:id="@+id/api"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:singleLine="true"
@@ -147,7 +160,7 @@
                 android:maxEms="10"
                 android:ellipsize="end"
                 android:singleLine="true"
-                tools:text="@string/menu_install"/>
+                tools:text="@string/menu_install" />
 
             <Button
                 android:id="@+id/button_downgrade"
@@ -161,7 +174,8 @@
                 android:textColor="#b87032"
                 android:background="@drawable/app_version_button_bg_selector_downgrade" />
 
-            <ProgressBar android:id="@+id/busy_indicator"
+            <ProgressBar
+                android:id="@+id/busy_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
@@ -169,7 +183,8 @@
                 tools:visibility="gone" />
         </LinearLayout>
 
-        <TextView android:id="@+id/incompatible_reasons"
+        <TextView
+            android:id="@+id/incompatible_reasons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#d86758"
@@ -178,7 +193,8 @@
             tools:visibility="visible"
             tools:text="Requires: armeabi-v7a" />
 
-        <TextView android:id="@+id/target_arch"
+        <TextView
+            android:id="@+id/target_arch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="?attr/lightGrayTextColor"

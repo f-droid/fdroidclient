@@ -6,10 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.views.AppDetailsActivity;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +16,9 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.fdroid.database.AppOverviewItem;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.views.AppDetailsActivity;
 
 /**
  * The {@link AppCardController} can bind an app to several different layouts, as long as the layout
@@ -34,7 +33,7 @@ public class AppCardController extends RecyclerView.ViewHolder
     /**
      * After this many days, don't consider showing the "New" tag next to an app.
      */
-    public static final int DAYS_TO_CONSIDER_NEW = 14;
+    private static final int DAYS_TO_CONSIDER_NEW = 14;
 
     @NonNull
     private final ImageView icon;
@@ -103,7 +102,7 @@ public class AppCardController extends RecyclerView.ViewHolder
 
         Intent intent = new Intent(activity, AppDetailsActivity.class);
         intent.putExtra(AppDetailsActivity.EXTRA_APPID, currentApp.getPackageName());
-        Pair<View, String> iconTransitionPair = Pair.create((View) icon,
+        Pair<View, String> iconTransitionPair = Pair.create(icon,
                 activity.getString(R.string.transition_app_item_icon));
 
         // unchecked since the right type is passed as 2nd varargs arg: Pair<View, String>

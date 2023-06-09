@@ -33,8 +33,17 @@ package org.fdroid.fdroid.nearby;
  * #L%
  */
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 import android.content.Context;
 import android.text.TextUtils;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -55,15 +64,6 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Synced from NanoHTTPD's {@code TestHttpServer.java}
@@ -102,23 +102,19 @@ public class LocalHTTPDTest {
         IOUtils.copy(classLoader.getResourceAsStream("test.html"),
                 new FileOutputStream(new File(testdir, "test.html")));
 
-        serverStartThread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                localHttpd = new LocalHTTPD(
-                        context,
-                        "localhost",
-                        port,
-                        webRoot,
-                        false);
-                try {
-                    localHttpd.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                assertTrue(localHttpd.isAlive());
+        serverStartThread = new Thread(() -> {
+            localHttpd = new LocalHTTPD(
+                    context,
+                    "localhost",
+                    port,
+                    webRoot,
+                    false);
+            try {
+                localHttpd.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            assertTrue(localHttpd.isAlive());
         });
         serverStartThread.start();
         // give the server some tine to start.
@@ -254,23 +250,19 @@ public class LocalHTTPDTest {
     @Test
     public void doArgumentTest() throws InterruptedException, UnsupportedEncodingException, IOException {
         final int testPort = 9458;
-        Thread testServer = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                LocalHTTPD localHttpd = new LocalHTTPD(
-                        ApplicationProvider.getApplicationContext(),
-                        "localhost",
-                        testPort,
-                        webRoot,
-                        false);
-                try {
-                    localHttpd.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                assertTrue(localHttpd.isAlive());
+        Thread testServer = new Thread(() -> {
+            LocalHTTPD localHttpd = new LocalHTTPD(
+                    ApplicationProvider.getApplicationContext(),
+                    "localhost",
+                    testPort,
+                    webRoot,
+                    false);
+            try {
+                localHttpd.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            assertTrue(localHttpd.isAlive());
         });
 
         testServer.start();

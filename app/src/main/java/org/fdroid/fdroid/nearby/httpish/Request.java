@@ -148,7 +148,7 @@ public final class Request {
 
                 if (((char) b) == '\n') {
                     if (baos.size() > 0) {
-                        line = new String(baos.toByteArray());
+                        line = baos.toString();
                     }
 
                     return line;

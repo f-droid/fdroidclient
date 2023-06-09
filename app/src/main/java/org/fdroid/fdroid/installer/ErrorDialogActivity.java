@@ -19,16 +19,15 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import org.fdroid.fdroid.R;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+
+import org.fdroid.fdroid.R;
 
 public class ErrorDialogActivity extends FragmentActivity {
 
@@ -46,22 +45,14 @@ public class ErrorDialogActivity extends FragmentActivity {
         // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
         final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
         builder.setTitle(title);
-        builder.setNeutralButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        setResult(AppCompatActivity.RESULT_OK);
-                        finish();
-                    }
-                });
-        builder.setOnCancelListener(
-                new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        setResult(AppCompatActivity.RESULT_CANCELED);
-                        finish();
-                    }
-                });
+        builder.setNeutralButton(android.R.string.ok, (dialog, which) -> {
+            setResult(AppCompatActivity.RESULT_OK);
+            finish();
+        });
+        builder.setOnCancelListener(dialog -> {
+            setResult(AppCompatActivity.RESULT_CANCELED);
+            finish();
+        });
         builder.setMessage(message);
         builder.create().show();
     }

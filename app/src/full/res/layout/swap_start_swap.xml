@@ -1,157 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.fdroid.fdroid.nearby.StartSwapView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:swap="http://schemas.android.com/apk/res-auto"
-        swap:toolbarColor="@color/swap_bright_blue"
-        swap:toolbarTitle="@string/swap_nearby"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".nearby.SwapWorkflowActivity">
+<org.fdroid.fdroid.nearby.StartSwapView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:swap="http://schemas.android.com/apk/res-auto"
+    swap:toolbarColor="@color/swap_bright_blue"
+    swap:toolbarTitle="@string/swap_nearby"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nearby.SwapWorkflowActivity">
 
     <!-- Misc header -->
-    <include layout="@layout/start_swap_header"/>
+    <include layout="@layout/start_swap_header" />
 
     <!-- Bluetooth swap status + toggle -->
     <LinearLayout
-            android:id="@+id/bluetooth_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/header"
-            android:padding="10dp"
-            android:orientation="horizontal">
+        android:id="@+id/bluetooth_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:padding="10dp"
+        android:orientation="horizontal">
 
         <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/use_bluetooth"
-                swap:srcCompat="@drawable/ic_bluetooth_searching"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/use_bluetooth"
+            swap:srcCompat="@drawable/ic_bluetooth_searching" />
 
         <LinearLayout
-                android:layout_width="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:layout_weight="1.00"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:id="@+id/bluetooth_visible"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="15dp"
-                android:paddingStart="15dp"
-                android:layout_weight="1.00"
-                tools:ignore="RtlSymmetry">
+                tools:text="@string/swap_not_visible_bluetooth"
+                android:textSize="18sp" />
 
             <TextView
-                    android:id="@+id/bluetooth_visible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/swap_not_visible_bluetooth"
-                    android:textSize="18sp"/>
-
-            <TextView
-                    android:id="@+id/device_id_bluetooth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="SP-120"
-                    android:textColor="@color/swap_light_text"/>
+                android:id="@+id/device_id_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="SP-120"
+                android:textColor="@color/swap_light_text" />
 
         </LinearLayout>
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:id="@+id/switch_bluetooth"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/switch_bluetooth" />
 
     </LinearLayout>
 
     <!-- WiFi swap status + toggle -->
     <LinearLayout
-            android:id="@+id/wifi_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bluetooth_info"
-            android:padding="10dp"
-            android:orientation="horizontal">
+        android:id="@+id/wifi_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bluetooth_info"
+        android:padding="10dp"
+        android:orientation="horizontal">
 
         <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/wifi"
-                swap:srcCompat="@drawable/ic_wifi"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/wifi"
+            swap:srcCompat="@drawable/ic_wifi" />
 
         <LinearLayout
-                android:layout_width="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:layout_weight="1.00"
+            tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:id="@+id/wifi_visible"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="15dp"
-                android:paddingStart="15dp"
-                android:layout_weight="1.00"
-                tools:ignore="RtlSymmetry">
+                tools:text="@string/swap_starting"
+                android:textSize="18sp" />
 
             <TextView
-                    android:id="@+id/wifi_visible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/swap_starting"
-                    android:textSize="18sp"/>
+                android:id="@+id/device_id_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/swap_wifi_device_name"
+                android:textColor="@color/swap_light_text" />
 
             <TextView
-                    android:id="@+id/device_id_wifi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/swap_wifi_device_name"
-                    android:textColor="@color/swap_light_text"/>
-
-            <TextView
-                    android:id="@+id/wifi_network"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="150dp"
-                    tools:text="wifi network name"
-                    android:textColor="@color/swap_bright_blue"
-                    android:textSize="16sp"/>
+                android:id="@+id/wifi_network"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                tools:text="wifi network name"
+                android:textColor="@color/swap_bright_blue"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/switch_wifi"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch_wifi" />
 
     </LinearLayout>
 
     <!-- Feedback for "searching for nearby people..." -->
     <LinearLayout
-            android:id="@+id/feedback_searching"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wifi_info"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="20dp">
+        android:id="@+id/feedback_searching"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wifi_info"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="20dp">
 
         <TextView
-                android:id="@+id/text_people_nearby"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/swap_people_nearby"
-                android:textColor="@color/swap_light_text"
-                android:layout_weight="1.00"/>
+            android:id="@+id/text_people_nearby"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/swap_people_nearby"
+            android:textColor="@color/swap_light_text"
+            android:layout_weight="1.00" />
 
         <ProgressBar
-                android:id="@+id/searching_people_nearby"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:indeterminate="true"/>
+            android:id="@+id/searching_people_nearby"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:indeterminate="true" />
 
     </LinearLayout>
 
 
     <!-- Buttons to help the user when they can't find any peers. Shown at bottom of relative layout -->
     <LinearLayout
-            android:id="@+id/cant_find_peers"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+        android:id="@+id/cant_find_peers"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_send_fdroid"
@@ -187,25 +186,25 @@
 
     <!-- Heading for "can't find peers" -->
     <TextView
-            android:id="@+id/header_cant_find_peers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/cant_find_peers"
-            android:text="@string/swap_cant_find_peers"
-            android:paddingLeft="20dp"
-            android:paddingStart="20dp"
-            android:paddingRight="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="20dp"
-            android:textColor="@color/swap_light_text"/>
+        android:id="@+id/header_cant_find_peers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/cant_find_peers"
+        android:text="@string/swap_cant_find_peers"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/swap_light_text" />
 
     <!-- List of all currently known peers (i.e. bluetooth and wifi devices that have been identified -->
     <ListView
-            android:id="@+id/list_people_nearby"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/feedback_searching"
-            android:layout_above="@id/header_cant_find_peers">
+        android:id="@+id/list_people_nearby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feedback_searching"
+        android:layout_above="@id/header_cant_find_peers">
 
     </ListView>
 

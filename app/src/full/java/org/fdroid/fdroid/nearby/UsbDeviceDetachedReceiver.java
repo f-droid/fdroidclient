@@ -26,15 +26,12 @@ import android.content.Intent;
 import android.database.ContentObserver;
 import android.hardware.usb.UsbManager;
 import android.net.Uri;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.views.main.NearbyViewBinder;
 
 import java.util.HashMap;
-
-import androidx.annotation.RequiresApi;
 
 /**
  * This is just a shim to receive {@link UsbManager#ACTION_USB_DEVICE_DETACHED}

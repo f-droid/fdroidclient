@@ -6,10 +6,6 @@ import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.categories.AppCardController;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.fdroid.database.AppOverviewItem;
+import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.categories.AppCardController;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
     private final AppCompatActivity activity;
     private final RecyclerView.ItemDecoration appListDecorator;
 
-    public LatestAdapter(AppCompatActivity activity) {
+    LatestAdapter(AppCompatActivity activity) {
         this.activity = activity;
         appListDecorator = new LatestAdapter.ItemDecorator(activity);
     }
@@ -143,7 +142,8 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
         }
 
         @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, RecyclerView parent,
+                                   @NonNull RecyclerView.State state) {
             int position = parent.getChildAdapterPosition(view);
             Resources resources = context.getResources();
             int horizontalPadding = (int) resources.getDimension(R.dimen.latest__padding__app_card__horizontal);

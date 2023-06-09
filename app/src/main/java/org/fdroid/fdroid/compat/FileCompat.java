@@ -48,10 +48,10 @@ public class FileCompat {
 
     static void symlinkRuntime(SanitizedFile source, SanitizedFile dest) {
         String[] commands = {
-            FDroidApp.SYSTEM_DIR_NAME + "/bin/ln",
-            "-s",
-            source.getAbsolutePath(),
-            dest.getAbsolutePath(),
+                FDroidApp.SYSTEM_DIR_NAME + "/bin/ln",
+                "-s",
+                source.getAbsolutePath(),
+                dest.getAbsolutePath(),
         };
         try {
             Utils.debugLog(TAG, "Executing command: " + commands[0] + " " + commands[1]

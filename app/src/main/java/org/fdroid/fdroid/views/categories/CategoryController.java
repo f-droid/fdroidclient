@@ -72,14 +72,14 @@ public class CategoryController extends RecyclerView.ViewHolder {
 
         appCardsAdapter = new AppPreviewAdapter(activity);
 
-        viewAll = (Button) itemView.findViewById(R.id.view_all_button);
+        viewAll = itemView.findViewById(R.id.view_all_button);
         viewAll.setOnClickListener(onViewAll);
 
-        heading = (TextView) itemView.findViewById(R.id.name);
-        image = (FeatureImage) itemView.findViewById(R.id.category_image);
-        background = (FrameLayout) itemView.findViewById(R.id.category_background);
+        heading = itemView.findViewById(R.id.name);
+        image = itemView.findViewById(R.id.category_image);
+        background = itemView.findViewById(R.id.category_background);
 
-        RecyclerView appCards = (RecyclerView) itemView.findViewById(R.id.app_cards);
+        RecyclerView appCards = itemView.findViewById(R.id.app_cards);
         appCards.setAdapter(appCardsAdapter);
         appCards.addItemDecoration(new ItemDecorator(activity));
     }
@@ -146,7 +146,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
         disposable = Single.fromCallable(() -> db.getAppDao().getNumberOfAppsInCategory(currentCategory.getId()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((numApps) -> setNumAppsInCategory(numApps, onNoApps));
+                .subscribe(numApps -> setNumAppsInCategory(numApps, onNoApps));
     }
 
     /**
@@ -240,7 +240,6 @@ public class CategoryController extends RecyclerView.ViewHolder {
 
             // Leave this "paddingEnd" local variable here for clarity when converting from
             // left/right to start/end for RTL friendly layout.
-            // noinspection UnnecessaryLocalVariable
             int paddingEnd = end ? horizontalPaddingLast : horizontalPadding;
             int paddingStart = first ? horizontalPaddingFirst : horizontalPadding;
 

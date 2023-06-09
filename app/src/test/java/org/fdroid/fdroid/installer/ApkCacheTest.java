@@ -1,7 +1,12 @@
 package org.fdroid.fdroid.installer;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import android.content.ContextWrapper;
 import android.util.Log;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +15,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowLog;
 
 import java.io.File;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class ApkCacheTest {

@@ -2,6 +2,10 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -9,10 +13,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.App;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Apps which we want to show some more substantial information about.
@@ -45,7 +45,7 @@ public class AppStatus extends AppUpdateData {
 
         @NonNull
         @Override
-        protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
+        protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
             return new AppStatusListItemController(activity, activity.getLayoutInflater()
                     .inflate(R.layout.updateable_app_status_item, parent, false));
         }

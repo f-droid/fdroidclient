@@ -1,20 +1,20 @@
 /*
-**
-** Copyright 2007, The Android Open Source Project
-** Copyright 2015 Daniel Martí <mvdan@mvdan.cc>
-**
-** Licensed under the Apache License, Version 2.0 (the "License");
-** you may not use this file except in compliance with the License.
-** You may obtain a copy of the License at
-**
-**     http://www.apache.org/licenses/LICENSE-2.0
-**
-** Unless required by applicable law or agreed to in writing, software
-** distributed under the License is distributed on an "AS IS" BASIS,
-** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-** See the License for the specific language governing permissions and
-** limitations under the License.
-*/
+ **
+ ** Copyright 2007, The Android Open Source Project
+ ** Copyright 2015 Daniel Martí <mvdan@mvdan.cc>
+ **
+ ** Licensed under the Apache License, Version 2.0 (the "License");
+ ** you may not use this file except in compliance with the License.
+ ** You may obtain a copy of the License at
+ **
+ **     http://www.apache.org/licenses/LICENSE-2.0
+ **
+ ** Unless required by applicable law or agreed to in writing, software
+ ** distributed under the License is distributed on an "AS IS" BASIS,
+ ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ** See the License for the specific language governing permissions and
+ ** limitations under the License.
+ */
 
 package org.fdroid.fdroid.privileged.views;
 
@@ -68,14 +68,11 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
     private static final String TAB_ID_NEW = "new";
 
     private void startInstallConfirm() {
-        TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
+        TabHost tabHost = findViewById(android.R.id.tabhost);
         tabHost.setup();
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        ViewPager viewPager = findViewById(R.id.pager);
         TabsAdapter adapter = new TabsAdapter(this, tabHost, viewPager);
-        adapter.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-            }
+        adapter.setOnTabChangedListener(tabId -> {
         });
 
         boolean permVisible = false;
@@ -111,9 +108,9 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
             LayoutInflater inflater = ContextCompat.getSystemService(this, LayoutInflater.class);
             View root = inflater.inflate(R.layout.permissions_list, null);
             if (scrollView == null) {
-                scrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
+                scrollView = root.findViewById(R.id.scrollview);
             }
-            final ViewGroup permList = (ViewGroup) root.findViewById(R.id.permission_list);
+            final ViewGroup permList = root.findViewById(R.id.permission_list);
             permList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_ALL));
             adapter.addTab(tabHost.newTabSpec(TAB_ID_ALL).setIndicator(
                     getText(R.string.allPerms)), root);
@@ -139,8 +136,8 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
             ((TextView) findViewById(R.id.install_confirm)).setText(msg);
         }
         installConfirm.setVisibility(View.VISIBLE);
-        okButton = (Button) findViewById(R.id.ok_button);
-        cancelButton = (Button) findViewById(R.id.cancel_button);
+        okButton = findViewById(R.id.ok_button);
+        cancelButton = findViewById(R.id.cancel_button);
         okButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
         if (scrollView == null) {
@@ -149,12 +146,9 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
             okButton.setText(R.string.menu_install);
             okCanInstall = true;
         } else {
-            scrollView.setFullScrollAction(new Runnable() {
-                @Override
-                public void run() {
-                    okButton.setText(R.string.menu_install);
-                    okCanInstall = true;
-                }
+            scrollView.setFullScrollAction(() -> {
+                okButton.setText(R.string.menu_install);
+                okCanInstall = true;
             });
         }
     }
@@ -190,9 +184,9 @@ public class InstallConfirmActivity extends AppCompatActivity implements OnCance
     private void onAppLoaded(org.fdroid.database.App dbApp) {
         App app = new App(dbApp, null);
         View appSnippet = findViewById(R.id.app_snippet);
-        TextView appName = (TextView) appSnippet.findViewById(R.id.app_name);
+        TextView appName = appSnippet.findViewById(R.id.app_name);
         appName.setText(app.name);
-        ImageView appIcon = (ImageView) appSnippet.findViewById(R.id.app_icon);
+        ImageView appIcon = appSnippet.findViewById(R.id.app_icon);
         app.loadWithGlide(this, app.iconFile)
                 .apply(Utils.getAlwaysShowIconRequestOptions())
                 .into(appIcon);

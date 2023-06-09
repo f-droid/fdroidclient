@@ -1,8 +1,14 @@
 package org.fdroid.fdroid.data;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.content.ContextWrapper;
 import android.os.Environment;
 import android.webkit.MimeTypeMap;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.installer.ApkCache;
@@ -19,12 +25,6 @@ import org.robolectric.shadows.ShadowMimeTypeMap;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class ApkTest {

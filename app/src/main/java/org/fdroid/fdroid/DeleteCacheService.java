@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.os.Process;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+import androidx.core.content.ContextCompat;
+
 import com.bumptech.glide.Glide;
 
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
-import androidx.core.content.ContextCompat;
 
 /**
  * An {@link JobIntentService} subclass for deleting the full cache for this app.

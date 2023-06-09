@@ -150,12 +150,9 @@ public class FeatureImage extends AppCompatImageView {
         }
 
         alphaAnimator = ValueAnimator.ofInt(0, 255).setDuration(150);
-        alphaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                currentAlpha = (int) animation.getAnimatedValue();
-                invalidate();
-            }
+        alphaAnimator.addUpdateListener(animation -> {
+            currentAlpha = (int) animation.getAnimatedValue();
+            invalidate();
         });
 
         currentAlpha = 0;

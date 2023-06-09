@@ -15,6 +15,7 @@
         <TextView
             android:text="@string/about_version"
             style="@style/CaptionText" />
+
         <TextView
             android:id="@+id/version"
             android:text="@string/unknown"
@@ -23,6 +24,7 @@
         <TextView
             android:text="@string/about_site"
             style="@style/CaptionText" />
+
         <TextView
             android:text="@string/site_link"
             android:autoLink="web"
@@ -31,6 +33,7 @@
         <TextView
             android:text="@string/about_forum"
             style="@style/CaptionText" />
+
         <TextView
             android:text="@string/forum_link"
             android:autoLink="web"
@@ -39,6 +42,7 @@
         <TextView
             android:text="@string/about_source"
             style="@style/CaptionText" />
+
         <TextView
             android:text="@string/source_link"
             android:autoLink="web"
@@ -47,6 +51,7 @@
         <TextView
             android:text="@string/about_license"
             style="@style/CaptionText" />
+
         <TextView
             android:text="@string/license_gplv3_later"
             style="@style/BodyText" />

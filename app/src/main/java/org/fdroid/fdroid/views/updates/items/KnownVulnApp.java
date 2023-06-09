@@ -2,6 +2,10 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate;
 
 import org.fdroid.fdroid.R;
@@ -10,17 +14,13 @@ import org.fdroid.fdroid.data.App;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 /**
  * List of all apps which can be updated, but have not yet been downloaded.
  *
  * @see KnownVulnApp The data that is bound to this view.
  * @see R.layout#known_vuln_app_list_item The view that this binds to.
  * @see KnownVulnAppListItemController Used for binding the {@link App} to
- *      the {@link R.layout#known_vuln_app_list_item}
+ * the {@link R.layout#known_vuln_app_list_item}
  */
 public class KnownVulnApp extends AppUpdateData {
 
@@ -50,7 +50,7 @@ public class KnownVulnApp extends AppUpdateData {
 
         @NonNull
         @Override
-        protected RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
+        protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
             return new KnownVulnAppListItemController(activity, refreshApps, activity.getLayoutInflater()
                     .inflate(R.layout.known_vuln_app_list_item, parent, false));
         }

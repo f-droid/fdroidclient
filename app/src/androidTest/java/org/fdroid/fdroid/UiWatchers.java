@@ -16,12 +16,12 @@
 
 package org.fdroid.fdroid;
 
+import android.util.Log;
+
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
-import androidx.test.uiautomator.UiWatcher;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,83 +38,71 @@ class UiWatchers {
      * This is a sample watcher looking for ANR and crashes. it closes it and moves on. You should
      * create your own watchers and handle error logging properly for your type of tests.
      */
-    public void registerAnrAndCrashWatchers() {
-        UiDevice.getInstance().registerWatcher("ANR", new UiWatcher() {
-            @Override
-            public boolean checkForCondition() {
-                UiObject window = new UiObject(new UiSelector().className(
-                        "com.android.server.am.AppNotRespondingDialog"));
-                String errorText = null;
-                if (window.exists()) {
-                    try {
-                        errorText = window.getText();
-                    } catch (UiObjectNotFoundException e) {
-                        Log.e(LOG_TAG, "dialog gone?", e);
-                    }
-                    onAnrDetected(errorText);
-                    postHandler("Wait");
-                    return true; // triggered
+    void registerAnrAndCrashWatchers() {
+        UiDevice.getInstance().registerWatcher("ANR", () -> {
+            UiObject window = new UiObject(new UiSelector().className(
+                    "com.android.server.am.AppNotRespondingDialog"));
+            String errorText = null;
+            if (window.exists()) {
+                try {
+                    errorText = window.getText();
+                } catch (UiObjectNotFoundException e) {
+                    Log.e(LOG_TAG, "dialog gone?", e);
                 }
-                return false; // no trigger
+                onAnrDetected(errorText);
+                postHandler("Wait");
+                return true; // triggered
             }
+            return false; // no trigger
         });
         // class names may have changed
-        UiDevice.getInstance().registerWatcher("ANR2", new UiWatcher() {
-            @Override
-            public boolean checkForCondition() {
-                UiObject window = new UiObject(new UiSelector().packageName("android")
-                        .textContains("isn't responding."));
-                if (window.exists()) {
-                    String errorText = null;
-                    try {
-                        errorText = window.getText();
-                    } catch (UiObjectNotFoundException e) {
-                        Log.e(LOG_TAG, "dialog gone?", e);
-                    }
-                    onAnrDetected(errorText);
-                    postHandler("Wait");
-                    return true; // triggered
+        UiDevice.getInstance().registerWatcher("ANR2", () -> {
+            UiObject window = new UiObject(new UiSelector().packageName("android")
+                    .textContains("isn't responding."));
+            if (window.exists()) {
+                String errorText = null;
+                try {
+                    errorText = window.getText();
+                } catch (UiObjectNotFoundException e) {
+                    Log.e(LOG_TAG, "dialog gone?", e);
                 }
-                return false; // no trigger
+                onAnrDetected(errorText);
+                postHandler("Wait");
+                return true; // triggered
             }
+            return false; // no trigger
         });
-        UiDevice.getInstance().registerWatcher("CRASH", new UiWatcher() {
-            @Override
-            public boolean checkForCondition() {
-                UiObject window = new UiObject(new UiSelector().className(
-                        "com.android.server.am.AppErrorDialog"));
-                if (window.exists()) {
-                    String errorText = null;
-                    try {
-                        errorText = window.getText();
-                    } catch (UiObjectNotFoundException e) {
-                        Log.e(LOG_TAG, "dialog gone?", e);
-                    }
-                    onCrashDetected(errorText);
-                    postHandler("OK");
-                    return true; // triggered
+        UiDevice.getInstance().registerWatcher("CRASH", () -> {
+            UiObject window = new UiObject(new UiSelector().className(
+                    "com.android.server.am.AppErrorDialog"));
+            if (window.exists()) {
+                String errorText = null;
+                try {
+                    errorText = window.getText();
+                } catch (UiObjectNotFoundException e) {
+                    Log.e(LOG_TAG, "dialog gone?", e);
                 }
-                return false; // no trigger
+                onCrashDetected(errorText);
+                postHandler("OK");
+                return true; // triggered
             }
+            return false; // no trigger
         });
-        UiDevice.getInstance().registerWatcher("CRASH2", new UiWatcher() {
-            @Override
-            public boolean checkForCondition() {
-                UiObject window = new UiObject(new UiSelector().packageName("android")
-                        .textContains("has stopped"));
-                if (window.exists()) {
-                    String errorText = null;
-                    try {
-                        errorText = window.getText();
-                    } catch (UiObjectNotFoundException e) {
-                        Log.e(LOG_TAG, "dialog gone?", e);
-                    }
-                    onCrashDetected(errorText);
-                    postHandler("OK");
-                    return true; // triggered
+        UiDevice.getInstance().registerWatcher("CRASH2", () -> {
+            UiObject window = new UiObject(new UiSelector().packageName("android")
+                    .textContains("has stopped"));
+            if (window.exists()) {
+                String errorText = null;
+                try {
+                    errorText = window.getText();
+                } catch (UiObjectNotFoundException e) {
+                    Log.e(LOG_TAG, "dialog gone?", e);
                 }
-                return false; // no trigger
+                onCrashDetected(errorText);
+                postHandler("OK");
+                return true; // triggered
             }
+            return false; // no trigger
         });
         Log.i(LOG_TAG, "Registered GUI Exception watchers");
     }

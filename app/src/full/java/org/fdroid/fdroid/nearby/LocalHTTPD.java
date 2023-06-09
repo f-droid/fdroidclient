@@ -41,7 +41,6 @@ import org.fdroid.fdroid.BuildConfig;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -57,6 +56,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
 
@@ -72,7 +72,8 @@ import fi.iki.elonen.NanoHTTPD.Response.IStatus;
  * <p>
  * This is mostly just synced from {@code SimpleWebServer.java} from NanoHTTPD.
  *
- * @see <a href="https://github.com/NanoHttpd/nanohttpd/blob/nanohttpd-project-2.3.1/webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java">webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java</a>
+ * @see
+ * <a href="https://github.com/NanoHttpd/nanohttpd/blob/nanohttpd-project-2.3.1/webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java">webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java</a>
  */
 public class LocalHTTPD extends NanoHTTPD {
     private static final String TAG = "LocalHTTPD";
@@ -159,17 +160,20 @@ public class LocalHTTPD extends NanoHTTPD {
     }
 
     protected Response getInternalErrorResponse(String s) {
-        return newFixedLengthResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT, "INTERNAL ERROR: " + s);
+        return newFixedLengthResponse(Response.Status.INTERNAL_ERROR, NanoHTTPD.MIME_PLAINTEXT,
+                "INTERNAL ERROR: " + s);
     }
 
     protected Response getNotFoundResponse() {
-        return newFixedLengthResponse(Response.Status.NOT_FOUND, NanoHTTPD.MIME_PLAINTEXT, "Error 404, file not found.");
+        return newFixedLengthResponse(Response.Status.NOT_FOUND, NanoHTTPD.MIME_PLAINTEXT, "Error 404, file not " +
+                "found.");
     }
 
     protected String listDirectory(String uri, File f) {
         String heading = "Directory " + uri;
         StringBuilder msg =
-                new StringBuilder("<html><head><title>" + heading + "</title><style><!--\n" + "span.dirname { font-weight: bold; }\n" + "span.filesize { font-size: 75%; }\n"
+                new StringBuilder("<html><head><title>" + heading + "</title><style><!--\n" + "span.dirname { " +
+                        "font-weight: bold; }\n" + "span.filesize { font-size: 75%; }\n"
                         + "// -->\n" + "</style>" + "</head><body><h1>" + heading + "</h1>");
 
         String up = null;
@@ -181,39 +185,32 @@ public class LocalHTTPD extends NanoHTTPD {
             }
         }
 
-        List<String> files = Arrays.asList(f.list(new FilenameFilter() {
-
-            @Override
-            public boolean accept(File dir, String name) {
-                return new File(dir, name).isFile();
-            }
-        }));
+        List<String> files =
+                Arrays.asList(Objects.requireNonNull(f.list((dir, name) -> new File(dir, name).isFile())));
         Collections.sort(files);
-        List<String> directories = Arrays.asList(f.list(new FilenameFilter() {
-
-            @Override
-            public boolean accept(File dir, String name) {
-                return new File(dir, name).isDirectory();
-            }
-        }));
+        List<String> directories =
+                Arrays.asList(Objects.requireNonNull(f.list((dir, name) -> new File(dir, name).isDirectory())));
         Collections.sort(directories);
         if (up != null || directories.size() + files.size() > 0) {
             msg.append("<ul>");
             if (up != null || directories.size() > 0) {
                 msg.append("<section class=\"directories\">");
                 if (up != null) {
-                    msg.append("<li><a rel=\"directory\" href=\"").append(up).append("\"><span class=\"dirname\">..</span></a></li>");
+                    msg.append("<li><a rel=\"directory\" href=\"").append(up).append("\"><span class=\"dirname\">." +
+                            ".</span></a></li>");
                 }
                 for (String directory : directories) {
                     String dir = directory + "/";
-                    msg.append("<li><a rel=\"directory\" href=\"").append(encodeUri(uri + dir)).append("\"><span class=\"dirname\">").append(dir).append("</span></a></li>");
+                    msg.append("<li><a rel=\"directory\" href=\"").append(encodeUri(uri + dir)).append("\"><span " +
+                            "class=\"dirname\">").append(dir).append("</span></a></li>");
                 }
                 msg.append("</section>");
             }
             if (files.size() > 0) {
                 msg.append("<section class=\"files\">");
                 for (String file : files) {
-                    msg.append("<li><a href=\"").append(encodeUri(uri + file)).append("\"><span class=\"filename\">").append(file).append("</span></a>");
+                    msg.append("<li><a href=\"").append(encodeUri(uri + file)).append("\"><span class=\"filename" +
+                            "\">").append(file).append("</span></a>");
                     File curFile = new File(f, file);
                     long len = curFile.length();
                     msg.append("&nbsp;<span class=\"filesize\">(");
@@ -296,7 +293,8 @@ public class LocalHTTPD extends NanoHTTPD {
         if (f.isDirectory() && !uri.endsWith("/")) {
             uri += "/";
             Response res =
-                    newFixedLengthResponse(Response.Status.REDIRECT, NanoHTTPD.MIME_HTML, "<html><body>Redirected: <a href=\"" + uri + "\">" + uri + "</a></body></html>");
+                    newFixedLengthResponse(Response.Status.REDIRECT, NanoHTTPD.MIME_HTML, "<html><body>Redirected: " +
+                            "<a href=\"" + uri + "\">" + uri + "</a></body></html>");
             res.addHeader("Location", uri);
             return res;
         }
@@ -386,7 +384,8 @@ public class LocalHTTPD extends NanoHTTPD {
         Response res;
         try {
             // Calculate etag
-            String etag = Integer.toHexString((file.getAbsolutePath() + file.lastModified() + "" + file.length()).hashCode());
+            String etag =
+                    Integer.toHexString((file.getAbsolutePath() + file.lastModified() + "" + file.length()).hashCode());
 
             // Support (simple) skipping:
             long startFrom = 0;
@@ -412,7 +411,8 @@ public class LocalHTTPD extends NanoHTTPD {
             boolean headerIfRangeMissingOrMatching = (ifRange == null || etag.equals(ifRange));
 
             String ifNoneMatch = header.get("if-none-match");
-            boolean headerIfNoneMatchPresentAndMatching = ifNoneMatch != null && ("*".equals(ifNoneMatch) || ifNoneMatch.equals(etag));
+            boolean headerIfNoneMatchPresentAndMatching =
+                    ifNoneMatch != null && ("*".equals(ifNoneMatch) || ifNoneMatch.equals(etag));
 
             // Change return code and add Content-Range header when skipping is
             // requested

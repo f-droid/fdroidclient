@@ -24,6 +24,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.fdroid.fdroid.Utils;
@@ -35,9 +38,6 @@ import org.fdroid.fdroid.views.AppDetailsActivity;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.Objects;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.JobIntentService;
 
 /**
  * This service handles the install process of apk files and

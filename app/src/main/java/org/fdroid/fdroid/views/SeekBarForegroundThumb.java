@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
-import org.fdroid.fdroid.R;
-
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.core.content.ContextCompat;
 
+import org.fdroid.fdroid.R;
+
 /**
  * SeekBar that does not show the TickMark above the thumb
- * Based on https://stackoverflow.com/a/47727128
+ * Based on <a href="https://stackoverflow.com/a/47727128">https://stackoverflow.com/a/47727128</a>
  */
 public class SeekBarForegroundThumb extends AppCompatSeekBar {
     private Drawable tickMark;

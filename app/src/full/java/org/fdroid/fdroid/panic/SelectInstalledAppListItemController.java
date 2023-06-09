@@ -2,6 +2,10 @@ package org.fdroid.fdroid.panic;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -9,10 +13,6 @@ import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.installed.InstalledAppListItemController;
 
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Shows the currently installed apps as a selectable list.

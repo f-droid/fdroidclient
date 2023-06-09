@@ -20,10 +20,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.google.android.material.appbar.AppBarLayout;
-
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 /**
  * Workaround AppBarLayout.Behavior for https://issuetracker.google.com/66996774

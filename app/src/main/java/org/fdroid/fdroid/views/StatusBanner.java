@@ -11,6 +11,9 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.PreferenceManager;
+
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -20,9 +23,6 @@ import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.util.Arrays;
 import java.util.List;
-
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.preference.PreferenceManager;
 
 /**
  * Banner widget which reflects current status related to repository updates.
@@ -126,6 +126,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
                 for (String segment : Uri.parse(repo.getAddress()).getPathSegments()) {
                     if (systemPartitions.contains(segment)) {
                         hasLocalNonSystemRepos = false;
+                        break;
                     }
                     break; // only check the first segment NOPMD
                 }
@@ -166,7 +167,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
             new SharedPreferences.OnSharedPreferenceChangeListener() {
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                    if (key == Preferences.PREF_OVER_DATA || key == Preferences.PREF_OVER_WIFI) {
+                    if (key.equals(Preferences.PREF_OVER_DATA) || key.equals(Preferences.PREF_OVER_WIFI)) {
                         overDataState = Preferences.get().getOverData();
                         overWiFiState = Preferences.get().getOverWifi();
                         setBannerTextAndVisibility();

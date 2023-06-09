@@ -2,7 +2,6 @@ package org.fdroid.fdroid.nearby;
 
 import static java.util.Objects.requireNonNull;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -13,10 +12,8 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -63,11 +60,7 @@ public class SelectAppsView extends SwapView {
         listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                toggleAppSelected(position);
-            }
-        });
+        listView.setOnItemClickListener((parent, v, position, id) -> toggleAppSelected(position));
         afterAppsLoaded();
     }
 
@@ -129,7 +122,7 @@ public class SelectAppsView extends SwapView {
                 filteredPackages.addAll(allPackages);
             } else {
                 String query = requireNonNull(searchTerm).toLowerCase(Locale.US);
-                for (InstalledApp app: allPackages) {
+                for (InstalledApp app : allPackages) {
                     if (app.name.toLowerCase(Locale.US).contains(query)) {
                         filteredPackages.add(app);
                     }
@@ -190,12 +183,9 @@ public class SelectAppsView extends SwapView {
                 checkBox.setOnCheckedChangeListener(null);
 
                 checkBox.setChecked(listView.isItemChecked(position));
-                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        listView.setItemChecked(position, isChecked);
-                        toggleAppSelected(position);
-                    }
+                checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    listView.setItemChecked(position, isChecked);
+                    toggleAppSelected(position);
                 });
             }
         }
