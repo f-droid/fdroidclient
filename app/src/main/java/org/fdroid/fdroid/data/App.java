@@ -18,6 +18,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.pm.PackageInfoCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 
@@ -87,7 +88,7 @@ public class App implements Comparable<App>, Parcelable {
     public boolean compatible;
     public Apk installedApk; // might be null if not installed
     public String installedSigner;
-    public int installedVersionCode;
+    public long installedVersionCode;
     public String installedVersionName;
     public org.fdroid.database.AppPrefs prefs;
     public String preferredSigner;
@@ -183,7 +184,7 @@ public class App implements Comparable<App>, Parcelable {
      * choose a specific version.
      * TODO this should probably be converted to init to {@link Integer#MIN_VALUE} like {@link #suggestedVersionCode}
      */
-    public int autoInstallVersionCode;
+    public long autoInstallVersionCode;
 
     public Date added;
     public Date lastUpdated;
@@ -217,8 +218,8 @@ public class App implements Comparable<App>, Parcelable {
         setPackageName(app.getPackageName());
         name = app.getName() == null ? "" : app.getName();
         summary = app.getSummary() == null ? "" : app.getSummary();
-        installedVersionCode = (int) app.getInstalledVersionCode();
-        autoInstallVersionCode = (int) app.getUpdate().getManifest().getVersionCode();
+        installedVersionCode = app.getInstalledVersionCode();
+        autoInstallVersionCode = app.getUpdate().getManifest().getVersionCode();
         iconFile = app.getIcon(getLocales());
     }
 
@@ -269,7 +270,7 @@ public class App implements Comparable<App>, Parcelable {
         name = item.getName() == null ? "" : item.getName();
         summary = item.getSummary() == null ? "" : item.getSummary();
         iconFile = item.getIcon(getLocales());
-        installedVersionCode = item.getInstalledVersionCode() == null ? 0 : item.getInstalledVersionCode().intValue();
+        installedVersionCode = item.getInstalledVersionCode() == null ? 0 : item.getInstalledVersionCode();
         installedVersionName = item.getInstalledVersionName();
         antiFeatures = item.getAntiFeatureKeys().toArray(new String[0]);
         compatible = item.isCompatible();
@@ -277,7 +278,7 @@ public class App implements Comparable<App>, Parcelable {
     }
 
     public void setInstalled(@Nullable PackageInfo packageInfo) {
-        installedVersionCode = packageInfo == null ? 0 : packageInfo.versionCode;
+        installedVersionCode = packageInfo == null ? 0 : PackageInfoCompat.getLongVersionCode(packageInfo);
         installedVersionName = packageInfo == null ? null : packageInfo.versionName;
         installedSigner = packageInfo == null ? null : Utils.getPackageSigner(packageInfo);
     }
@@ -294,7 +295,7 @@ public class App implements Comparable<App>, Parcelable {
                     TextUtils.equals(apk.signer, installedSigner)) || (!apk.isApk() && apk.isMediaInstalled(context));
             if (apkIsInstalled) {
                 installedApk = apk;
-                installedVersionCode = (int) apk.versionCode;
+                installedVersionCode = apk.versionCode;
                 installedVersionName = apk.versionName;
                 break;
             }
@@ -303,8 +304,7 @@ public class App implements Comparable<App>, Parcelable {
         if (apk == null) return;
         // update the autoInstallVersionCode, if needed
         if (autoInstallVersionCode <= 0 && installedVersionCode < apk.versionCode) {
-            // FIXME versionCode is a long nowadays
-            autoInstallVersionCode = (int) apk.versionCode;
+            autoInstallVersionCode = apk.versionCode;
             autoInstallVersionName = apk.versionName;
         }
         antiFeatures = apk.antiFeatures;
@@ -450,7 +450,7 @@ public class App implements Comparable<App>, Parcelable {
             // If we are here, the package is actually installed, so we better find something
             Apk foundApk = null;
             for (Apk apk : apks) {
-                if (apk.versionCode == pi.versionCode) {
+                if (apk.versionCode == PackageInfoCompat.getLongVersionCode(pi)) {
                     foundApk = apk;
                     break;
                 }
@@ -722,7 +722,7 @@ public class App implements Comparable<App>, Parcelable {
         dest.writeString(this.suggestedVersionName);
         dest.writeInt(this.suggestedVersionCode);
         dest.writeString(this.autoInstallVersionName);
-        dest.writeInt(this.autoInstallVersionCode);
+        dest.writeLong(this.autoInstallVersionCode);
         dest.writeLong(this.added != null ? this.added.getTime() : -1);
         dest.writeLong(this.lastUpdated != null ? this.lastUpdated.getTime() : -1);
         dest.writeStringArray(this.categories);
@@ -737,7 +737,7 @@ public class App implements Comparable<App>, Parcelable {
         dest.writeStringList(Utils.toString(this.wearScreenshots));
         dest.writeByte(this.isApk ? (byte) 1 : (byte) 0);
         dest.writeString(this.installedVersionName);
-        dest.writeInt(this.installedVersionCode);
+        dest.writeLong(this.installedVersionCode);
         dest.writeParcelable(this.installedApk, flags);
         dest.writeString(this.installedSigner);
     }
@@ -770,7 +770,7 @@ public class App implements Comparable<App>, Parcelable {
         this.suggestedVersionName = in.readString();
         this.suggestedVersionCode = in.readInt();
         this.autoInstallVersionName = in.readString();
-        this.autoInstallVersionCode = in.readInt();
+        this.autoInstallVersionCode = in.readLong();
         long tmpAdded = in.readLong();
         this.added = tmpAdded == -1 ? null : new Date(tmpAdded);
         long tmpLastUpdated = in.readLong();
@@ -787,7 +787,7 @@ public class App implements Comparable<App>, Parcelable {
         this.wearScreenshots = Utils.fileV2FromStrings(in.createStringArrayList());
         this.isApk = in.readByte() != 0;
         this.installedVersionName = in.readString();
-        this.installedVersionCode = in.readInt();
+        this.installedVersionCode = in.readLong();
         this.installedApk = in.readParcelable(Apk.class.getClassLoader());
         this.installedSigner = in.readString();
     }

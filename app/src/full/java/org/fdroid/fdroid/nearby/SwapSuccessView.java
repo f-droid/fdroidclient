@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.pm.PackageInfoCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -101,7 +102,7 @@ public class SwapSuccessView extends SwapView {
             app.iconFile = FileV2.fromPath("icons/" + a.getIcon());
             try {
                 PackageInfo packageInfo = getContext().getPackageManager().getPackageInfo(app.packageName, 0);
-                app.installedVersionCode = packageInfo.versionCode;
+                app.installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo);
             } catch (PackageManager.NameNotFoundException ignored) {
             }
             Apk apk = new Apk();

@@ -16,6 +16,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.pm.PackageInfoCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.apache.commons.io.FileUtils;
@@ -147,7 +148,7 @@ public class InstallManagerService {
         }
 
         PackageInfo packageInfo = Utils.getPackageInfo(context, packageName);
-        if (packageInfo != null && packageInfo.versionCode == apk.versionCode
+        if (packageInfo != null && PackageInfoCompat.getLongVersionCode(packageInfo) == apk.versionCode
                 && TextUtils.equals(packageInfo.versionName, apk.versionName)) {
             Log.i(TAG, "Install action no longer valid since its installed, ignoring: " + packageName);
             return;
