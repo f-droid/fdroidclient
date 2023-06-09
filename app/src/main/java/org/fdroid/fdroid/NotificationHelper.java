@@ -1,11 +1,13 @@
 package org.fdroid.fdroid;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Point;
@@ -18,6 +20,7 @@ import android.text.style.StyleSpan;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -179,6 +182,10 @@ public class NotificationHelper {
     }
 
     private void createNotification(AppUpdateStatusManager.AppUpdateStatus entry) {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
         if (shouldIgnoreEntry(entry)) {
             notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_UPDATES);
             notificationManager.cancel(entry.getCanonicalUrl(), NOTIFY_ID_INSTALLED);
@@ -214,6 +221,9 @@ public class NotificationHelper {
     }
 
     private void createSummaryNotifications() {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
         if (!notificationManager.areNotificationsEnabled() || Preferences.get().hideAllNotifications()) {
             return;
         }
@@ -521,6 +531,9 @@ public class NotificationHelper {
                 .into(new CustomTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                            return;
+                        }
                         // update the loaded large icon, but don't expand
                         notificationBuilder.setLargeIcon(resource);
                         Notification notification = notificationBuilder.build();
@@ -530,6 +543,9 @@ public class NotificationHelper {
                     @Override
                     public void onLoadFailed(@Nullable Drawable errorDrawable) {
                         if (errorDrawable == null) return;
+                        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                            return;
+                        }
                         final Point largeIconSize = getLargeIconSize();
                         Bitmap bitmap = Bitmap.createBitmap(largeIconSize.x, largeIconSize.y, Bitmap.Config.ARGB_8888);
                         Canvas canvas = new Canvas(bitmap);
