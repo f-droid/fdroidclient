@@ -34,7 +34,7 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         minSdkVersion 23
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 25
+        targetSdkVersion 28
         /*
           The Android Testing Support Library collects analytics to continuously improve the testing
           experience. More specifically, it uploads a hash of the package name of the application
