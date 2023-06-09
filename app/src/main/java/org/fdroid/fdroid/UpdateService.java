@@ -489,17 +489,15 @@ public class UpdateService extends JobIntentService {
                     }
                     Log.e(TAG, "Error updating repository " + repo.getAddress(), e);
                 }
-                // now that downloading the index is done, start downloading updates
-                // TODO why are we checking for updates several times (in loop and below)
-                if (changes && fdroidPrefs.isAutoDownloadEnabled() && fdroidPrefs.isBackgroundDownloadAllowed()) {
-                    autoDownloadUpdates(this);
-                }
             }
 
-            if (!changes) {
-                Utils.debugLog(TAG, "Not checking app details or compatibility, because repos were up to date.");
-            } else if (fdroidPrefs.isUpdateNotificationEnabled() && !fdroidPrefs.isAutoDownloadEnabled()) {
+            if (changes) {
                 appUpdateStatusManager.checkForUpdates();
+                // now that downloading the index is done, start downloading updates
+                if (fdroidPrefs.isAutoDownloadEnabled() && fdroidPrefs.isBackgroundDownloadAllowed()) {
+                    // this is using DbUpdateChecker#getUpdatableApps() again which isn't optimal
+                    autoDownloadUpdates(this);
+                }
             }
 
             fdroidPrefs.setLastUpdateCheck(System.currentTimeMillis());
