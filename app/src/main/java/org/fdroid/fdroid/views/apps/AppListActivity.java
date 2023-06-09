@@ -26,13 +26,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -47,14 +54,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.main.MainActivity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LiveData;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
@@ -114,90 +113,73 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         searchTerms = savedSearchSettings.getString(SEARCH_TERMS_KEY, null);
         sortClauseSelected = savedSearchSettings.getString(SORT_CLAUSE_KEY, SortClause.LAST_UPDATED);
 
-        searchInput = (EditText) findViewById(R.id.search);
+        searchInput = findViewById(R.id.search);
         searchInput.setText(searchTerms);
         searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
-        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
-                    InputMethodManager inputManager = ContextCompat.getSystemService(AppListActivity.this,
-                            InputMethodManager.class);
-                    inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+        searchInput.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
+                InputMethodManager inputManager = ContextCompat.getSystemService(AppListActivity.this,
+                        InputMethodManager.class);
+                inputManager.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
 
-                    // Change focus from the search input to the app list.
-                    appView.requestFocus();
-                    return true;
-                }
-                return false;
+                // Change focus from the search input to the app list.
+                appView.requestFocus();
+                return true;
             }
+            return false;
         });
 
-        sortImage = (ImageView) findViewById(R.id.sort);
+        sortImage = findViewById(R.id.sort);
         sortImage.setImageResource(
                 SortClause.WORDS.equals(sortClauseSelected) ? R.drawable.ic_sort : R.drawable.ic_last_updated
         );
-        sortImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (sortClauseSelected) {
-                    case SortClause.WORDS:
-                        sortClauseSelected = SortClause.LAST_UPDATED;
-                        sortImage.setImageResource(R.drawable.ic_last_updated);
-                        break;
-                    case SortClause.LAST_UPDATED:
-                        sortClauseSelected = SortClause.WORDS;
-                        sortImage.setImageResource(R.drawable.ic_sort);
-                        break;
-                    default:
-                        Log.e("AppListActivity", "Unknown sort clause: " + sortClauseSelected);
-                        sortClauseSelected = SortClause.LAST_UPDATED;
-                }
-                putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
-                loadItems();
-                appView.scrollToPosition(0);
+        sortImage.setOnClickListener(view -> {
+            switch (sortClauseSelected) {
+                case SortClause.WORDS:
+                    sortClauseSelected = SortClause.LAST_UPDATED;
+                    sortImage.setImageResource(R.drawable.ic_last_updated);
+                    break;
+                case SortClause.LAST_UPDATED:
+                    sortClauseSelected = SortClause.WORDS;
+                    sortImage.setImageResource(R.drawable.ic_sort);
+                    break;
+                default:
+                    Log.e("AppListActivity", "Unknown sort clause: " + sortClauseSelected);
+                    sortClauseSelected = SortClause.LAST_UPDATED;
             }
+            putSavedSearchSettings(getApplicationContext(), SORT_CLAUSE_KEY, sortClauseSelected);
+            loadItems();
+            appView.scrollToPosition(0);
         });
 
         hiddenAppNotice = findViewById(R.id.hiddenAppNotice);
-        hiddenAppNotice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
-                getApplicationContext().startActivity(intent);
-            }
+        hiddenAppNotice.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
+            getApplicationContext().startActivity(intent);
         });
-        emptyState = (TextView) findViewById(R.id.empty_state);
+        emptyState = findViewById(R.id.empty_state);
 
         View backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        backButton.setOnClickListener(v -> finish());
 
         View clearButton = findViewById(R.id.clear);
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchInput.setText("");
-                searchInput.requestFocus();
-                if (!keyboardStateMonitor.isKeyboardVisible()) {
-                    InputMethodManager inputMethodManager =
-                            ContextCompat.getSystemService(AppListActivity.this,
-                                    InputMethodManager.class);
-                    inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
-                            InputMethodManager.SHOW_FORCED, 0);
-                }
+        clearButton.setOnClickListener(v -> {
+            searchInput.setText("");
+            searchInput.requestFocus();
+            if (!keyboardStateMonitor.isKeyboardVisible()) {
+                InputMethodManager inputMethodManager =
+                        ContextCompat.getSystemService(AppListActivity.this,
+                                InputMethodManager.class);
+                inputMethodManager.toggleSoftInputFromWindow(v.getApplicationWindowToken(),
+                        InputMethodManager.SHOW_FORCED, 0);
             }
         });
 
         appAdapter = new AppListAdapter(this);
 
-        appView = (RecyclerView) findViewById(R.id.app_list);
+        appView = findViewById(R.id.app_list);
         appView.setHasFixedSize(true);
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);

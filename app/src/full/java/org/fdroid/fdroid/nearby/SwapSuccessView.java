@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.nearby;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -101,7 +100,7 @@ public class SwapSuccessView extends SwapView {
             app.packageName = a.getPackageName();
             app.iconFile = FileV2.fromPath("icons/" + a.getIcon());
             try {
-                PackageInfo  packageInfo = getContext().getPackageManager().getPackageInfo(app.packageName, 0);
+                PackageInfo packageInfo = getContext().getPackageManager().getPackageInfo(app.packageName, 0);
                 app.installedVersionCode = packageInfo.versionCode;
             } catch (PackageManager.NameNotFoundException ignored) {
             }
@@ -222,12 +221,12 @@ public class SwapSuccessView extends SwapView {
             ViewHolder(View view) {
                 super(view);
                 localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
-                progressView = (ProgressBar) view.findViewById(R.id.progress);
-                nameView = (TextView) view.findViewById(R.id.name);
-                iconView = (ImageView) view.findViewById(android.R.id.icon);
-                btnInstall = (Button) view.findViewById(R.id.btn_install);
-                statusInstalled = (TextView) view.findViewById(R.id.status_installed);
-                statusIncompatible = (TextView) view.findViewById(R.id.status_incompatible);
+                progressView = view.findViewById(R.id.progress);
+                nameView = view.findViewById(R.id.name);
+                iconView = view.findViewById(android.R.id.icon);
+                btnInstall = view.findViewById(R.id.btn_install);
+                statusInstalled = view.findViewById(R.id.status_installed);
+                statusIncompatible = view.findViewById(R.id.status_incompatible);
             }
 
             public void setApp(@NonNull App app) {
@@ -389,16 +388,9 @@ public class SwapSuccessView extends SwapView {
         @Override
         public void onReceive(Context context, Intent intent) {
             int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-            switch (statusCode) {
-                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                    Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adapter.notifyDataSetChanged();
-                        }
-                    });
-                    break;
+            if (statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
+                getActivity().runOnUiThread(() -> adapter.notifyDataSetChanged());
             }
         }
     };

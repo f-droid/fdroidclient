@@ -19,6 +19,12 @@
 
 package org.fdroid.fdroid;
 
+import static org.junit.Assert.assertEquals;
+
+import android.content.Context;
+
+import androidx.test.core.app.ApplicationProvider;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
 import org.fdroid.index.v2.FileV1;
@@ -26,12 +32,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-
-import static org.junit.Assert.assertEquals;
-
-import android.content.Context;
-
-import androidx.test.core.app.ApplicationProvider;
 
 @RunWith(RobolectricTestRunner.class)
 public class RepoUrlsTest {

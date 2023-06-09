@@ -2,6 +2,10 @@ package org.fdroid.fdroid.views.updates.items;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -12,18 +16,14 @@ import org.fdroid.fdroid.views.apps.AppListItemController;
 import org.fdroid.fdroid.views.apps.AppListItemState;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 /**
  * Shows apps which are:
- *  * In the process of being downloaded.
- *  * Downloaded and ready to install.
- *  * Recently installed and ready to run.
+ * * In the process of being downloaded.
+ * * Downloaded and ready to install.
+ * * Recently installed and ready to run.
  */
 public class AppStatusListItemController extends AppListItemController {
-    public AppStatusListItemController(AppCompatActivity activity, View itemView) {
+    AppStatusListItemController(AppCompatActivity activity, View itemView) {
         super(activity, itemView);
     }
 
@@ -77,13 +77,10 @@ public class AppStatusListItemController extends AppListItemController {
                                 itemView,
                                 R.string.app_list__dismiss_installing_app,
                                 Snackbar.LENGTH_LONG
-                        ).setAction(R.string.undo, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                manager.addApk(appUpdateStatus.app, appUpdateStatus.apk, appUpdateStatus.status,
-                                        appUpdateStatus.intent);
-                                adapter.refreshItems();
-                            }
+                        ).setAction(R.string.undo, view -> {
+                            manager.addApk(appUpdateStatus.app, appUpdateStatus.apk, appUpdateStatus.status,
+                                    appUpdateStatus.intent);
+                            adapter.refreshItems();
                         }).show();
                         break;
                     }

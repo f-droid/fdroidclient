@@ -96,36 +96,36 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_SHOW_INCOMPAT_VERSIONS = "incompatibleVersions";
     public static final String PREF_SHOW_ANTI_FEATURES = "showAntiFeatures";
     public static final String PREF_FORCE_TOUCH_APPS = "ignoreTouchscreen";
-    public static final String PREF_PROMPT_TO_SEND_CRASH_REPORTS = "promptToSendCrashReports";
+    private static final String PREF_PROMPT_TO_SEND_CRASH_REPORTS = "promptToSendCrashReports";
     public static final String PREF_KEEP_CACHE_TIME = "keepCacheFor";
-    public static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
+    private static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
     public static final String PREF_SEND_TO_FDROID_METRICS = "sendToFdroidMetrics";
-    public static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
+    private static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
-    public static final String PREF_SCAN_REMOVABLE_STORAGE = "scanRemovableStorage";
+    private static final String PREF_SCAN_REMOVABLE_STORAGE = "scanRemovableStorage";
     public static final String PREF_LANGUAGE = "language";
     public static final String PREF_USE_TOR = "useTor";
     public static final String PREF_ENABLE_PROXY = "enableProxy";
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
-    public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
+    private static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
     public static final String PREF_PREVENT_SCREENSHOTS = "preventScreenshots";
     public static final String PREF_PANIC_EXIT = "pref_panic_exit";
     public static final String PREF_PANIC_HIDE = "pref_panic_hide";
     public static final String PREF_PANIC_RESET_REPOS = "pref_panic_reset_repos";
-    public static final String PREF_PANIC_WIPE_SET = "panicWipeSet";
-    public static final String PREF_PANIC_TMP_SELECTED_SET = "panicTmpSelectedSet";
-    public static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
-    public static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
-    public static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
+    private static final String PREF_PANIC_WIPE_SET = "panicWipeSet";
+    private static final String PREF_PANIC_TMP_SELECTED_SET = "panicTmpSelectedSet";
+    private static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
+    private static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
+    private static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
 
     public static final int OVER_NETWORK_NEVER = 0;
-    public static final int OVER_NETWORK_ON_DEMAND = 1;
+    private static final int OVER_NETWORK_ON_DEMAND = 1;
     public static final int OVER_NETWORK_ALWAYS = 2;
 
     // not shown in Settings
@@ -160,7 +160,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         lightWithDarkActionBar, // Obsolete
     }
 
-    public static final long UPDATE_INTERVAL_DISABLED = Long.MAX_VALUE;
+    static final long UPDATE_INTERVAL_DISABLED = Long.MAX_VALUE;
     public static final long[] UPDATE_INTERVAL_VALUES = {
             UPDATE_INTERVAL_DISABLED,
             DateUtils.WEEK_IN_MILLIS * 2,
@@ -192,7 +192,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         initialized.put(key, false);
     }
 
-    public boolean promptToSendCrashReports() {
+    boolean promptToSendCrashReports() {
         return preferences.getBoolean(PREF_PROMPT_TO_SEND_CRASH_REPORTS, IGNORED_B);
     }
 
@@ -217,7 +217,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     /**
      * Get the update interval in milliseconds.
      */
-    public long getUpdateInterval() {
+    long getUpdateInterval() {
         int position = preferences.getInt(PREF_UPDATE_INTERVAL, IGNORED_I);
         return UPDATE_INTERVAL_VALUES[position];
     }
@@ -327,7 +327,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    long getLastUpdateCheck() {
+    private long getLastUpdateCheck() {
         return preferences.getLong(PREF_LAST_UPDATE_CHECK, DEFAULT_LAST_UPDATE_CHECK);
     }
 
@@ -342,7 +342,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return getLastUpdateCheck() == DEFAULT_LAST_UPDATE_CHECK;
     }
 
-    public boolean getUnstableUpdates() {
+    private boolean getUnstableUpdates() {
         return preferences.getBoolean(PREF_UNSTABLE_UPDATES, IGNORED_B);
     }
 
@@ -364,7 +364,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         preferences.edit().putBoolean(PREF_UNSTABLE_UPDATES, value).apply();
     }
 
-    public boolean isKeepingInstallHistory() {
+    boolean isKeepingInstallHistory() {
         return preferences.getBoolean(PREF_KEEP_INSTALL_HISTORY, IGNORED_B);
     }
 
@@ -392,7 +392,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         preferences.edit().putBoolean(PREF_EXPERT, flag).apply();
     }
 
-    public boolean forceTouchApps() {
+    boolean forceTouchApps() {
         return preferences.getBoolean(Preferences.PREF_FORCE_TOUCH_APPS, IGNORED_B);
     }
 
@@ -400,7 +400,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, null));
     }
 
-    public boolean isPureBlack() {
+    boolean isPureBlack() {
         return preferences.getBoolean(Preferences.PREF_USE_PURE_BLACK_DARK_THEME, false);
     }
 
@@ -417,7 +417,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getString(Preferences.PREF_LANGUAGE, Languages.USE_SYSTEM_DEFAULT);
     }
 
-    public void clearLanguage() {
+    void clearLanguage() {
         preferences.edit().remove(Preferences.PREF_LANGUAGE).apply();
     }
 
@@ -433,7 +433,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_UPDATE_NOTIFICATION_ENABLED, true);
     }
 
-    public boolean isAutoDownloadEnabled() {
+    boolean isAutoDownloadEnabled() {
         return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, IGNORED_B);
     }
 
@@ -471,7 +471,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     /**
      * Some users never use WiFi, this lets us check for that state on first run.
      */
-    public void setDefaultForDataOnlyConnection(Context context) {
+    void setDefaultForDataOnlyConnection(Context context) {
         ConnectivityManager cm = ContextCompat.getSystemService(context, ConnectivityManager.class);
         if (cm == null) {
             return;
@@ -498,7 +498,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_USE_TOR, IGNORED_B);
     }
 
-    public boolean isProxyEnabled() {
+    boolean isProxyEnabled() {
         return preferences.getBoolean(PREF_ENABLE_PROXY, IGNORED_B);
     }
 
@@ -545,7 +545,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public Set<String> getPanicTmpSelectedSet() {
-        return preferences.getStringSet(Preferences.PREF_PANIC_TMP_SELECTED_SET, Collections.<String>emptySet());
+        return preferences.getStringSet(Preferences.PREF_PANIC_TMP_SELECTED_SET, Collections.emptySet());
     }
 
     public void setPanicTmpSelectedSet(Set<String> selectedSet) {
@@ -553,7 +553,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public Set<String> getPanicWipeSet() {
-        return preferences.getStringSet(Preferences.PREF_PANIC_WIPE_SET, Collections.<String>emptySet());
+        return preferences.getStringSet(Preferences.PREF_PANIC_WIPE_SET, Collections.emptySet());
     }
 
     public void setPanicWipeSet(Set<String> selectedSet) {
@@ -564,7 +564,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Preference for whitelabel builds that are meant to be entirely controlled
      * by the server, without user interaction, e.g. "appliances".
      */
-    public boolean hideAllNotifications() {
+    boolean hideAllNotifications() {
         return preferences.getBoolean(PREF_HIDE_ALL_NOTIFICATIONS, IGNORED_B);
     }
 
@@ -572,7 +572,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * Whether to include the version of this app and a randomly generated ID
      * to the server when downloading from it.
      */
-    public boolean sendVersionAndUUIDToServers() {
+    boolean sendVersionAndUUIDToServers() {
         return preferences.getBoolean(PREF_SEND_VERSION_AND_UUID_TO_SERVERS, IGNORED_B);
     }
 

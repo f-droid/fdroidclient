@@ -106,46 +106,47 @@ public class AppDetailsAdapterTest {
         }
     }
 
-    private final AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks dummyCallbacks = new AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks() { // NOCHECKSTYLE LineLength
-        @Override
-        public boolean isAppDownloading() {
-            return false;
-        }
+    private final AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks dummyCallbacks
+            = new AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks() {
+                @Override
+                public boolean isAppDownloading() {
+                    return false;
+                }
 
-        @Override
-        public void enableAndroidBeam() {
+                @Override
+                public void enableAndroidBeam() {
 
-        }
+                }
 
-        @Override
-        public void disableAndroidBeam() {
+                @Override
+                public void disableAndroidBeam() {
 
-        }
+                }
 
-        @Override
-        public void openUrl(String url) {
+                @Override
+                public void openUrl(String url) {
 
-        }
+                }
 
-        @Override
-        public void installApk(Apk apk) {
+                @Override
+                public void installApk(Apk apk) {
 
-        }
+                }
 
-        @Override
-        public void uninstallApk() {
+                @Override
+                public void uninstallApk() {
 
-        }
+                }
 
-        @Override
-        public void installCancel() {
+                @Override
+                public void installCancel() {
 
-        }
+                }
 
-        @Override
-        public void launchApk() {
+                @Override
+                public void launchApk() {
 
-        }
-    };
+                }
+            };
 
 }

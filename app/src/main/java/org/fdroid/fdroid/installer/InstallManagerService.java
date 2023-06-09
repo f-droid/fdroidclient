@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.installer;
 
+import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
+
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -12,6 +14,9 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -26,11 +31,6 @@ import org.fdroid.fdroid.net.DownloaderService;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-
-import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import static vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_256;
 
 /**
  * Manages the whole process when a background update triggers an install or the user
@@ -202,7 +202,7 @@ public class InstallManagerService {
 
         App app = appUpdateStatusManager.getApp(canonicalUrl);
         Apk apk = appUpdateStatusManager.getApk(canonicalUrl);
-        if (app == null || apk == null)  {
+        if (app == null || apk == null) {
             // These may be null if our app was killed and the download job restarted.
             // Then, we can take the objects we saved in the intent which survive app death.
             app = intentApp;

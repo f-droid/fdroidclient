@@ -20,10 +20,12 @@
 package org.fdroid.fdroid.views.main;
 
 import android.widget.FrameLayout;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.PreferencesFragment;
 import org.fdroid.fdroid.views.updates.UpdatesViewBinder;
@@ -51,14 +53,14 @@ class MainViewController extends RecyclerView.ViewHolder {
     /**
      * @see LatestViewBinder
      */
-    public void bindLatestView() {
+    void bindLatestView() {
         new LatestViewBinder(activity, frame);
     }
 
     /**
      * @see UpdatesViewBinder
      */
-    public void bindUpdates() {
+    void bindUpdates() {
         if (updatesView == null) {
             updatesView = new UpdatesViewBinder(activity, frame);
         }
@@ -66,7 +68,7 @@ class MainViewController extends RecyclerView.ViewHolder {
         updatesView.bind();
     }
 
-    public void unbindUpdates() {
+    void unbindUpdates() {
         if (updatesView != null) {
             updatesView.unbind();
         }
@@ -75,11 +77,11 @@ class MainViewController extends RecyclerView.ViewHolder {
     /**
      * @see CategoriesViewBinder
      */
-    public void bindCategoriesView() {
+    void bindCategoriesView() {
         new CategoriesViewBinder(activity, frame);
     }
 
-    public void bindSwapView() {
+    void bindSwapView() {
         throw new IllegalStateException("unimplemented");
     }
 
@@ -96,7 +98,7 @@ class MainViewController extends RecyclerView.ViewHolder {
      *
      * @see SettingsView
      */
-    public void bindSettingsView() {
+    void bindSettingsView() {
         activity.getLayoutInflater().inflate(R.layout.main_tab_settings, frame, true);
     }
 }

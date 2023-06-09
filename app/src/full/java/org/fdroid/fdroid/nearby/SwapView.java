@@ -1,16 +1,15 @@
 package org.fdroid.fdroid.nearby;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import org.fdroid.fdroid.R;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.LayoutRes;
 import androidx.core.content.ContextCompat;
+
+import org.fdroid.fdroid.R;
 
 /**
  * A {@link android.view.View} that registers to handle the swap events from

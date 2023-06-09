@@ -29,12 +29,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.fdroid.database.AntiFeature;
-import org.fdroid.database.Repository;
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
-
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +37,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+
+import org.fdroid.database.AntiFeature;
+import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
 public class AntiFeaturesListingView extends RecyclerView {
 
@@ -134,7 +134,7 @@ public class AntiFeaturesListingView extends RecyclerView {
 
     }
 
-    public static String getAntiFeatureDescriptionText(Context context, String antiFeatureName) {
+    private static String getAntiFeatureDescriptionText(Context context, String antiFeatureName) {
         if (antiFeatureName.equals(context.getString(R.string.antiads_key))) {
             return context.getString(R.string.antiadslist);
         } else if (antiFeatureName.equals(context.getString(R.string.antitrack_key))) {
@@ -162,7 +162,7 @@ public class AntiFeaturesListingView extends RecyclerView {
         }
     }
 
-    public static @DrawableRes int antiFeatureIcon(Context context, String antiFeatureName) {
+    private static @DrawableRes int antiFeatureIcon(Context context, String antiFeatureName) {
         if (antiFeatureName.equals(context.getString(R.string.antiads_key))) {
             return R.drawable.ic_antifeature_ads;
         } else if (antiFeatureName.equals(context.getString(R.string.antitrack_key))) {

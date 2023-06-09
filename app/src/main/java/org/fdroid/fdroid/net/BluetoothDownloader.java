@@ -3,6 +3,9 @@ package org.fdroid.fdroid.net;
 import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.apache.commons.io.input.BoundedInputStream;
 import org.fdroid.IndexFile;
 import org.fdroid.download.Downloader;
@@ -17,9 +20,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * Download from a Bluetooth swap repo.  Example URI:

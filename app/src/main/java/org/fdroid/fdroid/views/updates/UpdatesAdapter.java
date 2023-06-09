@@ -7,15 +7,21 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager;
 
+import org.fdroid.database.DbUpdateChecker;
+import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
+import org.fdroid.database.UpdatableApp;
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.database.FDroidDatabase;
-import org.fdroid.database.UpdatableApp;
-import org.fdroid.database.DbUpdateChecker;
-import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -31,12 +37,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import io.reactivex.rxjava3.disposables.Disposable;
 
@@ -85,7 +85,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Nullable
     private Disposable disposable;
 
-    public UpdatesAdapter(AppCompatActivity activity) {
+    UpdatesAdapter(AppCompatActivity activity) {
         this.activity = activity;
 
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
@@ -133,7 +133,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         updateableApps.clear();
         knownVulnApps.clear();
 
-        for (UpdatableApp updatableApp: apps) {
+        for (UpdatableApp updatableApp : apps) {
             App app = new App(updatableApp);
             Repository repo = FDroidApp.getRepoManager(activity).getRepository(updatableApp.getUpdate().getRepoId());
             Apk apk = new Apk(updatableApp.getUpdate(), repo);
@@ -225,7 +225,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * Under those circumstances, we want to make sure it is up to date, and also listen to the
      * correct set of broadcasts.
      */
-    public void setIsActive() {
+    void setIsActive() {
         loadUpdatableApps();
 
         IntentFilter filter = new IntentFilter();

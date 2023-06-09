@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE module PUBLIC
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE module PUBLIC
     "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
     "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 <module name="Checker">
 
-    <property name="charset" value="UTF-8"/>
+    <property name="charset" value="UTF-8" />
 
     <module name="FileTabCharacter" />
 
@@ -13,20 +12,20 @@
         <property name="message" value="Line has trailing spaces." />
     </module>
 
+    <module name="LineLength">
+        <property name="max" value="118" />
+        <property name="ignorePattern" value="[a-z]+://" />
+    </module>
+
     <module name="TreeWalker">
-        <module name="FileContentsHolder" />
-        <module name="LineLength">
-            <property name="max" value="118"/>
-            <property name="ignorePattern" value="[a-z]+://"/>
-        </module>
 
         <module name="ConstantName">
-            <property name="format" value="^[A-Z_][A-Z0-9]*(_[A-Z0-9]+)*$"/>
+            <property name="format" value="^[A-Z_][A-Z0-9]*(_[A-Z0-9]+)*$" />
         </module>
         <module name="LocalFinalVariableName" />
         <module name="LocalVariableName" />
         <module name="MemberName">
-            <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$"/>
+            <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$" />
         </module>
         <module name="MethodName" />
         <module name="PackageName" />
@@ -39,42 +38,43 @@
 
         <module name="AvoidStarImport" />
         <module name="AvoidStaticImport">
-	        <property name="excludes"
-		        value="org.fdroid.fdroid.Assert.*, vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.*, org.assertj.core.api.Assertions.*, org.junit.Assert.*, org.junit.Assume.*, org.junit.internal.matchers.ThrowableMessageMatcher.*, org.hamcrest.core.IsNot.*, org.hamcrest.CoreMatchers.*, org.hamcrest.Matchers.*, org.springframework.boot.configurationprocessor.ConfigurationMetadataMatchers.*, org.springframework.boot.configurationprocessor.TestCompiler.*, org.mockito.Mockito.*, org.mockito.BDDMockito.*, org.mockito.Matchers.*, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*, org.springframework.test.web.servlet.result.MockMvcResultMatchers.*, org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*, org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*, org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo, androidx.test.espresso.Espresso.*, androidx.test.espresso.assertion.ViewAssertions.*, androidx.test.espresso.matcher.ViewMatchers.*, androidx.test.espresso.action.ViewActions.*" />
+            <property name="excludes"
+                value="org.fdroid.fdroid.Assert.*, vendored.org.apache.commons.codec.digest.MessageDigestAlgorithms.*, org.assertj.core.api.Assertions.*, org.junit.Assert.*, org.junit.Assume.*, org.junit.internal.matchers.ThrowableMessageMatcher.*, org.hamcrest.core.IsNot.*, org.hamcrest.CoreMatchers.*, org.hamcrest.Matchers.*, org.springframework.boot.configurationprocessor.ConfigurationMetadataMatchers.*, org.springframework.boot.configurationprocessor.TestCompiler.*, org.mockito.Mockito.*, org.mockito.BDDMockito.*, org.mockito.Matchers.*, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*, org.springframework.test.web.servlet.result.MockMvcResultMatchers.*, org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*, org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*, org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo, androidx.test.espresso.Espresso.*, androidx.test.espresso.assertion.ViewAssertions.*, androidx.test.espresso.matcher.ViewMatchers.*, androidx.test.espresso.action.ViewActions.*" />
         </module>
         <module name="RedundantImport" />
         <module name="UnusedImports" />
         <module name="OuterTypeFilename" />
 
         <module name="Indentation">
-            <property name="basicOffset" value="4"/>
-            <property name="braceAdjustment" value="0"/>
-            <property name="caseIndent" value="4"/>
-            <property name="throwsIndent" value="8"/>
-            <property name="lineWrappingIndentation" value="8"/>
-            <property name="arrayInitIndent" value="4"/>
+            <property name="basicOffset" value="4" />
+            <property name="braceAdjustment" value="4" />
+            <property name="caseIndent" value="4" />
+            <property name="throwsIndent" value="8" />
+            <property name="lineWrappingIndentation" value="8" />
+            <property name="arrayInitIndent" value="4" />
         </module>
-        <module name="CommentsIndentation"/>
+        <module name="CommentsIndentation" />
         <module name="EmptyLineSeparator">
             <property name="allowNoEmptyLineBetweenFields" value="true" />
             <property name="allowMultipleEmptyLines" value="false" />
         </module>
         <module name="SeparatorWrap">
             <property name="tokens" value="DOT" />
-            <property name="option" value="nl"/>
+            <property name="option" value="nl" />
         </module>
         <module name="SeparatorWrap">
-            <property name="tokens" value="COMMA"/>
-            <property name="option" value="EOL"/>
+            <property name="tokens" value="COMMA" />
+            <property name="option" value="EOL" />
         </module>
-        <module name="NoLineWrap"/>
+        <module name="NoLineWrap" />
 
         <module name="OneTopLevelClass" />
         <module name="OneStatementPerLine" />
 
         <module name="EmptyBlock">
-            <property name="option" value="TEXT"/>
-            <property name="tokens" value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
+            <property name="option" value="TEXT" />
+            <property name="tokens"
+                value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH" />
         </module>
 
         <module name="EmptyForIteratorPad" />
@@ -87,23 +87,25 @@
         <module name="TypecastParenPad" />
         <module name="WhitespaceAfter" />
         <module name="WhitespaceAround" />
-        <module name="UnnecessaryParentheses" />
+        <module name="UnnecessaryParentheses">
+            <property name="tokens"
+                value="EXPR, IDENT, NUM_DOUBLE, NUM_FLOAT, NUM_INT, NUM_LONG, STRING_LITERAL, LITERAL_NULL, LITERAL_FALSE, LITERAL_TRUE, ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN, LAMBDA, TEXT_BLOCK_LITERAL_BEGIN, LOR, LITERAL_INSTANCEOF, GT, LT, GE, LE, EQUAL, NOT_EQUAL, UNARY_MINUS, UNARY_PLUS, INC, DEC, LNOT, BNOT, POST_INC, POST_DEC" />
+        </module>
 
         <module name="ModifierOrder" />
         <module name="RedundantModifier" />
         <module name="AnnotationLocation" />
 
         <module name="AvoidNestedBlocks" />
-        <module name="LeftCurly">
-            <property name="maxLineLength" value="100"/>
-        </module>
+        <module name="LeftCurly" />
         <module name="NeedBraces">
-            <property name="allowSingleLineStatement" value="true"/>
+            <property name="allowSingleLineStatement" value="true" />
         </module>
-        <module name="RightCurly"/>
+        <module name="RightCurly" />
         <module name="RightCurly">
-            <property name="option" value="alone"/>
-            <property name="tokens" value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT"/>
+            <property name="option" value="alone" />
+            <property name="tokens"
+                value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT" />
         </module>
 
         <module name="EmptyStatement" />
@@ -121,27 +123,28 @@
         <module name="EqualsAvoidNull" />
 
         <module name="IllegalTokenText">
-            <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
-            <property name="format" value="\\u00(08|09|0(a|A)|0(c|C)|0(d|D)|22|27|5(C|c))|\\(0(10|11|12|14|15|42|47)|134)"/>
-            <property name="message" value="Avoid using corresponding octal or Unicode escape."/>
+            <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL" />
+            <property name="format"
+                value="\\u00(08|09|0(a|A)|0(c|C)|0(d|D)|22|27|5(C|c))|\\(0(10|11|12|14|15|42|47)|134)" />
+            <property name="message" value="Avoid using corresponding octal or Unicode escape." />
         </module>
         <module name="AvoidEscapedUnicodeCharacters">
-            <property name="allowEscapesForControlCharacters" value="true"/>
-            <property name="allowByTailComment" value="true"/>
-            <property name="allowNonPrintableEscapes" value="true"/>
+            <property name="allowEscapesForControlCharacters" value="true" />
+            <property name="allowByTailComment" value="true" />
+            <property name="allowNonPrintableEscapes" value="true" />
         </module>
 
         <module name="SuppressWarningsHolder" />
-    </module>
 
-    <module name="SuppressWarningsFilter" />
-    <module name="SuppressWithNearbyCommentFilter">
-      <property name="commentFormat" value="NOCHECKSTYLE ([\w\|]+)"/>
-      <property name="checkFormat" value="$1"/>
-      <property name="influenceFormat" value="1"/>
+        <module name="SuppressWithNearbyCommentFilter">
+            <property name="commentFormat" value="NOCHECKSTYLE ([\w\|]+)" />
+            <property name="checkFormat" value="$1" />
+            <property name="influenceFormat" value="1" />
+        </module>
     </module>
+    <module name="SuppressWarningsFilter" />
 
     <module name="SuppressionFilter">
-      <property name="file" value="${config_loc}/suppressions.xml"/>
+        <property name="file" value="${config_loc}/suppressions.xml" />
     </module>
 </module>

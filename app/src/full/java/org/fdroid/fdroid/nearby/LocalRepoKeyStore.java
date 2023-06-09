@@ -165,7 +165,8 @@ public final class LocalRepoKeyStore {
             keyManagers = new KeyManager[]{
                     wrappedKeyManager,
             };
-        } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException | CertificateException | OperatorCreationException | IOException e) {
+        } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException |
+                 CertificateException | OperatorCreationException | IOException e) {
             Log.e(TAG, "Error loading keystore", e);
         }
     }
@@ -215,7 +216,8 @@ public final class LocalRepoKeyStore {
             zipSigner.setKeys("kerplapp", cert, priv, DEFAULT_SIG_ALG, null);
             zipSigner.signZip(input.getAbsolutePath(), output.getAbsolutePath());
 
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | GeneralSecurityException | IOException e) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException |
+                 GeneralSecurityException | IOException e) {
             Log.e(TAG, "Unable to sign local repo index", e);
         }
     }

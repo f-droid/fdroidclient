@@ -28,7 +28,7 @@ public final class Languages {
 
     private static Locale locale;
     private static Languages singleton;
-    private static Map<String, String> tmpMap = new TreeMap<>();
+    private static final Map<String, String> TMP_MAP = new TreeMap<>();
     private static Map<String, String> nameMap;
 
     static {
@@ -36,30 +36,29 @@ public final class Languages {
     }
 
     private Languages(AppCompatActivity activity) {
-        Set<Locale> localeSet = new LinkedHashSet<>();
-        localeSet.addAll(Arrays.asList(LOCALES_TO_TEST));
+        Set<Locale> localeSet = new LinkedHashSet<>(Arrays.asList(LOCALES_TO_TEST));
 
         for (Locale locale : localeSet) {
             if (locale.equals(TIBETAN)) {
                 // include English name for devices without Tibetan font support
-                tmpMap.put(TIBETAN.getLanguage(), "Tibetan བོད་སྐད།"); // Tibetan
+                TMP_MAP.put(TIBETAN.getLanguage(), "Tibetan བོད་སྐད།"); // Tibetan
             } else if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-                tmpMap.put(Locale.SIMPLIFIED_CHINESE.toString(), "中文 (中国)"); // Chinese (China)
+                TMP_MAP.put(Locale.SIMPLIFIED_CHINESE.toString(), "中文 (中国)"); // Chinese (China)
             } else if (locale.equals(Locale.TRADITIONAL_CHINESE)) {
-                tmpMap.put(Locale.TRADITIONAL_CHINESE.toString(), "中文 (台灣)"); // Chinese (Taiwan)
+                TMP_MAP.put(Locale.TRADITIONAL_CHINESE.toString(), "中文 (台灣)"); // Chinese (Taiwan)
             } else if (locale.equals(CHINESE_HONG_KONG)) {
-                tmpMap.put(CHINESE_HONG_KONG.toString(), "中文 (香港)"); // Chinese (Hong Kong)
+                TMP_MAP.put(CHINESE_HONG_KONG.toString(), "中文 (香港)"); // Chinese (Hong Kong)
             } else {
-                tmpMap.put(locale.getLanguage(), capitalize(locale.getDisplayLanguage(locale)));
+                TMP_MAP.put(locale.getLanguage(), capitalize(locale.getDisplayLanguage(locale)));
             }
         }
 
         // remove the current system language from the menu
-        tmpMap.remove(Locale.getDefault().getLanguage());
+        TMP_MAP.remove(Locale.getDefault().getLanguage());
 
         /* SYSTEM_DEFAULT is a fake one for displaying in a chooser menu. */
-        tmpMap.put(USE_SYSTEM_DEFAULT, activity.getString(R.string.pref_language_default));
-        nameMap = Collections.unmodifiableMap(tmpMap);
+        TMP_MAP.put(USE_SYSTEM_DEFAULT, activity.getString(R.string.pref_language_default));
+        nameMap = Collections.unmodifiableMap(TMP_MAP);
     }
 
     /**

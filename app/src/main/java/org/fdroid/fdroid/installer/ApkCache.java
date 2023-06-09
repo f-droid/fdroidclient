@@ -146,10 +146,10 @@ public class ApkCache {
 
     /**
      * Verifies the size of the file on disk matches, and then hashes the file to compare with what
-     * we received from the signed repo (i.e. {@link Apk#hash} and {@link Apk#hashType}).
+     * we received from the signed repo.
      * Bails out if the file sizes don't match to prevent having to do the work of hashing the file.
      */
-    public static boolean apkIsCached(File apkFile, Apk apkToCheck) {
+    private static boolean apkIsCached(File apkFile, Apk apkToCheck) {
         return apkFile.length() == apkToCheck.size &&
                 Utils.isFileMatchingHash(apkFile, apkToCheck.apkFile.getSha256(), "sha256");
     }

@@ -6,16 +6,6 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
 
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.installer.ApkCache;
-import org.fdroid.fdroid.nearby.LocalRepoManager;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import androidx.annotation.NonNull;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
@@ -25,6 +15,16 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
+
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.installer.ApkCache;
+import org.fdroid.fdroid.nearby.LocalRepoManager;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Deletes the built-up cruft left over from various processes.
@@ -223,7 +223,7 @@ public class CleanCacheWorker extends Worker {
          * @param file      The file or directory to clean
          * @param olderThan The number of milliseconds old that marks a file for deletion.
          */
-        public static void deleteIfOld(File file, long olderThan) {
+        static void deleteIfOld(File file, long olderThan) {
             if (file == null || !file.exists()) {
                 Utils.debugLog(TAG, "No files to be cleared.");
                 return;

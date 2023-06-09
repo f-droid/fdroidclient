@@ -1,5 +1,9 @@
 package org.fdroid.fdroid.updater;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.robolectric.Shadows.shadowOf;
+
 import android.content.ContentResolver;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -10,6 +14,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.FDroidApp;
@@ -35,13 +42,6 @@ import java.io.File;
 import java.io.IOException;
 import java.security.cert.Certificate;
 import java.util.Locale;
-
-import androidx.annotation.NonNull;
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.robolectric.Shadows.shadowOf;
 
 /**
  * This test uses the swap repo setup as a fake repo to test {@link UpdateService}.

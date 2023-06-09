@@ -146,7 +146,7 @@ public class SessionInstallManager extends BroadcastReceiver {
 
     private void onInstallReceived(Intent intent) {
         int sessionId = intent.getIntExtra(PackageInstaller.EXTRA_SESSION_ID, -1);
-        Intent confirmIntent = (Intent) intent.getParcelableExtra(Intent.EXTRA_INTENT);
+        Intent confirmIntent = intent.getParcelableExtra(Intent.EXTRA_INTENT);
 
         Bundle bundle = intent.getBundleExtra(EXTRA_BUNDLE);
         App app = bundle.getParcelable(Installer.EXTRA_APP);
@@ -176,7 +176,7 @@ public class SessionInstallManager extends BroadcastReceiver {
 
     private void onUninstallReceived(Intent intent) {
         String packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME);
-        Intent confirmIntent = (Intent) intent.getParcelableExtra(Intent.EXTRA_INTENT);
+        Intent confirmIntent = intent.getParcelableExtra(Intent.EXTRA_INTENT);
         int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, Integer.MIN_VALUE);
         String msg = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
 

@@ -2,18 +2,17 @@ package org.fdroid.fdroid.panic;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationManagerCompat;
+
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.main.MainActivity;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.NotificationManagerCompat;
 
 /**
  * This class is encapsulating all methods related to hiding the app from the launcher
@@ -47,18 +46,8 @@ public class HidingManager {
         builder.setMessage(context.getString(R.string.hiding_dialog_message, appName,
                 HidingManager.getUnhidePin(context), context.getString(R.string.hiding_calculator)));
         builder.setPositiveButton(context.getString(R.string.panic_hide_title, appName),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        hide(context);
-                    }
-                });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+                (dialog, which) -> hide(context));
+        builder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> dialogInterface.cancel());
         builder.setView(R.layout.dialog_app_hiding);
         builder.create().show();
     }

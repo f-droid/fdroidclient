@@ -9,7 +9,7 @@ public abstract class CameraCharacteristicsChecker {
 
     public abstract boolean hasAutofocus();
 
-    class FDroidDeviceException extends Exception {
+    static class FDroidDeviceException extends Exception {
         FDroidDeviceException(final String message, final Throwable cause) {
             super(message, cause);
         }

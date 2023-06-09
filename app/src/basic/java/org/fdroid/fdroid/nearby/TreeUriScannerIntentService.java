@@ -19,8 +19,9 @@
 
 package org.fdroid.fdroid.nearby;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Dummy version for basic app flavor.

@@ -15,14 +15,14 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 
 import java.lang.ref.WeakReference;
-
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Manage the {@link android.bluetooth.BluetoothAdapter}in a {@link HandlerThread}.

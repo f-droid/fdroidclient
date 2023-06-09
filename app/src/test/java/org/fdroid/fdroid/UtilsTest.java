@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid;
 
 import static org.junit.Assert.assertEquals;

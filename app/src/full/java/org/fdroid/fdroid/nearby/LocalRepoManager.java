@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -39,9 +42,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * The {@link SwapService} deals with managing the entire workflow from selecting apps to

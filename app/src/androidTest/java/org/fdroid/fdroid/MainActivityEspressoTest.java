@@ -1,40 +1,5 @@
 package org.fdroid.fdroid;
 
-import android.Manifest;
-import android.app.ActivityManager;
-import android.app.Instrumentation;
-import android.content.Context;
-import android.os.Build;
-
-import androidx.core.content.ContextCompat;
-import androidx.test.core.app.ApplicationProvider;
-import androidx.test.filters.LargeTest;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.espresso.IdlingPolicies;
-import androidx.test.espresso.ViewInteraction;
-import androidx.test.rule.ActivityTestRule;
-import androidx.test.rule.GrantPermissionRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.uiautomator.UiDevice;
-import androidx.test.uiautomator.UiObject;
-import androidx.test.uiautomator.UiObjectNotFoundException;
-import androidx.test.uiautomator.UiSelector;
-import android.util.Log;
-import android.view.View;
-import org.fdroid.fdroid.views.StatusBanner;
-import org.fdroid.fdroid.views.main.MainActivity;
-import org.hamcrest.Matchers;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.swipeDown;
@@ -48,10 +13,45 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
+
+import android.Manifest;
+import android.app.ActivityManager;
+import android.app.Instrumentation;
+import android.content.Context;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+import androidx.test.core.app.ApplicationProvider;
+import androidx.test.espresso.IdlingPolicies;
+import androidx.test.espresso.ViewInteraction;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.rule.GrantPermissionRule;
+import androidx.test.uiautomator.UiDevice;
+import androidx.test.uiautomator.UiObject;
+import androidx.test.uiautomator.UiObjectNotFoundException;
+import androidx.test.uiautomator.UiSelector;
+
+import org.fdroid.fdroid.views.StatusBanner;
+import org.fdroid.fdroid.views.main.MainActivity;
+import org.hamcrest.Matchers;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -68,7 +68,7 @@ public class MainActivityEspressoTest {
      */
     private static boolean canRunEspresso() {
         if (Build.VERSION.SDK_INT < 25
-                || (Build.SUPPORTED_ABIS[0].startsWith("arm") && isEmulator())) {
+                || Build.SUPPORTED_ABIS[0].startsWith("arm") && isEmulator()) {
             Log.e(TAG, "SKIPPING TEST: ARM emulators are too slow to run these tests in a useful way");
             return false;
         }
@@ -122,7 +122,7 @@ public class MainActivityEspressoTest {
                 || Build.MODEL.contains("Emulator")
                 || Build.MODEL.contains("Android SDK built for x86")
                 || Build.MANUFACTURER.contains("Genymotion")
-                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                || Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic")
                 || "google_sdk".equals(Build.PRODUCT);
     }
 
@@ -267,7 +267,7 @@ public class MainActivityEspressoTest {
         if (!BuildConfig.FLAVOR.startsWith("full")) {
             return;
         }
-        onView(Matchers.<View>instanceOf(StatusBanner.class)).check(matches(not(isDisplayed())));
+        onView(Matchers.instanceOf(StatusBanner.class)).check(matches(not(isDisplayed())));
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(allOf(withText(R.string.main_menu__latest_apps), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.swipe_to_refresh), isDisplayed()))

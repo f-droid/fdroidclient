@@ -3,6 +3,9 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
+
 import org.fdroid.IndexFile;
 import org.fdroid.download.Downloader;
 import org.fdroid.download.NotFoundException;
@@ -14,9 +17,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ProtocolException;
-
-import androidx.annotation.NonNull;
-import androidx.documentfile.provider.DocumentFile;
 
 /**
  * An {@link Downloader} subclass for downloading files from a repo on a

@@ -30,13 +30,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.net.DownloaderService;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
 /**
  * A transparent activity as a wrapper around Android's PackageInstaller Intents
@@ -86,12 +86,12 @@ public class DefaultInstallerActivity extends FragmentActivity {
             throw new RuntimeException("Set the data uri to point to an apk location!");
         }
         // https://code.google.com/p/android/issues/detail?id=205827
-        if ((Build.VERSION.SDK_INT < 24)
-                && (!ContentResolver.SCHEME_FILE.equals(uri.getScheme()))) {
+        if (Build.VERSION.SDK_INT < 24
+                && !ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
             throw new RuntimeException("PackageInstaller < Android N only supports file scheme!");
         }
-        if ((Build.VERSION.SDK_INT >= 24)
-                && (!ContentResolver.SCHEME_CONTENT.equals(uri.getScheme()))) {
+        if (Build.VERSION.SDK_INT >= 24
+                && !ContentResolver.SCHEME_CONTENT.equals(uri.getScheme())) {
             throw new RuntimeException("PackageInstaller >= Android N only supports content scheme!");
         }
 

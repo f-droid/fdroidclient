@@ -54,7 +54,7 @@ android {
         // use proguard on debug too since we have unknowingly broken
         // release builds before.
         all {
-            manifestPlaceholders = [ applicationLabel: APP_NAME ]
+            manifestPlaceholders = [applicationLabel: APP_NAME]
             minifyEnabled true
             shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
@@ -64,7 +64,7 @@ android {
         }
         debug {
             getIsDefault().set(true)
-            manifestPlaceholders = [ applicationLabel: APP_NAME_DEBUG ]
+            manifestPlaceholders = [applicationLabel: APP_NAME_DEBUG]
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
             // testProguardFiles gets partially ignored for instrumentation tests
@@ -87,7 +87,7 @@ android {
         }
     }
     applicationVariants.all { variant ->
-        variant.resValue  "string", "applicationId", variant.applicationId
+        variant.resValue "string", "applicationId", variant.applicationId
     }
 
     compileOptions {

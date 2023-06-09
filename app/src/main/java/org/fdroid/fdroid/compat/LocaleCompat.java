@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.compat;
 
 import android.os.Build;
+
 import java.util.Locale;
 
 /**

@@ -5,6 +5,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.os.LocaleListCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.Transformations;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.fdroid.database.Category;
@@ -22,14 +30,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.os.LocaleListCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.Transformations;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * Responsible for ensuring that the categories view is inflated and then populated correctly.
@@ -53,40 +53,29 @@ class CategoriesViewBinder implements Observer<List<Category>> {
 
         categoryAdapter = new CategoryAdapter(activity, db);
 
-        emptyState = (TextView) categoriesView.findViewById(R.id.empty_state);
+        emptyState = categoriesView.findViewById(R.id.empty_state);
 
-        categoriesList = (RecyclerView) categoriesView.findViewById(R.id.category_list);
+        categoriesList = categoriesView.findViewById(R.id.category_list);
         categoriesList.setHasFixedSize(true);
         categoriesList.setLayoutManager(new LinearLayoutManager(activity));
         categoriesList.setAdapter(categoryAdapter);
 
         final SwipeRefreshLayout swipeToRefresh =
-                (SwipeRefreshLayout) categoriesView.findViewById(R.id.swipe_to_refresh);
+                categoriesView.findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
-        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeToRefresh.setRefreshing(false);
-                UpdateService.updateNow(activity);
-            }
+        swipeToRefresh.setOnRefreshListener(() -> {
+            swipeToRefresh.setRefreshing(false);
+            UpdateService.updateNow(activity);
         });
 
-        FloatingActionButton searchFab = (FloatingActionButton) categoriesView.findViewById(R.id.fab_search);
-        searchFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(new Intent(activity, AppListActivity.class));
-            }
-        });
-        searchFab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (Preferences.get().hideOnLongPressSearch()) {
-                    HidingManager.showHideDialog(activity);
-                    return true;
-                } else {
-                    return false;
-                }
+        FloatingActionButton searchFab = categoriesView.findViewById(R.id.fab_search);
+        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+        searchFab.setOnLongClickListener(view -> {
+            if (Preferences.get().hideOnLongPressSearch()) {
+                HidingManager.showHideDialog(activity);
+                return true;
+            } else {
+                return false;
             }
         });
     }

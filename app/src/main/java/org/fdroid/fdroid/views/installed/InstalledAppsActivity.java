@@ -25,6 +25,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.fdroid.database.AppListItem;
@@ -35,11 +40,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ShareCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -67,18 +67,18 @@ public class InstalledAppsActivity extends AppCompatActivity {
 
         adapter = new InstalledAppListAdapter(this);
 
-        appList = (RecyclerView) findViewById(R.id.app_list);
+        appList = findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
         appList.setLayoutManager(new LinearLayoutManager(this));
         appList.setAdapter(adapter);
 
-        emptyState = (TextView) findViewById(R.id.empty_state);
+        emptyState = findViewById(R.id.empty_state);
 
         db = DBHelper.getDb(this);
         db.getAppDao().getInstalledAppListItems(getPackageManager()).observe(this, this::onLoadFinished);
     }
 
-    public void onLoadFinished(List<AppListItem> items) {
+    private void onLoadFinished(List<AppListItem> items) {
         adapter.setApps(items);
 
         if (adapter.getItemCount() == 0) {
@@ -107,25 +107,23 @@ public class InstalledAppsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.menu_share:
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("packageName,versionCode,versionName\n");
-                for (int i = 0; i < adapter.getItemCount(); i++) {
-                    App app = adapter.getItem(i);
-                    if (app != null) {
-                        stringBuilder.append(app.packageName).append(',')
-                                .append(app.installedVersionCode).append(',')
-                                .append(app.installedVersionName).append('\n');
-                    }
+        if (item.getItemId() == R.id.menu_share) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("packageName,versionCode,versionName\n");
+            for (int i = 0; i < adapter.getItemCount(); i++) {
+                App app = adapter.getItem(i);
+                if (app != null) {
+                    stringBuilder.append(app.packageName).append(',')
+                            .append(app.installedVersionCode).append(',')
+                            .append(app.installedVersionName).append('\n');
                 }
-                ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this)
-                        .setSubject(getString(R.string.send_installed_apps))
-                        .setChooserTitle(R.string.send_installed_apps)
-                        .setText(stringBuilder.toString())
-                        .setType("text/csv");
-                startActivity(intentBuilder.getIntent());
-                break;
+            }
+            ShareCompat.IntentBuilder intentBuilder = new ShareCompat.IntentBuilder(this)
+                    .setSubject(getString(R.string.send_installed_apps))
+                    .setChooserTitle(R.string.send_installed_apps)
+                    .setText(stringBuilder.toString())
+                    .setType("text/csv");
+            startActivity(intentBuilder.getIntent());
         }
         return super.onOptionsItemSelected(item);
     }

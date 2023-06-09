@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import org.fdroid.fdroid.Utils;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.fdroid.fdroid.Utils;
 
 /**
  * Replies with the public download URL for the OBB that belongs to the

@@ -77,19 +77,19 @@ public class UpdateService extends JobIntentService {
 
     public static final String LOCAL_ACTION_STATUS = "status";
 
-    public static final String EXTRA_MESSAGE = "msg";
-    public static final String EXTRA_REPO_FINGERPRINT = "fingerprint";
-    public static final String EXTRA_REPO_ERRORS = "repoErrors";
+    private static final String EXTRA_MESSAGE = "msg";
+    private static final String EXTRA_REPO_FINGERPRINT = "fingerprint";
+    private static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
-    public static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
-    public static final String EXTRA_FORCED_UPDATE = "forcedUpdate";
-    public static final String EXTRA_PROGRESS = "progress";
+    private static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
+    private static final String EXTRA_FORCED_UPDATE = "forcedUpdate";
+    private static final String EXTRA_PROGRESS = "progress";
 
     public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
-    public static final int STATUS_COMPLETE_AND_SAME = 1;
-    public static final int STATUS_ERROR_GLOBAL = 2;
-    public static final int STATUS_ERROR_LOCAL = 3;
-    public static final int STATUS_ERROR_LOCAL_SMALL = 4;
+    private static final int STATUS_COMPLETE_AND_SAME = 1;
+    private static final int STATUS_ERROR_GLOBAL = 2;
+    private static final int STATUS_ERROR_LOCAL = 3;
+    private static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
 
     /**
@@ -226,7 +226,7 @@ public class UpdateService extends JobIntentService {
         return updateService != null && isForcedUpdate;
     }
 
-    public static void stopNow() {
+    static void stopNow() {
         if (updateService != null) {
             updateService.stopSelf(JOB_ID);
             updateService = null;
@@ -280,15 +280,15 @@ public class UpdateService extends JobIntentService {
         updateService = null;
     }
 
-    public static void sendStatus(Context context, int statusCode) {
+    private static void sendStatus(Context context, int statusCode) {
         sendStatus(context, statusCode, null, -1);
     }
 
-    public static void sendStatus(Context context, int statusCode, String message) {
+    private static void sendStatus(Context context, int statusCode, String message) {
         sendStatus(context, statusCode, message, -1);
     }
 
-    public static void sendStatus(Context context, int statusCode, String message, int progress) {
+    private static void sendStatus(Context context, int statusCode, String message, int progress) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
         if (!TextUtils.isEmpty(message)) {
@@ -558,8 +558,8 @@ public class UpdateService extends JobIntentService {
         }
     }
 
-    public static void reportDownloadProgress(Context context, String indexUrl,
-                                              long bytesRead, long totalBytes) {
+    static void reportDownloadProgress(Context context, String indexUrl,
+                                       long bytesRead, long totalBytes) {
         Utils.debugLog(TAG, "Downloading " + indexUrl + "(" + bytesRead + "/" + totalBytes + ")");
         String downloadedSizeFriendly = Utils.getFriendlySize(bytesRead);
         int percent = -1;
@@ -570,7 +570,6 @@ public class UpdateService extends JobIntentService {
         if (totalBytes == -1) {
             message = context.getString(R.string.status_download_unknown_size,
                     indexUrl, downloadedSizeFriendly);
-            percent = -1;
         } else {
             String totalSizeFriendly = Utils.getFriendlySize(totalBytes);
             message = context.getString(R.string.status_download,
@@ -587,7 +586,7 @@ public class UpdateService extends JobIntentService {
      * "Saving app details" sent to the user. If you know how many apps you have
      * processed, then a message of "Saving app details (x/total)" is displayed.
      */
-    public static void reportProcessingAppsProgress(Context context, String indexUrl, int appsSaved, int totalApps) {
+    static void reportProcessingAppsProgress(Context context, String indexUrl, int appsSaved, int totalApps) {
         Utils.debugLog(TAG, "Committing " + indexUrl + "(" + appsSaved + "/" + totalApps + ")");
         if (totalApps > 0) {
             String message = context.getString(R.string.status_inserting_x_apps,

@@ -3,14 +3,13 @@ package org.fdroid.fdroid.views.apps;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.fdroid.database.AppListItem;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
 import java.util.ArrayList;
 import java.util.List;

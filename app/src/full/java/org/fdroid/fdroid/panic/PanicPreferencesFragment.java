@@ -54,20 +54,20 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.preferences_panic);
 
-        pm = getActivity().getPackageManager();
-        prefExit = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_EXIT);
-        prefApp = (ListPreference) findPreference(PREF_APP);
-        prefHide = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_HIDE);
+        pm = requireActivity().getPackageManager();
+        prefExit = findPreference(Preferences.PREF_PANIC_EXIT);
+        prefApp = findPreference(PREF_APP);
+        prefHide = findPreference(Preferences.PREF_PANIC_HIDE);
         prefHide.setTitle(getString(R.string.panic_hide_title, getString(R.string.app_name)));
-        prefResetRepos = (CheckBoxPreference) findPreference(Preferences.PREF_PANIC_RESET_REPOS);
-        categoryAppsToUninstall = (PreferenceCategory) findPreference("pref_panic_apps_to_uninstall");
+        prefResetRepos = findPreference(Preferences.PREF_PANIC_RESET_REPOS);
+        categoryAppsToUninstall = findPreference("pref_panic_apps_to_uninstall");
 
-        if (PanicResponder.checkForDisconnectIntent(getActivity())) {
+        if (PanicResponder.checkForDisconnectIntent(requireActivity())) {
             // the necessary action should have been performed by the check already
-            getActivity().finish();
+            requireActivity().finish();
             return;
         }
-        String connectIntentSender = PanicResponder.getConnectIntentSender(getActivity());
+        String connectIntentSender = PanicResponder.getConnectIntentSender(requireActivity());
         // if there's a connecting app and it is not the old one
         if (!TextUtils.isEmpty(connectIntentSender) && !TextUtils.equals(connectIntentSender, PanicResponder
                 .getTriggerPackageName(getActivity()))) {
@@ -75,24 +75,21 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
             showOptInDialog();
         }
 
-        prefApp.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                String packageName = (String) newValue;
-                PanicResponder.setTriggerPackageName(getActivity(), packageName);
-                if (packageName.equals(Panic.PACKAGE_NAME_NONE)) {
-                    prefHide.setChecked(false);
-                    prefHide.setEnabled(false);
-                    prefResetRepos.setChecked(false);
-                    prefResetRepos.setEnabled(false);
-                    getActivity().setResult(AppCompatActivity.RESULT_CANCELED);
-                } else {
-                    prefHide.setEnabled(true);
-                    prefResetRepos.setEnabled(true);
-                }
-                showPanicApp(packageName);
-                return true;
+        prefApp.setOnPreferenceChangeListener((preference, newValue) -> {
+            String packageName = (String) newValue;
+            PanicResponder.setTriggerPackageName(requireActivity(), packageName);
+            if (packageName.equals(Panic.PACKAGE_NAME_NONE)) {
+                prefHide.setChecked(false);
+                prefHide.setEnabled(false);
+                prefResetRepos.setChecked(false);
+                prefResetRepos.setEnabled(false);
+                requireActivity().setResult(AppCompatActivity.RESULT_CANCELED);
+            } else {
+                prefHide.setEnabled(true);
+                prefResetRepos.setEnabled(true);
             }
+            showPanicApp(packageName);
+            return true;
         });
         showPanicApp(PanicResponder.getTriggerPackageName(getActivity()));
     }
@@ -181,17 +178,14 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
         if (entries.size() <= 1) {
             // bring the user to Ripple if no other panic apps are available
-            prefApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("market://details?id=info.guardianproject.ripple"));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                        startActivity(intent);
-                    }
-                    return true;
+            prefApp.setOnPreferenceClickListener(preference -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("market://details?id=info.guardianproject.ripple"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                if (intent.resolveActivity(requireActivity().getPackageManager()) != null) {
+                    startActivity(intent);
                 }
+                return true;
             });
         }
 
@@ -201,9 +195,9 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
             prefApp.setSummary(getString(R.string.panic_app_setting_summary));
 
             prefApp.setIcon(null); // otherwise re-setting view resource doesn't work
-            Drawable icon = ContextCompat.getDrawable(getActivity(), R.drawable.ic_cancel);
+            Drawable icon = ContextCompat.getDrawable(requireActivity(), R.drawable.ic_cancel);
             TypedValue typedValue = new TypedValue();
-            Resources.Theme theme = getActivity().getTheme();
+            Resources.Theme theme = requireActivity().getTheme();
             theme.resolveAttribute(R.attr.appListItem, typedValue, true);
             @ColorInt int color = typedValue.data;
             icon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
@@ -223,30 +217,24 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
                 showWipeList();
             } catch (PackageManager.NameNotFoundException e) {
                 // revert back to no app, just to be safe
-                PanicResponder.setTriggerPackageName(getActivity(), Panic.PACKAGE_NAME_NONE);
+                PanicResponder.setTriggerPackageName(requireActivity(), Panic.PACKAGE_NAME_NONE);
                 showPanicApp(Panic.PACKAGE_NAME_NONE);
             }
         }
     }
 
     private void showOptInDialog() {
-        DialogInterface.OnClickListener okListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                PanicResponder.setTriggerPackageName(getActivity());
-                showPanicApp(PanicResponder.getTriggerPackageName(getActivity()));
-                getActivity().setResult(AppCompatActivity.RESULT_OK);
-            }
+        DialogInterface.OnClickListener okListener = (dialogInterface, i) -> {
+            PanicResponder.setTriggerPackageName(requireActivity());
+            showPanicApp(PanicResponder.getTriggerPackageName(getActivity()));
+            requireActivity().setResult(AppCompatActivity.RESULT_OK);
         };
-        DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                getActivity().setResult(AppCompatActivity.RESULT_CANCELED);
-                getActivity().finish();
-            }
+        DialogInterface.OnClickListener cancelListener = (dialogInterface, i) -> {
+            requireActivity().setResult(AppCompatActivity.RESULT_CANCELED);
+            requireActivity().finish();
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         builder.setTitle(getString(R.string.panic_app_dialog_title));
 
         CharSequence app = getString(R.string.panic_app_unknown_app);
@@ -268,7 +256,7 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
     @Nullable
     private String getCallingPackageName() {
-        ComponentName componentName = getActivity().getCallingActivity();
+        ComponentName componentName = requireActivity().getCallingActivity();
         String packageName = null;
         if (componentName != null) {
             packageName = componentName.getPackageName();
@@ -278,31 +266,20 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
     private void showHideConfirmationDialog() {
         String appName = getString(R.string.app_name);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         builder.setTitle(R.string.panic_hide_warning_title);
         builder.setMessage(getString(R.string.panic_hide_warning_message, appName,
-                HidingManager.getUnhidePin(getActivity()), getString(R.string.hiding_calculator)));
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // enable "exit" if "hiding" gets enabled
-                prefExit.setChecked(true);
-                // dismiss, but not cancel dialog
-                dialogInterface.dismiss();
-            }
+                HidingManager.getUnhidePin(requireActivity()), getString(R.string.hiding_calculator)));
+        builder.setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+            // enable "exit" if "hiding" gets enabled
+            prefExit.setChecked(true);
+            // dismiss, but not cancel dialog
+            dialogInterface.dismiss();
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialogInterface) {
-                prefHide.setChecked(false);
-                prefResetRepos.setChecked(false);
-            }
+        builder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> dialogInterface.cancel());
+        builder.setOnCancelListener(dialogInterface -> {
+            prefHide.setChecked(false);
+            prefResetRepos.setChecked(false);
         });
         builder.setView(R.layout.dialog_app_hiding);
         builder.create().show();

@@ -5,19 +5,15 @@
         <item name="colorButtonNormal">#04b9e6</item>
     </style>
 
-    <style name="SwapTheme.StartSwap" parent="Theme.App"/>
+    <style name="SwapTheme.StartSwap" parent="Theme.App" />
 
-    <style name="SwapTheme.StartSwap.Text" parent="@style/SwapTheme.StartSwap">
-    </style>
+    <style name="SwapTheme.StartSwap.Text" parent="@style/SwapTheme.StartSwap"></style>
 
-    <style name="SwapTheme.BluetoothDeviceList" parent="@style/SwapTheme.Wizard">
-    </style>
+    <style name="SwapTheme.BluetoothDeviceList" parent="@style/SwapTheme.Wizard"></style>
 
-    <style name="SwapTheme.AppList" parent="Base.Theme.App">
-    </style>
+    <style name="SwapTheme.AppList" parent="Base.Theme.App"></style>
 
-    <style name="SwapTheme.AppList.ListItem" parent="Theme.App">
-    </style>
+    <style name="SwapTheme.AppList.ListItem" parent="Theme.App"></style>
 
     <style name="SwapTheme.AppList.SwapSuccessBase">
         <item name="android:gravity">center</item>
@@ -26,7 +22,7 @@
         <item name="android:paddingBottom">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
     </style>
 
-    <style name="SwapTheme.AppList.SwapSuccess" parent="SwapTheme.AppList.SwapSuccessBase"/>
+    <style name="SwapTheme.AppList.SwapSuccess" parent="SwapTheme.AppList.SwapSuccessBase" />
 
     <style name="SwapTheme.AppList.SwapSuccessDetailsBase">
         <item name="android:gravity">center</item>
@@ -36,7 +32,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SwapTheme.AppList.SwapSuccessDetails" parent="SwapTheme.AppList.SwapSuccessDetailsBase"/>
+    <style name="SwapTheme.AppList.SwapSuccessDetails" parent="SwapTheme.AppList.SwapSuccessDetailsBase" />
 
     <style name="SwapTheme.StartSwap.MainTextBase">
         <item name="android:gravity">center</item>
@@ -47,8 +43,7 @@
         <item name="android:paddingBottom">16.8dp</item> <!-- 30px * 96dpi / 160dpi -->
     </style>
 
-    <style name="SwapTheme.StartSwap.MainText" parent="SwapTheme.StartSwap.MainTextBase">
-    </style>
+    <style name="SwapTheme.StartSwap.MainText" parent="SwapTheme.StartSwap.MainTextBase"></style>
 
     <style name="SwapTheme.Wizard.TextBase">
         <item name="android:gravity">center</item>
@@ -57,7 +52,7 @@
         <item name="android:textColorSecondary">#fff</item>
     </style>
 
-    <style name="SwapTheme.Wizard.Text" parent="SwapTheme.Wizard.TextBase"/>
+    <style name="SwapTheme.Wizard.Text" parent="SwapTheme.Wizard.TextBase" />
 
     <style name="SwapTheme.Wizard.Text.Toolbar" parent="SwapTheme.Wizard.Text">
         <item name="android:textSize">22sp</item>
@@ -78,7 +73,7 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
-    <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase"/>
+    <style name="SwapTheme.Wizard.MainText" parent="SwapTheme.Wizard.MainTextBase" />
 
     <style name="SwapTheme.Wizard.QRScanWarningText" parent="@style/SwapTheme.Wizard.MainTextBase">
         <item name="android:paddingLeft">40dp</item>
@@ -115,8 +110,7 @@
         <item name="android:layout_margin">0dp</item>
     </style>
 
-    <style name="SwapTheme.Wizard.ReceiveSwap" parent="SwapTheme.Wizard">
-    </style>
+    <style name="SwapTheme.Wizard.ReceiveSwap" parent="SwapTheme.Wizard"></style>
 
     <!--
     Buttons used to ask the user to confirm they want to receive a swap repo from someone

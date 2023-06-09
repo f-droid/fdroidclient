@@ -1,10 +1,10 @@
 package org.fdroid.fdroid.views.apps;
 
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.App;
 
 /**
  * A dumb model which is used to specify what should/should not be shown  in an {@link AppListItemController}.

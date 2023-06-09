@@ -28,6 +28,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.fdroid.database.Repository;
 import org.fdroid.download.Downloader;
@@ -55,8 +56,6 @@ import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLKeyException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLProtocolException;
-
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * DownloaderService is a service that handles asynchronous download requests
@@ -106,8 +105,8 @@ public class DownloaderService extends JobIntentService {
     public static final String EXTRA_BYTES_READ = "org.fdroid.fdroid.net.Downloader.extra.BYTES_READ";
     public static final String EXTRA_TOTAL_BYTES = "org.fdroid.fdroid.net.Downloader.extra.TOTAL_BYTES";
     public static final String EXTRA_ERROR_MESSAGE = "org.fdroid.fdroid.net.Downloader.extra.ERROR_MESSAGE";
-    public static final String EXTRA_REPO_ID = "org.fdroid.fdroid.net.Downloader.extra.REPO_ID";
-    public static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.MIRROR_URL";
+    private static final String EXTRA_REPO_ID = "org.fdroid.fdroid.net.Downloader.extra.REPO_ID";
+    private static final String EXTRA_MIRROR_URL = "org.fdroid.fdroid.net.Downloader.extra.MIRROR_URL";
     /**
      * Unique ID used to represent this specific package's install process,
      * including {@link android.app.Notification}s, also known as {@code canonicalUrl}.
@@ -217,8 +216,10 @@ public class DownloaderService extends JobIntentService {
         } catch (InterruptedException e) {
             sendBroadcast(canonicalUrl, DownloaderService.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
             installManagerService.onDownloadFailed(canonicalUrl, null);
-        } catch (ConnectException | HttpRetryException | NoRouteToHostException | SocketTimeoutException
-                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException | SSLProtocolException
+        } catch (ConnectException | HttpRetryException | NoRouteToHostException |
+                 SocketTimeoutException
+                 | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException |
+                 SSLProtocolException
                  | ProtocolException | UnknownHostException | NotFoundException e) {
             // if the above list of exceptions changes, also change it in IndexV1Updater.update()
             Log.e(TAG, "CONNECTION_FAILED: " + e.getLocalizedMessage());

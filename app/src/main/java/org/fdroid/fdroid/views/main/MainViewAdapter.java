@@ -27,11 +27,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 
-import org.fdroid.fdroid.R;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.fdroid.fdroid.R;
 
 /**
  * Represents the main views that are accessible from the main screen via each
@@ -67,7 +67,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     @Override
     public void onViewDetachedFromWindow(@NonNull MainViewController holder) {
-        long viewType = getItemId(holder.getAdapterPosition());
+        long viewType = getItemId(holder.getAbsoluteAdapterPosition());
         if (viewType == R.id.updates) {
             holder.unbindUpdates();
         }
@@ -75,7 +75,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
 
     @Override
     public void onViewAttachedToWindow(@NonNull MainViewController holder) {
-        long viewType = getItemId(holder.getAdapterPosition());
+        long viewType = getItemId(holder.getAbsoluteAdapterPosition());
         if (viewType == R.id.updates) {
             holder.bindUpdates();
         } else if (viewType == R.id.nearby) {
@@ -110,7 +110,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
         return holder;
     }
 
-    static MainViewController createEmptyView(AppCompatActivity activity) {
+    private static MainViewController createEmptyView(AppCompatActivity activity) {
         FrameLayout frame = new FrameLayout(activity);
         frame.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -141,7 +141,7 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
         return positionToId.get(position);
     }
 
-    public int adapterPositionFromItemId(int itemId) {
+    int adapterPositionFromItemId(int itemId) {
         return positionToId.indexOfValue(itemId);
     }
 }

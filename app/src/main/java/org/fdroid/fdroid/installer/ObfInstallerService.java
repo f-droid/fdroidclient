@@ -11,6 +11,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import androidx.core.content.FileProvider;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -21,8 +23,6 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import androidx.core.content.FileProvider;
 
 /**
  * An {@link IntentService} subclass for installing {@code .obf} and {@code .obf.zip}

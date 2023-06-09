@@ -36,7 +36,6 @@ public class TestUtils {
         apk.versionCode = versionCode;
         apk.repoId = 1;
         apk.versionName = "The good one";
-        apk.hash = "11111111aaaaaaaa";
         apk.apkFile = new FileV1("Test Apk", "hash", null, null);
         apk.size = 10000;
         apk.compatible = true;

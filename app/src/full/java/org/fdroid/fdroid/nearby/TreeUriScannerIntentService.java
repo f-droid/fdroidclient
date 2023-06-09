@@ -19,16 +19,16 @@
 
 package org.fdroid.fdroid.nearby;
 
-import android.annotation.TargetApi;
 import android.app.IntentService;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Process;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.documentfile.provider.DocumentFile;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -52,8 +52,6 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
-
-import androidx.documentfile.provider.DocumentFile;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous scanning of a

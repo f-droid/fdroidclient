@@ -18,20 +18,22 @@
 
 package org.fdroid.fdroid.work;
 
+import static org.junit.Assert.assertEquals;
+
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
+
 import com.google.common.util.concurrent.ListenableFuture;
+
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * This actually runs {@link FDroidMetricsWorker} on a device/emulator and

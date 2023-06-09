@@ -38,6 +38,22 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.util.ObjectsCompat;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceGroup;
+import androidx.preference.SeekBarPreference;
+import androidx.preference.SwitchPreferenceCompat;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
@@ -54,19 +70,6 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.preference.CheckBoxPreference;
-import androidx.preference.EditTextPreference;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceGroup;
-import androidx.preference.SeekBarPreference;
-import androidx.preference.SwitchPreferenceCompat;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 public class PreferencesFragment extends PreferenceFragmentCompat
@@ -131,7 +134,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         preferences.migrateOldPreferences();
 
         addPreferencesFromResource(R.xml.preferences);
-        otherPrefGroup = (PreferenceGroup) findPreference("pref_category_other");
+        otherPrefGroup = findPreference("pref_category_other");
 
 
         Preference aboutPreference = findPreference("pref_about");
@@ -139,10 +142,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             aboutPreference.setOnPreferenceClickListener(aboutPrefClickedListener);
         }
 
-        keepInstallHistoryPref = (CheckBoxPreference) findPreference(Preferences.PREF_KEEP_INSTALL_HISTORY);
-        sendToFDroidMetricsPref = findPreference(Preferences.PREF_SEND_TO_FDROID_METRICS);
+        keepInstallHistoryPref = findPreference(Preferences.PREF_KEEP_INSTALL_HISTORY);
+        sendToFDroidMetricsPref =
+                ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_SEND_TO_FDROID_METRICS));
         sendToFDroidMetricsPref.setEnabled(keepInstallHistoryPref.isChecked());
-        installHistoryPref = findPreference("installHistory");
+        installHistoryPref = ObjectsCompat.requireNonNull(findPreference("installHistory"));
         installHistoryPref.setVisible(keepInstallHistoryPref.isChecked());
         if (preferences.isSendingToFDroidMetrics()) {
             installHistoryPref.setTitle(R.string.install_history_and_metrics);
@@ -150,40 +154,25 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             installHistoryPref.setTitle(R.string.install_history);
         }
 
-        useTorCheckPref = (SwitchPreferenceCompat) findPreference(Preferences.PREF_USE_TOR);
+        useTorCheckPref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_USE_TOR));
         useTorCheckPref.setOnPreferenceChangeListener(useTorChangedListener);
-        enableProxyCheckPref = (SwitchPreferenceCompat) findPreference(Preferences.PREF_ENABLE_PROXY);
+        enableProxyCheckPref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_ENABLE_PROXY));
         enableProxyCheckPref.setOnPreferenceChangeListener(proxyEnabledChangedListener);
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
 
-        overWifiSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_WIFI);
+        overWifiSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_OVER_WIFI));
         overWifiPrevious = overWifiSeekBar.getValue();
-        overWifiSeekBar.setSeekBarLiveUpdater(new LiveSeekBarPreference.SeekBarLiveUpdater() {
-            @Override
-            public String seekBarUpdated(int position) {
-                return getNetworkSeekBarSummary(position);
-            }
-        });
-        overDataSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_OVER_DATA);
+        overWifiSeekBar.setSeekBarLiveUpdater(this::getNetworkSeekBarSummary);
+        overDataSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_OVER_DATA));
         overDataPrevious = overDataSeekBar.getValue();
-        overDataSeekBar.setSeekBarLiveUpdater(new LiveSeekBarPreference.SeekBarLiveUpdater() {
-            @Override
-            public String seekBarUpdated(int position) {
-                return getNetworkSeekBarSummary(position);
-            }
-        });
-        updateIntervalSeekBar = (LiveSeekBarPreference) findPreference(Preferences.PREF_UPDATE_INTERVAL);
+        overDataSeekBar.setSeekBarLiveUpdater(this::getNetworkSeekBarSummary);
+        updateIntervalSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_UPDATE_INTERVAL));
         updateIntervalPrevious = updateIntervalSeekBar.getValue();
-        updateIntervalSeekBar.setSeekBarLiveUpdater(new LiveSeekBarPreference.SeekBarLiveUpdater() {
-            @Override
-            public String seekBarUpdated(int position) {
-                return getString(UPDATE_INTERVAL_NAMES[position]);
-            }
-        });
+        updateIntervalSeekBar.setSeekBarLiveUpdater(position -> getString(UPDATE_INTERVAL_NAMES[position]));
 
-        ListPreference languagePref = (ListPreference) findPreference(Preferences.PREF_LANGUAGE);
+        ListPreference languagePref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_LANGUAGE));
         if (Build.VERSION.SDK_INT >= 24) {
-            PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_display");
+            PreferenceCategory category = ObjectsCompat.requireNonNull(findPreference("pref_category_display"));
             category.removePreference(languagePref);
         } else {
             Languages languages = Languages.get((AppCompatActivity) getActivity());
@@ -192,12 +181,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             languagePref.setEntryValues(languages.getSupportedLocales());
         }
 
-        if (getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) {
-            PreferenceCategory category = (PreferenceCategory) findPreference("pref_category_appcompatibility");
-            category.removePreference(findPreference(Preferences.PREF_FORCE_TOUCH_APPS));
+        if (requireActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) {
+            PreferenceCategory category = ObjectsCompat.requireNonNull(findPreference(
+                    "pref_category_appcompatibility"));
+            category.removePreference(
+                    ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_FORCE_TOUCH_APPS)));
         }
 
-        topScroller = new LinearSmoothScroller(getActivity()) {
+        topScroller = new LinearSmoothScroller(requireActivity()) {
             @Override
             protected int getVerticalSnapPreference() {
                 return SNAP_TO_START;
@@ -213,14 +204,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     }
 
     private void entrySummary(String key) {
-        ListPreference pref = (ListPreference) findPreference(key);
+        ListPreference pref = findPreference(key);
         if (pref != null) {
             pref.setSummary(pref.getEntry());
         }
     }
 
     private void textSummary(String key, int resId) {
-        EditTextPreference pref = (EditTextPreference) findPreference(key);
+        EditTextPreference pref = findPreference(key);
         if (pref == null) {
             Utils.debugLog(TAG, "null preference found for " + key);
         } else {
@@ -362,7 +353,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_PRIVILEGED_INSTALLER:
                 // We may have removed this preference if it is not suitable to show the user.
                 // So lets check it is here first.
-                final CheckBoxPreference pref = (CheckBoxPreference) findPreference(
+                final CheckBoxPreference pref = findPreference(
                         Preferences.PREF_PRIVILEGED_INSTALLER);
                 if (pref != null) {
                     checkSummary(key, R.string.system_installer_on);
@@ -370,12 +361,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 break;
 
             case Preferences.PREF_ENABLE_PROXY:
-                SwitchPreferenceCompat checkPref = (SwitchPreferenceCompat) findPreference(key);
+                SwitchPreferenceCompat checkPref = ObjectsCompat.requireNonNull(findPreference(key));
                 checkPref.setSummary(R.string.enable_proxy_summary);
                 break;
 
             case Preferences.PREF_PROXY_HOST:
-                EditTextPreference textPref = (EditTextPreference) findPreference(key);
+                EditTextPreference textPref = ObjectsCompat.requireNonNull(findPreference(key));
                 String text = Preferences.get().getProxyHost();
                 if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST)) {
                     textPref.setSummary(R.string.proxy_host_summary);
@@ -385,7 +376,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 break;
 
             case Preferences.PREF_PROXY_PORT:
-                EditTextPreference textPref2 = (EditTextPreference) findPreference(key);
+                EditTextPreference textPref2 = ObjectsCompat.requireNonNull(findPreference(key));
                 int port = Preferences.get().getProxyPort();
                 if (port == Preferences.DEFAULT_PROXY_PORT) {
                     textPref2.setSummary(R.string.proxy_port_summary);
@@ -427,34 +418,30 @@ public class PreferencesFragment extends PreferenceFragmentCompat
      * TODO: this might need to be changed when updated to the new preference pattern
      */
 
-    private final Preference.OnPreferenceClickListener aboutPrefClickedListener =
-            new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    final View view = getLayoutInflater().inflate(R.layout.about, null);
-                    final Context context = requireContext();
+    private final Preference.OnPreferenceClickListener aboutPrefClickedListener = preference -> {
+        final View view = getLayoutInflater().inflate(R.layout.about, null);
+        final Context context = requireContext();
 
-                    String versionName = Utils.getVersionName(context);
-                    if (versionName != null) {
-                        TextView versionNameView = view.findViewById(R.id.version);
-                        versionNameView.setText(versionName);
-                        versionNameView.setOnLongClickListener(v -> {
-                            throw new RuntimeException("BOOM!");
-                        });
-                    }
-                    new MaterialAlertDialogBuilder(context)
-                            .setView(view)
-                            .setPositiveButton(R.string.ok, null)
-                            .show();
-                    return true;
-                }
-            };
+        String versionName = Utils.getVersionName(context);
+        if (versionName != null) {
+            TextView versionNameView = view.findViewById(R.id.version);
+            versionNameView.setText(versionName);
+            versionNameView.setOnLongClickListener(v -> {
+                throw new RuntimeException("BOOM!");
+            });
+        }
+        new MaterialAlertDialogBuilder(context)
+                .setView(view)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+        return true;
+    };
 
     /**
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
      */
     private void initPrivilegedInstallerPreference() {
-        final CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+        final CheckBoxPreference pref = findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
 
         // This code will be run each time the activity is resumed, and so we may have already removed
         // this preference.
@@ -478,19 +465,15 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             pref.setEnabled(true);
             pref.setDefaultValue(true);
             pref.setChecked(enabled);
-
-            pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                    if (pref.isChecked()) {
-                        editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
-                    } else {
-                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
-                    }
-                    editor.apply();
-                    return true;
+            pref.setOnPreferenceClickListener(preference -> {
+                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                if (pref.isChecked()) {
+                    editor.remove(Preferences.PREF_PRIVILEGED_INSTALLER);
+                } else {
+                    editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
                 }
+                editor.apply();
+                return true;
             });
         }
     }
@@ -502,15 +485,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat
      * will actually _install_ apps, not just fetch their .apk file automatically.
      */
     private void initAutoFetchUpdatesPreference() {
-        updateAutoDownloadPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                if (newValue instanceof Boolean && (boolean) newValue) {
-                    UpdateService.autoDownloadUpdates(getActivity());
-                }
-                return true;
+        updateAutoDownloadPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            if (newValue instanceof Boolean && (boolean) newValue) {
+                UpdateService.autoDownloadUpdates(getActivity());
             }
+            return true;
         });
 
         if (PrivilegedInstaller.isDefault(getActivity())) {
@@ -530,10 +509,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private final Preference.OnPreferenceChangeListener useTorChangedListener =
             new Preference.OnPreferenceChangeListener() {
                 @Override
-                public boolean onPreferenceChange(Preference preference, Object enabled) {
+                public boolean onPreferenceChange(@NonNull Preference preference, Object enabled) {
                     if ((Boolean) enabled) {
                         enableProxyCheckPref.setChecked(false);
-                        final AppCompatActivity activity = (AppCompatActivity) getActivity();
+                        final AppCompatActivity activity = (AppCompatActivity) requireActivity();
                         if (!OrbotHelper.isOrbotInstalled(activity)) {
                             Intent intent = OrbotHelper.getOrbotInstallIntent(activity);
                             activity.startActivityForResult(intent, REQUEST_INSTALL_ORBOT);
@@ -548,7 +527,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private final Preference.OnPreferenceChangeListener proxyEnabledChangedListener =
             new Preference.OnPreferenceChangeListener() {
                 @Override
-                public boolean onPreferenceChange(Preference preference, Object enabled) {
+                public boolean onPreferenceChange(@NonNull Preference preference, Object enabled) {
                     if ((Boolean) enabled) {
                         useTorCheckPref.setChecked(false);
                     }
@@ -570,7 +549,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
 
         initAutoFetchUpdatesPreference();
         initPrivilegedInstallerPreference();
-        initUseTorPreference(getActivity().getApplicationContext());
+        initUseTorPreference(requireContext().getApplicationContext());
     }
 
     @Override
@@ -590,16 +569,17 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     public void onSharedPreferenceChanged(
             SharedPreferences sharedPreferences, String key) {
         updateSummary(key, true);
+        //noinspection IfCanBeSwitch
         if (key.equals(Preferences.PREF_PREVENT_SCREENSHOTS)) {
             if (Preferences.get().preventScreenshots()) {
-                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+                requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
             } else {
-                getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+                requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
             }
         } else if (Preferences.PREF_SEND_TO_FDROID_METRICS.equals(key)) {
             if (Preferences.get().isSendingToFDroidMetrics()) {
                 String msg = getString(R.string.toast_metrics_in_install_history,
-                        getContext().getString(R.string.app_name));
+                        requireContext().getString(R.string.app_name));
                 Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
                 installHistoryPref.setTitle(R.string.install_history_and_metrics);
                 Intent intent = new Intent(getActivity(), InstallHistoryActivity.class);
@@ -610,7 +590,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             }
         } else if (Preferences.PREF_OVER_DATA.equals(key) || Preferences.PREF_OVER_WIFI.equals(key)) {
             if (glideRequestManager == null) {
-                glideRequestManager = Glide.with(getContext());
+                glideRequestManager = Glide.with(requireContext());
             }
             glideRequestManager.applyDefaultRequestOptions(new RequestOptions()
                     .onlyRetrieveFromCache(Preferences.get().isBackgroundDownloadAllowed()));

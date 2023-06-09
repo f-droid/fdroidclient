@@ -7,10 +7,10 @@ import android.text.TextWatcher;
 import android.text.style.TtsSpan;
 import android.widget.EditText;
 
-import org.fdroid.fdroid.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import org.fdroid.fdroid.R;
 
 /**
  * The search input treats text before the first colon as a category name. Text after this colon
@@ -34,8 +34,8 @@ public class CategoryTextWatcher implements TextWatcher {
     private int removeTo = -1;
     private boolean requiresSpanRecalculation = false;
 
-    public CategoryTextWatcher(final Context context, final EditText widget,
-                               final SearchTermsChangedListener listener) {
+    CategoryTextWatcher(final Context context, final EditText widget,
+                        final SearchTermsChangedListener listener) {
         this.context = context;
         this.widget = widget;
         this.listener = listener;

@@ -10,16 +10,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 
 public class UpdatesViewBinder {
 
@@ -37,7 +37,7 @@ public class UpdatesViewBinder {
         adapter = new UpdatesAdapter(activity);
         adapter.registerAdapterDataObserver(adapterChangeListener);
 
-        list = (RecyclerView) view.findViewById(R.id.list);
+        list = view.findViewById(R.id.list);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(activity));
         list.setAdapter(adapter);
@@ -45,18 +45,15 @@ public class UpdatesViewBinder {
         ItemTouchHelper touchHelper = new ItemTouchHelper(new UpdatesItemTouchCallback(adapter));
         touchHelper.attachToRecyclerView(list);
 
-        emptyState = (TextView) view.findViewById(R.id.empty_state);
-        emptyImage = (ImageView) view.findViewById(R.id.image);
+        emptyState = view.findViewById(R.id.empty_state);
+        emptyImage = view.findViewById(R.id.image);
         emptyUpdatingProgress = view.findViewById(R.id.empty_updating_progress);
 
-        final SwipeRefreshLayout swipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_to_refresh);
+        final SwipeRefreshLayout swipeToRefresh = view.findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
-        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeToRefresh.setRefreshing(false);
-                UpdateService.updateNow(activity);
-            }
+        swipeToRefresh.setOnRefreshListener(() -> {
+            swipeToRefresh.setRefreshing(false);
+            UpdateService.updateNow(activity);
         });
 
     }

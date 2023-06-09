@@ -8,13 +8,13 @@ import android.os.Message;
 import android.os.Process;
 import android.util.Log;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 
 import java.io.IOException;
 import java.net.BindException;
-
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 /**
  * Manage {@link LocalHTTPD} in a {@link HandlerThread};

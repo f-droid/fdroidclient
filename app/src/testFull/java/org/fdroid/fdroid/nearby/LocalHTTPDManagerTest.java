@@ -42,18 +42,15 @@ public class LocalHTTPDManagerTest {
 
         LocalHTTPDManager.start(context, false);
         final CountDownLatch startLatch = new CountDownLatch(1);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!Utils.isServerSocketInUse(port)) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        fail();
-                    }
+        new Thread(() -> {
+            while (!Utils.isServerSocketInUse(port)) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    fail();
                 }
-                startLatch.countDown();
             }
+            startLatch.countDown();
         }).start();
         assertTrue(startLatch.await(10, TimeUnit.MINUTES));
         assertTrue(Utils.isServerSocketInUse(port));
@@ -61,18 +58,15 @@ public class LocalHTTPDManagerTest {
 
         LocalHTTPDManager.stop(context);
         final CountDownLatch stopLatch = new CountDownLatch(1);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (Utils.isServerSocketInUse(port)) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        fail();
-                    }
+        new Thread(() -> {
+            while (Utils.isServerSocketInUse(port)) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    fail();
                 }
-                stopLatch.countDown();
             }
+            stopLatch.countDown();
         }).start();
         assertTrue(stopLatch.await(10, TimeUnit.MINUTES));
     }

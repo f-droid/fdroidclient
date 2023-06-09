@@ -1,73 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceScreen android:title="@string/about_title"
+    <PreferenceScreen
+        android:title="@string/about_title"
         android:key="pref_about" />
 
     <PreferenceCategory android:title="@string/preference_category__my_apps">
         <PreferenceScreen android:title="@string/preference_manage_installed_apps">
             <intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetPackage="@string/applicationId"
-                    android:targetClass="org.fdroid.fdroid.views.installed.InstalledAppsActivity"/>
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="@string/applicationId"
+                android:targetClass="org.fdroid.fdroid.views.installed.InstalledAppsActivity" />
         </PreferenceScreen>
         <PreferenceScreen
-                android:title="@string/menu_manage"
-                android:summary="@string/repositories_summary">
+            android:title="@string/menu_manage"
+            android:summary="@string/repositories_summary">
             <intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetPackage="@string/applicationId"
-                    android:targetClass="org.fdroid.fdroid.views.ManageReposActivity"/>
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="@string/applicationId"
+                android:targetClass="org.fdroid.fdroid.views.ManageReposActivity" />
         </PreferenceScreen>
         <PreferenceScreen
-                android:key="installHistory"
-                android:visible="false"
-                android:title="@string/install_history"
-                android:summary="@string/install_history_summary">
+            android:key="installHistory"
+            android:visible="false"
+            android:title="@string/install_history"
+            android:summary="@string/install_history_summary">
             <intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetPackage="@string/applicationId"
-                    android:targetClass="org.fdroid.fdroid.views.InstallHistoryActivity"/>
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="@string/applicationId"
+                android:targetClass="org.fdroid.fdroid.views.InstallHistoryActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/updates">
         <org.fdroid.fdroid.views.LiveSeekBarPreference
-                android:key="overWifi"
-                android:title="@string/over_wifi"
-                android:defaultValue="@integer/defaultOverWifi"
-                android:layout="@layout/preference_seekbar"/>
+            android:key="overWifi"
+            android:title="@string/over_wifi"
+            android:defaultValue="@integer/defaultOverWifi"
+            android:layout="@layout/preference_seekbar" />
         <org.fdroid.fdroid.views.LiveSeekBarPreference
-                android:key="overData"
-                android:title="@string/over_data"
-                android:defaultValue="@integer/defaultOverData"
-                android:layout="@layout/preference_seekbar"/>
+            android:key="overData"
+            android:title="@string/over_data"
+            android:defaultValue="@integer/defaultOverData"
+            android:layout="@layout/preference_seekbar" />
         <SwitchPreferenceCompat
-                android:title="@string/update_auto_download"
-                android:summary="@string/update_auto_download_summary"
-                android:key="updateAutoDownload"/>
+            android:title="@string/update_auto_download"
+            android:summary="@string/update_auto_download_summary"
+            android:key="updateAutoDownload" />
         <org.fdroid.fdroid.views.LiveSeekBarPreference
-                android:key="updateIntervalSeekBarPosition"
-                android:title="@string/update_interval"
-                android:defaultValue="@integer/defaultUpdateInterval"
-                android:layout="@layout/preference_seekbar"/>
+            android:key="updateIntervalSeekBarPosition"
+            android:title="@string/update_interval"
+            android:defaultValue="@integer/defaultUpdateInterval"
+            android:layout="@layout/preference_seekbar" />
         <SwitchPreferenceCompat
-                android:title="@string/notify"
-                android:defaultValue="true"
-                android:key="updateNotify"/>
+            android:title="@string/notify"
+            android:defaultValue="true"
+            android:key="updateNotify" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/display"
-                                                      android:key="pref_category_display">
+    <PreferenceCategory
+        android:title="@string/display"
+        android:key="pref_category_display">
         <ListPreference
-                android:title="@string/pref_language"
-                android:key="language"/>
+            android:title="@string/pref_language"
+            android:key="language" />
         <ListPreference
-                android:title="@string/theme"
-                android:key="theme"
-                android:defaultValue="@string/defaultTheme"
-                android:entries="@array/themeNames"
-                android:entryValues="@array/themeValues"/>
+            android:title="@string/theme"
+            android:key="theme"
+            android:defaultValue="@string/defaultTheme"
+            android:entries="@array/themeNames"
+            android:entryValues="@array/themeValues" />
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="usePureBlackDarkTheme"
@@ -75,116 +77,117 @@
             android:title="@string/use_pure_black_dark_theme" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/appcompatibility"
-                                                      android:key="pref_category_appcompatibility">
+    <PreferenceCategory
+        android:title="@string/appcompatibility"
+        android:key="pref_category_appcompatibility">
         <SwitchPreferenceCompat
-                android:title="@string/show_incompat_versions"
-                android:defaultValue="false"
-                android:key="incompatibleVersions"/>
+            android:title="@string/show_incompat_versions"
+            android:defaultValue="false"
+            android:key="incompatibleVersions" />
         <MultiSelectListPreference
             android:title="@string/show_anti_feature_apps"
             android:defaultValue="@array/antifeaturesValuesDefault"
             android:key="showAntiFeatures"
             android:entries="@array/antifeaturesNames"
-            android:entryValues="@array/antifeaturesValues"/>
+            android:entryValues="@array/antifeaturesValues" />
         <SwitchPreference
-                android:title="@string/force_touch_apps"
-                android:defaultValue="false"
-                android:key="ignoreTouchscreen"/>
+            android:title="@string/force_touch_apps"
+            android:defaultValue="false"
+            android:key="ignoreTouchscreen" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/proxy">
         <SwitchPreferenceCompat
-                android:key="useTor"
-                android:summary="@string/useTorSummary"
-                android:title="@string/useTor"/>
+            android:key="useTor"
+            android:summary="@string/useTorSummary"
+            android:title="@string/useTor" />
         <SwitchPreferenceCompat
-                android:defaultValue="false"
-                android:key="enableProxy"
-                android:title="@string/enable_proxy_title"
-                android:summary="@string/enable_proxy_summary"/>
+            android:defaultValue="false"
+            android:key="enableProxy"
+            android:title="@string/enable_proxy_title"
+            android:summary="@string/enable_proxy_summary" />
         <EditTextPreference
-                android:key="proxyHost"
-                android:title="@string/proxy_host"
-                android:summary="@string/proxy_host_summary"
-                android:dependency="enableProxy"/>
+            android:key="proxyHost"
+            android:title="@string/proxy_host"
+            android:summary="@string/proxy_host_summary"
+            android:dependency="enableProxy" />
         <EditTextPreference
-                android:key="proxyPort"
-                android:title="@string/proxy_port"
-                android:summary="@string/proxy_port_summary"
-                android:dependency="enableProxy"/>
+            android:key="proxyPort"
+            android:title="@string/proxy_port"
+            android:summary="@string/proxy_port_summary"
+            android:dependency="enableProxy" />
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="pref_category_privacy"
-            android:title="@string/privacy">
+        android:key="pref_category_privacy"
+        android:title="@string/privacy">
         <SwitchPreferenceCompat
-                android:key="promptToSendCrashReports"
-                android:title="@string/prompt_to_send_crash_reports"
-                android:summary="@string/prompt_to_send_crash_reports_summary"
-                android:defaultValue="true"/>
+            android:key="promptToSendCrashReports"
+            android:title="@string/prompt_to_send_crash_reports"
+            android:summary="@string/prompt_to_send_crash_reports_summary"
+            android:defaultValue="true" />
         <SwitchPreferenceCompat
-                android:defaultValue="false"
-                android:key="preventScreenshots"
-                android:summary="@string/preventScreenshots_summary"
-                android:title="@string/preventScreenshots_title"/>
+            android:defaultValue="false"
+            android:key="preventScreenshots"
+            android:summary="@string/preventScreenshots_summary"
+            android:title="@string/preventScreenshots_title" />
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:title="@string/other"
-            android:key="pref_category_other">
+        android:title="@string/other"
+        android:key="pref_category_other">
         <ListPreference
-                android:title="@string/cache_downloaded"
-                android:key="keepCacheFor"
-                android:defaultValue="86400000"
-                android:entries="@array/keepCacheNames"
-                android:entryValues="@array/keepCacheValues"/>
+            android:title="@string/cache_downloaded"
+            android:key="keepCacheFor"
+            android:defaultValue="86400000"
+            android:entries="@array/keepCacheNames"
+            android:entryValues="@array/keepCacheValues" />
         <SwitchPreferenceCompat
-                android:title="@string/expert"
-                android:defaultValue="false"
-                android:key="expert"/>
+            android:title="@string/expert"
+            android:defaultValue="false"
+            android:key="expert" />
         <CheckBoxPreference
-                android:key="unstableUpdates"
-                android:title="@string/unstable_updates"
-                android:summary="@string/unstable_updates_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="unstableUpdates"
+            android:title="@string/unstable_updates"
+            android:summary="@string/unstable_updates_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:key="keepInstallHistory"
-                android:title="@string/keep_install_history"
-                android:summary="@string/keep_install_history_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="keepInstallHistory"
+            android:title="@string/keep_install_history"
+            android:summary="@string/keep_install_history_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:key="sendToFdroidMetrics"
-                android:title="@string/send_to_fdroid_metrics"
-                android:summary="@string/send_to_fdroid_metrics_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="sendToFdroidMetrics"
+            android:title="@string/send_to_fdroid_metrics"
+            android:summary="@string/send_to_fdroid_metrics_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:key="hideAllNotifications"
-                android:title="@string/hide_all_notifications"
-                android:summary="@string/hide_all_notifications_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="hideAllNotifications"
+            android:title="@string/hide_all_notifications"
+            android:summary="@string/hide_all_notifications_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:key="sendVersionAndUUIDToServers"
-                android:title="@string/send_version_and_uuid"
-                android:summary="@string/send_version_and_uuid_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="sendVersionAndUUIDToServers"
+            android:title="@string/send_version_and_uuid"
+            android:summary="@string/send_version_and_uuid_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:key="forceOldIndex"
-                android:title="@string/force_old_index"
-                android:summary="@string/force_old_index_summary"
-                android:defaultValue="false"
-                android:dependency="expert"/>
+            android:key="forceOldIndex"
+            android:title="@string/force_old_index"
+            android:summary="@string/force_old_index_summary"
+            android:defaultValue="false"
+            android:dependency="expert" />
         <CheckBoxPreference
-                android:title="@string/system_installer"
-                android:defaultValue="false"
-                android:key="privilegedInstaller"
-                android:persistent="false"
-                android:dependency="expert"/>
+            android:title="@string/system_installer"
+            android:defaultValue="false"
+            android:key="privilegedInstaller"
+            android:persistent="false"
+            android:dependency="expert" />
     </PreferenceCategory>
 
 </PreferenceScreen>

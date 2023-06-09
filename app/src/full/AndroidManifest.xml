@@ -45,10 +45,12 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- Some Android ROMs still require Bluetooth permission above SDK 30 -->
-    <uses-permission android:name="android.permission.BLUETOOTH"
-                     android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
-                     android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -70,8 +72,7 @@
             android:label="@string/swap"
             android:launchMode="singleTask"
             android:parentActivityName=".views.main.MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".panic.PanicPreferencesActivity"
@@ -116,6 +117,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver android:name=".nearby.WifiStateChangeReceiver">
             <intent-filter>
                 <action android:name="android.net.wifi.STATE_CHANGE" />

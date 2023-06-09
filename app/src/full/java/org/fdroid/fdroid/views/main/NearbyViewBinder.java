@@ -22,6 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
@@ -30,11 +34,7 @@ import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 
 import java.io.File;
 import java.util.List;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import java.util.concurrent.Executor;
 
 /**
  * A splash screen encouraging people to start the swap process. The swap
@@ -81,16 +81,13 @@ public class NearbyViewBinder {
         ImageView nearbySplash = swapView.findViewById(R.id.image);
 
         Button startButton = swapView.findViewById(R.id.find_people_button);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
-                if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
-                    ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
-                            MainActivity.REQUEST_LOCATION_PERMISSIONS);
-                } else {
-                    ContextCompat.startForegroundService(activity, new Intent(activity, SwapService.class));
-                }
+        startButton.setOnClickListener(v -> {
+            final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
+            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
+                ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
+                        MainActivity.REQUEST_LOCATION_PERMISSIONS);
+            } else {
+                ContextCompat.startForegroundService(activity, new Intent(activity, SwapService.class));
             }
         });
 
@@ -116,18 +113,17 @@ public class NearbyViewBinder {
             readExternalStorageText.setVisibility(View.VISIBLE);
             Button requestReadExternalStorage = swapView.findViewById(R.id.request_read_external_storage_button);
             requestReadExternalStorage.setVisibility(View.VISIBLE);
-            requestReadExternalStorage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if ((externalStorage == null || !externalStorage.canRead()) && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, writeExternalStorage)) {
-                        ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
-                                MainActivity.REQUEST_STORAGE_PERMISSIONS);
-                    } else {
-                        Toast.makeText(activity,
-                                activity.getString(R.string.scan_removable_storage_toast, externalStorage),
-                                Toast.LENGTH_SHORT).show();
-                        SDCardScannerService.scan(activity);
-                    }
+            requestReadExternalStorage.setOnClickListener(v -> {
+                if ((externalStorage == null || !externalStorage.canRead())
+                        && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity,
+                        writeExternalStorage)) {
+                    ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
+                            MainActivity.REQUEST_STORAGE_PERMISSIONS);
+                } else {
+                    Toast.makeText(activity,
+                            activity.getString(R.string.scan_removable_storage_toast, externalStorage),
+                            Toast.LENGTH_SHORT).show();
+                    SDCardScannerService.scan(activity);
                 }
             });
         }
@@ -185,12 +181,10 @@ public class NearbyViewBinder {
                 }
 
                 requestStorageVolume.setVisibility(View.VISIBLE);
-                requestStorageVolume.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    @RequiresApi(api = 24)
-                    public void onClick(View v) {
-                        List<UriPermission> list = context.getContentResolver().getPersistedUriPermissions();
-                        if (list != null) for (UriPermission uriPermission : list) {
+                requestStorageVolume.setOnClickListener(v -> {
+                    List<UriPermission> list = context.getContentResolver().getPersistedUriPermissions();
+                    if (list != null) {
+                        for (UriPermission uriPermission : list) {
                             Uri uri = uriPermission.getUri();
                             if (uri.getPath().equals(String.format("/tree/%s:", storageVolume.getUuid()))) {
                                 intent.setData(uri);
@@ -198,23 +192,23 @@ public class NearbyViewBinder {
                                 return;
                             }
                         }
+                    }
 
-                        AppCompatActivity activity = null;
-                        if (context instanceof AppCompatActivity) {
-                            activity = (AppCompatActivity) context;
-                        } else if (swapView != null && swapView.getContext() instanceof AppCompatActivity) {
-                            activity = (AppCompatActivity) swapView.getContext();
-                        }
+                    AppCompatActivity activity = null;
+                    if (context instanceof AppCompatActivity) {
+                        activity = (AppCompatActivity) context;
+                    } else if (swapView != null && swapView.getContext() instanceof AppCompatActivity) {
+                        activity = (AppCompatActivity) swapView.getContext();
+                    }
 
-                        if (activity != null) {
-                            activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
-                        } else {
-                            // scan in the background without requesting permissions
-                            Toast.makeText(context.getApplicationContext(),
-                                    context.getString(R.string.scan_removable_storage_toast, externalStorage),
-                                    Toast.LENGTH_SHORT).show();
-                            SDCardScannerService.scan(context);
-                        }
+                    if (activity != null) {
+                        activity.startActivityForResult(intent, MainActivity.REQUEST_STORAGE_ACCESS);
+                    } else {
+                        // scan in the background without requesting permissions
+                        Toast.makeText(context.getApplicationContext(),
+                                context.getString(R.string.scan_removable_storage_toast, externalStorage),
+                                Toast.LENGTH_SHORT).show();
+                        SDCardScannerService.scan(context);
                     }
                 });
             }

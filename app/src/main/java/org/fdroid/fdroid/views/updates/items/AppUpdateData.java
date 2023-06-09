@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public abstract class AppUpdateData { // NOPMD This abstract class does not have any abstract methods
     public final AppCompatActivity activity;
 
-    public AppUpdateData(AppCompatActivity activity) {
+    AppUpdateData(AppCompatActivity activity) {
         this.activity = activity;
     }
 }

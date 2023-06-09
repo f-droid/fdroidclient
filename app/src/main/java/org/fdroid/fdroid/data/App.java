@@ -148,11 +148,11 @@ public class App implements Comparable<App>, Parcelable {
 
     public String litecoin;
 
-    public String flattrID;
+    private String flattrID;
 
     public String liberapay;
 
-    public String openCollective;
+    private String openCollective;
 
     /**
      * This matches {@code CurrentVersion} in build metadata files.
@@ -289,7 +289,7 @@ public class App implements Comparable<App>, Parcelable {
      */
     public void update(Context context, List<Apk> apks, org.fdroid.database.AppPrefs appPrefs) {
         this.prefs = appPrefs;
-        for (Apk apk: apks) {
+        for (Apk apk : apks) {
             boolean apkIsInstalled = (apk.versionCode == installedVersionCode &&
                     TextUtils.equals(apk.signer, installedSigner)) || (!apk.isApk() && apk.isMediaInstalled(context));
             if (apkIsInstalled) {
@@ -392,20 +392,6 @@ public class App implements Comparable<App>, Parcelable {
         }
     }
 
-    public String getIconPath() {
-        if (iconFile == null) {
-            return null;
-        } else if (TextUtils.isEmpty(iconFile.getName())) {
-            return null;
-        } else if (iconFile.getName().endsWith(".xml")) {
-            // We cannot use xml resources as icons. F-Droid server should not include them
-            // https://gitlab.com/fdroid/fdroidserver/issues/344
-            return null;
-        } else {
-            return iconFile.getName();
-        }
-    }
-
     /**
      * Gets the path relative to the repo root.
      * Can be used to create URLs for use with mirrors.
@@ -441,7 +427,7 @@ public class App implements Comparable<App>, Parcelable {
      *
      * @see <a href="https://developer.android.com/google/play/expansion-files.html">APK Expansion Files</a>
      */
-    public static File getObbDir(String packageName) {
+    static File getObbDir(String packageName) {
         return new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/Android/obb/" + packageName);
     }
@@ -486,7 +472,7 @@ public class App implements Comparable<App>, Parcelable {
         return isApk;
     }
 
-    public boolean isMediaInstalled(Context context) {
+    private boolean isMediaInstalled(Context context) {
         return getMediaApkifInstalled(context) != null;
     }
 
@@ -540,7 +526,7 @@ public class App implements Comparable<App>, Parcelable {
     /**
      * Finds the APK we suggest to install.
      *
-     * @param apks a list of APKs sorted by version code (highest first).
+     * @param apks           a list of APKs sorted by version code (highest first).
      * @param releaseChannel the key of the release channel to be considered.
      * @return The Apk we suggest to install or null, if we didn't find any.
      */
@@ -670,9 +656,9 @@ public class App implements Comparable<App>, Parcelable {
                 eventType = xml.nextToken();
             }
         } catch (PackageManager.NameNotFoundException
-                | IOException
-                | XmlPullParserException
-                | NumberFormatException e) {
+                 | IOException
+                 | XmlPullParserException
+                 | NumberFormatException e) {
             Log.e(TAG, "Could not get min/max sdk version", e);
         }
         if (targetSdkVersion < minSdkVersion) {
@@ -830,7 +816,7 @@ public class App implements Comparable<App>, Parcelable {
      * doesn't have a signer.
      */
     @Nullable
-    public String getMostAppropriateSigner() {
+    private String getMostAppropriateSigner() {
         if (!TextUtils.isEmpty(installedSigner)) {
             return installedSigner;
         } else if (!TextUtils.isEmpty(preferredSigner)) {

@@ -40,6 +40,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 
@@ -52,10 +56,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
  * This class contains the SecurityPermissions view implementation.
@@ -98,7 +98,6 @@ public class AppSecurityPermissions {
 
     // PermissionGroupInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
     @SuppressLint("ParcelCreator")
-    @SuppressWarnings("LineLength")
     static class MyPermissionGroupInfo extends PermissionGroupInfo {
         CharSequence label;
 
@@ -114,7 +113,7 @@ public class AppSecurityPermissions {
             super(info);
         }
 
-        public Drawable loadGroupIcon(Context context, PackageManager pm) {
+        Drawable loadGroupIcon(Context context, PackageManager pm) {
             Drawable iconDrawable;
             if (icon != 0) {
                 iconDrawable = loadUnbadgedIcon(pm);
@@ -161,13 +160,13 @@ public class AppSecurityPermissions {
             setClickable(true);
         }
 
-        public void setPermission(MyPermissionGroupInfo grp, MyPermissionInfo perm,
-                                  boolean first, CharSequence newPermPrefix) {
+        void setPermission(MyPermissionGroupInfo grp, MyPermissionInfo perm,
+                           boolean first, CharSequence newPermPrefix) {
             group = grp;
             this.perm = perm;
 
-            ImageView permGrpIcon = (ImageView) findViewById(R.id.perm_icon);
-            TextView permNameView = (TextView) findViewById(R.id.perm_name);
+            ImageView permGrpIcon = findViewById(R.id.perm_icon);
+            TextView permNameView = findViewById(R.id.perm_name);
 
             PackageManager pm = getContext().getPackageManager();
             Drawable icon = null;
@@ -348,12 +347,10 @@ public class AppSecurityPermissions {
     }
 
     private List<MyPermissionInfo> getPermissionList(MyPermissionGroupInfo grp, int which) {
-        switch (which) {
-            case WHICH_NEW:
-                return grp.newPermissions;
-            default:
-                return grp.allPermissions;
+        if (which == WHICH_NEW) {
+            return grp.newPermissions;
         }
+        return grp.allPermissions;
     }
 
     public int getPermissionCount(int which) {
@@ -366,7 +363,7 @@ public class AppSecurityPermissions {
 
     public View getPermissionsView(int which) {
         LinearLayout permsView = (LinearLayout) inflater.inflate(R.layout.app_perms_summary, null);
-        LinearLayout displayList = (LinearLayout) permsView.findViewById(R.id.perms_list);
+        LinearLayout displayList = permsView.findViewById(R.id.perms_list);
         View noPermsView = permsView.findViewById(R.id.no_permissions);
 
         displayPermissions(permGroupsList, displayList, which);
@@ -424,7 +421,7 @@ public class AppSecurityPermissions {
         final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = base == PermissionInfo.PROTECTION_NORMAL;
         final boolean isDangerous = base == PermissionInfo.PROTECTION_DANGEROUS
-                || ((pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_PRE23) != 0);
+                || (pInfo.protectionLevel & PermissionInfo.PROTECTION_FLAG_PRE23) != 0;
 
         // Dangerous and normal permissions are always shown to the user
         // this is matches the permission list in AppDetailsActivity

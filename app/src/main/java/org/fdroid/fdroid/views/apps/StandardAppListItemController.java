@@ -2,13 +2,13 @@ package org.fdroid.fdroid.views.apps;
 
 import android.view.View;
 
-import org.fdroid.fdroid.AppUpdateStatusManager;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.App;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
 /**
  * Used for search results or for category lists.
@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * </ul>
  */
 public class StandardAppListItemController extends AppListItemController {
-    public StandardAppListItemController(AppCompatActivity activity, View itemView) {
+    StandardAppListItemController(AppCompatActivity activity, View itemView) {
         super(activity, itemView);
     }
 

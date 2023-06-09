@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.panic;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,19 +16,16 @@ public class ExitActivity extends AppCompatActivity {
         System.exit(0);
     }
 
-    public static void exitAndRemoveFromRecentApps(final AppCompatActivity activity) {
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(activity, ExitActivity.class);
+    static void exitAndRemoveFromRecentApps(final AppCompatActivity activity) {
+        activity.runOnUiThread(() -> {
+            Intent intent = new Intent(activity, ExitActivity.class);
 
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                        | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
-                        | Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+                    | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-                activity.startActivity(intent);
-            }
+            activity.startActivity(intent);
         });
 
     }

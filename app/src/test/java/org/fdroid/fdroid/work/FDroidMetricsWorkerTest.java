@@ -1,8 +1,14 @@
 package org.fdroid.fdroid.work;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 import android.app.Application;
 import android.content.ContextWrapper;
 import android.text.format.DateUtils;
+
+import androidx.test.core.app.ApplicationProvider;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.Preferences;
@@ -19,12 +25,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collection;
-
-import androidx.test.core.app.ApplicationProvider;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 @Config(application = Application.class)
 @RunWith(RobolectricTestRunner.class)

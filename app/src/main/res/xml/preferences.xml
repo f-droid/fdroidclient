@@ -93,7 +93,7 @@
             android:defaultValue="@array/antifeaturesValuesDefault"
             android:key="showAntiFeatures"
             android:entries="@array/antifeaturesNames"
-            android:entryValues="@array/antifeaturesValues"/>
+            android:entryValues="@array/antifeaturesValues" />
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="ignoreTouchscreen"

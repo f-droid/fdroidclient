@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,7 +33,7 @@
         android:layout_marginTop="40dp"
         app:srcCompat="@drawable/ic_known_vuln_overlay"
         android:scaleType="fitCenter"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/app_name"
@@ -62,7 +61,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_name"
-        tools:text="Uninstall"/>
+        tools:text="Uninstall" />
 
     <Button
         android:id="@+id/secondary_button"
@@ -74,6 +73,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/action_button"
         app:layout_constraintTop_toBottomOf="@+id/app_name"
-        tools:text="Ignore"/>
+        tools:text="Ignore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

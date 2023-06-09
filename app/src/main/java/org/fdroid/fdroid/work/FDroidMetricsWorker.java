@@ -26,6 +26,15 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.ListenableWorker;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
 import org.apache.commons.io.FileUtils;
 import org.fdroid.download.HttpPoster;
 import org.fdroid.fdroid.Preferences;
@@ -46,21 +55,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-
-import androidx.annotation.NonNull;
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ListenableWorker;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
-import androidx.work.Worker;
-import androidx.work.WorkerParameters;
 
 /**
  * This gathers all the information needed for F-Droid Metrics, aka the
@@ -203,23 +202,16 @@ public class FDroidMetricsWorker extends Worker {
                     events.add(event);
                 }
             }
-            Collections.sort(events, new Comparator<RawEvent>() {
-                @Override
-                public int compare(RawEvent e0, RawEvent e1) {
-                    int applicationIdComparison = e0.applicationId.compareTo(e1.applicationId);
-                    if (applicationIdComparison != 0) {
-                        return applicationIdComparison;
-                    }
-                    int versionCodeComparison = Long.compare(e0.versionCode, e1.versionCode);
-                    if (versionCodeComparison != 0) {
-                        return versionCodeComparison;
-                    }
-                    int timestampComparison = Long.compare(e0.timestamp, e1.timestamp);
-                    if (timestampComparison != 0) {
-                        return timestampComparison;
-                    }
-                    return 0;
+            Collections.sort(events, (e0, e1) -> {
+                int applicationIdComparison = e0.applicationId.compareTo(e1.applicationId);
+                if (applicationIdComparison != 0) {
+                    return applicationIdComparison;
                 }
+                int versionCodeComparison = Long.compare(e0.versionCode, e1.versionCode);
+                if (versionCodeComparison != 0) {
+                    return versionCodeComparison;
+                }
+                return Long.compare(e0.timestamp, e1.timestamp);
             });
             List<MatomoEvent> toReport = new ArrayList<>();
             RawEvent previousEvent = new RawEvent(new String[]{"0", "", "0", ""});
@@ -242,12 +234,7 @@ public class FDroidMetricsWorker extends Worker {
         CleanInsightsReport cleanInsightsReport = new CleanInsightsReport();
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> packageInfoList = pm.getInstalledPackages(0);
-        Collections.sort(packageInfoList, new Comparator<PackageInfo>() {
-            @Override
-            public int compare(PackageInfo p1, PackageInfo p2) {
-                return p1.packageName.compareTo(p2.packageName);
-            }
-        });
+        Collections.sort(packageInfoList, (p1, p2) -> p1.packageName.compareTo(p2.packageName));
         EVENTS.add(getDeviceEvent(weekStart, "isPrivilegedInstallerEnabled",
                 Preferences.get().isPrivilegedInstallerEnabled()));
         EVENTS.add(getDeviceEvent(weekStart, "Build.VERSION.SDK_INT", Build.VERSION.SDK_INT));
