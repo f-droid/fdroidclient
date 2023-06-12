@@ -221,7 +221,7 @@ libs database schema:
     - adb shell input keyevent 82 &
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
+    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
           export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
@@ -246,7 +246,7 @@ libs database schema:
     - start-emulator.sh
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
+    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
           export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck $FLAG
@@ -267,7 +267,8 @@ libs database schema:
   <<: *test-template
   <<: *kvm-connected-template
 
-kvm 23 default x86:
+# Running dbShared tests needs SDK 28: https://github.com/mockk/mockk/issues/182
+kvm 28 default x86:
   <<: *test-template
   <<: *kvm-template
 
