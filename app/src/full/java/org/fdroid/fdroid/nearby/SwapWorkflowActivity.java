@@ -1196,7 +1196,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.GONE);
                 default:
-                    throw new IllegalArgumentException("Bad intent: " + intent);
+                    String msg = "Bad intent: " + intent + " " + bonjourStatus;
+                    Log.i(TAG, msg);
+                    if (BuildConfig.DEBUG) {
+                        throw new IllegalArgumentException(msg);
+                    }
             }
         }
     };
