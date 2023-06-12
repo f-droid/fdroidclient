@@ -119,12 +119,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".nearby.WifiStateChangeReceiver">
-            <intent-filter>
-                <action android:name="android.net.wifi.STATE_CHANGE" />
-            </intent-filter>
-        </receiver>
-
+        <!--https://developer.android.com/guide/components/broadcast-exceptions -->
         <receiver android:name=".nearby.UsbDeviceAttachedReceiver">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
