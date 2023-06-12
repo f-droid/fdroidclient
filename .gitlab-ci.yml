@@ -249,7 +249,7 @@ libs database schema:
     - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
           export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
-    - ./gradlew connectedFullDebugAndroidTest $FLAG
+    - ./gradlew :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck $FLAG
 
 
 # Since jobs that require KVM need special runners, these jobs are
