@@ -68,14 +68,14 @@ workflow:
     - .gitlab-ci.yml
     - build.gradle
 
-app test:
+app assembleFullRelease test:
   <<: *test-template
   rules:
     - <<: *always-on-these-changes
     - changes:
         - app/**/*
   script:
-    - ./gradlew :app:testFullDebugUnitTest
+    - ./gradlew :app:assembleFullRelease :app:testFullDebugUnitTest
 
 libs db test:
   <<: *test-template
