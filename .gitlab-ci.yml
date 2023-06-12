@@ -267,8 +267,7 @@ libs database schema:
   <<: *test-template
   <<: *kvm-connected-template
 
-# Running dbShared tests needs SDK 28: https://github.com/mockk/mockk/issues/182
-kvm 28 default x86:
+kvm 23 default x86:
   <<: *test-template
   <<: *kvm-template
 
