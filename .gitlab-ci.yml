@@ -52,43 +52,85 @@ workflow:
       - build/reports
     expire_in: 1 week
     when: on_failure
+  before_script:
+    # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
+    - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2024,'
+      /usr/lib/jvm/default-java/conf/security/java.security
   after_script:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
+
+.always-on-these-changes: &always-on-these-changes
+  changes:
+    - .gitlab-ci.yml
+    - build.gradle
 
 app test:
   <<: *test-template
   rules:
+    - <<: *always-on-these-changes
     - changes:
-        - .gitlab-ci.yml
-        - build.gradle
         - app/**/*
   script:
-    # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
-    - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2024,'
-      /usr/lib/jvm/default-java/conf/security/java.security
     - ./gradlew :app:testFullDebugUnitTest
 
-lint_pmd_checkstyle:
+libs db test:
+  <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/database/**/*
+  script:
+    - ./gradlew :libs:database:testDebugUnitTest
+
+libs download test:
+  <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/download/**/*
+  script:
+    - ./gradlew :libs:download:testDebugUnitTest
+
+libs index test:
+  <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/index/**/*
+  script:
+    - ./gradlew :libs:index:testDebugUnitTest
+
+app lint pmd checkstyle:
   <<: *test-template
   stage: lint
   rules:
+    - <<: *always-on-these-changes
     - changes:
-        - .gitlab-ci.yml
-        - build.gradle
         - app/**/*
   script:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew lint pmd checkstyle ktlintCheck
+    - ./gradlew :app:lint :app:pmd :app:checkstyle
 
-tools scripts:
+libs lint ktlintCheck:
+  <<: *test-template
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/**/*
+  script:
+    # always report on lint errors to the build log
+    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint ktlintCheck
+
+app tools scripts:
   stage: lint
   image: debian:bullseye-slim
   rules:
+    - <<: *always-on-these-changes
     - changes:
-        - .gitlab-ci.yml
-        - build.gradle
         - app/**/*
   script:
     - apt-get update
@@ -99,7 +141,7 @@ tools scripts:
     - echo "These are unused or blank translations that should be removed:"
     - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml
 
-weblate merge conflict:
+app weblate merge conflict:
   stage: lint
   image: debian:bookworm-slim
   rules:
@@ -123,25 +165,23 @@ weblate merge conflict:
     - git diff --exit-code
     - exit $EXITVALUE
 
-errorprone:
+app errorprone:
   extends: .base
   stage: lint
   rules:
+    - <<: *always-on-these-changes
     - changes:
-        - .gitlab-ci.yml
-        - build.gradle
         - app/**/*
   script:
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
-database schema:
+libs database schema:
   stage: lint
   image: debian:bullseye-backports
   rules:
+    - <<: *always-on-these-changes
     - changes:
-        - .gitlab-ci.yml
-        - build.gradle
         - libs/database/**/*
   script:
     - apt-get update
