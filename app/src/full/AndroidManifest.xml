@@ -124,11 +124,6 @@
                 <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.DeviceStorageReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-            </intent-filter>
-        </receiver>
 
         <receiver android:name=".nearby.UsbDeviceAttachedReceiver">
             <intent-filter>
