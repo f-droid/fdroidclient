@@ -79,6 +79,8 @@ import org.fdroid.index.IndexFormatVersion;
 import org.fdroid.index.RepoManager;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
@@ -489,7 +491,10 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         if (preferences.isTorEnabled()) {
             NetCipher.useTor();
         } else if (preferences.isProxyEnabled()) {
-            NetCipher.setProxy(preferences.getProxyHost(), preferences.getProxyPort());
+            // TODO move createUnresolved to NetCipher itself once its proven
+            InetSocketAddress isa = InetSocketAddress.createUnresolved(
+                    preferences.getProxyHost(), preferences.getProxyPort());
+            NetCipher.setProxy(new Proxy(Proxy.Type.HTTP, isa));
         } else {
             NetCipher.clearProxy();
         }
