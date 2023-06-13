@@ -535,6 +535,7 @@ public class UpdateService extends JobIntentService {
         return Single.fromCallable(() -> updateChecker.getUpdatableApps(releaseChannels))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnError(throwable -> Log.e(TAG, "Error auto-downloading updates: ", throwable))
                 .subscribe(updatableApps -> downloadUpdates(context, updatableApps));
     }
 
