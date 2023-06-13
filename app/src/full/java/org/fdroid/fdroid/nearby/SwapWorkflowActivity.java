@@ -1195,6 +1195,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     peopleNearbyText.setText(intent.getStringExtra(Intent.EXTRA_TEXT));
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.GONE);
+                    break;
                 default:
                     String msg = "Bad intent: " + intent + " " + bonjourStatus;
                     Log.i(TAG, msg);
