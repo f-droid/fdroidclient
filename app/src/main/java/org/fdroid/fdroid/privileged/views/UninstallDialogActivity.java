@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -59,7 +60,10 @@ public class UninstallDialogActivity extends FragmentActivity {
             appInfo = pm.getApplicationInfo(apk.packageName,
                     PackageManager.GET_UNINSTALLED_PACKAGES);
         } catch (PackageManager.NameNotFoundException e) {
-            throw new RuntimeException("Failed to get ApplicationInfo for uninstalling");
+            Log.e("UninstallDialogActivity", "Package to uninstall not found: " + apk.packageName, e);
+            // if it is not installed anymore, no work for us left to do.
+            finish();
+            return;
         }
 
         final boolean isSystem = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;

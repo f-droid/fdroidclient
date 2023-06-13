@@ -145,7 +145,12 @@ public abstract class Installer {
         }
 
         PackageManager pm = context.getPackageManager();
-        String installerPackageName = pm.getInstallerPackageName(apk.packageName);
+        String installerPackageName = null;
+        try {
+            installerPackageName = pm.getInstallerPackageName(apk.packageName);
+        } catch (IllegalArgumentException e) {
+            Log.e(TAG, "App not installed: " + apk.packageName, e);
+        }
         if (Build.VERSION.SDK_INT >= 24 &&
                 ("com.android.packageinstaller".equals(installerPackageName)
                         || "com.google.android.packageinstaller".equals(installerPackageName))) {
