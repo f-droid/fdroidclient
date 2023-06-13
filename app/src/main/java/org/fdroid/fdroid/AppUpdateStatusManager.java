@@ -396,11 +396,14 @@ public final class AppUpdateStatusManager {
         synchronized (appMapping) {
             isBatchUpdating = true;
             try {
+                int num = 0;
                 for (UpdatableApp app : canUpdate) {
                     Repository repo = FDroidApp.getRepoManager(context).getRepository(app.getUpdate().getRepoId());
+                    if (repo == null) continue; // if repo is gone, it was just deleted, so skip app
                     addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
+                    num++;
                 }
-                setNumUpdatableApps(canUpdate.size());
+                setNumUpdatableApps(num);
             } finally {
                 isBatchUpdating = false;
             }
