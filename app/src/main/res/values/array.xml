@@ -57,4 +57,25 @@
         <item>@string/antinsfw</item>
         <item>@string/antiothers</item>
     </string-array>
+
+    <string-array name="defaultCategories">
+        <item>@string/category_Connectivity</item>
+        <item>@string/category_Development</item>
+        <item>@string/category_Games</item>
+        <item>@string/category_Graphics</item>
+        <item>@string/category_Internet</item>
+        <item>@string/category_Money</item>
+        <item>@string/category_Multimedia</item>
+        <item>@string/category_Navigation</item>
+        <item>@string/category_Phone_SMS</item>
+        <item>@string/category_Reading</item>
+        <item>@string/category_Science_Education</item>
+        <item>@string/category_Security</item>
+        <item>@string/category_Sports_Health</item>
+        <item>@string/category_System</item>
+        <item>@string/category_Theming</item>
+        <item>@string/category_Time</item>
+        <item>@string/category_Writing</item>
+        <item>@string/category_Nightly</item>
+    </string-array>
 </resources>
