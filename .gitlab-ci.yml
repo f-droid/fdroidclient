@@ -54,6 +54,7 @@ workflow:
       - app/build/reports
       - app/build/outputs/*ml
       - app/build/outputs/apk
+      - libs/*/build/reports
       - build/reports
     expire_in: 1 week
     when: on_failure
