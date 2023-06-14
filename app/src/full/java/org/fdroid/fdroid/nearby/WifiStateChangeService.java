@@ -2,6 +2,7 @@ package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiConfiguration;
@@ -80,6 +81,14 @@ public class WifiStateChangeService extends Worker {
 
     public WifiStateChangeService(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
+    }
+
+    public static void registerReceiver(Context context) {
+        ContextCompat.registerReceiver(
+            context,
+            new WifiStateChangeReceiver(),
+            new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION),
+            ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     public static void start(Context context, @Nullable Intent intent) {

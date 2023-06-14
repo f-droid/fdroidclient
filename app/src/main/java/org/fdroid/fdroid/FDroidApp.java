@@ -315,6 +315,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
         // register broadcast receivers
         registerReceiver(new DeviceStorageReceiver(), new IntentFilter(Intent.ACTION_DEVICE_STORAGE_LOW));
+        WifiStateChangeService.registerReceiver(this);
 
         applyTheme();
 

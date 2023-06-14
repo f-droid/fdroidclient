@@ -28,6 +28,10 @@ import androidx.annotation.Nullable;
  * Dummy version for basic app flavor.
  */
 public class WifiStateChangeService {
+
+    public static void registerReceiver(Context context) {
+    }
+
     public static void start(Context context, @Nullable Intent intent) {
     }
 

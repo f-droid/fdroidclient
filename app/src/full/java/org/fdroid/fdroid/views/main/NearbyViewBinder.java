@@ -49,16 +49,11 @@ import java.util.concurrent.Executor;
  * that have a removable SD Card that is currently mounted, this will request
  * permission to read it, so that F-Droid can look for repos on the SD Card.
  * <p>
- * Once {@link Manifest.permission#READ_EXTERNAL_STORAGE} or
- * {@link Manifest.permission#WRITE_EXTERNAL_STORAGE} is granted for F-Droid,
+ * Once {@link Manifest.permission#READ_EXTERNAL_STORAGE} is granted to F-Droid,
  * then it can read any file on an SD Card and no more prompts are needed. For
  * USB OTG drives, the only way to get read permissions is to prompt the user
  * via {@link Intent#ACTION_OPEN_DOCUMENT_TREE}.
  * <p>
- * For write permissions, {@code android-19} and {@code android-20} devices are
- * basically screwed here.  {@link Intent#ACTION_OPEN_DOCUMENT_TREE} was added
- * in {@code android-21}, and there does not seem to be any other way to get
- * write access to the the removable storage.
  *
  * @see TreeUriScannerIntentService
  * @see org.fdroid.fdroid.nearby.SDCardScannerService
@@ -106,7 +101,7 @@ public class NearbyViewBinder {
             }
         }
 
-        final String writeExternalStorage = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+        final String readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE;
         if (externalStorage != null) {
             nearbySplash.setVisibility(View.GONE);
             TextView readExternalStorageText = swapView.findViewById(R.id.read_external_storage_text);
@@ -116,8 +111,8 @@ public class NearbyViewBinder {
             requestReadExternalStorage.setOnClickListener(v -> {
                 if ((externalStorage == null || !externalStorage.canRead())
                         && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity,
-                        writeExternalStorage)) {
-                    ActivityCompat.requestPermissions(activity, new String[]{writeExternalStorage},
+                        readExternalStorage)) {
+                    ActivityCompat.requestPermissions(activity, new String[]{readExternalStorage},
                             MainActivity.REQUEST_STORAGE_PERMISSIONS);
                 } else {
                     Toast.makeText(activity,

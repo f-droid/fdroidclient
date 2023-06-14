@@ -152,8 +152,8 @@ public class MainActivityEspressoTest {
             Manifest.permission.ACCESS_COARSE_LOCATION);
 
     @Rule
-    public GrantPermissionRule writeExternalStoragePermissionRule = GrantPermissionRule.grant(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    public GrantPermissionRule readExternalStoragePermissionRule = GrantPermissionRule.grant(
+            Manifest.permission.READ_EXTERNAL_STORAGE);
 
     @Test
     public void bottomNavFlavorCheck() {
