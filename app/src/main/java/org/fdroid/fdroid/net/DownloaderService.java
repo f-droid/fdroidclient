@@ -160,10 +160,16 @@ public class DownloaderService extends JobIntentService {
      * the same DownloaderService, but it will not hold up anything else.
      * When all requests have been handled, the DownloaderService stops itself,
      * so you should not ever call {@link #stopSelf}.
-     * <p/>
+     * <p>
      * Downloads are put into subdirectories based on hostname/port of each repo
      * to prevent files with the same names from conflicting.  Each repo enforces
      * unique APK file names on the server side.
+     * <p>
+     * Swap repos are not maintained in the database.  If this is handling a
+     * download from a swap repo, it will detect that is so by looking at the
+     * URL.  {@code http://} URLs are only allowed for swap, and swap repos
+     * will never be on a System Port, only on a User Port. And swap repos use a
+     * hardcoded path.
      *
      * @param intent The {@link Intent} passed via {@link
      *               android.content.Context#startService(Intent)}.
@@ -189,10 +195,12 @@ public class DownloaderService extends JobIntentService {
             Context context = getApplicationContext();
             Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
             if (repo == null) {
-                String canonical = canonicalUrl.toString();
-                if (canonical.startsWith("http://1") && canonical.contains(":8888/")) {
-                    String address = canonical.split(":8888/")[0] + ":8888/";
-                    repo = FDroidApp.createSwapRepo(address, null); // fake repo for swap
+                String path = canonicalUrl.getPath();
+                if (canonicalUrl.getPort() > 1023
+                        && "http".equals(canonicalUrl.getScheme())
+                        && path != null && path.startsWith("/fdroid/repo")) {
+                    String url = canonicalUrl.buildUpon().path("/fdroid/repo").build().toString();
+                    repo = FDroidApp.createSwapRepo(url, null);
                 } else return; // repo might have been deleted in the meantime
             }
             downloader = DownloaderFactory.INSTANCE.create(repo, downloadUrl, fileV1, localFile);
