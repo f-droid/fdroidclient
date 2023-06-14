@@ -116,7 +116,11 @@ public class AppSecurityPermissions {
         Drawable loadGroupIcon(Context context, PackageManager pm) {
             Drawable iconDrawable;
             if (icon != 0) {
-                iconDrawable = loadUnbadgedIcon(pm);
+                try {
+                    iconDrawable = loadUnbadgedIcon(pm);
+                } catch (NullPointerException e) { // NOPMD
+                    iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
+                }
             } else {
                 iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_perm_device_info);
             }

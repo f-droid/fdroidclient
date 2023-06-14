@@ -2,6 +2,7 @@ package org.fdroid.fdroid.nearby;
 
 import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -33,6 +35,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -132,6 +136,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final Stack<Integer> backstack = new Stack<>();
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) sendFDroidBluetooth();
+            });
 
     public static void requestSwap(Context context, String repo) {
         requestSwap(context, Uri.parse(repo));
@@ -671,10 +680,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void sendFDroidBluetooth() {
         if (bluetoothAdapter.isEnabled()) {
             sendFDroidApk();
-        } else {
-            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
-            startActivityForResult(discoverBt, REQUEST_BLUETOOTH_ENABLE_FOR_SEND);
+        } else if (Build.VERSION.SDK_INT >= 31) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
+                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
+                startActivityForResult(discoverBt, REQUEST_BLUETOOTH_ENABLE_FOR_SEND);
+            } else {
+                requestPermissionLauncher.launch(Manifest.permission.BLUETOOTH_CONNECT);
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -496,7 +497,13 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         if (currentStatus != null && currentStatus.status == AppUpdateStatusManager.Status.Installed) {
             Intent intent = activity.getPackageManager().getLaunchIntentForPackage(app.packageName);
             if (intent != null) {
-                activity.startActivity(intent);
+                try {
+                    activity.startActivity(intent);
+                } catch (SecurityException e) {
+                    Log.e(TAG, "Error starting app launch intent: ", e);
+                    // apps that don't export their launch activity cause this
+                    Toast.makeText(activity, R.string.app_error_open, Toast.LENGTH_SHORT).show();
+                }
 
                 // Once it is explicitly launched by the user, then we can pretty much forget about
                 // any sort of notification that the app was successfully installed. It should be

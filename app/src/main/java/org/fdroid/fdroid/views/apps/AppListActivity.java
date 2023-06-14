@@ -155,9 +155,9 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
         hiddenAppNotice = findViewById(R.id.hiddenAppNotice);
         hiddenAppNotice.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(MainActivity.EXTRA_VIEW_SETTINGS, true);
-            getApplicationContext().startActivity(intent);
+            startActivity(intent);
         });
         emptyState = findViewById(R.id.empty_state);
 

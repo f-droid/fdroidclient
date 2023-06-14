@@ -359,6 +359,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 break;
             case REQUEST_PERMISSION_DIALOG:
                 if (resultCode == AppCompatActivity.RESULT_OK) {
+                    App app = data.getParcelableExtra(Installer.EXTRA_APP);
                     Apk apk = data.getParcelableExtra(Installer.EXTRA_APK);
                     InstallManagerService.queue(this, app, apk);
                 }
