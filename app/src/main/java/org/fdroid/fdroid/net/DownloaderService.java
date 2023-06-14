@@ -261,10 +261,12 @@ public class DownloaderService extends Service {
                 FDroidDatabase db = DBHelper.getDb(getApplicationContext());
                 repo = db.getRepositoryDao().getRepository(repoId);
                 if (repo == null) {
-                    String canonical = canonicalUrl.toString();
-                    if (canonical.startsWith("http://1") && canonical.contains(":8888/")) {
-                        String address = canonical.split(":8888/")[0] + ":8888/";
-                        repo = FDroidApp.createSwapRepo(address, null); // fake repo for swap
+                    String path = canonicalUrl.getPath();
+                    if (canonicalUrl.getPort() > 1023
+                            && "http".equals(canonicalUrl.getScheme())
+                            && path != null && path.startsWith("/fdroid/repo")) {
+                        String url = canonicalUrl.buildUpon().path("/fdroid/repo").build().toString();
+                        repo = FDroidApp.createSwapRepo(url, null);
                     } else return; // repo might have been deleted in the meantime
                 }
             }
