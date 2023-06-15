@@ -70,6 +70,7 @@
         <activity
             android:name=".nearby.SwapWorkflowActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
             android:label="@string/swap"
             android:launchMode="singleTask"
             android:parentActivityName=".views.main.MainActivity"
@@ -77,6 +78,7 @@
 
         <activity
             android:name=".panic.PanicPreferencesActivity"
+            android:exported="false"
             android:label="@string/panic_settings"
             android:parentActivityName=".views.main.MainActivity">
             <intent-filter>
@@ -89,10 +91,12 @@
 
         <activity
             android:name=".panic.SelectInstalledAppsActivity"
+            android:exported="false"
             android:parentActivityName=".panic.PanicPreferencesActivity" />
 
         <activity
             android:name=".panic.PanicResponderActivity"
+            android:exported="false"
             android:noHistory="true"
             android:theme="@android:style/Theme.NoDisplay">
 
@@ -105,11 +109,13 @@
         </activity>
         <activity
             android:name=".panic.ExitActivity"
+            android:exported="false"
             android:theme="@android:style/Theme.NoDisplay" />
 
         <activity
             android:name=".panic.CalculatorActivity"
             android:enabled="false"
+            android:exported="true"
             android:icon="@mipmap/ic_calculator_launcher"
             android:label="@string/hiding_calculator">
             <intent-filter>
@@ -120,7 +126,9 @@
         </activity>
 
         <!--https://developer.android.com/guide/components/broadcast-exceptions -->
-        <receiver android:name=".nearby.UsbDeviceAttachedReceiver">
+        <receiver
+            android:name=".nearby.UsbDeviceAttachedReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
@@ -128,7 +136,9 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </receiver>
-        <receiver android:name=".nearby.UsbDeviceDetachedReceiver">
+        <receiver
+            android:name=".nearby.UsbDeviceDetachedReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
             </intent-filter>
@@ -136,7 +146,9 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_DETACHED"
                 android:resource="@xml/device_filter" />
         </receiver>
-        <receiver android:name=".nearby.UsbDeviceMediaMountedReceiver">
+        <receiver
+            android:name=".nearby.UsbDeviceMediaMountedReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_EJECT" />
                 <action android:name="android.intent.action.MEDIA_REMOVED" />
@@ -148,8 +160,9 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".nearby.SwapService" />
-
+        <service
+            android:name=".nearby.SwapService"
+            android:exported="false" />
         <service
             android:name=".nearby.LocalRepoService"
             android:exported="false" />
