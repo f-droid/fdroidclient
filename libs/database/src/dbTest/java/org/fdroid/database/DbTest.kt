@@ -2,13 +2,13 @@ package org.fdroid.database
 
 import android.content.Context
 import android.content.res.AssetManager
+import android.os.Build
 import androidx.core.os.LocaleListCompat
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import io.mockk.every
 import io.mockk.mockkObject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.fdroid.database.TestUtils.assertRepoEquals
 import org.fdroid.database.TestUtils.toMetadataV2
 import org.fdroid.database.TestUtils.toPackageVersionV2
@@ -19,13 +19,13 @@ import org.fdroid.test.TestUtils.sort
 import org.fdroid.test.TestUtils.sorted
 import org.fdroid.test.VerifierConstants.CERTIFICATE
 import org.junit.After
+import org.junit.Assume.assumeTrue
 import org.junit.Before
 import java.io.IOException
 import java.util.Locale
 import kotlin.test.assertEquals
 import kotlin.test.fail
 
-@OptIn(ExperimentalCoroutinesApi::class)
 internal abstract class DbTest {
 
     internal lateinit var repoDao: RepositoryDaoInt
@@ -35,7 +35,7 @@ internal abstract class DbTest {
     internal lateinit var db: FDroidDatabaseInt
     private val testCoroutineDispatcher = Dispatchers.Unconfined
 
-    protected val context: Context = getApplicationContext()
+    private val context: Context = getApplicationContext()
     protected val assets: AssetManager = context.resources.assets
     protected val locales = LocaleListCompat.create(Locale.US)
 
@@ -48,6 +48,11 @@ internal abstract class DbTest {
         appDao = db.getAppDao()
         appPrefsDao = db.getAppPrefsDao()
         versionDao = db.getVersionDao()
+
+        // pre-Android P limitations for instrumentation tests (unit tests w/ robolectric are fine):
+        // https://mockk.io/ANDROID#supported-features
+        // See also: https://github.com/mockk/mockk/issues/182
+        assumeTrue(Build.MODEL == "robolectric" || Build.VERSION.SDK_INT >= 28)
 
         mockkObject(FDroidDatabaseHolder)
         every { FDroidDatabaseHolder.dispatcher } returns testCoroutineDispatcher

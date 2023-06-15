@@ -1,5 +1,6 @@
 package org.fdroid.download
 
+import android.os.Build
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
@@ -58,7 +59,11 @@ internal class HttpManagerInstrumentationTest {
 
         val json = JSONObject(httpManager.getBytes(downloadRequest).decodeToString())
         assertEquals(userAgent, json.getString("user_agent"))
-        assertEquals("TLS 1.3", json.getString("tls_version"))
+        if (Build.VERSION.SDK_INT >= 29) {
+            assertEquals("TLS 1.3", json.getString("tls_version"))
+        } else {
+            assertEquals("TLS 1.2", json.getString("tls_version"))
+        }
         assertEquals(0, json.getJSONObject("weak_cipher_suites").length())
         assertEquals(0, json.getJSONObject("broken_cipher_suites").length())
     }

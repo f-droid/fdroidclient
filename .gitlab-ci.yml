@@ -14,6 +14,7 @@ workflow:
 
 .base:
   before_script:
+    - echo "org.gradle.caching=true" >> gradle.properties
     - test -e /etc/apt/sources.list.d/bullseye-backports.list
         || echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list
     - apt update
@@ -27,11 +28,15 @@ workflow:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
     - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
+    # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
+    - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2024,'
+      /usr/lib/jvm/default-java/conf/security/java.security
   after_script:
     # this file changes every time but should not be cached
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
     - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
   cache:
+    key: '${CI_PROJECT_PATH}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}'
     paths:
       - .gradle/wrapper
       - .gradle/caches
@@ -49,26 +54,89 @@ workflow:
       - app/build/reports
       - app/build/outputs/*ml
       - app/build/outputs/apk
+      - libs/*/build/reports
       - build/reports
     expire_in: 1 week
     when: on_failure
   after_script:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
+    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
 
-test_lint_pmd_checkstyle:
+.always-on-these-changes: &always-on-these-changes
+  changes:
+    - .gitlab-ci.yml
+    - build.gradle
+
+app assembleFullRelease test:
   <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
   script:
-    # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
-    - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2024,'
-          /usr/lib/jvm/default-java/conf/security/java.security
+    - ./gradlew :app:assembleFullRelease :app:testFullDebugUnitTest
+
+libs db test:
+  <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/database/**/*
+  script:
+    - ./gradlew :libs:database:testDebugUnitTest
+
+libs download test:
+  <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/download/**/*
+  script:
+    - ./gradlew :libs:download:testDebugUnitTest
+
+libs index test:
+  <<: *test-template
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/index/**/*
+  script:
+    - ./gradlew :libs:index:testDebugUnitTest
+
+app lint pmd checkstyle:
+  <<: *test-template
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
+  script:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew lint pmd checkstyle ktlintCheck testDebugUnitTest testFullDebugUnitTest
+    - ./gradlew :app:lint :app:pmd :app:checkstyle
 
-tools scripts:
+libs lint ktlintCheck:
+  <<: *test-template
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/**/*
+  script:
+    # always report on lint errors to the build log
+    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint ktlintCheck
+
+app tools scripts:
   stage: lint
   image: debian:bullseye-slim
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
   script:
     - apt-get update
     - apt-get -qy install --no-install-recommends git python3
@@ -78,7 +146,7 @@ tools scripts:
     - echo "These are unused or blank translations that should be removed:"
     - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml
 
-weblate merge conflict:
+app weblate merge conflict:
   stage: lint
   image: debian:bookworm-slim
   rules:
@@ -102,16 +170,24 @@ weblate merge conflict:
     - git diff --exit-code
     - exit $EXITVALUE
 
-errorprone:
+app errorprone:
   extends: .base
-  stage: test
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
   script:
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 
-database schema:
-  stage: test
+libs database schema:
+  stage: lint
   image: debian:bullseye-backports
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - libs/database/**/*
   script:
     - apt-get update
     - apt-get -qy --no-install-recommends install default-jdk-headless git sdkmanager
@@ -146,7 +222,7 @@ database schema:
     - adb shell input keyevent 82 &
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
+    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
           export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
     - ./gradlew connectedFullDebugAndroidTest $FLAG
@@ -171,10 +247,10 @@ database schema:
     - start-emulator.sh
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 25 ] || ! emulator -accel-check; then
+    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
           export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
       fi
-    - ./gradlew connectedFullDebugAndroidTest $FLAG
+    - ./gradlew :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck $FLAG
 
 
 # Since jobs that require KVM need special runners, these jobs are

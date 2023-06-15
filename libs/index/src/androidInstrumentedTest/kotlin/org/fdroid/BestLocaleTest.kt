@@ -1,9 +1,12 @@
 package org.fdroid
 
+import android.os.Build
 import androidx.core.os.LocaleListCompat
 import androidx.core.os.LocaleListCompat.getEmptyLocaleList
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.fdroid.LocaleChooser.getBestLocale
+import org.junit.Assume.assumeTrue
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
@@ -14,6 +17,12 @@ import kotlin.test.assertNull
  */
 @RunWith(AndroidJUnit4::class)
 internal class BestLocaleTest {
+
+    @Before
+    fun check() {
+        // Locale lists were introduced in SDK 24
+        assumeTrue(Build.VERSION.SDK_INT >= 24)
+    }
 
     @Test
     fun testEmptyLocalesReturnsNull() {

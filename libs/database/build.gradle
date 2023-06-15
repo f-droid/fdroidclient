@@ -96,6 +96,10 @@ dependencies {
     androidTestImplementation 'commons-io:commons-io:2.6'
 }
 
+plugins.withId("kotlin-kapt") {
+    kapt.useBuildCache = true
+}
+
 signing {
     useGpgCmd()
 }
