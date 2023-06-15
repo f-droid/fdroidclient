@@ -501,7 +501,8 @@ public class SwapService extends Service {
     private Notification createNotification() {
         Intent intent = new Intent(this, SwapWorkflowActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         return new NotificationCompat.Builder(this, NotificationHelper.CHANNEL_SWAPS)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
