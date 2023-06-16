@@ -569,7 +569,7 @@ public class AppDetailsRecyclerViewAdapter
             updateAntiFeaturesWarning();
 
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility((versions.isEmpty() || app.packageName.equals(R.string.applicationId)) ? View.GONE : View.VISIBLE);
+            buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
             buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
@@ -594,7 +594,8 @@ public class AppDetailsRecyclerViewAdapter
                     buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));
                 } else {
                     Apk mediaApk = app.getMediaApkifInstalled(context);
-                    if (context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
+                    if (!context.getPackageName().equals(app.packageName) &&
+                            context.getPackageManager().getLaunchIntentForPackage(app.packageName) != null) {
                         buttonPrimaryView.setText(R.string.menu_launch);
                         buttonPrimaryView.setOnClickListener(v -> callbacks.launchApk());
                     } else if (!app.isApk && mediaApk != null) {
