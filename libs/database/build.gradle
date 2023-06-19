@@ -75,7 +75,7 @@ dependencies {
     implementation 'io.github.microutils:kotlin-logging:2.1.21'
     implementation "org.slf4j:slf4j-android:1.7.36"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
 
     testImplementation project(":libs:sharedTest")
     testImplementation 'junit:junit:4.13.2'

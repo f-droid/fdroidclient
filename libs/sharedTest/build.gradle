@@ -22,7 +22,7 @@ dependencies {
     implementation project(":libs:index")
 
     implementation 'org.jetbrains.kotlin:kotlin-test'
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
 }
 
 apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"
