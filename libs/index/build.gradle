@@ -33,7 +33,8 @@ kotlin {
         }
         commonMain {
             dependencies {
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
+                // 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
                 implementation 'io.github.microutils:kotlin-logging:2.1.21'
 
                 implementation project(":libs:download")
