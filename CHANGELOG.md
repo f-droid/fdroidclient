@@ -8,6 +8,18 @@
 * Slightly darker app names in app lists to improve readability
 * new targetSdk: 28 for full and 33 for basic
 
+### 1.16.3 (2023-04-06)
+
+* Fix critical bug that prevents repo updates after Android OS updates (!1210)
+
+### 1.16.2 (2023-03-14)
+
+* Fix four crashes from ACRA crash reports.
+
+* Fix the "Prevent Screenshots" setting so it works on all screens.
+
+* Translation updates.
+
 ### 1.16.1 (2023-02-27)
 
 * Add IPFS as opt-in Expert Setting, with selected IPFS Gateways built-in #2504
