@@ -1,0 +1,6 @@
+* Many bug fixes
+* Show repository icons in list of repositories
+* Show reasons for anti-features (where available)
+* Unattended upgrades without privileged extension (F-Droid Basic only for now)
+* Show app size on app details screen (expert mode only)
+* Slightly darker app names in app lists to improve readability

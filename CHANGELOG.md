@@ -1,3 +1,13 @@
+### 1.17-alpha0 (2023-06-15)
+
+* Many bug fixes
+* Show repository icons in list of repositories
+* Show reasons for anti-features (where available)
+* Unattended upgrades without privileged extension (F-Droid Basic only for now)
+* Show app size on app details screen (expert mode only)
+* Slightly darker app names in app lists to improve readability
+* new targetSdk: 28 for full and 33 for basic
+
 ### 1.16.1 (2023-02-27)
 
 * Add IPFS as opt-in Expert Setting, with selected IPFS Gateways built-in #2504
