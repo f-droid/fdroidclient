@@ -75,6 +75,7 @@ app assembleFullRelease test:
     - <<: *always-on-these-changes
     - changes:
         - app/**/*
+        - libs/**/*
   script:
     - ./gradlew :app:assembleFullRelease :app:testFullDebugUnitTest
 
