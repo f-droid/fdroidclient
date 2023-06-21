@@ -86,5 +86,4 @@ public final class IntentResult {
         return "Format: " + formatName + '\n' + "Contents: " + contents + '\n' + "Raw bytes: (" + rawBytesLength
                 + " bytes)\n" + "Orientation: " + orientation + '\n' + "EC level: " + errorCorrectionLevel + '\n';
     }
-
 }

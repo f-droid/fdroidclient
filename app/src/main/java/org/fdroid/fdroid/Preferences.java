@@ -681,5 +681,4 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
         return instance;
     }
-
 }

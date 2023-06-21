@@ -1,4 +1,3 @@
-
 package kellinwood.security.zipsigner.optional;
 
 import org.bouncycastle.cert.jcajce.JcaCertStore;
@@ -58,5 +57,4 @@ public class SignatureBlockGenerator {
             throw new RuntimeException(x.getMessage(), x);
         }
     }
-
 }

@@ -44,8 +44,17 @@ final class ContentProviderMigrator {
         List<Repository> repos = repoDao.getRepositories();
         int weight = repos.isEmpty() ? 0 : repos.get(repos.size() - 1).getWeight();
 
-        String[] projection = new String[]{"name", "address", "pubkey", "inuse", "userMirrors", "disabledMirrors",
-                "username", "password"};
+        String[] projection =
+                new String[] {
+                    "name",
+                    "address",
+                    "pubkey",
+                    "inuse",
+                    "userMirrors",
+                    "disabledMirrors",
+                    "username",
+                    "password"
+                };
         try (Cursor c = oldDb.query("fdroid_repo", projection, null, null, null, null, null)) {
             while (c.moveToNext()) {
                 String name = c.getString(c.getColumnIndexOrThrow("name"));

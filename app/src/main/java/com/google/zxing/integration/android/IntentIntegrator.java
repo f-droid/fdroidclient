@@ -105,7 +105,7 @@ import java.util.Map;
  * @author Isaac Potoczny-Jones
  * @author Brad Drehmer
  * @author gcstang
-*/
+ */
 @SuppressWarnings("LineLength")
 public class IntentIntegrator {
 
@@ -438,5 +438,4 @@ public class IntentIntegrator {
             }
         }
     }
-
 }

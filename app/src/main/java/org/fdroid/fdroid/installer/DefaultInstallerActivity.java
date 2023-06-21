@@ -202,5 +202,4 @@ public class DefaultInstallerActivity extends FragmentActivity {
         // after doing the broadcasts, finish this transparent wrapper activity
         finish();
     }
-
 }

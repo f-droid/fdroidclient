@@ -284,5 +284,4 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
         builder.setView(R.layout.dialog_app_hiding);
         builder.create().show();
     }
-
 }

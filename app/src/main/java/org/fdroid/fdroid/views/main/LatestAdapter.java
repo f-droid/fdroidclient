@@ -108,7 +108,7 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
 
     public void setApps(@Nullable List<AppOverviewItem> apps) {
         if (this.apps == apps) {
-            //don't notify when the apps did not change
+            // don't notify when the apps did not change
             return;
         }
         this.apps = apps;

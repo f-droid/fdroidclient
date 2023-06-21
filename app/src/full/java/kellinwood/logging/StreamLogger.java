@@ -32,5 +32,4 @@ public class StreamLogger extends AbstractLogger {
         out.print(format(level, message));
         if (t != null) t.printStackTrace(out);
     }
-
 }

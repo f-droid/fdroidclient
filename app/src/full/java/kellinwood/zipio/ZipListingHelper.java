@@ -33,7 +33,6 @@ public class ZipListingHelper {
     public static void listHeader(LoggerInterface log) {
         log.debug(" Length   Method    Size  Ratio   Date   Time   CRC-32    Name");
         log.debug("--------  ------  ------- -----   ----   ----   ------    ----");
-
     }
 
     public static void listEntry(LoggerInterface log, ZioEntry entry) {
@@ -49,5 +48,3 @@ public class ZipListingHelper {
                 entry.getName()));
     }
 }
-
-

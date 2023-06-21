@@ -138,5 +138,4 @@ public class SuggestedVersionTest {
         AppPrefs appPrefs = new AppPrefs(app.packageName, 0, Collections.singletonList(releaseChannel));
         assertEquals(hasUpdates, app.hasUpdates(apks, appPrefs));
     }
-
 }

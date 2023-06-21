@@ -516,7 +516,6 @@ public class AppDetailsActivity extends AppCompatActivity
                 // Ignore.
                 break;
         }
-
     }
 
     private final BroadcastReceiver appStatusReceiver = new BroadcastReceiver() {
@@ -846,5 +845,4 @@ public class AppDetailsActivity extends AppCompatActivity
         }
         startUninstall();
     }
-
 }

@@ -43,7 +43,6 @@ public class SanitizedFileTest {
         assertEquals("safe", safeSanitized.getName());
         assertEquals("safe-and_bleh.boo", nonEvilSanitized.getName());
         assertEquals("rm etcshadow", evilSanitized.getName());
-
     }
 
     @Test

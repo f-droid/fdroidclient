@@ -131,7 +131,6 @@ public class AntiFeaturesListingView extends RecyclerView {
             antiFeatureText = itemView.findViewById(R.id.anti_feature_text);
             antiFeatureReason = itemView.findViewById(R.id.anti_feature_reason);
         }
-
     }
 
     private static String getAntiFeatureDescriptionText(Context context, String antiFeatureName) {

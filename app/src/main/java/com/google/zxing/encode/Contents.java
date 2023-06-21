@@ -110,5 +110,4 @@ public final class Contents {
         ContactsContract.Intents.Insert.SECONDARY_EMAIL_TYPE,
         ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE,
     };
-
 }

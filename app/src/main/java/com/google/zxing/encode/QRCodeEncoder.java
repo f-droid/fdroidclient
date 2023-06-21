@@ -181,7 +181,6 @@ public final class QRCodeEncoder {
                         contents = null;
                         displayContents = null;
                     }
-
                 }
                 break;
             case Contents.Type.LOCATION:

@@ -295,7 +295,5 @@ public final class LocalRepoManager {
         } finally {
             attemptToDelete(indexJarUnsigned);
         }
-
     }
-
 }

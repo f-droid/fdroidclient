@@ -190,7 +190,6 @@ public final class Request {
             } else {
                 break;
             }
-
         }
         return headers;
     }
@@ -202,5 +201,4 @@ public final class Request {
     public String getMethod() {
         return method;
     }
-
 }

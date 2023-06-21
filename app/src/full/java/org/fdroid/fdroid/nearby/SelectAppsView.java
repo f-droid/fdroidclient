@@ -219,5 +219,4 @@ public class SelectAppsView extends SwapView {
             this(packageInfo.packageName, Utils.getApplicationLabel(context, packageInfo.packageName));
         }
     }
-
 }

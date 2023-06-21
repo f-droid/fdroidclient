@@ -41,6 +41,7 @@ public class FileInstallerActivity extends FragmentActivity {
     private App app;
     private Apk apk;
     private Uri localApkUri;
+
     /**
      * @see InstallManagerService
      */
@@ -77,7 +78,6 @@ public class FileInstallerActivity extends FragmentActivity {
         } else {
             throw new IllegalStateException("Intent action not specified!");
         }
-
     }
 
     private boolean hasStoragePermission() {

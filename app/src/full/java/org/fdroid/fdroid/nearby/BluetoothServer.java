@@ -134,7 +134,6 @@ public class BluetoothServer extends Thread {
             }
 
             connection.closeQuietly();
-
         }
 
         private Response handleRequest(Request request) {
@@ -344,5 +343,4 @@ public class BluetoothServer extends Thread {
             return null;
         }
     }
-
 }

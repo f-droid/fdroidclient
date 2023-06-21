@@ -23,7 +23,7 @@ import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 
 public class ZioEntryOutputStream extends OutputStream {
-    int size = 0;  // tracks uncompressed size of data
+    int size = 0; // tracks uncompressed size of data
     CRC32 crc = new CRC32();
     int crcValue = 0;
     OutputStream wrapped;
@@ -82,6 +82,4 @@ public class ZioEntryOutputStream extends OutputStream {
     public OutputStream getWrappedStream() {
         return wrapped;
     }
-
 }
-

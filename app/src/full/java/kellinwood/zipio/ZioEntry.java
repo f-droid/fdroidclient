@@ -59,7 +59,6 @@ public class ZioEntry implements Cloneable {
     private byte[] data = null;
     private ZioEntryOutputStream entryOut = null;
 
-
     private static byte[] alignBytes = new byte[4];
 
     private static LoggerInterface log;
@@ -80,7 +79,6 @@ public class ZioEntry implements Cloneable {
         extraData = new byte[0];
         setTime(System.currentTimeMillis());
     }
-
 
     public ZioEntry(String name, String sourceDataFile)
             throws IOException {
@@ -216,7 +214,7 @@ public class ZioEntry implements Cloneable {
         short extraLen = input.readShort();
         if (debug) log.debug(String.format("Extra length: 0x%04x", extraLen));
 
-        // 30 	n 	File name      
+        // 30 	n 	File name
         String filename = input.readString(fileNameLen);
         if (debug) log.debug("Filename: " + filename);
 
@@ -226,7 +224,6 @@ public class ZioEntry implements Cloneable {
         // Record the file position of this entry's data.
         dataPosition = input.getFilePointer();
         if (debug) log.debug(String.format("Data position: 0x%08x", dataPosition));
-
     }
 
     public void writeLocalEntry(ZipOutput output) throws IOException {
@@ -277,7 +274,6 @@ public class ZioEntry implements Cloneable {
                 numAlignBytes = (short) (4 - dataPosMod4);
             }
         }
-
 
         // 28 	2 	Extra field length (m)
         output.writeShort((short) (extraData.length + numAlignBytes));
@@ -401,7 +397,7 @@ public class ZioEntry implements Cloneable {
         localHeaderOffset = input.readInt();
         if (debug) log.debug(String.format("Local header offset: 0x%08x", localHeaderOffset));
 
-        // 30   n   File name      
+        // 30   n   File name
         filename = input.readString(fileNameLen);
         if (debug) log.debug("Filename: " + filename);
 
@@ -418,7 +414,6 @@ public class ZioEntry implements Cloneable {
             compression = 0;
             crc32 = 0;
         }
-
     }
 
     /**
@@ -441,12 +436,12 @@ public class ZioEntry implements Cloneable {
         return tmpdata;
     }
 
-    // Returns an input stream for reading the entry's data. 
+    // Returns an input stream for reading the entry's data.
     public InputStream getInputStream() throws IOException {
         return getInputStream(null);
     }
 
-    // Returns an input stream for reading the entry's data. 
+    // Returns an input stream for reading the entry's data.
     public InputStream getInputStream(OutputStream monitorStream) throws IOException {
 
         if (entryOut != null) {
@@ -459,8 +454,8 @@ public class ZioEntry implements Cloneable {
             InputStream rawis = new ByteArrayInputStream(data);
             if (compression == 0) return rawis;
             else {
-                // Hacky, inflate using a sequence of input streams that returns 1 byte more than the actual length of the data.  
-                // This extra dummy byte is required by InflaterInputStream when the data doesn't have the header and crc fields (as it is in zip files). 
+                // Hacky, inflate using a sequence of input streams that returns 1 byte more than the actual length of the data.
+                // This extra dummy byte is required by InflaterInputStream when the data doesn't have the header and crc fields (as it is in zip files).
                 return new InflaterInputStream(new SequenceInputStream(rawis, new ByteArrayInputStream(new byte[1])), new Inflater(true));
             }
         }
@@ -469,8 +464,8 @@ public class ZioEntry implements Cloneable {
         dataStream = new ZioEntryInputStream(this);
         if (monitorStream != null) dataStream.setMonitorStream(monitorStream);
         if (compression != 0) {
-            // Note: When using nowrap=true with Inflater it is also necessary to provide 
-            // an extra "dummy" byte as input. This is required by the ZLIB native library 
+            // Note: When using nowrap=true with Inflater it is also necessary to provide
+            // an extra "dummy" byte as input. This is required by the ZLIB native library
             // in order to support certain optimizations.
             dataStream.setReturnDummyByte(true);
             return new InflaterInputStream(dataStream, new Inflater(true));
@@ -483,10 +478,8 @@ public class ZioEntry implements Cloneable {
         return entryOut;
     }
 
-
     public void write(ZipOutput output) throws IOException {
         boolean debug = getLogger().isDebugEnabled();
-
 
         output.writeInt(0x02014b50);
         output.writeShort(versionMadeBy);
@@ -510,7 +503,6 @@ public class ZioEntry implements Cloneable {
         output.writeBytes(extraData);
         if (numAlignBytes > 0) output.writeBytes(alignBytes, 0, numAlignBytes);
         output.writeString(fileComment);
-
     }
 
     /*
@@ -628,5 +620,4 @@ public class ZioEntry implements Cloneable {
     public ZipInput getZipInput() {
         return zipInput;
     }
-
 }

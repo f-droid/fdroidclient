@@ -23,7 +23,7 @@ import kellinwood.logging.LoggerManager;
 
 public class CentralEnd {
     public int signature = 0x06054b50; // end of central dir signature    4 bytes
-    public short numberThisDisk = 0;   // number of this disk             2 bytes     
+    public short numberThisDisk = 0;   // number of this disk             2 bytes
     public short centralStartDisk = 0; // number of the disk with the start of the central directory  2 bytes
     public short numCentralEntries;    // total number of entries in the central directory on this disk  2 bytes
     public short totalCentralEntries;  // total number of entries in the central directory           2 bytes
@@ -54,7 +54,6 @@ public class CentralEnd {
         return log;
     }
 
-
     private void doRead(ZipInput input) throws IOException {
 
         boolean debug = getLogger().isDebugEnabled();
@@ -80,10 +79,7 @@ public class CentralEnd {
         short zipFileCommentLen = input.readShort();
         fileComment = input.readString(zipFileCommentLen);
         if (debug) log.debug(".ZIP file comment: " + fileComment);
-
-
     }
-
 
     public void write(ZipOutput output) throws IOException {
 
@@ -98,8 +94,5 @@ public class CentralEnd {
         output.writeInt(centralStartOffset);
         output.writeShort((short) fileComment.length());
         output.writeString(fileComment);
-
-
     }
-
 }

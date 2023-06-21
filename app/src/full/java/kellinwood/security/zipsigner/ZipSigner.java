@@ -22,10 +22,9 @@
  *   - removal of main()
  *   - switch to a signature generation method that verifies
  *     in Android recovery
- *   - eliminated dependency on sun.security and sun.misc APIs by 
+ *   - eliminated dependency on sun.security and sun.misc APIs by
  *     using signature block template files.
  */
-
 
 package kellinwood.security.zipsigner;
 
@@ -135,7 +134,6 @@ public class ZipSigner {
         autoKeyDetect.put("e60418c4b638f20d0721e115674ca11f", "platform");
         autoKeyDetect.put("3e24e49741b60c215c010dc6048fca7d", "shared");
         autoKeyDetect.put("dab2cead827ef5313f28e22b6fa8479f", "testkey");
-
     }
 
     public ResourceAdapter getResourceAdapter() {
@@ -170,13 +168,11 @@ public class ZipSigner {
         return SUPPORTED_KEY_MODES;
     }
 
-
     protected String autoDetectKey(String mode, Map<String, ZioEntry> zioEntries)
             throws NoSuchAlgorithmException, IOException {
         boolean debug = getLogger().isDebugEnabled();
 
         if (!mode.startsWith(MODE_AUTO)) return mode;
-
 
         // Auto-determine which keys to use
         String keyName = null;
@@ -185,11 +181,11 @@ public class ZipSigner {
             String entryName = entry.getKey();
             if (entryName.startsWith("META-INF/") && entryName.endsWith(".RSA")) {
 
-                // Compute MD5 of the first 1458 bytes, which is the size of our signature block templates -- 
-                // e.g., the portion of the sig block file that is the same for a given certificate.                    
+                // Compute MD5 of the first 1458 bytes, which is the size of our signature block templates --
+                // e.g., the portion of the sig block file that is the same for a given certificate.
                 MessageDigest md5 = MessageDigest.getInstance("MD5");
                 byte[] entryData = entry.getValue().getData();
-                if (entryData.length < 1458) break; // sig block too short to be a supported key 
+                if (entryData.length < 1458) break; // sig block too short to be a supported key
                 md5.update(entryData, 0, 1458);
                 byte[] rawDigest = md5.digest();
 
@@ -202,7 +198,6 @@ public class ZipSigner {
                 String md5String = builder.toString();
                 // Lookup the key name
                 keyName = autoKeyDetect.get(md5String);
-
 
                 if (debug) {
                     if (keyName != null) {
@@ -559,7 +554,6 @@ public class ZipSigner {
             ZioEntry inEntry = input.get(name);
             inEntry.setTime(timestamp);
             output.write(inEntry);
-
         }
     }
 
@@ -604,7 +598,6 @@ public class ZipSigner {
             IOException, GeneralSecurityException {
         InputStream keystoreStream = null;
 
-
         try {
             KeyStore keystore = null;
             if (keystoreType == null) keystoreType = KeyStore.getDefaultType();
@@ -625,7 +618,6 @@ public class ZipSigner {
         }
     }
 
-
     /**
      * Sign the input with the default test key and certificate.
      * Save result to output file.
@@ -635,7 +627,6 @@ public class ZipSigner {
         progressHelper.initProgress();
         signZip(zioEntries, new FileOutputStream(outputZipFilename), outputZipFilename);
     }
-
 
     /**
      * Sign the file using the given public key cert, private key,
@@ -690,14 +681,11 @@ public class ZipSigner {
             autoKeyObservable.notifyObservers(keyName);
 
             loadKeys(keyName);
-
         }
-
 
         ZipOutput zipOutput = null;
 
         try {
-
 
             zipOutput = new ZipOutput(outputStream);
 
@@ -734,7 +722,6 @@ public class ZipSigner {
             ze.setTime(timestamp);
             manifest.write(ze.getOutputStream());
             zipOutput.write(ze);
-
 
             // CERT.SF
             ze = new ZioEntry(CERT_SF_NAME);
@@ -783,13 +770,11 @@ public class ZipSigner {
         progressHelper.removeProgressListener(l);
     }
 
-
     public static class AutoKeyObservable extends Observable {
         @Override
         public void notifyObservers(Object arg) {
             super.setChanged();
             super.notifyObservers(arg);
         }
-
     }
 }

@@ -86,6 +86,7 @@ public class App implements Comparable<App>, Parcelable {
      * True if compatible with the device (i.e. if at least one apk is)
      */
     public boolean compatible;
+
     public Apk installedApk; // might be null if not installed
     public String installedSigner;
     public long installedVersionCode;
@@ -825,5 +826,4 @@ public class App implements Comparable<App>, Parcelable {
 
         return null;
     }
-
 }

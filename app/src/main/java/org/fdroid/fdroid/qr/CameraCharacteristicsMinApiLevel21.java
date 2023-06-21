@@ -45,7 +45,6 @@ public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChe
             Log.e(TAG, e.getMessage(), e);
             throw new FDroidDeviceException("Exception accessing the camera list", e);
         }
-
     }
 
     @NonNull
@@ -106,5 +105,4 @@ public class CameraCharacteristicsMinApiLevel21 extends CameraCharacteristicsChe
     private boolean isAutofocus(final int mode) {
         return mode != android.hardware.camera2.CameraMetadata.CONTROL_AF_MODE_OFF;
     }
-
 }

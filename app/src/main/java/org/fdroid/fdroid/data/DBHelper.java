@@ -232,5 +232,4 @@ public class DBHelper {
                 + repoItems.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
         return new LinkedList<>();
     }
-
 }

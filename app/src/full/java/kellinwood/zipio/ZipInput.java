@@ -73,7 +73,6 @@ public class ZipInput implements Closeable {
         return zipInput;
     }
 
-
     public ZioEntry getEntry(String filename) {
         return zioEntries.get(filename);
     }
@@ -139,7 +138,6 @@ public class ZipInput implements Closeable {
 
         return scanForEOCDR(size * 2);
     }
-
 
     private void doRead() {
         try {
@@ -232,5 +230,3 @@ public class ZipInput implements Closeable {
         return in.read(b, offset, length);
     }
 }
-
-

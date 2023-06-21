@@ -138,5 +138,4 @@ class ApkVerifier {
             super(message);
         }
     }
-
 }

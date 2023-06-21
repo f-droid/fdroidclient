@@ -96,7 +96,6 @@ public class AppDetailsRecyclerViewAdapter
         void installCancel();
 
         void launchApk();
-
     }
 
     private static final int VIEWTYPE_HEADER = 0;

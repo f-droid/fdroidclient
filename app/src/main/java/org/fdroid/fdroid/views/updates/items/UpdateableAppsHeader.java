@@ -118,5 +118,4 @@ public class UpdateableAppsHeader extends AppUpdateData {
             }
         }
     }
-
 }

@@ -162,5 +162,4 @@ public class SDCardScannerService extends IntentService {
             Utils.closeQuietly(inputStream);
         }
     }
-
 }

@@ -200,5 +200,4 @@ public final class Languages {
             new Locale("uk"),
             new Locale("vi"),
     };
-
 }

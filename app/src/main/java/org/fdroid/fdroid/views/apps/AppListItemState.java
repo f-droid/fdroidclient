@@ -137,5 +137,4 @@ public class AppListItemState {
         this.checkBoxChecked = checked;
         return this;
     }
-
 }

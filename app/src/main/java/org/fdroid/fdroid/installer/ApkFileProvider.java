@@ -105,5 +105,4 @@ public class ApkFileProvider extends FileProvider {
             return Uri.fromFile(tempFile);
         }
     }
-
 }

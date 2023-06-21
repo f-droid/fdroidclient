@@ -28,9 +28,6 @@ import java.util.Set;
 import kellinwood.logging.LoggerInterface;
 import kellinwood.logging.LoggerManager;
 
-/**
- *
- */
 public class ZipOutput {
 
     static LoggerInterface log;
@@ -58,7 +55,6 @@ public class ZipOutput {
         if (ofile.exists()) ofile.delete();
         out = new FileOutputStream(ofile);
         if (getLogger().isDebugEnabled()) ZipListingHelper.listHeader(getLogger());
-
     }
 
     public ZipOutput(OutputStream os) throws IOException {
@@ -80,9 +76,7 @@ public class ZipOutput {
         entriesWritten.add(entry);
         namesWritten.add(entryName);
         if (getLogger().isDebugEnabled()) ZipListingHelper.listEntry(getLogger(), entry);
-
     }
-
 
     public void close() throws IOException {
         CentralEnd centralEnd = new CentralEnd();
@@ -108,7 +102,6 @@ public class ZipOutput {
     public int getFilePointer() throws IOException {
         return filePointer;
     }
-
 
     public void writeInt(int value) throws IOException {
         byte[] data = new byte[4];
@@ -148,7 +141,4 @@ public class ZipOutput {
         out.write(value, offset, length);
         filePointer += length;
     }
-
 }
-
-

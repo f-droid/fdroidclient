@@ -130,7 +130,6 @@ public class AppSecurityPermissions {
             DrawableCompat.setTint(wrappedIconDrawable, theme == Preferences.Theme.light ? Color.BLACK : Color.WHITE);
             return wrappedIconDrawable;
         }
-
     }
 
     // PermissionInfo implements Parcelable but its Parcel constructor is private and thus cannot be extended.
@@ -233,7 +232,6 @@ public class AppSecurityPermissions {
                 dialog.dismiss();
             }
         }
-
     }
 
     private AppSecurityPermissions(Context context) {

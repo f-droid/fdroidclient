@@ -39,7 +39,6 @@ public class FileCompat {
                 // Do nothing...
             }
         }
-
     }
 
     static void symlinkOs(SanitizedFile source, SanitizedFile dest) {
@@ -75,5 +74,4 @@ public class FileCompat {
             Log.e(TAG, "Could not symlink " + source.getAbsolutePath() + " to " + dest.getAbsolutePath(), e);
         }
     }
-
 }

@@ -34,13 +34,13 @@ import java.util.jar.JarOutputStream;
  * This test the JAR signing functions of {@link ZipSigner}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk={23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
+@Config(sdk = {23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
 public class ZipSignerTest {
     public static final String TAG = "ZipSignerTest";
 
     private File unsigned;
     private File signed;
-    
+
     @Before
     public void setUp() {
         ShadowLog.stream = System.out;
@@ -58,7 +58,7 @@ public class ZipSignerTest {
             fail();
         }
     }
-    
+
     @After
     public void tearDown() {
         if (unsigned != null) {
@@ -72,7 +72,7 @@ public class ZipSignerTest {
     @Test
     public void testSignApk()
         throws CertificateException, ClassNotFoundException, GeneralSecurityException, IllegalAccessException, InstantiationException, IOException, NoSuchAlgorithmException, OperatorCreationException {
- 
+
         System.out.println("wrote " + unsigned);
         assertTrue(unsigned.exists());
         assertTrue(unsigned.length() > 0);
@@ -90,5 +90,5 @@ public class ZipSignerTest {
 
         assertTrue(signed.exists());
         assertTrue(signed.length() > unsigned.length());
-   }
+    }
 }

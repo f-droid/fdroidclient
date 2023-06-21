@@ -21,5 +21,4 @@ public class MainActivityTest {
             assertNotEquals(invalid, MainActivity.sanitizeSearchTerms(invalid));
         }
     }
-
 }

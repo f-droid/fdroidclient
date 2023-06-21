@@ -66,5 +66,4 @@ public class NullLoggerFactory implements LoggerFactory {
     public LoggerInterface getLogger(String category) {
         return logger;
     }
-
 }

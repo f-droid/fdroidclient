@@ -66,5 +66,4 @@ public class UpdatesItemTouchCallback extends ItemTouchHelper.Callback {
     public boolean isItemViewSwipeEnabled() {
         return true;
     }
-
 }
