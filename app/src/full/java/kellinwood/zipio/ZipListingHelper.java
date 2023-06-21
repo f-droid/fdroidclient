@@ -16,12 +16,12 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import kellinwood.logging.LoggerInterface;
 
 /**
  *

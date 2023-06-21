@@ -16,10 +16,10 @@
 
 package kellinwood.zipio;
 
+import java.io.IOException;
+
 import kellinwood.logging.LoggerInterface;
 import kellinwood.logging.LoggerManager;
-
-import java.io.IOException;
 
 public class CentralEnd {
     public int signature = 0x06054b50; // end of central dir signature    4 bytes

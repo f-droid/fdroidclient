@@ -16,9 +16,6 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +29,9 @@ import java.util.TreeSet;
 import java.util.jar.Manifest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
 
 /**
  *

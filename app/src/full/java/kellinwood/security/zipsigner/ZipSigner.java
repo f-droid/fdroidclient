@@ -31,16 +31,6 @@ package kellinwood.security.zipsigner;
 
 import android.util.Base64;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-import kellinwood.zipio.ZioEntry;
-import kellinwood.zipio.ZipInput;
-import kellinwood.zipio.ZipOutput;
-
-import javax.crypto.Cipher;
-import javax.crypto.EncryptedPrivateKeyInfo;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
@@ -80,6 +70,17 @@ import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import java.util.regex.Pattern;
+
+import javax.crypto.Cipher;
+import javax.crypto.EncryptedPrivateKeyInfo;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
+import kellinwood.zipio.ZioEntry;
+import kellinwood.zipio.ZipInput;
+import kellinwood.zipio.ZipOutput;
 
 /**
  * This is a modified copy of com.android.signapk.SignApk.java.  It provides an

@@ -16,9 +16,6 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,6 +28,9 @@ import java.util.Locale;
 import java.util.zip.CRC32;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
+
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
 
 public class ZioEntry implements Cloneable {
 

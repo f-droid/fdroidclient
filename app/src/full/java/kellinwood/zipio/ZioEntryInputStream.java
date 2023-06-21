@@ -16,14 +16,14 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.util.Locale;
+
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
 
 
 /**
