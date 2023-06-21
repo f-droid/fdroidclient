@@ -5,12 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager;
@@ -74,19 +76,28 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private final AppCompatActivity activity;
     private final DbUpdateChecker updateChecker;
+    private final SharedPreferences preferences;
 
     private final List<AppUpdateData> items = new ArrayList<>();
     private final List<AppStatus> appsToShowStatus = new ArrayList<>();
     private final List<UpdateableApp> updateableApps = new ArrayList<>();
     private final List<KnownVulnApp> knownVulnApps = new ArrayList<>();
 
-    // This is lost on configuration changes e.g. rotating the screen.
-    private boolean showAllUpdateableApps = false;
+    private static final String PREF_SHOW_ALL_UPDATEABLE_APPS = "showAllUpdateableApps";
+    private static final boolean DEFAULT_SHOW_ALL_UPDATEABLE_APPS = false;
+
+    private boolean showAllUpdateableApps;
+
     @Nullable
     private Disposable disposable;
 
     UpdatesAdapter(AppCompatActivity activity) {
         this.activity = activity;
+        this.preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+
+        showAllUpdateableApps = preferences.getBoolean(
+                PREF_SHOW_ALL_UPDATEABLE_APPS,
+                DEFAULT_SHOW_ALL_UPDATEABLE_APPS);
 
         delegatesManager.addDelegate(new AppStatus.Delegate(activity))
                 .addDelegate(new UpdateableApp.Delegate(activity))
@@ -111,6 +122,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void toggleAllUpdateableApps() {
         showAllUpdateableApps = !showAllUpdateableApps;
+        preferences.edit().putBoolean(PREF_SHOW_ALL_UPDATEABLE_APPS, showAllUpdateableApps).apply();
         refreshItems();
     }
 
