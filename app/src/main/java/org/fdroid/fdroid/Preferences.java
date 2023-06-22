@@ -49,11 +49,13 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Handles shared preferences for FDroid, looking after the names of
- * preferences, default values and caching. Needs to be setup in the FDroidApp
- * (using {@link Preferences#setup(android.content.Context)} before it gets
- * accessed via the {@link org.fdroid.fdroid.Preferences#get()}
- * singleton method.
+ * Handles the preferences that are shown the Settings UI, looking after the
+ * names of preferences, default values and caching. Needs to be setup in the
+ * {@link org.fdroid.fdroid.FDroidApp} (using
+ * {@link Preferences#setup(android.content.Context)} before it gets accessed
+ * via the {@link org.fdroid.fdroid.Preferences#get()} singleton method. This
+ * structure also lets it be used in places in the code where there is no
+ * {@link Context}.
  * <p>
  * All defaults should be set in {@code res/xml/preferences.xml}.  The one
  * exception is {@link Preferences#PREF_LOCAL_REPO_NAME} since it needs to be
