@@ -153,6 +153,21 @@ internal class RepositoryDaoTest : DbTest() {
     }
 
     @Test
+    fun testGetRepositoryByCert() {
+        val cert = getRandomString()
+        // insert repo and (required) preferences
+        val repo1 = getRandomRepo().toCoreRepository(version = 42L, certificate = cert)
+        val repoId = repoDao.insertOrReplace(repo1)
+        val repositoryPreferences = RepositoryPreferences(repoId, 3)
+        repoDao.insert(repositoryPreferences)
+
+        // repo is returned when querying for right cert
+        assertEquals(repo1.copy(repoId = repoId), repoDao.getRepository(cert)?.repository)
+        // nothing is returned when querying for non-existent cert
+        assertNull(repoDao.getRepository("foo bar"))
+    }
+
+    @Test
     fun testSetRepositoryEnabled() {
         // repo is enabled by default
         val repoId = repoDao.insertOrReplace(getRandomRepo())

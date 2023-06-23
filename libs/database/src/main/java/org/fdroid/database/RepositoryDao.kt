@@ -29,10 +29,16 @@ public interface RepositoryDao {
     public fun insert(initialRepo: InitialRepository): Long
 
     /**
+     * Inserts a new repository into the database.
+     */
+    public fun insert(newRepository: NewRepository): Long
+
+    /**
      * Inserts an empty [Repository] for an initial update.
      *
      * @return the [Repository.repoId] of the inserted repo.
      */
+    @Deprecated("Use insert instead")
     public fun insertEmptyRepo(
         address: String,
         username: String? = null,
@@ -145,6 +151,32 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @Transaction
+    override fun insert(newRepository: NewRepository): Long {
+        val repo = CoreRepository(
+            name = newRepository.name,
+            icon = newRepository.icon,
+            address = newRepository.address,
+            timestamp = -1,
+            version = null,
+            formatVersion = newRepository.formatVersion,
+            maxAge = null,
+            certificate = newRepository.certificate,
+        )
+        val repoId = insertOrReplace(repo)
+        val currentMaxWeight = getMaxRepositoryWeight()
+        val repositoryPreferences = RepositoryPreferences(
+            repoId = repoId,
+            weight = currentMaxWeight + 1,
+            lastUpdated = null,
+            username = newRepository.username,
+            password = newRepository.password,
+        )
+        insert(repositoryPreferences)
+        return repoId
+    }
+
+    @Transaction
+    @Deprecated("Use insert instead")
     override fun insertEmptyRepo(
         address: String,
         username: String?,
@@ -190,6 +222,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Transaction
     @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")
     override fun getRepository(repoId: Long): Repository?
+
+    @Transaction
+    @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE certificate = :certificate COLLATE NOCASE")
+    fun getRepository(certificate: String): Repository?
 
     @Transaction
     @Query("SELECT * FROM ${CoreRepository.TABLE}")

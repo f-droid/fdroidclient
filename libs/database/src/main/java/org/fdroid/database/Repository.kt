@@ -93,6 +93,7 @@ public data class Repository internal constructor(
     /**
      * Used to create a minimal version of a [Repository].
      */
+    @JvmOverloads
     public constructor(
         repoId: Long,
         address: String,
@@ -102,6 +103,8 @@ public data class Repository internal constructor(
         version: Long,
         weight: Int,
         lastUpdated: Long,
+        username: String? = null,
+        password: String? = null,
     ) : this(
         repository = CoreRepository(
             repoId = repoId,
@@ -121,6 +124,8 @@ public data class Repository internal constructor(
             repoId = repoId,
             weight = weight,
             lastUpdated = lastUpdated,
+            username = username,
+            password = password,
         )
     )
 
@@ -401,3 +406,16 @@ private fun validateCertificate(certificate: String?) {
         certificate.chunked(2).find { it.toIntOrNull(16) == null } == null
     ) { "Invalid certificate: $certificate" }
 }
+
+/**
+ * A reduced version of [Repository] used to add new repositories.
+ */
+public data class NewRepository(
+    val name: LocalizedTextV2,
+    val icon: LocalizedFileV2,
+    val address: String,
+    val formatVersion: IndexFormatVersion?,
+    val certificate: String,
+    val username: String? = null,
+    val password: String? = null,
+)

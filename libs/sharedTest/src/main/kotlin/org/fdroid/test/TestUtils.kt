@@ -8,6 +8,13 @@ import kotlin.random.Random
 
 object TestUtils {
 
+    fun String.decodeHex(): ByteArray {
+        check(length % 2 == 0) { "Must have an even length" }
+        return chunked(2)
+            .map { it.toInt(16).toByte() }
+            .toByteArray()
+    }
+
     private val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
     fun getRandomString(length: Int = Random.nextInt(1, 128)): String = (1..length)

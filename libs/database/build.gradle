@@ -87,6 +87,9 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation 'org.robolectric:robolectric:4.8.1'
     testImplementation 'commons-io:commons-io:2.6'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2'
+    testImplementation 'app.cash.turbine:turbine:1.0.0'
 
     androidTestImplementation project(":libs:sharedTest")
     androidTestImplementation 'io.mockk:mockk-android:1.12.3' // 1.12.4 has strange error
