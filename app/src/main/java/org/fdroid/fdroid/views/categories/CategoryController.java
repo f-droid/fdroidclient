@@ -13,11 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.os.LocaleListCompat;
-import androidx.core.util.Consumer;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -27,12 +25,10 @@ import com.bumptech.glide.Glide;
 
 import org.fdroid.database.AppOverviewItem;
 import org.fdroid.database.Category;
-import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.apps.FeatureImage;
 import org.fdroid.index.v2.FileV2;
@@ -40,11 +36,6 @@ import org.fdroid.index.v2.FileV2;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CategoryController extends RecyclerView.ViewHolder {
 
@@ -57,18 +48,14 @@ public class CategoryController extends RecyclerView.ViewHolder {
     private final FrameLayout background;
 
     private final AppCompatActivity activity;
-    private final FDroidDatabase db;
     static final int NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW = 20;
 
     private Category currentCategory;
-    @Nullable
-    private Disposable disposable;
 
     CategoryController(final AppCompatActivity activity, View itemView) {
         super(itemView);
 
         this.activity = activity;
-        db = DBHelper.getDb(activity);
 
         appCardsAdapter = new AppPreviewAdapter(activity);
 
@@ -89,36 +76,32 @@ public class CategoryController extends RecyclerView.ViewHolder {
         return categoryNameId == 0 ? categoryName : context.getString(categoryNameId);
     }
 
-    void bindModel(@NonNull Category category, LiveData<List<AppOverviewItem>> liveData,
-                   Consumer<Category> onNoApps) {
+    void bindModel(@NonNull CategoryItem item, LiveData<List<AppOverviewItem>> liveData) {
         loadAppItems(liveData);
-        currentCategory = category;
+        currentCategory = item.category;
 
-        String categoryName = category.getName(LocaleListCompat.getDefault());
-        if (categoryName == null) categoryName = translateCategory(activity, category.getId());
+        String categoryName = item.category.getName(LocaleListCompat.getDefault());
+        if (categoryName == null) categoryName = translateCategory(activity, item.category.getId());
         heading.setText(categoryName);
         heading.setContentDescription(activity.getString(R.string.tts_category_name, categoryName));
 
-        viewAll.setVisibility(View.INVISIBLE);
-        loadNumAppsInCategory(onNoApps);
-
-        @ColorInt int backgroundColour = getBackgroundColour(activity, category.getId());
+        @ColorInt int backgroundColour = getBackgroundColour(activity, item.category.getId());
         background.setBackgroundColor(backgroundColour);
 
         // try to load image from repo first
-        FileV2 iconFile = category.getIcon(LocaleListCompat.getDefault());
-        Repository repo = FDroidApp.getRepoManager(activity).getRepository(category.getRepoId());
+        FileV2 iconFile = item.category.getIcon(LocaleListCompat.getDefault());
+        Repository repo = FDroidApp.getRepoManager(activity).getRepository(item.category.getRepoId());
         if (iconFile != null && repo != null) {
-            Log.i(TAG, "Loading remote image for: " + category.getId());
+            Log.i(TAG, "Loading remote image for: " + item.category.getId());
             Glide.with(activity)
                     .load(Utils.getDownloadRequest(repo, iconFile))
                     .apply(Utils.getAlwaysShowIconRequestOptions())
                     .into(image);
         } else {
             // try to get local image resource
-            int categoryImageId = getCategoryResource(activity, category.getId(), "drawable", true);
+            int categoryImageId = getCategoryResource(activity, item.category.getId(), "drawable", true);
             if (categoryImageId == 0) {
-                Log.w(TAG, "No image for: " + category.getId());
+                Log.w(TAG, "No image for: " + item.category.getId());
                 image.setColour(backgroundColour);
                 image.setImageDrawable(null);
                 Glide.with(activity).clear(image);
@@ -127,6 +110,10 @@ public class CategoryController extends RecyclerView.ViewHolder {
                 Glide.with(activity).load(categoryImageId).into(image);
             }
         }
+        Resources r = activity.getResources();
+        viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, item.numApps, item.numApps));
+        viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, item.numApps,
+                item.numApps, currentCategory));
     }
 
     private void loadAppItems(LiveData<List<AppOverviewItem>> liveData) {
@@ -139,14 +126,6 @@ public class CategoryController extends RecyclerView.ViewHolder {
                 liveData.removeObserver(this);
             }
         });
-    }
-
-    private void loadNumAppsInCategory(Consumer<Category> onNoApps) {
-        if (disposable != null) disposable.dispose();
-        disposable = Single.fromCallable(() -> db.getAppDao().getNumberOfAppsInCategory(currentCategory.getId()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(numApps -> setNumAppsInCategory(numApps, onNoApps));
     }
 
     /**
@@ -179,19 +158,6 @@ public class CategoryController extends RecyclerView.ViewHolder {
         hsv[1] = 0.4f;
         hsv[2] = 0.5f;
         return Color.HSVToColor(hsv);
-    }
-
-    private void setNumAppsInCategory(int numAppsInCategory, Consumer<Category> onNoApps) {
-        if (numAppsInCategory == 0) {
-            onNoApps.accept(currentCategory);
-        } else {
-            viewAll.setVisibility(View.VISIBLE);
-            Resources r = activity.getResources();
-            viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, numAppsInCategory,
-                    numAppsInCategory));
-            viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, numAppsInCategory,
-                    numAppsInCategory, currentCategory));
-        }
     }
 
     @SuppressWarnings("FieldCanBeLocal")

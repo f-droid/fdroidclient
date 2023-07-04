@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.categories;
 
-import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,26 +13,24 @@ import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
-public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
+public class CategoryAdapter extends ListAdapter<CategoryItem, CategoryController> {
 
     private final AppCompatActivity activity;
     private final FDroidDatabase db;
     private final HashMap<Category, LiveData<List<AppOverviewItem>>> liveData = new HashMap<>();
 
     public CategoryAdapter(AppCompatActivity activity, FDroidDatabase db) {
-        super(new DiffUtil.ItemCallback<Category>() {
+        super(new DiffUtil.ItemCallback<CategoryItem>() {
             @Override
-            public boolean areItemsTheSame(@NonNull Category oldItem, @NonNull Category newItem) {
-                return oldItem.equals(newItem);
+            public boolean areItemsTheSame(@NonNull CategoryItem oldItem, @NonNull CategoryItem newItem) {
+                return oldItem.category.equals(newItem.category);
             }
 
             @Override
-            public boolean areContentsTheSame(@NonNull Category oldItem, @NonNull Category newItem) {
+            public boolean areContentsTheSame(@NonNull CategoryItem oldItem, @NonNull CategoryItem newItem) {
                 return false;
             }
         });
@@ -51,31 +48,17 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryController> {
 
     @Override
     public void onBindViewHolder(@NonNull CategoryController holder, int position) {
-        Category category = getItem(position);
-        holder.bindModel(category, liveData.get(category), this::onNoApps);
+        CategoryItem item = getItem(position);
+        holder.bindModel(item, liveData.get(item.category));
     }
 
-    public void setCategories(@NonNull List<Category> categories) {
-        submitList(categories);
-        for (Category category : categories) {
+    public void setCategories(@NonNull List<CategoryItem> items) {
+        submitList(items);
+        for (CategoryItem item : items) {
             int num = CategoryController.NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW;
             // we are getting the LiveData here and not in the ViewHolder, so the data gets cached here
             // this prevents reloads when scrolling
-            liveData.put(category, db.getAppDao().getAppOverviewItems(category.getId(), num));
+            liveData.put(item.category, db.getAppDao().getAppOverviewItems(item.category.getId(), num));
         }
-    }
-
-    private void onNoApps(Category category) {
-        ArrayList<Category> categories = new ArrayList<>(getCurrentList());
-        Iterator<Category> itr = categories.iterator();
-        while (itr.hasNext()) {
-            Category c = itr.next();
-            if (c.getId().equals(category.getId())) {
-                Log.d("CategoryAdapter", "Removing " + category.getId() + " without apps.");
-                itr.remove();
-                break;
-            }
-        }
-        submitList(categories);
     }
 }
