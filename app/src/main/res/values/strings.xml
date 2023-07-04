@@ -46,7 +46,7 @@
     <string name="toast_metrics_in_install_history">The %s Metric report is viewable in the Install History viewer</string>
     <string name="send_version_and_uuid">Send version and UUID to servers</string>
     <string name="send_version_and_uuid_summary">Include this app\'s version and a random, unique ID when
-        downloading, takes affect next app restart.</string>
+        downloading, takes effect next app restart.</string>
     <string name="force_old_index">Force old index format</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="other">Other</string>
