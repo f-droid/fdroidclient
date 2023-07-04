@@ -28,6 +28,8 @@ import android.os.Process;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
 import androidx.documentfile.provider.DocumentFile;
 
 import org.apache.commons.io.FileUtils;
@@ -54,7 +56,7 @@ import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 
 /**
- * An {@link IntentService} subclass for handling asynchronous scanning of a
+ * An {@link JobIntentService} subclass for handling asynchronous scanning of a
  * removable storage device like an SD Card or USB OTG thumb drive using the
  * Storage Access Framework.  Permission must first be granted by the user
  * {@link android.content.Intent#ACTION_OPEN_DOCUMENT_TREE} or
@@ -73,25 +75,23 @@ import java.util.jar.JarInputStream;
  * @see <a href="https://developer.android.com/training/articles/scoped-directory-access.html">Using Scoped Directory Access</a>
  * @see <a href="https://developer.android.com/guide/topics/providers/document-provider.html">Open Files using Storage Access Framework</a>
  */
-public class TreeUriScannerIntentService extends IntentService {
+public class TreeUriScannerIntentService extends JobIntentService {
     public static final String TAG = "TreeUriScannerIntentSer";
+    private static final int JOB_ID = TAG.hashCode();
 
     private static final String ACTION_SCAN_TREE_URI = "org.fdroid.fdroid.nearby.action.SCAN_TREE_URI";
+
     /**
      * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r38/core/java/android/provider/DocumentsContract.java#238">DocumentsContract.EXTERNAL_STORAGE_PROVIDER_AUTHORITY</a>
      * @see <a href="https://android.googlesource.com/platform/frameworks/base/+/android-10.0.0_r38/packages/ExternalStorageProvider/src/com/android/externalstorage/ExternalStorageProvider.java#70">ExternalStorageProvider.AUTHORITY</a>
      */
     public static final String EXTERNAL_STORAGE_PROVIDER_AUTHORITY = "com.android.externalstorage.documents";
 
-    public TreeUriScannerIntentService() {
-        super("TreeUriScannerIntentService");
-    }
-
     public static void scan(Context context, Uri data) {
         Intent intent = new Intent(context, TreeUriScannerIntentService.class);
         intent.setAction(ACTION_SCAN_TREE_URI);
         intent.setData(data);
-        context.startService(intent);
+        JobIntentService.enqueueWork(context, TreeUriScannerIntentService.class, JOB_ID, intent);
     }
 
     /**
@@ -115,8 +115,8 @@ public class TreeUriScannerIntentService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        if (intent == null || !ACTION_SCAN_TREE_URI.equals(intent.getAction())) {
+    protected void onHandleWork(@NonNull Intent intent) {
+        if (!ACTION_SCAN_TREE_URI.equals(intent.getAction())) {
             return;
         }
         Uri treeUri = intent.getData();
