@@ -255,7 +255,7 @@ public class App implements Comparable<App>, Parcelable {
         iconFile = app.getIcon(getLocales());
         featureGraphic = app.getFeatureGraphic(getLocales());
         promoGraphic = app.getPromoGraphic(getLocales());
-        tvBanner = app.getPromoGraphic(getLocales());
+        tvBanner = app.getTvBanner(getLocales());
         phoneScreenshots = app.getPhoneScreenshots(getLocales());
         sevenInchScreenshots = app.getSevenInchScreenshots(getLocales());
         tenInchScreenshots = app.getTenInchScreenshots(getLocales());
