@@ -140,6 +140,9 @@ public class MainActivity extends AppCompatActivity {
         AppUpdateStatusManager.getInstance(this).getNumUpdatableApps().observe(this, this::refreshUpdatesBadge);
 
         Intent intent = getIntent();
+        if (handleMainViewSelectIntent(intent)) {
+            return;
+        }
         handleSearchOrAppViewIntent(intent);
     }
 
@@ -162,17 +165,6 @@ public class MainActivity extends AppCompatActivity {
 
         FDroidApp.checkStartTor(this, Preferences.get());
 
-        if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
-            getIntent().removeExtra(EXTRA_VIEW_UPDATES);
-            setSelectedMenuInNav(R.id.updates);
-        } else if (getIntent().hasExtra(EXTRA_VIEW_NEARBY)) {
-            getIntent().removeExtra(EXTRA_VIEW_NEARBY);
-            setSelectedMenuInNav(R.id.nearby);
-        } else if (getIntent().hasExtra(EXTRA_VIEW_SETTINGS)) {
-            getIntent().removeExtra(EXTRA_VIEW_SETTINGS);
-            setSelectedMenuInNav(R.id.settings);
-        }
-
         // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
         checkForAddRepoIntent(getIntent());
@@ -194,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+
+        if (handleMainViewSelectIntent(intent)) {
+            return;
+        }
+
         handleSearchOrAppViewIntent(intent);
 
         // This is called here as well as onResume(), because onNewIntent() is not called the first
@@ -229,6 +226,23 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             SDCardScannerService.scan(this);
         }
+    }
+
+    /**
+     * Handle an {@link Intent} that shows a specific tab in the main view.
+     */
+    private boolean handleMainViewSelectIntent(Intent intent) {
+        if (intent.hasExtra(EXTRA_VIEW_NEARBY)) {
+            setSelectedMenuInNav(R.id.nearby);
+            return true;
+        } else if (intent.hasExtra(EXTRA_VIEW_UPDATES)) {
+            setSelectedMenuInNav(R.id.updates);
+            return true;
+        } else if (intent.hasExtra(EXTRA_VIEW_SETTINGS)) {
+            setSelectedMenuInNav(R.id.settings);
+            return true;
+        }
+        return false;
     }
 
     /**
