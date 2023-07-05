@@ -87,7 +87,9 @@ public class ZipInput implements Closeable {
      * to get the root entries.
      */
     public Collection<String> list(String path) {
-        if (!path.endsWith("/")) throw new IllegalArgumentException("Invalid path -- does not end with '/'");
+        if (!path.endsWith("/")) {
+            throw new IllegalArgumentException("Invalid path -- does not end with '/'");
+        }
 
         if (path.startsWith("/")) path = path.substring(1);
 

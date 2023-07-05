@@ -149,7 +149,9 @@ public class ZioEntry implements Cloneable {
 
         input.seek(localHeaderOffset);
 
-        if (debug) getLogger().debug(String.format("FILE POSITION: 0x%08x", input.getFilePointer()));
+        if (debug) {
+            getLogger().debug(String.format("FILE POSITION: 0x%08x", input.getFilePointer()));
+        }
 
         // 0 	4 	Local file header signature = 0x04034b50
         int signature = input.readInt();
@@ -169,12 +171,16 @@ public class ZioEntry implements Cloneable {
         // 4 	2 	Version needed to extract (minimum)
         /* versionRequired */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("Version required: 0x%04x", tmpShort /*versionRequired*/));
+        if (debug) {
+            log.debug(String.format("Version required: 0x%04x", tmpShort /*versionRequired*/));
+        }
 
         // 6 	2 	General purpose bit flag
         /* generalPurposeBits */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("General purpose bits: 0x%04x", tmpShort /* generalPurposeBits */));
+        if (debug) {
+            log.debug(String.format("General purpose bits: 0x%04x", tmpShort /* generalPurposeBits */));
+        }
 
         // 8 	2 	Compression method
         /* compression */
@@ -184,12 +190,16 @@ public class ZioEntry implements Cloneable {
         // 10 	2 	File last modification time
         /* modificationTime */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("Modification time: 0x%04x", tmpShort /* modificationTime */));
+        if (debug) {
+            log.debug(String.format("Modification time: 0x%04x", tmpShort /* modificationTime */));
+        }
 
         // 12 	2 	File last modification date
         /* modificationDate */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("Modification date: 0x%04x", tmpShort /* modificationDate */));
+        if (debug) {
+            log.debug(String.format("Modification date: 0x%04x", tmpShort /* modificationDate */));
+        }
 
         // 14 	4 	CRC-32
         /* crc32 */
@@ -289,10 +299,14 @@ public class ZioEntry implements Cloneable {
             output.writeBytes(alignBytes, 0, numAlignBytes);
         }
 
-        if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Data position 0x%08x", output.getFilePointer()));
+        if (debug) {
+            getLogger().debug(String.format(Locale.ENGLISH, "Data position 0x%08x", output.getFilePointer()));
+        }
         if (data != null) {
             output.writeBytes(data);
-            if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", data.length));
+            if (debug) {
+                getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", data.length));
+            }
         } else {
 
             if (debug) getLogger().debug(String.format("Seeking to position 0x%08x", dataPosition));
@@ -306,7 +320,9 @@ public class ZioEntry implements Cloneable {
                 int numRead = zipInput.in.read(buffer, 0, (int) Math.min(compressedSize - totalCount, bufferSize));
                 if (numRead > 0) {
                     output.writeBytes(buffer, 0, numRead);
-                    if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", numRead));
+                    if (debug) {
+                        getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", numRead));
+                    }
                     totalCount += numRead;
                 } else
                     throw new IllegalStateException(String.format(Locale.ENGLISH, "EOF reached while copying %s with %d bytes left to go", filename, compressedSize - totalCount));

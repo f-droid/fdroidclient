@@ -52,8 +52,9 @@ public class HexDumpEncoder {
                     if ((j + 2) % 4 == 0) hexOut.append(' ');
 
                     int dataChar = data[j / 2];
-                    if (dataChar >= 32 && dataChar < 127) chrOut.append(Character.valueOf((char) dataChar));
-                    else chrOut.append('.');
+                    if (dataChar >= 32 && dataChar < 127) {
+                        chrOut.append(Character.valueOf((char) dataChar));
+                    } else chrOut.append('.');
                 }
 
                 hexDumpOut.append(hexOut.toString());

@@ -37,7 +37,9 @@ public class ZipListingHelper {
 
     public static void listEntry(LoggerInterface log, ZioEntry entry) {
         int ratio = 0;
-        if (entry.getSize() > 0) ratio = (100 * (entry.getSize() - entry.getCompressedSize())) / entry.getSize();
+        if (entry.getSize() > 0) {
+            ratio = (100 * (entry.getSize() - entry.getCompressedSize())) / entry.getSize();
+        }
         log.debug(String.format(Locale.ENGLISH, "%8d  %6s %8d %4d%% %s  %08x  %s",
                 entry.getSize(),
                 entry.getCompression() == 0 ? "Stored" : "Defl:N",

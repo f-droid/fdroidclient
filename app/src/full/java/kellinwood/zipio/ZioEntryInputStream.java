@@ -47,7 +47,9 @@ public class ZioEntryInputStream extends InputStream {
         raf = entry.getZipInput().in;
         long dpos = entry.getDataPosition();
         if (dpos >= 0) {
-            if (debug) log.debug(String.format(Locale.ENGLISH, "Seeking to %d", entry.getDataPosition()));
+            if (debug) {
+                log.debug(String.format(Locale.ENGLISH, "Seeking to %d", entry.getDataPosition()));
+            }
             raf.seek(entry.getDataPosition());
         } else {
             // seeks to, then reads, the local header, causing the
@@ -118,7 +120,9 @@ public class ZioEntryInputStream extends InputStream {
             if (monitor != null) monitor.write(b, off, numRead);
             offset += numRead;
         }
-        if (debug) log.debug(String.format(Locale.ENGLISH, "Read %d bytes for read(b,%d,%d)", numRead, off, len));
+        if (debug) {
+            log.debug(String.format(Locale.ENGLISH, "Read %d bytes for read(b,%d,%d)", numRead, off, len));
+        }
         return numRead;
     }
 

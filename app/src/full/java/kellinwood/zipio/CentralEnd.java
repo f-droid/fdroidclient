@@ -62,13 +62,19 @@ public class CentralEnd {
         if (debug) log.debug(String.format("This disk number: 0x%04x", numberThisDisk));
 
         centralStartDisk = input.readShort();
-        if (debug) log.debug(String.format("Central dir start disk number: 0x%04x", centralStartDisk));
+        if (debug) {
+            log.debug(String.format("Central dir start disk number: 0x%04x", centralStartDisk));
+        }
 
         numCentralEntries = input.readShort();
-        if (debug) log.debug(String.format("Central entries on this disk: 0x%04x", numCentralEntries));
+        if (debug) {
+            log.debug(String.format("Central entries on this disk: 0x%04x", numCentralEntries));
+        }
 
         totalCentralEntries = input.readShort();
-        if (debug) log.debug(String.format("Total number of central entries: 0x%04x", totalCentralEntries));
+        if (debug) {
+            log.debug(String.format("Total number of central entries: 0x%04x", totalCentralEntries));
+        }
 
         centralDirectorySize = input.readInt();
         if (debug) log.debug(String.format("Central directory size: 0x%08x", centralDirectorySize));
