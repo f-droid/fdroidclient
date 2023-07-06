@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="version">Versiune</string>
     <string name="delete">Ștergeți</string>
     <string name="cache_downloaded">Păstrează aplicațiile descărcate</string>
@@ -544,4 +544,6 @@
     <string name="about_title_basic">Despre F-Droid Basic</string>
     <string name="warning_target_sdk">Această aplicație a fost creată pentru o versiune mai veche de Android și nu poate fi actualizată automat.</string>
     <string name="repo_last_update_downloaded">Ultima actualizare descărcată</string>
+    <string name="app_name_basic">F-Droid de baza</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Construcții nocturne</string>
 </resources>
