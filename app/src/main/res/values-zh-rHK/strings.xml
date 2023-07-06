@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="version">版本</string>
     <string name="delete">刪除</string>
     <string name="enable_nfc_send">啟用 NFC 傳送…</string>
@@ -440,7 +440,7 @@
     <string name="antiothers">其他反功能</string>
     <string name="antidisabledalgorithmlist">此應用程式含有弱安全簽名</string>
     <string name="antinosourcesince">源碼不再可用，無法更新。</string>
-    <string name="antinsfw">此應用程式含有不適宜宣揚或公開的內容</string>
+    <string name="antinsfw">職場安全注意</string>
     <string name="show_anti_feature_apps">包含帶有反功能的應用程式</string>
     <string name="show_anti_feature_apps_on">顯示具有反功能的應用程式</string>
     <string name="try_again">請重試</string>
@@ -523,4 +523,11 @@
     <string name="latest__empty_state__upgrading">正在升級資料庫…</string>
     <string name="use_ipfs_gateways">使用 IPFS 閘道</string>
     <string name="use_ipfs_gateways_summary">從 IPFS 鏡像下載檔案軟件庫支援的檔案。</string>
+    <string name="antinsfwlist">此應用程式的內容慎擇觀看場所，老闆出沒注意</string>
+    <string name="app_name_basic">F-Droid 基礎版</string>
+    <string name="about_title_basic">關於 F-Droid 基礎版</string>
+    <string name="repo_last_update_downloaded">最近下載更新</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">定時組建</string>
+    <string name="warning_target_sdk">此應用程式乃為較舊版本的 Android 建構，無法自動更新。</string>
+    <string name="app_error_open">無法啟動應用程式。</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="ok">確定</string>
     <string name="app_name_full">F-Droid</string>
     <string name="updates">更新</string>
@@ -332,20 +332,20 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="other">睇晒%2$s分類入面嘅全部 %1$d 個 app</item>
     </plurals>
-    <string name="details_last_updated_today">今日更新咗</string>
+    <string name="details_last_updated_today">今日出咗更新</string>
     <string name="undo">復原</string>
     <string name="warning_scaning_qr_code">您部機個鏡頭好似冇得自動對焦。掃二維碼嗰陣可能有啲難度。</string>
     <plurals name="details_last_update_days">
-        <item quantity="other">%1$d 日之前更新咗</item>
+        <item quantity="other">%1$d 日之前出咗更新</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="other">%1$d 星期之前更新咗</item>
+        <item quantity="other">%1$d 星期之前出咗更新</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="other">%1$d 個月之前更新咗</item>
+        <item quantity="other">%1$d 個月之前出咗更新</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="other">%1$d 年之前更新咗</item>
+        <item quantity="other">%1$d 年之前出咗更新</item>
     </plurals>
     <string name="app_list__dismiss_installing_app">安裝取消咗</string>
     <string name="local_repo_running">F-Droid 準備好兌換</string>
@@ -414,7 +414,7 @@
     <string name="antiupstreamnonfreelist">上游原始碼並非完全自由</string>
     <string name="antinonfreeassetslist">呢個 app 包含非自由嘅資源</string>
     <string name="antiknownvulnlist">呢個 app 有已知嘅安全漏洞</string>
-    <string name="antinsfw">呢個 app 部份內容不宜周張或有傷大雅</string>
+    <string name="antinsfw">老細發威注意</string>
     <string name="expert">專家發辦</string>
     <string name="show_anti_feature_apps">列出無心裝載嘅 app</string>
     <string name="show_anti_feature_apps_on">顯示埋無心裝載之處嘅 app</string>
@@ -521,4 +521,11 @@
     <string name="latest__empty_state__upgrading">升級緊資料庫…</string>
     <string name="use_ipfs_gateways">用 IPFS 閘道</string>
     <string name="use_ipfs_gateways_summary">存庫支援嘅話，就喺 IPFS 鏡像度下載檔案。</string>
+    <string name="app_name_basic">F-Droid 新基本</string>
+    <string name="antinsfwlist">呢個 app 啲料要睇就睇路，因住老細見到弊家伙</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">流水組建</string>
+    <string name="warning_target_sdk">呢個 app 係為較舊版本嘅 Android 而建，冇得自動更新。</string>
+    <string name="about_title_basic">關於 F-Droid 新基本</string>
+    <string name="repo_last_update_downloaded">對上一次下載咗更新</string>
+    <string name="app_error_open">開唔到個 app。</string>
 </resources>
