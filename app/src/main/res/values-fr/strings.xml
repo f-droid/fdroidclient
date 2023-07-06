@@ -557,5 +557,5 @@
     <string name="antinsfwlist">Cette application contient des informations qui ne doivent pas être rendues publiques ou visibles partout</string>
     <string name="repo_last_update_downloaded">Dernière mise à jour téléchargée</string>
     <string name="warning_target_sdk">Cette application a été conçue pour une ancienne version d\'Android et ne peut pas être mise à jour automatiquement.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Versions quotidiennes</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Versions bêta quotidiennes</string>
 </resources>
