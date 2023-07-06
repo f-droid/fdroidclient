@@ -93,7 +93,14 @@ public class SDCardScannerService extends JobIntentService {
                 continue;
             }
             Log.i(TAG, "getExternalFilesDirs " + f);
-            if (Environment.isExternalStorageRemovable(f)) {
+            boolean isExternalStorageRemovable;
+            try {
+                isExternalStorageRemovable = Environment.isExternalStorageRemovable(f);
+            } catch (IllegalArgumentException e) {
+                Utils.debugLog(TAG, e.toString());
+                continue;
+            }
+            if (isExternalStorageRemovable) {
                 String state = Environment.getExternalStorageState(f);
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
