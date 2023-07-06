@@ -106,7 +106,7 @@
     <string name="unsigned_description">Die Liste der Apps konnte nicht überprüft werden. Sie sollten bei Apps vorsichtig sein, die aus nicht signierten Quellen heruntergeladen wurden.</string>
     <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht verwendet. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
     <string name="unknown">Unbekannt</string>
-    <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
+    <string name="repo_confirm_delete_title">Paketquelle löschen\?</string>
     <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden. 
 \n 
 \nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
@@ -175,7 +175,8 @@
     <string name="empty_installed_app_list">Keine Apps installiert.
 \n
 \nEs sind Apps auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Apps beinhalten.</string>
-    <string name="empty_can_update_app_list">Glückwunsch!\nIhre Apps sind auf dem neuesten Stand.</string>
+    <string name="empty_can_update_app_list">Glückwunsch!
+\nIhre Apps sind auf dem neuesten Stand.</string>
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="apps">Apps</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
@@ -482,7 +483,7 @@
     <string name="panic_will_be_wiped">Wird deinstalliert und alle Daten werden gelöscht</string>
     <string name="panic_apps_to_uninstall">Apps, die deinstalliert und deren Daten komplett gelöscht werden sollen</string>
     <string name="panic_add_apps_to_uninstall">Zu löschende Apps hinzufügen</string>
-    <string name="panic_reset_repos_title">Repos zurücksetzen</string>
+    <string name="panic_reset_repos_title">Paketquellen zurücksetzen</string>
     <string name="panic_reset_repos_summary">Wiederherstellung der Paketquellen-Standardeinstellungen erzwingen</string>
     <string name="swap_visible_hotspot">Sichtbar über Hotspot</string>
     <string name="swap_blank_wifi_ssid">(leer)</string>
