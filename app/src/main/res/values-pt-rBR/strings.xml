@@ -562,4 +562,5 @@
     <string name="repo_last_update_downloaded">Última atualização baixada</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">Builds Noturnas</string>
     <string name="warning_target_sdk">Este aplicativo foi compilado para uma versão antiga do Android e não pode ser atualizado automaticamente.</string>
+    <string name="app_error_open">Não foi possível iniciar o aplicativo.</string>
 </resources>
