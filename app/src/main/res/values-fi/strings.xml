@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon)</string>
     <string name="installIncompatible">Sovellus ei ole yhteensopiva laitteesi kanssa. Asennetaanko silti?</string>
     <string name="version">Versio</string>
@@ -103,10 +103,8 @@
     <string name="category_Science_Education">Tiede &amp; koulutus</string>
     <string name="category_Security">Tietoturva</string>
     <string name="category_System">Järjestelmä</string>
-    <string name="swap_nfc_description">Jos ystävälläsi on F-Droid asennettuna ja NFC päällä, koskettakaa laitteitanne
-        yhteen.
-    </string>
-    <string name="swap_join_same_wifi">Liity ystäväsi kanssa samaan Wi-Fi-verkkoon</string>
+    <string name="swap_nfc_description">Jos kaverillasi on F-Droid asennettuna ja NFC päällä, koskettakaa laitteitanne yhteen.</string>
+    <string name="swap_join_same_wifi">Liity kaverisi kanssa samaan Wi-Fi-verkkoon</string>
     <string name="swap">Vaihda sovelluksia</string>
     <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
     <string name="swap_view_available_networks">Näytä saatavilla olevat verkot napauttamalla</string>
@@ -149,17 +147,17 @@
     <string name="links">Linkit</string>
     <string name="more">Lisää</string>
     <string name="less">Vähemmän</string>
-    <string name="update_auto_download">Hae päivitykset automaattisesti</string>
+    <string name="update_auto_download">Nouda päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
     <string name="repo_error_empty_username">Ei käyttäjänimeä, tunnistetietoja ei muutettu</string>
     <string name="bad_fingerprint">Huono sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
     <string name="menu_settings">Asetukset</string>
-    <string name="menu_email">Lähetä sähköpostia kehittäjälle</string>
+    <string name="menu_email">Lähetä sähköpostia tekijälle</string>
     <string name="menu_changelog">Muutosloki</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="antiupstreamnonfreelist">Ylätason lähdekoodi ei ole kokonaan vapaata</string>
+    <string name="antiupstreamnonfreelist">Yläjuoksun lähdekoodi ei ole kokonaan vapaata</string>
     <string name="expert_on">Näytä lisätietoja ja ota käyttöön lisäasetukset</string>
     <string name="show_incompat_versions_on">Näytä sovellusversiot, jotka eivät ole yhteensopivia laitteesi kanssa</string>
     <string name="useTor">Käytä Tor-verkkoa</string>
@@ -226,7 +224,7 @@
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="swap_nfc_title">Vaihda koskettamalla</string>
     <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, teidän tulee olla samassa verkossa. Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-tukiaseman.</string>
-    <string name="swap_join_this_hotspot">Auta ystävääsi liittymään tukiasemaasi</string>
+    <string name="swap_join_this_hotspot">Auta kaveriasi liittymään tukiasemaasi</string>
     <string name="swap_success">Vaihtaminen onnistui!</string>
     <string name="swap_switch_to_wifi">Napauta vaihtaaksesi Wi-Fi-verkkoon</string>
     <string name="swap_scan_or_type_url">Henkilön tulee skannata koodi tai kirjoittaa toisen henkilön verkko-osoite selaimeen.</string>
@@ -272,7 +270,7 @@
     <string name="warning_no_internet">Ei voida päivittää, olethan yhteydessä Internettiin\?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
-    <string name="app_recommended_version_installed">Versio %1$s (Suositeltu)</string>
+    <string name="app_recommended_version_installed">Versio %1$s (suositeltu)</string>
     <string name="app_new">Uusi</string>
     <string name="app__install_downloaded_update">Päivitä</string>
     <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
@@ -282,8 +280,8 @@
     <string name="updates__hide_updateable_apps">Piilota sovellukset</string>
     <string name="updates__show_updateable_apps">Näytä sovellukset</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Lataa päivitys %1$d:een sovellukseen.</item>
-        <item quantity="other">Lataa päivitykset %1$d:een sovellukseen.</item>
+        <item quantity="one">Lataa päivitys yhteen sovellukseen.</item>
+        <item quantity="other">Lataa päivitykset %1$d sovellukseen.</item>
     </plurals>
     <string name="clear_search">Tyhjennä haku</string>
     <string name="repositories_summary">Lisää muita sovelluslähteitä</string>
@@ -338,8 +336,8 @@
     <string name="tts_category_name">Luokka %1$s</string>
     <string name="antifeatures">Anti-ominaisuudet</string>
     <plurals name="tts_view_all_in_category">
-        <item quantity="one">Näytä %1$d-sovellus %2$s-luokassa</item>
-        <item quantity="other">Näytä kaikki %1$d sovellukset %2$s-luokasta</item>
+        <item quantity="one">Näytä yksi sovellus %2$s-luokassa</item>
+        <item quantity="other">Näytä kaikki %1$d sovellusta %2$s-luokasta</item>
     </plurals>
     <string name="by_author_format">tekijä %s</string>
     <string name="hide_all_notifications">Piilota kaikki ilmoitukset</string>
@@ -351,18 +349,18 @@
     <string name="over_network_always_summary">Käytä aina tätä yhteyttä, kun se on saatavilla</string>
     <string name="over_network_on_demand_summary">Käytä tätä yhteyttä vain, kun klikkaan \'Lataa\'</string>
     <string name="over_network_never_summary">Älä koskaan lataa mitään käyttäen tätä yhteyttä</string>
-    <string name="app_details__no_versions__no_compatible_signers">Versioita yhteensopivalla allekirjoittajalla ei ole</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Ei versioita jotka ovat yhteensopivia laitteen kanssa</string>
+    <string name="app_details__no_versions__no_compatible_signers">Ei versioita yhteensopivalla allekirjoittajalla</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Ei laitteen kanssa yhteensopivia versioita</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Asennettu versio ei ole yhteensopiva yhdenkään saatavilla olevan version kanssa. Sovelluksen asennuksen poiston jälkeen voit tarkastella ja asentaa yhteensopivia versioita. Tämä on yleistä Google Playstä tai muista lähteistä asennettuille sovelluksille, jos ne on allekirjoitettu eri varmenteella.</string>
     <string name="app__tts__cancel_download">Peruuta lataus</string>
     <string name="app_installed_media">Tiedosto asennettu polkuun %s</string>
-    <string name="app_permission_storage">F-Droid tarvitsee tämän asentamiseen oikeuden tallennustilaan. Ole hyvä ja myönnä oikeus seuraavassa ruudussa jatkaaksesi asennusta.</string>
+    <string name="app_permission_storage">F-Droid tarvitsee tämän asentamiseen oikeuden tallennustilaan. Myönnä oikeus seuraavassa ruudussa jatkaaksesi asennusta.</string>
     <string name="app_list_download_ready">Ladattu, valmis asennettavaksi</string>
     <string name="app_list__dismiss_app_update">Päivitys sivuutettu</string>
     <string name="app_list__dismiss_vulnerable_app">Haavoittuvuus sivuutettu</string>
     <string name="app_list__dismiss_downloading_app">Lataus peruttu</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Löysimme haavoittuvuuden kohteesta %1$s. Suosittelemme poistamaan sen viivyttelemättä.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Löysimme haavoittuvuuden %1$s -sovelluksesta. Suosittelemme välittömästi päivittämään uusimpaan versioon.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Löysimme haavoittuvuuden kohteesta %1$s. Suosittelemme poistamaan sen heti.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Löysimme haavoittuvuuden %1$s -sovelluksesta. Suosittelemme päivittämään heti uusimpaan versioon.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Sivuuta</string>
     <string name="repo_add_mirror">Lisää toisiopalvelin</string>
     <string name="sort_search">Lajittele haku</string>
@@ -372,7 +370,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Tällä sovelluksella on heikko turvallisuusallekirjoitus</string>
     <string name="antiknownvulnlist">Tämä sovellus sisältää tunnetun haavoittuvuuden</string>
-    <string name="show_anti_feature_apps">Sisällytä ominaisuuksien vastaiset sovellukset</string>
+    <string name="show_anti_feature_apps">Sisällytä sovellukset, joissa on anti-ominaisuuksia</string>
     <string name="show_anti_feature_apps_on">Näytä sovellukset, jotka vaativat anti-ominaisuuksia</string>
     <string name="force_touch_apps">Sisällytä kosketusnäyttösovellukset</string>
     <string name="force_touch_apps_on">Näytä sovellukset, jotka vaativat kosketusnäytön riippumatta laitteiston tuesta</string>
@@ -411,15 +409,15 @@
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi-tukiasemaa ei voitu ottaa käyttöön!</string>
     <string name="app__tts__downloading_progress">Ladataan, %1$d%% valmis</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d lisää…</item>
+        <item quantity="one">Yksi lisää…</item>
         <item quantity="other">+%1$d lisää…</item>
     </plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d päivitys</item>
+        <item quantity="one">Yksi päivitys</item>
         <item quantity="other">%1$d päivitystä</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d sovellus asennettu</item>
+        <item quantity="one">Yksi sovellus asennettu</item>
         <item quantity="other">%1$d sovellusta asennettu</item>
     </plurals>
     <string name="warning_scaning_qr_code">Kamerassasi ei näytä olevan automaattitarkennusta. Koodin skannaus voi olla hankalaa.</string>
@@ -436,12 +434,12 @@
         <item quantity="other">Päivitetty %1$d vuotta sitten</item>
     </plurals>
     <string name="app_details__incompatible_mismatched_signers">Asennetusta versiosta poikkeava allekirjoittaja</string>
-    <string name="app_details__no_versions__show_incompat_versions">Nähdäksesi yhteensopimattomatkin versiot, käytä \"%1$s\" asetusta.</string>
+    <string name="app_details__no_versions__show_incompat_versions">Nähdäksesi yhteensopimattomatkin versiot, käytä \"%1$s\"-asetusta.</string>
     <string name="prompt_to_send_crash_reports">Pyydä lähettämään kaatumisraportteja</string>
     <string name="prompt_to_send_crash_reports_summary">Kerää tietoja kaatumisista ja pyydä lähettämään ne kehittäjälle</string>
     <string name="install_history">Asennushistoria</string>
     <string name="send_install_history">Lähetä asennushistoria</string>
-    <string name="send_history_csv">%s asenna historia CSV-tiedostona</string>
+    <string name="send_history_csv">%s-asennushistoria CSV-tiedostona</string>
     <string name="install_history_summary">Tarkastele kaikkien asennusten ja poistojen yksityistä lokia</string>
     <string name="send_version_and_uuid">Lähetä versio ja UUID palvelimille</string>
     <string name="send_version_and_uuid_summary">Sisällytä sovelluksen versio ja satunnainen, yksilöivä tunniste ladattaessa. Voimassa uudelleenkäynnistyksen jälkeen.</string>
@@ -495,7 +493,7 @@
     <string name="notification_channel_swaps_title">Vaihdot</string>
     <string name="notification_channel_updates_description">Näyttää sovelluksen ja sovelluslähteen päivitysilmoitukset.</string>
     <string name="notification_channel_updates_title">Päivitykset</string>
-    <string name="notification_channel_swaps_description">Näyttää P2P-sovelluksen vaihto-ilmoitukset.</string>
+    <string name="notification_channel_swaps_description">Näyttää P2P-sovelluksenvaihtoilmoitukset.</string>
     <string name="notification_channel_installs_description">Näyttää sovelluksen asennusilmoitukset.</string>
     <string name="notification_channel_installs_title">Asennukset</string>
     <string name="use_pure_black_dark_theme_summary">Suositellaan ainoastaan OLED-näytöille.</string>
@@ -506,8 +504,8 @@
     <string name="banner_no_internet">Ei internet-yhteyttä</string>
     <string name="menu_show_install_history">Näytä asennushistoria</string>
     <string name="menu_show_fdroid_metrics_report">Näytä raportti</string>
-    <string name="send_to_fdroid_metrics_summary">Lähetä anonyymiä dataa viikottain F-Droid Metricsille (vaatii asennushistorian sallimisen)</string>
-    <string name="send_to_fdroid_metrics">Lähetä käyttäjädataa</string>
+    <string name="send_to_fdroid_metrics_summary">Lähetä anonyymiä dataa viikottain F-Droid Metricsille (vaatii asennushistorian säilyttämisen)</string>
+    <string name="send_to_fdroid_metrics">Lähetä käyttödataa</string>
     <string name="install_history_and_metrics">Asenna historia ja tilastot</string>
     <string name="toast_metrics_in_install_history">%s analytiikkaraportti on nähtävillä asennushistorian näkymässä</string>
     <string name="fdroid_metrics_report">%s analytiikkaraportti</string>
@@ -526,11 +524,15 @@
     <string name="antinonfreeassets">Ei-vapaa sisältö</string>
     <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
     <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
-    <string name="antinosource">Lähdekoodi Ei enää saatavilla</string>
+    <string name="antinosource">Lähdekoodi ei enää saatavilla</string>
     <string name="antiothers">Muut antiominaisuudet</string>
-    <string name="antinsfw">Sovelluksessa on sisältöä, jota ei tulisi julkaista tai näyttää kaikkialla</string>
+    <string name="antinsfw">Ei sovellu työpaikalle</string>
     <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
     <string name="menu_release_channel_beta">Salli beta-päivitykset</string>
-    <string name="use_ipfs_gateways">Käytä IPFS yhdyskäytäviä</string>
+    <string name="use_ipfs_gateways">Käytä IPFS-yhdyskäytäviä</string>
     <string name="use_ipfs_gateways_summary">Lataa tiedostoja IPFS-mirroreista, jos repo tukee sitä.</string>
+    <string name="repo_last_update_downloaded">Viimeisin päivitys ladattu</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Yölliset koontiversiot</string>
+    <string name="warning_target_sdk">Sovellus tehtiin vanhalle Androidin versiolle, eikä sitä voida päivittää automaattisesti.</string>
+    <string name="antinsfwlist">Sovellus sisältää sisältöä, joka ei sovi näkyville joka paikkaan</string>
 </resources>
