@@ -107,8 +107,8 @@
     <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht verwendet. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
     <string name="unknown">Unbekannt</string>
     <string name="repo_confirm_delete_title">Paketquelle löschen\?</string>
-    <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden. 
-\n 
+    <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden.
+\n
 \nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
     <string name="repo_disabled_notification">»%1$s« deaktiviert.
 \n
