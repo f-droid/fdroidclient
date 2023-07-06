@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l\'ancienne version de l\'application avant de réessayer. (Attention : la désinstallation supprimera toutes les données de l\'application)</string>
     <string name="installIncompatible">Application non compatible avec votre appareil, l\'installer quand même \?</string>
     <string name="version">Version</string>
@@ -557,4 +557,5 @@
     <string name="antinsfwlist">Cette application contient des informations qui ne doivent pas être rendues publiques ou visibles partout</string>
     <string name="repo_last_update_downloaded">Dernière mise à jour téléchargée</string>
     <string name="warning_target_sdk">Cette application a été conçue pour une ancienne version d\'Android et ne peut pas être mise à jour automatiquement.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Versions quotidiennes</string>
 </resources>
