@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
@@ -17,7 +17,7 @@
     <string name="local_repo_https_on">שימוש בחיבור //:HTTPS עבור מאגר מקומי</string>
     <string name="app_details">פרטי יישומון</string>
     <string name="no_such_app">לא נמצא כזה יישומון.</string>
-    <string name="about_title_full">על אודות F-Droid</string>
+    <string name="about_title_full">על F-Droid</string>
     <string name="about_site">אתר</string>
     <string name="about_version">גרסה</string>
     <string name="app_installed">מותקן</string>
@@ -546,9 +546,16 @@
     <string name="antinonfreeassets">משאבים מוגבלים</string>
     <string name="antiknownvuln">חולשה מוכרת</string>
     <string name="antiothers">תכונות שליליות אחרות</string>
-    <string name="antinsfw">היישומון הזה מכיל תוכן שלא מיועד לכל קהל בכל מקום</string>
+    <string name="antinsfw">לא בטוח לסביבת עבודה</string>
     <string name="menu_release_channel_beta">לאפשר עדכוני בטא</string>
     <string name="latest__empty_state__upgrading">מסד הנתונים משתדרג…</string>
     <string name="use_ipfs_gateways">להשתמש בשערי גישה מסוג IPFS</string>
     <string name="use_ipfs_gateways_summary">להוריד קבצים מאתרי מראה ב־IPFS, אם המאגר תומך בזה.</string>
+    <string name="app_name_basic">F-Droid בסיסי</string>
+    <string name="about_title_basic">על F-Droid בסיסי</string>
+    <string name="repo_last_update_downloaded">העדכון האחרון התקבל</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">לילי</string>
+    <string name="warning_target_sdk">יישומון זה נבנה באמצעות גרסה ישנה יותר של Android ולא ניתן לעדכן אותו ידנית.</string>
+    <string name="antinsfwlist">היישומון הזה מכיל תוכן שעדיף לא להפיץ או לצפות בו בכל מקום</string>
+    <string name="app_error_open">לא ניתן להפעיל את היישומון.</string>
 </resources>
