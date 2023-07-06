@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst verwijderd worden. Probeer het daarna opnieuw. (Let op: bij het verwijderen worden de interne gegevens van de app ook verwijderd)</string>
     <string name="installIncompatible">Deze app is incompatibel met dit apparaat. Wilt u deze toch installeren\?</string>
     <string name="version">Versie</string>
@@ -527,7 +527,7 @@
     <string name="antinonfreeassets">Niet-vrije assets</string>
     <string name="antiothers">Andere anti-features</string>
     <string name="antitrack">Tracking</string>
-    <string name="antinsfw">Deze app bevat content die ergens anders niet gepubliceerd of getoond mag worden</string>
+    <string name="antinsfw">Niet veilig voor gebruik</string>
     <string name="antinonfreead">Niet-vrije add-ons</string>
     <string name="app_list_results_hidden_antifeature_settings">Sommige resultaten zijn verborgen gebaseerd op je antifeature-instellingen.</string>
     <string name="antiupstreamnonfree">Upstream niet-vrij</string>
@@ -536,4 +536,10 @@
     <string name="menu_release_channel_beta">Sta Beta-updates toe</string>
     <string name="use_ipfs_gateways">Gebruik IPFS-gateways</string>
     <string name="use_ipfs_gateways_summary">Download bestanden van IPFS-mirrors, als dit ondersteund wordt door de repo.</string>
+    <string name="app_name_basic">F-Droid Basis</string>
+    <string name="about_title_basic">About F-Droid Basis</string>
+    <string name="repo_last_update_downloaded">Laatste update gedownload</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Nightly Builds</string>
+    <string name="warning_target_sdk">Deze app is gebouwd voor een oudere versie van Android en kan niet automatisch bijgewerkt worden.</string>
+    <string name="antinsfwlist">Deze app bevat inhoud dat niet publiekelijk of zichtbaar mag zijn overal</string>
 </resources>
