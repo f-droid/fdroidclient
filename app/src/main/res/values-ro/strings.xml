@@ -449,7 +449,7 @@
     <string name="install_history">Istoric instalări</string>
     <string name="install_history_summary">Vizualizare jurnal privat al tuturor instalărilor și dezinstalărilor</string>
     <string name="send_version_and_uuid">Trimite serverului versiunea și identificatorul UUID</string>
-    <string name="send_version_and_uuid_summary">Versiunea aplicației și un identificator aleator, unic, sunt trimise atunci când se fac descărcărcări. Setarea intră în vigoare la următoarea repornire a aplicației.</string>
+    <string name="send_version_and_uuid_summary">Versiunea aplicației și un identificator aleator, unic, sunt trimise atunci când se fac descărcări. Setarea intră în vigoare la următoarea repornire a aplicației.</string>
     <string name="share_repository">Partajare depozit</string>
     <string name="system_install_denied_permissions">Nu au fost date permisiuni privilegiate extensiei! Vă rugăm să creeați un raport de eroare!</string>
     <string name="swap_intro">Conectați-vă și faceți schimb de aplicații cu persoane din apropiere.</string>
@@ -546,4 +546,5 @@
     <string name="repo_last_update_downloaded">Ultima actualizare descărcată</string>
     <string name="app_name_basic">F-Droid de baza</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">Construcții nocturne</string>
+    <string name="app_error_open">Nu s-a putut lansa aplicația.</string>
 </resources>
