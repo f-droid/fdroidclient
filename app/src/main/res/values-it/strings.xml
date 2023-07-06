@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per
         installare la nuova versione occorre prima disinstallare quella precedente. Riprovare dopo averla disinstallata
         (Attenzione! La disinstallazione cancellerà qualsiasi dato salvato dall\'applicazione)
@@ -25,7 +25,7 @@
     <string name="about_site">Sito web</string>
     <string name="about_version">Versione</string>
     <string name="app_installed">Installato</string>
-    <string name="app_not_installed">Non installato</string>
+    <string name="app_not_installed">Non installata</string>
     <string name="added_on">Aggiunto il %s</string>
     <string name="ok">OK</string>
     <string name="yes">Sì</string>
@@ -549,9 +549,16 @@
     <string name="antinosource">Il codice sorgente non è più disponibile</string>
     <string name="antiupstreamnonfree">Non libero a monte</string>
     <string name="antiothers">Altre anti-caratteristiche</string>
-    <string name="antinsfw">Questa app ha contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
+    <string name="antinsfw">Non sicura per il lavoro</string>
     <string name="menu_release_channel_beta">Permetti aggiornamenti Beta</string>
     <string name="latest__empty_state__upgrading">Aggiornamento database…</string>
     <string name="use_ipfs_gateways">Usa i gateway IPFS</string>
     <string name="use_ipfs_gateways_summary">Scarica file dai mirror IPFS, se supportati dal repository.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">Informazioni su F-Droid Basic</string>
+    <string name="repo_last_update_downloaded">Ultimo aggiornamento scaricato</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">nightly</string>
+    <string name="warning_target_sdk">Questa app è stata creata per una versione precedente di Android e non può essere aggiornata automaticamente.</string>
+    <string name="antinsfwlist">Questa app ha contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
+    <string name="app_error_open">Impossibile avviare l\'app.</string>
 </resources>
