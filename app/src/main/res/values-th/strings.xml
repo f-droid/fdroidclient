@@ -91,7 +91,7 @@
     <string name="proxy_host">โฮสต์พร็อกซี</string>
     <string name="proxy_port">พอร์ตพร็อกซี</string>
     <string name="status_connecting_to_repo">กำลังเชื่อมต่อไปยัง\n%1$s</string>
-    <string name="status_inserting_apps">กำลังบันทึกรายละเอียดเเอพ</string>
+    <string name="status_inserting_apps">ภาษไทย</string>
     <string name="repos_unchanged">ข้อมูลโปรแกรมทั้งหมดนั้นอัพเดตอยู่แล้ว</string>
     <string name="global_error_updating_repos">การอัพเดตล้มเหลว: %s</string>
     <string name="no_permissions">ไม่มีสิทธิ์</string>
