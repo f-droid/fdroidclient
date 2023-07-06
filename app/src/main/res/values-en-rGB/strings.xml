@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="theme_dark">Dark</string>
     <string name="theme_light">Light</string>
     <string name="status_inserting_apps">Saving app details</string>
@@ -407,7 +407,7 @@
     <string name="other">Other</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="force_old_index">Force old index format</string>
-    <string name="send_version_and_uuid_summary">Include this app\'s version and a random, unique ID when downloading, takes affect next app restart.</string>
+    <string name="send_version_and_uuid_summary">Include this app\'s version and a random, unique ID when downloading, takes effect next app restart.</string>
     <string name="send_version_and_uuid">Send version and UUID to servers</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
     <string name="keep_install_history">Keep install history</string>
@@ -509,7 +509,7 @@
     <string name="send_fdroid_metrics_report">Send %s metrics report</string>
     <string name="banner_no_data_or_wifi">No Data or Wi-Fi enabled</string>
     <string name="banner_no_internet">No Internet</string>
-    <string name="antinsfw">This app contains content that should not be publicised or visible everywhere</string>
+    <string name="antinsfw">Not Safe for Work</string>
     <string name="app_list_results_hidden_antifeature_settings">Some results were hidden based on your antifeature settings.</string>
     <string name="antiads">Ads</string>
     <string name="antiknownvuln">Known Vulnerability</string>
@@ -531,4 +531,11 @@
     <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
     <string name="use_ipfs_gateways">Use IPFS gateways</string>
     <string name="use_ipfs_gateways_summary">Download files from IPFS mirrors, if supported by the repo.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">About F-Droid Basic</string>
+    <string name="antinsfwlist">This app contains content that should not be publicized or visible everywhere</string>
+    <string name="repo_last_update_downloaded">Last update downloaded</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">nightly</string>
+    <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
+    <string name="app_error_open">Could not launch app.</string>
 </resources>
