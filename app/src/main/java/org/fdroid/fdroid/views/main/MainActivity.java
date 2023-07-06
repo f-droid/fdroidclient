@@ -146,10 +146,15 @@ public class MainActivity extends AppCompatActivity {
         handleSearchOrAppViewIntent(intent);
     }
 
+    /**
+     * {@link android.material.navigation.NavigationBarView} says "Menu items
+     * can also be used for programmatically selecting which destination is
+     * currently active. It can be done using {@code MenuItem.setChecked(true)}".
+     */
     private void setSelectedMenuInNav(int menuId) {
         int position = adapter.adapterPositionFromItemId(menuId);
         pager.scrollToPosition(position);
-        bottomNavigation.setSelectedItemId(position);
+        bottomNavigation.getMenu().getItem(position).setChecked(true);
     }
 
     private void initialRepoUpdateIfRequired() {
