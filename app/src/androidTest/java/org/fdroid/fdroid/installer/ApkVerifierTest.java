@@ -445,5 +445,4 @@ public class ApkVerifierTest {
         }
         assertTrue(ApkVerifier.requestedPermissionsEqual(expectedPermissions, apk.requestedPermissions));
     }
-
 }

@@ -19,7 +19,6 @@ import org.robolectric.shadows.ShadowLog;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-
 /**
  * Test that this can start and stop the webserver.
  */

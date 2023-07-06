@@ -157,5 +157,4 @@ public class CalculatorActivity extends AppCompatActivity {
         }
         return s;
     }
-
 }

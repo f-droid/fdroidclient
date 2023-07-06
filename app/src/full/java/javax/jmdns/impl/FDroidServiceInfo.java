@@ -59,8 +59,7 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
                 in.readInt(),
                 in.readInt(),
                 in.readByte() != 0,
-                readBytes(in)
-        );
+                readBytes(in));
 
         int addressCount = in.readInt();
         for (int i = 0; i < addressCount; i++) {

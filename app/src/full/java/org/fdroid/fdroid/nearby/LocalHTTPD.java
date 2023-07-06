@@ -72,8 +72,7 @@ import fi.iki.elonen.NanoHTTPD.Response.IStatus;
  * <p>
  * This is mostly just synced from {@code SimpleWebServer.java} from NanoHTTPD.
  *
- * @see
- * <a href="https://github.com/NanoHttpd/nanohttpd/blob/nanohttpd-project-2.3.1/webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java">webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java</a>
+ * @see <a href="https://github.com/NanoHttpd/nanohttpd/blob/nanohttpd-project-2.3.1/webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java">webserver/src/main/java/fi/iki/elonen/SimpleWebServer.java</a>
  */
 public class LocalHTTPD extends NanoHTTPD {
     private static final String TAG = "LocalHTTPD";

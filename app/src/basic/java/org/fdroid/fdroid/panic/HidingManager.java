@@ -33,5 +33,4 @@ public class HidingManager {
     public static void showHideDialog(final Context context) {
         throw new IllegalStateException("unimplemented");
     }
-
 }

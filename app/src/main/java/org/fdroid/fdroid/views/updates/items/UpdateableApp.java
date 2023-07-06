@@ -60,5 +60,4 @@ public class UpdateableApp extends AppUpdateData {
             ((UpdateableAppListItemController) holder).bindModel(app.app, app.apk, null);
         }
     }
-
 }

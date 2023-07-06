@@ -1,6 +1,8 @@
 package kellinwood.security.zipsigner;
 
-import kellinwood.security.zipsigner.ZipSigner;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import org.apache.commons.io.IOUtils;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.operator.OperatorCreationException;
@@ -10,7 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLog;
@@ -26,23 +27,20 @@ import java.security.PrivateKey;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.jar.JarOutputStream;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * This test the JAR signing functions of {@link ZipSigner}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk={23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
+@Config(sdk = {23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
 public class ZipSignerTest {
     public static final String TAG = "ZipSignerTest";
 
     private File unsigned;
     private File signed;
-    
+
     @Before
     public void setUp() {
         ShadowLog.stream = System.out;
@@ -60,7 +58,7 @@ public class ZipSignerTest {
             fail();
         }
     }
-    
+
     @After
     public void tearDown() {
         if (unsigned != null) {
@@ -74,7 +72,7 @@ public class ZipSignerTest {
     @Test
     public void testSignApk()
         throws CertificateException, ClassNotFoundException, GeneralSecurityException, IllegalAccessException, InstantiationException, IOException, NoSuchAlgorithmException, OperatorCreationException {
- 
+
         System.out.println("wrote " + unsigned);
         assertTrue(unsigned.exists());
         assertTrue(unsigned.length() > 0);
@@ -92,5 +90,5 @@ public class ZipSignerTest {
 
         assertTrue(signed.exists());
         assertTrue(signed.length() > unsigned.length());
-   }
+    }
 }

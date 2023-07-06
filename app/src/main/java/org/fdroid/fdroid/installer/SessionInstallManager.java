@@ -245,5 +245,4 @@ public class SessionInstallManager extends BroadcastReceiver {
         // TODO check targetSdk Android 14 sources have been published, just a guess so far
         return Build.VERSION.SDK_INT == 34 && targetSdk >= 31;
     }
-
 }

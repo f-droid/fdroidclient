@@ -66,5 +66,4 @@ public class SanitizedFile extends File {
     public static SanitizedFile knownSanitized(File file) {
         return new SanitizedFile(file);
     }
-
 }

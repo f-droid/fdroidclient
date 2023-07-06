@@ -62,5 +62,4 @@ public class KnownVulnApp extends AppUpdateData {
             ((KnownVulnAppListItemController) holder).bindModel(app.app, app.apk, null);
         }
     }
-
 }

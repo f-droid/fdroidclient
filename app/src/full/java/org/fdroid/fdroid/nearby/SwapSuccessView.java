@@ -55,7 +55,7 @@ import java.util.Map;
  */
 // TODO merge this with AppListActivity, perhaps there could be AppListView?
 public class SwapSuccessView extends SwapView {
-    private static final String TAG = "SwapAppsView";
+    private static final String TAG = "SwapSuccessView";
 
     public SwapSuccessView(Context context) {
         super(context);

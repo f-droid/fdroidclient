@@ -16,15 +16,14 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.util.Locale;
 
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
 
 /**
  * Input stream used to read just the data from a zip file entry.
@@ -48,14 +47,15 @@ public class ZioEntryInputStream extends InputStream {
         raf = entry.getZipInput().in;
         long dpos = entry.getDataPosition();
         if (dpos >= 0) {
-            if (debug) log.debug(String.format(Locale.ENGLISH, "Seeking to %d", entry.getDataPosition()));
+            if (debug) {
+                log.debug(String.format(Locale.ENGLISH, "Seeking to %d", entry.getDataPosition()));
+            }
             raf.seek(entry.getDataPosition());
         } else {
-            // seeks to, then reads, the local header, causing the 
+            // seeks to, then reads, the local header, causing the
             // file pointer to be positioned at the start of the data.
             entry.readLocalHeader();
         }
-
     }
 
     public void setReturnDummyByte(boolean returnExtraByte) {
@@ -120,7 +120,9 @@ public class ZioEntryInputStream extends InputStream {
             if (monitor != null) monitor.write(b, off, numRead);
             offset += numRead;
         }
-        if (debug) log.debug(String.format(Locale.ENGLISH, "Read %d bytes for read(b,%d,%d)", numRead, off, len));
+        if (debug) {
+            log.debug(String.format(Locale.ENGLISH, "Read %d bytes for read(b,%d,%d)", numRead, off, len));
+        }
         return numRead;
     }
 
@@ -137,5 +139,3 @@ public class ZioEntryInputStream extends InputStream {
         return numToSkip;
     }
 }
-
-

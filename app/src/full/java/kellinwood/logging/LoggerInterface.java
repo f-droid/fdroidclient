@@ -29,7 +29,6 @@ public interface LoggerInterface {
 
     public void error(String message, Throwable t);
 
-
     public boolean isWarningEnabled();
 
     public void warning(String message);
@@ -47,6 +46,4 @@ public interface LoggerInterface {
     public void debug(String message);
 
     public void debug(String message, Throwable t);
-
-
 }

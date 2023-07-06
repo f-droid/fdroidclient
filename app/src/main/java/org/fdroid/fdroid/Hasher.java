@@ -96,5 +96,4 @@ public class Hasher {
         }
         return rawdata;
     }
-
 }

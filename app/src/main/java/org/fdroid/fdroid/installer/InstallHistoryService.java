@@ -50,13 +50,14 @@ public class InstallHistoryService extends JobIntentService {
     public static final String TAG = "InstallHistoryService";
     private static final int JOB_ID = TAG.hashCode();
 
-    public static final Uri LOG_URI = Uri.parse("content://" + Installer.AUTHORITY + "/install_history/all");
+    public static final Uri LOG_URI =
+            Uri.parse("content://" + Installer.AUTHORITY + "/install_history/all");
 
     private static BroadcastReceiver broadcastReceiver;
 
     public static void register(Context context) {
         if (broadcastReceiver != null) {
-            return;  // already registered
+            return; // already registered
         }
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addDataScheme("http");

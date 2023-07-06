@@ -10,5 +10,4 @@ public class ETagHeader extends Header {
     public void handle(FileDetails details, String value) {
         details.setCacheTag(value);
     }
-
 }

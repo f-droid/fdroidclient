@@ -117,7 +117,6 @@ public class Response {
         }
 
         output.flush();
-
     }
 
     public static class Builder {
@@ -163,6 +162,5 @@ public class Response {
 
             return new Response(statusCode, headers, contentStream);
         }
-
     }
 }

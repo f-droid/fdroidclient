@@ -38,7 +38,7 @@ public class NfcHelper {
             try {
                 appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
                 Uri[] uris = {
-                        Uri.parse("file://" + appInfo.publicSourceDir),
+                    Uri.parse("file://" + appInfo.publicSourceDir),
                 };
                 nfcAdapter.setBeamPushUris(uris, activity);
             } catch (PackageManager.NameNotFoundException e) {
@@ -53,5 +53,4 @@ public class NfcHelper {
             nfcAdapter.setBeamPushUris(null, activity);
         }
     }
-
 }

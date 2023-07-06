@@ -36,5 +36,4 @@ public class StartupReceiver extends BroadcastReceiver {
             Utils.debugLog(TAG, "received unsupported Intent " + intent);
         }
     }
-
 }

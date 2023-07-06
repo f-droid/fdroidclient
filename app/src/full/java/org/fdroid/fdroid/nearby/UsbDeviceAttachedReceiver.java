@@ -33,14 +33,12 @@ import android.util.Log;
 
 import org.fdroid.fdroid.views.main.NearbyViewBinder;
 
-
 /**
  * This is just a shim to receive {@link UsbManager#ACTION_USB_ACCESSORY_ATTACHED}
  * events.
  */
 public class UsbDeviceAttachedReceiver extends BroadcastReceiver {
     public static final String TAG = "UsbDeviceAttachedReceiv";
-
 
     @Override
     public void onReceive(final Context context, Intent intent) {

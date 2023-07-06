@@ -63,9 +63,7 @@ public class AppStatusListItemController extends AppListItemController {
             final AppUpdateStatus appUpdateStatus = manager.get(status.getCanonicalUrl());
             manager.removeApk(status.getCanonicalUrl());
 
-
             switch (status.status) {
-
                 case Downloading:
                     cancelDownload();
                     Snackbar.make(itemView, R.string.app_list__dismiss_downloading_app, Snackbar.LENGTH_SHORT).show();
@@ -89,5 +87,4 @@ public class AppStatusListItemController extends AppListItemController {
 
         adapter.refreshItems();
     }
-
 }

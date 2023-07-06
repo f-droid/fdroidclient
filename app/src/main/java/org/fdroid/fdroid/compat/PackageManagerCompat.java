@@ -31,15 +31,14 @@ public class PackageManagerCompat {
         if (Build.VERSION.SDK_INT >= 30) return; // not working anymore on this SDK level
         try {
             if (Build.VERSION.SDK_INT >= 24 && PrivilegedInstaller.isDefault(context)) {
-                mPm.setInstallerPackageName(packageName, PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+                mPm.setInstallerPackageName(
+                        packageName, PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
             } else {
                 mPm.setInstallerPackageName(packageName, BuildConfig.APPLICATION_ID);
             }
             Utils.debugLog(TAG, "Installer package name for " + packageName + " set successfully");
         } catch (SecurityException | IllegalArgumentException e) {
-            Log.e(TAG, "Could not set installer package name for " +
-                    packageName, e);
+            Log.e(TAG, "Could not set installer package name for " + packageName, e);
         }
     }
-
 }

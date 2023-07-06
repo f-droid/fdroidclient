@@ -80,5 +80,4 @@ public class SettingsView extends FrameLayout {
         currentTransaction = null;
         activity.getSupportFragmentManager().executePendingTransactions();
     }
-
 }

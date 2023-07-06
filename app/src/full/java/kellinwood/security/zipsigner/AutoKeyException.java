@@ -1,4 +1,3 @@
-
 package kellinwood.security.zipsigner;
 
 public class AutoKeyException extends RuntimeException {

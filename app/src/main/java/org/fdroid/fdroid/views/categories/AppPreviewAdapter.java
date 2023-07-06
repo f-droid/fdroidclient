@@ -40,7 +40,7 @@ class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     void setAppCursor(List<AppOverviewItem> items) {
         if (this.items == items) {
-            //don't notify when the cursor did not change
+            // don't notify when the cursor did not change
             return;
         }
         this.items = items;

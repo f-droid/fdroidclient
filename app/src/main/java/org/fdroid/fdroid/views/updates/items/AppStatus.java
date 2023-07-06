@@ -57,5 +57,4 @@ public class AppStatus extends AppUpdateData {
             ((AppStatusListItemController) holder).bindModel(app.status.app, app.status.apk, app.status);
         }
     }
-
 }

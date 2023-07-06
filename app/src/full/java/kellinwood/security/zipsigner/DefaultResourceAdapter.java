@@ -1,4 +1,3 @@
-
 package kellinwood.security.zipsigner;
 
 import java.util.Locale;
@@ -31,6 +30,5 @@ public class DefaultResourceAdapter implements ResourceAdapter {
             default:
                 throw new IllegalArgumentException("Unknown item " + item);
         }
-
     }
 }

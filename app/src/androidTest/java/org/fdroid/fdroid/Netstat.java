@@ -368,6 +368,5 @@ public class Netstat {
                     ",Status=" + status +
                     "]";
         }
-
     }
 }

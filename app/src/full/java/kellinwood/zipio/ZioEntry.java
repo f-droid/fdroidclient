@@ -16,9 +16,6 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,6 +28,9 @@ import java.util.Locale;
 import java.util.zip.CRC32;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
+
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
 
 public class ZioEntry implements Cloneable {
 
@@ -59,7 +59,6 @@ public class ZioEntry implements Cloneable {
     private byte[] data = null;
     private ZioEntryOutputStream entryOut = null;
 
-
     private static byte[] alignBytes = new byte[4];
 
     private static LoggerInterface log;
@@ -80,7 +79,6 @@ public class ZioEntry implements Cloneable {
         extraData = new byte[0];
         setTime(System.currentTimeMillis());
     }
-
 
     public ZioEntry(String name, String sourceDataFile)
             throws IOException {
@@ -151,7 +149,9 @@ public class ZioEntry implements Cloneable {
 
         input.seek(localHeaderOffset);
 
-        if (debug) getLogger().debug(String.format("FILE POSITION: 0x%08x", input.getFilePointer()));
+        if (debug) {
+            getLogger().debug(String.format("FILE POSITION: 0x%08x", input.getFilePointer()));
+        }
 
         // 0 	4 	Local file header signature = 0x04034b50
         int signature = input.readInt();
@@ -171,12 +171,16 @@ public class ZioEntry implements Cloneable {
         // 4 	2 	Version needed to extract (minimum)
         /* versionRequired */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("Version required: 0x%04x", tmpShort /*versionRequired*/));
+        if (debug) {
+            log.debug(String.format("Version required: 0x%04x", tmpShort /*versionRequired*/));
+        }
 
         // 6 	2 	General purpose bit flag
         /* generalPurposeBits */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("General purpose bits: 0x%04x", tmpShort /* generalPurposeBits */));
+        if (debug) {
+            log.debug(String.format("General purpose bits: 0x%04x", tmpShort /* generalPurposeBits */));
+        }
 
         // 8 	2 	Compression method
         /* compression */
@@ -186,12 +190,16 @@ public class ZioEntry implements Cloneable {
         // 10 	2 	File last modification time
         /* modificationTime */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("Modification time: 0x%04x", tmpShort /* modificationTime */));
+        if (debug) {
+            log.debug(String.format("Modification time: 0x%04x", tmpShort /* modificationTime */));
+        }
 
         // 12 	2 	File last modification date
         /* modificationDate */
         tmpShort = input.readShort();
-        if (debug) log.debug(String.format("Modification date: 0x%04x", tmpShort /* modificationDate */));
+        if (debug) {
+            log.debug(String.format("Modification date: 0x%04x", tmpShort /* modificationDate */));
+        }
 
         // 14 	4 	CRC-32
         /* crc32 */
@@ -216,7 +224,7 @@ public class ZioEntry implements Cloneable {
         short extraLen = input.readShort();
         if (debug) log.debug(String.format("Extra length: 0x%04x", extraLen));
 
-        // 30 	n 	File name      
+        // 30 	n 	File name
         String filename = input.readString(fileNameLen);
         if (debug) log.debug("Filename: " + filename);
 
@@ -226,7 +234,6 @@ public class ZioEntry implements Cloneable {
         // Record the file position of this entry's data.
         dataPosition = input.getFilePointer();
         if (debug) log.debug(String.format("Data position: 0x%08x", dataPosition));
-
     }
 
     public void writeLocalEntry(ZipOutput output) throws IOException {
@@ -278,7 +285,6 @@ public class ZioEntry implements Cloneable {
             }
         }
 
-
         // 28 	2 	Extra field length (m)
         output.writeShort((short) (extraData.length + numAlignBytes));
 
@@ -293,10 +299,14 @@ public class ZioEntry implements Cloneable {
             output.writeBytes(alignBytes, 0, numAlignBytes);
         }
 
-        if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Data position 0x%08x", output.getFilePointer()));
+        if (debug) {
+            getLogger().debug(String.format(Locale.ENGLISH, "Data position 0x%08x", output.getFilePointer()));
+        }
         if (data != null) {
             output.writeBytes(data);
-            if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", data.length));
+            if (debug) {
+                getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", data.length));
+            }
         } else {
 
             if (debug) getLogger().debug(String.format("Seeking to position 0x%08x", dataPosition));
@@ -310,7 +320,9 @@ public class ZioEntry implements Cloneable {
                 int numRead = zipInput.in.read(buffer, 0, (int) Math.min(compressedSize - totalCount, bufferSize));
                 if (numRead > 0) {
                     output.writeBytes(buffer, 0, numRead);
-                    if (debug) getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", numRead));
+                    if (debug) {
+                        getLogger().debug(String.format(Locale.ENGLISH, "Wrote %d bytes", numRead));
+                    }
                     totalCount += numRead;
                 } else
                     throw new IllegalStateException(String.format(Locale.ENGLISH, "EOF reached while copying %s with %d bytes left to go", filename, compressedSize - totalCount));
@@ -401,7 +413,7 @@ public class ZioEntry implements Cloneable {
         localHeaderOffset = input.readInt();
         if (debug) log.debug(String.format("Local header offset: 0x%08x", localHeaderOffset));
 
-        // 30   n   File name      
+        // 30   n   File name
         filename = input.readString(fileNameLen);
         if (debug) log.debug("Filename: " + filename);
 
@@ -418,7 +430,6 @@ public class ZioEntry implements Cloneable {
             compression = 0;
             crc32 = 0;
         }
-
     }
 
     /**
@@ -441,12 +452,12 @@ public class ZioEntry implements Cloneable {
         return tmpdata;
     }
 
-    // Returns an input stream for reading the entry's data. 
+    // Returns an input stream for reading the entry's data.
     public InputStream getInputStream() throws IOException {
         return getInputStream(null);
     }
 
-    // Returns an input stream for reading the entry's data. 
+    // Returns an input stream for reading the entry's data.
     public InputStream getInputStream(OutputStream monitorStream) throws IOException {
 
         if (entryOut != null) {
@@ -459,8 +470,8 @@ public class ZioEntry implements Cloneable {
             InputStream rawis = new ByteArrayInputStream(data);
             if (compression == 0) return rawis;
             else {
-                // Hacky, inflate using a sequence of input streams that returns 1 byte more than the actual length of the data.  
-                // This extra dummy byte is required by InflaterInputStream when the data doesn't have the header and crc fields (as it is in zip files). 
+                // Hacky, inflate using a sequence of input streams that returns 1 byte more than the actual length of the data.
+                // This extra dummy byte is required by InflaterInputStream when the data doesn't have the header and crc fields (as it is in zip files).
                 return new InflaterInputStream(new SequenceInputStream(rawis, new ByteArrayInputStream(new byte[1])), new Inflater(true));
             }
         }
@@ -469,8 +480,8 @@ public class ZioEntry implements Cloneable {
         dataStream = new ZioEntryInputStream(this);
         if (monitorStream != null) dataStream.setMonitorStream(monitorStream);
         if (compression != 0) {
-            // Note: When using nowrap=true with Inflater it is also necessary to provide 
-            // an extra "dummy" byte as input. This is required by the ZLIB native library 
+            // Note: When using nowrap=true with Inflater it is also necessary to provide
+            // an extra "dummy" byte as input. This is required by the ZLIB native library
             // in order to support certain optimizations.
             dataStream.setReturnDummyByte(true);
             return new InflaterInputStream(dataStream, new Inflater(true));
@@ -483,10 +494,8 @@ public class ZioEntry implements Cloneable {
         return entryOut;
     }
 
-
     public void write(ZipOutput output) throws IOException {
         boolean debug = getLogger().isDebugEnabled();
-
 
         output.writeInt(0x02014b50);
         output.writeShort(versionMadeBy);
@@ -510,7 +519,6 @@ public class ZioEntry implements Cloneable {
         output.writeBytes(extraData);
         if (numAlignBytes > 0) output.writeBytes(alignBytes, 0, numAlignBytes);
         output.writeString(fileComment);
-
     }
 
     /*
@@ -628,5 +636,4 @@ public class ZioEntry implements Cloneable {
     public ZipInput getZipInput() {
         return zipInput;
     }
-
 }

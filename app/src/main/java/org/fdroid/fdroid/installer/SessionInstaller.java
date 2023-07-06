@@ -39,5 +39,4 @@ class SessionInstaller extends Installer {
         // may not always be unattended, but no easy way to find out up-front
         return SessionInstallManager.canBeUsed(context);
     }
-
 }

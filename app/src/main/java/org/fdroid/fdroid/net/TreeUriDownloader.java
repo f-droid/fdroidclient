@@ -95,7 +95,7 @@ public class TreeUriDownloader extends Downloader {
 
     @Override
     public boolean hasChanged() {
-        return true;  // TODO how should this actually be implemented?
+        return true; // TODO how should this actually be implemented?
     }
 
     @Override

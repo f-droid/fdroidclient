@@ -16,9 +16,6 @@
 
 package kellinwood.zipio;
 
-import kellinwood.logging.LoggerInterface;
-import kellinwood.logging.LoggerManager;
-
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +29,9 @@ import java.util.TreeSet;
 import java.util.jar.Manifest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import kellinwood.logging.LoggerInterface;
+import kellinwood.logging.LoggerManager;
 
 /**
  *
@@ -73,7 +73,6 @@ public class ZipInput implements Closeable {
         return zipInput;
     }
 
-
     public ZioEntry getEntry(String filename) {
         return zioEntries.get(filename);
     }
@@ -88,7 +87,9 @@ public class ZipInput implements Closeable {
      * to get the root entries.
      */
     public Collection<String> list(String path) {
-        if (!path.endsWith("/")) throw new IllegalArgumentException("Invalid path -- does not end with '/'");
+        if (!path.endsWith("/")) {
+            throw new IllegalArgumentException("Invalid path -- does not end with '/'");
+        }
 
         if (path.startsWith("/")) path = path.substring(1);
 
@@ -139,7 +140,6 @@ public class ZipInput implements Closeable {
 
         return scanForEOCDR(size * 2);
     }
-
 
     private void doRead() {
         try {
@@ -232,5 +232,3 @@ public class ZipInput implements Closeable {
         return in.read(b, offset, length);
     }
 }
-
-
