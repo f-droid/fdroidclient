@@ -208,10 +208,10 @@
     <string name="permissions">權限</string>
     <string name="repo_details">軟件庫</string>
     <string name="repo_url">網址</string>
-    <string name="login_name">用戶名</string>
+    <string name="login_name">使用者名稱</string>
     <string name="login_password">密碼</string>
     <string name="repo_edit_credentials">更改密碼</string>
-    <string name="repo_error_empty_username">因用戶名未填妥，沒有更改個人資料</string>
+    <string name="repo_error_empty_username">因使用者名稱未填妥，未能變更個人資料</string>
     <string name="bad_fingerprint">指紋無效</string>
     <string name="status_download_unknown_size">正在從
 \n %1$s 
