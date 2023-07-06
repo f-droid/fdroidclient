@@ -401,7 +401,7 @@
     <string name="repo_exists_add_fingerprint">%1$s je že nameščen. To bo dodalo nove ključne informacije.</string>
     <string name="repo_exists_enable">%1$s je še nameščen. Potrdite, če ga želite znova omogočiti.</string>
     <string name="repo_delete_to_overwrite">Najprej odstranite %1$s zato, da dodate to s konfliktnim ključem.</string>
-    <string name="status_download">Prenašanje 
+    <string name="status_download">Prenašanje
 \n%2$s / %3$s (%4$d%%) iz
 \n%1$s</string>
     <string name="status_connecting_to_repo">Povezovanje na

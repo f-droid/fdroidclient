@@ -106,10 +106,10 @@
     <string name="repo_not_yet_updated">このリポジトリはまだ使用されていません。アプリを表示するには、リポジトリを有効にする必要があります。</string>
     <string name="unknown">不明</string>
     <string name="repo_confirm_delete_title">リポジトリを削除しますか？</string>
-    <string name="repo_confirm_delete_body">リポジトリを削除すると、リポジトリからアプリが利用できなくなります。 
-\n 
+    <string name="repo_confirm_delete_body">リポジトリを削除すると、リポジトリからアプリが利用できなくなります。
+\n
 \n注: これまでにインストールしたアプリはすべて端末に残ります。</string>
-    <string name="repo_disabled_notification">%1$sを無効にしました。 
+    <string name="repo_disabled_notification">%1$sを無効にしました。
 \n
 \nアプリをインストールするにはこのリポジトリを再度有効にする必要があります。</string>
     <string name="repo_added">パッケージリポジトリ%1$sを保存しました。</string>
@@ -147,8 +147,8 @@
     <string name="pref_language_default">システムの既定</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">ホットスポット</string>
-    <string name="empty_installed_app_list">アプリがインストールされていません。 
-\n 
+    <string name="empty_installed_app_list">アプリがインストールされていません。
+\n
 \n端末にアプリはありますが、F-Droid からは利用できません。リポジトリを更新する必要があるか、リポジトリからアプリが利用できない可能性があります。</string>
     <string name="swap_nfc_title">タッチして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じネットワークに接続しているか確認してください。同じネットワークにアクセスしていない場合は、Wi-Fiホットスポットを作成できます。</string>

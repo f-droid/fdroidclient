@@ -154,7 +154,7 @@
 \n
 \nAnda perlu mengaktifkan kembali repositori ini untuk memasang aplikasinya.</string>
     <string name="repo_added">Menyimpan paket Repositori %1$s.</string>
-    <string name="repo_searching_address">Mencari repositori paket di 
+    <string name="repo_searching_address">Mencari repositori paket di
 \n%1$s</string>
     <string name="not_on_same_wifi">Perangkat Anda tidak berada pada jaringan Wi-Fi yang sama dengan repo lokal yang baru saja anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
     <string name="requires_features">Memerlukan: %1$s</string>

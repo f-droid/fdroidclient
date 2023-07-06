@@ -189,15 +189,15 @@
     <string name="useTorSummary">കൂടുതല്‍ സ്വകാര്യതക്ക് വേണ്ടി ടോർ വഴി ഡൗൺലോഡ് ചെയ്യാന്‍ നിര്‍ബന്ധിക്കുക. ഇതിനു ഓർബോട് ആവശ്യമാണ്</string>
     <string name="proxy">പ്രോക്സി</string>
     <string name="enable_proxy_title">പ്രോക്സി പ്രവർത്തനക്ഷമമാക്കുക</string>
-    <string name="status_download">ഡൗൺലോഡ് ചെയ്യുന്നു 
-\n %2$s / %3$s (%4$d %%) 
+    <string name="status_download">ഡൗൺലോഡ് ചെയ്യുന്നു
+\n %2$s / %3$s (%4$d %%)
 \n %1$s ല്‍ നിന്ന്</string>
-    <string name="status_download_unknown_size">ഡൗൺലോഡ് ചെയ്യുന്നു 
-\n %2$s നെ 
+    <string name="status_download_unknown_size">ഡൗൺലോഡ് ചെയ്യുന്നു
+\n %2$s നെ
 \n %1$s ല്‍ നിന്ന്</string>
     <string name="download_404">അഭ്യർത്ഥിച്ച ഫയൽ കണ്ടെത്തിയില്ല.</string>
     <string name="banner_updating_repositories">ശേഖരണം പുതുക്കുന്നു</string>
-    <string name="status_connecting_to_repo">ബന്ധിപ്പിക്കുന്നു 
+    <string name="status_connecting_to_repo">ബന്ധിപ്പിക്കുന്നു
 \n %1$s ലേക്ക്</string>
     <string name="repos_unchanged">എല്ലാ സംഭരണികളും കാലികമാണ്</string>
     <string name="all_other_repos_fine">മറ്റൊരു സംഭരികളും പിശകുകൾ സൃഷ്ടിച്ചില്ല.</string>
@@ -218,8 +218,8 @@
     <string name="repo_confirm_delete_body">ഒരു ആപ്പ് ശേഖരണം നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
 \n
 \n കുറിപ്പ്: മുമ്പ് ഇൻസ്റ്റാൾ ചെയ്ത എല്ലാ ആപ്പുകളും നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും.</string>
-    <string name="repo_disabled_notification">%1$s പ്രവര്‍ത്തനരഹിതമാക്കി. 
-\n 
+    <string name="repo_disabled_notification">%1$s പ്രവര്‍ത്തനരഹിതമാക്കി.
+\n
 \n ഈ സംഭരണിയില്‍ നിന്നും ആപ്പുകൾ ഉപയോഗിക്കാൻ ഇത് വീണ്ടും പ്രവർത്തനക്ഷമമാക്കേണ്ടതുണ്ട്.</string>
     <string name="repo_added">%1$s ആപ്പ് സംഭരണം സൂക്ഷിച്ചുവെച്ചു.</string>
     <string name="repo_searching_address">%1$s
@@ -231,8 +231,8 @@
         <item quantity="one">%d കാണുക</item>
         <item quantity="other">എല്ലാ %d യും കാണുക</item>
     </plurals>
-    <string name="empty_installed_app_list">പ്രയോഗങ്ങളൊന്നും സ്ഥാപിക്കപ്പെട്ടിട്ടില്ല. 
-\n 
+    <string name="empty_installed_app_list">പ്രയോഗങ്ങളൊന്നും സ്ഥാപിക്കപ്പെട്ടിട്ടില്ല.
+\n
 \n നിങ്ങളുടെ ഉപകരണത്തിൽ പ്രയോഗങ്ങള്‍ ഉണ്ട്, എന്നാൽ അവ എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമല്ല. ഇത് നിങ്ങളുടെ സംഭരണികള്‍ പുതുക്കേണ്ടതു കൊണ്ടാകാം, അല്ലെങ്കിൽ നിങ്ങളുടെ പ്രയോഗങ്ങള്‍ സംഭരണികളില്‍ ലഭ്യമല്ലാത്തതു കൊണ്ടുമാകാം.</string>
     <string name="empty_can_update_app_list">അഭിനന്ദനങ്ങൾ!
 \n നിങ്ങളുടെ പ്രയോഗങ്ങളെല്ലാം കാലികമാണ് (അല്ലെങ്കിൽ നിങ്ങളുടെ സംഭരണികള്‍ കാലഹരണപ്പെട്ടതാണ്).</string>

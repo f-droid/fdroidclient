@@ -128,7 +128,7 @@
     <string name="repo_not_yet_updated">此軟體庫尚未被使用。您需要啟用它才能檢視其中的應用程式。</string>
     <string name="repo_confirm_delete_title">要刪除軟體庫嗎？</string>
     <string name="repo_confirm_delete_body">刪除軟體庫後，來自該軟體庫中的應用程式將不再出現。
-\n 
+\n
 \n注意：所有之前已安裝的應用程式會保留在您的裝置上。</string>
     <string name="repo_disabled_notification">已停用 %1$s。
 \n

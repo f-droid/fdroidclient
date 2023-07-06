@@ -202,13 +202,13 @@
     <string name="repo_not_yet_updated">མཛོད་ཁང་འདི་ད་བར་བེད་སྤྱོད་བཏང་མེད། ཁྱེད་ཀྱིས་འདི་སྒོ་ཕྱེས་ནས་མཉེན་ཆས་ལྟ་ཐུབ།</string>
     <string name="unknown">རྒྱུས་མེད།</string>
     <string name="repo_confirm_delete_title">མཛོད་ཁང་སུབས་སམ།</string>
-    <string name="repo_confirm_delete_body">མཛོད་ཁང་སུབས་ན་འདིའི་ནང་གི་མཉེན་ཆས་རྣམས་ཨེཕ་རོཌ་ནང་་མེད་པ་ཆགས་ཀྱི་ཡོད་རེད། 
-\n 
+    <string name="repo_confirm_delete_body">མཛོད་ཁང་སུབས་ན་འདིའི་ནང་གི་མཉེན་ཆས་རྣམས་ཨེཕ་རོཌ་ནང་་མེད་པ་ཆགས་ཀྱི་ཡོད་རེད།
+\n
 \nམཁྱེན་དགོས་པ་གཅིག་ལ། སྔར་འགྲིག་བཅུག་བྱས་ཟིན་པའི་མཉེན་ཆས་ཚང་མ་ཁྱེད་རང་གི་ཡོ་བྱད་སྒང་ལ་གནས་ཐུབ་ཀྱི་ཡོད།</string>
-    <string name="repo_disabled_notification">བེད་སྤྱོད་མེད་པ་བཟོས་ཟིན།%1$s 
+    <string name="repo_disabled_notification">བེད་སྤྱོད་མེད་པ་བཟོས་ཟིན།%1$s
 \nཁྱེད་རང་འདི་ནས་མཉེན་ཆས་འགྲིག་བཅུག་བྱེད་པའི་ཆེད་དུ་མཛོད་ཁང་འདི་ཡང་སྐྱར་སྒོ་ཕྱེད་དགོས།</string>
     <string name="repo_added">ཨེཕ་རོཌ་མཛོད་ཁང་ཉར་ཚགས་%1$s</string>
-    <string name="repo_searching_address">ཨེཕ་རོཌ་མཛོད་ཁང་འདི་ནས་་འཚོལ། 
+    <string name="repo_searching_address">ཨེཕ་རོཌ་མཛོད་ཁང་འདི་ནས་་འཚོལ།
 \n%1$s</string>
     <string name="requires_features">དགོས་མཁོ་:%1$s</string>
     <string name="wifi_ap">དྲྭ་འཛོམས།</string>
@@ -216,7 +216,7 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">ཚང་མར་བལྟས། %d</item>
     </plurals>
-    <string name="empty_installed_app_list">མཉེན་ཆས་འགྲིག་བཅུག་བྱེད་མེད། 
+    <string name="empty_installed_app_list">མཉེན་ཆས་འགྲིག་བཅུག་བྱེད་མེད།
 \nཁྱེད་རང་གི་ཡོ་བྱད་སྒང་ལ་མཉེན་ཆས་འདུག འོན་ཀྱང་དེ་ཚོ་ཨེཕ་རོཌ་རྒྱུད་ནས་ཐོབ་པ་མ་རེད། འདིའི་རྒྱུ་མཚན་ནི་གཅིག་བྱས་ན་ཁྱེད་རང་གི་མཛོད་ཁང་གསར་བསྒྱུར་བྱེད་དགོས་ཀྱི་ཡོད་པའམ་ཡང་ན་མཛོད་ཁང་ནང་ལ་དོན་ངོ་མའི་ཐོག་ལ་ཁྱེད་རང་གི་མཉེན་ཆས་འདི་མེད་པའི་རྐྱེན་གྱིས་བྱས་པ་རེད།</string>
     <string name="empty_can_update_app_list">བཀྲིས་བདེ་ལེགས་!ཁྱེད་རང་གི་མཉེན་ཆས་རྣམས་དུས་ཐོག་སྒང་ལ་འདུག</string>
     <string name="install_error_unknown">རྒྱུས་མེད་པའི་སྐྱོན་ཞིག་བྱུང་བའི་རྐྱེན་གྱིས་འགྲིག་བཅུག་བྱེད་ཐུབ་མ་སོང་།</string>

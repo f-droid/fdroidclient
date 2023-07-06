@@ -289,7 +289,7 @@
     <string name="download_404">El archivo pedido no fue encontrado.</string>
     <string name="banner_updating_repositories">Actualizando repositorios</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) de %1$s</string>
-    <string name="status_connecting_to_repo">Conectando a 
+    <string name="status_connecting_to_repo">Conectando a
 \n%1$s</string>
     <string name="status_inserting_apps">Guardando detalles de aplicación</string>
     <string name="status_inserting_x_apps">Guardando detalles de aplicación (%1$d/%2$d) desde %3$s</string>

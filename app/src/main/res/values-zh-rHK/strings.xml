@@ -172,7 +172,7 @@
     <string name="proxy_port">代理伺服器通訊埠</string>
     <string name="proxy_port_summary">你的代理伺服器通訊埠編號（如：8118）</string>
     <string name="status_download">下載中
-\n%2$s / %3$s (%4$d%%)正在從 
+\n%2$s / %3$s (%4$d%%)正在從
 \n%1$s</string>
     <string name="install_confirm">需要存取權</string>
     <string name="install_confirm_update">你要為這個現有的應用程式安裝更新嗎？現有數據將會被保留。更新後的應用程式將取得以下存取權：</string>
@@ -214,7 +214,7 @@
     <string name="repo_error_empty_username">因使用者名稱未填妥，未能變更個人資料</string>
     <string name="bad_fingerprint">指紋無效</string>
     <string name="status_download_unknown_size">正在從
-\n %1$s 
+\n %1$s
 \n下載 %2$s</string>
     <string name="malformed_repo_uri">略過無效的倉庫 URI：%s</string>
     <string name="linking_apks">正在連接 APK 檔至軟件庫…</string>

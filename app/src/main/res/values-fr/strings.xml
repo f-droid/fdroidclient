@@ -111,8 +111,8 @@
     <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des applis qu\'il propose.</string>
     <string name="unknown">Inconnu</string>
     <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
-    <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que les mises à jour ne seront plus disponibles. 
-\n 
+    <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que les mises à jour ne seront plus disponibles.
+\n
 \nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
     <string name="repo_disabled_notification">%1$s a été désactivé.
 \n

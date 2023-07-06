@@ -134,7 +134,7 @@
 \n
 \nTem que tornar a ativar o repositório para poder instalar aplicações.</string>
     <string name="repo_added">Guardado o repositório de pacotes %1$s.</string>
-    <string name="repo_searching_address">A procurar um repositório de pacotes em 
+    <string name="repo_searching_address">A procurar um repositório de pacotes em
 \n%1$s</string>
     <string name="not_on_same_wifi">O seu aparelho não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
     <string name="requires_features">Requer: %1$s</string>

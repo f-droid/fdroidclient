@@ -107,7 +107,7 @@
     <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru den på for å se programmene den tilbyr.</string>
     <string name="unknown">Ukjent</string>
     <string name="repo_confirm_delete_title">Slett pakkebrønn?</string>
-    <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være tilgjengelige. 
+    <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være tilgjengelige.
 \n
 \nMerk: Alle tidligere installerte programmer vil fremdeles være å finne på din enhet.</string>
     <string name="repo_disabled_notification">Avskrudde \"%1$s\".

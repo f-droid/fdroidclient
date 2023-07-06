@@ -85,9 +85,9 @@
     <string name="proxy_host_summary">Hostnaam van proxy (bijv. 127.0.0.1)</string>
     <string name="proxy_port">Proxypoort</string>
     <string name="proxy_port_summary">Poortnummer van proxy (bijv. 8118)</string>
-    <string name="status_download">%2$s / %3$s (%4$d%%) worden 
+    <string name="status_download">%2$s / %3$s (%4$d%%) worden
 \nvan %1$s gedownload</string>
-    <string name="status_connecting_to_repo">Verbinding met 
+    <string name="status_connecting_to_repo">Verbinding met
 \n%1$s aan het maken</string>
     <string name="repos_unchanged">Alle applicatiebronnen zijn up-to-date</string>
     <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
@@ -115,7 +115,7 @@
 \n
 \n U moet deze bron weer inschakelen indien u er apps van wil installeren.</string>
     <string name="repo_added">Pakketbron %1$s opgeslagen.</string>
-    <string name="repo_searching_address">Er wordt gezocht naar applicatiebronnen op 
+    <string name="repo_searching_address">Er wordt gezocht naar applicatiebronnen op
 \n%1$s</string>
     <string name="not_on_same_wifi">Je apparaat zit niet op hetzelfde wifinetwerk als de lokale bron die je zojuist hebt toegevoegd! Probeer om netwerk %s bij te treden</string>
     <string name="requires_features">Benodigd: %1$s</string>
@@ -151,7 +151,7 @@
     <string name="empty_installed_app_list">Geen apps geïnstalleerd.
 \n
 \nEr bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat u uw applicatiebronnen moet bijwerken, of dat de bronnen geen van uw apps beschikbaar stellen.</string>
-    <string name="empty_can_update_app_list">Gefeliciteerd! 
+    <string name="empty_can_update_app_list">Gefeliciteerd!
 \nAl uw apps zijn up-to-date.</string>
     <string name="install_error_unknown">De installatie is door een onbekende fout mislukt</string>
     <string name="uninstall_error_unknown">De applicatie kon door een onbekende fout niet gedeïnstalleerd worden</string>

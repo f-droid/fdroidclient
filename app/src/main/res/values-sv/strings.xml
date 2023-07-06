@@ -108,13 +108,13 @@
     </string>
     <string name="unknown">Okänd</string>
     <string name="repo_confirm_delete_title">Radera förråd?</string>
-    <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga. 
-\n 
+    <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga.
+\n
 \nObservera: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
     <string name="repo_disabled_notification">Inaktiverade %1$s.
 \n
 \nDu måste återaktivera detta förråd för att installera appar från det.</string>
-    <string name="repo_searching_address">Söker efter paketförråd på 
+    <string name="repo_searching_address">Söker efter paketförråd på
 \n%1$s</string>
     <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
     <string name="requires_features">Kräver: %1$s</string>

@@ -311,7 +311,7 @@
 \n
 \nTem que tornar a ativar o repositório para poder instalar aplicações.</string>
     <string name="repo_added">O repositório de pacotes %1$s foi guardado.</string>
-    <string name="repo_searching_address">A procurar um repositório de pacotes em 
+    <string name="repo_searching_address">A procurar um repositório de pacotes em
 \n%1$s</string>
     <string name="share_repository">Partilhar repositório</string>
     <string name="requires_features">Requer: %1$s</string>
