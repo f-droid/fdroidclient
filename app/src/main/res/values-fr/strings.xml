@@ -552,4 +552,9 @@
     <string name="latest__empty_state__upgrading">Mise à jour de la base de données…</string>
     <string name="use_ipfs_gateways_summary">Télécharger les fichiers depuis des mirroirs IPFS, si le dépôt les prend en charge.</string>
     <string name="use_ipfs_gateways">Utiliser une passerelle IPFS</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">À propos de F-Droid Basic</string>
+    <string name="antinsfwlist">Cette application contient des informations qui ne doivent pas être rendues publiques ou visibles partout</string>
+    <string name="repo_last_update_downloaded">Dernière mise à jour téléchargée</string>
+    <string name="warning_target_sdk">Cette application a été conçue pour une ancienne version d\'Android et ne peut pas être mise à jour automatiquement.</string>
 </resources>
