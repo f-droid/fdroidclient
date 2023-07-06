@@ -307,9 +307,9 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">没有网络连接？也可以从附近的用户获取应用。</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">没有网络连接？也可以从附近的用户获取应用！</string>
     <string name="nearby_splash__find_people_button">查找附近的人</string>
-    <string name="nearby_splash__both_parties_need_fdroid">双方都使用 %1$s 才可使用附近功能。</string>
+    <string name="nearby_splash__both_parties_need_fdroid">双方都需要使用 %1$s 才可以使用附近功能。</string>
     <string name="app__tts__downloading_progress">正在下载，已完成 %1$d%%</string>
     <plurals name="notification_summary_more">
         <item quantity="other">+%1$d 更多…</item>
