@@ -536,5 +536,6 @@
     <string name="app_name_basic">एफ-ड्रॉइड बेसिक</string>
     <string name="antinsfwlist">इस एप्लिकेशन में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
     <string name="warning_target_sdk">यह एप्लिकेशन Android के पुराने संस्करण के लिए बनाया गया था और स्वचालित रूप से अपडेट नहीं किया जा सकता है।</string>
-    <string name="category_Nightly">नाईटली संस्करण</string>
+    <string name="category_Nightly">नाईटली</string>
+    <string name="app_error_open">ऐप लॉन्च नहीं किया जा सका।</string>
 </resources>

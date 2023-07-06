@@ -536,5 +536,6 @@
     <string name="repo_last_update_downloaded">ਤਾਜ਼ਾ ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਕੀਤਾ ਗਿਆ</string>
     <string name="warning_target_sdk">ਇਹ ਐਪ ਐਂਡਰਾਇਡ ਦੇ ਪੁਰਾਣੇ ਸੰਸਕਰਣ ਲਈ ਬਣਾਈ ਗਈ ਸੀ ਅਤੇ ਇਸ ਨੂੰ ਆਪਣੇ-ਆਪ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
     <string name="antinsfwlist">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਜਾਂ ਹਰ ਥਾਂ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ</string>
-    <string name="category_Nightly">ਨਾਈਟਲੀ ਬਿਲਡਜ਼</string>
+    <string name="category_Nightly">ਨਾਈਟਲੀ</string>
+    <string name="app_error_open">ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਲਾਂਚ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।</string>
 </resources>
