@@ -565,4 +565,5 @@
     <string name="category_Nightly">Versiones de isvilupu</string>
     <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
     <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
+    <string name="app_error_open">No est istadu possìbile aviare s\'aplicatzione.</string>
 </resources>
