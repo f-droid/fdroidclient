@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Versioni i ri është nënshkruar me një tjetër kyç nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutemi, bëjeni dhe riprovoni. (Vini re që çinstalimi do të fshijë çfarëdo të dhëne të brendshme të ruajtur nga aplikacioni)</string>
     <string name="installIncompatible">Aplikacion i papërputhshëm me pajisjen tuaj, të instalohet sido qoftë\?</string>
@@ -509,7 +509,7 @@
     <string name="use_pure_black_dark_theme_summary">E rekomanduar vetëm për ekranë OLED.</string>
     <string name="use_pure_black_dark_theme">Përdor sfond të zi në temë të errët</string>
     <string name="banner_no_internet">Pa Internet</string>
-    <string name="banner_no_data_or_wifi">Pa të Dhëna ose WiFi aktive</string>
+    <string name="banner_no_data_or_wifi">Pa Lidhje Celulare ose WiFi aktive</string>
     <string name="share_apk_error">S’u nda dot kartelë aplikacioni</string>
     <string name="antiads">Reklama</string>
     <string name="antitrack">Gjurmim</string>
@@ -526,9 +526,16 @@
     <string name="app_list_results_hidden_antifeature_settings">Disa përfundime u fshehën, bazuar në rregullimet tuaja për “antiveçoritë”.</string>
     <string name="has_disallow_install_unknown_sources">Burimet e panjohura, që përfshijnë depo të reja, s’mund të shtohen nga ky përdorues</string>
     <string name="antinosource">Kod Burim Jo Më i Passhëm</string>
-    <string name="antinsfw">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>
+    <string name="antinsfw">Not Safe for Work</string>
     <string name="menu_release_channel_beta">Lejo Përditësime Beta</string>
     <string name="latest__empty_state__upgrading">Po përmirësohet baza e të dhënave…</string>
     <string name="use_ipfs_gateways">Përdor kanale IPFS</string>
     <string name="use_ipfs_gateways_summary">Shkarko kartela nga pasqyra IPFS, nëse mbulohet nga depoja.</string>
+    <string name="app_name_basic">F-Droid Elementar</string>
+    <string name="about_title_basic">Mbi F-Droid Elementar</string>
+    <string name="antinsfwlist">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>
+    <string name="repo_last_update_downloaded">U shkarkua përditësimi i fundit</string>
+    <string name="app_error_open">S’u nis dot aplikacioni.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Montime të Përnatshme</string>
+    <string name="warning_target_sdk">Ky aplikacion qe montuar për një version më të vjetër të Android-it dhe s’mund të përditësohet automatikisht.</string>
 </resources>
