@@ -557,4 +557,5 @@
     <string name="about_title_basic">Acerca de F-Droid Basic</string>
     <string name="warning_target_sdk">Esta aplicación se creó para una versión anterior de Android y no se puede actualizar automáticamente.</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">Compilación automatizada</string>
+    <string name="app_error_open">No se ha podido abrir la aplicación.</string>
 </resources>
