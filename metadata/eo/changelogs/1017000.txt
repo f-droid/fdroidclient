@@ -1,0 +1,6 @@
+• pluraj erar-riparoj
+• montrado de emblemoj de deponejoj sur la listo de deponejoj
+• montrado de kialoj de fiebloj (se disponeblaj)
+• senasistaj ĝisdatigoj neuzante la privilegian aldonaĵon (aktuale nur per F-Droid Baza)
+• montrado de grando de aplikaĵo sur la ekrano de aplikaĵaj detaloj (nur en la altnivela reĝimo)
+• iomete malpli helaj nomoj de aplikaĵoj sur listoj por plibonigi legeblon
