@@ -267,7 +267,7 @@
 \n%1$s</string>
     <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia! Luo virheraportti!</string>
     <string name="versions">Versiot</string>
-    <string name="warning_no_internet">Ei voida päivittää, olethan yhteydessä Internettiin\?</string>
+    <string name="warning_no_internet">Ei voida päivittää. Oletko yhteydessä Internetiin\?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (suositeltu)</string>
@@ -506,11 +506,11 @@
     <string name="menu_show_fdroid_metrics_report">Näytä raportti</string>
     <string name="send_to_fdroid_metrics_summary">Lähetä anonyymiä dataa viikottain F-Droid Metricsille (vaatii asennushistorian säilyttämisen)</string>
     <string name="send_to_fdroid_metrics">Lähetä käyttödataa</string>
-    <string name="install_history_and_metrics">Asenna historia ja tilastot</string>
+    <string name="install_history_and_metrics">Asennushistoria ja tilastot</string>
     <string name="toast_metrics_in_install_history">%s analytiikkaraportti on nähtävillä asennushistorian näkymässä</string>
     <string name="fdroid_metrics_report">%s analytiikkaraportti</string>
     <string name="send_fdroid_metrics_json">%s analytiikkaraportti JSON-tiedostona</string>
-    <string name="send_fdroid_metrics_report">Lähetä %s analytiikkaraportti</string>
+    <string name="send_fdroid_metrics_report">Lähetä %s-analytiikkaraportti</string>
     <string name="swap_wifi_vpn_conflict">Ristiriidassa aktiivisen VPN:n kanssa!</string>
     <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
     <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
