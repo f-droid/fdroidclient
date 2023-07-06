@@ -1,0 +1,5 @@
+* Riscrittura completa della logica di scaricamento per migliorare le prestazioni e per supportare i mirror.
+
+* Gli screenshot e le grafiche sono ora scaricate dai mirror.
+
+* Ridotta una perdita di privacy con le Sessioni TLS
