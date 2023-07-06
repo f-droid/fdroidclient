@@ -1,0 +1,6 @@
+* Opravy mnoha chyb
+* Zobrazení ikon repozitářů v seznamu repozitářů
+* Zobrazení důvodů pro anti-funkce (pokud jsou k dispozici)
+* Bezobslužné aktualizace bez důvěryhodného rozšíření (zatím pouze F-Droid Basic)
+* Zobrazení velikosti aplikace na obrazovce s podrobnostmi o aplikaci (pouze v režimu experta)
+* Mírně tmavší názvy aplikací v seznamech aplikací pro lepší čitelnost
