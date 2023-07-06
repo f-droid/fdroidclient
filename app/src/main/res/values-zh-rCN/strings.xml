@@ -5,7 +5,7 @@
     <string name="version">版本</string>
     <string name="delete">删除</string>
     <string name="enable_nfc_send">启用 NFC 发送功能…</string>
-    <string name="cache_downloaded">保留已缓存应用</string>
+    <string name="cache_downloaded">保留缓存的应用</string>
     <string name="updates">更新</string>
     <string name="other">其他</string>
     <string name="update_interval">自动更新频率</string>
@@ -234,7 +234,7 @@
     <string name="theme_dark">深色</string>
     <string name="about_license">许可</string>
     <string name="empty_search_available_app_list">没有相符的应用。</string>
-    <string name="status_inserting_apps">正在保存应用详细信息</string>
+    <string name="status_inserting_apps">正在保存应用详情</string>
     <string name="menu_email">发邮件给作者</string>
     <string name="antinonfreeassetslist">此应用包含非自由资源</string>
     <string name="crash_dialog_title">F-Droid 已停止运行</string>
@@ -307,9 +307,9 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">没有网络连接？请从附近的 F-Droid 用户那里获取应用！</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">没有网络连接？也可以从附近的用户获取应用。</string>
     <string name="nearby_splash__find_people_button">查找附近的人</string>
-    <string name="nearby_splash__both_parties_need_fdroid">双方都需要 %1$s 才可使用附近功能。</string>
+    <string name="nearby_splash__both_parties_need_fdroid">双方都使用 %1$s 才可使用附近功能。</string>
     <string name="app__tts__downloading_progress">正在下载，已完成 %1$d%%</string>
     <plurals name="notification_summary_more">
         <item quantity="other">+%1$d 更多…</item>
@@ -358,7 +358,7 @@
     <string name="app_installed_media">文件已安装到 %s</string>
     <string name="app_permission_storage">F-Droid 需要存储权限以安装到存储。请在下一个界面允许此权限以继续进行安装。</string>
     <string name="app_list_download_ready">已下载，安装准备就绪</string>
-    <string name="status_inserting_x_apps">正在从 %3$s 保存应用的详细信息 (%1$d/%2$d)</string>
+    <string name="status_inserting_x_apps">正在保存来自 %3$s 的应用详情 (%1$d/%2$d)</string>
     <string name="app_details__incompatible_mismatched_signers">与已安装版本签名不符</string>
     <string name="app_details__no_versions__show_incompat_versions">若要在这里显示不兼容的版本，请启用“%1$s”设置。</string>
     <string name="app_details__no_versions__no_compatible_signers">没有兼容签名的版本</string>
