@@ -546,4 +546,5 @@
     <string name="warning_target_sdk">Diese App wurde für eine ältere Version von Android entwickelt und kann nicht automatisch aktualisiert werden.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Über F-Droid Basic</string>
+    <string name="app_error_open">App konnte nicht gestartet werden.</string>
 </resources>
