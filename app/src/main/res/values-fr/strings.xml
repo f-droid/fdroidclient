@@ -547,7 +547,7 @@
     <string name="antinonfreead">Extensions non libres</string>
     <string name="antinonfreeassets">Composants non libres</string>
     <string name="antiothers">Autres Antifonctions</string>
-    <string name="antinsfw">Cette application contient des contenus qui ne doivent pas être rendus publics ni visibles partout</string>
+    <string name="antinsfw">Non sécurisée</string>
     <string name="menu_release_channel_beta">Autoriser les mises à jour Bêta</string>
     <string name="latest__empty_state__upgrading">Mise à jour de la base de données…</string>
     <string name="use_ipfs_gateways_summary">Télécharger les fichiers depuis des mirroirs IPFS, si le dépôt les prend en charge.</string>
