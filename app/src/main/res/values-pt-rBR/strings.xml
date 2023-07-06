@@ -470,7 +470,7 @@
     <string name="install_history">Histórico de instalações</string>
     <string name="install_history_summary">Visualizar o registro privado de todas instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
-    <string name="send_version_and_uuid_summary">Inclui a versão deste aplicativo e um aleatório, único ID enquanto baixar, torna-se efetivo após a reinicialização do aplicativo.</string>
+    <string name="send_version_and_uuid_summary">Inclui a versão deste aplicativo e um ID único e aleatório quando baixar. Se aplica após reiniciar a aplicação.</string>
     <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas por causa das configurações de Dados/WiFi</string>
     <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponível.</string>
     <string name="send_installed_apps">Compartilhar aplicativos instalados</string>
@@ -560,7 +560,7 @@
     <string name="about_title_basic">Sobre o F-Droid Básico</string>
     <string name="antinsfwlist">Este aplicativo contém conteúdo que não deve ser público ou visível em todo lugar</string>
     <string name="repo_last_update_downloaded">Última atualização baixada</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Builds Noturnas</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">noturna</string>
     <string name="warning_target_sdk">Este aplicativo foi compilado para uma versão antiga do Android e não pode ser atualizado automaticamente.</string>
     <string name="app_error_open">Não foi possível iniciar o aplicativo.</string>
 </resources>
