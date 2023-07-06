@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: beim Entfernen werden alle intern gespeicherten Daten dieser App gelöscht.)</string>
     <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible App. Trotzdem installieren\?</string>
     <string name="version">Version</string>
@@ -535,9 +535,13 @@
     <string name="antitrack">Überwachung</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
     <string name="antiothers">Andere unerwünschte Merkmale</string>
-    <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
+    <string name="antinsfw">Unpassend für den Arbeitsplatz</string>
     <string name="menu_release_channel_beta">Beta-Updates zulassen</string>
     <string name="latest__empty_state__upgrading">Datenbank wird aktualisiert …</string>
     <string name="use_ipfs_gateways_summary">Dateien von IPFS-Spiegelservern herunterladen, wenn dies von der Paketquelle unterstützt wird.</string>
     <string name="use_ipfs_gateways">IPFS-Gateways verwenden</string>
+    <string name="repo_last_update_downloaded">Letzte heruntergeladene Aktualisierung</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Nächtliche Builds</string>
+    <string name="antinsfwlist">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
+    <string name="warning_target_sdk">Diese App wurde für eine ältere Version von Android entwickelt und kann nicht automatisch aktualisiert werden.</string>
 </resources>
