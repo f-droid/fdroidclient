@@ -450,7 +450,7 @@
     <string name="warning_scaning_qr_code">Ваша камера не має автофокусу. Сканування коду може йти з труднощами.</string>
     <string name="send_install_history">Надіслати історію встановлення</string>
     <string name="send_history_csv">Історія встановлень %s як CSV file</string>
-    <string name="send_version_and_uuid_summary">Включити версію цього застосунку та випадковий унікальний ID. Зміни набудуть чинності після перезапуску.</string>
+    <string name="send_version_and_uuid_summary">Включити версію цього застосунку та випадковий унікальний ID. Зміни застосуються після перезапуску.</string>
     <string name="send_installed_apps">Поширити встановлені застосунки</string>
     <string name="send_installed_apps_csv">Застосунки, встановлені через F-Droid, як файл CSV</string>
     <string name="updates_disabled_by_settings">Усі оновлення вимкнено у налаштуваннях мобільного інтернету/WiFi</string>
@@ -458,7 +458,7 @@
     <string name="menu_open">Відкрити</string>
     <string name="antidisabledalgorithmlist">Цей застосунок має слабкий підпис безпеки</string>
     <string name="antiknownvulnlist">Цей застосунок містить знану вразливість безпеки</string>
-    <string name="antinosourcesince">Джерельний код вже не доступний, оновлення неможливі.</string>
+    <string name="antinosourcesince">Початковий код вже недоступний, оновлення неможливе.</string>
     <string name="show_anti_feature_apps">Включити застосунки з небажаними можливостями</string>
     <string name="show_anti_feature_apps_on">Показати застосунки, які для роботи потребують небажані можливості</string>
     <string name="force_touch_apps">Включити застосунки, які потребують сенсорний екран</string>
@@ -524,7 +524,7 @@
     <string name="theme_follow_system">Дотримуватись системної</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендовано лише для OLED-екранів.</string>
     <string name="use_pure_black_dark_theme">Чисте чорне тло в темній темі</string>
-    <string name="banner_no_data_or_wifi">Дані або Wi-Fi не ввімкнуто</string>
+    <string name="banner_no_data_or_wifi">Мобільні дані або Wi-Fi не ввімкнуто</string>
     <string name="banner_no_internet">Немає Інтернету</string>
     <string name="share_apk_error">Не вдалося надіслати файл застосунку</string>
     <string name="has_disallow_install_unknown_sources">Цей користувач не може додати невідомі джерела, які містять нові репозиторії</string>
@@ -553,4 +553,5 @@
     <string name="antinsfwlist">Цей застосунок містить матеріали, які не повинні бути публічними або видимим повсюдно</string>
     <string name="warning_target_sdk">Цей застосунок створено для старої версії Android і не може оновлюватися автоматично.</string>
     <string name="repo_last_update_downloaded">Останнє оновлення завантажено</string>
+    <string name="app_error_open">Не вдалося запустити застосунок.</string>
 </resources>
