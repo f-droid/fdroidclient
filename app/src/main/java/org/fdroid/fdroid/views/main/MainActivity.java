@@ -26,6 +26,7 @@ import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -39,6 +40,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -90,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
+    private static final String BOTTOM_NAVIGATION_MENU_ID = "bottomNavigationMenuId";
+
     private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
     public static final String ACTION_REQUEST_SWAP = "requestSwap";
 
@@ -122,10 +126,14 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        setSelectedMenuInNav(sharedPreferences.getInt(BOTTOM_NAVIGATION_MENU_ID, R.id.latest));
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
 
-            if (item.getItemId() == R.id.nearby) {
+            final int itemId = item.getItemId();
+            sharedPreferences.edit().putInt(BOTTOM_NAVIGATION_MENU_ID, itemId).apply();
+            if (itemId == R.id.nearby) {
                 NearbyViewBinder.updateUsbOtg(MainActivity.this);
             }
 
