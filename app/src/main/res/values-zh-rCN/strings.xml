@@ -516,7 +516,7 @@
     <string name="latest__empty_state__upgrading">正在升级数据库……</string>
     <string name="use_ipfs_gateways">使用 IPFS 网关</string>
     <string name="use_ipfs_gateways_summary">如存储库支持，从 IPFS 镜像下载文件。</string>
-    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="app_name_basic">F-Droid 基础</string>
     <string name="about_title_basic">关于 F-Droid Basic</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">每夜版</string>
     <string name="antinsfwlist">此应用包含不应公开或随处可见的内容</string>
