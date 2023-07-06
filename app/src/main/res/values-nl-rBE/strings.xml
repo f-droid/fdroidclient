@@ -494,4 +494,10 @@
     <string name="notification_channel_installs_description">Toont installatiemeldingen van apps.</string>
     <string name="notification_channel_installs_title">Installaties</string>
     <string name="send_fdroid_metrics_report">Verstuur verslag van %s statistieken</string>
+    <string name="install_history_and_metrics">Installatiegeschiedenis en statistieken</string>
+    <string name="send_to_fdroid_metrics">Gebruiksdata versturen</string>
+    <string name="send_to_fdroid_metrics_summary">Verstuurt weekelijks anonieme gegevens naar F-Droid Statisiteken (vereist \"Behoud van installatiegeschiedenis\")</string>
+    <string name="send_fdroid_metrics_json">%s statistiekverslag als JSON-bestand</string>
+    <string name="fdroid_metrics_report">%s Statistiekverslag</string>
+    <string name="use_ipfs_gateways">Gebruik IPFS-gateways</string>
 </resources>
