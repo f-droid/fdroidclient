@@ -20,7 +20,6 @@
 package org.fdroid.fdroid.nearby;
 
 import android.Manifest;
-import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,6 +28,8 @@ import android.os.Environment;
 import android.os.Process;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.JobIntentService;
 import androidx.core.content.ContextCompat;
 
 import org.fdroid.fdroid.Utils;
@@ -46,7 +47,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * An {@link IntentService} subclass for scanning removable "external storage"
+ * An {@link JobIntentService} subclass for scanning removable "external storage"
  * for F-Droid package repos, e.g. SD Cards. This is intended to support
  * sharable package repos, so it ignores non-removable storage, like the fake
  * emulated sdcard from devices with only built-in storage.  This method will
@@ -63,26 +64,24 @@ import java.util.List;
  * @see <a href="https://stackoverflow.com/a/40201333">Universal way to write to external SD card on Android</a>
  * @see <a href="https://commonsware.com/blog/2017/11/14/storage-situation-external-storage.html"> The Storage Situation: External Storage </a>
  */
-public class SDCardScannerService extends IntentService {
+public class SDCardScannerService extends JobIntentService {
     public static final String TAG = "SDCardScannerService";
+    private static final int JOB_ID = TAG.hashCode();
 
     private static final String ACTION_SCAN = "org.fdroid.fdroid.nearby.SCAN";
 
     private static final List<String> SKIP_DIRS = Arrays.asList(".android_secure", "LOST.DIR");
 
-    public SDCardScannerService() {
-        super("SDCardScannerService");
-    }
 
     public static void scan(Context context) {
         Intent intent = new Intent(context, SDCardScannerService.class);
         intent.setAction(ACTION_SCAN);
-        context.startService(intent);
+        JobIntentService.enqueueWork(context, SDCardScannerService.class, JOB_ID, intent);
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        if (intent == null || !ACTION_SCAN.equals(intent.getAction())) {
+    protected void onHandleWork(@NonNull Intent intent) {
+        if (!ACTION_SCAN.equals(intent.getAction())) {
             return;
         }
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
@@ -94,7 +93,14 @@ public class SDCardScannerService extends IntentService {
                 continue;
             }
             Log.i(TAG, "getExternalFilesDirs " + f);
-            if (Environment.isExternalStorageRemovable(f)) {
+            boolean isExternalStorageRemovable;
+            try {
+                isExternalStorageRemovable = Environment.isExternalStorageRemovable(f);
+            } catch (IllegalArgumentException e) {
+                Utils.debugLog(TAG, e.toString());
+                continue;
+            }
+            if (isExternalStorageRemovable) {
                 String state = Environment.getExternalStorageState(f);
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {

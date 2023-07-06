@@ -26,6 +26,7 @@ import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -39,6 +40,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -90,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
 
+    private static final String BOTTOM_NAVIGATION_MENU_ID = "bottomNavigationMenuId";
+
     private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
     public static final String ACTION_REQUEST_SWAP = "requestSwap";
 
@@ -122,10 +126,14 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        setSelectedMenuInNav(sharedPreferences.getInt(BOTTOM_NAVIGATION_MENU_ID, R.id.latest));
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
 
-            if (item.getItemId() == R.id.nearby) {
+            final int itemId = item.getItemId();
+            sharedPreferences.edit().putInt(BOTTOM_NAVIGATION_MENU_ID, itemId).apply();
+            if (itemId == R.id.nearby) {
                 NearbyViewBinder.updateUsbOtg(MainActivity.this);
             }
 
@@ -140,13 +148,21 @@ public class MainActivity extends AppCompatActivity {
         AppUpdateStatusManager.getInstance(this).getNumUpdatableApps().observe(this, this::refreshUpdatesBadge);
 
         Intent intent = getIntent();
+        if (handleMainViewSelectIntent(intent)) {
+            return;
+        }
         handleSearchOrAppViewIntent(intent);
     }
 
+    /**
+     * {@link android.material.navigation.NavigationBarView} says "Menu items
+     * can also be used for programmatically selecting which destination is
+     * currently active. It can be done using {@code MenuItem.setChecked(true)}".
+     */
     private void setSelectedMenuInNav(int menuId) {
         int position = adapter.adapterPositionFromItemId(menuId);
         pager.scrollToPosition(position);
-        bottomNavigation.setSelectedItemId(position);
+        bottomNavigation.getMenu().getItem(position).setChecked(true);
     }
 
     private void initialRepoUpdateIfRequired() {
@@ -161,17 +177,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         FDroidApp.checkStartTor(this, Preferences.get());
-
-        if (getIntent().hasExtra(EXTRA_VIEW_UPDATES)) {
-            getIntent().removeExtra(EXTRA_VIEW_UPDATES);
-            setSelectedMenuInNav(R.id.updates);
-        } else if (getIntent().hasExtra(EXTRA_VIEW_NEARBY)) {
-            getIntent().removeExtra(EXTRA_VIEW_NEARBY);
-            setSelectedMenuInNav(R.id.nearby);
-        } else if (getIntent().hasExtra(EXTRA_VIEW_SETTINGS)) {
-            getIntent().removeExtra(EXTRA_VIEW_SETTINGS);
-            setSelectedMenuInNav(R.id.settings);
-        }
 
         // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
@@ -194,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+
+        if (handleMainViewSelectIntent(intent)) {
+            return;
+        }
+
         handleSearchOrAppViewIntent(intent);
 
         // This is called here as well as onResume(), because onNewIntent() is not called the first
@@ -229,6 +239,23 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             SDCardScannerService.scan(this);
         }
+    }
+
+    /**
+     * Handle an {@link Intent} that shows a specific tab in the main view.
+     */
+    private boolean handleMainViewSelectIntent(Intent intent) {
+        if (intent.hasExtra(EXTRA_VIEW_NEARBY)) {
+            setSelectedMenuInNav(R.id.nearby);
+            return true;
+        } else if (intent.hasExtra(EXTRA_VIEW_UPDATES)) {
+            setSelectedMenuInNav(R.id.updates);
+            return true;
+        } else if (intent.hasExtra(EXTRA_VIEW_SETTINGS)) {
+            setSelectedMenuInNav(R.id.settings);
+            return true;
+        }
+        return false;
     }
 
     /**
