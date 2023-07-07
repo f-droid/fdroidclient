@@ -147,7 +147,7 @@
     <string name="repo_not_yet_updated">Biltegi hau ez da erabili oraindik.
         Gaitu behar duzu dauzkan aplikazioak ikusteko.
     </string>
-    <string name="repo_confirm_delete_body">Biltegi bat ezabatzeak esan nahi du bertako aplikazioak ez direla eskuragarri izango. 
+    <string name="repo_confirm_delete_body">Biltegi bat ezabatzeak esan nahi du bertako aplikazioak ez direla eskuragarri izango.
 \n
 \nOharra: Aurretik instalatutako aplikazio guztiak gailuan jarraituko dute.</string>
     <string name="repo_disabled_notification">%1$s desgaitu da.

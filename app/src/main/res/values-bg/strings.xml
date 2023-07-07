@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Новото издание е подписано с различен ключ. За да бъде инсталирано първо трябва да премахнете старото. (Забележка: при премахване на приложението ще бъдат изтрити и неговите данни.)</string>
     <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това?</string>
     <string name="version">Издание</string>
@@ -61,7 +61,7 @@
     <string name="expert">Експертен режим</string>
     <string name="expert_on">Показва се допълнителна информация и настройки</string>
     <string name="search_hint">Търсене на приложения</string>
-    <string name="appcompatibility">Съвместимост на приложението</string>
+    <string name="appcompatibility">Съвместимост на приложенията</string>
     <string name="show_incompat_versions">Несъвместими издания</string>
     <string name="show_incompat_versions_on">Показват се и несъвместимите с устройството издания</string>
     <string name="local_repo">Местно хранилище</string>
@@ -423,7 +423,7 @@
     <string name="menu_open">Отвори</string>
     <string name="antiknownvulnlist">Приложението има позната уязвимост в сигурността</string>
     <string name="show_anti_feature_apps">Приложения с анти-функции</string>
-    <string name="show_anti_feature_apps_on">Покажи приложения които имат anti-features</string>
+    <string name="show_anti_feature_apps_on">Показване на приложения, които изискват анти-функции</string>
     <string name="hiding_calculator">Калкулатор</string>
     <string name="hiding_dialog_title">Скрий %s Сега</string>
     <string name="use_bluetooth">Използване Bluetooth</string>
@@ -472,7 +472,7 @@
     <string name="panic_apps_to_uninstall">Приложения, които да бъдат премахнати с прилежащите им данни</string>
     <string name="panic_will_be_wiped">Ще бъде деинсталирано и всички данни ще бъдат изтрити</string>
     <string name="panic_app_setting_none">Няма</string>
-    <string name="force_touch_apps_on">Покажи приложения изискаващи тъчскрийн независимо от хардуерната поддръжка</string>
+    <string name="force_touch_apps_on">Показване не приложения, изискаващи екран с докосване, независимо от хардуерната поддръжка</string>
     <string name="antinosourcesince">Изходният код не е наличен вече, не е възможно обновяване.</string>
     <string name="antidisabledalgorithmlist">Приложението има слаба защита на подписа</string>
     <string name="menu_select_for_wipe">Избери за изчистване</string>
@@ -491,7 +491,7 @@
     <string name="hiding_dialog_message">Сигурни ли сте, че искате да премахнете %1$s от стартовия панел\? Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="panic_hide_warning_message">В случай на паника това ще премахне %1$s от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="menu_downgrade">Даунгрейд</string>
-    <string name="send_version_and_uuid_summary">Включва изданието на това приложение и произволен уникален идентификатор, когато се извършва изтегляне, ще се отрази при рестарт на приложението.</string>
+    <string name="send_version_and_uuid_summary">При изтегляне се изпраща номера на изданието на това приложение, а също и произволен уникален идентификатор, в сила след рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Показва известия при обновяване на приложения и хранилища.</string>
     <string name="notification_channel_updates_title">Обновяване</string>
@@ -530,9 +530,16 @@
     <string name="antinonfreeassets">Несвободни активи</string>
     <string name="antinonfreenet">Несвободни мрежови услуги</string>
     <string name="antiothers">Други анти-функции</string>
-    <string name="antinsfw">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
+    <string name="antinsfw">Неподходящо за работа</string>
     <string name="menu_release_channel_beta">Разрешаване на издания бета</string>
     <string name="latest__empty_state__upgrading">Преформатиране на данните…</string>
     <string name="use_ipfs_gateways">Използване на шлюз на IPFS</string>
     <string name="use_ipfs_gateways_summary">Файловете се изтеглят от огледала на IPFS, ако хранилището го поддържа.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">Относно F-Droid Basic</string>
+    <string name="antinsfwlist">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
+    <string name="repo_last_update_downloaded">Последното обновяване е изтеглено</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Нощни компилации</string>
+    <string name="warning_target_sdk">Приложението е създадено за по-ранно изданиена Андроид и не може да бъде обновено автоматично.</string>
+    <string name="app_error_open">Приложението не може да бъде отворено.</string>
 </resources>

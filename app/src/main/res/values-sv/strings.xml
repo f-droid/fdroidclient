@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all internt lagrad data som tillhör appen kommer att raderas när det avinstalleras)</string>
     <string name="installIncompatible">Appen är inkompatibel med din enhet, installera ändå?</string>
     <string name="version">Version</string>
@@ -108,13 +108,13 @@
     </string>
     <string name="unknown">Okänd</string>
     <string name="repo_confirm_delete_title">Radera förråd?</string>
-    <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga. 
-\n 
+    <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga.
+\n
 \nObservera: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
     <string name="repo_disabled_notification">Inaktiverade %1$s.
 \n
 \nDu måste återaktivera detta förråd för att installera appar från det.</string>
-    <string name="repo_searching_address">Söker efter paketförråd på 
+    <string name="repo_searching_address">Söker efter paketförråd på
 \n%1$s</string>
     <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
     <string name="requires_features">Kräver: %1$s</string>
@@ -364,7 +364,7 @@
         <item quantity="other">Uppdaterades för %1$d månader sedan</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Uppdaterades för %1$d år sedan</item>
+        <item quantity="one">Uppdaterad för %1$d år sedan</item>
         <item quantity="other">Uppdaterades för %1$d år sedan</item>
     </plurals>
     <string name="by_author_format">av %s</string>
@@ -527,9 +527,16 @@
     <string name="antitrack">Spårning</string>
     <string name="antiupstreamnonfree">Icke-fri uppströms</string>
     <string name="antiothers">Andra antifunktioner</string>
-    <string name="antinsfw">Denna app har ett innehåll som inte bör publiceras eller vara synligt var som helst</string>
+    <string name="antinsfw">Inte Säkert för Arbetet</string>
     <string name="menu_release_channel_beta">Tillåt betauppdateringar</string>
     <string name="latest__empty_state__upgrading">Uppdaterar databas…</string>
     <string name="use_ipfs_gateways">Använd IPFS-gateways</string>
     <string name="use_ipfs_gateways_summary">Ladda ner filer från IPFS-speglar, om de stöds av lagringsplatsen.</string>
+    <string name="app_name_basic">F-Droid Standard</string>
+    <string name="about_title_basic">Om F-Droid Standard</string>
+    <string name="antinsfwlist">Den här appen innehåller innehåll som inte borde publiceras eller vara synlig någonstans</string>
+    <string name="app_error_open">Kunde inte starta app.</string>
+    <string name="repo_last_update_downloaded">Senaste uppdateringen nerladdad</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Nattliga byggnationer</string>
+    <string name="warning_target_sdk">Den här appen byggdes för en äldre version av Android och kan inte uppdateras automatiskt.</string>
 </resources>

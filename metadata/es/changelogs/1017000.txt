@@ -1,0 +1,6 @@
+* Muchas correcciones de errores 
+* Mostrar los iconos de los repositorios en la lista de los mismos 
+* Mostrar las razones para las anti-funciones (donde esté disponible) 
+* Actualizaciones desatendidas sin extensión privilegiada (F-Droid Basic sólo por ahora) 
+* Mostrar el tamaño de la aplicación en la pantalla de los detalles de la aplicación (sólo en modo experto) 
+* Nombres de las aplicaciones ligeramente más oscuros en las listas de las aplicaciones para mejorar la lectura

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">應用程式的新舊版本使用了不同的金鑰簽署。如要安裝新版本，您必須先解除安裝舊版本。請於完成該操作後再試一次(注意：解除安裝將抹除該應用程式內部已存儲的資料)</string>
     <string name="installIncompatible">應用程式與您的裝置不相容。仍要繼續安裝嗎？</string>
@@ -128,7 +128,7 @@
     <string name="repo_not_yet_updated">此軟體庫尚未被使用。您需要啟用它才能檢視其中的應用程式。</string>
     <string name="repo_confirm_delete_title">要刪除軟體庫嗎？</string>
     <string name="repo_confirm_delete_body">刪除軟體庫後，來自該軟體庫中的應用程式將不再出現。
-\n 
+\n
 \n注意：所有之前已安裝的應用程式會保留在您的裝置上。</string>
     <string name="repo_disabled_notification">已停用 %1$s。
 \n
@@ -513,9 +513,16 @@
     <string name="antinonfreenet">非自由的網路服務</string>
     <string name="antinonfreedep">非自由的相依性</string>
     <string name="antiothers">其他反特徵</string>
-    <string name="antinsfw">此應用可能包含裸露、暴力、色情或冒犯等不適宜公眾場合的內容</string>
+    <string name="antinsfw">不適合在工作場所使用</string>
     <string name="menu_release_channel_beta">允許測試版更新</string>
     <string name="latest__empty_state__upgrading">正在升級資料庫…</string>
     <string name="use_ipfs_gateways">使用 IPFS 閘道</string>
     <string name="use_ipfs_gateways_summary">從 IPFS 鏡像下載檔案 (若軟體庫支援)。</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="antinsfwlist">此應用可能包含裸露、暴力、色情或冒犯等不適宜公眾場合的內容</string>
+    <string name="repo_last_update_downloaded">上次下載的更新</string>
+    <string name="warning_target_sdk">此應用程式是建構給舊版 Android 使用，無法自動更新。</string>
+    <string name="about_title_basic">關於 F-Droid Basic</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">每夜建構版本</string>
+    <string name="app_error_open">無法啟動應用程式。</string>
 </resources>

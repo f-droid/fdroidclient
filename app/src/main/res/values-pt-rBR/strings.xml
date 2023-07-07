@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova
         versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga
         todos os dados internos armazenados pelo aplicativo)
@@ -403,7 +403,7 @@
     <string name="app_details__no_versions__show_incompat_versions">Para mostrar versões incompatíveis aqui mesmo assim, ative a configuração \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">Nenhuma versão com assinatura compatível</string>
     <string name="app_details__no_versions__none_compatible_with_device">Sem versões compatíveis para o dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com nenhuma versão disponível. Desinstalar o aplicativo permitirá que você veja e instale versões compatíveis. Isto frequentemente ocorre com aplicativos instalados via Google Play ou outras fontes, caso eles estejam assinados por um certificado diferente.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com nenhuma versão disponível. Desinstalar o aplicativo permitirá que você veja as versões compatíveis e instale novamente. Geralmente, isso ocorre pois o aplicativo foi assinado com um certificado diferente ao instalar via Google Play ou outras fontes.</string>
     <string name="app_list__dismiss_app_update">Atualização ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Download cancelado</string>
@@ -470,7 +470,7 @@
     <string name="install_history">Histórico de instalações</string>
     <string name="install_history_summary">Visualizar o registro privado de todas instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
-    <string name="send_version_and_uuid_summary">Inclui a versão deste aplicativo e um aleatório, único ID enquanto baixar, torna-se efetivo após a reinicialização do aplicativo.</string>
+    <string name="send_version_and_uuid_summary">Inclui a versão deste aplicativo e um ID único e aleatório quando baixar. Se aplica após reiniciar a aplicação.</string>
     <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas por causa das configurações de Dados/WiFi</string>
     <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponível.</string>
     <string name="send_installed_apps">Compartilhar aplicativos instalados</string>
@@ -551,9 +551,16 @@
     <string name="antinosource">Código-fonte não está mais disponível</string>
     <string name="antinonfreeassets">Conteúdos não livres</string>
     <string name="antiothers">Outras características indesejadas</string>
-    <string name="antinsfw">Esta aplicativo contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string name="antinsfw">Impróprio para o Ambiente de Trabalho</string>
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
     <string name="latest__empty_state__upgrading">Atualizando banco de dados…</string>
     <string name="use_ipfs_gateways">Usar gateways IPFS</string>
     <string name="use_ipfs_gateways_summary">Baixar arquivos de mirrors IPFS, caso suportado pelo repositório.</string>
+    <string name="app_name_basic">F-Droid Básico</string>
+    <string name="about_title_basic">Sobre o F-Droid Básico</string>
+    <string name="antinsfwlist">Este aplicativo contém conteúdo que não deve ser público ou visível em todo lugar</string>
+    <string name="repo_last_update_downloaded">Última atualização baixada</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">noturna</string>
+    <string name="warning_target_sdk">Este aplicativo foi compilado para uma versão antiga do Android e não pode ser atualizado automaticamente.</string>
+    <string name="app_error_open">Não foi possível iniciar o aplicativo.</string>
 </resources>

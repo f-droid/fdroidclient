@@ -1,0 +1,6 @@
+* Wiele poprawek błędów
+* Wyświetlanie ikon repozytoriów na liście repozytoriów
+* Wyświetlanie powodów niepożądanych funkcji (jeśli dostępne)
+* Nienadzorowane aktualizacje bez uprzywilejowanego rozszerzenia (na razie tylko F-Droid Basic)
+* Wyświetlanie rozmiaru aplikacji na ekranie szczegółów aplikacji (tylko tryb eksperta)
+* Nieco ciemniejsze nazwy aplikacji na listach aplikacji w celu poprawy czytelności

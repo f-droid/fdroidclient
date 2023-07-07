@@ -107,10 +107,10 @@
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
     <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.
-\n 
+\n
 \nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
-    <string name="repo_disabled_notification">%1$s отключен. 
-\n 
+    <string name="repo_disabled_notification">%1$s отключен.
+\n
 \nВам нужно будет повторно включить этот репозиторий для установки приложений из него.</string>
     <string name="not_on_same_wifi">Данное устройство не подключено к той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте подключиться к этой сети: %s</string>
     <string name="requires_features">Требуется: %1$s</string>
@@ -558,4 +558,5 @@
     <string name="warning_target_sdk">Это приложение было разработано для старой версии Android и не может быть обновлено автоматически.</string>
     <string name="antinsfwlist">Это приложение содержит контент, который не должен публиковаться или быть доступным повсеместно</string>
     <string name="repo_last_update_downloaded">Последнее обновление загружено</string>
+    <string name="app_error_open">Не удалось запустить приложение.</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">De nieuwe versie is met een andere sleutel ondertekend dan de oude versie. Om de nieuwe versie te installeren, moet de oude eerst verwijderd worden. Probeer het daarna opnieuw. (Let op: bij het verwijderen worden de interne gegevens van de app ook verwijderd)</string>
     <string name="installIncompatible">Deze app is incompatibel met dit apparaat. Wilt u deze toch installeren\?</string>
     <string name="version">Versie</string>
@@ -85,9 +85,9 @@
     <string name="proxy_host_summary">Hostnaam van proxy (bijv. 127.0.0.1)</string>
     <string name="proxy_port">Proxypoort</string>
     <string name="proxy_port_summary">Poortnummer van proxy (bijv. 8118)</string>
-    <string name="status_download">%2$s / %3$s (%4$d%%) worden 
+    <string name="status_download">%2$s / %3$s (%4$d%%) worden
 \nvan %1$s gedownload</string>
-    <string name="status_connecting_to_repo">Verbinding met 
+    <string name="status_connecting_to_repo">Verbinding met
 \n%1$s aan het maken</string>
     <string name="repos_unchanged">Alle applicatiebronnen zijn up-to-date</string>
     <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
@@ -115,7 +115,7 @@
 \n
 \n U moet deze bron weer inschakelen indien u er apps van wil installeren.</string>
     <string name="repo_added">Pakketbron %1$s opgeslagen.</string>
-    <string name="repo_searching_address">Er wordt gezocht naar applicatiebronnen op 
+    <string name="repo_searching_address">Er wordt gezocht naar applicatiebronnen op
 \n%1$s</string>
     <string name="not_on_same_wifi">Je apparaat zit niet op hetzelfde wifinetwerk als de lokale bron die je zojuist hebt toegevoegd! Probeer om netwerk %s bij te treden</string>
     <string name="requires_features">Benodigd: %1$s</string>
@@ -151,7 +151,7 @@
     <string name="empty_installed_app_list">Geen apps geïnstalleerd.
 \n
 \nEr bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat u uw applicatiebronnen moet bijwerken, of dat de bronnen geen van uw apps beschikbaar stellen.</string>
-    <string name="empty_can_update_app_list">Gefeliciteerd! 
+    <string name="empty_can_update_app_list">Gefeliciteerd!
 \nAl uw apps zijn up-to-date.</string>
     <string name="install_error_unknown">De installatie is door een onbekende fout mislukt</string>
     <string name="uninstall_error_unknown">De applicatie kon door een onbekende fout niet gedeïnstalleerd worden</string>
@@ -527,7 +527,7 @@
     <string name="antinonfreeassets">Niet-vrije assets</string>
     <string name="antiothers">Andere anti-features</string>
     <string name="antitrack">Tracking</string>
-    <string name="antinsfw">Deze app bevat content die ergens anders niet gepubliceerd of getoond mag worden</string>
+    <string name="antinsfw">Niet veilig voor gebruik</string>
     <string name="antinonfreead">Niet-vrije add-ons</string>
     <string name="app_list_results_hidden_antifeature_settings">Sommige resultaten zijn verborgen gebaseerd op je antifeature-instellingen.</string>
     <string name="antiupstreamnonfree">Upstream niet-vrij</string>
@@ -536,4 +536,10 @@
     <string name="menu_release_channel_beta">Sta Beta-updates toe</string>
     <string name="use_ipfs_gateways">Gebruik IPFS-gateways</string>
     <string name="use_ipfs_gateways_summary">Download bestanden van IPFS-mirrors, als dit ondersteund wordt door de repo.</string>
+    <string name="app_name_basic">F-Droid Basis</string>
+    <string name="about_title_basic">About F-Droid Basis</string>
+    <string name="repo_last_update_downloaded">Laatste update gedownload</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Nightly Builds</string>
+    <string name="warning_target_sdk">Deze app is gebouwd voor een oudere versie van Android en kan niet automatisch bijgewerkt worden.</string>
+    <string name="antinsfwlist">Deze app bevat inhoud dat niet publiekelijk of zichtbaar mag zijn overal</string>
 </resources>

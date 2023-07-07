@@ -555,5 +555,6 @@
     <string name="antinsfwlist">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
     <string name="repo_last_update_downloaded">Ostatnia pobrana aktualizacja</string>
     <string name="warning_target_sdk">Ta aplikacja została skompilowana dla starszej wersji Androida i nie może być aktualizowana automatycznie.</string>
-    <string name="category_Nightly">Kompilacje nightly</string>
+    <string name="category_Nightly">nightly</string>
+    <string name="app_error_open">Nie udało się uruchomić aplikacji</string>
 </resources>

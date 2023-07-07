@@ -460,7 +460,7 @@
     <string name="send_install_history">Odeslat historii instalací</string>
     <string name="send_history_csv">%s historii instalací jako CSV soubor</string>
     <string name="send_version_and_uuid">Poslat verzi a nikde se neopakující identifikátor na servery</string>
-    <string name="send_version_and_uuid_summary">Při stahování zahrnout verzi této aplikace a náhodný, neopakující se identifikátor (změna se projeví po restartu aplikace).</string>
+    <string name="send_version_and_uuid_summary">Při stahování zahrnout verzi této aplikace a náhodné, jedinečné ID (projeví se při příštím restartu aplikace).</string>
     <string name="updates_disabled_by_settings">Veškeré aktualizace vypnuty kvůli nastavením dat/WiFi</string>
     <string name="antinosourcesince">Zdrojový kód už není k dispozici, aktualizace nejsou možné.</string>
     <string name="share_repository">Sdílet repozitář</string>
@@ -551,5 +551,6 @@
     <string name="antinsfwlist">Tato aplikace zahrnuje obsah, který by neměl být zveřejňován nebo viditelný na všech místech</string>
     <string name="warning_target_sdk">Tato aplikace byla sestavena pro starší verzi systému Android a nelze ji automaticky aktualizovat.</string>
     <string name="repo_last_update_downloaded">Poslední aktualizace stažena</string>
-    <string name="category_Nightly">Nestabilní sestavení</string>
+    <string name="category_Nightly">nestabilní</string>
+    <string name="app_error_open">Nepodařilo se spustit aplikaci.</string>
 </resources>

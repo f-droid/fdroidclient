@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
     <string name="installIncompatible">Aplikasi tidak kompatibel dengan perangkat Anda, tetap pasang\?</string>
     <string name="version">Versi</string>
@@ -154,7 +154,7 @@
 \n
 \nAnda perlu mengaktifkan kembali repositori ini untuk memasang aplikasinya.</string>
     <string name="repo_added">Menyimpan paket Repositori %1$s.</string>
-    <string name="repo_searching_address">Mencari repositori paket di 
+    <string name="repo_searching_address">Mencari repositori paket di
 \n%1$s</string>
     <string name="not_on_same_wifi">Perangkat Anda tidak berada pada jaringan Wi-Fi yang sama dengan repo lokal yang baru saja anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
     <string name="requires_features">Memerlukan: %1$s</string>
@@ -518,9 +518,16 @@
     <string name="antiknownvuln">Kerentanan yang Diketahui</string>
     <string name="antinosource">Kode Sumber Tidak Lagi Tersedia</string>
     <string name="antiothers">Anti-fitur lainnya</string>
-    <string name="antinsfw">Aplikasi ini berisi konten yang tidak boleh dipublikasikan atau terlihat di mana-mana</string>
+    <string name="antinsfw">Tidak Aman untuk Kerja</string>
     <string name="menu_release_channel_beta">Perbolehkan Pembaruan Beta</string>
     <string name="latest__empty_state__upgrading">Meningkatkan basis data…</string>
     <string name="use_ipfs_gateways">Gunakan gerbang IPFS</string>
     <string name="use_ipfs_gateways_summary">Unduh berkas dari cermin IPFS, jika didukung oleh repositori.</string>
+    <string name="app_name_basic">F‐Droid Basic</string>
+    <string name="antinsfwlist">Aplikasi ini berisi konten yang seharusnya tidak dipublikasikan atau terlihat di mana pun</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">malaman</string>
+    <string name="about_title_basic">Tentang F‐Droid Basic</string>
+    <string name="warning_target_sdk">Aplikasi ini dibuat untuk versi Android yang lawas dan tidak dapat diperbarui secara otomatis.</string>
+    <string name="repo_last_update_downloaded">Pembaruan terakhir diunduh</string>
+    <string name="app_error_open">Tidak dapat meluncurkan aplikasi.</string>
 </resources>

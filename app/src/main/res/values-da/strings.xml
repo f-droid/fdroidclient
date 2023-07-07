@@ -133,8 +133,8 @@
     <string name="repo_confirm_delete_body">Slettes et arkiv, vil dets apps ikke længere være tilgængelige.
 \n
 \nBemærk: Alle allerede installerede apps vil forblive på din enhed.</string>
-    <string name="repo_disabled_notification">Deaktiverede %1$s. 
-\n 
+    <string name="repo_disabled_notification">Deaktiverede %1$s.
+\n
 \nDu skal genaktivere dette depot for at installere apps fra det.</string>
     <string name="repo_added">Gemte pakkearkiv %1$s.</string>
     <string name="repo_searching_address">Leder efter pakkearkiv på
@@ -162,8 +162,8 @@
     <string name="category_Theming">Temaer</string>
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skrivning</string>
-    <string name="empty_installed_app_list">Ingen apps installeret. 
-\n 
+    <string name="empty_installed_app_list">Ingen apps installeret.
+\n
 \nDer er apps på din enhed, men de er ikke tilgængelige i F-Droid. Det kan være fordi du skal opdatere dine depoter, eller også indeholder depoterne faktisk ikke dine apps.</string>
     <string name="empty_can_update_app_list">Tillykke!\nDine apps er opdaterede.</string>
     <string name="install_error_unknown">Kunne ikke installere pga. en ukendt fejl</string>

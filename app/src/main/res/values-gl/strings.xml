@@ -49,7 +49,7 @@
     <string name="status_download">Estase a baixar
 \n%2$s / %3$s (%4$d%%) dende
 \n%1$s</string>
-    <string name="status_connecting_to_repo">Estase a conectar con 
+    <string name="status_connecting_to_repo">Estase a conectar con
 \n%1$s</string>
     <string name="no_permissions">Sen permisos</string>
     <string name="no_handler_app">Non tes ningunha aplicación dispoñíbel que poida manexar %s.</string>
@@ -101,8 +101,8 @@
     <string name="enable_proxy_summary">Axustar proxy HTTP para tódalas peticións de rede</string>
     <string name="proxy_port">Porto do proxy</string>
     <string name="proxy_port_summary">Número de porto do teu proxy (p.ex. 8118)</string>
-    <string name="status_download_unknown_size">Estase a baixar 
-\n%2$s dende 
+    <string name="status_download_unknown_size">Estase a baixar
+\n%2$s dende
 \n%1$s</string>
     <string name="banner_updating_repositories">Estan a se actualizar os repositorios</string>
     <string name="status_processing_xml_percent">Estase a procesar %2$s / %3$s (%4$d%%) dende %1$s</string>
@@ -181,14 +181,14 @@
     <string name="repo_not_yet_updated">Este repositorio aínda non se empregou. Terás que activalo para ollar as aplicacións que ofrece.</string>
     <string name="unknown">Descoñecida</string>
     <string name="repo_confirm_delete_title">Eliminar o repositorio?</string>
-    <string name="repo_confirm_delete_body">Eliminar un repositorio implica que as túas aplicacións deixen de estar dispoñíbeis. 
-\n 
+    <string name="repo_confirm_delete_body">Eliminar un repositorio implica que as túas aplicacións deixen de estar dispoñíbeis.
+\n
 \nNota: Tódalas aplicacións instalados anteriormente conservaranse no teu dispositivo.</string>
     <string name="repo_disabled_notification">Desactivado %1$s.
 \n
 \nTerás que volver a activar o repositorio para instalar as túas aplicacións.</string>
     <string name="repo_added">Gardado o repositorio de paquetes %1$s .</string>
-    <string name="repo_searching_address">Estase a procurar o repositorio de paquetes en 
+    <string name="repo_searching_address">Estase a procurar o repositorio de paquetes en
 \n%1$s</string>
     <string name="not_on_same_wifi">O teu dispositivo non está na mesma rede Wi-Fi que o repositorio local que engadiches! Tenta unirte á mesma rede: %s</string>
     <string name="requires_features">Require: %1$s</string>

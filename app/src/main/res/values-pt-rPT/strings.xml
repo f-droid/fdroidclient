@@ -134,7 +134,7 @@
 \n
 \nTem que tornar a ativar o repositório para poder instalar aplicações.</string>
     <string name="repo_added">Guardado o repositório de pacotes %1$s.</string>
-    <string name="repo_searching_address">A procurar um repositório de pacotes em 
+    <string name="repo_searching_address">A procurar um repositório de pacotes em
 \n%1$s</string>
     <string name="not_on_same_wifi">O seu aparelho não está ligado à rede Wi-Fi do repositório adicionado! Tente entrar nesta rede: %s</string>
     <string name="requires_features">Requer: %1$s</string>
@@ -538,9 +538,11 @@
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
     <string name="antiothers">Outras características indesejadas</string>
-    <string name="antinsfw">Esta aplicação contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string name="antinsfw">Não é seguro para o trabalho</string>
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
     <string name="latest__empty_state__upgrading">Atualizando o banco de dados…</string>
     <string name="use_ipfs_gateways">Usar gateways de IPFS</string>
     <string name="use_ipfs_gateways_summary">Descarregar ficheiros de espelhos de IPFS, se forem suportados pelo repo.</string>
+    <string name="repo_last_update_downloaded">Última atualização descarregada</string>
+    <string name="warning_target_sdk">Esta app foi criada para uma versão do Android mais antiga e não pode ser automaticamente atualizada.</string>
 </resources>

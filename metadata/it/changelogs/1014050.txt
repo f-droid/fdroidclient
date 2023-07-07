@@ -1,0 +1,17 @@
+* Rifatto il menu Condividi per usare opzioni integrate come Nearby
+
+* Migliorato il flusso e la navigazione di Nearby con la correzione di molti bug
+
+* Miglioramenti al Material design ( @proletarius101)
+
+* Le app senza icone PNG vengono ora mostrate nella scheda Recenti (@ashutoshgngwr)
+
+* Migliore gestione delle icone con impostazioni di dati/WiFi limitati
+
+* Supporta più scanner di codici a barre (@Lugerun)
+
+* Permetti di scegliere quali AntiCaratteristiche mostrare
+
+* Blocca l'aggiunta di repository quando l'amministratore vieta le "fonti sconosciute"
+
+* Rimossa l'impostazione "Permetti le richieste push"

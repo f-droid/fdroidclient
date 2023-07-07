@@ -164,8 +164,8 @@
     <string name="hide_on_long_search_press_title">ਖੋਜ ਬਟਨ ਨਾਲ ਲੁਕਾਓ</string>
     <string name="unverified">ਗੈਰ-ਪ੍ਰਮਾਣਿਤ</string>
     <string name="category_System">ਸਿਸਟਮ</string>
-    <string name="status_download_unknown_size">%1$s ਤੋਂ 
-\n%2$s 
+    <string name="status_download_unknown_size">%1$s ਤੋਂ
+\n%2$s
 \nਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ</string>
     <string name="empty_can_update_app_list">ਵਧਾਈਆਂ!
 \nਤੁਹਾਡੀਆਂ ਐਪਾਂ ਅੱਪ ਟੂ ਡੇਟ ਹਨ।</string>
@@ -239,7 +239,7 @@
     <string name="repo_description">ਵਰਣਨ</string>
     <string name="repo_official_mirrors">ਅਧਿਕਾਰਤ ਮਿਰਰ</string>
     <string name="repo_disabled_notification">%1$s ਨੂੰ ਅਯੋਗ ਬਣਾਇਆ ਗਿਆ।
-\n 
+\n
 \nਤੁਹਾਨੂੰ ਇਸ ਤੋਂ ਐਪਸ ਸਥਾਪਤ ਕਰਨ ਲਈ ਇਸ ਰਿਪੋਜ਼ਟਰੀ ਨੂੰ ਮੁੜ-ਸਮਰੱਥ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।</string>
     <string name="requires_features">ਲੋੜ ਹੈ: %1$s</string>
     <string name="swap_nfc_description">ਜੇਕਰ ਤੁਹਾਡੇ ਦੋਸਤ ਨੇ F-Droid ਅਤੇ NFC ਨੂੰ ਚਾਲੂ ਕੀਤਾ ਹੈ ਤਾਂ ਆਪਣੀਆਂ ਡਿਵਾਈਸਾਂ ਨੂੰ ਇਕੱਠੇ ਛੂਹੋ।</string>
@@ -387,8 +387,8 @@
     <string name="panic_hide_summary">ਐਪ ਆਪਣੇ ਆਪ ਨੂੰ ਲੁਕਾ ਲਵੇਗੀ</string>
     <string name="hiding_dialog_title">ਹੁਣੇ %s ਨੂੰ ਲੁਕਾਓ</string>
     <string name="download_404">ਬੇਨਤੀ ਕੀਤੀ ਫਾਈਲ ਨਹੀਂ ਮਿਲੀ।</string>
-    <string name="status_download">ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ 
-\n%2$s / %3$s (%4$d%%) ਤੋਂ 
+    <string name="status_download">ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ
+\n%2$s / %3$s (%4$d%%) ਤੋਂ
 \n%1$s</string>
     <string name="banner_updating_repositories">ਰਿਪੌਜ਼ਟਰੀਆਂ ਨੂੰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ</string>
     <string name="banner_no_internet">ਕੋਈ ਇੰਟਰਨੈੱਟ ਨਹੀਂ</string>
@@ -536,5 +536,6 @@
     <string name="repo_last_update_downloaded">ਤਾਜ਼ਾ ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਕੀਤਾ ਗਿਆ</string>
     <string name="warning_target_sdk">ਇਹ ਐਪ ਐਂਡਰਾਇਡ ਦੇ ਪੁਰਾਣੇ ਸੰਸਕਰਣ ਲਈ ਬਣਾਈ ਗਈ ਸੀ ਅਤੇ ਇਸ ਨੂੰ ਆਪਣੇ-ਆਪ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
     <string name="antinsfwlist">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਜਾਂ ਹਰ ਥਾਂ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ</string>
-    <string name="category_Nightly">ਨਾਈਟਲੀ ਬਿਲਡਜ਼</string>
+    <string name="category_Nightly">ਨਾਈਟਲੀ</string>
+    <string name="app_error_open">ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਲਾਂਚ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।</string>
 </resources>

@@ -247,7 +247,7 @@
     <string name="status_download_unknown_size">%2$s wordt gedownload van %1$s</string>
     <string name="download_404">Het gevraagde bestand is niet gevonden.</string>
     <string name="banner_updating_repositories">Applicatiebronnen worden bijgewerkt</string>
-    <string name="status_connecting_to_repo">Verbinding met 
+    <string name="status_connecting_to_repo">Verbinding met
 \n%1$s aan het maken</string>
     <string name="status_inserting_x_apps">Appgegevens van %3$s worden opgeslagen (%1$d/%2$d)</string>
     <string name="repos_unchanged">Alle applicatiebronnen zijn up-to-date</string>
@@ -268,14 +268,14 @@
     <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Schakel de bron in om de beschikbare apps te kunnen zien.</string>
     <string name="unknown">Onbekend</string>
     <string name="repo_confirm_delete_title">Wilt u deze applicatiebron verwijderen\?</string>
-    <string name="repo_confirm_delete_body">Als een bron wordt verwijderd, zijn de apps in die bron niet meer beschikbaar. 
-\n 
+    <string name="repo_confirm_delete_body">Als een bron wordt verwijderd, zijn de apps in die bron niet meer beschikbaar.
+\n
 \nLet op: eerder geïnstalleerde apps blijven op dit apparaat staan.</string>
-    <string name="repo_disabled_notification">%1$s uitgeschakeld. 
-\n 
+    <string name="repo_disabled_notification">%1$s uitgeschakeld.
+\n
 \nU moet deze bron weer inschakelen indien u er apps van wil installeren.</string>
     <string name="repo_added">Applicatiebron %1$s opgeslagen.</string>
-    <string name="repo_searching_address">Aan het zoeken naar applicatiebron op 
+    <string name="repo_searching_address">Aan het zoeken naar applicatiebron op
 \n%1$s</string>
     <string name="requires_features">Vereist: %1$s</string>
     <string name="wifi_ap">Hotspot</string>
@@ -284,8 +284,8 @@
         <item quantity="one">Geef %d weer</item>
         <item quantity="other">Geef alle %d weer</item>
     </plurals>
-    <string name="empty_installed_app_list">Geen apps geïnstalleerd. 
-\n 
+    <string name="empty_installed_app_list">Geen apps geïnstalleerd.
+\n
 \nEr bevinden zich apps op dit apparaat, maar deze zijn niet beschikbaar via F-Droid. Het kan zijn dat de bronnen moet bijgewerkt worden, of dat de bronnen deze apps echt niet bevatten.</string>
     <string name="empty_can_update_app_list">Gefeliciteerd!
 \nAlle apps zijn up-to-date.</string>
@@ -494,4 +494,10 @@
     <string name="notification_channel_installs_description">Toont installatiemeldingen van apps.</string>
     <string name="notification_channel_installs_title">Installaties</string>
     <string name="send_fdroid_metrics_report">Verstuur verslag van %s statistieken</string>
+    <string name="install_history_and_metrics">Installatiegeschiedenis en statistieken</string>
+    <string name="send_to_fdroid_metrics">Gebruiksdata versturen</string>
+    <string name="send_to_fdroid_metrics_summary">Verstuurt weekelijks anonieme gegevens naar F-Droid Statisiteken (vereist \"Behoud van installatiegeschiedenis\")</string>
+    <string name="send_fdroid_metrics_json">%s statistiekverslag als JSON-bestand</string>
+    <string name="fdroid_metrics_report">%s Statistiekverslag</string>
+    <string name="use_ipfs_gateways">Gebruik IPFS-gateways</string>
 </resources>

@@ -261,7 +261,7 @@
     <string name="repo_confirm_delete_body">Það að eyða hugbúnaðarsafni þýðir að forrit úr því safni verða ekki lengur tiltæk í F-Droid.
 \n
 \nAthugaðu: Öll forrit sem þegar hafa verið sett inn, munu haldast á tækinu þínu.</string>
-    <string name="repo_disabled_notification">Gerði %1$s óvirkt. 
+    <string name="repo_disabled_notification">Gerði %1$s óvirkt.
 \n
 \nÞú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.</string>
     <string name="not_on_same_wifi">Tækið þitt er ekki á sama Wi-Fi netinu og staðværa hugbúnaðarsafnið sem þú varst að

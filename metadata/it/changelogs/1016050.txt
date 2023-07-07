@@ -1,0 +1,7 @@
+Modernizzazione completa del codice di scaricamento, indicizzazione e del database. Più veloce e resiliente usando meno banda. È inoltre più mantenibile con una suite di test migliorata. Corretti molti crash e vecchi bug.
+
+* Funziona meglio su dispositivi economici con meno memoria.
+
+* Corregge #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Nuova lingua: Cantonese (yue)

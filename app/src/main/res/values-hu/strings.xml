@@ -61,8 +61,8 @@
     <string name="no_handler_app">Nincs elérhető alkalmazás, ami képes ezt kezelni: %s.</string>
     <string name="theme">Téma</string>
     <string name="repo_not_yet_updated">Ezt a tárolót még nem használta. Engedélyeznie kell, hogy megtekinthesse az általa kínált alkalmazásokat.</string>
-    <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások többé nem lesznek elérhetőek. 
-\n 
+    <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások többé nem lesznek elérhetőek.
+\n
 \nMegjegyzés: Minden korábban telepített alkalmazás az eszközön marad.</string>
     <string name="repo_disabled_notification">%1$s letiltva.
 \n

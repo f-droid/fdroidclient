@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Новая версія падпісаная ключом, адрозным ад старой. Для ўсталёўкі новай версіі неабходна спачатку выдаліць старую. Зрабіце гэта і паспрабуйце зноў. (Майце на ўвазе, што выдаленне праграмы прывядзе да знішчэння ўсіх яе даных)</string>
     <string name="installIncompatible">Праграма несумяшчальная з вашай прыладай. Усё адно ўсталяваць\?</string>
@@ -550,7 +550,14 @@
     <string name="antiads">Рэклама</string>
     <string name="menu_show_install_history">Паказваць гісторыю ўсталёвак</string>
     <string name="antidisabledalgorithm">Зарэгістравана Выкарыстоўванне Небяспечнага Алгарытму</string>
-    <string name="antinsfw">Гэта прыкладанне ўтрымлівае кантэнт які можа не падысці да ўсіх узростаў</string>
+    <string name="antinsfw">Небяспечна для працы (NSFW)</string>
     <string name="use_pure_black_dark_theme">Выкарыстоўваць чысты чорны фон у цёмнай тэме</string>
     <string name="use_pure_black_dark_theme_summary">Рэкамендуецца толькі для OLED экранаў.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Начныя зборкі</string>
+    <string name="warning_target_sdk">Гэта праграма было створана для старой версіі Android і не можа абнаўляцца аўтаматычна.</string>
+    <string name="repo_last_update_downloaded">Спампавана апошняе абнаўленне</string>
+    <string name="about_title_basic">Пра F-Droid Basic</string>
+    <string name="antinsfwlist">Гэта праграма змяшчае змесціва, якое не павінна быць апублікаваным або бачным усюды</string>
+    <string name="app_error_open">Не атрымалася запусціць праграму.</string>
 </resources>

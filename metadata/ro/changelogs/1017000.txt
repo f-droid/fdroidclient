@@ -1,0 +1,6 @@
+* Multe corecturi de erori
+* Afișarea pictogramelor depozitelor în lista de depozite
+* Afișarea motivelor pentru caracteristici periculoase (acolo unde este disponibil)
+* Actualizări nesupravegheate fără extensie privilegiată (deocamdată doar F-Droid Basic)
+* Afișarea dimensiunii aplicației pe ecranul de detalii al aplicației (numai în modul expert)
+* Nume de aplicații ușor mai întunecate în listele de aplicații pentru a îmbunătăți lizibilitatea

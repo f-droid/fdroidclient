@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">La versión nueva está firmada con una clave diferente a la antigua. Para instalar la versión nueva, la antigua debe desinstalarse antes. Hágalo y pruebe de nuevo. (Considere que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
     <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Quiere instalarla de todos modos\?</string>
     <string name="version">Versión</string>
@@ -556,4 +556,6 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Acerca de F-Droid Basic</string>
     <string name="warning_target_sdk">Esta aplicación se creó para una versión anterior de Android y no se puede actualizar automáticamente.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Compilación automatizada</string>
+    <string name="app_error_open">No se ha podido abrir la aplicación.</string>
 </resources>

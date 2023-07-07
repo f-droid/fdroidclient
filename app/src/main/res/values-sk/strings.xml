@@ -116,7 +116,7 @@
     </string>
     <string name="unknown">Neznáme</string>
     <string name="repo_confirm_delete_title">Zmazať repozitár?</string>
-    <string name="repo_confirm_delete_body">Odstránenie repozitára znamená, že aplikácie z neho už nebudú prístupné. 
+    <string name="repo_confirm_delete_body">Odstránenie repozitára znamená, že aplikácie z neho už nebudú prístupné.
 \n
 \nPoznámka: Všetky predtým nainštalované aplikácie zostávajú v zariadení.</string>
     <string name="repo_disabled_notification">Vypnuté \"%1$s\".

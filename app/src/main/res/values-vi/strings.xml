@@ -27,7 +27,7 @@
     <string name="app_inst_known_source">Đã cài đặt (từ %s)</string>
     <string name="app_inst_unknown_source">Đã cài đặt (không rõ nguồn gốc)</string>
     <string name="added_on">Đã thêm vào %s</string>
-    <string name="ok">OK</string>
+    <string name="ok">Ok</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
     <string name="repo_add_title">Thêm kho mới</string>
@@ -40,20 +40,20 @@
     <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
     <string name="repo_add_url">Địa chỉ kho</string>
     <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
-    <string name="menu_manage">Kho ứng dụng</string>
+    <string name="menu_manage">ứng dụng</string>
     <string name="menu_search">Tìm kiếm</string>
-    <string name="menu_add_repo">Kho mới</string>
+    <string name="menu_add_repo">ỨNG DỤNG MỚI</string>
     <string name="menu_launch">Mở</string>
     <string name="menu_share">Chia sẻ</string>
-    <string name="menu_install">Cài đặt</string>
-    <string name="menu_uninstall">Gỡ cài đặt</string>
+    <string name="menu_install">Sao lưu</string>
+    <string name="menu_uninstall">Gỡ  cài đặt</string>
     <string name="menu_ignore_all">Bỏ qua tất cả bản cập nhật</string>
     <string name="menu_ignore_this">Bỏ qua bản cập nhật này</string>
     <string name="menu_website">Trang web</string>
     <string name="menu_issues">Vấn đề</string>
     <string name="menu_source">Mã nguồn</string>
     <string name="menu_upgrade">Cập nhật</string>
-    <string name="details_notinstalled">Chưa cài đặt</string>
+    <string name="details_notinstalled">Hủy cài đặt</string>
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
     <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
     <string name="antinonfreeadlist">Ứng dụng này khuyến khích các phần mở rộng không tự do</string>
@@ -157,7 +157,7 @@
         tải ứng dụng từ mục lục không có chữ kí điện tử.
     </string>
     <string name="unknown">Không xác định</string>
-    <string name="pref_language">Ngôn ngữ</string>
+    <string name="pref_language">VIỆT NAM</string>
     <string name="pref_language_default">Mặc định hệ thống</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Điểm truy cập</string>
@@ -251,9 +251,9 @@
     <string name="menu_email">Gửi e-mail đến tác giả</string>
     <string name="useTor">Sử dụng Tor</string>
     <string name="useTorSummary">Buộc lưu lượng tải xuống phải thông qua Tor để tăng tính riêng tư. Yêu cầu ứng dụng Orbot</string>
-    <string name="main_menu__swap_nearby">Lân cận</string>
-    <string name="main_menu__latest_apps">Mới nhất</string>
-    <string name="main_menu__categories">Hạng mục</string>
+    <string name="main_menu__swap_nearby">Không hỗ trợ</string>
+    <string name="main_menu__latest_apps">cài đặt cũ</string>
+    <string name="main_menu__categories">Ứng dụng mật</string>
     <string name="preference_manage_installed_apps">Quản lí các ứng dụng đã cài đặt</string>
     <string name="notification_action_update">Cập nhật</string>
     <string name="notification_action_cancel">Hủy</string>
@@ -529,4 +529,5 @@
     <string name="antinsfw">Ứng dụng này chứa nội dung không nên được công khai ở mọi nơi</string>
     <string name="latest__empty_state__upgrading">Đang nâng cấp cơ sở dữ liệu…</string>
     <string name="menu_release_channel_beta">Cho phép bản cập nhật beta</string>
+    <string name="app_name_basic">F-Droid Cơ Bản</string>
 </resources>

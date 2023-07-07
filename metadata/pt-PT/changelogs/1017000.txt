@@ -1,0 +1,6 @@
+* Muitas correções de erros 
+* Mostra ícones de repositórios na lista de repositórios 
+* Mostra razões para características indesejadas (quando disponíveis) 
+* Atualizações autónomas sem extensão privilegiada (apenas F-Droid Basic por enquanto) 
+* Mostra o tamanho da app no ecrã de detalhes da app (apenas no modo especialista) 
+* Nomes de apps ligeiramente mais escuros nas listas de apps para melhorar a legibilidade

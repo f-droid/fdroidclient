@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="version">الإصدار</string>
     <string name="delete">حذف</string>
     <string name="updates">التحديثات</string>
@@ -53,7 +53,7 @@
     <string name="category_Science_Education">العلوم و التعليم</string>
     <string name="category_Security">الأمان</string>
     <string name="category_System">النظام</string>
-    <string name="app_name_full">اف-درويد</string>
+    <string name="app_name_full">إف-درويد</string>
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولًا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علمًا أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
@@ -348,9 +348,9 @@
     <string name="force_old_index_summary">في حالة وجود أخطاء أو مشاكل في التوافق، استخدم أرشفة تطبيق XML</string>
     <string name="app_details__incompatible_mismatched_signers">التوقيع مختلف عن التطبيق المُثبت</string>
     <string name="app_details__no_versions__show_incompat_versions">لكي تُظهر النسخ الغير متكاملة أيضاً، فعل الإعداد \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">لا نسخ مع توقعيات متوافقة</string>
+    <string name="app_details__no_versions__no_compatible_signers">لا توجد إصدارات مع توقعيات متوافقة</string>
     <string name="app_details__no_versions__none_compatible_with_device">لا نسخ متكاملة مع الجهاز</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">النسخة المُثبتة غير متوافقة مع أي نسخة متوفرة. إلغاء ثبيت التطبيق سوف يمكنك من رؤية وتثبيت النسخ المتكاملة. هذا يحدث عادةً حينما يتم تثبيت التطبيق من خلال متجر جوجل بلاي أو أي مصدر أخر, إذا تم توقيعها بتوقيع مختلف.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">الإصدار المثبت غير متوافق مع أي إصدارات متوفرة. سيمكنك إلغاء تثبيت التطبيق من عرض الإصدارات المتوافقة وتثبيتها. يحدث هذا غالبا مع التطبيقات المثبتة عبر Google Play أو مصادر أخرى ، إذا تم توقيعها بواسطة شهادة مختلفة.</string>
     <string name="app_permission_storage">أف-درويد يحتاج لإذن التخزين لكي يثبت هذا. من فضلك إسمح بذلك في الشاشة التالية لكي تُكمل مع التثبيت.</string>
     <string name="app_list__dismiss_app_update">التحديث تم تجاهله</string>
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
@@ -358,7 +358,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
     <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة البرامج، التطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، التطبيقات الأخيرة سوف تظهر هنا</string>
-    <string name="antifeatures">مضاد الخصائص</string>
+    <string name="antifeatures">ميزات غير مرغوبة</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
     <plurals name="notification_summary_more">
         <item quantity="zero">لاشيء…</item>
@@ -565,8 +565,16 @@
     <string name="app_list_results_hidden_antifeature_settings">تم إخفاء بعض النتائج استنادا إلى إعدادات مكافحة الميزات.</string>
     <string name="antiupstreamnonfree">المصدر ليس حر</string>
     <string name="antiothers">الميزات المضادة الأخرى</string>
-    <string name="antinsfw">يحتوي هذا التطبيق على محتوى لا يجب نشره أو رؤيته في كل مكان</string>
+    <string name="antinsfw">غير آمن للعمل</string>
     <string name="latest__empty_state__upgrading">جارٍ ترقية قاعدة البيانات…</string>
     <string name="menu_release_channel_beta">السماح بتحديثات النسخة التجريبية (بيتا)</string>
     <string name="use_ipfs_gateways">استخدام بوابات IPFS</string>
+    <string name="app_error_open">تعذر تشغيل التطبيق.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">الليلي</string>
+    <string name="warning_target_sdk">تم إنشاء هذا التطبيق لإصدار أقدم من Android ولا يمكن تحديثه تلقائيًا.</string>
+    <string name="use_ipfs_gateways_summary">قم بتنزيل الملفات من مرايا التي تدعم برتوكولIPFS ، إذا كان مدعوما من قبل المستودع.</string>
+    <string name="app_name_basic">إف-درويد البسيط</string>
+    <string name="about_title_basic">حول إف-درويد البسيط</string>
+    <string name="antinsfwlist">يتضمن هذا التطبيق محتوى لا ينبغي نشره أو إبرازه في كل مكان</string>
+    <string name="repo_last_update_downloaded">تم تنزيل آخر تحديث</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
@@ -17,7 +17,7 @@
     <string name="local_repo_https_on">שימוש בחיבור //:HTTPS עבור מאגר מקומי</string>
     <string name="app_details">פרטי יישומון</string>
     <string name="no_such_app">לא נמצא כזה יישומון.</string>
-    <string name="about_title_full">על אודות F-Droid</string>
+    <string name="about_title_full">על F-Droid</string>
     <string name="about_site">אתר</string>
     <string name="about_version">גרסה</string>
     <string name="app_installed">מותקן</string>
@@ -89,12 +89,12 @@
     <string name="proxy_host_summary">שם המארח של המתווך שלך (לדוגמה: 127.0.0.1)</string>
     <string name="proxy_port">פתחת מתווך</string>
     <string name="proxy_port_summary">מספר הפתחה של המתווך שלך (לדוגמה: 8118)</string>
-    <string name="status_download">מתבצעת הורדה 
-\n%2$s / %3$s (%4$d%%) מתוך 
+    <string name="status_download">מתבצעת הורדה
+\n%2$s / %3$s (%4$d%%) מתוך
 \n%1$s</string>
     <string name="banner_updating_repositories">המאגרים מתעדכנים</string>
     <string name="status_processing_xml_percent">%2$s בהליכי עיבוד / %3$s (%4$d%%) מתוך %1$s</string>
-    <string name="status_connecting_to_repo">מתבצעת התחברות אל 
+    <string name="status_connecting_to_repo">מתבצעת התחברות אל
 \n%1$s</string>
     <string name="repos_unchanged">כל המאגרים מעודכנים</string>
     <string name="all_other_repos_fine">כל שאר המאגרים לא נתקלו בשגיאות.</string>
@@ -124,8 +124,8 @@
     <string name="category_Science_Education">מדע וחינוך</string>
     <string name="category_Security">אבטחה</string>
     <string name="category_System">מערכת</string>
-    <string name="empty_installed_app_list">אין יישומונים מותקנים. 
-\n 
+    <string name="empty_installed_app_list">אין יישומונים מותקנים.
+\n
 \nיש יישומונים מותקנים על מכשירך, אך אלו אינם זמינים מתוך F-Droid. מצב זה עלול לקרות כאשר עליך לעדכן את המאגרים שלך או שבמאגרים באמת אין את היישומונים שלך.</string>
     <string name="empty_can_update_app_list">ברכותינו!
 \nהיישומונים שלך עדכניים.</string>
@@ -157,7 +157,7 @@
     <string name="app_name_full">F-Droid</string>
     <string name="app_incompatible">אין תאימות</string>
     <string name="back">אחורה</string>
-    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר חבילות אצל 
+    <string name="repo_searching_address">מתבצע חיפוש אחר מאגר חבילות אצל
 \n%1$s</string>
     <string name="wifi">רשת אלחוטית</string>
     <string name="wifi_ap">נקודת גישה</string>
@@ -210,11 +210,11 @@
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
     <string name="unsigned_description">משמעות הדבר היא שאין אפשרות לאמת את רשימת היישומונים. יש לנקוט באמצעי זהירות עם יישומונים שהתקבלו ממפתחות בלתי חתומים.</string>
     <string name="repo_not_yet_updated">מאגר זה לא היה בשימוש עדיין. יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
-    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד. 
-\n 
+    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד.
+\n
 \nהערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
-    <string name="repo_disabled_notification">%1$s נוטרל. 
-\n 
+    <string name="repo_disabled_notification">%1$s נוטרל.
+\n
 \nעליך לאפשר שוב את המאגר זה כדי להתקין יישומונים מתוכו.</string>
     <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת זו: %s</string>
     <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית.</string>
@@ -229,8 +229,8 @@
     <string name="more">עוד</string>
     <string name="less">פחות</string>
     <string name="menu_settings">הגדרות</string>
-    <string name="status_download_unknown_size">מתבצעת הורדה 
-\n%2$s מתוך 
+    <string name="status_download_unknown_size">מתבצעת הורדה
+\n%2$s מתוך
 \n%1$s</string>
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
@@ -546,9 +546,16 @@
     <string name="antinonfreeassets">משאבים מוגבלים</string>
     <string name="antiknownvuln">חולשה מוכרת</string>
     <string name="antiothers">תכונות שליליות אחרות</string>
-    <string name="antinsfw">היישומון הזה מכיל תוכן שלא מיועד לכל קהל בכל מקום</string>
+    <string name="antinsfw">לא בטוח לסביבת עבודה</string>
     <string name="menu_release_channel_beta">לאפשר עדכוני בטא</string>
     <string name="latest__empty_state__upgrading">מסד הנתונים משתדרג…</string>
     <string name="use_ipfs_gateways">להשתמש בשערי גישה מסוג IPFS</string>
     <string name="use_ipfs_gateways_summary">להוריד קבצים מאתרי מראה ב־IPFS, אם המאגר תומך בזה.</string>
+    <string name="app_name_basic">F-Droid בסיסי</string>
+    <string name="about_title_basic">על F-Droid בסיסי</string>
+    <string name="repo_last_update_downloaded">העדכון האחרון התקבל</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">לילי</string>
+    <string name="warning_target_sdk">יישומון זה נבנה באמצעות גרסה ישנה יותר של Android ולא ניתן לעדכן אותו ידנית.</string>
+    <string name="antinsfwlist">היישומון הזה מכיל תוכן שעדיף לא להפיץ או לצפות בו בכל מקום</string>
+    <string name="app_error_open">לא ניתן להפעיל את היישומון.</string>
 </resources>

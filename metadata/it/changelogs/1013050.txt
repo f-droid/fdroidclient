@@ -1,1 +1,17 @@
 * Supporto dei temi legato ai temi Android integrati (@proletarius101)
+
+* Nuove notifiche nel banner superiore: "Nessuna connessione" e "Nessun dato o Wi-Fi abilitato"
+
+* Migliorato il supporto di mirror e repo USB-OTG e su scheda SD
+
+* Rimossi aggiornamenti ripetuti della libreria Trichrome
+
+* Altre modifiche per seguire il Material Design (@proletarius101)
+
+* Migliorato il badge OpenCollective (@ConnyDuck)
+
+* Rifatto il caricamento delle icone con Glide (@proletarius101)
+
+* Nuova icona adattiva (@12people)
+
+* Modernizzazione dei colori (@Isira-Seneviratne)

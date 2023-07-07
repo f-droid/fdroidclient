@@ -307,7 +307,7 @@
     <string name="banner_updating_repositories">भांडाराला अद्ययावत केले जात</string>
     <string name="download_404">अपेक्षित फाईल मिळाली नाही.</string>
     <string name="status_download_unknown_size">%1$s मधून %2$s डाऊनलोड केले जात आहे</string>
-    <string name="status_download">%1$s मधून %2$s / %3$s (%4$d%%) 
+    <string name="status_download">%1$s मधून %2$s / %3$s (%4$d%%)
 \nडॉऊनलोड केले जात आहे</string>
     <string name="hide_on_long_search_press_summary">शोध कळ काही काळ दाबून ठेवल्यास ती लपवली जाईल</string>
     <string name="hide_on_long_search_press_title">शोध कळीसोबत लपवा</string>

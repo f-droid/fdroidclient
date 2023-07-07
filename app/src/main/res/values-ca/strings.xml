@@ -113,7 +113,7 @@
 \n
 \nHabiliteu el dipòsit novament per instal·lar les aplicacions que conté.</string>
     <string name="repo_added">S\'ha desat el dipòsit %1$s del paquet.</string>
-    <string name="repo_searching_address">S\'està cercant un dipòsit del paquet a 
+    <string name="repo_searching_address">S\'està cercant un dipòsit del paquet a
 \n%1$s</string>
     <string name="not_on_same_wifi">El dipòsit local que acabeu d\'afegir i el vostre dispositiu no són a la mateixa
         Wi-Fi. Proveu amb aquesta xarxa: %s
