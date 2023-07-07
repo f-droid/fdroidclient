@@ -1,11 +1,27 @@
+### 1.17-alpha1 (2023-07-07)
+
+* Remembers active tab between app restarts
+
+* Remember open/closed state of "Update All" in Updates tab (@tunedal)
+
+* Fix crash on background scans of external storage
+
+* Always load default categories, using built-in localization
+
 ### 1.17-alpha0 (2023-06-15)
 
 * Many bug fixes
+
 * Show repository icons in list of repositories
+
 * Show reasons for anti-features (where available)
+
 * Unattended upgrades without privileged extension (F-Droid Basic only for now)
+
 * Show app size on app details screen (expert mode only)
+
 * Slightly darker app names in app lists to improve readability
+
 * new targetSdk: 28 for full and 33 for basic
 
 ### 1.16.3 (2023-04-06)
