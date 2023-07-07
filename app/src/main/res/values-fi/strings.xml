@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon)</string>
     <string name="installIncompatible">Sovellus ei ole yhteensopiva laitteesi kanssa. Asennetaanko silti?</string>
     <string name="version">Versio</string>
@@ -532,7 +532,7 @@
     <string name="use_ipfs_gateways">Käytä IPFS-yhdyskäytäviä</string>
     <string name="use_ipfs_gateways_summary">Lataa tiedostoja IPFS-mirroreista, jos repo tukee sitä.</string>
     <string name="repo_last_update_downloaded">Viimeisin päivitys ladattu</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Yölliset koontiversiot</string>
+    <string name="category_Nightly">Yölliset koontiversiot</string>
     <string name="warning_target_sdk">Sovellus tehtiin vanhalle Androidin versiolle, eikä sitä voida päivittää automaattisesti.</string>
     <string name="antinsfwlist">Sovellus sisältää sisältöä, joka ei sovi näkyville joka paikkaan</string>
 </resources>

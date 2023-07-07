@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Новото издание е подписано с различен ключ. За да бъде инсталирано първо трябва да премахнете старото. (Забележка: при премахване на приложението ще бъдат изтрити и неговите данни.)</string>
     <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това?</string>
     <string name="version">Издание</string>
@@ -539,7 +539,7 @@
     <string name="about_title_basic">Относно F-Droid Basic</string>
     <string name="antinsfwlist">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
     <string name="repo_last_update_downloaded">Последното обновяване е изтеглено</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Нощни компилации</string>
+    <string name="category_Nightly">Нощни компилации</string>
     <string name="warning_target_sdk">Приложението е създадено за по-ранно изданиена Андроид и не може да бъде обновено автоматично.</string>
     <string name="app_error_open">Приложението не може да бъде отворено.</string>
 </resources>

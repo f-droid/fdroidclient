@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="theme_dark">Dark</string>
     <string name="theme_light">Light</string>
     <string name="status_inserting_apps">Saving app details</string>
@@ -535,7 +535,7 @@
     <string name="about_title_basic">About F-Droid Basic</string>
     <string name="antinsfwlist">This app contains content that should not be publicized or visible everywhere</string>
     <string name="repo_last_update_downloaded">Last update downloaded</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">nightly</string>
+    <string name="category_Nightly">nightly</string>
     <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
     <string name="app_error_open">Could not launch app.</string>
 </resources>

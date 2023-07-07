@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova
         versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga
         todos os dados internos armazenados pelo aplicativo)
@@ -560,7 +560,7 @@
     <string name="about_title_basic">Sobre o F-Droid Básico</string>
     <string name="antinsfwlist">Este aplicativo contém conteúdo que não deve ser público ou visível em todo lugar</string>
     <string name="repo_last_update_downloaded">Última atualização baixada</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">noturna</string>
+    <string name="category_Nightly">noturna</string>
     <string name="warning_target_sdk">Este aplicativo foi compilado para uma versão antiga do Android e não pode ser atualizado automaticamente.</string>
     <string name="app_error_open">Não foi possível iniciar o aplicativo.</string>
 </resources>

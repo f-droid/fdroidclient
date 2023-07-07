@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
@@ -554,7 +554,7 @@
     <string name="app_name_basic">F-Droid בסיסי</string>
     <string name="about_title_basic">על F-Droid בסיסי</string>
     <string name="repo_last_update_downloaded">העדכון האחרון התקבל</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">לילי</string>
+    <string name="category_Nightly">לילי</string>
     <string name="warning_target_sdk">יישומון זה נבנה באמצעות גרסה ישנה יותר של Android ולא ניתן לעדכן אותו ידנית.</string>
     <string name="antinsfwlist">היישומון הזה מכיל תוכן שעדיף לא להפיץ או לצפות בו בכל מקום</string>
     <string name="app_error_open">לא ניתן להפעיל את היישומון.</string>

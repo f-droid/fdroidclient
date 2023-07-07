@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Versioni i ri është nënshkruar me një tjetër kyç nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutemi, bëjeni dhe riprovoni. (Vini re që çinstalimi do të fshijë çfarëdo të dhëne të brendshme të ruajtur nga aplikacioni)</string>
     <string name="installIncompatible">Aplikacion i papërputhshëm me pajisjen tuaj, të instalohet sido qoftë\?</string>
@@ -536,6 +536,6 @@
     <string name="antinsfwlist">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>
     <string name="repo_last_update_downloaded">U shkarkua përditësimi i fundit</string>
     <string name="app_error_open">S’u nis dot aplikacioni.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Montime të Përnatshme</string>
+    <string name="category_Nightly">Montime të Përnatshme</string>
     <string name="warning_target_sdk">Ky aplikacion qe montuar për një version më të vjetër të Android-it dhe s’mund të përditësohet automatikisht.</string>
 </resources>

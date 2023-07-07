@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="version">Versio</string>
     <string name="delete">Forigi</string>
     <string name="updates">Ĝisdatigoj</string>
@@ -535,7 +535,7 @@
     <string name="about_title_full">Pri F-Droid</string>
     <string name="about_title_basic">Pri F-Droid Baza</string>
     <string name="antinsfwlist">Tiu ĉi aplikaĵo enhavas enhavon, kiu ne estas taŭga por foliumi aŭ publikigi ĉie</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Kompilaĵoj noktaj</string>
+    <string name="category_Nightly">Kompilaĵoj noktaj</string>
     <string name="warning_target_sdk">Tiu ĉi aplikaĵo estis kompilita por pli malnova versio de Android ke ne povas esti ĝisdatigita aŭtomate.</string>
     <string name="app_error_open">Ne povas ekigi la aplikaĵon.</string>
 </resources>

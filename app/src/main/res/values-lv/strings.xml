@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="version">Laidiens</string>
     <string name="delete">Dzēst</string>
     <string name="enable_nfc_send">Ieslēgt sūtīšanu caur NFC…</string>
@@ -520,7 +520,7 @@
     <string name="no_handler_app">Nav pieejamas nevienas lietotnes, kas var apieties ar %s.</string>
     <string name="repo_last_update_downloaded">Pēdējais lejupielādētais atjauninājums</string>
     <string name="unsigned_description">Tas nozīmē, ka lietotņu sarakstu nevarēja pārbaudīt. Jābūt uzmanīgam ar lietotnēm, kas ir lejupielādētas no neparakstītiem indeksiem.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Iknakts būvējumi</string>
+    <string name="category_Nightly">Iknakts būvējumi</string>
     <string name="nearby_splash__document_tree">Meklēt glabātavas un spoguļserverus USB OTG.</string>
     <string name="swap_toast_not_removable_storage">Šī izvēle nesaskan ar nevienu no noņemamajām krātuvēm, jāmēģina vēlreiz.</string>
     <string name="swap_toast_find_removeable_storage">Jāizvēlas noņemama SD karte vai USB</string>

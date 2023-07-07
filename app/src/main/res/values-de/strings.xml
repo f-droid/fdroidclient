@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: beim Entfernen werden alle intern gespeicherten Daten dieser App gelöscht.)</string>
     <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible App. Trotzdem installieren\?</string>
     <string name="version">Version</string>
@@ -538,7 +538,7 @@
     <string name="use_ipfs_gateways_summary">Dateien von IPFS-Spiegelservern herunterladen, wenn dies von der Paketquelle unterstützt wird.</string>
     <string name="use_ipfs_gateways">IPFS-Gateways verwenden</string>
     <string name="repo_last_update_downloaded">Letzte heruntergeladene Aktualisierung</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Nächtliche Builds</string>
+    <string name="category_Nightly">Nächtliche Builds</string>
     <string name="antinsfwlist">Diese App enthält Inhalte, die nicht öffentlich gemacht werden oder überall sichtbar sein sollten</string>
     <string name="warning_target_sdk">Diese App wurde für eine ältere Version von Android entwickelt und kann nicht automatisch aktualisiert werden.</string>
     <string name="app_name_basic">F-Droid Basic</string>

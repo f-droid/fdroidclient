@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Uus versioon on allkirjastatud vana versiooniga võrreldes erineva võtmega. Uue versiooni paigaldamiseks on vaja esmalt eemaldada vana. Palun tee seda ja proovi uuesti. (Tähelepanu: eemaldamisel kustutatakse rakendusega seotud andmed.)</string>
     <string name="installIncompatible">Rakendus ei ühildu su seadmega. Kas paigaldada ta ikkagi?</string>
@@ -546,7 +546,7 @@
     <string name="about_title_basic">Teave F-Droid Basic\'u kohta</string>
     <string name="repo_last_update_downloaded">Viimane uuendus on allalaaditud</string>
     <string name="app_error_open">Rakenduse käivitamine ei õnnestunud.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Igaöised arendusjärgud</string>
+    <string name="category_Nightly">Igaöised arendusjärgud</string>
     <string name="warning_target_sdk">See rakendus on loodud Androidi vanema versiooni jaoks ja seda ei saa automaatselt uuendada.</string>
     <string name="antinsfwlist">Selles rakenduses on sisu, mida ei saa kõikjal avaldada ega peaks olema kõikjalt vaadatav</string>
 </resources>

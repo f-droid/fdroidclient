@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Η νέα έκδοση είναι υπογεγραμμένη με διαφορετικό κλειδί από την παλιά. Για εγκατάσταση της νέας έκδοσης, πρέπει να γίνει πρώτα απεγκατάσταση της παλιάς. Παρακαλώ κάντε το αυτό και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει τα δεδομένα της εφαρμογής)</string>
     <string name="installIncompatible">Η εφαρμογή δεν είναι συμβατή με τη συσκευή σας. Θέλετε να την εγκαταστήσετε παρόλα αυτά;</string>
     <string name="version">Έκδοση</string>
@@ -548,7 +548,7 @@
     <string name="use_ipfs_gateways_summary">Λήψη αρχείων από πηγές IPFS, εάν υποστηρίζονται από το repo.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Σχετικά με το F-Droid Basic</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Nightly Builds</string>
+    <string name="category_Nightly">Nightly Builds</string>
     <string name="repo_last_update_downloaded">Έγινε λήψη της τελευταίας ενημέρωσης</string>
     <string name="app_error_open">Δεν ήταν δυνατή η εκκίνηση της εφαρμογής.</string>
     <string name="antinsfwlist">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>

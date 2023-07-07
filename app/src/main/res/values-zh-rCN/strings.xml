@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">此应用的新版本使用了与旧版本不同的密钥来签名。在安装新版本之前，必须先卸载旧版本。请先卸载旧版本再尝试安装。（请注意，卸载应用时将删除其所有内部数据）</string>
     <string name="installIncompatible">此应用与你的设备不兼容，是否继续安装？</string>
     <string name="version">版本</string>
@@ -518,7 +518,7 @@
     <string name="use_ipfs_gateways_summary">如存储库支持，从 IPFS 镜像下载文件。</string>
     <string name="app_name_basic">F-Droid 基础</string>
     <string name="about_title_basic">关于 F-Droid Basic</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">每夜版</string>
+    <string name="category_Nightly">每夜版</string>
     <string name="antinsfwlist">此应用包含不应公开或随处可见的内容</string>
     <string name="repo_last_update_downloaded">上次更新已下载</string>
     <string name="warning_target_sdk">此应用是为旧版本 Android 构建的，无法自动更新。</string>

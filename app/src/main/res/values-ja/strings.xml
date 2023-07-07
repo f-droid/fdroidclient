@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">新しいバージョンは、以前のものと異なる暗号鍵で署名されています。新しいバージョンをインストールするには、まず以前のバージョンをアンインストールする必要があります。その後、再度実行してください。(アプリをアンインストールすると保存されたデータが消去されることに注意してください)</string>
     <string name="installIncompatible">アプリはお使いの端末と互換性がありません。それでもインストールしますか？</string>
     <string name="version">バージョン</string>
@@ -522,6 +522,6 @@
     <string name="use_ipfs_gateways_summary">レポジトリがIPFSをサポートしている場合には、IPFSミラーからファイルをダウンロードする。</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">F-Droid Basicについて</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">ナイトリービルド</string>
+    <string name="category_Nightly">ナイトリービルド</string>
     <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動的にアップデートできません。</string>
 </resources>

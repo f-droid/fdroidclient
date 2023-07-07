@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all internt lagrad data som tillhör appen kommer att raderas när det avinstalleras)</string>
     <string name="installIncompatible">Appen är inkompatibel med din enhet, installera ändå?</string>
     <string name="version">Version</string>
@@ -537,6 +537,6 @@
     <string name="antinsfwlist">Den här appen innehåller innehåll som inte borde publiceras eller vara synlig någonstans</string>
     <string name="app_error_open">Kunde inte starta app.</string>
     <string name="repo_last_update_downloaded">Senaste uppdateringen nerladdad</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">Nattliga byggnationer</string>
+    <string name="category_Nightly">Nattliga byggnationer</string>
     <string name="warning_target_sdk">Den här appen byggdes för en äldre version av Android och kan inte uppdateras automatiskt.</string>
 </resources>

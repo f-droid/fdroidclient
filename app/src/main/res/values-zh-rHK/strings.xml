@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
     <string name="enable_nfc_send">啟用 NFC 傳送…</string>
@@ -527,7 +527,7 @@
     <string name="app_name_basic">F-Droid 基礎版</string>
     <string name="about_title_basic">關於 F-Droid 基礎版</string>
     <string name="repo_last_update_downloaded">最近下載更新</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">定時組建</string>
+    <string name="category_Nightly">定時組建</string>
     <string name="warning_target_sdk">此應用程式乃為較舊版本的 Android 建構，無法自動更新。</string>
     <string name="app_error_open">無法啟動應用程式。</string>
 </resources>

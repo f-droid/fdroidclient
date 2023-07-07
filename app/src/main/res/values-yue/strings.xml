@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="ok">確定</string>
     <string name="app_name_full">F-Droid</string>
     <string name="updates">更新</string>
@@ -523,7 +523,7 @@
     <string name="use_ipfs_gateways_summary">存庫支援嘅話，就喺 IPFS 鏡像度下載檔案。</string>
     <string name="app_name_basic">F-Droid 新基本</string>
     <string name="antinsfwlist">呢個 app 啲料要睇就睇路，因住老細見到弊家伙</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">流水組建</string>
+    <string name="category_Nightly">流水組建</string>
     <string name="warning_target_sdk">呢個 app 係為較舊版本嘅 Android 而建，冇得自動更新。</string>
     <string name="about_title_basic">關於 F-Droid 新基本</string>
     <string name="repo_last_update_downloaded">對上一次下載咗更新</string>
