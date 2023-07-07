@@ -1,0 +1,6 @@
+* Viele Fehlerkorrekturen
+* Repository-Symbole in der Liste der Repositorys anzeigen
+* Gründe für Anti-Features anzeigen (sofern verfügbar)
+* Unbeaufsichtigte Upgrades ohne Rechteerweiterung (vorerst nur für F-Droid Basic)
+* Anzeige der App-Größe auf dem App-Detailbildschirm (nur im Expertenmodus)
+* Etwas dunklere App-Namen in App-Listen zur besseren Lesbarkeit

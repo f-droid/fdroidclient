@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: beim Entfernen werden alle intern gespeicherten Daten dieser App gelöscht.)</string>
     <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible App. Trotzdem installieren\?</string>
     <string name="version">Version</string>
@@ -14,8 +14,8 @@
     <string name="system_installer">Rechteerweiterung</string>
     <string name="system_installer_on">Rechteerweiterung verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
     <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
-    <string name="local_repo_name_summary">Der Titel Ihrer lokalen Paketquelle lautet: %s</string>
-    <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
+    <string name="local_repo_name_summary">Der öffentliche Titel Ihrer lokalen Paketquelle lautet: %s</string>
+    <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung für lokale Paketquelle verwenden</string>
     <string name="app_details">App-Details</string>
     <string name="no_such_app">Keine solche App gefunden.</string>
     <string name="about_title_full">Über F-Droid</string>
@@ -35,7 +35,7 @@
     <string name="enable">Aktivieren</string>
     <string name="add_key">Schlüssel hinzufügen</string>
     <string name="overwrite">Überschreiben</string>
-    <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode gefunden, bitte eine auswählen!</string>
+    <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode festgelegt, bitte eine auswählen!</string>
     <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
     <string name="repo_add_url">Adresse der Paketquelle</string>
     <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
@@ -46,10 +46,10 @@
     <string name="menu_launch">Öffnen</string>
     <string name="menu_share">Teilen</string>
     <string name="menu_install">Installieren</string>
-    <string name="menu_uninstall">Entfernen</string>
+    <string name="menu_uninstall">Deinstallieren</string>
     <string name="menu_ignore_all">Alle Updates ignorieren</string>
     <string name="menu_ignore_this">Dieses Update ignorieren</string>
-    <string name="menu_website">Internetseite</string>
+    <string name="menu_website">Website</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_source">Quellcode</string>
     <string name="menu_upgrade">Aktualisieren</string>
@@ -57,14 +57,14 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt oder hängt vollständig von einem nicht-quelloffenen Netzwerkdienst ab</string>
+    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder hängt komplett von ihm ab</string>
     <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
     <string name="expert">Expertenmodus</string>
     <string name="expert_on">Zusätzliche Informationen anzeigen und dazugehörige Einstellungen aktivieren</string>
     <string name="search_hint">Apps suchen</string>
-    <string name="appcompatibility">Kompatibilität der App</string>
+    <string name="appcompatibility">App-Kompatibilität</string>
     <string name="show_incompat_versions">Inkompatible Versionen einbeziehen</string>
     <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible App-Versionen anzeigen</string>
     <string name="local_repo">Lokale Paketquelle</string>
@@ -95,7 +95,7 @@
     <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>
     <string name="no_permissions">Keine Berechtigungen</string>
     <string name="no_handler_app">Es ist keine App installiert, die mit %s umgehen kann.</string>
-    <string name="theme">Thema</string>
+    <string name="theme">Design</string>
     <string name="unsigned">Nicht signiert</string>
     <string name="unverified">Ungeprüft</string>
     <string name="repo_num_apps">App-Anzahl</string>
@@ -106,9 +106,9 @@
     <string name="unsigned_description">Die Liste der Apps konnte nicht überprüft werden. Sie sollten bei Apps vorsichtig sein, die aus nicht signierten Quellen heruntergeladen wurden.</string>
     <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht verwendet. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
     <string name="unknown">Unbekannt</string>
-    <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
-    <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden. 
-\n 
+    <string name="repo_confirm_delete_title">Paketquelle löschen\?</string>
+    <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden.
+\n
 \nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
     <string name="repo_disabled_notification">»%1$s« deaktiviert.
 \n
@@ -116,9 +116,7 @@
     <string name="repo_added">Paketquelle %1$s gespeichert.</string>
     <string name="repo_searching_address">Nach Paketquelle wird gesucht unter
 \n%1$s</string>
-    <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte
-        Paketquelle! Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s
-    </string>
+    <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle! Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s</string>
     <string name="requires_features">Erfordert: %1$s</string>
     <string name="category_Development">Entwicklung</string>
     <string name="category_Games">Spiele</string>
@@ -175,7 +173,8 @@
     <string name="empty_installed_app_list">Keine Apps installiert.
 \n
 \nEs sind Apps auf Ihrem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass Sie Ihre Paketquellen aktualisieren müssen oder diese tatsächlich keine Ihrer Apps beinhalten.</string>
-    <string name="empty_can_update_app_list">Glückwunsch!\nIhre Apps sind auf dem neuesten Stand.</string>
+    <string name="empty_can_update_app_list">Glückwunsch!
+\nIhre Apps sind auf dem neuesten Stand.</string>
     <string name="swap_send_fdroid">F-Droid senden</string>
     <string name="apps">Apps</string>
     <string name="swap_connecting">Verbindungsaufbau</string>
@@ -239,7 +238,7 @@
     <string name="download_error">Herunterladen fehlgeschlagen!</string>
     <string name="perms_description_app">Bereitgestellt von %1$s.</string>
     <string name="downloading">Herunterladen …</string>
-    <string name="login_title">Legitimierung erforderlich</string>
+    <string name="login_title">Authentifikation erforderlich</string>
     <string name="login_name">Benutzername</string>
     <string name="login_password">Passwort</string>
     <string name="repo_edit_credentials">Passwort ändern</string>
@@ -254,7 +253,7 @@
     <string name="menu_email">E-Mail an Autor</string>
     <string name="repo_provider">Paketquelle: %s</string>
     <string name="useTor">Tor verwenden</string>
-    <string name="useTorSummary">Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt</string>
+    <string name="useTorSummary">Für einen verbesserten Datenschutz das Herunterladen über Tor erzwingen. Erfordert Orbot</string>
     <string name="swap_stopping_wifi">WLAN anhalten …</string>
     <string name="update_auto_download">Automatisch abrufen</string>
     <string name="update_auto_download_summary">Aktualisierungen werden automatisch heruntergeladen und Sie werden benachrichtigt, um sie zu installieren</string>
@@ -270,13 +269,13 @@
     <string name="installing">Installation …</string>
     <string name="uninstalling">Deinstallation……</string>
     <string name="update_auto_install">Automatisch installieren</string>
-    <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren</string>
+    <string name="update_auto_install_summary">App-Aktualisierungen im Hintergrund herunterladen und installieren, dabei Benachrichtigung anzeigen</string>
     <string name="keep_install_history">Installationsverlauf aufbewahren</string>
-    <string name="keep_install_history_summary">Speichern Sie ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher</string>
+    <string name="keep_install_history_summary">Legen Sie ein Protokoll aller Installationen und Deinstallationen in einem privaten Speicher ab</string>
     <string name="warning_no_internet">Aktualisierung kann nicht durchgeführt werden! Besteht eine Internetverbindung?</string>
     <string name="versions">Versionen</string>
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
-    <string name="app_details_donate_prompt">%2$s einen Kaffee für die Erstellung von %1$s spendieren!</string>
+    <string name="app_details_donate_prompt">%2$s einen Kaffee für die Entwicklung von %1$s spendieren!</string>
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
     <string name="notification_title_single_update_available">Aktualisierung abrufbar</string>
     <string name="notification_title_single_ready_to_install">Bereit zum Installieren</string>
@@ -307,9 +306,8 @@
     <string name="app_recommended_version_installed">Version %1$s (Empfohlen)</string>
     <string name="app_new">Neu</string>
     <string name="installed_apps__activity_title">Installierte Apps</string>
-    <string name="installed_app__updates_ignored">Ignorierte Aktualisierungen</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Für Version %1$s ignorierte Aktualisierungen
-    </string>
+    <string name="installed_app__updates_ignored">Aktualisierungen ignoriert</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Aktualisierungen für Version %1$s ignoriert</string>
     <string name="preference_category__my_apps">Meine Apps</string>
     <string name="preference_manage_installed_apps">Installierte Apps verwalten</string>
     <string name="tts_category_name">Kategorie %1$s</string>
@@ -381,13 +379,13 @@
     <string name="force_old_index_summary">Bei Fehlern oder Kompatibilitätsproblemen den XML-App-Index verwenden</string>
     <string name="app_list_download_ready">Heruntergeladen und bereit zur Installation</string>
     <string name="app_installed_media">Datei wurde nach %s installiert</string>
-    <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte beim nächsten Bildschirm bestätigen, um mit der Installation fortzufahren.</string>
+    <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte diese im nächsten Bildschirm gewähren, um mit der Installation fortzufahren.</string>
     <string name="status_inserting_x_apps">App-Details (%1$d/%2$d) von %3$s speichern</string>
     <string name="app_details__incompatible_mismatched_signers">Abweichende Signatur zur installierten Version</string>
-    <string name="app_details__no_versions__show_incompat_versions">Um hier in jedem Fall inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
+    <string name="app_details__no_versions__show_incompat_versions">Um hier trotzdem inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
     <string name="app_details__no_versions__no_compatible_signers">Keine Versionen mit kompatibler Signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, da sie mit einem anderen Zertifikat signiert sind.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, wenn sie mit einem anderen Zertifikat signiert sind.</string>
     <string name="app_list__dismiss_app_update">Aktualisierung ignoriert</string>
     <string name="app_list__dismiss_vulnerable_app">Sicherheitslücke ignoriert</string>
     <string name="app_list__dismiss_downloading_app">Herunterladen abgebrochen</string>
@@ -452,7 +450,7 @@
     <string name="send_version_and_uuid">Version und UUID an Server senden</string>
     <string name="prompt_to_send_crash_reports">Absturzbericht anfordern</string>
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
-    <string name="send_version_and_uuid_summary">Diese App-Version und eine zufällige, einmalige ID beim Herunterladen einschließen, hat Auswirkungen auf den nächsten App-Start.</string>
+    <string name="send_version_and_uuid_summary">Beim Herunterladen die Version dieser App und eine zufällige, eindeutige ID einschließen, wird beim nächsten App-Start wirksam.</string>
     <string name="share_repository">Paketquelle teilen</string>
     <string name="antinosourcesince">Der Quellcode ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
     <string name="send_install_history">Installationsverlauf senden</string>
@@ -482,7 +480,7 @@
     <string name="panic_will_be_wiped">Wird deinstalliert und alle Daten werden gelöscht</string>
     <string name="panic_apps_to_uninstall">Apps, die deinstalliert und deren Daten komplett gelöscht werden sollen</string>
     <string name="panic_add_apps_to_uninstall">Zu löschende Apps hinzufügen</string>
-    <string name="panic_reset_repos_title">Repos zurücksetzen</string>
+    <string name="panic_reset_repos_title">Paketquellen zurücksetzen</string>
     <string name="panic_reset_repos_summary">Wiederherstellung der Paketquellen-Standardeinstellungen erzwingen</string>
     <string name="swap_visible_hotspot">Sichtbar über Hotspot</string>
     <string name="swap_blank_wifi_ssid">(leer)</string>
@@ -505,7 +503,7 @@
     <string name="notification_channel_swaps_description">Zeigt Benachrichtigungen zum Austausch von Apps via P2P an.</string>
     <string name="notification_channel_installs_title">Installationen</string>
     <string name="toast_metrics_in_install_history">Der %s Metrikenbericht ist sichtbar in der Ansicht des Installationsverlaufes</string>
-    <string name="send_to_fdroid_metrics_summary">Sendet wöchentlich anonymisierte Daten zu F-Droid Metriken (erfordert das Behalten des Installationsverlaufes)</string>
+    <string name="send_to_fdroid_metrics_summary">Sendet wöchentlich anonymisierte Daten zu F-Droid-Metriken (erfordert »Installationsverlauf aufbewahren«)</string>
     <string name="send_to_fdroid_metrics">Nutzungsdaten senden</string>
     <string name="fdroid_metrics_report">%s Metrikenbericht</string>
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
@@ -515,12 +513,12 @@
     <string name="menu_show_fdroid_metrics_report">Metrikbericht anzeigen</string>
     <string name="use_pure_black_dark_theme_summary">Nur für OLED-Bildschirme empfohlen.</string>
     <string name="theme_follow_system">Systemdefiniert</string>
-    <string name="use_pure_black_dark_theme">Rein schwarzen Hintergrund im dunklen Thema verwenden</string>
+    <string name="use_pure_black_dark_theme">Rein schwarzer Hintergrund im dunklen Design</string>
     <string name="banner_no_data_or_wifi">Keine Daten oder WLAN aktiviert</string>
     <string name="banner_no_internet">Kein Internet</string>
     <string name="share_apk_error">Appdatei konnte nicht geteilt werden</string>
-    <string name="has_disallow_install_unknown_sources">Unbekannte Quellen können von diesem Benutzer nicht hinzugefügt werden, einschließlich neuer Repositories</string>
-    <string name="has_disallow_install_unknown_sources_globally">Ihr Geräteadministrator lässt die Installation von Apps aus unbekannten Quellen nicht zu, einschließlich neuer Repositories</string>
+    <string name="has_disallow_install_unknown_sources">Unbekannte Quellen dürfen von diesem Benutzer nicht hinzugefügt werden, das schließt neue Paketquellen ein</string>
+    <string name="has_disallow_install_unknown_sources_globally">Ihr Geräteadministrator lässt die Installation von Apps aus unbekannten Quellen nicht zu, das schließt neue Paketquellen ein</string>
     <string name="swap_wifi_vpn_conflict">Konflikte mit aktivem VPN!</string>
     <string name="antinonfreead">Nicht-quelloffene Erweiterungen</string>
     <string name="antinonfreenet">Nicht-quelloffene Netzwerkdienste</string>
@@ -529,14 +527,21 @@
     <string name="antinosource">Quellcode nicht mehr verfügbar</string>
     <string name="antiupstreamnonfree">Originalcode nicht-quelloffen</string>
     <string name="antinonfreedep">Nicht-quelloffene Abhängigkeiten</string>
-    <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Antifeature-Einstellungen ausgeblendet.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Einstellungen zu unerwünschten Merkmalen ausgeblendet.</string>
     <string name="antiads">Werbung</string>
-    <string name="antitrack">Überwachung</string>
+    <string name="antitrack">Tracking</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
     <string name="antiothers">Andere unerwünschte Merkmale</string>
-    <string name="antinsfw">Diese App enthält Inhalte, die nicht überall veröffentlicht oder sichtbar sein sollten</string>
+    <string name="antinsfw">Unpassend für den Arbeitsplatz</string>
     <string name="menu_release_channel_beta">Beta-Updates zulassen</string>
     <string name="latest__empty_state__upgrading">Datenbank wird aktualisiert …</string>
     <string name="use_ipfs_gateways_summary">Dateien von IPFS-Spiegelservern herunterladen, wenn dies von der Paketquelle unterstützt wird.</string>
     <string name="use_ipfs_gateways">IPFS-Gateways verwenden</string>
+    <string name="repo_last_update_downloaded">Letzte heruntergeladene Aktualisierung</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Nächtliche Builds</string>
+    <string name="antinsfwlist">Diese App enthält Inhalte, die nicht öffentlich gemacht werden oder überall sichtbar sein sollten</string>
+    <string name="warning_target_sdk">Diese App wurde für eine ältere Version von Android entwickelt und kann nicht automatisch aktualisiert werden.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">Über F-Droid Basic</string>
+    <string name="app_error_open">App konnte nicht gestartet werden.</string>
 </resources>
