@@ -51,14 +51,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(3, actualRepo.mirrors.size)
         assertEquals(emptyList(), actualRepo.userMirrors)
         assertEquals(emptyList(), actualRepo.disabledMirrors)
-        assertEquals(
-            listOf(
-                org.fdroid.download.Mirror(repo.address),
-                org.fdroid.download.Mirror(repo.mirrors[0]),
-                org.fdroid.download.Mirror(repo.mirrors[1]),
-                org.fdroid.download.Mirror(repo.mirrors[2]),
-            ).toSet(), actualRepo.getAllMirrors().toSet()
-        )
+        assertEquals(repo.mirrors.toSet(), actualRepo.mirrors.map { it.url }.toSet())
         assertEquals(emptyList(), actualRepo.antiFeatures)
         assertEquals(emptyList(), actualRepo.categories)
         assertEquals(emptyList(), actualRepo.releaseChannels)
