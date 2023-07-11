@@ -140,6 +140,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             enabled = initialRepo.enabled,
         )
         insert(repositoryPreferences)
+        insertMirrors(initialRepo.mirrors.map { it -> Mirror(repoId, it, null) })
         return repoId
     }
 

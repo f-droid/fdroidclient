@@ -80,8 +80,8 @@ final class ContentProviderMigrator {
                 }
                 // add new repo if not existing
                 if (repo == null) { // new repo to be added to new DB
-                    InitialRepository newRepo = new InitialRepository(name, address, "", certificate,
-                            0, enabled, ++weight);
+                    InitialRepository newRepo = new InitialRepository(
+                            name, address, Arrays.asList(new String[]{}), "", certificate, 0, enabled, ++weight);
                     long repoId = repoDao.insert(newRepo);
                     repo = ObjectsCompat.requireNonNull(repoDao.getRepository(repoId));
                 } else { // old repo that may need an update for the new DB

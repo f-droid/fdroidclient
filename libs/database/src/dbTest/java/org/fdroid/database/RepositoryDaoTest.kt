@@ -30,6 +30,7 @@ internal class RepositoryDaoTest : DbTest() {
         val repo = InitialRepository(
             name = getRandomString(),
             address = getRandomString(),
+            mirrors = listOf(getRandomString(), getRandomString(), getRandomString()),
             description = getRandomString(),
             certificate = getRandomString(),
             version = Random.nextLong(),
@@ -47,10 +48,17 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(repo.enabled, actualRepo.enabled)
         assertEquals(repo.weight, actualRepo.weight)
         assertEquals(-1, actualRepo.timestamp)
-        assertEquals(emptyList(), actualRepo.mirrors)
+        assertEquals(3, actualRepo.mirrors.size)
         assertEquals(emptyList(), actualRepo.userMirrors)
         assertEquals(emptyList(), actualRepo.disabledMirrors)
-        assertEquals(listOf(org.fdroid.download.Mirror(repo.address)), actualRepo.getMirrors())
+        assertEquals(
+            listOf(
+                org.fdroid.download.Mirror(repo.address),
+                org.fdroid.download.Mirror(repo.mirrors[0]),
+                org.fdroid.download.Mirror(repo.mirrors[1]),
+                org.fdroid.download.Mirror(repo.mirrors[2]),
+            ).toSet(), actualRepo.getAllMirrors().toSet()
+        )
         assertEquals(emptyList(), actualRepo.antiFeatures)
         assertEquals(emptyList(), actualRepo.categories)
         assertEquals(emptyList(), actualRepo.releaseChannels)

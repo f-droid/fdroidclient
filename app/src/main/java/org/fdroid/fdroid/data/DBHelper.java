@@ -75,9 +75,17 @@ public class DBHelper {
         boolean hasEnabledRepo = false;
         for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
             boolean enabled = initialRepos.get(i + 4).equals("1");
+            // split addresses into a list
+            List<String> addresses = new ArrayList<>();
+            for (String address : initialRepos.get(i + 1).split("\\s+")) {
+                if (!address.isEmpty()) {
+                    addresses.add(address);
+                }
+            }
             InitialRepository repo = new InitialRepository(
                     initialRepos.get(i), // name
-                    initialRepos.get(i + 1), // address
+                    addresses.get(0), // primary address (by convention: the first item)
+                    addresses.subList(1, addresses.size()), // list of mirrors
                     initialRepos.get(i + 2), // description
                     initialRepos.get(i + 6),  // certificate
                     Integer.parseInt(initialRepos.get(i + 3)), // version
