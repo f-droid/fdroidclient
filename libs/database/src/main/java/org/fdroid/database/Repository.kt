@@ -375,9 +375,10 @@ internal data class RepositoryPreferences(
 /**
  * A reduced version of [Repository] used to pre-populate the [FDroidDatabase].
  */
-public data class InitialRepository(
+public data class InitialRepository @JvmOverloads constructor(
     val name: String,
     val address: String,
+    val mirrors: List<String> = emptyList(),
     val description: String,
     val certificate: String,
     val version: Long,

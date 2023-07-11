@@ -6,7 +6,19 @@
         <!-- name -->
         <item>F-Droid Archive</item>
         <!-- address -->
-        <item>https://f-droid.org/archive</item>
+        <item>
+            https://f-droid.org/archive
+            http://fdroidorg6cooksyluodepej4erfctzk7rrjpjbbr6wx24jh3lqyfwyd.onion/fdroid/archive
+            http://ftpfaudev4triw2vxiwzf4334e3mynz7osqgtozhbc77fixncqzbyoyd.onion/fdroid/archive
+            https://fdroid.tetaneutral.net/fdroid/archive
+            https://ftp.agdsn.de/fdroid/archive
+            https://ftp.fau.de/fdroid/archive
+            https://ftp.lysator.liu.se/pub/fdroid/archive
+            https://mirror.cyberbits.eu/fdroid/archive
+            https://mirror.fcix.net/fdroid/archive
+            https://mirror.ossplanet.net/fdroid/archive
+            https://plug-mirror.rcac.purdue.edu/fdroid/archive
+        </item>
         <!-- description -->
         <item>The archive repository of the F-Droid client. This contains older versions of
             applications from the main repository.
@@ -25,7 +37,19 @@
         <!-- name -->
         <item>F-Droid</item>
         <!-- address -->
-        <item>https://f-droid.org/repo</item>
+        <item>
+            https://f-droid.org/repo
+            http://fdroidorg6cooksyluodepej4erfctzk7rrjpjbbr6wx24jh3lqyfwyd.onion/fdroid/repo
+            http://ftpfaudev4triw2vxiwzf4334e3mynz7osqgtozhbc77fixncqzbyoyd.onion/fdroid/repo
+            https://fdroid.tetaneutral.net/fdroid/repo
+            https://ftp.agdsn.de/fdroid/repo
+            https://ftp.fau.de/fdroid/repo
+            https://ftp.lysator.liu.se/pub/fdroid/repo
+            https://mirror.cyberbits.eu/fdroid/repo
+            https://mirror.fcix.net/fdroid/repo
+            https://mirror.ossplanet.net/fdroid/repo
+            https://plug-mirror.rcac.purdue.edu/fdroid/repo
+        </item>
         <!-- description -->
         <item>The official F-Droid Free Software repository. Everything in this repository is always built from the source code.
         </item>
@@ -43,7 +67,11 @@
         <!-- name -->
         <item>Guardian Project Archive</item>
         <!-- address -->
-        <item>https://guardianproject.info/fdroid/archive</item>
+        <item>
+            https://guardianproject.info/fdroid/archive
+            https://s3.amazonaws.com/guardianproject/fdroid/archive
+            https://guardianproject.s3.amazonaws.com/fdroid/archive
+        </item>
         <!-- description -->
         <item>The official repository of The Guardian Project apps for use with F-Droid client. This
             contains older versions of applications from the main repository.
@@ -62,7 +90,11 @@
         <!-- name -->
         <item>Guardian Project</item>
         <!-- address -->
-        <item>https://guardianproject.info/fdroid/repo</item>
+        <item>
+            https://guardianproject.info/fdroid/repo
+            https://s3.amazonaws.com/guardianproject/fdroid/repo
+            https://guardianproject.s3.amazonaws.com/fdroid/repo
+        </item>
         <!-- description -->
         <item>The official app repository of The Guardian Project. Applications in this repository
             are official binaries build by the original application developers and signed by the
