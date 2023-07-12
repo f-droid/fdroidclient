@@ -538,7 +538,7 @@
     <string name="use_ipfs_gateways_summary">Dateien von IPFS-Spiegelservern herunterladen, wenn dies von der Paketquelle unterstützt wird.</string>
     <string name="use_ipfs_gateways">IPFS-Gateways verwenden</string>
     <string name="repo_last_update_downloaded">Letzte heruntergeladene Aktualisierung</string>
-    <string name="category_Nightly">Nächtliche Builds</string>
+    <string name="category_Nightly">nächtlich</string>
     <string name="antinsfwlist">Diese App enthält Inhalte, die nicht öffentlich gemacht werden oder überall sichtbar sein sollten</string>
     <string name="warning_target_sdk">Diese App wurde für eine ältere Version von Android entwickelt und kann nicht automatisch aktualisiert werden.</string>
     <string name="app_name_basic">F-Droid Basic</string>

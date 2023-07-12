@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a app e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela app)</string>
     <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
@@ -460,7 +460,7 @@
     <string name="swap_toast_hotspot_enabled">Ponto de acesso Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
     <string name="send_history_csv">%s histórico de instalações como ficheiro CSV</string>
-    <string name="send_version_and_uuid_summary">Inclui a versão da aplicação e uma ID aleatória única ao descarregar. Surte efeito após reiniciar a aplicação.</string>
+    <string name="send_version_and_uuid_summary">Inclui a versão da app e uma ID aleatória única ao descarregar. Surte efeito após reiniciar a app.</string>
     <string name="send_installed_apps">Partilhar aplicações instaladas</string>
     <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid como ficheiro CSV</string>
     <string name="menu_open">Abrir</string>
@@ -545,4 +545,9 @@
     <string name="use_ipfs_gateways_summary">Descarregar ficheiros de espelhos de IPFS, se forem suportados pelo repo.</string>
     <string name="repo_last_update_downloaded">Última atualização descarregada</string>
     <string name="warning_target_sdk">Esta app foi criada para uma versão do Android mais antiga e não pode ser automaticamente atualizada.</string>
+    <string name="app_name_basic">F-Droid Básico</string>
+    <string name="about_title_basic">Acerca do F-Droid Básico</string>
+    <string name="app_error_open">Não foi possível iniciar a app.</string>
+    <string name="antinsfwlist">Esta app contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">noturno</string>
 </resources>
