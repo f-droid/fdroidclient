@@ -536,9 +536,16 @@
     <string name="antinonfreeassets">Ativos não livres</string>
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiothers">Outras características indesejadas</string>
-    <string name="antinsfw">Esta aplicação contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string name="antinsfw">Não é seguro para o trabalho</string>
     <string name="menu_release_channel_beta">Permitir atualizações Beta</string>
     <string name="latest__empty_state__upgrading">A atualizar a base de dados…</string>
     <string name="use_ipfs_gateways">Usar gateways de IPFS</string>
     <string name="use_ipfs_gateways_summary">Descarregar ficheiros de espelhos de IPFS, se forem suportados pelo repo.</string>
+    <string name="app_name_basic">F-Droid Básico</string>
+    <string name="about_title_basic">Acerca do F-Droid Básico</string>
+    <string name="category_Nightly">noturno</string>
+    <string name="warning_target_sdk">Esta app foi criada para uma versão do Android mais antiga e não pode ser automaticamente atualizada.</string>
+    <string name="app_error_open">Não foi possível iniciar a app.</string>
+    <string name="antinsfwlist">Esta app contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
+    <string name="repo_last_update_downloaded">Última atualização descarregada</string>
 </resources>

@@ -4,3 +4,5 @@
 * Atualizações autônomas sem extensão privilegiada (apenas F-Droid Basic por enquanto)
 * Mostra o tamanho do aplicativo na tela de detalhes do aplicativo (somente no modo especialista)
 * Nomes de aplicativos ligeiramente mais escuros nas listas de aplicativos para melhorar a legibilidade
+* Restaurado o estado aberto/fechado de "Atualizar tudo" na aba Atualizações
+* Restaurada a aba ativa entre reinícios do aplicativo

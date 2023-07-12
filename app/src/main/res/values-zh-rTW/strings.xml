@@ -523,6 +523,6 @@
     <string name="repo_last_update_downloaded">上次下載的更新</string>
     <string name="warning_target_sdk">此應用程式是建構給舊版 Android 使用，無法自動更新。</string>
     <string name="about_title_basic">關於 F-Droid Basic</string>
-    <string name="category_Nightly">每夜建構版本</string>
+    <string name="category_Nightly">每夜版本</string>
     <string name="app_error_open">無法啟動應用程式。</string>
 </resources>

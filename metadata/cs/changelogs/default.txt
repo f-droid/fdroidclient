@@ -4,3 +4,5 @@
 * Bezobslužné aktualizace bez důvěryhodného rozšíření (zatím pouze F-Droid Basic)
 * Zobrazení velikosti aplikace na obrazovce s podrobnostmi o aplikaci (pouze v režimu experta)
 * Mírně tmavší názvy aplikací v seznamech aplikací pro lepší čitelnost
+* Obnovení otevření/zavření položky „Aktualizovat vše“ na kartě Aktualizace
+* Obnovení aktivní karty mezi restarty aplikace

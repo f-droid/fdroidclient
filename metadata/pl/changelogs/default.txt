@@ -1,6 +1,8 @@
 * Wiele poprawek błędów
-* Wyświetlanie ikon repozytoriów na liście repozytoriów
-* Wyświetlanie powodów niepożądanych funkcji (jeśli dostępne)
-* Nienadzorowane aktualizacje bez uprzywilejowanego rozszerzenia (na razie tylko F-Droid Basic)
-* Wyświetlanie rozmiaru aplikacji na ekranie szczegółów aplikacji (tylko tryb eksperta)
-* Nieco ciemniejsze nazwy aplikacji na listach aplikacji w celu poprawy czytelności
+* Wyśw. ikon repo na liście repo
+* Wyśw. powodów niepożądanych funkcji (jeśli dostępne)
+* Nienadzorowane aktualizacje bez uprzywilejowanego rozsz. (na razie tylko F-Droid Basic)
+* Wyśw. rozmiaru aplikacji na ekranie szczegółów aplikacji (tylko tryb eksperta)
+* Nieco ciemniejsze nazwy aplikacji na listach aplikacji w celu popr. czytelności
+* Przywr. stanu otw./zamk. „Zaktualizuj wszystko” w karcie Aktualizacje (@tunedal)
+* Przywr. aktywnej karty między restartami aplikacji

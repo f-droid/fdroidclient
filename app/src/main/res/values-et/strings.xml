@@ -546,7 +546,7 @@
     <string name="about_title_basic">Teave F-Droid Basic\'u kohta</string>
     <string name="repo_last_update_downloaded">Viimane uuendus on allalaaditud</string>
     <string name="app_error_open">Rakenduse käivitamine ei õnnestunud.</string>
-    <string name="category_Nightly">Igaöised arendusjärgud</string>
+    <string name="category_Nightly">igaöised arendusjärgud</string>
     <string name="warning_target_sdk">See rakendus on loodud Androidi vanema versiooni jaoks ja seda ei saa automaatselt uuendada.</string>
     <string name="antinsfwlist">Selles rakenduses on sisu, mida ei saa kõikjal avaldada ega peaks olema kõikjalt vaadatav</string>
 </resources>
