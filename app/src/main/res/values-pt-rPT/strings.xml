@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a app e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela app)</string>
     <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
@@ -549,5 +549,5 @@
     <string name="about_title_basic">Acerca do F-Droid Básico</string>
     <string name="app_error_open">Não foi possível iniciar a app.</string>
     <string name="antinsfwlist">Esta app contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">noturno</string>
+    <string name="category_Nightly">noturno</string>
 </resources>

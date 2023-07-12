@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalanmış. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekiyor. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın tüm verilerini sileceğini unutmayın)</string>
     <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de yüklensin mi\?</string>
     <string name="version">Sürüm</string>
@@ -530,7 +530,7 @@
     <string name="latest__empty_state__upgrading">Veri tabanı yükseltiliyor…</string>
     <string name="use_ipfs_gateways">IPFS ağ geçitlerini kullan</string>
     <string name="use_ipfs_gateways_summary">Depo tarafından destekleniyorsa, dosyaları IPFS yansılarından indirin.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">kararsız</string>
+    <string name="category_Nightly">kararsız</string>
     <string name="app_name_basic">F-Droid Temel</string>
     <string name="about_title_basic">F-Droid Temel Hakkında</string>
     <string name="antinsfwlist">Bu uygulama her yerde yayınlanmaması veya görünmemesi gereken içeriğe sahiptir</string>
