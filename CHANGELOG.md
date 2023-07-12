@@ -1,3 +1,9 @@
+### 1.16.4 (2023-07-12)
+
+* Fix downloading apps in Nearby swap exchanges #2617 #2628
+
+* Fix crash on Nearby Bonjour status broadcasts #2518
+
 ### 1.16.3 (2023-04-06)
 
 * Fix critical bug that prevents repo updates after Android OS updates (!1210)
