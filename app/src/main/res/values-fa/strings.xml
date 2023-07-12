@@ -526,9 +526,13 @@
     <string name="antinonfreedep">وابستگی‌های ناآزاد</string>
     <string name="antinosource">کد مبدأ دیگر موجود نیست</string>
     <string name="antiothers">دیگر پادویژگی‌ها</string>
-    <string name="antinsfw">این کاره محتوایی دارد که نباید عمومی شده یا همه‌حا نمایان باشد</string>
+    <string name="antinsfw">شامل محتوایی که بهتر است در همه‌ی مکان‌ها نمایان نشود</string>
     <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
     <string name="latest__empty_state__upgrading">ارتقا دادن پایگاه داده…</string>
     <string name="use_ipfs_gateways">استفاده از دروازه‌های IPFS</string>
     <string name="use_ipfs_gateways_summary">بارگیری پرونده‌ها از آینه‌های IPFS در صورت پشتیبانی به دست مخزن.</string>
+    <string name="antinsfwlist">این برنامه حاوی محتوایی است که نباید در همه جا عمومی یا قابل مشاهده باشد</string>
+    <string name="repo_last_update_downloaded">آخرین به‌روزرسانی بارگیری شد</string>
+    <string name="app_error_open">برنامه راه‌اندازی نشد.</string>
+    <string name="warning_target_sdk">این برنامه برای نسخه قدیمی اندروید ساخته شده است و به‌طور خودکار به‌روز نمی‌شود.</string>
 </resources>
