@@ -1,3 +1,7 @@
+### 1.17-alpha2 (2023-07-12)
+
+* Use official mirrors when first starting up, in case f-droid.org is not available.
+
 ### 1.17-alpha1 (2023-07-07)
 
 * Remembers active tab between app restarts
