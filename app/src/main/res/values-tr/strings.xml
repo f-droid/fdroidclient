@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalanmış. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekiyor. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın tüm verilerini sileceğini unutmayın)</string>
     <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de yüklensin mi\?</string>
     <string name="version">Sürüm</string>
@@ -525,9 +525,16 @@
     <string name="antiknownvuln">Bilinen Güvenlik Açığı</string>
     <string name="antinosource">Kaynak Kodu Artık Yok</string>
     <string name="antiothers">Diğer Karşıt-özellikler</string>
-    <string name="antinsfw">Bu uygulama, herkese duyurulmaması veya her yerde görünmemesi gereken içerik içeriyor</string>
+    <string name="antinsfw">İş için Güvenli Değil</string>
     <string name="menu_release_channel_beta">Beta Güncellemelerine İzin Ver</string>
     <string name="latest__empty_state__upgrading">Veri tabanı yükseltiliyor…</string>
     <string name="use_ipfs_gateways">IPFS ağ geçitlerini kullan</string>
     <string name="use_ipfs_gateways_summary">Depo tarafından destekleniyorsa, dosyaları IPFS yansılarından indirin.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">kararsız</string>
+    <string name="app_name_basic">F-Droid Temel</string>
+    <string name="about_title_basic">F-Droid Temel Hakkında</string>
+    <string name="antinsfwlist">Bu uygulama her yerde yayınlanmaması veya görünmemesi gereken içeriğe sahiptir</string>
+    <string name="warning_target_sdk">Bu uygulama Android\'in eski bir sürümü için geliştirilmiştir ve otomatik olarak güncellenemez.</string>
+    <string name="app_error_open">Uygulama başlatılamadı.</string>
+    <string name="repo_last_update_downloaded">Son güncelleme indirildi</string>
 </resources>
