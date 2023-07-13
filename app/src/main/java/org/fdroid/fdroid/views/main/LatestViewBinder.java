@@ -72,7 +72,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         latestAdapter = new LatestAdapter(activity);
 
         GridLayoutManager layoutManager = new GridLayoutManager(activity, 2);
-        layoutManager.setSpanSizeLookup(new LatestAdapter.SpanSizeLookup());
+        layoutManager.setSpanSizeLookup(latestAdapter.getSpanSizeLookup());
 
         emptyState = latestView.findViewById(R.id.empty_state);
 
