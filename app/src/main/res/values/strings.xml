@@ -171,8 +171,10 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="repo_add_title">Add new repository</string>
+    <string name="repo_add_new_title">Add repository</string>
     <string name="repo_add_add">Add</string>
     <string name="repo_add_mirror">Add mirror</string>
+    <string name="repo_add_new_mirror">Add as new mirror</string>
     <string name="links">Links</string>
     <string name="versions">Versions</string>
     <string name="more">More</string>
@@ -190,13 +192,20 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
     <string name="choose_bt_send">Choose Bluetooth send method</string>
 
+    <string name="repo_intro">A repository is an additional source of apps. Third-party ones you add here have different standards than those providing apps built by F-Droid itself.\n\nPlease ensure that the repository you are adding is trustworthy.</string>
+    <string name="repo_state_fetching">Fetching repository…</string>
+    <string name="repo_state_adding">Adding repository…</string>
+    <string name="repo_enter_url">Enter repository URL manually</string>
     <string name="repo_add_url">Repository address</string>
     <string name="repo_add_fingerprint">Fingerprint (optional)</string>
+    <string name="repo_exists">This repo was already added.</string>
     <string name="repo_exists_add_fingerprint">%1$s is already setup, this will add new key information.</string>
     <string name="repo_exists_enable">%1$s is already setup, confirm that you want to re-enable it.</string>
     <string name="repo_exists_and_enabled">%1$s is already setup and enabled.</string>
     <string name="repo_delete_to_overwrite">First delete %1$s in order to add this with a conflicting key.</string>
     <string name="repo_exists_add_mirror">This is a copy of %1$s, add it as a mirror?</string>
+    <string name="repo_invalid">Invalid repository.\n\nContact the maintainer and let them know about the issue.</string>
+    <string name="repo_io_error">Error connecting to the repository.</string>
     <string name="bad_fingerprint">Bad fingerprint</string>
     <string name="invalid_url">This is not a valid URL.</string>
     <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>

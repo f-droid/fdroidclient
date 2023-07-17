@@ -72,6 +72,7 @@ import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
 import org.fdroid.fdroid.work.CleanCacheWorker;
@@ -508,7 +509,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     public static Repository createSwapRepo(String address, String certificate) {
         long now = System.currentTimeMillis();
-        return new Repository(42L, address, now, IndexFormatVersion.ONE, certificate, 20001L, 42, now);
+        return new Repository(42L, address, now, IndexFormatVersion.ONE, certificate, 20001L, 42,
+                now);
     }
 
     public static Context getInstance() {
@@ -516,7 +518,10 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     }
 
     public static RepoManager getRepoManager(Context context) {
-        if (repoManager == null) repoManager = new RepoManager(DBHelper.getDb(context));
+        if (repoManager == null) {
+            repoManager = new RepoManager(context, DBHelper.getDb(context), DownloaderFactory.INSTANCE,
+                    DownloaderFactory.HTTP_MANAGER);
+        }
         return repoManager;
     }
 
