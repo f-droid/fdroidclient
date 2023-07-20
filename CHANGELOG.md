@@ -1,3 +1,11 @@
+### 1.17.0 (2023-07-20)
+
+* Use simple list layouts in F-Droid Basic's Latest Tab
+
+* Fix bug where update and install prompts were being duplicated #2653
+
+* Fix two specific crashes in nearby swap #2629
+
 ### 1.17-alpha2 (2023-07-12)
 
 * Use official mirrors when first starting up, in case f-droid.org is not available.
@@ -27,6 +35,12 @@
 * Slightly darker app names in app lists to improve readability
 
 * new targetSdk: 28 for full and 33 for basic
+
+### 1.16.4 (2023-07-12)
+
+* Fix downloading apps in Nearby swap exchanges #2617 #2628
+
+* Fix crash on Nearby Bonjour status broadcasts #2518
 
 ### 1.16.3 (2023-04-06)
 
