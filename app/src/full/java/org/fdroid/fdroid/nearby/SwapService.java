@@ -45,6 +45,7 @@ import org.fdroid.index.v1.IndexV1Verifier;
 import org.fdroid.index.v2.FileV2;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -150,13 +151,29 @@ public class SwapService extends Service {
         ).getSecond();
     }
 
+    /**
+     * Start updating the swap repo.  If {@code index-v1.jar} is not found,
+     * then check if {@code index.jar} aka v0 is present.  If so, then the
+     * other side is using an old F-Droid version, so tell the user.
+     */
     private void updateRepo(@NonNull Peer peer, Repository repo)
             throws IOException, InterruptedException, SigningException, NotFoundException {
         File swapJarFile =
                 File.createTempFile("swap", "", getApplicationContext().getCacheDir());
+        File ignoredFile;
         try {
             index.postValue(getVerifiedRepoIndex(repo, peer.getFingerprint(), swapJarFile));
             startPollingConnectedSwapRepo();
+        } catch (org.fdroid.download.NotFoundException e) {
+            String index = "index.jar";
+            Uri uri = Uri.parse(repo.getAddress()).buildUpon().appendPath(index).build();
+            FileV2 indexFile = FileV2.fromPath("/" + index);
+            ignoredFile = File.createTempFile("ignored-", "");
+            Downloader downloader =
+                DownloaderFactory.INSTANCE.createWithTryFirstMirror(repo, uri, indexFile, ignoredFile);
+            downloader.download();
+            String msg = getApplicationContext().getString(R.string.swap_connection_indexv0_error);
+            throw new FileNotFoundException(msg);
         } finally {
             //noinspection ResultOfMethodCallIgnored
             swapJarFile.delete();
