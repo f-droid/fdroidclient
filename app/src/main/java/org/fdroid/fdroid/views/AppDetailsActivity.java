@@ -454,6 +454,11 @@ public class AppDetailsActivity extends AppCompatActivity
             // clear progress if the state got removed in the meantime (e.g. download canceled)
             adapter.clearProgress();
         }
+        if (this.currentStatus == newStatus) {
+            Utils.debugLog(TAG, "Same app status, not updating.");
+            return;
+        }
+
         this.currentStatus = newStatus;
         if (this.currentStatus == null) {
             return;
@@ -477,15 +482,6 @@ public class AppDetailsActivity extends AppCompatActivity
                     localBroadcastManager.registerReceiver(installReceiver,
                             Installer.getInstallIntentFilter(newStatus.getCanonicalUrl()));
                 } else {
-                    try {
-                        if (newStatus.intent != null) {
-                            localBroadcastManager.registerReceiver(installReceiver,
-                                    Installer.getInstallIntentFilter(newStatus.getCanonicalUrl()));
-                            newStatus.intent.send();
-                        }
-                    } catch (PendingIntent.CanceledException e) {
-                        Log.e(TAG, "PI canceled", e);
-                    }
                     adapter.clearProgress();
                 }
                 break;
