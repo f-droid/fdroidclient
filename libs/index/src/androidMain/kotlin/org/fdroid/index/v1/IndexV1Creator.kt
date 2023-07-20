@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_PERMISSIONS
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build.VERSION.SDK_INT
+import android.util.Log
 import androidx.core.content.pm.PackageInfoCompat
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.encodeToStream
@@ -63,10 +64,14 @@ public class IndexV1Creator(
         @Suppress("DEPRECATION")
         val flags = GET_SIGNATURES or GET_PERMISSIONS
 
-        @Suppress("PackageManagerGetSignatures")
-        val packageInfo = packageManager.getPackageInfo(packageName, flags)
-        apps.add(getApp(packageInfo))
-        packages[packageName] = listOf(getPackage(packageInfo))
+        try {
+            @Suppress("PackageManagerGetSignatures")
+            val packageInfo = packageManager.getPackageInfo(packageName, flags)
+            apps.add(getApp(packageInfo))
+            packages[packageName] = listOf(getPackage(packageInfo))
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.i("IndexV1Creator", "app disappeared during addApp: " + e)
+        } ?: return // this app disappeared, nothing left to do
     }
 
     private fun getApp(packageInfo: PackageInfo): AppV1 {

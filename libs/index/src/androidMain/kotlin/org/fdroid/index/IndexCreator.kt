@@ -82,6 +82,7 @@ public abstract class IndexCreator<T>(
         val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
         val apkName = "${packageName}_$versionCode.apk"
         val apkFile = File(repoDir, apkName)
+        if (apkFile.exists()) apkFile.delete()
         symlink(packageInfo.applicationInfo.publicSourceDir, apkFile.absolutePath)
         if (!apkFile.exists()) {
             File(packageInfo.applicationInfo.publicSourceDir).copyTo(apkFile)
