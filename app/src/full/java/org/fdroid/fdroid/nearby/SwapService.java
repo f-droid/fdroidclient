@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
@@ -377,14 +378,18 @@ public class SwapService extends Service {
         localBroadcastManager.registerReceiver(bonjourPeerFound, new IntentFilter(BonjourManager.ACTION_FOUND));
         localBroadcastManager.registerReceiver(bonjourPeerRemoved, new IntentFilter(BonjourManager.ACTION_REMOVED));
 
-        if (getHotspotActivatedUserPreference()) {
-            WifiApControl wifiApControl = WifiApControl.getInstance(this);
-            if (wifiApControl != null) {
-                wifiApControl.enable();
-            }
-        } else if (getWifiVisibleUserPreference()) {
-            if (wifiManager != null) {
-                wifiManager.setWifiEnabled(true);
+        if (Build.VERSION.SDK_INT <= 28) {
+            if (getHotspotActivatedUserPreference()) {
+                WifiApControl wifiApControl = WifiApControl.getInstance(this);
+                if (wifiApControl != null) {
+                    wifiApControl.enable();
+                }
+            } else if (getWifiVisibleUserPreference()) {
+                if (wifiManager != null) {
+                    if (!wifiManager.isWifiEnabled()) {
+                        wifiManager.setWifiEnabled(true);
+                    }
+                }
             }
         }
 
@@ -471,20 +476,21 @@ public class SwapService extends Service {
 
         BonjourManager.stop(this);
         LocalHTTPDManager.stop(this);
-        if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
-            wifiManager.setWifiEnabled(false);
-        }
-
-        WifiApControl ap = WifiApControl.getInstance(this);
-        if (ap != null) {
-            try {
-                if (wasHotspotEnabledBeforeSwap()) {
-                    ap.enable();
-                } else {
-                    ap.disable();
+        if (Build.VERSION.SDK_INT <= 28) {
+            if (wifiManager != null && !wasWifiEnabledBeforeSwap()) {
+                wifiManager.setWifiEnabled(false);
+            }
+            WifiApControl ap = WifiApControl.getInstance(this);
+            if (ap != null) {
+                try {
+                    if (wasHotspotEnabledBeforeSwap()) {
+                        ap.enable();
+                    } else {
+                        ap.disable();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
 

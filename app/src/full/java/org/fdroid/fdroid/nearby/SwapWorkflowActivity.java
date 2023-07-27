@@ -483,7 +483,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 })
                 .setPositiveButton(R.string.wifi, (dialog, which) -> {
                     SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
-                    wifiManager.setWifiEnabled(true);
+                    if (Build.VERSION.SDK_INT <= 28) {
+                        wifiManager.setWifiEnabled(true);
+                    }
                     Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -507,7 +509,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
         SwapService.putHotspotEnabledBeforeSwap(wifiApControl.isEnabled());
-        wifiManager.setWifiEnabled(false);
+        if (Build.VERSION.SDK_INT <= 28) {
+            wifiManager.setWifiEnabled(false);
+        }
         if (wifiApControl.enable()) {
             Toast.makeText(this, R.string.swap_toast_hotspot_enabled, Toast.LENGTH_SHORT).show();
             SwapService.putHotspotActivatedUserPreference(true);
@@ -1098,7 +1102,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 if (wifiApControl != null && wifiApControl.isEnabled()) {
                     setupWifiAP();
                 } else {
-                    wifiManager.setWifiEnabled(true);
+                    if (Build.VERSION.SDK_INT <= 28) {
+                        wifiManager.setWifiEnabled(true);
+                    }
                 }
                 BonjourManager.start(context);
             }
