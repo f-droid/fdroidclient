@@ -421,6 +421,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             showRelevantView();
             newIntent = false;
         }
+
+        switch (currentSwapViewLayoutRes) {
+            case R.layout.swap_start_swap:
+                updateWifiBannerVisibility();
+                break;
+        }
     }
 
     @Override
@@ -554,6 +560,30 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void inflateSwapView(@LayoutRes int viewRes) {
         inflateSwapView(viewRes, false);
+
+        switch (viewRes) {
+            case R.layout.swap_start_swap:
+                updateWifiBannerVisibility();
+                break;
+        }
+    }
+
+    private void updateWifiBannerVisibility() {
+        final View wifiBanner = findViewById(R.id.wifi_banner);
+        if (wifiBanner != null) {
+            if (Build.VERSION.SDK_INT >= 29 && wifiManager != null && !wifiManager.isWifiEnabled()) {
+                Button turnOnWifi = findViewById(R.id.turn_on_wifi);
+                if (turnOnWifi != null) {
+                    turnOnWifi.setOnClickListener(view -> {
+                        wifiBanner.setVisibility(View.GONE);
+                        startActivity(new Intent(Settings.Panel.ACTION_WIFI));
+                    });
+                }
+                wifiBanner.setVisibility(View.VISIBLE);
+            } else {
+                wifiBanner.setVisibility(View.GONE);
+            }
+        }
     }
 
     /**
@@ -977,6 +1007,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 case WifiManager.WIFI_STATE_UNKNOWN:
                     break;
             }
+
+            updateWifiBannerVisibility();
         }
     };
 

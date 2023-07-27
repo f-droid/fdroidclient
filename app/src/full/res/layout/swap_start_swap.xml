@@ -9,8 +9,62 @@
     android:layout_height="match_parent"
     tools:context=".nearby.SwapWorkflowActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/wifi_banner"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="24dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingBottom="12dp"
+            >
+
+            <ImageView
+                android:id="@+id/wifi_banner_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_wifi_off"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:textSize="16sp"
+                    android:text="@string/swap_banner_message" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/turn_on_wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="right"
+                    android:text="@string/turn_on_wifi"
+                    />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
     <!-- Misc header -->
-    <include layout="@layout/start_swap_header" />
+    <include layout="@layout/start_swap_header"
+        android:layout_below="@id/wifi_banner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
 
     <!-- Bluetooth swap status + toggle -->
     <LinearLayout
