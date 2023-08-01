@@ -32,7 +32,7 @@ internal class RepositoryDaoTest : DbTest() {
             address = getRandomString(),
             mirrors = listOf(getRandomString(), getRandomString(), getRandomString()),
             description = getRandomString(),
-            certificate = getRandomString(),
+            certificate = "abcdef", // not random, because format gets checked
             version = Random.nextLong(),
             enabled = Random.nextBoolean(),
             weight = Random.nextInt(),
