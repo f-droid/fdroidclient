@@ -489,7 +489,7 @@ public class SwapService extends Service {
                         ap.disable();
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "could not access/enable/disable WiFi AP", e);
                 }
             }
         }
