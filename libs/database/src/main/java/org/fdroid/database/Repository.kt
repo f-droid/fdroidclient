@@ -36,6 +36,11 @@ internal data class CoreRepository(
     internal companion object {
         const val TABLE = "CoreRepository"
     }
+
+    init {
+        // TODO comment in some time after #2662 had time to resolve itself
+//        validateCertificate(certificate)
+    }
 }
 
 internal fun RepoV2.toCoreRepository(
@@ -384,4 +389,15 @@ public data class InitialRepository @JvmOverloads constructor(
     val version: Long,
     val enabled: Boolean,
     val weight: Int,
-)
+) {
+    init {
+        validateCertificate(certificate)
+    }
+}
+
+@Throws(IllegalArgumentException::class)
+private fun validateCertificate(certificate: String?) {
+    if (certificate != null) require(certificate.length % 2 == 0 &&
+        certificate.chunked(2).find { it.toIntOrNull(16) == null } == null
+    ) { "Invalid certificate: $certificate" }
+}

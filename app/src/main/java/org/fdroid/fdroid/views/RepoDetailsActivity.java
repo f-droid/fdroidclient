@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -158,8 +159,12 @@ public class RepoDetailsActivity extends AppCompatActivity {
         }
 
         Uri uri = Uri.parse(repo.getAddress());
-        if (repo.getFingerprint() != null) {
-            uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.getFingerprint()).build();
+        try {
+            if (repo.getFingerprint() != null) {
+                uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.getFingerprint()).build();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Invalid repo fingerprint: " + repo.getAddress());
         }
         String qrUriString = uri.toString();
         disposable = Utils.generateQrBitmap(this, qrUriString)
@@ -297,8 +302,13 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private void prepareShareMenuItems(Menu menu) {
         if (!TextUtils.isEmpty(repo.getAddress())) {
             if (!TextUtils.isEmpty(repo.getCertificate())) {
-                shareUrl = Uri.parse(repo.getAddress()).buildUpon()
-                        .appendQueryParameter("fingerprint", repo.getFingerprint()).toString();
+                try {
+                    shareUrl = Uri.parse(repo.getAddress()).buildUpon()
+                            .appendQueryParameter("fingerprint", repo.getFingerprint()).toString();
+                } catch (Exception e) {
+                    Log.e(TAG, "Invalid repo fingerprint: " + repo.getAddress());
+                    shareUrl = repo.getAddress();
+                }
             } else {
                 shareUrl = repo.getAddress();
             }

@@ -82,16 +82,22 @@ public class DBHelper {
                     addresses.add(address);
                 }
             }
-            InitialRepository repo = new InitialRepository(
-                    initialRepos.get(i), // name
-                    addresses.get(0), // primary address (by convention: the first item)
-                    addresses.subList(1, addresses.size()), // list of mirrors
-                    initialRepos.get(i + 2), // description
-                    initialRepos.get(i + 6),  // certificate
-                    Integer.parseInt(initialRepos.get(i + 3)), // version
-                    enabled, // enabled
-                    weight++ // weight
-            );
+            InitialRepository repo;
+            try {
+                repo = new InitialRepository(
+                        initialRepos.get(i), // name
+                        addresses.get(0), // primary address (by convention: the first item)
+                        addresses.subList(1, addresses.size()), // list of mirrors
+                        initialRepos.get(i + 2), // description
+                        initialRepos.get(i + 6),  // certificate
+                        Integer.parseInt(initialRepos.get(i + 3)), // version
+                        enabled, // enabled
+                        weight++ // weight
+                );
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "Invalid repo: " + addresses.get(0), e);
+                continue;
+            }
             hasEnabledRepo = hasEnabledRepo || enabled;
             db.getRepositoryDao().insert(repo);
         }
