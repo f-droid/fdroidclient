@@ -35,6 +35,7 @@ import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
+import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
 import org.fdroid.test.TestDataMinV2
@@ -372,6 +373,64 @@ internal class RepoAdderTest {
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
             assertEquals(IO_ERROR, state2.errorType)
+        }
+    }
+
+    @Test
+    fun testParsingThrowsSerializationException() = runTest {
+        val url = "https://example.org/repo"
+        val urlTrimmed = url.trimEnd('/')
+        val jarFile = folder.newFile()
+        val index = "{ invalid JSON foo bar,".toByteArray()
+        val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
+
+        every { tempFileProvider.createTempFile() } returns jarFile
+        every {
+            downloaderFactory.create(
+                repo = match {
+                    it.address == urlTrimmed && it.formatVersion == IndexFormatVersion.TWO
+                },
+                uri = Uri.parse("$urlTrimmed/entry.jar"),
+                indexFile = any(),
+                destFile = jarFile,
+            )
+        } returns downloader
+        every { downloader.download() } answers {
+            jarFile.outputStream().use { outputStream ->
+                assets.open("diff-empty-min/entry.jar").use { inputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+        }
+        coEvery {
+            httpManager.getDigestInputStream(match {
+                it.indexFile.name == "../index-min-v2.json" &&
+                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == urlTrimmed
+            })
+        } returns indexStream
+        every {
+            digest.digest() // sha256 from entry.json
+        } returns "851ecda085ed53adab25f761a9dbf4c09d59e5bff9c9d5530814d56445ae30f2".decodeHex()
+
+        repoAdder.addRepoState.test {
+            assertIs<None>(awaitItem())
+
+            repoAdder.fetchRepository(
+                url = url,
+                username = null,
+                password = null,
+                proxy = null
+            )
+
+            val state1 = awaitItem()
+            assertIs<Fetching>(state1)
+            assertNull(state1.repo)
+            assertTrue(state1.apps.isEmpty())
+            assertFalse(state1.canAdd)
+
+            val state2 = awaitItem()
+            assertTrue(state2 is AddRepoError, "$state2")
+            assertEquals(INVALID_INDEX, state2.errorType)
         }
     }
 

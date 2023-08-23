@@ -1,6 +1,7 @@
 package org.fdroid.repo
 
 import android.net.Uri
+import kotlinx.serialization.SerializationException
 import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.Repository
 import org.fdroid.download.NotFoundException
@@ -8,7 +9,12 @@ import org.fdroid.index.SigningException
 import java.io.IOException
 
 internal fun interface RepoFetcher {
-    @Throws(IOException::class, SigningException::class, NotFoundException::class)
+    @Throws(
+        IOException::class,
+        SigningException::class,
+        NotFoundException::class,
+        SerializationException::class,
+    )
     suspend fun fetchRepo(
         uri: Uri,
         repo: Repository,

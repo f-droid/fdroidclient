@@ -15,6 +15,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
@@ -165,6 +166,10 @@ internal class RepoAdder(
         } catch (e: IOException) {
             log.error(e) { "Error fetching repo." }
             addRepoState.value = AddRepoError(IO_ERROR, e)
+            return
+        } catch (e: SerializationException) {
+            log.error(e) { "Error fetching repo." }
+            addRepoState.value = AddRepoError(INVALID_INDEX, e)
             return
         }
         // set final result
