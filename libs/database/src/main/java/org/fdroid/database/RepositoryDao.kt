@@ -223,8 +223,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")
     override fun getRepository(repoId: Long): Repository?
 
+    // the query uses strange ordering as a hacky workaround to not return default archive repos
     @Transaction
-    @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE certificate = :certificate COLLATE NOCASE")
+    @Query("""SELECT * FROM ${CoreRepository.TABLE} WHERE certificate = :certificate
+        COLLATE NOCASE ORDER BY repoId DESC LIMIT 1""")
     fun getRepository(certificate: String): Repository?
 
     @Transaction
