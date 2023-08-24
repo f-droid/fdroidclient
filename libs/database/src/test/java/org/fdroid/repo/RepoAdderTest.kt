@@ -108,6 +108,26 @@ internal class RepoAdderTest {
     }
 
     @Test
+    fun testInvalidUri() = runTest {
+        repoAdder.fetchRepositoryInt("irc://example.org/repo/") // invalid scheme
+
+        repoAdder.addRepoState.test {
+            val state1 = awaitItem()
+            assertIs<AddRepoError>(state1)
+            assertEquals(INVALID_INDEX, state1.errorType)
+        }
+
+        repoAdder.abortAddingRepo()
+        repoAdder.fetchRepositoryInt("https://%-") // invalid hostname
+
+        repoAdder.addRepoState.test {
+            val state1 = awaitItem()
+            assertIs<AddRepoError>(state1)
+            assertEquals(INVALID_INDEX, state1.errorType)
+        }
+    }
+
+    @Test
     fun testAddingMinRepo() = runTest {
         val url = "https://example.org/repo/"
         val repoName = TestDataMinV2.repo.name.getBestLocale(localeList)

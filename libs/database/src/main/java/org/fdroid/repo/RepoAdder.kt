@@ -25,6 +25,7 @@ import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
+import org.fdroid.download.HttpManager.Companion.isInvalidHttpUrl
 import org.fdroid.download.NotFoundException
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.SigningException
@@ -125,7 +126,11 @@ internal class RepoAdder(
         // get repo url and fingerprint
         val nUri = repoUriGetter.getUri(url)
         log.info("Parsed URI: $nUri")
-        // TODO reject non-http(s) Uri here
+        if (isInvalidHttpUrl(nUri.uri.toString())) {
+            val e = IllegalArgumentException("Unsupported URI: ${nUri.uri}")
+            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            return
+        }
 
         // some plumping to receive the repo preview
         var receivedRepo: Repository? = null
