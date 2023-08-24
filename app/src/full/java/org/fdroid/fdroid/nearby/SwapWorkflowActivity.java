@@ -421,6 +421,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             showRelevantView();
             newIntent = false;
         }
+
+        switch (currentSwapViewLayoutRes) {
+            case R.layout.swap_start_swap:
+                updateWifiBannerVisibility();
+                break;
+        }
     }
 
     @Override
@@ -483,7 +489,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 })
                 .setPositiveButton(R.string.wifi, (dialog, which) -> {
                     SwapService.putWifiEnabledBeforeSwap(wifiManager.isWifiEnabled());
-                    wifiManager.setWifiEnabled(true);
+                    if (Build.VERSION.SDK_INT <= 28) {
+                        wifiManager.setWifiEnabled(true);
+                    }
                     Intent intent = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -507,7 +515,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
         SwapService.putHotspotEnabledBeforeSwap(wifiApControl.isEnabled());
-        wifiManager.setWifiEnabled(false);
+        if (Build.VERSION.SDK_INT <= 28) {
+            wifiManager.setWifiEnabled(false);
+        }
         if (wifiApControl.enable()) {
             Toast.makeText(this, R.string.swap_toast_hotspot_enabled, Toast.LENGTH_SHORT).show();
             SwapService.putHotspotActivatedUserPreference(true);
@@ -550,6 +560,30 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     public void inflateSwapView(@LayoutRes int viewRes) {
         inflateSwapView(viewRes, false);
+
+        switch (viewRes) {
+            case R.layout.swap_start_swap:
+                updateWifiBannerVisibility();
+                break;
+        }
+    }
+
+    private void updateWifiBannerVisibility() {
+        final View wifiBanner = findViewById(R.id.wifi_banner);
+        if (wifiBanner != null) {
+            if (Build.VERSION.SDK_INT >= 29 && wifiManager != null && !wifiManager.isWifiEnabled()) {
+                Button turnOnWifi = findViewById(R.id.turn_on_wifi);
+                if (turnOnWifi != null) {
+                    turnOnWifi.setOnClickListener(view -> {
+                        wifiBanner.setVisibility(View.GONE);
+                        startActivity(new Intent(Settings.Panel.ACTION_WIFI));
+                    });
+                }
+                wifiBanner.setVisibility(View.VISIBLE);
+            } else {
+                wifiBanner.setVisibility(View.GONE);
+            }
+        }
     }
 
     /**
@@ -973,6 +1007,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 case WifiManager.WIFI_STATE_UNKNOWN:
                     break;
             }
+
+            updateWifiBannerVisibility();
         }
     };
 
@@ -1098,7 +1134,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 if (wifiApControl != null && wifiApControl.isEnabled()) {
                     setupWifiAP();
                 } else {
-                    wifiManager.setWifiEnabled(true);
+                    if (Build.VERSION.SDK_INT <= 28) {
+                        wifiManager.setWifiEnabled(true);
+                    }
                 }
                 BonjourManager.start(context);
             }

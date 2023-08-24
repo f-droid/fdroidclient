@@ -529,6 +529,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have
         access to the same network, one of you can create a Wi-Fi Hotspot.
     </string>
+    <string name="swap_banner_message">To swap apps, start your Wi-Fi and connect to the same network as your friend.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap">Swap apps</string>
@@ -718,6 +719,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
     <string name="undo">Undo</string>
     <string name="app_list__dismiss_installing_app">Installation cancelled</string>
+    <string name="turn_on_wifi">Turn on wifi</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Updated %1$d day ago</item>
         <item quantity="other">Updated %1$d days ago</item>
