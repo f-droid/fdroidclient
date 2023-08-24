@@ -55,7 +55,11 @@ public class SessionInstallManager extends BroadcastReceiver {
         Utils.runOffUiThread(() -> {
             for (PackageInstaller.SessionInfo session : installer.getMySessions()) {
                 Utils.debugLog(TAG, "Abandon session " + session.getSessionId());
-                installer.abandonSession(session.getSessionId());
+                try {
+                    installer.abandonSession(session.getSessionId());
+                } catch (SecurityException e) {
+                    Log.e(TAG, "Error abandoning session: ", e);
+                }
             }
         });
     }
