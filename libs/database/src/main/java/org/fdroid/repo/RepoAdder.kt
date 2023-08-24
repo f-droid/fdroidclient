@@ -177,6 +177,10 @@ internal class RepoAdder(
             log.error(e) { "Error fetching repo." }
             addRepoState.value = AddRepoError(INVALID_INDEX, e)
             return
+        } catch (e: NotFoundException) { // v1 repos can also have 404
+            log.error(e) { "Error fetching repo." }
+            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            return
         }
         // set final result
         val finalRepo = receivedRepo

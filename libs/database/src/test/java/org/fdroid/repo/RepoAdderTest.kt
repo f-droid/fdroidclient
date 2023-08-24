@@ -559,6 +559,54 @@ internal class RepoAdderTest {
         assertEquals(63, addRepoState.apps.size)
     }
 
+    @Test
+    fun testDownloadV1ThrowsNotFoundException() = runTest {
+        val url = "https://example.org/repo"
+        val jarFile = folder.newFile()
+
+        every { tempFileProvider.createTempFile() } returns jarFile
+        every {
+            downloaderFactory.create(
+                repo = match { it.address == url && it.formatVersion == IndexFormatVersion.TWO },
+                uri = Uri.parse("$url/entry.jar"),
+                indexFile = any(),
+                destFile = jarFile,
+            )
+        } returns downloader
+        every { downloader.download() } throws NotFoundException()
+
+        every {
+            downloaderFactory.create(
+                repo = match { it.address == url && it.formatVersion == IndexFormatVersion.ONE },
+                uri = Uri.parse("$url/index-v1.jar"),
+                indexFile = any(),
+                destFile = jarFile,
+            )
+        } returns downloader
+        every { downloader.download() } throws NotFoundException()
+
+        repoAdder.addRepoState.test {
+            assertIs<None>(awaitItem())
+
+            repoAdder.fetchRepository(
+                url = url,
+                username = null,
+                password = null,
+                proxy = null
+            )
+
+            val state1 = awaitItem()
+            assertIs<Fetching>(state1)
+            assertNull(state1.repo)
+            assertTrue(state1.apps.isEmpty())
+            assertFalse(state1.canAdd)
+
+            val state2 = awaitItem()
+            assertTrue(state2 is AddRepoError, "$state2")
+            assertEquals(INVALID_INDEX, state2.errorType)
+        }
+    }
+
     private fun expectDownloadOfMinRepo(url: String) {
         val urlTrimmed = url.trimEnd('/')
         val jarFile = folder.newFile()
