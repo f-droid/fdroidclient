@@ -16,6 +16,8 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.FDroidDatabase
@@ -582,9 +584,12 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            block()
-            // FIXME executing this block may emit items too fast, so we might miss one
-            //  causing flaky tests.
+            launch {
+                // FIXME executing this block may emit items too fast, so we might miss one
+                //  causing flaky tests. 50ms may fix it, let's see.
+                delay(50)
+                block()
+            }
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
