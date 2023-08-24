@@ -63,6 +63,7 @@ import org.fdroid.database.RepositoryDao;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.AppUpdateStatusManager;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -71,6 +72,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.views.repos.AddRepoActivity;
 import org.fdroid.index.RepoManager;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
 
@@ -134,7 +136,13 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setOnMenuItemClickListener(menuItem -> {
             if (menuItem.getItemId() == R.id.action_add_repo) {
-                showAddRepo();
+                if (BuildConfig.DEBUG) {
+                    // TODO enable this for all builds and remove dead code afterwards
+                    Intent i = new Intent(this, AddRepoActivity.class);
+                    startActivity(i);
+                } else {
+                    showAddRepo();
+                }
                 return true;
             }
             return false;

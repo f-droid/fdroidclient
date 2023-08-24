@@ -402,7 +402,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return Theme.valueOf(preferences.getString(Preferences.PREF_THEME, null));
     }
 
-    boolean isPureBlack() {
+    public boolean isPureBlack() {
         return preferences.getBoolean(Preferences.PREF_USE_PURE_BLACK_DARK_THEME, false);
     }
 

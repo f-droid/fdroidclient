@@ -4,12 +4,16 @@ import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.engine.okhttp.OkHttpConfig
+import io.ktor.utils.io.jvm.javaio.toInputStream
 import okhttp3.ConnectionSpec.Companion.CLEARTEXT
 import okhttp3.ConnectionSpec.Companion.MODERN_TLS
 import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
 import okhttp3.Dns
 import okhttp3.internal.tls.OkHostnameVerifier
+import org.fdroid.fdroid.DigestInputStream
+import java.io.InputStream
 import java.net.InetAddress
+import java.security.MessageDigest
 
 internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
     return object : HttpClientEngineFactory<OkHttpConfig> {
@@ -34,6 +38,21 @@ internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
             }
         }
     }
+}
+
+public suspend fun HttpManager.getInputStream(request: DownloadRequest): InputStream {
+    return getChannel(request).toInputStream()
+}
+
+/**
+ * Gets the [InputStream] for the given [request] as a [DigestInputStream],
+ * so you can verify the SHA-256 hash.
+ * If you don't need to verify the hash, use [getInputStream] instead.
+ */
+public suspend fun HttpManager.getDigestInputStream(request: DownloadRequest): DigestInputStream {
+    val digest = MessageDigest.getInstance("SHA-256")
+    val inputStream = getChannel(request).toInputStream()
+    return DigestInputStream(inputStream, digest)
 }
 
 /**

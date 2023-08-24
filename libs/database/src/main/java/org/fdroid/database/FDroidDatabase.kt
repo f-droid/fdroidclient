@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import org.fdroid.LocaleChooser.getBestLocale
 import java.util.Locale
+import java.util.concurrent.Callable
 
 @Database(
     // When bumping this version, please make sure to add one (or more) migration(s) below!
@@ -100,6 +101,11 @@ public interface FDroidDatabase {
      * Please run as little code as possible to keep the time the database is blocked minimal.
      */
     public fun runInTransaction(body: Runnable)
+
+    /**
+     * Like [runInTransaction], but can return something.
+     */
+    public fun <V> runInTransaction(body: Callable<V>): V
 
     /**
      * Removes all apps and associated data (such as versions) from all repositories.

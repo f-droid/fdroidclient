@@ -75,8 +75,8 @@ kotlin {
             dependencies {
                 implementation project(":libs:sharedTest")
                 implementation kotlin('test')
-                implementation 'androidx.test:runner:1.4.0'
-                implementation 'androidx.test.ext:junit:1.1.3'
+                implementation 'androidx.test:runner:1.5.2'
+                implementation 'androidx.test.ext:junit:1.1.5'
             }
         }
         nativeMain {

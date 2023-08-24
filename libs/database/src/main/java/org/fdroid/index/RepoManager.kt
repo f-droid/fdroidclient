@@ -1,5 +1,8 @@
 package org.fdroid.index
 
+import android.content.Context
+import androidx.annotation.AnyThread
+import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
@@ -13,22 +16,44 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
+import org.fdroid.download.DownloaderFactory
+import org.fdroid.download.HttpManager
+import org.fdroid.repo.AddRepoState
+import org.fdroid.repo.RepoAdder
+import java.io.File
+import java.net.Proxy
 import java.util.concurrent.CountDownLatch
 import kotlin.coroutines.CoroutineContext
 
 @OptIn(DelicateCoroutinesApi::class)
 public class RepoManager @JvmOverloads constructor(
+    context: Context,
     db: FDroidDatabase,
+    downloaderFactory: DownloaderFactory,
+    httpManager: HttpManager,
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
 
     private val repositoryDao = db.getRepositoryDao()
+    private val tempFileProvider = TempFileProvider {
+        File.createTempFile("dl-", "", context.cacheDir)
+    }
+    private val repoAdder = RepoAdder(
+        context = context,
+        db = db,
+        tempFileProvider = tempFileProvider,
+        downloaderFactory = downloaderFactory,
+        httpManager = httpManager,
+        coroutineContext = coroutineContext,
+    )
 
     private val _repositoriesState: MutableStateFlow<List<Repository>> =
         MutableStateFlow(emptyList())
     public val repositoriesState: StateFlow<List<Repository>> = _repositoriesState.asStateFlow()
-
     public val liveRepositories: LiveData<List<Repository>> = _repositoriesState.asLiveData()
+
+    public val addRepoState: StateFlow<AddRepoState> = repoAdder.addRepoState.asStateFlow()
+    public val liveAddRepoState: LiveData<AddRepoState> = repoAdder.addRepoState.asLiveData()
 
     /**
      * Used internally as a mechanism to wait until repositories are loaded from the DB.
@@ -90,6 +115,44 @@ public class RepoManager @JvmOverloads constructor(
         _repositoriesState.value = _repositoriesState.value.filter { repository ->
             repository.repoId == repoId
         }
+    }
+
+    /**
+     * Fetches a preview of the repository at the given [url]
+     * with the intention of possibly adding it to the database.
+     * Progress can be observed via [addRepoState] or [liveAddRepoState].
+     */
+    @AnyThread
+    @JvmOverloads
+    public fun fetchRepositoryPreview(
+        url: String,
+        username: String? = null,
+        password: String? = null,
+        proxy: Proxy? = null,
+    ) {
+        repoAdder.fetchRepository(url, username, password, proxy)
+    }
+
+    /**
+     * When [addRepoState] is in [org.fdroid.repo.Fetched],
+     * you can call this to actually add the repo to the DB.
+     * @throws IllegalStateException if [addRepoState] is currently in any other state.
+     */
+    @AnyThread
+    public fun addFetchedRepository() {
+        GlobalScope.launch(coroutineContext) {
+            repoAdder.addFetchedRepository()
+        }
+    }
+
+    /**
+     * Aborts the process of fetching a [Repository] preview,
+     * e.g. when the user leaves the UI flow or wants to cancel the preview process.
+     * Note that this won't work after [addFetchedRepository] has already been called.
+     */
+    @UiThread
+    public fun abortAddingRepository() {
+        repoAdder.abortAddingRepo()
     }
 
 }

@@ -67,6 +67,7 @@
         android:allowBackup="true"
         android:description="@string/app_description"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="${applicationLabel}"
         android:networkSecurityConfig="@xml/network_security_config"
@@ -90,6 +91,16 @@
             android:label="@string/menu_manage"
             android:launchMode="singleTask"
             android:parentActivityName=".views.main.MainActivity"></activity>
+
+        <activity
+            android:name=".views.repos.AddRepoActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".views.main.MainActivity" />
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
 
         <activity
             android:name=".NfcNotEnabledActivity"
