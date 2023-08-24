@@ -37,8 +37,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -134,18 +132,14 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setOnMenuItemClickListener(menuItem -> {
-            if (menuItem.getItemId() == R.id.action_add_repo) {
-                if (BuildConfig.DEBUG) {
-                    // TODO enable this for all builds and remove dead code afterwards
-                    Intent i = new Intent(this, AddRepoActivity.class);
-                    startActivity(i);
-                } else {
-                    showAddRepo();
-                }
-                return true;
+        findViewById(R.id.fab).setOnClickListener(view -> {
+            if (BuildConfig.DEBUG) {
+                // TODO enable this for all builds and remove dead code afterwards
+                Intent i = new Intent(this, AddRepoActivity.class);
+                startActivity(i);
+            } else {
+                showAddRepo();
             }
-            return false;
         });
         toolbar.setNavigationOnClickListener(v -> {
             Intent upIntent = NavUtils.getParentActivityIntent(ManageReposActivity.this);
@@ -167,13 +161,6 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     protected void onDestroy() {
         compositeDisposable.dispose();
         super.onDestroy();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.manage_repos, menu);
-        return true;
     }
 
     @Override
