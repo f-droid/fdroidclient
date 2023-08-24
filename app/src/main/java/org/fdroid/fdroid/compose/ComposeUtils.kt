@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -33,8 +34,9 @@ object ComposeUtils {
             layoutDirection = layoutDirection,
         )
         val newColors = (colors ?: MaterialTheme.colors).let { c ->
-            if (!c.isLight && Preferences.get().isPureBlack) c.copy(background = Color.Black)
-            else c
+            if (!LocalInspectionMode.current && !c.isLight && Preferences.get().isPureBlack) {
+                c.copy(background = Color.Black)
+            } else c
         }
         MaterialTheme(
             colors = newColors,

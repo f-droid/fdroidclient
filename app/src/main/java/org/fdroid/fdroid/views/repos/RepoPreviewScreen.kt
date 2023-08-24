@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.repos
 
+import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement.spacedBy
@@ -95,7 +96,10 @@ fun RepoPreviewHeader(
     localeList: LocaleListCompat,
     isPreview: Boolean,
 ) {
-    Column(verticalArrangement = spacedBy(8.dp)) {
+    Column(
+        verticalArrangement = spacedBy(8.dp),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
         val repo = state.repo ?: error("repo was null")
         val res = LocalContext.current.resources
         Row(
@@ -240,8 +244,8 @@ fun RepoPreviewScreenFetchingPreview() {
     }
 }
 
-@Preview
 @Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 fun RepoPreviewScreenNewMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
     FDroidContent {

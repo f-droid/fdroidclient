@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -52,8 +53,11 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
         val title = when (state.errorType) {
             INVALID_FINGERPRINT -> stringResource(R.string.bad_fingerprint)
             UNKNOWN_SOURCES_DISALLOWED -> {
-                val context = LocalContext.current
-                getDisallowInstallUnknownSourcesErrorMessage(context)
+                if (LocalInspectionMode.current) {
+                    stringResource(R.string.has_disallow_install_unknown_sources)
+                } else {
+                    getDisallowInstallUnknownSourcesErrorMessage(LocalContext.current)
+                }
             }
 
             INVALID_INDEX -> stringResource(R.string.repo_invalid)
