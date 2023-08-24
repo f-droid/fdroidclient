@@ -6,7 +6,9 @@ import org.fdroid.database.Repository
 internal object RepoUriGetter {
 
     fun getUri(url: String): NormalizedUri {
-        val uri = Uri.parse(url)
+        val uri = Uri.parse(url).let {
+            if (it.host == "fdroid.link") getFdroidLinkUri(it) else it
+        }
         val fingerprint = uri.getQueryParameter("fingerprint")?.lowercase()
 
         val pathSegments = uri.pathSegments
@@ -38,6 +40,11 @@ internal object RepoUriGetter {
             }
         }
         return NormalizedUri(normalizedUri, fingerprint)
+    }
+
+    private fun getFdroidLinkUri(uri: Uri): Uri {
+        val tmpUri = uri.buildUpon().encodedQuery(uri.encodedFragment).build()
+        return Uri.parse(tmpUri.getQueryParameter("repo"))
     }
 
     /**

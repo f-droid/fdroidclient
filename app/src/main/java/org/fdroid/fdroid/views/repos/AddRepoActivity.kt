@@ -9,6 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.UpdateService
@@ -47,12 +48,22 @@ class AddRepoActivity : ComponentActivity() {
                 AddRepoIntroScreen(
                     state = state,
                     onFetchRepo = { url ->
-                        repoManager.fetchRepositoryPreview(url)
+                        repoManager.fetchRepositoryPreview(url, proxy = NetCipher.getProxy())
                     },
                     onAddRepo = { repoManager.addFetchedRepository() },
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                 )
             }
+        }
+        addOnNewIntentListener { intent ->
+            intent.dataString?.let { uri ->
+                repoManager.abortAddingRepository()
+                repoManager.fetchRepositoryPreview(uri, proxy = NetCipher.getProxy())
+            }
+        }
+        intent?.let {
+            onNewIntent(it)
+            it.setData(null) // avoid this intent from getting re-processed
         }
     }
 

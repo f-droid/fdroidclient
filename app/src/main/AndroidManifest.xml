@@ -95,8 +95,20 @@
 
         <activity
             android:name=".views.repos.AddRepoActivity"
-            android:launchMode="singleTask"
-            android:parentActivityName=".views.main.MainActivity" />
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".views.main.MainActivity">
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="fdroid.link" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"

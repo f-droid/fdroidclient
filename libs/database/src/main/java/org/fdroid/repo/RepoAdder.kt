@@ -125,6 +125,7 @@ internal class RepoAdder(
         // get repo url and fingerprint
         val nUri = repoUriGetter.getUri(url)
         log.info("Parsed URI: $nUri")
+        // TODO reject non-http(s) Uri here
 
         // some plumping to receive the repo preview
         var receivedRepo: Repository? = null

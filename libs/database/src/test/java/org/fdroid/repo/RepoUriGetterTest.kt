@@ -56,4 +56,24 @@ internal class RepoUriGetterTest {
         assertEquals("https://example.org/fdroid/repo", uri.uri.toString())
         assertNull(uri.fingerprint)
     }
+
+    @Test
+    fun testFDroidLink() {
+        val uri1 =
+            RepoUriGetter.getUri("https://fdroid.link/index.html#repo=https://f-droid.org/repo?" +
+                "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+        assertEquals("https://f-droid.org/repo", uri1.uri.toString())
+        assertEquals(
+            "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+            uri1.fingerprint
+        )
+
+        val uri2 = RepoUriGetter.getUri("https://fdroid.link#repo=https://f-droid.org/repo")
+        assertEquals("https://f-droid.org/repo", uri2.uri.toString())
+        assertNull(uri2.fingerprint)
+
+        val uri3 = RepoUriGetter.getUri("https://fdroid.link/#repo=http://f-droid.org/repo")
+        assertEquals("http://f-droid.org/repo", uri3.uri.toString())
+        assertNull(uri3.fingerprint)
+    }
 }
