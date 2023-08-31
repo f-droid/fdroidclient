@@ -76,4 +76,33 @@ internal class RepoUriGetterTest {
         assertEquals("http://f-droid.org/repo", uri3.uri.toString())
         assertNull(uri3.fingerprint)
     }
+
+    @Test
+    fun testFDroidRepoUriScheme() {
+        val uri1 =
+            RepoUriGetter.getUri("fdroidrepos://grobox.de/fdroid/repo?fingerprint=" +
+                "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c")
+        assertEquals("https://grobox.de/fdroid/repo", uri1.uri.toString())
+        assertEquals(
+            "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c",
+            uri1.fingerprint,
+        )
+
+        val uri2 = RepoUriGetter.getUri("fdroidrepo://grobox.de/fdroid/repo")
+        assertEquals("http://grobox.de/fdroid/repo", uri2.uri.toString())
+        assertNull(uri2.fingerprint)
+
+        val uri3 =
+            RepoUriGetter.getUri("FDROIDREPOS://grobox.de/fdroid/repo?fingerprint=" +
+                "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c")
+        assertEquals("https://grobox.de/fdroid/repo", uri3.uri.toString())
+        assertEquals(
+            "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c",
+            uri3.fingerprint,
+        )
+
+        val uri4 = RepoUriGetter.getUri("fdroidREPO://grobox.de/fdroid/repo")
+        assertEquals("http://grobox.de/fdroid/repo", uri4.uri.toString())
+        assertNull(uri4.fingerprint)
+    }
 }

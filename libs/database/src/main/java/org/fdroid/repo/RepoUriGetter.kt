@@ -7,7 +7,18 @@ internal object RepoUriGetter {
 
     fun getUri(url: String): NormalizedUri {
         val uri = Uri.parse(url).let {
-            if (it.host == "fdroid.link") getFdroidLinkUri(it) else it
+            when {
+                it.scheme.equals("fdroidrepos", ignoreCase = true) -> {
+                    it.buildUpon().scheme("https").build()
+                }
+
+                it.scheme.equals("fdroidrepo", ignoreCase = true) -> {
+                    it.buildUpon().scheme("http").build()
+                }
+
+                it.host == "fdroid.link" -> getFdroidLinkUri(it)
+                else -> it
+            }
         }
         val fingerprint = uri.getQueryParameter("fingerprint")?.lowercase()
 
