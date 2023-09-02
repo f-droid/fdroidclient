@@ -91,6 +91,8 @@ import java.util.UUID;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.exceptions.UndeliverableException;
+import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FDroidApp extends Application implements androidx.work.Configuration.Provider {
@@ -135,6 +137,22 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     static {
         BOUNCYCASTLE_PROVIDER = new org.bouncycastle.jce.provider.BouncyCastleProvider();
         enableBouncyCastle();
+
+        RxJavaPlugins.setErrorHandler(e -> {
+            if (e instanceof UndeliverableException) {
+                e = e.getCause();
+            }
+            if (e instanceof InterruptedException) {
+                // fine, some blocking code was interrupted by a dispose call
+                return;
+            }
+            // let app crash and ACRA tell us about it
+            Thread.UncaughtExceptionHandler uncaughtExceptionHandler =
+                    Thread.currentThread().getUncaughtExceptionHandler();
+            if (uncaughtExceptionHandler != null && e != null) {
+                uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e);
+            }
+        });
     }
 
     /**
