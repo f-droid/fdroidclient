@@ -58,6 +58,11 @@ public class Fetching(
      */
     public val canAdd: Boolean = repo != null &&
         (fetchResult != null && fetchResult !is FetchResult.IsExistingRepository)
+
+    override fun toString(): String {
+        return "Fetching(repo=${repo?.address}, apps=${apps.size}, fetchResult=$fetchResult, " +
+            "done=$done, canAdd=$canAdd)"
+    }
 }
 
 public object Adding : AddRepoState()
