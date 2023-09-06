@@ -3,6 +3,7 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -18,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.glide.DownloadRequestLoader;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 
 import java.io.InputStream;
@@ -29,9 +31,10 @@ import java.io.InputStream;
 public class FDroidGlideModule extends AppGlideModule {
     @Override
     public void applyOptions(@NonNull Context context, GlideBuilder builder) {
-        builder.setDefaultTransitionOptions(Drawable.class,
-                        DrawableTransitionOptions.withCrossFade()).setDefaultTransitionOptions(Bitmap.class,
-                        BitmapTransitionOptions.withCrossFade())
+        builder
+                .setDefaultTransitionOptions(Drawable.class, DrawableTransitionOptions.withCrossFade())
+                .setDefaultTransitionOptions(Bitmap.class, BitmapTransitionOptions.withCrossFade())
+                .setLogLevel(BuildConfig.DEBUG ? Log.VERBOSE : Log.WARN)
                 .setDefaultRequestOptions(new RequestOptions()
                         .format(DecodeFormat.PREFER_RGB_565)
                         .onlyRetrieveFromCache(!Preferences.get().isBackgroundDownloadAllowed()));

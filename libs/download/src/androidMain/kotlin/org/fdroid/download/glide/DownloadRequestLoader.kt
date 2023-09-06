@@ -42,7 +42,5 @@ public class DownloadRequestLoader(
 }
 
 internal fun DownloadRequest.getKey(): ObjectKey {
-    // TODO should we always choose a unique key
-    //  or is it ok for this to work cross-repo based on file path only?
-    return ObjectKey(indexFile.sha256 ?: indexFile.name)
+    return ObjectKey(indexFile.sha256 ?: (mirrors[0].baseUrl + indexFile.name))
 }
