@@ -80,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
+    public static final String EXTRA_VIEW_LATEST = "org.fdroid.fdroid.views.main.MainActivity.VIEW_LATEST";
+    private static final String EXTRA_VIEW_CATEGORIES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_CATEGORIES";
     private static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
+    public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
 
     static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
@@ -122,13 +124,23 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
+        setSelectedMenuInNav(Preferences.get().getBottomNavigationViewName());
         bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             pager.scrollToPosition(item.getOrder());
 
-            if (item.getItemId() == R.id.nearby) {
-                NearbyViewBinder.updateUsbOtg(MainActivity.this);
-            }
+            if (item.getItemId() == R.id.latest) {
+                Preferences.get().setBottomNavigationViewName(EXTRA_VIEW_LATEST);
+            } else if (item.getItemId() == R.id.categories) {
+                Preferences.get().setBottomNavigationViewName(EXTRA_VIEW_CATEGORIES);
+            } else if (item.getItemId() == R.id.nearby) {
+                Preferences.get().setBottomNavigationViewName(EXTRA_VIEW_NEARBY);
 
+                NearbyViewBinder.updateUsbOtg(MainActivity.this);
+            } else if (item.getItemId() == R.id.updates) {
+                Preferences.get().setBottomNavigationViewName(EXTRA_VIEW_UPDATES);
+            } else if (item.getItemId() == R.id.settings) {
+                Preferences.get().setBottomNavigationViewName(EXTRA_VIEW_SETTINGS);
+            }
             return true;
 
         });
@@ -155,6 +167,20 @@ public class MainActivity extends AppCompatActivity {
         int position = adapter.adapterPositionFromItemId(menuId);
         pager.scrollToPosition(position);
         bottomNavigation.getMenu().getItem(position).setChecked(true);
+    }
+
+    private void setSelectedMenuInNav(final String viewName) {
+        if (EXTRA_VIEW_LATEST.equals(viewName)) {
+            setSelectedMenuInNav(R.id.latest);
+        } else if (EXTRA_VIEW_CATEGORIES.equals(viewName)) {
+            setSelectedMenuInNav(R.id.categories);
+        } else if (EXTRA_VIEW_NEARBY.equals(viewName)) {
+            setSelectedMenuInNav(R.id.nearby);
+        } else if (EXTRA_VIEW_UPDATES.equals(viewName)) {
+            setSelectedMenuInNav(R.id.updates);
+        } else if (EXTRA_VIEW_SETTINGS.equals(viewName)) {
+            setSelectedMenuInNav(R.id.settings);
+        }
     }
 
     private void initialRepoUpdateIfRequired() {
