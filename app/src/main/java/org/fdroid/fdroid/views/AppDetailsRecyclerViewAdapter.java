@@ -1025,7 +1025,6 @@ public class AppDetailsRecyclerViewAdapter
         final TextView size;
         final TextView api;
         final Button buttonInstallUpgrade;
-        final Button buttonDowngrade;
         Button buttonAction;
         final View busyIndicator;
         final TextView incompatibleReasons;
@@ -1047,7 +1046,6 @@ public class AppDetailsRecyclerViewAdapter
             size = view.findViewById(R.id.size);
             api = view.findViewById(R.id.api);
             buttonInstallUpgrade = view.findViewById(R.id.button_install_upgrade);
-            buttonDowngrade = view.findViewById(R.id.button_downgrade);
             busyIndicator = view.findViewById(R.id.busy_indicator);
             incompatibleReasons = view.findViewById(R.id.incompatible_reasons);
             targetArch = view.findViewById(R.id.target_arch);
@@ -1110,8 +1108,7 @@ public class AppDetailsRecyclerViewAdapter
             api.setText(getApiText(apk));
 
 
-            // Figuring out whether to show Install/Update button or Downgrade button
-            buttonDowngrade.setVisibility(View.GONE);
+            // Figuring out whether to show Install or Update button
             buttonInstallUpgrade.setVisibility(View.GONE);
             buttonInstallUpgrade.setText(context.getString(R.string.menu_install));
             showActionButton(buttonInstallUpgrade, isApkInstalled, isApkDownloading);
@@ -1121,9 +1118,7 @@ public class AppDetailsRecyclerViewAdapter
                     // button will result in updating the installed app
                     buttonInstallUpgrade.setText(R.string.menu_upgrade);
                 } else if (apk.versionCode < app.installedVersionCode) {
-                    // The Downgrade button should be shown in this case
                     buttonInstallUpgrade.setVisibility(View.GONE);
-                    showActionButton(buttonDowngrade, false, isApkDownloading);
                 }
             }
 
