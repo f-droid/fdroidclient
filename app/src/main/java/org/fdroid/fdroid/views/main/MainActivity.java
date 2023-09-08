@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -165,8 +166,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setSelectedMenuInNav(int menuId) {
         int position = adapter.adapterPositionFromItemId(menuId);
-        pager.scrollToPosition(position);
-        bottomNavigation.getMenu().getItem(position).setChecked(true);
+        if (position < 0) {
+            Log.e(TAG, "Invalid menu position: " + position);
+        } else {
+            pager.scrollToPosition(position);
+            bottomNavigation.getMenu().getItem(position).setChecked(true);
+        }
     }
 
     private void setSelectedMenuInNav(final String viewName) {
