@@ -66,6 +66,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
+import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
@@ -577,12 +578,10 @@ public class AppDetailsActivity extends AppCompatActivity
 
                         String title = getString(R.string.install_error_notify_title,
                                 app == null ? "" : app.name);
-
-                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
-                        alertBuilder.setTitle(title);
-                        alertBuilder.setMessage(errorMessage);
-                        alertBuilder.setNeutralButton(android.R.string.ok, null);
-                        alertBuilder.create().show();
+                        Intent errorDialogIntent = new Intent(context, ErrorDialogActivity.class)
+                                .putExtra(ErrorDialogActivity.EXTRA_TITLE, title)
+                                .putExtra(ErrorDialogActivity.EXTRA_MESSAGE, errorMessage);
+                        startActivity(errorDialogIntent);
                     }
                     unregisterInstallReceiver();
                     break;

@@ -20,7 +20,10 @@
 package org.fdroid.fdroid.installer;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -43,9 +46,9 @@ public class ErrorDialogActivity extends FragmentActivity {
         final String message = intent.getStringExtra(EXTRA_MESSAGE);
 
         // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppThemeDialog);
         builder.setTitle(title);
-        builder.setNeutralButton(android.R.string.ok, (dialog, which) -> {
+        builder.setNeutralButton(R.string.ok, (dialog, which) -> {
             setResult(AppCompatActivity.RESULT_OK);
             finish();
         });
@@ -53,7 +56,14 @@ public class ErrorDialogActivity extends FragmentActivity {
             setResult(AppCompatActivity.RESULT_CANCELED);
             finish();
         });
-        builder.setMessage(message);
-        builder.create().show();
+        // use own TextView to make message selectable for copy/paste
+        TextView messageView = new TextView(builder.getContext());
+        messageView.setText(message);
+        Resources r = getResources();
+        int px = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16f, r.getDisplayMetrics()));
+        messageView.setPadding(px, px, px, 0);
+        messageView.setTextIsSelectable(true);
+        builder.setView(messageView);
+        builder.show();
     }
 }
