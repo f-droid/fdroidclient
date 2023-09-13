@@ -1,6 +1,7 @@
 package org.fdroid.index
 
 import android.content.Context
+import android.net.Uri
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
@@ -20,6 +21,7 @@ import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
 import org.fdroid.repo.AddRepoState
 import org.fdroid.repo.RepoAdder
+import org.fdroid.repo.RepoUriGetter
 import java.io.File
 import java.net.Proxy
 import java.util.concurrent.CountDownLatch
@@ -153,6 +155,14 @@ public class RepoManager @JvmOverloads constructor(
     @UiThread
     public fun abortAddingRepository() {
         repoAdder.abortAddingRepo()
+    }
+
+    /**
+     * Returns true if the given [uri] belongs to a swap repo.
+     */
+    @UiThread
+    public fun isSwapUri(uri: Uri?): Boolean {
+        return uri != null && RepoUriGetter.isSwapUri(uri)
     }
 
 }

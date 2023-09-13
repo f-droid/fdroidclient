@@ -21,6 +21,7 @@ internal object RepoUriGetter {
             }
         }
         val fingerprint = uri.getQueryParameter("fingerprint")?.lowercase()
+            ?: uri.getQueryParameter("FINGERPRINT")?.lowercase()
 
         val pathSegments = uri.pathSegments
         val normalizedUri = uri.buildUpon().apply {
@@ -51,6 +52,11 @@ internal object RepoUriGetter {
             }
         }
         return NormalizedUri(normalizedUri, fingerprint)
+    }
+
+    fun isSwapUri(uri: Uri): Boolean {
+        val swap = uri.getQueryParameter("swap") ?: uri.getQueryParameter("SWAP")
+        return swap != null && uri.scheme?.lowercase() == "http"
     }
 
     private fun getFdroidLinkUri(uri: Uri): Uri {

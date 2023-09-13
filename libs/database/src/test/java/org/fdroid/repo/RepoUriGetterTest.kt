@@ -1,10 +1,13 @@
 package org.fdroid.repo
 
+import android.net.Uri
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 internal class RepoUriGetterTest {
@@ -104,5 +107,37 @@ internal class RepoUriGetterTest {
         val uri4 = RepoUriGetter.getUri("fdroidREPO://grobox.de/fdroid/repo")
         assertEquals("http://grobox.de/fdroid/repo", uri4.uri.toString())
         assertNull(uri4.fingerprint)
+    }
+
+    @Test
+    fun testSwapUri() {
+        val uri =
+            RepoUriGetter.getUri(
+                "http://192.168.3.159:8888/fdroid/repo?FINGERPRINT=" +
+                    "BA29D02E303B2604D00C91189600E868B26FA0B248DC39D75C5C0F4349CA5FA9" +
+                    "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE"
+            )
+        assertEquals("http://192.168.3.159:8888/fdroid/repo", uri.uri.toString())
+        assertEquals(
+            "ba29d02e303b2604d00c91189600e868b26fa0b248dc39d75c5c0f4349ca5fa9",
+            uri.fingerprint,
+        )
+    }
+
+    @Test
+    fun testIsSwapUri() {
+        val uri1 = Uri.parse(
+            "http://192.168.3.159:8888/fdroid/repo?FINGERPRINT=" +
+                "BA29D02E303B2604D00C91189600E868B26FA0B248DC39D75C5C0F4349CA5FA9" +
+                "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE"
+        )
+        assertTrue(RepoUriGetter.isSwapUri(uri1))
+
+        val uri2 = Uri.parse("http://192.168.3.159:8888/fdroid/repo?" +
+            "swap=1&BSSID=44:FE:3B:7F:7F:EE")
+        assertTrue(RepoUriGetter.isSwapUri(uri2))
+
+        val uri3 = Uri.parse("http://192.168.3.159:8888/fdroid/repo?BSSID=44:FE:3B:7F:7F:EE")
+        assertFalse(RepoUriGetter.isSwapUri(uri3))
     }
 }
