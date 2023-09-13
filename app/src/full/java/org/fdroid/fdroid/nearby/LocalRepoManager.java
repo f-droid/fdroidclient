@@ -250,15 +250,17 @@ public final class LocalRepoManager {
         deleteContents(repoDir);
     }
 
-    void generateIndex(String address, String[] selectedApps) throws IOException {
+    void generateIndex(String repoUri, String address, String[] selectedApps) throws IOException {
         String name = Preferences.get().getLocalRepoName() + " on " + FDroidApp.ipAddressString;
-        String description = "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName();
-        RepoV1 repo = new RepoV1(System.currentTimeMillis(), 20001, 7, name, "swap-icon.png", address, description, Collections.emptyList());
+        String description =
+                "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName();
+        RepoV1 repo = new RepoV1(System.currentTimeMillis(), 20001, 7, name, "swap-icon.png",
+                address, description, Collections.emptyList());
         Set<String> apps = new HashSet<>(Arrays.asList(selectedApps));
         IndexV1Creator creator = new IndexV1Creator(context.getPackageManager(), repoDir, apps, repo);
         IndexV1 indexV1 = creator.createRepo();
         cacheApps(indexV1);
-        writeIndexPage(address);
+        writeIndexPage(repoUri);
         SanitizedFile indexJson = new SanitizedFile(repoDir, IndexV1VerifierKt.DATA_FILE_NAME);
         writeIndexJar(indexJson);
     }

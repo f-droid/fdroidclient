@@ -104,7 +104,7 @@ public class LocalRepoService extends IntentService {
             lrm.deleteRepo();
             broadcast(context, STATUS_PROGRESS, R.string.linking_apks);
             String urlString = Utils.getSharingUri(FDroidApp.repo).toString();
-            lrm.generateIndex(urlString, selectedApps);
+            lrm.generateIndex(urlString, FDroidApp.repo.getAddress(), selectedApps);
             broadcast(context, STATUS_STARTED, null);
         } catch (Exception e) {
             broadcast(context, STATUS_ERROR, e.getLocalizedMessage());
