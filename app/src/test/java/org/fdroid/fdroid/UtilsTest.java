@@ -13,6 +13,10 @@ import android.text.format.DateUtils;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.encode.Contents;
+import com.google.zxing.encode.QRCodeEncoder;
+
 import org.fdroid.fdroid.views.AppDetailsRecyclerViewAdapter;
 import org.junit.Before;
 import org.junit.Test;
@@ -198,5 +202,21 @@ public class UtilsTest {
                 "Updated 7 months ago",
                 Utils.formatLastUpdated(res, now - DateUtils.DAY_IN_MILLIS * 30 * 7 + offset)
         );
+    }
+
+    @Test
+    public void testQrCodeEncoding() throws Exception {
+        String text1 = "http://192.168.3.159:8888/fdroid/repo?FINGERPRINT=" +
+                "BA29D02E303B2604D00C91189600E868B26FA0B248DC39D75C5C0F4349CA5FA9" +
+                "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE";
+        int bytesNum1 = new QRCodeEncoder(text1, null, Contents.Type.TEXT,
+                BarcodeFormat.QR_CODE.toString(), 500).encodeAsBitmap().getByteCount();
+
+        String text2 = "http://192.168.3.159:8888/fdroid/repo?fingerprint=" +
+                "ba29d02e303b2604d00c91189600e868b26fa0b248dc39d75c5c0f4349ca5fa9" +
+                "&swap=1&bssid=44:fe:3b:7f:7f:ee";
+        int bytesNum2 = new QRCodeEncoder(text2, null, Contents.Type.TEXT,
+                BarcodeFormat.QR_CODE.toString(), 500).encodeAsBitmap().getByteCount();
+        assertEquals(bytesNum1, bytesNum2);
     }
 }
