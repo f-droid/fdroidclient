@@ -36,6 +36,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -228,11 +229,13 @@ public class AppDetailsActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        boolean ret = super.onCreateOptionsMenu(menu);
-        if (ret) {
-            getMenuInflater().inflate(R.menu.details2, menu);
+        // don't show menu before app hasn't been loaded (doing this only in onPrepareOptionsMenu doesn't work)
+        if (appPrefs == null || app == null) {
+            return false;
         }
-        return ret;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.details2, menu);
+        return true;
     }
 
     @Override
