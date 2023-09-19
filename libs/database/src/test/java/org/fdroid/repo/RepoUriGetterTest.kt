@@ -81,6 +81,24 @@ internal class RepoUriGetterTest {
     }
 
     @Test
+    fun testAddScheme() {
+        val uri1 =
+            RepoUriGetter.getUri("example.com/repo")
+        assertEquals("https://example.com/repo", uri1.uri.toString())
+        assertNull(uri1.fingerprint)
+
+        val uri2 = RepoUriGetter.getUri(
+            "example.com/repo?" +
+                "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+        )
+        assertEquals("https://example.com/repo", uri2.uri.toString())
+        assertEquals(
+            "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
+            uri2.fingerprint
+        )
+    }
+
+    @Test
     fun testFDroidRepoUriScheme() {
         val uri1 =
             RepoUriGetter.getUri("fdroidrepos://grobox.de/fdroid/repo?fingerprint=" +

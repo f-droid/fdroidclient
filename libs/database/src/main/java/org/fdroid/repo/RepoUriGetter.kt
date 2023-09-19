@@ -17,6 +17,12 @@ internal object RepoUriGetter {
                 }
 
                 it.host == "fdroid.link" -> getFdroidLinkUri(it)
+
+                it.scheme.isNullOrBlank() -> {
+                    // assume https:// when no scheme given
+                    it.buildUpon().scheme("https").path("//${it.path}").build()
+                }
+
                 else -> it
             }
         }
