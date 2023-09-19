@@ -796,7 +796,13 @@ public class AppDetailsActivity extends AppCompatActivity
     public void launchApk() {
         Intent intent = getPackageManager().getLaunchIntentForPackage(app.packageName);
         if (intent != null) {
-            startActivity(intent);
+            try {
+                startActivity(intent);
+            } catch (SecurityException e) {
+                // can happen if apps don't export their main activity
+                Log.e(TAG, "Error launching app: ", e);
+                Toast.makeText(this, R.string.app_error_open, Toast.LENGTH_LONG).show();
+            }
         } else {
             // This can happen when the app was just uninstalled.
             Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_LONG).show();
