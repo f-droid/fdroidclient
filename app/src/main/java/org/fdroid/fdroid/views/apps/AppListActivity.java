@@ -37,6 +37,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.LocaleListCompat;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,6 +48,7 @@ import com.bumptech.glide.request.RequestOptions;
 import org.fdroid.database.AppListItem;
 import org.fdroid.database.AppListSortOrder;
 import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -57,6 +59,10 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.Collections;
 import java.util.List;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**
  * Provides scrollable listing of apps for search and category views.
@@ -71,6 +77,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY_NAME";
     public static final String EXTRA_SEARCH_TERMS
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
+    public static final String EXTRA_REPO_ID
+            = "org.fdroid.fdroid.views.apps.AppListActivity.REPO_ID";
 
     private static final String SEARCH_TERMS_KEY = "searchTerms";
     private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
@@ -80,6 +88,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private AppListAdapter appAdapter;
     private String categoryId;
     private String searchTerms;
+    private long repoId;
     private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
@@ -198,11 +207,20 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private void parseIntentForSearchQuery() {
         Intent intent = getIntent();
         categoryId = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
-        String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
-                intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
+        repoId = intent.hasExtra(EXTRA_REPO_ID) ? intent.getLongExtra(EXTRA_REPO_ID, -1) : -1;
+        if (repoId > 0) {
+            Repository repo = FDroidApp.getRepoManager(this).getRepository(repoId);
+            if (repo != null) {
+                LocaleListCompat locales = LocaleListCompat.getDefault();
+                searchInput.setText(getSearchText(repo.getName(locales), searchTerms));
+            }
+        } else {
+            String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
+                    intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
+            searchInput.setText(getSearchText(categoryName, searchTerms));
+        }
 
-        searchInput.setText(getSearchText(categoryName, searchTerms));
         searchInput.setSelection(searchInput.getText().length());
 
         if (categoryId != null) {
@@ -248,21 +266,39 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private void onAppsLoaded(List<AppListItem> items) {
         setShowHiddenAppsNotice(false);
         appAdapter.setHasHiddenAppsCallback(() -> setShowHiddenAppsNotice(true));
-        // DB doesn't support search result sorting, so do own sort if we searched
-        if (searchTerms != null) {
-            Collections.sort(items, (o1, o2) -> {
-                if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
-                    return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
-                } else if (sortClauseSelected.equals(SortClause.WORDS)) {
-                    String n1 = (o1.getName() == null ? "" : o1.getName())
-                            .toLowerCase(LocaleCompat.getDefault());
-                    String n2 = (o2.getName() == null ? "" : o2.getName())
-                            .toLowerCase(LocaleCompat.getDefault());
-                    return n1.compareTo(n2);
-                }
-                return 0;
-            });
-        }
+        // treat loaded items off UI thread.
+        Single.fromCallable(() -> {
+            if (repoId > 0) {
+                // FIXME filter out apps from other repos for now, should probably move to DB
+                //  * for loading speed
+                //  * to also show apps that are also in repos with higher weight (otherwise not shown)
+                //noinspection NewApi // should be available in desugering
+                items.removeIf(item -> item.getRepoId() != repoId);
+            }
+            if (searchTerms != null) {
+                // DB doesn't support search result sorting, so do own sort if we searched
+                Collections.sort(items, (o1, o2) -> {
+                    if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
+                        return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
+                    } else if (sortClauseSelected.equals(SortClause.WORDS)) {
+                        String n1 = (o1.getName() == null ? "" : o1.getName())
+                                .toLowerCase(LocaleCompat.getDefault());
+                        String n2 = (o2.getName() == null ? "" : o2.getName())
+                                .toLowerCase(LocaleCompat.getDefault());
+                        return n1.compareTo(n2);
+                    }
+                    return 0;
+                });
+            }
+            return items;
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess(this::onAppsReadyForDisplay)
+                .subscribe();
+    }
+
+    private void onAppsReadyForDisplay(List<AppListItem> items) {
         appAdapter.setItems(items);
         if (items.size() > 0) {
             emptyState.setVisibility(View.GONE);
@@ -275,7 +311,11 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
     @Override
     public void onSearchTermsChanged(@Nullable String categoryName, @NonNull String searchTerms) {
-        if (categoryName == null) this.categoryId = null;
+        if (categoryName == null) {
+            // remove previous chip
+            this.categoryId = null;
+            this.repoId = -1;
+        }
         this.searchTerms = searchTerms;
         appView.scrollToPosition(0);
         loadItems();
