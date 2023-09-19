@@ -11,6 +11,7 @@
 
     <!-- Our translations are crowd-sourced -->
     <issue id="MissingTranslation" severity="ignore" />
+    <issue id="ExtraTranslation" severity="warning" />
 
     <!-- to make CI fail on errors until this is fixed
          https://github.com/rtyley/spongycastle/issues/7 -->
