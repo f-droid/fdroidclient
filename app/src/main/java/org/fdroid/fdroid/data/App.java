@@ -360,7 +360,7 @@ public class App implements Comparable<App>, Parcelable {
 
     public static RequestBuilder<Drawable> loadWithGlide(Context context, long repoId, IndexFile file) {
         Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
-        if (repo == null) { // This is also used for apps that do not have a repo
+        if (repo == null || file == null) { // This is also used for apps that do not have a repo
             return Glide.with(context).load(R.drawable.ic_repo_app_default);
         }
         String address = Utils.getRepoAddress(repo);
