@@ -217,9 +217,9 @@ internal class RepoAdder(
     }
 
     @WorkerThread
-    internal fun addFetchedRepository() {
+    internal fun addFetchedRepository(): Repository? {
         // prevent double calls (e.g. caused by double tapping a UI button)
-        if (addRepoState.compareAndSet(Adding, Adding)) return
+        if (addRepoState.compareAndSet(Adding, Adding)) return null
 
         // cancel fetch preview job, so it stops emitting new states
         fetchJob?.cancel()
@@ -265,6 +265,7 @@ internal class RepoAdder(
             }
         }
         addRepoState.value = Added(modifiedRepo)
+        return modifiedRepo
     }
 
     internal fun abortAddingRepo() {

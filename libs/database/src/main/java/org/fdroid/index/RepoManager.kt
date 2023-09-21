@@ -143,7 +143,13 @@ public class RepoManager @JvmOverloads constructor(
     @AnyThread
     public fun addFetchedRepository() {
         GlobalScope.launch(coroutineContext) {
-            repoAdder.addFetchedRepository()
+            val addedRepo = repoAdder.addFetchedRepository()
+            // if repo was added, update state right away, so it becomes available asap
+            if (addedRepo != null) withContext(Dispatchers.Main) {
+                _repositoriesState.value = _repositoriesState.value.toMutableList().apply {
+                    add(addedRepo)
+                }
+            }
         }
     }
 
