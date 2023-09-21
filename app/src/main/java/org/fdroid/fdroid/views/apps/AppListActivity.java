@@ -60,10 +60,6 @@ import org.fdroid.fdroid.views.main.MainActivity;
 import java.util.Collections;
 import java.util.List;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-
 /**
  * Provides scrollable listing of apps for search and category views.
  */
@@ -193,8 +189,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);
 
+        // this also causes a load as we set the search terms even for empty intents, thus the query changed
         parseIntentForSearchQuery();
-        loadItems();
     }
 
     @Override
@@ -231,17 +227,18 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     }
 
     private void loadItems() {
+        String search = searchTerms;
         if (itemsLiveData != null) {
-            itemsLiveData.removeObserver(this::onAppsLoaded);
+            itemsLiveData.removeObservers(this);
         }
         AppListSortOrder sortOrder =
                 SortClause.WORDS.equals(sortClauseSelected) ? AppListSortOrder.NAME : AppListSortOrder.LAST_UPDATED;
-        if (categoryId == null) {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), searchTerms,
-                    sortOrder);
+        if (repoId > 0) {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), repoId, search, sortOrder);
+        } else if (categoryId == null) {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), search, sortOrder);
         } else {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId,
-                    searchTerms, sortOrder);
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId, search, sortOrder);
         }
         itemsLiveData.observe(this, this::onAppsLoaded);
     }
@@ -266,39 +263,21 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private void onAppsLoaded(List<AppListItem> items) {
         setShowHiddenAppsNotice(false);
         appAdapter.setHasHiddenAppsCallback(() -> setShowHiddenAppsNotice(true));
-        // treat loaded items off UI thread.
-        Single.fromCallable(() -> {
-            if (repoId > 0) {
-                // FIXME filter out apps from other repos for now, should probably move to DB
-                //  * for loading speed
-                //  * to also show apps that are also in repos with higher weight (otherwise not shown)
-                //noinspection NewApi // should be available in desugering
-                items.removeIf(item -> item.getRepoId() != repoId);
-            }
-            if (searchTerms != null) {
-                // DB doesn't support search result sorting, so do own sort if we searched
-                Collections.sort(items, (o1, o2) -> {
-                    if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
-                        return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
-                    } else if (sortClauseSelected.equals(SortClause.WORDS)) {
-                        String n1 = (o1.getName() == null ? "" : o1.getName())
-                                .toLowerCase(LocaleCompat.getDefault());
-                        String n2 = (o2.getName() == null ? "" : o2.getName())
-                                .toLowerCase(LocaleCompat.getDefault());
-                        return n1.compareTo(n2);
-                    }
-                    return 0;
-                });
-            }
-            return items;
-        })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSuccess(this::onAppsReadyForDisplay)
-                .subscribe();
-    }
-
-    private void onAppsReadyForDisplay(List<AppListItem> items) {
+        if (searchTerms != null) {
+            // DB doesn't support search result sorting, so do own sort if we searched
+            Collections.sort(items, (o1, o2) -> {
+                if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
+                    return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
+                } else if (sortClauseSelected.equals(SortClause.WORDS)) {
+                    String n1 = (o1.getName() == null ? "" : o1.getName())
+                            .toLowerCase(LocaleCompat.getDefault());
+                    String n2 = (o2.getName() == null ? "" : o2.getName())
+                            .toLowerCase(LocaleCompat.getDefault());
+                    return n1.compareTo(n2);
+                }
+                return 0;
+            });
+        }
         appAdapter.setItems(items);
         if (items.size() > 0) {
             emptyState.setVisibility(View.GONE);
@@ -316,7 +295,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             this.categoryId = null;
             this.repoId = -1;
         }
-        this.searchTerms = searchTerms;
+        this.searchTerms = searchTerms.isEmpty() ? null : searchTerms;
         appView.scrollToPosition(0);
         loadItems();
         if (TextUtils.isEmpty(searchTerms)) {
