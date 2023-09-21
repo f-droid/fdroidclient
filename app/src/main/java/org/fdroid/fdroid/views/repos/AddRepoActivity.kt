@@ -14,7 +14,8 @@ import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.UpdateService
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
-import org.fdroid.fdroid.views.ManageReposActivity
+import org.fdroid.fdroid.views.apps.AppListActivity
+import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
 
@@ -31,8 +32,10 @@ class AddRepoActivity : ComponentActivity() {
                         // update newly added repo
                         UpdateService.updateRepoNow(applicationContext, state.repo.address)
                         // show repo list and close this activity
-                        val intent = Intent(applicationContext, ManageReposActivity::class.java)
-                        startActivity(intent)
+                        val i = Intent(this@AddRepoActivity, AppListActivity::class.java).apply {
+                            putExtra(EXTRA_REPO_ID, state.repo.repoId)
+                        }
+                        startActivity(i)
                         finish()
                     }
                 }
