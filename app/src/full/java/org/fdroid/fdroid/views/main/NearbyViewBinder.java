@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
 import android.provider.DocumentsContract;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -73,8 +74,6 @@ public class NearbyViewBinder {
         subtext.setText(activity.getString(R.string.nearby_splash__both_parties_need_fdroid,
                 activity.getString(R.string.app_name)));
 
-        ImageView nearbySplash = swapView.findViewById(R.id.image);
-
         Button startButton = swapView.findViewById(R.id.find_people_button);
         startButton.setOnClickListener(v -> {
             final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -85,6 +84,23 @@ public class NearbyViewBinder {
                 ContextCompat.startForegroundService(activity, new Intent(activity, SwapService.class));
             }
         });
+
+        updateExternalStorageViews(activity);
+        updateUsbOtg(activity);
+    }
+
+    public static void updateExternalStorageViews(final AppCompatActivity activity) {
+        if (swapView == null || activity == null) {
+            return;
+        }
+
+        ImageView nearbySplash = swapView.findViewById(R.id.image);
+        TextView explainer = swapView.findViewById(R.id.read_external_storage_text);
+        Button button = swapView.findViewById(R.id.request_read_external_storage_button);
+
+        if (nearbySplash == null || explainer == null || button == null) {
+            return;
+        }
 
         File[] dirs = activity.getExternalFilesDirs("");
         if (dirs != null) {
@@ -102,28 +118,48 @@ public class NearbyViewBinder {
         }
 
         final String readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE;
+
         if (externalStorage != null) {
             nearbySplash.setVisibility(View.GONE);
-            TextView readExternalStorageText = swapView.findViewById(R.id.read_external_storage_text);
-            readExternalStorageText.setVisibility(View.VISIBLE);
-            Button requestReadExternalStorage = swapView.findViewById(R.id.request_read_external_storage_button);
-            requestReadExternalStorage.setVisibility(View.VISIBLE);
-            requestReadExternalStorage.setOnClickListener(v -> {
-                if ((externalStorage == null || !externalStorage.canRead())
-                        && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity,
-                        readExternalStorage)) {
-                    ActivityCompat.requestPermissions(activity, new String[]{readExternalStorage},
-                            MainActivity.REQUEST_STORAGE_PERMISSIONS);
+            explainer.setVisibility(View.VISIBLE);
+            button.setVisibility(View.VISIBLE);
+            if (Build.VERSION.SDK_INT >= 30) {
+                if (!Environment.isExternalStorageManager()) {
+                    // we don't have permission to access files yet, so ask for it
+                    explainer.setText(R.string.nearby_splach__external_storage_permission_explainer);
+                    button.setText(R.string.nearby_splace__external_storage_permission_button);
+                    button.setOnClickListener(view -> activity.startActivity(
+                            new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+                                    Uri.parse(String.format("package:%s",
+                                            activity.getPackageName())))));
                 } else {
-                    Toast.makeText(activity,
-                            activity.getString(R.string.scan_removable_storage_toast, externalStorage),
-                            Toast.LENGTH_SHORT).show();
-                    SDCardScannerService.scan(activity);
+                    explainer.setText(R.string.nearby_splash__read_external_storage);
+                    button.setText(R.string.nearby_splash__request_permission);
+                    button.setOnClickListener(view -> scanExternalStorageNow(activity));
                 }
-            });
+            } else {
+                if ((externalStorage == null || !externalStorage.canRead())
+                        && PackageManager.PERMISSION_GRANTED
+                        != ContextCompat.checkSelfPermission(activity, readExternalStorage)) {
+                    explainer.setText(R.string.nearby_splach__external_storage_permission_explainer);
+                    button.setText(R.string.nearby_splace__external_storage_permission_button);
+                    button.setOnClickListener(v -> {
+                        ActivityCompat.requestPermissions(activity, new String[]{readExternalStorage},
+                                MainActivity.REQUEST_STORAGE_PERMISSIONS);
+                    });
+                } else {
+                    explainer.setText(R.string.nearby_splash__read_external_storage);
+                    button.setText(R.string.nearby_splash__request_permission);
+                    button.setOnClickListener(view -> scanExternalStorageNow(activity));
+                }
+            }
         }
+    }
 
-        updateUsbOtg(activity);
+    private static void scanExternalStorageNow(final AppCompatActivity activity) {
+        Toast.makeText(activity, activity.getString(R.string.scan_removable_storage_toast, externalStorage),
+                Toast.LENGTH_SHORT).show();
+        SDCardScannerService.scan(activity);
     }
 
     public static void updateUsbOtg(final Context context) {

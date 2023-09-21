@@ -173,6 +173,8 @@ public class MainActivity extends AppCompatActivity {
         // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
         checkForAddRepoIntent(getIntent());
+
+        NearbyViewBinder.updateExternalStorageViews(this);
     }
 
     @Override
