@@ -106,6 +106,16 @@ public interface AppDao {
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>>
 
+    /**
+     * Like [getAppListItems], but further filter items by the given [repoId].
+     */
+    public fun getAppListItems(
+        packageManager: PackageManager,
+        repoId: Long,
+        searchQuery: String?,
+        sortOrder: AppListSortOrder,
+    ): LiveData<List<AppListItem>>
+
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
     public fun getNumberOfAppsInCategory(category: String): Int
@@ -389,6 +399,18 @@ internal interface AppDaoInt : AppDao {
         } else getAppListItems(category, escapeQuery(searchQuery)).map(packageManager)
     }
 
+    override fun getAppListItems(
+        packageManager: PackageManager,
+        repoId: Long,
+        searchQuery: String?,
+        sortOrder: AppListSortOrder,
+    ): LiveData<List<AppListItem>> {
+        return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
+            LAST_UPDATED -> getAppListItemsByLastUpdated(repoId).map(packageManager)
+            NAME -> getAppListItemsByName(repoId).map(packageManager)
+        } else getAppListItems(repoId, escapeQuery(searchQuery)).map(packageManager)
+    }
+
     private fun escapeQuery(searchQuery: String): String {
         val sanitized = searchQuery.replace(Regex.fromLiteral("\""), "\"\"")
         return "\"*$sanitized*\""
@@ -439,6 +461,24 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageName HAVING MAX(pref.weight)""")
     fun getAppListItems(category: String, searchQuery: String): LiveData<List<AppListItem>>
 
+    /**
+     * Warning: Run [escapeQuery] on the given [searchQuery] before.
+     *
+     * This query is structured differently than the sister query above,
+     * because of abysmal performance that we couldn't explain.
+     */
+    @Transaction
+    @Query("""
+        SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE repoId = :repoId AND app.rowid IN (
+            SELECT rowid FROM ${AppMetadataFts.TABLE}
+            WHERE repoId = :repoId AND ${AppMetadataFts.TABLE} MATCH :searchQuery
+        )""")
+    fun getAppListItems(repoId: Long, searchQuery: String): LiveData<List<AppListItem>>
+
     @Transaction
     @Query("""
         SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
@@ -486,6 +526,26 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query("""
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE repoId = :repoId
+        ORDER BY app.lastUpdated DESC""")
+    fun getAppListItemsByLastUpdated(repoId: Long): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query("""
+        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
+               version.antiFeatures, app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE repoId = :repoId
+        ORDER BY localizedName COLLATE NOCASE ASC""")
+    fun getAppListItemsByName(repoId: Long): LiveData<List<AppListItem>>
 
     /**
      * Warning: Can not be called with more than 999 [packageNames].

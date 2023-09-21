@@ -16,6 +16,7 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
@@ -652,10 +653,10 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            launch {
+            launch(Dispatchers.IO) {
                 // FIXME executing this block may emit items too fast, so we might miss one
-                //  causing flaky tests. 50ms may fix it, let's see.
-                delay(50)
+                //  causing flaky tests. A short delay may fix it, let's see.
+                delay(250)
                 block()
             }
 
