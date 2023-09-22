@@ -14,73 +14,146 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_margin="8dp">
 
-            <!-- Icon, Name, Author (optional), Updated date -->
-            <RelativeLayout
-                android:id="@+id/icon_and_name"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_repo_app_default"
+                android:transitionName="@string/transition_app_item_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingBottom="12dp">
+                android:layout_marginStart="8dp"
+                android:textAppearance="@style/DetailsAppTitleStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Really Long App Title Which Wraps Around Onto the Second Line" />
 
-                <ImageView
-                    android:id="@+id/icon"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="8dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_repo_app_default"
-                    android:transitionName="@string/transition_app_item_icon" />
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                tools:text="Author"
+                tools:visibility="visible" />
 
-                <!-- Name, Author (optional), Updated date -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@id/icon"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/text_last_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/DetailsLastUpdatedStyle"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toStartOf="@id/text_size"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@+id/author"
+                tools:text="Update released 12 days ago"
+                tools:visibility="visible" />
 
-                    <TextView
-                        android:id="@+id/title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/DetailsAppTitleStyle"
-                        tools:text="Really Long App Title Which Wraps Around Onto the Second Line" />
+            <TextView
+                android:id="@+id/text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxLines="1"
+                android:textAppearance="@style/DetailsLastUpdatedStyle"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_last_update"
+                app:layout_constraintTop_toBottomOf="@+id/author"
+                tools:text="(23.42 MB)"
+                tools:visibility="visible" />
 
-                    <TextView
-                        android:id="@+id/author"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        tools:text="Author" />
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="icon,text_last_update" />
 
-                    <TextView
-                        android:id="@+id/text_last_update"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/DetailsLastUpdatedStyle"
-                        android:textColor="@android:color/darker_gray"
-                        tools:text="Update released 12 days ago" />
-                </LinearLayout>
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/repo_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:importantForAccessibility="no"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier"
+                tools:src="@drawable/ic_repo_app_default" />
+
+            <TextView
+                android:id="@+id/repo_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/repo_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/repo_icon"
+                app:layout_constraintTop_toTopOf="@+id/repo_icon"
+                tools:text="A name of a repository with a potentially long name that wraps" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/secondaryButtonView"
+                style="@style/DetailsSecondaryButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0"
+                android:ellipsize="marquee"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/primaryButtonView"
+                app:layout_constraintTop_toBottomOf="@+id/repo_icon"
+                tools:text="Uninstall"
+                tools:visibility="visible" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/primaryButtonView"
+                style="@style/DetailsPrimaryButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_weight="0"
+                android:ellipsize="marquee"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/repo_icon"
+                tools:text="Open"
+                tools:visibility="visible" />
 
             <!-- Progress info -->
             <RelativeLayout
                 android:id="@+id/progress_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/icon_and_name"
-                tools:visibility="gone">
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/repo_icon"
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/progress_cancel"
@@ -118,56 +191,23 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
-                    android:indeterminate="true"
-                    android:layout_toStartOf="@id/progress_cancel" />
+                    android:layout_toStartOf="@id/progress_cancel"
+                    android:indeterminate="true" />
             </RelativeLayout>
 
-            <!-- Install, Uninstall, Update, Open buttons -->
-            <LinearLayout
-                android:id="@+id/button_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/icon_and_name"
-                android:clipToPadding="false"
-                android:gravity="end"
-                android:visibility="visible">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/secondaryButtonView"
-                    style="@style/DetailsSecondaryButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:ellipsize="marquee"
-                    android:visibility="invisible"
-                    tools:visibility="visible"
-                    tools:text="Uninstall" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/primaryButtonView"
-                    style="@style/DetailsPrimaryButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="0"
-                    android:ellipsize="marquee"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    tools:text="Open" />
-            </LinearLayout>
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/warning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/warning"
             android:padding="8dp"
             android:text="@string/warning_target_sdk"
             android:textAlignment="center"
             android:textColor="@color/design_default_color_on_primary"
             android:textSize="15sp"
             android:visibility="gone"
-            android:background="@color/warning"
             tools:visibility="visible" />
 
         <TextView
@@ -175,19 +215,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="?attr/detailPanel"
+            android:padding="8dp"
             android:paddingStart="8dp"
             android:paddingLeft="8dp"
             android:paddingEnd="8dp"
             android:paddingRight="8dp"
-            android:padding="8dp"
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textIsSelectable="true"
             android:textStyle="bold"
-            android:background="?attr/detailPanel"
             android:visibility="gone"
-            tools:visibility="visible"
-            tools:text="App summary, one line - outlining what this app does" />
+            tools:text="App summary, one line - outlining what this app does"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/latest"
@@ -202,8 +242,8 @@
             android:paddingBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:visibility="gone"
-            tools:visibility="visible"
-            tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes" />
+            tools:text="NEW IN VERSION 1.0.2233\n\nA lot has happened since the last build:\n\n\t• Improved UI\n\t• Bug fixes"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/description"
@@ -224,8 +264,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/anti_features_warning"
@@ -233,9 +273,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
+                android:gravity="center_vertical"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:gravity="center_vertical"
                 android:text="@string/antifeatureswarning"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:drawableStartCompat="@drawable/ic_warning" />
