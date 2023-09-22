@@ -530,4 +530,19 @@
     <string name="warning_target_sdk">Aplikasi ini dibuat untuk versi Android yang lawas dan tidak dapat diperbarui secara otomatis.</string>
     <string name="repo_last_update_downloaded">Pembaruan terakhir diunduh</string>
     <string name="app_error_open">Tidak dapat meluncurkan aplikasi.</string>
+    <string name="repo_add_new_mirror">Tambahkan sebagai cerminan baru</string>
+    <string name="repo_intro">Sebuah repositori adalah sumber aplikasi tambahan. Repositori pihak ketiga yang Anda tambahkan di sini memiliki standar yang berbeda daripada aplikasi yang dibuat oleh F-Droid sendiri.
+\n
+\nPastikan bahwa repositori yang Anda tambahkan dapat dipercayai.</string>
+    <string name="repo_state_fetching">Mendapatkan repositori…</string>
+    <string name="repo_state_adding">Menambahkan repositori…</string>
+    <string name="repo_enter_url">Masukkan URL repositori secara manual</string>
+    <string name="repo_exists">Repositori ini sudah ditambahkan.</string>
+    <string name="swap_banner_message">Untuk mengganti aplikasi, mulai Wi-FI Anda dan hubungkan ke jaringan yang sama dengan teman Anda.</string>
+    <string name="turn_on_wifi">Nyalakan Wi-Fi</string>
+    <string name="repo_add_new_title">Tambahkan repositori</string>
+    <string name="repo_invalid">Repositori tidak valid.
+\n
+\nHubungi pemelihara dan beri tahu tentang masalah ini.</string>
+    <string name="repo_io_error">Terjadi kesalahan menghubungkan ke repositori.</string>
 </resources>
