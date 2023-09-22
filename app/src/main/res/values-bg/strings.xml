@@ -491,7 +491,7 @@
     <string name="hiding_dialog_message">Сигурни ли сте, че искате да премахнете %1$s от стартовия панел\? Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="panic_hide_warning_message">В случай на паника това ще премахне %1$s от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="menu_downgrade">Даунгрейд</string>
-    <string name="send_version_and_uuid_summary">При изтегляне се изпраща номера на изданието на това приложение, а също и произволен уникален идентификатор, в сила след рестарт на приложението.</string>
+    <string name="send_version_and_uuid_summary">При изтегляне се изпраща изданието на това приложение и произволен уникален идентификатор, в сила след рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Показва известия при обновяване на приложения и хранилища.</string>
     <string name="notification_channel_updates_title">Обновяване</string>
@@ -540,6 +540,21 @@
     <string name="antinsfwlist">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
     <string name="repo_last_update_downloaded">Последното обновяване е изтеглено</string>
     <string name="category_Nightly">Нощни компилации</string>
-    <string name="warning_target_sdk">Приложението е създадено за по-ранно изданиена Андроид и не може да бъде обновено автоматично.</string>
+    <string name="warning_target_sdk">Приложението е създадено за по-ранно издание на Андроид и не може да бъде обновено автоматично.</string>
     <string name="app_error_open">Приложението не може да бъде отворено.</string>
+    <string name="swap_banner_message">За да разменяте приложения и двамата се свържете към една безжична мрежа.</string>
+    <string name="turn_on_wifi">Включване на Wi-Fi</string>
+    <string name="repo_add_new_title">Добавяне на хранилище</string>
+    <string name="repo_add_new_mirror">Добавяне като ново огледало</string>
+    <string name="repo_intro">Хранилището е допълнителен източник на приложения. Тези хранилища, които добавяте имат различни изисквания към приложенията от вграденото във F-Droid.
+\n
+\nДобавяйте само хранилища, на които имате доверие.</string>
+    <string name="repo_state_fetching">Зареждане на хранилище…</string>
+    <string name="repo_state_adding">Добавяне на хранилище…</string>
+    <string name="repo_enter_url">Ръчно въведете адреса на хранилището</string>
+    <string name="repo_exists">Това хранилище вече е добавено.</string>
+    <string name="repo_invalid">Неприемливо хранилище.
+\n
+\nСвържете се с поддръжката му и съобщете за грешката.</string>
+    <string name="repo_io_error">Грешка при свързване с хранилището.</string>
 </resources>
