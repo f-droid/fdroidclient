@@ -127,7 +127,7 @@
     <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
     <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nesvobodné síťové službě</string>
     <string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
-    <string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
+    <string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvobodný</string>
     <string name="appcompatibility">Kompatibilita aplikace</string>
     <string name="display">Zobrazení</string>
     <string name="show_incompat_versions_on">Zobrazit verze aplikace které jsou nekompatibilní s tímto zařízením</string>
