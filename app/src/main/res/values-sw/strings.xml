@@ -213,7 +213,7 @@
     <string tools:ignore="UnusedResources" name="category_Games">Michezo</string>
     <string tools:ignore="UnusedResources" name="category_Navigation">Urambazaji</string>
     <string name="local_repo_name">Jina la ghala la kifaa hiki</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">"Toleo lililosimikwa halitangamani na matoleo mengine.  Kusimikuwa apu hii kutakuwezesha kuona na kusimika matoleo yanayoamabatana. Jambo hili huonekana sana na api silizosimikwa na Google Play ama duka lingine, haswa kama zimesahihishwa na cheti tofauti."</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Toleo lililosimikwa halitangamani na matoleo mengine.  Kusimikuwa apu hii kutakuwezesha kuona na kusimika matoleo yanayoamabatana. Jambo hili huonekana sana na api silizosimikwa na Google Play ama duka lingine, haswa kama zimesahihishwa na cheti tofauti.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Tumepata kasoro na %1$s. Tunapendekeza kusasisha hadi toleo jipya mara moja.</string>
     <string name="send_fdroid_metrics_json">%s ripoti ya vipimo kama faili ya JSON</string>
     <string name="app_error_open">Haingeweza kuzindua apu.</string>
