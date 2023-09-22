@@ -132,6 +132,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     // not shown in Settings
     private static final String PREF_LAST_UPDATE_CHECK = "lastUpdateCheck";
+    private static final String PREF_BOTTOM_NAVIGATION_VIEW_NAME = "bottomNavigationViewName";
 
     // these preferences are not listed in preferences.xml so the defaults are set here
     @SuppressWarnings("PMD.AvoidUsingHardCodedIP")
@@ -335,6 +336,15 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     void setLastUpdateCheck(long lastUpdateCheck) {
         preferences.edit().putLong(PREF_LAST_UPDATE_CHECK, lastUpdateCheck).apply();
+    }
+
+    public String getBottomNavigationViewName() {
+        return preferences.getString(PREF_BOTTOM_NAVIGATION_VIEW_NAME,
+                                     org.fdroid.fdroid.views.main.MainActivity.EXTRA_VIEW_LATEST);
+    }
+
+    public void setBottomNavigationViewName(final String viewName) {
+        preferences.edit().putString(PREF_BOTTOM_NAVIGATION_VIEW_NAME, viewName).apply();
     }
 
     /**
