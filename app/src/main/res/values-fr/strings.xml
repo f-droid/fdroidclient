@@ -464,7 +464,7 @@
     <string name="install_history">Historique d\'installation</string>
     <string name="install_history_summary">Afficher le journal privé des installations et désinstallations</string>
     <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
-    <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage est nécessaire.</string>
+    <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage de l\'App est nécessaire.</string>
     <string name="share_repository">Partager le dépôt</string>
     <string name="send_install_history">Envoyer l\'historique des installations</string>
     <string name="send_installed_apps">Partager les applis installées</string>
@@ -559,4 +559,19 @@
     <string name="warning_target_sdk">Cette application a été conçue pour une ancienne version d\'Android et ne peut pas être mise à jour automatiquement.</string>
     <string name="category_Nightly">Versions bêta quotidiennes</string>
     <string name="app_error_open">Impossible de lancer l\'application.</string>
+    <string name="swap_banner_message">Pour échanger des applications, activez le Wi-Fi et connectez-vous au même réseau que votre ami.</string>
+    <string name="turn_on_wifi">Activer le wifi</string>
+    <string name="repo_add_new_title">Ajouter le dépôt</string>
+    <string name="repo_add_new_mirror">Ajouter comme nouveau miroir</string>
+    <string name="repo_intro">Un dépôt est une source supplémentaire d\'applications. Les tiers que vous ajoutez ici ont des normes différentes de F-Droid.
+\n
+\nAssurez-vous que le dépôt que vous ajoutez est digne de confiance.</string>
+    <string name="repo_state_fetching">Récupération du dépôt …</string>
+    <string name="repo_state_adding">Ajout d\'un dépôt …</string>
+    <string name="repo_enter_url">Saisissez l\'URL du dépôt</string>
+    <string name="repo_exists">Ce repo a déjà été ajouté.</string>
+    <string name="repo_invalid">Dépôt invalide.
+\n
+\nContactez le responsable pour lui faire part de ce problème.</string>
+    <string name="repo_io_error">Erreur de connexion au dépôt.</string>
 </resources>
