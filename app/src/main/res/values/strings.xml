@@ -518,7 +518,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="nearby_splash__read_external_storage">Search SD Card for repos and mirrors.</string>
     <string name="nearby_splash__document_tree">Search USB OTG for repos and mirrors.</string>
     <!-- This is a button label for a small button, the text needs to be under 10 characters, the shorter the better. Also, a literal translation probably will miss the point. "Try it" is more a saying than two words. Google has been pushing these short buttons, like "Got it" and "Try now" so this button is trying to match those buttons in Android. -->
-    <string name="nearby_splash__request_permission">Try it</string>
+    <string name="nearby_splash__request_permission">Search now</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid can search for repos and mirrors on your SD Card, but needs your permission to do so.</string>
+    <string name="nearby_splace__external_storage_permission_button">Try it</string>
 
     <!-- This is a screen title, it should be maximum 25 characters -->
     <string name="swap_nfc_title">Touch to swap</string>
