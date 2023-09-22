@@ -558,4 +558,19 @@
     <string name="warning_target_sdk">Esta aplicación se creó para una versión anterior de Android y no se puede actualizar automáticamente.</string>
     <string name="category_Nightly">versión diaria</string>
     <string name="app_error_open">No se ha podido abrir la aplicación.</string>
+    <string name="turn_on_wifi">Enciende el wifi</string>
+    <string name="repo_intro">Un repositorio es una fuente adicional de aplicaciones. Los repositorios de terceros que añadas aquí tienen estándares diferentes a los de las aplicaciones compiladas por F-Droid.
+\n
+\nPor favor asegúrate de que el repositorio que vas a añadir es confiable.</string>
+    <string name="repo_enter_url">Añadir la URL del repositorio manualmente</string>
+    <string name="repo_exists">Este repositorio ya está añadido.</string>
+    <string name="repo_invalid">Repositorio inválido.
+\n
+\nContacta el administrador y informales de la incidencia.</string>
+    <string name="swap_banner_message">Para intercambiar aplicaciones, conéctate a la misma red Wi-Fi que tu amigo.</string>
+    <string name="repo_add_new_title">Añadir repositorio</string>
+    <string name="repo_add_new_mirror">Añadir como nuevo espejo</string>
+    <string name="repo_state_fetching">Obteniendo repositorio…</string>
+    <string name="repo_state_adding">Añadiendo repositorio…</string>
+    <string name="repo_io_error">Error al conectar con el repositorio.</string>
 </resources>
