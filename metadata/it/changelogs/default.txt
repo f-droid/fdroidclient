@@ -1,6 +1,8 @@
 * Corretti molti bug
-* Mostra le icone dei repository nella lista dei repository
+* Mostra le icone dei repo nella lista dei repo
 * Mostra le motivazioni per le anti-caratteristiche (se disponibili)
 * Aggiornamenti automatici senza estensione privilegiata (per ora solo F-Droid Basic)
 * Mostra la dimensione delle app nella schermata dei dettagli delle app (solo modalità esperta)
-* Nomi app più scuri nella lista app per migliorare la leggibilità
+* Nomi app più scuri per migliore leggibilità
+* Ripristina lo stato aperto/chiuso di "Aggiorna tutto" nella scheda Aggiornamenti
+* Ripristina la scheda attiva tra riavvii dell'app

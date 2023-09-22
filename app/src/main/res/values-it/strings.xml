@@ -561,4 +561,19 @@
     <string name="warning_target_sdk">Questa app è stata creata per una versione precedente di Android e non può essere aggiornata automaticamente.</string>
     <string name="antinsfwlist">Questa app ha contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
     <string name="app_error_open">Impossibile avviare l\'app.</string>
+    <string name="swap_banner_message">Per scambiare le app, accendi il Wi-Fi e connettiti alla stessa rete del tuo amico.</string>
+    <string name="turn_on_wifi">Accendi il wifi</string>
+    <string name="repo_add_new_title">Aggiungi repository</string>
+    <string name="repo_add_new_mirror">Aggiungi come nuovo mirror</string>
+    <string name="repo_intro">Un repository è una fonte aggiuntiva di app. Quelli di terze parti che aggiungi qui, hanno standard diversi rispetto a quelli che forniscono app compilate da F-Droid stesso.
+\n
+\nAssicurati che il repository che stai aggiungendo sia affidabile.</string>
+    <string name="repo_state_fetching">Recupero repository…</string>
+    <string name="repo_state_adding">Aggiunta repository…</string>
+    <string name="repo_enter_url">Inserisci l\'URL del repository a mano</string>
+    <string name="repo_exists">Questo repo è già stato aggiunto.</string>
+    <string name="repo_invalid">Repository non valido.
+\n
+\nContatta il manutentore e informalo del problema.</string>
+    <string name="repo_io_error">Errore di connessione al repository.</string>
 </resources>
