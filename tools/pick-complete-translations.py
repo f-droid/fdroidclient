@@ -89,6 +89,13 @@ for locale in sorted(app_locales.keys(), reverse=True):
 if not merge_locales:
     sys.exit()
 
+print('\nIf all else fails, try:')
+print('\tgit checkout -B merge_weblate weblate/master')
+print('\tgit rebase -i upstream/master')
+print('\t# select all in editor and cut')
+print('\twl-paste | grep -Eo ".* \((%s)\) .*" | wl-copy' % '|'.join(merge_locales))
+print('\t# paste into editor, and make rebase\n')
+
 if 'merge_weblate' in repo.heads:
     merge_weblate = repo.heads['merge_weblate']
     repo.create_tag(
