@@ -68,7 +68,6 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -1050,9 +1049,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                         } else {
                             qrUrlBuilder.append('&');
                         }
-                        qrUrlBuilder.append(name.toUpperCase(Locale.ENGLISH));
+                        qrUrlBuilder.append(name);
                         qrUrlBuilder.append('=');
-                        qrUrlBuilder.append(sharingUri.getQueryParameter(name).toUpperCase(Locale.ENGLISH));
+                        qrUrlBuilder.append(sharingUri.getQueryParameter(name));
                     }
                 }
                 qrUriString = qrUrlBuilder.toString();
