@@ -6,7 +6,7 @@
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
-    <string name="updates">Pendientes</string>
+    <string name="updates">Actualizaciones</string>
     <string name="other">Otros</string>
     <string name="update_interval">Intervalo de actualización automática</string>
     <string name="notify">Mostrar actualizaciones disponibles</string>
@@ -461,7 +461,7 @@
     <string name="install_history">Historial de instalación</string>
     <string name="install_history_summary">Ver el registro privado de todas las instalaciones y desinstalaciones</string>
     <string name="send_version_and_uuid">Enviar versión y UUID a los servidores</string>
-    <string name="send_version_and_uuid_summary">Al descargar, incluir la versión de esta aplicación y una ID única y aleatoria. Se aplica desde el próximo reinicio de la aplicación.</string>
+    <string name="send_version_and_uuid_summary">Al descargar se añadirá su versión y un ID único aleatorio. Estos cambios se aplicarán después de que reinicies la aplicación.</string>
     <string name="share_repository">Compartir Repositorio</string>
     <string name="prompt_to_send_crash_reports">Preguntar si enviar informes de fallos</string>
     <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
@@ -556,6 +556,21 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Acerca de F-Droid Basic</string>
     <string name="warning_target_sdk">Esta aplicación se creó para una versión anterior de Android y no se puede actualizar automáticamente.</string>
-    <string name="category_Nightly">Compilación automatizada</string>
+    <string name="category_Nightly">versión diaria</string>
     <string name="app_error_open">No se ha podido abrir la aplicación.</string>
+    <string name="turn_on_wifi">Enciende el wifi</string>
+    <string name="repo_intro">Un repositorio es una fuente adicional de aplicaciones. Los repositorios de terceros que añadas aquí tienen estándares diferentes a los de las aplicaciones compiladas por F-Droid.
+\n
+\nPor favor asegúrate de que el repositorio que vas a añadir es confiable.</string>
+    <string name="repo_enter_url">Añadir la URL del repositorio manualmente</string>
+    <string name="repo_exists">Este repositorio ya está añadido.</string>
+    <string name="repo_invalid">Repositorio inválido.
+\n
+\nContacta el administrador y informales de la incidencia.</string>
+    <string name="swap_banner_message">Para intercambiar aplicaciones, conéctate a la misma red Wi-Fi que tu amigo.</string>
+    <string name="repo_add_new_title">Añadir repositorio</string>
+    <string name="repo_add_new_mirror">Añadir como nuevo espejo</string>
+    <string name="repo_state_fetching">Obteniendo repositorio…</string>
+    <string name="repo_state_adding">Añadiendo repositorio…</string>
+    <string name="repo_io_error">Error al conectar con el repositorio.</string>
 </resources>

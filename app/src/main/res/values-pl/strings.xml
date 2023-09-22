@@ -9,7 +9,7 @@
     <string name="other">Inne</string>
     <string name="notify">Pokazuj dostępne aktualizacje</string>
     <string name="system_installer">Uprzywilejowane rozszerzenie</string>
-    <string name="system_installer_on">Używaj uprzywilejowanego rozszerzenia, aby instalować, aktualizować i usuwać paczki</string>
+    <string name="system_installer_on">Używaj uprzywilejowanego rozszerzenia, aby instalować, aktualizować i usuwać pakiety</string>
     <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
     <string name="local_repo_name_summary">Wyświetlana nazwa lokalnego repozytorium: %s</string>
     <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS dla lokalnego repozytorium</string>
@@ -108,10 +108,7 @@
     <string name="swap_welcome">Witaj w F-Droid!</string>
     <string name="swap_confirm_connect">Czy chcesz teraz pobrać aplikacje od %1$s\?</string>
     <string name="app_name_full">F-Droid</string>
-    <string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby
-        zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje
-        usunięcie jej danych i ustawień)
-    </string>
+    <string name="SignatureMismatch">Nowa wersja jest podpisana innym kluczem niż stara. Aby zainstalować nową wersję, należy najpierw odinstalować starą. Zrób to i spróbuj ponownie. (Pamiętaj, że odinstalowanie spowoduje usunięcie wszelkich wewnętrznych danych przechowywanych przez aplikację)</string>
     <string name="update_interval">Interwał automatycznej aktualizacji</string>
     <string name="notify_on">Wyświetlaj powiadomienie, gdy aktualizacje są dostępne</string>
     <string name="app_incompatible">Niezgodna</string>
@@ -161,7 +158,7 @@
     <string name="swap_active_hotspot">%1$s (Twój hostpot)</string>
     <string name="swap_switch_to_wifi">Naciśnij, aby przełączyć się na sieć Wi-Fi</string>
     <string name="about_source">Kod źródłowy</string>
-    <string name="not_on_same_wifi">Twoje urządzenie nie jest w tej samej sieci Wi-Fi, co lokalne repozytorium, które właśnie dodałeś! Spróbuj połączyć się z tą siecią: %s</string>
+    <string name="not_on_same_wifi">Twoje urządzenie nie jest w tej samej sieci Wi-Fi co lokalne repozytorium, które właśnie dodałeś! Spróbuj połączyć się z tą siecią: %s</string>
     <string name="category_Connectivity">Łączność</string>
     <string name="category_Graphics">Grafika</string>
     <string name="category_Money">Finanse</string>
@@ -263,8 +260,8 @@
     <string name="update_auto_install">Automatycznie instaluj aktualizacje</string>
     <string name="update_auto_install_summary">Pobieraj i aktualizuj aplikacje w tle, wyświetlając powiadomienie</string>
     <string name="keep_install_history">Przechowuj historię instalacji</string>
-    <string name="keep_install_history_summary">Przechowuj dziennik wszystkich instalacji i dezinstalacji w prywatnym obszarze aplikacji</string>
-    <string name="warning_no_internet">Nie można zaktualizować, czy jesteś połączony z Internetem?</string>
+    <string name="keep_install_history_summary">Przechowuj dziennik wszystkich instalacji i odinstalowań w prywatnym obszarze aplikacji</string>
+    <string name="warning_no_internet">Nie można zaktualizować. Czy masz połączenie z Internetem\?</string>
     <string name="versions">Wersje</string>
     <string name="app_details_donate_prompt_unknown_author">Kup programistom %1$s kawę!</string>
     <string name="app_details_donate_prompt">%1$s jest tworzony przez %2$s. Kup im kawę!</string>
@@ -387,7 +384,7 @@
     <string name="by_author_format">od %s</string>
     <string name="download_404">Nie znaleziono żądanego pliku.</string>
     <string name="force_old_index">Wymuszaj stary format indeksu</string>
-    <string name="force_old_index_summary">W przypadku błędów lub problemów z kompatybilnością użyj indeksu XML aplikacji</string>
+    <string name="force_old_index_summary">W przypadku błędów lub problemów ze zgodnością użyj indeksu XML aplikacji</string>
     <string name="app_list_download_ready">Pobrany i gotowy do instalacji</string>
     <string name="status_inserting_x_apps">Zapisywanie szczegółów aplikacji (%1$d/%2$d) z %3$s</string>
     <string name="app_installed_media">Plik zainstalowany w %s</string>
@@ -450,7 +447,7 @@
     <string name="over_wifi">Przez Wi-Fi</string>
     <string name="over_data">Przez transmisję danych</string>
     <string name="over_network_always_summary">Zawsze używaj tego połączenia, gdy jest dostępne</string>
-    <string name="over_network_on_demand_summary">Używaj tego połączenia tylko wtedy, gdy nacisnę, aby pobrać</string>
+    <string name="over_network_on_demand_summary">Używaj tego połączenia tylko wtedy, gdy naciskam, aby pobrać</string>
     <string name="over_network_never_summary">Nigdy nie pobieraj niczego za pomocą tego połączenia</string>
     <string name="antidisabledalgorithmlist">Ta aplikacja ma słaby podpis bezpieczeństwa</string>
     <string name="antiknownvulnlist">Ta aplikacja ma znaną podatność bezpieczeństwa</string>
@@ -459,7 +456,7 @@
     <string name="prompt_to_send_crash_reports">Proponuj wysyłanie raportów o awariach</string>
     <string name="prompt_to_send_crash_reports_summary">Zbieraj dane o awariach i proponuj wysyłanie ich do programistów</string>
     <string name="install_history">Historia instalacji</string>
-    <string name="install_history_summary">Wyświetl prywatny dziennik wszystkich instalacji i dezinstalacji</string>
+    <string name="install_history_summary">Wyświetl prywatny dziennik wszystkich instalacji i odinstalowań</string>
     <string name="send_version_and_uuid">Przesyłaj na serwery wersję i UUID</string>
     <string name="send_version_and_uuid_summary">Dołączaj wersję tej aplikacji i losowy, unikalny identyfikator podczas pobierania. Zacznie działać po restarcie aplikacji</string>
     <string name="share_repository">Udostępnij repozytorium</string>
@@ -479,7 +476,7 @@
     <string name="scan_removable_storage_toast">Skanowanie %s…</string>
     <string name="scan_removable_storage_summary">Szukaj repozytoriów pakietów na nośnikach wymiennych, takich jak karty pamięci i urządzenia USB</string>
     <string name="nearby_splash__read_external_storage">Wyszukaj repozytoria i kopie lustrzane na karcie pamięci.</string>
-    <string name="nearby_splash__request_permission">Wypróbuj</string>
+    <string name="nearby_splash__request_permission">Wyszukaj</string>
     <string name="not_visible_nearby">Wymiana w pobliżu nie jest włączona</string>
     <string name="not_visible_nearby_description">Przed wymianą z urządzeniami w pobliżu ustaw swoje urządzenie jako widoczne.</string>
     <string name="swap_toast_using_path">Korzystasz z %1$s</string>
@@ -557,4 +554,20 @@
     <string name="warning_target_sdk">Ta aplikacja została skompilowana dla starszej wersji Androida i nie może być aktualizowana automatycznie.</string>
     <string name="category_Nightly">nightly</string>
     <string name="app_error_open">Nie udało się uruchomić aplikacji</string>
+    <string name="swap_banner_message">Aby zamienić aplikacje, włącz Wi-Fi i połącz się z tą samą siecią co druga osoba.</string>
+    <string name="turn_on_wifi">Włącz Wi-Fi</string>
+    <string name="repo_add_new_title">Dodaj repozytorium</string>
+    <string name="repo_add_new_mirror">Dodaj nowy serwer lustrzany</string>
+    <string name="repo_intro">Repozytorium jest dodatkowym źródłem aplikacji. Dodane tutaj aplikacje innych firm mają inne standardy niż te dostarczające aplikacje zbudowane przez samego F-Droid.
+\n
+\nUpewnij się, że dodawane przez Ciebie repozytorium jest godne zaufania.</string>
+    <string name="repo_state_fetching">Pobieranie repozytorium…</string>
+    <string name="repo_state_adding">Dodawanie repozytorium…</string>
+    <string name="repo_enter_url">Wprowadź ręcznie URL repozytorium</string>
+    <string name="repo_exists">To repozytorium zostało już dodane.</string>
+    <string name="repo_invalid">Nieprawidłowe repozytorium.
+\n
+\nSkontaktuj się z opiekunem i poinformuj go o problemie.</string>
+    <string name="repo_io_error">Błąd połączenia z repozytorium.</string>
+    <string name="nearby_splace__external_storage_permission_button">Wypróbuj</string>
 </resources>

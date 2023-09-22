@@ -577,4 +577,19 @@
     <string name="about_title_basic">حول إف-درويد البسيط</string>
     <string name="antinsfwlist">يتضمن هذا التطبيق محتوى لا ينبغي نشره أو إبرازه في كل مكان</string>
     <string name="repo_last_update_downloaded">تم تنزيل آخر تحديث</string>
+    <string name="repo_add_new_title">إضافة مستودع</string>
+    <string name="repo_intro">يعد المستودع مصدرًا إضافيًا للتطبيقات. تتمتع تطبيقات الجهات الخارجية التي تضيفها هنا بمعايير مختلفة عن تلك التي توفر التطبيقات التي تم إنشاؤها بواسطة F-Droid نفسها.
+\n
+\nيرجى التأكد من أن المستودع الذي تضيفه جدير بالثقة.</string>
+    <string name="repo_add_new_mirror">أضف كمرآة جديدة</string>
+    <string name="repo_state_fetching">جارٍ جلب المستودع…</string>
+    <string name="repo_invalid">مستودع غير صالح.
+\n
+\nاتصل بالمشرف وأخبره بالمشكلة.</string>
+    <string name="repo_state_adding">إضافة مستودع…</string>
+    <string name="repo_enter_url">أدخل عنوان URL للمستودع يدويًا</string>
+    <string name="repo_exists">تمت إضافة هذا المستودع بالفعل.</string>
+    <string name="swap_banner_message">لتبديل التطبيقات، ابدأ تشغيل شبكة Wi-Fi واتصل بنفس الشبكة التي يتصل بها صديقك.</string>
+    <string name="repo_io_error">خطأ في الاتصال بالمستودع.</string>
+    <string name="turn_on_wifi">تشغيل Wi-Fi</string>
 </resources>

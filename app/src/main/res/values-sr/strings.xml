@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Нова верзија апликације је потписана другим кључем. Да бисте је инсталирали, деинсталирајте стару па покушајте поново. Имајте на уму да ће се при деинсталирању апликације уклонити сви њени подаци.</string>
     <string name="installIncompatible">Апликација није компатибилна са вашим уређајем. Свеједно је инсталирати\?</string>
     <string name="version">Верзија</string>
@@ -315,7 +315,7 @@
     <string name="updates__show_updateable_apps">Прикажи апликације</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Преузми ажурирање за %1$d апликацију.</item>
-        <item quantity="few">Преузми ажурирања за %1$d апликација.</item>
+        <item quantity="few">Преузми ажурирања за %1$d апликације.</item>
         <item quantity="other">Преузми ажурирања за %1$d апликација.</item>
     </plurals>
     <string name="details_new_in_version">Ново у верзији %s</string>
@@ -323,7 +323,7 @@
     <string name="antifeatures">Непоуздане функције</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Прикажи %1$d апликацију из категорије %2$s</item>
-        <item quantity="few">Прикажи %1$d апликација из категорије %2$s</item>
+        <item quantity="few">Прикажи %1$d апликације из категорије %2$s</item>
         <item quantity="other">Прикажи %1$d апликација из категорије %2$s</item>
     </plurals>
     <plurals name="details_last_update_days">
@@ -357,22 +357,22 @@
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d апликација је инсталирана</item>
-        <item quantity="few">%1$d апликација је инсталирано</item>
+        <item quantity="few">%1$d апликације су инсталиране</item>
         <item quantity="other">%1$d апликација је инсталирано</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Ажурирано пре %1$d недељу</item>
-        <item quantity="few">Ажурирано пре %1$d недеља</item>
+        <item quantity="few">Ажурирано пре %1$d недеље</item>
         <item quantity="other">Ажурирано пре %1$d недеља</item>
     </plurals>
     <plurals name="details_last_update_months">
         <item quantity="one">Ажурирано пре %1$d месец</item>
-        <item quantity="few">Ажурирано пре %1$d месеци</item>
+        <item quantity="few">Ажурирано пре %1$d месеца</item>
         <item quantity="other">Ажурирано пре %1$d месеци</item>
     </plurals>
     <plurals name="details_last_update_years">
         <item quantity="one">Ажурирано пре %1$d годину</item>
-        <item quantity="few">Ажурирано пре %1$d година</item>
+        <item quantity="few">Ажурирано пре %1$d године</item>
         <item quantity="other">Ажурирано пре %1$d година</item>
     </plurals>
     <string name="force_old_index">Наметни стари формат индекса</string>
@@ -534,9 +534,33 @@
     <string name="antiknownvuln">Позната безбедносна претња</string>
     <string name="antinosource">Изворни кôд више није доступан</string>
     <string name="antiothers">Друге непоуздане функције</string>
-    <string name="antinsfw">Ова апликација садржи садржај који не би требало бити јавно доступан</string>
+    <string name="antinsfw">Небезбедно за рад</string>
     <string name="menu_release_channel_beta">Дозволи ажурирања на бета верзије</string>
     <string name="latest__empty_state__upgrading">Ажурирање базе података…</string>
     <string name="use_ipfs_gateways_summary">Преузима фајлове са IPFS резервних извора, ако то подржава репозиторијум.</string>
     <string name="use_ipfs_gateways">Користи IPFS пролазе</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">Нестабилне верзије</string>
+    <string name="app_name_full">F-Droid</string>
+    <string name="about_title_full">О F-Droid-у</string>
+    <string name="about_title_basic">О F-Droid Basic-у</string>
+    <string name="antinsfwlist">Ова апликација садржи садржај који не би требало бити јавно доступан</string>
+    <string name="repo_last_update_downloaded">Последње ажурирање је преузето</string>
+    <string name="app_error_open">Није могуће покренути апликацију.</string>
+    <string name="warning_target_sdk">Ова апликација је направљена за старију верзију Android-а и не може се аутоматски ажурирати.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="swap_banner_message">Да бисте заменили апликације, укључите Wi-Fi мрежу и повежите се на исту мрежу као и ваш пријатељ.</string>
+    <string name="turn_on_wifi">Укључи Wi-Fi</string>
+    <string name="repo_add_new_title">Додај репозиторијум</string>
+    <string name="repo_intro">Репозиторијум је додатни извор апликација. Репозиторијуми трећих страна које додате овде имају различите стандарде од оних које пружају апликације које је направио сам F-Droid.
+\n
+\nУверите се да је репозиторијум који додајете поуздан.</string>
+    <string name="repo_state_fetching">Преузимање репозиторијума…</string>
+    <string name="repo_add_new_mirror">Додај као нови резервни извор</string>
+    <string name="repo_state_adding">Додавање репозиторијума…</string>
+    <string name="repo_exists">Овај репозиторијум је већ додат.</string>
+    <string name="repo_invalid">Неважећи репозиторијум.
+\n
+\nОбратите се одржавачу и обавестите га о проблему.</string>
+    <string name="repo_io_error">Грешка при повезивању са репозиторијумом.</string>
+    <string name="repo_enter_url">Ручно унеси URL репозиторијума</string>
 </resources>

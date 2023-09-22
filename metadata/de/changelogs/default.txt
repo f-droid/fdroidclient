@@ -1,8 +1,8 @@
 * Viele Fehlerkorrekturen
-* Repository-Symbole in der Liste der Repositorys anzeigen
+* Repository-Symbole in der Repository-Liste anzeigen
 * Gründe für Anti-Features anzeigen (sofern verfügbar)
 * Unbeaufsichtigte Upgrades ohne Rechteerweiterung (vorerst nur für F-Droid Basic)
 * Anzeige der App-Größe auf dem App-Detailbildschirm (nur im Expertenmodus)
 * Etwas dunklere App-Namen in App-Listen zur besseren Lesbarkeit
-* Offenen/geschlossenen Zustand von "Alle aktualisieren" im Reiter Updates wiederherstellen (@tunedal) 
-* ...
+* Offenen/geschlossenen Zustand von „Alle aktualisieren“ im Updatereiter wiederherstellen (@tunedal)
+* …

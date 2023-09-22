@@ -12,4 +12,4 @@
 
 * Oprava jedné z příčin opakujících se oznámení o aktualizacích (#1271)
 
-* Zajistit, aby F-Droid rozpoznával nightly URL F-Droidu z GitLabu
+...

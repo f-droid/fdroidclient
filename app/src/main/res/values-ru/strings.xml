@@ -29,7 +29,7 @@
     <string name="ok">ОК</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    <string name="repo_add_title">Добавление репозитория</string>
+    <string name="repo_add_title">Добавить новый репозиторий</string>
     <string name="repo_add_add">Добавить</string>
     <string name="cancel">Отмена</string>
     <string name="enable">Включить</string>
@@ -81,9 +81,9 @@
     <string name="enable_proxy_title">Включить HTTP-прокси</string>
     <string name="enable_proxy_summary">Настроить HTTP-прокси для всех запросов</string>
     <string name="proxy_host">Хост прокси</string>
-    <string name="proxy_host_summary">Имя хоста вашего прокси (напр. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Имя хоста прокси (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт прокси</string>
-    <string name="proxy_port_summary">Номера порта вашего прокси (напр. 8118)</string>
+    <string name="proxy_port_summary">Номера порта прокси (напр. 8118)</string>
     <string name="status_download">Загрузка
 \n%2$s / %3$s (%4$d%%) из
 \n%1$s</string>
@@ -105,7 +105,7 @@
     <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
-    <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
+    <string name="repo_confirm_delete_title">Удалить репозиторий\?</string>
     <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.
 \n
 \nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
@@ -130,7 +130,7 @@
     <string name="swap_view_available_networks">Нажмите, чтобы открыть доступные сети</string>
     <string name="open_qr_code_scanner">Открыть сканер QR-кодов</string>
     <string name="swap_welcome">Добро пожаловать в F-Droid!</string>
-    <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас?</string>
+    <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас\?</string>
     <string name="about_source">Исходный код</string>
     <string name="links">Ссылки</string>
     <string name="interval_never">Не обновлять приложения автоматически</string>
@@ -161,7 +161,8 @@
     <string name="empty_installed_app_list">Нет установленных приложений.
 \n
 \nНа вашем устройстве есть приложения, которые недоступны в F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>
-    <string name="empty_can_update_app_list">Поздравляем!\nВаши приложения обновлены.</string>
+    <string name="empty_can_update_app_list">Поздравляем!
+\nВаши приложения обновлены.</string>
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместима</string>
@@ -204,21 +205,19 @@
     <string name="swap_connecting">Подключение</string>
     <string name="loading">Загрузка…</string>
     <string name="install_confirm">необходим доступ к</string>
-    <string name="install_confirm_update">Хотите установить обновление для этого приложения? После обновления оно сможет выполнять следующие действия:</string>
-    <string name="install_confirm_update_system">Хотите установить обновление для этого приложения? После обновления оно сможет выполнять следующие действия:</string>
-    <string name="install_confirm_update_no_perms">Установить обновление этого приложения? На текущих данных это никак не отразится. Специальных прав доступа не требуется.</string>
-    <string name="install_confirm_update_system_no_perms">Установить обновление этого встроенного приложения? На текущих данных это никак не отразится. Специальных прав доступа не требуется.</string>
+    <string name="install_confirm_update">Хотите установить обновление для этого приложения\? После обновления оно сможет выполнять следующие действия:</string>
+    <string name="install_confirm_update_system">Хотите установить обновление для этого приложения\? После обновления оно сможет выполнять следующие действия:</string>
+    <string name="install_confirm_update_no_perms">Установить обновление этого приложения\? На текущих данных это никак не отразится. Специальных прав доступа не требуется.</string>
+    <string name="install_confirm_update_system_no_perms">Установить обновление этого встроенного приложения\? На текущих данных это никак не отразится. Специальных прав доступа не требуется.</string>
     <string name="newPerms">Новые</string>
     <string name="allPerms">Все</string>
     <string name="perm_costs_money">Это может стоить вам денег</string>
-    <string name="uninstall_update_confirm">Установить исходную версию приложения? Все его данные будут удалены.</string>
-    <string name="uninstall_confirm">Удалить приложение?</string>
+    <string name="uninstall_update_confirm">Установить исходную версию приложения\? Все его данные будут удалены.</string>
+    <string name="uninstall_confirm">Удалить приложение\?</string>
     <string name="download_error">Загрузка не удалась!</string>
     <string name="perms_new_perm_prefix">Новые:</string>
     <string name="crash_dialog_title">Произошел сбой F-Droid</string>
-    <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с
-        подробностями, чтобы помочь исправить эту ошибку?
-    </string>
+    <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с подробностями, чтобы помочь исправить эту ошибку\?</string>
     <string name="crash_dialog_comment_prompt">Здесь вы можете добавить дополнительную информацию и комментарии:</string>
     <string name="useTor">Использовать Tor</string>
     <string name="useTorSummary">Перенаправлять трафик через Tor для повышения конфиденциальности. Необходим Orbot</string>
@@ -242,7 +241,7 @@
     <string name="swap_setting_up_wifi">Настройка Wi-Fi…</string>
     <string name="swap_stopping_wifi">Остановка Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Недоступен через Wi-Fi</string>
-    <string name="swap_cant_find_peers">Не можете найти того, кого ищете?</string>
+    <string name="swap_cant_find_peers">Не можете найти того, кого ищете\?</string>
     <string name="swap_send_fdroid">Отправить F-Droid</string>
     <string name="apps">Приложения</string>
     <string name="swap_no_peers_nearby">Не удалось найти людей для обмена.</string>
@@ -429,13 +428,13 @@
     <string name="panic_hide_warning_message">Нажатие тревожной кнопки удалит %1$s из лаунчера. Восстановление возможно только после ввода \"%2$d\" в фейковом приложении %3$s.</string>
     <string name="hiding_calculator">Калькулятор</string>
     <string name="hiding_dialog_title">Скрыть %s сейчас</string>
-    <string name="hiding_dialog_message">Вы уверены, что хотите удалить %1$s из лаунчера? Восстановление возможно только после ввода \"%2$d\" в фейковом приложении %3$s.</string>
+    <string name="hiding_dialog_message">Вы уверены, что хотите удалить %1$s из лаунчера\? Восстановление возможно только после ввода \"%2$d\" в фейковом приложении %3$s.</string>
     <string name="hiding_dialog_warning">Предупреждение: все ярлыки приложений на главном экране также будут удалены и должны быть добавлены вручную.</string>
     <string name="hide_on_long_search_press_title">Скрывать кнопкой поиска</string>
     <string name="hide_on_long_search_press_summary">Длительное нажатие кнопки поиска скроет приложение</string>
     <string name="warning_scaning_qr_code">Ваша камера не поддерживает автофокус. Сканирование кода может быть затруднено.</string>
     <string name="repo_add_mirror">Добавить зеркало</string>
-    <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало?</string>
+    <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало\?</string>
     <string name="show_anti_feature_apps">Разрешить приложения с анти-функциями</string>
     <string name="show_anti_feature_apps_on">Показывать приложения, которые требуют анти-функций</string>
     <string name="force_touch_apps">Включить приложения, требующие сенсорного экрана</string>
@@ -559,4 +558,19 @@
     <string name="antinsfwlist">Это приложение содержит контент, который не должен публиковаться или быть доступным повсеместно</string>
     <string name="repo_last_update_downloaded">Последнее обновление загружено</string>
     <string name="app_error_open">Не удалось запустить приложение.</string>
+    <string name="repo_add_new_title">Добавить репозиторий</string>
+    <string name="repo_add_new_mirror">Добавить как новое зеркало</string>
+    <string name="repo_exists">Этот репозиторий уже был добавлен.</string>
+    <string name="repo_io_error">Ошибка подключения к репозиторию.</string>
+    <string name="repo_intro">Репозиторий - это дополнительный источник приложений. Сторонние репозитории, которые вы сюда добавляете, имеют иные стандарты, нежели созданные F-Droid.
+\n
+\nУбедитесь, что добавляемый вами репозиторий заслуживает доверия.</string>
+    <string name="repo_invalid">Недопустимый репозиторий.
+\n
+\nСвяжитесь с сопровождающим и сообщите ему о проблеме.</string>
+    <string name="swap_banner_message">Для обмена приложениями включите Wi-Fi и подключитесь к той же сети, что и ваш друг.</string>
+    <string name="turn_on_wifi">Включить Wi-Fi</string>
+    <string name="repo_state_fetching">Извлечение репозитория…</string>
+    <string name="repo_state_adding">Добавление репозитория…</string>
+    <string name="repo_enter_url">Введите URL репозитория вручную</string>
 </resources>

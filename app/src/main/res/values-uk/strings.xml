@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Нову версію підписано іншим ключем, ніж поточну. Щоб встановити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде стерто всі внутрішні дані в застосунку)</string>
+    <string name="SignatureMismatch">Нову версію підписано іншим ключем, ніж поточну. Щоб установити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде стерто всі внутрішні дані в застосунку)</string>
     <string name="version">Версія</string>
     <string name="cache_downloaded">Зберігати кешовані застосунки</string>
     <string name="updates">Оновлення</string>
@@ -49,8 +49,8 @@
     <string name="unstable_updates">Нестабільні оновлення</string>
     <string name="interval_never">Не оновлювати застосунки автоматично</string>
     <string name="downloading">Завантаження…</string>
-    <string name="app_details">Деталі застосунку</string>
-    <string name="no_such_app">Не знайдено застосунку.</string>
+    <string name="app_details">Подробиці застосунку</string>
+    <string name="no_such_app">Застосунок не знайдено.</string>
     <string name="about_source">Джерельний код</string>
     <string name="app_inst_known_source">Установлено (з %s)</string>
     <string name="app_inst_unknown_source">Установлено (з невідомого джерела)</string>
@@ -70,15 +70,15 @@
     <string name="skip">Пропустити</string>
     <string name="proxy">Проксі</string>
     <string name="download_error">Помилка завантаження!</string>
-    <string name="uninstall_confirm">Видалити цю програму?</string>
+    <string name="uninstall_confirm">Видалити цей застосунок\?</string>
     <string name="local_repo_name">Назва вашого локального репозиторію</string>
     <string name="local_repo_https_on">Використовувати шифроване HTTPS:// з\'єднання для локального репозиторію</string>
     <string name="overwrite">Перезаписати</string>
     <string name="bad_fingerprint">Неправильний відбиток</string>
     <string name="invalid_url">Це не дійсна URL-адреса.</string>
     <string name="antitracklist">Цей застосунок відстежує та повідомляє про ваші дії</string>
-    <string name="antinonfreedeplist">Цей застосунок залежить від інших пропрієтарних застосунків</string>
-    <string name="expert_on">Показати додаткові відомості та ввімкнути розширені параметри</string>
+    <string name="antinonfreedeplist">Застосунок залежить від інших невільних застосунків</string>
+    <string name="expert_on">Показати додаткові відомості та ввімкнути розширені налаштування</string>
     <string name="local_repo">Локальний репозиторій</string>
     <string name="deleting_repo">Видалення поточного репозиторію…</string>
     <string name="adding_apks_format">Додавання %s до репозиторію…</string>
@@ -146,7 +146,7 @@
     <string name="install_error_unknown">Не вдалося встановити через невідому помилку</string>
     <string name="swap_nfc_description">Якщо у вашого друга є F-Droid і у вас обох включений NFC, прикладіть пристрої один до одного.</string>
     <string name="swap_no_wifi_network">Мережа відсутня</string>
-    <string name="swap_confirm_connect">Бажаєте отримати застосунки з %1$s зараз?</string>
+    <string name="swap_confirm_connect">Хочете отримати застосунки з %1$s зараз\?</string>
     <string name="swap_dont_show_again">Не показувати це знову</string>
     <string name="swap_visible_bluetooth">Видимий через Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Налаштовую Bluetooth…</string>
@@ -163,19 +163,19 @@
     <string name="antiupstreamnonfreelist">Частина початкового коду невільна</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
-    <string name="show_incompat_versions_on">Показувати версії застосунків, які несумісні з цим пристроєм</string>
+    <string name="show_incompat_versions_on">Показувати несумісні з цим пристроєм версії застосунків</string>
     <string name="local_repo_running">F-Droid готовий до обміну</string>
     <string name="writing_index_jar">Запис підписаного файлу індексу (index.jar)…</string>
     <string name="linking_apks">Включення APK-файлів до репозиторію…</string>
     <string name="all_other_repos_fine">Всі інші репозиторії не містять помилок.</string>
-    <string name="no_handler_app">Ви не маєте застосунку для обробки %s.</string>
+    <string name="no_handler_app">У вас немає застосунку для обробки %s.</string>
     <string name="repo_num_apps">Кількість застосунків</string>
     <string name="repo_fingerprint">Відбиток ключа підпису (SHA-256)</string>
     <string name="unsigned_description">Це означає, що список застосунків не може бути перевірено. Ви маєте бути обачними з застосунками, які завантажуєте з непідписаних джерел.</string>
     <string name="repo_not_yet_updated">Цей репозиторій ще не використовувався. Увімкніть його, щоб побачити розміщені в ньому застосунки.</string>
     <string name="repo_confirm_delete_body">Видалення репозиторію означає, що застосунки з нього не будуть доступними.
 \n
-\nПримітка: Всі раніше встановленні застосунки залишаться на вашому пристрої.</string>
+\nПримітка: Усі раніше встановленні застосунки залишаться на вашому пристрої.</string>
     <string name="repo_disabled_notification">%1$s вимкнено.
 \n
 \nВам необхідно ввімкнути репозиторій, щоб встановлювати застосунки з нього.</string>
@@ -197,15 +197,15 @@
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
     <string name="swap_nearby">Ближній обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
-    <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
-    <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого застосунку\? Наявні дані втрачено не буде. Оновлений застосунок отримає доступ до:</string>
-    <string name="install_confirm_update_no_perms">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані втрачено не буде. Спеціальний доступ не потрібен.</string>
-    <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цього вбудованого застосунку\? Ваші наявні дані не зникнуть. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані не втратяться. Оновлений застосунок отримає доступ до:</string>
+    <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого застосунку\? Наявні дані не втратяться. Оновлений застосунок отримає доступ до:</string>
+    <string name="install_confirm_update_no_perms">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані не втратяться. Спеціальний доступ не потрібен.</string>
+    <string name="install_confirm_update_system_no_perms">Хочете встановити оновлення для цього вбудованого застосунку\? Наявні дані не втратяться. Спеціальний доступ не потрібен.</string>
     <string name="uninstall_update_confirm">Відновити заводську версію цього застосунку\? Усі дані буде вилучено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного застосунку не встановлено.
 \n
-\nНа вашому пристрої є застосунки, що не доступні в F-Droid. Це може бути тому, що вам потрібно оновити свої репозиторії, або репозиторії не містять доступних застосунків.</string>
+\nНа вашому пристрої є застосунки, недоступні в F-Droid. Можливо вам потрібно оновити свої репозиторії, або репозиторії не містять цих застосунків.</string>
     <string name="swap_join_same_wifi_desc">Для обміну через Wi-Fi, переконайтеся, що ви під\'єднані до спільної мережі. Якщо ж ви не маєте доступу до спільної мережі, єдиний спосіб, це створити власну Wi-Fi точку доступу.</string>
     <string name="swap_join_this_hotspot">Допоможіть вашим друзям з\'єднатися з вашою точкою доступу</string>
     <string name="swap_scan_or_type_url">Один з вас повинен сканувати код, чи ввести URL іншого у браузері.</string>
@@ -226,7 +226,7 @@
     <string name="menu_settings">Параметри</string>
     <string name="permissions">Дозволи</string>
     <string name="category_Connectivity">Зв\'язок</string>
-    <string name="touch_to_configure_local_repo">Натиснути для перегляду деталей та дозволити іншим обмінюватись вашими застосунками.</string>
+    <string name="touch_to_configure_local_repo">Торкніться, щоб переглянути подробиці та дозволити іншим обмінюватись вашими застосунками.</string>
     <string name="login_title">Необхідна авторизація</string>
     <string name="login_name">Ім\'я користувача</string>
     <string name="login_password">Пароль</string>
@@ -235,11 +235,11 @@
     <string name="perms_description_app">Надано %1$s.</string>
     <string name="about_license">Ліцензія</string>
     <string name="empty_search_available_app_list">Немає відповідних застосунків.</string>
-    <string name="status_inserting_apps">Збереження деталей застосунку</string>
+    <string name="status_inserting_apps">Збереження подробиць застосунку</string>
     <string name="crash_dialog_title">Збій F-Droid</string>
-    <string name="crash_dialog_text">Сталася неочікувана помилка, змусивши застосунок зупинитися. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду?</string>
+    <string name="crash_dialog_text">Сталася неочікувана помилка, змусивши застосунок зупинитися. Хочете надіслати листа з подробицями, які допоможуть нам усунути цю ваду\?</string>
     <string name="crash_dialog_comment_prompt">Можете ввести додаткові відомості та коментарі тут:</string>
-    <string name="antinonfreeassetslist">Цей застосунок містить не вільні ресурси</string>
+    <string name="antinonfreeassetslist">Цей застосунок містить невільні ресурси</string>
     <string name="menu_email">Написати листа авторові</string>
     <string name="useTor">Використовувати Tor</string>
     <string name="useTorSummary">Примусове завантаження трафіку через мережу Tor для покращення приватності. Потрібен Orbot</string>
@@ -304,17 +304,17 @@
     <string name="app_list__name__downloading_in_progress">Завантаження %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s встановлено</string>
     <string name="update_all">Оновити все</string>
-    <string name="updates__hide_updateable_apps">Приховати застосунки</string>
+    <string name="updates__hide_updateable_apps">Сховати застосунки</string>
     <string name="updates__show_updateable_apps">Показати застосунки</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Завантажити оновлення для %1$d застосунку.</item>
         <item quantity="few">Завантажити оновлення для %1$d застосунків.</item>
-        <item quantity="many">Завантажити оновлення для %1$d застосункiв.</item>
-        <item quantity="other">Завантажити оновлення для %1$d застосункiв.</item>
+        <item quantity="many">Завантажити оновлення для %1$d застосунків.</item>
+        <item quantity="other">Завантажити оновлення для %1$d застосунків.</item>
     </plurals>
     <string name="details_new_in_version">Нове у версії %s</string>
     <string name="antifeatureswarning">Цей застосунок містить функції, які можуть бути вам не до вподоби.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Немає Інтернету? Отримуйте застосунки від людей поруч із вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Немає інтернету\? Отримуйте застосунки від людей поруч із вами!</string>
     <string name="nearby_splash__find_people_button">Знайти людей поблизу</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Оновлено %1$d день тому</item>
@@ -338,7 +338,7 @@
     <string name="force_old_index">Примусово старий формат індексу</string>
     <string name="force_old_index_summary">У разі виникнення помилок або проблем сумісності використовуйте XML індекс застосунку</string>
     <string name="latest__empty_state__no_recent_apps">Недавніх застосунків не виявлено</string>
-    <string name="latest__empty_state__never_updated">Щойно ваш перелік застосунків буде оновлено, найновіші застосунки з\'являться тут</string>
+    <string name="latest__empty_state__never_updated">Щойно ваш перелік застосунків буде оновлено, найновіші з них з\'являться тут</string>
     <string name="latest__empty_state__no_enabled_repos">Щойно ви увімкнете репозиторій та оновите його, найновіші застосунки з\'являться тут</string>
     <string name="categories__empty_state__no_categories">Немає категорій для показу</string>
     <string name="download_404">Запитаний файл не знайдено.</string>
@@ -394,17 +394,17 @@
     <string name="app_installed_media">Файл встановлено в %s</string>
     <string name="app_permission_storage">F-Droid потребує дозволу на доступ до сховища для встановлення. Будь ласка, надайте дозвіл на наступному екрані, щоб продовжити встановлення.</string>
     <string name="app_list_download_ready">Завантажено, готовий до встановлення</string>
-    <string name="status_inserting_x_apps">Збереження деталей застосунку (%1$d/%2$d) з %3$s</string>
+    <string name="status_inserting_x_apps">Збереження подробиць застосунку (%1$d/%2$d) з %3$s</string>
     <string name="app_list__dismiss_app_update">Оновлення ігнорується</string>
     <string name="app_list__dismiss_vulnerable_app">Вразливість ігнорується</string>
     <string name="app_list__dismiss_downloading_app">Завантаження скасовано</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Ми виявили вразливість з %1$s. Ми рекомендуємо видалити цей застосунок негайно.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Ми виявили вразливість з %1$s. Ми радимо видалити цей застосунок негайно.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Ми виявили вразливість з %1$s. Ми рекомендуємо оновлення до найновішої версії негайно.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Знехтувати</string>
     <string name="privacy">Приватність</string>
     <string name="preventScreenshots_title">Запобігання зніманню екрана</string>
     <string name="panic_app_unknown_app">невідомий застосунок</string>
-    <string name="panic_app_setting_summary">Жодного застосунку не встановлено</string>
+    <string name="panic_app_setting_summary">Жодного застосунку не налаштовано</string>
     <string name="panic_app_setting_none">Жоден</string>
     <string name="allow">Дозволити</string>
     <string name="panic_exit_title">Вийти з застосунку</string>
@@ -451,22 +451,22 @@
     <string name="send_install_history">Надіслати історію встановлення</string>
     <string name="send_history_csv">Історія встановлень %s як CSV file</string>
     <string name="send_version_and_uuid_summary">Включити версію цього застосунку та випадковий унікальний ID. Зміни застосуються після перезапуску.</string>
-    <string name="send_installed_apps">Поширити встановлені застосунки</string>
-    <string name="send_installed_apps_csv">Застосунки, встановлені через F-Droid, як файл CSV</string>
+    <string name="send_installed_apps">Поділитися встановленими застосунками</string>
+    <string name="send_installed_apps_csv">Застосунки встановлені через F-Droid як файл CSV</string>
     <string name="updates_disabled_by_settings">Усі оновлення вимкнено у налаштуваннях мобільного інтернету/WiFi</string>
     <string name="repo_exists_add_mirror">Це копія файлу %1$s, додати її як дзеркало файлу\?</string>
     <string name="menu_open">Відкрити</string>
     <string name="antidisabledalgorithmlist">Цей застосунок має слабкий підпис безпеки</string>
     <string name="antiknownvulnlist">Цей застосунок містить знану вразливість безпеки</string>
     <string name="antinosourcesince">Початковий код вже недоступний, оновлення неможливе.</string>
-    <string name="show_anti_feature_apps">Включити застосунки з небажаними можливостями</string>
-    <string name="show_anti_feature_apps_on">Показати застосунки, які для роботи потребують небажані можливості</string>
-    <string name="force_touch_apps">Включити застосунки, які потребують сенсорний екран</string>
-    <string name="force_touch_apps_on">Показати застосунки, які потребують сенсорний екран, незалежно від апаратної підтримки</string>
-    <string name="panic_hide_warning_message">У разі небезпеки, це усуне %1$s із запускача. Лише введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
-    <string name="hiding_dialog_message">Ви певні що хочете прибрати %1$s із запускача\? Тільки введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
-    <string name="hiding_dialog_warning">Увага: всі піктограми застосунку на домашньому екрані буде вилучено, їх необхідно буде повернути вручну.</string>
-    <string name="hide_on_long_search_press_summary">Затиснення кнопки пошуку приховає застосунок</string>
+    <string name="show_anti_feature_apps">Включити застосунки з небажаними функціями</string>
+    <string name="show_anti_feature_apps_on">Показати застосунки, які потребують небажані можливості для роботи</string>
+    <string name="force_touch_apps">Включити застосунки, яким потрібен сенсорний екран</string>
+    <string name="force_touch_apps_on">Показати застосунки, яким потрібен сенсорний екран, незалежно від апаратної підтримки</string>
+    <string name="panic_hide_warning_message">У разі небезпеки, це прибере %1$s з панелі запуску. Лише введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
+    <string name="hiding_dialog_message">Ви певні що хочете прибрати %1$s з панелі запуску\? Лише введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
+    <string name="hiding_dialog_warning">Увага: усі піктограми застосунку на домашньому екрані буде вилучено, їх необхідно буде повернути вручну.</string>
+    <string name="hide_on_long_search_press_summary">Затиснення кнопки пошуку сховає застосунок</string>
     <string name="swap_toast_invalid_url">URL для обміну є хибним: %1$s</string>
     <string name="about_forum">Форум підтримки</string>
     <string name="app_suggested">Запропоновано</string>
@@ -490,7 +490,7 @@
     <string name="menu_select_for_wipe">Виберіть для очищення</string>
     <string name="try_again">Спробувати знову</string>
     <string name="panic_will_be_wiped">Буде видалено зі всіма даними</string>
-    <string name="panic_apps_to_uninstall">Застосунки, які потрібно видалити та їх дані</string>
+    <string name="panic_apps_to_uninstall">Застосунки та їх дані, які потрібно видалити</string>
     <string name="panic_add_apps_to_uninstall">Додати застосунки, які потрібно видалити разом з даними</string>
     <string name="panic_reset_repos_title">Скинути репозиторії</string>
     <string name="panic_reset_repos_summary">Примусове повернення репозиторію до початкового стану</string>
@@ -508,7 +508,7 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Показує сповіщення про оновлення застосунку та репозиторію.</string>
     <string name="notification_channel_updates_title">Оновлення</string>
-    <string name="notification_channel_swaps_description">Показує сповіщення про P2P обмін застосунками.</string>
+    <string name="notification_channel_swaps_description">Показує сповіщення про обмін одноранговими застосунками.</string>
     <string name="notification_channel_swaps_title">Обміни</string>
     <string name="notification_channel_installs_description">Показує сповіщення про встановлення застосунку.</string>
     <string name="notification_channel_installs_title">Установлення</string>
@@ -550,8 +550,23 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Про F-Droid Basic</string>
     <string name="category_Nightly">Збірки Nightly</string>
-    <string name="antinsfwlist">Цей застосунок містить матеріали, які не повинні бути публічними або видимим повсюдно</string>
-    <string name="warning_target_sdk">Цей застосунок створено для старої версії Android і не може оновлюватися автоматично.</string>
+    <string name="antinsfwlist">Цей застосунок містить матеріали, які не повинні бути публічними або видимими повсюдно</string>
+    <string name="warning_target_sdk">Цей застосунок створено для старішої версії Android і не може оновлюватися автоматично.</string>
     <string name="repo_last_update_downloaded">Останнє оновлення завантажено</string>
     <string name="app_error_open">Не вдалося запустити застосунок.</string>
+    <string name="repo_add_new_title">Додати репозиторій</string>
+    <string name="repo_add_new_mirror">Додати як нове дзеркало</string>
+    <string name="repo_state_fetching">Отримання репозиторію…</string>
+    <string name="repo_state_adding">Додавання репозиторію…</string>
+    <string name="repo_enter_url">Введіть URL-адресу репозиторію вручну</string>
+    <string name="repo_exists">Цей репозиторій вже додано.</string>
+    <string name="repo_io_error">Помилка під\'єднання до репозиторію.</string>
+    <string name="repo_invalid">Недійсний репозиторій.
+\n
+\nЗверніться до супровідника і повідомте йому про проблему.</string>
+    <string name="swap_banner_message">Щоб обмінятися застосунками, увімкніть Wi-Fi та під\'єднайтеся до тієї самої мережі, що й ваш друг.</string>
+    <string name="turn_on_wifi">Увімкнути Wi-Fi</string>
+    <string name="repo_intro">Репозиторій — це додаткове джерело застосунків. Сторонні застосунки, які ви додаєте сюди, мають інші стандарти, ніж ті, що надають застосунки, створені самим F-Droid.
+\n
+\nПереконайтесь, що репозиторій, який ви додаєте, заслуговує на довіру.</string>
 </resources>

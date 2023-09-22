@@ -537,4 +537,19 @@
     <string name="warning_target_sdk">Bu uygulama Android\'in eski bir sürümü için geliştirilmiştir ve otomatik olarak güncellenemez.</string>
     <string name="app_error_open">Uygulama başlatılamadı.</string>
     <string name="repo_last_update_downloaded">Son güncelleme indirildi</string>
+    <string name="turn_on_wifi">Wifi\'yi aç</string>
+    <string name="repo_state_adding">Depo ekleniyor…</string>
+    <string name="repo_invalid">Geçersiz depo.
+\n
+\nGeliştirencisi iletişime geçin ve onlara sorun hakkında bilgi verin.</string>
+    <string name="repo_exists">Bu depo zaten eklenmiş.</string>
+    <string name="repo_add_new_title">Depo ekle</string>
+    <string name="repo_state_fetching">Depo getiriliyor…</string>
+    <string name="repo_io_error">Depoya bağlanırken hata oluştu.</string>
+    <string name="repo_enter_url">Depo URL\'sini manuel olarak girin</string>
+    <string name="repo_add_new_mirror">Yeni yansıma olarak ekle</string>
+    <string name="repo_intro">Depo, ek bir uygulama kaynağıdır. Buraya eklediğiniz üçüncü tarafların standartları, F-Droid\'in kendisi tarafından oluşturulan uygulamaları sağlayanlardan farklı standartlara sahiptir.
+\n
+\nLütfen eklediğiniz deponun güvenilir olduğundan emin olun.</string>
+    <string name="swap_banner_message">Uygulamaları paylaşmak için Wi-Fi\'nizi açın ve arkadaşınızla aynı ağa bağlanın.</string>
 </resources>

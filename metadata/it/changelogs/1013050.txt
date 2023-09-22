@@ -1,4 +1,4 @@
-* Supporto dei temi legato ai temi Android integrati (@proletarius101)
+* Supporto dei temi legato ai temi Android integrati
 
 * Nuove notifiche nel banner superiore: "Nessuna connessione" e "Nessun dato o Wi-Fi abilitato"
 
@@ -6,12 +6,12 @@
 
 * Rimossi aggiornamenti ripetuti della libreria Trichrome
 
-* Altre modifiche per seguire il Material Design (@proletarius101)
+* Altre modifiche per seguire il Material Design
 
-* Migliorato il badge OpenCollective (@ConnyDuck)
+* Migliorato il badge OpenCollective
 
-* Rifatto il caricamento delle icone con Glide (@proletarius101)
+* Rifatto il caricamento delle icone con Glide
 
-* Nuova icona adattiva (@12people)
+* Nuova icona adattiva
 
-* Modernizzazione dei colori (@Isira-Seneviratne)
+* Modernizzazione dei colori

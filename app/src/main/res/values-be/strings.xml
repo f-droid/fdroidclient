@@ -560,4 +560,19 @@
     <string name="about_title_basic">Пра F-Droid Basic</string>
     <string name="antinsfwlist">Гэта праграма змяшчае змесціва, якое не павінна быць апублікаваным або бачным усюды</string>
     <string name="app_error_open">Не атрымалася запусціць праграму.</string>
+    <string name="turn_on_wifi">Уключыць wifi</string>
+    <string name="repo_state_adding">Дадаецца рэпазіторый…</string>
+    <string name="repo_invalid">Неіснуючы рэпазіторый.
+\n
+\nЗ\'яднайцеся з адміністратарам рэпазіторыя і паведаміце яму пра памылку.</string>
+    <string name="repo_exists">Гэты рэпазіторый ужо існуе.</string>
+    <string name="repo_add_new_title">Дадаць рэпазіторый</string>
+    <string name="repo_state_fetching">Атрыманне рэпазіторыя…</string>
+    <string name="repo_io_error">Памылка падключэння да рэпазіторыя.</string>
+    <string name="repo_enter_url">Увесці URL-спасылку на рэпазіторый уласнаручна</string>
+    <string name="repo_add_new_mirror">Дадаць як новае люстэрка</string>
+    <string name="repo_intro">Рэпазіторый гэта дадатковая крыніца праграм. Неафіцыйныя рэпазіторыі якія вы дадаеце сюды маюць розныя сандарты чым тыя якія збіраюцца праз F-Droid.
+\n
+\nКалі ласка упэўніцеся, што можаце давяраць дабаўленаму вамі рэпазіторыю.</string>
+    <string name="swap_banner_message">Каб падзяліцца праграмамі, запусціце Wi-Fi і падлучыцеся да адной і той жа сеткі як і сябар.</string>
 </resources>
