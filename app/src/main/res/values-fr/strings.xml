@@ -11,8 +11,8 @@
     <string name="update_interval">Intervalle de mise à jour automatique</string>
     <string name="notify">Afficher les mises à jour disponibles</string>
     <string name="notify_on">Afficher une notification quand des mises à jour sont disponibles</string>
-    <string name="system_installer">Extension de privilège</string>
-    <string name="system_installer_on">Utiliser l\'extension de privilège pour installer, mettre à jour et supprimer des paquets</string>
+    <string name="system_installer">Extension Privilégiée</string>
+    <string name="system_installer_on">Utiliser l’Extension Privilégiée pour installer, mettre à jour et supprimer des paquets</string>
     <string name="local_repo_name">Nom de votre dépôt local</string>
     <string name="local_repo_name_summary">Le nom public de votre dépôt local : %s</string>
     <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
@@ -569,7 +569,7 @@
     <string name="repo_state_fetching">Récupération du dépôt …</string>
     <string name="repo_state_adding">Ajout d\'un dépôt …</string>
     <string name="repo_enter_url">Saisissez l\'URL du dépôt</string>
-    <string name="repo_exists">Ce repo a déjà été ajouté.</string>
+    <string name="repo_exists">Ce dépôt a déjà été ajouté.</string>
     <string name="repo_invalid">Dépôt invalide.
 \n
 \nContactez le responsable pour lui faire part de ce problème.</string>
