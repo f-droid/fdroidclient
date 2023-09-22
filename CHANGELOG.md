@@ -1,3 +1,19 @@
+### 1.18.0-alpha0 (2023-09-22)
+
+* Fixed using repos and mirrors from External Storage on recent Android releases
+
+* Improved WiFi management in Nearby
+
+* The navigation bar now remembers its position even when F-Droid restarts
+
+* New language: Swahili
+
+* Fix downloading images for repos still using index-v1
+
+* Fix crashes related to swap, managing repos and more
+
+* The Downgrade button was removed, Android no longer allows that
+
 ### 1.17.0 (2023-07-20)
 
 * Use simple list layouts in F-Droid Basic's Latest Tab

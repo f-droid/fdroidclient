@@ -1,8 +1,7 @@
-* Many bug fixes
-* Show repository icons in list of repositories
-* Show reasons for Anti-Features (where available)
-* Unattended upgrades without privileged extension (F-Droid Basic only for now)
-* Show app size on app details screen (expert mode only)
-* Slightly darker app names in app lists to improve readability
-* Restore open/closed state of "Update All" in Updates tab (@tunedal)
-* Restore active tab between app restarts
+* Fixed using repos and mirrors from External Storage on recent Android releases
+* Improved WiFi management in Nearby
+* The navigation bar now remembers its position even when F-Droid restarts
+* New language: Swahili
+* Fix downloading images for repos still using index-v1
+* Fix crashes related to swap, managing repos and more
+* The Downgrade button was removed, Android no longer allows that
