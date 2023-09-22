@@ -202,4 +202,14 @@
         <item quantity="one">Pakua sasisho ya apu ya %1$d.</item>
         <item quantity="other">Pakua masasisho ya api za %1$d.</item>
     </plurals>
+    <string name="updates">Masasisho</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">Michoro</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Midia-anuai</string>
+    <string name="local_repo_name_summary">Kichwa kilichotangazwa cha kihifadhi cha kifaa chako: %s</string>
+    <string name="main_menu__swap_nearby">Inayokaribia</string>
+    <string name="pref_language_default">Chaguomsingi wa Mfumo</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Uunganishaji</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Usanidi</string>
+    <string tools:ignore="UnusedResources" name="category_Games">Michezo</string>
+    <string tools:ignore="UnusedResources" name="category_Navigation">Urambazaji</string>
 </resources>
