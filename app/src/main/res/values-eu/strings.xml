@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria
         instalatzeko, aurretik zaharra desinstalatu beharra dago. Mesedez, egizu eta saiatu berriro. (Kontutan izan
         desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)
@@ -547,9 +547,31 @@
     <string name="antiknownvuln">Ahultasun ezaguna</string>
     <string name="antinosource">Jatorrizko kodea ez dago erabilgarri</string>
     <string name="antiothers">Beste anti-ezaugarriak</string>
-    <string name="antinsfw">Aplikazio honek edonon argitaratu edo ikusgai egon behar ez den edukia du</string>
+    <string name="antinsfw">Ez da segurua lanerako</string>
     <string name="menu_release_channel_beta">Beta eguneraketak baimendu</string>
     <string name="latest__empty_state__upgrading">Datu-basearen eguneraketak aplikatzen…</string>
     <string name="use_ipfs_gateways">Erabili IPFS atebideak</string>
     <string name="use_ipfs_gateways_summary">Deskargatu fitxategiak IPFSren ispiluetatik, biltegiarekin bateragarria bada.</string>
+    <string name="turn_on_wifi">Aktibatu wifia</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">F-Droid Basic-i buruz</string>
+    <string name="repo_last_update_downloaded">Azken eguneratzea deskargatu da</string>
+    <string name="app_error_open">Ezin izan da abiarazi aplikazioa.</string>
+    <string name="antinsfwlist">Aplikazio honek edonon argitaratu edo ikusgai egon behar ez den edukia du</string>
+    <string name="repo_intro">Biltegi bat aplikazioen iturri gehigarria da. Hemen gehitzen dituzun hirugarrenen biltegiek estandar desberdinak dituzte F-Droidek berak sortutako aplikazioak eskaintzen dituztenek baino.
+\n
+\nMesedez, ziurtatu gehitzen ari zaren biltegia fidagarria dela.</string>
+    <string name="repo_enter_url">Sartu biltegiaren URLa eskuz</string>
+    <string name="swap_banner_message">Aplikazioak trukatzeko, abiarazi Wi-Fi eta konektatu zure lagunaren sare berera.</string>
+    <string name="warning_target_sdk">Aplikazio hau Android bertsio zaharrago baterako sortu zen eta ezin da automatikoki eguneratu.</string>
+    <string name="repo_add_new_title">Gehitu biltegia</string>
+    <string name="repo_add_new_mirror">Gehitu ispilu berri gisa</string>
+    <string name="repo_state_fetching">Biltegia lortzen…</string>
+    <string name="repo_state_adding">Biltegia gehitzen…</string>
+    <string name="repo_exists">Biltegi hau dagoeneko gehitu da.</string>
+    <string name="repo_invalid">Biltegi baliogabea.
+\n
+\nJarri harremanetan administratzailearekin eta eman arazoaren berri.</string>
+    <string name="repo_io_error">Errore bat gertatu da biltegira konektatzean.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">nightly bertsioa</string>
 </resources>
