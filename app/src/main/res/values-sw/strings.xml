@@ -179,12 +179,12 @@
     <string name="menu_show_install_history">Onyesha historia ya msimiko</string>
     <string name="latest__empty_state__no_recent_apps">Hakuna api za hivi karibuni zilizopatikana</string>
     <string name="categories__empty_state__no_categories">Hakuna makundi yakuonyesha</string>
-    <string name="preference_category__my_apps">Api Yangu</string>
+    <string name="preference_category__my_apps">Api Zangu</string>
     <string name="details_new_in_version">Mapya kwa toleo la %s</string>
     <string name="antifeatureswarning">Apu hii ina sifa usizopendelea.</string>
     <string name="antiads">Matangazo</string>
     <string name="app_details__no_versions__no_compatible_signers">Hakuna matoleo iliyo na sahihi inayoambatana</string>
-    <string name="display">Maonyesho</string>
+    <string name="display">Onyesho</string>
     <string name="copying_icons">Kunakili ikoni ya apu kwenye ghala…</string>
     <string name="app_details__no_versions__none_compatible_with_device">Hakuna matoleo yanayoambatana na kifaa hiki</string>
     <string name="search_hint">Tafuta api</string>
@@ -206,7 +206,7 @@
     <string tools:ignore="UnusedResources" name="category_Graphics">Michoro</string>
     <string tools:ignore="UnusedResources" name="category_Multimedia">Midia-anuai</string>
     <string name="local_repo_name_summary">Jina linalotangazwa la ghala la kifaa chako: %s</string>
-    <string name="main_menu__swap_nearby">Inayokaribia</string>
+    <string name="main_menu__swap_nearby">Iliyokaribia</string>
     <string name="pref_language_default">Chaguomsingi wa Mfumo</string>
     <string tools:ignore="UnusedResources" name="category_Connectivity">Uunganishaji</string>
     <string tools:ignore="UnusedResources" name="category_Development">Usanidi</string>
@@ -226,9 +226,9 @@
     <string name="menu_select_for_wipe">Chagua ili ifutwe</string>
     <string name="menu_downgrade">Shusha daraja</string>
     <string name="antitrack">Ufuatiliaji</string>
-    <string name="antinonfreeassets">Rasilimali isyo huru</string>
-    <string name="antiknownvuln">Kasoro linalojulikana</string>
-    <string name="antinsfw">Yenye maudhui machafu</string>
+    <string name="antinonfreeassets">Rasilimali Isiyo Huru</string>
+    <string name="antiknownvuln">Kasoro Linalojulikana</string>
+    <string name="antinsfw">Yenye Maudhui Machafu</string>
     <string name="antinonfreedeplist">Apu hii inategemea api zisizo huru</string>
     <string name="antinsfwlist">Apu hii ina maudhui ambayo haipaswi kuchapishwa au kuonyeshwa kila mahali</string>
     <string name="expert">Hali ya ustadi</string>
@@ -253,8 +253,8 @@
     <string name="menu_source">Msimbo Chanzo</string>
     <string name="latest__empty_state__upgrading">Inaboresha kihifadhidata…</string>
     <string name="antifeatures">Vipengele visivyopendelewa</string>
-    <string name="antinonfreead">Vifaa vya Nyongeza Visivyo vya Bure</string>
-    <string name="antinonfreenet">Huduma za Mtandao Zisizo vya Bure</string>
+    <string name="antinonfreead">Nyongeza Zisizo Huru</string>
+    <string name="antinonfreenet">Huduma za Mtandao Zisizo Huru</string>
     <string name="antinosource">Msimbo Chanzo Haupatikani Tena</string>
     <string name="antiothers">Vipengele Vingine Visivyopendelewa</string>
     <string name="antinonfreeadlist">Apu hii inakuza vifaa vya nyongeza visivyo vya bure</string>
@@ -270,7 +270,7 @@
     <string name="try_again">Jaribu tena</string>
     <string name="panic_app_dialog_message">Una uhakikia kuwa untaka kukubalia %1$s kuanzisha vitendo vya uharibifu vya kitufe cha hofu\?</string>
     <string name="panic_settings">Mipangilio ya kitufe cha hofu</string>
-    <string name="panic_exit_title">Toka kwa apu</string>
+    <string name="panic_exit_title">Toka kwenye apu</string>
     <string name="panic_settings_summary">Hatua za kuchukuliwa wakati wa dharura</string>
     <string name="panic_exit_summary">Apu hii itafungwa</string>
     <string name="panic_destructive_actions">Vitendo vya Uharibifu</string>
@@ -285,4 +285,272 @@
     <string name="panic_app_dialog_title">Thibitisha apu ya hofu</string>
     <string name="allow">Kubali</string>
     <string name="panic_hide_title">Ficha %s</string>
+    <string name="global_error_updating_repos">Hitilafu wakati wa kusasisha: %s</string>
+    <string name="no_permissions">Hakuna ruhusa</string>
+    <string name="status_download">Kupakua
+\n%2$s / %3$s (%4$d%%) kutoka
+\n%1$s</string>
+    <string name="status_download_unknown_size">Kupakua
+\n%2$s kutoka
+\n%1$s</string>
+    <string name="hide_on_long_search_press_summary">Kubonyeza kitufe cha utafutaji kwa muda mrefu kutaficha apu</string>
+    <string name="download_404">Faili iliyoombwa haikupatikana.</string>
+    <string name="banner_updating_repositories">Inasasisha maghala...</string>
+    <string name="banner_no_internet">Hakuna intaneti</string>
+    <string name="banner_no_data_or_wifi">Hakuna Data au WiFi iliyowezeshwa</string>
+    <string name="status_connecting_to_repo">Inaunganisha kwa
+\n%1$s</string>
+    <string name="status_inserting_x_apps">Inahifadhi maelezo ya apu (%1$d/%2$d) kutoka %3$s</string>
+    <string name="repos_unchanged">Maghala yote yamesasishwa</string>
+    <string name="all_other_repos_fine">Maghala mengine yote hayakuleta hitilafu.</string>
+    <string name="repo_confirm_delete_title">Ondoa Ghala\?</string>
+    <string name="repo_confirm_delete_body">Kuondoa ghala inamaanisha kuwa api kutoka kwake hazitapatikana tena.
+\n
+\nKumbuka: Api zote zilizosakinishwa hapo awali zitabaki kwenye kifaa chako.</string>
+    <string name="antidisabledalgorithm">Imesahihishwa Kutumia Kanuni Isiyo Salama</string>
+    <string name="empty_installed_app_list">Hakuna api zilizosimikwa.
+\n
+\nKuna api kwenye kifaa chako lakini hazipatikana F-Droid. Hii inawezakuwa kwa sababu unahitai kusasisha maghala yako ama maghala hayo kwa kweli hayana api zako.</string>
+    <string name="swap_nfc_description">Kama mwenzako ana F-Droid na amewasha NFC, gusisha vifaa vyenu pamoja.</string>
+    <string name="swap_join_same_wifi">Jiunge na Wi-Fi sawa na mwenzako</string>
+    <string name="swap_scan_qr">Msimbo wa QR</string>
+    <string name="swap_people_nearby">Watu walio karibu</string>
+    <string name="swap_setting_up_bluetooth">Inasanidi Bluetooth…</string>
+    <string name="swap_error_cannot_start_bluetooth">Haiwezi kuanzisha Bluetooth!</string>
+    <string name="swap_not_visible_bluetooth">Haionekani kupitia Bluetooth</string>
+    <string name="swap_visible_wifi">Inaonekana kupitia Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Inasanidi Wi-Fi…</string>
+    <string name="swap_stopping_wifi">Inakomesha Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Haionekani kupitia Wi-Fi</string>
+    <string name="swap_wifi_device_name">Jina la Kifaa</string>
+    <string name="antinonfreedep">Vitegemea Visivyo Huru</string>
+    <string name="writing_index_jar">Inaandika faili faharasa iliyotiwa sahihi (index.jar)…</string>
+    <string name="hide_on_long_search_press_title">Ficha na kitufe cha utafutaji</string>
+    <string name="permissions">Ruhusa</string>
+    <string name="no_handler_app">Huna apu yoyote inayopatikana inayoweza kushughulikia %s.</string>
+    <string name="theme">Mandhari</string>
+    <string name="panic_add_apps_to_uninstall">Ongeza api zinazofaa kusimikuliwa na kufutwa</string>
+    <string name="panic_hide_summary">Apu itajificha</string>
+    <string name="panic_hide_warning_title">Kumbuka jinsi ya kurejesha</string>
+    <string name="panic_hide_warning_message">Katika tukio la hofu, hii itatoa %1$s kutoka kwenye kizinduzi. Kuandika \"%2$d\" kwenye apu bandia ya %3$s pekee ndiko kunaweza kuirejesha.</string>
+    <string name="panic_reset_repos_title">Weka upya maghala</string>
+    <string name="panic_reset_repos_summary">Lazimisha usanidi wa ghala kurudi kwenye chaguomisingi</string>
+    <string name="hiding_calculator">Kikokotoo</string>
+    <string name="hiding_dialog_title">Ficha %s Sasa Hivi</string>
+    <string name="hiding_dialog_message">Una uhakika kuwa unataka kutoa %1$s kutoka kwenye kizinduzi\? Kuandika \"%2$d\" kwenye apu bandia ya %3$s pekee ndiko kunaweza kuirejesha.</string>
+    <string name="use_pure_black_dark_theme">Tumia mandharinyuma meusi kabisa katika mandhari ya giza</string>
+    <string name="use_pure_black_dark_theme_summary">Imependekezwa kwa skrini za OLED pekee.</string>
+    <string name="repo_url">Anwani</string>
+    <string name="repo_num_apps">Idadi ya api</string>
+    <string name="repo_description">Maelezo</string>
+    <string name="repo_last_update_downloaded">Sasisho la mwisho kupakuliwa</string>
+    <string name="repo_official_mirrors">Vioo rasmi</string>
+    <string name="repo_user_mirrors">Vioo vya watumiaji</string>
+    <string name="repo_name">Jina</string>
+    <string name="unsigned_description">Hii inamaanisha kuwa orodha ya apu haingethibitishwa. Unafaa kutahadhari na api zilizozopakuliwa kutoka kwenye faharasa zisizosahihiwa.</string>
+    <string name="repo_not_yet_updated">Ghala hili halijatumiwa bado. Unahitaji kuliwezesha ili kuona api ambazo linaonyesha.</string>
+    <string name="unknown">Haijulikani</string>
+    <string name="repo_added">Ghala la vifurushi vilivyohifadhiwa %1$s.</string>
+    <string name="repo_searching_address">Inatafuta ghala la vifurushi kwenye
+\n%1$s</string>
+    <string name="share_repository">Shiriki Ghala</string>
+    <string name="requires_features">Inahitaji: %1$s</string>
+    <plurals name="button_view_all_apps_in_category">
+        <item quantity="one">Tazama %d</item>
+        <item quantity="other">Tazama %d zote</item>
+    </plurals>
+    <string name="empty_can_update_app_list">Pongezi!
+\nApi zako zimesasishwa.</string>
+    <string name="empty_search_available_app_list">Hakuna api zinazolingana zinazopatikana.</string>
+    <string name="install_error_unknown">Imefeli kusimika kwa sababu ya hitilafu isiyojulikana</string>
+    <string name="uninstall_error_unknown">Imefeli kusimika kwa sababu ya hitilafu isiyojulikana</string>
+    <string name="share_apk_error">Haingeweza kushiriki faili ya apu</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Hakuna intaneti\? Pata api kutoka kwa watu walio karibu na wewe!</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Pande zote mbili zinahitaji %1$s ili kutumia Nearby.</string>
+    <string name="nearby_splash__find_people_button">Tafuta watu walio karibu</string>
+    <string name="nearby_splash__read_external_storage">Pekua Kadi ya Kumbukumbu kwa ajili ya maghala na vioo.</string>
+    <string name="nearby_splash__document_tree">Pekua USB OTG kwa ajili ya maghala na vioo.</string>
+    <string name="nearby_splash__request_permission">Jaribu</string>
+    <string name="swap_no_wifi_network">Hamna mtandao bado</string>
+    <string name="swap_blank_wifi_ssid">(tupu)</string>
+    <string name="swap_hidden_wifi_ssid">(imefichwa)</string>
+    <string name="swap_view_available_networks">Gusa ili kufungua mitandao inayopatikana</string>
+    <string name="swap_switch_to_wifi">Gusa ili kubadilisha kwenye mtandao wa Wi-Fi</string>
+    <string name="open_qr_code_scanner">Fungua Skena ya QR</string>
+    <string name="swap_confirm_connect">Unataka kupata api kutoka %1$s sasa hivi\?</string>
+    <string name="swap_scan_or_type_url">Mtu mmoja anafaa kuchanganua msimbo au kuandika URL ya mwingine kwenye kivinjari.</string>
+    <string name="swap_choose_apps">Chagua Api</string>
+    <string name="swap_scanning_for_peers">Inatafuta watu walio karibu…</string>
+    <string name="swap_intro">Ungana na ubadilishane api na watu walio karibu na wewe.</string>
+    <string name="swap_starting">Inaanza…</string>
+    <string name="swap_stopping">Inakoma…</string>
+    <string name="swap_visible_bluetooth">Inaonekana kupitia Bluetooth</string>
+    <string name="swap_cant_find_peers">Humpati unayemtafuta\?</string>
+    <string name="apps">Api</string>
+    <string name="swap_connecting">Inaunganisha</string>
+    <string name="use_bluetooth">Tumia Bluetooth</string>
+    <string name="not_visible_nearby">Nearby haijawezeshwa</string>
+    <string name="swap_toast_using_path">Kutumia %1$s</string>
+    <string name="allPerms">Yote</string>
+    <string name="perm_costs_money">Hii inaweza kukugharimu pesa</string>
+    <string name="uninstall_confirm">Unataka kusimikua apu hii\?</string>
+    <string name="download_error">Upakuaji umefeli!</string>
+    <string name="download_pending">Inangoja kuanza kupakua…</string>
+    <string name="install_error_notify_title">Hitilafu katika kusimika %s</string>
+    <string name="uninstall_error_notify_title">Hitilafu katika kusimikua %s</string>
+    <string name="perms_new_perm_prefix">Mpya:</string>
+    <string name="downloading">Inapakua…</string>
+    <string name="installing">Inasimika…</string>
+    <string name="uninstalling">Inasimikua…</string>
+    <string name="interval_never">Hamna masasisho ya kiotomatiki ya api</string>
+    <string name="keep_hour">Saa 1</string>
+    <string name="keep_day">Siku 1</string>
+    <string name="keep_week">Wiki 1</string>
+    <string name="keep_month">Mwezi 1</string>
+    <string name="keep_year">Mwaka 1</string>
+    <string name="keep_forever">Milele</string>
+    <string name="theme_follow_system">Fuata mfumo</string>
+    <string name="crash_dialog_comment_prompt">Unawezaongeza maelezo ya ziada na maoni hapa:</string>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+%1$d zaidi…</item>
+        <item quantity="other">+%1$d zaidi…</item>
+    </plurals>
+    <string name="notification_title_single_ready_to_install">Tayari kusimika</string>
+    <string name="notification_title_single_ready_to_install_update">Sasisho liko tayari kusimika</string>
+    <string name="notification_title_single_install_error">Msimiko Umefeli</string>
+    <string name="notification_content_single_downloading">Inapakua \"%1$s\"…</string>
+    <string name="notification_content_single_downloading_update">Inapakua sasisho kwa ajili ya \"%1$s\"…</string>
+    <string name="swap_no_peers_nearby">Haingepata watu walio karibu kubadilishana nao.</string>
+    <string name="loading">Inapakia…</string>
+    <string name="swap_connection_misc_error">Hitilafu imetokea wakati wa kuunganisha kwenye kifaa, haiwezi kubadilishana nayo!</string>
+    <string name="install_confirm">inahitaji ufikikaji kwa</string>
+    <string name="notification_content_single_installed">Imefaulu kusimikia</string>
+    <plurals name="notification_summary_updates">
+        <item quantity="one">Sasisho %1$d</item>
+        <item quantity="other">Masasisho %1$d</item>
+    </plurals>
+    <plurals name="notification_summary_installed">
+        <item quantity="one">Apu %1$d Imesimikwa</item>
+        <item quantity="other">Api %1$d Zimesimikwa</item>
+    </plurals>
+    <string name="notification_title_summary_update_available">Sasisho linapatikana</string>
+    <string name="notification_title_summary_downloading">Inapakua…</string>
+    <string name="notification_channel_updates_title">Masasisho</string>
+    <string name="not_visible_nearby_description">Kabla ya kubadilishana na vifaa vilivyo karibu, fanya kifaa chako kionekane.</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Nearby ilijifunga kwa sababu haikuwa na kazi.</string>
+    <string name="panic_will_be_wiped">Itasimikuliwa na data yote kuondolewa</string>
+    <string name="swap_nfc_title">Gusa ili kubadilishana</string>
+    <string name="swap">Badilishana api</string>
+    <string name="swap_success">Mafanikio ya ubadilishanaji!</string>
+    <string name="swap_nearby">Ubadilishanaji wa Nearby</string>
+    <string name="swap_confirm">Thibitisha ubadilishanaji</string>
+    <string name="swap_qr_isnt_for_swap">Msimbo wa QR uliochanganua haufanani na msimbo wa ubadilishanaji.</string>
+    <string name="swap_toast_not_removable_storage">Chaguo hilo halikulingana na vifaa vyovyote vya kuhifadhi vinavyoweza kuondolewa, jaribu tena!</string>
+    <string name="swap_toast_find_removeable_storage">Chagua kadi yako ya kumbukumbu inayoweza kuondolewa au USB</string>
+    <string name="swap_toast_invalid_url">URL batili ya kubadilishana: %1$s</string>
+    <string name="install_confirm_update_no_perms">Je, unataka kusimika sasisho kwenye apu hii iliyopo\? Data yako iliyopo haitapotea. Haihitaji ufikikaji wowote maalum.</string>
+    <string name="install_confirm_update_system_no_perms">Je, unataka kusimika sasisho kwenye apu hii iliyojengewa ndani\? Data yako iliyopo haitapotea. Haihitaji ufikikaji wowote maalum.</string>
+    <string name="install_confirm_update">Je, unataka kusimika sasisho kwenye apu hii iliyopo\? Data yako iliyopo haitapotea. Apu iliyosasishwa itapata ufikikaji kwa:</string>
+    <string name="install_confirm_update_system">Je, unataka kusimika sasisho kwenye apu hii iliyojengewa ndani\? Data yako iliyopo haitapotea. Apu iliyosasishwa itapata ufikikaji kwa:</string>
+    <string name="uninstall_update_confirm">Je, unataka kubadili apu hii na toleo la kiwandani\? Data yote itaondolewa.</string>
+    <string name="perms_description_app">Imetolewa na %1$s.</string>
+    <string name="app__tts__downloading_progress">Inapakua, %1$d%% imekamilika</string>
+    <string name="interval_1h">Angalia masasisho kila saa</string>
+    <string name="interval_4h">Angalia masasisho kila saa 4</string>
+    <string name="interval_12h">Angalia masasisho kila saa 12</string>
+    <string name="interval_1d">Angalia masasisho kila siku</string>
+    <string name="interval_1w">Angalia masasisho kila wiki</string>
+    <string name="interval_2w">Angalia masasisho kila wiki 2</string>
+    <string name="notification_content_single_installing">Inasimika \"%1$s\"…</string>
+    <string name="notification_title_summary_downloading_update">Inapakua sasisho…</string>
+    <string name="notification_title_summary_ready_to_install">Tayari kusimika</string>
+    <string name="notification_title_summary_ready_to_install_update">Sasisho liko tayari kusimika</string>
+    <string name="notification_title_summary_installing">Inasimika</string>
+    <string name="notification_title_summary_installed">Imefaulu kusimikwa</string>
+    <string name="notification_channel_installs_title">Misimiko</string>
+    <string name="notification_channel_installs_description">Inaonyesha arifa za misimiko ya api.</string>
+    <string name="notification_channel_swaps_title">Mabadilishano</string>
+    <string name="notification_channel_swaps_description">Inaonyesha arifa za ubadilishanaji wa api wa P2P.</string>
+    <string name="swap_banner_message">Ili kubadilishana api, anzisha Wi-Fi yako na uunganishe kwenye mtandao sawa na mwenzako.</string>
+    <string name="antiupstreamnonfree">Asili Isiyo Huru</string>
+    <string name="undo">Tendua</string>
+    <string name="swap_setting_up_hotspot">Inasanidi eneo la mwunganisho…</string>
+    <string name="swap_stopping_hotspot">Inakomesha eneo la mwunganisho…</string>
+    <string name="swap_toast_hotspot_enabled">Eneo la Mwunganisho wa Wi-Fi limewashwa</string>
+    <string name="swap_toast_could_not_enable_hotspot">Haingeweza kuwasha Eneo la Mwunganisho wa Wi-Fi!</string>
+    <string name="notification_channel_updates_description">Inaonyesha arifa za masasisho ya api na maghala.</string>
+    <string name="tts_category_name">Kategoria ya %1$s</string>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">Tazama apu ya %1$d kwenye kategoria ya %2$s</item>
+        <item quantity="other">Tazama api zote za %1$d kutoka kwenye kategoria ya %2$s</item>
+    </plurals>
+    <string name="details_last_updated_today">Imesasishwa leo</string>
+    <string name="warning_scaning_qr_code">Kamera yako haionekani kuwa na mwelekeo wa kiotomatiki. Huenda ikawa vigumu kuchanganua msimbo.</string>
+    <string name="warning_target_sdk">Apu hii iliundwa kwa ajili ya toleo la zamani la Android na haiwezi kusasishwa kiotomatiki.</string>
+    <string name="turn_on_wifi">Washa Wi-Fi</string>
+    <string name="app_list__dismiss_installing_app">Msimiko umeghairiwa</string>
+    <plurals name="details_last_update_days">
+        <item quantity="one">Imesasishwa siku %1$d iliyopita</item>
+        <item quantity="other">Imesasishwa siku %1$d zilizopita</item>
+    </plurals>
+    <plurals name="details_last_update_weeks">
+        <item quantity="one">Imesasishwa wiki %1$d iliyopita</item>
+        <item quantity="other">Imesasishwa wiki %1$d zilizopita</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Imesasishwa mwezi %1$d uliopita</item>
+        <item quantity="other">Imesasishwa miezi %1$d iliyopita</item>
+    </plurals>
+    <plurals name="details_last_update_years">
+        <item quantity="one">Imesasishwa mwaka %1$d uliopita</item>
+        <item quantity="other">Imesasishwa miaka %1$d iliyopita</item>
+    </plurals>
+    <string name="status_processing_xml_percent">Inachakata %2$s / %3$s (%4$d%%) kutoka %1$s</string>
+    <string name="status_inserting_apps">Inahifadhi maelezo ya apu</string>
+    <string name="wifi_ap">Eneo la mwunganisho</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">isiyo thabiti</string>
+    <string name="proxy_port_summary">Nambari ya kituo tarishi chako proksi (k.v. 8118)</string>
+    <string name="enable_proxy_summary">Sanidi Proksi ya HTTP kwa ajili ya maombi yote ya mtandao</string>
+    <string name="proxy_host">Seva Proksi</string>
+    <string name="proxy_host_summary">Jina la seva yako proksi (k.v. 127.0.0.1)</string>
+    <string name="proxy_port">Kituo Tarishi Proksi</string>
+    <string name="toast_metrics_in_install_history">Ripoti ya vipimo ya %s inaonekana kwenye kitazamaji cha Historia ya Msimiko</string>
+    <string name="system_installer">Kiendelezi Chenye Ruhusa</string>
+    <string name="system_installer_on">Tumia Kiendelezi Chenye Ruhusa kusimika, kusasisha na kuondoa vifurushi</string>
+    <string name="scan_removable_storage_summary">Tafuta maghala ya vifurushi kwenye hifadhi zinazoweza kutolewa kama vile Kadi za Kumbukumbu na diski mweko ya USB</string>
+    <string name="antiupstreamnonfreelist">Msimbo chanzo wa asili si huru kabisa</string>
+    <string name="force_touch_apps_on">Onyesha api zinazohitaji skrini ya mguso bila kujali uambatanaji wa maunzi</string>
+    <string name="touch_to_configure_local_repo">Gusa ili kutazama maelezo na kuruhusu wengine wabadilishane api zako.</string>
+    <string name="proxy">Proksi</string>
+    <string name="enable_proxy_title">Wezesha Proksi ya HTTP</string>
+    <string name="preventScreenshots_summary">Inazuia picha za skrini kuchukuliwa na kuficha maudhui ya api kutoka kwenye skrini ya api</string>
+    <string name="panic_apps_to_uninstall">Api zitakazoondolewa na data yote kufutwa</string>
+    <string name="hiding_dialog_warning">Onyo: Mkato wowote wa apu kwenye skrini ya nyumbani utaondolewa na kuhitaji kurejeshwa kwa mikono.</string>
+    <string name="repo_fingerprint">Alama ya kidole ya ufunguo wa kusahihi (SHA-256)</string>
+    <string name="repo_disabled_notification">Imezima %1$s.
+\n
+\nUtahitaji kuwezesha tena ghala hili ili kusimika api kutoka kwake.</string>
+    <string tools:ignore="UnusedResources" name="category_Theming">Kuweka mandhari</string>
+    <string name="system_install_denied_permissions">Ruhusa zilizoidhinishwa hazijatolewa kwa kiendelezi! Tafadhali tengeneza ripoti ya hitilafu!</string>
+    <string name="swap_join_same_wifi_desc">Kubadilishana kutumia Wi-Fi, hakikisha kwamba mko kwenye mtandao mmoja. Kama hamna ufikikaji kwenye mtandao sawa, mmoja wenu anaweza kuunda Eneo la Mwunganisho wa Wi-Fi.</string>
+    <string name="swap_join_this_hotspot">Saidia mwenzako ajiunge na eneo lako la mwunganisho</string>
+    <string name="swap_active_hotspot">%1$s (eneo lako la mwunganisho)</string>
+    <string name="swap_visible_hotspot">Inaonekana kupitia eneo la mwunganisho</string>
+    <string name="disabled">Imezimwa</string>
+    <string name="swap_wifi_vpn_conflict">Inakinzana na Mtandao Pepe Binafsi (VPN) inayotumika!</string>
+    <string name="theme_light">Angavu</string>
+    <string name="theme_dark">Giza</string>
+    <string name="repo_add_new_title">Ongeza ghala</string>
+    <string name="repo_add_new_mirror">Ongeza kama kioo kipya</string>
+    <string name="repo_intro">Ghala ni chanzo cha nyongeza cha api. Yale ya wahusika wa tatu unayoyaongeza hapa yana viwango tofauti na yale yanayotoa api zilizoundwa na F-Droid yenyewe.
+\n
+\nTafadhali hakikisha kuwa ghala unaloongeza linaaminika.</string>
+    <string name="repo_state_fetching">Inaleta ghala…</string>
+    <string name="repo_state_adding">Inaongeza ghala…</string>
+    <string name="repo_enter_url">Ingiza URL ya ghala mwenyewe</string>
+    <string name="repo_exists">Ghala hili limeongezwa tayari.</string>
+    <string name="repo_invalid">Ghala batili.
+\n
+\nWasiliana na mtunzaji na umjulishe kuhusu suala hilo.</string>
+    <string name="repo_io_error">Hitilafu wakati wa kuunganisha kwenye ghala.</string>
 </resources>
