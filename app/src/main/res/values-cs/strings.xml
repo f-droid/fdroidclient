@@ -348,7 +348,7 @@
     <string name="latest__empty_state__no_enabled_repos">Jakmile zapnete repozitář a necháte aktualizovat, měly by se zde zobrazit nejnovější aplikace</string>
     <string name="categories__empty_state__no_categories">Žádné kategorie k zobrazení</string>
     <string name="details_new_in_version">Novinky ve verzi %s</string>
-    <string name="antifeatureswarning">Tato aplikace má funkce které se vám možná nebudou líbit.</string>
+    <string name="antifeatureswarning">Tato aplikace má funkce, které se vám nemusí líbit.</string>
     <string name="antifeatures">Anti-funkce</string>
     <string name="download_404">Požadovaný soubor nebyl nalezen.</string>
     <string name="status_inserting_x_apps">Ukládání podrobností o aplikaci (%1$d/%2$d) z %3$s</string>
@@ -430,8 +430,8 @@
     <string name="sort_search">Setřídit hledání</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Oskenování kódu může být obtížné.</string>
-    <string name="show_anti_feature_apps">Zahrnout aplikace s funkcemi které nejsou v zájmu uživatele</string>
-    <string name="show_anti_feature_apps_on">Zobrazit aplikace které vyžadují funkce které nejsou v zájmu uživatele</string>
+    <string name="show_anti_feature_apps">Zahrnout aplikace s anti-funkcemi</string>
+    <string name="show_anti_feature_apps_on">Zobrazit aplikace, které vyžadují anti-funkce</string>
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>
     <string name="force_touch_apps_on">Zobrazit aplikace které vyžadují dotykovou obrazovku i když toto zařízení takovou není vybaveno</string>
     <string name="repo_add_mirror">Přidat zrcadlo (mirror)</string>
@@ -534,7 +534,7 @@
     <string name="antiknownvuln">Známá zranitelnost</string>
     <string name="antitrack">Sledování</string>
     <string name="antinonfreenet">Nesvobodné síťové služby</string>
-    <string name="app_list_results_hidden_antifeature_settings">Některé výsledky byly skryty na základě nastavení funkce antifeature.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Některé výsledky byly skryty na základě nastavení Anti-funkcí.</string>
     <string name="antinonfreead">Nesvobodné doplňky</string>
     <string name="antinonfreedep">Nesvobodné závislosti</string>
     <string name="antiupstreamnonfree">Nesvobodný Upstream</string>
