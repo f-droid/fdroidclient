@@ -29,7 +29,7 @@
     <string name="ok">OK</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
-    <string name="repo_add_title">Paketquelle hinzufügen</string>
+    <string name="repo_add_title">Neue Paketquelle hinzufügen</string>
     <string name="repo_add_add">Hinzufügen</string>
     <string name="cancel">Abbrechen</string>
     <string name="enable">Aktivieren</string>
@@ -544,4 +544,11 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Über F-Droid Basic</string>
     <string name="app_error_open">App konnte nicht gestartet werden.</string>
+    <string name="repo_io_error">Fehler beim Verbindungsaufbau mit der Paketquelle.</string>
+    <string name="turn_on_wifi">WLAN einschalten</string>
+    <string name="repo_add_new_title">Paketquelle hinzufügen</string>
+    <string name="repo_add_new_mirror">Als neuen Spiegelserver hinzufügen</string>
+    <string name="repo_state_fetching">Paketquelle abrufen …</string>
+    <string name="repo_state_adding">Paketquelle hinzufügen …</string>
+    <string name="repo_exists">Dieses Repo wurde bereits hinzugefügt.</string>
 </resources>
