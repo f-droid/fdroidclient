@@ -29,7 +29,7 @@
     <string name="ok">ОК</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    <string name="repo_add_title">Добавление репозитория</string>
+    <string name="repo_add_title">Добавить новый репозиторий</string>
     <string name="repo_add_add">Добавить</string>
     <string name="cancel">Отмена</string>
     <string name="enable">Включить</string>
@@ -562,15 +562,15 @@
     <string name="repo_add_new_mirror">Добавить как новое зеркало</string>
     <string name="repo_exists">Этот репозиторий уже был добавлен.</string>
     <string name="repo_io_error">Ошибка подключения к репозиторию.</string>
-    <string name="repo_intro">Репозиторий - это дополнительный источник приложений. Сторонние приложения, которые вы добавляете сюда, имеют другие стандарты, чем те, которые предоставляют приложения, созданные самим F-Droid.
+    <string name="repo_intro">Репозиторий - это дополнительный источник приложений. Сторонние репозитории, которые вы сюда добавляете, имеют иные стандарты, нежели созданные F-Droid.
 \n
-\nПожалуйста, убедитесь, что репозиторий, который вы добавляете, заслуживает доверия.</string>
+\nУбедитесь, что добавляемый вами репозиторий заслуживает доверия.</string>
     <string name="repo_invalid">Недопустимый репозиторий.
 \n
-\nСвяжитесь с сопровождающим и сообщите им о проблеме.</string>
-    <string name="swap_banner_message">Чтобы поменять приложения местами, запустите свой Wi-Fi и подключитесь к той же сети, что и ваш друг.</string>
-    <string name="turn_on_wifi">Включите Wi-Fi</string>
-    <string name="repo_state_fetching">Извлекающий репозиторий…</string>
+\nСвяжитесь с сопровождающим и сообщите ему о проблеме.</string>
+    <string name="swap_banner_message">Для обмена приложениями включите Wi-Fi и подключитесь к той же сети, что и ваш друг.</string>
+    <string name="turn_on_wifi">Включить Wi-Fi</string>
+    <string name="repo_state_fetching">Извлечение репозитория…</string>
     <string name="repo_state_adding">Добавление репозитория…</string>
-    <string name="repo_enter_url">Введите URL-адрес репозитория вручную</string>
+    <string name="repo_enter_url">Введите URL репозитория вручную</string>
 </resources>
