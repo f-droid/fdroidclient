@@ -6,7 +6,7 @@
     <string name="delete">Eliminar</string>
     <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
-    <string name="updates">Pendientes</string>
+    <string name="updates">Actualizaciones</string>
     <string name="other">Otros</string>
     <string name="update_interval">Intervalo de actualización automática</string>
     <string name="notify">Mostrar actualizaciones disponibles</string>
