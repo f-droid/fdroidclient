@@ -538,4 +538,19 @@
     <string name="category_Nightly">noktaj kompilaĵoj</string>
     <string name="warning_target_sdk">Tiu ĉi aplikaĵo estis kompilita por pli malnova versio de Android ke ne povas esti ĝisdatigita aŭtomate.</string>
     <string name="app_error_open">Ne povas ekigi la aplikaĵon.</string>
+    <string name="swap_banner_message">Por interŝanĝi aplikaĵojn, aktivigu vifion kaj konektu al la sama reto kiel via amiko.</string>
+    <string name="turn_on_wifi">Aktivigi vifion</string>
+    <string name="repo_io_error">Eraro dum konektado al la deponejo.</string>
+    <string name="repo_add_new_title">Aldoni deponejon</string>
+    <string name="repo_add_new_mirror">Aldoni kiel spegul-servilon</string>
+    <string name="repo_state_fetching">Elŝutado de deponejo…</string>
+    <string name="repo_state_adding">Aldonado de deponejo…</string>
+    <string name="repo_exists">Tiu ĉi deponejo jam estas aldonita.</string>
+    <string name="repo_enter_url">Permane enigi ligilon de deponejo</string>
+    <string name="repo_intro">Deponejo estas plia fonto de aplikaĵoj. Deponejoj de aliaj firmaoj – aldoneblaj tie ĉi – havas aliajn normojn ol tiuj oficiale liverataj de F-Droid.
+\n
+\nCertiĝu por ke la aldonota deponejo estu fidinda.</string>
+    <string name="repo_invalid">Malĝusta deponejo.
+\n
+\nKontaktu kun ĝia prizorganto kaj informu lin pri la problemo.</string>
 </resources>
