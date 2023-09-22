@@ -558,4 +558,19 @@
     <string name="warning_target_sdk">יישומון זה נבנה באמצעות גרסה ישנה יותר של Android ולא ניתן לעדכן אותו ידנית.</string>
     <string name="antinsfwlist">היישומון הזה מכיל תוכן שעדיף לא להפיץ או לצפות בו בכל מקום</string>
     <string name="app_error_open">לא ניתן להפעיל את היישומון.</string>
+    <string name="swap_banner_message">כדי להחליף יישומונים, יש להפעיל את הרשת האלחוטית ולהתחבר לאותה רשת אלחוטית כמו חבריך.</string>
+    <string name="turn_on_wifi">הפעלת רשת אלחוטית</string>
+    <string name="repo_add_new_title">הוספת מאגר</string>
+    <string name="repo_add_new_mirror">הוספה כאתר מראה חדש</string>
+    <string name="repo_intro">מאגר הוא מקור נוסף של יישומונים. ליישומוני צד־שלישי שיתווספו כאן יש תקנים אחרים לעומת אלו שמספקים יישומונים שנבנו על ידי F-Droid עצמם.
+\n
+\nנא לוודא שהמאגר שבחרת להוסיף מהימן.</string>
+    <string name="repo_state_fetching">המאגר נמשך…</string>
+    <string name="repo_state_adding">המאגר מתווסף…</string>
+    <string name="repo_enter_url">נא למלא כתובת מאגר ידנית</string>
+    <string name="repo_exists">המאגר הזה כבר נוסף.</string>
+    <string name="repo_invalid">מאגר שגוי.
+\n
+\nנא ליצור קשר עם המתחזקים וליידע אותם על התקלה הזאת.</string>
+    <string name="repo_io_error">שגיאה בהתחברות למאגר.</string>
 </resources>
