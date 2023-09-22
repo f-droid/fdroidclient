@@ -295,7 +295,7 @@
 \n%1$s</string>
     <string name="hide_on_long_search_press_summary">Kubonyeza kitufe cha utafutaji kwa muda mrefu kutaficha apu</string>
     <string name="download_404">Faili iliyoombwa haikupatikana.</string>
-    <string name="banner_updating_repositories">Inasasisha maghala...</string>
+    <string name="banner_updating_repositories">Inasasisha maghala…</string>
     <string name="banner_no_internet">Hakuna intaneti</string>
     <string name="banner_no_data_or_wifi">Hakuna Data au WiFi iliyowezeshwa</string>
     <string name="status_connecting_to_repo">Inaunganisha kwa
