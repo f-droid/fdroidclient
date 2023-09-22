@@ -265,4 +265,24 @@
     <string name="show_anti_feature_apps_on">Onyesha api zinazohitaji vipengele visivyopendelewa</string>
     <string name="linking_apks">Inaunganisha APK kwenye ghala…</string>
     <string name="panic_app_setting_summary">Hakuna apu iliyowekwa</string>
+    <string name="local_repo_running">F-Droid liko tayari kufanya mabadiliko</string>
+    <string name="icon">Ikoni</string>
+    <string name="try_again">Jaribu tena</string>
+    <string name="panic_app_dialog_message">Una uhakikia kuwa untaka kukubalia %1$s kuanzisha vitendo vya uharibifu vya kitufe cha hofu\?</string>
+    <string name="panic_settings">Mipangilio ya kitufe cha hofu</string>
+    <string name="panic_exit_title">Toka kwa apu</string>
+    <string name="panic_settings_summary">Hatua za kuchukuliwa wakati wa dharura</string>
+    <string name="panic_exit_summary">Apu hii itafungwa</string>
+    <string name="panic_destructive_actions">Vitendo vya Uharibifu</string>
+    <string name="deleting_repo">Kufutika kwa ghala hili…</string>
+    <string name="useTor">Tumia Tor</string>
+    <string name="useTorSummary">Lazimisha trafiki ya upakuaji kupitia Tor kwa faragha iliyoongezeka. Inahitaji apu ya Orbot</string>
+    <string name="privacy">Faragha</string>
+    <string name="preventScreenshots_title">Zuia uchukuaji wa picha za skrini</string>
+    <string name="panic_app_setting_title">Apu ya kitufe cha hofu</string>
+    <string name="panic_app_unknown_app">Apu isiyojulikana</string>
+    <string name="panic_app_setting_none">Hakuna</string>
+    <string name="panic_app_dialog_title">Thibitisha apu ya hofu</string>
+    <string name="allow">Kubali</string>
+    <string name="panic_hide_title">Ficha %s</string>
 </resources>
