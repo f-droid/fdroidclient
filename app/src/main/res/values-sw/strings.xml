@@ -136,19 +136,19 @@
     <string name="force_old_index">Lazimisha umbizo la faharasa la zamani</string>
     <string name="send_version_and_uuid_summary">Jumuisha toleo la apu hii na kitambulisho nasibu, cha kipekee wakati wa kupakua, kitaanza kutumika apu itakapowashwa tena.</string>
     <string name="force_old_index_summary">Iwapo kuna hitilafu au matatizo ya uoanifu, tumia faharasa ya programu ya XML</string>
-    <string name="other">Ingine</string>
+    <string name="other">Mengine</string>
     <string name="update_auto_install_summary">Pakua na usasishe apu kichinichini, ikionyesha arifa</string>
-    <string name="update_interval">Muda wa sasisho otomatiki</string>
+    <string name="update_interval">Kipindi cha muda baina ya masasisho ya kiotomatiki</string>
     <string name="notify">Onyesha masasisho yanayopatikana</string>
     <string name="notify_on">Onyesha arifa masasisho yanapopatikana</string>
     <string name="over_wifi">Kupitia Wi-Fi</string>
     <string name="over_data">Kupitia data</string>
     <string name="over_network_always_summary">Tumia muunganisho huu kila wakati unapopatikana</string>
-    <string name="over_network_on_demand_summary">Tumia tu muunganisho huu ninapobofya kupakua</string>
+    <string name="over_network_on_demand_summary">Tumia muunganisho huu ninapobofya kupakua</string>
     <string name="over_network_never_summary">Kamwe usipakue chochote kwa kutumia muunganisho huu</string>
     <string name="update_auto_download">Leta masasisho kiotomatiki</string>
     <string name="update_auto_download_summary">Masasisho yanapakuliwa kiotomatiki na utaarifiwa kuyasakinisha</string>
-    <string name="update_auto_install">Sakinisha masasisho kiotomatiki</string>
+    <string name="update_auto_install">Simika masasisho kiotomatiki</string>
     <string name="updates_disabled_by_settings">Masasisho yote imesitishwa kwa mipangilio ya Data/WiFI</string>
     <string name="repo_add_title">Ongeza ghala jipya</string>
     <string name="repo_add_add">Ongeza</string>
@@ -205,11 +205,33 @@
     <string name="updates">Masasisho</string>
     <string tools:ignore="UnusedResources" name="category_Graphics">Michoro</string>
     <string tools:ignore="UnusedResources" name="category_Multimedia">Midia-anuai</string>
-    <string name="local_repo_name_summary">Kichwa kilichotangazwa cha kihifadhi cha kifaa chako: %s</string>
+    <string name="local_repo_name_summary">Jina linalotangazwa la ghala la kifaa chako: %s</string>
     <string name="main_menu__swap_nearby">Inayokaribia</string>
     <string name="pref_language_default">Chaguomsingi wa Mfumo</string>
     <string tools:ignore="UnusedResources" name="category_Connectivity">Uunganishaji</string>
     <string tools:ignore="UnusedResources" name="category_Development">Usanidi</string>
     <string tools:ignore="UnusedResources" name="category_Games">Michezo</string>
     <string tools:ignore="UnusedResources" name="category_Navigation">Urambazaji</string>
+    <string name="local_repo_name">Jina la ghala la kifaa hiki</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">"Toleo lililosimikwa halitangamani na matoleo mengine.  Kusimikuwa apu hii kutakuwezesha kuona na kusimika matoleo yanayoamabatana. Jambo hili huonekana sana na api silizosimikwa na Google Play ama duka lingine, haswa kama zimesahihishwa na cheti tofauti."</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Tumepata kasoro na %1$s. Tunapendekeza kusasisha hadi toleo jipya mara moja.</string>
+    <string name="send_fdroid_metrics_json">%s ripoti ya vipimo kama faili ya JSON</string>
+    <string name="app_error_open">Haingeweza kuzindua apu.</string>
+    <string name="app_permission_storage">F-Droid inahitaji ruhusa ya uhifadhi kusimika apu hii kwenye hifadhi cha kifaa hiki. Tafadhali ikubalie kwenye skrini ifuatayo ili kusimika kuendelee.</string>
+    <string name="app_list__dismiss_vulnerable_app">Kasoro limepuuzwa</string>
+    <string name="send_installed_apps">Shiriki api zilizosimikwa</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Tumepata kasoro na %1$s. Tunapendekeza kusimikuwa apu hii mara moja.</string>
+    <string name="repo_add_fingerprint">Alama ya kidole (hiari)</string>
+    <string name="has_disallow_install_unknown_sources_globally">Mtumiaji mkuu wa kifaa hiki hakubali kusimika api kusikojulikana, hiyo inajumuisha maghala mapya</string>
+    <string name="menu_select_for_wipe">Chagua ili ifutwe</string>
+    <string name="menu_downgrade">Shusha daraja</string>
+    <string name="antitrack">Ufuatiliaji</string>
+    <string name="antinonfreeassets">Rasilimali isyo huru</string>
+    <string name="antiknownvuln">Kasoro linalojulikana</string>
+    <string name="antinsfw">Yenye maudhui machafu</string>
+    <string name="antinonfreedeplist">Apu hii inategemea api zisizo huru</string>
+    <string name="antinsfwlist">Apu hii ina maudhui ambayo haipaswi kuchapishwa au kuonyeshwa kila mahali</string>
+    <string name="expert">Hali ya ustadi</string>
+    <string name="force_touch_apps">Jumuisha api za mguso</string>
+    <string name="local_repo">Ghala la kifaa hiki</string>
 </resources>
