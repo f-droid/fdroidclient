@@ -17,7 +17,7 @@
     <string name="no">Nu</string>
     <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
-    <string name="cancel">Anulaţi</string>
+    <string name="cancel">Anulați</string>
     <string name="enable">Activează</string>
     <string name="menu_search">Căutați</string>
     <string name="menu_launch">Deschideți</string>
@@ -544,7 +544,22 @@
     <string name="about_title_basic">Despre F-Droid Basic</string>
     <string name="warning_target_sdk">Această aplicație a fost creată pentru o versiune mai veche de Android și nu poate fi actualizată automat.</string>
     <string name="repo_last_update_downloaded">Ultima actualizare descărcată</string>
-    <string name="app_name_basic">F-Droid de baza</string>
-    <string name="category_Nightly">Construcții nocturne</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="category_Nightly">instabil</string>
     <string name="app_error_open">Nu s-a putut lansa aplicația.</string>
+    <string name="swap_banner_message">Pentru a face schimb de aplicații, porniți Wi-Fi și conectați-vă la aceeași rețea ca și prietenul dvs.</string>
+    <string name="turn_on_wifi">Porniți Wi-Fi</string>
+    <string name="repo_add_new_title">Adaugă depozit</string>
+    <string name="repo_add_new_mirror">Adaugă ca server de rezervă</string>
+    <string name="repo_intro">Un depozit este o sursă suplimentară de aplicații. Cele terțe pe care le adăugați aici au standarde diferite față de cele care oferă aplicațiile construite de F-Droid însuși.
+\n
+\nVă rugăm să vă asigurați că depozitul pe care îl adăugați este de încredere.</string>
+    <string name="repo_state_adding">Se adaugă depozitul…</string>
+    <string name="repo_state_fetching">Se descarcă depozitul…</string>
+    <string name="repo_enter_url">Introduceți manual adresa URL a depozitului</string>
+    <string name="repo_exists">Acest depozit a fost deja adăugat.</string>
+    <string name="repo_invalid">Depozit invalid.
+\n
+\nContactați administratorul și anunțați despre această problemă.</string>
+    <string name="repo_io_error">Eroare de conectare la depozit.</string>
 </resources>
