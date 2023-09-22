@@ -508,7 +508,7 @@
     <string name="fdroid_metrics_report">%s Metrikenbericht</string>
     <string name="install_history_and_metrics">Installationsverlauf und Metriken</string>
     <string name="send_fdroid_metrics_json">%s Metrikenbericht als JSON-Datei</string>
-    <string name="send_fdroid_metrics_report">Sende Metrikenbericht %s</string>
+    <string name="send_fdroid_metrics_report">Metrikenbericht %s senden</string>
     <string name="menu_show_install_history">Installationsverlauf anzeigen</string>
     <string name="menu_show_fdroid_metrics_report">Metrikbericht anzeigen</string>
     <string name="use_pure_black_dark_theme_summary">Nur für OLED-Bildschirme empfohlen.</string>
