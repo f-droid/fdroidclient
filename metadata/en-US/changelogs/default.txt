@@ -1,0 +1,7 @@
+* Fixed using repos and mirrors from External Storage on recent Android releases
+* Improved WiFi management in Nearby
+* The navigation bar now remembers its position even when F-Droid restarts
+* New language: Swahili
+* Fix downloading images for repos still using index-v1
+* Fix crashes related to swap, managing repos and more
+* The Downgrade button was removed, Android no longer allows that
