@@ -382,7 +382,7 @@
     <string name="app_permission_storage">F-Droid benötigt Zugriffsrechte auf den Speicher, um es dort zu installieren. Bitte diese im nächsten Bildschirm gewähren, um mit der Installation fortzufahren.</string>
     <string name="status_inserting_x_apps">App-Details (%1$d/%2$d) von %3$s speichern</string>
     <string name="app_details__incompatible_mismatched_signers">Abweichende Signatur zur installierten Version</string>
-    <string name="app_details__no_versions__show_incompat_versions">Um hier trotzdem inkompatible Versionen anzuzeigen, aktivieren Sie die Einstellung »%1$s«.</string>
+    <string name="app_details__no_versions__show_incompat_versions">Damit hier auch inkompatible Versionen angezeigt werden, aktivieren Sie die Einstellung »%1$s«.</string>
     <string name="app_details__no_versions__no_compatible_signers">Keine Versionen mit kompatibler Signatur</string>
     <string name="app_details__no_versions__none_compatible_with_device">Keine mit dem Gerät kompatiblen Versionen</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Die installierte Version ist mit keiner der vorhandenen Versionen kompatibel. Eine Deinstallation der App ermöglicht Ihnen, kompatible Versionen anzusehen und zu installieren. Dies tritt häufig bei Apps auf, die über Google Play oder andere Quellen installiert wurden, wenn sie mit einem anderen Zertifikat signiert sind.</string>
@@ -551,4 +551,12 @@
     <string name="repo_state_fetching">Paketquelle abrufen …</string>
     <string name="repo_state_adding">Paketquelle hinzufügen …</string>
     <string name="repo_exists">Dieses Repo wurde bereits hinzugefügt.</string>
+    <string name="swap_banner_message">Zum Tausch von Apps aktivieren Sie Ihr WLAN und verbinden Sie sich mit demselben Netzwerk wie Ihr Freund.</string>
+    <string name="repo_invalid">Ungültiges Repository.
+\n
+\nKontaktieren Sie die Maintainer und teilen Sie ihnen das Problem mit.</string>
+    <string name="repo_intro">Ein Repository ist eine zusätzliche Paketquelle für Apps. Solche von Drittanbietern, die Sie hier ergänzen, unterscheiden sich in den Standards von jenen, die von F-Droid selbst hergestellte Apps anbieten.
+\n
+\nVergewissern Sie sich, dass das Repository, das Sie hinzufügen, vertrauenswürdig ist.</string>
+    <string name="repo_enter_url">URL des Repositorys manuell eingeben</string>
 </resources>
