@@ -1,0 +1,7 @@
+* Atbalsta multivides, OTA, ZIP utml. datņu uzstādīšanu
+
+* Pilns ar vairākām parakstīšanas atslēgām parakstītu APK atbalsts
+
+* Jauns tulkojums tibetiešu valodā
+
+* Saistīto lietotņu un kategoriju noņemšana pēc glabātavas izslēgšanas
