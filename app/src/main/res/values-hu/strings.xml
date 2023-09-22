@@ -441,7 +441,7 @@
     <string name="install_history">Telepítési előzmények</string>
     <string name="install_history_summary">Az összes telepítés és eltávolítás privát naplójának megtekintése</string>
     <string name="send_version_and_uuid">Verzió és UUID küldése a kiszolgálóknak</string>
-    <string name="send_version_and_uuid_summary">Az alkalmazás verziójának és egy véletlenszerű, egyedi azonosítónak használata letöltéskor, az alkalmazás következő újraindításakor lép hatályba.</string>
+    <string name="send_version_and_uuid_summary">Az alkalmazás verziójának és egy véletlenszerű, egyedi azonosítónak használata letöltéskor; az alkalmazás következő újraindításakor lép hatályba.</string>
     <string name="antinosourcesince">A forráskód többé nem érhető el, a frissítések nem lehetségesek.</string>
     <string name="share_repository">Tároló megosztása</string>
     <string name="send_install_history">Telepítési előzmények elküldése</string>
@@ -524,7 +524,7 @@
     <string name="antiknownvuln">Ismert sérülékenység</string>
     <string name="antinosource">Már nem elérhető forráskód</string>
     <string name="antiothers">Egyéb előnytelen funkciók</string>
-    <string name="antinsfw">Nem biztonságos munka alatt</string>
+    <string name="antinsfw">Munkahelyen nem megfelelő</string>
     <string name="menu_release_channel_beta">Béta frissítések engedélyezése</string>
     <string name="latest__empty_state__upgrading">Adatbázis frissítése…</string>
     <string name="use_ipfs_gateways">IPFS-átjárók használata</string>
@@ -532,8 +532,8 @@
     <string name="app_name_basic">Alap F-Droid</string>
     <string name="about_title_basic">Az Alap F-Droid névjegye</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">napi</string>
-    <string name="antinsfwlist">Ez az alkalmazás olyan tartalommal rendelkezik, amely egyes helyzetekben lehet nem megfelelő</string>
-    <string name="warning_target_sdk">Ez az alkalmazás az Android egy régebbi verziójához készült és nem frissíthető automatikusan.</string>
+    <string name="antinsfwlist">Ez az alkalmazás olyan tartalommal rendelkezik, amelyet nem szerencsés mindenhol megjeleníteni</string>
+    <string name="warning_target_sdk">Ez az alkalmazás az Android egy régebbi verziójához készült, ezért nem lehet automatikusan frissíteni.</string>
     <string name="app_error_open">Nem sikerült elindítani az alkalmazást.</string>
     <string name="repo_last_update_downloaded">Utolsó frissítés letöltve</string>
     <string name="turn_on_wifi">Wi-Fi bekapcsolása</string>
