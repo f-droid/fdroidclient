@@ -62,9 +62,10 @@ internal class RepoUriGetterTest {
 
     @Test
     fun testFDroidLink() {
-        val uri1 =
-            RepoUriGetter.getUri("https://fdroid.link/index.html#repo=https://f-droid.org/repo?" +
-                "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+        val uri1 = RepoUriGetter.getUri(
+            "https://fdroid.link/index.html#repo=https://f-droid.org/repo?" +
+                "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+        )
         assertEquals("https://f-droid.org/repo", uri1.uri.toString())
         assertEquals(
             "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
@@ -82,8 +83,7 @@ internal class RepoUriGetterTest {
 
     @Test
     fun testAddScheme() {
-        val uri1 =
-            RepoUriGetter.getUri("example.com/repo")
+        val uri1 = RepoUriGetter.getUri("example.com/repo")
         assertEquals("https://example.com/repo", uri1.uri.toString())
         assertNull(uri1.fingerprint)
 
@@ -100,9 +100,10 @@ internal class RepoUriGetterTest {
 
     @Test
     fun testFDroidRepoUriScheme() {
-        val uri1 =
-            RepoUriGetter.getUri("fdroidrepos://grobox.de/fdroid/repo?fingerprint=" +
-                "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c")
+        val uri1 = RepoUriGetter.getUri(
+            "fdroidrepos://grobox.de/fdroid/repo?fingerprint=" +
+                "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c"
+        )
         assertEquals("https://grobox.de/fdroid/repo", uri1.uri.toString())
         assertEquals(
             "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c",
@@ -113,9 +114,10 @@ internal class RepoUriGetterTest {
         assertEquals("http://grobox.de/fdroid/repo", uri2.uri.toString())
         assertNull(uri2.fingerprint)
 
-        val uri3 =
-            RepoUriGetter.getUri("FDROIDREPOS://grobox.de/fdroid/repo?fingerprint=" +
-                "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c")
+        val uri3 = RepoUriGetter.getUri(
+            "FDROIDREPOS://grobox.de/fdroid/repo?fingerprint=" +
+                "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c"
+        )
         assertEquals("https://grobox.de/fdroid/repo", uri3.uri.toString())
         assertEquals(
             "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c",
@@ -125,6 +127,38 @@ internal class RepoUriGetterTest {
         val uri4 = RepoUriGetter.getUri("fdroidREPO://grobox.de/fdroid/repo")
         assertEquals("http://grobox.de/fdroid/repo", uri4.uri.toString())
         assertNull(uri4.fingerprint)
+    }
+
+    @Test
+    fun testUsernamePassword() {
+        val uri1 = RepoUriGetter.getUri(
+            "https://username:password@example.org/repo?fingerprint=foobar&test=42"
+        )
+        assertEquals("https://example.org/repo", uri1.uri.toString())
+        assertEquals("foobar", uri1.fingerprint)
+        assertEquals("username", uri1.username)
+        assertEquals("password", uri1.password)
+
+        // no password
+        val uri2 =
+            RepoUriGetter.getUri("https://username@example.org/repo?fingerprint=foobar&test=42")
+        assertEquals("https://example.org/repo", uri2.uri.toString())
+        assertEquals("foobar", uri2.fingerprint)
+        assertEquals("username", uri2.username)
+        assertNull(uri2.password)
+
+        // empty host
+        val uri3 = RepoUriGetter.getUri("https://foo:bar@/repo?fingerprint=foobar&test=42")
+        assertEquals("https:///repo", uri3.uri.toString())
+        assertEquals("foobar", uri3.fingerprint)
+        assertEquals("foo", uri3.username)
+        assertEquals("bar", uri3.password)
+
+        // empty everything doesn't crash
+        RepoUriGetter.getUri(":@/")
+        RepoUriGetter.getUri(":@")
+        RepoUriGetter.getUri("@")
+        RepoUriGetter.getUri("")
     }
 
     @Test
@@ -151,8 +185,10 @@ internal class RepoUriGetterTest {
         )
         assertTrue(RepoUriGetter.isSwapUri(uri1))
 
-        val uri2 = Uri.parse("http://192.168.3.159:8888/fdroid/repo?" +
-            "swap=1&BSSID=44:FE:3B:7F:7F:EE")
+        val uri2 = Uri.parse(
+            "http://192.168.3.159:8888/fdroid/repo?" +
+                "swap=1&BSSID=44:FE:3B:7F:7F:EE"
+        )
         assertTrue(RepoUriGetter.isSwapUri(uri2))
 
         val uri3 = Uri.parse("http://192.168.3.159:8888/fdroid/repo?BSSID=44:FE:3B:7F:7F:EE")

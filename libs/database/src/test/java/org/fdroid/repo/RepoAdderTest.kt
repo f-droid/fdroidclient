@@ -43,6 +43,7 @@ import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.TestUtils.decodeHex
+import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.VerifierConstants
 import org.junit.Rule
 import org.junit.Test
@@ -139,12 +140,7 @@ internal class RepoAdderTest {
         every { repoDao.getRepository(any<String>()) } returns null
 
         expectMinRepoPreview(repoName, FetchResult.IsNewRepository) {
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null,
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
         }
 
         val newRepo: Repository = mockk()
@@ -196,12 +192,7 @@ internal class RepoAdderTest {
         every { repoDao.getRepository(any<String>()) } returns existingRepo
 
         expectMinRepoPreview(repoName, FetchResult.IsNewMirror(42L, url.trimEnd('/'))) {
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
         }
 
         val transactionSlot = slot<Callable<Repository>>()
@@ -349,12 +340,7 @@ internal class RepoAdderTest {
         every { repoDao.getRepository(any<String>()) } returns existingRepo
 
         expectMinRepoPreview(repoName, FetchResult.IsExistingRepository, canAdd = false) {
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
         }
         assertFailsWith<IllegalStateException> {
             repoAdder.addFetchedRepository()
@@ -380,12 +366,7 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
@@ -438,12 +419,7 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
@@ -479,12 +455,7 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
@@ -539,12 +510,7 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
@@ -589,12 +555,7 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
-            repoAdder.fetchRepository(
-                url = url,
-                username = null,
-                password = null,
-                proxy = null
-            )
+            repoAdder.fetchRepository(url = url, proxy = null)
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
@@ -605,6 +566,80 @@ internal class RepoAdderTest {
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
             assertEquals(INVALID_INDEX, state2.errorType)
+        }
+    }
+
+    @Test
+    fun testAddingMinRepoWithBasicAuth() = runTest {
+        val username = getRandomString()
+        val password = getRandomString()
+        val url = "https://$username:$password@example.org/repo/"
+        val repoName = TestDataMinV2.repo.name.getBestLocale(localeList)
+
+        val urlTrimmed = "https://example.org/repo"
+        val jarFile = folder.newFile()
+        val indexFile = assets.open("index-min-v2.json")
+        val index = indexFile.use { it.readBytes() }
+        val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
+
+        every { tempFileProvider.createTempFile() } returns jarFile
+        every {
+            downloaderFactory.create(
+                repo = match {
+                    it.address == urlTrimmed && it.formatVersion == IndexFormatVersion.TWO
+                },
+                uri = Uri.parse("$urlTrimmed/entry.jar"),
+                indexFile = any(),
+                destFile = jarFile,
+            )
+        } returns downloader
+        every { downloader.download() } answers {
+            jarFile.outputStream().use { outputStream ->
+                assets.open("diff-empty-min/entry.jar").use { inputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+        }
+        coEvery {
+            httpManager.getDigestInputStream(match {
+                it.indexFile.name == "../index-min-v2.json" &&
+                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == urlTrimmed
+            })
+        } returns indexStream
+        every {
+            digest.digest() // sha256 from entry.json
+        } returns "851ecda085ed53adab25f761a9dbf4c09d59e5bff9c9d5530814d56445ae30f2".decodeHex()
+
+        // repo not in DB
+        every { repoDao.getRepository(any<String>()) } returns null
+
+        expectMinRepoPreview(repoName, FetchResult.IsNewRepository) {
+            repoAdder.fetchRepository(url = url, proxy = null)
+        }
+
+        val newRepo: Repository = mockk()
+        every {
+            repoDao.insert(match<NewRepository> {
+                // Note that we are not using the url the user used to add the repo,
+                // but what the repo tells us to use
+                it.address == TestDataMinV2.repo.address &&
+                    it.formatVersion == IndexFormatVersion.TWO &&
+                    it.name.getBestLocale(localeList) == repoName &&
+                    it.username == username && it.password == password // this is the important bit
+            })
+        } returns 42L
+        every { repoDao.getRepository(42L) } returns newRepo
+
+        repoAdder.addRepoState.test {
+            assertIs<Fetching>(awaitItem()) // still Fetching from last call
+
+            repoAdder.addFetchedRepository()
+
+            assertIs<Adding>(awaitItem()) // now moved to Adding
+
+            val addedState = awaitItem()
+            assertIs<Added>(addedState)
+            assertEquals(newRepo, addedState.repo)
         }
     }
 

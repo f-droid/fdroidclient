@@ -132,12 +132,7 @@ internal class RepoManagerAddAllIntegrationTest {
 
     private suspend fun addRepo(url: String) {
         log.info("Fetching $url")
-        repoManager.fetchRepositoryPreview(
-            url = url,
-            username = null,
-            password = null,
-            proxy = null,
-        )
+        repoManager.fetchRepositoryPreview(url = url, proxy = null)
         repoManager.addRepoState.test(timeout = 15.seconds) {
             val fetchState = awaitFinalFetchState()
             if (fetchState is Fetching && fetchState.canAdd) {

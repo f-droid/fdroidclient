@@ -110,9 +110,9 @@ internal class RepoAdder(
 
     private var fetchJob: Job? = null
 
-    internal fun fetchRepository(url: String, username: String?, password: String?, proxy: Proxy?) {
+    internal fun fetchRepository(url: String, proxy: Proxy?) {
         fetchJob = GlobalScope.launch(coroutineContext) {
-            fetchRepositoryInt(url, username, password, proxy)
+            fetchRepositoryInt(url, proxy)
         }
     }
 
@@ -120,8 +120,6 @@ internal class RepoAdder(
     @VisibleForTesting
     internal suspend fun fetchRepositoryInt(
         url: String,
-        username: String? = null,
-        password: String? = null,
         proxy: Proxy? = null,
     ) {
         if (hasDisallowInstallUnknownSources(context)) {
@@ -159,14 +157,16 @@ internal class RepoAdder(
         // try fetching repo with v2 format first and fallback to v1
         try {
             try {
-                val repo = getTempRepo(nUri.uri, IndexFormatVersion.TWO, username, password)
+                val repo =
+                    getTempRepo(nUri.uri, IndexFormatVersion.TWO, nUri.username, nUri.password)
                 val repoFetcher =
                     RepoV2Fetcher(tempFileProvider, downloaderFactory, httpManager, proxy)
                 repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
             } catch (e: NotFoundException) {
                 log.warn(e) { "Did not find v2 repo, trying v1 now." }
                 // try to fetch v1 repo
-                val repo = getTempRepo(nUri.uri, IndexFormatVersion.ONE, username, password)
+                val repo =
+                    getTempRepo(nUri.uri, IndexFormatVersion.ONE, nUri.username, nUri.password)
                 val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory)
                 repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
             }

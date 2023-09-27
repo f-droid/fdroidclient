@@ -126,17 +126,12 @@ public class RepoManager @JvmOverloads constructor(
      */
     @AnyThread
     @JvmOverloads
-    public fun fetchRepositoryPreview(
-        url: String,
-        username: String? = null,
-        password: String? = null,
-        proxy: Proxy? = null,
-    ) {
-        repoAdder.fetchRepository(url, username, password, proxy)
+    public fun fetchRepositoryPreview(url: String, proxy: Proxy? = null) {
+        repoAdder.fetchRepository(url, proxy)
     }
 
     /**
-     * When [addRepoState] is in [org.fdroid.repo.Fetched],
+     * When [addRepoState] is in [org.fdroid.repo.Fetching.done],
      * you can call this to actually add the repo to the DB.
      * @throws IllegalStateException if [addRepoState] is currently in any other state.
      */
