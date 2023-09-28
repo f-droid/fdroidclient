@@ -108,7 +108,7 @@
     <string name="crash_dialog_text">Atgadījās negaidīta kļūda, kas lika lietotnei beigt darboties. Vai nosūtīt e-pastu ar kļūdas izvērsumu, lai palīdzētu novērst nepilnību\?</string>
     <string name="notification_title_single_update_available">Pieejams atjauninājums</string>
     <string name="notification_title_summary_install_error">Uzstādīšana neizdevās</string>
-    <string name="SignatureMismatch">Jaunais laidiens ir parakstīts ar atslēgu, kas atšķiras no iepriekšējās. Lai to uzstādītu, vispirms ir jānoņem iepriekšējais. Lūgums to izdarīt un mēģināt vēlreiz. (Jāņem vērā, ka noņemšana izdzēsīs visus lietotnes datus)</string>
+    <string name="SignatureMismatch">Jaunā versija ir parakstīta ar atslēgu, kas atšķiras no iepriekšējās. Lai to uzstādītu, vispirms ir jānoņem iepriekšējā. Lūgums to izdarīt un mēģināt vēlreiz. (Jāņem vērā, ka noņemšana izdzēsīs visus lietotnes datus)</string>
     <string name="installIncompatible">Lietotne nav saderīga ar ierīci. Vienalga uzstādīt\?</string>
     <string name="by_author_format">izstrādātājs: %s</string>
     <string name="unstable_updates">Nepastāvīgie atjauninājumi</string>
@@ -302,7 +302,7 @@
     <string name="swap_join_same_wifi">Jāpievienojas tam pašam Wi-Fi, kuru izmanto draugs</string>
     <string name="swap_nfc_description">Ja draugam ir F-Droid un ir ieslēgts NFC, jāsaliek kopā ierīces.</string>
     <string name="swap_nfc_title">Piesist, lai apmainītos</string>
-    <string name="nearby_splash__request_permission">Izmēģini!</string>
+    <string name="nearby_splash__request_permission">Meklēt tagad</string>
     <string name="nearby_splash__both_parties_need_fdroid">Abiem iesaistītajiem ir nepieciešams %1$s, lai izmantotu apmaiņu.</string>
     <string name="nearby_splash__find_people_button">Atrast cilvēkus tuvumā</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Nav interneta\? Iegūsti lietotnes no tuvumā esošiem cilvēkiem!</string>
@@ -563,4 +563,7 @@
 \n
 \nJāsazinās ar uzturētāju un jādara tam zināms par nepilnību.</string>
     <string name="repo_io_error">Kļūda savienojoties ar glabātavu.</string>
+    <string name="nearby_splace__external_storage_permission_button">Izmēģināt</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid var meklēt glabātavas un spoguļserverus SD kartē, bet tam ir nepieciešama atļauja.</string>
+    <string name="swap_connection_indexv0_error">Tiek mēģināts savienoties ar kādu, kam ir novecojusi F-Droid versija. Lai savienotos, ir nepieciešams atjaunināt F-Droid lietotni. Ir iespējams izmantot mijmaiņu, lai atjauninātu F-Droid lietotni.</string>
 </resources>
