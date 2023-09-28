@@ -66,11 +66,11 @@ dependencies {
     implementation project(":libs:index")
 
     implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
 
-    implementation "androidx.room:room-runtime:2.5.1"
-    implementation "androidx.room:room-ktx:2.5.1"
-    kapt "androidx.room:room-compiler:2.5.1"
+    implementation "androidx.room:room-runtime:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
 
     implementation 'io.github.microutils:kotlin-logging:2.1.21'
     implementation "org.slf4j:slf4j-android:1.7.36"
@@ -80,15 +80,15 @@ dependencies {
 
     testImplementation project(":libs:sharedTest")
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'io.mockk:mockk:1.12.4'
+    testImplementation 'io.mockk:mockk:1.13.5'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     testImplementation 'androidx.test:core:1.5.0'
     testImplementation 'androidx.test.ext:junit:1.1.5'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
-    testImplementation 'org.robolectric:robolectric:4.8.2'
+    testImplementation 'org.robolectric:robolectric:4.10.3'
     testImplementation 'commons-io:commons-io:2.6'
-    testImplementation 'ch.qos.logback:logback-classic:1.2.11'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.5'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3'
     testImplementation 'app.cash.turbine:turbine:1.0.0'
 
     androidTestImplementation project(":libs:sharedTest")
