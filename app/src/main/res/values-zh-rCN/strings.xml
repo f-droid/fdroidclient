@@ -446,7 +446,7 @@
     <string name="scan_removable_storage_toast">正在扫描 %s…</string>
     <string name="scan_removable_storage_summary">寻找可移动存储设备上的存储库，比如 SD 卡和 USB 闪存驱动器</string>
     <string name="nearby_splash__read_external_storage">搜索 SD 卡用于存储库和镜像。</string>
-    <string name="nearby_splash__request_permission">试试看</string>
+    <string name="nearby_splash__request_permission">立即搜索</string>
     <string name="not_visible_nearby">附近功能未启用</string>
     <string name="not_visible_nearby_description">在与附近的设备交换之前，使你的设备可见。</string>
     <string name="swap_toast_using_path">使用 %1$s</string>
@@ -523,4 +523,22 @@
     <string name="repo_last_update_downloaded">上次更新已下载</string>
     <string name="warning_target_sdk">此应用是为旧版本 Android 构建的，无法自动更新。</string>
     <string name="app_error_open">无法启动应用。</string>
+    <string name="repo_state_fetching">正在获取仓库…</string>
+    <string name="repo_state_adding">正在添加仓库…</string>
+    <string name="repo_enter_url">手动输入仓库 URL</string>
+    <string name="repo_exists">已添加了此仓库。</string>
+    <string name="repo_invalid">无效的仓库。
+\n
+\n请联系维护者告知这一问题。</string>
+    <string name="repo_io_error">连接仓库出错。</string>
+    <string name="repo_add_new_title">添加仓库</string>
+    <string name="turn_on_wifi">打开 Wi-Fi</string>
+    <string name="repo_add_new_mirror">添加为新镜像</string>
+    <string name="swap_banner_message">要交换应用，请启动 Wi-Fi，并连接到和你的好友相同的网络。</string>
+    <string name="repo_intro">仓库是额外的应用来源。 你在此添加的第三方仓库和那些提供由 F-Droid 自行构建应用的仓库在标准方面并不一样。
+\n
+\n请确保你正添加的仓库是可信的。</string>
+    <string name="nearby_splace__external_storage_permission_button">试一试</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid 可以在 SD 卡上搜索仓库和镜像，但需要你的许可才能这么做。</string>
+    <string name="swap_connection_indexv0_error">你的设备正尝试连接到安装了过时版本 F-Droid 的设备。要成功连接，必须更新其他设备上的 F-Droid 。可以通过 F-Droid 官方应用的“交换”功能让这些设备从你这里升级 F-Droid 。</string>
 </resources>
