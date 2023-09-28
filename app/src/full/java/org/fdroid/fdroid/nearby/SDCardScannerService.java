@@ -33,13 +33,9 @@ import androidx.core.app.JobIntentService;
 import androidx.core.content.ContextCompat;
 
 import org.fdroid.fdroid.Utils;
-import org.fdroid.index.SigningException;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -71,7 +67,6 @@ public class SDCardScannerService extends JobIntentService {
     private static final String ACTION_SCAN = "org.fdroid.fdroid.nearby.SCAN";
 
     private static final List<String> SKIP_DIRS = Arrays.asList(".android_secure", "LOST.DIR");
-
 
     public static void scan(Context context) {
         Intent intent = new Intent(context, SDCardScannerService.class);
@@ -158,14 +153,6 @@ public class SDCardScannerService extends JobIntentService {
     }
 
     private void registerRepo(File file) {
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(file);
-            TreeUriScannerIntentService.registerRepo(this, inputStream, Uri.fromFile(file.getParentFile()));
-        } catch (IOException | SigningException e) {
-            e.printStackTrace();
-        } finally {
-            Utils.closeQuietly(inputStream);
-        }
+        TreeUriScannerIntentService.registerRepo(this, Uri.fromFile(file.getParentFile()));
     }
 }
