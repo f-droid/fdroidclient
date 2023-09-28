@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_full">เอฟ-ดรอยด์</string>
     <string name="installIncompatible">แอปเข้ากันไม่ได้กับอุปกรณ์ของคุณ ติดตั้งหรือไม่\?</string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
@@ -28,7 +28,7 @@
     <string name="app_inst_known_source">ถูกติดตั้ง (จาก %s)</string>
     <string name="app_inst_unknown_source">ถูกติดตั้ง (จากแหล่งที่มาที่ไม่รู้จัก)</string>
     <string name="ok">ตกลง</string>
-    <string name="yes">ใช่</string>
+    <string name="yes">ใช่ …</string>
     <string name="no">ไม่</string>
     <string name="repo_add_title">เพิ่มแหล่งที่เก็บใหม่</string>
     <string name="repo_add_add">เพิ่ม</string>
