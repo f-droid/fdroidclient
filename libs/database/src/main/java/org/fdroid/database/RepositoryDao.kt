@@ -34,18 +34,6 @@ public interface RepositoryDao {
     public fun insert(newRepository: NewRepository): Long
 
     /**
-     * Inserts an empty [Repository] for an initial update.
-     *
-     * @return the [Repository.repoId] of the inserted repo.
-     */
-    @Deprecated("Use insert instead")
-    public fun insertEmptyRepo(
-        address: String,
-        username: String? = null,
-        password: String? = null,
-    ): Long
-
-    /**
      * Returns the repository with the given [repoId] or null, if none was found with that ID.
      */
     public fun getRepository(repoId: Long): Repository?
@@ -177,10 +165,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     @Transaction
     @Deprecated("Use insert instead")
-    override fun insertEmptyRepo(
+    fun insertEmptyRepo(
         address: String,
-        username: String?,
-        password: String?,
+        username: String? = null,
+        password: String? = null,
     ): Long {
         val repo = CoreRepository(
             name = mapOf("en-US" to address),
