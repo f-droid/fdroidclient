@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="system_installer_on">Cleachd Leudachan pribhleidean F-Droid airson pacaidean a stàladh, ùrachadh ’s a thoirt air falbh</string>
     <string name="system_installer">Leudachan pribhleidean F-Droid</string>
     <string name="install_history_and_metrics">Eachdraidh nan stàlaidhean ’s a’ mheatrachd</string>
@@ -231,9 +231,9 @@
     <string name="about_title_full">Mu F-Droid</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Chan eil an tionndadh stàlaichte co-chòrdail le tionndadh sam bith a tha ri fhaighinn. Ma dhì-stàlaicheas tu an aplacaid, ’s urrainn dhut tionndaidhean co-chòrdail a shealltainn ’s a stàladh. Tachraidh seo gu tric le aplacaidean a chaidh a stàladh o Google Play no tùs eile ma chaidh an soidhneadh le teisteanas eile.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Chan eil tionndadh ann a tha co-chòrdail leis an uidheam</string>
-    <string name="app_details__no_versions__no_compatible_signers">Chan eil tionndadh le soidhneadh co-chòrdail ann</string>
+    <string name="app_details__no_versions__no_compatible_signers">Chan eil tionndadh le soidhnichear co-chòrdail ann</string>
     <string name="app_details__no_versions__show_incompat_versions">Airson na tionndaidhean nach eil co-chòrdail a shealltainn an-seo co-dhiù, cuir an comas an roghainn “%1$s”.</string>
-    <string name="app_details__incompatible_mismatched_signers">Tha an soidhneadh diofraichte on tionndadh stàlaichte</string>
+    <string name="app_details__incompatible_mismatched_signers">Tha an soidhnichear diofraichte on tionndadh stàlaichte</string>
     <string name="app_details_donate_prompt">Chaidh %1$s a chruthachadh le %2$s. Ceannaich cupan cofaidh dhaibh!</string>
     <string name="app_details_donate_prompt_unknown_author">Ceannaich cupan cofaidh do luchd-leasachaidh %1$s!</string>
     <string name="no_such_app">Cha deach aplacaid dhen leithid a lorg.</string>
@@ -370,7 +370,7 @@
     <string name="swap_join_same_wifi">Thig a-steach dhan aon lìonra WiFi sa bheil do charaid</string>
     <string name="swap_nfc_description">Ma tha F-Droid aig do charaid is NFC air a chur air, cuir an dàrna uidheam ris an uidheam eile.</string>
     <string name="swap_nfc_title">Suath ris airson iomlaid</string>
-    <string name="nearby_splash__request_permission">Feuch e</string>
+    <string name="nearby_splash__request_permission">Dèan lorg</string>
     <string name="nearby_splash__document_tree">Lorg ionadan-tasgaidh is sgàthanan air cairt USB OTG.</string>
     <string name="nearby_splash__read_external_storage">Lorg ionadan-tasgaidh is sgàthanan air cairt SD.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Feumaidh an dithis %1$s airson iomlaid am fagas.</string>
@@ -545,6 +545,35 @@
     <string name="antidisabledalgorithm">Soidhneadh le algairim nach eil sàbhailte</string>
     <string name="antiknownvuln">So-leòntachd aithnichte</string>
     <string name="antinosource">Chan eil am bun-tùs ri fhaighinn tuilleadh</string>
-    <string name="antinsfw">Tha susbaint san aplacaid seo nach bu chòir fhoillseachadh no a bhith ri fhaicinn air feadh an àite</string>
+    <string name="antinsfw">Susbaint inbheach</string>
     <string name="antiothers">Droch-ghleusan eile</string>
+    <string name="app_error_open">Cha b’ urrainn dhuinn an aplacaid a chur gu dol.</string>
+    <string name="about_title_basic">Mu F-Droid bunasach</string>
+    <string name="repo_add_new_title">Cuir ionad-tasgaidh ris</string>
+    <string name="repo_add_new_mirror">Cuir ris ’na sgàthan ùr</string>
+    <string name="use_ipfs_gateways">Cleachd bealaichean IPFS</string>
+    <string name="app_name_basic">F-Droid bunasach</string>
+    <string name="use_ipfs_gateways_summary">Luchdaich a-nuas faidhlichean o sgàthanan IPFS ma chuireas an t-ionad-tasgaidh taic riutha.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">oidhcheil</string>
+    <string name="turn_on_wifi">Cuir a’ WiFi air</string>
+    <string name="nearby_splace__external_storage_permission_button">Feuch e</string>
+    <string name="menu_release_channel_beta">Ceadaich ùrachaidhean beta</string>
+    <string name="repo_state_adding">A’ cur an ionaid-thasgaidh ris…</string>
+    <string name="antinsfwlist">Tha susbaint san aplacaid seo nach bu chòir foillseachadh no sealltainn sa h-uile àite</string>
+    <string name="repo_invalid">Ionad-tasgaidh mì-dhligheach.
+\n
+\nCuir fios gun neach-ghlèidhidh a dh’innse dhaibh mun duilgheadas.</string>
+    <string name="warning_target_sdk">Chaidh an aplacaid seo a thogail airson seann-tionndadh dhe Android agus cha ghabh a h-ùrachadh gu fèin-obrachail.</string>
+    <string name="repo_exists">Chaidh an t-ionad-tasgaidh seo a chur ris mu thràth.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">’S urrainn dha F-Droid ionadan-tasgaidh is sgàthanan a lorg air a’ chairt SD agad ach feumaidh tu cead a thoirt dha airson sin a dhèanamh.</string>
+    <string name="repo_state_fetching">A’ faighinn an ionaid-thasgaidh…</string>
+    <string name="repo_io_error">Mearachd a’ ceangal ris an ionad-tasgaidh.</string>
+    <string name="repo_enter_url">Cuir a-steach URL an ionaid-thasgaidh a làimh</string>
+    <string name="repo_last_update_downloaded">An t-ùrachadh mu dheireadh a chaidh a luchdadh a-nuas</string>
+    <string name="latest__empty_state__upgrading">Ag àrdachadh an stòir-dhàta…</string>
+    <string name="repo_intro">’S e tùs a bharrachd do dh’aplacaidean a th’ ann an ionad-tasgaidh. Tha stannardan eadar-dhealaichte aig feadhainn threas-phàrtaidhean a chuireas tu ris an-seo na tha aig an fheadhainn a sholaireas aplacaidean a chaidh a thogail le F-Droid fhèin.
+\n
+\nDèan cinnteach gu bheil an t-ionad-tasgaidh a tha thu a’ cur ris airidh air d’ earbsa.</string>
+    <string name="swap_connection_indexv0_error">Tha thu a’ feuchainn ri ceangal le cuideigin aig a bheil seann-tionndadh dhe F-Droid. Airson ceangal a dhèanamh, feumaidh iad an aplacaid F-Droid aca àrdachadh. ’S urrainn dhaibh gleus an iomaid a chleachdadh airson an aplacaid F-Droid aca ùrachadh uat-sa.</string>
+    <string name="swap_banner_message">Airson aplacaidean iomlaid, cuir am WiFi agad gu dol is dèan ceangal ris an aon lìonra ’s a tha aig do charaid.</string>
 </resources>
