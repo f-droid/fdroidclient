@@ -226,7 +226,7 @@
     <string name="uninstall_error_unknown">發生未知嘅錯誤，所以解除安裝唔到</string>
     <string name="share_apk_error">分享唔到個 app 檔</string>
     <string name="nearby_splash__download_apps_from_people_nearby">個網離太遠？一於由身在咫尺嘅人過啲 app 畀您！</string>
-    <string name="nearby_splash__request_permission">試嚟睇下</string>
+    <string name="nearby_splash__request_permission">立即搜查</string>
     <string name="swap_nfc_title">對碰去兌換</string>
     <string name="swap_nfc_description">若果您嘅好友有 F-Droid 又開著 NFC 就將您哋兩部機拍埋一齊啦。</string>
     <string name="swap_join_same_wifi">同您嘅好友連去同一個 Wi-Fi</string>
@@ -474,7 +474,7 @@
     <string name="repo_searching_address">搵緊有冇封裝軟件存庫喺
 \n%1$s</string>
     <string name="share_repository">分享存庫</string>
-    <string name="requires_features">前題係：%1$s</string>
+    <string name="requires_features">限定：%1$s</string>
     <string name="empty_installed_app_list">未有安裝任何 app。
 \n
 \n您部機有裝到 apps，但佢哋未有喺 F-Droid 提供。可能係您要更新咗您啲存庫先，又或者存庫真係冇提供您啲 apps。</string>
@@ -528,4 +528,22 @@
     <string name="about_title_basic">關於 F-Droid 新基本</string>
     <string name="repo_last_update_downloaded">對上一次下載咗更新</string>
     <string name="app_error_open">開唔到個 app。</string>
+    <string name="turn_on_wifi">開啟 wifi</string>
+    <string name="repo_state_adding">加入緊存庫…</string>
+    <string name="repo_invalid">存庫無效。
+\n
+\n請聯絡負責人，話過佢哋知存庫有問題。</string>
+    <string name="repo_exists">呢個存庫已經加入。</string>
+    <string name="repo_add_new_title">加入存庫</string>
+    <string name="repo_state_fetching">攞緊存庫返嚟…</string>
+    <string name="repo_io_error">連線去存庫嘅時候發生錯誤。</string>
+    <string name="repo_enter_url">自行輸入存庫嘅 URL</string>
+    <string name="repo_add_new_mirror">加入做新嘅鏡像</string>
+    <string name="repo_intro">存庫係額外嘅 app 來源。您喺度加入嘅第三方存庫，同供應 F-Droid 自行建置嘅 app 存庫，標準各異。
+\n
+\n請確定您加入嘅存庫足以信賴。</string>
+    <string name="swap_banner_message">若要兌換 app，請開啟您嘅 Wi-Fi，並同您嘅好友連去同一個網絡。</string>
+    <string name="nearby_splace__external_storage_permission_button">試嚟睇下</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid 可以搵下您張 SD 卡入面有啲咩存庫同鏡像，但要您畀權限至得。</string>
+    <string name="swap_connection_indexv0_error">對家用緊舊版嘅 F-Droid。要升級佢個 F-Droid app 至能夠連線。佢可以同您兌換，等您過個 F-Droid app 畀佢更新。</string>
 </resources>

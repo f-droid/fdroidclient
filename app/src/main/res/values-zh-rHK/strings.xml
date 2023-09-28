@@ -378,7 +378,7 @@
     <string name="over_network_always_summary">此連線可用時總是使用</string>
     <string name="over_data">通過行動網絡</string>
     <string name="over_wifi">通過Wi-Fi</string>
-    <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，重新啟動應用程式後才能套用設定。</string>
+    <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和一個隨機的獨特識別碼，重新啟動應用程式後才能套用設定。</string>
     <string name="send_version_and_uuid">傳送版本和 UUID 至伺服器</string>
     <string name="toast_metrics_in_install_history">在「安裝歷史紀錄檢視器」中可以檢視 %s 指標回報</string>
     <string name="send_to_fdroid_metrics_summary">每週傳送匿名資料給 F-Droid Metrics（需要保留安裝歷史紀錄）</string>
@@ -413,7 +413,7 @@
     <string name="share_repository">分享軟件庫</string>
     <string name="nearby_splash__document_tree">在 USB OTG 中搜索軟件庫及鏡像。</string>
     <string name="nearby_splash__read_external_storage">在 SD 卡中搜索軟件庫及鏡像。</string>
-    <string name="nearby_splash__request_permission">試試看</string>
+    <string name="nearby_splash__request_permission">立即搜尋</string>
     <string name="swap_hidden_wifi_ssid">（隱藏）</string>
     <string name="app_size">大小：%1$s</string>
     <string name="app_list_results_hidden_antifeature_settings">根據你的反功能設定，部分結果不予顯示。</string>
@@ -530,4 +530,22 @@
     <string name="category_Nightly">定時組建</string>
     <string name="warning_target_sdk">此應用程式乃為較舊版本的 Android 建構，無法自動更新。</string>
     <string name="app_error_open">無法啟動應用程式。</string>
+    <string name="turn_on_wifi">開啟 wifi</string>
+    <string name="repo_state_adding">正在加入軟件庫…</string>
+    <string name="repo_invalid">軟件庫無效。
+\n
+\n請聯絡其維護者，並告知相關問題。</string>
+    <string name="repo_exists">此軟件庫已經加入。</string>
+    <string name="repo_add_new_title">加入軟件庫</string>
+    <string name="repo_state_fetching">正在提取軟件庫…</string>
+    <string name="repo_io_error">連線至軟件庫時發生錯誤。</string>
+    <string name="repo_enter_url">手動輸入軟件庫 URL</string>
+    <string name="repo_add_new_mirror">加入為新鏡像</string>
+    <string name="repo_intro">軟件庫乃應用程式的額外來源。您在此新增的第三方軟件庫，與提供 F-Droid 自行組建之應用程式的軟件庫，採用不同標準。
+\n
+\n請確保您所加入的軟件庫值得信賴。</string>
+    <string name="swap_banner_message">若要交換應用程式，請開啟您的 Wi-Fi，並與您的朋友連接同一個網絡。</string>
+    <string name="nearby_splace__external_storage_permission_button">試試看</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid 可在您的 SD 卡中搜索軟件庫及鏡像，惟需您給予權限。</string>
+    <string name="swap_connection_indexv0_error">您正嘗試與使用舊版 F-Droid 的人連線。對方需升級 F-Droid 應用程式方可連線。對方可使用交換從您一邊取得 F-Droid 應用程式以便更新。</string>
 </resources>
