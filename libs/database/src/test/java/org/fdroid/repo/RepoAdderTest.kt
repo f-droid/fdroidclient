@@ -16,6 +16,7 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -212,6 +213,10 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertTrue(addedState is Added, addedState.toString())
             assertEquals(existingRepo, addedState.repo)
+        }
+
+        verify(exactly = 1) {
+            repoDao.updateUserMirrors(42L, listOf(url.trimEnd('/')))
         }
     }
 

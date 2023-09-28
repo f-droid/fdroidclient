@@ -28,6 +28,7 @@ import org.fdroid.download.HttpManager
 import org.fdroid.download.HttpManager.Companion.isInvalidHttpUrl
 import org.fdroid.download.NotFoundException
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
@@ -101,6 +102,7 @@ internal class RepoAdder(
     private val downloaderFactory: DownloaderFactory,
     private val httpManager: HttpManager,
     private val repoUriGetter: RepoUriGetter = RepoUriGetter,
+    private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
     private val log = KotlinLogging.logger {}
@@ -129,7 +131,9 @@ internal class RepoAdder(
         // get repo url and fingerprint
         val nUri = repoUriGetter.getUri(url)
         log.info("Parsed URI: $nUri")
-        if (isInvalidHttpUrl(nUri.uri.toString())) {
+        if (nUri.uri.scheme !in listOf("content", "file") &&
+            isInvalidHttpUrl(nUri.uri.toString())
+        ) {
             val e = IllegalArgumentException("Unsupported URI: ${nUri.uri}")
             addRepoState.value = AddRepoError(INVALID_INDEX, e)
             return
@@ -159,15 +163,16 @@ internal class RepoAdder(
             try {
                 val repo =
                     getTempRepo(nUri.uri, IndexFormatVersion.TWO, nUri.username, nUri.password)
-                val repoFetcher =
-                    RepoV2Fetcher(tempFileProvider, downloaderFactory, httpManager, proxy)
+                val repoFetcher = RepoV2Fetcher(
+                    tempFileProvider, downloaderFactory, httpManager, repoUriBuilder, proxy
+                )
                 repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
             } catch (e: NotFoundException) {
                 log.warn(e) { "Did not find v2 repo, trying v1 now." }
                 // try to fetch v1 repo
                 val repo =
                     getTempRepo(nUri.uri, IndexFormatVersion.ONE, nUri.username, nUri.password)
-                val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory)
+                val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory, repoUriBuilder)
                 repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
             }
         } catch (e: SigningException) {
@@ -299,4 +304,10 @@ internal class RepoAdder(
         password = password,
     )
 
+}
+
+internal val defaultRepoUriBuilder = RepoUriBuilder { repo, pathElements ->
+    val builder = Uri.parse(repo.address).buildUpon()
+    pathElements.forEach { builder.appendEncodedPath(it) }
+    builder.build()
 }
