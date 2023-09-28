@@ -477,7 +477,7 @@
     <string name="scan_removable_storage_summary">Шукати репозиторії пакунків на знімних носіях, таких як SD-карти та USB-накопичувачі</string>
     <string name="app_repository">Репозиторій: %1$s</string>
     <string name="nearby_splash__read_external_storage">Перевірити наявність репозиторіїв та дзеркал на носії SD.</string>
-    <string name="nearby_splash__request_permission">Спробуйте це</string>
+    <string name="nearby_splash__request_permission">Пошук</string>
     <string name="not_visible_nearby">Поруч не ввімкнено</string>
     <string name="not_visible_nearby_description">Перед спробою обміну між пристроями поблизу, зробіть свій пристрій видимим.</string>
     <string name="swap_toast_using_path">Використання %1$s</string>
@@ -569,4 +569,7 @@
     <string name="repo_intro">Репозиторій — це додаткове джерело застосунків. Сторонні застосунки, які ви додаєте сюди, мають інші стандарти, ніж ті, що надають застосунки, створені самим F-Droid.
 \n
 \nПереконайтесь, що репозиторій, який ви додаєте, заслуговує на довіру.</string>
+    <string name="nearby_splace__external_storage_permission_button">Спробувати</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid може шукати репозиторії та дзеркала на SD-карті, але потребує дозволу на це.</string>
+    <string name="swap_connection_indexv0_error">Ви намагаєтеся під\'єднатися до когось з застарілою версією F-Droid. Для під\'єднання необхідно оновити застосунок F-Droid. Для оновлення F-Droid можна надіслати версію з вашого пристрою.</string>
 </resources>

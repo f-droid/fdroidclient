@@ -458,7 +458,7 @@
     <string name="scan_removable_storage_title">Skani demeteblan konservejon</string>
     <string name="scan_removable_storage_summary">Serĉi deponejojn de pakaĵoj en la demetebla konservejo (SD-kartoj aŭ memor-bastonetoj)</string>
     <string name="nearby_splash__read_external_storage">Serĉi deponejojn kaj spegul‑servilojn en SD‑kartoj.</string>
-    <string name="nearby_splash__request_permission">Provi</string>
+    <string name="nearby_splash__request_permission">Serĉi</string>
     <string name="not_visible_nearby">Proksima interŝanĝo estas malŝaltita</string>
     <string name="not_visible_nearby_description">Antaŭ interŝanĝi kun proksimaj aparatoj, agordu vian aparaton videbla.</string>
     <string name="swap_toast_using_path">Uzas %1$s</string>
@@ -553,4 +553,7 @@
     <string name="repo_invalid">Malĝusta deponejo.
 \n
 \nKontaktu kun ĝia prizorganto kaj informu lin pri la problemo.</string>
+    <string name="nearby_splace__external_storage_permission_button">Provi</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid povas trovi deponejojn kaj spegulservilojn en via SD-karto, tamen ĝi bezonas vian permeson.</string>
+    <string name="swap_connection_indexv0_error">Vi provas konekti kun persono, kiu havas malnovan version de F-Droid. Por konekti, li devas ĝisdatigi la aplikaĵon F-Droid. Li povas uzi la eblon “Interŝanĝi” por elŝuti F-Droid el via aparato.</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="SignatureMismatch">Новото издание е подписано с различен ключ. За да бъде инсталирано първо трябва да премахнете старото. (Забележка: при премахване на приложението ще бъдат изтрити и неговите данни.)</string>
-    <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това?</string>
+    <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това\?</string>
     <string name="version">Издание</string>
     <string name="delete">Изтриване</string>
     <string name="enable_nfc_send">Изпращане по NFC…</string>
@@ -27,7 +27,7 @@
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
     <string name="added_on">Добавено на %s</string>
     <string name="ok">OK</string>
-    <string name="yes"> Да</string>
+    <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="repo_add_title">Добавяне на хранилище</string>
     <string name="repo_add_add">Добавяне</string>
@@ -80,7 +80,8 @@
     <string name="status_download">Изтегляне
 \n%2$s / %3$s (%4$d%%) от
 \n%1$s</string>
-    <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
+    <string name="status_connecting_to_repo">Свързване към
+\n%1$s</string>
     <string name="repos_unchanged">Всички хранилищата са актуални</string>
     <string name="global_error_updating_repos">Грешка при обновяване: %s</string>
     <string name="no_permissions">Няма разрешения</string>
@@ -92,7 +93,7 @@
     <string name="repo_last_update">Последна актуализация</string>
     <string name="repo_name">Име</string>
     <string name="repo_not_yet_updated">Хранилището все още не е използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
-    <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
+    <string name="repo_confirm_delete_title">Изтриване на хранилището\?</string>
     <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.
 \n
 \nЗабележка: Всички инсталирани приложения ще останат на устройството.</string>
@@ -204,11 +205,12 @@
     <string name="repo_details">Хранилище</string>
     <string name="repo_url">Адрес</string>
     <string name="swap_join_same_wifi_desc">За осъществяване на размяна чрез безжична мрежа е необходимо да сте в една мрежа. Ако нямате достъп до обща мрежа един от вас може да създаде безжична точка.</string>
-    <string name="swap_confirm_connect">Желаете ли да получите приложения от %1$s?</string>
+    <string name="swap_confirm_connect">Желаете ли да получите приложения от %1$s\?</string>
     <string name="swap_qr_isnt_for_swap">Сканираният QR код не е код за размяна.</string>
     <string name="status_processing_xml_percent">Обработени %2$s / %3$s (%4$d%%) от %1$s</string>
     <string name="repo_added">Хранилището %1$s е запазено.</string>
-    <string name="repo_searching_address">Търсене на хранилище в\n%1$s</string>
+    <string name="repo_searching_address">Търсене на хранилище в
+\n%1$s</string>
     <string name="unsigned">Неподписано</string>
     <string name="swap_confirm">Потвърдете размяната</string>
     <string name="swap_connection_misc_error">Грешка при свързване с устройството, не може да бъде осъществена размяна!</string>
@@ -238,19 +240,13 @@
     <string name="wifi_ap">Хотспот</string>
     <string name="swap_join_this_hotspot">Помогнете на приятеля ви да се включи към мобилната ви точка за достъп</string>
     <string name="swap_active_hotspot">%1$s (Вашия хотспот)</string>
-    <string name="swap_scan_or_type_url">Единия човек трябва да сканира кода, или да въведе URL адреса на другия в
-        браузер.
-    </string>
+    <string name="swap_scan_or_type_url">Единия човек трябва да сканира кода, или да въведе URL адреса на другия в браузер.</string>
     <string name="swap_stopping_wifi">Изключване на Wi-Fi…</string>
     <string name="crash_dialog_title">Приложението се срина</string>
-    <string name="crash_dialog_text">Непредвидена грешка накара приложението да се затвори. Желаете ли да пратите имейл
-        до разработчиците за помощ?
-    </string>
+    <string name="crash_dialog_text">Непредвидена грешка накара приложението да се затвори. Желаете ли да пратите имейл до разработчиците за помощ\?</string>
     <string name="crash_dialog_comment_prompt">Тук можете да добавяте допълнителна информация и коментари:</string>
     <string name="empty_search_available_app_list">Няма съвпадения сред достъпните приложения.</string>
-    <string name="system_install_denied_permissions">Разширените пълномощия не бяха предоставени на плъгина! Моля
-        създайте бъг репорт!
-    </string>
+    <string name="system_install_denied_permissions">Разширените пълномощия не бяха предоставени на плъгина! Моля създайте бъг репорт!</string>
     <string name="linking_apks">Прилагане на APK файловете към хранилището…</string>
     <string name="update_auto_download">Автоматично изтегляне на издания</string>
     <string name="update_auto_install">Автоматично инсталиране на издания</string>
@@ -387,18 +383,18 @@
     <string name="app_installed_media">Файлът е инсталиран в %s</string>
     <string name="app_permission_storage">F-Droid се нуждае от разрешение, за да инсталира приложението в хранилището. Моля, разрешете на следващия екран, за да продължи инсталирането.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Открита е уязвимост в %1$s. Препоръчваме незабавно да премахнете приложението.</string>
-    <string name="panic_app_setting_title">Приложение бутон при паника</string>
+    <string name="panic_app_setting_title">Приложение при тревога</string>
     <string name="panic_app_unknown_app">непознато приложение</string>
     <string name="panic_app_setting_summary">Няма зададено приложение</string>
-    <string name="panic_app_dialog_title">Потвърдете приложение при паника</string>
-    <string name="panic_app_dialog_message">Сигурни ли сте, че искате да разрешите на %1$s да задейства унищожителни действия на паник бутон?</string>
+    <string name="panic_app_dialog_title">Потвърдете приложение при тревога</string>
+    <string name="panic_app_dialog_message">Сигурни ли сте, че искате да разрешите на %1$s да задейства унищожителните действия на бутона за тревога\?</string>
     <string name="allow">Разрешаване</string>
-    <string name="panic_settings">Настройки на паник бутон</string>
+    <string name="panic_settings">Настройки на бутон за тревога</string>
     <string name="panic_settings_summary">Действия, които се предприемат в спешен случай</string>
     <string name="panic_exit_summary">Приложението ще бъде затворено</string>
     <string name="panic_destructive_actions">Унищожителни действия</string>
     <string name="panic_hide_title">Скриване на %s</string>
-    <string name="panic_hide_summary">Приложението ще се скрие само</string>
+    <string name="panic_hide_summary">Приложението ще скрие само себе си</string>
     <string name="prompt_to_send_crash_reports">Потвърждаване при изпращане на доклад за срив</string>
     <string name="prompt_to_send_crash_reports_summary">Събират се данни за сривове и се предлага да бъдат изпращани на разработчика</string>
     <string name="hide_all_notifications">Скрване на всички известия</string>
@@ -435,7 +431,7 @@
     <string name="warning_scaning_qr_code">Камерата няма автоматичен фокус. Сканирането на кода може да бъде затруднено.</string>
     <string name="share_repository">Сподели хранилище</string>
     <string name="updates_disabled_by_settings">Всички обновявания са изключени от настройките за безжична мрежа и мобилни данни</string>
-    <string name="nearby_splash__request_permission">Пробване</string>
+    <string name="nearby_splash__request_permission">Търсене</string>
     <string name="swap_toast_using_path">Използва се %1$s</string>
     <string name="main_menu__updates">Нови</string>
     <string name="menu_translation">Превод</string>
@@ -466,9 +462,9 @@
     <string name="repo_official_mirrors">Официални огледала</string>
     <string name="hide_on_long_search_press_summary">Дълго натискане на бутона за търсене ще скрие приложението</string>
     <string name="hiding_dialog_warning">Внимание: Всички бързи връзки към началния екран също ще бъдат изтрити и трябва да бъдат добавени ръчно отново.</string>
-    <string name="panic_reset_repos_summary">Връщане на настройките на хранилището по подразбиране</string>
+    <string name="panic_reset_repos_summary">Връщане на настройките на хранилищата по подразбиране</string>
     <string name="panic_reset_repos_title">Нулиране на хранилища</string>
-    <string name="panic_add_apps_to_uninstall">Добавете приложения за деинсталиране и изтриване</string>
+    <string name="panic_add_apps_to_uninstall">Добавете приложения, които да бъдат деинсталирани</string>
     <string name="panic_apps_to_uninstall">Приложения, които да бъдат премахнати с прилежащите им данни</string>
     <string name="panic_will_be_wiped">Ще бъде деинсталирано и всички данни ще бъдат изтрити</string>
     <string name="panic_app_setting_none">Няма</string>
@@ -489,7 +485,7 @@
     <string name="swap_toast_closing_nearby_after_timeout">Наоколо се изключва поради бездействие.</string>
     <string name="not_visible_nearby">Наблизо не е включено</string>
     <string name="hiding_dialog_message">Сигурни ли сте, че искате да премахнете %1$s от стартовия панел\? Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
-    <string name="panic_hide_warning_message">В случай на паника това ще премахне %1$s от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
+    <string name="panic_hide_warning_message">В случай на тревога приложението %1$s щебъде премахнато от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="menu_downgrade">Даунгрейд</string>
     <string name="send_version_and_uuid_summary">При изтегляне се изпраща изданието на това приложение и произволен уникален идентификатор, в сила след рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
@@ -557,4 +553,7 @@
 \n
 \nСвържете се с поддръжката му и съобщете за грешката.</string>
     <string name="repo_io_error">Грешка при свързване с хранилището.</string>
+    <string name="nearby_splace__external_storage_permission_button">Пробване</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid може да търси хранилища и огледала на SD карта, за целта е необходимо вашето разрешение.</string>
+    <string name="swap_connection_indexv0_error">Опитвате се да се свържете с устройство с по-ранно издание на F-Droid. Преди да можете да осъществите връзка приложението трябва да бъде обновено. Можете да изпратите последното издание от вашето устройство.</string>
 </resources>

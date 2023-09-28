@@ -482,7 +482,7 @@
     <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en unidades de almacenamiento extraíble como tarjetas SD y dispositivos USB</string>
     <string name="main_menu__updates">Avisos</string>
     <string name="nearby_splash__read_external_storage">Buscar repositorios y réplicas en la tarjeta SD.</string>
-    <string name="nearby_splash__request_permission">Probar</string>
+    <string name="nearby_splash__request_permission">Buscar ahora</string>
     <string name="not_visible_nearby">Función de cercanía no habilitada</string>
     <string name="not_visible_nearby_description">Antes de realizar intercambios con la función de cercanía, haga visible su dispositivo.</string>
     <string name="swap_toast_using_path">Utilizando %1$s</string>
@@ -573,4 +573,7 @@
     <string name="repo_state_fetching">Obteniendo repositorio…</string>
     <string name="repo_state_adding">Añadiendo repositorio…</string>
     <string name="repo_io_error">Error al conectar con el repositorio.</string>
+    <string name="nearby_splace__external_storage_permission_button">Pruébalo</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid puede buscar repositorios y espejos en tu tarjeta SD, pero necesita tu permiso para hacerlo.</string>
+    <string name="swap_connection_indexv0_error">Estás intentando conectar con alguien que tiene una versión anticuada de F-Droid. Para conectarte tiene que actualizar la aplicación de F-Droid. Puedes utilizar el intercambio para actualizar la aplicación de F-Droid.</string>
 </resources>

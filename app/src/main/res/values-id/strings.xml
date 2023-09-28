@@ -452,7 +452,7 @@
     <string name="scan_removable_storage_toast">Memindai %s…</string>
     <string name="app_repository">Repositori: %1$s</string>
     <string name="main_menu__updates">Pembaruan</string>
-    <string name="nearby_splash__request_permission">Cobalah</string>
+    <string name="nearby_splash__request_permission">Cari sekarang</string>
     <string name="swap_toast_using_path">Menggunakan %1$s</string>
     <string name="swap_toast_find_removeable_storage">Pilih Kartu SD atau USB portabel Anda</string>
     <string name="scan_removable_storage_summary">Mencari repo paket pada penyimpanan portabel seperti Kartu SD dan flash disk USB</string>
@@ -545,4 +545,7 @@
 \n
 \nHubungi pemelihara dan beri tahu tentang masalah ini.</string>
     <string name="repo_io_error">Terjadi kesalahan menghubungkan ke repositori.</string>
+    <string name="nearby_splace__external_storage_permission_button">Cobalah</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid dapat mencari repositori dan cerminan di Kartu SD Anda, tetapi memerlukan perizinan Anda supaya bisa.</string>
+    <string name="swap_connection_indexv0_error">Anda sedang mencoba untuk menghubungkan ke seseorang dengan versi F-Droid yang lawas. Untuk menghubungkan, mereka harus meningkatkan aplikasi F-Droid mereka. Mereka dapat menggunakan penggantian untuk memperbarui aplikasi F-Droid mereka dari Anda.</string>
 </resources>

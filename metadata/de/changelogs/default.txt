@@ -1,0 +1,7 @@
+* Nutzung von Repos und Spiegeln im externen Speicher auf aktuellen Android-Versionen repariert
+* Verbessertes WLAN-Management im Umfeld
+* Position in Navigationsleiste bleibt auch nach Neustart von F-Droid erhalten
+* Neue Sprache: Swahili
+* Korrektur für das Herunterladen von Bildern für Repos, die noch index-v1 verwenden
+* und bei Abstürzen mit Bezug zu Direkttausch, Repo-Management u. a.
+* Button „Zurückstufen“ entfernt, lässt Android nicht länger zu

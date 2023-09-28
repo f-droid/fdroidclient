@@ -471,7 +471,7 @@
     <string name="scan_removable_storage_summary">Vyhledat repozitáře v odpojitelných úložištích (např. SD karty a USB disky)</string>
     <string name="app_repository">Repozitář: %1$s</string>
     <string name="nearby_splash__read_external_storage">Vyhledat repozitáře a zrcadla na SD kartě.</string>
-    <string name="nearby_splash__request_permission">Vyzkoušet</string>
+    <string name="nearby_splash__request_permission">Hledat</string>
     <string name="not_visible_nearby">Funkce Nablízku je vypnuta</string>
     <string name="not_visible_nearby_description">Před výměnou se zařízeními v blízkosti zapněte viditelnost tohoto zařízení.</string>
     <string name="swap_toast_using_path">Používám %1$s</string>
@@ -563,4 +563,7 @@
 \n
 \nKontaktujte správce a dejte jim vědět o tomto problému.</string>
     <string name="repo_io_error">Chyba při připojování se k repozitáři.</string>
+    <string name="nearby_splace__external_storage_permission_button">Zkusit</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid může vyhledávat repozitáře a zrcadla na vaší SD kartě, potřebuje k tomu ale oprávnění.</string>
+    <string name="swap_connection_indexv0_error">Snažíte se připojit k někomu se zastaralou verzí aplikace F-Droid. Pro připojení musí druhá strana svou aplikaci aktualizovat. Může použít výměnu pro aktualizaci své aplikace od vás.</string>
 </resources>

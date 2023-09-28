@@ -489,7 +489,7 @@
     <string name="menu_downgrade">تراجع عن الترقية</string>
     <string name="scan_removable_storage_title">مسح ذاكرة التخزين القابلة للإزالة</string>
     <string name="app_repository">المستودع: %1$s</string>
-    <string name="nearby_splash__request_permission">جرّبه</string>
+    <string name="nearby_splash__request_permission">ابحث الآن</string>
     <string name="swap_toast_using_path">يستخدِم %1$s</string>
     <string name="scan_removable_storage_toast">جارٍ مسح %s…</string>
     <string name="main_menu__updates">التحديثات</string>
@@ -592,4 +592,7 @@
     <string name="swap_banner_message">لتبديل التطبيقات، ابدأ تشغيل شبكة Wi-Fi واتصل بنفس الشبكة التي يتصل بها صديقك.</string>
     <string name="repo_io_error">خطأ في الاتصال بالمستودع.</string>
     <string name="turn_on_wifi">تشغيل Wi-Fi</string>
+    <string name="nearby_splace__external_storage_permission_button">جرّبه</string>
+    <string name="nearby_splach__external_storage_permission_explainer">يمكن لـ F-Droid البحث عن المستودعات والمرايا على بطاقة الذاكرة الخارجية الخاصة بك، ولكنه يحتاج إلى إذن منك للقيام بذلك.</string>
+    <string name="swap_connection_indexv0_error">أنت تحاول الاتصال بشخص لديه إصدار قديم من F-Droid. للاتصال عليهم ترقية تطبيق F-Droid الخاص بهم. يمكنهم استخدام المبادلة لتحديث تطبيق F-Droid الخاص بهم منك.</string>
 </resources>

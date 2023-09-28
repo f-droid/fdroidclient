@@ -482,7 +482,7 @@
     <string name="app_repository">Repository: %1$s</string>
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
     <string name="scan_removable_storage_toast">Scansione %s…</string>
-    <string name="nearby_splash__request_permission">Prova</string>
+    <string name="nearby_splash__request_permission">Cerca ora</string>
     <string name="not_visible_nearby">Nearby non attivato</string>
     <string name="swap_toast_using_path">Usando %1$s</string>
     <string name="swap_toast_not_removable_storage">Quella scelta non corrisponde ad alcun dispositivo di archiviazione removibile, riprova!</string>
@@ -576,4 +576,7 @@
 \n
 \nContatta il manutentore e informalo del problema.</string>
     <string name="repo_io_error">Errore di connessione al repository.</string>
+    <string name="nearby_splace__external_storage_permission_button">Prova</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid può cercare repo e mirror sulla tua scheda SD, ma ha bisogno della tua autorizzazione per farlo.</string>
+    <string name="swap_connection_indexv0_error">Stai cercando di connetterti a qualcuno con una versione obsoleta di F-Droid. Per collegarsi deve aggiornare la sua app F-Droid. Può aggiornarla tramite te.</string>
 </resources>
