@@ -1,14 +1,15 @@
-package org.fdroid.fdroid.data;
+package org.fdroid.fdroid.nearby;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.os.UserManager;
 import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 import org.fdroid.fdroid.nearby.peers.WifiPeer;
 import org.fdroid.fdroid.views.ManageReposActivity;
 
@@ -50,7 +51,7 @@ public class NewRepoConfig {
             return;
         }
 
-        if (ManageReposActivity.hasDisallowInstallUnknownSources(context)) {
+        if (hasDisallowInstallUnknownSources(context)) {
             errorMessage = ManageReposActivity.getDisallowInstallUnknownSourcesErrorMessage(context);
             isValidRepo = false;
             return;
@@ -210,5 +211,24 @@ public class NewRepoConfig {
 
     public WifiPeer toPeer() {
         return new WifiPeer(this);
+    }
+
+    /**
+     * {@link android.app.admin.DevicePolicyManager} makes it possible to set
+     * user- or device-wide restrictions.  This changes whether installing from
+     * "Unknown Sources" has been disallowed by device policy.
+     *
+     * @return boolean whether installing from Unknown Sources has been disallowed
+     * @see UserManager#DISALLOW_INSTALL_UNKNOWN_SOURCES
+     * @see UserManager#DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY
+     */
+    public static boolean hasDisallowInstallUnknownSources(Context context) {
+        UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        if (Build.VERSION.SDK_INT < 29) {
+            return userManager.hasUserRestriction(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES);
+        } else {
+            return userManager.hasUserRestriction(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES)
+                    || userManager.hasUserRestriction(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY);
+        }
     }
 }

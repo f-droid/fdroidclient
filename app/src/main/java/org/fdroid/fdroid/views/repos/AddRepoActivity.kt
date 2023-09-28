@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
+import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.UpdateService
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.views.apps.AppListActivity
@@ -68,6 +69,11 @@ class AddRepoActivity : ComponentActivity() {
             onNewIntent(it)
             it.setData(null) // avoid this intent from getting re-processed
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        FDroidApp.checkStartTor(this, Preferences.get())
     }
 
     override fun onDestroy() {

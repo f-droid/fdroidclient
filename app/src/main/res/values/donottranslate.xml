@@ -13,8 +13,6 @@
 
     <string name="transition_app_item_icon">transition_app_item_icon</string>
 
-    <string name="https">https://</string>
-
     <string name="app_details_subject">%1$s on F-Droid</string>
     <string name="minsdk_or_later">%s+</string>
     <string name="up_to_maxsdk">1.0-%s</string>

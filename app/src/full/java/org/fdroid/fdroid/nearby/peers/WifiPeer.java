@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.nearby.NewRepoConfig;
 
 public class WifiPeer implements Peer {
 

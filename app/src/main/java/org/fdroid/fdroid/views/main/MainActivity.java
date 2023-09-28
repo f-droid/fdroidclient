@@ -53,14 +53,11 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
-import org.fdroid.fdroid.nearby.SwapWorkflowActivity;
 import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
-import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 
 /**
@@ -91,9 +88,6 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
     static final int REQUEST_STORAGE_ACCESS = 0x40E5;
 
-    private static final String ADD_REPO_INTENT_HANDLED = "addRepoIntentHandled";
-
-    private static final String ACTION_ADD_REPO = "org.fdroid.fdroid.MainActivity.ACTION_ADD_REPO";
     public static final String ACTION_REQUEST_SWAP = "requestSwap";
 
     private RecyclerView pager;
@@ -203,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
 
         // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
         NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
-        checkForAddRepoIntent(getIntent());
 
         NearbyViewBinder.updateExternalStorageViews(this);
     }
@@ -230,17 +223,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         handleSearchOrAppViewIntent(intent);
-
-        // This is called here as well as onResume(), because onNewIntent() is not called the first
-        // time the activity is created. An alternative option to make sure that the add repo intent
-        // is always handled is to call setIntent(intent) here. However, after this good read:
-        // http://stackoverflow.com/a/7749347 it seems that adding a repo is not really more
-        // important than the original intent which caused the activity to start (even though it
-        // could technically have been an add repo intent itself).
-        // The end result is that this method will be called twice for one add repo intent. Once
-        // here and once in onResume(). However, the method deals with this by ensuring it only
-        // handles the same intent once.
-        checkForAddRepoIntent(intent);
     }
 
     @Override
@@ -401,31 +383,6 @@ public class MainActivity extends AppCompatActivity {
         Intent searchIntent = new Intent(this, AppListActivity.class);
         searchIntent.putExtra(AppListActivity.EXTRA_SEARCH_TERMS, sanitizeSearchTerms(query));
         startActivity(searchIntent);
-    }
-
-    private void checkForAddRepoIntent(Intent intent) {
-        // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
-        // http://stackoverflow.com/a/14820849
-        if (!intent.hasExtra(ADD_REPO_INTENT_HANDLED)) {
-            intent.putExtra(ADD_REPO_INTENT_HANDLED, true);
-            NewRepoConfig parser = new NewRepoConfig(this, intent);
-            if (parser.isValidRepo()) {
-                if (parser.isFromSwap()) {
-                    SwapWorkflowActivity.requestSwap(this, intent.getData());
-                } else {
-                    Intent clean = new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class);
-                    if (intent.hasExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO)) {
-                        clean.putExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO,
-                                intent.getBooleanExtra(ManageReposActivity.EXTRA_FINISH_AFTER_ADDING_REPO, true));
-                    }
-                    startActivity(clean);
-                }
-                finish();
-            } else if (parser.getErrorMessage() != null) {
-                Toast.makeText(this, parser.getErrorMessage(), Toast.LENGTH_LONG).show();
-                finish();
-            }
-        }
     }
 
     private void refreshUpdatesBadge(int canUpdateCount) {
