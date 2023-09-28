@@ -481,7 +481,7 @@
     <string name="app_repository">Репозиторий: %1$s</string>
     <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
     <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
-    <string name="nearby_splash__request_permission">Попробовать</string>
+    <string name="nearby_splash__request_permission">Искать</string>
     <string name="not_visible_nearby">Режим Вокруг не включен</string>
     <string name="not_visible_nearby_description">Перед обменом с соседними устройствами сделайте ваше устройство видимым.</string>
     <string name="swap_toast_using_path">С помощью %1$s</string>
@@ -573,4 +573,7 @@
     <string name="repo_state_fetching">Извлечение репозитория…</string>
     <string name="repo_state_adding">Добавление репозитория…</string>
     <string name="repo_enter_url">Введите URL репозитория вручную</string>
+    <string name="nearby_splace__external_storage_permission_button">Попробовать</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid может искать репозитории и зеркала на SD-карте, но для этого необходимо ваше разрешение.</string>
+    <string name="swap_connection_indexv0_error">Вы пытаетесь подключиться к устройству с устаревшей версией F-Droid. Перед подключением следует обновить F-Droid. Вы можете отправить актуальную версию F-Droid с вашего устройства.</string>
 </resources>
