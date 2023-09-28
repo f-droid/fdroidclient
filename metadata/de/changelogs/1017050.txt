@@ -4,5 +4,5 @@
 * Unbeaufsichtigte Upgrades ohne Rechteerweiterung (vorerst nur für F-Droid Basic)
 * Anzeige der App-Größe auf dem App-Detailbildschirm (nur im Expertenmodus)
 * Etwas dunklere App-Namen in App-Listen zur besseren Lesbarkeit
-* Offenen/geschlossenen Zustand von „Alle aktualisieren“ im Updatereiter wiederherstellen (@tunedal)
-* …
+* Aus-/eingeklappten Zustand von „Alle aktualisieren“ in „Aufgaben“ (@tunedal)
+* und aktiven Reiter zwischen App-Starts wiederherstellen

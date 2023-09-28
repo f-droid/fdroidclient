@@ -467,7 +467,7 @@
     <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
     <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>
     <string name="nearby_splash__read_external_storage">SD-Karten nach Paketquellen und Spiegelserver durchsuchen.</string>
-    <string name="nearby_splash__request_permission">Ausprobieren</string>
+    <string name="nearby_splash__request_permission">Suchen</string>
     <string name="swap_toast_using_path">Verwendung von %1$s</string>
     <string name="swap_toast_not_removable_storage">Diese Wahl passte zu keinem Wechselspeichermedium, versuchen Sie es noch einmal!</string>
     <string name="swap_toast_find_removeable_storage">Wählen Sie Ihre austauschbare SD-Karte oder Ihren USB-Anschluss</string>
@@ -559,4 +559,7 @@
 \n
 \nVergewissern Sie sich, dass das Repository, das Sie hinzufügen, vertrauenswürdig ist.</string>
     <string name="repo_enter_url">URL des Repositorys manuell eingeben</string>
+    <string name="nearby_splace__external_storage_permission_button">Probieren</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kann nach Repos und Spiegelservern auf Ihrer SD-Karte suchen, braucht aber Ihre Erlaubnis dafür.</string>
+    <string name="swap_connection_indexv0_error">Sie versuchen sich mit jemandem mit einer veralteten F-Droid-App zu verbinden. Vor einer Verbindung muss diese F-Droid-App aktualisiert werden. Ihr könnt den Direkttausch verwenden, um die veraltete App über die neue auf Ihrem Gerät zu aktualisieren.</string>
 </resources>
