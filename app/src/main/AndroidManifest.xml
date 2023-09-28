@@ -87,7 +87,7 @@
             android:excludeFromRecents="true" />
 
         <activity
-            android:name=".views.ManageReposActivity"
+            android:name=".views.repos.ManageReposActivity"
             android:configChanges="layoutDirection|locale"
             android:label="@string/menu_manage"
             android:launchMode="singleTask"
@@ -247,10 +247,10 @@
             android:noHistory="true" />
 
         <activity
-            android:name=".views.RepoDetailsActivity"
+            android:name=".views.repos.RepoDetailsActivity"
             android:configChanges="layoutDirection|locale"
             android:label="@string/repo_details"
-            android:parentActivityName=".views.ManageReposActivity"
+            android:parentActivityName=".views.repos.ManageReposActivity"
             android:windowSoftInputMode="stateHidden"/>
 
         <activity

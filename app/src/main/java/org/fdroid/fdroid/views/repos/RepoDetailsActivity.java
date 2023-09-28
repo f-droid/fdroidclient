@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views;
+package org.fdroid.fdroid.views.repos;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

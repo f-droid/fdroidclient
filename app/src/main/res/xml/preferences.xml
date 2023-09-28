@@ -21,7 +21,7 @@
             android:title="@string/menu_manage">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetClass="org.fdroid.fdroid.views.ManageReposActivity"
+                android:targetClass="org.fdroid.fdroid.views.repos.ManageReposActivity"
                 android:targetPackage="@string/applicationId" />
         </PreferenceScreen>
         <PreferenceScreen

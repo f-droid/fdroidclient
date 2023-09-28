@@ -18,7 +18,7 @@
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="@string/applicationId"
-                android:targetClass="org.fdroid.fdroid.views.ManageReposActivity" />
+                android:targetClass="org.fdroid.fdroid.views.repos.ManageReposActivity" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="installHistory"

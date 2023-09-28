@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid.views;
+package org.fdroid.fdroid.views.repos;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +40,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.views.repos.AddRepoActivity;
 import org.fdroid.index.RepoManager;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
