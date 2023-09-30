@@ -1282,7 +1282,7 @@ public class AppDetailsRecyclerViewAdapter
                                     // Expanded item dimensions should be already calculated at this moment
                                     // so it's possible to correctly scroll to a given position
                                     recyclerView.smoothScrollToPosition(currentPosition);
-                                    recyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                                    recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                                 }
                             });
                 }
