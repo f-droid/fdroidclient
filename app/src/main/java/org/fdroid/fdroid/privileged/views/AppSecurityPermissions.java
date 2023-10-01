@@ -46,6 +46,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -153,7 +154,8 @@ public class AppSecurityPermissions {
         }
     }
 
-    public static class PermissionItemView extends LinearLayout implements View.OnClickListener {
+    public static class PermissionItemView extends LinearLayout
+            implements View.OnClickListener, View.OnLongClickListener {
         MyPermissionGroupInfo group;
         MyPermissionInfo perm;
         AlertDialog dialog;
@@ -194,6 +196,7 @@ public class AppSecurityPermissions {
             permGrpIcon.setColorFilter(0xff757575);
             permNameView.setText(label);
             setOnClickListener(this);
+            setOnLongClickListener(this);
         }
 
         @Override
@@ -223,6 +226,12 @@ public class AppSecurityPermissions {
                 dialog = builder.show();
                 dialog.setCanceledOnTouchOutside(true);
             }
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            Utils.copyToClipboard(getContext(), String.valueOf(perm.label), perm.name);
+            return true;
         }
 
         @Override
