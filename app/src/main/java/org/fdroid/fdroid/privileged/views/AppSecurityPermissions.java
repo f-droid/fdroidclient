@@ -188,6 +188,7 @@ public class AppSecurityPermissions {
                 CharSequence newStr = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(parcel);
                 parcel.recycle();
                 builder.append(newStr);
+                builder.append(" ");
                 builder.append(label);
                 label = builder;
             }
