@@ -27,7 +27,7 @@
     <string name="app_inst_known_source">Đã cài đặt (từ %s)</string>
     <string name="app_inst_unknown_source">Đã cài đặt (không rõ nguồn gốc)</string>
     <string name="added_on">Đã thêm vào %s</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
     <string name="repo_add_title">Thêm kho mới</string>
