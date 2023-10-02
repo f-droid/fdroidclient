@@ -72,6 +72,8 @@
     <string name="notify">Show available updates</string>
     <!-- as in software updates -->
     <string name="notify_on">Show a notification when updates are available</string>
+    <string name="force_old_installer_title">Force old installer</string>
+    <string name="force_old_installer_summary">Disable the beta Session Installer, including support for automatic background updates.</string>
     <string name="system_installer">Privileged Extension</string>
     <string name="system_installer_on">Use Privileged Extension to install, update, and remove packages</string>
     <string name="local_repo_name">Name of your Local Repo</string>

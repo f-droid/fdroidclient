@@ -219,6 +219,12 @@
             android:summary="@string/force_old_index_summary"
             android:title="@string/force_old_index" />
         <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="expert"
+            android:key="forceOldInstaller"
+            android:summary="@string/force_old_installer_summary"
+            android:title="@string/force_old_installer_title" />
+        <CheckBoxPreference
             android:dependency="expert"
             android:key="privilegedInstaller"
             android:persistent="false"

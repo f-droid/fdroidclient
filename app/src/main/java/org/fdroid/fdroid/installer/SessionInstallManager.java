@@ -19,6 +19,7 @@ import androidx.core.util.ObjectsCompat;
 import androidx.documentfile.provider.DocumentFile;
 
 import org.apache.commons.io.IOUtils;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -215,6 +216,8 @@ public class SessionInstallManager extends BroadcastReceiver {
      * Returns true if the {@link SessionInstaller} can be used on this device.
      */
     public static boolean canBeUsed(Context context) {
+        // In case of bugs, let the user disable this while it is still beta.
+        if (Preferences.get().forceOldInstaller()) return false;
         // We could use the SessionInstaller also on lower versions,
         // but the benefit of unattended updates only starts with SDK 31.
         // Before the extra bugs it has aren't worth it.
