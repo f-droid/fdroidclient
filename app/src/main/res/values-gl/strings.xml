@@ -444,7 +444,7 @@
     <string name="install_history">Historial de instalacións</string>
     <string name="install_history_summary">Ollar o rexistro privado de tódalas instalacións e desinstalacións</string>
     <string name="send_version_and_uuid">Enviar versión e UUID para os servidores</string>
-    <string name="send_version_and_uuid_summary">Enviar a versión da aplicación e un ID xerado ó chou ó baixar. Ten efeito após reiniciar a aplicación.</string>
+    <string name="send_version_and_uuid_summary">Enviar a versión da aplicación e un ID xerado ó chou. Ten efecto despois de reiniciar a aplicación.</string>
     <string name="scan_removable_storage_title">Analizar almacenamento extraíbel</string>
     <string name="scan_removable_storage_toast">Estase a analizar %s…</string>
     <string name="scan_removable_storage_summary">Procura repositorios de paquetes en almacenamento extraíbel coma tarxetas SD e chaves de memoria USB</string>
@@ -531,4 +531,5 @@
     <string name="latest__empty_state__upgrading">Actualizando base de datos…</string>
     <string name="use_ipfs_gateways">Usela pasarelas IPFS</string>
     <string name="use_ipfs_gateways_summary">Descargalos ficheiros dende as réplicas IPFS, se o repo o admite.</string>
+    <string name="app_name_basic">F-Droid Básico</string>
 </resources>
