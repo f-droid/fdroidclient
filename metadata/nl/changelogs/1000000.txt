@@ -1,0 +1,7 @@
+* Ondersteuning bij het installeren van media, OTA, ZIP, etc. bestanden
+
+* Volledige ondersteuning voor APK's ondertekend door meerdere ondertekentoetsen
+
+* Nieuwe Tibetaanse vertaling
+
+* Verwijder gerelateerde apps en categorieën nadat u een repo hebt uitgeschakeld

@@ -1,0 +1,3 @@
+* Bug opgelost waardoor vertalingen niet verschijnen op Android >= 7.0
+
+* Correctie DB upgrade crash van 1.0-alpha3 → 1.0-alpha4 #1181

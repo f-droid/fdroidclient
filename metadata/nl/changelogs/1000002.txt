@@ -1,0 +1,7 @@
+* Voorkom dat HTTP ETag wordt gebruikt als trackingcookie
+
+* Verbeterde lay-out van screenshots
+
+* Ruim tijdelijke en in de cache opgeslagen bestanden goed op
+
+* Correcties in Donkeren modus

@@ -1,0 +1,3 @@
+* Bug oplossen door apps uit repo's te verwijderen (# 568)
+
+* Veel snellere indexupdates
