@@ -467,7 +467,7 @@
     <string name="scan_removable_storage_title">Скенирај преносиве меморије</string>
     <string name="scan_removable_storage_summary">Тражи репозиторијуме на преносивим меморијама попут SD картица и USB дискова</string>
     <string name="nearby_splash__read_external_storage">Претражите репозиторијуме и резервне изворе на SD картици.</string>
-    <string name="nearby_splash__request_permission">Пробај</string>
+    <string name="nearby_splash__request_permission">Претражи</string>
     <string name="swap_toast_using_path">Помоћу %1$s</string>
     <string name="swap_toast_not_removable_storage">Изабрана компонента није преносиви уређај. Покушајте поново.</string>
     <string name="swap_toast_find_removeable_storage">Изаберите преносиву SD картицу или USB</string>
@@ -563,4 +563,7 @@
 \nОбратите се одржавачу и обавестите га о проблему.</string>
     <string name="repo_io_error">Грешка при повезивању са репозиторијумом.</string>
     <string name="repo_enter_url">Ручно унеси URL репозиторијума</string>
+    <string name="nearby_splace__external_storage_permission_button">Пробај</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid може да претражује репозиторијуме и резервне изворе на вашој SD картици, али је потребна ваша дозвола за то.</string>
+    <string name="swap_connection_indexv0_error">Покушавате да се повежете са неким ко има застарелу верзију F-Droid-а. Да би се повезали, морају да надограде своју F-Droid апликацију. Могу да користе размену да би ажурирали своју F-Droid апликацију од вас.</string>
 </resources>
