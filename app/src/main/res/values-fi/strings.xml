@@ -157,7 +157,7 @@
     <string name="menu_changelog">Muutosloki</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="antiupstreamnonfreelist">Yläjuoksun lähdekoodi ei ole kokonaan vapaata</string>
+    <string name="antiupstreamnonfreelist">Upstream-lähdekoodi ei ole kokonaan vapaata</string>
     <string name="expert_on">Näytä lisätietoja ja ota käyttöön lisäasetukset</string>
     <string name="show_incompat_versions_on">Näytä sovellusversiot, jotka eivät ole yhteensopivia laitteesi kanssa</string>
     <string name="useTor">Käytä Tor-verkkoa</string>
@@ -275,7 +275,7 @@
     <string name="app__install_downloaded_update">Päivitä</string>
     <string name="app_list__name__downloading_in_progress">Ladataan %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s asennettu</string>
-    <string name="installed_apps__activity_title">Asennetut Sovellukset</string>
+    <string name="installed_apps__activity_title">Asennetut sovellukset</string>
     <string name="update_all">Päivitä kaikki</string>
     <string name="updates__hide_updateable_apps">Piilota sovellukset</string>
     <string name="updates__show_updateable_apps">Näytä sovellukset</string>
@@ -376,7 +376,7 @@
     <string name="force_touch_apps_on">Näytä sovellukset, jotka vaativat kosketusnäytön riippumatta laitteiston tuesta</string>
     <string name="privacy">Tietosuoja</string>
     <string name="preventScreenshots_title">Estä kuvankaappaukset</string>
-    <string name="preventScreenshots_summary">Estää kuvankaappausten ottamisen ja piilottaa sovelluksen sisällön viimeisimmät sovellukset-näkymästä</string>
+    <string name="preventScreenshots_summary">Estää kuvankaappausten ottamisen ja piilottaa sovelluksen sisällön viimeisimmät sovellukset -näkymästä</string>
     <string name="panic_app_setting_title">Paniikkinappula-sovellus</string>
     <string name="panic_app_unknown_app">tuntematon sovellus</string>
     <string name="panic_app_setting_summary">Sovellusta ei ole asetettu</string>
@@ -515,7 +515,7 @@
     <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
     <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
     <string name="antinonfreedep">Ei-vapaat riippuvuudet</string>
-    <string name="app_list_results_hidden_antifeature_settings">Jotkin tulokset on piilotettu ei toivottujen asetusten perusteella.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Jotkin tulokset on piilotettu ei-toivottujen asetusten perusteella.</string>
     <string name="antiads">Mainokset</string>
     <string name="antitrack">Seuranta</string>
     <string name="antinonfreead">Ei-vapaat lisäosat</string>
@@ -535,4 +535,5 @@
     <string name="category_Nightly">Yölliset koontiversiot</string>
     <string name="warning_target_sdk">Sovellus tehtiin vanhalle Androidin versiolle, eikä sitä voida päivittää automaattisesti.</string>
     <string name="antinsfwlist">Sovellus sisältää sisältöä, joka ei sovi näkyville joka paikkaan</string>
+    <string name="app_error_open">Sovellusta ei voitu käynnistää.</string>
 </resources>
