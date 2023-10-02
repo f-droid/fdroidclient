@@ -524,4 +524,6 @@
     <string name="about_title_basic">F-Droid Basicについて</string>
     <string name="category_Nightly">ナイトリービルド</string>
     <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動的にアップデートできません。</string>
+    <string name="app_error_open">アプリを起動できませんでした。</string>
+    <string name="repo_last_update_downloaded">最後にダウンロードしたアップデート</string>
 </resources>
