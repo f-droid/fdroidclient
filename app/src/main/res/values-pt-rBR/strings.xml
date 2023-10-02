@@ -563,4 +563,17 @@
     <string name="category_Nightly">noturna</string>
     <string name="warning_target_sdk">Este aplicativo foi compilado para uma versão antiga do Android e não pode ser atualizado automaticamente.</string>
     <string name="app_error_open">Não foi possível iniciar o aplicativo.</string>
+    <string name="repo_add_new_title">Adicionar repositório</string>
+    <string name="repo_intro">Um repositório é uma fonte adicional de aplicativos. Aplicativos que você adiciona aqui possuem padrões diferentes dos fornecidos pelo próprio F-Droid.
+\n
+\nCertifique-se de que o repositório que está adicionando é confiável.</string>
+    <string name="repo_state_fetching">Obtendo repositório…</string>
+    <string name="repo_state_adding">Adicionando repositório…</string>
+    <string name="repo_enter_url">Insira a URL do repositório manualmente</string>
+    <string name="repo_exists">Este repositório já foi adicionado.</string>
+    <string name="repo_invalid">Repositório inválido.
+\n
+\nContate o responsável e o informe sobre o problema.</string>
+    <string name="repo_io_error">Erro ao conectar ao repositório.</string>
+    <string name="turn_on_wifi">Ativar o WiFi</string>
 </resources>
