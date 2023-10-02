@@ -538,4 +538,16 @@
     <string name="warning_target_sdk">यह एप्लिकेशन Android के पुराने संस्करण के लिए बनाया गया था और स्वचालित रूप से अपडेट नहीं किया जा सकता है।</string>
     <string name="category_Nightly">नाईटली</string>
     <string name="app_error_open">ऐप लॉन्च नहीं किया जा सका।</string>
+    <string name="repo_state_adding">रिपॉज़िटरी जोड़ा जा रहा है…</string>
+    <string name="repo_invalid">अमान्य रिपॉज़िटरी।
+\n
+\nअनुरक्षक से संपर्क करके उन्हें समस्या के बारे में बताएँ।</string>
+    <string name="repo_exists">एक रिपॉज़िटरी को पहले ही जोड़ दिया गया है।</string>
+    <string name="repo_add_new_title">रिपॉज़िटरी जोड़ें</string>
+    <string name="repo_state_fetching">रिपॉज़िटरी लाया जा रहा है…</string>
+    <string name="repo_enter_url">रिपॉज़िटरी का URL खुद जोड़ें</string>
+    <string name="repo_add_new_mirror">नए दर्पण के रूप में जोड़ें</string>
+    <string name="repo_intro">एक रिपॉज़िटरी, ऐप्स का एक अतिरिक्त स्रोत होता है। जो तृतीय-पक्ष रिपॉज़िटरियाँ आप यहाँ जोड़ेंगे, उनके लिए मानक, F-Droid द्वारा बनाए ऐप प्रदान करने वालों से अलग होगा।
+\n
+\nकृपया सुनिश्चित करें कि जो रिपॉज़िटरी आप जोड़े जा रहे हैं वह विश्वसनीय है।</string>
 </resources>
