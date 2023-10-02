@@ -538,4 +538,19 @@
     <string name="category_Nightly">nightly</string>
     <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
     <string name="app_error_open">Could not launch app.</string>
+    <string name="turn_on_wifi">Turn on WiFi</string>
+    <string name="repo_state_adding">Adding repository…</string>
+    <string name="repo_invalid">Invalid repository.
+\n
+\nContact the maintainer and let them know about the issue.</string>
+    <string name="repo_exists">This repo was already added.</string>
+    <string name="repo_add_new_title">Add repository</string>
+    <string name="repo_state_fetching">Fetching repository…</string>
+    <string name="repo_io_error">Error connecting to the repository.</string>
+    <string name="repo_enter_url">Enter repository URL manually</string>
+    <string name="repo_add_new_mirror">Add as new mirror</string>
+    <string name="repo_intro">A repository is an additional source of apps. Third-party ones you add here have different standards than those providing apps built by F-Droid itself.
+\n
+\nPlease ensure that the repository you are adding is trustworthy.</string>
+    <string name="swap_banner_message">To swap apps, start your Wi-Fi and connect to the same network as your friend.</string>
 </resources>
