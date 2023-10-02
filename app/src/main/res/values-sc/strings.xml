@@ -566,4 +566,9 @@
     <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
     <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
     <string name="app_error_open">No est istadu possìbile aviare s\'aplicatzione.</string>
+    <string name="repo_state_adding">Annanghe unu depòsitu…</string>
+    <string name="repo_exists">Custu depòsitu est istadu giai annantu.</string>
+    <string name="repo_add_new_title">Annanghe unu depòsitu</string>
+    <string name="repo_state_fetching">Recuperende su depòsitu…</string>
+    <string name="repo_enter_url">Inserta s\'URL de su depòsitu a manu</string>
 </resources>
