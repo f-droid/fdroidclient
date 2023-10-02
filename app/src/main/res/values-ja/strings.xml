@@ -6,7 +6,7 @@
     <string name="delete">削除</string>
     <string name="enable_nfc_send">NFC送信を有効にする…</string>
     <string name="cache_downloaded">キャッシュしたアプリを残す</string>
-    <string name="updates">アップデート</string>
+    <string name="updates">更新</string>
     <string name="other">その他</string>
     <string name="update_interval">自動アップデートの間隔</string>
     <string name="notify">利用可能なアップデートを表示</string>
@@ -527,4 +527,13 @@
     <string name="app_error_open">アプリを起動できませんでした。</string>
     <string name="repo_last_update_downloaded">最後にダウンロードしたアップデート</string>
     <string name="antinsfwlist">このアプリは公にするのに不適切な内容を含みます</string>
+    <string name="repo_state_adding">リポジトリの追加中…</string>
+    <string name="repo_exists">このリポジトリはすでに追加されています。</string>
+    <string name="repo_add_new_title">リポジトリの追加</string>
+    <string name="repo_state_fetching">リポジトリの取得中…</string>
+    <string name="repo_enter_url">リポジトリの URL を入力</string>
+    <string name="repo_add_new_mirror">ミラーとして追加</string>
+    <string name="repo_intro">リポジトリは、アプリ入手の追加ソースです。ここに追加したサードパーティーのリポジトリは、F-Droid 自身がビルドして提供するアプリとは異なる基準で運用されています。
+\n
+\n追加しているリポジトリが信頼できることを確認してください。</string>
 </resources>
