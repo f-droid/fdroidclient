@@ -576,4 +576,6 @@
 \nContate o responsável e o informe sobre o problema.</string>
     <string name="repo_io_error">Erro ao conectar ao repositório.</string>
     <string name="turn_on_wifi">Ativar o WiFi</string>
+    <string name="swap_banner_message">Para trocar de aplicativos, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
+    <string name="repo_add_new_mirror">Adicionar como novo espelho</string>
 </resources>
