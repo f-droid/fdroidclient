@@ -74,7 +74,7 @@
         <item name="screenshotPlaceholderIconColor">#e8e8e8</item>
 
         <!--Platform attributes-->
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <!-- light app theme with accent colors following roughly android design guidelines -->
