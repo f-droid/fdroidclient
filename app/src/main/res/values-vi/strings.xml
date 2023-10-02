@@ -8,7 +8,7 @@
     <string name="delete">Xóa</string>
     <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
     <string name="cache_downloaded">Lưu các ứng dụng trong bộ nhớ đệm</string>
-    <string name="updates">Cập nhật</string>
+    <string name="updates">Những bản cập nhật</string>
     <string name="other">Khác</string>
     <string name="update_interval">Tự động cập nhật định kì</string>
     <string name="notify">Hiện các bản cập nhật có sẵn</string>
