@@ -484,7 +484,7 @@
     <string name="scan_removable_storage_summary">Шукаць рэпазіторыі пакункаў на рухомых носьбітах кшталту SD-картак і USB-назапашвальнікаў</string>
     <string name="main_menu__updates">Абнаўленні</string>
     <string name="nearby_splash__read_external_storage">Пошук на SD-картцы рэпазіторыяў і люстэркаў.</string>
-    <string name="nearby_splash__request_permission">Паспрабаваць</string>
+    <string name="nearby_splash__request_permission">Шукаць ящэ</string>
     <string name="not_visible_nearby">Рэжым \"Паблізу\" не ўключаны</string>
     <string name="not_visible_nearby_description">Перад абменам з прыладамі паблізу зрабіце вашую прыладу бачнай.</string>
     <string name="swap_toast_using_path">Выкарыстанне %1$s</string>
@@ -575,4 +575,7 @@
 \n
 \nКалі ласка упэўніцеся, што можаце давяраць дабаўленаму вамі рэпазіторыю.</string>
     <string name="swap_banner_message">Каб падзяліцца праграмамі, запусціце Wi-Fi і падлучыцеся да адной і той жа сеткі як і сябар.</string>
+    <string name="nearby_splace__external_storage_permission_button">Паспрабаваць</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid можа шукаць рэпазіторыі і люстэркі на вашай SD карце, але патрабуе вашага дазволу каб выканаць гэта.</string>
+    <string name="swap_connection_indexv0_error">Вы спрабуеце падлучыцца да карыстальніка застарэлай версіяй F-Droid. Каб падлучыцца ён павінен абнавіць яго праграмму F-Droid. Ён можа выкарыстаць прагортванне каб абнавіць яго F-Droid праграмму праз вас.</string>
 </resources>
