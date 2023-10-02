@@ -544,6 +544,6 @@
 \n
 \nSusisiekite su jos prižiūrėtoju ir informuokite jį apie problemą.</string>
     <string name="repo_add_new_title">Pridėti saugyklą</string>
-    <string name="repo_io_error">Klaida prisijungiant prie saugyklos</string>
+    <string name="repo_io_error">Klaida prisijungiant prie saugyklos.</string>
     <string name="repo_enter_url">Įrašykite saugyklos adresą (URL)</string>
 </resources>
