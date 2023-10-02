@@ -1,6 +1,8 @@
-* Correcciones de errores 
-* Iconos de los repositorios en la lista de repositorios
-* Razones de las anti-funciones (donde esté disponible) 
-* Actualizaciones desatendidas sin extensión privilegiada (solo F-Droid Basic por ahora) 
-* Mostrar el tamaño de la aplicación en la pantalla de la misma (sólo en modo experto) 
-* Nombres de las aplicaciones más oscuros para mejorar la lectura
+* Muchas correcciones de errores
+* Mostrar iconos de repositorios en la lista
+* Razones para Anti-Features (donde esté disponible)
+* Actualizaciones desatendidas sin extensión privilegiada (F-Droid Basic sólo por ahora)
+* Tamaño de la aplicación en la pantalla de detalles (sólo en modo experto)
+* Nombres de aplicaciones más oscuros mejorar la legibilidad.
+* Restaurar el estado abierto/cerrado de "Actualizar todo" en la pestaña Actualizaciones (@tunedal)
+* Restaurar la pestaña activa en reinicios
