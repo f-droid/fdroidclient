@@ -480,7 +480,7 @@
     <string name="scan_removable_storage_title">סריקת אחסון נתיק</string>
     <string name="scan_removable_storage_summary">איתור מאגרי חבילות בהתקנים נתיקים כגון כרטיסי SD וכונני דיסק און קי</string>
     <string name="nearby_splash__read_external_storage">חיפוש מאגרים ועותקי מראה בכרטיס ה־SD.</string>
-    <string name="nearby_splash__request_permission">בואו ננסה</string>
+    <string name="nearby_splash__request_permission">לחפש כעת</string>
     <string name="not_visible_nearby">קרבה לא מופעלת</string>
     <string name="not_visible_nearby_description">בטרם החלפה עם מכשירים בקרבת מקום עליך להפעיל את גילוי המכשיר שלך.</string>
     <string name="swap_toast_using_path">נעשה שימוש ב־%1$s</string>
@@ -573,4 +573,6 @@
 \n
 \nנא ליצור קשר עם המתחזקים וליידע אותם על התקלה הזאת.</string>
     <string name="repo_io_error">שגיאה בהתחברות למאגר.</string>
+    <string name="nearby_splace__external_storage_permission_button">להתנסות</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid יכול מעתה לחפש מאגרים ואתרי מראה בכרטיס ה־SD שלך אך הוא יצטרך הרשאות לשם כך.</string>
 </resources>
