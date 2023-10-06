@@ -134,6 +134,7 @@ public data class AppManifest(
 ) : PackageManifest {
     public override val minSdkVersion: Int? get() = usesSdk?.minSdkVersion
     public override val featureNames: List<String>? get() = features
+    public override val targetSdkVersion: Int? get() = usesSdk?.targetSdkVersion
 }
 
 internal fun ManifestV2.toManifest() = AppManifest(

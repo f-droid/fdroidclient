@@ -30,6 +30,8 @@ public class CompatibilityCheckerImpl @JvmOverloads constructor(
     public override fun isCompatible(manifest: PackageManifest): Boolean {
         if (sdkInt < manifest.minSdkVersion ?: 0) return false
         if (sdkInt > manifest.maxSdkVersion ?: Int.MAX_VALUE) return false
+        if ((manifest.targetSdkVersion ?: 1) <
+            CompatibilityCheckerUtils.minInstallableTargetSdk(sdkInt)) return false
         if (!isNativeCodeCompatible(manifest)) return false
         manifest.featureNames?.iterator()?.forEach { feature ->
             if (forceTouchApps && feature == "android.hardware.touchscreen") return@forEach
@@ -45,5 +47,21 @@ public class CompatibilityCheckerImpl @JvmOverloads constructor(
             if (nativeCode.contains(supportedAbi)) return true
         }
         return false
+    }
+}
+
+/**
+ * Contains helper methods for checking compatibility of an APK
+ */
+public object CompatibilityCheckerUtils {
+    // Mirrored from AOSP due to lack of public APIs
+    // frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+    // TODO: Keep this in sync with AOSP to avoid INSTALL_FAILED_DEPRECATED_SDK_VERSION errors
+    @JvmOverloads
+    public fun minInstallableTargetSdk(sdkInt: Int = SDK_INT): Int {
+        return when (sdkInt) {
+            34 -> 23 // Android 6.0, M
+            else -> 1 // Android 1.0, BASE
+        }
     }
 }

@@ -103,11 +103,34 @@ internal class CompatibilityCheckerTest {
         assertFalse(checker.isCompatible(manifest4))
     }
 
+    @Test
+    fun targetSdkIsRespected() {
+        // greater or equal than minInstallableTargetSdk are compatible
+        val manifest1 = Manifest(targetSdkVersion = Int.MAX_VALUE)
+        assertTrue(checker.isCompatible(manifest1))
+        val manifest2 = Manifest(targetSdkVersion = 23)
+        val checker2 = CompatibilityCheckerImpl(
+            packageManager = packageManager,
+            sdkInt = 34,
+            supportedAbis = emptyArray()
+        )
+        assertTrue(checker2.isCompatible(manifest2))
+        // a targetSdk smaller than minInstallableTargetSdk is not compatible
+        val manifest3 = Manifest(targetSdkVersion = 22)
+        val checker3 = CompatibilityCheckerImpl(
+            packageManager = packageManager,
+            sdkInt = 34,
+            supportedAbis = emptyArray()
+        )
+        assertFalse(checker3.isCompatible(manifest3))
+    }
+
     private data class Manifest(
         override val minSdkVersion: Int? = null,
         override val maxSdkVersion: Int? = null,
         override val featureNames: List<String>? = null,
         override val nativecode: List<String>? = null,
+        override val targetSdkVersion: Int? = null,
     ) : PackageManifest
 
 }
