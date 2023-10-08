@@ -460,7 +460,7 @@
     <string name="app_repository">Tároló: %1$s</string>
     <string name="main_menu__updates">Frissítések</string>
     <string name="nearby_splash__read_external_storage">Tárolók és tükrök keresése az SD-kártyán.</string>
-    <string name="nearby_splash__request_permission">Próbálja meg</string>
+    <string name="nearby_splash__request_permission">Keresés</string>
     <string name="not_visible_nearby">„Közelben” nem engedélyezett</string>
     <string name="not_visible_nearby_description">Mielőtt cserélne a közeli eszközökkel, tegy láthatóvá az eszközét.</string>
     <string name="swap_toast_using_path">Ezt használja: %1$s</string>
@@ -551,4 +551,7 @@
     <string name="repo_intro">Egy tároló egy további forrás alkalmazásoknak. Harmadik fél általiak, amiket itt hozzáadsz eltérő minőséggel rendelkeznek, mint az F-Droid által épített alkalmazások.
 \n
 \nKérjük, győződj meg arról, hogy a hozzáadni kívánt tároló megbízható.</string>
+    <string name="nearby_splace__external_storage_permission_button">Kipróbálás</string>
+    <string name="nearby_splach__external_storage_permission_explainer">Az F-Droid képes keresni a SD-kártyán lévő tárolókban és tükrökben, de ehhez engedélyre van szüksége.</string>
+    <string name="swap_connection_indexv0_error">Olyan valakihez próbál kapcsolódni, akinek elavult F-Droid verziója van. A kapcsolódáshoz frissítenie kell az F-Droid alkalmazást. Használhatja a cserét, hogy frissítse az F-Droid alkalmazását.</string>
 </resources>

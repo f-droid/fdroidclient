@@ -1,0 +1,8 @@
+* Számos hibajavítás
+* Tárolóikonok megjelenítése
+* Az előnytelen funkciók okának megjelenítése (ha elérhető)
+* Automatikus frissítések a privilegizált kiegészítő nélkül (csak az F-Droid Basic esetén)
+* Alkalmazásméret megjelenítése a részleteknél (csak szakértő módban)
+* Enyhén sötétebb alkalmazásnevek az alkalmazáslistában a jobb olvashatóság érdekében
+* Az „Összes frissítése” gomb megjelenítésének javítása a Frissítések lapon (@tunedal)
+* Az aktív lap helyreállítása újraindítás után
