@@ -470,6 +470,15 @@ public class Apk implements Comparable<Apk>, Parcelable {
             // Else do nothing. The targetSdk for the above split-permissions is set to 33,
             // so we don't make any changes for apps targeting 33 or above
         }
+        if (Build.VERSION.SDK_INT >= 34) {
+            // TODO: Change the strings below to Manifest.permission once we compile with SDK 34
+            if (set.contains("android.permission.READ_MEDIA_IMAGES") ||
+                    set.contains("android.permission.READ_MEDIA_VIDEO") ||
+                    set.contains("android.permission.ACCESS_MEDIA_LOCATION")
+            ) {
+                set.add("android.permission.READ_MEDIA_VISUAL_USER_SELECTED");
+            }
+        }
 
         String[] perms = set.toArray(new String[0]);
         requestedPermissions = perms.length == 0 ? null : perms;
