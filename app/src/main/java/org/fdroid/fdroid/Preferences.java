@@ -106,6 +106,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
+    public static final String PREF_FORCE_OLD_INSTALLER = "forceOldInstaller";
     public static final String PREF_PRIVILEGED_INSTALLER = "privilegedInstaller";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
@@ -202,6 +203,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean isForceOldIndexEnabled() {
         return preferences.getBoolean(PREF_FORCE_OLD_INDEX, IGNORED_B);
+    }
+
+    public boolean forceOldInstaller() {
+        return preferences.getBoolean(PREF_FORCE_OLD_INSTALLER, false);
     }
 
     /**

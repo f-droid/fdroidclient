@@ -183,6 +183,12 @@
             android:defaultValue="false"
             android:dependency="expert" />
         <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="expert"
+            android:key="forceOldInstaller"
+            android:summary="@string/force_old_installer_summary"
+            android:title="@string/force_old_installer_title" />
+        <CheckBoxPreference
             android:title="@string/system_installer"
             android:defaultValue="false"
             android:key="privilegedInstaller"
