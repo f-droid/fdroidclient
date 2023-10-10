@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="system_installer_on">Cleachd Leudachan pribhleidean F-Droid airson pacaidean a stàladh, ùrachadh ’s a thoirt air falbh</string>
     <string name="system_installer">Leudachan pribhleidean F-Droid</string>
     <string name="install_history_and_metrics">Eachdraidh nan stàlaidhean ’s a’ mheatrachd</string>
@@ -553,7 +553,7 @@
     <string name="use_ipfs_gateways">Cleachd bealaichean IPFS</string>
     <string name="app_name_basic">F-Droid bunasach</string>
     <string name="use_ipfs_gateways_summary">Luchdaich a-nuas faidhlichean o sgàthanan IPFS ma chuireas an t-ionad-tasgaidh taic riutha.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">oidhcheil</string>
+    <string name="category_Nightly">oidhcheil</string>
     <string name="turn_on_wifi">Cuir a’ WiFi air</string>
     <string name="nearby_splace__external_storage_permission_button">Feuch e</string>
     <string name="menu_release_channel_beta">Ceadaich ùrachaidhean beta</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Tegye ezt meg, és próbálja újra. (Figyelem: az eltávolítás törli az alkalmazás minden tárolt adatát.)</string>
     <string name="installIncompatible">Az alkalmazás nem kompatibilis ezzel az eszközzel, ennek ellenére is telepíti?</string>
     <string name="version">Verzió</string>
@@ -530,7 +530,7 @@
     <string name="use_ipfs_gateways_summary">A fájlok letöltése IPFS-átjárókról, ha támogatja a tároló.</string>
     <string name="app_name_basic">Alap F-Droid</string>
     <string name="about_title_basic">Az Alap F-Droid névjegye</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">napi</string>
+    <string name="category_Nightly">napi</string>
     <string name="antinsfwlist">Ez az alkalmazás olyan tartalommal rendelkezik, amelyet nem szerencsés mindenhol megjeleníteni</string>
     <string name="warning_target_sdk">Ez az alkalmazás az Android egy régebbi verziójához készült, ezért nem lehet automatikusan frissíteni.</string>
     <string name="app_error_open">Nem sikerült elindítani az alkalmazást.</string>

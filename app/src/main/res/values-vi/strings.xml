@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Phiên bản mới có mã khoá khác với phiên bản cũ. Để cài đặt phiên bản mới phải xoá
         phiên bản cũ trước. Hãy xoá phiên bản cũ và thử lại. (Chú ý rằng khi xoá ứng dụng, dữ liệu ứng dụng sẽ bị mất)
     </string>
@@ -530,7 +530,7 @@
     <string name="menu_release_channel_beta">Cho phép bản cập nhật beta</string>
     <string name="app_name_basic">F-Droid Cơ Bản</string>
     <string name="about_title_basic">Về F-Droid Basic</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">hàng ngày</string>
+    <string name="category_Nightly">hàng ngày</string>
     <string name="app_error_open">Không thể chạy ứng dụng.</string>
     <string name="warning_target_sdk">Ứng dụng này được tạo cho phiên bản Android cũ hơn và không thể cập nhật tự động.</string>
     <string name="repo_last_update_downloaded">Bản cập nhật cuối cùng đã tải xuống</string>

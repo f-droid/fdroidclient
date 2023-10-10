@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">F-Droid</string>
     <string name="version">Útgáfa</string>
     <string name="delete">Eyða</string>
@@ -555,7 +555,7 @@
     <string name="latest__empty_state__upgrading">Uppfæri gagnagrunn…</string>
     <string name="app_error_open">Get ekki ræst forrit.</string>
     <string name="repo_last_update_downloaded">Síðasta uppfærsla sótt</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">dagleg útgáfa</string>
+    <string name="category_Nightly">dagleg útgáfa</string>
     <string name="use_ipfs_gateways">Nota IPFS-gáttir</string>
     <string name="use_ipfs_gateways_summary">Sækja skrár frá IPFS-speglum, ef hugbúnaðarsafnið styður það.</string>
     <string name="about_title_basic">Um grunnútgáfu F-Droid</string>
