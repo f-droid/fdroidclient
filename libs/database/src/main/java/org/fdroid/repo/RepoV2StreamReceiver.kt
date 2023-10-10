@@ -74,6 +74,7 @@ internal open class RepoV2StreamReceiver(
                     ipfsCidV1 = file.ipfsCidV1,
                 )
             },
+            isCompatible = true, // not concerned with compatibility at this point
         )
     }
 
