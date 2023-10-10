@@ -137,12 +137,13 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         Set<String> shownAntiFeatures = Preferences.get().showAppsWithAntiFeatures();
         String otherAntiFeatures = activity.getResources().getString(R.string.antiothers_key);
         boolean showOtherAntiFeatures = shownAntiFeatures.contains(otherAntiFeatures);
+        boolean hideIncompatibleVersions = !Preferences.get().showIncompatibleVersions();
         Iterator<AppOverviewItem> iterator = items.iterator();
         while (iterator.hasNext()) {
             AppOverviewItem item = iterator.next();
             if (isFilteredByAntiFeature(item, antiFeatures, shownAntiFeatures, showOtherAntiFeatures)) {
                 iterator.remove();
-            } else if (!Preferences.get().showIncompatibleVersions() && !item.isCompatible()) {
+            } else if (hideIncompatibleVersions && !item.isCompatible()) {
                 iterator.remove();
             }
         }
