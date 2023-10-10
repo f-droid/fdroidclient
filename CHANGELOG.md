@@ -1,3 +1,7 @@
+### 1.18.0 (2023-10-10)
+
+* Handle new implied split-permissions added in SDK 34.
+
 ### 1.18.0-alpha0 (2023-09-22)
 
 * Fixed using repos and mirrors from External Storage on recent Android releases
