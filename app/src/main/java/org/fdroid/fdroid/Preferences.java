@@ -182,6 +182,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
     private final List<ChangeListener> unstableUpdatesListeners = new ArrayList<>();
+    private final List<ChangeListener> showIncompatibleListeners = new ArrayList<>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -616,6 +617,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         unstableUpdatesListeners.add(listener);
     }
 
+    public void registerShowIncompatibleListener(ChangeListener listener) {
+        showIncompatibleListeners.add(listener);
+    }
+
+    public void unregisterShowIncompatibleListener(ChangeListener listener) {
+        showIncompatibleListeners.remove(listener);
+    }
+
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Utils.debugLog(TAG, "Invalidating preference '" + key + "'.");
@@ -639,6 +648,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 break;
             case PREF_UNSTABLE_UPDATES:
                 for (ChangeListener listener : unstableUpdatesListeners) {
+                    listener.onPreferenceChange();
+                }
+                break;
+            case PREF_SHOW_INCOMPAT_VERSIONS:
+                for (ChangeListener listener : showIncompatibleListeners) {
                     listener.onPreferenceChange();
                 }
                 break;

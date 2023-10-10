@@ -342,13 +342,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
         configureProxy(preferences);
 
-        // If the user changes the preference to do with filtering anti-feature apps,
-        // it is easier to just notify a change in the app provider,
-        // so that the newly updated list will correctly filter relevant apps.
-        preferences.registerAppsRequiringAntiFeaturesChangeListener(() -> {
-            // TODO check if anything else needs updating/reloading
-        });
-
         preferences.registerUnstableUpdatesChangeListener(() ->
                 AppUpdateStatusManager.getInstance(FDroidApp.this).checkForUpdates());
 

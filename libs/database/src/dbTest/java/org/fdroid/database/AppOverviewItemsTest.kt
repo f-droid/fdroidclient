@@ -10,8 +10,10 @@ import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 internal class AppOverviewItemsTest : AppTest() {
@@ -87,6 +89,50 @@ internal class AppOverviewItemsTest : AppTest() {
         // limit is respected
         for (i in 0..3) assertEquals(i, appDao.getAppOverviewItems(i).getOrFail().size)
         assertEquals(3, appDao.getAppOverviewItems(42).getOrFail().size)
+    }
+
+    @Test
+    fun testIncompatibleFlag() {
+        // insert two apps
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName1, app1, locales)
+        appDao.insert(repoId, packageName2, app2, locales)
+
+        // both apps are not compatible
+        appDao.getAppOverviewItems().getOrFail().also {
+            assertEquals(2, it.size)
+        }.forEach {
+            assertFalse(it.isCompatible)
+        }
+        // both apps, in the same category, are not compatible
+        appDao.getAppOverviewItems("A").getOrFail().also {
+            assertEquals(2, it.size)
+        }.forEach {
+            assertFalse(it.isCompatible)
+        }
+        assertFalse(appDao.getAppOverviewItem(repoId, packageName1)!!.isCompatible)
+        assertFalse(appDao.getAppOverviewItem(repoId, packageName2)!!.isCompatible)
+
+        // each app gets a version
+        versionDao.insert(repoId, packageName1, "1", getRandomPackageVersionV2(), true)
+        versionDao.insert(repoId, packageName2, "1", getRandomPackageVersionV2(), false)
+
+        // updating compatibility for apps
+        appDao.updateCompatibility(repoId)
+
+        // now only one is not compatible
+        appDao.getAppOverviewItems().getOrFail().also {
+            assertEquals(2, it.size)
+            assertFalse(it[0].isCompatible)
+            assertTrue(it[1].isCompatible)
+        }
+        appDao.getAppOverviewItems("A").getOrFail().also {
+            assertEquals(2, it.size)
+            assertFalse(it[0].isCompatible)
+            assertTrue(it[1].isCompatible)
+        }
+        assertTrue(appDao.getAppOverviewItem(repoId, packageName1)!!.isCompatible)
+        assertFalse(appDao.getAppOverviewItem(repoId, packageName2)!!.isCompatible)
     }
 
     @Test
