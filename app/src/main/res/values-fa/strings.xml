@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="installIncompatible">کاره با دستگاهتان ناسازگار است. به هر حال نصب شود؟</string>
     <string name="delete">حذف</string>
     <string name="cache_downloaded">نگه‌داری کاره‌های انبار شده</string>
@@ -536,5 +536,5 @@
     <string name="warning_target_sdk">این کاره برای نگارشی قدیمی از اندروید ساخته شده و به طور خودکار به‌روز نمی‌شود.</string>
     <string name="app_name_basic">اف‌دروید پایه</string>
     <string name="about_title_basic">دربارهٔ اف‌دروید پایه</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">شبانه</string>
+    <string name="category_Nightly">شبانه</string>
 </resources>

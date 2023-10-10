@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">এফ-ড্রয়েড</string>
     <string name="menu_search">খুঁজুন</string>
     <string name="menu_settings">সেটিংস</string>
@@ -534,7 +534,7 @@
     <string name="antinsfwlist">এই অ্যাপে এমন বস্তু আছে যা সর্বত্র প্রচারিত বা দৃশ্যমান হওয়া উচিত নয়</string>
     <string name="repo_last_update_downloaded">সর্বশেষ হালনাগাদ নামানো হয়েছে</string>
     <string name="app_error_open">অ্যাপটি চালু করা যায়নি।</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">নাইটলি</string>
+    <string name="category_Nightly">নাইটলি</string>
     <string name="warning_target_sdk">এই অ্যাপটি অ্যান্ড্রয়েডের একটি পুরোনো সংস্করণের জন্য তৈরি করা হয়েছে এবং স্বয়ংক্রিয়ভাবে হালনাগাদ করা যাবে না।</string>
     <string name="about_title_basic">এফ-ড্রয়েড বেসিক সম্পর্কে</string>
 </resources>

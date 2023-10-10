@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">เอฟ-ดรอยด์</string>
     <string name="installIncompatible">แอปเข้ากันไม่ได้กับอุปกรณ์ของคุณ ติดตั้งหรือไม่\?</string>
     <string name="version">รุ่น</string>
@@ -399,7 +399,7 @@
     <string name="preventScreenshots_summary">บล็อกไม่ให้ถ่ายภาพหน้าจอและซ่อนเนื้อหาแอปจากหน้าจอแอปล่าสุด</string>
     <string name="swap_toast_invalid_url">URL ไม่ถูกต้องสำหรับการสลับ: %1$s</string>
     <string name="share_repository">แบ่งปันพื้นที่เก็บข้อมูล</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">ทุกคืน</string>
+    <string name="category_Nightly">ทุกคืน</string>
     <string name="turn_on_wifi">เปิดWi-Fi</string>
     <string name="nearby_splace__external_storage_permission_button">ลองมัน</string>
     <string name="preventScreenshots_title">ป้องกันภาพหน้าจอ</string>

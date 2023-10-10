@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria
         instalatzeko, aurretik zaharra desinstalatu beharra dago. Mesedez, egizu eta saiatu berriro. (Kontutan izan
         desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)
@@ -572,7 +572,7 @@
 \n
 \nJarri harremanetan administratzailearekin eta eman arazoaren berri.</string>
     <string name="repo_io_error">Errore bat gertatu da biltegira konektatzean.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">nightly bertsioa</string>
+    <string name="category_Nightly">nightly bertsioa</string>
     <string name="nearby_splace__external_storage_permission_button">Probatu</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ek zure SD txartelean repositorioak eta ispiluak bilatu ditzake, baina horretarako zure baimena behar du.</string>
     <string name="swap_connection_indexv0_error">F-Droid-en bertsio zaharkitua duen norbaitekin konektatzen saiatzen ari zara. Konektatzeko F-Droid aplikazioa berritu behar dute. Aldatzailea erabil dezakete haien F-Droid aplikazioa eguneratzeko.</string>

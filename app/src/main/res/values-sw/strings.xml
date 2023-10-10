@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">F-Droid</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="installIncompatible">Apu haiambatani na chombo chako, simika bado\?</string>
@@ -81,12 +81,12 @@
     <string name="pref_language">Lugha</string>
     <string name="not_on_same_wifi">Chombo chako hakiko kwenye mtandao sawa wa Wi-Fi na ghala uliloongeza! Jaribu kujiunga na mtandao huu: %s</string>
     <string name="wifi">Wi-Fi</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Mtandao</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Pesa</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Wakati</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Kuandika</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Michezo na Afya</string>
-    <string tools:ignore="UnusedResources" name="category_System">Mfumo</string>
+    <string name="category_Internet">Mtandao</string>
+    <string name="category_Money">Pesa</string>
+    <string name="category_Time">Wakati</string>
+    <string name="category_Writing">Kuandika</string>
+    <string name="category_Sports_Health">Michezo na Afya</string>
+    <string name="category_System">Mfumo</string>
     <string name="swap_welcome">Karibu F-Droid!</string>
     <string name="swap_dont_show_again">Usionyeshe hii tena</string>
     <string name="swap_send_fdroid">Tuma F-Droid</string>
@@ -106,10 +106,10 @@
     <string name="main_menu__latest_apps">Mpya</string>
     <string name="next">Inayofuata</string>
     <string name="skip">Ruka</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Simu na Ujumbe Mfupi</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Kusoma</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Sayansi na Elimu</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Usalama</string>
+    <string name="category_Phone_SMS">Simu na Ujumbe Mfupi</string>
+    <string name="category_Reading">Kusoma</string>
+    <string name="category_Science_Education">Sayansi na Elimu</string>
+    <string name="category_Security">Usalama</string>
     <string name="app_list__name__successfully_installed">%1$s usimikaji</string>
     <string name="warning_no_internet">Haiwezi kusasisha, uko kwenye Mtandao\?</string>
     <string name="unverified">Haijathibitishwa</string>
@@ -203,15 +203,15 @@
         <item quantity="other">Pakua masasisho ya api za %1$d.</item>
     </plurals>
     <string name="updates">Masasisho</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Michoro</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Midia-anuai</string>
+    <string name="category_Graphics">Michoro</string>
+    <string name="category_Multimedia">Midia-anuai</string>
     <string name="local_repo_name_summary">Jina linalotangazwa la ghala la kifaa chako: %s</string>
     <string name="main_menu__swap_nearby">Iliyokaribia</string>
     <string name="pref_language_default">Chaguomsingi wa Mfumo</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Uunganishaji</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Usanidi</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Michezo</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Urambazaji</string>
+    <string name="category_Connectivity">Uunganishaji</string>
+    <string name="category_Development">Usanidi</string>
+    <string name="category_Games">Michezo</string>
+    <string name="category_Navigation">Urambazaji</string>
     <string name="local_repo_name">Jina la ghala la kifaa hiki</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Toleo lililosimikwa halitangamani na matoleo mengine.  Kusimikuwa apu hii kutakuwezesha kuona na kusimika matoleo yanayoamabatana. Jambo hili huonekana sana na api silizosimikwa na Google Play ama duka lingine, haswa kama zimesahihishwa na cheti tofauti.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Tumepata kasoro na %1$s. Tunapendekeza kusasisha hadi toleo jipya mara moja.</string>
@@ -507,7 +507,7 @@
     <string name="status_processing_xml_percent">Inachakata %2$s / %3$s (%4$d%%) kutoka %1$s</string>
     <string name="status_inserting_apps">Inahifadhi maelezo ya apu</string>
     <string name="wifi_ap">Eneo la mwunganisho</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">isiyo thabiti</string>
+    <string name="category_Nightly">isiyo thabiti</string>
     <string name="proxy_port_summary">Nambari ya kituo tarishi chako proksi (k.v. 8118)</string>
     <string name="enable_proxy_summary">Sanidi Proksi ya HTTP kwa ajili ya maombi yote ya mtandao</string>
     <string name="proxy_host">Seva Proksi</string>
@@ -529,7 +529,7 @@
     <string name="repo_disabled_notification">Imezima %1$s.
 \n
 \nUtahitaji kuwezesha tena ghala hili ili kusimika api kutoka kwake.</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Kuweka mandhari</string>
+    <string name="category_Theming">Kuweka mandhari</string>
     <string name="system_install_denied_permissions">Ruhusa zilizoidhinishwa hazijatolewa kwa kiendelezi! Tafadhali tengeneza ripoti ya hitilafu!</string>
     <string name="swap_join_same_wifi_desc">Kubadilishana kutumia Wi-Fi, hakikisha kwamba mko kwenye mtandao mmoja. Kama hamna ufikikaji kwenye mtandao sawa, mmoja wenu anaweza kuunda Eneo la Mwunganisho wa Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Saidia mwenzako ajiunge na eneo lako la mwunganisho</string>

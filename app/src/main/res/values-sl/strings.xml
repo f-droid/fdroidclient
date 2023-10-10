@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Nova različica je overjena z drugim ključem kot starejša. V primeru, da želite namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite pozorni na dejstvo, da bodo zaradi odstranitve izbrisani vsi notranji podatki shranjeni v aplikaciji)</string>
     <string name="version">Različica</string>
     <string name="cache_downloaded">Ohranite predpomnjene aplikacije</string>
@@ -550,7 +550,7 @@
     <string name="antinsfw">Ni varno za delo</string>
     <string name="repo_last_update_downloaded">Zadnja posodobitev prenesena</string>
     <string name="warning_target_sdk">Ta aplikacija je bila izdelana za starejšo različico Androida in je ni mogoče samodejno posodobiti.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">nočen</string>
+    <string name="category_Nightly">nočen</string>
     <string name="latest__empty_state__upgrading">Nadgradnjevanje baze podatkov …</string>
     <string name="antiothers">Druge slabe funkcije</string>
     <string name="app_error_open">Aplikacije ni bilo mogoče zagnati.</string>
