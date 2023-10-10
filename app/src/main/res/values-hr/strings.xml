@@ -409,7 +409,6 @@
     <string name="latest__empty_state__no_recent_apps">Nema nedavnih aplikacija</string>
     <string name="main_menu__updates">Ažuriranja</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="menu_downgrade">Unazadi verziju</string>
     <string name="menu_translation">Prijevod</string>
     <string name="menu_license">Licenca: %s</string>
     <string name="menu_open">Otvori</string>

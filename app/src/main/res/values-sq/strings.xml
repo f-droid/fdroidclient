@@ -497,7 +497,6 @@
     <string name="notification_channel_swaps_description">Shfaq njoftime shkëmbimi aplikacionesh përmes P2P-së.</string>
     <string name="menu_show_install_history">Shfaq historik instalimesh</string>
     <string name="menu_show_fdroid_metrics_report">Shfaq raport statistikash</string>
-    <string name="menu_downgrade">Kaloje në version të mëparshëm</string>
     <string name="toast_metrics_in_install_history">Raporti i Statistikave %s mund të shihet që nga parësi i Historikut të Instalimeve</string>
     <string name="send_to_fdroid_metrics_summary">Dërgon një herë në javë të dhëna anonime te F-Droid Metrics (lyp Ruajtje historiku instalimesh)</string>
     <string name="send_to_fdroid_metrics">Dërgo të dhëna përdorimi</string>

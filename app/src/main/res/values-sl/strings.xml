@@ -459,7 +459,6 @@
     <string name="about_forum">Podporni forum</string>
     <string name="app_suggested">Predlagano</string>
     <string name="app_size">Velikost %1$s</string>
-    <string name="menu_downgrade">Namesti prejšnjo različico</string>
     <string name="app_repository">Skladišče: %1$s</string>
     <string name="scan_removable_storage_title">Preglej izmenljivo shrambo</string>
     <string name="scan_removable_storage_summary">Išči pakete skladišč na izmenljivih medijih, kot so SD kartice in USB ključki</string>

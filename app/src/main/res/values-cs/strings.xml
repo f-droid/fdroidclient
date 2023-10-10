@@ -465,7 +465,6 @@
     <string name="send_installed_apps">Sdílet nainstalované aplikace</string>
     <string name="send_installed_apps_csv">Aplikace nainstalované službou F-Droid jako soubor CSV</string>
     <string name="menu_open">Otevřít</string>
-    <string name="menu_downgrade">Vrátit na starší verzi</string>
     <string name="scan_removable_storage_title">Prohledat odpojitelné úložiště</string>
     <string name="scan_removable_storage_toast">Prohledávám %s…</string>
     <string name="scan_removable_storage_summary">Vyhledat repozitáře v odpojitelných úložištích (např. SD karty a USB disky)</string>

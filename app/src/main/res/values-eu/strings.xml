@@ -476,7 +476,6 @@
     <string name="about_forum">Laguntza foroa</string>
     <string name="app_suggested">Iradokitua</string>
     <string name="app_size">Neurria: %1$s</string>
-    <string name="menu_downgrade">Atzeratu bertsioa</string>
     <string name="app_repository">Biltegia: %1$s</string>
     <string name="scan_removable_storage_title">Eskaneatu gailu kengarria</string>
     <string name="scan_removable_storage_toast">%s eskaneatzen…</string>

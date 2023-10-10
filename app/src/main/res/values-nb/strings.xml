@@ -468,7 +468,6 @@
     <string name="about_forum">Brukerstøtteforum</string>
     <string name="app_suggested">Foreslått</string>
     <string name="app_size">Størrelse: %1$s</string>
-    <string name="menu_downgrade">Nedgrader</string>
     <string name="scan_removable_storage_title">Skann flyttbart medium</string>
     <string name="scan_removable_storage_summary">Se etter pakkebrønner på flyttbare medium som SD-kort og USB-minnepinner</string>
     <string name="app_repository">Pakkebrønn: %1$s</string>

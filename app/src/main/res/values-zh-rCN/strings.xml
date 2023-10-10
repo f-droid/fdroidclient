@@ -436,7 +436,6 @@
     <string name="swap_toast_invalid_url">无效的交换 URL：%1$s</string>
     <string name="about_forum">支持论坛</string>
     <string name="app_size">大小：%1$s</string>
-    <string name="menu_downgrade">降级</string>
     <string name="app_suggested">推荐</string>
     <string name="send_installed_apps_csv">通过 F-Droid 安装的应用列表，以 CSV 格式文件存储</string>
     <string name="menu_open">打开</string>

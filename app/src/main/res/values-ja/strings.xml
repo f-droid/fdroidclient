@@ -444,7 +444,6 @@
     <string name="about_forum">サポートフォーラム</string>
     <string name="app_suggested">推奨</string>
     <string name="app_size">サイズ: %1$s</string>
-    <string name="menu_downgrade">ダウングレード</string>
     <string name="scan_removable_storage_title">リムーバルストレージをスキャン</string>
     <string name="scan_removable_storage_toast">%s をスキャンしています…</string>
     <string name="scan_removable_storage_summary">SDカードやUSBメモリなどのリムーバブルストレージでパッケージレポジトリを探します</string>

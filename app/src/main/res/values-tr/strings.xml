@@ -454,7 +454,6 @@
     <string name="about_forum">Destek forumu</string>
     <string name="app_suggested">Önerilen</string>
     <string name="app_size">Boyut: %1$s</string>
-    <string name="menu_downgrade">Sürüm Düşürme</string>
     <string name="app_repository">Depo: %1$s</string>
     <string name="scan_removable_storage_title">Çıkarılabilir depolama alanını tara</string>
     <string name="scan_removable_storage_summary">SD Kart ve USB sürücü gibi çıkarılabilir depolama birimlerinde paket depolarına bak</string>

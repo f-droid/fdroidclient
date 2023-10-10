@@ -400,7 +400,6 @@
     <string name="send_installed_apps_csv">Apps installeret af F-Droid som CSV-fil</string>
     <string name="repo_exists_add_fingerprint">%1$s er allerede sat op, dette tilføjer ny nøgleinformation.</string>
     <string name="menu_open">Åbn</string>
-    <string name="menu_downgrade">Nedgrader</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="show_anti_feature_apps">Inkluder apps med antifunktionalitet</string>
     <string name="show_anti_feature_apps_on">Vis apps der kræver antifunktionalitet</string>

@@ -477,7 +477,6 @@
     <string name="about_forum">Форум падтрымкі</string>
     <string name="app_suggested">Прапанавана</string>
     <string name="app_size">Памер: %1$s</string>
-    <string name="menu_downgrade">Вяртанне да папярэдняй версіі</string>
     <string name="app_repository">Рэпазіторый: %1$s</string>
     <string name="scan_removable_storage_title">Сканаваць рухомы носьбіт</string>
     <string name="scan_removable_storage_toast">Сканаванне %s…</string>

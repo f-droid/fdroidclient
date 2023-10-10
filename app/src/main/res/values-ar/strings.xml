@@ -486,7 +486,6 @@
     <string name="menu_open">إفتح</string>
     <string name="app_suggested">مقترح</string>
     <string name="send_installed_apps_csv">التطبيقات المثبتة بواسطة F-Droid  كملف CSV</string>
-    <string name="menu_downgrade">تراجع عن الترقية</string>
     <string name="scan_removable_storage_title">مسح ذاكرة التخزين القابلة للإزالة</string>
     <string name="app_repository">المستودع: %1$s</string>
     <string name="nearby_splash__request_permission">ابحث الآن</string>

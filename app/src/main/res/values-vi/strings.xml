@@ -455,7 +455,6 @@
     <string name="app_suggested">Được đề xuất</string>
     <string name="scan_removable_storage_toast">Đang quét %s…</string>
     <string name="main_menu__updates">Cập nhật</string>
-    <string name="menu_downgrade">Hạ cấp</string>
     <string name="menu_translation">Dịch</string>
     <string name="menu_select_for_wipe">Chọn để xoá dữ liệu</string>
     <string name="menu_open">Mở</string>

@@ -480,7 +480,6 @@
     <string name="about_forum">Fórum de suporte</string>
     <string name="app_suggested">Sugerido</string>
     <string name="app_size">Tamanho: %1$s</string>
-    <string name="menu_downgrade">Desatualizar</string>
     <string name="scan_removable_storage_title">Verificar armazenamento removível</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="scan_removable_storage_summary">Procure repositórios de pacotes em armazenamento removível, como cartões SD e Pen Drives USB</string>

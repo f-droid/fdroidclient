@@ -442,7 +442,6 @@
     <string name="about_forum">支援論壇</string>
     <string name="app_suggested">建議</string>
     <string name="app_size">大小：%1$s</string>
-    <string name="menu_downgrade">降級</string>
     <string name="app_repository">軟體庫：%1$s</string>
     <string name="scan_removable_storage_title">掃描可移除的儲存裝置</string>
     <string name="scan_removable_storage_summary">尋找可移除的儲存裝置上的套件軟體庫，例如 SD 卡和 USB 隨身碟</string>

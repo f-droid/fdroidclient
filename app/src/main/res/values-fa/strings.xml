@@ -454,7 +454,6 @@
     <string name="send_installed_apps">هم‌رسانی کاره‌های نصب شده</string>
     <string name="send_installed_apps_csv">کاره‌های نصب شده از اف‌دروید در قالب پروندهٔ csv</string>
     <string name="menu_open">گشودن</string>
-    <string name="menu_downgrade">پایین بردن</string>
     <string name="scan_removable_storage_title">پویش ذخیره‌ساز جداشدنی</string>
     <string name="scan_removable_storage_toast">پوییدن %s…</string>
     <string name="scan_removable_storage_summary">گشتن دنبال مخازن روی ذخیره‌ساز جداشدنی مثل کارت‌های SD و گرداننده‌های USB</string>

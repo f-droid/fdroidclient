@@ -288,7 +288,6 @@
     <string name="main_menu__updates">อัพเดต</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="menu_downgrade">การปรับลด</string>
     <string name="menu_translation">การแปล</string>
     <string name="menu_license">ใบอนุญาต: %s</string>
     <string name="menu_video">วิดีโอ</string>

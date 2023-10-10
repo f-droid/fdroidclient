@@ -456,7 +456,6 @@
     <string name="send_installed_apps_csv">Aplicacións instaladas polo F-Droid con ficheiro CSV</string>
     <string name="updates_disabled_by_settings">Tódalas actualizacións están desactivadas por mor dos axustes de Datos/WiFi</string>
     <string name="menu_open">Abrir</string>
-    <string name="menu_downgrade">Baixar de versión</string>
     <string name="main_menu__updates">Actualizacións</string>
     <string name="antinosourcesince">O código fonte xá non está dispoñíbel e non é posíbel a súa actualización.</string>
     <string name="share_repository">Compartir repositorio</string>

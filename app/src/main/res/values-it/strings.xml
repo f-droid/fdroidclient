@@ -477,7 +477,6 @@
     <string name="app_size">Dimensione: %1$s</string>
     <string name="send_installed_apps">Condividi applicazioni installate</string>
     <string name="menu_open">Apri</string>
-    <string name="menu_downgrade">Disinstalla aggiornamento</string>
     <string name="send_installed_apps_csv">Applicazioni installate da F-Droid in formato CSV</string>
     <string name="app_repository">Repository: %1$s</string>
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>

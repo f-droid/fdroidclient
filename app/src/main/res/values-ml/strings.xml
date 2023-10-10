@@ -455,7 +455,6 @@
     <string name="about_forum">സഹായ ഫോറം</string>
     <string name="app_suggested">നിർദേശിക്കപ്പെട്ടതു</string>
     <string name="app_size">വലിപ്പം: %1$s</string>
-    <string name="menu_downgrade">പതിപ്പ് നില താഴ്ത്തുക</string>
     <string name="app_repository">ശേഖരണം : %1$s</string>
     <string name="scan_removable_storage_title">ബാഹ്യമായ സ്റ്റോറേജിൽ സൂക്ഷ്മപരിശോധന നടത്തുക</string>
     <string name="scan_removable_storage_summary">ആപ്പ് ശേഖരണ വിവരം ബാഹ്യമായ എസ.ഡി കാർഡിലോ യു.എസ്‌.ബി ഡ്രൈവുകളിലോ തിരയുക</string>

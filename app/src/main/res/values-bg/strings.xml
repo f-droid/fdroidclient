@@ -486,7 +486,6 @@
     <string name="not_visible_nearby">Наблизо не е включено</string>
     <string name="hiding_dialog_message">Сигурни ли сте, че искате да премахнете %1$s от стартовия панел\? Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
     <string name="panic_hide_warning_message">В случай на тревога приложението %1$s щебъде премахнато от стартовия панел. Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
-    <string name="menu_downgrade">Даунгрейд</string>
     <string name="send_version_and_uuid_summary">При изтегляне се изпраща изданието на това приложение и произволен уникален идентификатор, в сила след рестарт на приложението.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Показва известия при обновяване на приложения и хранилища.</string>

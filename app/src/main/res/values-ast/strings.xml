@@ -421,7 +421,6 @@
     <string name="app_size">Tamañu: %1$s</string>
     <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
     <string name="repo_exists_add_mirror">This is a copy of %1$s, add it as a mirror\?</string>
-    <string name="menu_downgrade">Downgrade</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Esta aplicación tien una firma de seguranza que ye feble</string>
     <string name="antiknownvulnlist">Esta aplicación contién una vulnerabilidá de seguranza conocida</string>

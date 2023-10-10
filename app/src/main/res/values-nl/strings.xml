@@ -460,7 +460,6 @@
     <string name="send_installed_apps">Deel geïnstalleerde apps</string>
     <string name="send_installed_apps_csv">Apps geïnstalleerd door F-Droid als CSV-bestand</string>
     <string name="menu_open">Openen</string>
-    <string name="menu_downgrade">Vervang met oudere versie</string>
     <string name="scan_removable_storage_title">Scan verwijderbare media</string>
     <string name="scan_removable_storage_toast">%s wordt gescand…</string>
     <string name="scan_removable_storage_summary">Zoek naar applicatiebronnen op verwijderbare media zoals SD-kaarten en USB-sticks</string>

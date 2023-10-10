@@ -471,7 +471,6 @@
     <string name="about_forum">Форум підтримки</string>
     <string name="app_suggested">Запропоновано</string>
     <string name="app_size">Розмір: %1$s</string>
-    <string name="menu_downgrade">Понизити версію</string>
     <string name="scan_removable_storage_title">Сканувати знімне сховище</string>
     <string name="scan_removable_storage_toast">Сканування %s…</string>
     <string name="scan_removable_storage_summary">Шукати репозиторії пакунків на знімних носіях, таких як SD-карти та USB-накопичувачі</string>

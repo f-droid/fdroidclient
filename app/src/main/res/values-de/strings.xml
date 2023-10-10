@@ -462,7 +462,6 @@
     <string name="about_forum">Support-Forum</string>
     <string name="app_suggested">Vorgeschlagen</string>
     <string name="app_size">Größe: %1$s</string>
-    <string name="menu_downgrade">Zurückstufen</string>
     <string name="app_repository">Paketquelle: %1$s</string>
     <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
     <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>

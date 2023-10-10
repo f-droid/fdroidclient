@@ -477,7 +477,6 @@
     <string name="menu_open">Opna</string>
     <string name="app_suggested">Tillögur</string>
     <string name="app_size">Stærð: %1$s</string>
-    <string name="menu_downgrade">Færa niður</string>
     <string name="app_repository">Hugbúnaðarsafn: %1$s</string>
     <string name="scan_removable_storage_title">Skanna útskiptanlega geymslumiðla</string>
     <string name="scan_removable_storage_toast">Skoða %s…</string>

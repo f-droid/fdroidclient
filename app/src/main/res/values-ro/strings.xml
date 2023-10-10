@@ -464,7 +464,6 @@
     <string name="about_forum">Forum suport</string>
     <string name="app_suggested">Recomandată</string>
     <string name="app_size">Mărime: %1$s</string>
-    <string name="menu_downgrade">Retrogradare</string>
     <string name="app_repository">Depozit: %1$s</string>
     <string name="scan_removable_storage_title">Scanați spațiul de stocare detașabil</string>
     <string name="scan_removable_storage_summary">Căuta depozite de aplicații pe mediile de stocare precum cardurile SD și unitățile USB</string>

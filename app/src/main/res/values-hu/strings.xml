@@ -453,7 +453,6 @@
     <string name="send_installed_apps_csv">Az F-Droid által telepített alkalmazások CSV fájlként</string>
     <string name="updates_disabled_by_settings">Összes frissítés letiltva az Adat/WiFi-beállításokban</string>
     <string name="menu_open">Megnyitás</string>
-    <string name="menu_downgrade">Visszaállás</string>
     <string name="scan_removable_storage_title">Cserélhető adattárolók átvizsgálása</string>
     <string name="scan_removable_storage_toast">Keresés: %s…</string>
     <string name="scan_removable_storage_summary">Keressen csomagtárolókat olyan cserélhető adattárolókon is, mint az SD kártyák és az USB pendrive-ok</string>

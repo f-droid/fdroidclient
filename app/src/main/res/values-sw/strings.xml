@@ -224,7 +224,6 @@
     <string name="repo_add_fingerprint">Alama ya kidole (hiari)</string>
     <string name="has_disallow_install_unknown_sources_globally">Mtumiaji mkuu wa kifaa hiki hakubali kusimika api kutoka vyanzo visivyojulikana, hiyo inajumuisha maghala mapya</string>
     <string name="menu_select_for_wipe">Chagua ili ifutwe</string>
-    <string name="menu_downgrade">Shusha daraja</string>
     <string name="antitrack">Ufuatiliaji</string>
     <string name="antinonfreeassets">Rasilimali Isiyo Huru</string>
     <string name="antiknownvuln">Kasoro Linalojulikana</string>

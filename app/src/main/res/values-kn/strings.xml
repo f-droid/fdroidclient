@@ -235,7 +235,6 @@
     <string name="about_forum">ವೇದಿಕೆಯಿಂದ ಬೆಂಬಲ</string>
     <string name="app_suggested">ಸೂಚಿಸಲಾಗಿದೆ</string>
     <string name="app_size">ಗಾತ್ರ:%1$s</string>
-    <string name="menu_downgrade">ಡೌನ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="app_repository">ಭಂಡಾರ:%1$s</string>
     <string name="update_all">ಎಲ್ಲವನ್ನು ಆಧುನೀಕರಿಸ</string>
     <string name="scan_removable_storage_title">ತೆಗೆಯಬಹುದಾದ ಸಂಗ್ರಹಣೆಯನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>

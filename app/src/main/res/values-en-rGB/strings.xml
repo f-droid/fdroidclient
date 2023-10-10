@@ -292,7 +292,6 @@
     <string name="menu_flattr">Flattr</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_bitcoin">Bitcoin</string>
-    <string name="menu_downgrade">Downgrade</string>
     <string name="menu_translation">Translation</string>
     <string name="menu_source">Source code</string>
     <string name="menu_license">Licence: %s</string>

@@ -475,7 +475,6 @@
     <string name="about_forum">פורום תמיכה</string>
     <string name="app_suggested">הצעה</string>
     <string name="app_size">גודל: %1$s</string>
-    <string name="menu_downgrade">שנמוך</string>
     <string name="app_repository">מאגר: %1$s</string>
     <string name="scan_removable_storage_title">סריקת אחסון נתיק</string>
     <string name="scan_removable_storage_summary">איתור מאגרי חבילות בהתקנים נתיקים כגון כרטיסי SD וכונני דיסק און קי</string>

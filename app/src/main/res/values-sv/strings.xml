@@ -456,7 +456,6 @@
     <string name="about_forum">Supportforum</string>
     <string name="app_suggested">Föreslås</string>
     <string name="app_size">Storlek: %1$s</string>
-    <string name="menu_downgrade">Nedgradera</string>
     <string name="scan_removable_storage_title">Skanna flyttbar lagring</string>
     <string name="scan_removable_storage_toast">Skannar %s…</string>
     <string name="swap_toast_using_path">Använder %1$s</string>

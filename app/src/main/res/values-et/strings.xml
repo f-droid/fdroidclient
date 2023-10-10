@@ -466,7 +466,6 @@
     <string name="about_forum">Toe foorum</string>
     <string name="app_suggested">Soovitatud</string>
     <string name="app_size">Suurus: %1$s</string>
-    <string name="menu_downgrade">Varasem versioon</string>
     <string name="app_repository">Hoidla: %1$s</string>
     <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
     <string name="scan_removable_storage_summary">Otsi pakettide hoidlaid eemaldatavalt mäluseadmelt nagu SD kaart või USB mälupulk</string>

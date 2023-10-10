@@ -305,7 +305,6 @@
     <string name="menu_flattr">Flattr</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_bitcoin">Bitcoin</string>
-    <string name="menu_downgrade">Доод зэрэглэл</string>
     <string name="menu_translation">Орчуулга</string>
     <string name="menu_source">Эх код</string>
     <string name="menu_license">Лиценз: %s</string>

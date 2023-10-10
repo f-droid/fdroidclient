@@ -475,7 +475,6 @@
     <string name="about_forum">Форум поддержки</string>
     <string name="app_suggested">Рекомендована</string>
     <string name="app_size">Размер: %1$s</string>
-    <string name="menu_downgrade">Понизить версию</string>
     <string name="scan_removable_storage_toast">Сканирование %s…</string>
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
     <string name="app_repository">Репозиторий: %1$s</string>

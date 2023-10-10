@@ -462,7 +462,6 @@
     <string name="send_history_csv">Историја инсталација %s у виду CSV фајла</string>
     <string name="updates_disabled_by_settings">Сва ажурирања су онемогућена на основу подешавања мреже</string>
     <string name="send_installed_apps_csv">Апликације које је инсталирао F-Droid у виду CSV фајла</string>
-    <string name="menu_downgrade">Врати на стару верзију</string>
     <string name="app_repository">Репозиторијум: %1$s</string>
     <string name="scan_removable_storage_title">Скенирај преносиве меморије</string>
     <string name="scan_removable_storage_summary">Тражи репозиторијуме на преносивим меморијама попут SD картица и USB дискова</string>

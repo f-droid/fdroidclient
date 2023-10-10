@@ -482,7 +482,6 @@
     <string name="about_forum">Forum de suportu</string>
     <string name="app_suggested">Cunsigiadas</string>
     <string name="app_size">Mannària: %1$s</string>
-    <string name="menu_downgrade">Disinstalla agiornamentu</string>
     <string name="app_repository">Depòsitu: %1$s</string>
     <string name="scan_removable_storage_title">Iscansiona su dispositivu rimovìbile</string>
     <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas penninas USB</string>

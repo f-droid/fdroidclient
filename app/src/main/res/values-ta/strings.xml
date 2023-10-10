@@ -281,7 +281,6 @@
     <string name="menu_show_fdroid_metrics_report">அளவீட்டு அறிக்கையைக் காட்டு</string>
     <string name="main_menu__updates">புதுப்பிப்புகள்</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="menu_downgrade">தரக்குறைப்பு</string>
     <string name="menu_license">உரிமம்: %s</string>
     <string name="menu_video">காணொளி</string>
     <string name="menu_select_for_wipe">துடைப்பதற்குத் தேர்ந்தெடு</string>

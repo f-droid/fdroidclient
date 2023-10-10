@@ -179,7 +179,6 @@
     <string name="privacy">গোপনীয়তা</string>
     <string name="proxy">প্রক্সি</string>
     <string name="menu_opencollective">ওপেনকালেক্টিভ</string>
-    <string name="menu_downgrade">ডাউনগ্রেড</string>
     <string name="notification_channel_installs_title">ইনস্টলকৃত</string>
     <string name="keep_forever">সর্বদা</string>
     <string name="uninstalling">আনইনস্টল করা হচ্ছে …</string>

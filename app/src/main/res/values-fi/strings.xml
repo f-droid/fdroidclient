@@ -453,7 +453,6 @@
     <string name="repo_exists_enable">%1$s on jo asennettu, vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
     <string name="menu_open">Avaa</string>
-    <string name="menu_downgrade">Alenna</string>
     <string name="antinosourcesince">Lähdekoodi ei ole enää saatavilla, päivityksiä ei voi tehdä.</string>
     <string name="share_repository">Jaa sovelluslähde</string>
     <string name="scan_removable_storage_title">Lue irrotettava tallennusväline</string>

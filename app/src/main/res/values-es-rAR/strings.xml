@@ -230,7 +230,6 @@
     <string name="search_hint">Buscar aplicaciones</string>
     <string name="appcompatibility">Compatibilidad de aplicación</string>
     <string name="show_incompat_versions">Incluir versiones incompatibles</string>
-    <string name="menu_downgrade">Desactualizar</string>
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="show_incompat_versions_on">Mostrar versiones de aplicaciones que son incompatibles con el dispositivo</string>
     <string name="show_anti_feature_apps">Incluir aplicaciones controversiales</string>

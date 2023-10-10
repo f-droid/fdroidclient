@@ -470,7 +470,6 @@
     <string name="about_forum">Φόρουμ υποστήριξης</string>
     <string name="app_suggested">Προτεινόμενα</string>
     <string name="app_size">Μέγεθος: %1$s</string>
-    <string name="menu_downgrade">Επιστροφή σε προηγούμενη έκδοση</string>
     <string name="app_repository">Αποθετήριο: %1$s</string>
     <string name="scan_removable_storage_title">Σάρωση αφαιρούμενου χώρου αποθήκευσης</string>
     <string name="scan_removable_storage_toast">Σάρωση %s…</string>

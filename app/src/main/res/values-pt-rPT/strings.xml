@@ -467,7 +467,6 @@
     <string name="about_forum">Fórum de suporte</string>
     <string name="app_suggested">Sugerida</string>
     <string name="app_size">Tamanho: %1$s</string>
-    <string name="menu_downgrade">Desatualizar</string>
     <string name="app_repository">Repositório: %1$s</string>
     <string name="scan_removable_storage_title">Analisar armazenamento amovível</string>
     <string name="scan_removable_storage_toast">A analisar %s…</string>
