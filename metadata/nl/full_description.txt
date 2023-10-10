@@ -1,0 +1,13 @@
+F-Droid is een installeerbare catalogus van libre software-apps voor Android. Met de F-Droid-clientapp kunt u eenvoudig door updates op uw apparaat bladeren, installeren en bijhouden.
+
+Het maakt verbinding met alle F-Droid-compatibele repositories. De standaard repo wordt gehost op f-droid.org, dat alleen bonafide libre-software bevat.
+
+Android zelf is open in die zin dat je vrij bent om APK's te installeren waar je maar wilt, maar er zijn veel goede redenen om F-Droid te gebruiken als je libre software app manager :
+
+* Ontvang een melding wanneer updates beschikbaar zijn
+* Download en installeer updates automatisch
+* Houd oudere en bètaversies bij
+* Filter apps uit die niet compatibel zijn met het apparaat
+* Vind apps via categorieën en doorzoekbare beschrijvingen
+* Toegang tot bijbehorende URL's voor donaties, broncode etc.
+* Blijf veilig door repo-indexhandtekeningen en APK-hashes te controleren

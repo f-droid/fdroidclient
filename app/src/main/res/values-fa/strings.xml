@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="installIncompatible">کاره با دستگاهتان ناسازگار است. به هر حال نصب شود؟</string>
     <string name="delete">حذف</string>
     <string name="cache_downloaded">نگه‌داری کاره‌های انبار شده</string>
@@ -454,7 +454,6 @@
     <string name="send_installed_apps">هم‌رسانی کاره‌های نصب شده</string>
     <string name="send_installed_apps_csv">کاره‌های نصب شده از اف‌دروید در قالب پروندهٔ csv</string>
     <string name="menu_open">گشودن</string>
-    <string name="menu_downgrade">پایین بردن</string>
     <string name="scan_removable_storage_title">پویش ذخیره‌ساز جداشدنی</string>
     <string name="scan_removable_storage_toast">پوییدن %s…</string>
     <string name="scan_removable_storage_summary">گشتن دنبال مخازن روی ذخیره‌ساز جداشدنی مثل کارت‌های SD و گرداننده‌های USB</string>
@@ -526,13 +525,16 @@
     <string name="antinonfreedep">وابستگی‌های ناآزاد</string>
     <string name="antinosource">کد مبدأ دیگر موجود نیست</string>
     <string name="antiothers">دیگر پادویژگی‌ها</string>
-    <string name="antinsfw">شامل محتوایی که بهتر است در همه‌ی مکان‌ها نمایان نشود</string>
+    <string name="antinsfw">نامناسب برای محل کار</string>
     <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
     <string name="latest__empty_state__upgrading">ارتقا دادن پایگاه داده…</string>
     <string name="use_ipfs_gateways">استفاده از دروازه‌های IPFS</string>
     <string name="use_ipfs_gateways_summary">بارگیری پرونده‌ها از آینه‌های IPFS در صورت پشتیبانی به دست مخزن.</string>
-    <string name="antinsfwlist">این برنامه حاوی محتوایی است که نباید در همه جا عمومی یا قابل مشاهده باشد</string>
-    <string name="repo_last_update_downloaded">آخرین به‌روزرسانی بارگیری شد</string>
-    <string name="app_error_open">برنامه راه‌اندازی نشد.</string>
-    <string name="warning_target_sdk">این برنامه برای نسخه قدیمی اندروید ساخته شده است و به‌طور خودکار به‌روز نمی‌شود.</string>
+    <string name="antinsfwlist">این کاره محتوایی دارد که نباید همه‌جا نمایان یا عمومی باشد</string>
+    <string name="repo_last_update_downloaded">آخرین به‌روز رسانی بارگیری شد</string>
+    <string name="app_error_open">نتوانست کاره را اجرا کند.</string>
+    <string name="warning_target_sdk">این کاره برای نگارشی قدیمی از اندروید ساخته شده و به طور خودکار به‌روز نمی‌شود.</string>
+    <string name="app_name_basic">اف‌دروید پایه</string>
+    <string name="about_title_basic">دربارهٔ اف‌دروید پایه</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">شبانه</string>
 </resources>

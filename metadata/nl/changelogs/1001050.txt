@@ -1,0 +1,7 @@
+* Ondersteuning voor officiële mirrors voor elke repo, met automatische selectie op basis van beschikbaarheid
+
+* Veel UI-verbeteringen, evenals stabiliteit en bugfixes
+
+* Nieuwe privacy-voorkeuren: blokkering van schermopnamen; afsluiten bij panieksituatie
+
+* Nieuwe talen: Koreaans (ko) en Vietnamees (vi)

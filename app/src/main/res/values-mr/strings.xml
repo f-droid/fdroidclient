@@ -21,7 +21,6 @@
     <string name="menu_flattr">Flattr</string>
     <string name="menu_litecoin">लाईट</string>
     <string name="menu_bitcoin">बिट</string>
-    <string name="menu_downgrade">जुनी आवृत्ती लागू</string>
     <string name="menu_source">मूळ संकेतभाषेचा स्रोत</string>
     <string name="menu_license">परवाना: %s</string>
     <string name="menu_changelog">नोंदवही</string>

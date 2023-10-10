@@ -453,7 +453,6 @@
     <string name="about_forum">Subtena forumo</string>
     <string name="app_suggested">Konsilinda</string>
     <string name="app_size">Grando: %1$s</string>
-    <string name="menu_downgrade">Malpromocii</string>
     <string name="app_repository">Deponejo: %1$s</string>
     <string name="scan_removable_storage_title">Skani demeteblan konservejon</string>
     <string name="scan_removable_storage_summary">Serĉi deponejojn de pakaĵoj en la demetebla konservejo (SD-kartoj aŭ memor-bastonetoj)</string>

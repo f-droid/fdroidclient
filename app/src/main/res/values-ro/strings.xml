@@ -464,12 +464,11 @@
     <string name="about_forum">Forum suport</string>
     <string name="app_suggested">Recomandată</string>
     <string name="app_size">Mărime: %1$s</string>
-    <string name="menu_downgrade">Retrogradare</string>
     <string name="app_repository">Depozit: %1$s</string>
     <string name="scan_removable_storage_title">Scanați spațiul de stocare detașabil</string>
     <string name="scan_removable_storage_summary">Căuta depozite de aplicații pe mediile de stocare precum cardurile SD și unitățile USB</string>
     <string name="nearby_splash__read_external_storage">Caută pe cardul SD depozite sau servere de rezervă.</string>
-    <string name="nearby_splash__request_permission">Încearcă</string>
+    <string name="nearby_splash__request_permission">Caută acum</string>
     <string name="swap_toast_using_path">Se folosește %1$s</string>
     <string name="swap_toast_not_removable_storage">Alegerea nu se potrivește cu nici un dispozitiv de stocare, încercați din nou!</string>
     <string name="swap_toast_find_removeable_storage">Alegeți cardul SD sau unitatea USB</string>
@@ -562,4 +561,7 @@
 \n
 \nContactați administratorul și anunțați despre această problemă.</string>
     <string name="repo_io_error">Eroare de conectare la depozit.</string>
+    <string name="nearby_splace__external_storage_permission_button">Încearcă</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid poate căuta depozite și rezerve pe cardul SD, dar are nevoie de permisiunea dvs. pentru a face acest lucru.</string>
+    <string name="swap_connection_indexv0_error">Încercați să vă conectați la cineva cu o versiune depășită de F-Droid. Pentru a se conecta, trebuie să își actualizeze aplicația F-Droid. Aceștia pot folosi În apropiere pentru a-și actualiza aplicația F-Droid de la dumneavoastră.</string>
 </resources>

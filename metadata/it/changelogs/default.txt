@@ -1,0 +1,7 @@
+* Corretto l'uso di repo e mirror da archiviazione esterna sulle versioni Android recenti
+* Migliorata la gestione WiFi in "Qui vicino"
+* La barra di navigazione ora ricorda la sua posizione anche quando F-Droid si riavvia
+* Nuova lingua: swahili
+* Corretto lo scaricamento di immagini per i repo che usano ancora index-v1
+* Risolti crash relativi a swap, gestione di repo e altro ancora
+* Il pulsante Downgrade è stato rimosso, Android non lo permette più

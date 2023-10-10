@@ -224,7 +224,6 @@
     <string name="repo_add_fingerprint">Alama ya kidole (hiari)</string>
     <string name="has_disallow_install_unknown_sources_globally">Mtumiaji mkuu wa kifaa hiki hakubali kusimika api kutoka vyanzo visivyojulikana, hiyo inajumuisha maghala mapya</string>
     <string name="menu_select_for_wipe">Chagua ili ifutwe</string>
-    <string name="menu_downgrade">Shusha daraja</string>
     <string name="antitrack">Ufuatiliaji</string>
     <string name="antinonfreeassets">Rasilimali Isiyo Huru</string>
     <string name="antiknownvuln">Kasoro Linalojulikana</string>
@@ -295,7 +294,7 @@
 \n%1$s</string>
     <string name="hide_on_long_search_press_summary">Kubonyeza kitufe cha utafutaji kwa muda mrefu kutaficha apu</string>
     <string name="download_404">Faili iliyoombwa haikupatikana.</string>
-    <string name="banner_updating_repositories">Inasasisha maghala…</string>
+    <string name="banner_updating_repositories">Inasasisha maghala</string>
     <string name="banner_no_internet">Hakuna intaneti</string>
     <string name="banner_no_data_or_wifi">Hakuna Data au WiFi iliyowezeshwa</string>
     <string name="status_connecting_to_repo">Inaunganisha kwa

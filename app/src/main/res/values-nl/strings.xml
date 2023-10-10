@@ -244,7 +244,7 @@
     <string name="status_inserting_apps">Appgegevens aan het opslaan</string>
     <string name="login_title">Authenticatie is vereist</string>
     <string name="repo_error_empty_username">Lege gebruikersnaam, aanmeldgegevens niet gewijzigd</string>
-    <string name="menu_email">Stuur een e-mail naar de auteur</string>
+    <string name="menu_email">E-Mail de auteur</string>
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
     <string name="empty_search_available_app_list">Er zijn geen overeenkomende apps beschikbaar.</string>
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
@@ -460,7 +460,6 @@
     <string name="send_installed_apps">Deel geïnstalleerde apps</string>
     <string name="send_installed_apps_csv">Apps geïnstalleerd door F-Droid als CSV-bestand</string>
     <string name="menu_open">Openen</string>
-    <string name="menu_downgrade">Vervang met oudere versie</string>
     <string name="scan_removable_storage_title">Scan verwijderbare media</string>
     <string name="scan_removable_storage_toast">%s wordt gescand…</string>
     <string name="scan_removable_storage_summary">Zoek naar applicatiebronnen op verwijderbare media zoals SD-kaarten en USB-sticks</string>
@@ -539,7 +538,8 @@
     <string name="app_name_basic">F-Droid Basis</string>
     <string name="about_title_basic">About F-Droid Basis</string>
     <string name="repo_last_update_downloaded">Laatste update gedownload</string>
-    <string name="category_Nightly">Nightly Builds</string>
+    <string name="category_Nightly">nightly</string>
     <string name="warning_target_sdk">Deze app is gebouwd voor een oudere versie van Android en kan niet automatisch bijgewerkt worden.</string>
     <string name="antinsfwlist">Deze app bevat inhoud dat niet publiekelijk of zichtbaar mag zijn overal</string>
+    <string name="app_error_open">App kon niet worden gestart.</string>
 </resources>

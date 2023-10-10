@@ -495,7 +495,6 @@
     <string name="notification_channel_installs_title">安裝</string>
     <string name="notification_channel_swaps_title">切換</string>
     <string name="notification_channel_updates_description">顯示應用程式與軟件庫更新通知。</string>
-    <string name="menu_downgrade">降級</string>
     <string name="antiads">廣告</string>
     <string name="antinonfreead">非自由的附加元件</string>
     <string name="antinonfreenet">非自由的網絡服務</string>

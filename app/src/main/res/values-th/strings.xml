@@ -231,7 +231,7 @@
     <string name="swap_qr_isnt_for_swap">คิวอาร์โค้ด ที่คุณสแกนดูไม่เหมือนโค้ดสลับ</string>
     <string name="perms_description_app">จัดให้โดย %1$s</string>
     <string name="swap_cant_find_peers">ไม่พบคนที่คุณกำลังมองหา\?</string>
-    <string name="swap_nearby">กำลังค้นหาคนใกล้ๆ...</string>
+    <string name="swap_nearby">กำลังค้นหาคนใกล้ๆ…</string>
     <string name="swap_scan_or_type_url">คนหนึ่งต้องสแกนโค้ดหรือพิมพ์ URL ของอีกคนในเบราว์เซอร์</string>
     <string name="swap_active_hotspot">%1$s (ฮอตสปอตของคุณ)</string>
     <string name="swap_join_this_hotspot">ช่วยให้เพื่อนของคุณเข้าร่วมฮอตสปอตของคุณ</string>
@@ -288,7 +288,6 @@
     <string name="main_menu__updates">อัพเดต</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="menu_downgrade">การปรับลด</string>
     <string name="menu_translation">การแปล</string>
     <string name="menu_license">ใบอนุญาต: %s</string>
     <string name="menu_video">วิดีโอ</string>

@@ -454,7 +454,6 @@
     <string name="send_installed_apps_csv">CSV bestandslijst van apps geïnstalleerd door F-Droid</string>
     <string name="updates_disabled_by_settings">Alle updates zijn door Data/Wi-Fi-instellingen uitgeschakeld</string>
     <string name="menu_open">Open</string>
-    <string name="menu_downgrade">Vervang met oudere versie</string>
     <string name="main_menu__updates">Updates</string>
     <string name="antinosourcesince">De broncode is niet meer beschikbaar, updates zijn niet mogelijk.</string>
     <string name="share_repository">Deel applicatiebron</string>

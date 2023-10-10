@@ -463,7 +463,6 @@
     <string name="send_installed_apps">Comparteix aplicacions instal·lades</string>
     <string name="send_installed_apps_csv">Apps instal·lades per F-Droid a través d\'un fitxer CSV</string>
     <string name="menu_open">Obrir</string>
-    <string name="menu_downgrade">Revertir versió</string>
     <string name="scan_removable_storage_title">Escaneja l\'emmagatzematge extraïble</string>
     <string name="scan_removable_storage_toast">Escanejant %s…</string>
     <string name="scan_removable_storage_summary">Cerca dipòsits de paquets en emmagatzematge extraïble com ara targetes SD i memòries USB</string>

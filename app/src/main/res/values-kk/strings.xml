@@ -19,8 +19,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="main_menu__categories">Санаттар</string>
-    <string name="menu_downgrade">Ескі нұсқаға өту</string>
-    <string name="main_menu__latest_apps">Санаттар</string>
+    <string name="main_menu__latest_apps">Соңғы</string>
     <string name="menu_show_install_history">Орнату тарихын көрсету</string>
     <string name="display">Көрініс</string>
     <string name="try_again">Қайталап көріңіз</string>

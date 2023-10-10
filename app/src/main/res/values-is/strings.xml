@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
     <string name="version">Útgáfa</string>
     <string name="delete">Eyða</string>
@@ -395,7 +395,7 @@
     </plurals>
     <string name="force_old_index">Þvinga gamla yfirlitssniðið</string>
     <string name="force_old_index_summary">Ef um er að ræða galla eða vandamál með samhæfni, má nota XML-yfirlitsvísi forritsins</string>
-    <string name="app_details__incompatible_mismatched_signers">Undirritun er önnur en á uppsettri útgáfu</string>
+    <string name="app_details__incompatible_mismatched_signers">Undirritari er annar en á uppsettri útgáfu</string>
     <string name="app_details__no_versions__show_incompat_versions">Til að birta hér samt ósamhæfðar útgáfur, virkjaðu þá \"%1$s\" stillinguna.</string>
     <string name="app_details__no_versions__no_compatible_signers">Engin útgáfa með samhæfða undirritun</string>
     <string name="app_details__no_versions__none_compatible_with_device">Engar útgáfur samhæfanlegar við tækið</string>
@@ -469,7 +469,7 @@
     <string name="send_install_history">Senda feril uppsetninga</string>
     <string name="send_history_csv">%s feril uppsetninga sem CSV-skrá</string>
     <string name="antinosourcesince">Grunnkóðinn er ekki lengur tiltækur, engar uppfærslur eru mögulegar.</string>
-    <string name="send_version_and_uuid_summary">Hafa með við niðurhal útgáfu þessa forrits og tilviljanakennt einstakt auðkenni, tekur gildi við næstu ræsingu forritsins.</string>
+    <string name="send_version_and_uuid_summary">Hafa með við niðurhal útgáfunúmer þessa forrits og tilviljanakennt einstakt auðkenni, tekur gildi við næstu ræsingu forritsins.</string>
     <string name="updates_disabled_by_settings">Allar uppfærslur eru óvirkar vegna stillinga fyrir gögn eða þráðlaust net</string>
     <string name="about_forum">Vefspjall fyrir aðstoð</string>
     <string name="send_installed_apps">Deila uppsettum forritum</string>
@@ -477,7 +477,6 @@
     <string name="menu_open">Opna</string>
     <string name="app_suggested">Tillögur</string>
     <string name="app_size">Stærð: %1$s</string>
-    <string name="menu_downgrade">Færa niður</string>
     <string name="app_repository">Hugbúnaðarsafn: %1$s</string>
     <string name="scan_removable_storage_title">Skanna útskiptanlega geymslumiðla</string>
     <string name="scan_removable_storage_toast">Skoða %s…</string>
@@ -548,6 +547,16 @@
     <string name="antiknownvuln">Þekktir veikleikar</string>
     <string name="antinosource">Grunnkóði ekki lengur til taks</string>
     <string name="antiothers">Aðrir neikvæðir eiginleikar</string>
-    <string name="antinsfw">Þetta forrit inniheldur efni sem ekki ætti að gefa út eða birta opinberlega</string>
+    <string name="antinsfw">Ekki öruggt til opinberrar notkunar</string>
     <string name="menu_release_channel_beta">Leyfa uppfærslur á beta-prófunarútgáfum</string>
+    <string name="app_name_basic">Grunnútgáfa F-Droid</string>
+    <string name="antinsfwlist">Þetta forrit inniheldur efni sem ekki ætti að gefa út eða birta opinberlega</string>
+    <string name="warning_target_sdk">Þetta forrit var byggt fyrir eldri útgáfu Android og er ekki hægt að uppfæra sjálfvirkt.</string>
+    <string name="latest__empty_state__upgrading">Uppfæri gagnagrunn…</string>
+    <string name="app_error_open">Get ekki ræst forrit.</string>
+    <string name="repo_last_update_downloaded">Síðasta uppfærsla sótt</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">dagleg útgáfa</string>
+    <string name="use_ipfs_gateways">Nota IPFS-gáttir</string>
+    <string name="use_ipfs_gateways_summary">Sækja skrár frá IPFS-speglum, ef hugbúnaðarsafnið styður það.</string>
+    <string name="about_title_basic">Um grunnútgáfu F-Droid</string>
 </resources>

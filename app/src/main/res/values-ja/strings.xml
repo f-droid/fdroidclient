@@ -6,7 +6,7 @@
     <string name="delete">削除</string>
     <string name="enable_nfc_send">NFC送信を有効にする…</string>
     <string name="cache_downloaded">キャッシュしたアプリを残す</string>
-    <string name="updates">アップデート</string>
+    <string name="updates">更新</string>
     <string name="other">その他</string>
     <string name="update_interval">自動アップデートの間隔</string>
     <string name="notify">利用可能なアップデートを表示</string>
@@ -50,22 +50,22 @@
     <string name="menu_ignore_all">すべてのアップデートを無視</string>
     <string name="menu_ignore_this">今回のアップデートを無視</string>
     <string name="menu_website">ウェブサイト</string>
-    <string name="menu_issues">課題</string>
+    <string name="menu_issues">問題</string>
     <string name="menu_source">ソースコード</string>
     <string name="menu_upgrade">更新</string>
     <string name="details_notinstalled">未インストール</string>
     <string name="antiadslist">このアプリは広告を表示します</string>
     <string name="antitracklist">このアプリはあなたの操作を記録し報告します</string>
-    <string name="antinonfreeadlist">このアプリは不自由なアドオンを推奨します</string>
-    <string name="antinonfreenetlist">このアプリは自由でないネットワークサービスを推奨しているか、完全に依存しています</string>
-    <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依存します</string>
+    <string name="antinonfreeadlist">このアプリは自由でないアドオンを推奨します</string>
+    <string name="antinonfreenetlist">このアプリは自由でないネットワークサービスを推奨します</string>
+    <string name="antinonfreedeplist">このアプリは他の自由でないアプリに依存します</string>
     <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
     <string name="expert">上級者モード</string>
     <string name="expert_on">拡張情報を表示し、拡張設定を有効にします</string>
     <string name="search_hint">アプリを検索</string>
     <string name="appcompatibility">アプリの互換性</string>
-    <string name="show_incompat_versions">互換性の無いバージョン</string>
+    <string name="show_incompat_versions">互換性のないバージョンを含める</string>
     <string name="show_incompat_versions_on">端末と互換性のないバージョンを表示します</string>
     <string name="local_repo">ローカルリポジトリ</string>
     <string name="local_repo_running">F-Droidは交換の準備ができました</string>
@@ -79,7 +79,7 @@
     <string name="next">次へ</string>
     <string name="skip">スキップ</string>
     <string name="proxy">プロキシ</string>
-    <string name="enable_proxy_title">HTTPプロキシを有効にする</string>
+    <string name="enable_proxy_title">HTTPプロキシを使用</string>
     <string name="enable_proxy_summary">すべてのネットワークリクエストに対して、HTTPプロキシを設定する</string>
     <string name="proxy_host">プロキシホスト</string>
     <string name="proxy_host_summary">プロキシのホスト名(例: 127.0.0.1)</string>
@@ -242,10 +242,10 @@
     <string name="crash_dialog_title">F-Droid がクラッシュしました</string>
     <string name="crash_dialog_text">予期しないエラーが発生し、アプリを強制的に停止させました。問題を修正するために、詳細をメールで送信してもよろしいですか？</string>
     <string name="crash_dialog_comment_prompt">ここに追加の情報やコメントを追加できます:</string>
-    <string name="antinonfreeassetslist">このアプリには不自由なアセットが含まれています</string>
+    <string name="antinonfreeassetslist">このアプリには自由でないアセットが含まれています</string>
     <string name="menu_email">作者にメールする</string>
-    <string name="useTor">Torを使用する</string>
-    <string name="useTorSummary">強制的にTorを経由した通信でダウンロードして、プライバシーを高めます。Orbotが必要です</string>
+    <string name="useTor">Torを使用</string>
+    <string name="useTorSummary">強制的にTorを経由した通信でダウンロードして匿名性を高めます。Orbotが必要です</string>
     <string name="swap_stopping_wifi">Wi-Fiの停止中</string>
     <string name="repo_provider">リポジトリ: %s</string>
     <string name="update_auto_download">アプリの自動アップデート</string>
@@ -319,7 +319,7 @@
         <item quantity="other">%1$d 個のアプリのアップデートをダウンロードします。</item>
     </plurals>
     <string name="details_new_in_version">バージョン%sの新機能</string>
-    <string name="antifeatureswarning">このアプリには好ましくない機能が含んでいる可能性があります。</string>
+    <string name="antifeatureswarning">このアプリは好ましくない機能を含む可能性があります。</string>
     <string name="antifeatures">好ましくない機能</string>
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d 日前にアップデートしました</item>
@@ -371,7 +371,7 @@
     <string name="app_list__dismiss_app_update">アップデートを無視しました</string>
     <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s で脆弱性を発見しました。今すぐにこのアプリをアンインストールすることをおすすめします。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s に脆弱性を発見しました。今すぐこのアプリをアンインストールすることをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s で脆弱性を発見しました。今すぐに最新バージョンへアップデートすることをおすすめします。</string>
     <string name="updates__app_with_known_vulnerability__ignore">無視する</string>
     <string name="privacy">プライバシー</string>
@@ -385,10 +385,10 @@
     <string name="panic_app_dialog_message">%1$sを破壊的なパニックボタンとして動作させることを許可してもよろしいですか？</string>
     <string name="allow">許可</string>
     <string name="panic_settings">パニックボタンの設定</string>
-    <string name="panic_settings_summary">緊急時のアクション</string>
+    <string name="panic_settings_summary">緊急時の操作</string>
     <string name="panic_exit_title">アプリを終了</string>
     <string name="panic_exit_summary">このアプリを閉じます</string>
-    <string name="panic_destructive_actions">破壊的なアクション</string>
+    <string name="panic_destructive_actions">破壊的な操作</string>
     <string name="panic_hide_title">%sを非表示にする</string>
     <string name="panic_hide_summary">アプリは自ら隠れます</string>
     <string name="panic_hide_warning_title">復元方法を記憶する</string>
@@ -444,7 +444,6 @@
     <string name="about_forum">サポートフォーラム</string>
     <string name="app_suggested">推奨</string>
     <string name="app_size">サイズ: %1$s</string>
-    <string name="menu_downgrade">ダウングレード</string>
     <string name="scan_removable_storage_title">リムーバルストレージをスキャン</string>
     <string name="scan_removable_storage_toast">%s をスキャンしています…</string>
     <string name="scan_removable_storage_summary">SDカードやUSBメモリなどのリムーバブルストレージでパッケージレポジトリを探します</string>
@@ -486,10 +485,10 @@
     <string name="notification_channel_installs_description">アプリのインストール通知を表示します。</string>
     <string name="notification_channel_installs_title">インストール</string>
     <string name="send_to_fdroid_metrics">使用データを送信</string>
-    <string name="theme_follow_system">システムのテーマに追随</string>
+    <string name="theme_follow_system">システムのテーマに従う</string>
     <string name="share_apk_error">アプリのファイルを共有できませんでした</string>
     <string name="use_pure_black_dark_theme_summary">OLED画面の場合にのみ推奨される。</string>
-    <string name="use_pure_black_dark_theme">ダークテーマではバックグラウンドにピュアブラックを利用する</string>
+    <string name="use_pure_black_dark_theme">ダークテーマでは背景をピュアブラックにする</string>
     <string name="banner_no_data_or_wifi">データ/無線LANは無効状態です</string>
     <string name="menu_show_install_history">インストール歴史を表示する</string>
     <string name="menu_show_fdroid_metrics_report">メトリクス報告を表示する</string>
@@ -515,7 +514,7 @@
     <string name="antidisabledalgorithm">安全でないアルゴリズムで署名されました</string>
     <string name="antinosource">ソースコードはもう利用できません</string>
     <string name="antiothers">他の好ましくない機能</string>
-    <string name="antinsfw">このアプリにはあらゆる場所に公開できるわけではないコンテンツが含まれている</string>
+    <string name="antinsfw">安心して閲覧できません</string>
     <string name="menu_release_channel_beta">ベータ版へのアップデートを許可する</string>
     <string name="latest__empty_state__upgrading">データベースの更新中…</string>
     <string name="use_ipfs_gateways">IPFSゲートウェイを使用</string>
@@ -523,5 +522,17 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">F-Droid Basicについて</string>
     <string name="category_Nightly">ナイトリービルド</string>
-    <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動的にアップデートできません。</string>
+    <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動アップデートはできません。</string>
+    <string name="app_error_open">アプリを起動できませんでした。</string>
+    <string name="repo_last_update_downloaded">最後にダウンロードしたアップデート</string>
+    <string name="antinsfwlist">このアプリは公にするのに不適切な内容を含みます</string>
+    <string name="repo_state_adding">リポジトリの追加中…</string>
+    <string name="repo_exists">このリポジトリはすでに追加されています。</string>
+    <string name="repo_add_new_title">リポジトリの追加</string>
+    <string name="repo_state_fetching">リポジトリの取得中…</string>
+    <string name="repo_enter_url">リポジトリの URL を入力</string>
+    <string name="repo_add_new_mirror">ミラーとして追加</string>
+    <string name="repo_intro">リポジトリは、アプリ入手の追加ソースです。ここに追加したサードパーティーのリポジトリは、F-Droid 自身がビルドして提供するアプリとは異なる基準で運用されています。
+\n
+\n追加しているリポジトリが信頼できることを確認してください。</string>
 </resources>

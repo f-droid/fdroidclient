@@ -451,7 +451,6 @@
     <string name="antidisabledalgorithmlist">Táto aplikácia má slabý bezpečnostný podpis</string>
     <string name="antiknownvulnlist">Tato aplikácia má známu zraniteľnosť v zabezpečení</string>
     <string name="antinosourcesince">Zdrojový kód už nie je dostupný, aktualizácie už nie sú možné.</string>
-    <string name="menu_downgrade">Ponížiť na staršiu verziu</string>
     <string name="main_menu__updates">Aktualizácie</string>
     <string name="menu_translation">Preklad</string>
     <string name="menu_select_for_wipe">Označiť na vymazanie</string>

@@ -445,7 +445,6 @@
     <string name="send_installed_apps_csv">Aplikasi terpasang oleh F-Droid sebagai berkas CSV</string>
     <string name="updates_disabled_by_settings">Semua pembaruan dinonaktifkan oleh Setelan Data/WiFi</string>
     <string name="menu_open">Buka</string>
-    <string name="menu_downgrade">Menurunkan versi</string>
     <string name="antinosourcesince">Kode sumber sudah tidak tersedia, tidak memungkinkan untuk diperbarui.</string>
     <string name="share_repository">Bagikan Repositori</string>
     <string name="scan_removable_storage_title">Pindai penyimpanan portabel</string>

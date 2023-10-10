@@ -470,7 +470,6 @@
     <string name="about_forum">Φόρουμ υποστήριξης</string>
     <string name="app_suggested">Προτεινόμενα</string>
     <string name="app_size">Μέγεθος: %1$s</string>
-    <string name="menu_downgrade">Επιστροφή σε προηγούμενη έκδοση</string>
     <string name="app_repository">Αποθετήριο: %1$s</string>
     <string name="scan_removable_storage_title">Σάρωση αφαιρούμενου χώρου αποθήκευσης</string>
     <string name="scan_removable_storage_toast">Σάρωση %s…</string>
@@ -541,14 +540,14 @@
     <string name="antiupstreamnonfree">Upstream Μη Δωρεάν</string>
     <string name="share_apk_error">Δεν ήταν δυνατή η κοινή χρήση του αρχείου εφαρμογής</string>
     <string name="antidisabledalgorithm">Υπογραφή με χρήση μη ασφαλούς αλγόριθμου</string>
-    <string name="antinsfw">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>
+    <string name="antinsfw">Μη ασφαλή για δουλειά.</string>
     <string name="menu_release_channel_beta">Να επιτρέπονται οι ενημερώσεις Beta</string>
     <string name="latest__empty_state__upgrading">Αναβάθμιση βάσης δεδομένων…</string>
     <string name="use_ipfs_gateways">Χρησιμοποιήστε πύλες IPFS</string>
     <string name="use_ipfs_gateways_summary">Λήψη αρχείων από πηγές IPFS, εάν υποστηρίζονται από το repo.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Σχετικά με το F-Droid Basic</string>
-    <string name="category_Nightly">Nightly Builds</string>
+    <string name="category_Nightly">Αυτόματες Εκδώσεις</string>
     <string name="repo_last_update_downloaded">Έγινε λήψη της τελευταίας ενημέρωσης</string>
     <string name="app_error_open">Δεν ήταν δυνατή η εκκίνηση της εφαρμογής.</string>
     <string name="antinsfwlist">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>

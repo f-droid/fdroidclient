@@ -1,0 +1,3 @@
+* Verbetering van de prestaties van de grote gebruikersinterface, vooral met archief ingeschakeld
+
+* Correctie van crasher-bugs

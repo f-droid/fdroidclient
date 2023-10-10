@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name_full">F-Droid</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name_full">এফ-ড্রয়েড</string>
     <string name="menu_search">খুঁজুন</string>
     <string name="menu_settings">সেটিংস</string>
     <string name="menu_manage">ভাণ্ডার</string>
@@ -144,7 +144,7 @@
     <string name="update_interval">স্বয়ংক্রিয় আপডেট ব্যবধান</string>
     <string name="force_old_index_summary">বাগ বা সামঞ্জস্যের সমস্যা থাকলে XML অ্যাপ্লিকেশন সূচকটি ব্যবহার করুন</string>
     <string name="force_old_index">পুরাতন সূচি বিন্যাস ফোর্স করে চালু করুন</string>
-    <string name="send_version_and_uuid_summary">এই অ্যাপ্লিকেশনটির সংস্করণ এবং একটি এলোমেলো, অনন্য আইডি ডাউনলোড করার সময় অন্তর্ভুক্ত করো, যা পরবর্তীতে অ্যাপ্লিকেশনটি পুনরায় চালু করার সময় প্রভাবিত হয়।</string>
+    <string name="send_version_and_uuid_summary">এই অ্যাপ্লিকেশনটি নামানোর সময় এর সংস্করণ এবং একটি এলোমেলো, অনন্য আইডি অন্তর্ভুক্ত করো, যা পরবর্তীতে অ্যাপ্লিকেশনটি পুনরায় চালু করার সময় প্রয়োগ হয়।</string>
     <string name="send_version_and_uuid">সংস্করণ এবং ইউআইডি সার্ভারে প্রেরণ করুন</string>
     <string name="keep_install_history_summary">একটি ব্যক্তিগত দোকানে(স্টোরে) সমস্ত ইনস্টল এবং আনইনস্টলগুলের লগ সঞ্চয় করো</string>
     <string name="keep_install_history">ইনস্টল ইতিহাস রাখো</string>
@@ -179,7 +179,6 @@
     <string name="privacy">গোপনীয়তা</string>
     <string name="proxy">প্রক্সি</string>
     <string name="menu_opencollective">ওপেনকালেক্টিভ</string>
-    <string name="menu_downgrade">ডাউনগ্রেড</string>
     <string name="notification_channel_installs_title">ইনস্টলকৃত</string>
     <string name="keep_forever">সর্বদা</string>
     <string name="uninstalling">আনইনস্টল করা হচ্ছে …</string>
@@ -300,7 +299,7 @@
     <string name="status_connecting_to_repo">%1$s
 \nএর সাথে যোগাযোগ হচ্ছে</string>
     <string name="hiding_dialog_title">%s এখন লুকাও</string>
-    <string name="panic_settings">বিপদগ্রস্থ বোতামের পছন্দসমূহ</string>
+    <string name="panic_settings">বিপদগ্রস্থ(প্যানিক) বোতামের পছন্দসমূহ</string>
     <string name="panic_app_dialog_title">বিপদগ্রস্থ অ্যাপ নিশ্চিত করো</string>
     <string name="panic_app_unknown_app">একটা অজানা অ্যাপ</string>
     <string name="panic_app_setting_title">বিপদগ্রস্থ বোতামের অ্যাপ</string>
@@ -395,7 +394,7 @@
     <string name="empty_installed_app_list">কোনো অ্যাপ ইন্সটল করা নেই।
 \n
 \nতোমার কাছে অন্যান্য অ্যাপ আছে, কিন্তু সেগুলো এফ-ড্রয়েডের না। ভাণ্ডারগুলোর হালনাগাদের প্রয়োজনীয়তা এর কারণ হতে পারে অথবা ভাণ্ডারগুলোতে আসলেই হয়তো তোমার অ্যাপগুলো নেই।</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">ইন্সটলকৃত সংস্করণ অন্য কোনো সংস্করণের সাথে অসামঞ্জস্যপূর্ণ। এই অ্যাপ মুছলে তোমাকে অন্যান্য সামঞ্জস্যপূর্ণ সংস্করণ দেখতে ও ইন্সটল করতে দিবে। গুগল প্লে বা অন্য জায়গা থেকে অ্যাপ ইন্সটল করলে বেশিরভাগ সময় এমন হয়, বিশেষত অন্য অনুমতিপত্র দিয়ে স্বাক্ষর করা হলে।</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">ইন্সটলকৃত সংস্করণ অন্য কোনো সংস্করণের সাথে অসামঞ্জস্যপূর্ণ। এই অ্যাপ অপসারণ করলে তোমাকে অন্যান্য সামঞ্জস্যপূর্ণ সংস্করণ দেখতে ও ইন্সটল করতে দিবে। গুগল প্লে বা অন্য জায়গা থেকে অ্যাপ ইন্সটল করলে বেশিরভাগ সময় এমন হয়, বিশেষত অন্য অনুমতিপত্র দিয়ে স্বাক্ষর করা হলে।</string>
     <string name="interval_2w">প্রতি ২ সপ্তাহে হালনাগাদ আছে কিনা দেখো</string>
     <string name="interval_12h">প্রতি ১২ ঘণ্টায় হালনাগাদ আছে কিনা দেখো</string>
     <string name="interval_4h">প্রতি ৪ ঘণ্টায় হালনাগাদ আছে কিনা দেখো</string>
@@ -526,7 +525,16 @@
     <string name="antitrack">নজরদারী</string>
     <string name="antinonfreenet">অ-মুক্ত নেটওয়ার্ক সেবা</string>
     <string name="antiothers">অন্যান্য অপবৈশিষ্ট্য</string>
-    <string name="antinsfw">এই অ্যাপে এমন বস্তু আছে যা সর্বত্র প্রচারিত বা দৃশ্যমান হওয়া উচিত নয়</string>
+    <string name="antinsfw">কাজের জন্য নিরাপদ নয়</string>
     <string name="latest__empty_state__upgrading">তথ্যভাণ্ডার হালনাগাদ করা হচ্ছে…</string>
     <string name="menu_release_channel_beta">পরীক্ষামূলক হালনাগাদ অনুমোদন করো</string>
+    <string name="app_name_basic">এফ-ড্রয়েড মৌলিক</string>
+    <string name="use_ipfs_gateways">আইপিএফএস গেটওয়ে ব্যবহার করো</string>
+    <string name="use_ipfs_gateways_summary">আইপিএফএস আয়না থেকে নথি নামাও, যদি ভাণ্ডার তা সমর্থন করে।</string>
+    <string name="antinsfwlist">এই অ্যাপে এমন বস্তু আছে যা সর্বত্র প্রচারিত বা দৃশ্যমান হওয়া উচিত নয়</string>
+    <string name="repo_last_update_downloaded">সর্বশেষ হালনাগাদ নামানো হয়েছে</string>
+    <string name="app_error_open">অ্যাপটি চালু করা যায়নি।</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">নাইটলি</string>
+    <string name="warning_target_sdk">এই অ্যাপটি অ্যান্ড্রয়েডের একটি পুরোনো সংস্করণের জন্য তৈরি করা হয়েছে এবং স্বয়ংক্রিয়ভাবে হালনাগাদ করা যাবে না।</string>
+    <string name="about_title_basic">এফ-ড্রয়েড বেসিক সম্পর্কে</string>
 </resources>

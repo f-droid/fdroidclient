@@ -1,0 +1,7 @@
+* Külső tárhelyen lévő tárolók és tükrök használatának javítása az újabb Android kiadásokon
+* Javított WiFi-kezelés a Közeli funkcióban
+* A navigációs sáv most már megjegyezi a pozícióját az F-Droid újraindításakor
+* Új nyelv: szuahéli
+* A még mindig index-vl-t használó tárolókból történő képletöltés javítása
+* A cserehelyhez, tárolókezeléshez és egyebekhez köthető összeomlások javítása
+* A Visszaállítás gomb eltávolításra került, az Android már nem engedélyezi

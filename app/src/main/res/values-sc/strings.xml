@@ -482,7 +482,6 @@
     <string name="about_forum">Forum de suportu</string>
     <string name="app_suggested">Cunsigiadas</string>
     <string name="app_size">Mannària: %1$s</string>
-    <string name="menu_downgrade">Disinstalla agiornamentu</string>
     <string name="app_repository">Depòsitu: %1$s</string>
     <string name="scan_removable_storage_title">Iscansiona su dispositivu rimovìbile</string>
     <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas penninas USB</string>
@@ -566,4 +565,9 @@
     <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
     <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
     <string name="app_error_open">No est istadu possìbile aviare s\'aplicatzione.</string>
+    <string name="repo_state_adding">Annanghe unu depòsitu…</string>
+    <string name="repo_exists">Custu depòsitu est istadu giai annantu.</string>
+    <string name="repo_add_new_title">Annanghe unu depòsitu</string>
+    <string name="repo_state_fetching">Recuperende su depòsitu…</string>
+    <string name="repo_enter_url">Inserta s\'URL de su depòsitu a manu</string>
 </resources>

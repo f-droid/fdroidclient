@@ -445,7 +445,6 @@
     <string name="about_forum">지원 포럼</string>
     <string name="app_suggested">제안됨</string>
     <string name="app_size">크기: %1$s</string>
-    <string name="menu_downgrade">다운그레이드</string>
     <string name="scan_removable_storage_title">이동식 저장공간 탐색</string>
     <string name="scan_removable_storage_summary">SD 카드와 USB 메모리 등의 이동식 저장공간에서 패키지 저장소를 찾기</string>
     <string name="app_repository">저장소: %1$s</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Nova različica je overjena z drugim ključem kot starejša. V primeru, da želite namestiti novejšo različico morate najprej odstraniti staro. Poskusite ponovno, ko ste to naredili. (Bodite pozorni na dejstvo, da bodo zaradi odstranitve izbrisani vsi notranji podatki shranjeni v aplikaciji)</string>
     <string name="version">Različica</string>
     <string name="cache_downloaded">Ohranite predpomnjene aplikacije</string>
@@ -73,7 +73,7 @@
     <string name="notification_action_cancel">Prekliči</string>
     <string name="notification_action_install">Namesti</string>
     <string name="app_details">Podrobnosti aplikacije</string>
-    <string name="about_title_full">Več o F-Droid</string>
+    <string name="about_title_full">O F-Droid</string>
     <string name="app_list__name__downloading_in_progress">Prenašanje %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s nameščen</string>
     <string name="more">Več</string>
@@ -126,9 +126,9 @@
     <string name="no_such_app">Nobena aplikacija s tem imenom ni bila najdena.</string>
     <string name="app_details_donate_prompt_unknown_author">Kupite razvijalcem od %1$s kavo!</string>
     <string name="app_details_donate_prompt">%1$s je bila ustvarjeno od %2$s. Kupi jim kavo!</string>
-    <string name="app_details__incompatible_mismatched_signers">Različna overitev nameščenih verzij</string>
+    <string name="app_details__incompatible_mismatched_signers">Različen podpisnik od nameščene različice</string>
     <string name="app_details__no_versions__show_incompat_versions">Če želite vseeno pokazati nekompatibilne verzije, omogočite v nastavitvah možnost \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">Nobena verzija ni kompatibilna z overitvijo</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nobena verzija ni kompatibilna s podpisnikom</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nobena verzija ni kompatibilna z napravo</string>
     <string name="about_source">Izvorna koda</string>
     <string name="about_license">Licenca</string>
@@ -189,7 +189,7 @@
     <string name="antifeatureswarning">Ta aplikacija ima lastnosti, ki vam morda ne bodo všeč.</string>
     <string name="antifeatures">Neželjene lastnosti</string>
     <string name="antinonfreeadlist">Ta aplikacija promovira plačljive dodatke</string>
-    <string name="antinonfreenetlist">Ta aplikacija promovira plačljive internetne storitve</string>
+    <string name="antinonfreenetlist">Ta aplikacija promovira ali je popolnoma odvisna od plačljive internetne storitve</string>
     <string name="antinonfreedeplist">Ta aplikcija je odvisna od ostalih ne odprtih aplikacijah</string>
     <string name="antiupstreamnonfreelist">Originalna koda ni popolnoma odprta</string>
     <string name="antinonfreeassetslist">Ta aplikacija vsebuje neodprte enote</string>
@@ -459,7 +459,6 @@
     <string name="about_forum">Podporni forum</string>
     <string name="app_suggested">Predlagano</string>
     <string name="app_size">Velikost %1$s</string>
-    <string name="menu_downgrade">Namesti prejšnjo različico</string>
     <string name="app_repository">Skladišče: %1$s</string>
     <string name="scan_removable_storage_title">Preglej izmenljivo shrambo</string>
     <string name="scan_removable_storage_summary">Išči pakete skladišč na izmenljivih medijih, kot so SD kartice in USB ključki</string>
@@ -545,4 +544,17 @@
     <string name="antinonfreedep">Ne-proste odvisnosti</string>
     <string name="antinonfreeassets">Ne-prosta sredstva</string>
     <string name="antiupstreamnonfree">Ne-prost Upstream</string>
+    <string name="app_name_basic">Osnoven F-Droid</string>
+    <string name="about_title_basic">O osnovnem F-Droid</string>
+    <string name="menu_release_channel_beta">Dovoli beta posodobitve</string>
+    <string name="antinsfw">Ni varno za delo</string>
+    <string name="repo_last_update_downloaded">Zadnja posodobitev prenesena</string>
+    <string name="warning_target_sdk">Ta aplikacija je bila izdelana za starejšo različico Androida in je ni mogoče samodejno posodobiti.</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">nočen</string>
+    <string name="latest__empty_state__upgrading">Nadgradnjevanje baze podatkov …</string>
+    <string name="antiothers">Druge slabe funkcije</string>
+    <string name="app_error_open">Aplikacije ni bilo mogoče zagnati.</string>
+    <string name="antinsfwlist">Ta aplikacija vsebuje vsebino, ki ne bi smela biti objavljena ali vidna povsod</string>
+    <string name="use_ipfs_gateways">Uporabite prehode IPFS</string>
+    <string name="use_ipfs_gateways_summary">Prenesite datoteke iz zrcal IPFS, če to skladišče podpira.</string>
 </resources>

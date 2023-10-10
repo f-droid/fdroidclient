@@ -362,7 +362,6 @@
     <string name="panic_app_setting_summary">ఎ ఆప్ సెట్ చెయ్యబడలెదు</string>
     <string name="panic_settings">భయ బటన్ సెట్టింగులు</string>
     <string name="updates_disabled_by_settings">అన్ని నవీకరనలు Data/WiFi సెట్టింగుల చే దుర్బలపరచబదినది</string>
-    <string name="menu_downgrade">దిగువ శ్రేణి</string>
     <string name="main_menu__updates">నవీకరణ</string>
     <string name="repo_exists_and_enabled">%1$s ఇప్పటికే సెటప్ చేయబడింది మరియు ఎనేబుల్ చేయబడింది.</string>
     <string name="useTorSummary">పెరిగిన గోప్యత కోసం టోర్ ద్వారా డౌన్‌లోడ్ ట్రాఫిక్‌ను బలవంతం చేయండి. ఆర్బోట్ అవసరం</string>

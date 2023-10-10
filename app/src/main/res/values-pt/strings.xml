@@ -203,7 +203,6 @@
     <string name="menu_license">Licença: %s</string>
     <string name="menu_source">Código-fonte</string>
     <string name="menu_translation">Tradução</string>
-    <string name="menu_downgrade">Desatualizar</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>

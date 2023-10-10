@@ -456,7 +456,6 @@
     <string name="about_forum">Supportforum</string>
     <string name="app_suggested">Föreslås</string>
     <string name="app_size">Storlek: %1$s</string>
-    <string name="menu_downgrade">Nedgradera</string>
     <string name="scan_removable_storage_title">Skanna flyttbar lagring</string>
     <string name="scan_removable_storage_toast">Skannar %s…</string>
     <string name="swap_toast_using_path">Använder %1$s</string>
@@ -537,6 +536,6 @@
     <string name="antinsfwlist">Den här appen innehåller innehåll som inte borde publiceras eller vara synlig någonstans</string>
     <string name="app_error_open">Kunde inte starta app.</string>
     <string name="repo_last_update_downloaded">Senaste uppdateringen nerladdad</string>
-    <string name="category_Nightly">Nattliga byggnationer</string>
+    <string name="category_Nightly">nattlig</string>
     <string name="warning_target_sdk">Den här appen byggdes för en äldre version av Android och kan inte uppdateras automatiskt.</string>
 </resources>

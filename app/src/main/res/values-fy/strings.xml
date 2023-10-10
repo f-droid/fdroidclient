@@ -210,7 +210,6 @@
     <string name="menu_show_fdroid_metrics_report">Gegevensrapport sjen litte</string>
     <string name="menu_issues">Problemen</string>
     <string name="menu_changelog">Feroaringsrapport</string>
-    <string name="menu_downgrade">Degradearje</string>
     <string name="menu_email">E-mail Skriuwer</string>
     <string name="repositories_summary">Addisjonele boarnen foar applikaasjes tafoegje</string>
     <string name="invalid_url">Dit is gjin jildige URL.</string>

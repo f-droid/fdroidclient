@@ -470,7 +470,6 @@
     <string name="about_forum">Forum pomocy technicznej</string>
     <string name="app_suggested">Sugerowana</string>
     <string name="app_size">Rozmiar: %1$s</string>
-    <string name="menu_downgrade">Cofnij do starszej wersji</string>
     <string name="app_repository">Repozytorium: %1$s</string>
     <string name="scan_removable_storage_title">Skanuj pamięć wymienną</string>
     <string name="scan_removable_storage_toast">Skanowanie %s…</string>

@@ -476,7 +476,6 @@
     <string name="about_forum">Forum d\'assistance</string>
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
-    <string name="menu_downgrade">Rétrograder</string>
     <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
     <string name="nearby_splash__request_permission">Essayer</string>

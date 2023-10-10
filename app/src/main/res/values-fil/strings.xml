@@ -212,7 +212,6 @@
     <string name="menu_license">Lisensiya: %s</string>
     <string name="menu_translation">Salin</string>
     <string name="menu_source">Source Code</string>
-    <string name="menu_downgrade">I-downgrade</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -531,4 +530,5 @@
     <string name="menu_release_channel_beta">Payagan ang mga Beta Updates</string>
     <string name="use_ipfs_gateways">Gumamit ng mga IPFS gateway</string>
     <string name="use_ipfs_gateways_summary">Mag-download ng mga file galing sa mga IPFS mirror, kung suportado ng repo.</string>
+    <string name="app_name_basic">F-Droid Basic</string>
 </resources>

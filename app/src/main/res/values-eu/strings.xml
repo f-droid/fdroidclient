@@ -476,13 +476,12 @@
     <string name="about_forum">Laguntza foroa</string>
     <string name="app_suggested">Iradokitua</string>
     <string name="app_size">Neurria: %1$s</string>
-    <string name="menu_downgrade">Atzeratu bertsioa</string>
     <string name="app_repository">Biltegia: %1$s</string>
     <string name="scan_removable_storage_title">Eskaneatu gailu kengarria</string>
     <string name="scan_removable_storage_toast">%s eskaneatzen…</string>
     <string name="scan_removable_storage_summary">Bilatu paketeen biltegiak biltegi kengarrietan, esaterako SD txartelak edo USB giltzak edo diskoak</string>
     <string name="nearby_splash__read_external_storage">Bilatu SD txartelean biltegiak eta ispiluak.</string>
-    <string name="nearby_splash__request_permission">Probatu</string>
+    <string name="nearby_splash__request_permission">Bilatu orain</string>
     <string name="not_visible_nearby">Ingurua ez dago aktibo</string>
     <string name="not_visible_nearby_description">Inguruko gailuekin trukea egin aurretik, egin zure gailua ikusgai.</string>
     <string name="swap_toast_using_path">%1$s erabiltzen</string>
@@ -574,4 +573,7 @@
 \nJarri harremanetan administratzailearekin eta eman arazoaren berri.</string>
     <string name="repo_io_error">Errore bat gertatu da biltegira konektatzean.</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">nightly bertsioa</string>
+    <string name="nearby_splace__external_storage_permission_button">Probatu</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ek zure SD txartelean repositorioak eta ispiluak bilatu ditzake, baina horretarako zure baimena behar du.</string>
+    <string name="swap_connection_indexv0_error">F-Droid-en bertsio zaharkitua duen norbaitekin konektatzen saiatzen ari zara. Konektatzeko F-Droid aplikazioa berritu behar dute. Aldatzailea erabil dezakete haien F-Droid aplikazioa eguneratzeko.</string>
 </resources>
