@@ -217,6 +217,7 @@ public class AppDetailsActivity extends AppCompatActivity
         currentStatus = null;
     }
 
+    @Override
     protected void onStop() {
         super.onStop();
         visiblePackageName = null;
