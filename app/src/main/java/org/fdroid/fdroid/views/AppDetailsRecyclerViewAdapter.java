@@ -1308,7 +1308,7 @@ public class AppDetailsRecyclerViewAdapter
         parent.addView(view);
         view.setOnClickListener(v -> onLinkClicked(url));
         view.setOnLongClickListener(v -> {
-            Utils.copyToClipboard(context, text, url);
+            Utils.copyToClipboard(context, text, url, R.string.copied_url_to_clipboard);
             return true;
         });
     }

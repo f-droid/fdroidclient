@@ -231,7 +231,8 @@ public class AppSecurityPermissions {
 
         @Override
         public boolean onLongClick(View v) {
-            Utils.copyToClipboard(getContext(), String.valueOf(perm.label), perm.name);
+            Utils.copyToClipboard(getContext(), String.valueOf(perm.label),
+                    perm.name, R.string.copied_permission_to_clipboard);
             return true;
         }
 

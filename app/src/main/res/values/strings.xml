@@ -741,4 +741,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="other">Updated %1$d years ago</item>
     </plurals>
     <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="copied_url_to_clipboard">Copied URL to clipboard</string>
+    <string name="copied_permission_to_clipboard">Copied permission name to clipboard</string>
 </resources>
