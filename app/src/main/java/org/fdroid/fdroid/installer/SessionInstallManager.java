@@ -237,6 +237,11 @@ public class SessionInstallManager extends BroadcastReceiver {
         return "Xiaomi".equalsIgnoreCase(Build.BRAND) || "Redmi".equalsIgnoreCase(Build.BRAND);
     }
 
+    /**
+     * If this returns true, we can use
+     * {@link android.content.pm.PackageInstaller.SessionParams#setRequireUserAction(int)} with false,
+     * thus updating the app with the given targetSdk without user action.
+     */
     public static boolean isTargetSdkSupported(int targetSdk) {
         if (Build.VERSION.SDK_INT < 31) return false; // not supported below Android 12
         if (Build.VERSION.SDK_INT == 31 && targetSdk >= 29) return true;
@@ -245,7 +250,7 @@ public class SessionInstallManager extends BroadcastReceiver {
         // This needs to be adjusted as new Android versions are released
         // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
         // https://cs.android.com/android/platform/superproject/+/android-13.0.0_r42:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=2095;drc=6aba151873bfae198ef9eceb10f943e18b52d58c
-        // TODO check targetSdk Android 14 sources have been published, just a guess so far
-        return Build.VERSION.SDK_INT == 34 && targetSdk >= 31;
+        // current code requires targetSdk 31 on SDK 34+
+        return Build.VERSION.SDK_INT >= 34 && targetSdk >= 31;
     }
 }
