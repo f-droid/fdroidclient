@@ -605,7 +605,7 @@ public class App implements Comparable<App>, Parcelable {
 
     @Nullable
     public String getLitecoinUri() {
-        return TextUtils.isEmpty(bitcoin) ? null : "litecoin:" + bitcoin;
+        return TextUtils.isEmpty(litecoin) ? null : "litecoin:" + litecoin;
     }
 
     @Nullable
