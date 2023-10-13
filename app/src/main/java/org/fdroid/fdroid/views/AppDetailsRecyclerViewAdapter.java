@@ -1168,6 +1168,11 @@ public class AppDetailsRecyclerViewAdapter
                 expandArrow.setAlpha(0.3f);
                 itemView.setOnClickListener(null);
             }
+            // Copy version name to clipboard when long clicking the whole version item
+            itemView.setOnLongClickListener(v -> {
+                Utils.copyToClipboard(context, app.name, apk.versionName);
+                return true;
+            });
         }
 
         private String getApiText(final Apk apk) {
@@ -1277,7 +1282,7 @@ public class AppDetailsRecyclerViewAdapter
                                     // Expanded item dimensions should be already calculated at this moment
                                     // so it's possible to correctly scroll to a given position
                                     recyclerView.smoothScrollToPosition(currentPosition);
-                                    recyclerView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                                    recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                                 }
                             });
                 }
@@ -1290,16 +1295,22 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private void addLinkItemView(ViewGroup parent, int resIdText, int resIdDrawable, final String url, String formatArg) {
-        TextView view = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.app_details2_link_item, parent, false);
+        TextView view = (TextView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.app_details2_link_item, parent, false);
+        final String text;
         if (formatArg == null) {
-            view.setText(resIdText);
+            text = parent.getContext().getString(resIdText);
         } else {
-            String text = parent.getContext().getString(resIdText, formatArg);
-            view.setText(text);
+            text = parent.getContext().getString(resIdText, formatArg);
         }
+        view.setText(text);
         TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(view, resIdDrawable, 0, 0, 0);
         parent.addView(view);
         view.setOnClickListener(v -> onLinkClicked(url));
+        view.setOnLongClickListener(v -> {
+            Utils.copyToClipboard(context, text, url, R.string.copied_url_to_clipboard);
+            return true;
+        });
     }
 
     private void onLinkClicked(String url) {

@@ -19,6 +19,8 @@
 
 package org.fdroid.fdroid;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -27,6 +29,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StatFs;
@@ -46,6 +49,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Consumer;
 import androidx.core.util.Supplier;
@@ -883,5 +887,44 @@ public final class Utils {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * Copy text to the clipboard and show a toast informing the user that something has been copied.
+     * @param context the context to use
+     * @param label the label used in the clipboard
+     * @param text the text to copy
+     */
+    public static void copyToClipboard(@NonNull Context context, @Nullable String label,
+                                       @NonNull String text) {
+        copyToClipboard(context, label, text, R.string.copied_to_clipboard);
+    }
+
+    /**
+     * Copy text to the clipboard and show a toast informing the user that the text has been copied.
+     * @param context the context to use
+     * @param label the label used in the clipboard
+     * @param text the text to copy
+     * @param message the message to show in the toast
+     */
+    public static void copyToClipboard(@NonNull Context context, @Nullable String label,
+                                       @NonNull String text, @StringRes int message) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) {
+            // permission denied
+            return;
+        }
+        try {
+            clipboard.setPrimaryClip(ClipData.newPlainText(label, text));
+            if (Build.VERSION.SDK_INT < 33) {
+                // Starting with Android 13 (SDK 33) there is a system dialog with more clipboard actions
+                // shown automatically so there is no need to inform the user about the copy action.
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            // should not happen, something went wrong internally
+            debugLog(TAG, "Could not copy to clipboard: " + e.getMessage());
+        }
+
     }
 }
