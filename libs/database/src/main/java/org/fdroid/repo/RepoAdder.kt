@@ -146,6 +146,12 @@ internal class RepoAdder(
         val receiver = object : RepoPreviewReceiver {
             override fun onRepoReceived(repo: Repository) {
                 receivedRepo = repo
+                if (repo.address in knownRepos) {
+                    val knownFingerprint = knownRepos[repo.address]
+                    if (knownFingerprint != repo.fingerprint) throw SigningException(
+                        "Known fingerprint different from given one: ${repo.fingerprint}"
+                    )
+                }
                 fetchResult = getFetchResult(nUri.uri.toString(), repo)
                 addRepoState.value = Fetching(receivedRepo, apps.toList(), fetchResult)
             }
