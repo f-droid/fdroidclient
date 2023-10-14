@@ -7,6 +7,7 @@ import android.os.Build;
 
 import androidx.annotation.Nullable;
 
+import org.fdroid.CompatibilityCheckerUtils;
 import org.fdroid.fdroid.data.Apk;
 
 import java.util.ArrayList;
@@ -74,6 +75,13 @@ public class CompatibilityChecker {
             incompatibleReasons.add(context.getString(
                     R.string.up_to_maxsdk,
                     Utils.getAndroidVersionName(apk.maxSdkVersion)));
+        }
+
+        int minInstallableTargetSdk = CompatibilityCheckerUtils.INSTANCE.minInstallableTargetSdk();
+        if (apk.targetSdkVersion < minInstallableTargetSdk) {
+            incompatibleReasons.add(context.getString(
+                    R.string.targetsdk_or_later,
+                    Utils.getAndroidVersionName(minInstallableTargetSdk)));
         }
 
         if (apk.features != null) {

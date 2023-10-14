@@ -137,6 +137,7 @@ public interface PackageManifest {
     public val maxSdkVersion: Int?
     public val featureNames: List<String>?
     public val nativecode: List<String>?
+    public val targetSdkVersion: Int?
 }
 
 @Serializable
@@ -153,6 +154,7 @@ public data class ManifestV2(
 ) : PackageManifest {
     override val minSdkVersion: Int? = usesSdk?.minSdkVersion
     override val featureNames: List<String> = features.map { it.name }
+    override val targetSdkVersion: Int? = usesSdk?.targetSdkVersion
 }
 
 @Serializable

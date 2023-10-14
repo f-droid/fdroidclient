@@ -189,6 +189,7 @@ internal class UpdateCheckerTest {
             override val maxSdkVersion: Int? = null
             override val featureNames: List<String>? = null
             override val nativecode: List<String>? = null
+            override val targetSdkVersion: Int? = null
         },
         override val hasKnownVulnerability: Boolean = false,
     ) : PackageVersion

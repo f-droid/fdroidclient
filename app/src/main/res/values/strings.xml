@@ -467,6 +467,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         this network: %s
     </string>
     <string name="requires_features">Requires: %1$s</string>
+    <string name="targetsdk_or_later">targets %s</string>
     <string name="pref_language">Language</string>
     <string name="pref_language_default">System Default</string>
 
