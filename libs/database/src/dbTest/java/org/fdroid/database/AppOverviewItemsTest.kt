@@ -160,6 +160,63 @@ internal class AppOverviewItemsTest : AppTest() {
     }
 
     @Test
+    fun testGetByRepoPref() {
+        // insert same app into three repos (repoId1 has highest weight)
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        appDao.insert(repoId2, packageName, app2, locales)
+        appDao.insert(repoId3, packageName, app3, locales)
+
+        // app is returned correctly from repo1
+        appDao.getAppOverviewItems().getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+        appDao.getAppOverviewItems("A").getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+
+        // prefer repo3 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId3))
+        appDao.getAppOverviewItems().getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app3, apps[0])
+        }
+        appDao.getAppOverviewItems("B").getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app3, apps[0])
+        }
+
+        // prefer repo2 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
+        appDao.getAppOverviewItems().getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app2, apps[0])
+        }
+        appDao.getAppOverviewItems("A").getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app2, apps[0])
+        }
+        appDao.getAppOverviewItems("B").getOrFail().let { apps ->
+            assertEquals(0, apps.size) // app2 is not in category B
+        }
+
+        // prefer repo1 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId1))
+        appDao.getAppOverviewItems().getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+        appDao.getAppOverviewItems("A").getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+    }
+
+    @Test
     fun testSortOrder() {
         // insert two apps with one version each
         val repoId = repoDao.insertOrReplace(getRandomRepo())

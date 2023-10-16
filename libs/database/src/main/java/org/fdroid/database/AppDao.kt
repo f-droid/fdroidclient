@@ -305,7 +305,9 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""SELECT ${AppMetadata.TABLE}.* FROM ${AppMetadata.TABLE}
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE packageName = :packageName AND pref.enabled = 1
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE packageName = :packageName AND pref.enabled = 1 AND
+            COALESCE(preferredRepoId, repoId) = repoId
         ORDER BY pref.weight DESC LIMIT 1""")
     override fun getApp(packageName: String): LiveData<App?>
 
@@ -341,7 +343,8 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         LEFT JOIN ${LocalizedIcon.TABLE} AS icon USING (repoId, packageName)
-        WHERE pref.enabled = 1
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE pref.enabled = 1 AND COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName IS NULL ASC, icon.packageName IS NULL ASC,
             localizedSummary IS NULL ASC, app.lastUpdated DESC
@@ -355,7 +358,9 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         LEFT JOIN ${LocalizedIcon.TABLE} AS icon USING (repoId, packageName)
-        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%'
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE pref.enabled = 1 AND categories  LIKE '%,' || :category || ',%' AND
+           COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName IS NULL ASC, icon.packageName IS NULL ASC,
             localizedSummary IS NULL ASC, app.lastUpdated DESC
@@ -440,8 +445,10 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        LEFT JOIN AppPrefs USING (packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND ${AppMetadataFts.TABLE} MATCH :searchQuery
+        WHERE pref.enabled = 1 AND ${AppMetadataFts.TABLE} MATCH :searchQuery AND
+           COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)""")
     fun getAppListItems(searchQuery: String): LiveData<List<AppListItem>>
 
@@ -455,9 +462,11 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        LEFT JOIN AppPrefs USING (packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
-              ${AppMetadataFts.TABLE} MATCH :searchQuery
+           ${AppMetadataFts.TABLE} MATCH :searchQuery AND
+           COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)""")
     fun getAppListItems(category: String, searchQuery: String): LiveData<List<AppListItem>>
 
@@ -485,8 +494,9 @@ internal interface AppDaoInt : AppDao {
                version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        LEFT JOIN AppPrefs USING (packageName)
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1
+        WHERE pref.enabled = 1 AND COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(): LiveData<List<AppListItem>>
@@ -498,7 +508,8 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE pref.enabled = 1
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE pref.enabled = 1 AND COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY app.lastUpdated DESC""")
     fun getAppListItemsByLastUpdated(): LiveData<List<AppListItem>>
@@ -510,7 +521,9 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
+           COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY app.lastUpdated DESC""")
     fun getAppListItemsByLastUpdated(category: String): LiveData<List<AppListItem>>
@@ -522,7 +535,9 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
+           COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
@@ -556,7 +571,9 @@ internal interface AppDaoInt : AppDao {
                      app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND packageName IN (:packageNames)
+        LEFT JOIN AppPrefs USING (packageName)
+        WHERE pref.enabled = 1 AND packageName IN (:packageNames) AND
+           COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>

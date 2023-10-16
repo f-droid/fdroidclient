@@ -10,6 +10,7 @@ import io.mockk.every
 import io.mockk.mockkObject
 import kotlinx.coroutines.Dispatchers
 import org.fdroid.database.TestUtils.assertRepoEquals
+import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.database.TestUtils.toMetadataV2
 import org.fdroid.database.TestUtils.toPackageVersionV2
 import org.fdroid.index.v1.IndexV1StreamProcessor
@@ -111,7 +112,7 @@ internal abstract class DbTest {
                 packageV2.metadata,
                 appDao.getApp(repoId, packageName)?.toMetadataV2()?.sort()
             )
-            val versions = versionDao.getAppVersions(repoId, packageName).map {
+            val versions = versionDao.getAppVersions(repoId, packageName).getOrFail().map {
                 it.toPackageVersionV2()
             }.associateBy { it.file.sha256 }
             assertEquals(packageV2.versions.size, versions.size, "number of versions")

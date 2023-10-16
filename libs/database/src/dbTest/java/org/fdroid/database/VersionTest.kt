@@ -35,6 +35,22 @@ internal class VersionTest : DbTest() {
         versionId2 to packageVersion2,
     )
 
+    private fun getAppVersion1(repoId: Long): AppVersion {
+        val version = getVersion1(repoId)
+        return AppVersion(
+            version = version,
+            versionedStrings = packageVersion1.manifest.getVersionedStrings(version),
+        )
+    }
+
+    private fun getAppVersion2(repoId: Long): AppVersion {
+        val version = getVersion2(repoId)
+        return AppVersion(
+            version = version,
+            versionedStrings = packageVersion2.manifest.getVersionedStrings(version),
+        )
+    }
+
     private fun getVersion1(repoId: Long) =
         packageVersion1.toVersion(repoId, packageName, versionId1, isCompatible1)
 
@@ -55,25 +71,22 @@ internal class VersionTest : DbTest() {
         appDao.insert(repoId, packageName, getRandomMetadataV2())
         versionDao.insert(repoId, packageName, versionId1, packageVersion1, isCompatible1)
 
-        val appVersions = versionDao.getAppVersions(repoId, packageName)
+        val appVersions = versionDao.getAppVersions(repoId, packageName).getOrFail()
         assertEquals(1, appVersions.size)
-        val appVersion = appVersions[0]
-        assertEquals(versionId1, appVersion.version.versionId)
-        assertEquals(getVersion1(repoId), appVersion.version)
-        val manifest = packageVersion1.manifest
-        assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission.toSet())
-        assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23.toSet())
-        assertEquals(
-            manifest.features.map { it.name }.toSet(),
-            appVersion.version.manifest.features?.toSet()
-        )
+        assertEquals(getAppVersion1(repoId), appVersions[0])
 
+        val manifest = packageVersion1.manifest
         val versionedStrings = versionDao.getVersionedStrings(repoId, packageName)
         val expectedSize = manifest.usesPermission.size + manifest.usesPermissionSdk23.size
         assertEquals(expectedSize, versionedStrings.size)
 
+        // getting version by repo produces same result
+        val versionsByRepo = versionDao.getAppVersions(repoId, packageName).getOrFail()
+        assertEquals(1, versionsByRepo.size)
+        assertEquals(getAppVersion1(repoId), versionsByRepo[0])
+
         versionDao.deleteAppVersion(repoId, packageName, versionId1)
-        assertEquals(0, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(0, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageName).size)
     }
 
@@ -86,39 +99,29 @@ internal class VersionTest : DbTest() {
         versionDao.insert(repoId, packageName, versionId2, packageVersion2, isCompatible2)
 
         // get app versions from DB and assign them correctly
-        val appVersions = versionDao.getAppVersions(packageName).getOrFail()
-        assertEquals(2, appVersions.size)
-        val appVersion = if (versionId1 == appVersions[0].version.versionId) {
-            appVersions[0]
-        } else appVersions[1]
-        val appVersion2 = if (versionId2 == appVersions[0].version.versionId) {
-            appVersions[0]
-        } else appVersions[1]
+        listOf(
+            versionDao.getAppVersions(packageName).getOrFail(),
+            versionDao.getAppVersions(repoId, packageName).getOrFail(),
+        ).forEach { appVersions ->
+            assertEquals(2, appVersions.size)
+            val appVersion = if (versionId1 == appVersions[0].version.versionId) {
+                appVersions[0]
+            } else appVersions[1]
+            val appVersion2 = if (versionId2 == appVersions[0].version.versionId) {
+                appVersions[0]
+            } else appVersions[1]
 
-        // check first version matches
-        assertEquals(getVersion1(repoId), appVersion.version)
-        val manifest = packageVersion1.manifest
-        assertEquals(manifest.usesPermission.toSet(), appVersion.usesPermission.toSet())
-        assertEquals(manifest.usesPermissionSdk23.toSet(), appVersion.usesPermissionSdk23.toSet())
-        assertEquals(
-            manifest.features.map { it.name }.toSet(),
-            appVersion.version.manifest.features?.toSet()
-        )
+            // check first version matches
+            assertEquals(getAppVersion1(repoId), appVersion)
 
-        // check second version matches
-        assertEquals(getVersion2(repoId), appVersion2.version)
-        val manifest2 = packageVersion2.manifest
-        assertEquals(manifest2.usesPermission.toSet(), appVersion2.usesPermission.toSet())
-        assertEquals(manifest2.usesPermissionSdk23.toSet(),
-            appVersion2.usesPermissionSdk23.toSet())
-        assertEquals(
-            manifest.features.map { it.name }.toSet(),
-            appVersion.version.manifest.features?.toSet()
-        )
+            // check second version matches
+            assertEquals(getAppVersion2(repoId), appVersion2)
+        }
 
         // delete app and check that all associated data also gets deleted
         appDao.deleteAppMetadata(repoId, packageName)
-        assertEquals(0, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(0, versionDao.getAppVersions(packageName).getOrFail().size)
+        assertEquals(0, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageName).size)
     }
 
@@ -138,6 +141,10 @@ internal class VersionTest : DbTest() {
         assertEquals(3, versionDao.getAppVersions(packageName).getOrFail().size)
         assertEquals(3, versionDao.getVersions(listOf(packageName)).size)
 
+        // query by repo only returns the versions from each repo
+        assertEquals(2, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
+        assertEquals(1, versionDao.getAppVersions(repoId2, packageName).getOrFail().size)
+
         // disable second repo
         repoDao.setRepositoryEnabled(repoId2, false)
 
@@ -155,8 +162,10 @@ internal class VersionTest : DbTest() {
         versionDao.insert(repoId, packageName, versionId3, packageVersion3, true)
         val versions1 = versionDao.getAppVersions(packageName).getOrFail()
         val versions2 = versionDao.getVersions(listOf(packageName))
+        val versions3 = versionDao.getAppVersions(repoId, packageName).getOrFail()
         assertEquals(3, versions1.size)
         assertEquals(3, versions2.size)
+        assertEquals(3, versions3.size)
 
         // check that they are sorted as expected
         listOf(
@@ -166,6 +175,7 @@ internal class VersionTest : DbTest() {
         ).sortedDescending().forEachIndexed { i, versionCode ->
             assertEquals(versionCode, versions1[i].version.manifest.versionCode)
             assertEquals(versionCode, versions2[i].versionCode)
+            assertEquals(versionCode, versions3[i].version.manifest.versionCode)
         }
     }
 

@@ -35,6 +35,12 @@ public interface VersionDao {
      * Returns a list of versions for the given [packageName] sorting by highest version code first.
      */
     public fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
+
+    /**
+     * Returns a list of versions from the repo identified by the given [repoId]
+     * for the given [packageName] sorting by highest version code first.
+     */
+    public fun getAppVersions(repoId: Long, packageName: String): LiveData<List<AppVersion>>
 }
 
 /**
@@ -161,13 +167,12 @@ internal interface VersionDaoInt : VersionDao {
         ORDER BY manifest_versionCode DESC, pref.weight DESC""")
     override fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
 
-    /**
-     * Only use for testing, not sorted, does take disabled repos into account.
-     */
     @Transaction
+    @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM ${Version.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName""")
-    fun getAppVersions(repoId: Long, packageName: String): List<AppVersion>
+        WHERE repoId = :repoId AND packageName = :packageName
+        ORDER BY manifest_versionCode DESC""")
+    override fun getAppVersions(repoId: Long, packageName: String): LiveData<List<AppVersion>>
 
     @Query("""SELECT * FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""")

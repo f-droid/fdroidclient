@@ -63,6 +63,28 @@ internal class AppDaoTest : AppTest() {
     }
 
     @Test
+    fun testAppRepoPref() {
+        // insert same app into three repos (repoId1 has highest weight)
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        appDao.insert(repoId2, packageName, app2, locales)
+        appDao.insert(repoId3, packageName, app3, locales)
+
+        // app from repo with highest weight is returned, if no prefs are set
+        assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // prefer repo3 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId3))
+        assertEquals(app3, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // prefer repo1 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId1))
+        assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+    }
+
+    @Test
     fun testGetSameAppFromTwoReposOneDisabled() {
         // insert same app into two repos (repoId2 has highest weight)
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
@@ -148,6 +170,13 @@ internal class AppDaoTest : AppTest() {
         appDao.insert(repoId, packageName3, app3, locales)
         assertEquals(3, appDao.getNumberOfAppsInCategory("A"))
         assertEquals(2, appDao.getNumberOfAppsInCategory("B"))
+        assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
+
+        // app1 as a variant of app2 in another repo will show one more app in B
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName2, app1, locales)
+        assertEquals(3, appDao.getNumberOfAppsInCategory("A"))
+        assertEquals(3, appDao.getNumberOfAppsInCategory("B"))
         assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
     }
 

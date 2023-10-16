@@ -255,7 +255,7 @@ internal class RepositoryDaoTest : DbTest() {
         // data is there as expected
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(1, appDao.getAppMetadata().size)
-        assertEquals(1, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(1, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
         assertTrue(versionDao.getVersionedStrings(repoId, packageName).isNotEmpty())
 
         // clearing the repo removes apps and versions
@@ -264,7 +264,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(0, appDao.countApps())
         assertEquals(0, appDao.countLocalizedFiles())
         assertEquals(0, appDao.countLocalizedFileLists())
-        assertEquals(0, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(0, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageName).size)
         // preferences are not touched by clearing
         assertEquals(repositoryPreferences, repoDao.getRepositoryPreferences(repoId))

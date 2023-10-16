@@ -13,6 +13,7 @@ public data class AppPrefs(
     @PrimaryKey
     val packageName: String,
     override val ignoreVersionCodeUpdate: Long = 0,
+    val preferredRepoId: Long? = null,
     // This is named like this, because it hit a Room bug when joining with Version table
     // which had exactly the same field.
     internal val appPrefReleaseChannels: List<String>? = null,
