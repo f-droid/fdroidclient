@@ -1,0 +1,11 @@
+* Completely overhaul adding repos and mirrors, both UX and code
+
+* Preview repo contents before adding
+
+* Use Session Installer on F-Droid and F-Droid Basic including support for automatic background updates
+
+* On Android 14, mark apps with unsupported Target SDK Version as incompatible #2692
+
+* Long click to copy Links, Permissions and Versions on App Details screen (thanks @Tobias_Groza)
+
+* Incompatible apps are no longer shown anywhere (except when allowed in Settings) #41 (thanks @pigpig)
