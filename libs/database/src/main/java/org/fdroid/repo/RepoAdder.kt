@@ -25,6 +25,7 @@ import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
+import org.fdroid.download.HttpManager.Companion.isInvalidHttpUrl
 import org.fdroid.download.NotFoundException
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.SigningException
@@ -57,6 +58,11 @@ public class Fetching(
      */
     public val canAdd: Boolean = repo != null &&
         (fetchResult != null && fetchResult !is FetchResult.IsExistingRepository)
+
+    override fun toString(): String {
+        return "Fetching(repo=${repo?.address}, apps=${apps.size}, fetchResult=$fetchResult, " +
+            "done=$done, canAdd=$canAdd)"
+    }
 }
 
 public object Adding : AddRepoState()
@@ -104,9 +110,9 @@ internal class RepoAdder(
 
     private var fetchJob: Job? = null
 
-    internal fun fetchRepository(url: String, username: String?, password: String?, proxy: Proxy?) {
+    internal fun fetchRepository(url: String, proxy: Proxy?) {
         fetchJob = GlobalScope.launch(coroutineContext) {
-            fetchRepositoryInt(url, username, password, proxy)
+            fetchRepositoryInt(url, proxy)
         }
     }
 
@@ -114,8 +120,6 @@ internal class RepoAdder(
     @VisibleForTesting
     internal suspend fun fetchRepositoryInt(
         url: String,
-        username: String? = null,
-        password: String? = null,
         proxy: Proxy? = null,
     ) {
         if (hasDisallowInstallUnknownSources(context)) {
@@ -125,6 +129,11 @@ internal class RepoAdder(
         // get repo url and fingerprint
         val nUri = repoUriGetter.getUri(url)
         log.info("Parsed URI: $nUri")
+        if (isInvalidHttpUrl(nUri.uri.toString())) {
+            val e = IllegalArgumentException("Unsupported URI: ${nUri.uri}")
+            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            return
+        }
 
         // some plumping to receive the repo preview
         var receivedRepo: Repository? = null
@@ -148,14 +157,16 @@ internal class RepoAdder(
         // try fetching repo with v2 format first and fallback to v1
         try {
             try {
-                val repo = getTempRepo(nUri.uri, IndexFormatVersion.TWO, username, password)
+                val repo =
+                    getTempRepo(nUri.uri, IndexFormatVersion.TWO, nUri.username, nUri.password)
                 val repoFetcher =
                     RepoV2Fetcher(tempFileProvider, downloaderFactory, httpManager, proxy)
                 repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
             } catch (e: NotFoundException) {
                 log.warn(e) { "Did not find v2 repo, trying v1 now." }
                 // try to fetch v1 repo
-                val repo = getTempRepo(nUri.uri, IndexFormatVersion.ONE, username, password)
+                val repo =
+                    getTempRepo(nUri.uri, IndexFormatVersion.ONE, nUri.username, nUri.password)
                 val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory)
                 repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
             }
@@ -168,6 +179,10 @@ internal class RepoAdder(
             addRepoState.value = AddRepoError(IO_ERROR, e)
             return
         } catch (e: SerializationException) {
+            log.error(e) { "Error fetching repo." }
+            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            return
+        } catch (e: NotFoundException) { // v1 repos can also have 404
             log.error(e) { "Error fetching repo." }
             addRepoState.value = AddRepoError(INVALID_INDEX, e)
             return
@@ -202,9 +217,9 @@ internal class RepoAdder(
     }
 
     @WorkerThread
-    internal fun addFetchedRepository() {
+    internal fun addFetchedRepository(): Repository? {
         // prevent double calls (e.g. caused by double tapping a UI button)
-        if (addRepoState.compareAndSet(Adding, Adding)) return
+        if (addRepoState.compareAndSet(Adding, Adding)) return null
 
         // cancel fetch preview job, so it stops emitting new states
         fetchJob?.cancel()
@@ -250,6 +265,7 @@ internal class RepoAdder(
             }
         }
         addRepoState.value = Added(modifiedRepo)
+        return modifiedRepo
     }
 
     internal fun abortAddingRepo() {

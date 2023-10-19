@@ -50,6 +50,8 @@ import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
+import com.bumptech.glide.Glide;
+
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.Repository;
@@ -376,6 +378,8 @@ public class AppDetailsRecyclerViewAdapter
         final TextView titleView;
         final TextView authorView;
         final TextView lastUpdateView;
+        final ImageView repoLogoView;
+        final TextView repoNameView;
         final TextView warningView;
         final TextView summaryView;
         final TextView whatsNewView;
@@ -385,7 +389,6 @@ public class AppDetailsRecyclerViewAdapter
         final TextView antiFeaturesLabelView;
         final View antiFeaturesWarningView;
         final AntiFeaturesListingView antiFeaturesListingView;
-        final View buttonLayout;
         final Button buttonPrimaryView;
         final Button buttonSecondaryView;
         final View progressLayout;
@@ -401,6 +404,8 @@ public class AppDetailsRecyclerViewAdapter
             titleView = view.findViewById(R.id.title);
             authorView = view.findViewById(R.id.author);
             lastUpdateView = view.findViewById(R.id.text_last_update);
+            repoLogoView = view.findViewById(R.id.repo_icon);
+            repoNameView = view.findViewById(R.id.repo_name);
             warningView = view.findViewById(R.id.warning);
             summaryView = view.findViewById(R.id.summary);
             whatsNewView = view.findViewById(R.id.latest);
@@ -410,7 +415,6 @@ public class AppDetailsRecyclerViewAdapter
             antiFeaturesLabelView = view.findViewById(R.id.label_anti_features);
             antiFeaturesWarningView = view.findViewById(R.id.anti_features_warning);
             antiFeaturesListingView = view.findViewById(R.id.anti_features_full_listing);
-            buttonLayout = view.findViewById(R.id.button_layout);
             buttonPrimaryView = view.findViewById(R.id.primaryButtonView);
             buttonSecondaryView = view.findViewById(R.id.secondaryButtonView);
             progressLayout = view.findViewById(R.id.progress_layout);
@@ -437,12 +441,14 @@ public class AppDetailsRecyclerViewAdapter
 
         void clearProgress() {
             progressLayout.setVisibility(View.GONE);
-            buttonLayout.setVisibility(View.VISIBLE);
+            buttonPrimaryView.setVisibility(View.VISIBLE);
+            buttonSecondaryView.setVisibility(View.VISIBLE);
         }
 
         void setIndeterminateProgress(int resIdString) {
             progressLayout.setVisibility(View.VISIBLE);
-            buttonLayout.setVisibility(View.GONE);
+            buttonPrimaryView.setVisibility(View.GONE);
+            buttonSecondaryView.setVisibility(View.GONE);
             progressBar.setIndeterminate(true);
             progressLabel.setText(resIdString);
             progressLabel.setContentDescription(context.getString(R.string.downloading));
@@ -456,7 +462,8 @@ public class AppDetailsRecyclerViewAdapter
 
         void setProgress(long bytesDownloaded, long totalBytes) {
             progressLayout.setVisibility(View.VISIBLE);
-            buttonLayout.setVisibility(View.GONE);
+            buttonPrimaryView.setVisibility(View.GONE);
+            buttonSecondaryView.setVisibility(View.GONE);
             progressCancel.setVisibility(View.VISIBLE);
 
             progressBar.setMax(Utils.bytesToKb(totalBytes));
@@ -481,6 +488,18 @@ public class AppDetailsRecyclerViewAdapter
             if (app == null) return;
             Utils.setIconFromRepoOrPM(app, iconView, iconView.getContext());
             titleView.setText(app.name);
+            Repository repo = FDroidApp.getRepoManager(context).getRepository(app.repoId);
+            if (repo != null && !repo.getAddress().equals("https://f-droid.org/repo")) {
+                LocaleListCompat locales = LocaleListCompat.getDefault();
+                Utils.loadWithGlide(context, repo.getRepoId(), repo.getIcon(locales), repoLogoView);
+                repoNameView.setText(repo.getName(locales));
+                repoLogoView.setVisibility(View.VISIBLE);
+                repoNameView.setVisibility(View.VISIBLE);
+            } else {
+                Glide.with(context).clear(repoLogoView);
+                repoLogoView.setVisibility(View.GONE);
+                repoNameView.setVisibility(View.GONE);
+            }
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));
                 authorView.setVisibility(View.VISIBLE);
@@ -575,7 +594,8 @@ public class AppDetailsRecyclerViewAdapter
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
                 buttonPrimaryView.setEnabled(false);
-                buttonLayout.setVisibility(View.GONE);
+                buttonPrimaryView.setVisibility(View.GONE);
+                buttonSecondaryView.setVisibility(View.GONE);
                 progressLayout.setVisibility(View.VISIBLE);
             } else if (!app.isInstalled(context) && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
@@ -584,7 +604,8 @@ public class AppDetailsRecyclerViewAdapter
                 // Set Install button and hide second button
                 buttonPrimaryView.setText(R.string.menu_install);
                 buttonPrimaryView.setEnabled(true);
-                buttonLayout.setVisibility(View.VISIBLE);
+                buttonPrimaryView.setVisibility(View.VISIBLE);
+                buttonSecondaryView.setVisibility(View.VISIBLE);
                 buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
@@ -627,10 +648,12 @@ public class AppDetailsRecyclerViewAdapter
                     }
                 }
                 buttonPrimaryView.setEnabled(true);
-                buttonLayout.setVisibility(View.VISIBLE);
+                buttonPrimaryView.setVisibility(View.VISIBLE);
+                buttonSecondaryView.setVisibility(View.VISIBLE);
                 progressLayout.setVisibility(View.GONE);
             } else {
-                buttonLayout.setVisibility(View.VISIBLE);
+                buttonPrimaryView.setVisibility(View.VISIBLE);
+                buttonSecondaryView.setVisibility(View.VISIBLE);
                 progressLayout.setVisibility(View.GONE);
             }
             progressCancel.setOnClickListener(v -> callbacks.installCancel());

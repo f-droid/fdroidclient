@@ -51,6 +51,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
+import org.fdroid.fdroid.views.apps.AppListActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -416,10 +417,29 @@ public class RepoDetailsActivity extends AppCompatActivity {
         TextView lastDownloaded = repoView.findViewById(R.id.text_last_update_downloaded);
 
         name.setText(repo.getName(App.getLocales()));
+        // load number of apps in repo
         disposable = Single.fromCallable(() -> appDao.getNumberOfAppsInRepository(repoId))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(appCount -> numApps.setText(String.format(LocaleCompat.getDefault(), "%d", appCount)));
+                .subscribe(appCount -> {
+                    String countStr = String.format(LocaleCompat.getDefault(), "%d", appCount);
+                    String numStr;
+                    if (repo.getEnabled()) {
+                        numStr = getString(R.string.repo_num_apps_link, countStr);
+                    } else {
+                        numStr = countStr;
+                    }
+                    numApps.setText(numStr);
+                });
+        if (repo.getEnabled()) {
+            numApps.setOnClickListener(view -> {
+                Intent i = new Intent(this, AppListActivity.class);
+                i.putExtra(AppListActivity.EXTRA_REPO_ID, repo.getRepoId());
+                startActivity(i);
+            });
+        } else {
+            numApps.setTextColor(lastUpdated.getTextColors().getDefaultColor());
+        }
 
         setupDescription(repoView, repo);
         setupRepoFingerprint(repoView, repo);

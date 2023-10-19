@@ -37,6 +37,7 @@ import io.ktor.utils.io.core.isEmpty
 import io.ktor.utils.io.core.readBytes
 import io.ktor.utils.io.writeFully
 import mu.KotlinLogging
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import kotlin.coroutines.cancellation.CancellationException
 
 internal expect fun getHttpClientEngineFactory(): HttpClientEngineFactory<*>
@@ -50,10 +51,11 @@ public open class HttpManager @JvmOverloads constructor(
     private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
 ) {
 
-    internal companion object {
-        val log = KotlinLogging.logger {}
-        const val READ_BUFFER = 8 * 1024
+    public companion object {
+        internal val log = KotlinLogging.logger {}
+        internal const val READ_BUFFER = 8 * 1024
         private const val TIMEOUT_MILLIS_HIGH = 300_000L
+        public fun isInvalidHttpUrl(url: String): Boolean = url.toHttpUrlOrNull() == null
     }
 
     private var httpClient = getNewHttpClient(proxyConfig)

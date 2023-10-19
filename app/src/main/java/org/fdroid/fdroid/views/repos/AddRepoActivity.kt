@@ -9,11 +9,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.UpdateService
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
-import org.fdroid.fdroid.views.ManageReposActivity
+import org.fdroid.fdroid.views.apps.AppListActivity
+import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
 
@@ -30,8 +32,10 @@ class AddRepoActivity : ComponentActivity() {
                         // update newly added repo
                         UpdateService.updateRepoNow(applicationContext, state.repo.address)
                         // show repo list and close this activity
-                        val intent = Intent(applicationContext, ManageReposActivity::class.java)
-                        startActivity(intent)
+                        val i = Intent(this@AddRepoActivity, AppListActivity::class.java).apply {
+                            putExtra(EXTRA_REPO_ID, state.repo.repoId)
+                        }
+                        startActivity(i)
                         finish()
                     }
                 }
@@ -47,12 +51,22 @@ class AddRepoActivity : ComponentActivity() {
                 AddRepoIntroScreen(
                     state = state,
                     onFetchRepo = { url ->
-                        repoManager.fetchRepositoryPreview(url)
+                        repoManager.fetchRepositoryPreview(url, proxy = NetCipher.getProxy())
                     },
                     onAddRepo = { repoManager.addFetchedRepository() },
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                 )
             }
+        }
+        addOnNewIntentListener { intent ->
+            intent.dataString?.let { uri ->
+                repoManager.abortAddingRepository()
+                repoManager.fetchRepositoryPreview(uri, proxy = NetCipher.getProxy())
+            }
+        }
+        intent?.let {
+            onNewIntent(it)
+            it.setData(null) // avoid this intent from getting re-processed
         }
     }
 

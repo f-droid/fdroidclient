@@ -73,7 +73,12 @@
 
             <TextView
                 android:id="@+id/text_num_apps"
-                style="@style/BodyText" />
+                style="@style/BodyText"
+                android:minHeight="48dp"
+                android:textSize="22sp"
+                android:gravity="center_vertical"
+                android:textColor="?android:attr/textColorLink"
+                tools:text="@string/repo_num_apps_link" />
 
             <!-- The last time this repo was updated -->
             <TextView

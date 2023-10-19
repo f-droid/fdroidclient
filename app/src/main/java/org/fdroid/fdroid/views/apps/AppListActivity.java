@@ -37,6 +37,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.LocaleListCompat;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,6 +48,7 @@ import com.bumptech.glide.request.RequestOptions;
 import org.fdroid.database.AppListItem;
 import org.fdroid.database.AppListSortOrder;
 import org.fdroid.database.FDroidDatabase;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -71,6 +73,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_CATEGORY_NAME";
     public static final String EXTRA_SEARCH_TERMS
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
+    public static final String EXTRA_REPO_ID
+            = "org.fdroid.fdroid.views.apps.AppListActivity.REPO_ID";
 
     private static final String SEARCH_TERMS_KEY = "searchTerms";
     private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
@@ -80,6 +84,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private AppListAdapter appAdapter;
     private String categoryId;
     private String searchTerms;
+    private long repoId;
     private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
@@ -184,8 +189,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);
 
+        // this also causes a load as we set the search terms even for empty intents, thus the query changed
         parseIntentForSearchQuery();
-        loadItems();
     }
 
     @Override
@@ -198,11 +203,20 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private void parseIntentForSearchQuery() {
         Intent intent = getIntent();
         categoryId = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
-        String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
-                intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
+        repoId = intent.hasExtra(EXTRA_REPO_ID) ? intent.getLongExtra(EXTRA_REPO_ID, -1) : -1;
+        if (repoId > 0) {
+            Repository repo = FDroidApp.getRepoManager(this).getRepository(repoId);
+            if (repo != null) {
+                LocaleListCompat locales = LocaleListCompat.getDefault();
+                searchInput.setText(getSearchText(repo.getName(locales), searchTerms));
+            }
+        } else {
+            String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
+                    intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
+            searchInput.setText(getSearchText(categoryName, searchTerms));
+        }
 
-        searchInput.setText(getSearchText(categoryName, searchTerms));
         searchInput.setSelection(searchInput.getText().length());
 
         if (categoryId != null) {
@@ -213,17 +227,18 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     }
 
     private void loadItems() {
+        String search = searchTerms;
         if (itemsLiveData != null) {
-            itemsLiveData.removeObserver(this::onAppsLoaded);
+            itemsLiveData.removeObservers(this);
         }
         AppListSortOrder sortOrder =
                 SortClause.WORDS.equals(sortClauseSelected) ? AppListSortOrder.NAME : AppListSortOrder.LAST_UPDATED;
-        if (categoryId == null) {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), searchTerms,
-                    sortOrder);
+        if (repoId > 0) {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), repoId, search, sortOrder);
+        } else if (categoryId == null) {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), search, sortOrder);
         } else {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId,
-                    searchTerms, sortOrder);
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId, search, sortOrder);
         }
         itemsLiveData.observe(this, this::onAppsLoaded);
     }
@@ -248,8 +263,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private void onAppsLoaded(List<AppListItem> items) {
         setShowHiddenAppsNotice(false);
         appAdapter.setHasHiddenAppsCallback(() -> setShowHiddenAppsNotice(true));
-        // DB doesn't support search result sorting, so do own sort if we searched
         if (searchTerms != null) {
+            // DB doesn't support search result sorting, so do own sort if we searched
             Collections.sort(items, (o1, o2) -> {
                 if (sortClauseSelected.equals(SortClause.LAST_UPDATED)) {
                     return Long.compare(o2.getLastUpdated(), o1.getLastUpdated());
@@ -275,8 +290,12 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
     @Override
     public void onSearchTermsChanged(@Nullable String categoryName, @NonNull String searchTerms) {
-        if (categoryName == null) this.categoryId = null;
-        this.searchTerms = searchTerms;
+        if (categoryName == null) {
+            // remove previous chip
+            this.categoryId = null;
+            this.repoId = -1;
+        }
+        this.searchTerms = searchTerms.isEmpty() ? null : searchTerms;
         appView.scrollToPosition(0);
         loadItems();
         if (TextUtils.isEmpty(searchTerms)) {

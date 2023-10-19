@@ -162,6 +162,74 @@ internal class AppListItemsTest : AppTest() {
     }
 
     @Test
+    fun testSearchQueryPerRepo() {
+        val app1 = app1.copy(name = mapOf("en-US" to "One"), summary = mapOf("en-US" to "Onearry"))
+        val app2 = app2.copy(name = mapOf("en-US" to "Two"), summary = mapOf("de" to "Zfassung"))
+        val app3a = app3.copy(name = mapOf("de-DE" to "Drei"), summary = mapOf("de" to "Zfassung"))
+        val app3b = app3.copy(name = mapOf("en-US" to "Three"), summary = mapOf("en" to "summary"))
+        // insert three apps in a random order
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName1, app1, locales)
+        appDao.insert(repoId2, packageName2, app2, locales)
+        appDao.insert(repoId2, packageName3, app3a, locales)
+        appDao.insert(repoId3, packageName3, app3b, locales)
+
+        // one of the apps is installed
+        @Suppress("DEPRECATION")
+        val packageInfo2 = PackageInfo().apply {
+            packageName = packageName2
+            versionName = getRandomString()
+            versionCode = Random.nextInt(1, Int.MAX_VALUE)
+        }
+        every { pm.getInstalledPackages(0) } returns listOf(packageInfo2)
+
+        // get all apps in repo2 sorted by last updated
+        appDao.getAppListItems(pm, repoId2, null, LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(2, apps.size)
+            assertEquals(app3a, apps[0])
+            assertEquals(app2, apps[1])
+            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
+                apps[1].installedVersionCode)
+            assertEquals(packageInfo2.versionName, apps[1].installedVersionName)
+        }
+
+        // get all apps in repo2 searching for summary
+        appDao.getAppListItems(pm, repoId2, "Zfassung", NAME).getOrFail().let { apps ->
+            assertEquals(2, apps.size)
+            val sortedApps = apps.sortedBy { it.lastUpdated }
+            assertEquals(app2, sortedApps[0])
+            assertEquals(app3a, sortedApps[1])
+            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
+                sortedApps[0].installedVersionCode)
+            assertEquals(packageInfo2.versionName, sortedApps[0].installedVersionName)
+        }
+
+        // get first app by searching for summary
+        appDao.getAppListItems(pm, repoId1, "One", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+
+        // get third app by searching for summary in repo3 only
+        appDao.getAppListItems(pm, repoId3, "summary", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app3b, apps[0])
+        }
+
+        // empty search for unknown category
+        appDao.getAppListItems(pm, 1337L, "Zfassung", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(0, apps.size)
+        }
+
+        // empty search for unknown search term
+        appDao.getAppListItems(pm, repoId2, "foo bar", LAST_UPDATED).getOrFail().let { apps ->
+            assertEquals(0, apps.size)
+        }
+    }
+
+    @Test
     fun testMalformedSearchQuery() {
         every { pm.getInstalledPackages(0) } returns emptyList()
 

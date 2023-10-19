@@ -60,8 +60,6 @@ internal class RepoAdderIntegrationTest {
         repoAdder.fetchRepository(
             url = "https://fdroid.fedilab.app/repo/" +
                 "?fingerprint=11F0A69910A4280E2CD3CCC3146337D006BE539B18E1A9FEACE15FF757A94FEB",
-            username = null,
-            password = null,
             proxy = null
         )
         repoAdder.addRepoState.test {

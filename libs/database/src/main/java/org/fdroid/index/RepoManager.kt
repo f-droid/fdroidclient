@@ -1,6 +1,7 @@
 package org.fdroid.index
 
 import android.content.Context
+import android.net.Uri
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
@@ -20,6 +21,7 @@ import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
 import org.fdroid.repo.AddRepoState
 import org.fdroid.repo.RepoAdder
+import org.fdroid.repo.RepoUriGetter
 import java.io.File
 import java.net.Proxy
 import java.util.concurrent.CountDownLatch
@@ -124,24 +126,25 @@ public class RepoManager @JvmOverloads constructor(
      */
     @AnyThread
     @JvmOverloads
-    public fun fetchRepositoryPreview(
-        url: String,
-        username: String? = null,
-        password: String? = null,
-        proxy: Proxy? = null,
-    ) {
-        repoAdder.fetchRepository(url, username, password, proxy)
+    public fun fetchRepositoryPreview(url: String, proxy: Proxy? = null) {
+        repoAdder.fetchRepository(url, proxy)
     }
 
     /**
-     * When [addRepoState] is in [org.fdroid.repo.Fetched],
+     * When [addRepoState] is in [org.fdroid.repo.Fetching.done],
      * you can call this to actually add the repo to the DB.
      * @throws IllegalStateException if [addRepoState] is currently in any other state.
      */
     @AnyThread
     public fun addFetchedRepository() {
         GlobalScope.launch(coroutineContext) {
-            repoAdder.addFetchedRepository()
+            val addedRepo = repoAdder.addFetchedRepository()
+            // if repo was added, update state right away, so it becomes available asap
+            if (addedRepo != null) withContext(Dispatchers.Main) {
+                _repositoriesState.value = _repositoriesState.value.toMutableList().apply {
+                    add(addedRepo)
+                }
+            }
         }
     }
 
@@ -153,6 +156,14 @@ public class RepoManager @JvmOverloads constructor(
     @UiThread
     public fun abortAddingRepository() {
         repoAdder.abortAddingRepo()
+    }
+
+    /**
+     * Returns true if the given [uri] belongs to a swap repo.
+     */
+    @UiThread
+    public fun isSwapUri(uri: Uri?): Boolean {
+        return uri != null && RepoUriGetter.isSwapUri(uri)
     }
 
 }
