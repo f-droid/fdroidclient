@@ -329,8 +329,19 @@ internal interface RepositoryDaoInt : RepositoryDao {
         )
     }
 
+    @Transaction
+    override fun setRepositoryEnabled(repoId: Long, enabled: Boolean) {
+        // When disabling a repository, we need to remove it as preferred repo for all apps,
+        // otherwise our queries that ignore disabled repos will not return anything anymore.
+        if (!enabled) resetPreferredRepoInAppPrefs(repoId)
+        setRepositoryEnabledInternal(repoId, enabled)
+    }
+
     @Query("UPDATE ${RepositoryPreferences.TABLE} SET enabled = :enabled WHERE repoId = :repoId")
-    override fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
+    fun setRepositoryEnabledInternal(repoId: Long, enabled: Boolean)
+
+    @Query("UPDATE ${AppPrefs.TABLE} SET preferredRepoId = NULL WHERE preferredRepoId = :repoId")
+    fun resetPreferredRepoInAppPrefs(repoId: Long)
 
     @Query("""UPDATE ${RepositoryPreferences.TABLE} SET userMirrors = :mirrors
         WHERE repoId = :repoId""")
@@ -350,6 +361,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
         // we don't use cascading delete for preferences,
         // so we can replace index data on full updates
         deleteRepositoryPreferences(repoId)
+        // When deleting a repository, we need to remove it as preferred repo for all apps,
+        // otherwise our queries will not return anything anymore.
+        resetPreferredRepoInAppPrefs(repoId)
     }
 
     @Query("DELETE FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")

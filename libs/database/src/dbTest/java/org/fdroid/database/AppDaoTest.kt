@@ -2,6 +2,7 @@ package org.fdroid.database
 
 import androidx.core.os.LocaleListCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.fdroid.database.TestUtils.getOrAwaitValue
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.database.TestUtils.toMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
@@ -10,6 +11,7 @@ import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -82,6 +84,10 @@ internal class AppDaoTest : AppTest() {
         // prefer repo1 for this app
         appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId1))
         assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // preferring non-existent repo for this app makes query return nothing (avoid this!)
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = 1337L))
+        assertNull(appDao.getApp(packageName).getOrAwaitValue())
     }
 
     @Test
