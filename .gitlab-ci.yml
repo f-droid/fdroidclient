@@ -154,6 +154,7 @@ app weblate merge conflict:
     - changes:
         - .gitlab-ci.yml
         - app/src/*/res/values*/strings.xml
+        - metadata/
   script:
     - apt-get update
     - apt-get -qy install --no-install-recommends ca-certificates git

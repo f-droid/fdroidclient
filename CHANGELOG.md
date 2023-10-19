@@ -1,3 +1,24 @@
+### 1.19.0-alpha0 (2023-10-20)
+
+* Completely overhauled adding repositories and mirrors, both the user experience and the code.
+
+* Preview repo contents before adding new repos.
+
+* Include integrated QR scanner for adding new repos and mirrors
+
+* Use Session Installer on both F-Droid and F-Droid Basic, including support for
+  automatic background updates
+
+* On Android 14, mark apps with unsupported Target SDK Version as incompatible #2692
+
+* Long click to copy Links, Permissions and Versions on App Details screen (@Tobias_Groza)
+
+* Incompatible apps are no longer shown anywhere when they are disabled #41 (@pigpig)
+
+* Include lysator7eknrfl47rlyxvgeamrv7ucefgrrlhk7rouv3sna25asetwid.onion as default mirror
+
+* Fix Litecoin button linking to bitcoin address #2683 (@Tobias_Groza)
+
 ### 1.18.0 (2023-10-10)
 
 * Handle new implied split-permissions added in SDK 34.
