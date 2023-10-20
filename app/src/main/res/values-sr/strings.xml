@@ -565,4 +565,10 @@
     <string name="nearby_splace__external_storage_permission_button">Пробај</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid може да претражује репозиторијуме и резервне изворе на вашој SD картици, али је потребна ваша дозвола за то.</string>
     <string name="swap_connection_indexv0_error">Покушавате да се повежете са неким ко има застарелу верзију F-Droid-а. Да би се повезали, морају да надограде своју F-Droid апликацију. Могу да користе размену да би ажурирали своју F-Droid апликацију од вас.</string>
+    <string name="force_old_installer_title">Наметни стари програм за инсталацију</string>
+    <string name="force_old_installer_summary">Онемогућава бета верзију програма за инсталацију „Сесија“, укључујући подршку за аутоматска ажурирања у позадини.</string>
+    <string name="copied_to_clipboard">Копирано у привремену меморију</string>
+    <string name="copied_permission_to_clipboard">Назив дозволе је копиран у привремену меморију</string>
+    <string name="copied_url_to_clipboard">URL је копиран у привремену меморију</string>
+    <string name="targetsdk_or_later">циља %s</string>
 </resources>
