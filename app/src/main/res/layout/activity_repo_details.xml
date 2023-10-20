@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -15,10 +15,10 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/repo_details"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface" />
+            app:title="@string/repo_details" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,10 +31,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingEnd="?attr/listPreferredItemPaddingRight"
+            android:paddingStart="?attr/listPreferredItemPaddingLeft"
             android:paddingLeft="?attr/listPreferredItemPaddingLeft"
-            android:paddingRight="?attr/listPreferredItemPaddingRight"
-            android:paddingStart="?attr/listPreferredItemPaddingLeft">
+            android:paddingEnd="?attr/listPreferredItemPaddingRight"
+            android:paddingRight="?attr/listPreferredItemPaddingRight">
 
             <!-- URL of this repo -->
             <TextView
@@ -65,20 +65,39 @@
                 android:id="@+id/text_description"
                 style="@style/BodyText" />
 
-            <!-- Number of apps belonging to this repo -->
-            <TextView
-                android:id="@+id/label_num_apps"
-                style="@style/CaptionText"
-                android:text="@string/repo_num_apps" />
-
-            <TextView
-                android:id="@+id/text_num_apps"
-                style="@style/BodyText"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:textSize="22sp"
-                android:gravity="center_vertical"
-                android:textColor="?android:attr/textColorLink"
-                tools:text="@string/repo_num_apps_link" />
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Number of apps belonging to this repo -->
+                    <TextView
+                        android:id="@+id/label_num_apps"
+                        style="@style/CaptionText"
+                        android:text="@string/repo_num_apps" />
+
+                    <TextView
+                        android:id="@+id/text_num_apps"
+                        style="@style/BodyText"
+                        tools:text="1337" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_view_apps"
+                    style="@style/Widget.App.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="@string/repo_num_apps_button" />
+
+            </LinearLayout>
 
             <!-- The last time this repo was updated -->
             <TextView

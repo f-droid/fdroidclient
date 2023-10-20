@@ -436,7 +436,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_details">Repository</string>
     <string name="repo_url">Address</string>
     <string name="repo_num_apps">Number of apps</string>
-    <string name="repo_num_apps_link">%s (tap to list all apps)</string>
+    <string name="repo_num_apps_button">Show apps</string>
     <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>

@@ -75,11 +75,15 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private static final int[] SHOW_IF_EXISTS = {
             R.id.label_repo_name,
             R.id.text_repo_name,
+            R.id.label_description,
             R.id.text_description,
             R.id.label_num_apps,
             R.id.text_num_apps,
+            R.id.button_view_apps,
             R.id.label_last_update,
             R.id.text_last_update,
+            R.id.label_last_update_downloaded,
+            R.id.text_last_update_downloaded,
             R.id.label_username,
             R.id.text_username,
             R.id.button_edit_credentials,
@@ -413,6 +417,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
         TextView name = repoView.findViewById(R.id.text_repo_name);
         TextView numApps = repoView.findViewById(R.id.text_num_apps);
+        TextView numAppsButton = repoView.findViewById(R.id.button_view_apps);
         TextView lastUpdated = repoView.findViewById(R.id.text_last_update);
         TextView lastDownloaded = repoView.findViewById(R.id.text_last_update_downloaded);
 
@@ -423,22 +428,17 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appCount -> {
                     String countStr = String.format(LocaleCompat.getDefault(), "%d", appCount);
-                    String numStr;
-                    if (repo.getEnabled()) {
-                        numStr = getString(R.string.repo_num_apps_link, countStr);
-                    } else {
-                        numStr = countStr;
-                    }
-                    numApps.setText(numStr);
+                    numApps.setText(countStr);
                 });
         if (repo.getEnabled()) {
-            numApps.setOnClickListener(view -> {
+            numAppsButton.setOnClickListener(view -> {
                 Intent i = new Intent(this, AppListActivity.class);
                 i.putExtra(AppListActivity.EXTRA_REPO_ID, repo.getRepoId());
                 startActivity(i);
             });
+            numAppsButton.setVisibility(View.VISIBLE);
         } else {
-            numApps.setTextColor(lastUpdated.getTextColors().getDefaultColor());
+            numAppsButton.setVisibility(View.GONE);
         }
 
         setupDescription(repoView, repo);
