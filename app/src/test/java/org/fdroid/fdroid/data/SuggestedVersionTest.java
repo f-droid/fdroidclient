@@ -135,7 +135,7 @@ public class SuggestedVersionTest {
             assertEquals("Installed signature on Apk", app.installedSigner, suggestedApk.signer);
         }
         assertTrue(app.canAndWantToUpdate(suggestedApk));
-        AppPrefs appPrefs = new AppPrefs(app.packageName, 0, Collections.singletonList(releaseChannel));
+        AppPrefs appPrefs = new AppPrefs(app.packageName, 0, null, Collections.singletonList(releaseChannel));
         assertEquals(hasUpdates, app.hasUpdates(apks, appPrefs));
     }
 }

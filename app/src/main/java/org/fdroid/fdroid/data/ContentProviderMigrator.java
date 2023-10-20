@@ -123,7 +123,7 @@ final class ContentProviderMigrator {
                 // ignored version code is max code to ignore all updates, or a specific one to ignore
                 long v = ignoreAllUpdates ? Long.MAX_VALUE : ignoreVersionCode;
                 // this is a new DB, so we can just start to insert new AppPrefs
-                appPrefsDao.update(new AppPrefs(packageName, v, null));
+                appPrefsDao.update(new AppPrefs(packageName, v, null, null));
             }
         }
     }
