@@ -1,0 +1,11 @@
+* Kompletně přepracováno přidávání repozitářů a zrcadel, rozhraní i kód
+
+* Náhled obsahu repozitáře před jeho přidáním
+
+* Používání relačního instalátoru v F-Droidu a F-Droidu Basic včetně podpory pro automatické aktualizace
+
+* Na Androidu 14 označeny aplikace s nepodporovanou cílovou verzí SDK jako nekompatibilní
+
+* Podržení pro zkopírování odkazů, oprávnění a verzí na stránce s podrobnostmi o aplikaci
+
+* Nekompatibilní aplikace již nejsou nikde zobrazovány (pokud nejsou povoleny v nastavení)
