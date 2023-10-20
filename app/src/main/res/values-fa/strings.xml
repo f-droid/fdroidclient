@@ -460,7 +460,7 @@
     <string name="app_repository">مخزن: %1$s</string>
     <string name="main_menu__updates">به‌روز رسانی‌ها</string>
     <string name="nearby_splash__read_external_storage">جست‌وجوی کارت SD برای آینه‌ها و مخزن‌ها.</string>
-    <string name="nearby_splash__request_permission">بیازماییدش</string>
+    <string name="nearby_splash__request_permission">بجویید</string>
     <string name="not_visible_nearby">نزدیک به کار نیفتاده</string>
     <string name="not_visible_nearby_description">پیش از تاخت زدن با افزاره‌های اطراف، افزاره‌تان را آشکار کنید.</string>
     <string name="swap_toast_using_path">با استفاده از %1$s</string>
@@ -537,4 +537,29 @@
     <string name="app_name_basic">اف‌دروید پایه</string>
     <string name="about_title_basic">دربارهٔ اف‌دروید پایه</string>
     <string name="category_Nightly">شبانه</string>
+    <string name="copied_to_clipboard">در تخته‌گیره رونوشت شد</string>
+    <string name="turn_on_wifi">روشن کردن وای‌فای</string>
+    <string name="nearby_splace__external_storage_permission_button">بیازماییدش</string>
+    <string name="force_old_installer_title">اجبار به نصب‌کنندهٔ قدیمی</string>
+    <string name="force_old_installer_summary">از کار انداختن نصب‌کنندهٔ نشست آزمایشی شامل پشتیبانی از به‌روز رسانی‌های پس‌زمینهٔ خودکار.</string>
+    <string name="repo_state_adding">افزودن مخزن…</string>
+    <string name="repo_invalid">مخزن نامعتبر.
+\n
+\nبا نگه‌دارنده تماس گرفته و دربارهٔ مشکل اطّلاع دهید.</string>
+    <string name="repo_exists">این مخزن از پیش افزوده شده.</string>
+    <string name="repo_add_new_title">افزودن مخزن</string>
+    <string name="targetsdk_or_later">با هدف %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">اف‌دروید می‌تواند روی کارت حافظه‌تان به دنبال مخزن‌ها و آینه‌ها بگردد؛ ولی برای این کار نیاز به اجازه‌تان دارد.</string>
+    <string name="repo_state_fetching">واکشیدن مخزن…</string>
+    <string name="copied_permission_to_clipboard">نام اجازه در تخته‌گیره رونوشت شد</string>
+    <string name="copied_url_to_clipboard">نشانی در تخته‌گیره رونوشت شد</string>
+    <string name="repo_io_error">خطا در وصل شدن به مخزن.</string>
+    <string name="repo_enter_url">ورود دستی نشانی مخزن</string>
+    <string name="repo_add_new_mirror">افزودن به عنوان آینهٔ جدید</string>
+    <string name="repo_intro">مخزن، منبعی اضافی از کاره‌هاست. مخازن سوم‌شخصی که این‌جا می‌افزایید، استانداردهایی متفاوت با آن‌هایی دارند که خود اف‌دروید می‌سازد.
+\n
+\nلطفاً مطمئن شوید که مخزنی که می‌افزایید قابل اطمینان است.</string>
+    <string name="swap_connection_indexv0_error">در حال تلاش برای وصل شدن به شخصی با نگارشی خارج از رده از اف‌دروید هستید. برای وصل شدن باید کارهٔ اف‌درویدشان را ارتقا دهند. می‌توانند برای به‌روز رسانی کارهٔ اف‌دروید با مبادله از شما استفاده کنند.</string>
+    <string name="repo_num_apps_link">%s (زدن برای دیدن همهٔ کاره‌ها)</string>
+    <string name="swap_banner_message">برای مبادلهٔ کاره‌ها وای‌فایتان را روشن کرده و به همان شبکهٔ دوستتان وصل شوید.</string>
 </resources>
