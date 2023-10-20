@@ -45,20 +45,23 @@ internal object RepoUriGetter {
             }
             clearQuery() // removes fingerprint and other query params
             fragment("") // remove # hash fragment
-            if (pathSegments.size >= 2 &&
-                pathSegments[pathSegments.lastIndex - 1] == "fdroid" &&
-                pathSegments.last() == "repo"
-            ) {
-                // path already is /fdroid/repo, use as is
-            } else if (pathSegments.lastOrNull() == "repo") {
-                // path already ends in /repo, use as is
-            } else if (pathSegments.size >= 1 && pathSegments.last() == "fdroid") {
-                // path is /fdroid with missing /repo, so add that
-                appendPath("repo")
-            } else {
-                // path is missing /fdroid/repo, so add it
-                appendPath("fdroid")
-                appendPath("repo")
+            if (uri.scheme != "content" && uri.scheme != "file") {
+                // do some path auto-adding, if it is missing
+                if (pathSegments.size >= 2 &&
+                    pathSegments[pathSegments.lastIndex - 1] == "fdroid" &&
+                    pathSegments.last() == "repo"
+                ) {
+                    // path already is /fdroid/repo, use as is
+                } else if (pathSegments.lastOrNull() == "repo") {
+                    // path already ends in /repo, use as is
+                } else if (pathSegments.size >= 1 && pathSegments.last() == "fdroid") {
+                    // path is /fdroid with missing /repo, so add that
+                    appendPath("repo")
+                } else {
+                    // path is missing /fdroid/repo, so add it
+                    appendPath("fdroid")
+                    appendPath("repo")
+                }
             }
         }.build().let { newUri ->
             // hacky way to remove trailing slash

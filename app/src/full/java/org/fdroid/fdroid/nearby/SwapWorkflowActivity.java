@@ -13,6 +13,7 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,7 +60,6 @@ import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.nearby.peers.BluetoothPeer;
 import org.fdroid.fdroid.nearby.peers.Peer;
 import org.fdroid.fdroid.net.BluetoothDownloader;
@@ -68,6 +68,7 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -467,6 +468,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
         confirmSwapConfig = new NewRepoConfig(this, intent);
+        checkIfNewRepoOnSameWifi(confirmSwapConfig);
     }
 
     private static boolean isSwapUrl(Uri uri) {
@@ -832,6 +834,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (scanResult.getContents() != null) {
                 NewRepoConfig repoConfig = new NewRepoConfig(this, scanResult.getContents());
                 if (repoConfig.isValidRepo()) {
+                    checkIfNewRepoOnSameWifi(repoConfig);
                     confirmSwapConfig = repoConfig;
                     showRelevantView();
                 } else {
@@ -864,6 +867,27 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SEND) {
             sendFDroidApk();
+        }
+    }
+
+    private void checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
+        // if this is a local repo, check we're on the same wifi
+        if (!TextUtils.isEmpty(newRepo.getBssid())) {
+            WifiManager wifiManager = ContextCompat.getSystemService(getApplicationContext(),
+                    WifiManager.class);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            String bssid = wifiInfo.getBSSID();
+            if (TextUtils.isEmpty(bssid)) { /* not all devices have wifi */
+                return;
+            }
+            bssid = bssid.toLowerCase(Locale.ENGLISH);
+            String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
+            if (!bssid.equals(newRepoBssid)) {
+                String msg = getString(R.string.not_on_same_wifi, newRepo.getSsid());
+                Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+            }
+            // TODO we should help the user to the right thing here,
+            // instead of just showing a message!
         }
     }
 

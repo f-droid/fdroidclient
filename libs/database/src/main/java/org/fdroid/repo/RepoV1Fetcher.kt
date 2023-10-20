@@ -10,6 +10,7 @@ import org.fdroid.download.DownloaderFactory
 import org.fdroid.index.IndexConverter
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser
+import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
 import org.fdroid.index.parseV1
@@ -20,6 +21,7 @@ import org.fdroid.index.v2.FileV2
 internal class RepoV1Fetcher(
     private val tempFileProvider: TempFileProvider,
     private val downloaderFactory: DownloaderFactory,
+    private val repoUriBuilder: RepoUriBuilder,
 ) : RepoFetcher {
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
@@ -35,7 +37,7 @@ internal class RepoV1Fetcher(
         val indexFile = tempFileProvider.createTempFile()
         val entryDownloader = downloaderFactory.create(
             repo = repo,
-            uri = uri.buildUpon().appendPath(SIGNED_FILE_NAME).build(),
+            uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME),
             indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME"),
             destFile = indexFile,
         )

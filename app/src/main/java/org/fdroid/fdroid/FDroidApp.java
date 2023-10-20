@@ -78,6 +78,7 @@ import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.index.IndexFormatVersion;
 import org.fdroid.index.RepoManager;
+import org.fdroid.index.RepoUriBuilder;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -530,8 +531,12 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     public static RepoManager getRepoManager(Context context) {
         if (repoManager == null) {
+            final RepoUriBuilder repoUriBuilder = (repository, pathElements) -> {
+                String address1 = Utils.getRepoAddress(repository);
+                return Utils.getUri(address1, pathElements);
+            };
             repoManager = new RepoManager(context, DBHelper.getDb(context), DownloaderFactory.INSTANCE,
-                    DownloaderFactory.HTTP_MANAGER);
+                    DownloaderFactory.HTTP_MANAGER, repoUriBuilder);
         }
         return repoManager;
     }

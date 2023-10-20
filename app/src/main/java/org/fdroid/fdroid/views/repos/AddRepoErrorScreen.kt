@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils
-import org.fdroid.fdroid.views.ManageReposActivity.getDisallowInstallUnknownSourcesErrorMessage
+import org.fdroid.fdroid.views.repos.ManageReposActivity.getDisallowInstallUnknownSourcesErrorMessage
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX

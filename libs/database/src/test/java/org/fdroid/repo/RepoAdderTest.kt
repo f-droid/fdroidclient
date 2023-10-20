@@ -16,6 +16,7 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.slot
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,8 +36,11 @@ import org.fdroid.download.NotFoundException
 import org.fdroid.download.getDigestInputStream
 import org.fdroid.fdroid.DigestInputStream
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.IndexParser.json
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
+import org.fdroid.index.v2.IndexV2
+import org.fdroid.index.v2.RepoV2
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
@@ -212,6 +216,10 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertTrue(addedState is Added, addedState.toString())
             assertEquals(existingRepo, addedState.repo)
+        }
+
+        verify(exactly = 1) {
+            repoDao.updateUserMirrors(42L, listOf(url.trimEnd('/')))
         }
     }
 
@@ -466,6 +474,157 @@ internal class RepoAdderTest {
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
             assertEquals(INVALID_FINGERPRINT, state2.errorType)
+        }
+    }
+
+    @Test
+    fun testWrongKnownFingerprint() = runTest {
+        val url = "https://example.org/repo"
+        testMinRepoPreview(url) { state2 ->
+            assertTrue(state2 is AddRepoError, "$state2")
+            assertEquals(INVALID_FINGERPRINT, state2.errorType)
+            val e = assertIs<SigningException>(state2.exception)
+            assertTrue(e.message!!.contains("Known fingerprint different"))
+        }
+    }
+
+    @Test
+    fun testWrongKnownFingerprintWithGivenFingerprint() = runTest {
+        val url = "https://example.org/repo?fingerprint=${VerifierConstants.FINGERPRINT}"
+        testMinRepoPreview("https://example.org/repo", url) { state2 ->
+            assertTrue(state2 is AddRepoError, "$state2")
+            assertEquals(INVALID_FINGERPRINT, state2.errorType)
+            val e = assertIs<SigningException>(state2.exception)
+            assertTrue(e.message!!.contains("Known fingerprint different"))
+        }
+    }
+
+    private suspend fun testMinRepoPreview(
+        repoAddress: String,
+        url: String = repoAddress,
+        onSecondState: (AddRepoState) -> Unit,
+    ) {
+        val jarFile = folder.newFile()
+        val repoV2 = RepoV2(
+            address = "https://briarproject.org/fdroid/repo",
+            timestamp = 42L,
+        )
+        val indexV2 = IndexV2(repo = repoV2)
+        val index = json.encodeToString(IndexV2.serializer(), indexV2).toByteArray()
+        val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
+
+        every { tempFileProvider.createTempFile() } returns jarFile
+        every {
+            downloaderFactory.create(
+                repo = match {
+                    it.address == repoAddress && it.formatVersion == IndexFormatVersion.TWO
+                },
+                uri = Uri.parse("$repoAddress/entry.jar"),
+                indexFile = any(),
+                destFile = jarFile,
+            )
+        } returns downloader
+        every { downloader.download() } answers {
+            jarFile.outputStream().use { outputStream ->
+                assets.open("diff-empty-min/entry.jar").use { inputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+        }
+        coEvery {
+            httpManager.getDigestInputStream(match {
+                it.indexFile.name == "../index-min-v2.json" &&
+                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == repoAddress
+            })
+        } returns indexStream
+        every {
+            digest.digest() // sha256 from entry.json
+        } returns "851ecda085ed53adab25f761a9dbf4c09d59e5bff9c9d5530814d56445ae30f2".decodeHex()
+
+        repoAdder.addRepoState.test {
+            assertIs<None>(awaitItem())
+
+            repoAdder.fetchRepository(url = url, proxy = null)
+
+            val state1 = awaitItem()
+            assertIs<Fetching>(state1)
+            assertNull(state1.repo)
+            assertTrue(state1.apps.isEmpty())
+            assertFalse(state1.canAdd)
+
+            val state2 = awaitItem()
+            onSecondState(state2)
+        }
+    }
+
+    @Test
+    fun testKnownFingerprintIsAccepted() = runTest {
+        val repoAddress = "https://guardianproject.info/fdroid/repo"
+        val fingerprint = knownRepos[repoAddress]
+        val url = "https://example.org/repo?fingerprint=$fingerprint"
+
+        val jarFile = folder.newFile()
+        val repoV2 = RepoV2(
+            address = repoAddress,
+            timestamp = 42L,
+        )
+        val indexV2 = IndexV2(repo = repoV2)
+        val index = json.encodeToString(IndexV2.serializer(), indexV2).toByteArray()
+        val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
+
+        every { tempFileProvider.createTempFile() } returns jarFile
+        every {
+            downloaderFactory.create(
+                repo = match {
+                    it.address == "https://example.org/repo" &&
+                        it.formatVersion == IndexFormatVersion.TWO
+                },
+                uri = Uri.parse("https://example.org/repo/entry.jar"),
+                indexFile = any(),
+                destFile = jarFile,
+            )
+        } returns downloader
+        every { downloader.download() } answers {
+            jarFile.outputStream().use { outputStream ->
+                assets.open("guardianproject_entry.jar").use { inputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+        }
+        coEvery {
+            httpManager.getDigestInputStream(match {
+                it.indexFile.name == "/index-v2.json" &&
+                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == "https://example.org/repo"
+            })
+        } returns indexStream
+        every {
+            digest.digest() // sha256 from entry.json
+        } returns "cd925cdc31c88e8509bd64e62f7680d8dbffe2643990f62404acfda71e538906".decodeHex()
+
+        // repo not in DB
+        every { repoDao.getRepository(any<String>()) } returns null
+
+        repoAdder.addRepoState.test {
+            assertIs<None>(awaitItem())
+
+            repoAdder.fetchRepository(url = url, proxy = null)
+
+            val state1 = awaitItem()
+            assertIs<Fetching>(state1)
+            assertNull(state1.repo)
+            assertTrue(state1.apps.isEmpty())
+            assertFalse(state1.canAdd)
+
+            val state2 = awaitItem()
+            assertIs<Fetching>(state2)
+            assertEquals(repoAddress, state2.repo?.address)
+            assertTrue(state2.canAdd)
+            assertFalse(state2.done)
+
+            val state3 = awaitItem()
+            assertIs<Fetching>(state3)
+            assertTrue(state3.canAdd)
+            assertTrue(state3.done)
         }
     }
 

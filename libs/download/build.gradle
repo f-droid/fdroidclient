@@ -56,10 +56,10 @@ kotlin {
             kotlin.srcDir("src/commonMain/kotlin")
             dependencies {
                 implementation "io.ktor:ktor-client-okhttp:2.3.0"
-                implementation("com.github.bumptech.glide:glide:4.14.2") {
+                implementation("com.github.bumptech.glide:glide:4.15.1") {
                     transitive = false // we don't need all that it pulls in, just the basics
                 }
-                implementation "com.github.bumptech.glide:annotations:4.14.2"
+                implementation "com.github.bumptech.glide:annotations:4.15.1"
             }
         }
         androidUnitTest {
@@ -67,7 +67,7 @@ kotlin {
                 implementation kotlin('test')
                 implementation 'org.json:json:20220320'
                 implementation 'junit:junit:4.13.2'
-                implementation 'ch.qos.logback:logback-classic:1.2.11'
+                implementation 'ch.qos.logback:logback-classic:1.4.5'
             }
         }
         androidInstrumentedTest {

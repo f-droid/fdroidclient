@@ -33,6 +33,7 @@ public class RepoManager @JvmOverloads constructor(
     db: FDroidDatabase,
     downloaderFactory: DownloaderFactory,
     httpManager: HttpManager,
+    private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
 
@@ -46,6 +47,7 @@ public class RepoManager @JvmOverloads constructor(
         tempFileProvider = tempFileProvider,
         downloaderFactory = downloaderFactory,
         httpManager = httpManager,
+        repoUriBuilder = repoUriBuilder,
         coroutineContext = coroutineContext,
     )
 

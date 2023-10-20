@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.nearby;
 
+import static org.fdroid.fdroid.views.main.MainActivity.ACTION_REQUEST_SWAP;
+
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -462,6 +464,10 @@ public class SwapService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Intent startUiIntent = new Intent(this, SwapWorkflowActivity.class);
+        if (intent.getData() != null) {
+            startUiIntent.setData(intent.getData());
+            startUiIntent.setAction(ACTION_REQUEST_SWAP);
+        }
         startUiIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startUiIntent);
         return START_NOT_STICKY;

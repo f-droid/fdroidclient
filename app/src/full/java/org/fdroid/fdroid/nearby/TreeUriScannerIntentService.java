@@ -19,32 +19,24 @@
 
 package org.fdroid.fdroid.nearby;
 
-import android.app.IntentService;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Process;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.JobIntentService;
 import androidx.documentfile.provider.DocumentFile;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.fdroid.database.Repository;
-import org.fdroid.fdroid.AddRepoIntentService;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.views.repos.AddRepoActivity;
+import org.fdroid.index.RepoManager;
 import org.fdroid.index.SigningException;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
-import org.fdroid.index.v1.IndexV1VerifierKt;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
@@ -52,7 +44,6 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 
 /**
@@ -168,43 +159,16 @@ public class TreeUriScannerIntentService extends JobIntentService {
      * @see JarInputStream#JarInputStream(InputStream, boolean)
      */
     private void registerRepo(DocumentFile index) {
-        InputStream inputStream = null;
-        try {
-            inputStream = getContentResolver().openInputStream(index.getUri());
-            registerRepo(this, inputStream, index.getParentFile().getUri());
-        } catch (IOException | SigningException e) {
-            e.printStackTrace();
-        } finally {
-            Utils.closeQuietly(inputStream);
-        }
+        DocumentFile repoFile = index.getParentFile();
+        if (repoFile != null) registerRepo(this, repoFile.getUri());
     }
 
-    public static void registerRepo(Context context, InputStream inputStream, Uri repoUri)
-            throws IOException, SigningException {
-        if (inputStream == null) {
-            return;
-        }
-        File destFile = File.createTempFile("dl-", IndexV1UpdaterKt.SIGNED_FILE_NAME, context.getCacheDir());
-        FileUtils.copyInputStreamToFile(inputStream, destFile);
-        JarFile jarFile = new JarFile(destFile, true);
-        JarEntry indexEntry = (JarEntry) jarFile.getEntry(IndexV1VerifierKt.DATA_FILE_NAME);
-        IOUtils.readLines(jarFile.getInputStream(indexEntry));
-        Certificate certificate = getSigningCertFromJar(indexEntry);
-        String fingerprint = Utils.calcFingerprint(certificate);
-        Log.i(TAG, "Got fingerprint: " + fingerprint);
-        destFile.delete();
-
-        Log.i(TAG, "Found a valid, signed index-v1.json");
-        for (Repository repo : FDroidApp.getRepoManager(context).getRepositories()) {
-            if (fingerprint.equals(repo.getFingerprint())) {
-                Log.i(TAG, repo.getAddress() + " has the SAME fingerprint: " + fingerprint);
-            } else {
-                Log.i(TAG, repo.getAddress() + " different fingerprint");
-            }
-        }
-
-        AddRepoIntentService.addRepo(context, repoUri, fingerprint);
-        // TODO rework IndexUpdater.getSigningCertFromJar to work for here
+    static void registerRepo(Context context, Uri repoUri) {
+        RepoManager repoManager = FDroidApp.getRepoManager(context);
+        repoManager.fetchRepositoryPreview(repoUri.toString());
+        Intent i = new Intent(context, AddRepoActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
     }
 
     /**
