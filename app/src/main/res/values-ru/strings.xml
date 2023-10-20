@@ -575,4 +575,11 @@
     <string name="nearby_splace__external_storage_permission_button">Попробовать</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid может искать репозитории и зеркала на SD-карте, но для этого необходимо ваше разрешение.</string>
     <string name="swap_connection_indexv0_error">Вы пытаетесь подключиться к устройству с устаревшей версией F-Droid. Перед подключением следует обновить F-Droid. Вы можете отправить актуальную версию F-Droid с вашего устройства.</string>
+    <string name="force_old_installer_title">Принудительно использовать старый установщик</string>
+    <string name="force_old_installer_summary">Отключить бета-версию установщика, включая поддержку автоматических фоновых обновлений.</string>
+    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
+    <string name="copied_permission_to_clipboard">Название разрешения скопировано в буфер обмена</string>
+    <string name="copied_url_to_clipboard">URL скопирован в буфер обмена</string>
+    <string name="targetsdk_or_later">цели %s</string>
+    <string name="repo_num_apps_link">%s (нажмите для отображения списка приложений)</string>
 </resources>

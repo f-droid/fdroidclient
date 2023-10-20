@@ -1,5 +1,5 @@
 * Oprava používání repozitářů a zrcadel z externího úložiště v posledních verzích systému Android
-* Vylepšená správa WiFi v aplikaci Nablízku
+* Vylepšená správa Wi-Fi v aplikaci Nablízku
 * Navigační panel si nyní pamatuje svou pozici i po restartu aplikace
 * Nový jazyk: svahilština
 * Oprava stahování obrázků pro repozitáře, které stále používají index-v1

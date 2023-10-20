@@ -594,4 +594,11 @@
     <string name="nearby_splace__external_storage_permission_button">جرّبه</string>
     <string name="nearby_splach__external_storage_permission_explainer">يمكن لـ F-Droid البحث عن المستودعات والمرايا على بطاقة الذاكرة الخارجية الخاصة بك، ولكنه يحتاج إلى إذن منك للقيام بذلك.</string>
     <string name="swap_connection_indexv0_error">أنت تحاول الاتصال بشخص لديه إصدار قديم من F-Droid. للاتصال عليهم ترقية تطبيق F-Droid الخاص بهم. يمكنهم استخدام المبادلة لتحديث تطبيق F-Droid الخاص بهم منك.</string>
+    <string name="force_old_installer_title">إجبار المثبت القديم</string>
+    <string name="force_old_installer_summary">قم بتعطيل مثبت الجلسة التجريبية، بما في ذلك دعم التحديثات التلقائية في الخلفية.</string>
+    <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
+    <string name="copied_permission_to_clipboard">تم نسخ اسم الإذن إلى الحافظة</string>
+    <string name="copied_url_to_clipboard">نسخ الرابط إلى الحافظة</string>
+    <string name="targetsdk_or_later">الأهداف %s</string>
+    <string name="repo_num_apps_link">%s (انقر لعرض قائمة التطبيقات)</string>
 </resources>
