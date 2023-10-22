@@ -141,6 +141,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
         packageName = packageInfo.packageName;
         versionName = packageInfo.versionName;
         versionCode = packageInfo.versionCode;
+        targetSdkVersion = packageInfo.applicationInfo.targetSdkVersion;
         releaseChannels = Collections.emptyList();
 
         // zero for "we don't know". If we require this in the future,
