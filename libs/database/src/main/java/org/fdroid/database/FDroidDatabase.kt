@@ -38,6 +38,7 @@ import java.util.concurrent.Callable
     views = [
         LocalizedIcon::class,
         HighestVersion::class,
+        PreferredRepo::class,
     ],
     exportSchema = true,
     autoMigrations = [

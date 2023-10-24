@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import androidx.room.DatabaseView
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.fdroid.PackagePreference
@@ -54,3 +55,13 @@ public data class AppPrefs(
         },
     )
 }
+
+@DatabaseView("""SELECT packageName, repoId AS preferredRepoId FROM ${AppMetadata.TABLE}
+    JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+    LEFT JOIN ${AppPrefs.TABLE} USING (packageName)
+    WHERE repoId = COALESCE(preferredRepoId, repoId)
+    GROUP BY packageName HAVING MAX(pref.weight)""")
+internal class PreferredRepo(
+    val packageName: String,
+    val preferredRepoId: Long,
+)

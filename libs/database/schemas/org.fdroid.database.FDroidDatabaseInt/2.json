@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "6f1a1580d37e51593441ffa87a858914",
+    "identityHash": "0f46ee261c488b0d38dae6aa541b57cc",
     "entities": [
       {
         "tableName": "CoreRepository",
@@ -1084,11 +1084,15 @@
       {
         "viewName": "HighestVersion",
         "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT repoId, packageName, antiFeatures FROM Version\n    GROUP BY repoId, packageName HAVING MAX(manifest_versionCode)"
+      },
+      {
+        "viewName": "PreferredRepo",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT packageName, repoId AS preferredRepoId FROM AppMetadata\n    JOIN RepositoryPreferences AS pref USING (repoId)\n    LEFT JOIN AppPrefs USING (packageName)\n    WHERE repoId = COALESCE(preferredRepoId, repoId)\n    GROUP BY packageName HAVING MAX(pref.weight)"
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6f1a1580d37e51593441ffa87a858914')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f46ee261c488b0d38dae6aa541b57cc')"
     ]
   }
 }
