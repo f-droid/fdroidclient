@@ -20,12 +20,14 @@ import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.nearby.SwapService
 import org.fdroid.fdroid.views.apps.AppListActivity
 import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
+import org.fdroid.index.RepoManager
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
 
 class AddRepoActivity : ComponentActivity() {
 
-    private val repoManager = FDroidApp.getRepoManager(this)
+    // Use a getter here, otherwise this tries to access Context too early causing NPE
+    private val repoManager: RepoManager get() = FDroidApp.getRepoManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
