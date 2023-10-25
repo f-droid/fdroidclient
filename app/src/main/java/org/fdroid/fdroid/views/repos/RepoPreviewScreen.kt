@@ -139,7 +139,7 @@ fun RepoPreviewHeader(
         }
         if (state.canAdd) FDroidButton(
             text = when (state.fetchResult) {
-                IsNewRepository -> stringResource(R.string.repo_add_new_title)
+                is IsNewRepository -> stringResource(R.string.repo_add_new_title)
                 is IsNewMirror -> stringResource(R.string.repo_add_new_mirror)
                 else -> error("Unexpected fetch state: ${state.fetchResult}")
             },
@@ -239,7 +239,7 @@ fun RepoPreviewScreenFetchingPreview() {
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(repo, listOf(app1, app2, app3), IsNewRepository)
+            Fetching(repo, listOf(app1, app2, app3), IsNewRepository("foo"))
         ) {}
     }
 }
