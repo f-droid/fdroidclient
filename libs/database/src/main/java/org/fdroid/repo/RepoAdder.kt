@@ -85,7 +85,7 @@ public data class AddRepoError(
 }
 
 public sealed class FetchResult {
-    public object IsNewRepository : FetchResult()
+    public data class IsNewRepository(internal val addUrl: String) : FetchResult()
     public data class IsNewMirror(
         internal val existingRepoId: Long,
         internal val newMirrorUrl: String,
@@ -211,7 +211,7 @@ internal class RepoAdder(
         val cert = repo.certificate ?: error("Certificate was null")
         val existingRepo = repositoryDao.getRepository(cert)
         return if (existingRepo == null) {
-            FetchResult.IsNewRepository
+            FetchResult.IsNewRepository(url)
         } else {
             val existingMirror = if (existingRepo.address.trimEnd('/') == url) {
                 url
@@ -258,8 +258,17 @@ internal class RepoAdder(
                     username = repo.username,
                     password = repo.password,
                 )
-                val repoId = repositoryDao.insert(newRepo)
-                repositoryDao.getRepository(repoId) ?: error("New repository not found in DB")
+                db.runInTransaction<Repository> {
+                    val repoId = repositoryDao.insert(newRepo)
+                    // add user mirror, if URL is not the repo address and not a known mirror
+                    if (fetchResult.addUrl != repo.address.trimEnd('/') &&
+                        repo.mirrors.find { fetchResult.addUrl == it.url.trimEnd('/') } == null
+                    ) {
+                        val userMirrors = listOf(fetchResult.addUrl)
+                        repositoryDao.updateUserMirrors(repoId, userMirrors)
+                    }
+                    repositoryDao.getRepository(repoId) ?: error("New repository not found in DB")
+                }
             }
 
             is FetchResult.IsNewMirror -> {
