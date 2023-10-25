@@ -30,7 +30,7 @@ public class CategorySpan extends ReplacementSpan {
     private static final int ICON_PADDING = (ICON_BACKGROUND_SIZE - ICON_SIZE) / 2;
     private static final int TEXT_LEADING_PADDING = 8;
     private static final int TEXT_TRAILING_PADDING = 12;
-    private static final int TEXT_BELOW_PADDING = 4;
+    private static final int TEXT_BELOW_PADDING = 2;
     private static final int WHITE_SPACE_PADDING_AT_END = 4;
     private static final float DROP_SHADOW_HEIGHT = 1.5f;
 
@@ -92,9 +92,10 @@ public class CategorySpan extends ReplacementSpan {
         int textWidth = (int) paint.measureText(categoryName.toString());
         int textLeadingPadding = (int) (TEXT_LEADING_PADDING * density);
         int textTrailingPadding = (int) (TEXT_TRAILING_PADDING * density);
+        int textBelowPadding = (int) (TEXT_BELOW_PADDING * density);
 
         canvas.save();
-        canvas.translate(x, bottom - height + TEXT_BELOW_PADDING * density);
+        canvas.translate(x, bottom - height + textBelowPadding);
 
         RectF backgroundRect = new RectF(0, 0, iconBackgroundSize + textLeadingPadding
                 + textWidth + textTrailingPadding, height);
@@ -137,7 +138,8 @@ public class CategorySpan extends ReplacementSpan {
         // The category name drawn to the right of the category name.
         Paint textPaint = new Paint(paint);
         textPaint.setColor(grey < 186 ? Color.WHITE : Color.BLACK);
-        canvas.drawText(categoryName.toString(), iconBackgroundSize + textLeadingPadding, bottom, textPaint);
+        canvas.drawText(categoryName.toString(), iconBackgroundSize + textLeadingPadding, bottom - textBelowPadding,
+                textPaint);
 
         canvas.restore();
     }
