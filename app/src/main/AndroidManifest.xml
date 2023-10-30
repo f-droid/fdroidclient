@@ -306,6 +306,7 @@
                 <data android:host="f-droid.org" />
                 <data android:host="www.f-droid.org" />
                 <data android:host="staging.f-droid.org" />
+                <data android:host="cloudflare.f-droid.org" />
                 <data android:pathPrefix="/app/" />
                 <data android:pathPrefix="/packages/" />
                 <data android:pathPrefix="/repository/browse" />
@@ -324,6 +325,7 @@
                 <data android:host="f-droid.org" />
                 <data android:host="www.f-droid.org" />
                 <data android:host="staging.f-droid.org" />
+                <data android:host="cloudflare.f-droid.org" />
                 <data android:pathPrefix="/app/" />
                 <data android:pathPrefix="/packages/" />
                 <data android:pathPrefix="/repository/browse" />
