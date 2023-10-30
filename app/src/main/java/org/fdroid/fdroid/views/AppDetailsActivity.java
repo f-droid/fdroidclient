@@ -23,8 +23,6 @@ package org.fdroid.fdroid.views;
 
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -43,7 +41,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.util.ObjectsCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -90,9 +87,6 @@ public class AppDetailsActivity extends AppCompatActivity
     private static final int REQUEST_PERMISSION_DIALOG = 3;
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
-    @SuppressWarnings("unused")
-    protected BluetoothAdapter bluetoothAdapter;
-
     private FDroidApp fdroidApp;
     private FDroidDatabase db;
     private volatile App app;
@@ -130,8 +124,6 @@ public class AppDetailsActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false); // clear title
         supportPostponeEnterTransition();
-
-        bluetoothAdapter = getBluetoothAdapter();
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
@@ -343,17 +335,6 @@ public class AppDetailsActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
-
-    /*
-    private void shareApkBluetooth() {
-        // If Bluetooth has not been enabled/turned on, then
-        // enabling device discoverability will automatically enable Bluetooth
-        Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
-        startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
-        // if this is successful, the Bluetooth transfer is started
-    }
-     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -766,12 +747,6 @@ public class AppDetailsActivity extends AppCompatActivity
     @Override
     public void disableAndroidBeam() {
         NfcHelper.disableAndroidBeam(this);
-    }
-
-    private BluetoothAdapter getBluetoothAdapter() {
-        // to use the new, recommended way of getting the adapter
-        // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
-        return ContextCompat.getSystemService(this, BluetoothManager.class).getAdapter();
     }
 
     @Override
