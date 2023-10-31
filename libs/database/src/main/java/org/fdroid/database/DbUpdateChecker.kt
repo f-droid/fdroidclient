@@ -25,6 +25,10 @@ public class DbUpdateChecker @JvmOverloads constructor(
      * Returns a list of apps that can be updated.
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
+     * @param onlyFromPreferredRepo if true updates coming from repositories that are not preferred,
+     * either via [AppPrefs.preferredRepoId] or [Repository.weight] will not be returned.
+     * If false, updates from all enabled repositories will be considered
+     * and the one with the highest version code returned.
      */
     @JvmOverloads
     public fun getUpdatableApps(
@@ -78,6 +82,9 @@ public class DbUpdateChecker @JvmOverloads constructor(
      * or null if there is none.
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
+     * @param onlyFromPreferredRepo if true a version from a repository that is not preferred,
+     * either via [AppPrefs.preferredRepoId] or [Repository.weight] will not be returned.
+     * If false, versions from all enabled repositories will be considered.
      */
     @SuppressLint("PackageManagerGetSignatures")
     public fun getSuggestedVersion(

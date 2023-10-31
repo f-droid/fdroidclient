@@ -131,6 +131,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app_error_open">Could not launch app.</string>
 
     <string name="app_list_results_hidden_antifeature_settings">Some results were hidden based on your antifeature settings.</string>
+    <string name="app_list_no_suggested_version">No version recommended for installation.</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installed</string>
     <string name="app_list_download_ready">Downloaded, ready to install</string>

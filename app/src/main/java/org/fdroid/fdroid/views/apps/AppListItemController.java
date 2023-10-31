@@ -549,13 +549,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             if (disposable != null) disposable.dispose();
             disposable = Utils.runOffUiThread(() -> {
                 AppVersion version = updateChecker.getSuggestedVersion(app.packageName,
-                        app.preferredSigner, releaseChannels);
-                if (version == null) return null;
+                        app.preferredSigner, releaseChannels, true);
+                if (version == null) return new Apk();
                 Repository repo = FDroidApp.getRepoManager(activity).getRepository(version.getRepoId());
-                if (repo == null) return null;
+                if (repo == null) return new Apk();
                 return new Apk(version, repo);
             }, receivedApk -> {
-                if (receivedApk != null) {
+                if (receivedApk.packageName == null) {
+                    Toast.makeText(activity, R.string.app_list_no_suggested_version, Toast.LENGTH_SHORT).show();
+                } else {
                     String canonicalUrl = receivedApk.getCanonicalUrl();
                     Uri canonicalUri = Uri.parse(canonicalUrl);
                     broadcastManager.registerReceiver(receiver,
