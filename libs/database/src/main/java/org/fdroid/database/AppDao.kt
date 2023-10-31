@@ -71,6 +71,12 @@ public interface AppDao {
     public fun getApp(repoId: Long, packageName: String): App?
 
     /**
+     * Returns a list of all enabled repositories identified by their [Repository.repoId]
+     * that contain the app identified by the given [packageName].
+     */
+    public fun getRepositoryIdsForApp(packageName: String): List<Long>
+
+    /**
      * Returns a limited number of apps with limited data.
      * Apps without name, icon or summary are at the end (or excluded if limit is too small).
      * Includes anti-features from the version with the highest version code.
@@ -315,6 +321,11 @@ internal interface AppDaoInt : AppDao {
     @Query("""SELECT * FROM ${AppMetadata.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName""")
     override fun getApp(repoId: Long, packageName: String): App?
+
+    @Query("""SELECT repoId FROM ${AppMetadata.TABLE}
+        JOIN RepositoryPreferences AS pref USING (repoId)
+        WHERE pref.enabled = 1 AND packageName = :packageName""")
+    override fun getRepositoryIdsForApp(packageName: String): List<Long>
 
     /**
      * Used for diffing.

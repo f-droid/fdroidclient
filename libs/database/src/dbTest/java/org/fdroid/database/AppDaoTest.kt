@@ -109,6 +109,26 @@ internal class AppDaoTest : AppTest() {
     }
 
     @Test
+    fun testGetRepositoryIdsForApp() {
+        // initially, the app is in no repos
+        assertEquals(emptyList(), appDao.getRepositoryIdsForApp(packageName))
+
+        // insert same app into one repo
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        assertEquals(listOf(repoId1), appDao.getRepositoryIdsForApp(packageName))
+
+        // insert the app into one more repo
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName, app2, locales)
+        assertEquals(listOf(repoId1, repoId2), appDao.getRepositoryIdsForApp(packageName))
+
+        // when repo1 is disabled, it doesn't get returned anymore
+        repoDao.setRepositoryEnabled(repoId1, false)
+        assertEquals(listOf(repoId2), appDao.getRepositoryIdsForApp(packageName))
+    }
+
+    @Test
     fun testUpdateCompatibility() {
         // insert two apps with one version each
         val repoId = repoDao.insertOrReplace(getRandomRepo())
