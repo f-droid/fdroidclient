@@ -1,6 +1,5 @@
 package org.fdroid.database
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.fdroid.database.TestUtils.assertRepoEquals
 import org.fdroid.database.TestUtils.getOrFail
@@ -9,7 +8,6 @@ import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestUtils.orNull
 import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.random.Random
@@ -21,9 +19,6 @@ import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 internal class RepositoryDaoTest : DbTest() {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Test
     fun testInsertInitialRepository() {

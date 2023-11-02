@@ -1,6 +1,5 @@
 package org.fdroid.database
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.index.v2.PackageVersionV2
@@ -8,7 +7,6 @@ import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.random.Random
@@ -17,9 +15,6 @@ import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 internal class VersionTest : DbTest() {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val packageName = getRandomString()
     private val packageVersion1 = getRandomPackageVersionV2()
