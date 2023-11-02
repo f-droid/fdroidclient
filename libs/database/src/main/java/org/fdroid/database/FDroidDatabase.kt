@@ -8,6 +8,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import org.fdroid.LocaleChooser.getBestLocale
+import java.io.Closeable
 import java.util.Locale
 import java.util.concurrent.Callable
 
@@ -42,12 +43,12 @@ import java.util.concurrent.Callable
     ],
     exportSchema = true,
     autoMigrations = [
+        AutoMigration(1, 2, MultiRepoMigration::class),
         // add future migrations here (if they are easy enough to be done automatically)
-        AutoMigration(1, 2),
     ],
 )
 @TypeConverters(Converters::class)
-internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(), FDroidDatabase {
+internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Closeable {
     abstract override fun getRepositoryDao(): RepositoryDaoInt
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt
