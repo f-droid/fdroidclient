@@ -55,9 +55,9 @@ internal class AppPrefsDaoTest : AppTest() {
     @Test
     fun testGetPreferredRepos() {
         // insert three apps, the third is in repo2 and repo3
-        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName1, app1, locales)
         appDao.insert(repoId2, packageName2, app2, locales)
         appDao.insert(repoId2, packageName3, app3, locales)

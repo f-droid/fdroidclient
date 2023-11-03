@@ -354,7 +354,7 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         LEFT JOIN ${LocalizedIcon.TABLE} AS icon USING (repoId, packageName)
-        LEFT JOIN AppPrefs USING (packageName)
+        LEFT JOIN ${AppPrefs.TABLE} USING (packageName)
         WHERE pref.enabled = 1 AND COALESCE(preferredRepoId, repoId) = repoId
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName IS NULL ASC, icon.packageName IS NULL ASC,

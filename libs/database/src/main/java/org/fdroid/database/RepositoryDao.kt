@@ -151,10 +151,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
             certificate = newRepository.certificate,
         )
         val repoId = insertOrReplace(repo)
-        val currentMaxWeight = getMaxRepositoryWeight()
+        val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
-            weight = currentMaxWeight + 1,
+            weight = currentMinWeight - 2,
             lastUpdated = null,
             username = newRepository.username,
             password = newRepository.password,
@@ -181,10 +181,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
             certificate = null,
         )
         val repoId = insertOrReplace(repo)
-        val currentMaxWeight = getMaxRepositoryWeight()
+        val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
-            weight = currentMaxWeight + 1,
+            weight = currentMinWeight - 2,
             lastUpdated = null,
             username = username,
             password = password,
@@ -197,15 +197,15 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @VisibleForTesting
     fun insertOrReplace(repository: RepoV2, version: Long = 0): Long {
         val repoId = insertOrReplace(repository.toCoreRepository(version = version))
-        val currentMaxWeight = getMaxRepositoryWeight()
-        val repositoryPreferences = RepositoryPreferences(repoId, currentMaxWeight + 1)
+        val currentMinWeight = getMinRepositoryWeight()
+        val repositoryPreferences = RepositoryPreferences(repoId, currentMinWeight - 2)
         insert(repositoryPreferences)
         insertRepoTables(repoId, repository)
         return repoId
     }
 
-    @Query("SELECT MAX(weight) FROM ${RepositoryPreferences.TABLE}")
-    fun getMaxRepositoryWeight(): Int
+    @Query("SELECT COALESCE(MIN(weight), ${Int.MAX_VALUE}) FROM ${RepositoryPreferences.TABLE}")
+    fun getMinRepositoryWeight(): Int
 
     @Transaction
     @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")

@@ -25,6 +25,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
+@Suppress("DEPRECATION")
 @RunWith(AndroidJUnit4::class)
 internal class AppListItemsTest : AppTest() {
 
@@ -48,7 +49,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName2, app2, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -108,7 +108,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName2, app2, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -177,7 +176,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId3, packageName3, app3b, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -306,7 +304,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName2, app2, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -429,9 +426,9 @@ internal class AppListItemsTest : AppTest() {
     @Test
     fun testFromRepoWithHighestWeight() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -454,9 +451,9 @@ internal class AppListItemsTest : AppTest() {
     @Test
     fun testFromRepoFromAppPrefs() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -539,7 +536,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName3, app3, locales)
 
         // define packageInfo for each test
-        @Suppress("DEPRECATION")
         val packageInfo1 = PackageInfo().apply {
             packageName = packageName1
             versionName = getRandomString()
@@ -581,7 +577,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName, app1, locales)
 
         val packageInfoCreator = { name: String ->
-            @Suppress("DEPRECATION")
             PackageInfo().apply {
                 packageName = name
                 versionName = name

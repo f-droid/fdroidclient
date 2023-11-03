@@ -110,7 +110,7 @@ internal class RepositoryDaoTest : DbTest() {
         val repositoryPreferences2 = repoDao.getRepositoryPreferences(repoId2)
         assertEquals(repoId2, repositoryPreferences2?.repoId)
         // second repo has one weight point more than first repo
-        assertEquals(repositoryPreferences1?.weight?.plus(1), repositoryPreferences2?.weight)
+        assertEquals(repositoryPreferences1?.weight?.minus(2), repositoryPreferences2?.weight)
 
         // remove first repo and check that the database only returns one
         repoDao.deleteRepository(repoId1)
@@ -276,5 +276,16 @@ internal class RepositoryDaoTest : DbTest() {
 
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(cert, repoDao.getRepositories()[0].certificate)
+    }
+
+    @Test
+    fun testGetMinRepositoryWeight() {
+        assertEquals(Int.MAX_VALUE, repoDao.getMinRepositoryWeight())
+
+        repoDao.insertOrReplace(getRandomRepo())
+        assertEquals(Int.MAX_VALUE - 2, repoDao.getMinRepositoryWeight())
+
+        repoDao.insertOrReplace(getRandomRepo())
+        assertEquals(Int.MAX_VALUE - 4, repoDao.getMinRepositoryWeight())
     }
 }

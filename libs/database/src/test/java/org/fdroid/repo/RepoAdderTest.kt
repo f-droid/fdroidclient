@@ -100,7 +100,7 @@ internal class RepoAdderTest {
         val userManager = mockk<UserManager>()
         val repoAdder = RepoAdder(context, db, tempFileProvider, downloaderFactory, httpManager)
 
-        every { context.getSystemService("user") } returns userManager
+        every { context.getSystemService(UserManager::class.java) } returns userManager
         every {
             userManager.hasUserRestriction(DISALLOW_INSTALL_UNKNOWN_SOURCES)
         } returns true

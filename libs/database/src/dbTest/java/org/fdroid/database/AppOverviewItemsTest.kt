@@ -71,7 +71,14 @@ internal class AppOverviewItemsTest : AppTest() {
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName, app2, locales)
 
-        // now icon is returned from app in second repo
+        // app is still returned as before
+        appDao.getAppOverviewItems().getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1.icon.getBestLocale(locales), apps[0].getIcon(locales))
+        }
+
+        // after preferring second repo, icon is returned from app in second repo
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
         appDao.getAppOverviewItems().getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2.icon.getBestLocale(locales), apps[0].getIcon(locales))
@@ -152,7 +159,14 @@ internal class AppOverviewItemsTest : AppTest() {
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName, app2, locales)
 
-        // now second app from second repo is returned
+        // app is still returned as before, new repo doesn't override old one
+        appDao.getAppOverviewItems().getOrFail().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+        }
+
+        // now second app from second repo is returned after preferring it explicitly
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
         appDao.getAppOverviewItems().getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
@@ -162,9 +176,9 @@ internal class AppOverviewItemsTest : AppTest() {
     @Test
     fun testGetByRepoPref() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -255,8 +269,10 @@ internal class AppOverviewItemsTest : AppTest() {
         assertEquals(3, appDao.getAppOverviewItems().getOrFail().size)
 
         // app3b is the same as app3, but has an icon, so is not last anymore
+        // after we prefer that repo for this app
         val app3b = app3.copy(icon = icons2)
         appDao.insert(repoId2, packageName3, app3b)
+        appPrefsDao.update(AppPrefs(packageName3, preferredRepoId = repoId2))
         // note that we don't insert a version here
         appDao.getAppOverviewItems().getOrFail().let { apps ->
             assertEquals(3, apps.size)
@@ -307,9 +323,10 @@ internal class AppOverviewItemsTest : AppTest() {
         // note that we don't insert a version here
         assertEquals(3, appDao.getAppOverviewItems("A").getOrFail().size)
 
-        // app3b is the same as app3, but has an icon, so is not last anymore
+        // app3b is the same as app3, but has an icon and is preferred, so is not last anymore
         val app3b = app3.copy(icon = icons2)
         appDao.insert(repoId2, packageName3, app3b)
+        appPrefsDao.update(AppPrefs(packageName3, preferredRepoId = repoId2))
         // note that we don't insert a version here
         appDao.getAppOverviewItems("A").getOrFail().let { apps ->
             assertEquals(3, apps.size)

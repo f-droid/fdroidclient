@@ -136,8 +136,8 @@ internal class DbUpdateCheckerTest : AppTest() {
     @Test
     fun testSuggestedVersionOnlyFromPreferredRepo() {
         // insert the same app into two repos
-        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
 
@@ -225,9 +225,9 @@ internal class DbUpdateCheckerTest : AppTest() {
     @Test
     fun testGetUpdatableAppsOnlyFromPreferredRepo() {
         // insert the same app into three repos
-        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageInfo.packageName, app1, locales)
         appDao.insert(repoId2, packageInfo.packageName, app2, locales)
         appDao.insert(repoId3, packageInfo.packageName, app3, locales)

@@ -35,9 +35,9 @@ internal class AppDaoTest : AppTest() {
     @Test
     fun testGetSameAppFromTwoRepos() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -67,9 +67,9 @@ internal class AppDaoTest : AppTest() {
     @Test
     fun testAppRepoPref() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -93,8 +93,8 @@ internal class AppDaoTest : AppTest() {
     @Test
     fun testGetSameAppFromTwoReposOneDisabled() {
         // insert same app into two repos (repoId2 has highest weight)
-        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
 
