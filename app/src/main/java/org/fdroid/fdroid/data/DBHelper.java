@@ -71,7 +71,6 @@ public class DBHelper {
     @VisibleForTesting
     static void prePopulateDb(Context context, FDroidDatabase db) {
         List<String> initialRepos = DBHelper.loadInitialRepos(context);
-        int weight = 1;
         boolean hasEnabledRepo = false;
         for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
             boolean enabled = initialRepos.get(i + 4).equals("1");
@@ -91,8 +90,7 @@ public class DBHelper {
                         initialRepos.get(i + 2), // description
                         initialRepos.get(i + 6),  // certificate
                         Integer.parseInt(initialRepos.get(i + 3)), // version
-                        enabled, // enabled
-                        weight++ // weight
+                        enabled // enabled
                 );
             } catch (IllegalArgumentException e) {
                 Log.e(TAG, "Invalid repo: " + addresses.get(0), e);
