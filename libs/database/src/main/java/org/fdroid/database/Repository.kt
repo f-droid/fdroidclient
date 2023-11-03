@@ -393,7 +393,8 @@ public data class InitialRepository @JvmOverloads constructor(
     val certificate: String,
     val version: Long,
     val enabled: Boolean,
-    val weight: Int,
+    @Deprecated("This is automatically assigned now and can be safely removed.")
+    val weight: Int = 0, // still used for testing, could be made internal or tests migrate away
 ) {
     init {
         validateCertificate(certificate)

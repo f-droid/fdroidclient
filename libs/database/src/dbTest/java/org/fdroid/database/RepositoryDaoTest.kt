@@ -30,7 +30,6 @@ internal class RepositoryDaoTest : DbTest() {
             certificate = "abcdef", // not random, because format gets checked
             version = Random.nextLong(),
             enabled = Random.nextBoolean(),
-            weight = Random.nextInt(),
         )
         val repoId = repoDao.insert(repo)
 
@@ -41,7 +40,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(repo.certificate, actualRepo.certificate)
         assertEquals(repo.version, actualRepo.version)
         assertEquals(repo.enabled, actualRepo.enabled)
-        assertEquals(repo.weight, actualRepo.weight)
+        assertEquals(Int.MAX_VALUE - 2, actualRepo.weight) // ignoring provided weight
         assertEquals(-1, actualRepo.timestamp)
         assertEquals(3, actualRepo.mirrors.size)
         assertEquals(emptyList(), actualRepo.userMirrors)

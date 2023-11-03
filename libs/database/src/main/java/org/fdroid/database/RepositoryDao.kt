@@ -127,9 +127,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
             certificate = initialRepo.certificate,
         )
         val repoId = insertOrReplace(repo)
+        val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
-            weight = initialRepo.weight,
+            weight = currentMinWeight - 2,
             lastUpdated = null,
             enabled = initialRepo.enabled,
         )
