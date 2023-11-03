@@ -137,6 +137,13 @@ public data class Repository internal constructor(
     public val formatVersion: IndexFormatVersion? get() = repository.formatVersion
     public val certificate: String? get() = repository.certificate
 
+    /**
+     * True if this repository is an archive repo.
+     * It is suggested to not show archive repos in the list of repos in the UI.
+     */
+    public val isArchiveRepo: Boolean
+        get() = repository.address.trimEnd('/').endsWith("/archive")
+
     public fun getName(localeList: LocaleListCompat): String? =
         repository.name.getBestLocale(localeList)
 

@@ -15,8 +15,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.fdroid.database.AppPrefs
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
+import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
 import org.fdroid.repo.AddRepoState
@@ -37,7 +39,7 @@ public class RepoManager @JvmOverloads constructor(
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
 
-    private val repositoryDao = db.getRepositoryDao()
+    private val repositoryDao = db.getRepositoryDao() as RepositoryDaoInt
     private val tempFileProvider = TempFileProvider {
         File.createTempFile("dl-", "", context.cacheDir)
     }
@@ -158,6 +160,29 @@ public class RepoManager @JvmOverloads constructor(
     @UiThread
     public fun abortAddingRepository() {
         repoAdder.abortAddingRepo()
+    }
+
+    /**
+     * Changes repository priorities that determine the order
+     * they are returned from [getRepositories] and the preferred repositories.
+     * The lower a repository is in the list, the lower is its priority.
+     * If an app is in more than one repository, by default,
+     * the repo higher in the list will provide metadata and updates.
+     * Only setting [AppPrefs.preferredRepoId] overrides this.
+     *
+     * @param repoToReorder this repository will change its position in the list.
+     * @param repoTarget the repository in which place the [repoToReorder] shall be moved.
+     * If our list is [ A B C D ] and we call reorderRepositories(B, D),
+     * then the new list will be [ A C D B ].
+     * @throws IllegalArgumentException if one of the repos is an archive repo.
+     * Those are expected to be tied to their main repo one down the list
+     * and are moved automatically when their main repo moves.
+     */
+    @AnyThread
+    public fun reorderRepositories(repoToReorder: Repository, repoTarget: Repository) {
+        GlobalScope.launch(coroutineContext) {
+            repositoryDao.reorderRepositories(repoToReorder, repoTarget)
+        }
     }
 
     /**
