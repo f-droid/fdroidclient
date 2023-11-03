@@ -161,6 +161,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/repo_edit_credentials" />
 
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/archiveRepo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/repo_archive_toggle" />
+
             <!-- Signature (or "unsigned" if none) -->
             <TextView
                 android:id="@+id/label_repo_fingerprint"

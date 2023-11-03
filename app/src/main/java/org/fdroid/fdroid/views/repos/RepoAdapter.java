@@ -23,6 +23,7 @@ import org.fdroid.index.v2.FileV2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
 
@@ -48,6 +49,11 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
     // we could do better, but not really worth it at this point
     void updateItems(List<Repository> items) {
         this.items.clear();
+        // filter out archive repos
+        ListIterator<Repository> iterator = items.listIterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().isArchiveRepo()) iterator.remove();
+        }
         this.items.addAll(items);
         notifyDataSetChanged();
     }

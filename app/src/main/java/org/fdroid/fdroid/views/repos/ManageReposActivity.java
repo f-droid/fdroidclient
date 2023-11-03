@@ -47,6 +47,8 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.index.RepoManager;
 
+import java.util.ArrayList;
+
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class ManageReposActivity extends AppCompatActivity implements RepoAdapter.RepoItemListener {
@@ -139,7 +141,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         touchHelper.attachToRecyclerView(repoList);
         repoList.setAdapter(repoAdapter);
         FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, items -> {
-            repoAdapter.updateItems(items);
+            repoAdapter.updateItems(new ArrayList<>(items)); // copy list, so we don't modify original in adapter
             isItemReorderingEnabled = true;
         });
     }

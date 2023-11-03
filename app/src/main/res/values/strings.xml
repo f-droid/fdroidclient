@@ -452,6 +452,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_url">Address</string>
     <string name="repo_num_apps">Number of apps</string>
     <string name="repo_num_apps_button">Show apps</string>
+    <string name="repo_archive_toggle">Repository Archive</string>
     <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>
@@ -467,6 +468,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         You need to enable it to view the apps it provides.
     </string>
     <string name="unknown">Unknown</string>
+    <string name="repo_archive_failed">Archive repo currently not available</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
         apps from it will no longer be available.\n\nNote: All
