@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.os.LocaleListCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +37,11 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
     RepoAdapter(RepoItemListener repoItemListener) {
         this.repoItemListener = repoItemListener;
+    }
+
+    @Nullable
+    Repository getItem(int position) {
+        return items.get(position);
     }
 
     @SuppressLint("NotifyDataSetChanged")

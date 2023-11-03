@@ -24,11 +24,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.UserManager;
+import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -46,10 +50,59 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class ManageReposActivity extends AppCompatActivity implements RepoAdapter.RepoItemListener {
 
-    public static final String EXTRA_FINISH_AFTER_ADDING_REPO = "finishAfterAddingRepo";
     private RepoManager repoManager;
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final RepoAdapter repoAdapter = new RepoAdapter(this);
+    private boolean isItemReorderingEnabled = false;
+    private final ItemTouchHelper.Callback itemTouchCallback =
+            new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, 0) {
+
+                private int lastFromPos = -1;
+                private int lastToPos = -1;
+
+                @Override
+                public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
+                                      @NonNull RecyclerView.ViewHolder target) {
+                    final int fromPos = viewHolder.getBindingAdapterPosition();
+                    final int toPos = target.getBindingAdapterPosition();
+                    repoAdapter.notifyItemMoved(fromPos, toPos);
+                    if (lastFromPos == -1) lastFromPos = fromPos;
+                    lastToPos = toPos;
+                    return true;
+                }
+
+                @Override
+                public void onSelectedChanged(@Nullable RecyclerView.ViewHolder viewHolder, int actionState) {
+                    super.onSelectedChanged(viewHolder, actionState);
+                    if (actionState == ItemTouchHelper.ACTION_STATE_IDLE) {
+                        if (lastFromPos != lastToPos) {
+                            Repository repoToMove = repoAdapter.getItem(lastFromPos);
+                            Repository repoDropped = repoAdapter.getItem(lastToPos);
+                            if (repoToMove != null && repoDropped != null) {
+                                // don't allow more re-orderings until this one was completed
+                                isItemReorderingEnabled = false;
+                                repoManager.reorderRepositories(repoToMove, repoDropped);
+                            } else {
+                                Log.w("ManageReposActivity",
+                                        "Could not find one of the repos: " + lastFromPos + " to " + lastToPos);
+                            }
+                        }
+                        lastFromPos = -1;
+                        lastToPos = -1;
+                    }
+                }
+
+                @Override
+                public boolean isLongPressDragEnabled() {
+                    return isItemReorderingEnabled;
+                }
+
+                @Override
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                    // noop
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +134,13 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         });
 
         final RecyclerView repoList = findViewById(R.id.list);
-        RepoAdapter repoAdapter = new RepoAdapter(this);
+        final ItemTouchHelper touchHelper = new ItemTouchHelper(itemTouchCallback);
+        touchHelper.attachToRecyclerView(repoList);
         repoList.setAdapter(repoAdapter);
-        FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, repoAdapter::updateItems);
+        FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, items -> {
+            repoAdapter.updateItems(items);
+            isItemReorderingEnabled = true;
+        });
     }
 
     @Override
