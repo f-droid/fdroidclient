@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.fdroid.database.AppPrefs
+import org.fdroid.database.AppPrefsDaoInt
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
@@ -32,7 +33,7 @@ import kotlin.coroutines.CoroutineContext
 @OptIn(DelicateCoroutinesApi::class)
 public class RepoManager @JvmOverloads constructor(
     context: Context,
-    db: FDroidDatabase,
+    private val db: FDroidDatabase,
     downloaderFactory: DownloaderFactory,
     httpManager: HttpManager,
     private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
@@ -40,6 +41,7 @@ public class RepoManager @JvmOverloads constructor(
 ) {
 
     private val repositoryDao = db.getRepositoryDao() as RepositoryDaoInt
+    private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
     private val tempFileProvider = TempFileProvider {
         File.createTempFile("dl-", "", context.cacheDir)
     }
@@ -160,6 +162,16 @@ public class RepoManager @JvmOverloads constructor(
     @UiThread
     public fun abortAddingRepository() {
         repoAdder.abortAddingRepo()
+    }
+
+    @AnyThread
+    public fun setPreferredRepoId(packageName: String, repoId: Long) {
+        GlobalScope.launch(coroutineContext) {
+            db.runInTransaction {
+                val appPrefs = appPrefsDao.getAppPrefsOrNull(packageName) ?: AppPrefs(packageName)
+                appPrefsDao.update(appPrefs.copy(preferredRepoId = repoId))
+            }
+        }
     }
 
     /**
