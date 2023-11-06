@@ -441,8 +441,9 @@ public class AppDetailsRecyclerViewAdapter
 
         void clearProgress() {
             progressLayout.setVisibility(View.GONE);
-            buttonPrimaryView.setVisibility(View.VISIBLE);
-            buttonSecondaryView.setVisibility(View.VISIBLE);
+            buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
+            buttonSecondaryView.setVisibility(app != null && app.isUninstallable(context) ?
+                    View.VISIBLE : View.INVISIBLE);
         }
 
         void setIndeterminateProgress(int resIdString) {
@@ -604,8 +605,6 @@ public class AppDetailsRecyclerViewAdapter
                 // Set Install button and hide second button
                 buttonPrimaryView.setText(R.string.menu_install);
                 buttonPrimaryView.setEnabled(true);
-                buttonPrimaryView.setVisibility(View.VISIBLE);
-                buttonSecondaryView.setVisibility(View.VISIBLE);
                 buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));
             } else if (app.isInstalled(context)) {
                 callbacks.enableAndroidBeam();
@@ -648,12 +647,8 @@ public class AppDetailsRecyclerViewAdapter
                     }
                 }
                 buttonPrimaryView.setEnabled(true);
-                buttonPrimaryView.setVisibility(View.VISIBLE);
-                buttonSecondaryView.setVisibility(View.VISIBLE);
                 progressLayout.setVisibility(View.GONE);
             } else {
-                buttonPrimaryView.setVisibility(View.VISIBLE);
-                buttonSecondaryView.setVisibility(View.VISIBLE);
                 progressLayout.setVisibility(View.GONE);
             }
             progressCancel.setOnClickListener(v -> callbacks.installCancel());
