@@ -34,6 +34,8 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.compose.ui.platform.ComposeView;
+import androidx.compose.ui.platform.ViewCompositionStrategy;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -49,7 +51,6 @@ import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import org.apache.commons.io.FilenameUtils;
@@ -66,6 +67,7 @@ import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
+import org.fdroid.fdroid.views.appdetails.RepoChooserKt;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.fdroid.index.v2.FileV2;
 
@@ -98,6 +100,10 @@ public class AppDetailsRecyclerViewAdapter
         void installCancel();
 
         void launchApk();
+
+        void onRepoChanged(long repoId);
+
+        void onPreferredRepoChanged(long repoId);
     }
 
     private static final int VIEWTYPE_HEADER = 0;
@@ -115,6 +121,9 @@ public class AppDetailsRecyclerViewAdapter
     private final AppDetailsRecyclerViewAdapterCallbacks callbacks;
     private RecyclerView recyclerView;
     private final List<Object> items = new ArrayList<>();
+    private final List<Repository> repos = new ArrayList<>();
+    @Nullable
+    private Long preferredRepoId = null;
     private final List<Apk> versions = new ArrayList<>();
     private final List<Apk> compatibleVersionsDifferentSigner = new ArrayList<>();
     private boolean showVersions;
@@ -175,6 +184,13 @@ public class AppDetailsRecyclerViewAdapter
             }
         }
         notifyDataSetChanged();
+    }
+
+    void setRepos(List<Repository> repos, long preferredRepoId) {
+        this.repos.clear();
+        this.repos.addAll(repos);
+        this.preferredRepoId = preferredRepoId;
+        notifyItemChanged(0); // header changed
     }
 
     private void addInstalledApkIfExists(final List<Apk> apks) {
@@ -378,8 +394,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView titleView;
         final TextView authorView;
         final TextView lastUpdateView;
-        final ImageView repoLogoView;
-        final TextView repoNameView;
+        final ComposeView repoChooserView;
         final TextView warningView;
         final TextView summaryView;
         final TextView whatsNewView;
@@ -404,8 +419,9 @@ public class AppDetailsRecyclerViewAdapter
             titleView = view.findViewById(R.id.title);
             authorView = view.findViewById(R.id.author);
             lastUpdateView = view.findViewById(R.id.text_last_update);
-            repoLogoView = view.findViewById(R.id.repo_icon);
-            repoNameView = view.findViewById(R.id.repo_name);
+            repoChooserView = view.findViewById(R.id.repoChooserView);
+            repoChooserView.setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed.INSTANCE);
             warningView = view.findViewById(R.id.warning);
             summaryView = view.findViewById(R.id.summary);
             whatsNewView = view.findViewById(R.id.latest);
@@ -500,18 +516,6 @@ public class AppDetailsRecyclerViewAdapter
             if (app == null) return;
             Utils.setIconFromRepoOrPM(app, iconView, iconView.getContext());
             titleView.setText(app.name);
-            Repository repo = FDroidApp.getRepoManager(context).getRepository(app.repoId);
-            if (repo != null && !repo.getAddress().equals("https://f-droid.org/repo")) {
-                LocaleListCompat locales = LocaleListCompat.getDefault();
-                Utils.loadWithGlide(context, repo.getRepoId(), repo.getIcon(locales), repoLogoView);
-                repoNameView.setText(repo.getName(locales));
-                repoLogoView.setVisibility(View.VISIBLE);
-                repoNameView.setVisibility(View.VISIBLE);
-            } else {
-                Glide.with(context).clear(repoLogoView);
-                repoLogoView.setVisibility(View.GONE);
-                repoNameView.setVisibility(View.GONE);
-            }
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));
                 authorView.setVisibility(View.VISIBLE);
@@ -533,6 +537,13 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);
+            }
+            if (app != null && preferredRepoId != null) {
+                RepoChooserKt.setContentRepoChooser(repoChooserView, repos, app.repoId, preferredRepoId,
+                        repo -> callbacks.onRepoChanged(repo.getRepoId()), callbacks::onPreferredRepoChanged);
+                repoChooserView.setVisibility(View.VISIBLE);
+            } else {
+                repoChooserView.setVisibility(View.GONE);
             }
 
             if (SessionInstallManager.canBeUsed(context) && suggestedApk != null

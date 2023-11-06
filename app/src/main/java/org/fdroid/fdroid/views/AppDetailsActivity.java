@@ -72,6 +72,7 @@ import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.views.apps.FeatureImage;
+import org.fdroid.index.RepoManager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -710,6 +711,7 @@ public class AppDetailsActivity extends AppCompatActivity
 
     private void onAppPrefsChanged(AppPrefs appPrefs) {
         this.appPrefs = appPrefs;
+        loadRepos(appPrefs.getPreferredRepoId());
         if (app != null) updateAppInfo(app, versions, appPrefs);
     }
 
@@ -722,6 +724,20 @@ public class AppDetailsActivity extends AppCompatActivity
         adapter.updateItems(app, apkList, appPrefs);
         refreshStatus();
         supportInvalidateOptionsMenu();
+    }
+
+    private void loadRepos(@Nullable Long preferredRepoId) {
+        Utils.runOffUiThread(() -> db.getAppDao().getRepositoryIdsForApp(packageName), repoIds -> {
+            List<Repository> repoList = new ArrayList<>(repoIds.size());
+            RepoManager repoManager = FDroidApp.getRepoManager(this);
+            if (repoManager.getRepositories().size() <= 2) return; // don't show if only official repo+archive added
+            for (long repoId: repoIds) {
+                Repository repo = repoManager.getRepository(repoId);
+                if (repo != null) repoList.add(repo);
+            }
+            long prefId = preferredRepoId == null ? app.repoId : preferredRepoId;
+            adapter.setRepos(repoList, prefId);
+        });
     }
 
     @Nullable
@@ -786,6 +802,16 @@ public class AppDetailsActivity extends AppCompatActivity
             // This can happen when the app was just uninstalled.
             Toast.makeText(this, R.string.app_not_installed, Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onRepoChanged(long repoId) {
+        Utils.runOffUiThread(() -> db.getAppDao().getApp(repoId, app.packageName), this::onAppChanged);
+    }
+
+    @Override
+    public void onPreferredRepoChanged(long repoId) {
+        FDroidApp.getRepoManager(this).setPreferredRepoId(app.packageName, repoId);
     }
 
     /**

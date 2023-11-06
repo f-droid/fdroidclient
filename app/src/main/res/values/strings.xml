@@ -91,6 +91,21 @@
 
     <string name="app_details">App Details</string>
     <string name="no_such_app">No such app found.</string>
+    <!-- Shown above the repository an app is in -->
+    <string name="app_details_repository">Repository</string>
+    <!-- If an app is in more than one repository, this is shown above the selection dropdown -->
+    <string name="app_details_repositories">Repositories</string>
+    <!-- Shown next to the repository name of the repo that is currently preferred by the user.
+         Information and updates for that app only come from the preferred repo.
+         Other languages could use other words that work better in their language such as (chosen).
+    -->
+    <string name="app_details_repository_preferred">(preferred)</string>
+    <!-- A button label. When clicked, this changes the preferred repo to the currently shown one.
+         Information and updates for that app only come from the preferred repo.
+         Other languages could use other words that work better in their language such as (chosen).
+    -->
+    <string name="app_details_repository_button_prefer">Prefer Repository</string>
+    <string name="app_details_repository_expand">Expand repository list</string>
 
     <string name="app_details_donate_prompt_unknown_author">Buy the developers of %1$s a coffee!</string>
     <string name="app_details_donate_prompt">%1$s is created by %2$s. Buy them a coffee!</string>
@@ -215,7 +230,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="has_disallow_install_unknown_sources_globally">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
     <!-- Message presented in a dialog box when the user restriction set by the system restricts adding new repos, e.g. "Unknown Sources". -->
     <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
-    <string name="repo_provider">Repository: %s</string>
 
     <string name="menu_manage">Repositories</string>
     <string name="repositories_summary">Add additional sources of apps</string>

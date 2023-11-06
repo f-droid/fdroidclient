@@ -147,6 +147,16 @@ public class AppDetailsAdapterTest {
                 public void launchApk() {
 
                 }
+
+                @Override
+                public void onRepoChanged(long repoId) {
+
+                }
+
+                @Override
+                public void onPreferredRepoChanged(long repoId) {
+
+                }
             };
 
 }
