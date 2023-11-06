@@ -40,6 +40,7 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -65,9 +66,15 @@ import java.util.concurrent.TimeUnit;
  * using {@code false} and {@code -1} as fallback default values to help catch
  * problems with the proper default loading as quickly as possible.
  */
-public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
+public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener, IPreferencesIpfs {
 
     private static final String TAG = "Preferences";
+
+    public static final List<String> DEFAULT_IPFS_GATEWAYS = Arrays.asList(
+            "https://4everland.io/ipfs/",
+            "https://ipfs.joaoleitao.org/ipfs/",
+            "https://ipfs.jpu.jp/ipfs/"
+    );
 
     private final SharedPreferences preferences;
 
@@ -104,6 +111,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
     public static final String PREF_SEND_TO_FDROID_METRICS = "sendToFdroidMetrics";
     private static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
+    private static final String PREF_IPFSGW_DISABLED_DEFAULTS_LIST = "ipfsGwDisabledDefaultsList";
+    private static final String PREF_IPFSGW_USER_LIST = "ipfsGwUserList";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_FORCE_OLD_INSTALLER = "forceOldInstaller";
@@ -540,6 +549,26 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public boolean isIpfsEnabled() {
         return preferences.getBoolean(PREF_USE_IPFS_GATEWAYS, IGNORED_B);
+    }
+
+    public void setIpfsEnabled(boolean enabled) {
+        preferences.edit().putBoolean(PREF_USE_IPFS_GATEWAYS, enabled).apply();
+    }
+
+    public Set<String> getIpfsGwUserList() {
+        return preferences.getStringSet(PREF_IPFSGW_USER_LIST, Collections.emptySet());
+    }
+
+    public void setIpfsGwUserList(Set<String> selectedSet) {
+        preferences.edit().putStringSet(Preferences.PREF_IPFSGW_USER_LIST, selectedSet).apply();
+    }
+
+    public Set<String> getIpfsGwDisabledDefaults() {
+        return preferences.getStringSet(PREF_IPFSGW_DISABLED_DEFAULTS_LIST, Collections.emptySet());
+    }
+
+    public void setIpfsGwDisabledDefaults(Set<String> selectedSet) {
+        preferences.edit().putStringSet(Preferences.PREF_IPFSGW_DISABLED_DEFAULTS_LIST, selectedSet).apply();
     }
 
     public boolean preventScreenshots() {
