@@ -166,7 +166,7 @@
     <string name="unsigned">未簽署</string>
     <string name="repo_url">網址</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
-    <string name="swap_join_this_hotspot">幫助您的朋友加入您的熱點</string>
+    <string name="swap_join_this_hotspot">協助您的朋友加入您的熱點</string>
     <string name="swap">交換應用程式</string>
     <string name="swap_success">交換成功！</string>
     <string name="swap_active_hotspot">%1$s (您的熱點)</string>
@@ -524,8 +524,8 @@
     <string name="about_title_basic">關於 F-Droid Basic</string>
     <string name="category_Nightly">每夜版本</string>
     <string name="app_error_open">無法啟動應用程式。</string>
-    <string name="copied_to_clipboard">已復制於剪貼板</string>
-    <string name="turn_on_wifi">打開Wi-Fi</string>
+    <string name="copied_to_clipboard">已複製到剪貼簿</string>
+    <string name="turn_on_wifi">開啟 wifi</string>
     <string name="nearby_splace__external_storage_permission_button">試試看</string>
     <string name="force_old_installer_title">強制使用舊安裝器</string>
     <string name="force_old_installer_summary">關閉測式板工作階段安裝器，包括自動後台更新支援。</string>
@@ -538,8 +538,8 @@
     <string name="targetsdk_or_later">目標板本為 %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-droid可以搜索在您SD卡上的倉庫及鏡像，但是需要您的可許。</string>
     <string name="repo_state_fetching">正在提取倉庫…</string>
-    <string name="copied_permission_to_clipboard">已復制權限名於剪貼板</string>
-    <string name="copied_url_to_clipboard">已復制網址於剪貼板</string>
+    <string name="copied_permission_to_clipboard">已複製權限名稱至剪貼簿</string>
+    <string name="copied_url_to_clipboard">已複製 URL 到剪貼簿</string>
     <string name="repo_io_error">聯接倉庫時出錯。</string>
     <string name="repo_enter_url">手動輸入倉庫網址</string>
     <string name="repo_add_new_mirror">添加為新鏡像</string>
@@ -547,5 +547,7 @@
 \n
 \n請確保您所添加的倉庫是可信的。</string>
     <string name="repo_num_apps_link">%s（點擊以列出所有程式）</string>
-    <string name="swap_banner_message">要交換程試，請啟動Wi-Fi，並跟您的朋友聯接到同一個網絡。</string>
+    <string name="swap_banner_message">要交換程式，請開啟您的 wifi 並與您的朋友連線到同一個網路。</string>
+    <string name="swap_connection_indexv0_error">您正在嘗試使用過時的版本連線到某處。要連線，他們必須升級他們的 F-Droid 應用程式。他們可以使用交換來更新來自您的 F-Droid 應用程式。</string>
+    <string name="repo_num_apps_button">顯示應用程式</string>
 </resources>
