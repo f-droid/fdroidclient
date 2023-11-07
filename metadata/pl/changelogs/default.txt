@@ -1,0 +1,11 @@
+* Całkowita przebudowa dodawania repozytoriów i serwerów lustrzanych, zarówno UX, jak i kodu
+
+* Podgląd zawartości repozytorium przed dodaniem
+
+* Użyj instalatora sesji na F-Droid i F-Droid Basic, w tym obsługi automatycznych aktualizacji w tle
+
+* W systemie Android 14 oznacz aplikacje z nieobsługiwaną wersją docelowego zestawu SDK jako niezgodne #2692
+
+* Długie kliknięcie, aby skopiować linki, uprawnienia i wersje na ekranie szczegółów aplikacji (dzięki @Tobias_Groza)
+
+* Niekompatybilne aplikacje nie są już nigdzie wyświetlane (z wyjątkiem sytuacji, gdy jest to dozwolone w Ustawieniach) #41 (dzięki @pigpig)
