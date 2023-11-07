@@ -1,0 +1,11 @@
+• tute rekonstruita maniero aldoni novajn deponejojn kaj spegul-servilojn (fasado k kodo)
+
+• antaŭvido de deponejo antaŭ aldoni
+
+• uzo de seanca instalilo fare de F-Droid k F-Droid Baza, kun subteno por aŭtomataj fonaj ĝisdatigoj
+
+• Android 14: marki aplikaĵojn kun nesubtenataj versioj de cela SDK kiel nekongruajn #2692
+
+• ekrano de aplikaĵaj detaloj: frapetadu ligilon, permeson aŭ version por kopii ĝin al tondujo
+
+• nekongruaj aplikaĵoj ne plu montriĝas (escepte se permesataj en agordoj) #41
