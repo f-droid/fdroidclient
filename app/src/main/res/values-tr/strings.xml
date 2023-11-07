@@ -560,4 +560,6 @@
     <string name="copied_permission_to_clipboard">İzin adı panoya kopyalandı</string>
     <string name="copied_url_to_clipboard">URL panoya kopyalandı</string>
     <string name="targetsdk_or_later">hedefler %s</string>
+    <string name="repo_num_apps_link">%s (tüm uygulamaları listelemek için dokunun)</string>
+    <string name="repo_num_apps_button">Uygulamaları göster</string>
 </resources>
