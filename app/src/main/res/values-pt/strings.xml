@@ -24,7 +24,7 @@
     <string name="next">Próximo</string>
     <string name="skip">Ignorar</string>
     <string name="pref_language">Idioma</string>
-    <string name="pref_language_default">Definições do sistema</string>
+    <string name="pref_language_default">Prédefinições do sistema</string>
     <string name="category_Connectivity">Conectividade</string>
     <string name="category_Development">Desenvolvimento</string>
     <string name="category_Games">Jogos</string>
@@ -334,7 +334,7 @@
     <string name="nearby_splash__find_people_button">Procurar pessoas por perto</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
     <string name="nearby_splash__read_external_storage">Pesquisar repositórios e espelhos no cartão SD.</string>
-    <string name="nearby_splash__request_permission">Experimente</string>
+    <string name="nearby_splash__request_permission">Pesquise</string>
     <string name="swap_nfc_title">Toque para trocar</string>
     <string name="swap_nfc_description">Se a outra pessoa tiver o F-Droid instalado e o NFC ativo, aproximem os vossos dispositivos.</string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
@@ -547,4 +547,29 @@
     <string name="app_error_open">Não foi possível iniciar a app.</string>
     <string name="antinsfwlist">Esta app contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
     <string name="repo_last_update_downloaded">Última atualização descarregada</string>
+    <string name="copied_to_clipboard">Copiado para área de transferência</string>
+    <string name="turn_on_wifi">Ligar o Wi-Fi</string>
+    <string name="nearby_splace__external_storage_permission_button">Tente isso</string>
+    <string name="force_old_installer_title">Forçar antigo instalador</string>
+    <string name="force_old_installer_summary">Desativar o beta Session Installer, incluindo suporte para atualizações automáticas de fundo.</string>
+    <string name="repo_state_adding">Adicionando repositório…</string>
+    <string name="repo_invalid">Repositório inválido.
+\n
+\nEntre em contato com o desenvolvedor e deixe-os saber sobre o problema.</string>
+    <string name="repo_exists">Este repositório foi adicionado com sucesso.</string>
+    <string name="repo_add_new_title">Adicionar repositório</string>
+    <string name="targetsdk_or_later">Marcadores %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid pode procurar por repositórios e espelhos no seu Cartão de Memoria, mas precisa da sua permissão para fazer isso.</string>
+    <string name="repo_state_fetching">Procurando repositório…</string>
+    <string name="copied_permission_to_clipboard">Nome da permissão copiada para área de transferência</string>
+    <string name="copied_url_to_clipboard">URL copiada para clipboard</string>
+    <string name="repo_io_error">Erro ao conectar com o repositório.</string>
+    <string name="repo_enter_url">Digite a URL do repositório manualmente</string>
+    <string name="repo_add_new_mirror">Adicionar um novo espelho</string>
+    <string name="repo_intro">Um repositório é uma fonte adicional de aplicativos. Os de terceiros que você adiciona aqui têm padrões diferentes do que aqueles que fornecem aplicativos construídos pelo próprio F-Droid.
+\n
+\nCertifique-se de que o repositório que você está adicionando é confiável.</string>
+    <string name="swap_connection_indexv0_error">Você tentando se conecta com alguém mesmo sua versão do F-Droid estando ultrapassada . Para voltar a se conectar a eles tente atualizar seu aplicativo F-Droid. Eles podem usar um compartilhamento para ajuda-lo atualizar seu aplicativo F-Droid.</string>
+    <string name="repo_num_apps_button">Mostrar aplicativos</string>
+    <string name="swap_banner_message">Para compartilhar seus aplicativos, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
 </resources>
