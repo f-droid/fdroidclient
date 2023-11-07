@@ -153,7 +153,7 @@
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
     <string name="swap_nfc_title">Touch to swap</string>
-    <string name="nearby_splash__request_permission">Try it</string>
+    <string name="nearby_splash__request_permission">Search now</string>
     <string name="nearby_splash__document_tree">Search USB OTG for repos and mirrors.</string>
     <string name="nearby_splash__read_external_storage">Search SD Card for repos and mirrors.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
