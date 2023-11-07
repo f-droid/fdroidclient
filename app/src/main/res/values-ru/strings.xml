@@ -582,4 +582,5 @@
     <string name="copied_url_to_clipboard">URL скопирован в буфер обмена</string>
     <string name="targetsdk_or_later">цели %s</string>
     <string name="repo_num_apps_link">%s (нажмите для отображения списка приложений)</string>
+    <string name="repo_num_apps_button">Показать приложения</string>
 </resources>
