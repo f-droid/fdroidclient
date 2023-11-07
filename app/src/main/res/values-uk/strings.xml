@@ -576,4 +576,6 @@
     <string name="copied_to_clipboard">Скопійовано в буфер обміну</string>
     <string name="copied_url_to_clipboard">URL-адресу скопійовано в буфер обміну</string>
     <string name="copied_permission_to_clipboard">Ім’я дозволу скопійовано в буфер обміну</string>
+    <string name="targetsdk_or_later">цілі %s</string>
+    <string name="repo_num_apps_link">%s (торкніться, щоб переглянути всі застосунки)</string>
 </resources>
