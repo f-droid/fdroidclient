@@ -576,6 +576,7 @@
     <string name="copied_to_clipboard">Skopiowano do schowka</string>
     <string name="copied_permission_to_clipboard">Nazwę uprawnienia skopiowano do schowka</string>
     <string name="copied_url_to_clipboard">URL skopiowano do schowka</string>
-    <string name="targetsdk_or_later">cele %s</string>
-    <string name="repo_num_apps_link">%s (stuknij, aby wyświetlić listę wszystkich aplikacji)</string>
+    <string name="targetsdk_or_later">docelowy %s</string>
+    <string name="repo_num_apps_link">%s (naciśnij, aby wyświetlić listę wszystkich aplikacji)</string>
+    <string name="repo_num_apps_button">Pokaż aplikacje</string>
 </resources>
