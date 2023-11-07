@@ -576,4 +576,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid puede buscar repositorios y espejos en tu tarjeta SD, pero necesita tu permiso para hacerlo.</string>
     <string name="swap_connection_indexv0_error">Estás intentando conectar con alguien que tiene una versión anticuada de F-Droid. Para conectarte tiene que actualizar la aplicación de F-Droid. Puedes utilizar el intercambio para actualizar la aplicación de F-Droid.</string>
     <string name="force_old_installer_title">Forzar antiguo instalador</string>
+    <string name="copied_to_clipboard">Copiado al portapapeles</string>
+    <string name="copied_permission_to_clipboard">Nombre de permiso copiado al portapapeles</string>
+    <string name="copied_url_to_clipboard">URL copiada al portapapeles</string>
 </resources>
