@@ -539,4 +539,6 @@
     <string name="repo_add_new_title">Lisää sovelluslähde</string>
     <string name="repo_add_new_mirror">Lataa uutena peilipalvelimena</string>
     <string name="app_name_basic">F-Droid Basic</string>
+    <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
+    <string name="copied_url_to_clipboard">URL kopioitu leikepöydälle</string>
 </resources>
