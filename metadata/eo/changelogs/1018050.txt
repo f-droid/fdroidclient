@@ -1,0 +1,7 @@
+• riparita uzo de deponejoj kaj spegul-serviloj de ekstera konservejo ĉe novaj versioj de Android
+• plibonigita uzo de vifio per “Proksime”
+• naviga strio nun memoras sian pozicion post restarto de F-Droid
+• nova lingvo: svahila
+• riparita elŝutado de bildoj el deponejoj uzantaj indekson v1
+• riparitaj paneoj rilataj al interŝanĝo, administri deponejojn kaj pli
+• forigita butono “Malpromocii”: Android ne plu permesas tion

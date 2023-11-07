@@ -577,4 +577,11 @@
     <string name="nearby_splace__external_storage_permission_button">Паспрабаваць</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid можа шукаць рэпазіторыі і люстэркі на вашай SD карце, але патрабуе вашага дазволу каб выканаць гэта.</string>
     <string name="swap_connection_indexv0_error">Вы спрабуеце падлучыцца да карыстальніка застарэлай версіяй F-Droid. Каб падлучыцца ён павінен абнавіць яго праграмму F-Droid. Ён можа выкарыстаць прагортванне каб абнавіць яго F-Droid праграмму праз вас.</string>
+    <string name="copied_to_clipboard">Скапіравана ў буфер абмену</string>
+    <string name="force_old_installer_title">Прымусова выкарыстоўваць стары ўсталёўшчык</string>
+    <string name="force_old_installer_summary">Адключыць бэта-версію ўсталёўшчыка сеанса, уключаючы падтрымку аўтаматычнага фонавага абнаўлення.</string>
+    <string name="copied_permission_to_clipboard">Назва дазволу скапіравана ў буфер абмену</string>
+    <string name="copied_url_to_clipboard">URL скапіраваны ў буфер абмену</string>
+    <string name="targetsdk_or_later">мэты %s</string>
+    <string name="repo_num_apps_button">Паказаць праграмы</string>
 </resources>

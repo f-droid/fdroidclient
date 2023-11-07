@@ -439,7 +439,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Poderá ser difícil escanear o código.</string>
     <string name="repo_add_mirror">Adicionar espelho</string>
-    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar como um mirror\?</string>
+    <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar como um espelho\?</string>
     <string name="show_anti_feature_apps">Incluir aplicativos com características indesejadas</string>
     <string name="force_touch_apps">Incluir aplicativos de tela sensível ao toque</string>
     <string name="force_touch_apps_on">Mostrar aplicativos que exigem tela sensível ao toque, independentemente se há suporte ao hardware</string>
@@ -486,7 +486,7 @@
     <string name="app_repository">Repositório: %1$s</string>
     <string name="main_menu__updates">Atualizações</string>
     <string name="nearby_splash__read_external_storage">Pesquisa o Cartão SD por repositórios e espelhos.</string>
-    <string name="nearby_splash__request_permission">Tente ir</string>
+    <string name="nearby_splash__request_permission">Buscar agora</string>
     <string name="not_visible_nearby">Próximo não ativado</string>
     <string name="not_visible_nearby_description">Antes de permutar com dispositivos próximos, torne o dispositivo visível.</string>
     <string name="swap_toast_using_path">Usando %1$s</string>
@@ -554,7 +554,7 @@
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
     <string name="latest__empty_state__upgrading">Atualizando banco de dados…</string>
     <string name="use_ipfs_gateways">Usar gateways IPFS</string>
-    <string name="use_ipfs_gateways_summary">Baixar arquivos de mirrors IPFS, caso suportado pelo repositório.</string>
+    <string name="use_ipfs_gateways_summary">Baixar arquivos de espelhos IPFS, caso suportado pelo repositório.</string>
     <string name="app_name_basic">F-Droid Básico</string>
     <string name="about_title_basic">Sobre o F-Droid Básico</string>
     <string name="antinsfwlist">Este aplicativo contém conteúdo que não deve ser público ou visível em todo lugar</string>
@@ -577,4 +577,14 @@
     <string name="turn_on_wifi">Ativar o WiFi</string>
     <string name="swap_banner_message">Para trocar de aplicativos, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
     <string name="repo_add_new_mirror">Adicionar como novo espelho</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="nearby_splace__external_storage_permission_button">Experimente</string>
+    <string name="force_old_installer_title">Forçar instalador antigo</string>
+    <string name="force_old_installer_summary">Desative o beta Session Installer, incluindo o suporte para atualizações automáticas em segundo plano.</string>
+    <string name="targetsdk_or_later">metas %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">O F-Droid pode procurar repositórios e espelhos em seu cartão SD, mas precisa de sua permissão para isso.</string>
+    <string name="copied_permission_to_clipboard">Nome da permissão copiado para a área de transferência</string>
+    <string name="copied_url_to_clipboard">URL copiado para a área de transferência</string>
+    <string name="swap_connection_indexv0_error">Você está tentando se conectar a alguém com uma versão desatualizada do F-Droid. Para se conectar, a pessoa precisa atualizar o aplicativo F-Droid. A pessoa pode usar o swap para atualizar o aplicativo F-Droid a partir de você.</string>
+    <string name="repo_num_apps_button">Mostrar aplicativos</string>
 </resources>

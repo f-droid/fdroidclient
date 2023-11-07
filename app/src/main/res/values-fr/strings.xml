@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l\'ancienne version de l\'application avant de réessayer. (Attention : la désinstallation supprimera toutes les données de l\'application)</string>
-    <string name="installIncompatible">Application non compatible avec votre appareil, l\'installer quand même \?</string>
+    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l’ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l’ancienne version de l’application avant de réessayer. (Attention : la désinstallation supprimera toutes les données de l\'application)</string>
+    <string name="installIncompatible">Application non compatible avec votre appareil, l’installer quand même \?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
     <string name="enable_nfc_send">Activer l’envoi par CCP/NFC…</string>
@@ -108,18 +108,16 @@
     <string name="repo_last_update">Dernière mise à jour</string>
     <string name="repo_name">Nom</string>
     <string name="unsigned_description">Cela signifie que la liste des applis n\'a pas pu être vérifiée. Soyez prudent avec les applis téléchargées depuis des index non signés.</string>
-    <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Vous devez l\'activer pour voir la liste des applis qu\'il propose.</string>
+    <string name="repo_not_yet_updated">Ce dépôt n’a pas encore été utilisé. Vous devez l’activer pour voir la liste des applications qu\'il propose.</string>
     <string name="unknown">Inconnu</string>
-    <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
-    <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que les mises à jour ne seront plus disponibles.
+    <string name="repo_confirm_delete_title">Supprimer le dépôt \?</string>
+    <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications et leurs mises à jour ne seront plus disponibles.
 \n
-\nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
+\nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
     <string name="repo_disabled_notification">%1$s a été désactivé.
 \n
 \nVous devrez réactiver ce dépôt pour installer des applis qu’il comprend.</string>
-    <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez
-        d\'ajouter ! Essayez de rejoindre ce réseau : %s
-    </string>
+    <string name="not_on_same_wifi">Votre appareil n\'est pas connecté au même réseau Wifi que le dépôt local que vous venez d\'ajouter ! Essayez vous connectez à ce réseau : %s</string>
     <string name="requires_features">Nécessite : %1$s</string>
     <string name="category_Development">Développement</string>
     <string name="category_Games">Jeux</string>
@@ -151,7 +149,7 @@
     <string name="banner_updating_repositories">Mise à jour des dépôts</string>
     <string name="pref_language">Langue</string>
     <string name="pref_language_default">Langue du système</string>
-    <string name="wifi">Wi-Fi</string>
+    <string name="wifi">Wifi</string>
     <string name="wifi_ap">Point d\'accès</string>
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport et santé</string>
@@ -285,8 +283,8 @@
     <string name="notification_title_single_ready_to_install">Prêt à installer</string>
     <string name="notification_title_single_ready_to_install_update">Mise à jour prête pour installation</string>
     <string name="notification_title_single_install_error">L’installation a échoué</string>
-    <string name="notification_content_single_downloading">Téléchargement de « %1$s »…</string>
-    <string name="notification_content_single_downloading_update">Téléchargement de la mise à jour de « %1$s »…</string>
+    <string name="notification_content_single_downloading">Téléchargement de « %1$s » …</string>
+    <string name="notification_content_single_downloading_update">Téléchargement de la mise à jour de « %1$s » …</string>
     <string name="notification_content_single_installing">Installation de « %1$s »…</string>
     <string name="notification_content_single_installed">Installation réussie</string>
     <string name="notification_title_summary_update_available">Une mise à jour est disponible</string>
@@ -316,7 +314,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la version %1$s</string>
     <string name="updates__tts__download_app">Télécharger</string>
     <string name="update_all">Tout mettre à jour</string>
-    <string name="updates__hide_updateable_apps">Masquer les applis</string>
+    <string name="updates__hide_updateable_apps">Masquer les applications</string>
     <string name="updates__show_updateable_apps">Afficher les applications</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Télécharger la mise à jour pour %1$d application.</item>
@@ -371,9 +369,9 @@
         <item quantity="other">%1$d Mises à jour</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d appli installée</item>
-        <item quantity="many">%1$d applis installées</item>
-        <item quantity="other">%1$d applis installées</item>
+        <item quantity="one">%1$d application installée</item>
+        <item quantity="many">%1$d applications installées</item>
+        <item quantity="other">%1$d applications installées</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">Mis à jour il y a %1$d semaine</item>
@@ -461,16 +459,16 @@
     <string name="hide_all_notifications_summary">Empêcher l\'affichage d\'éléments dans la barre de statut et le volet de notification.</string>
     <string name="prompt_to_send_crash_reports">Demander avant d\'envoyer les rapports de plantage</string>
     <string name="prompt_to_send_crash_reports_summary">Recueillir des données au sujet du plantage et proposer de les envoyer au développeur</string>
-    <string name="install_history">Historique d\'installation</string>
+    <string name="install_history">Historique d’installation</string>
     <string name="install_history_summary">Afficher le journal privé des installations et désinstallations</string>
     <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
     <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage de l\'App est nécessaire.</string>
     <string name="share_repository">Partager le dépôt</string>
-    <string name="send_install_history">Envoyer l\'historique des installations</string>
+    <string name="send_install_history">Envoyer l’historique des installations</string>
     <string name="send_installed_apps">Partager les applis installées</string>
     <string name="menu_open">Ouvrir</string>
     <string name="antinosourcesince">Le code source n’est plus accessible, aucune mise à jour n’est possible.</string>
-    <string name="send_history_csv">%s historique d\'installation sous forme de fichier CSV</string>
+    <string name="send_history_csv">historique d’installation de %s sous forme de fichier CSV</string>
     <string name="updates_disabled_by_settings">Les mises à jour sont désactivées en raison des paramètres Données / Wifi</string>
     <string name="send_installed_apps_csv">Applis installées via F-Droid comme fichier CSV</string>
     <string name="about_forum">Forum d\'assistance</string>
@@ -478,7 +476,7 @@
     <string name="app_size">Taille : %1$s</string>
     <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
-    <string name="nearby_splash__request_permission">Essayer</string>
+    <string name="nearby_splash__request_permission">Chercher</string>
     <string name="swap_toast_using_path">Utilisation de %1$s</string>
     <string name="swap_toast_find_removeable_storage">Sélectionnez la carte SD ou le stockage USB</string>
     <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
@@ -520,7 +518,7 @@
     <string name="send_to_fdroid_metrics_summary">Envoi hebdomadaire de données anonymes aux indicateurs métriques F-Droid (requiert la sauvegarde de l\'historique de téléchargement)</string>
     <string name="send_to_fdroid_metrics">Envoyer les données d\'utilisation</string>
     <string name="send_fdroid_metrics_report">Envoyer le rapport d\'analyses de %s</string>
-    <string name="send_fdroid_metrics_json">Rapport d\'analyse de %s en tant que fichier JSON</string>
+    <string name="send_fdroid_metrics_json">Rapport d’analyse de %s en tant que fichier JSON</string>
     <string name="fdroid_metrics_report">Rapport d\'analyse de %s</string>
     <string name="install_history_and_metrics">Installer l\'historique et les analyses</string>
     <string name="toast_metrics_in_install_history">Le rapport de télémétrie de %s est visualisable dans la visionneuse de l\'installation d\'historique</string>
@@ -537,7 +535,7 @@
     <string name="antitrack">Traçage</string>
     <string name="antinonfreenet">Services réseaux non libres</string>
     <string name="antidisabledalgorithm">Signé par un algorithme non sécurisé</string>
-    <string name="antinosource">Le code source n\'est plus disponible</string>
+    <string name="antinosource">Le code source n’est plus disponible</string>
     <string name="antinonfreedep">Dépendances non libres</string>
     <string name="antiupstreamnonfree">Code en amont non libre</string>
     <string name="antiknownvuln">Contient des vulnérabilités connues</string>
@@ -573,4 +571,14 @@
 \n
 \nContactez le responsable pour lui faire part de ce problème.</string>
     <string name="repo_io_error">Erreur de connexion au dépôt.</string>
+    <string name="force_old_installer_title">Forcer l\'utilisation de l\'ancien programme d\'installation</string>
+    <string name="copied_to_clipboard">Copié vers le presse-papier</string>
+    <string name="nearby_splace__external_storage_permission_button">Essayez-le</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid peut chercher des dépôts et des miroirs sur votre carte SD, mais a besoin de votre autorisation pour le faire.</string>
+    <string name="copied_permission_to_clipboard">Le nom de l\'autorisation a été copié vers le presse-papier</string>
+    <string name="copied_url_to_clipboard">L’URL a été copiée dans le presse-papier</string>
+    <string name="repo_num_apps_button">Afficher les apps</string>
+    <string name="force_old_installer_summary">Désactive l\'installateur de Session bêta, y compris la prise en charge des mises à jour automatiques en arrière-plan.</string>
+    <string name="targetsdk_or_later">cible SDK %s</string>
+    <string name="swap_connection_indexv0_error">Vous essayez de vous connecter à quelqu\'un disposant d\'une version obsolète de F-Droid. Pour vous connecter, cette personne doit mettre à niveau son application F-Droid. Elle peut utiliser l\'échange d\'applications pour mettre à jour son application à partir de vous.</string>
 </resources>

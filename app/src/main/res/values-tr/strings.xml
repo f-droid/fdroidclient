@@ -318,8 +318,8 @@
     <string name="updates__hide_updateable_apps">Uygulamaları gizle</string>
     <string name="updates__show_updateable_apps">Uygulamaları göster</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">%1$d uygulamanın güncellemesini indir.</item>
-        <item quantity="other">%1$d uygulamanın güncellemesini indir.</item>
+        <item quantity="one">%1$d uygulama için güncellemeyi indir.</item>
+        <item quantity="other">%1$d uygulama için güncellemeleri indir.</item>
     </plurals>
     <string name="details_new_in_version">%s sürümündeki yenilikler</string>
     <string name="antifeatureswarning">Bu uygulama sevmeyebileceğiniz özellikler içerir.</string>
@@ -458,7 +458,7 @@
     <string name="scan_removable_storage_title">Çıkarılabilir depolama alanını tara</string>
     <string name="scan_removable_storage_summary">SD Kart ve USB sürücü gibi çıkarılabilir depolama birimlerinde paket depolarına bak</string>
     <string name="nearby_splash__read_external_storage">Depolar ve yansımalar için SD Kart ara.</string>
-    <string name="nearby_splash__request_permission">Deneyin</string>
+    <string name="nearby_splash__request_permission">Şimdi ara</string>
     <string name="swap_toast_using_path">%1$s kullanılıyor</string>
     <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, tekrar deneyin!</string>
     <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
@@ -551,4 +551,15 @@
 \n
 \nLütfen eklediğiniz deponun güvenilir olduğundan emin olun.</string>
     <string name="swap_banner_message">Uygulamaları paylaşmak için Wi-Fi\'nizi açın ve arkadaşınızla aynı ağa bağlanın.</string>
+    <string name="nearby_splace__external_storage_permission_button">Dene</string>
+    <string name="force_old_installer_title">Eski yükleyiciyi zorla</string>
+    <string name="force_old_installer_summary">Beta Oturum Yükleyicisini devre dışı bırak, buna Otomatik arka plan güncellemeleri desteği de dahildir.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid, SD Kartınızdaki depoları ve aynaları arayabilir ancak bunu yapmak için izninize ihtiyacı var.</string>
+    <string name="swap_connection_indexv0_error">F-Droid\'in eski sürümüne sahip birisiyle bağlantı kurmaya çalışıyorsunuz. Bağlantı kurmak için F-Droid uygulamalarını güncellemeleri gerekiyor. F-Droid uygulamalarını güncellemek için sizden takas edebilirler.</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="copied_permission_to_clipboard">İzin adı panoya kopyalandı</string>
+    <string name="copied_url_to_clipboard">URL panoya kopyalandı</string>
+    <string name="targetsdk_or_later">hedefler %s</string>
+    <string name="repo_num_apps_link">%s (tüm uygulamaları listelemek için dokunun)</string>
+    <string name="repo_num_apps_button">Uygulamaları göster</string>
 </resources>

@@ -538,5 +538,28 @@
     <string name="about_title_basic">Tietoja: F-Droid Basic</string>
     <string name="repo_add_new_title">Lisää sovelluslähde</string>
     <string name="repo_add_new_mirror">Lataa uutena peilipalvelimena</string>
-    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="app_name_basic">F-Droidin alkeet</string>
+    <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
+    <string name="copied_url_to_clipboard">URL kopioitu leikepöydälle</string>
+    <string name="turn_on_wifi">Laita Wi-Fi päälle</string>
+    <string name="nearby_splace__external_storage_permission_button">Kokeile sitä</string>
+    <string name="force_old_installer_title">Pakota vanha asentaja</string>
+    <string name="force_old_installer_summary">Poista käytöstä beta-session asentaja, mukaan lukien tuki automaattisille tausta päivityksille.</string>
+    <string name="repo_state_adding">Lisätään ohjelmavarastoa…</string>
+    <string name="repo_invalid">Virheellinen ohjelmavarasto.
+\n
+\nOta yhteyttä ylläpitäjään ja anna heidän tietää ongelmasta.</string>
+    <string name="repo_exists">Tämä ohjelmavarasto on jo lisätty.</string>
+    <string name="targetsdk_or_later">kohteet %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-droid voi etsiä ohjelmavarastoja ja peilejä sinun SD-kortiltasi, mutta tarvitsee sinun suostumuksesi sitä varten.</string>
+    <string name="repo_state_fetching">Haetaan ohjelmavarasto…</string>
+    <string name="copied_permission_to_clipboard">Käyttöoikeuden nimi kopioitu leikepöydälle</string>
+    <string name="repo_io_error">Virhe yhdistyessä ohjelmavarastoon.</string>
+    <string name="repo_enter_url">Syötä ohjelmavaraston URL manuaalisesti</string>
+    <string name="repo_intro">Ohjelmavarasto on lisälähde sovelluksille. Kolmannansien osapuolien ohjelmavarastoilla, jotka lisäät tänne on erilaiset standardit kuin niillä, jotka tarjoavat F-Droidin itse rakentamia sovelluksia.
+\n
+\nVarmista, että ohjelmavarasto jota olet lisäämässä on luotettava.</string>
+    <string name="swap_connection_indexv0_error">Yrität yhdistyä johonkin, jolla on käytössä vanhentunut F-Droid versio. Yhdistyäkseen heidän täytyy päivittää F-Droid sovellus. He voivat käyttää vaihtoa päivittääkseen F-Droid sovelluksen sinulta.</string>
+    <string name="repo_num_apps_button">Näytä sovellukset</string>
+    <string name="swap_banner_message">Vaihtaaksesi sovelluksia ota käyttöön Wi-Fi yhteys ja yhdisty samaan verkkoon kuin ystäväsi.</string>
 </resources>

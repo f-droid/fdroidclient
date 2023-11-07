@@ -1,0 +1,11 @@
+* Hinzufügen von Repos und Spiegeln komplett überholt (UX und Code)
+
+* Vorschau auf Repo-Inhalte vor Hinzufügen
+
+* Nutzung des Session Installer in F-Droid und F-Droid Basic inkl. autom. Hintergrund-Updates
+
+* Apps mit nicht unterstütztem Ziel-SDK als inkompatibel markieren (Android 14) #2692
+
+* Links, Berechtigungen usw. in der App-Info durch langes Drücken kopieren (Dank @Tobias_Groza)
+
+* Inkompatible Apps werden nirgendwo mehr gezeigt (nur wenn laut Einstellungen gewünscht) #41 (Dank @pigpig)

@@ -564,4 +564,11 @@
     <string name="nearby_splace__external_storage_permission_button">Încearcă</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid poate căuta depozite și rezerve pe cardul SD, dar are nevoie de permisiunea dvs. pentru a face acest lucru.</string>
     <string name="swap_connection_indexv0_error">Încercați să vă conectați la cineva cu o versiune depășită de F-Droid. Pentru a se conecta, trebuie să își actualizeze aplicația F-Droid. Aceștia pot folosi În apropiere pentru a-și actualiza aplicația F-Droid de la dumneavoastră.</string>
+    <string name="force_old_installer_title">Forțați vechiul instalator</string>
+    <string name="force_old_installer_summary">Dezactivați programul beta Session Installer, inclusiv suportul pentru actualizări automate în fundal.</string>
+    <string name="copied_to_clipboard">Copiat în memorie</string>
+    <string name="targetsdk_or_later">conceput pentru %s</string>
+    <string name="copied_permission_to_clipboard">Nume permisiune copiat în memorie</string>
+    <string name="copied_url_to_clipboard">Adresă copiată în memorie</string>
+    <string name="repo_num_apps_link">%s (atingeți pentru toate aplicațiile)</string>
 </resources>

@@ -153,7 +153,7 @@
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
     <string name="swap_nfc_title">Touch to swap</string>
-    <string name="nearby_splash__request_permission">Try it</string>
+    <string name="nearby_splash__request_permission">Search now</string>
     <string name="nearby_splash__document_tree">Search USB OTG for repos and mirrors.</string>
     <string name="nearby_splash__read_external_storage">Search SD Card for repos and mirrors.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
@@ -552,4 +552,13 @@
 \n
 \nPlease ensure that the repository you are adding is trustworthy.</string>
     <string name="swap_banner_message">To swap apps, start your Wi-Fi and connect to the same network as your friend.</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="nearby_splace__external_storage_permission_button">Try it</string>
+    <string name="force_old_installer_title">Force old installer</string>
+    <string name="force_old_installer_summary">Disable the beta Session Installer, including support for automatic background updates.</string>
+    <string name="targetsdk_or_later">targets %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid can search for repos and mirrors on your SD Card, but needs your permission to do so.</string>
+    <string name="copied_permission_to_clipboard">Copied permission name to clipboard</string>
+    <string name="copied_url_to_clipboard">Copied URL to clipboard</string>
+    <string name="swap_connection_indexv0_error">You\'re trying to connect to someone with an outdated version of F-Droid. To connect they have to upgrade their F-Droid app. They can use swap to update their F-Droid app from you.</string>
 </resources>

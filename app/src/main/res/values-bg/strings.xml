@@ -147,7 +147,7 @@
     <string name="interval_2w">През 2 седмици</string>
     <string name="downloading">Изтегляне…</string>
     <string name="about_source">Изходен код</string>
-    <string name="banner_updating_repositories">Обновяване на хранилища</string>
+    <string name="banner_updating_repositories">Хранилищата се обновяват</string>
     <string name="install_error_unknown">Неизвестна грешка при инсталиране</string>
     <string name="uninstall_error_unknown">Неизвестна грешка при премахване</string>
     <string name="swap_choose_apps">Изберете приложения</string>
@@ -562,4 +562,5 @@
     <string name="copied_url_to_clipboard">Адресът е копиран</string>
     <string name="targetsdk_or_later">цел %s</string>
     <string name="repo_num_apps_link">%s (докоснете за показване на списък от приложения)</string>
+    <string name="repo_num_apps_button">Показване на приложения</string>
 </resources>

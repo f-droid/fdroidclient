@@ -57,7 +57,7 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder hängt komplett von ihm ab</string>
+    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder benötigt ihn zwingend</string>
     <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
@@ -277,7 +277,7 @@
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
     <string name="app_details_donate_prompt">%2$s einen Kaffee für die Entwicklung von %1$s spendieren!</string>
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
-    <string name="notification_title_single_update_available">Aktualisierung abrufbar</string>
+    <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
     <string name="notification_title_single_ready_to_install">Bereit zum Installieren</string>
     <string name="notification_title_single_ready_to_install_update">Aktualisierung bereit zum Installieren</string>
     <string name="notification_title_single_install_error">Installation fehlgeschlagen</string>
@@ -561,4 +561,11 @@
     <string name="nearby_splace__external_storage_permission_button">Probieren</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid kann nach Repos und Spiegelservern auf Ihrer SD-Karte suchen, braucht aber Ihre Erlaubnis dafür.</string>
     <string name="swap_connection_indexv0_error">Sie versuchen sich mit jemandem mit einer veralteten F-Droid-App zu verbinden. Vor einer Verbindung muss diese F-Droid-App aktualisiert werden. Ihr könnt den Direkttausch verwenden, um die veraltete App über die neue auf Ihrem Gerät zu aktualisieren.</string>
+    <string name="force_old_installer_title">Alte Installation erzwingen</string>
+    <string name="force_old_installer_summary">Beta-Paketinstallation deaktivieren, einschließlich der von ihr unterstützten, automatischen Aktualisierungen im Hintergrund.</string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="copied_permission_to_clipboard">Bezeichnung der Berechtigung in die Zwischenablage kopiert</string>
+    <string name="copied_url_to_clipboard">URL in die Zwischenablage kopiert</string>
+    <string name="repo_num_apps_link">%s (antippen, um alle Apps aufzulisten)</string>
+    <string name="repo_num_apps_button">Apps anzeigen</string>
 </resources>

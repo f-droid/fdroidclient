@@ -554,4 +554,5 @@
     <string name="copied_permission_to_clipboard">權限名稱已複製至剪貼簿</string>
     <string name="copied_url_to_clipboard">URL 已複製至剪貼簿</string>
     <string name="repo_num_apps_link">%s (輕觸一下列出所有應用程式)</string>
+    <string name="repo_num_apps_button">顯示應用程式</string>
 </resources>
