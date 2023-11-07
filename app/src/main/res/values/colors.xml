@@ -29,6 +29,8 @@
     <color name="fdroid_blue_dark">#ff004ba0</color>
     <color name="fdroid_green_light">#ffbee247</color>
     <color name="fdroid_green">#ff8ab000</color>
+    <color name="fdroid_error">#ffb00020</color>
+    <color name="fdroid_caption">#ff757575</color>
 
     <color name="shadow">#cc222222</color>
     <color name="warning">#827717</color>

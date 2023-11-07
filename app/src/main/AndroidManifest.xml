@@ -245,6 +245,11 @@
             android:parentActivityName=".views.main.MainActivity"></activity>
 
         <activity
+            android:name=".views.IpfsGatewayAddActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".views.main.MainActivity" />
+
+        <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />

@@ -1,15 +1,21 @@
 package org.fdroid.fdroid.views
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -18,22 +24,29 @@ import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
 import org.fdroid.fdroid.IPreferencesIpfs
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
+import org.fdroid.fdroid.compose.ComposeUtils.LifecycleEventListener
+import org.fdroid.fdroid.compose.ComposeUtils.captionModifier
 
 class IpfsGatewaySettingsActivity : ComponentActivity() {
 
@@ -46,7 +59,8 @@ class IpfsGatewaySettingsActivity : ComponentActivity() {
 
         setContent {
             FDroidContent {
-                IpfsGatewaySettingsScreen(prefs = prefs,
+                IpfsGatewaySettingsScreen(
+                    prefs = prefs,
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() })
             }
         }
@@ -58,6 +72,9 @@ fun IpfsGatewaySettingsScreen(
     onBackClicked: () -> Unit,
     prefs: IPreferencesIpfs,
 ) {
+    val context = LocalContext.current
+    var ipfsEnabled by remember { mutableStateOf(prefs.isIpfsEnabled) }
+
     Scaffold(topBar = {
         TopAppBar(
             elevation = 4.dp,
@@ -74,47 +91,74 @@ fun IpfsGatewaySettingsScreen(
                 )
             },
         )
+    }, floatingActionButton = {
+        // it doesn't seam to be supported to disable FABs, so just hide it for now.
+        if (ipfsEnabled) {
+            FloatingActionButton(onClick = {
+                context.startActivity(Intent(context, IpfsGatewayAddActivity::class.java))
+            }) {
+                Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
+            }
+        }
     }) { paddingValues ->
-        Column(
+        Box(
             modifier = Modifier
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
         ) {
-            DefaultGateWaysSettings(prefs = prefs)
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.ipfsgw_explainer),
+                        style = MaterialTheme.typography.body1,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Switch(checked = ipfsEnabled, onCheckedChange = { checked ->
+                        ipfsEnabled = checked
+                        prefs.isIpfsEnabled = checked
+                    })
+                }
+                DefaultGatewaysSettings(prefs = prefs, ipfsEnabled = ipfsEnabled)
+                UserGatewaysSettings(prefs = prefs, ipfsEnabled = ipfsEnabled)
+                // make sure FAB doesn't occlude the delete button of the last user gateway
+                Spacer(modifier = Modifier.height(64.dp))
+            }
         }
     }
 }
 
+@SuppressLint("MutableCollectionMutableState")
 @Composable
-fun DefaultGateWaysSettings(
+fun DefaultGatewaysSettings(
     prefs: IPreferencesIpfs,
+    ipfsEnabled: Boolean,
 ) {
-
-    var ipfsEnabled by remember { mutableStateOf(prefs.isIpfsEnabled) }
     var disabledDefaultGateways by remember { mutableStateOf(prefs.ipfsGwDisabledDefaults) }
 
-    Column() {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(
-                text = stringResource(id = R.string.ipfsgw_explainer),
-                modifier = Modifier.weight(1f)
-            )
-            Switch(checked = ipfsEnabled, onCheckedChange = { checked ->
-                ipfsEnabled = checked
-                prefs.isIpfsEnabled = checked
-            })
-        }
-        Preferences.DEFAULT_IPFS_GATEWAYS.forEach() { gatewayUrl ->
+    Column {
+        Text(
+            text = stringResource(id = R.string.ipfsgw_caption_official_gateways),
+            style = MaterialTheme.typography.caption,
+            modifier = Modifier.captionModifier()
+        )
+        Preferences.DEFAULT_IPFS_GATEWAYS.forEach { gatewayUrl ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(64.dp, 4.dp, 16.dp, 4.dp)
+                    .padding(48.dp, 4.dp, 0.dp, 4.dp)
             ) {
-                Text(text = gatewayUrl, modifier = Modifier.weight(1f))
+                Text(
+                    text = gatewayUrl,
+                    style = MaterialTheme.typography.body1,
+                    modifier = Modifier
+                        .weight(1f)
+                        .align(Alignment.CenterVertically)
+                        .alpha(if (ipfsEnabled) 1f else 0.5f)
+                )
                 Switch(
                     checked = !disabledDefaultGateways.contains(gatewayUrl),
                     onCheckedChange = { checked ->
@@ -125,10 +169,68 @@ fun DefaultGateWaysSettings(
                             newSet.remove(gatewayUrl)
                         }
                         disabledDefaultGateways = newSet
-                        prefs.ipfsGwDisabledDefaults = disabledDefaultGateways
+                        prefs.ipfsGwDisabledDefaults = newSet
                     },
-                    enabled = ipfsEnabled
+                    enabled = ipfsEnabled,
+                    modifier = Modifier.align(Alignment.CenterVertically)
                 )
+            }
+        }
+    }
+}
+
+@SuppressLint("MutableCollectionMutableState")
+@Composable
+fun UserGatewaysSettings(
+    prefs: IPreferencesIpfs,
+    ipfsEnabled: Boolean,
+) {
+    var userGateways by remember { mutableStateOf(prefs.ipfsGwUserList) }
+
+    // Make sure list get updated when user returns from IpfsGatewayAddActivity
+    LifecycleEventListener { _, event ->
+        if (Lifecycle.Event.ON_RESUME == event) {
+            userGateways = prefs.ipfsGwUserList
+        }
+    }
+
+    Column {
+        if (userGateways.isNotEmpty()) {
+            Text(
+                text = stringResource(id = R.string.ipfsgw_caption_custom_gateways),
+                style = MaterialTheme.typography.caption,
+                modifier = Modifier.captionModifier()
+            )
+        }
+        userGateways.forEach { gatewayUrl ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(48.dp, 4.dp, 0.dp, 4.dp)
+
+            ) {
+                Text(
+                    text = gatewayUrl,
+                    style = MaterialTheme.typography.body1,
+                    modifier = Modifier
+                        .weight(1f)
+                        .align(Alignment.CenterVertically)
+                        .alpha(if (ipfsEnabled) 1f else 0.5f)
+                )
+                IconButton(
+                    onClick = {
+                        val newGateways = userGateways.toMutableSet()
+                        newGateways.remove(gatewayUrl)
+
+                        userGateways = newGateways
+                        prefs.ipfsGwUserList = newGateways
+                    }, enabled = ipfsEnabled, modifier = Modifier.align(Alignment.CenterVertically)
+                ) {
+                    Icon(
+                        Icons.Default.DeleteForever,
+                        contentDescription = "Localized description",
+                    )
+                }
             }
         }
     }
@@ -141,11 +243,9 @@ fun IpfsGatewaySettingsScreenPreview() {
     val prefs = object : IPreferencesIpfs {
         override fun isIpfsEnabled(): Boolean = true
         override fun setIpfsEnabled(enabled: Boolean) = throw NotImplementedError()
-        override fun getIpfsGwUserList(): Set<String> = throw NotImplementedError()
+        override fun getIpfsGwUserList(): Set<String> = setOf("https://my.imaginary.gateway/ifps/")
         override fun setIpfsGwUserList(selectedSet: Set<String>?) = throw NotImplementedError()
-        override fun getIpfsGwDisabledDefaults(): Set<String> {
-            return setOf("https://4everland.io/ipfs/")
-        }
+        override fun getIpfsGwDisabledDefaults() = setOf("https://4everland.io/ipfs/")
 
         override fun setIpfsGwDisabledDefaults(selectedSet: Set<String>?) =
             throw NotImplementedError()
