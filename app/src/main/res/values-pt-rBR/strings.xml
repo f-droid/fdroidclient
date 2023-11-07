@@ -576,7 +576,7 @@
     <string name="repo_io_error">Erro ao conectar ao repositório.</string>
     <string name="turn_on_wifi">Ativar o WiFi</string>
     <string name="swap_banner_message">Para trocar de aplicativos, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
-    <string name="repo_add_new_mirror">Adicionar como novo espelho</string>
+    <string name="repo_add_new_mirror">Adicionar como novo mirror</string>
     <string name="copied_to_clipboard">Copiado para a área de transferência</string>
     <string name="nearby_splace__external_storage_permission_button">Experimente</string>
     <string name="force_old_installer_title">Forçar instalador antigo</string>
