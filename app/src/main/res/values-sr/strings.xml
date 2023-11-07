@@ -572,4 +572,5 @@
     <string name="copied_url_to_clipboard">URL је копиран у привремену меморију</string>
     <string name="targetsdk_or_later">захтева верзију %s</string>
     <string name="repo_num_apps_link">%s (додирните за приказ свих апликација)</string>
+    <string name="repo_num_apps_button">Прикажи апликације</string>
 </resources>
