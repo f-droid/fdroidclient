@@ -318,8 +318,8 @@
     <string name="updates__hide_updateable_apps">Uygulamaları gizle</string>
     <string name="updates__show_updateable_apps">Uygulamaları göster</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">%1$d uygulamanın güncellemesini indir.</item>
-        <item quantity="other">%1$d uygulamanın güncellemesini indir.</item>
+        <item quantity="one">%1$d uygulama için güncellemeyi indir.</item>
+        <item quantity="other">%1$d uygulama için güncellemeleri indir.</item>
     </plurals>
     <string name="details_new_in_version">%s sürümündeki yenilikler</string>
     <string name="antifeatureswarning">Bu uygulama sevmeyebileceğiniz özellikler içerir.</string>
