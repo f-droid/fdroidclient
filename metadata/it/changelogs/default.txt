@@ -1,0 +1,11 @@
+* Revisione completa con aggiunta repo e mirror, sia UX che codice
+
+* Anteprima contenuti repo prima di aggiungere
+
+* Usa installer di sessione su F-Droid e F-Droid Basic incluso il supporto per aggiornamenti automatici in secondo piano
+
+* Su Android 14 segna come incompatibili le app con Versione Target SDK non supportata
+
+* Click lungo per copiare link, autorizzazioni e versioni nei dettagli app
+
+* App incompatibili non sono più mostrate da nessuna parte (eccetto se consentito in Impostazioni)
