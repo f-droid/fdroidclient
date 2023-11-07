@@ -573,4 +573,5 @@
 \n
 \nContactez le responsable pour lui faire part de ce problème.</string>
     <string name="repo_io_error">Erreur de connexion au dépôt.</string>
+    <string name="force_old_installer_title">Forcer l\'utilisation de l\'ancien programme d\'installation</string>
 </resources>
