@@ -25,6 +25,14 @@
                 android:targetPackage="@string/applicationId" />
         </PreferenceScreen>
         <PreferenceScreen
+            android:summary="@string/ipfsgw_summary"
+            android:title="@string/ipfsgw_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="org.fdroid.fdroid.views.IpfsGatewaySettingsActivity"
+                android:targetPackage="@string/applicationId" />
+        </PreferenceScreen>
+        <PreferenceScreen
             android:key="installHistory"
             android:summary="@string/install_history_summary"
             android:title="@string/install_history"

@@ -745,4 +745,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="copied_to_clipboard">Copied to clipboard</string>
     <string name="copied_url_to_clipboard">Copied URL to clipboard</string>
     <string name="copied_permission_to_clipboard">Copied permission name to clipboard</string>
+
+    <string name="ipfsgw_title">IPFS Gateways</string>
+    <string name="ipfsgw_summary">Download apps from IPFS web-endpoints, if supported by your repos.</string>
+    <string name="ipfsgw_explainer">Enable or add IPFS Gateways to make F-Droid downloads from IPFS.</string>
 </resources>

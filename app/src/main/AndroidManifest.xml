@@ -238,6 +238,13 @@
         </activity>
 
         <activity
+            android:name=".views.IpfsGatewaySettingsActivity"
+            android:configChanges="layoutDirection|locale"
+            android:label="@string/ipfsgw_title"
+            android:launchMode="singleTask"
+            android:parentActivityName=".views.main.MainActivity"></activity>
+
+        <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
