@@ -556,4 +556,7 @@
     <string name="force_old_installer_summary">Beta Oturum Yükleyicisini devre dışı bırak, buna Otomatik arka plan güncellemeleri desteği de dahildir.</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid, SD Kartınızdaki depoları ve aynaları arayabilir ancak bunu yapmak için izninize ihtiyacı var.</string>
     <string name="swap_connection_indexv0_error">F-Droid\'in eski sürümüne sahip birisiyle bağlantı kurmaya çalışıyorsunuz. Bağlantı kurmak için F-Droid uygulamalarını güncellemeleri gerekiyor. F-Droid uygulamalarını güncellemek için sizden takas edebilirler.</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="copied_permission_to_clipboard">İzin adı panoya kopyalandı</string>
+    <string name="copied_url_to_clipboard">URL panoya kopyalandı</string>
 </resources>
