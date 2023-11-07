@@ -566,4 +566,6 @@
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="copied_permission_to_clipboard">Bezeichnung der Berechtigung in die Zwischenablage kopiert</string>
     <string name="copied_url_to_clipboard">URL in die Zwischenablage kopiert</string>
+    <string name="repo_num_apps_link">%s (antippen, um alle Apps aufzulisten)</string>
+    <string name="repo_num_apps_button">Apps anzeigen</string>
 </resources>
