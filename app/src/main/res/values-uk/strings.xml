@@ -573,4 +573,6 @@
     <string name="swap_connection_indexv0_error">Ви намагаєтеся під\'єднатися до когось з застарілою версією F-Droid. Для під\'єднання необхідно оновити застосунок F-Droid. Для оновлення F-Droid можна надіслати версію з вашого пристрою.</string>
     <string name="force_old_installer_title">Примусово використовувати старий встановлювач</string>
     <string name="force_old_installer_summary">Вимкнути бета-версію встановлювача сеансів, зокрема підтримку автоматичних фонових оновлень.</string>
+    <string name="copied_to_clipboard">Скопійовано в буфер обміну</string>
+    <string name="copied_url_to_clipboard">Скопійовано посилання в буфер обміну</string>
 </resources>
