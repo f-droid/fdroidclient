@@ -552,4 +552,5 @@
     <string name="copied_url_to_clipboard">複製咗個 URL 去剪貼簿</string>
     <string name="targetsdk_or_later">目標版本為 %s</string>
     <string name="repo_num_apps_link">%s (撳一下騷晒佢所有啲 app)</string>
+    <string name="repo_num_apps_button">騷晒佢所有啲 app</string>
 </resources>
