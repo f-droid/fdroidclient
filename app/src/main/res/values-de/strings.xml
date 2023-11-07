@@ -277,7 +277,7 @@
     <string name="app_details_donate_prompt_unknown_author">Den Entwicklern von %1$s einen Kaffee spendieren!</string>
     <string name="app_details_donate_prompt">%2$s einen Kaffee für die Entwicklung von %1$s spendieren!</string>
     <string name="repositories_summary">Zusätzliche Paketquellen hinzufügen</string>
-    <string name="notification_title_single_update_available">Aktualisierung abrufbar</string>
+    <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
     <string name="notification_title_single_ready_to_install">Bereit zum Installieren</string>
     <string name="notification_title_single_ready_to_install_update">Aktualisierung bereit zum Installieren</string>
     <string name="notification_title_single_install_error">Installation fehlgeschlagen</string>
