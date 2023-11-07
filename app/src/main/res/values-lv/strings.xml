@@ -112,7 +112,7 @@
     <string name="installIncompatible">Lietotne nav saderīga ar ierīci. Vienalga uzstādīt\?</string>
     <string name="by_author_format">izstrādātājs: %s</string>
     <string name="unstable_updates">Nepastāvīgie atjauninājumi</string>
-    <string name="unstable_updates_summary">Piedāvāt nepastāvīgu laidienu atjauninājumus</string>
+    <string name="unstable_updates_summary">Piedāvāt nepastāvīgu versiju atjauninājumus</string>
     <string name="keep_install_history">Saglabāt uzstādīšanas vēsturi</string>
     <string name="keep_install_history_summary">Glabāt uzstādīšanas un izdzēšanas žurnālu privātā krātuvē</string>
     <string name="force_old_index">Piespiest izmantot veco indeksu paraugu</string>
@@ -132,7 +132,7 @@
     <string name="app_version_x_available">Ir pieejama versija %1$s</string>
     <string name="app_version_x_installed">Versija %1$s</string>
     <string name="app_recommended_version_installed">Versija %1$s (ieteicama)</string>
-    <string name="app_new">Jaunums</string>
+    <string name="app_new">Jauna</string>
     <string name="app__tts__cancel_download">Atcelt lejupielādi</string>
     <string name="app__install_downloaded_update">Atjaunināt</string>
     <string name="app_installed_media">Datne uzstādīta %s</string>
@@ -151,18 +151,18 @@
     <string name="send_history_csv">%s uzstādīšanas vēsture CSV datnē</string>
     <string name="install_history">Uzstādīšanas vēsture</string>
     <string name="install_history_summary">Apskatīt uzstādīšanas un izdzēšanas privāto žurnālu</string>
-    <string name="send_version_and_uuid">Sūtīt serveriem laidienu un UUID</string>
-    <string name="send_version_and_uuid_summary">Iekļaut šīs lietotnes laidienu un nejaušu, neatkārtojamu Id, kad lejupielādē. Stājas spēkā pēc lietotnes nākamās pārsāknēšanas.</string>
+    <string name="send_version_and_uuid">Sūtīt serveriem versiju un UUID</string>
+    <string name="send_version_and_uuid_summary">Iekļaut šīs lietotnes versiju un nejaušu, neatkārtojamu Id, kad lejupielādē. Stājas spēkā pēc lietotnes nākamās pārsāknēšanas.</string>
     <string name="over_wifi">Izmantojot Wi-Fi</string>
     <string name="over_data">Izmantojot mobilos datus</string>
     <string name="over_network_always_summary">Vienmēr izmantot šo savienojumu, kad tas ir pieejams</string>
     <string name="over_network_on_demand_summary">Izmantot šo savienojumu tikai tad, kad es nospiežu, lai lejupielādētu</string>
     <string name="over_network_never_summary">Nekad nelejupielādēt neko, kad tiek izmantots šis savienojums</string>
-    <string name="app_details__incompatible_mismatched_signers">Cits parakstītājs nekā uzstādītajam laidienam</string>
-    <string name="app_details__no_versions__show_incompat_versions">Lai jebkurā gadījumā šeit parādītu nesaderīgus laidienus, jāiespējo iestatījums \"%1$s\".</string>
-    <string name="app_details__no_versions__no_compatible_signers">Nav laidienu ar saderīgu parakstītāju</string>
-    <string name="app_details__no_versions__none_compatible_with_device">Nav ar ierīci saderīgu laidienu</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Uzstādītā versija nav saderīga ar nevienu no pieejamajām versijām. Lietotnes noņemšana ļaus apskatīt un uzstādīt saderīgu laidienu. Tas parasti notiek ar lietotnēm, kuras tika uzstādītas ar Google Play vai kādu citu avotu, ja tās ir parakstītas ar citu sertifikātu.</string>
+    <string name="app_details__incompatible_mismatched_signers">Cits parakstītājs nekā uzstādītajai versijai</string>
+    <string name="app_details__no_versions__show_incompat_versions">Lai jebkurā gadījumā šeit parādītu nesaderīgas versijas, jāiespējo iestatījums \"%1$s\".</string>
+    <string name="app_details__no_versions__no_compatible_signers">Nav versiju ar saderīgu parakstītāju</string>
+    <string name="app_details__no_versions__none_compatible_with_device">Nav ar ierīci saderīgu versiju</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Uzstādītā versija nav saderīga ar nevienu no pieejamajām. Lietotnes noņemšana ļaus apskatīt un uzstādīt saderīgu versiju. Tas parasti notiek ar lietotnēm, kuras tika uzstādītas no Google Play vai no kāda cita avota, ja tās ir parakstītas ar citu sertifikātu.</string>
     <string name="about_forum">Atbalsta forums</string>
     <string name="app_suggested">Ieteiktās</string>
     <string name="app_permission_storage">F-Droid ir nepieciešama krātuves atļauja, lai uzstādītu šo krātuvē. Lūgums atļaut to nākamajā skatā, lai varētu turpināt uzstādīšanu.</string>
@@ -362,7 +362,7 @@
     <string name="show_anti_feature_apps_on">Rādīt lietotnes, kurās ir nepieciešamas nevēlamas iespējas</string>
     <string name="show_anti_feature_apps">Iekļaut lietotnes ar nevēlamām iespējām</string>
     <string name="show_incompat_versions_on">Rādīt lietotnes versijas, kas nav saderīgas ar ierīci</string>
-    <string name="show_incompat_versions">Iekļaut nesaderīgas versijas</string>
+    <string name="show_incompat_versions">Iekļaut nesaderīgās versijas</string>
     <string name="appcompatibility">Lietotņu saderība</string>
     <string name="search_hint">Meklēt lietotnes</string>
     <string name="expert_on">Rādīt papildu informāciju un iespējot papildu iestatījumus</string>
@@ -565,4 +565,11 @@
     <string name="nearby_splace__external_storage_permission_button">Izmēģināt</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid var meklēt glabātavas un spoguļserverus SD kartē, bet tam ir nepieciešama atļauja.</string>
     <string name="swap_connection_indexv0_error">Tiek mēģināts savienoties ar kādu, kam ir novecojusi F-Droid versija. Lai savienotos, ir nepieciešams atjaunināt F-Droid lietotni. Ir iespējams izmantot mijmaiņu, lai atjauninātu F-Droid lietotni.</string>
+    <string name="force_old_installer_title">Vecā uzstādītāja piespiedu izmantošana</string>
+    <string name="force_old_installer_summary">Atspējot beta Sesijas uzstādītāju, tajā skaitā automātisko fona atjauninājumu atbalstu.</string>
+    <string name="copied_to_clipboard">Ievietots starpliktuvē</string>
+    <string name="copied_permission_to_clipboard">Atļaujas nosaukums ievietots starpliktuvē</string>
+    <string name="copied_url_to_clipboard">URL ievietots starpliktuvē</string>
+    <string name="targetsdk_or_later">sākot no %s</string>
+    <string name="repo_num_apps_button">Rādīt lietotnes</string>
 </resources>
