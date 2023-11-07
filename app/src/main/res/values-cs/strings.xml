@@ -572,4 +572,5 @@
     <string name="copied_url_to_clipboard">Adresa URL zkopírována do schránky</string>
     <string name="targetsdk_or_later">cílová verze %s</string>
     <string name="repo_num_apps_link">%s (klepněte pro zobrazení všech aplikací)</string>
+    <string name="repo_num_apps_button">Zobrazit aplikace</string>
 </resources>
