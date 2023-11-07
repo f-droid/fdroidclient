@@ -57,7 +57,7 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder hängt komplett von ihm ab</string>
+    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder benötigt ihn zwingend</string>
     <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
