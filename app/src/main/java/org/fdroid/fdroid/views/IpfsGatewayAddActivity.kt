@@ -53,9 +53,11 @@ class IpfsGatewayAddActivity : ComponentActivity() {
             FDroidContent {
                 IpfsGatewayAddScreen(onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                     onAddUserGateway = { url ->
-                        val updatedUserGwList = Preferences.get().ipfsGwUserList.toMutableSet()
-                        updatedUserGwList.add(url)
-                        Preferences.get().ipfsGwUserList = updatedUserGwList
+                        if (!Preferences.DEFAULT_IPFS_GATEWAYS.contains(url)) {
+                            val updatedUserGwList = Preferences.get().ipfsGwUserList.toMutableSet()
+                            updatedUserGwList.add(url)
+                            Preferences.get().ipfsGwUserList = updatedUserGwList
+                        }
                         finish()
                     })
             }
@@ -116,7 +118,9 @@ fun IpfsGatewayAddScreen(
                 )
                 if (errorMsg.isNotEmpty()) {
                     Text(
-                        text = errorMsg, style = MaterialTheme.typography.body1, color = colorResource(
+                        text = errorMsg,
+                        style = MaterialTheme.typography.body1,
+                        color = colorResource(
                             id = R.color.fdroid_error
                         )
                     )
@@ -141,7 +145,8 @@ fun IpfsGatewayAddScreen(
                     text = stringResource(R.string.ipfsgw_add_add),
                     onClick = l@{
                         errorMsg = ""
-                        val inputUri = textState.value.text
+                        val inputUri =
+                            if (textState.value.text.endsWith("/")) textState.value.text else "${textState.value.text}/"
 
                         try {
                             val uri = Uri.parse(inputUri)
@@ -156,7 +161,7 @@ fun IpfsGatewayAddScreen(
                         }
 
                         // no errors -> proceed to add the url
-                        onAddUserGateway(if (inputUri.endsWith("/")) inputUri else "$inputUri/")
+                        onAddUserGateway(inputUri)
                     },
                 )
             }
