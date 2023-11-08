@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.appdetails
 
 import android.content.res.Configuration
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
@@ -32,8 +31,6 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -41,17 +38,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.util.Consumer
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
-import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.Utils
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
+import org.fdroid.fdroid.views.repos.RepoIcon
 import org.fdroid.index.IndexFormatVersion.TWO
 
 /**
@@ -109,7 +102,6 @@ fun RepoChooser(
 }
 
 @Composable
-@OptIn(ExperimentalGlideComposeApi::class)
 private fun RepoDropDown(
     repos: List<Repository>,
     currentRepoId: Long,
@@ -121,16 +113,13 @@ private fun RepoDropDown(
     var expanded by remember { mutableStateOf(false) }
     val currentRepo = repos.find { it.repoId == currentRepoId }
         ?: error("Current repoId not in list")
-    val localeList = LocaleListCompat.getDefault()
-    val res = LocalContext.current.resources
-
     Column(
         modifier = modifier.fillMaxWidth(),
     ) {
         Box {
             OutlinedTextField(
                 value = TextFieldValue(buildAnnotatedString {
-                    append(currentRepo.getName(localeList) ?: "Unknown Repository")
+                    append(currentRepo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repository")
                     if (currentRepo.repoId == preferredRepoId) {
                         append(" ")
                         pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
@@ -144,23 +133,7 @@ private fun RepoDropDown(
                     Text(stringResource(R.string.app_details_repositories))
                 },
                 leadingIcon = {
-                    if (LocalInspectionMode.current) Image(
-                        painter = rememberDrawablePainter(
-                            ResourcesCompat.getDrawable(res, R.drawable.ic_launcher, null)
-                        ),
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp),
-                    ) else GlideImage(
-                        model = Utils.getDownloadRequest(
-                            currentRepo,
-                            currentRepo.getIcon(localeList)
-                        ),
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp),
-                    ) {
-                        it.fallback(R.drawable.ic_repo_app_default)
-                            .error(R.drawable.ic_repo_app_default)
-                    }
+                    RepoIcon(repo = currentRepo, modifier = Modifier.size(24.dp))
                 },
                 trailingIcon = {
                     Icon(
@@ -206,31 +179,16 @@ private fun RepoDropDown(
 }
 
 @Composable
-@OptIn(ExperimentalGlideComposeApi::class)
 private fun RepoItem(repo: Repository, isPreferred: Boolean, modifier: Modifier = Modifier) {
     Row(
         horizontalArrangement = spacedBy(8.dp),
         verticalAlignment = CenterVertically,
         modifier = modifier,
     ) {
-        val localeList = LocaleListCompat.getDefault()
-        val res = LocalContext.current.resources
-        if (LocalInspectionMode.current) Image(
-            painter = rememberDrawablePainter(
-                ResourcesCompat.getDrawable(res, R.drawable.ic_launcher, null)
-            ),
-            contentDescription = null,
-            modifier = Modifier.size(24.dp),
-        ) else GlideImage(
-            model = Utils.getDownloadRequest(repo, repo.getIcon(localeList)),
-            contentDescription = null,
-            modifier = Modifier.size(24.dp),
-        ) {
-            it.fallback(R.drawable.ic_repo_app_default).error(R.drawable.ic_repo_app_default)
-        }
+        RepoIcon(repo, Modifier.size(24.dp))
         Text(
             text = buildAnnotatedString {
-                append(repo.getName(localeList) ?: "Unknown Repository")
+                append(repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repository")
                 if (isPreferred) {
                     append(" ")
                     pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
