@@ -23,9 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import info.guardianproject.netcipher.NetCipher;
 
@@ -92,13 +90,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
 
     private static List<Mirror> loadIpfsMirrors(Preferences prefs) {
         List<Mirror> mirrorList = new ArrayList<>();
-        Set<String> disabledDefaultGateways = prefs.getIpfsGwDisabledDefaults();
-        for (String gatewayUrl : Preferences.DEFAULT_IPFS_GATEWAYS) {
-            if (!disabledDefaultGateways.contains(gatewayUrl)) {
-                mirrorList.add(new Mirror(gatewayUrl, null, true));
-            }
-        }
-        for (String gatewayUrl : prefs.getIpfsGwUserList()) {
+        for (String gatewayUrl : prefs.getActiveIpfsGateways()) {
             mirrorList.add(new Mirror(gatewayUrl, null, true));
         }
         return mirrorList;

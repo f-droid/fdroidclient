@@ -32,6 +32,7 @@ import android.text.format.DateUtils;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.collection.ArraySet;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
@@ -110,9 +111,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
     public static final String PREF_SEND_TO_FDROID_METRICS = "sendToFdroidMetrics";
-    private static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
-    private static final String PREF_IPFSGW_DISABLED_DEFAULTS_LIST = "ipfsGwDisabledDefaultsList";
-    private static final String PREF_IPFSGW_USER_LIST = "ipfsGwUserList";
+    public static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
+    public static final String PREF_IPFSGW_DISABLED_DEFAULTS_LIST = "ipfsGwDisabledDefaultsList";
+    public static final String PREF_IPFSGW_USER_LIST = "ipfsGwUserList";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_FORCE_OLD_INSTALLER = "forceOldInstaller";
@@ -637,6 +638,20 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
 
         return showAppsWithAntiFeatures;
+    }
+
+    public Set<String> getActiveIpfsGateways() {
+        Set<String> gateways = new ArraySet<>();
+        Set<String> disabledDefaults = getIpfsGwDisabledDefaults();
+        for (String gatewayUrl : DEFAULT_IPFS_GATEWAYS) {
+            if (!disabledDefaults.contains(gatewayUrl)) {
+                gateways.add(gatewayUrl);
+            }
+        }
+        for (String gatewayUrl : getIpfsGwUserList()) {
+            gateways.add(gatewayUrl);
+        }
+        return gateways;
     }
 
     public void registerAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
