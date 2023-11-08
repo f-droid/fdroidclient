@@ -25,6 +25,7 @@ import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import info.guardianproject.netcipher.NetCipher;
 
@@ -79,7 +80,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
                 } else {
                     // add IPFS gateways to mirrors, because have have a CIDv1 and IPFS is enabled in preferences
                     List<Mirror> m = new ArrayList<>(mirrors);
-                    m.addAll(IPFS_MIRRORS);
+                    m.addAll(loadIpfsMirrors(prefs));
                     r = new DownloadRequest(request.getIndexFile(), m, proxy, repo.getUsername(),
                             repo.getPassword(), tryFirst);
                 }
@@ -89,10 +90,18 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
         return downloader;
     }
 
-    private static final List<Mirror> IPFS_MIRRORS = Arrays.asList(
-            new Mirror("https://4everland.io/ipfs/", null, true),
-            new Mirror("https://ipfs.joaoleitao.org/ipfs/", null, true),
-            new Mirror("https://ipfs.jpu.jp/ipfs/", null, true)
-    );
+    private static List<Mirror> loadIpfsMirrors(Preferences prefs) {
+        List<Mirror> mirrorList = new ArrayList<>();
+        Set<String> disabledDefaultGateways = prefs.getIpfsGwDisabledDefaults();
+        for (String gatewayUrl : Preferences.DEFAULT_IPFS_GATEWAYS) {
+            if (!disabledDefaultGateways.contains(gatewayUrl)) {
+                mirrorList.add(new Mirror(gatewayUrl, null, true));
+            }
+        }
+        for (String gatewayUrl : prefs.getIpfsGwUserList()) {
+            mirrorList.add(new Mirror(gatewayUrl, null, true));
+        }
+        return mirrorList;
+    }
 
 }
