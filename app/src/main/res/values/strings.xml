@@ -40,8 +40,6 @@
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
     <string name="send_to_fdroid_metrics">Send usage data</string>
     <string name="send_to_fdroid_metrics_summary">Sends anonymous data weekly to F-Droid Metrics (requires "Keep install history")</string>
-    <string name="use_ipfs_gateways">Use IPFS gateways</string>
-    <string name="use_ipfs_gateways_summary">Download files from IPFS mirrors, if supported by the repo.</string>
     <!-- message shown as a "toast" when the user enables the Send to F-Droid Metrics preference -->
     <string name="toast_metrics_in_install_history">The %s Metric report is viewable in the Install History viewer</string>
     <string name="send_version_and_uuid">Send version and UUID to servers</string>
