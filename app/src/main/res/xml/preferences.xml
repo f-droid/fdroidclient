@@ -25,7 +25,8 @@
                 android:targetPackage="@string/applicationId" />
         </PreferenceScreen>
         <PreferenceScreen
-            android:summary="@string/ipfsgw_summary"
+            android:key="ipfsGateways"
+            android:summary="@string/ipfsgw_summary_disabled"
             android:title="@string/ipfsgw_title">
             <intent
                 android:action="android.intent.action.MAIN"

@@ -125,6 +125,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private LinearSmoothScroller topScroller;
 
     private RequestManager glideRequestManager;
+    private Preference ipfsGateways;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -168,6 +169,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         updateIntervalSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_UPDATE_INTERVAL));
         updateIntervalPrevious = updateIntervalSeekBar.getValue();
         updateIntervalSeekBar.setSeekBarLiveUpdater(position -> getString(UPDATE_INTERVAL_NAMES[position]));
+        ipfsGateways = ObjectsCompat.requireNonNull(findPreference("ipfsGateways"));
+        updateIpfsGatewaySummary();
 
         ListPreference languagePref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_LANGUAGE));
         if (Build.VERSION.SDK_INT >= 24) {
@@ -411,6 +414,16 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         }
     }
 
+    private void updateIpfsGatewaySummary() {
+        Preferences prefs = Preferences.get();
+        if (prefs.isIpfsEnabled()) {
+            int cnt = Preferences.get().getActiveIpfsGateways().size();
+            ipfsGateways.setSummary(String.format(getString(R.string.ipfsgw_summary), cnt));
+        } else {
+            ipfsGateways.setSummary(getString(R.string.ipfsgw_summary_disabled));
+        }
+    }
+
     /**
      * About dialog click listener
      * <p>
@@ -549,6 +562,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         initAutoFetchUpdatesPreference();
         initPrivilegedInstallerPreference();
         initUseTorPreference(requireContext().getApplicationContext());
+
+        updateIpfsGatewaySummary();
     }
 
     @Override
