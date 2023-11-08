@@ -747,11 +747,12 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="paste">Paste</string>
 
     <string name="ipfsgw_title">IPFS Gateways</string>
-    <string name="ipfsgw_explainer">Download apps from IPFS web-endpoints listed here. (Only works for F-Droid repositories with IPFS support.)</string>
+    <string name="ipfsgw_explainer">Download apps from IPFS web-endpoints. (Only works for F-Droid repositories with IPFS support.)</string>
     <string name="ipfsgw_summary">Download apps using IPFS web-endpoints: %d enabled</string>
     <string name="ipfsgw_summary_disabled">Download apps using IPFS web-endpoints: disabled</string>
     <string name="ipfsgw_add_title">Add IPFS Gateway</string>
     <string name="ipfsgw_add_add">Add</string>
     <string name="ipfsgw_caption_official_gateways">Official IPFS Gateways</string>
     <string name="ipfsgw_caption_custom_gateways">Custom IPFS Gateways</string>
+
 </resources>
