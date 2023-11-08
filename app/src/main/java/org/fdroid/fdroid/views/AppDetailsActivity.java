@@ -43,6 +43,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.util.ObjectsCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +54,6 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.AppVersion;
-import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.CompatibilityChecker;
@@ -64,20 +64,19 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
 import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.installer.InstallerService;
 import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
+import org.fdroid.fdroid.views.appdetails.AppData;
+import org.fdroid.fdroid.views.appdetails.AppDetailsViewModel;
 import org.fdroid.fdroid.views.apps.FeatureImage;
-import org.fdroid.index.RepoManager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 public class AppDetailsActivity extends AppCompatActivity
         implements AppDetailsRecyclerViewAdapter.AppDetailsRecyclerViewAdapterCallbacks {
@@ -90,7 +89,7 @@ public class AppDetailsActivity extends AppCompatActivity
     private static final int REQUEST_UNINSTALL_DIALOG = 4;
 
     private FDroidApp fdroidApp;
-    private FDroidDatabase db;
+    private AppDetailsViewModel model;
     private volatile App app;
     @Nullable
     private volatile List<Apk> versions;
@@ -132,6 +131,7 @@ public class AppDetailsActivity extends AppCompatActivity
                 AppCompatResources.getDrawable(toolbar.getContext(), R.drawable.ic_more_with_background)
         );
 
+        model = new ViewModelProvider(this).get(AppDetailsViewModel.class);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         recyclerView = findViewById(R.id.rvDetails);
@@ -144,6 +144,7 @@ public class AppDetailsActivity extends AppCompatActivity
             finish();
             return;
         }
+        model.loadApp(packageName);
 
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);
@@ -153,10 +154,9 @@ public class AppDetailsActivity extends AppCompatActivity
             return true;
         });
         checker = new CompatibilityChecker(this);
-        db = DBHelper.getDb(getApplicationContext());
-        db.getAppDao().getApp(packageName).observe(this, this::onAppChanged);
-        db.getVersionDao().getAppVersions(packageName).observe(this, this::onVersionsChanged);
-        db.getAppPrefsDao().getAppPrefs(packageName).observe(this, this::onAppPrefsChanged);
+        model.getApp().observe(this, this::onAppChanged);
+        model.getAppData().observe(this, this::onAppDataChanged);
+        model.getVersions().observe(this, this::onVersionsChanged);
     }
 
     private String getPackageNameFromIntent(Intent intent) {
@@ -319,22 +319,13 @@ public class AppDetailsActivity extends AppCompatActivity
             }
             return true;
         } else if (item.getItemId() == R.id.action_ignore_all) {
-            final AppPrefs prefs = Objects.requireNonNull(appPrefs);
-            Utils.runOffUiThread(() -> db.getAppPrefsDao().update(prefs.toggleIgnoreAllUpdates()));
-            AppUpdateStatusManager.getInstance(this).checkForUpdates();
+            model.ignoreAllUpdates();
             return true;
         } else if (item.getItemId() == R.id.action_ignore_this) {
-            final AppPrefs prefs = Objects.requireNonNull(appPrefs);
-            Utils.runOffUiThread(() ->
-                    db.getAppPrefsDao().update(prefs.toggleIgnoreVersionCodeUpdate(app.autoInstallVersionCode)));
-            AppUpdateStatusManager.getInstance(this).checkForUpdates();
+            model.ignoreVersionCodeUpdate(app.autoInstallVersionCode);
             return true;
         } else if (item.getItemId() == R.id.action_release_channel_beta) {
-            final AppPrefs prefs = Objects.requireNonNull(appPrefs);
-            Utils.runOffUiThread(() -> {
-                db.getAppPrefsDao().update(prefs.toggleReleaseChannel(Apk.RELEASE_CHANNEL_BETA));
-                return true; // we don't really care about the result here
-            }, result -> AppUpdateStatusManager.getInstance(this).checkForUpdates());
+            model.toggleBetaReleaseChannel();
             return true;
         } else if (item.getItemId() == android.R.id.home) {
             onBackPressed();
@@ -709,10 +700,12 @@ public class AppDetailsActivity extends AppCompatActivity
         if (app != null && appPrefs != null) updateAppInfo(app, apks, appPrefs);
     }
 
-    private void onAppPrefsChanged(AppPrefs appPrefs) {
-        this.appPrefs = appPrefs;
-        loadRepos(appPrefs.getPreferredRepoId());
-        if (app != null) updateAppInfo(app, versions, appPrefs);
+    private void onAppDataChanged(AppData appData) {
+        this.appPrefs = appData.getAppPrefs();
+        if (appData.getRepos().size() > 0) {
+            adapter.setRepos(appData.getRepos(), appData.getPreferredRepoId());
+        }
+        updateAppInfo(app, versions, appPrefs);
     }
 
     private void updateAppInfo(App app, @Nullable List<Apk> apks, AppPrefs appPrefs) {
@@ -721,23 +714,9 @@ public class AppDetailsActivity extends AppCompatActivity
         // If versions are not available, we use an empty list temporarily.
         List<Apk> apkList = apks == null ? new ArrayList<>() : apks;
         app.update(this, apkList, appPrefs);
-        adapter.updateItems(app, apkList, appPrefs);
+        adapter.updateItems(app, apks, appPrefs); // pass apks no apkList as null means loading
         refreshStatus();
         supportInvalidateOptionsMenu();
-    }
-
-    private void loadRepos(@Nullable Long preferredRepoId) {
-        Utils.runOffUiThread(() -> db.getAppDao().getRepositoryIdsForApp(packageName), repoIds -> {
-            List<Repository> repoList = new ArrayList<>(repoIds.size());
-            RepoManager repoManager = FDroidApp.getRepoManager(this);
-            if (repoManager.getRepositories().size() <= 2) return; // don't show if only official repo+archive added
-            for (long repoId: repoIds) {
-                Repository repo = repoManager.getRepository(repoId);
-                if (repo != null) repoList.add(repo);
-            }
-            long prefId = preferredRepoId == null ? app.repoId : preferredRepoId;
-            adapter.setRepos(repoList, prefId);
-        });
     }
 
     @Nullable
@@ -806,12 +785,12 @@ public class AppDetailsActivity extends AppCompatActivity
 
     @Override
     public void onRepoChanged(long repoId) {
-        Utils.runOffUiThread(() -> db.getAppDao().getApp(repoId, app.packageName), this::onAppChanged);
+        model.selectRepo(repoId);
     }
 
     @Override
     public void onPreferredRepoChanged(long repoId) {
-        FDroidApp.getRepoManager(this).setPreferredRepoId(app.packageName, repoId);
+        model.setPreferredRepo(repoId);
     }
 
     /**

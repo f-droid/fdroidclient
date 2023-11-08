@@ -141,7 +141,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app__install_downloaded_update">Update</string>
     <string name="app_installed_media">File installed to %s</string>
     <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
-    <string name="app_repository">Repository: %1$s</string>
     <string name="app_size">Size: %1$s</string>
     <string name="app_error_open">Could not launch app.</string>
 
