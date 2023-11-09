@@ -1,3 +1,19 @@
+### 1.19.0-alpha2 (2023-11-23)
+
+* New settings to give user control over IPFS HTTP Gateways
+
+* Enable per-app language selection (@Licaon-Kter)
+
+* Material Design 2 updates (@proletarius101)
+
+* Fix bug when adding new repo via unofficial mirror
+
+### 1.19.0-alpha1 (2023-11-07)
+
+* Support cloudflare.f-droid.org in Android Asset Links
+
+* Fix bugs in new Add Repo flow
+
 ### 1.19.0-alpha0 (2023-10-20)
 
 * Completely overhauled adding repositories and mirrors, both the user experience and the code.
