@@ -32,7 +32,6 @@ import android.text.format.DateUtils;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.collection.ArraySet;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
@@ -356,7 +355,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public String getBottomNavigationViewName() {
         return preferences.getString(PREF_BOTTOM_NAVIGATION_VIEW_NAME,
-                                     org.fdroid.fdroid.views.main.MainActivity.EXTRA_VIEW_LATEST);
+                org.fdroid.fdroid.views.main.MainActivity.EXTRA_VIEW_LATEST);
     }
 
     public void setBottomNavigationViewName(final String viewName) {
@@ -556,20 +555,20 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         preferences.edit().putBoolean(PREF_USE_IPFS_GATEWAYS, enabled).apply();
     }
 
-    public Set<String> getIpfsGwUserList() {
-        return preferences.getStringSet(PREF_IPFSGW_USER_LIST, Collections.emptySet());
+    public List<String> getIpfsGwUserList() {
+        return Utils.parseJsonStringArray(preferences.getString(PREF_IPFSGW_USER_LIST, "[]"));
     }
 
-    public void setIpfsGwUserList(Set<String> selectedSet) {
-        preferences.edit().putStringSet(Preferences.PREF_IPFSGW_USER_LIST, selectedSet).apply();
+    public void setIpfsGwUserList(List<String> selectedList) {
+        preferences.edit().putString(Preferences.PREF_IPFSGW_USER_LIST, Utils.toJsonStringArray(selectedList)).apply();
     }
 
-    public Set<String> getIpfsGwDisabledDefaults() {
-        return preferences.getStringSet(PREF_IPFSGW_DISABLED_DEFAULTS_LIST, Collections.emptySet());
+    public List<String> getIpfsGwDisabledDefaults() {
+        return Utils.parseJsonStringArray(preferences.getString(PREF_IPFSGW_DISABLED_DEFAULTS_LIST, "[]"));
     }
 
-    public void setIpfsGwDisabledDefaults(Set<String> selectedSet) {
-        preferences.edit().putStringSet(Preferences.PREF_IPFSGW_DISABLED_DEFAULTS_LIST, selectedSet).apply();
+    public void setIpfsGwDisabledDefaults(List<String> selectedList) {
+        preferences.edit().putString(Preferences.PREF_IPFSGW_DISABLED_DEFAULTS_LIST, Utils.toJsonStringArray(selectedList)).apply();
     }
 
     public boolean preventScreenshots() {
@@ -640,16 +639,13 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return showAppsWithAntiFeatures;
     }
 
-    public Set<String> getActiveIpfsGateways() {
-        Set<String> gateways = new ArraySet<>();
-        Set<String> disabledDefaults = getIpfsGwDisabledDefaults();
+    public List<String> getActiveIpfsGateways() {
+        List<String> gateways = getIpfsGwUserList();
+        List<String> disabledDefaults = getIpfsGwDisabledDefaults();
         for (String gatewayUrl : DEFAULT_IPFS_GATEWAYS) {
             if (!disabledDefaults.contains(gatewayUrl)) {
                 gateways.add(gatewayUrl);
             }
-        }
-        for (String gatewayUrl : getIpfsGwUserList()) {
-            gateways.add(gatewayUrl);
         }
         return gateways;
     }

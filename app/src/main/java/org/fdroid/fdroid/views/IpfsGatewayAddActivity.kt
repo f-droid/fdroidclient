@@ -53,10 +53,14 @@ class IpfsGatewayAddActivity : ComponentActivity() {
             FDroidContent {
                 IpfsGatewayAddScreen(onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                     onAddUserGateway = { url ->
+                        // don't allow adding default gateways to the user gateways list
                         if (!Preferences.DEFAULT_IPFS_GATEWAYS.contains(url)) {
-                            val updatedUserGwList = Preferences.get().ipfsGwUserList.toMutableSet()
-                            updatedUserGwList.add(url)
-                            Preferences.get().ipfsGwUserList = updatedUserGwList
+                            val updatedUserGwList = Preferences.get().ipfsGwUserList.toMutableList()
+                            // don't allow double adding gateways
+                            if (!updatedUserGwList.contains(url)) {
+                                updatedUserGwList.add(url)
+                                Preferences.get().ipfsGwUserList = updatedUserGwList
+                            }
                         }
                         finish()
                     })

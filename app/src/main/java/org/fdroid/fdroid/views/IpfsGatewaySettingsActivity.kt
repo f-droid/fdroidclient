@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -60,8 +59,7 @@ class IpfsGatewaySettingsActivity : ComponentActivity() {
 
         setContent {
             FDroidContent {
-                IpfsGatewaySettingsScreen(
-                    prefs = prefs,
+                IpfsGatewaySettingsScreen(prefs = prefs,
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() })
             }
         }
@@ -163,14 +161,14 @@ fun DefaultGatewaysSettings(
                 Switch(
                     checked = !disabledDefaultGateways.contains(gatewayUrl),
                     onCheckedChange = { checked ->
-                        val newSet = disabledDefaultGateways.toMutableSet()
+                        val newList = disabledDefaultGateways.toMutableList()
                         if (!checked) {
-                            newSet.add(gatewayUrl)
+                            newList.add(gatewayUrl)
                         } else {
-                            newSet.remove(gatewayUrl)
+                            newList.remove(gatewayUrl)
                         }
-                        disabledDefaultGateways = newSet
-                        prefs.ipfsGwDisabledDefaults = newSet
+                        disabledDefaultGateways = newList
+                        prefs.ipfsGwDisabledDefaults = newList
                     },
                     enabled = ipfsEnabled,
                     modifier = Modifier.align(Alignment.CenterVertically)
@@ -220,7 +218,7 @@ fun UserGatewaysSettings(
                 )
                 IconButton(
                     onClick = {
-                        val newGateways = userGateways.toMutableSet()
+                        val newGateways = userGateways.toMutableList()
                         newGateways.remove(gatewayUrl)
 
                         userGateways = newGateways
@@ -244,11 +242,12 @@ fun IpfsGatewaySettingsScreenPreview() {
     val prefs = object : IPreferencesIpfs {
         override fun isIpfsEnabled(): Boolean = true
         override fun setIpfsEnabled(enabled: Boolean) = throw NotImplementedError()
-        override fun getIpfsGwUserList(): Set<String> = setOf("https://my.imaginary.gateway/ifps/")
-        override fun setIpfsGwUserList(selectedSet: Set<String>?) = throw NotImplementedError()
-        override fun getIpfsGwDisabledDefaults() = setOf("https://4everland.io/ipfs/")
+        override fun getIpfsGwUserList(): List<String> =
+            listOf("https://my.imaginary.gateway/ifps/")
 
-        override fun setIpfsGwDisabledDefaults(selectedSet: Set<String>?) =
+        override fun setIpfsGwUserList(selectedSet: List<String>?) = throw NotImplementedError()
+        override fun getIpfsGwDisabledDefaults() = listOf("https://4everland.io/ipfs/")
+        override fun setIpfsGwDisabledDefaults(selectedSet: List<String>?) =
             throw NotImplementedError()
     }
 

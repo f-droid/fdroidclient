@@ -1,6 +1,6 @@
 package org.fdroid.fdroid;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Interface for accessing IPFS related preferences.
@@ -13,11 +13,11 @@ public interface IPreferencesIpfs {
 
     void setIpfsEnabled(boolean enabled);
 
-    Set<String> getIpfsGwDisabledDefaults();
+    List<String> getIpfsGwDisabledDefaults();
 
-    void setIpfsGwDisabledDefaults(Set<String> selectedSet);
+    void setIpfsGwDisabledDefaults(List<String> selectedSet);
 
-    Set<String> getIpfsGwUserList();
+    List<String> getIpfsGwUserList();
 
-    void setIpfsGwUserList(Set<String> selectedSet);
+    void setIpfsGwUserList(List<String> selectedList);
 }

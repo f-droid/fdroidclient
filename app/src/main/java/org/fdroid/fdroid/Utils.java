@@ -75,6 +75,8 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.fdroid.fdroid.net.TreeUriDownloader;
 import org.fdroid.index.v2.FileV2;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.xml.sax.XMLReader;
 
 import java.io.Closeable;
@@ -93,6 +95,7 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.List;
@@ -926,5 +929,26 @@ public final class Utils {
             debugLog(TAG, "Could not copy to clipboard: " + e.getMessage());
         }
 
+    }
+
+    public static String toJsonStringArray(List<String> list) {
+        JSONArray jsonArray = new JSONArray();
+        for (String str : list) {
+            jsonArray.put(str);
+        }
+        return jsonArray.toString();
+    }
+
+    public static List<String> parseJsonStringArray(String json) {
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            List<String> l = new ArrayList<>(jsonArray.length());
+            for (int i=0; i<jsonArray.length(); i++) {
+                l.add(jsonArray.getString(i));
+            }
+            return l;
+        } catch (JSONException e) {
+            return Collections.emptyList();
+        }
     }
 }
