@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -145,7 +146,7 @@ fun DefaultGatewaysSettings(
             style = MaterialTheme.typography.caption,
             modifier = Modifier.captionModifier()
         )
-        Preferences.DEFAULT_IPFS_GATEWAYS.forEach { gatewayUrl ->
+        for (gatewayUrl in Preferences.DEFAULT_IPFS_GATEWAYS) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -202,7 +203,7 @@ fun UserGatewaysSettings(
                 modifier = Modifier.captionModifier()
             )
         }
-        userGateways.forEach { gatewayUrl ->
+        for (gatewayUrl in userGateways) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
