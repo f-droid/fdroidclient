@@ -23,11 +23,23 @@ url = 'https://hosted.weblate.org/exports/stats/f-droid/f-droid/?format=csv'
 r = requests.get(url)
 stats = csv.reader(r.iter_lines(decode_unicode=True), delimiter=',')
 next(stats)  # skip CSV header
+locales_config = set()
 for row in stats:
     if len(row) > 4:
-        if float(row[4]) > 70.0:
-            continue
         locale = row[1]
+        if float(row[4]) > 70.0:
+            if locale == 'nb_NO':
+                locale = 'nb'
+            elif locale == 'yue_Hant':
+                locale = 'yue'
+            elif locale == 'zh_Hans':
+                locale = 'zh-CN'
+            elif locale == 'zh_Hant':
+                locale = 'zh-TW'
+            elif locale == 'zh_Hant_HK':
+                locale = 'zh-HK'
+            locales_config.add(locale.replace('_', '-'))
+            continue
         if '_' in locale:
             codes = locale.split('_')
             if codes[1] == 'Hans':
@@ -46,6 +58,16 @@ for row in stats:
         if len(percent) == 2:
             msg += ' '
         msg += percent + '  ' + row[1] + '  ' + row[0] + '\n'
+
+with open('app/src/main/res/xml/locales_config.xml', 'w') as fp:
+    fp.write("""<?xml version="1.0" encoding="utf-8"?>
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en-US" />""")
+    locales_config.remove('en')
+    fp.write('\n')
+    for locale in sorted(locales_config):
+        fp.write(f'    <locale android:name="{locale}" />\n')
+    fp.write('</locale-config>\n')
 
 found = False
 for remote in repo.remotes:
