@@ -78,7 +78,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
                 } else {
                     // add IPFS gateways to mirrors, because have have a CIDv1 and IPFS is enabled in preferences
                     List<Mirror> m = new ArrayList<>(mirrors);
-                    m.addAll(loadIpfsMirrors(prefs));
+                    m.addAll(loadIpfsGateways(prefs));
                     r = new DownloadRequest(request.getIndexFile(), m, proxy, repo.getUsername(),
                             repo.getPassword(), tryFirst);
                 }
@@ -88,7 +88,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
         return downloader;
     }
 
-    private static List<Mirror> loadIpfsMirrors(Preferences prefs) {
+    private static List<Mirror> loadIpfsGateways(Preferences prefs) {
         List<Mirror> mirrorList = new ArrayList<>();
         for (String gatewayUrl : prefs.getActiveIpfsGateways()) {
             mirrorList.add(new Mirror(gatewayUrl, null, true));
