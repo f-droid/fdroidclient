@@ -943,7 +943,7 @@ public final class Utils {
         try {
             JSONArray jsonArray = new JSONArray(json);
             List<String> l = new ArrayList<>(jsonArray.length());
-            for (int i=0; i<jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 l.add(jsonArray.getString(i));
             }
             return l;

@@ -560,7 +560,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setIpfsGwUserList(List<String> selectedList) {
-        preferences.edit().putString(Preferences.PREF_IPFSGW_USER_LIST, Utils.toJsonStringArray(selectedList)).apply();
+        preferences.edit().putString(
+                Preferences.PREF_IPFSGW_USER_LIST,
+                Utils.toJsonStringArray(selectedList)
+        ).apply();
     }
 
     public List<String> getIpfsGwDisabledDefaults() {
@@ -568,7 +571,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     }
 
     public void setIpfsGwDisabledDefaults(List<String> selectedList) {
-        preferences.edit().putString(Preferences.PREF_IPFSGW_DISABLED_DEFAULTS_LIST, Utils.toJsonStringArray(selectedList)).apply();
+        preferences.edit().putString(
+                Preferences.PREF_IPFSGW_DISABLED_DEFAULTS_LIST,
+                Utils.toJsonStringArray(selectedList)
+        ).apply();
     }
 
     public boolean preventScreenshots() {
