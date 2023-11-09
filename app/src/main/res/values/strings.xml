@@ -744,11 +744,13 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="copied_url_to_clipboard">Copied URL to clipboard</string>
     <string name="copied_permission_to_clipboard">Copied permission name to clipboard</string>
 
-    <string name="paste">Paste</string>
+    <string name="paste">Paste</string>PluralsCandidate
 
     <string name="ipfsgw_title">IPFS Gateways</string>
     <string name="ipfsgw_explainer">Download apps from IPFS web-endpoints. (Only works for F-Droid repositories with IPFS support.)</string>
-    <string name="ipfsgw_summary">Download apps using IPFS web-endpoints: %d enabled</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">Download apps using IPFS web-endpoints: %1$d enabled</item>
+    </plurals>
     <string name="ipfsgw_summary_disabled">Download apps using IPFS web-endpoints: disabled</string>
     <string name="ipfsgw_add_title">Add IPFS Gateway</string>
     <string name="ipfsgw_add_add">Add</string>

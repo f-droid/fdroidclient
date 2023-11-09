@@ -417,8 +417,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private void updateIpfsGatewaySummary() {
         Preferences prefs = Preferences.get();
         if (prefs.isIpfsEnabled()) {
-            int cnt = Preferences.get().getActiveIpfsGateways().size();
-            ipfsGateways.setSummary(String.format(getString(R.string.ipfsgw_summary), cnt));
+            int cnt = prefs.getActiveIpfsGateways().size();
+            ipfsGateways.setSummary(getResources().getQuantityString(R.plurals.ipfsgw_summary, cnt, cnt));
         } else {
             ipfsGateways.setSummary(getString(R.string.ipfsgw_summary_disabled));
         }
