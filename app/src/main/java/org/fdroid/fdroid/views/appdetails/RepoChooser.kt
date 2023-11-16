@@ -34,7 +34,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -81,35 +81,7 @@ fun RepoChooser(
     onPreferredRepoChanged: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    if (repos.isEmpty()) {
-        // no-op should not happen
-    } else if (repos.size == 1) {
-        RepoItem(
-            repo = repos[0],
-            isPreferred = false, // don't show "preferred" if the only repo anyway
-            modifier = Modifier.fillMaxWidth(),
-        )
-    } else {
-        RepoDropDown(
-            repos = repos,
-            currentRepoId = currentRepoId,
-            preferredRepoId = preferredRepoId,
-            onRepoChanged = onRepoChanged,
-            onPreferredRepoChanged = onPreferredRepoChanged,
-            modifier = modifier,
-        )
-    }
-}
-
-@Composable
-private fun RepoDropDown(
-    repos: List<Repository>,
-    currentRepoId: Long,
-    preferredRepoId: Long,
-    onRepoChanged: (Repository) -> Unit,
-    onPreferredRepoChanged: (Long) -> Unit,
-    modifier: Modifier = Modifier,
-) {
+    if (repos.isEmpty()) return
     var expanded by remember { mutableStateOf(false) }
     val currentRepo = repos.find { it.repoId == currentRepoId }
         ?: error("Current repoId not in list")
@@ -118,40 +90,42 @@ private fun RepoDropDown(
     ) {
         Box {
             OutlinedTextField(
-                value = TextFieldValue(buildAnnotatedString {
-                    append(currentRepo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repository")
-                    if (currentRepo.repoId == preferredRepoId) {
-                        append(" ")
-                        pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
-                        append("★ ")
-                        append(stringResource(R.string.app_details_repository_preferred))
-                    }
-                }),
+                value = TextFieldValue(
+                    annotatedString = getRepoString(
+                        repo = currentRepo,
+                        isPreferred = repos.size > 1 && currentRepo.repoId == preferredRepoId,
+                    ),
+                ),
                 textStyle = MaterialTheme.typography.body2,
                 onValueChange = {},
                 label = {
-                    Text(stringResource(R.string.app_details_repositories))
+                    if (repos.size == 1) {
+                        Text(stringResource(R.string.app_details_repository))
+                    } else {
+                        Text(stringResource(R.string.app_details_repositories))
+                    }
                 },
                 leadingIcon = {
                     RepoIcon(repo = currentRepo, modifier = Modifier.size(24.dp))
                 },
                 trailingIcon = {
-                    Icon(
+                    if (repos.size > 1) Icon(
                         imageVector = Icons.Default.ArrowDropDown,
                         contentDescription = stringResource(R.string.app_details_repository_expand),
                     )
                 },
                 singleLine = true,
                 enabled = false,
-                colors = TextFieldDefaults.outlinedTextFieldColors( // hack to enable clickable
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    // hack to enable clickable
                     disabledTextColor = LocalContentColor.current.copy(LocalContentAlpha.current),
                     disabledBorderColor = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled),
                     disabledLabelColor = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium),
                     disabledLeadingIconColor = MaterialTheme.colors.onSurface,
                 ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(onClick = { expanded = true }),
+                modifier = Modifier.fillMaxWidth().let {
+                    if (repos.size > 1) it.clickable(onClick = { expanded = true }) else it
+                },
             )
             DropdownMenu(
                 expanded = expanded,
@@ -187,17 +161,20 @@ private fun RepoItem(repo: Repository, isPreferred: Boolean, modifier: Modifier 
     ) {
         RepoIcon(repo, Modifier.size(24.dp))
         Text(
-            text = buildAnnotatedString {
-                append(repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repository")
-                if (isPreferred) {
-                    append(" ")
-                    pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
-                    append("★ ")
-                    append(stringResource(R.string.app_details_repository_preferred))
-                }
-            },
+            text = getRepoString(repo, isPreferred),
             style = MaterialTheme.typography.body2,
         )
+    }
+}
+
+@Composable
+private fun getRepoString(repo: Repository, isPreferred: Boolean) = buildAnnotatedString {
+    append(repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repository")
+    if (isPreferred) {
+        append(" ")
+        pushStyle(SpanStyle(fontWeight = Bold))
+        append("★ ")
+        append(stringResource(R.string.app_details_repository_preferred))
     }
 }
 
