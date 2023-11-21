@@ -25,10 +25,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
@@ -36,6 +36,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -176,19 +177,30 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
      * update the repos if you toggled on on.
      */
     @Override
-    public void onSetEnabled(Repository repo, boolean isEnabled) {
-        if (repo.getEnabled() != isEnabled) {
-            Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), isEnabled));
-
-            if (isEnabled) {
-                UpdateService.updateRepoNow(this, repo.getAddress());
-            } else {
-                AppUpdateStatusManager.getInstance(this).removeAllByRepo(repo.getRepoId());
-                // RepoProvider.Helper.purgeApps(this, repo);
-                String notification = getString(R.string.repo_disabled_notification, repo.getName(App.getLocales()));
-                Toast.makeText(this, notification, Toast.LENGTH_LONG).show();
-            }
+    public void onToggleEnabled(Repository repo) {
+        if (repo.getEnabled()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.repo_disable_warning);
+            builder.setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
+                disableRepo(repo);
+                dialog.dismiss();
+            });
+            builder.setNegativeButton(R.string.cancel, (dialog, id) -> {
+                repoAdapter.updateRepoItem(repo);
+                dialog.cancel();
+            });
+            builder.show();
+        } else {
+            Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), true));
+            UpdateService.updateRepoNow(this, repo.getAddress());
         }
+    }
+
+    private void disableRepo(Repository repo) {
+        Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), false));
+        AppUpdateStatusManager.getInstance(this).removeAllByRepo(repo.getRepoId());
+        String notification = getString(R.string.repo_disabled_notification, repo.getName(App.getLocales()));
+        Snackbar.make(findViewById(R.id.list), notification, Snackbar.LENGTH_LONG).setTextMaxLines(3).show();
     }
 
     private static final int SHOW_REPO_DETAILS = 1;
