@@ -136,6 +136,7 @@ internal class RepoAdderTest {
     @Test
     fun testAddingMinRepo() = runTest {
         val url = "https://example.org/repo/"
+        val urlTrimmed = url.trimEnd('/')
         val repoName = TestDataMinV2.repo.name.getBestLocale(localeList)
 
         expectDownloadOfMinRepo(url)
@@ -143,11 +144,16 @@ internal class RepoAdderTest {
         // repo not in DB
         every { repoDao.getRepository(any<String>()) } returns null
 
-        expectMinRepoPreview(repoName, FetchResult.IsNewRepository) {
+        expectMinRepoPreview(repoName, FetchResult.IsNewRepository(urlTrimmed)) {
             repoAdder.fetchRepository(url = url, proxy = null)
         }
 
         val newRepo: Repository = mockk()
+        val txnSlot = slot<Callable<Repository>>()
+        every { db.runInTransaction(capture(txnSlot)) } answers {
+            assertTrue(txnSlot.isCaptured)
+            txnSlot.captured.call()
+        }
         every {
             repoDao.insert(match<NewRepository> {
                 // Note that we are not using the url the user used to add the repo,
@@ -158,6 +164,7 @@ internal class RepoAdderTest {
             })
         } returns 42L
         every { repoDao.getRepository(42L) } returns newRepo
+        every { repoDao.updateUserMirrors(42L, listOf(urlTrimmed)) } just Runs
 
         repoAdder.addRepoState.test {
             assertIs<Fetching>(awaitItem()) // still Fetching from last call
@@ -169,6 +176,10 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertIs<Added>(addedState)
             assertEquals(newRepo, addedState.repo)
+        }
+
+        verify {
+            repoDao.updateUserMirrors(42L, listOf(urlTrimmed))
         }
     }
 
@@ -772,11 +783,16 @@ internal class RepoAdderTest {
         // repo not in DB
         every { repoDao.getRepository(any<String>()) } returns null
 
-        expectMinRepoPreview(repoName, FetchResult.IsNewRepository) {
+        expectMinRepoPreview(repoName, FetchResult.IsNewRepository(urlTrimmed)) {
             repoAdder.fetchRepository(url = url, proxy = null)
         }
 
         val newRepo: Repository = mockk()
+        val txnSlot = slot<Callable<Repository>>()
+        every { db.runInTransaction(capture(txnSlot)) } answers {
+            assertTrue(txnSlot.isCaptured)
+            txnSlot.captured.call()
+        }
         every {
             repoDao.insert(match<NewRepository> {
                 // Note that we are not using the url the user used to add the repo,
@@ -787,6 +803,7 @@ internal class RepoAdderTest {
                     it.username == username && it.password == password // this is the important bit
             })
         } returns 42L
+        every { repoDao.updateUserMirrors(42L, listOf(urlTrimmed)) } just Runs
         every { repoDao.getRepository(42L) } returns newRepo
 
         repoAdder.addRepoState.test {
