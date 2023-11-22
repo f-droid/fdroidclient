@@ -40,7 +40,6 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -70,10 +69,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     private static final String TAG = "Preferences";
 
-    public static final List<String> DEFAULT_IPFS_GATEWAYS = Arrays.asList(
-            "https://4everland.io/ipfs/",
-            "https://ipfs.joaoleitao.org/ipfs/",
-            "https://ipfs.jpu.jp/ipfs/"
+    public static final List<String> DEFAULT_IPFS_GATEWAYS = Collections.singletonList(
+            "https://gateway.ipfs.io/ipfs/"
     );
 
     private final SharedPreferences preferences;
