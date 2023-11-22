@@ -115,6 +115,15 @@ object ComposeUtils {
         }
     }
 
+    /**
+     * A tiny helper for consuming Activity lifecycle events.
+     *
+     * copied from https://stackoverflow.com/a/66807899
+     *
+     * There is also an official API for consuming lifecycle events. However at the time of writing
+     * it's not stable and I also couldn't find any actually working code snippets demonstrating
+     * it's use. "androidx.lifecycle:lifecycle-runtime-compose"
+     */
     @Composable
     fun LifecycleEventListener(onEvent: (owner: LifecycleOwner, event: Lifecycle.Event) -> Unit) {
         val eventHandler = rememberUpdatedState(onEvent)
