@@ -26,7 +26,6 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +50,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.database.AppPrefs;
@@ -392,7 +392,7 @@ public class AppDetailsRecyclerViewAdapter
         final Button buttonPrimaryView;
         final Button buttonSecondaryView;
         final View progressLayout;
-        final ProgressBar progressBar;
+        final LinearProgressIndicator progressBar;
         final TextView progressLabel;
         final TextView progressPercent;
         final View progressCancel;
@@ -447,10 +447,14 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         void setIndeterminateProgress(int resIdString) {
+            if (!progressBar.isIndeterminate()) {
+                progressBar.hide();
+                progressBar.setIndeterminate(true);
+            }
+            progressBar.show();
             progressLayout.setVisibility(View.VISIBLE);
             buttonPrimaryView.setVisibility(View.GONE);
             buttonSecondaryView.setVisibility(View.GONE);
-            progressBar.setIndeterminate(true);
             progressLabel.setText(resIdString);
             progressLabel.setContentDescription(context.getString(R.string.downloading));
             progressPercent.setText("");
@@ -467,9 +471,16 @@ public class AppDetailsRecyclerViewAdapter
             buttonSecondaryView.setVisibility(View.GONE);
             progressCancel.setVisibility(View.VISIBLE);
 
-            progressBar.setMax(Utils.bytesToKb(totalBytes));
-            progressBar.setProgress(Utils.bytesToKb(bytesDownloaded));
-            progressBar.setIndeterminate(totalBytes <= 0);
+            if (totalBytes <= 0) {
+                if (!progressBar.isIndeterminate()) {
+                    progressBar.hide();
+                    progressBar.setIndeterminate(true);
+                }
+            } else {
+                progressBar.setProgressCompat(Utils.getPercent(Utils.bytesToKb(bytesDownloaded), Utils.bytesToKb(totalBytes)), true);
+            }
+            progressBar.show();
+
             progressLabel.setContentDescription("");
             if (totalBytes > 0 && bytesDownloaded >= 0) {
                 int percent = Utils.getPercent(bytesDownloaded, totalBytes);

@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +47,8 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
+
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.io.File;
 import java.util.Iterator;
@@ -94,7 +95,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     private final TextView secondaryStatus;
 
     @Nullable
-    private final ProgressBar progressBar;
+    private final LinearProgressIndicator progressBar;
 
     @Nullable
     private final ImageButton cancelButton;
@@ -286,16 +287,20 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         if (progressBar != null) {
             if (viewState.showProgress()) {
-                progressBar.setVisibility(View.VISIBLE);
                 if (viewState.isProgressIndeterminate()) {
-                    progressBar.setIndeterminate(true);
+                    if (!progressBar.isIndeterminate()) {
+                        progressBar.hide();
+                        progressBar.setIndeterminate(true);
+                    }
                 } else {
-                    progressBar.setIndeterminate(false);
-                    progressBar.setMax(viewState.getProgressMax());
-                    progressBar.setProgress(viewState.getProgressCurrent());
+                    progressBar.setProgressCompat(
+                            Utils.getPercent(viewState.getProgressCurrent(), viewState.getProgressMax()),
+                            true
+                    );
                 }
+                progressBar.show();
             } else {
-                progressBar.setVisibility(View.GONE);
+                progressBar.hide();
             }
         }
 

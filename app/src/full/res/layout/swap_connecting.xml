@@ -2,6 +2,7 @@
 
 <org.fdroid.fdroid.nearby.SwapView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:swap="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     swap:toolbarColor="@color/swap_bright_blue"
     swap:toolbarTitle="@string/swap_connecting"
     android:orientation="vertical"
@@ -18,13 +19,16 @@
         android:textAlignment="center"
         android:gravity="center" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/progress_text" />
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/progress_text"
+            app:showAnimationBehavior="inward"
+            app:hideAnimationBehavior="outward"
+            app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius"/>
 
     <Button
         android:layout_width="wrap_content"

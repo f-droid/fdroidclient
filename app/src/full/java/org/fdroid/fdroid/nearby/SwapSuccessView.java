@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +25,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.CompatibilityChecker;
@@ -165,7 +166,7 @@ public class SwapSuccessView extends SwapView {
             @Nullable
             private Apk apk;
 
-            ProgressBar progressView;
+            LinearProgressIndicator progressView;
             TextView nameView;
             ImageView iconView;
             Button btnInstall;
@@ -186,12 +187,14 @@ public class SwapSuccessView extends SwapView {
                             long read = intent.getLongExtra(DownloaderService.EXTRA_BYTES_READ, 0);
                             long total = intent.getLongExtra(DownloaderService.EXTRA_TOTAL_BYTES, 0);
                             if (total > 0) {
-                                progressView.setIndeterminate(false);
-                                progressView.setMax(100);
-                                progressView.setProgress(Utils.getPercent(read, total));
+                                progressView.setProgressCompat(Utils.getPercent(read, total), true);
                             } else {
-                                progressView.setIndeterminate(true);
+                                if (!progressView.isIndeterminate()) {
+                                    progressView.hide();
+                                    progressView.setIndeterminate(true);
+                                }
                             }
+                            progressView.show();
                             break;
                         case DownloaderService.ACTION_COMPLETE:
                             localBroadcastManager.unregisterReceiver(this);
@@ -246,8 +249,11 @@ public class SwapSuccessView extends SwapView {
                                         statusInstalled.setText(R.string.installing);
                                         statusInstalled.setVisibility(View.VISIBLE);
                                         btnInstall.setVisibility(View.GONE);
-                                        progressView.setIndeterminate(true);
-                                        progressView.setVisibility(View.VISIBLE);
+                                        if (!progressView.isIndeterminate()) {
+                                            progressView.hide();
+                                            progressView.setIndeterminate(true);
+                                        }
+                                        progressView.show();
                                         break;
                                     case Installer.ACTION_INSTALL_USER_INTERACTION:
                                         PendingIntent installPendingIntent =
@@ -263,13 +269,13 @@ public class SwapSuccessView extends SwapView {
                                         statusInstalled.setText(R.string.app_installed);
                                         statusInstalled.setVisibility(View.VISIBLE);
                                         btnInstall.setVisibility(View.GONE);
-                                        progressView.setVisibility(View.GONE);
+                                        progressView.hide();
                                         break;
                                     case Installer.ACTION_INSTALL_INTERRUPTED:
                                         localBroadcastManager.unregisterReceiver(this);
                                         statusInstalled.setVisibility(View.GONE);
                                         btnInstall.setVisibility(View.VISIBLE);
-                                        progressView.setVisibility(View.GONE);
+                                        progressView.hide();
                                         String errorMessage = intent.getStringExtra(Installer.EXTRA_ERROR_MESSAGE);
                                         if (errorMessage != null) {
                                             Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
@@ -306,8 +312,12 @@ public class SwapSuccessView extends SwapView {
                 if (app == null) {
                     return;
                 }
-                progressView.setVisibility(View.GONE);
-                progressView.setIndeterminate(true);
+
+                if (!progressView.isIndeterminate()) {
+                    progressView.hide();
+                    progressView.setIndeterminate(true);
+                }
+                progressView.show();
 
                 if (app.name != null) {
                     nameView.setText(app.name);
@@ -352,7 +362,7 @@ public class SwapSuccessView extends SwapView {
                 btnInstall.setText(R.string.cancel);
                 btnInstall.setVisibility(View.VISIBLE);
                 btnInstall.setOnClickListener(cancelListener);
-                progressView.setVisibility(View.VISIBLE);
+                progressView.show();
                 statusInstalled.setVisibility(View.GONE);
                 statusIncompatible.setVisibility(View.GONE);
             }
