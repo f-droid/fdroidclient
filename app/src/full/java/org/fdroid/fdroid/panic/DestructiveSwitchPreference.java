@@ -4,25 +4,25 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import androidx.core.content.ContextCompat;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.PreferenceViewHolder;
+import androidx.preference.SwitchPreferenceCompat;
 
 import org.fdroid.fdroid.R;
 
-public class DestructiveCheckBoxPreference extends CheckBoxPreference {
-    public DestructiveCheckBoxPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+public class DestructiveSwitchPreference extends SwitchPreferenceCompat {
+    public DestructiveSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public DestructiveCheckBoxPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public DestructiveSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public DestructiveCheckBoxPreference(Context context, AttributeSet attrs) {
+    public DestructiveSwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public DestructiveCheckBoxPreference(Context context) {
+    public DestructiveSwitchPreference(Context context) {
         super(context);
     }
 

@@ -42,7 +42,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.util.ObjectsCompat;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -115,8 +114,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private SwitchPreferenceCompat enableProxyCheckPref;
     private SwitchPreferenceCompat useTorCheckPref;
     private Preference updateAutoDownloadPref;
-    private CheckBoxPreference keepInstallHistoryPref;
-    private CheckBoxPreference sendToFDroidMetricsPref;
+    private SwitchPreferenceCompat keepInstallHistoryPref;
+    private SwitchPreferenceCompat sendToFDroidMetricsPref;
     private Preference installHistoryPref;
     private long currentKeepCacheTime;
     private int overWifiPrevious;
@@ -353,7 +352,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_PRIVILEGED_INSTALLER:
                 // We may have removed this preference if it is not suitable to show the user.
                 // So lets check it is here first.
-                final CheckBoxPreference pref = findPreference(
+                final SwitchPreferenceCompat pref = findPreference(
                         Preferences.PREF_PRIVILEGED_INSTALLER);
                 if (pref != null) {
                     checkSummary(key, R.string.system_installer_on);
@@ -441,7 +440,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
      */
     private void initPrivilegedInstallerPreference() {
-        final CheckBoxPreference pref = findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
+        final SwitchPreferenceCompat pref = findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
 
         // This code will be run each time the activity is resumed, and so we may have already removed
         // this preference.
