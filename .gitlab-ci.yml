@@ -13,6 +13,8 @@ workflow:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
 .base:
+  tags:
+    - saas-linux-xlarge-amd64
   before_script:
     - echo "org.gradle.caching=true" >> gradle.properties
     - test -e /etc/apt/sources.list.d/bullseye-backports.list
