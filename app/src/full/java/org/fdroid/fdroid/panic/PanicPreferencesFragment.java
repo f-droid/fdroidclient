@@ -20,11 +20,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreferenceCompat;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -45,9 +45,9 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
     private PackageManager pm;
     private ListPreference prefApp;
-    private CheckBoxPreference prefExit;
-    private CheckBoxPreference prefHide;
-    private CheckBoxPreference prefResetRepos;
+    private SwitchPreferenceCompat prefExit;
+    private SwitchPreferenceCompat prefHide;
+    private SwitchPreferenceCompat prefResetRepos;
     private PreferenceCategory categoryAppsToUninstall;
 
     @Override

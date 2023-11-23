@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <CheckBoxPreference
+    <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="pref_panic_exit"
         android:summary="@string/panic_exit_summary"
@@ -18,14 +18,14 @@
             android:title="@string/panic_app_setting_title"
             tools:icon="@drawable/ic_cancel" />
 
-        <org.fdroid.fdroid.panic.DestructiveCheckBoxPreference
+        <org.fdroid.fdroid.panic.DestructiveSwitchPreference
             android:defaultValue="false"
             android:enabled="false"
             android:key="pref_panic_hide"
             android:summary="@string/panic_hide_summary"
             android:title="@string/panic_hide_title" />
 
-        <org.fdroid.fdroid.panic.DestructiveCheckBoxPreference
+        <org.fdroid.fdroid.panic.DestructiveSwitchPreference
             android:defaultValue="false"
             android:enabled="false"
             android:key="pref_panic_reset_repos"

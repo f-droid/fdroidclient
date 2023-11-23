@@ -176,55 +176,55 @@
             android:defaultValue="false"
             android:key="expert"
             android:title="@string/expert" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:dependency="expert"
             android:key="unstableUpdates"
             android:summary="@string/unstable_updates_summary"
             android:title="@string/unstable_updates" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:dependency="expert"
             android:key="keepInstallHistory"
             android:summary="@string/keep_install_history_summary"
             android:title="@string/keep_install_history" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:key="sendToFdroidMetrics"
             android:title="@string/send_to_fdroid_metrics"
             android:summary="@string/send_to_fdroid_metrics_summary"
             android:defaultValue="false"
             android:dependency="expert" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:key="useIpfsGateways"
             android:title="@string/use_ipfs_gateways"
             android:summary="@string/use_ipfs_gateways_summary"
             android:defaultValue="false"
             android:dependency="expert" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:key="hideAllNotifications"
             android:title="@string/hide_all_notifications"
             android:summary="@string/hide_all_notifications_summary"
             android:defaultValue="false"
             android:dependency="expert" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:dependency="expert"
             android:key="sendVersionAndUUIDToServers"
             android:summary="@string/send_version_and_uuid_summary"
             android:title="@string/send_version_and_uuid" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:dependency="expert"
             android:key="forceOldIndex"
             android:summary="@string/force_old_index_summary"
             android:title="@string/force_old_index" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:dependency="expert"
             android:key="forceOldInstaller"
             android:summary="@string/force_old_installer_summary"
             android:title="@string/force_old_installer_title" />
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:dependency="expert"
             android:key="privilegedInstaller"
             android:persistent="false"
