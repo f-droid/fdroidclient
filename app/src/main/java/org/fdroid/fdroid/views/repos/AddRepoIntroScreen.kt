@@ -189,7 +189,7 @@ fun AddRepoIntroContent(paddingValues: PaddingValues, onFetchRepo: (String) -> U
                 ) {
                     val clipboardManager = LocalClipboardManager.current
                     FDroidOutlineButton(
-                        "Paste",
+                        stringResource(id = R.string.paste),
                         imageVector = Icons.Default.ContentPaste,
                         onClick = {
                             if (clipboardManager.hasText()) {

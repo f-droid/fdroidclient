@@ -194,12 +194,16 @@
             android:summary="@string/send_to_fdroid_metrics_summary"
             android:defaultValue="false"
             android:dependency="expert" />
-        <SwitchPreferenceCompat
-            android:key="useIpfsGateways"
-            android:title="@string/use_ipfs_gateways"
-            android:summary="@string/use_ipfs_gateways_summary"
-            android:defaultValue="false"
-            android:dependency="expert" />
+        <PreferenceScreen
+            android:key="ipfsGateways"
+            android:summary="@string/ipfsgw_summary_disabled"
+            android:title="@string/ipfsgw_title"
+            android:dependency="expert" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="org.fdroid.fdroid.views.IpfsGatewaySettingsActivity"
+                android:targetPackage="@string/applicationId" />
+        </PreferenceScreen>
         <SwitchPreferenceCompat
             android:key="hideAllNotifications"
             android:title="@string/hide_all_notifications"

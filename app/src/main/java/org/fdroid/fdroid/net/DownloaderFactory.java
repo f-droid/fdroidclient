@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import info.guardianproject.netcipher.NetCipher;
@@ -79,7 +78,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
                 } else {
                     // add IPFS gateways to mirrors, because have have a CIDv1 and IPFS is enabled in preferences
                     List<Mirror> m = new ArrayList<>(mirrors);
-                    m.addAll(IPFS_MIRRORS);
+                    m.addAll(loadIpfsGateways(prefs));
                     r = new DownloadRequest(request.getIndexFile(), m, proxy, repo.getUsername(),
                             repo.getPassword(), tryFirst);
                 }
@@ -89,10 +88,12 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
         return downloader;
     }
 
-    private static final List<Mirror> IPFS_MIRRORS = Arrays.asList(
-            new Mirror("https://4everland.io/ipfs/", null, true),
-            new Mirror("https://ipfs.joaoleitao.org/ipfs/", null, true),
-            new Mirror("https://ipfs.jpu.jp/ipfs/", null, true)
-    );
+    private static List<Mirror> loadIpfsGateways(Preferences prefs) {
+        List<Mirror> mirrorList = new ArrayList<>();
+        for (String gatewayUrl : prefs.getActiveIpfsGateways()) {
+            mirrorList.add(new Mirror(gatewayUrl, null, true));
+        }
+        return mirrorList;
+    }
 
 }

@@ -65,9 +65,13 @@ import java.util.concurrent.TimeUnit;
  * using {@code false} and {@code -1} as fallback default values to help catch
  * problems with the proper default loading as quickly as possible.
  */
-public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
+public final class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener, IPreferencesIpfs {
 
     private static final String TAG = "Preferences";
+
+    public static final List<String> DEFAULT_IPFS_GATEWAYS = Collections.singletonList(
+            "https://gateway.ipfs.io/ipfs/"
+    );
 
     private final SharedPreferences preferences;
 
@@ -103,7 +107,9 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final String PREF_UNSTABLE_UPDATES = "unstableUpdates";
     public static final String PREF_KEEP_INSTALL_HISTORY = "keepInstallHistory";
     public static final String PREF_SEND_TO_FDROID_METRICS = "sendToFdroidMetrics";
-    private static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
+    public static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
+    public static final String PREF_IPFSGW_DISABLED_DEFAULTS_LIST = "ipfsGwDisabledDefaultsList";
+    public static final String PREF_IPFSGW_USER_LIST = "ipfsGwUserList";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_FORCE_OLD_INSTALLER = "forceOldInstaller";
@@ -346,7 +352,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
 
     public String getBottomNavigationViewName() {
         return preferences.getString(PREF_BOTTOM_NAVIGATION_VIEW_NAME,
-                                     org.fdroid.fdroid.views.main.MainActivity.EXTRA_VIEW_LATEST);
+                org.fdroid.fdroid.views.main.MainActivity.EXTRA_VIEW_LATEST);
     }
 
     public void setBottomNavigationViewName(final String viewName) {
@@ -542,6 +548,32 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_USE_IPFS_GATEWAYS, IGNORED_B);
     }
 
+    public void setIpfsEnabled(boolean enabled) {
+        preferences.edit().putBoolean(PREF_USE_IPFS_GATEWAYS, enabled).apply();
+    }
+
+    public List<String> getIpfsGwUserList() {
+        return Utils.parseJsonStringArray(preferences.getString(PREF_IPFSGW_USER_LIST, "[]"));
+    }
+
+    public void setIpfsGwUserList(List<String> selectedList) {
+        preferences.edit().putString(
+                Preferences.PREF_IPFSGW_USER_LIST,
+                Utils.toJsonStringArray(selectedList)
+        ).apply();
+    }
+
+    public List<String> getIpfsGwDisabledDefaults() {
+        return Utils.parseJsonStringArray(preferences.getString(PREF_IPFSGW_DISABLED_DEFAULTS_LIST, "[]"));
+    }
+
+    public void setIpfsGwDisabledDefaults(List<String> selectedList) {
+        preferences.edit().putString(
+                Preferences.PREF_IPFSGW_DISABLED_DEFAULTS_LIST,
+                Utils.toJsonStringArray(selectedList)
+        ).apply();
+    }
+
     public boolean preventScreenshots() {
         return preferences.getBoolean(PREF_PREVENT_SCREENSHOTS, IGNORED_B);
     }
@@ -608,6 +640,17 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
 
         return showAppsWithAntiFeatures;
+    }
+
+    public List<String> getActiveIpfsGateways() {
+        List<String> gateways = getIpfsGwUserList();
+        List<String> disabledDefaults = getIpfsGwDisabledDefaults();
+        for (String gatewayUrl : DEFAULT_IPFS_GATEWAYS) {
+            if (!disabledDefaults.contains(gatewayUrl)) {
+                gateways.add(gatewayUrl);
+            }
+        }
+        return gateways;
     }
 
     public void registerAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {
