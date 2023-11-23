@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import org.fdroid.database.AppOverviewItem;
 import org.fdroid.database.FDroidDatabase;
@@ -49,7 +49,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
     private final RecyclerView appList;
     private final FDroidDatabase db;
 
-    private ProgressBar progressBar;
+    private CircularProgressIndicator progressBar;
 
     LatestViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -170,7 +170,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
                 return;
             }
             LinearLayout linearLayout = (LinearLayout) appList.getParent();
-            progressBar = new ProgressBar(activity, null, android.R.attr.progressBarStyleLarge);
+            progressBar = new CircularProgressIndicator(activity);
             progressBar.setId(R.id.progress_bar);
             linearLayout.addView(progressBar);
             emptyState.setVisibility(View.GONE);

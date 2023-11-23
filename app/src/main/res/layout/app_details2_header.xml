@@ -184,15 +184,19 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     tools:text="500%" />
 
-                <ProgressBar
+                <com.google.android.material.progressindicator.LinearProgressIndicator
                     android:id="@+id/progress_bar"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@id/progress_cancel"
-                    android:indeterminate="true" />
+                    android:layout_toLeftOf="@id/progress_cancel"
+                    android:indeterminate="true"
+                    android:visibility="gone"
+                    app:hideAnimationBehavior="outward"
+                    app:showAnimationBehavior="inward"
+                    app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius" />
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

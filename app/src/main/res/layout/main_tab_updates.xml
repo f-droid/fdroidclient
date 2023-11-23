@@ -35,14 +35,17 @@
                 android:visibility="gone"
                 android:text="@string/empty_can_update_app_list" />
 
-            <ProgressBar
+            <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/empty_updating_progress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:hideAnimationBehavior="outward"
+                app:showAnimationBehavior="inward"
+                app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius"/>
 
             <ImageView
                 android:id="@+id/image"

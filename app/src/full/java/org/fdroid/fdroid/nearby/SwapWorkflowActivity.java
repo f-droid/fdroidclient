@@ -32,7 +32,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +50,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -1191,7 +1191,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             bonjourStatus = intent.getIntExtra(BonjourManager.EXTRA_STATUS, bonjourStatus);
             TextView textWifiVisible = container.findViewById(R.id.wifi_visible);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
-            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            CircularProgressIndicator peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
             if (textWifiVisible == null || peopleNearbyText == null || peopleNearbyProgress == null) {
                 return;
             }
@@ -1305,7 +1305,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
-            ProgressBar peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
+            CircularProgressIndicator peopleNearbyProgress = container.findViewById(R.id.searching_people_nearby);
             if (bluetoothSwitch == null || textBluetoothVisible == null || textDeviceIdBluetooth == null
                     || peopleNearbyText == null || peopleNearbyProgress == null) {
                 return;
@@ -1466,7 +1466,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             setUpConnectingProgressText(intent.getStringExtra(Intent.EXTRA_TEXT));
 
-            ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+            CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
             Button tryAgainButton = container.findViewById(R.id.try_again);
             if (progressBar == null || tryAgainButton == null) {
                 return;
@@ -1474,16 +1474,16 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             switch (intent.getIntExtra(LocalRepoService.EXTRA_STATUS, -1)) {
                 case LocalRepoService.STATUS_PROGRESS:
-                    progressBar.setVisibility(View.VISIBLE);
+                    progressBar.show();
                     tryAgainButton.setVisibility(View.GONE);
                     break;
                 case LocalRepoService.STATUS_STARTED:
-                    progressBar.setVisibility(View.VISIBLE);
+                    progressBar.show();
                     tryAgainButton.setVisibility(View.GONE);
                     onLocalRepoPrepared();
                     break;
                 case LocalRepoService.STATUS_ERROR:
-                    progressBar.setVisibility(View.GONE);
+                    progressBar.hide();
                     tryAgainButton.setVisibility(View.VISIBLE);
                     break;
                 default:
@@ -1493,10 +1493,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     };
 
     private void onRepoUpdateSuccess() {
-        ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+        CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
         Button tryAgainButton = container.findViewById(R.id.try_again);
         if (progressBar != null && tryAgainButton != null) {
-            progressBar.setVisibility(View.VISIBLE);
+            progressBar.show();
             tryAgainButton.setVisibility(View.GONE);
         }
         getSwapService().addCurrentPeerToActive();
@@ -1504,10 +1504,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void onRepoUpdateError(Exception e) {
-        ProgressBar progressBar = container.findViewById(R.id.progress_bar);
+        CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
         Button tryAgainButton = container.findViewById(R.id.try_again);
         if (progressBar != null && tryAgainButton != null) {
-            progressBar.setVisibility(View.GONE);
+            progressBar.hide();
             tryAgainButton.setVisibility(View.VISIBLE);
         }
         String msg = e.getMessage() == null ? "Error updating repo " + e : e.getMessage();
