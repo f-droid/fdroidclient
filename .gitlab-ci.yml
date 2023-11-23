@@ -273,6 +273,18 @@ libs database schema:
   <<: *kvm-connected-template
   allow_failure: true # due to the use of flaky/broken online services in instrumentation tests
 
+
+kvm jobs skipped:
+  rules:
+    - if: '$RUN_KVM_JOBS == null || $RUN_KVM_JOBS == "" || $RUN_KVM_JOBS == "0"'
+  image: alpine  # this only needs printf, so it should be as small as possible
+  variables:
+    GIT_DEPTH: 1
+  script:
+    - printf '\x1b[33mJobs that require KVM need special runners, these jobs are opt-in.  To set up your fork to run KVM jobs, go to Settings -> CI/CD -> Variables, and add a variable called RUN_KVM_JOBS with a value of "1".  This link should take you there:\n'
+    - printf "\x1b[32m${CI_SERVER_URL}/$CI_PROJECT_PATH/-/settings/ci_cd#js-cicd-variables-settings\n"
+
+
 kvm 23 default x86:
   <<: *test-template
   <<: *kvm-template
