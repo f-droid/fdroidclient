@@ -44,9 +44,9 @@ import androidx.lifecycle.Lifecycle
 import org.fdroid.fdroid.IPreferencesIpfs
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
+import org.fdroid.fdroid.compose.ComposeUtils
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.LifecycleEventListener
-import org.fdroid.fdroid.compose.ComposeUtils.captionModifier
 
 class IpfsGatewaySettingsActivity : ComponentActivity() {
 
@@ -139,11 +139,7 @@ fun DefaultGatewaysSettings(
     var disabledDefaultGateways by remember { mutableStateOf(prefs.ipfsGwDisabledDefaults) }
 
     Column {
-        Text(
-            text = stringResource(id = R.string.ipfsgw_caption_official_gateways),
-            style = MaterialTheme.typography.caption,
-            modifier = Modifier.captionModifier()
-        )
+        ComposeUtils.CaptionText(text = stringResource(id = R.string.ipfsgw_caption_official_gateways))
         for (gatewayUrl in Preferences.DEFAULT_IPFS_GATEWAYS) {
             Row(
                 modifier = Modifier
@@ -195,11 +191,7 @@ fun UserGatewaysSettings(
 
     Column {
         if (userGateways.isNotEmpty()) {
-            Text(
-                text = stringResource(id = R.string.ipfsgw_caption_custom_gateways),
-                style = MaterialTheme.typography.caption,
-                modifier = Modifier.captionModifier()
-            )
+            ComposeUtils.CaptionText(text = stringResource(id = R.string.ipfsgw_caption_custom_gateways))
         }
         for (gatewayUrl in userGateways) {
             Row(
