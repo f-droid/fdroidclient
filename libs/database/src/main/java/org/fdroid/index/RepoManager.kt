@@ -27,6 +27,7 @@ import org.fdroid.repo.RepoAdder
 import org.fdroid.repo.RepoUriGetter
 import java.io.File
 import java.net.Proxy
+import java.util.concurrent.CancellationException
 import java.util.concurrent.CountDownLatch
 import kotlin.coroutines.CoroutineContext
 
@@ -36,10 +37,9 @@ public class RepoManager @JvmOverloads constructor(
     private val db: FDroidDatabase,
     downloaderFactory: DownloaderFactory,
     httpManager: HttpManager,
-    private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
+    repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
-
     private val repositoryDao = db.getRepositoryDao() as RepositoryDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
     private val tempFileProvider = TempFileProvider {
@@ -194,6 +194,36 @@ public class RepoManager @JvmOverloads constructor(
     public fun reorderRepositories(repoToReorder: Repository, repoTarget: Repository) {
         GlobalScope.launch(coroutineContext) {
             repositoryDao.reorderRepositories(repoToReorder, repoTarget)
+        }
+    }
+
+    /**
+     * Enables or disabled the archive repo for the given [repository].
+     *
+     * Note that this can throw all kinds of exceptions,
+     * especially when the given [repository] does not have a (working) archive repository.
+     * You should catch those and update your UI accordingly.
+     */
+    @WorkerThread
+    public suspend fun setArchiveRepoEnabled(
+        repository: Repository,
+        enabled: Boolean,
+        proxy: Proxy? = null,
+    ) {
+        val cert = repository.certificate ?: error { "$repository has no cert" }
+        val archiveRepoId = repositoryDao.getArchiveRepoId(cert)
+        if (enabled) {
+            if (archiveRepoId == null) {
+                try {
+                    repoAdder.addArchiveRepo(repository, proxy)
+                } catch (e: CancellationException) {
+                    if (e.message != "expected") throw e
+                }
+            } else {
+                repositoryDao.setRepositoryEnabled(archiveRepoId, true)
+            }
+        } else if (archiveRepoId != null) {
+            repositoryDao.setRepositoryEnabled(archiveRepoId, false)
         }
     }
 

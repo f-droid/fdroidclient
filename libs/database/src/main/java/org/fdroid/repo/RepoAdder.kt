@@ -6,6 +6,7 @@ import android.os.Build.VERSION.SDK_INT
 import android.os.UserManager
 import android.os.UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES
 import android.os.UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY
+import androidx.annotation.AnyThread
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import androidx.core.content.ContextCompat.getSystemService
@@ -13,8 +14,10 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.fdroid.database.AppOverviewItem
@@ -166,21 +169,7 @@ internal class RepoAdder(
 
         // try fetching repo with v2 format first and fallback to v1
         try {
-            try {
-                val repo =
-                    getTempRepo(nUri.uri, IndexFormatVersion.TWO, nUri.username, nUri.password)
-                val repoFetcher = RepoV2Fetcher(
-                    tempFileProvider, downloaderFactory, httpManager, repoUriBuilder, proxy
-                )
-                repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
-            } catch (e: NotFoundException) {
-                log.warn(e) { "Did not find v2 repo, trying v1 now." }
-                // try to fetch v1 repo
-                val repo =
-                    getTempRepo(nUri.uri, IndexFormatVersion.ONE, nUri.username, nUri.password)
-                val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory, repoUriBuilder)
-                repoFetcher.fetchRepo(nUri.uri, repo, receiver, nUri.fingerprint)
-            }
+            fetchRepo(nUri.uri, nUri.fingerprint, proxy, nUri.username, nUri.password, receiver)
         } catch (e: SigningException) {
             log.error(e) { "Error verifying repo with given fingerprint." }
             addRepoState.value = AddRepoError(INVALID_FINGERPRINT, e)
@@ -204,6 +193,31 @@ internal class RepoAdder(
             addRepoState.value = AddRepoError(INVALID_INDEX)
         } else {
             addRepoState.value = Fetching(finalRepo, apps, fetchResult, done = true)
+        }
+    }
+
+    private suspend fun fetchRepo(
+        uri: Uri,
+        fingerprint: String?,
+        proxy: Proxy?,
+        username: String?,
+        password: String?,
+        receiver: RepoPreviewReceiver,
+    ) {
+        try {
+            val repo =
+                getTempRepo(uri, IndexFormatVersion.TWO, username, password)
+            val repoFetcher = RepoV2Fetcher(
+                tempFileProvider, downloaderFactory, httpManager, repoUriBuilder, proxy
+            )
+            repoFetcher.fetchRepo(uri, repo, receiver, fingerprint)
+        } catch (e: NotFoundException) {
+            log.warn(e) { "Did not find v2 repo, trying v1 now." }
+            // try to fetch v1 repo
+            val repo =
+                getTempRepo(uri, IndexFormatVersion.ONE, username, password)
+            val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory, repoUriBuilder)
+            repoFetcher.fetchRepo(uri, repo, receiver, fingerprint)
         }
     }
 
@@ -292,6 +306,41 @@ internal class RepoAdder(
         addRepoState.value = None
         fetchJob?.cancel()
     }
+
+    @AnyThread
+    internal suspend fun addArchiveRepo(repo: Repository, proxy: Proxy? = null) =
+        withContext(coroutineContext) {
+            if (repo.isArchiveRepo) error { "Repo ${repo.address} is already an archive repo." }
+
+            val address = repo.address.replace(Regex("repo/?$"), "archive")
+            @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
+            val receiver = object : RepoPreviewReceiver {
+                override fun onRepoReceived(archiveRepo: Repository) {
+                    // reset the timestamp of the actual repo,
+                    // so a following repo update will pick this up
+                    val newRepo = NewRepository(
+                        name = archiveRepo.repository.name,
+                        icon = archiveRepo.repository.icon ?: emptyMap(),
+                        address = archiveRepo.address,
+                        formatVersion = archiveRepo.formatVersion,
+                        certificate = archiveRepo.certificate ?: error("Repo had no certificate"),
+                        username = archiveRepo.username,
+                        password = archiveRepo.password,
+                    )
+                    db.runInTransaction {
+                        val repoId = repositoryDao.insert(newRepo)
+                        repositoryDao.setWeight(repoId, repo.weight - 1)
+                    }
+                    cancel("expected") // no need to continue downloading the entire repo
+                }
+
+                override fun onAppReceived(app: AppOverviewItem) {
+                    // no-op
+                }
+            }
+            val uri = Uri.parse(address)
+            fetchRepo(uri, repo.fingerprint, proxy, repo.username, repo.password, receiver)
+        }
 
     private fun hasDisallowInstallUnknownSources(context: Context): Boolean {
         val userManager = getSystemService(context, UserManager::class.java)
