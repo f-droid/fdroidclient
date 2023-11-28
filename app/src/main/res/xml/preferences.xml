@@ -176,6 +176,10 @@
             android:defaultValue="false"
             android:key="expert"
             android:title="@string/expert" />
+    <PreferenceCategory
+        android:key="pref_category_expert"
+        android:dependency="expert"
+        android:title="@string/expert">
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:dependency="expert"
@@ -233,6 +237,7 @@
             android:key="privilegedInstaller"
             android:persistent="false"
             android:title="@string/system_installer" />
+    </PreferenceCategory>
     </PreferenceCategory>
 
 </PreferenceScreen>
