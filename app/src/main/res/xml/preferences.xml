@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--
-    IMPORTANT: If you change anything here, also check if the same change needs to be made in
-               for the basic flavor: basic/res/xml/preferences.xml
-    -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceScreen
         android:key="pref_about"
@@ -89,18 +86,21 @@
             android:key="incompatibleVersions"
             android:title="@string/show_incompat_versions" />
         <MultiSelectListPreference
-            android:title="@string/show_anti_feature_apps"
             android:defaultValue="@array/antifeaturesValuesDefault"
-            android:key="showAntiFeatures"
             android:entries="@array/antifeaturesNames"
-            android:entryValues="@array/antifeaturesValues" />
+            android:entryValues="@array/antifeaturesValues"
+            android:key="showAntiFeatures"
+            android:title="@string/show_anti_feature_apps" />
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="ignoreTouchscreen"
             android:title="@string/force_touch_apps" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/local_repo">
+    <!-- only visible in full flavor -->
+    <PreferenceCategory
+        android:title="@string/local_repo"
+        app:isPreferenceVisible="@bool/pref_visible_only_in_full">
         <EditTextPreference
             android:key="localRepoName"
             android:title="@string/local_repo_name" />
@@ -147,15 +147,19 @@
             android:summary="@string/preventScreenshots_summary"
             android:title="@string/preventScreenshots_title" />
 
+        <!-- only visible in full flavor -->
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="hideOnLongPressSearch"
             android:summary="@string/hide_on_long_search_press_summary"
-            android:title="@string/hide_on_long_search_press_title" />
+            android:title="@string/hide_on_long_search_press_title"
+            app:isPreferenceVisible="@bool/pref_visible_only_in_full" />
 
+        <!-- only visible in full flavor -->
         <PreferenceScreen
             android:summary="@string/panic_settings_summary"
-            android:title="@string/panic_settings">
+            android:title="@string/panic_settings"
+            app:isPreferenceVisible="@bool/pref_visible_only_in_full">
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetClass="org.fdroid.fdroid.panic.PanicPreferencesActivity"
@@ -176,68 +180,68 @@
             android:defaultValue="false"
             android:key="expert"
             android:title="@string/expert" />
-    <PreferenceCategory
-        android:key="pref_category_expert"
-        android:dependency="expert"
-        android:title="@string/expert">
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
+        <PreferenceCategory
             android:dependency="expert"
-            android:key="unstableUpdates"
-            android:summary="@string/unstable_updates_summary"
-            android:title="@string/unstable_updates" />
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:dependency="expert"
-            android:key="keepInstallHistory"
-            android:summary="@string/keep_install_history_summary"
-            android:title="@string/keep_install_history" />
-        <SwitchPreferenceCompat
-            android:key="sendToFdroidMetrics"
-            android:title="@string/send_to_fdroid_metrics"
-            android:summary="@string/send_to_fdroid_metrics_summary"
-            android:defaultValue="false"
-            android:dependency="expert" />
-        <PreferenceScreen
-            android:key="ipfsGateways"
-            android:summary="@string/ipfsgw_summary_disabled"
-            android:title="@string/ipfsgw_title"
-            android:dependency="expert" >
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="org.fdroid.fdroid.views.IpfsGatewaySettingsActivity"
-                android:targetPackage="@string/applicationId" />
-        </PreferenceScreen>
-        <SwitchPreferenceCompat
-            android:key="hideAllNotifications"
-            android:title="@string/hide_all_notifications"
-            android:summary="@string/hide_all_notifications_summary"
-            android:defaultValue="false"
-            android:dependency="expert" />
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:dependency="expert"
-            android:key="sendVersionAndUUIDToServers"
-            android:summary="@string/send_version_and_uuid_summary"
-            android:title="@string/send_version_and_uuid" />
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:dependency="expert"
-            android:key="forceOldIndex"
-            android:summary="@string/force_old_index_summary"
-            android:title="@string/force_old_index" />
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:dependency="expert"
-            android:key="forceOldInstaller"
-            android:summary="@string/force_old_installer_summary"
-            android:title="@string/force_old_installer_title" />
-        <SwitchPreferenceCompat
-            android:dependency="expert"
-            android:key="privilegedInstaller"
-            android:persistent="false"
-            android:title="@string/system_installer" />
-    </PreferenceCategory>
+            android:key="pref_category_expert"
+            android:title="@string/expert">
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="unstableUpdates"
+                android:summary="@string/unstable_updates_summary"
+                android:title="@string/unstable_updates" />
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="keepInstallHistory"
+                android:summary="@string/keep_install_history_summary"
+                android:title="@string/keep_install_history" />
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="sendToFdroidMetrics"
+                android:summary="@string/send_to_fdroid_metrics_summary"
+                android:title="@string/send_to_fdroid_metrics" />
+            <PreferenceScreen
+                android:dependency="expert"
+                android:key="ipfsGateways"
+                android:summary="@string/ipfsgw_summary_disabled"
+                android:title="@string/ipfsgw_title">
+                <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetClass="org.fdroid.fdroid.views.IpfsGatewaySettingsActivity"
+                    android:targetPackage="@string/applicationId" />
+            </PreferenceScreen>
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="hideAllNotifications"
+                android:summary="@string/hide_all_notifications_summary"
+                android:title="@string/hide_all_notifications" />
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="sendVersionAndUUIDToServers"
+                android:summary="@string/send_version_and_uuid_summary"
+                android:title="@string/send_version_and_uuid" />
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="forceOldIndex"
+                android:summary="@string/force_old_index_summary"
+                android:title="@string/force_old_index" />
+            <SwitchPreferenceCompat
+                android:defaultValue="false"
+                android:dependency="expert"
+                android:key="forceOldInstaller"
+                android:summary="@string/force_old_installer_summary"
+                android:title="@string/force_old_installer_title" />
+            <SwitchPreferenceCompat
+                android:dependency="expert"
+                android:key="privilegedInstaller"
+                android:persistent="false"
+                android:title="@string/system_installer" />
+        </PreferenceCategory>
     </PreferenceCategory>
 
 </PreferenceScreen>
