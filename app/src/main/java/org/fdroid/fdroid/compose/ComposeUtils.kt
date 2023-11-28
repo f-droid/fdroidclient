@@ -143,9 +143,14 @@ object ComposeUtils {
     }
 
     /**
-     * reuse-able Modifier for making all captions in settings (and other places?) look the same
+     * Composable that mimics MDC TextView with `@style/CaptionText`
      */
-    fun Modifier.captionModifier() = this.then(
-        Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp)
-    )
+    @Composable
+    fun CaptionText(text: String) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.caption,
+            modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp)
+        )
+    }
 }
