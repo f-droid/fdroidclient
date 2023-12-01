@@ -448,6 +448,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="use_pure_black_dark_theme_summary">Recommended only for OLED screens.</string>
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>
+    <string name="repo_list_info_title">Repository List</string>
+    <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.\n\nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
     <string name="repo_details">Repository</string>
     <string name="repo_url">Address</string>
     <string name="repo_num_apps">Number of apps</string>

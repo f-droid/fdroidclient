@@ -25,6 +25,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +39,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.database.Repository;
@@ -196,6 +200,26 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), true));
             UpdateService.updateRepoNow(this, repo.getAddress());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.repo_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_info) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.repo_list_info_title))
+                    .setMessage(getString(R.string.repo_list_info_text))
+                    .setPositiveButton(getString(R.string.ok), (dialog, which) -> dialog.dismiss())
+                    .show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void disableRepo(Repository repo) {
