@@ -112,6 +112,15 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/proxy">
+        <PreferenceScreen
+            android:key="ipfsGateways"
+            android:summary="@string/ipfsgw_summary_disabled"
+            android:title="@string/ipfsgw_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="org.fdroid.fdroid.views.IpfsGatewaySettingsActivity"
+                android:targetPackage="@string/applicationId" />
+        </PreferenceScreen>
         <SwitchPreferenceCompat
             android:key="useTor"
             android:summary="@string/useTorSummary"
@@ -202,16 +211,6 @@
                 android:key="sendToFdroidMetrics"
                 android:summary="@string/send_to_fdroid_metrics_summary"
                 android:title="@string/send_to_fdroid_metrics" />
-            <PreferenceScreen
-                android:dependency="expert"
-                android:key="ipfsGateways"
-                android:summary="@string/ipfsgw_summary_disabled"
-                android:title="@string/ipfsgw_title">
-                <intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetClass="org.fdroid.fdroid.views.IpfsGatewaySettingsActivity"
-                    android:targetPackage="@string/applicationId" />
-            </PreferenceScreen>
             <SwitchPreferenceCompat
                 android:defaultValue="false"
                 android:dependency="expert"
