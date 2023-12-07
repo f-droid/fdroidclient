@@ -548,4 +548,16 @@
     <string name="targetsdk_or_later">目标 SDK 版本 %s</string>
     <string name="repo_num_apps_link">%s（点按列出所有应用）</string>
     <string name="repo_num_apps_button">显示应用</string>
+    <string name="ipfsgw_caption_official_gateways">官方 IPFS 网关</string>
+    <string name="ipfsgw_summary_disabled">使用 IPFS 网络端点下载应用：已禁用</string>
+    <string name="ipfsgw_title">IPFS 网关</string>
+    <string name="ipfsgw_caption_custom_gateways">自定义 IPFS 网关</string>
+    <string name="paste">粘贴</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">添加</string>
+    <string name="ipfsgw_explainer">从 IPFS 网络端点下载应用。（只能用于支持 IPFS 下载的 F-Droid 仓库。）</string>
+    <string name="ipfsgw_add_title">添加 IPFS 网关</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">使用 IPFS 网络端点下载应用：%1$d 已开启</item>
+    </plurals>
 </resources>
