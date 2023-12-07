@@ -486,7 +486,7 @@
     <string name="scan_removable_storage_title">Iscansiona su dispositivu rimovìbile</string>
     <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas penninas USB</string>
     <string name="nearby_splash__read_external_storage">Chirca depòsitos e ispricos (mirrors) in s\'ischeda SD.</string>
-    <string name="nearby_splash__request_permission">Proa·lu</string>
+    <string name="nearby_splash__request_permission">Chirca</string>
     <string name="not_visible_nearby">Dispositivu non visìbile</string>
     <string name="not_visible_nearby_description">In antis de cuncambiare cun sos dispositivu a curtzu depes impostare su tuo comente visìbile.</string>
     <string name="swap_toast_using_path">Impreende %1$s</string>
@@ -561,7 +561,7 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Subra de F-Droid Basic</string>
     <string name="antinsfwlist">usta aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
-    <string name="category_Nightly">Versiones de isvilupu</string>
+    <string name="category_Nightly">versiones de isvilupu</string>
     <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
     <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
     <string name="app_error_open">No est istadu possìbile aviare s\'aplicatzione.</string>
@@ -570,4 +570,37 @@
     <string name="repo_add_new_title">Annanghe unu depòsitu</string>
     <string name="repo_state_fetching">Recuperende su depòsitu…</string>
     <string name="repo_enter_url">Inserta s\'URL de su depòsitu a manu</string>
+    <string name="copied_to_clipboard">Copiadu in punta de billete</string>
+    <string name="turn_on_wifi">Allughe su wifi</string>
+    <string name="nearby_splace__external_storage_permission_button">Proa·lu</string>
+    <string name="ipfsgw_caption_official_gateways">Ghennas de collegamentu ufitziales IPFS</string>
+    <string name="force_old_installer_title">Fortza s\'installadore betzu</string>
+    <string name="ipfsgw_summary_disabled">Iscàrriga aplicatziones dae sos puntos finales IPFS: disabilitadu</string>
+    <string name="force_old_installer_summary">Disabìlita s\'installadore de sessione beta, chi incluit su suportu pro sas atualizatziones automàticas in s\'isfundu.</string>
+    <string name="repo_invalid">Depòsitu non vàlidu.
+\n
+\nCuntata su mantenidore e informa·lu de su problema.</string>
+    <string name="targetsdk_or_later">puntat a %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid podet chircare depòsitos e ispigros in s\'ischeda SD tua, ma tenent bisòngiu de su permissu tuo pro lu fàghere.</string>
+    <string name="copied_permission_to_clipboard">Nùmene de su permissu copiadu in punta de billete</string>
+    <string name="copied_url_to_clipboard">URL copiadu in punta de billete</string>
+    <string name="ipfsgw_title">Ghennas de collegamentu IPFS</string>
+    <string name="repo_io_error">Errore de connessione a su depòsitu.</string>
+    <string name="ipfsgw_caption_custom_gateways">Ghennas de collegamentu personalizadas IPFS</string>
+    <string name="paste">Incolla</string>PluralsCandidate
+
+    <string name="repo_add_new_mirror">Annanghe comente ispigru nou</string>
+    <string name="repo_intro">Unu depòsitu est una fonte additzionale de aplicatziones. Sos de tertzos chi annanghes inoghe tenent istandards diferentes cunfronta a sos chi frunint sas aplicatziones cumpiladas dae F-Droid matessi.
+\n
+\nAssegura·ti chi su depòsitu chi ses annanghende siat fidadu.</string>
+    <string name="swap_connection_indexv0_error">Ses chirchende de ti collegare a calicunu cun una versione betza de F-Droid. Pro si collegare depet agiornare s\'aplicatzione F-Droid sua. Podet impreare su cuncàmbiu pro agiornare s\'aplicatzione de F-Droid sua pro mèdiu de tene.</string>
+    <string name="repo_num_apps_button">Mustra sas aplicatziones</string>
+    <string name="ipfsgw_add_add">Annanghe</string>
+    <string name="ipfsgw_explainer">Iscàrriga aplicatziones dae sos puntos finales IPFS. (Funtzionat petzi pro depòsitos de F-Droid cun suportu pro s\'IPFS)</string>
+    <string name="ipfsgw_add_title">Annanghe una ghenna de collegamentu IPFS</string>
+    <string name="swap_banner_message">Pro cuncambiare sas aplicatziones allughe su Wi-Fi tuo e connete·ti a sa matessi rete de s\'amigu tuo.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Iscàrriga aplicatziones dae sos puntos finales IPFS: %1$d abilitadu</item>
+        <item quantity="other">Iscàrriga aplicatziones dae sos puntos finales IPFS: %1$d abilitados</item>
+    </plurals>
 </resources>
