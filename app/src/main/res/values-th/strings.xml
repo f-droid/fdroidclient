@@ -548,4 +548,10 @@
     <string name="status_inserting_x_apps">กำลังบันทึกรายละเอียดแอป (%1$d/%2$d) จาก %3$s</string>
     <string name="antinonfreedep">Dependencies ไม่ฟรี</string>
     <string name="notification_channel_swaps_description">แสดงการแจ้งเตือนการสลับแอป P2P</string>
+    <string name="copied_to_clipboard">คัดลอกไปยัง คลิปบอร์ด แล้ว</string>
+    <string name="force_old_installer_title">บังคับ ใช้ตัวติดตั้งแบบเก่า</string>
+    <string name="targetsdk_or_later">เป้าหมาย %s</string>
+    <string name="copied_permission_to_clipboard">คัดลอก ชื่อการอนุมัติ ไปยัง คลิปบอร์ด แล้ว</string>
+    <string name="copied_url_to_clipboard">คัดลอก URL ไปยังคลิปบอร์ดแล้ว</string>
+    <string name="repo_num_apps_button">แสดง แอพพลิเคชั่น</string>
 </resources>
