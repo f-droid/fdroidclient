@@ -602,4 +602,13 @@
     <string name="targetsdk_or_later">الأهداف %s</string>
     <string name="repo_num_apps_link">%s (انقر لعرض قائمة التطبيقات)</string>
     <string name="repo_num_apps_button">عرض التطبيقات</string>
+    <string name="ipfsgw_caption_official_gateways">بوابات IPFS الرسمية</string>
+    <string name="ipfsgw_summary_disabled">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS: معطل</string>
+    <string name="ipfsgw_title">بوابات IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">بوابات IPFS المخصصة</string>
+    <string name="paste">لصق</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">أضِف</string>
+    <string name="ipfsgw_explainer">نزّل التطبيقات من نقاط نهاية الويب IPFS. (يعمل فقط مع مستودعات F-Droid التي تدعم IPFS.)</string>
+    <string name="ipfsgw_add_title">أضِف بوابة IPFS</string>
 </resources>
