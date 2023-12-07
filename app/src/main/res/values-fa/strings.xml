@@ -562,4 +562,5 @@
     <string name="swap_connection_indexv0_error">در حال تلاش برای وصل شدن به شخصی با نگارشی خارج از رده از اف‌دروید هستید. برای وصل شدن باید کارهٔ اف‌درویدشان را ارتقا دهند. می‌توانند برای به‌روز رسانی کارهٔ اف‌دروید با مبادله از شما استفاده کنند.</string>
     <string name="repo_num_apps_link">%s (زدن برای دیدن همهٔ کاره‌ها)</string>
     <string name="swap_banner_message">برای مبادلهٔ کاره‌ها وای‌فایتان را روشن کرده و به همان شبکهٔ دوستتان وصل شوید.</string>
+    <string name="repo_num_apps_button">نمایش کاره‌ها</string>
 </resources>
