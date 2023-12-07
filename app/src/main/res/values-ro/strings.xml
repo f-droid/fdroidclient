@@ -571,4 +571,19 @@
     <string name="copied_permission_to_clipboard">Nume permisiune copiat în memorie</string>
     <string name="copied_url_to_clipboard">Adresă copiată în memorie</string>
     <string name="repo_num_apps_link">%s (atingeți pentru toate aplicațiile)</string>
+    <string name="repo_num_apps_button">Arată aplicațiile</string>
+    <string name="ipfsgw_caption_official_gateways">Portaluri IPFS oficiale</string>
+    <string name="ipfsgw_summary_disabled">Descărcați aplicații de la locațiile IPFS web: dezactivat</string>
+    <string name="ipfsgw_title">Portale IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Portaluri IPFS personalizate</string>
+    <string name="paste">Lipeşte</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Adaugă</string>
+    <string name="ipfsgw_explainer">Descărcați aplicații de la locațiile IPFS web. (Funcționează numai pentru depozitele F-Droid cu suport IPFS.)</string>
+    <string name="ipfsgw_add_title">Adaugă portal IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Descărcați aplicații de la locațiile IPFS web: %1$d activă</item>
+        <item quantity="few">Descărcați aplicații de la locațiile IPFS web: %1$d active</item>
+        <item quantity="other">Descărcați aplicații de la locațiile IPFS web: %1$d active</item>
+    </plurals>
 </resources>
