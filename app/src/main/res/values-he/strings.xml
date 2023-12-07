@@ -2,7 +2,7 @@
 <resources>
     <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
     <string name="version">גרסה</string>
-    <string name="delete">מחיקה</string>
+    <string name="delete">הסר</string>
     <string name="enable_nfc_send">הפעלת שליחה עם NFC…</string>
     <string name="cache_downloaded">שמירת יישומונים במטמון</string>
     <string name="updates">עדכונים</string>
@@ -581,4 +581,5 @@
     <string name="targetsdk_or_later">מיועד %s</string>
     <string name="copied_permission_to_clipboard">שם ההרשאה הועתק ללוח הגזירים</string>
     <string name="copied_url_to_clipboard">הכתובת הועתקה ללוח הגזירים</string>
+    <string name="repo_num_apps_button">הצג אפליקציות</string>
 </resources>
