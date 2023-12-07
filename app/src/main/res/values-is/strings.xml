@@ -121,7 +121,7 @@
     <string name="repo_name">Heiti</string>
     <string name="unknown">Óþekkt</string>
     <string name="repo_confirm_delete_title">Eyða hugbúnaðarsafni?</string>
-    <string name="repo_added">Vistaði  %1$s hugbúnaðarsafnið.</string>
+    <string name="repo_added">Vistaði %1$s hugbúnaðarsafnið.</string>
     <string name="repo_searching_address">Leita að hugbúnaðarsafni á
 \n%1$s</string>
     <string name="requires_features">Krefst: %1$s</string>
@@ -215,9 +215,7 @@
     <string name="swap_join_same_wifi">Tengstu sama þráðlausa Wi-Fi netinu og vinur þinn</string>
     <string name="swap_intro">Tengstu fólki í nágrenninu og skipstu á forritum við það.</string>
     <string name="swap_qr_isnt_for_swap">QR-kóðinn sem þú skannaðir lítur ekki út eins og býttikóði.</string>
-    <string name="system_installer_on">Nota forgangsviðbót F-Droid (privileged extension) til að setja upp, uppfæra og
-        fjarlægja pakka
-    </string>
+    <string name="system_installer_on">Nota forgangsviðbót F-Droid (privileged extension) til að setja upp, uppfæra og fjarlægja pakka</string>
     <string name="local_repo_name_summary">Útsent heiti staðværa hugbúnaðarsafnsins þíns: %s</string>
     <string name="local_repo_https_on">Nota dulritaða HTTPS:// tengingu fyrir staðvært hugbúnaðarsafn</string>
     <string name="repo_error_empty_username">Autt notandanafn, óbreyttar heimildir</string>
@@ -229,21 +227,14 @@
     <string name="antiupstreamnonfreelist">Grunnkóði útgefanda er ekki fullkomlega frjáls</string>
     <string name="antinonfreeassetslist">Þetta forrit inniheldur ófrjáls tilföng</string>
     <string name="expert_on">Birta viðbótarupplýsingar og virkja aukastillingar</string>
-    <string name="system_install_denied_permissions">Forgangsheimildum hefur ekki verið úthlutað til viðbótarinnar!
-        Sendu endilega inn villuskýrslu!
-    </string>
-    <string name="SignatureMismatch">Nýja útgáfan er undirrituð með öðrum lykli en gamla útgáfan. Til að setja inn nýju
-        útgáfuna verður að fjarlægja fyrst þá eldri. Gerðu þetta og prófaðu aftur. (Athugaðu að fjarlæging forritsins
-        mun hreinsa út öll gögn sem forritið geymir)
-    </string>
-    <string name="installIncompatible">Forritið er ekki samhæft tækinu þínu. Viltu samt prófa að setja það upp\?</string>
+    <string name="system_install_denied_permissions">Forgangsheimildum hefur ekki verið úthlutað til viðbótarinnar! Sendu endilega inn villuskýrslu!</string>
+    <string name="SignatureMismatch">Nýja útgáfan er undirrituð með öðrum lykli en gamla útgáfan. Til að setja inn nýju útgáfuna verður að fjarlægja fyrst þá eldri. Gerðu þetta og prófaðu aftur. (Athugaðu að fjarlæging forritsins mun hreinsa út öll gögn sem forritið geymir)</string>
+    <string name="installIncompatible">Forritið er ekki samhæft tækinu þínu. Viltu samt prófa að setja það upp?</string>
     <string name="repo_exists_add_fingerprint">%1$s er þegar uppsett, þetta mun bæta við nýjum lykilupplýsingum.</string>
     <string name="repo_exists_enable">%1$s er þegar uppsett, staðfestu að þú viljir endurvirkja það.</string>
     <string name="repo_exists_and_enabled">%1$s er þegar uppsett og virkjað.</string>
     <string name="show_incompat_versions_on">Birta útgáfur forrita sem eru ósamhæfðar tækinu</string>
-    <string name="touch_to_configure_local_repo">Snertu til að skoða nánari upplýsingar og til að gera öðrum kleift að
-        býtta við þig á forritum.
-    </string>
+    <string name="touch_to_configure_local_repo">Snertu til að skoða nánari upplýsingar og til að gera öðrum kleift að býtta við þig á forritum.</string>
     <string name="writing_index_jar">Skrifa undirritaða atriðaskrá (index.jar)…</string>
     <string name="linking_apks">Tengi APK-pakka inn í hugbúnaðarsafn…</string>
     <string name="copying_icons">Afrita táknmyndir forrita inn í hugbúnaðarsafn…</string>
@@ -251,32 +242,22 @@
     <string name="proxy_host_summary">Vélarheiti milliþjónsins þíns (t.d. 127.0.0.1)</string>
     <string name="proxy_port_summary">Númerið á gátt milliþjónsins þíns (t.d. 8118)</string>
     <string name="repo_fingerprint">Fingrafar undirritunarlykilsins (SHA-256)</string>
-    <string name="unsigned_description">Þetta þýðir að ekki var hægt að sannreyna
-        listann yfir forritin. Þú ættir að fara varlega varðandi
-        forrit sem sótt eru í óundirritaða yfirlitslista.
-    </string>
-    <string name="repo_not_yet_updated">Þetta hugbúnaðarsafn hefur ekki verið notað áður.
-        Þú verður að gera það virkt til að geta séð forritin sem það býður uppá.
-    </string>
+    <string name="unsigned_description">Þetta þýðir að ekki var hægt að sannreyna listann yfir forritin. Þú ættir að fara varlega varðandi forrit sem sótt eru í óundirritaða yfirlitslista.</string>
+    <string name="repo_not_yet_updated">Þetta hugbúnaðarsafn hefur ekki verið notað áður. Þú verður að gera það virkt til að geta séð forritin sem það býður uppá.</string>
     <string name="repo_confirm_delete_body">Það að eyða hugbúnaðarsafni þýðir að forrit úr því safni verða ekki lengur tiltæk í F-Droid.
 \n
 \nAthugaðu: Öll forrit sem þegar hafa verið sett inn, munu haldast á tækinu þínu.</string>
     <string name="repo_disabled_notification">Gerði %1$s óvirkt.
 \n
 \nÞú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.</string>
-    <string name="not_on_same_wifi">Tækið þitt er ekki á sama Wi-Fi netinu og staðværa hugbúnaðarsafnið sem þú varst að
-        bæta við! Reyndu að tengjast þessu neti: %s
-    </string>
+    <string name="not_on_same_wifi">Tækið þitt er ekki á sama Wi-Fi netinu og staðværa hugbúnaðarsafnið sem þú varst að bæta við! Reyndu að tengjast þessu neti: %s</string>
     <string name="empty_installed_app_list">Engin forrit uppsett.
 \n
 \nÞað eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.</string>
-    <string name="empty_can_update_app_list">Til hamingju!\nÖll forritin þín eru af nýjustu útgáfu.</string>
-    <string name="swap_nfc_description">Ef vinur þinn er með F-Droid og kveikt á NFC, látið þá tækin ykkar snertast.
-    </string>
-    <string name="swap_join_same_wifi_desc">Til að gera býtti í gegnum þráðlaust net, gakktu úr skugga um að þið séuð á
-        sama netinu. Ef þið hafið ekki aðgang að sama neti, getur annar ykkar búið til þráðlausan Wi-Fi tengipunkt
-        (hotspot).
-    </string>
+    <string name="empty_can_update_app_list">Til hamingju!
+\nÖll forritin þín eru af nýjustu útgáfu.</string>
+    <string name="swap_nfc_description">Ef vinur þinn er með F-Droid og kveikt á NFC, látið þá tækin ykkar snertast.</string>
+    <string name="swap_join_same_wifi_desc">Til að gera býtti í gegnum þráðlaust net, gakktu úr skugga um að þið séuð á sama netinu. Ef þið hafið ekki aðgang að sama neti, getur annar ykkar búið til þráðlausan Wi-Fi tengipunkt (hotspot).</string>
     <string name="swap_join_this_hotspot">Hjálpaðu vini þínum að tengjast tengipunktinum þínum</string>
     <string name="swap_scan_or_type_url">Einn aðili þarf að skanna QR-kóðann, eða slá slóð hins inn í vafra.</string>
     <string name="swap_connection_misc_error">Villa kom upp við að tengjast við tækið, ekki er hægt að nota það við býtti!</string>
@@ -285,10 +266,7 @@
     <string name="install_confirm_update_no_perms">Viltu setja upp uppfærslu á þessu uppsetta forriti? Eldri gögn glatast ekki. Forritið krefst ekki neins sérstaks aðgangs.</string>
     <string name="install_confirm_update_system_no_perms">Viltu setja upp uppfærslu á þessu innbyggða forriti? Eldri gögn glatast ekki. Forritið krefst ekki neins sérstaks aðgangs.</string>
     <string name="uninstall_update_confirm">Viltu skipta þessu forriti út fyrir verksmiðjuútgáfuna? Öll gögn verða fjarlægð.</string>
-    <string name="crash_dialog_text">Upp kom óvænt villa sem þvingaði fram lokun
-        á forritinu. Viltu senda tölvupóst með nánari upplýsingum
-        um atvikið til að hjálpa við að laga þetta ?
-    </string>
+    <string name="crash_dialog_text">Upp kom óvænt villa sem þvingaði fram lokun á forritinu. Viltu senda tölvupóst með nánari upplýsingum um atvikið til að hjálpa við að laga þetta ?</string>
     <string name="keep_install_history">Halda yfirliti yfir uppsetningar</string>
     <string name="keep_install_history_summary">Geyma upplýsingar yfir allar uppsetningar og fjarlægingar í einkaannál</string>
     <string name="warning_no_internet">Get ekki uppfært, ertu tengdur við internetið?</string>
@@ -483,7 +461,7 @@
     <string name="scan_removable_storage_summary">Athugaðu með pakkasöfn á útskiptanlegum geymslumiðlum eins og SD-minniskortum eða USB-minnislyklum</string>
     <string name="main_menu__updates">Uppfærslur</string>
     <string name="nearby_splash__read_external_storage">Leita á SD-minniskorti að hugbúnaðarsöfnum og speglum.</string>
-    <string name="nearby_splash__request_permission">Prófaðu</string>
+    <string name="nearby_splash__request_permission">Leita núna</string>
     <string name="not_visible_nearby">Skynjun nálægra tækja er óvirk</string>
     <string name="not_visible_nearby_description">Áður en þú skiptist á við nálæg tæki, skaltu gera tækið þitt sýnilegt.</string>
     <string name="swap_toast_using_path">Nota %1$s</string>
@@ -559,4 +537,42 @@
     <string name="use_ipfs_gateways">Nota IPFS-gáttir</string>
     <string name="use_ipfs_gateways_summary">Sækja skrár frá IPFS-speglum, ef hugbúnaðarsafnið styður það.</string>
     <string name="about_title_basic">Um grunnútgáfu F-Droid</string>
+    <string name="copied_to_clipboard">Afritað á klippispjald</string>
+    <string name="turn_on_wifi">Kveikja á þráðlausu neti</string>
+    <string name="nearby_splace__external_storage_permission_button">Prófaðu</string>
+    <string name="ipfsgw_caption_official_gateways">Opinberar IPFS-netgáttir</string>
+    <string name="force_old_installer_title">Þvinga notkun eldra uppsetningarforrits</string>
+    <string name="ipfsgw_summary_disabled">Sækja forrit með IPFS-endapunktum á vef: óvirkt</string>
+    <string name="force_old_installer_summary">Gera beta-prófunarútgáfu uppsetningarforrits óvirka, þar með talinn stuðning við sjálfvirkar uppfærslur í bakgrunni.</string>
+    <string name="repo_state_adding">Bæti við hugbúnaðarsafni…</string>
+    <string name="repo_invalid">Ógilt hugbúnaðarsafn.
+\n
+\nHafðu samband við umsjónaraðila og láttu þá vita af vandamálinu.</string>
+    <string name="repo_exists">Þessu hugbúnaðarsafni hefur þegar verið bætt við.</string>
+    <string name="repo_add_new_title">Bæta við hugbúnaðarsafni</string>
+    <string name="targetsdk_or_later">beinist að %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid getur leitað á SD-minniskorti að hugbúnaðarsöfnum og speglum, en þarf til þess leyfi þitt.</string>
+    <string name="repo_state_fetching">Sæki hugbúnaðarsafn…</string>
+    <string name="copied_permission_to_clipboard">Afritaði heiti heimildar á klippispjald</string>
+    <string name="copied_url_to_clipboard">Afritaði slóð á klippispjald</string>
+    <string name="ipfsgw_title">IPFS-netgáttir</string>
+    <string name="repo_io_error">Villa í tengingu við hugbúnaðarsafnið.</string>
+    <string name="ipfsgw_caption_custom_gateways">Sérsniðnar IPFS-netgáttir</string>
+    <string name="repo_enter_url">Settu handvirkt inn slóð hugbúnaðarsafns</string>
+    <string name="paste">Líma</string>PluralsCandidate
+
+    <string name="repo_add_new_mirror">Bæta við sem nýjum spegli</string>
+    <string name="repo_intro">Hugbúnaðarsafn er viðbótaruppspretta fyrir forrit og fleira. Hugbúnaðarsöfn frá utanaðkomandi aðilum sem þú bætir við hér, gætu verið með önnur viðmið og staðla en þau sem byggja forrit fyrir sjálft F-Droid safnið.
+\n
+\nGakktu úr skugga um að hugbúnaðarsafninu sem þú ert að bæta við sé treystandi.</string>
+    <string name="swap_connection_indexv0_error">Þú ert að reyna að tengjast einhverjum sem er með úrelta útgáfu af F-Droid. Til að tenging geti komist á þurfa viðkomandi að uppfæra F-Droid-forritið. Þeir geta notað forritaskipti til að uppfæra F-Droid forritið frá þér.</string>
+    <string name="repo_num_apps_button">Birta forrit</string>
+    <string name="ipfsgw_add_add">Bæta við</string>
+    <string name="ipfsgw_explainer">Sækja forrit með IPFS-endapunktum á vef. (Virkar bara á F-Droid hugbúnaðarsöfnum með stuðning við IPFS.)</string>
+    <string name="ipfsgw_add_title">Bæta við IPFS-netgátt (gateway)</string>
+    <string name="swap_banner_message">Til að skiptast á forritum, skaltu ræsa þráðlausa WiFi netið og tengjast sama netkerfi og vinur þinn.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Sækja forrit með IPFS-endapunktum á vef: %1$d virkur</item>
+        <item quantity="other">Sækja forrit með IPFS-endapunktum á vef: %1$d virkir</item>
+    </plurals>
 </resources>
