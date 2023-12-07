@@ -579,4 +579,19 @@
     <string name="targetsdk_or_later">docelowy %s</string>
     <string name="repo_num_apps_link">%s (naciśnij, aby wyświetlić listę wszystkich aplikacji)</string>
     <string name="repo_num_apps_button">Pokaż aplikacje</string>
+    <string name="ipfsgw_caption_official_gateways">Oficjalne bramki IPFS</string>
+    <string name="ipfsgw_summary_disabled">Pobieraj aplikacje z endpointów IPFS: wyłączone</string>
+    <string name="ipfsgw_title">Bramki IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Niestandardowe bramki IPFS</string>
+    <string name="paste">Wklej</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Dodaj</string>
+    <string name="ipfsgw_explainer">Pobieraj aplikacje z endpointów IPFS. Działa tylko dla repozytoriów F-Droid z obsługą IPFS</string>
+    <string name="ipfsgw_add_title">Dodaj bramkę IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Pobieraj aplikacje z endpointu IPFS: %1$d włączony</item>
+        <item quantity="few">Pobieraj aplikacje z endpointów IPFS: %1$d włączone</item>
+        <item quantity="many">Pobieraj aplikacje z endpointów IPFS: %1$d włączonych</item>
+        <item quantity="other">Pobieraj aplikacje z endpointów IPFS: %1$d włączonych</item>
+    </plurals>
 </resources>
