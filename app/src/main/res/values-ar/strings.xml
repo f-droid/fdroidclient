@@ -611,4 +611,12 @@
     <string name="ipfsgw_add_add">أضِف</string>
     <string name="ipfsgw_explainer">نزّل التطبيقات من نقاط نهاية الويب IPFS. (يعمل فقط مع مستودعات F-Droid التي تدعم IPFS.)</string>
     <string name="ipfsgw_add_title">أضِف بوابة IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="zero">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تمكين %1$d</item>
+        <item quantity="one">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
+        <item quantity="two">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
+        <item quantity="few">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
+        <item quantity="many">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
+        <item quantity="other">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
+    </plurals>
 </resources>
