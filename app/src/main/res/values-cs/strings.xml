@@ -10,8 +10,8 @@
     <string name="update_interval">Interval automatických aktualizací</string>
     <string name="notify">Zobrazit dostupné aktualizace</string>
     <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
-    <string name="system_installer">Důvěryhodné rozšíření</string>
-    <string name="system_installer_on">Použít důvěryhodné rozšíření k instalaci, aktualizaci a odebírání balíčků</string>
+    <string name="system_installer">Privilegované rozšíření</string>
+    <string name="system_installer_on">Použít privilegované rozšíření k instalaci, aktualizaci a odebírání balíčků</string>
     <string name="local_repo_name">Název místního repozitáře</string>
     <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
     <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
@@ -228,7 +228,7 @@
     <string name="interval_2w">Zjišťovat aktualizace každé 2 týdny</string>
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
-    <string name="system_install_denied_permissions">Tomuto rozšíření nebyla udělena důvěryhodná oprávnění! Nahlaste prosím jako chybu!</string>
+    <string name="system_install_denied_permissions">Tomuto rozšíření nebyla udělena privilegovaná oprávnění! Nahlaste prosím jako chybu!</string>
     <string name="cache_downloaded">Uchovat aplikace v mezipaměti</string>
     <string name="menu_email">Poslat e-mail autorovi</string>
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
@@ -265,7 +265,7 @@
     <string name="crash_dialog_text">Neočekávaná chyba vynutila ukončení aplikace. Odeslat vývojářům podrobnosti e-mailem a pomoci tak s nápravou\?</string>
     <string name="crash_dialog_comment_prompt">Zde můžete přidat další informace a komentáře:</string>
     <string name="keep_install_history">Uchovat historii instalací</string>
-    <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích soukromém úložišti</string>
+    <string name="keep_install_history_summary">Uchovávat záznamy o všech instalacích a odinstalacích v soukromém úložišti</string>
     <string name="update_auto_install">Automaticky instalovat aktualizace</string>
     <string name="update_auto_install_summary">Stahovat a aktualizovat aplikace na pozadí, zobrazovat upozornění</string>
     <string name="versions">Verze</string>
@@ -556,7 +556,7 @@
 \nUjistěte se prosím, že repozitář, který přidáváte, je důvěryhodný.</string>
     <string name="repo_state_fetching">Načítání repozitáře…</string>
     <string name="repo_state_adding">Přidávání repozitáře…</string>
-    <string name="repo_enter_url">Ručně zadat adresu URL repozitáře</string>
+    <string name="repo_enter_url">Ruční zadání adresy URL repozitáře</string>
     <string name="repo_exists">Tento repozitář již byl přidán.</string>
     <string name="repo_invalid">Neplatný repozitář.
 \n
@@ -573,4 +573,18 @@
     <string name="targetsdk_or_later">cílová verze %s</string>
     <string name="repo_num_apps_link">%s (klepněte pro zobrazení všech aplikací)</string>
     <string name="repo_num_apps_button">Zobrazit aplikace</string>
+    <string name="ipfsgw_caption_official_gateways">Oficiální brány IPFS</string>
+    <string name="ipfsgw_summary_disabled">Stáhnout aplikaci pomocí webových koncových bodů IPFS: zakázáno</string>
+    <string name="ipfsgw_title">Brány IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Vlastní brány IPFS</string>
+    <string name="paste">Vložit</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Přidat</string>
+    <string name="ipfsgw_explainer">Stahování aplikací z webových koncových bodů IPFS. (Funguje pouze pro repozitáře F-Droid s podporou IPFS.)</string>
+    <string name="ipfsgw_add_title">Přidat bránu IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povolen %1$d</item>
+        <item quantity="few">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povoleny %1$d</item>
+        <item quantity="other">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povoleno %1$d</item>
+    </plurals>
 </resources>
