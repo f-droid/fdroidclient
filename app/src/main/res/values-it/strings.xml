@@ -585,4 +585,19 @@
     <string name="copied_url_to_clipboard">URL copiato negli appunti</string>
     <string name="repo_num_apps_link">%s (tocca per elencare tutte le app)</string>
     <string name="repo_num_apps_button">Mostra le app</string>
+    <string name="targetsdk_or_later">punta a %s</string>
+    <string name="ipfsgw_caption_official_gateways">Gateway IPFS ufficiali</string>
+    <string name="ipfsgw_summary_disabled">Scarica applicazioni usando endpoint web IPFS: disattivato</string>
+    <string name="ipfsgw_title">Gateway IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Gateway IPFS personalizzati</string>
+    <string name="paste">Incolla</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Aggiungi</string>
+    <string name="ipfsgw_explainer">Scarica applicazioni da endpoint web IPFS. (Funziona solo per repository F-Droid con supporto IPFS.)</string>
+    <string name="ipfsgw_add_title">Aggiungi gateway IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one"></item>
+        <item quantity="many">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
+        <item quantity="other">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
+    </plurals>
 </resources>
