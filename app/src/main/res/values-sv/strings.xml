@@ -556,4 +556,6 @@
     <string name="repo_enter_url">Ange förråd-URL manuellt</string>
     <string name="repo_add_new_mirror">Lägg till som ny spegel</string>
     <string name="swap_banner_message">För att byta appar, starta ditt WIFI och anslut till samma nätverk som din vän.</string>
+    <string name="force_old_installer_summary">Inaktivera beta-sessionsinstalleraren, inklusive stöd för automatiska bakgrundsuppdateringar.</string>
+    <string name="repo_num_apps_button">Visa appar</string>
 </resources>
