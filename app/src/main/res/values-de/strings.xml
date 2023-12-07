@@ -568,4 +568,17 @@
     <string name="copied_url_to_clipboard">URL in die Zwischenablage kopiert</string>
     <string name="repo_num_apps_link">%s (antippen, um alle Apps aufzulisten)</string>
     <string name="repo_num_apps_button">Apps anzeigen</string>
+    <string name="ipfsgw_caption_official_gateways">Offizielle IPFS-Gateways</string>
+    <string name="ipfsgw_summary_disabled">Download von Apps über IPFS-Webendpunkte: deaktiviert</string>
+    <string name="ipfsgw_title">IPFS-Gateways</string>
+    <string name="ipfsgw_caption_custom_gateways">Eigene IPFS-Gateways</string>
+    <string name="paste">Einfügen</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Hinzufügen</string>
+    <string name="ipfsgw_explainer">Apps von IPFS-Webendpunkten herunterladen. (Funktioniert nur bei F-Droid-Paketquellen mit IPFS-Unterstützung.)</string>
+    <string name="ipfsgw_add_title">IPFS-Gateway hinzufügen</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Download von Apps über IPFS-Webendpunkt: %1$d aktiviert</item>
+        <item quantity="other">Download von Apps über IPFS-Webendpunkte: %1$d aktiviert</item>
+    </plurals>
 </resources>

@@ -6,7 +6,7 @@
 
 * Geringere Speicherauslastung bei wenig Speicher
 
-* Zu jedem Repo über Links, QR-Codes, etc. eigene Spiegel hinzufügen
+* Zu jedem Repo über Links, QR-Codes, usw. eigene Spiegel hinzufügen
 
 * Verbesserte automatische Spiegelwahl
 

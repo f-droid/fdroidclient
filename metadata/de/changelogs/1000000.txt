@@ -1,4 +1,4 @@
-* Installation von Medien-, OTA-, ZIP-Dateien, etc. möglich
+* Installation von Medien-, OTA-, ZIP-Dateien, usw. möglich
 
 * Volle Unterstützung von durch mehrere Signaturen signierte APKs
 
