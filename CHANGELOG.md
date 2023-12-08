@@ -1,3 +1,11 @@
+### 1.19.0-alpha3 (2023-12-08)
+
+* IPFS Gateway settings are now in the Proxy section and no longer in Expert Mode
+
+* Expert Mode Category header now shows which preferences belong to Expert Mode
+
+* Unify full and basic preferences.xml files
+
 ### 1.19.0-alpha2 (2023-11-23)
 
 * New settings to give user control over IPFS HTTP Gateways
