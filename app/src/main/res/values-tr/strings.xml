@@ -562,4 +562,17 @@
     <string name="targetsdk_or_later">hedefler %s</string>
     <string name="repo_num_apps_link">%s (tüm uygulamaları listelemek için dokunun)</string>
     <string name="repo_num_apps_button">Uygulamaları göster</string>
+    <string name="ipfsgw_caption_official_gateways">Resmi IPFS Ağ Geçitleri</string>
+    <string name="ipfsgw_summary_disabled">IPFS web uç noktalarını kullanarak uygulamaları indirin: devre dışı</string>
+    <string name="ipfsgw_title">IPFS Ağ Geçitleri</string>
+    <string name="ipfsgw_caption_custom_gateways">Resmi IPFS Ağ Geçitleri</string>
+    <string name="paste">Yapıştır</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Ekle</string>
+    <string name="ipfsgw_explainer">IPFS web uç noktalarından uygulamaları indirin. (Yalnızca IPFS desteği olan F-Droid depoları için çalışır.)</string>
+    <string name="ipfsgw_add_title">IPFS Ağ Geçidi Ekle</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">IPFS web uç noktalarını kullanarak uygulamaları indirin: %1$d etkin</item>
+        <item quantity="other">IPFS web uç noktalarını kullanarak uygulamaları indirin: %1$d etkin</item>
+    </plurals>
 </resources>

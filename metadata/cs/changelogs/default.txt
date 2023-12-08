@@ -1,11 +1,15 @@
-* Kompletně přepracováno přidávání repozitářů a zrcadel, rozhraní i kód
+* Přepracování repozitářů a zrcadel, rozhraní i kód
 
-* Náhled obsahu repozitáře před jeho přidáním
+* Zobrazení náhledu nových repozitářů
 
-* Používání relačního instalátoru v F-Droidu a F-Droidu Basic včetně podpory pro automatické aktualizace
+* Instalace v F-Droidu a F-Droidu Basic nyní podporuje automatické aktualizace na pozadí
 
-* Na Androidu 14 označeny aplikace s nepodporovanou cílovou verzí SDK jako nekompatibilní
+* V Androidu 14 označeny aplikace s nepodporovanou cílovou verzí SDK jako nekompatibilní
 
-* Podržení pro zkopírování odkazů, oprávnění a verzí na stránce s podrobnostmi o aplikaci
+* Podržení pro zkopírování odkazů, oprávnění a verzí na stránce s podrobnostmi o aplikaci (@Tobias_Groza)
 
-* Nekompatibilní aplikace již nejsou nikde zobrazovány (pokud nejsou povoleny v nastavení)
+* Nekompatibilní aplikace zobrazeny pouze po povolení v nastavení (@pigpig)
+
+* Nová nastavení bran IPFS
+
+* a další

@@ -499,4 +499,5 @@
     <string name="send_fdroid_metrics_json">%s statistiekverslag als JSON-bestand</string>
     <string name="fdroid_metrics_report">%s Statistiekverslag</string>
     <string name="use_ipfs_gateways">Gebruik IPFS-gateways</string>
+    <string name="app_name_basic">F-Droid Basis</string>
 </resources>

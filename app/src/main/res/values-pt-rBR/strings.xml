@@ -83,7 +83,7 @@
     <string name="skip">Pular</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Ativar proxy HTTP</string>
-    <string name="enable_proxy_summary">Configurar proxy HTTP para todas as solicitaçõs de rede</string>
+    <string name="enable_proxy_summary">Configurar proxy HTTP para todas as solicitações de rede</string>
     <string name="proxy_host">Host do proxy</string>
     <string name="proxy_host_summary">O nome host do seu proxy (ex. 127.0.0.1)</string>
     <string name="proxy_port">Porta do proxy</string>
@@ -587,4 +587,8 @@
     <string name="copied_url_to_clipboard">URL copiado para a área de transferência</string>
     <string name="swap_connection_indexv0_error">Você está tentando se conectar a alguém com uma versão desatualizada do F-Droid. Para se conectar, a pessoa precisa atualizar o aplicativo F-Droid. A pessoa pode usar o swap para atualizar o aplicativo F-Droid a partir de você.</string>
     <string name="repo_num_apps_button">Mostrar aplicativos</string>
+    <string name="paste">Colar</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Adicionar</string>
+    <string name="ipfsgw_explainer">Baixar aplicativos de IPFS web endpoints.(Funciona apenas com os repositórios F-Droid com suporte IPFS )</string>
 </resources>

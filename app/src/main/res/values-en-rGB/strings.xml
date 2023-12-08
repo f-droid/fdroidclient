@@ -561,4 +561,5 @@
     <string name="copied_permission_to_clipboard">Copied permission name to clipboard</string>
     <string name="copied_url_to_clipboard">Copied URL to clipboard</string>
     <string name="swap_connection_indexv0_error">You\'re trying to connect to someone with an outdated version of F-Droid. To connect they have to upgrade their F-Droid app. They can use swap to update their F-Droid app from you.</string>
+    <string name="repo_num_apps_button">Show apps</string>
 </resources>

@@ -363,7 +363,7 @@
     <string name="nearby_splash__both_parties_need_fdroid">Biek %1$s erabili behar dute inguruan elkar aurkitzeko.</string>
     <string name="app__tts__downloading_progress">Deskargatzen, %1$d%% osatua</string>
     <string name="by_author_format">egilea: %s</string>
-    <string name="force_old_index">Behartu indize-formatu zaharra</string>
+    <string name="force_old_index">Indize-formatu zaharra behartu</string>
     <string name="force_old_index_summary">Errorerik edo bateragarritasun arazorik izanez gero, erabili aplikazioaren XML indizea</string>
     <string name="download_404">Ez da aurkitu eskatutako fitxategia.</string>
     <plurals name="notification_summary_more">
@@ -576,4 +576,24 @@
     <string name="nearby_splace__external_storage_permission_button">Probatu</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ek zure SD txartelean repositorioak eta ispiluak bilatu ditzake, baina horretarako zure baimena behar du.</string>
     <string name="swap_connection_indexv0_error">F-Droid-en bertsio zaharkitua duen norbaitekin konektatzen saiatzen ari zara. Konektatzeko F-Droid aplikazioa berritu behar dute. Aldatzailea erabil dezakete haien F-Droid aplikazioa eguneratzeko.</string>
+    <string name="force_old_installer_title">Instalatzaile zaharra behartu</string>
+    <string name="copied_to_clipboard">Arbelean kopiatu da</string>
+    <string name="ipfsgw_caption_official_gateways">IPFS pasabide ofizialak</string>
+    <string name="ipfsgw_summary_disabled">Deskargatu aplikazioak IPFS web amaierako puntuak erabiliz: desgaituta</string>
+    <string name="force_old_installer_summary">Desgaitu beta Session instalatzailea, atzeko planoko eguneratze automatikoetarako laguntza barne.</string>
+    <string name="targetsdk_or_later">%s helburu</string>
+    <string name="copied_permission_to_clipboard">Baimenaren izena arbelean kopiatu da</string>
+    <string name="copied_url_to_clipboard">Kopiatu da URLa arbelean</string>
+    <string name="ipfsgw_title">IPFS pasabideak</string>
+    <string name="ipfsgw_caption_custom_gateways">IPFS pasabide pertsonalizatuak</string>
+    <string name="paste">Itsatsi</string>PluralsCandidate
+
+    <string name="repo_num_apps_button">Erakutsi aplikazioak</string>
+    <string name="ipfsgw_add_add">Gehitu</string>
+    <string name="ipfsgw_explainer">Deskargatu aplikazioak IPFS web amaierako puntuetatik. (IPFS euskarria duten F-Droid biltegietarako bakarrik funtzionatzen du.)</string>
+    <string name="ipfsgw_add_title">Gehitu IPFS pasabidea</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Deskargatu aplikazioak IPFS web amaierako puntuak erabiliz: %1$d gaituta</item>
+        <item quantity="other">Deskargatu aplikazioak IPFS web amaierako puntuak erabiliz: %1$d gaituta</item>
+    </plurals>
 </resources>

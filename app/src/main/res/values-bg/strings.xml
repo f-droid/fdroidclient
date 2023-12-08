@@ -4,7 +4,7 @@
     <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това\?</string>
     <string name="version">Издание</string>
     <string name="delete">Изтриване</string>
-    <string name="enable_nfc_send">Изпращане по NFC…</string>
+    <string name="enable_nfc_send">По КБП…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
     <string name="updates">Обновяване</string>
     <string name="other">Друго</string>
@@ -90,8 +90,8 @@
     <string name="repo_num_apps">Брой приложения</string>
     <string name="repo_fingerprint">Отпечатък на ключа за подписване (SHA-256)</string>
     <string name="repo_description">Описание</string>
-    <string name="repo_last_update">Последна актуализация</string>
-    <string name="repo_name">Име</string>
+    <string name="repo_last_update">Последно обновяване</string>
+    <string name="repo_name">Иаименование</string>
     <string name="repo_not_yet_updated">Хранилището все още не е използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
     <string name="repo_confirm_delete_title">Изтриване на хранилището\?</string>
     <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.
@@ -533,7 +533,7 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Относно F-Droid Basic</string>
     <string name="antinsfwlist">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
-    <string name="repo_last_update_downloaded">Последното обновяване е изтеглено</string>
+    <string name="repo_last_update_downloaded">Последно изтеглено обновяване</string>
     <string name="category_Nightly">Нощни компилации</string>
     <string name="warning_target_sdk">Приложението е създадено за по-ранно издание на Андроид и не може да бъде обновено автоматично.</string>
     <string name="app_error_open">Приложението не може да бъде отворено.</string>
@@ -563,4 +563,17 @@
     <string name="targetsdk_or_later">цел %s</string>
     <string name="repo_num_apps_link">%s (докоснете за показване на списък от приложения)</string>
     <string name="repo_num_apps_button">Показване на приложения</string>
+    <string name="ipfsgw_caption_official_gateways">Официални шлюзове на IPFS</string>
+    <string name="ipfsgw_summary_disabled">Изтегляне на приложения от крайни точки на IPFS: изключено</string>
+    <string name="ipfsgw_title">Шлюзове на IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Потребителски шлюзове на IPFS</string>
+    <string name="paste">Поставяне</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Добавяне</string>
+    <string name="ipfsgw_explainer">Изтегля приложения от крайни точки на IPFS (работи само с хранилища на F-Droid, поддръжащи IPFS).</string>
+    <string name="ipfsgw_add_title">Добавяне на шлюз на IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Изтегляне на приложения от крайни точки на IPFS: %1$d включено</item>
+        <item quantity="other">Изтегляне на приложения от крайни точки на IPFS: %1$d включени</item>
+    </plurals>
 </resources>

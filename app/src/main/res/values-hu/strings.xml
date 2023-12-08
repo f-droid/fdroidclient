@@ -553,4 +553,11 @@
     <string name="nearby_splace__external_storage_permission_button">Kipróbálás</string>
     <string name="nearby_splach__external_storage_permission_explainer">Az F-Droid képes keresni a SD-kártyán lévő tárolókban és tükrökben, de ehhez engedélyre van szüksége.</string>
     <string name="swap_connection_indexv0_error">Olyan valakihez próbál kapcsolódni, akinek elavult F-Droid verziója van. A kapcsolódáshoz frissítenie kell az F-Droid alkalmazást. Használhatja a cserét, hogy frissítse az F-Droid alkalmazását.</string>
+    <string name="copied_to_clipboard">Vágólapra másolva</string>
+    <string name="force_old_installer_title">Régi telepítő kényszerítése</string>
+    <string name="force_old_installer_summary">Béta munkamenet telepítő kikapcsolása, amely az automatikus háttér frissítések támogatását is kikapcsolja.</string>
+    <string name="targetsdk_or_later">%s megcélzása</string>
+    <string name="copied_permission_to_clipboard">Engedély neve másolva a vágólapra</string>
+    <string name="copied_url_to_clipboard">URL vágólapra másolva</string>
+    <string name="repo_num_apps_button">Applikációk mutatása</string>
 </resources>

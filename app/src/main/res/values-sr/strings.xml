@@ -573,4 +573,18 @@
     <string name="targetsdk_or_later">захтева верзију %s</string>
     <string name="repo_num_apps_link">%s (додирните за приказ свих апликација)</string>
     <string name="repo_num_apps_button">Прикажи апликације</string>
+    <string name="ipfsgw_caption_official_gateways">Званични IPFS мрежни пролази</string>
+    <string name="ipfsgw_summary_disabled">Преузимање апликација помоћу IPFS веб крајњих тачака: онемогућено</string>
+    <string name="ipfsgw_title">IPFS мрежни пролази</string>
+    <string name="ipfsgw_caption_custom_gateways">Прилагођени IPFS мрежни пролази</string>
+    <string name="paste">Налепи</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Додај</string>
+    <string name="ipfsgw_explainer">Преузмите апликације са IPFS веб крајњих тачака. (Ради само за F-Droid репозиторијуме са подршком за IPFS.)</string>
+    <string name="ipfsgw_add_title">Додај IPFS мрежни пролаз</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
+        <item quantity="few">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
+        <item quantity="other">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
+    </plurals>
 </resources>

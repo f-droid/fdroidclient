@@ -581,4 +581,18 @@
     <string name="force_old_installer_summary">Désactive l\'installateur de Session bêta, y compris la prise en charge des mises à jour automatiques en arrière-plan.</string>
     <string name="targetsdk_or_later">cible SDK %s</string>
     <string name="swap_connection_indexv0_error">Vous essayez de vous connecter à quelqu\'un disposant d\'une version obsolète de F-Droid. Pour vous connecter, cette personne doit mettre à niveau son application F-Droid. Elle peut utiliser l\'échange d\'applications pour mettre à jour son application à partir de vous.</string>
+    <string name="ipfsgw_caption_official_gateways">Passerelles IPFS officielles</string>
+    <string name="ipfsgw_summary_disabled">Télécharger les applications en utilisant les paramètres web IPFS : désactivé</string>
+    <string name="ipfsgw_title">Passerelles IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Passerelles IPFS personnalisées</string>
+    <string name="paste">Coller</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Ajouter</string>
+    <string name="ipfsgw_explainer">Télécharger les applications à partir de la passerelle IPFS. (Fonctionne seulement avec les dépôts qui supportent IPFS.)</string>
+    <string name="ipfsgw_add_title">Ajouter une passerelle IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Télécharger les applications à partir des passerelles web IPFS: %1$d activé</item>
+        <item quantity="many">Télécharger les applications à partir des passerelles web IPFS: %1$d activés</item>
+        <item quantity="other">Télécharger les applications à partir des passerelles web IPFS: %1$d activés</item>
+    </plurals>
 </resources>

@@ -37,7 +37,7 @@
     <string name="overwrite">Skriv över</string>
     <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth hittades, välj en!</string>
     <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>
-    <string name="repo_add_url">Adress till filförrådet</string>
+    <string name="repo_add_url">Förrådsadress</string>
     <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
     <string name="menu_manage">Förråd</string>
@@ -463,7 +463,7 @@
     <string name="app_repository">Förråd: %1$s</string>
     <string name="main_menu__updates">Uppdateringar</string>
     <string name="nearby_splash__read_external_storage">Sök på SD-kort efter förråd och speglar.</string>
-    <string name="nearby_splash__request_permission">Prova</string>
+    <string name="nearby_splash__request_permission">Sök nu</string>
     <string name="not_visible_nearby">I närheten inte aktiverat</string>
     <string name="not_visible_nearby_description">Gör din enhet synlig innan du byter med närliggande enheter.</string>
     <string name="swap_toast_not_removable_storage">Det valet matchade inte några borttagbara lagringsenheter, försök igen!</string>
@@ -538,4 +538,31 @@
     <string name="repo_last_update_downloaded">Senaste uppdateringen nerladdad</string>
     <string name="category_Nightly">nattlig</string>
     <string name="warning_target_sdk">Den här appen byggdes för en äldre version av Android och kan inte uppdateras automatiskt.</string>
+    <string name="copied_to_clipboard">Kopierad till urklipp</string>
+    <string name="turn_on_wifi">Sätt på wifi</string>
+    <string name="nearby_splace__external_storage_permission_button">Testa den</string>
+    <string name="force_old_installer_title">Tvinga gammal installerare</string>
+    <string name="repo_state_adding">Lägger till förråd…</string>
+    <string name="repo_invalid">Ogiligt förråd.
+\n
+\nKontakta förrårdsansvarig och upplys de om problemet.</string>
+    <string name="repo_exists">Detta förråd är redan tillagt.</string>
+    <string name="repo_add_new_title">Lägg till förråd</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kan söka efter förråd och speglar på ditt SD-kort men kräver behörighet för att göra det.</string>
+    <string name="repo_state_fetching">Hämtar förråd…</string>
+    <string name="copied_permission_to_clipboard">Kopierade behörighetsnamn till urklipp</string>
+    <string name="copied_url_to_clipboard">Kopierad URL till urklipp</string>
+    <string name="repo_io_error">Fel uppstod vid anslutning till förrådet.</string>
+    <string name="repo_enter_url">Ange förråd-URL manuellt</string>
+    <string name="repo_add_new_mirror">Lägg till som ny spegel</string>
+    <string name="swap_banner_message">För att byta appar, starta ditt WIFI och anslut till samma nätverk som din vän.</string>
+    <string name="force_old_installer_summary">Inaktivera beta-sessionsinstalleraren, inklusive stöd för automatiska bakgrundsuppdateringar.</string>
+    <string name="repo_num_apps_button">Visa appar</string>
+    <string name="targetsdk_or_later">mål %s</string>
+    <string name="paste">Klistra in</string>PluralsCandidate
+
+    <string name="repo_intro">Ett filförråd är en källa för ytterligare appar. Tredjepartsfilförråden som du lägger till här har olika standarder än de som tillhandahåller appar byggda av F-Droid självt.
+\n
+\nVänligen försäkra dig om att filförrådet som du lägger till är pålitligt.</string>
+    <string name="swap_connection_indexv0_error">Du försöker ansluta till någon med en utdaterad version av F-Droid. För att ansluta så måste de uppgradera sin F-Droid-app. De kan använda byt för att uppdatera sin F-Droid-app från dig.</string>
 </resources>

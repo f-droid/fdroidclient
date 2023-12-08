@@ -583,4 +583,19 @@
     <string name="targetsdk_or_later">цели %s</string>
     <string name="repo_num_apps_link">%s (нажмите для отображения списка приложений)</string>
     <string name="repo_num_apps_button">Показать приложения</string>
+    <string name="ipfsgw_caption_official_gateways">Официальные шлюзы IPFS</string>
+    <string name="ipfsgw_summary_disabled">Загрузка приложений из конечных веб-точек IPFS отключена</string>
+    <string name="ipfsgw_title">IPFS-шлюзы</string>
+    <string name="ipfsgw_caption_custom_gateways">Пользовательские шлюзы IPFS</string>
+    <string name="paste">Вставить</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Добавить</string>
+    <string name="ipfsgw_explainer">Загружать приложения с конечных веб-точек IPFS. (Работает только для репозиториев F-Droid, поддерживающих IPFS.)</string>
+    <string name="ipfsgw_add_title">Добавить шлюз IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Загрузка %1$d приложения из конечных веб-точек IPFS включена</item>
+        <item quantity="few">Загрузка %1$d приложений из конечных веб-точек IPFS включена</item>
+        <item quantity="many">Загрузка %1$d приложений из конечных веб-точек IPFS включена</item>
+        <item quantity="other">Загрузка %1$d приложений из конечных веб-точек IPFS включена</item>
+    </plurals>
 </resources>

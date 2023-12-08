@@ -581,4 +581,5 @@
     <string name="targetsdk_or_later">מיועד %s</string>
     <string name="copied_permission_to_clipboard">שם ההרשאה הועתק ללוח הגזירים</string>
     <string name="copied_url_to_clipboard">הכתובת הועתקה ללוח הגזירים</string>
+    <string name="repo_num_apps_button">הצגת יישומונים</string>
 </resources>

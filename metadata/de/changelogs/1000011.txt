@@ -12,7 +12,7 @@ Diese Version beinhaltet wichtige Änderungen:
 
 * Installation von OTA-, ZIP-Dateien usw.
 
-* Verbesserter Tracking-Schutz (HTTP ETag, TLS, etc.)
+* Verbesserter Tracking-Schutz (HTTP ETag, TLS, usw.)
 
 * Updates mit Rechteerweiterung komplett im Hintergrund 
 

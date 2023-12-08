@@ -342,8 +342,8 @@
     </plurals>
     <string name="menu_license">پروانه: %s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d بیش‌تر…</item>
-        <item quantity="other">+%1$d بیش‌تر…</item>
+        <item quantity="one">+%1$d مورد دیگر…</item>
+        <item quantity="other">+%1$d مورد دیگر…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d به‌روز رسانی</item>
@@ -562,4 +562,18 @@
     <string name="swap_connection_indexv0_error">در حال تلاش برای وصل شدن به شخصی با نگارشی خارج از رده از اف‌دروید هستید. برای وصل شدن باید کارهٔ اف‌درویدشان را ارتقا دهند. می‌توانند برای به‌روز رسانی کارهٔ اف‌دروید با مبادله از شما استفاده کنند.</string>
     <string name="repo_num_apps_link">%s (زدن برای دیدن همهٔ کاره‌ها)</string>
     <string name="swap_banner_message">برای مبادلهٔ کاره‌ها وای‌فایتان را روشن کرده و به همان شبکهٔ دوستتان وصل شوید.</string>
+    <string name="repo_num_apps_button">نمایش کاره‌ها</string>
+    <string name="ipfsgw_caption_official_gateways">دروازه‌های رسمی IPFS</string>
+    <string name="ipfsgw_title">دروازه‌های IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">دروازه‌های سفارشی IPFS</string>
+    <string name="ipfsgw_add_add">افزودن</string>
+    <string name="ipfsgw_add_title">افزودن دروازهٔ IPFS</string>
+    <string name="ipfsgw_summary_disabled">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS: از کار افتاده</string>
+    <string name="paste">جایگذاری</string>PluralsCandidate
+
+    <string name="ipfsgw_explainer">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS. (فقط با مخازن اف‌دروید پشتیبانی‌شده کار می‌کند)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS: %1$d به کار افتاده</item>
+        <item quantity="other">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS: %1$d به کار افتاده</item>
+    </plurals>
 </resources>
