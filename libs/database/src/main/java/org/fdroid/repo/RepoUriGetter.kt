@@ -26,8 +26,8 @@ internal object RepoUriGetter {
                 else -> it
             }
         }
-        val fingerprint = uri.getQueryParameter("fingerprint")?.lowercase()
-            ?: uri.getQueryParameter("FINGERPRINT")?.lowercase()
+        val fingerprint = uri.getQueryParameter("fingerprint")?.lowercase()?.trimEnd()
+            ?: uri.getQueryParameter("FINGERPRINT")?.lowercase()?.trimEnd()
 
         val pathSegments = uri.pathSegments
         var username: String? = null
