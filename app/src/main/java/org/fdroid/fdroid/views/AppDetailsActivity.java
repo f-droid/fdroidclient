@@ -474,16 +474,13 @@ public class AppDetailsActivity extends AppCompatActivity
 
             case DownloadInterrupted:
                 if (justReceived) {
-                    if (TextUtils.isEmpty(newStatus.errorText)) {
-                        Toast.makeText(this, R.string.details_notinstalled, Toast.LENGTH_LONG).show();
-                    } else {
-                        String msg = newStatus.errorText;
-                        if (!newStatus.getCanonicalUrl().equals(msg)) {
-                            msg += " " + newStatus.getCanonicalUrl();
-                        }
-                        Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                    String msg = getString(R.string.download_error);
+
+                    if (!TextUtils.isEmpty(newStatus.errorText)) {
+                        msg += "\n" + newStatus.errorText;
                     }
+
+                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                 }
                 adapter.clearProgress();
                 break;
