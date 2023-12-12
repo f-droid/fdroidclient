@@ -98,6 +98,7 @@
             android:name=".views.repos.AddRepoActivity"
             android:exported="true"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".views.main.MainActivity">
 
             <intent-filter android:autoVerify="true">
