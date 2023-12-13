@@ -33,6 +33,17 @@ internal class RepoUriGetterTest {
     }
 
     @Test
+    fun testFingerprintWithTrailingWhitespace() {
+        val uri1 = RepoUriGetter.getUri("https://example.org/repo?fingerprint=foobar ")
+        assertEquals("https://example.org/repo", uri1.uri.toString())
+        assertEquals("foobar", uri1.fingerprint)
+
+        val uri2 = RepoUriGetter.getUri("https://example.org/repo?fingerprint=foobar     ")
+        assertEquals("https://example.org/repo", uri2.uri.toString())
+        assertEquals("foobar", uri2.fingerprint)
+    }
+
+    @Test
     fun testHash() {
         val uri = RepoUriGetter.getUri("https://example.org/repo?fingerprint=foobar&test=42#hash")
         assertEquals("https://example.org/repo", uri.uri.toString())
