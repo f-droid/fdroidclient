@@ -3,6 +3,7 @@ package org.fdroid.database
 import android.content.res.Resources
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -14,7 +15,7 @@ import java.util.concurrent.Callable
     // When bumping this version, please make sure to add one (or more) migration(s) below!
     // Consider also providing tests for that migration.
     // Don't forget to commit the new schema to the git repo as well.
-    version = 1,
+    version = 2,
     entities = [
         // repo
         CoreRepository::class,
@@ -33,6 +34,8 @@ import java.util.concurrent.Callable
         VersionedString::class,
         // app user preferences
         AppPrefs::class,
+        // dns cache
+        DnsCacheDb::class
     ],
     views = [
         LocalizedIcon::class,
@@ -41,6 +44,7 @@ import java.util.concurrent.Callable
     exportSchema = true,
     autoMigrations = [
         // add future migrations here (if they are easy enough to be done automatically)
+        AutoMigration (from = 1, to = 2) // new table added, nothing renamed/deleted
     ],
 )
 @TypeConverters(Converters::class)
@@ -49,6 +53,7 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt
     abstract override fun getAppPrefsDao(): AppPrefsDaoInt
+    abstract override fun getDnsCacheDao(): DnsCacheDaoInt
     override fun afterLocalesChanged(locales: LocaleListCompat) {
         val appDao = getAppDao()
         runInTransaction {
@@ -75,6 +80,7 @@ internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(
         runInTransaction {
             getAppDao().clearAll()
             getRepositoryDao().resetTimestamps()
+            getDnsCacheDao().clearAll()
         }
     }
 }
@@ -87,6 +93,7 @@ public interface FDroidDatabase {
     public fun getAppDao(): AppDao
     public fun getVersionDao(): VersionDao
     public fun getAppPrefsDao(): AppPrefsDao
+    public fun getDnsCacheDao(): DnsCacheDao
 
     /**
      * Call this after the system [Locale]s have changed.

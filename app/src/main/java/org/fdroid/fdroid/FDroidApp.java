@@ -72,6 +72,7 @@ import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
+import org.fdroid.fdroid.net.DnsWithCache;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
@@ -95,6 +96,7 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.exceptions.UndeliverableException;
 import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import okhttp3.Dns;
 
 public class FDroidApp extends Application implements androidx.work.Configuration.Provider {
 
@@ -106,6 +108,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     private static FDroidApp instance;
     @Nullable
     private static RepoManager repoManager;
+
+    private static Dns dns;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -539,6 +543,13 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                     DownloaderFactory.HTTP_MANAGER, repoUriBuilder);
         }
         return repoManager;
+    }
+
+    public static Dns getDns() {
+        if (dns == null) {
+            dns = new DnsWithCache(DBHelper.getDb(instance.getApplicationContext()));
+        }
+        return dns;
     }
 
     /**

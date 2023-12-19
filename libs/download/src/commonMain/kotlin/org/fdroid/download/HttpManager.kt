@@ -37,18 +37,20 @@ import io.ktor.utils.io.core.isEmpty
 import io.ktor.utils.io.core.readBytes
 import io.ktor.utils.io.writeFully
 import mu.KotlinLogging
+import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import kotlin.coroutines.cancellation.CancellationException
 
-internal expect fun getHttpClientEngineFactory(): HttpClientEngineFactory<*>
+internal expect fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*>
 
 public open class HttpManager @JvmOverloads constructor(
     private val userAgent: String,
     queryString: String? = null,
     proxyConfig: ProxyConfig? = null,
+    customDns: Dns? = null,
     private val highTimeouts: Boolean = false,
     private val mirrorChooser: MirrorChooser = MirrorChooserRandom(),
-    private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(),
+    private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(customDns),
 ) {
 
     public companion object {

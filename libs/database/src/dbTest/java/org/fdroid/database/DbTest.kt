@@ -32,6 +32,7 @@ internal abstract class DbTest {
     internal lateinit var appDao: AppDaoInt
     internal lateinit var appPrefsDao: AppPrefsDaoInt
     internal lateinit var versionDao: VersionDaoInt
+    internal lateinit var dnsCacheDao: DnsCacheDaoInt
     internal lateinit var db: FDroidDatabaseInt
     private val testCoroutineDispatcher = Dispatchers.Unconfined
 
@@ -48,6 +49,7 @@ internal abstract class DbTest {
         appDao = db.getAppDao()
         appPrefsDao = db.getAppPrefsDao()
         versionDao = db.getVersionDao()
+        dnsCacheDao = db.getDnsCacheDao()
 
         // pre-Android P limitations for instrumentation tests (unit tests w/ robolectric are fine):
         // https://mockk.io/ANDROID#supported-features

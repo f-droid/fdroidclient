@@ -193,6 +193,8 @@ dependencies {
     }
     annotationProcessor "com.github.bumptech.glide:compiler:4.14.2"
 
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+
     implementation 'org.bouncycastle:bcprov-jdk15to18:1.71'
     fullImplementation 'info.guardianproject.panic:panic:1.0'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15to18:1.71'

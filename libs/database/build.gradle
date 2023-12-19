@@ -32,6 +32,7 @@ android {
     sourceSets {
         androidTest {
             java.srcDirs += "src/dbTest/java"
+            androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
         }
         test {
             java.srcDirs += "src/dbTest/java"
@@ -70,6 +71,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:2.5.2"
     implementation "androidx.room:room-ktx:2.5.2"
+    implementation 'androidx.room:room-testing:2.5.2'
     kapt "androidx.room:room-compiler:2.5.2"
 
     implementation 'io.github.microutils:kotlin-logging:2.1.21'

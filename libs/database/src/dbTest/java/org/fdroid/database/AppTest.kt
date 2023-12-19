@@ -43,5 +43,9 @@ internal abstract class AppTest : DbTest() {
         lastUpdated = 30,
         categories = listOf("A", "B")
     ).sort()
+    protected val dns1a = DnsCache("host1", listOf("127.0.1.1"))
+    protected val dns1b = DnsCache("host1", listOf("127.0.1.1", "127.0.1.2"))
+    protected val dns2 = DnsCache("host2", listOf("127.0.2.1"))
+    protected val dns3 = DnsCache("host3", listOf("127.0.3.1"))
 
 }
