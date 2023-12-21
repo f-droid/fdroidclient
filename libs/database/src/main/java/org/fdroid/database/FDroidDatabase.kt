@@ -44,7 +44,7 @@ import java.util.concurrent.Callable
     exportSchema = true,
     autoMigrations = [
         // add future migrations here (if they are easy enough to be done automatically)
-        AutoMigration (from = 1, to = 2) // new table added, nothing renamed/deleted
+        AutoMigration(from = 1, to = 2) // new table added, nothing renamed/deleted
     ],
 )
 @TypeConverters(Converters::class)

@@ -50,7 +50,9 @@ public open class HttpManager @JvmOverloads constructor(
     customDns: Dns? = null,
     private val highTimeouts: Boolean = false,
     private val mirrorChooser: MirrorChooser = MirrorChooserRandom(),
-    private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(customDns),
+    private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(
+        customDns
+    ),
 ) {
 
     public companion object {

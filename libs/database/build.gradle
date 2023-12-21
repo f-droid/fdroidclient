@@ -92,6 +92,7 @@ dependencies {
     testImplementation 'ch.qos.logback:logback-classic:1.4.5'
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3'
     testImplementation 'app.cash.turbine:turbine:1.0.0'
+    testImplementation 'com.squareup.okhttp3:okhttp:4.10.0'
 
     androidTestImplementation project(":libs:sharedTest")
     androidTestImplementation 'io.mockk:mockk-android:1.12.3' // 1.12.4 has strange error

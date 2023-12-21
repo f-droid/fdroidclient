@@ -1,9 +1,11 @@
 package org.fdroid.database
 
-import androidx.room.*
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = DnsCacheDb.TABLE)
-internal data class DnsCacheDb (
+internal data class DnsCacheDb(
     @PrimaryKey val hostName: String,
     val addressList: List<String>
 ) {
@@ -15,7 +17,6 @@ internal data class DnsCacheDb (
 public data class DnsCache internal constructor(
     @Embedded internal val dnsCache: DnsCacheDb
 ) {
-    @JvmOverloads
     public constructor(
         hostName: String,
         addressList: List<String>
@@ -29,5 +30,3 @@ public data class DnsCache internal constructor(
     public val hostName: String get() = dnsCache.hostName
     public val addressList: List<String> get() = dnsCache.addressList
 }
-
-

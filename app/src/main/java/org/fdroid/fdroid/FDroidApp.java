@@ -546,8 +546,14 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     }
 
     public static Dns getDns() {
+        if (instance == null) {
+            // instance was null during unit tests
+            return null;
+        }
         if (dns == null) {
-            dns = new DnsWithCache(DBHelper.getDb(instance.getApplicationContext()));
+            Context context = instance.getApplicationContext();
+            FDroidDatabase db = DBHelper.getDb(context);
+            dns = new DnsWithCache(db);
         }
         return dns;
     }

@@ -1,6 +1,10 @@
 package org.fdroid.database
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
 
 public interface DnsCacheDao {
 
@@ -29,7 +33,10 @@ internal interface DnsCacheDaoInt : DnsCacheDao {
 
     @Transaction
     override fun insert(dnsCache: DnsCache): Long {
-        val dnsCacheDb = DnsCacheDb(hostName = dnsCache.hostName, addressList = dnsCache.addressList)
+        val dnsCacheDb = DnsCacheDb(
+            hostName = dnsCache.hostName,
+            addressList = dnsCache.addressList
+        )
         return insertOrReplace(dnsCacheDb)
     }
 
