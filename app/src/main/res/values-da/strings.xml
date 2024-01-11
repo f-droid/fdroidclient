@@ -431,7 +431,7 @@
     <string name="prompt_to_send_crash_reports_summary">Indsaml data om nedbrud og spørg om at sende dem til udvikleren</string>
     <string name="hide_all_notifications_summary">Bloker visning af alle handlinger på statuslinjen og i meddelelsesskuffen.</string>
     <string name="install_history_summary">Vis privat log af alle installationer og afinstallationer</string>
-    <string name="send_version_and_uuid_summary">Medtag appversion og et tilfældigt, entydigt id, når du henter. Gælder fra næste genstart af appen.</string>
+    <string name="send_version_and_uuid_summary">Medtag app version og et tilfældigt, entydigt id, når du henter. Gælder fra næste genstart af appen.</string>
     <string name="scan_removable_storage_toast">Scanner %s…</string>
     <string name="updates_disabled_by_settings">Alle opdateringer deaktiveret af Data-/Wifi-Indstillinger</string>
     <string name="panic_app_setting_summary">Ingen app er valgt</string>
@@ -524,4 +524,7 @@
     <string name="use_ipfs_gateways_summary">Download filer fra IPFS-spejle, hvis understøttet af arkivet.</string>
     <string name="about_title_full">Omkring F-Droid</string>
     <string name="app_error_open">Kunne ikke starte appen.</string>
+    <string name="force_old_installer_title">Gennemtving ældre installation</string>
+    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_basic">F-Droid Basis</string>
 </resources>
