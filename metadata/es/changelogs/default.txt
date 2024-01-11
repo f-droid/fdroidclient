@@ -1,0 +1,15 @@
+* Revisar el repositorio y el manejo de réplicas, tanto UX como código
+
+* Mostrar vista previa de nuevos repos
+
+* La instalación con F-Droid y F-Droid Basic ahora admite actualizaciones automáticas en segundo plano
+
+* En Android 14, marcar las aplicaciones con la versión SDK de destino no compatible como incompatible #2692
+
+* Pulsación larga para copiar enlaces, permisos y versiones en la pantalla detalles de la app (@Tobias_Groza)
+
+* Las aplicaciones incompatibles sólo se muestran cuando están permitidas en Ajustes #41 (@pigpig)
+
+* Nueva configuración de pasarelas IPFS
+
+* Selección de idioma por aplicación (@Licaon-Kter)
