@@ -529,4 +529,18 @@
     <string name="use_ipfs_gateways">ഐപിഎഫ്എസ് ഗേറ്റ്‌വേകൾ ഉപയോഗിക്കുക</string>
     <string name="use_ipfs_gateways_summary">റിപ്പോ പിന്തുണയ്ക്കുന്ന ഐപിഎഫ് ഫസ് മിററുകളിൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക.</string>
     <string name="app_name_basic">എഫ്-ഡ്രോയ്ഡ് ലളിതം</string>
+    <string name="app_error_open">ആപ്പ് ലോഞ്ച് ചെയ്യാനായില്ല.</string>
+    <string name="about_title_basic">F-Droid ബേസിക്കിനെക്കുറിച്ച്</string>
+    <string name="nearby_splace__external_storage_permission_button">പരീക്ഷിച്ചു നോക്കൂ</string>
+    <string name="force_old_installer_title">പഴയ ഇൻസ്റ്റാളർ നിർബന്ധിക്കുക</string>
+    <string name="force_old_installer_summary">യാന്ത്രിക പശ്ചാത്തല അപ്‌ഡേറ്റുകൾക്കുള്ള പിന്തുണ ഉൾപ്പെടെ, ബീറ്റ സെഷൻ ഇൻസ്റ്റാളർ പ്രവർത്തനരഹിതമാക്കുക.</string>
+    <string name="antinsfwlist">എല്ലായിടത്തും പരസ്യപ്പെടുത്താനോ ദൃശ്യമാകാനോ പാടില്ലാത്ത ഉള്ളടക്കം ഈ ആപ്പിൽ അടങ്ങിയിരിക്കുന്നു</string>
+    <string name="repo_exists">ഈ റിപ്പോ ഇതിനകം ചേർത്തിട്ടുണ്ട്.</string>
+    <string name="repo_add_new_title">ശേഖരം ചേർക്കുക</string>
+    <string name="targetsdk_or_later">ടാർഗെറ്റുകൾ %s</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ന് നിങ്ങളുടെ SD കാർഡിൽ റിപ്പോകളും മിററുകളും തിരയാൻ കഴിയും, എന്നാൽ അതിനായി നിങ്ങളുടെ അനുമതി ആവശ്യമാണ്.</string>
+    <string name="repo_last_update_downloaded">അവസാന അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്തു</string>
+    <string name="latest__empty_state__upgrading">ഡാറ്റാബേസ് നവീകരിക്കുന്നു…</string>
+    <string name="repo_num_apps_button">ആപ്പുകൾ കാണിക്കുക</string>
+    <string name="swap_banner_message">ആപ്പുകൾ സ്വാപ്പ് ചെയ്യാൻ, നിങ്ങളുടെ വൈഫൈ ആരംഭിച്ച് നിങ്ങളുടെ സുഹൃത്തിന്റെ അതേ നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക.</string>
 </resources>
