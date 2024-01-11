@@ -4,7 +4,7 @@
     <string name="installIncompatible">App ikke kompatibel med din enhed. Installer alligevel\?</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
-    <string name="enable_nfc_send">Aktiver NFC-sending</string>
+    <string name="enable_nfc_send">Aktiver sending via NFC…</string>
     <string name="cache_downloaded">Behold cachede apps</string>
     <string name="updates">Opdateringer</string>
     <string name="unstable_updates">Ustabile opdateringer</string>
@@ -422,7 +422,7 @@
     <string name="repo_official_mirrors">Officielle spejle</string>
     <string name="repo_user_mirrors">Brugerspejle</string>
     <string name="share_repository">Del Arkiv</string>
-    <string name="nearby_splash__request_permission">Prøv det</string>
+    <string name="nearby_splash__request_permission">Søg nu</string>
     <string name="use_bluetooth">Brug Bluetooth</string>
     <string name="not_visible_nearby">I nærheden ikke aktiveret</string>
     <string name="swap_toast_using_path">Bruger %1$s</string>
@@ -515,7 +515,7 @@
     <string name="antiupstreamnonfree">Ikke-Fri Opstrømskode</string>
     <string name="antinonfreeassets">Ikke-Frie Elementer</string>
     <string name="antidisabledalgorithm">Signeret Med Usikker Algoritme</string>
-    <string name="antinsfw">NSFW. Denne app har indhold, som ikke bør publiceres eller være synligt overalt</string>
+    <string name="antinsfw">Upassende på arbejdspladsen</string>
     <string name="antinonfreedep">Ikke-Frie Afhængigheder</string>
     <string name="antinosource">Kildekode Ikke Længere Tilgængelig</string>
     <string name="latest__empty_state__upgrading">Opgraderer database…</string>
