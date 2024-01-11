@@ -515,4 +515,6 @@
     <string name="send_fdroid_metrics_json">%s gebruikersverslag as \'n JSON lêer</string>
     <string name="apps">Apps</string>
     <string name="app_list_results_hidden_antifeature_settings">Sommige resultate is as gevolg van jou antifeature instellings verstek.</string>
+    <string name="use_ipfs_gateways">Gebruik IPFS Poorte</string>
+    <string name="app_name_basic">F-Droid Basies</string>
 </resources>
