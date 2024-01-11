@@ -408,11 +408,11 @@
     <string name="swap_visible_hotspot">हॉटस्पॉट के माध्यम से दिखाई दे</string>
     <plurals name="details_last_update_weeks">
         <item quantity="one">%1$d सप्ताह पहले अपडेट किया गया</item>
-        <item quantity="other">%1$d सप्ताह पहले अपडेट किया गया</item>
+        <item quantity="other">%1$d सप्ताहों पहले अपडेट किया गया</item>
     </plurals>
     <plurals name="details_last_update_days">
         <item quantity="one">%1$d दिन पहले अपडेट किया गया</item>
-        <item quantity="other">%1$d दिन पहले अपडेट किया गया</item>
+        <item quantity="other">%1$d दिनो पहले अपडेट किया गया</item>
     </plurals>
     <string name="app_list__dismiss_installing_app">इंस्टालेशन रद्द</string>
     <string name="warning_scaning_qr_code">आपके कैमरे में ऑटोफोकस नहीं है। कोड को स्कैन करना मुश्किल हो सकता है।</string>
@@ -428,8 +428,8 @@
     <string name="notification_title_summary_downloading_update">अपडेटस डाउनलोड हो रही है…</string>
     <string name="notification_title_summary_downloading">डाउनलोड हो रहा है …</string>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d ऐप इंस्टॉल है</item>
-        <item quantity="other">%1$d ऐप इंस्टॉल है</item>
+        <item quantity="one">%1$d ऐप इंस्टॉल किया गया</item>
+        <item quantity="other">%1$d ऐप इंस्टॉल किए गए</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d अपडेट है</item>
@@ -466,7 +466,7 @@
     <string name="swap_join_same_wifi">अपने मित्र के साथ एक ही वाई-फाई से जुड़े</string>
     <string name="swap_nfc_description">यदि आपके मित्र के पास एफ-ड्रॉइड तथा एनएफसी चालू है तो अपने उपकरण को एक साथ मिलाये।</string>
     <string name="swap_nfc_title">बदलने के लिए टच करे</string>
-    <string name="nearby_splash__request_permission">इसे देखे</string>
+    <string name="nearby_splash__request_permission">अब खोजें</string>
     <string name="nearby_splash__document_tree">रेपो और मिरर के लिए यूएसबी ओटीजी सर्च करें।</string>
     <string name="nearby_splash__read_external_storage">रेपो और मिरर के लिए एसडी कार्ड सर्च करें।</string>
     <string name="nearby_splash__both_parties_need_fdroid">दोनों पक्षों को आस-पास का उपयोग के लिए %1$s की आवश्यकता है।</string>
