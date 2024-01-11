@@ -1,0 +1,7 @@
+* Corrigido usar repos e espelhos do armazenamento externo em versões recentes do Android
+* Melhor gestão de Wi-Fi nas proximidades
+* A barra de navegação agora se lembra da sua posição mesmo quando F-Droid reinicia
+* Nova língua: Suaíli
+* Corrigir a descarga de imagens para repos ainda através de index-v1
+* Corrigir falhas relacionadas com swap, gestão de repos e muito mais
+* O botão Downgrade foi removido, o Android já não o permite
