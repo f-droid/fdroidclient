@@ -203,12 +203,12 @@
 \n%1$sஇலிருந்து</string>
     <string name="panic_app_dialog_message">அழிவுகரமான பீதி பொத்தான் செயல்களைத் தூண்டுவதற்கு %1$s அனுமதிக்க விரும்புகிறீர்களா\?</string>
     <string name="enable_proxy_title">HTTP பதிலியை இயக்கு</string>
-    <string name="repo_confirm_delete_title">களஞ்சியத்தை நீக்கவா\?</string>
+    <string name="repo_confirm_delete_title">களஞ்சியத்தை நீக்கவா?</string>
     <string name="repo_not_yet_updated">இக்களஞ்சியம் இன்னும் பயன்படுத்தப்படவில்லை. அது வழங்கும் செயலிகளைப் பார்க்க நீங்கள் அதை இயக்க வேண்டும்.</string>
     <string name="repo_user_mirrors">பயனர் கண்ணாடிகள்</string>
     <string name="repo_official_mirrors">அதிகாரப்பூர்வ கண்ணாடிகள்</string>
     <string name="repo_description">விரித்துரைத்தல்</string>
-    <string name="repo_fingerprint">கையொப்பமிடும் விசையின் கைரேகை (எஸ்.ஏ.-256)</string>
+    <string name="repo_fingerprint">கையொப்பமிடும் விசையின் கைரேகை (SHA-256)</string>
     <string name="repo_num_apps">செயலி எண்ணிக்கை</string>
     <string name="use_pure_black_dark_theme_summary">ஓலெட் திரைகளுக்கு மட்டுமே பரிந்துரைக்கப்படுகிறது.</string>
     <string name="use_pure_black_dark_theme">இருண்ட தோற்றத்தில் தூய கருப்பு பின்னணியைப் பயன்படுத்து</string>
@@ -223,7 +223,7 @@
     <string name="hiding_dialog_warning">எச்சரிக்கை: முகப்புத் திரையிலுள்ள எந்தவொரு செயலி குறுக்குவழியும் நீக்கப்படும் மற்றும் கைமுறையாக மறுசேர்க்கப்பட வேண்டும்.</string>
     <string name="hiding_dialog_title">மறை %s இப்போது</string>
     <string name="hiding_calculator">கணக்கிடு</string>
-    <string name="panic_exit_title">பயன்பாட்டிலிருந்து வெளியேறு</string>
+    <string name="panic_exit_title">செயலியிலிருந்து வெளியேறு</string>
     <string name="deleting_repo">தற்போதைய களஞ்சியத்தை அழிக்கிறது…</string>
     <string name="panic_reset_repos_summary">களஞ்சியவமைப்பை இயல்புநிலைக்குத் திரும்ப கட்டாயப்படுத்து</string>
     <string name="panic_reset_repos_title">களஞ்சியங்களை அகரமாக்கு</string>
