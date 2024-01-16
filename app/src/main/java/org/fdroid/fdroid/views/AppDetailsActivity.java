@@ -41,6 +41,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.util.ObjectsCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -125,6 +126,11 @@ public class AppDetailsActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false); // clear title
         supportPostponeEnterTransition();
 
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_with_background);
+        toolbar.setOverflowIcon(
+                AppCompatResources.getDrawable(toolbar.getContext(), R.drawable.ic_more_with_background)
+        );
+
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         recyclerView = findViewById(R.id.rvDetails);
@@ -133,7 +139,7 @@ public class AppDetailsActivity extends AppCompatActivity
         lm.setStackFromEnd(false);
 
         packageName = getPackageNameFromIntent(getIntent());
-        if (packageName == null || TextUtils.isEmpty(packageName)) {
+        if (TextUtils.isEmpty(packageName)) {
             finish();
             return;
         }
