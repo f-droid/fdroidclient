@@ -4,18 +4,16 @@
 
     <item
         android:id="@+id/action_share"
-        android:icon="@drawable/ic_share"
+        android:icon="@drawable/ic_share_with_background"
         android:title="@string/menu_share"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_ignore_all"
-        android:icon="@drawable/ic_notifications_off"
         android:title="@string/menu_ignore_all"
         android:checkable="true"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_ignore_this"
-        android:icon="@drawable/ic_notifications_paused"
         android:title="@string/menu_ignore_this"
         android:checkable="true"
         app:showAsAction="never" />

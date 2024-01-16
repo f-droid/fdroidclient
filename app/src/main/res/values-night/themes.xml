@@ -53,6 +53,8 @@
         <item name="appDetailsAntiFeatureIconColor">#ffffff</item>
 
         <item name="screenshotPlaceholderIconColor">#424242</item>
+
+        <item name="iconBackgroundColor">#80121212</item>
     </style>
 
     <style name="Theme.App.Black" parent="Theme.App">
