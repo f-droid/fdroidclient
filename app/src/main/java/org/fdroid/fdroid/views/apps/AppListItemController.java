@@ -28,6 +28,8 @@ import androidx.core.util.Pair;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.progressindicator.LinearProgressIndicator;
+
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.FDroidDatabase;
@@ -47,8 +49,6 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
-
-import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.io.File;
 import java.util.Iterator;
@@ -214,6 +214,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         broadcastManager.registerReceiver(onStatusChanged, intentFilter);
+    }
+
+    void hideInstallButton() {
+        if (installButton != null) installButton.setVisibility(View.GONE);
     }
 
     /**

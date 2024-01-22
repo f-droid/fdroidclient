@@ -19,6 +19,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
     private final List<AppListItem> items = new ArrayList<>();
     private Runnable hasHiddenAppsCallback;
     private final AppCompatActivity activity;
+    private boolean hideInstallButton = false;
 
     AppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
@@ -28,6 +29,10 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
         this.items.clear();
         this.items.addAll(items);
         notifyDataSetChanged();
+    }
+
+    void setHideInstallButton(boolean hide) {
+        hideInstallButton = hide;
     }
 
     void setHasHiddenAppsCallback(Runnable callback) {
@@ -46,6 +51,7 @@ class AppListAdapter extends RecyclerView.Adapter<StandardAppListItemController>
         AppListItem appItem = items.get(position);
         final App app = new App(appItem);
         holder.bindModel(app, null, null);
+        if (hideInstallButton) holder.hideInstallButton();
 
         if (app.isDisabledByAntiFeatures(activity)) {
             holder.itemView.setVisibility(View.GONE);
