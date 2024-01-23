@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
     private void handleSearchOrAppViewIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            performSearch(query);
+            if (query != null) performSearch(query);
             return;
         }
 
@@ -372,14 +372,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * These strings might end up in a SQL query, so strip all non-alpha-num
      */
-    static String sanitizeSearchTerms(String query) {
+    static String sanitizeSearchTerms(@NonNull String query) {
         return query.replaceAll("[^\\p{L}\\d_ -]", " ");
     }
 
     /**
      * Initiates the {@link AppListActivity} with the relevant search terms passed in via the query arg.
      */
-    private void performSearch(String query) {
+    private void performSearch(@NonNull String query) {
         Intent searchIntent = new Intent(this, AppListActivity.class);
         searchIntent.putExtra(AppListActivity.EXTRA_SEARCH_TERMS, sanitizeSearchTerms(query));
         startActivity(searchIntent);
