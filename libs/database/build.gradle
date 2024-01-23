@@ -8,7 +8,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    namespace "org.fdroid.database"
+    compileSdk 34
 
     defaultConfig {
         minSdkVersion 21
@@ -43,8 +44,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     testOptions {
         unitTests {
@@ -52,7 +53,7 @@ android {
         }
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
         freeCompilerArgs += "-Xexplicit-api=strict"
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
@@ -73,9 +74,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
 
-    implementation "androidx.room:room-runtime:2.5.2"
-    implementation "androidx.room:room-ktx:2.5.2"
-    kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-runtime:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
 
     implementation 'io.github.microutils:kotlin-logging:2.1.21'
 
@@ -89,7 +90,7 @@ dependencies {
     testImplementation 'androidx.test:core:1.5.0'
     testImplementation 'androidx.test.ext:junit:1.1.5'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
-    testImplementation "androidx.room:room-testing:2.5.2"
+    testImplementation "androidx.room:room-testing:2.6.1"
     testImplementation 'org.robolectric:robolectric:4.10.3'
     testImplementation 'commons-io:commons-io:2.6'
     testImplementation 'ch.qos.logback:logback-classic:1.4.5'
@@ -103,7 +104,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.arch.core:core-testing:2.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.room:room-testing:2.5.2"
+    androidTestImplementation "androidx.room:room-testing:2.6.1"
     androidTestImplementation 'commons-io:commons-io:2.6'
 }
 

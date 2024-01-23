@@ -7,9 +7,9 @@ plugins {
 }
 
 kotlin {
-    android {
-        compilations.all {
-            kotlinOptions.jvmTarget = '1.8'
+    androidTarget {
+        compilations.configureEach {
+            kotlinOptions.jvmTarget = '17'
         }
         publishLibraryVariants("release")
     }
@@ -22,7 +22,7 @@ kotlin {
 //    else throw new GradleException("Host OS is not supported in Kotlin/Native.")
 
     sourceSets {
-        all {
+        configureEach {
             languageSettings {
                 optIn('kotlin.RequiresOptIn')
                 explicitApi('strict')
@@ -90,19 +90,21 @@ kotlin {
 }
 
 android {
-    compileSdkVersion 33
+    namespace "org.fdroid.download"
+    compileSdk 34
     sourceSets {
         main.manifest.srcFile('src/androidMain/AndroidManifest.xml')
         getByName("androidTest").java.srcDir(file("src/androidAndroidTest/kotlin"))
     }
     defaultConfig {
         minSdkVersion 21
+        targetSdkVersion 34 // needed for instrumentation tests
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         testInstrumentationRunnerArguments disableAnalytics: 'true'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     lintOptions {
         checkReleaseBuilds false

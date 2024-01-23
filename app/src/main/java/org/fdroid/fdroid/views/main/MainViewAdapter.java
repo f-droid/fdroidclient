@@ -87,25 +87,19 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
     @Override
     public MainViewController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         MainViewController holder = createEmptyView(activity);
-        switch (viewType) {
-            case R.id.latest:
-                holder.bindLatestView();
-                break;
-            case R.id.categories:
-                holder.bindCategoriesView();
-                break;
-            case R.id.nearby:
-                holder.bindSwapView();
-                break;
-            case R.id.updates:
-                // Hold of until onViewAttachedToWindow, because that is where we want to start listening
-                // for broadcast events (which is what the data binding does).
-                break;
-            case R.id.settings:
-                holder.bindSettingsView();
-                break;
-            default:
-                throw new IllegalStateException("Unknown view type " + viewType);
+        if (viewType == R.id.latest) {
+            holder.bindLatestView();
+        } else if (viewType == R.id.categories) {
+            holder.bindCategoriesView();
+        } else if (viewType == R.id.nearby) {
+            holder.bindSwapView();
+        } else if (viewType == R.id.updates) {
+            // Hold of until onViewAttachedToWindow, because that is where we want to start listening
+            // for broadcast events (which is what the data binding does).
+        } else if (viewType == R.id.settings) {
+            holder.bindSettingsView();
+        } else {
+            throw new IllegalStateException("Unknown view type " + viewType);
         }
         return holder;
     }

@@ -30,7 +30,7 @@ workflow:
     - test -e $cmdline_tools_latest && export PATH="$cmdline_tools_latest:$PATH"
 
     - export GRADLE_USER_HOME=$PWD/.gradle
-    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
+    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
     - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
     # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
     - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2026,'
@@ -206,7 +206,7 @@ libs database schema:
     - apt-get update
     - apt-get -qy --no-install-recommends install default-jdk-headless git sdkmanager
     - export ANDROID_HOME=/opt/android-sdk
-    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
+    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
     - sdkmanager "platforms;android-$ANDROID_COMPILE_SDK" "build-tools;30.0.3"
     - ./gradlew :libs:database:kaptDebugKotlin
     - git --no-pager diff --exit-code

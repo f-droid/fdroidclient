@@ -279,23 +279,23 @@ public class RepoDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            case R.id.menu_delete:
-                promptForDelete();
-                return true;
-            case R.id.menu_enable_nfc:
-                intent = new Intent(this, NfcNotEnabledActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.action_share:
-                intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
-                startActivity(Intent.createChooser(intent,
-                        getResources().getString(R.string.share_repository)));
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        } else if (itemId == R.id.menu_delete) {
+            promptForDelete();
+            return true;
+        } else if (itemId == R.id.menu_enable_nfc) {
+            intent = new Intent(this, NfcNotEnabledActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (itemId == R.id.action_share) {
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
+            startActivity(Intent.createChooser(intent,
+                    getResources().getString(R.string.share_repository)));
         }
 
         return super.onOptionsItemSelected(item);
@@ -318,7 +318,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         }
 
         boolean needsEnableNfcMenuItem;
-        needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
+        needsEnableNfcMenuItem = false; // TODO remove NFC code
 
         menuItem.setVisible(needsEnableNfcMenuItem);
     }

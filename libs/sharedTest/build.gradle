@@ -4,14 +4,18 @@ plugins {
     id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
 }
 
+kotlin {
+    jvmToolchain(17)
+}
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 // not really an Android library, but index is not publishing for JVM at the moment
 android {
-    compileSdkVersion 33
+    namespace 'org.fdroid.test'
+    compileSdk 34
     defaultConfig {
         minSdkVersion 21
     }

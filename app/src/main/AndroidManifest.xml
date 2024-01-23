@@ -24,7 +24,6 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.fdroid.fdroid"
     android:installLocation="auto">
 
     <supports-screens
