@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 class BluetoothConstants {
 
-    public static UUID fdroidUuid() {
+    static UUID fdroidUuid() {
         // TODO: Generate a UUID deterministically from, e.g. "org.fdroid.fdroid.net.Bluetooth";
         // This can be an offline process, as long as it can be reproduced by other people who
         // want to do so.
