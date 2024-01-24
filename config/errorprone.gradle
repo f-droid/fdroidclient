@@ -7,14 +7,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.ltgt.gradle:gradle-errorprone-plugin:2.0.2"
+        classpath "net.ltgt.gradle:gradle-errorprone-plugin:3.1.0"
     }
 }
 
 apply plugin: "net.ltgt.errorprone"
 
 dependencies {
-    errorprone("com.google.errorprone:error_prone_core:2.12.1")
+    errorprone("com.google.errorprone:error_prone_core:2.24.1")
 }
 
 tasks.withType(JavaCompile).configureEach {
