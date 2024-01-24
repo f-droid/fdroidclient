@@ -36,7 +36,7 @@ workflow:
     - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
     # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
     - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2026,'
-      /usr/lib/jvm/default-java/conf/security/java.security
+      /usr/lib/jvm/java-17-openjdk-amd64/conf/security/java.security
   after_script:
     # this file changes every time but should not be cached
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
