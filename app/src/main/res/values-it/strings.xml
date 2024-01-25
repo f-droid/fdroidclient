@@ -593,6 +593,7 @@
     <string name="ipfsgw_explainer">Scarica applicazioni da endpoint web IPFS. (Funziona solo per repository F-Droid con supporto IPFS.)</string>
     <string name="ipfsgw_add_title">Aggiungi gateway IPFS</string>
     <plurals name="ipfsgw_summary">
+        <item quantity="one">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
         <item quantity="many">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
         <item quantity="other">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
     </plurals>

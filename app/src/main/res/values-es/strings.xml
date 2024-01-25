@@ -590,6 +590,7 @@
     <string name="ipfsgw_explainer">Descargar las aplicaciones desde IPFS web endpoints. (Solo funciona para repositorios F-Droid compatibles con IPFS)</string>
     <string name="ipfsgw_add_title">Añadir una puerta de enlace IPFS</string>
     <plurals name="ipfsgw_summary">
+        <item quantity="one">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activado</item>
         <item quantity="many">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
         <item quantity="other">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
     </plurals>
