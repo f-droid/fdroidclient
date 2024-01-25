@@ -1,3 +1,13 @@
+### 1.19.0 (2024-01-25)
+
+* Add button background to App Details toolbar to improve visibility (@ConnyDuck)
+
+* Monochrome icon for F-Droid Basic (@ConnyDuck)
+
+* Handle trailing whitespace on repo fingerprint.
+
+* Use the correct toast message on interrupted download #2673 (@VishnuSanal)
+
 ### 1.19.0-alpha3 (2023-12-08)
 
 * IPFS Gateway settings are now in the Proxy section and no longer in Expert Mode
