@@ -512,7 +512,5 @@
     <string name="has_disallow_install_unknown_sources">ಹೊಸ ರೆಪೋಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಈ ಬಳಕೆದಾರನಿಂದ ಅಜ್ಞಾತ ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
     <string name="app_list_results_hidden_antifeature_settings">ನಿಮ್ಮ ಆಂಟಿಫೀಚರ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಆಧರಿಸಿ ಕೆಲವು ಫಲಿತಾಂಶಗಳನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ.</string>
     <string name="has_disallow_install_unknown_sources_globally">ಹೊಸ ರೆಪೊಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಅಜ್ಞಾತ ಮೂಲಗಳಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ನಿಮ್ಮ ಸಾಧನ ನಿರ್ವಾಹಕರು ಅನುಮತಿಸುವುದಿಲ್ಲ</string>
-    <string name="use_ipfs_gateways">IPFS ಗೇಟ್ವೇ ಅನ್ನು ಬಳಸಿರಿ</string>
     <string name="swap_wifi_vpn_conflict">ಸಕ್ರಿಯ ವಿ.ಪಿ.ಎನ್ ಜೊತೆಗೆ ಸಂಘರ್ಷಿಸುತ್ತದೆ!</string>
-    <string name="use_ipfs_gateways_summary">ರೆಪೊ ಬೆಂಬಲಿಸಿದರೆ IPFS ಕನ್ನಡಿಗಳಿಂದ ಫೈಲ್‌ಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.</string>
 </resources>

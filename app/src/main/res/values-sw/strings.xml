@@ -10,8 +10,6 @@
     <string name="send_install_history">Tuma Historia ya Kusakinisha</string>
     <string name="send_to_fdroid_metrics">Tuma data ya matumizi</string>
     <string name="send_to_fdroid_metrics_summary">Hutuma data isiyotambulisha kila wiki kwa F-Droid Metrics (inahitaji uwekaji wa Historia ya usimikaji)</string>
-    <string name="use_ipfs_gateways">Tumia malango ya IPFS</string>
-    <string name="use_ipfs_gateways_summary">Pakua faili kutoka kwa vioo vya IPFS, ikiwa imekubaliwa na ghala.</string>
     <string name="send_version_and_uuid">Tuma toleo na UUID kwa seva</string>
     <string name="scan_removable_storage_title">Kagua hifadhi inayoweza kutolewa</string>
     <string name="scan_removable_storage_toast">Kukagua %s…</string>

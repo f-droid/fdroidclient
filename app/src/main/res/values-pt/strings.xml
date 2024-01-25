@@ -538,8 +538,6 @@
     <string name="antinsfw">Não é seguro para o trabalho</string>
     <string name="menu_release_channel_beta">Permitir atualizações Beta</string>
     <string name="latest__empty_state__upgrading">A atualizar a base de dados…</string>
-    <string name="use_ipfs_gateways">Usar gateways de IPFS</string>
-    <string name="use_ipfs_gateways_summary">Descarregar ficheiros de espelhos de IPFS, se forem suportados pelo repo.</string>
     <string name="app_name_basic">F-Droid Básico</string>
     <string name="about_title_basic">Acerca do F-Droid Básico</string>
     <string name="category_Nightly">noturno</string>

@@ -556,8 +556,6 @@
     <string name="antinsfw">Non segura pro su traballu</string>
     <string name="menu_release_channel_beta">Permite sos agiornamentos beta</string>
     <string name="latest__empty_state__upgrading">Agiornende sa base de datos…</string>
-    <string name="use_ipfs_gateways">Imprea sas pontigras IPFS</string>
-    <string name="use_ipfs_gateways_summary">Iscàrriga sos documentos dae serbidores ispigru IPFS, si sunt suportados dae su depòsitu.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Subra de F-Droid Basic</string>
     <string name="antinsfwlist">usta aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>

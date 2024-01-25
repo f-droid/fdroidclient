@@ -533,8 +533,6 @@
     <string name="antinonfreedep">Niet-vrije afhankelijkheden</string>
     <string name="latest__empty_state__upgrading">Database upgraden…</string>
     <string name="menu_release_channel_beta">Sta Beta-updates toe</string>
-    <string name="use_ipfs_gateways">Gebruik IPFS-gateways</string>
-    <string name="use_ipfs_gateways_summary">Download bestanden van IPFS-mirrors, als dit ondersteund wordt door de repo.</string>
     <string name="app_name_basic">F-Droid Basis</string>
     <string name="about_title_basic">About F-Droid Basis</string>
     <string name="repo_last_update_downloaded">Laatste update gedownload</string>

@@ -528,7 +528,5 @@
     <string name="antinsfw">Ang app na ito\'y naglalaman ng mga bagay na \'di dapat ilathalain o nakikita sa kahit saan</string>
     <string name="latest__empty_state__upgrading">Inaupgrade ang database…</string>
     <string name="menu_release_channel_beta">Payagan ang mga Beta Updates</string>
-    <string name="use_ipfs_gateways">Gumamit ng mga IPFS gateway</string>
-    <string name="use_ipfs_gateways_summary">Mag-download ng mga file galing sa mga IPFS mirror, kung suportado ng repo.</string>
     <string name="app_name_basic">F-Droid Basic</string>
 </resources>

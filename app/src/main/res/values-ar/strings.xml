@@ -567,11 +567,9 @@
     <string name="antinsfw">غير آمن للعمل</string>
     <string name="latest__empty_state__upgrading">جارٍ ترقية قاعدة البيانات…</string>
     <string name="menu_release_channel_beta">السماح بتحديثات النسخة التجريبية (بيتا)</string>
-    <string name="use_ipfs_gateways">استخدام بوابات IPFS</string>
     <string name="app_error_open">تعذر تشغيل التطبيق.</string>
     <string name="category_Nightly">الليلي</string>
     <string name="warning_target_sdk">تم إنشاء هذا التطبيق لإصدار أقدم من Android ولا يمكن تحديثه تلقائيًا.</string>
-    <string name="use_ipfs_gateways_summary">قم بتنزيل الملفات من مرايا التي تدعم برتوكولIPFS ، إذا كان مدعوما من قبل المستودع.</string>
     <string name="app_name_basic">إف-درويد البسيط</string>
     <string name="about_title_basic">حول إف-درويد البسيط</string>
     <string name="antinsfwlist">يتضمن هذا التطبيق محتوى لا ينبغي نشره أو إبرازه في كل مكان</string>
@@ -600,7 +598,6 @@
     <string name="copied_permission_to_clipboard">تم نسخ اسم الإذن إلى الحافظة</string>
     <string name="copied_url_to_clipboard">نسخ الرابط إلى الحافظة</string>
     <string name="targetsdk_or_later">الأهداف %s</string>
-    <string name="repo_num_apps_link">%s (انقر لعرض قائمة التطبيقات)</string>
     <string name="repo_num_apps_button">عرض التطبيقات</string>
     <string name="ipfsgw_caption_official_gateways">بوابات IPFS الرسمية</string>
     <string name="ipfsgw_summary_disabled">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS: معطل</string>

@@ -538,8 +538,6 @@
     <string name="antinsfw">Není bezpečné pro práci</string>
     <string name="menu_release_channel_beta">Povolit beta aktualizace</string>
     <string name="latest__empty_state__upgrading">Aktualizace databáze…</string>
-    <string name="use_ipfs_gateways">Používat brány IPFS</string>
-    <string name="use_ipfs_gateways_summary">Stahovat soubory ze zrcadel IPFS, pokud je repozitář podporuje.</string>
     <string name="about_title_basic">O aplikaci F-Droid Basic</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="antinsfwlist">Tato aplikace zahrnuje obsah, který by neměl být zveřejňován nebo viditelný na všech místech</string>
@@ -571,7 +569,6 @@
     <string name="copied_permission_to_clipboard">Název oprávnění zkopírován do schránky</string>
     <string name="copied_url_to_clipboard">Adresa URL zkopírována do schránky</string>
     <string name="targetsdk_or_later">cílová verze %s</string>
-    <string name="repo_num_apps_link">%s (klepněte pro zobrazení všech aplikací)</string>
     <string name="repo_num_apps_button">Zobrazit aplikace</string>
     <string name="ipfsgw_caption_official_gateways">Oficiální brány IPFS</string>
     <string name="ipfsgw_summary_disabled">Stáhnout aplikaci pomocí webových koncových bodů IPFS: zakázáno</string>

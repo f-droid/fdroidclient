@@ -518,8 +518,6 @@
     <string name="antinsfw">不適合在工作場所使用</string>
     <string name="menu_release_channel_beta">允許測試版更新</string>
     <string name="latest__empty_state__upgrading">正在升級資料庫…</string>
-    <string name="use_ipfs_gateways">使用 IPFS 閘道</string>
-    <string name="use_ipfs_gateways_summary">從 IPFS 鏡像下載檔案 (若軟體庫支援)。</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="antinsfwlist">此應用可能包含裸露、暴力、色情或冒犯等不適宜公眾場合的內容</string>
     <string name="repo_last_update_downloaded">上次下載的更新</string>
@@ -549,7 +547,6 @@
     <string name="repo_intro">倉庫是額外的程式來源。您添加的第三方倉庫的標準跟那些提供由F-droid自行構建的程式標準不同。
 \n
 \n請確保您所添加的倉庫是可信的。</string>
-    <string name="repo_num_apps_link">%s（點擊以列出所有程式）</string>
     <string name="swap_banner_message">要交換程式，請開啟您的 wifi 並與您的朋友連線到同一個網路。</string>
     <string name="swap_connection_indexv0_error">您正在嘗試使用過時的版本連線到某處。要連線，他們必須升級他們的 F-Droid 應用程式。他們可以使用交換來更新來自您的 F-Droid 應用程式。</string>
     <string name="repo_num_apps_button">顯示應用程式</string>

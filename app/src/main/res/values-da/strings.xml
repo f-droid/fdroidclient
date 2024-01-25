@@ -520,8 +520,6 @@
     <string name="antinosource">Kildekode Ikke Længere Tilgængelig</string>
     <string name="latest__empty_state__upgrading">Opgraderer database…</string>
     <string name="menu_release_channel_beta">Tillad Betaopdateringer</string>
-    <string name="use_ipfs_gateways">Brug IPFS-gateways</string>
-    <string name="use_ipfs_gateways_summary">Download filer fra IPFS-spejle, hvis understøttet af arkivet.</string>
     <string name="about_title_full">Omkring F-Droid</string>
     <string name="app_error_open">Kunne ikke starte appen.</string>
     <string name="force_old_installer_title">Gennemtving ældre installation</string>

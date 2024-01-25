@@ -555,6 +555,4 @@
     <string name="antiothers">Druge slabe funkcije</string>
     <string name="app_error_open">Aplikacije ni bilo mogoče zagnati.</string>
     <string name="antinsfwlist">Ta aplikacija vsebuje vsebino, ki ne bi smela biti objavljena ali vidna povsod</string>
-    <string name="use_ipfs_gateways">Uporabite prehode IPFS</string>
-    <string name="use_ipfs_gateways_summary">Prenesite datoteke iz zrcal IPFS, če to skladišče podpira.</string>
 </resources>

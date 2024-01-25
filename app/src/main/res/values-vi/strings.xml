@@ -535,6 +535,4 @@
     <string name="warning_target_sdk">Ứng dụng này được tạo cho phiên bản Android cũ hơn và không thể cập nhật tự động.</string>
     <string name="repo_last_update_downloaded">Bản cập nhật cuối cùng đã tải xuống</string>
     <string name="antinsfwlist">Ứng dụng này chứa nội dung không nên công khai hoặc có thể nhìn thấy ở mọi nơi</string>
-    <string name="use_ipfs_gateways">Sử dụng cổng IPFS</string>
-    <string name="use_ipfs_gateways_summary">Tải các tệp xuống từ máy chủ IPFS, nếu được kho hỗ trợ.</string>
 </resources>

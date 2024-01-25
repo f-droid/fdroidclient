@@ -528,8 +528,6 @@
     <string name="antinsfw">काम के लिए सुरक्षित नहीं</string>
     <string name="menu_release_channel_beta">बीटा अपडेट की अनुमति दें</string>
     <string name="latest__empty_state__upgrading">डेटाबेस का नवीनीकरण किया जा रहा…</string>
-    <string name="use_ipfs_gateways_summary">रेपो द्वारा समर्थित होने पर, IPFS मिरर से फ़ाइलें डाउनलोड करें।</string>
-    <string name="use_ipfs_gateways">IPFS गेटवे का उपयोग करें</string>
     <string name="about_title_basic">एफ-ड्रॉइड बेसिक के बारे में</string>
     <string name="repo_last_update_downloaded">अंतिम अपडेट डाउनलोड किया गया</string>
     <string name="app_name_basic">एफ-ड्रॉइड बेसिक</string>

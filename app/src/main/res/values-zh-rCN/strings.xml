@@ -513,8 +513,6 @@
     <string name="antinsfw">包含不适合工作场所的内容</string>
     <string name="menu_release_channel_beta">允许测试版更新</string>
     <string name="latest__empty_state__upgrading">正在升级数据库……</string>
-    <string name="use_ipfs_gateways">使用 IPFS 网关</string>
-    <string name="use_ipfs_gateways_summary">如存储库支持，从 IPFS 镜像下载文件。</string>
     <string name="app_name_basic">F-Droid 基础版</string>
     <string name="about_title_basic">关于 F-Droid 基础版</string>
     <string name="category_Nightly">每夜版</string>
@@ -546,7 +544,6 @@
     <string name="copied_permission_to_clipboard">已复制权限名到剪贴板</string>
     <string name="copied_url_to_clipboard">已复制链接到剪贴板</string>
     <string name="targetsdk_or_later">目标 SDK 版本 %s</string>
-    <string name="repo_num_apps_link">%s（点按列出所有应用）</string>
     <string name="repo_num_apps_button">显示应用</string>
     <string name="ipfsgw_caption_official_gateways">官方 IPFS 网关</string>
     <string name="ipfsgw_summary_disabled">使用 IPFS 网络端点下载应用：已禁用</string>

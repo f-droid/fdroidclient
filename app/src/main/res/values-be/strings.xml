@@ -527,8 +527,6 @@
     <string name="fdroid_metrics_report">%s Паведамленне Аб Выкарыстанні</string>
     <string name="toast_metrics_in_install_history">%s Паведамленне аб выкарыстанні можна праглядзець ў праглядчыку Гісторыі Ўсталёвак</string>
     <string name="swap_wifi_vpn_conflict">Канфліктуе з актыўным VPN!</string>
-    <string name="use_ipfs_gateways">Выкарыстоўваць IPFS шлюзы</string>
-    <string name="use_ipfs_gateways_summary">Усталёўвае файлы з IPFS люстэрак, калі падтрымліваецца рэпазіторыем.</string>
     <string name="antitrack">Сачэнне</string>
     <string name="antiknownvuln">Вядомая Ўразлівасць Бяспекі</string>
     <string name="antiothers">Другія Анты Функцыі</string>

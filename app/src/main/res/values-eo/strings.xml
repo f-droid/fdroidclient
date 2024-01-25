@@ -526,8 +526,6 @@
     <string name="antinsfw">Maldeca enhavo</string>
     <string name="menu_release_channel_beta">Ĝisdatigi al beta-versioj</string>
     <string name="latest__empty_state__upgrading">Promociado de datumbazo…</string>
-    <string name="use_ipfs_gateways">Uzi IPFS-kluzojn</string>
-    <string name="use_ipfs_gateways_summary">Elŝuti dosierojn el spegulserviloj IPFS – se subtenataj de la deponejo.</string>
     <string name="repo_last_update_downloaded">Lasta ĝisdatigo elŝutita</string>
     <string name="app_name_full">F-Droid</string>
     <string name="app_name_basic">F-Droid Baza</string>
@@ -561,7 +559,6 @@
     <string name="targetsdk_or_later">celas %s</string>
     <string name="copied_permission_to_clipboard">Nomo de permeso kopiita al tondujo</string>
     <string name="copied_url_to_clipboard">Ligilo kopiita al tondujo</string>
-    <string name="repo_num_apps_link">%s (frapetu por listigi ĉiujn)</string>
     <string name="repo_num_apps_button">Montri aplikaĵojn</string>
     <string name="ipfsgw_caption_official_gateways">Oficialaj IPFS-kluzoj</string>
     <string name="ipfsgw_summary_disabled">Elŝuti aplikaĵojn el retejaj IPFS-kluzoj: malaktiva</string>

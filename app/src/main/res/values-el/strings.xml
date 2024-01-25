@@ -543,8 +543,6 @@
     <string name="antinsfw">Μη ασφαλή για δουλειά.</string>
     <string name="menu_release_channel_beta">Να επιτρέπονται οι ενημερώσεις Beta</string>
     <string name="latest__empty_state__upgrading">Αναβάθμιση βάσης δεδομένων…</string>
-    <string name="use_ipfs_gateways">Χρησιμοποιήστε πύλες IPFS</string>
-    <string name="use_ipfs_gateways_summary">Λήψη αρχείων από πηγές IPFS, εάν υποστηρίζονται από το repo.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Σχετικά με το F-Droid Basic</string>
     <string name="category_Nightly">Αυτόματες Εκδώσεις</string>

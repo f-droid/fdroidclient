@@ -518,6 +518,4 @@
     <string name="antinonfreeassets">비자유 애셋</string>
     <string name="latest__empty_state__upgrading">데이터베이스 업그레이드 중…</string>
     <string name="menu_release_channel_beta">베타 업데이트 허용</string>
-    <string name="use_ipfs_gateways_summary">레포지토리에서 지원하는 경우 IPFS 미러로 다운로드.</string>
-    <string name="use_ipfs_gateways">IPFS 게이트웨이 사용</string>
 </resources>

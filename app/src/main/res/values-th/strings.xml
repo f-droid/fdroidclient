@@ -496,7 +496,6 @@
     <string name="swap_connection_indexv0_error">คุณกำลังพยายามเชื่อมต่อกับบุคคลที่มี F-Droid เวอร์ชันล้าสมัย หากต้องการเชื่อมต่อต้องอัปเกรดแอป F-Droid พวกเขาสามารถใช้ การสลับแลกเปลี่ยน เพื่ออัปเดตแอป F-Droid จากคุณได้</string>
     <string name="notification_channel_installs_description">แสดงการแจ้งเตือนการติดตั้งแอป</string>
     <string name="nearby_splash__read_external_storage">ค้นหาการ์ด SD เพื่อหา repos และ แหล่งข้อมูล</string>
-    <string name="use_ipfs_gateways">ใช้เกตเวย์ IPFS</string>
     <string name="antifeatures">ต่อต้านคุณสมบัติ</string>
     <string name="app_name_basic">F-Droid พื้นฐาน</string>
     <string name="menu_show_install_history">แสดงประวัติการติดตั้ง</string>
@@ -527,7 +526,6 @@
     <string name="panic_hide_warning_title">จำวิธีการคืนค่า</string>
     <string name="repo_exists_add_mirror">นี่คือสำเนาของ %1$s เพิ่มเป็นแหล่งข้อมูลใช่ไหม\?</string>
     <string name="notification_channel_updates_title">อัพเดท</string>
-    <string name="use_ipfs_gateways_summary">ดาวน์โหลดไฟล์จากมิเรอร์ IPFS หาก repo รองรับ</string>
     <string name="panic_will_be_wiped">จะถูกถอนการติดตั้งและข้อมูลทั้งหมดจะถูกลบ</string>
     <string name="has_disallow_install_unknown_sources_globally">ผู้ดูแลอุปกรณ์ของคุณไม่อนุญาตให้ติดตั้งแอปจากแหล่งที่ไม่รู้จักซึ่งรวมถึง repos ใหม่</string>
     <string name="antinosourcesince">ซอร์สโค้ดไม่สามารถใช้งานได้อีกต่อไป และไม่สามารถอัปเดตได้</string>

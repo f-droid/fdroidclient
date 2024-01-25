@@ -553,8 +553,6 @@
     <string name="antinsfw">Impróprio para o Ambiente de Trabalho</string>
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
     <string name="latest__empty_state__upgrading">Atualizando banco de dados…</string>
-    <string name="use_ipfs_gateways">Usar gateways IPFS</string>
-    <string name="use_ipfs_gateways_summary">Baixar arquivos de espelhos IPFS, caso suportado pelo repositório.</string>
     <string name="app_name_basic">F-Droid Básico</string>
     <string name="about_title_basic">Sobre o F-Droid Básico</string>
     <string name="antinsfwlist">Este aplicativo contém conteúdo que não deve ser público ou visível em todo lugar</string>

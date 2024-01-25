@@ -534,8 +534,6 @@
     <string name="app_error_open">Get ekki ræst forrit.</string>
     <string name="repo_last_update_downloaded">Síðasta uppfærsla sótt</string>
     <string name="category_Nightly">dagleg útgáfa</string>
-    <string name="use_ipfs_gateways">Nota IPFS-gáttir</string>
-    <string name="use_ipfs_gateways_summary">Sækja skrár frá IPFS-speglum, ef hugbúnaðarsafnið styður það.</string>
     <string name="about_title_basic">Um grunnútgáfu F-Droid</string>
     <string name="copied_to_clipboard">Afritað á klippispjald</string>
     <string name="turn_on_wifi">Kveikja á þráðlausu neti</string>

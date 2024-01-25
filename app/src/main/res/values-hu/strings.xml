@@ -526,8 +526,6 @@
     <string name="antinsfw">Munkahelyen nem megfelelő</string>
     <string name="menu_release_channel_beta">Béta frissítések engedélyezése</string>
     <string name="latest__empty_state__upgrading">Adatbázis frissítése…</string>
-    <string name="use_ipfs_gateways">IPFS-átjárók használata</string>
-    <string name="use_ipfs_gateways_summary">A fájlok letöltése IPFS-átjárókról, ha támogatja a tároló.</string>
     <string name="app_name_basic">Alap F-Droid</string>
     <string name="about_title_basic">Az Alap F-Droid névjegye</string>
     <string name="category_Nightly">napi</string>

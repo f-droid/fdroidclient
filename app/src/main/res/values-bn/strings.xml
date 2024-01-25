@@ -529,8 +529,6 @@
     <string name="latest__empty_state__upgrading">তথ্যভাণ্ডার হালনাগাদ করা হচ্ছে…</string>
     <string name="menu_release_channel_beta">পরীক্ষামূলক হালনাগাদ অনুমোদন করো</string>
     <string name="app_name_basic">এফ-ড্রয়েড মৌলিক</string>
-    <string name="use_ipfs_gateways">আইপিএফএস গেটওয়ে ব্যবহার করো</string>
-    <string name="use_ipfs_gateways_summary">আইপিএফএস আয়না থেকে নথি নামাও, যদি ভাণ্ডার তা সমর্থন করে।</string>
     <string name="antinsfwlist">এই অ্যাপে এমন বস্তু আছে যা সর্বত্র প্রচারিত বা দৃশ্যমান হওয়া উচিত নয়</string>
     <string name="repo_last_update_downloaded">সর্বশেষ হালনাগাদ নামানো হয়েছে</string>
     <string name="app_error_open">অ্যাপটি চালু করা যায়নি।</string>

@@ -526,8 +526,6 @@
     <string name="antiupstreamnonfree">സൗജന്യമല്ലാത്ത അപ്സ്ട്രീം</string>
     <string name="antidisabledalgorithm">സുരക്ഷിതമല്ലാത്ത അൽഗോരിതം ഉപയോഗിച്ചാണ് ഒപ്പിട്ടത്</string>
     <string name="antinonfreeassets">സൗജന്യമല്ലാത്ത ആസ്തികൾ</string>
-    <string name="use_ipfs_gateways">ഐപിഎഫ്എസ് ഗേറ്റ്‌വേകൾ ഉപയോഗിക്കുക</string>
-    <string name="use_ipfs_gateways_summary">റിപ്പോ പിന്തുണയ്ക്കുന്ന ഐപിഎഫ് ഫസ് മിററുകളിൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക.</string>
     <string name="app_name_basic">എഫ്-ഡ്രോയ്ഡ് ലളിതം</string>
     <string name="app_error_open">ആപ്പ് ലോഞ്ച് ചെയ്യാനായില്ല.</string>
     <string name="about_title_basic">F-Droid ബേസിക്കിനെക്കുറിച്ച്</string>
