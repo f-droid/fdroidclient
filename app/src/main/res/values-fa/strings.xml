@@ -528,8 +528,6 @@
     <string name="antinsfw">نامناسب برای محل کار</string>
     <string name="menu_release_channel_beta">اجازهٔ به‌روز رسانی‌های بتا</string>
     <string name="latest__empty_state__upgrading">ارتقا دادن پایگاه داده…</string>
-    <string name="use_ipfs_gateways">استفاده از دروازه‌های IPFS</string>
-    <string name="use_ipfs_gateways_summary">بارگیری پرونده‌ها از آینه‌های IPFS در صورت پشتیبانی به دست مخزن.</string>
     <string name="antinsfwlist">این کاره محتوایی دارد که نباید همه‌جا نمایان یا عمومی باشد</string>
     <string name="repo_last_update_downloaded">آخرین به‌روز رسانی بارگیری شد</string>
     <string name="app_error_open">نتوانست کاره را اجرا کند.</string>
@@ -560,7 +558,6 @@
 \n
 \nلطفاً مطمئن شوید که مخزنی که می‌افزایید قابل اطمینان است.</string>
     <string name="swap_connection_indexv0_error">در حال تلاش برای وصل شدن به شخصی با نگارشی خارج از رده از اف‌دروید هستید. برای وصل شدن باید کارهٔ اف‌درویدشان را ارتقا دهند. می‌توانند برای به‌روز رسانی کارهٔ اف‌دروید با مبادله از شما استفاده کنند.</string>
-    <string name="repo_num_apps_link">%s (زدن برای دیدن همهٔ کاره‌ها)</string>
     <string name="swap_banner_message">برای مبادلهٔ کاره‌ها وای‌فایتان را روشن کرده و به همان شبکهٔ دوستتان وصل شوید.</string>
     <string name="repo_num_apps_button">نمایش کاره‌ها</string>
     <string name="ipfsgw_caption_official_gateways">دروازه‌های رسمی IPFS</string>

@@ -554,6 +554,4 @@
     <string name="menu_show_install_history">Ukázať históriu inštalácií</string>
     <string name="menu_release_channel_beta">Povoliť Beta aktualizácie</string>
     <string name="latest__empty_state__upgrading">Prebieha upgrade databázy…</string>
-    <string name="use_ipfs_gateways">Použiť IPFS brány</string>
-    <string name="use_ipfs_gateways_summary">Stiahnuť súbory z IPFS zrkadiel, pokiaľ sú podporované repozitárom.</string>
 </resources>

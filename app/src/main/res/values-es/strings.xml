@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">La versión nueva está firmada con una clave diferente a la antigua. Para instalar la versión nueva, la antigua debe desinstalarse antes. Hágalo y pruebe de nuevo. (Considere que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
+    <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, primero hay que desinstalar la antigua. Por favor, hazlo e inténtalo de nuevo. (Tenga en cuenta que la desinstalación borrará todos los datos internos almacenados por la aplicación)</string>
     <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Quiere instalarla de todos modos\?</string>
     <string name="version">Versión</string>
     <string name="delete">Eliminar</string>
@@ -119,7 +119,7 @@
     <string name="repo_added">Repositorio de paquetes guardado %1$s.</string>
     <string name="repo_searching_address">Buscando repositorio de paquetes en
 \n%1$s</string>
-    <string name="not_on_same_wifi">Su dispositivo no está en la misma red wifi que el repositorio local que acaba de añadir. Intente unirse a esta red: %s</string>
+    <string name="not_on_same_wifi">¡Su dispositivo no está en la misma Wi-Fi que el repositorio local que acaba de agregar! Intente unirse a esta red: %s</string>
     <string name="requires_features">Requiere: %1$s</string>
     <string name="category_Development">Desarrollo</string>
     <string name="category_Games">Juegos</string>
@@ -389,7 +389,7 @@
     <string name="by_author_format">por %s</string>
     <string name="download_404">No se ha encontrado archivo solicitado.</string>
     <string name="force_old_index">Forzar el formato de índice antiguo</string>
-    <string name="force_old_index_summary">En caso de que haya problemas o incompatibilidades, usar el formato XML para el índice de aplicaciones</string>
+    <string name="force_old_index_summary">En caso de que haya errores o problemas de compatibilidad, utilice el índice de aplicaciones XML</string>
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
     <string name="status_inserting_x_apps">Guardando detalles de la aplicación (%1$d/%2$d) desde %3$s</string>
     <string name="app_installed_media">Archivo instalado en %s</string>
@@ -467,7 +467,7 @@
     <string name="hide_all_notifications_summary">Evitar mostrar acciones en la barra y el panel de notificaciones.</string>
     <string name="send_install_history">Enviar historial de instalación</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones deshabilitadas por los ajustes de datos/WiFi</string>
-    <string name="send_history_csv">%s instalar histórico como un archivo CSV</string>
+    <string name="send_history_csv">%s historial de instalación como archivo CSV</string>
     <string name="about_forum">Foro de asistencia</string>
     <string name="app_suggested">Sugerido</string>
     <string name="app_size">Tamaño: %1$s</string>
@@ -478,7 +478,7 @@
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="app_repository">Repositorio: %1$s</string>
-    <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en unidades de almacenamiento extraíble como tarjetas SD y dispositivos USB</string>
+    <string name="scan_removable_storage_summary">Busque repositorios de paquetes en dispositivos de almacenamiento extraíbles, como tarjetas SD y memorias USB.</string>
     <string name="main_menu__updates">Avisos</string>
     <string name="nearby_splash__read_external_storage">Buscar repositorios y réplicas en la tarjeta SD.</string>
     <string name="nearby_splash__request_permission">Buscar ahora</string>
@@ -522,7 +522,7 @@
     <string name="send_to_fdroid_metrics">Enviar información de uso</string>
     <string name="fdroid_metrics_report">Informe de métricas de %s</string>
     <string name="install_history_and_metrics">Instalar historial y métricas</string>
-    <string name="send_fdroid_metrics_json">%s reporte de métricas como un archivo JSON</string>
+    <string name="send_fdroid_metrics_json">Informe de métricas %s como archivo JSON</string>
     <string name="send_fdroid_metrics_report">Enviar reporte de métricas %s</string>
     <string name="theme_follow_system">Usar el del sistema</string>
     <string name="use_pure_black_dark_theme_summary">Recomendado sólo para pantallas OLED.</string>
@@ -548,8 +548,6 @@
     <string name="antinsfw">No es segura para el trabajo</string>
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
-    <string name="use_ipfs_gateways">Utilizar las pasarelas IPFS</string>
-    <string name="use_ipfs_gateways_summary">Descargar los archivos de réplicas IPFS, si el repositorio lo admite.</string>
     <string name="antinsfwlist">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
     <string name="repo_last_update_downloaded">Última actualización descargada</string>
     <string name="app_name_basic">F-Droid Basic</string>
@@ -580,4 +578,20 @@
     <string name="copied_permission_to_clipboard">Nombre de permiso copiado al portapapeles</string>
     <string name="copied_url_to_clipboard">URL copiada al portapapeles</string>
     <string name="force_old_installer_summary">Deshabilita el instalador de Sesión beta, incluida la compatibilidad con actualizaciones automáticas en segundo plano.</string>
+    <string name="targetsdk_or_later">objetivos %s</string>
+    <string name="repo_num_apps_button">Mostrar las aplicaciones</string>
+    <string name="ipfsgw_caption_official_gateways">Pasarelas oficiales IPFS</string>
+    <string name="ipfsgw_summary_disabled">Descarga de aplicaciones mediante puntos finales web IPFS: desactivado</string>
+    <string name="ipfsgw_title">Puertas de enlace IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Pasarelas IPFS personalizadas</string>
+    <string name="paste">Pegar</string>PluralsCandidate
+
+    <string name="ipfsgw_add_add">Añadir</string>
+    <string name="ipfsgw_explainer">Descargar las aplicaciones desde IPFS web endpoints. (Solo funciona para repositorios F-Droid compatibles con IPFS)</string>
+    <string name="ipfsgw_add_title">Añadir una puerta de enlace IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activado</item>
+        <item quantity="many">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
+        <item quantity="other">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
+    </plurals>
 </resources>

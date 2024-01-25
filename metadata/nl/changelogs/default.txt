@@ -1,0 +1,15 @@
+* Repo- en spiegelafhandeling reviseren, zowel UX als code
+
+* Voorvertoning van nieuwe repo's tonen
+
+* Installeren met F-Droid en F-Droid Basic ondersteunt nu automatische achtergrondupdates
+
+* Op Android 14, markeer apps met niet-ondersteunde doel-SDK-versie als incompatibel #2692
+
+* Lang klikken om koppelingen, machtigingen en versies te kopiëren in app detailscherm (@Tobias_Groza)
+
+* Incompatibele apps worden alleen getoond wanneer toegestaan in Instellingen #41 (@pigpig)
+
+* Nieuwe IPFS Gateways Instellingen
+
+* Taalselectie per app (@Licaon-Kter)

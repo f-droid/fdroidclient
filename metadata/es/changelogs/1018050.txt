@@ -1,7 +1,7 @@
-* Corregido el uso de los repos y los espejos desde el Almacenamiento Externo en versiones recientes de Android.
-* Mejorada la gestión de la WiFi en Nearby
-* La barra de navegación ahora recuerda la posición incluso cuando F-Droid se reinicia.
+* Corregido el uso de repos y espejos desde almacenamiento externo en versiones recientes de Android.
+* Mejorada la gestión de WiFi en Nearby
+* La barra de navegación ahora recuerda su posición incluso cuando F-Droid se reinicia.
 * Nuevo idioma: Swahili
-* Corrección en la descarga de las imágenes para los repos que todavía usan index-v1
-* Corrección de fallos relacionados con swap, gestión de los repos y más.
+* Corrección de la descarga de imágenes para repos que todavía usan index-v1
+* Corrección de fallos relacionados con swap, gestión de repos y más.
 * El botón de Downgrade ha sido eliminado, Android ya no lo permite.

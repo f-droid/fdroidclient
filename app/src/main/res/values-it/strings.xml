@@ -551,8 +551,6 @@
     <string name="antinsfw">Non sicura per il lavoro</string>
     <string name="menu_release_channel_beta">Permetti aggiornamenti Beta</string>
     <string name="latest__empty_state__upgrading">Aggiornamento database…</string>
-    <string name="use_ipfs_gateways">Usa i gateway IPFS</string>
-    <string name="use_ipfs_gateways_summary">Scarica file dai mirror IPFS, se supportati dal repository.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Informazioni su F-Droid Basic</string>
     <string name="repo_last_update_downloaded">Ultimo aggiornamento scaricato</string>
@@ -583,7 +581,6 @@
     <string name="copied_to_clipboard">Copiato negli appunti</string>
     <string name="copied_permission_to_clipboard">Nome dell\'autorizzazione copiato negli appunti</string>
     <string name="copied_url_to_clipboard">URL copiato negli appunti</string>
-    <string name="repo_num_apps_link">%s (tocca per elencare tutte le app)</string>
     <string name="repo_num_apps_button">Mostra le app</string>
     <string name="targetsdk_or_later">punta a %s</string>
     <string name="ipfsgw_caption_official_gateways">Gateway IPFS ufficiali</string>
@@ -596,7 +593,7 @@
     <string name="ipfsgw_explainer">Scarica applicazioni da endpoint web IPFS. (Funziona solo per repository F-Droid con supporto IPFS.)</string>
     <string name="ipfsgw_add_title">Aggiungi gateway IPFS</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one"></item>
+        <item quantity="one">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
         <item quantity="many">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
         <item quantity="other">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
     </plurals>

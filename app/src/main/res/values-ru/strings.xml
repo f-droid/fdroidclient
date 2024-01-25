@@ -548,8 +548,6 @@
     <string name="antinsfw">Небезопасно для работы</string>
     <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
     <string name="latest__empty_state__upgrading">Обновление базы данных…</string>
-    <string name="use_ipfs_gateways">Используйте шлюзы IPFS</string>
-    <string name="use_ipfs_gateways_summary">Загружать файлы с зеркал IPFS, если это поддерживается репозиторием.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">О F-Droid Basic</string>
     <string name="category_Nightly">Ночные сборки</string>
@@ -581,7 +579,6 @@
     <string name="copied_permission_to_clipboard">Название разрешения скопировано в буфер обмена</string>
     <string name="copied_url_to_clipboard">URL скопирован в буфер обмена</string>
     <string name="targetsdk_or_later">цели %s</string>
-    <string name="repo_num_apps_link">%s (нажмите для отображения списка приложений)</string>
     <string name="repo_num_apps_button">Показать приложения</string>
     <string name="ipfsgw_caption_official_gateways">Официальные шлюзы IPFS</string>
     <string name="ipfsgw_summary_disabled">Загрузка приложений из конечных веб-точек IPFS отключена</string>

@@ -2,7 +2,7 @@
 <resources>
     <string name="version">Versija</string>
     <string name="delete">Ištrinti</string>
-    <string name="cache_downloaded">Saugoti programėlių įdiegimo failus (apk) podėlyje</string>
+    <string name="cache_downloaded">Saugoti talpyklos podėlyje laikomas programėles</string>
     <string name="updates">Naujinimai</string>
     <string name="other">Kita</string>
     <string name="update_interval">Automatinis programėlių sąrašų naujinimas</string>
@@ -61,7 +61,7 @@
     <string name="requires_features">Reikalauja: %1$s</string>
     <string name="category_Science_Education">Mokslas ir švietimas</string>
     <string name="swap_welcome">Sveikiname paleidus F-Droid!</string>
-    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_full">„F-Droid“</string>
     <string name="back">Atgal</string>
     <string name="menu_settings">Nustatymai</string>
     <string name="main_menu__latest_apps">Naujausios</string>
@@ -108,9 +108,9 @@
     <string name="crash_dialog_text">Įvyko netikėta klaida, dėl kurios programėlės darbas buvo sustabdytas. Ar norėtumėte išsiųsti el. paštu informaciją apie klaidą, kad padėtumėte ją ištaisyti\?</string>
     <string name="notification_title_single_update_available">Yra prieinamas atnaujinimas</string>
     <string name="notification_title_summary_install_error">Įdiegimas nepavyko</string>
-    <string name="SignatureMismatch">Nauja versija pasirašyta kitu raktu. Norėdami ją įdiegti, iš pradžių, turite pašalinti senąją versiją. Atlikite tai ir tada bandykite dar kartą. (ĮSPĖJAME: pašalinus seną versiją, bus ištrinti visi programėlės duomenys, saugomi vidiniame aplanke)</string>
-    <string name="installIncompatible">Programėlė nesuderinama su jūsų įrenginiu, įdiegti vis tiek\?</string>
-    <string name="enable_nfc_send">Įjungti siuntimą per NFC…</string>
+    <string name="SignatureMismatch">Ši nauja versija pasirašyta kitu raktu palyginus su praeitu. Norėdami ją įdiegti, Jūs turite pašalinti senąją versiją. Atlikite tai ir tada bandykite dar kartą. (Įspėjame, kad ištrynus programėlę, jo duomenys tai pat bus pašalinti, būkite atsargūs)</string>
+    <string name="installIncompatible">Programėlė nesuderinama su Jūsų įrenginiu, ar norite įdiegti vis tiek?</string>
+    <string name="enable_nfc_send">Įjungti siuntimą per „NFC“…</string>
     <string name="unstable_updates">Nestabilūs atnaujinimai</string>
     <string name="unstable_updates_summary">Siūlyti atnaujinimus į nestabilias versijas</string>
     <string name="keep_install_history">Saugoti įdiegimų istoriją</string>
@@ -164,12 +164,12 @@
     <string name="permissions">Leidimai</string>
     <string name="repo_url">Adresas</string>
     <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie kito belaidžio tinklo (Wi-Fi), nei tik ką pridėta vietinė saugykla! Pabandykite prisijungti prie šio tinklo: %s</string>
-    <string name="by_author_format">autoriai %s</string>
+    <string name="by_author_format">sukūrė %s</string>
     <string name="prompt_to_send_crash_reports_summary">Rinkti duomenis apie strigtis ir klausti ar siųsti juos programėlės kūrėjui</string>
     <string name="hide_all_notifications">Slėpti visus pranešimus</string>
     <string name="send_install_history">Siųsti įdiegimų istoriją</string>
     <string name="install_history">Įdiegimų istorija</string>
-    <string name="install_history_summary">Rodyti visų programėlių įdiegimų ir šalinimų, atliktų per F-Droid, žurnalą</string>
+    <string name="install_history_summary">Rodyti privatų, visų programėlių įdiegimų ir šalinimų žurnalą</string>
     <string name="send_version_and_uuid">Siųsti versiją ir UUID į serverius</string>
     <string name="over_wifi">Per belaidį internetą (Wi-Fi)</string>
     <string name="over_data">Per mobiliuosius duomenis</string>
@@ -345,7 +345,7 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Programėlėje %1$s rastas pažeidžiamumas. Rekomenduojame nedelsiant šią programėlę atnaujinti.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Programėlėje %1$s rastas pažeidžiamumas. Rekomenduojame nedelsiant šią programėlę pašalinti.</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Įdiegta versija nėra suderinama su jokia prieinama versija. Pašalinę programėlę, galėsite matyti ir įsidiegti suderinamas versijas. Taip dažnai nutinka su programėlėmis, kurios buvo įdiegtos per „Google Play“ arba iš kitų šaltinių, kuomet jos būna pasirašytos kitokiu liudijimu.</string>
-    <string name="send_history_csv">%s įdiegimų istoriją kaip CSV failą</string>
+    <string name="send_history_csv">%s įdiegimų istoriją kaip „*.CSV“ failą</string>
     <string name="scan_removable_storage_summary">Ieškoti paketų saugyklų keičiamosiose laikmenose, tokiose kaip SD kortelės ar USB atmintukai</string>
     <string name="proxy_port_summary">Jūsų įgaliotojo serverio prievado numeris (pvz., 8118)</string>
     <string name="proxy_port">Įgaliotojo serverio prievadas</string>
@@ -442,7 +442,7 @@
     <string name="send_to_fdroid_metrics_summary">Kas savaitę siunčia anoniminius duomenis į F-Droid metriką (būtina išlaikyti diegimo istoriją)</string>
     <string name="fdroid_metrics_report">%s metrikų ataskaita</string>
     <string name="install_history_and_metrics">Įdiegti istorija ir metrikos</string>
-    <string name="send_fdroid_metrics_json">%s metrikų ataskaitą kaip JSON failą</string>
+    <string name="send_fdroid_metrics_json">%s metrikų ataskaitą kaip „*.JSON“ failą</string>
     <string name="send_fdroid_metrics_report">Siųsti %s metrikų ataskaita</string>
     <string name="prompt_to_send_crash_reports">Raginti siųsti gedimų ataskaitas</string>
     <string name="force_old_index_summary">Atsitikus klaidai ar nesuderinamumo atveju naudoti XML programėlės indeksą</string>
@@ -545,4 +545,5 @@
     <string name="repo_add_new_title">Pridėti saugyklą</string>
     <string name="repo_io_error">Klaida prisijungiant prie saugyklos.</string>
     <string name="repo_enter_url">Įrašykite saugyklos adresą (URL)</string>
+    <string name="app_name_basic">„F-Droid Basic“</string>
 </resources>

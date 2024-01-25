@@ -520,8 +520,6 @@
     <string name="antinsfw">Tidak Aman untuk Kerja</string>
     <string name="menu_release_channel_beta">Perbolehkan Pembaruan Beta</string>
     <string name="latest__empty_state__upgrading">Meningkatkan basis data…</string>
-    <string name="use_ipfs_gateways">Gunakan gerbang IPFS</string>
-    <string name="use_ipfs_gateways_summary">Unduh berkas dari cermin IPFS, jika didukung oleh repositori.</string>
     <string name="app_name_basic">F‐Droid Basic</string>
     <string name="antinsfwlist">Aplikasi ini berisi konten yang seharusnya tidak dipublikasikan atau terlihat di mana pun</string>
     <string name="category_Nightly">malaman</string>

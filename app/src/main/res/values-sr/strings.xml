@@ -536,8 +536,6 @@
     <string name="antinsfw">Небезбедно за рад</string>
     <string name="menu_release_channel_beta">Дозволи ажурирања на бета верзије</string>
     <string name="latest__empty_state__upgrading">Ажурирање базе података…</string>
-    <string name="use_ipfs_gateways_summary">Преузима фајлове са IPFS резервних извора, ако то подржава репозиторијум.</string>
-    <string name="use_ipfs_gateways">Користи IPFS пролазе</string>
     <string name="category_Nightly">Нестабилне верзије</string>
     <string name="app_name_full">F-Droid</string>
     <string name="about_title_full">О F-Droid-у</string>
@@ -571,7 +569,6 @@
     <string name="copied_permission_to_clipboard">Назив дозволе је копиран у привремену меморију</string>
     <string name="copied_url_to_clipboard">URL је копиран у привремену меморију</string>
     <string name="targetsdk_or_later">захтева верзију %s</string>
-    <string name="repo_num_apps_link">%s (додирните за приказ свих апликација)</string>
     <string name="repo_num_apps_button">Прикажи апликације</string>
     <string name="ipfsgw_caption_official_gateways">Званични IPFS мрежни пролази</string>
     <string name="ipfsgw_summary_disabled">Преузимање апликација помоћу IPFS веб крајњих тачака: онемогућено</string>

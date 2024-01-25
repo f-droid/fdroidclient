@@ -528,8 +528,6 @@
     <string name="antinsfw">Not Safe for Work</string>
     <string name="menu_release_channel_beta">Lejo Përditësime Beta</string>
     <string name="latest__empty_state__upgrading">Po përmirësohet baza e të dhënave…</string>
-    <string name="use_ipfs_gateways">Përdor kanale IPFS</string>
-    <string name="use_ipfs_gateways_summary">Shkarko kartela nga pasqyra IPFS, nëse mbulohet nga depoja.</string>
     <string name="app_name_basic">F-Droid Elementar</string>
     <string name="about_title_basic">Mbi F-Droid Elementar</string>
     <string name="antinsfwlist">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>

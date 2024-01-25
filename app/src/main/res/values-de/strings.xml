@@ -534,8 +534,6 @@
     <string name="antinsfw">Unpassend für den Arbeitsplatz</string>
     <string name="menu_release_channel_beta">Beta-Updates zulassen</string>
     <string name="latest__empty_state__upgrading">Datenbank wird aktualisiert …</string>
-    <string name="use_ipfs_gateways_summary">Dateien von IPFS-Spiegelservern herunterladen, wenn dies von der Paketquelle unterstützt wird.</string>
-    <string name="use_ipfs_gateways">IPFS-Gateways verwenden</string>
     <string name="repo_last_update_downloaded">Letzte heruntergeladene Aktualisierung</string>
     <string name="category_Nightly">nächtlich</string>
     <string name="antinsfwlist">Diese App enthält Inhalte, die nicht öffentlich gemacht werden oder überall sichtbar sein sollten</string>
@@ -566,7 +564,6 @@
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="copied_permission_to_clipboard">Bezeichnung der Berechtigung in die Zwischenablage kopiert</string>
     <string name="copied_url_to_clipboard">URL in die Zwischenablage kopiert</string>
-    <string name="repo_num_apps_link">%s (antippen, um alle Apps aufzulisten)</string>
     <string name="repo_num_apps_button">Apps anzeigen</string>
     <string name="ipfsgw_caption_official_gateways">Offizielle IPFS-Gateways</string>
     <string name="ipfsgw_summary_disabled">Download von Apps über IPFS-Webendpunkte: deaktiviert</string>

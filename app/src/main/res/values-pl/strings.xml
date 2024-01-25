@@ -544,8 +544,6 @@
     <string name="antinsfw">Nieodpowiednie do przeglądania w miejscu pracy</string>
     <string name="menu_release_channel_beta">Zezwalaj na aktualizacje wersji beta</string>
     <string name="latest__empty_state__upgrading">Aktualizowanie bazy danych…</string>
-    <string name="use_ipfs_gateways">Używaj bramek IPFS</string>
-    <string name="use_ipfs_gateways_summary">Pobieraj pliki z serwerów lustrzanych IPFS, jeśli są obsługiwane przez repozytorium</string>
     <string name="about_title_basic">O F-Droid Basic</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="antinsfwlist">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
@@ -577,7 +575,6 @@
     <string name="copied_permission_to_clipboard">Nazwę uprawnienia skopiowano do schowka</string>
     <string name="copied_url_to_clipboard">URL skopiowano do schowka</string>
     <string name="targetsdk_or_later">docelowy %s</string>
-    <string name="repo_num_apps_link">%s (naciśnij, aby wyświetlić listę wszystkich aplikacji)</string>
     <string name="repo_num_apps_button">Pokaż aplikacje</string>
     <string name="ipfsgw_caption_official_gateways">Oficjalne bramki IPFS</string>
     <string name="ipfsgw_summary_disabled">Pobieraj aplikacje z endpointów IPFS: wyłączone</string>

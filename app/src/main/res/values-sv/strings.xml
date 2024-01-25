@@ -529,8 +529,6 @@
     <string name="antinsfw">Inte Säkert för Arbetet</string>
     <string name="menu_release_channel_beta">Tillåt betauppdateringar</string>
     <string name="latest__empty_state__upgrading">Uppdaterar databas…</string>
-    <string name="use_ipfs_gateways">Använd IPFS-gateways</string>
-    <string name="use_ipfs_gateways_summary">Ladda ner filer från IPFS-speglar, om de stöds av lagringsplatsen.</string>
     <string name="app_name_basic">F-Droid Standard</string>
     <string name="about_title_basic">Om F-Droid Standard</string>
     <string name="antinsfwlist">Den här appen innehåller innehåll som inte borde publiceras eller vara synlig någonstans</string>

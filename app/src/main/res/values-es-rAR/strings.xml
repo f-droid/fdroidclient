@@ -538,6 +538,4 @@
     <string name="antinonfreeassets">No-Libre Assets</string>
     <string name="antinsfw">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
     <string name="antiupstreamnonfree">Upstream No-Libre</string>
-    <string name="use_ipfs_gateways">Utilizar las pasarelas IPFS</string>
-    <string name="use_ipfs_gateways_summary">Descargar los archivos de réplicas IPFS, si el repositorio lo admite.</string>
 </resources>

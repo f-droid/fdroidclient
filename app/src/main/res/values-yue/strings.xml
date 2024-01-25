@@ -518,8 +518,6 @@
     <string name="theme_dark">黑眼睛</string>
     <string name="menu_release_channel_beta">准用測試版更新</string>
     <string name="latest__empty_state__upgrading">升級緊資料庫…</string>
-    <string name="use_ipfs_gateways">用 IPFS 閘道</string>
-    <string name="use_ipfs_gateways_summary">存庫支援嘅話，就喺 IPFS 鏡像度下載檔案。</string>
     <string name="app_name_basic">F-Droid 新基本</string>
     <string name="antinsfwlist">呢個 app 啲料要睇就睇路，因住老細見到弊家伙</string>
     <string name="category_Nightly">流水組建</string>
@@ -551,6 +549,5 @@
     <string name="copied_permission_to_clipboard">複製咗權限個名去剪貼簿</string>
     <string name="copied_url_to_clipboard">複製咗個 URL 去剪貼簿</string>
     <string name="targetsdk_or_later">目標版本為 %s</string>
-    <string name="repo_num_apps_link">%s (撳一下騷晒佢所有啲 app)</string>
     <string name="repo_num_apps_button">騷晒佢所有啲 app</string>
 </resources>

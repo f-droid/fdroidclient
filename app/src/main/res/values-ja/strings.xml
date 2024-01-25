@@ -517,8 +517,6 @@
     <string name="antinsfw">安心して閲覧できません</string>
     <string name="menu_release_channel_beta">ベータ版へのアップデートを許可する</string>
     <string name="latest__empty_state__upgrading">データベースの更新中…</string>
-    <string name="use_ipfs_gateways">IPFSゲートウェイを使用</string>
-    <string name="use_ipfs_gateways_summary">レポジトリがIPFSをサポートしている場合には、IPFSミラーからファイルをダウンロードする。</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">F-Droid Basicについて</string>
     <string name="category_Nightly">ナイトリービルド</string>

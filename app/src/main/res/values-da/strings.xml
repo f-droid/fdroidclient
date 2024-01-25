@@ -4,7 +4,7 @@
     <string name="installIncompatible">App ikke kompatibel med din enhed. Installer alligevel\?</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
-    <string name="enable_nfc_send">Aktiver NFC-sending</string>
+    <string name="enable_nfc_send">Aktiver sending via NFC…</string>
     <string name="cache_downloaded">Behold cachede apps</string>
     <string name="updates">Opdateringer</string>
     <string name="unstable_updates">Ustabile opdateringer</string>
@@ -422,7 +422,7 @@
     <string name="repo_official_mirrors">Officielle spejle</string>
     <string name="repo_user_mirrors">Brugerspejle</string>
     <string name="share_repository">Del Arkiv</string>
-    <string name="nearby_splash__request_permission">Prøv det</string>
+    <string name="nearby_splash__request_permission">Søg nu</string>
     <string name="use_bluetooth">Brug Bluetooth</string>
     <string name="not_visible_nearby">I nærheden ikke aktiveret</string>
     <string name="swap_toast_using_path">Bruger %1$s</string>
@@ -431,7 +431,7 @@
     <string name="prompt_to_send_crash_reports_summary">Indsaml data om nedbrud og spørg om at sende dem til udvikleren</string>
     <string name="hide_all_notifications_summary">Bloker visning af alle handlinger på statuslinjen og i meddelelsesskuffen.</string>
     <string name="install_history_summary">Vis privat log af alle installationer og afinstallationer</string>
-    <string name="send_version_and_uuid_summary">Medtag appversion og et tilfældigt, entydigt id, når du henter. Gælder fra næste genstart af appen.</string>
+    <string name="send_version_and_uuid_summary">Medtag app version og et tilfældigt, entydigt id, når du henter. Gælder fra næste genstart af appen.</string>
     <string name="scan_removable_storage_toast">Scanner %s…</string>
     <string name="updates_disabled_by_settings">Alle opdateringer deaktiveret af Data-/Wifi-Indstillinger</string>
     <string name="panic_app_setting_summary">Ingen app er valgt</string>
@@ -515,13 +515,14 @@
     <string name="antiupstreamnonfree">Ikke-Fri Opstrømskode</string>
     <string name="antinonfreeassets">Ikke-Frie Elementer</string>
     <string name="antidisabledalgorithm">Signeret Med Usikker Algoritme</string>
-    <string name="antinsfw">NSFW. Denne app har indhold, som ikke bør publiceres eller være synligt overalt</string>
+    <string name="antinsfw">Upassende på arbejdspladsen</string>
     <string name="antinonfreedep">Ikke-Frie Afhængigheder</string>
     <string name="antinosource">Kildekode Ikke Længere Tilgængelig</string>
     <string name="latest__empty_state__upgrading">Opgraderer database…</string>
     <string name="menu_release_channel_beta">Tillad Betaopdateringer</string>
-    <string name="use_ipfs_gateways">Brug IPFS-gateways</string>
-    <string name="use_ipfs_gateways_summary">Download filer fra IPFS-spejle, hvis understøttet af arkivet.</string>
     <string name="about_title_full">Omkring F-Droid</string>
     <string name="app_error_open">Kunne ikke starte appen.</string>
+    <string name="force_old_installer_title">Gennemtving ældre installation</string>
+    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_basic">F-Droid Basis</string>
 </resources>

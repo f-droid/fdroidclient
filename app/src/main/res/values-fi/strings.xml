@@ -528,8 +528,6 @@
     <string name="antinsfw">Ei sovellu työpaikalle</string>
     <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
     <string name="menu_release_channel_beta">Salli beta-päivitykset</string>
-    <string name="use_ipfs_gateways">Käytä IPFS-yhdyskäytäviä</string>
-    <string name="use_ipfs_gateways_summary">Lataa tiedostoja IPFS-mirroreista, jos repo tukee sitä.</string>
     <string name="repo_last_update_downloaded">Viimeisin päivitys ladattu</string>
     <string name="category_Nightly">yöllinen</string>
     <string name="warning_target_sdk">Sovellus tehtiin vanhalle Androidin versiolle, eikä sitä voida päivittää automaattisesti.</string>

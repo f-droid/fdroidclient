@@ -470,7 +470,7 @@
     <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
     <string name="scan_removable_storage_summary">Otsi pakettide hoidlaid eemaldatavalt mäluseadmelt nagu SD kaart või USB mälupulk</string>
     <string name="nearby_splash__read_external_storage">Otsi SD kaardilt hoidlaid ja peegleid.</string>
-    <string name="nearby_splash__request_permission">Proovi</string>
+    <string name="nearby_splash__request_permission">Otsi nüüd</string>
     <string name="swap_toast_using_path">Kasutatakse %1$s</string>
     <string name="swap_toast_not_removable_storage">See valik ei vastanud mitte ühelegi eemaldatavale mäluseadmele. Proovi uuesti!</string>
     <string name="swap_toast_find_removeable_storage">Vali eemaldatav SD kaart või uSB mälupulk</string>
@@ -539,8 +539,6 @@
     <string name="antinsfw">Ei sobi kasutamiseks töökohas</string>
     <string name="latest__empty_state__upgrading">Andmebaasi uuendamine…</string>
     <string name="menu_release_channel_beta">Kaasa uuendamiseks ka beeta-versioonid</string>
-    <string name="use_ipfs_gateways">Kasuta IPFS lüüse</string>
-    <string name="use_ipfs_gateways_summary">Kui hoidla sellist võimalust pakub, siis laadi failid alla IPFS peegelserveritest.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Teave F-Droid Basic\'u kohta</string>
     <string name="repo_last_update_downloaded">Viimane uuendus on allalaaditud</string>
@@ -548,4 +546,5 @@
     <string name="category_Nightly">igaöised arendusjärgud</string>
     <string name="warning_target_sdk">See rakendus on loodud Androidi vanema versiooni jaoks ja seda ei saa automaatselt uuendada.</string>
     <string name="antinsfwlist">Selles rakenduses on sisu, mida ei saa kõikjal avaldada ega peaks olema kõikjalt vaadatav</string>
+    <string name="force_old_installer_title">Jõusta vana paigaldaja</string>
 </resources>

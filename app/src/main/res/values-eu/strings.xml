@@ -549,8 +549,6 @@
     <string name="antinsfw">Ez da segurua lanerako</string>
     <string name="menu_release_channel_beta">Beta eguneraketak baimendu</string>
     <string name="latest__empty_state__upgrading">Datu-basearen eguneraketak aplikatzen…</string>
-    <string name="use_ipfs_gateways">Erabili IPFS atebideak</string>
-    <string name="use_ipfs_gateways_summary">Deskargatu fitxategiak IPFSren ispiluetatik, biltegiarekin bateragarria bada.</string>
     <string name="turn_on_wifi">Aktibatu wifia</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">F-Droid Basic-i buruz</string>

@@ -520,8 +520,6 @@
     <string name="panic_hide_warning_message">在緊急情況下，在桌面的 %1$s 將被移除。只有從僞造的 %3$s 應用程式中輸入 \"%2$d\" 才可以將其還原。</string>
     <string name="menu_release_channel_beta">允许 Beta 更新</string>
     <string name="latest__empty_state__upgrading">正在升級資料庫…</string>
-    <string name="use_ipfs_gateways">使用 IPFS 閘道</string>
-    <string name="use_ipfs_gateways_summary">從 IPFS 鏡像下載檔案軟件庫支援的檔案。</string>
     <string name="antinsfwlist">此應用程式的內容慎擇觀看場所，老闆出沒注意</string>
     <string name="app_name_basic">F-Droid 基礎版</string>
     <string name="about_title_basic">關於 F-Droid 基礎版</string>
@@ -553,6 +551,5 @@
     <string name="targetsdk_or_later">目標版本為 %s</string>
     <string name="copied_permission_to_clipboard">權限名稱已複製至剪貼簿</string>
     <string name="copied_url_to_clipboard">URL 已複製至剪貼簿</string>
-    <string name="repo_num_apps_link">%s (輕觸一下列出所有應用程式)</string>
     <string name="repo_num_apps_button">顯示應用程式</string>
 </resources>

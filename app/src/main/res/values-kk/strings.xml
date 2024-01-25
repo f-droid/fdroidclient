@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="by_author_format">%s жасаған</string>
-    <string name="use_ipfs_gateways">IPFS шлюздерін қолдану</string>
     <string name="local_repo_name">Сіздің жергілікті репозиторидің атауы</string>
     <string name="login_title">Аутентификация керек</string>
     <string name="login_name">Қолданушы аты</string>

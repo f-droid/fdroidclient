@@ -58,18 +58,18 @@
     <string name="choose_bt_send">Odaberi metodu slanja preko Bluetootha</string>
     <string name="repo_add_url">Adresa repozitorija</string>
     <string name="repo_add_fingerprint">Otisak prsta (opcionalno)</string>
-    <string name="bad_fingerprint">Loš otisak prsta</string>
+    <string name="bad_fingerprint">Neispravan digitalni otisak</string>
     <string name="invalid_url">Ovo nije valjan URL.</string>
     <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
     <string name="repo_provider">Repozitorij: %s</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_settings">Postavke</string>
-    <string name="menu_search">Pretraži</string>
+    <string name="menu_search">Traži</string>
     <string name="menu_add_repo">Novi repozitorij</string>
     <string name="menu_launch">Otvori</string>
     <string name="menu_share">Dijeli</string>
     <string name="menu_install">Instaliraj</string>
-    <string name="menu_uninstall">Ukloni</string>
+    <string name="menu_uninstall">Deinstaliraj</string>
     <string name="menu_ignore_all">Ignoriraj sva ažuriranja</string>
     <string name="menu_ignore_this">Ignoriraj ovo ažuriranje</string>
     <string name="menu_website">Web stranica</string>
@@ -105,7 +105,7 @@
     <string name="linking_apks">Povezuju se APK-ovi u repozitorij …</string>
     <string name="copying_icons">Kopiraju se ikone aplikacija u repozitorij …</string>
     <string name="icon">Ikona</string>
-    <string name="next">Sljedeća</string>
+    <string name="next">Sljedeće</string>
     <string name="skip">Preskoči</string>
     <string name="useTor">Koristi Tor</string>
     <string name="useTorSummary">Prisili promet preuzimanja kroz Tor za povećanu privatnost. Zahtijeva Orbot</string>
@@ -280,7 +280,7 @@
     <string name="main_menu__latest_apps">Najnovije</string>
     <string name="preference_manage_installed_apps">Upravljaj instaliranim aplikacijama</string>
     <string name="notification_action_update">Ažuriraj</string>
-    <string name="notification_action_cancel">Otkaži</string>
+    <string name="notification_action_cancel">Odustani</string>
     <string name="notification_action_install">Instaliraj</string>
     <string name="app_list__name__downloading_in_progress">Preuzimanje %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instaliran</string>
@@ -534,4 +534,7 @@
     <string name="toast_metrics_in_install_history">Izvještaj metrike %s je moguće vidjeti u Pregledniku za povijest instalacija</string>
     <string name="antitrack">Praćenje</string>
     <string name="antiads">Oglasi</string>
+    <string name="repo_io_error">Greška pri povezivanju s repozitorijem.</string>
+    <string name="repo_last_update_downloaded">Posljednje ažuriranje je preuzeto</string>
+    <string name="ipfsgw_add_add">Dodaj</string>
 </resources>

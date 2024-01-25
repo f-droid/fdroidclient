@@ -448,8 +448,6 @@
 \n
 \nPiezīme: visas iepriekš uzstādītās lietotnes paliks ierīcē.</string>
     <string name="proxy_host_summary">Starpniekservera saimniekdatora nosaukums (piem., 127.0.0.1)</string>
-    <string name="use_ipfs_gateways">Izmantot IPFS vārtejas</string>
-    <string name="use_ipfs_gateways_summary">Lejupielādēt datnes no IPFS spoguļvārtejām, ja glabātava to nodrošina.</string>
     <string name="antitrack">Izsekošana</string>
     <string name="antinosource">Pirmkods vairs nav pieejams</string>
     <string name="antiothers">Citas nevēlamas iespējas</string>

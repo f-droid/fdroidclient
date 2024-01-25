@@ -550,9 +550,7 @@
     <string name="about_title_basic">Mu F-Droid bunasach</string>
     <string name="repo_add_new_title">Cuir ionad-tasgaidh ris</string>
     <string name="repo_add_new_mirror">Cuir ris ’na sgàthan ùr</string>
-    <string name="use_ipfs_gateways">Cleachd bealaichean IPFS</string>
     <string name="app_name_basic">F-Droid bunasach</string>
-    <string name="use_ipfs_gateways_summary">Luchdaich a-nuas faidhlichean o sgàthanan IPFS ma chuireas an t-ionad-tasgaidh taic riutha.</string>
     <string name="category_Nightly">oidhcheil</string>
     <string name="turn_on_wifi">Cuir a’ WiFi air</string>
     <string name="nearby_splace__external_storage_permission_button">Feuch e</string>

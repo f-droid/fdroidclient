@@ -537,8 +537,6 @@
     <string name="antinsfw">Nerecomandat la locul de muncă</string>
     <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
     <string name="latest__empty_state__upgrading">Se actualizează baza de date…</string>
-    <string name="use_ipfs_gateways">Utilizare portaluri IPFS</string>
-    <string name="use_ipfs_gateways_summary">Se descarcă fișiere de pe serverele de rezervă IPFS, dacă sunt suportate de depozite.</string>
     <string name="antinsfwlist">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
     <string name="about_title_basic">Despre F-Droid Basic</string>
     <string name="warning_target_sdk">Această aplicație a fost creată pentru o versiune mai veche de Android și nu poate fi actualizată automat.</string>
@@ -570,7 +568,6 @@
     <string name="targetsdk_or_later">conceput pentru %s</string>
     <string name="copied_permission_to_clipboard">Nume permisiune copiat în memorie</string>
     <string name="copied_url_to_clipboard">Adresă copiată în memorie</string>
-    <string name="repo_num_apps_link">%s (atingeți pentru toate aplicațiile)</string>
     <string name="repo_num_apps_button">Arată aplicațiile</string>
     <string name="ipfsgw_caption_official_gateways">Portaluri IPFS oficiale</string>
     <string name="ipfsgw_summary_disabled">Descărcați aplicații de la locațiile IPFS web: dezactivat</string>

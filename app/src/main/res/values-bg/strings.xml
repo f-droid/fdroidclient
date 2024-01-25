@@ -528,8 +528,6 @@
     <string name="antinsfw">Неподходящо за работа</string>
     <string name="menu_release_channel_beta">Разрешаване на издания бета</string>
     <string name="latest__empty_state__upgrading">Преформатиране на данните…</string>
-    <string name="use_ipfs_gateways">Използване на шлюз на IPFS</string>
-    <string name="use_ipfs_gateways_summary">Файловете се изтеглят от огледала на IPFS, ако хранилището го поддържа.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Относно F-Droid Basic</string>
     <string name="antinsfwlist">Съдържанието на приложението не трябва да бъде публикувано или видимо навсякъде</string>
@@ -561,7 +559,6 @@
     <string name="copied_permission_to_clipboard">Името на разрешението е копирано</string>
     <string name="copied_url_to_clipboard">Адресът е копиран</string>
     <string name="targetsdk_or_later">цел %s</string>
-    <string name="repo_num_apps_link">%s (докоснете за показване на списък от приложения)</string>
     <string name="repo_num_apps_button">Показване на приложения</string>
     <string name="ipfsgw_caption_official_gateways">Официални шлюзове на IPFS</string>
     <string name="ipfsgw_summary_disabled">Изтегляне на приложения от крайни точки на IPFS: изключено</string>

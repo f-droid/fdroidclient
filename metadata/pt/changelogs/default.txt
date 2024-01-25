@@ -1,0 +1,13 @@
+* Revisão de repo e manipulação de espelho, tanto UX e código
+
+* Mostrar visualização de novos repos
+
+* Instalar com F-Droid e F-Droid Basic agora suporta atualizações automáticas de fundo
+
+* No Android 14, marcar apps não suportadas da versão do SDK alvo e incompatíveis #2692
+
+* Clique longo para copiar ligações, permissões e versões no ecrã Detalhes da App (@Tobias_Groza)
+
+* Apps incompatíveis só são mostrados quando permitido em Configurações #41 (@pigpig)
+
+...
