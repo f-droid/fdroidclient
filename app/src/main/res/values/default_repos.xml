@@ -9,15 +9,22 @@
         <item>
             https://f-droid.org/archive
             http://fdroidorg6cooksyluodepej4erfctzk7rrjpjbbr6wx24jh3lqyfwyd.onion/fdroid/archive
+            http://dotsrccccbidkzg7oc7oj4ugxrlfbt64qebyunxbrgqhxiwj3nl6vcad.onion/fdroid/archive
             http://ftpfaudev4triw2vxiwzf4334e3mynz7osqgtozhbc77fixncqzbyoyd.onion/fdroid/archive
             http://lysator7eknrfl47rlyxvgeamrv7ucefgrrlhk7rouv3sna25asetwid.onion/pub/fdroid/archive
+            http://mirror.ossplanetnyou5xifr6liw5vhzwc2g2fmmlohza25wwgnnaw65ytfsad.onion/fdroid/archive
             https://fdroid.tetaneutral.net/fdroid/archive
             https://ftp.agdsn.de/fdroid/archive
             https://ftp.fau.de/fdroid/archive
+            https://ftp.gwdg.de/pub/android/fdroid/archive
             https://ftp.lysator.liu.se/pub/fdroid/archive
             https://mirror.cyberbits.eu/fdroid/archive
             https://mirror.fcix.net/fdroid/archive
+            https://mirror.kumi.systems/fdroid/archive
+            https://mirror.level66.network/fdroid/archive
             https://mirror.ossplanet.net/fdroid/archive
+            https://mirrors.dotsrc.org/fdroid/archive
+            https://opencolo.mm.fcix.net/fdroid/archive
             https://plug-mirror.rcac.purdue.edu/fdroid/archive
         </item>
         <!-- description -->
@@ -41,15 +48,22 @@
         <item>
             https://f-droid.org/repo
             http://fdroidorg6cooksyluodepej4erfctzk7rrjpjbbr6wx24jh3lqyfwyd.onion/fdroid/repo
+            http://dotsrccccbidkzg7oc7oj4ugxrlfbt64qebyunxbrgqhxiwj3nl6vcad.onion/fdroid/repo
             http://ftpfaudev4triw2vxiwzf4334e3mynz7osqgtozhbc77fixncqzbyoyd.onion/fdroid/repo
             http://lysator7eknrfl47rlyxvgeamrv7ucefgrrlhk7rouv3sna25asetwid.onion/pub/fdroid/repo
+            http://mirror.ossplanetnyou5xifr6liw5vhzwc2g2fmmlohza25wwgnnaw65ytfsad.onion/fdroid/repo
             https://fdroid.tetaneutral.net/fdroid/repo
             https://ftp.agdsn.de/fdroid/repo
             https://ftp.fau.de/fdroid/repo
+            https://ftp.gwdg.de/pub/android/fdroid/repo
             https://ftp.lysator.liu.se/pub/fdroid/repo
             https://mirror.cyberbits.eu/fdroid/repo
             https://mirror.fcix.net/fdroid/repo
+            https://mirror.kumi.systems/fdroid/repo
+            https://mirror.level66.network/fdroid/repo
             https://mirror.ossplanet.net/fdroid/repo
+            https://mirrors.dotsrc.org/fdroid/repo
+            https://opencolo.mm.fcix.net/fdroid/repo
             https://plug-mirror.rcac.purdue.edu/fdroid/repo
         </item>
         <!-- description -->
