@@ -1,8 +1,11 @@
 package org.fdroid.fdroid.views.repos
 
 import android.content.Intent
+import android.content.Intent.EXTRA_TEXT
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -15,6 +18,7 @@ import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.Preferences
+import org.fdroid.fdroid.R
 import org.fdroid.fdroid.UpdateService
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.nearby.SwapService
@@ -23,6 +27,8 @@ import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
+import kotlin.text.RegexOption.IGNORE_CASE
+import kotlin.text.RegexOption.MULTILINE
 
 class AddRepoActivity : ComponentActivity() {
 
@@ -63,13 +69,27 @@ class AddRepoActivity : ComponentActivity() {
             }
         }
         addOnNewIntentListener { intent ->
-            intent.dataString?.let { uri ->
-                onFetchRepo(uri)
+            when (intent.action) {
+                Intent.ACTION_VIEW -> {
+                    intent.dataString?.let { uri ->
+                        onFetchRepo(uri)
+                    }
+                }
+
+                Intent.ACTION_SEND -> {
+                    intent.getStringExtra(EXTRA_TEXT)?.let {
+                        fetchIfRepoUri(it)
+                    }
+                }
+
+                else -> {}
             }
         }
         intent?.let {
             onNewIntent(it)
-            it.setData(null) // avoid this intent from getting re-processed
+            // avoid this intent getting re-processed
+            it.setData(null)
+            it.replaceExtras(Bundle())
         }
     }
 
@@ -94,5 +114,31 @@ class AddRepoActivity : ComponentActivity() {
             repoManager.abortAddingRepository()
             repoManager.fetchRepositoryPreview(uriStr, proxy = NetCipher.getProxy())
         }
+    }
+
+    private fun fetchIfRepoUri(str: String) {
+        // try direct https/fdroidrepos URIs first
+        val repoUriMatch = Regex(
+            pattern = "^.*((https|fdroidrepos)://.+/repo(\\?fingerprint=[A-F0-9]+)?) ?.*$",
+            options = setOf(IGNORE_CASE, MULTILINE),
+        ).find(str)?.groups?.get(1)?.value
+        if (repoUriMatch != null) {
+            Log.d(this::class.simpleName, "Found match: $repoUriMatch")
+            onFetchRepo(repoUriMatch)
+            return // found, no need to continue
+        }
+        // now try fdroid.link URIs
+        val repoLinkMatch = Regex(
+            pattern = "^.*(https://fdroid.link/.+) ?.*$",
+            options = setOf(IGNORE_CASE, MULTILINE),
+        ).find(str)?.groups?.get(1)?.value
+        if (repoLinkMatch != null) {
+            Log.d(this::class.simpleName, "Found match: $repoLinkMatch")
+            onFetchRepo(repoLinkMatch)
+            return // found, no need to continue
+        }
+        // no URI found
+        Toast.makeText(this, R.string.repo_share_not_found, Toast.LENGTH_LONG).show()
+        finishAfterTransition()
     }
 }

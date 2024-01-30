@@ -236,6 +236,11 @@
                 <data android:pathPattern="/.*/.*/.*/FDROID/REPO" />
             </intent-filter>
 
+            <intent-filter android:label="@string/repo_add_new_title">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
         </activity>
 
         <activity
