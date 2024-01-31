@@ -37,6 +37,7 @@ import org.fdroid.index.TempFileProvider
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
+import org.fdroid.repo.AddRepoError.ErrorType.IS_ARCHIVE_REPO
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
 import java.io.IOException
 import java.net.Proxy
@@ -82,6 +83,7 @@ public data class AddRepoError(
     public enum class ErrorType {
         UNKNOWN_SOURCES_DISALLOWED,
         INVALID_FINGERPRINT,
+        IS_ARCHIVE_REPO,
         INVALID_INDEX,
         IO_ERROR,
     }
@@ -139,6 +141,10 @@ internal class RepoAdder(
         ) {
             val e = IllegalArgumentException("Unsupported URI: ${nUri.uri}")
             addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            return
+        }
+        if (nUri.uri.lastPathSegment == "archive") {
+            addRepoState.value = AddRepoError(IS_ARCHIVE_REPO)
             return
         }
 
