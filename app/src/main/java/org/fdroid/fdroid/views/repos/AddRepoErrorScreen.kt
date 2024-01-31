@@ -31,6 +31,7 @@ import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
+import org.fdroid.repo.AddRepoError.ErrorType.IS_ARCHIVE_REPO
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
 import java.io.IOException
 
@@ -62,6 +63,7 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
 
             INVALID_INDEX -> stringResource(R.string.repo_invalid)
             IO_ERROR -> stringResource(R.string.repo_io_error)
+            IS_ARCHIVE_REPO -> stringResource(R.string.repo_error_adding_archive)
         }
         Text(
             text = title,
@@ -108,5 +110,13 @@ fun AddRepoErrorInvalidIndexPreview() {
 fun AddRepoErrorUnknownSourcesPreview() {
     ComposeUtils.FDroidContent {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(UNKNOWN_SOURCES_DISALLOWED))
+    }
+}
+
+@Preview
+@Composable
+fun AddRepoErrorArchivePreview() {
+    ComposeUtils.FDroidContent {
+        AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(IS_ARCHIVE_REPO))
     }
 }

@@ -221,6 +221,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_exists_add_mirror">This is a copy of %1$s, add it as a mirror?</string>
     <string name="repo_invalid">Invalid repository.\n\nContact the maintainer and let them know about the issue.</string>
     <string name="repo_io_error">Error connecting to the repository.</string>
+    <string name="repo_error_adding_archive">Archive repositories can not be added directly. Tap the repository in the list and enable the archive there.</string>
     <string name="repo_share_not_found">Could not find repo address in shared text.</string>
     <string name="bad_fingerprint">Bad fingerprint</string>
     <string name="invalid_url">This is not a valid URL.</string>
