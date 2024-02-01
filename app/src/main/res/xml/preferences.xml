@@ -122,6 +122,10 @@
                 android:targetPackage="@string/applicationId" />
         </PreferenceScreen>
         <SwitchPreferenceCompat
+            android:key="useDnsCache"
+            android:summary="@string/useDnsCacheSummary"
+            android:title="@string/useDnsCache" />
+        <SwitchPreferenceCompat
             android:key="useTor"
             android:summary="@string/useTorSummary"
             android:title="@string/useTor" />

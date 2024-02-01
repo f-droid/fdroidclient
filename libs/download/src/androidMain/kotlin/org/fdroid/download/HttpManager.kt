@@ -15,7 +15,7 @@ import java.io.InputStream
 import java.net.InetAddress
 import java.security.MessageDigest
 
-internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
+internal actual fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*> {
     return object : HttpClientEngineFactory<OkHttpConfig> {
         private val connectionSpecs = listOf(
             RESTRICTED_TLS, // order matters here, so we put restricted before modern
@@ -28,6 +28,8 @@ internal actual fun getHttpClientEngineFactory(): HttpClientEngineFactory<*> {
             config {
                 if (proxy.isTor()) { // don't allow DNS requests when using Tor
                     dns(NoDns())
+                } else if (customDns != null) {
+                    dns(customDns)
                 }
                 hostnameVerifier { hostname, session ->
                     session?.sessionContext?.sessionTimeout = 60

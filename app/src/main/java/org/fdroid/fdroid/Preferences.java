@@ -35,10 +35,14 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.common.collect.Lists;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -118,6 +122,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
     private static final String PREF_SCAN_REMOVABLE_STORAGE = "scanRemovableStorage";
     public static final String PREF_LANGUAGE = "language";
+    public static final String PREF_USE_DNS_CACHE = "useDnsCache";
+    public static final String PREF_DNS_CACHE = "dnsCache";
     public static final String PREF_USE_TOR = "useTor";
     public static final String PREF_ENABLE_PROXY = "enableProxy";
     public static final String PREF_PROXY_HOST = "proxyHost";
@@ -510,6 +516,98 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 preferences.edit().putInt(PREF_OVER_DATA, OVER_NETWORK_ALWAYS).apply();
             }
         }
+    }
+
+    public void setDnsCacheEnabledValue(boolean newValue) {
+        preferences.edit().putBoolean(PREF_USE_DNS_CACHE, newValue).apply();
+    }
+
+    public boolean isDnsCacheEnabled() {
+        return preferences.getBoolean(PREF_USE_DNS_CACHE, false);
+    }
+
+    public void updateDnsCache(String urlString, List<InetAddress> ipList) {
+        // existing list is replaced, so make sure new list has values
+        if (ipList == null || ipList.isEmpty()) {
+            return;
+        } else {
+            HashMap<String, List<InetAddress>> dnsMap = getDnsCache();
+            dnsMap.put(urlString, ipList);
+            setDnsCache(dnsMap);
+        }
+    }
+
+    public void setDnsCache(HashMap<String, List<InetAddress>> dnsMap) {
+        HashMap<String, List<String>> stringMap = new HashMap<String, List<String>>();
+        for (String url : dnsMap.keySet()) {
+            List<String> stringList = new ArrayList<String>();
+            for (InetAddress ip : dnsMap.get(url)) {
+                stringList.add(ip.getHostAddress());
+            }
+            stringMap.put(url, stringList);
+        }
+        preferences.edit().putString(PREF_DNS_CACHE, listMapToString(stringMap)).apply();
+    }
+
+    public List<InetAddress> queryDnsCache(String urlString) {
+        HashMap<String, List<InetAddress>> dnsMap = getDnsCache();
+        if (dnsMap.containsKey(urlString)) {
+            return dnsMap.get(urlString);
+        } else {
+            // returns empty list to avoid null issues
+            return new ArrayList<InetAddress>();
+        }
+    }
+
+    public HashMap<String, List<InetAddress>> getDnsCache() {
+        HashMap<String, List<InetAddress>> dnsMap = new HashMap<String, List<InetAddress>>();
+        String mapString = preferences.getString(PREF_DNS_CACHE, "");
+        if (mapString == null || mapString.isEmpty()) {
+            // returns empty map to avoid null issues
+            return dnsMap;
+        }
+        HashMap<String, List<String>> stringMap = stringToListMap(mapString);
+        for (String url : stringMap.keySet()) {
+            List<InetAddress> ipList = new ArrayList<InetAddress>();
+            for (String ip : stringMap.get(url)) {
+                try {
+                    ipList.add(InetAddress.getByName(ip));
+                } catch (UnknownHostException e) {
+                    // should not occur, if an ip address is supplied only the format is checked.
+                    Log.e("Preferences", "Exception thrown when converting " + ip, e);
+                }
+            }
+            dnsMap.put(url, ipList);
+        }
+        return dnsMap;
+    }
+
+    private String listMapToString(HashMap<String, List<String>> listMap) {
+        String output = "";
+        for (String key : listMap.keySet()) {
+            if (!output.isEmpty()) {
+                output = output + "\n";
+            }
+            output = output + key;
+            for (String item : listMap.get(key)) {
+                if (!output.isEmpty()) {
+                    output = output + " ";
+                }
+                output = output + item;
+            }
+        }
+        return output;
+    }
+
+    private HashMap<String, List<String>> stringToListMap(String string) {
+        HashMap<String, List<String>> output = new HashMap<String, List<String>>();
+        for (String line : string.split("\n")) {
+            String[] items = line.split(" ");
+            List<String> list = Lists.newArrayList(items);
+            String key = list.remove(0);
+            output.put(key, list);
+        }
+        return output;
     }
 
     /**
