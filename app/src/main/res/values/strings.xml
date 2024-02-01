@@ -346,6 +346,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="skip">Skip</string>
     <string name="try_again">Try again</string>
 
+    <string name="useDnsCache">Use DNS Cache</string>
+    <string name="useDnsCacheSummary">Use cached results to minimize DNS queries.</string>
     <string name="useTor">Use Tor</string>
     <string name="useTorSummary">Force download traffic through Tor for increased privacy. Requires Orbot</string>
     <string name="proxy">Proxy</string>

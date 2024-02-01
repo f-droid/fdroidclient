@@ -112,6 +112,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private LiveSeekBarPreference overDataSeekBar;
     private LiveSeekBarPreference updateIntervalSeekBar;
     private SwitchPreferenceCompat enableProxyCheckPref;
+    private SwitchPreferenceCompat useDnsCacheCheckPref;
     private SwitchPreferenceCompat useTorCheckPref;
     private Preference updateAutoDownloadPref;
     private SwitchPreferenceCompat keepInstallHistoryPref;
@@ -154,6 +155,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             installHistoryPref.setTitle(R.string.install_history);
         }
 
+        useDnsCacheCheckPref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_USE_DNS_CACHE));
         useTorCheckPref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_USE_TOR));
         useTorCheckPref.setOnPreferenceChangeListener(useTorChangedListener);
         enableProxyCheckPref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_ENABLE_PROXY));
@@ -510,6 +512,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         }
     }
 
+    private void initUseDnsCachePreference() {
+        useDnsCacheCheckPref.setDefaultValue(false);
+        useDnsCacheCheckPref.setChecked(Preferences.get().isDnsCacheEnabled());
+    }
+
     /**
      * The default for "Use Tor" is dynamically set based on whether Orbot is installed.
      */
@@ -561,6 +568,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
 
         initAutoFetchUpdatesPreference();
         initPrivilegedInstallerPreference();
+        initUseDnsCachePreference();
         initUseTorPreference(requireContext().getApplicationContext());
 
         updateIpfsGatewaySummary();

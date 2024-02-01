@@ -33,7 +33,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
     // TODO move to application object or inject where needed
     public static final DownloaderFactory INSTANCE = new DownloaderFactory();
     public static final HttpManager HTTP_MANAGER =
-            new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, NetCipher.getProxy());
+            new HttpManager(Utils.getUserAgent(), FDroidApp.queryString, NetCipher.getProxy(), new DnsWithCache());
 
     @NonNull
     @Override
