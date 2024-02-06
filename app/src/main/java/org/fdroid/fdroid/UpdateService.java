@@ -187,6 +187,7 @@ public class UpdateService extends JobIntentService {
         ComponentName componentName = new ComponentName(context, UpdateJobService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, componentName)
                 .setRequiresDeviceIdle(true)
+                .setPersisted(true)
                 .setPeriodic(interval);
         if (Build.VERSION.SDK_INT >= 26) {
             builder.setRequiresBatteryNotLow(true)
