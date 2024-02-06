@@ -3,9 +3,9 @@ package org.fdroid.fdroid.views.repos
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle.State.STARTED
@@ -24,7 +24,7 @@ import org.fdroid.index.RepoManager
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
 
-class AddRepoActivity : ComponentActivity() {
+class AddRepoActivity : AppCompatActivity() {
 
     // Use a getter here, otherwise this tries to access Context too early causing NPE
     private val repoManager: RepoManager get() = FDroidApp.getRepoManager(this)

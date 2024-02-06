@@ -3,8 +3,8 @@ package org.fdroid.fdroid.views
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -48,7 +48,7 @@ import org.fdroid.fdroid.compose.ComposeUtils
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.LifecycleEventListener
 
-class IpfsGatewaySettingsActivity : ComponentActivity() {
+class IpfsGatewaySettingsActivity : AppCompatActivity() {
 
     lateinit var prefs: Preferences
 
