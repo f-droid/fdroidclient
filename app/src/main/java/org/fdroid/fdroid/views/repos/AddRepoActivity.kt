@@ -6,9 +6,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle.State.STARTED
@@ -30,7 +30,7 @@ import org.fdroid.repo.Added
 import kotlin.text.RegexOption.IGNORE_CASE
 import kotlin.text.RegexOption.MULTILINE
 
-class AddRepoActivity : ComponentActivity() {
+class AddRepoActivity : AppCompatActivity() {
 
     // Use a getter here, otherwise this tries to access Context too early causing NPE
     private val repoManager: RepoManager get() = FDroidApp.getRepoManager(this)
