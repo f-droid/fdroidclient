@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.UserManager;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,6 +46,7 @@ import com.google.android.material.snackbar.Snackbar;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -126,6 +128,12 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        long lastUpdate = Preferences.get().getLastUpdateCheck();
+        CharSequence lastUpdateStr = lastUpdate < 0 ?
+                getString(R.string.repositories_last_update_never) :
+                DateUtils.getRelativeTimeSpanString(lastUpdate, System.currentTimeMillis(),
+                        DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL);
+        getSupportActionBar().setSubtitle(getString(R.string.repositories_last_update, lastUpdateStr));
         findViewById(R.id.fab).setOnClickListener(view -> {
             Intent i = new Intent(this, AddRepoActivity.class);
             startActivity(i);
