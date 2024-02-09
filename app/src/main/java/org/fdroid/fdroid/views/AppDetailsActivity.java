@@ -705,7 +705,7 @@ public class AppDetailsActivity extends AppCompatActivity
         if (appData.getRepos().size() > 0) {
             adapter.setRepos(appData.getRepos(), appData.getPreferredRepoId());
         }
-        updateAppInfo(app, versions, appPrefs);
+        if (app != null) updateAppInfo(app, versions, appPrefs);
     }
 
     private void updateAppInfo(App app, @Nullable List<Apk> apks, AppPrefs appPrefs) {
