@@ -469,7 +469,7 @@ public class AppDetailsRecyclerViewAdapter
             progressLayout.setVisibility(View.GONE);
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setVisibility(app != null && app.isUninstallable(context) ?
-                    View.VISIBLE : View.INVISIBLE);
+                    View.VISIBLE : View.GONE);
         }
 
         void setIndeterminateProgress(int resIdString) {
@@ -622,7 +622,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
-            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
+            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
@@ -695,6 +695,13 @@ public class AppDetailsRecyclerViewAdapter
                 progressLabel.setVisibility(View.VISIBLE);
                 progressCancel.setVisibility(View.VISIBLE);
                 progressPercent.setVisibility(View.VISIBLE);
+            }
+            // Hide primary buttons when current repo is not the preferred one.
+            // This requires the user to prefer the repo first, if they want to install/update from it.
+            if (preferredRepoId != null && preferredRepoId != app.repoId) {
+                // we don't need to worry about making it visible, because changing current repo refreshes this view
+                buttonPrimaryView.setVisibility(View.GONE);
+                buttonSecondaryView.setVisibility(View.GONE);
             }
         }
 
