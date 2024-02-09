@@ -21,7 +21,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -144,7 +143,6 @@ fun RepoChooser(
         if (currentRepo.repoId != preferredRepoId) {
             FDroidOutlineButton(
                 text = stringResource(R.string.app_details_repository_button_prefer),
-                imageVector = Icons.Default.Star,
                 onClick = { onPreferredRepoChanged(currentRepo.repoId) },
                 modifier = Modifier.align(End),
             )
@@ -173,7 +171,7 @@ private fun getRepoString(repo: Repository, isPreferred: Boolean) = buildAnnotat
     if (isPreferred) {
         append(" ")
         pushStyle(SpanStyle(fontWeight = Bold))
-        append("★ ")
+        append(" ")
         append(stringResource(R.string.app_details_repository_preferred))
     }
 }
