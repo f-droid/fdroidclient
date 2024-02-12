@@ -91,7 +91,7 @@ import javax.net.ssl.SSLProtocolException;
  */
 public class DownloaderService extends JobIntentService {
     private static final String TAG = "DownloaderService";
-    private static final int JOB_ID = TAG.hashCode();
+    private static final int JOB_ID = TAG.hashCode(); // 1964029344
 
     private static final String ACTION_QUEUE = "org.fdroid.fdroid.net.DownloaderService.action.QUEUE";
 
@@ -145,6 +145,13 @@ public class DownloaderService extends JobIntentService {
         } else {
             Utils.debugLog(TAG, "Received Intent with unknown action: " + intent);
         }
+    }
+
+    @Override
+    public boolean onStopCurrentWork() {
+        Log.i(TAG, "onStopCurrentWork - activeCanonicalUrl: " + activeCanonicalUrl);
+        cancel(activeCanonicalUrl);
+        return true;
     }
 
     @Override
