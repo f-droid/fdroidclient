@@ -570,4 +570,17 @@
     <string name="swap_connection_indexv0_error">Você tentando se conecta com alguém mesmo sua versão do F-Droid estando ultrapassada . Para voltar a se conectar a eles tente atualizar seu aplicativo F-Droid. Eles podem usar um compartilhamento para ajuda-lo atualizar seu aplicativo F-Droid.</string>
     <string name="repo_num_apps_button">Mostrar aplicativos</string>
     <string name="swap_banner_message">Para compartilhar seus aplicativos, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
+    <string name="ipfsgw_summary_disabled">Descarregar aplicações usando endpoints da web IPFS: desativado</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Descarregar aplicação usando endpoints da web IPFS: %1$d ativado</item>
+        <item quantity="many">Descarregar aplicações usando endpoints da web IPFS: %1$d ativados</item>
+        <item quantity="other">Descarregar aplicações usando endpoints da web IPFS: %1$d ativados</item>
+    </plurals>
+    <string name="ipfsgw_add_title">Adicionar gateway de IPFS</string>
+    <string name="ipfsgw_add_add">Adicionar</string>
+    <string name="ipfsgw_caption_official_gateways">Gateways de IPFS oficiais</string>
+    <string name="ipfsgw_caption_custom_gateways">Gateways de IPFS personalizados</string>
+    <string name="paste">Colar</string>PluralsCandidate
+
+    <string name="ipfsgw_explainer">Descarregue aplicações de IPFS web endpoints.(Funciona apenas com os repositórios F-Droid com suporte de IPFS )</string>
 </resources>
