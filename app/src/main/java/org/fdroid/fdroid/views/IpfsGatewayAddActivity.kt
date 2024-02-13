@@ -2,8 +2,8 @@ package org.fdroid.fdroid.views
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,7 +44,7 @@ import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 
-class IpfsGatewayAddActivity : ComponentActivity() {
+class IpfsGatewayAddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
