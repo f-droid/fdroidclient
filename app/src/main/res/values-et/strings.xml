@@ -555,7 +555,7 @@
     <string name="force_old_installer_summary">Lülita välja sessioonipõhise paigaldaja beetaversioon ja sellega muu hulgas kaob taustal töötava paigaldusteenuse tugi.</string>
     <string name="repo_enter_url">Sisesta hoidla url käsitsi</string>
     <string name="swap_banner_message">Rakenduste vahetamiseks lülita sisse oma nutiseadme Wi-Fi ja liitu samasse võrku oma sõbraga.</string>
-    <string name="paste">Aseta</string>PluralsCandidate
+    <string name="paste">Aseta</string>
 
     <string name="repo_intro">Lisatav hoidla on täiendavaks allikaks rakenduste laadimisel. Kolmandate osapoolte hallatavad hoidlad võivad aga põhineda standarditel ja reeglitel, mis on oluliselt erinevad F-Droid\'i omadest.
 \n

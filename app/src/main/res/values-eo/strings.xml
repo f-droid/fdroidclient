@@ -564,7 +564,7 @@
     <string name="ipfsgw_summary_disabled">Elŝuti aplikaĵojn el retejaj IPFS-kluzoj: malaktiva</string>
     <string name="ipfsgw_title">IPFS-kluzoj</string>
     <string name="ipfsgw_caption_custom_gateways">Propraj IPFS-kluzoj</string>
-    <string name="paste">Alglui</string>PluralsCandidate
+    <string name="paste">Alglui</string>
 
     <string name="ipfsgw_add_add">Aldoni</string>
     <string name="ipfsgw_explainer">Elŝuti aplikaĵojn el retejaj IPFS-kluzoj. Funkcias nur por deponejoj subtenantaj IPFS.</string>

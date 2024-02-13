@@ -584,7 +584,7 @@
     <string name="ipfsgw_summary_disabled">Descarga de aplicaciones mediante puntos finales web IPFS: desactivado</string>
     <string name="ipfsgw_title">Puertas de enlace IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Pasarelas IPFS personalizadas</string>
-    <string name="paste">Pegar</string>PluralsCandidate
+    <string name="paste">Pegar</string>
 
     <string name="ipfsgw_add_add">Añadir</string>
     <string name="ipfsgw_explainer">Descargar las aplicaciones desde IPFS web endpoints. (Solo funciona para repositorios F-Droid compatibles con IPFS)</string>

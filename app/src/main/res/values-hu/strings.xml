@@ -569,6 +569,6 @@
     <string name="ipfsgw_add_add">Hozzáadás</string>
     <string name="ipfsgw_caption_official_gateways">Hivatalos IPFS-átjárók</string>
     <string name="ipfsgw_caption_custom_gateways">Egyéni IPFS-átjárók</string>
-    <string name="paste">Beillesztés</string>PluralsCandidate
+    <string name="paste">Beillesztés</string>
 
     </resources>

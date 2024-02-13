@@ -554,7 +554,7 @@
     <string name="ipfsgw_summary_disabled">使用 IPFS 網路端點下載應用程式：已停用</string>
     <string name="ipfsgw_title">IPFS 閘道</string>
     <string name="ipfsgw_caption_custom_gateways">自訂 IPFS 閘道</string>
-    <string name="paste">貼上</string>PluralsCandidate
+    <string name="paste">貼上</string>
 
     <string name="ipfsgw_add_add">新增</string>
     <string name="ipfsgw_explainer">從 IPFS 網路端點下載應用程式。（僅適用於支援 IPFS 的 F-Droid 軟體庫。）</string>

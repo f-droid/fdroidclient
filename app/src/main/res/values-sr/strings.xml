@@ -574,7 +574,7 @@
     <string name="ipfsgw_summary_disabled">Преузимање апликација помоћу IPFS веб крајњих тачака: онемогућено</string>
     <string name="ipfsgw_title">IPFS мрежни пролази</string>
     <string name="ipfsgw_caption_custom_gateways">Прилагођени IPFS мрежни пролази</string>
-    <string name="paste">Налепи</string>PluralsCandidate
+    <string name="paste">Налепи</string>
 
     <string name="ipfsgw_add_add">Додај</string>
     <string name="ipfsgw_explainer">Преузмите апликације са IPFS веб крајњих тачака. (Ради само за F-Droid репозиторијуме са подршком за IPFS.)</string>

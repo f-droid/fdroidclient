@@ -583,7 +583,7 @@
     <string name="ipfsgw_summary_disabled">Télécharger les applications en utilisant les paramètres web IPFS : désactivé</string>
     <string name="ipfsgw_title">Passerelles IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Passerelles IPFS personnalisées</string>
-    <string name="paste">Coller</string>PluralsCandidate
+    <string name="paste">Coller</string>
 
     <string name="ipfsgw_add_add">Ajouter</string>
     <string name="ipfsgw_explainer">Télécharger les applications à partir de la passerelle IPFS. (Fonctionne seulement avec les dépôts qui supportent IPFS.)</string>

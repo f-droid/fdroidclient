@@ -574,7 +574,7 @@
     <string name="ipfsgw_summary_disabled">Stáhnout aplikaci pomocí webových koncových bodů IPFS: zakázáno</string>
     <string name="ipfsgw_title">Brány IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Vlastní brány IPFS</string>
-    <string name="paste">Vložit</string>PluralsCandidate
+    <string name="paste">Vložit</string>
 
     <string name="ipfsgw_add_add">Přidat</string>
     <string name="ipfsgw_explainer">Stahování aplikací z webových koncových bodů IPFS. (Funguje pouze pro repozitáře F-Droid s podporou IPFS.)</string>

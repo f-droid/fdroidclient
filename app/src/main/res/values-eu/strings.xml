@@ -584,7 +584,7 @@
     <string name="copied_url_to_clipboard">Kopiatu da URLa arbelean</string>
     <string name="ipfsgw_title">IPFS pasabideak</string>
     <string name="ipfsgw_caption_custom_gateways">IPFS pasabide pertsonalizatuak</string>
-    <string name="paste">Itsatsi</string>PluralsCandidate
+    <string name="paste">Itsatsi</string>
 
     <string name="repo_num_apps_button">Erakutsi aplikazioak</string>
     <string name="ipfsgw_add_add">Gehitu</string>

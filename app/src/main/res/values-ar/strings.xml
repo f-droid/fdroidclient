@@ -603,7 +603,7 @@
     <string name="ipfsgw_summary_disabled">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS: معطل</string>
     <string name="ipfsgw_title">بوابات IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">بوابات IPFS المخصصة</string>
-    <string name="paste">لصق</string>PluralsCandidate
+    <string name="paste">لصق</string>
 
     <string name="ipfsgw_add_add">أضِف</string>
     <string name="ipfsgw_explainer">نزّل التطبيقات من نقاط نهاية الويب IPFS. (يعمل فقط مع مستودعات F-Droid التي تدعم IPFS.)</string>

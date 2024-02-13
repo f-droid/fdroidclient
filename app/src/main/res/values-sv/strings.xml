@@ -557,7 +557,7 @@
     <string name="force_old_installer_summary">Inaktivera beta-sessionsinstalleraren, inklusive stöd för automatiska bakgrundsuppdateringar.</string>
     <string name="repo_num_apps_button">Visa appar</string>
     <string name="targetsdk_or_later">mål %s</string>
-    <string name="paste">Klistra in</string>PluralsCandidate
+    <string name="paste">Klistra in</string>
 
     <string name="repo_intro">Ett filförråd är en källa för ytterligare appar. Tredjepartsfilförråden som du lägger till här har olika standarder än de som tillhandahåller appar byggda av F-Droid självt.
 \n

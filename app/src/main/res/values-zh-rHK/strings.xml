@@ -552,7 +552,7 @@
     <string name="copied_permission_to_clipboard">權限名稱已複製至剪貼簿</string>
     <string name="copied_url_to_clipboard">URL 已複製至剪貼簿</string>
     <string name="repo_num_apps_button">顯示應用程式</string>
-    <string name="paste">貼上</string>PluralsCandidate
+    <string name="paste">貼上</string>
 
     <string name="ipfsgw_title">IPFS 閘道</string>
     <string name="ipfsgw_explainer">從 IPFS 網路端點下載應用程式。 (僅限支援 IPFS 的 F-Droid 軟件庫。)</string>

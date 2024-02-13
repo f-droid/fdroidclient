@@ -580,7 +580,7 @@
     <string name="ipfsgw_summary_disabled">Pobieraj aplikacje z endpointów IPFS: wyłączone</string>
     <string name="ipfsgw_title">Bramki IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Niestandardowe bramki IPFS</string>
-    <string name="paste">Wklej</string>PluralsCandidate
+    <string name="paste">Wklej</string>
 
     <string name="ipfsgw_add_add">Dodaj</string>
     <string name="ipfsgw_explainer">Pobieraj aplikacje z endpointów IPFS. Działa tylko dla repozytoriów F-Droid z obsługą IPFS</string>

@@ -551,7 +551,7 @@
     <string name="targetsdk_or_later">目標版本為 %s</string>
     <string name="repo_num_apps_button">騷晒佢所有啲 app</string>
     <string name="ipfsgw_summary_disabled">用 IPFS 網點嚟下載啲 app：已停用</string>
-    <string name="paste">貼上</string>PluralsCandidate
+    <string name="paste">貼上</string>
 
     <string name="ipfsgw_title">IPFS 閘道</string>
     <string name="ipfsgw_explainer">用 IPFS 網點嚟下載啲 app。(淨係得支援 IPFS 嘅 F-Droid 存庫至用到。)</string>

@@ -562,7 +562,7 @@
     <string name="repo_num_apps_button">Show apps</string>
     <string name="ipfsgw_title">IPFS Gateways</string>
     <string name="ipfsgw_explainer">Download apps from IPFS web endpoints. (Only works for F-Droid repositories with IPFS support.)</string>
-    <string name="paste">Paste</string>PluralsCandidate
+    <string name="paste">Paste</string>
 
     <string name="ipfsgw_caption_custom_gateways">Custom IPFS Gateways</string>
     <string name="ipfsgw_caption_official_gateways">Official IPFS Gateways</string>

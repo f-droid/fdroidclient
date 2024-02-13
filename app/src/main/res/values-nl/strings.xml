@@ -565,7 +565,7 @@
     <string name="swap_connection_indexv0_error">Je probeert te verbinden met iemand die een oudere versie van de F-Droid app gebruikt. Om te kunnen verbinden moeten zij hun F-Droid app updaten. Ze kunnen swap gebruiken om deze update te installeren van jou.</string>
     <string name="repo_num_apps_button">Apps tonen</string>
     <string name="swap_banner_message">Om apps uit te wisselen, zet je Wi-Fi aan en verbindt met hetzelfde netwerk als je vriend.</string>
-    <string name="paste">Plakken</string>PluralsCandidate
+    <string name="paste">Plakken</string>
 
     <string name="ipfsgw_title">IPFS-Gateways</string>
     <string name="ipfsgw_add_title">IPFS-Gateway toevoegen</string>

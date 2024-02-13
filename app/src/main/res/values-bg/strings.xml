@@ -564,7 +564,7 @@
     <string name="ipfsgw_summary_disabled">Изтегляне на приложения от крайни точки на IPFS: изключено</string>
     <string name="ipfsgw_title">Шлюзове на IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Потребителски шлюзове на IPFS</string>
-    <string name="paste">Поставяне</string>PluralsCandidate
+    <string name="paste">Поставяне</string>
 
     <string name="ipfsgw_add_add">Добавяне</string>
     <string name="ipfsgw_explainer">Изтегля приложения от крайни точки на IPFS (работи само с хранилища на F-Droid, поддръжащи IPFS).</string>

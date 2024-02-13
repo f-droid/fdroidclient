@@ -557,7 +557,7 @@
     <string name="repo_io_error">Villa í tengingu við hugbúnaðarsafnið.</string>
     <string name="ipfsgw_caption_custom_gateways">Sérsniðnar IPFS-netgáttir</string>
     <string name="repo_enter_url">Settu handvirkt inn slóð hugbúnaðarsafns</string>
-    <string name="paste">Líma</string>PluralsCandidate
+    <string name="paste">Líma</string>
 
     <string name="repo_add_new_mirror">Bæta við sem nýjum spegli</string>
     <string name="repo_intro">Hugbúnaðarsafn er viðbótaruppspretta fyrir forrit og fleira. Hugbúnaðarsöfn frá utanaðkomandi aðilum sem þú bætir við hér, gætu verið með önnur viðmið og staðla en þau sem byggja forrit fyrir sjálft F-Droid safnið.

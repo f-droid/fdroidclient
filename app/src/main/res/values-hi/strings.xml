@@ -554,7 +554,7 @@
     <string name="ipfsgw_caption_custom_gateways">कस्टम IPFS गेटवे</string>
     <string name="repo_io_error">रिपॉजिटरी से कनेक्ट करने में त्रुटि।</string>
     <string name="copied_permission_to_clipboard">अनुमति नाम को क्लिपबोर्ड पर कॉपी किया गया</string>
-    <string name="paste">पेस्ट</string>PluralsCandidate
+    <string name="paste">पेस्ट</string>
 
     <string name="force_old_installer_title">पुराने इंस्टॉलर को बाध्य करें</string>
     <string name="force_old_installer_summary">स्वचालित पृष्ठभूमि अपडेट के लिए समर्थन सहित बीटा सत्र इंस्टॉलर को अक्षम करें।</string>

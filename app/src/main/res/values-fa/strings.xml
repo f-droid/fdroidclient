@@ -566,7 +566,7 @@
     <string name="ipfsgw_add_add">افزودن</string>
     <string name="ipfsgw_add_title">افزودن دروازهٔ IPFS</string>
     <string name="ipfsgw_summary_disabled">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS: از کار افتاده</string>
-    <string name="paste">جایگذاری</string>PluralsCandidate
+    <string name="paste">جایگذاری</string>
 
     <string name="ipfsgw_explainer">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS. (فقط با مخازن اف‌دروید پشتیبانی‌شده کار می‌کند)</string>
     <plurals name="ipfsgw_summary">

@@ -587,7 +587,7 @@
     <string name="ipfsgw_summary_disabled">Scarica applicazioni usando endpoint web IPFS: disattivato</string>
     <string name="ipfsgw_title">Gateway IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Gateway IPFS personalizzati</string>
-    <string name="paste">Incolla</string>PluralsCandidate
+    <string name="paste">Incolla</string>
 
     <string name="ipfsgw_add_add">Aggiungi</string>
     <string name="ipfsgw_explainer">Scarica applicazioni da endpoint web IPFS. (Funziona solo per repository F-Droid con supporto IPFS.)</string>

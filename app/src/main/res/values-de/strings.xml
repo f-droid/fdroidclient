@@ -569,7 +569,7 @@
     <string name="ipfsgw_summary_disabled">Download von Apps über IPFS-Webendpunkte: deaktiviert</string>
     <string name="ipfsgw_title">IPFS-Gateways</string>
     <string name="ipfsgw_caption_custom_gateways">Eigene IPFS-Gateways</string>
-    <string name="paste">Einfügen</string>PluralsCandidate
+    <string name="paste">Einfügen</string>
 
     <string name="ipfsgw_add_add">Hinzufügen</string>
     <string name="ipfsgw_explainer">Apps von IPFS-Webendpunkten herunterladen. (Funktioniert nur bei F-Droid-Paketquellen mit IPFS-Unterstützung.)</string>
