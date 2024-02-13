@@ -558,4 +558,17 @@
     <string name="copied_permission_to_clipboard">Engedély neve vágólapra másolva</string>
     <string name="copied_url_to_clipboard">Webcím vágólapra másolva</string>
     <string name="repo_num_apps_button">Alkalmazások megjelenítése</string>
-</resources>
+    <string name="ipfsgw_explainer">Alkalmazások letöltése IPFS webes végpontokról. (Csak az IPFS-támogatással rendelkező F-Droid adattáraknál működik.)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Alkalmazások letöltése IPFS webvégpontok használatával: %1$d engedélyezve</item>
+        <item quantity="other">Alkalmazások letöltése IPFS webvégpontok használatával: %1$d engedélyezve</item>
+    </plurals>
+    <string name="ipfsgw_title">IPFS átjárók</string>
+    <string name="ipfsgw_summary_disabled">Alkalmazások letöltése IPFS webes végpontok használatával: letiltva</string>
+    <string name="ipfsgw_add_title">Adjon hozzá IPFS átjárót</string>
+    <string name="ipfsgw_add_add">Hozzáadás</string>
+    <string name="ipfsgw_caption_official_gateways">Hivatalos IPFS átjárók</string>
+    <string name="ipfsgw_caption_custom_gateways">Egyéni IPFS-átjárók</string>
+    <string name="paste">beillesztés</string>PluralsCandidate
+
+    </resources>
