@@ -525,4 +525,5 @@
     <string name="force_old_installer_title">Gennemtving ældre installation</string>
     <string name="app_name_full">F-Droid</string>
     <string name="app_name_basic">F-Droid Basis</string>
+    <string name="about_title_basic">Om F-Droid Basic</string>
 </resources>
