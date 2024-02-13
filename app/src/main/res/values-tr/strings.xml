@@ -563,7 +563,7 @@
     <string name="ipfsgw_summary_disabled">IPFS web uç noktalarını kullanarak uygulamaları indirin: devre dışı</string>
     <string name="ipfsgw_title">IPFS Ağ Geçitleri</string>
     <string name="ipfsgw_caption_custom_gateways">Resmi IPFS Ağ Geçitleri</string>
-    <string name="paste">Yapıştır</string>PluralsCandidate
+    <string name="paste">Yapıştır</string>
 
     <string name="ipfsgw_add_add">Ekle</string>
     <string name="ipfsgw_explainer">IPFS web uç noktalarından uygulamaları indirin. (Yalnızca IPFS desteği olan F-Droid depoları için çalışır.)</string>

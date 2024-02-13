@@ -584,7 +584,7 @@
     <string name="ipfsgw_summary_disabled">Загрузка приложений из конечных веб-точек IPFS отключена</string>
     <string name="ipfsgw_title">IPFS-шлюзы</string>
     <string name="ipfsgw_caption_custom_gateways">Пользовательские шлюзы IPFS</string>
-    <string name="paste">Вставить</string>PluralsCandidate
+    <string name="paste">Вставить</string>
 
     <string name="ipfsgw_add_add">Добавить</string>
     <string name="ipfsgw_explainer">Загружать приложения с конечных веб-точек IPFS. (Работает только для репозиториев F-Droid, поддерживающих IPFS.)</string>
