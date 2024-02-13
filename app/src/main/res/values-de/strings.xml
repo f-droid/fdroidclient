@@ -578,4 +578,5 @@
         <item quantity="one">Download von Apps über IPFS-Webendpunkt: %1$d aktiviert</item>
         <item quantity="other">Download von Apps über IPFS-Webendpunkte: %1$d aktiviert</item>
     </plurals>
+    <string name="targetsdk_or_later">Benötigt %s</string>
 </resources>
