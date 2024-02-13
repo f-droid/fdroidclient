@@ -589,4 +589,14 @@
 
     <string name="ipfsgw_add_add">Adicionar</string>
     <string name="ipfsgw_explainer">Baixar aplicativos de IPFS web endpoints.(Funciona apenas com os repositórios F-Droid com suporte IPFS )</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Baixar aplicativos usando endpoints da web IPFS: %1$d ativado</item>
+        <item quantity="many">Baixar aplicativos usando endpoints da web IPFS: %1$d ativados</item>
+        <item quantity="other">Baixar aplicativos usando endpoints da web IPFS: %1$d ativados</item>
+    </plurals>
+    <string name="ipfsgw_title">Gateways IPFS</string>
+    <string name="ipfsgw_summary_disabled">Baixar aplicativos usando endpoints da web IPFS: desativado</string>
+    <string name="ipfsgw_add_title">Adicionar gateway IPFS</string>
+    <string name="ipfsgw_caption_official_gateways">Gateways IPFS oficiais</string>
+    <string name="ipfsgw_caption_custom_gateways">Gateways IPFS personalizados</string>
 </resources>
