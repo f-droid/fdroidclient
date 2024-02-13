@@ -1,0 +1,15 @@
+* Revizuirea manipulării repo și a oglinzilor, UX și cod
+
+* Arată previzualizări depozite
+
+* F-Droid și F-Droid Basic suportă acum actualizări automate în fundal
+
+* Pe Android 14, marcați apps cu versiunea SDK ca incompatibile #2692
+
+* Clic lung pentru a copia link-uri, permisiuni și versiuni la App Details (@Tobias_Groza)
+
+* Apps incompatibile afișate numai dacă sunt permise în Setări #41 (@pigpig)
+
+* Noi setări la gateway-uri IPFS
+
+* Selectarea limbii pentru fiecare app în parte (@Licaon-Kter)
