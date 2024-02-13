@@ -571,4 +571,5 @@
     <string name="ipfsgw_add_title">IPFS-Gateway toevoegen</string>
     <string name="ipfsgw_add_add">Toevoegen</string>
     <string name="ipfsgw_caption_official_gateways">Officiële IPFS-Gateways</string>
+    <string name="ipfsgw_explainer">Download applocaties van IPFS web eindpunten. (Werkt alleen voor F-Droid repositories met IPFS ondersteuning.)</string>
 </resources>
