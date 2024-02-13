@@ -10,6 +10,8 @@ import okhttp3.ConnectionSpec
 import okhttp3.ConnectionSpec.Companion.MODERN_TLS
 import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
 import okhttp3.TlsVersion.TLS_1_2
+import org.fdroid.IndexFile
+import org.fdroid.getIndexFile
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
 import org.json.JSONObject
@@ -54,18 +56,17 @@ internal class HttpManagerInstrumentationTest {
     @Test
     fun checkTlsSupport() = runSuspend {
         val httpManager = HttpManager(userAgent, null)
-        val mirror = Mirror("https://check.tls.support")
-        val downloadRequest = DownloadRequest("/", listOf(mirror))
+        val mirror = Mirror("https://www.howsmyssl.com")
+        val indexFile: IndexFile = getIndexFile("/a/check")
+        val downloadRequest = DownloadRequest(indexFile, listOf(mirror))
 
         val json = JSONObject(httpManager.getBytes(downloadRequest).decodeToString())
-        assertEquals(userAgent, json.getString("user_agent"))
         if (Build.VERSION.SDK_INT >= 29) {
             assertEquals("TLS 1.3", json.getString("tls_version"))
         } else {
             assertEquals("TLS 1.2", json.getString("tls_version"))
         }
-        assertEquals(0, json.getJSONObject("weak_cipher_suites").length())
-        assertEquals(0, json.getJSONObject("broken_cipher_suites").length())
+        assertEquals(0, json.getJSONObject("insecure_cipher_suites").length())
     }
 
     @Test
@@ -85,13 +86,12 @@ internal class HttpManagerInstrumentationTest {
             }
         }
         val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = clientFactory)
-        val mirror = Mirror("https://check.tls.support")
-        val downloadRequest = DownloadRequest("/", listOf(mirror))
+        val mirror = Mirror("https://www.howsmyssl.com")
+        val indexFile: IndexFile = getIndexFile("/a/check")
+        val downloadRequest = DownloadRequest(indexFile, listOf(mirror))
 
         val json = JSONObject(httpManager.getBytes(downloadRequest).decodeToString())
-        assertEquals(userAgent, json.getString("user_agent"))
         assertEquals("TLS 1.2", json.getString("tls_version"))
-        assertEquals(0, json.getJSONObject("weak_cipher_suites").length())
-        assertEquals(0, json.getJSONObject("broken_cipher_suites").length())
+        assertEquals(0, json.getJSONObject("insecure_cipher_suites").length())
     }
 }
