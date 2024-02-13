@@ -80,6 +80,14 @@ app assembleFullRelease test:
         - libs/**/*
   script:
     - ./gradlew :app:assembleFullRelease :app:testFullDebugUnitTest
+  artifacts:
+    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    paths:
+      - app/build/reports
+      - app/build/outputs/apk
+      - libs/*/build/reports
+    expire_in: 1 week
+    when: always
 
 libs db test:
   <<: *test-template
