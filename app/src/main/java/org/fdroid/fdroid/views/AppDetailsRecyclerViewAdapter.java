@@ -56,6 +56,7 @@ import com.google.android.material.progressindicator.LinearProgressIndicator;
 import org.apache.commons.io.FilenameUtils;
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.Repository;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -76,6 +77,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
@@ -549,9 +551,18 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.GONE);
             }
             if (app != null && preferredRepoId != null) {
-                RepoChooserKt.setContentRepoChooser(repoChooserView, repos, app.repoId, preferredRepoId,
-                        repo -> callbacks.onRepoChanged(repo.getRepoId()), callbacks::onPreferredRepoChanged);
-                repoChooserView.setVisibility(View.VISIBLE);
+                Set<String> defaultAddresses = Preferences.get().getDefaultRepoAddresses(context);
+                Repository repo = FDroidApp.getRepoManager(context).getRepository(app.repoId);
+                // show repo banner, if
+                // * app is in more than one repo, or
+                // * app is from a non-default repo
+                if (repos.size() > 1 || (repo != null && !defaultAddresses.contains(repo.getAddress()))) {
+                    RepoChooserKt.setContentRepoChooser(repoChooserView, repos, app.repoId, preferredRepoId,
+                            r -> callbacks.onRepoChanged(r.getRepoId()), callbacks::onPreferredRepoChanged);
+                    repoChooserView.setVisibility(View.VISIBLE);
+                } else {
+                    repoChooserView.setVisibility(View.GONE);
+                }
             } else {
                 repoChooserView.setVisibility(View.GONE);
             }

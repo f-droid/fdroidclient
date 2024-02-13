@@ -38,6 +38,7 @@ import androidx.preference.PreferenceManager;
 import com.google.common.collect.Lists;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
@@ -46,6 +47,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -138,6 +140,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final String PREF_HIDE_ON_LONG_PRESS_SEARCH = "hideOnLongPressSearch";
     private static final String PREF_HIDE_ALL_NOTIFICATIONS = "hideAllNotifications";
     private static final String PREF_SEND_VERSION_AND_UUID_TO_SERVERS = "sendVersionAndUUIDToServers";
+    private static final String PREF_DEFAULT_REPO_ADDRESSES = "defaultRepoAddresses";
 
     public static final int OVER_NETWORK_NEVER = 0;
     private static final int OVER_NETWORK_ON_DEMAND = 1;
@@ -749,6 +752,21 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             }
         }
         return gateways;
+    }
+
+    private void setPrefDefaultRepoAddresses(Set<String> addresses) {
+        preferences.edit().putStringSet(PREF_DEFAULT_REPO_ADDRESSES, addresses).apply();
+    }
+
+    public Set<String> getDefaultRepoAddresses(Context context) {
+        Set<String> def = Collections.singleton("empty");
+        Set<String> addresses = preferences.getStringSet(PREF_DEFAULT_REPO_ADDRESSES, def);
+        if (addresses == def) {
+            Utils.debugLog(TAG, "Parsing XML to get default repo addresses...");
+            addresses = new HashSet<>(DBHelper.getDefaultRepoAddresses(context));
+            setPrefDefaultRepoAddresses(addresses);
+        }
+        return addresses;
     }
 
     public void registerAppsRequiringAntiFeaturesChangeListener(ChangeListener listener) {

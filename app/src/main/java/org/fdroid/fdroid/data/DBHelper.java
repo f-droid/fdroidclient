@@ -250,4 +250,26 @@ public class DBHelper {
                 + repoItems.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
         return new LinkedList<>();
     }
+
+    public static List<String> getDefaultRepoAddresses(Context context) {
+        List<String> defaultRepos = Arrays.asList(context.getResources().getStringArray(R.array.default_repos));
+        if (defaultRepos.size() % REPO_XML_ITEM_COUNT != 0) {
+            throw new IllegalArgumentException("default_repos.xml has wrong item count: " +
+                    defaultRepos.size() + " % REPO_XML_ARG_COUNT(" + REPO_XML_ITEM_COUNT +
+                    ") != 0, FYI the priority item was removed in v1.16");
+        }
+        List<String> addresses = new ArrayList<>();
+        for (int i = 0; i < defaultRepos.size(); i += REPO_XML_ITEM_COUNT) {
+            boolean enabled = defaultRepos.get(i + 4).equals("1");
+            if (!enabled) continue;
+            // split addresses into a list
+            for (String address : defaultRepos.get(i + 1).split("\\s+")) {
+                if (!address.isEmpty()) {
+                    addresses.add(address);
+                    break; // only first one is canonical
+                }
+            }
+        }
+        return addresses;
+    }
 }
