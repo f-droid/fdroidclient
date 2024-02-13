@@ -81,8 +81,7 @@ internal object RepoUriGetter {
     }
 
     private fun getFdroidLinkUri(uri: Uri): Uri {
-        val tmpUri = uri.buildUpon().encodedQuery(uri.encodedFragment).build()
-        return Uri.parse(tmpUri.getQueryParameter("repo"))
+        return Uri.parse(uri.encodedFragment)
     }
 
     /**
