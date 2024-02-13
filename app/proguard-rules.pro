@@ -6,7 +6,6 @@
 -dontwarn android.test.**
 
 -dontwarn javax.naming.**
--dontwarn org.slf4j.**
 -dontnote org.apache.http.**
 -dontnote android.net.http.**
 -dontnote **ILicensingService
@@ -49,3 +48,8 @@ public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *; }
 -keep class org.acra.config.MailSenderConfiguration {
     public <init>(...);
 }
+
+# Logging
+-keep class ch.qos.logback.classic.android.LogcatAppender
+-keepclassmembers class ch.qos.logback.** { *; }
+-keepclassmembers class  org.slf4j.impl.** { *; }

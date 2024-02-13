@@ -182,7 +182,8 @@ dependencies {
     implementation 'ch.acra:acra-mail:5.11.2'
     implementation 'ch.acra:acra-dialog:5.11.2'
     implementation 'com.hannesdorfmann:adapterdelegates4:4.3.2'
-    implementation "org.slf4j:slf4j-android:1.7.36"
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'com.github.tony19:logback-android:3.0.0'
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.7'
