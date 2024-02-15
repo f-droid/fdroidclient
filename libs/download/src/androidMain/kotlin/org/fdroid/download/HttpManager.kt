@@ -32,7 +32,7 @@ internal actual fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngin
                     dns(customDns)
                 }
                 hostnameVerifier { hostname, session ->
-                    session?.sessionContext?.sessionTimeout = 60
+                    session?.sessionContext?.sessionTimeout = 10
                     // use default hostname verifier
                     OkHostnameVerifier.verify(hostname, session)
                 }

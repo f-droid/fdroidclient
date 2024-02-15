@@ -29,16 +29,14 @@ import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.HttpStatusCode.Companion.PartialContent
 import io.ktor.http.Url
 import io.ktor.http.contentLength
-import io.ktor.util.toByteArray
 import io.ktor.utils.io.ByteChannel
 import io.ktor.utils.io.ByteReadChannel
-import io.ktor.utils.io.close
 import io.ktor.utils.io.core.isEmpty
 import io.ktor.utils.io.core.readBytes
-import io.ktor.utils.io.writeFully
 import mu.KotlinLogging
 import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
+import java.io.ByteArrayOutputStream
 import kotlin.coroutines.cancellation.CancellationException
 
 internal expect fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*>
@@ -202,12 +200,13 @@ public open class HttpManager @JvmOverloads constructor(
         request: DownloadRequest,
         skipFirstBytes: Long? = null,
     ): ByteArray {
-        val channel = ByteChannel()
-        get(request, skipFirstBytes) { bytes, _ ->
-            channel.writeFully(bytes)
+        val outputStream = ByteArrayOutputStream()
+        outputStream.use {
+            get(request, skipFirstBytes) { bytes, _ ->
+                it.write(bytes)
+            }
         }
-        channel.close()
-        return channel.toByteArray()
+        return outputStream.toByteArray()
     }
 
     public suspend fun post(url: String, json: String, proxy: ProxyConfig? = null) {
