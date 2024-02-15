@@ -327,7 +327,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antiadslist">This app contains advertising</string>
     <string name="antitracklist">This app tracks and reports your activity</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
-    <string name="antinonfreenetlist">This app promotes or depends entirely on a non-free network service</string>
+    <string name="antinonfreenetlist">This app promotes or depends entirely on a non-changeable or non-free network service</string>
     <string name="antinonfreedeplist">This app depends on other non-free apps</string>
     <string name="antiupstreamnonfreelist">The upstream source code is not entirely Free</string>
     <string name="antinonfreeassetslist">This app contains non-free assets</string>
