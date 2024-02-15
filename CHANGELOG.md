@@ -1,3 +1,11 @@
+### 1.19.1 (2024-02-15)
+
+* Make all activities respect day/night theme
+
+* Support final fdroid.link URL syntax
+
+* Updated translations
+
 ### 1.19.0 (2024-01-25)
 
 * Add button background to App Details toolbar to improve visibility (@ConnyDuck)
