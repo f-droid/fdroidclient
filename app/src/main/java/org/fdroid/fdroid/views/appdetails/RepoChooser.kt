@@ -1,32 +1,27 @@
 package org.fdroid.fdroid.views.appdetails
 
 import android.content.res.Configuration
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
@@ -41,9 +36,11 @@ import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import androidx.core.util.Consumer
 import org.fdroid.database.Repository
+import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
+import org.fdroid.fdroid.ui.theme.AppTheme
 import org.fdroid.fdroid.views.repos.RepoIcon
 import org.fdroid.index.IndexFormatVersion.TWO
 
@@ -58,20 +55,24 @@ fun setContentRepoChooser(
     onRepoChanged: Consumer<Repository>,
     onPreferredRepoChanged: Consumer<Long>,
 ) {
+    val pureBlack = Preferences.get().isPureBlack
+
     composeView.setContent {
-        FDroidContent {
-            RepoChooser(
-                repos = repos,
-                currentRepoId = currentRepoId,
-                preferredRepoId = preferredRepoId,
-                onRepoChanged = onRepoChanged::accept,
-                onPreferredRepoChanged = onPreferredRepoChanged::accept,
-                modifier = Modifier.background(MaterialTheme.colors.surface),
-            )
+        AppTheme(pureBlack = pureBlack) {
+            FDroidContent {
+                RepoChooser(
+                    repos = repos,
+                    currentRepoId = currentRepoId,
+                    preferredRepoId = preferredRepoId,
+                    onRepoChanged = onRepoChanged::accept,
+                    onPreferredRepoChanged = onPreferredRepoChanged::accept,
+                )
+            }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RepoChooser(
     repos: List<Repository>,
@@ -93,7 +94,7 @@ fun RepoChooser(
             val borderColor = if (isPreferred) {
                 colorResource(id = R.color.fdroid_blue)
             } else {
-                LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                MaterialTheme.colorScheme.outline
             }
             OutlinedTextField(
                 value = TextFieldValue(
@@ -102,7 +103,7 @@ fun RepoChooser(
                         isPreferred = repos.size > 1 && isPreferred,
                     ),
                 ),
-                textStyle = MaterialTheme.typography.body2,
+                textStyle = MaterialTheme.typography.bodyMedium,
                 onValueChange = {},
                 label = {
                     if (repos.size == 1) {
@@ -121,18 +122,18 @@ fun RepoChooser(
                         tint = if (isPreferred) {
                             colorResource(id = R.color.fdroid_blue)
                         } else {
-                            LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                            MaterialTheme.colorScheme.onSurface
                         },
                     )
                 },
                 singleLine = false,
                 enabled = false,
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    // hack to enable clickable
-                    disabledTextColor = LocalContentColor.current.copy(LocalContentAlpha.current),
+                colors = OutlinedTextFieldDefaults.colors(
+                    // hack to enable clickable and look like enabled
+                    disabledTextColor = MaterialTheme.colorScheme.onSurface,
                     disabledBorderColor = borderColor,
+                    disabledLeadingIconColor = MaterialTheme.colorScheme.onSurface,
                     disabledLabelColor = borderColor,
-                    disabledLeadingIconColor = MaterialTheme.colors.onSurface,
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -145,12 +146,10 @@ fun RepoChooser(
                 onDismissRequest = { expanded = false },
             ) {
                 repos.iterator().forEach { repo ->
-                    DropdownMenuItem(onClick = {
+                    RepoMenuItem(repo = repo, isPreferred = isPreferred, onClick = {
                         onRepoChanged(repo)
                         expanded = false
-                    }) {
-                        RepoItem(repo, repo.repoId == preferredRepoId)
-                    }
+                    }, modifier = modifier)
                 }
             }
         }
@@ -158,25 +157,32 @@ fun RepoChooser(
             FDroidOutlineButton(
                 text = stringResource(R.string.app_details_repository_button_prefer),
                 onClick = { onPreferredRepoChanged(currentRepo.repoId) },
-                modifier = Modifier.align(End).padding(top = 8.dp),
+                modifier = Modifier
+                    .align(End)
+                    .padding(top = 8.dp),
             )
         }
     }
 }
 
 @Composable
-private fun RepoItem(repo: Repository, isPreferred: Boolean, modifier: Modifier = Modifier) {
-    Row(
-        horizontalArrangement = spacedBy(8.dp),
-        verticalAlignment = CenterVertically,
+private fun RepoMenuItem(
+    repo: Repository,
+    isPreferred: Boolean,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    DropdownMenuItem(
+        text = {
+            Text(
+                text = getRepoString(repo, isPreferred),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        },
         modifier = modifier,
-    ) {
-        RepoIcon(repo, Modifier.size(24.dp))
-        Text(
-            text = getRepoString(repo, isPreferred),
-            style = MaterialTheme.typography.body2,
-        )
-    }
+        onClick = onClick,
+        leadingIcon = { RepoIcon(repo, Modifier.size(24.dp)) }
+    )
 }
 
 @Composable

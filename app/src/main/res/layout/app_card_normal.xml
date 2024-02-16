@@ -6,7 +6,9 @@
     android:id="@+id/card"
     android:layout_width="120dp"
     android:layout_height="144dp"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"

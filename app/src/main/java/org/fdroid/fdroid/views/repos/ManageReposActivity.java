@@ -32,7 +32,6 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
@@ -193,15 +192,15 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     @Override
     public void onToggleEnabled(Repository repo) {
         if (repo.getEnabled()) {
-            new AlertDialog.Builder(this)
-                    .setMessage(R.string.repo_disable_warning)
-                    .setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
-                        disableRepo(repo);
-                        dialog.dismiss();
-                    })
-                    .setNegativeButton(R.string.cancel, (dialog, id) -> dialog.cancel())
-                    .setOnCancelListener(dialog -> repoAdapter.updateRepoItem(repo)) // reset toggle
-                    .show();
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+            builder.setMessage(R.string.repo_disable_warning);
+            builder.setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
+                disableRepo(repo);
+                dialog.dismiss();
+            });
+            builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.cancel());
+            builder.setOnCancelListener(dialog -> repoAdapter.updateRepoItem(repo)); // reset toggle
+            builder.show();
         } else {
             Utils.runOffUiThread(() -> {
                 repoManager.setRepositoryEnabled(repo.getRepoId(), true);

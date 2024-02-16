@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -31,7 +31,7 @@ fun RepoProgressScreen(paddingValues: PaddingValues, text: String) {
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.headlineSmall,
         )
         CircularProgressIndicator(modifier = Modifier.size(64.dp))
     }

@@ -5,71 +5,31 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.accompanist.themeadapter.material.createMdcTheme
-import org.fdroid.fdroid.Preferences
-import org.fdroid.fdroid.R
 import java.util.Locale
 
 object ComposeUtils {
+
+
     @Composable
     fun FDroidContent(content: @Composable () -> Unit) {
-        val context = LocalContext.current
-        val layoutDirection = LocalLayoutDirection.current
-        val (colors, typography, shapes) = createMdcTheme(
-            context = context,
-            layoutDirection = layoutDirection,
-        )
-        val newColors = (colors ?: MaterialTheme.colors).let { c ->
-            if (!LocalInspectionMode.current && !c.isLight && Preferences.get().isPureBlack) {
-                c.copy(background = Color.Black, surface = Color(0xff1e1e1e))
-            } else if (!c.isLight) {
-                c.copy(surface = Color(0xff1e1e1e))
-            } else {
-                c
-            }
-        }
-        MaterialTheme(
-            colors = newColors,
-            typography = typography?.let {
-                it.copy(
-                    // adapt letter-spacing to non-compose UI
-                    body1 = it.body1.copy(letterSpacing = 0.em),
-                    body2 = it.body2.copy(letterSpacing = 0.em),
-                    // set caption style to match MDC
-                    caption = it.caption.copy(
-                        color = colorResource(id = R.color.fdroid_caption),
-                        fontSize = 12.sp,
-                    )
-                )
-            } ?: MaterialTheme.typography,
-            shapes = shapes ?: MaterialTheme.shapes
-        ) {
-            Surface(content = content)
-        }
+        Surface(content = content)
     }
 
     @Composable
@@ -154,7 +114,7 @@ object ComposeUtils {
     fun CaptionText(text: String) {
         Text(
             text = text,
-            style = MaterialTheme.typography.caption,
+            style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp)
         )
     }

@@ -5,7 +5,7 @@
             <size
                 android:width="20dp"
                 android:height="20dp" />
-            <solid android:color="@color/fdroid_green" />
+            <solid android:color="?attr/colorPrimary" />
         </shape>
     </item>
 </layer-list>

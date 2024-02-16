@@ -7,16 +7,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -48,7 +46,7 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
         Image(
             imageVector = Icons.Default.Error,
             contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.error),
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.error),
             modifier = Modifier.size(48.dp),
         )
         val title = when (state.errorType) {
@@ -67,13 +65,13 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
         }
         Text(
             text = title,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.headlineSmall,
             textAlign = TextAlign.Center,
         )
         if (state.exception != null) Text(
             text = state.exception.toString(),
-            style = MaterialTheme.typography.body1,
-            modifier = Modifier.alpha(ContentAlpha.medium),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }

@@ -40,7 +40,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
@@ -48,7 +47,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -456,7 +456,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void promptToSelectWifiNetwork() {
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.swap_join_same_wifi)
                 .setMessage(R.string.swap_join_same_wifi_desc)
                 .setNeutralButton(R.string.cancel, (dialog, which) -> {
@@ -872,7 +872,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final BroadcastReceiver bluetoothScanModeChanged = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            SwitchMaterial bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
+            MaterialSwitch bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             if (bluetoothSwitch == null || textBluetoothVisible == null
                     || !BluetoothManager.ACTION_STATUS.equals(intent.getAction())) {
@@ -1082,7 +1082,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         bonjourStatusReceiver.onReceive(this, new Intent(BonjourManager.ACTION_STATUS));
 
         TextView viewWifiNetwork = findViewById(R.id.wifi_network);
-        SwitchMaterial wifiSwitch = findViewById(R.id.switch_wifi);
+        MaterialSwitch wifiSwitch = findViewById(R.id.switch_wifi);
         MaterialButton scanQrButton = findViewById(R.id.btn_scan_qr);
         MaterialButton appsButton = findViewById(R.id.btn_apps);
         if (viewWifiNetwork == null || wifiSwitch == null || scanQrButton == null || appsButton == null) {
@@ -1240,7 +1240,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 return;
             }
             bluetoothStatus = intent.getIntExtra(BluetoothManager.EXTRA_STATUS, bluetoothStatus);
-            SwitchMaterial bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
+            MaterialSwitch bluetoothSwitch = container.findViewById(R.id.switch_bluetooth);
             TextView textBluetoothVisible = container.findViewById(R.id.bluetooth_visible);
             TextView textDeviceIdBluetooth = container.findViewById(R.id.device_id_bluetooth);
             TextView peopleNearbyText = container.findViewById(R.id.text_people_nearby);
