@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true">
 
@@ -12,49 +12,45 @@
         android:layout_height="match_parent"
         android:padding="8dp">
 
-        <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
-             when it will inevitably read out the name of the app straight after. -->
         <ImageView
             android:id="@+id/icon"
             android:layout_width="96dip"
             android:layout_height="96dip"
-            tools:src="@drawable/ic_launcher"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:importantForAccessibility="no"
             android:scaleType="fitCenter"
             android:transitionName="@string/transition_app_item_icon"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:src="@drawable/ic_launcher" />
 
         <TextView
-            tools:text="F-Droid An application summary which takes up too much space and must ellipsize"
+            android:id="@+id/summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/summary"
-            android:maxLines="4"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lines="4"
             android:textColor="?android:textColorPrimary"
             android:textSize="14sp"
-            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="8dp" />
+            tools:text="F-Droid An application summary which takes up too much space and must ellipsize" />
 
         <include
+            android:id="@+id/new_tag"
             layout="@layout/app_status_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/new_tag"
-            android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/summary"
-            app:layout_constraintStart_toStartOf="@+id/summary"
-            app:layout_constraintLeft_toLeftOf="@+id/summary" />
+            android:layout_marginEnd="-4dp"
+            android:layout_marginBottom="-4dp"
+            app:layout_constraintBottom_toBottomOf="@id/icon"
+            app:layout_constraintEnd_toEndOf="@id/icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
