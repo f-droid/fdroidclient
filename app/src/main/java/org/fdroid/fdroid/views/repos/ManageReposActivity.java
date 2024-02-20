@@ -24,14 +24,23 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.UserManager;
-import android.widget.Toast;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
@@ -42,14 +51,65 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.index.RepoManager;
 
+import java.util.ArrayList;
+
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class ManageReposActivity extends AppCompatActivity implements RepoAdapter.RepoItemListener {
 
-    public static final String EXTRA_FINISH_AFTER_ADDING_REPO = "finishAfterAddingRepo";
     private RepoManager repoManager;
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final RepoAdapter repoAdapter = new RepoAdapter(this);
+    private boolean isItemReorderingEnabled = false;
+    private final ItemTouchHelper.Callback itemTouchCallback =
+            new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, 0) {
+
+                private int lastFromPos = -1;
+                private int lastToPos = -1;
+
+                @Override
+                public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
+                                      @NonNull RecyclerView.ViewHolder target) {
+                    final int fromPos = viewHolder.getBindingAdapterPosition();
+                    final int toPos = target.getBindingAdapterPosition();
+                    repoAdapter.notifyItemMoved(fromPos, toPos);
+                    if (lastFromPos == -1) lastFromPos = fromPos;
+                    lastToPos = toPos;
+                    return true;
+                }
+
+                @Override
+                public void onSelectedChanged(@Nullable RecyclerView.ViewHolder viewHolder, int actionState) {
+                    super.onSelectedChanged(viewHolder, actionState);
+                    if (actionState == ItemTouchHelper.ACTION_STATE_IDLE) {
+                        if (lastFromPos != lastToPos) {
+                            Repository repoToMove = repoAdapter.getItem(lastFromPos);
+                            Repository repoDropped = repoAdapter.getItem(lastToPos);
+                            if (repoToMove != null && repoDropped != null) {
+                                // don't allow more re-orderings until this one was completed
+                                isItemReorderingEnabled = false;
+                                repoManager.reorderRepositories(repoToMove, repoDropped);
+                            } else {
+                                Log.w("ManageReposActivity",
+                                        "Could not find one of the repos: " + lastFromPos + " to " + lastToPos);
+                            }
+                        }
+                        lastFromPos = -1;
+                        lastToPos = -1;
+                    }
+                }
+
+                @Override
+                public boolean isLongPressDragEnabled() {
+                    return isItemReorderingEnabled;
+                }
+
+                @Override
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                    // noop
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +141,13 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         });
 
         final RecyclerView repoList = findViewById(R.id.list);
-        RepoAdapter repoAdapter = new RepoAdapter(this);
+        final ItemTouchHelper touchHelper = new ItemTouchHelper(itemTouchCallback);
+        touchHelper.attachToRecyclerView(repoList);
         repoList.setAdapter(repoAdapter);
-        FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, repoAdapter::updateItems);
+        FDroidApp.getRepoManager(this).getLiveRepositories().observe(this, items -> {
+            repoAdapter.updateItems(new ArrayList<>(items)); // copy list, so we don't modify original in adapter
+            isItemReorderingEnabled = true;
+        });
     }
 
     @Override
@@ -119,19 +183,50 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
      * update the repos if you toggled on on.
      */
     @Override
-    public void onSetEnabled(Repository repo, boolean isEnabled) {
-        if (repo.getEnabled() != isEnabled) {
-            Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), isEnabled));
-
-            if (isEnabled) {
-                UpdateService.updateRepoNow(this, repo.getAddress());
-            } else {
-                AppUpdateStatusManager.getInstance(this).removeAllByRepo(repo.getRepoId());
-                // RepoProvider.Helper.purgeApps(this, repo);
-                String notification = getString(R.string.repo_disabled_notification, repo.getName(App.getLocales()));
-                Toast.makeText(this, notification, Toast.LENGTH_LONG).show();
-            }
+    public void onToggleEnabled(Repository repo) {
+        if (repo.getEnabled()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.repo_disable_warning);
+            builder.setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
+                disableRepo(repo);
+                dialog.dismiss();
+            });
+            builder.setNegativeButton(R.string.cancel, (dialog, id) -> {
+                repoAdapter.updateRepoItem(repo);
+                dialog.cancel();
+            });
+            builder.show();
+        } else {
+            Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), true));
+            UpdateService.updateRepoNow(this, repo.getAddress());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.repo_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_info) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.repo_list_info_title))
+                    .setMessage(getString(R.string.repo_list_info_text))
+                    .setPositiveButton(getString(R.string.ok), (dialog, which) -> dialog.dismiss())
+                    .show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void disableRepo(Repository repo) {
+        Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), false));
+        AppUpdateStatusManager.getInstance(this).removeAllByRepo(repo.getRepoId());
+        String notification = getString(R.string.repo_disabled_notification, repo.getName(App.getLocales()));
+        Snackbar.make(findViewById(R.id.list), notification, Snackbar.LENGTH_LONG).setTextMaxLines(3).show();
     }
 
     private static final int SHOW_REPO_DETAILS = 1;

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
-import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.PackagePreference
@@ -25,10 +25,15 @@ public class DbUpdateChecker @JvmOverloads constructor(
      * Returns a list of apps that can be updated.
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
+     * @param onlyFromPreferredRepo if true updates coming from repositories that are not preferred,
+     * either via [AppPrefs.preferredRepoId] or [Repository.weight] will not be returned.
+     * If false, updates from all enabled repositories will be considered
+     * and the one with the highest version code returned.
      */
     @JvmOverloads
     public fun getUpdatableApps(
         releaseChannels: List<String>? = null,
+        onlyFromPreferredRepo: Boolean = false,
         includeKnownVulnerabilities: Boolean = false,
     ): List<UpdatableApp> {
         val updatableApps = ArrayList<UpdatableApp>()
@@ -36,8 +41,14 @@ public class DbUpdateChecker @JvmOverloads constructor(
         @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
         val installedPackages = packageManager.getInstalledPackages(GET_SIGNATURES)
         val packageNames = installedPackages.map { it.packageName }
+        val preferredRepos = appPrefsDao.getPreferredRepos(packageNames)
+
         val versionsByPackage = HashMap<String, ArrayList<Version>>(packageNames.size)
         versionDao.getVersions(packageNames).forEach { version ->
+            val preferredRepoId = preferredRepos[version.packageName]
+                ?: error { "No preferred repo for ${version.packageName}" }
+            // disregard version, if we only want from preferred repo and this version is not
+            if (onlyFromPreferredRepo && preferredRepoId != version.repoId) return@forEach
             val list = versionsByPackage.getOrPut(version.packageName) { ArrayList() }
             list.add(version)
         }
@@ -53,8 +64,13 @@ public class DbUpdateChecker @JvmOverloads constructor(
                 includeKnownVulnerabilities = includeKnownVulnerabilities,
             )
             if (version != null) {
-                val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-                val app = getUpdatableApp(version, versionCode)
+                val preferredRepoId = preferredRepos[packageName]
+                    ?: error { "No preferred repo for $packageName" }
+                val app = getUpdatableApp(
+                    version = version,
+                    installedVersionCode = getLongVersionCode(packageInfo),
+                    isFromPreferredRepo = preferredRepoId == version.repoId,
+                )
                 if (app != null) updatableApps.add(app)
             }
         }
@@ -66,14 +82,28 @@ public class DbUpdateChecker @JvmOverloads constructor(
      * or null if there is none.
      * @param releaseChannels optional list of release channels to consider on top of stable.
      * If this is null or empty, only versions without channel (stable) will be considered.
+     * @param onlyFromPreferredRepo if true a version from a repository that is not preferred,
+     * either via [AppPrefs.preferredRepoId] or [Repository.weight] will not be returned.
+     * If false, versions from all enabled repositories will be considered.
      */
     @SuppressLint("PackageManagerGetSignatures")
     public fun getSuggestedVersion(
         packageName: String,
         preferredSigner: String? = null,
         releaseChannels: List<String>? = null,
+        onlyFromPreferredRepo: Boolean = false,
     ): AppVersion? {
-        val versions = versionDao.getVersions(listOf(packageName))
+        val preferredRepoId = if (onlyFromPreferredRepo) {
+            appPrefsDao.getPreferredRepos(listOf(packageName))[packageName]
+                ?: error { "No preferred repo for $packageName" }
+        } else 0L
+        val versions = if (onlyFromPreferredRepo) {
+            versionDao.getVersions(listOf(packageName)).filter { version ->
+                version.repoId == preferredRepoId
+            }
+        } else {
+            versionDao.getVersions(listOf(packageName))
+        }
         if (versions.isEmpty()) return null
         val packageInfo = try {
             @Suppress("DEPRECATION")
@@ -125,7 +155,11 @@ public class DbUpdateChecker @JvmOverloads constructor(
         }
     }
 
-    private fun getUpdatableApp(version: Version, installedVersionCode: Long): UpdatableApp? {
+    private fun getUpdatableApp(
+        version: Version,
+        installedVersionCode: Long,
+        isFromPreferredRepo: Boolean,
+    ): UpdatableApp? {
         val versionedStrings = versionDao.getVersionedStrings(
             repoId = version.repoId,
             packageName = version.packageName,
@@ -138,6 +172,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
             packageName = version.packageName,
             installedVersionCode = installedVersionCode,
             update = version.toAppVersion(versionedStrings),
+            isFromPreferredRepo = isFromPreferredRepo,
             hasKnownVulnerability = version.hasKnownVulnerability,
             name = appOverviewItem.name,
             summary = appOverviewItem.summary,

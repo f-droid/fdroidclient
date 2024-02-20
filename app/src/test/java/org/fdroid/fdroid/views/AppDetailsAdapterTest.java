@@ -32,7 +32,7 @@ import java.util.List;
 @RunWith(RobolectricTestRunner.class)
 public class AppDetailsAdapterTest {
 
-    private final AppPrefs appPrefs = new AppPrefs("com.example.app", 0, null);
+    private final AppPrefs appPrefs = new AppPrefs("com.example.app", 0, null, null);
     private Context context;
 
     @Before
@@ -145,6 +145,16 @@ public class AppDetailsAdapterTest {
 
                 @Override
                 public void launchApk() {
+
+                }
+
+                @Override
+                public void onRepoChanged(long repoId) {
+
+                }
+
+                @Override
+                public void onPreferredRepoChanged(long repoId) {
 
                 }
             };

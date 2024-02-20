@@ -278,6 +278,10 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
                 return 0;
             });
         }
+        // Hide install button, if showing apps from a specific repo, because then we show repo versions
+        // and do not respect the preferred repo.
+        // The user may not be aware of this, so we force going through app details.
+        appAdapter.setHideInstallButton(repoId > 0);
         appAdapter.setItems(items);
         if (items.size() > 0) {
             emptyState.setVisibility(View.GONE);

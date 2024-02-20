@@ -34,6 +34,8 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.compose.ui.platform.ComposeView;
+import androidx.compose.ui.platform.ViewCompositionStrategy;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -49,7 +51,6 @@ import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import org.apache.commons.io.FilenameUtils;
@@ -66,6 +67,7 @@ import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
+import org.fdroid.fdroid.views.appdetails.RepoChooserKt;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.fdroid.index.v2.FileV2;
 
@@ -75,6 +77,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
@@ -98,6 +101,10 @@ public class AppDetailsRecyclerViewAdapter
         void installCancel();
 
         void launchApk();
+
+        void onRepoChanged(long repoId);
+
+        void onPreferredRepoChanged(long repoId);
     }
 
     private static final int VIEWTYPE_HEADER = 0;
@@ -107,7 +114,8 @@ public class AppDetailsRecyclerViewAdapter
     private static final int VIEWTYPE_PERMISSIONS = 4;
     private static final int VIEWTYPE_VERSIONS = 5;
     private static final int VIEWTYPE_NO_VERSIONS = 6;
-    private static final int VIEWTYPE_VERSION = 7;
+    private static final int VIEWTYPE_VERSIONS_LOADING = 7;
+    private static final int VIEWTYPE_VERSION = 8;
 
     private final Context context;
     @Nullable
@@ -115,8 +123,12 @@ public class AppDetailsRecyclerViewAdapter
     private final AppDetailsRecyclerViewAdapterCallbacks callbacks;
     private RecyclerView recyclerView;
     private final List<Object> items = new ArrayList<>();
+    private final List<Repository> repos = new ArrayList<>();
+    @Nullable
+    private Long preferredRepoId = null;
     private final List<Apk> versions = new ArrayList<>();
     private final List<Apk> compatibleVersionsDifferentSigner = new ArrayList<>();
+    private boolean versionsLoading = true;
     private boolean showVersions;
 
     private HeaderViewHolder headerView;
@@ -134,39 +146,44 @@ public class AppDetailsRecyclerViewAdapter
         addItem(VIEWTYPE_HEADER);
     }
 
-    public void updateItems(@NonNull App app, @NonNull List<Apk> apks, @NonNull AppPrefs appPrefs) {
+    public void updateItems(@NonNull App app, @Nullable List<Apk> apks, @NonNull AppPrefs appPrefs) {
         this.app = app;
+        versionsLoading = apks == null;
 
         items.clear();
         versions.clear();
 
         // Get versions
         compatibleVersionsDifferentSigner.clear();
-        addInstalledApkIfExists(apks);
+        if (apks != null) addInstalledApkIfExists(apks);
         boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
-        for (final Apk apk : apks) {
-            boolean allowByCompatibility = apk.compatible || showIncompatibleVersions;
-            String installedSigner = app.installedSigner;
-            boolean allowBySigner = installedSigner == null
-                    || showIncompatibleVersions || TextUtils.equals(installedSigner, apk.signer);
-            if (allowByCompatibility) {
-                compatibleVersionsDifferentSigner.add(apk);
-                if (allowBySigner) {
-                    versions.add(apk);
-                    if (!versionsExpandTracker.containsKey(apk.getApkPath())) {
-                        versionsExpandTracker.put(apk.getApkPath(), false);
+        if (apks != null) {
+            for (final Apk apk : apks) {
+                boolean allowByCompatibility = apk.compatible || showIncompatibleVersions;
+                String installedSigner = app.installedSigner;
+                boolean allowBySigner = installedSigner == null
+                        || showIncompatibleVersions || TextUtils.equals(installedSigner, apk.signer);
+                if (allowByCompatibility) {
+                    compatibleVersionsDifferentSigner.add(apk);
+                    if (allowBySigner) {
+                        versions.add(apk);
+                        if (!versionsExpandTracker.containsKey(apk.getApkPath())) {
+                            versionsExpandTracker.put(apk.getApkPath(), false);
+                        }
                     }
                 }
             }
         }
-        suggestedApk = app.findSuggestedApk(apks, appPrefs);
+        if (apks != null) suggestedApk = app.findSuggestedApk(apks, appPrefs);
 
         addItem(VIEWTYPE_HEADER);
         if (app.getAllScreenshots().size() > 0) addItem(VIEWTYPE_SCREENSHOTS);
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
-        if (versions.isEmpty()) {
+        if (versionsLoading) {
+            addItem(VIEWTYPE_VERSIONS_LOADING);
+        } else if (versions.isEmpty()) {
             addItem(VIEWTYPE_NO_VERSIONS);
         } else {
             addItem(VIEWTYPE_VERSIONS);
@@ -175,6 +192,13 @@ public class AppDetailsRecyclerViewAdapter
             }
         }
         notifyDataSetChanged();
+    }
+
+    void setRepos(List<Repository> repos, long preferredRepoId) {
+        this.repos.clear();
+        this.repos.addAll(repos);
+        this.preferredRepoId = preferredRepoId;
+        notifyItemChanged(0); // header changed
     }
 
     private void addInstalledApkIfExists(final List<Apk> apks) {
@@ -316,6 +340,9 @@ public class AppDetailsRecyclerViewAdapter
             case VIEWTYPE_NO_VERSIONS:
                 View noVersionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
                 return new NoVersionsViewHolder(noVersionsView);
+            case VIEWTYPE_VERSIONS_LOADING:
+                View loadingView = inflater.inflate(R.layout.app_details2_loading, parent, false);
+                return new VersionsLoadingViewHolder(loadingView);
             case VIEWTYPE_VERSION:
                 View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
                 return new VersionViewHolder(version);
@@ -340,6 +367,7 @@ public class AppDetailsRecyclerViewAdapter
             case VIEWTYPE_PERMISSIONS:
             case VIEWTYPE_VERSIONS:
             case VIEWTYPE_NO_VERSIONS:
+            case VIEWTYPE_VERSIONS_LOADING:
                 ((AppDetailsViewHolder) holder).bindModel();
                 break;
 
@@ -378,8 +406,7 @@ public class AppDetailsRecyclerViewAdapter
         final TextView titleView;
         final TextView authorView;
         final TextView lastUpdateView;
-        final ImageView repoLogoView;
-        final TextView repoNameView;
+        final ComposeView repoChooserView;
         final TextView warningView;
         final TextView summaryView;
         final TextView whatsNewView;
@@ -404,8 +431,9 @@ public class AppDetailsRecyclerViewAdapter
             titleView = view.findViewById(R.id.title);
             authorView = view.findViewById(R.id.author);
             lastUpdateView = view.findViewById(R.id.text_last_update);
-            repoLogoView = view.findViewById(R.id.repo_icon);
-            repoNameView = view.findViewById(R.id.repo_name);
+            repoChooserView = view.findViewById(R.id.repoChooserView);
+            repoChooserView.setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed.INSTANCE);
             warningView = view.findViewById(R.id.warning);
             summaryView = view.findViewById(R.id.summary);
             whatsNewView = view.findViewById(R.id.latest);
@@ -443,7 +471,7 @@ public class AppDetailsRecyclerViewAdapter
             progressLayout.setVisibility(View.GONE);
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setVisibility(app != null && app.isUninstallable(context) ?
-                    View.VISIBLE : View.INVISIBLE);
+                    View.VISIBLE : View.GONE);
         }
 
         void setIndeterminateProgress(int resIdString) {
@@ -500,18 +528,6 @@ public class AppDetailsRecyclerViewAdapter
             if (app == null) return;
             Utils.setIconFromRepoOrPM(app, iconView, iconView.getContext());
             titleView.setText(app.name);
-            Repository repo = FDroidApp.getRepoManager(context).getRepository(app.repoId);
-            if (repo != null && !repo.getAddress().equals("https://f-droid.org/repo")) {
-                LocaleListCompat locales = LocaleListCompat.getDefault();
-                Utils.loadWithGlide(context, repo.getRepoId(), repo.getIcon(locales), repoLogoView);
-                repoNameView.setText(repo.getName(locales));
-                repoLogoView.setVisibility(View.VISIBLE);
-                repoNameView.setVisibility(View.VISIBLE);
-            } else {
-                Glide.with(context).clear(repoLogoView);
-                repoLogoView.setVisibility(View.GONE);
-                repoNameView.setVisibility(View.GONE);
-            }
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));
                 authorView.setVisibility(View.VISIBLE);
@@ -533,6 +549,22 @@ public class AppDetailsRecyclerViewAdapter
                 lastUpdateView.setVisibility(View.VISIBLE);
             } else {
                 lastUpdateView.setVisibility(View.GONE);
+            }
+            if (app != null && preferredRepoId != null) {
+                Set<String> defaultAddresses = Preferences.get().getDefaultRepoAddresses(context);
+                Repository repo = FDroidApp.getRepoManager(context).getRepository(app.repoId);
+                // show repo banner, if
+                // * app is in more than one repo, or
+                // * app is from a non-default repo
+                if (repos.size() > 1 || (repo != null && !defaultAddresses.contains(repo.getAddress()))) {
+                    RepoChooserKt.setContentRepoChooser(repoChooserView, repos, app.repoId, preferredRepoId,
+                            r -> callbacks.onRepoChanged(r.getRepoId()), callbacks::onPreferredRepoChanged);
+                    repoChooserView.setVisibility(View.VISIBLE);
+                } else {
+                    repoChooserView.setVisibility(View.GONE);
+                }
+            } else {
+                repoChooserView.setVisibility(View.GONE);
             }
 
             if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
@@ -601,7 +633,7 @@ public class AppDetailsRecyclerViewAdapter
             buttonPrimaryView.setText(R.string.menu_install);
             buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
-            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.INVISIBLE);
+            buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
             if (callbacks.isAppDownloading()) {
                 buttonPrimaryView.setText(R.string.downloading);
@@ -663,6 +695,25 @@ public class AppDetailsRecyclerViewAdapter
                 progressLayout.setVisibility(View.GONE);
             }
             progressCancel.setOnClickListener(v -> callbacks.installCancel());
+            if (versionsLoading) {
+                progressLayout.setVisibility(View.VISIBLE);
+                progressLabel.setVisibility(View.GONE);
+                progressCancel.setVisibility(View.GONE);
+                progressPercent.setVisibility(View.GONE);
+                progressBar.setIndeterminate(true);
+                progressBar.setVisibility(View.VISIBLE);
+            } else {
+                progressLabel.setVisibility(View.VISIBLE);
+                progressCancel.setVisibility(View.VISIBLE);
+                progressPercent.setVisibility(View.VISIBLE);
+            }
+            // Hide primary buttons when current repo is not the preferred one.
+            // This requires the user to prefer the repo first, if they want to install/update from it.
+            if (preferredRepoId != null && preferredRepoId != app.repoId) {
+                // we don't need to worry about making it visible, because changing current repo refreshes this view
+                buttonPrimaryView.setVisibility(View.GONE);
+                buttonSecondaryView.setVisibility(View.GONE);
+            }
         }
 
         private void updateAntiFeaturesWarning() {
@@ -935,6 +986,16 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
+    private class VersionsLoadingViewHolder extends AppDetailsViewHolder {
+        VersionsLoadingViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        @Override
+        public void bindModel() {
+        }
+    }
+
     private class PermissionsViewHolder extends ExpandableLinearLayoutViewHolder {
 
         PermissionsViewHolder(View view) {
@@ -1050,7 +1111,6 @@ public class AppDetailsRecyclerViewAdapter
         final TextView added;
         final ImageView expandArrow;
         final View expandedLayout;
-        final TextView repository;
         final TextView size;
         final TextView api;
         final Button buttonInstallUpgrade;
@@ -1071,7 +1131,6 @@ public class AppDetailsRecyclerViewAdapter
             added = view.findViewById(R.id.added);
             expandArrow = view.findViewById(R.id.expand_arrow);
             expandedLayout = view.findViewById(R.id.expanded_layout);
-            repository = view.findViewById(R.id.repository);
             size = view.findViewById(R.id.size);
             api = view.findViewById(R.id.api);
             buttonInstallUpgrade = view.findViewById(R.id.button_install_upgrade);
@@ -1124,18 +1183,8 @@ public class AppDetailsRecyclerViewAdapter
                 added.setVisibility(View.INVISIBLE);
             }
 
-            // Repository name, APK size and required Android version
-            Repository repo = FDroidApp.getRepoManager(context).getRepository(apk.repoId);
-            if (repo != null) {
-                repository.setVisibility(View.VISIBLE);
-                String name = repo.getName(App.getLocales());
-                repository.setText(String.format(context.getString(R.string.app_repository), name));
-            } else {
-                repository.setVisibility(View.INVISIBLE);
-            }
             size.setText(context.getString(R.string.app_size, Utils.getFriendlySize(apk.size)));
             api.setText(getApiText(apk));
-
 
             // Figuring out whether to show Install or Update button
             buttonInstallUpgrade.setVisibility(View.GONE);
@@ -1283,7 +1332,6 @@ public class AppDetailsRecyclerViewAdapter
             // This is required to make these labels
             // auto-scrollable when they are too long
             version.setSelected(expand);
-            repository.setSelected(expand);
             size.setSelected(expand);
             api.setSelected(expand);
         }

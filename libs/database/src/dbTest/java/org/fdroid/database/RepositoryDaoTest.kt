@@ -1,6 +1,5 @@
 package org.fdroid.database
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.fdroid.database.TestUtils.assertRepoEquals
 import org.fdroid.database.TestUtils.getOrFail
@@ -9,11 +8,11 @@ import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestUtils.orNull
 import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.random.Random
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -21,9 +20,6 @@ import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 internal class RepositoryDaoTest : DbTest() {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Test
     fun testInsertInitialRepository() {
@@ -35,7 +31,6 @@ internal class RepositoryDaoTest : DbTest() {
             certificate = "abcdef", // not random, because format gets checked
             version = Random.nextLong(),
             enabled = Random.nextBoolean(),
-            weight = Random.nextInt(),
         )
         val repoId = repoDao.insert(repo)
 
@@ -46,7 +41,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(repo.certificate, actualRepo.certificate)
         assertEquals(repo.version, actualRepo.version)
         assertEquals(repo.enabled, actualRepo.enabled)
-        assertEquals(repo.weight, actualRepo.weight)
+        assertEquals(Int.MAX_VALUE - 2, actualRepo.weight) // ignoring provided weight
         assertEquals(-1, actualRepo.timestamp)
         assertEquals(3, actualRepo.mirrors.size)
         assertEquals(emptyList(), actualRepo.userMirrors)
@@ -115,7 +110,7 @@ internal class RepositoryDaoTest : DbTest() {
         val repositoryPreferences2 = repoDao.getRepositoryPreferences(repoId2)
         assertEquals(repoId2, repositoryPreferences2?.repoId)
         // second repo has one weight point more than first repo
-        assertEquals(repositoryPreferences1?.weight?.plus(1), repositoryPreferences2?.weight)
+        assertEquals(repositoryPreferences1?.weight?.minus(2), repositoryPreferences2?.weight)
 
         // remove first repo and check that the database only returns one
         repoDao.deleteRepository(repoId1)
@@ -255,7 +250,7 @@ internal class RepositoryDaoTest : DbTest() {
         // data is there as expected
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(1, appDao.getAppMetadata().size)
-        assertEquals(1, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(1, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
         assertTrue(versionDao.getVersionedStrings(repoId, packageName).isNotEmpty())
 
         // clearing the repo removes apps and versions
@@ -264,7 +259,7 @@ internal class RepositoryDaoTest : DbTest() {
         assertEquals(0, appDao.countApps())
         assertEquals(0, appDao.countLocalizedFiles())
         assertEquals(0, appDao.countLocalizedFileLists())
-        assertEquals(0, versionDao.getAppVersions(repoId, packageName).size)
+        assertEquals(0, versionDao.getAppVersions(repoId, packageName).getOrFail().size)
         assertEquals(0, versionDao.getVersionedStrings(repoId, packageName).size)
         // preferences are not touched by clearing
         assertEquals(repositoryPreferences, repoDao.getRepositoryPreferences(repoId))
@@ -281,5 +276,119 @@ internal class RepositoryDaoTest : DbTest() {
 
         assertEquals(1, repoDao.getRepositories().size)
         assertEquals(cert, repoDao.getRepositories()[0].certificate)
+    }
+
+    @Test
+    fun testGetMinRepositoryWeight() {
+        assertEquals(Int.MAX_VALUE, repoDao.getMinRepositoryWeight())
+
+        repoDao.insertOrReplace(getRandomRepo())
+        assertEquals(Int.MAX_VALUE - 2, repoDao.getMinRepositoryWeight())
+
+        repoDao.insertOrReplace(getRandomRepo())
+        assertEquals(Int.MAX_VALUE - 4, repoDao.getMinRepositoryWeight())
+    }
+
+    @Test
+    fun testReorderRepositories() {
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId4 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId5 = repoDao.insertOrReplace(getRandomRepo())
+
+        // repos are listed in the order they entered the DB [1, 2, 3, 4, 5]
+        assertEquals(
+            listOf(repoId1, repoId2, repoId3, repoId4, repoId5),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // 2 gets moved to 5 [1, 3, 4, 5, 2]
+        repoDao.reorderRepositories(
+            repoToReorder = repoDao.getRepository(repoId2) ?: fail(),
+            repoTarget = repoDao.getRepository(repoId5) ?: fail(),
+        )
+        assertEquals(
+            listOf(repoId1, repoId3, repoId4, repoId5, repoId2),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // 5 gets moved to 1 [5, 1, 3, 4, 2]
+        repoDao.reorderRepositories(
+            repoToReorder = repoDao.getRepository(repoId5) ?: fail(),
+            repoTarget = repoDao.getRepository(repoId1) ?: fail(),
+        )
+        assertEquals(
+            listOf(repoId5, repoId1, repoId3, repoId4, repoId2),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // 3 gets moved to 5 [3, 5, 1, 4, 2]
+        repoDao.reorderRepositories(
+            repoToReorder = repoDao.getRepository(repoId3) ?: fail(),
+            repoTarget = repoDao.getRepository(repoId5) ?: fail(),
+        )
+        assertEquals(
+            listOf(repoId3, repoId5, repoId1, repoId4, repoId2),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // 3 gets moved to itself, list shouldn't change [3, 5, 1, 4, 2]
+        repoDao.reorderRepositories(
+            repoToReorder = repoDao.getRepository(repoId3) ?: fail(),
+            repoTarget = repoDao.getRepository(repoId3) ?: fail(),
+        )
+        assertEquals(
+            listOf(repoId3, repoId5, repoId1, repoId4, repoId2),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // we'll add an archive repo for repo1 to the list [3, 5, (1, 1a), 4, 2]
+        repoDao.updateRepository(repoId1, "1234abcd")
+        val repo1 = repoDao.getRepository(repoId1) ?: fail()
+        val repo1a = InitialRepository(
+            name = getRandomString(),
+            address = "https://example.org/archive",
+            description = getRandomString(),
+            certificate = repo1.certificate ?: fail(),
+            version = 42L,
+            enabled = false,
+        )
+        val repoId1a = repoDao.insert(repo1a)
+        repoDao.setWeight(repoId1a, repo1.weight - 1)
+
+        // now we move repo 1 to position of repo 2 [3, 5, 4, 2, (1, 1a)]
+        repoDao.reorderRepositories(
+            repoToReorder = repoDao.getRepository(repoId1) ?: fail(),
+            repoTarget = repoDao.getRepository(repoId2) ?: fail(),
+        )
+        assertEquals(
+            listOf(repoId3, repoId5, repoId4, repoId2, repoId1, repoId1a),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // now move repo 1 and its archive to top position [(1, 1a), 3, 5, 4, 2]
+        repoDao.reorderRepositories(
+            repoToReorder = repoDao.getRepository(repoId1) ?: fail(),
+            repoTarget = repoDao.getRepository(repoId3) ?: fail(),
+        )
+        assertEquals(
+            listOf(repoId1, repoId1a, repoId3, repoId5, repoId4, repoId2),
+            repoDao.getRepositories().map { it.repoId },
+        )
+
+        // archive repos can't be reordered directly
+        assertFailsWith<IllegalArgumentException> {
+            repoDao.reorderRepositories(
+                repoToReorder = repoDao.getRepository(repoId1a) ?: fail(),
+                repoTarget = repoDao.getRepository(repoId3) ?: fail(),
+            )
+        }
+        assertFailsWith<IllegalArgumentException> {
+            repoDao.reorderRepositories(
+                repoToReorder = repoDao.getRepository(repoId3) ?: fail(),
+                repoTarget = repoDao.getRepository(repoId1a) ?: fail(),
+            )
+        }
     }
 }

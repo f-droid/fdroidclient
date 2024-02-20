@@ -334,6 +334,7 @@ public data class UpdatableApp internal constructor(
     public override val packageName: String,
     public val installedVersionCode: Long,
     public val update: AppVersion,
+    public val isFromPreferredRepo: Boolean,
     /**
      * If true, this is not necessarily an update (contrary to the class name),
      * but an app with the `KnownVuln` anti-feature.

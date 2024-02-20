@@ -1,16 +1,11 @@
 package org.fdroid.database
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomFileV2
 import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestUtils.sort
-import org.junit.Rule
 
 internal abstract class AppTest : DbTest() {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     protected val packageName = getRandomString()
     protected val packageName1 = getRandomString()

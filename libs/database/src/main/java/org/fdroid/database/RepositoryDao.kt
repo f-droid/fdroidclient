@@ -127,9 +127,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
             certificate = initialRepo.certificate,
         )
         val repoId = insertOrReplace(repo)
+        val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
-            weight = initialRepo.weight,
+            weight = currentMinWeight - 2,
             lastUpdated = null,
             enabled = initialRepo.enabled,
         )
@@ -151,10 +152,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
             certificate = newRepository.certificate,
         )
         val repoId = insertOrReplace(repo)
-        val currentMaxWeight = getMaxRepositoryWeight()
+        val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
-            weight = currentMaxWeight + 1,
+            weight = currentMinWeight - 2,
             lastUpdated = null,
             username = newRepository.username,
             password = newRepository.password,
@@ -181,10 +182,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
             certificate = null,
         )
         val repoId = insertOrReplace(repo)
-        val currentMaxWeight = getMaxRepositoryWeight()
+        val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(
             repoId = repoId,
-            weight = currentMaxWeight + 1,
+            weight = currentMinWeight - 2,
             lastUpdated = null,
             username = username,
             password = password,
@@ -197,32 +198,45 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @VisibleForTesting
     fun insertOrReplace(repository: RepoV2, version: Long = 0): Long {
         val repoId = insertOrReplace(repository.toCoreRepository(version = version))
-        val currentMaxWeight = getMaxRepositoryWeight()
-        val repositoryPreferences = RepositoryPreferences(repoId, currentMaxWeight + 1)
+        val currentMinWeight = getMinRepositoryWeight()
+        val repositoryPreferences = RepositoryPreferences(repoId, currentMinWeight - 2)
         insert(repositoryPreferences)
         insertRepoTables(repoId, repository)
         return repoId
     }
 
-    @Query("SELECT MAX(weight) FROM ${RepositoryPreferences.TABLE}")
-    fun getMaxRepositoryWeight(): Int
+    @Query("SELECT COALESCE(MIN(weight), ${Int.MAX_VALUE}) FROM ${RepositoryPreferences.TABLE}")
+    fun getMinRepositoryWeight(): Int
 
     @Transaction
     @Query("SELECT * FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")
     override fun getRepository(repoId: Long): Repository?
 
-    // the query uses strange ordering as a hacky workaround to not return default archive repos
+    /**
+     * Returns a non-archive repository with the given [certificate], if it exists in the DB.
+     */
     @Transaction
-    @Query("""SELECT * FROM ${CoreRepository.TABLE} WHERE certificate = :certificate
-        COLLATE NOCASE ORDER BY repoId DESC LIMIT 1""")
+    @Query("""SELECT * FROM ${CoreRepository.TABLE}
+        WHERE certificate = :certificate AND address NOT LIKE "%/archive" COLLATE NOCASE
+        LIMIT 1""")
     fun getRepository(certificate: String): Repository?
 
     @Transaction
-    @Query("SELECT * FROM ${CoreRepository.TABLE}")
+    @RewriteQueriesToDropUnusedColumns
+    @Query(
+        """SELECT * FROM ${CoreRepository.TABLE}
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+        ORDER BY pref.weight DESC"""
+    )
     override fun getRepositories(): List<Repository>
 
     @Transaction
-    @Query("SELECT * FROM ${CoreRepository.TABLE}")
+    @RewriteQueriesToDropUnusedColumns
+    @Query(
+        """SELECT * FROM ${CoreRepository.TABLE}
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+        ORDER BY pref.weight DESC"""
+    )
     override fun getLiveRepositories(): LiveData<List<Repository>>
 
     @Query("SELECT * FROM ${RepositoryPreferences.TABLE} WHERE repoId = :repoId")
@@ -329,8 +343,19 @@ internal interface RepositoryDaoInt : RepositoryDao {
         )
     }
 
+    @Transaction
+    override fun setRepositoryEnabled(repoId: Long, enabled: Boolean) {
+        // When disabling a repository, we need to remove it as preferred repo for all apps,
+        // otherwise our queries that ignore disabled repos will not return anything anymore.
+        if (!enabled) resetPreferredRepoInAppPrefs(repoId)
+        setRepositoryEnabledInternal(repoId, enabled)
+    }
+
     @Query("UPDATE ${RepositoryPreferences.TABLE} SET enabled = :enabled WHERE repoId = :repoId")
-    override fun setRepositoryEnabled(repoId: Long, enabled: Boolean)
+    fun setRepositoryEnabledInternal(repoId: Long, enabled: Boolean)
+
+    @Query("UPDATE ${AppPrefs.TABLE} SET preferredRepoId = NULL WHERE preferredRepoId = :repoId")
+    fun resetPreferredRepoInAppPrefs(repoId: Long)
 
     @Query("""UPDATE ${RepositoryPreferences.TABLE} SET userMirrors = :mirrors
         WHERE repoId = :repoId""")
@@ -344,12 +369,68 @@ internal interface RepositoryDaoInt : RepositoryDao {
         WHERE repoId = :repoId""")
     override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
 
+    /**
+     * Changes repository weights/priorities that determine list order and preferred repositories.
+     * The lower a repository is in the list, the lower is its priority.
+     * If an app is in more than one repo, by default, the repo higher in the list wins.
+     *
+     * @param repoToReorder this repository will change its position in the list.
+     * @param repoTarget the repository in which place the [repoToReorder] shall be moved.
+     * If our list is [ A B C D ] and we call reorderRepositories(B, D),
+     * then the new list will be [ A C D B ].
+     *
+     * @throws IllegalArgumentException if one of the repos is an archive repo.
+     * Those are expected to be tied to their main repo one down the list
+     * and are moved automatically when their main repo moves.
+     */
+    @Transaction
+    fun reorderRepositories(repoToReorder: Repository, repoTarget: Repository) {
+        require(!repoToReorder.isArchiveRepo && !repoTarget.isArchiveRepo) {
+            "Re-ordering of archive repos is not supported"
+        }
+        if (repoToReorder.weight > repoTarget.weight) {
+            // repoToReorder is higher,
+            // so move repos below repoToReorder (and its archive below) two weights up
+            shiftRepoWeights(repoTarget.weight, repoToReorder.weight - 2, 2)
+        } else if (repoToReorder.weight < repoTarget.weight) {
+            // repoToReorder is lower, so move repos above repoToReorder two weights down
+            shiftRepoWeights(repoToReorder.weight + 1, repoTarget.weight, -2)
+        } else {
+            return // both repos have same weight, not re-ordering anything
+        }
+        // move repoToReorder in place of repoTarget
+        setWeight(repoToReorder.repoId, repoTarget.weight)
+        // also adjust weight of archive repo, if it exists
+        val archiveRepoId = repoToReorder.certificate?.let { getArchiveRepoId(it) }
+        if (archiveRepoId != null) {
+            setWeight(archiveRepoId, repoTarget.weight - 1)
+        }
+    }
+
+    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET weight = :weight WHERE repoId = :repoId""")
+    fun setWeight(repoId: Long, weight: Int)
+
+    @Query(
+        """UPDATE ${RepositoryPreferences.TABLE} SET weight = weight + :offset
+        WHERE weight >= :weightFrom AND weight <= :weightTo"""
+    )
+    fun shiftRepoWeights(weightFrom: Int, weightTo: Int, offset: Int)
+
+    @Query(
+        """SELECT repoId FROM ${CoreRepository.TABLE}
+        WHERE certificate = :cert AND address LIKE '%/archive' COLLATE NOCASE"""
+    )
+    fun getArchiveRepoId(cert: String): Long?
+
     @Transaction
     override fun deleteRepository(repoId: Long) {
         deleteCoreRepository(repoId)
         // we don't use cascading delete for preferences,
         // so we can replace index data on full updates
         deleteRepositoryPreferences(repoId)
+        // When deleting a repository, we need to remove it as preferred repo for all apps,
+        // otherwise our queries will not return anything anymore.
+        resetPreferredRepoInAppPrefs(repoId)
     }
 
     @Query("DELETE FROM ${CoreRepository.TABLE} WHERE repoId = :repoId")

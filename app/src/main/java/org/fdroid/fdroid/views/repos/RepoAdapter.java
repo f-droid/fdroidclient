@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.os.LocaleListCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,13 +23,14 @@ import org.fdroid.index.v2.FileV2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder> {
 
     public interface RepoItemListener {
         void onClicked(Repository repo);
 
-        void onSetEnabled(Repository repo, boolean isEnabled);
+        void onToggleEnabled(Repository repo);
     }
 
     private final List<Repository> items = new ArrayList<>();
@@ -38,10 +40,20 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
         this.repoItemListener = repoItemListener;
     }
 
+    @Nullable
+    Repository getItem(int position) {
+        return items.get(position);
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     // we could do better, but not really worth it at this point
     void updateItems(List<Repository> items) {
         this.items.clear();
+        // filter out archive repos
+        ListIterator<Repository> iterator = items.listIterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().isArchiveRepo()) iterator.remove();
+        }
         this.items.addAll(items);
         notifyDataSetChanged();
     }
@@ -62,6 +74,15 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    void updateRepoItem(Repository repo) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getRepoId() == repo.getRepoId()) {
+                notifyItemChanged(i);
+                break;
+            }
+        }
     }
 
     class RepoViewHolder extends RecyclerView.ViewHolder {
@@ -90,15 +111,13 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
             // to invoke the listener for the last repo to use it - particularly
             // because we are potentially about to change the checked status
             // which would in turn invoke this listener....
-            switchView.setOnCheckedChangeListener(null);
+            switchView.setOnClickListener(null);
             switchView.setChecked(repo.getEnabled());
 
             // Add this listener *after* setting the checked status, so we don't
             // invoke the listener while setting up the view...
-            switchView.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (repoItemListener != null) {
-                    repoItemListener.onSetEnabled(repo, isChecked);
-                }
+            switchView.setOnClickListener(buttonView -> {
+                if (repoItemListener != null) repoItemListener.onToggleEnabled(repo);
             });
             FileV2 iconFile = repo.getIcon(LocaleListCompat.getDefault());
             if (iconFile == null) {

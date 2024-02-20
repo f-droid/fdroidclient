@@ -91,6 +91,21 @@
 
     <string name="app_details">App Details</string>
     <string name="no_such_app">No such app found.</string>
+    <!-- Shown above the repository an app is in -->
+    <string name="app_details_repository">Repository</string>
+    <!-- If an app is in more than one repository, this is shown above the selection dropdown -->
+    <string name="app_details_repositories">Repositories</string>
+    <!-- Shown next to the repository name of the repo that is currently preferred by the user.
+         Information and updates for that app only come from the preferred repo.
+         Other languages could use other words that work better in their language such as (chosen).
+    -->
+    <string name="app_details_repository_preferred">(preferred)</string>
+    <!-- A button label. When clicked, this changes the preferred repo to the currently shown one.
+         Information and updates for that app only come from the preferred repo.
+         Other languages could use other words that work better in their language such as (chosen).
+    -->
+    <string name="app_details_repository_button_prefer">Prefer Repository</string>
+    <string name="app_details_repository_expand">Expand repository list</string>
 
     <string name="app_details_donate_prompt_unknown_author">Buy the developers of %1$s a coffee!</string>
     <string name="app_details_donate_prompt">%1$s is created by %2$s. Buy them a coffee!</string>
@@ -126,11 +141,11 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app__install_downloaded_update">Update</string>
     <string name="app_installed_media">File installed to %s</string>
     <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
-    <string name="app_repository">Repository: %1$s</string>
     <string name="app_size">Size: %1$s</string>
     <string name="app_error_open">Could not launch app.</string>
 
     <string name="app_list_results_hidden_antifeature_settings">Some results were hidden based on your antifeature settings.</string>
+    <string name="app_list_no_suggested_version">No version recommended for installation.</string>
     <string name="app_list__name__downloading_in_progress">Downloading %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installed</string>
     <string name="app_list_download_ready">Downloaded, ready to install</string>
@@ -206,6 +221,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_exists_add_mirror">This is a copy of %1$s, add it as a mirror?</string>
     <string name="repo_invalid">Invalid repository.\n\nContact the maintainer and let them know about the issue.</string>
     <string name="repo_io_error">Error connecting to the repository.</string>
+    <string name="repo_error_adding_archive">Archive repositories can not be added directly. Tap the repository in the list and enable the archive there.</string>
     <string name="repo_share_not_found">Could not find repo address in shared text.</string>
     <string name="bad_fingerprint">Bad fingerprint</string>
     <string name="invalid_url">This is not a valid URL.</string>
@@ -214,7 +230,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="has_disallow_install_unknown_sources_globally">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
     <!-- Message presented in a dialog box when the user restriction set by the system restricts adding new repos, e.g. "Unknown Sources". -->
     <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
-    <string name="repo_provider">Repository: %s</string>
 
     <string name="menu_manage">Repositories</string>
     <string name="repositories_summary">Add additional sources of apps</string>
@@ -434,10 +449,14 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="use_pure_black_dark_theme_summary">Recommended only for OLED screens.</string>
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>
+    <string name="repo_list_info_title">Repository List</string>
+    <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.\n\nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
     <string name="repo_details">Repository</string>
     <string name="repo_url">Address</string>
     <string name="repo_num_apps">Number of apps</string>
     <string name="repo_num_apps_button">Show apps</string>
+    <string name="repo_archive_toggle">Repository Archive</string>
+    <string name="repo_archive_toggle_description">Show archived apps and outdated versions of apps</string>
     <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>
@@ -453,6 +472,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         You need to enable it to view the apps it provides.
     </string>
     <string name="unknown">Unknown</string>
+    <string name="repo_archive_failed">Archive repo currently not available</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
         apps from it will no longer be available.\n\nNote: All
@@ -461,6 +481,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
+    <string name="repo_disable_warning">Disabling this repository will remove it as \"preferred\" from any apps you may have manually preferred it.</string>
+    <string name="repo_disable_warning_button">Disable</string>
     <string name="repo_added">Saved package repository %1$s.</string>
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
     <!-- Should be exactly the same as the standard word for "Share" throughout Android and apps -->

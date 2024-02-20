@@ -3,10 +3,12 @@ package org.fdroid.database
 import android.content.res.Resources
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import org.fdroid.LocaleChooser.getBestLocale
+import java.io.Closeable
 import java.util.Locale
 import java.util.concurrent.Callable
 
@@ -14,7 +16,7 @@ import java.util.concurrent.Callable
     // When bumping this version, please make sure to add one (or more) migration(s) below!
     // Consider also providing tests for that migration.
     // Don't forget to commit the new schema to the git repo as well.
-    version = 1,
+    version = 2,
     entities = [
         // repo
         CoreRepository::class,
@@ -37,14 +39,16 @@ import java.util.concurrent.Callable
     views = [
         LocalizedIcon::class,
         HighestVersion::class,
+        PreferredRepo::class,
     ],
     exportSchema = true,
     autoMigrations = [
+        AutoMigration(1, 2, MultiRepoMigration::class),
         // add future migrations here (if they are easy enough to be done automatically)
     ],
 )
 @TypeConverters(Converters::class)
-internal abstract class FDroidDatabaseInt internal constructor() : RoomDatabase(), FDroidDatabase {
+internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Closeable {
     abstract override fun getRepositoryDao(): RepositoryDaoInt
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt

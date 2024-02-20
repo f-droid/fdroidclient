@@ -29,8 +29,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -105,7 +107,10 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     private MirrorAdapter adapterToNotify;
 
+    private RepoDetailsViewModel model;
+    // FIXME access to this could be moved into ViewModel
     private RepositoryDao repositoryDao;
+    // FIXME access to this could be moved into ViewModel
     private AppDao appDao;
     @Nullable
     private Disposable disposable;
@@ -128,6 +133,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         fdroidApp.setSecureWindow(this);
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+        model = new ViewModelProvider(this).get(RepoDetailsViewModel.class);
         repositoryDao = DBHelper.getDb(this).getRepositoryDao();
         appDao = DBHelper.getDb(this).getAppDao();
 
@@ -142,6 +148,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
         repoView = findViewById(R.id.repo_view);
 
         repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
+        model.initRepo(repoId);
         repo = FDroidApp.getRepoManager(this).getRepository(repoId);
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
@@ -179,6 +186,18 @@ public class RepoDetailsActivity extends AppCompatActivity {
                         qrCode.setImageBitmap(bitmap);
                     }
                 });
+
+        SwitchCompat switchCompat = findViewById(R.id.archiveRepo);
+        model.getLiveData().observe(this, s -> {
+            Boolean enabled = s.getArchiveEnabled();
+            if (enabled == null) {
+                switchCompat.setEnabled(false);
+            } else {
+                switchCompat.setEnabled(true);
+                switchCompat.setChecked(enabled);
+            }
+        });
+        switchCompat.setOnClickListener(v -> model.setArchiveRepoEnabled(repo, switchCompat.isChecked()));
     }
 
     @Override

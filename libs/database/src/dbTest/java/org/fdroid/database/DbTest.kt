@@ -3,6 +3,7 @@ package org.fdroid.database
 import android.content.Context
 import android.content.res.AssetManager
 import android.os.Build
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.core.os.LocaleListCompat
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -10,6 +11,7 @@ import io.mockk.every
 import io.mockk.mockkObject
 import kotlinx.coroutines.Dispatchers
 import org.fdroid.database.TestUtils.assertRepoEquals
+import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.database.TestUtils.toMetadataV2
 import org.fdroid.database.TestUtils.toPackageVersionV2
 import org.fdroid.index.v1.IndexV1StreamProcessor
@@ -21,12 +23,16 @@ import org.fdroid.test.VerifierConstants.CERTIFICATE
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Rule
 import java.io.IOException
 import java.util.Locale
 import kotlin.test.assertEquals
 import kotlin.test.fail
 
 internal abstract class DbTest {
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     internal lateinit var repoDao: RepositoryDaoInt
     internal lateinit var appDao: AppDaoInt
@@ -111,7 +117,7 @@ internal abstract class DbTest {
                 packageV2.metadata,
                 appDao.getApp(repoId, packageName)?.toMetadataV2()?.sort()
             )
-            val versions = versionDao.getAppVersions(repoId, packageName).map {
+            val versions = versionDao.getAppVersions(repoId, packageName).getOrFail().map {
                 it.toPackageVersionV2()
             }.associateBy { it.file.sha256 }
             assertEquals(packageV2.versions.size, versions.size, "number of versions")

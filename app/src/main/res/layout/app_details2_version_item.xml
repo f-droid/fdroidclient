@@ -119,16 +119,6 @@
                 android:layout_marginEnd="8dp">
 
                 <TextView
-                    android:id="@+id/repository"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:textColor="?attr/lightGrayTextColor"
-                    android:textSize="12sp"
-                    tools:text="F-Droid" />
-
-                <TextView
                     android:id="@+id/size"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"

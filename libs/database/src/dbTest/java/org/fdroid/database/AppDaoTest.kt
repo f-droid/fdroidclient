@@ -2,6 +2,7 @@ package org.fdroid.database
 
 import androidx.core.os.LocaleListCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.fdroid.database.TestUtils.getOrAwaitValue
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.database.TestUtils.toMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
@@ -10,6 +11,7 @@ import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -33,9 +35,9 @@ internal class AppDaoTest : AppTest() {
     @Test
     fun testGetSameAppFromTwoRepos() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -63,10 +65,36 @@ internal class AppDaoTest : AppTest() {
     }
 
     @Test
+    fun testAppRepoPref() {
+        // insert same app into three repos (repoId1 has highest weight)
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        appDao.insert(repoId2, packageName, app2, locales)
+        appDao.insert(repoId3, packageName, app3, locales)
+
+        // app from repo with highest weight is returned, if no prefs are set
+        assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // prefer repo3 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId3))
+        assertEquals(app3, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // prefer repo1 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId1))
+        assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+
+        // preferring non-existent repo for this app makes query return nothing (avoid this!)
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = 1337L))
+        assertNull(appDao.getApp(packageName).getOrAwaitValue())
+    }
+
+    @Test
     fun testGetSameAppFromTwoReposOneDisabled() {
         // insert same app into two repos (repoId2 has highest weight)
-        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId2, packageName, app2, locales)
 
@@ -78,6 +106,26 @@ internal class AppDaoTest : AppTest() {
 
         // now app from repo with lower weight is returned
         assertEquals(app1, appDao.getApp(packageName).getOrFail()?.toMetadataV2()?.sort())
+    }
+
+    @Test
+    fun testGetRepositoryIdsForApp() {
+        // initially, the app is in no repos
+        assertEquals(emptyList(), appDao.getRepositoryIdsForApp(packageName))
+
+        // insert same app into one repo
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        assertEquals(listOf(repoId1), appDao.getRepositoryIdsForApp(packageName))
+
+        // insert the app into one more repo
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName, app2, locales)
+        assertEquals(listOf(repoId1, repoId2), appDao.getRepositoryIdsForApp(packageName))
+
+        // when repo1 is disabled, it doesn't get returned anymore
+        repoDao.setRepositoryEnabled(repoId1, false)
+        assertEquals(listOf(repoId2), appDao.getRepositoryIdsForApp(packageName))
     }
 
     @Test
@@ -148,6 +196,13 @@ internal class AppDaoTest : AppTest() {
         appDao.insert(repoId, packageName3, app3, locales)
         assertEquals(3, appDao.getNumberOfAppsInCategory("A"))
         assertEquals(2, appDao.getNumberOfAppsInCategory("B"))
+        assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
+
+        // app1 as a variant of app2 in another repo will show one more app in B
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName2, app1, locales)
+        assertEquals(3, appDao.getNumberOfAppsInCategory("A"))
+        assertEquals(3, appDao.getNumberOfAppsInCategory("B"))
         assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
     }
 

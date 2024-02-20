@@ -89,7 +89,6 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
 }
 
 @Composable
-@OptIn(ExperimentalGlideComposeApi::class)
 fun RepoPreviewHeader(
     state: Fetching,
     onAddRepo: () -> Unit,
@@ -101,24 +100,11 @@ fun RepoPreviewHeader(
         modifier = Modifier.fillMaxWidth(),
     ) {
         val repo = state.repo ?: error("repo was null")
-        val res = LocalContext.current.resources
         Row(
             horizontalArrangement = spacedBy(8.dp),
             verticalAlignment = CenterVertically,
         ) {
-            if (isPreview) Image(
-                painter = rememberDrawablePainter(
-                    getDrawable(res, R.drawable.ic_launcher, null)
-                ),
-                contentDescription = null,
-                modifier = Modifier.size(48.dp),
-            ) else GlideImage(
-                model = getDownloadRequest(repo, repo.getIcon(localeList)),
-                contentDescription = null,
-                modifier = Modifier.size(48.dp),
-            ) {
-                it.fallback(R.drawable.ic_repo_app_default).error(R.drawable.ic_repo_app_default)
-            }
+            RepoIcon(repo, Modifier.size(48.dp))
             Column(horizontalAlignment = Alignment.Start) {
                 Text(
                     text = repo.getName(localeList) ?: "Unknown Repository",
@@ -132,7 +118,7 @@ fun RepoPreviewHeader(
                     modifier = Modifier.alpha(ContentAlpha.medium),
                 )
                 Text(
-                    text = Utils.formatLastUpdated(res, repo.timestamp),
+                    text = Utils.formatLastUpdated(LocalContext.current.resources, repo.timestamp),
                     style = MaterialTheme.typography.body2,
                 )
             }

@@ -19,19 +19,22 @@ object TestVersionUtils {
 
     fun getRandomPackageVersionV2(
         versionCode: Long = Random.nextLong(1, Long.MAX_VALUE),
+        signer: SignerV2? = SignerV2(getRandomList(Random.nextInt(1, 3)) {
+            getRandomString(64)
+        }).orNull(),
     ) = PackageVersionV2(
         added = Random.nextLong(),
         file = getRandomFileV2(false).let {
             FileV1(it.name, it.sha256!!, it.size)
         },
         src = getRandomFileV2().orNull(),
-        manifest = getRandomManifestV2(versionCode),
+        manifest = getRandomManifestV2(versionCode, signer),
         releaseChannels = getRandomList { getRandomString() },
         antiFeatures = getRandomMap { getRandomString() to getRandomLocalizedTextV2() },
         whatsNew = getRandomLocalizedTextV2(),
     )
 
-    fun getRandomManifestV2(versionCode: Long) = ManifestV2(
+    private fun getRandomManifestV2(versionCode: Long, signer: SignerV2?) = ManifestV2(
         versionName = getRandomString(),
         versionCode = versionCode,
         usesSdk = UsesSdkV2(
@@ -39,9 +42,7 @@ object TestVersionUtils {
             targetSdkVersion = Random.nextInt(),
         ),
         maxSdkVersion = Random.nextInt().orNull(),
-        signer = SignerV2(getRandomList(Random.nextInt(1, 3)) {
-            getRandomString(64)
-        }).orNull(),
+        signer = signer,
         usesPermission = getRandomList {
             PermissionV2(getRandomString(), Random.nextInt().orNull())
         },

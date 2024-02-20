@@ -88,32 +88,13 @@
                 app:barrierDirection="bottom"
                 app:constraint_referenced_ids="icon,text_last_update" />
 
-            <ImageView
-                android:id="@+id/repo_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:importantForAccessibility="no"
-                android:scaleType="fitCenter"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/barrier"
-                tools:src="@drawable/ic_repo_app_default" />
-
-            <TextView
-                android:id="@+id/repo_name"
-                android:layout_width="0dp"
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/repoChooserView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:ellipsize="marquee"
-                android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintBottom_toBottomOf="@+id/repo_icon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/repo_icon"
-                app:layout_constraintTop_toTopOf="@+id/repo_icon"
-                tools:text="A name of a repository with a potentially long name that wraps" />
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/barrier"
+                tools:composableName="org.fdroid.fdroid.views.appdetails.RepoChooserKt.RepoChooserPreview" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/secondaryButtonView"
@@ -124,9 +105,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="0"
                 android:ellipsize="marquee"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/primaryButtonView"
-                app:layout_constraintTop_toBottomOf="@+id/repo_icon"
+                app:layout_constraintTop_toBottomOf="@+id/repoChooserView"
                 tools:text="Uninstall"
                 tools:visibility="visible" />
 
@@ -140,7 +121,7 @@
                 android:ellipsize="marquee"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/repo_icon"
+                app:layout_constraintTop_toBottomOf="@+id/repoChooserView"
                 tools:text="Open"
                 tools:visibility="visible" />
 
@@ -152,7 +133,7 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/repo_icon"
+                app:layout_constraintTop_toBottomOf="@+id/repoChooserView"
                 tools:visibility="visible">
 
                 <ImageView
@@ -188,10 +169,10 @@
                     android:id="@+id/progress_bar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_alignWithParentIfMissing="true"
                     android:layout_below="@id/progress_label"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@id/progress_cancel"
-                    android:layout_toLeftOf="@id/progress_cancel"
                     android:indeterminate="true"
                     android:visibility="gone"
                     app:hideAnimationBehavior="outward"

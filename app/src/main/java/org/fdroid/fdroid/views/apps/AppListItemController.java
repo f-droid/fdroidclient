@@ -28,6 +28,8 @@ import androidx.core.util.Pair;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.progressindicator.LinearProgressIndicator;
+
 import org.fdroid.database.AppVersion;
 import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.FDroidDatabase;
@@ -47,8 +49,6 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.InstallerFactory;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
-
-import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.io.File;
 import java.util.Iterator;
@@ -214,6 +214,10 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_REMOVED);
         intentFilter.addAction(AppUpdateStatusManager.BROADCAST_APPSTATUS_CHANGED);
         broadcastManager.registerReceiver(onStatusChanged, intentFilter);
+    }
+
+    void hideInstallButton() {
+        if (installButton != null) installButton.setVisibility(View.GONE);
     }
 
     /**
@@ -549,13 +553,15 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
             if (disposable != null) disposable.dispose();
             disposable = Utils.runOffUiThread(() -> {
                 AppVersion version = updateChecker.getSuggestedVersion(app.packageName,
-                        app.preferredSigner, releaseChannels);
-                if (version == null) return null;
+                        app.preferredSigner, releaseChannels, true);
+                if (version == null) return new Apk();
                 Repository repo = FDroidApp.getRepoManager(activity).getRepository(version.getRepoId());
-                if (repo == null) return null;
+                if (repo == null) return new Apk();
                 return new Apk(version, repo);
             }, receivedApk -> {
-                if (receivedApk != null) {
+                if (receivedApk.packageName == null) {
+                    Toast.makeText(activity, R.string.app_list_no_suggested_version, Toast.LENGTH_SHORT).show();
+                } else {
                     String canonicalUrl = receivedApk.getCanonicalUrl();
                     Uri canonicalUri = Uri.parse(canonicalUrl);
                     broadcastManager.registerReceiver(receiver,

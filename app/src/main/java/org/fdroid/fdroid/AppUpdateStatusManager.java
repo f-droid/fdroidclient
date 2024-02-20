@@ -376,7 +376,7 @@ public final class AppUpdateStatusManager {
     @WorkerThread
     private List<UpdatableApp> getUpdatableApps() {
         List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
-        return updateChecker.getUpdatableApps(releaseChannels);
+        return updateChecker.getUpdatableApps(releaseChannels, true);
     }
 
     private void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate) {

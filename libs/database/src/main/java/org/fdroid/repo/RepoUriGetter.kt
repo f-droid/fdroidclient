@@ -49,10 +49,12 @@ internal object RepoUriGetter {
                 // do some path auto-adding, if it is missing
                 if (pathSegments.size >= 2 &&
                     pathSegments[pathSegments.lastIndex - 1] == "fdroid" &&
-                    pathSegments.last() == "repo"
+                    (pathSegments.last() == "repo" || pathSegments.last() == "archive")
                 ) {
                     // path already is /fdroid/repo, use as is
-                } else if (pathSegments.lastOrNull() == "repo") {
+                } else if (pathSegments.lastOrNull() == "repo" ||
+                    pathSegments.lastOrNull() == "archive"
+                ) {
                     // path already ends in /repo, use as is
                 } else if (pathSegments.size >= 1 && pathSegments.last() == "fdroid") {
                     // path is /fdroid with missing /repo, so add that

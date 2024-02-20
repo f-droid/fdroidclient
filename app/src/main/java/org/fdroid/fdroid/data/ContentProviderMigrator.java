@@ -42,7 +42,6 @@ final class ContentProviderMigrator {
     private void migrateOldRepos(FDroidDatabase db, SQLiteDatabase oldDb) {
         RepositoryDao repoDao = db.getRepositoryDao();
         List<Repository> repos = repoDao.getRepositories();
-        int weight = repos.isEmpty() ? 0 : repos.get(repos.size() - 1).getWeight();
 
         String[] projection =
                 new String[] {
@@ -81,7 +80,7 @@ final class ContentProviderMigrator {
                 // add new repo if not existing
                 if (repo == null) { // new repo to be added to new DB
                     InitialRepository newRepo = new InitialRepository(name, address, "", certificate,
-                            0, enabled, ++weight);
+                            0, enabled);
                     long repoId = repoDao.insert(newRepo);
                     repo = ObjectsCompat.requireNonNull(repoDao.getRepository(repoId));
                 } else { // old repo that may need an update for the new DB
@@ -123,7 +122,7 @@ final class ContentProviderMigrator {
                 // ignored version code is max code to ignore all updates, or a specific one to ignore
                 long v = ignoreAllUpdates ? Long.MAX_VALUE : ignoreVersionCode;
                 // this is a new DB, so we can just start to insert new AppPrefs
-                appPrefsDao.update(new AppPrefs(packageName, v, null));
+                appPrefsDao.update(new AppPrefs(packageName, v, null, null));
             }
         }
     }

@@ -45,8 +45,12 @@ object ComposeUtils {
         )
         val newColors = (colors ?: MaterialTheme.colors).let { c ->
             if (!LocalInspectionMode.current && !c.isLight && Preferences.get().isPureBlack) {
-                c.copy(background = Color.Black)
-            } else c
+                c.copy(background = Color.Black, surface = Color(0xff1e1e1e))
+            } else if (!c.isLight) {
+                c.copy(surface = Color(0xff1e1e1e))
+            } else {
+                c
+            }
         }
         MaterialTheme(
             colors = newColors,
@@ -111,7 +115,7 @@ object ComposeUtils {
                 )
                 Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
             }
-            Text(text = text.uppercase(Locale.getDefault()))
+            Text(text = text.uppercase(Locale.getDefault()), maxLines = 1)
         }
     }
 

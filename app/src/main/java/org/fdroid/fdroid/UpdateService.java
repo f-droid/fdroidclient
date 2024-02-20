@@ -532,7 +532,7 @@ public class UpdateService extends JobIntentService {
     public static Disposable autoDownloadUpdates(Context context) {
         DbUpdateChecker updateChecker = new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
         List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
-        return Single.fromCallable(() -> updateChecker.getUpdatableApps(releaseChannels))
+        return Single.fromCallable(() -> updateChecker.getUpdatableApps(releaseChannels, true))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable -> Log.e(TAG, "Error auto-downloading updates: ", throwable))

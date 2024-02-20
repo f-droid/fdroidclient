@@ -25,6 +25,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
+@Suppress("DEPRECATION")
 @RunWith(AndroidJUnit4::class)
 internal class AppListItemsTest : AppTest() {
 
@@ -48,7 +49,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName2, app2, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -108,7 +108,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName2, app2, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -177,7 +176,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId3, packageName3, app3b, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -306,7 +304,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName2, app2, locales)
 
         // one of the apps is installed
-        @Suppress("DEPRECATION")
         val packageInfo2 = PackageInfo().apply {
             packageName = packageName2
             versionName = getRandomString()
@@ -429,9 +426,9 @@ internal class AppListItemsTest : AppTest() {
     @Test
     fun testFromRepoWithHighestWeight() {
         // insert same app into three repos (repoId1 has highest weight)
-        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
-        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName, app2, locales)
         appDao.insert(repoId1, packageName, app1, locales)
         appDao.insert(repoId3, packageName, app3, locales)
@@ -444,6 +441,48 @@ internal class AppListItemsTest : AppTest() {
         assertTrue(repoPrefs3.weight < repoPrefs1.weight)
 
         // app from repo with highest weight is returned (app1)
+        getItems { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(packageName, apps[0].packageName)
+            assertEquals(app1, apps[0])
+        }
+    }
+
+    @Test
+    fun testFromRepoFromAppPrefs() {
+        // insert same app into three repos (repoId1 has highest weight)
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId3 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName, app2, locales)
+        appDao.insert(repoId1, packageName, app1, locales)
+        appDao.insert(repoId3, packageName, app3, locales)
+
+        // app from repo1 with highest weight gets returned
+        getItems { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(packageName, apps[0].packageName)
+            assertEquals(app1, apps[0])
+        }
+
+        // prefer repo3 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId3))
+        getItems { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(packageName, apps[0].packageName)
+            assertEquals(app3, apps[0])
+        }
+
+        // prefer repo2 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
+        getItems { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(packageName, apps[0].packageName)
+            assertEquals(app2, apps[0])
+        }
+
+        // prefer repo1 for this app
+        appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId1))
         getItems { apps ->
             assertEquals(1, apps.size)
             assertEquals(packageName, apps[0].packageName)
@@ -476,6 +515,16 @@ internal class AppListItemsTest : AppTest() {
         ).forEach { apps ->
             assertEquals(0, apps.size)
         }
+
+        // we'll add app1 as a variant of app2, so it should be in category B as well
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName2, app1, locales)
+        listOf(
+            appDao.getAppListItemsByName("B").getOrFail(),
+            appDao.getAppListItemsByLastUpdated("B").getOrFail(),
+        ).forEach { apps ->
+            assertEquals(3, apps.size) // all apps are in B now
+        }
     }
 
     @Test
@@ -487,7 +536,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName3, app3, locales)
 
         // define packageInfo for each test
-        @Suppress("DEPRECATION")
         val packageInfo1 = PackageInfo().apply {
             packageName = packageName1
             versionName = getRandomString()
@@ -529,7 +577,6 @@ internal class AppListItemsTest : AppTest() {
         appDao.insert(repoId, packageName, app1, locales)
 
         val packageInfoCreator = { name: String ->
-            @Suppress("DEPRECATION")
             PackageInfo().apply {
                 packageName = name
                 versionName = name

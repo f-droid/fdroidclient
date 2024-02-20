@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import androidx.room.DatabaseView
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.fdroid.PackagePreference
@@ -13,6 +14,7 @@ public data class AppPrefs(
     @PrimaryKey
     val packageName: String,
     override val ignoreVersionCodeUpdate: Long = 0,
+    val preferredRepoId: Long? = null,
     // This is named like this, because it hit a Room bug when joining with Version table
     // which had exactly the same field.
     internal val appPrefReleaseChannels: List<String>? = null,
@@ -53,3 +55,13 @@ public data class AppPrefs(
         },
     )
 }
+
+@DatabaseView("""SELECT packageName, repoId AS preferredRepoId FROM ${AppMetadata.TABLE}
+    JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+    LEFT JOIN ${AppPrefs.TABLE} USING (packageName)
+    WHERE repoId = COALESCE(preferredRepoId, repoId)
+    GROUP BY packageName HAVING MAX(pref.weight)""")
+internal class PreferredRepo(
+    val packageName: String,
+    val preferredRepoId: Long,
+)

@@ -2,7 +2,6 @@ package org.fdroid.index.v1
 
 import android.Manifest
 import android.net.Uri
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.Runs
 import io.mockk.every
@@ -38,9 +37,6 @@ internal class IndexV1UpdaterTest : DbTest() {
 
     @get:Rule
     var tmpFolder: TemporaryFolder = TemporaryFolder()
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val tempFileProvider: TempFileProvider = mockk()
     private val downloaderFactory: DownloaderFactory = mockk()

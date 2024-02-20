@@ -137,6 +137,13 @@ public data class Repository internal constructor(
     public val formatVersion: IndexFormatVersion? get() = repository.formatVersion
     public val certificate: String? get() = repository.certificate
 
+    /**
+     * True if this repository is an archive repo.
+     * It is suggested to not show archive repos in the list of repos in the UI.
+     */
+    public val isArchiveRepo: Boolean
+        get() = repository.address.trimEnd('/').endsWith("/archive")
+
     public fun getName(localeList: LocaleListCompat): String? =
         repository.name.getBestLocale(localeList)
 
@@ -393,7 +400,8 @@ public data class InitialRepository @JvmOverloads constructor(
     val certificate: String,
     val version: Long,
     val enabled: Boolean,
-    val weight: Int,
+    @Deprecated("This is automatically assigned now and can be safely removed.")
+    val weight: Int = 0, // still used for testing, could be made internal or tests migrate away
 ) {
     init {
         validateCertificate(certificate)
