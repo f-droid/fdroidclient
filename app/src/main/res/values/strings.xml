@@ -232,6 +232,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="has_disallow_install_unknown_sources">Unknown sources can\'t be added by this user, that includes new repos</string>
 
     <string name="menu_manage">Repositories</string>
+    <string name="repositories_last_update">Last Update: %s</string>
+    <string name="repositories_last_update_never">never</string>
     <string name="repositories_summary">Add additional sources of apps</string>
     <!-- This should be exactly the same as the standard word for Settings throughout Android and apps -->
     <string name="menu_settings">Settings</string>

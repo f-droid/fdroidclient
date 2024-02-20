@@ -16,8 +16,11 @@
             android:id="@+id/toolbar"
             style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/menu_manage" />
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:title="@string/menu_manage"
+            app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Small"
+            tools:subtitle="@string/repo_last_update" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

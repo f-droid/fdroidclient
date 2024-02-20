@@ -351,7 +351,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         }
     }
 
-    private long getLastUpdateCheck() {
+    public long getLastUpdateCheck() {
         return preferences.getLong(PREF_LAST_UPDATE_CHECK, DEFAULT_LAST_UPDATE_CHECK);
     }
 

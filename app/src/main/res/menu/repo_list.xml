@@ -6,7 +6,7 @@
     <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info"
-        android:title="@string/menu_share"
+        android:title="@string/repo_list_info_title"
         app:showAsAction="ifRoom|withText" />
 
 </menu>
