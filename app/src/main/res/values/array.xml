@@ -41,6 +41,7 @@
         <item>@string/antidisabledalgorithm_key</item>
         <item>@string/antiknownvuln_key</item>
         <item>@string/antinosource_key</item>
+        <item>@string/antiothers_key</item>
     </string-array>
 
     <string-array name="antifeaturesNames">
