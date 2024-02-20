@@ -70,8 +70,8 @@ public class IndexV1Creator(
             apps.add(getApp(packageInfo))
             packages[packageName] = listOf(getPackage(packageInfo))
         } catch (e: PackageManager.NameNotFoundException) {
-            Log.i("IndexV1Creator", "app disappeared during addApp: " + e)
-        } ?: return // this app disappeared, nothing left to do
+            Log.i("IndexV1Creator", "app disappeared during addApp: ", e)
+        }
     }
 
     private fun getApp(packageInfo: PackageInfo): AppV1 {

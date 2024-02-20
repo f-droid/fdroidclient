@@ -38,7 +38,7 @@ kotlin {
                 implementation 'io.github.microutils:kotlin-logging:2.1.21'
 
                 implementation project(":libs:download")
-                implementation "io.ktor:ktor-io:2.3.4"
+                implementation "io.ktor:ktor-io:2.3.8"
             }
         }
         commonTest {
@@ -61,13 +61,13 @@ kotlin {
         androidMain {
             dependencies {
                 implementation "org.jetbrains.kotlin:kotlin-reflect:1.9.22"
-                implementation 'androidx.core:core-ktx:1.10.1'
+                implementation 'androidx.core:core-ktx:1.12.0'
             }
         }
         androidUnitTest {
             dependencies {
                 implementation 'junit:junit:4.13.2'
-                implementation 'io.mockk:mockk:1.13.5'
+                implementation 'io.mockk:mockk:1.13.8'
             }
         }
         androidInstrumentedTest {
