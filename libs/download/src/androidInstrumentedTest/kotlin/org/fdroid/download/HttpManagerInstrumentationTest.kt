@@ -6,6 +6,7 @@ import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.engine.okhttp.OkHttpConfig
+import kotlinx.coroutines.delay
 import okhttp3.ConnectionSpec
 import okhttp3.ConnectionSpec.Companion.MODERN_TLS
 import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
@@ -19,6 +20,8 @@ import org.junit.runner.RunWith
 import javax.net.ssl.SSLHandshakeException
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 @Suppress("BlockingMethodInNonBlockingContext")
@@ -93,5 +96,30 @@ internal class HttpManagerInstrumentationTest {
         val json = JSONObject(httpManager.getBytes(downloadRequest).decodeToString())
         assertEquals("TLS 1.2", json.getString("tls_version"))
         assertEquals(0, json.getJSONObject("insecure_cipher_suites").length())
+    }
+
+    @Test
+    fun checkSessionResumeShort() = runSuspend {
+        val httpManager = HttpManager(userAgent, null)
+        val mirror = Mirror("https://tlsprivacy.nervuri.net")
+        val indexFile: IndexFile = getIndexFile("/json/v1")
+        val downloadRequest = DownloadRequest(indexFile, listOf(mirror))
+
+        // first request had no session to resume
+        JSONObject(httpManager.getBytes(downloadRequest).decodeToString()).let { json ->
+            val connectionInfo = json.getJSONObject("connection_info")
+            assertFalse(connectionInfo.getBoolean("session_resumed"))
+        }
+        // second request right after resumed session
+        JSONObject(httpManager.getBytes(downloadRequest).decodeToString()).let { json ->
+            val connectionInfo = json.getJSONObject("connection_info")
+            assertTrue(connectionInfo.getBoolean("session_resumed"))
+        }
+        delay(10_100)
+        // third request after 10s did not resume session
+        JSONObject(httpManager.getBytes(downloadRequest).decodeToString()).let { json ->
+            val connectionInfo = json.getJSONObject("connection_info")
+            assertFalse(connectionInfo.getBoolean("session_resumed"))
+        }
     }
 }
