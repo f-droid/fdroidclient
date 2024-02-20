@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -84,15 +85,21 @@ fun RepoChooser(
     var expanded by remember { mutableStateOf(false) }
     val currentRepo = repos.find { it.repoId == currentRepoId }
         ?: error("Current repoId not in list")
+    val isPreferred = currentRepo.repoId == preferredRepoId
     Column(
         modifier = modifier.fillMaxWidth(),
     ) {
         Box {
+            val borderColor = if (isPreferred) {
+                colorResource(id = R.color.fdroid_blue)
+            } else {
+                LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+            }
             OutlinedTextField(
                 value = TextFieldValue(
                     annotatedString = getRepoString(
                         repo = currentRepo,
-                        isPreferred = repos.size > 1 && currentRepo.repoId == preferredRepoId,
+                        isPreferred = repos.size > 1 && isPreferred,
                     ),
                 ),
                 textStyle = MaterialTheme.typography.body2,
@@ -111,20 +118,27 @@ fun RepoChooser(
                     if (repos.size > 1) Icon(
                         imageVector = Icons.Default.ArrowDropDown,
                         contentDescription = stringResource(R.string.app_details_repository_expand),
+                        tint = if (isPreferred) {
+                            colorResource(id = R.color.fdroid_blue)
+                        } else {
+                            LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                        },
                     )
                 },
-                singleLine = true,
+                singleLine = false,
                 enabled = false,
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     // hack to enable clickable
                     disabledTextColor = LocalContentColor.current.copy(LocalContentAlpha.current),
-                    disabledBorderColor = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled),
-                    disabledLabelColor = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium),
+                    disabledBorderColor = borderColor,
+                    disabledLabelColor = borderColor,
                     disabledLeadingIconColor = MaterialTheme.colors.onSurface,
                 ),
-                modifier = Modifier.fillMaxWidth().let {
-                    if (repos.size > 1) it.clickable(onClick = { expanded = true }) else it
-                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .let {
+                        if (repos.size > 1) it.clickable(onClick = { expanded = true }) else it
+                    },
             )
             DropdownMenu(
                 expanded = expanded,
@@ -140,11 +154,11 @@ fun RepoChooser(
                 }
             }
         }
-        if (currentRepo.repoId != preferredRepoId) {
+        if (!isPreferred) {
             FDroidOutlineButton(
                 text = stringResource(R.string.app_details_repository_button_prefer),
                 onClick = { onPreferredRepoChanged(currentRepo.repoId) },
-                modifier = Modifier.align(End),
+                modifier = Modifier.align(End).padding(top = 8.dp),
             )
         }
     }
