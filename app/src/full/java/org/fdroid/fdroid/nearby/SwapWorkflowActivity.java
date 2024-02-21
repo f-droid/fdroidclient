@@ -29,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,7 +55,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -211,8 +209,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             nextStep = R.layout.swap_select_apps;
         } else if (currentView.getLayoutResId() == R.layout.swap_join_wifi) {
             nextStep = R.layout.swap_start_swap;
-        } else if (currentView.getLayoutResId() == R.layout.swap_nfc) {
-            nextStep = R.layout.swap_join_wifi;
         } else if (currentView.getLayoutResId() == R.layout.swap_select_apps) {
             if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
                 nextStep = R.layout.swap_start_swap;
@@ -309,10 +305,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             menuInflater.inflate(R.menu.swap_next, menu);
             setUpNextButton(menu, R.string.next, R.drawable.ic_arrow_forward);
             return true;
-        } else if (currentView.getLayoutResId() == R.layout.swap_nfc) {
-            menuInflater.inflate(R.menu.swap_next, menu);
-            setUpNextButton(menu, R.string.skip, R.drawable.ic_arrow_forward);
-            return true;
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -342,8 +334,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             onAppsSelected();
         } else if (currentLayoutResId == R.layout.swap_join_wifi) {
             inflateSwapView(R.layout.swap_select_apps);
-        } else if (currentLayoutResId == R.layout.swap_nfc) {
-            inflateSwapView(R.layout.swap_wifi_qr);
         }
     }
 
@@ -527,11 +517,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (currentSwapViewLayoutRes == R.layout.swap_start_swap) {
             showIntro();
             return;
-        } else if (currentSwapViewLayoutRes == R.layout.swap_nfc) {
-            if (!attemptToShowNfc()) {
-                inflateSwapView(R.layout.swap_wifi_qr);
-                return;
-            }
         } else if (currentSwapViewLayoutRes == R.layout.swap_connecting) {
             // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
             inflateSwapView(R.layout.swap_start_swap);
@@ -624,8 +609,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         } else if (currentView.getLayoutResId() == R.layout.swap_wifi_qr) {
             setUpFromWifi();
             setUpQrScannerButton();
-        } else if (currentView.getLayoutResId() == R.layout.swap_nfc) {
-            setUpNfcView();
         } else if (currentView.getLayoutResId() == R.layout.swap_select_apps) {
             LocalRepoService.create(this, getSwapService().getAppsToSwap());
         } else if (currentView.getLayoutResId() == R.layout.swap_connecting) {
@@ -730,7 +713,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         hasPreparedLocalRepo = true;
         if (getSwapService().isConnectingWithPeer()) {
             startSwappingWithPeer();
-        } else if (!attemptToShowNfc()) {
+        } else {
             inflateSwapView(R.layout.swap_wifi_qr);
         }
     }
@@ -738,23 +721,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void startSwappingWithPeer() {
         getSwapService().connectToPeer();
         inflateSwapView(R.layout.swap_connecting);
-    }
-
-    private boolean attemptToShowNfc() {
-        // TODO: What if NFC is disabled? Hook up with NfcNotEnabledActivity? Or maybe only if they
-        // click a relevant button?
-
-        // Even if they opted to skip the message which says "Touch devices to swap",
-        // we still want to actually enable the feature, so that they could touch
-        // during the wifi qr code being shown too.
-        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
-
-        // TODO move all swap-specific preferences to a SharedPreferences instance for SwapWorkflowActivity
-        if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
-            inflateSwapView(R.layout.swap_nfc);
-            return true;
-        }
-        return false;
     }
 
     public void swapWith(Peer peer) {
@@ -1402,14 +1368,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     swapWith(config);
                 }
             });
-        }
-    }
-
-    private void setUpNfcView() {
-        CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
-        if (dontShowAgain != null) {
-            dontShowAgain.setOnCheckedChangeListener((buttonView, isChecked)
-                    -> Preferences.get().setShowNfcDuringSwap(!isChecked));
         }
     }
 

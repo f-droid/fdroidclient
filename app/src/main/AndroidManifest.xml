@@ -261,11 +261,6 @@
             tools:replace="screenOrientation" />
 
         <activity
-            android:name=".NfcNotEnabledActivity"
-            android:configChanges="layoutDirection|locale"
-            android:noHistory="true" />
-
-        <activity
             android:name=".views.repos.RepoDetailsActivity"
             android:configChanges="layoutDirection|locale"
             android:label="@string/repo_details"

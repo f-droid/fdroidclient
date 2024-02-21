@@ -58,7 +58,6 @@ import org.fdroid.database.Repository;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -735,16 +734,6 @@ public class AppDetailsActivity extends AppCompatActivity
         return currentStatus != null &&
                 (currentStatus.status == AppUpdateStatusManager.Status.PendingInstall
                         || currentStatus.status == AppUpdateStatusManager.Status.Downloading);
-    }
-
-    @Override
-    public void enableAndroidBeam() {
-        NfcHelper.setAndroidBeam(this, app.packageName);
-    }
-
-    @Override
-    public void disableAndroidBeam() {
-        NfcHelper.disableAndroidBeam(this);
     }
 
     @Override

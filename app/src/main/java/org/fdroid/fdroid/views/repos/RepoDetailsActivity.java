@@ -45,8 +45,6 @@ import org.fdroid.database.Repository;
 import org.fdroid.database.RepositoryDao;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
-import org.fdroid.fdroid.NfcNotEnabledActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -206,12 +204,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void setNfc() {
-        if (NfcHelper.setPushMessage(this, Utils.getSharingUri(repo))) {
-            findViewById(android.R.id.content).post(() -> onNewIntent(getIntent()));
-        }
-    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -228,8 +220,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,
                 new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
 
-        // FDroid.java and AppDetailsActivity set different NFC actions, so reset here
-        setNfc();
         processIntent(getIntent());
     }
 
@@ -286,10 +276,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_delete) {
             promptForDelete();
             return true;
-        } else if (itemId == R.id.menu_enable_nfc) {
-            intent = new Intent(this, NfcNotEnabledActivity.class);
-            startActivity(intent);
-            return true;
         } else if (itemId == R.id.action_share) {
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
@@ -303,24 +289,8 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        prepareNfcMenuItems(menu);
         prepareShareMenuItems(menu);
         return true;
-    }
-
-    private void prepareNfcMenuItems(Menu menu) {
-        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
-
-        if (nfcAdapter == null) {
-            menuItem.setVisible(false);
-            return;
-        }
-
-        boolean needsEnableNfcMenuItem;
-        needsEnableNfcMenuItem = false; // TODO remove NFC code
-
-        menuItem.setVisible(needsEnableNfcMenuItem);
     }
 
     private void prepareShareMenuItems(Menu menu) {
