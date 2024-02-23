@@ -483,7 +483,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
-    <string name="repo_disable_warning">Disabling this repository will remove it as \"preferred\" from any apps you may have manually preferred it.</string>
+    <string name="repo_disable_warning">Disabling this repository will remove its \"preferred\" status from all apps.</string>
     <string name="repo_disable_warning_button">Disable</string>
     <string name="repo_added">Saved package repository %1$s.</string>
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
