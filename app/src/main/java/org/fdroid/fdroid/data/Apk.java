@@ -457,27 +457,25 @@ public class Apk implements Comparable<Apk>, Parcelable {
         }
         if (Build.VERSION.SDK_INT >= 33) {
             if (targetSdkVersion < 33) {
-                // TODO: Change the strings below to Manifest.permission once we compile with SDK 33
                 if (set.contains(Manifest.permission.BODY_SENSORS)) {
-                    set.add("android.permission.BODY_SENSORS_BACKGROUND");
+                    set.add(Manifest.permission.BODY_SENSORS_BACKGROUND);
                 }
                 if (set.contains(Manifest.permission.READ_EXTERNAL_STORAGE) ||
                         set.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    set.add("android.permission.READ_MEDIA_AUDIO");
-                    set.add("android.permission.READ_MEDIA_VIDEO");
-                    set.add("android.permission.READ_MEDIA_IMAGES");
+                    set.add(Manifest.permission.READ_MEDIA_AUDIO);
+                    set.add(Manifest.permission.READ_MEDIA_VIDEO);
+                    set.add(Manifest.permission.READ_MEDIA_IMAGES);
                 }
             }
             // Else do nothing. The targetSdk for the above split-permissions is set to 33,
             // so we don't make any changes for apps targeting 33 or above
         }
         if (Build.VERSION.SDK_INT >= 34) {
-            // TODO: Change the strings below to Manifest.permission once we compile with SDK 34
-            if (set.contains("android.permission.READ_MEDIA_IMAGES") ||
-                    set.contains("android.permission.READ_MEDIA_VIDEO") ||
-                    set.contains("android.permission.ACCESS_MEDIA_LOCATION")
+            if (set.contains(Manifest.permission.READ_MEDIA_IMAGES) ||
+                    set.contains(Manifest.permission.READ_MEDIA_VIDEO) ||
+                    set.contains(Manifest.permission.ACCESS_MEDIA_LOCATION)
             ) {
-                set.add("android.permission.READ_MEDIA_VISUAL_USER_SELECTED");
+                set.add(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED);
             }
         }
 
