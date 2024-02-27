@@ -173,6 +173,11 @@ internal class RepoUriGetterTest {
     }
 
     @Test
+    fun testNonHierarchicalUri() {
+        RepoUriGetter.getUri("mailto:nobody@google.com") // should not crash
+    }
+
+    @Test
     fun testSwapUri() {
         val uri =
             RepoUriGetter.getUri(
@@ -204,5 +209,8 @@ internal class RepoUriGetterTest {
 
         val uri3 = Uri.parse("http://192.168.3.159:8888/fdroid/repo?BSSID=44:FE:3B:7F:7F:EE")
         assertFalse(RepoUriGetter.isSwapUri(uri3))
+
+        val uri4 = Uri.parse("mailto:nobody@google.com")
+        assertFalse(RepoUriGetter.isSwapUri(uri4))
     }
 }

@@ -26,8 +26,8 @@ internal object RepoUriGetter {
                 else -> it
             }
         }
-        val fingerprint = uri.getQueryParameter("fingerprint")?.lowercase()?.trimEnd()
-            ?: uri.getQueryParameter("FINGERPRINT")?.lowercase()?.trimEnd()
+        val fingerprint = uri.getQueryParameterOrNull("fingerprint")?.lowercase()?.trimEnd()
+            ?: uri.getQueryParameterOrNull("FINGERPRINT")?.lowercase()?.trimEnd()
 
         val pathSegments = uri.pathSegments
         var username: String? = null
@@ -78,12 +78,20 @@ internal object RepoUriGetter {
     }
 
     fun isSwapUri(uri: Uri): Boolean {
-        val swap = uri.getQueryParameter("swap") ?: uri.getQueryParameter("SWAP")
+        val swap = uri.getQueryParameterOrNull("swap") ?: uri.getQueryParameterOrNull("SWAP")
         return swap != null && uri.scheme?.lowercase() == "http"
     }
 
     private fun getFdroidLinkUri(uri: Uri): Uri {
         return Uri.parse(uri.encodedFragment)
+    }
+
+    private fun Uri.getQueryParameterOrNull(key: String): String? {
+        return try {
+            getQueryParameter(key)
+        } catch (e: Exception) {
+            return null
+        }
     }
 
     /**
