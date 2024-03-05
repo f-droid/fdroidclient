@@ -65,6 +65,7 @@
     <application
         android:name=".FDroidApp"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/backup_extraction_rules"
         android:description="@string/app_description"
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
