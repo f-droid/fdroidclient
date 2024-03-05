@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.net.Uri;
 
@@ -45,6 +46,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
 
     @NonNull
     @Override
+    @SuppressLint("MissingPermission") // we'd need to ask for Bluetooth permission, but code unmaintained
     protected Downloader create(@NonNull Repository repo, @NonNull List<Mirror> mirrors, @NonNull Uri uri,
                                 @NonNull IndexFile indexFile, @NonNull File destFile,
                                 @Nullable Mirror tryFirst) throws IOException {

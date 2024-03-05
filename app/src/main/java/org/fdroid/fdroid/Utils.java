@@ -757,7 +757,7 @@ public final class Utils {
     public static void applySwipeLayoutColors(SwipeRefreshLayout swipeLayout) {
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = swipeLayout.getContext().getTheme();
-        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        theme.resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
         swipeLayout.setColorSchemeColors(typedValue.data);
     }
 

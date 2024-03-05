@@ -2,6 +2,8 @@ package org.fdroid.fdroid.nearby;
 
 import android.bluetooth.BluetoothSocket;
 
+import androidx.annotation.RequiresPermission;
+
 import org.fdroid.fdroid.Utils;
 
 import java.io.BufferedInputStream;
@@ -18,7 +20,7 @@ public class BluetoothConnection {
     private OutputStream output;
     private final BluetoothSocket socket;
 
-    public BluetoothConnection(BluetoothSocket socket) {
+    BluetoothConnection(BluetoothSocket socket) {
         this.socket = socket;
     }
 
@@ -30,6 +32,7 @@ public class BluetoothConnection {
         return output;
     }
 
+    @RequiresPermission("android.permission.BLUETOOTH_CONNECT")
     public void open() throws IOException {
         if (!socket.isConnected()) {
             // Server sockets will already be connected when they are passed to us,

@@ -48,7 +48,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -194,9 +193,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         FDroidApp.checkStartTor(this, Preferences.get());
-
-        // AppDetailsActivity and RepoDetailsActivity set different NFC actions, so reset here
-        NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
 
         NearbyViewBinder.updateExternalStorageViews(this);
     }

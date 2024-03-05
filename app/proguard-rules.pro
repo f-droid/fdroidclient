@@ -2,7 +2,6 @@
 -dontoptimize
 -keepattributes SourceFile,LineNumberTable,Exceptions
 -keep class org.fdroid.fdroid.** {*;}
--dontskipnonpubliclibraryclassmembers
 -dontwarn android.test.**
 
 -dontwarn javax.naming.**
@@ -39,6 +38,10 @@ public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *; }
 -keep public class org.fdroid.** {
   *;
 }
+
+-dontwarn org.bouncycastle.jsse.**
+-dontwarn org.conscrypt.**
+-dontwarn org.openjsse.**
 
 # This is necessary so that RemoteWorkManager can be initialized (also marked with @Keep)
 -keep class androidx.work.multiprocess.RemoteWorkManagerClient {

@@ -114,16 +114,6 @@ public class AppDetailsAdapterTest {
                 }
 
                 @Override
-                public void enableAndroidBeam() {
-
-                }
-
-                @Override
-                public void disableAndroidBeam() {
-
-                }
-
-                @Override
                 public void openUrl(String url) {
 
                 }

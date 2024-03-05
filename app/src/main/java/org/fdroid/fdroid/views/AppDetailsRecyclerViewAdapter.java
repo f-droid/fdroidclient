@@ -88,10 +88,6 @@ public class AppDetailsRecyclerViewAdapter
 
         boolean isAppDownloading();
 
-        void enableAndroidBeam();
-
-        void disableAndroidBeam();
-
         void openUrl(String url);
 
         void installApk(Apk apk);
@@ -643,14 +639,12 @@ public class AppDetailsRecyclerViewAdapter
                 progressLayout.setVisibility(View.VISIBLE);
             } else if (!app.isInstalled(context) && suggestedApk != null) {
                 // Check count > 0 due to incompatible apps resulting in an empty list.
-                callbacks.disableAndroidBeam();
                 progressLayout.setVisibility(View.GONE);
                 // Set Install button and hide second button
                 buttonPrimaryView.setText(R.string.menu_install);
                 buttonPrimaryView.setEnabled(true);
                 buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));
             } else if (app.isInstalled(context)) {
-                callbacks.enableAndroidBeam();
                 if (app.canAndWantToUpdate(suggestedApk) && suggestedApk != null) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
                     buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));

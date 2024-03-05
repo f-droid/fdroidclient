@@ -23,9 +23,10 @@ def getVersionName = { ->
 def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
 android {
-    buildToolsVersion "33.0.2"
+    namespace "org.fdroid.fdroid"
+    buildToolsVersion "34.0.0"
 
-    compileSdkVersion 33
+    compileSdk 34
 
     defaultConfig {
         versionCode 1019050
@@ -93,8 +94,8 @@ android {
 
     compileOptions {
         compileOptions.encoding = "UTF-8"
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     aaptOptions {
@@ -102,11 +103,13 @@ android {
     }
 
     buildFeatures {
+        buildConfig true
         compose true
+        aidl true
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.6"
+        kotlinCompilerExtensionVersion = "1.5.9"
     }
 
     testOptions {
@@ -161,18 +164,18 @@ dependencies {
     implementation project(":libs:index")
     implementation project(":libs:database")
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.3.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
-    implementation 'androidx.palette:palette:1.0.0'
-    implementation 'androidx.work:work-runtime:2.8.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
+    implementation 'androidx.work:work-runtime:2.9.0'
     implementation 'com.google.guava:guava:31.0-android' // somehow needed for work-runtime to function
 
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.11.0'
 
     implementation('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false }
     implementation 'com.google.zxing:core:3.3.3' // newer version need minSdk 24 or library desugering
@@ -180,8 +183,8 @@ dependencies {
     //noinspection GradleDependency -> Commons IO > 2.5 uses java.nio.file, which requires desugaring
     implementation 'commons-io:commons-io:2.6'
     implementation 'commons-net:commons-net:3.6'
-    implementation 'ch.acra:acra-mail:5.11.2'
-    implementation 'ch.acra:acra-dialog:5.11.2'
+    implementation 'ch.acra:acra-mail:5.11.3'
+    implementation 'ch.acra:acra-dialog:5.11.3'
     implementation 'com.hannesdorfmann:adapterdelegates4:4.3.2'
     implementation 'org.slf4j:slf4j-api:2.0.7'
     implementation 'com.github.tony19:logback-android:3.0.0'
@@ -189,32 +192,32 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.7'
 
-    implementation "com.github.bumptech.glide:glide:4.15.1"
+    implementation "com.github.bumptech.glide:glide:4.16.0"
     implementation("com.github.bumptech.glide:compose:1.0.0-alpha.3") {
         exclude group: "androidx.test"
     }
     annotationProcessor "com.github.bumptech.glide:compiler:4.14.2"
 
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
     implementation 'org.bouncycastle:bcprov-jdk15to18:1.71'
     fullImplementation 'info.guardianproject.panic:panic:1.0'
     fullImplementation 'org.bouncycastle:bcpkix-jdk15to18:1.71'
     fullImplementation 'org.jmdns:jmdns:3.5.5'
     fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
 
-    // upgrading this requires compileSdk 34 and thus gradle 8
-    implementation platform('androidx.compose:compose-bom:2023.06.01')
+    // newer compose-bom versions have an issue with app details repo dropdown
+    implementation platform('androidx.compose:compose-bom:2023.10.01')
     implementation 'androidx.compose.material:material'
     implementation 'androidx.compose.material:material-icons-extended'
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose"
     implementation 'androidx.compose.ui:ui-tooling-preview'
-    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation 'androidx.activity:activity-compose:1.8.2'
     implementation "com.google.accompanist:accompanist-themeadapter-material:0.30.1"
     debugImplementation 'androidx.compose.ui:ui-tooling'
 
     testImplementation 'androidx.test:core:1.5.0'
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.robolectric:robolectric:4.10.3'
+    testImplementation 'org.robolectric:robolectric:4.11.1'
     testImplementation 'org.mockito:mockito-core:3.9.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 
@@ -226,7 +229,7 @@ dependencies {
     androidTestImplementation 'androidx.test:monitor:1.6.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-    androidTestImplementation 'androidx.work:work-testing:2.8.1'
+    androidTestImplementation 'androidx.work:work-testing:2.9.0'
     androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
     androidTestImplementation 'app.cash.turbine:turbine:1.0.0'
 }

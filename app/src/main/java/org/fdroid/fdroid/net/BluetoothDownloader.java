@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
 
 import org.apache.commons.io.input.BoundedInputStream;
 import org.fdroid.IndexFile;
@@ -40,6 +41,7 @@ public class BluetoothDownloader extends Downloader {
                 && Pattern.matches("([0-9A-F]{2}-)+[0-9A-F]{2}", uri.getHost());
     }
 
+    @RequiresPermission("android.permission.BLUETOOTH_CONNECT")
     BluetoothDownloader(Uri uri, IndexFile indexFile, File destFile) throws IOException {
         super(indexFile, destFile);
         String macAddress = uri.getHost().replace("-", ":");

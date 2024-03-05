@@ -24,7 +24,6 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.fdroid.fdroid"
     android:installLocation="auto">
 
     <supports-screens
@@ -260,11 +259,6 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
-
-        <activity
-            android:name=".NfcNotEnabledActivity"
-            android:configChanges="layoutDirection|locale"
-            android:noHistory="true" />
 
         <activity
             android:name=".views.repos.RepoDetailsActivity"

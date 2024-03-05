@@ -43,18 +43,14 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
     @Override
     public AppCardController onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout;
-        switch (viewType) {
-            case R.id.latest_large_tile:
-                layout = R.layout.app_card_large;
-                break;
-            case R.id.latest_small_tile:
-                layout = R.layout.app_card_horizontal;
-                break;
-            case R.id.latest_regular_list:
-                layout = R.layout.app_card_list_item;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown view type when rendering \"What's New\": " + viewType);
+        if (viewType == R.id.latest_large_tile) {
+            layout = R.layout.app_card_large;
+        } else if (viewType == R.id.latest_small_tile) {
+            layout = R.layout.app_card_horizontal;
+        } else if (viewType == R.id.latest_regular_list) {
+            layout = R.layout.app_card_list_item;
+        } else {
+            throw new IllegalArgumentException("Unknown view type when rendering \"What's New\": " + viewType);
         }
 
         return new AppCardController(activity, activity.getLayoutInflater().inflate(layout, parent, false));

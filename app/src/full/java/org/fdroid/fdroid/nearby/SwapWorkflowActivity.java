@@ -29,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,7 +55,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -205,50 +203,38 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public void onToolbarBackPressed() {
         int nextStep = R.layout.swap_start_swap;
-        switch (currentView.getLayoutResId()) {
-            case R.layout.swap_confirm_receive:
-                nextStep = backstack.peek();
-                break;
-            case R.layout.swap_connecting:
-                nextStep = R.layout.swap_select_apps;
-                break;
-            case R.layout.swap_join_wifi:
+        if (currentView.getLayoutResId() == R.layout.swap_confirm_receive) {
+            nextStep = backstack.peek();
+        } else if (currentView.getLayoutResId() == R.layout.swap_connecting) {
+            nextStep = R.layout.swap_select_apps;
+        } else if (currentView.getLayoutResId() == R.layout.swap_join_wifi) {
+            nextStep = R.layout.swap_start_swap;
+        } else if (currentView.getLayoutResId() == R.layout.swap_select_apps) {
+            if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
                 nextStep = R.layout.swap_start_swap;
-                break;
-            case R.layout.swap_nfc:
+            } else if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
+                nextStep = R.layout.swap_success;
+            } else {
                 nextStep = R.layout.swap_join_wifi;
-                break;
-            case R.layout.swap_select_apps:
-                if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
-                    nextStep = R.layout.swap_start_swap;
-                } else if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
-                    nextStep = R.layout.swap_success;
-                } else {
-                    nextStep = R.layout.swap_join_wifi;
-                }
-                break;
-            case R.layout.swap_send_fdroid:
+            }
+        } else if (currentView.getLayoutResId() == R.layout.swap_send_fdroid) {
+            nextStep = R.layout.swap_start_swap;
+        } else if (currentView.getLayoutResId() == R.layout.swap_start_swap) {
+            if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
+                nextStep = R.layout.swap_success;
+            } else {
+                SwapService.stop(this);
+                finish();
+                return;
+            }
+        } else if (currentView.getLayoutResId() == R.layout.swap_success) {
+            nextStep = R.layout.swap_start_swap;
+        } else if (currentView.getLayoutResId() == R.layout.swap_wifi_qr) {
+            if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
                 nextStep = R.layout.swap_start_swap;
-                break;
-            case R.layout.swap_start_swap:
-                if (getSwapService() != null && getSwapService().isConnectingWithPeer()) {
-                    nextStep = R.layout.swap_success;
-                } else {
-                    SwapService.stop(this);
-                    finish();
-                    return;
-                }
-                break;
-            case R.layout.swap_success:
-                nextStep = R.layout.swap_start_swap;
-                break;
-            case R.layout.swap_wifi_qr:
-                if (!backstack.isEmpty() && backstack.peek() == R.layout.swap_start_swap) {
-                    nextStep = R.layout.swap_start_swap;
-                } else {
-                    nextStep = R.layout.swap_join_wifi;
-                }
-                break;
+            } else {
+                nextStep = R.layout.swap_join_wifi;
+            }
         }
         currentSwapViewLayoutRes = nextStep;
         inflateSwapView(currentSwapViewLayoutRes);
@@ -302,28 +288,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         menu.clear();
 
         MenuInflater menuInflater = getMenuInflater();
-        switch (currentView.getLayoutResId()) {
-            case R.layout.swap_select_apps:
-                menuInflater.inflate(R.menu.swap_next_search, menu);
-                if (getSwapService().isConnectingWithPeer()) {
-                    setUpNextButton(menu, R.string.next, R.drawable.ic_nearby);
-                } else {
-                    setUpNextButton(menu, R.string.next, null);
-                }
-                setUpSearchView(menu);
-                return true;
-            case R.layout.swap_success:
-                menuInflater.inflate(R.menu.swap_search, menu);
-                setUpSearchView(menu);
-                return true;
-            case R.layout.swap_join_wifi:
-                menuInflater.inflate(R.menu.swap_next, menu);
-                setUpNextButton(menu, R.string.next, R.drawable.ic_arrow_forward);
-                return true;
-            case R.layout.swap_nfc:
-                menuInflater.inflate(R.menu.swap_next, menu);
-                setUpNextButton(menu, R.string.skip, R.drawable.ic_arrow_forward);
-                return true;
+        if (currentView.getLayoutResId() == R.layout.swap_select_apps) {
+            menuInflater.inflate(R.menu.swap_next_search, menu);
+            if (getSwapService().isConnectingWithPeer()) {
+                setUpNextButton(menu, R.string.next, R.drawable.ic_nearby);
+            } else {
+                setUpNextButton(menu, R.string.next, null);
+            }
+            setUpSearchView(menu);
+            return true;
+        } else if (currentView.getLayoutResId() == R.layout.swap_success) {
+            menuInflater.inflate(R.menu.swap_search, menu);
+            setUpSearchView(menu);
+            return true;
+        } else if (currentView.getLayoutResId() == R.layout.swap_join_wifi) {
+            menuInflater.inflate(R.menu.swap_next, menu);
+            setUpNextButton(menu, R.string.next, R.drawable.ic_arrow_forward);
+            return true;
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -349,16 +330,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private void sendNext() {
         int currentLayoutResId = currentView.getLayoutResId();
-        switch (currentLayoutResId) {
-            case R.layout.swap_select_apps:
-                onAppsSelected();
-                break;
-            case R.layout.swap_join_wifi:
-                inflateSwapView(R.layout.swap_select_apps);
-                break;
-            case R.layout.swap_nfc:
-                inflateSwapView(R.layout.swap_wifi_qr);
-                break;
+        if (currentLayoutResId == R.layout.swap_select_apps) {
+            onAppsSelected();
+        } else if (currentLayoutResId == R.layout.swap_join_wifi) {
+            inflateSwapView(R.layout.swap_select_apps);
         }
     }
 
@@ -422,10 +397,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             newIntent = false;
         }
 
-        switch (currentSwapViewLayoutRes) {
-            case R.layout.swap_start_swap:
-                updateWifiBannerVisibility();
-                break;
+        if (currentSwapViewLayoutRes == R.layout.swap_start_swap) {
+            updateWifiBannerVisibility();
         }
     }
 
@@ -541,20 +514,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
 
-        switch (currentSwapViewLayoutRes) {
-            case R.layout.swap_start_swap:
-                showIntro();
-                return;
-            case R.layout.swap_nfc:
-                if (!attemptToShowNfc()) {
-                    inflateSwapView(R.layout.swap_wifi_qr);
-                    return;
-                }
-                break;
-            case R.layout.swap_connecting:
-                // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
-                inflateSwapView(R.layout.swap_start_swap);
-                return;
+        if (currentSwapViewLayoutRes == R.layout.swap_start_swap) {
+            showIntro();
+            return;
+        } else if (currentSwapViewLayoutRes == R.layout.swap_connecting) {
+            // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
+            inflateSwapView(R.layout.swap_start_swap);
+            return;
         }
         inflateSwapView(currentSwapViewLayoutRes);
     }
@@ -562,10 +528,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     public void inflateSwapView(@LayoutRes int viewRes) {
         inflateSwapView(viewRes, false);
 
-        switch (viewRes) {
-            case R.layout.swap_start_swap:
-                updateWifiBannerVisibility();
-                break;
+        if (viewRes == R.layout.swap_start_swap) {
+            updateWifiBannerVisibility();
         }
     }
 
@@ -596,21 +560,19 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         getSwapService().initTimer();
 
         if (!backPressed) {
-            switch (currentSwapViewLayoutRes) {
-                case R.layout.swap_connecting:
-                case R.layout.swap_confirm_receive:
-                    // do not add to backstack
-                    break;
-                default:
-                    if (backstack.isEmpty()) {
-                        if (viewRes != R.layout.swap_start_swap) {
-                            backstack.push(currentSwapViewLayoutRes);
-                        }
-                    } else {
-                        if (backstack.peek() != currentSwapViewLayoutRes) {
-                            backstack.push(currentSwapViewLayoutRes);
-                        }
+            if (currentSwapViewLayoutRes == R.layout.swap_connecting ||
+                    currentSwapViewLayoutRes == R.layout.swap_confirm_receive) {
+                // do not add to backstack
+            } else {
+                if (backstack.isEmpty()) {
+                    if (viewRes != R.layout.swap_start_swap) {
+                        backstack.push(currentSwapViewLayoutRes);
                     }
+                } else {
+                    if (backstack.peek() != currentSwapViewLayoutRes) {
+                        backstack.push(currentSwapViewLayoutRes);
+                    }
+                }
             }
         }
 
@@ -624,45 +586,35 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         toolbar.setTitle(currentView.getToolbarTitle());
         toolbar.setNavigationOnClickListener(v -> onToolbarBackPressed());
         toolbar.setNavigationOnClickListener(v -> {
-            switch (currentView.getLayoutResId()) {
-                case R.layout.swap_start_swap:
-                    SwapService.stop(this);
-                    finish();
-                    return;
-                default:
-                    currentSwapViewLayoutRes = R.layout.swap_start_swap;
+            if (currentView.getLayoutResId() == R.layout.swap_start_swap) {
+                SwapService.stop(this);
+                finish();
+                return;
+            } else {
+                currentSwapViewLayoutRes = R.layout.swap_start_swap;
             }
             inflateSwapView(currentSwapViewLayoutRes);
         });
         if (viewRes == R.layout.swap_start_swap) {
             toolbar.setNavigationIcon(R.drawable.ic_close);
         } else {
-            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_material);
+            toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         }
         container.addView(view);
         supportInvalidateOptionsMenu();
 
-        switch (currentView.getLayoutResId()) {
-            case R.layout.swap_send_fdroid:
-                setUpFromWifi();
-                setUpUseBluetoothButton();
-                break;
-            case R.layout.swap_wifi_qr:
-                setUpFromWifi();
-                setUpQrScannerButton();
-                break;
-            case R.layout.swap_nfc:
-                setUpNfcView();
-                break;
-            case R.layout.swap_select_apps:
-                LocalRepoService.create(this, getSwapService().getAppsToSwap());
-                break;
-            case R.layout.swap_connecting:
-                setUpConnectingView();
-                break;
-            case R.layout.swap_start_swap:
-                setUpStartVisibility();
-                break;
+        if (currentView.getLayoutResId() == R.layout.swap_send_fdroid) {
+            setUpFromWifi();
+            setUpUseBluetoothButton();
+        } else if (currentView.getLayoutResId() == R.layout.swap_wifi_qr) {
+            setUpFromWifi();
+            setUpQrScannerButton();
+        } else if (currentView.getLayoutResId() == R.layout.swap_select_apps) {
+            LocalRepoService.create(this, getSwapService().getAppsToSwap());
+        } else if (currentView.getLayoutResId() == R.layout.swap_connecting) {
+            setUpConnectingView();
+        } else if (currentView.getLayoutResId() == R.layout.swap_start_swap) {
+            setUpStartVisibility();
         }
     }
 
@@ -761,7 +713,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         hasPreparedLocalRepo = true;
         if (getSwapService().isConnectingWithPeer()) {
             startSwappingWithPeer();
-        } else if (!attemptToShowNfc()) {
+        } else {
             inflateSwapView(R.layout.swap_wifi_qr);
         }
     }
@@ -769,23 +721,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void startSwappingWithPeer() {
         getSwapService().connectToPeer();
         inflateSwapView(R.layout.swap_connecting);
-    }
-
-    private boolean attemptToShowNfc() {
-        // TODO: What if NFC is disabled? Hook up with NfcNotEnabledActivity? Or maybe only if they
-        // click a relevant button?
-
-        // Even if they opted to skip the message which says "Touch devices to swap",
-        // we still want to actually enable the feature, so that they could touch
-        // during the wifi qr code being shown too.
-        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
-
-        // TODO move all swap-specific preferences to a SharedPreferences instance for SwapWorkflowActivity
-        if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
-            inflateSwapView(R.layout.swap_nfc);
-            return true;
-        }
-        return false;
     }
 
     public void swapWith(Peer peer) {
@@ -1046,40 +981,37 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
 
         String qrUriString = null;
-        switch (currentView.getLayoutResId()) {
-            case R.layout.swap_join_wifi:
-                setUpJoinWifi();
-                return;
-            case R.layout.swap_send_fdroid:
-                qrUriString = buttonLabel;
-                break;
-            case R.layout.swap_wifi_qr:
-                Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
-                StringBuilder qrUrlBuilder = new StringBuilder(scheme);
-                qrUrlBuilder.append(sharingUri.getHost());
-                if (sharingUri.getPort() != 80) {
-                    qrUrlBuilder.append(':');
-                    qrUrlBuilder.append(sharingUri.getPort());
-                }
-                qrUrlBuilder.append(sharingUri.getPath());
-                boolean first = true;
+        if (currentView.getLayoutResId() == R.layout.swap_join_wifi) {
+            setUpJoinWifi();
+            return;
+        } else if (currentView.getLayoutResId() == R.layout.swap_send_fdroid) {
+            qrUriString = buttonLabel;
+        } else if (currentView.getLayoutResId() == R.layout.swap_wifi_qr) {
+            Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
+            StringBuilder qrUrlBuilder = new StringBuilder(scheme);
+            qrUrlBuilder.append(sharingUri.getHost());
+            if (sharingUri.getPort() != 80) {
+                qrUrlBuilder.append(':');
+                qrUrlBuilder.append(sharingUri.getPort());
+            }
+            qrUrlBuilder.append(sharingUri.getPath());
+            boolean first = true;
 
-                Set<String> names = sharingUri.getQueryParameterNames();
-                for (String name : names) {
-                    if (!"ssid".equals(name)) {
-                        if (first) {
-                            qrUrlBuilder.append('?');
-                            first = false;
-                        } else {
-                            qrUrlBuilder.append('&');
-                        }
-                        qrUrlBuilder.append(name);
-                        qrUrlBuilder.append('=');
-                        qrUrlBuilder.append(sharingUri.getQueryParameter(name));
+            Set<String> names = sharingUri.getQueryParameterNames();
+            for (String name : names) {
+                if (!"ssid".equals(name)) {
+                    if (first) {
+                        qrUrlBuilder.append('?');
+                        first = false;
+                    } else {
+                        qrUrlBuilder.append('&');
                     }
+                    qrUrlBuilder.append(name);
+                    qrUrlBuilder.append('=');
+                    qrUrlBuilder.append(sharingUri.getQueryParameter(name));
                 }
-                qrUriString = qrUrlBuilder.toString();
-                break;
+            }
+            qrUriString = qrUrlBuilder.toString();
         }
 
         ImageView qrImage = container.findViewById(R.id.wifi_qr_code);
@@ -1436,14 +1368,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     swapWith(config);
                 }
             });
-        }
-    }
-
-    private void setUpNfcView() {
-        CheckBox dontShowAgain = container.findViewById(R.id.checkbox_dont_show);
-        if (dontShowAgain != null) {
-            dontShowAgain.setOnCheckedChangeListener((buttonView, isChecked)
-                    -> Preferences.get().setShowNfcDuringSwap(!isChecked));
         }
     }
 

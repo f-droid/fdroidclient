@@ -12,7 +12,6 @@
     <string name="version">Version</string>
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
-    <string name="enable_nfc_send">Enable NFC Send…</string>
     <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>
     <string name="prompt_to_send_crash_reports_summary">Gather data about crashes and ask to send them to the
         developer
@@ -551,10 +550,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid can search for repos and mirrors on your SD Card, but needs your permission to do so.</string>
     <string name="nearby_splace__external_storage_permission_button">Try it</string>
 
-    <!-- This is a screen title, it should be maximum 25 characters -->
-    <string name="swap_nfc_title">Touch to swap</string>
-    <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.
-    </string>
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have
         access to the same network, one of you can create a Wi-Fi Hotspot.

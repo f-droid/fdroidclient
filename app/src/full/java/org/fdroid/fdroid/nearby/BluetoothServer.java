@@ -6,6 +6,8 @@ import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import androidx.annotation.RequiresPermission;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.httpish.Request;
 import org.fdroid.fdroid.nearby.httpish.Response;
@@ -54,6 +56,7 @@ public class BluetoothServer extends Thread {
     }
 
     @Override
+    @RequiresPermission("android.permission.BLUETOOTH_CONNECT")
     public void run() {
 
         final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
@@ -104,6 +107,7 @@ public class BluetoothServer extends Thread {
         }
 
         @Override
+        @RequiresPermission("android.permission.BLUETOOTH_CONNECT")
         public void run() {
 
             Utils.debugLog(TAG, "Listening for incoming Bluetooth requests from client");

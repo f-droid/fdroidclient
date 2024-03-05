@@ -15,6 +15,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
+import androidx.core.content.ContextCompat;
 import androidx.core.util.ObjectsCompat;
 import androidx.documentfile.provider.DocumentFile;
 
@@ -47,8 +48,10 @@ public class SessionInstallManager extends BroadcastReceiver {
 
     public SessionInstallManager(Context context) {
         this.context = context;
-        context.registerReceiver(this, new IntentFilter(INSTALLER_ACTION_INSTALL));
-        context.registerReceiver(this, new IntentFilter(INSTALLER_ACTION_UNINSTALL));
+        ContextCompat.registerReceiver(context, this, new IntentFilter(INSTALLER_ACTION_INSTALL),
+                ContextCompat.RECEIVER_NOT_EXPORTED);
+        ContextCompat.registerReceiver(context, this, new IntentFilter(INSTALLER_ACTION_UNINSTALL),
+                ContextCompat.RECEIVER_NOT_EXPORTED);
         PackageInstaller installer = context.getPackageManager().getPackageInstaller();
         // abandon old sessions, because there's a limit
         // that will throw IllegalStateException when we try to open new sessions

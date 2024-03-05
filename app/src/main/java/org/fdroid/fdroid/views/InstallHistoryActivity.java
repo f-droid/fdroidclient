@@ -134,50 +134,46 @@ public class InstallHistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.menu_share:
-                ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this);
-                if (showingInstallHistory) {
-                    StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append("Repos:\n");
-                    for (Repository repo : FDroidApp.getRepoManager(this).getRepositories()) {
-                        if (repo.getEnabled()) {
-                            stringBuilder.append("* ");
-                            stringBuilder.append(repo.getAddress());
-                            stringBuilder.append('\n');
-                        }
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_share) {
+            ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this);
+            if (showingInstallHistory) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("Repos:\n");
+                for (Repository repo : FDroidApp.getRepoManager(this).getRepositories()) {
+                    if (repo.getEnabled()) {
+                        stringBuilder.append("* ");
+                        stringBuilder.append(repo.getAddress());
+                        stringBuilder.append('\n');
                     }
-                    intentBuilder
-                            .setText(stringBuilder.toString())
-                            .setStream(InstallHistoryService.LOG_URI)
-                            .setType("text/plain")
-                            .setSubject(getString(R.string.send_history_csv, appName))
-                            .setChooserTitle(R.string.send_install_history);
-                } else {
-                    intentBuilder
-                            .setText(textView.getText())
-                            .setType("application/json")
-                            .setSubject(getString(R.string.send_fdroid_metrics_json, appName))
-                            .setChooserTitle(R.string.send_fdroid_metrics_report);
                 }
-                Intent intent = intentBuilder.getIntent();
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(intent);
-                break;
-            case R.id.menu_delete:
-                if (showingInstallHistory) {
-                    getContentResolver().delete(InstallHistoryService.LOG_URI, null, null);
-                }
-                textView.setText("");
-                break;
-            case R.id.menu_show:
-                if (showingInstallHistory) {
-                    showFDroidMetricsReport();
-                } else {
-                    showInstallHistory();
-                }
-                break;
+                intentBuilder
+                        .setText(stringBuilder.toString())
+                        .setStream(InstallHistoryService.LOG_URI)
+                        .setType("text/plain")
+                        .setSubject(getString(R.string.send_history_csv, appName))
+                        .setChooserTitle(R.string.send_install_history);
+            } else {
+                intentBuilder
+                        .setText(textView.getText())
+                        .setType("application/json")
+                        .setSubject(getString(R.string.send_fdroid_metrics_json, appName))
+                        .setChooserTitle(R.string.send_fdroid_metrics_report);
+            }
+            Intent intent = intentBuilder.getIntent();
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(intent);
+        } else if (itemId == R.id.menu_delete) {
+            if (showingInstallHistory) {
+                getContentResolver().delete(InstallHistoryService.LOG_URI, null, null);
+            }
+            textView.setText("");
+        } else if (itemId == R.id.menu_show) {
+            if (showingInstallHistory) {
+                showFDroidMetricsReport();
+            } else {
+                showInstallHistory();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
