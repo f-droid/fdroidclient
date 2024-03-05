@@ -2,7 +2,6 @@ package org.fdroid.index.v2
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import org.fdroid.IndexFile
@@ -56,14 +55,10 @@ public data class FileV2(
     public companion object {
         @JvmStatic
         public fun deserialize(string: String?): FileV2? {
-            if (string == null) return null
-            return try {
-                json.decodeFromString(string)
-            } catch (e: SerializationException) {
-                // TODO remove temporary hack to debug mystery JsonDecodingException
-                //  from unparceled strings in Android once resolved
-                throw IllegalArgumentException("|$string|", e)
-            }
+            // we've seen serialized FileV2 objects becoming an empty string after parcelizing them,
+            // so we need to account for null *and* empty string here.
+            if (string.isNullOrEmpty()) return null
+            return json.decodeFromString(string)
         }
 
         @JvmStatic
