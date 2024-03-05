@@ -554,10 +554,12 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     public androidx.work.Configuration getWorkManagerConfiguration() {
         if (BuildConfig.DEBUG) {
             return new androidx.work.Configuration.Builder()
+                    .setJobSchedulerJobIdRange(0, 4096)
                     .setMinimumLoggingLevel(Log.DEBUG)
                     .build();
         } else {
             return new androidx.work.Configuration.Builder()
+                    .setJobSchedulerJobIdRange(0, 4096)
                     .setMinimumLoggingLevel(Log.ERROR)
                     .build();
         }

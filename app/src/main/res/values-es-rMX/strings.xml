@@ -95,22 +95,6 @@
     <string name="proxy_host_summary">El nombre del host de su proxy (por ejemplo, 127.0.0.1)</string>
     <string name="proxy_host">Host Proxy</string>
     <string name="enable_proxy_summary">Configure el proxy HTTP para todas las solicitudes de red</string>
-    <plurals name="details_last_update_years">
-        <item quantity="one">Actualizado hace %1$d Año</item>
-        <item quantity="other">Actualizado hace %1$d Años</item>
-    </plurals>
-    <plurals name="details_last_update_months">
-        <item quantity="one">Actualizado hace %1$d Mes</item>
-        <item quantity="other">Actualizado hace %1$d Meses</item>
-    </plurals>
-    <plurals name="details_last_update_weeks">
-        <item quantity="one">Actualizado hace %1$d semana</item>
-        <item quantity="other">Actualizado hace %1$d semanas</item>
-    </plurals>
-    <plurals name="details_last_update_days">
-        <item quantity="one">Actualizado hace %1$d día</item>
-        <item quantity="other">Actualizado hace %1$d días</item>
-    </plurals>
     <string name="app_list__dismiss_installing_app">Instalacion Cancelada</string>
     <string name="local_repo_name_summary">El titulo anunciado de tu repositorio local: %s</string>
     <string name="scan_removable_storage_toast">Escaneando %s</string>
@@ -172,10 +156,6 @@
     <string name="repo_add_add">Agregar</string>
     <string name="repo_add_title">Agregar nuevo repositorio</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones desactivadas por los ajustes de Data/WiFi</string>
-    <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descargue la actualización para la aplicación %1$d.</item>
-        <item quantity="other">Descargue la actualizaciónes para la aplicación %1$d.</item>
-    </plurals>
     <string name="updates__show_updateable_apps">Mostrar aplicaciones</string>
     <string name="updates__hide_updateable_apps">Ocultar aplicaciones</string>
     <string name="update_all">Actualizar todo</string>

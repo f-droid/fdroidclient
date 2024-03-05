@@ -3,7 +3,7 @@
 
     <color name="unsigned">#ffCC0000</color>
     <color name="unverified">#ff999999</color>
-    <color name="red">#ffdd2c00</color>
+    <color name="red" tools:ignore="UnusedResources">#ffdd2c00</color>
 
     <!-- Ignore UnusedResources errors here, because the resources are loaded dynamically at runtime -->
     <color tools:ignore="UnusedResources" name="category_connectivity">#CBEFEC</color>
