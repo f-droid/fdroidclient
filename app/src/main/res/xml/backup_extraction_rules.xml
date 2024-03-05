@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup disableIfNoEncryptionCapabilities="true">
+        <!-- Don't include apks or the local swap repo -->
+        <exclude
+            domain="file"
+            path="." />
+    </cloud-backup>
+    <device-transfer>
+        <!-- Don't include apks or the local swap repo -->
+        <exclude
+            domain="file"
+            path="." />
+    </device-transfer>
+</data-extraction-rules>
