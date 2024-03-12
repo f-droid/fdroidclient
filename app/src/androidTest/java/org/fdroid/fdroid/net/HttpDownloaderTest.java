@@ -55,6 +55,15 @@ public class HttpDownloaderTest {
                 new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"), // no SNI but weird ipv6 lookup issues
                 new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)  // TLSv1.2 only and SNI
         ));
+        if (Build.VERSION.SDK_INT < 26) {
+            // domains that use Let's Encrypt won't work on Android 7.1 and older
+            // https://gitlab.com/fdroid/fdroidclient/-/issues/2102
+            tempUrls = new ArrayList<>(Arrays.asList(
+                new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"),
+                new Pair<>("https://ftp.fau.de/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
+                new Pair<>("https://ftp.gwdg.de/pub/android/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)
+            ));
+        }
         URLS = tempUrls;
     }
 
@@ -147,7 +156,7 @@ public class HttpDownloaderTest {
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(2);
         String path = "index.jar";
-        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://f-droid.org/repo/"));
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.fau.de/fdroid/repo/"));
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
         final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
