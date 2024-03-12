@@ -1,5 +1,6 @@
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 
@@ -9,6 +10,7 @@ import android.app.job.JobService;
  *
  * @see <a href="https://developer.android.com/about/versions/android-5.0.html#Power">Project Volta: Scheduling jobs</a>
  */
+@SuppressLint("SpecifyJobSchedulerIdRange") // done in FDroidApp
 public class UpdateJobService extends JobService {
     @Override
     public boolean onStartJob(final JobParameters params) {

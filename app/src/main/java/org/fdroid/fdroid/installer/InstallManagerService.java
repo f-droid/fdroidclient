@@ -16,6 +16,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.pm.PackageInfoCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -109,14 +110,14 @@ public class InstallManagerService {
         // cancel intent can't use LocalBroadcastManager, because it comes from system process
         IntentFilter cancelFilter = new IntentFilter();
         cancelFilter.addAction(ACTION_CANCEL);
-        context.registerReceiver(new BroadcastReceiver() {
+        ContextCompat.registerReceiver(context, new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Log.d(TAG, "Received cancel intent: " + intent);
                 if (!ACTION_CANCEL.equals(intent.getAction())) return;
                 cancel(context, intent.getStringExtra(DownloaderService.EXTRA_CANONICAL_URL));
             }
-        }, cancelFilter);
+        }, cancelFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     private void onCancel(String canonicalUrl) {
