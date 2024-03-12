@@ -1,3 +1,7 @@
+### 1.19.2 (2024-03-12)
+
+* export PanicResponderActivity to make panic mode work again (@ConnyDuck)
+
 ### 1.19.1 (2024-02-15)
 
 * Make all activities respect day/night theme
