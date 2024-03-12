@@ -59,7 +59,6 @@ public class HttpDownloaderTest {
             // domains that use Let's Encrypt won't work on Android 7.1 and older
             // https://gitlab.com/fdroid/fdroidclient/-/issues/2102
             tempUrls = new ArrayList<>(Arrays.asList(
-                new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"),
                 new Pair<>("https://ftp.fau.de/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
                 new Pair<>("https://ftp.gwdg.de/pub/android/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)
             ));
