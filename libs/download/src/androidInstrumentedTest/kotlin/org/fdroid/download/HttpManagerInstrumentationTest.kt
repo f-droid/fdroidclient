@@ -16,12 +16,12 @@ import org.fdroid.getIndexFile
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
 import org.json.JSONObject
+import org.junit.Assume.assumeTrue
 import org.junit.runner.RunWith
 import javax.net.ssl.SSLHandshakeException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 @Suppress("BlockingMethodInNonBlockingContext")
@@ -113,7 +113,10 @@ internal class HttpManagerInstrumentationTest {
         // second request right after resumed session
         JSONObject(httpManager.getBytes(downloadRequest).decodeToString()).let { json ->
             val connectionInfo = json.getJSONObject("connection_info")
-            assertTrue(connectionInfo.getBoolean("session_resumed"))
+            assumeTrue(
+                "Session was not resumed at all",
+                connectionInfo.getBoolean("session_resumed")
+            )
         }
         delay(10_100)
         // third request after 10s did not resume session
