@@ -51,14 +51,10 @@ public class HttpDownloaderTest {
                 new Pair<>("https://ftp.fau.de/fdroid/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg"),
                 //new Pair<>("https://microg.org/fdroid/repo/index-v1.jar"),
                 //new Pair<>("https://grobox.de/fdroid/repo/index.jar"),
-                new Pair<>("https://guardianproject.info/fdroid/repo", IndexV1UpdaterKt.SIGNED_FILE_NAME)
+                new Pair<>("https://guardianproject.info/fdroid/repo", IndexV1UpdaterKt.SIGNED_FILE_NAME),
+                new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"), // no SNI but weird ipv6 lookup issues
+                new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)  // TLSv1.2 only and SNI
         ));
-        if (Build.VERSION.SDK_INT >= 22) {
-            tempUrls.addAll(Arrays.asList(
-                    new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"), // no SNI but weird ipv6 lookup issues
-                    new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)  // TLSv1.2 only and SNI
-            ));
-        }
         URLS = tempUrls;
     }
 
