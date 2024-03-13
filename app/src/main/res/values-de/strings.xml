@@ -57,7 +57,7 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder benötigt ihn zwingend</string>
+    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-änderbaren oder nicht-quelloffenen Netzwerkdienst oder benötigt ihn zwingend</string>
     <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
@@ -586,4 +586,18 @@
     <string name="repositories_last_update">Letzte Aktualisierung: %s</string>
     <string name="repositories_last_update_never">nie</string>
     <string name="repo_disable_warning_button">Deaktivieren</string>
+    <string name="app_details_repository">Paketquelle</string>
+    <string name="app_details_repositories">Paketquellen</string>
+    <string name="app_details_repository_preferred">(bevorzugt)</string>
+    <string name="app_details_repository_button_prefer">Paketquelle bevorzugen</string>
+    <string name="app_details_repository_expand">Paketquellen-Liste erweitern</string>
+    <string name="repo_archive_toggle_description">Zeig archivierte Apps und veraltete Versionen von Apps</string>
+    <string name="repo_archive_toggle">Paketquellen-Archiv</string>
+    <string name="repo_archive_failed">Archiv-Paketquelle derzeit nicht verfügbar</string>
+    <string name="repo_disable_warning">Das Deaktivieren dieser Paketquelle wird ihren \"bevorzugt\"-Status von allen Apps entfernen.</string>
+    <string name="repo_list_info_title">Paketquellen-Liste</string>
+    <string name="repo_list_info_text">Eine Paketquelle ist eine Quelle für Apps. Die Liste zeigt alle derzeit hinzugefügten Paketquellen. Abgeschaltete Quellen werden nicht verwendet.
+\n
+\nWenn eine App in mehr als einer Paketquelle ist, wird die in der Liste höhere Quelle bevorzugt. Du kannst Paketquellen neu ordnen, indem du lange darauf drückst und sie ziehst.</string>
+    <string name="repo_error_adding_archive">Archiv-Paketquellen können nicht direkt hinzugefügt werden. Tipp auf die Paketquelle in der Liste und schalte das Archiv dort an.</string>
 </resources>
