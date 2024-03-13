@@ -596,8 +596,8 @@
     <string name="repo_archive_failed">Archiv-Paketquelle derzeit nicht verfügbar</string>
     <string name="repo_disable_warning">Das Deaktivieren dieser Paketquelle wird ihren \"bevorzugt\"-Status von allen Apps entfernen.</string>
     <string name="repo_list_info_title">Paketquellen-Liste</string>
-    <string name="repo_list_info_text">Eine Paketquelle ist eine Quelle für Apps. Die Liste zeigt alle derzeit hinzugefügten Paketquellen. Abgeschaltete Quellen werden nicht verwendet.
+    <string name="repo_list_info_text">Eine Paketquelle ist eine Quelle für Apps. Diese Liste zeigt alle derzeit hinzugefügten Paketquellen an. Deaktivierte Paketquellen werden nicht verwendet.
 \n
-\nWenn eine App in mehr als einer Paketquelle ist, wird die in der Liste höhere Quelle bevorzugt. Du kannst Paketquellen neu ordnen, indem du lange darauf drückst und sie ziehst.</string>
-    <string name="repo_error_adding_archive">Archiv-Paketquellen können nicht direkt hinzugefügt werden. Tipp auf die Paketquelle in der Liste und schalte das Archiv dort an.</string>
+\nWenn eine App in mehr als einer Paketquelle enthalten ist, wird die in der Liste weiter oben stehende Paketquelle automatisch bevorzugt. Sie können Paketquellen durch langes Drücken und Ziehen neu anordnen.</string>
+    <string name="repo_error_adding_archive">Archiv-Paketquellen können nicht direkt hinzugefügt werden. Tippen Sie auf die Paketquelle in der Liste und aktivieren Sie das Archiv dort.</string>
 </resources>
