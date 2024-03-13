@@ -39,7 +39,7 @@
     <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
     <string name="repo_add_url">Adresse der Paketquelle</string>
     <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
-    <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
+    <string name="malformed_repo_uri">Fehlerhafte Paketquellen-Adresse wird übergangen: %s</string>
     <string name="menu_manage">Paketquellen</string>
     <string name="menu_search">Suchen</string>
     <string name="menu_add_repo">Neue Paketquelle</string>
@@ -465,7 +465,7 @@
     <string name="app_repository">Paketquelle: %1$s</string>
     <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
     <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>
-    <string name="nearby_splash__read_external_storage">SD-Karten nach Paketquellen und Spiegelserver durchsuchen.</string>
+    <string name="nearby_splash__read_external_storage">SD-Karten nach Paketquellen und Spiegelservern durchsuchen.</string>
     <string name="nearby_splash__request_permission">Suchen</string>
     <string name="swap_toast_using_path">Verwendung von %1$s</string>
     <string name="swap_toast_not_removable_storage">Diese Wahl passte zu keinem Wechselspeichermedium, versuchen Sie es noch einmal!</string>
@@ -547,7 +547,7 @@
     <string name="repo_add_new_mirror">Als neuen Spiegelserver hinzufügen</string>
     <string name="repo_state_fetching">Paketquelle abrufen …</string>
     <string name="repo_state_adding">Paketquelle hinzufügen …</string>
-    <string name="repo_exists">Dieses Repo wurde bereits hinzugefügt.</string>
+    <string name="repo_exists">Diese Paketquelle wurde bereits hinzugefügt.</string>
     <string name="swap_banner_message">Zum Tausch von Apps aktivieren Sie Ihr WLAN und verbinden Sie sich mit demselben Netzwerk wie Ihr Freund.</string>
     <string name="repo_invalid">Ungültiges Repository.
 \n
@@ -557,7 +557,7 @@
 \nVergewissern Sie sich, dass das Repository, das Sie hinzufügen, vertrauenswürdig ist.</string>
     <string name="repo_enter_url">URL des Repositorys manuell eingeben</string>
     <string name="nearby_splace__external_storage_permission_button">Probieren</string>
-    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kann nach Repos und Spiegelservern auf Ihrer SD-Karte suchen, braucht aber Ihre Erlaubnis dafür.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kann auf Ihrer SD-Karte nach Paketquellen und Spiegelservern suchen, benötigt dafür aber Ihre Erlaubnis.</string>
     <string name="swap_connection_indexv0_error">Sie versuchen sich mit jemandem mit einer veralteten F-Droid-App zu verbinden. Vor einer Verbindung muss diese F-Droid-App aktualisiert werden. Ihr könnt den Direkttausch verwenden, um die veraltete App über die neue auf Ihrem Gerät zu aktualisieren.</string>
     <string name="force_old_installer_title">Alte Installation erzwingen</string>
     <string name="force_old_installer_summary">Beta-Paketinstallation deaktivieren, einschließlich der von ihr unterstützten, automatischen Aktualisierungen im Hintergrund.</string>
@@ -579,4 +579,11 @@
         <item quantity="other">Download von Apps über IPFS-Webendpunkte: %1$d aktiviert</item>
     </plurals>
     <string name="targetsdk_or_later">Benötigt %s</string>
+    <string name="repo_share_not_found">Paketquellen-Adresse konnte im freigegebenen Text nicht gefunden werden.</string>
+    <string name="useDnsCache">DNS-Cache verwenden</string>
+    <string name="useDnsCacheSummary">Zwischengespeicherte Ergebnisse verwenden, um DNS-Anfragen zu minimieren.</string>
+    <string name="app_list_no_suggested_version">Keine Version zur Installation empfohlen.</string>
+    <string name="repositories_last_update">Letzte Aktualisierung: %s</string>
+    <string name="repositories_last_update_never">nie</string>
+    <string name="repo_disable_warning_button">Deaktivieren</string>
 </resources>

@@ -5,7 +5,7 @@
 
 * Tab "Neues" zeigt nun neuere Ergebnisse zuerst (@TheLastProject @IzzySoft)
 
-* Modernisierung der Theme-Unterstützung und Anbindung an die Android-Themes (@proletarius101)
+* Modernisierung der Theme-Unterstützung und Anbindung an die Android-Designs (@proletarius101)
 
 * Verbesserte Suchergebnisse (@Tvax @gcbrown76)
 
