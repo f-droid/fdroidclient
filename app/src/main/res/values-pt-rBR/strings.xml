@@ -617,7 +617,7 @@
     <string name="repo_archive_toggle">Arquivo do Repositório</string>
     <string name="repo_archive_toggle_description">Mostrar aplicativos arquivados e versões desatualizadas de aplicativos</string>
     <string name="repo_archive_failed">O repositório de arquivo não está disponível no momento</string>
-    <string name="repo_disable_warning">Desativar este repositório irá removê-lo como \"preferido\" de qualquer aplicativo que você possa ter preferido manualmente.</string>
+    <string name="repo_disable_warning">Desativar este repositório irá remover o status dele como \"preferido\" de todos os apps.</string>
     <string name="repo_disable_warning_button">Desativar</string>
     <string name="app_details_repository_preferred">(preferido)</string>
 </resources>
