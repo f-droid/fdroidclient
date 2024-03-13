@@ -122,7 +122,7 @@
     <string name="details_notinstalled">Pole paigaldatud</string>
     <string name="antiadslist">Selles rakenduses on reklaame</string>
     <string name="antinonfreeadlist">See rakendus edendab mitte-vabu laiendusi</string>
-    <string name="antinonfreenetlist">See rakendus eelistab mitte-vabu võrguteenuseid või sõltub neist täielikult</string>
+    <string name="antinonfreenetlist">See rakendus sõltub või toetab mitte-muudetaval või mitte-vabal võrguteenuseid</string>
     <string name="antinonfreedeplist">See rakendus sõltub teistest mitte-vabadest rakendustest</string>
     <string name="antiupstreamnonfreelist">Ülesvoolu lähtekood ei ole täiesti vaba</string>
     <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu komponente</string>
@@ -587,4 +587,22 @@
     <string name="useDnsCache">Kasuta nimeserveri puhvrit</string>
     <string name="useDnsCacheSummary">Nimelahenduse päringute arvu vähendamiseks puhverda varasemate päringute tulemusi.</string>
     <string name="repo_share_not_found">Jagatud tekstist ei õnnestunud leida hoidla aadressi.</string>
+    <string name="app_details_repositories">Repositorid</string>
+    <string name="app_details_repository">Repositori</string>
+    <string name="app_details_repository_preferred">(eeldatud)</string>
+    <string name="app_details_repository_expand">Laijenda repositori nimekirja</string>
+    <string name="app_list_no_suggested_version">Pole soovitatud versioonit mida allalaadida.</string>
+    <string name="repo_list_info_title">Repositori Nimekiri</string>
+    <string name="repo_archive_toggle">Repositori Arhiiv</string>
+    <string name="repo_list_info_text">Repositori on äppide allikas. See nimekiri näitab kõiki praeguselt lisatud repositore. Välja lülitatud repositorid ei ole kasutatud.
+\n
+\nKui äpp on mitmes repositoris, siis repositori mis on kõrgemal nimekirjas on automaatselt eeldatud. Sa võid nimekirja ümber korrastada neid pikkalt vajutades ja lohistades.</string>
+    <string name="repositories_last_update">Viimane Uuendus: %s</string>
+    <string name="repo_archive_failed">Arhiiv repo praegu mitte saadaval</string>
+    <string name="repo_archive_toggle_description">Näita arhiivitud äppe või äppide vanasid versioone</string>
+    <string name="repo_disable_warning">Selle repositori välja lülitamine eemaldab selle \"eelistatud\" staatuse kõikidelt äppidelt.</string>
+    <string name="repo_disable_warning_button">Lülita välja</string>
+    <string name="repositories_last_update_never">mitte kunagi</string>
+    <string name="app_details_repository_button_prefer">Eeldatud Repositori</string>
+    <string name="repo_error_adding_archive">Arhiivi repositori ei saa otse lisada. Vajutage repositorile nimekirjas ja lülitage arhiiv tööle sealt.</string>
 </resources>
