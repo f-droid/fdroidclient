@@ -314,9 +314,9 @@
     <string name="by_author_format">od %s</string>
     <string name="force_old_index">Vynutit původní formát rejstříku</string>
     <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou použít XML rejstřík aplikací</string>
-    <string name="app_details__incompatible_mismatched_signers">Rozdílný podepisovač oproti nainstalované verzi</string>
+    <string name="app_details__incompatible_mismatched_signers">Rozdílný podpis oproti nainstalované verzi</string>
     <string name="app_details__no_versions__show_incompat_versions">Chcete-li zde přesto zobrazit nekompatibilní verze, povolte nastavení „%1$s“.</string>
-    <string name="app_details__no_versions__no_compatible_signers">Žádná verze s kompatibilním podepisovačem</string>
+    <string name="app_details__no_versions__no_compatible_signers">Žádná verze s kompatibilním podpisem</string>
     <string name="app_details__no_versions__none_compatible_with_device">Žádná verze kompatibilní s tímto zařízením</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Nainstalovaná verze není kompatibilní s žádnou dostupnou verzí. Odinstalace aplikace vám umožní zobrazit a nainstalovat kompatibilní verzi. K tomuto dochází často u aplikací nainstalovaných prostřednictvím obchodu Google Play a dalších zdrojů, pokud jsou podepsány odlišným certifikátem.</string>
     <string name="app__tts__cancel_download">Zrušit stahování</string>
@@ -584,4 +584,7 @@
         <item quantity="few">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povoleny %1$d</item>
         <item quantity="other">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povoleno %1$d</item>
     </plurals>
+    <string name="repo_share_not_found">Ve sdíleném textu se nepodařilo najít adresu repozitáře.</string>
+    <string name="useDnsCache">Použít mezipaměť DNS</string>
+    <string name="useDnsCacheSummary">Použí výsledky z mezipaměti pro snížení množství dotazů na DNS.</string>
 </resources>
