@@ -60,7 +60,7 @@
     <string name="antiadslist">Este aplicativo contém anúncios</string>
     <string name="antitracklist">Este aplicativo rastreia e relata sua atividade</string>
     <string name="antinonfreeadlist">Este aplicativo promove complementos não livres</string>
-    <string name="antinonfreenetlist">Este aplicativo promove ou depende inteiramente em um serviço de rede não gratuito</string>
+    <string name="antinonfreenetlist">Este aplicativo promove ou depende inteiramente de um serviço de rede não mutável ou não gratuito</string>
     <string name="antinonfreedeplist">Este aplicativo depende de aplicativos não livres</string>
     <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre</string>
     <string name="display">Aparência do F-Droid</string>
@@ -589,4 +589,35 @@
 
     <string name="ipfsgw_add_add">Adicionar</string>
     <string name="ipfsgw_explainer">Baixar aplicativos de IPFS web endpoints.(Funciona apenas com os repositórios F-Droid com suporte IPFS )</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Baixar aplicativos usando endpoints da web IPFS: %1$d ativado</item>
+        <item quantity="many">Baixar aplicativos usando endpoints da web IPFS: %1$d ativados</item>
+        <item quantity="other">Baixar aplicativos usando endpoints da web IPFS: %1$d ativados</item>
+    </plurals>
+    <string name="ipfsgw_title">Gateways IPFS</string>
+    <string name="ipfsgw_summary_disabled">Baixar aplicativos usando endpoints da web IPFS: desativado</string>
+    <string name="ipfsgw_add_title">Adicionar gateway IPFS</string>
+    <string name="ipfsgw_caption_official_gateways">Gateways IPFS oficiais</string>
+    <string name="ipfsgw_caption_custom_gateways">Gateways IPFS personalizados</string>
+    <string name="repo_share_not_found">Não foi possível encontrar o endereço do repositório no texto compartilhado.</string>
+    <string name="app_details_repository">Repositório</string>
+    <string name="app_details_repositories">Repositórios</string>
+    <string name="app_details_repository_button_prefer">Repositório Preferido</string>
+    <string name="app_details_repository_expand">Expandir lista de repositórios</string>
+    <string name="app_list_no_suggested_version">Nenhuma versão recomendada para instalação.</string>
+    <string name="repo_error_adding_archive">Os repositórios de arquivos não podem ser adicionados diretamente. Toque no repositório na lista e habilite o arquivo lá.</string>
+    <string name="repositories_last_update">Última atualização: %s</string>
+    <string name="repositories_last_update_never">nunca</string>
+    <string name="useDnsCache">Usar cache DNS</string>
+    <string name="useDnsCacheSummary">Usar resultados armazenados em cache para minimizar consultas DNS.</string>
+    <string name="repo_list_info_text">Um repositório é uma fonte de aplicativos. Esta lista mostra todos os repositórios adicionados atualmente. Repositórios desabilitados não são usados.
+\n
+\nSe um aplicativo estiver em mais de um repositório, o repositório mais alto na lista será automaticamente preferido. Você pode reordenar os repositórios mantendo-os pressionados e arrastando-os.</string>
+    <string name="repo_list_info_title">Lista de Repositórios</string>
+    <string name="repo_archive_toggle">Arquivo do Repositório</string>
+    <string name="repo_archive_toggle_description">Mostrar aplicativos arquivados e versões desatualizadas de aplicativos</string>
+    <string name="repo_archive_failed">O repositório de arquivo não está disponível no momento</string>
+    <string name="repo_disable_warning">Desativar este repositório irá removê-lo como \"preferido\" de qualquer aplicativo que você possa ter preferido manualmente.</string>
+    <string name="repo_disable_warning_button">Desativar</string>
+    <string name="app_details_repository_preferred">(preferido)</string>
 </resources>
