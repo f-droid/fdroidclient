@@ -57,7 +57,7 @@
     <string name="antiadslist">Bu uygulama reklam içerir</string>
     <string name="antitracklist">Bu uygulama etkinliğinizi izler ve bildirir</string>
     <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentilere teşvik eder</string>
-    <string name="antinonfreenetlist">Bu uygulama özgür olmayan bir ağ hizmetine teşvik eder veya tamamen buna bağlıdır</string>
+    <string name="antinonfreenetlist">Bu uygulama değiştirilemeyen veya özgür olmayan bir ağ hizmetine teşvik eder veya tamamen buna bağlıdır</string>
     <string name="antinonfreedeplist">Bu uygulama özgür olmayan başka uygulamalara bağımlıdır</string>
     <string name="antiupstreamnonfreelist">Kaynak kod tamamen özgür değildir</string>
     <string name="display">Görüntüleme</string>
@@ -564,7 +564,6 @@
     <string name="ipfsgw_title">IPFS Ağ Geçitleri</string>
     <string name="ipfsgw_caption_custom_gateways">Resmi IPFS Ağ Geçitleri</string>
     <string name="paste">Yapıştır</string>
-
     <string name="ipfsgw_add_add">Ekle</string>
     <string name="ipfsgw_explainer">IPFS web uç noktalarından uygulamaları indirin. (Yalnızca IPFS desteği olan F-Droid depoları için çalışır.)</string>
     <string name="ipfsgw_add_title">IPFS Ağ Geçidi Ekle</string>
@@ -572,4 +571,25 @@
         <item quantity="one">IPFS web uç noktalarını kullanarak uygulamaları indirin: %1$d etkin</item>
         <item quantity="other">IPFS web uç noktalarını kullanarak uygulamaları indirin: %1$d etkin</item>
     </plurals>
+    <string name="useDnsCacheSummary">DNS sorgularını en aza indirmek için önbelleğe alınan sonuçları kullan.</string>
+    <string name="useDnsCache">DNS Önbelleği Kullan</string>
+    <string name="repo_share_not_found">Paylaşılan metinde depo adresi bulunamadı.</string>
+    <string name="app_details_repository">Depo</string>
+    <string name="app_details_repositories">Depolar</string>
+    <string name="app_details_repository_button_prefer">Tercih Edilen Depo</string>
+    <string name="app_details_repository_expand">Depo listesini genişlet</string>
+    <string name="app_list_no_suggested_version">Kurulum için tavsiye edilen sürüm yok.</string>
+    <string name="repo_error_adding_archive">Arşiv depoları doğrudan eklenemez. Listedeki depoya dokunun ve oradaki arşivi etkinleştirin.</string>
+    <string name="repo_list_info_title">Depo Listesi</string>
+    <string name="repo_list_info_text">Depo, bir uygulama kaynağıdır. Bu liste eklenen tüm depoları gösterir. Devre dışı bırakılan depolar kullanılmaz.
+\n
+\nBir uygulama birden fazla depoda bulunuyorsa, listede daha üstte bulunan depo otomatik olarak tercih edilir. Depoları uzun basarak ve sürükleyerek yeniden sıralayabilirsiniz.</string>
+    <string name="repo_archive_toggle">Arşiv Deposu</string>
+    <string name="repo_archive_toggle_description">Arşivlenen uygulamaları ve uygulamaların eski sürümlerini göster</string>
+    <string name="repositories_last_update">Son Güncelleme: %s</string>
+    <string name="repositories_last_update_never">yok</string>
+    <string name="repo_archive_failed">Arşiv deposu şu anda kullanılabilir değil</string>
+    <string name="repo_disable_warning">Bu deponun devre dışı bırakılması, tüm uygulamalardan \"tercih edilen\" durumunu kaldıracaktır.</string>
+    <string name="repo_disable_warning_button">Devre dışı bırak</string>
+    <string name="app_details_repository_preferred">(tercih edilen)</string>
 </resources>
