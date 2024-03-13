@@ -591,4 +591,5 @@
         <item quantity="many">Pobieraj aplikacje z endpointów IPFS: %1$d włączonych</item>
         <item quantity="other">Pobieraj aplikacje z endpointów IPFS: %1$d włączonych</item>
     </plurals>
+    <string name="repo_share_not_found">Nie znaleziono adresu repozytorium w udostępnionym tekście.</string>
 </resources>
