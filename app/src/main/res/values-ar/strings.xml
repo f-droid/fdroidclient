@@ -105,7 +105,7 @@
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
     <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاصة بك</string>
     <string name="antinonfreeadlist">هذا التطبيق يحمل إضافات غير حرة</string>
-    <string name="antinonfreenetlist">هذا التطبيق يروج أو يعتمد كليًّا على خدمة شبكة غير حرة</string>
+    <string name="antinonfreenetlist">هذا التطبيق يروج أو يعتمد كليًّا على خدمة شبكة غير حرة و غير متغيرة</string>
     <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
     <string name="antiupstreamnonfreelist">شفرة المصدر المنشطة ليست حرة تماماً</string>
     <string name="antinonfreeassetslist">هذا التطبيق يحتوي على أصول غير الحرة</string>
@@ -616,4 +616,25 @@
         <item quantity="many">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
         <item quantity="other">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : تم تمكين %1$d</item>
     </plurals>
+    <string name="repo_share_not_found">تعذر العثور على عنوان المستودع في النص المشترك.</string>
+    <string name="useDnsCache">استخدم ذاكرة مخبّأة لDNS</string>
+    <string name="useDnsCacheSummary">استخدم نتائج الذاكرة المُخبّأة لتقليل استعلامات DNS.</string>
+    <string name="app_details_repository_button_prefer">فضّل المستودع</string>
+    <string name="app_details_repository_expand">وسَّع قائمة المستودعات</string>
+    <string name="app_details_repository">المستودع</string>
+    <string name="app_details_repositories">المستودعات</string>
+    <string name="app_list_no_suggested_version">لا يوجد إصدار موصى به للتثبيت.</string>
+    <string name="repo_error_adding_archive">لا يمكن إضافة مستودعات الأرشيف مباشرةً. اضغط على المستودع في القائمة و مكّن الأرشيف هناك.</string>
+    <string name="repo_list_info_text">المستودع هو مصدر للتطبيقات. تعرض هذه القائمة جميع المستودعات المضافة حاليًا. لا يتم استخدام المستودعات المعطلة.
+\n
+\nإذا كان التطبيق موجودًا في أكثر من مستودع واحد، فسيتم تفضيل المستودع الأعلى في القائمة تلقائيًا. يمكنك إعادة ترتيب المستودعات بالضغط عليها لفترة طويلة وسحبها.</string>
+    <string name="repo_archive_failed">أرشيف المستودع غير متوفر حاليًا</string>
+    <string name="repositories_last_update">آخر تحديث: %s</string>
+    <string name="repositories_last_update_never">أبدًا</string>
+    <string name="repo_list_info_title">قائمة المستودع</string>
+    <string name="repo_archive_toggle">أرشيف المستودع</string>
+    <string name="repo_archive_toggle_description">اعرض التطبيقات المؤرشفة والإصدارات القديمة من التطبيقات</string>
+    <string name="repo_disable_warning_button">عطّل</string>
+    <string name="app_details_repository_preferred">(مفضّل)</string>
+    <string name="repo_disable_warning">سيؤدي تعطيل هذا المستودع إلى إزالة حالته \"المفضلة\" من جميع التطبيقات.</string>
 </resources>
