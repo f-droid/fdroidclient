@@ -159,7 +159,7 @@
     <string name="choose_bt_send">Виберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
-    <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від невільної мережної служби</string>
+    <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від незмінюваної або невільної мережної служби</string>
     <string name="antiupstreamnonfreelist">Частина початкового коду невільна</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
@@ -598,7 +598,7 @@
     <string name="app_details_repository_expand">Розгорнути список репозиторіїв</string>
     <string name="repo_archive_toggle_description">Показувати заархівовані застосунки та застарілі версії застосунків</string>
     <string name="repo_disable_warning_button">Вимкнути</string>
-    <string name="repo_disable_warning">Вимкнення цього сховища призведе до вилучення його статусу \"бажаного\" з усіх програм.</string>
+    <string name="repo_disable_warning">Вимкнення цього репозиторію призведе до вилучення його стану \"бажаного\" з усіх застосунків.</string>
     <string name="repositories_last_update">Востаннє оновлено: %s</string>
     <string name="repositories_last_update_never">ніколи</string>
     <string name="repo_list_info_title">Список репозиторіїв</string>
