@@ -44,7 +44,7 @@
     <string name="details_notinstalled">Nie zainstalowane</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
-    <string name="antinonfreenetlist">Ta aplikacja promuje lub całkowicie zależy od niewolnej usługi sieciowej</string>
+    <string name="antinonfreenetlist">Ta aplikacja promuje lub całkowicie zależy od niezmiennej lub niewolnej usługi sieciowej</string>
     <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
     <string name="antiupstreamnonfreelist">Upstreamowy kod źródłowy nie jest w pełni wolny</string>
     <string name="display">Wyświetlanie</string>
@@ -592,4 +592,24 @@
         <item quantity="other">Pobieraj aplikacje z endpointów IPFS: %1$d włączonych</item>
     </plurals>
     <string name="repo_share_not_found">Nie znaleziono adresu repozytorium w udostępnionym tekście.</string>
+    <string name="useDnsCache">Używaj pamięci podręcznej DNS</string>
+    <string name="useDnsCacheSummary">Używaj wyników z pamięci podręcznej, aby zminimalizować liczbę zapytań DNS</string>
+    <string name="app_details_repository">Repozytorium</string>
+    <string name="app_details_repositories">Repozytoria</string>
+    <string name="app_details_repository_expand">Rozwiń listę repozytoriów</string>
+    <string name="app_list_no_suggested_version">Żadna wersja nie jest zalecana do instalacji.</string>
+    <string name="repositories_last_update_never">nigdy</string>
+    <string name="repo_list_info_title">Lista repozytoriów</string>
+    <string name="repo_list_info_text">Repozytorium jest źródłem aplikacji. Ta lista pokazuje wszystkie aktualnie dodane repozytoria. Wyłączone repozytoria nie są używane.
+\n
+\nJeśli aplikacja znajduje się w więcej niż jednym repozytorium, automatycznie preferowane jest repozytorium znajdujące się wyżej na liście. Możesz zmienić kolejność repozytoriów, naciskając je długo i przeciągając.</string>
+    <string name="repo_archive_toggle">Archiwum repozytoriów</string>
+    <string name="repo_archive_toggle_description">Pokazuj zarchiwizowane aplikacje i nieaktualne wersje aplikacji</string>
+    <string name="repo_archive_failed">Archiwalne repozytorium jest obecnie niedostępne</string>
+    <string name="repo_disable_warning_button">Wyłącz</string>
+    <string name="app_details_repository_preferred">(preferowane)</string>
+    <string name="app_details_repository_button_prefer">Preferuj repozytorium</string>
+    <string name="repo_error_adding_archive">Archiwalne repozytoria nie mogą być dodawane bezpośrednio. Naciśnij repozytorium na liście i włącz tam archiwum.</string>
+    <string name="repositories_last_update">Ostatnia aktualizacja: %s</string>
+    <string name="repo_disable_warning">Wyłączenie tego repozytorium spowoduje usunięcie jego statusu „preferowane” ze wszystkich aplikacji.</string>
 </resources>
