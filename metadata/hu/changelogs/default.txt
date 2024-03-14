@@ -1,15 +1,15 @@
-* Tároló átdolgozása és tükör kezelés, mind UX, mind kód
+* Tároló- és tükörkezelés átdolgozás (UX és kód)
 
-* Az új tárolók előnézetének megjelenítése
+* Új tárolók előnézete
 
-* Az F-Droid és F-Droid Basic telepítés mostantól támogatja az automatikus háttérfrissítéseket
+* Az F-Droid és az F-Droid Basic is támogatja a háttérben történő frissítést
 
-* Android 14-en a nem támogatott Target SDK verziójú alkalmazásokat inkompatibilisnek jelöljük #2692
+* Android 14-en a nem támogatott cél SDK-t megadó alkalmazások nem kompatibilisként jelölése #2692
 
-* Hosszú kattintás a hivatkozások, engedélyek és verziók másolásához az alkalmazás részletei képernyőn (@Tobias_Groza)
+* Másolás hosszú érintéssel az alkalmazásrészletező képernyőn (@Tobias_Groza)
 
-* Az inkompatibilis alkalmazások csak akkor jelennek meg, ha engedélyezettek a Beállításokban #41 (@pigpig)
+* A nem kompatibilis alkalmazások csak engedélyezés esetén jelennek meg #41 (@pigpig)
 
-* Új IPFS kapuk beállításai
+* Új IPFS átjáróbeállítások
 
 * Alkalmazásonkénti nyelvválasztás (@Licaon-Kter)

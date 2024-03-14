@@ -124,7 +124,7 @@
     <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
     <string name="menu_changelog">Seznam změn</string>
     <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
-    <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nesvobodné síťové službě</string>
+    <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nezměnitelné nebo nesvobodné síťové službě</string>
     <string name="antinonfreedeplist">Tato aplikace závisí na dalších nesvobodných aplikacích</string>
     <string name="antiupstreamnonfreelist">Původní zdrojový kód je částečně nesvobodný</string>
     <string name="appcompatibility">Kompatibilita aplikace</string>
@@ -314,9 +314,9 @@
     <string name="by_author_format">od %s</string>
     <string name="force_old_index">Vynutit původní formát rejstříku</string>
     <string name="force_old_index_summary">V případě chyb nebo problémů s kompatibilitou použít XML rejstřík aplikací</string>
-    <string name="app_details__incompatible_mismatched_signers">Rozdílný podepisovač oproti nainstalované verzi</string>
+    <string name="app_details__incompatible_mismatched_signers">Rozdílný podpis oproti nainstalované verzi</string>
     <string name="app_details__no_versions__show_incompat_versions">Chcete-li zde přesto zobrazit nekompatibilní verze, povolte nastavení „%1$s“.</string>
-    <string name="app_details__no_versions__no_compatible_signers">Žádná verze s kompatibilním podepisovačem</string>
+    <string name="app_details__no_versions__no_compatible_signers">Žádná verze s kompatibilním podpisem</string>
     <string name="app_details__no_versions__none_compatible_with_device">Žádná verze kompatibilní s tímto zařízením</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Nainstalovaná verze není kompatibilní s žádnou dostupnou verzí. Odinstalace aplikace vám umožní zobrazit a nainstalovat kompatibilní verzi. K tomuto dochází často u aplikací nainstalovaných prostřednictvím obchodu Google Play a dalších zdrojů, pokud jsou podepsány odlišným certifikátem.</string>
     <string name="app__tts__cancel_download">Zrušit stahování</string>
@@ -584,4 +584,25 @@
         <item quantity="few">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povoleny %1$d</item>
         <item quantity="other">Stáhnout aplikaci pomocí webových koncových bodů IPFS: povoleno %1$d</item>
     </plurals>
+    <string name="repo_share_not_found">Ve sdíleném textu se nepodařilo najít adresu repozitáře.</string>
+    <string name="useDnsCache">Použít mezipaměť DNS</string>
+    <string name="useDnsCacheSummary">Použí výsledky z mezipaměti pro snížení množství dotazů na DNS.</string>
+    <string name="app_details_repository_expand">Rozbalit seznam repozitářů</string>
+    <string name="app_details_repository">Repozitář</string>
+    <string name="app_details_repositories">Repozitáře</string>
+    <string name="app_list_no_suggested_version">K instalaci není doporučena žádná verze.</string>
+    <string name="repo_error_adding_archive">Archivy repozitářů nelze být přidat přímo. Klepněte na repozitář v seznamu a tam povolte archiv.</string>
+    <string name="app_details_repository_preferred">(vybrán)</string>
+    <string name="repo_list_info_title">Seznam repozitářů</string>
+    <string name="app_details_repository_button_prefer">Vybrat repozitář</string>
+    <string name="repo_archive_toggle">Archiv repozitáře</string>
+    <string name="repo_disable_warning_button">Zakázat</string>
+    <string name="repo_archive_toggle_description">Zobrazit archivované a zastaralé verze aplikací</string>
+    <string name="repo_archive_failed">Archiv repozitáře momentálně není dostupný</string>
+    <string name="repo_disable_warning">Zakázáním tohoto repozitáře jej odeberete z „vybraných“ u všech aplikací.</string>
+    <string name="repo_list_info_text">Repozitář je zdroj aplikací. Tento seznam zobrazuje všechny aktuálně přidané repozitáře. Zakázané repozitáře nejsou používány.
+\n
+\nPokud se aplikace nachází více než v jednom repozitáři, bude automaticky vybrán repozitář výše v seznamu. Repozitáře můžete přesunout dlouhým podržením a posunutím.</string>
+    <string name="repositories_last_update_never">nikdy</string>
+    <string name="repositories_last_update">Poslední aktualizace: %s</string>
 </resources>

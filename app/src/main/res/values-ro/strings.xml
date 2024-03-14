@@ -82,7 +82,7 @@
     <string name="search_hint">Caută aplicații</string>
     <string name="antinonfreeassetslist">Aceasta aplicație conține resurse ce nu sunt la disponibile la liber</string>
     <string name="antinonfreedeplist">Aplicația depinde de alte aplicații ce nu sunt software liber</string>
-    <string name="antinonfreenetlist">Aplicația promovează sau depinde de servicii de rețea ce nu sunt libere</string>
+    <string name="antinonfreenetlist">Aplicația promovează sau depinde în întregime de un serviciu de rețea care nu poate fi schimbat sau care nu este liber</string>
     <string name="antinonfreeadlist">Aplicația promovează anexe ce nu sunt software liber</string>
     <string name="antitracklist">Aplicația îți înregistrează și raportează activitatea undeva</string>
     <string name="menu_flattr">Flattr</string>
@@ -583,4 +583,25 @@
         <item quantity="few">Descărcați aplicații de la locațiile IPFS web: %1$d active</item>
         <item quantity="other">Descărcați aplicații de la locațiile IPFS web: %1$d active</item>
     </plurals>
+    <string name="useDnsCache">Folosește cache-ul DNS</string>
+    <string name="useDnsCacheSummary">Utilizați rezultatele din memoria cache pentru a minimiza interogările DNS.</string>
+    <string name="repo_share_not_found">Nu s-a putut găsi adresa depozitului în textul partajat.</string>
+    <string name="app_details_repositories">Depozite</string>
+    <string name="app_details_repository_preferred">(preferat)</string>
+    <string name="app_details_repository">Depozit</string>
+    <string name="app_details_repository_button_prefer">Depozit preferat</string>
+    <string name="app_details_repository_expand">Extinde lista de depozite</string>
+    <string name="app_list_no_suggested_version">Nici o versiune recomandată pentru instalare.</string>
+    <string name="repo_error_adding_archive">Arhivele depozitelor nu pot fi adăugate direct. Atingeți depozitul din listă și activați arhiva acolo.</string>
+    <string name="repo_list_info_title">Lista de depozite</string>
+    <string name="repo_archive_toggle">Arhivă depozit</string>
+    <string name="repo_archive_failed">Arhivă depozit momentan indisponibilă</string>
+    <string name="repo_disable_warning">Dezactivarea acestui depozit îl va elimina ca fiind \"preferat\" pentru toate aplicațiile.</string>
+    <string name="repositories_last_update">Ultima actualizare: %s</string>
+    <string name="repositories_last_update_never">niciodată</string>
+    <string name="repo_list_info_text">Un depozit este o sursă de aplicații. Această listă afișează toate depozitele adăugate în prezent. Depozitele dezactivate nu sunt utilizate.
+\n
+\nDacă o aplicație se află în mai multe depozite, se preferă automat depozitul aflat mai sus în listă. Puteți reordona depozitele apăsând lung și trăgându-le.</string>
+    <string name="repo_archive_toggle_description">Afișați aplicațiile arhivate și versiunile învechite ale aplicațiilor</string>
+    <string name="repo_disable_warning_button">Dezactivare</string>
 </resources>

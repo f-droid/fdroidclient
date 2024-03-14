@@ -55,7 +55,7 @@
     <string name="antiadslist">Ова апликација садржи огласе</string>
     <string name="antitracklist">Ова апликација прати и шаље вашу активност</string>
     <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
-    <string name="antinonfreenetlist">Ова апликација промовише неслободну услугу или у потпуности зависи од ње</string>
+    <string name="antinonfreenetlist">Ова апликација промовише или у потпуности зависи од непроменљиве или неслободне мрежне услуге</string>
     <string name="antinonfreedeplist">Ова апликација зависи од других неслободних апликација</string>
     <string name="antiupstreamnonfreelist">Оригинални изворни кôд није у потпуности слободан</string>
     <string name="display">Приказ</string>
@@ -584,4 +584,25 @@
         <item quantity="few">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
         <item quantity="other">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
     </plurals>
+    <string name="repo_share_not_found">Није могуће пронаћи адресу репозиторијума у дељеном тексту.</string>
+    <string name="useDnsCacheSummary">Коришћење кешираних резултата да би се минимизирали DNS упити.</string>
+    <string name="useDnsCache">Користи DNS кеш</string>
+    <string name="app_details_repository">Репозиторијум</string>
+    <string name="app_details_repositories">Репозиторијуми</string>
+    <string name="app_list_no_suggested_version">Ниједна верзија се не препоручује за инсталацију.</string>
+    <string name="repo_error_adding_archive">Архивски репозиторијуми се не могу директно додати. Додирните репозиторијум на листи и омогућите архиву тамо.</string>
+    <string name="repo_archive_failed">Архивски репозиторијум тренутно није доступан</string>
+    <string name="repo_disable_warning_button">Онемогући</string>
+    <string name="repo_list_info_title">Листа репозиторијума</string>
+    <string name="app_details_repository_expand">Прошири листу репозиторијума</string>
+    <string name="repo_archive_toggle_description">Приказује архивиране апликације и застареле верзије апликација</string>
+    <string name="repo_disable_warning">Онемогућавање овог репозиторијума ће уклонити његов „преферирани“ статус из свих апликација.</string>
+    <string name="app_details_repository_preferred">(префериран)</string>
+    <string name="app_details_repository_button_prefer">Преферирај репозиторијум</string>
+    <string name="repositories_last_update">Последње ажурирање: %s</string>
+    <string name="repositories_last_update_never">никада</string>
+    <string name="repo_list_info_text">Репозиторијум је извор апликација. Ова листа приказује све тренутно додате репозиторијуме. Онемогућени репозиторијуми се не користе.
+\n
+\nАко се апликација налази у више од једног репозиторијума, аутоматски се преферира репозиторијум на вишој позицији на листи. Можете да промените редослед репозиторијума дугим притиском и превлачењем.</string>
+    <string name="repo_archive_toggle">Архива репозиторијума</string>
 </resources>

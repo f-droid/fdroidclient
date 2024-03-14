@@ -58,7 +58,7 @@
     <string name="antiadslist">Questa app contiene pubblicità</string>
     <string name="antitracklist">Questa app monitora e riferisce sulle tue attività</string>
     <string name="antinonfreeadlist">Questa app promuove add-on non liberi</string>
-    <string name="antinonfreenetlist">Questa app promuove o dipende completamente da un servizio di rete non libero</string>
+    <string name="antinonfreenetlist">Questa app promuove o dipende completamente da un servizio di rete non modificabile o non libero</string>
     <string name="antinonfreedeplist">Questa app dipende da altre app non libere</string>
     <string name="antiupstreamnonfreelist">Il codice sorgente a monte non è completamente libero</string>
     <string name="display">Mostra</string>
@@ -593,8 +593,29 @@
     <string name="ipfsgw_explainer">Scarica applicazioni da endpoint web IPFS. (Funziona solo per repository F-Droid con supporto IPFS.)</string>
     <string name="ipfsgw_add_title">Aggiungi gateway IPFS</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
+        <item quantity="one">Scarica applicazioni usando endpoint web IPFS: %1$d attiva</item>
         <item quantity="many">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
         <item quantity="other">Scarica applicazioni usando endpoint web IPFS: %1$d attive</item>
     </plurals>
+    <string name="repo_share_not_found">Impossibile trovare un indirizzo di repo nel testo condiviso.</string>
+    <string name="useDnsCache">Usa cache DNS</string>
+    <string name="useDnsCacheSummary">Usa risultati in cache per minimizzare le richieste DNS.</string>
+    <string name="app_details_repository">Repository</string>
+    <string name="app_details_repositories">Repository</string>
+    <string name="app_details_repository_preferred">(preferito)</string>
+    <string name="app_details_repository_button_prefer">Preferisci repository</string>
+    <string name="app_details_repository_expand">Espandi lista repository</string>
+    <string name="app_list_no_suggested_version">Nessuna versione consigliata da installare.</string>
+    <string name="repo_error_adding_archive">I repository di archivio non possono essere aggiunti direttamente. Tocca il repository nella lista e attiva l\'archivio lì.</string>
+    <string name="repo_list_info_text">Un repository è una fonte di app. Questo elenco mostra tutti i repository attualmente aggiunti. Quelli disattivati non vengono usati.
+\n
+\nSe un\'app si trova in più di un repository, viene automaticamente preferito quello più in alto nella lista. Puoi riordinare i repository premendoli a lungo e trascinandoli.</string>
+    <string name="repo_archive_toggle">Repository di archivio</string>
+    <string name="repo_archive_toggle_description">Mostra app archiviate e versioni obsolete delle app</string>
+    <string name="repo_disable_warning_button">Disattiva</string>
+    <string name="repositories_last_update">Ultima modifica: %s</string>
+    <string name="repositories_last_update_never">mai</string>
+    <string name="repo_list_info_title">Elenco repository</string>
+    <string name="repo_archive_failed">Repo di archivio attualmente non disponibile</string>
+    <string name="repo_disable_warning">Disattivando questo repository verrà rimosso il suo stato \"preferito\" da tutte le app.</string>
 </resources>

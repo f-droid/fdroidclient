@@ -1,0 +1,15 @@
+* Ripunim i trajtimit të depove dhe pasqyrave, në UX dhe kod
+
+* Shfaq paraparje deposh të reja
+
+* Instalimi me F-Droid dhe F-Droid Elementar tani mbulon përditësime të automatizuara në prapaskenë
+
+* Në Android 14, vëru shenjë si të papërputhshëm aplikacioneve me Target SDK Version të pambuluar #2692
+
+* Klikim i gjatë për kopjim Lidhjesh, Lejesh dhe Versionesh, te skena Hollësi Aplikacioni (@Tobias_Groza)
+
+* Aplikacionet e papërputhshëm shfaqen vetëm kur kjo është lejuar te Rregullimet #41 (@pigpig)
+
+* Rregullime të reja për Kanale IPFS
+
+* Përzgjedhje gjuhe më vete për aplikacione (@Licaon-Kter)

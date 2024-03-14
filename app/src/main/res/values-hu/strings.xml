@@ -534,28 +534,28 @@
     <string name="app_error_open">Nem sikerült elindítani az alkalmazást.</string>
     <string name="repo_last_update_downloaded">Utolsó frissítés letöltve</string>
     <string name="turn_on_wifi">Wi-Fi bekapcsolása</string>
-    <string name="repo_invalid">Hibás tároló.
+    <string name="repo_invalid">Érvénytelen tároló.
 \n
-\nLépjen kapcsolatba a fenntartóval és értesítse őt arról.</string>
+\nLépjen kapcsolatba a karbantartóval, és értesítse a problémáról.</string>
     <string name="repo_io_error">Hiba a tárolóhoz való kapcsolódáskor.</string>
-    <string name="swap_banner_message">Az alkalmazások elcseréléséhez kapcsold be a Wi-Fi-t és csatlakozz ugyan arra a hálózatra, mint a barátod.</string>
+    <string name="swap_banner_message">Az alkalmazáscseréhez kapcsolja be a Wi-Fi-t, és csatlakozzon ugyanahhoz a hálózathoz, mint a barátja.</string>
     <string name="repo_add_new_title">Tároló hozzáadása</string>
-    <string name="repo_state_fetching">Tároló megszerzése…</string>
+    <string name="repo_state_fetching">Tároló lekérése…</string>
     <string name="repo_state_adding">Tároló hozzáadása…</string>
-    <string name="repo_enter_url">Tároló URL-jének manuális megadása</string>
+    <string name="repo_enter_url">Tároló webcímének kézi megadása</string>
     <string name="repo_exists">Ez a tároló már hozzá lett adva.</string>
-    <string name="repo_add_new_mirror">Hozzáadás mint új tükör</string>
-    <string name="repo_intro">Egy tároló egy további forrás alkalmazásoknak. Harmadik fél általiak, amiket itt hozzáadsz eltérő minőséggel rendelkeznek, mint az F-Droid által épített alkalmazások.
+    <string name="repo_add_new_mirror">Hozzáadás új tükörként</string>
+    <string name="repo_intro">Egy tároló egy további alkalmazásforrás. Az itt hozzáadott, harmadik féltől származó tárolók eltérő szabályokkal rendelkeznek, mint az F-Droid által biztosított alkalmazások tárolói.
 \n
-\nKérjük, győződj meg arról, hogy a hozzáadni kívánt tároló megbízható.</string>
+\nGyőződjön meg arról, hogy a hozzáadandó tároló megbízható.</string>
     <string name="nearby_splace__external_storage_permission_button">Kipróbálás</string>
     <string name="nearby_splach__external_storage_permission_explainer">Az F-Droid képes keresni a SD-kártyán lévő tárolókban és tükrökben, de ehhez engedélyre van szüksége.</string>
     <string name="swap_connection_indexv0_error">Olyan valakihez próbál kapcsolódni, akinek elavult F-Droid verziója van. A kapcsolódáshoz frissítenie kell az F-Droid alkalmazást. Használhatja a cserét, hogy frissítse az F-Droid alkalmazását.</string>
     <string name="copied_to_clipboard">Vágólapra másolva</string>
     <string name="force_old_installer_title">Régi telepítő kényszerítése</string>
-    <string name="force_old_installer_summary">Béta munkamenet telepítő kikapcsolása, amely az automatikus háttér frissítések támogatását is kikapcsolja.</string>
-    <string name="targetsdk_or_later">%s megcélzása</string>
-    <string name="copied_permission_to_clipboard">Engedély neve másolva a vágólapra</string>
-    <string name="copied_url_to_clipboard">URL vágólapra másolva</string>
-    <string name="repo_num_apps_button">Applikációk mutatása</string>
+    <string name="force_old_installer_summary">A béta verziós munkamenet-telepítő kikapcsolása, beleértve az automatikus háttérben történő frissítések támogatását is.</string>
+    <string name="targetsdk_or_later">cél: %s</string>
+    <string name="copied_permission_to_clipboard">Engedély neve vágólapra másolva</string>
+    <string name="copied_url_to_clipboard">Webcím vágólapra másolva</string>
+    <string name="repo_num_apps_button">Alkalmazások megjelenítése</string>
 </resources>

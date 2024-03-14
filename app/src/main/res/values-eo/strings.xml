@@ -40,7 +40,7 @@
     <string name="antiadslist">Tiu ĉi aplikaĵo enhavas reklamojn</string>
     <string name="antitracklist">Tiu ĉi aplikaĵo spuras kaj raportas vian agadon</string>
     <string name="antinonfreeadlist">Tiu ĉi aplikaĵo favoras neliberajn aldonaĵojn</string>
-    <string name="antinonfreenetlist">Tiu ĉi aplikaĵo favoras aŭ dependas tute de neliberaj retservoj</string>
+    <string name="antinonfreenetlist">Tiu ĉi aplikaĵo favoras aŭ tute dependas de neŝanĝebla aŭ nelibera retservo</string>
     <string name="antinonfreedeplist">Tiu ĉi aplikaĵo dependas de aliaj neliberaj aplikaĵoj</string>
     <string name="antiupstreamnonfreelist">La fontkodo ne estas tute libera</string>
     <string name="display">Aspekto</string>
@@ -533,7 +533,7 @@
     <string name="about_title_basic">Pri F-Droid Baza</string>
     <string name="antinsfwlist">Tiu ĉi aplikaĵo enhavas enhavon, kiu ne estas taŭga por foliumi aŭ publikigi ĉie</string>
     <string name="category_Nightly">noktaj kompilaĵoj</string>
-    <string name="warning_target_sdk">Tiu ĉi aplikaĵo estis kompilita por pli malnova versio de Android ke ne povas esti ĝisdatigita aŭtomate.</string>
+    <string name="warning_target_sdk">Tiu ĉi aplikaĵo estis kompilita por pli malnova versio de Android kaj ne povas esti ĝisdatigita aŭtomate.</string>
     <string name="app_error_open">Ne povas ekigi la aplikaĵon.</string>
     <string name="swap_banner_message">Por interŝanĝi aplikaĵojn, aktivigu vifion kaj konektu al la sama reto kiel via amiko.</string>
     <string name="turn_on_wifi">Aktivigi vifion</string>
@@ -573,4 +573,25 @@
         <item quantity="one">Elŝuti aplikaĵojn el retejaj IPFS-kluzoj: %1$d aktiva</item>
         <item quantity="other">Elŝuti aplikaĵojn el retejaj IPFS-kluzoj: %1$d aktivaj</item>
     </plurals>
+    <string name="useDnsCache">Kaŝmemorigi DNS-petojn</string>
+    <string name="useDnsCacheSummary">Bufri rezultojn por malpliigi nombron de DNS-petoj.</string>
+    <string name="repo_share_not_found">Ne trovis adreson de deponejo en la kunhavigita teksto.</string>
+    <string name="app_details_repository">Deponejo</string>
+    <string name="app_details_repository_preferred">(preferata)</string>
+    <string name="app_details_repository_expand">Etendi liston de deponejoj</string>
+    <string name="app_list_no_suggested_version">Neniu versio konsilinda por instali.</string>
+    <string name="app_details_repositories">Deponejoj</string>
+    <string name="app_details_repository_button_prefer">Preferi deponejon</string>
+    <string name="repo_error_adding_archive">Ne eblas senpere aldoni arĥivan deponejon. Frapetu deponejon sur la listo kaj tie aktivigi arĥivon.</string>
+    <string name="repo_archive_failed">Arĥiva deponejo ne estas nune disponebla</string>
+    <string name="repo_disable_warning_button">Malaktivigi</string>
+    <string name="repo_disable_warning">Per malaktivigi tiun ĉi deponejon, ĝi estos forigita kiel preferata deponejo por ĉiuj ĝiaj aplikaĵoj.</string>
+    <string name="repositories_last_update">Lasta ĝisdatigo: %s</string>
+    <string name="repositories_last_update_never">neniam</string>
+    <string name="repo_archive_toggle">Arĥiva deponejo</string>
+    <string name="repo_archive_toggle_description">Montri arĥivitajn kaj malnovajn versiojn de aplikaĵoj</string>
+    <string name="repo_list_info_text">Deponejo estas fonto de aplikaĵoj. Tiu ĉi listo montras ĉiujn aldonitajn deponejojn. Malaktivigitaj deponejoj ne estas uzataj.
+\n
+\nSe aplikaĵo troviĝas en pli ol unu deponejo, la pli supra deponejo sur la listo estas aŭtomate preferata. Vi povas reordigi deponejojn per frapetadi kaj ŝovi ilin.</string>
+    <string name="repo_list_info_title">Listo de deponejoj</string>
 </resources>

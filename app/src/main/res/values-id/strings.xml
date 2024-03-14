@@ -70,7 +70,7 @@
     <string name="antiadslist">Aplikasi ini berisi iklan</string>
     <string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
     <string name="antinonfreeadlist">Aplikasi ini mempromosikan ekstensi non-bebas</string>
-    <string name="antinonfreenetlist">Aplikasi ini mempromosikan atau bergantung pada layanan jaringan non-bebas</string>
+    <string name="antinonfreenetlist">Aplikasi ini mempromosikan atau bergantung pada layanan jaringan yang tidak dapat diubah atau tidak bebas</string>
     <string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi non-bebas lainnya</string>
     <string name="antiupstreamnonfreelist">Kode sumber utama tidak sepenuhnya Bebas</string>
     <string name="display">Tampilan</string>
@@ -550,4 +550,38 @@
     <string name="copied_to_clipboard">Disalin ke papan klip</string>
     <string name="copied_permission_to_clipboard">Nama perizinan disalin ke papan klip</string>
     <string name="copied_url_to_clipboard">URL disalin ke papan klip</string>
+    <string name="app_details_repository">Repositori</string>
+    <string name="app_details_repository_button_prefer">Dipilih</string>
+    <string name="app_details_repository_expand">Buka daftar repositori</string>
+    <string name="app_list_no_suggested_version">Tidak ada versi yang disarankan untuk pemasangan.</string>
+    <string name="repo_share_not_found">Tidak dapat mencari alamat repositori dalam teks terbagi.</string>
+    <string name="repo_archive_toggle">Arsip Repositori</string>
+    <string name="repo_archive_failed">Repositori arsip saat ini tidak tersedia</string>
+    <string name="repo_disable_warning">Menonaktifkan repositori ini akan menghilangkan status \"lebih disukai\" dari semua aplikasi.</string>
+    <string name="targetsdk_or_later">sasaran %s</string>
+    <string name="repo_disable_warning_button">Nonaktifkan</string>
+    <string name="ipfsgw_explainer">Unduh aplikasi dari titik akhir web IPFS. (Hanya bekerja pada repositori F-Droid dengan dukungan IPFS.)</string>
+    <string name="repositories_last_update">Pembaruan Terakhir: %s</string>
+    <string name="repo_list_info_title">Daftar Repositori</string>
+    <string name="repo_archive_toggle_description">Tampilkan aplikasi terarsip dan versi lawas aplikasi</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">Unduh aplikasi menggunakan titik akhir web IPFS: %1$d diaktifkan</item>
+    </plurals>
+    <string name="paste">Tempel</string>
+    <string name="ipfsgw_title">Gerbang IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Gerbang IPFS Kustom</string>
+    <string name="useDnsCache">Gunakan Tembolok DNS</string>
+    <string name="useDnsCacheSummary">Gunakan hasil dalam tembolok untuk meminimalkan kueri DNS.</string>
+    <string name="app_details_repositories">Repositori</string>
+    <string name="app_details_repository_preferred">(lebih disukai)</string>
+    <string name="repo_error_adding_archive">Repositori arsip tidak dapat ditambahkan secara langsung. Ketuk pada repositori dalam daftar dan aktifkan arsipnya di sana.</string>
+    <string name="repositories_last_update_never">tidak pernah</string>
+    <string name="repo_list_info_text">Sebuah repositori adalah sumber aplikasi. Daftar ini menunjukkan semua repositori yang saat ini sudah ditambahkan. Repositori yang telah dinonaktifkan tidak digunakan.
+\n
+\nJika sebuah aplikasi dalam lebih dari satu repositori, yang tertinggi dalam daftar akan dipilih. Anda dapat mengurutkan ulang repositori dengan menekan lama dan menggesernya.</string>
+    <string name="repo_num_apps_button">Tampilkan aplikasi</string>
+    <string name="ipfsgw_add_title">Tambahkan Gerbang IPFS</string>
+    <string name="ipfsgw_add_add">Tambahkan</string>
+    <string name="ipfsgw_summary_disabled">Unduh aplikasi menggunakan titik akhir web IPFS: dinonaktifkan</string>
+    <string name="ipfsgw_caption_official_gateways">Gerbang IPFS Resmi</string>
 </resources>

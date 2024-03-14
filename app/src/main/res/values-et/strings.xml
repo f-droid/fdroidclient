@@ -122,7 +122,7 @@
     <string name="details_notinstalled">Pole paigaldatud</string>
     <string name="antiadslist">Selles rakenduses on reklaame</string>
     <string name="antinonfreeadlist">See rakendus edendab mitte-vabu laiendusi</string>
-    <string name="antinonfreenetlist">See rakendus eelistab mitte-vabu võrguteenuseid või sõltub neist täielikult</string>
+    <string name="antinonfreenetlist">See rakendus sõltub või toetab mitte-muudetaval või mitte-vabal võrguteenuseid</string>
     <string name="antinonfreedeplist">See rakendus sõltub teistest mitte-vabadest rakendustest</string>
     <string name="antiupstreamnonfreelist">Ülesvoolu lähtekood ei ole täiesti vaba</string>
     <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu komponente</string>
@@ -547,4 +547,62 @@
     <string name="warning_target_sdk">See rakendus on loodud Androidi vanema versiooni jaoks ja seda ei saa automaatselt uuendada.</string>
     <string name="antinsfwlist">Selles rakenduses on sisu, mida ei saa kõikjal avaldada ega peaks olema kõikjalt vaadatav</string>
     <string name="force_old_installer_title">Jõusta vana paigaldaja</string>
+    <string name="copied_to_clipboard">Kopeeritud lõikelauale</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Laadi rakendus IPFS võrgu kaudu: %1$d on kasutusel</item>
+        <item quantity="other">Laadi rakendusi IPFS võrgu kaudu: %1$d on kasutusel</item>
+    </plurals>
+    <string name="force_old_installer_summary">Lülita välja sessioonipõhise paigaldaja beetaversioon ja sellega muu hulgas kaob taustal töötava paigaldusteenuse tugi.</string>
+    <string name="repo_enter_url">Sisesta hoidla url käsitsi</string>
+    <string name="swap_banner_message">Rakenduste vahetamiseks lülita sisse oma nutiseadme Wi-Fi ja liitu samasse võrku oma sõbraga.</string>
+    <string name="paste">Aseta</string>PluralsCandidate
+
+    <string name="repo_intro">Lisatav hoidla on täiendavaks allikaks rakenduste laadimisel. Kolmandate osapoolte hallatavad hoidlad võivad aga põhineda standarditel ja reeglitel, mis on oluliselt erinevad F-Droid\'i omadest.
+\n
+\nPalun kontrolli, et sinu lisatav hoidla on usaldusväärne.</string>
+    <string name="ipfsgw_summary_disabled">Laadi rakendusi IPFS võrgu kaudu: välja lülitatud</string>
+    <string name="ipfsgw_caption_custom_gateways">Kohandatud IPFS lüüsid</string>
+    <string name="swap_connection_indexv0_error">Sa proovid luua ühendust aegunud F-Droid\'i versiooniga. Jätkamaks peab tolles nutiseadmes uuendama F-Droid\'i rakendust. Selleks saab kasutada võimalust laadida rakendus sinu nutiseadmest.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid saab otsida hoidlaid ja peegelservereid sinu nutiseadme SD kaardilt, aga vajab sinu luba, et nii teha.</string>
+    <string name="repo_state_fetching">Laadime hoidla andmeid…</string>
+    <string name="repo_state_adding">Lisame hoidla…</string>
+    <string name="repo_exists">See hoidla on juba lisatud.</string>
+    <string name="repo_invalid">Vigane hoidla.
+\n
+\nVõta ühendust haldajaga ja anna neile teada sellest veast.</string>
+    <string name="repo_io_error">Viga ühenduse loomisel hoidlaga.</string>
+    <string name="targetsdk_or_later">SDK versioon %s</string>
+    <string name="turn_on_wifi">Lülita Wi-Fi sisse</string>
+    <string name="copied_url_to_clipboard">URL on kopeeritud lõikelauale</string>
+    <string name="copied_permission_to_clipboard">Õiguste nimi on kopeeritud lõikelauale</string>
+    <string name="ipfsgw_title">IPFS lüüsid</string>
+    <string name="ipfsgw_explainer">Laadi rakendusi IPFS võrgu kaudu. (Toimib vaid siis, kui kasutatavatel hoidlatel on IPFS võrgu tugi.)</string>
+    <string name="ipfsgw_add_title">Lisa IPFS lüüs</string>
+    <string name="ipfsgw_add_add">Lisa</string>
+    <string name="ipfsgw_caption_official_gateways">Ametlikud IPFS lüüsid</string>
+    <string name="repo_add_new_title">Lisa hoidla</string>
+    <string name="repo_add_new_mirror">Lisa uue peegelserverina</string>
+    <string name="nearby_splace__external_storage_permission_button">Proovi seda</string>
+    <string name="repo_num_apps_button">Näita rakendusi</string>
+    <string name="useDnsCache">Kasuta nimeserveri puhvrit</string>
+    <string name="useDnsCacheSummary">Nimelahenduse päringute arvu vähendamiseks puhverda varasemate päringute tulemusi.</string>
+    <string name="repo_share_not_found">Jagatud tekstist ei õnnestunud leida hoidla aadressi.</string>
+    <string name="app_details_repositories">Repositorid</string>
+    <string name="app_details_repository">Repositori</string>
+    <string name="app_details_repository_preferred">(eeldatud)</string>
+    <string name="app_details_repository_expand">Laijenda repositori nimekirja</string>
+    <string name="app_list_no_suggested_version">Pole soovitatud versioonit mida allalaadida.</string>
+    <string name="repo_list_info_title">Repositori Nimekiri</string>
+    <string name="repo_archive_toggle">Repositori Arhiiv</string>
+    <string name="repo_list_info_text">Repositori on äppide allikas. See nimekiri näitab kõiki praeguselt lisatud repositore. Välja lülitatud repositorid ei ole kasutatud.
+\n
+\nKui äpp on mitmes repositoris, siis repositori mis on kõrgemal nimekirjas on automaatselt eeldatud. Sa võid nimekirja ümber korrastada neid pikkalt vajutades ja lohistades.</string>
+    <string name="repositories_last_update">Viimane Uuendus: %s</string>
+    <string name="repo_archive_failed">Arhiiv repo praegu mitte saadaval</string>
+    <string name="repo_archive_toggle_description">Näita arhiivitud äppe või äppide vanasid versioone</string>
+    <string name="repo_disable_warning">Selle repositori välja lülitamine eemaldab selle \"eelistatud\" staatuse kõikidelt äppidelt.</string>
+    <string name="repo_disable_warning_button">Lülita välja</string>
+    <string name="repositories_last_update_never">mitte kunagi</string>
+    <string name="app_details_repository_button_prefer">Eeldatud Repositori</string>
+    <string name="repo_error_adding_archive">Arhiivi repositori ei saa otse lisada. Vajutage repositorile nimekirjas ja lülitage arhiiv tööle sealt.</string>
 </resources>

@@ -72,7 +72,7 @@
     <string name="antiadslist">此應用程式含有廣告</string>
     <string name="antitracklist">本應用程式會追蹤並彙報您的行為</string>
     <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
-    <string name="antinonfreenetlist">此應用程式推廣或完全依賴於非自由的網路服務</string>
+    <string name="antinonfreenetlist">此應用程式推廣或完全依賴於無法變更或非自由的網路服務</string>
     <string name="antinonfreedeplist">此應用程式依賴其他非自由的應用程式</string>
     <string name="antiupstreamnonfreelist">上游原始碼並非完全自由</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
@@ -562,4 +562,25 @@
     <plurals name="ipfsgw_summary">
         <item quantity="other">使用 IPFS 網路端點下載應用程式：%1$d 已啟用</item>
     </plurals>
+    <string name="useDnsCache">使用 DNS 快取</string>
+    <string name="useDnsCacheSummary">使用快取的結果來最小化 DNS 的查詢次數。</string>
+    <string name="repo_share_not_found">在分享的文字中找不到軟體庫位址。</string>
+    <string name="app_details_repository">軟體庫</string>
+    <string name="app_details_repositories">軟體庫</string>
+    <string name="app_details_repository_preferred">（偏好）</string>
+    <string name="app_details_repository_button_prefer">偏好軟體庫</string>
+    <string name="app_details_repository_expand">展開軟體庫清單</string>
+    <string name="app_list_no_suggested_version">無推薦安裝的版本。</string>
+    <string name="repo_error_adding_archive">無法直接新增封存軟體庫。點擊清單中的軟體庫並在該處啟用封存軟體庫。</string>
+    <string name="repo_list_info_title">軟體庫清單</string>
+    <string name="repo_archive_toggle">軟體庫封存</string>
+    <string name="repo_archive_toggle_description">顯示已封存的應用程式與應用程式的舊版本</string>
+    <string name="repo_disable_warning_button">停用</string>
+    <string name="repositories_last_update">最後更新：%s</string>
+    <string name="repositories_last_update_never">從不</string>
+    <string name="repo_list_info_text">軟體庫是應用程式的來源。此清單顯示所有目前新增的軟體庫。不會使用已停用的軟體庫。
+\n
+\n若一個應用程式位於多個軟體庫中，則自動偏好清單中較高的軟體庫。您可以透過長按並拖曳軟體庫來重新排序。</string>
+    <string name="repo_archive_failed">封存軟體庫目前無法使用</string>
+    <string name="repo_disable_warning">停用此軟體庫將從所有應用程式中刪除其「偏好」狀態。</string>
 </resources>

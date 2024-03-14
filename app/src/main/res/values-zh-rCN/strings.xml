@@ -51,7 +51,7 @@
     <string name="antiadslist">此应用包含广告</string>
     <string name="antitracklist">此应用会记录并报告你的活动</string>
     <string name="antinonfreeadlist">此应用推广非自由的附加组件</string>
-    <string name="antinonfreenetlist">此应用推广或完全依赖于非自由的网络服务</string>
+    <string name="antinonfreenetlist">此应用推广或完全依赖于不可更改或非自由的网络服务</string>
     <string name="antinonfreedeplist">此应用依赖于其它非自由应用</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
@@ -557,4 +557,25 @@
     <plurals name="ipfsgw_summary">
         <item quantity="other">使用 IPFS 网络端点下载应用：%1$d 已开启</item>
     </plurals>
+    <string name="repo_share_not_found">在分享的文本中找不到仓库地址。</string>
+    <string name="useDnsCache">使用 DNS 缓存</string>
+    <string name="useDnsCacheSummary">使用缓存的结果来最小化 DNS 查询。</string>
+    <string name="app_details_repository">存储库</string>
+    <string name="app_details_repositories">存储库</string>
+    <string name="app_details_repository_button_prefer">首选存储库</string>
+    <string name="app_details_repository_expand">展开存储库列表</string>
+    <string name="app_list_no_suggested_version">没有推荐安装的版本。</string>
+    <string name="repo_error_adding_archive">不能直接添加归档存储库。轻按列表中的存储库并在那儿启用。</string>
+    <string name="repo_list_info_text">存储库是应用源。 词列表显示所有当前添加的存储库。停用的存储库不被使用。
+\n
+\n如果一款应用在多个存储库中，那么将自动优先选择列表内位置靠前的那个（从上到下）。你可以长按列表名并进行拖动来重新排列存储库顺序。</string>
+    <string name="repo_archive_toggle">存储库存档</string>
+    <string name="repo_archive_toggle_description">显示已存档应用和应用的过时版本</string>
+    <string name="repo_archive_failed">存档存储库当前不可用</string>
+    <string name="repo_disable_warning_button">停用</string>
+    <string name="repositories_last_update">上次更新：%s</string>
+    <string name="repositories_last_update_never">从未</string>
+    <string name="repo_list_info_title">存储库列表</string>
+    <string name="repo_disable_warning">停用此存储库会从所有应用去除其“首选”状态。</string>
+    <string name="app_details_repository_preferred">（首选）</string>
 </resources>

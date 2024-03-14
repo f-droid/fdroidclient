@@ -159,7 +159,7 @@
     <string name="choose_bt_send">Виберіть метод надсилання через Bluetooth</string>
     <string name="malformed_repo_uri">Нехтування неправильним URI репозиторію даних: %s</string>
     <string name="antinonfreeadlist">Цей застосунок пропонує невільні додатки</string>
-    <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від невільної мережної служби</string>
+    <string name="antinonfreenetlist">Цей застосунок просуває або повністю залежний від незмінюваної або невільної мережної служби</string>
     <string name="antiupstreamnonfreelist">Частина початкового коду невільна</string>
     <string name="display">Вигляд</string>
     <string name="show_incompat_versions">Увімкнути несумісні версії</string>
@@ -576,4 +576,39 @@
     <string name="copied_permission_to_clipboard">Ім’я дозволу скопійовано в буфер обміну</string>
     <string name="targetsdk_or_later">цілі %s</string>
     <string name="repo_num_apps_button">Показати застосунки</string>
+    <string name="repo_share_not_found">Не вдалося знайти адресу репозиторію в поширеному тексті.</string>
+    <string name="useDnsCache">Використовувати кеш DNS</string>
+    <string name="ipfsgw_explainer">Завантажувати застосунки з кінцевих вузлів IPFS. (Працює лише для репозиторіїв F-Droid з підтримкою IPFS.)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Завантаження застосунків за допомогою кінцевих вузлів IPFS: %1$d увімкнений</item>
+        <item quantity="few">Завантаження застосунків за допомогою кінцевих вузлів IPFS: %1$d увімкнено</item>
+        <item quantity="many">Завантаження застосунків за допомогою кінцевих вузлів IPFS: %1$d увімкнено</item>
+        <item quantity="other">Завантаження застосунків за допомогою кінцевих вузлів IPFS: %1$d увімкнено</item>
+    </plurals>
+    <string name="useDnsCacheSummary">Використовувати кешовані результати для мінімізації DNS-запитів.</string>
+    <string name="paste">Вставити</string>
+    <string name="ipfsgw_title">Шлюзи IPFS</string>
+    <string name="ipfsgw_summary_disabled">Завантаження застосунків за допомогою кінцевих вузлів IPFS: вимкнено</string>
+    <string name="ipfsgw_add_title">Додати шлюз IPFS</string>
+    <string name="ipfsgw_add_add">Додати</string>
+    <string name="ipfsgw_caption_official_gateways">Офіційні шлюзи IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Власні шлюзи IPFS</string>
+    <string name="app_details_repository">Репозиторій</string>
+    <string name="app_details_repositories">Репозиторії</string>
+    <string name="app_details_repository_expand">Розгорнути список репозиторіїв</string>
+    <string name="repo_archive_toggle_description">Показувати заархівовані застосунки та застарілі версії застосунків</string>
+    <string name="repo_disable_warning_button">Вимкнути</string>
+    <string name="repo_disable_warning">Вимкнення цього репозиторію призведе до вилучення його стану \"бажаного\" з усіх застосунків.</string>
+    <string name="repositories_last_update">Востаннє оновлено: %s</string>
+    <string name="repositories_last_update_never">ніколи</string>
+    <string name="repo_list_info_title">Список репозиторіїв</string>
+    <string name="repo_archive_toggle">Архів репозиторію</string>
+    <string name="repo_archive_failed">Архівний репозиторій наразі недоступний</string>
+    <string name="app_details_repository_preferred">(рекомендовано)</string>
+    <string name="app_details_repository_button_prefer">Рекомендований репозиторій</string>
+    <string name="app_list_no_suggested_version">Немає версії, рекомендованої до встановлення.</string>
+    <string name="repo_error_adding_archive">Архівні репозиторії не можна додавати напряму. Натисніть на репозиторій у списку й увімкніть там архів.</string>
+    <string name="repo_list_info_text">Репозиторій — це джерело застосунків. У цьому списку показано всі додані на цей час репозиторії. Вимкнені репозиторії не використовуються.
+\n
+\nЯкщо застосунок розміщено у кількох репозиторіях, автоматично надається перевага репозиторію, розташованому вище у списку. Ви можете змінити порядок розміщення репозиторіїв затисканням і перетягуванням.</string>
 </resources>

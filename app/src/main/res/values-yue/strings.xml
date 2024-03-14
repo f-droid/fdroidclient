@@ -437,7 +437,7 @@
     <string name="repo_details">存庫</string>
     <string name="not_on_same_wifi">您部機同您啱啱新加嘅本機存庫未連接同一個 Wi-Fi！試下連去呢個網絡吖：%s</string>
     <string name="newPerms">加新</string>
-    <string name="antinonfreenetlist">呢個 app 推廣或完全依賴非自由嘅網絡服務</string>
+    <string name="antinonfreenetlist">呢個 app 推廣或完全依賴冇得改或非自由嘅網絡服務</string>
     <string name="force_touch_apps_on">顯示埋事必要有輕觸式螢幕嘅 app，唔理硬件上支唔支援</string>
     <string name="touch_to_configure_local_repo">撳一下睇下詳情，並准許其他人兌換您啲 app。</string>
     <string name="repo_exists_enable">%1$s 已經設立，請確認您係咪要重新啟用。</string>
@@ -550,4 +550,37 @@
     <string name="copied_url_to_clipboard">複製咗個 URL 去剪貼簿</string>
     <string name="targetsdk_or_later">目標版本為 %s</string>
     <string name="repo_num_apps_button">騷晒佢所有啲 app</string>
+    <string name="ipfsgw_summary_disabled">用 IPFS 網點嚟下載啲 app：唔用</string>
+    <string name="paste">貼上</string>PluralsCandidate
+
+    <string name="ipfsgw_title">IPFS 閘道</string>
+    <string name="ipfsgw_explainer">用 IPFS 網點嚟下載啲 app。(淨係得支援 IPFS 嘅 F-Droid 存庫至用到。)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">用 IPFS 網點嚟下載啲 app：用緊 %1$d 個</item>
+    </plurals>
+    <string name="ipfsgw_add_title">加入 IPFS 閘道</string>
+    <string name="ipfsgw_add_add">加入</string>
+    <string name="ipfsgw_caption_official_gateways">官方 IPFS 閘道</string>
+    <string name="ipfsgw_caption_custom_gateways">自訂 IPFS 閘道</string>
+    <string name="useDnsCache">用 DNS 快取</string>
+    <string name="useDnsCacheSummary">用快取結果減少 DNS 查詢。</string>
+    <string name="repo_share_not_found">分享過嚟嘅文字唔見得有存庫位址。</string>
+    <string name="app_details_repository">存庫</string>
+    <string name="app_details_repository_preferred">(揀選)</string>
+    <string name="app_list_no_suggested_version">未有推薦安裝版本。</string>
+    <string name="repo_list_info_text">存庫係啲 app 嘅供應來源。呢個清單會騷晒所有目前加入咗嘅存庫。停用咗嘅存庫就唔會用。
+\n
+\n若然同一個 app 多過一個存庫都有供應，就會自動揀選清單入面排高啲嗰個存庫。您可撳實重新執過啲存庫嘅排位。</string>
+    <string name="repositories_last_update_never">從來沒有</string>
+    <string name="repo_list_info_title">存庫清單</string>
+    <string name="repo_archive_failed">封印存庫目前欠奉</string>
+    <string name="repo_disable_warning">若然停用呢個存庫，所有 app 都唔會再「揀選」佢個囉噃。</string>
+    <string name="repo_disable_warning_button">停用</string>
+    <string name="app_details_repositories">存庫</string>
+    <string name="app_details_repository_button_prefer">揀選存庫</string>
+    <string name="repositories_last_update">對上一次更新：%s</string>
+    <string name="repo_archive_toggle">存庫封印</string>
+    <string name="app_details_repository_expand">拉開存庫清單</string>
+    <string name="repo_archive_toggle_description">騷埋封印咗嘅 app 同埋啲 app 嘅過氣版本</string>
+    <string name="repo_error_adding_archive">封印存庫冇得直接加入。請撳一下清單入面嘅存庫，然後喺入面啟用。</string>
 </resources>
