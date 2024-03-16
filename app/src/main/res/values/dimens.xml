@@ -13,8 +13,9 @@
     <dimen name="details_activity__collapsable_lists__padding__horizontal">4dp</dimen>
 
     <dimen name="details_screenshot_height">240dp</dimen>
-    <dimen name="details_screenshot_width">240dp</dimen>
+    <dimen name="details_screenshot_width">135dp</dimen>
     <dimen name="details_screenshot_margin">4dp</dimen>
+    <!-- Use the aspect ratio of 16:9 which is more suitable for mobile devices.  -->
 
     <dimen name="fab_margin">16dp</dimen>
 
