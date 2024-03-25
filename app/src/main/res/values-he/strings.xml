@@ -84,7 +84,7 @@
     <string name="skip">דילוג</string>
     <string name="proxy">מתווך</string>
     <string name="enable_proxy_title">הפעלת מתווך HTTP</string>
-    <string name="enable_proxy_summary">הגדרת שרת מתווך HTTP לכל בקשת רשת</string>
+    <string name="enable_proxy_summary">הגדרת שרת מתווך HTTP לכל בקשות הרשת</string>
     <string name="proxy_host">מארח מתווך</string>
     <string name="proxy_host_summary">שם המארח של המתווך שלך (לדוגמה: 127.0.0.1)</string>
     <string name="proxy_port">פתחת מתווך</string>
@@ -588,11 +588,30 @@
     <string name="app_details_repository_button_prefer">העדפת מאגר</string>
     <string name="app_details_repository_expand">הרחבת רשימת המאגרים</string>
     <string name="repo_share_not_found">לא ניתן למצוא כתובת מאגר בטקסט ששותף.</string>
-    <string name="paste">הדבק</string>
-    <string name="repo_disable_warning_button">הפסק</string>
-    <string name="ipfsgw_add_add">הוסף</string>
+    <string name="paste">הדבקה</string>
+    <string name="repo_disable_warning_button">השבתה</string>
+    <string name="ipfsgw_add_add">הוספה</string>
     <string name="repositories_last_update_never">אף פעם</string>
-    <string name="repo_archive_toggle_description">הצג יישומונים שבארכיון וגרסאות לא מעודכנות של יישומונים</string>
+    <string name="repo_archive_toggle_description">להציג יישומונים מהארכיון וגרסאות לא עדכניות של יישומונים</string>
     <string name="repo_list_info_title">רשימת מאגרים</string>
-    <string name="repo_archive_toggle">ארכיון מאגרים</string>
+    <string name="repo_archive_toggle">מאגר ארכיון</string>
+    <string name="ipfsgw_caption_official_gateways">שערי גישה רשמיים ל־IPFS</string>
+    <string name="ipfsgw_title">שערי גישה ל־IPFS</string>
+    <string name="ipfsgw_explainer">הורדת יישומונים מנקודות גישה מסוג IPFS. (עובד רק עם מאגרי F-Droid עם תמיכה ב־IPFS).</string>
+    <string name="ipfsgw_caption_custom_gateways">שערי גישה מותאמים אישית ל־IPFS</string>
+    <string name="repo_list_info_text">מאגר הוא מקור של יישומונים. הרשימה הזאת מציגה את כל המאגרים שנוספו. המאגרים המושבתים אינם בשימוש.
+\n
+\nאם יישומון הוא יותר במאגר אחד, המאגר שנמצא יותר גבוה ברשימה מקבל עדיפות אוטומטית. אפשר לסדר את המאגרים מחדש בלחיצה ארוכה עליהם וגרירתם.</string>
+    <string name="repo_disable_warning">השבתת המאגר תסיר את מצב ה„העדפה” שלו מכל היישומונים.</string>
+    <string name="repo_archive_failed">מאגר ארכיון לא זמין כרגע</string>
+    <string name="ipfsgw_summary_disabled">הורדת יישומונים באמצעות נקודות גישת IPFS: מושבתת</string>
+    <string name="ipfsgw_add_title">הוספת שער גישת IPFS</string>
+    <string name="repo_error_adding_archive">אי אפשר להוסיף מאגרי ארכיון אוטומטית. יש לגעת במאגר שברשימה ולהפעיל משם את הארכיון.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">הורדת יישומונים באמצעות נקודת גישת IPFS‏: אחת מופעלת</item>
+        <item quantity="two">הורדת יישומונים באמצעות נקודות גישת IPFS‏: שתיים מופעלות</item>
+        <item quantity="other">הורדת יישומונים באמצעות נקודות גישת IPFS‏: %1$d מופעלות</item>
+    </plurals>
+    <string name="useDnsCache">להשתמש במטמון DNS</string>
+    <string name="useDnsCacheSummary">להשתמש בתוצאות ששמורות במטמון כדי למזער שאילתות DNS.</string>
 </resources>
