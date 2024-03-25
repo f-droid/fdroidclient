@@ -560,4 +560,38 @@
     <string name="copied_url_to_clipboard">Copied URL to clipboard</string>
     <string name="swap_connection_indexv0_error">You\'re trying to connect to someone with an outdated version of F-Droid. To connect they have to upgrade their F-Droid app. They can use swap to update their F-Droid app from you.</string>
     <string name="repo_num_apps_button">Show apps</string>
+    <string name="ipfsgw_title">IPFS Gateways</string>
+    <string name="ipfsgw_explainer">Download apps from IPFS web endpoints. (Only works for F-Droid repositories with IPFS support.)</string>
+    <string name="paste">Paste</string>PluralsCandidate
+
+    <string name="ipfsgw_caption_custom_gateways">Custom IPFS Gateways</string>
+    <string name="ipfsgw_caption_official_gateways">Official IPFS Gateways</string>
+    <string name="ipfsgw_add_add">Add</string>
+    <string name="ipfsgw_add_title">Add IPFS Gateway</string>
+    <string name="ipfsgw_summary_disabled">Download apps using IPFS web endpoints: disabled</string>
+    <string name="app_details_repository">Repository</string>
+    <string name="app_details_repository_preferred">(preferred)</string>
+    <string name="app_details_repository_expand">Expand repository list</string>
+    <string name="app_list_no_suggested_version">No version recommended for installation.</string>
+    <string name="repo_error_adding_archive">Archive repositories can not be added directly. Tap the repository in the list and enable the archive there.</string>
+    <string name="repositories_last_update">Last Update: %s</string>
+    <string name="repositories_last_update_never">never</string>
+    <string name="repo_list_info_title">Repository List</string>
+    <string name="repo_archive_failed">Archive repo currently not available</string>
+    <string name="repo_disable_warning">Disabling this repository will remove its \"preferred\" status from all apps.</string>
+    <string name="repo_disable_warning_button">Disable</string>
+    <string name="app_details_repositories">Repositories</string>
+    <string name="useDnsCacheSummary">Use cached results to minimise DNS queries.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Download app using IPFS web endpoints: %1$d enabled</item>
+        <item quantity="other">Download apps using IPFS web endpoints: %1$d enabled</item>
+    </plurals>
+    <string name="useDnsCache">Use DNS Cache</string>
+    <string name="repo_share_not_found">Could not find repo address in shared text.</string>
+    <string name="app_details_repository_button_prefer">Prefer Repository</string>
+    <string name="repo_archive_toggle">Repository Archive</string>
+    <string name="repo_archive_toggle_description">Show archived apps and outdated versions of apps</string>
+    <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.
+\n
+\nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
 </resources>

@@ -218,7 +218,7 @@
     <string name="antifeatures">Características indesejadas</string>
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antinonfreeadlist">Esta aplicação promove add-ons não livres</string>
-    <string name="antinonfreenetlist">Esta aplicação promove ou depende inteiramente de um serviço de rede não livre</string>
+    <string name="antinonfreenetlist">Esta aplicação promove ou depende inteiramente de um serviço de rede não alterável ou não gratuito</string>
     <string name="antinonfreedeplist">Esta aplicação depende de outras aplicações não livres</string>
     <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
     <string name="antinonfreeassetslist">Esta aplicação contém conteúdo não livre</string>
@@ -570,4 +570,39 @@
     <string name="swap_connection_indexv0_error">Você tentando se conecta com alguém mesmo sua versão do F-Droid estando ultrapassada . Para voltar a se conectar a eles tente atualizar seu aplicativo F-Droid. Eles podem usar um compartilhamento para ajuda-lo atualizar seu aplicativo F-Droid.</string>
     <string name="repo_num_apps_button">Mostrar aplicativos</string>
     <string name="swap_banner_message">Para compartilhar seus aplicativos, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
+    <string name="ipfsgw_summary_disabled">Descarregar aplicações usando endpoints da web IPFS: desativado</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Descarregar aplicação usando endpoints da web IPFS: %1$d ativado</item>
+        <item quantity="many">Descarregar aplicações usando endpoints da web IPFS: %1$d ativados</item>
+        <item quantity="other">Descarregar aplicações usando endpoints da web IPFS: %1$d ativados</item>
+    </plurals>
+    <string name="ipfsgw_add_title">Adicionar gateway de IPFS</string>
+    <string name="ipfsgw_add_add">Adicionar</string>
+    <string name="ipfsgw_caption_official_gateways">Gateways de IPFS oficiais</string>
+    <string name="ipfsgw_caption_custom_gateways">Gateways de IPFS personalizados</string>
+    <string name="paste">Colar</string>PluralsCandidate
+
+    <string name="ipfsgw_explainer">Descarregar aplicações a partir de pontos finais web IPFS. (Funciona apenas para repositórios F-Droid com suporte IPFS.)</string>
+    <string name="app_list_no_suggested_version">Nenhuma versão recomendada para instalação.</string>
+    <string name="repo_list_info_title">Lista de repositórios</string>
+    <string name="repo_list_info_text">Um repositório é uma fonte de aplicações. Esta lista mostra todos os repositórios atualmente adicionados. Os repositórios desativados não são utilizados.
+\n
+\nSe uma aplicação estiver em mais do que um repositório, o repositório no topo da lista é automaticamente preferido. Pode reordenar os repositórios premindo longamente e arrastando-os.</string>
+    <string name="app_details_repository_preferred">(preferido)</string>
+    <string name="app_details_repository_expand">Expandir a lista de repositórios</string>
+    <string name="repo_error_adding_archive">Os repositórios de arquivos não podem ser adicionados diretamente. Toque no repositório da lista e ative o arquivo nesse local.</string>
+    <string name="useDnsCache">Utilizar a cache DNS</string>
+    <string name="useDnsCacheSummary">Utilizar resultados em cache para minimizar as consultas de DNS.</string>
+    <string name="repo_archive_toggle">Arquivo do Repositório</string>
+    <string name="repo_archive_toggle_description">Mostrar aplicações arquivadas e versões desatualizadas de aplicações</string>
+    <string name="repo_archive_failed">O repositório de arquivos não está atualmente disponível</string>
+    <string name="repo_disable_warning_button">Desativar</string>
+    <string name="repo_disable_warning">A desativação deste repositório removerá o seu estatuto de \"preferido\" de todas as aplicações.</string>
+    <string name="ipfsgw_title">Gateways IPFS</string>
+    <string name="app_details_repository">Repositório</string>
+    <string name="app_details_repositories">Repositórios</string>
+    <string name="app_details_repository_button_prefer">Preferir Repositório</string>
+    <string name="repositories_last_update">Última atualização: %s</string>
+    <string name="repositories_last_update_never">nunca</string>
+    <string name="repo_share_not_found">Não foi possível encontrar o endereço do repositório no texto partilhado.</string>
 </resources>
