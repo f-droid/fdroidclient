@@ -610,6 +610,7 @@
     <plurals name="ipfsgw_summary">
         <item quantity="one">הורדת יישומונים באמצעות נקודת גישת IPFS‏: אחת מופעלת</item>
         <item quantity="two">הורדת יישומונים באמצעות נקודות גישת IPFS‏: שתיים מופעלות</item>
+        <item quantity="many">הורדת יישומונים באמצעות נקודות גישת IPFS‏: %1$d מופעלות</item>
         <item quantity="other">הורדת יישומונים באמצעות נקודות גישת IPFS‏: %1$d מופעלות</item>
     </plurals>
     <string name="useDnsCache">להשתמש במטמון DNS</string>
