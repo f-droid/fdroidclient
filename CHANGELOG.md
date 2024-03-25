@@ -1,3 +1,31 @@
+### 1.20.0-alpha0 (2024-03-25)
+
+* Overhaul how repositories are represented to users to make it clear when an install is coming from somewhere else but f-droid.org.
+
+* Allow users to change repository priority globally and per app
+
+* Custom Anti-Features are now enabled by default, rather than disabled
+
+* Support receiving repo URLs via Share
+
+* All activities respect day/night theme
+
+* Update external storage usages to work with targetSdkVersion 29
+
+* F-Droid Basic updated to work with targetSdkVersion 34
+
+### 1.19.2 (2024-03-12)
+
+* export PanicResponderActivity to make panic mode work again (@ConnyDuck)
+
+### 1.19.1 (2024-02-15)
+
+* Make all activities respect day/night theme
+
+* Support final fdroid.link URL syntax
+
+* Updated translations
+
 ### 1.19.0 (2024-01-25)
 
 * Add button background to App Details toolbar to improve visibility (@ConnyDuck)
