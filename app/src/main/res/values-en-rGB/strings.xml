@@ -588,4 +588,10 @@
     </plurals>
     <string name="useDnsCache">Use DNS Cache</string>
     <string name="repo_share_not_found">Could not find repo address in shared text.</string>
+    <string name="app_details_repository_button_prefer">Prefer Repository</string>
+    <string name="repo_archive_toggle">Repository Archive</string>
+    <string name="repo_archive_toggle_description">Show archived apps and outdated versions of apps</string>
+    <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.
+\n
+\nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
 </resources>
