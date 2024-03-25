@@ -264,7 +264,7 @@
     <string name="uninstalling">Удаление…</string>
     <string name="update_auto_install">Устанавливать обновления автоматически</string>
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
-    <string name="keep_install_history">Хранить историю установок</string>
+    <string name="keep_install_history">Сохранять историю установок</string>
     <string name="keep_install_history_summary">Сохранять журнал всех установок и удалений в приватном хранилище</string>
     <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
     <string name="versions">Версии</string>
@@ -329,7 +329,7 @@
     </plurals>
     <string name="app_list__name__downloading_in_progress">%1$s загружается</string>
     <string name="updates__tts__download_app">Скачать</string>
-    <string name="installed_app__updates_ignored">Обновления игнорируются</string>
+    <string name="installed_app__updates_ignored">Пропущенные обновления</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Обновления игнорируются для версии %1$s</string>
     <string name="main_menu__latest_apps">Последние</string>
     <string name="latest__empty_state__never_updated">После обновления списка приложений тут появятся самые последние</string>
@@ -519,7 +519,7 @@
     <string name="send_to_fdroid_metrics">Отправлять данные об использовании</string>
     <string name="menu_show_fdroid_metrics_report">Показать статистический отчет</string>
     <string name="toast_metrics_in_install_history">Статистический отчет %s доступен в средстве просмотра истории установок</string>
-    <string name="send_to_fdroid_metrics_summary">Еженедельно отправлять анонимные данные в F-Droid Metrics (работает при включенной опции \'Хранить историю установок\')</string>
+    <string name="send_to_fdroid_metrics_summary">Еженедельно отправлять анонимные данные в F-Droid Metrics (работает при включенной опции \'Сохранять историю установок\')</string>
     <string name="fdroid_metrics_report">Статистический отчет %s</string>
     <string name="install_history_and_metrics">История установок и статистика</string>
     <string name="send_fdroid_metrics_json">%s статистический отчет в виде JSON-файла</string>
@@ -596,23 +596,23 @@
     </plurals>
     <string name="app_details_repositories">Репозитории</string>
     <string name="app_details_repository">Репозиторий</string>
-    <string name="app_details_repository_button_prefer">Предпочитать репозиторий</string>
-    <string name="app_details_repository_expand">Развернуть репозитории</string>
-    <string name="app_list_no_suggested_version">Нет версии рекомендуемых к установке.</string>
+    <string name="app_details_repository_button_prefer">Предпочтительный репозиторий</string>
+    <string name="app_details_repository_expand">Развернуть список репозиториев</string>
+    <string name="app_list_no_suggested_version">Нет рекомендованной для установки версии.</string>
     <string name="repositories_last_update">Последнее обновление: %s</string>
     <string name="repositories_last_update_never">никогда</string>
     <string name="useDnsCache">Использовать кэш DNS</string>
     <string name="useDnsCacheSummary">Использовать кэш для минимизации запросов DNS.</string>
     <string name="repo_list_info_title">Список репозиториев</string>
     <string name="repo_archive_toggle">Архив репозитория</string>
-    <string name="repo_archive_toggle_description">Показать архивированные приложения и устаревшие версии приложении</string>
+    <string name="repo_archive_toggle_description">Отображать архивные и устаревшие версии приложений</string>
     <string name="repo_archive_failed">Архивный репозиторий сейчас недоступен</string>
-    <string name="app_details_repository_preferred">(выбран)</string>
-    <string name="repo_error_adding_archive">Архивные хранилища не могут быть добавлены напрямую. Нажмите на репозиторий в списке и включите в нем архив.</string>
+    <string name="app_details_repository_preferred">(предпочтителен)</string>
+    <string name="repo_error_adding_archive">Архивные репозитории не могут быть добавлены напрямую. Нажмите на репозиторий из списка и включите в нем архив.</string>
     <string name="repo_list_info_text">Репозиторий — это источник приложений. В этом списке отображаются все добавленные репозитории. Отключенные репозитории не используются.
 \n
-\nЕсли приложение находится в более чем одном репозитории, автоматически отдается предпочтение тому репозиторию, что находится выше в списке. Вы можете изменить порядок репозиториев, долго нажимая и перетаскивая их.</string>
-    <string name="repo_disable_warning">Отключение этого репозитория уберёт статус \"предпочтительный\" из всех приложений.</string>
+\nЕсли приложение находится в нескольких репозиториях, предпочтение автоматически отдается репозиторию, расположенному выше в списке. Изменить порядок репозиториев можно долгим нажатием и перетаскиванием.</string>
+    <string name="repo_disable_warning">Отключение этого репозитория удалит его статус \"предпочтительный\" из всех приложений.</string>
     <string name="repo_disable_warning_button">Отключить</string>
-    <string name="repo_share_not_found">Не удалось найти адрес репозитория в тексте.</string>
+    <string name="repo_share_not_found">Не удалось найти адрес репозитория в общем тексте.</string>
 </resources>
