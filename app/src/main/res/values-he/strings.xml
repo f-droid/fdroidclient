@@ -61,7 +61,7 @@
     <string name="antiadslist">יישומון זה מכיל פרסום</string>
     <string name="antitracklist">יישומון זה עוקב ומדווח על פעילותך</string>
     <string name="antinonfreeadlist">יישומון זה מקדם תוספים שאינם חופשיים</string>
-    <string name="antinonfreenetlist">יישומון זה מקדם או תלוי בשירות רשת שאינו חופשי</string>
+    <string name="antinonfreenetlist">יישומון זה מקדם או תלוי בשירות רשת שאינו ניתן להחלפה או שאינו חופשי</string>
     <string name="antinonfreedeplist">יישומון זה תלוי ביישומונים אחרים שאינם חופשיים</string>
     <string name="antiupstreamnonfreelist">קוד המקור בתצורתו המקורית אינו חופשי לחלוטין</string>
     <string name="display">תצוגה</string>
@@ -580,4 +580,12 @@
     <string name="copied_permission_to_clipboard">שם ההרשאה הועתק ללוח הגזירים</string>
     <string name="copied_url_to_clipboard">הכתובת הועתקה ללוח הגזירים</string>
     <string name="repo_num_apps_button">הצגת יישומונים</string>
+    <string name="app_details_repositories">מאגרים</string>
+    <string name="app_details_repository">מאגר</string>
+    <string name="app_details_repository_preferred">(מועדף)</string>
+    <string name="app_list_no_suggested_version">אין גרסה מומלצת להתקנה.</string>
+    <string name="repositories_last_update">עדכון אחרון: %s</string>
+    <string name="app_details_repository_button_prefer">העדפת מאגר</string>
+    <string name="app_details_repository_expand">הרחבת רשימת המאגרים</string>
+    <string name="repo_share_not_found">לא ניתן למצוא כתובת מאגר בטקסט ששותף.</string>
 </resources>
