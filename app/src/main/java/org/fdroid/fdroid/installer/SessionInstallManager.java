@@ -107,6 +107,14 @@ public class SessionInstallManager extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT >= 33) {
             params.setPackageSource(PackageInstaller.PACKAGE_SOURCE_STORE);
         }
+        if (Build.VERSION.SDK_INT >= 34) {
+            // Once the update ownership enforcement is enabled,
+            // the other installers will need the user action to update the package
+            // even if the installers have been granted the INSTALL_PACKAGES permission.
+            // The update ownership enforcement can only be enabled on initial installation.
+            // Set this to true on package update is a no-op.
+            params.setRequestUpdateOwnership(true);
+        }
         return params;
     }
 
