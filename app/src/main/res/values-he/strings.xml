@@ -588,4 +588,11 @@
     <string name="app_details_repository_button_prefer">העדפת מאגר</string>
     <string name="app_details_repository_expand">הרחבת רשימת המאגרים</string>
     <string name="repo_share_not_found">לא ניתן למצוא כתובת מאגר בטקסט ששותף.</string>
+    <string name="paste">הדבק</string>
+    <string name="repo_disable_warning_button">הפסק</string>
+    <string name="ipfsgw_add_add">הוסף</string>
+    <string name="repositories_last_update_never">אף פעם</string>
+    <string name="repo_archive_toggle_description">הצג יישומונים שבארכיון וגרסאות לא מעודכנות של יישומונים</string>
+    <string name="repo_list_info_title">רשימת מאגרים</string>
+    <string name="repo_archive_toggle">ארכיון מאגרים</string>
 </resources>
