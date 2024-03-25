@@ -29,7 +29,7 @@ android {
     compileSdk 34
 
     defaultConfig {
-        versionCode 1019050
+        versionCode 1020000
         versionName getVersionName()
         applicationId "org.fdroid"
 
