@@ -194,7 +194,6 @@ public class AppSecurityPermissions {
             }
 
             permGrpIcon.setImageDrawable(icon);
-            permGrpIcon.setColorFilter(0xff757575);
             permNameView.setText(label);
             setOnClickListener(this);
             setOnLongClickListener(this);

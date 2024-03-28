@@ -36,7 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
-        app:tint="@android:color/black" />
+        app:tint="?attr/colorControlNormal" />
 
     <ImageView
         android:layout_width="wrap_content"
