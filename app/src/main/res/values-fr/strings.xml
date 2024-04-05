@@ -251,7 +251,7 @@
     <string name="crash_dialog_text">Une erreur inattendue s’est produite provoquant l’arrêt de l’application. Souhaitez signaler cette erreur par courriel afin d’aider à corriger ce problème \?</string>
     <string name="antinonfreeassetslist">Cette appli comprend des éléments qui ne sont pas libres</string>
     <string name="menu_email">Envoyer un courriel à l’auteur</string>
-    <string name="useTor">Utilisez Tor</string>
+    <string name="useTor">Utiliser Tor</string>
     <string name="useTorSummary">Pour une confidentialité accrue, utilisation forcée de Tor pour le trafic en téléchargement. Orbot est requis</string>
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi…</string>
     <string name="repo_provider">Dépôt : %s</string>
