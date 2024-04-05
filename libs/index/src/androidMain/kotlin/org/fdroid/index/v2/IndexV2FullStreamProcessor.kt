@@ -16,7 +16,6 @@ import java.io.InputStream
 @OptIn(ExperimentalSerializationApi::class)
 public class IndexV2FullStreamProcessor(
     private val indexStreamReceiver: IndexV2StreamReceiver,
-    private val certificate: String,
     private val json: Json = IndexParser.json,
 ) : IndexV2StreamProcessor {
 
@@ -68,7 +67,7 @@ public class IndexV2FullStreamProcessor(
         private fun deserializeRepo(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV2.serializer())
-            indexStreamReceiver.receive(repo, version, certificate)
+            indexStreamReceiver.receive(repo, version)
         }
 
         private fun deserializePackages(decoder: JsonDecoder, index: Int) {
