@@ -4,7 +4,6 @@
     <string name="installIncompatible">Aplikasi tidak kompatibel dengan perangkat Anda, tetap pasang\?</string>
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
-    <string name="enable_nfc_send">Aktifkan Pengiriman NFC…</string>
     <string name="cache_downloaded">Simpan cache aplikasi</string>
     <string name="updates">Pembaruan</string>
     <string name="unstable_updates">Pembaruan tidak stabil</string>
@@ -141,7 +140,6 @@
     <string name="about_license">Lisensi</string>
     <string name="local_repo_running">F-Droid siap bertukar</string>
     <string name="system_installer">Ekstensi Istimewa</string>
-    <string name="repo_provider">Repositori: %s</string>
     <string name="menu_email">Pembuat Email</string>
     <string name="antinonfreeassetslist">Aplikasi ini mengandung aset non-bebas</string>
     <string name="touch_to_configure_local_repo">Sentuh untuk melihat detail dan izinkan orang lain untuk menukar aplikasi Anda.</string>
@@ -188,8 +186,6 @@
     <string name="install_error_unknown">Gagal memasang karena kesalahan yang tidak diketahui</string>
     <string name="uninstall_error_unknown">Gagal menghapus karena kesalahan yang tidak diketahui</string>
     <string name="system_install_denied_permissions">Izin khusus belum diberikan ke ekstensi! Harap laporkan error!</string>
-    <string name="swap_nfc_title">Sentuh untuk bertukar</string>
-    <string name="swap_nfc_description">Jika teman Anda memiliki F-Droid dan NFC yang aktif, sentuh perangkat secara bersamaan.</string>
     <string name="swap_join_same_wifi">Gabung ke Wi-Fi yang sama dengan teman Anda</string>
     <string name="swap_join_same_wifi_desc">Untuk bertukar menggunakan Wi-Fi, pastikan Anda berada pada jaringan yang sama. Jika Anda tidak memiliki akses ke jaringan yang sama, salah satu dari kalian dapat membuat Hotspot Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Bantu teman Anda bergabung ke hotspot Anda</string>
@@ -449,7 +445,6 @@
     <string name="share_repository">Bagikan Repositori</string>
     <string name="scan_removable_storage_title">Pindai penyimpanan portabel</string>
     <string name="scan_removable_storage_toast">Memindai %s…</string>
-    <string name="app_repository">Repositori: %1$s</string>
     <string name="main_menu__updates">Pembaruan</string>
     <string name="nearby_splash__request_permission">Cari sekarang</string>
     <string name="swap_toast_using_path">Menggunakan %1$s</string>

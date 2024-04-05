@@ -69,7 +69,6 @@
 \nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
     <string name="delete">Törlés</string>
     <string name="app_name_full">F-Droid</string>
-    <string name="enable_nfc_send">NFC küldés engedélyezése…</string>
     <string name="unstable_updates">Instabil frissítések</string>
     <string name="unstable_updates_summary">Frissítések ajánlása instabil verziókra</string>
     <string name="system_installer">Kiváltságos kiterjesztés</string>
@@ -186,7 +185,6 @@
     <string name="update_auto_download">Frissítések automatikus lekérése</string>
     <string name="update_auto_download_summary">A frissítések a háttérben letöltődnek, majd megjelenik egy értesítés a telepítéshez</string>
     <string name="choose_bt_send">Válassza ki a Bluetooth küldési módot</string>
-    <string name="repo_provider">Tároló: %s</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -199,9 +197,6 @@
     <string name="bluetooth_activity_not_found">Nem található Bluetooth küldési mód, válasszon egyet!</string>
     <string name="antinonfreeassetslist">Az alkalmazás nem szabad eszközöket tartalmaz</string>
     <string name="requires_features">Szükséges: %1$s</string>
-    <string name="swap_nfc_description">Ha a barátjának is van F-Droidja és bekapcsolt NFC-je, érintsék össze az
-        eszközeiket.
-    </string>
     <string name="swap_join_same_wifi">Kapcsolódjon a barátjával azonos WiFi-hálózathoz</string>
     <string name="swap_no_wifi_network">Jelenleg nincs hálózat</string>
     <string name="swap_active_hotspot">%1$s (saját hotspot)</string>
@@ -367,7 +362,6 @@
         <item quantity="other">%d megtekintése</item>
     </plurals>
     <string name="system_install_denied_permissions">A privilegizált engedélyek nem lettek megadva ehhez a kiterjesztéshez! Küldjön be hibajelentést!</string>
-    <string name="swap_nfc_title">Érintés a cseréhez</string>
     <string name="swap_join_same_wifi_desc">A Wi-Fin keresztüli cseréhez győződjön meg róla, hogy ugyanazon a hálózaton vannak. Ha nem fér hozzá a hálózathoz, akkor az egyikük Wi-Fi Hotspotot hozhat létre.</string>
     <string name="swap_join_this_hotspot">Segítsen a barátjának csatlakozni a hotspothoz</string>
     <string name="swap">Alkalmazások cseréje</string>
@@ -456,7 +450,6 @@
     <string name="scan_removable_storage_title">Cserélhető adattárolók átvizsgálása</string>
     <string name="scan_removable_storage_toast">Keresés: %s…</string>
     <string name="scan_removable_storage_summary">Keressen csomagtárolókat olyan cserélhető adattárolókon is, mint az SD kártyák és az USB pendrive-ok</string>
-    <string name="app_repository">Tároló: %1$s</string>
     <string name="main_menu__updates">Frissítések</string>
     <string name="nearby_splash__read_external_storage">Tárolók és tükrök keresése az SD-kártyán.</string>
     <string name="nearby_splash__request_permission">Keresés</string>

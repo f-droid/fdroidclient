@@ -4,7 +4,6 @@
     <string name="installIncompatible">アプリはお使いの端末と互換性がありません。それでもインストールしますか？</string>
     <string name="version">バージョン</string>
     <string name="delete">削除</string>
-    <string name="enable_nfc_send">NFC送信を有効にする…</string>
     <string name="cache_downloaded">キャッシュしたアプリを保存</string>
     <string name="updates">更新</string>
     <string name="other">その他</string>
@@ -128,7 +127,6 @@
     <string name="category_Science_Education">科学と教育</string>
     <string name="category_Security">セキュリティ</string>
     <string name="category_System">システム</string>
-    <string name="swap_nfc_description">友だちがF-DroidとNFCを持っているなら、一緒にお使いの端末をタッチしてください。</string>
     <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
     <string name="swap">アプリの交換</string>
     <string name="swap_no_wifi_network">まだネットワークがありません</string>
@@ -151,7 +149,6 @@
     <string name="empty_installed_app_list">アプリがインストールされていません。
 \n
 \n端末にアプリはありますが、F-Droid からは利用できません。リポジトリを更新する必要があるか、リポジトリからアプリをインストールできない可能性があります。</string>
-    <string name="swap_nfc_title">タッチして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じネットワークに接続しているか確認してください。同じネットワークにアクセスしていない場合は、Wi-Fiホットスポットを設定できます。</string>
     <string name="swap_join_this_hotspot">友達がホットスポットに接続するのを助けましょう</string>
     <string name="empty_can_update_app_list">おめでとうございます！
@@ -248,7 +245,6 @@
     <string name="useTor">Torを使用</string>
     <string name="useTorSummary">強制的にTorを経由した通信でダウンロードして匿名性を向上。Orbotが必要</string>
     <string name="swap_stopping_wifi">Wi-Fiを停止しています…</string>
-    <string name="repo_provider">リポジトリ: %s</string>
     <string name="update_auto_download">アプリの自動アップデート</string>
     <string name="update_auto_download_summary">自動的にアップデートをダウンロードして、インストールに関する通知を表示</string>
     <string name="download_pending">ダウンロードの開始を待機しています…</string>
@@ -448,7 +444,6 @@
     <string name="scan_removable_storage_title">リムーバルストレージをスキャン</string>
     <string name="scan_removable_storage_toast">%s をスキャンしています…</string>
     <string name="scan_removable_storage_summary">SDカードやUSBメモリなどのリムーバブルストレージでパッケージリポジトリを検索</string>
-    <string name="app_repository">リポジトリ: %1$s</string>
     <string name="main_menu__updates">更新</string>
     <string name="nearby_splash__read_external_storage">リポジトリとミラーの SD カードを検索。</string>
     <string name="nearby_splash__request_permission">検索</string>

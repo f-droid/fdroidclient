@@ -110,7 +110,6 @@
     <string name="notification_title_summary_install_error">Įdiegimas nepavyko</string>
     <string name="SignatureMismatch">Ši nauja versija pasirašyta kitu raktu palyginus su praeitu. Norėdami ją įdiegti, Jūs turite pašalinti senąją versiją. Atlikite tai ir tada bandykite dar kartą. (Įspėjame, kad ištrynus programėlę, jo duomenys tai pat bus pašalinti, būkite atsargūs)</string>
     <string name="installIncompatible">Programėlė nesuderinama su Jūsų įrenginiu, ar norite įdiegti vis tiek?</string>
-    <string name="enable_nfc_send">Įjungti siuntimą per „NFC“…</string>
     <string name="unstable_updates">Nestabilūs atnaujinimai</string>
     <string name="unstable_updates_summary">Siūlyti atnaujinimus į nestabilias versijas</string>
     <string name="keep_install_history">Saugoti įdiegimų istoriją</string>
@@ -228,7 +227,6 @@
     <string name="repo_exists_and_enabled">%1$s jau nustatyta ir įjungta.</string>
     <string name="bad_fingerprint">Blogas kontrolinis kodas</string>
     <string name="invalid_url">Tai nėra tinkamas URL.</string>
-    <string name="repo_provider">Saugykla: %s</string>
     <string name="menu_open">Atverti</string>
     <string name="menu_ignore_all">Nepaisyti visų atnaujinimų</string>
     <string name="menu_ignore_this">Nepaisyti šio atnaujinimo</string>
@@ -310,7 +308,6 @@
     <string name="empty_can_update_app_list">Sveikiname!
 \nJūsų programėlės yra atnaujintos.</string>
     <string name="swap">Keitimasis programėlėmis</string>
-    <string name="swap_nfc_title">Spustelėkite, kad keistis</string>
     <string name="nearby_splash__request_permission">Išbandykite</string>
     <string name="nearby_splash__find_people_button">Rasti žmones netoliese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio\? Gaukite programėlių iš įrenginių netoliese!</string>
@@ -328,7 +325,6 @@
     <string name="main_menu__updates">Naujinimai</string>
     <string name="menu_translation">Vertimas</string>
     <string name="menu_changelog">Keitinių žurnalas</string>
-    <string name="app_repository">Saugykla: %1$s</string>
     <string name="app_details_donate_prompt_unknown_author">Paaukokite %1$s kūrėjams kavai!</string>
     <string name="scan_removable_storage_toast">Peržiūrima %s…</string>
     <string name="scan_removable_storage_title">Tikrinti išimamas laikmenas</string>
@@ -480,7 +476,6 @@
     <string name="swap_success">Sėkmingi mainai!</string>
     <string name="swap_join_this_hotspot">Padėkite draugui prisijungti prie savo prieigos taško</string>
     <string name="swap_join_same_wifi">Prisijunkite prie to paties Wi-Fi kaip ir jūsų draugas</string>
-    <string name="swap_nfc_description">Jei draugas turi įjungtą F-Droid ir NFC, suglauskite savo prietaisus kartu.</string>
     <string name="share_apk_error">Nepavyko bendrinti programėlės failo</string>
     <string name="system_install_denied_permissions">Ypatingieji leidimai plėtiniui nebuvo suteikti! Sukurkite pranešimą apie klaidą!</string>
     <string name="empty_search_available_app_list">Atitinkančių paiešką programėlių nėra.</string>

@@ -4,7 +4,6 @@
     <string name="installIncompatible">Application non compatible avec votre appareil, l’installer quand même \?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
-    <string name="enable_nfc_send">Activer l’envoi par CCP/NFC…</string>
     <string name="cache_downloaded">Conserver les applis en cache</string>
     <string name="updates">Mises à jour</string>
     <string name="other">Autre</string>
@@ -154,7 +153,6 @@
     <string name="category_Connectivity">Connectivité</string>
     <string name="category_Sports_Health">Sport et santé</string>
     <string name="empty_can_update_app_list">Félicitations !\nVos applications sont à jour.</string>
-    <string name="swap_nfc_description">Si votre ami utilise F-Droid et a activé la CCP/NFC, faites toucher vos appareils.</string>
     <string name="swap_switch_to_wifi">Appuyez pour basculer vers un réseau Wi-Fi</string>
     <string name="swap_dont_show_again">Ne plus afficher</string>
     <string name="loading">Chargement…</string>
@@ -192,7 +190,6 @@
 \nDes applications sont présentes sur votre appareil mais aucune n\'est disponible sur F-Droid. Vous devriez actualiser vos dépôts ou ajouter de nouveaux dépôts dans F-Droid pour découvrir de nouvelles applications ou mettre à jour vos applications existantes.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>
-    <string name="swap_nfc_title">Touchez pour échanger</string>
     <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si
         vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.
     </string>
@@ -254,7 +251,6 @@
     <string name="useTor">Utiliser Tor</string>
     <string name="useTorSummary">Pour une confidentialité accrue, utilisation forcée de Tor pour le trafic en téléchargement. Orbot est requis</string>
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi…</string>
-    <string name="repo_provider">Dépôt : %s</string>
     <string name="update_auto_download">Récupérer automatiquement les mises à jour</string>
     <string name="update_auto_download_summary">Les mises à jour sont téléchargées automatiquement et vous êtes invité à
         les installer
@@ -474,7 +470,6 @@
     <string name="about_forum">Forum d\'assistance</string>
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
-    <string name="app_repository">Dépôt : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
     <string name="nearby_splash__request_permission">Chercher</string>
     <string name="swap_toast_using_path">Utilisation de %1$s</string>

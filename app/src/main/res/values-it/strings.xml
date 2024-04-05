@@ -7,7 +7,6 @@
     <string name="installIncompatible">L\'app non è compatibile con il tuo dispositivo, vuoi installarla lo stesso\?</string>
     <string name="version">Versione</string>
     <string name="delete">Elimina</string>
-    <string name="enable_nfc_send">Attiva invio NFC…</string>
     <string name="cache_downloaded">Mantieni le app in cache</string>
     <string name="updates">Aggiornamenti</string>
     <string name="other">Altro</string>
@@ -234,8 +233,6 @@
     <string name="system_install_denied_permissions">I privilegi non sono stati concessi all\'estensione! Per favore
         segnala questo problema!
     </string>
-    <string name="swap_nfc_title">Tocca per scambiare</string>
-    <string name="swap_nfc_description">Se il tuo amico ha F-Droid e NFC attivato, sovrapponete i vostri dispositivi.</string>
     <string name="swap_join_same_wifi_desc">Per scambiare usando il Wi-Fi, assicuratevi di trovarvi sulla stessa rete.
         Se non avete accesso alla stessa rete, uno dei due può creare un Hotspot Wi-Fi.
     </string>
@@ -263,7 +260,6 @@
     <string name="swap_stopping_wifi">Spegnimento del Wi-Fi…</string>
     <string name="update_auto_download_summary">Gli aggiornamenti vengono scaricati automaticamente e ti sarai notificato per installarli</string>
     <string name="update_auto_download">Ottieni automaticamente gli aggiornamenti</string>
-    <string name="repo_provider">Repository: %s</string>
     <string name="download_pending">In attesa di avviare lo scaricamento…</string>
     <string name="keep_hour">1 ora</string>
     <string name="keep_day">1 giorno</string>
@@ -478,7 +474,6 @@
     <string name="send_installed_apps">Condividi applicazioni installate</string>
     <string name="menu_open">Apri</string>
     <string name="send_installed_apps_csv">Applicazioni installate da F-Droid in formato CSV</string>
-    <string name="app_repository">Repository: %1$s</string>
     <string name="scan_removable_storage_title">Scansiona archivio rimovibile</string>
     <string name="scan_removable_storage_toast">Scansione %s…</string>
     <string name="nearby_splash__request_permission">Cerca ora</string>

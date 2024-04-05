@@ -25,7 +25,6 @@
     <string name="repo_add_fingerprint">فنگرپرنٹ (چوݨواں)</string>
     <string name="menu_manage">ذخیرے</string>
     <string name="bad_fingerprint">فنگرپرنٹ نہیں چنگا اے</string>
-    <string name="repo_provider">ذخیرہ: %s</string>
     <string name="menu_open">کھولھو</string>
     <string name="menu_upgrade">نویں کرو</string>
     <string name="menu_website">ویب‌سائیٹ</string>
@@ -92,7 +91,6 @@
     <string name="repo_last_update">پچھلا نواں کرن</string>
     <string name="swap_send_fdroid">ایف‌ڈروئیڈ بھیجیو</string>
     <string name="installIncompatible">اَیپ تہاڈی ڈِوائیس نال انُکول نہیں اے، پھِر وی اینسٹال کرو؟</string>
-    <string name="enable_nfc_send">این‌ایف‌سی بھیجݨ چالو کرو…</string>
     <string name="cache_downloaded">کیش کیتے اَیپ رکھو</string>
     <string name="more">ہور</string>
     <string name="notification_action_update">نویں کریو</string>
@@ -130,7 +128,6 @@
     <string name="app__install_downloaded_update">نواں کرو</string>
     <string name="menu_license">لائیسنس: %s</string>
     <string name="app_installed">اینسٹال کیتا گیا</string>
-    <string name="app_repository">ذخیرہ: %1$s</string>
     <string name="menu_litecoin">لائیٹ‌کوئین</string>
     <string name="menu_liberapay">لیبرپے</string>
     <string name="main_menu__updates">اِطلاعاں</string>
@@ -229,7 +226,6 @@
         <item quantity="other">ساریاں %d ویکھو</item>
     </plurals>
     <string name="nearby_splash__find_people_button">نیڑے تیڑے تے لوک لبھو</string>
-    <string name="swap_nfc_title">سویپ کرن لئی چھوہوو</string>
     <string name="swap_success">سویپ کیتیاں گیاں!</string>
     <string name="swap_no_wifi_network">حالے کوئی نیٹورک نہیں اے</string>
     <string name="swap_active_hotspot">%1$s (تہادے ہوٹ‌سپوٹ)</string>

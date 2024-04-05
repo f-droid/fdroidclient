@@ -9,7 +9,6 @@
     </string>
     <string name="version">Verzia</string>
     <string name="delete">Odstrániť</string>
-    <string name="enable_nfc_send">Zapnúť odoslanie cez NFC …</string>
     <string name="cache_downloaded">Prevzaté balíky ponechať na úložisku</string>
     <string name="updates">Aktualizácie</string>
     <string name="other">Ďalšie</string>
@@ -139,7 +138,6 @@
     <string name="category_Science_Education">Veda a výuka</string>
     <string name="category_Security">Bezpečnosť</string>
     <string name="category_System">Systém</string>
-    <string name="swap_nfc_description">Ak má váš kamarát F-Droid a zapnuté NFC, dotknite sa zariadeniami.</string>
     <string name="swap_join_same_wifi">Pripojte sa na rovnaké Wi-fi ako kamarát</string>
     <string name="swap">Vymeniť aplikácie</string>
     <string name="swap_no_wifi_network">Zatiaľ žiadna sieť</string>
@@ -236,7 +234,6 @@
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
     <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
-    <string name="swap_nfc_title">Vymeniť dotykom</string>
     <string name="swap_join_same_wifi_desc">Pre výmenu cez wifi sa uistite, že ste v rovnakej sieti. Ak nemáte prístup
         do rovnakej siete, možete vytvoriť na jednom zo zariadení Wi-Fi Hotspot.
     </string>
@@ -260,7 +257,6 @@
     <string name="crash_dialog_text">Neočakávaná chyba spôsobila násilné ukončenie aplikácie. Chcete poslať e-mail s detailami a pomôcť tak vyriešiť problém?</string>
     <string name="crash_dialog_comment_prompt">Sem môžete poskytnúť extra informácie a pripomienky:</string>
     <string name="swap_scan_or_type_url">Naskenujte kód alebo zadajte URL v prehliadači.</string>
-    <string name="repo_provider">Repozitár: %s</string>
     <string name="useTor">Použiť Tor</string>
     <string name="useTorSummary">Vyžadovať preberanie cez Tor pre zabezpečenie súkromia. Vyžaduje aplikáciu Orbot</string>
     <string name="swap_stopping_wifi">Vypínanie Wi-Fi…</string>
@@ -431,7 +427,6 @@
     <string name="scan_removable_storage_summary">Hľadať repozitáre balíkov na odpojiteľnom úložisku ako sú SD karty a USB kľúče</string>
     <string name="about_forum">Diskusné fórum podpory</string>
     <string name="app_suggested">Odporúčané</string>
-    <string name="app_repository">Repozitár: %1$s</string>
     <string name="app_size">Veľkosť: %1$s</string>
     <string name="send_installed_apps_csv">Zoznam aplikácií nainštalovaných F-Droidom v podobe CSV souboru</string>
     <string name="send_installed_apps">Zdieľať nainštalované aplikácie</string>

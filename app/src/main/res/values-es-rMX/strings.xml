@@ -12,7 +12,6 @@
     <string name="cache_downloaded">Mantener aplicaciones almacenadas en caché</string>
     <string name="prompt_to_send_crash_reports_summary">Recopilar datos sobre bloqueos y pedir enviarlos al desarrollador</string>
     <string name="prompt_to_send_crash_reports">Pregunta para enviar informes de bloqueo</string>
-    <string name="enable_nfc_send">Habilitar envío NFC…</string>
     <string name="delete">Borrar</string>
     <string name="by_author_format">por %s</string>
     <string name="version">Versión</string>
@@ -132,7 +131,6 @@
     <string name="menu_select_for_wipe">Seleccione para borrar</string>
     <string name="menu_open">Abrir</string>
     <string name="repositories_summary">Añadir fuentes adicionales de aplicaciones</string>
-    <string name="repo_provider">Repositorio: %s</string>
     <string name="malformed_repo_uri">Ignorando el URI de repositorio malformado: %s</string>
     <string name="invalid_url">Esta no es una dirección URL válida.</string>
     <string name="bad_fingerprint">Mala huella digital</string>
@@ -233,7 +231,6 @@
     <string name="app_list_results_hidden_antifeature_settings">Algunos resultados han sido ocultados basándonos en tus configuraciones anti-feature.</string>
     <string name="added_on">Añadido en %s</string>
     <string name="app_installed_media">Archivo instalado en %s</string>
-    <string name="app_repository">Repositorio: %1$s</string>
     <string name="app_list_download_ready">Descargado, listo para instalar</string>
     <string name="app_list__dismiss_app_update">Actualización ignorada</string>
     <string name="app_details_repository_button_prefer">Preferir repositorio</string>

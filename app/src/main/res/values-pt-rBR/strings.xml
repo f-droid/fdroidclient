@@ -7,7 +7,6 @@
     <string name="installIncompatible">O aplicativo é incompatível com seu dispositivo. Quer instalá-lo mesmo assim\?</string>
     <string name="version">Versão</string>
     <string name="delete">Excluir</string>
-    <string name="enable_nfc_send">Ativar envio por NFC…</string>
     <string name="cache_downloaded">Manter aplicativos em cache</string>
     <string name="updates">Atualizações</string>
     <string name="other">Outros</string>
@@ -133,9 +132,6 @@
     <string name="category_Science_Education">Ciência &amp; Educação</string>
     <string name="category_Security">Segurança</string>
     <string name="category_System">Sistema</string>
-    <string name="swap_nfc_description">Caso seu(sua) amigo(a) tenha o F-Droid e NFC ligados, ponham os seus
-        dispositivos juntos.
-    </string>
     <string name="swap_join_same_wifi">Juntar-se a mesma rede Wi-Fi do(a) seu(sua) amigo(a)</string>
     <string name="swap">Permutar aplicativos</string>
     <string name="swap_no_wifi_network">Nenhuma rede ainda</string>
@@ -164,7 +160,6 @@
 \nTodos os seus aplicativos e/ou seus repositórios estão atualizados.</string>
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
-    <string name="swap_nfc_title">Toque para permutar</string>
     <string name="swap_join_same_wifi_desc">Para permutar usando Wi-Fi, certifique-se de que você está na mesma rede.
         Caso você não tenha acesso à mesma rede, um de vocês pode criar um ponto de acesso Wi-Fi.
     </string>
@@ -259,7 +254,6 @@
     <string name="useTor">Usar o Tor</string>
     <string name="useTorSummary">Forçar tráfego de download através do Tor para maior privacidade. Exige Orbot</string>
     <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
-    <string name="repo_provider">Repositório: %s</string>
     <string name="update_auto_download">Obter atualizações automaticamente</string>
     <string name="update_auto_download_summary">As atualizações são baixadas automaticamente e você é notificado para instalá-las</string>
     <string name="download_pending">Esperando para iniciar o download…</string>
@@ -483,7 +477,6 @@
     <string name="scan_removable_storage_title">Verificar armazenamento removível</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="scan_removable_storage_summary">Procure repositórios de pacotes em armazenamento removível, como cartões SD e Pen Drives USB</string>
-    <string name="app_repository">Repositório: %1$s</string>
     <string name="main_menu__updates">Atualizações</string>
     <string name="nearby_splash__read_external_storage">Pesquisa o Cartão SD por repositórios e espelhos.</string>
     <string name="nearby_splash__request_permission">Buscar agora</string>

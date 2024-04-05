@@ -64,7 +64,6 @@
     <string name="bad_fingerprint">Onaanvaarbare vingerafdruk</string>
     <string name="invalid_url">Dit is nie \'n geldige URL nie.</string>
     <string name="malformed_repo_uri">Ek ignoreer die misvormde argief URI: %s</string>
-    <string name="repo_provider">Argief: %s</string>
     <string name="menu_manage">Argiewe</string>
     <string name="repositories_summary">Laai addisionele program bronne</string>
     <string name="menu_settings">Instellings</string>
@@ -127,7 +126,6 @@
     <string name="no_handler_app">Jy het geen beskikbare program wat %s kan hanteer nie.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Ongeteken</string>
-    <string name="enable_nfc_send">Aktiveer NFC stuur…</string>
     <string name="deleting_repo">Huidige argief word uitgevee …</string>
     <string name="adding_apks_format">Laai %s na argief…</string>
     <string name="no_permissions">Geen toestemmings nie</string>
@@ -193,10 +191,6 @@
     <string name="uninstall_error_unknown">Deïnstallasie onsuksesvol vanweë \'n onbekende fout</string>
     <string name="system_install_denied_permissions">Die voorreg toestemming is nie toegestaan vir die uitbreiding nie!
         Skep asseblief \'n foutverslag!
-    </string>
-    <string name="swap_nfc_title">Tas om te deel</string>
-    <string name="swap_nfc_description">Indien jou vriend F-Droid en NFC aangeskakel het, hou julle toestelle teen
-        mekaar.
     </string>
     <string name="swap_join_same_wifi">Sluit aan by die dieselfde Wi-Fi as jou vriend</string>
     <string name="swap_join_same_wifi_desc">Om te deel met behulp van Wi-Fi, sorg dat jy op dieselfde netwerk is. Indien
@@ -498,7 +492,6 @@
     <string name="app_list__dismiss_vulnerable_app">Kwesbaarheid word geïgnoreer</string>
     <string name="app_list__dismiss_app_update">Opdatering geïgnoreer</string>
     <string name="app_size">Grootte: %1$s</string>
-    <string name="app_repository">Bewaarplek: %1$s</string>
     <string name="app_suggested">Voorgestel</string>
     <string name="about_forum">Ondersteuningsforum</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Die geïnstalleerde weergawe is nie versoenbaar met enige beskikbare weergawes nie. As u die app deïnstalleer, kan u versoenbare weergawes sien en installeer. Dit kom dikwels voor by programme wat via Google Play of ander bronne geïnstalleer word, as dit deur \'n ander sertifikaat onderteken word.</string>

@@ -2,7 +2,6 @@
 <resources>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
-    <string name="enable_nfc_send">啟用 NFC 傳送…</string>
     <string name="cache_downloaded">保留快取中的程式</string>
     <string name="updates">更新</string>
     <string name="other">其他</string>
@@ -139,8 +138,6 @@
 \n所有應用程式已更新至最新版本。</string>
     <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
     <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
-    <string name="swap_nfc_title">觸碰來交換</string>
-    <string name="swap_nfc_description">若你的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰你們的裝置。</string>
     <string name="theme_dark">暗色系</string>
     <string name="theme_light">明亮色系</string>
     <string name="interval_2w">每兩週檢查更新一次</string>
@@ -251,7 +248,6 @@
     <string name="useTorSummary">強制下行流量通過 Tor 以加強對私隱的保障，需要 Orbot</string>
     <string name="update_auto_download">自動下載更新</string>
     <string name="update_auto_download_summary">F-Droid 將會自動下載更新，下載完畢後會通知你安裝有關更新</string>
-    <string name="repo_provider">軟件庫：%s</string>
     <string name="download_pending">正等待下載開始…</string>
     <string name="install_error_notify_title">安裝 %s 時發生錯誤</string>
     <string name="uninstall_error_notify_title">卸載 %s 時發生錯誤</string>
@@ -399,7 +395,6 @@
     <string name="repo_exists_enable">%1$s已經設置好，請確認你要否要重新啟用軟件庫。</string>
     <string name="repo_exists_add_fingerprint">%1$s已經設置好，此動作將會加入新的鑰匙資料。</string>
     <string name="scan_removable_storage_summary">在可移除的儲存裝置上尋找軟件庫，例如 SD 卡或 USB 隨身碟</string>
-    <string name="app_repository">軟件庫：%1$s</string>
     <string name="app_suggested">建議</string>
     <string name="about_forum">支援論壇</string>
     <string name="scan_removable_storage_toast">正在掃描 %s…</string>

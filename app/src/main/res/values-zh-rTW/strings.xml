@@ -5,7 +5,6 @@
     <string name="installIncompatible">應用程式與您的裝置不相容。仍要繼續安裝嗎？</string>
     <string name="version">版本</string>
     <string name="delete">刪除</string>
-    <string name="enable_nfc_send">啟用 NFC 傳送功能…</string>
     <string name="cache_downloaded">保留已快取的應用程式</string>
     <string name="updates">更新</string>
     <string name="unstable_updates">不穩定版更新</string>
@@ -189,12 +188,10 @@
     <string name="repo_exists_enable">%1$s 已安裝，請確認是否要重新啟用它。</string>
     <string name="repo_exists_and_enabled">%1$s 已安裝並啟用。</string>
     <string name="malformed_repo_uri">略過異常的軟體庫 URI：%s</string>
-    <string name="repo_provider">軟體庫：%s</string>
     <string name="menu_email">寄電子郵件給作者</string>
     <string name="menu_issues">問題</string>
     <string name="local_repo_running">F-Droid 已準備好交換</string>
     <string name="touch_to_configure_local_repo">輕觸以檢視詳細資料並允許其他人取得您的應用程式。</string>
-    <string name="swap_nfc_title">觸碰以便交換</string>
     <string name="writing_index_jar">寫入已簽署的索引檔案中 (index.jar)…</string>
     <string name="linking_apks">正在連結 APK 至軟體庫…</string>
     <string name="next">下一步</string>
@@ -225,7 +222,6 @@
 \n
 \n在您的裝置上有應用程式，但 F-Droid 並無您裝置上可用的應用程式。這可能是因為您需要更新您的軟體庫，或是軟體庫真的沒有您可用的應用程式。</string>
     <string name="system_install_denied_permissions">擴充未被授予特權權限！請建立一份錯誤報告！</string>
-    <string name="swap_nfc_description">如果您的朋友有 F-Droid 並且已開啟NFC，那把你們的裝置相互貼近。</string>
     <string name="swap_join_same_wifi">將您朋友加入相同的 Wi-Fi</string>
     <string name="swap_no_wifi_network">尚沒有網路</string>
     <string name="swap_view_available_networks">輕觸以開啟可用的網路</string>
@@ -445,7 +441,6 @@
     <string name="about_forum">支援論壇</string>
     <string name="app_suggested">建議</string>
     <string name="app_size">大小：%1$s</string>
-    <string name="app_repository">軟體庫：%1$s</string>
     <string name="scan_removable_storage_title">掃描可移除的儲存裝置</string>
     <string name="scan_removable_storage_summary">尋找可移除的儲存裝置上的套件軟體庫，例如 SD 卡和 USB 隨身碟</string>
     <string name="nearby_splash__read_external_storage">在 SD 記憶卡中搜尋軟體庫與鏡像。</string>

@@ -3,7 +3,6 @@
     <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
-    <string name="enable_nfc_send">הפעלת שליחה עם NFC…</string>
     <string name="cache_downloaded">שמירת יישומונים במטמון</string>
     <string name="updates">עדכונים</string>
     <string name="other">אחר</string>
@@ -131,7 +130,6 @@
 \nהיישומונים שלך עדכניים.</string>
     <string name="install_error_unknown">ההתקנה נכשלה עקב שגיאה בלתי ידועה</string>
     <string name="uninstall_error_unknown">ההסרה נכשלה עקב שגיאה בלתי ידועה</string>
-    <string name="swap_nfc_description">אם לחברך יש F-Droid ו־NFC פעיל הצמידו את המכשירים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרפות לאותה רשת אלחוטית כמו חברך</string>
     <string name="swap_join_this_hotspot">סיוע לחברך להצטרף לנקודת גישה</string>
     <string name="swap">החלפת יישומונים</string>
@@ -193,7 +191,6 @@
     <string name="unstable_updates">עדכונים לא יציבים</string>
     <string name="unstable_updates_summary">הצעת עדכונים לגרסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
-    <string name="swap_nfc_title">יש לגעת כדי להחליף</string>
     <string name="swap_nearby">החלפה בקרבת מקום</string>
     <string name="swap_cant_find_peers">לא מצאת את מבוקשך?</string>
     <string name="swap_send_fdroid">שליחת F-Droid</string>
@@ -249,7 +246,6 @@
     <string name="crash_dialog_title">‏F-Droid קרסה</string>
     <string name="crash_dialog_text">אירעה שגיאה לא צפויה אשר אילצה את עצירת היישומון. לשלוח בדוא״ל את הפרטים כדי לעזור לפתור את הבעיה?</string>
     <string name="crash_dialog_comment_prompt">ניתן להוסיף מידע והערות בנוסף להלן:</string>
-    <string name="repo_provider">מאגר: %s</string>
     <string name="useTor">שימוש ב־Tor</string>
     <string name="useTorSummary">אילוץ העברת תעבורת ההורדה דרך Tor להגברת הפרטיות. דורש Orbot</string>
     <string name="swap_stopping_wifi">חיבור הרשת האלחוטי מופסק…</string>
@@ -475,7 +471,6 @@
     <string name="about_forum">פורום תמיכה</string>
     <string name="app_suggested">הצעה</string>
     <string name="app_size">גודל: %1$s</string>
-    <string name="app_repository">מאגר: %1$s</string>
     <string name="scan_removable_storage_title">סריקת אחסון נתיק</string>
     <string name="scan_removable_storage_summary">איתור מאגרי חבילות בהתקנים נתיקים כגון כרטיסי SD וכונני דיסק און קי</string>
     <string name="nearby_splash__read_external_storage">חיפוש מאגרים ועותקי מראה בכרטיס ה־SD.</string>

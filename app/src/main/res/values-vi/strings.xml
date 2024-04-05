@@ -6,7 +6,6 @@
     <string name="installIncompatible">Ứng dụng không tương thích với thiết bị, vẫn tiếp tục cài đặt?</string>
     <string name="version">Phiên bản</string>
     <string name="delete">Xóa</string>
-    <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
     <string name="cache_downloaded">Lưu các ứng dụng trong bộ nhớ đệm</string>
     <string name="updates">Những bản cập nhật</string>
     <string name="other">Khác</string>
@@ -123,8 +122,6 @@
     <string name="category_Science_Education">Khoa học &amp; giáo dục</string>
     <string name="category_Security">Bảo mật</string>
     <string name="category_System">Hệ thống</string>
-    <string name="swap_nfc_description">Nếu bạn của bạn có F-Droid và đã bật NFC, hãy chạm hai thiết bị vào nhau.
-    </string>
     <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>
     <string name="swap">Trao đổi ứng dụng</string>
     <string name="swap_no_wifi_network">Không có mạng</string>
@@ -175,7 +172,6 @@
     <string name="empty_can_update_app_list">Chúc mừng!\nCác ứng dụng của bạn đã được cập nhật.</string>
     <string name="install_error_unknown">Cài đặt thất bại vì lỗi không xác định</string>
     <string name="uninstall_error_unknown">Gỡ cài đặt thất bại vì lỗi không xác định</string>
-    <string name="swap_nfc_title">Chạm để trao đổi</string>
     <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu
         không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.
     </string>
@@ -308,7 +304,6 @@
     </plurals>
     <string name="versions">Các phiên bản</string>
     <string name="clear_search">Xoá tìm kiếm</string>
-    <string name="repo_provider">Kho: %s</string>
     <string name="repositories_summary">Thêm các nguồn ứng dụng khác</string>
     <string name="menu_video">Video</string>
     <string name="menu_license">Giấy phép: %s</string>
@@ -451,7 +446,6 @@
     <string name="updates_disabled_by_settings">Tất cả bản cập nhật bị tắt bởi cài đặt dữ liệu di động/WiFi</string>
     <string name="send_installed_apps_csv">Các ứng dụng được F-Droid cài đặt dưới dạng tệp CSV</string>
     <string name="app_size">Kích cỡ: %1$s</string>
-    <string name="app_repository">Kho: %1$s</string>
     <string name="app_suggested">Được đề xuất</string>
     <string name="scan_removable_storage_toast">Đang quét %s…</string>
     <string name="main_menu__updates">Cập nhật</string>

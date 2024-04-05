@@ -39,7 +39,6 @@
     <string name="version">Yancuic yuhcayotl</string>
     <string name="by_author_format">Itech pohui %s</string>
     <string name="delete">Ixpohpoloa</string>
-    <string name="enable_nfc_send">Itquitia ihualiztli NFC…</string>
     <string name="prompt_to_send_crash_reports">Icihuitilli pampa ihualia tlatolmelahualiztli aiuhcayotl</string>
     <string name="prompt_to_send_crash_reports_summary">Xicentetilia tlanonotsalistli pampa aiuhcayotl ihuan xihualiaz tequitini</string>
     <string name="cache_downloaded">Achtopapiya tepoztlatlatquitl ipan tlapohuacemanaliztli cenca ihcihui</string>

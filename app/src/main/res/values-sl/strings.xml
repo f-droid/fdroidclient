@@ -33,7 +33,6 @@
     <string name="app_name_full">F-Droid</string>
     <string name="installIncompatible">Izgleda, da aplikacija ni kompatibilna z vašo napravo. Ali jo želite vseeno poskusiti namestiti?</string>
     <string name="delete">Izbriši</string>
-    <string name="enable_nfc_send">Omogoči NFC pošiljanje…</string>
     <string name="unstable_updates">Nestabilne posodobitve</string>
     <string name="unstable_updates_summary">Predlagaj posodabljanje na nestabilne verzije</string>
     <string name="other">Drugo</string>
@@ -169,7 +168,6 @@
     <string name="repo_exists_and_enabled">%1$s je že nastavljen in omogočen.</string>
     <string name="bad_fingerprint">Slab prstni odtis</string>
     <string name="invalid_url">To ni veljaven URL naslov.</string>
-    <string name="repo_provider">Repozitorij: %s</string>
     <string name="repositories_summary">Dodaj dodatne vire aplikacij</string>
     <string name="menu_ignore_all">Ignoriraj vse posodobitve</string>
     <string name="menu_ignore_this">Ignoriraj to posodobitev</string>
@@ -255,7 +253,6 @@
     <string name="uninstall_error_unknown">Odstanitev ni uspela zaradi neznane napake</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Ni interneta? Dobite aplikacije od ljudi blizu Vas!</string>
     <string name="nearby_splash__find_people_button">Najdite ljudi blizu mene</string>
-    <string name="swap_nfc_title">Dotaknite se, da menjate</string>
     <string name="swap_join_same_wifi">Pridruži se istemu Wi-Fi, kot je Vaš prijatelj</string>
     <string name="swap_join_this_hotspot">Pomagajte Vašemu prijatelju najti hotspot</string>
     <string name="swap">Menjaj aplikacije</string>
@@ -421,7 +418,6 @@
     <string name="empty_installed_app_list">Nameščenih ni nič aplikacij.
 \n
 \nNa vaši napravi so aplikacije, ampak niso na voljo v F-Droid. To se morda dogaja v primeru da morate posodobiti vaša skladišča ali pa ker skladišča odkrito nimajo vaših aplikacij na voljo.</string>
-    <string name="swap_nfc_description">Če ima tvoj prijatelj F-Droid in vključen NFC, lahko napravi prislonita skupaj.</string>
     <string name="swap_join_same_wifi_desc">Da opraviš zamenjavo z uporabo Wi-Fi, se prepričaj, da sta na enakem omrežju, Če nimaš dostopa do enakega omrežja, lahko eden od vaju ustvari dostopno točko.</string>
     <string name="swap_active_hotspot">%1$s (Tvoja dostopna točka)</string>
     <string name="system_install_denied_permissions">Privilegirana dovoljenja niso bila odobrena za ta dodatek! Prosimo, ustvarite poročilo programskega hrošča!</string>
@@ -459,7 +455,6 @@
     <string name="about_forum">Podporni forum</string>
     <string name="app_suggested">Predlagano</string>
     <string name="app_size">Velikost %1$s</string>
-    <string name="app_repository">Skladišče: %1$s</string>
     <string name="scan_removable_storage_title">Preglej izmenljivo shrambo</string>
     <string name="scan_removable_storage_summary">Išči pakete skladišč na izmenljivih medijih, kot so SD kartice in USB ključki</string>
     <string name="nearby_splash__read_external_storage">Preišči SD kartico za skladišča in povezav za prenos.</string>

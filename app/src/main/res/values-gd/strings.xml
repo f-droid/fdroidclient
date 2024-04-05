@@ -156,7 +156,6 @@
     <string name="menu_settings">Roghainnean</string>
     <string name="repositories_summary">Cuir barrachd tùsan aplacaidean ris</string>
     <string name="menu_manage">Ionadan-tasgaidh</string>
-    <string name="repo_provider">Ionad-tasgaidh: %s</string>
     <string name="malformed_repo_uri">A’ leigeil seachad URI le droch-chruth dhan ionad-thasgaidh: %s</string>
     <string name="invalid_url">Chan e URL dligheach a tha seo.</string>
     <string name="bad_fingerprint">Droch lorg-mheòir</string>
@@ -206,7 +205,6 @@
     <string name="app_list__name__successfully_installed">Chaidh %1$s a stàladh</string>
     <string name="app_list__name__downloading_in_progress">A’ luchdadh a-nuas %1$s</string>
     <string name="app_size">Meud : %1$s</string>
-    <string name="app_repository">Ionad-tasgaidh: %1$s</string>
     <string name="app_permission_storage">Feumaidh F-Droid cead air an stòras gus seo a stàladh dhan stòras. Ceadaich e air an ath-sgrìn a leantainn air adhart leis an stàladh.</string>
     <string name="app_installed_media">Chaidh am faidhle a stàladh gu %s</string>
     <string name="app__install_downloaded_update">Ùraich</string>
@@ -367,8 +365,6 @@
     <string name="swap_join_this_hotspot">Cuidich do charaid le tighinn a-steach dhan hotspot agad</string>
     <string name="swap_join_same_wifi_desc">Airson iomlaid a dhèanamh le WiFi, dèanaibh cinnteach gu bheil sibh air an aon lìonra. Mur eil inntrigeadh dhan aon lìonra aig an dithis agaibh, ’s urrainn dhuibh Hotspot WiFi a chruthachadh.</string>
     <string name="swap_join_same_wifi">Thig a-steach dhan aon lìonra WiFi sa bheil do charaid</string>
-    <string name="swap_nfc_description">Ma tha F-Droid aig do charaid is NFC air a chur air, cuir an dàrna uidheam ris an uidheam eile.</string>
-    <string name="swap_nfc_title">Suath ris airson iomlaid</string>
     <string name="nearby_splash__request_permission">Dèan lorg</string>
     <string name="nearby_splash__document_tree">Lorg ionadan-tasgaidh is sgàthanan air cairt USB OTG.</string>
     <string name="nearby_splash__read_external_storage">Lorg ionadan-tasgaidh is sgàthanan air cairt SD.</string>
@@ -522,7 +518,6 @@
     <string name="cache_downloaded">Cùm na h-aplacaidean san tasgadan</string>
     <string name="prompt_to_send_crash_reports_summary">Cruinnich dàta mu thuislidhean is iarr gun dèid an chur dhan luchd-leasachaidh</string>
     <string name="prompt_to_send_crash_reports">Iarr aithrisean air tuislidhean</string>
-    <string name="enable_nfc_send">Cuir an comas an cur le NFC…</string>
     <string name="delete">Sguab às</string>
     <string name="by_author_format">le %s</string>
     <string name="version">Tionndadh</string>

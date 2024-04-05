@@ -7,7 +7,6 @@
     <string name="version">Versiya</string>
     <string name="by_author_format">%s tərəfindən</string>
     <string name="delete">Sil</string>
-    <string name="enable_nfc_send">NFC Göndərməsini Aktivləşdir…</string>
     <string name="prompt_to_send_crash_reports">Xəta hesabatlarını göndər</string>
     <string name="cache_downloaded">Keşləşmiş proqramları saxla</string>
     <string name="unstable_updates">Qeyri-sabit yeniləmə</string>

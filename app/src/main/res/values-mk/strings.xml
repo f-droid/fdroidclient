@@ -4,7 +4,6 @@
     <string name="SignatureMismatch">Новата верзија е потпишана со различен клуч од стариот. За да ја инсталирате новата верзија, најпрво деинсталирајте ја старата. Ве молиме направете го ова и обидете се повторно. (Имајте во предвид при деинсталирањето се бришат и податоците од апликацијата.)</string>
     <string name="version">Верзија</string>
     <string name="delete">Избриши</string>
-    <string name="enable_nfc_send">Овозможете ја функцијата NFC Испрати …</string>
     <string name="cache_downloaded">Чувајте кеширани апликации</string>
     <string name="updates">Ажурирања</string>
     <string name="unstable_updates">Нестабилни ажурирања</string>
@@ -93,7 +92,6 @@
     <string name="details_notinstalled">Не е инсталирано</string>
     <string name="menu_source">Изворен код</string>
     <string name="menu_email">Испрати е-пошта до авторот</string>
-    <string name="repo_provider">Складиште: %s</string>
     <string name="bad_fingerprint">Лош отпечаток од прст</string>
     <string name="repo_add_fingerprint">Отпечаток од прсти (по избор)</string>
     <string name="app_not_installed">Не е инсталирана</string>
@@ -203,7 +201,6 @@
     <string name="scan_removable_storage_toast">Скенирање %s…</string>
     <string name="swap_toast_using_path">Користење %1$s</string>
     <string name="nearby_splash__request_permission">Пробај</string>
-    <string name="app_repository">Складиште: %1$s</string>
     <string name="app_size">Големина: %1$s</string>
     <string name="about_forum">Форум за поддршка</string>
     <string name="share_repository">Сподели складиште</string>

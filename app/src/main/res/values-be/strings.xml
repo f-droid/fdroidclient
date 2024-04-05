@@ -5,7 +5,6 @@
     <string name="installIncompatible">Праграма несумяшчальная з вашай прыладай. Усё адно ўсталяваць\?</string>
     <string name="version">Версія</string>
     <string name="delete">Выдаліць</string>
-    <string name="enable_nfc_send">Уключыць адпраўленне NFC…</string>
     <string name="cache_downloaded">Пакідаць файлы кэшу праграм</string>
     <string name="updates">Абнаўленні</string>
     <string name="unstable_updates">Нестабільныя абнаўленні</string>
@@ -66,7 +65,6 @@
     <string name="bad_fingerprint">Дрэнны адбітак</string>
     <string name="invalid_url">Гэта непрыдатны URL.</string>
     <string name="malformed_repo_uri">Ігнараванне непрыдатнага URI рэпазіторыя: %s</string>
-    <string name="repo_provider">Рэпазіторый: %s</string>
     <string name="menu_manage">Рэпазіторыі</string>
     <string name="repositories_summary">Дадаць дадатковыя крыніцы праграм</string>
     <string name="menu_settings">Налады</string>
@@ -194,8 +192,6 @@
     <string name="install_error_unknown">На атрымалася ўсталяваць праз невядомую памылку</string>
     <string name="uninstall_error_unknown">На атрымалася выдаліць праз невядомую памылку</string>
     <string name="system_install_denied_permissions">Пашырэнне не мае прывіліяваных дазволаў! Калі ласка, паведаміце пра памылку!</string>
-    <string name="swap_nfc_title">Дакрануцца для абмену</string>
-    <string name="swap_nfc_description">Калі ваш сябар мае F-Droid і ўключаны NFC, проста дакраніцеся прыладамі.</string>
     <string name="swap_join_same_wifi">Падлучыцеся да той самай сеткі Wi-Fi, што і ваш сябар</string>
     <string name="swap_join_same_wifi_desc">Для абмену праз Wi-Fi, пераканайцеся, што вы знаходзіцеся ў адной і той жа
         сетцы. Калі ж вы не маеце доступу да той жа сеткі, адзін з вас можа стварыць уласную сетку.
@@ -477,7 +473,6 @@
     <string name="about_forum">Форум падтрымкі</string>
     <string name="app_suggested">Прапанавана</string>
     <string name="app_size">Памер: %1$s</string>
-    <string name="app_repository">Рэпазіторый: %1$s</string>
     <string name="scan_removable_storage_title">Сканаваць рухомы носьбіт</string>
     <string name="scan_removable_storage_toast">Сканаванне %s…</string>
     <string name="scan_removable_storage_summary">Шукаць рэпазіторыі пакункаў на рухомых носьбітах кшталту SD-картак і USB-назапашвальнікаў</string>

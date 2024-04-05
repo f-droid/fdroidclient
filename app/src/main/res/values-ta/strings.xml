@@ -169,7 +169,6 @@
     <string name="send_history_csv">%s நிறுவல் வரலாறு CSV கோப்பாக</string>
     <string name="unstable_updates_summary">நிலையற்ற பதிப்புகளுக்கு புதுப்பிப்புகளைப் பரிந்துரை</string>
     <string name="prompt_to_send_crash_reports">சிதைவறிக்கைகளை அனுப்பத் தூண்டு</string>
-    <string name="enable_nfc_send">NFC அனுப்பு என்பதை இயக்கு…</string>
     <string name="details_new_in_version">%s பதிப்பில் புதியது</string>
     <string name="panic_hide_summary">செயலி தன்னை மறைக்கும்</string>
     <string name="antiupstreamnonfreelist">மேல்நீரோட்ட மூல குறியீடு முற்றிலும் இலவசம் அல்ல</string>
@@ -285,7 +284,6 @@
     <string name="menu_video">காணொளி</string>
     <string name="menu_select_for_wipe">துடைப்பதற்குத் தேர்ந்தெடு</string>
     <string name="repositories_summary">செயலிகளின் கூடுதல் ஆதாரங்களைச் சேர்</string>
-    <string name="repo_provider">களஞ்சியம்: %s</string>
     <string name="malformed_repo_uri">தவறான களஞ்சிய உரலி: %s-ஐப் புறக்கணிக்கிறது</string>
     <string name="repo_exists_add_mirror">இது %1$s இன் நகல், இதை ஒரு கண்ணாடியாக சேர்க்கவா\?</string>
     <string name="repo_delete_to_overwrite">முரண்பாடான விசையுடன் இதைச் சேர்ப்பதற்காக முதலில் %1$s அழி.</string>
@@ -309,7 +307,6 @@
     <string name="update_all">அனைத்தையும் புதுப்பி</string>
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s பதிப்புக்காக புறக்கணிக்கப்பட்ட புதுப்பிப்புகள்</string>
     <string name="app_size">அளவு: %1$s</string>
-    <string name="app_repository">களஞ்சியம்: %1$s</string>
     <string name="app_recommended_version_installed">பதிப்பு %1$s (பரிந்துரைக்கப்படுகிறது)</string>
     <string name="app_version_x_installed">பதிப்பு %1$s</string>
     <string name="app_details__no_versions__show_incompat_versions">ஒவ்வா பதிப்புகளை இங்கே எப்படியும் காட்ட, \"%1$s\" அமைப்பை இயக்கு.</string>
@@ -490,8 +487,6 @@
     <string name="swap_join_this_hotspot">உங்கள் ஹாட்ஸ்பாட்டில் சேர உங்கள் நண்பருக்கு உதவுங்கள்</string>
     <string name="swap_join_same_wifi_desc">அருகலை பயன்படுத்தி இடமாற்றம, நீங்கள் ஒரே பிணையத்தில் இருப்பதை நிச்சயப்படுத்துக. அதே பிணையத்திற்கு அணுகல் இல்லையெனில், உங்களில் ஒருவர் அருகலை பகிரலையை உருவாக்கலாம்.</string>
     <string name="swap_join_same_wifi">உங்கள் நண்பரின் அதே Wi-Fi இல் சேரவும்</string>
-    <string name="swap_nfc_description">உங்கள் நண்பரிடம் எஃப்-ட்ராய்டு இருந்து NFC இயக்கப்பட்டிருந்தால் உங்கள் சாதனங்களை ஒன்றாகத் தொடவும்.</string>
-    <string name="swap_nfc_title">இடமாற்ற தொடு</string>
     <string name="nearby_splash__request_permission">முயற்சிகவும்</string>
     <string name="nearby_splash__document_tree">களஞ்சியங்கள் மற்றும் கண்ணாடிகளுக்கு USB OTGஐத் தேடு.</string>
     <string name="nearby_splash__read_external_storage">களஞ்சியங்கள் மற்றும் கண்ணாடிகளுக்கு SD அட்டையைத் தேடு.</string>

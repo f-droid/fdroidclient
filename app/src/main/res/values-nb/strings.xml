@@ -3,7 +3,6 @@
     <string name="SignatureMismatch">Den nye versjonen er signert med en annen nøkkel enn den gamle. For å installere en ny versjon må du først avinstallere den gamle. (Avinstallering vil medfører sletting av all intern data lagret av programmet.)</string>
     <string name="installIncompatible">Programmet er ikke kompatibelt med ditt utstyr, installer likevel?</string>
     <string name="delete">Slett</string>
-    <string name="enable_nfc_send">Skru på NFC-sending…</string>
     <string name="cache_downloaded">Behold mellomlagrede programmer</string>
     <string name="updates">Oppdateringer</string>
     <string name="other">Annet</string>
@@ -130,7 +129,6 @@
     <string name="category_Science_Education">Vitenskap &amp; utdanning</string>
     <string name="category_Security">Sikkerhet</string>
     <string name="category_System">System</string>
-    <string name="swap_nfc_description">Hvis din venn har F-Droid og NFC påslått, sammenfør enhetene.</string>
     <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
     <string name="swap">Sirkuler programvare</string>
     <string name="swap_no_wifi_network">Mangler nettverk</string>
@@ -222,7 +220,6 @@
     <string name="system_install_denied_permissions">Tillegget har ikke blitt gitt priviligert tilgang. Send en
         feilrapport om dette omgående!
     </string>
-    <string name="swap_nfc_title">Trykk for å sirkulere</string>
     <string name="swap_join_same_wifi_desc">For å sirkulere ved bruk av Wi-Fi, forsikre deg om at dere er på samme
         nettverk. Hvis så ikke er tilfelle, kan du sette opp ditt eget mobiltrådløsnett.
     </string>
@@ -257,7 +254,6 @@
     <string name="crash_dialog_comment_prompt">Du kan legge til ekstra informasjon og kommentarer her:</string>
     <string name="antinonfreeassetslist">Dette programmet inneholder ufrie gjenstander</string>
     <string name="menu_email">Utviklerens e-post</string>
-    <string name="repo_provider">Pakkebrønn: %s</string>
     <string name="useTor">Bruk Tor</string>
     <string name="useTorSummary">Tving nedlasting av trafikk gjennom Tor for økt sikkerhet. Krever Orbot</string>
     <string name="swap_stopping_wifi">Stopper Wi-Fi…</string>
@@ -470,7 +466,6 @@
     <string name="app_size">Størrelse: %1$s</string>
     <string name="scan_removable_storage_title">Skann flyttbart medium</string>
     <string name="scan_removable_storage_summary">Se etter pakkebrønner på flyttbare medium som SD-kort og USB-minnepinner</string>
-    <string name="app_repository">Pakkebrønn: %1$s</string>
     <string name="nearby_splash__read_external_storage">Søk SD-kort for pakkebrønner og speil.</string>
     <string name="nearby_splash__request_permission">Prøv det</string>
     <string name="swap_toast_using_path">Bruker %1$s</string>

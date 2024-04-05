@@ -7,7 +7,6 @@
     <string name="version">版本</string>
     <string name="by_author_format">出自 %s</string>
     <string name="delete">刪除</string>
-    <string name="enable_nfc_send">啟用 NFC 傳送…</string>
     <string name="prompt_to_send_crash_reports">提示傳送彈 app 報告</string>
     <string name="prompt_to_send_crash_reports_summary">收集有關彈 app 嘅資料，然後問下係咪傳送返畀開發人員</string>
     <string name="cache_downloaded">保留快取嘅 app</string>
@@ -226,8 +225,6 @@
     <string name="share_apk_error">分享唔到個 app 檔</string>
     <string name="nearby_splash__download_apps_from_people_nearby">個網離太遠？一於由身在咫尺嘅人過啲 app 畀您！</string>
     <string name="nearby_splash__request_permission">立即搜查</string>
-    <string name="swap_nfc_title">對碰去兌換</string>
-    <string name="swap_nfc_description">若果您嘅好友有 F-Droid 又開著 NFC 就將您哋兩部機拍埋一齊啦。</string>
     <string name="swap_join_same_wifi">同您嘅好友連去同一個 Wi-Fi</string>
     <string name="swap_join_same_wifi_desc">若要用 Wi-Fi 兌換，請確定您哋連咗去相同嘅網絡。若果您冇得連去相同嘅網絡，您哋是但一位可以建立一個 Wi-Fi 流動熱點。</string>
     <string name="swap_join_this_hotspot">幫好友連去您嘅流動熱點</string>
@@ -388,7 +385,6 @@
     <string name="local_repo_https_on">本機存庫用加密嘅 HTTPS:// 連線</string>
     <string name="scan_removable_storage_title">掃描即插即用儲存裝置</string>
     <string name="scan_removable_storage_summary">喺即插即用儲存裝置 (諸如 SD 卡同 USB 手指) 入面尋覓封裝軟件存庫</string>
-    <string name="app_repository">存庫：%1$s</string>
     <string name="app_list_results_hidden_antifeature_settings">按您嘅無心裝載設定，收起咗部份結果。</string>
     <string name="repo_add_title">加入新嘅存庫</string>
     <string name="repo_add_add">加入</string>
@@ -451,7 +447,6 @@
     <string name="malformed_repo_uri">飛過不良嘅存庫 URI：%s</string>
     <string name="has_disallow_install_unknown_sources_globally">您嘅裝置管理員未允許安裝未知來源嘅 apps，即包括新嘅存庫</string>
     <string name="has_disallow_install_unknown_sources">呢位使用者冇得加入未知嘅來源，即包括新嘅存庫</string>
-    <string name="repo_provider">存庫：%s</string>
     <string name="repositories_summary">加入額外嘅 apps 來源</string>
     <string name="menu_select_for_wipe">揀選邊啲要抹走</string>
     <string name="panic_app_setting_title">緊急掣 App</string>

@@ -88,7 +88,6 @@
     <string name="unstable_updates">Nestabilaj ĝisdatigoj</string>
     <string name="update_interval">Ofteco de aŭtomataj ĝisdatigoj</string>
     <string name="SignatureMismatch">La nova versio estas subskribita per malsama ŝlosilo. Por instali la novan version, oni devas antaŭe malinstali la malnovan ion. Malinstalu la malnovan version kaj reprovu. (Konsciu, ke malinstalo forigos ĉiujn internajn datumojn konservitajn de la aplikaĵo.)</string>
-    <string name="enable_nfc_send">Aktivigi sendadon per NFC…</string>
     <string name="cache_downloaded">Kaŝmemorigi apk-dosierojn</string>
     <string name="unstable_updates_summary">Proponi ĝisdatigojn al nestabilaj versioj</string>
     <string name="system_installer">Privilegia aldonaĵo</string>
@@ -183,8 +182,6 @@
     <string name="install_error_unknown">Instalo malsukcesis pro nekonata eraro</string>
     <string name="uninstall_error_unknown">Malinstalo malsukcesis pro nekonata eraro</string>
     <string name="system_install_denied_permissions">La privilegia aldonaĵo ne akiris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
-    <string name="swap_nfc_title">Tuŝu por interŝanĝi</string>
-    <string name="swap_nfc_description">Se via amiko havas F-Droid kaj aktivan NFC, vi povas tuŝi viajn aparatojn kune.</string>
     <string name="swap_join_same_wifi">Konektu al la sama vifio kiel via amiko</string>
     <string name="swap_join_same_wifi_desc">Por interŝanĝi per vifio, certiĝu ke vi estas en la sama reto. Se vi ne havas aliron al la sama reto, unu el vi povas krei vifian retkaptejon.</string>
     <string name="swap_join_this_hotspot">Helpu al via amiko aligi vian retkaptejon</string>
@@ -246,7 +243,6 @@
     <string name="useTor">Uzi Tor</string>
     <string name="useTorSummary">Devigi elŝuti per la Tor-reto por plibonigi privatecon, postulas Orbot</string>
     <string name="swap_stopping_wifi">Haltigado de vifio…</string>
-    <string name="repo_provider">Deponejo: %s</string>
     <string name="update_auto_download">Aŭtomate elŝuti ĝisdatigojn</string>
     <string name="update_auto_download_summary">Elŝuti ĝisdatigojn de aplikaĵoj fone, montrante sciigon kun peto pri instali ilin</string>
     <string name="download_pending">Atendado je instalado…</string>
@@ -453,7 +449,6 @@
     <string name="about_forum">Subtena forumo</string>
     <string name="app_suggested">Konsilinda</string>
     <string name="app_size">Grando: %1$s</string>
-    <string name="app_repository">Deponejo: %1$s</string>
     <string name="scan_removable_storage_title">Skani demeteblan konservejon</string>
     <string name="scan_removable_storage_summary">Serĉi deponejojn de pakaĵoj en la demetebla konservejo (SD-kartoj aŭ memor-bastonetoj)</string>
     <string name="nearby_splash__read_external_storage">Serĉi deponejojn kaj spegul‑servilojn en SD‑kartoj.</string>

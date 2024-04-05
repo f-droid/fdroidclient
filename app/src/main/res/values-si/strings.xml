@@ -81,7 +81,6 @@
     <string name="send_history_csv">%s ස්ථාපන ඉතිහාසය CSV ගොනුවක් ලෙස</string>
     <string name="installIncompatible">යෙදුම ඔබගේ උපාංගය සමඟ නොගැලපේ, කෙසේ වෙතත් ස්ථාපනය කරන්නද\?</string>
     <string name="by_author_format">%s විසින්</string>
-    <string name="enable_nfc_send">NFC යැවීම සබල කරන්න…</string>
     <string name="version">පිටපත</string>
     <string name="keep_install_history_summary">සියලුම ස්ථාපනයන් සහ අස්ථාපනය කිරීම් වල ලොගයක් පුද්ගලික ගබඩාවක ගබඩා කරන්න</string>
     <string name="send_version_and_uuid">අනුවාදය සහ UUID සේවාදායකය වෙත යවන්න</string>

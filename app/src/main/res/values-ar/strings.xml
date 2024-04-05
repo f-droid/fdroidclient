@@ -57,7 +57,6 @@
     <string name="SignatureMismatch">الإصدار الجديد يحتوي على مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد، يجب أن يتم إلغاء تثبيت القديم أولًا. يرجى القيام بذلك وإعادة المحاولة مرة أخرى. (علمًا أنه عند إلغاء التثبيت سيتم محو البيانات الداخلية المخزنة من قِبل التطبيق)</string>
     <string name="installIncompatible">التطبيق غير متوافق مع جهازك. هل تريد تثبيته على أي حال؟</string>
     <string name="menu_email">إرسال رسالة للمالك</string>
-    <string name="enable_nfc_send">تمكين إرسال نظام ملفات الشبكة (NFC)…</string>
     <string name="cache_downloaded">إبقاء التطبيقات المخزنة مؤقتا</string>
     <string name="unstable_updates">تحديثات غير مستقرة</string>
     <string name="unstable_updates_summary">اقتراح تحديثات للإصدارات غير المستقرة</string>
@@ -91,7 +90,6 @@
     <string name="bad_fingerprint">البصمة خاطئة</string>
     <string name="invalid_url">هذا ليس عنوان URL صالح للاستخدام.</string>
     <string name="malformed_repo_uri">تجاهل عناوين URI للمستودعات  التالفة : %s</string>
-    <string name="repo_provider">مستودع: %s</string>
     <string name="menu_settings">الإعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
     <string name="menu_website">الموقع الإلكتروني</string>
@@ -182,9 +180,6 @@
     <string name="install_error_unknown">فشل في التثبيت بسبب خطأ مجهول</string>
     <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ مجهول</string>
     <string name="system_install_denied_permissions">لم يتم منح ضوابط مميزة للإضافة! يرجى إنشاء تقرير عن خطأ!</string>
-    <string name="swap_nfc_title">إختر باللمس للتبديل</string>
-    <string name="swap_nfc_description">إذا كان صديقك لديه اف-درويد او NFC على قيد التشغيل يمكنك توصيل الأجهزة معا.
-    </string>
     <string name="swap_join_same_wifi">إنضم إلى الإنترنت اللاسلكي مثل صديقك</string>
     <string name="swap_join_same_wifi_desc">للتبديل باستخدام الإنترنت اللاسلكي، لضمان إن كنت على نفس الشبكة. إذا لم يكن
         لديك الوصول إلى نفس الشبكة، يمكن إنشاء شبكة إنترنت لاسلكي.
@@ -487,7 +482,6 @@
     <string name="app_suggested">مقترح</string>
     <string name="send_installed_apps_csv">التطبيقات المثبتة بواسطة F-Droid  كملف CSV</string>
     <string name="scan_removable_storage_title">مسح ذاكرة التخزين القابلة للإزالة</string>
-    <string name="app_repository">المستودع: %1$s</string>
     <string name="nearby_splash__request_permission">ابحث الآن</string>
     <string name="swap_toast_using_path">يستخدِم %1$s</string>
     <string name="scan_removable_storage_toast">جارٍ مسح %s…</string>

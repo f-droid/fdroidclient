@@ -5,7 +5,6 @@
     <string name="installIncompatible">Aplikacija nije kompatibilna s Vašim uređajem, ipak instalirati\?</string>
     <string name="version">Verzija</string>
     <string name="delete">Izbriši</string>
-    <string name="enable_nfc_send">Omogući NFC slanje…</string>
     <string name="cache_downloaded">Zadrži privremene aplikacije</string>
     <string name="updates">Ažuriranja</string>
     <string name="unstable_updates">Nestabilna ažuriranja</string>
@@ -61,7 +60,6 @@
     <string name="bad_fingerprint">Neispravan digitalni otisak</string>
     <string name="invalid_url">Ovo nije valjan URL.</string>
     <string name="malformed_repo_uri">Ignoriram pogrešna URI repozitorija: %s</string>
-    <string name="repo_provider">Repozitorij: %s</string>
     <string name="menu_manage">Repozitoriji</string>
     <string name="menu_settings">Postavke</string>
     <string name="menu_search">Traži</string>
@@ -193,8 +191,6 @@
     <string name="system_install_denied_permissions">Proširenju nisu dodjeljene privilegirane ovlasti! Molimo stvorite
         zapis o greški!
     </string>
-    <string name="swap_nfc_title">Dodirnite za razmjenu</string>
-    <string name="swap_nfc_description">Ako Vaš prijatelj ima F-Droid i uključen NFC, dodirnite uređaje.</string>
     <string name="swap_join_same_wifi">Spoji se na istu Wi-Fi mrežu kao i prijatelj</string>
     <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako
         nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi Hotspot.
@@ -306,7 +302,6 @@
     <string name="app_recommended_version_installed">Verzija %1$s (preporučeno)</string>
     <string name="app__tts__cancel_download">Prekini preuzimanje</string>
     <string name="app__install_downloaded_update">Ažuriraj</string>
-    <string name="app_repository">Repozitorij: %1$s</string>
     <string name="app_size">Veličina: %1$s</string>
     <string name="app_list_download_ready">Preuzeto, spremno za instalaciju</string>
     <string name="app_list__dismiss_app_update">Ažuriranje ignorirano</string>

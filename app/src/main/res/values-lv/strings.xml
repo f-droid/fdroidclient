@@ -2,7 +2,6 @@
 <resources>
     <string name="version">Versija</string>
     <string name="delete">Izdzēst</string>
-    <string name="enable_nfc_send">Iespējot sūtīšanu ar NFC…</string>
     <string name="cache_downloaded">Paturēt kešatmiņā saglabātās lietotnes</string>
     <string name="updates">Atjauninājumi</string>
     <string name="other">Citi</string>
@@ -172,7 +171,6 @@
     <string name="app_list__dismiss_vulnerable_app">Ievainojamība netiek ņemta vērā</string>
     <string name="app_list__dismiss_downloading_app">Lejupielāde atcelta</string>
     <string name="invalid_url">Šis nav derīgs URL.</string>
-    <string name="repo_provider">Glabātava: %s</string>
     <string name="repositories_summary">Pievienot papildu lietotņu avotus</string>
     <string name="menu_open">Atvērt</string>
     <string name="menu_changelog">Izmaiņu saraksts</string>
@@ -204,7 +202,6 @@
     <string name="status_inserting_apps">Saglabā lietotnes datus</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Atjauninājumi netiek ņemti vērā versijai %1$s</string>
     <string name="installed_app__updates_ignored">Atjauninājumi netiek ņemti vērā</string>
-    <string name="app_repository">Glabātava: %1$s</string>
     <string name="scan_removable_storage_title">Pārskatīt noņemamo krātuvi</string>
     <string name="toast_metrics_in_install_history">%s rādītāju pārskats ir redzams uzstādīšanas vēstures skatītājā</string>
     <string name="send_to_fdroid_metrics_summary">Katru nedēļu nosūta anonīmus datus F-Droid rādītājiem (nepieciešams iestatījums \"Saglabāt uzstādīšanas vēsturi\")</string>
@@ -299,8 +296,6 @@
     <string name="swap_join_this_hotspot">Palīdzēt draugam pievienoties tīklājam</string>
     <string name="swap_join_same_wifi_desc">Lai apmainītos Wi-Fi tīklā, jāpārliecinās, ka esat vienā un tajā pašā tīklā. Ja nav piekļuves vienam un tam pašam tīklam, viens no jums var izveidot Wi-Fi tīklāju.</string>
     <string name="swap_join_same_wifi">Jāpievienojas tam pašam Wi-Fi, kuru izmanto draugs</string>
-    <string name="swap_nfc_description">Ja draugam ir F-Droid un ir ieslēgts NFC, jāsaliek kopā ierīces.</string>
-    <string name="swap_nfc_title">Piesist, lai apmainītos</string>
     <string name="nearby_splash__request_permission">Meklēt tagad</string>
     <string name="nearby_splash__both_parties_need_fdroid">Abiem iesaistītajiem ir nepieciešams %1$s, lai izmantotu apmaiņu.</string>
     <string name="nearby_splash__find_people_button">Atrast cilvēkus tuvumā</string>

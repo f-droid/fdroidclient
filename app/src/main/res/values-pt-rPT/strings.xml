@@ -5,7 +5,6 @@
     <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja tentar a instalação\?</string>
     <string name="version">Versão</string>
     <string name="delete">Excluir</string>
-    <string name="enable_nfc_send">Ativar envio NFC…</string>
     <string name="cache_downloaded">Manter aplicações em cache</string>
     <string name="updates">Atualizações</string>
     <string name="unstable_updates">Atualizações instáveis</string>
@@ -168,8 +167,6 @@
     <string name="system_install_denied_permissions">Não foram concedidas as permissões necessárias para a extensão. Por
         favor reporte este erro!
     </string>
-    <string name="swap_nfc_title">Toque para trocar</string>
-    <string name="swap_nfc_description">Se a outra pessoa tiver F-Droid instalada e NFC ativo, aproximem os vossos aparelhos.</string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
@@ -246,7 +243,6 @@
     <string name="crash_dialog_text">Ocorreu um erro inesperado e a app foi encerrada. Gostaria de nos enviar um e-mail com os detalhes do erro\?</string>
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
     <string name="menu_email">E-mail do autor</string>
-    <string name="repo_provider">Repositório: %s</string>
     <string name="useTor">Utilizar Tor</string>
     <string name="useTorSummary">Impor descargas através da rede Tor para mais privacidade. Requer Orbot</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
@@ -467,7 +463,6 @@
     <string name="about_forum">Fórum de suporte</string>
     <string name="app_suggested">Sugerida</string>
     <string name="app_size">Tamanho: %1$s</string>
-    <string name="app_repository">Repositório: %1$s</string>
     <string name="scan_removable_storage_title">Analisar armazenamento amovível</string>
     <string name="scan_removable_storage_toast">A analisar %s…</string>
     <string name="scan_removable_storage_summary">Procurar por repositórios de pacotes no armazenamento removível, como cartões SD e unidades USB</string>

@@ -4,7 +4,6 @@
     <string name="installIncompatible">L\'aplicación ye incompatible col preséu. ¿Quies instalala de toes toes\?</string>
     <string name="version">Versión</string>
     <string name="delete">Desaniciar</string>
-    <string name="enable_nfc_send">Enable NFC Send…</string>
     <string name="cache_downloaded">Caltener les aplicaciones na caché</string>
     <string name="updates">Anovamientos</string>
     <string name="other">Otros axustes</string>
@@ -128,7 +127,6 @@
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguranza</string>
     <string name="category_System">Sistema</string>
-    <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap">Swap apps</string>
     <string name="swap_no_wifi_network">No network yet</string>
@@ -188,7 +186,6 @@
     <string name="empty_can_update_app_list">¡Norabona!\nLes aplicaciones tán anovaes.</string>
     <string name="install_error_unknown">La instalación falló pola mor d\'un fallu desconocíu</string>
     <string name="uninstall_error_unknown">La desinstalación falló pola mor d\'un fallu desconocíu</string>
-    <string name="swap_nfc_title">Toca pa intercambiar</string>
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.</string>
@@ -246,7 +243,6 @@
     <string name="swap_stopping_wifi">Parando la Wi-Fi…</string>
     <string name="update_auto_download">Automatically fetch updates</string>
     <string name="update_auto_download_summary">Esta opción baxa automáticamente los anovamientos y avísate pa instalalos</string>
-    <string name="repo_provider">Depósitu: %s</string>
     <string name="download_pending">Esperando a que comience la descarga…</string>
     <string name="keep_hour">1 hora</string>
     <string name="keep_day">1 día</string>
@@ -445,7 +441,6 @@
     <string name="hiding_dialog_warning">Warning: Any app shortcut on the home screen will also be removed and needs to be re-added manually.</string>
     <string name="repo_user_mirrors">User mirrors</string>
     <string name="share_repository">Share Repository</string>
-    <string name="app_repository">Depósitu: %1$s</string>
     <string name="main_menu__updates">Anovamientos</string>
     <string name="swap_toast_using_path">Usando «%1$s»</string>
     <string name="swap_starting">Aniciando…</string>

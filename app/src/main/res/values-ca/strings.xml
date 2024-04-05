@@ -158,7 +158,6 @@
     <string name="more">Més</string>
     <string name="less">Menys</string>
     <string name="permissions">Permisos</string>
-    <string name="enable_nfc_send">Habilita l\'enviament NFC…</string>
     <string name="unstable_updates_summary">Suggereix actualitzacions a versions inestables</string>
     <string name="choose_bt_send">Trieu el mètode d\'enviament per Bluetooth</string>
     <string name="bad_fingerprint">Empremta digital incorrecta</string>
@@ -200,8 +199,6 @@
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu,
         informeu d\'aquest error!
     </string>
-    <string name="swap_nfc_title">Toqueu per intercanviar</string>
-    <string name="swap_nfc_description">Si l\'altra persona té l\'F-Droid i l\'NFC encesos, feu que els dispositius es toquin.</string>
     <string name="swap_join_same_wifi_desc">Per intercanviar utilitzant Wi-Fi, assegureu-vos que us trobeu a la mateixa
         xarxa. Si no teniu accés a la mateixa xarxa un de vosaltres pot crear un punt d\'accés Wi-Fi.
     </string>
@@ -254,7 +251,6 @@
     <string name="swap_stopping_wifi">S\'està aturant la connexió Wi-Fi…</string>
     <string name="useTor">Utilitza Tor</string>
     <string name="useTorSummary">Força el tràfic de baixada mitjançant Tor per millorar la privadesa. Requereix l\'Orbot</string>
-    <string name="repo_provider">Repositori: %s</string>
     <string name="update_auto_download">Actualitzacions automàtiques</string>
     <string name="update_auto_download_summary">Les baixades s\'iniciaran automàticament i sereu avisats per instal·lar-les</string>
     <string name="download_pending">S\'està esperant que comenci la baixada…</string>
@@ -425,7 +421,6 @@
     <string name="scan_removable_storage_title">Escaneja l\'emmagatzematge extraïble</string>
     <string name="scan_removable_storage_toast">Escanejant %s…</string>
     <string name="scan_removable_storage_summary">Cerca dipòsits de paquets en emmagatzematge extraïble com ara targetes SD i memòries USB</string>
-    <string name="app_repository">Dipòsit: %1$s</string>
     <string name="main_menu__updates">Actualitzacions</string>
     <string name="nearby_splash__read_external_storage">Cerca a la memòria SD repositoris d\'intercanvi.</string>
     <string name="nearby_splash__request_permission">Prova-ho</string>

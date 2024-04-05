@@ -7,7 +7,6 @@
     <string name="installIncompatible">ဒါသည်သင့်ကရိယာနှင့်မလိုက်ဖက်ပါ။ဘာဖြစ်ဖြစ်အခြေချမလား\?</string>
     <string name="version">ဗားရွင္း</string>
     <string name="delete">ဖျက်ရန်</string>
-    <string name="enable_nfc_send">NFC မွပို႔ႏိုင္ေအာင္လုပ္ေဆာင္မည္…</string>
     <string name="cache_downloaded">Cached app မ်ားကိုထားမည္</string>
     <string name="updates">အသစ္မြမ္းမံမႈမ်ား</string>
     <string name="unstable_updates">မတည္ျငိမ္ေသာ အသစ္မြမ္းမံမႈမ်ား</string>
@@ -61,7 +60,6 @@
     <string name="bad_fingerprint">လက္ေဗြရာမမွန္ကန္ပါ</string>
     <string name="invalid_url">မွန္ကန္ေသာ URL မဟုတ္ပါ.</string>
     <string name="malformed_repo_uri">repo URI မွားယြင္းျပဳလုပ္မႈကိုလ်စ္လ်ဴရႈမလား : %s</string>
-    <string name="repo_provider">Repository: %s</string>
     <string name="menu_manage">Repository မ်ား</string>
     <string name="menu_settings">ဆက်တင်များ</string>
     <string name="menu_search">ရှာဖွေခြင်း</string>

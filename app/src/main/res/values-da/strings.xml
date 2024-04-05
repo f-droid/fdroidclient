@@ -4,7 +4,6 @@
     <string name="installIncompatible">App ikke kompatibel med din enhed. Installer alligevel\?</string>
     <string name="version">Version</string>
     <string name="delete">Slet</string>
-    <string name="enable_nfc_send">Aktiver sending via NFC…</string>
     <string name="cache_downloaded">Behold cachede apps</string>
     <string name="updates">Opdateringer</string>
     <string name="unstable_updates">Ustabile opdateringer</string>
@@ -170,8 +169,6 @@
     <string name="linking_apks">Kobler APK\'er til arkivet…</string>
     <string name="uninstall_error_unknown">Afinstallation mislykkedes pga. en ukendt fejl</string>
     <string name="system_install_denied_permissions">De privilegerede tilladelser er ikke blevet tildelt udvidelsen! Opret venligst en fejlrapport!</string>
-    <string name="swap_nfc_title">Tryk for at udveksle</string>
-    <string name="swap_nfc_description">Hvis din ven har F-Droid og NFC slået til: Lad jeres enheder røre hinanden.</string>
     <string name="swap_join_same_wifi">Tilslut dig samme wifi som din ven</string>
     <string name="swap_join_same_wifi_desc">For at udveksle via wifi skal I sikre jer at I er på samme wifi. Hvis I ikke har adgang til samme netværk, kan en af jer oprette et wifi-hotspot.</string>
     <string name="swap_join_this_hotspot">Hjælp din ven med at tilslutte sig dit hotspot</string>
@@ -238,7 +235,6 @@
     <string name="crash_dialog_comment_prompt">Ekstra information og kommentarer kan tilføjes her:</string>
     <string name="update_auto_download">Hent opdateringer automatisk</string>
     <string name="update_auto_download_summary">Opdateringer hentes automatisk og du bliver bedt om at installere dem</string>
-    <string name="repo_provider">Arkiv: %s</string>
     <string name="useTor">Brug Tor</string>
     <string name="useTorSummary">Hent altid gennem Tor for øget beskyttelse af privatlivet. Kræver Orbot</string>
     <string name="swap_stopping_wifi">Stopper wifi…</string>
@@ -394,7 +390,6 @@
     <string name="scan_removable_storage_title">Scan flytbart lager</string>
     <string name="about_forum">Supportforum</string>
     <string name="app_suggested">Foreslået</string>
-    <string name="app_repository">Arkiv: %1$s</string>
     <string name="app_size">Størrelse: %1$s</string>
     <string name="send_installed_apps">Del installerede apps</string>
     <string name="send_installed_apps_csv">Apps installeret af F-Droid som CSV-fil</string>

@@ -4,7 +4,6 @@
     <string name="installIncompatible">Mit Ihrem Gerät nicht kompatible App. Trotzdem installieren\?</string>
     <string name="version">Version</string>
     <string name="delete">Löschen</string>
-    <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
     <string name="cache_downloaded">Zwischengespeicherte Apps aufbewahren</string>
     <string name="updates">Aktualisierungen</string>
     <string name="other">Sonstiges</string>
@@ -128,9 +127,6 @@
     <string name="category_Science_Education">Wissenschaft und Bildung</string>
     <string name="category_Security">Sicherheit</string>
     <string name="category_System">System</string>
-    <string name="swap_nfc_description">Wenn Ihr Freund F-Droid und NFC aktiviert hat, bitte die Geräte aneinander
-        halten.
-    </string>
     <string name="swap_join_same_wifi">Bitte mit demselben WLAN wie Ihr Freund verbinden</string>
     <string name="swap">Apps tauschen</string>
     <string name="swap_no_wifi_network">Noch kein Netzwerk</string>
@@ -194,7 +190,6 @@
     <string name="repo_details">Paketquelle</string>
     <string name="repo_url">Adresse</string>
     <string name="system_install_denied_permissions">Der Erweiterung wurden keine Sonderrechte erteilt! Bitte einen Fehlerbericht erstellen!</string>
-    <string name="swap_nfc_title">Tausche durch Berührung</string>
     <string name="swap_join_this_hotspot">Ihrem Freund helfen, Ihrem Hotspot beizutreten</string>
     <string name="swap_success">Tausch erfolgreich!</string>
     <string name="swap_active_hotspot">%1$s (Ihr Hotspot)</string>
@@ -251,7 +246,6 @@
     <string name="antinonfreeassetslist">Diese App enthält nicht-quelloffene Bestandteile</string>
     <string name="crash_dialog_text">Die App wurde durch einen unerwarteten Fehler beendet. Möchten Sie die Details als E-Mail versenden, um eine Fehlerbehebung zu unterstützen\?</string>
     <string name="menu_email">E-Mail an Autor</string>
-    <string name="repo_provider">Paketquelle: %s</string>
     <string name="useTor">Tor verwenden</string>
     <string name="useTorSummary">Für einen verbesserten Datenschutz das Herunterladen über Tor erzwingen. Erfordert Orbot</string>
     <string name="swap_stopping_wifi">WLAN anhalten …</string>
@@ -462,7 +456,6 @@
     <string name="about_forum">Support-Forum</string>
     <string name="app_suggested">Vorgeschlagen</string>
     <string name="app_size">Größe: %1$s</string>
-    <string name="app_repository">Paketquelle: %1$s</string>
     <string name="scan_removable_storage_title">Wechseldatenträger durchsuchen</string>
     <string name="scan_removable_storage_summary">Auf Wechseldatenträgern, wie SD-Karten oder USB-Laufwerken, nach Paketquellen suchen</string>
     <string name="nearby_splash__read_external_storage">SD-Karten nach Paketquellen und Spiegelservern durchsuchen.</string>
