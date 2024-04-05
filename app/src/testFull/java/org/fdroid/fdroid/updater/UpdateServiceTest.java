@@ -143,7 +143,7 @@ public class UpdateServiceTest {
                     .putInt(Preferences.PREF_OVER_DATA, Preferences.OVER_NETWORK_ALWAYS)
                     .putInt(Preferences.PREF_OVER_WIFI, Preferences.OVER_NETWORK_ALWAYS)
                     .commit();
-            final Intent intent = UpdateService.getIntent(context, address, fingerprint);
+            final Intent intent = UpdateService.getIntent(context, address);
             final TestUpdateService testUpdateService = Robolectric.buildService(TestUpdateService.class,
                     intent).bind().get();
             Thread t = new Thread() {

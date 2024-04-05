@@ -193,7 +193,7 @@ private fun getRepoString(repo: Repository, isPreferred: Boolean) = buildAnnotat
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
 fun RepoChooserSingleRepoPreview() {
-    val repo1 = Repository(1L, "1", 1L, TWO, null, 1L, 1, 1L)
+    val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
     FDroidContent {
         RepoChooser(listOf(repo1), 1L, 1L, {}, {})
     }
@@ -202,9 +202,9 @@ fun RepoChooserSingleRepoPreview() {
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
 fun RepoChooserPreview() {
-    val repo1 = Repository(1L, "1", 1L, TWO, null, 1L, 1, 1L)
-    val repo2 = Repository(2L, "2", 2L, TWO, null, 2L, 2, 2L)
-    val repo3 = Repository(3L, "2", 3L, TWO, null, 3L, 3, 3L)
+    val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
+    val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
+    val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
     FDroidContent {
         RepoChooser(listOf(repo1, repo2, repo3), 1L, 1L, {}, {})
     }
@@ -213,9 +213,9 @@ fun RepoChooserPreview() {
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 fun RepoChooserNightPreview() {
-    val repo1 = Repository(1L, "1", 1L, TWO, null, 1L, 1, 1L)
-    val repo2 = Repository(2L, "2", 2L, TWO, null, 2L, 2, 2L)
-    val repo3 = Repository(3L, "2", 3L, TWO, null, 3L, 3, 3L)
+    val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
+    val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
+    val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
     FDroidContent {
         RepoChooser(listOf(repo1, repo2, repo3), 1L, 2L, {}, {})
     }

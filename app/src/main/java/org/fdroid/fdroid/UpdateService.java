@@ -35,7 +35,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.core.app.JobIntentService;
 import androidx.core.app.NotificationCompat;
@@ -78,7 +77,6 @@ public class UpdateService extends JobIntentService {
     public static final String LOCAL_ACTION_STATUS = "status";
 
     private static final String EXTRA_MESSAGE = "msg";
-    private static final String EXTRA_REPO_FINGERPRINT = "fingerprint";
     private static final String EXTRA_REPO_ERRORS = "repoErrors";
     public static final String EXTRA_STATUS_CODE = "status";
     private static final String EXTRA_MANUAL_UPDATE = "manualUpdate";
@@ -115,14 +113,9 @@ public class UpdateService extends JobIntentService {
         updateRepoNow(context, null);
     }
 
-    public static void updateRepoNow(Context context, String address) {
-        updateNewRepoNow(context, address, null);
-    }
-
-    public static Intent getIntent(Context context, String address, @Nullable String fingerprint) {
+    public static Intent getIntent(Context context, String address) {
         Intent intent = new Intent(context, UpdateService.class);
         intent.putExtra(EXTRA_MANUAL_UPDATE, true);
-        intent.putExtra(EXTRA_REPO_FINGERPRINT, fingerprint);
         if (!TextUtils.isEmpty(address)) {
             intent.setData(Uri.parse(address));
         }
@@ -130,8 +123,8 @@ public class UpdateService extends JobIntentService {
     }
 
     @UiThread
-    public static void updateNewRepoNow(Context context, String address, @Nullable String fingerprint) {
-        enqueueWork(context, getIntent(context, address, fingerprint));
+    public static void updateRepoNow(Context context, String address) {
+        enqueueWork(context, getIntent(context, address));
     }
 
     /**
@@ -396,7 +389,6 @@ public class UpdateService extends JobIntentService {
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
         boolean forcedUpdate = intent.getBooleanExtra(EXTRA_FORCED_UPDATE, false);
         isForcedUpdate = forcedUpdate;
-        String fingerprint = intent.getStringExtra(EXTRA_REPO_FINGERPRINT);
         String address = intent.getDataString();
 
         try {
@@ -465,11 +457,11 @@ public class UpdateService extends JobIntentService {
                             File.createTempFile("dl-", "", cacheDir);
                     final IndexV1Updater updater = new IndexV1Updater(db, tempFileProvider,
                             DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
-                    result = updater.updateNewRepo(repo, fingerprint);
+                    result = updater.update(repo);
                 } else {
                     final RepoUpdater updater = new RepoUpdater(cacheDir, db,
                             DownloaderFactory.INSTANCE, repoUriBuilder, compatChecker, listener);
-                    result = updater.update(repo, fingerprint);
+                    result = updater.update(repo);
                 }
                 if (result instanceof IndexUpdateResult.Unchanged) {
                     unchangedRepos++;
