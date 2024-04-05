@@ -61,7 +61,7 @@
     <string name="antiadslist">Cette appli comprend des publicités</string>
     <string name="antitracklist">Cette application suit et transmet votre activité</string>
     <string name="antinonfreeadlist">Cette applications propose des extensions qui ne sont pas libres</string>
-    <string name="antinonfreenetlist">Cette application promeut ou utilise des services réseaux qui ne sont pas libres</string>
+    <string name="antinonfreenetlist">Cette application promeut ou dépend entièrement d\'un service réseau non modifiable ou non libre</string>
     <string name="antinonfreedeplist">Cette application s\'appuie d\'autres applications qui ne sont pas libres</string>
     <string name="antiupstreamnonfreelist">Le code source en amont n’est pas entièrement libre</string>
     <string name="display">Affichage</string>
@@ -594,7 +594,7 @@
         <item quantity="other">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activés</item>
     </plurals>
     <string name="repo_share_not_found">L\'adresse du dépôt n\'a pas pu être trouvée dans le texte partagé.</string>
-    <string name="useDnsCacheSummary">Utilisez des résultats en cache pour minimiser les requêtes DNS.</string>
+    <string name="useDnsCacheSummary">Utiliser les résultats en cache pour minimiser les requêtes DNS.</string>
     <string name="useDnsCache">Utiliser le cache DNS</string>
     <string name="app_details_repository">Dépôt</string>
     <string name="app_details_repositories">Dépôt</string>
