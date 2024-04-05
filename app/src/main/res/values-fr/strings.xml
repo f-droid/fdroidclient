@@ -61,7 +61,7 @@
     <string name="antiadslist">Cette appli comprend des publicités</string>
     <string name="antitracklist">Cette application suit et transmet votre activité</string>
     <string name="antinonfreeadlist">Cette applications propose des extensions qui ne sont pas libres</string>
-    <string name="antinonfreenetlist">Cette application promeut ou utilise des services réseaux qui ne sont pas libres</string>
+    <string name="antinonfreenetlist">Cette application promeut ou dépend entièrement d\'un service réseau non modifiable ou non libre</string>
     <string name="antinonfreedeplist">Cette application s\'appuie d\'autres applications qui ne sont pas libres</string>
     <string name="antiupstreamnonfreelist">Le code source en amont n’est pas entièrement libre</string>
     <string name="display">Affichage</string>
@@ -251,7 +251,7 @@
     <string name="crash_dialog_text">Une erreur inattendue s’est produite provoquant l’arrêt de l’application. Souhaitez signaler cette erreur par courriel afin d’aider à corriger ce problème \?</string>
     <string name="antinonfreeassetslist">Cette appli comprend des éléments qui ne sont pas libres</string>
     <string name="menu_email">Envoyer un courriel à l’auteur</string>
-    <string name="useTor">Utilisez Tor</string>
+    <string name="useTor">Utiliser Tor</string>
     <string name="useTorSummary">Pour une confidentialité accrue, utilisation forcée de Tor pour le trafic en téléchargement. Orbot est requis</string>
     <string name="swap_stopping_wifi">Arrêt du Wi-Fi…</string>
     <string name="repo_provider">Dépôt : %s</string>
@@ -589,8 +589,29 @@
     <string name="ipfsgw_explainer">Télécharger les applications à partir de la passerelle IPFS. (Fonctionne seulement avec les dépôts qui supportent IPFS.)</string>
     <string name="ipfsgw_add_title">Ajouter une passerelle IPFS</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Télécharger les applications à partir des passerelles web IPFS: %1$d activé</item>
-        <item quantity="many">Télécharger les applications à partir des passerelles web IPFS: %1$d activés</item>
-        <item quantity="other">Télécharger les applications à partir des passerelles web IPFS: %1$d activés</item>
+        <item quantity="one">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activé</item>
+        <item quantity="many">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activés</item>
+        <item quantity="other">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activés</item>
     </plurals>
+    <string name="repo_share_not_found">L\'adresse du dépôt n\'a pas pu être trouvée dans le texte partagé.</string>
+    <string name="useDnsCacheSummary">Utiliser les résultats en cache pour minimiser les requêtes DNS.</string>
+    <string name="useDnsCache">Utiliser le cache DNS</string>
+    <string name="app_details_repository">Dépôt</string>
+    <string name="app_details_repositories">Dépôt</string>
+    <string name="app_details_repository_preferred">(préféré)</string>
+    <string name="app_details_repository_expand">Développer la liste des dépôts</string>
+    <string name="app_list_no_suggested_version">Aucune version recommandée pour l\'installation.</string>
+    <string name="repo_disable_warning_button">Désactiver</string>
+    <string name="app_details_repository_button_prefer">Préférer ce Dépôt</string>
+    <string name="repo_list_info_title">Liste des Dépôts</string>
+    <string name="repo_archive_toggle">Archive des Dépôts</string>
+    <string name="repo_archive_toggle_description">Afficher les apps archivées et les anciennes versions des apps</string>
+    <string name="repositories_last_update">Dernière mise à jour : %s</string>
+    <string name="repo_disable_warning">Désactiver ce dépôt enlèvera son statut « préféré » de toutes les apps.</string>
+    <string name="repositories_last_update_never">jamais</string>
+    <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.
+\n
+\nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
+    <string name="repo_error_adding_archive">Les dépôts archivés ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste et active l\'archive à cet emplacement.</string>
+    <string name="repo_archive_failed">Dépôt archivé actuellement indisponible</string>
 </resources>

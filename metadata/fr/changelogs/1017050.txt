@@ -1,8 +1,8 @@
-* Bogues corrigés
-* Affiche les icônes des dépôts dans la liste
-* Affiche les raisons des antifonctions (si disponible)
-* Mise à jour sans l’Extension de Privilège (F-Droid Basic)
-* Affiche la taille avec les détails des applications (mode expert)
-* Assombrit les noms des applications dans la liste d’application pour améliorer la lisibilité
-* Restaure l’état ouvert/fermé de « Tout mettre à jour » parmis les mises à jour (@tunedal)
-* Restaure l’onglet actif entre les redémarrages de l’application
+* Nombreuses corrections de bogues
+* Affichage des icônes des dépôts dans la liste
+* Affichage les raisons des antifonctions (si disponible)
+* Mise-à-jour sans l’Extension de Privilège (F-Droid Basic)
+* Affichage de la taille de l'application dans l'écran de détails d'application (mode expert)
+* Léger assombrissement des noms des applications dans les listes d’applications pour améliorer la lisibilité
+* Restauration de l’état ouvert/fermé de « Tout mettre à jour » dans l'onglet des mises-à-jour (@tunedal)
+* Restauration de l’onglet actif entre les redémarrages de l’application

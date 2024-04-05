@@ -1,0 +1,7 @@
+* S-a corectat utilizarea de depozite și oglinzi din Stocare externă pe versiunile recente de Android
+* A fost îmbunătățită gestionarea WiFi în Nearby
+* Bara de navigare își amintește acum poziția chiar și atunci când F-Droid se repornește
+* Limbă nouă: Swahili
+* Corectarea descărcării imaginilor pentru depozite care folosesc încă index-v1
+* Corectarea accidentărilor legate de swap, gestionarea depozitelor și multe altele
+* Butonul Downgrade a fost eliminat, Android nu mai permite acest lucru

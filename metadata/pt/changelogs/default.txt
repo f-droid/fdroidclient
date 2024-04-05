@@ -1,0 +1,13 @@
+* Revisão da forma como os repositórios são representados aos utilizadores para tornar claro quando uma instalação vem de outro sítio que não f-droid.org.
+
+* Permitir que os utilizadores alterem a prioridade do repositório globalmente e por aplicação
+
+* As Anti-Features personalizadas são agora ativadas por defeito, em vez de desativadas
+
+* Suporte para receber URLs de repositórios via Share
+
+* Todas as atividades respeitam o tema dia/noite
+
+* Atualização dos usos de armazenamento externo para trabalhar com targetSdkVersion 29
+
+* F-Droid Basic atualizado para funcionar com targetSdkVersion 34

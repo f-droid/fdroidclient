@@ -1,8 +1,8 @@
-* Muitas correções de erros
-* Mostra ícones de repositórios na lista de repositórios
-* Mostra razões de características indesejadas
-* Atualizações autónomas sem extensão privilegiada (apenas F-Droid Basic)
-* Mostra o tamanho da app no ecrã de detalhes da app (modo especialista)
-* Nomes de apps mais escuros nas listas de apps para melhorar a legibilidade
-* Restaurado o estado aberto/fechado de "Atualizar tudo" no separador Atualizações
-* Restaurado o separador ativo entre reinícios da app
+* Diversas correções de erros
+* Mostrar ícones de repositórios na lista
+* Mostrar razões para Anti-Features (quando disponíveis)
+* Atualizações automáticas sem extensão privilegiada (apenas F-Droid Basic)
+* Tamanho da app visível nos detalhes da app (modo perito)
+* Nomes de apps ligeiramente mais escuros nas listas para melhorar a legibilidade
+* Restaurar o estado aberto/fechado de "Atualizar tudo" no separador Atualizações (@tunedal)
+* Restaurar o separador ativo entre reinícios da app

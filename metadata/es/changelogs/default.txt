@@ -1,0 +1,13 @@
+* Revisar cómo se representan los repositorios para dejar claro cuando una instalación es otro lugar que no sea f-droid.org.
+
+* Permitir a los usuarios cambiar la prioridad del repositorio globalmente y por aplicación
+
+* Anti-Características personalizadas están ahora habilitadas por defecto, en lugar de deshabilitadas
+
+* Soporte para recibir URLs de repositorio a través de
+
+* Todas las actividades respetan el tema día/noche
+
+* Actualizar los usos de almacenamiento externo para trabajar con targetSdkVersion 29
+
+* F-Droid Basic actualizado para trabajar con targetSdkVersion 34

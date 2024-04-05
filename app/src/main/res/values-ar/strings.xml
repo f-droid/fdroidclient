@@ -43,7 +43,7 @@
     <string name="repo_last_update">آخر تحديث</string>
     <string name="repo_name">الإسم</string>
     <string name="unknown">غير معروف</string>
-    <string name="repo_confirm_delete_title">حذف المستودع؟</string>
+    <string name="repo_confirm_delete_title">أتريد حذف المستودع؟</string>
     <string name="category_Development">التطوير</string>
     <string name="category_Games">الألعاب</string>
     <string name="category_Internet">الإنترنت</string>
@@ -156,8 +156,8 @@
     <string name="repo_disabled_notification">تم تعطيل %1$s.
 \n
 \nستحتاج إلى إعادة تمكين هذا المستودع لتثبيت التطبيقات منه.</string>
-    <string name="repo_added">مستودع الحزمة المحفوظة %1$s.</string>
-    <string name="repo_searching_address">ابحث عن مستودع الحزمة في
+    <string name="repo_added">تم حفظ مستودع حزم %1$s.</string>
+    <string name="repo_searching_address">البحث عن مستودع الحزم على
 \n%1$s</string>
     <string name="not_on_same_wifi">جهازك ليس على الشبكة اللاسلكية نفسها مع المستودع المحلي الذي قمت بإضافتها فقط! حاول الانضمام إلى هذه الشبكة: %s</string>
     <string name="requires_features">احتياجات: %1$s</string>
@@ -325,7 +325,7 @@
         <item quantity="many">حمل التحديثات ل %1$d تطبيقا.</item>
         <item quantity="other">حمل التحديثات ل %1$d تطبيق.</item>
     </plurals>
-    <string name="repositories_summary">أضف مصادر إضافية للتطبيقات</string>
+    <string name="repositories_summary">إضافة مصادر إضافية للتطبيقات</string>
     <string name="menu_license">الرخصة: %s</string>
     <string name="download_404">الملف المطلوب غير موجود.</string>
     <string name="app__tts__downloading_progress">جاري التحميل، اكتمل %1$d%%</string>
@@ -631,8 +631,8 @@
     <string name="repo_archive_failed">أرشيف المستودع غير متوفر حاليًا</string>
     <string name="repositories_last_update">آخر تحديث: %s</string>
     <string name="repositories_last_update_never">أبدًا</string>
-    <string name="repo_list_info_title">قائمة المستودع</string>
-    <string name="repo_archive_toggle">أرشيف المستودع</string>
+    <string name="repo_list_info_title">قائمة المستودعات</string>
+    <string name="repo_archive_toggle">أرشيف المستودعات</string>
     <string name="repo_archive_toggle_description">اعرض التطبيقات المؤرشفة والإصدارات القديمة من التطبيقات</string>
     <string name="repo_disable_warning_button">عطّل</string>
     <string name="app_details_repository_preferred">(مفضّل)</string>
