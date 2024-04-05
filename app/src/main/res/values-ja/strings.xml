@@ -507,7 +507,7 @@
     <string name="antinonfreead">不自由なアドオン</string>
     <string name="antinonfreenet">不自由なネットワークサービス</string>
     <string name="antinonfreedep">非フリーの依存パッケージ</string>
-    <string name="app_list_results_hidden_antifeature_settings">「好ましくない機能」の設定によると一定の成果は表示されませんでした。</string>
+    <string name="app_list_results_hidden_antifeature_settings">「好ましくない機能」の設定により、一部の検索結果が表示されませんでした。</string>
     <string name="antiknownvuln">既知の脆弱性</string>
     <string name="antinonfreeassets">不自由なアセット</string>
     <string name="antiupstreamnonfree">非フリーなアップストリーム</string>
