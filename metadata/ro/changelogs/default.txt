@@ -1,15 +1,13 @@
-* Revizuirea manipulării repo și a oglinzilor, UX și cod
+* Revizuirea modului în care sunt reprezentate depozitele pentru utilizatori pentru a fi clar când o instalare vine din altă parte decât de pe f-droid.org.
 
-* Arată previzualizări depozite
+* Permiteți utilizatorilor să schimbe prioritatea depozitului la nivel global și pentru fiecare aplicație.
 
-* F-Droid și F-Droid Basic suportă acum actualizări automate în fundal
+* Anti-funcții personalizate sunt acum activate în mod implicit, în loc să fie dezactivate
 
-* Pe Android 14, marcați apps cu versiunea SDK ca incompatibile #2692
+* Suport pentru primirea URL-urilor depozitelor prin Partajare
 
-* Clic lung pentru a copia link-uri, permisiuni și versiuni la App Details (@Tobias_Groza)
+* Toate activitățile respectă tema zi/noapte
 
-* Apps incompatibile afișate numai dacă sunt permise în Setări #41 (@pigpig)
+* Actualizați utilizările de stocare externă pentru a funcționa cu targetSdkVersion 29
 
-* Noi setări la gateway-uri IPFS
-
-* Selectarea limbii pentru fiecare app în parte (@Licaon-Kter)
+* F-Droid Basic a fost actualizat pentru a funcționa cu targetSdkVersion 34
