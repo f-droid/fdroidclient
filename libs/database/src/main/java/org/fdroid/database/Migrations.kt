@@ -38,7 +38,7 @@ internal class MultiRepoMigration : AutoMigrationSpec {
             while (cursor.moveToNext()) {
                 val repo = getRepo(cursor)
                 log.error { repo.toString() }
-                if (repo.isArchive()) {
+                if (repo.isArchive() && repo.certificate != null) {
                     if (archiveMap.containsKey(repo.certificate)) {
                         log.error { "More than two repos with certificate of ${repo.address}" }
                         // still migrating this as a normal repo then
@@ -98,7 +98,7 @@ internal class MultiRepoMigration : AutoMigrationSpec {
     private data class Repo(
         val repoId: Long,
         val address: String,
-        val certificate: String,
+        val certificate: String?,
         val weight: Int,
     ) {
         fun isArchive(): Boolean = address.trimEnd('/').endsWith("/archive")
