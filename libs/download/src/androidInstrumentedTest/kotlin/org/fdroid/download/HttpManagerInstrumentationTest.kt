@@ -100,6 +100,10 @@ internal class HttpManagerInstrumentationTest {
 
     @Test
     fun checkSessionResumeShort() = runSuspend {
+        assumeTrue(
+            "tlsprivacy.nervuri.net uses Let's Encrypt, which does not work on old Androids",
+            Build.VERSION.SDK_INT >= 26
+        )
         val httpManager = HttpManager(userAgent, null)
         val mirror = Mirror("https://tlsprivacy.nervuri.net")
         val indexFile: IndexFile = getIndexFile("/json/v1")
