@@ -59,7 +59,7 @@
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de su actividad</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
-    <string name="antinonfreenetlist">Esta aplicación promueve o depende completamente de un servicio de red no libre</string>
+    <string name="antinonfreenetlist">Esta aplicación promueve o depende totalmente de un servicio de red no modificable o no gratuito</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
     <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
     <string name="display">Presentación</string>
@@ -601,4 +601,18 @@
     <string name="app_details_repositories">Repositorios</string>
     <string name="app_details_repository_preferred">(aconsejado)</string>
     <string name="app_details_repository_button_prefer">Repositorio Preferente</string>
+    <string name="app_details_repository_expand">Expandir la lista de repositorios</string>
+    <string name="app_list_no_suggested_version">No se recomienda ninguna versión para su instalación.</string>
+    <string name="repo_error_adding_archive">Los repositorios de los archivos no se pueden agregar directamente. Toque el repositorio en la lista y active el archivo aquí.</string>
+    <string name="repo_archive_failed">El repositorio de archivos no está disponible</string>
+    <string name="repositories_last_update">Última actualización: %s</string>
+    <string name="repositories_last_update_never">nunca</string>
+    <string name="repo_list_info_title">Lista de repositorios</string>
+    <string name="repo_archive_toggle">Archivo de repositorios</string>
+    <string name="repo_archive_toggle_description">Mostrar aplicaciones archivadas y versiones obsoletas de aplicaciones</string>
+    <string name="repo_disable_warning">Deshabilitar este repositorio eliminará su estado \"preferido\" de todas las aplicaciones.</string>
+    <string name="repo_disable_warning_button">Desactivar</string>
+    <string name="repo_list_info_text">Un repositorio es una fuente de aplicaciones. Esta lista muestra todos los repositorios añadidos actualmente. Los repositorios desactivados no se utilizan.
+\n
+\nSi una aplicación está en más de un repositorio, se preferirá automáticamente el repositorio que esté más arriba en la lista. Puede reordenar los repositorios pulsando prolongadamente y arrastrándolos.</string>
 </resources>
