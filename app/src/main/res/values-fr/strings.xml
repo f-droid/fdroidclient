@@ -601,4 +601,15 @@
     <string name="app_details_repository_preferred">(préféré)</string>
     <string name="app_details_repository_expand">Développer la liste des référentiels</string>
     <string name="app_list_no_suggested_version">Aucune version recommandée pour l\'installation.</string>
+    <string name="repo_disable_warning_button">Désactiver</string>
+    <string name="app_details_repository_button_prefer">Préférer ce Dépôt</string>
+    <string name="repo_list_info_title">Liste des Dépôts</string>
+    <string name="repo_archive_toggle">Archive des Dépôts</string>
+    <string name="repo_archive_toggle_description">Afficher les apps archivées et les anciennes versions des apps</string>
+    <string name="repositories_last_update">Dernière mise à jour : %s</string>
+    <string name="repo_disable_warning">Désactiver ce dépôt enlèvera son statut « préféré » de toutes les apps.</string>
+    <string name="repositories_last_update_never">jamais</string>
+    <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.
+\n
+\nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
 </resources>
