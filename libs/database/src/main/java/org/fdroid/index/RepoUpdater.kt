@@ -51,29 +51,8 @@ public class RepoUpdater(
 
     /**
      * Updates the given [repo].
-     * If [Repository.certificate] is null,
-     * the repo is considered to be new this being the first update.
      */
-    public fun update(
-        repo: Repository,
-        fingerprint: String? = null,
-    ): IndexUpdateResult {
-        return if (repo.certificate == null) {
-            // This is a new repo without a certificate
-            updateNewRepo(repo, fingerprint)
-        } else {
-            update(repo)
-        }
-    }
-
-    private fun updateNewRepo(
-        repo: Repository,
-        expectedSigningFingerprint: String?,
-    ): IndexUpdateResult = update(repo) { updater ->
-        updater.updateNewRepo(repo, expectedSigningFingerprint)
-    }
-
-    private fun update(repo: Repository): IndexUpdateResult = update(repo) { updater ->
+    public fun update(repo: Repository): IndexUpdateResult = update(repo) { updater ->
         updater.update(repo)
     }
 

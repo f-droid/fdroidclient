@@ -366,7 +366,7 @@ internal class RepoAdder(
         address = uri.toString(),
         timestamp = -1L,
         formatVersion = indexFormatVersion,
-        certificate = null,
+        certificate = "This is fake and will be replaced by real cert before saving in DB.",
         version = 0L,
         weight = 0,
         lastUpdated = -1L,

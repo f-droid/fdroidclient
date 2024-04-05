@@ -165,11 +165,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
     }
 
     @Transaction
+    @VisibleForTesting
     @Deprecated("Use insert instead")
     fun insertEmptyRepo(
         address: String,
         username: String? = null,
         password: String? = null,
+        certificate: String = "6789" // just used for testing
     ): Long {
         val repo = CoreRepository(
             name = mapOf("en-US" to address),
@@ -179,7 +181,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
             version = null,
             formatVersion = null,
             maxAge = null,
-            certificate = null,
+            certificate = certificate,
         )
         val repoId = insertOrReplace(repo)
         val currentMinWeight = getMinRepositoryWeight()
@@ -197,7 +199,12 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Transaction
     @VisibleForTesting
     fun insertOrReplace(repository: RepoV2, version: Long = 0): Long {
-        val repoId = insertOrReplace(repository.toCoreRepository(version = version))
+        val repoId = insertOrReplace(
+            repository.toCoreRepository(
+                version = version,
+                certificate = "0123", // just for testing
+            )
+        )
         val currentMinWeight = getMinRepositoryWeight()
         val repositoryPreferences = RepositoryPreferences(repoId, currentMinWeight - 2)
         insert(repositoryPreferences)
@@ -258,9 +265,9 @@ internal interface RepositoryDaoInt : RepositoryDao {
         repository: RepoV2,
         version: Long,
         formatVersion: IndexFormatVersion,
-        certificate: String?,
     ) {
-        update(repository.toCoreRepository(repoId, version, formatVersion, certificate))
+        val repo = getRepository(repoId) ?: error("Repo with id $repoId did not exist")
+        update(repository.toCoreRepository(repoId, version, formatVersion, repo.certificate))
         insertRepoTables(repoId, repository)
     }
 
@@ -273,16 +280,6 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
     @Update
     fun updateRepository(repo: CoreRepository): Int
-
-    /**
-     * Updates the certificate for the [Repository] with the given [repoId].
-     * This should be used for V1 index updating where we only get the full cert
-     * after reading the entire index file.
-     * V2 index should use [update] instead as there the certificate is known
-     * before reading full index.
-     */
-    @Query("UPDATE ${CoreRepository.TABLE} SET certificate = :certificate WHERE repoId = :repoId")
-    fun updateRepository(repoId: Long, certificate: String)
 
     @Update
     fun updateRepositoryPreferences(preferences: RepositoryPreferences)

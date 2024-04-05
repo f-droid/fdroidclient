@@ -19,6 +19,7 @@ import org.fdroid.index.v2.RepoV2
 
 internal open class RepoV2StreamReceiver(
     private val receiver: RepoPreviewReceiver,
+    private val certificate: String,
     private val username: String?,
     private val password: String?,
 ) : IndexV2StreamReceiver {
@@ -28,7 +29,7 @@ internal open class RepoV2StreamReceiver(
             repo: RepoV2,
             version: Long,
             formatVersion: IndexFormatVersion,
-            certificate: String?,
+            certificate: String,
             username: String?,
             password: String?,
         ) = Repository(
@@ -80,7 +81,7 @@ internal open class RepoV2StreamReceiver(
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
 
-    override fun receive(repo: RepoV2, version: Long, certificate: String) {
+    override fun receive(repo: RepoV2, version: Long) {
         receiver.onRepoReceived(
             getRepository(
                 repo = repo,

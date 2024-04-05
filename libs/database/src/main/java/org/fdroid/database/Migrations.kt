@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
 import androidx.room.migration.AutoMigrationSpec
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import mu.KotlinLogging
 
@@ -102,5 +103,15 @@ internal class MultiRepoMigration : AutoMigrationSpec {
         val weight: Int,
     ) {
         fun isArchive(): Boolean = address.trimEnd('/').endsWith("/archive")
+    }
+}
+
+/**
+ * Removes all repos without a certificate as those are broken anyway
+ * and force us to handle repos without certs.
+ */
+internal val MIGRATION_2_3 = object : Migration(2, 3) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.delete(CoreRepository.TABLE, "certificate IS NULL", null)
     }
 }

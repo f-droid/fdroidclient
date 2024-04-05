@@ -57,10 +57,10 @@ internal class IndexV1UpdaterTest : DbTest() {
 
     @Test
     fun testIndexV1Processing() {
-        val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
+        val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL, certificate = TESTY_CERT)
         val repo = repoDao.getRepository(repoId) ?: fail()
         downloadIndex(repo, TESTY_JAR)
-        val result = indexUpdater.updateNewRepo(repo, TESTY_FINGERPRINT).noError()
+        val result = indexUpdater.update(repo).noError()
         assertIs<IndexUpdateResult.Processed>(result)
 
         // repo got updated
@@ -124,7 +124,7 @@ internal class IndexV1UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
         val repo = repoDao.getRepository(repoId) ?: fail()
         downloadIndex(repo, TESTY_JAR)
-        val result = indexUpdater.updateNewRepo(repo, "not the right fingerprint")
+        val result = indexUpdater.update(repo)
         assertIs<IndexUpdateResult.Error>(result)
         assertIs<SigningException>(result.e)
 
@@ -141,7 +141,7 @@ internal class IndexV1UpdaterTest : DbTest() {
         val futureRepo =
             repo.copy(repository = repo.repository.copy(timestamp = System.currentTimeMillis()))
         downloadIndex(futureRepo, TESTY_JAR)
-        val result = indexUpdater.updateNewRepo(futureRepo, TESTY_FINGERPRINT)
+        val result = indexUpdater.update(futureRepo)
         assertIs<IndexUpdateResult.Error>(result)
         assertIs<OldIndexException>(result.e)
         assertFalse((result.e as OldIndexException).isSameTimestamp)
@@ -208,7 +208,7 @@ internal class IndexV1UpdaterTest : DbTest() {
         val repoId = repoDao.insertEmptyRepo("http://example.org")
         val repo = repoDao.getRepository(repoId) ?: fail()
         downloadIndex(repo, jar)
-        return indexUpdater.updateNewRepo(repo, null)
+        return indexUpdater.update(repo)
     }
 
     /**

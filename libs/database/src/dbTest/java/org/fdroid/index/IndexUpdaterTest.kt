@@ -17,7 +17,7 @@ internal class IndexUpdaterTest {
             address = "http://example.org/",
             timestamp = 1337L,
             formatVersion = IndexFormatVersion.TWO,
-            certificate = null,
+            certificate = "abcd",
             version = 2001,
             weight = 0,
             lastUpdated = 23L,

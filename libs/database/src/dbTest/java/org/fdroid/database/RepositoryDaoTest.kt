@@ -266,19 +266,6 @@ internal class RepositoryDaoTest : DbTest() {
     }
 
     @Test
-    fun certGetsUpdated() {
-        val repoId = repoDao.insertOrReplace(getRandomRepo())
-        assertEquals(1, repoDao.getRepositories().size)
-        assertEquals(null, repoDao.getRepositories()[0].certificate)
-
-        val cert = getRandomString()
-        repoDao.updateRepository(repoId, cert)
-
-        assertEquals(1, repoDao.getRepositories().size)
-        assertEquals(cert, repoDao.getRepositories()[0].certificate)
-    }
-
-    @Test
     fun testGetMinRepositoryWeight() {
         assertEquals(Int.MAX_VALUE, repoDao.getMinRepositoryWeight())
 
@@ -344,13 +331,13 @@ internal class RepositoryDaoTest : DbTest() {
         )
 
         // we'll add an archive repo for repo1 to the list [3, 5, (1, 1a), 4, 2]
-        repoDao.updateRepository(repoId1, "1234abcd")
         val repo1 = repoDao.getRepository(repoId1) ?: fail()
+        repoDao.updateRepository(repo1.repository.copy(certificate = "1234abcd"))
         val repo1a = InitialRepository(
             name = getRandomString(),
             address = "https://example.org/archive",
             description = getRandomString(),
-            certificate = repo1.certificate ?: fail(),
+            certificate = "1234abcd", // same as repo1
             version = 42L,
             enabled = false,
         )

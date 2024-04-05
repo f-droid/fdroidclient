@@ -64,7 +64,7 @@ internal class IndexV2InsertTest : DbTest() {
             db.runInTransaction {
                 val repoId = db.getRepositoryDao().insertEmptyRepo("http://example.org")
                 val streamReceiver = DbV2StreamReceiver(db, repoId, compatibilityChecker)
-                val indexProcessor = IndexV2FullStreamProcessor(streamReceiver, "")
+                val indexProcessor = IndexV2FullStreamProcessor(streamReceiver)
                 cIn.use { indexStream ->
                     indexProcessor.process(42, indexStream) {}
                 }

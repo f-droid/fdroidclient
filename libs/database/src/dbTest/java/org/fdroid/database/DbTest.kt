@@ -76,9 +76,9 @@ internal abstract class DbTest {
         certificate: String = CERTIFICATE,
         lastTimestamp: Long = -1,
     ): Long {
-        val repoId = db.getRepositoryDao().insertEmptyRepo(address)
+        val repoId = db.getRepositoryDao().insertEmptyRepo(address, certificate = certificate)
         val streamReceiver = DbV1StreamReceiver(db, repoId) { true }
-        val indexProcessor = IndexV1StreamProcessor(streamReceiver, certificate, lastTimestamp)
+        val indexProcessor = IndexV1StreamProcessor(streamReceiver, lastTimestamp)
         db.runInTransaction {
             assets.open(indexAssetPath).use { indexStream ->
                 indexProcessor.process(indexStream)
@@ -93,9 +93,9 @@ internal abstract class DbTest {
         version: Long = 42L,
         certificate: String = CERTIFICATE,
     ): Long {
-        val repoId = db.getRepositoryDao().insertEmptyRepo(address)
+        val repoId = db.getRepositoryDao().insertEmptyRepo(address, certificate = certificate)
         val streamReceiver = DbV2StreamReceiver(db, repoId) { true }
-        val indexProcessor = IndexV2FullStreamProcessor(streamReceiver, certificate)
+        val indexProcessor = IndexV2FullStreamProcessor(streamReceiver)
         db.runInTransaction {
             assets.open(indexAssetPath).use { indexStream ->
                 indexProcessor.process(version, indexStream) {}

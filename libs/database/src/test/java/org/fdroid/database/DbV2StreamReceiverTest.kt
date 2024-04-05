@@ -27,25 +27,25 @@ internal class DbV2StreamReceiverTest {
             timestamp = 42L,
         )
         every { db.getRepositoryDao() } returns mockk(relaxed = true)
-        dbV2StreamReceiver.receive(repoV2, 42L, "cert")
+        dbV2StreamReceiver.receive(repoV2, 42L)
 
         // icon file without leading / does not pass
         val repoV2NoSlash =
             repoV2.copy(icon = mapOf("en" to FileV2(name = "foo", sha256 = "bar", size = 23L)))
         assertFailsWith<SerializationException> {
-            dbV2StreamReceiver.receive(repoV2NoSlash, 42L, "cert")
+            dbV2StreamReceiver.receive(repoV2NoSlash, 42L)
         }
 
         // icon file without sha256 hash fails
         val repoNoSha256 = repoV2.copy(icon = mapOf("en" to FileV2(name = "/foo", size = 23L)))
         assertFailsWith<SerializationException> {
-            dbV2StreamReceiver.receive(repoNoSha256, 42L, "cert")
+            dbV2StreamReceiver.receive(repoNoSha256, 42L)
         }
 
         // icon file without size fails
         val repoNoSize = repoV2.copy(icon = mapOf("en" to FileV2(name = "/foo", sha256 = "bar")))
         assertFailsWith<SerializationException> {
-            dbV2StreamReceiver.receive(repoNoSize, 42L, "cert")
+            dbV2StreamReceiver.receive(repoNoSize, 42L)
         }
     }
 }
