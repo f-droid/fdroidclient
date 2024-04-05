@@ -41,7 +41,7 @@
     <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
     <string name="repo_add_url">Dirección del repositorio</string>
     <string name="repo_add_fingerprint">Huella digital (opcional)</string>
-    <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
+    <string name="malformed_repo_uri">Ignorando URI de repositorio mal-formada: %s</string>
     <string name="menu_manage">Repositorios</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Repositorio nuevo</string>
@@ -434,11 +434,11 @@
     <string name="hide_on_long_search_press_summary">Manteniendo pulsado el botón de búsqueda se ocultará la aplicación</string>
     <string name="warning_scaning_qr_code">Parece que su cámara no tiene autoenfoque. Puede resultar difícil escanear el código.</string>
     <string name="repo_add_mirror">Agregar réplica</string>
-    <string name="repo_exists_add_fingerprint">%1$s ya está configurado. Esto agregará la información nueva sobre la clave.</string>
-    <string name="repo_exists_enable">%1$s ya está configurado. Confirme que quiere volver a habilitarlo.</string>
+    <string name="repo_exists_add_fingerprint">%1$s ya está configurado, esto agregará información nueva sobre la clave.</string>
+    <string name="repo_exists_enable">%1$s ya está configurado, confirma que quieres volver a habilitarlo.</string>
     <string name="repo_exists_and_enabled">%1$s ya está configurado y habilitado.</string>
     <string name="repo_delete_to_overwrite">Primero borra %1$s para agregar este ya que hay un conflicto de claves.</string>
-    <string name="repo_exists_add_mirror">Esto es una copia de %1$s. ¿Quiere añadirlo como réplica\?</string>
+    <string name="repo_exists_add_mirror">Esto es una copia de %1$s, ¿quieres añadirlo como réplica?</string>
     <string name="show_anti_feature_apps">Incluir aplicaciones controvertidas</string>
     <string name="show_anti_feature_apps_on">Listar aplicaciones que requieren características controvertidas</string>
     <string name="force_touch_apps">Incluir aplicaciones de pantalla táctil</string>
@@ -541,11 +541,11 @@
     <string name="antinosource">El código fuente ya no está disponible</string>
     <string name="antinonfreead">Complementos no libres</string>
     <string name="antiupstreamnonfree">Original no libre</string>
-    <string name="antinonfreeassets">Activos no libres</string>
+    <string name="antinonfreeassets">Componentes no libres</string>
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
-    <string name="antiothers">Otras anti-característcas</string>
-    <string name="antinsfw">No es segura para el trabajo</string>
+    <string name="antiothers">Otras características controvertidas</string>
+    <string name="antinsfw">No Seguro Para El Trabajo (NSFW)</string>
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
     <string name="antinsfwlist">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
@@ -556,19 +556,19 @@
     <string name="category_Nightly">versión diaria</string>
     <string name="app_error_open">No se ha podido abrir la aplicación.</string>
     <string name="turn_on_wifi">Enciende el wifi</string>
-    <string name="repo_intro">Un repositorio es una fuente adicional de aplicaciones. Los repositorios de terceros que añadas aquí tienen estándares diferentes a los de las aplicaciones compiladas por F-Droid.
+    <string name="repo_intro">Un repositorio es una fuente adicional de aplicaciones. Los repositorios de terceros que agregues aquí tienen estándares diferentes a los de las aplicaciones compiladas por F-Droid.
 \n
-\nPor favor asegúrate de que el repositorio que vas a añadir es confiable.</string>
-    <string name="repo_enter_url">Añadir la URL del repositorio manualmente</string>
+\nPor favor asegúrate de que el repositorio que vas a agregar es confiable.</string>
+    <string name="repo_enter_url">Escribe la URL del repositorio manualmente</string>
     <string name="repo_exists">Este repositorio ya está añadido.</string>
     <string name="repo_invalid">Repositorio inválido.
 \n
-\nContacta el administrador y informales de la incidencia.</string>
+\nContacta al administrador e infórmales de la incidencia.</string>
     <string name="swap_banner_message">Para intercambiar aplicaciones, conéctate a la misma red Wi-Fi que tu amigo.</string>
-    <string name="repo_add_new_title">Añadir repositorio</string>
-    <string name="repo_add_new_mirror">Añadir como nuevo espejo</string>
+    <string name="repo_add_new_title">Agregar repositorio</string>
+    <string name="repo_add_new_mirror">Agregar como nuevo espejo</string>
     <string name="repo_state_fetching">Obteniendo repositorio…</string>
-    <string name="repo_state_adding">Añadiendo repositorio…</string>
+    <string name="repo_state_adding">Agregando repositorio…</string>
     <string name="repo_io_error">Error al conectar con el repositorio.</string>
     <string name="nearby_splace__external_storage_permission_button">Pruébalo</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid puede buscar repositorios y espejos en tu tarjeta SD, pero necesita tu permiso para hacerlo.</string>
