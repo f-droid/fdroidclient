@@ -533,4 +533,6 @@
     <string name="repo_intro">リポジトリは、アプリ入手の追加ソースです。ここに追加したサードパーティーのリポジトリは、F-Droid 自身がビルドして提供するアプリとは異なる基準で運用されています。
 \n
 \n追加しているリポジトリが信頼できることを確認してください。</string>
-</resources>
+    <string name="paste">貼り付け</string>PluralsCandidate
+
+    </resources>
