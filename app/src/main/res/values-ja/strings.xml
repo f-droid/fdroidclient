@@ -535,4 +535,5 @@
 \n追加しているリポジトリが信頼できることを確認してください。</string>
     <string name="paste">貼り付け</string>PluralsCandidate
 
-    </resources>
+    <string name="force_old_installer_title">古いインストーラーを強制する</string>
+</resources>
