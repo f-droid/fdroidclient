@@ -248,6 +248,44 @@ internal class MultiRepoMigrationTest {
             }
     }
 
+    @Test
+    fun repoWithoutCertificate() {
+        helper.createDatabase(TEST_DB, 1).use { db ->
+            // Database has schema version 1. Insert some data using SQL queries.
+            // We can't use DAO classes because they expect the latest schema.
+            val repoId = db.insert(CoreRepository.TABLE, CONFLICT_FAIL, ContentValues().apply {
+                put("name", localizedTextV2toString(mapOf("en-US" to fdroidRepo.name)))
+                put(
+                    "description",
+                    localizedTextV2toString(mapOf("en-US" to fdroidRepo.description))
+                )
+                put("address", fdroidRepo.address)
+                put("timestamp", -1)
+            })
+            db.insert(RepositoryPreferences.TABLE, CONFLICT_FAIL, ContentValues().apply {
+                put("repoId", repoId)
+                put("enabled", fdroidRepo.enabled)
+                put("weight", fdroidRepo.weight)
+            })
+        }
+
+        // Re-open the database with version 2, auto-migrations are applied automatically
+        helper.runMigrationsAndValidate(TEST_DB, 2, true).close()
+
+        // now get the Room DB, so we can use our DAOs for verifying the migration
+        databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
+            .allowMainThreadQueries()
+            .build().use { db ->
+                // repo without cert did not get migrated
+                assertEquals(1, db.getRepositoryDao().getRepositories().size)
+                val repo = db.getRepositoryDao().getRepositories()[0]
+                // cert is still null
+                assertNull(repo.certificate)
+                // address still the same
+                assertEquals(fdroidRepo.address, repo.address)
+            }
+    }
+
     private fun runRepoMigration(
         repos: List<InitialRepository>,
         check: (FDroidDatabaseInt) -> Unit,
