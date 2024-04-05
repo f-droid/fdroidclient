@@ -1,0 +1,10 @@
+* Réparations et corrections :
+- utilisation des dépôts et miroirs depuis le Stockage externe (versions d'Android récentes) ;
+- images de téléchargement pour les dépôts utilisant encore index-v1 ;
+- accidents de l'échange/gestion des dépôts et plus.
+* Améliorations :
+- gestion du WiFi à proximité ;
+- maintien de la position de la barre de navigation même quand F-Droid redémarre ;
+- traduction en Swahili.
+* Suppression :
+- bouton Rétrograder à la version précédente (Android n'autorise plus cela).

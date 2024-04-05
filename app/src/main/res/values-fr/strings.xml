@@ -589,8 +589,11 @@
     <string name="ipfsgw_explainer">Télécharger les applications à partir de la passerelle IPFS. (Fonctionne seulement avec les dépôts qui supportent IPFS.)</string>
     <string name="ipfsgw_add_title">Ajouter une passerelle IPFS</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Télécharger les applications à partir des passerelles web IPFS: %1$d activé</item>
-        <item quantity="many">Télécharger les applications à partir des passerelles web IPFS: %1$d activés</item>
-        <item quantity="other">Télécharger les applications à partir des passerelles web IPFS: %1$d activés</item>
+        <item quantity="one">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activé</item>
+        <item quantity="many">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activés</item>
+        <item quantity="other">Téléchargement d\'applications via les points d\'accès web \"IPFS\" : %1$d activés</item>
     </plurals>
+    <string name="repo_share_not_found">L\'adresse du dépôt n\'a pas pu être trouvée dans le texte partagé.</string>
+    <string name="useDnsCacheSummary">Utilisez des résultats en cache pour minimiser les requêtes DNS.</string>
+    <string name="useDnsCache">Utiliser le cache DNS</string>
 </resources>

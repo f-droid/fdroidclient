@@ -1,0 +1,15 @@
+* Récupération et manipulation de miroirs, UX et code
+
+* Afficher l'aperçu du nouveau dépôt
+
+* L'installation avec F-Droid et F-Droid Basic prend en charge les mises à jour automatiques en arrière-plan
+
+* Sur Android 14, marquer les applications avec la version SDK non supportée comme incompatibles #2692
+
+* Clic-long pour copier les Liens, les Permissions et les Versions sur l'écran Détails de l'application (@Tobias_Groza)
+
+* Les applications incompatibles ne sont affichées que dans les paramètres #41 (@pigpig)
+
+* Nouveaux paramètres IPFS
+
+* Sélection de langues par application (@Licaon-Kter)
