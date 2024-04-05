@@ -6,10 +6,10 @@
 
 * V Androidu 14 označeny aplikace s nepodporovanou cílovou verzí SDK jako nekompatibilní
 
-* Podržení pro zkopírování odkazů, oprávnění a verzí na stránce s podrobnostmi o aplikaci (@Tobias_Groza)
+* Podržení pro zkopírování odkazů, oprávnění a verzí na stránce s podrobnostmi o aplikaci
 
-* Nekompatibilní aplikace zobrazeny pouze po povolení v nastavení (@pigpig)
+* Nekompatibilní aplikace zobrazeny pouze po povolení v nastavení
 
 * Nová nastavení bran IPFS
 
-* a další
+* Výběr jazyka pro individ. aplikace

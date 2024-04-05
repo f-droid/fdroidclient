@@ -1,0 +1,13 @@
+* Přepracován způsob představení repozitářů uživateli, aby bylo jasné, kdy aplikace pochází z jiného zdroje než z f-droid.org
+
+* Přidána možnost změny priority repozitářů (globálně i individuálně)
+
+* Vlastní anti-vlastnosti jsou nyní ve výchozím nastavení povoleny
+
+* Podpora získání URL repozitářů z nabídky Sdílení
+
+* Všechny aktivity respektují denní/noční motiv
+
+* Upraveno použití externích úložišť pro podporu targetSdkVersion 29
+
+* F-Droid Basic aktualizován s podporou targetSdkVersion 34
