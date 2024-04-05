@@ -1,13 +1,15 @@
-* Revisão de repo e manipulação de espelho, tanto UX e código
+* Revisão da gestão de repositórios e espelhos, tanto UX como o código
 
-* Mostrar visualização de novos repos
+* Visualização prévia de novos repositórios
 
-* Instalar com F-Droid e F-Droid Basic agora suporta atualizações automáticas de fundo
+* A instalação com F-Droid e F-Droid Basic agora suporta atualizações automáticas em segundo plano
 
-* No Android 14, marcar apps não suportadas da versão do SDK alvo e incompatíveis #2692
+* No Android 14, apps com versão SDK alvo não suportada marcadas como incompatíveis #2692.
 
-* Clique longo para copiar ligações, permissões e versões no ecrã Detalhes da App (@Tobias_Groza)
+* Clique longo para copiar links, permissões e versões no ecrã Detalhes da app (@Tobias_Groza)
 
-* Apps incompatíveis só são mostrados quando permitido em Configurações #41 (@pigpig)
+* Aplicações incompatíveis só aparecem se permitido nas Definições #41 (@pigpig)
 
-...
+* Novas configurações de gateways IPFS
+
+* Seleção de idioma por aplicação (@Licaon-Kter)

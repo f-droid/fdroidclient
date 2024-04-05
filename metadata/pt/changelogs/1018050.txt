@@ -1,7 +1,7 @@
-* Corrigido usar repos e espelhos do armazenamento externo em versões recentes do Android
-* Melhor gestão de Wi-Fi nas proximidades
-* A barra de navegação agora se lembra da sua posição mesmo quando F-Droid reinicia
-* Nova língua: Suaíli
-* Corrigir a descarga de imagens para repos ainda através de index-v1
-* Corrigir falhas relacionadas com swap, gestão de repos e muito mais
-* O botão Downgrade foi removido, o Android já não o permite
+* Correção da utilização de repositórios e espelhos do armazenamento externo em versões recentes do Android
+* Melhoria da gestão de WiFi no Nearby
+* A barra de navegação lembra-se agora da sua posição mesmo quando o F-Droid reinicia
+* Novo idioma: Swahili
+* Correção do download de imagens para repositórios que ainda usam o index-v1
+* Correção de falhas relacionadas com a troca, gestão de repositórios e muito mais
+* O botão Downgrade foi removido, pois o Android já não o permite
