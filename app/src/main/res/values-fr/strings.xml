@@ -596,4 +596,9 @@
     <string name="repo_share_not_found">L\'adresse du dépôt n\'a pas pu être trouvée dans le texte partagé.</string>
     <string name="useDnsCacheSummary">Utilisez des résultats en cache pour minimiser les requêtes DNS.</string>
     <string name="useDnsCache">Utiliser le cache DNS</string>
+    <string name="app_details_repository">Repository</string>
+    <string name="app_details_repositories">Repositories</string>
+    <string name="app_details_repository_preferred">(préféré)</string>
+    <string name="app_details_repository_expand">Développer la liste des référentiels</string>
+    <string name="app_list_no_suggested_version">Aucune version recommandée pour l\'installation.</string>
 </resources>
