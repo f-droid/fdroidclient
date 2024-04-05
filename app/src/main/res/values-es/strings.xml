@@ -594,4 +594,5 @@
         <item quantity="many">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
         <item quantity="other">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
     </plurals>
+    <string name="repo_share_not_found">No se ha encontrado la dirección del repositorio en el texto compartido.</string>
 </resources>
