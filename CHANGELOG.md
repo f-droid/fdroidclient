@@ -1,3 +1,15 @@
+### 1.20.0-alpha1 (2024-04-05)
+
+* Updated targetSdkVersion to 29
+
+* Fix crashes BLUETOOTH_SCAN crashes when using Nearby on Android 13 and 14
+
+* Request update ownership for newly installed apps on Android 14
+
+* Fix icons forced to black #1458 (@VishnuSanal)
+
+* Stop cropping screenshots (@JunkFood02)
+
 ### 1.20.0-alpha0 (2024-03-25)
 
 * Overhaul how repositories are represented to users to make it clear when an install is coming from somewhere else but f-droid.org.
