@@ -37,7 +37,6 @@
     <string name="menu_email">E-mail autor</string>
     <string name="SignatureMismatch">Noua versiune este semnată cu o cheie diferită față de versiunea veche. Pentru a putea instala noua versiune, cea veche trebuie întâi dezinstalată. Vă rugam sa faceți asta și să reîncercați. (Nu uitați că procesul de dezinstalare al aplicației o să șteargă datele interne stocate ale acesteia)</string>
     <string name="app_name_full">F-Droid</string>
-    <string name="enable_nfc_send">Activează trimiterea prin NFC…</string>
     <string name="update_interval">Interval actualizări automate</string>
     <string name="unstable_updates">Actualizări instabile</string>
     <string name="login_name">Nume de utilizator</string>
@@ -154,7 +153,6 @@
     <string name="permissions">Permisiuni</string>
     <string name="category_Time">Timp</string>
     <string name="uninstall_error_unknown">O eroare necunoscută a împiedicat instalarea</string>
-    <string name="swap_nfc_title">Atinge pentru schimb</string>
     <string name="swap_join_this_hotspot">Ajută-ți prietenii să se conecteze la hotspot-ul tău</string>
     <string name="swap_join_same_wifi">Conectează-te la aceeași rețea Wi-Fi ca și prietenii tăi</string>
     <string name="swap">Schimb de aplicații</string>
@@ -211,7 +209,6 @@
     <string name="useTor">Folosește Tor</string>
     <string name="repo_details">Depozit</string>
     <string name="swap_stopping_wifi">Oprire Wi-Fi…</string>
-    <string name="repo_provider">Depozit: %s</string>
     <string name="update_auto_download">Descarcă automat actualizările</string>
     <string name="update_auto_download_summary">Actualizările sunt descărcate automat și veți fi notificați pentru a le instala</string>
     <string name="useTorSummary">Pentru a îți proteja intimitatea, forțează folosirea Tor pentru descărcări. Necesită Orbot</string>
@@ -373,7 +370,6 @@
     <string name="status_inserting_x_apps">Salvare detalii aplicații (%1$d/%2$d) de la %3$s</string>
     <string name="not_on_same_wifi">Dispozitivul dumneavoastră nu este pe aceeași rețea Wi-Fi cu depozitul local pe care tocmai l-ați adăugat! Încercați să vă conectați la această rețea: %s</string>
     <string name="touch_to_configure_local_repo">Atingeți pentru a vedea detalii și a permite celorlalți să primească aplicațiile dumneavoastră.</string>
-    <string name="swap_nfc_description">Dacă prietenul tău are F-Droid și NFC activat, atingeți-vă dispozitivele.</string>
     <string name="swap_view_available_networks">Atinge pentru a vedea rețelele deschise disponibile</string>
     <string name="swap_scan_or_type_url">O persoană trebuie să scaneze codul sau să introducă URL-ul celuilalt într-un browser.</string>
     <string name="swap_qr_isnt_for_swap">Codul QR scanat nu arată ca un cod de schimb.</string>
@@ -464,7 +460,6 @@
     <string name="about_forum">Forum suport</string>
     <string name="app_suggested">Recomandată</string>
     <string name="app_size">Mărime: %1$s</string>
-    <string name="app_repository">Depozit: %1$s</string>
     <string name="scan_removable_storage_title">Scanați spațiul de stocare detașabil</string>
     <string name="scan_removable_storage_summary">Căuta depozite de aplicații pe mediile de stocare precum cardurile SD și unitățile USB</string>
     <string name="nearby_splash__read_external_storage">Caută pe cardul SD depozite sau servere de rezervă.</string>

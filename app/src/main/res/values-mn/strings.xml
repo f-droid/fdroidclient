@@ -168,8 +168,6 @@
     <string name="swap_join_this_hotspot">Найздаа халуун цэг дээрээ нэгдэхэд нь тусална уу</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ашиглан солихын тулд ижил сүлжээнд холбогдсон эсэхээ шалгаарай. Хэрэв танд ижил сүлжээнд нэвтрэх эрх байхгүй бол та нарын нэг нь Wi-Fi Hotspot үүсгэх боломжтой.</string>
     <string name="swap_join_same_wifi">Найзтайгаа ижил Wi-Fi сүлжээнд холбогдоорой</string>
-    <string name="swap_nfc_description">Хэрэв таны найз F-Droid ба NFC-г асаасан бол таны төхөөрөмжид хүрнэ үү.</string>
-    <string name="swap_nfc_title">Солих бол хүрнэ үү</string>
     <string name="nearby_splash__request_permission">Оролдоод үз</string>
     <string name="nearby_splash__document_tree">USB OTG дээрээс репо, толь хайж үзээрэй.</string>
     <string name="nearby_splash__read_external_storage">SD карт дээрээс репо, толь хайж олох.</string>
@@ -318,7 +316,6 @@
     <string name="menu_select_for_wipe">Арчихын тулд сонгоно уу</string>
     <string name="menu_open">Нээлттэй</string>
     <string name="repositories_summary">Апп-уудын нэмэлт эх үүсвэрийг нэмэх</string>
-    <string name="repo_provider">Хадгалах сан: %s</string>
     <string name="malformed_repo_uri">Алдаатай репо URI-г үл тоомсорлох: %s</string>
     <string name="invalid_url">Энэ нь буруу URL байна.</string>
     <string name="bad_fingerprint">Муу хурууны хээ</string>
@@ -362,7 +359,6 @@
     <string name="app_list__dismiss_app_update">Шинэчлэлтийг үл тоомсорлов</string>
     <string name="app_list_download_ready">Татаж авсан, суулгахад бэлэн боллоо</string>
     <string name="app_size">Хэмжээ: %1$s</string>
-    <string name="app_repository">Хадгалах сан: %1$s</string>
     <string name="app_permission_storage">Үүнийг хадгалах санд суулгахын тулд F-Droid-д хадгалах зөвшөөрөл шаардлагатай. Суулгалтыг үргэлжлүүлэхийн тулд дараагийн дэлгэц дээр үүнийг зөвшөөрнө үү.</string>
     <string name="app_installed_media">%s файлыг суулгасан</string>
     <string name="app__install_downloaded_update">Шинэчлэх</string>
@@ -433,7 +429,6 @@
     <string name="cache_downloaded">Кэш програмыг хадгалах</string>
     <string name="prompt_to_send_crash_reports_summary">Ослын талаархи мэдээллийг цуглуулж, хөгжүүлэгч рүү илгээхийг хүс</string>
     <string name="prompt_to_send_crash_reports">Гэнэтийн ослын тайлан илгээх</string>
-    <string name="enable_nfc_send">NFC илгээхийг идэвхжүүлэх …</string>
     <string name="by_author_format">гэхэд %s</string>
     <string name="version">Хувилбар</string>
     <string name="installIncompatible">Апп нь таны төхөөрөмжид нийцэхгүй байна, ямар ч байсан суулгана уу\?</string>

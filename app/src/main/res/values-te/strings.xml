@@ -95,7 +95,6 @@
     <string name="installIncompatible">ఆప్ మీ పరికరంలో సరిగ్గా పనిచెయ్యదు, అయినా స్థాపించాలా ?</string>
     <string name="version">వర్షన్</string>
     <string name="by_author_format">%s చే</string>
-    <string name="enable_nfc_send">ఎన్ ఎఫ్ సి శక్తి పరచు…</string>
     <string name="cache_downloaded">కాషిడ్ ఆప్స్ ని ఉంచు</string>
     <string name="menu_manage">గిడ్డంగిలు</string>
     <string name="menu_uninstall">నివర్తించు</string>
@@ -151,7 +150,6 @@
     <string name="repo_add_fingerprint">వేలిముద్ర  (ఇస్టప్రకరమైనది)</string>
     <string name="bad_fingerprint">చెడు వేలిముద్ర</string>
     <string name="invalid_url">ఇది చెల్లుబాటు అయ్యే URL కాదు.</string>
-    <string name="repo_provider">రిపోజిటరీ: %s</string>
     <string name="menu_ignore_all">అన్ని నవీకరణలను విస్మరించండి</string>
     <string name="menu_ignore_this">ఈ నవీకరణను విస్మరించండి</string>
     <string name="menu_source">మూల కోడ్</string>
@@ -212,7 +210,6 @@
     <string name="empty_search_available_app_list">సరిపోలే అనువర్తనాలు అందుబాటులో లేవు.</string>
     <string name="install_error_unknown">తెలియని లోపం కారణంగా వ్యవస్థాపించడం విఫలమైంది</string>
     <string name="nearby_splash__find_people_button">నా సమీపంలో ఉన్న వ్యక్తులను కనుగొనండి</string>
-    <string name="swap_nfc_title">మారడానికి తాకండి</string>
     <string name="swap_join_same_wifi">మీ స్నేహితుని వలె అదే Wi-Fi లో చేరండి</string>
     <string name="swap_join_this_hotspot">మీ స్నేహితుడు మీ హాట్ స్పాట్లో చేరడానికి సహాయపడండి</string>
     <string name="swap">అనువర్తనాలను మార్పిడి చేయి</string>
@@ -310,7 +307,6 @@
     <string name="add_key">కీని జోడించండి</string>
     <string name="send_installed_apps_csv">అనువర్తనం స్థాపించు</string>
     <string name="app_suggested">సూచించారు</string>
-    <string name="app_repository">భాండాగారము:%1$s</string>
     <string name="menu_translation">అనువాదం</string>
     <string name="menu_select_for_wipe">తుడవడం కోసం ఎంచుకోండి</string>
     <string name="SignatureMismatch">క్రొత్త సంస్కరణ పాతదానికి విభిన్న key తో సంతకం చేయబడింది.క్రొత్త సంస్కరణను వ్యవస్థాపించడానికి, పాతదాన్ని మొదట uninstall చేయాలి. దయచేసి దీన్ని చేసి మళ్ళీ ప్రయత్నించండి. (Uninstall చేయడం వల్ల అనువర్తనం నిల్వ చేసిన ఏదైనా అంతర్గత డేటా తొలగిపోతుందని గమనించండి)</string>

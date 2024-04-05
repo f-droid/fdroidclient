@@ -5,7 +5,6 @@
     <string name="installIncompatible">ایپ آپ کے آلے سے مطابقت نہیں رکھتی ، پھر بھی انسٹال کریں؟</string>
     <string name="version">ورژن</string>
     <string name="delete">حذف کریں</string>
-    <string name="enable_nfc_send">این ایف سی ارسال فعال کریں…</string>
     <string name="cache_downloaded">کیشے کردہ اطلاقیے محفوظ رکھیں</string>
     <string name="updates">تازہ کاریاں</string>
     <string name="unstable_updates">غیر مستحکم اپ ڈیٹس</string>
@@ -174,7 +173,6 @@
     <string name="about_source">سورس کوڈ</string>
     <string name="app_incompatible">ناموافق</string>
     <string name="app_size">سائز:%1$s</string>
-    <string name="app_repository">ذخیرہ:%1$s</string>
     <string name="app_permission_storage">F-Droid کو اسٹوریج میں انسٹال کرنے کے لیے اسٹوریج کی اجازت درکار ہے۔ براہ کرم اسے اگلی سکرین پر انسٹالیشن کے ساتھ آگے بڑھنے دیں۔</string>
     <string name="app_installed_media">فائل%s پر انسٹال ہو گئی</string>
     <string name="app_version_x_installed">ورژن%1$s</string>
@@ -212,7 +210,6 @@
     <string name="menu_select_for_wipe">مسح کے لیے منتخب کریں۔</string>
     <string name="menu_open">کھولیں</string>
     <string name="repositories_summary">ایپس کے اضافی ذرائع شامل کریں۔</string>
-    <string name="repo_provider">ذخیرہ:%s</string>
     <string name="has_disallow_install_unknown_sources">اس صارف کے ذریعہ نامعلوم ذرائع شامل نہیں کیے جا سکتے ، اس میں نئے ریپوز شامل ہیں۔</string>
     <string name="has_disallow_install_unknown_sources_globally">آپ کا آلہ منتظم نامعلوم ذرائع سے ایپس انسٹال کرنے کی اجازت نہیں دیتا ، جس میں نئے ریپوز شامل ہیں۔</string>
     <string name="malformed_repo_uri">‎خراب شدہ ریپو URI کو نظر انداز کرنا:%s</string>

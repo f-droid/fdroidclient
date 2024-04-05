@@ -4,7 +4,6 @@
     <string name="installIncompatible">แอปเข้ากันไม่ได้กับอุปกรณ์ของคุณ ติดตั้งหรือไม่\?</string>
     <string name="version">รุ่น</string>
     <string name="delete">ลบ</string>
-    <string name="enable_nfc_send">เปิดใช้งานการส่ง NFC …</string>
     <string name="cache_downloaded">เก็บแอปที่แคชไว้</string>
     <string name="other">อื่นๆ</string>
     <string name="update_interval">ช่วงเวลาอัปเดตอัตโนมัติ</string>
@@ -42,7 +41,6 @@
     <string name="repo_add_fingerprint">ลายนิ้วมือ (หากมี)</string>
     <string name="bad_fingerprint">ลายนิ้วมือดิจิตอลไม่ตรงกัน</string>
     <string name="invalid_url">นี่ไม่ใช่ URL ที่ถูกต้องโปรดลองใหม่อีกครั้ง</string>
-    <string name="repo_provider">พื้นที่เก็บข้อมูล: %s</string>
     <string name="menu_manage">แหล่งโปรแกรม</string>
     <string name="menu_settings">การตั้งค่า</string>
     <string name="menu_search">ค้นหา</string>
@@ -132,10 +130,6 @@
     <string name="category_Theming">ธีมต่างๆ</string>
     <string name="category_Time">เวลา</string>
     <string name="category_Writing">การเขียน</string>
-    <string name="swap_nfc_title">แตะเพื่อแบ่งปันโปรแกรม</string>
-    <string name="swap_nfc_description">ถ้าเพื่อนคุณติดตั้ง F-Droid ไว้และใช้ NFC, คุณสามารถแบ่งบันโปรแกรมได้
-        เพียงแค่นำเครื่องมาแตะกัน
-    </string>
     <string name="swap">สลับแอป</string>
     <string name="swap_success">สลับสำเร็จ!</string>
     <string name="swap_welcome">ยินดีต้อนรับสู่ F-Droid!</string>
@@ -322,7 +316,6 @@
     <string name="app_list__dismiss_vulnerable_app">ช่องโหว่ถูกละเว้น</string>
     <string name="app_list_download_ready">ดาวน์โหลดเสร็จแล้ว พร้อมติดตั้งแล้ว</string>
     <string name="app_size">ขนาด: %1$s</string>
-    <string name="app_repository">ที่เก็บ: %1$s</string>
     <string name="app_permission_storage">F-Droid ต้องการสิทธิ์ในการจัดเก็บข้อมูลเพื่อติดตั้งสิ่งนี้ลงในที่จัดเก็บข้อมูล โปรดอนุญาตในหน้าจอถัดไปเพื่อดำเนินการติดตั้งต่อ</string>
     <string name="app_installed_media">ติดตั้งที่ %s</string>
     <string name="app__install_downloaded_update">อัพเดต</string>

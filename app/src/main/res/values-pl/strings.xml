@@ -3,7 +3,6 @@
     <string name="installIncompatible">Aplikacja niezgodna z Twoim urządzeniem, czy zainstalować ją mimo to\?</string>
     <string name="version">Wersja</string>
     <string name="delete">Usuń</string>
-    <string name="enable_nfc_send">Włącz przesyłanie NFC…</string>
     <string name="cache_downloaded">Przechowuj instalatory aplikacji w pamięci podręcznej</string>
     <string name="updates">Aktualizacje</string>
     <string name="other">Inne</string>
@@ -99,7 +98,6 @@
     <string name="category_Science_Education">Nauka i edukacja</string>
     <string name="category_Security">Bezpieczeństwo</string>
     <string name="category_System">System</string>
-    <string name="swap_nfc_description">Jeśli oba urządzenia mają F-Droid i włączone NFC, możecie je zbliżyć do siebie.</string>
     <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
@@ -151,7 +149,6 @@
     <string name="empty_can_update_app_list">Wspaniale!\nWszystkie Twoje aplikacje są w najnowszych wersjach.</string>
     <string name="install_error_unknown">Nie udało się zainstalować z powodu nieznanego błędu</string>
     <string name="uninstall_error_unknown">Nie udało się odinstalować z powodu nieznanego błędu</string>
-    <string name="swap_nfc_title">Dotknij, aby się wymienić</string>
     <string name="swap_join_same_wifi_desc">Aby wymienić się za pomocą Wi-Fi, upewnij się, że oba urządzenia są w tej samej sieci. Jeśli nie macie dostępu do tej samej sieci, jedno z Was może utworzyć hotspot Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Pomóż drugiej osobie dołączyć do Twojego hotspota</string>
     <string name="swap_success">Wymiana powiodła się!</string>
@@ -243,7 +240,6 @@
     <string name="useTor">Użyj Tora</string>
     <string name="useTorSummary">Wymuszaj pobieranie przez Tora, aby zwiększyć prywatność. Wymagany Orbot</string>
     <string name="swap_stopping_wifi">Zatrzymywanie Wi-Fi…</string>
-    <string name="repo_provider">Repozytorium: %s</string>
     <string name="update_auto_download">Pobieraj aktualizacje automatycznie</string>
     <string name="update_auto_download_summary">Aktualizacje są pobierane automatycznie i zostaniesz powiadomiony, aby je zainstalować</string>
     <string name="download_pending">Oczekiwanie na pobieranie…</string>
@@ -470,7 +466,6 @@
     <string name="about_forum">Forum pomocy technicznej</string>
     <string name="app_suggested">Sugerowana</string>
     <string name="app_size">Rozmiar: %1$s</string>
-    <string name="app_repository">Repozytorium: %1$s</string>
     <string name="scan_removable_storage_title">Skanuj pamięć wymienną</string>
     <string name="scan_removable_storage_toast">Skanowanie %s…</string>
     <string name="scan_removable_storage_summary">Szukaj repozytoriów pakietów na nośnikach wymiennych, takich jak karty pamięci i urządzenia USB</string>

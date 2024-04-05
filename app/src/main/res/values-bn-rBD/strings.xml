@@ -18,7 +18,6 @@
     <string name="cache_downloaded">ক্যাশড অ্যাপস রাখুন</string>
     <string name="prompt_to_send_crash_reports_summary">ক্র্যাশ সম্পর্কে তথ্য সংগ্রহ করুন এবং ডেভেলপারের কাছে পাঠাতে বলুন</string>
     <string name="prompt_to_send_crash_reports">ক্র্যাশ রিপোর্ট পাঠানোর অনুরোধ</string>
-    <string name="enable_nfc_send">এনএফসি যোগাযোগ সক্রিয় করুন…</string>
     <string name="delete">মুছে ফেলুন</string>
     <string name="by_author_format">%s দ্বারা</string>
     <string name="version">সংস্করণ</string>
@@ -278,7 +277,6 @@
     <string name="menu_select_for_wipe">মুছার জন্য নির্বাচন</string>
     <string name="menu_add_repo">নতুন রিপোসিটরি</string>
     <string name="repositories_summary">অ্যাপের জন্য আরো উৎস যোগ করো</string>
-    <string name="repo_provider">ভাণ্ডার: %s</string>
     <string name="malformed_repo_uri">বিকৃত ভাণ্ডার ইউআরআই উপেক্ষা করা হলো: %s</string>
     <string name="invalid_url">এটা একটি সঠিক সংযোগ নয়।</string>
     <string name="bad_fingerprint">সমস্যাপূর্ণ আঙ্গুলের ছাপ</string>
@@ -318,7 +316,6 @@
     <string name="app_list__name__successfully_installed">%1$s ইন্সটলকৃত</string>
     <string name="app_list__name__downloading_in_progress">%1$s ডাউনলোড করা হচ্ছে</string>
     <string name="app_size">আকার: %1$s</string>
-    <string name="app_repository">ভাণ্ডার: %1$s</string>
     <string name="app_permission_storage">স্টোরেজে ইন্সটল করতে এফ-ড্রয়েডের স্টোরেজ অনুমতি লাগবে। ইনস্টল চালিয়ে যেতে পরের পর্দায় এটার অনুমতি দিও।</string>
     <string name="app_installed_media">%s এ ফাইল ইন্সটলকৃত</string>
     <string name="app__tts__cancel_download">ডাউনলোড বাতিল করো</string>
@@ -497,8 +494,6 @@
     <string name="swap_join_this_hotspot">তোমার হটস্পটে যুক্ত হতে বন্ধুকে সাহায্য করো</string>
     <string name="swap_join_same_wifi_desc">নিশ্চিত করো একই ওয়াইফাইয়ে আছো, যাতে ওয়াইফাই দিয়ে বিনিময় করতে পারো। একই নেটওয়ার্কে তোমাদের প্রবেশ না পারলে, একটা হটস্পট বানাতে পারো।</string>
     <string name="swap_join_same_wifi">তোমার বন্ধুর সাথে একই ওয়াইফাইতে যোগ দাও</string>
-    <string name="swap_nfc_description">তোমার বন্ধুর এফ-ড্রয়েড ও এনএফসি থাকলে তোমাদের ডিভাইস দুইটা পরস্পরের সাথে স্পর্শ করাও।</string>
-    <string name="swap_nfc_title">অদলবদলের জন্য টিপো</string>
     <string name="nearby_splash__request_permission">চেষ্টা করো</string>
     <string name="nearby_splash__document_tree">ভাণ্ডার ও আয়নার জন্য ইউএসবি ওটিজি অনুসন্ধান করো।</string>
     <string name="nearby_splash__read_external_storage">ভাণ্ডার ও আয়না এসডি কার্ডে খুঁজো।</string>

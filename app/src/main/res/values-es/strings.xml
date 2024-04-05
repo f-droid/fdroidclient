@@ -4,7 +4,6 @@
     <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Quiere instalarla de todos modos\?</string>
     <string name="version">Versión</string>
     <string name="delete">Eliminar</string>
-    <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="cache_downloaded">Mantener las aplicaciones en caché</string>
     <string name="updates">Actualizaciones</string>
     <string name="other">Otros</string>
@@ -131,7 +130,6 @@
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguridad</string>
     <string name="category_System">Sistema</string>
-    <string name="swap_nfc_description">Si su amigo y usted tienen F-Droid y han activado el NFC, pongan en contacto sus teléfonos.</string>
     <string name="swap_join_same_wifi">Unirse a la misma red Wi-Fi que su amigo</string>
     <string name="swap">Intercambiar aplicaciones</string>
     <string name="swap_no_wifi_network">No hay red aún</string>
@@ -167,7 +165,6 @@
 \nSus aplicaciones están actualizadas.</string>
     <string name="install_error_unknown">Fallo al instalar debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar debido a un error desconocido</string>
-    <string name="swap_nfc_title">Tocar para intercambiar</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, verifiquen que están en la misma red. Si no tienen acceso a la misma red, uno de ustedes puede crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Facilita que su amigo se conecte a su punto de acceso</string>
     <string name="swap_success">¡Intercambio exitoso!</string>
@@ -251,7 +248,6 @@
     <string name="swap_stopping_wifi">Deteniendo la Wi-Fi…</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot</string>
-    <string name="repo_provider">Repositorio: %s</string>
     <string name="update_auto_download">Obtener actualizaciones automáticamente</string>
     <string name="update_auto_download_summary">Las actualizaciones se descargan automáticamente y se le avisará para
         instalarlas
@@ -477,7 +473,6 @@
     <string name="antinosourcesince">El código fuente ya no está disponible, no se puede actualizar.</string>
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
-    <string name="app_repository">Repositorio: %1$s</string>
     <string name="scan_removable_storage_summary">Busque repositorios de paquetes en dispositivos de almacenamiento extraíbles, como tarjetas SD y memorias USB.</string>
     <string name="main_menu__updates">Avisos</string>
     <string name="nearby_splash__read_external_storage">Buscar repositorios y réplicas en la tarjeta SD.</string>

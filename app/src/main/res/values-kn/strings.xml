@@ -83,7 +83,6 @@
     <string name="repo_details">ಭಂಡಾರ</string>
     <string name="SignatureMismatch">ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಹಳೆಯದಕ್ಕೆ ಬೇರೆ ಕೀಲಿಯೊಂದಿಗೆ ಸಹಿ ಮಾಡಲಾಗಿದೆ. ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಸ್ಥಾಪಿಸಲು, ಹಳೆಯದನ್ನು ಮೊದಲು ಅಸ್ಥಾಪಿಸಬೇಕು. ದಯವಿಟ್ಟು ಇದನ್ನು ಮಾಡಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ. (ಅಸ್ಥಾಪಿಸುವುದರಿಂದ ಅಪ್ಲಿಕೇಶನ್ ಸಂಗ್ರಹಿಸಿದ ಯಾವುದೇ ಆಂತರಿಕ ಡೇಟಾವನ್ನು ಅಳಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ಗಮನಿಸಿ)</string>
     <string name="installIncompatible">ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗದ ಅಪ್ಲಿಕೇಶನ್, ಆದಾಗ್ಯೂ ಸ್ಥಾಪಿಸಿ\?</string>
-    <string name="enable_nfc_send">ಎನ್‌ಎಫ್‌ಸಿ ಕಳುಹಿಸುವಿಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ…</string>
     <string name="cache_downloaded">ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಸಂಗ್ರಹ ಡೇಟಾವನ್ನು ಇರಿಸಿ</string>
     <string name="unstable_updates">ಅಸ್ಥಿರ ನವೀಕರಣಗಳು</string>
     <string name="unstable_updates_summary">ಅಸ್ಥಿರ ಆವೃತ್ತಿಗಳಿಗೆ ನವೀಕರಣಗಳನ್ನು ಸೂಚಿಸಿ</string>
@@ -136,7 +135,6 @@
     <string name="bad_fingerprint">ಕೆಟ್ಟ ಫಿಂಗರ್ಪ್ರಿಂಟ್</string>
     <string name="invalid_url">ಇದು ಮಾನ್ಯವಾದ URL ಅಲ್ಲ.</string>
     <string name="malformed_repo_uri">ದೋಷಪೂರಿತ ರೆಪೊ URI ಅನ್ನು ನಿರ್ಲಕ್ಷಿಸಲಾಗುತ್ತಿದೆ:%s</string>
-    <string name="repo_provider">ಭಂಡಾರ:%s</string>
     <string name="repositories_summary">ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಹೆಚ್ಚುವರಿ ಮೂಲಗಳನ್ನು ಸೇರಿಸಿ</string>
     <string name="menu_ignore_all">ಎಲ್ಲಾ ನವೀಕರಣಗಳನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ</string>
     <string name="menu_ignore_this">ಈ ನವೀಕರಣವನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ</string>
@@ -235,7 +233,6 @@
     <string name="about_forum">ವೇದಿಕೆಯಿಂದ ಬೆಂಬಲ</string>
     <string name="app_suggested">ಸೂಚಿಸಲಾಗಿದೆ</string>
     <string name="app_size">ಗಾತ್ರ:%1$s</string>
-    <string name="app_repository">ಭಂಡಾರ:%1$s</string>
     <string name="update_all">ಎಲ್ಲವನ್ನು ಆಧುನೀಕರಿಸ</string>
     <string name="scan_removable_storage_title">ತೆಗೆಯಬಹುದಾದ ಸಂಗ್ರಹಣೆಯನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
     <string name="scan_removable_storage_summary">ಎಸ್‌ಡಿ ಕಾರ್ಡ್‌ಗಳು ಮತ್ತು ಯುಎಸ್‌ಬಿ ಡ್ರೈವ್‌ಗಳಂತಹ ತೆಗೆಯಬಹುದಾದ ಸಂಗ್ರಹಣೆಯಲ್ಲಿ ಪ್ಯಾಕೇಜ್ ರೆಪೊಗಳಿಗಾಗಿ ಹುಡುಕಿ</string>
@@ -410,8 +407,6 @@
     <string name="swap_confirm_connect">ನೀವು ಈಗ %1$s ರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯಲು ಬಯಸುವಿರಾ\?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ಬಳಸಿ ಸ್ವ್ಯಾಪ್ ಮಾಡಲು, ನೀವು ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿದ್ದೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ನಿಮಗೆ ಪ್ರವೇಶವಿಲ್ಲದಿದ್ದರೆ, ನಿಮ್ಮಲ್ಲಿ ಒಬ್ಬರು ವೈ-ಫೈ ಹಾಟ್‌ಸ್ಪಾಟ್ ರಚಿಸಬಹುದು.</string>
     <string name="swap_join_same_wifi">ನಿಮ್ಮ ಸ್ನೇಹಿತನಂತೆಯೇ ಅದೇ Wi-Fi ಗೆ ಸೇರಿ</string>
-    <string name="swap_nfc_description">ನಿಮ್ಮ ಸ್ನೇಹಿತ ಎಫ್-ಡ್ರಾಯಿಡ್ ಹೊಂದಿದ್ದರೆ ಮತ್ತು ಎನ್‌ಎಫ್‌ಸಿ ಆನ್ ಆಗಿದ್ದರೆ ನಿಮ್ಮ ಸಾಧನಗಳನ್ನು ಒಟ್ಟಿಗೆ ಸ್ಪರ್ಶಿಸಿ.</string>
-    <string name="swap_nfc_title">ಸ್ವ್ಯಾಪ್ ಮಾಡಲು ಸ್ಪರ್ಶಿಸಿ</string>
     <string name="nearby_splash__request_permission">ಪ್ರಯತ್ನಪಡು</string>
     <string name="nearby_splash__document_tree">ರೆಪೊಗಳು ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಯುಎಸ್‌ಬಿ ಒಟಿಜಿಯನ್ನು ಹುಡುಕಿ.</string>
     <string name="nearby_splash__read_external_storage">ರೆಪೊಸಿಟರಿ ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಎಸ್‌ಡಿ ಕಾರ್ಡ್ ಹುಡುಕಿ.</string>

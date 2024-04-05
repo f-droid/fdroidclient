@@ -4,7 +4,6 @@
     <string name="installIncompatible">Апликација није компатибилна са вашим уређајем. Свеједно је инсталирати\?</string>
     <string name="version">Верзија</string>
     <string name="delete">Избриши</string>
-    <string name="enable_nfc_send">Укључи слање NFC-ом…</string>
     <string name="cache_downloaded">Чувај кеширане апликације</string>
     <string name="updates">Ажурирања</string>
     <string name="other">Друго</string>
@@ -126,7 +125,6 @@
     <string name="category_Science_Education">Наука и образовање</string>
     <string name="category_Security">Безбедност</string>
     <string name="category_System">Систем</string>
-    <string name="swap_nfc_description">Ако ваш пријатељ има F-Droid и укључен му је NFC, приближите уређаје један другом.</string>
     <string name="swap_join_same_wifi">Повежите се на исту Wi-Fi мрежу на којој је ваш пријатељ</string>
     <string name="swap">Размена апликација</string>
     <string name="swap_no_wifi_network">Још нема мреже</string>
@@ -156,7 +154,6 @@
     <string name="category_Theming">Изглед</string>
     <string name="category_Time">Време</string>
     <string name="category_Writing">Писање</string>
-    <string name="swap_nfc_title">Додирните за размену</string>
     <string name="swap_success">Размена је успела</string>
     <string name="swap_active_hotspot">%1$s (ваш хотспот)</string>
     <string name="swap_dont_show_again">Не приказуј поново</string>
@@ -246,7 +243,6 @@
     <string name="useTor">Користи Tor</string>
     <string name="useTorSummary">Преусмерава саобраћај кроз Tor ради веће приватности. Потребан је Orbot.</string>
     <string name="swap_stopping_wifi">Заустављање Wi-Fi-а…</string>
-    <string name="repo_provider">Репозиторијум: %s</string>
     <string name="update_auto_download">Аутоматски преузимај ажурирања</string>
     <string name="update_auto_download_summary">Ажурирања се аутоматски преузимају и бићете обавештени када буду спремна за инсталацију</string>
     <string name="download_pending">Чека се почетак преузимања…</string>
@@ -462,7 +458,6 @@
     <string name="send_history_csv">Историја инсталација %s у виду CSV фајла</string>
     <string name="updates_disabled_by_settings">Сва ажурирања су онемогућена на основу подешавања мреже</string>
     <string name="send_installed_apps_csv">Апликације које је инсталирао F-Droid у виду CSV фајла</string>
-    <string name="app_repository">Репозиторијум: %1$s</string>
     <string name="scan_removable_storage_title">Скенирај преносиве меморије</string>
     <string name="scan_removable_storage_summary">Тражи репозиторијуме на преносивим меморијама попут SD картица и USB дискова</string>
     <string name="nearby_splash__read_external_storage">Претражите репозиторијуме и резервне изворе на SD картици.</string>

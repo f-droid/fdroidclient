@@ -4,7 +4,6 @@
     <string name="installIncompatible">Deze app is incompatibel met dit apparaat. Wilt u deze toch installeren\?</string>
     <string name="version">Versie</string>
     <string name="delete">Verwijderen</string>
-    <string name="enable_nfc_send">Schakel versturen via NFC in…</string>
     <string name="cache_downloaded">Bewaar tijdelijk opgeslagen apps</string>
     <string name="updates">Updates</string>
     <string name="other">Overig</string>
@@ -155,8 +154,6 @@
 \nAl uw apps zijn up-to-date.</string>
     <string name="install_error_unknown">De installatie is door een onbekende fout mislukt</string>
     <string name="uninstall_error_unknown">De applicatie kon door een onbekende fout niet gedeïnstalleerd worden</string>
-    <string name="swap_nfc_title">Tik om uit te wisselen</string>
-    <string name="swap_nfc_description">Als uw vriend F-Droid geïnstalleerd heeft en NFC ingeschakeld is, hou dan jullie apparaten tegen elkaar.</string>
     <string name="swap_join_same_wifi_desc">Om via Wi-Fi uit te wisselen moeten jullie beiden met hetzelfde netwerk verbonden zijn. Indien u geen toegang heeft tot hetzelfde netwerk kan iemand een wifihotspot aanmaken.</string>
     <string name="swap_join_this_hotspot">Help uw vriend zich met uw hotspot te verbinden</string>
     <string name="swap_success">Uitwisseling succesvol!</string>
@@ -250,7 +247,6 @@
     <string name="crash_dialog_title">F-Droid is gecrasht</string>
     <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt. Wilt u de details over deze fout e-mailen om zo het probleem in de toekomst te helpen voorkomen\?</string>
     <string name="crash_dialog_comment_prompt">Je kan extra informatie en commentaar hier toevoegen:</string>
-    <string name="repo_provider">Bron: %s</string>
     <string name="useTor">Gebruik Tor</string>
     <string name="useTorSummary">Dwing downloadverkeer oor betere privacy door Tor heen. Vereist Orbot</string>
     <string name="swap_stopping_wifi">Wi-Fi aan het stoppen…</string>
@@ -463,7 +459,6 @@
     <string name="scan_removable_storage_title">Scan verwijderbare media</string>
     <string name="scan_removable_storage_toast">%s wordt gescand…</string>
     <string name="scan_removable_storage_summary">Zoek naar applicatiebronnen op verwijderbare media zoals SD-kaarten en USB-sticks</string>
-    <string name="app_repository">Applicatiebron: %1$s</string>
     <string name="main_menu__updates">Updates</string>
     <string name="nearby_splash__read_external_storage">Doorzoek SD-kaart naar applicatiebronnen en mirrors.</string>
     <string name="not_visible_nearby_description">Maak uw apparaat eerst zichtbaar om uit te kunnen wisselen met lokale apparaten.</string>

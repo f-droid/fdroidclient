@@ -5,7 +5,6 @@
     <string name="installIncompatible">Rakendus ei ühildu su seadmega. Kas paigaldada ta ikkagi?</string>
     <string name="version">Versioon</string>
     <string name="delete">Kustuta</string>
-    <string name="enable_nfc_send">Luba NFC andmevahetus…</string>
     <string name="cache_downloaded">Jäta alles puhverdatud paketid</string>
     <string name="updates">Värskendused</string>
     <string name="unstable_updates">Ebastabiilsed värskendused</string>
@@ -61,7 +60,6 @@
     <string name="install_confirm_update">Kas soovid olemasoleva rakenduse värskenduse paigaldada\? Sinu olemasolevad andmed jäävad alles. Värskendatud rakendus pääseb järgmiste funktsioonide juurde:</string>
     <string name="menu_email">Saada autorile e-kiri</string>
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
-    <string name="repo_provider">Hoidla: %s</string>
     <string name="menu_manage">Hoidlad</string>
     <string name="menu_add_repo">Uus hoidla</string>
     <string name="antitracklist">See rakendus jälgib ja raporteerib su aktiivsusest</string>
@@ -195,10 +193,6 @@
     <string name="empty_search_available_app_list">Sobivaid rakendusi ei ole.</string>
     <string name="install_error_unknown">Paigaldamine nurjus tundmatu vea tõttu</string>
     <string name="uninstall_error_unknown">Eemaldamine nurjus tundmatu vea tõttu</string>
-    <string name="swap_nfc_title">Vahetamiseks puuduta</string>
-    <string name="swap_nfc_description">Kui su sõbral on F-Droid ja NFC on sisselülitatud, siis pange oma seadmed
-        lähestikku.
-    </string>
     <string name="swap_join_same_wifi">Liitu sama WiFi võrguga, milles on su sõber</string>
     <string name="swap_join_this_hotspot">Aita sõbral liituda oma WiFi tööpunktiga</string>
     <string name="swap">Vaheta rakendusi</string>
@@ -466,7 +460,6 @@
     <string name="about_forum">Toe foorum</string>
     <string name="app_suggested">Soovitatud</string>
     <string name="app_size">Suurus: %1$s</string>
-    <string name="app_repository">Hoidla: %1$s</string>
     <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
     <string name="scan_removable_storage_summary">Otsi pakettide hoidlaid eemaldatavalt mäluseadmelt nagu SD kaart või USB mälupulk</string>
     <string name="nearby_splash__read_external_storage">Otsi SD kaardilt hoidlaid ja peegleid.</string>

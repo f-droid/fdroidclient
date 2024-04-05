@@ -6,7 +6,6 @@
     </string>
     <string name="version">Bertsioa</string>
     <string name="delete">Ezabatu</string>
-    <string name="enable_nfc_send">Gaitu NFC bidez bidaltzea…</string>
     <string name="cache_downloaded">Gorde aplikazioak cachean</string>
     <string name="updates">Eguneraketak</string>
     <string name="notify">Erakutsi eguneraketa eskuragarriak</string>
@@ -222,9 +221,6 @@
     <string name="apps">Aplikazioak</string>
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
-    <string name="swap_nfc_title">Ukitu partekatzeko</string>
-    <string name="swap_nfc_description">Zure adiskideak F-Droid eta NFC piztuta baditu ukitu gailuak elkarrekin.
-    </string>
     <string name="swap_join_same_wifi">Batu zure adiskidearen Wi-Fi sare berera</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue
         sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.
@@ -256,7 +252,6 @@
     <string name="repo_edit_credentials">Aldatu pasahitza</string>
     <string name="repo_error_empty_username">Erabiltzaile-izena hutsik, ez dira kredentzialak aldatu</string>
     <string name="about_license">Lizentzia</string>
-    <string name="repo_provider">Biltegia: %s</string>
     <string name="menu_email">Bidali e-posta egileari</string>
     <string name="antinonfreeassetslist">Aplikazio honek baliabide ez libreak ditu</string>
     <string name="useTor">Erabili Tor</string>
@@ -476,7 +471,6 @@
     <string name="about_forum">Laguntza foroa</string>
     <string name="app_suggested">Iradokitua</string>
     <string name="app_size">Neurria: %1$s</string>
-    <string name="app_repository">Biltegia: %1$s</string>
     <string name="scan_removable_storage_title">Eskaneatu gailu kengarria</string>
     <string name="scan_removable_storage_toast">%s eskaneatzen…</string>
     <string name="scan_removable_storage_summary">Bilatu paketeen biltegiak biltegi kengarrietan, esaterako SD txartelak edo USB giltzak edo diskoak</string>

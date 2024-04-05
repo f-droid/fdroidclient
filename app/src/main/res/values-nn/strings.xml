@@ -73,7 +73,6 @@
     <string name="version">Versjon</string>
     <string name="by_author_format">av %s</string>
     <string name="delete">Slett</string>
-    <string name="enable_nfc_send">Slå på NFC-sending …</string>
     <string name="prompt_to_send_crash_reports">Spør om sending av krasjrapportar</string>
     <string name="prompt_to_send_crash_reports_summary">Samla data om krasj og spør om dei skal sendast til utviklarane</string>
     <string name="cache_downloaded">Behald mellomlagra appar</string>
@@ -145,7 +144,6 @@
     <string name="app__install_downloaded_update">Oppdater</string>
     <string name="app_installed_media">Fil installert til %s</string>
     <string name="app_permission_storage">F-Droid treng lagringsløyve for å kunna installera til dette området. For å halda med installeringa, gje dette løyvet på neste skjermbilete.</string>
-    <string name="app_repository">Pakkebrønn: %1$s</string>
     <string name="app_size">Storleik: %1$s</string>
     <string name="app_list_download_ready">Nedlasta og klar til installering</string>
     <string name="app_list__dismiss_app_update">Oppdatering ignorert</string>
@@ -189,7 +187,6 @@
     <string name="bad_fingerprint">Ugyldig fingeravtrykk</string>
     <string name="invalid_url">Dette ikkje er ei gyldig nettadresse.</string>
     <string name="malformed_repo_uri">Hoppar over ugyldig adresse til pakkebrønn: %s</string>
-    <string name="repo_provider">Pakkebrønn: %s</string>
     <string name="repositories_summary">Legg til fleire kjelder til appar</string>
     <string name="menu_open">Opna</string>
     <string name="menu_ignore_all">Ignorer alle oppdateringar</string>
@@ -333,8 +330,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">Begge to treng %1$s for å kunna utveksla appar.</string>
     <string name="nearby_splash__read_external_storage">Søk på SD-kort etter pakkebrønnar og speglar.</string>
     <string name="nearby_splash__request_permission">Prøv no</string>
-    <string name="swap_nfc_title">Trykk for å utveksla</string>
-    <string name="swap_nfc_description">Viss vennen din har F-Droid og har slått på NFC, hald einingane nært kvarandre.</string>
     <string name="swap_join_same_wifi">Kopla til same trådlausnettverket som vennen din</string>
     <string name="swap_join_same_wifi_desc">For å utveksla appar via Wi-Fi må de først kopla til same nettverk. Viss de ikkje har tilgang til same nettverk, kan éin av dykk laga ei eiga trådlaussone.</string>
     <string name="swap_join_this_hotspot">Hjelp vennen din å kopla til trådlaussona di</string>

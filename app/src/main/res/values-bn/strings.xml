@@ -159,7 +159,6 @@
     <string name="cache_downloaded">ক্যাশড অ্যাপ রাখো</string>
     <string name="prompt_to_send_crash_reports_summary">ক্র্যাশ সম্পর্কে তথ্য সংগ্রহ করুন এবং ডেভেলপারের কাছে পাঠাতে বলুন</string>
     <string name="prompt_to_send_crash_reports">ত্রুটি প্রতিবেদন পাঠানোর অনুরোধ করবে</string>
-    <string name="enable_nfc_send">এনএফসি যোগাযোগ সক্রিয় করুন…</string>
     <string name="by_author_format">%s দ্বারা</string>
     <string name="installIncompatible">অ্যাপ্লিকেশনটি আপনার ডিভাইসের সাথে নাও চলতে পারে, তবুও ইনস্টল করবেন\?</string>
     <string name="SignatureMismatch">নতুন সংস্করণটি পুরানোটির থেকে আলাদা কি দিয়ে স্বাক্ষরিত। নতুন সংস্করণ ইনস্টল করতে, পুরানোটি প্রথমে আনইনস্টল করা উচিত। দয়া করে এটি করুন এবং আবার চেষ্টা করুন। (মনে রাখবেন যে আনইনস্টল করা অ্যাপ দ্বারা সঞ্চিত কোনও অভ্যন্তরীণ ডাটা মুছে যাবে)</string>
@@ -211,7 +210,6 @@
     <string name="app_list__dismiss_vulnerable_app">ক্ষতির সম্ভাবনা উপেক্ষাকৃত</string>
     <string name="app_list__dismiss_app_update">হালনাগাদ উপেক্ষাকৃত</string>
     <string name="app_size">আকার: %1$s</string>
-    <string name="app_repository">ভাণ্ডার: %1$s</string>
     <string name="app__tts__cancel_download">ডাউনলোড বাতিল করো</string>
     <string name="app_version_x_installed">সংস্করণ %1$s</string>
     <string name="app_not_installed">ইন্সটল হয়নি</string>
@@ -224,7 +222,6 @@
     <string name="menu_source">উৎস কোড</string>
     <string name="menu_license">অনুমতিপত্র: %s</string>
     <string name="menu_email">ই-মেইল লেখক</string>
-    <string name="repo_provider">ভাণ্ডার: %s</string>
     <string name="bad_fingerprint">সমস্যাপূর্ণ আঙ্গুলের ছাপ</string>
     <string name="repo_add_fingerprint">আঙ্গুলের ছাপ (ঐচ্ছিক)</string>
     <string name="repo_add_url">ভাণ্ডার ঠিকানা</string>
@@ -390,7 +387,6 @@
     <string name="install_error_notify_title">%s ইন্সটল করতে ত্রুটি</string>
     <string name="install_confirm">অনুমতি লাগবে</string>
     <string name="swap_toast_hotspot_enabled">ওয়াইফাই হটস্পট চালু</string>
-    <string name="swap_nfc_title">অদলবদলের জন্য টিপো</string>
     <string name="empty_installed_app_list">কোনো অ্যাপ ইন্সটল করা নেই।
 \n
 \nতোমার কাছে অন্যান্য অ্যাপ আছে, কিন্তু সেগুলো এফ-ড্রয়েডের না। ভাণ্ডারগুলোর হালনাগাদের প্রয়োজনীয়তা এর কারণ হতে পারে অথবা ভাণ্ডারগুলোতে আসলেই হয়তো তোমার অ্যাপগুলো নেই।</string>
@@ -487,7 +483,6 @@
     <string name="swap_toast_not_removable_storage">নির্বাচিত ভুক্তির সাথে কোনো স্টোরেজ যন্ত্র মিলেনি, আবার চেষ্টা করো।</string>
     <string name="swap_no_peers_nearby">বিনিময়ের জন্য কাছাকাছি কাউকে পাওয়া যায়নি।</string>
     <string name="swap_scan_or_type_url">একজন সংকেতের পাঠোদ্ধার করবে অথবা সংষোগটি নিজের পরিব্রাজক(ব্রাউজারে) লিখবে।</string>
-    <string name="swap_nfc_description">তোমার বন্ধুর এফ-ড্রয়েড ও এনএফসি থাকলে তোমাদের ডিভাইস দুইটা পরস্পরের সাথে স্পর্শ করাও।</string>
     <string name="system_install_denied_permissions">এই এক্সটেনশনকে বিশেষ অনুমতি দেওয়া হয়নি। অনুগ্রহ করে একটি সমস্যার প্রতিবেদন বানাও।</string>
     <string name="repo_disabled_notification">%1$s নিষ্ক্রিয় করা হয়েছে ।
 \n

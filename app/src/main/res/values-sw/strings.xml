@@ -36,7 +36,6 @@
     <string name="app_inst_known_source">Imesimikwa (kutoka %s)</string>
     <string name="app_inst_unknown_source">imesimikwa (kusikojulikana)</string>
     <string name="app_version_x_installed">Toleo la %1$s</string>
-    <string name="app_repository">Ghala la %1$s</string>
     <string name="app_size">Ukubwa: %1$s</string>
     <string name="app_list__name__downloading_in_progress">Upakuaji %1$s</string>
     <string name="app_list_download_ready">Imepakuliwa, tayari kusimika</string>
@@ -52,7 +51,6 @@
     <string name="less">Kidogo</string>
     <string name="repo_add_mirror">Ongeza kioo</string>
     <string name="versions">Matoleo</string>
-    <string name="repo_provider">Ghala: %s</string>
     <string name="menu_settings">Mipangilio</string>
     <string name="menu_search">Tafuta</string>
     <string name="menu_add_repo">Ghala Jipya</string>
@@ -121,7 +119,6 @@
     <string name="version">Tafsiri</string>
     <string name="by_author_format">na %s</string>
     <string name="delete">Futa</string>
-    <string name="enable_nfc_send">Wezesha NFC Send…</string>
     <string name="hide_all_notifications_summary">Zuia vitendo vyote visionyeshwe kwenye upau wa hali na droo ya arifa.</string>
     <string name="send_fdroid_metrics_report">Tuma %s ya Ripoti ya Vipimo</string>
     <string name="send_history_csv">%s historia ya usimikaji kama faili ya CSV</string>
@@ -308,7 +305,6 @@
     <string name="empty_installed_app_list">Hakuna api zilizosimikwa.
 \n
 \nKuna api kwenye kifaa chako lakini hazipatikana F-Droid. Hii inawezakuwa kwa sababu unahitai kusasisha maghala yako ama maghala hayo kwa kweli hayana api zako.</string>
-    <string name="swap_nfc_description">Kama mwenzako ana F-Droid na amewasha NFC, gusisha vifaa vyenu pamoja.</string>
     <string name="swap_join_same_wifi">Jiunge na Wi-Fi sawa na mwenzako</string>
     <string name="swap_scan_qr">Msimbo wa QR</string>
     <string name="swap_people_nearby">Watu walio karibu</string>
@@ -436,7 +432,6 @@
     <string name="not_visible_nearby_description">Kabla ya kubadilishana na vifaa vilivyo karibu, fanya kifaa chako kionekane.</string>
     <string name="swap_toast_closing_nearby_after_timeout">Nearby ilijifunga kwa sababu haikuwa na kazi.</string>
     <string name="panic_will_be_wiped">Itasimikuliwa na data yote kuondolewa</string>
-    <string name="swap_nfc_title">Gusa ili kubadilishana</string>
     <string name="swap">Badilishana api</string>
     <string name="swap_success">Mafanikio ya ubadilishanaji!</string>
     <string name="swap_nearby">Ubadilishanaji wa Nearby</string>

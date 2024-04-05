@@ -66,7 +66,6 @@
     <string name="version">ཐོན་རིམ།</string>
     <string name="by_author_format">%s རྒྱུད་དེ།</string>
     <string name="delete">སུབས།</string>
-    <string name="enable_nfc_send">NFCསྒོ་ཕྱེས་ནས་གཏོང་།…</string>
     <string name="cache_downloaded">སྦས་ཁུང་བྱས་པའི་མཉེན་ཆས་རྣམས་ཉར།</string>
     <string name="unstable_updates">བརྟན་པོ་མེད་པའི་གསར་བསྒྱུར་ཁག</string>
     <string name="unstable_updates_summary">ཐོན་རིམ་མི་བརྟན་པ་རྣམས་གསར་བསྒྱུར་དགོས་པའི་བསམ་ཚུལ་སྟོན།</string>
@@ -133,7 +132,6 @@
     <string name="bad_fingerprint">མཛུབ་ཐེལ་ཡག་པོ་ཐེབས་མིན་འདུག</string>
     <string name="invalid_url">འདི་URL ཁུངས་ལྡན་རེད་མིན་འདུག</string>
     <string name="malformed_repo_uri">བཟོ་ཉེས་ཤོར་བའི་རེ་པོ་URI ལ་ཡ་མེད་བཏང་བ་:%s</string>
-    <string name="repo_provider">མཛོད་ཁང་།:%s</string>
     <string name="repositories_summary">མཉེན་ཆས་ཀྱི་འབྱུང་ཁུངས་འཕར་མ་ཁ་སྣོན།</string>
     <string name="menu_ignore_all">གསར་བསྒྱུར་ཚང་མར་ཡ་མ་བྱེད།</string>
     <string name="menu_ignore_this">གསར་བསྒྱུར་འདི་ལ་ཡ་མ་བྱེད་།</string>
@@ -225,8 +223,6 @@
     <string name="nearby_splash__download_apps_from_people_nearby">དྲྭ་རྒྱ་མིན་འདུག ཁྱེད་རང་གི་ཉེ་འགྲམ་ལ་ཡོད་པའི་མིའི་ཁྲིད་ནས་མཉེན་ཆས་འདི་ལེན་རོགས།!</string>
     <string name="nearby_splash__find_people_button">ངའི་ཉེ་འགྲམ་ལ་ཡོད་པའི་མི་འཚོལ།</string>
     <string name="nearby_splash__both_parties_need_fdroid">ཚོགས་སྡེ་གཉིས་ཀར་ཉེ་འདབ་བེད་སྤྱོད་བྱས་པ་ལ་%1$s འདི་དགོས།</string>
-    <string name="swap_nfc_title">རེག་ནས་བརྗེ་ལེན་བྱེད།</string>
-    <string name="swap_nfc_description">གལ་ཏེ་ཁྱེད་རང་གི་གྲོགས་པོར་ཨེཕ་རོཌ་དང་NFC ཡོད་ན་ཡོ་བྱད་མཉམ་དུ་རེག་པ་འདི་སྒོ་ཕྱེས་ཟིན་པ་རེད།</string>
     <string name="swap_join_same_wifi">ཁྱེད་རང་གི་གྲོགས་པོ་དང་ཝཡེ་ཕཡེ་གཅིག་པ་མཐུད་</string>
     <string name="swap_join_same_wifi_desc">ཝཡེ་ཕཡེ་རྒྱུད་དེ་བརྗེ་ལེན་བྱེད་དགོས་ན་ཁྱེད་གཉིས་ངེས་པར་དུ་དྲྭ་རྒྱ་གཅིག་པ་ཞིག་དགོས། གལ་ཏེ་དྲྭ་རྒྱ་གཅིག་པ་བེད་སྤྱོད་མ་བྱས་ན་ཁྱེད་གཉིས་གང་རུང་གཅིག་གིས་ཝཡེ་ཕཡེ་དྲྭ་འཛོམས་བཟོས།</string>
     <string name="swap_join_this_hotspot">ཁྱེད་རང་གི་གྲོགས་པོ་རང་གི་དྲྭ་འཛོམས་ལ་མཐུད་རོགས་བྱེད།</string>

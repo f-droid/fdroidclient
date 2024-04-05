@@ -4,7 +4,6 @@
     <string name="installIncompatible">S\'aplicatzione no est compatìbile cun su dispositivu tuo, la cheres installare su matessi?</string>
     <string name="version">Versione</string>
     <string name="delete">Burra</string>
-    <string name="enable_nfc_send">Abìlita imbiu NFC…</string>
     <string name="cache_downloaded">Mantene sas aplicatziones in sa cache</string>
     <string name="updates">Agiornamentos</string>
     <string name="other">Àteru</string>
@@ -137,9 +136,6 @@
     <string name="category_Science_Education">Iscièntzia e educatzione</string>
     <string name="category_Security">Seguràntzia</string>
     <string name="category_System">Sistema</string>
-    <string name="swap_nfc_description">Si s\'amigu tuo tenet F-Droid e s’NFC allutos pone a cuntatu sos duos
-        dispositivos.
-    </string>
     <string name="swap_join_same_wifi">Intra in sa matessi retza Wi-Fi de s\'amigu tuo</string>
     <string name="swap">Imbia aplicatziones</string>
     <string name="swap_no_wifi_network">Peruna retza disponìbile</string>
@@ -178,7 +174,6 @@
     <string name="category_Theming">Temas</string>
     <string name="category_Time">Tempus</string>
     <string name="category_Writing">Iscritura</string>
-    <string name="swap_nfc_title">Toca pro cumpartzire</string>
     <string name="swap_join_same_wifi_desc">Pro cumpartzire impreende su Wi-Fi, ista atentu a istare in sa matessi
         retza. Si non tenies atzessu a sa matessi retza, unu de bois podet creare unu puntu de atzessu Wi-Fi.
     </string>
@@ -265,7 +260,6 @@
     <string name="useTor">Imprea Tor</string>
     <string name="useTorSummary">Iscàrriga pro mèdiu de Tor pro una privadesa prus manna. Tenet bisòngiu de Orbot</string>
     <string name="swap_stopping_wifi">Firmende su Wi-Fi…</string>
-    <string name="repo_provider">Depòsitu: %s</string>
     <string name="update_auto_download">Iscàrriga automaticamente sos agiornamentos</string>
     <string name="update_auto_download_summary">Sos agiornamentos ant a èssere iscarrigados automaticamente e tue as a
         retzire una notìfica pro los installare
@@ -482,7 +476,6 @@
     <string name="about_forum">Forum de suportu</string>
     <string name="app_suggested">Cunsigiadas</string>
     <string name="app_size">Mannària: %1$s</string>
-    <string name="app_repository">Depòsitu: %1$s</string>
     <string name="scan_removable_storage_title">Iscansiona su dispositivu rimovìbile</string>
     <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas penninas USB</string>
     <string name="nearby_splash__read_external_storage">Chirca depòsitos e ispricos (mirrors) in s\'ischeda SD.</string>

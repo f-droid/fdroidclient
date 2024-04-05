@@ -30,7 +30,6 @@
     <string name="version">Fersiwn</string>
     <string name="by_author_format">gan %s</string>
     <string name="delete">Dileu</string>
-    <string name="enable_nfc_send">Galluogi Anfon NFC…</string>
     <string name="prompt_to_send_crash_reports_summary">Casglu data am chwalu a gofyn i\'w anfon at y datblygwr</string>
     <string name="unstable_updates">Diweddariadau ansefydlog</string>
     <string name="unstable_updates_summary">Awgrymu diweddariadau i fersiynau ansefydlog</string>
@@ -88,7 +87,6 @@
     <string name="app__tts__cancel_download">Diddymu lawrlwytho</string>
     <string name="app__install_downloaded_update">Diweddaru</string>
     <string name="app_installed_media">Gosodwyd y ffeil i %s</string>
-    <string name="app_repository">Ystorfa: %1$s</string>
     <string name="app_size">Maint: %1$s</string>
     <string name="app_list__name__downloading_in_progress">Yn lawrlwytho %1$s</string>
     <string name="app_list__name__successfully_installed">Gosodwyd %1$s</string>
@@ -136,7 +134,6 @@
     <string name="repo_exists_add_mirror">Mae hwn yn gopi o %1$s. Ychwanegu fel drych\?</string>
     <string name="bad_fingerprint">Ôl bys drwg</string>
     <string name="invalid_url">Dyw hwn ddim yn URL dilys.</string>
-    <string name="repo_provider">Ystorfa: %s</string>
     <string name="menu_manage">Ystorfeydd</string>
     <string name="repositories_summary">Ychwanegu ffynonellau apiau amgen ychwanegol</string>
     <string name="menu_search">Chwilio</string>
@@ -462,8 +459,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">Mae ar y ddau barti angen defnyddio %1$s i ddefnyddio gerllaw.</string>
     <string name="nearby_splash__read_external_storage">Chwilio\'r cerdyn SD am ystorfeydd a drychau.</string>
     <string name="nearby_splash__request_permission">Amdani</string>
-    <string name="swap_nfc_title">Cyffyrdda i gyfnewid</string>
-    <string name="swap_nfc_description">Os y F-Droid ac NFC ymlaen gan dy ffrind, cyffyrddwch eich dyfeisiau.</string>
     <string name="swap_join_same_wifi">Ymuna â\'r un Wi-Fi a dy ffrind</string>
     <string name="swap_join_same_wifi_desc">I gyfnewid dros Wi-Fi, rhaid i chi\'ch dau fod ar yr un rhwydwaith. Os nad oes gennych fynediad i\'r un rhwydwaith, gall un ohonoch greu llecyn Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Helpa dy ffrind i ymuno â dy lecyn Wi-Fi</string>

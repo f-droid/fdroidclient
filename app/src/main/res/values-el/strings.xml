@@ -4,7 +4,6 @@
     <string name="installIncompatible">Η εφαρμογή δεν είναι συμβατή με τη συσκευή σας. Θέλετε να την εγκαταστήσετε παρόλα αυτά;</string>
     <string name="version">Έκδοση</string>
     <string name="delete">Διαγραφή</string>
-    <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
     <string name="cache_downloaded">Διατήρηση προσωρινά αποθηκευμένων εφαρμογών</string>
     <string name="updates">Ενημερώσεις</string>
     <string name="other">Άλλο</string>
@@ -237,10 +236,6 @@
     <string name="interval_2w">Να γίνεται έλεγχος για ενημερώσεις κάθε 2 εβδομάδες</string>
     <string name="theme_light">Φωτεινό</string>
     <string name="theme_dark">Σκοτεινό</string>
-    <string name="swap_nfc_title">Αγγίξτε για ανταλλαγή</string>
-    <string name="swap_nfc_description">Αν ο φίλος σας έχει το F-Droid και ενεργοποιημένο το NFC αγγίξτε μεταξύ τους τις
-        συσκευές σας.
-    </string>
     <string name="swap_join_same_wifi_desc">Για να ανταλλάξετε χρησιμοποιώντας Wi-Fi, βεβαιωθείτε ότι είσαστε στο ίδιο
         δίκτυο. Αν δεν έχετε πρόσβαση στο ίδιο δίκτυο, ένας από εσάς μπορεί να δημιουργήσει ένα σημείο πρόσβασης Wi-Fi.
     </string>
@@ -263,7 +258,6 @@
     <string name="update_auto_install_summary">Λήψη και εγκατάσταση αναβαθμίσεων στο παρασκήνιο, εμφανίζοντας μία ειδοποίηση</string>
     <string name="repo_error_empty_username">Κενό όνομα χρήστη, τα διαπιστευτήρια δεν άλλαξαν</string>
     <string name="versions">Εκδόσεις</string>
-    <string name="repo_provider">Αποθετήριο: %s</string>
     <string name="menu_email">Ηλ. ταχυδρομείο δημιουργού</string>
     <string name="antinonfreeassetslist">Αυτή η εφαρμογή περιέχει μη-ελεύθερα στοιχεία</string>
     <string name="useTorSummary">Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα. Απαιτείται εγκατάσταση του Orbot</string>
@@ -470,7 +464,6 @@
     <string name="about_forum">Φόρουμ υποστήριξης</string>
     <string name="app_suggested">Προτεινόμενα</string>
     <string name="app_size">Μέγεθος: %1$s</string>
-    <string name="app_repository">Αποθετήριο: %1$s</string>
     <string name="scan_removable_storage_title">Σάρωση αφαιρούμενου χώρου αποθήκευσης</string>
     <string name="scan_removable_storage_toast">Σάρωση %s…</string>
     <string name="scan_removable_storage_summary">Αναζήτηση αποθετηρίου σε αφαιρούμενα μέσα αποθήκευσης όπως κάρτες SD και ράβδους αποθήκευσης USB</string>

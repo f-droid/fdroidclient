@@ -16,7 +16,6 @@
     <string name="version">ვერსია</string>
     <string name="by_author_format">%s-სგან</string>
     <string name="delete">წაშლა</string>
-    <string name="enable_nfc_send">NFC გაგზავნის ჩართვა…</string>
     <string name="cache_downloaded">დაქეშილი აპების დატოვება</string>
     <string name="app_list__name__downloading_in_progress">%1$s-ის გადმოწერა</string>
     <string name="more">მეტი</string>

@@ -169,7 +169,6 @@
     <string name="interval_2w">Ստուգել թարմացումները 2 շաբաթը մեկ</string>
     <string name="crash_dialog_title">F-Droidը կործանվեց</string>
     <string name="crash_dialog_comment_prompt">Այստեղ կարող ես ավելացնել հավելյալ տեղեկատվություն և մեկնաբանություններ՝</string>
-    <string name="enable_nfc_send">Միացնել NFC Sendը…</string>
     <string name="unstable_updates_summary">Առաջարկել թարմացումներ անկայուն տարբերակների համար</string>
     <string name="update_auto_download_summary">Ներբեռնել թարմացումները ետնապատկերում</string>
     <string name="login_title">Վավերացում է հարկավոր</string>
@@ -178,7 +177,6 @@
     <string name="bluetooth_activity_not_found">Bluetoothով ուղարկելու մեթոդ չի գտնվել, ընտրի՛ր մեկը։</string>
     <string name="choose_bt_send">Ընտրիր Bluetoothով ուղարկելու մեթոդ</string>
     <string name="repo_add_url">Շտեմարանի հասցե</string>
-    <string name="repo_provider">Շտեմարան. %s</string>
     <string name="menu_manage">Շտեմարաններ</string>
     <string name="repositories_summary">Ավելացնել ափփերի հավելյալ աղբյուրներ</string>
     <string name="menu_add_repo">Նոր շտեմարան</string>

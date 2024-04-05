@@ -60,7 +60,6 @@
     <string name="app_name_full">اف‌دروید</string>
     <string name="SignatureMismatch">نگارش جدید با کلیدی متفاوت با قبلی امضا شده است. برای نصب نگارش جدید، باید نخست نگارش قدیمی را حذف کرد. لطفاً این کار را انجام داده و دوباره تلاش کنید. (به خاطر داشته باشید که حذف نصب، تمام داده‌های ذخیره شدهٔ کاره در حافظهٔ داخلی را پاک می‌کند)</string>
     <string name="version">نگارش</string>
-    <string name="enable_nfc_send">به کار انداختن فرستادن با NFC…</string>
     <string name="unstable_updates">به‌روز رسانی‌های ناپایدار</string>
     <string name="unstable_updates_summary">پیشنهاد به‌روز رسانی به نگارش‌های ناپایدار</string>
     <string name="notify">نمایش به‌روز رسانی‌های موجود</string>
@@ -160,7 +159,6 @@
     <string name="category_Writing">نوشتن</string>
     <string name="empty_can_update_app_list">تبریک!
 \nکاره‌هایتان به‌روزند.</string>
-    <string name="swap_nfc_title">برای تاخت زدن، لمس کنید</string>
     <string name="swap_join_same_wifi">به همان وای‌فای دوستتان بپیوندید</string>
     <string name="swap_join_this_hotspot">دوستتان را در پیوستن به نقطهٔ اتّصالتان یاری کنید</string>
     <string name="swap">تاخت‌زنی کاره‌ها</string>
@@ -226,7 +224,6 @@
     <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="uninstall_error_unknown">شکست در حذف نصب به دلیل خطایی ناشناخته</string>
     <string name="system_install_denied_permissions">اجازه‌های ممتاز به افزونه داده نشده! لطفاً گزارش خطایی ایجاد کنید!</string>
-    <string name="swap_nfc_description">اگر دوستتان اف‌دروید داشته و NFCاش روشن است، افزاره‌هایتان را به هم بچسبانید.</string>
     <string name="swap_join_same_wifi_desc">برای تاخت زدن با استفاده از وای‌فای، مطمئن شوید که روی شبکهٔ یکسانی هستید. اگر به شبکهٔ یکسان دسترسی ندارید، یکیتان می‌تواند یک نقطهٔ اتّصال وای‌فای ایجاد کند.</string>
     <string name="swap_qr_isnt_for_swap">رمز QRای که پوییدید، شبیه یک رمز تاخت‌زنی نیست.</string>
     <string name="loading">درحال بارگیری…</string>
@@ -247,7 +244,6 @@
     <string name="useTor">استفاده از تور</string>
     <string name="useTorSummary">اجبار شدامد بارگیری به استفاده از تور برای محرمانگی بیش‌تر. به ربات پیازی نیاز است</string>
     <string name="swap_stopping_wifi">متوقّف کردن وای‌فای…</string>
-    <string name="repo_provider">مخزن: %s</string>
     <string name="update_auto_download">دریافت خودکار به‌روز رسانی‌ها</string>
     <string name="update_auto_download_summary">به‌روز رسانی‌ها به صورت خودکار بارگیری شده و برای نصبشان آگاه می‌شوید</string>
     <string name="download_pending">در انتظار آغاز بارگیری…</string>
@@ -457,7 +453,6 @@
     <string name="scan_removable_storage_title">پویش ذخیره‌ساز جداشدنی</string>
     <string name="scan_removable_storage_toast">پوییدن %s…</string>
     <string name="scan_removable_storage_summary">گشتن دنبال مخازن روی ذخیره‌ساز جداشدنی مثل کارت‌های SD و گرداننده‌های USB</string>
-    <string name="app_repository">مخزن: %1$s</string>
     <string name="main_menu__updates">به‌روز رسانی‌ها</string>
     <string name="nearby_splash__read_external_storage">جست‌وجوی کارت SD برای آینه‌ها و مخزن‌ها.</string>
     <string name="nearby_splash__request_permission">بجویید</string>

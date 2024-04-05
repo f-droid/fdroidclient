@@ -4,7 +4,6 @@
     <string name="version">Útgáfa</string>
     <string name="delete">Eyða</string>
     <string name="login_name">Notandanafn</string>
-    <string name="enable_nfc_send">Virkja NFC-sendingu…</string>
     <string name="cache_downloaded">Halda forritum sem eru í biðminni</string>
     <string name="updates">Uppfærslur</string>
     <string name="unstable_updates">Óstöðugar uppfærslur</string>
@@ -53,7 +52,6 @@
     <string name="repo_add_fingerprint">Fingrafar (valkvætt)</string>
     <string name="bad_fingerprint">Gallað fingrafar</string>
     <string name="invalid_url">Þetta er ekki gild vefslóð.</string>
-    <string name="repo_provider">Hugbúnaðarsafn: %s</string>
     <string name="menu_manage">Hugbúnaðarsöfn</string>
     <string name="menu_settings">Stillingar</string>
     <string name="menu_search">Leita</string>
@@ -149,7 +147,6 @@
     <string name="empty_search_available_app_list">Engin samsvarandi forrit tiltæk.</string>
     <string name="install_error_unknown">Mistókst að setja inn vegna óþekktrar villu</string>
     <string name="uninstall_error_unknown">Mistókst að fjarlægja vegna óþekktrar villu</string>
-    <string name="swap_nfc_title">Snertu til að býtta</string>
     <string name="swap">Skiptast á forritum</string>
     <string name="swap_success">Býttin heppnuðust!</string>
     <string name="swap_no_wifi_network">Engin netkerfi ennþá</string>
@@ -256,7 +253,6 @@
 \nÞað eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.</string>
     <string name="empty_can_update_app_list">Til hamingju!
 \nÖll forritin þín eru af nýjustu útgáfu.</string>
-    <string name="swap_nfc_description">Ef vinur þinn er með F-Droid og kveikt á NFC, látið þá tækin ykkar snertast.</string>
     <string name="swap_join_same_wifi_desc">Til að gera býtti í gegnum þráðlaust net, gakktu úr skugga um að þið séuð á sama netinu. Ef þið hafið ekki aðgang að sama neti, getur annar ykkar búið til þráðlausan Wi-Fi tengipunkt (hotspot).</string>
     <string name="swap_join_this_hotspot">Hjálpaðu vini þínum að tengjast tengipunktinum þínum</string>
     <string name="swap_scan_or_type_url">Einn aðili þarf að skanna QR-kóðann, eða slá slóð hins inn í vafra.</string>
@@ -455,7 +451,6 @@
     <string name="menu_open">Opna</string>
     <string name="app_suggested">Tillögur</string>
     <string name="app_size">Stærð: %1$s</string>
-    <string name="app_repository">Hugbúnaðarsafn: %1$s</string>
     <string name="scan_removable_storage_title">Skanna útskiptanlega geymslumiðla</string>
     <string name="scan_removable_storage_toast">Skoða %s…</string>
     <string name="scan_removable_storage_summary">Athugaðu með pakkasöfn á útskiptanlegum geymslumiðlum eins og SD-minniskortum eða USB-minnislyklum</string>

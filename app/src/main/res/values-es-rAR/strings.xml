@@ -6,7 +6,6 @@
     <string name="version">Versión</string>
     <string name="by_author_format">por %s</string>
     <string name="delete">Eliminar</string>
-    <string name="enable_nfc_send">Habilitar envio por NFC…</string>
     <string name="prompt_to_send_crash_reports">Preguntar para enviar reportes de fallas</string>
     <string name="prompt_to_send_crash_reports_summary">Almacenar datos sobre fallas y preguntar para enviar al desarrollador</string>
     <string name="cache_downloaded">Mantener aplicaciones en cache</string>
@@ -81,7 +80,6 @@
     <string name="app__install_downloaded_update">Actualizar</string>
     <string name="app_installed_media">Archivo instalado a %s</string>
     <string name="app_permission_storage">F-Droid necesita permiso de almacenamiento para instalar en este almacenamiento. Por favor, autorizalo en la siguiente pantalla para seguir con la instalación.</string>
-    <string name="app_repository">Repositorio: %1$s</string>
     <string name="app_size">Tamaño: %1$s</string>
     <string name="app_list__name__downloading_in_progress">Descargando %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instalado</string>
@@ -136,7 +134,6 @@
     <string name="bad_fingerprint">Huella dactilar mala</string>
     <string name="invalid_url">Esta no es una URL válida.</string>
     <string name="malformed_repo_uri">Ignorando repositorio URI malformado: %s</string>
-    <string name="repo_provider">Repositorio: %s</string>
     <string name="menu_manage">Repositorios</string>
     <string name="repositories_summary">Añadir fuentes adicionales de aplicaciones</string>
     <string name="menu_settings">Ajustes</string>
@@ -342,8 +339,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">Ambos necesitan %1$s para usar cerca.</string>
     <string name="nearby_splash__read_external_storage">Busque en la tarjeta SD repositorios y espejos.</string>
     <string name="nearby_splash__request_permission">Probalo</string>
-    <string name="swap_nfc_title">Tocá para intercambiar</string>
-    <string name="swap_nfc_description">Si tu amigo tiene F-Droid y NFC prendidos, choquen sus dispositivos.</string>
     <string name="swap_join_same_wifi">Unite a la misma red Wi-Fi que tu amigo</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar usando Wi-Fi, asegurate de estar en la misma red. Si no tenés acceso a la misma red, uno de ustedes puede crear un hotspot Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ayudá a tu amigo a unirse a tu hotspot</string>

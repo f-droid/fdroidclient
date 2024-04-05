@@ -122,7 +122,6 @@
     <string name="cache_downloaded">Cachte applikaasjes bewarje</string>
     <string name="prompt_to_send_crash_reports_summary">Gegevens sammelje oer fêstrinners en freegje om dizze nei de ûntwikkelder te stjoeren</string>
     <string name="prompt_to_send_crash_reports">Freegje om crash rapporten te ferstjoeren</string>
-    <string name="enable_nfc_send">NFC ferstjoeren Ynskeakelje…</string>
     <string name="installIncompatible">De app is ynkompatibel mei jo apparaat, dochs ynstallearje\?</string>
     <string name="crash_dialog_text">In ûnferwachte fout hat harren foardien, en de app mat no stopje. Wolle jo de details e-maile om te helpen dit probleem op te lossen\?</string>
     <string name="crash_dialog_title">F-Droid is fêstrûn</string>
@@ -155,7 +154,6 @@
     <string name="sort_search">Sykjen sortearre</string>
     <string name="clear_search">Syk ynfier leechmeitsje</string>
     <string name="repo_add_url">Adres fan opslachplak</string>
-    <string name="repo_provider">Opslachplak: %s</string>
     <string name="scan_removable_storage_summary">Sykje om pakket opslagplakken op ferwiderbere opslach lykas SD kaarten en USB drives</string>
     <string name="scan_removable_storage_toast">Scant %s…</string>
     <string name="scan_removable_storage_title">Ferwiderbere opslag scanne</string>

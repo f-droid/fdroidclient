@@ -4,7 +4,6 @@
     <string name="installIncompatible">Приложението не е съвместимо с вашето устройство. Да бъде ли направен опит за инсталиране въпреки това\?</string>
     <string name="version">Издание</string>
     <string name="delete">Изтриване</string>
-    <string name="enable_nfc_send">По КБП…</string>
     <string name="cache_downloaded">Кеширане на приложенията</string>
     <string name="updates">Обновяване</string>
     <string name="other">Друго</string>
@@ -112,7 +111,6 @@
     <string name="category_Science_Education">Наука и образование</string>
     <string name="category_Security">Сигурност</string>
     <string name="category_System">Системни</string>
-    <string name="swap_nfc_description">Ако човекът с вас разполага с F-Droid и е включил NFC, докоснете телефоните си.</string>
     <string name="swap_join_same_wifi">Свържете се към една и съща безжична мрежа с приятеля си</string>
     <string name="swap">Разменяне</string>
     <string name="swap_view_available_networks">(Натиснете за преглед на наличните мрежи)</string>
@@ -185,7 +183,6 @@
     <string name="swap_nearby">Размяна с у-ва наблизо</string>
     <string name="local_repo_running">F-Droid e в готовност за размяна</string>
     <string name="touch_to_configure_local_repo">Натиснете за детайли или да позволите размяна на приложение.</string>
-    <string name="swap_nfc_title">Докоснете за размяна</string>
     <string name="swap_success">Размяната е успешна!</string>
     <string name="swap_switch_to_wifi">Натиснете за смяна на безжичната мрежа</string>
     <string name="swap_dont_show_again">Без повторно показване</string>
@@ -227,7 +224,6 @@
     <string name="about_license">Лиценз</string>
     <string name="enable">Включване</string>
     <string name="overwrite">Презаписване</string>
-    <string name="repo_provider">Хранилище: %s</string>
     <string name="menu_email">Изпращане на писмо до автора</string>
     <string name="antinonfreeassetslist">Приложението съдържа ресурси със затворен код</string>
     <string name="writing_index_jar">Записва се засекретеният индекс файл (index.jar)…</string>
@@ -472,7 +468,6 @@
     <string name="antinosourcesince">Изходният код не е наличен вече, не е възможно обновяване.</string>
     <string name="antidisabledalgorithmlist">Приложението има слаба защита на подписа</string>
     <string name="menu_select_for_wipe">Избери за изчистване</string>
-    <string name="app_repository">Хранилище: %1$s</string>
     <string name="about_forum">Форум за поддръжка</string>
     <string name="scan_removable_storage_summary">Търсят се хранилища върху външните носители като SD Card или USB</string>
     <string name="scan_removable_storage_toast">Сканиране на %s…</string>

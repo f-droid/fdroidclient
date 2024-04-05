@@ -9,10 +9,8 @@
     <string name="category_Reading">वाचन</string>
     <string name="pref_language">भाषा</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="repo_provider">: %s</string>
     <string name="malformed_repo_uri">विकृत भांडार URI: %s ला दुर्लक्षित</string>
     <string name="crash_dialog_text">एका अनपेक्षित त्रुटि मुळे एप्लीकेशन बंद झाले आहे. ईमेल पाठउन समस्यांंचे समाधान मिळवू इच्छिता\?</string>
-    <string name="enable_nfc_send">NFC द्वारे पाठवा…</string>
     <string name="force_old_index_summary">त्रुटी अथवा आवृत्ती अस्वीकार्यता परिस्थितीत, XML अँप अनुक्रमांकाचा वापर करा</string>
     <string name="latest__empty_state__never_updated">एकदा तुमची अँप्सची यादी अद्ययावत झाली तर, नवे अँप्स इथे</string>
     <string name="latest__empty_state__no_recent_apps">कोणतेही हल्लीचे अँप सापडले</string>
@@ -71,7 +69,6 @@
     <string name="app_list__dismiss_app_update">अद्ययावन दुर्लक्षित</string>
     <string name="app_list_download_ready">डाऊनलोड पूर्ण, स्थापनेस सज्ज</string>
     <string name="app_size">आकार : %1$s</string>
-    <string name="app_repository">भांडार : %1$s</string>
     <string name="app_permission_storage">F-Droid ला स्टोरेज मध्ये स्थापित करण्यासाठी स्टोरेजच्या परवानगीची आवश्यकता असते. कृपया पुढील भागात परवानगी देत स्थापन प्रक्रिया पूर्ण करा.</string>
     <string name="app_installed_media">%s वर फ़ाइल स्थापना</string>
     <string name="app__install_downloaded_update">अद्यायावत</string>
@@ -270,7 +267,6 @@
     <string name="swap_blank_wifi_ssid">(रिक्त)</string>
     <string name="swap_no_wifi_network">अजूनही कोणतेच नेटवर्क नाही</string>
     <string name="swap_success">देवाणघेवाण  यशस्वी!</string>
-    <string name="swap_nfc_title">देवाणघेवानिसाठी स्पर्श</string>
     <string name="nearby_splash__request_permission">अनुभव घ्या</string>
     <string name="uninstall_error_unknown">अज्ञात कारणाने, अस्थापना करण्यास असमर्थ</string>
     <string name="install_error_unknown">अज्ञात कारणाने, स्थापना करण्यास असमर्थ</string>

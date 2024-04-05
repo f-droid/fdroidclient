@@ -108,7 +108,6 @@
     <string name="notification_title_single_update_available">ئېرىشىشچان يېڭىلانما</string>
     <string name="notification_title_summary_install_error">ئورنىتىش مەغلۇب</string>
     <string name="by_author_format">%s گە ئاساسەن</string>
-    <string name="enable_nfc_send">NFC يوللىغۇچنى قوزغىتىش…</string>
     <string name="unstable_updates">تۇراقسىز يېڭىلانمىلار</string>
     <string name="unstable_updates_summary">تۇراقسىز نەشىرىگە قارىتا تەۋسىيەلىك يېڭىلانمىلار</string>
     <string name="keep_install_history">ئورنىتىش تارىخى ساقلانسۇن</string>

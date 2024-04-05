@@ -151,8 +151,6 @@
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a Wi-Fi Hotspot.</string>
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
-    <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your devices together.</string>
-    <string name="swap_nfc_title">Touch to swap</string>
     <string name="nearby_splash__request_permission">Search now</string>
     <string name="nearby_splash__document_tree">Search USB OTG for repos and mirrors.</string>
     <string name="nearby_splash__read_external_storage">Search SD Card for repos and mirrors.</string>
@@ -305,7 +303,6 @@
     <string name="menu_select_for_wipe">Select for wipe</string>
     <string name="menu_open">Open</string>
     <string name="repositories_summary">Add additional sources of apps</string>
-    <string name="repo_provider">Repository: %s</string>
     <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
     <string name="invalid_url">This is not a valid URL.</string>
     <string name="bad_fingerprint">Bad fingerprint</string>
@@ -349,7 +346,6 @@
     <string name="app_list__dismiss_app_update">Update ignored</string>
     <string name="app_list_download_ready">Downloaded, ready to install</string>
     <string name="app_size">Size: %1$s</string>
-    <string name="app_repository">Repository: %1$s</string>
     <string name="app_permission_storage">F-Droid needs the storage permission to install this to storage. Please allow it on the next screen to proceed with installation.</string>
     <string name="app_installed_media">File installed to %s</string>
     <string name="app__install_downloaded_update">Update</string>
@@ -421,7 +417,6 @@
     <string name="cache_downloaded">Keep cached apps</string>
     <string name="prompt_to_send_crash_reports_summary">Gather data about crashes and ask to send them to the developer</string>
     <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>
-    <string name="enable_nfc_send">Enable NFC send…</string>
     <string name="delete">Delete</string>
     <string name="by_author_format">by %s</string>
     <string name="version">Version</string>

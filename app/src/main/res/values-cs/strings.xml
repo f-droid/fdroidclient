@@ -4,7 +4,6 @@
     <string name="installIncompatible">Aplikace není kompatibilní s vaším zařízením – chcete se přesto pokusit o instalaci\?</string>
     <string name="version">Verze</string>
     <string name="delete">Smazat</string>
-    <string name="enable_nfc_send">Povolit posílání po NFC…</string>
     <string name="updates">Aktualizace</string>
     <string name="other">Jiné</string>
     <string name="update_interval">Interval automatických aktualizací</string>
@@ -208,7 +207,6 @@
     <string name="swap_qr_isnt_for_swap">Naskenovaný QR kód nevypadá jako výměnný kód.</string>
     <string name="loading">Načítání…</string>
     <string name="install_confirm">vyžaduje přístup k</string>
-    <string name="swap_nfc_title">Klepněte pro výměnu</string>
     <string name="swap_switch_to_wifi">Klepněte pro přepnutí sítě Wi-Fi</string>
     <string name="newPerms">Nově</string>
     <string name="allPerms">Vše</string>
@@ -234,10 +232,8 @@
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
     <string name="status_inserting_apps">Ukládání podrobností o aplikacích</string>
     <string name="empty_search_available_app_list">Žádné odpovídající aplikace nejsou dostupné.</string>
-    <string name="swap_nfc_description">Pokud má váš přítel F-Droid a zapnuté NFC, přibližte svá zařízení k sobě.</string>
     <string name="update_auto_download">Automaticky stahovat aktualizace</string>
     <string name="update_auto_download_summary">Aktualizace jsou stahovány automaticky a jste upozorněni na možnost je nainstalovat</string>
-    <string name="repo_provider">Repozitář: %s</string>
     <string name="useTor">Použít Tor</string>
     <string name="useTorSummary">Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot</string>
     <string name="swap_join_same_wifi_desc">Pro kopírování po Wi-Fi musí být oba na stejné síti. Pokud nemáte přístup ke stejné síti, může jeden z vás vytvořit vlastní Wi-Fi hotspot.</string>
@@ -468,7 +464,6 @@
     <string name="scan_removable_storage_title">Prohledat odpojitelné úložiště</string>
     <string name="scan_removable_storage_toast">Prohledávám %s…</string>
     <string name="scan_removable_storage_summary">Vyhledat repozitáře v odpojitelných úložištích (např. SD karty a USB disky)</string>
-    <string name="app_repository">Repozitář: %1$s</string>
     <string name="nearby_splash__read_external_storage">Vyhledat repozitáře a zrcadla na SD kartě.</string>
     <string name="nearby_splash__request_permission">Hledat</string>
     <string name="not_visible_nearby">Funkce Nablízku je vypnuta</string>

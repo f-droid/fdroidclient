@@ -56,7 +56,6 @@
     <string name="theme">Aparencia</string>
     <string name="app_name_full">F-Droid</string>
     <string name="delete">Eliminar</string>
-    <string name="enable_nfc_send">Activar envío NFC…</string>
     <string name="unstable_updates">Actualizacións inestábeis</string>
     <string name="update_interval">Intre de actualización automática</string>
     <string name="notify_on">Amosar unha notificación cando hai actualizacións dispoñíbeis</string>
@@ -138,7 +137,6 @@
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Escrita</string>
     <string name="uninstall_error_unknown">Fallou ó desinstalar por un erro descoñecido</string>
-    <string name="swap_nfc_title">Preme para intercambiar</string>
     <string name="swap">Intercambiar aplicacións</string>
     <string name="swap_success">Intercambio exitoso!</string>
     <string name="swap_view_available_networks">Preme para abrir as redes dispoñíbeis</string>
@@ -202,7 +200,6 @@
 \nTódalas túas aplicacións están actualizadas.</string>
     <string name="install_error_unknown">Fallou a instalación por mor dun erro descoñecido</string>
     <string name="system_install_denied_permissions">Os permisos con privilexios non foron garantidos para a extensión! Por favor, crea unha nova incidencia!</string>
-    <string name="swap_nfc_description">Se o teu amigo ten o F-Droid e o NFC activado, achegade os dispositivos.</string>
     <string name="swap_join_same_wifi">Únete á mesma rede Wi-Fi que o teu amigo</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, asegúrate de estar na mesma rede. Se non tes acceso á mesma rede, un de vós pode crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Axuda ó teu amigo a unirte ó punto de acceso</string>
@@ -293,7 +290,6 @@
     </plurals>
     <string name="versions">Versións</string>
     <string name="clear_search">Limpar a procura</string>
-    <string name="repo_provider">Repositorio: %s</string>
     <string name="repositories_summary">Engadir máis fontes de aplicacións</string>
     <string name="menu_email">Enderezo electrónico do autor</string>
     <string name="menu_video">Vídeo</string>
@@ -450,7 +446,6 @@
     <string name="scan_removable_storage_summary">Procura repositorios de paquetes en almacenamento extraíbel coma tarxetas SD e chaves de memoria USB</string>
     <string name="about_forum">Foro de soporte</string>
     <string name="app_suggested">Suxerido</string>
-    <string name="app_repository">Repositorio: %1$s</string>
     <string name="app_size">Tamaño: %1$s</string>
     <string name="send_installed_apps">Compartir aplicacións instaladas</string>
     <string name="send_installed_apps_csv">Aplicacións instaladas polo F-Droid con ficheiro CSV</string>

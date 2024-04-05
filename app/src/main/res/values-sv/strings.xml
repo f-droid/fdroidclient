@@ -4,7 +4,6 @@
     <string name="installIncompatible">Appen är inkompatibel med din enhet, installera ändå?</string>
     <string name="version">Version</string>
     <string name="delete">Ta bort</string>
-    <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
     <string name="cache_downloaded">Behåll cachade appar</string>
     <string name="updates">Uppdateringar</string>
     <string name="other">Annat</string>
@@ -189,11 +188,8 @@
     </string>
     <string name="empty_can_update_app_list">Grattis!\nDina appar är uppdaterade.</string>
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
-    <string name="repo_provider">Förråd: %s</string>
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
     <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats utökningen! Skapa en felrapport!</string>
-    <string name="swap_nfc_title">Tryck för att byta</string>
-    <string name="swap_nfc_description">Om din vän har F-Droid och NFC påslaget, lägg samman era enheter.</string>
     <string name="swap_join_same_wifi_desc">För att utbyta via wifi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en wifi-surfzon.</string>
     <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din surfzon</string>
     <string name="swap_success">Utbyte lyckades!</string>
@@ -460,7 +456,6 @@
     <string name="scan_removable_storage_toast">Skannar %s…</string>
     <string name="swap_toast_using_path">Använder %1$s</string>
     <string name="scan_removable_storage_summary">Leta efter paketförråd på flyttbar lagring som SD-kort och USB-minnen</string>
-    <string name="app_repository">Förråd: %1$s</string>
     <string name="main_menu__updates">Uppdateringar</string>
     <string name="nearby_splash__read_external_storage">Sök på SD-kort efter förråd och speglar.</string>
     <string name="nearby_splash__request_permission">Sök nu</string>

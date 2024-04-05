@@ -4,7 +4,6 @@
     <string name="installIncompatible">Sovellus ei ole yhteensopiva laitteesi kanssa. Asennetaanko silti?</string>
     <string name="version">Versio</string>
     <string name="delete">Poista</string>
-    <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
     <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
     <string name="updates">Päivitykset</string>
     <string name="other">Muu</string>
@@ -103,7 +102,6 @@
     <string name="category_Science_Education">Tiede &amp; koulutus</string>
     <string name="category_Security">Tietoturva</string>
     <string name="category_System">Järjestelmä</string>
-    <string name="swap_nfc_description">Jos kaverillasi on F-Droid asennettuna ja NFC päällä, koskettakaa laitteitanne yhteen.</string>
     <string name="swap_join_same_wifi">Liity kaverisi kanssa samaan Wi-Fi-verkkoon</string>
     <string name="swap">Vaihda sovelluksia</string>
     <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
@@ -170,7 +168,6 @@
     <string name="repo_details">Ohjelmavarasto</string>
     <string name="repo_confirm_delete_title">Poistetaanko sovelluslähde?</string>
     <string name="update_auto_install">Asenna päivitykset automaattisesti</string>
-    <string name="repo_provider">Sovelluslähde: %s</string>
     <string name="menu_flattr">Flattr</string>
     <string name="repo_url">Osoite</string>
     <string name="repo_num_apps">Sovelluksien lukumäärä</string>
@@ -222,7 +219,6 @@
     <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
-    <string name="swap_nfc_title">Vaihda koskettamalla</string>
     <string name="swap_join_same_wifi_desc">Vaihtaaksesi sovelluksia Wi-Fin avulla, teidän tulee olla samassa verkossa. Jos sinulla ei ole pääsyä samaan verkkoon, voit luoda oman Wi-Fi-tukiaseman.</string>
     <string name="swap_join_this_hotspot">Auta kaveriasi liittymään tukiasemaasi</string>
     <string name="swap_success">Vaihtaminen onnistui!</string>
@@ -458,7 +454,6 @@
     <string name="scan_removable_storage_title">Lue irrotettava tallennusväline</string>
     <string name="scan_removable_storage_toast">Luetaan %s…</string>
     <string name="scan_removable_storage_summary">Etsi sovelluslähteitä irrotettavasta tallennusvälineestä, kuten SD-korteilta ja USB-muistitikuilta</string>
-    <string name="app_repository">Sovelluslähde: %1$s</string>
     <string name="menu_translation">Käännös</string>
     <string name="main_menu__updates">Päivitykset</string>
     <string name="nearby_splash__read_external_storage">Etsi SD-kortilta sovelluslähteitä ja toisiopalvelimia.</string>

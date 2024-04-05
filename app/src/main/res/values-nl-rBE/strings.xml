@@ -73,7 +73,6 @@
     <string name="version">Versie</string>
     <string name="by_author_format">door %s</string>
     <string name="delete">Verwijderen</string>
-    <string name="enable_nfc_send">Schakel versturen via NFC in…</string>
     <string name="cache_downloaded">Bewaar tijdelijk opgeslagen apps</string>
     <string name="unstable_updates">Instabiele updates</string>
     <string name="unstable_updates_summary">Geef updates voor instabiele versies weer</string>
@@ -164,7 +163,6 @@
     <string name="bad_fingerprint">Slechte vingerafdruk</string>
     <string name="invalid_url">Dit is geen geldige URL.</string>
     <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
-    <string name="repo_provider">Bron: %s</string>
     <string name="repositories_summary">Voeg extra applicatiebronnen toe</string>
     <string name="menu_ignore_all">Negeer alle updates</string>
     <string name="menu_ignore_this">Negeer deze update</string>
@@ -296,8 +294,6 @@
     <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Download dan apps van mensen in de buurt!</string>
     <string name="nearby_splash__find_people_button">Zoek naar mensen in de buurt</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide partijen moeten %1$s gebruiken.</string>
-    <string name="swap_nfc_title">Tik om uit te wisselen</string>
-    <string name="swap_nfc_description">Als uw vriend F-Droid geïnstalleerd heeft en NFC ingeschakeld is, hou dan jullie apparaten tegen elkaar.</string>
     <string name="swap_join_same_wifi">Verbind met hetzelfde Wi-Fi-netwerk als uw vriend</string>
     <string name="swap_join_same_wifi_desc">Om via Wi-Fi uit te wisselen moet u beiden met hetzelfde netwerk verbonden zijn. Indien u geen toegang heeft tot hetzelfde netwerk kan iemand een wifihotspot aanmaken.</string>
     <string name="swap_join_this_hotspot">Help uw vriend zich met uw hotspot te verbinden</string>
@@ -448,7 +444,6 @@
     <string name="scan_removable_storage_summary">Zoek naar pakketbronnen op verwijderbare opslagmedia, zoals SD-kaarten en USB-sticks</string>
     <string name="about_forum">Helpforum</string>
     <string name="app_suggested">Aanbevolen</string>
-    <string name="app_repository">Pakketbron: %1$s</string>
     <string name="app_size">Grootte: %1$s</string>
     <string name="send_installed_apps">Deel geïnstalleerde apps</string>
     <string name="send_installed_apps_csv">CSV bestandslijst van apps geïnstalleerd door F-Droid</string>

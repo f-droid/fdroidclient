@@ -69,7 +69,6 @@
     <string name="add_key">Rnu tasarutt n usenneftaɣ</string>
     <string name="bad_fingerprint">Adsil</string>
     <string name="invalid_url">Ur d-tefkiḍ ara URL ameɣtu.</string>
-    <string name="repo_provider">%s Akufi</string>
     <string name="menu_website">Asmel n web</string>
     <string name="menu_issues">Uguren</string>
     <string name="menu_video">Ividyuten</string>
@@ -166,7 +165,6 @@
     <string name="swap_send_fdroid">Azen F-Droid</string>
     <string name="apps">Isnasen</string>
     <string name="crash_dialog_title">F-Droid yeγli</string>
-    <string name="enable_nfc_send">Rmed Tuzna NFC …</string>
     <string name="unstable_updates">Ileqman ur yerkiden ara</string>
     <string name="keep_install_history">Ḥrez amazray n usebded</string>
     <string name="notify">Sken ileqman yellan</string>
@@ -235,7 +233,6 @@
     <string name="useTor">Seqdec Tor</string>
     <string name="panic_app_unknown_app">d asnas arussin</string>
     <string name="repo_user_mirrors">Lemriyat n useqdac</string>
-    <string name="app_repository">Akufi: %1$s</string>
     <string name="category_Graphics">Tiẓrudlifin</string>
     <string name="app_list__dismiss_downloading_app">Ittwasefsex usider</string>
     <string name="categories__empty_state__no_categories">Ur ellant kra n taggayin iweskanay</string>
@@ -327,7 +324,6 @@
     <string name="swap_visible_hotspot">Ittban s tneqiḍt n wadduf</string>
     <string name="swap_join_this_hotspot">Efk tallelt i yumdukkal-ikim ad qqnen ɣer tneqiḍt-ik·im n wadduf</string>
     <string name="swap_join_same_wifi">Qqen ɣer Wi-Fi i deg qqnen imdukkal-ik·im</string>
-    <string name="swap_nfc_title">Nnal akken ad tbedleḍ</string>
     <string name="uninstall_error_unknown">Teḍra-d tuccḍa deg tukksa s sebba tarussint</string>
     <string name="empty_search_available_app_list">Ulac isnasen ittwafen.</string>
     <string name="repo_added">Ittwasekles akemmus n temsersiwt %1$s.</string>

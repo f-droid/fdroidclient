@@ -4,7 +4,6 @@
     <string name="installIncompatible">Приложение несовместимо с вашим устройством. Все равно установить\?</string>
     <string name="version">Версия</string>
     <string name="delete">Удалить</string>
-    <string name="enable_nfc_send">Включить отправку по NFC…</string>
     <string name="cache_downloaded">Хранить кешированные приложения</string>
     <string name="updates">Обновления</string>
     <string name="other">Другое</string>
@@ -221,10 +220,7 @@
     <string name="crash_dialog_comment_prompt">Здесь вы можете добавить дополнительную информацию и комментарии:</string>
     <string name="useTor">Использовать Tor</string>
     <string name="useTorSummary">Перенаправлять трафик через Tor для повышения конфиденциальности. Необходим Orbot</string>
-    <string name="repo_provider">Репозиторий: %s</string>
-    <string name="swap_nfc_description">Если у вашего друга есть F-Droid и у вас обоих включен NFC, приложите устройства друг к другу.</string>
     <string name="swap_join_this_hotspot">Помогите своему другу подключиться к вашей точке доступа</string>
-    <string name="swap_nfc_title">Нажмите для обмена</string>
     <string name="swap_join_same_wifi_desc">Для обмена с использованием Wi-Fi убедитесь, что вы находитесь в одной сети. Если у вас нет доступа к одной сети, один из вас может создать точку доступа Wi-Fi.</string>
     <string name="swap_success">Обмен прошел успешно!</string>
     <string name="swap_active_hotspot">%1$s (ваша точка доступа)</string>
@@ -477,7 +473,6 @@
     <string name="app_size">Размер: %1$s</string>
     <string name="scan_removable_storage_toast">Сканирование %s…</string>
     <string name="scan_removable_storage_summary">Искать репозитории на съемных носителях, таких как SD-карты и USB-накопители</string>
-    <string name="app_repository">Репозиторий: %1$s</string>
     <string name="scan_removable_storage_title">Сканировать съемное хранилище</string>
     <string name="nearby_splash__read_external_storage">Поиск репозиториев и зеркал на SD-карте.</string>
     <string name="nearby_splash__request_permission">Искать</string>

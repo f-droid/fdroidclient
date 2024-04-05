@@ -4,7 +4,6 @@
     <string name="installIncompatible">앱이 당신의 기기와 호환되지 않습니다, 그래도 설치하겠습니까\?</string>
     <string name="version">버전</string>
     <string name="delete">삭제</string>
-    <string name="enable_nfc_send">NFC 전송 켜기…</string>
     <string name="cache_downloaded">캐시된 앱 유지</string>
     <string name="updates">업데이트</string>
     <string name="other">기타</string>
@@ -128,7 +127,6 @@
     <string name="category_Science_Education">과학 및 교육</string>
     <string name="category_Security">보안</string>
     <string name="category_System">시스템</string>
-    <string name="swap_nfc_description">상대방이 F-Droid를 가지고 있고 NFC가 켜져 있다면 두 기기를 서로 맞대세요.</string>
     <string name="swap_join_same_wifi">상대방과 같은 Wi-Fi에 접속하세요</string>
     <string name="swap">앱 교환</string>
     <string name="swap_no_wifi_network">아직 연결 안 됨</string>
@@ -186,7 +184,6 @@
     <string name="install_error_unknown">알 수 없는 오류로 설치 실패</string>
     <string name="uninstall_error_unknown">알 수 없는 오류로 제거 실패</string>
     <string name="system_install_denied_permissions">특별 권한이 확장 기능에 부여되지 않았습니다! 버그 보고를 작성해주세요!</string>
-    <string name="swap_nfc_title">맞대어 교환하기</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi를 사용해 교환하려면, 같은 네트워크에 있는지 확인하세요. 같은 네트워크에 접근할 수 없다면 Wi-Fi 핫스팟을 이용할 수도 있습니다.</string>
     <string name="swap_join_this_hotspot">상대방이 핫스팟에 접속하도록 도와주기</string>
     <string name="swap_success">교환 성공!</string>
@@ -241,7 +238,6 @@
     <string name="theme_dark">어두움</string>
     <string name="update_auto_download">업데이트 자동 다운로드</string>
     <string name="update_auto_download_summary">업데이트를 자동으로 다운로드하고 설치하도록 알림을 띄웁니다</string>
-    <string name="repo_provider">저장소: %s</string>
     <string name="menu_email">저자에게 이메일 보내기</string>
     <string name="antinonfreeassetslist">이 앱은 비자유 애셋을 포함합니다</string>
     <string name="useTor">Tor 사용</string>
@@ -447,7 +443,6 @@
     <string name="app_size">크기: %1$s</string>
     <string name="scan_removable_storage_title">이동식 저장공간 탐색</string>
     <string name="scan_removable_storage_summary">SD 카드와 USB 메모리 등의 이동식 저장공간에서 패키지 저장소를 찾기</string>
-    <string name="app_repository">저장소: %1$s</string>
     <string name="nearby_splash__read_external_storage">저장소와 미러 등록을 위해 SD 카드를 검색.</string>
     <string name="nearby_splash__request_permission">시작</string>
     <string name="swap_toast_using_path">%1$s 사용</string>

@@ -6,7 +6,6 @@
     <string name="version">ਸੰਸਕਰਣ</string>
     <string name="by_author_format">%s ਦੁਆਰਾ</string>
     <string name="delete">ਮਿਟਾਓ</string>
-    <string name="enable_nfc_send">NFC Send ਚਲਾਓ…</string>
     <string name="prompt_to_send_crash_reports">ਕਰੈਸ਼ ਰਿਪੋਰਟਾਂ ਭੇਜਣ ਤੋਂ ਪਹਿਲਾਂ ਪੁੱਛੋ</string>
     <string name="prompt_to_send_crash_reports_summary">ਕਰੈਸ਼ ਬਾਰੇ ਡਾਟਾ ਇਕੱਤਰ ਕਰੋ ਅਤੇ ਡਿਵੈਲਪਰ ਨੂੰ ਭੇਜੋ</string>
     <string name="cache_downloaded">ਕੈਸ਼ੇ ਕੀਤੇ ਐਪਸ ਰੱਖੋ</string>
@@ -105,7 +104,6 @@
     <string name="share_apk_error">ਐਪ ਫ਼ਾਈਲ ਨੂੰ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
     <string name="nearby_splash__both_parties_need_fdroid">ਦੋਵਾਂ ਧਿਰਾਂ ਨੂੰ ਨੇੜਲੇ ਵਰਤਣ ਲਈ %1$s ਦੀ ਲੋੜ ਹੈ।</string>
     <string name="nearby_splash__document_tree">ਰਿਪੋਜ਼ ਅਤੇ ਮਿਰਰ ਲਈ USB OTG ਖੋਜੋ।</string>
-    <string name="swap_nfc_title">ਸਵੈਪ ਕਰਨ ਲਈ ਛੋਹਵੋ</string>
     <string name="swap_join_same_wifi_desc">ਵਾਈ-ਫਾਈ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸਵੈਪ ਕਰਨ ਲਈ, ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਤੁਸੀਂ ਇੱਕੋ ਨੈੱਟਵਰਕ \'ਤੇ ਹੋ। ਜੇਕਰ ਤੁਹਾਡੇ ਕੋਲ ਇੱਕੋ ਨੈੱਟਵਰਕ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੈ, ਤਾਂ ਤੁਹਾਡੇ ਵਿੱਚੋਂ ਕੋਈ ਇੱਕ Wi-Fi ਹੌਟਸਪੌਟ ਬਣਾ ਸਕਦਾ ਹੈ।</string>
     <string name="swap_people_nearby">ਨੇੜਲੇ ਲੋਕ</string>
     <string name="swap_starting">ਸ਼ੁਰੂ ਕਰ ਰਿਹਾ…</string>
@@ -113,7 +111,6 @@
     <string name="swap_cant_find_peers">ਨਹੀਂ ਲੱਭ ਸਕਦੇ ਜਿਸਨੂੰ ਤੁਸੀਂ ਲੱਭ ਰਹੇ ਹੋ\?</string>
     <string name="uninstall_error_notify_title">%s ਨੂੰ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਵਿੱਚ ਤਰੁੱਟੀ</string>
     <string name="has_disallow_install_unknown_sources">ਇਸ ਉਪਭੋਗਤਾ ਦੁਆਰਾ ਅਗਿਆਤ ਸਰੋਤ ਸ਼ਾਮਲ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ, ਜਿਸ ਵਿੱਚ ਨਵੇਂ ਰੈਪੋ ਸ਼ਾਮਲ ਹਨ</string>
-    <string name="repo_provider">ਰਿਪੌਜ਼ਟਰੀ: %s</string>
     <string name="antiupstreamnonfreelist">ਅੱਪਸਟ੍ਰੀਮ ਸਰੋਤ ਕੋਡ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫਤ ਨਹੀਂ ਹੈ</string>
     <string name="theme">ਥੀਮ</string>
     <string name="repo_user_mirrors">ਉਪਭੋਗਤਾ ਮਿਰਰ</string>
@@ -241,7 +238,6 @@
 \n
 \nਤੁਹਾਨੂੰ ਇਸ ਤੋਂ ਐਪਸ ਸਥਾਪਤ ਕਰਨ ਲਈ ਇਸ ਰਿਪੋਜ਼ਟਰੀ ਨੂੰ ਮੁੜ-ਸਮਰੱਥ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।</string>
     <string name="requires_features">ਲੋੜ ਹੈ: %1$s</string>
-    <string name="swap_nfc_description">ਜੇਕਰ ਤੁਹਾਡੇ ਦੋਸਤ ਨੇ F-Droid ਅਤੇ NFC ਨੂੰ ਚਾਲੂ ਕੀਤਾ ਹੈ ਤਾਂ ਆਪਣੀਆਂ ਡਿਵਾਈਸਾਂ ਨੂੰ ਇਕੱਠੇ ਛੂਹੋ।</string>
     <string name="swap_visible_hotspot">ਹੌਟਸਪੌਟ ਰਾਹੀਂ ਦਿਖਣਯੋਗ</string>
     <string name="swap_scan_or_type_url">ਇੱਕ ਵਿਅਕਤੀ ਨੂੰ ਕੋਡ ਨੂੰ ਸਕੈਨ ਕਰਨ, ਜਾਂ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਦੂਜੇ ਦਾ URL ਟਾਈਪ ਕਰਨ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।</string>
     <string name="swap_confirm_connect">ਕੀ ਤੁਸੀਂ ਹੁਣੇ %1$s ਤੋਂ ਐਪਾਂ ਪ੍ਰਾਪਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ\?</string>
@@ -321,7 +317,6 @@
     <string name="app_installed">ਇੰਸਟਾਲ ਕੀਤਾ</string>
     <string name="app_new">ਨਵਾਂ</string>
     <string name="app_inst_known_source">ਇੰਸਟਾਲ ਕੀਤੀ (%s ਤੋਂ)</string>
-    <string name="app_repository">ਰਿਪੌਜ਼ਿਟਰੀ: %1$s</string>
     <string name="app_recommended_version_installed">ਸੰਸਕਰਣ %1$s (ਰਿਕਮੈਂਡ)</string>
     <string name="app_list_results_hidden_antifeature_settings">ਤੁਹਾਡੀਆਂ ਐਂਟੀਫੀਚਰ ਸੈਟਿੰਗਾਂ ਦੇ ਆਧਾਰ \'ਤੇ ਕੁਝ ਨਤੀਜੇ ਲੁਕਾਏ ਗਏ ਸਨ।</string>
     <string name="app_list__dismiss_downloading_app">ਡਾਊਨਲੋਡ ਰੱਦ ਕੀਤਾ ਗਿਆ</string>
