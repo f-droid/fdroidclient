@@ -597,9 +597,9 @@
     <string name="useDnsCacheSummary">Utilisez des résultats en cache pour minimiser les requêtes DNS.</string>
     <string name="useDnsCache">Utiliser le cache DNS</string>
     <string name="app_details_repository">Dépôt</string>
-    <string name="app_details_repositories">Repositories</string>
+    <string name="app_details_repositories">Dépôt</string>
     <string name="app_details_repository_preferred">(préféré)</string>
-    <string name="app_details_repository_expand">Développer la liste des référentiels</string>
+    <string name="app_details_repository_expand">Développer la liste des dépôts</string>
     <string name="app_list_no_suggested_version">Aucune version recommandée pour l\'installation.</string>
     <string name="repo_disable_warning_button">Désactiver</string>
     <string name="app_details_repository_button_prefer">Préférer ce Dépôt</string>
@@ -612,4 +612,6 @@
     <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.
 \n
 \nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
+    <string name="repo_error_adding_archive">Les dépôts archivés ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste et active l\'archive à cet emplacement.</string>
+    <string name="repo_archive_failed">Dépôt archivé actuellement indisponible</string>
 </resources>
