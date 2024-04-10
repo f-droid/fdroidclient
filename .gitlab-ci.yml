@@ -62,6 +62,10 @@ workflow:
       - app/build/outputs/apk
       - libs/*/build/reports
       - build/reports
+    reports:
+      junit:
+        - app/build/**/TEST-*.xml
+        - libs/*/build/**/TEST-*.xml
     expire_in: 1 week
     when: on_failure
   after_script:
@@ -90,6 +94,9 @@ app assembleFullRelease test:
       - app/build/reports
       - app/build/outputs/apk
       - libs/*/build/reports
+    reports:
+      junit:
+        - app/build/test-results/*/TEST-*.xml
     expire_in: 1 week
     when: always
 
