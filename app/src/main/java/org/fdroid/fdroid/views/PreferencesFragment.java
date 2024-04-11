@@ -66,6 +66,7 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 
@@ -495,7 +496,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     /**
      * If a user specifies they want to fetch updates automatically, then start the download of relevant
      * updates as soon as they enable the feature.
-     * Also, if the user has the priv extension installed then change the label to indicate that it
+     * Also, if auto-update is available then change the label to indicate that it
      * will actually _install_ apps, not just fetch their .apk file automatically.
      */
     private void initAutoFetchUpdatesPreference() {
@@ -506,7 +507,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             return true;
         });
 
-        if (PrivilegedInstaller.isDefault(getActivity())) {
+        if (PrivilegedInstaller.isDefault(getActivity()) || SessionInstallManager.canBeUsed(getContext())) {
             updateAutoDownloadPref.setTitle(R.string.update_auto_install);
             updateAutoDownloadPref.setSummary(R.string.update_auto_install_summary);
         }
