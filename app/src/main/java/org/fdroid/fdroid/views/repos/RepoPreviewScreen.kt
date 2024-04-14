@@ -52,7 +52,6 @@ import org.fdroid.repo.Fetching
 
 @Composable
 fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: () -> Unit) {
-    val isPreview = LocalInspectionMode.current
     val localeList = LocaleListCompat.getDefault()
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -62,7 +61,7 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
             .fillMaxWidth(),
     ) {
         item {
-            RepoPreviewHeader(state, onAddRepo, localeList, isPreview)
+            RepoPreviewHeader(state, onAddRepo, localeList)
         }
         if (state.fetchResult == null || state.fetchResult is IsNewRepository) {
             item {
@@ -82,7 +81,7 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
                 }
             }
             items(items = state.apps, key = { it.packageName }) { app ->
-                RepoPreviewApp(state.repo ?: error("no repo"), app, localeList, isPreview)
+                RepoPreviewApp(state.repo ?: error("no repo"), app, localeList)
             }
         }
     }
@@ -93,8 +92,8 @@ fun RepoPreviewHeader(
     state: Fetching,
     onAddRepo: () -> Unit,
     localeList: LocaleListCompat,
-    isPreview: Boolean,
 ) {
+    val isDevPreview = LocalInspectionMode.current
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier.fillMaxWidth(),
@@ -138,7 +137,7 @@ fun RepoPreviewHeader(
                 color = MaterialTheme.colors.error,
             )
         }
-        val description = if (isPreview) {
+        val description = if (isDevPreview) {
             LoremIpsum(42).values.joinToString(" ")
         } else {
             repo.getDescription(localeList)
@@ -156,8 +155,8 @@ fun LazyItemScope.RepoPreviewApp(
     repo: Repository,
     app: MinimalApp,
     localeList: LocaleListCompat,
-    isPreview: Boolean,
 ) {
+    val isDevPreview = LocalInspectionMode.current
     Card(
         modifier = Modifier
             .animateItemPlacement()
@@ -167,7 +166,7 @@ fun LazyItemScope.RepoPreviewApp(
             horizontalArrangement = spacedBy(8.dp),
             modifier = Modifier.padding(8.dp),
         ) {
-            if (isPreview) Image(
+            if (isDevPreview) Image(
                 painter = rememberDrawablePainter(
                     getDrawable(LocalContext.current.resources, R.drawable.ic_launcher, null)
                 ),
