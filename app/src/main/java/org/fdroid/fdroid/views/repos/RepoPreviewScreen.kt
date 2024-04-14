@@ -125,7 +125,7 @@ fun RepoPreviewHeader(
         if (state.canAdd) FDroidButton(
             text = when (state.fetchResult) {
                 is IsNewRepository -> stringResource(R.string.repo_add_new_title)
-                is IsNewMirror -> stringResource(R.string.repo_add_new_mirror)
+                is IsNewMirror -> stringResource(R.string.repo_add_mirror)
                 else -> error("Unexpected fetch state: ${state.fetchResult}")
             },
             onClick = onAddRepo,
