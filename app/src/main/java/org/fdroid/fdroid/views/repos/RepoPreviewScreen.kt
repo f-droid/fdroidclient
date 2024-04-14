@@ -45,6 +45,7 @@ import org.fdroid.fdroid.Utils.getGlideModel
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.index.v2.FileV2
+import org.fdroid.repo.FetchResult.IsExistingMirror
 import org.fdroid.repo.FetchResult.IsExistingRepository
 import org.fdroid.repo.FetchResult.IsNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
@@ -122,6 +123,10 @@ fun RepoPreviewHeader(
                 )
             }
         }
+        if (state.isMirror) Text(
+            text = stringResource(R.string.repo_mirror_add_info),
+            style = MaterialTheme.typography.body2,
+        )
         if (state.canAdd) FDroidButton(
             text = when (state.fetchResult) {
                 is IsNewRepository -> stringResource(R.string.repo_add_new_title)
@@ -129,14 +134,16 @@ fun RepoPreviewHeader(
                 else -> error("Unexpected fetch state: ${state.fetchResult}")
             },
             onClick = onAddRepo,
-            modifier = Modifier.align(End)
-        ) else if (state.fetchResult is IsExistingRepository) {
-            Text(
-                text = stringResource(R.string.repo_exists),
-                style = MaterialTheme.typography.body1,
-                color = MaterialTheme.colors.error,
-            )
-        }
+            modifier = Modifier.align(End),
+        ) else Text(
+            text = when (state.fetchResult) {
+                is IsExistingRepository -> stringResource(R.string.repo_exists)
+                is IsExistingMirror -> stringResource(R.string.repo_mirror_exists)
+                else -> error("Unexpected fetch state: ${state.fetchResult}")
+            },
+            style = MaterialTheme.typography.body1,
+            color = MaterialTheme.colors.error,
+        )
         val description = if (isDevPreview) {
             LoremIpsum(42).values.joinToString(" ")
         } else {
@@ -233,12 +240,11 @@ fun RepoPreviewScreenFetchingPreview() {
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 fun RepoPreviewScreenNewMirrorPreview() {
-    val address = "https://example.org"
-    val repo = FDroidApp.createSwapRepo(address, "foo bar")
+    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(address, repo, emptyList(), IsNewMirror(0L))
+            Fetching("https://mirror.example.org", repo, emptyList(), IsNewMirror(0L))
         ) {}
     }
 }
@@ -252,6 +258,18 @@ fun RepoPreviewScreenExistingRepoPreview() {
         RepoPreviewScreen(
             PaddingValues(0.dp),
             Fetching(address, repo, emptyList(), IsExistingRepository)
+        ) {}
+    }
+}
+
+@Preview
+@Composable
+fun RepoPreviewScreenExistingMirrorPreview() {
+    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
+    FDroidContent {
+        RepoPreviewScreen(
+            PaddingValues(0.dp),
+            Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror)
         ) {}
     }
 }
