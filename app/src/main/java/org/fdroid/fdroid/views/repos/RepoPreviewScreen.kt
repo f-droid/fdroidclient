@@ -127,14 +127,7 @@ fun RepoPreviewHeader(
                 )
             }
         }
-        if (state.isMirror) Text(
-            text = when (state.fetchResult) {
-                is IsNewRepoAndNewMirror -> stringResource(R.string.repo_and_mirror_add_both_info)
-                is IsNewMirror, IsExistingMirror -> stringResource(R.string.repo_mirror_add_info)
-                else -> error("Unexpected fetch state: ${state.fetchResult}")
-            },
-            style = MaterialTheme.typography.body2,
-        )
+
         if (state.canAdd) FDroidButton(
             text = when (state.fetchResult) {
                 is IsNewRepository -> stringResource(R.string.repo_add_new_title)
@@ -153,6 +146,16 @@ fun RepoPreviewHeader(
             style = MaterialTheme.typography.body1,
             color = MaterialTheme.colors.error,
         )
+
+        if (state.isMirror) Text(
+            text = when (state.fetchResult) {
+                is IsNewRepoAndNewMirror -> stringResource(R.string.repo_and_mirror_add_both_info)
+                is IsNewMirror, IsExistingMirror -> stringResource(R.string.repo_mirror_add_info)
+                else -> error("Unexpected fetch state: ${state.fetchResult}")
+            },
+            style = MaterialTheme.typography.body2,
+        )
+
         val description = if (isDevPreview) {
             LoremIpsum(42).values.joinToString(" ")
         } else {
