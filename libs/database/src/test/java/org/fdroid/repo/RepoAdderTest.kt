@@ -144,7 +144,7 @@ internal class RepoAdderTest {
         // repo not in DB
         every { repoDao.getRepository(any<String>()) } returns null
 
-        expectMinRepoPreview(repoName, FetchResult.IsNewRepository) {
+        expectMinRepoPreview(repoName, FetchResult.IsNewRepoAndNewMirror) {
             repoAdder.fetchRepository(url = url, proxy = null)
         }
 
@@ -786,7 +786,7 @@ internal class RepoAdderTest {
         // repo not in DB
         every { repoDao.getRepository(any<String>()) } returns null
 
-        expectMinRepoPreview(repoName, FetchResult.IsNewRepository) {
+        expectMinRepoPreview(repoName, FetchResult.IsNewRepoAndNewMirror) {
             repoAdder.fetchRepository(url = url, proxy = null)
         }
 

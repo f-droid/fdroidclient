@@ -69,7 +69,11 @@ public class Fetching(
 
     public val isMirror: Boolean = repo != null
             && fetchResult != null
-            && (fetchResult is FetchResult.IsNewMirror || fetchResult is FetchResult.IsExistingMirror)
+            && (
+                fetchResult is FetchResult.IsNewMirror
+                    || fetchResult is FetchResult.IsExistingMirror
+                    || fetchResult is FetchResult.IsNewRepoAndNewMirror
+            )
 
     override fun toString(): String {
         return "Fetching(fetchUrl=$fetchUrl, repo=${repo?.address}, apps=${apps.size}, " +
@@ -98,6 +102,7 @@ public data class AddRepoError(
 
 public sealed class FetchResult {
     public data object IsNewRepository : FetchResult()
+    public data object IsNewRepoAndNewMirror : FetchResult()
     public data class IsNewMirror(internal val existingRepoId: Long) : FetchResult()
 
     public data object IsExistingRepository : FetchResult()
@@ -239,7 +244,13 @@ internal class RepoAdder(
         val existingRepo = repositoryDao.getRepository(cert)
 
         return if (existingRepo == null) {
-            FetchResult.IsNewRepository
+            val isUserMirror = url.trimEnd('/') != repo.address.trimEnd('/')
+                    && repo.mirrors.find { url.trimEnd('/') == it.url.trimEnd('/') } == null
+            if (isUserMirror) {
+                FetchResult.IsNewRepoAndNewMirror
+            } else {
+                FetchResult.IsNewRepository
+            }
         } else if (existingRepo.address.trimEnd('/') == url) {
             FetchResult.IsExistingRepository
         } else {
@@ -273,7 +284,7 @@ internal class RepoAdder(
         val modifiedRepo: Repository = when (fetchResult) {
             is FetchResult.IsExistingRepository -> error("Repo exists: $fetchResult")
             is FetchResult.IsExistingMirror -> error("Mirror exists: $fetchResult")
-            is FetchResult.IsNewRepository -> {
+            is FetchResult.IsNewRepository, is FetchResult.IsNewRepoAndNewMirror -> {
                 // reset the timestamp of the actual repo,
                 // so a following repo update will pick this up
                 val newRepo = NewRepository(
@@ -286,11 +297,12 @@ internal class RepoAdder(
                     password = repo.password,
                 )
                 db.runInTransaction<Repository> {
+                    // add the repo
                     val repoId = repositoryDao.insert(newRepo)
-                    // add user mirror, if URL is not the repo address and not a known mirror
-                    if (state.fetchUrl != repo.address.trimEnd('/') &&
-                        repo.mirrors.find { state.fetchUrl == it.url.trimEnd('/') } == null
-                    ) {
+
+                    // add user mirror
+                    // this can happen if the user was adding a mirror URL, and they originally had neither the repo nor the mirror added
+                    if (fetchResult is FetchResult.IsNewRepoAndNewMirror) {
                         val userMirrors = listOf(state.fetchUrl)
                         repositoryDao.updateUserMirrors(repoId, userMirrors)
                     }
