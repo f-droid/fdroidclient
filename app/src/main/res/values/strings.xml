@@ -212,6 +212,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_enter_url">Enter repository URL manually</string>
     <string name="repo_add_url">Repository address</string>
     <string name="repo_add_fingerprint">Fingerprint (optional)</string>
+    <string name="repo_preview_included_apps">Included apps:</string>
     <string name="repo_exists">This repo was already added.</string>
     <string name="repo_exists_add_fingerprint">%1$s is already setup, this will add new key information.</string>
     <string name="repo_exists_enable">%1$s is already setup, confirm that you want to re-enable it.</string>

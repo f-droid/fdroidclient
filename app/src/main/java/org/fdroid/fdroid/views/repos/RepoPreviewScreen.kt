@@ -71,7 +71,7 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
                     horizontalArrangement = spacedBy(8.dp)
                 ) {
                     Text(
-                        text = "Included apps:",
+                        text = stringResource(R.string.repo_preview_included_apps),
                         style = MaterialTheme.typography.body1,
                     )
                     Text(
