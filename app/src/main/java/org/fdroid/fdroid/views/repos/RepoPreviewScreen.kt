@@ -197,7 +197,8 @@ fun LazyItemScope.RepoPreviewApp(
 @Preview
 @Composable
 fun RepoPreviewScreenFetchingPreview() {
-    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
+    val address = "https://example.org"
+    val repo = FDroidApp.createSwapRepo(address, "foo bar")
     val app1 = object : MinimalApp {
         override val repoId = 0L
         override val packageName = "org.example"
@@ -225,7 +226,7 @@ fun RepoPreviewScreenFetchingPreview() {
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(repo, listOf(app1, app2, app3), IsNewRepository("foo"))
+            Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository)
         ) {}
     }
 }
@@ -233,11 +234,12 @@ fun RepoPreviewScreenFetchingPreview() {
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 fun RepoPreviewScreenNewMirrorPreview() {
-    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
+    val address = "https://example.org"
+    val repo = FDroidApp.createSwapRepo(address, "foo bar")
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(repo, emptyList(), IsNewMirror(0L, "foo"))
+            Fetching(address, repo, emptyList(), IsNewMirror(0L))
         ) {}
     }
 }
@@ -245,8 +247,12 @@ fun RepoPreviewScreenNewMirrorPreview() {
 @Preview
 @Composable
 fun RepoPreviewScreenExistingRepoPreview() {
-    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
+    val address = "https://example.org"
+    val repo = FDroidApp.createSwapRepo(address, "foo bar")
     FDroidContent {
-        RepoPreviewScreen(PaddingValues(0.dp), Fetching(repo, emptyList(), IsExistingRepository)) {}
+        RepoPreviewScreen(
+            PaddingValues(0.dp),
+            Fetching(address, repo, emptyList(), IsExistingRepository)
+        ) {}
     }
 }

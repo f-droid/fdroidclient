@@ -50,6 +50,7 @@ public sealed class AddRepoState
 public object None : AddRepoState()
 
 public class Fetching(
+    public val fetchUrl: String,
     public val repo: Repository?,
     public val apps: List<MinimalApp>,
     public val fetchResult: FetchResult?,
@@ -65,8 +66,8 @@ public class Fetching(
         (fetchResult != null && fetchResult !is FetchResult.IsExistingRepository)
 
     override fun toString(): String {
-        return "Fetching(repo=${repo?.address}, apps=${apps.size}, fetchResult=$fetchResult, " +
-            "done=$done, canAdd=$canAdd)"
+        return "Fetching(fetchUrl=$fetchUrl, repo=${repo?.address}, apps=${apps.size}, " +
+                "fetchResult=$fetchResult, done=$done, canAdd=$canAdd)"
     }
 }
 
@@ -90,13 +91,10 @@ public data class AddRepoError(
 }
 
 public sealed class FetchResult {
-    public data class IsNewRepository(internal val addUrl: String) : FetchResult()
-    public data class IsNewMirror(
-        internal val existingRepoId: Long,
-        internal val newMirrorUrl: String,
-    ) : FetchResult()
+    public data object IsNewRepository : FetchResult()
+    public data class IsNewMirror(internal val existingRepoId: Long) : FetchResult()
 
-    public object IsExistingRepository : FetchResult()
+    public data object IsExistingRepository : FetchResult()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
@@ -147,11 +145,13 @@ internal class RepoAdder(
             addRepoState.value = AddRepoError(IS_ARCHIVE_REPO)
             return
         }
+        val fetchUrl = nUri.uri.toString()
 
         // some plumping to receive the repo preview
         var receivedRepo: Repository? = null
         val apps = ArrayList<AppOverviewItem>()
         var fetchResult: FetchResult? = null
+
         val receiver = object : RepoPreviewReceiver {
             override fun onRepoReceived(repo: Repository) {
                 receivedRepo = repo
@@ -161,17 +161,17 @@ internal class RepoAdder(
                         "Known fingerprint different from given one: ${repo.fingerprint}"
                     )
                 }
-                fetchResult = getFetchResult(nUri.uri.toString(), repo)
-                addRepoState.value = Fetching(receivedRepo, apps.toList(), fetchResult)
+                fetchResult = getFetchResult(fetchUrl, repo)
+                addRepoState.value = Fetching(fetchUrl, receivedRepo, apps.toList(), fetchResult)
             }
 
             override fun onAppReceived(app: AppOverviewItem) {
                 apps.add(app)
-                addRepoState.value = Fetching(receivedRepo, apps.toList(), fetchResult)
+                addRepoState.value = Fetching(fetchUrl, receivedRepo, apps.toList(), fetchResult)
             }
         }
         // set a state early, so the ui can show progress animation
-        addRepoState.value = Fetching(receivedRepo, apps, fetchResult)
+        addRepoState.value = Fetching(fetchUrl, receivedRepo, apps, fetchResult)
 
         // try fetching repo with v2 format first and fallback to v1
         try {
@@ -198,7 +198,7 @@ internal class RepoAdder(
         if (finalRepo == null) {
             addRepoState.value = AddRepoError(INVALID_INDEX)
         } else {
-            addRepoState.value = Fetching(finalRepo, apps, fetchResult, done = true)
+            addRepoState.value = Fetching(fetchUrl, finalRepo, apps, fetchResult, done = true)
         }
     }
 
@@ -230,8 +230,9 @@ internal class RepoAdder(
     private fun getFetchResult(url: String, repo: Repository): FetchResult {
         val cert = repo.certificate ?: error("Certificate was null")
         val existingRepo = repositoryDao.getRepository(cert)
+
         return if (existingRepo == null) {
-            FetchResult.IsNewRepository(url)
+            FetchResult.IsNewRepository
         } else {
             val existingMirror = if (existingRepo.address.trimEnd('/') == url) {
                 url
@@ -240,7 +241,7 @@ internal class RepoAdder(
                     ?: existingRepo.userMirrors.find { it.trimEnd('/') == url }
             }
             if (existingMirror == null) {
-                FetchResult.IsNewMirror(existingRepo.repoId, url)
+                FetchResult.IsNewMirror(existingRepo.repoId)
             } else {
                 FetchResult.IsExistingRepository
             }
@@ -281,10 +282,10 @@ internal class RepoAdder(
                 db.runInTransaction<Repository> {
                     val repoId = repositoryDao.insert(newRepo)
                     // add user mirror, if URL is not the repo address and not a known mirror
-                    if (fetchResult.addUrl != repo.address.trimEnd('/') &&
-                        repo.mirrors.find { fetchResult.addUrl == it.url.trimEnd('/') } == null
+                    if (state.fetchUrl != repo.address.trimEnd('/') &&
+                        repo.mirrors.find {state.fetchUrl == it.url.trimEnd('/') } == null
                     ) {
-                        val userMirrors = listOf(fetchResult.addUrl)
+                        val userMirrors = listOf(state.fetchUrl)
                         repositoryDao.updateUserMirrors(repoId, userMirrors)
                     }
                     repositoryDao.getRepository(repoId) ?: error("New repository not found in DB")
@@ -297,7 +298,7 @@ internal class RepoAdder(
                     val existingRepo = repositoryDao.getRepository(repoId)
                         ?: error("No repo with $repoId")
                     val userMirrors = existingRepo.userMirrors.toMutableList().apply {
-                        add(fetchResult.newMirrorUrl)
+                        add(state.fetchUrl)
                     }
                     repositoryDao.updateUserMirrors(repoId, userMirrors)
                     existingRepo
@@ -319,6 +320,7 @@ internal class RepoAdder(
             if (repo.isArchiveRepo) error { "Repo ${repo.address} is already an archive repo." }
 
             val address = repo.address.replace(Regex("repo/?$"), "archive")
+
             @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
             val receiver = object : RepoPreviewReceiver {
                 override fun onRepoReceived(archiveRepo: Repository) {
