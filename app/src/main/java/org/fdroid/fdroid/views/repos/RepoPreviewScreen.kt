@@ -100,7 +100,7 @@ fun RepoPreviewHeader(
     ) {
         val repo = state.repo ?: error("repo was null")
         Row(
-            horizontalArrangement = spacedBy(8.dp),
+            horizontalArrangement = spacedBy(16.dp),
             verticalAlignment = CenterVertically,
         ) {
             RepoIcon(repo, Modifier.size(48.dp))
