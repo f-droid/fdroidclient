@@ -860,7 +860,7 @@ internal class RepoAdderTest {
 
     private suspend fun expectMinRepoPreview(
         repoName: String?,
-        fetchResult: FetchResult,
+        expectedFetchResult: FetchResult,
         canAdd: Boolean = true,
         block: suspend () -> Unit = {},
     ) {
@@ -874,6 +874,7 @@ internal class RepoAdderTest {
                 block()
             }
 
+            // early empty state
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
             assertNull(state1.repo)
@@ -881,17 +882,19 @@ internal class RepoAdderTest {
             assertFalse(state1.canAdd)
             assertFalse(state1.done)
 
+            // onRepoReceived
             val state2 = awaitItem()
             assertIs<Fetching>(state2)
             val repo = state2.repo ?: fail()
             assertEquals(TestDataMinV2.repo.address, repo.address)
             assertEquals(repoName, repo.getName(localeList))
             val result = state2.fetchResult ?: fail()
-            assertEquals(fetchResult, result)
+            assertEquals(expectedFetchResult, result)
             assertTrue(state2.apps.isEmpty())
             assertEquals(canAdd, state2.canAdd)
             assertFalse(state2.done)
 
+            // onAppReceived
             val state3 = awaitItem()
             assertIs<Fetching>(state3)
             assertEquals(TestDataMinV2.packages.size, state3.apps.size)
@@ -899,6 +902,7 @@ internal class RepoAdderTest {
             assertEquals(canAdd, state3.canAdd)
             assertFalse(state3.done)
 
+            // final result
             val state4 = awaitItem()
             assertIs<Fetching>(state4)
             assertEquals(canAdd, state4.canAdd)
