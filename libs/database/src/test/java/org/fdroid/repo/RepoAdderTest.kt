@@ -359,7 +359,8 @@ internal class RepoAdderTest {
         every { repoDao.getRepository(any<String>()) } returns existingRepo
 
         val expectedFetchResult =
-            if (existingRepo.address == url) FetchResult.IsExistingRepository else FetchResult.IsExistingMirror
+            if (existingRepo.address == url) FetchResult.IsExistingRepository
+            else FetchResult.IsExistingMirror
 
         expectMinRepoPreview(repoName, expectedFetchResult, canAdd = false) {
             repoAdder.fetchRepository(url = downloadUrl, proxy = null)

@@ -62,22 +62,21 @@ public class Fetching(
     /**
      * true if the repository can be added (be it as new [Repository] or new mirror).
      */
-    public val canAdd: Boolean = repo != null
-            && fetchResult != null
-            && fetchResult !is FetchResult.IsExistingRepository
-            && fetchResult !is FetchResult.IsExistingMirror
+    public val canAdd: Boolean = repo != null &&
+        fetchResult != null &&
+        fetchResult !is FetchResult.IsExistingRepository &&
+        fetchResult !is FetchResult.IsExistingMirror
 
-    public val isMirror: Boolean = repo != null
-            && fetchResult != null
-            && (
-                fetchResult is FetchResult.IsNewMirror
-                    || fetchResult is FetchResult.IsExistingMirror
-                    || fetchResult is FetchResult.IsNewRepoAndNewMirror
+    public val isMirror: Boolean = repo != null &&
+        fetchResult != null &&
+        (fetchResult is FetchResult.IsNewMirror ||
+            fetchResult is FetchResult.IsExistingMirror ||
+            fetchResult is FetchResult.IsNewRepoAndNewMirror
             )
 
     override fun toString(): String {
         return "Fetching(fetchUrl=$fetchUrl, repo=${repo?.address}, apps=${apps.size}, " +
-                "fetchResult=$fetchResult, done=$done, canAdd=$canAdd)"
+            "fetchResult=$fetchResult, done=$done, canAdd=$canAdd)"
     }
 }
 
@@ -244,8 +243,8 @@ internal class RepoAdder(
         val existingRepo = repositoryDao.getRepository(cert)
 
         return if (existingRepo == null) {
-            val isUserMirror = url.trimEnd('/') != repo.address.trimEnd('/')
-                    && repo.mirrors.find { url.trimEnd('/') == it.url.trimEnd('/') } == null
+            val isUserMirror = url.trimEnd('/') != repo.address.trimEnd('/') &&
+                repo.mirrors.find { url.trimEnd('/') == it.url.trimEnd('/') } == null
             if (isUserMirror) {
                 FetchResult.IsNewRepoAndNewMirror
             } else {
