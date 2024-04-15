@@ -8,6 +8,12 @@
         android:title="@string/menu_share"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/action_share_apk"
+        android:icon="@drawable/ic_share_with_background"
+        android:title="@string/menu_share_apk"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_ignore_all"
         android:title="@string/menu_ignore_all"
         android:checkable="true"

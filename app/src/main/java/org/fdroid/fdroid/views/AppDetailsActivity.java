@@ -244,6 +244,12 @@ public class AppDetailsActivity extends AppCompatActivity
         // don't show menu before appPrefs haven't been loaded
         if (prefs == null || app == null) return false;
 
+        MenuItem share = menu.findItem(R.id.action_share);
+        share.setVisible(app.getShareUri(this) != null);
+
+        MenuItem shareApk = menu.findItem(R.id.action_share_apk);
+        shareApk.setVisible(app.isInstalled(getApplicationContext()));
+
         MenuItem itemIgnoreAll = menu.findItem(R.id.action_ignore_all);
         itemIgnoreAll.setChecked(prefs.getIgnoreAllUpdates());
         MenuItem itemIgnoreThis = menu.findItem(R.id.action_ignore_this);
@@ -282,41 +288,24 @@ public class AppDetailsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_share) {
-            String extraText = String.format("%s (%s)\nhttps://f-droid.org/packages/%s/",
-                    app.name, app.summary, app.packageName);
-
             Intent uriIntent = new Intent(Intent.ACTION_SEND);
-            Uri shareUri = app.getShareUri(this);
-            if (shareUri != null) uriIntent.setData(shareUri);
+            Uri shareUri = ObjectsCompat.requireNonNull(app.getShareUri(this));
+            uriIntent.setType("text/plain");
+            uriIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
             uriIntent.putExtra(Intent.EXTRA_TITLE, app.name);
+            uriIntent.putExtra(Intent.EXTRA_TEXT, shareUri.toString());
 
-            Intent textIntent = new Intent(Intent.ACTION_SEND);
-            textIntent.setType("text/plain");
-            textIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-            textIntent.putExtra(Intent.EXTRA_TITLE, app.name);
-            textIntent.putExtra(Intent.EXTRA_TEXT, extraText);
-
-            if (app.isInstalled(getApplicationContext())) {
-                // allow user to share APK if app is installed
-                Intent streamIntent = PublicSourceDirProvider.getApkShareIntent(this, app.packageName);
-                streamIntent.putExtra(Intent.EXTRA_SUBJECT, "Shared from F-Droid: " + app.name + ".apk");
-                streamIntent.putExtra(Intent.EXTRA_TITLE, app.name + ".apk");
-                streamIntent.putExtra(Intent.EXTRA_TEXT, extraText);
-
-                Intent chooserIntent = Intent.createChooser(streamIntent, getString(R.string.menu_share));
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{
-                        textIntent,
-                        uriIntent,
-                });
-                startActivity(chooserIntent);
-            } else {
-                Intent chooserIntent = Intent.createChooser(textIntent, getString(R.string.menu_share));
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{
-                        uriIntent,
-                });
-                startActivity(chooserIntent);
-            }
+            Intent chooserIntent = Intent.createChooser(uriIntent, getString(R.string.menu_share));
+            startActivity(chooserIntent);
             return true;
+        } else if (item.getItemId() == R.id.action_share_apk) {
+            // allow user to share APK if app is installed
+            Intent streamIntent = PublicSourceDirProvider.getApkShareIntent(this, app.packageName);
+            streamIntent.putExtra(Intent.EXTRA_SUBJECT, "Shared from F-Droid: " + app.name + ".apk");
+            streamIntent.putExtra(Intent.EXTRA_TITLE, app.name + ".apk");
+
+            Intent chooserIntent = Intent.createChooser(streamIntent, getString(R.string.menu_share));
+            startActivity(chooserIntent);
         } else if (item.getItemId() == R.id.action_ignore_all) {
             model.ignoreAllUpdates();
             return true;
