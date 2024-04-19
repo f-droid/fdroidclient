@@ -62,6 +62,11 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ENFORCE_UPDATE_OWNERSHIP" />
 
+    <!-- Permission used to externally trigger repository updates -->
+    <permission
+        android:name="org.fdroid.permission.UPDATE_REPOS"
+        android:protectionLevel="signature|privileged" />
+
     <application
         android:name=".FDroidApp"
         android:allowBackup="true"
@@ -482,6 +487,13 @@
             android:name=".NotificationBroadcastReceiver"
             android:exported="false">
             <!-- Doesn't require an intent-filter because it is explicitly invoked via Intent.setClass() -->
+        </receiver>
+        <receiver android:name=".receiver.RepoUpdateReceiver"
+            android:exported="true"
+            android:permission="org.fdroid.permission.UPDATE_REPOS">
+            <intent-filter>
+                <action android:name="org.fdroid.action.UPDATE_REPOS" />
+            </intent-filter>
         </receiver>
 
         <service
