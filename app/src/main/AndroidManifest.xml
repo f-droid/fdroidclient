@@ -500,7 +500,11 @@
             android:name=".installer.InstallerService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
+        <!-- needed for declaring foregroundServiceType for WorkManager -->
+        <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:foregroundServiceType="dataSync"
+            tools:node="merge" />
         <service
             android:name=".DeleteCacheService"
             android:exported="false"
