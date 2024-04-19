@@ -19,11 +19,11 @@ import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.UpdateService
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.nearby.SwapService
 import org.fdroid.fdroid.views.apps.AppListActivity
 import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
+import org.fdroid.fdroid.work.RepoUpdateWorker
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
@@ -42,7 +42,7 @@ class AddRepoActivity : AppCompatActivity() {
                 repoManager.addRepoState.collect { state ->
                     if (state is Added) {
                         // update newly added repo
-                        UpdateService.updateRepoNow(applicationContext, state.repo.address)
+                        RepoUpdateWorker.updateNow(applicationContext, state.repo.repoId)
                         // show repo list and close this activity
                         val i = Intent(this@AddRepoActivity, AppListActivity::class.java).apply {
                             putExtra(EXTRA_REPO_ID, state.repo.repoId)

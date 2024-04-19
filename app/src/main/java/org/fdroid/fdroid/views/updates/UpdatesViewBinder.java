@@ -1,16 +1,12 @@
 package org.fdroid.fdroid.views.updates;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +14,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.RepoUpdateManager;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 public class UpdatesViewBinder {
 
@@ -30,6 +28,7 @@ public class UpdatesViewBinder {
     private final ImageView emptyImage;
     private final CircularProgressIndicator emptyUpdatingProgress;
     private final AppCompatActivity activity;
+    private final LiveData<Boolean> isUpdatingLiveData;
 
     public UpdatesViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -54,9 +53,11 @@ public class UpdatesViewBinder {
         Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(() -> {
             swipeToRefresh.setRefreshing(false);
-            UpdateService.updateNow(activity);
+            RepoUpdateWorker.updateNow(activity);
         });
 
+        RepoUpdateManager repoUpdateManager = FDroidApp.getRepoUpdateManager(activity);
+        isUpdatingLiveData = repoUpdateManager.isUpdatingLiveData();
     }
 
     public void bind() {
@@ -71,14 +72,13 @@ public class UpdatesViewBinder {
         if (adapter.getItemCount() == 0) {
             list.setVisibility(View.GONE);
             emptyImage.setVisibility(View.VISIBLE);
-            setUpEmptyUpdatingProgress(UpdateService.isUpdating());
-            LocalBroadcastManager.getInstance(activity).registerReceiver(updateServiceStatusReceiver,
-                    new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+            setUpEmptyUpdatingProgress(FDroidApp.getRepoUpdateManager(activity).isUpdating().getValue());
+            isUpdatingLiveData.observe(activity, this::setUpEmptyUpdatingProgress);
         } else {
             list.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
             emptyImage.setVisibility(View.GONE);
-            LocalBroadcastManager.getInstance(activity).unregisterReceiver(updateServiceStatusReceiver);
+            isUpdatingLiveData.removeObserver(this::setUpEmptyUpdatingProgress);
             emptyUpdatingProgress.setVisibility(View.GONE);
         }
     }
@@ -98,15 +98,6 @@ public class UpdatesViewBinder {
         @Override
         public void onItemRangeRemoved(int positionStart, int itemCount) {
             updateEmptyState();
-        }
-    };
-
-    private final BroadcastReceiver updateServiceStatusReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Anything other than a STATUS_INFO broadcast signifies that it was complete
-            boolean isUpdating = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, 0) == UpdateService.STATUS_INFO;
-            setUpEmptyUpdatingProgress(isUpdating);
         }
     };
 

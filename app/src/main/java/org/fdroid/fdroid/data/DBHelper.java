@@ -36,8 +36,8 @@ import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.database.InitialRepository;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -107,10 +107,11 @@ public class DBHelper {
             migrator.runMigrations(context, db);
             migrator.removeOldDb(context);
             // force update on UiThread in case we need to show Toasts
-            new Handler(Looper.getMainLooper()).post(() -> UpdateService.forceUpdateRepo(context));
+            DBHelper.resetTransient(context);
+            new Handler(Looper.getMainLooper()).post(() -> RepoUpdateWorker.updateNow(context));
         } else if (hasEnabledRepo) {
             // update repos on the UiThread after pre-populating them
-            new Handler(Looper.getMainLooper()).post(() -> UpdateService.updateNow(context));
+            new Handler(Looper.getMainLooper()).post(() -> RepoUpdateWorker.updateNow(context));
         }
     }
 

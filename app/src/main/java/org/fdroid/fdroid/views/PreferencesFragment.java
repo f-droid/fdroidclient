@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.util.ObjectsCompat;
@@ -58,6 +59,7 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
@@ -69,6 +71,7 @@ import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
@@ -502,7 +505,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private void initAutoFetchUpdatesPreference() {
         updateAutoDownloadPref.setOnPreferenceChangeListener((preference, newValue) -> {
             if (newValue instanceof Boolean && (boolean) newValue) {
-                UpdateService.autoDownloadUpdates(getActivity());
+                AppUpdateStatusManager.getInstance(getActivity()).checkForUpdatesAndInstall();
             }
             return true;
         });
@@ -580,12 +583,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         FDroidApp.configureProxy(Preferences.get());
-
-        if (updateIntervalPrevious != updateIntervalSeekBar.getValue()) {
-            UpdateService.schedule(getActivity());
-        } else if (overWifiPrevious != overWifiSeekBar.getValue() || overDataPrevious != overDataSeekBar.getValue()) {
-            UpdateService.schedule(getActivity());
-        }
     }
 
     @Override
@@ -617,6 +614,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             }
             glideRequestManager.applyDefaultRequestOptions(new RequestOptions()
                     .onlyRetrieveFromCache(Preferences.get().isBackgroundDownloadAllowed()));
+            RepoUpdateWorker.scheduleOrCancel(requireContext());
+        } else if (Preferences.PREF_UPDATE_INTERVAL.equals(key)) {
+            RepoUpdateWorker.scheduleOrCancel(requireContext());
         }
     }
 }

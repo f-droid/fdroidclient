@@ -27,7 +27,6 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
@@ -88,7 +87,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(() -> {
             swipeToRefresh.setRefreshing(false);
-            UpdateService.updateNow(activity);
+            Utils.runOffUiThread(() -> FDroidApp.getRepoUpdateManager(activity).updateRepos());
         });
 
         FloatingActionButton searchFab = latestView.findViewById(R.id.fab_search);
@@ -165,7 +164,8 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
     }
 
     private void explainEmptyStateToUser() {
-        if (Preferences.get().isIndexNeverUpdated() && UpdateService.isUpdating()) {
+        if (Preferences.get().isIndexNeverUpdated() &&
+                FDroidApp.getRepoUpdateManager(activity).isUpdating().getValue()) {
             if (progressBar != null) {
                 return;
             }
@@ -175,10 +175,6 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
             linearLayout.addView(progressBar);
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.GONE);
-            return;
-        }
-        if (UpdateService.isUpdatingForced()) {
-            emptyState.setText(R.string.latest__empty_state__upgrading);
             return;
         }
 

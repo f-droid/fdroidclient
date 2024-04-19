@@ -74,6 +74,7 @@ import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
 import org.fdroid.fdroid.work.CleanCacheWorker;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 import org.fdroid.index.IndexFormatVersion;
 import org.fdroid.index.RepoManager;
 import org.fdroid.index.RepoUriBuilder;
@@ -105,6 +106,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     private static FDroidApp instance;
     @Nullable
     private static RepoManager repoManager;
+    @Nullable
+    private static RepoUpdateManager repoUpdateManager;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -360,7 +363,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         // force setting network state to ensure it is set before UpdateService checks it
         networkState = ConnectivityMonitorService.getNetworkState(this);
         ConnectivityMonitorService.registerAndStart(this);
-        UpdateService.schedule(getApplicationContext());
+        RepoUpdateWorker.scheduleOrCancel(getApplicationContext());
 
         FDroidApp.initWifiSettings();
         WifiStateChangeService.start(this, null);
@@ -384,7 +387,10 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         // if the underlying OS version has changed, then fully rebuild the database
         SharedPreferences atStartTime = getAtStartTimeSharedPreferences();
         if (Build.VERSION.SDK_INT != atStartTime.getInt("build-version", Build.VERSION.SDK_INT)) {
-            UpdateService.forceUpdateRepo(this);
+            Utils.runOffUiThread(() -> {
+                DBHelper.resetTransient(getApplicationContext());
+                return true;
+            }, result -> RepoUpdateWorker.updateNow(getApplicationContext()));
         }
         atStartTime.edit().putInt("build-version", Build.VERSION.SDK_INT).apply();
 
@@ -548,6 +554,13 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                     DownloaderFactory.HTTP_MANAGER, repoUriBuilder);
         }
         return repoManager;
+    }
+
+    public static RepoUpdateManager getRepoUpdateManager(Context context) {
+        if (repoUpdateManager == null) {
+            repoUpdateManager = new RepoUpdateManager(context, DBHelper.getDb(context), getRepoManager(context));
+        }
+        return repoUpdateManager;
     }
 
     /**

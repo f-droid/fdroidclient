@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,16 +12,19 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.lifecycle.Observer;
 import androidx.preference.PreferenceManager;
 
 import org.fdroid.database.Repository;
+import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.RepoUpdateManager;
+import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,12 +48,13 @@ import java.util.List;
  */
 public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
 
-    private int updateServiceStatus = UpdateService.STATUS_COMPLETE_WITH_CHANGES;
+    private boolean isUpdatingRepos;
     private int networkState = ConnectivityMonitorService.FLAG_NET_NO_LIMIT;
     private int overDataState;
     private int overWiFiState;
 
     private final SharedPreferences preferences;
+    private final RepoUpdateManager repoUpdateManager;
 
     public StatusBanner(Context context) {
         this(context, null);
@@ -68,6 +73,8 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         setTextColor(0xFFFFFFFF);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        repoUpdateManager = FDroidApp.getRepoUpdateManager(context);
+        isUpdatingRepos = repoUpdateManager.isUpdating().getValue();
     }
 
     @Override
@@ -78,11 +85,8 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         context.registerReceiver(onNetworkStateChanged,
                 new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
-        if (UpdateService.isUpdating()) {
-            updateServiceStatus = UpdateService.STATUS_INFO;
-        }
-        LocalBroadcastManager.getInstance(context).registerReceiver(onRepoFeedback,
-                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+        isUpdatingRepos = repoUpdateManager.isUpdating().getValue();
+        repoUpdateManager.isUpdatingLiveData().observeForever(onRepoUpdateChanged);
 
         overDataState = Preferences.get().getOverData();
         overWiFiState = Preferences.get().getOverWifi();
@@ -95,7 +99,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         Context context = getContext();
-        LocalBroadcastManager.getInstance(context).unregisterReceiver(onRepoFeedback);
+        repoUpdateManager.isUpdatingLiveData().removeObserver(onRepoUpdateChanged);
         context.unregisterReceiver(onNetworkStateChanged);
         preferences.unregisterOnSharedPreferenceChangeListener(dataWifiChangeListener);
     }
@@ -109,7 +113,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
      * device, and users are generally not aware of them.
      */
     private void setBannerTextAndVisibility() {
-        if (updateServiceStatus == UpdateService.STATUS_INFO) {
+        if (isUpdatingRepos) {
             setText(R.string.banner_updating_repositories);
             setVisibility(View.VISIBLE);
         } else if (networkState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE
@@ -119,7 +123,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
         } else if (overDataState == Preferences.OVER_NETWORK_NEVER
                 && overWiFiState == Preferences.OVER_NETWORK_NEVER) {
             List<Repository> repos = FDroidApp.getRepoManager(getContext()).getRepositories();
-            List<Repository> localRepos = UpdateService.getLocalRepos(repos);
+            List<Repository> localRepos = getLocalRepos(repos);
             boolean hasLocalNonSystemRepos = true;
             final List<String> systemPartitions = Arrays.asList("odm", "oem", "product", "system", "vendor");
             for (Repository repo : localRepos) {
@@ -143,14 +147,38 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
     }
 
     /**
-     * Anything other than a {@link UpdateService#STATUS_INFO} broadcast
-     * signifies that it was complete (and out banner should be removed).
+     * Return the repos in the {@code repos} {@link List} that have either a
+     * local canonical URL or a local mirror URL.  These are repos that can be
+     * updated and used without using the Internet.
      */
-    private final BroadcastReceiver onRepoFeedback = new BroadcastReceiver() {
+    public static List<Repository> getLocalRepos(List<Repository> repos) {
+        ArrayList<Repository> localRepos = new ArrayList<>();
+        for (Repository repo : repos) {
+            if (isLocalRepoAddress(repo.getAddress())) {
+                localRepos.add(repo);
+            } else {
+                for (Mirror mirror : repo.getMirrors()) {
+                    if (!mirror.isHttp()) {
+                        localRepos.add(repo);
+                        break;
+                    }
+                }
+            }
+        }
+        return localRepos;
+    }
+
+    private static boolean isLocalRepoAddress(String address) {
+        return address != null &&
+                (address.startsWith(BluetoothDownloader.SCHEME)
+                        || address.startsWith(ContentResolver.SCHEME_CONTENT)
+                        || address.startsWith(ContentResolver.SCHEME_FILE));
+    }
+
+    private final Observer<Boolean> onRepoUpdateChanged = new Observer<>() {
         @Override
-        public void onReceive(Context context, Intent intent) {
-            updateServiceStatus = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE,
-                    UpdateService.STATUS_COMPLETE_WITH_CHANGES);
+        public void onChanged(Boolean isUpdating) {
+            isUpdatingRepos = isUpdating;
             setBannerTextAndVisibility();
         }
     };

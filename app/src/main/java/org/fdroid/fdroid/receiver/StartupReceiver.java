@@ -23,8 +23,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 public class StartupReceiver extends BroadcastReceiver {
     private static final String TAG = "StartupReceiver";
@@ -33,7 +33,7 @@ public class StartupReceiver extends BroadcastReceiver {
     public void onReceive(Context ctx, Intent intent) {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.e(TAG, "Received ACTION_BOOT_COMPLETED intent, scheduling update!!!");
-            UpdateService.schedule(ctx);
+            RepoUpdateWorker.scheduleOrCancel(ctx);
         } else {
             Utils.debugLog(TAG, "received unsupported Intent " + intent);
         }

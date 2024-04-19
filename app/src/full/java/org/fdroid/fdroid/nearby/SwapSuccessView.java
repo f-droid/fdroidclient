@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.AttributeSet;
@@ -29,7 +28,6 @@ import com.google.android.material.progressindicator.LinearProgressIndicator;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.CompatibilityChecker;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -86,9 +84,6 @@ public class SwapSuccessView extends SwapView {
         listView.setAdapter(adapter);
 
         getActivity().getSwapService().getIndex().observe(getActivity(), this::onIndexReceived);
-
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-                pollForUpdatesReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
     }
 
     private void onIndexReceived(IndexV1 indexV1) {
@@ -137,17 +132,6 @@ public class SwapSuccessView extends SwapView {
             apks.put(app.packageName, apk);
         }
         adapter.setApps(apps, apks);
-    }
-
-    /**
-     * Remove relevant listeners/receivers/etc so that they do not receive and process events
-     * when this view is not in use.
-     */
-    @Override
-    public void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
     }
 
     private class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.ViewHolder> {
@@ -393,15 +377,4 @@ public class SwapSuccessView extends SwapView {
             notifyDataSetChanged();
         }
     }
-
-    private final BroadcastReceiver pollForUpdatesReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-            if (statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
-                Utils.debugLog(TAG, "Swap repo has updates, notifying the list adapter.");
-                getActivity().runOnUiThread(() -> adapter.notifyDataSetChanged());
-            }
-        }
-    };
 }
