@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,8 +25,10 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
+import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
+import org.fdroid.index.RepoManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -207,6 +210,7 @@ public final class AppUpdateStatusManager {
 
     private final Context context;
     private final LocalBroadcastManager localBroadcastManager;
+    private final RepoManager repoManager;
     private final DbUpdateChecker updateChecker;
     private final HashMap<String, AppUpdateStatus> appMapping = new HashMap<>();
     @Nullable
@@ -216,6 +220,7 @@ public final class AppUpdateStatusManager {
     private AppUpdateStatusManager(Context context) {
         this.context = context;
         localBroadcastManager = LocalBroadcastManager.getInstance(context.getApplicationContext());
+        repoManager = FDroidApp.getRepoManager(context);
         updateChecker = new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
         // let's check number of updatable apps at the beginning, so the badge can show the right number
         // then we can also use the populated entries in other places to show updates
@@ -373,6 +378,14 @@ public final class AppUpdateStatusManager {
         disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableApps);
     }
 
+    public void checkForUpdatesAndInstall() {
+        if (disposable != null) disposable.dispose();
+        disposable = Utils.runOffUiThread(this::getUpdatableApps, apps -> {
+            addUpdatableApps(apps);
+            downloadUpdates(apps);
+        });
+    }
+
     @WorkerThread
     private List<UpdatableApp> getUpdatableApps() {
         List<String> releaseChannels = Preferences.get().getBackendReleaseChannels();
@@ -384,12 +397,36 @@ public final class AppUpdateStatusManager {
         if (canUpdate.size() > 0) {
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
-                Repository repo = FDroidApp.getRepoManager(context).getRepository(app.getUpdate().getRepoId());
+                Repository repo = repoManager.getRepository(app.getUpdate().getRepoId());
                 addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
             }
             endBatchUpdates(Status.UpdateAvailable);
         }
         setNumUpdatableApps(canUpdate.size());
+    }
+
+    /**
+     * Queues all apps needing update.
+     * If this app itself (e.g. F-Droid) needs to be updated, it is queued last.
+     */
+    private void downloadUpdates(List<UpdatableApp> apps) {
+        String ourPackageName = context.getPackageName();
+        App updateLastApp = null;
+        Apk updateLastApk = null;
+        for (UpdatableApp app : apps) {
+            Repository repo = repoManager.getRepository(app.getUpdate().getRepoId());
+            if (repo == null) continue; // repo could have been removed in the meantime
+            // update our own APK at the end
+            if (TextUtils.equals(ourPackageName, app.getUpdate().getPackageName())) {
+                updateLastApp = new App(app);
+                updateLastApk = new Apk(app.getUpdate(), repo);
+                continue;
+            }
+            InstallManagerService.queue(context, new App(app), new Apk(app.getUpdate(), repo));
+        }
+        if (updateLastApp != null) {
+            InstallManagerService.queue(context, updateLastApp, updateLastApk);
+        }
     }
 
     private void addUpdatableAppsNoNotify(List<UpdatableApp> canUpdate) {
@@ -398,7 +435,7 @@ public final class AppUpdateStatusManager {
             try {
                 int num = 0;
                 for (UpdatableApp app : canUpdate) {
-                    Repository repo = FDroidApp.getRepoManager(context).getRepository(app.getUpdate().getRepoId());
+                    Repository repo = repoManager.getRepository(app.getUpdate().getRepoId());
                     if (repo == null) continue; // if repo is gone, it was just deleted, so skip app
                     addApk(new App(app), new Apk(app.getUpdate(), repo), Status.UpdateAvailable, null);
                     num++;
