@@ -203,19 +203,21 @@ public class RepoManager @JvmOverloads constructor(
      * Note that this can throw all kinds of exceptions,
      * especially when the given [repository] does not have a (working) archive repository.
      * You should catch those and update your UI accordingly.
+     *
+     * @return The ID of the archive repository, if one exists, null otherwise.
      */
     @WorkerThread
     public suspend fun setArchiveRepoEnabled(
         repository: Repository,
         enabled: Boolean,
         proxy: Proxy? = null,
-    ) {
-        val cert = repository.certificate ?: error { "$repository has no cert" }
-        val archiveRepoId = repositoryDao.getArchiveRepoId(cert)
+    ): Long? {
+        val cert = repository.certificate
+        var archiveRepoId = repositoryDao.getArchiveRepoId(cert)
         if (enabled) {
             if (archiveRepoId == null) {
                 try {
-                    repoAdder.addArchiveRepo(repository, proxy)
+                    archiveRepoId = repoAdder.addArchiveRepo(repository, proxy)
                 } catch (e: CancellationException) {
                     if (e.message != "expected") throw e
                 }
@@ -225,6 +227,7 @@ public class RepoManager @JvmOverloads constructor(
         } else if (archiveRepoId != null) {
             repositoryDao.setRepositoryEnabled(archiveRepoId, false)
         }
+        return archiveRepoId
     }
 
     /**
