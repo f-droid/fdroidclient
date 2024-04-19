@@ -497,14 +497,6 @@
         </receiver>
 
         <service
-            android:name=".UpdateService"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service
-            android:name=".UpdateJobService"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service
             android:name=".net.DownloaderService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
