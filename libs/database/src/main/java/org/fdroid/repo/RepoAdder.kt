@@ -104,8 +104,8 @@ public sealed class FetchResult {
     public data object IsNewRepoAndNewMirror : FetchResult()
     public data class IsNewMirror(internal val existingRepoId: Long) : FetchResult()
 
-    public data object IsExistingRepository : FetchResult()
-    public data object IsExistingMirror : FetchResult()
+    public data class IsExistingRepository(val existingRepoId: Long) : FetchResult()
+    public data class IsExistingMirror(val existingRepoId: Long) : FetchResult()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
@@ -251,14 +251,14 @@ internal class RepoAdder(
                 FetchResult.IsNewRepository
             }
         } else if (existingRepo.address.trimEnd('/') == url) {
-            FetchResult.IsExistingRepository
+            FetchResult.IsExistingRepository(existingRepo.repoId)
         } else {
             val existingMirror = existingRepo.mirrors.find { it.url.trimEnd('/') == url }
                 ?: existingRepo.userMirrors.find { it.trimEnd('/') == url }
             if (existingMirror == null) {
                 FetchResult.IsNewMirror(existingRepo.repoId)
             } else {
-                FetchResult.IsExistingMirror
+                FetchResult.IsExistingMirror(existingRepo.repoId)
             }
         }
     }

@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.repos
 
-import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -120,12 +119,17 @@ fun RepoPreviewHeader(
         is IsExistingRepository, is IsExistingMirror -> stringResource(R.string.repo_view_repo)
         else -> error("Unexpected fetch state: ${state.fetchResult}")
     }
-    val buttonAction: () -> Unit = when (state.fetchResult) {
+    val buttonAction: () -> Unit = when (val res = state.fetchResult) {
         is IsNewRepository, is IsNewRepoAndNewMirror, is IsNewMirror -> onAddRepo
-        is IsExistingRepository, is IsExistingMirror -> { ->
-            val intent = Intent(context, RepoDetailsActivity::class.java)
-            intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.repoId)
-            context.startActivity(intent)
+        // unfortunately we need to duplicate these functions
+        is IsExistingRepository -> { ->
+            val repoId = res.existingRepoId
+            RepoDetailsActivity.launch(context, repoId)
+        }
+
+        is IsExistingMirror -> { ->
+            val repoId = res.existingRepoId
+            RepoDetailsActivity.launch(context, repoId)
         }
 
         else -> error("Unexpected fetch state: ${state.fetchResult}")
@@ -319,7 +323,7 @@ fun RepoPreviewScreenExistingRepoPreview() {
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(address, repo, emptyList(), IsExistingRepository)
+            Fetching(address, repo, emptyList(), IsExistingRepository(0L))
         ) {}
     }
 }
@@ -331,7 +335,7 @@ fun RepoPreviewScreenExistingMirrorPreview() {
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror)
+            Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror(0L))
         ) {}
     }
 }
