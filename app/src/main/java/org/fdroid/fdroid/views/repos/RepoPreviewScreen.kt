@@ -96,7 +96,7 @@ fun RepoPreviewScreen(
                 }
             }
             items(items = state.apps, key = { it.packageName }) { app ->
-                RepoPreviewApp(state.repo ?: error("no repo"), app, localeList)
+                RepoPreviewApp(state.receivedRepo ?: error("no repo"), app, localeList)
             }
         }
     }
@@ -108,7 +108,7 @@ fun RepoPreviewHeader(
     onAddRepo: () -> Unit,
     localeList: LocaleListCompat,
 ) {
-    val repo = state.repo ?: error("repo was null")
+    val repo = state.receivedRepo ?: error("repo was null")
     val isDevPreview = LocalInspectionMode.current
     val context = LocalContext.current
 

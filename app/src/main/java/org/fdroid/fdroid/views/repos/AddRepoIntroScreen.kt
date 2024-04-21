@@ -110,7 +110,7 @@ fun AddRepoIntroScreen(
         when (state) {
             None -> AddRepoIntroContent(paddingValues, onFetchRepo)
             is Fetching -> {
-                if (state.repo == null) {
+                if (state.receivedRepo == null) {
                     RepoProgressScreen(paddingValues, stringResource(R.string.repo_state_fetching))
                 } else {
                     RepoPreviewScreen(paddingValues, state, onAddRepo)

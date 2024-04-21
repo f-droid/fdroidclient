@@ -394,7 +394,7 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
@@ -447,7 +447,7 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
@@ -483,7 +483,7 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
@@ -564,7 +564,7 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
@@ -627,13 +627,13 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
             val state2 = awaitItem()
             assertIs<Fetching>(state2)
-            assertEquals(repoAddress, state2.repo?.address)
+            assertEquals(repoAddress, state2.receivedRepo?.address)
             assertTrue(state2.canAdd)
             assertFalse(state2.done)
 
@@ -689,7 +689,7 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
@@ -734,7 +734,7 @@ internal class RepoAdderTest {
 
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
             assertFalse(state1.canAdd)
 
@@ -879,7 +879,7 @@ internal class RepoAdderTest {
             // early empty state
             val state1 = awaitItem()
             assertIs<Fetching>(state1)
-            assertNull(state1.repo)
+            assertNull(state1.receivedRepo)
             assertEquals(emptyList(), state1.apps)
             assertFalse(state1.canAdd)
             assertFalse(state1.done)
@@ -887,7 +887,7 @@ internal class RepoAdderTest {
             // onRepoReceived
             val state2 = awaitItem()
             assertIs<Fetching>(state2)
-            val repo = state2.repo ?: fail()
+            val repo = state2.receivedRepo ?: fail()
             assertEquals(TestDataMinV2.repo.address, repo.address)
             assertEquals(repoName, repo.getName(localeList))
             val result = state2.fetchResult ?: fail()

@@ -51,7 +51,7 @@ public object None : AddRepoState()
 
 public class Fetching(
     public val fetchUrl: String,
-    public val repo: Repository?,
+    public val receivedRepo: Repository?,
     public val apps: List<MinimalApp>,
     public val fetchResult: FetchResult?,
     /**
@@ -62,12 +62,12 @@ public class Fetching(
     /**
      * true if the repository can be added (be it as new [Repository] or new mirror).
      */
-    public val canAdd: Boolean = repo != null &&
+    public val canAdd: Boolean = receivedRepo != null &&
         fetchResult != null &&
         fetchResult !is FetchResult.IsExistingRepository &&
         fetchResult !is FetchResult.IsExistingMirror
 
-    public val isMirror: Boolean = repo != null &&
+    public val isMirror: Boolean = receivedRepo != null &&
         fetchResult != null &&
         (fetchResult is FetchResult.IsNewMirror ||
             fetchResult is FetchResult.IsExistingMirror ||
@@ -75,7 +75,7 @@ public class Fetching(
             )
 
     override fun toString(): String {
-        return "Fetching(fetchUrl=$fetchUrl, repo=${repo?.address}, apps=${apps.size}, " +
+        return "Fetching(fetchUrl=$fetchUrl, repo=${receivedRepo?.address}, apps=${apps.size}, " +
             "fetchResult=$fetchResult, done=$done, canAdd=$canAdd)"
     }
 }
@@ -276,7 +276,8 @@ internal class RepoAdder(
             ?: throw IllegalStateException("Unexpected state: ${addRepoState.value}")
         addRepoState.value = Adding
 
-        val repo = state.repo ?: throw IllegalStateException("No repo: ${addRepoState.value}")
+        val repo = state.receivedRepo
+            ?: throw IllegalStateException("No repo: ${addRepoState.value}")
         val fetchResult = state.fetchResult
             ?: throw IllegalStateException("No fetchResult: ${addRepoState.value}")
 
