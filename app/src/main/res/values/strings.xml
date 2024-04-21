@@ -184,7 +184,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="repo_add_title">Add new repository</string>
     <string name="repo_add_new_title">Add repository</string>
     <string name="repo_add_add">Add</string>
     <string name="repo_add_mirror">Add mirror</string>

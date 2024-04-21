@@ -68,6 +68,7 @@ import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoState
 import org.fdroid.repo.Added
 import org.fdroid.repo.Adding
+import org.fdroid.repo.FetchResult
 import org.fdroid.repo.Fetching
 import org.fdroid.repo.None
 
@@ -78,6 +79,17 @@ fun AddRepoIntroScreen(
     onAddRepo: () -> Unit,
     onBackClicked: () -> Unit,
 ) {
+    val appBarTitle = if (state is Fetching) {
+        when (state.fetchResult) {
+            is FetchResult.IsNewMirror,
+            is FetchResult.IsExistingMirror -> stringResource(R.string.repo_add_mirror)
+
+            else -> stringResource(R.string.repo_add_new_title)
+        }
+    } else {
+        stringResource(R.string.repo_add_new_title)
+    }
+
     Scaffold(topBar = {
         TopAppBar(
             elevation = 4.dp,
@@ -89,7 +101,7 @@ fun AddRepoIntroScreen(
             },
             title = {
                 Text(
-                    text = stringResource(R.string.repo_add_title),
+                    text = appBarTitle,
                     modifier = Modifier.alpha(ContentAlpha.high),
                 )
             },
