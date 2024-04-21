@@ -1,13 +1,17 @@
 package org.fdroid.fdroid.views.repos
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,8 +30,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
@@ -53,7 +59,11 @@ import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.repo.Fetching
 
 @Composable
-fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: () -> Unit) {
+fun RepoPreviewScreen(
+    paddingValues: PaddingValues,
+    state: Fetching,
+    onAddRepo: () -> Unit,
+) {
     val localeList = LocaleListCompat.getDefault()
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -72,7 +82,8 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
             item {
                 Row(
                     verticalAlignment = CenterVertically,
-                    horizontalArrangement = spacedBy(8.dp)
+                    horizontalArrangement = spacedBy(8.dp),
+                    modifier = Modifier.padding(top = 8.dp),
                 ) {
                     Text(
                         text = stringResource(R.string.repo_preview_included_apps),
@@ -98,12 +109,45 @@ fun RepoPreviewHeader(
     onAddRepo: () -> Unit,
     localeList: LocaleListCompat,
 ) {
+    val repo = state.repo ?: error("repo was null")
     val isDevPreview = LocalInspectionMode.current
+    val context = LocalContext.current
+
+    val buttonText = when (state.fetchResult) {
+        is IsNewRepository -> stringResource(R.string.repo_add_new_title)
+        is IsNewRepoAndNewMirror -> stringResource(R.string.repo_add_repo_and_mirror)
+        is IsNewMirror -> stringResource(R.string.repo_add_mirror)
+        is IsExistingRepository, is IsExistingMirror -> stringResource(R.string.repo_view_repo)
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+    }
+    val buttonAction: () -> Unit = when (state.fetchResult) {
+        is IsNewRepository, is IsNewRepoAndNewMirror, is IsNewMirror -> onAddRepo
+        is IsExistingRepository, is IsExistingMirror -> { ->
+            val intent = Intent(context, RepoDetailsActivity::class.java)
+            intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.repoId)
+            context.startActivity(intent)
+        }
+
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+    }
+
+    val warningText: String? = when (state.fetchResult) {
+        is IsNewRepository -> null
+        is IsNewRepoAndNewMirror -> stringResource(
+            R.string.repo_and_mirror_add_both_info,
+            state.fetchUrl
+        )
+
+        is IsNewMirror -> stringResource(R.string.repo_mirror_add_info, state.fetchUrl)
+        is IsExistingRepository -> stringResource(R.string.repo_exists)
+        is IsExistingMirror -> stringResource(R.string.repo_mirror_exists, state.fetchUrl)
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+    }
+
     Column(
-        verticalArrangement = spacedBy(8.dp),
+        verticalArrangement = spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        val repo = state.repo ?: error("repo was null")
         Row(
             horizontalArrangement = spacedBy(16.dp),
             verticalAlignment = CenterVertically,
@@ -128,32 +172,26 @@ fun RepoPreviewHeader(
             }
         }
 
-        if (state.canAdd) FDroidButton(
-            text = when (state.fetchResult) {
-                is IsNewRepository -> stringResource(R.string.repo_add_new_title)
-                is IsNewRepoAndNewMirror -> stringResource(R.string.repo_add_repo_and_mirror)
-                is IsNewMirror -> stringResource(R.string.repo_add_mirror)
-                else -> error("Unexpected fetch state: ${state.fetchResult}")
-            },
-            onClick = onAddRepo,
-            modifier = Modifier.align(End),
-        ) else Text(
-            text = when (state.fetchResult) {
-                is IsExistingRepository -> stringResource(R.string.repo_exists)
-                is IsExistingMirror -> stringResource(R.string.repo_mirror_exists)
-                else -> error("Unexpected fetch state: ${state.fetchResult}")
-            },
-            style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.error,
-        )
+        if (warningText != null) Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(colorResource(R.color.warning)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(8.dp),
+                text = warningText,
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.body2,
+                color = colorResource(android.R.color.white),
+            )
+        }
 
-        if (state.isMirror) Text(
-            text = when (state.fetchResult) {
-                is IsNewRepoAndNewMirror -> stringResource(R.string.repo_and_mirror_add_both_info)
-                is IsNewMirror, IsExistingMirror -> stringResource(R.string.repo_mirror_add_info)
-                else -> error("Unexpected fetch state: ${state.fetchResult}")
-            },
-            style = MaterialTheme.typography.body2,
+        FDroidButton(
+            text = buttonText,
+            onClick = buttonAction,
+            modifier = Modifier.align(End),
         )
 
         val description = if (isDevPreview) {

@@ -188,6 +188,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_add_add">Add</string>
     <string name="repo_add_mirror">Add mirror</string>
     <string name="repo_add_repo_and_mirror">Add repository and mirror</string>
+    <string name="repo_view_repo">View repository</string>
     <string name="links">Links</string>
     <string name="versions">Versions</string>
     <string name="more">More</string>
@@ -222,9 +223,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_io_error">Error connecting to the repository.</string>
     <string name="repo_error_adding_archive">Archive repositories can not be added directly. Tap the repository in the list and enable the archive there.</string>
     <string name="repo_share_not_found">Could not find repo address in shared text.</string>
-    <string name="repo_mirror_exists">This mirror was already added.</string>
-    <string name="repo_mirror_add_info">The URL you are trying to add is a mirror of an existing repository.</string>
-    <string name="repo_and_mirror_add_both_info">The URL you are trying to add is a mirror of a new repository. Both the original repository and the mirror will be added.</string>
+    <string name="repo_mirror_exists">This mirror was already added (%s).</string>
+    <string name="repo_mirror_add_info">The URL you are trying to add (%s) is a mirror of an existing repository.</string>
+    <string name="repo_and_mirror_add_both_info">The URL you are trying to add (%s) is a mirror of a new repository. Both the original repository and the mirror will be added.</string>
     <string name="bad_fingerprint">Bad fingerprint</string>
     <string name="invalid_url">This is not a valid URL.</string>
     <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
