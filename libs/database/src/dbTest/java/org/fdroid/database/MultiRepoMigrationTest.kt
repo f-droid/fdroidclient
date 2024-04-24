@@ -106,13 +106,13 @@ internal class MultiRepoMigrationTest {
             db.getRepositoryDao().getRepositories().sortedByDescending { it.weight }.also { repos ->
                 assertEquals(reposToMigrate.size, repos.size)
                 assertEquals(reposToMigrate.size, repos.map { it.weight }.toSet().size)
-                assertEquals(fdroidRepo.address, repos[0].address)
+                assertEquals(guardianRepo.address, repos[0].address)
                 assertEquals(1_000_000_000, repos[0].weight)
-                assertEquals(fdroidArchiveRepo.address, repos[1].address)
+                assertEquals(guardianArchiveRepo.address, repos[1].address)
                 assertEquals(999_999_999, repos[1].weight)
-                assertEquals(guardianRepo.address, repos[2].address)
+                assertEquals(fdroidRepo.address, repos[2].address)
                 assertEquals(999_999_998, repos[2].weight)
-                assertEquals(guardianArchiveRepo.address, repos[3].address)
+                assertEquals(fdroidArchiveRepo.address, repos[3].address)
                 assertEquals(999_999_997, repos[3].weight)
             }
         }
@@ -148,18 +148,18 @@ internal class MultiRepoMigrationTest {
             db.getRepositoryDao().getRepositories().sortedByDescending { it.weight }.also { repos ->
                 assertEquals(reposToMigrate.size, repos.size)
                 assertEquals(reposToMigrate.size, repos.map { it.weight }.toSet().size)
-                assertEquals(fdroidRepo.address, repos[0].address)
+                assertEquals("https://example.com/fdroid/repo", repos[0].address)
                 assertEquals(1_000_000_000, repos[0].weight)
-                assertEquals(fdroidArchiveRepo.address, repos[1].address)
-                assertEquals(999_999_999, repos[1].weight)
+                assertEquals("https://example.org/fdroid/repo", repos[1].address)
+                assertEquals(999_999_998, repos[1].weight) // space for archive above
                 assertEquals(guardianRepo.address, repos[2].address)
-                assertEquals(999_999_998, repos[2].weight)
+                assertEquals(999_999_996, repos[2].weight)
                 assertEquals(guardianArchiveRepo.address, repos[3].address)
-                assertEquals(999_999_997, repos[3].weight)
-                assertEquals("https://example.org/fdroid/repo", repos[4].address)
-                assertEquals(999_999_996, repos[4].weight)
-                assertEquals("https://example.com/fdroid/repo", repos[5].address)
-                assertEquals(999_999_994, repos[5].weight) // space for archive above
+                assertEquals(999_999_995, repos[3].weight)
+                assertEquals(fdroidRepo.address, repos[4].address)
+                assertEquals(999_999_994, repos[4].weight)
+                assertEquals(fdroidArchiveRepo.address, repos[5].address)
+                assertEquals(999_999_993, repos[5].weight)
             }
         }
     }
@@ -183,12 +183,12 @@ internal class MultiRepoMigrationTest {
             db.getRepositoryDao().getRepositories().sortedByDescending { it.weight }.also { repos ->
                 assertEquals(reposToMigrate.size, repos.size)
                 assertEquals(reposToMigrate.size, repos.map { it.weight }.toSet().size)
-                assertEquals("https://example.org/fdroid/repo", repos[0].address)
-                assertEquals(1_000_000_000, repos[0].weight)
-                assertEquals(guardianRepo.address, repos[1].address)
-                assertEquals(999_999_998, repos[1].weight) // space for archive above
-                assertEquals(fdroidArchiveRepo.address, repos[2].address)
-                assertEquals(999_999_996, repos[2].weight) // space for archive above
+                assertEquals(guardianRepo.address, repos[0].address)
+                assertEquals(1_000_000_000, repos[0].weight) // space for archive below
+                assertEquals("https://example.org/fdroid/repo", repos[1].address)
+                assertEquals(999_999_998, repos[1].weight)
+                assertEquals(fdroidArchiveRepo.address, repos[2].address) // archive at the end
+                assertEquals(999_999_996, repos[2].weight)
             }
         }
     }

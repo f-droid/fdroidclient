@@ -33,7 +33,7 @@ internal class MultiRepoMigration : AutoMigrationSpec {
             """
             SELECT repoId, address, certificate, weight FROM ${CoreRepository.TABLE}
             JOIN ${RepositoryPreferences.TABLE} USING (repoId)
-            ORDER BY weight ASC"""
+            ORDER BY weight DESC"""
         ).use { cursor ->
             while (cursor.moveToNext()) {
                 val repo = getRepo(cursor)
@@ -54,7 +54,7 @@ internal class MultiRepoMigration : AutoMigrationSpec {
         }
 
         // now go through all repos and adapt their weight,
-        // so that repos with a low weight get a high weight with space for archive repos
+        // so that repos get a higher weight with space for archive repos
         var nextWeight = REPO_WEIGHT
         repos.forEach { repo ->
             val archiveRepo = archiveMap[repo.certificate]
