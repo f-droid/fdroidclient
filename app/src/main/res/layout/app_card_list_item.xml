@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="8dp">
 
         <ImageView
@@ -25,28 +25,46 @@
             tools:src="@drawable/ic_launcher" />
 
         <TextView
-            android:id="@+id/summary"
+            android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
-            android:lines="2"
+            android:gravity="start"
+            android:maxLines="1"
             android:textColor="?android:textColorPrimary"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/new_tag"
             app:layout_constraintStart_toEndOf="@+id/icon"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteY="8dp"
-            tools:text="F-Droid An application summary which takes up too much space and must ellipsize" />
+            app:layout_goneMarginEnd="0dp"
+            tools:text="F-Droid app name which can be longer for some apps" />
 
         <include
             android:id="@+id/new_tag"
             layout="@layout/app_status_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="@+id/summary"
-            app:layout_constraintTop_toBottomOf="@+id/summary" />
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:layout_editor_absoluteY="8dp"
+            tools:text="F-Droid An application summary which takes up too much space and must ellipsize" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
