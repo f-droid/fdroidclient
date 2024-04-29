@@ -1,6 +1,6 @@
 package org.fdroid.download
 
-import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
@@ -58,13 +58,17 @@ internal class HttpManagerInstrumentationTest {
 
     @Test
     fun checkTlsSupport() = runSuspend {
+        assumeTrue(
+            "howsmyssl.com uses Let's Encrypt, which does not work on Android 7 and older",
+            SDK_INT >= 26,
+        )
         val httpManager = HttpManager(userAgent, null)
         val mirror = Mirror("https://www.howsmyssl.com")
         val indexFile: IndexFile = getIndexFile("/a/check")
         val downloadRequest = DownloadRequest(indexFile, listOf(mirror))
 
         val json = JSONObject(httpManager.getBytes(downloadRequest).decodeToString())
-        if (Build.VERSION.SDK_INT >= 29) {
+        if (SDK_INT >= 29) {
             assertEquals("TLS 1.3", json.getString("tls_version"))
         } else {
             assertEquals("TLS 1.2", json.getString("tls_version"))
@@ -74,6 +78,10 @@ internal class HttpManagerInstrumentationTest {
 
     @Test
     fun checkTls12Support() = runSuspend {
+        assumeTrue(
+            "howsmyssl.com uses Let's Encrypt, which does not work on Android 7 and older",
+            SDK_INT >= 26,
+        )
         val clientFactory = object : HttpClientEngineFactory<OkHttpConfig> {
             override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine = OkHttp.create {
                 block()
@@ -102,7 +110,7 @@ internal class HttpManagerInstrumentationTest {
     fun checkSessionResumeShort() = runSuspend {
         assumeTrue(
             "tlsprivacy.nervuri.net uses Let's Encrypt, which does not work on old Androids",
-            Build.VERSION.SDK_INT >= 26
+            SDK_INT >= 26,
         )
         val httpManager = HttpManager(userAgent, null)
         val mirror = Mirror("https://tlsprivacy.nervuri.net")
