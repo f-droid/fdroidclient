@@ -135,7 +135,7 @@ internal class RepoManagerAddAllIntegrationTest {
         repoManager.fetchRepositoryPreview(url = url, proxy = null)
         repoManager.addRepoState.test(timeout = 15.seconds) {
             val fetchState = awaitFinalFetchState()
-            if (fetchState is Fetching && fetchState.canAdd) {
+            if (fetchState is Fetching && fetchState.fetchResult != null) {
                 repoManager.addFetchedRepository()
                 val item = awaitItem()
                 if (item is Adding) {

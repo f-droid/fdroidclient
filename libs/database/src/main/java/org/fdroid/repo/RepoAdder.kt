@@ -59,24 +59,9 @@ public class Fetching(
      */
     public val done: Boolean = false,
 ) : AddRepoState() {
-    /**
-     * true if the repository can be added (be it as new [Repository] or new mirror).
-     */
-    public val canAdd: Boolean = receivedRepo != null &&
-        fetchResult != null &&
-        fetchResult !is FetchResult.IsExistingRepository &&
-        fetchResult !is FetchResult.IsExistingMirror
-
-    public val isMirror: Boolean = receivedRepo != null &&
-        fetchResult != null &&
-        (fetchResult is FetchResult.IsNewMirror ||
-            fetchResult is FetchResult.IsExistingMirror ||
-            fetchResult is FetchResult.IsNewRepoAndNewMirror
-            )
-
     override fun toString(): String {
         return "Fetching(fetchUrl=$fetchUrl, repo=${receivedRepo?.address}, apps=${apps.size}, " +
-            "fetchResult=$fetchResult, done=$done, canAdd=$canAdd)"
+            "fetchResult=$fetchResult, done=$done)"
     }
 }
 

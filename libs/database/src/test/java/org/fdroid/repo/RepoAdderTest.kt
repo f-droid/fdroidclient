@@ -358,12 +358,12 @@ internal class RepoAdderTest {
         // repo is already in the DB
         every { repoDao.getRepository(any<String>()) } returns existingRepo
 
+        val isRepo = existingRepo.address == url
         val expectedFetchResult =
-            if (existingRepo.address == url)
-                FetchResult.IsExistingRepository(existingRepo.repoId)
+            if (isRepo) FetchResult.IsExistingRepository(existingRepo.repoId)
             else FetchResult.IsExistingMirror(existingRepo.repoId)
 
-        expectMinRepoPreview(repoName, expectedFetchResult, canAdd = false) {
+        expectMinRepoPreview(repoName, expectedFetchResult) {
             repoAdder.fetchRepository(url = downloadUrl, proxy = null)
         }
         assertFailsWith<IllegalStateException> {
@@ -396,7 +396,7 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
+            assertNull(state1.fetchResult)
 
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
@@ -449,7 +449,7 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
+            assertNull(state1.fetchResult)
 
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
@@ -485,7 +485,7 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
+            assertNull(state1.fetchResult)
 
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
@@ -566,7 +566,7 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
+            assertNull(state1.fetchResult)
 
             val state2 = awaitItem()
             onSecondState(state2)
@@ -629,25 +629,25 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
+            assertNull(state1.fetchResult)
 
             val state2 = awaitItem()
             assertIs<Fetching>(state2)
             assertEquals(repoAddress, state2.receivedRepo?.address)
-            assertTrue(state2.canAdd)
+            assertIs<FetchResult.IsNewRepoAndNewMirror>(state2.fetchResult)
             assertFalse(state2.done)
 
             val state3 = awaitItem()
             assertIs<Fetching>(state3)
-            assertTrue(state3.canAdd)
+            assertIs<FetchResult.IsNewRepoAndNewMirror>(state3.fetchResult)
             assertTrue(state3.done)
         }
     }
 
     @Test
     fun testFallbackToV1() = runTest {
-        val url = "https://example.org/repo/"
-        val urlTrimmed = "https://example.org/repo"
+        val url = "http://testy.at.or.at/fdroid/repo/"
+        val urlTrimmed = "http://testy.at.or.at/fdroid/repo"
         val jarFile = folder.newFile()
 
         every { tempFileProvider.createTempFile() } returns jarFile
@@ -691,13 +691,12 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
 
             for (i in 0..64) assertIs<Fetching>(awaitItem())
         }
         val addRepoState = repoAdder.addRepoState.value
         assertIs<Fetching>(addRepoState)
-        assertTrue(addRepoState.canAdd)
+        assertIs<FetchResult.IsNewRepository>(addRepoState.fetchResult)
         assertEquals(63, addRepoState.apps.size)
     }
 
@@ -736,7 +735,6 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertTrue(state1.apps.isEmpty())
-            assertFalse(state1.canAdd)
 
             val state2 = awaitItem()
             assertTrue(state2 is AddRepoError, "$state2")
@@ -863,7 +861,6 @@ internal class RepoAdderTest {
     private suspend fun expectMinRepoPreview(
         repoName: String?,
         expectedFetchResult: FetchResult,
-        canAdd: Boolean = true,
         block: suspend () -> Unit = {},
     ) {
         repoAdder.addRepoState.test {
@@ -881,7 +878,6 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state1)
             assertNull(state1.receivedRepo)
             assertEquals(emptyList(), state1.apps)
-            assertFalse(state1.canAdd)
             assertFalse(state1.done)
 
             // onRepoReceived
@@ -893,7 +889,6 @@ internal class RepoAdderTest {
             val result = state2.fetchResult ?: fail()
             assertEquals(expectedFetchResult, result)
             assertTrue(state2.apps.isEmpty())
-            assertEquals(canAdd, state2.canAdd)
             assertFalse(state2.done)
 
             // onAppReceived
@@ -901,13 +896,11 @@ internal class RepoAdderTest {
             assertIs<Fetching>(state3)
             assertEquals(TestDataMinV2.packages.size, state3.apps.size)
             assertEquals(TestDataMinV2.packageName, state3.apps[0].packageName)
-            assertEquals(canAdd, state3.canAdd)
             assertFalse(state3.done)
 
             // final result
             val state4 = awaitItem()
             assertIs<Fetching>(state4)
-            assertEquals(canAdd, state4.canAdd)
             assertTrue(state4.done)
         }
     }
