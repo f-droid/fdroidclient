@@ -141,7 +141,7 @@ internal class RepoAdder(
             addRepoState.value = AddRepoError(IS_ARCHIVE_REPO)
             return
         }
-        val fetchUrl = nUri.uri.toString()
+        val fetchUrl = nUri.uri.toString().trimEnd('/')
 
         // some plumping to receive the repo preview
         var receivedRepo: Repository? = null
@@ -223,28 +223,40 @@ internal class RepoAdder(
         }
     }
 
-    private fun getFetchResult(url: String, repo: Repository): FetchResult {
-        val cert = repo.certificate ?: error("Certificate was null")
+    private fun getFetchResult(fetchUrlIn: String, fetchedRepo: Repository): FetchResult {
+        // Note the delicate difference between fetchedRepo (from the network) and
+        // existingRepo (from the database) in this function!
+        val cert = fetchedRepo.certificate ?: error("Certificate was null")
         val existingRepo = repositoryDao.getRepository(cert)
+        val fetchUrl = fetchUrlIn.trimEnd('/')
 
-        return if (existingRepo == null) {
-            val isUserMirror = url.trimEnd('/') != repo.address.trimEnd('/') &&
-                repo.mirrors.find { url.trimEnd('/') == it.url.trimEnd('/') } == null
-            if (isUserMirror) {
+        // is completely new
+        if (existingRepo == null) {
+            val isFetchedRepoAddress = fetchUrl == fetchedRepo.address.trimEnd('/')
+            val isFetchedRepoDefinedMirror =
+                fetchedRepo.mirrors.find { fetchUrl == it.url.trimEnd('/') } != null
+
+            val isUserMirror = !isFetchedRepoAddress && !isFetchedRepoDefinedMirror
+            return if (isUserMirror) {
                 FetchResult.IsNewRepoAndNewMirror
             } else {
                 FetchResult.IsNewRepository
             }
-        } else if (existingRepo.address.trimEnd('/') == url) {
-            FetchResult.IsExistingRepository(existingRepo.repoId)
+        }
+
+        // is existing repo, is canonical address
+        val isExistingRepoAddress = fetchUrl == existingRepo.address.trimEnd('/')
+        if (isExistingRepoAddress) {
+            return FetchResult.IsExistingRepository(existingRepo.repoId)
+        }
+
+        // is existing repo, is mirror
+        val isNewMirror = existingRepo.getAllMirrors()
+            .find { fetchUrl == it.url.toString().trimEnd('/') } == null
+        return if (isNewMirror) {
+            FetchResult.IsNewMirror(existingRepo.repoId)
         } else {
-            val existingMirror = existingRepo.mirrors.find { it.url.trimEnd('/') == url }
-                ?: existingRepo.userMirrors.find { it.trimEnd('/') == url }
-            if (existingMirror == null) {
-                FetchResult.IsNewMirror(existingRepo.repoId)
-            } else {
-                FetchResult.IsExistingMirror(existingRepo.repoId)
-            }
+            FetchResult.IsExistingMirror(existingRepo.repoId)
         }
     }
 
@@ -286,7 +298,8 @@ internal class RepoAdder(
                     val repoId = repositoryDao.insert(newRepo)
 
                     // add user mirror
-                    // this can happen if the user was adding a mirror URL, and they originally had neither the repo nor the mirror added
+                    // this can happen if the user was adding a mirror URL, and they originally had
+                    // neither the repo nor the mirror added
                     if (fetchResult is FetchResult.IsNewRepoAndNewMirror) {
                         val userMirrors = listOf(state.fetchUrl)
                         repositoryDao.updateUserMirrors(repoId, userMirrors)
