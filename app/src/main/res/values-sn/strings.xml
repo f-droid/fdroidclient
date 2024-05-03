@@ -3,7 +3,6 @@
     <string name="app_name_full">F-Droid</string>
     <string name="version">Vhezheni</string>
     <string name="delete">Dzima</string>
-    <string name="enable_nfc_send">Bvumidza NFC kuti itumire…</string>
     <string name="updates">Zvitsva zvakanatswa</string>
     <string name="keep_install_history">Chengeta makare ezvivakirira</string>
     <string name="keep_install_history_summary">Pfimbika rutarwa rwezvivakirira nezvivakirira zvakabviswa mukati
@@ -64,7 +63,6 @@
     <string name="bad_fingerprint">Chidhindo chechigunwe ichi chakaipa</string>
     <string name="invalid_url">URL iri harina kururama.</string>
     <string name="malformed_repo_uri">Kufuratira URI yepfimbi yakapeyama: %s</string>
-    <string name="repo_provider">Pfimbi: %s</string>
     <string name="menu_manage">Pfimbi</string>
     <string name="menu_settings">Gadziro</string>
     <string name="menu_search">Tsvaga</string>
@@ -228,10 +226,7 @@
     <string name="system_install_denied_permissions">Mibvumo ine tambanudzo haina kupihwa kuchihesvuro! Chikumbiro, sika
         dudziro rezvipfukuto!
     </string>
-    <string name="swap_nfc_description">Kana shamwari yako yakabatidza F-Droid neNFC ita kuti michina yenyu ibatane.
-    </string>
     <string name="swap_join_same_wifi">Hakira paWi-Fi imwe chete seshamwari yako</string>
-    <string name="swap_nfc_title">Bata kuti utsinhana</string>
     <string name="swap_join_same_wifi_desc">Kuti utsinhana pamasaisai eWi-Fi, tanga mazvivimbisa kuti muripa masaisai
         mamwe chete. Kana usina hupindwa pamasaisai mamwe chete, mumwe wenyu anokwanisa kusika nzvimbo yake yemasaisai
         eWi-Fi.

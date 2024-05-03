@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">La versió nova està signada amb una clau diferent de l\'antiga. Per instal·lar la versió nova, desinstal·leu primer l\'antiga i proveu novament. (En desinstal·lar, suprimireu qualsevol dada interna que l\'aplicació hagi emmagatzemat)</string>
     <string name="installIncompatible">L\'aplicació no és compatible amb el vostre dispositiu. Voleu continuar igualment?</string>
     <string name="version">Versió</string>
@@ -549,7 +549,7 @@
     </plurals>
     <string name="repo_state_fetching">S\'està baixant el repositori…</string>
     <string name="repo_error_adding_archive">No es pot afegir històrics del repositori directament. Cliqueu el repositori a la llista i activeu l’arxiu allà.</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">cada nit</string>
+    <string name="category_Nightly">cada nit</string>
     <string name="app__tts__downloading_progress">S\'ha acabat de baixar %1$d%%</string>
     <string name="warning_target_sdk">Aquesta aplicació va ser muntada per a una versió més antiga d\'Android i no es pot actualitzar automàticament.</string>
     <string name="turn_on_wifi">Encén el wifi</string>

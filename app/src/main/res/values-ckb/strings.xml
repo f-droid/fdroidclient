@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="ok">باشە</string>
     <string name="no">نەخێر</string>
     <string name="back">گەڕانەوە</string>
@@ -56,7 +56,6 @@
     <string name="version">وەشان</string>
     <string name="by_author_format">لەلایەن %sەوە</string>
     <string name="delete">سڕینەوە</string>
-    <string name="enable_nfc_send">ناردن بە NFC چالاک بکە…</string>
     <string name="prompt_to_send_crash_reports_summary">زانیاری لەسەر تێکشکانەکان کۆ بکەرەوە و داوا بکە تاکوو بۆ پەرەپێدەری بنێریت</string>
     <string name="cache_downloaded">بەرنامە کاشکراوەکان بھێڵەوە</string>
     <string name="unstable_updates">بەڕۆژکردنە ناجێگیرەکان</string>
@@ -77,8 +76,8 @@
     <string name="notification_title_summary_install_error">دامەزراندنەکە شکستی ھێنا</string>
     <string name="warning_no_internet">ناتواندرێت نوێ بکرێتەوە، پەیوەستیت بە ئینتەرنێتەوە؟</string>
     <string name="not_on_same_wifi">ئامێرەکەت لەسەر ھەمان وایفایی سەرچاوە ناوەکییەکە نییە کە زیاد کردووە! ھەوڵبدە بچیتە سەر ئەم تۆڕە: %s</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">وەرزش و تەندروستی</string>
-    <string tools:ignore="UnusedResources" name="category_System">سیستەم</string>
+    <string name="category_Sports_Health">وەرزش و تەندروستی</string>
+    <string name="category_System">سیستەم</string>
     <string name="crash_dialog_title">ئێف-درۆید تێکشکا</string>
     <string name="repo_last_update">دوایین نوێکردنەوە</string>
     <string name="app_name_full">ئێف-درۆید</string>

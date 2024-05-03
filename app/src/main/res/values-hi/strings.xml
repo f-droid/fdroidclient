@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="delete">डिलीट करें</string>
-    <string name="enable_nfc_send">NFC ‘द्वारा भेजे’ को सक्षम करें …</string>
     <string name="version">संस्करण</string>
     <string name="updates">अपडेट</string>
     <string name="unstable_updates">अस्थिर अपडेट्स</string>
@@ -191,7 +190,6 @@
     <string name="bad_fingerprint">खराब फिंगरप्रिंट</string>
     <string name="invalid_url">यह एक मान्य URL नहीं है।</string>
     <string name="malformed_repo_uri">विकृत रेपो URI को अनदेखा करना: %s</string>
-    <string name="repo_provider">रिपोजिटरी: %s</string>
     <string name="menu_ignore_all">सभी अपडेट्स पर ध्यान न दें</string>
     <string name="menu_ignore_this">इस अद्यतन की उपेक्षा करें</string>
     <string name="menu_website">वेबसाइट</string>
@@ -349,7 +347,6 @@
     <string name="app_suggested">सुझाव दिया</string>
     <string name="app_size">रिपोजिटरी:%1$s</string>
     <string name="app_new">नया</string>
-    <string name="app_repository">रिपोजिटरी:%1$s</string>
     <string name="update_all">सभी अद्यतन करें</string>
     <string name="scan_removable_storage_title">हटाने योग्य स्टोरेज को स्कैन करें</string>
     <string name="scan_removable_storage_summary">रिमूवेबल स्टोरेज जैसे की SD कार्डस् और USB थम्ब ड्राईवस् पर पैकेज रिपोज़ के लिए खोजें</string>
@@ -464,8 +461,6 @@
     <string name="swap_stopping_hotspot">हॉटस्पॉट को रोका रहा है …</string>
     <string name="swap_setting_up_hotspot">हॉटस्पॉट स्थापित किया जा रहा है…</string>
     <string name="swap_join_same_wifi">अपने मित्र के साथ एक ही वाई-फाई से जुड़े</string>
-    <string name="swap_nfc_description">यदि आपके मित्र के पास एफ-ड्रॉइड तथा एनएफसी चालू है तो अपने उपकरण को एक साथ मिलाये।</string>
-    <string name="swap_nfc_title">बदलने के लिए टच करे</string>
     <string name="nearby_splash__request_permission">अब खोजें</string>
     <string name="nearby_splash__document_tree">रेपो और मिरर के लिए यूएसबी ओटीजी सर्च करें।</string>
     <string name="nearby_splash__read_external_storage">रेपो और मिरर के लिए एसडी कार्ड सर्च करें।</string>

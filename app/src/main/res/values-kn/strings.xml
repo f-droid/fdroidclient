@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಸ್ಥಾಪಿಸಿ</string>
@@ -558,7 +558,7 @@
     <string name="antidisabledalgorithm">ಸೈನ್ಡ್ ಯುಸಿಂಗ್ ಆನ್ ಆನ್ಸೇಫ್ ಆಲ್ಗೋರಿಥಂ</string>
     <string name="antinsfw">ನಾಟ್ ಸೇಫ್ ಫಾರ್ ವರ್ಕ್</string>
     <string name="antiothers">ಅದರ್ ಆಂಟಿ-ಫೀಚರ್ಸ್</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">ನೈಟ್ಲಿ</string>
+    <string name="category_Nightly">ನೈಟ್ಲಿ</string>
     <string name="ipfsgw_add_title">ಆ್ಯಡ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ವೆ</string>
     <string name="ipfsgw_caption_official_gateways">ಆಫೀಶಿಯಲ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ವೇಸ್</string>
     <string name="app_error_open">ಕುಡ್ ನಾಟ್ ಲಾಂಚ್ ಆ್ಯಪ್.</string>
