@@ -490,4 +490,17 @@
     <string name="antinsfw">El contingut d\'aquesta aplicació pot no ser adequat per divulgar-lo o veure\'l arreu</string>
     <string name="latest__empty_state__upgrading">S\'està actualitzant la base de dades…</string>
     <string name="menu_release_channel_beta">Permet actualitzar a versions beta</string>
+    <string name="app_name_basic">F-Droid Bàsic</string>
+    <string name="about_title_basic">Sobre F-Droid Bàsic</string>
+    <string name="app_details_repository">Repositori</string>
+    <string name="app_list_no_suggested_version">Cap versió recomanada per instal·lar.</string>
+    <string name="app_details_repository_expand">Amplia la llista de repositoris</string>
+    <string name="app_error_open">No s\'ha pogut iniciar l\'applicació.</string>
+    <string name="repo_add_new_title">Afegir repositori</string>
+    <string name="repo_add_new_mirror">Afegeix-ho com un nou mirror</string>
+    <string name="force_old_installer_title">Forçar l\'instalador anterior</string>
+    <string name="force_old_installer_summary">Desactivar la sessió beta de l\'instal·lador, incloent-hi el suport a les actualitzacions automàtiques en segon pla.</string>
+    <string name="app_details_repositories">Repositoris</string>
+    <string name="app_details_repository_preferred">(preferit)</string>
+    <string name="app_details_repository_button_prefer">Repositori preferit</string>
 </resources>
