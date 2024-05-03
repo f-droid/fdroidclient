@@ -572,7 +572,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid può cercare repo e mirror sulla tua scheda SD, ma ha bisogno della tua autorizzazione per farlo.</string>
     <string name="swap_connection_indexv0_error">Stai cercando di connetterti a qualcuno con una versione obsoleta di F-Droid. Per collegarsi deve aggiornare la sua app F-Droid. Può aggiornarla tramite te.</string>
     <string name="force_old_installer_title">Imponi vecchio installatore</string>
-    <string name="force_old_installer_summary">Disattiva l\'installatore di sessione beta, compreso il supporto per gli aggiornamenti automatici in secondo piano.</string>
+    <string name="force_old_installer_summary">Disattiva l\'installatore di sessione, compreso il supporto per gli aggiornamenti automatici in secondo piano.</string>
     <string name="copied_to_clipboard">Copiato negli appunti</string>
     <string name="copied_permission_to_clipboard">Nome dell\'autorizzazione copiato negli appunti</string>
     <string name="copied_url_to_clipboard">URL copiato negli appunti</string>
