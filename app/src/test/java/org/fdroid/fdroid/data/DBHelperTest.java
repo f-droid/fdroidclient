@@ -316,9 +316,9 @@ public class DBHelperTest {
             String[] defaultRepos = context.getResources().getStringArray(R.array.default_repos);
 
             List<String> shouldBeRepos = new LinkedList<>();
+            shouldBeRepos.addAll(Arrays.asList(defaultRepos));
             shouldBeRepos.addAll(oem0);
             shouldBeRepos.addAll(oem1);
-            shouldBeRepos.addAll(Arrays.asList(defaultRepos));
 
             // Normalize whitespace in descriptions, just like DBHelper does.
             final int descriptionIndex = 2;

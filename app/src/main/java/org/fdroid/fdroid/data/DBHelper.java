@@ -134,8 +134,8 @@ public class DBHelper {
     }
 
     /**
-     * Load Additional Repos first, then Default Repos. This way, Default
-     * Repos will be shown after the OEM-added ones on the Manage Repos
+     * Load Default Repos first, then Additional Repos. This way, the OEM-added repos
+     * will be shown after the default ones (i.e. lower priority) on the Manage Repos
      * screen.  This throws a hard {@code Exception} on parse errors since
      * Default Repos are built into the APK.  So it should fail as hard and fast
      * as possible so the developer catches the problem.
@@ -164,9 +164,10 @@ public class DBHelper {
                     ") != 0, FYI the priority item was removed in v1.16");
         }
 
+        // add default repos first, so they are at the top of the list with higher priority
         List<String> repos = new ArrayList<>(additionalRepos.size() + defaultRepos.size());
-        repos.addAll(additionalRepos);
         repos.addAll(defaultRepos);
+        repos.addAll(additionalRepos);
 
         final int descriptionIndex = 2;
         for (int i = descriptionIndex; i < repos.size(); i += REPO_XML_ITEM_COUNT) {
