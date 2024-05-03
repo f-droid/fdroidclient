@@ -202,7 +202,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="antiadslist">इस एप्लिकेशन में विज्ञापन शामिल हैं</string>
+    <string name="antiadslist">इस ऐप में विज्ञापन शामिल हैं</string>
     <string name="antinonfreeadlist">यह ऐप नॉन-फ्री ऐड-ऑन को बढ़ावा देता है</string>
     <string name="antinonfreenetlist">यह ऐप पूरी तरह से गैर-मुक्त नेटवर्क सेवाओं का प्रचार करता है या उन पर निर्भर करता है</string>
     <string name="antinonfreedeplist">यह ऐप अन्य नॉन-फ्री ऐप पर निर्भर करता है</string>
@@ -350,7 +350,7 @@
     <string name="app_size">रिपोजिटरी:%1$s</string>
     <string name="app_new">नया</string>
     <string name="app_repository">रिपोजिटरी:%1$s</string>
-    <string name="update_all">सब अद्यतित</string>
+    <string name="update_all">सभी अद्यतन करें</string>
     <string name="scan_removable_storage_title">हटाने योग्य स्टोरेज को स्कैन करें</string>
     <string name="scan_removable_storage_summary">रिमूवेबल स्टोरेज जैसे की SD कार्डस् और USB थम्ब ड्राईवस् पर पैकेज रिपोज़ के लिए खोजें</string>
     <string name="scan_removable_storage_toast">%s स्कैन हो रहा है…</string>
@@ -493,7 +493,7 @@
     <string name="notification_channel_swaps_description">पी 2 पी ऐप स्वैपिंग नोटिफिकेशन दिखाता है।</string>
     <string name="notification_channel_swaps_title">स्वैप</string>
     <string name="notification_channel_installs_description">एप्लिकेशन इंस्टॉलेशन सूचनाएं प्रदर्शित करता है।</string>
-    <string name="notification_channel_installs_title">अधिष्ठापन</string>
+    <string name="notification_channel_installs_title">इन्स्टालेशन्स</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="menu_show_install_history">Install history देखिए</string>
     <string name="menu_show_fdroid_metrics_report">Metrics report देखीए</string>
@@ -547,4 +547,33 @@
     <string name="repo_intro">एक रिपॉज़िटरी, ऐप्स का एक अतिरिक्त स्रोत होता है। जो तृतीय-पक्ष रिपॉज़िटरियाँ आप यहाँ जोड़ेंगे, उनके लिए मानक, F-Droid द्वारा बनाए ऐप प्रदान करने वालों से अलग होगा।
 \n
 \nकृपया सुनिश्चित करें कि जो रिपॉज़िटरी आप जोड़े जा रहे हैं वह विश्वसनीय है।</string>
+    <string name="targetsdk_or_later">लक्ष्य %s</string>
+    <string name="copied_to_clipboard">क्लिपबोर्ड पर कॉपी किया गया</string>
+    <string name="copied_url_to_clipboard">यूआरएल को क्लिपबोर्ड पर कॉपी किया गया</string>
+    <string name="useDnsCacheSummary">DNS क्वेरीज़ को न्यूनतम करने के लिए कैश्ड परिणामों का उपयोग करें।</string>
+    <string name="swap_banner_message">ऐप्स स्वैप करने के लिए, अपना वाई-फ़ाई प्रारंभ करें और अपने मित्र के समान नेटवर्क से कनेक्ट करें।</string>
+    <string name="ipfsgw_caption_custom_gateways">कस्टम IPFS गेटवे</string>
+    <string name="repo_io_error">रिपॉजिटरी से कनेक्ट करने में त्रुटि।</string>
+    <string name="copied_permission_to_clipboard">अनुमति नाम को क्लिपबोर्ड पर कॉपी किया गया</string>
+    <string name="paste">पेस्ट</string>PluralsCandidate
+
+    <string name="force_old_installer_title">पुराने इंस्टॉलर को बाध्य करें</string>
+    <string name="force_old_installer_summary">स्वचालित पृष्ठभूमि अपडेट के लिए समर्थन सहित बीटा सत्र इंस्टॉलर को अक्षम करें।</string>
+    <string name="useDnsCache">डीएनएस कैश का प्रयोग करें</string>
+    <string name="turn_on_wifi">वाईफ़ाई चालू करें</string>
+    <string name="ipfsgw_title">आईपीएफएस गेटवे</string>
+    <string name="ipfsgw_caption_official_gateways">आधिकारिक IPFS गेटवे</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid आपके SD कार्ड पर रिपोज़ और मिरर खोज सकता है, लेकिन ऐसा करने के लिए उसे आपकी अनुमति की आवश्यकता है।</string>
+    <string name="nearby_splace__external_storage_permission_button">इसे आज़माएं</string>
+    <string name="swap_connection_indexv0_error">आप F-Droid के पुराने संस्करण वाले किसी व्यक्ति से जुड़ने का प्रयास कर रहे हैं। कनेक्ट करने के लिए उन्हें अपना F-Droid ऐप अपग्रेड करना होगा। वे आपसे अपने F-Droid ऐप को अपडेट करने के लिए स्वैप का उपयोग कर सकते हैं।</string>
+    <string name="repo_num_apps_button">ऐप्स दिखाएँ</string>
+    <string name="repo_share_not_found">साझा किए गए टेक्स्ट में रेपो पता नहीं मिल सका।</string>
+    <string name="ipfsgw_explainer">आईपीएफएस वेब एंडपॉइंट से ऐप्स डाउनलोड करें। (केवल IPFS समर्थन वाले F-Droid रिपॉजिटरी के लिए काम करता है।)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">IPFS वेब एंडपॉइंट का उपयोग करके ऐप डाउनलोड करें: %1$d सक्षम</item>
+        <item quantity="other">IPFS वेब एंडपॉइंट का उपयोग करके ऐप्स डाउनलोड करें: %1$d सक्षम</item>
+    </plurals>
+    <string name="ipfsgw_summary_disabled">आईपीएफएस वेब एंडपॉइंट का उपयोग करके ऐप्स डाउनलोड करें: अक्षम</string>
+    <string name="ipfsgw_add_title">आईपीएफएस गेटवे जोड़ें</string>
+    <string name="ipfsgw_add_add">जोड़ें</string>
 </resources>
