@@ -560,4 +560,5 @@
     <string name="swap_connection_indexv0_error">Du försöker ansluta till någon med en utdaterad version av F-Droid. För att ansluta så måste de uppgradera sin F-Droid-app. De kan använda byt för att uppdatera sin F-Droid-app från dig.</string>
     <string name="useDnsCache">Använd DNS-cache</string>
     <string name="useDnsCacheSummary">Använd cachade resultat för att minimera DNS-förfrågningar.</string>
+    <string name="app_details_repository_preferred">(föredras)</string>
 </resources>
