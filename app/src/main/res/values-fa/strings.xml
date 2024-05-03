@@ -568,4 +568,7 @@
         <item quantity="one">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS: %1$d به کار افتاده</item>
         <item quantity="other">بارگیری کاره‌ها از نقطه‌های پایانی وب IPFS: %1$d به کار افتاده</item>
     </plurals>
+    <string name="useDnsCache">استفاده از انبارهٔ ساناد</string>
+    <string name="useDnsCacheSummary">استفاده از نتیجه‌های انبار شده برای کمینه سازی پرس‌وجوهای ساناد.</string>
+    <string name="repo_share_not_found">نتوانست نشانی مخزن را در متن هم‌رسانده بیابد.</string>
 </resources>
