@@ -521,4 +521,18 @@
     <string name="app_name_full">F-Droid</string>
     <string name="app_name_basic">F-Droid Basis</string>
     <string name="about_title_basic">Om F-Droid Basic</string>
+    <string name="turn_on_wifi">Tænd for wifi</string>
+    <string name="app_list_no_suggested_version">Ingen version anbefales til installation.</string>
+    <string name="warning_target_sdk">Denne app blev lavet til en ældre version af Android og kan ikke opdateres automatisk.</string>
+    <string name="repositories_last_update">Seneste opdatering: %s</string>
+    <string name="antinsfwlist">Denne app indeholder indhold, der ikke bør offentliggøres eller være synligt overalt</string>
+    <string name="repo_disable_warning_button">Deaktiver</string>
+    <string name="repositories_last_update_never">aldrig</string>
+    <string name="useDnsCache">Brug DNS-cache</string>
+    <string name="useDnsCacheSummary">Brug cachede resultater for at minimere DNS-forespørgsler.</string>
+    <string name="repo_archive_toggle_description">Vis arkiverede apps og forældede versioner af apps</string>
+    <string name="nearby_splace__external_storage_permission_button">Prøv det</string>
+    <string name="repo_last_update_downloaded">Seneste opdatering downloadet</string>
+    <string name="force_old_installer_summary">Deaktiver beta Session Installeren, inklusive support til automatisk baggrundsopdateringer.</string>
+    <string name="repo_num_apps_button">Vis apps</string>
 </resources>
