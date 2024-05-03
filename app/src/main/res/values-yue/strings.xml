@@ -195,7 +195,7 @@
     <string name="privacy">私隱</string>
     <string name="preventScreenshots_summary">唔俾截圖，同時喺 apps 清單度遮住畫面</string>
     <string name="proxy_port">代理伺服器嘅連接埠</string>
-    <string name="proxy_port_summary">您嘅代理伺服器個連接埠冧碼 (例如 8118)</string>
+    <string name="proxy_port_summary">您嘅代理伺服器個連接埠冧把 (例如 8118)</string>
     <string name="enable_proxy_summary">設定所有網絡請求都用 HTTP 代理伺服器</string>
     <string name="proxy_host">代理伺服器主機</string>
     <string name="proxy_host_summary">您嘅代理伺服器個主機名 (例如 127.0.0.1)</string>
@@ -540,7 +540,7 @@
     <string name="swap_connection_indexv0_error">對家用緊舊版嘅 F-Droid。要升級佢個 F-Droid app 至能夠連線。佢可以同您兌換，等您過個 F-Droid app 畀佢更新。</string>
     <string name="copied_to_clipboard">複製咗去剪貼簿</string>
     <string name="force_old_installer_title">強制用舊版安裝器</string>
-    <string name="force_old_installer_summary">停用測試緊嘅工作階段安裝器，包括自動化背景更新嘅支援。</string>
+    <string name="force_old_installer_summary">停用工作階段安裝器，包括自動化背景更新嘅支援。</string>
     <string name="copied_permission_to_clipboard">複製咗權限個名去剪貼簿</string>
     <string name="copied_url_to_clipboard">複製咗個 URL 去剪貼簿</string>
     <string name="targetsdk_or_later">目標版本為 %s</string>
