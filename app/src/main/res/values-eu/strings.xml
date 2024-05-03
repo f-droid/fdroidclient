@@ -66,8 +66,8 @@
     <string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>
     <string name="theme_dark">Iluna</string>
     <string name="theme_light">Argia</string>
-    <string name="other">Beste bat</string>
-    <string name="update_interval">Eguneratze-maiztasuna</string>
+    <string name="other">Besteak</string>
+    <string name="update_interval">Eguneratze automatikoen eguneratzea</string>
     <string name="system_installer">Pribilegiodun Luzapena</string>
     <string name="system_installer_on">Erabili pribilegiodun luzapena paketeak instalatu, eguneratu eta kentzeko</string>
     <string name="about_source">Iturburu kodea</string>
@@ -83,7 +83,7 @@
     <string name="menu_changelog">Aldaketa egunkaria</string>
     <string name="antitracklist">Aplikazio honek zure jardueraren jarraipena egiten du eta berri ematen du</string>
     <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>
-    <string name="antinonfreenetlist">Aplikazio honek sare zerbitzu ez libreak sustatzen ditu edo hauen mende dago erabat</string>
+    <string name="antinonfreenetlist">Aplikazio honek sare-zerbitzu aldaezin edo ez-doako bat sustatzen du edo horren mende dago erabat</string>
     <string name="antinonfreedeplist">Aplikazio hau beste aplikazio ez libreen menpekoa da</string>
     <string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
     <string name="local_repo_name">Zure biltegi lokalaren izena</string>
@@ -448,7 +448,7 @@
     <string name="over_wifi">Wi-Fi bidez</string>
     <string name="over_data">Datuak erabiliz</string>
     <string name="over_network_always_summary">Erabili beti konexio hau erabilgarri badago</string>
-    <string name="over_network_on_demand_summary">Erabili konexio hau nik deskargatzeko klik egiten dudanean besterik ez</string>
+    <string name="over_network_on_demand_summary">Erabili konexio hau nik deskargatzeko klik egiten dudanean soilik</string>
     <string name="over_network_never_summary">Ez deskargatu inoiz ezer konexio hau erabiliz</string>
     <string name="antidisabledalgorithmlist">Aplikazio honek segurtasun sinadura ahula du</string>
     <string name="antiknownvulnlist">Aplikazio honek segurtasun arazo ezagun bat du</string>
@@ -516,14 +516,14 @@
     <string name="send_fdroid_metrics_json">%s metrika erreportea JSON fitxategia batean</string>
     <string name="send_fdroid_metrics_report">%s metrika erreportea bidali</string>
     <string name="menu_show_fdroid_metrics_report">Metrika erreportea erakutsi</string>
-    <string name="toast_metrics_in_install_history">%s metrika erreportea instalazio historian ikus daiteke</string>
+    <string name="toast_metrics_in_install_history">%s metriken txostena instalazioen historian ikus daiteke</string>
     <string name="theme_follow_system">Sistemarena erabili</string>
     <string name="use_pure_black_dark_theme_summary">OLED paintailetarako bakarrik gomendatua.</string>
     <string name="use_pure_black_dark_theme">Gai ilunearen atzealderako kolore beltz-beltza erabili</string>
     <string name="banner_no_data_or_wifi">Datuak eta WiFi-a itzalita</string>
     <string name="banner_no_internet">Internet gabe</string>
     <string name="menu_show_install_history">Instalazio historia erakutsi</string>
-    <string name="send_to_fdroid_metrics_summary">Astero informazio anonimoa F-Droid Metrics-era bidali (\"Mantendu instalazioen historiala\" behar du)</string>
+    <string name="send_to_fdroid_metrics_summary">Astero informazio anonimoa bidali F-Droid Metrics-era (Keep-en instalazioen historiala behar da)</string>
     <string name="swap_wifi_vpn_conflict">Uneko VPNarekin gatazka sortzen du!</string>
     <string name="share_apk_error">Ezin izan da aplikazio fitxategia partekatu</string>
     <string name="has_disallow_install_unknown_sources_globally">Zure gailuaren administratzaileak ez du jatorri ezezaguneko aplikazioak instalatzen uzten, biltegi berriak barne</string>
@@ -579,7 +579,6 @@
     <string name="ipfsgw_title">IPFS pasabideak</string>
     <string name="ipfsgw_caption_custom_gateways">IPFS pasabide pertsonalizatuak</string>
     <string name="paste">Itsatsi</string>
-
     <string name="repo_num_apps_button">Erakutsi aplikazioak</string>
     <string name="ipfsgw_add_add">Gehitu</string>
     <string name="ipfsgw_explainer">Deskargatu aplikazioak IPFS web amaierako puntuetatik. (IPFS euskarria duten F-Droid biltegietarako bakarrik funtzionatzen du.)</string>
@@ -588,4 +587,25 @@
         <item quantity="one">Deskargatu aplikazioak IPFS web amaierako puntuak erabiliz: %1$d gaituta</item>
         <item quantity="other">Deskargatu aplikazioak IPFS web amaierako puntuak erabiliz: %1$d gaituta</item>
     </plurals>
+    <string name="app_details_repository">Gordailua</string>
+    <string name="app_details_repositories">Gordailuak</string>
+    <string name="app_details_repository_preferred">(hobetsia)</string>
+    <string name="app_details_repository_button_prefer">Gordailu hobetsia</string>
+    <string name="app_details_repository_expand">Zabaldu gordailuen zerrenda</string>
+    <string name="app_list_no_suggested_version">Instalatzeko bertsiorik ez da gomendatzen.</string>
+    <string name="repo_error_adding_archive">Artxibo-gordailuak ezin dira zuzenean gehitu. Ukitu zerrendako gordailua eta gaitu bertan gordetzea.</string>
+    <string name="repositories_last_update">Azken eguneratzea: %s</string>
+    <string name="repositories_last_update_never">inoiz ez</string>
+    <string name="repo_list_info_title">Gordailuen zerrenda</string>
+    <string name="repo_archive_toggle">Gordailuko artxiboa</string>
+    <string name="repo_archive_toggle_description">Erakutsi gordetako aplikazioak eta aplikazioen bertsio zaharkituak</string>
+    <string name="repo_archive_failed">Artxiboen gordailua une honetan ez dago erabilgarri</string>
+    <string name="repo_disable_warning">Gordailu hau desgaituz gero, aplikazio guztietatik \"hobetsitakoa\" egoera kenduko da.</string>
+    <string name="repo_disable_warning_button">Desgailu</string>
+    <string name="useDnsCache">Erabili DNS cachea</string>
+    <string name="useDnsCacheSummary">Erabili cachean gordetako emaitzak DNS kontsultak minimizatzeko.</string>
+    <string name="repo_list_info_text">Gordailu bat aplikazioen iturria da. Zerrenda honek une honetan gehitutako gordailu guztiak erakusten ditu. Desgaitutako gordailuak ez dira erabiltzen.
+\n
+\nAplikazio bat gordailu batean baino gehiagotan badago, automatikoki hobetsiko da zerrendan gorago dagoen gordailua. Gordailuak berrordenatu ditzakezu luze sakatuz eta arrastatuz.</string>
+    <string name="repo_share_not_found">Ezin izan da gordailuaren helbidea aurkitu partekatutako testuan.</string>
 </resources>
