@@ -543,7 +543,7 @@
     <string name="antinsfwlist">Esta app contém conteúdo que não deve ser divulgado ou visível em todos os lugares</string>
     <string name="category_Nightly">noturno</string>
     <string name="force_old_installer_title">Forçar instalador antigo</string>
-    <string name="force_old_installer_summary">Desativar o beta Session Installer, incluindo suporte para atualizações automáticas de fundo.</string>
+    <string name="force_old_installer_summary">Desativar o instalador da sessão, incluindo o suporte para atualizações automáticas em segundo plano.</string>
     <string name="repo_add_new_title">Adicionar repositório</string>
     <string name="repo_add_new_mirror">Adicionar como novo espelho</string>
     <string name="targetsdk_or_later">marcadores %s</string>
