@@ -529,4 +529,7 @@
     <string name="warning_target_sdk">Ứng dụng này được tạo cho phiên bản Android cũ hơn và không thể cập nhật tự động.</string>
     <string name="repo_last_update_downloaded">Bản cập nhật cuối cùng đã tải xuống</string>
     <string name="antinsfwlist">Ứng dụng này chứa nội dung không nên công khai hoặc có thể nhìn thấy ở mọi nơi</string>
+    <string name="app_details_repository">Repository</string>
+    <string name="app_list_no_suggested_version">No version recommended for installation.</string>
+    <string name="app_details_repository_preferred">(preferred)</string>
 </resources>
