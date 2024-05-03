@@ -364,11 +364,9 @@ public class App implements Comparable<App>, Parcelable {
             return Glide.with(context).load(R.drawable.ic_repo_app_default);
         }
         String address = Utils.getRepoAddress(repo);
-        if (address.startsWith("content://")) {
+        if (address.startsWith("content://") || address.startsWith("file://")) {
             String sb = Utils.getUri(address, file.getName().split("/")).toString();
             return Glide.with(context).load(sb);
-        } else if (address.startsWith("file://")) {
-            return Glide.with(context).load(file);
         } else {
             return Glide.with(context).load(Utils.getDownloadRequest(repo, file));
         }
@@ -382,12 +380,10 @@ public class App implements Comparable<App>, Parcelable {
             return Glide.with(context).asBitmap().load(R.drawable.ic_repo_app_default);
         }
         String address = Utils.getRepoAddress(repo);
-        if (address.startsWith("content://")) {
+        if (address.startsWith("content://") || address.startsWith("file://")) {
             String sb = file == null ?
                     null : Utils.getUri(address, file.getName().split("/")).toString();
             return Glide.with(context).asBitmap().load(sb);
-        } else if (address.startsWith("file://")) {
-            return Glide.with(context).asBitmap().load(file.getName());
         } else {
             return Glide.with(context).asBitmap().load(Utils.getDownloadRequest(repo, file));
         }

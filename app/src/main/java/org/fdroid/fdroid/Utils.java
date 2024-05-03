@@ -493,7 +493,7 @@ public final class Utils {
             return;
         }
         String address = getRepoAddress(repo);
-        if (address.startsWith("content://")) {
+        if (address.startsWith("content://") || address.startsWith("file://")) {
             String uri = getUri(address, file.getName().split("/")).toString();
             Glide.with(context).load(uri).apply(options).into(iv);
         } else {
