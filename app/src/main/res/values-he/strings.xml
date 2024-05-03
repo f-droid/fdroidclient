@@ -568,7 +568,7 @@
     <string name="nearby_splace__external_storage_permission_button">להתנסות</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid יכול מעתה לחפש מאגרים ואתרי מראה בכרטיס ה־SD שלך אך הוא יצטרך הרשאות לשם כך.</string>
     <string name="force_old_installer_title">אילוץ תוכנית התקנה ישנה</string>
-    <string name="force_old_installer_summary">השבתת הפעלת התקנת הבטא, כולל תמיכה בעדכוני רקע אוטומטיים.</string>
+    <string name="force_old_installer_summary">השבתת מתקין הפעלות, כולל תמיכה בעדכוני רקע אוטומטיים.</string>
     <string name="swap_connection_indexv0_error">ניסית להתחבר למכשיר עם גרסה ישנה של F-Droid. כדי להתחבר צריך לשדרג את גרסת ה־F-Droid במכשיר הזה. אפשר להשתמש בהחלפה כדי לעדכן את F-Droid דרכך.</string>
     <string name="copied_to_clipboard">הועתק ללוח הגזירים</string>
     <string name="targetsdk_or_later">מיועד %s</string>
