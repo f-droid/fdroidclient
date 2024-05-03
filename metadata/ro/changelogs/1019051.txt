@@ -1,0 +1,15 @@
+* Revizuirea managementului depozitelor și a rezervelor, atât UX, cât și codul
+
+* Afișarea unei previzualizări a noilor depozite
+
+* Instalarea cu F-Droid și F-Droid Basic suportă acum actualizări automate în fundal
+
+* Pe Android 14, marcați aplicațiile cu versiunea SDK țintă nesuportată ca fiind incompatibile #2692
+
+* Clic lung pentru a copia link-uri, permisiuni și versiuni pe ecranul aplicațiilor (@Tobias_Groza)
+
+* Aplicațiile incompatibile sunt afișate numai dacă sunt permise în Setări #41 (@pigpig)
+
+* Noi setări pentru gateway-urile IPFS
+
+* Selectarea limbii pentru fiecare aplicație în parte (@Licaon-Kter)
