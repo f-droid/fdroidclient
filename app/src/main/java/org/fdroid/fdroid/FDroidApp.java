@@ -86,6 +86,7 @@ import java.net.Proxy;
 import java.nio.ByteBuffer;
 import java.security.Security;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
 
@@ -302,6 +303,10 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         Preferences preferences = Preferences.get();
 
         if (preferences.promptToSendCrashReports()) {
+            final String subject = String.format(Locale.ENGLISH,
+                                                 "%s %s: Crash Report",
+                                                 BuildConfig.APPLICATION_ID,
+                                                 BuildConfig.VERSION_NAME);
             ACRA.init(this, new CoreConfigurationBuilder()
                     .withReportContent(
                             ReportField.USER_COMMENT,
@@ -321,6 +326,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                     .withPluginConfigurations(
                             new MailSenderConfigurationBuilder()
                                     .withMailTo(BuildConfig.ACRA_REPORT_EMAIL)
+                                    .withReportFileName(BuildConfig.ACRA_REPORT_FILE_NAME)
+                                    .withSubject(subject)
                                     .build(),
                             new DialogConfigurationBuilder()
                                     .withResTheme(R.style.Theme_App)
