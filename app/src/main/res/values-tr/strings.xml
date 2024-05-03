@@ -546,7 +546,7 @@
     <string name="swap_banner_message">Uygulamaları paylaşmak için Wi-Fi\'nizi açın ve arkadaşınızla aynı ağa bağlanın.</string>
     <string name="nearby_splace__external_storage_permission_button">Dene</string>
     <string name="force_old_installer_title">Eski yükleyiciyi zorla</string>
-    <string name="force_old_installer_summary">Beta Oturum Yükleyicisini devre dışı bırak, buna Otomatik arka plan güncellemeleri desteği de dahildir.</string>
+    <string name="force_old_installer_summary">Oturum Kurucusunu devre dışı bırakın, buna otomatik arka plan güncellemeleri desteği de dahildir.</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid, SD Kartınızdaki depoları ve aynaları arayabilir ancak bunu yapmak için izninize ihtiyacı var.</string>
     <string name="swap_connection_indexv0_error">F-Droid\'in eski sürümüne sahip birisiyle bağlantı kurmaya çalışıyorsunuz. Bağlantı kurmak için F-Droid uygulamalarını güncellemeleri gerekiyor. F-Droid uygulamalarını güncellemek için sizden takas edebilirler.</string>
     <string name="copied_to_clipboard">Panoya kopyalandı</string>
