@@ -559,7 +559,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid může vyhledávat repozitáře a zrcadla na vaší SD kartě, potřebuje k tomu ale oprávnění.</string>
     <string name="swap_connection_indexv0_error">Snažíte se připojit k někomu se zastaralou verzí aplikace F-Droid. Pro připojení musí druhá strana svou aplikaci aktualizovat. Může použít výměnu pro aktualizaci své aplikace od vás.</string>
     <string name="force_old_installer_title">Vynutit starý instalátor</string>
-    <string name="force_old_installer_summary">Zakázat nový beta instalátor používající relace, včetně podpory pro automatické aktualizace na pozadí.</string>
+    <string name="force_old_installer_summary">Zakázat nový instalátor používající relace, včetně podpory pro automatické aktualizace na pozadí.</string>
     <string name="copied_to_clipboard">Zkopírováno do schránky</string>
     <string name="copied_permission_to_clipboard">Název oprávnění zkopírován do schránky</string>
     <string name="copied_url_to_clipboard">Adresa URL zkopírována do schránky</string>

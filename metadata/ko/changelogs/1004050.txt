@@ -1,0 +1,13 @@
+* "Versions" 목록의 거대한 overhaul "App Details", 그리고 다른 많은 UI 개선, 새로운 기여 @wsdfhjxc 덕분에
+
+* 많은 장소에 있는 키보드/D 패드 항법, 새로운 contributor @doeffinger 덕분에
+
+* 매체가 설치되고 볼 수 있을 때 “열려” 단추를 표시하십시오
+
+* CSV 목록을 내보내기 위해 "Installed Apps"로 공유 버튼을 추가하십시오.
+
+* 이름 clickable list of APKs to swap HTML 인덱스 페이지 추가
+
+* 이름 Retry 색인은 거울에서 다운로드
+
+* 최근 Android 버전에서 Bluetooth를 통해 "Send F-Droid

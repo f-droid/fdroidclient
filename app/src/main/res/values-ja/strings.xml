@@ -7,11 +7,11 @@
     <string name="cache_downloaded">キャッシュしたアプリを保存</string>
     <string name="updates">更新</string>
     <string name="other">その他</string>
-    <string name="update_interval">自動アップデートの間隔</string>
-    <string name="notify">アップデートを表示</string>
-    <string name="notify_on">アップデートが利用可能になると通知を表示</string>
+    <string name="update_interval">自動更新の間隔</string>
+    <string name="notify">入手可能な更新を表示</string>
+    <string name="notify_on">更新が入手可能になると通知を表示</string>
     <string name="system_installer">特権拡張機能</string>
-    <string name="system_installer_on">特権拡張機能を使用してパッケージをインストール、アップデート、および削除</string>
+    <string name="system_installer_on">特権拡張機能を使用してパッケージをインストール、更新、および削除</string>
     <string name="local_repo_name">ローカルリポジトリの名称</string>
     <string name="local_repo_name_summary">公開するローカルリポジトリのタイトル: %s</string>
     <string name="local_repo_https_on">ローカルリポジトリに暗号化されたHTTPS://接続を使用</string>
@@ -46,8 +46,8 @@
     <string name="menu_share">共有</string>
     <string name="menu_install">インストール</string>
     <string name="menu_uninstall">アンインストール</string>
-    <string name="menu_ignore_all">すべてのアップデートを無視</string>
-    <string name="menu_ignore_this">今回のアップデートを無視</string>
+    <string name="menu_ignore_all">すべての更新を無視</string>
+    <string name="menu_ignore_this">今回の更新を無視</string>
     <string name="menu_website">ウェブサイト</string>
     <string name="menu_issues">問題</string>
     <string name="menu_source">ソースコード</string>
@@ -56,7 +56,7 @@
     <string name="antiadslist">このアプリは広告を表示します</string>
     <string name="antitracklist">このアプリはあなたの操作を記録し報告します</string>
     <string name="antinonfreeadlist">このアプリは不自由なアドオンを推奨します</string>
-    <string name="antinonfreenetlist">このアプリは不自由なネットワークサービスを推奨します</string>
+    <string name="antinonfreenetlist">このアプリは、変更不可能または不自由なネットワークサービスを推奨します</string>
     <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依存します</string>
     <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
@@ -91,9 +91,9 @@
 \n%1$s</string>
     <string name="repos_unchanged">すべてのリポジトリが最新です</string>
     <string name="all_other_repos_fine">他のリポジトリに異常はありません。</string>
-    <string name="global_error_updating_repos">アップデート中にエラーが発生しました： %s</string>
+    <string name="global_error_updating_repos">更新中にエラーが発生しました： %s</string>
     <string name="no_permissions">権限がありません</string>
-    <string name="no_handler_app">%sを取り扱えるアプリがありません。</string>
+    <string name="no_handler_app">%sを取り扱える利用可能なアプリがありません。</string>
     <string name="theme">テーマ</string>
     <string name="unsigned">未署名</string>
     <string name="unverified">未検証</string>
@@ -106,8 +106,8 @@
     <string name="repo_not_yet_updated">このリポジトリはまだ使用されていません。アプリを表示するには、リポジトリを有効にしてください。</string>
     <string name="unknown">不明</string>
     <string name="repo_confirm_delete_title">リポジトリを削除しますか？</string>
-    <string name="repo_confirm_delete_body">リポジトリを削除すると、アプリをF-Droidからインストールすることができなくなります。 
-\n 
+    <string name="repo_confirm_delete_body">リポジトリを削除すると、アプリをF-Droidから入手できなくなります。
+\n
 \n注: これまでにインストールしたアプリはすべて端末に残ります。</string>
     <string name="repo_disabled_notification">%1$sを無効にしました。
 \n
@@ -148,7 +148,7 @@
     <string name="wifi_ap">ホットスポット</string>
     <string name="empty_installed_app_list">アプリがインストールされていません。
 \n
-\n端末にアプリはありますが、F-Droid からは利用できません。リポジトリを更新する必要があるか、リポジトリからアプリをインストールできない可能性があります。</string>
+\n端末にアプリはありますが、F-Droid からは入手できません。リポジトリを更新する必要があるか、リポジトリからアプリをインストールできない可能性があります。</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じネットワークに接続しているか確認してください。同じネットワークにアクセスしていない場合は、Wi-Fiホットスポットを設定できます。</string>
     <string name="swap_join_this_hotspot">友達がホットスポットに接続するのを助けましょう</string>
     <string name="empty_can_update_app_list">おめでとうございます！
@@ -185,10 +185,10 @@
     <string name="downloading">ダウンロードしています…</string>
     <string name="swap_connection_misc_error">端末への接続中にエラーが発生しました。交換できません！</string>
     <string name="install_confirm">アクセス権限が必要</string>
-    <string name="install_confirm_update">この既存のアプリケーションへのアップデートをインストールしてもよろしいですか？既存のデータは失われません。アップデート後のアプリケーションは下記にアクセスする場合があります:</string>
-    <string name="install_confirm_update_system">この内蔵アプリケーションへのアップデートをインストールしてもよろしいですか？既存のデータは失われません。アップデート後のアプリケーションは下記にアクセスする場合があります:</string>
-    <string name="install_confirm_update_no_perms">この既存のアプリにアップデートをインストールしますか？既存のデータが失われることはありません。特別なアクセス権は必要ありません。</string>
-    <string name="install_confirm_update_system_no_perms">この内蔵アプリにアップデートをインストールしますか？既存のデータが失われることはありません。特別なアクセス権は必要ありません。</string>
+    <string name="install_confirm_update">この既存のアプリケーションへの更新をインストールしてもよろしいですか？既存のデータは失われません。更新後のアプリケーションは下記にアクセスする場合があります:</string>
+    <string name="install_confirm_update_system">この内蔵アプリケーションへの更新をインストールしてもよろしいですか？既存のデータは失われません。更新後のアプリケーションは下記にアクセスする場合があります:</string>
+    <string name="install_confirm_update_no_perms">この既存のアプリに更新をインストールしますか？既存のデータが失われることはありません。特別なアクセス権は必要ありません。</string>
+    <string name="install_confirm_update_system_no_perms">この内蔵アプリに更新をインストールしますか？既存のデータが失われることはありません。特別なアクセス権は必要ありません。</string>
     <string name="newPerms">New</string>
     <string name="allPerms">すべて</string>
     <string name="perm_costs_money">通信料金が発生する場合があります</string>
@@ -196,7 +196,7 @@
     <string name="uninstall_confirm">このアプリをアンインストールしますか？</string>
     <string name="perms_new_perm_prefix">新規:</string>
     <string name="perms_description_app">%1$sによって提供されます。</string>
-    <string name="interval_never">アプリを自動的にアップデートしません</string>
+    <string name="interval_never">自動アプリ更新なし</string>
     <string name="interval_1h">1時間毎に確認</string>
     <string name="interval_4h">4時間毎に確認</string>
     <string name="interval_12h">12時間毎に確認</string>
@@ -213,8 +213,8 @@
     <string name="category_Theming">テーマ</string>
     <string name="category_Time">日付と時刻</string>
     <string name="category_Writing">執筆</string>
-    <string name="unstable_updates">非安定版にアップデート</string>
-    <string name="unstable_updates_summary">非安定版へのアップデートを提案</string>
+    <string name="unstable_updates">非安定版に更新</string>
+    <string name="unstable_updates_summary">非安定版への更新を提案</string>
     <string name="download_error">ダウンロードに失敗しました！</string>
     <string name="menu_bitcoin">ビットコイン</string>
     <string name="menu_litecoin">ライトコイン</string>
@@ -235,7 +235,7 @@
     <string name="repo_edit_credentials">パスワードを変更</string>
     <string name="repo_error_empty_username">ユーザー名が空です。認証情報は変更されていません</string>
     <string name="about_license">ライセンス</string>
-    <string name="empty_search_available_app_list">一致する利用可能なアプリはありません。</string>
+    <string name="empty_search_available_app_list">一致する入手可能なアプリはありません。</string>
     <string name="status_inserting_apps">アプリの詳細を保存中</string>
     <string name="crash_dialog_title">F-Droid がクラッシュしました</string>
     <string name="crash_dialog_text">予期しないエラーが発生し、アプリを強制的に停止させました。問題を修正するために、詳細をメールで送信してもよろしいですか？</string>
@@ -245,8 +245,8 @@
     <string name="useTor">Torを使用</string>
     <string name="useTorSummary">強制的にTorを経由した通信でダウンロードして匿名性を向上。Orbotが必要</string>
     <string name="swap_stopping_wifi">Wi-Fiを停止しています…</string>
-    <string name="update_auto_download">アプリの自動アップデート</string>
-    <string name="update_auto_download_summary">自動的にアップデートをダウンロードして、インストールに関する通知を表示</string>
+    <string name="update_auto_download">自動的に更新を取得</string>
+    <string name="update_auto_download_summary">自動的に更新をダウンロードして、インストール通知を表示</string>
     <string name="download_pending">ダウンロードの開始を待機しています…</string>
     <string name="keep_hour">1時間</string>
     <string name="keep_day">1日</string>
@@ -258,26 +258,26 @@
     <string name="uninstall_error_notify_title">%sをアンインストールする際にエラーが発生しました</string>
     <string name="installing">インストールしています…</string>
     <string name="uninstalling">アンインストールしています…</string>
-    <string name="update_auto_install">自動的にアップデートをインストール</string>
-    <string name="update_auto_install_summary">バックグラウンドでアプリのアップデートをダウンロードしてインストール</string>
+    <string name="update_auto_install">自動的に更新をインストール</string>
+    <string name="update_auto_install_summary">バックグラウンドでアプリの更新をダウンロードしてインストール</string>
     <string name="keep_install_history">インストールの履歴を保存</string>
     <string name="keep_install_history_summary">すべてのインストールとアンインストールのログを非公開の保管場所に保存</string>
-    <string name="warning_no_internet">アップデートできません。インターネットに接続していますか？</string>
+    <string name="warning_no_internet">更新できません。インターネットに接続していますか？</string>
     <string name="versions">バージョン</string>
     <string name="app_details_donate_prompt_unknown_author">%1$sの開発者にコーヒーを奢りましょう！</string>
     <string name="app_details_donate_prompt">%1$sは%2$sによって作成されました。コーヒーを奢りましょう！</string>
     <string name="repositories_summary">アプリのソースを追加</string>
-    <string name="notification_title_single_update_available">アップデートがあります</string>
+    <string name="notification_title_single_update_available">更新を入手可能です</string>
     <string name="notification_title_single_ready_to_install">インストールの準備完了</string>
-    <string name="notification_title_single_ready_to_install_update">アップデートのインストールの準備完了</string>
+    <string name="notification_title_single_ready_to_install_update">更新をインストールする準備が完了</string>
     <string name="notification_title_single_install_error">インストールに失敗</string>
     <string name="notification_content_single_downloading">「%1$s」をダウンロードしています…</string>
-    <string name="notification_content_single_downloading_update">「%1$s」のアップデートをダウンロードしています…</string>
+    <string name="notification_content_single_downloading_update">「%1$s」の更新をダウンロードしています…</string>
     <string name="notification_content_single_installing">「%1$s」をインストールしています…</string>
     <string name="notification_content_single_installed">インストールしました</string>
-    <string name="notification_title_summary_update_available">アップデートがあります</string>
-    <string name="notification_title_summary_downloading_update">アップデートをダウンロードしています…</string>
-    <string name="notification_title_summary_ready_to_install_update">アップデートをインストールする準備ができました</string>
+    <string name="notification_title_summary_update_available">更新を入手可能です</string>
+    <string name="notification_title_summary_downloading_update">更新をダウンロードしています…</string>
+    <string name="notification_title_summary_ready_to_install_update">更新をインストールする準備が完了</string>
     <string name="notification_action_update">更新</string>
     <string name="notification_title_summary_downloading">ダウンロードしています…</string>
     <string name="notification_title_summary_ready_to_install">インストールの準備完了</string>
@@ -286,11 +286,11 @@
     <string name="notification_title_summary_install_error">インストールに失敗</string>
     <string name="notification_action_cancel">キャンセル</string>
     <string name="notification_action_install">インストール</string>
-    <string name="app_version_x_available">バージョン%1$sが利用可能です</string>
+    <string name="app_version_x_available">バージョン%1$sが入手可能です</string>
     <string name="app_version_x_installed">バージョン%1$s</string>
     <string name="clear_search">検索結果を消去</string>
     <string name="main_menu__latest_apps">新着</string>
-    <string name="main_menu__categories">カテゴリー</string>
+    <string name="main_menu__categories">カテゴリ</string>
     <string name="main_menu__swap_nearby">付近</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">%d個のアプリをすべて表示</item>
@@ -298,36 +298,36 @@
     <string name="app_recommended_version_installed">バージョン%1$s（推奨）</string>
     <string name="app_new">新規</string>
     <string name="installed_apps__activity_title">インストール済みのアプリ</string>
-    <string name="installed_app__updates_ignored">アップデートが無視されています</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">バージョン %1$s のアップデートを無視しました</string>
+    <string name="installed_app__updates_ignored">更新が無視されています</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">バージョン %1$s の更新を無視しました</string>
     <string name="preference_category__my_apps">マイアプリ</string>
     <string name="preference_manage_installed_apps">インストール済みのアプリを管理</string>
     <string name="tts_category_name">カテゴリ%1$s</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="other">%2$sカテゴリの%1$d個のアプリをすべて表示</item>
     </plurals>
-    <string name="app__install_downloaded_update">アップデート</string>
+    <string name="app__install_downloaded_update">更新</string>
     <string name="app_list__name__downloading_in_progress">%1$sをダウンロードしています</string>
     <string name="updates__tts__download_app">ダウンロード</string>
-    <string name="update_all">すべてアップデート</string>
+    <string name="update_all">すべて更新</string>
     <string name="updates__hide_updateable_apps">アプリを非表示</string>
     <string name="updates__show_updateable_apps">アプリを表示</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">%1$d 個のアプリのアップデートをダウンロード。</item>
+        <item quantity="other">%1$d 個のアプリの更新をダウンロード。</item>
     </plurals>
     <string name="details_new_in_version">バージョン%sの新機能</string>
     <string name="antifeatureswarning">このアプリは好ましくない機能を含む可能性があります。</string>
     <string name="antifeatures">好ましくない機能</string>
     <plurals name="details_last_update_days">
-        <item quantity="other">%1$d 日前にアップデートしました</item>
+        <item quantity="other">%1$d 日前に更新しました</item>
     </plurals>
-    <string name="details_last_updated_today">今日アップデートしました</string>
+    <string name="details_last_updated_today">今日更新しました</string>
     <string name="app_list__name__successfully_installed">%1$sをインストールしました</string>
     <string name="nearby_splash__download_apps_from_people_nearby">インターネット接続がありませんか？近くの人からアプリを受け取りましょう！</string>
     <string name="nearby_splash__find_people_button">近くの人を探す</string>
     <string name="nearby_splash__both_parties_need_fdroid">お互いが近くで%1$sを使用する必要があります。</string>
     <string name="latest__empty_state__no_recent_apps">新着アプリが見つかりません</string>
-    <string name="latest__empty_state__never_updated">アプリのリストを更新すると、新着のアプリがここに表示されます</string>
+    <string name="latest__empty_state__never_updated">アプリの一覧を更新すると、新着アプリがここに表示されます</string>
     <string name="latest__empty_state__no_enabled_repos">リポジトリを有効にして更新すると、新着のアプリがここに表示されます</string>
     <string name="categories__empty_state__no_categories">表示できるカテゴリがありません</string>
     <string name="menu_video">動画</string>
@@ -338,19 +338,19 @@
         <item quantity="other">さらに+%1$d…</item>
     </plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="other">%1$d 個のアップデート</item>
+        <item quantity="other">%1$d 個の更新</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="other">%1$d個のインストール済みアプリ</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="other">%1$d 週間前にアップデートしました</item>
+        <item quantity="other">%1$d 週間前に更新しました</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="other">%1$d ヶ月前にアップデートしました</item>
+        <item quantity="other">%1$d ヶ月前に更新しました</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="other">%1$d 年前にアップデートしました</item>
+        <item quantity="other">%1$d 年前に更新しました</item>
     </plurals>
     <string name="by_author_format">開発者: %s</string>
     <string name="download_404">要求されたファイルが見つかりませんでした。</string>
@@ -364,8 +364,8 @@
     <string name="app_details__no_versions__show_incompat_versions">互換性のないバージョンをここに表示するには、「%1$s」設定を有効にしてください。</string>
     <string name="app_details__no_versions__no_compatible_signers">互換性のある署名のバージョンがありません</string>
     <string name="app_details__no_versions__none_compatible_with_device">端末と互換性のあるバージョンがありません</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">インストールされているバージョンは、利用可能なバージョンと互換性がありません。アプリをアンインストールすると、互換性のあるバージョンを表示したりインストールすることができます。これは多くの場合、Google Playやその他のソースからインストールされたアプリが、別の証明書で署名されている場合に発生します。</string>
-    <string name="app_list__dismiss_app_update">アップデートを無視しました</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">インストールされているバージョンは、入手可能なバージョンと互換性がありません。アプリをアンインストールすると、互換性のあるバージョンを表示したりインストールすることができます。これは多くの場合、Google Playやその他のソースからインストールされたアプリが、別の証明書で署名されている場合に発生します。</string>
+    <string name="app_list__dismiss_app_update">更新を無視しました</string>
     <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s に脆弱性を発見しました。今すぐこのアプリをアンインストールすることを推奨します。</string>
@@ -434,9 +434,9 @@
     <string name="send_version_and_uuid_summary">ダウンロード時に、このアプリのバージョン、ランダムな一意の ID を含めます。アプリを再起動すると設定が有効になります。</string>
     <string name="send_installed_apps">インストールされたアプリを共有</string>
     <string name="send_installed_apps_csv">F-Droid によってインストールされたアプリを CSV ファイルとして</string>
-    <string name="updates_disabled_by_settings">データ/WiFi の設定によって、すべてのアップデートが無効になっています</string>
+    <string name="updates_disabled_by_settings">データ/WiFi の設定によって、すべての更新が無効になっています</string>
     <string name="menu_open">開く</string>
-    <string name="antinosourcesince">ソースコードはもう利用できません。アップデートできません。</string>
+    <string name="antinosourcesince">ソースコードはもう入手できません。更新できません。</string>
     <string name="share_repository">リポジトリを共有</string>
     <string name="about_forum">サポートフォーラム</string>
     <string name="app_suggested">推奨</string>
@@ -508,17 +508,17 @@
     <string name="antinonfreeassets">不自由なアセット</string>
     <string name="antiupstreamnonfree">不自由なアップストリーム</string>
     <string name="antidisabledalgorithm">安全でないアルゴリズムで署名されました</string>
-    <string name="antinosource">ソースコードはもう利用できません</string>
+    <string name="antinosource">ソースコードはもう入手できません</string>
     <string name="antiothers">他の好ましくない機能</string>
     <string name="antinsfw">安心して閲覧できません</string>
-    <string name="menu_release_channel_beta">ベータ版へのアップデートを許可</string>
+    <string name="menu_release_channel_beta">ベータ版への更新を許可</string>
     <string name="latest__empty_state__upgrading">データベースを更新しています…</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">F-Droid Basicについて</string>
     <string name="category_Nightly">ナイトリービルド</string>
-    <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動アップデートはできません。</string>
+    <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動更新はできません。</string>
     <string name="app_error_open">アプリを起動できませんでした。</string>
-    <string name="repo_last_update_downloaded">最後にダウンロードしたアップデート</string>
+    <string name="repo_last_update_downloaded">最後に更新したアップデート</string>
     <string name="antinsfwlist">このアプリは公にするのに不適切な内容を含みます</string>
     <string name="repo_state_adding">リポジトリを追加しています…</string>
     <string name="repo_exists">このリポジトリはすでに追加されています。</string>
@@ -542,14 +542,14 @@
     <string name="repo_list_info_title">リポジトリの一覧</string>
     <string name="repo_archive_toggle_description">アーカイブ済のバージョン、過去のバージョンのアプリを表示</string>
     <string name="repo_archive_failed">現在リポジトリをアーカイブすることはできません</string>
-    <string name="repositories_last_update_never">更新はありません</string>
+    <string name="repositories_last_update_never">まだない</string>
     <string name="app_list_no_suggested_version">インストールに推奨されるバージョンはありません。</string>
     <string name="repo_error_adding_archive">アーカイブのリポジトリは直接追加できません。一覧からリポジトリをタップして、そこでアーカイブを有効にしてください。</string>
     <string name="swap_banner_message">アプリを交換するには、Wi-Fiを開始して、友達と同じネットワークに接続してください。</string>
     <string name="useDnsCache">DNSキャッシュを使用</string>
     <string name="useDnsCacheSummary">キャッシュした結果を使用し、DNSの問い合わせを最小化。</string>
     <string name="repo_io_error">リポジトリに接続する際にエラーが発生しました。</string>
-    <string name="force_old_installer_summary">ベータ版のセッションインストーラーを無効にする。バックグラウンドでの自動アップデートのサポートも無効になります。</string>
+    <string name="force_old_installer_summary">セッションインストーラーを無効にする。自動バックグラウンド更新のサポートも無効になります。</string>
     <string name="repo_list_info_text">リポジトリは、アプリ入手の追加ソースです。この一覧は、現在追加されている全リポジトリです。無効に設定されているリポジトリは使用しません。
 \n
 \nアプリが2つ以上のリポジトリにある場合、一覧でより上位にあるリポジトリが自動的に優先されます。長押ししてドラッグすると、リポジトリを並び替えることができます。</string>
@@ -562,4 +562,19 @@
     <string name="repo_invalid">不正なリポジトリです。
 \n
 \n管理者に問題を報告してください。</string>
+    <string name="ipfsgw_add_add">追加</string>
+    <string name="ipfsgw_caption_official_gateways">公式IPFSゲートウェイ</string>
+    <string name="ipfsgw_caption_custom_gateways">任意のIPFSゲートウェイ</string>
+    <string name="targetsdk_or_later">対象 %s</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">IPFSウェブ終点を使用してアプリをダウンロード: %1$dが有効</item>
+    </plurals>
+    <string name="ipfsgw_summary_disabled">IPFSウェブ終点を使用してアプリをダウンロード: 無効</string>
+    <string name="ipfsgw_explainer">IPFSウェブ終点からアプリをダウンロードします。 （IPFSに対応するF-Droidレポジトリだけで機能します。）</string>
+    <string name="repo_disable_warning">このリポジトリを無効にすると、すべてのアプリからそれの「優先」状態が削除されます。</string>
+    <string name="ipfsgw_title">IPFSゲートウェイ</string>
+    <string name="ipfsgw_add_title">IPFSゲートウェイを追加</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-DroidはSDカード上からレポジトリとミラーを検索できますが、権限が必要です。</string>
+    <string name="nearby_splace__external_storage_permission_button">試行</string>
+    <string name="swap_connection_indexv0_error">F-Droidの陳腐化したバージョンで誰かに接続しようとしています。接続するには、F-Droidアプリをアップグレードする必要があります。あなたからF-Droidアプリを更新するために、交換を使用できます。</string>
 </resources>

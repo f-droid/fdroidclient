@@ -579,7 +579,6 @@
     <string name="repo_io_error">Errore de connessione a su depòsitu.</string>
     <string name="ipfsgw_caption_custom_gateways">Ghennas de collegamentu personalizadas IPFS</string>
     <string name="paste">Incolla</string>
-
     <string name="repo_add_new_mirror">Annanghe comente ispigru nou</string>
     <string name="repo_intro">Unu depòsitu est una fonte additzionale de aplicatziones. Sos de tertzos chi annanghes inoghe tenent istandards diferentes cunfronta a sos chi frunint sas aplicatziones cumpiladas dae F-Droid matessi.
 \n

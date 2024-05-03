@@ -544,7 +544,7 @@
     <string name="turn_on_wifi">Ligar o Wi-Fi</string>
     <string name="nearby_splace__external_storage_permission_button">Experimentar</string>
     <string name="force_old_installer_title">Forçar antigo instalador</string>
-    <string name="force_old_installer_summary">Desativar o beta Session Installer, incluindo suporte para atualizações automáticas de fundo.</string>
+    <string name="force_old_installer_summary">Desativar o instalador da sessão, incluindo o suporte para atualizações automáticas em segundo plano.</string>
     <string name="repo_state_adding">A adicionar repositório…</string>
     <string name="repo_invalid">Repositório inválido.
 \n

@@ -536,4 +536,21 @@
     <string name="latest__empty_state__upgrading">ഡാറ്റാബേസ് നവീകരിക്കുന്നു…</string>
     <string name="repo_num_apps_button">ആപ്പുകൾ കാണിക്കുക</string>
     <string name="swap_banner_message">ആപ്പുകൾ സ്വാപ്പ് ചെയ്യാൻ, നിങ്ങളുടെ വൈഫൈ ആരംഭിച്ച് നിങ്ങളുടെ സുഹൃത്തിന്റെ അതേ നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക.</string>
+    <string name="app_details_repositories">സംഭരണികള്‍</string>
+    <string name="repo_intro">ആപ്പുകളുടെ ഒരു അധിക ഉറവിടമാണ് ഒരു ശേഖരം. നിങ്ങൾ ഇവിടെ ചേർക്കുന്ന മൂന്നാം കക്ഷികൾക്ക് F-Droid തന്നെ നിർമ്മിച്ച ആപ്പുകൾ നൽകുന്നതിനേക്കാൾ വ്യത്യസ്തമായ മാനദണ്ഡങ്ങളുണ്ട്.
+\n
+\nനിങ്ങൾ ചേർക്കുന്ന ശേഖരം വിശ്വസനീയമാണെന്ന് ഉറപ്പാക്കുക.</string>
+    <string name="app_details_repository">സംഭരണിയാണ്</string>
+    <string name="app_details_repository_preferred">(ഇഷ്ടമുള്ളത്)</string>
+    <string name="app_details_repository_button_prefer">ശേഖരണത്തിന് മുൻഗണന നൽകുക</string>
+    <string name="app_details_repository_expand">റിപ്പോസിറ്ററി ലിസ്റ്റ് വികസിപ്പിക്കുക</string>
+    <string name="app_list_no_suggested_version">ഇൻസ്റ്റാളേഷനായി ഒരു പതിപ്പും ശുപാർശ ചെയ്തിട്ടില്ല.</string>
+    <string name="repo_state_fetching">ശേഖരം ലഭ്യമാക്കുന്നു…</string>
+    <string name="repo_state_adding">ശേഖരം ചേർക്കുന്നു…</string>
+    <string name="repo_enter_url">റിപ്പോസിറ്ററി URL സ്വമേധയാ നൽകുക</string>
+    <string name="repo_io_error">റിപ്പോസിറ്ററിയിലേക്ക് ബന്ധിപ്പിക്കുന്നതിൽ പിശക്.</string>
+    <string name="repo_add_new_mirror">പുതിയ പ്രതിഫലനം ചേർക്കുക</string>
+    <string name="repo_invalid">അസാധുവായ ശേഖരം.
+\n
+\nപരിപാലകനെ ബന്ധപ്പെടുകയും പ്രശ്നത്തെക്കുറിച്ച് അവരെ അറിയിക്കുകയും ചെയ്യുക.</string>
 </resources>

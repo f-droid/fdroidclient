@@ -10,7 +10,7 @@
     <string name="update_interval">Automaattisten päivitysten tiheys</string>
     <string name="notify">Näytä saatavilla olevat päivtykset</string>
     <string name="notify_on">Näytä ilmoitus, kun päivityksiä on saatavilla</string>
-    <string name="system_installer">Etuoikeutettu Laajennus</string>
+    <string name="system_installer">Etuoikeutettu laajennus</string>
     <string name="system_installer_on">Käytä F-Droidin etuoikeutettuja laajennuksia pakettien asentamiseen, päivittämiseen ja poistamiseen</string>
     <string name="local_repo_name">Paikallisen sovelluslähteesi nimi</string>
     <string name="local_repo_name_summary">Paikallisen sovelluslähteesi mainostettava otsikko: %s</string>
@@ -54,7 +54,7 @@
     <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
     <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
     <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-vapaita lisäosia</string>
-    <string name="antinonfreenetlist">Tämä sovellus tukee tai on täysin riippuvainen ei-vapaasta verkkopalvelusta</string>
+    <string name="antinonfreenetlist">Tämä sovellus suosittelee tai on täysin riippuvainen ei-muutettavasta tai ei-vapaasta verkkopalvelusta</string>
     <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista, ei-vapaista sovelluksista</string>
     <string name="display">Näyttö</string>
     <string name="expert">Asiantuntijatila</string>
@@ -148,7 +148,7 @@
     <string name="update_auto_download">Nouda päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
     <string name="repo_error_empty_username">Ei käyttäjänimeä, tunnistetietoja ei muutettu</string>
-    <string name="bad_fingerprint">Huono sormenjälki</string>
+    <string name="bad_fingerprint">Virheellinen sormenjälki</string>
     <string name="invalid_url">Tämä URL-osoite ei ole kelvollinen.</string>
     <string name="menu_settings">Asetukset</string>
     <string name="menu_email">Lähetä sähköpostia tekijälle</string>
@@ -318,8 +318,8 @@
         <item quantity="other">Päivitetty %1$d päivää sitten</item>
     </plurals>
     <string name="installed_app__updates_ignored">Päivitykset ohitetaan</string>
-    <string name="app_details_donate_prompt_unknown_author">Osta sovelluksen %1$s kehittäjille kahvi!</string>
-    <string name="app_details_donate_prompt">Sovelluksen %1$s on luonut %2$s. Osta heille kahvi!</string>
+    <string name="app_details_donate_prompt_unknown_author">Tarjoa sovelluksen %1$s kehittäjille kahvi!</string>
+    <string name="app_details_donate_prompt">Sovelluksen %1$s on luonut %2$s. Tarjoa kahvi!</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Version %1$s päivitykset ohitetaan</string>
     <string name="updates__tts__download_app">Lataa</string>
     <string name="main_menu__swap_nearby">Lähellä</string>
@@ -355,8 +355,8 @@
     <string name="app_list__dismiss_app_update">Päivitys sivuutettu</string>
     <string name="app_list__dismiss_vulnerable_app">Haavoittuvuus sivuutettu</string>
     <string name="app_list__dismiss_downloading_app">Lataus peruttu</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Löysimme haavoittuvuuden kohteesta %1$s. Suosittelemme poistamaan sen heti.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Löysimme haavoittuvuuden %1$s -sovelluksesta. Suosittelemme päivittämään heti uusimpaan versioon.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Löysimme haavoittuvuuden %1$s-sovelluksesta. Suosittelemme poistamaan sen heti.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Löysimme haavoittuvuuden %1$s-sovelluksesta. Suosittelemme päivittämään heti uusimpaan versioon.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Sivuuta</string>
     <string name="repo_add_mirror">Lisää toisiopalvelin</string>
     <string name="sort_search">Lajittele haku</string>
@@ -445,8 +445,8 @@
     <string name="send_installed_apps">Jaa asennetut sovellukset</string>
     <string name="send_installed_apps_csv">Sovellukset, jotka F-Droid asentanut CSV-tiedostona</string>
     <string name="updates_disabled_by_settings">Kaikki päivitykset on poistettu käytöstä Mobiilidata/WiFi-asetuksissa</string>
-    <string name="repo_exists_add_fingerprint">%1$s on jo asennettu, tämä lisää uuden avaimen tiedot.</string>
-    <string name="repo_exists_enable">%1$s on jo asennettu, vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
+    <string name="repo_exists_add_fingerprint">%1$s on jo asennettu. Tämä lisää uuden avaimen tiedot.</string>
+    <string name="repo_exists_enable">%1$s on jo asennettu. Vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
     <string name="menu_open">Avaa</string>
     <string name="antinosourcesince">Lähdekoodi ei ole enää saatavilla, päivityksiä ei voi tehdä.</string>
@@ -469,7 +469,7 @@
     <string name="swap_hidden_wifi_ssid">(piilotettu)</string>
     <string name="disabled">Pois päältä</string>
     <string name="app_list__dismiss_installing_app">Asennus peruttu</string>
-    <string name="menu_select_for_wipe">Valitse pyyhkäisyä varten</string>
+    <string name="menu_select_for_wipe">Valitse pyyhintää varten</string>
     <string name="panic_will_be_wiped">Asennus ja kaikki data poistetaan</string>
     <string name="panic_apps_to_uninstall">Sovellukset, jotka poistetaan ja joiden data pyyhitään</string>
     <string name="panic_add_apps_to_uninstall">Lisää sovelluksia poistettavaksi ja pyyhittäväksi</string>
@@ -509,12 +509,12 @@
     <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
     <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
     <string name="antinonfreedep">Ei-vapaat riippuvuudet</string>
-    <string name="app_list_results_hidden_antifeature_settings">Jotkin tulokset on piilotettu ei-toivottujen asetusten perusteella.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Osa tuloksista piilotettiin antiominaisuusasetusten perusteella.</string>
     <string name="antiads">Mainokset</string>
     <string name="antitrack">Seuranta</string>
     <string name="antinonfreead">Ei-vapaat lisäosat</string>
     <string name="antinonfreenet">Ei-vapaat verkkopalvelut</string>
-    <string name="antiupstreamnonfree">Upstream ei-vapaa</string>
+    <string name="antiupstreamnonfree">Yläjuoksu ei-vapaa</string>
     <string name="antinonfreeassets">Ei-vapaa sisältö</string>
     <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
     <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
@@ -536,12 +536,12 @@
     <string name="copied_url_to_clipboard">URL kopioitu leikepöydälle</string>
     <string name="turn_on_wifi">Laita Wi-Fi päälle</string>
     <string name="nearby_splace__external_storage_permission_button">Kokeile sitä</string>
-    <string name="force_old_installer_title">Pakota vanha asentaja</string>
+    <string name="force_old_installer_title">Pakota vanha asennusohjelma</string>
     <string name="force_old_installer_summary">Poista käytöstä beta-session asentaja, mukaan lukien tuki automaattisille tausta päivityksille.</string>
     <string name="repo_state_adding">Lisätään ohjelmavarastoa…</string>
     <string name="repo_invalid">Virheellinen ohjelmavarasto.
 \n
-\nOta yhteyttä ylläpitäjään ja anna heidän tietää ongelmasta.</string>
+\nOta yhteyttä ylläpitäjään ja kerro ongelmasta.</string>
     <string name="repo_exists">Tämä ohjelmavarasto on jo lisätty.</string>
     <string name="targetsdk_or_later">kohteet %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-droid voi etsiä ohjelmavarastoja ja peilejä sinun SD-kortiltasi, mutta tarvitsee sinun suostumuksesi sitä varten.</string>
@@ -555,4 +555,17 @@
     <string name="swap_connection_indexv0_error">Yrität yhdistyä johonkin, jolla on käytössä vanhentunut F-Droid versio. Yhdistyäkseen heidän täytyy päivittää F-Droid sovellus. He voivat käyttää vaihtoa päivittääkseen F-Droid sovelluksen sinulta.</string>
     <string name="repo_num_apps_button">Näytä sovellukset</string>
     <string name="swap_banner_message">Vaihtaaksesi sovelluksia ota käyttöön Wi-Fi yhteys ja yhdisty samaan verkkoon kuin ystäväsi.</string>
+    <string name="repositories_last_update_never">ei koskaan</string>
+    <string name="ipfsgw_title">IPFS-yhdyskäytävät</string>
+    <string name="ipfsgw_caption_official_gateways">Viralliset IPFS-yhdyskäytävät</string>
+    <string name="ipfsgw_caption_custom_gateways">Mukautetut IPFS-yhdyskäytävät</string>
+    <string name="app_list_no_suggested_version">Ei asennettavaksi suositeltavaa versiota.</string>
+    <string name="repo_disable_warning_button">Poista käytöstä</string>
+    <string name="repo_archive_toggle_description">Näytä arkistoidut sovellukset ja sovellusten vanhentuneet versiot</string>
+    <string name="ipfsgw_add_title">Lisää IPFS-yhdyskäytävä</string>
+    <string name="ipfsgw_add_add">Lisää</string>
+    <string name="repositories_last_update">Viimeisin päivitys: %s</string>
+    <string name="useDnsCache">Käytä DNS-välimuistia</string>
+    <string name="useDnsCacheSummary">Käytä tuloksia välimuistista DNS-kyselyjen minimoimiseksi.</string>
+    <string name="paste">Liitä</string>
 </resources>

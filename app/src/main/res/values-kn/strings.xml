@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_full">ಎಫ್-ಡ್ರಾಯಿಡ್</string>
+    <string name="app_name_full">ಎಫ್-ಡ್ರಾಯ್ಡ್</string>
     <string name="version">ಆವೃತ್ತಿ</string>
     <string name="notification_action_install">ಸ್ಥಾಪಿಸಿ</string>
     <string name="notification_title_summary_install_error">ಸ್ಥಾಪನೆ ವಿಫಲವಾಗಿದೆ</string>
@@ -60,7 +60,7 @@
     <string name="app_inst_known_source">ಅನುಸ್ಥಾಪಿಸಲಾಗಿದೆ(%s ನಿಂದ)</string>
     <string name="app_inst_unknown_source">ಅನುಸ್ಥಾಪಿಸಲಾಗಿದೆ (ಗೊತ್ತಿಲ್ಲದ ಮೂಲದಿಂದ)</string>
     <string name="app_version_x_available">%1$s ಆವೃತ್ತಿಯು ಲಭ್ಯವಿದೆ</string>
-    <string name="about_title_full">ಎಫ್-ಡ್ರಾಯಿಡ್ ಬಗ್ಗೆ</string>
+    <string name="about_title_full">ಅಬೌಟ್ ಎಫ್ - ಡ್ರಾಯ್ಡ್</string>
     <string name="about_version">ಆವೃತ್ತಿ</string>
     <string name="about_site">ಜಾಲತಾಣ</string>
     <string name="about_license">ಪರವಾನಿಗೆ</string>
@@ -70,7 +70,7 @@
     <string name="other">ಇತರ</string>
     <string name="delete">ಅಳಿಸಿ</string>
     <string name="main_menu__categories">ವಿಭಾಗಗಳು</string>
-    <string name="updates">ನವೀಕರಣಗಳು</string>
+    <string name="updates">ಅಪ್ಡೇಟ್</string>
     <string name="category_Internet">ಇಂಟರ್ನೆಟ್</string>
     <string name="category_Money">ಹಣ</string>
     <string name="category_Reading">ಓದುವಿಕೆ</string>
@@ -155,7 +155,7 @@
     <string name="antifeatures">ವಿರೋಧಿ ವೈಶಿಷ್ಟ್ಯಗಳು</string>
     <string name="antiadslist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಜಾಹೀರಾತನ್ನು ಒಳಗೊಂಡಿದೆ</string>
     <string name="antinonfreeadlist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ಆಡ್-ಆನ್‌ಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ</string>
-    <string name="antinonfreenetlist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ನೆಟ್‌ವರ್ಕ್ ಸೇವೆಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ ಅಥವಾ ಅವಲಂಬಿಸುತ್ತದೆ</string>
+    <string name="antinonfreenetlist">ದಿಸ್ ಆ್ಯಪ್ ಪ್ರಮೋಟ್ಸ್ ಆರ್ ಡಿಪೆಂಡ್ಸ್ ಎಂಟೈರ್ಲಿ ಆನ್ ಎ ನಾನ್-ಚಾrj</string>
     <string name="antinonfreedeplist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಇತರ ಉಚಿತವಲ್ಲದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</string>
     <string name="antiupstreamnonfreelist">ಅಪ್ಸ್ಟ್ರೀಮ್ ಮೂಲ ಕೋಡ್ ಸಂಪೂರ್ಣವಾಗಿ ಉಚಿತವಲ್ಲ</string>
     <string name="antinonfreeassetslist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ಸ್ವತ್ತುಗಳನ್ನು ಒಳಗೊಂಡಿದೆ</string>
@@ -222,7 +222,7 @@
     <string name="install_history">ಸ್ಥಾಪನೆಗಳ ಇತಿಹಾಸ</string>
     <string name="install_history_summary">ಎಲ್ಲಾ ಸ್ಥಾಪನೆಗಳು ಮತ್ತು ಅಸ್ಥಾಪನೆಗಳ ಖಾಸಗಿ ಲಾಗ್ ಅನ್ನು ವೀಕ್ಷಿಸಿ</string>
     <string name="send_version_and_uuid">ಆವೃತ್ತಿ ಮತ್ತು ಯುಯುಐಡಿ ಅನ್ನು ಸರ್ವರ್‌ಗಳಿಗೆ ಕಳುಹಿಸಿ</string>
-    <string name="send_version_and_uuid_summary">ಡೌನ್‌ಲೋಡ್ ಮಾಡುವಾಗ ಈ ಅಪ್ಲಿಕೇಶನ್‌ನ ಆವೃತ್ತಿ ಮತ್ತು ಯಾದೃಚ್, ಅನನ್ಯ ID ಅನ್ನು ಸೇರಿಸಿ, ಇದು ಮುಂದಿನ ಅಪ್ಲಿಕೇಶನ್ ಮರುಪ್ರಾರಂಭದ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ.</string>
+    <string name="send_version_and_uuid_summary">ಇನ್ಕ್ಲೂಡ್ ದಿಸ್ ಆ್ಯಪ್ಸ್ ವರ್ಷನ್ ಅಂಡ್ ಎ ರ್ಯಾಂಡಮ್, ಯುನಿಕ್ ಐಡಿ ವೆನ್ ಡೌನ್ಲೋಡಿಂಗ್, ಟೇಕ್ಸ್ ಎಫೆಕ್ಟ್ ನೆಕ್ಸ್ಟ್ ಆ್ಯಪ್ ರಿಸ್ಟಾರ್ಟ್.</string>
     <string name="antinosourcesince">ಮೂಲ ಕೋಡ್ ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿಲ್ಲ, ಯಾವುದೇ ನವೀಕರಣಗಳು ಸಾಧ್ಯವಿಲ್ಲ.</string>
     <string name="send_install_history">ಸ್ಥಾಪಿಸಲಾದ ಇತಿಹಾಸವನ್ನು ಕಳುಹಿಸಿ</string>
     <string name="send_history_csv">%s ಇತಿಹಾಸವನ್ನು CSV ಫೈಲ್ ಆಗಿ ಸ್ಥಾಪಿಸಿ</string>
@@ -407,7 +407,7 @@
     <string name="swap_confirm_connect">ನೀವು ಈಗ %1$s ರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯಲು ಬಯಸುವಿರಾ\?</string>
     <string name="swap_join_same_wifi_desc">Wi-Fi ಬಳಸಿ ಸ್ವ್ಯಾಪ್ ಮಾಡಲು, ನೀವು ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿದ್ದೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ನಿಮಗೆ ಪ್ರವೇಶವಿಲ್ಲದಿದ್ದರೆ, ನಿಮ್ಮಲ್ಲಿ ಒಬ್ಬರು ವೈ-ಫೈ ಹಾಟ್‌ಸ್ಪಾಟ್ ರಚಿಸಬಹುದು.</string>
     <string name="swap_join_same_wifi">ನಿಮ್ಮ ಸ್ನೇಹಿತನಂತೆಯೇ ಅದೇ Wi-Fi ಗೆ ಸೇರಿ</string>
-    <string name="nearby_splash__request_permission">ಪ್ರಯತ್ನಪಡು</string>
+    <string name="nearby_splash__request_permission">ಸರ್ಚ್ ನೌ</string>
     <string name="nearby_splash__document_tree">ರೆಪೊಗಳು ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಯುಎಸ್‌ಬಿ ಒಟಿಜಿಯನ್ನು ಹುಡುಕಿ.</string>
     <string name="nearby_splash__read_external_storage">ರೆಪೊಸಿಟರಿ ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಎಸ್‌ಡಿ ಕಾರ್ಡ್ ಹುಡುಕಿ.</string>
     <string name="nearby_splash__both_parties_need_fdroid">ಹತ್ತಿರದಲ್ಲಿ ಬಳಸಲು ಎರಡೂ ಪಕ್ಷಗಳಿಗೆ %1$s ಅಗತ್ಯವಿದೆ.</string>
@@ -508,4 +508,80 @@
     <string name="app_list_results_hidden_antifeature_settings">ನಿಮ್ಮ ಆಂಟಿಫೀಚರ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಆಧರಿಸಿ ಕೆಲವು ಫಲಿತಾಂಶಗಳನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ.</string>
     <string name="has_disallow_install_unknown_sources_globally">ಹೊಸ ರೆಪೊಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಅಜ್ಞಾತ ಮೂಲಗಳಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲು ನಿಮ್ಮ ಸಾಧನ ನಿರ್ವಾಹಕರು ಅನುಮತಿಸುವುದಿಲ್ಲ</string>
     <string name="swap_wifi_vpn_conflict">ಸಕ್ರಿಯ ವಿ.ಪಿ.ಎನ್ ಜೊತೆಗೆ ಸಂಘರ್ಷಿಸುತ್ತದೆ!</string>
+    <string name="app_name_basic">ಎಫ್-ಡ್ರಾಯ್ಡ್ ಬೇಸಿಕ್</string>
+    <string name="ipfsgw_caption_custom_gateways">ಕಸ್ಟಮೈಜ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ವೇಸ್</string>
+    <string name="repo_last_update_downloaded">ಲಾಸ್ಟ್ ಅಪ್‌ಡೇಟ್ ಡೌನ್‌ಲೋಡ್</string>
+    <string name="repo_disable_warning">ಡಿಸೇಬ್ಲಿಂಗ್ ದಿಸ್ ರೆಪೊಸಿಟರಿ ವಿಲ್ ರಿಮೋವ್ ಇಟ್ಸ್ \"ಪ್ರಿಫರ್ಡ್\" ಸ್ಥಿತಿ ಫ್ರಾಮ್ ಆಲ್ ಅಲ್ ಅಪ್ಪ್ಸ್.</string>
+    <string name="share_apk_error">ಅಪ್ಲಿಕೇಶನ್ ಫೈಲ್ ಹಂಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="warning_target_sdk">ಈ ಅಪ್ಲಿಕೇಶನ್ ಹಳಈ ಅಪ್ಲಿಕೇಶನ್‌ನು ಹಳೆಯ ಆಂಡ್ರಾಯ್ಡ್ ಆವೃತ್ತಿಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ ಮತ್ತು ಸ್ವಯಂಮತ್ತಾಯವಾಗಿ ನವೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
+    <string name="swap_connection_indexv0_error">ನೀವು ಹಳೆಯ ಆವೃತ್ತಿಯ F-Droid ಅನ್ನು ಹೊಂದಿರುವ ಯಾರಾದರು ಸಂಪರ್ಕ ಸ್ಥಾಪಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದೀರಿ. ಅವರು ತಮ್ಮ F-Droid ಅಪ್ಲಿಕೇಶನ್‌ನನ್ನು ನವೀಕರಿಸಬೇಕಾಗಿರುತ್ತದೆ. ಅವರು ನಿಮ್ಮಿಂದ F-Droid ಅಪ್ಲಿಕೇಶನ್‌ನನ್ನು ನವೀಕರಿಸಲು ಸ್ವಾಪ್ ಬಳಸಬಹುದು.</string>
+    <string name="ipfsgw_explainer">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಫ್ರಮ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್. ( ಓನ್ಲಿ ವರ್ಕ್ಸ್ ಫಾರ್ ಎಫ್-ಡ್ರಾಯ್ಡ್ ರಿಪೋಸಿಟರೀಸ್ ವಿತ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಸಪೋರ್ಟ್.)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಯೂಸಿಂಗ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್: %1$d ಎನೇಬೆಲ್ಡ್</item>
+        <item quantity="other">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಯೂಸಿಂಗ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್: %6$d ಎನೇಬೆಲ್ಡ್</item>
+    </plurals>
+    <string name="menu_release_channel_beta">ಅಲೊ ಬೀಟ ಅಪ್ಡೇಟ್ಸ್</string>
+    <string name="targetsdk_or_later">ಟಾರ್ಗೇಟ್%s</string>
+    <string name="swap_banner_message">ಆಪ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಲು, ನಿಮ್ಮ Wi-Fi ಅನ್ನು ಆರಂಭಿಸಿ ಮತ್ತು ನಿಮ್ಮ ಸ್ನೇಹಿತನೊಂದಿಗೆ ಒಂದೇ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕ ಮಾಡಿ.</string>
+    <string name="copied_to_clipboard">ಕಾಪೀಡ್</string>
+    <string name="app_details_repository">ರೆಪೋಸಿಟರಿ</string>
+    <string name="app_list_no_suggested_version">ನೋ ವರ್ಷನ್ ರೆಕಮೆಂಡೆಡ್ ಫಾರ್ ಇನ್ಸ್ಟಾಲೇಷನ್.</string>
+    <string name="repo_add_new_title">‌ಆಡ್ ರೆಪೋಸಿಟರಿ</string>
+    <string name="repo_state_fetching">ರೆಪೊಸಿಟರಿಯನ್ನು ಪಡೆಯಲಾಗುತ್ತಿದೆ…</string>
+    <string name="repo_exists">ಈ ರೆಪೋವನ್ನು ಈಗಾಗಲೇ ಸೇರಿಸಲಾಗಿದೆ.</string>
+    <string name="repo_share_not_found">ಕುಡ್ ನಾಟ್ ಫೈಂಡ್ ರೆಪೋ ಅಡ್ಡ್ರಸ್ಸ್ ಇನ್ ಶೇರ್ಡ್ ಟೆಕ್ಸ್ಟ್.</string>
+    <string name="useDnsCache">ಯೂಸ್ ಡಿಎನ್ಎಸ್ ಕ್ಯಾಚೆ</string>
+    <string name="repo_list_info_text">ಎ ರೆಪೊಸಿಟರಿ ಇಸ್ ಎ ಸೋರ್ಸ್ ಒಫ್ ಅಪ್ಪ್ಸ್. ತಿಸ್ ಲಿಸ್ಟ್ ಶೋಸ್ ಅಲ್ ಕರೆಂಟ್ಲಿ ಅಡೆಡ್ ರೆಪೊಸಿಟರಿಸ್. ಡಿಸೇಬ್ಲೆಡ್ ರೆಪೊಸಿಟರಿಸ್ ಅರೆ ನೋಟ್ ಉಸೆಡ್.
+\n
+\nಇಫ್ ಅನ್ ಅಪ್ಪ್ ಇಸ್ ಇನ್ ಮೋರ್ ತನ್ ವನ್ ರೆಪೊಸಿಟರಿ, ದ ರೆಪೊಸಿಟರಿ ಹೈಯರ್ ಇನ್ ದಿ ಲಿಸ್ಟ್ ಇಸ್ ಆಟೊಮ್ಯಟಿಕಲ್ಲ್ಯ್ ಪ್ರಿಫರ್ಡ್. ಯು ಕ್ಯಾನ್ ರಿಓರ್ಡರ್ ರೆಪೊಸಿಟರಿಸ್ ಬೈ ಲಾಂಗ್ ಪ್ರೆಸಿಂಗ್ ಅಂಡ್ ಡ್ರಾಗಿಂಗ್ ತೆಂ.</string>
+    <string name="repo_archive_toggle_description">ಶೋ ಆರ್ಕೈವ್‌ಡ್ ಅಪ್ಪ್ಸ್ ಮತ್ತು ಓಡ್ಡೇಟ್‌ಡ್ ವರ್ಸನ್ಸ್ ಆಫ್ ಅಪ್ಪ್ಸ್</string>
+    <string name="repo_archive_failed">ಅರ್ಕೈವ್ ರೆಪೊ ಪ್ರಸ್ತುತವಾಗಿ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="repo_disable_warning_button">ಡಿಸೇಬ್ಲ್</string>
+    <string name="repositories_last_update">ಲಾಸ್ಟ್ ಅಪ್ಡೇಟ್: %s</string>
+    <string name="repositories_last_update_never">ನೆವರ್</string>
+    <string name="antinsfwlist">ದಿಸ್ ಆಪ್ ಕಂಟೇಂನ್ಸ ಕಂಟೆಂಟ್ ದಟ್ ಶುಡ್ ನಾಟ್ ಬಿ ಪಬ್ಲಿಸಿಜೈಡ್ ಆರ್ ವಿಸಿಬಲ್ ಎವ್ರಿವೇರ್</string>
+    <string name="useDnsCacheSummary">ಯೂಸ್ ಕ್ಯಾಚೇಡ್ ರಿಸಲ್ಟ್ಸ್ ಟು ಮಿನಿಮೈಜ್ ಡಿಎನ್ಎಸ್ ಕ್ವೆರೀಸ್.</string>
+    <string name="repo_archive_toggle">ರೆಪೊಸಿಟರಿ ಆರ್ಕೈವ್</string>
+    <string name="repo_list_info_title">ರೆಪೋಸಿಟರಿ ಲಿಸ್ಪ್</string>
+    <string name="ipfsgw_add_add">ಆ್ಯಡ್</string>
+    <string name="antiads">ಆಡ್ಸ್</string>
+    <string name="antitrack">ಟ್ರ್ಯಾಕಿಂಗ್</string>
+    <string name="antinonfreead">ನಾನ್-ಫ್ರೀ ಆಡ್ಆನ್ಸ</string>
+    <string name="force_old_installer_summary">ಡಿಸೇಬಲ್ ದ ಸೆಶನ್ ಇನ್ಸ್ಟಾಲರ್, ಇನ್ಕ್ಲೂಡಿಂಗ್ ಸಪೋರ್ಟ್ ಫಾರ್ ಆಟೋಮ್ಯಾಟಿಕ್ background ಅಪ್ಡೇಟ್ಸ್.</string>
+    <string name="repo_add_new_mirror">ಆಡ್ ಆಸ್ ನ್ಯೂ ಮಿರರ್</string>
+    <string name="repo_state_adding">ರೆಪೊಸಿಟರಿಯನ್ನು ಸೇರಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="repo_invalid">ಅಮಾನ್ಯವಾದ ರೆಪೊಸಿಟರಿ. ನಿರ್ವಾಹಕರನ್ನು ಸಂಪರ್ಕಿಸಿ ಮತ್ತು ಸಮಸ್ಯೆಯ ಬಗ್ಗೆ ಅವರಿಗೆ ತಿಳಿಸಿ.</string>
+    <string name="latest__empty_state__upgrading">ಅಪ್ಗ್ರೇಡಿಂಗ್ ಡಾಟಾ ಬೇಸ್…</string>
+    <string name="antinonfreenet">ನಾನ್-ಫ್ರೀ ನೆಟ್ವರ್ಕ್ ಸರ್ವೀಸಸ್</string>
+    <string name="antinonfreedep">ನಾನ್-ಫ್ರೀ ಡಿಪೆಂಡೆನ್ಸಿಸ್</string>
+    <string name="antiupstreamnonfree">ಅಪ್ಸ್ಟ್ರೀಮ್ ನಾನ್-ಫ್ರೀ</string>
+    <string name="antidisabledalgorithm">ಸೈನ್ಡ್ ಯುಸಿಂಗ್ ಆನ್ ಆನ್ಸೇಫ್ ಆಲ್ಗೋರಿಥಂ</string>
+    <string name="antinsfw">ನಾಟ್ ಸೇಫ್ ಫಾರ್ ವರ್ಕ್</string>
+    <string name="antiothers">ಅದರ್ ಆಂಟಿ-ಫೀಚರ್ಸ್</string>
+    <string name="category_Nightly">ನೈಟ್ಲಿ</string>
+    <string name="ipfsgw_add_title">ಆ್ಯಡ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ವೆ</string>
+    <string name="ipfsgw_caption_official_gateways">ಆಫೀಶಿಯಲ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ವೇಸ್</string>
+    <string name="app_error_open">ಕುಡ್ ನಾಟ್ ಲಾಂಚ್ ಆ್ಯಪ್.</string>
+    <string name="antiknownvuln">ನೋನ್ ವಲ್ನೆರಬಿಲಿಟಿ</string>
+    <string name="repo_io_error">ರೆಪೊಸಿಟರಿಯನ್ನು ಸಂಪರ್ಕಿಸುವಲ್ಲಿ ದೋಷ.</string>
+    <string name="ipfsgw_summary_disabled">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಯೂಸಿಂಗ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್: ಡಿಸೇಬಲ್ಡ್</string>
+    <string name="copied_url_to_clipboard">ಕಾಪೀಡ್ ಯು ಅರ್ ಎಲ್ ಟು ಕ್ಲಿಪ್ ಬೋರ್ಡ್</string>
+    <string name="copied_permission_to_clipboard">ಕಾಪೀಡ್ ಪರ್ಮಿಷನ್ ನೇಮ್ ಟು ಕ್ಲಿಪ್ ಬೋರ್ಡ್</string>
+    <string name="paste">ಪೇಸ್ಟ್</string>
+    <string name="ipfsgw_title">ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ ವೇಸ್</string>
+    <string name="nearby_splace__external_storage_permission_button">ಟ್ರೈ ಇಟ್</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid\' ನಿಮ್ಮ SD ಕಾರ್ಡ್‌ನಲ್ಲಿ ರೆಪೊಗಳು ಮತ್ತು ಮಿರರ್‌ಗಳನ್ನು ಹುಡುಕಬಲ್ಲದು, ಆದರೆ ಹಾಗೆ ಮಾಡಲು ನಿಮ್ಮ ಅನುಮತಿಯ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="repo_num_apps_button">ಶೋ ಅಪ್ಪ್ಸ್</string>
+    <string name="turn_on_wifi">ವೈ-ಫೈ ಸಕ್ರಿಯಗೊಳಿಸಿ.</string>
+    <string name="force_old_installer_title">ಫೋರ್ಸ್ ಓಲ್ಡ್ ಇನ್ಸ್ಟಲ್ಲರ್</string>
+    <string name="app_details_repositories">ರೆಪೋಸಿಟರೀಸ್</string>
+    <string name="app_details_repository_preferred">(ಪ್ರಿಫ್ರರ್ಡ್)</string>
+    <string name="app_details_repository_button_prefer">ಪ್ರಿಫರ್ ರೆಪೋಸಿಟರಿ</string>
+    <string name="about_title_basic">ಅಬೌಟ್ ಎಫ್ - ಡ್ರಾಯ್ಡ್ ಬೇಸಿಕ್</string>
+    <string name="app_details_repository_expand">ಎಕ್ಸ್ಪ್ಯಾಂಡ್ ರೆಪೋಸಿಟರಿ ಲಿಸ್ಟ್</string>
+    <string name="repo_error_adding_archive">ಆರ್ಚೀವ್ ರೆಪೋಸಿಟರೀಸ್ ಕ್ಯಾನ್ ನಾಟ್ ಬಿ ಆಡೆಡ್ ಡೈರೆಕ್ಲಿ. ಟ್ಯಾಪ್ ದ ರೆಪೋಸಿಟರಿ ಇನ್ ದ ಲಿಸ್ಟ ಅಂಡ್ ಎನೇಬಲ್ ಅಂಡ್ ಎನೇಬಲ್ ದ ಆರ್ಚೀವ್ ದೇರ್.</string>
+    <string name="repo_intro">ರೆಪೊಸಿಟರಿಯು ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಹೆಚ್ಚುವರಿ ಮೂಲವಾಗಿದೆ. ನೀವು ಇಲ್ಲಿ ಸೇರಿಸುವ ಮೂರನೇ ವ್ಯಕ್ತಿಗಳು F-Droid ಸ್ವತಃ ನಿರ್ಮಿಸಿದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಒದಗಿಸುವುದಕ್ಕಿಂತ ವಿಭಿನ್ನ ಮಾನದಂಡಗಳನ್ನು ಹೊಂದಿವೆ. ನೀವು ಸೇರಿಸುತ್ತಿರುವ ರೆಪೊಸಿಟರಿಯು ನಂಬಲರ್ಹವಾಗಿದೆ ಎಂಬುದನ್ನು ದಯವಿಟ್ಟು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.</string>
+    <string name="repo_enter_url">ರೆಪೊಸಿಟರಿ URL ಅನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ನಮೂದಿಸಿ</string>
+    <string name="antinonfreeassets">ನಾನ್-ಫ್ರೀ ಅಸ್ಸೆಟ್ಸ್</string>
+    <string name="antinosource">ಸೋರ್ಸ್ ಕೋಡ್ ನೊ ಲಾಂಗರ್ ಅವೆಲೇಬಲ್</string>
 </resources>

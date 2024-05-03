@@ -542,4 +542,5 @@
     <string name="repo_enter_url">রিপোজিটরির ইউআরএল নিজে যোগ করুন</string>
     <string name="repo_add_new_mirror">নতুন মিরর হিসেবে যোগ করুন</string>
     <string name="repo_num_apps_button">অ্যাপগুলো দেখান</string>
+    <string name="force_old_installer_summary">বেটা সেশন ইন্সটলার বন্ধ করুন, সয়ংক্রিয় ব্যাকগ্রাউন্ড আপডেটসহ</string>
 </resources>

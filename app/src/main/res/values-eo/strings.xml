@@ -550,7 +550,7 @@
     <string name="swap_connection_indexv0_error">Vi provas konekti kun persono, kiu havas malnovan version de F-Droid. Por konekti, li devas ĝisdatigi la aplikaĵon F-Droid. Li povas uzi la eblon “Interŝanĝi” por elŝuti F-Droid el via aparato.</string>
     <string name="copied_to_clipboard">Kopiita al tondujo</string>
     <string name="force_old_installer_title">Devigi malnovan instalilon</string>
-    <string name="force_old_installer_summary">Malaktivigi la betan seancan instalilon kaj subtenon por aŭtomataj fonaj ĝisdatigoj.</string>
+    <string name="force_old_installer_summary">Malaktivigi la seancan instalilon kaj subtenon por aŭtomataj fonaj ĝisdatigoj.</string>
     <string name="targetsdk_or_later">kompilita por %s</string>
     <string name="copied_permission_to_clipboard">Nomo de permeso kopiita al tondujo</string>
     <string name="copied_url_to_clipboard">Ligilo kopiita al tondujo</string>

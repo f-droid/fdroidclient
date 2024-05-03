@@ -59,7 +59,7 @@
     <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
     <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>
     <string name="antinonfreeadlist">Táto aplikácia propaguje neslobodné doplnky</string>
-    <string name="antinonfreenetlist">Táto aplikácia propaguje alebo je plne závislá na neslobodných sieťových službách</string>
+    <string name="antinonfreenetlist">Táto aplikácia propaguje alebo je plne závislá na nemenných alebo neslobodných sieťových službách</string>
     <string name="antinonfreedeplist">Táto aplikácia závisí na iných neslobodných aplikáciách</string>
     <string name="antiupstreamnonfreelist">Originálny zdrojový kód nie je úplne slobodný</string>
     <string name="display">Zobraziť</string>
@@ -420,7 +420,7 @@
     <string name="hide_all_notifications_summary">Nezobrazovať nijakú aktivitu v notifikačnej lište ani v stavovom riadku.</string>
     <string name="send_history_csv">%s história inštalácií ako CSV súbor</string>
     <string name="install_history_summary">Zobraziť súkromný záznam o všetkých inštaláciách a deinštaláciách</string>
-    <string name="send_version_and_uuid_summary">Pri sťahovaní zahrnúť verziu tejto aplikácie a náhodný jedinečný identifikátor (zmena sa prejaví po reštarte aplikácie).</string>
+    <string name="send_version_and_uuid_summary">Pri sťahovaní zahrnúť verziu tejto aplikácie a náhodný jedinečný identifikátor pri sťahovaní, zmena sa prejaví po reštarte aplikácie.</string>
     <string name="over_network_on_demand_summary">Použiť toto pripojenie iba keď stlačím Stiahnuť</string>
     <string name="scan_removable_storage_title">Prehľadať odpojiteľné úložisko</string>
     <string name="scan_removable_storage_toast">Prehľadáva sa %s…</string>
@@ -534,7 +534,7 @@
     <string name="has_disallow_install_unknown_sources_globally">Administrátor Vášho zariadenia nepovoluje inštalovať aplikácie z neznámych zdrojov, a to zahŕňa aj nové repozitáre</string>
     <string name="menu_show_fdroid_metrics_report">Ukázať správu metriky</string>
     <string name="antiknownvuln">Známa slabina</string>
-    <string name="antinsfw">Táto aplikácia obsahuje obsah, ktorý by nemal byť publikovaný alebo viditeľný všade</string>
+    <string name="antinsfw">Nie je bezpečné pre prácu</string>
     <string name="antinonfreeassets">Neslobodné aktíva</string>
     <string name="antidisabledalgorithm">Podpísané pomocou nebezpečného algoritmu</string>
     <string name="antinosource">Zdrojový kód už nie je dostupný</string>
@@ -549,4 +549,36 @@
     <string name="menu_show_install_history">Ukázať históriu inštalácií</string>
     <string name="menu_release_channel_beta">Povoliť Beta aktualizácie</string>
     <string name="latest__empty_state__upgrading">Prebieha upgrade databázy…</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">O F-Droide Basic</string>
+    <string name="antinsfwlist">Táto aplikácia má obsah, ktorý by nemal byť publikovaný alebo viditeľný všade</string>
+    <string name="app_details_repository">Repozitár</string>
+    <string name="app_details_repository_expand">Rozbaliť zoznam repozitárov</string>
+    <string name="useDnsCacheSummary">Použi výsledky uložené vo vyrovnávacej pamäti aby sa minimalizoval počet DNS žiadostí.</string>
+    <string name="useDnsCache">Použi DNS Cache</string>
+    <string name="repo_list_info_title">Zoznam repozitárov</string>
+    <string name="force_old_installer_title">Pôvodný inštalačný program</string>
+    <string name="app_details_repositories">Repozitáre</string>
+    <string name="app_list_no_suggested_version">Neexistuje doporučená verzia na inštaláciu.</string>
+    <string name="repo_state_fetching">Načítavanie repozitára…</string>
+    <string name="repo_enter_url">Napísať URL repozitára manuálne</string>
+    <string name="repo_exists">Tento repozitár bol už pridaný.</string>
+    <string name="repo_invalid">Neplatný repozitár.
+\n
+\nKontaktuje správcu a dajte im vedieť o probléme.</string>
+    <string name="repo_io_error">Chyba pri pripájaní k repozitáru.</string>
+    <string name="repo_share_not_found">Nemožno nájsť adresu repozitára v zdieľanom texte.</string>
+    <string name="repositories_last_update">Posledná aktualizácia %s</string>
+    <string name="repositories_last_update_never">nikdy</string>
+    <string name="force_old_installer_summary">Deaktivovať beta reláciu inštalačného programu, vrátane podpory automatických aktualizácii na pozadí.</string>
+    <string name="app_details_repository_preferred">(preferovaný)</string>
+    <string name="app_details_repository_button_prefer">Preferuj repozitár</string>
+    <string name="app_error_open">Nepodarilo sa spustiť aplikáciu.</string>
+    <string name="repo_intro">Repozitár je prídavný zdroj aplikácií. Tie z tretích strán, ktoré sem pridáte majú iné štandardy ako tie, ktoré poskytujú aplikácie postavené samotným F-Droidom.
+\n
+\nProsím uistite sa, že repozitár, ktorý pridávate je dôveryhodný.</string>
+    <string name="repo_state_adding">Pridávanie repozitára…</string>
+    <string name="repo_error_adding_archive">Archívne repozitáre nemožno pridávať priamo. Ťuknite na repozitár v zozname a povoľte archív tam.</string>
+    <string name="repo_add_new_title">Pridať repozitár</string>
+    <string name="repo_add_new_mirror">Pridať ako nové zrkadlo</string>
 </resources>

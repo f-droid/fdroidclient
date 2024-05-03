@@ -572,7 +572,7 @@
     <string name="copied_to_clipboard">Copiado al portapapeles</string>
     <string name="copied_permission_to_clipboard">Nombre de permiso copiado al portapapeles</string>
     <string name="copied_url_to_clipboard">URL copiada al portapapeles</string>
-    <string name="force_old_installer_summary">Deshabilita el instalador de Sesión beta, incluida la compatibilidad con actualizaciones automáticas en segundo plano.</string>
+    <string name="force_old_installer_summary">Deshabilita el instalador de la sesión, incluido el soporte para las actualizaciones automáticas en segundo plano.</string>
     <string name="targetsdk_or_later">objetivos %s</string>
     <string name="repo_num_apps_button">Mostrar las aplicaciones</string>
     <string name="ipfsgw_caption_official_gateways">Pasarelas oficiales IPFS</string>

@@ -55,7 +55,7 @@
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
     <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
     <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>
-    <string name="antinonfreenetlist">Aquesta aplicació promou un servei de xarxa no lliure, o en depèn completament</string>
+    <string name="antinonfreenetlist">Aquesta aplicació depèn completament d\'un servei de xarxa no lliure</string>
     <string name="antinonfreedeplist">Aquesta aplicació depèn d\'altres aplicacions no lliures</string>
     <string name="antiupstreamnonfreelist">El codi font no és del tot lliure</string>
     <string name="display">Pantalla</string>
@@ -423,7 +423,7 @@
     <string name="scan_removable_storage_summary">Cerca dipòsits de paquets en emmagatzematge extraïble com ara targetes SD i memòries USB</string>
     <string name="main_menu__updates">Actualitzacions</string>
     <string name="nearby_splash__read_external_storage">Cerca a la memòria SD repositoris d\'intercanvi.</string>
-    <string name="nearby_splash__request_permission">Prova-ho</string>
+    <string name="nearby_splash__request_permission">Cerca ara</string>
     <string name="not_visible_nearby">Proximitat no habilitada</string>
     <string name="not_visible_nearby_description">Abans d\'intercanviar amb dispositius propers, feu el vostre dispositiu visible.</string>
     <string name="swap_toast_using_path">Utilitzant %1$s</string>
@@ -487,7 +487,124 @@
     <string name="antinonfreeassets">Recursos no gratuïts</string>
     <string name="antiupstreamnonfree">Upstream no lliure</string>
     <string name="antiothers">Altres anti-característiques</string>
-    <string name="antinsfw">El contingut d\'aquesta aplicació pot no ser adequat per divulgar-lo o veure\'l arreu</string>
+    <string name="antinsfw">Aquesta aplicació no és segura</string>
     <string name="latest__empty_state__upgrading">S\'està actualitzant la base de dades…</string>
     <string name="menu_release_channel_beta">Permet actualitzar a versions beta</string>
+    <string name="app_name_basic">F-Droid Bàsic</string>
+    <string name="about_title_basic">Sobre F-Droid Bàsic</string>
+    <string name="app_details_repository">Repositori</string>
+    <string name="app_list_no_suggested_version">Cap versió recomanada per instal·lar.</string>
+    <string name="app_details_repository_expand">Amplia la llista de repositoris</string>
+    <string name="app_error_open">No s\'ha pogut iniciar l\'applicació.</string>
+    <string name="repo_add_new_title">Afegir repositori</string>
+    <string name="repo_add_new_mirror">Afegeix-ho com un nou mirror</string>
+    <string name="force_old_installer_title">Forçar l\'instalador anterior</string>
+    <string name="force_old_installer_summary">Desactivar la sessió de l\'instal·lador, incloent-hi el suport a les actualitzacions automàtiques en segon pla.</string>
+    <string name="app_details_repositories">Repositoris</string>
+    <string name="app_details_repository_preferred">(preferit)</string>
+    <string name="app_details_repository_button_prefer">Repositori preferit</string>
+    <string name="repo_disable_warning_button">Desactiva</string>
+    <string name="swap_banner_message">Per intercanviar aplicacions, engegueu el vostre Wi-Fi i connecteu-vos a la mateixa xarxa que la de l\'altre dispositiu.</string>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+%1$d més…</item>
+        <item quantity="many">+%1$d més…</item>
+        <item quantity="other">+%1$d més…</item>
+    </plurals>
+    <string name="repositories_last_update">Darrera actualització: %s</string>
+    <string name="repositories_last_update_never">mai</string>
+    <string name="antinsfwlist">Aquesta aplicació té contingut que no s\'ha de fer públic ni visible a tot arreu</string>
+    <string name="useDnsCacheSummary">Empra els resultats de la memòria cau per a minimitzar el nombre de consultes de DNS.</string>
+    <string name="repo_list_info_title">Llista de repositoris</string>
+    <string name="repo_archive_toggle">Històric del Repositori</string>
+    <string name="repo_archive_failed">L\'històric del repositori no està disponible</string>
+    <string name="repo_last_update_downloaded">Darrera actualització descarregada</string>
+    <string name="repo_disable_warning">Desactivant aquest repositori traureu el seu estat \"preferit\" a totes les aplicacions.</string>
+    <plurals name="details_last_update_years">
+        <item quantity="one">Actualitzat fa %1$d any</item>
+        <item quantity="many">Actualitzat fa %1$d anys</item>
+        <item quantity="other">Actualitzat fa %1$d anys</item>
+    </plurals>
+    <string name="copied_url_to_clipboard">S’ha copiat l’URL al porta-retalls</string>
+    <string name="copied_to_clipboard">S’ha copiat al porta-retalls</string>
+    <string name="copied_permission_to_clipboard">S\'ha copiat el nom del permís al porta-retalls</string>
+    <plurals name="button_view_all_apps_in_category">
+        <item quantity="one">Mostra %d</item>
+        <item quantity="many">Mostra el %d</item>
+        <item quantity="other">Mostra el %d</item>
+    </plurals>
+    <plurals name="notification_summary_updates">
+        <item quantity="one">%1$d actualització</item>
+        <item quantity="many">%1$d actualitzacions</item>
+        <item quantity="other">%1$d actualitzacions</item>
+    </plurals>
+    <plurals name="notification_summary_installed">
+        <item quantity="one">S\'ha instal·lat %1$d aplicació</item>
+        <item quantity="many">S\'han instal·lat %1$d aplicacions</item>
+        <item quantity="other">S\'han instal·lat %1$d aplicacions</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">Actualitzat fa %1$d mes</item>
+        <item quantity="many">Actualitzat fa %1$d mesos</item>
+        <item quantity="other">Actualitzat fa %1$d mesos</item>
+    </plurals>
+    <string name="repo_state_fetching">S\'està baixant el repositori…</string>
+    <string name="repo_error_adding_archive">No es pot afegir històrics del repositori directament. Cliqueu el repositori a la llista i activeu l’arxiu allà.</string>
+    <string name="category_Nightly">cada nit</string>
+    <string name="app__tts__downloading_progress">S\'ha acabat de baixar %1$d%%</string>
+    <string name="warning_target_sdk">Aquesta aplicació va ser muntada per a una versió més antiga d\'Android i no es pot actualitzar automàticament.</string>
+    <string name="turn_on_wifi">Encén el wifi</string>
+    <plurals name="details_last_update_days">
+        <item quantity="one">Actualitzat fa %1$d dia</item>
+        <item quantity="many">Actualitzat fa %1$d dies</item>
+        <item quantity="other">Actualitzat fa %1$d dies</item>
+    </plurals>
+    <string name="targetsdk_or_later">objectius %s</string>
+    <string name="repo_state_adding">S\'està afegint el repositori…</string>
+    <string name="repo_enter_url">Entreu la URL del repositori</string>
+    <string name="repo_exists">Aquest repositori ja s\'ha afegit.</string>
+    <string name="repo_invalid">Repositori no vàlid.
+\n
+\nInformeu al coordinador.</string>
+    <string name="repo_io_error">S\'ha produït un error al connectar amb el repositori.</string>
+    <plurals name="details_last_update_weeks">
+        <item quantity="one">Actualitzat fa %1$d setmana</item>
+        <item quantity="many">Actualitzat fa %1$d setmanes</item>
+        <item quantity="other">Actualitzat fa %1$d setmanes</item>
+    </plurals>
+    <string name="useDnsCache">Empra la memòria cau de DNS</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid pot buscar repositoris i miralls a la vostra targeta SD, però per fer-ho, necessita el vostre permís.</string>
+    <string name="nearby_splace__external_storage_permission_button">Prova-ho</string>
+    <string name="repo_share_not_found">No ha estat possible trobar l\'adreça del repositori en el text compartit.</string>
+    <string name="repo_archive_toggle_description">Mostra les aplicacions arxivades i les versions antigues de les aplicacions</string>
+    <string name="repo_list_info_text">Un repositori és una font d’aplicacions. Aquesta llista mostra tots els repositoris afegits actualment. No s\'utilitzen repositoris inactius.
+\n
+\nSi una aplicació es troba en més d\'un repositori, es prefereix aquest repositori automàticament. Podeu reordenar repositoris clicant-hi i arrossegant-los.</string>
+    <string name="repo_num_apps_button">Mostra les aplicacions</string>
+    <plurals name="updates__download_updates_for_apps">
+        <item quantity="one">Descàrrega l\'actualització de %1$d aplicació.</item>
+        <item quantity="many">Descàrrega les actualitzacions de %1$d aplicacions.</item>
+        <item quantity="other">Descàrrega les actualitzacions de %1$d aplicacions.</item>
+    </plurals>
+    <string name="repo_intro">Un repositori és una font addicional d\'aplicacions. Les aplicacions de tercers que afegiu aquí tenen diferents estàndards que els que proporcionen les aplicacions construïdes pel propi F-Droid.
+\n
+\nSi us plau, assegureu-vos que el repositori que esteu afegint és fiable.</string>
+    <string name="swap_connection_indexv0_error">Esteu intentant connectar amb algú que té una versió massa antiga de F-Droid. Per connectar cal actualitzar la seva aplicació F-Droid. Podeu utilitzar intercanviar per actualitzar la seva aplicació F-Droid des de la vostre.</string>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">Mostra %1$d de la categoria %2$s</item>
+        <item quantity="many">Mostra les aplicacions %1$d de la categoria %2$s</item>
+        <item quantity="other">Mostra les aplicacions %1$d de la categoria %2$s</item>
+    </plurals>
+    <string name="ipfsgw_caption_official_gateways">Passarel·les IPFS Oficials</string>
+    <string name="ipfsgw_caption_custom_gateways">Passarel·les IPFS a mida</string>
+    <string name="paste">Enganxa</string>
+    <string name="ipfsgw_title">Passarel·la IPFS</string>
+    <string name="ipfsgw_add_title">Afegeix una passarel·la IPFS</string>
+    <string name="ipfsgw_summary_disabled">Descàrrega les aplicacions des de nodes IPFS: desactivat</string>
+    <string name="ipfsgw_add_add">Afegeix</string>
+    <string name="ipfsgw_explainer">Descàrrega les aplicacions des de nodes IPFS. (Només funciona per a repositoris de F-Droid amb suport per a IPFS.)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Descàrrega les aplicacions des de nodes IPFS: %1$d habilitat</item>
+        <item quantity="many">Descàrrega les aplicacions des de nodes IPFS: %1$d habilitats</item>
+        <item quantity="other">Descàrrega les aplicacions des de nodes IPFS: %1$d habilitats</item>
+    </plurals>
 </resources>

@@ -534,7 +534,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid 可以在 SD 卡上搜索仓库和镜像，但需要你的许可才能这么做。</string>
     <string name="swap_connection_indexv0_error">你的设备正尝试连接到安装了过时版本 F-Droid 的设备。要成功连接，必须更新其他设备上的 F-Droid 。可以通过 F-Droid 官方应用的“交换”功能让这些设备从你这里升级 F-Droid 。</string>
     <string name="force_old_installer_title">强制使用旧安装器</string>
-    <string name="force_old_installer_summary">禁用公测中的会话安装器，包括对自动后台更新的支持。</string>
+    <string name="force_old_installer_summary">禁用会话安装器，包括对自动后台更新的支持。</string>
     <string name="copied_to_clipboard">已复制到剪贴板</string>
     <string name="copied_permission_to_clipboard">已复制权限名到剪贴板</string>
     <string name="copied_url_to_clipboard">已复制链接到剪贴板</string>

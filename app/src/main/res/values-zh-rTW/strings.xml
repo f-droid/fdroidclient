@@ -524,7 +524,7 @@
     <string name="turn_on_wifi">開啟 wifi</string>
     <string name="nearby_splace__external_storage_permission_button">試試看</string>
     <string name="force_old_installer_title">強制使用舊安裝器</string>
-    <string name="force_old_installer_summary">關閉測式板工作階段安裝器，包括自動後台更新支援。</string>
+    <string name="force_old_installer_summary">停用工作階段安裝器，包含自動背景更新支援。</string>
     <string name="repo_state_adding">正在添加倉庫…</string>
     <string name="repo_invalid">無效倉庫。
 \n

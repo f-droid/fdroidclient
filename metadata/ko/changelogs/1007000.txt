@@ -1,0 +1,11 @@
+* 이름 swap UI의 주요 overhaul, rewrite 준비
+
+* "Undo"를 표시 한 후 "업데이트"탭에서 아이템을 닦아 (thanks @Hocuri!)
+
+* NGINX 미러 #1737에 연결할 때 ETag 핸들링 수정
+
+* 잘못된 시간대에 기인 한 "최신" 디스플레이 문제 수정 #1757
+
+* 배경 서비스에서 모든 비만 충돌을 무시
+
+* 이름 "설정"에서 설정하면 Privileged Extension을 사용하지 마십시오
