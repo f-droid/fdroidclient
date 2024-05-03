@@ -552,8 +552,8 @@
     <string name="nearby_splace__external_storage_permission_button">Probieren</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid kann auf Ihrer SD-Karte nach Paketquellen und Spiegelservern suchen, benötigt dafür aber Ihre Erlaubnis.</string>
     <string name="swap_connection_indexv0_error">Sie versuchen sich mit jemandem mit einer veralteten F-Droid-App zu verbinden. Vor einer Verbindung muss diese F-Droid-App aktualisiert werden. Ihr könnt den Direkttausch verwenden, um die veraltete App über die neue auf Ihrem Gerät zu aktualisieren.</string>
-    <string name="force_old_installer_title">Alte Installation erzwingen</string>
-    <string name="force_old_installer_summary">Beta-Paketinstallation deaktivieren, einschließlich der von ihr unterstützten, automatischen Aktualisierungen im Hintergrund.</string>
+    <string name="force_old_installer_title">Alten Installer erzwingen</string>
+    <string name="force_old_installer_summary">Session Installer deaktivieren, einschließlich der Unterstützung für automatische Hintergrundaktualisierungen.</string>
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="copied_permission_to_clipboard">Bezeichnung der Berechtigung in die Zwischenablage kopiert</string>
     <string name="copied_url_to_clipboard">URL in die Zwischenablage kopiert</string>
