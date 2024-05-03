@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_full">F-Droid</string>
-
     <string name="version">Vhezheni</string>
     <string name="delete">Dzima</string>
     <string name="enable_nfc_send">Bvumidza NFC kuti itumire…</string>
@@ -25,33 +24,26 @@
     <string name="local_repo_name">Zita repfimbi rakamanikwa</string>
     <string name="local_repo_name_summary">Musoro wepfimbi yakamanikwa wakashambadzwa: %s</string>
     <string name="local_repo_https_on">Shandisa chihako cheHTTPS:// chakakwedekerwa kuitira pfimbi yakamanikwa</string>
-
     <string name="login_title">Kukwedekwerwa kunodiwa</string>
     <string name="login_name">Zita remushandisi</string>
     <string name="login_password">Password</string>
     <string name="repo_edit_credentials">Shandura Password</string>
     <string name="repo_error_empty_username">Hapana chakanyorwa pazita rekushandisa, chitupa hachina kushandurwa
     </string>
-
     <string name="app_details">Zvizere zve App</string>
     <string name="no_such_app">Hapana app yakadaro yawanikwa.</string>
-
     <string name="about_title_full">Nezve F-Droid</string>
     <string name="about_version">Vhezheni</string>
     <string name="about_site">Nezve Website</string>
     <string name="about_source">Nyuko yemurau</string>
     <string name="about_license">Rezenisi</string>
-
     <string name="app_incompatible">Hazviwirirane</string>
     <string name="app_installed">Yavakirirwa</string>
     <string name="app_not_installed">Haina kuvakirirwa</string>
     <string name="app_inst_known_source">Yavakirirwa (kubva %s)</string>
     <string name="app_inst_unknown_source">Yavakirirwa (kubva kunyuko isingazivikanwe)</string>
-
     <string name="added_on">Chawedzerwa pa %s</string>
-
     <string name="ok">OK</string>
-
     <string name="yes">Hongu</string>
     <string name="no">Kwete</string>
     <string name="repo_add_title">Wedzera pfimbi itsva</string>
@@ -59,29 +51,24 @@
     <string name="links">Kochekero</string>
     <string name="more">Zvimwe</string>
     <string name="less">Shoma</string>
-
     <string name="back">Dzokera</string>
     <string name="cancel">Kanzura</string>
     <string name="enable">Bvumidza</string>
     <string name="add_key">Wedzera svumbunuro</string>
     <string name="overwrite">Nyorera pamusoro</string>
-
     <string name="bluetooth_activity_not_found">Hapana mutowo wekutumira neBluetooth wawanikwa, sarudza imwe chete!
     </string>
     <string name="choose_bt_send">Sarudza mutowo weBluetooth wekutumira nawo</string>
-
     <string name="repo_add_url">Kero yepfimbi</string>
     <string name="repo_add_fingerprint">Chidhindo chechigunwe (zvirikwauri)</string>
     <string name="bad_fingerprint">Chidhindo chechigunwe ichi chakaipa</string>
     <string name="invalid_url">URL iri harina kururama.</string>
     <string name="malformed_repo_uri">Kufuratira URI yepfimbi yakapeyama: %s</string>
     <string name="repo_provider">Pfimbi: %s</string>
-
     <string name="menu_manage">Pfimbi</string>
     <string name="menu_settings">Gadziro</string>
     <string name="menu_search">Tsvaga</string>
     <string name="menu_add_repo">Pfimbi itsva</string>
-
     <string name="menu_launch">Ita</string>
     <string name="menu_share">Gova</string>
     <string name="menu_install">Vakirira</string>
@@ -97,10 +84,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-
-
     <string name="details_notinstalled">Haina kuvakirirwa</string>
-
     <string name="antiadslist">App ino ine zvakashambadzwa zvemamwe makambani</string>
     <string name="antitracklist">App ino inotevera nekududzira zvauri kuita</string>
     <string name="antinonfreeadlist">App inosesedza zvinowedzerwa paapp ino zvinobhadharwa</string>
@@ -108,18 +92,13 @@
     <string name="antinonfreedeplist">App ino inotemba nemamwe maapps anobhadharwa</string>
     <string name="antiupstreamnonfreelist">Nyuko yemurau irikumberi haisi yemahara</string>
     <string name="antinonfreeassetslist">App ino inenhumbi dzinobhadharwa</string>
-
     <string name="display">Pangidzo</string>
-
     <string name="expert">Motowo wegodobori</string>
     <string name="expert_on">Ratidza mashoko mamwe nekubvumidza dzimwe gadziro</string>
-
     <string name="search_hint">Tsvaga maApplications</string>
-
     <string name="appcompatibility">Kuwirirana kwemaApplication</string>
     <string name="show_incompat_versions">Mavhezheni asingawirirana</string>
     <string name="show_incompat_versions_on">Raridza mavhezheni eapp asingawirirane nemuchina</string>
-
     <string name="local_repo">Pfimbi yakamanikwa</string>
     <string name="local_repo_running">F-Droid yakagadzirira kutsinhana</string>
     <string name="touch_to_configure_local_repo">Bata kuti uwone zvizere nekubvumidza vamwe kuti vatsinhana maApps
@@ -133,7 +112,6 @@
     <string name="icon">Icon</string>
     <string name="next">Zvinotevera</string>
     <string name="skip">Darika</string>
-
     <string name="useTor">Shandisa Tor</string>
     <string name="useTorSummary">Manikidza kututunurwa kwetraffic kuburikidza Tor kuitira puraivheti yakanyanya</string>
     <string name="proxy">Proxy</string>
@@ -143,12 +121,10 @@
     <string name="proxy_host_summary">Gadziridza zita remuchinguri wePrxoy (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Port reProxy</string>
     <string name="proxy_port_summary">Gadziridza nhamba dzeport reproxy rako (e.g. 8118)</string>
-
     <string name="status_download">Kututunura
         %2$s / %3$s (%4$d%%) kubva
         %1$s
     </string>
-
     <string name="status_download_unknown_size">Kututunura
         %2$s kubva
         %1$s
@@ -171,7 +147,6 @@
     <string name="unstable_updates">Zvakanatswa zvisina kuvimbika</string>
     <string name="unstable_updates_summary">Yambira zvekunatsa maererano nemavhezheni asina kuvimbika</string>
     <string name="other">Imwe</string>
-
     <string name="SignatureMismatch">Vhezheni itsva yakasainiwa nesvumbunuro yakasiyana neyakare. Kuti uvakirire
         vhezheni itsva, yakare inofanirwa kutanga yabviswa pakuvakirira. Tinokumbira kuti utange waita saizvozvo woyedza
         zvekare. (Yambira kuti kubvisa chivakirira kuchadzima data ririmukati rakachengetwa neapplication.)
@@ -219,10 +194,8 @@
     <string name="requires_features">Zvinosungira: %1$s</string>
     <string name="pref_language">Mutauro</string>
     <string name="pref_language_default">Sistemu ine hurongwa hwakarepo</string>
-
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
-
     <string name="category_Connectivity">Mahakiro</string>
     <string name="category_Development">Tsvitsa</string>
     <string name="category_Games">Mitambo</string>
@@ -240,7 +213,6 @@
     <string name="category_Theming">Kudingindira</string>
     <string name="category_Time">Nguva</string>
     <string name="category_Writing">Kunyora</string>
-
     <string name="empty_installed_app_list">Hapana maApps akavakirirwa
 
         Pane maApps pamuchina wako, asi haapo kubva kuF-Droid. Izvi zvinogona kudaro nekuti unofanirwa kunatsa pfimbi
@@ -251,13 +223,11 @@
         Makorokoto! MaApps ako ose akanatswa (kana kuti pfimbi dzako hadzina kunatswa).
     </string>
     <string name="empty_search_available_app_list">Hapana maApps akatevedzera aripo.</string>
-
     <string name="install_error_unknown">Tatadza kuvakirira nenhau yekanganiso isingazivikanwe</string>
     <string name="uninstall_error_unknown">Tatadza kubvisa kuvakirira nenhau yekanganiso isirikuzivikanwe</string>
     <string name="system_install_denied_permissions">Mibvumo ine tambanudzo haina kupihwa kuchihesvuro! Chikumbiro, sika
         dudziro rezvipfukuto!
     </string>
-
     <string name="swap_nfc_description">Kana shamwari yako yakabatidza F-Droid neNFC ita kuti michina yenyu ibatane.
     </string>
     <string name="swap_join_same_wifi">Hakira paWi-Fi imwe chete seshamwari yako</string>
@@ -304,7 +274,6 @@
     <string name="swap_connection_misc_error">Pane kanganiso yaitika pakuhakira kumuchina, hatisi kukwanisa kutsinhana
         nayo.
     </string>
-
     <string name="install_confirm">inoda hupindwa pa</string>
     <string name="install_confirm_update">Unoda kuvakirira chekunatsa
         kuApplication iripo here? Dhata rako ragara riripo harizo
@@ -331,14 +300,11 @@
     <string name="download_pending">Takamirira kutanga kututunura…</string>
     <string name="install_error_notify_title">Kanganiso pakuvakirira %s</string>
     <string name="uninstall_error_notify_title">Kanganiso pakubvisa kuvakirira %s</string>
-
-
     <string name="perms_new_perm_prefix">Chitsva:</string>
     <string name="perms_description_app">Kuyananiswa na %1$s.</string>
     <string name="downloading">Kututunura…</string>
     <string name="installing">Kuvakirira…</string>
     <string name="uninstalling">Kubvisa kuvakirira…</string>
-
     <string name="interval_never">Hazvimbofi</string>
     <string name="interval_1h">PaAwa</string>
     <string name="interval_4h">Pa maawa 4 ese</string>
@@ -346,17 +312,14 @@
     <string name="interval_1d">Zuva nezuva</string>
     <string name="interval_1w">Vhiki nevhiki</string>
     <string name="interval_2w">Pamavhiki 2 ose</string>
-
     <string name="keep_hour">Awa 1</string>
     <string name="keep_day">Zuva 1</string>
     <string name="keep_week">Vhiki 1</string>
     <string name="keep_month">Mwedzi 1</string>
     <string name="keep_year">Gore 1</string>
     <string name="keep_forever">Zvachose</string>
-
     <string name="theme_light">Chiedza</string>
     <string name="theme_dark">Rima</string>
-
     <string name="crash_dialog_title">F-Droid yabondera</string>
     <string name="crash_dialog_text">Pane kanganiso isina kutarisirwa yaitika
         yamanikidza Application kuti imire. Unoda kunyora tsamba mbozha
@@ -366,7 +329,6 @@
     <string name="versions">Mavhezheni</string>
     <string name="app_details_donate_prompt_unknown_author">Tengera vauumbi ve %1$s coffee!</string>
     <string name="app_details_donate_prompt">%1$s inosikwa na %2$s. Vatengereyi coffee!</string>
-
     <string name="repositories_summary">Wedzera dzimwe nyuko dze maapplication</string>
     <string name="notification_title_single_update_available">Kuwedzera kwavapo</string>
     <string name="notification_title_single_ready_to_install">Yagadzirira kuvakirira</string>
@@ -387,15 +349,12 @@
     <string name="notification_action_update">Wedzero</string>
     <string name="notification_action_cancel">Kanzura</string>
     <string name="notification_action_install">Vakirira</string>
-
     <string name="app_version_x_available">Version %1$s yavapo</string>
     <string name="app_version_x_installed">Version %1$s</string>
     <string name="app_recommended_version_installed">Version %1$s (Inoyambirwa)</string>
     <string name="app_new">Itsva</string>
     <string name="app__install_downloaded_update">Natsa</string>
-
     <string name="app_list__name__downloading_in_progress">Kututunura %1$s</string>
-
     <string name="installed_apps__activity_title">MaApps akavakirirwa</string>
     <string name="installed_app__updates_ignored">Wedzero dzakafuratirwa</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Wedzero dzakafuratirwa pa Version %1$s</string>
@@ -403,32 +362,23 @@
         rinoshandisa icon chete
     </string>
     <string name="update_all">Tutunura wedzero dzese</string>
-
     <string name="updates__hide_updateable_apps">Hwandisa maApps</string>
     <string name="updates__show_updateable_apps">Ratidza maApps</string>
-
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Tutunura wedzero yeApp %1$d.</item>
         <item quantity="other">Tutunura wedzero dze maApps %1$d.</item>
     </plurals>
-
     <string name="clear_search">Chenesa rutsvako</string>
-
     <string name="main_menu__latest_apps">Azvino</string>
     <string name="main_menu__categories">Mapato</string>
     <string name="main_menu__swap_nearby">Zviri padhuze</string>
-
     <string name="preference_category__my_apps">MaApps angu</string>
     <string name="preference_manage_installed_apps">Maneja maApps Akavakirirwa</string>
-
-
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Wona zvese %d</item>
         <item quantity="other">Wona zvese %d</item>
     </plurals>
-
     <string name="tts_category_name">Bato %1$s</string>
-
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Wona app imwe chete mubato iri %2$s</item>
         <item quantity="other">Wona maApps %1$d ese kubva mubato iri %2$s</item>
