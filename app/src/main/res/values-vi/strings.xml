@@ -39,7 +39,7 @@
     <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
     <string name="repo_add_url">Địa chỉ kho</string>
     <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
-    <string name="menu_manage">ứng dụng</string>
+    <string name="menu_manage">Kho ứng dụng</string>
     <string name="menu_search">Tìm kiếm</string>
     <string name="menu_add_repo">Kho mới</string>
     <string name="menu_launch">Mở</string>
@@ -56,7 +56,7 @@
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
     <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
     <string name="antinonfreeadlist">Ứng dụng này khuyến khích các phần mở rộng không tự do</string>
-    <string name="antinonfreenetlist">Ứng dụng này khuyến khích hoặc phụ thuộc hoàn toàn vào một dịch vụ mạng không tự do</string>
+    <string name="antinonfreenetlist">Ứng dụng này khuyến khích hoặc phụ thuộc hoàn toàn vào một dịch vụ mạng không miễn phí</string>
     <string name="antinonfreedeplist">Ứng dụng này phụ thuộc vào các ứng dụng không tự do khác</string>
     <string name="antiupstreamnonfreelist">Mã nguồn không hoàn toàn tự do</string>
     <string name="display">Hiển thị</string>
@@ -530,6 +530,40 @@
     <string name="repo_last_update_downloaded">Bản cập nhật cuối cùng đã tải xuống</string>
     <string name="antinsfwlist">Ứng dụng này chứa nội dung không nên công khai hoặc có thể nhìn thấy ở mọi nơi</string>
     <string name="app_details_repository">Repository</string>
-    <string name="app_list_no_suggested_version">No version recommended for installation.</string>
-    <string name="app_details_repository_preferred">(preferred)</string>
+    <string name="app_list_no_suggested_version">Không có phiên bản khuyến nghị cho cài đặt.</string>
+    <string name="app_details_repository_preferred">(ưu tiên)</string>
+    <string name="repo_add_new_title">Thêm kho phần mềm</string>
+    <string name="repo_add_new_mirror">Thêm làm kho phụ</string>
+    <string name="repo_state_fetching">Đang lấy kho phần mềm…</string>
+    <string name="repo_state_adding">Đang thêm kho phần mềm…</string>
+    <string name="repo_enter_url">Nhập URL kho thủ công</string>
+    <string name="repo_invalid">Kho phần mềm không hợp lệ.
+\n
+\nHãy liên hệ người bảo trì để họ biết vì sự cố này.</string>
+    <string name="repo_io_error">Lỗi kết nối đến kho.</string>
+    <string name="app_details_repositories">Kho ứng dụng</string>
+    <string name="app_details_repository_expand">Mở rộng danh sách kho phần mềm</string>
+    <string name="app_details_repository_button_prefer">Ưu tiên Kho phần mềm</string>
+    <string name="repo_error_adding_archive">Không thể thêm kho lưu trữ bằng cách trực tiếp. Nhấn vào kho trong danh sách và kích hoạt lưu trữ ở đó.</string>
+    <string name="useDnsCache">Sử dụng bộ nhớ đệm DNS</string>
+    <string name="useDnsCacheSummary">Sử dụng kết quả từ bộ nhớ đệm để giảm thiểu việc gọi DNS.</string>
+    <string name="repo_archive_toggle">Kho Lưu trữ</string>
+    <string name="repo_archive_toggle_description">Hiển thị ứng dụng được lưu trữ và phiên bản lỗi thời của ứng dụng</string>
+    <string name="repo_archive_failed">Kho lưu trữ tạm thời không có sẵn</string>
+    <string name="repo_disable_warning_button">Tắt</string>
+    <string name="repo_list_info_title">Danh sách Kho</string>
+    <string name="repo_intro">Một kho phần mềm là nguồn cung cấp ứng dụng. Kho từ bên thứ ba mà bạn thêm vào có tiêu chuẩn riêng so với kho cung cấp ứng dụng của chính F-Droid.
+\n
+\nHãy đảm bảo kho phần mềm bạn đang thêm là đang tin cậy.</string>
+    <string name="repo_exists">Kho này đã được thêm từ trước.</string>
+    <string name="repositories_last_update">Cập nhật Lần cuối: %s</string>
+    <string name="repositories_last_update_never">chưa bao giờ</string>
+    <string name="repo_disable_warning">Tắt kho này sẽ gỡ bỏ trạng thái \"ưu tiên\" khỏi tất cả các ứng dụng.</string>
+    <string name="targetsdk_or_later">mục tiêu %s</string>
+    <string name="repo_list_info_text">Kho là nguồn cung cấp ứng dụng, Danh sách này hiển thị tất cả các kho đã thêm. Kho bị vô hiệu hóa sẽ không dùng đến.
+\n
+\nNếu một ứng dụng có ở nhiều hơn một kho, kho cao hơn trong danh sách sẽ được ưu tiên. Bạn có thể sắp xếp thứ hạng kho bằng cách chạm lâu và kéo chúng.</string>
+    <string name="force_old_installer_title">Sử dụng trình cài đặt cũ</string>
+    <string name="repo_num_apps_button">Hiển thị ứng dụng</string>
+    <string name="repo_share_not_found">Không thể tìm thấy địa chỉ kho trong văn bản được chia sẻ.</string>
 </resources>
