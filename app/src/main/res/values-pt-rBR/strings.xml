@@ -571,7 +571,7 @@
     <string name="copied_to_clipboard">Copiado para a área de transferência</string>
     <string name="nearby_splace__external_storage_permission_button">Experimente</string>
     <string name="force_old_installer_title">Forçar instalador antigo</string>
-    <string name="force_old_installer_summary">Desative o beta Session Installer, incluindo o suporte para atualizações automáticas em segundo plano.</string>
+    <string name="force_old_installer_summary">Desative o Session Installer, incluindo o suporte para atualizações automáticas em segundo plano.</string>
     <string name="targetsdk_or_later">metas %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">O F-Droid pode procurar repositórios e espelhos em seu cartão SD, mas precisa de sua permissão para isso.</string>
     <string name="copied_permission_to_clipboard">Nome da permissão copiado para a área de transferência</string>
