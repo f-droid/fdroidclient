@@ -564,4 +564,9 @@
     <string name="ipfsgw_caption_custom_gateways">Egyéni IPFS-átjárók</string>
     <string name="paste">Beillesztés</string>PluralsCandidate
 
-    </resources>
+    <string name="app_details_repository">Tároló</string>
+    <string name="app_details_repositories">Tárolók</string>
+    <string name="app_details_repository_preferred">(preferált)</string>
+    <string name="app_details_repository_button_prefer">Tároló preferálása</string>
+    <string name="app_details_repository_expand">Tárolólista bővítése</string>
+</resources>
