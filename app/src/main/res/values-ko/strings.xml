@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">새 버전은 오래된 것과 다른 키로 서명되어 있습니다. 새 버전을 설치하려면, 기존 버전을 먼저 제거해야 합니다. 제거 후 다시 시도해주세요. (앱을 제거하면 앱에 저장된 모든 내부 데이터가 지워집니다)</string>
     <string name="installIncompatible">앱이 당신의 기기와 호환되지 않습니다, 그래도 설치하겠습니까\?</string>
     <string name="version">버전</string>
@@ -513,4 +513,29 @@
     <string name="antinonfreeassets">비자유 애셋</string>
     <string name="latest__empty_state__upgrading">데이터베이스 업그레이드 중…</string>
     <string name="menu_release_channel_beta">베타 업데이트 허용</string>
+    <string name="app_name_basic">F-Droid 기본</string>
+    <string name="about_title_basic">F-Droid 기본 정보</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">야간 빌드</string>
+    <string name="app_details_repositories">저장소</string>
+    <string name="app_details_repository">저장소</string>
+    <string name="app_details_repository_expand">저장소 목록 확장</string>
+    <string name="repo_num_apps_button">앱 보기</string>
+    <string name="repo_disable_warning_button">사용 안 함</string>
+    <string name="nearby_splace__external_storage_permission_button">시도 해봐</string>
+    <string name="swap_banner_message">앱을 교체하려면 Wi-Fi를 시작하고 친구와 같은 네트워크에 연결하십시오.</string>
+    <string name="copied_permission_to_clipboard">클립보드에 권한 이름 복사</string>
+    <string name="ipfsgw_explainer">IPFS 웹 엔드포인트에서 앱 다운로드. (IPFS 지원과 F-Droid 저장소에서만 작동합니다.)</string>
+    <string name="paste">붙여넣기</string>
+    <string name="ipfsgw_title">IPFS 게이트웨이</string>
+    <string name="app_error_open">앱을 실행할 수 없습니다.</string>
+    <string name="repo_enter_url">리포지토리 URL을 수동으로 입력</string>
+    <string name="repo_add_new_title">저장소 추가</string>
+    <string name="repo_add_new_mirror">새로운 미러로 추가</string>
+    <string name="antinsfwlist">이 앱에는 모든 곳에서 공개되거나 표시되어서는 안 되는 콘텐츠가 포함되어 있음</string>
+    <string name="force_old_installer_title">이전 설치 인스톨러 강제 적용</string>
+    <string name="force_old_installer_summary">자동 백그라운드 업데이트를 지원하는 베타 세션 설치 인스톨러을 비활성화합니다.</string>
+    <string name="warning_target_sdk">이 앱은 이전 버전의 Android용으로 제작되었으며 자동으로 업데이트할 수 없습니다.</string>
+    <string name="app_details_repository_preferred">(선호됨)</string>
+    <string name="app_details_repository_button_prefer">선호 저장소</string>
+    <string name="repo_archive_failed">아카이브 리포지토리는 현재 사용할 수 없음</string>
 </resources>
