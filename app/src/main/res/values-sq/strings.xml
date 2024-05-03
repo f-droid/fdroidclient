@@ -583,7 +583,7 @@
         <item quantity="other">Shkarkoji aplikacionet duke përdorur pikëmbarim web IPFS: %1$d e aktivizuar</item>
     </plurals>
     <string name="force_old_installer_title">Detyro instalues të vjetër</string>
-    <string name="force_old_installer_summary">Çaktivizoni Sesionin e Instaluesit beta, përfshi mbulim për përditësime të automatizuara në prapaskenë.</string>
+    <string name="force_old_installer_summary">Çaktivizoni Sesionin e Instaluesit, përfshi mbulim për përditësime të automatizuara në prapaskenë.</string>
     <string name="nearby_splace__external_storage_permission_button">Provojeni</string>
     <string name="turn_on_wifi">Hape wifi-n</string>
     <string name="ipfsgw_caption_custom_gateways">Kanale IPFS Vetjake</string>
