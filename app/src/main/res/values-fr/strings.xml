@@ -571,7 +571,7 @@
     <string name="copied_permission_to_clipboard">Le nom de l\'autorisation a été copié vers le presse-papier</string>
     <string name="copied_url_to_clipboard">L’URL a été copiée dans le presse-papier</string>
     <string name="repo_num_apps_button">Afficher les apps</string>
-    <string name="force_old_installer_summary">Désactive l\'installateur de Session bêta, y compris la prise en charge des mises à jour automatiques en arrière-plan.</string>
+    <string name="force_old_installer_summary">Désactive l\'installateur de Session, y compris la prise en charge des mises à jour automatiques en arrière-plan.</string>
     <string name="targetsdk_or_later">cible SDK %s</string>
     <string name="swap_connection_indexv0_error">Vous essayez de vous connecter à quelqu\'un disposant d\'une version obsolète de F-Droid. Pour vous connecter, cette personne doit mettre à niveau son application F-Droid. Elle peut utiliser l\'échange d\'applications pour mettre à jour son application à partir de vous.</string>
     <string name="ipfsgw_caption_official_gateways">Passerelles IPFS officielles</string>
@@ -607,6 +607,6 @@
     <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.
 \n
 \nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
-    <string name="repo_error_adding_archive">Les dépôts archivés ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste et active l\'archive à cet emplacement.</string>
+    <string name="repo_error_adding_archive">Les dépôts archivés ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste et activez l\'archive à cet emplacement.</string>
     <string name="repo_archive_failed">Dépôt archivé actuellement indisponible</string>
 </resources>
