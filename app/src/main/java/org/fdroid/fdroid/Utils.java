@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -161,16 +162,29 @@ public final class Utils {
 
     /**
      * Returns the repository address. Usually this is {@link Repository#getAddress()},
-     * but in case of a content:// repo, we need to take its local Uri instead.
+     * but in case of a content:// repo, we need to take its local Uri instead,
+     * so we can know that we need to use different downloaders for non-HTTP locations.
      */
     public static String getRepoAddress(Repository repository) {
-        List<Mirror> mirrors = repository.getAllMirrors();
-        if (mirrors.size() == 2 && mirrors.get(1).getBaseUrl().startsWith("content://")) {
-            return mirrors.get(1).getBaseUrl();
-        } else {
+        List<Mirror> mirrors = repository.getMirrors();
+        // check if we need to account for non-HTTP mirrors
+        String nonHttpUri = null;
+        for (Mirror m : mirrors) {
+            if (ContentResolver.SCHEME_CONTENT.equals(m.getUrl().getProtocol().getName())) {
+                nonHttpUri = m.getBaseUrl();
+                break;
+            } else if (ContentResolver.SCHEME_FILE.equals(m.getUrl().getProtocol().getName())) {
+                nonHttpUri = m.getBaseUrl();
+                break;
+            }
+        }
+        // return normal canonical URL, if this is a pure HTTP repo
+        if (nonHttpUri == null) {
             String address = repository.getAddress();
             if (address.endsWith("/")) return address.substring(0, address.length() - 1);
             return address;
+        } else {
+            return nonHttpUri;
         }
     }
 
