@@ -94,7 +94,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
         if (iconFile != null && repo != null) {
             Log.i(TAG, "Loading remote image for: " + item.category.getId());
             Glide.with(activity)
-                    .load(Utils.getDownloadRequest(repo, iconFile))
+                    .load(Utils.getGlideModel(repo, iconFile))
                     .apply(Utils.getAlwaysShowIconRequestOptions())
                     .into(image);
         } else {

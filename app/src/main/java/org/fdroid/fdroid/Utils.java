@@ -506,18 +506,27 @@ public final class Utils {
             Glide.with(context).clear(iv);
             return;
         }
-        String address = getRepoAddress(repo);
-        if (address.startsWith("content://") || address.startsWith("file://")) {
-            String uri = getUri(address, file.getName().split("/")).toString();
-            Glide.with(context).load(uri).apply(options).into(iv);
-        } else {
-            DownloadRequest request = getDownloadRequest(repo, file);
-            Glide.with(context).load(request).apply(options).into(iv);
+        Object model = getGlideModel(repo, file);
+        if (model == null) {
+            Glide.with(context).clear(iv);
+            return;
         }
+        Glide.with(context).load(model).apply(options).into(iv);
     }
 
     @Nullable
-    public static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable IndexFile file) {
+    public static Object getGlideModel(@NonNull Repository repo, @Nullable IndexFile file) {
+        if (file == null) return null;
+
+        String address = getRepoAddress(repo);
+        if (address.startsWith("content://") || address.startsWith("file://")) {
+            return getUri(address, file.getName().split("/")).toString();
+        }
+        return getDownloadRequest(repo, file);
+    }
+
+    @Nullable
+    private static DownloadRequest getDownloadRequest(@NonNull Repository repo, @Nullable IndexFile file) {
         if (file == null) return null;
         List<Mirror> mirrors = repo.getMirrors();
         Proxy proxy = NetCipher.getProxy();

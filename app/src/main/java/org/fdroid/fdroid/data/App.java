@@ -363,13 +363,7 @@ public class App implements Comparable<App>, Parcelable {
         if (repo == null || file == null) { // This is also used for apps that do not have a repo
             return Glide.with(context).load(R.drawable.ic_repo_app_default);
         }
-        String address = Utils.getRepoAddress(repo);
-        if (address.startsWith("content://") || address.startsWith("file://")) {
-            String sb = Utils.getUri(address, file.getName().split("/")).toString();
-            return Glide.with(context).load(sb);
-        } else {
-            return Glide.with(context).load(Utils.getDownloadRequest(repo, file));
-        }
+        return Glide.with(context).load(Utils.getGlideModel(repo, file));
     }
 
     public static RequestBuilder<Bitmap> loadBitmapWithGlide(Context context, long repoId,
@@ -379,14 +373,7 @@ public class App implements Comparable<App>, Parcelable {
             Log.e(TAG, "Repo not found: " + repoId);
             return Glide.with(context).asBitmap().load(R.drawable.ic_repo_app_default);
         }
-        String address = Utils.getRepoAddress(repo);
-        if (address.startsWith("content://") || address.startsWith("file://")) {
-            String sb = file == null ?
-                    null : Utils.getUri(address, file.getName().split("/")).toString();
-            return Glide.with(context).asBitmap().load(sb);
-        } else {
-            return Glide.with(context).asBitmap().load(Utils.getDownloadRequest(repo, file));
-        }
+        return Glide.with(context).asBitmap().load(Utils.getGlideModel(repo, file));
     }
 
     /**
