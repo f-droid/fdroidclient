@@ -173,8 +173,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="updates__show_updateable_apps">Show apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Download update for %1$d app.</item>
-        <item quantity="other">Download updates for %1$d apps.</item>
+        <item quantity="one">Download update for %1$d app:</item>
+        <item quantity="other">Download updates for %1$d apps:</item>
     </plurals>
     <!-- "updates" as in software updates, "Data" as in cellular internet service -->
     <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
