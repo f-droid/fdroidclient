@@ -164,14 +164,14 @@ internal interface VersionDaoInt : VersionDao {
     @Query("""SELECT * FROM ${Version.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageName = :packageName
-        ORDER BY manifest_versionCode DESC, pref.weight DESC""")
+        ORDER BY manifest_versionCode DESC, pref.weight DESC, manifest_nativecode ASC""")
     override fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
 
     @Transaction
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName
-        ORDER BY manifest_versionCode DESC""")
+        ORDER BY manifest_versionCode DESC, manifest_nativecode ASC""")
     override fun getAppVersions(repoId: Long, packageName: String): LiveData<List<AppVersion>>
 
     @Query("""SELECT * FROM ${Version.TABLE}
