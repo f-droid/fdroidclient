@@ -41,7 +41,7 @@ import org.fdroid.database.Repository
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.Utils
-import org.fdroid.fdroid.Utils.getDownloadRequest
+import org.fdroid.fdroid.Utils.getGlideModel
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.index.v2.FileV2
@@ -174,7 +174,7 @@ fun LazyItemScope.RepoPreviewApp(
                 contentDescription = null,
                 modifier = Modifier.size(38.dp),
             ) else GlideImage(
-                model = getDownloadRequest(repo, app.getIcon(localeList)),
+                model = getGlideModel(repo, app.getIcon(localeList)),
                 contentDescription = null,
                 modifier = Modifier.size(38.dp),
             ) {

@@ -12,7 +12,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.Utils.getDownloadRequest
+import org.fdroid.fdroid.Utils.getGlideModel
 
 @Composable
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -24,7 +24,7 @@ fun RepoIcon(repo: Repository, modifier: Modifier = Modifier) {
         contentDescription = null,
         modifier = modifier,
     ) else GlideImage(
-        model = getDownloadRequest(repo, repo.getIcon(LocaleListCompat.getDefault())),
+        model = getGlideModel(repo, repo.getIcon(LocaleListCompat.getDefault())),
         contentDescription = null,
         modifier = modifier,
     ) { requestBuilder ->

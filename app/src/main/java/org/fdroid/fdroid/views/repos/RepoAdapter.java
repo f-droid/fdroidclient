@@ -125,7 +125,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
                 imageView.setImageResource(R.drawable.ic_repo_app_default);
             } else {
                 Glide.with(imageView.getContext())
-                        .load(Utils.getDownloadRequest(repo, iconFile))
+                        .load(Utils.getGlideModel(repo, iconFile))
                         .apply(Utils.getAlwaysShowIconRequestOptions())
                         .into(imageView);
             }
