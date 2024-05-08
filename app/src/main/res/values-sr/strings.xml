@@ -54,7 +54,7 @@
     <string name="antiadslist">Ова апликација садржи огласе</string>
     <string name="antitracklist">Ова апликација прати и шаље вашу активност</string>
     <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
-    <string name="antinonfreenetlist">Ова апликација промовише или у потпуности зависи од непроменљиве или неслободне мрежне услуге</string>
+    <string name="antinonfreenetlist">Ова апликација промовише непроменљиве или неслободне мрежне услуге или у потпуности зависи од њих</string>
     <string name="antinonfreedeplist">Ова апликација зависи од других неслободних апликација</string>
     <string name="antiupstreamnonfreelist">Оригинални изворни кôд није у потпуности слободан</string>
     <string name="display">Приказ</string>
@@ -229,7 +229,7 @@
     <string name="repo_edit_credentials">Промени лозинку</string>
     <string name="repo_error_empty_username">Корисничко име је празно. Акредитиви нису промењени.</string>
     <string name="about_license">Лиценца</string>
-    <string name="status_inserting_apps">Чување информација о апликацији</string>
+    <string name="status_inserting_apps">Чување информација о апликацијама</string>
     <string name="empty_search_available_app_list">Нема одговарајућих апликација.</string>
     <string name="install_confirm_update">Желите ли да инсталирате ажурирање ове апликације\? Нећете изгубити постојеће податке. Ажурирана апликација ће добити приступ следећем:</string>
     <string name="install_confirm_update_system">Желите ли да инсталирате ажурирање ове уграђене апликације\? Нећете изгубити постојеће податке. Ажурирана апликација ће добити приступ следећем:</string>
@@ -267,7 +267,7 @@
     <string name="app_version_x_available">Доступна је верзија %1$s</string>
     <string name="app_version_x_installed">Верзија %1$s</string>
     <string name="clear_search">Обриши претрагу</string>
-    <string name="repositories_summary">Додај додатне изворе апликација</string>
+    <string name="repositories_summary">Додајте додатне изворе апликација</string>
     <string name="main_menu__latest_apps">Најновије</string>
     <string name="main_menu__categories">Категорије</string>
     <string name="notification_title_single_update_available">Доступно је ажурирање</string>
@@ -310,9 +310,9 @@
     <string name="updates__hide_updateable_apps">Сакриј апликације</string>
     <string name="updates__show_updateable_apps">Прикажи апликације</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Преузми ажурирање за %1$d апликацију.</item>
-        <item quantity="few">Преузми ажурирања за %1$d апликације.</item>
-        <item quantity="other">Преузми ажурирања за %1$d апликација.</item>
+        <item quantity="one">Доступно је ажурирање за %1$d апликацију:</item>
+        <item quantity="few">Доступна су ажурирања за %1$d апликације:</item>
+        <item quantity="other">Доступна су ажурирања за %1$d апликација:</item>
     </plurals>
     <string name="details_new_in_version">Ново у верзији %s</string>
     <string name="antifeatureswarning">Ова апликација има функције које вам се можда неће свидети.</string>
@@ -377,7 +377,7 @@
     <string name="app_permission_storage">За почетак инсталације F-Droid-у је потребна дозвола за приступ меморији. Можете је доделити на следећем екрану.</string>
     <string name="app_list_download_ready">Преузето и спремно за инсталацију</string>
     <string name="download_404">Захтевани фајл није пронађен.</string>
-    <string name="status_inserting_x_apps">Чување информација о апликацији (%1$d/%2$d) од %3$s</string>
+    <string name="status_inserting_x_apps">Чување информација о апликацијама (%1$d/%2$d) из %3$s</string>
     <string name="app_list__dismiss_app_update">Ажурирање је занемарено</string>
     <string name="app_list__dismiss_vulnerable_app">Безбедносна претња је занемарена</string>
     <string name="app_list__dismiss_downloading_app">Преузимање је отказано</string>
@@ -553,51 +553,51 @@
     <string name="repo_invalid">Неважећи репозиторијум.
 \n
 \nКонтактирајте администратора и обавестите га о проблему.</string>
-    <string name="repo_io_error">Грешка при повезивању са репозиторијумом.</string>
+    <string name="repo_io_error">Грешка при повезивању са репозиторијумом</string>
     <string name="repo_enter_url">Унесите URL репозиторијума ручно</string>
     <string name="nearby_splace__external_storage_permission_button">Пробај</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid може да претражује репозиторијуме и резервне изворе на SD картици, али је за то потребна ваша дозвола.</string>
     <string name="swap_connection_indexv0_error">Покушавате да се повежете са неким ко има застарелу верзију F-Droid-а. Да бисте се повезали, потребно је да ажурира апликацију. Можете послати актуелну верзију F-Droid-а са вашег уређаја.</string>
     <string name="force_old_installer_title">Наметни стари програм за инсталацију</string>
-    <string name="force_old_installer_summary">Онемогућава програм за инсталацију „Сесија“, укључујући подршку за аутоматска ажурирања у позадини.</string>
+    <string name="force_old_installer_summary">Онемогућите нови програм за инсталацију, укључујући подршку за аутоматска ажурирања у позадини</string>
     <string name="copied_to_clipboard">Копирано у привремену меморију</string>
     <string name="copied_permission_to_clipboard">Назив дозволе је копиран у привремену меморију</string>
     <string name="copied_url_to_clipboard">URL је копиран у привремену меморију</string>
     <string name="targetsdk_or_later">захтева верзију %s</string>
     <string name="repo_num_apps_button">Прикажи апликације</string>
     <string name="ipfsgw_caption_official_gateways">Званични IPFS мрежни пролази</string>
-    <string name="ipfsgw_summary_disabled">Преузимање апликација помоћу IPFS веб крајњих тачака: онемогућено</string>
+    <string name="ipfsgw_summary_disabled">Преузимање апликација помоћу IPFS-а је онемогућено</string>
     <string name="ipfsgw_title">IPFS мрежни пролази</string>
     <string name="ipfsgw_caption_custom_gateways">Прилагођени IPFS мрежни пролази</string>
     <string name="paste">Налепи</string>PluralsCandidate
 
     <string name="ipfsgw_add_add">Додај</string>
-    <string name="ipfsgw_explainer">Преузмите апликације са IPFS веб крајњих тачака. (Ради само за F-Droid репозиторијуме са подршком за IPFS.)</string>
-    <string name="ipfsgw_add_title">Додај IPFS мрежни пролаз</string>
+    <string name="ipfsgw_explainer">Преузимај апликације са IPFS крајњих тачака (ради само са F-Droid-овим репозиторијумима који подржавају IPFS)</string>
+    <string name="ipfsgw_add_title">Додавање IPFS мрежног пролаза</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
-        <item quantity="few">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
-        <item quantity="other">Преузимање апликација помоћу IPFS веб крајњих тачака. Омогућено: %1$d</item>
+        <item quantity="one">Преузимање апликација помоћу IPFS-а са %1$d мрежног пролаза је омогућено</item>
+        <item quantity="few">Преузимање апликација помоћу IPFS-а са %1$d мрежна пролаза је омогућено</item>
+        <item quantity="other">Преузимање апликација помоћу IPFS-а са %1$d мрежних пролаза је омогућено</item>
     </plurals>
     <string name="repo_share_not_found">Није могуће пронаћи адресу репозиторијума у дељеном тексту.</string>
-    <string name="useDnsCacheSummary">Коришћење кешираних резултата да би се минимизирали DNS упити.</string>
+    <string name="useDnsCacheSummary">Користи кеширане резултате да би се смањио број DNS упита.</string>
     <string name="useDnsCache">Користи DNS кеш</string>
     <string name="app_details_repository">Репозиторијум</string>
     <string name="app_details_repositories">Репозиторијуми</string>
     <string name="app_list_no_suggested_version">Ниједна верзија се не препоручује за инсталацију.</string>
-    <string name="repo_error_adding_archive">Архивски репозиторијуми се не могу директно додати. Додирните репозиторијум на листи и омогућите архиву тамо.</string>
+    <string name="repo_error_adding_archive">Архивски репозиторијуми се не могу директно додати. Додирните репозиторијум са листе и тамо омогућите архиву.</string>
     <string name="repo_archive_failed">Архивски репозиторијум тренутно није доступан</string>
     <string name="repo_disable_warning_button">Онемогући</string>
     <string name="repo_list_info_title">Листа репозиторијума</string>
     <string name="app_details_repository_expand">Прошири листу репозиторијума</string>
     <string name="repo_archive_toggle_description">Приказује архивиране апликације и застареле верзије апликација</string>
-    <string name="repo_disable_warning">Онемогућавање овог репозиторијума ће уклонити његов „преферирани“ статус из свих апликација.</string>
+    <string name="repo_disable_warning">Онемогућавањем овог репозиторијума уклањате његов статус „префериран” из свих апликација.</string>
     <string name="app_details_repository_preferred">(префериран)</string>
     <string name="app_details_repository_button_prefer">Преферирај репозиторијум</string>
     <string name="repositories_last_update">Последње ажурирање: %s</string>
     <string name="repositories_last_update_never">никада</string>
-    <string name="repo_list_info_text">Репозиторијум је извор апликација. Ова листа приказује све тренутно додате репозиторијуме. Онемогућени репозиторијуми се не користе.
+    <string name="repo_list_info_text">Репозиторијум је извор апликација. На овој листи су приказани сви додати репозиторијуми. Онемогућени репозиторијуми се не користе.
 \n
-\nАко се апликација налази у више од једног репозиторијума, аутоматски се преферира репозиторијум на вишој позицији на листи. Можете да промените редослед репозиторијума дугим притиском и превлачењем.</string>
+\nАко се апликација налази у више репозиторијума, аутоматски се даје предност репозиторијуму који се налази више на листи. Редослед репозиторијума можете да промените дугим притиском и превлачењем.</string>
     <string name="repo_archive_toggle">Архива репозиторијума</string>
 </resources>

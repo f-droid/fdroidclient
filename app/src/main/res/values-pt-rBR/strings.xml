@@ -313,9 +313,9 @@
     <string name="updates__hide_updateable_apps">Esconder aplicativos</string>
     <string name="updates__show_updateable_apps">Mostrar aplicativos</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Baixar atualização para %1$d aplicativo.</item>
-        <item quantity="many">Baixar atualizações para %1$d aplicativos.</item>
-        <item quantity="other">Baixar atualizações para %1$d aplicativos.</item>
+        <item quantity="one">Baixar atualização para %1$d aplicativo:</item>
+        <item quantity="many">Baixar atualizações para %1$d aplicativos:</item>
+        <item quantity="other">Baixar atualizações para %1$d aplicativos:</item>
     </plurals>
     <string name="preference_category__my_apps">Meus Aplicativos</string>
     <string name="preference_manage_installed_apps">Gerenciar aplicativos instalados</string>

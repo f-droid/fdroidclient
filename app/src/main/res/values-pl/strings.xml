@@ -314,10 +314,10 @@
     <string name="updates__hide_updateable_apps">Ukryj aplikacje</string>
     <string name="updates__show_updateable_apps">Pokaż aplikacje</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Pobierz aktualizację dla %1$d aplikacji.</item>
-        <item quantity="few">Pobierz aktualizacje dla %1$d aplikacji.</item>
-        <item quantity="many">Pobierz aktualizacje dla %1$d aplikacji.</item>
-        <item quantity="other">Pobierz aktualizacje dla %1$d aplikacji.</item>
+        <item quantity="one">Pobierz aktualizację dla %1$d aplikacji:</item>
+        <item quantity="few">Pobierz aktualizacje dla %1$d aplikacji:</item>
+        <item quantity="many">Pobierz aktualizacje dla %1$d aplikacji:</item>
+        <item quantity="other">Pobierz aktualizacje dla %1$d aplikacji:</item>
     </plurals>
     <string name="details_new_in_version">Co nowego w wersji %s</string>
     <string name="antifeatureswarning">Ta aplikacja zawiera funkcje, których możesz nie lubić.</string>

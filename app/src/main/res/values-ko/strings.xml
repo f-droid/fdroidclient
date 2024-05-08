@@ -429,7 +429,7 @@
     <string name="install_history">설치 내역</string>
     <string name="install_history_summary">모든 설치 및 제거 기록 보기</string>
     <string name="send_version_and_uuid">버전과 UUID를 서버로 보내기</string>
-    <string name="send_version_and_uuid_summary">이 앱의 버전과 무작위 고유 ID를 포함함, 앱 재시작 후 적용.</string>
+    <string name="send_version_and_uuid_summary">이 앱의 버전과 다운로드 시 무작위 고유 ID를 포함하면 다음 앱 재시작이 효과적입니다.</string>
     <string name="share_repository">저장소 공유</string>
     <string name="send_install_history">설치 내역 보내기</string>
     <string name="send_history_csv">%s 설치 내역을 CSV 파일로 보내기</string>
@@ -533,9 +533,48 @@
     <string name="repo_add_new_mirror">새로운 미러로 추가</string>
     <string name="antinsfwlist">이 앱에는 모든 곳에서 공개되거나 표시되어서는 안 되는 콘텐츠가 포함되어 있음</string>
     <string name="force_old_installer_title">이전 설치 인스톨러 강제 적용</string>
-    <string name="force_old_installer_summary">자동 백그라운드 업데이트를 지원하는 베타 세션 설치 인스톨러을 비활성화합니다.</string>
+    <string name="force_old_installer_summary">자동 배경 업데이트 지원을 포함하여 세션 설치 프로그램을 비활성화합니다.</string>
     <string name="warning_target_sdk">이 앱은 이전 버전의 Android용으로 제작되었으며 자동으로 업데이트할 수 없습니다.</string>
     <string name="app_details_repository_preferred">(선호됨)</string>
     <string name="app_details_repository_button_prefer">선호 저장소</string>
     <string name="repo_archive_failed">아카이브 리포지토리는 현재 사용할 수 없음</string>
+    <string name="repo_state_adding">저장소 추가…</string>
+    <string name="repo_invalid">잘못된 저장소.
+\n
+\n관리인에게 연락하고 그 문제에 대해 알고 있습니다.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">IPFS 웹 엔드포인트를 사용하여 앱 다운로드: %1$d 활성화</item>
+    </plurals>
+    <string name="ipfsgw_summary_disabled">IPFS 웹 엔드포인트를 사용하여 앱 다운로드: 비활성화</string>
+    <string name="repo_io_error">저장소에 연결하는 오류가 발생했습니다.</string>
+    <string name="repo_share_not_found">공유된 텍스트에 repo 주소를 찾을 수 없습니다.</string>
+    <string name="repo_list_info_text">저장소는 앱의 소스입니다. 이 목록은 현재 추가 저장소를 보여줍니다. 사용되지 않습니다.
+\n
+\n앱이 1 개 이상의 저장소에 있다면 목록에서 저장소가 자동으로 선호됩니다. 당신은 긴 누르고 끌기로 repositories를 할 수 있습니다.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid는 SD 카드에 저장소 및 미러를 검색 할 수 있지만, 그렇게 할 수있는 권한을 필요로합니다.</string>
+    <string name="turn_on_wifi">와이파이 켜기</string>
+    <string name="repo_intro">저장소는 앱의 추가 소스입니다. Third-party ones you add here는 F-Droid 자체에 내장 된 응용 프로그램을 제공하는 것보다 다른 표준이 있습니다.
+\n
+\n당신이 추가하는 저장소는 신뢰할 수 있습니다.</string>
+    <string name="app_list_no_suggested_version">설치에 권장되는 버전이 없습니다.</string>
+    <string name="repo_exists">이 repo는 이미 추가되었습니다.</string>
+    <string name="repo_error_adding_archive">Archive 저장소는 직접 추가할 수 없습니다. 목록에서 저장소를 탭하고 거기 아카이브를 활성화.</string>
+    <string name="repo_disable_warning">이 저장소를 비활성화하면 모든 앱의 \"preferred\"상태를 제거합니다.</string>
+    <string name="targetsdk_or_later">대상 %s</string>
+    <string name="repositories_last_update">마지막 업데이트: %s</string>
+    <string name="repositories_last_update_never">절대 않함</string>
+    <string name="repo_list_info_title">저장소 목록</string>
+    <string name="repo_archive_toggle">저장소 아카이브</string>
+    <string name="repo_last_update_downloaded">최신의 업데이트 다운로드</string>
+    <string name="copied_url_to_clipboard">클립보드에 복사된 URL</string>
+    <string name="ipfsgw_caption_official_gateways">오피셜 IPFS 게이트웨이</string>
+    <string name="ipfsgw_caption_custom_gateways">커스텀 IPFS 게이트웨이</string>
+    <string name="repo_state_fetching">레포지토리 취득…</string>
+    <string name="useDnsCache">DNS 캐시 사용</string>
+    <string name="useDnsCacheSummary">캐시된 결과를 사용하여 DNS 쿼리를 최소화합니다.</string>
+    <string name="repo_archive_toggle_description">Archived 앱 및 앱 버전 표시</string>
+    <string name="ipfsgw_add_title">IPFS Gateway 추가</string>
+    <string name="ipfsgw_add_add">추가</string>
+    <string name="copied_to_clipboard">클립보드에 링크 복사됨</string>
+    <string name="swap_connection_indexv0_error">F-Droid의 개략 된 버전으로 누군가에 연결하려고합니다. F-Droid 앱을 업그레이드해야 합니다. F-Droid 앱을 업데이트할 수 있습니다.</string>
 </resources>

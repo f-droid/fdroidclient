@@ -316,8 +316,8 @@
     <string name="updates__hide_updateable_apps">Apps ausblenden</string>
     <string name="updates__show_updateable_apps">Apps anzeigen</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Aktualisierung für %1$d App herunterladen.</item>
-        <item quantity="other">Aktualisierungen für %1$d Apps herunterladen.</item>
+        <item quantity="one">Aktualisierung für %1$d App herunterladen:</item>
+        <item quantity="other">Aktualisierungen für %1$d Apps herunterladen:</item>
     </plurals>
     <string name="details_new_in_version">Neu in Version %s</string>
     <string name="antifeatureswarning">Diese App besitzt Merkmale, die möglicherweise unerwünscht sind.</string>

@@ -328,9 +328,9 @@
     <string name="updates__hide_updateable_apps">Skrýt aplikace</string>
     <string name="updates__show_updateable_apps">Zobrazit aplikace</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Stáhnout aktualizaci pro %1$d aplikaci.</item>
-        <item quantity="few">Stáhnout aktualizace pro %1$d aplikace.</item>
-        <item quantity="other">Stáhnout aktualizace pro %1$d aplikací.</item>
+        <item quantity="one">Stáhnout aktualizaci pro %1$d aplikaci:</item>
+        <item quantity="few">Stáhnout aktualizace pro %1$d aplikace:</item>
+        <item quantity="other">Stáhnout aktualizace pro %1$d aplikací:</item>
     </plurals>
     <string name="menu_video">Video</string>
     <string name="menu_license">Licence: %s</string>

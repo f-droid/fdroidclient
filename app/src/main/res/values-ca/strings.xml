@@ -399,7 +399,7 @@
     <string name="hiding_dialog_message">Esteu segur que voleu eliminar %1$s del llançador? Tan sols escrivint \"%2$d\" a l\'app %3$s simulada podreu restaurar-ho.</string>
     <string name="hide_on_long_search_press_title">Amagueu amb el botó de cerca</string>
     <string name="swap_toast_invalid_url">URL incorrecta per l\'intercanvi: %1$s</string>
-    <string name="prompt_to_send_crash_reports">Enviar informes de fallida</string>
+    <string name="prompt_to_send_crash_reports">Envia informes de fallida</string>
     <string name="prompt_to_send_crash_reports_summary">Recopila informació de les fallides i demana per enviar-la al desenvolupador</string>
     <string name="hide_all_notifications">Amaga totes les notificacions</string>
     <string name="hide_all_notifications_summary">Evita que es mostrin les accions a la barra d\'estat i les notificacions.</string>
@@ -466,7 +466,7 @@
     <string name="menu_show_fdroid_metrics_report">Mostra l\'informe de mètriques</string>
     <string name="toast_metrics_in_install_history">L\'informe mètriques %s es pot visualitzar al visor de l\'historial d\'instal·lacions</string>
     <string name="send_to_fdroid_metrics_summary">Envia setmanalment dades anònimes a les mètriques F-Droid (requereix mantenir historial d’instal·lacions)</string>
-    <string name="send_to_fdroid_metrics">Enviar dades d\'ús</string>
+    <string name="send_to_fdroid_metrics">Envia les dades de l\'ús</string>
     <string name="fdroid_metrics_report">Informe de mètriques %s</string>
     <string name="install_history_and_metrics">Instal·la l\'històric i les mètriques</string>
     <string name="send_fdroid_metrics_json">Informe de mètriques %s como a fitxer JSON</string>
