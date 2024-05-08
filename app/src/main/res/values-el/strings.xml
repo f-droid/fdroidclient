@@ -280,7 +280,7 @@
     <string name="main_menu__categories">Κατηγορίες</string>
     <string name="preference_manage_installed_apps">Διαχείριση  εγκατεστημένων εφαρμογών</string>
     <string name="notification_action_update">Ενημέρωση</string>
-    <string name="notification_action_cancel">Ακύρωση</string>
+    <string name="notification_action_cancel">Άκυρο</string>
     <string name="notification_action_install">Εγκατάσταση</string>
     <string name="app_list__name__downloading_in_progress">Γίνεται λήψη %1$s</string>
     <string name="app_list__name__successfully_installed">Εγκαταστάθηκε %1$s</string>
@@ -341,8 +341,8 @@
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Βρέθηκε ευπάθεια με %1$s. Συνίσταται να ενημερώσετε αυτή την εφαρμογή αμέσως στη νεότερη έκδοση.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Αγνοήστε</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Λήψη εγκατάστασης για %1$d εφαρμογή.</item>
-        <item quantity="other">Λήψη εγκατάστασης για %1$d εφαρμογές.</item>
+        <item quantity="one">Λήψη εγκατάστασης %1$d εφαρμογήs:</item>
+        <item quantity="other">Λήψη εγκατάστασης %1$d εφαρμογών:</item>
     </plurals>
     <string name="repositories_summary">Προσθέστε εναλλακτικές πηγές εφαρμογών</string>
     <string name="latest__empty_state__never_updated">Μόλις ανανεωθεί η λίστα εφαρμογών, οι τελευταίες εφαρμογές θα εμφανιστούν εδώ</string>
