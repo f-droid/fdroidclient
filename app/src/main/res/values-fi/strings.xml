@@ -537,7 +537,7 @@
     <string name="turn_on_wifi">Laita Wi-Fi päälle</string>
     <string name="nearby_splace__external_storage_permission_button">Kokeile sitä</string>
     <string name="force_old_installer_title">Pakota vanha asennusohjelma</string>
-    <string name="force_old_installer_summary">Poista käytöstä beta-session asentaja, mukaan lukien tuki automaattisille tausta päivityksille.</string>
+    <string name="force_old_installer_summary">Poista käytöstä istunnon asennusohjelma, mukaan lukien automaattisten taustapäivitysten tuki.</string>
     <string name="repo_state_adding">Lisätään ohjelmavarastoa…</string>
     <string name="repo_invalid">Virheellinen ohjelmavarasto.
 \n
@@ -568,4 +568,24 @@
     <string name="useDnsCache">Käytä DNS-välimuistia</string>
     <string name="useDnsCacheSummary">Käytä tuloksia välimuistista DNS-kyselyjen minimoimiseksi.</string>
     <string name="paste">Liitä</string>
+    <string name="app_details_repository_preferred">(suositeltava)</string>
+    <string name="app_details_repository_button_prefer">Mieluummin tietovarasto</string>
+    <string name="app_details_repository_expand">Laajenna tietovarastoluettelo</string>
+    <string name="repo_list_info_text">Tietovarasto on sovellusten lähde. Tämä luettelo näyttää kaikki tällä hetkellä lisätyt tietovarastot. Poistettuja tietovarastoja ei käytetä.
+\n
+\nJos sovellus on useammassa kuin yhdessä tietovarastossa, luettelossa ylempänä olevaa tietovarastoa pidetään automaattisesti parempana. Voit järjestää tietovarastot uudelleen painamalla niitä pitkään ja vetämällä niitä.</string>
+    <string name="repo_archive_failed">Tietovarastoarkisto ei tällä hetkellä ole käytettävissä</string>
+    <string name="ipfsgw_explainer">Lataa sovelluksia IPFS-verkkopäätepisteistä. (Toimii vain F-Droid-tietovarastoissa, joissa on IPFS-tuki.)</string>
+    <string name="repo_list_info_title">Tietovarastoluettelo</string>
+    <string name="repo_archive_toggle">Tietovarastoarkisto</string>
+    <string name="repo_disable_warning">Tämän tietovaraston poistaminen käytöstä poistaa sen \"ensisijaisen\" tilan kaikista sovelluksista.</string>
+    <string name="ipfsgw_summary_disabled">Lataa sovelluksia IPFS-verkkopäätepisteiden avulla: pois käytöstä</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Lataa sovelluksia IPFS-verkkopäätepisteen avulla: %1$d käytössä</item>
+        <item quantity="other">Lataa sovelluksia IPFS-verkkopäätepisteiden avulla: %1$d käytössä</item>
+    </plurals>
+    <string name="app_details_repository">Tietovarasto</string>
+    <string name="app_details_repositories">Tietovarastot</string>
+    <string name="repo_error_adding_archive">Tietovarastoja ei voi lisätä suoraan. Napauta luettelossa olevaa tietovarastoa ja ota tietovarasto käyttöön siellä.</string>
+    <string name="repo_share_not_found">Tietovaraston osoitetta ei löytynyt jaetusta tekstistä.</string>
 </resources>
