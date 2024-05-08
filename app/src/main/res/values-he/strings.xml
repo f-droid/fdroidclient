@@ -276,7 +276,6 @@
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">הורדת עדכון עבור יישומון אחד.</item>
         <item quantity="two">הורדת עדכונים עבור %1$d יישומונים.</item>
-        <item quantity="many">הורדת עדכונים עבור %1$d יישומונים.</item>
         <item quantity="other">הורדת עדכונים עבור %1$d יישומונים.</item>
     </plurals>
     <string name="versions">גרסאות</string>
