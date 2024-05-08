@@ -20,9 +20,9 @@ i = 0
 indent = '\n            '
 for item in root.iter('item'):
     if i == 1:
-        item.text = indent + (indent.join(mirrors).replace('/repo', '/archive')) + '\n        '
-    elif i == 8:
         item.text = indent + (indent.join(mirrors)) + '\n        '
+    elif i == 8:
+        item.text = indent + (indent.join(mirrors).replace('/repo', '/archive')) + '\n        '
     i += 1
 
 tree.write(default_repos)
