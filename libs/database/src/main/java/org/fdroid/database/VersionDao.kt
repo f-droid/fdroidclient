@@ -159,19 +159,32 @@ internal interface VersionDaoInt : VersionDao {
         insertNewList = { versionedStrings -> insert(versionedStrings) },
     )
 
+    /**
+     * The `ASC` sort is to handle the rare corner case when a
+     * compatible version with the right signer is available with the
+     * same version code from the same repo.  For example, if there are
+     * APKs with different ABIs, but same Version Code.  Both Google
+     * and F-Droid recommend using different Version Codes for each ABI.
+     * `ASC` isn't quite right, but works fine for this rare case that
+     * happens when app devs do strange things.  The 100% correct ABI
+     * sort order would be: `arm64-v8a`, `armeabi-v7a`, `x86_64`, `x86`.
+     *
+     * For more info, see:
+     * https://gitlab.com/fdroid/fdroidclient/-/merge_requests/1394#note_1896148332
+     */
     @Transaction
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM ${Version.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageName = :packageName
-        ORDER BY manifest_versionCode DESC, pref.weight DESC""")
+        ORDER BY manifest_versionCode DESC, pref.weight DESC, manifest_nativecode ASC""")
     override fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
 
     @Transaction
     @RewriteQueriesToDropUnusedColumns
     @Query("""SELECT * FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName
-        ORDER BY manifest_versionCode DESC""")
+        ORDER BY manifest_versionCode DESC, manifest_nativecode ASC""")
     override fun getAppVersions(repoId: Long, packageName: String): LiveData<List<AppVersion>>
 
     @Query("""SELECT * FROM ${Version.TABLE}
