@@ -316,7 +316,7 @@
     <string name="updates__hide_updateable_apps">隱藏應用程式</string>
     <string name="updates__show_updateable_apps">顯示應用程式</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">為 %1$d 個應用程式下載更新。</item>
+        <item quantity="other">為 %1$d 個應用程式下載更新：</item>
     </plurals>
     <string name="details_new_in_version">在版本 %s 的新功能</string>
     <string name="antifeatureswarning">此應用程式可能有您不喜歡的功能。</string>
