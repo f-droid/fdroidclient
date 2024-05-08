@@ -1,3 +1,15 @@
+### 1.20.0 (2024-05-08)
+
+* Maintain existing repo priority ordering when migrating #2788
+
+* Fix "Auto-Update" working when using Session Installer #2704
+
+* Fix loading images from local repos including /system, USB drives, SDCards.
+
+* Improved ACRA emails
+
+* Sort versions with same version code by native code #2792
+
 ### 1.20.0-alpha1 (2024-04-05)
 
 * Updated targetSdkVersion to 29
