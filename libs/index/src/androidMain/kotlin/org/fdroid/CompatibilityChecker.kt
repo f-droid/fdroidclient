@@ -61,6 +61,7 @@ public object CompatibilityCheckerUtils {
     public fun minInstallableTargetSdk(sdkInt: Int = SDK_INT): Int {
         return when (sdkInt) {
             34 -> 23 // Android 6.0, M
+            35 -> 24 // Android 7.0, N
             else -> 1 // Android 1.0, BASE
         }
     }
