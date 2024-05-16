@@ -21,15 +21,15 @@ public class CompatibilityCheckerImpl @JvmOverloads constructor(
 
     private val features = HashMap<String, Int>().apply {
         // the docs still say that this can be null, so better be on the safe side
-        @Suppress("SAFE_CALL_WILL_CHANGE_NULLABILITY", "UNNECESSARY_SAFE_CALL")
+        @Suppress("UNNECESSARY_SAFE_CALL")
         packageManager.systemAvailableFeatures?.forEach { featureInfo ->
             put(featureInfo.name, if (SDK_INT >= 24) featureInfo.version else 0)
         }
     }
 
     public override fun isCompatible(manifest: PackageManifest): Boolean {
-        if (sdkInt < manifest.minSdkVersion ?: 0) return false
-        if (sdkInt > manifest.maxSdkVersion ?: Int.MAX_VALUE) return false
+        if (sdkInt < (manifest.minSdkVersion ?: 0)) return false
+        if (sdkInt > (manifest.maxSdkVersion ?: Int.MAX_VALUE)) return false
         if ((manifest.targetSdkVersion ?: 1) <
             CompatibilityCheckerUtils.minInstallableTargetSdk(sdkInt)) return false
         if (!isNativeCodeCompatible(manifest)) return false
