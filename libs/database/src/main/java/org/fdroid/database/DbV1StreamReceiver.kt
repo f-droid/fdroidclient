@@ -26,9 +26,9 @@ internal class DbV1StreamReceiver(
 
     private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
 
-    override fun receive(repo: RepoV2, version: Long, certificate: String?) {
+    override fun receive(repo: RepoV2, version: Long) {
         db.getRepositoryDao().clear(repoId)
-        db.getRepositoryDao().update(repoId, repo, version, ONE, certificate)
+        db.getRepositoryDao().update(repoId, repo, version, ONE)
     }
 
     override fun receive(packageName: String, m: MetadataV2) {

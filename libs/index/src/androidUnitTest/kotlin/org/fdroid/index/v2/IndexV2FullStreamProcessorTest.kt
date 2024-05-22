@@ -7,7 +7,6 @@ import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
-import org.fdroid.test.TestUtils.getRandomString
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -108,8 +107,7 @@ internal class IndexV2FullStreamProcessorTest {
     private fun testStreamProcessing(filePath: String, index: IndexV2, expectedNumApps: Int) {
         val file = File(filePath)
         val testStreamReceiver = TestStreamReceiver()
-        val certificate = getRandomString()
-        val streamProcessor = IndexV2FullStreamProcessor(testStreamReceiver, certificate)
+        val streamProcessor = IndexV2FullStreamProcessor(testStreamReceiver)
         var totalApps = 0
         FileInputStream(file).use {
             streamProcessor.process(42, it) { numAppsProcessed ->
@@ -119,15 +117,13 @@ internal class IndexV2FullStreamProcessorTest {
 
         assertTrue(testStreamReceiver.calledOnStreamEnded)
         assertEquals(index.repo, testStreamReceiver.repo)
-        assertEquals(certificate, testStreamReceiver.certificate)
         assertEquals(index.packages, testStreamReceiver.packages)
         assertEquals(expectedNumApps, totalApps)
     }
 
     private fun testStreamError(str: String) {
         val testStreamReceiver = TestStreamReceiver()
-        val certificate = getRandomString()
-        val streamProcessor = IndexV2FullStreamProcessor(testStreamReceiver, certificate)
+        val streamProcessor = IndexV2FullStreamProcessor(testStreamReceiver)
         var totalApps = 0
         ByteArrayInputStream(str.encodeToByteArray()).use {
             streamProcessor.process(42, it) { numAppsProcessed ->
@@ -136,20 +132,17 @@ internal class IndexV2FullStreamProcessorTest {
         }
 
         assertTrue(testStreamReceiver.calledOnStreamEnded)
-        assertEquals(certificate, testStreamReceiver.certificate)
         assertEquals(0, testStreamReceiver.packages.size)
         assertEquals(0, totalApps)
     }
 
     private open class TestStreamReceiver : IndexV2StreamReceiver {
         var repo: RepoV2? = null
-        var certificate: String? = null
         val packages = HashMap<String, PackageV2>()
         var calledOnStreamEnded: Boolean = false
 
-        override fun receive(repo: RepoV2, version: Long, certificate: String) {
+        override fun receive(repo: RepoV2, version: Long) {
             this.repo = repo
-            this.certificate = certificate
         }
 
         override fun receive(packageName: String, p: PackageV2) {

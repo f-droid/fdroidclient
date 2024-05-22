@@ -35,11 +35,7 @@ public class IndexV1Updater(
     public override val formatVersion: IndexFormatVersion = ONE
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
 
-    override fun update(
-        repo: Repository,
-        certificate: String?,
-        fingerprint: String?,
-    ): IndexUpdateResult {
+    override fun updateRepo(repo: Repository): IndexUpdateResult {
         // Normally, we shouldn't allow repository downgrades and assert the condition below.
         // However, F-Droid is concerned that late v2 bugs will require users to downgrade to v1,
         // as it happened already with the migration from v0 to v1.
@@ -61,21 +57,16 @@ public class IndexV1Updater(
             if (!downloader.hasChanged()) return IndexUpdateResult.Unchanged
             val eTag = downloader.cacheTag
 
-            val verifier = IndexV1Verifier(file, certificate, fingerprint)
+            val verifier = IndexV1Verifier(file, repo.certificate, null)
             db.runInTransaction {
-                val (cert, _) = verifier.getStreamAndVerify { inputStream ->
+                verifier.getStreamAndVerify { inputStream ->
                     listener?.onUpdateProgress(repo, 0, 0)
                     val streamReceiver = DbV1StreamReceiver(db, repo.repoId, compatibilityChecker)
-                    val streamProcessor =
-                        IndexV1StreamProcessor(streamReceiver, certificate, repo.timestamp)
+                    val streamProcessor = IndexV1StreamProcessor(streamReceiver, repo.timestamp)
                     streamProcessor.process(inputStream)
                 }
-                // update certificate, if we didn't have any before
-                val repoDao = db.getRepositoryDao()
-                if (certificate == null) {
-                    repoDao.updateRepository(repo.repoId, cert)
-                }
                 // update RepositoryPreferences with timestamp and ETag (for v1)
+                val repoDao = db.getRepositoryDao()
                 val updatedPrefs = repo.preferences.copy(
                     lastUpdated = System.currentTimeMillis(),
                     lastETag = eTag,

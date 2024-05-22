@@ -528,6 +528,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
 
     public static Repository createSwapRepo(String address, String certificate) {
         long now = System.currentTimeMillis();
+        if (certificate == null) certificate = "d0ef";
         return new Repository(42L, address, now, IndexFormatVersion.ONE, certificate, 20001L, 42,
                 now);
     }

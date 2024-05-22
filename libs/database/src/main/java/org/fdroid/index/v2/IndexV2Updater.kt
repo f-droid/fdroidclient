@@ -34,12 +34,8 @@ public class IndexV2Updater(
     public override val formatVersion: IndexFormatVersion = TWO
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
 
-    override fun update(
-        repo: Repository,
-        certificate: String?,
-        fingerprint: String?,
-    ): IndexUpdateResult {
-        val (cert, entry) = getCertAndEntry(repo, certificate, fingerprint)
+    override fun updateRepo(repo: Repository): IndexUpdateResult {
+        val (_, entry) = getCertAndEntry(repo, repo.certificate)
         // don't process repos that we already did process in the past
         if (entry.timestamp <= repo.timestamp) return IndexUpdateResult.Unchanged
         // get diff, if available
@@ -47,7 +43,7 @@ public class IndexV2Updater(
         return if (diff == null || repo.formatVersion == ONE) {
             // no diff found (or this is upgrade from v1 repo), so do full index update
             val streamReceiver = DbV2StreamReceiver(db, repo.repoId, compatibilityChecker)
-            val streamProcessor = IndexV2FullStreamProcessor(streamReceiver, cert)
+            val streamProcessor = IndexV2FullStreamProcessor(streamReceiver)
             processStream(repo, entry.index, entry.version, streamProcessor)
         } else {
             // use available diff
@@ -57,11 +53,7 @@ public class IndexV2Updater(
         }
     }
 
-    private fun getCertAndEntry(
-        repo: Repository,
-        certificate: String?,
-        fingerprint: String?,
-    ): Pair<String, Entry> {
+    private fun getCertAndEntry(repo: Repository, certificate: String): Pair<String, Entry> {
         val file = tempFileProvider.createTempFile()
         val downloader = downloaderFactory.createWithTryFirstMirror(
             repo = repo,
@@ -73,7 +65,7 @@ public class IndexV2Updater(
         }
         try {
             downloader.download()
-            val verifier = EntryVerifier(file, certificate, fingerprint)
+            val verifier = EntryVerifier(file, certificate, null)
             return verifier.getStreamAndVerify { inputStream ->
                 IndexParser.parseEntry(inputStream)
             }

@@ -125,7 +125,7 @@ internal class IndexV1StreamProcessorTest {
     ) {
         val file = File(filePath)
         val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null, lastTimestamp)
+        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, lastTimestamp)
         FileInputStream(file).use { streamProcessor.process(it) }
         assertEquals(indexV2.repo, testStreamReceiver.repo)
         assertEquals(indexV2.packages, testStreamReceiver.packages)
@@ -133,7 +133,7 @@ internal class IndexV1StreamProcessorTest {
 
     private fun testStreamError(index: String) {
         val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, null, -1)
+        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, -1)
         ByteArrayInputStream(index.encodeToByteArray()).use { streamProcessor.process(it) }
         assertNull(testStreamReceiver.repo)
         assertEquals(0, testStreamReceiver.packages.size)
@@ -144,7 +144,7 @@ internal class IndexV1StreamProcessorTest {
         var repo: RepoV2? = null
         val packages = HashMap<String, PackageV2>()
 
-        override fun receive(repo: RepoV2, version: Long, certificate: String?) {
+        override fun receive(repo: RepoV2, version: Long) {
             this.repo = repo
         }
 

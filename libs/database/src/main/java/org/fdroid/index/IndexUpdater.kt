@@ -57,23 +57,10 @@ public abstract class IndexUpdater {
     public abstract val formatVersion: IndexFormatVersion
 
     /**
-     * Updates a new [repo] for the first time.
-     */
-    public fun updateNewRepo(
-        repo: Repository,
-        expectedSigningFingerprint: String?,
-    ): IndexUpdateResult = catchExceptions {
-        update(repo, null, expectedSigningFingerprint)
-    }
-
-    /**
      * Updates an existing [repo] with a known [Repository.certificate].
      */
-    public fun update(
-        repo: Repository,
-    ): IndexUpdateResult = catchExceptions {
-        require(repo.certificate != null) { "Repo ${repo.address} had no certificate" }
-        update(repo, repo.certificate, null)
+    public fun update(repo: Repository): IndexUpdateResult = catchExceptions {
+        updateRepo(repo)
     }
 
     private fun catchExceptions(block: () -> IndexUpdateResult): IndexUpdateResult {
@@ -86,11 +73,7 @@ public abstract class IndexUpdater {
         }
     }
 
-    protected abstract fun update(
-        repo: Repository,
-        certificate: String?,
-        fingerprint: String?,
-    ): IndexUpdateResult
+    protected abstract fun updateRepo(repo: Repository): IndexUpdateResult
 }
 
 internal fun Downloader.setIndexUpdateListener(

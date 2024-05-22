@@ -36,10 +36,10 @@ internal class DbV2StreamReceiver(
     }
 
     @Synchronized
-    override fun receive(repo: RepoV2, version: Long, certificate: String) {
+    override fun receive(repo: RepoV2, version: Long) {
         repo.walkFiles(nonNullFileV2)
         clearRepoDataIfNeeded()
-        db.getRepositoryDao().update(repoId, repo, version, TWO, certificate)
+        db.getRepositoryDao().update(repoId, repo, version, TWO)
     }
 
     @Synchronized

@@ -38,7 +38,6 @@ import java.io.InputStream
 @OptIn(ExperimentalSerializationApi::class)
 public class IndexV1StreamProcessor(
     private val indexStreamReceiver: IndexV1StreamReceiver,
-    private val certificate: String?,
     private val lastTimestamp: Long,
     private val locale: String = DEFAULT_LOCALE,
     private val json: Json = IndexParser.json,
@@ -98,7 +97,7 @@ public class IndexV1StreamProcessor(
                 categories = emptyMap(),
                 releaseChannels = emptyMap()
             )
-            indexStreamReceiver.receive(repoV2, repo.version.toLong(), certificate)
+            indexStreamReceiver.receive(repoV2, repo.version.toLong())
         }
 
         private fun deserializeRequests(decoder: JsonDecoder, index: Int) {

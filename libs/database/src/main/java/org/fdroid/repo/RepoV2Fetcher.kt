@@ -56,8 +56,8 @@ internal class RepoV2Fetcher(
 
         log.info { "Downloaded entry, now streaming index..." }
 
-        val streamReceiver = RepoV2StreamReceiver(receiver, repo.username, repo.password)
-        val streamProcessor = IndexV2FullStreamProcessor(streamReceiver, cert)
+        val streamReceiver = RepoV2StreamReceiver(receiver, cert, repo.username, repo.password)
+        val streamProcessor = IndexV2FullStreamProcessor(streamReceiver)
         val digestInputStream = if (uri.scheme?.startsWith("http") == true) {
             // stream index for http(s) downloads
             val indexRequest = DownloadRequest(

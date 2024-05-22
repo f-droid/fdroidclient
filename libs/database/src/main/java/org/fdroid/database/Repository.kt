@@ -31,7 +31,7 @@ internal data class CoreRepository(
     val formatVersion: IndexFormatVersion?,
     val maxAge: Int?,
     val description: LocalizedTextV2 = emptyMap(),
-    val certificate: String?,
+    val certificate: String,
 ) {
     internal companion object {
         const val TABLE = "CoreRepository"
@@ -47,7 +47,7 @@ internal fun RepoV2.toCoreRepository(
     repoId: Long = 0,
     version: Long,
     formatVersion: IndexFormatVersion? = null,
-    certificate: String? = null,
+    certificate: String,
 ) = CoreRepository(
     repoId = repoId,
     name = name,
@@ -99,7 +99,7 @@ public data class Repository internal constructor(
         address: String,
         timestamp: Long,
         formatVersion: IndexFormatVersion,
-        certificate: String?,
+        certificate: String,
         version: Long,
         weight: Int,
         lastUpdated: Long,
@@ -135,7 +135,7 @@ public data class Repository internal constructor(
     public val timestamp: Long get() = repository.timestamp
     public val version: Long get() = repository.version ?: 0
     public val formatVersion: IndexFormatVersion? get() = repository.formatVersion
-    public val certificate: String? get() = repository.certificate
+    public val certificate: String get() = repository.certificate
 
     /**
      * True if this repository is an archive repo.
