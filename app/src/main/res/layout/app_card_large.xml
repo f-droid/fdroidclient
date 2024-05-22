@@ -29,18 +29,31 @@
             tools:src="@drawable/ic_launcher" />
 
         <TextView
-            android:id="@+id/summary"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
-            android:lines="4"
+            android:maxLines="1"
             android:textColor="?android:textColorPrimary"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon"
-            tools:text="F-Droid An application summary which takes up too much space and must ellipsize" />
+            tools:text="F-Droid An application name which takes up too much space and must ellipsize" />
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:text="An application summary which takes up too much space and must ellipsize if it is too long so it does not fit the space available." />
 
         <include
             android:id="@+id/new_tag"

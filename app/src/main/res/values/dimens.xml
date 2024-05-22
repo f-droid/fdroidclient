@@ -21,6 +21,7 @@
 
     <dimen name="latest__padding__app_card__horizontal">12dp</dimen>
     <dimen name="latest__padding__app_card__vertical">10dp</dimen>
+    <dimen name="latest__padding__app_card__normal">8dp</dimen>
 
     <!-- Used by the BottomNavigation library so that our text labels are not truncated so easily.
          The default is 12dp or something like that which only really allows for very short labels. -->

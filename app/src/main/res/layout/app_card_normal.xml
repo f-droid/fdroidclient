@@ -8,47 +8,53 @@
     android:layout_height="144dp"
     android:layout_margin="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="12dp">
 
-        <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
-             when it will inevitably read out the name of the app straight after. -->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout"
+        <ImageView
+            android:id="@+id/icon"
             android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter"
+            android:transitionName="@string/transition_app_item_icon"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?android:textColorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon"
+            tools:text="F-Droid" />
 
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="match_parent"
-                android:layout_height="48dip"
-                android:layout_marginTop="8dp"
-                android:scaleType="fitCenter"
-                android:transitionName="@string/transition_app_item_icon"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription"
-                tools:src="@drawable/ic_launcher" />
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:text="An application summary which takes up too much space and must ellipsize" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/summary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/icon"
-                tools:text="F-Droid An application summary which takes up too much space and must ellipsize" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
