@@ -207,6 +207,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="choose_bt_send">Choose Bluetooth send method</string>
 
     <string name="repo_intro">A repository is an additional source of apps. Third-party ones you add here have different standards than those providing apps built by F-Droid itself.\n\nPlease ensure that the repository you are adding is trustworthy.</string>
+    <string name="repo_scan_qr_code">Scan QR Code</string>
     <string name="repo_state_fetching">Fetching repository…</string>
     <string name="repo_state_adding">Adding repository…</string>
     <string name="repo_enter_url">Enter repository URL manually</string>

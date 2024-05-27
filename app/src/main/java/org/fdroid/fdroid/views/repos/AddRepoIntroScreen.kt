@@ -145,7 +145,7 @@ fun AddRepoIntroContent(paddingValues: PaddingValues, onFetchRepo: (String) -> U
             }
         }
         FDroidButton(
-            "Scan QR code",
+            stringResource(R.string.repo_scan_qr_code),
             imageVector = Icons.Filled.QrCode,
             onClick = {
                 startForResult.launch(ScanOptions().apply {
