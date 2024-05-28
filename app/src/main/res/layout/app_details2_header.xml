@@ -192,7 +192,7 @@
             android:padding="8dp"
             android:text="@string/warning_target_sdk"
             android:textAlignment="center"
-            android:textColor="@color/design_default_color_on_primary"
+            android:textColor="@android:color/white"
             android:textSize="15sp"
             android:visibility="gone"
             tools:visibility="visible" />

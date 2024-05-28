@@ -68,6 +68,12 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     static final String ARG_REPO_ID = "repo_id";
 
+    static void launch(Context context, long repoId) {
+        Intent intent = new Intent(context, RepoDetailsActivity.class);
+        intent.putExtra(ARG_REPO_ID, repoId);
+        context.startActivity(intent);
+    }
+
     /**
      * If the repo has been updated at least once, then we will show
      * all of this info, otherwise they will be hidden.

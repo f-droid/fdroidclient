@@ -172,7 +172,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
 
     @Override
     public void onClicked(Repository repo) {
-        editRepo(repo);
+        RepoDetailsActivity.launch(this, repo.getRepoId());
     }
 
     /**
@@ -235,14 +235,6 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         AppUpdateStatusManager.getInstance(this).removeAllByRepo(repo.getRepoId());
         String notification = getString(R.string.repo_disabled_notification, repo.getName(App.getLocales()));
         Snackbar.make(findViewById(R.id.list), notification, Snackbar.LENGTH_LONG).setTextMaxLines(3).show();
-    }
-
-    private static final int SHOW_REPO_DETAILS = 1;
-
-    private void editRepo(Repository repo) {
-        Intent intent = new Intent(this, RepoDetailsActivity.class);
-        intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getRepoId());
-        startActivityForResult(intent, SHOW_REPO_DETAILS);
     }
 
     public static String getDisallowInstallUnknownSourcesErrorMessage(Context context) {

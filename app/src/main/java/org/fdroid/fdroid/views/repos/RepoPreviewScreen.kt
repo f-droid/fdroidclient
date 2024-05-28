@@ -3,11 +3,14 @@ package org.fdroid.fdroid.views.repos
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,8 +29,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
@@ -45,14 +50,19 @@ import org.fdroid.fdroid.Utils.getGlideModel
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.index.v2.FileV2
+import org.fdroid.repo.FetchResult.IsExistingMirror
 import org.fdroid.repo.FetchResult.IsExistingRepository
 import org.fdroid.repo.FetchResult.IsNewMirror
+import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.repo.Fetching
 
 @Composable
-fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: () -> Unit) {
-    val isPreview = LocalInspectionMode.current
+fun RepoPreviewScreen(
+    paddingValues: PaddingValues,
+    state: Fetching,
+    onAddRepo: () -> Unit,
+) {
     val localeList = LocaleListCompat.getDefault()
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -62,16 +72,20 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
             .fillMaxWidth(),
     ) {
         item {
-            RepoPreviewHeader(state, onAddRepo, localeList, isPreview)
+            RepoPreviewHeader(state, onAddRepo, localeList)
         }
-        if (state.fetchResult == null || state.fetchResult is IsNewRepository) {
+        if (state.fetchResult == null
+            || state.fetchResult is IsNewRepository
+            || state.fetchResult is IsNewRepoAndNewMirror
+        ) {
             item {
                 Row(
                     verticalAlignment = CenterVertically,
-                    horizontalArrangement = spacedBy(8.dp)
+                    horizontalArrangement = spacedBy(8.dp),
+                    modifier = Modifier.padding(top = 8.dp),
                 ) {
                     Text(
-                        text = "Included apps:",
+                        text = stringResource(R.string.repo_preview_included_apps),
                         style = MaterialTheme.typography.body1,
                     )
                     Text(
@@ -82,7 +96,7 @@ fun RepoPreviewScreen(paddingValues: PaddingValues, state: Fetching, onAddRepo: 
                 }
             }
             items(items = state.apps, key = { it.packageName }) { app ->
-                RepoPreviewApp(state.repo ?: error("no repo"), app, localeList, isPreview)
+                RepoPreviewApp(state.receivedRepo ?: error("no repo"), app, localeList)
             }
         }
     }
@@ -93,15 +107,53 @@ fun RepoPreviewHeader(
     state: Fetching,
     onAddRepo: () -> Unit,
     localeList: LocaleListCompat,
-    isPreview: Boolean,
 ) {
+    val repo = state.receivedRepo ?: error("repo was null")
+    val isDevPreview = LocalInspectionMode.current
+    val context = LocalContext.current
+
+    val buttonText = when (state.fetchResult) {
+        is IsNewRepository -> stringResource(R.string.repo_add_new_title)
+        is IsNewRepoAndNewMirror -> stringResource(R.string.repo_add_repo_and_mirror)
+        is IsNewMirror -> stringResource(R.string.repo_add_mirror)
+        is IsExistingRepository, is IsExistingMirror -> stringResource(R.string.repo_view_repo)
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+    }
+    val buttonAction: () -> Unit = when (val res = state.fetchResult) {
+        is IsNewRepository, is IsNewRepoAndNewMirror, is IsNewMirror -> onAddRepo
+        // unfortunately we need to duplicate these functions
+        is IsExistingRepository -> { ->
+            val repoId = res.existingRepoId
+            RepoDetailsActivity.launch(context, repoId)
+        }
+
+        is IsExistingMirror -> { ->
+            val repoId = res.existingRepoId
+            RepoDetailsActivity.launch(context, repoId)
+        }
+
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+    }
+
+    val warningText: String? = when (state.fetchResult) {
+        is IsNewRepository -> null
+        is IsNewRepoAndNewMirror -> stringResource(
+            R.string.repo_and_mirror_add_both_info,
+            state.fetchUrl
+        )
+
+        is IsNewMirror -> stringResource(R.string.repo_mirror_add_info, state.fetchUrl)
+        is IsExistingRepository -> stringResource(R.string.repo_exists)
+        is IsExistingMirror -> stringResource(R.string.repo_mirror_exists, state.fetchUrl)
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+    }
+
     Column(
-        verticalArrangement = spacedBy(8.dp),
+        verticalArrangement = spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        val repo = state.repo ?: error("repo was null")
         Row(
-            horizontalArrangement = spacedBy(8.dp),
+            horizontalArrangement = spacedBy(16.dp),
             verticalAlignment = CenterVertically,
         ) {
             RepoIcon(repo, Modifier.size(48.dp))
@@ -123,22 +175,30 @@ fun RepoPreviewHeader(
                 )
             }
         }
-        if (state.canAdd) FDroidButton(
-            text = when (state.fetchResult) {
-                is IsNewRepository -> stringResource(R.string.repo_add_new_title)
-                is IsNewMirror -> stringResource(R.string.repo_add_new_mirror)
-                else -> error("Unexpected fetch state: ${state.fetchResult}")
-            },
-            onClick = onAddRepo,
-            modifier = Modifier.align(End)
-        ) else if (state.fetchResult is IsExistingRepository) {
+
+        if (warningText != null) Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(colorResource(R.color.warning)),
+            contentAlignment = Alignment.Center,
+        ) {
             Text(
-                text = stringResource(R.string.repo_exists),
-                style = MaterialTheme.typography.body1,
-                color = MaterialTheme.colors.error,
+                modifier = Modifier
+                    .padding(8.dp),
+                text = warningText,
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.body2,
+                color = colorResource(android.R.color.white),
             )
         }
-        val description = if (isPreview) {
+
+        FDroidButton(
+            text = buttonText,
+            onClick = buttonAction,
+            modifier = Modifier.align(End),
+        )
+
+        val description = if (isDevPreview) {
             LoremIpsum(42).values.joinToString(" ")
         } else {
             repo.getDescription(localeList)
@@ -156,8 +216,8 @@ fun LazyItemScope.RepoPreviewApp(
     repo: Repository,
     app: MinimalApp,
     localeList: LocaleListCompat,
-    isPreview: Boolean,
 ) {
+    val isDevPreview = LocalInspectionMode.current
     Card(
         modifier = Modifier
             .animateItemPlacement()
@@ -167,7 +227,7 @@ fun LazyItemScope.RepoPreviewApp(
             horizontalArrangement = spacedBy(8.dp),
             modifier = Modifier.padding(8.dp),
         ) {
-            if (isPreview) Image(
+            if (isDevPreview) Image(
                 painter = rememberDrawablePainter(
                     getDrawable(LocalContext.current.resources, R.drawable.ic_launcher, null)
                 ),
@@ -197,7 +257,8 @@ fun LazyItemScope.RepoPreviewApp(
 @Preview
 @Composable
 fun RepoPreviewScreenFetchingPreview() {
-    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
+    val address = "https://example.org"
+    val repo = FDroidApp.createSwapRepo(address, "foo bar")
     val app1 = object : MinimalApp {
         override val repoId = 0L
         override val packageName = "org.example"
@@ -225,7 +286,7 @@ fun RepoPreviewScreenFetchingPreview() {
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(repo, listOf(app1, app2, app3), IsNewRepository("foo"))
+            Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository)
         ) {}
     }
 }
@@ -237,7 +298,19 @@ fun RepoPreviewScreenNewMirrorPreview() {
     FDroidContent {
         RepoPreviewScreen(
             PaddingValues(0.dp),
-            Fetching(repo, emptyList(), IsNewMirror(0L, "foo"))
+            Fetching("https://mirror.example.org", repo, emptyList(), IsNewMirror(0L))
+        ) {}
+    }
+}
+
+@Composable
+@Preview
+fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
+    val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
+    FDroidContent {
+        RepoPreviewScreen(
+            PaddingValues(0.dp),
+            Fetching("https://mirror.example.org", repo, emptyList(), IsNewRepoAndNewMirror)
         ) {}
     }
 }
@@ -245,8 +318,24 @@ fun RepoPreviewScreenNewMirrorPreview() {
 @Preview
 @Composable
 fun RepoPreviewScreenExistingRepoPreview() {
+    val address = "https://example.org"
+    val repo = FDroidApp.createSwapRepo(address, "foo bar")
+    FDroidContent {
+        RepoPreviewScreen(
+            PaddingValues(0.dp),
+            Fetching(address, repo, emptyList(), IsExistingRepository(0L))
+        ) {}
+    }
+}
+
+@Preview
+@Composable
+fun RepoPreviewScreenExistingMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
     FDroidContent {
-        RepoPreviewScreen(PaddingValues(0.dp), Fetching(repo, emptyList(), IsExistingRepository)) {}
+        RepoPreviewScreen(
+            PaddingValues(0.dp),
+            Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror(0L))
+        ) {}
     }
 }

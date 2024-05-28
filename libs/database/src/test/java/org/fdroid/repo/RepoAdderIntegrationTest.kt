@@ -66,12 +66,12 @@ internal class RepoAdderIntegrationTest {
             assertEquals(None, awaitItem())
             val firstFetching = awaitItem()
             assertTrue(firstFetching is Fetching)
-            assertNull(firstFetching.repo)
+            assertNull(firstFetching.receivedRepo)
             assertTrue(firstFetching.apps.isEmpty())
 
             val secondFetching = awaitItem()
             assertTrue(secondFetching is Fetching, "$secondFetching")
-            val repo = secondFetching.repo
+            val repo = secondFetching.receivedRepo
             assertNotNull(repo)
             assertEquals("https://fdroid.fedilab.app/repo", repo.address)
             println(repo.getName(LocaleListCompat.getDefault()) ?: "null")
@@ -115,8 +115,8 @@ internal class RepoAdderIntegrationTest {
         assertTrue(state is Fetching, state.toString())
         assertTrue(state.apps.isNotEmpty())
 
-        println(state.repo?.getName(LocaleListCompat.getDefault()) ?: "null")
-        println(state.repo?.certificate)
+        println(state.receivedRepo?.getName(LocaleListCompat.getDefault()) ?: "null")
+        println(state.receivedRepo?.certificate)
         state.apps.forEach { app ->
             println("  ${app.packageName} ${app.summary}")
         }
