@@ -48,6 +48,10 @@ public class SessionInstallManager extends BroadcastReceiver {
 
     private final Context context;
 
+    // Used to cache isStockXiaomi() to prevent repeat PackageManager calls
+    @Nullable
+    private static Boolean isStockXiaomi = null;
+
     public SessionInstallManager(Context context) {
         this.context = context;
         ContextCompat.registerReceiver(context, this, new IntentFilter(INSTALLER_ACTION_INSTALL),
@@ -246,15 +250,30 @@ public class SessionInstallManager extends BroadcastReceiver {
         // Disabling MIUI "optimizations" in developer options fixes it, but we can't ask users to do this (bad UX).
         // Therefore, we have no choice, but to disable it completely for those devices.
         // See: https://github.com/vvb2060/PackageInstallerTest
-        if (isXiaomiDevice()) return false;
+        if (isStockXiaomi(context)) return false;
         // We don't use SessionInstaller, if PrivilegedInstaller can be used instead.
         // This is the last check, because it is the most expensive one
         // getting PackageInfo and doing service binding.
         return !PrivilegedInstaller.isDefault(context);
     }
 
-    private static boolean isXiaomiDevice() {
-        return "Xiaomi".equalsIgnoreCase(Build.BRAND) || "Redmi".equalsIgnoreCase(Build.BRAND);
+    private static boolean isStockXiaomi(Context context) {
+        if (isStockXiaomi == null) {
+            boolean xiaomiPhone = "Xiaomi".equalsIgnoreCase(Build.BRAND) || "Redmi".equalsIgnoreCase(Build.BRAND);
+            if (xiaomiPhone) {
+                // Calls for non-installed packages take longer than installed ones
+                // MIUI OS will result in one call
+                // Non-MIUI OS will result in two calls
+                if (Utils.getPackageInfo(context, "com.miui.securitycenter") != null) {
+                    isStockXiaomi = true;
+                } else {
+                    isStockXiaomi = Utils.getPackageInfo(context, "com.miui.packageinstaller") != null;
+                }
+            } else {
+                isStockXiaomi = false;
+            }
+        }
+        return isStockXiaomi;
     }
 
     /**
