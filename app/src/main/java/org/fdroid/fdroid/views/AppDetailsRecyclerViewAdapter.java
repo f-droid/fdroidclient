@@ -149,6 +149,7 @@ public class AppDetailsRecyclerViewAdapter
 
         items.clear();
         versions.clear();
+        suggestedApk = null;
 
         // Get versions
         compatibleVersionsDifferentSigner.clear();
@@ -170,7 +171,14 @@ public class AppDetailsRecyclerViewAdapter
                 }
             }
         }
-        if (apks != null) suggestedApk = app.findSuggestedApk(apks, appPrefs);
+        if (apks != null) {
+            final Apk foundApk = app.findSuggestedApk(apks, appPrefs);
+            // only use suggested APK, if app not installed, or signer matches installed signer
+            // because otherwise, there's no use in suggesting it as we can't install it anyway
+            if (app.installedSigner == null || (foundApk != null && app.installedSigner.equals(foundApk.signer))) {
+                suggestedApk = foundApk;
+            }
+        }
 
         addItem(VIEWTYPE_HEADER);
         if (!app.getAllScreenshots().isEmpty()) addItem(VIEWTYPE_SCREENSHOTS);

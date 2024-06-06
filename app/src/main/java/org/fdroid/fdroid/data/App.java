@@ -539,6 +539,7 @@ public class App implements Comparable<App>, Parcelable {
             }
         }
         // use the first of the list, before we don't choose anything
+        // TODO does this still make sense? Maybe better to not suggest anything in this case?
         if (apk == null && apks.size() > 0) {
             apk = apks.get(0);
         }
