@@ -574,8 +574,18 @@ public class AppDetailsRecyclerViewAdapter
                 repoChooserView.setVisibility(View.GONE);
             }
 
-            if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
+            if (suggestedApk == null && repos.size() > 1 && app.installedSigner != null && preferredRepoId != null
+                    && preferredRepoId == app.repoId && !versionsLoading) {
+                // current repo is preferred, app is installed, but has no suggested version from this repo
+                int color = ContextCompat.getColor(context, R.color.fdroid_red);
+                warningView.setBackgroundColor(color);
+                warningView.setText(R.string.warning_no_compat_versions);
+                warningView.setVisibility(View.VISIBLE);
+            } else if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
                     && !SessionInstallManager.isTargetSdkSupported(suggestedApk.targetSdkVersion)) {
+                int color = ContextCompat.getColor(context, R.color.warning);
+                warningView.setBackgroundColor(color);
+                warningView.setText(R.string.warning_target_sdk);
                 warningView.setVisibility(View.VISIBLE);
             } else {
                 warningView.setVisibility(View.GONE);
@@ -637,7 +647,7 @@ public class AppDetailsRecyclerViewAdapter
             updateAntiFeaturesWarning();
 
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
+            buttonPrimaryView.setVisibility(versionsLoading ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
