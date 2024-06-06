@@ -152,7 +152,6 @@ public class AppDetailsRecyclerViewAdapter
 
         // Get versions
         compatibleVersionsDifferentSigner.clear();
-        if (apks != null) addInstalledApkIfExists(apks);
         boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
         if (apks != null) {
             for (final Apk apk : apks) {
@@ -197,19 +196,6 @@ public class AppDetailsRecyclerViewAdapter
         this.repos.addAll(repos);
         this.preferredRepoId = preferredRepoId;
         notifyItemChanged(0); // header changed
-    }
-
-    private void addInstalledApkIfExists(final List<Apk> apks) {
-        if (app == null) return;
-        Apk installedApk = app.getInstalledApk(context, apks);
-        // These conditions should be enough to determine if the installedApk
-        // is a generated dummy or a proper APK containing data from a repository.
-        if (installedApk != null && installedApk.added == null && installedApk.signer == null) {
-            installedApk.compatible = true;
-            installedApk.signer = app.installedSigner;
-            installedApk.maxSdkVersion = -1;
-            apks.add(installedApk);
-        }
     }
 
     void setShowVersions(boolean showVersions) {
