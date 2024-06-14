@@ -1,7 +1,5 @@
 package org.fdroid.repo
 
-import android.content.res.Resources
-import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppOverviewItem
@@ -79,7 +77,7 @@ internal open class RepoV2StreamReceiver(
         )
     }
 
-    private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
+    private val locales: LocaleListCompat = LocaleListCompat.getDefault()
 
     override fun receive(repo: RepoV2, version: Long) {
         receiver.onRepoReceived(
