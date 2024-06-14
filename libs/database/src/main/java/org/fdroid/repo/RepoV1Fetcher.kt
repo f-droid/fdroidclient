@@ -1,8 +1,6 @@
 package org.fdroid.repo
 
-import android.content.res.Resources
 import android.net.Uri
-import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import kotlinx.serialization.SerializationException
 import org.fdroid.database.Repository
@@ -24,7 +22,7 @@ internal class RepoV1Fetcher(
     private val repoUriBuilder: RepoUriBuilder,
 ) : RepoFetcher {
 
-    private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
+    private val locales: LocaleListCompat = LocaleListCompat.getDefault()
 
     @Throws(SigningException::class, SerializationException::class)
     override suspend fun fetchRepo(

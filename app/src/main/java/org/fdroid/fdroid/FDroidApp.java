@@ -34,7 +34,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -50,7 +49,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
-import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 
 import com.bumptech.glide.Glide;
@@ -237,29 +235,27 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         super.onConfigurationChanged(newConfig);
         Languages.setLanguage(this);
         App.systemLocaleList = null;
+        updateLanguagesIfNecessary();
+    }
 
+    private void updateLanguagesIfNecessary() {
         // update the descriptions based on the new language preferences
         SharedPreferences atStartTime = getAtStartTimeSharedPreferences();
         final String lastLocaleKey = "lastLocale";
-        String lastLocale = atStartTime.getString(lastLocaleKey, null);
-        String currentLocale;
-        if (Build.VERSION.SDK_INT < 24) {
-            currentLocale = newConfig.locale.toString();
-        } else {
-            currentLocale = newConfig.getLocales().toString();
-        }
-        if (!TextUtils.equals(lastLocale, currentLocale)) {
+        String lastLocales = atStartTime.getString(lastLocaleKey, null);
+        String currentLocales = App.getLocales().toString();
+        if (!TextUtils.equals(lastLocales, currentLocales)) {
+            Log.i(TAG, "Locales changed. Old: " + lastLocales + " New: " + currentLocales);
             onLanguageChanged(getApplicationContext());
         }
-        atStartTime.edit().putString(lastLocaleKey, currentLocale).apply();
+        atStartTime.edit().putString(lastLocaleKey, currentLocales).apply();
     }
 
     public static void onLanguageChanged(Context context) {
         FDroidDatabase db = DBHelper.getDb(context);
         Single.fromCallable(() -> {
             long now = System.currentTimeMillis();
-            LocaleListCompat locales =
-                    ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+            LocaleListCompat locales = App.getLocales();
             db.afterLocalesChanged(locales);
             Log.d(TAG, "Updating DB locales took: " + (System.currentTimeMillis() - now) + "ms");
             return true;
@@ -391,6 +387,11 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             UpdateService.forceUpdateRepo(this);
         }
         atStartTime.edit().putInt("build-version", Build.VERSION.SDK_INT).apply();
+
+        if (!preferences.isIndexNeverUpdated()) {
+            // if system locales have changed since the app's last run, refresh cache as necessary
+            updateLanguagesIfNecessary();
+        }
 
         final String queryStringKey = "http-downloader-query-string";
         if (preferences.sendVersionAndUUIDToServers()) {

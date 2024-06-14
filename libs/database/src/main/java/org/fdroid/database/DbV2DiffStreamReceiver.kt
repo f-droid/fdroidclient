@@ -1,7 +1,5 @@
 package org.fdroid.database
 
-import android.content.res.Resources
-import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import kotlinx.serialization.json.JsonObject
 import org.fdroid.CompatibilityChecker
@@ -13,7 +11,7 @@ internal class DbV2DiffStreamReceiver(
     private val compatibilityChecker: CompatibilityChecker,
 ) : IndexV2DiffStreamReceiver {
 
-    private val locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
+    private val locales: LocaleListCompat = LocaleListCompat.getDefault()
 
     override fun receiveRepoDiff(version: Long, repoJsonObject: JsonObject) {
         db.getRepositoryDao().updateRepository(repoId, version, repoJsonObject)

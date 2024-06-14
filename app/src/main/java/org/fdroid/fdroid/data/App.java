@@ -5,7 +5,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -19,7 +18,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.pm.PackageInfoCompat;
-import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 
 import com.bumptech.glide.Glide;
@@ -75,7 +73,13 @@ public class App implements Comparable<App>, Parcelable {
     public static LocaleListCompat getLocales() {
         LocaleListCompat cached = systemLocaleList;
         if (cached == null) {
-            cached = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration());
+            // Tries to get the device locales list set by the user in system settings.
+            // The official docs are less than apparent in this regard, but empirically,
+            // `ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration())`
+            // seems to push back languages marked "May not be available in some apps"
+            // in Settings UI while `LocaleListCompat.getDefault()` appears to preserve
+            // the user-preferred order so we prefer the latter here
+            cached = LocaleListCompat.getDefault();
             systemLocaleList = cached;
         }
         return cached;
