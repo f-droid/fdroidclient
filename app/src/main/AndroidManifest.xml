@@ -153,23 +153,6 @@
             </intent-filter>
 
             <!--
-            Same as the intent filter listening for repositories via https://*/fdroid/repo, except this
-            looks for fdroidrepos://* and doesn't care what the path is.
-            -->
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <!--
-                URIs that come in via NFC have scheme/host normalized to all lower case
-                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
-                -->
-                <data android:scheme="fdroidrepo" />
-                <data android:scheme="fdroidrepos" />
-            </intent-filter>
-
-            <!--
             The below intent filter most likely won't work anymore.
             Using fdroid.link or fdroidrepos:// scheme is preferred.
             -->
