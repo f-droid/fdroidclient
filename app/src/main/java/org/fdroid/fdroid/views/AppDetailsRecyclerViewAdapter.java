@@ -18,6 +18,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -148,10 +149,10 @@ public class AppDetailsRecyclerViewAdapter
 
         items.clear();
         versions.clear();
+        suggestedApk = null;
 
         // Get versions
         compatibleVersionsDifferentSigner.clear();
-        if (apks != null) addInstalledApkIfExists(apks);
         boolean showIncompatibleVersions = Preferences.get().showIncompatibleVersions();
         if (apks != null) {
             for (final Apk apk : apks) {
@@ -170,10 +171,17 @@ public class AppDetailsRecyclerViewAdapter
                 }
             }
         }
-        if (apks != null) suggestedApk = app.findSuggestedApk(apks, appPrefs);
+        if (apks != null) {
+            final Apk foundApk = app.findSuggestedApk(apks, appPrefs);
+            // only use suggested APK, if app not installed, or signer matches installed signer
+            // because otherwise, there's no use in suggesting it as we can't install it anyway
+            if (app.installedSigner == null || (foundApk != null && app.installedSigner.equals(foundApk.signer))) {
+                suggestedApk = foundApk;
+            }
+        }
 
         addItem(VIEWTYPE_HEADER);
-        if (app.getAllScreenshots().size() > 0) addItem(VIEWTYPE_SCREENSHOTS);
+        if (!app.getAllScreenshots().isEmpty()) addItem(VIEWTYPE_SCREENSHOTS);
         addItem(VIEWTYPE_DONATE);
         addItem(VIEWTYPE_LINKS);
         addItem(VIEWTYPE_PERMISSIONS);
@@ -187,6 +195,7 @@ public class AppDetailsRecyclerViewAdapter
                 setShowVersions(true);
             }
         }
+        //noinspection NotifyDataSetChanged // too hard to know what exactly has changed
         notifyDataSetChanged();
     }
 
@@ -197,24 +206,11 @@ public class AppDetailsRecyclerViewAdapter
         notifyItemChanged(0); // header changed
     }
 
-    private void addInstalledApkIfExists(final List<Apk> apks) {
-        if (app == null) return;
-        Apk installedApk = app.getInstalledApk(context, apks);
-        // These conditions should be enough to determine if the installedApk
-        // is a generated dummy or a proper APK containing data from a repository.
-        if (installedApk != null && installedApk.added == null && installedApk.signer == null) {
-            installedApk.compatible = true;
-            installedApk.signer = app.installedSigner;
-            installedApk.maxSdkVersion = -1;
-            apks.add(installedApk);
-        }
-    }
-
     void setShowVersions(boolean showVersions) {
         setShowVersions(showVersions, false);
     }
 
-    void setShowVersions(boolean showVersions, boolean scrollTo) {
+    private void setShowVersions(boolean showVersions, boolean scrollTo) {
         this.showVersions = showVersions;
         boolean itemsWereRemoved = items.removeAll(versions);
         int startIndex = items.indexOf(VIEWTYPE_VERSIONS) + 1;
@@ -227,19 +223,8 @@ public class AppDetailsRecyclerViewAdapter
             items.addAll(startIndex, versions);
             notifyItemRangeInserted(startIndex, versions.size());
             if (recyclerView != null && scrollTo) {
-                final LinearSmoothScroller smoothScroller = new LinearSmoothScroller(context) {
-                    @Override
-                    protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-                        // The default speed of smooth scrolling doesn't look good
-                        // and it's too fast when it happens while inserting
-                        // multiple recycler view items
-                        return 75f / displayMetrics.densityDpi;
-                    }
-                };
-                // Expanding the version list reveals up to 5 items by default
-                int visibleVersionLimit = Math.min(versions.size(), 5);
-                smoothScroller.setTargetPosition(startIndex + visibleVersionLimit - 1);
-                recyclerView.getLayoutManager().startSmoothScroll(smoothScroller);
+                final LinearSmoothScroller smoothScroller = getLinearSmoothScroller(startIndex);
+                Objects.requireNonNull(recyclerView.getLayoutManager()).startSmoothScroll(smoothScroller);
             }
         } else if (itemsWereRemoved) {
             notifyItemRangeRemoved(startIndex, versions.size());
@@ -247,6 +232,23 @@ public class AppDetailsRecyclerViewAdapter
                 recyclerView.smoothScrollToPosition(startIndex - 1);
             }
         }
+    }
+
+    @NonNull
+    private LinearSmoothScroller getLinearSmoothScroller(int startIndex) {
+        final LinearSmoothScroller smoothScroller = new LinearSmoothScroller(context) {
+            @Override
+            protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
+                // The default speed of smooth scrolling doesn't look good
+                // and it's too fast when it happens while inserting
+                // multiple recycler view items
+                return 75f / displayMetrics.densityDpi;
+            }
+        };
+        // Expanding the version list reveals up to 5 items by default
+        int visibleVersionLimit = Math.min(versions.size(), 5);
+        smoothScroller.setTargetPosition(startIndex + visibleVersionLimit - 1);
+        return smoothScroller;
     }
 
     private void addItem(int item) {
@@ -265,7 +267,7 @@ public class AppDetailsRecyclerViewAdapter
         // Figure out if we should show permissions section
         Apk curApk = app.installedApk == null ? suggestedApk : app.installedApk;
         final boolean curApkCompatible = curApk != null && curApk.compatible;
-        return versions.size() > 0 && (curApkCompatible || Preferences.get().showIncompatibleVersions());
+        return !versions.isEmpty() && (curApkCompatible || Preferences.get().showIncompatibleVersions());
     }
 
     private boolean shouldShowDonate() {
@@ -314,36 +316,45 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        switch (viewType) {
-            case VIEWTYPE_HEADER:
+        return switch (viewType) {
+            case VIEWTYPE_HEADER -> {
                 View header = inflater.inflate(R.layout.app_details2_header, parent, false);
-                return new HeaderViewHolder(header);
-            case VIEWTYPE_SCREENSHOTS:
+                yield new HeaderViewHolder(header);
+            }
+            case VIEWTYPE_SCREENSHOTS -> {
                 View screenshots = inflater.inflate(R.layout.app_details2_screenshots, parent, false);
-                return new ScreenShotsViewHolder(screenshots);
-            case VIEWTYPE_DONATE:
+                yield new ScreenShotsViewHolder(screenshots);
+            }
+            case VIEWTYPE_DONATE -> {
                 View donate = inflater.inflate(R.layout.app_details2_donate, parent, false);
-                return new DonateViewHolder(donate);
-            case VIEWTYPE_LINKS:
+                yield new DonateViewHolder(donate);
+            }
+            case VIEWTYPE_LINKS -> {
                 View links = inflater.inflate(R.layout.app_details2_links, parent, false);
-                return new LinksViewHolder(links);
-            case VIEWTYPE_PERMISSIONS:
+                yield new LinksViewHolder(links);
+            }
+            case VIEWTYPE_PERMISSIONS -> {
                 View permissions = inflater.inflate(R.layout.app_details2_links, parent, false);
-                return new PermissionsViewHolder(permissions);
-            case VIEWTYPE_VERSIONS:
+                yield new PermissionsViewHolder(permissions);
+            }
+            case VIEWTYPE_VERSIONS -> {
                 View versionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
-                return new VersionsViewHolder(versionsView);
-            case VIEWTYPE_NO_VERSIONS:
+                yield new VersionsViewHolder(versionsView);
+            }
+            case VIEWTYPE_NO_VERSIONS -> {
                 View noVersionsView = inflater.inflate(R.layout.app_details2_links, parent, false);
-                return new NoVersionsViewHolder(noVersionsView);
-            case VIEWTYPE_VERSIONS_LOADING:
+                yield new NoVersionsViewHolder(noVersionsView);
+            }
+            case VIEWTYPE_VERSIONS_LOADING -> {
                 View loadingView = inflater.inflate(R.layout.app_details2_loading, parent, false);
-                return new VersionsLoadingViewHolder(loadingView);
-            case VIEWTYPE_VERSION:
+                yield new VersionsLoadingViewHolder(loadingView);
+            }
+            case VIEWTYPE_VERSION -> {
                 View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
-                return new VersionViewHolder(version);
-        }
-        return null;
+                yield new VersionViewHolder(version);
+            }
+            default -> throw new IllegalStateException("Unknown view type: " + viewType);
+        };
     }
 
     @Override
@@ -563,8 +574,18 @@ public class AppDetailsRecyclerViewAdapter
                 repoChooserView.setVisibility(View.GONE);
             }
 
-            if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
+            if (suggestedApk == null && repos.size() > 1 && app.installedSigner != null && preferredRepoId != null
+                    && preferredRepoId == app.repoId && !versionsLoading) {
+                // current repo is preferred, app is installed, but has no suggested version from this repo
+                int color = ContextCompat.getColor(context, R.color.fdroid_red);
+                warningView.setBackgroundColor(color);
+                warningView.setText(R.string.warning_no_compat_versions);
+                warningView.setVisibility(View.VISIBLE);
+            } else if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
                     && !SessionInstallManager.isTargetSdkSupported(suggestedApk.targetSdkVersion)) {
+                int color = ContextCompat.getColor(context, R.color.warning);
+                warningView.setBackgroundColor(color);
+                warningView.setText(R.string.warning_target_sdk);
                 warningView.setVisibility(View.VISIBLE);
             } else {
                 warningView.setVisibility(View.GONE);
@@ -601,8 +622,7 @@ public class AppDetailsRecyclerViewAdapter
             descriptionView.setText(trimTrailingNewlines(desc));
             LinkifyCompat.addLinks(descriptionView, Linkify.WEB_URLS);
 
-            if (descriptionView.getText() instanceof Spannable) {
-                Spannable spannable = (Spannable) descriptionView.getText();
+            if (descriptionView.getText() instanceof Spannable spannable) {
                 URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
                 for (URLSpan span : spans) {
                     int start = spannable.getSpanStart(span);
@@ -627,7 +647,7 @@ public class AppDetailsRecyclerViewAdapter
             updateAntiFeaturesWarning();
 
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility(versions.isEmpty() ? View.GONE : View.VISIBLE);
+            buttonPrimaryView.setVisibility(versionsLoading ? View.GONE : View.VISIBLE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
@@ -664,13 +684,13 @@ public class AppDetailsRecyclerViewAdapter
                             viewIntent.setDataAndType(uri, mimeType);
                             viewIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION
                                     | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                            if (context.getPackageManager().queryIntentActivities(viewIntent, 0).size() > 0) {
+                            if (!context.getPackageManager().queryIntentActivities(viewIntent, 0).isEmpty()) {
                                 buttonPrimaryView.setText(R.string.menu_open);
                                 buttonPrimaryView.setOnClickListener(v -> {
                                     try {
                                         context.startActivity(viewIntent);
                                     } catch (ActivityNotFoundException e) {
-                                        e.printStackTrace();
+                                        Log.e(TAG, "Error starting activity: ", e);
                                     }
                                 });
                             } else {
@@ -711,7 +731,7 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private void updateAntiFeaturesWarning() {
-            if (app.antiFeatures == null || app.antiFeatures.length == 0) {
+            if (app != null && (app.antiFeatures == null || app.antiFeatures.length == 0)) {
                 antiFeaturesSectionView.setVisibility(View.GONE);
             } else if (descriptionIsExpanded) {
                 antiFeaturesSectionView.setVisibility(View.VISIBLE);
@@ -776,7 +796,7 @@ public class AppDetailsRecyclerViewAdapter
             context.startActivity(ScreenShotsActivity.getStartIntent(context, app.repoId, screenshots, position));
         }
 
-        private class ItemDecorator extends RecyclerView.ItemDecoration {
+        private static class ItemDecorator extends RecyclerView.ItemDecoration {
             private final Context context;
 
             ItemDecorator(Context context) {
@@ -784,7 +804,8 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, RecyclerView parent,
+                                       @NonNull RecyclerView.State state) {
                 int position = parent.getChildAdapterPosition(view);
                 int padding = (int) context.getResources().getDimension(R.dimen.details_activity_padding_screenshot);
                 if (position == 0) {
@@ -885,7 +906,7 @@ public class AppDetailsRecyclerViewAdapter
          * Depending on whether we are expanded or not, update the icon which indicates whether the
          * user can expand/collapse this item.
          */
-        protected void updateExpandableItem(boolean isExpanded) {
+        void updateExpandableItem(boolean isExpanded) {
             final int icon = getIcon();
             Drawable iconDrawable = ContextCompat.getDrawable(headerView.getContext(), icon);
             final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less);
@@ -923,8 +944,8 @@ public class AppDetailsRecyclerViewAdapter
         NoVersionsViewHolder(View view) {
             super(view);
             headerView = view.findViewById(R.id.information);
-            final Drawable accessTime = DrawableCompat.wrap(ContextCompat.getDrawable(headerView.getContext(),
-                    R.drawable.ic_versions)).mutate();
+            final Drawable versions = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_versions);
+            final Drawable accessTime = DrawableCompat.wrap(Objects.requireNonNull(versions)).mutate();
             DrawableCompat.setTint(accessTime, Color.parseColor("#B4B4B4"));
             TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
                     accessTime, null, null, null);
@@ -976,11 +997,11 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private boolean hasCompatibleApksDifferentSigners() {
-            return compatibleVersionsDifferentSigner.size() > 0;
+            return !compatibleVersionsDifferentSigner.isEmpty();
         }
     }
 
-    private class VersionsLoadingViewHolder extends AppDetailsViewHolder {
+    private static class VersionsLoadingViewHolder extends AppDetailsViewHolder {
         VersionsLoadingViewHolder(View itemView) {
             super(itemView);
         }
@@ -1002,8 +1023,9 @@ public class AppDetailsRecyclerViewAdapter
                 boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
                 contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                 updateExpandableItem(shouldBeVisible);
-                if (shouldBeVisible && recyclerView != null) {
-                    ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(items.indexOf(VIEWTYPE_PERMISSIONS), 0);
+                final LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (shouldBeVisible && recyclerView != null && layoutManager != null) {
+                    layoutManager.scrollToPositionWithOffset(items.indexOf(VIEWTYPE_PERMISSIONS), 0);
                 }
             });
             headerView.setText(R.string.permissions);
@@ -1035,8 +1057,9 @@ public class AppDetailsRecyclerViewAdapter
                 boolean shouldBeVisible = contentView.getVisibility() != View.VISIBLE;
                 contentView.setVisibility(shouldBeVisible ? View.VISIBLE : View.GONE);
                 updateExpandableItem(shouldBeVisible);
-                if (shouldBeVisible && recyclerView != null) {
-                    ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(items.indexOf(VIEWTYPE_LINKS), 0);
+                final LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (shouldBeVisible && recyclerView != null && layoutManager != null) {
+                    layoutManager.scrollToPositionWithOffset(items.indexOf(VIEWTYPE_LINKS), 0);
                 }
             });
             headerView.setText(R.string.links);
@@ -1137,7 +1160,7 @@ public class AppDetailsRecyclerViewAdapter
             ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), margin + ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
         }
 
-        public void bindModel(final Apk apk) {
+        void bindModel(final Apk apk) {
             if (app == null) return;
             this.apk = apk;
 
@@ -1228,7 +1251,8 @@ public class AppDetailsRecyclerViewAdapter
             }
 
             // Expand the view if it was previously expanded or when downloading
-            expand(versionsExpandTracker.get(apk.getApkPath()) || isApkDownloading);
+            Boolean expandedVersion = versionsExpandTracker.get(apk.getApkPath());
+            expand(Boolean.TRUE.equals(expandedVersion) || isApkDownloading);
 
             // Toggle expanded view when clicking the whole version item,
             // unless it's an installed app version dummy item - it doesn't
@@ -1241,10 +1265,12 @@ public class AppDetailsRecyclerViewAdapter
                 itemView.setOnClickListener(null);
             }
             // Copy version name to clipboard when long clicking the whole version item
-            itemView.setOnLongClickListener(v -> {
-                Utils.copyToClipboard(context, app.name, apk.versionName);
-                return true;
-            });
+            if (apk.versionName != null) {
+                itemView.setOnLongClickListener(v -> {
+                    Utils.copyToClipboard(context, app.name, apk.versionName);
+                    return true;
+                });
+            }
         }
 
         private String getApiText(final Apk apk) {
@@ -1337,14 +1363,14 @@ public class AppDetailsRecyclerViewAdapter
                 return;
             }
 
-            boolean expand = !versionsExpandTracker.get(apk.getApkPath());
+            boolean expand = Boolean.FALSE.equals(versionsExpandTracker.get(apk.getApkPath()));
             expand(expand);
 
             if (expand) {
                 // Scroll the versions view to a correct position so it can show the whole item
                 final LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
-                final int currentPosition = getAdapterPosition();
-                if (currentPosition >= lm.findLastCompletelyVisibleItemPosition()) {
+                final int currentPosition = getBindingAdapterPosition();
+                if (lm != null && currentPosition >= lm.findLastCompletelyVisibleItemPosition()) {
                     // Do it only if the item is near the bottom of current viewport
                     recyclerView.getViewTreeObserver()
                             .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
