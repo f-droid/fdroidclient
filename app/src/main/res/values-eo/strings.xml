@@ -313,8 +313,8 @@
     <string name="updates__hide_updateable_apps">Kaŝi aplikaĵojn</string>
     <string name="updates__show_updateable_apps">Montri aplikaĵojn</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Elŝuti ĝisdatigon por %1$d aplikaĵo.</item>
-        <item quantity="other">Elŝuti ĝisdatigojn por %1$d aplikaĵoj.</item>
+        <item quantity="one">Elŝuti ĝisdatigon por %1$d aplikaĵo:</item>
+        <item quantity="other">Elŝuti ĝisdatigojn por %1$d aplikaĵoj:</item>
     </plurals>
     <string name="details_new_in_version">Nova en versio %s</string>
     <string name="antifeatureswarning">Tiu ĉi aplikaĵo enhavas eblojn, kiujn vi eble ne ŝatas.</string>
@@ -589,4 +589,12 @@
 \n
 \nSe aplikaĵo troviĝas en pli ol unu deponejo, la pli supra deponejo sur la listo estas aŭtomate preferata. Vi povas reordigi deponejojn per frapetadi kaj ŝovi ilin.</string>
     <string name="repo_list_info_title">Listo de deponejoj</string>
+    <string name="repo_mirror_exists">Tiu ĉi spegul-servilo jam estas aldonita (%s).</string>
+    <string name="repo_mirror_add_info">La ligilo (%s), kiun vi provas aldoni estas spegul-servilo de ekzistanta deponejo.</string>
+    <string name="repo_add_repo_and_mirror">Aldoni deponejon kaj spegul-servilon</string>
+    <string name="repo_view_repo">Vidigi deponejon</string>
+    <string name="repo_scan_qr_code">Skani QR-kodon</string>
+    <string name="repo_preview_included_apps">Entenataj aplikaĵoj:</string>
+    <string name="repo_and_mirror_add_both_info">La ligilo (%s), kiun vi provas aldoni estas spegul-servilo de nova deponejo. Ambaŭ la originala deponejo kaj spegul-servilo estos aldonitaj.</string>
+    <string name="warning_no_compat_versions">La elektita deponejo enhavas neniun kongruan version de aplikaĵo. Por ricevi ĝisdatigojn, preferu deponejon kun kongruaj versioj.</string>
 </resources>
