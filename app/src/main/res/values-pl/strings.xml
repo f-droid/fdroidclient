@@ -607,4 +607,12 @@
     <string name="repo_error_adding_archive">Archiwalne repozytoria nie mogą być dodawane bezpośrednio. Naciśnij repozytorium na liście i włącz tam archiwum.</string>
     <string name="repositories_last_update">Ostatnia aktualizacja: %s</string>
     <string name="repo_disable_warning">Wyłączenie tego repozytorium spowoduje usunięcie jego statusu „preferowane” ze wszystkich aplikacji.</string>
+    <string name="repo_add_repo_and_mirror">Dodaj repozytorium i serwer lustrzany</string>
+    <string name="repo_view_repo">Wyświetl repozytorium</string>
+    <string name="repo_scan_qr_code">Zeskanuj kod QR</string>
+    <string name="repo_mirror_exists">Ten serwer lustrzany został już dodany (%s).</string>
+    <string name="repo_preview_included_apps">Uwzględnione aplikacje:</string>
+    <string name="repo_and_mirror_add_both_info">URL, który próbujesz dodać (%s), jest serwerem lustrzanym nowego repozytorium. Dodane zostanie zarówno oryginalne repozytorium, jak i serwer lustrzany.</string>
+    <string name="repo_mirror_add_info">URL, który próbujesz dodać (%s), jest serwerem lustrzanym istniejącego repozytorium.</string>
+    <string name="warning_no_compat_versions">Wybrane repozytorium nie ma zgodnych wersji aplikacji. Aby otrzymywać aktualizacje, preferuj repozytorium z kompatybilnymi wersjami.</string>
 </resources>
