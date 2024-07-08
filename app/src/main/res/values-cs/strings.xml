@@ -600,4 +600,12 @@
 \nPokud se aplikace nachází více než v jednom repozitáři, bude automaticky vybrán repozitář výše v seznamu. Repozitáře můžete přesunout dlouhým podržením a posunutím.</string>
     <string name="repositories_last_update_never">nikdy</string>
     <string name="repositories_last_update">Poslední aktualizace: %s</string>
+    <string name="repo_view_repo">Zobrazit repozitář</string>
+    <string name="repo_scan_qr_code">Naskenovat QR kód</string>
+    <string name="repo_preview_included_apps">Zahrnuté aplikace:</string>
+    <string name="repo_mirror_exists">Toto zrcadlo již bylo přidáno (%s).</string>
+    <string name="repo_mirror_add_info">Adresa, kterou se snažíte přidat (%s), je zrcadlem již existujícího repozitáře.</string>
+    <string name="repo_and_mirror_add_both_info">Adresa, kterou se snažíte přidat (%s), je zrcadlem nového repozitáře. Bude přidán původní repozitář i zrcadlo.</string>
+    <string name="repo_add_repo_and_mirror">Přidat repozitář jako zrcadlo</string>
+    <string name="warning_no_compat_versions">Zvolený repozitář nemá žádné kompatibilní verze aplikací. Pro získávání aktualizací upřednostněte repozitář s kompatibilními verzemi.</string>
 </resources>
