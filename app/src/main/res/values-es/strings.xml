@@ -40,7 +40,7 @@
     <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
     <string name="repo_add_url">Dirección del repositorio</string>
     <string name="repo_add_fingerprint">Huella digital (opcional)</string>
-    <string name="malformed_repo_uri">Ignorando URI de repositorio mal-formada: %s</string>
+    <string name="malformed_repo_uri">Ignorando URI de repositorio malformado: %s</string>
     <string name="menu_manage">Repositorios</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Repositorio nuevo</string>
@@ -323,9 +323,9 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descargar la actualización para %1$d aplicación.</item>
-        <item quantity="many">Descargar las actualizaciones para %1$d aplicaciones.</item>
-        <item quantity="other">Descargar las actualizaciones para %1$d aplicaciones.</item>
+        <item quantity="one">Descargar actualización para %1$d aplicación:</item>
+        <item quantity="many">Descargar actualizaciones para %1$d aplicaciones:</item>
+        <item quantity="other">Descargar actualizaciones para %1$d aplicaciones:</item>
     </plurals>
     <string name="details_new_in_version">Novedades en la versión %s</string>
     <string name="antifeatureswarning">Esta aplicación tiene características que podrían no gustarle.</string>
@@ -473,7 +473,7 @@
     <string name="antinosourcesince">El código fuente ya no está disponible, no se puede actualizar.</string>
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
-    <string name="scan_removable_storage_summary">Busque repositorios de paquetes en dispositivos de almacenamiento extraíbles, como tarjetas SD y memorias USB.</string>
+    <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en dispositivos de almacenamiento extraíbles, como tarjetas SD y memorias USB</string>
     <string name="main_menu__updates">Avisos</string>
     <string name="nearby_splash__read_external_storage">Buscar repositorios y réplicas en la tarjeta SD.</string>
     <string name="nearby_splash__request_permission">Buscar ahora</string>
@@ -536,11 +536,11 @@
     <string name="antinosource">El código fuente ya no está disponible</string>
     <string name="antinonfreead">Complementos no libres</string>
     <string name="antiupstreamnonfree">Original no libre</string>
-    <string name="antinonfreeassets">Componentes no libres</string>
+    <string name="antinonfreeassets">Recursos no gratuitos</string>
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
-    <string name="antiothers">Otras características controvertidas</string>
-    <string name="antinsfw">No Seguro Para El Trabajo (NSFW)</string>
+    <string name="antiothers">Otras características indeseables</string>
+    <string name="antinsfw">No es seguro para el trabajo (NSFW)</string>
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
     <string name="antinsfwlist">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
@@ -555,7 +555,7 @@
 \n
 \nPor favor asegúrate de que el repositorio que vas a agregar es confiable.</string>
     <string name="repo_enter_url">Escribe la URL del repositorio manualmente</string>
-    <string name="repo_exists">Este repositorio ya está añadido.</string>
+    <string name="repo_exists">Este repositorio ya estaba añadido.</string>
     <string name="repo_invalid">Repositorio inválido.
 \n
 \nContacta al administrador e infórmales de la incidencia.</string>
@@ -590,7 +590,7 @@
         <item quantity="other">Descarga de las aplicaciones mediante puntos finales web IPFS: %1$d activados</item>
     </plurals>
     <string name="repo_share_not_found">No se ha encontrado la dirección del repositorio en el texto compartido.</string>
-    <string name="useDnsCacheSummary">Usar resultados en caché para minimizar las consultas vía DNS</string>
+    <string name="useDnsCacheSummary">Utilizar los resultados almacenados en caché para minimizar las consultas DNS.</string>
     <string name="useDnsCache">Usar Caché DNS</string>
     <string name="app_details_repository">Repositorio</string>
     <string name="app_details_repositories">Repositorios</string>
@@ -610,4 +610,12 @@
     <string name="repo_list_info_text">Un repositorio es una fuente de aplicaciones. Esta lista muestra todos los repositorios añadidos actualmente. Los repositorios desactivados no se utilizan.
 \n
 \nSi una aplicación está en más de un repositorio, se preferirá automáticamente el repositorio que esté más arriba en la lista. Puede reordenar los repositorios pulsando prolongadamente y arrastrándolos.</string>
+    <string name="repo_mirror_add_info">La URL que está intentando añadir (%s) es una réplica de un repositorio existente.</string>
+    <string name="repo_and_mirror_add_both_info">La URL que está intentando añadir (%s) es una réplica de un nuevo repositorio. Se añadirán tanto el repositorio original como un espejo.</string>
+    <string name="repo_scan_qr_code">Escanear el código QR</string>
+    <string name="repo_preview_included_apps">Aplicaciones incluidas:</string>
+    <string name="repo_mirror_exists">Esta espejo ya se había añadido (%s).</string>
+    <string name="repo_add_repo_and_mirror">Añadir repositorio y espejo</string>
+    <string name="repo_view_repo">Ver el repositorio</string>
+    <string name="warning_no_compat_versions">El repositorio seleccionado no tiene versiones de aplicaciones compatibles. Para recibir actualizaciones, prefiera un repositorio con versiones compatibles.</string>
 </resources>
