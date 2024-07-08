@@ -266,8 +266,8 @@
     <string name="updates__hide_updateable_apps">Скриване на приложения</string>
     <string name="updates__show_updateable_apps">Показване на приложения</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Изтегляне на издание на %1$d приложение.</item>
-        <item quantity="other">Изтегляне на издания на %1$d приложения.</item>
+        <item quantity="one">Изтегляне на издание на %1$d приложение:</item>
+        <item quantity="other">Изтегляне на издания на %1$d приложения:</item>
     </plurals>
     <string name="versions">Издания</string>
     <string name="clear_search">Изчистване на търсенето</string>
@@ -476,7 +476,7 @@
     <string name="repo_delete_to_overwrite">Изтрийте първо %1$s за да добавите това хранилище с различен ключ.</string>
     <string name="repo_exists_and_enabled">Хранилището %1$s е вече добавено и включено.</string>
     <string name="repo_exists_enable">Хранилището %1$s е вече добавено, потвърдете че искате да го включите отново.</string>
-    <string name="repo_exists_add_fingerprint">%1$s е вече настроено, това ще добави нова иформация за ключа.</string>
+    <string name="repo_exists_add_fingerprint">%1$s е вече настроено, това ще добави нова информация за ключа.</string>
     <string name="swap_toast_closing_nearby_after_timeout">Наоколо се изключва поради бездействие.</string>
     <string name="not_visible_nearby">Наблизо не е включено</string>
     <string name="hiding_dialog_message">Сигурни ли сте, че искате да премахнете %1$s от стартовия панел\? Само въвеждането на „%2$d“ във фалшивото приложение %3$s може да го възстанови.</string>
@@ -540,7 +540,7 @@
     <string name="repo_state_fetching">Зареждане на хранилище…</string>
     <string name="repo_state_adding">Добавяне на хранилище…</string>
     <string name="repo_enter_url">Ръчно въведете адреса на хранилището</string>
-    <string name="repo_exists">Това хранилище вече е добавено.</string>
+    <string name="repo_exists">Това хранилище е вече добавено.</string>
     <string name="repo_invalid">Неприемливо хранилище.
 \n
 \nСвържете се с поддръжката му и съобщете за грешката.</string>
@@ -589,4 +589,12 @@
 \nАко едно приложение е налично в повече от едно хранилище, се използва хранилището, което е по-горе в списъка. Можете да подреждате хранилищата, с дълго задържане и влачене.</string>
     <string name="repo_error_adding_archive">Архив на хранилище не може да бъде добавен директно. Докоснете хранилище в списъка и го направете архивно.</string>
     <string name="repo_disable_warning">Изключване на това хранилище ще премахне състоянието „предпочитано“ от всички приложения.</string>
+    <string name="repo_add_repo_and_mirror">Добавяне на хранилище или огледало</string>
+    <string name="repo_view_repo">Преглед</string>
+    <string name="repo_scan_qr_code">Сканиране на код за QR</string>
+    <string name="repo_preview_included_apps">Налични приложения:</string>
+    <string name="repo_mirror_exists">Това огледало е вече добавено (%s).</string>
+    <string name="repo_and_mirror_add_both_info">Адресът, който добавяте (%s) е огледало на ново хранилище. И хранилището, и огледалото ще бъдат добавени.</string>
+    <string name="repo_mirror_add_info">Адресът, който добавяте (%s) е огледало на съществуващо хранилище.</string>
+    <string name="warning_no_compat_versions">В избраното хранилище няма съвместими издания на приложението. За да получавате обновявания изберете хранилище със съвместими издания.</string>
 </resources>
