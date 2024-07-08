@@ -303,10 +303,10 @@
     <string name="updates__hide_updateable_apps">Сховати застосунки</string>
     <string name="updates__show_updateable_apps">Показати застосунки</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Завантажити оновлення для %1$d застосунку.</item>
-        <item quantity="few">Завантажити оновлення для %1$d застосунків.</item>
-        <item quantity="many">Завантажити оновлення для %1$d застосунків.</item>
-        <item quantity="other">Завантажити оновлення для %1$d застосунків.</item>
+        <item quantity="one">Завантажити оновлення для %1$d застосунку:</item>
+        <item quantity="few">Завантажити оновлення для %1$d застосунків:</item>
+        <item quantity="many">Завантажити оновлення для %1$d застосунків:</item>
+        <item quantity="other">Завантажити оновлення для %1$d застосунків:</item>
     </plurals>
     <string name="details_new_in_version">Нове у версії %s</string>
     <string name="antifeatureswarning">Цей застосунок містить функції, які можуть бути вам не до вподоби.</string>
@@ -613,4 +613,5 @@
     <string name="repo_mirror_exists">Це дзеркало вже додано (%s).</string>
     <string name="repo_mirror_add_info">URL-адреса, яку ви намагаєтеся додати (%s), є дзеркалом наявного репозиторію.</string>
     <string name="repo_and_mirror_add_both_info">URL-адреса, яку ви намагаєтеся додати (%s), є дзеркалом нового репозиторія . Буде додано як оригінальний репозиторій, так і дзеркало.</string>
+    <string name="warning_no_compat_versions">Вибраний репозиторій не має сумісних версій застосунків. Щоб отримувати оновлення, віддайте перевагу репозиторію з сумісними версіями.</string>
 </resources>
