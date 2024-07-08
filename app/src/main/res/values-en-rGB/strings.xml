@@ -596,4 +596,5 @@
     <string name="repo_mirror_exists">This mirror was already added (%s).</string>
     <string name="repo_mirror_add_info">The URL you are trying to add (%s) is a mirror of an existing repository.</string>
     <string name="repo_and_mirror_add_both_info">The URL you are trying to add (%s) is a mirror of a new repository. Both the original repository and the mirror will be added.</string>
+    <string name="warning_no_compat_versions">The selected repository has no compatible app versions. To receive updates, prefer a repository with compatible versions.</string>
 </resources>
