@@ -518,7 +518,7 @@
     <string name="repo_state_fetching">正在获取仓库…</string>
     <string name="repo_state_adding">正在添加仓库…</string>
     <string name="repo_enter_url">手动输入仓库 URL</string>
-    <string name="repo_exists">已添加了此仓库。</string>
+    <string name="repo_exists">已添加了此存储库。</string>
     <string name="repo_invalid">无效的仓库。
 \n
 \n请联系维护者告知这一问题。</string>
@@ -573,4 +573,12 @@
     <string name="repo_list_info_title">存储库列表</string>
     <string name="repo_disable_warning">停用此存储库会从所有应用去除其“首选”状态。</string>
     <string name="app_details_repository_preferred">（首选）</string>
+    <string name="repo_preview_included_apps">包含的应用：</string>
+    <string name="repo_and_mirror_add_both_info">你正尝试添加的 URL (%s）是新存储库的镜像。原始存储库和镜像都将被添加。</string>
+    <string name="repo_add_repo_and_mirror">添加存储库和镜像</string>
+    <string name="repo_view_repo">查看存储库</string>
+    <string name="repo_scan_qr_code">扫描二维码</string>
+    <string name="repo_mirror_exists">此镜像已存在（%s）。</string>
+    <string name="repo_mirror_add_info">你正尝试添加的 URL （%s）是现有存储库的镜像。</string>
+    <string name="warning_no_compat_versions">所选的存储库没有兼容的应用版本。要接收更新，请首选有兼容版本的存储库。</string>
 </resources>
