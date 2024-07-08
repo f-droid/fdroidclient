@@ -593,4 +593,12 @@
 \n
 \nWenn eine App in mehr als einer Paketquelle enthalten ist, wird die in der Liste weiter oben stehende Paketquelle automatisch bevorzugt. Sie können Paketquellen durch langes Drücken und Ziehen neu anordnen.</string>
     <string name="repo_error_adding_archive">Archiv-Paketquellen können nicht direkt hinzugefügt werden. Tippen Sie auf die Paketquelle in der Liste und aktivieren Sie das Archiv dort.</string>
+    <string name="repo_scan_qr_code">QR-Code scannen</string>
+    <string name="repo_add_repo_and_mirror">Paketquelle und Spiegelserver hinzufügen</string>
+    <string name="repo_view_repo">Paketquelle anzeigen</string>
+    <string name="repo_preview_included_apps">Enthaltene Apps:</string>
+    <string name="repo_mirror_exists">Dieser Spiegelserver wurde bereits hinzugefügt (%s).</string>
+    <string name="repo_mirror_add_info">Die URL, die Sie hinzufügen möchten (%s), ist ein Spiegelserver eines bestehenden Repositorys.</string>
+    <string name="repo_and_mirror_add_both_info">Die URL, die Sie hinzufügen möchten (%s), ist ein Spiegelserver eines neuen Repositorys. Sowohl das ursprüngliche Repository als auch der Spiegelserver werden hinzugefügt.</string>
+    <string name="warning_no_compat_versions">Die ausgewählte Paketquelle hat keine kompatiblen App-Versionen. Um Aktualisierungen zu erhalten, sollten Sie eine Paketquelle mit kompatiblen Versionen vorziehen.</string>
 </resources>
