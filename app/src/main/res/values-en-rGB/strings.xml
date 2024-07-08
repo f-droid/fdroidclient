@@ -327,8 +327,8 @@
     <string name="repo_add_title">Add new repository</string>
     <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Download update for %1$d app.</item>
-        <item quantity="other">Download updates for %1$d apps.</item>
+        <item quantity="one">Download update for %1$d app:</item>
+        <item quantity="other">Download updates for %1$d apps:</item>
     </plurals>
     <string name="updates__show_updateable_apps">Show apps</string>
     <string name="updates__hide_updateable_apps">Hide apps</string>
