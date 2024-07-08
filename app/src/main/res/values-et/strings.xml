@@ -605,4 +605,5 @@
     <string name="repo_mirror_exists">See peegel on juba lisatud (%s).</string>
     <string name="repo_mirror_add_info">URL, mida te üritate lisada (%s), on olemasoleva hoidla peegel.</string>
     <string name="repo_and_mirror_add_both_info">URL, mida te üritate lisada (%s), on uue hoidla peegel. Lisatakse nii algne hoidla kui ka peegel.</string>
+    <string name="warning_no_compat_versions">Valitud tarkvarahoidlas ei ole sinu nutiseadme jaoks sobivaid rakenduse versioone. Uuenduste laadimiseks palun eelista hoidlat, kus selliseid versioone leidub.</string>
 </resources>
