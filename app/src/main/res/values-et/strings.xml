@@ -288,7 +288,7 @@
     <string name="update_auto_install">Paigalda värskendused automaatselt</string>
     <string name="update_auto_install_summary">Laadi alla ja värskenda rakendusi taustal ning kuva teavitus</string>
     <string name="app_details_donate_prompt_unknown_author">Osta %1$s  arendajatele kohvi!</string>
-    <string name="app_details_donate_prompt">%1$s loojad on %2$s. Osta neile kohvi!</string>
+    <string name="app_details_donate_prompt">%2$s on loonud rakenduse %1$s. Osta neile kohvi!</string>
     <string name="app_details__incompatible_mismatched_signers">Paigaldatud versioonil on teine allkirjastaja</string>
     <string name="app_details__no_versions__show_incompat_versions">Mitteühilduvate versioonide siin kuvamiseks lülita sisse \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">Ühilduvate allkirjastajatega versioone ei ole</string>
@@ -316,8 +316,8 @@
     <string name="updates__hide_updateable_apps">Peida rakendused</string>
     <string name="updates__show_updateable_apps">Kuva rakendused</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Värskenduse allalaadimine %1$d äpile.</item>
-        <item quantity="other">Värskenduste allalaadimine %1$d äppidele.</item>
+        <item quantity="one">Värskenduse allalaadimine %1$d-le äpile:</item>
+        <item quantity="other">Värskenduste allalaadimine %1$d-le äpile:</item>
     </plurals>
     <string name="versions">Versioonid</string>
     <string name="clear_search">Tühjenda otsing</string>
@@ -373,22 +373,22 @@
         <item quantity="one">Kuva %1$d rakendus kategoorias %2$s</item>
         <item quantity="other">Kuva kõik %1$d rakendust kategoorias %2$s</item>
     </plurals>
-    <string name="details_last_updated_today">Värskendati täna</string>
+    <string name="details_last_updated_today">Uuendati täna</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Värskendati %1$d päev tagasi</item>
-        <item quantity="other">Värskendati %1$d päeva tagasi</item>
+        <item quantity="one">Uuendati %1$d päev tagasi</item>
+        <item quantity="other">Uuendati %1$d päeva tagasi</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Värskendati %1$d nädal tagasi</item>
-        <item quantity="other">Värskendati %1$d nädalat tagasi</item>
+        <item quantity="one">Uuendati %1$d nädal tagasi</item>
+        <item quantity="other">Uuendati %1$d nädalat tagasi</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Värskendati %1$d kuu tagasi</item>
-        <item quantity="other">Värskendati %1$d kuud tagasi</item>
+        <item quantity="one">Uuendati %1$d kuu tagasi</item>
+        <item quantity="other">Uuendati %1$d kuud tagasi</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Värskendati %1$d aasta tagasi</item>
-        <item quantity="other">Värskendati %1$d aastat tagasi</item>
+        <item quantity="one">Uuendati %1$d aasta tagasi</item>
+        <item quantity="other">Uuendati %1$d aastat tagasi</item>
     </plurals>
     <string name="privacy">Privaatsus</string>
     <string name="preventScreenshots_title">Väldi ekraanitõmmiseid</string>
@@ -559,7 +559,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid saab otsida hoidlaid ja peegelservereid sinu nutiseadme SD kaardilt, aga vajab sinu luba, et nii teha.</string>
     <string name="repo_state_fetching">Laadime hoidla andmeid…</string>
     <string name="repo_state_adding">Lisame hoidla…</string>
-    <string name="repo_exists">See hoidla on juba lisatud.</string>
+    <string name="repo_exists">See tarkvarahoidla on juba lisatud.</string>
     <string name="repo_invalid">Vigane hoidla.
 \n
 \nVõta ühendust haldajaga ja anna neile teada sellest veast.</string>
