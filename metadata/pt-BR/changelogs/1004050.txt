@@ -1,10 +1,10 @@
-* Melhorias de "Versões" em "Detalhes do aplicativo", entre outras na interface, graças a @wsdfhjxc
+* Melhorias de "Versões" em "Detalhes do app", entre outras na interface, graças a @wsdfhjxc
 
 * Correção da navegação por teclado/direcional, graças a @doeffinger
 
 * Mostra "Abrir" quando a mídia estiver instalada e visível
 
-* Exporta para CSV no "Compartilhar" para "Aplicativos instalados"
+* Exporta para CSV no "Compartilhar" para "Apps instalados"
 
 * Adiciona uma lista clicável de APKs à página de índice HTML de permuta
 
