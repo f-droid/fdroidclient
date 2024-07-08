@@ -608,4 +608,5 @@
     <string name="repo_preview_included_apps">Περιλαμβανόμενες εφαρμογές:</string>
     <string name="repo_add_repo_and_mirror">Προσθήκη αποθετηρίου και ειδώλου</string>
     <string name="repo_mirror_add_info">Η διεύθυνση URL που προσπαθείτε να προσθέσετε (%s) είναι ένα είδωλο ενός υπάρχοντος αποθετηρίου.</string>
+    <string name="warning_no_compat_versions">Το επιλεγμένο αποθετήριο δεν έχει συμβατές εκδόσεις εφαρμογών. Για να λάβετε ενημερώσεις, προτιμήστε ένα αποθετήριο με συμβατές εκδόσεις.</string>
 </resources>
