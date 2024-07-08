@@ -598,4 +598,11 @@
     <string name="repositories_last_update_never">mitte kunagi</string>
     <string name="app_details_repository_button_prefer">Eeldatud Repositori</string>
     <string name="repo_error_adding_archive">Arhiivi repositori ei saa otse lisada. Vajutage repositorile nimekirjas ja lülitage arhiiv tööle sealt.</string>
+    <string name="repo_add_repo_and_mirror">Lisa hoidla ja peegel</string>
+    <string name="repo_view_repo">Vaata hoidlat</string>
+    <string name="repo_scan_qr_code">Skanneeri QR Kood</string>
+    <string name="repo_preview_included_apps">Lisatud rakendused:</string>
+    <string name="repo_mirror_exists">See peegel on juba lisatud (%s).</string>
+    <string name="repo_mirror_add_info">URL, mida te üritate lisada (%s), on olemasoleva hoidla peegel.</string>
+    <string name="repo_and_mirror_add_both_info">URL, mida te üritate lisada (%s), on uue hoidla peegel. Lisatakse nii algne hoidla kui ka peegel.</string>
 </resources>
