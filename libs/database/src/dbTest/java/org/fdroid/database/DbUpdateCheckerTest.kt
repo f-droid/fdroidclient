@@ -21,6 +21,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 @Suppress("DEPRECATION")
 @RunWith(AndroidJUnit4::class)
@@ -282,6 +283,53 @@ internal class DbUpdateCheckerTest : AppTest() {
             assertEquals(repoId2, appVersions[0].repoId)
             assertEquals(12, appVersions[0].update.manifest.versionCode)
             assertTrue(appVersions[0].isFromPreferredRepo) // preferred repo is 2 now
+        }
+    }
+
+    @Test
+    fun testGetUpdatableAppsUnaffectedByDisabledRepos() {
+        // insert the same app into two repos
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageInfo.packageName, app1, locales)
+        appDao.insert(repoId2, packageInfo.packageName, app2, locales)
+
+        // repo1 has a higher priority than repo2
+        val repoPrefs1 = repoDao.getRepositoryPreferences(repoId1) ?: fail()
+        val repoPrefs2 = repoDao.getRepositoryPreferences(repoId2) ?: fail()
+        assertTrue(repoPrefs1.weight > repoPrefs2.weight)
+
+        // both apps a compatible update (versionCode greater than 0)
+        val packageVersion1 = mapOf(
+            "1" to getRandomPackageVersionV2(12, null).copy(releaseChannels = emptyList())
+        )
+        val packageVersion2 = mapOf(
+            "2" to getRandomPackageVersionV2(13, null).copy(releaseChannels = emptyList())
+        )
+        versionDao.insert(repoId1, packageInfo.packageName, packageVersion1, compatChecker)
+        versionDao.insert(repoId2, packageInfo.packageName, packageVersion2, compatChecker)
+
+        // app is installed with version code 0
+        assertEquals(0, packageInfo.versionCode)
+        every { packageManager.getInstalledPackages(any<Int>()) } returns listOf(packageInfo)
+
+        // version from repo with highest priority (1) gets returned
+        updateChecker.getUpdatableApps(onlyFromPreferredRepo = true).also { appVersions ->
+            assertEquals(1, appVersions.size)
+            assertEquals(repoId1, appVersions[0].repoId)
+            assertEquals(12, appVersions[0].update.manifest.versionCode)
+            assertTrue(appVersions[0].isFromPreferredRepo) // preferred repo is 1 per weight
+        }
+
+        // disable repo1
+        repoDao.updateRepositoryPreferences(repoPrefs1.copy(enabled = false))
+
+        // now update from remaining enabled repo should get returned
+        updateChecker.getUpdatableApps(onlyFromPreferredRepo = true).also { appVersions ->
+            assertEquals(1, appVersions.size)
+            assertEquals(repoId2, appVersions[0].repoId)
+            assertEquals(13, appVersions[0].update.manifest.versionCode)
+            assertTrue(appVersions[0].isFromPreferredRepo) // preferred repo is 2
         }
     }
 

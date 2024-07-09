@@ -8,6 +8,8 @@ import org.fdroid.test.TestUtils.sort
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 internal class AppPrefsDaoTest : AppTest() {
@@ -109,6 +111,35 @@ internal class AppPrefsDaoTest : AppTest() {
         assertEquals(1, appPrefsDao.getPreferredRepos(packagesOk).size)
         assertEquals(1, appPrefsDao.getPreferredRepos(packagesNotOk1).size)
         assertEquals(1, appPrefsDao.getPreferredRepos(packagesNotOk2).size)
+    }
+
+    @Test
+    fun getGetPreferredReposIgnoresDisabledRepos() {
+        // insert one app into two repos
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, packageName, app1, locales)
+        appDao.insert(repoId2, packageName, app2, locales)
+
+        // repo1 has a higher priority than repo2
+        val repoPrefs1 = repoDao.getRepositoryPreferences(repoId1) ?: fail()
+        val repoPrefs2 = repoDao.getRepositoryPreferences(repoId2) ?: fail()
+        assertTrue(repoPrefs1.weight > repoPrefs2.weight)
+
+        // repo1 is preferred due to higher weight
+        appPrefsDao.getPreferredRepos(listOf(packageName)).also { preferredRepos ->
+            assertEquals(1, preferredRepos.size)
+            assertEquals(repoId1, preferredRepos[packageName])
+        }
+
+        // disable repo1
+        repoDao.updateRepositoryPreferences(repoPrefs1.copy(enabled = false))
+
+        // now repo2 is preferred, because only enabled repo for that app
+        appPrefsDao.getPreferredRepos(listOf(packageName)).also { preferredRepos ->
+            assertEquals(1, preferredRepos.size)
+            assertEquals(repoId2, preferredRepos[packageName])
+        }
     }
 
 }
