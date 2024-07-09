@@ -327,8 +327,8 @@
     <string name="repo_add_title">Add new repository</string>
     <string name="updates_disabled_by_settings">All updates disabled by Data/WiFi Settings</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Download update for %1$d app.</item>
-        <item quantity="other">Download updates for %1$d apps.</item>
+        <item quantity="one">Download update for %1$d app:</item>
+        <item quantity="other">Download updates for %1$d apps:</item>
     </plurals>
     <string name="updates__show_updateable_apps">Show apps</string>
     <string name="updates__hide_updateable_apps">Hide apps</string>
@@ -535,7 +535,7 @@
     <string name="repo_invalid">Invalid repository.
 \n
 \nContact the maintainer and let them know about the issue.</string>
-    <string name="repo_exists">This repo was already added.</string>
+    <string name="repo_exists">This repository was already added.</string>
     <string name="repo_add_new_title">Add repository</string>
     <string name="repo_state_fetching">Fetching repository…</string>
     <string name="repo_io_error">Error connecting to the repository.</string>
@@ -589,4 +589,12 @@
     <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.
 \n
 \nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
+    <string name="repo_add_repo_and_mirror">Add repository and mirror</string>
+    <string name="repo_view_repo">View repository</string>
+    <string name="repo_scan_qr_code">Scan QR Code</string>
+    <string name="repo_preview_included_apps">Included apps:</string>
+    <string name="repo_mirror_exists">This mirror was already added (%s).</string>
+    <string name="repo_mirror_add_info">The URL you are trying to add (%s) is a mirror of an existing repository.</string>
+    <string name="repo_and_mirror_add_both_info">The URL you are trying to add (%s) is a mirror of a new repository. Both the original repository and the mirror will be added.</string>
+    <string name="warning_no_compat_versions">The selected repository has no compatible app versions. To receive updates, prefer a repository with compatible versions.</string>
 </resources>

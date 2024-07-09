@@ -2,11 +2,11 @@
 
 * Correções de erros e melhoramentos de «Troca» pela proximidade
 
-* Melhoramentos adicionais de "Detalhes do aplicativo"
+* Melhoramentos adicionais de "Detalhes do app"
 
 * Atualização de idioma e traduções sobre «Proximidades» e »Troca»
 
-* Melhoramento na lógica da seleção de ícone do aplicativo
+* Melhoramento na lógica da seleção de ícone do app
 
 * Adicionar repositórios via additional_repos.xml de ROM, OEM, fornecedor.
 

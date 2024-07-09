@@ -313,12 +313,12 @@
     <string name="installed_app__updates_ignored">تم تجاهل التحديثات</string>
     <string name="installed_app__updates_ignored_for_suggested_version">تم تجاهل التحديثات للنسخة %1$s</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="zero">لا تحمل التحديثات لأي شيء.</item>
-        <item quantity="one">حمل التحديثات لتطبيق واحد.</item>
-        <item quantity="two">حمل التحديثات لتطبيقين.</item>
-        <item quantity="few">حمل التحديثات %1$d تطبيقات.</item>
-        <item quantity="many">حمل التحديثات ل %1$d تطبيقا.</item>
-        <item quantity="other">حمل التحديثات ل %1$d تطبيق.</item>
+        <item quantity="zero">لا تحمل التحديثات لأي شيء:</item>
+        <item quantity="one">حمل التحديثات لتطبيق واحد:</item>
+        <item quantity="two">حمل التحديثات لتطبيقين:</item>
+        <item quantity="few">حمل التحديثات %1$d تطبيقات:</item>
+        <item quantity="many">حمل التحديثات ل %1$d تطبيقا:</item>
+        <item quantity="other">حمل التحديثات ل %1$d تطبيق:</item>
     </plurals>
     <string name="repositories_summary">إضافة مصادر إضافية للتطبيقات</string>
     <string name="menu_license">الرخصة: %s</string>
@@ -631,4 +631,12 @@
     <string name="repo_disable_warning_button">عطّل</string>
     <string name="app_details_repository_preferred">(مفضّل)</string>
     <string name="repo_disable_warning">سيؤدي تعطيل هذا المستودع إلى إزالة حالته \"المفضلة\" من جميع التطبيقات.</string>
+    <string name="repo_mirror_add_info">عنوان URL الذي تحاول إضافته (%s) هو مرآة لمستودع موجود.</string>
+    <string name="repo_add_repo_and_mirror">أضِف المستودع والمرآة</string>
+    <string name="repo_view_repo">اعرض المستودع</string>
+    <string name="repo_scan_qr_code">امسح رمز QR</string>
+    <string name="repo_preview_included_apps">التطبيقات المضمّنة:</string>
+    <string name="repo_mirror_exists">تمت إضافة هذه المرآة بالفعل (%s).</string>
+    <string name="repo_and_mirror_add_both_info">عنوان URL الذي تحاول إضافته (%s) هو مرآة لمستودع جديد. سيتم إضافة كل من المستودع الأصلي والمرآة.</string>
+    <string name="warning_no_compat_versions">لا يحتوي المستودع المحدد على إصدارات تطبيقات متوافقة. لتلقي التحديثات، تفضل مستودعًا يحتوي على إصدارات متوافقة.</string>
 </resources>

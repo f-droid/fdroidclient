@@ -305,9 +305,9 @@
     <string name="main_menu__latest_apps">Noutăți</string>
     <string name="clear_search">Curăță căutarea</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descarcă actualizarea pentru %1$d aplicație.</item>
-        <item quantity="few">Descarcă actualizările pentru %1$d aplicații.</item>
-        <item quantity="other">Descarcă actualizările pentru %1$d de aplicații.</item>
+        <item quantity="one">Descarcă actualizarea pentru %1$d aplicație:</item>
+        <item quantity="few">Descarcă actualizările pentru %1$d aplicații:</item>
+        <item quantity="other">Descarcă actualizările pentru %1$d de aplicații:</item>
     </plurals>
     <string name="updates__show_updateable_apps">Arata aplicațiile</string>
     <string name="updates__hide_updateable_apps">Ascunde aplicațiile</string>
@@ -599,4 +599,12 @@
 \nDacă o aplicație se află în mai multe depozite, se preferă automat depozitul aflat mai sus în listă. Puteți reordona depozitele apăsând lung și trăgându-le.</string>
     <string name="repo_archive_toggle_description">Afișați aplicațiile arhivate și versiunile învechite ale aplicațiilor</string>
     <string name="repo_disable_warning_button">Dezactivare</string>
+    <string name="repo_and_mirror_add_both_info">Adresa pe care încercați să o adăugați (%s) este un server de rezervă al unui depozit nou. Se vor adăuga atât depozitul original cât și serverul de rezervă.</string>
+    <string name="repo_add_repo_and_mirror">Adaugă depozit și server de rezervă</string>
+    <string name="repo_view_repo">Arată depozit</string>
+    <string name="repo_scan_qr_code">Scanare cod QR</string>
+    <string name="repo_preview_included_apps">Aplicații incluse:</string>
+    <string name="repo_mirror_exists">Acest server de rezervă a fost deja adăugat (%s).</string>
+    <string name="repo_mirror_add_info">Adresa pe care încercați să o adăugați (%s) este un server de rezervă al unui depozit existent.</string>
+    <string name="warning_no_compat_versions">Depozitul selectat nu are versiuni compatibile ale aplicației. Pentru a primi actualizări, preferați un depozit cu versiuni compatibile.</string>
 </resources>

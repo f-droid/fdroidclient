@@ -161,9 +161,9 @@
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descarregar atualização para %1$d aplicação.</item>
-        <item quantity="many">Descarregar atualizações para %1$d aplicações.</item>
-        <item quantity="other">Descarregar atualizações para %1$d aplicações.</item>
+        <item quantity="one">Descarregar atualização para %1$d app:</item>
+        <item quantity="many">Descarregar atualizações para %1$d apps:</item>
+        <item quantity="other">Descarregar atualizações para %1$d apps:</item>
     </plurals>
     <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme as definições de Wi-Fi/dados móveis</string>
     <string name="repo_add_title">Adicionar novo repositório</string>
@@ -600,4 +600,12 @@
     <string name="repositories_last_update">Última atualização: %s</string>
     <string name="repositories_last_update_never">nunca</string>
     <string name="repo_share_not_found">Não foi possível encontrar o endereço do repositório no texto partilhado.</string>
+    <string name="repo_and_mirror_add_both_info">A URL que tenta adicionar (%s) é um espelho de um novo repositório. Tanto o repositório original como o espelho serão adicionados.</string>
+    <string name="warning_no_compat_versions">O repositório selecionado não tem versões compatíveis com a app. Para receber atualizações, prefira um repositório com versões compatíveis.</string>
+    <string name="repo_add_repo_and_mirror">Adicionar repositório e espelho</string>
+    <string name="repo_view_repo">Visualizar repositório</string>
+    <string name="repo_scan_qr_code">Ler código QR</string>
+    <string name="repo_preview_included_apps">Apps incluídos:</string>
+    <string name="repo_mirror_exists">Este espelho já foi adicionado (%s).</string>
+    <string name="repo_mirror_add_info">A URL que tenta adicionar (%s) é um espelho de um repositório existente.</string>
 </resources>

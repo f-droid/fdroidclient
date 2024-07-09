@@ -330,9 +330,9 @@
     <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Scarica aggiornamento per %1$d app.</item>
-        <item quantity="many">Scarica aggiornamenti per %1$d app.</item>
-        <item quantity="other">Scarica aggiornamenti per %1$d app.</item>
+        <item quantity="one">Scarica aggiornamento per %1$d app:</item>
+        <item quantity="many">Scarica aggiornamenti per %1$d app:</item>
+        <item quantity="other">Scarica aggiornamenti per %1$d app:</item>
     </plurals>
     <string name="menu_license">Licenza: %s</string>
     <plurals name="details_last_update_years">
@@ -563,7 +563,7 @@
     <string name="repo_state_fetching">Recupero repository…</string>
     <string name="repo_state_adding">Aggiunta repository…</string>
     <string name="repo_enter_url">Inserisci l\'URL del repository a mano</string>
-    <string name="repo_exists">Questo repo è già stato aggiunto.</string>
+    <string name="repo_exists">Questo repository è già stato aggiunto.</string>
     <string name="repo_invalid">Repository non valido.
 \n
 \nContatta il manutentore e informalo del problema.</string>
@@ -613,4 +613,12 @@
     <string name="repo_list_info_title">Elenco repository</string>
     <string name="repo_archive_failed">Repo di archivio attualmente non disponibile</string>
     <string name="repo_disable_warning">Disattivando questo repository verrà rimosso il suo stato \"preferito\" da tutte le app.</string>
+    <string name="repo_add_repo_and_mirror">Aggiungi repository e mirror</string>
+    <string name="repo_view_repo">Vedi il repository</string>
+    <string name="repo_scan_qr_code">Scansiona codice QR</string>
+    <string name="repo_and_mirror_add_both_info">L\'URL che stai cercando di aggiungere (%s) è un mirror di un nuovo repository. Verrà aggiunto sia il repository originale che il mirror.</string>
+    <string name="repo_preview_included_apps">App incluse:</string>
+    <string name="repo_mirror_exists">Questo mirror è già stato aggiunto (%s).</string>
+    <string name="repo_mirror_add_info">L\'URL che stai cercando di aggiungere (%s) è un mirror di un repository esistente.</string>
+    <string name="warning_no_compat_versions">Il repository selezionato non ha versioni dell\'app compatibili. Per ricevere aggiornamenti, prediligi un repository con versioni compatibili.</string>
 </resources>

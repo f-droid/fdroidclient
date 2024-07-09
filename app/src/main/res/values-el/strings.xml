@@ -429,13 +429,13 @@
     <string name="send_installed_apps">Μοιραστείτε εγκατεστημένες εφαρμογές</string>
     <string name="send_installed_apps_csv">Εφαρμογές εγκατεστημένες από το F-Droid ως αρχείο CSV</string>
     <string name="updates_disabled_by_settings">Οι ενημερώσεις απενεργοποιήθηκαν από τις ρυθμίσεις δεδομένων/WiFi</string>
-    <string name="repo_add_mirror">Προσθήκη mirror</string>
+    <string name="repo_add_mirror">Προσθήκη ειδώλου</string>
     <string name="sort_search">Ταξινόμηση αναζήτησης</string>
     <string name="repo_exists_add_fingerprint">Το %1$s είναι ήδη εγκατεστημένο, με αυτό θα προσθέσετε νέες πληροφορίες κλειδιού.</string>
     <string name="repo_exists_enable">Το %1$s είναι ήδη εγκατεστημένο, επιβεβαιώστε ότι επιθυμείτε να το ενεργοποιήσετε εκ νέου.</string>
     <string name="repo_exists_and_enabled">Το %1$s είναι ήδη εγκατεστημένο και ενεργοποιημένο.</string>
     <string name="repo_delete_to_overwrite">Πρώτα διαγράψτε το %1$s, καθώς υπάρχει διένεξη κλειδιού.</string>
-    <string name="repo_exists_add_mirror">Αυτό είναι ένα αντίγραφο του %1$s, να γίνει η προσθήκη του ως mirror;</string>
+    <string name="repo_exists_add_mirror">Αυτό είναι ένα αντίγραφο του %1$s, να γίνει η προσθήκη του ως ειδώλου;</string>
     <string name="menu_open">Άνοιγμα</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Αυτή η εφαρμογή έχει αδύναμη υπογραφή ασφαλείας</string>
@@ -453,8 +453,8 @@
     <string name="hiding_dialog_warning">Προσοχή: Οποιαδήποτε συντόμευση εφαρμογής υπάρχει στην κεντρική οθόνη θα αφαιρεθεί και θα πρέπει να προστεθεί χειροκίνητα.</string>
     <string name="hide_on_long_search_press_title">Απόκρυψη με το κουμπί αναζήτησης</string>
     <string name="hide_on_long_search_press_summary">Παρατεταμένη πίεση του κουμπιού αναζήτησης θα αποκρύψει την εφαρμογή</string>
-    <string name="repo_official_mirrors">Επίσημα mirrors</string>
-    <string name="repo_user_mirrors">Mirrors χρήστη</string>
+    <string name="repo_official_mirrors">Επίσημα είδωλα</string>
+    <string name="repo_user_mirrors">Είδωλα χρήστη</string>
     <string name="share_repository">Μοιραστείτε το αποθετήριο</string>
     <string name="use_bluetooth">Χρήση Bluetooth</string>
     <string name="swap_toast_invalid_url">Μη έγκυρο URL για ανταλλαγή: %1$s</string>
@@ -469,7 +469,7 @@
     <string name="scan_removable_storage_summary">Αναζήτηση αποθετηρίου σε αφαιρούμενα μέσα αποθήκευσης όπως κάρτες SD και ράβδους αποθήκευσης USB</string>
     <string name="menu_translation">Μετάφραση</string>
     <string name="main_menu__updates">Ενημερώσεις</string>
-    <string name="nearby_splash__read_external_storage">Αναζήτηση κάρτας SD για αποθετήρια και καθρέφτες.</string>
+    <string name="nearby_splash__read_external_storage">Αναζήτηση κάρτας SD για αποθετήρια και είδωλα.</string>
     <string name="nearby_splash__request_permission">Ψάξε τώρα</string>
     <string name="not_visible_nearby">Η λειτουργία \"Κοντά\" δεν είναι ενεργοποιημένη</string>
     <string name="not_visible_nearby_description">Πριν από την σύνδεση, κάντε τη συσκευή σας ορατή.</string>
@@ -485,7 +485,7 @@
     <string name="panic_add_apps_to_uninstall">Προσθήκη εφαρμογών που θα απεγκατασταθούν και θα σβηστούν</string>
     <string name="panic_reset_repos_title">Επαναφορά αποθετηρίων</string>
     <string name="disabled">Απενεργοποιημένο</string>
-    <string name="nearby_splash__document_tree">Αναζήτηση στο OTG USB για αποθετήρια.</string>
+    <string name="nearby_splash__document_tree">Αναζήτηση στο OTG USB για αποθετήρια και είδωλα.</string>
     <string name="swap_visible_hotspot">Ορατό μέσω σημείου πρόσβασης</string>
     <string name="swap_blank_wifi_ssid">(κενό)</string>
     <string name="swap_hidden_wifi_ssid">(κρυφό)</string>
@@ -597,8 +597,16 @@
     <string name="force_old_installer_title">Αναγκάστε τον παλιό εγκαταστάτη</string>
     <string name="force_old_installer_summary">Απενεργοποιήστε το πρόγραμμα εγκατάστασης περιόδου λειτουργίας, συμπεριλαμβανομένης της υποστήριξης για αυτόματες ενημερώσεις στο παρασκήνιο.</string>
     <string name="ipfsgw_title">Πύλες IPFS</string>
-    <string name="nearby_splach__external_storage_permission_explainer">Το F-Droid μπορεί να αναζητήσει αποθετήρια και mirrors στην κάρτα SD, αλλά χρειάζεται την άδειά σας για να το κάνει.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">Το F-Droid μπορεί να αναζητήσει αποθετήρια και είδωλα στην κάρτα SD, αλλά χρειάζεται την άδειά σας για να το κάνει.</string>
     <string name="nearby_splace__external_storage_permission_button">Δοκίμασέ το</string>
     <string name="repo_num_apps_button">Εμφάνιση εφαρμογών</string>
     <string name="copied_to_clipboard">Αντιγραφή στο πρόχειρο</string>
+    <string name="repo_view_repo">Προβολή αποθετηρίου</string>
+    <string name="repo_scan_qr_code">Σκανάρισμα κώδικα QR</string>
+    <string name="repo_and_mirror_add_both_info">Η διεύθυνση URL που προσπαθείτε να προσθέσετε (%s) είναι ένα είδωλο ενός νέου αποθετηρίου. Θα προστεθούν τόσο το αρχικό αποθετήριο όσο και το είδωλο.</string>
+    <string name="repo_mirror_exists">Αυτό το είδωλο είχε ήδη προστεθεί (%s).</string>
+    <string name="repo_preview_included_apps">Περιλαμβανόμενες εφαρμογές:</string>
+    <string name="repo_add_repo_and_mirror">Προσθήκη αποθετηρίου και ειδώλου</string>
+    <string name="repo_mirror_add_info">Η διεύθυνση URL που προσπαθείτε να προσθέσετε (%s) είναι ένα είδωλο ενός υπάρχοντος αποθετηρίου.</string>
+    <string name="warning_no_compat_versions">Το επιλεγμένο αποθετήριο δεν έχει συμβατές εκδόσεις εφαρμογών. Για να λάβετε ενημερώσεις, προτιμήστε ένα αποθετήριο με συμβατές εκδόσεις.</string>
 </resources>
