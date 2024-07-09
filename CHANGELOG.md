@@ -1,3 +1,14 @@
+### 1.21.0-alpha0 (2024-07-09)
+
+* Split up name and summary in app lists for better readability
+* Apps targeting SDK 24 are incompatible with Android 15 devices
+* Handle mirrors in "Add repo" preview better (Thanks Thore!)
+* Enable unattended app updates on Xiaomi devices not running MIUI (Thanks Irate!)
+* Trust user-added root certs (Thanks B.!)
+* Improve localization for less common languages (Thanks Ray!)
+* Don't react to NFC tags as NFC feature was removed (Thanks Thibault!)
+* Show warning when apps can not be updated from preferred repo
+
 ### 1.20.0 (2024-05-08)
 
 * Maintain existing repo priority ordering when migrating #2788
