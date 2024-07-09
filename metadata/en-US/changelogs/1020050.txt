@@ -1,0 +1,13 @@
+* Overhaul how repositories are represented to users to make it clear when an install is coming from somewhere else but f-droid.org.
+
+* Allow users to change repository priority globally and per app
+
+* Custom Anti-Features are now enabled by default, rather than disabled
+
+* Support receiving repo URLs via Share
+
+* All activities respect day/night theme
+
+* Update external storage usages to work with targetSdkVersion 29
+
+* F-Droid Basic updated to work with targetSdkVersion 34
