@@ -149,8 +149,11 @@ fun IpfsGatewayAddScreen(
                     text = stringResource(R.string.ipfsgw_add_add),
                     onClick = l@{
                         errorMsg = ""
-                        val inputUri =
-                            if (textState.value.text.endsWith("/")) textState.value.text else "${textState.value.text}/"
+                        val inputUri = if (textState.value.text.endsWith("/")) {
+                            textState.value.text
+                        } else {
+                            "${textState.value.text}/"
+                        }
 
                         try {
                             val uri = Uri.parse(inputUri)

@@ -33,11 +33,11 @@ class NotificationManager(
         msg: String? = null,
         progress: Int? = null,
     ) = NotificationCompat.Builder(context, CHANNEL_UPDATES)
-            .setSmallIcon(R.drawable.ic_refresh)
-            .setCategory(CATEGORY_SERVICE)
-            .setContentTitle(context.getString(R.string.banner_updating_repositories))
-            .setContentText(msg)
-            .setOngoing(true)
-            .setProgress(100, progress ?: 0, progress == null)
+        .setSmallIcon(R.drawable.ic_refresh)
+        .setCategory(CATEGORY_SERVICE)
+        .setContentTitle(context.getString(R.string.banner_updating_repositories))
+        .setContentText(msg)
+        .setOngoing(true)
+        .setProgress(100, progress ?: 0, progress == null)
 
 }

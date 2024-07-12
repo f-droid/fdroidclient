@@ -76,11 +76,11 @@ class RepoUpdateWorker(
         fun scheduleOrCancel(context: Context) {
             val prefs = Preferences.get()
             val workManager = WorkManager.getInstance(context)
-            val doUpdateChecks = prefs.updateInterval != UPDATE_INTERVAL_DISABLED
-                && !(prefs.overData == OVER_NETWORK_NEVER && prefs.overWifi == OVER_NETWORK_NEVER)
+            val doUpdateChecks = prefs.updateInterval != UPDATE_INTERVAL_DISABLED &&
+                !(prefs.overData == OVER_NETWORK_NEVER && prefs.overWifi == OVER_NETWORK_NEVER)
             if (doUpdateChecks) {
-                val networkType = if (prefs.overData == OVER_NETWORK_ALWAYS
-                    && prefs.overWifi == OVER_NETWORK_ALWAYS
+                val networkType = if (prefs.overData == OVER_NETWORK_ALWAYS &&
+                    prefs.overWifi == OVER_NETWORK_ALWAYS
                 ) {
                     NetworkType.CONNECTED
                 } else {

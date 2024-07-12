@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -74,9 +73,9 @@ fun RepoPreviewScreen(
         item {
             RepoPreviewHeader(state, onAddRepo, localeList)
         }
-        if (state.fetchResult == null
-            || state.fetchResult is IsNewRepository
-            || state.fetchResult is IsNewRepoAndNewMirror
+        if (state.fetchResult == null ||
+            state.fetchResult is IsNewRepository ||
+            state.fetchResult is IsNewRepoAndNewMirror
         ) {
             item {
                 Row(
