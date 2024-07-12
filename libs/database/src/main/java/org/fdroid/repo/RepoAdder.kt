@@ -331,10 +331,11 @@ internal class RepoAdder(
     }
 
     @AnyThread
-    internal suspend fun addArchiveRepo(repo: Repository, proxy: Proxy? = null) =
+    internal suspend fun addArchiveRepo(repo: Repository, proxy: Proxy? = null): Long? =
         withContext(coroutineContext) {
             if (repo.isArchiveRepo) error { "Repo ${repo.address} is already an archive repo." }
 
+            var archiveRepoId: Long? = null
             val address = repo.address.replace(Regex("repo/?$"), "archive")
 
             @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
@@ -354,6 +355,7 @@ internal class RepoAdder(
                     db.runInTransaction {
                         val repoId = repositoryDao.insert(newRepo)
                         repositoryDao.setWeight(repoId, repo.weight - 1)
+                        archiveRepoId = repoId
                     }
                     cancel("expected") // no need to continue downloading the entire repo
                 }
@@ -364,6 +366,7 @@ internal class RepoAdder(
             }
             val uri = Uri.parse(address)
             fetchRepo(uri, repo.fingerprint, proxy, repo.username, repo.password, receiver)
+            return@withContext archiveRepoId
         }
 
     private fun hasDisallowInstallUnknownSources(context: Context): Boolean {

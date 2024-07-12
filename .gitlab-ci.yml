@@ -138,7 +138,7 @@ app lint pmd checkstyle:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew :app:lint :app:pmd :app:checkstyle
+    - ./gradlew :app:lint :app:pmd :app:checkstyle :app:ktlintCheck
 
 libs lint ktlintCheck:
   <<: *test-template
@@ -201,6 +201,7 @@ app errorprone:
     - changes:
         - app/**/*
   script:
+    - sed -i "s@plugins {@plugins{\nid 'net.ltgt.errorprone' version '3.1.0'@" app/build.gradle
     - cat config/errorprone.gradle >> app/build.gradle
     - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
 

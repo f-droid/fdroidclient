@@ -23,13 +23,13 @@ import org.fdroid.database.Category;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.categories.CategoryAdapter;
 import org.fdroid.fdroid.views.categories.CategoryItem;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -77,7 +77,7 @@ class CategoriesViewBinder implements Observer<List<Category>> {
         Utils.applySwipeLayoutColors(swipeToRefresh);
         swipeToRefresh.setOnRefreshListener(() -> {
             swipeToRefresh.setRefreshing(false);
-            UpdateService.updateNow(activity);
+            RepoUpdateWorker.updateNow(activity);
         });
 
         FloatingActionButton searchFab = categoriesView.findViewById(R.id.fab_search);

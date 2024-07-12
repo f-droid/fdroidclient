@@ -50,7 +50,6 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.SwapService;
@@ -58,6 +57,7 @@ import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 /**
  * Main view shown to users upon starting F-Droid.
@@ -182,9 +182,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialRepoUpdateIfRequired() {
-        if (Preferences.get().isIndexNeverUpdated() && !UpdateService.isUpdating()) {
+        if (Preferences.get().isIndexNeverUpdated() &&
+                !FDroidApp.getRepoUpdateManager(this).isUpdating().getValue()) {
             Utils.debugLog(TAG, "We haven't done an update yet. Forcing repo update.");
-            UpdateService.updateNow(this);
+            RepoUpdateWorker.updateNow(this);
         }
     }
 

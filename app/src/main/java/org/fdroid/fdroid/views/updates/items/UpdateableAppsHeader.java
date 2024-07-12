@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate;
 
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.views.updates.UpdatesAdapter;
 
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class UpdateableAppsHeader extends AppUpdateData {
             downloadAll.setVisibility(View.VISIBLE);
             downloadAll.setOnClickListener(v -> {
                 downloadAll.setVisibility(View.GONE);
-                UpdateService.autoDownloadUpdates(header.activity);
+                AppUpdateStatusManager.getInstance(header.activity).checkForUpdatesAndInstall();
             });
         }
 

@@ -179,7 +179,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         lightWithDarkActionBar, // Obsolete
     }
 
-    static final long UPDATE_INTERVAL_DISABLED = Long.MAX_VALUE;
+    public static final long UPDATE_INTERVAL_DISABLED = Long.MAX_VALUE;
     public static final long[] UPDATE_INTERVAL_VALUES = {
             UPDATE_INTERVAL_DISABLED,
             DateUtils.WEEK_IN_MILLIS * 2,
@@ -241,7 +241,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     /**
      * Get the update interval in milliseconds.
      */
-    long getUpdateInterval() {
+    public long getUpdateInterval() {
         int position = preferences.getInt(PREF_UPDATE_INTERVAL, IGNORED_I);
         return UPDATE_INTERVAL_VALUES[position];
     }

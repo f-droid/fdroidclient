@@ -44,7 +44,7 @@ import androidx.lifecycle.Lifecycle
 import org.fdroid.fdroid.IPreferencesIpfs
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils
+import org.fdroid.fdroid.compose.ComposeUtils.CaptionText
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.LifecycleEventListener
 
@@ -74,32 +74,34 @@ fun IpfsGatewaySettingsScreen(
     val context = LocalContext.current
     var ipfsEnabled by remember { mutableStateOf(prefs.isIpfsEnabled) }
 
-    Scaffold(topBar = {
-        TopAppBar(
-            elevation = 4.dp,
-            backgroundColor = MaterialTheme.colors.primarySurface,
-            navigationIcon = {
-                IconButton(onClick = onBackClicked) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                elevation = 4.dp,
+                backgroundColor = MaterialTheme.colors.primarySurface,
+                navigationIcon = {
+                    IconButton(onClick = onBackClicked) {
+                        Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
+                    }
+                },
+                title = {
+                    Text(
+                        text = stringResource(R.string.ipfsgw_title),
+                        modifier = Modifier.alpha(ContentAlpha.high),
+                    )
+                },
+            )
+        },
+        floatingActionButton = {
+            // it doesn't seam to be supported to disable FABs, so just hide it for now.
+            if (ipfsEnabled) {
+                FloatingActionButton(onClick = {
+                    context.startActivity(Intent(context, IpfsGatewayAddActivity::class.java))
+                }) {
+                    Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
                 }
-            },
-            title = {
-                Text(
-                    text = stringResource(R.string.ipfsgw_title),
-                    modifier = Modifier.alpha(ContentAlpha.high),
-                )
-            },
-        )
-    }, floatingActionButton = {
-        // it doesn't seam to be supported to disable FABs, so just hide it for now.
-        if (ipfsEnabled) {
-            FloatingActionButton(onClick = {
-                context.startActivity(Intent(context, IpfsGatewayAddActivity::class.java))
-            }) {
-                Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
             }
-        }
-    }) { paddingValues ->
+        }) { paddingValues ->
         Box(
             modifier = Modifier
                 .padding(paddingValues)
@@ -139,7 +141,9 @@ fun DefaultGatewaysSettings(
     var disabledDefaultGateways by remember { mutableStateOf(prefs.ipfsGwDisabledDefaults) }
 
     Column {
-        ComposeUtils.CaptionText(text = stringResource(id = R.string.ipfsgw_caption_official_gateways))
+        CaptionText(
+            text = stringResource(id = R.string.ipfsgw_caption_official_gateways),
+        )
         for (gatewayUrl in Preferences.DEFAULT_IPFS_GATEWAYS) {
             Row(
                 modifier = Modifier
@@ -191,7 +195,7 @@ fun UserGatewaysSettings(
 
     Column {
         if (userGateways.isNotEmpty()) {
-            ComposeUtils.CaptionText(text = stringResource(id = R.string.ipfsgw_caption_custom_gateways))
+            CaptionText(text = stringResource(id = R.string.ipfsgw_caption_custom_gateways))
         }
         for (gatewayUrl in userGateways) {
             Row(

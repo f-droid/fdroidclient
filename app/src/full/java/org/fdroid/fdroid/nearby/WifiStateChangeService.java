@@ -59,8 +59,7 @@ import cc.mvdan.accesspoint.WifiApControl;
  * <p>
  * This also schedules an update to encourage updates happening on
  * unmetered networks like typical WiFi rather than networks that can
- * cost money or have caps.  The logic for checking the state of the
- * internet connection is in {@link org.fdroid.fdroid.UpdateService#onHandleWork(Intent)}
+ * cost money or have caps.
  * <p>
  * Some devices send multiple copies of given events, like a Moto G often
  * sends three {@code CONNECTED} events.  So they have to be debounced to

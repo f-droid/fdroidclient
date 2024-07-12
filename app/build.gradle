@@ -1,5 +1,8 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
+}
 
 // add -Pstrict.release to the gradle command line to enable
 if (project.hasProperty('strict.release')) {
@@ -246,3 +249,5 @@ android.productFlavors.all { flavor ->
         }
     }
 }
+
+apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"

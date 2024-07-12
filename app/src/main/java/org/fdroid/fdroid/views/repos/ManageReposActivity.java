@@ -48,9 +48,9 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 import org.fdroid.index.RepoManager;
 
 import java.util.ArrayList;
@@ -205,8 +205,10 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             });
             builder.show();
         } else {
-            Utils.runOffUiThread(() -> repoManager.setRepositoryEnabled(repo.getRepoId(), true));
-            UpdateService.updateRepoNow(this, repo.getAddress());
+            Utils.runOffUiThread(() -> {
+                repoManager.setRepositoryEnabled(repo.getRepoId(), true);
+                return true;
+            }, result -> RepoUpdateWorker.updateNow(getApplication(), repo.getRepoId()));
         }
     }
 

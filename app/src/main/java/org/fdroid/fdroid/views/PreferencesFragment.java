@@ -33,12 +33,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.util.ObjectsCompat;
@@ -58,17 +60,19 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.RepoUpdateManager;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
+import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
@@ -120,14 +124,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private SwitchPreferenceCompat sendToFDroidMetricsPref;
     private Preference installHistoryPref;
     private long currentKeepCacheTime;
-    private int overWifiPrevious;
-    private int overDataPrevious;
-    private int updateIntervalPrevious;
 
     private LinearSmoothScroller topScroller;
 
     private RequestManager glideRequestManager;
     private Preference ipfsGateways;
+    private RepoUpdateManager repoUpdateManager;
+    private long nextUpdateCheck = Long.MAX_VALUE;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -138,6 +141,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         addPreferencesFromResource(R.xml.preferences);
         otherPrefGroup = findPreference("pref_category_other");
 
+        repoUpdateManager = FDroidApp.getRepoUpdateManager(requireContext());
 
         Preference aboutPreference = findPreference("pref_about");
         if (aboutPreference != null) {
@@ -164,14 +168,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         updateAutoDownloadPref = findPreference(Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES);
 
         overWifiSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_OVER_WIFI));
-        overWifiPrevious = overWifiSeekBar.getValue();
         overWifiSeekBar.setSeekBarLiveUpdater(this::getNetworkSeekBarSummary);
         overDataSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_OVER_DATA));
-        overDataPrevious = overDataSeekBar.getValue();
         overDataSeekBar.setSeekBarLiveUpdater(this::getNetworkSeekBarSummary);
         updateIntervalSeekBar = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_UPDATE_INTERVAL));
-        updateIntervalPrevious = updateIntervalSeekBar.getValue();
-        updateIntervalSeekBar.setSeekBarLiveUpdater(position -> getString(UPDATE_INTERVAL_NAMES[position]));
+        updateIntervalSeekBar.setSeekBarLiveUpdater(this::getUpdateIntervalSeekbarSummary);
         ipfsGateways = ObjectsCompat.requireNonNull(findPreference("ipfsGateways"));
         updateIpfsGatewaySummary();
 
@@ -199,6 +200,16 @@ public class PreferencesFragment extends PreferenceFragmentCompat
                 return SNAP_TO_START;
             }
         };
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        repoUpdateManager.getNextUpdateLiveData().observe(getViewLifecycleOwner(), time -> {
+            nextUpdateCheck = time;
+            updateSummary(Preferences.PREF_UPDATE_INTERVAL, false);
+        });
     }
 
     private void checkSummary(String key, int resId) {
@@ -241,15 +252,31 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         seekBarPreference.setSummary(getNetworkSeekBarSummary(position));
     }
 
-    private void enableUpdateInverval() {
+    private void enableUpdateInterval() {
         if (overWifiSeekBar.getValue() == Preferences.OVER_NETWORK_NEVER
                 && overDataSeekBar.getValue() == Preferences.OVER_NETWORK_NEVER) {
             updateIntervalSeekBar.setEnabled(false);
             updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[0]);
         } else {
             updateIntervalSeekBar.setEnabled(true);
-            updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[updateIntervalSeekBar.getValue()]);
+            updateIntervalSeekBar.setSummary(getUpdateIntervalSeekbarSummary(updateIntervalSeekBar.getValue()));
         }
+    }
+
+    private String getUpdateIntervalSeekbarSummary(int position) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getString(UPDATE_INTERVAL_NAMES[position]));
+        if (nextUpdateCheck < Long.MAX_VALUE) {
+            sb.append("\n");
+            CharSequence nextUpdate = DateUtils.getRelativeTimeSpanString(nextUpdateCheck,
+                    System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
+            sb.append(getString(R.string.auto_update_time, nextUpdate));
+        } else if (position != 0) {
+            sb.append("\n");
+            String never = getString(R.string.repositories_last_update_never);
+            sb.append(getString(R.string.auto_update_time, never));
+        }
+        return sb.toString();
     }
 
     private void updateSummary(String key, boolean changing) {
@@ -259,19 +286,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             case Preferences.PREF_UPDATE_INTERVAL:
                 updateIntervalSeekBar.setMax(Preferences.UPDATE_INTERVAL_VALUES.length - 1);
                 int seekBarPosition = updateIntervalSeekBar.getValue();
-                updateIntervalSeekBar.setSummary(UPDATE_INTERVAL_NAMES[seekBarPosition]);
+                updateIntervalSeekBar.setSummary(getUpdateIntervalSeekbarSummary(seekBarPosition));
                 break;
 
             case Preferences.PREF_OVER_WIFI:
                 overWifiSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
                 setNetworkSeekBarSummary(overWifiSeekBar);
-                enableUpdateInverval();
+                enableUpdateInterval();
                 break;
 
             case Preferences.PREF_OVER_DATA:
                 overDataSeekBar.setMax(Preferences.OVER_NETWORK_ALWAYS);
                 setNetworkSeekBarSummary(overDataSeekBar);
-                enableUpdateInverval();
+                enableUpdateInterval();
                 break;
 
             case Preferences.PREF_UPDATE_NOTIFICATION_ENABLED:
@@ -502,7 +529,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private void initAutoFetchUpdatesPreference() {
         updateAutoDownloadPref.setOnPreferenceChangeListener((preference, newValue) -> {
             if (newValue instanceof Boolean && (boolean) newValue) {
-                UpdateService.autoDownloadUpdates(getActivity());
+                AppUpdateStatusManager.getInstance(getActivity()).checkForUpdatesAndInstall();
             }
             return true;
         });
@@ -580,12 +607,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
         FDroidApp.configureProxy(Preferences.get());
-
-        if (updateIntervalPrevious != updateIntervalSeekBar.getValue()) {
-            UpdateService.schedule(getActivity());
-        } else if (overWifiPrevious != overWifiSeekBar.getValue() || overDataPrevious != overDataSeekBar.getValue()) {
-            UpdateService.schedule(getActivity());
-        }
     }
 
     @Override
@@ -617,6 +638,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             }
             glideRequestManager.applyDefaultRequestOptions(new RequestOptions()
                     .onlyRetrieveFromCache(Preferences.get().isBackgroundDownloadAllowed()));
+            RepoUpdateWorker.scheduleOrCancel(requireContext());
+        } else if (Preferences.PREF_UPDATE_INTERVAL.equals(key)) {
+            RepoUpdateWorker.scheduleOrCancel(requireContext());
         }
     }
 }

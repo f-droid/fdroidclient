@@ -11,12 +11,14 @@ import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.UpdateService
+import org.fdroid.fdroid.work.RepoUpdateWorker
 
 data class RepoDetailsState(
     val repo: Repository?,
@@ -29,6 +31,14 @@ class RepoDetailsViewModel(app: Application) : AndroidViewModel(app) {
     private val _state = MutableStateFlow<RepoDetailsState?>(null)
     val state = _state.asStateFlow()
     val liveData = _state.asLiveData()
+
+    val repoLiveData = combine(_state, repoManager.repositoriesState) { s, reposState ->
+        if (s?.repo == null) {
+            null
+        } else {
+            reposState.find { repo -> repo.repoId == s.repo.repoId }
+        }
+    }.distinctUntilChanged().asLiveData()
 
     fun initRepo(repoId: Long) {
         val repo = repoManager.getRepository(repoId)
@@ -47,11 +57,10 @@ class RepoDetailsViewModel(app: Application) : AndroidViewModel(app) {
         _state.value = _state.value?.copy(archiveEnabled = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
+                val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
                 _state.value = _state.value?.copy(archiveEnabled = enabled)
-                if (enabled) withContext(Dispatchers.Main) {
-                    val address = repo.address.replace(Regex("repo/?$"), "archive")
-                    UpdateService.updateRepoNow(getApplication(), address)
+                if (enabled && repoId != null) withContext(Dispatchers.Main) {
+                    RepoUpdateWorker.updateNow(getApplication(), repoId)
                 }
             } catch (e: Exception) {
                 Log.e(this.javaClass.simpleName, "Error toggling archive repo: ", e)
