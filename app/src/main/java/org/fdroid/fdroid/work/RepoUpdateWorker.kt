@@ -87,7 +87,6 @@ class RepoUpdateWorker(
                     NetworkType.UNMETERED
                 }
                 val constraints = Constraints.Builder()
-                    .setRequiresDeviceIdle(true)
                     .setRequiresBatteryNotLow(true)
                     .setRequiresStorageNotLow(true)
                     .setRequiredNetworkType(networkType)
