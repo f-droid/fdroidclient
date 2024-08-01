@@ -266,7 +266,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private String getUpdateIntervalSeekbarSummary(int position) {
         StringBuilder sb = new StringBuilder();
         sb.append(getString(UPDATE_INTERVAL_NAMES[position]));
-        if (nextUpdateCheck < Long.MAX_VALUE) {
+        if (nextUpdateCheck < 0) {
+            sb.append("\n");
+            sb.append(getString(R.string.auto_update_time_past));
+        } else if (nextUpdateCheck < Long.MAX_VALUE) {
             sb.append("\n");
             CharSequence nextUpdate = DateUtils.getRelativeTimeSpanString(nextUpdateCheck,
                     System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
