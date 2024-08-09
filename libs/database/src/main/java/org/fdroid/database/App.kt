@@ -125,7 +125,11 @@ internal fun MetadataV2.toAppMetadata(
 )
 
 @Entity(tableName = AppMetadataFts.TABLE)
-@Fts4(contentEntity = AppMetadata::class)
+@Fts4(
+    contentEntity = AppMetadata::class,
+    // make FTS for non-ASCII characters case insensitive, but do not remove diacritics
+    tokenizer = "unicode61 \"remove_diacritics=0\""
+)
 internal data class AppMetadataFts(
     val repoId: Long,
     val packageName: String,
