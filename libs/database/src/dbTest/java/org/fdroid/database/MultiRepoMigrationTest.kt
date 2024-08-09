@@ -232,7 +232,7 @@ internal class MultiRepoMigrationTest {
 
         // now get the Room DB, so we can use our DAOs for verifying the migration
         databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
-            .addMigrations(MIGRATION_2_3)
+            .addMigrations(MIGRATION_2_3, MIGRATION_5_6)
             .allowMainThreadQueries()
             .build()
             .use { db ->
@@ -275,7 +275,7 @@ internal class MultiRepoMigrationTest {
 
         // now get the Room DB, so we can use our DAOs for verifying the migration
         databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
-            .addMigrations(MIGRATION_2_3)
+            .addMigrations(MIGRATION_2_3, MIGRATION_5_6)
             .allowMainThreadQueries()
             .build().use { db ->
                 // repo without cert did not get migrated, because we auto-migrate to latest version
@@ -311,7 +311,7 @@ internal class MultiRepoMigrationTest {
 
         // now get the Room DB, so we can use our DAOs for verifying the migration
         databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
-            .addMigrations(MIGRATION_2_3)
+            .addMigrations(MIGRATION_2_3, MIGRATION_5_6)
             .allowMainThreadQueries()
             .build().use { db ->
                 check(db)

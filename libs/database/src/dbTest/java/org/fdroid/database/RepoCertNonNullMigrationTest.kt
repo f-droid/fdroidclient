@@ -74,7 +74,7 @@ internal class RepoCertNonNullMigrationTest {
 
         // now get the Room DB, so we can use our DAOs for verifying the migration
         Room.databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
-            .addMigrations(MIGRATION_2_3)
+            .addMigrations(MIGRATION_2_3, MIGRATION_5_6)
             .allowMainThreadQueries()
             .build().use { db ->
                 // repo without cert did not get migrated, the other one did

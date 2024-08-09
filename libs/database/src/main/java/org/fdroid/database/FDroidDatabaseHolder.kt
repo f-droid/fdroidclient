@@ -58,7 +58,7 @@ public object FDroidDatabaseHolder {
                 FDroidDatabaseInt::class.java,
                 name,
             ).apply {
-                addMigrations(MIGRATION_2_3)
+                addMigrations(MIGRATION_2_3, MIGRATION_5_6)
                 // We allow destructive migration (if no real migration was provided),
                 // so we have the option to nuke the DB in production (if that will ever be needed).
                 fallbackToDestructiveMigration()
