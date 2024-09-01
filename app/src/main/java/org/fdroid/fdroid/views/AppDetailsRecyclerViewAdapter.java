@@ -646,8 +646,17 @@ public class AppDetailsRecyclerViewAdapter
             antiFeaturesListingView.setApp(app);
             updateAntiFeaturesWarning();
 
+            boolean hasCompatibleVersion = false;
+            for (Apk apk : versions) {
+                if (apk.compatible) {
+                    hasCompatibleVersion = true;
+                    break;
+                }
+            }
+            boolean showPrimaryButton = hasCompatibleVersion || app.isInstalled(context);
+
             buttonPrimaryView.setText(R.string.menu_install);
-            buttonPrimaryView.setVisibility(versionsLoading ? View.GONE : View.VISIBLE);
+            buttonPrimaryView.setVisibility(showPrimaryButton ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setText(R.string.menu_uninstall);
             buttonSecondaryView.setVisibility(app.isUninstallable(context) ? View.VISIBLE : View.GONE);
             buttonSecondaryView.setOnClickListener(v -> callbacks.uninstallApk());
