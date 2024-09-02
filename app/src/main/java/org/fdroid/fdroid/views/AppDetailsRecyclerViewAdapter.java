@@ -665,7 +665,7 @@ public class AppDetailsRecyclerViewAdapter
                 buttonPrimaryView.setEnabled(true);
                 buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));
             } else if (app.isInstalled(context)) {
-                if (app.canAndWantToUpdate(suggestedApk) && suggestedApk != null) {
+                if (app.canAndWantToUpdate(suggestedApk)) {
                     buttonPrimaryView.setText(R.string.menu_upgrade);
                     buttonPrimaryView.setOnClickListener(v -> callbacks.installApk(suggestedApk));
                 } else {
