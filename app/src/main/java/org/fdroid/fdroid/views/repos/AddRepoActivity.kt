@@ -104,7 +104,7 @@ class AddRepoActivity : AppCompatActivity() {
     }
 
     private fun onFetchRepo(uriStr: String) {
-        val uri = Uri.parse(uriStr)
+        val uri = Uri.parse(uriStr.trim())
         if (repoManager.isSwapUri(uri)) {
             val i = Intent(this, SwapService::class.java).apply {
                 data = uri
@@ -112,7 +112,7 @@ class AddRepoActivity : AppCompatActivity() {
             ContextCompat.startForegroundService(this, i)
         } else {
             repoManager.abortAddingRepository()
-            repoManager.fetchRepositoryPreview(uriStr, proxy = NetCipher.getProxy())
+            repoManager.fetchRepositoryPreview(uri.toString(), proxy = NetCipher.getProxy())
         }
     }
 
