@@ -115,3 +115,22 @@ internal val MIGRATION_2_3 = object : Migration(2, 3) {
         db.delete(CoreRepository.TABLE, "certificate IS NULL", null)
     }
 }
+
+/**
+ * The tokenizer of the FTS4 table for the app metadata was modified.
+ * This migration is needed to recreate the FTS table to respect the new tokenizer.
+ */
+internal val MIGRATION_5_6 = object : Migration(5, 6) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("DROP TABLE `AppMetadataFts`")
+        // table creation taken from auto-generated code:
+        // build/generated/source/kapt/debug/org/fdroid/database/FDroidDatabaseInt_Impl.java
+        // the corresponding triggers are added automatically
+        db.execSQL("CREATE VIRTUAL TABLE IF NOT EXISTS `AppMetadataFts`" +
+            "USING FTS4(`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, " +
+            "`localizedName` TEXT, `localizedSummary` TEXT, " +
+            "tokenize=unicode61 \"remove_diacritics=0\", content=`AppMetadata`)")
+        // rebuild the FTS table to populate it with the new tokenizer
+        db.execSQL("INSERT INTO AppMetadataFts(AppMetadataFts) VALUES('rebuild')")
+    }
+}
