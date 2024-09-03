@@ -189,6 +189,11 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
         // update UI when repo in DB changes
         model.getRepoLiveData().observe(this, repo -> {
+            if (repo == null) {
+                // repo was deleted, close repo details
+                finish();
+                return;
+            }
             this.repo = repo;
             updateRepoView();
         });
