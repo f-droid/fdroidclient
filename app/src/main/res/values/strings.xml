@@ -679,6 +679,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="interval_2w">Check for updates every 2 weeks</string>
     <!-- "updates" as in software updates -->
     <string name="auto_update_time">Earliest next update: %s</string>
+    <string name="auto_update_time_past">Next update when conditions are fulfilled</string>
 
     <string name="keep_hour">1 Hour</string>
     <string name="keep_day">1 Day</string>
