@@ -320,6 +320,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antitrack">Tracking</string>
     <string name="antinonfreead">Non-Free Addons</string>
     <string name="antinonfreenet">Non-Free Network Services</string>
+    <string name="antitetherednet">Tethered Network Services</string>
     <string name="antinonfreedep">Non-Free Dependencies</string>
     <string name="antiupstreamnonfree">Upstream Non-Free</string>
     <string name="antinonfreeassets">Non-Free Assets</string>
@@ -332,6 +333,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="antitracklist">This app tracks and reports your activity</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
     <string name="antinonfreenetlist">This app promotes or depends entirely on a non-free network service</string>
+    <string name="antitetherednetlist">This app depends entirely on a certain instance of a network service</string>
     <string name="antinonfreedeplist">This app depends on other non-free apps</string>
     <string name="antiupstreamnonfreelist">The upstream source code is not entirely Free</string>
     <string name="antinonfreeassetslist">This app contains non-free assets</string>

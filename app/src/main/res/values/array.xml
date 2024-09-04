@@ -20,6 +20,7 @@
         <item>@string/antitrack_key</item>
         <item>@string/antinonfreead_key</item>
         <item>@string/antinonfreenet_key</item>
+        <item>@string/antitetherednet_key</item>
         <item>@string/antinonfreedep_key</item>
         <item>@string/antiupstreamnonfree_key</item>
         <item>@string/antinonfreeassets_key</item>
@@ -35,6 +36,7 @@
         <item>@string/antitrack_key</item>
         <item>@string/antinonfreead_key</item>
         <item>@string/antinonfreenet_key</item>
+        <item>@string/antitetherednet_key</item>
         <item>@string/antinonfreedep_key</item>
         <item>@string/antiupstreamnonfree_key</item>
         <item>@string/antinonfreeassets_key</item>
@@ -49,6 +51,7 @@
         <item>@string/antitrack</item>
         <item>@string/antinonfreead</item>
         <item>@string/antinonfreenet</item>
+        <item>@string/antitetherednet</item>
         <item>@string/antinonfreedep</item>
         <item>@string/antiupstreamnonfree</item>
         <item>@string/antinonfreeassets</item>
