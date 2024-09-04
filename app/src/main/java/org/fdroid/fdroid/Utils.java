@@ -170,10 +170,8 @@ public final class Utils {
         // check if we need to account for non-HTTP mirrors
         String nonHttpUri = null;
         for (Mirror m : mirrors) {
-            if (ContentResolver.SCHEME_CONTENT.equals(m.getUrl().getProtocol().getName())) {
-                nonHttpUri = m.getBaseUrl();
-                break;
-            } else if (ContentResolver.SCHEME_FILE.equals(m.getUrl().getProtocol().getName())) {
+            if (ContentResolver.SCHEME_CONTENT.equals(m.getUrl().getProtocol().getName())
+                    || ContentResolver.SCHEME_FILE.equals(m.getUrl().getProtocol().getName())) {
                 nonHttpUri = m.getBaseUrl();
                 break;
             }
