@@ -276,7 +276,7 @@
     <string name="antinonfreenetlist">This app promotes or depends entirely on a non-changeable or non-free network service</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
     <string name="antiadslist">This app contains advertising</string>
-    <string name="antifeatures">Anti-features</string>
+    <string name="antifeatures">Anti-Features</string>
     <string name="antifeatureswarning">This app has features you may not like.</string>
     <string name="details_new_in_version">New in version %s</string>
     <string name="preference_category__my_apps">My Apps</string>
@@ -518,7 +518,7 @@
     <string name="menu_release_channel_beta">Allow Beta Updates</string>
     <string name="antitrack">Tracking</string>
     <string name="antinonfreead">Non-Free Addons</string>
-    <string name="antiothers">Other Anti-features</string>
+    <string name="antiothers">Other Anti-Features</string>
     <string name="swap_wifi_vpn_conflict">Conflicts with active VPN!</string>
     <string name="apps">Apps</string>
     <string name="has_disallow_install_unknown_sources_globally">Your device admin doesn\'t allow installing apps from unknown sources, that includes new repos</string>
