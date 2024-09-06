@@ -21,6 +21,7 @@
     <string name="antiads_key">Ads</string>
     <string name="antitrack_key">Tracking</string>
     <string name="antinonfreenet_key">NonFreeNet</string>
+    <string name="antitetherednet_key">TetheredNet</string>
     <string name="antinonfreead_key">NonFreeAdd</string>
     <string name="antinonfreedep_key">NonFreeDep</string>
     <string name="antiupstreamnonfree_key">UpstreamNonFree</string>

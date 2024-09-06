@@ -140,6 +140,8 @@ public class AntiFeaturesListingView extends RecyclerView {
             return context.getString(R.string.antitracklist);
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreenet_key))) {
             return context.getString(R.string.antinonfreenetlist);
+        } else if (antiFeatureName.equals(context.getString(R.string.antitetherednet_key))) {
+            return context.getString(R.string.antitetherednetlist);
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreead_key))) {
             return context.getString(R.string.antinonfreeadlist);
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreedep_key))) {
@@ -168,6 +170,8 @@ public class AntiFeaturesListingView extends RecyclerView {
             return R.drawable.ic_antifeature_tracking;
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreenet_key))) {
             return R.drawable.ic_antifeature_nonfreenet;
+        } else if (antiFeatureName.equals(context.getString(R.string.antitetherednet_key))) {
+            return R.drawable.ic_antifeature_tetherednet;
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreead_key))) {
             return R.drawable.ic_antifeature_nonfreeadd;
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreedep_key))) {
