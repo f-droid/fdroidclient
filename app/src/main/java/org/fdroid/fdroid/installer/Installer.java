@@ -320,16 +320,8 @@ public abstract class Installer {
             sendBroadcastInstall(canonicalUri, Installer.ACTION_INSTALL_INTERRUPTED, e.getMessage());
             return;
         } catch (ApkVerifier.ApkPermissionUnequalException e) {
-            // if permissions of apk are not the ones listed in the repo
-            // and an unattended installer is used, a wrong permission screen
-            // has been shown, thus fallback to AOSP DefaultInstaller!
-            if (isUnattended()) {
-                Log.e(TAG, e.getMessage(), e);
-                Log.e(TAG, "Falling back to AOSP DefaultInstaller!");
-                DefaultInstaller defaultInstaller = new DefaultInstaller(context, app, apk);
-                defaultInstaller.installPackageInternal(sanitizedUri, canonicalUri);
-                return;
-            }
+            // permissions of APK are not the ones listed in the repo index
+            // TODO we could prompt the user if a non-runtime permission we consider dangerous has been added
         }
 
         installPackageInternal(sanitizedUri, canonicalUri);

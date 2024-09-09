@@ -82,11 +82,6 @@ class ApkVerifier {
             throw new ApkVerificationException("Apk file has no valid versionCode!");
         }
 
-        // verify permissions, important for unattended installer
-        if (!requestedPermissionsEqual(expectedApk.requestedPermissions, localApkInfo.requestedPermissions)) {
-            throw new ApkPermissionUnequalException("Permissions in APK and index do not match!");
-        }
-
         int localTargetSdkVersion = localApkInfo.applicationInfo.targetSdkVersion;
         int expectedTargetSdkVersion = expectedApk.targetSdkVersion;
         Utils.debugLog(TAG, "localTargetSdkVersion: " + localTargetSdkVersion);
@@ -98,6 +93,11 @@ class ApkVerifier {
             throw new ApkVerificationException(
                     String.format("TargetSdkVersion of apk file (%d) is not the expected targetSdkVersion (%d)!",
                             localTargetSdkVersion, expectedTargetSdkVersion));
+        }
+
+        // verify permissions last, used to be important for unattended installer that had no permission prompts
+        if (!requestedPermissionsEqual(expectedApk.requestedPermissions, localApkInfo.requestedPermissions)) {
+            throw new ApkPermissionUnequalException("Permissions in APK and index do not match!");
         }
     }
 
