@@ -150,6 +150,11 @@ public class RepoDetailsActivity extends AppCompatActivity {
         repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
         model.initRepo(repoId);
         repo = FDroidApp.getRepoManager(this).getRepository(repoId);
+        if (repo == null) {
+            // repo must have been deleted just now (maybe slow UI?)
+            finish();
+            return;
+        }
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.getAddress());
