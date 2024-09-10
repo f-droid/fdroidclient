@@ -16,7 +16,7 @@ internal object RepoUriGetter {
                     it.buildUpon().scheme("http").build()
                 }
 
-                it.host == "fdroid.link" -> getFdroidLinkUri(it)
+                it.host == "fdroid.link" && it.encodedFragment != null -> getFdroidLinkUri(it)
 
                 it.scheme.isNullOrBlank() -> {
                     // assume https:// when no scheme given
