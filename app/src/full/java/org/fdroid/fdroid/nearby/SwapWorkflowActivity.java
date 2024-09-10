@@ -492,7 +492,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT <= 28) {
             wifiManager.setWifiEnabled(false);
         }
-        if (wifiApControl.enable()) {
+        boolean wifiEnabled = false;
+        try {
+            wifiEnabled = wifiApControl.enable();
+        } catch (Exception e) {
+            Log.e(TAG, "Error enabling WiFi: ", e);
+        }
+        if (wifiEnabled) {
             Toast.makeText(this, R.string.swap_toast_hotspot_enabled, Toast.LENGTH_SHORT).show();
             SwapService.putHotspotActivatedUserPreference(true);
         } else {
