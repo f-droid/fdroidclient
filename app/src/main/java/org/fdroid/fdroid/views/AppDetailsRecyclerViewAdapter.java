@@ -512,7 +512,7 @@ public class AppDetailsRecyclerViewAdapter
                     progressBar.setIndeterminate(true);
                 }
             } else {
-                progressBar.setProgressCompat(Utils.getPercent(Utils.bytesToKb(bytesDownloaded), Utils.bytesToKb(totalBytes)), true);
+                progressBar.setProgressCompat(Utils.getPercent(bytesDownloaded, totalBytes), true);
             }
             progressBar.show();
 

@@ -745,7 +745,8 @@ public final class Utils {
      * an {@code int} value that is a percentage, suitable for things like
      * {@link android.widget.ProgressBar#setMax(int)} or
      * {@link androidx.core.app.NotificationCompat.Builder#setProgress(int, int, boolean)}.
-     * {@code total} must never be zero!
+     * @param current should be smaller than {@link Long#MAX_VALUE} / 100
+     * @param total must never be zero!
      */
     public static int getPercent(long current, long total) {
         return (int) ((100L * current + total / 2) / total);
