@@ -90,6 +90,18 @@ internal class RepoUriGetterTest {
         val uri3 = RepoUriGetter.getUri("https://fdroid.link/#http://f-droid.org/repo")
         assertEquals("http://f-droid.org/repo", uri3.uri.toString())
         assertNull(uri3.fingerprint)
+
+        val uri4 = RepoUriGetter.getUri("https://fdroid.link/")
+        // we don't care what it is as long as it doesn't crash
+        assertNull(uri4.fingerprint)
+
+        val uri5 = RepoUriGetter.getUri("https://fdroid.link/#foo")
+        // we don't care what it is as long as it doesn't crash
+        assertNull(uri5.fingerprint)
+
+        val uri6 = RepoUriGetter.getUri("https://fdroid.link/#invalid://foo.bar")
+        // we don't care what it is as long as it doesn't crash
+        assertNull(uri6.fingerprint)
     }
 
     @Test

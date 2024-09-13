@@ -1,6 +1,8 @@
 package org.fdroid.fdroid
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
@@ -149,7 +151,10 @@ class RepoUpdateManager @JvmOverloads constructor(
                 msgBuilder.append("$repoName: ${e.localizedMessage} ${cause.localizedMessage}")
             }
         }
-        Toast.makeText(context, msgBuilder.toString(), LENGTH_LONG).show()
+        // can't show Toast from background thread, so we need to move this to UiThread
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(context, msgBuilder.toString(), LENGTH_LONG).show()
+        }
     }
 
     override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
