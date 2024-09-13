@@ -747,7 +747,7 @@ public final class Utils {
      * @param total must never be zero!
      */
     public static int getPercent(long current, long total) {
-        return (int) ((100L * current + total / 2) / total);
+        return (int) (100L * current / total);
     }
 
     @SuppressWarnings("unused")
