@@ -618,4 +618,5 @@
     <string name="repo_add_repo_and_mirror">Añadir repositorio y espejo</string>
     <string name="repo_view_repo">Ver el repositorio</string>
     <string name="warning_no_compat_versions">El repositorio seleccionado no tiene versiones de aplicaciones compatibles. Para recibir actualizaciones, prefiera un repositorio con versiones compatibles.</string>
+    <string name="auto_update_time">Actualización próxima más temprana: %s</string>
 </resources>
