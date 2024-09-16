@@ -1,13 +1,7 @@
-* Repository-Darstellung für Benutzer überarbeitet, um zu verdeutlichen, wenn eine Installation nicht von f-droid.org kommt
-
-* Benutzer können die Repository-Priorität global und pro App ändern
-
-* Eigene Anti-Features sind nun standardmäßig aktiviert, anstatt deaktiviert
-
-* Empfang von Repository-URLs über Teilen
-
-* Alle Aktivitäten berücksichtigen das Tag/Nacht-Design
-
-* Nutzung von ext. Speicher aktualisiert, wegen targetSdkVersion 29
-
-* F-Droid Basic aktualisiert, wegen targetSdkVersion 34
+* Trennung von Name und Zusammenfassung in App-Listen für bessere Lesbarkeit
+* Apps, die auf SDK 24 abzielen, sind inkompatibel mit Android 15 Geräten
+* Bessere Handhabung von Spiegelservern in der Vorschau „Paketquelle hinzufügen“ (Danke Thore!)
+* Aktivieren unbeaufsichtigter App-Updates auf Xiaomi-Geräten, auf denen kein MIUI läuft (Danke Irate!)
+* Vertrauen in vom Benutzer hinzugefügte Root-Zertifikate (Danke B.!)
+* Verbesserte Lokalisierung für weniger verbreitete Sprachen (Danke Ray!)
+…
