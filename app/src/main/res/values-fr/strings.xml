@@ -618,4 +618,5 @@
     <string name="repo_and_mirror_add_both_info">Le lien que vous essayez d\'ajouter (%s) est un miroir d\'un nouveau dépôt. Le dépôt original ainsi que le miroir seront ajoutés.</string>
     <string name="auto_update_time">Prochaine mise à jour la plus proche : %s</string>
     <string name="warning_no_compat_versions">Le dépôt sélectionné n\'a aucune version d\'application compatible. Pour recevoir des mises à jour, privilegiez un dépôt avec des versions compatibles.</string>
+    <string name="auto_update_time_past">Prochaine mise à jour quand les conditions sont remplies</string>
 </resources>
