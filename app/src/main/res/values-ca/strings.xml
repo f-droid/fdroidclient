@@ -57,7 +57,7 @@
     <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>
     <string name="antinonfreenetlist">Aquesta aplicació depèn completament d\'un servei de xarxa no lliure</string>
     <string name="antinonfreedeplist">Aquesta aplicació depèn d\'altres aplicacions no lliures</string>
-    <string name="antiupstreamnonfreelist">El codi font no és del tot lliure</string>
+    <string name="antiupstreamnonfreelist">Es basa en el codi font d\'una altra aplicació que conté algunes parts no-lliures</string>
     <string name="display">Pantalla</string>
     <string name="expert">Mode expert</string>
     <string name="expert_on">Mostra informació extra i habilita paràmetres extra</string>
