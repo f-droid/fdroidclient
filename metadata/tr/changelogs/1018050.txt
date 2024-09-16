@@ -1,0 +1,7 @@
+* Son Android sürümlerinde Dış Depolama'dan depolar ve aynalar kullanılarak düzeltildi
+* Yakındaki cihazlarda WiFi yönetimi geliştirildi
+* F-Droid yeniden başlasa bile, navigasyon çubuğu artık konumunu hatırlıyor
+* Yeni dil: Svahili
+* Hâlâ index-v1 kullanan depolar için resim indirme düzeltildi
+* Takas, depoları yönetme ve daha fazlasıyla ilgili çökmeler düzeltildi
+* Düşürme düğmesi kaldırıldı, Android artık buna izin vermiyor
