@@ -1,0 +1,15 @@
+* Révision de la gestion des dépôts et des miroirs, à la fois en termes d'expérience utilisateur et de code.
+
+* Affichage d'un aperçu des nouveaux dépôts.
+
+* L'installation avec F-Droid et F-Droid Basic prend désormais en charge les mises à jour automatiques en arrière-plan.
+
+* Sur Android 14, marquage des applications avec une version de SDK cible non prise en charge comme incompatibles #2692
+
+* Appuyez longuement pour copier les liens, les autorisations et les versions sur l'écran des détails de l'application  (@Tobias_Groza)
+
+* Les applications incompatibles ne sont affichées que lorsque cela est autorisé dans les paramètres  #41 (@pigpig)
+
+* Nouveaux paramètres de passerelles IPFS.
+
+* Sélection de la langue par application  (@Licaon-Kter)

@@ -313,9 +313,9 @@
     <string name="updates__hide_updateable_apps">Masquer les applications</string>
     <string name="updates__show_updateable_apps">Afficher les applications</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Télécharger la mise à jour pour %1$d application.</item>
-        <item quantity="many">Télécharger les mises à jour pour %1$d applications.</item>
-        <item quantity="other">Télécharger les mises à jour pour %1$d applications.</item>
+        <item quantity="one">Télécharger la mise à jour pour %1$d application :</item>
+        <item quantity="many">Télécharger les mises à jour pour %1$d applications :</item>
+        <item quantity="other">Télécharger les mises à jour pour %1$d applications :</item>
     </plurals>
     <string name="preference_category__my_apps">Mes applis</string>
     <string name="preference_manage_installed_apps">Gérer les applis installées</string>
@@ -471,7 +471,7 @@
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
     <string name="scan_removable_storage_title">Parcourir le stockage mémoire amovible</string>
-    <string name="nearby_splash__request_permission">Chercher</string>
+    <string name="nearby_splash__request_permission">Rechercher</string>
     <string name="swap_toast_using_path">Utilisation de %1$s</string>
     <string name="swap_toast_find_removeable_storage">Sélectionnez la carte SD ou le stockage USB</string>
     <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
@@ -592,21 +592,21 @@
     <string name="useDnsCacheSummary">Utiliser les résultats en cache pour minimiser les requêtes DNS.</string>
     <string name="useDnsCache">Utiliser le cache DNS</string>
     <string name="app_details_repository">Dépôt</string>
-    <string name="app_details_repositories">Dépôt</string>
+    <string name="app_details_repositories">Dépôts</string>
     <string name="app_details_repository_preferred">(préféré)</string>
     <string name="app_details_repository_expand">Développer la liste des dépôts</string>
-    <string name="app_list_no_suggested_version">Aucune version recommandée pour l\'installation.</string>
+    <string name="app_list_no_suggested_version">Aucune version recommandée à l\'installation.</string>
     <string name="repo_disable_warning_button">Désactiver</string>
-    <string name="app_details_repository_button_prefer">Préférer ce Dépôt</string>
+    <string name="app_details_repository_button_prefer">Privilégier ce Dépôt</string>
     <string name="repo_list_info_title">Liste des Dépôts</string>
     <string name="repo_archive_toggle">Archive des Dépôts</string>
     <string name="repo_archive_toggle_description">Afficher les apps archivées et les anciennes versions des apps</string>
     <string name="repositories_last_update">Dernière mise à jour : %s</string>
-    <string name="repo_disable_warning">Désactiver ce dépôt enlèvera son statut « préféré » de toutes les apps.</string>
+    <string name="repo_disable_warning">Désactiver ce dépôt enlèvera son statut « préféré » de toutes les applications.</string>
     <string name="repositories_last_update_never">jamais</string>
     <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.
 \n
 \nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
-    <string name="repo_error_adding_archive">Les dépôts archivés ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste et activez l\'archive à cet emplacement.</string>
-    <string name="repo_archive_failed">Dépôt archivé actuellement indisponible</string>
+    <string name="repo_error_adding_archive">Les dépôts d\'archive ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste puis activez l\'archive à cet emplacement.</string>
+    <string name="repo_archive_failed">Dépôt d\'archive actuellement indisponible</string>
 </resources>
