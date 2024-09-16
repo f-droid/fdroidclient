@@ -54,7 +54,7 @@
     <string name="antiadslist">Ова апликација садржи огласе</string>
     <string name="antitracklist">Ова апликација прати и шаље вашу активност</string>
     <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
-    <string name="antinonfreenetlist">Ова апликација промовише непроменљиве или неслободне мрежне услуге или у потпуности зависи од њих</string>
+    <string name="antinonfreenetlist">Ова апликација промовише неслободне мрежне услуге или у потпуности зависи од њих</string>
     <string name="antinonfreedeplist">Ова апликација зависи од других неслободних апликација</string>
     <string name="antiupstreamnonfreelist">Оригинални изворни кôд није у потпуности слободан</string>
     <string name="display">Приказ</string>
@@ -609,4 +609,5 @@
     <string name="repo_and_mirror_add_both_info">Наведени URL (%s) је резервни извор новог репозиторијума. Биће додати и оригинални репозиторијум и резервни извор.</string>
     <string name="warning_no_compat_versions">Изабрани репозиторијум нема компатибилних верзија апликација. Да бисте примали ажурирања, дајте предност репозиторијуму са компатибилним верзијама.</string>
     <string name="auto_update_time">Најраније следеће ажурирање: %s</string>
+    <string name="auto_update_time_past">Следеће ажурирање када се испуне услови</string>
 </resources>
