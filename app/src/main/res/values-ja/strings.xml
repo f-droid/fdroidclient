@@ -25,7 +25,7 @@
     <string name="app_inst_known_source">インストール済み（%sから）</string>
     <string name="app_inst_unknown_source">インストール済み（不明なソースから）</string>
     <string name="added_on">%sに追加</string>
-    <string name="ok">OK</string>
+    <string name="ok">了解</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="repo_add_title">新しいリポジトリの追加</string>
@@ -56,7 +56,7 @@
     <string name="antiadslist">このアプリは広告を表示します</string>
     <string name="antitracklist">このアプリはあなたの操作を記録し報告します</string>
     <string name="antinonfreeadlist">このアプリは不自由なアドオンを推奨します</string>
-    <string name="antinonfreenetlist">このアプリは、変更不可能または不自由なネットワークサービスを推奨します</string>
+    <string name="antinonfreenetlist">このアプリは不自由なネットワークサービスを宣伝または完全に依存しています</string>
     <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依存します</string>
     <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
@@ -137,7 +137,7 @@
     <string name="app_incompatible">互換性がありません</string>
     <string name="links">リンク</string>
     <string name="back">戻る</string>
-    <string name="bad_fingerprint">フィンガープリントが間違っています</string>
+    <string name="bad_fingerprint">指紋が間違っています</string>
     <string name="invalid_url">有効なURLではありません。</string>
     <string name="menu_changelog">変更履歴</string>
     <string name="banner_updating_repositories">リポジトリを更新しています</string>
@@ -405,8 +405,8 @@
     <string name="repo_exists_and_enabled">%1$sはすでに設定済みで有効です。</string>
     <string name="repo_delete_to_overwrite">競合する鍵でこのリポジトリを追加するには、先に%1$sを削除してください。</string>
     <string name="repo_exists_add_mirror">これは%1$sの複製です。ミラーとして追加しますか？</string>
-    <string name="show_anti_feature_apps">好ましくない機能の使用が必要なアプリ</string>
-    <string name="show_anti_feature_apps_on">好ましくない機能の使用を必要とするアプリを表示</string>
+    <string name="show_anti_feature_apps">好ましくない機能を含める</string>
+    <string name="show_anti_feature_apps_on">既知の好ましくない機能を持つアプリを表示する</string>
     <string name="force_touch_apps">タッチスクリーンの使用が必要なアプリ</string>
     <string name="force_touch_apps_on">ハードウェアでサポートされていない場合でも、タッチスクリーンの使用を必要とするアプリを表示</string>
     <string name="repo_official_mirrors">公式ミラー</string>
@@ -436,7 +436,7 @@
     <string name="send_installed_apps_csv">F-Droid によってインストールされたアプリを CSV ファイルとして</string>
     <string name="updates_disabled_by_settings">データ/WiFi の設定によって、すべての更新が無効になっています</string>
     <string name="menu_open">開く</string>
-    <string name="antinosourcesince">ソースコードはもう入手できません。更新できません。</string>
+    <string name="antinosourcesince">ソースコードは入手できなくなり、更新も不可能になります</string>
     <string name="share_repository">リポジトリを共有</string>
     <string name="about_forum">サポートフォーラム</string>
     <string name="app_suggested">推奨</string>
@@ -503,7 +503,7 @@
     <string name="antinonfreead">不自由なアドオン</string>
     <string name="antinonfreenet">不自由なネットワークサービス</string>
     <string name="antinonfreedep">不自由な依存パッケージ</string>
-    <string name="app_list_results_hidden_antifeature_settings">「好ましくない機能」の設定により、一部の検索結果は表示されていません。</string>
+    <string name="app_list_results_hidden_antifeature_settings">一部のアプリは好ましくない機能の設定に基づいて非表示になっています。変更するにはタッチしてください。</string>
     <string name="antiknownvuln">既知の脆弱性</string>
     <string name="antinonfreeassets">不自由なアセット</string>
     <string name="antiupstreamnonfree">不自由なアップストリーム</string>
@@ -578,4 +578,16 @@
     <string name="nearby_splace__external_storage_permission_button">試行</string>
     <string name="swap_connection_indexv0_error">F-Droidの陳腐化したバージョンで誰かに接続しようとしています。接続するには、F-Droidアプリをアップグレードする必要があります。あなたからF-Droidアプリを更新するために、交換を使用できます。</string>
     <string name="copied_permission_to_clipboard">権限名をクリップボードにコピーしました</string>
+    <string name="repo_add_repo_and_mirror">リポジトリとミラーを追加</string>
+    <string name="repo_view_repo">リポジトリを表示</string>
+    <string name="repo_mirror_exists">このミラーはすでに追加されています（%s）。</string>
+    <string name="repo_mirror_add_info">追加しようとしている URL (%s) は、既存のリポジトリのミラーです。</string>
+    <string name="repo_and_mirror_add_both_info">追加しようとしている URL (%s) は新しいリポジトリのミラーです。元のリポジトリとミラーの両方が追加されます。</string>
+    <string name="auto_update_time">次回の更新予定日：%s</string>
+    <string name="repo_preview_included_apps">含まれたアプリ：</string>
+    <string name="warning_no_compat_versions">選択したリポジトリには互換性のあるアプリバージョンがありません。更新を受け取るには、互換性のあるバージョンがあるリポジトリを選択してください。</string>
+    <string name="repo_scan_qr_code">QR コードをスキャン</string>
+    <string name="auto_update_time_past">条件が満たされたら次回更新</string>
+    <string name="antitetherednet">テザーネットワークサービス</string>
+    <string name="antitetherednetlist">このアプリはネットワークサービスの特定のインスタンスに完全に依存しています</string>
 </resources>
