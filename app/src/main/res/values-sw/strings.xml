@@ -194,8 +194,8 @@
     <string name="updates__hide_updateable_apps">Ficha api</string>
     <string name="updates__show_updateable_apps">Onysha Api</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Pakua sasisho ya apu ya %1$d.</item>
-        <item quantity="other">Pakua masasisho ya api za %1$d.</item>
+        <item quantity="one">Pakua sasisho ya apu ya %1$d:</item>
+        <item quantity="other">Pakua masasisho ya api za %1$d:</item>
     </plurals>
     <string name="updates">Masasisho</string>
     <string name="category_Graphics">Michoro</string>
@@ -252,7 +252,7 @@
     <string name="antinosource">Msimbo Chanzo Haupatikani Tena</string>
     <string name="antiothers">Vipengele Vingine Visivyopendelewa</string>
     <string name="antinonfreeadlist">Apu hii inakuza vifaa vya nyongeza visivyo vya bure</string>
-    <string name="antinonfreenetlist">Apu hii inakuza na kutegemea kabisa huduma ya mtandao isiyo ya bure</string>
+    <string name="antinonfreenetlist">Apu hii inakuza au inategemea kabisa huduma ya mtandao isiyoweza kubadilika au isiyo ya bure</string>
     <string name="antinosourcesince">Msimbo chanzo haupatikani tena, hakuna masasisho yanayowezekana.</string>
     <string name="expert_on">Onyesha maelezo ya zaidi na uwezeshe mipangilio ya ziada</string>
     <string name="show_anti_feature_apps">Jumuisha api zenye vipengele visivyopendelewa</string>
@@ -540,13 +540,13 @@
     <string name="repo_state_fetching">Inaleta ghala…</string>
     <string name="repo_state_adding">Inaongeza ghala…</string>
     <string name="repo_enter_url">Ingiza URL ya ghala mwenyewe</string>
-    <string name="repo_exists">Ghala hili limeongezwa tayari.</string>
+    <string name="repo_exists">Ghala hili liliongezwa tayari.</string>
     <string name="repo_invalid">Ghala batili.
 \n
 \nWasiliana na mtunzaji na umjulishe kuhusu suala hilo.</string>
     <string name="repo_io_error">Hitilafu wakati wa kuunganisha kwenye ghala.</string>
     <string name="repo_scan_qr_code">Changanua msimbo wa QR</string>
-    <string name="app_details_repository_preferred">(Stahabu)</string>
+    <string name="app_details_repository_preferred">(inayopendelewa)</string>
     <string name="repositories_last_update_never">kamwe</string>
     <string name="nearby_splace__external_storage_permission_button">Jaribu</string>
     <string name="repo_num_apps_button">Onyesha api</string>
@@ -560,4 +560,41 @@
     <string name="repo_view_repo">Tazama ghala</string>
     <string name="app_details_repository_button_prefer">Hitari Ghala</string>
     <string name="repo_mirror_exists">Kioo hiki tayari kimeongezwa (%s).</string>
+    <string name="app_details_repository">Ghala</string>
+    <string name="app_details_repositories">Ghala</string>
+    <string name="force_old_installer_summary">Lemaza kisakinisho cha kipindi, ukijumuisha msaada kwa masasisho ya usuli ya kiotomatiki.</string>
+    <string name="force_old_installer_title">Lazimisha kisakinisho cha zamani</string>
+    <string name="warning_no_compat_versions">Ghala iliyochaguliwa haina matoleo ya apu inayoambatana. Ili kupokea masasisho, pendelea repo iliyo na matoleo inayoambatana.</string>
+    <string name="copied_permission_to_clipboard">Imenakili jina la ruhusa kwenye ubao wa kunakili</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid inaweza kutafuta repo na vioo kwenye Kadi ya SD yako, lakini inahitaji ruhusa yako kufanya hivyo.</string>
+    <string name="copied_url_to_clipboard">Imenakili URL kwenye ubao wa kunakili</string>
+    <string name="repo_error_adding_archive">Kumbukumbu za ghala haiwezi kuongezwa moja kwa moja. Gusa ghala kwenye orodha na uwezeshe kumbukumbu hio hapo.</string>
+    <string name="repo_archive_failed">Repo ya kumbukumbu kwa sasa haipatikani</string>
+    <string name="ipfsgw_title">Milango za IPFS</string>
+    <string name="repo_disable_warning">Kulemaza repo hii itaondoa hali yake ya \"Iliyopendekezwa\" kutoka kwa apu zote.</string>
+    <string name="repo_preview_included_apps">apu zilizojumuishwa:</string>
+    <string name="repo_mirror_add_info">URL hio unayojaribu kuongeza (%s) ni kioo cha ghala iliyopo.</string>
+    <string name="repo_and_mirror_add_both_info">URL unayojaribu kuongeza (%s) ni kioo cha ghala mpya. Zote mbili ghala asili na kioo itaongezwa.</string>
+    <string name="useDnsCacheSummary">Tumia matokeo iliyohifadhiwa kupunguza maswali ya DNS.</string>
+    <string name="swap_connection_indexv0_error">Unajaribu kuunganisha kwa mtu aliye na toleo iliyopitwa na wakati ya F-Droid. Ili kuunganisha wanapaswa kuboresha apu zao za F-Droid. Wanaweza kutumia swap ili kusasisha apu zao za F-Droid kutoka kwako.</string>
+    <string name="copied_to_clipboard">Imenakiliwa kwenye ubao wa kunakili</string>
+    <string name="ipfsgw_summary_disabled">Pakua apu kwa kutumia pointi za mwisho za IPFS: imelemazwa</string>
+    <string name="ipfsgw_add_title">Ongeza Gateway ya IPFS</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Pakua apu kutumia pointi za mwisho za wavuti za IPFS: %1$d kuwezeshwa</item>
+        <item quantity="other">Pakua apu kwa kutumia pointi ya mwisho za wavuti za IPFS: %1$d kuwezeshwa</item>
+    </plurals>
+    <string name="ipfsgw_caption_official_gateways">Gateways ya IPFS iliyo rasmi</string>
+    <string name="ipfsgw_caption_custom_gateways">Gateways za IPFS iliyo desturi</string>
+    <string name="useDnsCache">Tumia cache ya DNS</string>
+    <string name="repo_archive_toggle">kumbukumbu ya repo</string>
+    <string name="repo_archive_toggle_description">Onyesha apu zilizowekwa kwa kumbukumbu na matoleo ya apu zilizopitwa na wakati</string>
+    <string name="paste">Bandika</string>
+    <string name="ipfsgw_explainer">Pakua apu kutoka kwa pointi za mwisho za wavuti za IPFS. (Inafanya pekee kwa repo za F-Droid iliyo na msaada wa IPFS.)</string>
+    <string name="repo_share_not_found">Haikuweza kupata anwani ya ghala kwenye maandishi iliyoshirikiwa.</string>
+    <string name="auto_update_time">Sasisho la mapema zaidi linalofuata: %s</string>
+    <string name="repo_list_info_text">Ghala ni chanzo cha apu. Orodha hii inaonyesha ghala zote zilizoongezwa sasa. Ghala zilizolemazwa haitumiki.
+\n
+\nIkiwa apu iko katika zaidi ya repo moja, repo iliyo juu kwenye orodha inapendekezwa kiotomatiki. Unaweza kupanga upya repo kwa kushinikiza kwa muda mrefu na kuziburuta.</string>
+    <string name="app_list_no_suggested_version">Hakuna toleo linalopendelewa kwa usakinishaji.</string>
 </resources>
