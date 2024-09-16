@@ -452,7 +452,7 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi хотспот је омогућен</string>
     <string name="swap_toast_could_not_enable_hotspot">Није могуће омогућити Wi-Fi хотспот</string>
     <string name="antidisabledalgorithmlist">Ова апликација има слаб безбедносни потпис</string>
-    <string name="antiknownvulnlist">Ова апликација садржи познату безбедносну претњу</string>
+    <string name="antiknownvulnlist">Ова апликација садржи познати безбедносни пропуст</string>
     <string name="share_repository">Дели репозиторијум</string>
     <string name="antinosourcesince">Изворни кôд више није доступан. Ажурирања нису могућа.</string>
     <string name="send_history_csv">Историја инсталација %s у виду CSV фајла</string>
@@ -512,7 +512,7 @@
     <string name="install_history_and_metrics">Историја инсталација и статистика</string>
     <string name="send_fdroid_metrics_json">%s статистички извештај у виду JSON фајла</string>
     <string name="send_fdroid_metrics_report">Шаљи %s статистички извештај</string>
-    <string name="app_list_results_hidden_antifeature_settings">Неки резултати су скривени на основу ваших подешавања непоузданих функција. Додирните да промените.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Неки резултати су скривени на основу ваших подешавања непоузданих функција. Додирните да бисте променили.</string>
     <string name="antidisabledalgorithm">Потписано помоћу небезбедног алгоритма</string>
     <string name="has_disallow_install_unknown_sources_globally">Администратор вашег уређаја не дозвољава инсталирање апликација из непознатих извора, што обухвата и нове репозиторијуме</string>
     <string name="has_disallow_install_unknown_sources">Овај корисник не може да додаје непознате изворе, што обухвата и нове репозиторијуме</string>
@@ -611,5 +611,5 @@
     <string name="auto_update_time">Најраније следеће ажурирање: %s</string>
     <string name="auto_update_time_past">Следеће ажурирање када се испуне услови</string>
     <string name="antitetherednetlist">Ова апликација у потпуности зависи од одређене инстанце мрежне услуге</string>
-    <string name="antitetherednet">Услуге повезане мреже</string>
+    <string name="antitetherednet">Непроменљиве мрежне услуге</string>
 </resources>
