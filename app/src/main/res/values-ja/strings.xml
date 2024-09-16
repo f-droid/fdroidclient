@@ -313,7 +313,7 @@
     <string name="updates__hide_updateable_apps">アプリを非表示</string>
     <string name="updates__show_updateable_apps">アプリを表示</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">%1$d 個のアプリの更新をダウンロード。</item>
+        <item quantity="other">%1$d 個のアプリの更新をダウンロード:</item>
     </plurals>
     <string name="details_new_in_version">バージョン%sの新機能</string>
     <string name="antifeatureswarning">このアプリは好ましくない機能を含む可能性があります。</string>
@@ -577,4 +577,5 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-DroidはSDカード上からレポジトリとミラーを検索できますが、権限が必要です。</string>
     <string name="nearby_splace__external_storage_permission_button">試行</string>
     <string name="swap_connection_indexv0_error">F-Droidの陳腐化したバージョンで誰かに接続しようとしています。接続するには、F-Droidアプリをアップグレードする必要があります。あなたからF-Droidアプリを更新するために、交換を使用できます。</string>
+    <string name="copied_permission_to_clipboard">権限名をクリップボードにコピーしました</string>
 </resources>
