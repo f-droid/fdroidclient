@@ -79,7 +79,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="category_Internet">Mtandao</string>
     <string name="category_Money">Pesa</string>
-    <string name="category_Time">Saa</string>
+    <string name="category_Time">Wakati</string>
     <string name="category_Writing">Kuandika</string>
     <string name="category_Sports_Health">Michezo na Afya</string>
     <string name="category_System">Mfumo</string>
@@ -579,7 +579,7 @@
     <string name="swap_connection_indexv0_error">Unajaribu kuunganisha kwa mtu aliye na toleo iliyopitwa na wakati ya F-Droid. Ili kuunganisha wanapaswa kuboresha apu yao ya F-Droid. Wanaweza kutumia kubadilishana ili kusasisha apu yao ya F-Droid kutoka kwako.</string>
     <string name="copied_to_clipboard">Imenakiliwa kwenye ubao wa kunakilia</string>
     <string name="ipfsgw_summary_disabled">Pakua apu kwa kutumia pointi za mwisho za IPFS: imezimwa</string>
-    <string name="ipfsgw_add_title">Ongeza Gateway ya IPFS</string>
+    <string name="ipfsgw_add_title">Ongeza IPFS Gateway</string>
     <plurals name="ipfsgw_summary">
         <item quantity="one">Pakua apu kutumia pointi za mwisho za wavuti za IPFS: %1$d kuwezeshwa</item>
         <item quantity="other">Pakua apu kwa kutumia pointi ya mwisho za wavuti za IPFS: %1$d kuwezeshwa</item>
