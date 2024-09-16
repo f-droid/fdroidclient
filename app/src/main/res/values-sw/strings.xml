@@ -131,7 +131,7 @@
     <string name="force_old_index">Lazimisha umbizo la faharasa la zamani</string>
     <string name="send_version_and_uuid_summary">Jumuisha toleo la apu hii na kitambulisho nasibu, cha kipekee wakati wa kupakua, kitaanza kutumika apu itakapowashwa tena.</string>
     <string name="force_old_index_summary">Iwapo kuna hitilafu au matatizo ya uoanifu, tumia faharasa ya programu ya XML</string>
-    <string name="other">Mengine</string>
+    <string name="other">Ingine</string>
     <string name="update_auto_install_summary">Pakua na usasishe apu kichinichini, ikionyesha arifa</string>
     <string name="update_interval">Kipindi cha muda baina ya masasisho ya kiotomatiki</string>
     <string name="notify">Onyesha masasisho yanayopatikana</string>
@@ -238,7 +238,7 @@
     <string name="clear_search">Futa utafutaji</string>
     <string name="bluetooth_activity_not_found">Hakuna mbinu ya kutuma ya Bluetooth iliyopatikana, chagua moja!</string>
     <string name="choose_bt_send">Chagua mbinu ya kutuma ya Bluetooth</string>
-    <string name="bad_fingerprint">Alama mbaya ya kidole</string>
+    <string name="bad_fingerprint">Alama mbaya la kidole</string>
     <string name="invalid_url">Hii si URL halali.</string>
     <string name="malformed_repo_uri">Kupuuza URI ya kihifadhi yenye hitilafu: %s</string>
     <string name="has_disallow_install_unknown_sources">Vyanzo visivyojulikana haviweziongezwa na mtumiaji huyu, hiyo inajumuisha maghala mapya</string>
@@ -363,7 +363,7 @@
     <string name="nearby_splash__find_people_button">Tafuta watu walio karibu</string>
     <string name="nearby_splash__read_external_storage">Pekua Kadi ya Kumbukumbu kwa ajili ya maghala na vioo.</string>
     <string name="nearby_splash__document_tree">Pekua USB OTG kwa ajili ya maghala na vioo.</string>
-    <string name="nearby_splash__request_permission">Jaribu</string>
+    <string name="nearby_splash__request_permission">Pekua sasa</string>
     <string name="swap_no_wifi_network">Hamna mtandao bado</string>
     <string name="swap_blank_wifi_ssid">(tupu)</string>
     <string name="swap_hidden_wifi_ssid">(imefichwa)</string>
@@ -384,7 +384,7 @@
     <string name="use_bluetooth">Tumia Bluetooth</string>
     <string name="not_visible_nearby">Nearby haijawezeshwa</string>
     <string name="swap_toast_using_path">Kutumia %1$s</string>
-    <string name="allPerms">Yote</string>
+    <string name="allPerms">Zote</string>
     <string name="perm_costs_money">Hii inaweza kukugharimu pesa</string>
     <string name="uninstall_confirm">Unataka kusimikua apu hii\?</string>
     <string name="download_error">Upakuaji umefeli!</string>
@@ -525,7 +525,7 @@
     <string name="category_Theming">Kuweka mandhari</string>
     <string name="system_install_denied_permissions">Ruhusa zilizoidhinishwa hazijatolewa kwa kiendelezi! Tafadhali tengeneza ripoti ya hitilafu!</string>
     <string name="swap_join_same_wifi_desc">Kubadilishana kutumia Wi-Fi, hakikisha kwamba mko kwenye mtandao mmoja. Kama hamna ufikikaji kwenye mtandao sawa, mmoja wenu anaweza kuunda Eneo la Mwunganisho wa Wi-Fi.</string>
-    <string name="swap_join_this_hotspot">Saidia mwenzako ajiunge na eneo lako la mwunganisho</string>
+    <string name="swap_join_this_hotspot">Saidia rafiki yako ajiunge na eneo lako la mwunganisho</string>
     <string name="swap_active_hotspot">%1$s (eneo lako la mwunganisho)</string>
     <string name="swap_visible_hotspot">Inaonekana kupitia eneo la mwunganisho</string>
     <string name="disabled">Imezimwa</string>
@@ -545,4 +545,19 @@
 \n
 \nWasiliana na mtunzaji na umjulishe kuhusu suala hilo.</string>
     <string name="repo_io_error">Hitilafu wakati wa kuunganisha kwenye ghala.</string>
+    <string name="repo_scan_qr_code">Changanua msimbo wa QR</string>
+    <string name="app_details_repository_preferred">(Stahabu)</string>
+    <string name="repositories_last_update_never">kamwe</string>
+    <string name="nearby_splace__external_storage_permission_button">Jaribu</string>
+    <string name="repo_num_apps_button">Onyesha api</string>
+    <string name="ipfsgw_add_add">Ongeza</string>
+    <string name="repo_list_info_title">Orodha la ghala</string>
+    <string name="repositories_last_update">Sasisho: %s la mwisho</string>
+    <string name="targetsdk_or_later">Malengo %s</string>
+    <string name="app_details_repository_expand">Tanua orodha la ghala</string>
+    <string name="repo_disable_warning_button">Lemaza</string>
+    <string name="repo_add_repo_and_mirror">Ongeza ghala na kioo</string>
+    <string name="repo_view_repo">Tazama ghala</string>
+    <string name="app_details_repository_button_prefer">Hitari Ghala</string>
+    <string name="repo_mirror_exists">Kioo hiki tayari kimeongezwa (%s).</string>
 </resources>
