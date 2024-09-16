@@ -56,7 +56,7 @@
     <string name="antiadslist">Este app contém publicidade</string>
     <string name="antitracklist">Este app rastreia e relata sua atividade</string>
     <string name="antinonfreeadlist">Este app promove complementos não livres</string>
-    <string name="antinonfreenetlist">Este app promove ou depende inteiramente de um serviço de rede não mutável ou não livre</string>
+    <string name="antinonfreenetlist">Este aplicativo promove ou depende inteiramente de um serviço de rede não gratuito</string>
     <string name="antinonfreedeplist">Este app depende de outros apps não livres</string>
     <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre</string>
     <string name="display">Aparência</string>
@@ -416,7 +416,7 @@
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Pode ser difícil escanear o código.</string>
     <string name="repo_add_mirror">Adicionar espelho</string>
     <string name="repo_exists_add_mirror">Esta é uma copia de %1$s, adicionar como um espelho\?</string>
-    <string name="show_anti_feature_apps">Incluir apps com características indesejadas</string>
+    <string name="show_anti_feature_apps">Incluir funcionalidades indesejadas</string>
     <string name="force_touch_apps">Incluir apps touchscreen</string>
     <string name="force_touch_apps_on">Mostrar apps que exigem uma tela sensível ao toque, independentemente se há suporte ao hardware</string>
     <string name="repo_official_mirrors">Espelhos oficiais</string>
@@ -436,7 +436,7 @@
     <string name="repo_delete_to_overwrite">Primeiro exclua %1$s para poder adicionar isso com uma chave conflitante.</string>
     <string name="antidisabledalgorithmlist">Este app tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Este app contém uma falha de segurança conhecida</string>
-    <string name="show_anti_feature_apps_on">Mostrar apps com características indesejadas</string>
+    <string name="show_anti_feature_apps_on">Mostrar aplicativos que possuem funcionalidades indesejadas conhecidas</string>
     <string name="prompt_to_send_crash_reports">Perguntar antes de enviar relatórios de falhas</string>
     <string name="prompt_to_send_crash_reports_summary">Reunir dados sobre falhas e enviá-los para o desenvolvedor</string>
     <string name="hide_all_notifications">Ocultar todas as notificações</string>
@@ -448,7 +448,7 @@
     <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
     <string name="send_version_and_uuid_summary">Inclui a versão deste app e um ID único e aleatório quando baixar. Se aplica após reiniciar a aplicação.</string>
     <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas pelas configurações de dados móveis/Wi-Fi</string>
-    <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponível.</string>
+    <string name="antinosourcesince">Não é possível atualizar, o código fonte não está mais disponível</string>
     <string name="send_installed_apps">Compartilhar apps instalados</string>
     <string name="send_installed_apps_csv">Apps instalados pelo F-Droid como arquivo CSV</string>
     <string name="menu_open">Abrir</string>
@@ -513,7 +513,7 @@
     <string name="swap_wifi_vpn_conflict">Há conflitos com a VPN ativa!</string>
     <string name="has_disallow_install_unknown_sources">Fontes desconhecidas não podem ser adicionadas por este usuário, isto inclui novos repositórios</string>
     <string name="has_disallow_install_unknown_sources_globally">O administrador do seu dispositivo não permite a instalação de apps de fontes desconhecidas, isto inclui novos repositórios</string>
-    <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de características indesejadas.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alguns aplicativos foram ocultados com base nas suas configurações de funcionalidades indesejadas. Toque para alterar.</string>
     <string name="antiads">Anúncios</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
     <string name="antidisabledalgorithm">Assinado usando um algoritmo inseguro</string>
@@ -524,7 +524,7 @@
     <string name="antinonfreedep">Dependências não livres</string>
     <string name="antinosource">Código-fonte não mais disponível</string>
     <string name="antinonfreeassets">Conteúdos não livres</string>
-    <string name="antiothers">Outras características indesejadas</string>
+    <string name="antiothers">Outras funcionalidades indesejadas</string>
     <string name="antinsfw">Impróprio para o ambiente de trabalho (+18, sugestivo)</string>
     <string name="menu_release_channel_beta">Permitir atualizações beta</string>
     <string name="latest__empty_state__upgrading">Atualizando banco de dados…</string>
@@ -604,4 +604,7 @@
     <string name="repo_and_mirror_add_both_info">A URL que você está tentando adicionar (%s) é um espelho de um novo repositório. Tanto o repositório original e o espelho serão adicionados.</string>
     <string name="warning_no_compat_versions">O repositório selecionado não tem uma versão compatível do app. Para receber atualizações, prefira um repositório com versões compatíveis.</string>
     <string name="auto_update_time">Próxima atualização: %s</string>
+    <string name="auto_update_time_past">Próxima atualização quando as condições forem atendidas</string>
+    <string name="antitetherednet">Serviços de rede vinculada</string>
+    <string name="antitetherednetlist">Este aplicativo depende inteiramente de uma determinada instância de um serviço de rede</string>
 </resources>
