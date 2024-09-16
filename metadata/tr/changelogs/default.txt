@@ -1,0 +1,15 @@
+Elbette, işte metnin Türkçe çevirisi:
+
+* Depoların kullanıcılara nasıl temsil edildiğini yeniden düzenleyin, böylece bir yüklemenin f-droid.org dışından geldiği net bir şekilde anlaşılsın.
+
+* Kullanıcıların depo önceliğini global olarak ve uygulama bazında değiştirmelerine izin verin.
+
+* Özel Karşı Özellikler (Anti-Features) artık varsayılan olarak etkinleştirildi, devre dışı bırakılmadı.
+
+* Paylaşım yoluyla depo URL'lerini almayı destekleyin.
+
+* Tüm etkinlikler gündüz/gece temasına saygı gösterir.
+
+* targetSdkVersion 29 ile çalışmak üzere dış depolama kullanımını güncelleyin.
+
+* F-Droid Basic, targetSdkVersion 34 ile çalışacak şekilde güncellendi.
