@@ -1,0 +1,15 @@
+* Redissenya el dipòsit i la gestió de miralls, tant en interfície com codi
+
+* Mostra la previsualització dels repositoris nous
+
+* La instal·lació amb l'F-Droid i l'F-Droid Bàsic ara admet actualitzacions automàtiques de fons
+
+* A l'Android 14, marca les aplicacions amb la versió SDK de destinació no admesa com a incompatible #262692
+
+* Clic llarg per copiar enllaços, permisos i versions a la pantalla Detalls de l'aplicació (@ToTobias_Groza)
+
+* Les aplicacions no compatibles només es mostren quan es permet a Configuració #41 (@pigpig)
+
+* Nous paràmetres de passarel·les IPFS
+
+* Selecció de llengua per aplicació (@Licaon-Kter)

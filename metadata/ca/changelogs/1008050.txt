@@ -1,0 +1,9 @@
+* Nova configuració de permisos d'Android 10 per a aturar avisos de Fonts Desconegudes #1833
+* Gestionar els nous "permisos de desglossament": la ubicació fina implica una ubicació gruixuda
+* Corregir la preferència de la barra de cerca en versions recents d'Android (gràcies @dkanada)
+* Establir les regles de còpia de seguretat per a evitar desar al dipòsit d'intercanvi
+* El teclat s'obre quan es neteja la cerca
+* Sincronització de traduccions amb cadenes d'Android
+* Forçar els dominis de dipòsit comuns a HTTPS (GitLab, GitHub, Amazon)
+* Efecte d'ondulació estàndard als enllaços en els detalls de l'aplicació
+* Mostrar la icona per defecte de les aplicacions sense icona

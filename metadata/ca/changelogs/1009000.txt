@@ -1,0 +1,5 @@
+* S'ha eliminat el suport per a «Android App Link», ja que no pot funcionar amb F-Droid, i estava provocant fuites de DNS.
+* Els dipòsits d'arxiu són ara una prioritat més baixa que el Dipòsit (més alt a la pantalla Gestiona els dipòsits), solucionant problemes on buscava icones, captures de pantalla i altra informació a l'Arxiu en lloc del propi Dipòsit.
+* Aturar l'escapçat de la imatge de capçalera de la característica (gràcies @ByteHamster!)
+* Fa que la barra de navegació coincideixi amb el mode fosc (gràcies @MatthieuB!)
+* S'ha netejat el codi obsolet (gràcies @Isira-Seneviratne!)

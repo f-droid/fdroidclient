@@ -1,0 +1,8 @@
+* Moltes correccions d'errors
+* Mostra les icones del dipòsit a la llista de dipòsits
+* Mostra els motius de les "Característiques no adients" (on estigui disponible)
+* Actualitzacions desateses sense extensió privilegiada (F-Droid Basic només per ara)
+* Mostra la mida de l'aplicació a la pantalla de detalls de l'aplicació (només mode expert)
+* Noms d'aplicacions lleugerament més foscos a les llistes d'aplicacions per millorar la llegibilitat
+* Restaura l'estat obert/tancat de «Actualitza-ho tot» a la pestanya Actualitzacions (@tunedal)
+* Restaura la pestanya activa entre reinicis de l'aplicació

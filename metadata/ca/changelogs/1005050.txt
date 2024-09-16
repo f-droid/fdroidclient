@@ -1,13 +1,13 @@
 * Intercanvi a través de targetes SD compatibles
 
-* Esbrineu les esfixes i millores d'intercanvi properes
+* Esbrineu les esmenes d'errors i millores d'intercanvi properes
 
 * Millora addicional de "Detalls de l'aplicació"
 
-* Actualitzar l'idioma i les traduccions sobre Nearby and Swap
+* Actualitza la llengua i les traduccions sobre el proper i l'intercanvi
 
-* Millora de la lògica de selecció d'icones d'aplicacions
+* Lògica de selecció d'icones millorada d'aplicacions
 
-* Afegiu repos mitjançant additional_repos.xml integrats de ROM, OEM, proveïdor.
+* Afegeix dipòsits a través de additionalrerepos.xml integrat de ROM, OEM, proveïdor.
 
-* Mostra versionCode en entrades de llista de versions ampliades en mode Expert
+*  Mostra la versió del codi a les entrades de la llista de versions expandides en mode expert

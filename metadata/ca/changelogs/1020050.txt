@@ -1,0 +1,13 @@
+* Revisar com es representen els dipòsits als usuaris per a deixar-ho clar quan una instal·lació ve d'un altre lloc excepte f-droid.org.
+
+* Permet als usuaris canviar la prioritat del dipòsit globalment i per aplicació
+
+* Les "Característiques no adients" personalitzades ara estan habilitades de manera predeterminada, en lloc d'inhabilitades
+
+* Suport per rebre l'URL de dipòsit via Share (Compartir)
+
+* Totes les activitats respecten el tema de dia/nit
+
+* Actualitza els usos d'emmagatzematge externs per treballar amb targetSdkVersion 29
+
+* L'F-Droid Bàsic actualitzat per treballar amb targetSdkVersion 34

@@ -1,0 +1,13 @@
+* La localització de la descripció de l'aplicació respecta plenament les llistes a la configuració de l'idioma d'Android
+
+* L'última pestanya mostra les aplicacions basades en la configuració de l'idioma, ordenades primer les més noves (@TheTheLastProject @IzzySoft)
+
+* Els resultats de la cerca han millorat molt (@Tvax @gcbrown76)
+
+* Neteja més fiable de la memòria cau
+
+* Neteja de la memòria cau d'una planificació eficient (@Isira-Seneviratne)
+
+* Renova l'anàlisi de l'URL del dipòsit per afegir un repositori fiable (@projectgus)
+
+* Mètriques òptiques de l'F-Droid

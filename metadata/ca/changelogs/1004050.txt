@@ -1,0 +1,13 @@
+* Gran revisió de la llista "Versions" a "Detalls d'App", i moltes altres millores de la interfície, gràcies al nou col·laborador @wsdfhjxc
+
+* Corregeix la navegació amb el teclat/D-pad en molts llocs, gràcies al nou col·laborador @doeffinger
+
+* Mostrar el botó «Obre» quan mèdia està instal·lada i visible
+
+* Afegir el botó Compartir a "Apps instal·lades" per exportar la llista CSV
+
+* Afegir una llista clicable d'APKs a la pàgina d'índex HTML d'intercanvi
+
+* Tornar a provar les baixades d'índex de les rèpliques
+
+* Corregeix «Envia F-Droid via Bluetooth» a les versions recents d'Android

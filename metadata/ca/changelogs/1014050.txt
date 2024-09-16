@@ -1,0 +1,17 @@
+* Redissenya el menú Compartir per utilitzar opcions integrades com Nearby (A prop)
+
+* S'ha millorat el flux de treball proper i la navegació amb moltes correccions d'errors
+
+* Millores en el disseny de materials (@proletarius101)
+
+* Les aplicacions sense icones d'aplicacions PNG ara es mostren a la pestanya més recent (@ashutoshgngwr)
+
+* Millor gestió d'icones amb paràmetres limitats de Dades/WiFi
+
+* Implementa més escàners de codi de barres (@Lugerun)
+
+* Permet triar quines "Característiques no adients" mostrar
+
+* Bloqueja l'addició de repositoris quan qui administra el dispositiu no permet «Font desconeguda»
+
+* Elimina la configuració de «Permet peticions d'empenta»

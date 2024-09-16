@@ -1,0 +1,12 @@
+* Gestionar els permisos de READ_EXTERNAL_STORAGE (llegir emmagatzematge extern) implícits, que activen una
+  sol·licitud de permisos en instal·lacions amb extensió privilegiades (#171702)
+
+* Dades de l'índex sanetitzades per reduir les possibles amenaces del servidor
+
+* "Llegeix el temps d'espera" activa l'ús de la rèplica quan les lectures són lentes
+
+* Esmenar les icones que manquen per als que no utilitzen Wi-Fi (#151592)
+
+* Utilitzeu títols separats per a la actualitzacions i la pestanya Actualitzacions, per ajudar a la traducció
+
+* Esmenes de la IU des de @ConnyDuck (#161636, #1618)

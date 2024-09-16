@@ -1,0 +1,11 @@
+* Revisió major de la interfície d'intercanvi, preparant-se per a la reescriptura
+
+* Mostra «Desfés» després de deixar anar elements de la pestanya «Actualitza» (gràcies @Hocuri!)
+
+* Corregeix la gestió de l'ETag en connectar a les rèpliques NGINX #171737
+
+* Soluciona els problemes amb la visualització «Últimes» causats per una gestió incorrecta de les zones horàries #171757
+
+* Ignora totes les fallades importants en els serveis de fons
+
+* No utilitzar l'extensió Privileged (Privilegiada) si està desactivada a «Configuració»

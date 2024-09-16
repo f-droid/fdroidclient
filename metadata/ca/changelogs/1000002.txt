@@ -2,6 +2,6 @@
 
 * Disseny de captures de pantalla millorat
 
-* Netejar correctament els fitxers temporals i a la memòria cau
+* Netejar correctament els fitxers temporals i la memòria cau
 
 * Correccions del mode fosc

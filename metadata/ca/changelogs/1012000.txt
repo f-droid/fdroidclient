@@ -1,0 +1,12 @@
+* La localització de la descripció de l'aplicació ara respecta completament les llistes de llengües a Android
+  Configuració de la llengua
+
+* L'última pestanya llista els resultats en funció de la configuració de la llengua
+
+* L'última pestanya ara mostra primer els resultats ordenats per més nous (@TheTheLastProject @IzzySoft)
+
+* Suport de temes modernitzats i lligats als temes d'Android integrats (@theproletarius101)
+
+* Els resultats de la cerca han millorat molt (@Tvax @gcbrown76)
+
+* Permet a l'Android planificar eficientment les operacions de neteja de la memòria cau en segon pla (@Isira-Seneviratne)

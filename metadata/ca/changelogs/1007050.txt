@@ -1,0 +1,7 @@
+* Revisió important de la interfície d'intercanvi, per preparar-se per a reescriure els budells
+* Mostra «desfer» després de deixar anar elements de la pestanya Actualitzacions (gràcies @Hocuri!)
+* Esmenar problemes amb la visualització «Últimes» causada per una gestió incorrecta de les zones horàries #171757
+* Ignora totes les fallades no importants en els serveis de fons
+* S'ha revisat l'intercanvi proper utilitzant l'AP del punt d'accés del dispositiu
+* Afegir respostes de pànic noves: l'aplicació desinstal·la i reinicia a dipòsits per defecte
+* Les unitats flash USB OTG es poden utilitzar com a dipòsits i miralls propers
