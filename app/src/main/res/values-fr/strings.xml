@@ -619,4 +619,5 @@
     <string name="auto_update_time">Prochaine mise à jour la plus proche : %s</string>
     <string name="warning_no_compat_versions">Le dépôt sélectionné n\'a aucune version d\'application compatible. Pour recevoir des mises à jour, privilegiez un dépôt avec des versions compatibles.</string>
     <string name="auto_update_time_past">Prochaine mise à jour quand les conditions sont remplies</string>
+    <string name="antitetherednetlist">Le fonctionnement de cette application dépend entièrement d\'un service réseau particulier</string>
 </resources>
