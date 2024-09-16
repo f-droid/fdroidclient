@@ -617,4 +617,6 @@
     <string name="repo_mirror_add_info">URL, который вы пытаетесь добавить (%s) является зеркалом существующего репозитория.</string>
     <string name="repo_and_mirror_add_both_info">URL, который вы пытаетесь добавить (%s) является зеркалом нового репозитория. Будут добавлены оригинальный репозиторий и зеркало.</string>
     <string name="repo_scan_qr_code">Сканировать QR-код</string>
+    <string name="auto_update_time">Самое раннее следующее обновление: %s</string>
+    <string name="warning_no_compat_versions">Выбранный репозиторий не имеет поддерживаемых версий приложения. Чтобы получать обновления, отдавайте предпочтение репозиторию с совместимыми версиями.</string>
 </resources>
