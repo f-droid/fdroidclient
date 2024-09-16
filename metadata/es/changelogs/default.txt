@@ -1,13 +1,8 @@
-* Revisar cómo se representan los repositorios para dejar claro cuando una instalación es otro lugar que no sea f-droid.org.
-
-* Permitir a los usuarios cambiar la prioridad del repositorio globalmente y por aplicación
-
-* Anti-Características personalizadas están ahora habilitadas por defecto, en lugar de deshabilitadas
-
-* Soporte para recibir URLs de repositorio a través de
-
-* Todas las actividades respetan el tema día/noche
-
-* Actualizar los usos de almacenamiento externo para trabajar con targetSdkVersion 29
-
-* F-Droid Basic actualizado para trabajar con targetSdkVersion 34
+* Dividir el nombre y el resumen en listas de aplicaciones para una mejor legibilidad
+* SDK 24 son incompatibles Android 15
+* Manejar mejor los espejos en la vista previa "Añadir repositorio" (¡Gracias Thore!)
+* Habilitar actualizaciones de aplicaciones desatendidas en dispositivos Xiaomi que no ejecutan MIUI (¡Gracias Irate!)
+* Confíar en certificados root agregados por el usuario (¡Gracias B. !)
+* Mejorar la localización para los idiomas menos comunes (¡Gracias Ray!)
+* No actuar con etiquetas NFC. Se eliminó la función NFC (¡Gracias Thibault!)
+* Mostrar advertencia cuando las aplicaciones no se pueden actualizar desde el repositorio preferido

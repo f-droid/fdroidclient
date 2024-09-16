@@ -40,7 +40,7 @@
     <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
     <string name="repo_add_url">Dirección del repositorio</string>
     <string name="repo_add_fingerprint">Huella digital (opcional)</string>
-    <string name="malformed_repo_uri">Ignorando URI de repositorio malformado: %s</string>
+    <string name="malformed_repo_uri">Se ignoró una URL de repositorio con formato incorrecto: %s</string>
     <string name="menu_manage">Repositorios</string>
     <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Repositorio nuevo</string>
@@ -58,7 +58,7 @@
     <string name="antiadslist">Esta aplicación tiene publicidad</string>
     <string name="antitracklist">Esta aplicación rastrea e informa de su actividad</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
-    <string name="antinonfreenetlist">Esta aplicación promueve o depende totalmente de un servicio de red no modificable o no gratuito</string>
+    <string name="antinonfreenetlist">Esta aplicación promueve o depende totalmente de un servicio de red no gratuito</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
     <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
     <string name="display">Presentación</string>
@@ -436,7 +436,7 @@
     <string name="repo_delete_to_overwrite">Primero borra %1$s para agregar este ya que hay un conflicto de claves.</string>
     <string name="repo_exists_add_mirror">Esto es una copia de %1$s, ¿quieres añadirlo como réplica?</string>
     <string name="show_anti_feature_apps">Incluir aplicaciones controvertidas</string>
-    <string name="show_anti_feature_apps_on">Listar aplicaciones que requieren características controvertidas</string>
+    <string name="show_anti_feature_apps_on">Mostrar aplicaciones que requieren características controvertidas conocidas</string>
     <string name="force_touch_apps">Incluir aplicaciones de pantalla táctil</string>
     <string name="force_touch_apps_on">Mostrar aplicaciones que requieren pantalla táctil sin importar si lo admite el hárdwer</string>
     <string name="repo_official_mirrors">Réplicas oficiales</string>
@@ -470,7 +470,7 @@
     <string name="send_installed_apps">Compartir aplicaciones instaladas</string>
     <string name="send_installed_apps_csv">Aplicaciones instaladas por F-Droid como archivo CSV</string>
     <string name="menu_open">Abrir</string>
-    <string name="antinosourcesince">El código fuente ya no está disponible, no se puede actualizar.</string>
+    <string name="antinosourcesince">El código fuente ya no está disponible, no hay actualizaciones posibles</string>
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="scan_removable_storage_toast">Escaneando %s…</string>
     <string name="scan_removable_storage_summary">Buscar repositorios de paquetes en dispositivos de almacenamiento extraíbles, como tarjetas SD y memorias USB</string>
@@ -528,7 +528,7 @@
     <string name="swap_wifi_vpn_conflict">¡Entra en conflicto con la VPN activa!</string>
     <string name="has_disallow_install_unknown_sources">Este usuario no puede añadir fuentes desconocidas, lo que incluye nuevos repositorios</string>
     <string name="has_disallow_install_unknown_sources_globally">El administrador de su dispositivo no permite la instalación de aplicaciones de fuentes desconocidas, lo que incluye nuevos repositorios</string>
-    <string name="app_list_results_hidden_antifeature_settings">Algunos resultados han sido ocultados en base a sus opciones de características controvertidas.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Algunas aplicaciones se han ocultado debido a su configuración de funciones no deseadas. Toca para cambiar.</string>
     <string name="antiads">Anuncios</string>
     <string name="antitrack">Rastreo</string>
     <string name="antinonfreenet">Servicios de red no libres</string>
@@ -558,7 +558,7 @@
     <string name="repo_exists">Este repositorio ya estaba añadido.</string>
     <string name="repo_invalid">Repositorio inválido.
 \n
-\nContacta al administrador e infórmales de la incidencia.</string>
+\nContacta con el administrador e informarle de la incidencia.</string>
     <string name="swap_banner_message">Para intercambiar aplicaciones, conéctate a la misma red Wi-Fi que tu amigo.</string>
     <string name="repo_add_new_title">Agregar repositorio</string>
     <string name="repo_add_new_mirror">Agregar como nuevo espejo</string>
@@ -619,4 +619,7 @@
     <string name="repo_view_repo">Ver el repositorio</string>
     <string name="warning_no_compat_versions">El repositorio seleccionado no tiene versiones de aplicaciones compatibles. Para recibir actualizaciones, prefiera un repositorio con versiones compatibles.</string>
     <string name="auto_update_time">Actualización próxima más temprana: %s</string>
+    <string name="auto_update_time_past">Próxima actualización cuando se cumplan las condiciones</string>
+    <string name="antitetherednet">Servicios de red conectados</string>
+    <string name="antitetherednetlist">Esta aplicación depende enteramente de un determinado servicio de la red</string>
 </resources>
