@@ -537,7 +537,7 @@
     <string name="force_old_installer_summary">禁用会话安装器，包括对自动后台更新的支持。</string>
     <string name="copied_to_clipboard">已复制到剪贴板</string>
     <string name="copied_permission_to_clipboard">已复制权限名到剪贴板</string>
-    <string name="copied_url_to_clipboard">已复制链接到剪贴板</string>
+    <string name="copied_url_to_clipboard">已复制 URL 到剪贴板</string>
     <string name="targetsdk_or_later">目标 SDK 版本 %s</string>
     <string name="repo_num_apps_button">显示应用</string>
     <string name="ipfsgw_caption_official_gateways">官方 IPFS 网关</string>
@@ -574,12 +574,13 @@
     <string name="repo_disable_warning">停用此存储库会从所有应用去除其“首选”状态。</string>
     <string name="app_details_repository_preferred">（首选）</string>
     <string name="repo_preview_included_apps">包含的应用：</string>
-    <string name="repo_and_mirror_add_both_info">你正尝试添加的 URL (%s）是新存储库的镜像。原始存储库和镜像都将被添加。</string>
+    <string name="repo_and_mirror_add_both_info">你正尝试添加的 URL (%s) 是一个新存储库的镜像。原始存储库和此镜像都将被添加。</string>
     <string name="repo_add_repo_and_mirror">添加存储库和镜像</string>
     <string name="repo_view_repo">查看存储库</string>
     <string name="repo_scan_qr_code">扫描二维码</string>
-    <string name="repo_mirror_exists">此镜像已存在（%s）。</string>
-    <string name="repo_mirror_add_info">你正尝试添加的 URL （%s）是现有存储库的镜像。</string>
+    <string name="repo_mirror_exists">此镜像已存在 (%s)。</string>
+    <string name="repo_mirror_add_info">你正尝试添加的 URL (%s) 是一个现有存储库的镜像。</string>
     <string name="warning_no_compat_versions">所选的存储库没有兼容的应用版本。要接收更新，请首选有兼容版本的存储库。</string>
     <string name="auto_update_time">下次更新最早时间：%s</string>
+    <string name="auto_update_time_past">条件满足时进行下次更新</string>
 </resources>
