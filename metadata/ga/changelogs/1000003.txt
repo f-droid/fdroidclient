@@ -1,0 +1,3 @@
+* Feabhsuithe móra feidhmíochta Chomhéadain, go háirithe agus an chartlann cumasaithe
+
+* Bugs crasher Seasta

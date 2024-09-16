@@ -1,0 +1,7 @@
+* Nasc feabhsaithe URLanna i gcur síos ar aipeanna
+
+* Láimhseáil fheabhsaithe ar Chártaí SDC agus USG-OTG in aice láimhe
+
+* Cód nuachóirithe agus athraigh PNGanna go veicteoirí (buíochas le @isra-seneviratne!)
+
+* URLanna repo níos faide a aithint chun tacú le scátháin GitCDN/RawGit/etc

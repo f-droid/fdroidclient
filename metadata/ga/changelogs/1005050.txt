@@ -1,0 +1,13 @@
+* Tacaítear le malartú trí chártaí SD
+
+* Ceartúcháin agus feabhsuithe ar fhabhtanna Babhtáil in aice láimhe
+
+* Feabhsú breise ar "Sonraí Feidhme"
+
+* Nuashonraigh teanga agus aistriúcháin faoi In aice láimhe agus Babhtáil
+
+* Loighic feabhsaithe maidir le roghnú deilbhíní app
+
+* Cuir repos leis via additional_repos.xml ionsuite ó ROM, OEM, díoltóir.
+
+* Taispeáin versionCode i leaganacha leathnaithe iontrálacha liosta i mód Saineolaithe

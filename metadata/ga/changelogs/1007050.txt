@@ -1,0 +1,7 @@
+* ollchóiriú ar Chomhéadain Babhtála, chun ullmhú le haghaidh athscríobh inní
+* taispeáin "Cealaigh" tar éis míreanna a swiping amach ón gcluaisín Nuashonruithe (buíochas le @Hocuri!)
+* fadhbanna a réiteach leis an taispeáint "Is déanaí" de bharr mí-láimhseáil criosanna ama #1757
+* neamhaird a dhéanamh ar gach timpiste neamhthábhachtach i seirbhísí cúlra
+* athchóiríodh babhtáil in aice láimhe ag baint úsáide as hotspot an ghléis
+* cuir freagraí scaoll nua leis: díshuiteálann an aip agus athshocraigh repos go réamhshocrú
+* Is féidir tiomántáin USB OTG a úsáid mar stórtha agus mar scátháin in aice láimhe

@@ -1,0 +1,17 @@
+* Baile Átha Troim nó scrios taisce go huathoibríoch nuair a bhíonn an spás stórála íseal
+
+* Feidhmíocht fheabhsaithe ar fheistí cuimhne íseal
+
+* Cuir meas ar gach íoslódálacha "Ar Wi-Fi amháin" rogha
+
+* Úsáid cuimhne a laghdú nuair a bhíonn gléas ag rith íseal
+
+* Cuir scátháin saincheaptha le haon repo trí naisc a chliceáil, cóid QR a scanadh, etc.
+
+* Roghnú scátháin uathoibríoch feabhsaithe
+
+* Go leor Babhtáil / Ceartúcháin agus feabhsúcháin in aice láimhe
+
+* Deisigh cúis amháin le fógraí nuashonraithe a tharlú arís (#1271)
+
+* Cuir ar F-Droid URLanna oícheanta F-Droid ó GitLab a aithint

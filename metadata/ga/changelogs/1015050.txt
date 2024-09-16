@@ -1,0 +1,5 @@
+* Athchóiriú iomlán ar an loighic íoslódála le haghaidh feidhmíochta feabhsaithe agus tacaíocht scátháin.
+
+* Déantar screenshots agus grafaicí a íoslódáil ó scátháin anois.
+
+* Laghdú ar sceitheadh príobháideachta le Seisiúin TLS

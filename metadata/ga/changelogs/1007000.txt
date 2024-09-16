@@ -1,0 +1,11 @@
+* Ollchóiriú mór ar Chomhéadain babhtála, ag ullmhú don athscríobh
+
+* Taispeáin "Cealaigh" tar éis duit míreanna a swiping amach ón gcluaisín "Nuashonruithe" (buíochas le @Hocuri!)
+
+* Deisigh láimhseáil ETag agus tú ag nascadh le scátháin NGINX #1737
+
+* Deisigh fadhbanna le taispeáint “is Déanaí” de bharr mí-láimhseáil criosanna ama #1757
+
+* Déan neamhaird de gach timpiste neamhthábhachtach i seirbhísí cúlra
+
+* Ná húsáid Síneadh Pribhléideach má tá sé múchta i "Socruithe"

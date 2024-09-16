@@ -1,0 +1,13 @@
+* Urramaíonn logánú cur síos app go hiomlán na liostaí i Socruithe Teanga Android
+
+* Taispeánann an Chluaisín is déanaí aipeanna bunaithe ar na Socruithe Teanga a ordaíodh ar dtús (@TheLastProject @IzzySoft)
+
+* Feabhsaíodh torthaí cuardaigh go mór (@Tvax @gcbrown76)
+
+* Glanadh taisce níos iontaofa
+
+* Glanta taisce a sceidealú go héifeachtach (@Isira-Seneviratne)
+
+* Athchóiriú a dhéanamh ar pharsáil URL repo chun athcheannaigh iontaofa a chur leis (@projectgus)
+
+* Opt-i Méadracht F-Droid

@@ -1,0 +1,7 @@
+* Seasta ag baint úsáide as repos agus scátháin ón Stóráil Sheachtrach ar eisiúintí Android le déanaí
+* Bainistíocht feabhsaithe wifi in aice láimhe
+* Cuimhníonn an barra nascleanúna anois ar a shuíomh fiú nuair a atosóidh F-Droid
+* Teanga nua: Svahaílis
+* Deisigh íomhánna a íoslódáil do stórtha fós ag baint úsáide as index-v1
+* Deisigh tuairteanna a bhaineann le babhtáil, bainistiú repos agus níos mó
+* Baineadh an cnaipe Íosghrádú, ní cheadaíonn Android é sin a thuilleadh

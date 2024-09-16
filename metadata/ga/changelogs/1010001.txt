@@ -1,0 +1,7 @@
+* bain úsáid as bealaí fógra le haghaidh rialú mín (@Isira-Seneviratne)
+* Roinn aipeanna le Comhroinnt Díreach ó Shonraí an Aipe (@fynngodau)
+* Taispeánfaidh an Cluaisín is déanaí torthaí níos fearr ar ghléasanna nach Béarla iad
+* nuashonruithe ar na leabharlanna lárnacha (Jackson, androidx, gradle, srl)
+* Tacaíocht lipéadú bán snas
+
+Go raibh maith agat a ranníocóirí nua! @fynngodau @projectgus @glennmen @Isira-Seneviratne

@@ -1,0 +1,3 @@
+* Ceartaigh fabht a chuireann cosc ar aistriúcháin a thaispeáint ar Android >= 7.0
+
+* Deisigh timpiste uasghrádú DB ó 1.0-alpha3 → 1.0-alpha4 #1181
