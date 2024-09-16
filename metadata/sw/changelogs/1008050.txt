@@ -1,0 +1,9 @@
+* usanidi wa ruhusa mpya wa Andorid 10 ili kusimamisha vikumbusho ya vyanzo visivyojulikana #1833
+* Shughulikia "ruhusa za gawa" mpya: eneo laini inamaanisha eneo kali
+* Rekebisha upendeleo wa upau wa tafuta kwenyematoleo ya Android ya karibuni (asante @dkanada)
+* Seti sheria za chelezo ili kuepuka kuhifadhi ghala hio ya badili
+* Kibodi inafunguka wakati tafuta imefutwa
+* usawazishi wa tafsiri na kamba za Android
+* lazimisha vikoa vya kawaida ya ghala kwa HTTPS (GitLab, GitHub, Amazon)
+* athari ya ripple ya kawaida kwa viungo kwenye maelezo ya apu
+* onyesha ikoni ya chaguo-msingi kwa apu ambayo haina ikoni

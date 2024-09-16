@@ -1,0 +1,19 @@
+* Zaidi wa vitufe vya kuaminika na masasisho ya hali
+
+* Marekebisho makubwa ya mipangilio ikiwemo vidhibiti vya utumizi wa data mpya
+
+* Operesheni wa usuli unaozingatia betri kwa Android 5.0 na mpya
+
+* Shiriki kipengee cha menyu kwa repos
+
+* Zima ripoti za ajali katika mipangilio
+
+* Sakinisha uonaji wa historia wakati uandishi wa kumbukumbu imewashwa
+
+* Orodha ya vipengee visivyohitajika inayowezwa kubonyezwa, imeongeza NoSourceSince
+
+* Android 4.0 kwa sasa ni inayoungwa mkono kwa chini
+
+* Maboresho makuu kwa matoleo maalum ya lebo nyeupe ya F-Droid
+
+* Mpangilio wa mtaalam ili kutuma toleo la kuondoa hitilafu+UUID unapopakuliwa

@@ -1,0 +1,7 @@
+* Zuia ETag ya HTTP kwa kutumika kama cookie ya kufuatilia
+
+* Mpangilio wa picha za skrini ulioboreshwa
+
+*Safisha vizuri temp na mafaili zilizoakibishwa
+
+* Marekebisho ya hali ya giza

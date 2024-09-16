@@ -55,7 +55,7 @@
     <string name="menu_search">Tafuta</string>
     <string name="menu_add_repo">Ghala Jipya</string>
     <string name="menu_launch">Fungua</string>
-    <string name="menu_uninstall">Ondoa</string>
+    <string name="menu_uninstall">Sanidua</string>
     <string name="menu_open">Fungua</string>
     <string name="menu_upgrade">Sasisha</string>
     <string name="menu_license">Leseni: %s</string>
@@ -99,7 +99,7 @@
     <string name="app_details">Maelezo ya Apu</string>
     <string name="menu_share">Shiriki</string>
     <string name="menu_install">Simika</string>
-    <string name="main_menu__latest_apps"/>
+    <string name="main_menu__latest_apps">Karibuni</string>
     <string name="next">Inayofuata</string>
     <string name="skip">Ruka</string>
     <string name="category_Phone_SMS">Simu na Ujumbe Mfupi</string>
@@ -199,7 +199,7 @@
     </plurals>
     <string name="updates">Masasisho</string>
     <string name="category_Graphics">Michoro</string>
-    <string name="category_Multimedia">Midia-anuai</string>
+    <string name="category_Multimedia">Media-anuai</string>
     <string name="local_repo_name_summary">Jina linalotangazwa la ghala la kifaa chako: %s</string>
     <string name="main_menu__swap_nearby">Karibu</string>
     <string name="pref_language_default">Chaguomsingi wa Mfumo</string>
@@ -228,9 +228,9 @@
     <string name="expert">Hali ya ustadi</string>
     <string name="force_touch_apps">Jumuisha apu za mguso</string>
     <string name="local_repo">Ghala la kifaa hiki</string>
-    <string name="app_list_results_hidden_antifeature_settings">Matokeo mengine yalifichwa kulingana na mipangilio yako ya kuzuia vipengele.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Baadhi ya apu zimefichwa kulingana na mipangilio ya Vipengele visivyopendelewa. Gusa ili kubadilisha.</string>
     <string name="prompt_to_send_crash_reports">Uliza kutuma ripoti za kuacha kufanya kazi</string>
-    <string name="prompt_to_send_crash_reports_summary">Kusanya data kuhusu kuacha kufanya kazi na uombe zitumwe kwa msanidi programu</string>
+    <string name="prompt_to_send_crash_reports_summary">Kusanya data kuhusu kuacha kufanya kazi na uombe kuzituma kwa msanidi programu</string>
     <string name="local_repo_https_on">Tumia mwunganisho wa HTTPS:// uliosimbwa kwa njia fiche kwa ajili ya kihifadhi cha kifaa</string>
     <string name="about_source">Msimbo chanzo</string>
     <string name="links">Viungo</string>
@@ -250,13 +250,13 @@
     <string name="antinonfreead">Nyongeza Zisizo Huru</string>
     <string name="antinonfreenet">Huduma za Mtandao Zisizo Huru</string>
     <string name="antinosource">Msimbo Chanzo Haupatikani Tena</string>
-    <string name="antiothers">Vipengele Vingine Visivyopendelewa</string>
+    <string name="antiothers">Vipengele vingine vya Kukwaza</string>
     <string name="antinonfreeadlist">Apu hii inakuza vifaa vya nyongeza visivyo vya bure</string>
-    <string name="antinonfreenetlist">Apu hii inakuza au inategemea kabisa huduma ya mtandao isiyoweza kubadilika au isiyo ya bure</string>
-    <string name="antinosourcesince">Msimbo chanzo haupatikani tena, hakuna masasisho yanayowezekana.</string>
+    <string name="antinonfreenetlist">Apu hii inakuza na kutegemea kikamilifu kwa huduma ya mtandao isiyo ya bure</string>
+    <string name="antinosourcesince">Msimbo huo wa chanzo haupatikani tena, hakuna masasisho yanawezekana</string>
     <string name="expert_on">Onyesha maelezo ya ziada na uwezeshe mipangilio ya ziada</string>
-    <string name="show_anti_feature_apps">Jumuisha apu zenye vipengele visivyopendelewa</string>
-    <string name="show_anti_feature_apps_on">Onyesha apu zinazohitaji vipengele visivyopendelewa</string>
+    <string name="show_anti_feature_apps">Jumuisha vipengele visivyopendelewa</string>
+    <string name="show_anti_feature_apps_on">Onyesha apu ambazo zina vipengele vya kukwaza vinavyojulikana</string>
     <string name="linking_apks">Inaunganisha APK kwenye ghala…</string>
     <string name="panic_app_setting_summary">Hakuna apu iliyowekwa</string>
     <string name="local_repo_running">F-Droid liko tayari kufanya mabadiliko</string>
@@ -301,7 +301,7 @@
     <string name="repo_confirm_delete_body">Kuondoa ghala inamaanisha kuwa apu kutoka kwake hazitapatikana tena.
 \n
 \nKumbuka: Apu zote zilizosimikwa hapo awali zitabaki kwenye kifaa chako.</string>
-    <string name="antidisabledalgorithm">Imesahihishwa Kutumia Kanuni Isiyo Salama</string>
+    <string name="antidisabledalgorithm">Imesainiwa Kutumia Kanuni Isiyo Salama</string>
     <string name="empty_installed_app_list">Hakuna apu zilizosimikwa.
 \n
 \nKuna apu kwenye kifaa chako lakini hazipatikana F-Droid. Hii inawezakuwa kwa sababu unahitaji kusasisha maghala yako au maghala hayo kwa kweli hayana apu zako.</string>
@@ -507,8 +507,8 @@
     <string name="proxy_host_summary">Jina la seva yako proksi (k.v. 127.0.0.1)</string>
     <string name="proxy_port">Kituo Tarishi ya Proksi</string>
     <string name="toast_metrics_in_install_history">Ripoti ya vipimo ya %s inaonekana kwenye kitazamaji cha Historia ya Msimiko</string>
-    <string name="system_installer">Kiendelezi Chenye Ruhusa</string>
-    <string name="system_installer_on">Tumia Kiendelezi Chenye Ruhusa kusimika, kusasisha na kuondoa vifurushi</string>
+    <string name="system_installer">Kiendelezi Kilichopendelewa</string>
+    <string name="system_installer_on">Tumia Kiendelezi kilichopendelewa kusanikisha , kusasisha na kuondoa vifurushi</string>
     <string name="scan_removable_storage_summary">Tafuta maghala ya vifurushi kwenye hifadhi zinazoweza kutolewa kama vile Kadi za Kumbukumbu na diski mweko ya USB</string>
     <string name="antiupstreamnonfreelist">Msimbo chanzo wa asili si huru kabisa</string>
     <string name="force_touch_apps_on">Onyesha api zinazohitaji skrini ya mguso bila kujali uambatanaji wa maunzi</string>
@@ -597,4 +597,7 @@
 \n
 \nIkiwa apu iko katika zaidi ya ghala moja, ghala iliyo juu kwenye orodha inapendekezwa kiotomatiki. Unaweza kupanga upya ghala kwa kushinikiza kwa muda mrefu na kuziburuta.</string>
     <string name="app_list_no_suggested_version">Hakuna toleo linalopendelewa kwa usimikishaji.</string>
+    <string name="antitetherednet">Huduma za Mtandao wa tethered</string>
+    <string name="antitetherednetlist">Apu hii inategemea kikamilifu kwa mfano fulani wa huduma ya mtandao</string>
+    <string name="auto_update_time_past">Sasisho inayofuata wakati masharti yametimizwa</string>
 </resources>

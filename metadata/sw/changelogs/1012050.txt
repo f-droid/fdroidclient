@@ -1,0 +1,13 @@
+* Ujanibishaji wa maelezo ya apu inaheshimu kamili orodha katika Mipangilio ya lugha ya Android
+
+* Kichupo cha hivi karibuni inaonyesha apu kulingana na mipangilio ya lugha, imepangwa kipya kwanza (@TheLastProject @IzzySoft)
+
+* Matokeo ya kutafuta imeboreshwa mno (@Tvax @gcbrown76)
+
+* Kusafisha kache ya kuaminika zaidi
+
+* Ratibisha kwa ufanisi usafisho wa kache (@Isira-Seneviratne)
+
+* Rekebisha kwa ukubwa uchanganuzi wa URL ya ghala kwa uongezaji wa repo unaotegemewa
+
+* Jijumuishe kwa vipimo vya metrics vya F-Droid

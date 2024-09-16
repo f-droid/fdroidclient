@@ -1,0 +1,13 @@
+* Kichupo cha hivi karibuni kwa sasa inaangazia apu ambazo zinatoa maelezo, tafsiri, picha za skrini
+
+* Pakuo za kiotomatiki kutoka kwa vioo, ili kuzidisha mbio za pakuo na kupunguza mzigo kwenye f-droid.org
+
+* Lemaza vioo kutumia maswichi mapya katika Maelezo ya Ghala (#1696)
+
+* Kuhifadhi kwa pakuo la ufanisi zaidi (kwa kila ghala; kwenye seva tofauti za wavuti #1708)
+
+* Rekebisha masakinisho yanayohitaji vyanzo visivyojulikana na ugani wa upendeleo (#1702)
+
+* Rekebisha ikoni zinazokosa kwa zile hazitumii Wi-Fi (#1592)
+
+* Tafsiri zilizoboreshwa kwa kichupo cha masasisho dhidi ya upendeleo

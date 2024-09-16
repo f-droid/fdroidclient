@@ -1,0 +1,8 @@
+* Gawanya jina na muhtasari kwenye orodha ya apu kwa usomaji mzuri
+* Apu zinazolenga SDK 24 hazipatani na vifaa vya Android 15
+* Shughulikia vioo katika "Ongeza repo" onyesho la kukagua vyema (Asante Thore!)
+* Wezesha masasisho ya apu ambazo hayajashughulikiwa kwenye vifaa vya Xiaomi ambazo hazikimbizi MIUI (Asante Irate!)
+* Amini vyeti vya mzizi vilivyoongezwa na mtumiaji (Asante B.!)
+* Boresha ujanibishaji kwa lugha zisizojulikana sana(Asante Ray!)
+* Usijibu kwa tagi za NFC kwa sababu kipengele cha NFC ilitolewa (Asante Thibault!)
+* Onyesha onyo wakati apu haziwezi kusakinishwa kutoka kwa repo inayopendelewa

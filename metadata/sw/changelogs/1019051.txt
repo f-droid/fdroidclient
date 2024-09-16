@@ -1,0 +1,15 @@
+* Marekebisho makubwa ya kushughulikia repo na kioo, zote UX na msimbo
+
+* Onyesha onyesho la kukagua kwa repos mpya
+
+* Kusakinisha na F-Droid na F-Droid Basic kwa sasa inakubali masasisho ya kiotomatiki ya usuli
+
+* Kwenye Android 14, sahihisha apu na toleo la SDK iliyolengwa ambayo haiungwi mkono kama zisizopatana #2692
+
+* Bonyeza kwa muda mrefu ili kunakili viungo, Ruhusa na matoleo kwenye skrini ya maelezo ya Apu (@Tobias_Groza)
+
+* Apu zisizopatana inaonyeshwa pekee wakati imekubaliwa kwenye Mipangilio #41 (@pigpig)
+
+* Mipangilio mpya ya IPFS Gateways
+
+* Uchaguzi wa lugha kwa kila apu (@Licaon-Kter)

@@ -1,0 +1,13 @@
+* Kubadilishana kutumia kadi za SD inaungwa mkono
+
+* Marekebisho ya hitilafu na maboresho ya Swap ya karibu
+
+* Maboresho ya mbali zaidi ya "Maelezo ya apu"
+
+* Sasisha lugha na tafsiri kuhusu Karibu na Badilisha
+
+* Mantiki ya uteuzi ya ikoni ya apu iliyoboreshwa
+
+* Ongeza repos kutumia additional_repos.xml iliyojengwa-ndani kutoka ROM, OEM, vendor.
+
+* Onyesha toleoMsimbo katika ingizo za orodha ya matoleo katika hali ya mtaalam

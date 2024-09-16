@@ -1,0 +1,7 @@
+* Marekebisho makubwa zaidi ya UI ya badilisha, ili kutayarisha kuandika upya misingi
+* onyesha "Tengua" baada ya kufuta vipengee kutoka kwenye kichupo cha "Masasisho" (thanks @Hocuri!)
+* Rekebisha masuala yenye onyesho la "Hivi karibuni" iliyosababishwa na kutoshughulikia ipasavyo kanda za saa #1757
+* Puuza ajali zote zisizo muhimu kwenye huduma za usuli
+* Ilifanya marekebisho makubwa ya badilisha ya karibu kutumia mtandao-hewa ya AP ya kifaa hicho
+* Ongeza majibu mapaya ya hofu: saniduo za apu na uweke upya ghala kuwa chaguo-msingi
+* Viendeshi vya flash vya USB OTG inaweza kutumika kama ghala na vioo vya karibu

@@ -1,0 +1,4 @@
+* Shughulikia usanidi wa ruhusa za Android 10 ili kukomesha maongozi za vyanzo vizivyojulikana
+* Kibodi inafunguka wakati tafuta imefutwa
+* kusawazisha tafsiri na mifuatano ya Android
+* lazimisha vikoa kwa ghala vya kawaida kwa HTTPS (GitLab, GitHub, Amazon)

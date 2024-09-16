@@ -1,0 +1,21 @@
+v1.3.1
+* Urekebisho mkubwa wa mabomba ya msingi ya Karibu/Swap
+
+* Msaada wa TLSv1.3, wakati kifaa hicho inatolea msaada
+
+v1.3
+* Vitufe vingi vinavyoaminika na masasisho ya hali
+
+* Marekebisho makubwa ya mipangilio ikiwemo vidhibiti vipya vya matumizi ya data
+
+* Operesheni wa usuli unaozingatia betri kwa Android 5.0 na mpya
+
+* Shiriki kipengee cha menyu kwa repos
+
+* Zima ripoti za ajali katika mipangilio
+
+* Sakinisha uonaji wa historia wakati uandishi wa kumbukumbu imewashwa
+
+* Orodha ya vipengee visivyohitajika inayowezwa kubonyezwa, imeongeza NoSourceSince
+
+* Android 4.0 kwa sasa ni inayoungwa mkono kwa chini

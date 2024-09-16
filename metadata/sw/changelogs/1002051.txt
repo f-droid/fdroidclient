@@ -1,0 +1,17 @@
+* Kata na ufute kiotomatiki hifadhi wakati nafasi ya kuhifadhi ni ndogo
+
+* Utendaji ulioboreshwa kwenye vifaa vya kumbukumbu ya chini
+
+* Fanya pakuo zote kuheshimu upendeleo wa "Kwenye Wi-Fi pekee"
+
+* Punguza utumizi wa kumbukumbu wakati kifaa inakimbia chini
+
+* Ongeza vioo maalum kwa ghala yoyote kwa kubonyeza viungo, kuskani misimbo ya QR, na kadhalika
+
+* Uchaguzi wa kioo wa kiotomatiki ulioboreshwa
+
+* Wingi wa marekebisho-hitilafu wa Badilisha/Karibu na maboresho
+
+* Rekebisha sababu moja ya arifa za masasisho yanayorudiwa tena
+
+* Fanya F-Droid kutambua URL za F-Droid za usiku kutoka GitLab

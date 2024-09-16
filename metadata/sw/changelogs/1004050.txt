@@ -1,0 +1,13 @@
+* Marekebisho makubwa kubwa ya orodha hio ya "Matoleo" katika "Maelezo ya apu", na maboresho mengine mengi ya UI, asante kwa mchangiaji mpya @wsdfhjxc
+
+* Rekebisha urambizaji wa kibodi/D-padi katika sehemu nyingi, asante kwa mchangiaji @doesffinger
+
+* Onyesha kitufe cha "Fungua" wakati media inaweza kusakinishwa na inaweza kuonekana
+
+* Ongeza kitufe cha shiriki kwa "Apu zilizosakinishwa" ili kutuma nje orodha ya CSV
+
+* Ongeza orodha ya APK zinazoweza kubonyezwa kwa ukurasa wa faharasa wa HTML wa kubadilishana
+
+* Jaribu tena pakuo za faharasa kutoka kwa vioo
+
+* Rekebisha "Tuma kupitia Bluetooth" kwa matoleo ya Android ya hivi karibuni

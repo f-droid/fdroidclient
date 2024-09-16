@@ -1,0 +1,11 @@
+F-Droid ni katalogi inayoweza kusakinishwa ya apu za programu za libre za Android. Apu hio ya mteja ya F-Droid inafanya kuwa rahisi kuvinjari, kusakinisha, na kufuatilia masasisho kwenye kifaa chako
+
+Inaunganisha kwa ghala yoyote inayokubaliana ya F-Droid. Ghala ya chaguo-msingi imehifadhiwa kwenye f-droid.org, ambayo ina programu ya bonafide bure pekee
+Android pekee ni wazi kwa maana hio unaweza kusakinisha APKs kutoka mahali popote unatamani, lakini kuna sababu nyingi ya kutumia F-Droid kama meneja yako wa apu za programu za bure
+* Pata kujulishwa wakati masasisho yapo
+* Kwa hiari pakua na usakinishe masasisho kiotomatiki
+* Fuatilia matoleo ya kitambo na ya beta
+* Chuja nje apu ambayo hayaambatani na kifaa hicho
+* Pata apu kupitia kategoria na maelezo ambayo yanaweza kutafutwa
+* Fikia URLs zinazohusishwa kwa michango, msimbo wa chanzo na kadhalika.
+* Kaa salama kwa kuangalia saini za index ya repo na Hashi za APK

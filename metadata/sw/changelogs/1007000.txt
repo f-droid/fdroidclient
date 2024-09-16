@@ -1,0 +1,11 @@
+* Marekebisho makubwa ya UI wa kubadilisha, inajitayarisha kuandika upya
+
+* Onyesha "Tengua" baada ya kufuta vipengee kutoka kwenye kichupo cha "Masasisho" (thanks @Hocuri!)
+
+* Rekebisha ushughulikiaji wa ETag wakati unaunganisha kwa vioo vya NGINX #1737
+
+* Rekebisha masuala yenye onyesho la "Hivi karibuni" iliyosababishwa na kutoshughulikia ipasavyo kanda za saa #1757
+
+* Puuza ajali zote zisizo muhimu kwenye huduma za usuli
+
+* Usitumie kiendelezi chenye upendeleo ikiwa imezimwa kwenye "Mipangilio"
