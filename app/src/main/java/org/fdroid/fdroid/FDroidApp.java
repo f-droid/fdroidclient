@@ -234,7 +234,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Languages.setLanguage(this);
         App.systemLocaleList = null;
