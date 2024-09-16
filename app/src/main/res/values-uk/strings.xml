@@ -460,7 +460,7 @@
     <string name="antiknownvulnlist">Цей застосунок містить знану вразливість безпеки</string>
     <string name="antinosourcesince">Початковий код більше не доступний, оновлення неможливе</string>
     <string name="show_anti_feature_apps">Включити застосунки з небажаними функціями</string>
-    <string name="show_anti_feature_apps_on">Показати застосунки, які потребують небажані можливості для роботи</string>
+    <string name="show_anti_feature_apps_on">Показувати програми, які мають відомі небажані функції</string>
     <string name="force_touch_apps">Включити застосунки, яким потрібен сенсорний екран</string>
     <string name="force_touch_apps_on">Показати застосунки, яким потрібен сенсорний екран, незалежно від апаратної підтримки</string>
     <string name="panic_hide_warning_message">У разі небезпеки, це прибере %1$s з панелі запуску. Лише введення \"%2$d\", у підробному застосунку %3$s, зможе його відновити.</string>
@@ -532,7 +532,7 @@
     <string name="antitrack">Відстеження</string>
     <string name="antinonfreead">Невільні додатки</string>
     <string name="antinosource">Початковий код більше недоступний</string>
-    <string name="app_list_results_hidden_antifeature_settings">Деякі результати сховано через ваші налаштування небажаних функцій.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Деякі додатки сховано через ваші налаштування небажаних функцій.</string>
     <string name="antinonfreenet">Невільні мережеві послуги</string>
     <string name="antinonfreedep">Невільні залежності</string>
     <string name="antiupstreamnonfree">Основні невільні</string>
@@ -620,4 +620,5 @@
     <string name="warning_no_compat_versions">Вибраний репозиторій не має сумісних версій застосунків. Щоб отримувати оновлення, віддайте перевагу репозиторію з сумісними версіями.</string>
     <string name="auto_update_time">Найближче наступне оновлення: %s</string>
     <string name="auto_update_time_past">Наступне оновлення після виконання умов</string>
+    <string name="antitetherednetlist">Ця програма повністю залежить від певного екземпляра мережевої служби</string>
 </resources>
