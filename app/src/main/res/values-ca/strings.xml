@@ -599,4 +599,11 @@
         <item quantity="many">Descarregar les aplicacions des de nodes IPFS: %1$d habilitats</item>
         <item quantity="other">Descarregar les aplicacions des de nodes IPFS: %1$d habilitats</item>
     </plurals>
+    <string name="repo_add_repo_and_mirror">Afegir dipòsit i mirall</string>
+    <string name="repo_view_repo">Veure dipòsit</string>
+    <string name="repo_scan_qr_code">Escanejar codi QR</string>
+    <string name="repo_preview_included_apps">Aplicacions incloses:</string>
+    <string name="repo_mirror_exists">Aquest mirall ja està afegit (%s).</string>
+    <string name="repo_mirror_add_info">La URL que esteu intentant afegir (%s) és un mirall d\'un dipòsit existent.</string>
+    <string name="repo_and_mirror_add_both_info">La URL que esteu intentant afegir (%s) és un mirall d\'un dipòsit nou. S\'afegiran tant el dipòsit original com el mirall.</string>
 </resources>
