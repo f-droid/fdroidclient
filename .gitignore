@@ -31,7 +31,8 @@ proguard/
 *.swp
 
 # More IDE stuff
-.idea/
+.idea/*
+!.idea/icon.svg
 *.iml
 out
 .settings/
