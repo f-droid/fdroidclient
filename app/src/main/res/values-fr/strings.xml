@@ -609,4 +609,11 @@
 \nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
     <string name="repo_error_adding_archive">Les dépôts d\'archive ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste puis activez l\'archive à cet emplacement.</string>
     <string name="repo_archive_failed">Dépôt d\'archive actuellement indisponible</string>
+    <string name="repo_add_repo_and_mirror">Ajouter des dépôts et des miroirs.</string>
+    <string name="repo_view_repo">Voir les dépôts</string>
+    <string name="repo_scan_qr_code">Scanner le QR code</string>
+    <string name="repo_preview_included_apps">Applications incluses :</string>
+    <string name="repo_mirror_exists">Ce miroir a déjà été ajouté (%s).</string>
+    <string name="repo_mirror_add_info">Le lien que vous essayez d\'ajouter (%s) est un miroir d\'un dépôt existant.</string>
+    <string name="repo_and_mirror_add_both_info">Le lien que vous essayez d\'ajouter (%s) est un miroir d\'un nouveau dépôt. Le dépôt original ainsi que le miroir seront ajoutés.</string>
 </resources>
