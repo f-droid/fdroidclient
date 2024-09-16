@@ -610,4 +610,10 @@
     <string name="repo_disable_warning">Отключение этого репозитория удалит его статус \"предпочтительный\" из всех приложений.</string>
     <string name="repo_disable_warning_button">Отключить</string>
     <string name="repo_share_not_found">Не удалось найти адрес репозитория в общем тексте.</string>
+    <string name="repo_add_repo_and_mirror">Добавить репозиторий и зеркало</string>
+    <string name="repo_view_repo">Посмотреть репозиторий</string>
+    <string name="repo_preview_included_apps">Включённые приложения:</string>
+    <string name="repo_mirror_exists">Это зеркало уже было добавлено (%s).</string>
+    <string name="repo_mirror_add_info">URL, который вы пытаетесь добавить (%s) является зеркалом уже существующего репозитория.</string>
+    <string name="repo_and_mirror_add_both_info">URL, который вы пытаетесь добавить (%s) является зеркалом нового репозитория. Будут добавлены оригинальный репозиторий и зеркало.</string>
 </resources>
