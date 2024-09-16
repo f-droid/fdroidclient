@@ -606,4 +606,6 @@
     <string name="repo_mirror_exists">Aquest mirall ja està afegit (%s).</string>
     <string name="repo_mirror_add_info">La URL que esteu intentant afegir (%s) és un mirall d\'un dipòsit existent.</string>
     <string name="repo_and_mirror_add_both_info">La URL que esteu intentant afegir (%s) és un mirall d\'un dipòsit nou. S\'afegiran tant el dipòsit original com el mirall.</string>
+    <string name="warning_no_compat_versions">El repositori seleccionat no té versions compatibles de l\'aplicatiu. Per a rebre actualitzacions, és preferible un repositori amb versions compatibles.</string>
+    <string name="auto_update_time">Propera actualització: %s</string>
 </resources>
