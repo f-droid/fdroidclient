@@ -40,7 +40,7 @@
     <string name="antiadslist">Tiu ĉi aplikaĵo enhavas reklamojn</string>
     <string name="antitracklist">Tiu ĉi aplikaĵo spuras kaj raportas vian agadon</string>
     <string name="antinonfreeadlist">Tiu ĉi aplikaĵo favoras neliberajn aldonaĵojn</string>
-    <string name="antinonfreenetlist">Tiu ĉi aplikaĵo favoras aŭ tute dependas de neŝanĝebla aŭ nelibera retservo</string>
+    <string name="antinonfreenetlist">Tiu ĉi aplikaĵo favoras aŭ tute dependas de nelibera retservo</string>
     <string name="antinonfreedeplist">Tiu ĉi aplikaĵo dependas de aliaj neliberaj aplikaĵoj</string>
     <string name="antiupstreamnonfreelist">La fontkodo ne estas tute libera</string>
     <string name="display">Aspekto</string>
@@ -117,7 +117,7 @@
     <string name="malformed_repo_uri">Transsaltis eraran ligilon de deponejo: %s</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_email">Retletero al programisto</string>
-    <string name="menu_changelog">Ŝanĝoprotokolo</string>
+    <string name="menu_changelog">Ŝanĝ-protokolo</string>
     <string name="menu_bitcoin">Bitmono</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -138,7 +138,7 @@
     <string name="status_download_unknown_size">Elŝutado
 \n%2$s el
 \n%1$s</string>
-    <string name="banner_updating_repositories">Ĝisdatigado de deponejoj…</string>
+    <string name="banner_updating_repositories">Ĝisdatigado de deponejoj</string>
     <string name="status_processing_xml_percent">Prilaborado de %2$s / %3$s (%4$d%%) el %1$s</string>
     <string name="status_connecting_to_repo">Konektado al
 \n%1$s</string>
@@ -407,8 +407,8 @@
     <string name="sort_search">Ordigi serĉon</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Via fotilo ne havas memfokuson. Povas esti malfacile skani la kodon.</string>
-    <string name="show_anti_feature_apps">Inkluzivi aplikaĵojn kun fiebloj</string>
-    <string name="show_anti_feature_apps_on">Montri aplikaĵojn, kiuj enhavas nedeziratajn eblojn</string>
+    <string name="show_anti_feature_apps">Inkluzivi fieblojn</string>
+    <string name="show_anti_feature_apps_on">Montri aplikaĵojn, kiuj enhavas konatajn nedeziratajn eblojn</string>
     <string name="force_touch_apps">Inkluzivi tuŝekranajn aplikaĵojn</string>
     <string name="force_touch_apps_on">Montri aplikaĵojn, kiuj bezonas tuŝekranon eĉ kiam tuŝekrano ne estas subtenata de la aparato</string>
     <string name="repo_add_mirror">Aldoni spegul-servilon</string>
@@ -439,7 +439,7 @@
     <string name="send_version_and_uuid">Sendi version kaj identigilon al serviloj</string>
     <string name="send_version_and_uuid_summary">Ampleksi version de aplikaĵo kaj hazardan unikan identigilon (UUID) dum elŝutado, efikas post la sekva restarto de la aplikaĵo.</string>
     <string name="share_repository">Kunhavigi deponejon</string>
-    <string name="antinosourcesince">La fontkodo ne estas plu disponebla, neniu ebla ĝisdatigo.</string>
+    <string name="antinosourcesince">La fontkodo ne estas plu disponebla, neniu ebla ĝisdatigo</string>
     <string name="send_install_history">Sendi historion de instaladoj</string>
     <string name="send_history_csv">Historio de instaladoj de %s kiel CSV-dosiero</string>
     <string name="updates_disabled_by_settings">Ĉiuj ĝisdatigoj malaktivigitaj per agordoj de konektoj</string>
@@ -509,7 +509,7 @@
     <string name="antitrack">Spurado</string>
     <string name="antinonfreead">Neliberaj aldonaĵoj</string>
     <string name="antinonfreenet">Neliberaj retservoj</string>
-    <string name="app_list_results_hidden_antifeature_settings">Kelkaj aplikaĵoj estas kaŝitaj pro enhavi eblojn, kiujn vi agordis kiel nedeziratajn.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Kelkaj aplikaĵoj estas kaŝitaj surbaze de viaj agorditaj fiebloj. Frapetu por alĝustigi.</string>
     <string name="antiads">Reklamoj</string>
     <string name="antinonfreedep">Neliberaj dependecoj</string>
     <string name="antiupstreamnonfree">Parte libera fontkodo</string>
@@ -597,4 +597,8 @@
     <string name="repo_preview_included_apps">Entenataj aplikaĵoj:</string>
     <string name="repo_and_mirror_add_both_info">La ligilo (%s), kiun vi provas aldoni estas spegul-servilo de nova deponejo. Ambaŭ la originala deponejo kaj spegul-servilo estos aldonitaj.</string>
     <string name="warning_no_compat_versions">La elektita deponejo enhavas neniun kongruan version de aplikaĵo. Por ricevi ĝisdatigojn, preferu deponejon kun kongruaj versioj.</string>
+    <string name="auto_update_time">Plej frua sekva ĝisdatigo: %s</string>
+    <string name="antitetherednet">Alligita al retservo</string>
+    <string name="antitetherednetlist">Tiu ĉi aplikaĵo tute dependas de difinita ekzemplo de reta servo</string>
+    <string name="auto_update_time_past">Sekva ĝisdatigo post plenumi kondiĉojn</string>
 </resources>

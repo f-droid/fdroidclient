@@ -1,0 +1,13 @@
+• rekonstruita maniero vidigi deponejojn por uzantojn por emfazi kiam io estas instalata el ekster f-droid.org
+
+• eblo ŝanĝi deponejajn prioritatojn por ĉiuj aŭ por elektita aplikaĵo
+
+• aplikaĵoj kun “Aliaj fiebloj” nun implicite montrataj
+
+• ricevi deponejan ligilon per la menuo kunhavigi
+
+• aspekto de ĉiuj ekranoj ŝanĝiĝas kun nokta/taga reĝimo
+
+• ĝisdatigita uzo de eksteraj konservejoj por funkcii kun targetSdkVersion 29
+
+• F-Droid Baza: funkcias kun targetSdkVersion 34
