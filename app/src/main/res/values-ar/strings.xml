@@ -103,7 +103,7 @@
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
     <string name="antitracklist">هذا التطبيق يراقب ويوثق النشاطات الخاصة بك</string>
     <string name="antinonfreeadlist">هذا التطبيق يحمل إضافات غير حرة</string>
-    <string name="antinonfreenetlist">هذا التطبيق يروج أو يعتمد كليًّا على خدمة شبكة غير حرة و غير متغيرة</string>
+    <string name="antinonfreenetlist">هذا التطبيق يروج أو يعتمد كليًّا على خدمة شبكة غير حُرة</string>
     <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
     <string name="antiupstreamnonfreelist">شفرة المصدر المنشطة ليست حرة تماماً</string>
     <string name="antinonfreeassetslist">هذا التطبيق يحتوي على أصول غير الحرة</string>
@@ -439,8 +439,8 @@
         <item quantity="many">تم تحديثه منذ %1$d سنوات</item>
         <item quantity="other">تم تحديثه منذ %1$d سنة</item>
     </plurals>
-    <string name="show_anti_feature_apps">يحتوي على ميزات مضادة للتطبيقات</string>
-    <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات مضادة</string>
+    <string name="show_anti_feature_apps">يحتوي على ميزات غير مرغوبة</string>
+    <string name="show_anti_feature_apps_on">عرض التطبيقات التي تتطلّب تشغيل ميزات غير مرغوبة</string>
     <string name="use_bluetooth">استخدم البلوتوث</string>
     <string name="swap_toast_hotspot_enabled">تم تفعيل نقطة الواي فاي</string>
     <string name="swap_toast_could_not_enable_hotspot">تعذر تشغيل نقطة الواي فاي !</string>
@@ -469,7 +469,7 @@
     <string name="send_version_and_uuid_summary">إضافة إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل، يأخذ مفعوله عند إعادة تشغيل التطبيق التالية.</string>
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
     <string name="repo_exists_add_mirror">هذه نسخة من %1$s، هل تريد إضافتها كمرآة؟</string>
-    <string name="antinosourcesince">لم يعد الكود المصدري متاحًا، ولا توجد تحديثات ممكنة.</string>
+    <string name="antinosourcesince">لم يعد الكود المصدري متاحًا، ولا توجد تحديثات ممكنة</string>
     <string name="panic_hide_warning_message">في حالة الهلع، سيؤدي هذا إلى إزالة %1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
     <string name="share_repository">مشاركة المستودع</string>
     <string name="send_install_history">إرسال سجل التثبيت</string>
@@ -555,9 +555,9 @@
     <string name="antinonfreeassets">الأصول غير الحرة</string>
     <string name="antidisabledalgorithm">تم التوقيع باستخدام خوارزمية غير آمنة</string>
     <string name="antiknownvuln">مشكلة ثغرة معروفة</string>
-    <string name="app_list_results_hidden_antifeature_settings">تم إخفاء بعض النتائج استنادا إلى إعدادات مكافحة الميزات.</string>
+    <string name="app_list_results_hidden_antifeature_settings">يتم إخفاء بعض التطبيقات استنادًا إلى إعدادات \"ميزات غير مرغوبة\" الخاصة بك. المس للتغيير.</string>
     <string name="antiupstreamnonfree">المصدر ليس حر</string>
-    <string name="antiothers">الميزات المضادة الأخرى</string>
+    <string name="antiothers">ميزات غير مرغوبة أخرى</string>
     <string name="antinsfw">غير آمن للعمل</string>
     <string name="latest__empty_state__upgrading">جارٍ ترقية قاعدة البيانات…</string>
     <string name="menu_release_channel_beta">السماح بتحديثات النسخة التجريبية (بيتا)</string>
@@ -639,4 +639,8 @@
     <string name="repo_mirror_exists">تمت إضافة هذه المرآة بالفعل (%s).</string>
     <string name="repo_and_mirror_add_both_info">عنوان URL الذي تحاول إضافته (%s) هو مرآة لمستودع جديد. سيتم إضافة كل من المستودع الأصلي والمرآة.</string>
     <string name="warning_no_compat_versions">لا يحتوي المستودع المحدد على إصدارات تطبيقات متوافقة. لتلقي التحديثات، تفضل مستودعًا يحتوي على إصدارات متوافقة.</string>
+    <string name="auto_update_time">التحديث التالي الأقدم: %s</string>
+    <string name="auto_update_time_past">التحديث القادم عند استيفاء الشروط</string>
+    <string name="antitetherednet">خدمات الشبكة المقيدة</string>
+    <string name="antitetherednetlist">يعتمد هذا التطبيق كليًا على مثيل معين من خدمة الشبكة</string>
 </resources>
