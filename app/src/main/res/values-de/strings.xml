@@ -601,4 +601,5 @@
     <string name="repo_mirror_add_info">Die URL, die Sie hinzufügen möchten (%s), ist ein Spiegelserver eines bestehenden Repositorys.</string>
     <string name="repo_and_mirror_add_both_info">Die URL, die Sie hinzufügen möchten (%s), ist ein Spiegelserver eines neuen Repositorys. Sowohl das ursprüngliche Repository als auch der Spiegelserver werden hinzugefügt.</string>
     <string name="warning_no_compat_versions">Die ausgewählte Paketquelle hat keine kompatiblen App-Versionen. Um Aktualisierungen zu erhalten, sollten Sie eine Paketquelle mit kompatiblen Versionen vorziehen.</string>
+    <string name="auto_update_time">Frühestmöglicher nächster update: %s</string>
 </resources>
