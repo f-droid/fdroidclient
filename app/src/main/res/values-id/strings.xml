@@ -582,4 +582,10 @@
     <string name="repo_view_repo">Tinjau repositori</string>
     <string name="repo_scan_qr_code">Pindai Kode RS (Respons Cepat)</string>
     <string name="repo_mirror_add_info">URL yang hendak Anda tambahkan (%s) merupakan cerminan repositori yang sudah ada.</string>
+    <string name="repo_add_repo_and_mirror">Tambah repositori dan mirror</string>
+    <string name="repo_preview_included_apps">Termasuk aplikasi:</string>
+    <string name="repo_mirror_exists">Mirror inti telah ditambahkan (%s).</string>
+    <string name="repo_and_mirror_add_both_info">URL yang Anda coba tambahkan (%s) adalah mirror dari repositori baru. Keduanya merupakan repositori original dan mirror akan ditambahkan.</string>
+    <string name="auto_update_time">Pembaruan dekat berikutnya: %s</string>
+    <string name="warning_no_compat_versions">Repositori yang dipilih tidak memiliki versi aplikasi kompatibel. Untuk menerima pembaruan, pilih repositori dengan versi yang kompatibel.</string>
 </resources>
