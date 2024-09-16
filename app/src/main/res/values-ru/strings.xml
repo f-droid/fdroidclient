@@ -461,7 +461,7 @@
     <string name="send_version_and_uuid">Отправить версию и UUID на сервер</string>
     <string name="send_version_and_uuid_summary">Включить версию этого приложения и случайный уникальный ID. Изменения вступят в силу после перезапуска.</string>
     <string name="share_repository">Поделиться репозиторием</string>
-    <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны.</string>
+    <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны</string>
     <string name="send_install_history">Отправить историю установок</string>
     <string name="send_history_csv">История установок %s в виде CSV-файла</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
