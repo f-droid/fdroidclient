@@ -1,0 +1,8 @@
+* Separar nome e sumário nas listas de apps para melhor visu.
+* Apps feitos para o SDK 24 são incompatíveis com o Android 15
+* Melhor lidar com espelhos na preview de "Adic. repositório" (obrigado Thore!)
+* Ativar atualizações automáticas em dispositivos Xiaomi sem MIUI (obrigado Irate!)
+* Confiar certs root adicionados pelo usuário (thanks B.!)
+* Melhorar a tradução para linguagens menos conhecidas (obrigado Ray!)
+* Não reagir a tags NFC já que foi removido (obrigado Thibault!)
+* Mostrar aviso quando apps não podem ser atualizados do repo. preferido

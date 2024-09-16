@@ -7,7 +7,7 @@
     <string name="cache_downloaded">Manter apps em cache</string>
     <string name="updates">Atualizações</string>
     <string name="other">Outros</string>
-    <string name="update_interval">Intervalo de atualização automática</string>
+    <string name="update_interval">Intervalo das atualizações automáticas</string>
     <string name="notify">Mostrar atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação quando atualizações estiverem disponíveis</string>
     <string name="system_installer">Extensão Privilegiada</string>
@@ -47,7 +47,7 @@
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
     <string name="menu_ignore_all">Ignorar todas as atualizações</string>
-    <string name="menu_ignore_this">Ignorar Esta Atualização</string>
+    <string name="menu_ignore_this">Ignorar esta atualização</string>
     <string name="menu_website">Site</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_source">Código-fonte</string>
@@ -113,7 +113,7 @@
     <string name="repo_searching_address">Procurando por repositório de pacotes em
 \n%1$s</string>
     <string name="not_on_same_wifi">O seu dispositivo não está na mesma rede Wi-Fi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
-    <string name="requires_features">Requer: %1$s</string>
+    <string name="requires_features">Obrigatório: %1$s</string>
     <string name="category_Development">Desenvolvimento</string>
     <string name="category_Games">Jogos</string>
     <string name="category_Internet">Internet</string>
@@ -202,12 +202,12 @@
     <string name="perms_description_app">Fornecido por %1$s.</string>
     <string name="downloading">Baixando…</string>
     <string name="interval_never">Sem atualizações automáticas para apps</string>
-    <string name="interval_1h">Verificar por atualizações a cada 1 hora</string>
-    <string name="interval_4h">Verificar por atualizações a cada 4 horas</string>
-    <string name="interval_12h">Verificar por atualizações a cada 12 horas</string>
-    <string name="interval_1d">Verificar por atualizações diariamente</string>
-    <string name="interval_1w">Verificar por atualizações semanalmente</string>
-    <string name="interval_2w">Verificar por atualizações a cada 2 semanas</string>
+    <string name="interval_1h">Buscar atualizações a cada 1 hora</string>
+    <string name="interval_4h">Buscar atualizações a cada 4 horas</string>
+    <string name="interval_12h">Buscar atualizações a cada 12 horas</string>
+    <string name="interval_1d">Buscar atualizações diariamente</string>
+    <string name="interval_1w">Buscar atualizações semanalmente</string>
+    <string name="interval_2w">Buscar atualizações a cada 2 semanas</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
     <string name="unstable_updates">Atualizações instáveis</string>
@@ -224,7 +224,7 @@
     <string name="repo_details">Repositório</string>
     <string name="repo_url">Endereço</string>
     <string name="menu_settings">Configurações</string>
-    <string name="login_title">Autenticação necessária</string>
+    <string name="login_title">Autenticação obrigatória</string>
     <string name="login_name">Nome de usuário</string>
     <string name="login_password">Senha</string>
     <string name="repo_edit_credentials">Alterar Senha</string>
@@ -238,7 +238,7 @@
     <string name="crash_dialog_comment_prompt">Você pode adicionar informações extras e comentários aqui:</string>
     <string name="menu_email">Enviar e-mail ao autor(a)</string>
     <string name="useTor">Usar o Tor</string>
-    <string name="useTorSummary">Forçar o tráfego de download através do Tor para maior privacidade. Requer Orbot</string>
+    <string name="useTorSummary">Forçar o tráfego de download através do Tor para maior privacidade. Orbot é necessário</string>
     <string name="swap_stopping_wifi">Parando o Wi-Fi…</string>
     <string name="update_auto_download">Obter atualizações automaticamente</string>
     <string name="update_auto_download_summary">As atualizações são baixadas automaticamente e você é notificado para instalá-las</string>
@@ -436,7 +436,7 @@
     <string name="repo_delete_to_overwrite">Primeiro exclua %1$s para poder adicionar isso com uma chave conflitante.</string>
     <string name="antidisabledalgorithmlist">Este app tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Este app contém uma falha de segurança conhecida</string>
-    <string name="show_anti_feature_apps_on">Mostrar apps que requerem características indesejadas</string>
+    <string name="show_anti_feature_apps_on">Mostrar apps com características indesejadas</string>
     <string name="prompt_to_send_crash_reports">Perguntar antes de enviar relatórios de falhas</string>
     <string name="prompt_to_send_crash_reports_summary">Reunir dados sobre falhas e enviá-los para o desenvolvedor</string>
     <string name="hide_all_notifications">Ocultar todas as notificações</string>
@@ -501,7 +501,7 @@
     <string name="fdroid_metrics_report">%s Relatório das Métricas</string>
     <string name="send_fdroid_metrics_json">%s relatório das métricas como arquivo JSON</string>
     <string name="send_fdroid_metrics_report">Enviar %s Relatório de Métricas</string>
-    <string name="send_to_fdroid_metrics_summary">Enviar dados anônimos semanalmente para o F-Droid Métricas (exige Manter histórico de instalação)</string>
+    <string name="send_to_fdroid_metrics_summary">Enviar dados anônimos semanalmente para o F-Droid Métricas (é obrigatório \"Manter histórico de instalação\")</string>
     <string name="send_to_fdroid_metrics">Enviar dados de uso</string>
     <string name="install_history_and_metrics">Histórico de instalação e métricas</string>
     <string name="theme_follow_system">O mesmo do sistema</string>
@@ -515,17 +515,17 @@
     <string name="has_disallow_install_unknown_sources_globally">O administrador do seu dispositivo não permite a instalação de apps de fontes desconhecidas, isto inclui novos repositórios</string>
     <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de características indesejadas.</string>
     <string name="antiads">Anúncios</string>
-    <string name="antiknownvuln">Vulnerabilidade Conhecida</string>
-    <string name="antidisabledalgorithm">Assinado Usando um Algoritmo Inseguro</string>
+    <string name="antiknownvuln">Vulnerabilidade conhecida</string>
+    <string name="antidisabledalgorithm">Assinado usando um algoritmo inseguro</string>
     <string name="antitrack">Rastreamento</string>
     <string name="antinonfreead">Complementos não livres</string>
     <string name="antinonfreenet">Serviços de rede não livres</string>
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antinonfreedep">Dependências não livres</string>
-    <string name="antinosource">Código-Fonte Não Está Mais Disponível</string>
+    <string name="antinosource">Código-fonte não mais disponível</string>
     <string name="antinonfreeassets">Conteúdos não livres</string>
-    <string name="antiothers">Outras Características Indesejadas</string>
-    <string name="antinsfw">Impróprio para o Ambiente de Trabalho (+18, Sugestivo)</string>
+    <string name="antiothers">Outras características indesejadas</string>
+    <string name="antinsfw">Impróprio para o ambiente de trabalho (+18, sugestivo)</string>
     <string name="menu_release_channel_beta">Permitir atualizações beta</string>
     <string name="latest__empty_state__upgrading">Atualizando banco de dados…</string>
     <string name="app_name_basic">F-Droid Básico</string>
@@ -603,4 +603,5 @@
     <string name="repo_mirror_add_info">A URL que você está tentando adicionar (%s) é um espelho de um repositório existente.</string>
     <string name="repo_and_mirror_add_both_info">A URL que você está tentando adicionar (%s) é um espelho de um novo repositório. Tanto o repositório original e o espelho serão adicionados.</string>
     <string name="warning_no_compat_versions">O repositório selecionado não tem uma versão compatível do app. Para receber atualizações, prefira um repositório com versões compatíveis.</string>
+    <string name="auto_update_time">Próxima atualização: %s</string>
 </resources>
