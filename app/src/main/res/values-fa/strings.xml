@@ -36,7 +36,7 @@
     <string name="antiadslist">این کاره دارای تبلیغات است</string>
     <string name="antitracklist">این کاره، فعّالیتتان را ردیابی و گزارش می‌کند</string>
     <string name="antinonfreeadlist">این کاره، افزونه‌های ناآزاد را تبلیغ می‌کند</string>
-    <string name="antinonfreenetlist">این کاره، خدمت شبکه‌ای ناآزاد را ترویج کرده یا کاملاً به آن وابسته است</string>
+    <string name="antinonfreenetlist">این کاره، خدمت شبکه‌ای تغییر ناپذیر یا ناآزاد را ترویج کرده یا کاملاً به آن وابسته است</string>
     <string name="antinonfreedeplist">این کاره به دیگر کاره‌های ناآزاد وابسته است</string>
     <string name="antiupstreamnonfreelist">کد مبدأ بالادستی کاملاً آزاد نیست</string>
     <string name="display">نمایش</string>
@@ -48,7 +48,7 @@
 \n%1$s</string>
     <string name="status_connecting_to_repo">وصل شدن به
 \n%1$s</string>
-    <string name="no_permissions">مجوزی موجود نیست</string>
+    <string name="no_permissions">بدون هیچ اجازه‌ای</string>
     <string name="theme">زمینه</string>
     <string name="unsigned">امضا نشده</string>
     <string name="repo_description">شرح</string>
@@ -127,7 +127,7 @@
     <string name="status_inserting_apps">ذخیره کردن جزییات کاره</string>
     <string name="repos_unchanged">تمام مخزن‌ها به‌روزند</string>
     <string name="global_error_updating_repos">خطا هنگام به‌روز رسانی: %s</string>
-    <string name="permissions">مجوزها</string>
+    <string name="permissions">اجازه‌ها</string>
     <string name="no_handler_app">هیچ کاره‌ای ندارید که بتواند %s را مدیریت کند.</string>
     <string name="unverified">تأیید نشده</string>
     <string name="repo_details">مخزن</string>
@@ -279,8 +279,8 @@
     <string name="updates__hide_updateable_apps">نهفتن کاره‌ها</string>
     <string name="updates__show_updateable_apps">نمایش کاره‌ها</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">بارگیری به‌روز رسانی برای %1$d کاره.</item>
-        <item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d کاره.</item>
+        <item quantity="one">بارگیری به‌روز رسانی برای %1$d کاره:</item>
+        <item quantity="other">بارگیری به‌روز رسانی‌ها برای %1$d کاره:</item>
     </plurals>
     <string name="versions">نگارش‌ها</string>
     <string name="clear_search">پاک‌سازی جست‌وجو</string>
@@ -534,7 +534,7 @@
     <string name="turn_on_wifi">روشن کردن وای‌فای</string>
     <string name="nearby_splace__external_storage_permission_button">بیازماییدش</string>
     <string name="force_old_installer_title">اجبار به نصب‌کنندهٔ قدیمی</string>
-    <string name="force_old_installer_summary">از کار انداختن نصب‌کنندهٔ نشست آزمایشی شامل پشتیبانی از به‌روز رسانی‌های پس‌زمینهٔ خودکار.</string>
+    <string name="force_old_installer_summary">از کار انداختن نصب‌کنندهٔ نشست شامل پشتیبانی از به‌روز رسانی‌های پس‌زمینهٔ خودکار.</string>
     <string name="repo_state_adding">افزودن مخزن…</string>
     <string name="repo_invalid">مخزن نامعتبر.
 \n
@@ -571,4 +571,31 @@
     <string name="useDnsCache">استفاده از انبارهٔ ساناد</string>
     <string name="useDnsCacheSummary">استفاده از نتیجه‌های انبار شده برای کمینه سازی پرس‌وجوهای ساناد.</string>
     <string name="repo_share_not_found">نتوانست نشانی مخزن را در متن هم‌رسانده بیابد.</string>
+    <string name="app_details_repository_preferred">(ترجیحی)</string>
+    <string name="app_details_repository_expand">گسترش سیاههٔ مخزن</string>
+    <string name="app_list_no_suggested_version">هیچ نگارشی برای نصب توصیه نشده.</string>
+    <string name="repo_list_info_text">مخزن منبعی از کاره‌هاست. این سیاهه مخزن‌هایی که اکنون اضافه شده‌اند را نشان می‌دهد. مخزن‌های از کار افتاده استفاده نمی‌شوند.
+\n
+\nاگر کاره‌ای در بیش از یک مخزن باشد، مخزنی که بالاتر باشد ارجحیت دارد. می‌توانید با فشردن طولانی مخزن‌ها و کشیدنشان، ترتیبشان را عوض کنید.</string>
+    <string name="repositories_last_update">آخرین به‌روز رسانی: %s</string>
+    <string name="repositories_last_update_never">هرگز</string>
+    <string name="repo_list_info_title">سیاههٔ مخزن‌ها</string>
+    <string name="repo_archive_toggle">بایگانی مخزن</string>
+    <string name="repo_archive_toggle_description">نمایش کاره‌های بایگانی شده و نگارش‌های از رده‌خارجشان</string>
+    <string name="repo_disable_warning">از کار انداختن این مخزن وضعیت «ترجیحی»اش را از همهٔ کاره‌ها برمی‌دارد.</string>
+    <string name="repo_archive_failed">مخزن بایگانی اکنون در دسترس نیست</string>
+    <string name="app_details_repository">مخزن</string>
+    <string name="app_details_repositories">مخزن‌ها</string>
+    <string name="app_details_repository_button_prefer">ترجیح مخزن</string>
+    <string name="repo_disable_warning_button">از کار انداختن</string>
+    <string name="repo_error_adding_archive">مخزن‌های بایگانی نمی‌توانند مستقیماً اضافه شوند. روی مخزن در سیاهه زده و از آن‌جا بایگانی را به کار بیندازید.</string>
+    <string name="repo_scan_qr_code">پویش کد پاس</string>
+    <string name="repo_and_mirror_add_both_info">نشانی‌ای که می‌خواهید بیفزایید (%s) آینه‌ای از یک مخزن جدید است. مخزن اصلی و آینه اضافه خواهند شد.</string>
+    <string name="repo_add_repo_and_mirror">افزودن مخزن و آینه</string>
+    <string name="repo_preview_included_apps">کاره‌های موجود:</string>
+    <string name="repo_mirror_exists">این آینه از پیش افزوده شده (%s).</string>
+    <string name="repo_view_repo">دیدن مخزن</string>
+    <string name="repo_mirror_add_info">نشانی‌ای که می‌خواهید بیفزایید (%s) آینه‌ای از یک مخزن موجود است.</string>
+    <string name="warning_no_compat_versions">مخزن گزیده هیچ نگارش کارهٔ سازگاری ندارد. برای گرفتن به‌روز رسانی‌ها، مخزنی با نگارش‌های سازگار را ترجیح دهید.</string>
+    <string name="auto_update_time">نزدیک‌ترین به‌روز رسانی بعدی: %s</string>
 </resources>
