@@ -50,7 +50,7 @@
     <string name="antiadslist">此应用包含广告</string>
     <string name="antitracklist">此应用会记录并报告你的活动</string>
     <string name="antinonfreeadlist">此应用推广非自由的附加组件</string>
-    <string name="antinonfreenetlist">此应用推广或完全依赖于不可更改或非自由的网络服务</string>
+    <string name="antinonfreenetlist">此应用推广或完全依赖于非自由的网络服务</string>
     <string name="antinonfreedeplist">此应用依赖于其它非自由应用</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
@@ -421,7 +421,7 @@
     <string name="hide_all_notifications">隐藏所有通知</string>
     <string name="install_history">安装历史</string>
     <string name="send_version_and_uuid">将版本和 UUID 发送到服务器</string>
-    <string name="antinosourcesince">源代码不再可用，无法更新。</string>
+    <string name="antinosourcesince">源代码不再可用，不可能有更新</string>
     <string name="hide_all_notifications_summary">阻止所有活动在状态栏和通知菜单中显示。</string>
     <string name="send_install_history">发送安装历史</string>
     <string name="send_history_csv">%s 安装历史为 CSV 文件</string>
@@ -581,4 +581,5 @@
     <string name="repo_mirror_exists">此镜像已存在（%s）。</string>
     <string name="repo_mirror_add_info">你正尝试添加的 URL （%s）是现有存储库的镜像。</string>
     <string name="warning_no_compat_versions">所选的存储库没有兼容的应用版本。要接收更新，请首选有兼容版本的存储库。</string>
+    <string name="auto_update_time">下次更新最早时间：%s</string>
 </resources>
