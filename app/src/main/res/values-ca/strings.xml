@@ -55,7 +55,7 @@
     <string name="antiadslist">Aquesta aplicació conté publicitat</string>
     <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
     <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>
-    <string name="antinonfreenetlist">Aquesta aplicació depèn completament d\'un servei de xarxa no lliure</string>
+    <string name="antinonfreenetlist">Aquesta aplicació promou o depèn completament d\'un servei de xarxa no lliure</string>
     <string name="antinonfreedeplist">Aquesta aplicació depèn d\'altres aplicacions no lliures</string>
     <string name="antiupstreamnonfreelist">Es basa en el codi font d\'una altra aplicació que conté algunes parts no-lliures</string>
     <string name="display">Pantalla</string>
@@ -290,7 +290,7 @@
     <string name="notification_title_summary_installed">Instal·lació correcta</string>
     <string name="notification_title_summary_install_error">Instal·lació fallida</string>
     <string name="notification_action_update">Actualitzar</string>
-    <string name="notification_action_cancel">Cancel·la</string>
+    <string name="notification_action_cancel">Cancel·lar</string>
     <string name="notification_action_install">Instal·lar</string>
     <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
     <string name="app_new">Nova</string>
@@ -403,7 +403,7 @@
     <string name="send_install_history">Enviar l\'historial d\'instal·lacions</string>
     <string name="send_history_csv">Historial d\'instal·lacions com a fitxer CSV de %s</string>
     <string name="updates_disabled_by_settings">Totes les actualitzacions deshabilitades per la configuració de dades mòbils/WiFi</string>
-    <string name="antinosourcesince">El codi font ja no està disponible, no és possible actualitzar.</string>
+    <string name="antinosourcesince">El codi font ja no està disponible, no és possible actualitzar</string>
     <string name="about_forum">Fòrum de suport</string>
     <string name="app_suggested">Suggerit</string>
     <string name="app_size">Mida: %1$s</string>
@@ -599,13 +599,14 @@
         <item quantity="many">Descarregar les aplicacions des de nodes IPFS: %1$d habilitats</item>
         <item quantity="other">Descarregar les aplicacions des de nodes IPFS: %1$d habilitats</item>
     </plurals>
-    <string name="repo_add_repo_and_mirror">Afegeix dipòsit i rèplica</string>
+    <string name="repo_add_repo_and_mirror">Afegir dipòsit i rèplica</string>
     <string name="repo_view_repo">Veure dipòsit</string>
-    <string name="repo_scan_qr_code">Escaneja codi QR</string>
+    <string name="repo_scan_qr_code">Escanejar codi QR</string>
     <string name="repo_preview_included_apps">Aplicacions incloses:</string>
     <string name="repo_mirror_exists">Aquesta rèplica ja s\'ha afegit (%s).</string>
-    <string name="repo_mirror_add_info">La URL que esteu intentant afegir (%s) és una rèplica d\'un dipòsit existent.</string>
-    <string name="repo_and_mirror_add_both_info">La URL que esteu intentant afegir (%s) és un rèplica d\'un dipòsit nou. S\'afegiran tant el dipòsit original com la rèplica.</string>
-    <string name="warning_no_compat_versions">El repositori seleccionat no té versions compatibles de l\'aplicatiu. Per a rebre actualitzacions, és preferible un repositori amb versions compatibles.</string>
+    <string name="repo_mirror_add_info">L\'URL que esteu intentant afegir (%s) és una rèplica d\'un dipòsit existent.</string>
+    <string name="repo_and_mirror_add_both_info">L\'URL que esteu intentant afegir (%s) és un rèplica d\'un dipòsit nou. S\'afegiran tant el dipòsit original com la rèplica.</string>
+    <string name="warning_no_compat_versions">El dipòsit seleccionat no té versions compatibles de l\'aplicatiu. Per a rebre actualitzacions, és preferible un dipòsit amb versions compatibles.</string>
     <string name="auto_update_time">Propera actualització: %s</string>
+    <string name="auto_update_time_past">Propera actualització quan es compleixin les condicions</string>
 </resources>
