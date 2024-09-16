@@ -608,4 +608,5 @@
     <string name="repo_mirror_exists">Овај резервни извор је већ додат (%s).</string>
     <string name="repo_and_mirror_add_both_info">Наведени URL (%s) је резервни извор новог репозиторијума. Биће додати и оригинални репозиторијум и резервни извор.</string>
     <string name="warning_no_compat_versions">Изабрани репозиторијум нема компатибилних верзија апликација. Да бисте примали ажурирања, дајте предност репозиторијуму са компатибилним верзијама.</string>
+    <string name="auto_update_time">Најраније следеће ажурирање: %s</string>
 </resources>
