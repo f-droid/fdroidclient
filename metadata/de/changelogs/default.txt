@@ -4,4 +4,5 @@
 * Aktivieren unbeaufsichtigter App-Updates auf Xiaomi-Geräten, auf denen kein MIUI läuft (Danke Irate!)
 * Vertrauen in vom Benutzer hinzugefügte Root-Zertifikate (Danke B.!)
 * Verbesserte Lokalisierung für weniger verbreitete Sprachen (Danke Ray!)
-…
+* Keine Reaktion auf NFC Tags da die NFC funktion entfernt wurde (Danke Thibault!)
+* Anzeigen von Warnungen wenn Apps nicht mittels der Bevorzugten Repo aktualisiert werden können
