@@ -456,7 +456,7 @@
     <string name="undo">元に戻す</string>
     <string name="app_list__dismiss_installing_app">インストールをキャンセルしました</string>
     <string name="menu_select_for_wipe">ワイプの選択</string>
-    <string name="try_again">再試行</string>
+    <string name="try_again">再度試す</string>
     <string name="panic_will_be_wiped">アンインストールし、すべてのデータを削除</string>
     <string name="panic_apps_to_uninstall">アンインストールしてすべてのデータを消去するアプリ</string>
     <string name="panic_add_apps_to_uninstall">アンインストールして消去するアプリを追加</string>
@@ -507,7 +507,7 @@
     <string name="antiknownvuln">既知の脆弱性</string>
     <string name="antinonfreeassets">不自由なアセット</string>
     <string name="antiupstreamnonfree">不自由なアップストリーム</string>
-    <string name="antidisabledalgorithm">安全でないアルゴリズムで署名されました</string>
+    <string name="antidisabledalgorithm">安全でないアルゴリズムによる署名</string>
     <string name="antinosource">ソースコードはもう入手できません</string>
     <string name="antiothers">他の好ましくない機能</string>
     <string name="antinsfw">安心して閲覧できません</string>
