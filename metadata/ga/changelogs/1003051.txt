@@ -1,0 +1,21 @@
+v1.3.1
+* Athchóiriú mór ar na croíphluiméireachta in aice láimhe/Babhtáil
+
+* Tacaíocht TLSv1.3, nuair a thacaíonn an gléas é
+
+v1.3
+* Cnaipí níos iontaofa agus nuashonruithe stádais
+
+* Athchóiriú a dhéanamh ar Shocruithe lena n-áirítear rialuithe nua úsáide sonraí
+
+* Oibriú cúlra comhfhiosach ceallraí ar Android 5.0 agus níos nuaí
+
+* Roinn mír roghchláir le haghaidh repos
+
+* Múch tuairiscí tuairteála sna Socruithe
+
+* Suiteáil breathnóir Stair nuair atá logáil cumasaithe
+
+* Liosta Frithghnéithe Inchliceáilte, curtha leis NoSourceSince
+
+* Is é Android 4.0 an t-íosmhéid a dtacaítear leis anois

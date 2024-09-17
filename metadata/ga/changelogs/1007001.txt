@@ -1,0 +1,5 @@
+* athchóiríodh babhtáil in aice láimhe ag baint úsáide as hotspot an ghléis
+
+* cuir freagraí scaoll nua leis: díshuiteálann an aip agus athshocraigh repos go réamhshocrú
+
+* tacaíocht seachfhreastalaí a shocrú ar an gcéad thosú

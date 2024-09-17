@@ -301,7 +301,7 @@
     <string name="updates__hide_updateable_apps">앱 숨기기</string>
     <string name="updates__show_updateable_apps">앱 보기</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">앱 %1$d개의 업데이트를 다운로드합니다.</item>
+        <item quantity="other">앱 %1$d개의 업데이트를 다운로드:</item>
     </plurals>
     <string name="versions">버전</string>
     <string name="clear_search">검색 지우기</string>
@@ -557,7 +557,7 @@
 \n
 \n당신이 추가하는 저장소는 신뢰할 수 있습니다.</string>
     <string name="app_list_no_suggested_version">설치에 권장되는 버전이 없습니다.</string>
-    <string name="repo_exists">이 repo는 이미 추가되었습니다.</string>
+    <string name="repo_exists">이 저장소는 이미 추가되었습니다.</string>
     <string name="repo_error_adding_archive">Archive 저장소는 직접 추가할 수 없습니다. 목록에서 저장소를 탭하고 거기 아카이브를 활성화.</string>
     <string name="repo_disable_warning">이 저장소를 비활성화하면 모든 앱의 \"preferred\"상태를 제거합니다.</string>
     <string name="targetsdk_or_later">대상 %s</string>
@@ -577,4 +577,13 @@
     <string name="ipfsgw_add_add">추가</string>
     <string name="copied_to_clipboard">클립보드에 링크 복사됨</string>
     <string name="swap_connection_indexv0_error">F-Droid의 개략 된 버전으로 누군가에 연결하려고합니다. F-Droid 앱을 업그레이드해야 합니다. F-Droid 앱을 업데이트할 수 있습니다.</string>
+    <string name="repo_preview_included_apps">포함 앱:</string>
+    <string name="repo_add_repo_and_mirror">저장소 및 미러 추가</string>
+    <string name="repo_view_repo">저장소 보기</string>
+    <string name="repo_scan_qr_code">QR 코드 스캔하기</string>
+    <string name="repo_mirror_exists">이 거울은 이미 추가되었습니다 (%s).</string>
+    <string name="repo_mirror_add_info">추가하려고 하는 URL (%s) 기존 저장소의 거울 이다.</string>
+    <string name="repo_and_mirror_add_both_info">추가하려고 하는 URL (%s) 새로운 저장소의 거울 이다. 원래 저장소와 거울 모두 추가됩니다.</string>
+    <string name="auto_update_time">다음 업데이트: %s</string>
+    <string name="warning_no_compat_versions">선택하신 저장소에는 호환되는 앱 버전이 없습니다. 업데이트를 받으시려면 호환되는 버전의 저장소를 선택하십시오.</string>
 </resources>

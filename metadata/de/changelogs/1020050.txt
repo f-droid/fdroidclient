@@ -1,0 +1,13 @@
+* Repository-Darstellung überarbeitet, um zu verdeutlichen, wenn eine Installation nicht von f-droid.org kommt
+
+* Benutzer können die Repository-Priorität global und pro App ändern
+
+* Benutzerdefinierte Anti-Features sind nun standardmäßig aktiviert, anstatt deaktiviert
+
+* Unterstützung für den Empfang von Repository-URLs über Teilen
+
+* Alle Aktivitäten berücksichtigen das Tag/Nacht-Design
+
+* Nutzung von externem Speicher aktualisiert, targetSdkV 29
+
+* F-Droid Basic aktualisiert, targetSdkV 34

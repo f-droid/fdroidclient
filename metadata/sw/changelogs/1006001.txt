@@ -1,0 +1,7 @@
+* Swichi zilizoongezwa kwa Maelezo ya ghala ili kuzima vioo vyote ama vyovyote (#1696)
+
+* Chaguo la kioo cha nasibu kwa kila pakuo la kifurushi/APK
+
+* Pakuo za APK zote inahifadhiwa kwa kila ghala, sio kwa kioo
+
+* Shughulikia tagi za E za Apache na NGINX wakati unaangalia ikiwa index ni ya sasa (#1708)

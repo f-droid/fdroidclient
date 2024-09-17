@@ -1,0 +1,12 @@
+* Láimhseáil ceadanna intuigthe READ_EXTERNAL_STORAGE, a spreagann a
+ leid ceadanna ar shuiteálacha le Síneadh Pribhléideach (#1702)
+
+* Sonraí innéacs sláintíochta chun bagairtí féideartha ón bhfreastalaí a laghdú
+
+* Spreagann "Am istigh Léigh" úsáid scátháin nuair a bhíonn léamh mall
+
+* Deisigh deilbhíní atá in easnamh dóibh siúd nach bhfuil ag baint úsáide as Wi-Fi (#1592)
+
+* Úsáid teidil ar leith le haghaidh Updates pref agus Update tab, chun cabhrú leis an aistriúchán
+
+* Ceartúcháin Chomhéadain ó @ConnyDuck (#1636, #1618)

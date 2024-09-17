@@ -43,7 +43,7 @@
     <string name="details_notinstalled">Nie zainstalowane</string>
     <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
-    <string name="antinonfreenetlist">Ta aplikacja promuje lub całkowicie zależy od niezmiennej lub niewolnej usługi sieciowej</string>
+    <string name="antinonfreenetlist">Ta aplikacja promuje lub całkowicie zależy od niewolnej usługi sieciowej</string>
     <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
     <string name="antiupstreamnonfreelist">Upstreamowy kod źródłowy nie jest w pełni wolny</string>
     <string name="display">Wyświetlanie</string>
@@ -424,8 +424,8 @@
     <string name="sort_search">Sortuj wyszukiwanie</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Wygląda na to, że Twój aparat nie ma autofocusu. Zeskanowanie kodu może być trudne.</string>
-    <string name="show_anti_feature_apps">Uwzględniaj (trochę) niefajne aplikacje</string>
-    <string name="show_anti_feature_apps_on">Pokazuj aplikacje wymagające niepożądanych funkcji</string>
+    <string name="show_anti_feature_apps">Uwzględniaj niepożądane funkcje</string>
+    <string name="show_anti_feature_apps_on">Pokazuj aplikacje mające znane niepożądane funkcje</string>
     <string name="force_touch_apps">Uwzględniaj aplikacje z ekranem dotykowym</string>
     <string name="force_touch_apps_on">Pokazuj aplikacje wymagające ekranu dotykowego niezależnie od wsparcia sprzętowego</string>
     <string name="repo_add_mirror">Dodaj serwer lustrzany</string>
@@ -456,7 +456,7 @@
     <string name="send_version_and_uuid">Przesyłaj na serwery wersję i UUID</string>
     <string name="send_version_and_uuid_summary">Dołączaj wersję tej aplikacji i losowy, unikalny identyfikator podczas pobierania. Zacznie działać po restarcie aplikacji</string>
     <string name="share_repository">Udostępnij repozytorium</string>
-    <string name="antinosourcesince">Kod źródłowy nie jest już dostępny, nie są możliwe aktualizacje.</string>
+    <string name="antinosourcesince">Kod źródłowy nie jest już dostępny, nie są możliwe aktualizacje</string>
     <string name="send_install_history">Wyślij historię instalacji</string>
     <string name="send_history_csv">Historia instalacji %s jako plik CSV</string>
     <string name="updates_disabled_by_settings">Wszystkie aktualizacje wyłączone przez ustawienia transmisji danych/Wi-Fi</string>
@@ -531,7 +531,7 @@
     <string name="antidisabledalgorithm">Podpisany przy użyciu niebezpiecznego algorytmu</string>
     <string name="antiknownvuln">Znana podatność</string>
     <string name="antinosource">Kod źródłowy jest już niedostępny</string>
-    <string name="app_list_results_hidden_antifeature_settings">Niektóre wyniki zostały ukryte na podstawie Twoich ustawień niepożądanych funkcji.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Niektóre aplikacje są ukryte na podstawie Twoich ustawień niepożądanych funkcji. Naciśnij, aby zmienić.</string>
     <string name="antiads">Reklamy</string>
     <string name="antitrack">Śledzenie</string>
     <string name="antinonfreeassets">Niewolne zasoby</string>
@@ -615,4 +615,8 @@
     <string name="repo_and_mirror_add_both_info">URL, który próbujesz dodać (%s), jest serwerem lustrzanym nowego repozytorium. Dodane zostanie zarówno oryginalne repozytorium, jak i serwer lustrzany.</string>
     <string name="repo_mirror_add_info">URL, który próbujesz dodać (%s), jest serwerem lustrzanym istniejącego repozytorium.</string>
     <string name="warning_no_compat_versions">Wybrane repozytorium nie ma zgodnych wersji aplikacji. Aby otrzymywać aktualizacje, preferuj repozytorium z kompatybilnymi wersjami.</string>
+    <string name="auto_update_time">Najwcześniejsza następna aktualizacja: %s</string>
+    <string name="auto_update_time_past">Następna aktualizacja po spełnieniu warunków</string>
+    <string name="antitetherednet">Usługi sieciowe wykorzystujące tethering</string>
+    <string name="antitetherednetlist">Ta aplikacja całkowicie zależy od określonej instancji usługi sieciowej</string>
 </resources>

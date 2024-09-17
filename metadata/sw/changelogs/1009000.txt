@@ -1,0 +1,5 @@
+* Imeondoa msaada wa "Kiungo cha apu ya Android" kwani haiwezifanya na F-Droid, na ilikua inasababisha uvujaji wa DNS
+* Ghala za hifadhi kwa sasa ni kipaumbele cha chini kuliko ghala hio (juu kwenye skrini ya kudhibiti repo), kurekebisha masuala ambapo ilitafuta ikoni, picha za skrini na maelezo mengine kwenye hifadhi badala ya repo yenyewe.
+* Wacha kukata picha ya kichwa ya kipengele (asante @ByteHamster!)
+* Fanya upau wa urambizaji ifanane na hali ya giza (asante @MatthieuB!)
+* Imesafishwa nje msimbo wa kizamani (asante @Isira-Seneviratne!)

@@ -1,0 +1,7 @@
+* Kuviungisha kwa URLs ulioboreshwa katika maelezo ya apu
+
+* Kushughulikia ulioboreshwa wa Kadi zaSD na USG-OTG katika Karibu
+
+* Msimbo uliofanywa kisasa na PNGs zilizobadilishwa kuwa vekta (asante @isira-seneviratne!)
+
+* Tambua repo refu zaidi za URL ili kusaidia vioo vya GitCDN/RawGit/ na kadhalika

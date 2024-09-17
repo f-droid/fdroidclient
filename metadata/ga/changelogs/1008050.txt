@@ -1,0 +1,9 @@
+* cumraíocht cheada Android 10 nua chun leideanna Foinsí Anaithnid #1833 a stopadh
+* "Ceadanna scoilte" nua a láimhseáil: ciallaíonn suíomh breá suíomh garbh
+* Deisigh rogha searchbar ar leaganacha Android le déanaí (buíochas le @dkanada)
+* Socraigh rialacha cúltaca chun an repo babhtála a sheachaint
+* Osclaíonn méarchlár nuair a bhíonn an cuardach glanta
+* sioncronú aistriúcháin le teaghráin Android
+* cuir fearainn choiteanna repo i bhfeidhm ar HTTPS (GitLab, GitHub, Amazon)
+* éifeacht caighdeánach ripple ar naisc ar shonraí app
+* taispeáin deilbhín réamhshocraithe le haghaidh apps gan aon deilbhín

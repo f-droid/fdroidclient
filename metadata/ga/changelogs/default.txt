@@ -1,0 +1,8 @@
+* Roinn an t-ainm agus an achoimre i liostaí aipeanna le haghaidh inléiteacht níos fearr
+* Níl feidhmchláir atá dírithe ar SDK 24 ag luí le feistí Android 15
+* Láimhseáil scátháin sa réamhamharc "Add repo" níos fearr (Go raibh maith agat Thore!)
+* Cumasaigh nuashonruithe aipeanna gan duine ar ghléasanna Xiaomi nach bhfuil ag rith MIUI (Go raibh maith Irate!)
+* Creidtear gur teastais fréimhe a chuirtear leis an úsáideoir (Go raibh maith agat B.!)
+* Feabhas a chur ar logánú do theangacha nach bhfuil chomh coitianta (Go raibh maith agat Ray!)
+* Ná freagair clibeanna NFC mar baineadh gné NFC (Go raibh maith agat Thibault!)
+* Taispeáin rabhadh nuair nach féidir apps a nuashonrú ón repo roghnaithe

@@ -1,0 +1,21 @@
+F-Droid ni 1.0!
+
+Toleo hili inajumuisha mabadiliko mengi makubwa
+
+* Mtiririko wa kazi uliofanyiwa mabadiliko makubwa kamili kwa kusasisha apu
+
+* Maelezo na Mukhtasari wa apu inayoweza kutafsiriwa kamili
+
+* Sehemu ya "Kipi kipya" kuonyesha mabadiliko katika toleo la sasa
+
+* Picha za skrini na picha za kipengele
+
+* Msaada wa kusakinisha faili za media, OTA, ZIP, na kadhalika
+
+* Kinga iliyoboreshwa dhidi ya kufuatilia (HTTP ETag, TLS, na kadhalika)
+
+* Masasisho kamili ya usuli na kiendelezi Chenye Upendeleo
+
+* Angazia michango kwa wasanidi wa apu
+
+* Masasisho ya index iliyo haraka sana

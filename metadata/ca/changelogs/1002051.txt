@@ -1,0 +1,15 @@
+* Retalla o suprimeix automàticament la memòria cau quan l'espai d'emmagatzematge és baix
+
+* Millora del rendiment en dispositius de baixa memòria
+
+* Fer que totes les baixades respectin la preferència "Només en Wi-Fi"
+
+* Reduir l'ús de memòria quan el dispositiu s'estigui executant amb poca
+
+* Afegeix miralls personalitzats a qualsevol dipòsit fent clic a enllaços, escanejant codis QR, etc.
+
+* Moltes esmenes d'errors i millores d'Intercanvi/Nearby
+
+* Corregeix una causa de notificacions d'actualització recurrents (#121271)
+
+* Fer que l'F-Droid reconegui els URL nocturns de l'F-Droid a GitLab

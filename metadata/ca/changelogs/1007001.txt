@@ -1,5 +1,5 @@
 * S'ha revisat l'intercanvi proper mitjançant l'AP del punt d'accés del dispositiu
 
-* Afegiu noves respostes de pànic: desinstal·lació d'aplicacions i restabliment dels repositoris per defecte
+* Afegiu noves respostes de pànic: desinstal·lació d'aplicacions i restabliment dels dipòsits per defecte
 
 * Corregiu el suport de proxy al primer inici

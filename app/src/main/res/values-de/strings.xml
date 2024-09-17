@@ -56,7 +56,7 @@
     <string name="antiadslist">Diese App enthält Werbung</string>
     <string name="antitracklist">Diese App verfolgt und versendet Ihre Aktivitäten</string>
     <string name="antinonfreeadlist">Diese App bewirbt nicht-quelloffene Erweiterungen</string>
-    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-änderbaren oder nicht-quelloffenen Netzwerkdienst oder benötigt ihn zwingend</string>
+    <string name="antinonfreenetlist">Diese App bewirbt einen nicht-quelloffenen Netzwerkdienst oder benötigt ihn zwingend</string>
     <string name="antinonfreedeplist">Diese App ist abhängig von anderen nicht-quelloffenen Apps</string>
     <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig quelloffen</string>
     <string name="display">Anzeige</string>
@@ -419,8 +419,8 @@
     <string name="repo_exists_enable">%1$s ist bereits eingestellt, bestätigen Sie die erneute Aktivierung.</string>
     <string name="repo_exists_and_enabled">%1$s ist bereits eingerichtet und aktiviert.</string>
     <string name="repo_exists_add_mirror">Dies ist eine Kopie von %1$s, als Spiegelserver hinzufügen\?</string>
-    <string name="show_anti_feature_apps">Apps mit unerwünschten Merkmalen</string>
-    <string name="show_anti_feature_apps_on">Apps anzeigen, die unerwünschte Merkmale besitzen</string>
+    <string name="show_anti_feature_apps">Unerwünschte Merkmale einschließen</string>
+    <string name="show_anti_feature_apps_on">Apps anzeigen, die bekannte unerwünschte Merkmale haben</string>
     <string name="force_touch_apps">Touchscreen-Apps einbeziehen</string>
     <string name="force_touch_apps_on">Apps anzeigen, die unabhängig von der Hardwareunterstützung einen Touchscreen benötigen</string>
     <string name="repo_official_mirrors">Offizielle Spiegelserver</string>
@@ -446,7 +446,7 @@
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
     <string name="send_version_and_uuid_summary">Beim Herunterladen die Version dieser App und eine zufällige, eindeutige ID einschließen, wird beim nächsten App-Start wirksam.</string>
     <string name="share_repository">Paketquelle teilen</string>
-    <string name="antinosourcesince">Der Quellcode ist nicht mehr erhältlich, keine Aktualisierungen möglich.</string>
+    <string name="antinosourcesince">Der Quellcode ist nicht mehr erhältlich, keine Aktualisierungen möglich</string>
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>
     <string name="send_history_csv">%s Installationsverlauf als CSV-Datei</string>
@@ -519,7 +519,7 @@
     <string name="antinosource">Quellcode nicht mehr verfügbar</string>
     <string name="antiupstreamnonfree">Originalcode nicht-quelloffen</string>
     <string name="antinonfreedep">Nicht-quelloffene Abhängigkeiten</string>
-    <string name="app_list_results_hidden_antifeature_settings">Einige Ergebnisse wurden aufgrund Ihrer Einstellungen zu unerwünschten Merkmalen ausgeblendet.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Einige Apps wurden aufgrund Ihrer Einstellungen zu unerwünschten Merkmalen ausgeblendet. Berühren zum Ändern.</string>
     <string name="antiads">Werbung</string>
     <string name="antitrack">Tracking</string>
     <string name="antidisabledalgorithm">Mit einem unsicheren Algorithmus signiert</string>
@@ -601,4 +601,8 @@
     <string name="repo_mirror_add_info">Die URL, die Sie hinzufügen möchten (%s), ist ein Spiegelserver eines bestehenden Repositorys.</string>
     <string name="repo_and_mirror_add_both_info">Die URL, die Sie hinzufügen möchten (%s), ist ein Spiegelserver eines neuen Repositorys. Sowohl das ursprüngliche Repository als auch der Spiegelserver werden hinzugefügt.</string>
     <string name="warning_no_compat_versions">Die ausgewählte Paketquelle hat keine kompatiblen App-Versionen. Um Aktualisierungen zu erhalten, sollten Sie eine Paketquelle mit kompatiblen Versionen vorziehen.</string>
+    <string name="auto_update_time">Früheste nächste Aktualisierung: %s</string>
+    <string name="auto_update_time_past">Nächste Aktualisierung, wenn die Bedingungen erfüllt sind</string>
+    <string name="antitetherednet">Tethering-Netzwerkdienste</string>
+    <string name="antitetherednetlist">Diese App hängt vollständig von einer bestimmten Instanz eines Netzwerkdienstes ab</string>
 </resources>

@@ -120,7 +120,7 @@
     <string name="details_notinstalled">Pole paigaldatud</string>
     <string name="antiadslist">Selles rakenduses on reklaame</string>
     <string name="antinonfreeadlist">See rakendus edendab mitte-vabu laiendusi</string>
-    <string name="antinonfreenetlist">See rakendus sõltub või toetab mitte-muudetaval või mitte-vabal võrguteenuseid</string>
+    <string name="antinonfreenetlist">See rakendus toetab mitte-vabu võrguteenuseid või sõltub neist</string>
     <string name="antinonfreedeplist">See rakendus sõltub teistest mitte-vabadest rakendustest</string>
     <string name="antiupstreamnonfreelist">Ülesvoolu lähtekood ei ole täiesti vaba</string>
     <string name="antinonfreeassetslist">Selles rakenduses on mitte-vabu komponente</string>
@@ -445,9 +445,9 @@
     <string name="menu_open">Ava</string>
     <string name="antidisabledalgorithmlist">Sellel rakendusel on nõrk turvasignatuur</string>
     <string name="antiknownvulnlist">Sellel rakendusel on tuntud turvanõrkus</string>
-    <string name="antinosourcesince">Lähtekood ei ole enam saadaval, uuendused ei ole enam võimalikud.</string>
+    <string name="antinosourcesince">Lähtekood ei ole enam saadaval, uuendused ei ole enam võimalikud</string>
     <string name="show_anti_feature_apps">Kaasa mittesobivate omadustega rakendused</string>
-    <string name="show_anti_feature_apps_on">Kuva rakendused, mis vajavad mittesobivaid omadusi</string>
+    <string name="show_anti_feature_apps_on">Kuva rakendusi, millel leidub mittesobivaid omadusi</string>
     <string name="force_touch_apps">Kaasa puuteekraani rakendused</string>
     <string name="force_touch_apps_on">Kaasa rakendused, mis vajavad puuteekraani sõltumata riistvara toest</string>
     <string name="repo_official_mirrors">Ametlikud peeglid</string>
@@ -523,7 +523,7 @@
     <string name="antiupstreamnonfree">Mitte-vaba ülesvoolu lähtekood</string>
     <string name="antinosource">Lähtekood pole enam saadaval</string>
     <string name="antidisabledalgorithm">Allkirjastamisel on kasutatud ebaturvalist algoritmi</string>
-    <string name="app_list_results_hidden_antifeature_settings">Osa otsingutulemusi on kuvamata, sest rakendustel on funktsioone, mis sulle ei meeldi.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Osa rakendusi on peidetud, sest neil on funktsioone, mis sulle ei meeldi. Muutmiseks klõpsi.</string>
     <string name="antinonfreenet">Mitte-vabad võrguteenuseid</string>
     <string name="antinonfreead">Mitte-vabad laiendused</string>
     <string name="antinonfreeassets">Mitte-vabad komponendid</string>
@@ -606,4 +606,8 @@
     <string name="repo_mirror_add_info">URL, mida te üritate lisada (%s), on olemasoleva hoidla peegel.</string>
     <string name="repo_and_mirror_add_both_info">URL, mida te üritate lisada (%s), on uue hoidla peegel. Lisatakse nii algne hoidla kui ka peegel.</string>
     <string name="warning_no_compat_versions">Valitud tarkvarahoidlas ei ole sinu nutiseadme jaoks sobivaid rakenduse versioone. Uuenduste laadimiseks palun eelista hoidlat, kus selliseid versioone leidub.</string>
+    <string name="auto_update_time">Varaseim järgmine uuendus: %s</string>
+    <string name="auto_update_time_past">Järgmine uuendus tingimuste täitmisel</string>
+    <string name="antitetherednet">Seotud võrguteenused</string>
+    <string name="antitetherednetlist">See rakendus sõltub täielikult teatavast kindlast võrguteenusest</string>
 </resources>

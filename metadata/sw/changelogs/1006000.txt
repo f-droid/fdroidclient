@@ -1,0 +1,12 @@
+Shughulikia ruhuza za READ_EXTERNAL_STORAGE kilichomaanishwa, ambacho kinasababisha
+  vidokezo vya ruhusa kwa sakinisho zenye ugani wa upendeleo (#1702)
+
+* Data ya index imesafishwa ili kupunguza vitisho vinavyowezekana kutoka kwenye seva
+
+* "Muda wa kusoma umeisha" inasababisha utumizi wa kioo wakati masomo ni polepole
+
+* Rekebisha ikoni zinazokosa kwa zile hazitumii Wi-Fi (#1592)
+
+* Tumia vichwa tofauti kwa masasisho yanayopendelewa na kichupo cha masasisho, ili kusaidia kutafsiri
+
+Marekebisho ya UI kutoka @ConnyDuck (#1636, #1618)

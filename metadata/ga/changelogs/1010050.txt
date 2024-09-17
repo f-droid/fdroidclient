@@ -1,0 +1,7 @@
+* bain úsáid as bealaí fógra le haghaidh rialú mín (@Isira-Seneviratne)
+* Rogha teanga feabhsaithe le logaí iolracha (@spacecowboy/@bubu)
+* Taispeánfaidh an Cluaisín is déanaí torthaí níos fearr ar ghléasanna nach Béarla iad
+* nuashonruithe ar na leabharlanna lárnacha (Jackson, androidx, gradle, srl)
+* Tacaíocht lipéadú bán snas
+
+Go raibh maith agat a ranníocóirí nua! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

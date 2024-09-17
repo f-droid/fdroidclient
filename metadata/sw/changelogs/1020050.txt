@@ -1,0 +1,13 @@
+* Rekebisha kiukubwa vile repo inawakilishwa kwa watumiaji ili kuifanya wazi wakati sanikisho linakuja kutoka pahali pengine bali f-droid.org.
+
+* Kubali watumiaji kubadilisha kipaumbele ya repo kimataifa na kwa apu
+
+* Vipengele vya Kukwaza vya kawaida sasa vimewezeshwa kwa chaguo-msingi, badala ya kulemazwa.
+
+* Saidia kupokea URL za repo kupitia Share
+
+* Shughuli zote inaheshimu mandhari ya mchana/usiku
+
+* Sasisha matumizi ya hifadhi ya nje ili ifanye kazi na targetSdkVersion 29
+
+* F-Droid Basic imesasishwa ili kufanya kazi na targetSdkVersion 34

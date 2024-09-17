@@ -1,0 +1,7 @@
+* Corregeix l'ús de dipòsits i miralls de l'emmagatzematge extern en versions recents d'Android
+* Millora de la gestió de WiFi a prop
+* La barra de navegació ara recorda la seva posició fins i tot quan es reinicia F-Droid
+* Nou idioma: suahili
+* Esmenar la baixada d'imatges per a repositoris que encara utilitzen index-v1
+* Soluciona les fallades relacionades amb l'intercanvi, la gestió dels repositoris i més
+* S'ha suprimit el botó Reverteix, Android ja no ho permet

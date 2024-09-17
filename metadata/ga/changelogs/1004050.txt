@@ -1,0 +1,13 @@
+* Athchóiriú ollmhór ar an liosta "Leaganacha" in "Sonraí Feidhme", agus go leor feabhsuithe Chomhéadain eile, a bhuíochas leis an ranníocóir nua @wsdfhjxc
+
+* Deisigh loingseoireacht méarchláir/d-pad in go leor áiteanna, a bhuíochas don rannpháirtí nua @doeffinger
+
+* Taispeáin "Oscailte" a bhrú nuair a meáin suiteáilte agus viewable
+
+* Cuir cnaipe Comhroinn le "Apps Suiteáilte" chun liosta CSV a onnmhairiú
+
+* Cuir liosta APK inchliceáilte leis an leathanach innéacs HTML babhtála
+
+* Atriail íoslódálacha innéacs ó scátháin
+
+* Deisigh "Seol F-Droid trí Bluetooth" ar leaganacha Android le déanaí

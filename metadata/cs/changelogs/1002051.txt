@@ -12,4 +12,4 @@
 
 * Oprava jedné z příčin opakujících se oznámení o aktualizacích (#1271)
 
-...
+* F-Droid nyní rozpoznává F-Droid nightly adresy z GitLabu

@@ -1,0 +1,7 @@
+* Lasca curtha le RepoDetails chun aon scáthán nó gach scáthán a mhúchadh (#1696)
+
+* Rogha scáthán randamach do gach pacáiste / íoslódáil APK
+
+* Gach íoslódálacha APK i dtaisce in aghaidh an repo, ní in aghaidh an scátháin
+
+* Déan ETags Apache agus NGINX a láimhseáil agus tú ag seiceáil an bhfuil an t-innéacs reatha (#1708)

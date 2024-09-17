@@ -123,7 +123,7 @@
     <string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
     <string name="menu_changelog">Seznam změn</string>
     <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
-    <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nezměnitelné nebo nesvobodné síťové službě</string>
+    <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nesvobodné síťové službě</string>
     <string name="antinonfreedeplist">Tato aplikace závisí na dalších nesvobodných aplikacích</string>
     <string name="antiupstreamnonfreelist">Původní zdrojový kód je částečně nesvobodný</string>
     <string name="appcompatibility">Kompatibilita aplikace</string>
@@ -226,7 +226,7 @@
     <string name="interval_2w">Zjišťovat aktualizace každé 2 týdny</string>
     <string name="theme_light">Světlý</string>
     <string name="theme_dark">Tmavý</string>
-    <string name="system_install_denied_permissions">Tomuto rozšíření nebyla udělena privilegovaná oprávnění! Nahlaste prosím jako chybu!</string>
+    <string name="system_install_denied_permissions">Rozšíření nebyla udělena privilegovaná oprávnění! Nahlaste prosím jako chybu!</string>
     <string name="cache_downloaded">Uchovat aplikace v mezipaměti</string>
     <string name="menu_email">Poslat e-mail autorovi</string>
     <string name="antinonfreeassetslist">Tato aplikace obsahuje nesvobodné části</string>
@@ -421,8 +421,8 @@
     <string name="sort_search">Setřídit hledání</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Skenování kódu může být obtížné.</string>
-    <string name="show_anti_feature_apps">Zahrnout aplikace s anti-funkcemi</string>
-    <string name="show_anti_feature_apps_on">Zobrazit aplikace, které vyžadují anti-funkce</string>
+    <string name="show_anti_feature_apps">Zahrnout anti-funkce</string>
+    <string name="show_anti_feature_apps_on">Zobrazit aplikace, které mají známé anti-funkce</string>
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>
     <string name="force_touch_apps_on">Zobrazit aplikace, které vyžadují dotykovou obrazovku, i když ji toto zařízení neobsahuje</string>
     <string name="repo_add_mirror">Přidat zrcadlo</string>
@@ -453,7 +453,7 @@
     <string name="send_version_and_uuid">Odesílat verzi a UUID na servery</string>
     <string name="send_version_and_uuid_summary">Při stahování zahrnout verzi této aplikace a náhodné, jedinečné ID (projeví se při příštím restartu aplikace).</string>
     <string name="updates_disabled_by_settings">Veškeré aktualizace zakázány kvůli nastavením dat/WiFi</string>
-    <string name="antinosourcesince">Zdrojový kód již není k dispozici, aktualizace nejsou možné.</string>
+    <string name="antinosourcesince">Zdrojový kód již není k dispozici, aktualizace nejsou možné</string>
     <string name="share_repository">Sdílet repozitář</string>
     <string name="about_forum">Fórum podpory</string>
     <string name="app_suggested">Doporučeno</string>
@@ -523,7 +523,7 @@
     <string name="antiknownvuln">Známá zranitelnost</string>
     <string name="antitrack">Sledování</string>
     <string name="antinonfreenet">Nesvobodné síťové služby</string>
-    <string name="app_list_results_hidden_antifeature_settings">Některé výsledky byly skryty na základě nastavení Anti-funkcí.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Některé aplikace byly skryty na základě vašeho nastavení anti-funkcí. Klepněte pro změnu.</string>
     <string name="antinonfreead">Nesvobodné doplňky</string>
     <string name="antinonfreedep">Nesvobodné závislosti</string>
     <string name="antiupstreamnonfree">Nesvobodný původní zdroj</string>
@@ -608,4 +608,8 @@
     <string name="repo_and_mirror_add_both_info">Adresa, kterou se snažíte přidat (%s), je zrcadlem nového repozitáře. Bude přidán původní repozitář i zrcadlo.</string>
     <string name="repo_add_repo_and_mirror">Přidat repozitář jako zrcadlo</string>
     <string name="warning_no_compat_versions">Zvolený repozitář nemá žádné kompatibilní verze aplikací. Pro získávání aktualizací upřednostněte repozitář s kompatibilními verzemi.</string>
+    <string name="auto_update_time">Nejbližší příští aktualizace: %s</string>
+    <string name="auto_update_time_past">Další aktualizace po splnění podmínek</string>
+    <string name="antitetherednet">Nezměnitelné síťové služby</string>
+    <string name="antitetherednetlist">Tato aplikace zcela závisí na určité instanci síťové služby</string>
 </resources>

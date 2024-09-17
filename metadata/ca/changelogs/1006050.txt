@@ -1,0 +1,13 @@
+* L'última pestanya ara ressalta les aplicacions que proporcionen descripcions, traduccions, captures de pantalla
+
+* Auto-descàrrega de miralls, per agilitzar les baixades i reduir la càrrega a f-droid.org
+
+* Desactiva les rèpliques amb commutadors nous a RepoDetails (#161696)
+
+* Ús més eficient de la memòria cau de baixades (per-dipòsit; a través de diferents servidors web #171708)
+
+* Corregeix les instal·lacions que requereixen fonts desconegudes amb l'extensió Privileged (#171702)
+
+* Esmenar les icones que manquen pels que no utilitzen Wi-Fi (#151592)
+
+* S'han millorat les traduccions per a la pestanya Actualitzacions vs preferència

@@ -1,0 +1,5 @@
+* Marekebesho makubwa ya jumla ya mantiki ya kupakua kwa utendaji ulioboreshwa na kusaidia vioo.
+
+* Picha za skrini na michoro kwa sasa inapakuliwa kutoka kwa vioo.
+
+* Ilipunguza uvijaji wa faragha na vikao vya TLS

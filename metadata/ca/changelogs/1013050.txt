@@ -1,0 +1,17 @@
+* Suport de temes lligats a temes Android integrats (@toproletarius101)
+
+* Noves notificacions de bàner superior: "Sense Internet" i "Sense Dades o WiFi activats"
+
+* Millora de la gestió dels repositoris i miralls USB-OTG i SD Card
+
+* Atura les actualitzacions repetides de la biblioteca Trichrome
+
+* Més canvis per seguir Material Design ( toproletarius101)
+
+* Millora la insígnia OpenCollective (@ConnyDuck)
+
+* Redissenya la càrrega d'icones utilitzant el Glide (@proletarius101)
+
+* Icona adaptativa nova (@12persones)
+
+* Modernització del codi (@Isira-Seneviratne)

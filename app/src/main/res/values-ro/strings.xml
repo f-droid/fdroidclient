@@ -81,7 +81,7 @@
     <string name="search_hint">Caută aplicații</string>
     <string name="antinonfreeassetslist">Aceasta aplicație conține resurse ce nu sunt la disponibile la liber</string>
     <string name="antinonfreedeplist">Aplicația depinde de alte aplicații ce nu sunt software liber</string>
-    <string name="antinonfreenetlist">Aplicația promovează sau depinde în întregime de un serviciu de rețea care nu poate fi schimbat sau care nu este liber</string>
+    <string name="antinonfreenetlist">Aplicația promovează servicii de rețea ce nu sunt accesibile la liber</string>
     <string name="antinonfreeadlist">Aplicația promovează anexe ce nu sunt software liber</string>
     <string name="antitracklist">Aplicația îți înregistrează și raportează activitatea undeva</string>
     <string name="menu_flattr">Flattr</string>
@@ -414,7 +414,7 @@
     <string name="warning_scaning_qr_code">Camera foto a dispozitivului nu pare să suporte focalizare automată. Ar putea fi dificil să se scaneze codul.</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="show_anti_feature_apps">Include caracteristici periculoase</string>
-    <string name="show_anti_feature_apps_on">Se listează și aplicațiile ce prezintă caracteristici periculoase (ex. urmărire)</string>
+    <string name="show_anti_feature_apps_on">Listează aplicații ce prezintă caracteristici periculoase</string>
     <string name="force_touch_apps">Include ecran tactil</string>
     <string name="force_touch_apps_on">Se listează și aplicațiile ce necesită un ecran tactil indiferent dacă dispozitivul suportă sau nu</string>
     <string name="repo_add_mirror">Adaugă oglindă</string>
@@ -450,7 +450,7 @@
     <string name="system_install_denied_permissions">Nu au fost date permisiuni privilegiate extensiei! Vă rugăm să creeați un raport de eroare!</string>
     <string name="swap_intro">Conectați-vă și faceți schimb de aplicații cu persoane din apropiere.</string>
     <string name="swap_join_same_wifi_desc">Pentru a face schimb prin Wi-Fi, asigurați-vă ca sunteți conectați la aceeași rețea. Dacă nu aveți acces la o rețea comună, unul(a) dintre voi poate crea un punct de acces Wi-Fi.</string>
-    <string name="antinosourcesince">Codul sursă nu mai este disponibil, nu mai există posibilitatea de a actualiza.</string>
+    <string name="antinosourcesince">Codul sursă nu mai este disponibil, nu mai există posibilitatea de a actualiza</string>
     <string name="send_install_history">Trimite istoricul instalărilor</string>
     <string name="send_history_csv">%s istoric instalări ca fișier CSV</string>
     <string name="updates_disabled_by_settings">Toate actualizările sunt oprite din setările de date mobile/Wi-Fi</string>
@@ -525,10 +525,10 @@
     <string name="antiknownvuln">Vulnerabilitate cunoscută</string>
     <string name="antinosource">Surse indisponibile</string>
     <string name="antinonfreeassets">Resurse ne-libere</string>
-    <string name="app_list_results_hidden_antifeature_settings">Unele rezultate au fost ascunse în funcție de setările caracteristicilor negative.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Unele aplicații sunt ascunse în funcție de setările caracteristicilor periculoase. Atingeți pentru a configura.</string>
     <string name="antinonfreead">Anexe ne-libere</string>
     <string name="antinonfreenet">Servicii de rețea ne-libere</string>
-    <string name="antiothers">Alte Anti-features</string>
+    <string name="antiothers">Alte caracteristici</string>
     <string name="antinsfw">Nerecomandat la locul de muncă</string>
     <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
     <string name="latest__empty_state__upgrading">Se actualizează baza de date…</string>
@@ -607,4 +607,8 @@
     <string name="repo_mirror_exists">Acest server de rezervă a fost deja adăugat (%s).</string>
     <string name="repo_mirror_add_info">Adresa pe care încercați să o adăugați (%s) este un server de rezervă al unui depozit existent.</string>
     <string name="warning_no_compat_versions">Depozitul selectat nu are versiuni compatibile ale aplicației. Pentru a primi actualizări, preferați un depozit cu versiuni compatibile.</string>
+    <string name="auto_update_time">Cea mai apropiată actualizare viitoare: %s</string>
+    <string name="auto_update_time_past">Următoarea actualizare când sunt îndeplinite condițiile</string>
+    <string name="antitetherednetlist">Această aplicație depinde în întregime de o anumită instanță a unui serviciu de rețea</string>
+    <string name="antitetherednet">Servicii de rețea captive</string>
 </resources>

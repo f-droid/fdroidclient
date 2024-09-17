@@ -1,0 +1,4 @@
+* láimhseáil cumraíocht cead Android 10 chun leideanna Foinsí Anaithnid a stopadh
+* Osclaíonn méarchlár nuair a bhíonn an cuardach glanta
+* sioncronú aistriúcháin le teaghráin Android
+* cuir fearainn choiteanna repo i bhfeidhm ar HTTPS (GitLab, GitHub, Amazon)

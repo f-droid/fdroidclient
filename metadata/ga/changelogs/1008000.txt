@@ -1,0 +1,3 @@
+* Deisigh rogha searchbar ar leaganacha Android le déanaí (buíochas le @dkanada)
+* Déileáil le ceadanna scoilte API 29: tá suíomh garbh le tuiscint anois ó shuíomh breá
+* Sainmhínigh rialacha cúltaca chun an repo babhtála a sheachaint

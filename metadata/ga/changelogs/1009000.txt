@@ -1,0 +1,5 @@
+* Baineadh tacaíocht "Android App Link" ós rud é nach féidir leis oibriú le F-Droid, agus bhí sé ag spreagadh sceitheanna DNS.
+* Tá tosaíocht níos ísle ag Cartlann Repos anois ná ag an Repo (níos airde ar an scáileán Manage Repos), ag réiteach saincheisteanna inar lorg sé deilbhíní, scáileáin agus faisnéis eile sa Chartlann seachas an Repo féin.
+* Cuir stop le híomhá ceanntásc gné a bhearradh (buíochas le @ByteHamster!)
+* Déan an barra nascleanúna a mheaitseáil leis an modh dorcha (buíochas le @MatthieuB!)
+* Cód as feidhm glanta (buíochas le @Isira-Seneviratne!)

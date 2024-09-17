@@ -50,7 +50,7 @@
     <string name="antiadslist">此应用包含广告</string>
     <string name="antitracklist">此应用会记录并报告你的活动</string>
     <string name="antinonfreeadlist">此应用推广非自由的附加组件</string>
-    <string name="antinonfreenetlist">此应用推广或完全依赖于不可更改或非自由的网络服务</string>
+    <string name="antinonfreenetlist">此应用推广或完全依赖于非自由的网络服务</string>
     <string name="antinonfreedeplist">此应用依赖于其它非自由应用</string>
     <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
@@ -395,7 +395,7 @@
     <string name="hide_on_long_search_press_summary">长按搜索按钮将隐藏此应用</string>
     <string name="warning_scaning_qr_code">你的相机似乎没有自动对焦。扫描二维码可能较为困难。</string>
     <string name="show_anti_feature_apps">包括带有负面特征的应用</string>
-    <string name="show_anti_feature_apps_on">显示包含负面特征的应用</string>
+    <string name="show_anti_feature_apps_on">显示有已知负面特征的应用</string>
     <string name="repo_add_mirror">添加镜像</string>
     <string name="force_touch_apps">包括触屏应用</string>
     <string name="force_touch_apps_on">显示需要触屏的应用，无论硬件是否支持</string>
@@ -421,7 +421,7 @@
     <string name="hide_all_notifications">隐藏所有通知</string>
     <string name="install_history">安装历史</string>
     <string name="send_version_and_uuid">将版本和 UUID 发送到服务器</string>
-    <string name="antinosourcesince">源代码不再可用，无法更新。</string>
+    <string name="antinosourcesince">源代码不再可用，不可能有更新</string>
     <string name="hide_all_notifications_summary">阻止所有活动在状态栏和通知菜单中显示。</string>
     <string name="send_install_history">发送安装历史</string>
     <string name="send_history_csv">%s 安装历史为 CSV 文件</string>
@@ -496,7 +496,7 @@
     <string name="antiknownvuln">含有已知漏洞</string>
     <string name="antiads">广告</string>
     <string name="antinonfreead">非自由附加组件</string>
-    <string name="app_list_results_hidden_antifeature_settings">根据你的负面特征设置，一些结果被隐藏了。</string>
+    <string name="app_list_results_hidden_antifeature_settings">根据你的负面特征设置，一些应用被隐藏了。轻触更改设置。</string>
     <string name="antinonfreenet">非自由网络服务</string>
     <string name="antitrack">追踪用户</string>
     <string name="antinonfreeassets">非自由资产</string>
@@ -537,7 +537,7 @@
     <string name="force_old_installer_summary">禁用会话安装器，包括对自动后台更新的支持。</string>
     <string name="copied_to_clipboard">已复制到剪贴板</string>
     <string name="copied_permission_to_clipboard">已复制权限名到剪贴板</string>
-    <string name="copied_url_to_clipboard">已复制链接到剪贴板</string>
+    <string name="copied_url_to_clipboard">已复制 URL 到剪贴板</string>
     <string name="targetsdk_or_later">目标 SDK 版本 %s</string>
     <string name="repo_num_apps_button">显示应用</string>
     <string name="ipfsgw_caption_official_gateways">官方 IPFS 网关</string>
@@ -574,11 +574,15 @@
     <string name="repo_disable_warning">停用此存储库会从所有应用去除其“首选”状态。</string>
     <string name="app_details_repository_preferred">（首选）</string>
     <string name="repo_preview_included_apps">包含的应用：</string>
-    <string name="repo_and_mirror_add_both_info">你正尝试添加的 URL (%s）是新存储库的镜像。原始存储库和镜像都将被添加。</string>
+    <string name="repo_and_mirror_add_both_info">你正尝试添加的 URL (%s) 是一个新存储库的镜像。原始存储库和此镜像都将被添加。</string>
     <string name="repo_add_repo_and_mirror">添加存储库和镜像</string>
     <string name="repo_view_repo">查看存储库</string>
     <string name="repo_scan_qr_code">扫描二维码</string>
-    <string name="repo_mirror_exists">此镜像已存在（%s）。</string>
-    <string name="repo_mirror_add_info">你正尝试添加的 URL （%s）是现有存储库的镜像。</string>
+    <string name="repo_mirror_exists">此镜像已存在 (%s)。</string>
+    <string name="repo_mirror_add_info">你正尝试添加的 URL (%s) 是一个现有存储库的镜像。</string>
     <string name="warning_no_compat_versions">所选的存储库没有兼容的应用版本。要接收更新，请首选有兼容版本的存储库。</string>
+    <string name="auto_update_time">下次更新最早时间：%s</string>
+    <string name="auto_update_time_past">条件满足时进行下次更新</string>
+    <string name="antitetherednetlist">此用用完全依赖某一网络服务的特定实例</string>
+    <string name="antitetherednet">和特定网络服务深度捆绑</string>
 </resources>

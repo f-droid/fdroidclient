@@ -1,15 +1,13 @@
-* Récupération et manipulation de miroirs, UX et code
+* Refonte de la façon dont les dépôts sont représentés aux utilisateurs afin de préciser quand une installation provient d'un autre endroit que f-droid.org.
 
-* Afficher l'aperçu du nouveau dépôt
+* Les utilisateurs peuvent désormais modifier la priorité des dépôts globalement et par application.
 
-* L'installation avec F-Droid et F-Droid Basic prend en charge les mises à jour automatiques en arrière-plan
+* Les anti-fonctionnalités sont désormais activées par défaut, plutôt que désactivées.
 
-* Sur Android 14, marquer les applications avec la version SDK non supportée comme incompatibles #2692
+* Prise en charge de la réception d'URL de dépôts via le partage.
 
-* Clic-long pour copier les Liens, les Permissions et les Versions sur l'écran Détails de l'application (@Tobias_Groza)
+* Toutes les activités respectent le thème jour/nuit.
 
-* Les applications incompatibles ne sont affichées que dans les paramètres #41 (@pigpig)
+* Mise à jour des utilisations du stockage externe pour fonctionner avec targetSdkVersion 29.
 
-* Nouveaux paramètres IPFS
-
-* Sélection de langues par application (@Licaon-Kter)
+* F-Droid Basic mis à jour pour fonctionner avec targetSdkVersion 34.

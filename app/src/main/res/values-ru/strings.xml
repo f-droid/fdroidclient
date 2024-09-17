@@ -214,7 +214,7 @@
     <string name="uninstall_update_confirm">Установить исходную версию приложения\? Все его данные будут удалены.</string>
     <string name="uninstall_confirm">Удалить приложение\?</string>
     <string name="download_error">Загрузка не удалась!</string>
-    <string name="perms_new_perm_prefix">Новые:</string>
+    <string name="perms_new_perm_prefix">Новое:</string>
     <string name="crash_dialog_title">Произошел сбой F-Droid</string>
     <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Хотите отправить письмо с подробностями, чтобы помочь исправить эту ошибку\?</string>
     <string name="crash_dialog_comment_prompt">Здесь вы можете добавить дополнительную информацию и комментарии:</string>
@@ -318,10 +318,10 @@
     <string name="app_recommended_version_installed">Версия %1$s (Рекомендована)</string>
     <string name="app__install_downloaded_update">Обновить</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Скачать обновления для %1$d приложения.</item>
-        <item quantity="few">Скачать обновления для %1$d приложений.</item>
-        <item quantity="many">Скачать обновления для %1$d приложений.</item>
-        <item quantity="other">Скачать обновления для %1$d приложений.</item>
+        <item quantity="one">Скачать обновление для %1$d приложения:</item>
+        <item quantity="few">Скачать обновления для %1$d приложений:</item>
+        <item quantity="many">Скачать обновления для %1$d приложений:</item>
+        <item quantity="other">Скачать обновления для %1$d приложений:</item>
     </plurals>
     <string name="app_list__name__downloading_in_progress">%1$s загружается</string>
     <string name="updates__tts__download_app">Скачать</string>
@@ -391,10 +391,10 @@
     <string name="app_installed_media">Файл установлен в %s</string>
     <string name="app_permission_storage">Для установки в хранилище F-Droid необходимо соответствующее разрешение. Его можно предоставить на следующем экране.</string>
     <string name="app_details__incompatible_mismatched_signers">У установленной версии другая подпись</string>
-    <string name="app_details__no_versions__show_incompat_versions">Чтобы показать несовместимые версии включите параметр \"%1$s\".</string>
+    <string name="app_details__no_versions__show_incompat_versions">Для отображения несовместимых версий включите в настройках \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">Нет версий с совместимой подписью</string>
     <string name="app_details__no_versions__none_compatible_with_device">Нет версий, совместимых с устройством</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">Установленная версия не совместима ни с одной из доступных версий. Удаление приложения позволит вам просмотреть и установить совместимые версии. Это часто происходит с приложениями, установленными из Google Play или других источников, если они подписаны другим сертификатом.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">Установленная версия не совместима ни с одной из доступных версий. Удалив приложение, вы сможете просмотреть и установить совместимые версии. Такое часто случается с приложениями, установленными из Google Play или других источников, подписанных другим сертификатом.</string>
     <string name="app_list__dismiss_app_update">Обновление игнорируется</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимость игнорируется</string>
     <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
@@ -461,7 +461,7 @@
     <string name="send_version_and_uuid">Отправить версию и UUID на сервер</string>
     <string name="send_version_and_uuid_summary">Включить версию этого приложения и случайный уникальный ID. Изменения вступят в силу после перезапуска.</string>
     <string name="share_repository">Поделиться репозиторием</string>
-    <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны.</string>
+    <string name="antinosourcesince">Исходный код больше недоступен, обновления невозможны</string>
     <string name="send_install_history">Отправить историю установок</string>
     <string name="send_history_csv">История установок %s в виде CSV-файла</string>
     <string name="updates_disabled_by_settings">Все обновления отключены из-за настроек передачи данных</string>
@@ -569,7 +569,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid может искать репозитории и зеркала на SD-карте, но для этого необходимо ваше разрешение.</string>
     <string name="swap_connection_indexv0_error">Вы пытаетесь подключиться к устройству с устаревшей версией F-Droid. Перед подключением следует обновить F-Droid. Вы можете отправить актуальную версию F-Droid с вашего устройства.</string>
     <string name="force_old_installer_title">Принудительно использовать старый установщик</string>
-    <string name="force_old_installer_summary">Отключить бета-версию установщика, включая поддержку автоматических фоновых обновлений.</string>
+    <string name="force_old_installer_summary">Отключить сессионный установщик, включая поддержку автоматических фоновых обновлений.</string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="copied_permission_to_clipboard">Название разрешения скопировано в буфер обмена</string>
     <string name="copied_url_to_clipboard">URL скопирован в буфер обмена</string>
@@ -584,10 +584,10 @@
     <string name="ipfsgw_explainer">Загружать приложения с конечных веб-точек IPFS. (Работает только для репозиториев F-Droid, поддерживающих IPFS.)</string>
     <string name="ipfsgw_add_title">Добавить шлюз IPFS</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Загрузка %1$d приложения из конечных веб-точек IPFS включена</item>
-        <item quantity="few">Загрузка %1$d приложений из конечных веб-точек IPFS включена</item>
-        <item quantity="many">Загрузка %1$d приложений из конечных веб-точек IPFS включена</item>
-        <item quantity="other">Загрузка %1$d приложений из конечных веб-точек IPFS включена</item>
+        <item quantity="one">Загрузка приложений из %1$d конечной веб-точки IPFS включена</item>
+        <item quantity="few">Загрузка приложений из %1$d конечных веб-точек IPFS включена</item>
+        <item quantity="many">Загрузка приложений из %1$d конечных веб-точек IPFS включена</item>
+        <item quantity="other">Загрузка приложений из %1$d конечных веб-точек IPFS включена</item>
     </plurals>
     <string name="app_details_repositories">Репозитории</string>
     <string name="app_details_repository">Репозиторий</string>
@@ -602,7 +602,7 @@
     <string name="repo_archive_toggle">Архив репозитория</string>
     <string name="repo_archive_toggle_description">Отображать архивные и устаревшие версии приложений</string>
     <string name="repo_archive_failed">Архивный репозиторий сейчас недоступен</string>
-    <string name="app_details_repository_preferred">(предпочтителен)</string>
+    <string name="app_details_repository_preferred">(выбран)</string>
     <string name="repo_error_adding_archive">Архивные репозитории не могут быть добавлены напрямую. Нажмите на репозиторий из списка и включите в нем архив.</string>
     <string name="repo_list_info_text">Репозиторий — это источник приложений. В этом списке отображаются все добавленные репозитории. Отключенные репозитории не используются.
 \n
@@ -610,4 +610,13 @@
     <string name="repo_disable_warning">Отключение этого репозитория удалит его статус \"предпочтительный\" из всех приложений.</string>
     <string name="repo_disable_warning_button">Отключить</string>
     <string name="repo_share_not_found">Не удалось найти адрес репозитория в общем тексте.</string>
+    <string name="repo_add_repo_and_mirror">Добавить репозиторий и зеркало</string>
+    <string name="repo_view_repo">Посмотреть репозиторий</string>
+    <string name="repo_preview_included_apps">Включенные приложения:</string>
+    <string name="repo_mirror_exists">Это зеркало уже было добавлено (%s).</string>
+    <string name="repo_mirror_add_info">URL, который вы пытаетесь добавить (%s) является зеркалом существующего репозитория.</string>
+    <string name="repo_and_mirror_add_both_info">URL, который вы пытаетесь добавить (%s) является зеркалом нового репозитория. Будут добавлены оригинальный репозиторий и зеркало.</string>
+    <string name="repo_scan_qr_code">Сканировать QR-код</string>
+    <string name="auto_update_time">Ближайшее следующее обновление: %s</string>
+    <string name="warning_no_compat_versions">В выбранном репозитории нет совместимых версий приложений. Чтобы получать обновления, выбирайте репозиторий с совместимыми версиями.</string>
 </resources>

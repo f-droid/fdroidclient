@@ -1,0 +1,3 @@
+* Rekebisha upendeleo wa upau wa kutafuta kwenye toleo la hivi karibuni wa Android (Asante @dkanada)
+* Shughulikia ruhusa-gawanya za API 29: eneo laini sasa inamaanisha eneo kali
+* Bainisha sheria za chelezo ili kukwepa kuhifadhi ghala ya badilisha

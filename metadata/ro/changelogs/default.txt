@@ -1,13 +1,8 @@
-* Revizuirea modului în care sunt reprezentate depozitele pentru utilizatori pentru a fi clar când o instalare vine din altă parte decât de pe f-droid.org.
-
-* Permiteți utilizatorilor să schimbe prioritatea depozitului la nivel global și pentru fiecare aplicație.
-
-* Anti-funcții personalizate sunt acum activate în mod implicit, în loc să fie dezactivate
-
-* Suport pentru primirea URL-urilor depozitelor prin Partajare
-
-* Toate activitățile respectă tema zi/noapte
-
-* Actualizați utilizările de stocare externă pentru a funcționa cu targetSdkVersion 29
-
-* F-Droid Basic a fost actualizat pentru a funcționa cu targetSdkVersion 34
+* Împărțiți numele și rezumatul în listele de aplicații pentru o mai bună lizibilitate
+* Aplicațiile care vizează SDK 24 sunt incompatibile cu dispozitivele Android 15
+* Gestionați mai bine depozitele de rezervă în previzualizarea "Adaugă depozit" (Mulțumesc Thore!)
+* Activați actualizările de aplicații nesupravegheate pe dispozitivele Xiaomi care nu rulează MIUI (Mulțumesc Irate!)
+* Încredere în certificatele rădăcină adăugate de utilizator (Mulțumesc B.!)
+* Îmbunătățiți localizarea pentru limbile mai puțin frecvente (Mulțumesc Ray!)
+* Nu reacționa la etichetele NFC deoarece funcția NFC a fost eliminată (Mulțumesc Thibault!)
+* Afișează un avertisment atunci când aplicațiile nu pot fi actualizate din depozitul preferat

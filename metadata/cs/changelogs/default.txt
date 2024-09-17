@@ -1,13 +1,8 @@
-* Přepracován způsob představení repozitářů uživateli, aby bylo jasné, kdy aplikace pochází z jiného zdroje než z f-droid.org
-
-* Přidána možnost změny priority repozitářů (globálně i individuálně)
-
-* Vlastní anti-vlastnosti jsou nyní ve výchozím nastavení povoleny
-
-* Podpora získání URL repozitářů z nabídky Sdílení
-
-* Všechny aktivity respektují denní/noční motiv
-
-* Upraveno použití externích úložišť pro podporu targetSdkVersion 29
-
-* F-Droid Basic aktualizován s podporou targetSdkVersion 34
+* Rozdělen název a souhrn v sezn. aplik. pro lepší čitelnost
+* Aplik. cílící na SDK 24 jsou nekompat. se zařízeními Android 15
+* Lepší zprac. zrcadel v náhledu „Přidat repozitář“ (Díky Thore!)
+* Povolení akt. aplik. na pozadí na zař. Xiaomi bez MIUI (Díky Irate!)
+* Důvěra v uživ. přidané koř. cert. (Díky B.!)
+* Zlepšena lokal. pro méně obvyklé jazyky (Díky Ray!)
+* Nereag. na NFC tagy z dův. odebrání funkce NFC (Díky Thibaulte!)
+* Zobr. varování, když nelze aplikaci aktual. z prefer. repozitáře

@@ -1,0 +1,7 @@
+* Imerekebisha kutumia ghala na vioo kutoka kwa Hifadhi ya Nje kwenye matoleo ya hivi karibuni ya Android
+* Imeboresha usimamizi wa WiFi katika Nearby
+* Upau huo wa urambizaji sasa inakumbuka msimamo wake hata kama F-Droid inaanza tena
+* Lugha mpya: Swahili
+* Rekebisha kupakua mapicha kwa ghala ambazo bado zinatumia faharasa-v1
+* Rekebisha ajali zinazohusiana na badilisha, kusimamia ghala na mengi
+* Kitufe hicho cha punguza ilitolewa, Android tena haikubali hio

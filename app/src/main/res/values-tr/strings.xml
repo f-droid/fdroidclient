@@ -56,7 +56,7 @@
     <string name="antiadslist">Bu uygulama reklam içerir</string>
     <string name="antitracklist">Bu uygulama etkinliğinizi izler ve bildirir</string>
     <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentilere teşvik eder</string>
-    <string name="antinonfreenetlist">Bu uygulama değiştirilemeyen veya özgür olmayan bir ağ hizmetine teşvik eder veya tamamen buna bağlıdır</string>
+    <string name="antinonfreenetlist">Bu uygulama özgür olmayan bir ağ hizmetine teşvik eder veya tamamen buna bağlıdır</string>
     <string name="antinonfreedeplist">Bu uygulama özgür olmayan başka uygulamalara bağımlıdır</string>
     <string name="antiupstreamnonfreelist">Kaynak kod tamamen özgür değildir</string>
     <string name="display">Görüntüleme</string>
@@ -408,8 +408,8 @@
     <string name="sort_search">Aramayı sırala</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Kameranızın kendiliğinden odaklanması yok gibi görünüyor. Kodu taramak zor olabilir.</string>
-    <string name="show_anti_feature_apps">Karşıt-özellikli uygulamaları içer</string>
-    <string name="show_anti_feature_apps_on">Karşıt-özellikler gerektiren uygulamaları göster</string>
+    <string name="show_anti_feature_apps">Karşıt-Özellikleri İçer</string>
+    <string name="show_anti_feature_apps_on">Bilinen karşıt-özelliklere sahip uygulamaları göster</string>
     <string name="force_touch_apps">Dokunmatik ekran uygulamalarını içer</string>
     <string name="force_touch_apps_on">Donanım desteğinden bağımsız olarak dokunmatik ekran gerektiren uygulamaları göster</string>
     <string name="repo_add_mirror">Yansıma ekle</string>
@@ -440,7 +440,7 @@
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
     <string name="send_version_and_uuid_summary">İndirirken bu uygulamanın sürümünü ve rastgele benzersiz bir kimliği ekle, bir sonraki uygulama yeniden başlamasıyla etkin olur.</string>
     <string name="share_repository">Depoyu Paylaş</string>
-    <string name="antinosourcesince">Kaynak kodu artık mevcut değil, güncelleme mümkün değil.</string>
+    <string name="antinosourcesince">Artık kullanılabilir bir kaynak kodu yok, güncelleme mümkün değil</string>
     <string name="send_install_history">Yükleme Geçmişini Gönder</string>
     <string name="send_history_csv">%s geçmişi CSV dosyası olarak yükle</string>
     <string name="updates_disabled_by_settings">Tüm güncellemeler Veri/Kablosuz Ayarları tarafından devre dışı bırakıldı</string>
@@ -510,7 +510,7 @@
     <string name="antinonfreedep">Özgür Olmayan Bağlılıklar</string>
     <string name="antiads">Reklam</string>
     <string name="antinonfreeassets">Özgür Olmayan İçerikler</string>
-    <string name="app_list_results_hidden_antifeature_settings">Bazı sonuçlar, karşıt-özellik ayarlarınıza göre gizlendi.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Bazı uygulamalar, karşıt-özellik ayarlarınıza göre gizlendi. Değiştirmek için dokunun.</string>
     <string name="antinonfreenet">Özgür Olmayan Ağ Hizmetleri</string>
     <string name="antitrack">İzleme</string>
     <string name="antinonfreead">Özgür Olmayan Eklentiler</string>
@@ -518,7 +518,7 @@
     <string name="antiupstreamnonfree">Üst Kod Özgür Değil</string>
     <string name="antiknownvuln">Bilinen Güvenlik Açığı</string>
     <string name="antinosource">Kaynak Kodu Artık Yok</string>
-    <string name="antiothers">Diğer Karşıt-özellikler</string>
+    <string name="antiothers">Diğer Karşıt-Özellikler</string>
     <string name="antinsfw">İş için Güvenli Değil</string>
     <string name="menu_release_channel_beta">Beta Güncellemelerine İzin Ver</string>
     <string name="latest__empty_state__upgrading">Veri tabanı yükseltiliyor…</string>
@@ -534,7 +534,7 @@
     <string name="repo_invalid">Geçersiz depo.
 \n
 \nGeliştirencisi iletişime geçin ve onlara sorun hakkında bilgi verin.</string>
-    <string name="repo_exists">Bu depo zaten eklenmiş.</string>
+    <string name="repo_exists">Bu depo zaten eklendi.</string>
     <string name="repo_add_new_title">Depo ekle</string>
     <string name="repo_state_fetching">Depo getiriliyor…</string>
     <string name="repo_io_error">Depoya bağlanırken hata oluştu.</string>
@@ -587,4 +587,16 @@
     <string name="repo_disable_warning">Bu deponun devre dışı bırakılması, tüm uygulamalardan \"tercih edilen\" durumunu kaldıracaktır.</string>
     <string name="repo_disable_warning_button">Devre dışı bırak</string>
     <string name="app_details_repository_preferred">(tercih edilen)</string>
+    <string name="repo_add_repo_and_mirror">Depo ve yansı ekle</string>
+    <string name="repo_view_repo">Depoyu görüntüle</string>
+    <string name="repo_scan_qr_code">QR Kodunu Tarayın</string>
+    <string name="repo_preview_included_apps">İçerdiği uygulamalar:</string>
+    <string name="repo_and_mirror_add_both_info">Eklemeye çalıştığınız URL (%s) yeni bir deponun yansısıdır. Hem orijinal depo hem de yansı eklenecektir.</string>
+    <string name="repo_mirror_exists">Bu yansı zaten eklendi (%s).</string>
+    <string name="repo_mirror_add_info">Eklemeye çalıştığınız URL (%s), var olan bir deponun yansısıdır.</string>
+    <string name="auto_update_time">Sonraki en erken güncelleme: %s</string>
+    <string name="warning_no_compat_versions">Seçilen depoda uyumlu uygulama sürümleri yok. Güncellemeleri almak için uyumlu sürümleri olan bir depoyu tercih edin.</string>
+    <string name="auto_update_time_past">Koşullar sağlandığında bir sonraki güncelleme</string>
+    <string name="antitetherednet">Bağlı Ağ Hizmetleri</string>
+    <string name="antitetherednetlist">Bu uygulama tamamen belirli bir ağ hizmetinin örneğine bağlıdır</string>
 </resources>

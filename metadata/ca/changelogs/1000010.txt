@@ -1,0 +1,21 @@
+L'F-Droid és 1.0!
+
+Aquest llançament inclou molts canvis importants:
+
+* Flux de treball complet per actualitzar aplicacions
+
+* Resums i descripcions d'aplicacions completament traduïbles
+
+* Secció «Què és nou» per a mostrar els canvis en el llançament actual
+
+* Captures de pantalla i gràfics de característiques
+
+* Permet instal·lar fitxers multimèdia, OTA, ZIP, etc.
+
+* Millora de la protecció contra el seguiment (HTTP ETag, TLS, etc.)
+
+* Actualitzacions completes en segon pla amb l'extensió Privileged
+
+* Ressalta els donatius als desenvolupadors d'aplicacions
+
+* Actualitzacions d'índex molt més ràpides

@@ -1,7 +1,7 @@
-* Suport per a miralls oficials per a qualsevol repo, amb selecció automàtica en funció de la disponibilitat
+* Suport per a miralls oficials per a qualsevol dipòsit, amb selecció automàtica en funció de la disponibilitat
 
-* Molt polit d'interfície d'usuari, així com estabilitat i esfixes d'errors
+* Molt polit d'interfície, així com estabilitat i esmenes d'errors
 
-* Noves prefs de privadesa: eviteu captures de pantalla; Sortida en pànic
+* Noves preferències de privadesa: eviteu captures de pantalla; Sortida en pànic
 
 * Nous idiomes: coreà (ko) i vietnamita (vi)

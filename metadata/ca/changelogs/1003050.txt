@@ -1,0 +1,19 @@
+* Botons i actualitzacions d'estat més fiables
+
+* Revisió de la configuració incloent-hi nous controls d'ús de dades
+
+* Operació de fons conscient de la bateria a l'Android 5.0 i posteriors
+
+* Compartir l'element del menú pels repositoris
+
+* Desactivar els informes de fallada a la configuració
+
+* Instal·lar el visor de l'historial quan el registre estigui habilitat
+
+* Llista de característiques no adients clicables, afegida NoSourceSince (SenseFontDesDe)
+
+* L'Android 4.0 és ara el mínim soportat 
+
+* Grans millores per a les versions personalitzades de l'F-Droid de etiqueta blanca
+
+* Configuració experta per enviar la versió de depuració+UUID en baixar

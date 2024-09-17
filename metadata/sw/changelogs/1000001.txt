@@ -1,0 +1,3 @@
+* Rekebisha apu za kuondoa hitilafu kutoka kwa repos (#568)
+
+* Masasisho za index zilizo haraka sana

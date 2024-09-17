@@ -54,7 +54,7 @@
     <string name="antiadslist">Ова апликација садржи огласе</string>
     <string name="antitracklist">Ова апликација прати и шаље вашу активност</string>
     <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
-    <string name="antinonfreenetlist">Ова апликација промовише непроменљиве или неслободне мрежне услуге или у потпуности зависи од њих</string>
+    <string name="antinonfreenetlist">Ова апликација промовише неслободне мрежне услуге или у потпуности зависи од њих</string>
     <string name="antinonfreedeplist">Ова апликација зависи од других неслободних апликација</string>
     <string name="antiupstreamnonfreelist">Оригинални изворни кôд није у потпуности слободан</string>
     <string name="display">Приказ</string>
@@ -441,8 +441,8 @@
     <string name="hide_on_long_search_press_title">Сакриј дугметом за претрагу</string>
     <string name="hide_on_long_search_press_summary">Дуги притисак на дугме за претрагу ће сакрити апликацију</string>
     <string name="warning_scaning_qr_code">Ваша камера нема аутоматско фокусирање. Скенирање кода може бити тешко.</string>
-    <string name="show_anti_feature_apps">Апликације са непоузданим функцијама</string>
-    <string name="show_anti_feature_apps_on">Приказује апликације које захтевају непоуздане функције</string>
+    <string name="show_anti_feature_apps">Укључи непоуздане функције</string>
+    <string name="show_anti_feature_apps_on">Прикажи апликације које имају познате непоуздане функције</string>
     <string name="repo_add_mirror">Додај резервни извор</string>
     <string name="repo_exists_add_mirror">Ово је копија репозиторијума %1$s. Желите ли да је додате као резервни извор\?</string>
     <string name="repo_official_mirrors">Званични резервни извори</string>
@@ -452,7 +452,7 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi хотспот је омогућен</string>
     <string name="swap_toast_could_not_enable_hotspot">Није могуће омогућити Wi-Fi хотспот</string>
     <string name="antidisabledalgorithmlist">Ова апликација има слаб безбедносни потпис</string>
-    <string name="antiknownvulnlist">Ова апликација садржи познату безбедносну претњу</string>
+    <string name="antiknownvulnlist">Ова апликација садржи познати безбедносни пропуст</string>
     <string name="share_repository">Дели репозиторијум</string>
     <string name="antinosourcesince">Изворни кôд више није доступан. Ажурирања нису могућа.</string>
     <string name="send_history_csv">Историја инсталација %s у виду CSV фајла</string>
@@ -512,7 +512,7 @@
     <string name="install_history_and_metrics">Историја инсталација и статистика</string>
     <string name="send_fdroid_metrics_json">%s статистички извештај у виду JSON фајла</string>
     <string name="send_fdroid_metrics_report">Шаљи %s статистички извештај</string>
-    <string name="app_list_results_hidden_antifeature_settings">Неки резултати су скривени на основу ваших подешавања непоузданих функција.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Неки резултати су скривени на основу ваших подешавања непоузданих функција. Додирните да бисте променили.</string>
     <string name="antidisabledalgorithm">Потписано помоћу небезбедног алгоритма</string>
     <string name="has_disallow_install_unknown_sources_globally">Администратор вашег уређаја не дозвољава инсталирање апликација из непознатих извора, што обухвата и нове репозиторијуме</string>
     <string name="has_disallow_install_unknown_sources">Овај корисник не може да додаје непознате изворе, што обухвата и нове репозиторијуме</string>
@@ -608,4 +608,8 @@
     <string name="repo_mirror_exists">Овај резервни извор је већ додат (%s).</string>
     <string name="repo_and_mirror_add_both_info">Наведени URL (%s) је резервни извор новог репозиторијума. Биће додати и оригинални репозиторијум и резервни извор.</string>
     <string name="warning_no_compat_versions">Изабрани репозиторијум нема компатибилних верзија апликација. Да бисте примали ажурирања, дајте предност репозиторијуму са компатибилним верзијама.</string>
+    <string name="auto_update_time">Најраније следеће ажурирање: %s</string>
+    <string name="auto_update_time_past">Следеће ажурирање када се испуне услови</string>
+    <string name="antitetherednetlist">Ова апликација у потпуности зависи од одређене инстанце мрежне услуге</string>
+    <string name="antitetherednet">Непроменљиве мрежне услуге</string>
 </resources>

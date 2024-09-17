@@ -4,10 +4,10 @@
     <string name="installIncompatible">Aplikasi tidak kompatibel dengan perangkat Anda, tetap pasang\?</string>
     <string name="version">Versi</string>
     <string name="delete">Hapus</string>
-    <string name="cache_downloaded">Simpan cache aplikasi</string>
+    <string name="cache_downloaded">Simpan tembolok aplikasi</string>
     <string name="updates">Pembaruan</string>
-    <string name="unstable_updates">Pembaruan tidak stabil</string>
-    <string name="unstable_updates_summary">Sarankan pembaruan ke versi tidak stabil</string>
+    <string name="unstable_updates">Pembaruan takstabil</string>
+    <string name="unstable_updates_summary">Sarankan pembaruan ke versi takstabil</string>
     <string name="other">Lainnya</string>
     <string name="update_interval">Interval pembaruan otomatis</string>
     <string name="notify">Tampilkan pembaruan yang tersedia</string>
@@ -37,7 +37,7 @@
     <string name="more">Lebih banyak</string>
     <string name="less">Lebih sedikit</string>
     <string name="back">Kembali</string>
-    <string name="cancel">Batal</string>
+    <string name="cancel">Batalkan</string>
     <string name="enable">Aktif</string>
     <string name="add_key">Tambahkan Kunci</string>
     <string name="overwrite">Timpa</string>
@@ -111,7 +111,7 @@
     <string name="permissions">Izin</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
     <string name="theme">Tema</string>
-    <string name="unsigned">Tidak tertanda tangan</string>
+    <string name="unsigned">Tidak tertandatangani</string>
     <string name="unverified">Tidak terverifikasi</string>
     <string name="repo_details">Repositori</string>
     <string name="repo_url">Alamat</string>
@@ -129,7 +129,7 @@
     <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak akan tersedia lagi.
 \n
 \nCatatan: Semua aplikasi yang terpasang sebelumnya akan tetap ada di perangkat Anda.</string>
-    <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dengan versi lama. Untuk memasang versi baru, versi lama harus dihapus terlebih dahulu. Harap melakukannya dan coba lagi. (Menghapus aplikasi akan menghapus data internal apapun yang disimpan oleh aplikasi tersebut)</string>
+    <string name="SignatureMismatch">Versi yang baru telah ditandatangani menggunakan kunci yang berbeda dari versi lama. Untuk memasang versi baru, versi lama harus dihapus terlebih dahulu. Mohon lakukan dan coba lagi. (Menghapus aplikasi berarti menghapus data internal apa pun yang disimpan aplikasi tersebut)</string>
     <string name="interval_12h">Periksa pembaruan setiap 12 jam sekali</string>
     <string name="downloading">Mengunduh…</string>
     <string name="login_title">Diperlukan autentikasi</string>
@@ -157,7 +157,7 @@
     <string name="not_on_same_wifi">Perangkat Anda tidak berada pada jaringan Wi-Fi yang sama dengan repo lokal yang baru saja anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
     <string name="requires_features">Memerlukan: %1$s</string>
     <string name="pref_language">Bahasa</string>
-    <string name="pref_language_default">Default Sistem</string>
+    <string name="pref_language_default">Ikuti Sistem Perangkat</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Konektivitas</string>
@@ -198,7 +198,7 @@
     <string name="open_qr_code_scanner">Buka Pemindai QR</string>
     <string name="swap_welcome">Selamat datang di F-Droid!</string>
     <string name="swap_confirm_connect">Apakah Anda ingin mengambil aplikasi dari %1$s sekarang\?</string>
-    <string name="swap_dont_show_again">Jangan tampilkan ini lagi</string>
+    <string name="swap_dont_show_again">Jangan tampilkan lagi</string>
     <string name="swap_scan_or_type_url">Salah satu orang harus memindai kode, atau mengetik URL-nya pada browser.</string>
     <string name="swap_choose_apps">Pilih Aplikasi</string>
     <string name="swap_scan_qr">Kode QR</string>
@@ -244,8 +244,8 @@
     <string name="interval_2w">Periksa pembaruan setiap 2 minggu sekali</string>
     <string name="theme_light">Terang</string>
     <string name="theme_dark">Gelap</string>
-    <string name="crash_dialog_title">F-Droid telah berhenti</string>
-    <string name="crash_dialog_text">Terjadi kesalahan yang tidak terduga yang memaksa aplikasi untuk berhenti. Maukah mengirimkan detail melalui e-mail untuk membantu memperbaiki masalah ini\?</string>
+    <string name="crash_dialog_title">F-Droid mogok</string>
+    <string name="crash_dialog_text">Terjadi galat takterduga yang memaksa aplikasi untuk berhenti. Maukah Anda mengirimkan detail galat melalui surel untuk membantu memperbaiki masalah ini?</string>
     <string name="crash_dialog_comment_prompt">Anda bisa menambahkan informasi ekstra dan komentar di sini:</string>
     <string name="update_auto_download">Otomatis unduh pembaruan</string>
     <string name="update_auto_download_summary">Pembaruan diunduh secara otomatis dan Anda akan diberi tahu untuk memasangnya</string>
@@ -285,7 +285,7 @@
     <string name="notification_title_summary_installed">Berhasil dipasang</string>
     <string name="notification_title_summary_install_error">Pemasangan Gagal</string>
     <string name="notification_action_update">Perbarui</string>
-    <string name="notification_action_cancel">Batal</string>
+    <string name="notification_action_cancel">Batalkan</string>
     <string name="notification_action_install">Pasang</string>
     <string name="app_details_donate_prompt_unknown_author">Belikan pengembang %1$s kopi!</string>
     <string name="app_version_x_available">Versi %1$s tersedia</string>
@@ -308,7 +308,7 @@
     <string name="updates__hide_updateable_apps">Sembunyikan aplikasi</string>
     <string name="updates__show_updateable_apps">Tampilkan aplikasi</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">Mengunduh pembaruan untuk aplikasi %1$d.</item>
+        <item quantity="other">Mengunduh pembaruan aplikasi %1$d:</item>
     </plurals>
     <string name="preference_manage_installed_apps">Kelola aplikasi terpasang</string>
     <string name="tts_category_name">Kategori %1$s</string>
@@ -424,8 +424,8 @@
     <string name="swap_toast_invalid_url">URL untuk bertukar tidak valid: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi diaktifkan</string>
     <string name="swap_toast_could_not_enable_hotspot">Tidak bisa mengaktifkan Hotspot Wi-Fi!</string>
-    <string name="prompt_to_send_crash_reports">Meminta untuk mengirim laporan kerusakan</string>
-    <string name="prompt_to_send_crash_reports_summary">Kumpulkan data tentang error dan minta untuk mengirimnya ke pengembang</string>
+    <string name="prompt_to_send_crash_reports">Meminta pengiriman laporan kemogokan</string>
+    <string name="prompt_to_send_crash_reports_summary">Kumpulkan data kemogokan dan minta agar dikirimkan ke pengembang</string>
     <string name="hide_all_notifications">Sembunyikan semua notifikasi</string>
     <string name="hide_all_notifications_summary">Cegah semua tindakan agar tidak tampil di status bar dan panel notifikasi.</string>
     <string name="send_install_history">Kirim Riwayat Pemasangan</string>
@@ -541,7 +541,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid dapat mencari repositori dan cerminan di Kartu SD Anda, tetapi memerlukan perizinan Anda supaya bisa.</string>
     <string name="swap_connection_indexv0_error">Anda sedang mencoba untuk menghubungkan ke seseorang dengan versi F-Droid yang lawas. Untuk menghubungkan, mereka harus meningkatkan aplikasi F-Droid mereka. Mereka dapat menggunakan penggantian untuk memperbarui aplikasi F-Droid mereka dari Anda.</string>
     <string name="force_old_installer_title">Paksakan pemasang lawas</string>
-    <string name="force_old_installer_summary">Nonaktifkan Pemasang Sesi beta, termasuk dukungan untuk pembaruan latar belakang otomatis.</string>
+    <string name="force_old_installer_summary">Nonaktifkan Pemasang Sesi, termasuk dukungan pembaruan latar belakang secara otomatis.</string>
     <string name="copied_to_clipboard">Disalin ke papan klip</string>
     <string name="copied_permission_to_clipboard">Nama perizinan disalin ke papan klip</string>
     <string name="copied_url_to_clipboard">URL disalin ke papan klip</string>
@@ -579,4 +579,13 @@
     <string name="ipfsgw_add_add">Tambahkan</string>
     <string name="ipfsgw_summary_disabled">Unduh aplikasi menggunakan titik akhir web IPFS: dinonaktifkan</string>
     <string name="ipfsgw_caption_official_gateways">Gerbang IPFS Resmi</string>
+    <string name="repo_view_repo">Tinjau repositori</string>
+    <string name="repo_scan_qr_code">Pindai Kode RS (Respons Cepat)</string>
+    <string name="repo_mirror_add_info">URL yang hendak Anda tambahkan (%s) merupakan cerminan repositori yang sudah ada.</string>
+    <string name="repo_add_repo_and_mirror">Tambah repositori dan mirror</string>
+    <string name="repo_preview_included_apps">Termasuk aplikasi:</string>
+    <string name="repo_mirror_exists">Mirror inti telah ditambahkan (%s).</string>
+    <string name="repo_and_mirror_add_both_info">URL yang Anda coba tambahkan (%s) adalah mirror dari repositori baru. Keduanya merupakan repositori original dan mirror akan ditambahkan.</string>
+    <string name="auto_update_time">Pembaruan dekat berikutnya: %s</string>
+    <string name="warning_no_compat_versions">Repositori yang dipilih tidak memiliki versi aplikasi kompatibel. Untuk menerima pembaruan, pilih repositori dengan versi yang kompatibel.</string>
 </resources>

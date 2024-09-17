@@ -1,0 +1,7 @@
+* Cosc a chur ar HTTP ETag ó bheith á úsáid mar fhianán rianaithe
+
+* Leagan amach feabhsaithe screenshots
+
+* Glan suas i gceart comhaid teochta agus i dtaisce
+
+* Ceartúcháin mód dorcha
