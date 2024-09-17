@@ -1,8 +1,11 @@
+* Rewritten repo updater to make background updates more reliable
 * Split up name and summary in app lists for better readability
+* Show warning when apps can not be updated from preferred repo
 * Apps targeting SDK 24 are incompatible with Android 15 devices
 * Handle mirrors in "Add repo" preview better (Thanks Thore!)
 * Enable unattended app updates on Xiaomi devices not running MIUI (Thanks Irate!)
 * Trust user-added root certs (Thanks B.!)
-* Improve localization for less common languages (Thanks Ray!)
-* Don't react to NFC tags as NFC feature was removed (Thanks Thibault!)
-* Show warning when apps can not be updated from preferred repo
+* Fix case insensitive search containing diacritics (Thanks Tobias!)
+* Update anti-feature descriptions (Thanks Licaon!)
+* Add tethered net anti-feature (Thanks linsui!)
+* Ignore whitespaces when adding mirror repos (Thanks Tobias!)

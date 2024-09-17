@@ -1,3 +1,13 @@
+### 1.21.0-alpha1 (2024-09-17)
+
+* Rewritten repo updater to make background updates more reliable
+* Time of next scheduled update visible in settings
+* Fix case insensitive search containing diacritics (Thanks Tobias!)
+* Fix crash when deleting repo from repo details screen
+* Update anti-feature descriptions (Thanks Licaon!)
+* Add tethered net anti-feature (Thanks linsui!)
+* Ignore whitespaces when adding mirror repos (Thanks Tobias!)
+
 ### 1.21.0-alpha0 (2024-07-09)
 
 * Split up name and summary in app lists for better readability
