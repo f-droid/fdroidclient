@@ -118,7 +118,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
 
     private void loadAppItems(LiveData<List<AppOverviewItem>> liveData) {
         setIsRecyclable(false);
-        liveData.observe(activity, new Observer<List<AppOverviewItem>>() {
+        liveData.observe(activity, new Observer<>() {
             @Override
             public void onChanged(List<AppOverviewItem> items) {
                 appCardsAdapter.setAppCursor(items);
