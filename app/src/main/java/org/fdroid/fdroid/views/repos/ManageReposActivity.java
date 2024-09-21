@@ -193,17 +193,15 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     @Override
     public void onToggleEnabled(Repository repo) {
         if (repo.getEnabled()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(R.string.repo_disable_warning);
-            builder.setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
-                disableRepo(repo);
-                dialog.dismiss();
-            });
-            builder.setNegativeButton(R.string.cancel, (dialog, id) -> {
-                repoAdapter.updateRepoItem(repo);
-                dialog.cancel();
-            });
-            builder.show();
+            new AlertDialog.Builder(this)
+                    .setMessage(R.string.repo_disable_warning)
+                    .setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
+                        disableRepo(repo);
+                        dialog.dismiss();
+                    })
+                    .setNegativeButton(R.string.cancel, (dialog, id) -> dialog.cancel())
+                    .setOnCancelListener(dialog -> repoAdapter.updateRepoItem(repo)) // reset toggle
+                    .show();
         } else {
             Utils.runOffUiThread(() -> {
                 repoManager.setRepositoryEnabled(repo.getRepoId(), true);
