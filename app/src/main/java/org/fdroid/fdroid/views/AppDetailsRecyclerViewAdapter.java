@@ -300,12 +300,12 @@ public class AppDetailsRecyclerViewAdapter
 
     private boolean shouldShowDonate() {
         if (app == null) return false;
-        return uriIsSetAndCanBeOpened(app.donate) ||
-                uriIsSetAndCanBeOpened(app.getBitcoinUri()) ||
-                uriIsSetAndCanBeOpened(app.getLitecoinUri()) ||
-                uriIsSetAndCanBeOpened(app.getFlattrUri()) ||
-                uriIsSetAndCanBeOpened(app.getLiberapayUri()) ||
-                uriIsSetAndCanBeOpened(app.getOpenCollectiveUri());
+        return uriIsSet(app.donate) ||
+                uriIsSet(app.getBitcoinUri()) ||
+                uriIsSet(app.getLitecoinUri()) ||
+                uriIsSet(app.getFlattrUri()) ||
+                uriIsSet(app.getLiberapayUri()) ||
+                uriIsSet(app.getOpenCollectiveUri());
     }
 
     private void notifyVersionViewsChanged() {
@@ -894,32 +894,32 @@ public class AppDetailsRecyclerViewAdapter
             donationOptionsLayout.removeAllViews();
 
             // OpenCollective
-            if (uriIsSetAndCanBeOpened(app.getOpenCollectiveUri())) {
+            if (uriIsSet(app.getOpenCollectiveUri())) {
                 addDonateOption(R.layout.donate_opencollective, app.getOpenCollectiveUri());
             }
 
             // LiberaPay
-            if (uriIsSetAndCanBeOpened(app.getLiberapayUri())) {
+            if (uriIsSet(app.getLiberapayUri())) {
                 addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
             }
 
             // Bitcoin
-            if (uriIsSetAndCanBeOpened(app.getBitcoinUri())) {
+            if (uriIsSet(app.getBitcoinUri())) {
                 addDonateOption(R.layout.donate_bitcoin, app.getBitcoinUri());
             }
 
             // Litecoin
-            if (uriIsSetAndCanBeOpened(app.getLitecoinUri())) {
+            if (uriIsSet(app.getLitecoinUri())) {
                 addDonateOption(R.layout.donate_litecoin, app.getLitecoinUri());
             }
 
             // Flattr
-            if (uriIsSetAndCanBeOpened(app.getFlattrUri())) {
+            if (uriIsSet(app.getFlattrUri())) {
                 addDonateOption(R.layout.donate_generic, app.getFlattrUri());
             }
 
             // Donate button
-            if (uriIsSetAndCanBeOpened(app.donate)) {
+            if (uriIsSet(app.donate)) {
                 addDonateOption(R.layout.donate_generic, app.donate);
             }
         }
@@ -1127,45 +1127,45 @@ public class AppDetailsRecyclerViewAdapter
                 } else {
                     url = "https://spdx.org/licenses/" + app.license + ".html";
                 }
-                if (uriIsSetAndCanBeOpened(url)) {
+                if (uriIsSet(url)) {
                     addLinkItemView(contentView, R.string.menu_license, R.drawable.ic_license, url, app.license);
                 }
             }
 
             // Video link
-            if (uriIsSetAndCanBeOpened(app.video)) {
+            if (uriIsSet(app.video)) {
                 addLinkItemView(contentView, R.string.menu_video, R.drawable.ic_video, app.video);
             }
 
             // Source button
-            if (uriIsSetAndCanBeOpened(app.sourceCode)) {
+            if (uriIsSet(app.sourceCode)) {
                 addLinkItemView(contentView, R.string.menu_source, R.drawable.ic_source_code, app.sourceCode);
             }
 
             // Issues button
-            if (uriIsSetAndCanBeOpened(app.issueTracker)) {
+            if (uriIsSet(app.issueTracker)) {
                 addLinkItemView(contentView, R.string.menu_issues, R.drawable.ic_error, app.issueTracker);
             }
 
             // Translation button
-            if (uriIsSetAndCanBeOpened(app.translation)) {
+            if (uriIsSet(app.translation)) {
                 addLinkItemView(contentView, R.string.menu_translation, R.drawable.ic_translation, app.translation);
             }
 
             // Changelog button
-            if (uriIsSetAndCanBeOpened(app.changelog)) {
+            if (uriIsSet(app.changelog)) {
                 addLinkItemView(contentView, R.string.menu_changelog, R.drawable.ic_changelog, app.changelog);
             }
 
             // Website button
-            if (uriIsSetAndCanBeOpened(app.webSite)) {
+            if (uriIsSet(app.webSite)) {
                 addLinkItemView(contentView, R.string.menu_website, R.drawable.ic_website, app.webSite);
             }
 
             // Email button
             final String subject = Uri.encode(context.getString(R.string.app_details_subject, app.name));
             String emailUrl = app.authorEmail == null ? null : ("mailto:" + app.authorEmail + "?subject=" + subject);
-            if (uriIsSetAndCanBeOpened(emailUrl)) {
+            if (uriIsSet(emailUrl)) {
                 addLinkItemView(contentView, R.string.menu_email, R.drawable.ic_email, emailUrl);
             }
         }
@@ -1495,12 +1495,11 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
-    private boolean uriIsSetAndCanBeOpened(String s) {
+    private boolean uriIsSet(String s) {
         if (TextUtils.isEmpty(s)) {
             return false;
         }
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-        return intent.resolveActivity(context.getPackageManager()) != null;
+        return true;
     }
 
     /**
