@@ -6,6 +6,12 @@ import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import io.mockk.slot
+import io.mockk.spyk
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbTest
 import org.fdroid.database.Repository
@@ -26,6 +32,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
+import java.util.concurrent.CountDownLatch
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertNull
@@ -231,6 +238,60 @@ internal class IndexV2UpdaterTest : DbTest() {
         assertEquals(TWO, updatedRepo.formatVersion)
     }
 
+    @Test
+    @OptIn(DelicateCoroutinesApi::class)
+    fun concurrentUpdateTest() {
+        val db = spyk(db) // spy on the DB, so we can mock a call to aid in concurrency
+        indexUpdater = IndexV2Updater(
+            database = db,
+            tempFileProvider = tempFileProvider,
+            downloaderFactory = downloaderFactory,
+            compatibilityChecker = compatibilityChecker,
+        )
+        val repoId = streamIndexV2IntoDb("index-empty-v2.json")
+        val repo1 = prepareUpdate(
+            repoId = repoId,
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
+            jsonPath = "diff-empty-min/23.json",
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
+        )
+        val repo2 = prepareUpdate(
+            repoId = repoId,
+            entryPath = "diff-empty-min/$SIGNED_FILE_NAME",
+            jsonPath = "diff-empty-min/23.json",
+            indexFileV2 = TestDataEntry.emptyToMin.diffs["23"] ?: fail()
+        )
+        val latch = CountDownLatch(1)
+        val runSlot = slot<Runnable>()
+        every { db.runInTransaction(capture(runSlot)) } answers {
+            runSlot.captured.run()
+            latch.countDown()
+        } andThenAnswer {
+            latch.await()
+            runSlot.captured.run()
+        }
+        runBlocking {
+            GlobalScope.async {
+                val result1 = indexUpdater.update(repo1).noError()
+                assertEquals(IndexUpdateResult.Processed, result1)
+
+                val entryFile = tmpFolder.newFile()
+                val indexFile = tmpFolder.newFile()
+                assets.open("diff-empty-min/$SIGNED_FILE_NAME").use { inputStream ->
+                    entryFile.outputStream().use { inputStream.copyTo(it) }
+                }
+                assets.open("diff-empty-min/23.json").use { inputStream ->
+                    indexFile.outputStream().use { inputStream.copyTo(it) }
+                }
+                every { tempFileProvider.createTempFile() } returnsMany listOf(entryFile, indexFile)
+
+                val result2 = indexUpdater.update(repo2)
+                assertIs<IndexUpdateResult.Error>(result2)
+                assertIs<ConcurrentModificationException>(result2.e)
+            }.await()
+        }
+    }
+
     private fun prepareUpdate(
         repoId: Long,
         entryPath: String,
@@ -253,11 +314,11 @@ internal class IndexV2UpdaterTest : DbTest() {
 
         every { tempFileProvider.createTempFile() } returnsMany listOf(entryFile, indexFile)
         every {
-            downloaderFactory.createWithTryFirstMirror(repo, entryUri, entryFileV2, entryFile)
+            downloaderFactory.createWithTryFirstMirror(repo, entryUri, entryFileV2, any())
         } returns downloader
         every { downloader.download() } just Runs
         every {
-            downloaderFactory.createWithTryFirstMirror(repo, indexUri, indexFileV2, indexFile)
+            downloaderFactory.createWithTryFirstMirror(repo, indexUri, indexFileV2, any())
         } returns downloader
         every { downloader.download() } just Runs
 

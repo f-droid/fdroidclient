@@ -94,6 +94,12 @@ public class IndexV2Updater(
             file.inputStream().use { inputStream ->
                 val repoDao = db.getRepositoryDao()
                 db.runInTransaction {
+                    // ensure somebody else hasn't updated the repo in the meantime
+                    val currentTimestamp = repoDao.getRepository(repo.repoId)?.timestamp
+                    if (currentTimestamp != repo.timestamp) throw ConcurrentModificationException(
+                        "Repo timestamp expected ${repo.timestamp}, but was $currentTimestamp"
+                    )
+                    // still the expected timestamp, so go on processing...
                     streamProcessor.process(repoVersion, inputStream) { i ->
                         listener?.onUpdateProgress(repo, i, entryFile.numPackages)
                     }
