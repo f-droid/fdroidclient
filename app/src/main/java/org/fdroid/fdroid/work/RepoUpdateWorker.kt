@@ -54,6 +54,7 @@ class RepoUpdateWorker(
         @JvmStatic
         @JvmOverloads
         fun updateNow(context: Context, repoId: Long = -1) {
+            Log.i(TAG, "Update repo with ID $repoId now!")
             if (FDroidApp.networkState > 0 && !Preferences.get().isOnDemandDownloadAllowed()) {
                 Toast.makeText(context, R.string.updates_disabled_by_settings, LENGTH_LONG).show()
                 return
