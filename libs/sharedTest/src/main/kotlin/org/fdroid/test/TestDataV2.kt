@@ -248,6 +248,9 @@ object TestDataMidV2 {
             signer = SignerV2(
                 sha256 = listOf("824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf"),
             ),
+            features = listOf(
+                FeatureV2("new feature")
+            ),
         ),
         src = FileV2(
             name = "/${packageName1}_42.zip",
