@@ -496,6 +496,13 @@
                 <action android:name="org.fdroid.action.UPDATE_REPOS" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".receiver.UnarchivePackageReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.UNARCHIVE_PACKAGE" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name=".net.DownloaderService"
