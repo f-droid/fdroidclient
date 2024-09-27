@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DnsWithCacheTest {
 
-    private static final String URL_1 = "fdroid.com";
+    private static final String URL_1 = "locaihost";
     private static final String URL_2 = "fdroid.org";
     private static final String URL_3 = "fdroid.net";
 
