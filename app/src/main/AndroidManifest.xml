@@ -64,8 +64,9 @@
 
     <!-- Permission used to externally trigger repository updates -->
     <permission
-        android:name="org.fdroid.permission.UPDATE_REPOS"
+        android:name="${applicationId}.permission.UPDATE_REPOS"
         android:protectionLevel="signature|privileged" />
+    <uses-permission android:name="${applicationId}.permission.UPDATE_REPOS" />
 
     <application
         android:name=".FDroidApp"
@@ -490,7 +491,7 @@
         </receiver>
         <receiver android:name=".receiver.RepoUpdateReceiver"
             android:exported="true"
-            android:permission="org.fdroid.permission.UPDATE_REPOS">
+            android:permission="${applicationId}.permission.UPDATE_REPOS">
             <intent-filter>
                 <action android:name="org.fdroid.action.UPDATE_REPOS" />
             </intent-filter>
