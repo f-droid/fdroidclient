@@ -122,7 +122,7 @@ public class ApkCache {
                     Thread.sleep(1200000);
                 } catch (InterruptedException ignored) {
                 } finally {
-                    Utils.debugLog(TAG, "Deleting temporary APK from files: "+ apkToDelete.getAbsolutePath());
+                    Utils.debugLog(TAG, "Deleting temporary APK from files: " + apkToDelete.getAbsolutePath());
                     FileUtils.deleteQuietly(apkToDelete);
                 }
             }
