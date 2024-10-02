@@ -38,6 +38,7 @@ import java.io.IOException;
 public class ApkCache {
 
     private static final String CACHE_DIR = "apks";
+    public static final String TAG = "ApkCache";
 
     public enum ApkCacheState { MISS_OR_PARTIAL, CACHED, CORRUPTED }
 
@@ -100,6 +101,7 @@ public class ApkCache {
             sanitizedApkFile.delete();
         }
 
+        Utils.debugLog(TAG, "Copying APK to files temporarily: " + sanitizedApkFile.getAbsolutePath());
         FileUtils.copyFile(apkFile, sanitizedApkFile);
 
         // verify copied file's hash with expected hash from Apk class
@@ -109,6 +111,8 @@ public class ApkCache {
         }
 
         // 20 minutes the start of the install process, delete the file
+        // If the thread is killed or some issues occur,
+        // files are still cleaned up periodically by the CleanCacheWorker
         final File apkToDelete = sanitizedApkFile;
         new Thread() {
             @Override
@@ -118,6 +122,7 @@ public class ApkCache {
                     Thread.sleep(1200000);
                 } catch (InterruptedException ignored) {
                 } finally {
+                    Utils.debugLog(TAG, "Deleting temporary APK from files: "+ apkToDelete.getAbsolutePath());
                     FileUtils.deleteQuietly(apkToDelete);
                 }
             }
