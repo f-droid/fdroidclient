@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit.MINUTES
 private val TAG = RepoUpdateWorker::class.java.simpleName
 
 class RepoUpdateWorker(
-    appContext: Context,
+    private val appContext: Context,
     workerParams: WorkerParameters,
 ) : CoroutineWorker(appContext, workerParams) {
 
@@ -130,6 +130,8 @@ class RepoUpdateWorker(
         }
         val repoId = inputData.getLong("repoId", -1)
         return try {
+            // Trigger a cache cleanup at the same time while the repo is updated
+            CleanCacheWorker.force(appContext)
             if (repoId >= 0) repoUpdateManager.updateRepo(repoId)
             else repoUpdateManager.updateRepos()
             Result.success()
