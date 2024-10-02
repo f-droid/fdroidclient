@@ -8,10 +8,20 @@ import androidx.room.Insert
 import androidx.room.MapInfo
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
+import androidx.room.RawQuery
+import androidx.sqlite.db.SimpleSQLiteQuery
+import androidx.sqlite.db.SupportSQLiteQuery
 
 public interface AppPrefsDao {
     public fun getAppPrefs(packageName: String): LiveData<AppPrefs>
     public fun update(appPrefs: AppPrefs)
+
+    /**
+     * Force a checkpoint on the SQLite WAL such that the file size gets reduced.
+     * Blocks until concurrent reads have finished.
+     * Useful to call after large inserts (repo update)
+     */
+    public fun walCheckpoint()
 }
 
 @Dao
@@ -48,4 +58,12 @@ internal interface AppPrefsDaoInt : AppPrefsDao {
 
     @Insert(onConflict = REPLACE)
     override fun update(appPrefs: AppPrefs)
+
+    override fun walCheckpoint() {
+        rawCheckpoint((SimpleSQLiteQuery("pragma wal_checkpoint(truncate)")))
+    }
+
+    @RawQuery
+    fun rawCheckpoint(supportSQLiteQuery: SupportSQLiteQuery): Int
+
 }
