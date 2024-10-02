@@ -54,6 +54,9 @@ class RepoUpdateWorker(
         @JvmStatic
         @JvmOverloads
         fun updateNow(context: Context, repoId: Long = -1) {
+            // Always trigger a clean cache job even if updates are prohibited
+            CleanCacheWorker.force(context)
+
             Log.i(TAG, "Update repo with ID $repoId now!")
             if (FDroidApp.networkState > 0 && !Preferences.get().isOnDemandDownloadAllowed()) {
                 Toast.makeText(context, R.string.updates_disabled_by_settings, LENGTH_LONG).show()
@@ -130,14 +133,14 @@ class RepoUpdateWorker(
         }
         val repoId = inputData.getLong("repoId", -1)
         return try {
-            // Trigger a cache cleanup at the same time while the repo is updated
-            CleanCacheWorker.force(appContext)
             if (repoId >= 0) repoUpdateManager.updateRepo(repoId)
             else repoUpdateManager.updateRepos()
             Result.success()
         } catch (e: Exception) {
             Log.e(TAG, "Error updating repos", e)
             Result.failure()
+        } finally {
+            CleanCacheWorker.force(appContext)
         }
     }
 
