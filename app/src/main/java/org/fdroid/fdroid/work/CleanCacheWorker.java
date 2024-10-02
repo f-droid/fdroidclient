@@ -59,9 +59,7 @@ public class CleanCacheWorker extends Worker {
         }
 
         final Constraints.Builder constraintsBuilder = new Constraints.Builder()
-                .setRequiresCharging(true)
                 .setRequiresBatteryNotLow(true);
-        constraintsBuilder.setRequiresDeviceIdle(true);
         final PeriodicWorkRequest cleanCache =
                 new PeriodicWorkRequest.Builder(CleanCacheWorker.class, interval, TimeUnit.MILLISECONDS)
                         .setConstraints(constraintsBuilder.build())
