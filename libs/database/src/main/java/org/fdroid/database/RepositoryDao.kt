@@ -95,6 +95,7 @@ public interface RepositoryDao {
      * Force a checkpoint on the SQLite WAL such that the file size gets reduced.
      * Blocks until concurrent reads have finished.
      * Useful to call after large inserts (repo update)
+     * @see <a href="https://www.sqlite.org/wal.html#avoiding_excessively_large_wal_files">https://www.sqlite.org/wal.html#avoiding_excessively_large_wal_files</a>
      */
     public fun walCheckpoint()
 }
@@ -538,7 +539,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun countReleaseChannels(): Int
 
     override fun walCheckpoint() {
-        rawCheckpoint((SimpleSQLiteQuery("pragma wal_checkpoint(truncate)")))
+        rawCheckpoint(SimpleSQLiteQuery("pragma wal_checkpoint(truncate)"))
     }
 
     @RawQuery
