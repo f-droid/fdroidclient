@@ -27,9 +27,9 @@ def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
 android {
     namespace "org.fdroid.fdroid"
-    buildToolsVersion "34.0.0"
+    buildToolsVersion "35.0.0"
 
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         versionCode 1021001
