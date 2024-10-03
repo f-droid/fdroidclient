@@ -80,11 +80,11 @@
             android:label="@string/swap"
             android:launchMode="singleTask"
             android:parentActivityName=".views.main.MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".panic.PanicPreferencesActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/panic_settings"
             android:parentActivityName=".views.main.MainActivity">
             <intent-filter>
