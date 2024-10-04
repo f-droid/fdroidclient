@@ -27,14 +27,18 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.PatternMatcher;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.fdroid.fdroid.BuildConfig;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -321,7 +325,15 @@ public abstract class Installer {
             return;
         } catch (ApkVerifier.ApkPermissionUnequalException e) {
             // permissions of APK are not the ones listed in the repo index
-            // TODO we could prompt the user if a non-runtime permission we consider dangerous has been added
+            String s = context.getString(R.string.apk_permissions_mismatch, e.getMessage());
+            // post Toast on the UiThread, because background threads aren't allowed
+            new Handler(Looper.getMainLooper()).post(() -> Toast.makeText(context, s, Toast.LENGTH_LONG).show());
+            // block our worker thread, so the install dialog is not making the Toast disappear right away
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException ex) {
+                // ignored
+            }
         }
 
         installPackageInternal(sanitizedUri, canonicalUri);
