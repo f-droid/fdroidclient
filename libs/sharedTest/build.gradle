@@ -15,7 +15,7 @@ java {
 // not really an Android library, but index is not publishing for JVM at the moment
 android {
     namespace 'org.fdroid.test'
-    compileSdk 34
+    compileSdk 35
     defaultConfig {
         minSdkVersion 21
     }
