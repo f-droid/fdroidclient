@@ -91,7 +91,7 @@ kotlin {
 
 android {
     namespace "org.fdroid.download"
-    compileSdk 35
+    compileSdk 34
     sourceSets {
         main.manifest.srcFile('src/androidMain/AndroidManifest.xml')
         getByName("androidTest").java.srcDir(file("src/androidAndroidTest/kotlin"))
