@@ -28,7 +28,7 @@ internal class IndexV1CreatorTest {
         val repoDir = tmpFolder.newFolder()
         val repo = TestDataMinV1.repo
         val packageNames = context.packageManager.getInstalledPackages(0).filter {
-            (it.applicationInfo.flags and FLAG_SYSTEM == 0) and (Random.nextInt(0, 3) == 0)
+            (it.applicationInfo!!.flags and FLAG_SYSTEM == 0) and (Random.nextInt(0, 3) == 0)
         }.map { it.packageName }.toSet()
         val indexCreator = IndexV1Creator(context.packageManager, repoDir, packageNames, repo)
         val indexV1 = indexCreator.createRepo()

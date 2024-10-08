@@ -68,7 +68,12 @@ public class IndexV1Creator(
             @Suppress("PackageManagerGetSignatures")
             val packageInfo = packageManager.getPackageInfo(packageName, flags)
             apps.add(getApp(packageInfo))
-            packages[packageName] = listOf(getPackage(packageInfo))
+            val p = getPackage(packageInfo)
+            if (p == null) {
+                Log.w("IndexV1Creator", "Got no package for $packageName")
+                return
+            }
+            packages[packageName] = listOf(p)
         } catch (e: PackageManager.NameNotFoundException) {
             Log.i("IndexV1Creator", "app disappeared during addApp: ", e)
         }
@@ -78,18 +83,20 @@ public class IndexV1Creator(
         val icon = copyIconToRepo(packageInfo)
         return AppV1(
             packageName = packageInfo.packageName,
-            name = packageInfo.applicationInfo.loadLabel(packageManager).toString(),
+            name = packageInfo.applicationInfo?.loadLabel(packageManager).toString(),
             license = "Unknown",
             icon = icon,
         )
     }
 
-    private fun getPackage(packageInfo: PackageInfo): PackageV1 {
-        val apk = copyApkToRepo(packageInfo)
+    private fun getPackage(packageInfo: PackageInfo): PackageV1? {
+        val apk = copyApkToRepo(packageInfo) ?: return null
+        val appInfo = packageInfo.applicationInfo ?: return null
+        val signatures = packageInfo.signatures ?: return null
         val hash = hashFile(apk)
         val apkName = apk.name
-        val sig = getsig(packageInfo.signatures[0].toByteArray())
-        val signer = getPackageSigner(packageInfo.signatures[0].toByteArray())
+        val sig = getsig(signatures[0].toByteArray())
+        val signer = getPackageSigner(signatures[0].toByteArray())
         return PackageV1(
             packageName = packageInfo.packageName,
             versionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
@@ -101,9 +108,9 @@ public class IndexV1Creator(
             hashType = "sha256",
             sig = sig,
             signer = signer,
-            size = File(packageInfo.applicationInfo.publicSourceDir).length(),
-            minSdkVersion = if (SDK_INT >= 24) packageInfo.applicationInfo.minSdkVersion else null,
-            targetSdkVersion = packageInfo.applicationInfo.targetSdkVersion,
+            size = File(appInfo.publicSourceDir).length(),
+            minSdkVersion = if (SDK_INT >= 24) appInfo.minSdkVersion else null,
+            targetSdkVersion = appInfo.targetSdkVersion,
             usesPermission = packageInfo.requestedPermissions?.map {
                 PermissionV1(it)
             } ?: emptyList(),

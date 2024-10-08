@@ -48,10 +48,10 @@ public abstract class IndexCreator<T>(
      * Extracts the icon from an APK and writes it to the repo as a PNG.
      * @return the name of the written icon file.
      */
-    protected fun copyIconToRepo(packageInfo: PackageInfo): String {
+    protected fun copyIconToRepo(packageInfo: PackageInfo): String? {
         val packageName = packageInfo.packageName
         val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-        val drawable = packageInfo.applicationInfo.loadIcon(packageManager)
+        val drawable = packageInfo.applicationInfo?.loadIcon(packageManager) ?: return null
         val bitmap: Bitmap
         if (drawable is BitmapDrawable) {
             bitmap = drawable.bitmap
@@ -71,21 +71,22 @@ public abstract class IndexCreator<T>(
 
     /**
      * Symlinks the APK to the repo. Does not support split APKs.
-     * @return the name of the linked/copied APK file.
+     * @return the name of the linked/copied APK file or null if no file exists.
      *
      * Roboletric apparently does not support Os.symlink, and some devices might
      * have wonky implementations.  Copying is slower and takes more disk space,
      * but is much more reliable.  So it is a workable fallback.
      */
-    protected fun copyApkToRepo(packageInfo: PackageInfo): File {
+    protected fun copyApkToRepo(packageInfo: PackageInfo): File? {
+        val appInfo = packageInfo.applicationInfo ?: return null
         val packageName = packageInfo.packageName
         val versionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
         val apkName = "${packageName}_$versionCode.apk"
         val apkFile = File(repoDir, apkName)
         if (apkFile.exists()) apkFile.delete()
-        symlink(packageInfo.applicationInfo.publicSourceDir, apkFile.absolutePath)
+        symlink(appInfo.publicSourceDir, apkFile.absolutePath)
         if (!apkFile.exists()) {
-            File(packageInfo.applicationInfo.publicSourceDir).copyTo(apkFile)
+            File(appInfo.publicSourceDir).copyTo(apkFile)
         }
         return apkFile
     }
@@ -108,7 +109,8 @@ public abstract class IndexCreator<T>(
     }
 
     protected fun parseNativeCode(packageInfo: PackageInfo): List<String> {
-        val apkJar = JarFile(packageInfo.applicationInfo.publicSourceDir)
+        val appInfo = packageInfo.applicationInfo ?: return emptyList()
+        val apkJar = JarFile(appInfo.publicSourceDir)
         val abis = HashSet<String>()
         val jarEntries = apkJar.entries()
         while (jarEntries.hasMoreElements()) {

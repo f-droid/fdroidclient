@@ -39,7 +39,7 @@ public class UpdateChecker(
         allowedSignersGetter = {
             // always gives us the oldest signer, even if they rotated certs by now
             @Suppress("DEPRECATION")
-            packageInfo.signatures.map { getPackageSigner(it.toByteArray()) }.toSet()
+            packageInfo.signatures?.map { getPackageSigner(it.toByteArray()) }?.toSet()
         },
         installedVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo),
         allowedReleaseChannels = releaseChannels,
