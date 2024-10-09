@@ -258,8 +258,8 @@
     <string name="local_repo">Local Repo</string>
     <string name="force_touch_apps_on">Show apps that require touchscreen regardless of hardware support</string>
     <string name="force_touch_apps">Include touchscreen apps</string>
-    <string name="show_anti_feature_apps_on">Show apps that require anti-features</string>
-    <string name="show_anti_feature_apps">Include anti-feature apps</string>
+    <string name="show_anti_feature_apps_on">Show apps that have known Anti-Features</string>
+    <string name="show_anti_feature_apps">Include Anti-Features</string>
     <string name="show_incompat_versions_on">Show app versions that are incompatible with the device</string>
     <string name="show_incompat_versions">Include incompatible versions</string>
     <string name="appcompatibility">App compatibility</string>
@@ -267,13 +267,13 @@
     <string name="expert_on">Show extra info and enable extra settings</string>
     <string name="expert">Expert mode</string>
     <string name="display">Display</string>
-    <string name="antinosourcesince">The source code is no longer available, no updates possible.</string>
+    <string name="antinosourcesince">The source code is no longer available, no updates possible</string>
     <string name="antiknownvulnlist">This app contains a known security vulnerability</string>
     <string name="antidisabledalgorithmlist">This app has a weak security signature</string>
     <string name="antinonfreeassetslist">This app contains non-free assets</string>
     <string name="antiupstreamnonfreelist">The upstream source code is not entirely Free</string>
     <string name="antinonfreedeplist">This app depends on other non-free apps</string>
-    <string name="antinonfreenetlist">This app promotes or depends entirely on a non-changeable or non-free network service</string>
+    <string name="antinonfreenetlist">This app promotes or depends entirely on a non-free network service</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
     <string name="antiadslist">This app contains advertising</string>
     <string name="antifeatures">Anti-Features</string>
@@ -504,7 +504,7 @@
     <string name="banner_no_data_or_wifi">No Data or Wi-Fi enabled</string>
     <string name="banner_no_internet">No Internet</string>
     <string name="antinsfw">Not Safe for Work</string>
-    <string name="app_list_results_hidden_antifeature_settings">Some results were hidden based on your antifeature settings.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Some apps are hidden based on your Anti-Features settings. Touch to change.</string>
     <string name="antiads">Ads</string>
     <string name="antiknownvuln">Known Vulnerability</string>
     <string name="antinosource">Source Code No Longer Available</string>
@@ -597,4 +597,8 @@
     <string name="repo_mirror_add_info">The URL you are trying to add (%s) is a mirror of an existing repository.</string>
     <string name="repo_and_mirror_add_both_info">The URL you are trying to add (%s) is a mirror of a new repository. Both the original repository and the mirror will be added.</string>
     <string name="warning_no_compat_versions">The selected repository has no compatible app versions. To receive updates, prefer a repository with compatible versions.</string>
+    <string name="auto_update_time">Earliest next update: %s</string>
+    <string name="antitetherednet">Tethered Network Services</string>
+    <string name="auto_update_time_past">Next update when conditions are fulfilled</string>
+    <string name="antitetherednetlist">This app depends entirely on a certain instance of a network service</string>
 </resources>
