@@ -228,6 +228,9 @@
         "signer": "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
         "size": 1337,
         "srcname": "org.fdroid.min1_42.zip",
+        "features": [
+          "new feature"
+        ],
         "versionCode": 24,
         "versionName": "24"
       }

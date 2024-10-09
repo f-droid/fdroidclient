@@ -213,6 +213,7 @@ object TestDataMidV1 {
         targetSdkVersion = 32,
         sig = "old",
         signer = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
+        features = listOf("new feature"),
         size = 1337,
         srcName = "${packageName1}_42.zip",
         versionCode = 24,

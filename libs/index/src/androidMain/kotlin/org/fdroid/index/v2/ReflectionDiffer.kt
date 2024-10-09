@@ -47,7 +47,6 @@ public object ReflectionDiffer {
                 else if (!parameter.isOptional) e("not nullable: ${parameter.name}")
                 return@forEach
             }
-            @Suppress("UNCHECKED_CAST")
             params[parameter] = when (prop.returnType.classifier) {
                 Int::class -> diff[prop.name]?.primitiveOrNull()?.intOrNull
                     ?: e("${prop.name} no int")
@@ -56,7 +55,12 @@ public object ReflectionDiffer {
                 String::class -> diff[prop.name]?.primitiveOrNull()?.contentOrNull
                     ?: e("${prop.name} no string")
                 List::class -> diff[prop.name]?.jsonArrayOrNull()?.map {
-                    it.primitiveOrNull()?.contentOrNull ?: e("${prop.name} non-primitive array")
+                    if (prop.name == "features") { //
+                        it.jsonObjectOrNull()?.get("name")?.primitiveOrNull()?.contentOrNull
+                            ?: e("features without primitive name: $it")
+                    } else {
+                        it.primitiveOrNull()?.contentOrNull ?: e("${prop.name} non-primitive array")
+                    }
                 } ?: e("${prop.name} no array")
                 Map::class -> diffMap(prop.returnType, prop.getter.call(obj), prop.name, diff)
                 else -> {
