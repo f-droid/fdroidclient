@@ -568,8 +568,8 @@
     <string name="useDnsCache">Käytä DNS-välimuistia</string>
     <string name="useDnsCacheSummary">Käytä tuloksia välimuistista DNS-kyselyjen minimoimiseksi.</string>
     <string name="paste">Liitä</string>
-    <string name="app_details_repository_preferred">(suositeltava)</string>
-    <string name="app_details_repository_button_prefer">Mieluummin tietovarasto</string>
+    <string name="app_details_repository_preferred">(ensisijainen)</string>
+    <string name="app_details_repository_button_prefer">Käytä tietovarastoa</string>
     <string name="app_details_repository_expand">Laajenna tietovarastoluettelo</string>
     <string name="repo_list_info_text">Tietovarasto on sovellusten lähde. Tämä luettelo näyttää kaikki tällä hetkellä lisätyt tietovarastot. Poistettuja tietovarastoja ei käytetä.
 \n
@@ -590,4 +590,6 @@
     <string name="repo_share_not_found">Tietovaraston osoitetta ei löytynyt jaetusta tekstistä.</string>
     <string name="repo_scan_qr_code">Lue QR-koodi</string>
     <string name="repo_preview_included_apps">Sisältyvät sovellukset:</string>
+    <string name="repo_add_repo_and_mirror">Lisää ohjelmavarasto ja peilipalvelin</string>
+    <string name="repo_mirror_exists">Tämä peilipalvelin on jo lisätty (%s).</string>
 </resources>
