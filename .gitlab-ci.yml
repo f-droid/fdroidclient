@@ -270,6 +270,7 @@ libs database schema:
     - export AVD="$AVD_PACKAGE"
     - echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "$AVD"
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
+    - df -h
     - start-emulator.sh
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
