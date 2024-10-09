@@ -240,7 +240,7 @@
     <string name="crash_dialog_title">L\'F-Droid ha fallat</string>
     <string name="crash_dialog_text">S\'ha aturat l\'aplicació per un error inesperat. Voleu enviar els detalls amb correu electrònic per ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
-    <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
+    <string name="antinonfreeassetslist">Aquesta aplicació conté parts (imatges, efectes de so, música...) no lliures</string>
     <string name="menu_email">Correu electrònic de l\'autor</string>
     <string name="swap_stopping_wifi">S\'està aturant la connexió Wi-Fi…</string>
     <string name="useTor">Utilitzeu Tor</string>
