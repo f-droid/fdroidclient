@@ -276,8 +276,8 @@
     <string name="updates__hide_updateable_apps">Piilota sovellukset</string>
     <string name="updates__show_updateable_apps">Näytä sovellukset</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Lataa päivitys yhteen sovellukseen.</item>
-        <item quantity="other">Lataa päivitykset %1$d sovellukseen.</item>
+        <item quantity="one">Lataa päivitys yhteen sovellukseen:</item>
+        <item quantity="other">Lataa päivitykset %1$d sovellukseen:</item>
     </plurals>
     <string name="clear_search">Tyhjennä haku</string>
     <string name="repositories_summary">Lisää muita sovelluslähteitä</string>
