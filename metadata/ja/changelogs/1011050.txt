@@ -1,0 +1,7 @@
+* アプリの説明文のURLの検出を改善
+
+* 「付近」でのSDCardsとUSG-OTGの取り扱いを改善
+
+* コードの更新と、PNGをベクター画像に変更（@isira-seneviratneに感謝です！）
+
+* GitCDNやRawGitなどのミラーをサポートするため、認識できるリポジトリのURLの長さを増加

@@ -71,7 +71,7 @@
     <string name="antiadslist">此應用程式含有廣告</string>
     <string name="antitracklist">本應用程式會追蹤並彙報您的行為</string>
     <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
-    <string name="antinonfreenetlist">此應用程式推廣或完全依賴於無法變更或非自由的網路服務</string>
+    <string name="antinonfreenetlist">此應用程式推廣或完全依賴於非自由的網路服務</string>
     <string name="antinonfreedeplist">此應用程式依賴其他非自由的應用程式</string>
     <string name="antiupstreamnonfreelist">上游原始碼並非完全自由</string>
     <string name="antinonfreeassetslist">此應用程式含有非自由的資源</string>
@@ -403,8 +403,8 @@
     <string name="sort_search">搜尋排序</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">您的相機似乎沒有自動對焦。掃描代碼可能會很困難。</string>
-    <string name="show_anti_feature_apps">顯示反特徵應用程式</string>
-    <string name="show_anti_feature_apps_on">顯示具有反特徵的應用程式</string>
+    <string name="show_anti_feature_apps">顯示反特徵</string>
+    <string name="show_anti_feature_apps_on">顯示有已知反特徵的應用程式</string>
     <string name="force_touch_apps">包括觸控式螢幕的應用程式</string>
     <string name="force_touch_apps_on">顯示需要觸控式螢幕的應用程式，而不管硬體的支援度如何</string>
     <string name="repo_add_mirror">新增鏡像</string>
@@ -431,7 +431,7 @@
     <string name="send_version_and_uuid">傳送版本和 UUID 至伺服器</string>
     <string name="send_version_and_uuid_summary">在下載時包含此應用程式的版本和隨機的唯一 ID，重新啟動應用程式後才能套用設定。</string>
     <string name="share_repository">分享軟體庫</string>
-    <string name="antinosourcesince">原始碼不再能取得，無法更新。</string>
+    <string name="antinosourcesince">原始碼不再能取得，無法更新</string>
     <string name="send_install_history">傳送安裝記錄</string>
     <string name="send_history_csv">%s 安裝記錄為 CSV 檔案</string>
     <string name="updates_disabled_by_settings">所有更新都被行動數據／WiFi 設定所停用</string>
@@ -503,7 +503,7 @@
     <string name="antiupstreamnonfree">上游非自由</string>
     <string name="antinonfreeassets">非自由資源</string>
     <string name="antinosource">不再提供原始碼</string>
-    <string name="app_list_results_hidden_antifeature_settings">根據您的反特徵設定隱藏了部份結果。</string>
+    <string name="app_list_results_hidden_antifeature_settings">根據您的反特徵設定隱藏了部份應用程式。輕點以變更。</string>
     <string name="antinonfreead">非自由的附加元件</string>
     <string name="antiads">廣告</string>
     <string name="antitrack">追蹤</string>
@@ -529,7 +529,7 @@
     <string name="repo_invalid">無效倉庫。
 \n
 \n請聯繫其維護者，並告知相關問題。</string>
-    <string name="repo_exists">此倉庫已被添加。</string>
+    <string name="repo_exists">已新增此軟體庫。</string>
     <string name="repo_add_new_title">添加倉庫</string>
     <string name="targetsdk_or_later">目標板本為 %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-droid可以搜索在您SD卡上的倉庫及鏡像，但是需要您的可許。</string>
@@ -578,4 +578,16 @@
 \n若一個應用程式位於多個軟體庫中，則自動偏好清單中較高的軟體庫。您可以透過長按並拖曳軟體庫來重新排序。</string>
     <string name="repo_archive_failed">封存軟體庫目前無法使用</string>
     <string name="repo_disable_warning">停用此軟體庫將從所有應用程式中刪除其「偏好」狀態。</string>
+    <string name="repo_add_repo_and_mirror">新增軟體庫與鏡像</string>
+    <string name="repo_scan_qr_code">掃描 QR Code</string>
+    <string name="repo_preview_included_apps">包含的應用程式：</string>
+    <string name="repo_mirror_exists">已新增此鏡像 (%s)。</string>
+    <string name="repo_mirror_add_info">您嘗試新增的 URL (%s) 是現有軟體庫的鏡像。</string>
+    <string name="repo_and_mirror_add_both_info">您嘗試新增的 URL (%s) 是新軟體庫的鏡像。將會新增原始軟體庫與鏡像。</string>
+    <string name="repo_view_repo">檢視軟體庫</string>
+    <string name="warning_no_compat_versions">所選軟體庫沒有相容的應用程式版本。要接收更新，請選擇有相容版本的軟體庫。</string>
+    <string name="auto_update_time">下次更新最早為：%s</string>
+    <string name="auto_update_time_past">滿足條件後下次更新</string>
+    <string name="antitetherednet">有限制的網路服務</string>
+    <string name="antitetherednetlist">此應用程式完全依賴網路服務的某個站台</string>
 </resources>

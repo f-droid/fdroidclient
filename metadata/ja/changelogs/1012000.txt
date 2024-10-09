@@ -1,0 +1,11 @@
+* アプリの説明文の表示に使用する言語に、Androidの言語設定を尊重するよう更新
+
+* 最新のタブでアプリを言語設定に応じて表示
+
+* 最新のタブで、直近のアプリから順番に表示（@TheLastProject @IzzySoft）
+
+* 内蔵のAndroidのテーマに従うよう、テーマのサポートを更新（@proletarius101）
+
+* 検索結果を改善（@Tvax @gcbrown76）
+
+* Androidがキャッシュの消去を効率的にスケジュールするよう更新（@Isira-Seneviratne）

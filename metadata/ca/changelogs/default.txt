@@ -1,8 +1,11 @@
-* Dividiu el nom i el resum a les llistes d'aplicacions per a una millor llegibilitat
-* Les aplicacions orientades a l'SDK 24 són incompatibles amb dispositius Android 15
-* Gestioneu millor els miralls a la vista prèvia "Afegir dipòsit" (gràcies Thore!)
-* Activeu les actualitzacions d'aplicacions desateses als dispositius Xiaomi que no executen MIUI (gràcies Irate!)
-* Confieu en els certificats arrel afegits per la usuària (gràcies B.!)
-* Millora la localització per idiomes menys comuns (gràcies Ray!)
-* No reaccioneu a les etiquetes NFC, ja que s'ha eliminat la funció NFC (gràcies Thibault!)
-* Mostra un avís quan les aplicacions no es poden actualitzar des del dipòsit preferit
+* Actualitzador de dipòsit reescrit per a fer més fiables les actualitzacions en segon pla
+* Divideix el nom i el resum a les llistes d'aplicacions per a una millor llegibilitat
+* Mostra un avís quan les aplicacions no es poden actualitzar des del repositori preferit
+* Les aplicacions dirigides a SDK 24 són incompatibles amb els dispositius Android 15
+* Gestionar millor els miralls a la previsualització "Afegeix un dipòsit" (Gràcies Thore!)
+* Activa les actualitzacions desateses de les aplicacions als dispositius Xiaomi que no executin el MIUI (Gràcies Irate!)
+* Confia en els certificats arrel afegits per l'usuari (Gràcies B!)
+* Corregeix la cerca sense distingir majúscules i minúscules que conté diacrítics (Gràcies a Tobias!)
+* Actualitza les descripcions característiques no adients (Gràcies Licaon!)
+* Afegeix característiques no adients de xarxa amb tethered (Gràcies linsui!)
+* Ignora els espais en blanc quan s'afegeixen repositoris de miralls (Gràcies a Tobias!)

@@ -1,8 +1,9 @@
-• dividi nomon kaj priskribon sur aplikaĵ-listo por pliigi legeblecon
+• pliigita senmalfunkcieco de fonaj ĝisdatigoj
+• dividi nomon k priskribon sur aplikaĵ-listo por pliigi legeblecon
+• averto se aplikaĵo neĝisdatigebla per implicita deponejo
 • marki apojn celantajn SDK 24 kiel nekongruajn kun Android 15
-• pli bona antaŭvido de spegul-servilojn en “Aldoni deponejon” (@Thore)
-• senasistaj ĝisdatigoj de aplikaĵoj por aparatoj Xiaomi sen MIUI (@Irate)
-• konfidi uzant-aldonitajn radikajn atestilojn (@B.)
-• korektita traktado de malpli oftaj lingvoj (@Ray)
-• forigita subteno por NFC-glumarkoj (@Thibault)
-• montri averton kiam apo ne ĝisdatigebla per preferata deponejo
+• plibonigita antaŭvido de spegulserviloj en Aldoni deponejon
+• senasistaj ĝisdatigoj de aplikaĵoj por aparatoj Xiaomi sen MIUI
+• konfidi uzant-aldonitajn radikajn atestilojn
+• riparis usklec-blindajn serĉojn kun supersignoj
+• nova fieblo: Alligita al retservo

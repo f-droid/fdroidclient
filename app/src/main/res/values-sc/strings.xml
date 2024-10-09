@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa bècia. Pro la installare, sa bècia depet èssere istada disinstallada in antis. Pro piaghere fàghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)</string>
+    <string name="SignatureMismatch">Sa versione noa est firmada cun una crae diferente dae sa betza. Pro l\'installare, in antis depes disinstallare sa betza. Pro praghere faghe·lu e torra a proare. (Sa disinstallatzione as a burrare totu sos datos sarvados in s\'aplicatzione)</string>
     <string name="installIncompatible">S\'aplicatzione no est compatìbile cun su dispositivu tuo, la cheres installare su matessi?</string>
     <string name="version">Versione</string>
     <string name="delete">Burra</string>
-    <string name="cache_downloaded">Mantene sas aplicatziones in sa cache</string>
+    <string name="cache_downloaded">Mantene sas aplicatziones in sa memòria temporànea</string>
     <string name="updates">Agiornamentos</string>
     <string name="other">Àteru</string>
     <string name="update_interval">Intervallu agiornamentu automàticu</string>
-    <string name="notify">Ammustra sos agiornamentos disponìbiles</string>
-    <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
+    <string name="notify">Ammustra sos agiornamentos a disponimentu</string>
+    <string name="notify_on">Averte cando bi sunt agiornamentos a disponimentu</string>
     <string name="system_installer">Estensione cun permissos de sistema</string>
-    <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos
-    </string>
+    <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e bogare pachetes</string>
     <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>
     <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
-    <string name="local_repo_https_on">Imprea sa connessione criptada HTTPS:// pro sos depòsitu locale</string>
-    <string name="app_details">Minujas aplicatzione</string>
-    <string name="no_such_app">Peruna aplicatzione currispondente.</string>
+    <string name="local_repo_https_on">Imprea sa connessione tzifrada HTTPS:// pro su depòsitu locale</string>
+    <string name="app_details">Detàllios aplicatzione</string>
+    <string name="no_such_app">Peruna aplicatzione gasi agatada.</string>
     <string name="about_title_full">Subra de F-Droid</string>
     <string name="about_site">Giassu/situ web</string>
     <string name="about_version">Versione</string>
     <string name="app_installed">Installada</string>
-    <string name="app_not_installed">Non installada</string>
+    <string name="app_not_installed">No installada</string>
     <string name="app_inst_known_source">Installada (dae %s)</string>
-    <string name="app_inst_unknown_source">Installada (dae una mitza disconnota)</string>
+    <string name="app_inst_unknown_source">Installada (dae una fonte disconnota)</string>
     <string name="added_on">Annanta su %s</string>
     <string name="ok">AB</string>
     <string name="yes">Eja</string>
@@ -35,11 +34,11 @@
     <string name="enable">Abìlita</string>
     <string name="add_key">Annanghe crae</string>
     <string name="overwrite">Subraiscrie</string>
-    <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
+    <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèbera·nde unu!</string>
     <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
     <string name="repo_add_url">Indiritzu depòsitu</string>
-    <string name="repo_add_fingerprint">Arrastu/Imprenta (optzionale)</string>
-    <string name="malformed_repo_uri">Ignorende URI depòsitos malformados: %s</string>
+    <string name="repo_add_fingerprint">Imprenta digitale (optzionale)</string>
+    <string name="malformed_repo_uri">Ignorende URI de depòsitos fatos male: %s</string>
     <string name="menu_manage">Depòsitos</string>
     <string name="menu_search">Chirca</string>
     <string name="menu_add_repo">Depòsitu nou</string>
@@ -49,43 +48,42 @@
     <string name="menu_uninstall">Disinstalla</string>
     <string name="menu_ignore_all">Ignora totu sos agiornamentos</string>
     <string name="menu_ignore_this">Ignora custu agiornamentu</string>
-    <string name="menu_website">Giassu/situ web</string>
+    <string name="menu_website">Situ web</string>
     <string name="menu_issues">Problemas</string>
-    <string name="menu_source">Còdighe mitza</string>
+    <string name="menu_source">Còdighe de orìgine</string>
     <string name="menu_upgrade">Agiorna</string>
-    <string name="details_notinstalled">Non installada</string>
-    <string name="antiadslist">Custa aplicatzione cuntènnidi publitzidade</string>
+    <string name="details_notinstalled">No installada</string>
+    <string name="antiadslist">Custa aplicatzione cuntenet publitzidade</string>
     <string name="antitracklist">Custa aplicatzione compidat e riferit a àteros de sas atividades tuas</string>
     <string name="antinonfreeadlist">Custa aplicatzione promovet estensiones (add-ons) non lìberas</string>
     <string name="antinonfreenetlist">Custa aplicatzione promovet o dipendet de su totu dae servìtzios de retza non lìberos</string>
-    <string name="antinonfreedeplist">Custa aplicatzione dipendet dae àteros aplicos non lìberos</string>
-    <string name="antiupstreamnonfreelist">Su còdighe mitza originale no est lìberu de su totu</string>
+    <string name="antinonfreedeplist">Custa aplicatzione dipendet dae àteras aplicatziones non lìberas</string>
+    <string name="antiupstreamnonfreelist">Su còdighe de orìgine originale no est lìberu de su totu</string>
     <string name="display">Ammustra</string>
     <string name="expert">Modalidade Espertu</string>
     <string name="expert_on">Ammustra àteras informatziones e abìlita àteras impostatziones</string>
     <string name="search_hint">Chirca aplicatziones</string>
     <string name="appcompatibility">Cumpatibilidade aplicatziones</string>
-    <string name="show_incompat_versions">Inclue sas versiones non cumpatìbiles</string>
+    <string name="show_incompat_versions">Include sas versiones non cumpatìbiles</string>
     <string name="show_incompat_versions_on">Ammustra sas versiones non cumpatìbiles cun su dispositivu</string>
     <string name="local_repo">Depòsitu locale</string>
     <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
-    <string name="touch_to_configure_local_repo">Toca pro bìdere sas minujas e permìtere a àteros de retzire sas
- aplicatziones tuas.</string>
-    <string name="deleting_repo">Burrende su depòsitu atuale…</string>
+    <string name="touch_to_configure_local_repo">Toca pro bìdere sas minujas e permìtere a àteros de retzire sas aplicatziones tuas.</string>
+    <string name="deleting_repo">Iscantzellende su depòsitu atuale…</string>
     <string name="adding_apks_format">Annanghende %s a su depòsitu…</string>
     <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)…</string>
-    <string name="linking_apks">Culleghende sos APK in su depòsitu…</string>
+    <string name="linking_apks">Colleghende sos APK in su depòsitu…</string>
     <string name="copying_icons">Copiende sas iconas de sas aplicatziones in su depòsitu…</string>
     <string name="icon">Icona</string>
     <string name="next">Imbeniente</string>
     <string name="skip">Brinca</string>
-    <string name="proxy">Proxy</string>
-    <string name="enable_proxy_title">Abìlita proxy HTTP</string>
+    <string name="proxy">Serbidore intermediàriu</string>
+    <string name="enable_proxy_title">Abìlita su serbidore intermèdiu HTTP</string>
     <string name="enable_proxy_summary">Cunfigura proxy HTTP pro totu sas rechestas de sa retza</string>
     <string name="proxy_host">Host proxy</string>
-    <string name="proxy_host_summary">Su nùmene de s\'host de su proxy tuo (e.g. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Su nùmene de s\'host de su serbidore intermediàriu tuo (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Ghenna proxy</string>
-    <string name="proxy_port_summary">Su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
+    <string name="proxy_port_summary">Su nùmeru de sa ghenna de su serbidore intermediàriu tuo (es. 8118)</string>
     <string name="status_download">Iscarrighende
 \n%2$s / %3$s (%4$d%%) dae
 \n%1$s</string>
@@ -95,7 +93,7 @@
     <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
     <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
     <string name="no_permissions">Perunu permissu</string>
-    <string name="no_handler_app">Non tenes peruna aplicatzione disponìbile pro gestire %s.</string>
+    <string name="no_handler_app">Non tenes peruna aplicatzione a disponimentu pro gestire %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Non firmadu</string>
     <string name="unverified">Non verificadu</string>
@@ -104,28 +102,21 @@
     <string name="repo_description">Descritzione</string>
     <string name="repo_last_update">Ùrtimu agiornamentu</string>
     <string name="repo_name">Nùmene</string>
-    <string name="unsigned_description">Custu bolet nàrrere chi sa lista de
-        sas aplicatziones no est istadu possìbile a la verificare. Depes istare atentu
-        cun sas aplicatziones iscarrifìgadas dae ìnditzes non firmados.
-    </string>
-    <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu.
-        Pro bìdere sas aplicatziones in intro, lu depes abilitare.
-    </string>
+    <string name="unsigned_description">Custu bolet nàrrere chi sa lista de sas aplicatziones no est istadu possìbile a la verificare. Depes istare atentu cun sas aplicatziones iscarrifìgadas dae ìnditzes non firmados.</string>
+    <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu. Pro bìdere sas aplicatziones in intro, lu depes abilitare.</string>
     <string name="unknown">Disconnotu</string>
-    <string name="repo_confirm_delete_title">Burrare su depòsitu?</string>
-    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus disponìbiles.
+    <string name="repo_confirm_delete_title">Iscantzellare su depòsitu?</string>
+    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus a disponimentu.
 \n
 \nNota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
     <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.
 \n
 \nDepes torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.</string>
-    <string name="repo_added">Depòsitu de pachetos %1$s sarvadu.</string>
-    <string name="repo_searching_address">Chirchende unu depòsitu de pachetos in
+    <string name="repo_added">Depòsitu de pachetes %1$s sarvadu.</string>
+    <string name="repo_searching_address">Chirchende unu depòsitu de pachetes in
 \n%1$s</string>
-    <string name="not_on_same_wifi">Su dispositivu tuo no est in sa matessi retza Wi-Fi de su depòsitu locale chi as
-        annantu como! Proa a intrare in custa retza: %s
-    </string>
-    <string name="requires_features">Netzessitat de: %1$s</string>
+    <string name="not_on_same_wifi">Su dispositivu tuo no est in sa matessi retza Wi-Fi de su depòsitu locale chi as annantu como! Proa a intrare in custa retza: %s</string>
+    <string name="requires_features">Netzèssitat de: %1$s</string>
     <string name="category_Development">Isvilupu</string>
     <string name="category_Games">Giogos</string>
     <string name="category_Internet">Ìnternet</string>
@@ -138,8 +129,8 @@
     <string name="category_System">Sistema</string>
     <string name="swap_join_same_wifi">Intra in sa matessi retza Wi-Fi de s\'amigu tuo</string>
     <string name="swap">Imbia aplicatziones</string>
-    <string name="swap_no_wifi_network">Peruna retza disponìbile</string>
-    <string name="swap_view_available_networks">(Toca pro ammustrare sas retzas disponìbiles)</string>
+    <string name="swap_no_wifi_network">Peruna retza a disponimentu</string>
+    <string name="swap_view_available_networks">(Toca pro ammustrare sas retzas a disponimentu)</string>
     <string name="open_qr_code_scanner">Aberi s\'iscansidore de còdighes QR</string>
     <string name="swap_welcome">Benènnidu in F-Droid!</string>
     <string name="swap_confirm_connect">Boles retzire como sas aplicatziones dae %1$s?</string>
@@ -148,25 +139,25 @@
     <string name="links">Ligàmenes</string>
     <string name="back">In dae segus</string>
     <string name="invalid_url">Custu no est unu ligàmene vàlidu.</string>
-    <string name="menu_changelog">Lista modìficas</string>
+    <string name="menu_changelog">Lista de modìficas</string>
     <string name="banner_updating_repositories">Agiornende sos depòsitos</string>
     <string name="status_processing_xml_percent">Protzessende %2$s / %3$s (%4$d%%) dae %1$s</string>
     <string name="pref_language">Limba</string>
     <string name="pref_language_default">Predefinida de sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Puntu de atzessu (Hotspot)</string>
-    <string name="empty_installed_app_list">Peruna aplicatzione installada.\n\nBi sunt aplicatziones in su dispositivu
-        tuo, ma non sunt disponìbiles dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos
-        tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas disponìbiles.
-    </string>
-    <string name="empty_can_update_app_list">Bene meda!\nSas aplicatziones tuas sunt agiornadas.</string>
-    <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
-    <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
+    <string name="empty_installed_app_list">Peruna aplicatzione installada.
+\n
+\nBi sunt aplicatziones in su dispositivu tuo, ma non sunt a disponimentu dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas a disponimentu.</string>
+    <string name="empty_can_update_app_list">Bene meda!
+\nSas aplicatziones tuas sunt agiornadas.</string>
+    <string name="install_error_unknown">Installatzione faddida pro neghe de una faddina disconnota</string>
+    <string name="uninstall_error_unknown">Disinstallatzione faddida pro neghe de una faddina disconnota</string>
     <string name="swap_connection_misc_error">B\'est istada una faddina durante sa connessione a su dispositivu, impossìbile cumpartzire sas aplicatziones!</string>
     <string name="unstable_updates">Agiornamentos instàbiles</string>
     <string name="unstable_updates_summary">Cussigia agiornamentos a versiones instàbiles</string>
-    <string name="about_source">Còdighe mitza</string>
-    <string name="bad_fingerprint">Imprenta/arrastu isballiada</string>
+    <string name="about_source">Còdighe de orìgine</string>
+    <string name="bad_fingerprint">Imprenta digitale isballiada</string>
     <string name="category_Connectivity">Connetividade</string>
     <string name="category_Graphics">Gràfica</string>
     <string name="category_Money">Dinare</string>
@@ -174,46 +165,42 @@
     <string name="category_Theming">Temas</string>
     <string name="category_Time">Tempus</string>
     <string name="category_Writing">Iscritura</string>
-    <string name="swap_join_same_wifi_desc">Pro cumpartzire impreende su Wi-Fi, ista atentu a istare in sa matessi
-        retza. Si non tenies atzessu a sa matessi retza, unu de bois podet creare unu puntu de atzessu Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Pro cumpartzire impreende su Wi-Fi, ista atentu a istare in sa matessi retza. Si non tenies atzessu a sa matessi retza, unu de bois podet creare unu puntu de atzessu Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Agiuda s’amigou tuo a intrare in su puntu de atzessu tuo</string>
-    <string name="swap_success">Cumpartzidura resissida!</string>
+    <string name="swap_success">Cumpartzidura resèssida!</string>
     <string name="swap_active_hotspot">%1$s (puntu de atzessu tuo)</string>
     <string name="swap_switch_to_wifi">Toca pro colare a una retza Wi-Fi</string>
-    <string name="swap_dont_show_again">Non mi l’ammustrare prus</string>
-    <string name="swap_scan_or_type_url">Una pessone tenet de iscarrigare su còdighe, o iscrìere s’URL de s\'àtera in
-        unu navigadore.
-    </string>
+    <string name="swap_dont_show_again">Non mi l’ammustres prus</string>
+    <string name="swap_scan_or_type_url">Una pessone tenet de iscarrigare su còdighe, o iscrìere s’URL de s\'àtera in unu navigadore.</string>
     <string name="swap_choose_apps">Issèbera aplicatziones</string>
     <string name="swap_scan_qr">Còdighe QR</string>
     <string name="swap_people_nearby">Pessones a curtzu</string>
-    <string name="swap_scanning_for_peers">Chirchende pro pessones a curtzu…</string>
+    <string name="swap_scanning_for_peers">Chirchende pessones a curtzu…</string>
     <string name="swap_nearby">Cumpartzidura a curtzu</string>
-    <string name="swap_intro">Connete·ti e cuncambia aplicatziones cun gente a curtzu de tie.</string>
-    <string name="swap_visible_bluetooth">Visìbile via Bluetooth</string>
+    <string name="swap_intro">Connete·ti e cuncàmbia aplicatziones cun gente a curtzu a tie.</string>
+    <string name="swap_visible_bluetooth">Visìbile tràmite Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Ammaniende su Bluetooth…</string>
-    <string name="swap_not_visible_bluetooth">Non visìbile via Bluetooth</string>
-    <string name="swap_visible_wifi">Visìbile via Wi-Fi</string>
+    <string name="swap_not_visible_bluetooth">Non visìbile cun su Bluetooth</string>
+    <string name="swap_visible_wifi">Visìbile tràmite Wi-Fi</string>
     <string name="swap_setting_up_wifi">Ammaniende su Wi-Fi…</string>
-    <string name="swap_not_visible_wifi">Non visìbile via Wi-Fi</string>
+    <string name="swap_not_visible_wifi">Non visìbile tràmite Wi-Fi</string>
     <string name="swap_wifi_device_name">Nùmene de su dispositivu</string>
     <string name="swap_cant_find_peers">Non ses resessende a agatare su chi chircas?</string>
     <string name="swap_send_fdroid">Imbia F-Droid</string>
     <string name="swap_no_peers_nearby">No apo agatadu gente a curtzu pro cumpartzire.</string>
     <string name="swap_connecting">Connetende</string>
-    <string name="swap_confirm">Cunfirma cumpartzidura</string>
+    <string name="swap_confirm">Cunfirma sa cumpartzidura</string>
     <string name="swap_qr_isnt_for_swap">Su còdighe QR iscansidu non paret unu còdighe de cumpartzidura.</string>
     <string name="loading">Carrighende…</string>
     <string name="install_confirm">at a tènnere atzessu a</string>
-    <string name="install_confirm_update">Cheres installare un’agiornamentu a custa aplicatzione esistente\? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
-    <string name="install_confirm_update_system">Cheres installare un’agiornamentu pro custa aplicatzione incluida in su sistema\? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
-    <string name="install_confirm_update_system_no_perms">Cheres installare un’agiornamentu pro custa aplicatzione incluida in su sistema\? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
-    <string name="install_confirm_update_no_perms">Cheres installare un’agiornamentu pro custa aplicatzione esistente\? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
+    <string name="install_confirm_update">Cheres installare un’agiornamentu a custa aplicatzione esistente? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
+    <string name="install_confirm_update_system">Cheres installare un’agiornamentu pro custa aplicatzione incluida in su sistema? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada at a tènnere atzessu a:</string>
+    <string name="install_confirm_update_system_no_perms">Cheres installare un’agiornamentu pro custa aplicatzione incluida in su sistema? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
+    <string name="install_confirm_update_no_perms">Cheres installare un’agiornamentu pro custa aplicatzione esistente? Sos datos tuos giai sarvados non s\'ant a pèrdere. S\'aplicatzione agiornada non tenet bisòngiu de permissos ispetziales.</string>
     <string name="newPerms">Nou</string>
     <string name="allPerms">Totu</string>
     <string name="perm_costs_money">Custu ti diat pòdere costare dinare</string>
-    <string name="uninstall_update_confirm">Boles remplasare custa aplicatzione cun sa versione de fàbrica\? Totu sos datos ant a èssere iscantzellados.</string>
+    <string name="uninstall_update_confirm">Boles remplasare custa aplicatzione cun sa versione de fàbrica? Totu sos datos s\'ant a iscantzellare.</string>
     <string name="uninstall_confirm">Boles disinstallare custa aplicatzione?</string>
     <string name="perms_new_perm_prefix">Nou:</string>
     <string name="perms_description_app">Frunidu dae %1$s.</string>
@@ -231,79 +218,74 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="system_install_denied_permissions">Sos permissos de sistema non sunt istados cuntzessos a
-        s’estensione! Pro piaghere crea una sinnalatzione de errore!
-    </string>
+    <string name="system_install_denied_permissions">Sos permissos de sistema non sunt istados cuntzessos a s’estensione! Pro piaghere crea una sinnalatzione de errore!</string>
     <string name="repo_details">Depòsitu</string>
     <string name="repo_url">Indiritzu</string>
-    <string name="status_download_unknown_size">Iscarrighende\n%2$s dae\n%1$s</string>
+    <string name="status_download_unknown_size">Iscarrighende
+\n%2$s dae
+\n%1$s</string>
     <string name="permissions">Permissos</string>
     <string name="more">De prus</string>
-    <string name="less">De mancu</string>
+    <string name="less">Prus pagu</string>
     <string name="menu_settings">Preferèntzias</string>
     <string name="login_title">Autenticatzione netzessària</string>
-    <string name="login_name">Impreadore</string>
+    <string name="login_name">Nùmene de impreadore</string>
     <string name="login_password">Crae</string>
     <string name="repo_edit_credentials">Modìfica sa crae</string>
     <string name="repo_error_empty_username">Nùmene impreadore bòidu, credentziales non cambiadas</string>
     <string name="about_license">Litzèntzia</string>
-    <string name="empty_search_available_app_list">Peruna aplicatzione currispondente disponìbile.</string>
-    <string name="status_inserting_apps">Sarvende sas minujas de sas aplicatziones</string>
-    <string name="crash_dialog_text">Un’errore imprevistu
-        at fatu serrare s’aplicatzione. Boles imbiare sas minujas
-        pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?
-    </string>
+    <string name="empty_search_available_app_list">Peruna aplicatzione currispondente a disponimentu.</string>
+    <string name="status_inserting_apps">Sarvende sos detàllios de sas aplicatziones</string>
+    <string name="crash_dialog_text">Un’errore imprevistu at fatu serrare s’aplicatzione. Boles imbiare sas minujas pro mèdiu de posta eletrònica pro agiudare a isòlvere su problema?</string>
     <string name="crash_dialog_comment_prompt">Podes annanghere àteras informatziones e cummentos inoghe:</string>
     <string name="crash_dialog_title">F-Droid s\'est serradu</string>
-    <string name="antinonfreeassetslist">Custa aplicatzione cuntennit cantos non lìberos</string>
+    <string name="antinonfreeassetslist">Custa aplicatzione cuntenet resursas non lìberas</string>
     <string name="menu_email">Iscrie a s’autore</string>
     <string name="useTor">Imprea Tor</string>
     <string name="useTorSummary">Iscàrriga pro mèdiu de Tor pro una privadesa prus manna. Tenet bisòngiu de Orbot</string>
     <string name="swap_stopping_wifi">Firmende su Wi-Fi…</string>
-    <string name="update_auto_download">Iscàrriga automaticamente sos agiornamentos</string>
-    <string name="update_auto_download_summary">Sos agiornamentos ant a èssere iscarrigados automaticamente e tue as a
-        retzire una notìfica pro los installare
-    </string>
+    <string name="update_auto_download">Iscàrriga in automàticu sos agiornamentos</string>
+    <string name="update_auto_download_summary">Sos agiornamentos s\'ant a iscarrigare in automàticu e tue as a retzire una notìfica pro los installare</string>
     <string name="download_pending">Isetende pro incumintzare s\'iscarrigamentu…</string>
-    <string name="keep_hour">1 Ora</string>
-    <string name="keep_day">1 Die</string>
-    <string name="keep_week">1 Chida</string>
-    <string name="keep_month">1 Mese</string>
-    <string name="keep_year">1 Annu</string>
+    <string name="keep_hour">1 ora</string>
+    <string name="keep_day">1 die</string>
+    <string name="keep_week">1 chida</string>
+    <string name="keep_month">1 mese</string>
+    <string name="keep_year">1 annu</string>
     <string name="keep_forever">Pro semper</string>
     <string name="install_error_notify_title">Errore installende %s</string>
     <string name="uninstall_error_notify_title">Errore disinstallende %s</string>
     <string name="installing">Installende…</string>
     <string name="uninstalling">Disinstallende…</string>
-    <string name="update_auto_install">Installa sos agiornamentos automaticamente</string>
-    <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos automaticamente</string>
-    <string name="keep_install_history">Sarva s\'istòria de sas installatziones</string>
+    <string name="update_auto_install">Installa sos agiornamentos in automàticu</string>
+    <string name="update_auto_install_summary">Iscàrriga e installa sos agiornamentos in automàticu</string>
+    <string name="keep_install_history">Sarva sa cronologia de sas installatziones</string>
     <string name="keep_install_history_summary">Sarva unu registru de sas installatziones e de sas disinstallatziones in un\'archìviu locale</string>
     <string name="warning_no_internet">Impossìbile agiornare, ses connessu a ìnternet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">Cùmbida unu cafè a sos isvilupadores de %1$s!</string>
-    <string name="app_details_donate_prompt">%1$s est istadu creadu dae %2$s. Cumbida·li unu cafè!</string>
-    <string name="repositories_summary">Annanghe mitzas additzionales de aplicatziones</string>
-    <string name="notification_title_single_update_available">Agiornamentu disponìbile</string>
+    <string name="app_details_donate_prompt">%1$s l\'at creadu %2$s. Cumbida·li unu cafè!</string>
+    <string name="repositories_summary">Annanghe fontes additzionales de aplicatziones</string>
+    <string name="notification_title_single_update_available">Agiornamentu a disponimentu</string>
     <string name="notification_title_single_ready_to_install">Prontu pro s\'installatzione</string>
     <string name="notification_title_single_ready_to_install_update">Agiornamentu prontu pro s\'installatzione</string>
     <string name="notification_title_single_install_error">Installatzione faddida</string>
     <string name="notification_content_single_downloading">Iscarrighende \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Iscarrighende s\'agiornamentu pro \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installende \"%1$s\"…</string>
-    <string name="notification_content_single_installed">Installatzione resissida</string>
-    <string name="notification_title_summary_update_available">Agiornamentu disponìbile</string>
+    <string name="notification_content_single_installed">Installatzione resèssida</string>
+    <string name="notification_title_summary_update_available">Agiornamentu a disponimentu</string>
     <string name="notification_title_summary_downloading">Iscarrighende…</string>
     <string name="notification_title_summary_downloading_update">Iscarrighende s\'agiornamentu…</string>
     <string name="notification_title_summary_ready_to_install">Prontu pro s\'installatzione</string>
     <string name="notification_title_summary_ready_to_install_update">Agiornamentu prontu pro s\'installatzione</string>
     <string name="notification_title_summary_installing">Installende</string>
-    <string name="notification_title_summary_installed">Installatzione resissida</string>
-    <string name="notification_title_summary_install_error">Installatzione faddida</string>
+    <string name="notification_title_summary_installed">Installatzione resèssida</string>
+    <string name="notification_title_summary_install_error">Installatzione fallida</string>
     <string name="notification_action_update">Agiornamentu</string>
     <string name="notification_action_cancel">Lassa</string>
     <string name="notification_action_install">Installa</string>
-    <string name="app_version_x_available">Sa versione %1$s est disponìbile</string>
+    <string name="app_version_x_available">Sa versione %1$s est a disponimentu</string>
     <string name="app_version_x_installed">Versione %1$s</string>
     <string name="main_menu__latest_apps">Ùrtimas</string>
     <string name="main_menu__categories">Categorias</string>
@@ -313,12 +295,11 @@
         <item quantity="other">Càstia totu %d</item>
     </plurals>
     <string name="clear_search">Inneta sa chirca</string>
-    <string name="app_recommended_version_installed">Versione %1$s (Racumandada)</string>
+    <string name="app_recommended_version_installed">Versione %1$s (racumandada)</string>
     <string name="app_new">Noa</string>
     <string name="installed_apps__activity_title">Aplicatziones installadas</string>
     <string name="installed_app__updates_ignored">Agiornamentos ignorados</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Agiornamentos ignorados pro sa versione %1$s
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Agiornamentos ignorados pro sa versione %1$s</string>
     <string name="preference_category__my_apps">Aplicatziones meas</string>
     <string name="preference_manage_installed_apps">Manìgia sas aplicatziones installadas</string>
     <string name="tts_category_name">Categoria %1$s</string>
@@ -327,40 +308,33 @@
         <item quantity="other">Ammustra totu sas aplicatziones %1$d in sa categoria %2$s</item>
     </plurals>
     <string name="app__install_downloaded_update">Agiorna</string>
-    <string name="app_list__name__downloading_in_progress">Installende %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Iscarrighende %1$s</string>
     <string name="updates__tts__download_app">Iscàrriga</string>
     <string name="update_all">Agiorna totu</string>
     <string name="updates__hide_updateable_apps">Istichi sas aplicatziones</string>
     <string name="updates__show_updateable_apps">Ammustra sas aplicatziones</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Iscàrriga s\'agiornamentu pro %1$d aplicatzione.</item>
-        <item quantity="other">Iscàrriga sos agiornamentos pro %1$d aplicatziones.</item>
+        <item quantity="one">Iscàrriga s\'agiornamentu pro %1$d aplicatzione:</item>
+        <item quantity="other">Iscàrriga sos agiornamentos pro %1$d aplicatziones:</item>
     </plurals>
     <string name="details_new_in_version">Nou in sa versione %s</string>
     <string name="antifeatureswarning">Custa aplicatzione tenet funtzionalidades chi ti diant pòdere non agradare.</string>
     <string name="antifeatures">Anti-funtzionalidades</string>
     <string name="details_last_updated_today">Agiornadu oe</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Agiornada %1$d die a como</item>
-        <item quantity="other">Agiornada %1$d dies a como</item>
+        <item quantity="one">Agiornada %1$d die a oe</item>
+        <item quantity="other">Agiornada %1$d dies a oe</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s installada</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Non ses in lìnia? Iscàrriga aplicatziones dae sa
-        gente a curtzu de tie!
-    </string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Non ses in lìnia? Iscàrriga aplicatziones dae sa gente a curtzu a tie!</string>
     <string name="nearby_splash__find_people_button">Agata persones a curtzu</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambos tenides bisòngiu de %1$s pro impreare custa
- funtzionalidade.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Ambos tenides bisòngiu de %1$s pro impreare custa funtzionalidade.</string>
     <string name="latest__empty_state__no_recent_apps">Peruna aplicatzione reghente agatada</string>
-    <string name="latest__empty_state__never_updated">Cando sa lista de sas aplicatziones at a èssere agiornada, sas
-        prus noas diant dèpere èssere ammustradas inoghe
-    </string>
-    <string name="latest__empty_state__no_enabled_repos">Cando as a abilitare e agiornare unu depòsitu, inoghe diant
-        èssere ammustradas sas aplicatziones prus noas
-    </string>
+    <string name="latest__empty_state__never_updated">Cando sa lista de sas aplicatziones at a èssere agiornada, sas prus noas diant dèpere èssere ammustradas inoghe</string>
+    <string name="latest__empty_state__no_enabled_repos">Cando as a abilitare e agiornare unu depòsitu, inoghe s\'ant a ammustrare sas aplicatziones prus noas</string>
     <string name="categories__empty_state__no_categories">Peruna categoria de ammustrare</string>
     <string name="menu_video">Vìdeu</string>
-    <string name="app__tts__cancel_download">Firma s\'iscarrigamentu</string>
+    <string name="app__tts__cancel_download">Annulla s\'iscarrigamentu</string>
     <string name="app__tts__downloading_progress">Iscarrighende, %1$d%% cumpridu</string>
     <string name="menu_license">Litzèntzia: %s</string>
     <plurals name="notification_summary_more">
@@ -376,16 +350,16 @@
         <item quantity="other">%1$d aplicatziones installadas</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Agiornada %1$d chida a como</item>
-        <item quantity="other">Agiornada %1$d chidas a como</item>
+        <item quantity="one">Agiornada %1$d chida a oe</item>
+        <item quantity="other">Agiornada %1$d chidas a oe</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Agiornada %1$d mese a como</item>
-        <item quantity="other">Agiornada %1$d meses a como</item>
+        <item quantity="one">Agiornada %1$d mese a oe</item>
+        <item quantity="other">Agiornada %1$d meses a oe</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Agiornada %1$d annu a como</item>
-        <item quantity="other">Agiornada %1$d annos a como</item>
+        <item quantity="one">Agiornada %1$d annu a oe</item>
+        <item quantity="other">Agiornada %1$d annos a oe</item>
     </plurals>
     <string name="by_author_format">de %s</string>
     <string name="download_404">Su documentu pedidu no est istadu agatadu.</string>
@@ -394,7 +368,7 @@
     <string name="app_list_download_ready">Iscarrigada, pronta pro s\'installatzione</string>
     <string name="app_installed_media">Documentu installadu in %s</string>
     <string name="app_permission_storage">F-Droid tenet bisòngiu de unu permissu pro installare custu in sa memòria. Pro praghere dae·liu in s\'ischermu chi benit pro sighire cun s\'installatzione.</string>
-    <string name="status_inserting_x_apps">Sarvende sas minujas de sas aplicatziones (%1$d/%2$d) dae %3$s</string>
+    <string name="status_inserting_x_apps">Sarvende sos detàllios de sas aplicatziones (%1$d/%2$d) dae %3$s</string>
     <string name="app_details__incompatible_mismatched_signers">Firmadore diversu dae sa versione installada</string>
     <string name="app_details__no_versions__show_incompat_versions">Pro ammustrare su matessi sas versiones non cumpatìbiles inoghe abìlita s\'impostatzione \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">Peruna versione cun unu firmatàriu cumpatìbile</string>
@@ -406,36 +380,36 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Amus agatadu una vulnerabilidade in %1$s. Racumandamus de la disinstallare immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Amus agatadu una vulnerabilidade in %1$s. Racumandamus de l\'agiornare a sa versione prus noa immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
-    <string name="privacy">Privadesa</string>
+    <string name="privacy">Riservadesa</string>
     <string name="preventScreenshots_title">Preveni sas ischermadas</string>
-    <string name="preventScreenshots_summary">Non permìtere su sarvamentu de ischermadas e istichi su cuntenutu de s\'aplicatzione dae s\'ischermada de sas aplicatziones reghentes</string>
+    <string name="preventScreenshots_summary">Non permitas su sarvamentu de ischermadas e cua su cuntenutu de s\'aplicatzione dae s\'ischermada de sas aplicatziones reghentes</string>
     <string name="panic_app_setting_title">Aplicatzione de su butone de pànicu</string>
     <string name="panic_app_unknown_app">un\'aplicatzione disconnota</string>
     <string name="panic_app_setting_summary">Peruna aplicatzione est istada impostada</string>
     <string name="panic_app_setting_none">Peruna</string>
     <string name="panic_app_dialog_title">Cunfirma aplicatzione de pànicu</string>
     <string name="panic_app_dialog_message">Seguru ses de chèrrere permìtere a %1$s de fàghere partire atziones distrutoras dae su butone de pànicu?</string>
-    <string name="allow">Permiti</string>
+    <string name="allow">Permite</string>
     <string name="panic_settings">Impostatziones de su butone de pànicu</string>
     <string name="panic_settings_summary">Atziones de fàghere in casu de emergèntzia</string>
     <string name="panic_exit_title">Essi dae s\'aplicatzione</string>
-    <string name="panic_exit_summary">Custa aplicatzione at a èssere serrada</string>
+    <string name="panic_exit_summary">Custa aplicatzione s\'at a serrare</string>
     <string name="panic_destructive_actions">Atziones distrutoras</string>
-    <string name="panic_hide_title">Istichi %s</string>
-    <string name="panic_hide_summary">S\'aplicatzione s\'at a istichire</string>
+    <string name="panic_hide_title">Cua %s</string>
+    <string name="panic_hide_summary">S\'aplicatzione s\'at a cuare</string>
     <string name="panic_hide_warning_title">Ammenta comente ripristinare</string>
     <string name="panic_hide_warning_message">In casu de un\'eventu de pànicu, custu at a bogare %1$s dae su \"launcher\" (s\'afiladore). Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
-    <string name="hiding_calculator">Calcolatrice</string>
+    <string name="hiding_calculator">Carculadora</string>
     <string name="hiding_dialog_title">Istichi %s como</string>
-    <string name="hiding_dialog_message">Seguru ses de chèrrere bogare %1$s dae su \"launcher\" (s\'afiladore)? Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
-    <string name="hiding_dialog_warning">Atentzione: Fintzas cale si siat incurtzada in s\'ischermada printzipale at a èssere bogada e b\'at a dèpere èssere torrada a pònnere manualmente.</string>
+    <string name="hiding_dialog_message">Seguru ses de chèrrere bogare %1$s dae su \"launcher\" (s\'allughidore)? Petzi incarchende \"%2$d\" in s\'aplicatzione frassa %3$s l\'as a pòdere ripristinare.</string>
+    <string name="hiding_dialog_warning">Atentzione: Fintzas cale si siat incurtzada in s\'ischermada printzipale s\'at a bogare e l\'as a dèpere torrare a pònnere in manera manuale.</string>
     <string name="hide_on_long_search_press_title">Istichi cun su butone de chirca</string>
     <string name="hide_on_long_search_press_summary">Un\'incarcada longa in su butone de chirca at a istichire s\'aplicatzione</string>
     <string name="sort_search">Òrdina sa chirca</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Paret chi sa fotocàmera tua non tèngiat su focus automàticu. Diat pòdere èssere difìtzile a iscansire su còdighe.</string>
-    <string name="show_anti_feature_apps">Inclue sas aplicatziones cun anti-funtzionalidades</string>
-    <string name="show_anti_feature_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de anti-funtzionalidades</string>
+    <string name="show_anti_feature_apps">Include sas anti-funtzionalidades</string>
+    <string name="show_anti_feature_apps_on">Ammustra sas aplicatziones chi tenent anti-funtzionalidades connotas</string>
     <string name="force_touch_apps">Inclue sas aplicatziones chi impreant s\'ischermu tàtile</string>
     <string name="force_touch_apps_on">Ammustra sas aplicatziones chi tenent bisòngiu de s\'ischermu tàtile in cale si siat dispositivu</string>
     <string name="repo_add_mirror">Annanghe un\'ispigru</string>
@@ -452,32 +426,32 @@
     <string name="swap_toast_could_not_enable_hotspot">Impossìbile abilitare s\'Hotspot Wi-Fi!</string>
     <string name="over_wifi">Impreende su Wi-Fi</string>
     <string name="over_data">Impreende sa connessione datos</string>
-    <string name="over_network_always_summary">Imprea semper custa connessione cando est disponìbile</string>
+    <string name="over_network_always_summary">Imprea semper custa connessione cando est a disponimentu</string>
     <string name="over_network_on_demand_summary">Imprea petzi custa connessione cando incarco pro iscarrigare</string>
     <string name="over_network_never_summary">No iscàrrighes nudda impreende custa connessione</string>
     <string name="antidisabledalgorithmlist">Custa aplicatzione tenet una firma de seguresa dèbile</string>
     <string name="antiknownvulnlist">Custa aplicatzione tenet una vulnerabilidade de seguresa connota</string>
     <string name="hide_all_notifications">Istichi totu sas notìficas</string>
-    <string name="hide_all_notifications_summary">Non permìtere a sas atzione de èssere ammustradas in sa barra de istadu e in sa lista de sas notìficas.</string>
-    <string name="prompt_to_send_crash_reports">Pedi de imbiare raportos a pitzu de sos arrestos anòmalos</string>
-    <string name="prompt_to_send_crash_reports_summary">Boddi datos a pitzu de sos arrestos anòmalos e imbia·los a sos isvilupadores</string>
+    <string name="hide_all_notifications_summary">Non permitas a sas atzione de èssere ammustradas in s\'istanga de istadu e in sa lista de sas notìficas.</string>
+    <string name="prompt_to_send_crash_reports">Pedi de imbiare raportos subra de sos arrestos anòmalos</string>
+    <string name="prompt_to_send_crash_reports_summary">Colli datos subra de sos arrestos anòmalos e imbia·los a sos isvilupadores</string>
     <string name="install_history">Cronologia de sas installatziones</string>
     <string name="install_history_summary">Leghe su registru privadu de totu sas installatziones e disinstallatziones</string>
-    <string name="send_version_and_uuid">Imbia sa versione e s\'UUID a sos servers</string>
+    <string name="send_version_and_uuid">Imbia sa versione e s\'UUID a sos serbidores</string>
     <string name="send_version_and_uuid_summary">Inclue sa versione de custa aplicatzione e un\'ID ùnicu a casu cando ses iscarrighende. At a tènnere efetu a pustis de s\'allughìngiu imbeniente de s\'aplicatzione.</string>
     <string name="share_repository">Cumpartzi su depòsitu</string>
-    <string name="antinosourcesince">Su còdighe mitza no est prus disponìbile, no est possìbile fàghere agiornamentos.</string>
+    <string name="antinosourcesince">Su còdighe mitza no est prus a disponimentu, non faghet a l\'agiornare</string>
     <string name="send_install_history">Imbia sa cronologia de sas installatziones</string>
     <string name="send_history_csv">%s sa cronologia de sas installatziones comente unu documentu CSV</string>
-    <string name="updates_disabled_by_settings">Totu sos agiornamentos disabilitados dae sas impostatziones Datos/Wi-Fi</string>
+    <string name="updates_disabled_by_settings">Totu sos agiornamentos disabilitados dae sas impostatziones datos/Wi-Fi</string>
     <string name="send_installed_apps">Cumpartzi sas aplicatziones installadas</string>
     <string name="send_installed_apps_csv">Aplicatziones installadas dae F-Droid comente unu documentu CSV</string>
     <string name="menu_open">Aberi</string>
     <string name="about_forum">Forum de suportu</string>
-    <string name="app_suggested">Cunsigiadas</string>
+    <string name="app_suggested">Cussigiadas</string>
     <string name="app_size">Mannària: %1$s</string>
     <string name="scan_removable_storage_title">Iscansiona su dispositivu rimovìbile</string>
-    <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas penninas USB</string>
+    <string name="scan_removable_storage_summary">Chirca depòsitos de pachetes in sos dispositivos rimovìbiles comente sas ischedas SD e sas pinninas USB</string>
     <string name="nearby_splash__read_external_storage">Chirca depòsitos e ispricos (mirrors) in s\'ischeda SD.</string>
     <string name="nearby_splash__request_permission">Chirca</string>
     <string name="not_visible_nearby">Dispositivu non visìbile</string>
@@ -490,14 +464,14 @@
     <string name="menu_translation">Tradutzione</string>
     <string name="undo">Annulla</string>
     <string name="app_list__dismiss_installing_app">Installatzione annullada</string>
-    <string name="menu_select_for_wipe">Ischerta pro iscantzellare</string>
+    <string name="menu_select_for_wipe">Seletziona pro iscantzellare</string>
     <string name="try_again">Torra a proare</string>
     <string name="panic_will_be_wiped">At a èssere disinstallada e innetada dae totu sos datos</string>
     <string name="panic_apps_to_uninstall">Aplicatziones de disinstallare iscantzellende totu sos datos</string>
     <string name="panic_add_apps_to_uninstall">Annanghe aplicatziones de disinstallare e innetare</string>
     <string name="panic_reset_repos_title">Reseta sos depòsitos</string>
     <string name="panic_reset_repos_summary">Fortza s\'impostatzione de sos depòsitos pro los torrare a sos valores predefinidos</string>
-    <string name="swap_visible_hotspot">Bisìbile pro mèdiu de hotspot</string>
+    <string name="swap_visible_hotspot">Visìbile pro mèdiu de un\'hotspot</string>
     <string name="swap_blank_wifi_ssid">(in biancu)</string>
     <string name="swap_hidden_wifi_ssid">(cuadu)</string>
     <string name="swap_setting_up_hotspot">Impostende s\'hotspot…</string>
@@ -505,8 +479,8 @@
     <string name="swap_starting">Allughende…</string>
     <string name="swap_stopping">Firmende…</string>
     <string name="disabled">Disabilitadu</string>
-    <string name="swap_error_cannot_start_bluetooth">Impossìbile allùghere su Bluetooth!</string>
-    <string name="swap_toast_closing_nearby_after_timeout">Sa funtzione \" a curtzu\" est istada serrada ca non fiat ativa.</string>
+    <string name="swap_error_cannot_start_bluetooth">Non faghet a allùghere su Bluetooth!</string>
+    <string name="swap_toast_closing_nearby_after_timeout">Sa funtzionalidade \"a curtzu\" est istada serrada ca non fiat ativa.</string>
     <string name="nearby_splash__document_tree">Chirca depòsitos e ispricos (mirrors) in s\'OTG USB.</string>
     <string name="notification_channel_updates_description">Ammustrat sas notìficas de agiornamentu de sas aplicatziones e de sos depòsitos.</string>
     <string name="notification_channel_updates_title">Agiornamentos</string>
@@ -518,7 +492,7 @@
     <string name="menu_show_install_history">Ammustra sa cronologia de sas installatziones</string>
     <string name="menu_show_fdroid_metrics_report">Ammustra su raportu de sas mètricas</string>
     <string name="toast_metrics_in_install_history">Su raportu de anàlisi de sas mètricas %s si podet pompiare in su visualizadore de sa cronologia de sas installatziones</string>
-    <string name="send_to_fdroid_metrics_summary">Imbia in manera anònima datos cada chida a sas mètricas de F-Droid (bisòngiat de su sarvamentu de sa cronologia de sas installatziones)</string>
+    <string name="send_to_fdroid_metrics_summary">Imbia in manera anònima datos cada chida a sas mètricas de F-Droid (tenet bisòngiu de su sarvamentu de sa cronologia de sas installatziones)</string>
     <string name="send_to_fdroid_metrics">Imbia sos datos de impreu</string>
     <string name="fdroid_metrics_report">Raportu de sas mètricas %s</string>
     <string name="install_history_and_metrics">Cronologia de sas installatzione e mètricas</string>
@@ -538,7 +512,7 @@
     <string name="antitrack">Arrastamentu</string>
     <string name="antiads">Publitzidade</string>
     <string name="antinonfreedep">Dipendèntzias non lìberas</string>
-    <string name="app_list_results_hidden_antifeature_settings">Unos cantos resurtados sunt istados cuados sighende sas impostatziones tuas pro sas anti-funtzionalidades.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Unas cantas aplicatziones sunt cuadas sighende sas impostatziones tuas pro sas anti-funtzionalidades. Toca pro cambiare.</string>
     <string name="antinonfreenet">Servìtzios de retza non lìberos</string>
     <string name="antiknownvuln">Vulnerabilidade connota</string>
     <string name="antinosource">Còdighe de orìgine non prus a disponimentu</string>
@@ -551,11 +525,11 @@
     <string name="latest__empty_state__upgrading">Agiornende sa base de datos…</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Subra de F-Droid Basic</string>
-    <string name="antinsfwlist">usta aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
+    <string name="antinsfwlist">Custa aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
     <string name="category_Nightly">versiones de isvilupu</string>
     <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
     <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
-    <string name="app_error_open">No est istadu possìbile aviare s\'aplicatzione.</string>
+    <string name="app_error_open">No est istadu possìbile allùghere s\'aplicatzione.</string>
     <string name="repo_state_adding">Annanghe unu depòsitu…</string>
     <string name="repo_exists">Custu depòsitu est istadu giai annantu.</string>
     <string name="repo_add_new_title">Annanghe unu depòsitu</string>
@@ -567,7 +541,7 @@
     <string name="ipfsgw_caption_official_gateways">Ghennas de collegamentu ufitziales IPFS</string>
     <string name="force_old_installer_title">Fortza s\'installadore betzu</string>
     <string name="ipfsgw_summary_disabled">Iscàrriga aplicatziones dae sos puntos finales IPFS: disabilitadu</string>
-    <string name="force_old_installer_summary">Disabìlita s\'installadore de sessione beta, chi incluit su suportu pro sas atualizatziones automàticas in s\'isfundu.</string>
+    <string name="force_old_installer_summary">Disabìlita s\'installadore de sessione, chi incluit su suportu pro sas atualizatziones automàticas in s\'isfundu.</string>
     <string name="repo_invalid">Depòsitu non vàlidu.
 \n
 \nCuntata su mantenidore e informa·lu de su problema.</string>
@@ -593,4 +567,37 @@
         <item quantity="one">Iscàrriga aplicatziones dae sos puntos finales IPFS: %1$d abilitadu</item>
         <item quantity="other">Iscàrriga aplicatziones dae sos puntos finales IPFS: %1$d abilitados</item>
     </plurals>
+    <string name="repo_disable_warning">Disabilitende custu depòsitu nd\'as a bogare s\'istadu de \"preferidu\" suo dae totu sas aplicatziones.</string>
+    <string name="repositories_last_update">Ùrtima atualizatzione: %s</string>
+    <string name="repositories_last_update_never">mai</string>
+    <string name="repo_list_info_title">Lista de depòsitos</string>
+    <string name="repo_archive_toggle">Depòsitu de archìviu</string>
+    <string name="repo_archive_toggle_description">Ammustrat aplicatziones archiviadas e versiones betzas de sas aplicatziones</string>
+    <string name="repo_disable_warning_button">Disabìlita</string>
+    <string name="repo_mirror_exists">Custu ispigru fiat giai annantu (%s).</string>
+    <string name="repo_and_mirror_add_both_info">S\'URL chi ses chirchende de annànghere (%s) est un\'ispigru de unu depòsitu nou. Su depòsitu originale e s\'ispigru s\'ant a annànghere totu sos duos.</string>
+    <string name="app_details_repositories">Depòsitos</string>
+    <string name="app_details_repository_preferred">(preferidu)</string>
+    <string name="app_details_repository_button_prefer">Preferi su depòsitu</string>
+    <string name="app_details_repository_expand">Ismànnia sa lista de depòsitos</string>
+    <string name="app_list_no_suggested_version">Peruna versione cussigiada pro s\'installatzione.</string>
+    <string name="app_details_repository">Depòsitu</string>
+    <string name="repo_preview_included_apps">Aplicatziones incluidas:</string>
+    <string name="repo_add_repo_and_mirror">Annanghe depòsitu e ispigru</string>
+    <string name="repo_view_repo">Pòmpia sos depòsitos</string>
+    <string name="repo_scan_qr_code">Iscansi su còdighe QR</string>
+    <string name="repo_error_adding_archive">Sos depòsitos de archìviu non si podent agiùnghere in manera direta. Toca su depòsitu in sa lista e abìlita s\'archìviu dae cue.</string>
+    <string name="repo_list_info_text">Unu depòsitu est una fonte de aplicatziones. Custa lista mustrat totu sos depòsitos annantos como. Sos depòsitos disabilitados non benint impreados.
+\n
+\nSi un\'aplicatzione est in prus de unu depòsitu, su depòsitu prus in artu in sa lista est in automàticu su preferidu. Podes cambiare s\'òrdine de sos depòsitos incarchende·bi subra a longu e traghende·los.</string>
+    <string name="repo_archive_failed">Su depòsitu de archìviu como no est a disponimentu</string>
+    <string name="warning_no_compat_versions">Su depòsitu seletzionadu non tenet versiones cumpatìbiles de s\'aplicatzione. Pro retzire atualizatziones, preferi unu depòsitu cun versiones cumpatìbiles.</string>
+    <string name="repo_mirror_add_info">S\'URL chi ses chirchende de annànghere (%s) est un\'ispigru de unu depòsitu chi esistit.</string>
+    <string name="useDnsCache">Imprea sa memòria temporànea DNS</string>
+    <string name="useDnsCacheSummary">Imprea resurtados in sa memòria temporànea pro minimare sas rechestas DNS.</string>
+    <string name="auto_update_time">Atualizatzione imbeniente prus a curtzu: %s</string>
+    <string name="repo_share_not_found">No est istadu possìbile atzapare s\'indiritzu de su depòsitu in su testu cumpartzidu.</string>
+    <string name="auto_update_time_past">Agiornamentu imbeniente cando sas cunditziones sunt satisfatas</string>
+    <string name="antitetherednet">Servìtzios de rete ancorados</string>
+    <string name="antitetherednetlist">Custa aplicatzione dipendet de su totu dae un\'istàntzia ispetzìfica de unu servìtziu de rete</string>
 </resources>

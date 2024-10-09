@@ -69,7 +69,7 @@
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antitracklist">Esta aplicação monitoriza e reporta a sua atividade</string>
     <string name="antinonfreeadlist">Esta aplicação promove add-ons não livres</string>
-    <string name="antinonfreenetlist">Esta aplicação promove ou depende inteiramente de um serviço de rede não alterável ou não gratuito</string>
+    <string name="antinonfreenetlist">Esta app promove ou depende inteiramente de um serviço de rede não livre</string>
     <string name="antinonfreedeplist">Esta aplicação depende de aplicações não livres</string>
     <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
     <string name="display">Exibição</string>
@@ -418,8 +418,8 @@
     <string name="repo_delete_to_overwrite">Tem que remover %1$s para adicionar isto à chave em conflito.</string>
     <string name="repo_exists_add_mirror">Isto é uma cópia de %1$s, deseja adicionar como servidor espelho\?</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Incluir aplicações com funcionalidades indesejadas</string>
-    <string name="show_anti_feature_apps_on">Mostrar aplicações que necessitem de funcionalidades indesejadas</string>
+    <string name="show_anti_feature_apps">Incluir características indesejadas</string>
+    <string name="show_anti_feature_apps_on">Mostrar apps que têm características indesejadas conhecidas</string>
     <string name="force_touch_apps">Incluir aplicações de ecrã tátil</string>
     <string name="force_touch_apps_on">Mostrar apps que necessitem de ecrã tátil mesmo que o aparelho não o permita</string>
     <string name="panic_app_setting_title">Aplicação para botão de pânico</string>
@@ -451,7 +451,7 @@
     <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme as definições de Wi-Fi/dados móveis</string>
     <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Esta aplicação contém uma falha de segurança conhecida</string>
-    <string name="antinosourcesince">O código-fonte já não está disponível e não é possível atualizar.</string>
+    <string name="antinosourcesince">O código-fonte já não está disponível e não é possível atualizar</string>
     <string name="swap_toast_invalid_url">URL inválido para trocas: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Ponto de acesso Wi-Fi ativado</string>
     <string name="swap_toast_could_not_enable_hotspot">Não foi possível ativar o ponto de acesso Wi-Fi!</string>
@@ -467,7 +467,7 @@
     <string name="scan_removable_storage_toast">A analisar %s…</string>
     <string name="scan_removable_storage_summary">Procurar por repositórios de pacotes no armazenamento removível, como cartões SD e unidades USB</string>
     <string name="nearby_splash__read_external_storage">Pesquisar repositórios e espelhos no cartão SD.</string>
-    <string name="nearby_splash__request_permission">Pesquisar</string>
+    <string name="nearby_splash__request_permission">Pesquisar já</string>
     <string name="not_visible_nearby">Proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com aparelho próximos, torne o seu visível.</string>
     <string name="swap_toast_using_path">A utilizar %1$s</string>
@@ -527,7 +527,7 @@
     <string name="antinosource">Código-fonte já não disponível</string>
     <string name="antinonfreenet">Serviços de rede não livres</string>
     <string name="antinonfreead">Complementos não livres</string>
-    <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de recursos indesejados.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Algumas apps foram ocultas com base nas suas configurações de características indesejadas. Toque para alterar.</string>
     <string name="antinonfreedep">Dependências não livres</string>
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
@@ -601,4 +601,16 @@
     <string name="ipfsgw_title">Gateways IPFS</string>
     <string name="repo_num_apps_button">Mostrar aplicações</string>
     <string name="repo_share_not_found">Não foi possível encontrar o endereço do repositório no texto partilhado.</string>
+    <string name="repo_and_mirror_add_both_info">A URL que tenta adicionar (%s) é um espelho de um novo repositório. Tanto o repositório original como o espelho serão adicionados.</string>
+    <string name="warning_no_compat_versions">O repositório selecionado não tem versões compatíveis com a app. Para receber atualizações, prefira um repositório com versões compatíveis.</string>
+    <string name="repo_add_repo_and_mirror">Adicionar repositório e espelho</string>
+    <string name="repo_view_repo">Visualizar repositório</string>
+    <string name="repo_scan_qr_code">Ler código de QR</string>
+    <string name="repo_preview_included_apps">Apps incluídos:</string>
+    <string name="repo_mirror_exists">Este espelho já foi adicionado (%s).</string>
+    <string name="repo_mirror_add_info">A URL que tenta adicionar (%s) é um espelho de um repositório existente.</string>
+    <string name="auto_update_time">Próxima atualização mais breve: %s</string>
+    <string name="antitetherednet">Serviços de rede vinculada</string>
+    <string name="antitetherednetlist">Esta app depende inteiramente de uma determinada instância de um serviço de rede</string>
+    <string name="auto_update_time_past">Próxima atualização quando as condições forem cumpridas</string>
 </resources>

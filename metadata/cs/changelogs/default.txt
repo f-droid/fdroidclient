@@ -1,8 +1,11 @@
+* Přepsán aktualizátor repozitářů pro spolehlivější aktualizace na pozadí
 * Rozdělen název a souhrn v sezn. aplik. pro lepší čitelnost
+* Zobrazení varování, pokud nelze aplikace aktualizovat z vybraného repozitáře
 * Aplik. cílící na SDK 24 jsou nekompat. se zařízeními Android 15
 * Lepší zprac. zrcadel v náhledu „Přidat repozitář“ (Díky Thore!)
 * Povolení akt. aplik. na pozadí na zař. Xiaomi bez MIUI (Díky Irate!)
 * Důvěra v uživ. přidané koř. cert. (Díky B.!)
-* Zlepšena lokal. pro méně obvyklé jazyky (Díky Ray!)
-* Nereag. na NFC tagy z dův. odebrání funkce NFC (Díky Thibaulte!)
-* Zobr. varování, když nelze aplikaci aktual. z prefer. repozitáře
+* Opravena funkčnost vyhledávání s diakritikou (Díky Tobiasi!)
+* Aktualizovány popisy anti-funkcí (Díky linsui!)
+* Přidána anti-funkce tetherované sítě (Díky linsui!)
+* Ignorování bílých znaků při přidávání zrcadlových repozitářů (Díky Tobiasi!)

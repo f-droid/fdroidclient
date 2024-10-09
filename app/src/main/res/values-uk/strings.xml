@@ -621,4 +621,5 @@
     <string name="auto_update_time">Найближче наступне оновлення: %s</string>
     <string name="auto_update_time_past">Наступне оновлення після виконання умов</string>
     <string name="antitetherednetlist">Цей застосунок повністю залежить від певного екземпляра мережевої служби</string>
+    <string name="antitetherednet">Послуги тетеринг мереж</string>
 </resources>

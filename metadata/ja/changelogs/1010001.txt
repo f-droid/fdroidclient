@@ -1,0 +1,7 @@
+* 通知を細かく設定できるよう更新（@Isira-Seneviratne）
+* アプリの詳細から直接共有でアプリを共有（@fynngodau）
+* 英語に設定されていない端末での最新タブでの表示結果の改善
+* コアのライブラリーを更新（Jackson、androidx、gradleなど）
+* ホワイトラベルのサポートの改善
+
+新しい貢献者の方々に感謝です！@fynngodau @projectgus @glennmen @Isira-Seneviratne

@@ -215,13 +215,13 @@
     <string name="antifeatures">Características indesejadas</string>
     <string name="antiadslist">Esta aplicação contém publicidade</string>
     <string name="antinonfreeadlist">Esta aplicação promove add-ons não livres</string>
-    <string name="antinonfreenetlist">Esta aplicação promove ou depende inteiramente de um serviço de rede não alterável ou não gratuito</string>
+    <string name="antinonfreenetlist">Esta app promove ou depende inteiramente de um serviço de rede não livre</string>
     <string name="antinonfreedeplist">Esta aplicação depende de outras aplicações não livres</string>
     <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
     <string name="antinonfreeassetslist">Esta aplicação contém conteúdo não livre</string>
     <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Esta aplicação contém uma falha de segurança conhecida</string>
-    <string name="antinosourcesince">O código-fonte já não está disponível e não é possível atualizar.</string>
+    <string name="antinosourcesince">O código-fonte já não está disponível e não é possível atualizar</string>
     <string name="display">Ecrã</string>
     <string name="expert">Modo avançado</string>
     <string name="expert_on">Mostrar informações adicionais e ativar mais definições</string>
@@ -229,8 +229,8 @@
     <string name="appcompatibility">Compatibilidade de aplicações</string>
     <string name="show_incompat_versions">Incluir versões incompatíveis</string>
     <string name="show_incompat_versions_on">Mostrar versões incompatíveis com o seu dispositivo</string>
-    <string name="show_anti_feature_apps">Incluir aplicações com características indesejadas</string>
-    <string name="show_anti_feature_apps_on">Mostrar aplicações que necessitem de características indesejadas</string>
+    <string name="show_anti_feature_apps">Incluir características indesejadas</string>
+    <string name="show_anti_feature_apps_on">Mostrar apps que têm características indesejadas conhecidas</string>
     <string name="force_touch_apps">Incluir aplicações que requerem ecrã tátil</string>
     <string name="force_touch_apps_on">Mostrar aplicações que necessitem de ecrã tátil mesmo que o aparelho não o permita</string>
     <string name="local_repo">Repositório local</string>
@@ -331,7 +331,7 @@
     <string name="nearby_splash__find_people_button">Procurar pessoas por perto</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes necessitam de %1$s.</string>
     <string name="nearby_splash__read_external_storage">Pesquisar repositórios e espelhos no cartão SD.</string>
-    <string name="nearby_splash__request_permission">Pesquise</string>
+    <string name="nearby_splash__request_permission">Pesquisar já</string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
@@ -549,7 +549,7 @@
     <string name="repo_invalid">Repositório inválido.
 \n
 \nEntre em contato com o desenvolvedor e deixe-os saber sobre o problema.</string>
-    <string name="repo_exists">Este repositório foi adicionado com sucesso.</string>
+    <string name="repo_exists">Este repositório já foi adicionado.</string>
     <string name="repo_add_new_title">Adicionar repositório</string>
     <string name="targetsdk_or_later">Marcadores %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid pode procurar por repositórios e espelhos no seu Cartão de Memória, mas precisa da sua permissão para fazer isso.</string>
@@ -608,4 +608,8 @@
     <string name="repo_preview_included_apps">Apps incluídos:</string>
     <string name="repo_mirror_exists">Este espelho já foi adicionado (%s).</string>
     <string name="repo_mirror_add_info">A URL que tenta adicionar (%s) é um espelho de um repositório existente.</string>
+    <string name="auto_update_time">Próxima atualização mais breve: %s</string>
+    <string name="antitetherednet">Serviços de rede vinculada</string>
+    <string name="antitetherednetlist">Esta app depende inteiramente de uma determinada instância de um serviço de rede</string>
+    <string name="auto_update_time_past">Próxima atualização quando as condições forem cumpridas</string>
 </resources>
