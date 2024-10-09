@@ -53,7 +53,7 @@
     <string name="antiadslist">Приложението съдържа реклами</string>
     <string name="antitracklist">Приложението следи и докладва действията ви</string>
     <string name="antinonfreeadlist">Приложението насърчава използване на добавки със затворен код</string>
-    <string name="antinonfreenetlist">Приложението насърчава или изцяло зависи от непроменяема или несвободна мрежова услуга</string>
+    <string name="antinonfreenetlist">Приложението насърчава или изцяло зависи от несвободна мрежова услуга</string>
     <string name="antinonfreedeplist">Приложението зависи от приложения със затворен код</string>
     <string name="antiupstreamnonfreelist">Изходният код не е напълно свободен</string>
     <string name="display">Изглед</string>
@@ -465,7 +465,7 @@
     <string name="panic_will_be_wiped">Ще бъде деинсталирано и всички данни ще бъдат изтрити</string>
     <string name="panic_app_setting_none">Няма</string>
     <string name="force_touch_apps_on">Показване не приложения, изискаващи екран с докосване, независимо от хардуерната поддръжка</string>
-    <string name="antinosourcesince">Изходният код не е наличен вече, не е възможно обновяване.</string>
+    <string name="antinosourcesince">Изходният код не е наличен вече, не е възможно обновяване</string>
     <string name="antidisabledalgorithmlist">Приложението има слаба защита на подписа</string>
     <string name="menu_select_for_wipe">Избери за изчистване</string>
     <string name="about_forum">Форум за поддръжка</string>
@@ -512,7 +512,7 @@
     <string name="antiknownvuln">Известна уязвимост</string>
     <string name="antinosource">Изходният код вече не е наличен</string>
     <string name="antiupstreamnonfree">Несвободен оригинален изходен код</string>
-    <string name="app_list_results_hidden_antifeature_settings">Има скрити резултати въз основа на настройките за антифункции.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Има скрити приложения въз основа на настройките за анти-функции. Докоснете за промяна.</string>
     <string name="antiads">Реклами</string>
     <string name="antitrack">Проследяване</string>
     <string name="antinonfreead">Несвободни добавки</string>
@@ -597,4 +597,8 @@
     <string name="repo_and_mirror_add_both_info">Адресът, който добавяте (%s) е огледало на ново хранилище. И хранилището, и огледалото ще бъдат добавени.</string>
     <string name="repo_mirror_add_info">Адресът, който добавяте (%s) е огледало на съществуващо хранилище.</string>
     <string name="warning_no_compat_versions">В избраното хранилище няма съвместими издания на приложението. За да получавате обновявания изберете хранилище със съвместими издания.</string>
+    <string name="auto_update_time">Най-ранно обновяване: %s</string>
+    <string name="auto_update_time_past">Следващо обновяване при изпълнени условия</string>
+    <string name="antitetherednet">Обвързани мрежови услуги</string>
+    <string name="antitetherednetlist">Приложението изцяло зависи от точно определен екземпляр на мрежова услуга</string>
 </resources>
