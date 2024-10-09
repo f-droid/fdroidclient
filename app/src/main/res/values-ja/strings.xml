@@ -57,7 +57,7 @@
     <string name="antitracklist">このアプリはあなたの操作を記録し報告します</string>
     <string name="antinonfreeadlist">このアプリは不自由なアドオンを推奨します</string>
     <string name="antinonfreenetlist">このアプリは不自由なネットワークサービスを宣伝または完全に依存しています</string>
-    <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依存します</string>
+    <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依拠しています</string>
     <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
     <string name="expert">上級者モード</string>
@@ -270,7 +270,7 @@
     <string name="notification_title_single_update_available">更新を入手可能です</string>
     <string name="notification_title_single_ready_to_install">インストールの準備完了</string>
     <string name="notification_title_single_ready_to_install_update">更新をインストールする準備が完了</string>
-    <string name="notification_title_single_install_error">インストールに失敗</string>
+    <string name="notification_title_single_install_error">インストールできませんでした</string>
     <string name="notification_content_single_downloading">「%1$s」をダウンロードしています…</string>
     <string name="notification_content_single_downloading_update">「%1$s」の更新をダウンロードしています…</string>
     <string name="notification_content_single_installing">「%1$s」をインストールしています…</string>
@@ -283,7 +283,7 @@
     <string name="notification_title_summary_ready_to_install">インストールの準備完了</string>
     <string name="notification_title_summary_installing">インストールしています</string>
     <string name="notification_title_summary_installed">インストールしました</string>
-    <string name="notification_title_summary_install_error">インストールに失敗</string>
+    <string name="notification_title_summary_install_error">インストールできませんでした</string>
     <string name="notification_action_cancel">キャンセル</string>
     <string name="notification_action_install">インストール</string>
     <string name="app_version_x_available">バージョン%1$sが入手可能です</string>
@@ -321,7 +321,7 @@
     <plurals name="details_last_update_days">
         <item quantity="other">%1$d 日前に更新しました</item>
     </plurals>
-    <string name="details_last_updated_today">今日更新しました</string>
+    <string name="details_last_updated_today">本日更新</string>
     <string name="app_list__name__successfully_installed">%1$sをインストールしました</string>
     <string name="nearby_splash__download_apps_from_people_nearby">インターネット接続がありませんか？近くの人からアプリを受け取りましょう！</string>
     <string name="nearby_splash__find_people_button">近くの人を探す</string>
@@ -586,7 +586,7 @@
     <string name="auto_update_time">次回の更新予定日：%s</string>
     <string name="repo_preview_included_apps">含まれたアプリ：</string>
     <string name="warning_no_compat_versions">選択したリポジトリには互換性のあるアプリバージョンがありません。更新を受け取るには、互換性のあるバージョンがあるリポジトリを選択してください。</string>
-    <string name="repo_scan_qr_code">QR コードをスキャン</string>
+    <string name="repo_scan_qr_code">QRコードをスキャン</string>
     <string name="auto_update_time_past">条件が満たされたら次回更新</string>
     <string name="antitetherednet">テザーネットワークサービス</string>
     <string name="antitetherednetlist">このアプリはネットワークサービスの特定のインスタンスに完全に依存しています</string>

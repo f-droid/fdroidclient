@@ -1,0 +1,17 @@
+* 内蔵のAndroidのテーマに従うよう、テーマのサポートを更新（@proletarius101）
+
+* 最上部のバナー通知を追加：「インターネット接続がありません」と「データまたはWiFiが有効になっていません」
+
+* USB OTGとSDカードのリポジトリとミラーの扱い方を改善
+
+* Trichromeライブラリーの繰り返しの更新を停止
+
+* マテリアルデザインに従うよう変更（@proletarius101）
+
+* OpenCollectiveのバッジを改善（@ConnyDuck）
+
+* Glideでアイコンの読み込みを更新（@proletarius101）
+
+* 新しく適応型アイコンを採用（@12people）
+
+* コードを更新（@Isira-Seneviratne）
