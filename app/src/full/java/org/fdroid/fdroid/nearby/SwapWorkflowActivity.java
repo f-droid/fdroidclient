@@ -392,7 +392,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         checkIncomingIntent();
 
-        if (newIntent) {
+        // could be we just started the service and it wasn't bound, yet
+        if (service != null && newIntent) {
             showRelevantView();
             newIntent = false;
         }
