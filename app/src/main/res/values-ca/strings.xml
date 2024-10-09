@@ -373,8 +373,8 @@
     <string name="repo_exists_add_mirror">Això és una còpia de %1$s, voleu afegir-la com a rèplica?</string>
     <string name="antidisabledalgorithmlist">La signatura de seguretat de l\'aplicació és feble</string>
     <string name="antiknownvulnlist">Aquesta aplicació té un problema de seguretat conegut</string>
-    <string name="show_anti_feature_apps">Inclou aplicacions amb característiques no adients</string>
-    <string name="show_anti_feature_apps_on">Mostra aplicacions que requereixen característiques no adients</string>
+    <string name="show_anti_feature_apps">Inclou aplicacions amb Característiques no adients</string>
+    <string name="show_anti_feature_apps_on">Mostra aplicacions que tenen Característiques no adients conegudes</string>
     <string name="force_touch_apps">Inclou aplicacions per pantalla tàctil</string>
     <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tingueu</string>
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
@@ -468,7 +468,7 @@
     <string name="has_disallow_install_unknown_sources_globally">L\'administració del dispositiu no permet instal·lar aplicacions de fonts desconegudes, això inclou nous dipòsits</string>
     <string name="swap_wifi_vpn_conflict">Entra en conflicte amb la VPN activa!</string>
     <string name="antinonfreenet">Serveis de xarxa no lliures</string>
-    <string name="app_list_results_hidden_antifeature_settings">Alguns resultats s\'han amagat en funció de la configuració de característiques no adients.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Algunes aplicacions s\'han amagat en funció de la configuració de les Característiques no adients. Toca per canviar.</string>
     <string name="antitrack">Seguiment</string>
     <string name="antinonfreead">Complements no lliures</string>
     <string name="antinonfreedep">Dependències no lliures</string>
@@ -478,7 +478,7 @@
     <string name="antinosource">El codi font ja no està disponible</string>
     <string name="antinonfreeassets">Recursos no gratuïts</string>
     <string name="antiupstreamnonfree">Font no lliure</string>
-    <string name="antiothers">Altres característiques no adients</string>
+    <string name="antiothers">Altres Característiques no adients</string>
     <string name="antinsfw">Insegura per treballar</string>
     <string name="latest__empty_state__upgrading">S\'està actualitzant la base de dades…</string>
     <string name="menu_release_channel_beta">Permetre actualitzar a versions beta</string>
@@ -609,4 +609,6 @@
     <string name="warning_no_compat_versions">El dipòsit seleccionat no té versions compatibles de l\'aplicatiu. Per a rebre actualitzacions, és preferible un dipòsit amb versions compatibles.</string>
     <string name="auto_update_time">Propera actualització: %s</string>
     <string name="auto_update_time_past">Propera actualització quan es compleixin les condicions</string>
+    <string name="antitetherednetlist">Aquesta aplicació depèn enterament d\'una certa instància d\'un servei de xarxa</string>
+    <string name="antitetherednet">Serveis de Xarxes Vinculades (Tethered)</string>
 </resources>
