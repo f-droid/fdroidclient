@@ -330,7 +330,7 @@
     </plurals>
     <string name="nearby_splash__both_parties_need_fdroid">Molemmilla osapuolilla tulee olla %1$s ominaisuuden käyttämiseksi.</string>
     <string name="tts_category_name">Luokka %1$s</string>
-    <string name="antifeatures">Esto-ominaisuudet</string>
+    <string name="antifeatures">Haittaominaisuudet</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Näytä yksi sovellus %2$s-luokassa</item>
         <item quantity="other">Näytä kaikki %1$d sovellusta %2$s-luokasta</item>
@@ -366,8 +366,8 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Tällä sovelluksella on heikko turvallisuusallekirjoitus</string>
     <string name="antiknownvulnlist">Tämä sovellus sisältää tunnetun haavoittuvuuden</string>
-    <string name="show_anti_feature_apps">Sisällytä esto-ominaisuudet</string>
-    <string name="show_anti_feature_apps_on">Näytä sovellukset, joilla on tunnettuja esto-ominaisuuksia</string>
+    <string name="show_anti_feature_apps">Sisällytä haittaominaisuudet</string>
+    <string name="show_anti_feature_apps_on">Näytä sovellukset, joilla on tunnettuja haittaominaisuuksia</string>
     <string name="force_touch_apps">Sisällytä kosketusnäyttösovellukset</string>
     <string name="force_touch_apps_on">Näytä sovellukset, jotka vaativat kosketusnäytön riippumatta laitteiston tuesta</string>
     <string name="privacy">Tietosuoja</string>
@@ -509,7 +509,7 @@
     <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
     <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
     <string name="antinonfreedep">Ei-vapaat riippuvuudet</string>
-    <string name="app_list_results_hidden_antifeature_settings">Jotkin sovellukset on piilotettu esto-ominaisuuksien asetusten perusteella. Muuta koskettamalla.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Joitakin sovelluksia on piilotettu haittaominaisuusasetusten perusteella. Muuta koskettamalla.</string>
     <string name="antiads">Mainokset</string>
     <string name="antitrack">Seuranta</string>
     <string name="antinonfreead">Ei-vapaat lisäosat</string>
@@ -519,7 +519,7 @@
     <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
     <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
     <string name="antinosource">Lähdekoodi ei enää saatavilla</string>
-    <string name="antiothers">Muut esto-ominaisuudet</string>
+    <string name="antiothers">Muut haittaominaisuudet</string>
     <string name="antinsfw">Ei sovellu työpaikalle</string>
     <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
     <string name="menu_release_channel_beta">Salli beta-päivitykset</string>
