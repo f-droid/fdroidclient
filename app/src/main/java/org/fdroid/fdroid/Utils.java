@@ -829,10 +829,7 @@ public final class Utils {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable -> Log.e(TAG, "Error running off UiThread", throwable))
-                .subscribe(consumer::accept, e -> {
-                    Log.e(TAG, "Could not run off UI thread: ", e);
-                    consumer.accept(null);
-                });
+                .subscribe(consumer::accept);
     }
 
     public static Disposable runOffUiThread(Runnable runnable) {

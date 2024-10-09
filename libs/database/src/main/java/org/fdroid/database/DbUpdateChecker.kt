@@ -46,7 +46,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
         val versionsByPackage = HashMap<String, ArrayList<Version>>(packageNames.size)
         versionDao.getVersions(packageNames).forEach { version ->
             val preferredRepoId = preferredRepos[version.packageName]
-                ?: error { "No preferred repo for ${version.packageName}" }
+                ?: error("No preferred repo for ${version.packageName} in repo ${version.repoId}")
             // disregard version, if we only want from preferred repo and this version is not
             if (onlyFromPreferredRepo && preferredRepoId != version.repoId) return@forEach
             val list = versionsByPackage.getOrPut(version.packageName) { ArrayList() }
@@ -65,7 +65,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
             )
             if (version != null) {
                 val preferredRepoId = preferredRepos[packageName]
-                    ?: error { "No preferred repo for $packageName" }
+                    ?: error("No preferred repo for $packageName")
                 val app = getUpdatableApp(
                     version = version,
                     installedVersionCode = getLongVersionCode(packageInfo),
@@ -95,7 +95,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
     ): AppVersion? {
         val preferredRepoId = if (onlyFromPreferredRepo) {
             appPrefsDao.getPreferredRepos(listOf(packageName))[packageName]
-                ?: error { "No preferred repo for $packageName" }
+                ?: error("No preferred repo for $packageName")
         } else 0L
         val versions = if (onlyFromPreferredRepo) {
             versionDao.getVersions(listOf(packageName)).filter { version ->

@@ -333,7 +333,7 @@ internal class RepoAdder(
     @AnyThread
     internal suspend fun addArchiveRepo(repo: Repository, proxy: Proxy? = null): Long? =
         withContext(coroutineContext) {
-            if (repo.isArchiveRepo) error { "Repo ${repo.address} is already an archive repo." }
+            if (repo.isArchiveRepo) error("Repo ${repo.address} is already an archive repo.")
 
             var archiveRepoId: Long? = null
             val address = repo.address.replace(Regex("repo/?$"), "archive")
