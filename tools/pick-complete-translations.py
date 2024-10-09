@@ -110,10 +110,12 @@ merge_weblate.checkout()
 
 email_pattern = re.compile(r'by (.*?) <(.*)>$')
 
+cherry_picked = set()
 for locale in sorted(merge_locales):
     a = app_locales.get(locale)
     m = metadata_locales.get(locale)
     paths = get_paths_tuple(locale)
+    skipped_cherry_pick = False
     for commit in repo.iter_commits(
         str(weblate.refs.master) + '...' + str(upstream.refs.master),
         paths=paths,
@@ -130,7 +132,7 @@ for locale in sorted(merge_locales):
             ):
                 has_a = True
             break
-        for i in commit.iter_items(repo, commit.hexsha, paths=paths[0:1]):
+        for i in commit.iter_items(repo, commit.hexsha, paths=paths[0:2]):
             if (
                 i.hexsha == commit.hexsha
                 and m['translated_percent'] == 100
@@ -139,7 +141,12 @@ for locale in sorted(merge_locales):
                 has_m = True
             break
         if has_a or has_m:
-            repo.git.cherry_pick(str(commit))
+            commit_id = str(commit)
+            if not skipped_cherry_pick and commit_id not in cherry_picked:
+                repo.git.cherry_pick(commit_id)
+                cherry_picked.add(commit_id)
+        else:
+            skipped_cherry_pick = True
         match = email_pattern.search(commit.summary)
         if match:
             email = match.group(1) + ' <' + match.group(2) + '>'
