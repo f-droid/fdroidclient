@@ -59,7 +59,7 @@
     <string name="next">Sekven</string>
     <string name="skip">Preterpasi</string>
     <string name="no_permissions">neniu uzata permeso</string>
-    <string name="theme">Etoso</string>
+    <string name="theme">Haŭto</string>
     <string name="repo_num_apps">Nombro de aplikaĵoj</string>
     <string name="repo_description">Priskribo</string>
     <string name="repo_last_update">Lasta ĝisdatigo</string>
@@ -499,7 +499,7 @@
     <string name="send_to_fdroid_metrics">Sendi datumojn pri uzado</string>
     <string name="theme_follow_system">Laŭ operaciumo</string>
     <string name="use_pure_black_dark_theme_summary">Konsilinda nur por ekranoj OLED.</string>
-    <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela etoso</string>
+    <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela haŭto</string>
     <string name="banner_no_data_or_wifi">Neniu interreta konekto aktiva</string>
     <string name="banner_no_internet">Sen interreto</string>
     <string name="share_apk_error">Ne povas kunhavigi dosieron de la aplikaĵo</string>
