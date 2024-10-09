@@ -1,6 +1,171 @@
 [versions]
 compileSdk = "35"
+kotlin = "2.0.20"
+androidGradlePlugin = "8.6.0"
+dokka = "1.9.20"
+mavenPublish = "0.18.0"
+jlleitschuhKtlint = "12.1.1"
+
+kotlinxSerializationJson = "1.4.1" # 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
+kotlinxCoroutinesTest = "1.7.3"
+
+ktor = "2.3.12"
+okhttp = "4.12.0"
+room = "2.6.1"
+glide = "4.16.0"
+glideCompose = "1.0.0-beta01"
+
+androidxCoreKtx = "1.13.1"
+androidxAppcompat = "1.7.0"
+androidxPreferenceKtx = "1.2.1"
+androidxLifecycleLivedataKtx = "2.8.6"
+androidxWork = "2.9.1"
+androidxRecyclerview = "1.3.2"
+androidxConstraintlayout = "2.1.4"
+androidxCardview = "1.0.0"
+androidxPaletteKtx = "1.0.0"
+androidxVectordrawable = "1.2.0"
+androidxGridlayout = "1.0.0"
+androidxComposeBom = "2024.09.03"
+androidxActivityCompose = "1.9.2"
+accompanistThemeadapterMaterial = "0.30.1"
+accompanistDrawablepainter = "0.36.0"
+material = "1.12.0"
+
+zxingCore = "3.3.3" # newer version need minSdk 24 or library desugering
+guardianprojectNetcipher = "2.2.0-alpha"
+guardianprojectPanic = "1.0"
+acra = "5.11.3"
+adapterdelegates4 = "4.3.2"
+#noinspection GradleDependency Commons IO > 2.5 uses java.nio.file, which requires desugaring
+commonsIo = "2.6"
+commonsNet = "3.6"
+bouncycastle = "1.71"
+jmdns = "3.5.5"
+nanohttpd = "2.3.1"
+guava = "32.1.3-android"
+
+rxjava = "3.1.9"
+rxandroid = "3.0.2"
+
+slf4jApi = "2.0.16"
+microutilsKotlinLogging = "2.1.21"
+logbackClassic = "1.5.6"
+logbackAndroid = "3.0.0"
+
+junit = "4.13.2"
+mockk = "1.13.8"
+robolectric = "4.12.2"
+androidxTestCore = "1.6.1"
+androidxTestRunner = "1.6.2"
+androidxTestExtJunit = "1.2.1"
+androidxCoreTesting = "2.2.0"
+androidxTestCoreKtx = "1.6.1"
+androidxEspressoCore = "3.6.1"
+androidxTestRules = "1.6.1"
+androidxTestUiautomator = "2.3.0"
+androidxTestMonitor = "1.7.2"
+mockitoCore = "5.1.1"
+hamcrest = "2.2"
+goncalossilvaResources = "0.2.1"
+turbine = "1.0.0"
+json = "20220320"
 
 [libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCoreKtx" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidxLifecycleLivedataKtx" }
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "androidxCardview" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidxConstraintlayout" }
+androidx-gridlayout = { module = "androidx.gridlayout:gridlayout", version.ref = "androidxGridlayout" }
+androidx-palette-ktx = { module = "androidx.palette:palette-ktx", version.ref = "androidxPaletteKtx" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "androidxPreferenceKtx" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidxRecyclerview" }
+androidx-vectordrawable = { module = "androidx.vectordrawable:vectordrawable", version.ref = "androidxVectordrawable" }
+androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "androidxWork" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+androidx-compose-material = { module = "androidx.compose.material:material" }
+accompanist-themeadapter-material = { module = "com.google.accompanist:accompanist-themeadapter-material", version.ref = "accompanistThemeadapterMaterial" }
+accompanist-drawablepainter = { module = "com.google.accompanist:accompanist-drawablepainter", version.ref = "accompanistDrawablepainter" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
+
+material = { module = "com.google.android.material:material", version.ref = "material" }
+
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
+glide-annotations = { module = "com.github.bumptech.glide:annotations", version.ref = "glide" }
+
+guardianproject-netcipher = { module = "info.guardianproject.netcipher:netcipher", version.ref = "guardianprojectNetcipher" }
+guardianproject-panic = { module = "info.guardianproject.panic:panic", version.ref = "guardianprojectPanic" }
+nanohttpd = { module = "org.nanohttpd:nanohttpd", version.ref = "nanohttpd" }
+jmdns = { module = "org.jmdns:jmdns", version.ref = "jmdns" }
+zxing-core = { module = "com.google.zxing:core", version.ref = "zxingCore" }
+acra-mail = { module = "ch.acra:acra-mail", version.ref = "acra" }
+acra-dialog = { module = "ch.acra:acra-dialog", version.ref = "acra" }
+adapterdelegates4 = { module = "com.hannesdorfmann:adapterdelegates4", version.ref = "adapterdelegates4" }
+bcprov-jdk15to18 = { module = "org.bouncycastle:bcprov-jdk15to18", version.ref = "bouncycastle" }
+bcpkix-jdk15to18 = { module = "org.bouncycastle:bcpkix-jdk15to18", version.ref = "bouncycastle" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logbackClassic" }
+logback-android = { module = "com.github.tony19:logback-android", version.ref = "logbackAndroid" }
+microutils-kotlin-logging = { module = "io.github.microutils:kotlin-logging", version.ref = "microutilsKotlinLogging" }
+
+commons-io = { module = "commons-io:commons-io", version.ref = "commonsIo" }
+commons-net = { module = "commons-net:commons-net", version.ref = "commonsNet" }
+ktor-io = { module = "io.ktor:ktor-io", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+goncalossilva-resources = { module = "com.goncalossilva:resources", version.ref = "goncalossilvaResources" }
+
+rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
+
+junit = { module = "junit:junit", version.ref = "junit" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExtJunit" }
+androidx-test-core-ktx = { module = "androidx.test:core-ktx", version.ref = "androidxTestCoreKtx" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "androidxCoreTesting" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxEspressoCore" }
+androidx-test-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "androidxTestUiautomator" }
+androidx-test-monitor = { module = "androidx.test:monitor", version.ref = "androidxTestMonitor" }
+androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidxTestRules" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
+androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "androidxWork" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4jApi" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+json = { module = "org.json:json", version.ref = "json" }
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+jlleitschuh-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "jlleitschuhKtlint" }

@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 // add -Pstrict.release to the gradle command line to enable
@@ -112,10 +112,6 @@ android {
         aidl true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.9"
-    }
-
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -173,75 +169,73 @@ dependencies {
     implementation project(":libs:download")
     implementation project(":libs:index")
     implementation project(":libs:database")
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.preference:preference-ktx:1.2.1'
-    implementation 'androidx.gridlayout:gridlayout:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.3.2'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
-    implementation 'androidx.palette:palette-ktx:1.0.0'
-    implementation 'androidx.work:work-runtime:2.9.0'
-    implementation 'com.google.guava:guava:31.0-android' // somehow needed for work-runtime to function
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.preference.ktx
+    implementation libs.androidx.gridlayout
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.cardview
+    implementation libs.androidx.vectordrawable
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.palette.ktx
+    implementation libs.androidx.work.runtime
+    implementation libs.guava // somehow needed for work-runtime to function
 
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation libs.material
 
+    //noinspection UseTomlInstead
     implementation('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false }
-    implementation 'com.google.zxing:core:3.3.3' // newer version need minSdk 24 or library desugering
-    implementation 'info.guardianproject.netcipher:netcipher:2.2.0-alpha'
-    //noinspection GradleDependency -> Commons IO > 2.5 uses java.nio.file, which requires desugaring
-    implementation 'commons-io:commons-io:2.6'
-    implementation 'commons-net:commons-net:3.6'
-    implementation 'ch.acra:acra-mail:5.11.3'
-    implementation 'ch.acra:acra-dialog:5.11.3'
-    implementation 'com.hannesdorfmann:adapterdelegates4:4.3.2'
-    implementation 'org.slf4j:slf4j-api:2.0.7'
-    implementation 'com.github.tony19:logback-android:3.0.0'
+    implementation libs.zxing.core
+    implementation libs.guardianproject.netcipher
+    implementation libs.commons.io
+    implementation libs.commons.net
+    implementation libs.acra.mail
+    implementation libs.acra.dialog
+    implementation libs.adapterdelegates4
+    implementation libs.slf4j.api
+    implementation libs.logback.android
 
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
-    implementation 'io.reactivex.rxjava3:rxjava:3.1.7'
+    implementation libs.rxjava
+    implementation libs.rxandroid
 
-    implementation "com.github.bumptech.glide:glide:4.16.0"
-    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.3") {
-        exclude group: "androidx.test"
-    }
-    annotationProcessor "com.github.bumptech.glide:compiler:4.14.2"
+    implementation libs.glide
+    implementation(libs.glide.compose)
+    annotationProcessor libs.glide.compiler
 
-    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
-    implementation 'org.bouncycastle:bcprov-jdk15to18:1.71'
-    fullImplementation 'info.guardianproject.panic:panic:1.0'
-    fullImplementation 'org.bouncycastle:bcpkix-jdk15to18:1.71'
-    fullImplementation 'org.jmdns:jmdns:3.5.5'
-    fullImplementation 'org.nanohttpd:nanohttpd:2.3.1'
+    implementation libs.okhttp
+    implementation libs.bcprov.jdk15to18
+    fullImplementation libs.guardianproject.panic
+    fullImplementation libs.bcpkix.jdk15to18
+    fullImplementation libs.jmdns
+    fullImplementation libs.nanohttpd
 
-    // newer compose-bom versions have an issue with app details repo dropdown
-    implementation platform('androidx.compose:compose-bom:2023.10.01')
-    implementation 'androidx.compose.material:material'
-    implementation 'androidx.compose.material:material-icons-extended'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose"
-    implementation 'androidx.compose.ui:ui-tooling-preview'
-    implementation 'androidx.activity:activity-compose:1.8.2'
-    implementation "com.google.accompanist:accompanist-themeadapter-material:0.30.1"
-    debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.compose.material
+    implementation libs.androidx.compose.material.icons.extended
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.compose.ui.tooling.preview
+    implementation libs.androidx.activity.compose
+    implementation libs.accompanist.themeadapter.material
+    implementation libs.accompanist.drawablepainter
+    debugImplementation libs.androidx.compose.ui.tooling
 
-    testImplementation 'androidx.test:core:1.5.0'
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.robolectric:robolectric:4.11.1'
-    testImplementation 'org.mockito:mockito-core:3.9.0'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation libs.androidx.test.core
+    testImplementation libs.junit
+    testImplementation libs.robolectric
+    testImplementation libs.mockito.core
+    testImplementation libs.hamcrest
 
-    androidTestImplementation 'androidx.test:core:1.5.0'
-    androidTestImplementation 'androidx.arch.core:core-testing:2.2.0'
-    androidTestImplementation 'androidx.test:runner:1.5.2'
-    androidTestImplementation 'androidx.test:rules:1.5.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test:monitor:1.6.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-    androidTestImplementation 'androidx.work:work-testing:2.9.0'
-    androidTestImplementation 'org.jetbrains.kotlin:kotlin-test'
-    androidTestImplementation 'app.cash.turbine:turbine:1.0.0'
+    androidTestImplementation libs.androidx.test.core
+    androidTestImplementation libs.androidx.core.testing
+    androidTestImplementation libs.androidx.test.runner
+    androidTestImplementation libs.androidx.test.rules
+    androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.androidx.test.monitor
+    androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation libs.androidx.test.uiautomator
+    androidTestImplementation libs.androidx.work.testing
+    androidTestImplementation libs.kotlin.test
+    androidTestImplementation libs.turbine
 }
 
 // org.fdroid.fdroid.updater.UpdateServiceTest needs app-full-debug.apk
@@ -255,5 +249,3 @@ android.productFlavors.all { flavor ->
         }
     }
 }
-
-apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"

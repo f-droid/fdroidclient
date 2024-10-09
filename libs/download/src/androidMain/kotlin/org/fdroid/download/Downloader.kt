@@ -226,7 +226,3 @@ public abstract class Downloader constructor(
     }
 
 }
-
-public fun interface BytesReceiver {
-    public suspend fun receive(bytes: ByteArray, numTotalBytes: Long?)
-}

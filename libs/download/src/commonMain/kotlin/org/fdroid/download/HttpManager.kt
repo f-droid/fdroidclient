@@ -246,6 +246,10 @@ public open class HttpManager @JvmOverloads constructor(
     }
 }
 
+public fun interface BytesReceiver {
+    public suspend fun receive(bytes: ByteArray, numTotalBytes: Long?)
+}
+
 /**
  * Thrown if we tried to resume a download, but the current mirror server does not offer resuming.
  */

@@ -1,14 +1,13 @@
 plugins {
     id 'org.jetbrains.kotlin.multiplatform'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.22'
+    id 'org.jetbrains.kotlin.plugin.serialization'
     id 'com.android.library'
     id 'org.jetbrains.dokka'
-    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
     id 'com.vanniktech.maven.publish'
 }
 
 kotlin {
-    android {
+    androidTarget {
         compilations.configureEach {
             kotlinOptions.jvmTarget = '17'
         }
@@ -33,19 +32,18 @@ kotlin {
         }
         commonMain {
             dependencies {
-                // 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
-                implementation 'io.github.microutils:kotlin-logging:2.1.21'
+                implementation libs.kotlinx.serialization.json
+                implementation libs.microutils.kotlin.logging
 
                 implementation project(":libs:download")
-                implementation "io.ktor:ktor-io:2.3.8"
+                implementation libs.ktor.io
             }
         }
         commonTest {
             dependencies {
                 implementation project(":libs:sharedTest")
                 implementation kotlin('test')
-                implementation "com.goncalossilva:resources:0.2.1"
+                implementation libs.goncalossilva.resources
             }
         }
         // JVM is disabled for now, because Android app is including it instead of Android library
@@ -55,27 +53,27 @@ kotlin {
         }
         jvmTest {
             dependencies {
-                implementation 'junit:junit:4.13.2'
+                implementation libs.junit
             }
         }
         androidMain {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-reflect:1.9.22"
-                implementation 'androidx.core:core-ktx:1.12.0'
+                implementation libs.kotlin.reflect
+                implementation libs.androidx.core.ktx
             }
         }
         androidUnitTest {
             dependencies {
-                implementation 'junit:junit:4.13.2'
-                implementation 'io.mockk:mockk:1.13.8'
+                implementation libs.junit
+                implementation libs.mockk
             }
         }
         androidInstrumentedTest {
             dependencies {
                 implementation project(":libs:sharedTest")
                 implementation kotlin('test')
-                implementation 'androidx.test:runner:1.5.2'
-                implementation 'androidx.test.ext:junit:1.1.5'
+                implementation libs.androidx.test.runner
+                implementation libs.androidx.test.ext.junit
             }
         }
         nativeMain {
@@ -124,5 +122,3 @@ tasks.withType(DokkaTask).configureEach {
             }"""]
     )
 }
-
-apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"
