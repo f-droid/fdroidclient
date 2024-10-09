@@ -33,9 +33,9 @@ object TestDataMinV1 {
         description = "This is a repo with minimal data.",
     )
 
-    const val packageName = "org.fdroid.min1"
+    const val PACKAGE_NAME = "org.fdroid.min1"
     val app = AppV1(
-        packageName = packageName,
+        packageName = PACKAGE_NAME,
         categories = emptyList(),
         antiFeatures = emptyList(),
         license = "",
@@ -43,15 +43,15 @@ object TestDataMinV1 {
     val apps = listOf(app)
 
     val version = PackageV1(
-        packageName = packageName,
-        apkName = "${packageName}_23.apk",
+        packageName = PACKAGE_NAME,
+        apkName = "${PACKAGE_NAME}_23.apk",
         hash = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
         hashType = "sha256",
         size = 1337,
         versionName = "0",
     )
     val versions = listOf(version)
-    val packages = mapOf(packageName to versions)
+    val packages = mapOf(PACKAGE_NAME to versions)
 
     val index = IndexV1(
         repo = repo,
@@ -74,11 +74,11 @@ object TestDataMidV1 {
         mirrors = listOf("https://mid-v1.com"),
     )
 
-    const val packageName1 = TestDataMinV1.packageName
-    const val packageName2 = "org.fdroid.fdroid"
+    const val PACKAGE_NAME_1 = TestDataMinV1.PACKAGE_NAME
+    const val PACKAGE_NAME_2 = "org.fdroid.fdroid"
     val categories = listOf("Cat1", "Cat2", "Cat3")
     val app1 = TestDataMinV1.app.copy(
-        packageName = packageName1,
+        packageName = PACKAGE_NAME_1,
         categories = listOf(categories[0]),
         antiFeatures = listOf("AntiFeature"),
         summary = "App1 summary",
@@ -192,9 +192,9 @@ object TestDataMidV1 {
 
     val version1_1 = TestDataMinV1.version.copy(
         added = 2342,
-        apkName = "${packageName1}_23_2.apk",
+        apkName = "${PACKAGE_NAME_1}_23_2.apk",
         size = 1338,
-        srcName = "${packageName1}_23_2.zip",
+        srcName = "${PACKAGE_NAME_1}_23_2.zip",
         usesPermission = listOf(PermissionV1("perm")),
         usesPermission23 = emptyList(),
         versionCode = 1,
@@ -204,8 +204,8 @@ object TestDataMidV1 {
         antiFeatures = listOf("anti-feature"),
     )
     val version1_2 = PackageV1(
-        packageName = packageName1,
-        apkName = "${packageName1}_42.apk",
+        packageName = PACKAGE_NAME_1,
+        apkName = "${PACKAGE_NAME_1}_42.apk",
         hash = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
         hashType = "sha256",
         minSdkVersion = 21,
@@ -215,7 +215,7 @@ object TestDataMidV1 {
         signer = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
         features = listOf("new feature"),
         size = 1337,
-        srcName = "${packageName1}_42.zip",
+        srcName = "${PACKAGE_NAME_1}_42.zip",
         versionCode = 24,
         versionName = "24",
     )
@@ -396,8 +396,8 @@ object TestDataMidV1 {
     val versions1 = listOf(version1_1, version1_2)
     val versions2 = listOf(version2_1, version2_2, version2_3, version2_4, version2_5)
     val packages = mapOf(
-        packageName1 to versions1,
-        packageName2 to versions2,
+        PACKAGE_NAME_1 to versions1,
+        PACKAGE_NAME_2 to versions2,
     )
 
     val index = IndexV1(
@@ -422,9 +422,9 @@ object TestDataMaxV1 {
         mirrors = listOf("https://max-v1.com", "https://max-v1.org"),
     )
 
-    const val packageName1 = TestDataMidV1.packageName1
-    const val packageName2 = TestDataMidV1.packageName2
-    const val packageName3 = "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moo" +
+    const val PACKAGE_NAME_1 = TestDataMidV1.PACKAGE_NAME_1
+    const val PACKAGE_NAME_2 = TestDataMidV1.PACKAGE_NAME_2
+    const val PACKAGE_NAME_3 = "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moo" +
         "dahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5Ung" +
         "ohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raeph" +
         "oowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y"
@@ -468,7 +468,7 @@ object TestDataMaxV1 {
         ),
     )
     val app3 = AppV1(
-        packageName = packageName3,
+        packageName = PACKAGE_NAME_3,
         categories = categories,
         antiFeatures = listOf("AntiFeature", "NonFreeNet", "NotNice", "VeryBad", "Dont,Show,This"),
         summary = "App3 summary",
@@ -510,8 +510,10 @@ object TestDataMaxV1 {
                 icon = "en ",
                 video = "en ",
                 phoneScreenshots = listOf("en phoneScreenshots", "en phoneScreenshots2"),
-                sevenInchScreenshots = listOf("en sevenInchScreenshots",
-                    "en sevenInchScreenshots2"),
+                sevenInchScreenshots = listOf(
+                    "en sevenInchScreenshots",
+                    "en sevenInchScreenshots2",
+                ),
                 tenInchScreenshots = listOf("en tenInchScreenshots", "en tenInchScreenshots2"),
                 wearScreenshots = listOf("en wearScreenshots", "en wearScreenshots2"),
                 tvScreenshots = listOf("en tvScreenshots", "en tvScreenshots2"),
@@ -605,9 +607,9 @@ object TestDataMaxV1 {
     )
     val versions3 = listOf(version3_1)
     val packages = mapOf(
-        packageName1 to versions1,
-        packageName2 to versions2,
-        packageName3 to versions3,
+        PACKAGE_NAME_1 to versions1,
+        PACKAGE_NAME_2 to versions2,
+        PACKAGE_NAME_3 to versions3,
     )
 
     val index = IndexV1(

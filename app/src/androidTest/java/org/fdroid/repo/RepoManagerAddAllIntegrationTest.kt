@@ -166,5 +166,4 @@ internal class RepoManagerAddAllIntegrationTest {
         log.info("  final: $item")
         return item
     }
-
 }

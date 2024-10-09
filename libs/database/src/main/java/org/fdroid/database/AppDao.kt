@@ -130,7 +130,8 @@ public interface AppDao {
 }
 
 public enum class AppListSortOrder {
-    LAST_UPDATED, NAME
+    LAST_UPDATED,
+    NAME,
 }
 
 /**

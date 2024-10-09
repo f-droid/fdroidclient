@@ -282,8 +282,8 @@ internal class IndexV2DiffTest : DbTest() {
             diff = diffRepoIdJson,
             endIndex = TestDataMidV2.index.copy(
                 packages = mapOf(
-                    TestDataMidV2.packageName1 to TestDataMidV2.app1,
-                    TestDataMidV2.packageName2 to fdroidPackage,
+                    TestDataMidV2.PACKAGE_NAME_1 to TestDataMidV2.app1,
+                    TestDataMidV2.PACKAGE_NAME_2 to fdroidPackage,
                 )
             ),
         )

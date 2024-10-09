@@ -87,10 +87,10 @@ public class IndexV1StreamProcessor(
         private fun deserializeRepo(decoder: JsonDecoder, index: Int) {
             require(index == descriptor.getElementIndex("repo"))
             val repo = decoder.decodeSerializableValue(RepoV1.serializer())
-            if (lastTimestamp >= repo.timestamp) {
-                throw OldIndexException(lastTimestamp == repo.timestamp,
-                    "Old repo ${repo.address} ${repo.timestamp}")
-            }
+            if (lastTimestamp >= repo.timestamp) throw OldIndexException(
+                isSameTimestamp = lastTimestamp == repo.timestamp,
+                msg = "Old repo ${repo.address} ${repo.timestamp}",
+            )
             val repoV2 = repo.toRepoV2(
                 locale = DEFAULT_LOCALE,
                 antiFeatures = emptyMap(),
@@ -165,7 +165,9 @@ public class IndexV1StreamProcessor(
                 val packageIndex = compositeDecoder.decodeElementIndex(descriptor)
                 if (packageIndex == DECODE_DONE) break
                 val packageVersionV1 = decoder.decodeSerializableElement(
-                    descriptor, index + 1, PackageV1.serializer()
+                    descriptor = descriptor,
+                    index = index + 1,
+                    deserializer = PackageV1.serializer(),
                 )
                 val versionCode = packageVersionV1.versionCode ?: 0
                 val suggestedVersionCode =

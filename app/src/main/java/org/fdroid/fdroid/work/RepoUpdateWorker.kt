@@ -101,7 +101,9 @@ class RepoUpdateWorker(
                     .setConstraints(constraints)
                     .build()
                 workManager.enqueueUniquePeriodicWork(
-                    UNIQUE_WORK_NAME_AUTO_UPDATE, UPDATE, workRequest
+                    UNIQUE_WORK_NAME_AUTO_UPDATE,
+                    UPDATE,
+                    workRequest,
                 )
             } else {
                 Log.w(TAG, "Not scheduling job due to settings!")

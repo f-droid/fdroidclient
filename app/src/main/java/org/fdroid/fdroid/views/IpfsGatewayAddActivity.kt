@@ -51,7 +51,8 @@ class IpfsGatewayAddActivity : AppCompatActivity() {
 
         setContent {
             FDroidContent {
-                IpfsGatewayAddScreen(onBackClicked = { onBackPressedDispatcher.onBackPressed() },
+                IpfsGatewayAddScreen(
+                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                     onAddUserGateway = { url ->
                         // don't allow adding default gateways to the user gateways list
                         if (!Preferences.DEFAULT_IPFS_GATEWAYS.contains(url)) {
@@ -63,7 +64,8 @@ class IpfsGatewayAddActivity : AppCompatActivity() {
                             }
                         }
                         finish()
-                    })
+                    },
+                )
             }
         }
     }
@@ -78,24 +80,24 @@ fun IpfsGatewayAddScreen(
     val focusRequester = remember { FocusRequester() }
     var errorMsg by remember { mutableStateOf("") }
 
-    Scaffold(topBar = {
-        TopAppBar(
-            elevation = 4.dp,
-            backgroundColor = MaterialTheme.colors.primarySurface,
-            navigationIcon = {
-                IconButton(onClick = onBackClicked) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
-                }
-            },
-            title = {
-                Text(
-                    text = stringResource(R.string.ipfsgw_add_title),
-                    modifier = Modifier.alpha(ContentAlpha.high),
-                )
-            },
-        )
-    }
-
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                elevation = 4.dp,
+                backgroundColor = MaterialTheme.colors.primarySurface,
+                navigationIcon = {
+                    IconButton(onClick = onBackClicked) {
+                        Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
+                    }
+                },
+                title = {
+                    Text(
+                        text = stringResource(R.string.ipfsgw_add_title),
+                        modifier = Modifier.alpha(ContentAlpha.high),
+                    )
+                },
+            )
+        },
     ) { paddingValues ->
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),

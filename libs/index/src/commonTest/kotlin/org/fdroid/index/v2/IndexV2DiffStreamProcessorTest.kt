@@ -5,7 +5,7 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 import org.fdroid.index.IndexParser
-import org.fdroid.index.assetPath
+import org.fdroid.index.ASSET_PATH
 import org.junit.Test
 import java.io.ByteArrayInputStream
 import java.io.File
@@ -17,22 +17,22 @@ import kotlin.test.fail
 internal class IndexV2DiffStreamProcessorTest {
 
     @Test
-    fun testEmptyToMin() = testDiff("$assetPath/diff-empty-min/23.json", 1)
+    fun testEmptyToMin() = testDiff("$ASSET_PATH/diff-empty-min/23.json", 1)
 
     @Test
-    fun testEmptyToMid() = testDiff("$assetPath/diff-empty-mid/23.json", 2)
+    fun testEmptyToMid() = testDiff("$ASSET_PATH/diff-empty-mid/23.json", 2)
 
     @Test
-    fun testEmptyToMax() = testDiff("$assetPath/diff-empty-max/23.json", 3)
+    fun testEmptyToMax() = testDiff("$ASSET_PATH/diff-empty-max/23.json", 3)
 
     @Test
-    fun testMinToMid() = testDiff("$assetPath/diff-empty-mid/42.json", 2)
+    fun testMinToMid() = testDiff("$ASSET_PATH/diff-empty-mid/42.json", 2)
 
     @Test
-    fun testMinToMax() = testDiff("$assetPath/diff-empty-max/42.json", 3)
+    fun testMinToMax() = testDiff("$ASSET_PATH/diff-empty-max/42.json", 3)
 
     @Test
-    fun testMidToMax() = testDiff("$assetPath/diff-empty-max/1337.json", 2)
+    fun testMidToMax() = testDiff("$ASSET_PATH/diff-empty-max/1337.json", 2)
 
     @Test
     fun testRemovePackage() {

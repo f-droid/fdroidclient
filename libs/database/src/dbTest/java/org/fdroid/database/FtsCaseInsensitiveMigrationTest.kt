@@ -40,12 +40,10 @@ internal class FtsCaseInsensitiveMigrationTest {
 
     private val repo = ContentValues().apply {
         put("repoId", 1)
-        put("name", Converters.localizedTextV2toString(mapOf(
-            "de" to "a", "en-US" to "b")))
+        put("name", Converters.localizedTextV2toString(mapOf("de" to "a", "en-US" to "b")))
         put("address", getRandomString())
         put("certificate", "abcdef")
-        put("description", Converters.localizedTextV2toString(mapOf(
-            "de" to "aa", "en-US" to "bb")))
+        put("description", Converters.localizedTextV2toString(mapOf("de" to "aa", "en-US" to "bb")))
         put("version", Random.nextLong())
         put("timestamp", Random.nextLong())
     }
@@ -59,14 +57,29 @@ internal class FtsCaseInsensitiveMigrationTest {
     private val oeffiMetadata = ContentValues().apply {
         put("packageName", "de.schildbach.oeffi")
         put("repoId", 1)
-        put("name", Converters.localizedTextV2toString(mapOf(
-            "de" to "Öffi", "en-US" to "Offi")))
-        put("description", Converters.localizedTextV2toString(mapOf(
-            "de" to "Öffentlicher Nahverkehr", "en-US" to "Public Transport")))
+        put(
+            "name", Converters.localizedTextV2toString(
+                mapOf(
+                    "de" to "Öffi", "en-US" to "Offi"
+                )
+            )
+        )
+        put(
+            "description", Converters.localizedTextV2toString(
+                mapOf(
+                    "de" to "Öffentlicher Nahverkehr", "en-US" to "Public Transport"
+                )
+            )
+        )
         put("license", "GPL-3.0")
-        put("summary", Converters.localizedTextV2toString(mapOf(
-            "de" to "Der König des Fahrplandschungels!",
-            "en-US" to " King of public transit planning!")))
+        put(
+            "summary", Converters.localizedTextV2toString(
+                mapOf(
+                    "de" to "Der König des Fahrplandschungels!",
+                    "en-US" to " King of public transit planning!"
+                )
+            )
+        )
         put("localizedName", "Öffi")
         put("localizedSummary", "Der König des Fahrplandschungels!")
         put("added", Random.nextLong())
@@ -89,17 +102,34 @@ internal class FtsCaseInsensitiveMigrationTest {
     private val transportrMetadata = ContentValues().apply {
         put("packageName", "de.grobox.liberario")
         put("repoId", 1)
-        put("name", Converters.localizedTextV2toString(mapOf(
-            "de" to "Transportr", "en-US" to "Transportr")))
-        put("description", Converters.localizedTextV2toString(mapOf(
-            "de" to "Öffentlicher Nahverkehr", "en-US" to "Public Transport")))
+        put(
+            "name", Converters.localizedTextV2toString(
+                mapOf(
+                    "de" to "Transportr", "en-US" to "Transportr"
+                )
+            )
+        )
+        put(
+            "description", Converters.localizedTextV2toString(
+                mapOf(
+                    "de" to "Öffentlicher Nahverkehr", "en-US" to "Public Transport"
+                )
+            )
+        )
         put("license", "GPL-3.0")
-        put("summary", Converters.localizedTextV2toString(mapOf(
-            "de" to "Freier Assistent für den öffentlichen Nahverkehr ohne Werbung und Tracking",
-            "en-US" to "Free Public Transport Assistant without Ads or Tracking")))
+        put(
+            "summary", Converters.localizedTextV2toString(
+                mapOf(
+                    "de" to "Freier Assistent für den öffentlichen Nahverkehr ohne Werbung",
+                    "en-US" to "Free Public Transport Assistant without Ads or Tracking"
+                )
+            )
+        )
         put("localizedName", "Transportr")
-        put("localizedSummary",
-            "Freier Assistent für den öffentlichen Nahverkehr ohne Werbung und Tracking")
+        put(
+            "localizedSummary",
+            "Freier Assistent für den öffentlichen Nahverkehr ohne Werbung und Tracking"
+        )
         put("added", Random.nextLong())
         put("lastUpdated", Random.nextLong())
         put("isCompatible", true)
@@ -119,7 +149,6 @@ internal class FtsCaseInsensitiveMigrationTest {
 
     @Test
     fun testMigration() = runBlocking {
-
         helper.createDatabase(TEST_DB, 5).use { db ->
             // Database has schema version 5. Insert some data using SQL queries.
             // We can't use DAO classes because they expect the latest schema.

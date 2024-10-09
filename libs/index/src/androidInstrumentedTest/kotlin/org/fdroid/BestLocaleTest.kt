@@ -74,10 +74,12 @@ internal class BestLocaleTest {
         // handle stripped script (Hans/Hant)
         assertEquals(
             "zh-TW",
-            getMap("en-US",
+            getMap(
+                "en-US",
                 "zh-CN",
                 "zh-HK",
-                "zh-TW").getBestLocale(getLocaleList("zh-Hant-TW,zh-Hans-CN")),
+                "zh-TW",
+            ).getBestLocale(getLocaleList("zh-Hant-TW,zh-Hans-CN")),
         )
         assertEquals(
             "zh-CN",

@@ -14,6 +14,7 @@ internal abstract class AppTest : DbTest() {
     protected val name1 = mapOf("en-US" to "1")
     protected val name2 = mapOf("en-US" to "2")
     protected val name3 = mapOf("en-US" to "3")
+
     // it is important for testing that the icons are sharing at least one locale
     protected val icons1 = mapOf("en-US" to getRandomFileV2(), "bar" to getRandomFileV2())
     protected val icons2 = mapOf("en-US" to getRandomFileV2(), "42" to getRandomFileV2())
