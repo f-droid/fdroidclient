@@ -54,7 +54,7 @@
     <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
     <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
     <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-vapaita lisäosia</string>
-    <string name="antinonfreenetlist">Tämä sovellus suosittelee tai on täysin riippuvainen ei-muutettavasta tai ei-vapaasta verkkopalvelusta</string>
+    <string name="antinonfreenetlist">Tämä sovellus mainostaa ei-ilmaista verkkopalvelua tai on siitä täysin riippuvainen</string>
     <string name="antinonfreedeplist">Tämä sovellus on riippuvainen muista, ei-vapaista sovelluksista</string>
     <string name="display">Näyttö</string>
     <string name="expert">Asiantuntijatila</string>
@@ -330,7 +330,7 @@
     </plurals>
     <string name="nearby_splash__both_parties_need_fdroid">Molemmilla osapuolilla tulee olla %1$s ominaisuuden käyttämiseksi.</string>
     <string name="tts_category_name">Luokka %1$s</string>
-    <string name="antifeatures">Antiominaisuudet</string>
+    <string name="antifeatures">Esto-ominaisuudet</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Näytä yksi sovellus %2$s-luokassa</item>
         <item quantity="other">Näytä kaikki %1$d sovellusta %2$s-luokasta</item>
@@ -366,8 +366,8 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Tällä sovelluksella on heikko turvallisuusallekirjoitus</string>
     <string name="antiknownvulnlist">Tämä sovellus sisältää tunnetun haavoittuvuuden</string>
-    <string name="show_anti_feature_apps">Sisällytä sovellukset, joissa on anti-ominaisuuksia</string>
-    <string name="show_anti_feature_apps_on">Näytä sovellukset, jotka vaativat anti-ominaisuuksia</string>
+    <string name="show_anti_feature_apps">Sisällytä esto-ominaisuudet</string>
+    <string name="show_anti_feature_apps_on">Näytä sovellukset, joilla on tunnettuja esto-ominaisuuksia</string>
     <string name="force_touch_apps">Sisällytä kosketusnäyttösovellukset</string>
     <string name="force_touch_apps_on">Näytä sovellukset, jotka vaativat kosketusnäytön riippumatta laitteiston tuesta</string>
     <string name="privacy">Tietosuoja</string>
@@ -449,7 +449,7 @@
     <string name="repo_exists_enable">%1$s on jo asennettu. Vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
     <string name="menu_open">Avaa</string>
-    <string name="antinosourcesince">Lähdekoodi ei ole enää saatavilla, päivityksiä ei voi tehdä.</string>
+    <string name="antinosourcesince">Lähdekoodi ei ole enää saatavilla; ei päivityksiä mahdollista</string>
     <string name="share_repository">Jaa sovelluslähde</string>
     <string name="scan_removable_storage_title">Lue irrotettava tallennusväline</string>
     <string name="scan_removable_storage_toast">Luetaan %s…</string>
@@ -509,7 +509,7 @@
     <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
     <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
     <string name="antinonfreedep">Ei-vapaat riippuvuudet</string>
-    <string name="app_list_results_hidden_antifeature_settings">Osa tuloksista piilotettiin antiominaisuusasetusten perusteella.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Jotkin sovellukset on piilotettu esto-ominaisuuksien asetusten perusteella. Muuta koskettamalla.</string>
     <string name="antiads">Mainokset</string>
     <string name="antitrack">Seuranta</string>
     <string name="antinonfreead">Ei-vapaat lisäosat</string>
@@ -519,7 +519,7 @@
     <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
     <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
     <string name="antinosource">Lähdekoodi ei enää saatavilla</string>
-    <string name="antiothers">Muut antiominaisuudet</string>
+    <string name="antiothers">Muut esto-ominaisuudet</string>
     <string name="antinsfw">Ei sovellu työpaikalle</string>
     <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
     <string name="menu_release_channel_beta">Salli beta-päivitykset</string>
@@ -592,4 +592,11 @@
     <string name="repo_preview_included_apps">Sisältyvät sovellukset:</string>
     <string name="repo_add_repo_and_mirror">Lisää ohjelmavarasto ja peilipalvelin</string>
     <string name="repo_mirror_exists">Tämä peilipalvelin on jo lisätty (%s).</string>
+    <string name="antitetherednetlist">Tämä sovellus riippuu täysin tietystä verkkopalvelun esiintymästä</string>
+    <string name="auto_update_time_past">Seuraava päivitys, kun ehdot täyttyvät</string>
+    <string name="warning_no_compat_versions">Valitulla tietovarastolla ei ole yhteensopivia sovellusversioita. Jos haluat vastaanottaa päivityksiä, valitse tietovarasto, jossa on yhteensopivia versioita.</string>
+    <string name="repo_view_repo">Näytä tietovarasto</string>
+    <string name="repo_mirror_add_info">URL, jota yrität lisätä (%s) on olemassa olevan tietovaraston peili.</string>
+    <string name="repo_and_mirror_add_both_info">URL, jota yrität lisätä (%s) on uuden tietovaraston peili. Sekä alkuperäinen tietovarasto että peili lisätään.</string>
+    <string name="auto_update_time">Aikaisin seuraava päivitys: %s</string>
 </resources>
