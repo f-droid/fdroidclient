@@ -36,7 +36,7 @@
     <string name="antiadslist">این کاره دارای تبلیغات است</string>
     <string name="antitracklist">این کاره، فعّالیتتان را ردیابی و گزارش می‌کند</string>
     <string name="antinonfreeadlist">این کاره، افزونه‌های ناآزاد را تبلیغ می‌کند</string>
-    <string name="antinonfreenetlist">این کاره، خدمت شبکه‌ای تغییر ناپذیر یا ناآزاد را ترویج کرده یا کاملاً به آن وابسته است</string>
+    <string name="antinonfreenetlist">این کاره، خدمت شبکه‌ای ناآزاد را ترویج کرده یا کاملاً به آن وابسته است</string>
     <string name="antinonfreedeplist">این کاره به دیگر کاره‌های ناآزاد وابسته است</string>
     <string name="antiupstreamnonfreelist">کد مبدأ بالادستی کاملاً آزاد نیست</string>
     <string name="display">نمایش</string>
@@ -421,8 +421,8 @@
     <string name="over_network_never_summary">بارگیری نشدن هیچ‌چیز هنگام استفاده از این اتّصال</string>
     <string name="antidisabledalgorithmlist">این کاره، امضای امنیتی ضعیفی دارد</string>
     <string name="antiknownvulnlist">این کاره، آسیب‌پذیری امنیتی شناخته‌شده‌ای دارد</string>
-    <string name="show_anti_feature_apps">شامل کاره‌های پادویژگی‌دار</string>
-    <string name="show_anti_feature_apps_on">نمایش کاره‌هایی که نیاز به پادویژگی دارند</string>
+    <string name="show_anti_feature_apps">شامل پادویژگی</string>
+    <string name="show_anti_feature_apps_on">نمایش کاره‌هایی که پادویژگی‌های شناخته شده دارند</string>
     <string name="force_touch_apps">شامل کاره‌های لمسی</string>
     <string name="force_touch_apps_on">نمایش کاره‌هایی که نیاز به صفحهٔ لمسی دارند، فارغ از پشتیبانی سخت‌افزاری</string>
     <string name="repo_official_mirrors">آینه‌های رسمی</string>
@@ -442,7 +442,7 @@
     <string name="send_version_and_uuid">فرستادن نگارش و شناسهٔ یکتا به کارسازها</string>
     <string name="send_version_and_uuid_summary">شامل نگارش این کاره و یک شناسهٔ یکتای تصادفی هنگام بارگیری. شروع دوبارهٔ بعدی کاره را تحت تأثیر قرار می‌دهد.</string>
     <string name="updates_disabled_by_settings">تمامی به‌روز رسانی‌ها به دست تنظیمات داده/وای‌فای مسدود شدند</string>
-    <string name="antinosourcesince">کد مبدأ دیگر در دسترس نیست. به‌روز رسانی ناممکن است.</string>
+    <string name="antinosourcesince">کد مبدأ دیگر در دسترس نیست. به‌روز رسانی ناممکن است</string>
     <string name="share_repository">هم‌رسانی مخزن</string>
     <string name="about_forum">انجمن پشتیبانی</string>
     <string name="app_suggested">پیشنهادی</string>
@@ -514,7 +514,7 @@
     <string name="antinonfreeassets">بخش‌های ناآزاد</string>
     <string name="antidisabledalgorithm">امضا شده با الگوریتمی ناامن</string>
     <string name="antiknownvuln">آسیب‌پذیری شناخته</string>
-    <string name="app_list_results_hidden_antifeature_settings">برخی نتیجه‌ها بر پایهٔ تنظیمات پادویژگیتان پنهان شده‌اند.</string>
+    <string name="app_list_results_hidden_antifeature_settings">برخی کاره‌ها بر پایهٔ تنظیمات پادویژگیتان پنهان شده‌اند. لمس برای تغییر.</string>
     <string name="antitrack">ردیابی</string>
     <string name="antinonfreead">افزونه‌های ناآزاد</string>
     <string name="antinonfreedep">وابستگی‌های ناآزاد</string>
@@ -598,4 +598,7 @@
     <string name="repo_mirror_add_info">نشانی‌ای که می‌خواهید بیفزایید (%s) آینه‌ای از یک مخزن موجود است.</string>
     <string name="warning_no_compat_versions">مخزن گزیده هیچ نگارش کارهٔ سازگاری ندارد. برای گرفتن به‌روز رسانی‌ها، مخزنی با نگارش‌های سازگار را ترجیح دهید.</string>
     <string name="auto_update_time">نزدیک‌ترین به‌روز رسانی بعدی: %s</string>
+    <string name="antitetherednet">خدمت شبکهٔ چتری</string>
+    <string name="antitetherednetlist">این کاره، کاملاً وابسته به نمونه‌ای خاص از یک خدمت شبکه‌ای است</string>
+    <string name="auto_update_time_past">به‌روز رسانی بعدی هنگام فراهم شدن شرایط</string>
 </resources>
