@@ -18,12 +18,14 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -32,13 +34,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.nearby.peers.Peer;
 
 import java.util.ArrayList;
-
-import androidx.annotation.Nullable;
-import com.google.android.material.switchmaterial.SwitchMaterial;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import cc.mvdan.accesspoint.WifiApControl;
 
@@ -167,11 +162,13 @@ public class StartSwapView extends SwapView {
     }
 
     private void uiInitBluetooth() {
-        if (bluetooth != null && ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
+        if (bluetooth != null) {
 
             viewBluetoothId = (TextView) findViewById(R.id.device_id_bluetooth);
-            viewBluetoothId.setText(bluetooth.getName());
+            if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_CONNECT) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                viewBluetoothId.setText(bluetooth.getName());
+            }
             viewBluetoothId.setVisibility(bluetooth.isEnabled() ? View.VISIBLE : View.GONE);
 
             textBluetoothVisible = findViewById(R.id.bluetooth_visible);
@@ -190,9 +187,18 @@ public class StartSwapView extends SwapView {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_CONNECT) !=
+                        PackageManager.PERMISSION_GRANTED ||
+                        ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_SCAN) !=
+                                PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getContext(), R.string.swap_bluetooth_permissions, Toast.LENGTH_LONG).show();
+                    bluetoothSwitch.setChecked(false);
+                    return;
+                }
                 Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap, prompting user as to whether they want to enable Bluetooth.");
                 getActivity().startBluetoothSwap();
                 textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
+                viewBluetoothId.setText(bluetooth.getName());
                 viewBluetoothId.setVisibility(View.VISIBLE);
                 Utils.debugLog(TAG, "Received onCheckChanged(true) for Bluetooth swap (prompting user or setup Bluetooth complete)");
                 // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...

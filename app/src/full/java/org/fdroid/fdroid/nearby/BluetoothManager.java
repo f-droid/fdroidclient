@@ -77,7 +77,7 @@ public class BluetoothManager {
     public static void start(final Context context) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) !=
                 PackageManager.PERMISSION_GRANTED) {
-            // TODO we either throw away that Bluetooth code or properly request permissions here
+            // TODO we either throw away that Bluetooth code or properly request permissions
             return;
         }
         BluetoothManager.context = new WeakReference<>(context);

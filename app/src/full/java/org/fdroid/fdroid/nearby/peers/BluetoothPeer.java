@@ -41,13 +41,18 @@ public class BluetoothPeer implements Peer {
     @Override
     @RequiresPermission("android.permission.BLUETOOTH_CONNECT")
     public String toString() {
-        return getName();
+        String name = getName();
+        if (name == null) return "null";
+        return name;
     }
 
     @Override
+    @Nullable
     @RequiresPermission("android.permission.BLUETOOTH_CONNECT")
     public String getName() {
-        return device.getName().replaceAll("^" + BLUETOOTH_NAME_TAG, "");
+        String name = device.getName();
+        if (name == null) return null;
+        return name.replaceAll("^" + BLUETOOTH_NAME_TAG, "");
     }
 
     @Override
