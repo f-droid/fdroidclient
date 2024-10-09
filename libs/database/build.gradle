@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace "org.fdroid.database"
-    compileSdk 34
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
         minSdkVersion 21

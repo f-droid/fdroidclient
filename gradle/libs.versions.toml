@@ -1,0 +1,6 @@
+[versions]
+compileSdk = "35"
+
+[libraries]
+
+[plugins]
