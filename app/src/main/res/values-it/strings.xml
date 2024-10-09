@@ -57,7 +57,7 @@
     <string name="antiadslist">Questa app contiene pubblicità</string>
     <string name="antitracklist">Questa app monitora e riferisce sulle tue attività</string>
     <string name="antinonfreeadlist">Questa app promuove add-on non liberi</string>
-    <string name="antinonfreenetlist">Questa app promuove o dipende completamente da un servizio di rete non modificabile o non libero</string>
+    <string name="antinonfreenetlist">Questa app promuove o dipende completamente da un servizio di rete non libero</string>
     <string name="antinonfreedeplist">Questa app dipende da altre app non libere</string>
     <string name="antiupstreamnonfreelist">Il codice sorgente a monte non è completamente libero</string>
     <string name="display">Mostra</string>
@@ -429,8 +429,8 @@
     <string name="repo_delete_to_overwrite">Prima elimina %1$s per aggiungere questo con una chiave in conflitto.</string>
     <string name="repo_exists_add_mirror">Questa è una copia di %1$s, aggiungerla come mirror?</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Includi app con anti-caratteristiche</string>
-    <string name="show_anti_feature_apps_on">Mostra app che richiedono anti-caratteristiche</string>
+    <string name="show_anti_feature_apps">Includi anti-caratteristiche</string>
+    <string name="show_anti_feature_apps_on">Mostra app che hanno anti-caratteristiche note</string>
     <string name="force_touch_apps">Includi app tattili</string>
     <string name="force_touch_apps_on">Mostra app che richiedono il touchscreen indipendentemente dall\'hardware</string>
     <string name="panic_hide_warning_title">Ricorda come ripristinare</string>
@@ -466,7 +466,7 @@
     <string name="send_version_and_uuid">Invia versione e UUID ai server</string>
     <string name="send_version_and_uuid_summary">Includi la versione di quest\'app e un ID casuale e unico quando scarichi, si applica al prossimo avvio dell\'app.</string>
     <string name="updates_disabled_by_settings">Tutti gli aggiornamenti disattivati per impostazioni dati/WiFi</string>
-    <string name="antinosourcesince">Il codice sorgente non è più disponibile, aggiornamenti non possibili.</string>
+    <string name="antinosourcesince">Il codice sorgente non è più disponibile, aggiornamenti non possibili</string>
     <string name="share_repository">Condividi repository</string>
     <string name="about_forum">Forum supporto</string>
     <string name="app_suggested">Consigliato</string>
@@ -532,7 +532,7 @@
     <string name="has_disallow_install_unknown_sources">Fonti sconosciute non possono essere aggiunte da questo utente, inclusi nuovi repository</string>
     <string name="has_disallow_install_unknown_sources_globally">L\'amministratore del tuo dispositivo non permette l\'installazione di app da fonti sconosciute, inclusi nuovi repository</string>
     <string name="antinonfreedep">Dipendenze non libere</string>
-    <string name="app_list_results_hidden_antifeature_settings">Alcuni risultati sono stati nascosti in base alle tue impostazioni di anti-caratteristiche.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Alcune app sono nascoste in base alle tue impostazioni di anti-caratteristiche. Tocca per cambiarlo.</string>
     <string name="antinonfreead">Addon non liberi</string>
     <string name="antinonfreenet">Servizi di rete non liberi</string>
     <string name="antiknownvuln">Vulnerabilità conosciuta</string>
@@ -621,4 +621,8 @@
     <string name="repo_mirror_exists">Questo mirror è già stato aggiunto (%s).</string>
     <string name="repo_mirror_add_info">L\'URL che stai cercando di aggiungere (%s) è un mirror di un repository esistente.</string>
     <string name="warning_no_compat_versions">Il repository selezionato non ha versioni dell\'app compatibili. Per ricevere aggiornamenti, prediligi un repository con versioni compatibili.</string>
+    <string name="auto_update_time">Prossimo aggiornamento: %s</string>
+    <string name="antitetherednet">Servizi di rete in tethering</string>
+    <string name="antitetherednetlist">Questa app dipende completamente da una particolare istanza di un servizio di rete</string>
+    <string name="auto_update_time_past">Prossimo aggiornamento quando le condizioni sono soddisfatte</string>
 </resources>
