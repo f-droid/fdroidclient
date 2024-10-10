@@ -153,12 +153,18 @@ android {
         lintConfig file("lint.xml")
     }
 
+    /* Do not include files that are not verified by the JAR signature */
     packagingOptions {
+        // this can be removed once JAR/APKv1 signatures are no longer supported
+        exclude 'META-INF/**/*.properties'
+        exclude 'META-INF/*.version'
+        exclude 'META-INF/COPYRIGHT'
+        exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/gradle/**'
         exclude '.readme'
     }
 }
