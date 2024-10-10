@@ -605,4 +605,5 @@
     <string name="auto_update_time_past">Nächste Aktualisierung, wenn die Bedingungen erfüllt sind</string>
     <string name="antitetherednet">Tethering-Netzwerkdienste</string>
     <string name="antitetherednetlist">Diese App hängt vollständig von einer bestimmten Instanz eines Netzwerkdienstes ab</string>
+    <string name="swap_bluetooth_permissions">Bitte gewähren Sie die Erlaubnis für Bluetooth oder benachbarte Geräte!</string>
 </resources>
