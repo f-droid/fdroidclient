@@ -585,4 +585,5 @@
     <string name="auto_update_time_past">条件满足时进行下次更新</string>
     <string name="antitetherednetlist">此用用完全依赖某一网络服务的特定实例</string>
     <string name="antitetherednet">和特定网络服务深度捆绑</string>
+    <string name="swap_bluetooth_permissions">请授予蓝牙或附近设备权限！</string>
 </resources>
