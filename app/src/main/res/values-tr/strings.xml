@@ -599,4 +599,5 @@
     <string name="auto_update_time_past">Koşullar sağlandığında bir sonraki güncelleme</string>
     <string name="antitetherednet">Bağlı Ağ Hizmetleri</string>
     <string name="antitetherednetlist">Bu uygulama tamamen belirli bir ağ hizmetinin örneğine bağlıdır</string>
+    <string name="swap_bluetooth_permissions">Lütfen Bluetooth veya Yakındaki Aygıtlar izni verin!</string>
 </resources>
