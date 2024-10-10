@@ -1,8 +1,11 @@
-* Dividir el nombre y el resumen en listas de aplicaciones para una mejor legibilidad
-* SDK 24 son incompatibles Android 15
-* Manejar mejor los espejos en la vista previa "Añadir repositorio" (¡Gracias Thore!)
-* Habilitar actualizaciones de aplicaciones desatendidas en dispositivos Xiaomi que no ejecutan MIUI (¡Gracias Irate!)
-* Confíar en certificados root agregados por el usuario (¡Gracias B. !)
-* Mejorar la localización para los idiomas menos comunes (¡Gracias Ray!)
-* No actuar con etiquetas NFC. Se eliminó la función NFC (¡Gracias Thibault!)
+* Actualizador de repositorio reescrito para que las actualizaciones en segundo plano sean más confiables
+* Separar el nombre y el resumen en las listas de aplicaciones para una mejor legibilidad.
 * Mostrar advertencia cuando las aplicaciones no se pueden actualizar desde el repositorio preferido
+* Las aplicaciones SDK 24 son incompatibles con los dispositivos Android 15
+* Manejar mejor los espejos en la vista previa "Agregar repositorio" (¡Gracias Thore!)
+* Actualizaciones de aplicaciones en dispositivos Xiaomi que no ejecutan MIUI (¡Gracias Irate!)
+* Certificados raíz agregados por el usuario (¡Gracias B.!)
+* La búsqueda que no distinguía entre mayúsculas y minúsculas y que contiene diacríticos (¡Gracias Tobias!)
+* Nuevas descripciones de las características no deseadas (¡Gracias Licaon!)
+* Agregar características no deseada de la red (¡Gracias linsui!)
+* Ignorar los espacios en blanco al agregar repositorios espejo (¡Gracias Tobias!)

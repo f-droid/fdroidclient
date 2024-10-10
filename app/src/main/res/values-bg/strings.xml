@@ -601,4 +601,5 @@
     <string name="auto_update_time_past">Следващо обновяване при изпълнени условия</string>
     <string name="antitetherednet">Обвързани мрежови услуги</string>
     <string name="antitetherednetlist">Приложението изцяло зависи от точно определен екземпляр на мрежова услуга</string>
+    <string name="swap_bluetooth_permissions">Дайте разрешение за „Bluetooth“ или „Устройство наблизо“!</string>
 </resources>

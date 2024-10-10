@@ -610,4 +610,5 @@
     <string name="auto_update_time_past">Järgmine uuendus tingimuste täitmisel</string>
     <string name="antitetherednet">Seotud võrguteenused</string>
     <string name="antitetherednetlist">See rakendus sõltub täielikult teatavast kindlast võrguteenusest</string>
+    <string name="swap_bluetooth_permissions">Palun luba kasutada Bluetoothi või muud lähikonnas leiduvate seadmete tuvastamise teenust!</string>
 </resources>

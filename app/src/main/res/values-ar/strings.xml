@@ -205,10 +205,10 @@
     <string name="swap_visible_bluetooth">ظاهر عن طريق البلوتوث</string>
     <string name="swap_setting_up_bluetooth">إنشاء بلوتوث…</string>
     <string name="swap_not_visible_bluetooth">غير ظاهر عن طريق البلوتوث</string>
-    <string name="swap_visible_wifi">ظاهر عبر شبكة الإنترنت اللاسلكية</string>
-    <string name="swap_setting_up_wifi">يتم إعداد شبكة الإنترنت اللاسلكية…</string>
-    <string name="swap_stopping_wifi">يتم إيقاف شبكة الإنترنت اللاسلكية…</string>
-    <string name="swap_not_visible_wifi">غير ظاهر عبر شبكة الإنترنت اللاسلكية</string>
+    <string name="swap_visible_wifi">ظاهر عبر Wi-Fi</string>
+    <string name="swap_setting_up_wifi">يتم إعداد Wi-Fi…</string>
+    <string name="swap_stopping_wifi">يتم إيقاف Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">غير ظاهر عبر Wi-Fi</string>
     <string name="swap_wifi_device_name">اسم الجهاز</string>
     <string name="swap_cant_find_peers">لا يمكن العثور على من كنت تبحث عنه؟</string>
     <string name="swap_send_fdroid">إرسال اف-درويد</string>
@@ -643,4 +643,5 @@
     <string name="auto_update_time_past">التحديث القادم عند استيفاء الشروط</string>
     <string name="antitetherednet">خدمات الشبكة المقيدة</string>
     <string name="antitetherednetlist">يعتمد هذا التطبيق كليًا على مثيل معين من خدمة الشبكة</string>
+    <string name="swap_bluetooth_permissions">الرجاء منح البلوتوث أو الجهاز القريب إذنًا!</string>
 </resources>

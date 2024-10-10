@@ -1,13 +1,11 @@
-* Reformulação da representação dos repositórios aos utilizadores, clarificando instalações externas ao f-droid.org.
-
-* Permitir alteração da prioridade dos repositórios globalmente e por app
-
-* Anti-Features personalizadas ativadas por padrão
-
-* Suporte para receção de URLs de repositórios por partilha
-
-* Todas as atividades seguem o tema dia/noite
-
-* Atualização dos usos de armazenamento externo para trabalhar com targetSdkVersion 29
-
-* F-Droid Basic atualizado para targetSdkVersion 34
+*Re-escrito o atualizador de repositórios para tornar as atualizações em segundo plano mais estáveis
+* Separar o nome e o resumo nas listas de apps para melhor legibilidade
+* Mostrar aviso quando as apps não podem ser atualizados a partir do repositório preferido
+* Apps que visam o SDK 24 são incompatíveis com dispositivos Android 15
+* Gerir melhor os "mirrors"(servidores) na pré-visualização “Adicionar repositório” (Obrigado Thore!)
+* Ativar atualizações não-monitorizadas de apps em dispositivos Xiaomi que não têm o MIUI (Obrigado Irate!)
+* Confiar em certificados raiz adicionados pelo utilizador (Obrigado B.!)
+* Corrigir pesquisa insensível a maiúsculas contendo diacríticos (Obrigado Tobias!)
+* Atualizar as descrições das características indesejadas (Obrigado Licaon!)
+* Adicionar característica indesejada de rede partilhada (tethered net) (Obrigado linsui!)
+* Ignorar espaços em branco ao adicionar repositórios alternativos ("mirrors") (Obrigado Tobias!)

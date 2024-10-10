@@ -612,4 +612,5 @@
     <string name="antitetherednet">Serviços de rede vinculada</string>
     <string name="antitetherednetlist">Esta app depende inteiramente de uma determinada instância de um serviço de rede</string>
     <string name="auto_update_time_past">Próxima atualização quando as condições forem cumpridas</string>
+    <string name="swap_bluetooth_permissions">Por favor dê a permissão para utilizar o Bluetooth ou Dispositivos Próximos!</string>
 </resources>
