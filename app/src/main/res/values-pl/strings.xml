@@ -619,4 +619,5 @@
     <string name="auto_update_time_past">Następna aktualizacja po spełnieniu warunków</string>
     <string name="antitetherednet">Usługi sieciowe wykorzystujące tethering</string>
     <string name="antitetherednetlist">Ta aplikacja całkowicie zależy od określonej instancji usługi sieciowej</string>
+    <string name="swap_bluetooth_permissions">Przyznaj uprawnienie Bluetooth lub Urządzenie w pobliżu!</string>
 </resources>
