@@ -1,3 +1,11 @@
+### 1.21.0 (2024-10-10)
+
+* Fix race conditions when repositories are updated at the same time
+* Don't crash when Bluetooth permissions are missing
+* Fix launching panic settings from Panic app (e.g. Ripple)
+* Fix permission issue that prevented full and basic installed at same time
+* Update UI if the repository disable warning is canceled
+
 ### 1.21.0-alpha1 (2024-09-17)
 
 * Rewritten repo updater to make background updates more reliable
