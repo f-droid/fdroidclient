@@ -544,8 +544,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         return instance;
     }
 
-    public static RepoManager getRepoManager(Context context) {
+    public static RepoManager getRepoManager(Context c) {
         if (repoManager == null) {
+            Context context = c.getApplicationContext();
             final RepoUriBuilder repoUriBuilder = (repository, pathElements) -> {
                 String address1 = Utils.getRepoAddress(repository);
                 return Utils.getUri(address1, pathElements);
@@ -556,8 +557,9 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         return repoManager;
     }
 
-    public static RepoUpdateManager getRepoUpdateManager(Context context) {
+    public static RepoUpdateManager getRepoUpdateManager(Context c) {
         if (repoUpdateManager == null) {
+            Context context = c.getApplicationContext();
             repoUpdateManager = new RepoUpdateManager(context, DBHelper.getDb(context), getRepoManager(context));
         }
         return repoUpdateManager;
