@@ -104,6 +104,7 @@ class RepoUpdateManager @JvmOverloads constructor(
                     repoErrors.add(Pair(repo, result.e))
                 }
             }
+            db.getRepositoryDao().walCheckpoint()
             fdroidPrefs.lastUpdateCheck = System.currentTimeMillis()
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
@@ -136,6 +137,7 @@ class RepoUpdateManager @JvmOverloads constructor(
         } finally {
             notificationManager.cancelUpdateRepoNotification()
             _isUpdating.value = false
+            db.getRepositoryDao().walCheckpoint()
         }
     }
 

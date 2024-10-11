@@ -6,9 +6,12 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
+import androidx.room.RawQuery
 import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
 import androidx.room.Update
+import androidx.sqlite.db.SimpleSQLiteQuery
+import androidx.sqlite.db.SupportSQLiteQuery
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
@@ -87,6 +90,14 @@ public interface RepositoryDao {
      * Removes all repos and their preferences.
      */
     public fun clearAll()
+
+    /**
+     * Force a checkpoint on the SQLite WAL such that the file size gets reduced.
+     * Blocks until concurrent reads have finished.
+     * Useful to call after large inserts (repo update)
+     * @see <a href="https://www.sqlite.org/wal.html#avoiding_excessively_large_wal_files">https://www.sqlite.org/wal.html#avoiding_excessively_large_wal_files</a>
+     */
+    public fun walCheckpoint()
 }
 
 @Dao
@@ -527,4 +538,10 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("SELECT COUNT(*) FROM ${ReleaseChannel.TABLE}")
     fun countReleaseChannels(): Int
 
+    override fun walCheckpoint() {
+        rawCheckpoint(SimpleSQLiteQuery("pragma wal_checkpoint(truncate)"))
+    }
+
+    @RawQuery
+    fun rawCheckpoint(supportSQLiteQuery: SupportSQLiteQuery): Int
 }

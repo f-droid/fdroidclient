@@ -48,4 +48,5 @@ internal interface AppPrefsDaoInt : AppPrefsDao {
 
     @Insert(onConflict = REPLACE)
     override fun update(appPrefs: AppPrefs)
+
 }
