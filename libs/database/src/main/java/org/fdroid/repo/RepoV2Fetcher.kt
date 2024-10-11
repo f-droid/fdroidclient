@@ -7,7 +7,7 @@ import org.fdroid.download.DownloadRequest
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
 import org.fdroid.download.getDigestInputStream
-import org.fdroid.fdroid.DigestInputStream
+import org.fdroid.fdroid.getDigestHex
 import org.fdroid.index.IndexParser
 import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
@@ -18,6 +18,7 @@ import org.fdroid.index.v2.FileV2
 import org.fdroid.index.v2.IndexV2FullStreamProcessor
 import org.fdroid.index.v2.SIGNED_FILE_NAME
 import java.net.Proxy
+import java.security.DigestInputStream
 import java.security.MessageDigest
 
 internal class RepoV2Fetcher(
