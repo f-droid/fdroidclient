@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
+import android.content.pm.InstallSourceInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageInstaller;
 import android.net.Uri;
@@ -30,6 +31,7 @@ import org.fdroid.fdroid.net.DownloaderService;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
 
 public class SessionInstallManager extends BroadcastReceiver {
 
@@ -89,7 +91,26 @@ public class SessionInstallManager extends BroadcastReceiver {
                         session.fsync(outputStream);
                     }
                 }
-                session.commit(getInstallIntentSender(sessionId, app, apk, canonicalUri));
+                IntentSender sender = getInstallIntentSender(sessionId, app, apk, canonicalUri);
+                // wait for install constraints, if available on device SDK
+                if (Build.VERSION.SDK_INT >= 34) {
+                    // need to check if we are allowed to wait for install constraints
+                    InstallSourceInfo sourceInfo = context.getPackageManager().getInstallSourceInfo(app.packageName);
+                    if (context.getPackageName().equals(sourceInfo.getInstallingPackageName()) ||
+                            context.getPackageName().equals(sourceInfo.getUpdateOwnerPackageName())) {
+                        // we are allowed, so wait for constraints
+                        PackageInstaller.InstallConstraints constraints =
+                                new PackageInstaller.InstallConstraints.Builder()
+                                        .setAppNotForegroundRequired()
+                                        .setAppNotInteractingRequired().build();
+                        long timeout = TimeUnit.HOURS.toMillis(3);
+                        installer.commitSessionAfterInstallConstraintsAreMet(sessionId, sender, constraints, timeout);
+                    } else {
+                        session.commit(sender);
+                    }
+                } else {
+                    session.commit(sender);
+                }
             }
         } catch (Exception e) {
             Log.e(TAG, "I/O Error during install session: ", e);
