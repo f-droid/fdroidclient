@@ -10,9 +10,9 @@ import okhttp3.ConnectionSpec.Companion.MODERN_TLS
 import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
 import okhttp3.Dns
 import okhttp3.internal.tls.OkHostnameVerifier
-import org.fdroid.fdroid.DigestInputStream
 import java.io.InputStream
 import java.net.InetAddress
+import java.security.DigestInputStream
 import java.security.MessageDigest
 
 internal actual fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*> {

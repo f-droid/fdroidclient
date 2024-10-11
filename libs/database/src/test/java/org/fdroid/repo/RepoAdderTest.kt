@@ -34,7 +34,6 @@ import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
 import org.fdroid.download.NotFoundException
 import org.fdroid.download.getDigestInputStream
-import org.fdroid.fdroid.DigestInputStream
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.SigningException
@@ -55,6 +54,7 @@ import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
 import java.io.ByteArrayInputStream
 import java.io.IOException
+import java.security.DigestInputStream
 import java.security.MessageDigest
 import java.util.concurrent.Callable
 import kotlin.test.assertEquals
