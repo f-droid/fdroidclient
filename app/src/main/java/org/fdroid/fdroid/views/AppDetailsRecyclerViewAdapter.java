@@ -1077,8 +1077,7 @@ public class AppDetailsRecyclerViewAdapter
 
             // License link
             if (!TextUtils.isEmpty(app.license)) {
-                String firstLicense = app.license.split(",")[0];
-                String url = "https://spdx.org/licenses/" + firstLicense + ".html";
+                String url = "https://spdx.org/licenses/" + app.license + ".html";
                 if (uriIsSetAndCanBeOpened(url)) {
                     addLinkItemView(contentView, R.string.menu_license, R.drawable.ic_license, url, app.license);
                 }
