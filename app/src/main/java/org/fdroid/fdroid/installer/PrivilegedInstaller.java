@@ -35,7 +35,6 @@ import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
@@ -324,8 +323,7 @@ public class PrivilegedInstaller extends Installer {
                 try {
                     boolean hasPermissions = privService.hasPrivilegedPermissions();
                     if (!hasPermissions) {
-                        sendBroadcastInstall(canonicalUri, ACTION_INSTALL_INTERRUPTED,
-                                context.getString(R.string.system_install_denied_permissions));
+                        getFallbackInstaller().installPackageInternal(localApkUri, canonicalUri);
                         return;
                     }
 
@@ -370,8 +368,7 @@ public class PrivilegedInstaller extends Installer {
                 try {
                     boolean hasPermissions = privService.hasPrivilegedPermissions();
                     if (!hasPermissions) {
-                        sendBroadcastUninstall(ACTION_UNINSTALL_INTERRUPTED,
-                                context.getString(R.string.system_install_denied_permissions));
+                        getFallbackInstaller().uninstallPackage();
                         return;
                     }
 
@@ -391,6 +388,18 @@ public class PrivilegedInstaller extends Installer {
         serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
         context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
+    }
+
+    private Installer getFallbackInstaller() {
+        Log.e(TAG, "No permission to use priv-ext, falling back to other installer...");
+        Installer installer;
+        if (SessionInstallManager.isTargetSdkSupported(apk.targetSdkVersion)
+                && SessionInstallManager.canBeUsed(context)) {
+            installer = new SessionInstaller(context, app, apk);
+        } else {
+            installer = new DefaultInstaller(context, app, apk);
+        }
+        return installer;
     }
 
     @Override
