@@ -92,8 +92,8 @@ public class SessionInstallManager extends BroadcastReceiver {
                     }
                 }
                 IntentSender sender = getInstallIntentSender(sessionId, app, apk, canonicalUri);
-                // wait for install constraints, if available on device SDK
-                if (Build.VERSION.SDK_INT >= 34) {
+                // wait for install constraints, if available on device SDK and not us
+                if (Build.VERSION.SDK_INT >= 34 && !app.packageName.equals(context.getPackageName())) {
                     // need to check if we are allowed to wait for install constraints
                     InstallSourceInfo sourceInfo = context.getPackageManager().getInstallSourceInfo(app.packageName);
                     if (context.getPackageName().equals(sourceInfo.getInstallingPackageName()) ||
