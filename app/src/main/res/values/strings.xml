@@ -540,9 +540,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
-    <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension!
-        Please create a bug report!
-    </string>
 
     <string name="share_apk_error">Could not share app file</string>
 
