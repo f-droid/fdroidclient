@@ -182,7 +182,8 @@ internal interface RepositoryDaoInt : RepositoryDao {
         address: String,
         username: String? = null,
         password: String? = null,
-        certificate: String = "6789" // just used for testing
+        // just used for testing
+        certificate: String = "6789",
     ): Long {
         val repo = CoreRepository(
             name = mapOf("en-US" to address),
@@ -234,9 +235,11 @@ internal interface RepositoryDaoInt : RepositoryDao {
      * Returns a non-archive repository with the given [certificate], if it exists in the DB.
      */
     @Transaction
-    @Query("""SELECT * FROM ${CoreRepository.TABLE}
+    @Query(
+        """SELECT * FROM ${CoreRepository.TABLE}
         WHERE certificate = :certificate AND address NOT LIKE "%/archive" COLLATE NOCASE
-        LIMIT 1""")
+        LIMIT 1"""
+    )
     fun getRepository(certificate: String): Repository?
 
     @Transaction
@@ -261,9 +264,11 @@ internal interface RepositoryDaoInt : RepositoryDao {
     fun getRepositoryPreferences(repoId: Long): RepositoryPreferences?
 
     @RewriteQueriesToDropUnusedColumns
-    @Query("""SELECT * FROM ${Category.TABLE}
+    @Query(
+        """SELECT * FROM ${Category.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""")
+        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)"""
+    )
     override fun getLiveCategories(): LiveData<List<Category>>
 
     /**
@@ -365,16 +370,22 @@ internal interface RepositoryDaoInt : RepositoryDao {
     @Query("UPDATE ${AppPrefs.TABLE} SET preferredRepoId = NULL WHERE preferredRepoId = :repoId")
     fun resetPreferredRepoInAppPrefs(repoId: Long)
 
-    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET userMirrors = :mirrors
-        WHERE repoId = :repoId""")
+    @Query(
+        """UPDATE ${RepositoryPreferences.TABLE} SET userMirrors = :mirrors
+        WHERE repoId = :repoId"""
+    )
     override fun updateUserMirrors(repoId: Long, mirrors: List<String>)
 
-    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET username = :username, password = :password
-        WHERE repoId = :repoId""")
+    @Query(
+        """UPDATE ${RepositoryPreferences.TABLE} SET username = :username, password = :password
+        WHERE repoId = :repoId"""
+    )
     override fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
 
-    @Query("""UPDATE ${RepositoryPreferences.TABLE} SET disabledMirrors = :disabledMirrors
-        WHERE repoId = :repoId""")
+    @Query(
+        """UPDATE ${RepositoryPreferences.TABLE} SET disabledMirrors = :disabledMirrors
+        WHERE repoId = :repoId"""
+    )
     override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
 
     /**

@@ -3,12 +3,16 @@ buildscript {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.9.10"
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
-    }
+}
+plugins {
+    alias libs.plugins.android.application apply false
+    alias libs.plugins.jetbrains.kotlin.android apply false
+    alias libs.plugins.jetbrains.kotlin.multiplatform apply false
+    alias libs.plugins.jetbrains.kotlin.plugin.serialization apply false
+    alias libs.plugins.jetbrains.compose.compiler apply false
+    alias libs.plugins.jetbrains.dokka apply false
+    alias libs.plugins.jlleitschuh.ktlint apply false
+    alias libs.plugins.vanniktech.maven.publish apply false
 }
 allprojects {
     repositories {
@@ -20,5 +24,15 @@ allprojects {
         mavenPublish {
             sonatypeHost = "S01"
         }
+    }
+}
+subprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+    ktlint {
+        version = "1.3.1"
+        android = true
+        enableExperimentalRules = false
+        verbose = true
     }
 }

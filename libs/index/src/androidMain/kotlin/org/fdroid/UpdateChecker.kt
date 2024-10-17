@@ -99,7 +99,8 @@ public class UpdateChecker(
         versions.iterator().forEach versions@{ version ->
             // if the installed version has a known vulnerability, we return it as well
             if (includeKnownVulnerabilities &&
-                version.versionCode == installedVersionCode && version.hasKnownVulnerability
+                version.versionCode == installedVersionCode &&
+                version.hasKnownVulnerability
             ) return version
             // if version code is not higher than installed skip package as list is sorted
             if (version.versionCode <= installedVersionCode) return null

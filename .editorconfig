@@ -1,2 +1,26 @@
+root = true
+
+[*]
+insert_final_newline = true
+
 [*.{kt, kts}]
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
+#  Disable wildcard imports entirely
+ij_kotlin_name_count_to_use_star_import = 2147483647
+ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
+ij_kotlin_packages_to_use_import_on_demand = unset
 max_line_length = 100
+ktlint_code_style = android_studio
+ktlint_standard = enabled
+ktlint_experimental = disabled
+ktlint_standard_wrapping = disabled
+ktlint_standard_argument-list-wrapping = disabled
+ktlint_standard_import-ordering = disabled
+ktlint_standard_multiline-if-else = disabled
+ktlint_standard_trailing-comma-on-call-site = disabled
+ktlint_standard_trailing-comma-on-declaration-site = disabled
+ktlint_standard_no-blank-line-before-rbrace = disabled
+ktlint_standard_function-expression-body = disabled
+ktlint_standard_class-signature = disabled
+ktlint_standard_function-naming = disabled # for compose only
+ktlint_standard_function-signature = disabled

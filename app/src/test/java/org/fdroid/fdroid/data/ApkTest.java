@@ -34,9 +34,9 @@ public class ApkTest {
     @Before
     public final void setUp() {
         ShadowMimeTypeMap mimeTypeMap = Shadows.shadowOf(MimeTypeMap.getSingleton());
-        mimeTypeMap.addExtensionMimeTypMapping("apk", "application/vnd.android.package-archive");
-        mimeTypeMap.addExtensionMimeTypMapping("obf", "application/octet-stream");
-        mimeTypeMap.addExtensionMimeTypMapping("zip", PublicSourceDirProvider.SHARE_APK_MIME_TYPE);
+        mimeTypeMap.addExtensionMimeTypeMapping("apk", "application/vnd.android.package-archive");
+        mimeTypeMap.addExtensionMimeTypeMapping("obf", "application/octet-stream");
+        mimeTypeMap.addExtensionMimeTypeMapping("zip", PublicSourceDirProvider.SHARE_APK_MIME_TYPE);
         ShadowLog.stream = System.out;
     }
 

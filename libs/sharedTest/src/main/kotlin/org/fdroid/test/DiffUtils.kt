@@ -42,8 +42,9 @@ object DiffUtils {
      * Removes keys from a JSON object representing a [MetadataV2] which need special handling.
      */
     fun JsonObject.cleanMetadata(): JsonObject {
-        val keysToFilter = listOf("icon", "featureGraphic", "promoGraphic", "tvBanner",
-            "screenshots")
+        val keysToFilter = listOf(
+            "icon", "featureGraphic", "promoGraphic", "tvBanner", "screenshots",
+        )
         val newMap = filterKeys { it !in keysToFilter }
         return JsonObject(newMap)
     }

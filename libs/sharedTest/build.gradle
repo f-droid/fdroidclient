@@ -1,7 +1,6 @@
 plugins {
     id 'kotlin-android'
     id 'com.android.library'
-    id "org.jlleitschuh.gradle.ktlint" version "10.2.1"
 }
 
 kotlin {
@@ -15,7 +14,7 @@ java {
 // not really an Android library, but index is not publishing for JVM at the moment
 android {
     namespace 'org.fdroid.test'
-    compileSdk 34
+    compileSdk libs.versions.compileSdk.get().toInteger()
     defaultConfig {
         minSdkVersion 21
     }
@@ -25,9 +24,6 @@ dependencies {
     implementation project(":libs:download")
     implementation project(":libs:index")
 
-    implementation 'org.jetbrains.kotlin:kotlin-test'
-    // 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+    implementation libs.kotlin.test
+    implementation libs.kotlinx.serialization.json
 }
-
-apply from: "${rootProject.rootDir}/gradle/ktlint.gradle"

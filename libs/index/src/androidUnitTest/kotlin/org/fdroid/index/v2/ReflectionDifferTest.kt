@@ -8,7 +8,7 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonObject
 import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexParser.json
-import org.fdroid.index.assetPath
+import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.parseV2
 import org.fdroid.test.DiffUtils.clean
 import org.fdroid.test.DiffUtils.cleanMetadata
@@ -27,44 +27,44 @@ internal class ReflectionDifferTest {
 
     @Test
     fun testEmptyToMin() = testDiff(
-        diffPath = "$assetPath/diff-empty-min/23.json",
-        startPath = "$assetPath/index-empty-v2.json",
-        endPath = "$assetPath/index-min-v2.json",
+        diffPath = "$ASSET_PATH/diff-empty-min/23.json",
+        startPath = "$ASSET_PATH/index-empty-v2.json",
+        endPath = "$ASSET_PATH/index-min-v2.json",
     )
 
     @Test
     fun testEmptyToMid() = testDiff(
-        diffPath = "$assetPath/diff-empty-mid/23.json",
-        startPath = "$assetPath/index-empty-v2.json",
-        endPath = "$assetPath/index-mid-v2.json",
+        diffPath = "$ASSET_PATH/diff-empty-mid/23.json",
+        startPath = "$ASSET_PATH/index-empty-v2.json",
+        endPath = "$ASSET_PATH/index-mid-v2.json",
     )
 
     @Test
     fun testEmptyToMax() = testDiff(
-        diffPath = "$assetPath/diff-empty-max/23.json",
-        startPath = "$assetPath/index-empty-v2.json",
-        endPath = "$assetPath/index-max-v2.json",
+        diffPath = "$ASSET_PATH/diff-empty-max/23.json",
+        startPath = "$ASSET_PATH/index-empty-v2.json",
+        endPath = "$ASSET_PATH/index-max-v2.json",
     )
 
     @Test
     fun testMinToMid() = testDiff(
-        diffPath = "$assetPath/diff-empty-mid/42.json",
-        startPath = "$assetPath/index-min-v2.json",
-        endPath = "$assetPath/index-mid-v2.json",
+        diffPath = "$ASSET_PATH/diff-empty-mid/42.json",
+        startPath = "$ASSET_PATH/index-min-v2.json",
+        endPath = "$ASSET_PATH/index-mid-v2.json",
     )
 
     @Test
     fun testMinToMax() = testDiff(
-        diffPath = "$assetPath/diff-empty-max/42.json",
-        startPath = "$assetPath/index-min-v2.json",
-        endPath = "$assetPath/index-max-v2.json",
+        diffPath = "$ASSET_PATH/diff-empty-max/42.json",
+        startPath = "$ASSET_PATH/index-min-v2.json",
+        endPath = "$ASSET_PATH/index-max-v2.json",
     )
 
     @Test
     fun testMidToMax() = testDiff(
-        diffPath = "$assetPath/diff-empty-max/1337.json",
-        startPath = "$assetPath/index-mid-v2.json",
-        endPath = "$assetPath/index-max-v2.json",
+        diffPath = "$ASSET_PATH/diff-empty-max/1337.json",
+        startPath = "$ASSET_PATH/index-mid-v2.json",
+        endPath = "$ASSET_PATH/index-max-v2.json",
     )
 
     @Test

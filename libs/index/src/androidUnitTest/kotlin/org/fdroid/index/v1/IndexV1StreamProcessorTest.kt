@@ -1,7 +1,7 @@
 package org.fdroid.index.v1
 
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.assetPath
+import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.IndexV2
@@ -29,34 +29,43 @@ internal class IndexV1StreamProcessorTest {
 
     @Test
     fun testEmpty() {
-        testStreamProcessing("$assetPath/index-empty-v1.json", TestDataEmptyV2.index.v1compat())
+        testStreamProcessing("$ASSET_PATH/index-empty-v1.json", TestDataEmptyV2.index.v1compat())
     }
 
     @Test(expected = OldIndexException::class)
     fun testEmptyEqualTimestamp() {
-        testStreamProcessing("$assetPath/index-empty-v1.json",
-            TestDataEmptyV2.index.v1compat(), TestDataEmptyV2.index.repo.timestamp)
+        testStreamProcessing(
+            "$ASSET_PATH/index-empty-v1.json",
+            TestDataEmptyV2.index.v1compat(),
+            TestDataEmptyV2.index.repo.timestamp,
+        )
     }
 
     @Test(expected = OldIndexException::class)
     fun testEmptyHigherTimestamp() {
-        testStreamProcessing("$assetPath/index-empty-v1.json",
-            TestDataEmptyV2.index.v1compat(), TestDataEmptyV2.index.repo.timestamp + 1)
+        testStreamProcessing(
+            "$ASSET_PATH/index-empty-v1.json",
+            TestDataEmptyV2.index.v1compat(),
+            TestDataEmptyV2.index.repo.timestamp + 1,
+        )
     }
 
     @Test
     fun testMin() {
-        testStreamProcessing("$assetPath/index-min-v1.json", TestDataMinV2.index.v1compat())
+        testStreamProcessing(
+            "$ASSET_PATH/index-min-v1.json",
+            TestDataMinV2.index.v1compat(),
+        )
     }
 
     @Test
     fun testMid() {
-        testStreamProcessing("$assetPath/index-mid-v1.json", TestDataMidV2.indexCompat)
+        testStreamProcessing("$ASSET_PATH/index-mid-v1.json", TestDataMidV2.indexCompat)
     }
 
     @Test
     fun testMax() {
-        testStreamProcessing("$assetPath/index-max-v1.json", TestDataMaxV2.indexCompat)
+        testStreamProcessing("$ASSET_PATH/index-max-v1.json", TestDataMaxV2.indexCompat)
     }
 
     @Test
@@ -73,16 +82,20 @@ internal class IndexV1StreamProcessorTest {
 
         // empty repo dict
         assertFailsWith<SerializationException> {
-            testStreamError("""{
+            testStreamError(
+                """{
                 "repo": {}
-            }""".trimIndent())
+            }""".trimIndent()
+            )
         }.also { assertContains(it.message!!, "timestamp") }
 
         // timestamp not a number
         assertFailsWith<SerializationException> {
-            testStreamError("""{
+            testStreamError(
+                """{
                 "repo": { "timestamp": "string" }
-            }""".trimIndent())
+            }""".trimIndent()
+            )
         }.also { assertContains(it.message!!, "numeric literal") }
 
         // remember valid repo for further tests
@@ -99,21 +112,25 @@ internal class IndexV1StreamProcessorTest {
 
         // apps is dict
         assertFailsWith<SerializationException> {
-            testStreamError("""{
+            testStreamError(
+                """{
                 $validRepo,
                 "requests": {"install": [], "uninstall": []},
                 "apps": {}
-            }""".trimIndent())
+            }""".trimIndent()
+            )
         }.also { assertContains(it.message!!, "apps") }
 
         // packages is list
         assertFailsWith<SerializationException> {
-            testStreamError("""{
+            testStreamError(
+                """{
                 $validRepo,
                 "requests": {"install": [], "uninstall": []},
                 "apps": [],
                 "packages": []
-            }""".trimIndent())
+            }""".trimIndent()
+            )
         }.also { assertContains(it.message!!, "packages") }
 
     }

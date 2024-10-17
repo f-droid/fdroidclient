@@ -433,7 +433,8 @@ internal class RepoAdderTest {
         coEvery {
             httpManager.getDigestInputStream(match {
                 it.indexFile.name == "../index-min-v2.json" &&
-                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == urlTrimmed
+                    it.mirrors.size == 1 &&
+                    it.mirrors[0].baseUrl == urlTrimmed
             })
         } returns indexStream
         every {
@@ -550,7 +551,8 @@ internal class RepoAdderTest {
         coEvery {
             httpManager.getDigestInputStream(match {
                 it.indexFile.name == "../index-min-v2.json" &&
-                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == repoAddress
+                    it.mirrors.size == 1 &&
+                    it.mirrors[0].baseUrl == repoAddress
             })
         } returns indexStream
         every {
@@ -610,7 +612,8 @@ internal class RepoAdderTest {
         coEvery {
             httpManager.getDigestInputStream(match {
                 it.indexFile.name == "/index-v2.json" &&
-                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == "https://example.org/repo"
+                    it.mirrors.size == 1 &&
+                    it.mirrors[0].baseUrl == "https://example.org/repo"
             })
         } returns indexStream
         every {
@@ -776,7 +779,8 @@ internal class RepoAdderTest {
         coEvery {
             httpManager.getDigestInputStream(match {
                 it.indexFile.name == "../index-min-v2.json" &&
-                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == urlTrimmed
+                    it.mirrors.size == 1 &&
+                    it.mirrors[0].baseUrl == urlTrimmed
             })
         } returns indexStream
         every {
@@ -803,7 +807,8 @@ internal class RepoAdderTest {
                 it.address == TestDataMinV2.repo.address &&
                     it.formatVersion == IndexFormatVersion.TWO &&
                     it.name.getBestLocale(localeList) == repoName &&
-                    it.username == username && it.password == password // this is the important bit
+                    it.username == username &&
+                    it.password == password // this is the important bit
             })
         } returns 42L
         every { repoDao.updateUserMirrors(42L, listOf(urlTrimmed)) } just Runs
@@ -850,7 +855,8 @@ internal class RepoAdderTest {
         coEvery {
             httpManager.getDigestInputStream(match {
                 it.indexFile.name == "../index-min-v2.json" &&
-                    it.mirrors.size == 1 && it.mirrors[0].baseUrl == urlTrimmed
+                    it.mirrors.size == 1 &&
+                    it.mirrors[0].baseUrl == urlTrimmed
             })
         } returns indexStream
         every {
@@ -895,7 +901,7 @@ internal class RepoAdderTest {
             val state3 = awaitItem()
             assertIs<Fetching>(state3)
             assertEquals(TestDataMinV2.packages.size, state3.apps.size)
-            assertEquals(TestDataMinV2.packageName, state3.apps[0].packageName)
+            assertEquals(TestDataMinV2.PACKAGE_NAME, state3.apps[0].packageName)
             assertFalse(state3.done)
 
             // final result

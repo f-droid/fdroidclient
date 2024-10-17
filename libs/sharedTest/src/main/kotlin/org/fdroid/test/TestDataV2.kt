@@ -127,11 +127,11 @@ object TestDataMinV2 {
         description = mapOf(LOCALE to "This is a repo with minimal data."),
     )
 
-    const val packageName = "org.fdroid.min1"
+    const val PACKAGE_NAME = "org.fdroid.min1"
     val version = PackageVersionV2(
         added = 0,
         file = FileV1(
-            name = "/${packageName}_23.apk",
+            name = "/${PACKAGE_NAME}_23.apk",
             sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
             size = 1337,
         ),
@@ -150,7 +150,7 @@ object TestDataMinV2 {
             version.file.sha256 to version,
         ),
     )
-    val packages = mapOf(packageName to app)
+    val packages = mapOf(PACKAGE_NAME to app)
 
     val index = IndexV2(
         repo = repo,
@@ -206,17 +206,17 @@ object TestDataMidV2 {
     )
     val repoCompat = repo.v1compat()
 
-    const val packageName1 = TestDataMinV1.packageName
-    const val packageName2 = "org.fdroid.fdroid"
+    const val PACKAGE_NAME_1 = TestDataMinV1.PACKAGE_NAME
+    const val PACKAGE_NAME_2 = "org.fdroid.fdroid"
     val version1_1 = PackageVersionV2(
         added = 2342,
         file = FileV1(
-            name = "/${packageName1}_23_2.apk",
+            name = "/${PACKAGE_NAME_1}_23_2.apk",
             sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
             size = 1338,
         ),
         src = FileV2(
-            name = "/${packageName1}_23_2.zip",
+            name = "/${PACKAGE_NAME_1}_23_2.zip",
             sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
             size = 1338,
         ),
@@ -233,7 +233,7 @@ object TestDataMidV2 {
     val version1_2 = PackageVersionV2(
         added = 0,
         file = FileV1(
-            name = "/${packageName1}_42.apk",
+            name = "/${PACKAGE_NAME_1}_42.apk",
             sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
             size = 1337,
         ),
@@ -253,7 +253,7 @@ object TestDataMidV2 {
             ),
         ),
         src = FileV2(
-            name = "/${packageName1}_42.zip",
+            name = "/${PACKAGE_NAME_1}_42.zip",
             sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
             size = 1338,
         ),
@@ -687,7 +687,7 @@ object TestDataMidV2 {
             version2_5.file.sha256 to version2_5Compat,
         ),
     )
-    val packages = mapOf(packageName1 to app1, packageName2 to app2)
+    val packages = mapOf(PACKAGE_NAME_1 to app1, PACKAGE_NAME_2 to app2)
 
     val index = IndexV2(
         repo = repo,
@@ -696,8 +696,8 @@ object TestDataMidV2 {
     val indexCompat = index.copy(
         repo = repoCompat,
         packages = mapOf(
-            packageName1 to app1Compat,
-            packageName2 to app2Compat,
+            PACKAGE_NAME_1 to app1Compat,
+            PACKAGE_NAME_2 to app2Compat,
         ),
     )
 }
@@ -813,9 +813,9 @@ object TestDataMaxV2 {
         ),
     )
 
-    const val packageName1 = TestDataMidV2.packageName1
-    const val packageName2 = TestDataMidV2.packageName2
-    const val packageName3 = "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moo" +
+    const val PACKAGE_NAME_1 = TestDataMidV2.PACKAGE_NAME_1
+    const val PACKAGE_NAME_2 = TestDataMidV2.PACKAGE_NAME_2
+    const val PACKAGE_NAME_3 = "Haoheiseeshai2que2Che0ooSa6aikeemoo2ap9Aequoh4ju5chooYuPhiev8moo" +
         "dahlonu2oht5Eikahvushapeum5aefo6xig4aghahyaaNuezoo4eexee1Goo5Ung" +
         "ohGha6quaeghe8uCh9iex9Oowa9aiyohzoo2ij5miifiegaeth8nie9jae6raeph" +
         "oowishoor1Ien5vahGhahm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y"
@@ -1262,16 +1262,16 @@ object TestDataMaxV2 {
     val index = IndexV2(
         repo = repo,
         packages = mapOf(
-            TestDataMidV2.packageName1 to TestDataMidV2.app1,
-            TestDataMidV2.packageName2 to app2,
-            packageName3 to app3,
+            TestDataMidV2.PACKAGE_NAME_1 to TestDataMidV2.app1,
+            TestDataMidV2.PACKAGE_NAME_2 to app2,
+            PACKAGE_NAME_3 to app3,
         ),
     )
     val indexCompat = index.v1compat().copy(
         packages = mapOf(
-            TestDataMidV2.packageName1 to TestDataMidV2.app1Compat,
-            TestDataMidV2.packageName2 to app2Compat,
-            packageName3 to app3Compat,
+            TestDataMidV2.PACKAGE_NAME_1 to TestDataMidV2.app1Compat,
+            TestDataMidV2.PACKAGE_NAME_2 to app2Compat,
+            PACKAGE_NAME_3 to app3Compat,
         ),
     )
 }

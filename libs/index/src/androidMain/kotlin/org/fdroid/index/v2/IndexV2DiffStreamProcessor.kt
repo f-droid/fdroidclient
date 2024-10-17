@@ -49,11 +49,13 @@ public class IndexV2DiffStreamProcessor(
                     val index = decoder.decodeElementIndex(descriptor)
                     if (index == packagesIndex) diffPackages(decoder, index)
                 }
+
                 packagesIndex -> {
                     diffPackages(decoder, startIndex)
                     val index = decoder.decodeElementIndex(descriptor)
                     if (index == repoIndex) diffRepo(version, decoder, index)
                 }
+
                 else -> error("Unexpected startIndex: $startIndex")
             }
             var currentIndex = 0
@@ -89,7 +91,9 @@ public class IndexV2DiffStreamProcessor(
             val packageName = decoder.decodeStringElement(descriptor, index)
             decoder.decodeElementIndex(descriptor)
             val packageV2 = decoder.decodeSerializableElement(
-                descriptor, index + 1, JsonElement.serializer()
+                descriptor = descriptor,
+                index = index + 1,
+                deserializer = JsonElement.serializer(),
             )
             if (packageV2 is JsonNull) {
                 // delete app and existing metadata

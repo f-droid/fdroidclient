@@ -88,7 +88,9 @@ public class IndexV2FullStreamProcessor(
             val packageName = decoder.decodeStringElement(descriptor, index)
             decoder.decodeElementIndex(descriptor)
             val packageV2 = decoder.decodeSerializableElement(
-                descriptor, index + 1, PackageV2.serializer()
+                descriptor = descriptor,
+                index = index + 1,
+                deserializer = PackageV2.serializer(),
             )
             indexStreamReceiver.receive(packageName, packageV2)
         }

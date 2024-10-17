@@ -59,8 +59,10 @@ class IpfsGatewaySettingsActivity : AppCompatActivity() {
 
         setContent {
             FDroidContent {
-                IpfsGatewaySettingsScreen(prefs = prefs,
-                    onBackClicked = { onBackPressedDispatcher.onBackPressed() })
+                IpfsGatewaySettingsScreen(
+                    prefs = prefs,
+                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
+                )
             }
         }
     }
@@ -95,13 +97,16 @@ fun IpfsGatewaySettingsScreen(
         floatingActionButton = {
             // it doesn't seam to be supported to disable FABs, so just hide it for now.
             if (ipfsEnabled) {
-                FloatingActionButton(onClick = {
-                    context.startActivity(Intent(context, IpfsGatewayAddActivity::class.java))
-                }) {
+                FloatingActionButton(
+                    onClick = {
+                        context.startActivity(Intent(context, IpfsGatewayAddActivity::class.java))
+                    },
+                ) {
                     Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
                 }
             }
-        }) { paddingValues ->
+        },
+    ) { paddingValues ->
         Box(
             modifier = Modifier
                 .padding(paddingValues)
@@ -219,7 +224,9 @@ fun UserGatewaysSettings(
 
                         userGateways = newGateways
                         prefs.ipfsGwUserList = newGateways
-                    }, enabled = ipfsEnabled, modifier = Modifier.align(Alignment.CenterVertically)
+                    },
+                    enabled = ipfsEnabled,
+                    modifier = Modifier.align(Alignment.CenterVertically),
                 ) {
                     Icon(
                         Icons.Default.DeleteForever,
@@ -234,7 +241,6 @@ fun UserGatewaysSettings(
 @Composable
 @Preview
 fun IpfsGatewaySettingsScreenPreview() {
-
     val prefs = object : IPreferencesIpfs {
         override fun isIpfsEnabled(): Boolean = true
         override fun setIpfsEnabled(enabled: Boolean) = throw NotImplementedError()

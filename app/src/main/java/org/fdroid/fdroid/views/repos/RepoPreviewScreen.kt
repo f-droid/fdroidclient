@@ -121,14 +121,18 @@ fun RepoPreviewHeader(
     val buttonAction: () -> Unit = when (val res = state.fetchResult) {
         is IsNewRepository, is IsNewRepoAndNewMirror, is IsNewMirror -> onAddRepo
         // unfortunately we need to duplicate these functions
-        is IsExistingRepository -> { ->
-            val repoId = res.existingRepoId
-            RepoDetailsActivity.launch(context, repoId)
+        is IsExistingRepository -> {
+            {
+                val repoId = res.existingRepoId
+                RepoDetailsActivity.launch(context, repoId)
+            }
         }
 
-        is IsExistingMirror -> { ->
-            val repoId = res.existingRepoId
-            RepoDetailsActivity.launch(context, repoId)
+        is IsExistingMirror -> {
+            {
+                val repoId = res.existingRepoId
+                RepoDetailsActivity.launch(context, repoId)
+            }
         }
 
         else -> error("Unexpected fetch state: ${state.fetchResult}")

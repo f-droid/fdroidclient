@@ -62,7 +62,8 @@ object ComposeUtils {
                     // set caption style to match MDC
                     caption = it.caption.copy(
                         color = colorResource(id = R.color.fdroid_caption),
-                        fontSize = 12.sp)
+                        fontSize = 12.sp,
+                    )
                 )
             } ?: MaterialTheme.typography,
             shapes = shapes ?: MaterialTheme.shapes

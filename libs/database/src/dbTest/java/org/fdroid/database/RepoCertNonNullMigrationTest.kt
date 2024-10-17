@@ -41,7 +41,8 @@ internal class RepoCertNonNullMigrationTest {
                     put("address", "https://example.org/repo")
                     put("certificate", "0123")
                     put("timestamp", -1)
-                })
+                },
+            )
             db.insert(
                 RepositoryPreferences.TABLE,
                 SQLiteDatabase.CONFLICT_FAIL,
@@ -49,7 +50,8 @@ internal class RepoCertNonNullMigrationTest {
                     put("repoId", repoId1)
                     put("enabled", true)
                     put("weight", Long.MAX_VALUE)
-                })
+                },
+            )
             val repoId2 = db.insert(
                 CoreRepository.TABLE,
                 SQLiteDatabase.CONFLICT_FAIL,
@@ -58,7 +60,8 @@ internal class RepoCertNonNullMigrationTest {
                     put("description", localizedTextV2toString(mapOf("en-US" to "no cert desc")))
                     put("address", "https://example.com/repo")
                     put("timestamp", -1)
-                })
+                },
+            )
             db.insert(
                 RepositoryPreferences.TABLE,
                 SQLiteDatabase.CONFLICT_FAIL,
@@ -66,7 +69,8 @@ internal class RepoCertNonNullMigrationTest {
                     put("repoId", repoId2)
                     put("enabled", true)
                     put("weight", Long.MAX_VALUE - 2)
-                })
+                },
+            )
         }
 
         // Re-open the database with version 2, auto-migrations are applied automatically

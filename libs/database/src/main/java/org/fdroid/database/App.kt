@@ -186,12 +186,14 @@ public data class App internal constructor(
         localizedFileLists?.iterator()?.forEach { file ->
             if (file.repoId != metadata.repoId || file.type != type) return@forEach
             val list = map.getOrPut(file.locale) { ArrayList() } as ArrayList
-            list.add(FileV2(
-                name = file.name,
-                sha256 = file.sha256,
-                size = file.size,
-                ipfsCidV1 = file.ipfsCidV1,
-            ))
+            list.add(
+                FileV2(
+                    name = file.name,
+                    sha256 = file.sha256,
+                    size = file.size,
+                    ipfsCidV1 = file.ipfsCidV1,
+                )
+            )
         }
         return map.ifEmpty { null }
     }
@@ -418,8 +420,10 @@ internal fun List<IFile>.toLocalizedFileV2(): LocalizedFileV2? = associate { fil
 // We can't restrict this query further (e.g. only from enabled repos or max weight),
 // because we are using this via @Relation on packageName for specific repos.
 // When filtering the result for only the repoId we are interested in, we'd get no icons.
-@DatabaseView(viewName = LocalizedIcon.TABLE,
-    value = "SELECT * FROM ${LocalizedFile.TABLE} WHERE type='icon'")
+@DatabaseView(
+    viewName = LocalizedIcon.TABLE,
+    value = "SELECT * FROM ${LocalizedFile.TABLE} WHERE type='icon'",
+)
 internal data class LocalizedIcon(
     val repoId: Long,
     val packageName: String,

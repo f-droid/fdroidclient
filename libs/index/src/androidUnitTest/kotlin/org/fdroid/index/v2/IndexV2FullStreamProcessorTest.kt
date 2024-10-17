@@ -2,7 +2,7 @@ package org.fdroid.index.v2
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.assetPath
+import org.fdroid.index.ASSET_PATH
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
@@ -27,27 +27,27 @@ internal class IndexV2FullStreamProcessorTest {
 
     @Test
     fun testEmpty() {
-        testStreamProcessing("$assetPath/index-empty-v2.json", TestDataEmptyV2.index, 0)
+        testStreamProcessing("$ASSET_PATH/index-empty-v2.json", TestDataEmptyV2.index, 0)
     }
 
     @Test
     fun testMin() {
-        testStreamProcessing("$assetPath/index-min-v2.json", TestDataMinV2.index, 1)
+        testStreamProcessing("$ASSET_PATH/index-min-v2.json", TestDataMinV2.index, 1)
     }
 
     @Test
     fun testMinReordered() {
-        testStreamProcessing("$assetPath/index-min-reordered-v2.json", TestDataMinV2.index, 1)
+        testStreamProcessing("$ASSET_PATH/index-min-reordered-v2.json", TestDataMinV2.index, 1)
     }
 
     @Test
     fun testMid() {
-        testStreamProcessing("$assetPath/index-mid-v2.json", TestDataMidV2.index, 2)
+        testStreamProcessing("$ASSET_PATH/index-mid-v2.json", TestDataMidV2.index, 2)
     }
 
     @Test
     fun testMax() {
-        testStreamProcessing("$assetPath/index-max-v2.json", TestDataMaxV2.index, 3)
+        testStreamProcessing("$ASSET_PATH/index-max-v2.json", TestDataMaxV2.index, 3)
     }
 
     @Test

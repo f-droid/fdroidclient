@@ -147,9 +147,11 @@ internal fun ManifestV2.toManifest() = AppManifest(
     features = features.map { it.name },
 )
 
-@DatabaseView(viewName = HighestVersion.TABLE,
+@DatabaseView(
+    viewName = HighestVersion.TABLE,
     value = """SELECT repoId, packageName, antiFeatures FROM ${Version.TABLE}
-    GROUP BY repoId, packageName HAVING MAX(manifest_versionCode)""")
+    GROUP BY repoId, packageName HAVING MAX(manifest_versionCode)""",
+)
 internal class HighestVersion(
     val repoId: Long,
     val packageName: String,
@@ -230,7 +232,9 @@ private fun <T> VersionedString.map(
     wantedType: VersionedStringType,
     factory: () -> T,
 ): T? {
-    return if (repoId != v.repoId || packageName != v.packageName || versionId != v.versionId ||
+    return if (repoId != v.repoId ||
+        packageName != v.packageName ||
+        versionId != v.versionId ||
         type != wantedType
     ) null
     else factory()

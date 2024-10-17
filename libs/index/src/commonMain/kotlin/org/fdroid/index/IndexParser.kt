@@ -9,7 +9,7 @@ import org.fdroid.index.v2.IndexV2
 public object IndexParser {
 
     @Volatile
-    private var JSON: Json? = null
+    private var jsonInstance: Json? = null
 
     /**
      * Initializing [Json] is expensive, so using this method is preferable as it keeps returning
@@ -18,7 +18,7 @@ public object IndexParser {
     public val json: Json
         @JvmStatic
         get() {
-            return JSON ?: synchronized(this) {
+            return jsonInstance ?: synchronized(this) {
                 Json {
                     ignoreUnknownKeys = true
                 }

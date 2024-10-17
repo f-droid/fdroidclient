@@ -22,6 +22,8 @@ import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import org.fdroid.fdroid.BuildConfig;
 
 import java.io.BufferedReader;
@@ -40,8 +42,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
-
-import javax.annotation.Nullable;
 
 /**
  * WifiApControl provides control over Wi-Fi APs using the singleton pattern.
