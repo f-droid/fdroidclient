@@ -1077,7 +1077,12 @@ public class AppDetailsRecyclerViewAdapter
 
             // License link
             if (!TextUtils.isEmpty(app.license)) {
-                String url = "https://spdx.org/licenses/" + app.license + ".html";
+                String url;
+                if (app.license.equals("PublicDomain")) {
+                    url = "https://en.wikipedia.org/wiki/Public_domain";
+                } else {
+                    url = "https://spdx.org/licenses/" + app.license + ".html";
+                }
                 if (uriIsSetAndCanBeOpened(url)) {
                     addLinkItemView(contentView, R.string.menu_license, R.drawable.ic_license, url, app.license);
                 }
