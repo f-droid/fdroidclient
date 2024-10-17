@@ -251,6 +251,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_open">Open</string>
     <!-- This should be exactly the same as the standard word for Share throughout Android and apps -->
     <string name="menu_share">Share</string>
+    <string name="menu_share_apk">Share APK file</string>
     <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
     <string name="menu_install">Install</string>
     <!-- This is a button label, it must be the right size, or the layout gets messed up. It should ideally be 10-20 characters. -->
