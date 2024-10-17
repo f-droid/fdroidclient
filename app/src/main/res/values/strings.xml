@@ -451,6 +451,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="no_permissions">No permissions</string>
     <!-- Should be exactly the same as the standard word for Permissions throughout Android and apps -->
     <string name="permissions">Permissions</string>
+    <string name="apk_permissions_mismatch">App has unexpected permission: %s</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
     <string name="theme">Theme</string>
     <string name="use_pure_black_dark_theme">Use pure black background in dark theme</string>

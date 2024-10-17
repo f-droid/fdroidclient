@@ -97,7 +97,7 @@ public class ApkVerifierTest {
         assertFalse(ApkVerifier.requestedPermissionsEqual(null, perms));
     }
 
-    @Test(expected = ApkVerifier.ApkPermissionUnequalException.class)
+    @Test
     public void testWithMinMax()
             throws ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
         Apk apk = new Apk();
@@ -117,6 +117,7 @@ public class ApkVerifierTest {
         ApkVerifier apkVerifier = new ApkVerifier(instrumentation.getContext(), uri, apk);
         apkVerifier.verifyApk();
 
+        // still not throwing, because now we only throw when minMaxApk has more permissions than expected
         permissionsList.add("ADDITIONAL_PERMISSION");
         apk.requestedPermissions = permissionsList.toArray(new String[0]);
         apkVerifier.verifyApk();
@@ -167,7 +168,7 @@ public class ApkVerifierTest {
      * Additional permissions are okay. The user is simply
      * warned about a permission that is not used inside the apk
      */
-    @Test(expected = ApkVerifier.ApkPermissionUnequalException.class)
+    @Test
     public void testAdditionalPermission()
             throws ApkVerifier.ApkPermissionUnequalException, ApkVerifier.ApkVerificationException {
         Apk apk = new Apk();
