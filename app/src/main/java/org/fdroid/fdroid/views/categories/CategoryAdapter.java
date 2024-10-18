@@ -23,7 +23,7 @@ public class CategoryAdapter extends ListAdapter<CategoryItem, CategoryControlle
     private final HashMap<Category, LiveData<List<AppOverviewItem>>> liveData = new HashMap<>();
 
     public CategoryAdapter(AppCompatActivity activity, FDroidDatabase db) {
-        super(new DiffUtil.ItemCallback<CategoryItem>() {
+        super(new DiffUtil.ItemCallback<>() {
             @Override
             public boolean areItemsTheSame(@NonNull CategoryItem oldItem, @NonNull CategoryItem newItem) {
                 return oldItem.category.equals(newItem.category);
