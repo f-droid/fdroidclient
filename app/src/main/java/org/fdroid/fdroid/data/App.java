@@ -354,7 +354,7 @@ public class App implements Comparable<App>, Parcelable {
         Repository repo = FDroidApp.getRepoManager(context).getRepository(repoId);
         if (repo == null || repo.getWebBaseUrl() == null) return null;
         return Uri.parse(repo.getWebBaseUrl()).buildUpon()
-                .path(packageName)
+                .appendPath(packageName)
                 .build();
     }
 
