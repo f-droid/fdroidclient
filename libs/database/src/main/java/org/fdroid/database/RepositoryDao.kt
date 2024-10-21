@@ -18,6 +18,7 @@ import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
 import org.fdroid.database.DbDiffUtils.diffAndUpdateTable
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser.json
+import org.fdroid.index.v1.IndexV1Updater
 import org.fdroid.index.v2.IndexV2Updater
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
@@ -420,7 +421,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
         // move repoToReorder in place of repoTarget
         setWeight(repoToReorder.repoId, repoTarget.weight)
         // also adjust weight of archive repo, if it exists
-        val archiveRepoId = repoToReorder.certificate?.let { getArchiveRepoId(it) }
+        val archiveRepoId = getArchiveRepoId(repoToReorder.certificate)
         if (archiveRepoId != null) {
             setWeight(archiveRepoId, repoTarget.weight - 1)
         }
@@ -513,6 +514,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
      */
     @Query("UPDATE ${CoreRepository.TABLE} SET timestamp = -1")
     fun resetTimestamps()
+
+    /**
+     * Resets ETags for *all* repos in the database.
+     * This will use cause a full index update when updating the repository via [IndexV1Updater].
+     */
+    @Query("UPDATE ${RepositoryPreferences.TABLE} SET lastETag = NULL")
+    fun resetETags()
 
     /**
      * Use when replacing an existing repo with a full index.
