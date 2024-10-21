@@ -684,7 +684,8 @@ internal interface AppDaoInt : AppDao {
     /**
      * Removes all apps and associated data such as versions from the database.
      * Careful: Doing this without other measures such as calling [RepositoryDaoInt.resetTimestamps]
-     * will cause application of diffs to fail.
+     * and [RepositoryDaoInt.resetETags] will cause things to break
+     * e.g. application of diffs to fail.
      */
     @Query("DELETE FROM ${AppMetadata.TABLE}")
     fun clearAll()
