@@ -516,14 +516,16 @@ internal class AppListItemsTest : AppTest() {
             assertEquals(0, apps.size)
         }
 
-        // we'll add app1 as a variant of app2, so it should be in category B as well
+        // we'll add app1 as a variant of app2, but its repo has lower weight, so no effect
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName2, app1, locales)
         listOf(
             appDao.getAppListItemsByName("B").getOrFail(),
             appDao.getAppListItemsByLastUpdated("B").getOrFail(),
         ).forEach { apps ->
-            assertEquals(3, apps.size) // all apps are in B now
+            assertEquals(2, apps.size)
+            assertNotEquals(packageName2, apps[0].packageName)
+            assertNotEquals(packageName2, apps[1].packageName)
         }
     }
 
