@@ -79,6 +79,7 @@ internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Clos
         runInTransaction {
             getAppDao().clearAll()
             getRepositoryDao().resetTimestamps()
+            getRepositoryDao().resetETags()
         }
     }
 }
