@@ -25,11 +25,11 @@
     "mirrors": [
       {
         "url": "https://max-v1.com",
-        "location": "us"
+        "countryCode": "us"
       },
       {
         "url": "https://max-v1.org",
-        "location": "nl"
+        "countryCode": "nl"
       }
     ],
     "timestamp": 9223372036854775807,

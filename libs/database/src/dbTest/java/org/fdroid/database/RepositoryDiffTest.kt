@@ -7,6 +7,7 @@ import kotlinx.serialization.json.jsonObject
 import org.fdroid.database.TestUtils.assertRepoEquals
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
+import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
 import org.fdroid.test.DiffUtils.applyDiff
@@ -61,7 +62,8 @@ internal class RepositoryDiffTest : DbTest() {
         val updateTimestamp = Random.nextLong()
         val json = """
             {
-              "timestamp": $updateTimestamp
+              "timestamp": $updateTimestamp,
+              "unknown": "field"
             }""".trimIndent()
 
         // decode diff from JSON and update DB with it
@@ -94,6 +96,22 @@ internal class RepositoryDiffTest : DbTest() {
             }.toSet()
             assertEquals(expectedMirrors, repos[0].mirrors.toSet())
             assertRepoEquals(repo.copy(mirrors = updateMirrors), repos[0])
+        }
+    }
+
+    @Test
+    fun mirrorUnknownKeyDiff() {
+        val repo = getRandomRepo()
+        val json = """
+            {
+              "mirrors": [
+                { "url": "foo", "countryCode": "bar", "unknown": "doesntexist" }
+              ]
+            }""".trimIndent()
+        testDiff(repo, json) { repos ->
+            val expectedMirrors = setOf(Mirror(repos[0].repoId, "foo", "bar"))
+            assertEquals(expectedMirrors, repos[0].mirrors.toSet())
+            assertRepoEquals(repo.copy(mirrors = listOf(MirrorV2("foo", "bar"))), repos[0])
         }
     }
 
