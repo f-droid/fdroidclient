@@ -108,6 +108,7 @@ import info.guardianproject.netcipher.NetCipher;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.internal.functions.Functions;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import vendored.org.apache.commons.codec.binary.Hex;
 import vendored.org.apache.commons.codec.digest.DigestUtils;
@@ -829,7 +830,9 @@ public final class Utils {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable -> Log.e(TAG, "Error running off UiThread", throwable))
-                .subscribe(consumer::accept);
+                .subscribe(consumer::accept, e -> {
+                    throw e; // pass this through to ACRA
+                });
     }
 
     public static Disposable runOffUiThread(Runnable runnable) {
@@ -840,7 +843,9 @@ public final class Utils {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable -> Log.e(TAG, "Error running off UiThread", throwable))
-                .subscribe();
+                .subscribe(Functions.emptyConsumer(), e -> {
+                    throw e; // pass this through to ACRA
+                });
     }
 
     public static <T> void observeOnce(LiveData<T> liveData, LifecycleOwner lifecycleOwner, Consumer<T> consumer) {
