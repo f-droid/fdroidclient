@@ -10,6 +10,7 @@ import android.content.IntentSender;
 import android.content.pm.InstallSourceInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageInstaller;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -92,22 +93,15 @@ public class SessionInstallManager extends BroadcastReceiver {
                     }
                 }
                 IntentSender sender = getInstallIntentSender(sessionId, app, apk, canonicalUri);
-                // wait for install constraints, if available on device SDK and not us
-                if (Build.VERSION.SDK_INT >= 34 && !app.packageName.equals(context.getPackageName())) {
-                    // need to check if we are allowed to wait for install constraints
-                    InstallSourceInfo sourceInfo = context.getPackageManager().getInstallSourceInfo(app.packageName);
-                    if (context.getPackageName().equals(sourceInfo.getInstallingPackageName()) ||
-                            context.getPackageName().equals(sourceInfo.getUpdateOwnerPackageName())) {
-                        // we are allowed, so wait for constraints
-                        PackageInstaller.InstallConstraints constraints =
-                                new PackageInstaller.InstallConstraints.Builder()
-                                        .setAppNotForegroundRequired()
-                                        .setAppNotInteractingRequired().build();
-                        long timeout = TimeUnit.HOURS.toMillis(3);
-                        installer.commitSessionAfterInstallConstraintsAreMet(sessionId, sender, constraints, timeout);
-                    } else {
-                        session.commit(sender);
-                    }
+                // wait for install constraints, if they can be used
+                if (Build.VERSION.SDK_INT >= 34 && canUseInstallConstraints(app.packageName)) {
+                    // we are allowed, so wait for constraints
+                    PackageInstaller.InstallConstraints constraints =
+                            new PackageInstaller.InstallConstraints.Builder()
+                                    .setAppNotForegroundRequired()
+                                    .setAppNotInteractingRequired().build();
+                    long timeout = TimeUnit.HOURS.toMillis(3);
+                    installer.commitSessionAfterInstallConstraintsAreMet(sessionId, sender, constraints, timeout);
                 } else {
                     session.commit(sender);
                 }
@@ -141,6 +135,18 @@ public class SessionInstallManager extends BroadcastReceiver {
             params.setRequestUpdateOwnership(true);
         }
         return params;
+    }
+
+    private boolean canUseInstallConstraints(String packageName) {
+        String ourPackageName = context.getPackageName();
+        if (Build.VERSION.SDK_INT < 34 || packageName.equals(ourPackageName)) return false;
+        try {
+            InstallSourceInfo sourceInfo = context.getPackageManager().getInstallSourceInfo(packageName);
+            return ourPackageName.equals(sourceInfo.getInstallingPackageName()) ||
+                    ourPackageName.equals(sourceInfo.getUpdateOwnerPackageName());
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 
     @WorkerThread
