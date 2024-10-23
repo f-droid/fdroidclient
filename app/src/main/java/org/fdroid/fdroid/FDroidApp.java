@@ -363,6 +363,7 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         // force setting network state to ensure it is set before UpdateService checks it
         networkState = ConnectivityMonitorService.getNetworkState(this);
         ConnectivityMonitorService.registerAndStart(this);
+        Utils.debugLog(TAG, "RepoUpdateWorker.scheduleOrCancel()");
         RepoUpdateWorker.scheduleOrCancel(getApplicationContext());
 
         FDroidApp.initWifiSettings();
