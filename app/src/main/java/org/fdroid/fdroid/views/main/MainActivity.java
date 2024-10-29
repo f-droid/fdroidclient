@@ -57,7 +57,6 @@ import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 /**
  * Main view shown to users upon starting F-Droid.
@@ -141,8 +140,6 @@ public class MainActivity extends AppCompatActivity {
         updatesBadge = bottomNavigation.getOrCreateBadge(R.id.updates);
         updatesBadge.setVisible(false);
 
-        initialRepoUpdateIfRequired();
-
         AppUpdateStatusManager.getInstance(this).getNumUpdatableApps().observe(this, this::refreshUpdatesBadge);
 
         Intent intent = getIntent();
@@ -178,14 +175,6 @@ public class MainActivity extends AppCompatActivity {
             setSelectedMenuInNav(R.id.updates);
         } else if (EXTRA_VIEW_SETTINGS.equals(viewName)) {
             setSelectedMenuInNav(R.id.settings);
-        }
-    }
-
-    private void initialRepoUpdateIfRequired() {
-        if (Preferences.get().isIndexNeverUpdated() &&
-                !FDroidApp.getRepoUpdateManager(this).isUpdating().getValue()) {
-            Utils.debugLog(TAG, "We haven't done an update yet. Forcing repo update.");
-            RepoUpdateWorker.updateNow(this);
         }
     }
 

@@ -80,6 +80,7 @@ class RepoUpdateWorker(
             val doUpdateChecks = prefs.updateInterval != UPDATE_INTERVAL_DISABLED &&
                 !(prefs.overData == OVER_NETWORK_NEVER && prefs.overWifi == OVER_NETWORK_NEVER)
             if (doUpdateChecks) {
+                Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
                 val networkType = if (prefs.overData == OVER_NETWORK_ALWAYS &&
                     prefs.overWifi == OVER_NETWORK_ALWAYS
                 ) {
