@@ -224,8 +224,10 @@ public class SessionInstallManager extends BroadcastReceiver {
             String action = Installer.ACTION_INSTALL_USER_INTERACTION;
             Installer.sendBroadcastInstall(context, canonicalUri, action, app, apk, pendingIntent, null);
         } else {
+            // show no message when user actively aborted
+            String m = status == PackageInstaller.STATUS_FAILURE_ABORTED ? null : msg;
             String action = Installer.ACTION_INSTALL_INTERRUPTED;
-            Installer.sendBroadcastInstall(context, canonicalUri, action, app, apk, null, msg);
+            Installer.sendBroadcastInstall(context, canonicalUri, action, app, apk, null, m);
         }
     }
 
@@ -249,8 +251,10 @@ public class SessionInstallManager extends BroadcastReceiver {
             String action = Installer.ACTION_UNINSTALL_USER_INTERACTION;
             sendBroadcastUninstall(packageName, action, pendingIntent, null);
         } else {
+            // show no message when user actively aborted
+            String m = status == PackageInstaller.STATUS_FAILURE_ABORTED ? null : msg;
             String action = Installer.ACTION_UNINSTALL_INTERRUPTED;
-            sendBroadcastUninstall(packageName, action, null, msg);
+            sendBroadcastUninstall(packageName, action, null, m);
         }
     }
 
