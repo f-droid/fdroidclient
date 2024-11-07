@@ -86,6 +86,20 @@ internal class AppPrefsDaoTest : AppTest() {
             assertEquals(repoId2, preferredRepos[packageName3])
         }
 
+        // repo2 removes app3 (oh no!), so preferred repo should fall back to repo3 again
+        appDao.deleteAppMetadata(repoId2, packageName3)
+        appPrefsDao.getPreferredRepos(listOf(packageName3)).also { preferredRepos ->
+            assertEquals(1, preferredRepos.size)
+            assertEquals(repoId3, preferredRepos[packageName3])
+        }
+
+        // app3 prefers non-existing repo, so preferred repo should fall back to repo3 as well
+        appPrefsDao.update(AppPrefs(packageName3, preferredRepoId = 1337))
+        appPrefsDao.getPreferredRepos(listOf(packageName, packageName3)).also { preferredRepos ->
+            assertEquals(1, preferredRepos.size)
+            assertEquals(repoId3, preferredRepos[packageName3])
+        }
+
         // app3 moves back to preferring repo3 and query for non-existent package name as well
         appPrefsDao.update(AppPrefs(packageName3, preferredRepoId = repoId3))
         appPrefsDao.getPreferredRepos(listOf(packageName, packageName3)).also { preferredRepos ->

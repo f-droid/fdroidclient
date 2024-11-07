@@ -59,7 +59,9 @@ public data class AppPrefs(
 @DatabaseView("""SELECT packageName, repoId AS preferredRepoId FROM ${AppMetadata.TABLE}
     JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
     LEFT JOIN ${AppPrefs.TABLE} USING (packageName)
-    WHERE repoId = COALESCE(preferredRepoId, repoId) AND pref.enabled = 1
+    WHERE pref.enabled = 1 AND (repoId = COALESCE(preferredRepoId, repoId) OR
+      NOT EXISTS (SELECT 1 FROM AppMetadata WHERE repoId=AppPrefs.preferredRepoId AND packageName=AppPrefs.packageName)
+    )
     GROUP BY packageName HAVING MAX(pref.weight)""")
 internal class PreferredRepo(
     val packageName: String,
