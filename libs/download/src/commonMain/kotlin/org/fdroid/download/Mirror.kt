@@ -8,7 +8,7 @@ import mu.KotlinLogging
 
 public data class Mirror @JvmOverloads constructor(
     val baseUrl: String,
-    val location: String? = null,
+    val countryCode: String? = null,
     /**
      * If this is true, this as an IPFS HTTP gateway that only accepts CIDv1 and not regular paths.
      * So use this mirror only, if you have a CIDv1 available for supplying it to [getUrl].

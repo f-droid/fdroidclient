@@ -108,7 +108,7 @@ public typealias LocalizedFileListV2 = Map<String, List<FileV2>>
 @Serializable
 public data class MirrorV2(
     val url: String,
-    val location: String? = null,
+    val countryCode: String? = null,
 )
 
 @Serializable

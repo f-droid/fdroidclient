@@ -3,6 +3,7 @@ package org.fdroid.database
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
+import androidx.room.RenameColumn
 import androidx.room.migration.AutoMigrationSpec
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -132,5 +133,29 @@ internal val MIGRATION_5_6 = object : Migration(5, 6) {
             "tokenize=unicode61 \"remove_diacritics=0\", content=`AppMetadata`)")
         // rebuild the FTS table to populate it with the new tokenizer
         db.execSQL("INSERT INTO AppMetadataFts(AppMetadataFts) VALUES('rebuild')")
+    }
+}
+
+/**
+ * Somebody changed the initial IndexV2 definition of MirrorV2.location to MirrorV2.countryCode
+ * in fdroidserver and doesn't want to undo this rename.
+ * So now we need to handle this in the client to be in line with the index format produced.
+ */
+@RenameColumn(
+    tableName = Mirror.TABLE,
+    fromColumnName = "location",
+    toColumnName = "countryCode",
+)
+internal class CountryCodeMigration : AutoMigrationSpec {
+    override fun onPostMigrate(db: SupportSQLiteDatabase) {
+        // reset timestamps and etags so next repo updates pull full index, refresh all data
+        db.beginTransaction()
+        try {
+            db.execSQL("UPDATE ${CoreRepository.TABLE} SET timestamp = -1")
+            db.execSQL("UPDATE ${RepositoryPreferences.TABLE} SET lastETag = NULL")
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+        }
     }
 }

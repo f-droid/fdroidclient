@@ -232,7 +232,7 @@ public data class Repository internal constructor(
 internal data class Mirror(
     val repoId: Long,
     val url: String,
-    val location: String? = null,
+    val countryCode: String? = null,
 ) {
     internal companion object {
         const val TABLE = "Mirror"
@@ -240,14 +240,14 @@ internal data class Mirror(
 
     fun toDownloadMirror(): org.fdroid.download.Mirror = org.fdroid.download.Mirror(
         baseUrl = url,
-        location = location,
+        countryCode = countryCode,
     )
 }
 
 internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
     repoId = repoId,
     url = url,
-    location = location,
+    countryCode = countryCode,
 )
 
 /**
