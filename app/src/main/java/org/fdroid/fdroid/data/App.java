@@ -598,8 +598,7 @@ public class App implements Comparable<App>, Parcelable {
 
     @Nullable
     public String getOpenCollectiveUri() {
-        return TextUtils.isEmpty(openCollective) ? null : "https://opencollective.com/"
-                + openCollective + "/donate/";
+        return TextUtils.isEmpty(openCollective) ? null : "https://opencollective.com/" + openCollective + "/donate";
     }
 
     @Nullable
@@ -609,7 +608,7 @@ public class App implements Comparable<App>, Parcelable {
 
     @Nullable
     public String getLiberapayUri() {
-        return TextUtils.isEmpty(liberapay) ? null : "https://liberapay.com/" + liberapay;
+        return TextUtils.isEmpty(liberapay) ? null : "https://liberapay.com/" + liberapay + "/donate";
     }
 
     /**
