@@ -849,14 +849,14 @@ public class AppDetailsRecyclerViewAdapter
 
             donationOptionsLayout.removeAllViews();
 
-            // LiberaPay
-            if (uriIsSetAndCanBeOpened(app.getLiberapayUri())) {
-                addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
-            }
-
             // OpenCollective
             if (uriIsSetAndCanBeOpened(app.getOpenCollectiveUri())) {
                 addDonateOption(R.layout.donate_opencollective, app.getOpenCollectiveUri());
+            }
+
+            // LiberaPay
+            if (uriIsSetAndCanBeOpened(app.getLiberapayUri())) {
+                addDonateOption(R.layout.donate_liberapay, app.getLiberapayUri());
             }
 
             // Bitcoin
