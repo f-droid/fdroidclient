@@ -16,7 +16,7 @@ workflow:
 
 .base:
   tags:
-    - saas-linux-xlarge-amd64
+    - saas-linux-medium-amd64
   variables:
     JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
   before_script:
