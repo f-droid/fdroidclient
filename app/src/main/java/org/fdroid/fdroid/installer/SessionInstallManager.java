@@ -98,7 +98,7 @@ public class SessionInstallManager extends BroadcastReceiver {
                     // we are allowed, so wait for constraints
                     PackageInstaller.InstallConstraints constraints =
                             new PackageInstaller.InstallConstraints.Builder()
-                                    .setAppNotForegroundRequired()
+                                    .setAppNotTopVisibleRequired()
                                     .setAppNotInteractingRequired().build();
                     long timeout = TimeUnit.HOURS.toMillis(3);
                     installer.commitSessionAfterInstallConstraintsAreMet(sessionId, sender, constraints, timeout);
