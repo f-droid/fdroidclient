@@ -1,6 +1,5 @@
 package org.fdroid.download
 
-import io.ktor.client.network.sockets.SocketTimeoutException
 import io.ktor.client.plugins.ResponseException
 import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.HttpStatusCode.Companion.NotFound
@@ -30,20 +29,30 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
         request: suspend (mirror: Mirror, url: Url) -> T,
     ): T {
         val mirrors = if (downloadRequest.proxy == null) {
+            // keep ordered mirror list rather than reverting back to raw list from request
+            val orderedMirrors = orderMirrors(downloadRequest)
             // if we don't use a proxy, filter out onion mirrors (won't work without Orbot)
-            val orderedMirrors =
-                orderMirrors(downloadRequest).filter { mirror -> !mirror.isOnion() }
-            // if we only have onion mirrors, take what we have and expect errors
-            orderedMirrors.ifEmpty { downloadRequest.mirrors }
+            val filteredMirrors = orderedMirrors.filter { mirror -> !mirror.isOnion() }
+            if (filteredMirrors.isEmpty()) {
+                // if we only have onion mirrors, take what we have and expect errors
+                orderedMirrors
+            } else {
+                filteredMirrors
+            }
         } else {
             orderMirrors(downloadRequest)
         }
+
+        if (mirrors.isEmpty()) {
+            error("No valid mirrors were found. Check settings.")
+        }
+
         mirrors.forEachIndexed { index, mirror ->
             val ipfsCidV1 = downloadRequest.indexFile.ipfsCidV1
             val url = if (mirror.isIpfsGateway) {
                 if (ipfsCidV1 == null) {
                     val e = IOException("Got IPFS gateway without CID")
-                    throwOnLastMirror(e, index == mirrors.size - 1)
+                    handleException(e, mirror, index, mirrors.size)
                     return@forEachIndexed
                 } else mirror.getUrl(ipfsCidV1)
             } else {
@@ -57,20 +66,19 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
                 // don't try other mirrors if we got NotFount response and downloaded a repo
                 if (downloadRequest.tryFirstMirror != null && e.response.status == NotFound) throw e
                 // also throw if this is the last mirror to try, otherwise try next
-                throwOnLastMirror(e, index == mirrors.size - 1)
+                handleException(e, mirror, index, mirrors.size)
             } catch (e: IOException) {
-                throwOnLastMirror(e, index == mirrors.size - 1)
-            } catch (e: SocketTimeoutException) {
-                throwOnLastMirror(e, index == mirrors.size - 1)
+                handleException(e, mirror, index, mirrors.size)
             } catch (e: NoResumeException) {
                 // continue to next mirror, if we need to resume, but this one doesn't support it
-                throwOnLastMirror(e, index == mirrors.size - 1)
+                handleException(e, mirror, index, mirrors.size)
             }
         }
         error("Reached code that was thought to be unreachable.")
     }
 
-    private fun throwOnLastMirror(e: Exception, wasLastMirror: Boolean) {
+    open fun handleException(e: Exception, mirror: Mirror, mirrorIndex: Int, mirrorCount: Int) {
+        val wasLastMirror = mirrorIndex == mirrorCount - 1
         log.info {
             val info = if (e is ResponseException) e.response.status.toString()
             else e::class.simpleName ?: ""
@@ -96,4 +104,96 @@ internal class MirrorChooserRandom : MirrorChooserImpl() {
         }
     }
 
+}
+
+internal class MirrorChooserWithParameters(
+    private val mirrorParameterManager: MirrorParameterManager? = null
+) : MirrorChooserImpl() {
+
+    override fun orderMirrors(downloadRequest: DownloadRequest): List<Mirror> {
+        val errorComparator = Comparator { mirror1: Mirror, mirror2: Mirror ->
+            // if no parameter manager is available, default to 0 (should return equal)
+            val error1 = mirrorParameterManager?.getMirrorErrorCount(mirror1.baseUrl) ?: 0
+            val error2 = mirrorParameterManager?.getMirrorErrorCount(mirror2.baseUrl) ?: 0
+
+            // prefer mirrors with fewer errors
+            error1.compareTo(error2)
+        }
+
+        val mirrorList: MutableList<Mirror> = mutableListOf<Mirror>()
+
+        if (mirrorParameterManager != null &&
+            mirrorParameterManager.getCurrentLocation().isNotEmpty()
+        ) {
+            // if we have access to mirror parameters and the current location,
+            // then use that information to sort the mirror list
+            val mirrorFilteredList: List<Mirror> = sortMirrorsByLocation(
+                mirrorParameterManager.preferForeignMirrors(),
+                downloadRequest.mirrors,
+                mirrorParameterManager.getCurrentLocation(),
+                errorComparator
+            )
+            mirrorList.addAll(mirrorFilteredList)
+        } else {
+            // shuffle initial list so all viable mirrors will be tried
+            // then sort list to avoid mirrors that have caused errors
+            val mirrorCompleteList: List<Mirror> =
+                downloadRequest.mirrors
+                    .toMutableList()
+                    .apply { shuffle() }
+                    .sortedWith(errorComparator)
+            mirrorList.addAll(mirrorCompleteList)
+        }
+
+        // respect the mirror to try first, if set
+        if (downloadRequest.tryFirstMirror != null) {
+            mirrorList.sortBy { if (it == downloadRequest.tryFirstMirror) 0 else 1 }
+        }
+
+        return mirrorList
+    }
+
+    private fun sortMirrorsByLocation(
+        foreignMirrorsPreferred: Boolean,
+        availableMirrorList: List<Mirror>,
+        currentLocation: String,
+        mirrorComparator: Comparator<Mirror>
+    ): List<Mirror> {
+        // shuffle initial list so all viable mirrors will be tried
+        // then sort list to avoid mirrors that have caused errors
+        val mirrorList: MutableList<Mirror> = mutableListOf<Mirror>()
+        val sortedList: List<Mirror> = availableMirrorList
+            .toMutableList()
+            .apply { shuffle() }
+            .sortedWith(mirrorComparator)
+
+        val domesticList: List<Mirror> = sortedList.filter { mirror ->
+            !mirror.countryCode.isNullOrEmpty() && currentLocation == mirror.countryCode
+        }
+        val foreignList: List<Mirror> = sortedList.filter { mirror ->
+            !mirror.countryCode.isNullOrEmpty() && currentLocation != mirror.countryCode
+        }
+        val unknownList: List<Mirror> = sortedList.filter { mirror ->
+            mirror.countryCode.isNullOrEmpty()
+        }
+
+        if (foreignMirrorsPreferred) {
+            mirrorList.addAll(foreignList)
+            mirrorList.addAll(unknownList)
+            mirrorList.addAll(domesticList)
+        } else {
+            mirrorList.addAll(domesticList)
+            mirrorList.addAll(unknownList)
+            mirrorList.addAll(foreignList)
+        }
+
+        return mirrorList
+    }
+
+    override fun handleException(e: Exception, mirror: Mirror, mirrorIndex: Int, mirrorCount: Int) {
+        if (e is ResponseException || e is IOException) {
+            mirrorParameterManager?.incrementMirrorErrorCount(mirror.baseUrl)
+        }
+        super.handleException(e, mirror, mirrorIndex, mirrorCount)
+    }
 }

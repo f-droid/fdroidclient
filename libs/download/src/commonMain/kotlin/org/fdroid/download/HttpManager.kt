@@ -46,8 +46,9 @@ public open class HttpManager @JvmOverloads constructor(
     queryString: String? = null,
     proxyConfig: ProxyConfig? = null,
     customDns: Dns? = null,
+    private val mirrorParameterManager: MirrorParameterManager? = null,
     private val highTimeouts: Boolean = false,
-    private val mirrorChooser: MirrorChooser = MirrorChooserRandom(),
+    private val mirrorChooser: MirrorChooser = MirrorChooserWithParameters(mirrorParameterManager),
     private val httpClientEngineFactory: HttpClientEngineFactory<*> = getHttpClientEngineFactory(
         customDns
     ),

@@ -122,10 +122,6 @@
                 android:targetPackage="@string/applicationId" />
         </PreferenceScreen>
         <SwitchPreferenceCompat
-            android:key="useDnsCache"
-            android:summary="@string/useDnsCacheSummary"
-            android:title="@string/useDnsCache" />
-        <SwitchPreferenceCompat
             android:key="useTor"
             android:summary="@string/useTorSummary"
             android:title="@string/useTor" />
@@ -159,6 +155,15 @@
             android:key="preventScreenshots"
             android:summary="@string/preventScreenshots_summary"
             android:title="@string/preventScreenshots_title" />
+
+        <SwitchPreferenceCompat
+            android:key="preferForeign"
+            android:summary="@string/preferForeignSummary"
+            android:title="@string/preferForeign" />
+        <SwitchPreferenceCompat
+            android:key="useDnsCache"
+            android:summary="@string/useDnsCacheSummary"
+            android:title="@string/useDnsCache" />
 
         <!-- only visible in full flavor -->
         <SwitchPreferenceCompat
