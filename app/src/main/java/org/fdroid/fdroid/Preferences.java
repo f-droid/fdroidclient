@@ -35,6 +35,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.common.collect.Lists;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
@@ -43,7 +45,6 @@ import org.fdroid.fdroid.net.ConnectivityMonitorService;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -125,6 +126,8 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_LANGUAGE = "language";
     public static final String PREF_USE_DNS_CACHE = "useDnsCache";
     public static final String PREF_DNS_CACHE = "dnsCache";
+    public static final String PREF_MIRROR_ERROR_DATA = "mirrorErrorData";
+    public static final String PREF_PREFER_FOREIGN = "preferForeign";
     public static final String PREF_USE_TOR = "useTor";
     public static final String PREF_ENABLE_PROXY = "enableProxy";
     public static final String PREF_PROXY_HOST = "proxyHost";
@@ -576,7 +579,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                     ipList.add(InetAddress.getByName(ip));
                 } catch (UnknownHostException e) {
                     // should not occur, if an ip address is supplied only the format is checked.
-                    Log.e("Preferences", "Exception thrown when converting " + ip, e);
+                    Log.e(TAG, "Exception thrown when converting " + ip, e);
                 }
             }
             dnsMap.put(url, ipList);
@@ -605,11 +608,54 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         HashMap<String, List<String>> output = new HashMap<String, List<String>>();
         for (String line : string.split("\n")) {
             String[] items = line.split(" ");
-            ArrayList<String> list = new ArrayList<>(Arrays.asList(items));
+            List<String> list = Lists.newArrayList(items);
             String key = list.remove(0);
             output.put(key, list);
         }
         return output;
+    }
+
+    private String intMapToString(HashMap<String, Integer> intMap) {
+        String output = "";
+        for (String key : intMap.keySet()) {
+            if (!output.isEmpty()) {
+                output = output + "\n";
+            }
+            output = output + key + " " + intMap.get(key);
+        }
+        return output;
+    }
+
+    private HashMap<String, Integer> stringToIntMap(String mapString) {
+        HashMap<String, Integer> output = new HashMap<String, Integer>();
+        for (String line : mapString.split("\n")) {
+            String[] pair = line.split(" ");
+            output.put(pair[0], Integer.valueOf(pair[1]));
+        }
+        return output;
+    }
+
+    public void setPreferForeignValue(boolean newValue) {
+        preferences.edit().putBoolean(PREF_PREFER_FOREIGN, newValue).apply();
+    }
+
+    public boolean isPreferForeignSet() {
+        return preferences.getBoolean(PREF_PREFER_FOREIGN, false);
+    }
+
+    public void setMirrorErrorData(HashMap<String, Integer> mirrorErrorMap) {
+        preferences.edit().putString(PREF_MIRROR_ERROR_DATA, intMapToString(mirrorErrorMap)).apply();
+    }
+
+    public HashMap<String, Integer> getMirrorErrorData() {
+        HashMap<String, Integer> mirrorDataMap = new HashMap<String, Integer>();
+        String mapString = preferences.getString(PREF_MIRROR_ERROR_DATA, "");
+        if (mapString == null || mapString.isEmpty()) {
+            // no-op, return empty map to avoid null issues
+        } else {
+            mirrorDataMap = stringToIntMap(mapString);
+        }
+        return mirrorDataMap;
     }
 
     /**

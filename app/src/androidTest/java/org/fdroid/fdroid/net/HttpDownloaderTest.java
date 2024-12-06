@@ -36,6 +36,7 @@ public class HttpDownloaderTest {
             FDroidApp.queryString,
             null,
             null,
+            null,
             true
     );
     private static final Collection<Pair<String, String>> URLS;

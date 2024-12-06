@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.asLiveData
@@ -155,7 +154,9 @@ class RepoUpdateManager @JvmOverloads constructor(
         }
         // can't show Toast from background thread, so we need to move this to UiThread
         Handler(Looper.getMainLooper()).post {
-            Toast.makeText(context, msgBuilder.toString(), LENGTH_LONG).show()
+            // can only post toast messages on the ui thread but this may
+            // be called from code that is executed by runOffUiThread()
+            Utils.showToastFromService(context, msgBuilder.toString(), LENGTH_LONG)
         }
     }
 
