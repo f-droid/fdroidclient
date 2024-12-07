@@ -54,7 +54,8 @@ class RepoUpdateWorker(
         @JvmStatic
         @JvmOverloads
         fun updateNow(context: Context, repoId: Long = -1) {
-            // Always trigger a clean cache job even if updates are prohibited
+            // Update also triggers a clean cache job
+            // (even if updates are prohibited by network settings)
             CleanCacheWorker.force(context)
 
             Log.i(TAG, "Update repo with ID $repoId now!")
@@ -139,8 +140,6 @@ class RepoUpdateWorker(
         } catch (e: Exception) {
             Log.e(TAG, "Error updating repos", e)
             Result.failure()
-        } finally {
-            CleanCacheWorker.force(appContext)
         }
     }
 
