@@ -80,6 +80,7 @@ public class SessionInstallManager extends BroadcastReceiver {
     public void install(App app, Apk apk, Uri localApkUri, Uri canonicalUri) {
         DocumentFile documentFile = ObjectsCompat.requireNonNull(DocumentFile.fromSingleUri(context, localApkUri));
         long size = documentFile.length();
+        Log.i(TAG, "Installing " + documentFile.getUri() + " with size " + size + " bytes");
         PackageInstaller.SessionParams params = getSessionParams(app, size);
         PackageInstaller installer = context.getPackageManager().getPackageInstaller();
         try {
@@ -95,14 +96,14 @@ public class SessionInstallManager extends BroadcastReceiver {
                 IntentSender sender = getInstallIntentSender(sessionId, app, apk, canonicalUri);
                 // wait for install constraints, if they can be used
                 if (Build.VERSION.SDK_INT >= 34 && canUseInstallConstraints(app.packageName)) {
-                    // we are allowed, so wait for constraints
+                    // we are allowed, so wait for constraints to do gentle update
                     PackageInstaller.InstallConstraints constraints =
-                            new PackageInstaller.InstallConstraints.Builder()
-                                    .setAppNotTopVisibleRequired()
-                                    .setAppNotInteractingRequired().build();
+                            PackageInstaller.InstallConstraints.GENTLE_UPDATE;
                     long timeout = TimeUnit.HOURS.toMillis(3);
+                    Log.i(TAG, "Committing session using install constraints...");
                     installer.commitSessionAfterInstallConstraintsAreMet(sessionId, sender, constraints, timeout);
                 } else {
+                    Log.i(TAG, "Committing session without install constraints...");
                     session.commit(sender);
                 }
             }
