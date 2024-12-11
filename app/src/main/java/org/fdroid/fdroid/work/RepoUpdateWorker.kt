@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit.MINUTES
 private val TAG = RepoUpdateWorker::class.java.simpleName
 
 class RepoUpdateWorker(
-    private val appContext: Context,
+    appContext: Context,
     workerParams: WorkerParameters,
 ) : CoroutineWorker(appContext, workerParams) {
 
