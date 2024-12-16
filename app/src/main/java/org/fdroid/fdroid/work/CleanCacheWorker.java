@@ -59,15 +59,14 @@ public class CleanCacheWorker extends Worker {
         }
 
         final Constraints.Builder constraintsBuilder = new Constraints.Builder()
-                .setRequiresCharging(true)
                 .setRequiresBatteryNotLow(true);
-        constraintsBuilder.setRequiresDeviceIdle(true);
         final PeriodicWorkRequest cleanCache =
                 new PeriodicWorkRequest.Builder(CleanCacheWorker.class, interval, TimeUnit.MILLISECONDS)
                         .setConstraints(constraintsBuilder.build())
                         .build();
         workManager.enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.REPLACE, cleanCache);
-        Utils.debugLog(TAG, "Scheduled periodic work for cleaning the cache.");
+        Utils.debugLog(TAG, "Scheduled periodic work for cleaning the cache every "
+                + (interval / (60 * 60 * 1000)) + " hours");
     }
 
     /**
@@ -87,13 +86,16 @@ public class CleanCacheWorker extends Worker {
     public Result doWork() {
         Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
         try {
+            Utils.debugLog(TAG, "Starting cache cleaning job.");
             final Context context = getApplicationContext();
             deleteExpiredApksFromCache(context);
             deleteStrayIndexFiles(context);
             deleteOldInstallerFiles(context);
             deleteOldIcons(context);
+            Utils.debugLog(TAG, "Finished cache cleaning job.");
             return Result.success();
         } catch (Exception e) {
+            Utils.debugLog(TAG, "Failed cache cleaning job.");
             return Result.failure();
         }
     }
@@ -209,8 +211,10 @@ public class CleanCacheWorker extends Worker {
     }
 
     private static void deleteFileAndLog(final File file) {
-        file.delete();
-        Utils.debugLog(TAG, "Deleted file: " + file);
+        if (file.delete()) {
+            // Only deletes empty directories
+            Utils.debugLog(TAG, "Deleted file: " + file);
+        }
     }
 
     private static class Impl21 {

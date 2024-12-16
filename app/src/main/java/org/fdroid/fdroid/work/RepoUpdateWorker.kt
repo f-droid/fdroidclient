@@ -49,11 +49,18 @@ class RepoUpdateWorker(
          *
          * @param repoId The optional ID of the repo to update.
          * If no ID is given, all (enabled) repos will be updated.
+         * Also triggers a clean cache job if no ID is given
          */
         @UiThread
         @JvmStatic
         @JvmOverloads
         fun updateNow(context: Context, repoId: Long = -1) {
+            if (repoId < 0) {
+                // Update of all repos also triggers a clean cache job
+                // (even if updates are prohibited by network state)
+                CleanCacheWorker.force(context)
+            }
+
             Log.i(TAG, "Update repo with ID $repoId now!")
             if (FDroidApp.networkState > 0 && !Preferences.get().isOnDemandDownloadAllowed()) {
                 Toast.makeText(context, R.string.updates_disabled_by_settings, LENGTH_LONG).show()
