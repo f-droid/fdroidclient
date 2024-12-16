@@ -26,7 +26,12 @@ internal class HttpFetcher(
             try {
                 // glide should take care of closing this stream and the underlying channel
                 val inputStream = httpManager.getChannel(downloadRequest).toInputStream()
-                callback.onDataReady(inputStream)
+                val sha256 = downloadRequest.indexFile.sha256
+                if (sha256 == null) {
+                    callback.onDataReady(inputStream)
+                } else {
+                    callback.onDataReady(AutoVerifyingInputStream(inputStream, sha256))
+                }
             } catch (e: Exception) {
                 callback.onLoadFailed(e)
             }
