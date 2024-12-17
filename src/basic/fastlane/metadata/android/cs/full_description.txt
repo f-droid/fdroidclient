@@ -1,3 +1,5 @@
+UPOZORNĚNÍ: Základní (Basic) verze klienta F-Droid má omezenou sadu funkcí (např. žádné sdílení nablízku nebo funkci paniky). Cílí na systém Android 13 a dokáže provádět automatické aktualizace bez privilegovaného rozšíření nebo rootu.
+
 F-Droid je katalog svobodných aplikací pro Android. S klientem F-Droid je snadné listovat v katalogu aplikací, instalovat je a udržovat je aktuální.
 
 Připojí se k jakémukoli kompatibilnímu repozitáři. Výchozí repozitář (k dispozici na f-droid.org) obsahuje pouze důvěryhodný svobodný software.
