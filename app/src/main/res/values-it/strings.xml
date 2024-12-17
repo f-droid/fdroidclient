@@ -625,4 +625,7 @@
     <string name="antitetherednet">Servizi di rete in tethering</string>
     <string name="antitetherednetlist">Questa app dipende completamente da una particolare istanza di un servizio di rete</string>
     <string name="auto_update_time_past">Prossimo aggiornamento quando le condizioni sono soddisfatte</string>
+    <string name="apk_permissions_mismatch">L\'app ha un autorizzazione inaspettata: %s</string>
+    <string name="menu_share_apk">Condividi file APK</string>
+    <string name="swap_bluetooth_permissions">Si prega di dare l\'autorizzazione Bluetooth oppure Dispositivo nelle vicinanze!</string>
 </resources>
