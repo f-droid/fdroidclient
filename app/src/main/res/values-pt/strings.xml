@@ -613,4 +613,6 @@
     <string name="antitetherednetlist">Esta app depende inteiramente de uma determinada instância de um serviço de rede</string>
     <string name="auto_update_time_past">Próxima atualização quando as condições forem cumpridas</string>
     <string name="swap_bluetooth_permissions">Por favor dê a permissão para utilizar o Bluetooth ou Dispositivos Próximos!</string>
+    <string name="menu_share_apk">Partilhar ficheiro APK</string>
+    <string name="apk_permissions_mismatch">A app tem permissão inesperada: %s</string>
 </resources>
