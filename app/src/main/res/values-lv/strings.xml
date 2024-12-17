@@ -8,8 +8,8 @@
     <string name="update_interval">Starplaiks starp automātiskajiem atjauninājumiem</string>
     <string name="notify">Parādīt pieejamos atjauninājumus</string>
     <string name="notify_on">Parādīt paziņojumu, kad ir pieejami atjauninājumi</string>
-    <string name="system_installer">Priviliģētais paplašinājums</string>
-    <string name="system_installer_on">Izmantot F-Droid priviliģēto paplašinājumu, lai uzstādītu, atjauninātu un dzēstu pakotnes</string>
+    <string name="system_installer">Paaugstināto tiesību paplašinājums</string>
+    <string name="system_installer_on">Izmantot F-Droid paaugstināto tiesību paplašinājumu, lai uzstādītu, atjauninātu un dzēstu pakotnes</string>
     <string name="local_repo_name">Vietējās glabātavas nosaukums</string>
     <string name="local_repo_https_on">Vietējām glabātavām izmantot šifrētu HTTPS:// savienojumu</string>
     <string name="app_details">Informācija par lietotni</string>
