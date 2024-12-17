@@ -594,4 +594,8 @@
     <string name="antitetherednetlist">Ова апликација у потпуности зависи од одређене инстанце мрежне услуге</string>
     <string name="antitetherednet">Непроменљиве мрежне услуге</string>
     <string name="swap_bluetooth_permissions">Доделите дозволу за Bluetooth или уређаје у близини.</string>
+    <string name="apk_permissions_mismatch">Апликација има неочекивану дозволу: %s</string>
+    <string name="menu_share_apk">Дели APK фајл</string>
+    <string name="preferForeignSummary">Прво проба резервне изворе који се налазе ван ваше земље, нпр. ако су стране заштите јаче.</string>
+    <string name="preferForeign">Преферирај стране резервне изворе</string>
 </resources>
