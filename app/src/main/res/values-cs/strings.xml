@@ -612,4 +612,5 @@
     <string name="auto_update_time_past">Další aktualizace po splnění podmínek</string>
     <string name="antitetherednet">Nezměnitelné síťové služby</string>
     <string name="antitetherednetlist">Tato aplikace zcela závisí na určité instanci síťové služby</string>
+    <string name="swap_bluetooth_permissions">Povolte prosím oprávnění Bluetooth a okolní zařízení</string>
 </resources>
