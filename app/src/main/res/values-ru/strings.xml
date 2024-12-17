@@ -620,4 +620,7 @@
     <string name="auto_update_time">Ближайшее следующее обновление: %s</string>
     <string name="warning_no_compat_versions">В выбранном репозитории нет совместимых версий приложений. Чтобы получать обновления, выбирайте репозиторий с совместимыми версиями.</string>
     <string name="antitetherednetlist">Это приложение полностью зависит от определенного сетевого сервиса</string>
+    <string name="antitetherednet">Несменяемые сетевые сервисы</string>
+    <string name="swap_bluetooth_permissions">Пожалуйста, предоставьте разрешение на доступ к Bluetooth или к устройствам поблизости!</string>
+    <string name="auto_update_time_past">Следующее обновление: когда условия будут удовлетворены</string>
 </resources>
