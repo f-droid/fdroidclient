@@ -1,3 +1,3 @@
 * Novērsta kļūda, kuras dēļ netika parādīti tulkojumi Android >= 7.0
 
-* Novērsta avārijas problēma ar datubāzi, atjauninot no 1.0-alpha3 → 1.0-alpha4 (#1181)
+* Novērsta datubāzes atjaunināšanas avārija no 1.0-alpha3 → 1.0-alpha4 (#1181)

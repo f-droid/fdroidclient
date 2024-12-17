@@ -1,20 +1,20 @@
 F-Droid ir 1.0!
 
-Šajā versijā realizētas daudzas būtiskas izmaiņas:
+Šis laidiens iekļauj daudzas būtiskas izmaiņas:
 
-* Pilnībā pārveidots atjaunināšanas process
+* Pilnībā pārveidota lietotņu atjaunināšanas darbplūsma
 
-* Pilnībā tulkojami kopsavilkumi un apraksti
+* Pilnībā tulkojams lietotņu kopsavilkums un apraksts
 
-* "Kas jauns" rāda pašreizējās versijas izmaiņas
+* Sadaļa "Kas jauns" pašreizējā laidiena izmaiņām
 
-* Ekrānuzņēmumi un grafikas dizains
+* Ekrānuzņēmumi un iespēju attēlojums
 
-* Atbalsta datu, OTA, ZIP u.c. failu uzstādīšanu
+* Atbalsta datu, OTA, ZIP u.c. datņu uzstādīšanu
 
-* Uzlabota izsekošanas (HTTP ETag, TLS utt.) aizsardzība 
+* Uzlabota izsekošanas aizsardzība (HTTP ETag, TLS utt.)
 
-* Pilnībā fona atjauninājumi ar priviliģēto paplašinājumu
+* Pilnīgi fona atjauninājumi ar Tiesību paplašinājumu
 
 * Izceļ ziedojumus lietotņu izstrādātājiem
 

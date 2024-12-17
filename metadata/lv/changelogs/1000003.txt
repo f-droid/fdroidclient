@@ -1,3 +1,3 @@
-* Būtiski lietotāja saskarnes veiktspējas uzlabojumi, īpaši ar iespējotu arhīvu
+* Lieli lietotāja saskarnes veiktspējas uzlabojumi, īpaši ar iespējotu arhīvu
 
-* Izlabotas kļūdas, kas izraisīja avārijas
+* Novērstas kļūdas, kas izraisīja avārijas
