@@ -379,7 +379,7 @@
     <string name="app_list__dismiss_app_update">Uppdatering ignorerad</string>
     <string name="app_list__dismiss_vulnerable_app">Sårbarhet ignorerad</string>
     <string name="app_list__dismiss_downloading_app">Hämtning avbruten</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi hittade en sårbarhet hos %1$s. Du rekommenderas avinstallera denna app omedelbart.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi hittade en sårbarhet hos %1$s. Tryck för att läsa mer i avsnittet Anti-funktioner.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi hittade en sårbarhet hos %1$s. Du rekommenderas uppdatera till den nyaste versionen omedelbart.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorera</string>
     <string name="privacy">Integritet</string>
@@ -591,4 +591,13 @@
     <string name="repo_disable_warning_button">Inaktivera</string>
     <string name="repo_disable_warning">Att inaktivera förrådet kommer ta bort dess status som \"föredragen\" från alla appar.</string>
     <string name="ipfsgw_title">Gateways för IPFS</string>
+    <string name="warning_no_compat_versions">Det valda förvaret har inga kompatibla appversioner. För att ta emot uppdateringar, föredra ett förvar med kompatibla versioner.</string>
+    <string name="ipfsgw_summary_disabled">Hämta appar med IPFS-webbändpunkter: inaktiverad</string>
+    <string name="repo_error_adding_archive">Arkivförvar kan inte läggas till direkt. Tryck på förvarslistan och aktivera arkivet där.</string>
+    <string name="repo_archive_toggle">Förvarsarkiv</string>
+    <string name="preferForeignSummary">Testa speglar som är placerade utanför ditt land först, t.ex. om det utländska skyddet är starkare.</string>
+    <string name="repo_and_mirror_add_both_info">URL:en du försöker lägga till (%s) är en spegel av ett nytt arkiv. Både originalförvaret och spegeln kommer att läggas till.</string>
+    <string name="ipfsgw_explainer">Hämtaappar från IPFS-webbändpunkter. (Fungerar endast för F-Droid-förvar med IPFS-stöd.)</string>
+    <string name="preferForeign">Föredrar utländska speglar</string>
+    <string name="swap_bluetooth_permissions">Vänligen ge tillstånd för Bluetooth eller enhet i närheten!</string>
 </resources>
