@@ -28,7 +28,7 @@
     <string name="add_key">Gehitu gakoa</string>
     <string name="overwrite">Gainidatzi</string>
     <string name="repo_add_url">Biltegiaren helbidea</string>
-    <string name="menu_manage">Kudeatu biltegiak</string>
+    <string name="menu_manage">Biltegiak</string>
     <string name="menu_search">Bilatu</string>
     <string name="menu_add_repo">Biltegi berria</string>
     <string name="menu_launch">Ireki</string>
@@ -82,8 +82,8 @@
     <string name="bad_fingerprint">Hatz-marka okerra</string>
     <string name="menu_changelog">Aldaketa egunkaria</string>
     <string name="antitracklist">Aplikazio honek zure jardueraren jarraipena egiten du eta berri ematen du</string>
-    <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>
-    <string name="antinonfreenetlist">Aplikazio honek sare-zerbitzu aldaezin edo ez-doako bat sustatzen du edo horren mende dago erabat</string>
+    <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak sustatzen ditu</string>
+    <string name="antinonfreenetlist">Aplikazio honek libreak ez diren sareko zerbitzuak sustatzen ditu edo erabat menpekoa da</string>
     <string name="antinonfreedeplist">Aplikazio hau beste aplikazio ez libreen menpekoa da</string>
     <string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
     <string name="local_repo_name">Zure biltegi lokalaren izena</string>
@@ -335,7 +335,7 @@
     </plurals>
     <string name="details_new_in_version">%s bertsioan berria</string>
     <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
-    <string name="antifeatures">Ezaugarri zalantzagarriak</string>
+    <string name="antifeatures">Ezaugarri eztabaidagarriak</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ikusi %d</item>
         <item quantity="other">Ikusi guztiak: %d</item>
@@ -429,8 +429,8 @@
     <string name="sort_search">Ordenatu bilaketa</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Zure kamerak ez du fokatze automatikorako gaitasunik. Kodea eskaneatzea zaila izan daiteke.</string>
-    <string name="show_anti_feature_apps">Sartu ezaugarri zalantzagarridun aplikazioak</string>
-    <string name="show_anti_feature_apps_on">Erakutsi ezaugarri zalantzagarriak behar dituzten aplikazioak</string>
+    <string name="show_anti_feature_apps">Sartu ezaugarri eztabaidagarriak</string>
+    <string name="show_anti_feature_apps_on">Erakutsi ezaugarri eztabaidagarri ezagunak dituzten aplikazioak</string>
     <string name="force_touch_apps">Sartu ukimen pantaila darabilten aplikazioak</string>
     <string name="force_touch_apps_on">Erakutsi ukimen pantaila behar duten aplikazioak, hardware euskarria dena dela</string>
     <string name="repo_add_mirror">Gehitu ispilua</string>
@@ -461,10 +461,10 @@
     <string name="send_version_and_uuid">Bidali bertsioa eta UUID zerbitzarietara</string>
     <string name="send_version_and_uuid_summary">Gehitu aplikazio honen bertsioa eta ausazko ID bakar deskargatzean, hurrengo aplikazioa berrabiaraztean aplikatuko da.</string>
     <string name="share_repository">Partekatu biltegia</string>
-    <string name="antinosourcesince">Iturburu kodea ez dago jada eskuragarri, ezin izango da eguneratu.</string>
+    <string name="antinosourcesince">Iturburu kodea jada ez dago eskuragarri, ezin da eguneratu</string>
     <string name="send_install_history">Bidali instalazioen historiala</string>
     <string name="send_history_csv">%s instalazioen historiala CSV fitxategi gisa</string>
-    <string name="updates_disabled_by_settings">Eguneraketa guztiak desgaituta datu/WiFi ezarpenetan</string>
+    <string name="updates_disabled_by_settings">Eguneraketa guztiak desgaituta daude Datuak/Wi-Fi ezarpenetan</string>
     <string name="send_installed_apps">Partekatu instalatutako aplikazioak</string>
     <string name="send_installed_apps_csv">F-Droid-ek instalatutako aplikazioak CSV fitxategi gisa</string>
     <string name="menu_open">Ireki</string>
@@ -528,18 +528,18 @@
     <string name="share_apk_error">Ezin izan da aplikazio fitxategia partekatu</string>
     <string name="has_disallow_install_unknown_sources_globally">Zure gailuaren administratzaileak ez du jatorri ezezaguneko aplikazioak instalatzen uzten, biltegi berriak barne</string>
     <string name="has_disallow_install_unknown_sources">Erabiltzaile honek ezin ditu jatorri ezezagunak gehitu, biltegi berriak barne</string>
-    <string name="app_list_results_hidden_antifeature_settings">Emaitza batzuk ezkutatu egin dira euren ezaugarri gorabeheratsuak direla medio.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Emaitza batzuk ezkutatu egin dira dituzten ezaugarri eztabaidagarriengatik. Ukitu aldatzeko.</string>
     <string name="antiads">Iragarkiak</string>
     <string name="antitrack">Arrastoaren jarraipena</string>
     <string name="antinonfreead">Libreak ez diren gehigarriak</string>
     <string name="antinonfreenet">Libreak ez diren sareko zerbitzuak</string>
     <string name="antinonfreedep">Libreak ez diren menpekotasunak</string>
     <string name="antiupstreamnonfree">Librea ez den iturburua</string>
-    <string name="antinonfreeassets">Libreak ez diren aktiboak</string>
+    <string name="antinonfreeassets">Libreak ez diren baliabideak</string>
     <string name="antidisabledalgorithm">Segurua ez den algoritmo batez sinatua</string>
     <string name="antiknownvuln">Ahultasun ezaguna</string>
     <string name="antinosource">Jatorrizko kodea ez dago erabilgarri</string>
-    <string name="antiothers">Beste anti-ezaugarriak</string>
+    <string name="antiothers">Beste ezaugarri eztabaidagarriak</string>
     <string name="antinsfw">Ez da segurua lanerako</string>
     <string name="menu_release_channel_beta">Beta eguneraketak baimendu</string>
     <string name="latest__empty_state__upgrading">Datu-basearen eguneraketak aplikatzen…</string>
@@ -617,4 +617,7 @@
     <string name="repo_scan_qr_code">Eskaneatu QR kodea</string>
     <string name="auto_update_time">Eguneratze berriena: %s</string>
     <string name="warning_no_compat_versions">Hautatutako biltegiak ez du aplikazio-bertsio bateragarririk. Eguneraketak jasotzeko, nahiago bertsio bateragarriak dituen biltegi bat.</string>
+    <string name="antitetherednet">Lotutako sareko zerbitzuak</string>
+    <string name="antitetherednetlist">Aplikazio hau instantzia zehatz baten sareko zerbitzuaren menpekoa da guztiz</string>
+    <string name="auto_update_time_past">Hurrengo eguneraketa baldintzak betetzen direnean</string>
 </resources>
