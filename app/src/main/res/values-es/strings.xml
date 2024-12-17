@@ -403,7 +403,7 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
     <string name="privacy">Privacidad</string>
     <string name="preventScreenshots_title">Evitar capturas de pantalla</string>
-    <string name="preventScreenshots_summary">Bloquea las capturas de pantalla y oculta el contenido de la pantalla de aplicaciones recientes</string>
+    <string name="preventScreenshots_summary">Impide la captura de pantalla y oculta el contenido de la aplicación en la pantalla de aplicaciones recientes</string>
     <string name="panic_app_setting_title">Aplicación de botón de pánico</string>
     <string name="panic_app_unknown_app">una aplicación desconocida</string>
     <string name="panic_app_setting_summary">No se ha establecido aplicación</string>
