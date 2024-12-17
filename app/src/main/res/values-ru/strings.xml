@@ -56,7 +56,7 @@
     <string name="antiadslist">Это приложение содержит рекламу</string>
     <string name="antitracklist">Это приложение отслеживает и сообщает о вашей деятельности</string>
     <string name="antinonfreeadlist">Это приложение популяризует дополнения с закрытым исходным кодом</string>
-    <string name="antinonfreenetlist">Это приложение популяризирует несвободные сетевые сервисы или полностью от них зависит</string>
+    <string name="antinonfreenetlist">Это приложение продвигает или полностью зависит от несвободного сетевого сервиса</string>
     <string name="antinonfreedeplist">Это приложение зависит от других несвободных приложений</string>
     <string name="antiupstreamnonfreelist">Оригинальный исходный код не является полностью свободным</string>
     <string name="display">Вид</string>
@@ -432,7 +432,7 @@
     <string name="repo_add_mirror">Добавить зеркало</string>
     <string name="repo_exists_add_mirror">Это копия %1$s, добавить ее как зеркало\?</string>
     <string name="show_anti_feature_apps">Разрешить приложения с анти-функциями</string>
-    <string name="show_anti_feature_apps_on">Показывать приложения, которые требуют анти-функций</string>
+    <string name="show_anti_feature_apps_on">Показывать приложения, с известными Анти-Функциями</string>
     <string name="force_touch_apps">Включить приложения, требующие сенсорного экрана</string>
     <string name="force_touch_apps_on">Показывать приложения, требующие сенсорного экрана, независимо от поддержки его устройством</string>
     <string name="repo_official_mirrors">Официальные зеркала</string>
@@ -535,11 +535,11 @@
     <string name="antinonfreeassets">Несвободные активы</string>
     <string name="antidisabledalgorithm">Подписано с использованием небезопасного алгоритма</string>
     <string name="antiads">Реклама</string>
-    <string name="app_list_results_hidden_antifeature_settings">Некоторые результаты были скрыты исходя из ваших настроек анти-функций.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Некоторые приложения скрыты исходя из настроек Анти-Функций. Нажмите, чтобы изменить.</string>
     <string name="antitrack">Отслеживание</string>
     <string name="antinosource">Исходный код больше не доступен</string>
     <string name="antiknownvuln">Известная уязвимость</string>
-    <string name="antiothers">Прочие анти-функции</string>
+    <string name="antiothers">Прочие Анти-Функции</string>
     <string name="antinsfw">Небезопасно для работы</string>
     <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
     <string name="latest__empty_state__upgrading">Обновление базы данных…</string>
@@ -619,4 +619,5 @@
     <string name="repo_scan_qr_code">Сканировать QR-код</string>
     <string name="auto_update_time">Ближайшее следующее обновление: %s</string>
     <string name="warning_no_compat_versions">В выбранном репозитории нет совместимых версий приложений. Чтобы получать обновления, выбирайте репозиторий с совместимыми версиями.</string>
+    <string name="antitetherednetlist">Это приложение полностью зависит от определенного сетевого сервиса</string>
 </resources>
