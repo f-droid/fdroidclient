@@ -1,0 +1,11 @@
+* Tárolók ábrázolásának átdolgozása, egyértelművé téve, ha egy telepítés nem az f-droid.org tárolóból származik.
+
+* Globálisan vagy alkalmazásonként állítható tárolóprioritások
+
+* Az egyéni előnytelen funkciók már alapértelmezetten engedélyezve vannak
+
+* Tárolók webcímének fogadása a Megosztás funkcióval
+
+* Az összes képernyő figyelembe veszi a nappali/éjszakai témát
+
+* Az F-Droid Basic frissítve lett, hogy 34-es targetSdkVersion esetén is működjön

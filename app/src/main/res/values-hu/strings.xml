@@ -273,8 +273,8 @@
     <string name="updates__hide_updateable_apps">Alkalmazások elrejtése</string>
     <string name="updates__show_updateable_apps">Alkalmazások megjelenítése</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Frissítés letöltése %1$d alkalmazáshoz.</item>
-        <item quantity="other">Frissítés letöltése %1$d alkalmazáshoz.</item>
+        <item quantity="one">Frissítés letöltése %1$d alkalmazáshoz:</item>
+        <item quantity="other">Frissítés letöltése %1$d alkalmazáshoz:</item>
     </plurals>
     <string name="clear_search">Keresés törlése</string>
     <string name="menu_license">Licenc: %s</string>
@@ -596,4 +596,6 @@
     <string name="repo_disable_warning">Ezen adattár letiltásával eltávolítja az „előnyben részesített” státuszát az összes alkalmazástól.</string>
     <string name="swap_bluetooth_permissions">Kérjük, adja meg a Bluetooth vagy a Közeli eszköz engedélyt!</string>
     <string name="auto_update_time_past">Következő frissítés a feltételek teljesülése esetén</string>
+    <string name="menu_share_apk">APK-fájl megosztása</string>
+    <string name="apk_permissions_mismatch">Az alkalmazás váratlan engedéllyel rendelkezik: %s</string>
 </resources>
