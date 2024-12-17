@@ -82,11 +82,8 @@
     <string name="proxy_host_summary">Назив хоста вашег проксија (нпр. 127.0.0.1)</string>
     <string name="proxy_port">Порт проксија</string>
     <string name="proxy_port_summary">Број порта вашег проксија (нпр. 8118)</string>
-    <string name="status_download">Преузимање
-\n%2$s/%3$s (%4$d%%) од
-\n%1$s</string>
-    <string name="status_connecting_to_repo">Повезивање на
-\n%1$s</string>
+    <string name="status_download">Преузимање\n%2$s/%3$s (%4$d%%) од\n%1$s</string>
+    <string name="status_connecting_to_repo">Повезивање на\n%1$s</string>
     <string name="repos_unchanged">Сви репозиторијуми су ажурни</string>
     <string name="all_other_repos_fine">Није било грешака у другим репозиторијумима.</string>
     <string name="global_error_updating_repos">Грешка при ажурирању: %s</string>
@@ -104,15 +101,10 @@
     <string name="repo_not_yet_updated">Овај репозиторијум још није коришћен. Омогућите га да бисте видели апликације у њему.</string>
     <string name="unknown">Непознато</string>
     <string name="repo_confirm_delete_title">Избрисати репозиторијум\?</string>
-    <string name="repo_confirm_delete_body">Ако избришете репозиторијум, апликације у њему више неће бити доступне.
-\n
-\nНапомена: све претходно инсталиране апликације ће остати на вашем уређају.</string>
-    <string name="repo_disabled_notification">Репозиторијум %1$s је онемогућен.
-\n
-\nДа бисте инсталирали апликације из њега, мораћете поново да га омогућите.</string>
+    <string name="repo_confirm_delete_body">Ако избришете репозиторијум, апликације у њему више неће бити доступне.\n\nНапомена: све раније инсталиране апликације ће остати на вашем уређају.</string>
+    <string name="repo_disabled_notification">Репозиторијум %1$s је онемогућен.\n\nДа бисте инсталирали апликације из њега, мораћете поново да га омогућите.</string>
     <string name="repo_added">Репозиторијум %1$s је сачуван.</string>
-    <string name="repo_searching_address">Претрага репозиторијума на
-\n%1$s</string>
+    <string name="repo_searching_address">Претрага репозиторијума на\n%1$s</string>
     <string name="not_on_same_wifi">Ваш уређај није на истој Wi-Fi мрежи као и локални репозиторијум који сте управо додали. Пробајте да се повежете на ову мрежу: %s</string>
     <string name="requires_features">Захтева: %1$s</string>
     <string name="category_Development">Развој</string>
@@ -194,13 +186,10 @@
     <string name="swap_not_visible_wifi">Невидљив преко Wi-Fi-а</string>
     <string name="swap_scan_or_type_url">Једно од вас треба да скенира кôд или да у прегледачу унесе URL друге особе.</string>
     <string name="swap_switch_to_wifi">Додирните да бисте се пребацили на Wi-Fi мрежу</string>
-    <string name="empty_can_update_app_list">Честитамо!
-\nАпликације су ажурне.</string>
+    <string name="empty_can_update_app_list">Честитамо!\nАпликације су ажурне.</string>
     <string name="swap_people_nearby">Људи у близини</string>
     <string name="swap_scanning_for_peers">Тражење људи у близини…</string>
-    <string name="empty_installed_app_list">Нема инсталираних апликација.
-\n
-\nНа вашем уређају постоје апликације, али нису доступне на F-Droid-у. Можда нисте ажурирали репозиторијуме или сте апликације инсталирали са другог извора.</string>
+    <string name="empty_installed_app_list">Нема инсталираних апликација.\n\nНа вашем уређају постоје апликације које нису доступне на F-Droid-у. Можда нисте ажурирали репозиторијуме или сте апликације инсталирали са других извора.</string>
     <string name="swap_join_this_hotspot">Помозите пријатељу да се повеже на ваш хотспот</string>
     <string name="swap_cant_find_peers">Не можете да нађете кога тражите\?</string>
     <string name="swap_nearby">Размена у близини</string>
@@ -210,9 +199,7 @@
     <string name="perms_description_app">Омогућује %1$s.</string>
     <string name="more">Више</string>
     <string name="less">Мање</string>
-    <string name="status_download_unknown_size">Преузимање
-\n%2$s од
-\n%1$s</string>
+    <string name="status_download_unknown_size">Преузимање\n%2$s од\n%1$s</string>
     <string name="permissions">Дозволе</string>
     <string name="repo_details">Репозиторијум</string>
     <string name="repo_url">Адреса</string>
@@ -381,7 +368,7 @@
     <string name="app_list__dismiss_app_update">Ажурирање је занемарено</string>
     <string name="app_list__dismiss_vulnerable_app">Безбедносна претња је занемарена</string>
     <string name="app_list__dismiss_downloading_app">Преузимање је отказано</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Пронађена је безбедносна претња у апликацији %1$s. Препоручујемо вам да је одмах деинсталирате.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Пронађена је безбедносна претња у апликацији %1$s. Додирните да бисте сазнали више у одељку „Непоуздане функције”.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Пронађена је безбедносна претња у апликацији %1$s. Препоручујемо вам да је одмах ажурирате.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Занемари</string>
     <string name="hide_all_notifications">Сакриј сва обавештења</string>
@@ -543,16 +530,12 @@
     <string name="swap_banner_message">Да бисте заменили апликације, укључите Wi-Fi и повежите се на исту мрежу као и ваш пријатељ.</string>
     <string name="turn_on_wifi">Укључи Wi-Fi</string>
     <string name="repo_add_new_title">Додај репозиторијум</string>
-    <string name="repo_intro">Репозиторијум је додатни извор апликација. Репозиторијуми трећих страна које додате овде имају другачије стандарде од оних које је обезбедио F-Droid.
-\n
-\nУверите се да је репозиторијум који додајете поуздан.</string>
+    <string name="repo_intro">Репозиторијум је додатни извор апликација. Репозиторијуми трећих страна које додате овде имају другачије стандарде од оних које је обезбедио F-Droid.\n\nУверите се да је репозиторијум који додајете поуздан.</string>
     <string name="repo_state_fetching">Преузимање репозиторијума…</string>
     <string name="repo_add_new_mirror">Додај као нови резервни извор</string>
     <string name="repo_state_adding">Додавање репозиторијума…</string>
     <string name="repo_exists">Овај репозиторијум је већ додат.</string>
-    <string name="repo_invalid">Неважећи репозиторијум.
-\n
-\nКонтактирајте администратора и обавестите га о проблему.</string>
+    <string name="repo_invalid">Неважећи репозиторијум.\n\nКонтактирајте администратора и обавестите га о проблему.</string>
     <string name="repo_io_error">Грешка при повезивању са репозиторијумом</string>
     <string name="repo_enter_url">Унесите URL репозиторијума ручно</string>
     <string name="nearby_splace__external_storage_permission_button">Пробај</string>
@@ -596,9 +579,7 @@
     <string name="app_details_repository_button_prefer">Преферирај репозиторијум</string>
     <string name="repositories_last_update">Последње ажурирање: %s</string>
     <string name="repositories_last_update_never">никада</string>
-    <string name="repo_list_info_text">Репозиторијум је извор апликација. На овој листи су приказани сви додати репозиторијуми. Онемогућени репозиторијуми се не користе.
-\n
-\nАко се апликација налази у више репозиторијума, аутоматски се даје предност репозиторијуму који се налази више на листи. Редослед репозиторијума можете да промените дугим притиском и превлачењем.</string>
+    <string name="repo_list_info_text">Репозиторијум је извор апликација. На овој листи су приказани сви додати репозиторијуми. Онемогућени репозиторијуми се не користе.\n\nАко се апликација налази у више репозиторијума, аутоматски се даје предност оном репозиторијуму који се налази на вишој позицији на листи. Редослед репозиторијума можете да промените дугим притиском и превлачењем.</string>
     <string name="repo_archive_toggle">Архива репозиторијума</string>
     <string name="repo_view_repo">Прикажи репозиторијум</string>
     <string name="repo_preview_included_apps">Доступне апликације:</string>
@@ -612,4 +593,9 @@
     <string name="auto_update_time_past">Следеће ажурирање када се испуне услови</string>
     <string name="antitetherednetlist">Ова апликација у потпуности зависи од одређене инстанце мрежне услуге</string>
     <string name="antitetherednet">Непроменљиве мрежне услуге</string>
+    <string name="swap_bluetooth_permissions">Доделите дозволу за Bluetooth или уређаје у близини.</string>
+    <string name="apk_permissions_mismatch">Апликација има неочекивану дозволу: %s</string>
+    <string name="menu_share_apk">Дели APK фајл</string>
+    <string name="preferForeignSummary">Прво проба резервне изворе који се налазе ван ваше земље, нпр. ако су стране заштите јаче.</string>
+    <string name="preferForeign">Преферирај стране резервне изворе</string>
 </resources>

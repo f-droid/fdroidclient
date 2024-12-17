@@ -1,0 +1,8 @@
+* UX ve kod ayna işleme elden geçirildi
+* Yeni depoların önizlemeleri gösteriliyor
+* F-Droid ve Basic artık oto arka plan güncellemelerini destekliyor
+* Android 14, desteklenmeyen SDK Sürümüne sahip uygulamalar uyumsuz olarak işaretleniyor #2692
+* Uygulama Ayrıntıları ekranda Bağlantıları, İzinleri ve Sürümleri kopyalamak için uzun tıklama(@Tobias_Groza)
+* Uyumsuz uygulamalar yalnızca Ayarlar'dan izinliyse göster #41(@pigpig)
+* Yeni IPFS Ağ Geçit Ayarları
+* Uygulama başı dil seçimi(@Licaon-Kter)

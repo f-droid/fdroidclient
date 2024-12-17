@@ -1,13 +1,11 @@
-* Revisão da forma como os repositórios são representados aos utilizadores para tornar claro quando uma instalação vem de outro sítio que não f-droid.org.
-
-* Permitir que os utilizadores alterem a prioridade do repositório globalmente e por aplicação
-
-* As Anti-Features personalizadas são agora ativadas por defeito, em vez de desativadas
-
-* Suporte para receber URLs de repositórios via Share
-
-* Todas as atividades respeitam o tema dia/noite
-
-* Atualização dos usos de armazenamento externo para trabalhar com targetSdkVersion 29
-
-* F-Droid Basic atualizado para funcionar com targetSdkVersion 34
+* Atualizador de repositório reescrito para tornar as atualizações em segundo plano mais confiáveis
+* Divida o nome e o resumo nas listas de aplicativos para melhor legibilidade
+* Mostrar aviso quando os aplicativos não puderem ser atualizados do repositório preferencial
+* Os aplicativos direcionados ao SDK 24 são incompatíveis com dispositivos Android 15
+* Lide melhor com os espelhos na visualização "Adicionar repositório" (Obrigado, Thore!)
+* Habilite atualizações autônomas de aplicativos em dispositivos Xiaomi que não executam MIUI (Obrigado, irado!)
+* Confie em certificados raiz adicionados pelo usuário (Obrigado B.!)
+* Corrigida pesquisa sem distinção entre maiúsculas e minúsculas contendo sinais diacríticos (Obrigado, Tobias!)
+* Atualize as descrições dos anti-recursos (Obrigado Licaon!)
+* Adicionar anti-recurso de rede tethered (Obrigado, linsui!)
+* Ignore os espaços em branco ao adicionar repositórios espelho (Obrigado Tobias!)

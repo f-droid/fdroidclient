@@ -1,19 +1,13 @@
-L'F-Droid és un catàleg instal·lable d'aplicacions de software lliure
-per a Android. La aplicació client de l'F-Droid facilita navegar, instal·lar
-i fer el seguiment de les actualitzacions en el vostre dispositiu.
+L'F-Droid és un catàleg instal·lable d'aplicacions de programari lliure per a l'Android. El client de l'F-Droid fa que sigui fàcil navegar, instal·lar i fer seguiment de les actualitzacions al dispositiu.
 
-L'F-Droid connecta amb qualsevol dipòsit compatible. El dipòsit
-per defecte està allotjat a f-droid.org, que conté només programari lliure
-de bona qualitat.
+Connecta amb qualsevol repositori de l'F-Droid compatible. El repositori predefinit s'hostatja a f-droid.org, i només conté programari lliure fet amb bona fe.
 
-L'Android en sí és obert en el sentit que sou lliures d'instal·lar les APKs
-des de qualsevol origen, però hi ha unes quantes bones raons per
-utilitzar l'F-Droid com a el gestor d'aplicacions de software lliure:
+El mateix Android és obert en el sentit que podeu instal·lar-hi APK de qualsevol lloc, però hi ha moltes bones raons per a utilitzar l'F-Droid com al vostre programa de gestió d'aplicacions lliures.
 
-* Obté notificacions quan hi hagin actualitzacions disponibles
-* Opcionalment es poden baixar i instal·lar actualitzacions automàticament
-* Fer un seguiment de les versions anteriors i betes
-* Filtrar les aplicacions que no siguin compatibles amb el vostre dispositiu
-* Trobar aplicacions a través de les categories o les descripcions
-* Accedir-hi a les URLs associades per fer-hi donacions, al codi font, etc.
-* Mantindre la seguretat comprovant les firmes del dipòsit i de les APKs
+* Obteniu notificacions en haver-hi actualitzacions
+* Baixeu i instal·leu actualitzacions automàticament de manera opcional
+* Feu seguiment de les versions antigues i en beta
+* Filtreu les aplicacions no compatibles amb el vostre dispositiu
+* Trobeu aplicacions per mitjà de categories i descripcions cercables
+* Accediu a URL associats per a fer donacions, trobar el codi font, etc.
+* Estigueu segurs comprovant l'índex de signatures del repositori i els codis de verificació («hashes») dels APK

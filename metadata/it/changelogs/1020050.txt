@@ -1,0 +1,13 @@
+* Revisione del modo in cui i repository sono mostrati agli utenti per evidenziare quando una installazione non arriva da f-droid.org.
+
+* Gli utenti possono modificare la priorità dei repository globalmente e per app.
+
+* Le anti-caratteristiche sono ora abilitate come predefinito, anziché disabilitate.
+
+* Supporto ricezione di URL dei repo tramite Share
+
+* Le attività rispettano il tema giorno/notte
+
+* Aggiornamento dell'uso dello storage esterno con targetSdkVersion 29
+
+* F-Droid Basic aggiornato per funzionare con targetSdkVersion 34

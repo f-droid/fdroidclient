@@ -382,7 +382,7 @@
     <string name="app_list__dismiss_app_update">Actualizare ignorată</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilitate ignorată</string>
     <string name="app_list__dismiss_downloading_app">Descărcare anulată</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Am găsit o vulnerabilitate cu %1$s. Vă recomandăm să dezinstalați imediat această aplicație.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Am găsit o vulnerabilitate cu %1$s. Atingeți pentru a citi mai multe în secțiunea caracteristicilor periculoase.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">S-a detectat o vulnerabilitate în %1$s. Se recomandă actualizarea imediată la cea mai nouă versiune.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoră</string>
     <string name="privacy">Intimitate</string>
@@ -611,4 +611,7 @@
     <string name="auto_update_time_past">Următoarea actualizare când sunt îndeplinite condițiile</string>
     <string name="antitetherednetlist">Această aplicație depinde în întregime de o anumită instanță a unui serviciu de rețea</string>
     <string name="antitetherednet">Servicii de rețea captive</string>
+    <string name="swap_bluetooth_permissions">Vă rugăm să acordați permisiunea pentru Bluetooth sau Dispozitiv apropiat!</string>
+    <string name="apk_permissions_mismatch">Aplicația are permisiuni neașteptate: %s</string>
+    <string name="menu_share_apk">Partajează fișierul APK</string>
 </resources>

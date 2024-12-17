@@ -1,0 +1,13 @@
+* Penukaran melalui kartu SD didukung
+
+* Perbaikan bug dan peningkatan Nearby Swap
+
+* Peningkatan lebih lanjut pada "Detail Aplikasi"
+
+* Perbarui bahasa dan terjemahan tentang Nearby dan Swap
+
+* Logika pemilihan ikon aplikasi yang lebih baik
+
+* Tambahkan repos melalui additional_repos.xml bawaan dari ROM, OEM, vendor.
+
+* Tampilkan versionCode dalam entri daftar versi yang diperluas dalam mode Ahli

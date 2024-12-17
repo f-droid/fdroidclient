@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Den nye version er signeret med en anden nøgle end den gamle. Den gamle version skal afinstalleres før den nye version kan installeres. Gør det og forsøg igen. (NB! Afinstallation sletter alle data appen har lagret internt.)</string>
     <string name="installIncompatible">App ikke kompatibel med din enhed. Installer alligevel\?</string>
     <string name="version">Version</string>
@@ -54,10 +54,10 @@
     <string name="bad_fingerprint">Ugyldigt fingeraftryk</string>
     <string name="invalid_url">Dette er en ugyldig URL.</string>
     <string name="malformed_repo_uri">Ignorerer defekt arkiv-URI: %s</string>
-    <string name="menu_manage">Arkiver</string>
+    <string name="menu_manage">Repositories</string>
     <string name="menu_settings">Indstillinger</string>
     <string name="menu_search">Søg</string>
-    <string name="menu_add_repo">Nyt Arkiv</string>
+    <string name="menu_add_repo">Nyt Repository</string>
     <string name="menu_launch">Åbn</string>
     <string name="menu_share">Del</string>
     <string name="menu_install">Installer</string>
@@ -118,7 +118,7 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Usigneret</string>
     <string name="unverified">Ubekræftet</string>
-    <string name="repo_details">Arkiv</string>
+    <string name="repo_details">Repository</string>
     <string name="repo_url">Adresse</string>
     <string name="repo_num_apps">Antal apps</string>
     <string name="repo_fingerprint">Signeringsnøglens fingeraftryk (SHA-256)</string>
@@ -138,11 +138,11 @@
     <string name="repo_added">Gemte pakkearkiv %1$s.</string>
     <string name="repo_searching_address">Leder efter pakkearkiv på
 \n%1$s</string>
-    <string name="not_on_same_wifi">Din enhed er ikke på samme wifi-netværk som det lokale arkiv du lige tilføjede! Prøv at forbinde til: %s</string>
+    <string name="not_on_same_wifi">Din enhed er ikke på samme Wi-Fi som det lokale repo, du lige har tilføjet! Prøv at forbinde til: %s</string>
     <string name="requires_features">Kræver: %1$s</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_language_default">Systemstandard</string>
-    <string name="wifi">Wifi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Forbindelse</string>
     <string name="category_Development">Udvikling</string>
@@ -265,7 +265,7 @@
     <string name="app_list__name__successfully_installed">%1$s installeret</string>
     <string name="updates__tts__download_app">Hent</string>
     <string name="notification_title_single_update_available">Opdatering Tilgængelig</string>
-    <string name="notification_title_summary_install_error">Installation Fejlede</string>
+    <string name="notification_title_summary_install_error">Installation Mislykkedes</string>
     <string name="by_author_format">af %s</string>
     <string name="app_details_donate_prompt_unknown_author">Giv udviklerne af %1$s en kop kaffe!</string>
     <string name="app_details_donate_prompt">%1$s er skabt af %2$s. Giv dem en kop kaffe!</string>
@@ -282,8 +282,8 @@
     <string name="updates__hide_updateable_apps">Skjul apps</string>
     <string name="updates__show_updateable_apps">Vis apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Hent opdatering til %1$d app.</item>
-        <item quantity="other">Hent opdateringer til %1$d apps.</item>
+        <item quantity="one">Hent opdatering til %1$d app:</item>
+        <item quantity="other">Hent opdateringer til %1$d apps:</item>
     </plurals>
     <string name="versions">Versioner</string>
     <string name="clear_search">Ryd søgning</string>
@@ -367,7 +367,7 @@
     <string name="app_list__dismiss_app_update">Opdatering ignoreret</string>
     <string name="app_list__dismiss_vulnerable_app">Sårbarhed ignoreret</string>
     <string name="app_list__dismiss_downloading_app">Hentning annulleret</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fandt en sårbarhed i %1$s. Vi anbefaler, at du afinstallerer denne app straks.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fandt en sårbarhed i %1$s. Tryk for at læse mere i Anti-Funktion afsnittet.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi fandt en sårbarhed i %1$s. Vi anbefaler, at du opgraderer til den nyeste version straks.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
     <string name="status_inserting_x_apps">Gemmer app-detaljer (%1$d/%2$d) fra %3$s</string>
@@ -396,8 +396,8 @@
     <string name="repo_exists_add_fingerprint">%1$s er allerede sat op, dette tilføjer ny nøgleinformation.</string>
     <string name="menu_open">Åbn</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Inkluder apps med antifunktionalitet</string>
-    <string name="show_anti_feature_apps_on">Vis apps der kræver antifunktionalitet</string>
+    <string name="show_anti_feature_apps">Inkludér Anti-Funktioner</string>
+    <string name="show_anti_feature_apps_on">Vis apps der har kendte Anti-Funktioner</string>
     <string name="force_touch_apps">Inkluder touchscreen-apps</string>
     <string name="privacy">Privatliv</string>
     <string name="preventScreenshots_title">Bloker skærmbilleder</string>
@@ -445,7 +445,7 @@
     <string name="scan_removable_storage_summary">Søg efter pakkearkiver på flytbare lagerenheder som SD-kort og USB-drev</string>
     <string name="menu_translation">Oversættelse</string>
     <string name="main_menu__updates">Nyt</string>
-    <string name="antinosourcesince">Kildekode ikke længere tilgængelig; ingen opdateringer mulige.</string>
+    <string name="antinosourcesince">Kildekoden er ikke længere tilgængelig; ingen mulige opdateringer</string>
     <string name="force_touch_apps_on">Vis apps der kræver touchscreen uanset hardwareunderstøttelse</string>
     <string name="panic_hide_warning_message">Ved en panikhændelse vil dette fjerne %1$s fra startskærmen. Kun indtastning af \"%2$d\" i den falske app %3$s kan genskabe det.</string>
     <string name="hide_on_long_search_press_summary">Langt tryk på søgeknappen skjuler appen</string>
@@ -503,10 +503,10 @@
     <string name="antiads">Reklamer</string>
     <string name="antitrack">Sporing</string>
     <string name="antinonfreenet">Ikke-Frie Netværkstjenester</string>
-    <string name="app_list_results_hidden_antifeature_settings">Nogle resultater er skjult pga. dine antifeature-indstillinger.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Nogle apps er skjult baseret på dine indstillinger for Anti-funktioner. Tryk for at ændre.</string>
     <string name="antinonfreead">Ikke-Frie Tilføjelser</string>
     <string name="antiknownvuln">Kendt Sårbarhed</string>
-    <string name="antiothers">Andre Antifunktioner</string>
+    <string name="antiothers">Andre Anti-funktioner</string>
     <string name="antiupstreamnonfree">Ikke-Fri Opstrømskode</string>
     <string name="antinonfreeassets">Ikke-Frie Elementer</string>
     <string name="antidisabledalgorithm">Signeret Med Usikker Algoritme</string>
@@ -533,6 +533,61 @@
     <string name="repo_archive_toggle_description">Vis arkiverede apps og forældede versioner af apps</string>
     <string name="nearby_splace__external_storage_permission_button">Prøv det</string>
     <string name="repo_last_update_downloaded">Seneste opdatering downloadet</string>
-    <string name="force_old_installer_summary">Deaktiver beta Session Installeren, inklusive support til automatisk baggrundsopdateringer.</string>
+    <string name="force_old_installer_summary">Deaktiver Session Installatøren, inklusiv support til automatiske baggrundsopdateringer.</string>
     <string name="repo_num_apps_button">Vis apps</string>
+    <string name="app_details_repositories">Repositories</string>
+    <string name="app_details_repository">Repository</string>
+    <string name="repo_state_fetching">Henter repository…</string>
+    <string name="repo_enter_url">Indtast repository-URL manuelt</string>
+    <string name="repo_add_repo_and_mirror">Tilføj repository og mirror</string>
+    <string name="repo_view_repo">Se repository</string>
+    <string name="repo_scan_qr_code">Scan QR-kode</string>
+    <string name="repo_preview_included_apps">Inkluderede apps:</string>
+    <string name="repo_add_new_title">Tilføj repository</string>
+    <string name="repo_state_adding">Tilføjer repository…</string>
+    <string name="repo_list_info_title">Liste over Repositories</string>
+    <string name="repo_exists">Dette repository er allerede tilføjet.</string>
+    <string name="repo_mirror_exists">Dette mirror er allerede tilføjet (%s).</string>
+    <string name="repo_mirror_add_info">URL\'en, du forsøger at tilføje (%s), er et mirror af et eksisterende repository.</string>
+    <string name="repo_and_mirror_add_both_info">URL\'en, du forsøger at tilføje (%s), er et mirror af et nyt repository. Både det originale repository og mirror bliver tilføjet.</string>
+    <string name="app_details_repository_preferred">(foretrækkes)</string>
+    <string name="app_details_repository_button_prefer">Fortrækker depot</string>
+    <string name="app_details_repository_expand">Udvid depot list</string>
+    <string name="copied_url_to_clipboard">Kopieret URL til udklipsholder</string>
+    <string name="targetsdk_or_later">mål %s</string>
+    <string name="menu_share_apk">Del APK fil</string>
+    <string name="auto_update_time_past">Næste opdatering når vilkårene er opfyldt</string>
+    <string name="antitetherednetlist">Denne app er helt afhængig af en bestemt instans af en netværkstjeneste</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">natlig</string>
+    <string name="apk_permissions_mismatch">App har uventet tilladelse: %s</string>
+    <string name="repo_invalid">Ugyldigt repository.\n\nKontakt vedligeholderen og informér dem om problemet.</string>
+    <string name="swap_banner_message">For at bytte apps, start dit Wi-Fi og forbind til det samme netværk som din ven.</string>
+    <string name="repo_list_info_text">En pakkebrønd er en kilde af apps. Denne liste viser alle nuværende tilføjede pakkebrønde. Deaktiverede pakkebrønde bliver ikke brugt.\n\nHvis en app er i mere end en pakkebrønd bliver pakkebrønden øverst på listen automatisk foretrukket. Du kan omsortere pakkebrøndene ved at holde og trække dem.</string>
+    <string name="repo_disable_warning">At deaktivere denne pakkebrønd vil fjerne dens \"foretrukken\" status fra alle apps.</string>
+    <string name="copied_to_clipboard">Kopieret til udklipsholder</string>
+    <string name="paste">Indsæt</string>
+    <string name="copied_permission_to_clipboard">Kopieret tilladelsesnavn til udklipsholder</string>
+    <string name="swap_connection_indexv0_error">Du prøver at forbinde til nogen med en uddateret udgave af F-Droid. For at forbinde skal de opgradere deres F-Droid app. De kan anvende byt til at opdatere deres F-Droid app fra dig.</string>
+    <string name="repo_intro">Et repository er en yderligere kilde til apps. Tredjeparts repositorier som du tilføjer her har andre standarder end de der tilbyder apps bygget af F-Droid.\n\nVær sikker på, at du kan stole på det repository som du tilføjer.</string>
+    <string name="ipfsgw_add_add">Tilføj</string>
+    <string name="auto_update_time">Tidligste næste opdatering: %s</string>
+    <string name="ipfsgw_summary_disabled">Hent apps ved brug af IPFS web endpoints: deaktiveret</string>
+    <string name="ipfsgw_add_title">Tilføj IPFS-gateway</string>
+    <string name="antitetherednet">Bundne Netværkstjenester</string>
+    <string name="swap_bluetooth_permissions">Giv venligst tilladelse til Bluetooth eller Enheder i nærheden!</string>
+    <string name="repo_io_error">Fejl ved tilslutning til repositoriet.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one"/>
+        <item quantity="other">Hent apps ved brug af IPFS web endpoints: %1$d aktiveret</item>
+    </plurals>
+    <string name="ipfsgw_title">IPFS-gateways</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kan søge efter repos og mirrors på dit SD-kort, men kræver din tilladelse til at gøre det.</string>
+    <string name="repo_error_adding_archive">Arkiver kan ikke tilføjes direkte. Tryk på repositoriet på listen, og aktiver arkivet der.</string>
+    <string name="repo_share_not_found">Kunne ikke finde repo-adressen i den delte tekst.</string>
+    <string name="warning_no_compat_versions">Det valgte repository har ingen kompatible app-versioner. For at modtage opdateringer skal du vælge et repository med kompatible versioner.</string>
+    <string name="ipfsgw_caption_official_gateways">Officielle IPFS-gateways</string>
+    <string name="ipfsgw_caption_custom_gateways">Brugerdefinerede IPFS-gateways</string>
+    <string name="ipfsgw_explainer">Hent apps fra IPFS web endpoints. (Virker kun for F-Droid-repositories med IPFS-understøttelse.)</string>
+    <string name="preferForeign">Foretræk udenlandske mirrors</string>
+    <string name="preferForeignSummary">Prøv først mirrors, der ligger uden for dit land, f.eks. hvis udenlandsk beskyttelse er stærkere.</string>
 </resources>

@@ -28,8 +28,8 @@
     <string name="app_inst_known_source">Terpasang (dari %s)</string>
     <string name="app_inst_unknown_source">Terpasang (dari sumber tidak dikenal)</string>
     <string name="added_on">Ditambahkan pada %s</string>
-    <string name="ok">OKE</string>
-    <string name="yes">Ya</string>
+    <string name="ok">Siap</string>
+    <string name="yes">Iya</string>
     <string name="no">Tidak</string>
     <string name="repo_add_title">Tambahkan repositori baru</string>
     <string name="repo_add_add">Tambahkan</string>
@@ -69,7 +69,7 @@
     <string name="antiadslist">Aplikasi ini berisi iklan</string>
     <string name="antitracklist">Aplikasi ini melacak dan melaporkan aktivitas Anda</string>
     <string name="antinonfreeadlist">Aplikasi ini mempromosikan ekstensi non-bebas</string>
-    <string name="antinonfreenetlist">Aplikasi ini mempromosikan atau bergantung pada layanan jaringan yang tidak dapat diubah atau tidak bebas</string>
+    <string name="antinonfreenetlist">Aplikasi ini mempromosikan atau bergantung sepenuhnya pada layanan jaringan tidak gratis</string>
     <string name="antinonfreedeplist">Aplikasi ini bergantung pada aplikasi non-bebas lainnya</string>
     <string name="antiupstreamnonfreelist">Kode sumber utama tidak sepenuhnya Bebas</string>
     <string name="display">Tampilan</string>
@@ -111,7 +111,7 @@
     <string name="permissions">Izin</string>
     <string name="no_handler_app">Anda tidak memiliki aplikasi yang bisa menangani %s.</string>
     <string name="theme">Tema</string>
-    <string name="unsigned">Tidak tertandatangani</string>
+    <string name="unsigned">Tidak Ditanda Tangani</string>
     <string name="unverified">Tidak terverifikasi</string>
     <string name="repo_details">Repositori</string>
     <string name="repo_url">Alamat</string>
@@ -165,7 +165,7 @@
     <string name="category_Games">Permainan</string>
     <string name="category_Graphics">Grafis</string>
     <string name="category_Internet">Internet</string>
-    <string name="category_Money">Finansial</string>
+    <string name="category_Money">Uang</string>
     <string name="category_Multimedia">Multimedia</string>
     <string name="category_Navigation">Navigasi</string>
     <string name="category_Phone_SMS">Telepon &amp; SMS</string>
@@ -285,7 +285,7 @@
     <string name="notification_title_summary_installed">Berhasil dipasang</string>
     <string name="notification_title_summary_install_error">Pemasangan Gagal</string>
     <string name="notification_action_update">Perbarui</string>
-    <string name="notification_action_cancel">Batalkan</string>
+    <string name="notification_action_cancel">Batal</string>
     <string name="notification_action_install">Pasang</string>
     <string name="app_details_donate_prompt_unknown_author">Belikan pengembang %1$s kopi!</string>
     <string name="app_version_x_available">Versi %1$s tersedia</string>
@@ -371,7 +371,7 @@
     <string name="app_details__no_versions__none_compatible_with_device">Tidak ada versi yang kompatibel dengan perangkat ini</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Versi yang terpasang tidak kompatibel dengan semua versi yang tersedia. Menghapus aplikasi akan memungkinkan Anda melihat dan memasang versi yang kompatibel. Ini biasanya terjadi pada aplikasi yang terinstal melalui Google Play atau sumber lain, jika aplikasi tersebut ditandatangani dengan sertifikat berbeda.</string>
     <string name="app_list__dismiss_vulnerable_app">Kerentanan diabaikan</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan celah keamanan dengan %1$s. Kami sarankan menghapus aplikasi ini segera.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan celah keamanan dengan %1$s. Tekan untuk membaca lebih banyak dalam bagian Antifitur.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan celah keamanan dengan %1$s. Kami sarankan untuk segera memperbarui aplikasi ke versi terbaru.</string>
     <string name="privacy">Privasi</string>
     <string name="preventScreenshots_title">Cegah screenshot</string>
@@ -398,8 +398,8 @@
     <string name="repo_delete_to_overwrite">Pertama hapus %1$s untuk menambahkan ini dengan kunci yang berbenturan.</string>
     <string name="repo_exists_add_mirror">Ini adalah salinan dari %1$s, tambahkan sebagai mirror?</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Sertakan aplikasi tanpa fitur</string>
-    <string name="show_anti_feature_apps_on">Tampilkan aplikasi yang memerlukan tanpa fitur</string>
+    <string name="show_anti_feature_apps">Sertakan Anti-Fitur</string>
+    <string name="show_anti_feature_apps_on">Tampilkan aplikasi yang telah mengetahui Anti-Fitur</string>
     <string name="force_touch_apps">Sertakan aplikasi layar sentuh</string>
     <string name="force_touch_apps_on">Menampilkan aplikasi yang membutuhkan layar sentuh terlepas dari dukungan perangkat keras</string>
     <string name="panic_hide_warning_title">Ingat cara untuk memulihkan</string>
@@ -424,7 +424,7 @@
     <string name="swap_toast_invalid_url">URL untuk bertukar tidak valid: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi diaktifkan</string>
     <string name="swap_toast_could_not_enable_hotspot">Tidak bisa mengaktifkan Hotspot Wi-Fi!</string>
-    <string name="prompt_to_send_crash_reports">Meminta pengiriman laporan kemogokan</string>
+    <string name="prompt_to_send_crash_reports">Meminta pengiriman laporan mogok</string>
     <string name="prompt_to_send_crash_reports_summary">Kumpulkan data kemogokan dan minta agar dikirimkan ke pengembang</string>
     <string name="hide_all_notifications">Sembunyikan semua notifikasi</string>
     <string name="hide_all_notifications_summary">Cegah semua tindakan agar tidak tampil di status bar dan panel notifikasi.</string>
@@ -441,7 +441,7 @@
     <string name="send_installed_apps_csv">Aplikasi terpasang oleh F-Droid sebagai berkas CSV</string>
     <string name="updates_disabled_by_settings">Semua pembaruan dinonaktifkan oleh Setelan Data/WiFi</string>
     <string name="menu_open">Buka</string>
-    <string name="antinosourcesince">Kode sumber sudah tidak tersedia, tidak memungkinkan untuk diperbarui.</string>
+    <string name="antinosourcesince">Kode sumber tidak lagi tersedia, pembaruan tidak dapat dilakukan</string>
     <string name="share_repository">Bagikan Repositori</string>
     <string name="scan_removable_storage_title">Pindai penyimpanan portabel</string>
     <string name="scan_removable_storage_toast">Memindai %s…</string>
@@ -502,7 +502,7 @@
     <string name="swap_wifi_vpn_conflict">Konflik dengan VPN aktif!</string>
     <string name="antiads">Iklan</string>
     <string name="antinonfreenet">Layanan Jaringan Non-Bebas</string>
-    <string name="app_list_results_hidden_antifeature_settings">Beberapa hasil disembunyikan berdasarkan pengaturan antifitur anda.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Beberapa aplikasi disembunyikan berdasarkan pengaturan Anti-Fitur Anda. Sentuh untuk mengubah.</string>
     <string name="antitrack">Pelacakan</string>
     <string name="antinonfreead">Tambahan Non-Bebas</string>
     <string name="antiupstreamnonfree">Upstream Non-Bebas</string>
@@ -511,7 +511,7 @@
     <string name="antidisabledalgorithm">Ditandatangani Menggunakan Algoritma Tidak Aman</string>
     <string name="antiknownvuln">Kerentanan yang Diketahui</string>
     <string name="antinosource">Kode Sumber Tidak Lagi Tersedia</string>
-    <string name="antiothers">Anti-fitur lainnya</string>
+    <string name="antiothers">Anti-Fitur Lainnya</string>
     <string name="antinsfw">Tidak Aman untuk Kerja</string>
     <string name="menu_release_channel_beta">Perbolehkan Pembaruan Beta</string>
     <string name="latest__empty_state__upgrading">Meningkatkan basis data…</string>
@@ -541,7 +541,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid dapat mencari repositori dan cerminan di Kartu SD Anda, tetapi memerlukan perizinan Anda supaya bisa.</string>
     <string name="swap_connection_indexv0_error">Anda sedang mencoba untuk menghubungkan ke seseorang dengan versi F-Droid yang lawas. Untuk menghubungkan, mereka harus meningkatkan aplikasi F-Droid mereka. Mereka dapat menggunakan penggantian untuk memperbarui aplikasi F-Droid mereka dari Anda.</string>
     <string name="force_old_installer_title">Paksakan pemasang lawas</string>
-    <string name="force_old_installer_summary">Nonaktifkan Pemasang Sesi, termasuk dukungan pembaruan latar belakang secara otomatis.</string>
+    <string name="force_old_installer_summary">Nonaktifkan Penginstal Sesi, termasuk dukungan untuk pembaruan latar belakang otomatis.</string>
     <string name="copied_to_clipboard">Disalin ke papan klip</string>
     <string name="copied_permission_to_clipboard">Nama perizinan disalin ke papan klip</string>
     <string name="copied_url_to_clipboard">URL disalin ke papan klip</string>
@@ -588,4 +588,12 @@
     <string name="repo_and_mirror_add_both_info">URL yang Anda coba tambahkan (%s) adalah mirror dari repositori baru. Keduanya merupakan repositori original dan mirror akan ditambahkan.</string>
     <string name="auto_update_time">Pembaruan dekat berikutnya: %s</string>
     <string name="warning_no_compat_versions">Repositori yang dipilih tidak memiliki versi aplikasi kompatibel. Untuk menerima pembaruan, pilih repositori dengan versi yang kompatibel.</string>
+    <string name="auto_update_time_past">Pembaruan berikutnya ketika syarat terpenuhi</string>
+    <string name="antitetherednet">Layanan Jaringan Tertambat</string>
+    <string name="antitetherednetlist">Aplikasi ini sepenuhnya bergantung pada layanan jaringan tertentu</string>
+    <string name="swap_bluetooth_permissions">Silakan berikan perizinan Bluetooth atau Perangkat di Sekitar!</string>
+    <string name="menu_share_apk">Bagikan berkas APK</string>
+    <string name="apk_permissions_mismatch">Aplikasi memiliki perizinan tidak terduga: %s</string>
+    <string name="preferForeign">Utamakan Cermin Asing</string>
+    <string name="preferForeignSummary">Coba cermin yang terletak di luar negara Anda terlebih dahulu, mis. jika perlindungan asing lebih kuat.</string>
 </resources>

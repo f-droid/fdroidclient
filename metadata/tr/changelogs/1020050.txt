@@ -1,0 +1,13 @@
+* Bir kurulumun f-droid.org dışından geldiğini anlamak için depoların kullanıcılara nasıl sunulduğu elden geçti
+
+* Kullanıcı depo önceliğini genel veya uygulama başı değiştirmesine izin verme
+
+* Özel Anti-Özellikler artık devre dışı değil, varsayılan etkin
+
+* Depo URL paylaşım desteği
+
+* Tüm aktiviteler gündüz/gece temasına saygı gösterir
+
+* Harici depolama kullanımlarını targetSdkVersion 29 ile çalışacak şekilde güncellendi
+
+* F-Droid Basic, targetSdkVersion 34 ile çalışacak şekilde güncellendi

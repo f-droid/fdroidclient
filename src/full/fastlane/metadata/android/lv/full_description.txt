@@ -2,9 +2,9 @@ F-Droid ir uzstādāms brīvās programmatūras Android lietotņu katalogs. F-Dr
 
 Tā savienojas ar jebkuru ar F-Droid saderīgu glabātavu. Noklusējuma glabātava ir izvietota f-droid.org, kas satur tikai labticīgu brīvo programmatūru.
 
-Android pats par sevi ir atvērts tādā nozīmē, ka ikviens var uzstādīt APK no jebkurienes, no kurienes vēlas, bet šeit ir vairāki labi iemesli F-Droid izmantošanai kā brīvās programmatūras lietotņu pārvaldnieku:
+Android pats par sevi ir atvērts tādā nozīmē, ka ikviens var uzstādīt no jebkurienes lejupielādētu APK, taču zemāk ir vairāki labi iemesli F-Droid izmantošanai kā brīvās programmatūras lietotņu pārvaldnieku:
 
-* Paziņojumi par pieejamiem atjauninājumiem
+* Paziņojumu saņemšana, kad ir pieejami atjauninājumi
 * Pēc izvēles var automātiski lejupielādēt un uzstādīt atjauninājumus
 * Seko līdzi vecākām un beta versijām
 * Ar ierīci nesaderīgu lietotņu atmešana

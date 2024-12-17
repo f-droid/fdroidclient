@@ -1,0 +1,15 @@
+NOTA: La versió bàsica del client de l'F-Droid té un conjunt de funcionalitats reduït (p. ex. no hi ha compartició propera i funció del pànic). Està orientada a l'Android 13 i pot fer actualitzacions desateses sense extensions de privilegis ni permisos d'administració («root»).
+
+L'F-Droid és un catàleg instal·lable d'aplicacions de programari lliure per a l'Android. El client de l'F-Droid fa que sigui fàcil navegar, instal·lar i fer seguiment de les actualitzacions al dispositiu.
+
+Connecta amb qualsevol repositori de l'F-Droid compatible. El repositori predefinit s'hostatja a f-droid.org, i només conté programari lliure fet amb bona fe.
+
+El mateix Android és obert en el sentit que podeu instal·lar-hi APK de qualsevol lloc, però hi ha moltes bones raons per a utilitzar l'F-Droid com al vostre programa de gestió d'aplicacions lliures.
+
+* Obteniu notificacions en haver-hi actualitzacions
+* Baixeu i instal·leu actualitzacions automàticament de manera opcional
+* Feu seguiment de les versions antigues i en beta
+* Filtreu les aplicacions no compatibles amb el vostre dispositiu
+* Trobeu aplicacions per mitjà de categories i descripcions cercables
+* Accediu a URL associats per a fer donacions, trobar el codi font, etc.
+* Estigueu segurs comprovant l'índex de signatures del repositori i els codis de verificació («hashes») dels APK

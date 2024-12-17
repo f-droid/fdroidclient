@@ -1,0 +1,5 @@
+* merombak swap terdekat menggunakan AP hotspot perangkat
+
+* menambahkan respons panik baru: mencopot pemasangan aplikasi dan mengatur ulang repo ke default
+
+* memperbaiki dukungan proksi saat pertama kali dijalankan

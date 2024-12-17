@@ -20,7 +20,7 @@
     <string name="app_details">Detalles de la aplicación</string>
     <string name="no_such_app">No se encontró la aplicación.</string>
     <string name="about_title_full">Sobre F-Droid</string>
-    <string name="about_site">Sitio web</string>
+    <string name="about_site">Página web</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalado</string>
     <string name="app_not_installed">No instalado</string>
@@ -170,7 +170,7 @@
     <string name="swap_success">¡Intercambio exitoso!</string>
     <string name="swap_active_hotspot">%1$s (su punto de acceso)</string>
     <string name="swap_switch_to_wifi">Tocar para cambiar a una red Wi-Fi</string>
-    <string name="swap_dont_show_again">No volver a mostrar esto</string>
+    <string name="swap_dont_show_again">No volver a mostrar</string>
     <string name="swap_scan_or_type_url">Una persona tiene que escanear el código o escribir el URL de la otra en un navegador.</string>
     <string name="swap_choose_apps">Elija las aplicaciones</string>
     <string name="swap_scan_qr">Código QR</string>
@@ -398,12 +398,12 @@
     <string name="app_list__dismiss_app_update">Actualización ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidad ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Se ha encontrado una vulnerabilidad con  %1$s. Recomendamos desinstalar esta aplicación inmediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Se ha encontrado una vulnerabilidad con %1$s. Toca para leer más en la sección Características Indeseadas.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Se ha encontrado una vulnerabilidad con  %1$s. Recomendamos actualizar a la última versión inmediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
     <string name="privacy">Privacidad</string>
     <string name="preventScreenshots_title">Evitar capturas de pantalla</string>
-    <string name="preventScreenshots_summary">Bloquea la captura de pantalla y oculta el contenido de la aplicación de la pantalla de aplicaciones recientes</string>
+    <string name="preventScreenshots_summary">Impide la captura de pantalla y oculta el contenido de la aplicación en la pantalla de aplicaciones recientes</string>
     <string name="panic_app_setting_title">Aplicación de botón de pánico</string>
     <string name="panic_app_unknown_app">una aplicación desconocida</string>
     <string name="panic_app_setting_summary">No se ha establecido aplicación</string>
@@ -536,7 +536,7 @@
     <string name="antinosource">El código fuente ya no está disponible</string>
     <string name="antinonfreead">Complementos no libres</string>
     <string name="antiupstreamnonfree">Original no libre</string>
-    <string name="antinonfreeassets">Recursos no gratuitos</string>
+    <string name="antinonfreeassets">Recursos no libres</string>
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
     <string name="antiothers">Otras características indeseables</string>
@@ -623,4 +623,6 @@
     <string name="antitetherednet">Servicios de red conectados</string>
     <string name="antitetherednetlist">Esta aplicación depende enteramente de un determinado servicio de la red</string>
     <string name="swap_bluetooth_permissions">¡Por favor, concede el permiso Bluetooth o Dispositivo cercano!</string>
+    <string name="apk_permissions_mismatch">La aplicación tiene un permiso inesperado: %s</string>
+    <string name="menu_share_apk">Compartir archivo APK</string>
 </resources>

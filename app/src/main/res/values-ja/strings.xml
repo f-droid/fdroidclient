@@ -368,7 +368,7 @@
     <string name="app_list__dismiss_app_update">更新を無視しました</string>
     <string name="app_list__dismiss_vulnerable_app">脆弱性を無視しました</string>
     <string name="app_list__dismiss_downloading_app">ダウンロードをキャンセルしました</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s に脆弱性を発見しました。今すぐこのアプリをアンインストールすることを推奨します。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s に脆弱性を発見しました。詳しくは非フューチャー・セクションをご確認ください。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s に脆弱性を発見しました。今すぐ最新バージョンへアップデートすることを推奨します。</string>
     <string name="updates__app_with_known_vulnerability__ignore">無視</string>
     <string name="privacy">プライバシー</string>
@@ -590,4 +590,9 @@
     <string name="auto_update_time_past">条件が満たされたら次回更新</string>
     <string name="antitetherednet">テザーネットワークサービス</string>
     <string name="antitetherednetlist">このアプリはネットワークサービスの特定のインスタンスに完全に依存しています</string>
+    <string name="menu_share_apk">APKファイルを共有</string>
+    <string name="swap_bluetooth_permissions">近くのデバイス若しくはBlueToothの権限を許可してください!</string>
+    <string name="preferForeign">外部ミラーを優先</string>
+    <string name="preferForeignSummary">例えば外部保護が強固である場合、まずはあなたの国外にあるミラーを試してみてください。</string>
+    <string name="apk_permissions_mismatch">アプリの想定外の権限: %s</string>
 </resources>

@@ -393,8 +393,8 @@
     <string name="app_list__dismiss_app_update">Zignorowano aktualizację</string>
     <string name="app_list__dismiss_vulnerable_app">Zignorowano podatność</string>
     <string name="app_list__dismiss_downloading_app">Anulowano pobieranie</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Zidentyfikowaliśmy lukę w zabezpieczeniach w %1$s. Zalecamy natychmiastowe odinstalowanie tej aplikacji.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Zidentyfikowaliśmy lukę w zabezpieczeniach w %1$s. Zalecamy natychmiastowe zaktualizowanie do najnowszej wersji.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Zidentyfikowaliśmy lukę w zabezpieczeniach w %1$s. Naciśnij, aby przeczytać więcej w sekcji niepożądanych funkcji.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Znaleźliśmy podatność w %1$s. Zalecamy natychmiastowe zaktualizowanie do najnowszej wersji.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignoruj</string>
     <string name="privacy">Prywatność</string>
     <string name="preventScreenshots_title">Blokuj zrzuty ekranu</string>
@@ -620,4 +620,8 @@
     <string name="antitetherednet">Usługi sieciowe wykorzystujące tethering</string>
     <string name="antitetherednetlist">Ta aplikacja całkowicie zależy od określonej instancji usługi sieciowej</string>
     <string name="swap_bluetooth_permissions">Przyznaj uprawnienie Bluetooth lub Urządzenie w pobliżu!</string>
+    <string name="apk_permissions_mismatch">Aplikacja ma nieoczekiwane uprawnienie: %s</string>
+    <string name="menu_share_apk">Udostępnij plik APK</string>
+    <string name="preferForeignSummary">Najpierw wypróbuj serwery lustrzane znajdujące się poza granicami Twojego kraju, np. jeśli zagraniczna ochrona jest silniejsza.</string>
+    <string name="preferForeign">Preferuj zagraniczne serwery lustrzane</string>
 </resources>

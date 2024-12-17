@@ -1,0 +1,11 @@
+* Perombakan besar-besaran pada swap UI, mempersiapkan penulisan ulang
+
+* Menampilkan "Urungkan" setelah menggeser item dari tab "Pembaruan" (terima kasih @Hocuri!)
+
+* Memperbaiki penanganan ETag saat terhubung ke mirror NGINX #1737
+
+* Memperbaiki masalah pada tampilan "Terbaru" yang disebabkan oleh kesalahan penanganan zona waktu #1757
+
+* Abaikan semua kerusakan yang tidak penting pada layanan latar belakang
+
+* Jangan gunakan Ekstensi Istimewa jika dimatikan di "Pengaturan"

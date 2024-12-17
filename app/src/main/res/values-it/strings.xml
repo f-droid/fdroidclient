@@ -128,7 +128,7 @@
     <string name="category_Navigation">Navigazione</string>
     <string name="category_Phone_SMS">Telefono e SMS</string>
     <string name="category_Reading">Lettura</string>
-    <string name="category_Science_Education">Scienza ed educazione</string>
+    <string name="category_Science_Education">Scienza e istruzione</string>
     <string name="category_Security">Sicurezza</string>
     <string name="category_System">Sistema</string>
     <string name="swap_join_same_wifi">Collegati alla stessa rete Wi-Fi del tuo amico</string>
@@ -625,4 +625,9 @@
     <string name="antitetherednet">Servizi di rete in tethering</string>
     <string name="antitetherednetlist">Questa app dipende completamente da una particolare istanza di un servizio di rete</string>
     <string name="auto_update_time_past">Prossimo aggiornamento quando le condizioni sono soddisfatte</string>
+    <string name="apk_permissions_mismatch">L\'app ha un autorizzazione inaspettata: %s</string>
+    <string name="menu_share_apk">Condividi file APK</string>
+    <string name="swap_bluetooth_permissions">Si prega di dare l\'autorizzazione Bluetooth oppure Dispositivo nelle vicinanze!</string>
+    <string name="preferForeignSummary">Prova prima mirror che si trovano al di fuori del tuo Paese, ad es. se le protezioni all\'estero sono più robuste.</string>
+    <string name="preferForeign">Preferisci mirror esteri</string>
 </resources>

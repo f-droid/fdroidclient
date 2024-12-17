@@ -377,7 +377,7 @@
     <string name="app_list__dismiss_app_update">Güncelleme yok sayıldı</string>
     <string name="app_list__dismiss_vulnerable_app">Güvenlik açığı yok sayıldı</string>
     <string name="app_list__dismiss_downloading_app">İndirme iptal edildi</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s içinde bir güvenlik açığı bulduk. Bu uygulamayı hemen kaldırmanızı öneririz.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">%1$s ile alakalı bir güvenlik açığı bulduk. Daha fazlasını okumak için Anti-Özellikler bölümüne dokunun.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">%1$s içinde bir güvenlik açığı bulduk. Hemen en yeni sürüme güncellemenizi öneririz.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Yoksay</string>
     <string name="privacy">Gizlilik</string>
@@ -600,4 +600,8 @@
     <string name="antitetherednet">Bağlı Ağ Hizmetleri</string>
     <string name="antitetherednetlist">Bu uygulama tamamen belirli bir ağ hizmetinin örneğine bağlıdır</string>
     <string name="swap_bluetooth_permissions">Lütfen Bluetooth veya Yakındaki Aygıtlar izni verin!</string>
+    <string name="menu_share_apk">APK dosyasını paylaş</string>
+    <string name="apk_permissions_mismatch">Uygulamanın beklenmeyen izni var: %s</string>
+    <string name="preferForeign">Yabancı Yansıları Tercih Et</string>
+    <string name="preferForeignSummary">Önce bulunduğun ülkenin dışında bulunan yabancı yansıları dene, örn. yabancı güvenlikler daha güçlüyse.</string>
 </resources>

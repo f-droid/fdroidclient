@@ -39,14 +39,9 @@
     <string name="details_notinstalled">Jo i instaluar</string>
     <string name="icon">Ikonë</string>
     <string name="skip">Anashkaloje</string>
-    <string name="status_download">Po shkarkohet
-\n%2$s / %3$s (%4$d%%) nga
-\n%1$s</string>
-    <string name="status_download_unknown_size">Po shkarkohet
-\n%2$s që nga
-\n%1$s</string>
-    <string name="status_connecting_to_repo">Po lidhet te
-\n%1$s</string>
+    <string name="status_download">Po shkarkohet \n%2$s / %3$s (%4$d%%) nga \n%1$s</string>
+    <string name="status_download_unknown_size">Po shkarkohet \n%2$s që nga \n%1$s</string>
+    <string name="status_connecting_to_repo">Po lidhet te \n%1$s</string>
     <string name="global_error_updating_repos">Gabim gjatë përditësimit: %s</string>
     <string name="permissions">Leje</string>
     <string name="theme">Temë</string>
@@ -144,14 +139,14 @@
     <string name="installed_app__updates_ignored">Përditësime të shpërfillura</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Përditësime të shpërfillura për Versionin %1$s</string>
     <string name="update_all">Përditësoji krejt</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Gjetëm një cenueshmëri me %1$s. Rekomandojmë ta çinstaloni aplikacionin menjëherë.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Gjetëm një cenueshmëri me %1$s. Prekeni, që të lexoni më tepër te pjesa e Anti-Veçorive.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Gjetëm një cenueshmëri me %1$s. Rekomandojmë përditësimin menjëherë me versionin më të ri.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Shpërfille</string>
     <string name="updates__hide_updateable_apps">Fshihi aplikacionet</string>
     <string name="updates__show_updateable_apps">Shfaqi aplikacionet</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Shkarkoni përditësim për %1$d aplikacion.</item>
-        <item quantity="other">Shkarkoni përditësime për %1$d aplikacione.</item>
+        <item quantity="one">Shkarkoni përditësim për %1$d aplikacion:</item>
+        <item quantity="other">Shkarkoni përditësime për %1$d aplikacione:</item>
     </plurals>
     <string name="repo_add_title">Shtoni depo të re</string>
     <string name="repo_add_mirror">Shtoni pasqyrë</string>
@@ -189,7 +184,7 @@
     <string name="antifeatures">Anti-veçori</string>
     <string name="antiadslist">Ky aplikacion përmban reklama</string>
     <string name="antinonfreeadlist">Ky aplikacion rekomandon shtesa jo të lira</string>
-    <string name="antinonfreenetlist">Ky aplikacion promovon ose varet tërësisht nga shërbim rrjeti të pandryshueshëm, ose jo të lirë</string>
+    <string name="antinonfreenetlist">Ky aplikacion promovon ose varet tërësisht nga shërbim rrjeti jo të lirë</string>
     <string name="antinonfreedeplist">Ky aplikacion varet nga aplikacione të tjera jo të lira</string>
     <string name="antiupstreamnonfreelist">Kodi burim origjinal s’është plotësisht i Lirë</string>
     <string name="antinonfreeassetslist">Ky aplikacion përmban elementë jo të lirë</string>
@@ -200,8 +195,8 @@
     <string name="appcompatibility">Përputhje aplikacioni</string>
     <string name="show_incompat_versions">Përfshi versione të papërputhshëm</string>
     <string name="show_incompat_versions_on">Shfaq versione aplikacioni që janë të papërputhshëm me pajisjen</string>
-    <string name="show_anti_feature_apps">Përfshi aplikacione anti-veçori</string>
-    <string name="show_anti_feature_apps_on">Shfaq aplikacione që lypin anti-veçori</string>
+    <string name="show_anti_feature_apps">Përfshi Anti-Veçori</string>
+    <string name="show_anti_feature_apps_on">Shfaq aplikacione që përmbajnë Anti-Veçori të ditura</string>
     <string name="force_touch_apps">Përfshi aplikacione me ekran me prekje</string>
     <string name="force_touch_apps_on">Shfaq aplikacione që lypin ekran me prekje, pavarësisht nëse mbulohen apo jo nga hardware-i</string>
     <string name="local_repo">Depo Vendore</string>
@@ -284,9 +279,7 @@
     <string name="status_inserting_x_apps">Po ruhen hollësi aplikacioni (%1$d/%2$d) nga %3$s</string>
     <string name="scan_removable_storage_summary">Shihni për depo paketash në depozita të heqshme, të tilla si karta SD dhe disqthe USB</string>
     <string name="hiding_dialog_message">Jeni i sigurt se doni të hiqet %1$s nga nisësi? Mund ta rikthejë vetëm shtypja e “%2$d” te aplikacioni gjoja %3$s.</string>
-    <string name="empty_installed_app_list">S’u instalua aplikacion.
-\n
-\nKa aplikacione në pajisjen tuaj, por nuk janë të passhëm prej F-Droid-it. Kjo mund të vijë ngaqë duhet të përditësoni depot tuaj, ose depot në thelb s’i përmbajnë aplikacionet tuaja.</string>
+    <string name="empty_installed_app_list">S’u instalua aplikacion. \n \nKa aplikacione në pajisjen tuaj, por nuk janë të passhëm prej F-Droid-it. Kjo mund të vijë ngaqë duhet të përditësoni depot tuaj, ose depot në thelb s’i përmbajnë aplikacionet tuaja.</string>
     <string name="prompt_to_send_crash_reports_summary">Mblidh të dhëna rreth vithisjesh dhe pyet për t’ia dërguar ato zhvilluesit</string>
     <string name="app_size">Madhësi: %1$s</string>
     <string name="swap_scan_or_type_url">Njëri person lyspet të skanojë kodin, ose të shtypë URL-në e tjetrit në një shfletues.</string>
@@ -301,9 +294,7 @@
     <string name="enable_proxy_summary">Formësoni Ndërmjetër HTTP për krejt kërkesa rrjeti</string>
     <string name="panic_app_dialog_message">Jeni i sigurt se doni të lejohet %1$s të shkaktojë veprime shkatërruese butoni paniku?</string>
     <string name="repo_added">U ruajt depo paketash %1$s.</string>
-    <string name="repo_disabled_notification">U çaktivizua %1$s.
-\n
-\nQë të instaloni aplikacione prej saj, do t’ju duhet të riaktivizoni këtë depo.</string>
+    <string name="repo_disabled_notification">U çaktivizua %1$s. \n \nQë të instaloni aplikacione prej saj, do t’ju duhet të riaktivizoni këtë depo.</string>
     <string name="panic_hide_warning_message">Në një akt paniku, kjo do të heqë %1$s nga nisësi. Munda ta rikthejë vetëm shtypja e “%2$d” te aplikacioni gjoja %3$s.</string>
     <string name="all_other_repos_fine">Krejt depot e tjera s’krijuan gabime.</string>
     <string name="unsigned_description">Kjo do të thotë se lista e aplikacioneve s’u verifikua dot. Duhet të jeni i kujdesshëm me aplikacione të shkarkuar nga tregues të panënshkruar.</string>
@@ -312,16 +303,14 @@
     <string name="install_history_summary">Shihni regjistrin privat të krejt instalimeve dhe çinstalimeve</string>
     <string name="nearby_splash__document_tree">Kërko te USB OTG për depo dhe pasqyra.</string>
     <string name="system_install_denied_permissions">Zgjerimit s’i janë akorduar leje të privilegjuara! Ju lutemi, krijoni një njoftim të mete!</string>
-    <string name="updates_disabled_by_settings">Krejt përditësimet të çaktivizuara nga Rregullime për Data/WiFi</string>
+    <string name="updates_disabled_by_settings">Krejt përditësimet të çaktivizuara nga Rregullime për Të dhëna/WiFi</string>
     <string name="crash_dialog_text">Ndodhi një gabim i papritur që e detyroi aplikacionin të ndalet. Do të donit të dërgoni me email hollësitë, për të ndihmuar në ndreqjen e problemit?</string>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Shihni %1$d aplikacion te kategoria %2$s</item>
         <item quantity="other">Shihni krejt %1$d aplikacionet prej kategorisë %2$s</item>
     </plurals>
     <string name="panic_reset_repos_title">Rikthe depot te parazgjedhjet</string>
-    <string name="repo_confirm_delete_body">Fshirja e një depoje do të thotë se aplikacionet prej saj s’do të jenë më të gatshme.
-\n
-\nShënim: Krejt aplikacionet e instaluara më parë do të mbeten në pajisjen tuaj.</string>
+    <string name="repo_confirm_delete_body">Fshirja e një depoje do të thotë se aplikacionet prej saj s’do të jenë më të gatshme. \n \nShënim: Krejt aplikacionet e instaluara më parë do të mbeten në pajisjen tuaj.</string>
     <string name="no_handler_app">S’keni ndonjë aplikacion të gatshëm që mund të trajtojë %s.</string>
     <string name="swap_toast_could_not_enable_hotspot">S’u aktivizua dot Hotspot Wi-Fi!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Funksioni atypari u mbyll, ngaqë qe pa punë.</string>
@@ -352,7 +341,7 @@
     <string name="menu_open">Hap</string>
     <string name="scan_removable_storage_toast">Po skanohet %s…</string>
     <string name="main_menu__updates">Përditësime</string>
-    <string name="antinosourcesince">Kodi burim s’mund të kihet më, s’ka përditësime të mundshme.</string>
+    <string name="antinosourcesince">Kodi burim s’mund të kihet më, s’ka përditësime të mundshme</string>
     <string name="notification_action_cancel">Anuloje</string>
     <string name="panic_will_be_wiped">Do të çinstalohet dhe krejt të dhënat do të fshihen</string>
     <string name="repos_unchanged">Krejt depot janë të përditësuara</string>
@@ -368,8 +357,7 @@
     <string name="app_details">Hollësi Aplikacioni</string>
     <string name="menu_add_repo">Depo e Re</string>
     <string name="notification_title_summary_installing">Instalim</string>
-    <string name="repo_searching_address">Po shihet për depo paketash te
-\n%1$s</string>
+    <string name="repo_searching_address">Po shihet për depo paketash te \n%1$s</string>
     <string name="swap_setting_up_hotspot">Po ujdiset hotspot…</string>
     <string name="category_Sports_Health">Sporte &amp; Shëndet</string>
     <string name="details_last_updated_today">Përditësuar sot</string>
@@ -475,8 +463,7 @@
         <item quantity="one">Përditësuar %1$d vit më parë</item>
         <item quantity="other">Përditësuar %1$d vjet më parë</item>
     </plurals>
-    <string name="empty_can_update_app_list">Përgëzime!
-\nAplikacionet tuaja janë të përditësuara.</string>
+    <string name="empty_can_update_app_list">Përgëzime! \nAplikacionet tuaja janë të përditësuara.</string>
     <string name="notification_title_summary_install_error">Instalimi Dështoi</string>
     <string name="empty_search_available_app_list">S’ka aplikacione me përputhje me kërkimin tuaj.</string>
     <string name="uninstall_error_unknown">S’u arrit të instalohej për shkak të një gabimi të panjohur</string>
@@ -513,11 +500,11 @@
     <string name="antinonfreeassets">Elementë Jo të Lirë</string>
     <string name="antiupstreamnonfree">“Upstream” Jo i Lirë</string>
     <string name="antiknownvuln">Cenueshmëri e Ditur</string>
-    <string name="antiothers">Anti-veçori të Tjera</string>
+    <string name="antiothers">Anti-Veçori të Tjera</string>
     <string name="antidisabledalgorithm">Nënshkruar Duke Përdorur Një Algoritëm Jo të Parrezik</string>
     <string name="swap_wifi_vpn_conflict">Përplaset me një VPN aktive!</string>
     <string name="has_disallow_install_unknown_sources_globally">Përgjegjësi i pajisjes tuaj s’lejon instalim aplikacionesh nga burime të panjohur, që përfshijnë depo të reja</string>
-    <string name="app_list_results_hidden_antifeature_settings">Disa përfundime u fshehën, bazuar në rregullimet tuaja për anti-veçori.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Disa aplikacione u fshehën, bazuar në rregullimet tuaja për Anti-Veçori. Prekeni që të ndryshohet.</string>
     <string name="has_disallow_install_unknown_sources">Burimet e panjohura, që përfshijnë depo të reja, s’mund të shtohen nga ky përdorues</string>
     <string name="antinosource">Kod Burim Jo Më i Passhëm</string>
     <string name="antinsfw">Not Safe for Work</string>
@@ -540,9 +527,7 @@
     <string name="repo_state_adding">Po shtohet depo…</string>
     <string name="repo_enter_url">Jepeni dorazi URL-në e depos</string>
     <string name="repo_exists">Kjo depo qe shtuar tashmë.</string>
-    <string name="repo_invalid">Depo e pavlefshme.
-\n
-\nLidhuni me mirëmbajtësin dhe bëjuni të ditur problemin.</string>
+    <string name="repo_invalid">Depo e pavlefshme. \n \nLidhuni me mirëmbajtësin dhe bëjuni të ditur problemin.</string>
     <string name="repo_io_error">Gabim në lidhjen e depos.</string>
     <string name="repo_list_info_title">Listë Deposh</string>
     <string name="repo_archive_toggle">Arkiv Deposh</string>
@@ -562,13 +547,9 @@
     <string name="app_details_repositories">Depo</string>
     <string name="app_details_repository_preferred">(e parapëlqyer)</string>
     <string name="app_details_repository_button_prefer">Depo e Parapëlqyer</string>
-    <string name="repo_intro">Depoja është burim shtesë aplikacionesh. Ato prej palësh të treta që shtoni këtu kanë standarde të ndryshme nga ato që furnizojnë aplikacione të montuara nga vetë F-Droid.
-\n
-\nJu lutemi, siguroni që depoja që po shtoni të jetë e besueshme.</string>
+    <string name="repo_intro">Depoja është burim shtesë aplikacionesh. Ato prej palësh të treta që shtoni këtu kanë standarde të ndryshme nga ato që furnizojnë aplikacione të montuara nga vetë F-Droid. \n \nJu lutemi, siguroni që depoja që po shtoni të jetë e besueshme.</string>
     <string name="repo_error_adding_archive">Depot e arkivit s’mund të shtohen drejtpërdrejt. Prekni depon te lista dhe aktivizoni këtu arkivin.</string>
-    <string name="repo_list_info_text">Një depo është një burim aplikacionesh. Kjo listë shfaq krejt depot e shtuara tani. Depot e çaktivizuara s’përdoren.
-\n
-\nNëse një aplikacion gjendet në më shumë se një depo, parapëlqehet automatikisht depoja më lart në listë. Depot mund t’i rirendisni duke e shtypur gjatë një dhe duke e tërhequr.</string>
+    <string name="repo_list_info_text">Një depo është një burim aplikacionesh. Kjo listë shfaq krejt depot e shtuara tani. Depot e çaktivizuara s’përdoren. \n \nNëse një aplikacion gjendet në më shumë se një depo, parapëlqehet automatikisht depoja më lart në listë. Depot mund t’i rirendisni duke e shtypur gjatë një dhe duke e tërhequr.</string>
     <string name="swap_connection_indexv0_error">Po provoni të lidheni me dikë përmes një versioni të vjetruar të F-Droid-it. Që të lidheni, atij i duhet të përmirësojë aplikacionin e vet F-Droid. Mund të përdorë shkëmbimin, për të përditësuar F-Droid-in prej jush.</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid mund të kërkojë për depo dhe pasqyra në kartë SD tuajën, por lyp lejen tuaj për ta bërë këtë.</string>
     <string name="repo_add_new_title">Shtoni depo</string>
@@ -583,9 +564,25 @@
         <item quantity="other">Shkarkoji aplikacionet duke përdorur pikëmbarim web IPFS: %1$d e aktivizuar</item>
     </plurals>
     <string name="force_old_installer_title">Detyro instalues të vjetër</string>
-    <string name="force_old_installer_summary">Çaktivizoni Sesionin e Instaluesit, përfshi mbulim për përditësime të automatizuara në prapaskenë.</string>
+    <string name="force_old_installer_summary">Çaktivizoni Instaluesin e Sesionit, përfshi mbulim për përditësime të automatizuara në prapaskenë.</string>
     <string name="nearby_splace__external_storage_permission_button">Provojeni</string>
     <string name="turn_on_wifi">Hape wifi-n</string>
     <string name="ipfsgw_caption_custom_gateways">Kanale IPFS Vetjake</string>
     <string name="repo_share_not_found">S’u gjet dot adresë depoje te teksti i dhënë.</string>
+    <string name="repo_add_repo_and_mirror">Shtoni depo dhe pasqyrë</string>
+    <string name="repo_view_repo">Shihni depo</string>
+    <string name="repo_scan_qr_code">Skanoni Kod Qr</string>
+    <string name="repo_preview_included_apps">Aplikacione të përfshirë:</string>
+    <string name="repo_mirror_exists">Kjo pasqyrë qe shtuar tashmë (%s).</string>
+    <string name="repo_and_mirror_add_both_info">URL-ja që po provoni të shtoni (%s) është një pasqyrë e re. Do të shtohen që të dyja, depoja fillestare dhe pasqyra.</string>
+    <string name="repo_mirror_add_info">URL-ja që po provoni të shtoni (%s) është pasqyrë e një depoje ekzistuese.</string>
+    <string name="auto_update_time_past">Përditësimi pasues, kur të jenë plotësuar kushtet</string>
+    <string name="warning_no_compat_versions">Depoja e përzgjedhur s’ka versione të përputhshme aplikacioni. Që të merrni përditësime, parapëlqeni një depo me versione të përputhshëm.</string>
+    <string name="auto_update_time">Përditësimi pasues më i hershëm: %s</string>
+    <string name="antitetherednetlist">Ky aplikacione varet tërësisht nga njëfarë instance e një shërbimi rrjeti</string>
+    <string name="swap_bluetooth_permissions">Ju lutemi, akordoni leje Bluetooth-i, ose Pajisjeje Atypari!</string>
+    <string name="apk_permissions_mismatch">Aplikacioni lyp një leje të papritur: %s</string>
+    <string name="menu_share_apk">Ndani Kartelë APK</string>
+    <string name="preferForeign">Parapëlqe Pasqyra të Huaja</string>
+    <string name="preferForeignSummary">Provoni së pari pasqyra që gjenden jashtë vendit tuaj, p.sh., nëse jashtë mbrojtjet janë më të fuqishme.</string>
 </resources>

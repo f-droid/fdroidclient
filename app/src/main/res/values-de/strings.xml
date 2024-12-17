@@ -81,7 +81,7 @@
     <string name="enable_proxy_title">HTTP-Proxy aktivieren</string>
     <string name="enable_proxy_summary">HTTP-Proxy für alle Netzwerkanfragen konfigurieren</string>
     <string name="proxy_host">Proxy-Rechner</string>
-    <string name="proxy_host_summary">Ihr Proxy-Rechnername (z. B. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Ihr Proxy-Rechnername (z. B. 127.0.0.1)</string>
     <string name="proxy_port">Proxy-Port</string>
     <string name="proxy_port_summary">Proxy-Port konfigurieren (z. B. 8818)</string>
     <string name="status_download">%2$s / %3$s (%4$d%%) von
@@ -383,7 +383,7 @@
     <string name="app_list__dismiss_app_update">Aktualisierung ignoriert</string>
     <string name="app_list__dismiss_vulnerable_app">Sicherheitslücke ignoriert</string>
     <string name="app_list__dismiss_downloading_app">Herunterladen abgebrochen</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">In »%1$s« wurden Sicherheitslücken festgestellt. Es wird empfohlen, diese App unverzüglich zu deinstallieren.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">In »%1$s« wurden Sicherheitslücken festgestellt. Berühren, um mehr im Abschnitt der unerwünschten Merkmale zu lesen.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">In »%1$s« wurde eine Sicherheitslücke festgestellt. Es wird empfohlen, diese App unverzüglich zu aktualisieren.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorieren</string>
     <string name="privacy">Datenschutz</string>
@@ -605,5 +605,9 @@
     <string name="auto_update_time_past">Nächste Aktualisierung, wenn die Bedingungen erfüllt sind</string>
     <string name="antitetherednet">Tethering-Netzwerkdienste</string>
     <string name="antitetherednetlist">Diese App hängt vollständig von einer bestimmten Instanz eines Netzwerkdienstes ab</string>
-    <string name="swap_bluetooth_permissions">Bitte gewähren Sie die Erlaubnis für Bluetooth oder benachbarte Geräte!</string>
+    <string name="swap_bluetooth_permissions">Bitte Berechtigung für Bluetooth oder benachbarte Geräte erteilen!</string>
+    <string name="apk_permissions_mismatch">App hat unerwartete Berechtigung: %s</string>
+    <string name="menu_share_apk">APK-Datei teilen</string>
+    <string name="preferForeign">Ausländische Spiegelserver bevorzugen</string>
+    <string name="preferForeignSummary">Zuerst Spiegelserver verwenden, die sich außerhalb Ihres Landes befinden, z. B. wenn die Schutzmaßnahmen im Ausland stärker sind.</string>
 </resources>

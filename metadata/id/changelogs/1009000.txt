@@ -1,0 +1,5 @@
+* Menghapus dukungan "Tautan Aplikasi Android" karena tidak dapat bekerja dengan F-Droid, dan hal ini memicu kebocoran DNS.
+* Arsip Repo sekarang memiliki prioritas yang lebih rendah daripada Repo (lebih tinggi pada layar Kelola Repo), memperbaiki masalah di mana ia mencari ikon, tangkapan layar, dan informasi lain di Arsip daripada Repo itu sendiri.
+* Berhenti memotong gambar header fitur (terima kasih @ByteHamster!)
+* Membuat bilah navigasi sesuai dengan mode gelap (terima kasih @MatthieuB!)
+* Membersihkan kode yang sudah tidak terpakai (terima kasih @Isira-Seneviratne!)

@@ -5,11 +5,11 @@
     <string name="cache_downloaded">Paturēt kešatmiņā saglabātās lietotnes</string>
     <string name="updates">Atjauninājumi</string>
     <string name="other">Citi</string>
-    <string name="update_interval">Starplaiks starp automātiskajiem atjauninājumiem</string>
+    <string name="update_interval">Automātisko atjauninājumu biežums</string>
     <string name="notify">Parādīt pieejamos atjauninājumus</string>
     <string name="notify_on">Parādīt paziņojumu, kad ir pieejami atjauninājumi</string>
-    <string name="system_installer">Priviliģētais paplašinājums</string>
-    <string name="system_installer_on">Izmantot F-Droid priviliģēto paplašinājumu, lai uzstādītu, atjauninātu un dzēstu pakotnes</string>
+    <string name="system_installer">Paaugstināto tiesību paplašinājums</string>
+    <string name="system_installer_on">Izmantot F-Droid paaugstināto tiesību paplašinājumu, lai uzstādītu, atjauninātu un dzēstu pakotnes</string>
     <string name="local_repo_name">Vietējās glabātavas nosaukums</string>
     <string name="local_repo_https_on">Vietējām glabātavām izmantot šifrētu HTTPS:// savienojumu</string>
     <string name="app_details">Informācija par lietotni</string>
@@ -113,7 +113,7 @@
     <string name="unstable_updates">Nepastāvīgie atjauninājumi</string>
     <string name="unstable_updates_summary">Piedāvāt nepastāvīgu versiju atjauninājumus</string>
     <string name="keep_install_history">Saglabāt uzstādīšanas vēsturi</string>
-    <string name="keep_install_history_summary">Glabāt uzstādīšanas un izdzēšanas žurnālu privātā krātuvē</string>
+    <string name="keep_install_history_summary">Glabāt uzstādīšanas un noņemšanas žurnālu privātā krātuvē</string>
     <string name="force_old_index">Piespiest izmantot veco indeksu paraugu</string>
     <string name="force_old_index_summary">Kļūmju vai saderības nepilnību gadījumā jāizmanto XML lietotņu indekss</string>
     <string name="update_auto_download">Automātiski iegūt atjauninājumus</string>
@@ -140,7 +140,7 @@
     <string name="category_Science_Education">Zinātne un izglītība</string>
     <string name="category_Security">Drošība</string>
     <string name="category_Writing">Rakstīšana</string>
-    <string name="swap_welcome">Laipni lūgts F-Droid!</string>
+    <string name="swap_welcome">Laipni lūdzam F-Droid!</string>
     <string name="swap_dont_show_again">Vairs nerādīt šo</string>
     <string name="prompt_to_send_crash_reports">Rādīt uzvedni, lai nosūtītu avārijas pārskatus</string>
     <string name="prompt_to_send_crash_reports_summary">Apkopot datus par avārijām un vaicāt, vai tos nosūtīt izstrādātājam</string>
@@ -149,7 +149,7 @@
     <string name="send_install_history">Nosūtīt uzstādīšanas vēsturi</string>
     <string name="send_history_csv">%s uzstādīšanas vēsture CSV datnē</string>
     <string name="install_history">Uzstādīšanas vēsture</string>
-    <string name="install_history_summary">Apskatīt uzstādīšanas un izdzēšanas privāto žurnālu</string>
+    <string name="install_history_summary">Apskatīt uzstādīšanas un noņemšanas privāto žurnālu</string>
     <string name="send_version_and_uuid">Sūtīt serveriem versiju un UUID</string>
     <string name="send_version_and_uuid_summary">Iekļaut šīs lietotnes versiju un nejaušu, neatkārtojamu Id, kad lejupielādē. Stājas spēkā pēc lietotnes nākamās pārsāknēšanas.</string>
     <string name="over_wifi">Izmantojot Wi-Fi</string>
@@ -256,7 +256,7 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi tīklājs ir iespējots</string>
     <string name="swap_toast_using_path">Izmanto %1$s</string>
     <string name="not_visible_nearby">Mijmaiņa nav iespējota</string>
-    <string name="swap_connection_misc_error">Savienošanās ar ierīci laikā atgadījās kļūda, nevar apmainīties ar to.</string>
+    <string name="swap_connection_misc_error">Atgadījās kļūda, kamēr notika savienošanās ar ierīci, nevar apmainīties ar to.</string>
     <string name="use_bluetooth">Izmantot Bluetooth</string>
     <string name="swap_qr_isnt_for_swap">Nolasītais kvadrātkods neizskatās pēc mijmaiņas koda.</string>
     <string name="swap_confirm">Apstiprināt mijmaiņu</string>
@@ -268,7 +268,7 @@
     <string name="swap_setting_up_wifi">Iestata Wi-Fi…</string>
     <string name="swap_visible_wifi">Redzams ar Wi-Fi</string>
     <string name="swap_not_visible_bluetooth">Nav redzams ar Bluetooth</string>
-    <string name="swap_error_cannot_start_bluetooth">Nevar sāknēt Bluetooth.</string>
+    <string name="swap_error_cannot_start_bluetooth">Nevar palaist Bluetooth.</string>
     <string name="swap_setting_up_bluetooth">Iestata Bluetooth…</string>
     <string name="swap_visible_bluetooth">Redzams ar Bluetooth</string>
     <string name="swap_stopping">Aptur…</string>
@@ -304,8 +304,7 @@
     <string name="uninstall_error_unknown">Neizdevās izdzēst nezināmas kļūdas dēļ</string>
     <string name="install_error_unknown">Neizdevās uzstādīt nezināmas kļūdas dēļ</string>
     <string name="empty_search_available_app_list">Atbilstošas lietotnes nav pieejamas.</string>
-    <string name="empty_can_update_app_list">Apsveicam!
-\nLietotnes ir atjauninātas.</string>
+    <string name="empty_can_update_app_list">Apsveicam! \nLietotnes ir atjauninātas.</string>
     <string name="category_Theming">Izskats</string>
     <string name="wifi_ap">Tīklājs</string>
     <string name="requires_features">Nepieciešams: %1$s</string>
@@ -318,8 +317,7 @@
     <string name="theme">Izskats</string>
     <string name="global_error_updating_repos">Kļūda atjauninājuma laikā: %s</string>
     <string name="repos_unchanged">Visas glabātavas ir atjauninātas</string>
-    <string name="status_connecting_to_repo">Savienojas ar
-\n%1$s</string>
+    <string name="status_connecting_to_repo">Savienojas ar \n%1$s</string>
     <string name="banner_updating_repositories">Atjaunina glabātavas</string>
     <string name="hide_on_long_search_press_summary">Ilga meklēšanas pogas piespiešana paslēps lietotni</string>
     <string name="hide_on_long_search_press_title">Paslēpt ar meklēšanas pogu</string>
@@ -398,7 +396,7 @@
     <string name="update_all">Atjaunināt visas</string>
     <string name="updates__app_with_known_vulnerability__ignore">Neņemt vērā</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Mēs atradām ievainojamību %1$s. Mēs iesakām nekavējoties atjaunināt šo lietotni uz jaunāko versiju.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Mēs atradām ievainojamību %1$s. Mēs iesakām nekavējoties izdzēst šo lietotni.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Mēs atradām ievainojamību %1$s. Pieskarties, lai lasītu par to vairāk sadaļā \"Nevēlamas iespējas\".</string>
     <string name="send_installed_apps">Kopīgot uzstādītās lietotnes</string>
     <string name="installed_apps__activity_title">Uzstādītās lietotnes</string>
     <string name="scan_removable_storage_toast">Pāŗskata %s…</string>
@@ -413,20 +411,15 @@
     <string name="app_list_results_hidden_antifeature_settings">Dažas lietotnes tika paslēptas, pamatojoties uz nevēlamo iespēju iestatījumiem. Pieskarties, lai mainītu.</string>
     <string name="has_disallow_install_unknown_sources">Šis lietotājs nevar pievienot nezināmus avotus, un tas attiecas arī uz jaunām glabātavām</string>
     <string name="menu_select_for_wipe">Atlasīt notīrīšanai</string>
-    <string name="repo_searching_address">Meklē pakotņu glabātavu
-\n%1$s</string>
+    <string name="repo_searching_address">Meklē pakotņu glabātavu \n%1$s</string>
     <string name="perms_description_app">Nodrošina %1$s.</string>
     <string name="latest__empty_state__no_enabled_repos">Tiklīdz tiek iespējota glabātava un ļauj tai atjaunināties, šeit vajadzētu parādīties jaunākajām lietotnēm</string>
-    <string name="status_download">Lejupielādē
-\n%2$s/%3$s (%4$d%%) no
-\n%1$s</string>
+    <string name="status_download">Lejupielādē \n%2$s/%3$s (%4$d%%) no \n%1$s</string>
     <string name="proxy_host">Starpniekservera saimniekdators</string>
     <string name="panic_app_setting_summary">Nav iestatīta neviena lietotne</string>
     <string name="panic_app_dialog_message">Vai tiešām ļaut %1$s izsaukt postošas trauksmes pogas darbības\?</string>
     <string name="panic_reset_repos_summary">Piespiest glabātavu atiestatīties uz noklusējumu</string>
-    <string name="status_download_unknown_size">Lejupielādē
-\n%2$s no
-\n%1$s</string>
+    <string name="status_download_unknown_size">Lejupielādē \n%2$s no \n%1$s</string>
     <string name="status_inserting_x_apps">Saglabā lietotnes informāciju (%1$d/%2$d) no %3$s</string>
     <string name="repo_added">Pakotņu glabātava %1$s ir saglabāta.</string>
     <string name="proxy_port_summary">Starpniekservera porta numurs (piem., 8118)</string>
@@ -434,14 +427,10 @@
     <string name="repo_fingerprint">Parakstīšanas atslēgas pirkstu nospiedums (SHA-256)</string>
     <string name="repo_official_mirrors">Oficiālās spoguļglabātavas</string>
     <string name="repo_not_yet_updated">Šī glabātava iepriekš nav bijusi izmantota. Ir nepieciešams to iespējot, lai redzētu glabātavā esošās lietotnes.</string>
-    <string name="repo_disabled_notification">%1$s atspējota.
-\n
-\nBūs nepieciešams atkārtoti iespējot šo glabātavu, lai no tās uzstādītu lietotnes.</string>
+    <string name="repo_disabled_notification">%1$s atspējota. \n \nBūs nepieciešams atkārtoti iespējot šo glabātavu, lai no tās uzstādītu lietotnes.</string>
     <string name="share_apk_error">Nevarēja kopīgot lietotnes datni</string>
     <string name="not_visible_nearby_description">Pirms apmaiņas ar tuvumā esošām iekārtām ierīce ir jāpadara redzama.</string>
-    <string name="repo_confirm_delete_body">Glabātavas izdzēšana nozīmē, ka lietotnes no tās vairs nebūs pieejamas.
-\n
-\nPiezīme: visas iepriekš uzstādītās lietotnes paliks ierīcē.</string>
+    <string name="repo_confirm_delete_body">Glabātavas izdzēšana nozīmē, ka lietotnes no tās vairs nebūs pieejamas. \n \nPiezīme: visas iepriekš uzstādītās lietotnes paliks ierīcē.</string>
     <string name="proxy_host_summary">Starpniekservera saimniekdatora nosaukums (piem., 127.0.0.1)</string>
     <string name="antitrack">Izsekošana</string>
     <string name="antinosource">Pirmkods vairs nav pieejams</string>
@@ -514,7 +503,7 @@
     <string name="unsigned_description">Tas nozīmē, ka lietotņu sarakstu nevarēja apliecināt. Jābūt uzmanīgam ar lietotnēm, kas ir lejupielādētas no neparakstītiem indeksiem.</string>
     <string name="category_Nightly">Iknakts</string>
     <string name="nearby_splash__document_tree">Meklēt glabātavas un spoguļserverus USB OTG.</string>
-    <string name="swap_toast_not_removable_storage">Šī izvēle nesaskan ar nevienu no noņemamajām krātuvēm, jāmēģina vēlreiz.</string>
+    <string name="swap_toast_not_removable_storage">Šī izvēle nesaskan ar nevienu noņemamo krātuvi, jāmēģina vēlreiz.</string>
     <string name="swap_toast_find_removeable_storage">Jāizvēlas noņemama SD karte vai USB</string>
     <string name="swap_toast_invalid_url">Nederīgs mijmaiņas URL: %1$s</string>
     <plurals name="details_last_update_days">
@@ -536,24 +525,18 @@
     </plurals>
     <string name="all_other_repos_fine">Pārējās glabātavas neradīja kļūdas.</string>
     <string name="banner_no_internet">Nav interneta</string>
-    <string name="empty_installed_app_list">Nav uzstādītu lietotņu.
-\n
-\nIerīcē ir lietotnes, bet tās nav pieejamas F-Droid. Tas varētu būt tādēļ, ka ir nepieciešams atjaunināt glabātavas vai arī tajās tiešām nav pieejama neviena no ierīcē esošajām lietotnēm.</string>
+    <string name="empty_installed_app_list">Nav uzstādītu lietotņu. \n \nIerīcē ir lietotnes, bet tās nav pieejamas F-Droid. Tas varētu būt tādēļ, ka ir nepieciešams atjaunināt glabātavas vai arī tajās tiešām nav pieejama neviena no ierīcē esošajām lietotnēm.</string>
     <string name="warning_scaning_qr_code">Izskatās, ka kamerai nav automātiskās fokusēšanas. Var būt grūtības ar koda nolasīšanu.</string>
     <string name="swap_banner_message">Lai apmainītos ar lietotnēm, jāieslēdz Wi-Fi un jāpievienojas tam pašam tīklam, kurā ir draugs.</string>
     <string name="turn_on_wifi">Ieslēgt Wi-Fi</string>
     <string name="repo_add_new_title">Pievienot glabātavu</string>
     <string name="repo_add_new_mirror">Pievienot kā jaunu spoguļglabātavu</string>
-    <string name="repo_intro">Glabātava ir papildu avots lietotņu iegūšanai. Šeit pievienotajām trešo pušu glabātavām ir citādākas normas nekā tām, kas nodrošina F-Droid būvētās lietotnes.
-\n
-\nLūgums pārliecināties, ka pievienojamā glabātava ir uzticama.</string>
+    <string name="repo_intro">Glabātava ir papildu lietotņu iegūšanas avots. Šeit pievienotajām trešo pušu glabātavām ir citādākas normas nekā tām, kas nodrošina F-Droid būvētās lietotnes. \n \nLūgums pārliecināties, ka pievienojamā glabātava ir uzticama.</string>
     <string name="repo_state_fetching">Nolasa glabātavu…</string>
     <string name="repo_state_adding">Pievieno glabātavu…</string>
     <string name="repo_enter_url">Pašrocīgi ievadīt glabātavas URL</string>
     <string name="repo_exists">Šī glabātava jau ir pievienota.</string>
-    <string name="repo_invalid">Nederīga glabātava.
-\n
-\nJāsazinās ar uzturētāju un jādara tam zināms par nepilnību.</string>
+    <string name="repo_invalid">Nederīga glabātava. \n \nJāsazinās ar uzturētāju un jādara tam zināms par nepilnību.</string>
     <string name="repo_io_error">Kļūda savienojoties ar glabātavu.</string>
     <string name="nearby_splace__external_storage_permission_button">Izmēģināt</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid var meklēt glabātavas un spoguļserverus SD kartē, bet tam ir nepieciešama atļauja.</string>
@@ -592,9 +575,7 @@
     <string name="repo_mirror_add_info">URL, ko tiek mēģināts pievienot (%s), ir spoguļserveris esošai glabātavai.</string>
     <string name="repositories_last_update">Pēdējais atjauninājums: %s</string>
     <string name="repo_list_info_title">Glabātavu saraksts</string>
-    <string name="repo_list_info_text">Glabātava ir lietotņu avots. Šajā sarakstā ir visas pašreiz pievienotās glabātavas. Atspējotās glabātavas netiek izmantotas.
-\n
-\nJa lietotne ir vairāk kā vienā glabātavā, tiek automātiski izvēlēta sarakstā augstāk esošā glabātava. Glabātavu secību var mainīt ar ilgāku piespiešanu un pārvilkšanu.</string>
+    <string name="repo_list_info_text">Glabātava ir lietotņu avots. Šajā sarakstā ir visas pašreiz pievienotās glabātavas. Atspējotās glabātavas netiek izmantotas. \n \nJa lietotne ir vairāk kā vienā glabātavā, tiek automātiski izvēlēta sarakstā augstāk esošā glabātava. Glabātavu secību var mainīt ar ilgāku piespiešanu un pārvilkšanu.</string>
     <string name="repo_disable_warning_button">Atspējot</string>
     <string name="ipfsgw_add_add">Pievienot</string>
     <string name="ipfsgw_caption_official_gateways">Oficiālās IPFS vārtejas</string>
@@ -612,4 +593,8 @@
     <string name="antitetherednet">Piesaistīti tīkla pakalpojumi</string>
     <string name="antitetherednetlist">Šī lietotne ir pilnībā atkarīga no noteikta tīkla pakalpojuma</string>
     <string name="swap_bluetooth_permissions">Lūgums nodrošināt atļauju \"Bluetooth\" vai \"Tuvumā esoša ierīce\".</string>
+    <string name="menu_share_apk">Kopīgot APK datni</string>
+    <string name="apk_permissions_mismatch">Lietotnei ir neparedzēta atļauja: %s</string>
+    <string name="preferForeign">Priekšroku dot ārzemju spoguļserveriem</string>
+    <string name="preferForeignSummary">Vispirms mēģināt izmantot spoguļserverus, kuri atrodas ārpus Tavas valsts, piemērma, ja ārzemju aizsardzība ir spēcīgāka.</string>
 </resources>

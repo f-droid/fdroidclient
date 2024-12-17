@@ -1,0 +1,5 @@
+* Perombakan total logika pengunduhan untuk meningkatkan kinerja dan dukungan mirror.
+
+* Tangkapan layar dan grafik sekarang diunduh dari mirror.
+
+* Mengurangi kebocoran privasi dengan Sesi TLS

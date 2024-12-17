@@ -1,0 +1,7 @@
+* perombakan besar-besaran pada swap UI, untuk mempersiapkan penulisan ulang
+* menampilkan "undo" setelah menggeser item dari tab Pembaruan (terima kasih @Hocuri!)
+* memperbaiki masalah pada tampilan "Terbaru" yang disebabkan oleh kesalahan penanganan zona waktu #1757
+* mengabaikan semua kerusakan yang tidak penting di layanan latar belakang
+* merombak swap terdekat menggunakan AP hotspot perangkat
+* menambahkan respons panik baru: mencopot pemasangan aplikasi dan mengatur ulang repo ke default
+* Flash drive USB OTG dapat digunakan sebagai repo dan mirror terdekat

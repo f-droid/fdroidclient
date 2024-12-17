@@ -203,7 +203,7 @@
     <string name="send_installed_apps_csv">Feidhmchláir suiteáilte ag F-Droid mar chomhad CSV</string>
     <string name="installed_app__updates_ignored">Neamhaird déanta ar nuashonruithe</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Rinneadh neamhaird de nuashonruithe le haghaidh Leagan %1$s</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Fuaireamar leochaileacht le %1$s. Molaimid an aip seo a dhíshuiteáil láithreach.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Fuaireamar leochaileacht le %1$s. Déan teagmháil le tuilleadh a léamh sa rannán Frithghnéithe.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Fuaireamar leochaileacht le %1$s. Molaimid nuashonrú a dhéanamh ar an leagan is nua láithreach.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Déan neamhaird de</string>
     <string name="updates__tts__download_app">Íoslódáil</string>
@@ -631,4 +631,9 @@
     <string name="auto_update_time_past">An chéad nuashonrú eile nuair a chomhlíontar na coinníollacha</string>
     <string name="antitetherednet">Seirbhísí Líonra Tethered</string>
     <string name="antitetherednetlist">Braitheann an aip seo go hiomlán ar shampla áirithe de sheirbhís líonra</string>
+    <string name="swap_bluetooth_permissions">Tabhair cead do Bluetooth nó Gléas in aice láimhe!</string>
+    <string name="apk_permissions_mismatch">Tá cead ag an aip: %s</string>
+    <string name="menu_share_apk">Roinn an comhad APK</string>
+    <string name="preferForeign">Is fearr le Scátháin Eachtracha</string>
+    <string name="preferForeignSummary">Bain triail as scátháin atá suite taobh amuigh de do thír ar dtús, e.g. má tá cosaintí eachtracha níos láidre.</string>
 </resources>

@@ -1,0 +1,7 @@
+* Saklar ditambahkan ke RepoDetails untuk mematikan salah satu atau semua mirror (#1696)
+
+* Pilihan mirror acak untuk setiap unduhan paket/APK
+
+* Semua unduhan APK di-cache per-repo, bukan per-mirror
+
+* Tangani ETag Apache dan NGINX saat memeriksa apakah indeks terbaru (#1708)

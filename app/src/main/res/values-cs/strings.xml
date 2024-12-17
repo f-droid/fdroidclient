@@ -48,7 +48,7 @@
     <string name="menu_upgrade">Aktualizovat</string>
     <string name="details_notinstalled">Nenainstalováno</string>
     <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
-    <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>
+    <string name="antitracklist">Tato aplikace zaznamenává a odesílá vaši aktivitu</string>
     <string name="expert">Pokročilý režim</string>
     <string name="expert_on">Zobrazit dodatečné informace a povolit pokročilá nastavení</string>
     <string name="search_hint">Hledat aplikace</string>
@@ -70,8 +70,7 @@
     <string name="proxy_host">Proxy server</string>
     <string name="proxy_host_summary">Název hostitele s vaší proxy (např. 127.0.0.1)</string>
     <string name="proxy_port">Port proxy</string>
-    <string name="status_connecting_to_repo">Připojování k
-\n%1$s</string>
+    <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
     <string name="repos_unchanged">Všechny repozitáře jsou aktuální</string>
     <string name="global_error_updating_repos">Chyba při aktualizaci: %s</string>
     <string name="no_permissions">Žádná oprávnění</string>
@@ -86,12 +85,8 @@
     <string name="unsigned_description">To znamená, že seznam aplikací se nepodařilo ověřit. S aplikacemi staženými z nepodepsaných indexů byste měli být opatrní.</string>
     <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit. Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.</string>
     <string name="repo_confirm_delete_title">Odebrat repozitář\?</string>
-    <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.
-\n
-\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
-    <string name="repo_disabled_notification">Repozitář %1$s zakázán.
-\n
-\nPro instalaci aplikací z tohoto repozitáře jej znovu povolte.</string>
+    <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
+    <string name="repo_disabled_notification">Repozitář %1$s zakázán.\n\nPro instalaci aplikací z tohoto repozitáře jej znovu povolte.</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
     <string name="category_Development">Vývoj</string>
     <string name="category_Games">Hry</string>
@@ -124,15 +119,13 @@
     <string name="menu_changelog">Seznam změn</string>
     <string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
     <string name="antinonfreenetlist">Tato aplikace propaguje nebo zcela závisí na nesvobodné síťové službě</string>
-    <string name="antinonfreedeplist">Tato aplikace závisí na dalších nesvobodných aplikacích</string>
+    <string name="antinonfreedeplist">Tato aplikace závisí na jiných nesvobodných aplikacích</string>
     <string name="antiupstreamnonfreelist">Původní zdrojový kód je částečně nesvobodný</string>
     <string name="appcompatibility">Kompatibilita aplikace</string>
     <string name="display">Zobrazení</string>
     <string name="show_incompat_versions_on">Zobrazit verze aplikace, které jsou nekompatibilní s tímto zařízením</string>
     <string name="proxy_port_summary">Číslo portu vaší proxy (např. 8118)</string>
-    <string name="status_download">Stahování
-\n%2$s / %3$s (%4$d%%) z
-\n%1$s</string>
+    <string name="status_download">Stahování\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
     <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Nestabilní aktualizace</string>
     <string name="unstable_updates_summary">Doporučovat aktualizace na nestabilní verze</string>
@@ -143,9 +136,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="status_download_unknown_size">Stahování
-\n%2$s z
-\n%1$s</string>
+    <string name="status_download_unknown_size">Stahování\n%2$s z\n%1$s</string>
     <string name="banner_updating_repositories">Aktualizace repozitářů</string>
     <string name="status_processing_xml_percent">Zpracovávání %2$s / %3$s (%4$d%%) z %1$s</string>
     <string name="all_other_repos_fine">Žádné jiné repozitáře nenahlásily chyby.</string>
@@ -155,8 +146,7 @@
     <string name="repo_url">Adresa</string>
     <string name="unknown">Neznámé</string>
     <string name="repo_added">Uložen repozitář balíčků %1$s.</string>
-    <string name="repo_searching_address">Vyhledávání repozitáře balíčků na
-\n%1$s</string>
+    <string name="repo_searching_address">Vyhledávání repozitáře balíčků na\n%1$s</string>
     <string name="login_title">Vyžadováno ověření</string>
     <string name="login_name">Uživatelské jméno</string>
     <string name="login_password">Heslo</string>
@@ -175,11 +165,8 @@
     <string name="category_Theming">Vzhled</string>
     <string name="category_Time">Čas</string>
     <string name="category_Writing">Psaní</string>
-    <string name="empty_installed_app_list">Žádné instalované aplikace.
-\n
-\nNa tomto přístoji jsou aplikace, které nejsou dostupné ve službě F-Droid. To může být způsobeno zastaralým seznamem repozitářů, případně aplikace nejsou v repozitářích vůbec dostupné.</string>
-    <string name="empty_can_update_app_list">Gratulujeme!
-\nVšechny nainstalované aplikace jsou aktuální.</string>
+    <string name="empty_installed_app_list">Žádné instalované aplikace.\n\nNa vašem zařízení se nacházejí aplikace, které nejsou dostupné ve službě F-Droid. To může být způsobeno zastaralým seznamem repozitářů, případně aplikace nejsou v repozitářích vůbec dostupné.</string>
+    <string name="empty_can_update_app_list">Gratulujeme!\nVšechny nainstalované aplikace jsou aktuální.</string>
     <string name="install_error_unknown">Instalace selhala kvůli neznámé chybě</string>
     <string name="uninstall_error_unknown">Chyba odinstalace kvůli neznámé chybě</string>
     <string name="swap_join_this_hotspot">Pomozte přátelům s připojením se k hotspotu</string>
@@ -322,7 +309,7 @@
     <string name="app_list__dismiss_app_update">Aktualizace ignorována</string>
     <string name="app_list__dismiss_vulnerable_app">Zranitelnost ignorována</string>
     <string name="app_list__dismiss_downloading_app">Stahování zrušeno</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">V aplikaci %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci okamžitě odinstalovat.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">V aplikaci %1$s byla nalezena zranitelnost. Klepněte pro zobrazení dalších informací v sekci anti-vlastností.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">V aplikaci %1$s byla nalezena zranitelnost. Doporučujeme tuto aplikaci aktualizovat na nejnovější verzi.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorovat</string>
     <string name="updates__hide_updateable_apps">Skrýt aplikace</string>
@@ -340,7 +327,7 @@
     <string name="categories__empty_state__no_categories">Žádné kategorie k zobrazení</string>
     <string name="details_new_in_version">Novinky ve verzi %s</string>
     <string name="antifeatureswarning">Tato aplikace má funkce, které se vám nemusí líbit.</string>
-    <string name="antifeatures">Anti-funkce</string>
+    <string name="antifeatures">Anti-vlastnosti</string>
     <string name="download_404">Požadovaný soubor nebyl nalezen.</string>
     <string name="status_inserting_x_apps">Ukládání podrobností o aplikacích (%1$d/%2$d) z %3$s</string>
     <plurals name="button_view_all_apps_in_category">
@@ -421,8 +408,8 @@
     <string name="sort_search">Setřídit hledání</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Skenování kódu může být obtížné.</string>
-    <string name="show_anti_feature_apps">Zahrnout anti-funkce</string>
-    <string name="show_anti_feature_apps_on">Zobrazit aplikace, které mají známé anti-funkce</string>
+    <string name="show_anti_feature_apps">Zahrnout anti-vlastnosti</string>
+    <string name="show_anti_feature_apps_on">Zobrazit aplikace, které mají známé anti-vlastnosti</string>
     <string name="force_touch_apps">Zahrnout aplikace pro dotykovou obrazovku</string>
     <string name="force_touch_apps_on">Zobrazit aplikace, které vyžadují dotykovou obrazovku, i když ji toto zařízení neobsahuje</string>
     <string name="repo_add_mirror">Přidat zrcadlo</string>
@@ -519,23 +506,23 @@
     <string name="has_disallow_install_unknown_sources">Tento uživatel nemůže přidávat neznámé zdroje, včetně nových repozitářů</string>
     <string name="has_disallow_install_unknown_sources_globally">Správce vašeho zařízení nepovoluje instalaci aplikací z neznámých zdrojů, což zahrnuje i nové repozitáře</string>
     <string name="antiads">Reklamy</string>
-    <string name="antidisabledalgorithm">Podepsáno pomocí nebezpečného algoritmu</string>
+    <string name="antidisabledalgorithm">Podepsáno pomocí málo bezpečného algoritmu</string>
     <string name="antiknownvuln">Známá zranitelnost</string>
     <string name="antitrack">Sledování</string>
     <string name="antinonfreenet">Nesvobodné síťové služby</string>
-    <string name="app_list_results_hidden_antifeature_settings">Některé aplikace byly skryty na základě vašeho nastavení anti-funkcí. Klepněte pro změnu.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Některé aplikace byly skryty na základě vašeho nastavení anti-vlastností. Klepněte pro změnu.</string>
     <string name="antinonfreead">Nesvobodné doplňky</string>
     <string name="antinonfreedep">Nesvobodné závislosti</string>
     <string name="antiupstreamnonfree">Nesvobodný původní zdroj</string>
     <string name="antinonfreeassets">Nesvobodné části</string>
     <string name="antinosource">Zdrojový kód již není dostupný</string>
-    <string name="antiothers">Další anti-funkce</string>
+    <string name="antiothers">Další anti-vlastnosti</string>
     <string name="antinsfw">Není bezpečné pro práci</string>
     <string name="menu_release_channel_beta">Povolit beta aktualizace</string>
     <string name="latest__empty_state__upgrading">Aktualizace databáze…</string>
     <string name="about_title_basic">O aplikaci F-Droid Basic</string>
     <string name="app_name_basic">F-Droid Basic</string>
-    <string name="antinsfwlist">Tato aplikace zahrnuje obsah, který by neměl být zveřejňován nebo viditelný na všech místech</string>
+    <string name="antinsfwlist">Tato aplikace zahrnuje obsah, který by neměl být zveřejněný nebo viditelný na všech místech</string>
     <string name="warning_target_sdk">Tato aplikace byla sestavena pro starší verzi systému Android a nelze ji automaticky aktualizovat.</string>
     <string name="repo_last_update_downloaded">Poslední aktualizace stažena</string>
     <string name="category_Nightly">nestabilní</string>
@@ -544,16 +531,12 @@
     <string name="turn_on_wifi">Zapnout Wi-Fi</string>
     <string name="repo_add_new_title">Přidat repozitář</string>
     <string name="repo_add_new_mirror">Přidat jako nové zrcadlo</string>
-    <string name="repo_intro">Repozitář je dodatečný zdroj aplikací. Repozitáře třetích stran, které sem můžete přidat, mají jiné standardy než ty, které poskytují aplikace sestavené přímo službou F-Droid.
-\n
-\nUjistěte se prosím, že repozitář, který přidáváte, je důvěryhodný.</string>
+    <string name="repo_intro">Repozitář je dodatečný zdroj aplikací. Repozitáře třetích stran, které sem můžete přidat, mají jiné standardy než ty, které poskytují aplikace sestavené přímo projektem F-Droid.\n\nUjistěte se prosím, že repozitář, který přidáváte, je důvěryhodný.</string>
     <string name="repo_state_fetching">Načítání repozitáře…</string>
     <string name="repo_state_adding">Přidávání repozitáře…</string>
     <string name="repo_enter_url">Ruční zadání adresy URL repozitáře</string>
     <string name="repo_exists">Tento repozitář již byl přidán.</string>
-    <string name="repo_invalid">Neplatný repozitář.
-\n
-\nKontaktujte správce a dejte jim vědět o tomto problému.</string>
+    <string name="repo_invalid">Neplatný repozitář.\n\nKontaktujte správce a dejte mu vědět o tomto problému.</string>
     <string name="repo_io_error">Chyba při připojování se k repozitáři.</string>
     <string name="nearby_splace__external_storage_permission_button">Zkusit</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid může vyhledávat repozitáře a zrcadla na vaší SD kartě, potřebuje k tomu ale oprávnění.</string>
@@ -595,9 +578,7 @@
     <string name="repo_archive_toggle_description">Zobrazit archivované a zastaralé verze aplikací</string>
     <string name="repo_archive_failed">Archiv repozitáře momentálně není dostupný</string>
     <string name="repo_disable_warning">Zakázáním tohoto repozitáře jej odeberete z „vybraných“ u všech aplikací.</string>
-    <string name="repo_list_info_text">Repozitář je zdroj aplikací. Tento seznam zobrazuje všechny aktuálně přidané repozitáře. Zakázané repozitáře nejsou používány.
-\n
-\nPokud se aplikace nachází více než v jednom repozitáři, bude automaticky vybrán repozitář výše v seznamu. Repozitáře můžete přesunout dlouhým podržením a posunutím.</string>
+    <string name="repo_list_info_text">Repozitář je zdroj aplikací. Tento seznam zobrazuje všechny aktuálně přidané repozitáře. Zakázané repozitáře nejsou používány.\n\nPokud se aplikace nachází více než v jednom repozitáři, bude automaticky vybrán repozitář výše v seznamu. Repozitáře můžete přesunout podržením a přesunutím.</string>
     <string name="repositories_last_update_never">nikdy</string>
     <string name="repositories_last_update">Poslední aktualizace: %s</string>
     <string name="repo_view_repo">Zobrazit repozitář</string>
@@ -612,4 +593,9 @@
     <string name="auto_update_time_past">Další aktualizace po splnění podmínek</string>
     <string name="antitetherednet">Nezměnitelné síťové služby</string>
     <string name="antitetherednetlist">Tato aplikace zcela závisí na určité instanci síťové služby</string>
+    <string name="swap_bluetooth_permissions">Udělte prosím oprávnění Bluetooth nebo Zařízení v okolí!</string>
+    <string name="apk_permissions_mismatch">Aplikace má neočekávané oprávnění: %s</string>
+    <string name="menu_share_apk">Sdílet soubor APK</string>
+    <string name="preferForeign">Upřednostňovat zahraniční zrcadla</string>
+    <string name="preferForeignSummary">Vyzkoušet nejprve zrcadla, která se nacházejí mimo vaši zemi, např. pokud je ochrana v zahraničí silnější.</string>
 </resources>

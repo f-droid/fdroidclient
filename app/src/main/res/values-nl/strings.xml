@@ -30,7 +30,7 @@
     <string name="no">Nee</string>
     <string name="repo_add_title">Voeg nieuwe gegevensbank toe</string>
     <string name="repo_add_add">Toevoegen</string>
-    <string name="cancel">Annuleer</string>
+    <string name="cancel">Annuleren</string>
     <string name="enable">Inschakelen</string>
     <string name="add_key">Voeg sleutel toe</string>
     <string name="overwrite">Overschrijf</string>
@@ -39,9 +39,9 @@
     <string name="repo_add_url">Gegevensbank adres</string>
     <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
     <string name="malformed_repo_uri">Misvormde gegevensbank URI negeren: %s</string>
-    <string name="menu_manage">Bronnen</string>
+    <string name="menu_manage">Opslagplaatsen</string>
     <string name="menu_search">Zoeken</string>
-    <string name="menu_add_repo">Nieuwe bron</string>
+    <string name="menu_add_repo">Nieuwe opslagplaats</string>
     <string name="menu_launch">Openen</string>
     <string name="menu_share">Delen</string>
     <string name="menu_install">Installeren</string>
@@ -51,12 +51,12 @@
     <string name="menu_website">Website</string>
     <string name="menu_issues">Problemen</string>
     <string name="menu_source">Broncode</string>
-    <string name="menu_upgrade">Update</string>
+    <string name="menu_upgrade">Bijwerken</string>
     <string name="details_notinstalled">Niet geïnstalleerd</string>
     <string name="antiadslist">Deze app bevat advertenties</string>
-    <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert ze</string>
+    <string name="antitracklist">Deze app volgt en rapporteert uw activiteit</string>
     <string name="antinonfreeadlist">Deze app promoot niet-vrije uitbreidingen</string>
-    <string name="antinonfreenetlist">Deze app promoot of is afhankelijk van niet-aanpasbare of niet-vrije netwerkdiensten</string>
+    <string name="antinonfreenetlist">Dit programma promoot of hangt volledig af van een niet vrije netwerk dienst</string>
     <string name="antinonfreedeplist">Deze app is afhankelijk van andere niet-vrije apps</string>
     <string name="antiupstreamnonfreelist">De upstream broncode is niet geheel vrij</string>
     <string name="display">Weergave</string>
@@ -94,12 +94,12 @@
     <string name="no_permissions">Geen machtigingen</string>
     <string name="no_handler_app">Er is geen app beschikbaar die %s kan verwerken.</string>
     <string name="theme">Thema</string>
-    <string name="unsigned">Ongetekend</string>
+    <string name="unsigned">Niet ondertekend</string>
     <string name="unverified">Onbevestigd</string>
     <string name="repo_num_apps">Aantal apps</string>
     <string name="repo_fingerprint">Vingerafdruk van de ondertekeningssleutel (SHA-256)</string>
     <string name="repo_description">Beschrijving</string>
-    <string name="repo_last_update">Meest recente update</string>
+    <string name="repo_last_update">Laatste update</string>
     <string name="repo_name">Naam</string>
     <string name="unsigned_description">Dit betekent dat de lijst van apps niet geverifieerd kon worden. Wees voorzichtig met apps gedownload uit niet-ondertekende bronnen.</string>
     <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Schakel het in om de apps die het bevat te kunnen bekijken.</string>
@@ -114,7 +114,7 @@
     <string name="repo_added">Bron %1$s opgeslagen.</string>
     <string name="repo_searching_address">Er wordt gezocht naar bronnen op
 \n%1$s</string>
-    <string name="not_on_same_wifi">Uw apparaat is geen onderdeel van hetzelfde wifi-netwerk als de lokale bron die je zojuist hebt toegevoegd. Probeer onderdeel te worden van dit netwerk: %s</string>
+    <string name="not_on_same_wifi">Uw apparaat staat niet op dezelfde wifi als de lokale opslagplaats die u zojuist hebt toegevoegd! Maak verbinding met dit netwerk: %s</string>
     <string name="requires_features">Vereist: %1$s</string>
     <string name="category_Development">Ontwikkeling</string>
     <string name="category_Games">Spellen</string>
@@ -139,11 +139,11 @@
     <string name="bad_fingerprint">Foute vingerafdruk</string>
     <string name="invalid_url">Dit is geen geldige URL.</string>
     <string name="menu_changelog">Wijzigingen</string>
-    <string name="banner_updating_repositories">Gegevensbanken bijwerken</string>
+    <string name="banner_updating_repositories">Archieven bijwerken</string>
     <string name="status_processing_xml_percent">Verwerken %2$s / %3$s (%4$d%%) van %1$s</string>
     <string name="pref_language">Taal</string>
     <string name="pref_language_default">Systeemstandaard</string>
-    <string name="wifi">Wi-fi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="empty_installed_app_list">Geen apps geïnstalleerd.
 \n
@@ -157,10 +157,10 @@
     <string name="swap_success">Uitwisseling succesvol!</string>
     <string name="swap_active_hotspot">%1$s (uw hotspot)</string>
     <string name="swap_switch_to_wifi">Tik om over te schakelen naar een wifi netwerk</string>
-    <string name="swap_dont_show_again">Toon dit niet opnieuw</string>
+    <string name="swap_dont_show_again">Laat dit niet meer zien</string>
     <string name="app_name_full">F-Droid</string>
     <string name="about_source">Broncode</string>
-    <string name="category_Connectivity">Connectiviteit</string>
+    <string name="category_Connectivity">Verbinding</string>
     <string name="category_Graphics">Grafisch</string>
     <string name="category_Money">Geld</string>
     <string name="category_Sports_Health">Sport &amp; Gezondheid</string>
@@ -182,7 +182,7 @@
     <string name="swap_not_visible_wifi">Niet zichtbaar via wifi</string>
     <string name="swap_wifi_device_name">Apparaatnaam</string>
     <string name="swap_cant_find_peers">Kunt u de persoon niet vinden?</string>
-    <string name="swap_send_fdroid">Verstuur F-Droid</string>
+    <string name="swap_send_fdroid">F-Droid versturen</string>
     <string name="apps">Apps</string>
     <string name="swap_no_peers_nearby">Kon geen mensen in de buurt vinden om mee uit te wisselen.</string>
     <string name="swap_connecting">Verbinding maken</string>
@@ -223,7 +223,7 @@
 \n%1$s
 \ndownloaden</string>
     <string name="permissions">Machtigingen</string>
-    <string name="repo_details">Bron</string>
+    <string name="repo_details">Opslagplaats</string>
     <string name="repo_url">Adres</string>
     <string name="system_install_denied_permissions">De geprivilegieerde rechten zijn niet toegekend aan de extensie! Maak een bugrapport aan!</string>
     <string name="download_error">Download mislukt!</string>
@@ -239,13 +239,13 @@
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
     <string name="empty_search_available_app_list">Geen overeenkomende apps beschikbaar.</string>
     <string name="crash_dialog_title">F-Droid is gestopt</string>
-    <string name="crash_dialog_text">Een onverwachte fout is opgetreden waardoor de app is gestopt. Wilt u details over deze fout e-mailen om het probleem te helpen oplossen?</string>
+    <string name="crash_dialog_text">Er is een onverwachte fout opgetreden waardoor de app moest stoppen. Wilt u de details e-mailen om het probleem op te lossen?</string>
     <string name="crash_dialog_comment_prompt">U kunt extra informatie en commentaar hier toevoegen:</string>
     <string name="useTor">Gebruik Tor</string>
     <string name="useTorSummary">Forceer downloadverkeer via Tor voor verhoogde privacy. Vereist Orbot</string>
     <string name="swap_stopping_wifi">Wifi stoppen…</string>
     <string name="update_auto_download">Automatisch updates ophalen</string>
-    <string name="update_auto_download_summary">Updates worden automatisch gedownload en u wordt genotificeerd om ze te installeren</string>
+    <string name="update_auto_download_summary">Updates worden automatisch gedownload en u ontvangt een melding om ze te installeren</string>
     <string name="download_pending">Wachten op start van download…</string>
     <string name="install_error_notify_title">Fout bij het installeren van %s</string>
     <string name="uninstall_error_notify_title">Fout bij het verwijderen van %s</string>
@@ -261,7 +261,7 @@
     <string name="update_auto_install_summary">Download en update apps op de achtergrond, waarbij een melding wordt getoond</string>
     <string name="keep_install_history">Bewaar installatie geschiedenis</string>
     <string name="keep_install_history_summary">Bewaar een privélogboek van alle installaties en deïnstallaties</string>
-    <string name="warning_no_internet">Kan niet bijwerken, bent u verbonden met het internet\?</string>
+    <string name="warning_no_internet">Kan niet bijwerken, bent u verbonden met het internet?</string>
     <string name="versions">Versies</string>
     <string name="app_details_donate_prompt_unknown_author">Doneer de ontwikkelaars van %1$s een kop koffie!</string>
     <string name="app_details_donate_prompt">%1$s is gemaakt door %2$s. Doneer ze een kop koffie!</string>
@@ -288,7 +288,7 @@
     <string name="main_menu__categories">Categorieën</string>
     <string name="main_menu__swap_nearby">Dichtbij</string>
     <string name="preference_category__my_apps">Mijn apps</string>
-    <string name="preference_manage_installed_apps">Beheer geïnstalleerde apps</string>
+    <string name="preference_manage_installed_apps">Geïnstalleerde apps beheren</string>
     <string name="details_new_in_version">Nieuw in versie %s</string>
     <string name="antifeatureswarning">Deze app heeft functies die u mogelijk niet leuk vindt.</string>
     <string name="antifeatures">Anti-functies</string>
@@ -408,8 +408,8 @@
     <string name="sort_search">Sorteer zoekresultaten</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Uw camera lijkt geen autofocus te hebben. Het scannen van de code kan moeilijk zijn.</string>
-    <string name="show_anti_feature_apps">Toon apps met anti-functies</string>
-    <string name="show_anti_feature_apps_on">Toon apps die anti-functies bevatten</string>
+    <string name="show_anti_feature_apps">Sta minpunten toe</string>
+    <string name="show_anti_feature_apps_on">Toon programma\'s met bekende minpunten</string>
     <string name="force_touch_apps">Toon apps voor een aanraakscherm</string>
     <string name="force_touch_apps_on">Toon apps die een aanraakscherm vereisen, ongeacht de hardwareondersteuning</string>
     <string name="repo_add_mirror">Voeg spiegel gegevensbank toe</string>
@@ -427,7 +427,7 @@
     <string name="over_wifi">Via wifi</string>
     <string name="over_data">Via mobiel netwerk</string>
     <string name="over_network_always_summary">Gebruik altijd deze verbinding indien beschikbaar</string>
-    <string name="over_network_on_demand_summary">Gebruik deze verbinding alleen wanneer ik tik om te downloaden</string>
+    <string name="over_network_on_demand_summary">Gebruik deze verbinding alleen wanneer ik klik om te downloaden</string>
     <string name="over_network_never_summary">Download nooit iets via deze verbinding</string>
     <string name="antidisabledalgorithmlist">Deze app heeft een zwakke beveiligingshandtekening</string>
     <string name="antiknownvulnlist">Deze app bevat een bekend beveiligingslek</string>
@@ -439,7 +439,7 @@
     <string name="install_history_summary">Bekijk het privélogboek van alle installaties en deïnstallaties</string>
     <string name="send_version_and_uuid">Verstuur versie en UUID naar servers</string>
     <string name="send_version_and_uuid_summary">Voeg het versienummer van de app en een willekeurige ID toe tijdens het downloaden, wordt van kracht na herstarten van de app.</string>
-    <string name="antinosourcesince">De broncode is niet meer beschikbaar, geen updates mogelijk.</string>
+    <string name="antinosourcesince">De broncode is niet meer beschikbaar, bijwerken niet mogelijk</string>
     <string name="share_repository">Gegevensbank delen</string>
     <string name="send_install_history">Verstuur installatie geschiedenis</string>
     <string name="send_history_csv">%s installatie geschiedenis als CSV bestand</string>
@@ -506,18 +506,18 @@
     <string name="share_apk_error">App bestand kon niet worden gedeeld</string>
     <string name="swap_wifi_vpn_conflict">Conflicteert met actieve VPN!</string>
     <string name="has_disallow_install_unknown_sources">Onbekende bronnen kunnen niet worden toegevoegd door deze gebruiker, waaronder nieuwe gegevensbanken</string>
-    <string name="has_disallow_install_unknown_sources_globally">Uw apparaatbeheerder staat het installeren van apps uit onbekende bronnen niet toe, waaronder nieuwe gegevensbanken</string>
+    <string name="has_disallow_install_unknown_sources_globally">Uw apparaatbeheerder verbied installaties van apps uit onbekende bronnen, inclusief nieuwe archieven</string>
     <string name="antidisabledalgorithm">Ondertekend met een onveilig algoritme</string>
     <string name="antiads">Advertenties</string>
     <string name="antinosource">Broncode niet langer beschikbaar</string>
     <string name="antiknownvuln">Bekende kwetsbaarheid</string>
     <string name="antinonfreenet">Niet-vrije netwerkdiensten</string>
     <string name="antinonfreeassets">Niet-vrije media</string>
-    <string name="antiothers">Andere anti-functies</string>
+    <string name="antiothers">Andere minpunten</string>
     <string name="antitrack">Volgen</string>
-    <string name="antinsfw">Niet passend voor op het werk</string>
+    <string name="antinsfw">Onveilig voor werk</string>
     <string name="antinonfreead">Niet-vrije uitbreidingen</string>
-    <string name="app_list_results_hidden_antifeature_settings">Sommige resultaten werden verborgen op basis van uw anti-functies instellingen.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Sommige programma\'s zijn verborgen op vanwege uw minpunten instellingen.</string>
     <string name="antiupstreamnonfree">Niet-vrije upstream</string>
     <string name="antinonfreedep">Niet-vrije afhankelijkheden</string>
     <string name="latest__empty_state__upgrading">Database upgraden…</string>
@@ -538,10 +538,10 @@
     <string name="repo_invalid">Ongeldige gegevensbank.
 \n
 \nNeem contact op met de beheerder en informeer ze over dit probleem.</string>
-    <string name="repo_exists">Deze gegevensbank is al toegevoegd.</string>
+    <string name="repo_exists">Dit archief is al toegevoegd.</string>
     <string name="repo_add_new_title">Voeg gegevensbank toe</string>
     <string name="targetsdk_or_later">doelen %s</string>
-    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kan op uw SD kaart zoeken naar gegevensbanken en spiegels, maar heeft hiervoor toestemming nodig.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kan op uw SD kaart zoeken naar opslagplaatsen en spiegels, maar heeft hiervoor toestemming nodig.</string>
     <string name="repo_state_fetching">Gegevensbank aan het ophalen…</string>
     <string name="copied_permission_to_clipboard">Toestemmingsnaam gekopieerd naar klembord</string>
     <string name="copied_url_to_clipboard">URL gekopieerd naar klembord</string>
@@ -588,4 +588,19 @@
         <item quantity="other">Download apps van IPFS web eindpunten: %1$d ingeschakeld</item>
     </plurals>
     <string name="ipfsgw_summary_disabled">Download apps van IPFS web eindpunten: uitgeschakeld</string>
+    <string name="antitetherednet">Gebonden Netwerk Diensten</string>
+    <string name="warning_no_compat_versions">Het gekozen archief bevat geen ondersteunde programma versies, om bij te werken, kies een archief met ondersteunde versies.</string>
+    <string name="menu_share_apk">Deel APK bestand</string>
+    <string name="auto_update_time_past">Bijwerken wanneer condities zijn toegepast</string>
+    <string name="repo_view_repo">Bekijk archief</string>
+    <string name="repo_mirror_add_info">Deze link (%s) leid naar de distributie locatie van een reeds bekend archief.</string>
+    <string name="antitetherednetlist">Deze app is volledig afhankelijk van een bepaald exemplaar van een netwerkdienst</string>
+    <string name="apk_permissions_mismatch">Programma vraagt onverwachte permissies: %s</string>
+    <string name="repo_mirror_exists">Deze spiegelserver is al toegevoegd (%s).</string>
+    <string name="repo_scan_qr_code">QR-code scannen</string>
+    <string name="repo_preview_included_apps">Bijgevoegde programma\'s:</string>
+    <string name="repo_add_repo_and_mirror">Voeg archief en \"distributie punt\" optie toe</string>
+    <string name="repo_and_mirror_add_both_info">Deze link (%s) leid naar een distributie punt van een reeds bekend archief. Zowel orgineel als distributie punt zullen worden toegevoegd.</string>
+    <string name="auto_update_time">Eerstvolgende versie: %s</string>
+    <string name="swap_bluetooth_permissions">Verleen toestemming voor Bluetooth of Apparaat in de buurt!</string>
 </resources>

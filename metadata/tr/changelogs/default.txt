@@ -1,15 +1,11 @@
-Elbette, işte metnin Türkçe çevirisi:
-
-* Depoların kullanıcılara nasıl temsil edildiğini yeniden düzenleyin, böylece bir yüklemenin f-droid.org dışından geldiği net bir şekilde anlaşılsın.
-
-* Kullanıcıların depo önceliğini global olarak ve uygulama bazında değiştirmelerine izin verin.
-
-* Özel Karşı Özellikler (Anti-Features) artık varsayılan olarak etkinleştirildi, devre dışı bırakılmadı.
-
-* Paylaşım yoluyla depo URL'lerini almayı destekleyin.
-
-* Tüm etkinlikler gündüz/gece temasına saygı gösterir.
-
-* targetSdkVersion 29 ile çalışmak üzere dış depolama kullanımını güncelleyin.
-
-* F-Droid Basic, targetSdkVersion 34 ile çalışacak şekilde güncellendi.
+* Arka plan güncellemelerini daha güvenilir hale getirmek için yeniden yazılmış depo güncelleyici
+* Daha iyi okunabilirlik için uygulama listelerinde adı ve özeti ayırın
+* Uygulamalar tercih edilen depodan güncellenemediğinde uyarı göster
+* SDK 24'ü hedefleyen uygulamalar Android 15 cihazlarıyla uyumsuzdur
+* "Depo ekle" önizlemesinde aynaları daha iyi işleme (Teşekkürler Thore!)
+* MIUI çalıştırmayan Xiaomi cihazlarında gözetimsiz uygulama güncellemelerini etkinleştirme (Teşekkürler Irate!)
+* Kullanıcı tarafından eklenen kök sertifikalarına güvenme (Teşekkürler B.!)
+* Diakritik işaretler içeren büyük/küçük harfe duyarlı olmayan aramayı düzeltme (Teşekkürler Tobias!)
+* Anti-özellik açıklamalarını güncelleme (Teşekkürler Licaon!)
+* Bağlı net anti-özellik ekleme (Teşekkürler linsui!)
+* Ayna depoları eklerken boşlukları yok sayma (Teşekkürler Tobias!)

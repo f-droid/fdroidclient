@@ -1,0 +1,11 @@
+* Pembaru repo yang ditulis ulang untuk membuat pembaruan latar belakang lebih andal
+* Pisahkan nama dan ringkasan dalam daftar aplikasi agar lebih mudah dibaca
+* Tampilkan peringatan ketika aplikasi tidak dapat diperbarui dari repo pilihan
+* Aplikasi yang menargetkan SDK 24 tidak kompatibel dengan perangkat Android 15
+* Tangani cermin di pratinjau "Tambahkan repo" dengan lebih baik (Terima kasih Thore!)
+* Aktifkan pembaruan aplikasi tanpa pengawasan pada perangkat Xiaomi yang tidak menjalankan MIUI (Terima kasih Irate!)
+* Percayai sertifikat root yang ditambahkan pengguna (Terima kasih B.!)
+* Perbaiki pencarian tidak peka huruf besar-kecil yang mengandung diakritik (Terima kasih Tobias!)
+* Perbarui deskripsi anti-fitur (Terima kasih Licaon!)
+* Tambahkan anti-fitur jaring tertambat (Terima kasih linsui!)
+* Abaikan spasi saat menambahkan repo cermin (Terima kasih Tobias!)

@@ -1,0 +1,7 @@
+* Peningkatan penautan URL dalam deskripsi aplikasi
+
+* Peningkatan penanganan SDCard dan USG-OTG di Nearby
+
+* Kode yang dimodernisasi dan mengubah PNG menjadi vektor (terima kasih @isira-seneviratne!)
+
+* Mengenali URL repo yang lebih panjang untuk mendukung mirror GitCDN/RawGit/dll

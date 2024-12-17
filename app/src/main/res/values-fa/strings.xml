@@ -43,11 +43,8 @@
     <string name="expert_on">نمایش اطّلاعات و به کار انداختن تنظیمات اضافی</string>
     <string name="search_hint">جست‌وجوی کاره‌ها</string>
     <string name="appcompatibility">سازگاری کاره</string>
-    <string name="status_download">بار گرفتن
-\n%2$s / %3$s (%4$d٪) از
-\n%1$s</string>
-    <string name="status_connecting_to_repo">وصل شدن به
-\n%1$s</string>
+    <string name="status_download">بار گرفتن\n%2$s / %3$s‏ (%4$d٪) از\n%1$s</string>
+    <string name="status_connecting_to_repo">وصل شدن به\n%1$s</string>
     <string name="no_permissions">بدون هیچ اجازه‌ای</string>
     <string name="theme">زمینه</string>
     <string name="unsigned">امضا نشده</string>
@@ -119,9 +116,7 @@
     <string name="proxy_host_summary">نام میزبان پیشکارتان (مثلاً 127.0.0.1)</string>
     <string name="proxy_port">درگاه پیشکار</string>
     <string name="proxy_port_summary">شمارهٔ درگاه پیشکارتان (مثلاً 8118)</string>
-    <string name="status_download_unknown_size">بار گرفتن
-\n%2$s از
-\n%1$s</string>
+    <string name="status_download_unknown_size">بار گرفتن\n%2$s از\n%1$s</string>
     <string name="banner_updating_repositories">به‌روز رساندن مخازن</string>
     <string name="status_processing_xml_percent">در حال پردازش %2$s / %3$s (%4$d٪) از %1$s</string>
     <string name="status_inserting_apps">ذخیره کردن جزییات کاره</string>
@@ -157,8 +152,7 @@
     <string name="category_Theming">شخصی‌سازی</string>
     <string name="category_Time">زمان</string>
     <string name="category_Writing">نوشتن</string>
-    <string name="empty_can_update_app_list">تبریک!
-\nکاره‌هایتان به‌روزند.</string>
+    <string name="empty_can_update_app_list">تبریک!\nکاره‌هایتان به‌روزند.</string>
     <string name="swap_join_same_wifi">به همان وای‌فای دوستتان بپیوندید</string>
     <string name="swap_join_this_hotspot">دوستتان را در پیوستن به نقطهٔ اتّصالتان یاری کنید</string>
     <string name="swap">تاخت‌زنی کاره‌ها</string>
@@ -209,18 +203,11 @@
     <string name="malformed_repo_uri">چشم‌پوشی کردن از نشانی مخزن بدشکل: %s</string>
     <string name="all_other_repos_fine">هیچ مخزن دیگری، خطایی ایجاد نکرد.</string>
     <string name="repo_not_yet_updated">این مخزن هنوز استفاده نشده است. برای دیدن کاره‌هایی که فراهم می‌کند باید به کار بنیدازیدش.</string>
-    <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر در دسترس نخواهند بود.
-\n
-\nتوجّه: تمام کاره‌های نصب شدهٔ پیشین، روی افزاره‌تان باقی خواهند ماند.</string>
-    <string name="repo_disabled_notification">%1$s از کار افتاد.
-\n
-\nبرای نصب کاره‌ها از آن، باید دوباره به کارش بیندازید.</string>
+    <string name="repo_confirm_delete_body">حذف یک مخزن به این معناست که کاره‌هایش دیگر در دسترس نخواهند بود.\n\nتوجّه: تمام کاره‌های نصب شدهٔ پیشین، روی افزاره‌تان باقی خواهند ماند.</string>
+    <string name="repo_disabled_notification">%1$s از کار افتاد.\n\nبرای نصب کاره‌ها از آن، باید دوباره به کارش بیندازید.</string>
     <string name="repo_added">مخزن بستهٔ %1$s ذخیره شد.</string>
-    <string name="repo_searching_address">گشتن به دنبال مخزن بسته در
-\n%1$s</string>
-    <string name="empty_installed_app_list">هیچ کاره‌ای نصب نشده.
-\n
-\nکاره‌هایی روی افزاره‌تان هستند، ولی در اف‌دروید موجود نیستند. ممکن است نیاز به به‌روز کردن مخزن‌هایتان داشته یا اساساً مخزن‌ها، کاره‌هایتان را موجود ندارند.</string>
+    <string name="repo_searching_address">گشتن به دنبال مخزن بسته در\n%1$s</string>
+    <string name="empty_installed_app_list">هیچ کاره‌ای نصب نشده.\n\nکاره‌هایی روی افزاره‌تان هستند، ولی در اف‌دروید موجود نیستند. ممکن است نیاز به به‌روز کردن مخزن‌هایتان داشته یا اساساً مخزن‌ها، کاره‌هایتان را موجود ندارند.</string>
     <string name="install_error_unknown">شکست در نصب به دلیل خطایی ناشناخته</string>
     <string name="uninstall_error_unknown">شکست در حذف نصب به دلیل خطایی ناشناخته</string>
     <string name="system_install_denied_permissions">اجازه‌های ممتاز به افزونه داده نشده! لطفاً گزارش خطایی ایجاد کنید!</string>
@@ -377,7 +364,7 @@
     <string name="app_list__dismiss_app_update">از به‌روز رسانی چشم‌پوشی شد</string>
     <string name="app_list__dismiss_vulnerable_app">از آسیب‌پذیری چشم‌پوشی</string>
     <string name="app_list__dismiss_downloading_app">بارگیری لغو شد</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">یک آسیب‌پذیری در %1$s پیدا شد. توصیه می‌شود فوراً این کاره را حذف نصب کنید.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">یک آسیب‌پذیری در %1$s پیدا شد. لمس برای خواندن بیش‌تر دز بخش پادویژگی‌ها.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">یک آسیب‌پذیری در %1$s پیدا شد. توصیه می‌شود فوراً به جدیدترین نگارش ارتقا دهید.</string>
     <string name="updates__app_with_known_vulnerability__ignore">چشم‌پوشی</string>
     <string name="privacy">محرمانگی</string>
@@ -536,9 +523,7 @@
     <string name="force_old_installer_title">اجبار به نصب‌کنندهٔ قدیمی</string>
     <string name="force_old_installer_summary">از کار انداختن نصب‌کنندهٔ نشست شامل پشتیبانی از به‌روز رسانی‌های پس‌زمینهٔ خودکار.</string>
     <string name="repo_state_adding">افزودن مخزن…</string>
-    <string name="repo_invalid">مخزن نامعتبر.
-\n
-\nبا نگه‌دارنده تماس گرفته و دربارهٔ مشکل اطّلاع دهید.</string>
+    <string name="repo_invalid">مخزن نامعتبر.\n\nبا نگه‌دارنده تماس گرفته و دربارهٔ مشکل اطّلاع دهید.</string>
     <string name="repo_exists">این مخزن از پیش افزوده شده.</string>
     <string name="repo_add_new_title">افزودن مخزن</string>
     <string name="targetsdk_or_later">با هدف %s</string>
@@ -549,9 +534,7 @@
     <string name="repo_io_error">خطا در وصل شدن به مخزن.</string>
     <string name="repo_enter_url">ورود دستی نشانی مخزن</string>
     <string name="repo_add_new_mirror">افزودن به عنوان آینهٔ جدید</string>
-    <string name="repo_intro">مخزن، منبعی اضافی از کاره‌هاست. مخازن سوم‌شخصی که این‌جا می‌افزایید، استانداردهایی متفاوت با آن‌هایی دارند که خود اف‌دروید می‌سازد.
-\n
-\nلطفاً مطمئن شوید که مخزنی که می‌افزایید قابل اطمینان است.</string>
+    <string name="repo_intro">مخزن، منبعی اضافی از کاره‌هاست. مخازن سوم‌شخصی که این‌جا می‌افزایید استانداردهایی متفاوت با آن‌هایی دارند که خود اف‌دروید می‌سازد.\n\nلطفاً مطمئن شوید که مخزنی که می‌افزایید قابل اطمینان است.</string>
     <string name="swap_connection_indexv0_error">در حال تلاش برای وصل شدن به شخصی با نگارشی خارج از رده از اف‌دروید هستید. برای وصل شدن باید کارهٔ اف‌درویدشان را ارتقا دهند. می‌توانند برای به‌روز رسانی کارهٔ اف‌دروید با مبادله از شما استفاده کنند.</string>
     <string name="swap_banner_message">برای مبادلهٔ کاره‌ها وای‌فایتان را روشن کرده و به همان شبکهٔ دوستتان وصل شوید.</string>
     <string name="repo_num_apps_button">نمایش کاره‌ها</string>
@@ -574,9 +557,7 @@
     <string name="app_details_repository_preferred">(ترجیحی)</string>
     <string name="app_details_repository_expand">گسترش سیاههٔ مخزن</string>
     <string name="app_list_no_suggested_version">هیچ نگارشی برای نصب توصیه نشده.</string>
-    <string name="repo_list_info_text">مخزن منبعی از کاره‌هاست. این سیاهه مخزن‌هایی که اکنون اضافه شده‌اند را نشان می‌دهد. مخزن‌های از کار افتاده استفاده نمی‌شوند.
-\n
-\nاگر کاره‌ای در بیش از یک مخزن باشد، مخزنی که بالاتر باشد ارجحیت دارد. می‌توانید با فشردن طولانی مخزن‌ها و کشیدنشان، ترتیبشان را عوض کنید.</string>
+    <string name="repo_list_info_text">مخزن منبعی از کاره‌هاست. این سیاهه مخزن‌هایی که اکنون اضافه شده‌اند را نشان می‌دهد. مخزن‌های از کار افتاده استفاده نمی‌شوند.\n\nاگر کاره‌ای در بیش از یک مخزن باشد، مخزنی که بالاتر باشد ارجحیت دارد. می‌توانید با فشردن طولانی مخزن‌ها و کشیدنشان، ترتیبشان را عوض کنید.</string>
     <string name="repositories_last_update">آخرین به‌روز رسانی: %s</string>
     <string name="repositories_last_update_never">هرگز</string>
     <string name="repo_list_info_title">سیاههٔ مخزن‌ها</string>
@@ -601,4 +582,9 @@
     <string name="antitetherednet">خدمت شبکهٔ چتری</string>
     <string name="antitetherednetlist">این کاره، کاملاً وابسته به نمونه‌ای خاص از یک خدمت شبکه‌ای است</string>
     <string name="auto_update_time_past">به‌روز رسانی بعدی هنگام فراهم شدن شرایط</string>
+    <string name="swap_bluetooth_permissions">لطفاً دسترسی بلوتوث یا افزاره‌های نزدیک را اعطا کنید!</string>
+    <string name="menu_share_apk">هم‌رسانی پروندهٔ APK</string>
+    <string name="apk_permissions_mismatch">کاره اجازه‌ای غیرمنتظره دارد: %s</string>
+    <string name="preferForeign">ترجیح مخازن خارجی</string>
+    <string name="preferForeignSummary">ابتدا مخزن هایی را امتحان کنید که در خارج از کشور شما قرار دارند، به عنوان مثال. اگر اطمینان از مخزن های خارجی قوی تر باشد.</string>
 </resources>

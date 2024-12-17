@@ -1,0 +1,8 @@
+* Banyak perbaikan bug
+* Tampilkan ikon repositori dalam daftar repositori
+* Tampilkan alasan untuk Anti-Fitur (jika tersedia)
+* Peningkatan tanpa pengawasan tanpa ekstensi khusus (hanya F-Droid Basic untuk saat ini)
+* Tampilkan ukuran aplikasi pada layar detail aplikasi (hanya mode ahli)
+* Nama aplikasi yang sedikit lebih gelap dalam daftar aplikasi untuk meningkatkan keterbacaan
+* Mengembalikan status terbuka / tertutup dari "Perbarui Semua" di tab Pembaruan (@tunedal)
+* Mengembalikan tab yang aktif di antara pengaktifan ulang aplikasi

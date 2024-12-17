@@ -1,0 +1,7 @@
+* Pievienotas vilkšanas kustības cilnē "Atjauninājumi"
+
+* Attēlo brīdinājumus ar darbībām cilnes "Atjauninājumi" sadaļā "Zināmas ievainojamības"
+
+* Atjaunināti tulkojumi
+
+* Tumšā izskata labojumi
