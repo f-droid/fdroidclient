@@ -1,0 +1,13 @@
+* Refonte de la façon dont les dépôts sont présentés aux utilisateurs afin de préciser quand une installation provient d'un autre endroit que f-droid.org.
+
+* Les utilisateurs peuvent modifier la priorité des dépôts globalement et par application.
+
+* La personnalisation des anti-fonctionnalités est désormais activée par défaut, plutôt que désactivée.
+
+* Prise en charge de la réception d'URL de dépôts via l'option Partager.
+
+* Toutes les activités respectent le thème jour/nuit.
+
+* Mise à jour des utilisations du stockage externe pour fonctionner en ciblant la version 29 du SDK.
+
+* F-Droid Basic mis à jour pour fonctionner en ciblant la version 34 du SDK.

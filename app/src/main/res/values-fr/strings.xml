@@ -400,7 +400,7 @@
     <string name="app_list__dismiss_app_update">Mise à jour ignorée</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnérabilité ignorée</string>
     <string name="app_list__dismiss_downloading_app">Téléchargement annulé</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons trouvé une vulnérabilité dans %1$s. Nous recommandons de désinstaller cette application immédiatement.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Nous avons trouvé une vulnérabilité dans %1$s. Appuyer pour avoir plus de détails dans la section Anti-fonctions.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Nous avons trouvé une vulnérabilité dans %1$s. Nous recommandons d\'installer la nouvelle version immédiatement.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
     <string name="privacy">Confidentialité</string>
