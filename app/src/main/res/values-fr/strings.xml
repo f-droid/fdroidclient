@@ -624,4 +624,6 @@
     <string name="swap_bluetooth_permissions">Veuillez autoriser l\'accès au Bluetooth ou aux appareils à proximité !</string>
     <string name="menu_share_apk">Partager le fichier APK</string>
     <string name="apk_permissions_mismatch">L\'application dispose d\'une autorisation inattendue : %s</string>
+    <string name="preferForeignSummary">Essayer d\'abord des miroirs localisés en dehors de votre pays, par ex. si les protections à l\'étranger sont plus importantes.</string>
+    <string name="preferForeign">Privilégier les miroirs étrangers</string>
 </resources>
