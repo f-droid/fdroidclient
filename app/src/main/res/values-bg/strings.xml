@@ -76,11 +76,8 @@
     <string name="proxy_host_summary">Име на хоста на прокси (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт на прокси</string>
     <string name="proxy_port_summary">Номер на порта на прокси (напр. 8118)</string>
-    <string name="status_download">Изтегляне
-\n%2$s / %3$s (%4$d%%) от
-\n%1$s</string>
-    <string name="status_connecting_to_repo">Свързване към
-\n%1$s</string>
+    <string name="status_download">Изтегляне\n%2$s / %3$s (%4$d%%) от\n%1$s</string>
+    <string name="status_connecting_to_repo">Свързване към\n%1$s</string>
     <string name="repos_unchanged">Всички хранилищата са обновени</string>
     <string name="global_error_updating_repos">Грешка при обновяване: %s</string>
     <string name="no_permissions">Няма разрешения</string>
@@ -93,12 +90,8 @@
     <string name="repo_name">Иаименование</string>
     <string name="repo_not_yet_updated">Хранилището все още не е използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
     <string name="repo_confirm_delete_title">Изтриване на хранилището\?</string>
-    <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.
-\n
-\nЗабележка: Всички инсталирани приложения ще останат на устройството.</string>
-    <string name="repo_disabled_notification">Хранилището %1$s е изключеноно.
-\n
-\nЗа да инсталирате приложения от него ще трябва да го включите.</string>
+    <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.\n\nЗабележка: Всички инсталирани приложения ще останат на устройството.</string>
+    <string name="repo_disabled_notification">Хранилището %1$s е изключеноно.\n\nЗа да инсталирате приложения от него ще трябва да го включите.</string>
     <string name="not_on_same_wifi">Устройството не е в една безжична мрежа с току-що добавеното местно хранилище! Опитайте да се свържете към тази мрежа: %s</string>
     <string name="requires_features">Изисква: %1$s</string>
     <string name="category_Development">Разработка</string>
@@ -157,11 +150,8 @@
     <string name="category_Connectivity">Свързаност</string>
     <string name="menu_upgrade">Обновяване</string>
     <string name="links">Препратки</string>
-    <string name="empty_installed_app_list">Няма инсталирани приложения.
-\n
-\nИнсталираните приложения не са налични в F-Droid. Вероятна причина могат да бъдат необновени хранилища или просто хранилищата не предлагат приложенията, който ползвате.</string>
-    <string name="empty_can_update_app_list">Поздравления!
-\nВсички приложения са последно издание.</string>
+    <string name="empty_installed_app_list">Няма инсталирани приложения.\n\nИнсталираните приложения не са налични в F-Droid. Вероятна причина могат да бъдат необновени хранилища или просто хранилищата не предлагат приложенията, който ползвате.</string>
+    <string name="empty_can_update_app_list">Поздравления!\nВсички приложения са последно издание.</string>
     <string name="install_confirm">има нужда от достъп до</string>
     <string name="install_confirm_update">Искате да обновите инсталирано приложение\? Текущата информация няма да бъде загубена. Новото издание ще получи достъп до:</string>
     <string name="install_confirm_update_system">Искате да обновите вградено приложение\? Текущата информация няма да бъде загубена. Новото издание ще получи достъп до:</string>
@@ -195,9 +185,7 @@
     <string name="menu_bitcoin">Биткойн</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="status_download_unknown_size">Изтегляне на
-\n%2$s от
-\n%1$s</string>
+    <string name="status_download_unknown_size">Изтегляне на\n%2$s от\n%1$s</string>
     <string name="permissions">Разрешения</string>
     <string name="repo_details">Хранилище</string>
     <string name="repo_url">Адрес</string>
@@ -206,8 +194,7 @@
     <string name="swap_qr_isnt_for_swap">Сканираният QR код не е код за размяна.</string>
     <string name="status_processing_xml_percent">Обработени %2$s / %3$s (%4$d%%) от %1$s</string>
     <string name="repo_added">Хранилището %1$s е запазено.</string>
-    <string name="repo_searching_address">Търсене на хранилище в
-\n%1$s</string>
+    <string name="repo_searching_address">Търсене на хранилище в\n%1$s</string>
     <string name="unsigned">Неподписано</string>
     <string name="swap_confirm">Потвърдете размяната</string>
     <string name="swap_connection_misc_error">Грешка при свързване с устройството, не може да бъде осъществена размяна!</string>
@@ -344,7 +331,7 @@
     <string name="notification_action_update">Обновяване</string>
     <string name="notification_action_cancel">Отказ</string>
     <string name="notification_action_install">Инсталиране</string>
-    <string name="warning_no_internet">Грешка при обновяване, има връзка с интернет?</string>
+    <string name="warning_no_internet">Грешка при обновяване, има ли интернет?</string>
     <string name="notification_title_single_update_available">Налично издание</string>
     <string name="notification_title_summary_install_error">Неуспешна инсталация</string>
     <plurals name="button_view_all_apps_in_category">
@@ -378,7 +365,7 @@
     <string name="nearby_splash__both_parties_need_fdroid">За да споделяте приложения с хора около вас, и двете устройства трябва да използват %1$s.</string>
     <string name="app_installed_media">Файлът е инсталиран в %s</string>
     <string name="app_permission_storage">F-Droid се нуждае от разрешение, за да инсталира приложението в хранилището. Моля, разрешете на следващия екран, за да продължи инсталирането.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Открита е уязвимост в %1$s. Препоръчваме незабавно да премахнете приложението.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Открита е уязвимост в %1$s. Докоснете, за да прочетете повече в секцията за анти-функции.</string>
     <string name="panic_app_setting_title">Приложение при тревога</string>
     <string name="panic_app_unknown_app">непознато приложение</string>
     <string name="panic_app_setting_summary">Няма зададено приложение</string>
@@ -420,7 +407,7 @@
     <string name="hiding_dialog_title">Скрий %s Сега</string>
     <string name="use_bluetooth">Използване Bluetooth</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Инсталираното издание не е съвместимо с никое от наличните издания. За да видите и инсталирате съвместими издания премахнете инсталираното. Това често се случва с приложения, инсталирани чрез Google Play или други източници, ако са подписани с различен сертификат.</string>
-    <string name="app_list__dismiss_app_update">Обновлението е пренебрегнато</string>
+    <string name="app_list__dismiss_app_update">Изданието е пренебрегнато</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимостта е пренебрегната</string>
     <string name="panic_exit_title">Излизане от приложението</string>
     <string name="menu_liberapay">Liberapay</string>
@@ -467,7 +454,7 @@
     <string name="force_touch_apps_on">Показване не приложения, изискаващи екран с докосване, независимо от хардуерната поддръжка</string>
     <string name="antinosourcesince">Изходният код не е наличен вече, не е възможно обновяване</string>
     <string name="antidisabledalgorithmlist">Приложението има слаба защита на подписа</string>
-    <string name="menu_select_for_wipe">Избери за изчистване</string>
+    <string name="menu_select_for_wipe">Избиране за заличаване</string>
     <string name="about_forum">Форум за поддръжка</string>
     <string name="scan_removable_storage_summary">Търсят се хранилища върху външните носители като SD Card или USB</string>
     <string name="scan_removable_storage_toast">Сканиране на %s…</string>
@@ -534,16 +521,12 @@
     <string name="turn_on_wifi">Включване на Wi-Fi</string>
     <string name="repo_add_new_title">Добавяне на хранилище</string>
     <string name="repo_add_new_mirror">Добавяне като ново огледало</string>
-    <string name="repo_intro">Хранилището е допълнителен източник на приложения. Тези хранилища, които добавяте имат различни изисквания към приложенията от вграденото във F-Droid.
-\n
-\nДобавяйте само хранилища, на които имате доверие.</string>
+    <string name="repo_intro">Хранилището е допълнителен източник на приложения. Тези хранилища, които добавяте имат различни изисквания към приложенията от вграденото във F-Droid.\n\nДобавяйте само хранилища, на които имате доверие.</string>
     <string name="repo_state_fetching">Зареждане на хранилище…</string>
     <string name="repo_state_adding">Добавяне на хранилище…</string>
     <string name="repo_enter_url">Ръчно въведете адреса на хранилището</string>
     <string name="repo_exists">Това хранилище е вече добавено.</string>
-    <string name="repo_invalid">Неприемливо хранилище.
-\n
-\nСвържете се с поддръжката му и съобщете за грешката.</string>
+    <string name="repo_invalid">Неприемливо хранилище.\n\nСвържете се с поддръжката му и съобщете за грешката.</string>
     <string name="repo_io_error">Грешка при свързване с хранилището.</string>
     <string name="nearby_splace__external_storage_permission_button">Пробване</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid може да търси хранилища и огледала на SD карта, за целта е необходимо вашето разрешение.</string>
@@ -584,9 +567,7 @@
     <string name="repo_disable_warning_button">Изключване</string>
     <string name="app_details_repository_preferred">(предпочитано)</string>
     <string name="app_details_repository_button_prefer">Предпочитане на хранилището</string>
-    <string name="repo_list_info_text">Хранилището е източник на приложения. Този списък показва всички добавени за момента хранилища. Изключените хранилища не се използват.
-\n
-\nАко едно приложение е налично в повече от едно хранилище, се използва хранилището, което е по-горе в списъка. Можете да подреждате хранилищата, с дълго задържане и влачене.</string>
+    <string name="repo_list_info_text">Хранилището е източник на приложения. Този списък показва всички добавени за момента хранилища. Изключените хранилища не се използват.\n\nАко едно приложение е налично в повече от едно хранилище, се използва хранилището, което е по-горе в списъка. Можете да подреждате хранилищата, с дълго задържане и влачене.</string>
     <string name="repo_error_adding_archive">Архив на хранилище не може да бъде добавен директно. Докоснете хранилище в списъка и го направете архивно.</string>
     <string name="repo_disable_warning">Изключване на това хранилище ще премахне състоянието „предпочитано“ от всички приложения.</string>
     <string name="repo_add_repo_and_mirror">Добавяне на хранилище или огледало</string>
@@ -602,4 +583,8 @@
     <string name="antitetherednet">Обвързани мрежови услуги</string>
     <string name="antitetherednetlist">Приложението изцяло зависи от точно определен екземпляр на мрежова услуга</string>
     <string name="swap_bluetooth_permissions">Дайте разрешение за „Bluetooth“ или „Устройство наблизо“!</string>
+    <string name="apk_permissions_mismatch">Приложението има неочаквано разрешение: %s</string>
+    <string name="menu_share_apk">Споделяне на APK</string>
+    <string name="preferForeignSummary">Пробване първо на огледала, намиращи се извън държавата напр. ако чуждестранната защита е по-добра.</string>
+    <string name="preferForeign">Предпочитане на външни огледала</string>
 </resources>
