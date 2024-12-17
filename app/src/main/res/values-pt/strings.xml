@@ -154,7 +154,7 @@
     <string name="send_installed_apps_csv">Aplicações instaladas por F-Droid como ficheiro CSV</string>
     <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a desinstalação imediata da aplicação.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontramos uma vulnerabilidade em %1$s. Toque para ler mais na seção Anti-Recursos.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a atualização imediata da aplicação.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
     <string name="update_all">Atualizar tudo</string>
