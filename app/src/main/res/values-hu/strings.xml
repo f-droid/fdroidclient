@@ -267,7 +267,7 @@
     <string name="app_list__dismiss_downloading_app">Letöltés megszakítva</string>
     <string name="installed_app__updates_ignored">Frissítések figyelmen kívül hagyva</string>
     <string name="update_all">Összes frissítése</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Egy sebezhetőség található a(z) %1$s alkalmazásban. Az alkalmazás azonnali eltávolítása ajánlott.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Sebezhetőség található a(z) %1$s alkalmazásban. Koppintson további információért az Előnytelen Funkciók szekcióban.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Egy sebezhetőség található ebben az appban: %1$s. Azonnali frissítés ajánlott a legújabb verzióra.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Figyelmen kívül hagyás</string>
     <string name="updates__hide_updateable_apps">Alkalmazások elrejtése</string>
@@ -392,8 +392,8 @@
     <string name="repo_exists_and_enabled">A(z) %1$s már be lett állítva és engedélyezett.</string>
     <string name="repo_delete_to_overwrite">Először törölje a(z) %1$s alkalmazást, hogy hozzáadhassa egy ütköző kulccsal.</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Előnytelen funkciókkal rendelkező alkalmazások belefoglalása</string>
-    <string name="show_anti_feature_apps_on">Azon alkalmazások megjelenítése, melyek előnytelen funkciókkal rendelkeznek</string>
+    <string name="show_anti_feature_apps">Előnytelen Funkciókkal rendelkező alkalmazások belefoglalása</string>
+    <string name="show_anti_feature_apps_on">Azon alkalmazások megjelenítése, melyek tudottan Előnytelen Funkciókkal rendelkeznek</string>
     <string name="force_touch_apps">Érintőképernyős alkalmazások belefoglalása</string>
     <string name="force_touch_apps_on">Azon alkalmazások megjelenítése, melyekhez érintőképernyő szükséges, a hardvertámogatástól függetlenül</string>
     <string name="privacy">Adatvédelem</string>
@@ -436,7 +436,7 @@
     <string name="install_history_summary">Az összes telepítés és eltávolítás privát naplójának megtekintése</string>
     <string name="send_version_and_uuid">Verzió és UUID küldése a kiszolgálóknak</string>
     <string name="send_version_and_uuid_summary">Az alkalmazás verziójának és egy véletlenszerű, egyedi azonosítónak használata letöltéskor; az alkalmazás következő újraindításakor lép hatályba.</string>
-    <string name="antinosourcesince">A forráskód többé nem érhető el, a frissítések nem lehetségesek.</string>
+    <string name="antinosourcesince">A forráskód többé nem érhető el, a frissítések nem lehetségesek</string>
     <string name="share_repository">Tároló megosztása</string>
     <string name="send_install_history">Telepítési előzmények elküldése</string>
     <string name="send_history_csv">%s telepítési előzmények CSV fájlként</string>
@@ -504,7 +504,7 @@
     <string name="has_disallow_install_unknown_sources_globally">Az eszköze rendszergazdája nem engedélyezi az alkalmazások ismeretlen forrásokból történő telepítését, beleértve az új tárolókat is</string>
     <string name="antiads">Reklámok</string>
     <string name="swap_wifi_vpn_conflict">Ütközések az aktív VPN-nel!</string>
-    <string name="app_list_results_hidden_antifeature_settings">Egyes találatok el lettek rejtve az előnytelen funkciók beállításai alapján.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Egyes appok el lettek rejtve az Előnytelen Funkciók beállításai alapján. Koppintson a módosításhoz.</string>
     <string name="has_disallow_install_unknown_sources">Ez a felhasználó nem adhat hozzá ismeretlen forrásokat, ebbe a tárolókat is beleértve</string>
     <string name="antinonfreedep">Nem szabad függőségek</string>
     <string name="antinonfreead">Nem szabad kiegészítők</string>
@@ -515,7 +515,7 @@
     <string name="antidisabledalgorithm">Nem biztonságos algoritmussal aláírt</string>
     <string name="antiknownvuln">Ismert sérülékenység</string>
     <string name="antinosource">Már nem elérhető forráskód</string>
-    <string name="antiothers">Egyéb előnytelen funkciók</string>
+    <string name="antiothers">Egyéb Előnytelen Funkciók</string>
     <string name="antinsfw">Munkahelyen nem megfelelő</string>
     <string name="menu_release_channel_beta">Béta frissítések engedélyezése</string>
     <string name="latest__empty_state__upgrading">Adatbázis frissítése…</string>
@@ -536,7 +536,7 @@
     <string name="repo_state_fetching">Tároló lekérése…</string>
     <string name="repo_state_adding">Tároló hozzáadása…</string>
     <string name="repo_enter_url">Tároló webcímének kézi megadása</string>
-    <string name="repo_exists">Ez a tároló már hozzá lett adva.</string>
+    <string name="repo_exists">Ez az adattár már hozzá lett adva.</string>
     <string name="repo_add_new_mirror">Hozzáadás új tükörként</string>
     <string name="repo_intro">Egy tároló egy további alkalmazásforrás. Az itt hozzáadott, harmadik féltől származó tárolók eltérő szabályokkal rendelkeznek, mint az F-Droid által biztosított alkalmazások tárolói.
 \n
@@ -570,4 +570,30 @@
     <string name="app_details_repository_button_prefer">Tároló előnyben részesítése</string>
     <string name="app_details_repository_expand">Tárolólista bővítése</string>
     <string name="app_list_no_suggested_version">Nincs telepítésre javasolt verzió.</string>
+    <string name="warning_no_compat_versions">A kiválasztott adattárnak nincs kompatibilis alkalmazásverziója. A frissítések fogadásához válasszon inkább egy kompatibilis verziókkal rendelkező adattárat.</string>
+    <string name="antitetherednet">Kapcsolt hálózati szolgáltatások</string>
+    <string name="antitetherednetlist">Ez az alkalmazás teljesen függ egy bizonyos hálózati szolgáltatástól</string>
+    <string name="repo_archive_toggle">Adattár Archívum</string>
+    <string name="useDnsCache">DNS gyorsítótár használata</string>
+    <string name="useDnsCacheSummary">Használja a gyorsítótárban tárolt eredményeket a DNS-lekérdezések minimalizálása érdekében.</string>
+    <string name="repo_add_repo_and_mirror">Adattár és másodlagos szerver hozzáadása</string>
+    <string name="repo_view_repo">Adattár megtekintése</string>
+    <string name="repo_scan_qr_code">QR-kód beolvasása</string>
+    <string name="repo_preview_included_apps">A mellékelt alkalmazások:</string>
+    <string name="repo_share_not_found">Nem található az adattár címe a megosztott szövegben.</string>
+    <string name="repo_mirror_exists">Ez a másodlagos szerver már hozzá lett adva (%s).</string>
+    <string name="repo_mirror_add_info">A hozzáadni kívánt URL (%s) egy létező adattár másolata.</string>
+    <string name="repositories_last_update">Utolsó frissítés: %s</string>
+    <string name="repo_list_info_title">Adattár Lista</string>
+    <string name="repo_list_info_text">Egy adattár az alkalmazások forrása. Ez a lista az összes jelenleg hozzáadott adattárat mutatja. A letiltott adattárak nem kerülnek felhasználásra.\n\nHa egy alkalmazás több adattárban is megtalálható, akkor a listában előrébb lévő automatikusan előnyben részesül. A lista elemeit hosszan lenyomva és húzva átrendezheti.</string>
+    <string name="repo_disable_warning_button">Letiltás</string>
+    <string name="auto_update_time">Legkorábbi következő frissítés: %s</string>
+    <string name="repo_error_adding_archive">Archív adattárak nem adhatóak hozzá közvetlenül. Koppintson a listában lévő adattárra, és engedélyezze ott az archívumot.</string>
+    <string name="repo_and_mirror_add_both_info">A hozzáadni kívánt URL (%s) egy új adattár másolata. Mind az eredeti, mind a másodlagos adattár hozzáadásra kerül.</string>
+    <string name="repositories_last_update_never">soha</string>
+    <string name="repo_archive_failed">Az archív adattár jelenleg nem elérhető</string>
+    <string name="repo_archive_toggle_description">Archivált alkalmazások és az elavult verziók megjelenítése</string>
+    <string name="repo_disable_warning">Ezen adattár letiltásával eltávolítja az „előnyben részesített” státuszát az összes alkalmazástól.</string>
+    <string name="swap_bluetooth_permissions">Kérjük, adja meg a Bluetooth vagy a Közeli eszköz engedélyt!</string>
+    <string name="auto_update_time_past">Következő frissítés a feltételek teljesülése esetén</string>
 </resources>
