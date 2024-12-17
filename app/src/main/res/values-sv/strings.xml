@@ -590,4 +590,5 @@
     <string name="auto_update_time">Nästa tidigaste uppdatering: %s</string>
     <string name="repo_disable_warning_button">Inaktivera</string>
     <string name="repo_disable_warning">Att inaktivera förrådet kommer ta bort dess status som \"föredragen\" från alla appar.</string>
+    <string name="ipfsgw_title">Gateways för IPFS</string>
 </resources>
