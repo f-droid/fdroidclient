@@ -60,7 +60,7 @@
     <string name="antiadslist">Cette appli comprend des publicités</string>
     <string name="antitracklist">Cette application suit et transmet votre activité</string>
     <string name="antinonfreeadlist">Cette applications propose des extensions qui ne sont pas libres</string>
-    <string name="antinonfreenetlist">Cette application promeut ou dépend entièrement d\'un service réseau non modifiable ou non libre</string>
+    <string name="antinonfreenetlist">Cette application promeut ou dépend entièrement d\'un service réseau non libre</string>
     <string name="antinonfreedeplist">Cette application s\'appuie d\'autres applications qui ne sont pas libres</string>
     <string name="antiupstreamnonfreelist">Le code source en amont n’est pas entièrement libre</string>
     <string name="display">Affichage</string>
@@ -434,8 +434,8 @@
     <string name="repo_add_mirror">Ajouter un miroir</string>
     <string name="repo_delete_to_overwrite">Veuillez d\'abord supprimer %1$s pour pouvoir l\'ajouter avec la clé en conflit.</string>
     <string name="repo_exists_add_mirror">Il s\'agit d\'une copie de %1$s, l\'ajouter comme miroir ?</string>
-    <string name="show_anti_feature_apps">Inclure les applications présentant des antifonctions</string>
-    <string name="show_anti_feature_apps_on">Afficher les applis qui exigent des antifonctions</string>
+    <string name="show_anti_feature_apps">Inclure les applications avec des antifonctions</string>
+    <string name="show_anti_feature_apps_on">Afficher les applications qui ont des anti-fonctions connues</string>
     <string name="force_touch_apps">Inclure les applis pour écrans tactiles</string>
     <string name="force_touch_apps_on">Afficher les applications qui requièrent un écran tactile, quel que soit votre appareil</string>
     <string name="repo_official_mirrors">Miroirs officiels</string>
@@ -463,7 +463,7 @@
     <string name="send_install_history">Envoyer l’historique des installations</string>
     <string name="send_installed_apps">Partager les applis installées</string>
     <string name="menu_open">Ouvrir</string>
-    <string name="antinosourcesince">Le code source n’est plus accessible, aucune mise à jour n’est possible.</string>
+    <string name="antinosourcesince">Le code source n’est plus disponible, aucune mise à jour n’est possible.</string>
     <string name="send_history_csv">historique d’installation de %s sous forme de fichier CSV</string>
     <string name="updates_disabled_by_settings">Les mises à jour sont désactivées en raison des paramètres Données / Wifi</string>
     <string name="send_installed_apps_csv">Applis installées via F-Droid comme fichier CSV</string>
@@ -534,7 +534,7 @@
     <string name="antinonfreedep">Dépendances non libres</string>
     <string name="antiupstreamnonfree">Code en amont non libre</string>
     <string name="antiknownvuln">Contient des vulnérabilités connues</string>
-    <string name="app_list_results_hidden_antifeature_settings">Certains résultats ont été masqués pour respecter vos paramètres d\'anti-fonctionnalité.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Certaines applications ont été masquées pour respecter vos paramètres d\'anti-fonctionnalité. Touchez pour modifier.</string>
     <string name="antiads">Publicités</string>
     <string name="antinonfreead">Extensions non libres</string>
     <string name="antinonfreeassets">Composants non libres</string>
@@ -618,6 +618,6 @@
     <string name="repo_and_mirror_add_both_info">Le lien que vous essayez d\'ajouter (%s) est un miroir d\'un nouveau dépôt. Le dépôt original ainsi que le miroir seront ajoutés.</string>
     <string name="auto_update_time">Prochaine mise à jour la plus proche : %s</string>
     <string name="warning_no_compat_versions">Le dépôt sélectionné n\'a aucune version d\'application compatible. Pour recevoir des mises à jour, privilegiez un dépôt avec des versions compatibles.</string>
-    <string name="auto_update_time_past">Prochaine mise à jour quand les conditions sont remplies</string>
+    <string name="auto_update_time_past">Prochaine mise à jour quand les conditions seront remplies</string>
     <string name="antitetherednetlist">Le fonctionnement de cette application dépend entièrement d\'un service réseau particulier</string>
 </resources>
