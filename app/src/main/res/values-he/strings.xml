@@ -60,7 +60,7 @@
     <string name="antiadslist">יישומון זה מכיל פרסום</string>
     <string name="antitracklist">יישומון זה עוקב ומדווח על פעילותך</string>
     <string name="antinonfreeadlist">יישומון זה מקדם תוספים שאינם חופשיים</string>
-    <string name="antinonfreenetlist">יישומון זה מקדם או תלוי בשירות רשת שאינו ניתן להחלפה או שאינו חופשי</string>
+    <string name="antinonfreenetlist">יישומון זה מקדם או תלוי בשירות רשת שאינו חופשי</string>
     <string name="antinonfreedeplist">יישומון זה תלוי ביישומונים אחרים שאינם חופשיים</string>
     <string name="antiupstreamnonfreelist">קוד המקור בתצורתו המקורית אינו חופשי לחלוטין</string>
     <string name="display">תצוגה</string>
@@ -434,7 +434,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">כנראה שלמצלמה שלך אין מיקוד אוטומטי. סריקת הקוד עשויה להוות מכשול.</string>
     <string name="show_anti_feature_apps">לכלול יישומונים שמכילים תכונות שליליות</string>
-    <string name="show_anti_feature_apps_on">הצגת יישומונים שדורשים תכונות שליליות</string>
+    <string name="show_anti_feature_apps_on">הצגת יישומונים עם תכונות שליליות ידועות</string>
     <string name="force_touch_apps">לכלול יישומוני מסך מגע</string>
     <string name="force_touch_apps_on">הצגת יישומונים שדורשים מסך מגע ללא תלות בתמיכת החומרה</string>
     <string name="repo_add_mirror">הוספת אתר מראה</string>
@@ -461,7 +461,7 @@
     <string name="send_version_and_uuid">שליחת גרסה ומזהה ייחודי גלובלי לשרתים</string>
     <string name="send_version_and_uuid_summary">לכלול את גרסת היישומון ומזהה אקראי וייחודי בעת ההורדה, יחול עם הפעלת היישומון מחדש.</string>
     <string name="share_repository">שיתוף מאגר</string>
-    <string name="antinosourcesince">קוד המקור אינו זמין עוד, אין עדכונים.</string>
+    <string name="antinosourcesince">קוד המקור אינו זמין עוד, אין עדכונים</string>
     <string name="send_install_history">שליחת היסטוריית ההתקנות</string>
     <string name="send_history_csv">%s היסטוריית ההתקנות כקובץ CSV</string>
     <string name="updates_disabled_by_settings">כל העדכונים מושבתים בהגדרות תקשורת הנתונים/רשת אלחוטית</string>
@@ -528,7 +528,7 @@
     <string name="swap_wifi_vpn_conflict">סותר VPN פעיל!</string>
     <string name="has_disallow_install_unknown_sources">למשתמש הזה אין אפשרות להוסיף מקורות לא ידועים, לרבות מאגרים חדשים</string>
     <string name="has_disallow_install_unknown_sources_globally">הנהלת המכשיר שלך לא מאפשרת התקנת יישומים ממקורות לא ידועים, לרבות מאגרים חדשים</string>
-    <string name="app_list_results_hidden_antifeature_settings">חלק מהתוצאות הוסתרו עקב הגדרות התכונות השליליות שהגדרת.</string>
+    <string name="app_list_results_hidden_antifeature_settings">חלק מהיישומונים מוסתרים עקב הגדרות התכונות השליליות שלך. נא לגעת לשינוי.</string>
     <string name="antitrack">מעקב</string>
     <string name="antiads">פרסומות</string>
     <string name="antinonfreead">תוספים מוגבלים</string>
@@ -610,4 +610,13 @@
     </plurals>
     <string name="useDnsCache">להשתמש במטמון DNS</string>
     <string name="useDnsCacheSummary">להשתמש בתוצאות ששמורות במטמון כדי למזער שאילתות DNS.</string>
+    <string name="repo_add_repo_and_mirror">הוספת מאגר ואתר מראה</string>
+    <string name="repo_scan_qr_code">סריקת קוד QR</string>
+    <string name="repo_preview_included_apps">יישומים כלולים:</string>
+    <string name="repo_mirror_exists">אתר המראה הזה כבר נוסף (%s).</string>
+    <string name="repo_view_repo">הצגת מאגר</string>
+    <string name="warning_no_compat_versions">למאגר הבא אין גרסאות יישומונים מתאימות. כדי לקבל עדכונים, יש להעדיף מאגר עם גרסאות מתאימות.</string>
+    <string name="repo_mirror_add_info">הכתובת שניסית להוסיף (%s) היא אתר מראה של מאגר קיים.</string>
+    <string name="repo_and_mirror_add_both_info">הכתובת שניסית להוסיף (%s) היא אתר מראה של מאגר חדש. גם מאגר המקור וגם אתר המראה יתווספו.</string>
+    <string name="auto_update_time">העדכון הבא המוקדם ביותר: %s</string>
 </resources>
