@@ -628,4 +628,6 @@
     <string name="apk_permissions_mismatch">L\'app ha un autorizzazione inaspettata: %s</string>
     <string name="menu_share_apk">Condividi file APK</string>
     <string name="swap_bluetooth_permissions">Si prega di dare l\'autorizzazione Bluetooth oppure Dispositivo nelle vicinanze!</string>
+    <string name="preferForeignSummary">Prova prima mirror che si trovano al di fuori del tuo Paese, ad es. se le protezioni all\'estero sono più robuste.</string>
+    <string name="preferForeign">Preferisci mirror esteri</string>
 </resources>
