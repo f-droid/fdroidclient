@@ -1,3 +1,3 @@
-* Repo uygulamalarından kaldırma hatası düzeltildi (#568)
+* Uygulamaları depolardan kaldırırken oluşan hatayı düzeltmesi (#568)
 
-* Çok daha hızlı dizin güncellemeleri
+* Çok daha hızlı indeks güncellemeleri
