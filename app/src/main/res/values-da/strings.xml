@@ -54,10 +54,10 @@
     <string name="bad_fingerprint">Ugyldigt fingeraftryk</string>
     <string name="invalid_url">Dette er en ugyldig URL.</string>
     <string name="malformed_repo_uri">Ignorerer defekt arkiv-URI: %s</string>
-    <string name="menu_manage">Arkiver</string>
+    <string name="menu_manage">Repositories</string>
     <string name="menu_settings">Indstillinger</string>
     <string name="menu_search">Søg</string>
-    <string name="menu_add_repo">Nyt Arkiv</string>
+    <string name="menu_add_repo">Nyt Repository</string>
     <string name="menu_launch">Åbn</string>
     <string name="menu_share">Del</string>
     <string name="menu_install">Installer</string>
@@ -118,7 +118,7 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Usigneret</string>
     <string name="unverified">Ubekræftet</string>
-    <string name="repo_details">Arkiv</string>
+    <string name="repo_details">Repository</string>
     <string name="repo_url">Adresse</string>
     <string name="repo_num_apps">Antal apps</string>
     <string name="repo_fingerprint">Signeringsnøglens fingeraftryk (SHA-256)</string>
@@ -138,11 +138,11 @@
     <string name="repo_added">Gemte pakkearkiv %1$s.</string>
     <string name="repo_searching_address">Leder efter pakkearkiv på
 \n%1$s</string>
-    <string name="not_on_same_wifi">Din enhed er ikke på samme wifi-netværk som det lokale arkiv du lige tilføjede! Prøv at forbinde til: %s</string>
+    <string name="not_on_same_wifi">Din enhed er ikke på samme Wi-Fi som det lokale repo, du lige har tilføjet! Prøv at forbinde til: %s</string>
     <string name="requires_features">Kræver: %1$s</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_language_default">Systemstandard</string>
-    <string name="wifi">Wifi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Forbindelse</string>
     <string name="category_Development">Udvikling</string>
@@ -265,7 +265,7 @@
     <string name="app_list__name__successfully_installed">%1$s installeret</string>
     <string name="updates__tts__download_app">Hent</string>
     <string name="notification_title_single_update_available">Opdatering Tilgængelig</string>
-    <string name="notification_title_summary_install_error">Installation Fejlede</string>
+    <string name="notification_title_summary_install_error">Installation Mislykkedes</string>
     <string name="by_author_format">af %s</string>
     <string name="app_details_donate_prompt_unknown_author">Giv udviklerne af %1$s en kop kaffe!</string>
     <string name="app_details_donate_prompt">%1$s er skabt af %2$s. Giv dem en kop kaffe!</string>
@@ -282,8 +282,8 @@
     <string name="updates__hide_updateable_apps">Skjul apps</string>
     <string name="updates__show_updateable_apps">Vis apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Hent opdatering til %1$d app.</item>
-        <item quantity="other">Hent opdateringer til %1$d apps.</item>
+        <item quantity="one">Hent opdatering til %1$d app:</item>
+        <item quantity="other">Hent opdateringer til %1$d apps:</item>
     </plurals>
     <string name="versions">Versioner</string>
     <string name="clear_search">Ryd søgning</string>
@@ -503,10 +503,10 @@
     <string name="antiads">Reklamer</string>
     <string name="antitrack">Sporing</string>
     <string name="antinonfreenet">Ikke-Frie Netværkstjenester</string>
-    <string name="app_list_results_hidden_antifeature_settings">Nogle resultater er skjult pga. dine antifeature-indstillinger.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Nogle apps er skjult baseret på dine indstillinger for Anti-funktioner. Tryk for at ændre.</string>
     <string name="antinonfreead">Ikke-Frie Tilføjelser</string>
     <string name="antiknownvuln">Kendt Sårbarhed</string>
-    <string name="antiothers">Andre Antifunktioner</string>
+    <string name="antiothers">Andre Anti-funktioner</string>
     <string name="antiupstreamnonfree">Ikke-Fri Opstrømskode</string>
     <string name="antinonfreeassets">Ikke-Frie Elementer</string>
     <string name="antidisabledalgorithm">Signeret Med Usikker Algoritme</string>
@@ -535,4 +535,19 @@
     <string name="repo_last_update_downloaded">Seneste opdatering downloadet</string>
     <string name="force_old_installer_summary">Deaktiver beta Session Installeren, inklusive support til automatisk baggrundsopdateringer.</string>
     <string name="repo_num_apps_button">Vis apps</string>
+    <string name="app_details_repositories">Repositories</string>
+    <string name="app_details_repository">Repository</string>
+    <string name="repo_state_fetching">Henter repository…</string>
+    <string name="repo_enter_url">Indtast repository-URL manuelt</string>
+    <string name="repo_add_repo_and_mirror">Tilføj repository og mirror</string>
+    <string name="repo_view_repo">Se repository</string>
+    <string name="repo_scan_qr_code">Scan QR-kode</string>
+    <string name="repo_preview_included_apps">Inkluderede apps:</string>
+    <string name="repo_add_new_title">Tilføj repository</string>
+    <string name="repo_state_adding">Tilføjer repository…</string>
+    <string name="repo_list_info_title">Liste over Repositories</string>
+    <string name="repo_exists">Dette repository er allerede tilføjet.</string>
+    <string name="repo_mirror_exists">Dette mirror er allerede tilføjet (%s).</string>
+    <string name="repo_mirror_add_info">URL\'en, du forsøger at tilføje (%s), er et mirror af et eksisterende repository.</string>
+    <string name="repo_and_mirror_add_both_info">URL\'en, du forsøger at tilføje (%s), er et mirror af et nyt repository. Både det originale repository og mirror bliver tilføjet.</string>
 </resources>
