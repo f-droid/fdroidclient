@@ -349,7 +349,7 @@
     <string name="app_permission_storage">أف-درويد يحتاج لإذن التخزين لكي يثبت هذا. من فضلك إسمح بذلك في الشاشة التالية لكي تُكمل مع التثبيت.</string>
     <string name="app_list__dismiss_app_update">التحديث تم تجاهله</string>
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة في %1$s. نحن نوصي بإلغاء تثبيت هذا التطبيق في الحال.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة أمنية في %1$s. انقر هنا لقراءة المزيد في قسم الميزات غير المرغوبة.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نحن نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
     <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة البرامج، التطبيقات الأخيرة سوف تظهر هنا</string>
     <string name="latest__empty_state__no_enabled_repos">حينما تُفعل مستودع وتتركه يحدث، التطبيقات الأخيرة سوف تظهر هنا</string>
@@ -644,4 +644,8 @@
     <string name="antitetherednet">خدمات الشبكة المقيدة</string>
     <string name="antitetherednetlist">يعتمد هذا التطبيق كليًا على مثيل معين من خدمة الشبكة</string>
     <string name="swap_bluetooth_permissions">الرجاء منح البلوتوث أو الجهاز القريب إذنًا!</string>
+    <string name="menu_share_apk">شارك ملف APK</string>
+    <string name="apk_permissions_mismatch">التطبيق لديه إذن غير متوقع: %s</string>
+    <string name="preferForeign">فضّل المرايا الأجنبية</string>
+    <string name="preferForeignSummary">حاول استخدام المرايا الموجودة خارج بلدك أولاً، على سبيل المثال، إذا كانت الحماية الأجنبية أقوى.</string>
 </resources>
