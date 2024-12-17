@@ -92,7 +92,7 @@
     <string name="all_other_repos_fine">Остальные репозитории не генерировали ошибки.</string>
     <string name="global_error_updating_repos">Ошибка при обновлении: %s</string>
     <string name="no_permissions">Нет разрешений</string>
-    <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
+    <string name="no_handler_app">Нет установленного приложения для обработки %s.</string>
     <string name="theme">Тема</string>
     <string name="unsigned">Не подписано</string>
     <string name="unverified">Не проверено</string>
@@ -520,7 +520,7 @@
     <string name="send_fdroid_metrics_json">%s статистический отчет в виде JSON-файла</string>
     <string name="send_fdroid_metrics_report">Отправить статистический отчет %s</string>
     <string name="theme_follow_system">Определена системой</string>
-    <string name="use_pure_black_dark_theme_summary">Рекомендуется только для экранов OLED.</string>
+    <string name="use_pure_black_dark_theme_summary">Рекомендуется только для OLED-экранов.</string>
     <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
     <string name="banner_no_data_or_wifi">Передача данных или WiFi отключены</string>
     <string name="banner_no_internet">Нет интернета</string>
@@ -604,9 +604,7 @@
     <string name="repo_archive_failed">Архивный репозиторий сейчас недоступен</string>
     <string name="app_details_repository_preferred">(выбран)</string>
     <string name="repo_error_adding_archive">Архивные репозитории не могут быть добавлены напрямую. Нажмите на репозиторий из списка и включите в нем архив.</string>
-    <string name="repo_list_info_text">Репозиторий — это источник приложений. В этом списке отображаются все добавленные репозитории. Отключенные репозитории не используются.
-\n
-\nЕсли приложение находится в нескольких репозиториях, предпочтение автоматически отдается репозиторию, расположенному выше в списке. Изменить порядок репозиториев можно долгим нажатием и перетаскиванием.</string>
+    <string name="repo_list_info_text">Репозиторий — это источник приложений. В этом списке отображаются все добавленные репозитории. Отключенные репозитории не используются.\n\nЕсли приложение находится в нескольких репозиториях, предпочтение автоматически отдается репозиторию, расположенному выше в списке. Изменить порядок репозиториев можно долгим нажатием и перетаскиванием.</string>
     <string name="repo_disable_warning">Отключение этого репозитория удалит его статус \"предпочтительный\" из всех приложений.</string>
     <string name="repo_disable_warning_button">Отключить</string>
     <string name="repo_share_not_found">Не удалось найти адрес репозитория в общем тексте.</string>
@@ -624,4 +622,5 @@
     <string name="swap_bluetooth_permissions">Пожалуйста, дайте разрешение на использование Bluetooth или устройств поблизости!</string>
     <string name="auto_update_time_past">Следующее обновление при выполнении условий</string>
     <string name="menu_share_apk">Поделиться APK файлом</string>
+    <string name="apk_permissions_mismatch">Неожиданное разрешение: %s</string>
 </resources>
