@@ -91,16 +91,11 @@
     <string name="enable_proxy_title">Virkja HTTP-milliþjón</string>
     <string name="proxy_host">Milliþjónn</string>
     <string name="proxy_port">Milliþjónsgátt</string>
-    <string name="status_download">Sæki
-\n%2$s / %3$s (%4$d%%) frá
-\n%1$s</string>
-    <string name="status_download_unknown_size">Sæki
-\n%2$s frá
-\n%1$s</string>
+    <string name="status_download">Sæki \n%2$s / %3$s (%4$d%%) frá \n%1$s</string>
+    <string name="status_download_unknown_size">Sæki \n%2$s frá \n%1$s</string>
     <string name="banner_updating_repositories">Uppfæri hugbúnaðarsöfn</string>
     <string name="status_processing_xml_percent">Meðhöndla %2$s / %3$s (%4$d%%) frá %1$s</string>
-    <string name="status_connecting_to_repo">Tengist við
-\n%1$s</string>
+    <string name="status_connecting_to_repo">Tengist við \n%1$s</string>
     <string name="status_inserting_apps">Vista ítarupplýsingar um forrit</string>
     <string name="repos_unchanged">Öll hugbúnaðarsöfn eru með nýjustu upplýsingum</string>
     <string name="all_other_repos_fine">Öll önnur hugbúnaðarsöfn gafu engar villur.</string>
@@ -120,8 +115,7 @@
     <string name="unknown">Óþekkt</string>
     <string name="repo_confirm_delete_title">Eyða hugbúnaðarsafni?</string>
     <string name="repo_added">Vistaði %1$s hugbúnaðarsafnið.</string>
-    <string name="repo_searching_address">Leita að hugbúnaðarsafni á
-\n%1$s</string>
+    <string name="repo_searching_address">Leita að hugbúnaðarsafni á \n%1$s</string>
     <string name="requires_features">Krefst: %1$s</string>
     <string name="pref_language">Tungumál</string>
     <string name="pref_language_default">Sjálfgefið í kerfinu</string>
@@ -241,18 +235,11 @@
     <string name="repo_fingerprint">Fingrafar undirritunarlykilsins (SHA-256)</string>
     <string name="unsigned_description">Þetta þýðir að ekki var hægt að sannreyna listann yfir forritin. Þú ættir að fara varlega varðandi forrit sem sótt eru í óundirritaða yfirlitslista.</string>
     <string name="repo_not_yet_updated">Þetta hugbúnaðarsafn hefur ekki verið notað áður. Þú verður að gera það virkt til að geta séð forritin sem það býður uppá.</string>
-    <string name="repo_confirm_delete_body">Það að eyða hugbúnaðarsafni þýðir að forrit úr því safni verða ekki lengur tiltæk í F-Droid.
-\n
-\nAthugaðu: Öll forrit sem þegar hafa verið sett inn, munu haldast á tækinu þínu.</string>
-    <string name="repo_disabled_notification">Gerði %1$s óvirkt.
-\n
-\nÞú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.</string>
+    <string name="repo_confirm_delete_body">Það að eyða hugbúnaðarsafni þýðir að forrit úr því safni verða ekki lengur tiltæk í F-Droid. \n \nAthugaðu: Öll forrit sem þegar hafa verið sett inn, munu haldast á tækinu þínu.</string>
+    <string name="repo_disabled_notification">Gerði %1$s óvirkt. \n \nÞú verður að virkja hugbúnaðarsafnið aftur til að geta sett upp forrit úr því.</string>
     <string name="not_on_same_wifi">Tækið þitt er ekki á sama Wi-Fi netinu og staðværa hugbúnaðarsafnið sem þú varst að bæta við! Reyndu að tengjast þessu neti: %s</string>
-    <string name="empty_installed_app_list">Engin forrit uppsett.
-\n
-\nÞað eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.</string>
-    <string name="empty_can_update_app_list">Til hamingju!
-\nÖll forritin þín eru af nýjustu útgáfu.</string>
+    <string name="empty_installed_app_list">Engin forrit uppsett. \n \nÞað eru forrit á tækinu þínu, en þau eru ekki tiltæk frá F-Droid. Þetta gæti stafað af því að þú þyrftir að uppfæra hugbúnaðarsöfnin þín, eða að hugbúnaðarsöfnin eigi í alvörunni ekki tiltæk þessi forrit.</string>
+    <string name="empty_can_update_app_list">Til hamingju! \nÖll forritin þín eru af nýjustu útgáfu.</string>
     <string name="swap_join_same_wifi_desc">Til að gera býtti í gegnum þráðlaust net, gakktu úr skugga um að þið séuð á sama netinu. Ef þið hafið ekki aðgang að sama neti, getur annar ykkar búið til þráðlausan Wi-Fi tengipunkt (hotspot).</string>
     <string name="swap_join_this_hotspot">Hjálpaðu vini þínum að tengjast tengipunktinum þínum</string>
     <string name="swap_scan_or_type_url">Einn aðili þarf að skanna QR-kóðann, eða slá slóð hins inn í vafra.</string>
@@ -321,8 +308,8 @@
     <string name="updates__hide_updateable_apps">Fela forrit</string>
     <string name="updates__show_updateable_apps">Birta forrit</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Sækja uppfærslu fyrir %1$d forrit.</item>
-        <item quantity="other">Sækja uppfærslur fyrir %1$d forrit.</item>
+        <item quantity="one">Sækja uppfærslu fyrir %1$d forrit:</item>
+        <item quantity="other">Sækja uppfærslur fyrir %1$d forrit:</item>
     </plurals>
     <string name="menu_video">Myndskeið</string>
     <string name="menu_license">Notkunarleyfi: %s</string>
@@ -380,7 +367,7 @@
     <string name="app_list__dismiss_app_update">Uppfærsla hunsuð</string>
     <string name="app_list__dismiss_vulnerable_app">Öryggisgalli hunsaður</string>
     <string name="app_list__dismiss_downloading_app">Hætt við niðurhal</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði fjarlægt strax.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Við fundum öryggisveilu í %1$s. Ýttu til að sjá nánari upplýsingar um neikvæða eiginleika.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Við fundum öryggisveilu í %1$s. Við mælum með því að þetta forrit verði strax uppfært í nýjustu útgáfuna.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Hunsa</string>
     <string name="privacy">Gagnaleynd</string>
@@ -412,8 +399,8 @@
     <string name="sort_search">Raða leit</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
-    <string name="show_anti_feature_apps">Hafa með forrit með ókostum</string>
-    <string name="show_anti_feature_apps_on">Birta forrit með óæskilegum eiginleikum</string>
+    <string name="show_anti_feature_apps">Hafa með forrit með neikvæðum eiginleikum</string>
+    <string name="show_anti_feature_apps_on">Birta forrit með neikvæðum eiginleikum</string>
     <string name="force_touch_apps">Hafa með forrit sem þurfa snertiskjá</string>
     <string name="force_touch_apps_on">Birta forrit sem þurfa nauðsynlega snertiskjá hvort sem slíkt er til staðar eður ei</string>
     <string name="repo_add_mirror">Bæta við spegli</string>
@@ -442,7 +429,7 @@
     <string name="share_repository">Deila hugbúnaðarsafni</string>
     <string name="send_install_history">Senda feril uppsetninga</string>
     <string name="send_history_csv">%s feril uppsetninga sem CSV-skrá</string>
-    <string name="antinosourcesince">Grunnkóðinn er ekki lengur tiltækur, engar uppfærslur eru mögulegar.</string>
+    <string name="antinosourcesince">Grunnkóðinn er ekki lengur tiltækur, engar uppfærslur eru mögulegar</string>
     <string name="send_version_and_uuid_summary">Hafa með við niðurhal útgáfunúmer þessa forrits og tilviljanakennt einstakt auðkenni, tekur gildi við næstu ræsingu forritsins.</string>
     <string name="updates_disabled_by_settings">Allar uppfærslur eru óvirkar vegna stillinga fyrir gögn eða þráðlaust net</string>
     <string name="about_forum">Vefspjall fyrir aðstoð</string>
@@ -508,7 +495,7 @@
     <string name="send_fdroid_metrics_report">Senda %s mælingaskýrslu</string>
     <string name="share_apk_error">Gat ekki deilt forritsskrá</string>
     <string name="swap_wifi_vpn_conflict">Stangast á við virkt VPN!</string>
-    <string name="app_list_results_hidden_antifeature_settings">Einhverjar niðurstöður voru faldar vegna stillinga þinna varðandi neikvæða eiginleika.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Einhver forrit voru falin vegna stillinga þinna varðandi neikvæða eiginleika.</string>
     <string name="antiads">Auglýsingar</string>
     <string name="antitrack">Eftirlit</string>
     <string name="antinonfreead">Ófrjálsar viðbætur</string>
@@ -536,11 +523,9 @@
     <string name="ipfsgw_caption_official_gateways">Opinberar IPFS-netgáttir</string>
     <string name="force_old_installer_title">Þvinga notkun eldra uppsetningarforrits</string>
     <string name="ipfsgw_summary_disabled">Sækja forrit með IPFS-endapunktum á vef: óvirkt</string>
-    <string name="force_old_installer_summary">Gera beta-prófunarútgáfu uppsetningarforrits óvirka, þar með talinn stuðning við sjálfvirkar uppfærslur í bakgrunni.</string>
+    <string name="force_old_installer_summary">Gera uppsetningarforrit setu óvirka, þar með talinn stuðning við sjálfvirkar uppfærslur í bakgrunni.</string>
     <string name="repo_state_adding">Bæti við hugbúnaðarsafni…</string>
-    <string name="repo_invalid">Ógilt hugbúnaðarsafn.
-\n
-\nHafðu samband við umsjónaraðila og láttu þá vita af vandamálinu.</string>
+    <string name="repo_invalid">Ógilt hugbúnaðarsafn. \n \nHafðu samband við umsjónaraðila og láttu þá vita af vandamálinu.</string>
     <string name="repo_exists">Þessu hugbúnaðarsafni hefur þegar verið bætt við.</string>
     <string name="repo_add_new_title">Bæta við hugbúnaðarsafni</string>
     <string name="targetsdk_or_later">beinist að %s</string>
@@ -554,9 +539,7 @@
     <string name="repo_enter_url">Settu handvirkt inn slóð hugbúnaðarsafns</string>
     <string name="paste">Líma</string>
     <string name="repo_add_new_mirror">Bæta við sem nýjum spegli</string>
-    <string name="repo_intro">Hugbúnaðarsafn er viðbótaruppspretta fyrir forrit og fleira. Hugbúnaðarsöfn frá utanaðkomandi aðilum sem þú bætir við hér, gætu verið með önnur viðmið og staðla en þau sem byggja forrit fyrir sjálft F-Droid safnið.
-\n
-\nGakktu úr skugga um að hugbúnaðarsafninu sem þú ert að bæta við sé treystandi.</string>
+    <string name="repo_intro">Hugbúnaðarsafn er viðbótaruppspretta fyrir forrit og fleira. Hugbúnaðarsöfn frá utanaðkomandi aðilum sem þú bætir við hér, gætu verið með önnur viðmið og staðla en þau sem byggja forrit fyrir sjálft F-Droid safnið. \n \nGakktu úr skugga um að hugbúnaðarsafninu sem þú ert að bæta við sé treystandi.</string>
     <string name="swap_connection_indexv0_error">Þú ert að reyna að tengjast einhverjum sem er með úrelta útgáfu af F-Droid. Til að tenging geti komist á þurfa viðkomandi að uppfæra F-Droid-forritið. Þeir geta notað forritaskipti til að uppfæra F-Droid forritið frá þér.</string>
     <string name="repo_num_apps_button">Birta forrit</string>
     <string name="ipfsgw_add_add">Bæta við</string>
@@ -567,4 +550,38 @@
         <item quantity="one">Sækja forrit með IPFS-endapunktum á vef: %1$d virkur</item>
         <item quantity="other">Sækja forrit með IPFS-endapunktum á vef: %1$d virkir</item>
     </plurals>
+    <string name="swap_bluetooth_permissions">Gefðu heimild fyrir Bluetooth eða Nálæg tæki!</string>
+    <string name="warning_no_compat_versions">Valið hugbúnaðarsafn er ekki með neinar samhæfðar útgáfur forrits. Til að ná í uppfærslur, ættirðu að kjósa hugbúnaðarsafn með samhæfðum útgáfum.</string>
+    <string name="auto_update_time_past">Næsta uppfærsla þegar skilyrði hafa verið uppfyllt</string>
+    <string name="repo_mirror_exists">Þessum spegli er þegar búið að bæta við (%s).</string>
+    <string name="menu_share_apk">Deila APK-skrá</string>
+    <string name="antitetherednetlist">Þetta forrit er alfarið háð tilteknum netþjóni í netþjónustu</string>
+    <string name="apk_permissions_mismatch">Forritið hefur óvænta heimild: %s</string>
+    <string name="app_list_no_suggested_version">Engin útgáfa sem hægt er að mæla með til uppsetningar.</string>
+    <string name="repo_list_info_title">Listi yfir hugbúnaðarsöfn</string>
+    <string name="repositories_last_update">Síðasta uppfærsla: %s</string>
+    <string name="repo_archive_toggle">Geymsla hugbúnaðarsafns</string>
+    <string name="repo_archive_toggle_description">Sýna forrit í geymslu og úreltar útgáfur forrita</string>
+    <string name="repo_archive_failed">Geymsla hugbúnaðarsafns er ekki tiltæk þessa stundina</string>
+    <string name="repo_disable_warning_button">Gera óvirkt</string>
+    <string name="repo_view_repo">Skoða hugbúnaðarsafn</string>
+    <string name="repo_scan_qr_code">Skanna QR-kóða</string>
+    <string name="repo_add_repo_and_mirror">Bæta við hugbúnaðarsafni og spegli</string>
+    <string name="repositories_last_update_never">aldrei</string>
+    <string name="repo_and_mirror_add_both_info">Slóðin sem þú ert að reyna að bæta við (%s) er spegill fyrir nýtt hugbúnaðarsafn. Bætt verður við bæði upprunalegu hugbúnaðarsafni og spegli þess.</string>
+    <string name="repo_disable_warning">Sé þetta hugbúnaðarsafn gert óvirkt verður staða þess sem \"ákjósanlegt\" fjarlægð af öllum forritum.</string>
+    <string name="app_details_repository">Hugbúnaðarsafn</string>
+    <string name="app_details_repository_preferred">(ákjósanlegt)</string>
+    <string name="app_details_repository_expand">Útvíkka lista yfir hugbúnaðarsöfn</string>
+    <string name="repo_error_adding_archive">Ekki er hægt að bæta beint við geymslum hugbúnaðarsafna. Ýttu á hugbúnaðarsafnið í listanum og virkjaðu geymsluna þar.</string>
+    <string name="app_details_repositories">Hugbúnaðarsöfn</string>
+    <string name="app_details_repository_button_prefer">Ákjósanlegt hugbúnaðarsafn</string>
+    <string name="useDnsCache">Nota DNS-skyndiminni</string>
+    <string name="useDnsCacheSummary">Nota niðurstöður í skyndiminni til að lágmarka DNS-fyrirspurnir.</string>
+    <string name="repo_preview_included_apps">Innifalin forrit:</string>
+    <string name="repo_mirror_add_info">Slóðin sem þú ert að reyna að bæta við (%s) er spegill fyrir fyrirliggjandi hugbúnaðarsafn.</string>
+    <string name="antitetherednet">Samnýttar (tethered) netþjónustur</string>
+    <string name="auto_update_time">Fyrsta næsta uppfærsla: %s</string>
+    <string name="repo_share_not_found">Gat ekki fundið vistfang hugbúnaðarsafns í deilda textanum.</string>
+    <string name="repo_list_info_text">Hugbúnaðarsafn er uppspretta fyrir forrit og fleira. Þessi listi sýnir öll hugbúnaðarsöfn sem hefur verið bætt við. Óvirk hugbúnaðarsöfn eru ekki notuð. \n \nEf forrit er í fleiri en einu hugbúnaðarsafni, er það safn notað sem er hærra á listanum. Þú getur endurraðað listanum með því að ýta lengi á atriði og draga þau til.</string>
 </resources>
