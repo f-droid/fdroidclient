@@ -606,6 +606,6 @@
     <string name="auto_update_time_past">Следующее обновление при выполнении условий</string>
     <string name="menu_share_apk">Поделиться APK-файлом</string>
     <string name="apk_permissions_mismatch">Приложение имеет неоднозначные полномочия: %s</string>
-    <string name="preferForeignSummary">Сначала попробуйте воспользоваться зеркалами, расположенными за пределами вашей страны, например, если за рубежом защита сильнее.</string>
+    <string name="preferForeignSummary">Предпочитать зеркала, расположенными за пределами вашей страны, например, если за рубежом защита сильнее.</string>
     <string name="preferForeign">Отдавать предпочтение зарубежным зеркалам</string>
 </resources>
