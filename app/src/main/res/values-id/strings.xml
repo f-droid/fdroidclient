@@ -371,7 +371,7 @@
     <string name="app_details__no_versions__none_compatible_with_device">Tidak ada versi yang kompatibel dengan perangkat ini</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Versi yang terpasang tidak kompatibel dengan semua versi yang tersedia. Menghapus aplikasi akan memungkinkan Anda melihat dan memasang versi yang kompatibel. Ini biasanya terjadi pada aplikasi yang terinstal melalui Google Play atau sumber lain, jika aplikasi tersebut ditandatangani dengan sertifikat berbeda.</string>
     <string name="app_list__dismiss_vulnerable_app">Kerentanan diabaikan</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan celah keamanan dengan %1$s. Kami sarankan menghapus aplikasi ini segera.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Kami menemukan celah keamanan dengan %1$s. Tekan untuk membaca lebih banyak dalam bagian Antifitur.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Kami menemukan celah keamanan dengan %1$s. Kami sarankan untuk segera memperbarui aplikasi ke versi terbaru.</string>
     <string name="privacy">Privasi</string>
     <string name="preventScreenshots_title">Cegah screenshot</string>
@@ -591,4 +591,9 @@
     <string name="auto_update_time_past">Pembaruan berikutnya ketika syarat terpenuhi</string>
     <string name="antitetherednet">Layanan Jaringan Tertambat</string>
     <string name="antitetherednetlist">Aplikasi ini sepenuhnya bergantung pada layanan jaringan tertentu</string>
+    <string name="swap_bluetooth_permissions">Silakan berikan perizinan Bluetooth atau Perangkat di Sekitar!</string>
+    <string name="menu_share_apk">Bagikan berkas APK</string>
+    <string name="apk_permissions_mismatch">Aplikasi memiliki perizinan tidak terduga: %s</string>
+    <string name="preferForeign">Utamakan Cermin Asing</string>
+    <string name="preferForeignSummary">Coba cermin yang terletak di luar negara Anda terlebih dahulu, mis. jika perlindungan asing lebih kuat.</string>
 </resources>
