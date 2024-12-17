@@ -45,7 +45,7 @@
     <string name="menu_manage">מאגרים</string>
     <string name="menu_search">חיפוש</string>
     <string name="menu_add_repo">מאגר חדש</string>
-    <string name="menu_launch">פתח</string>
+    <string name="menu_launch">פתיחה</string>
     <string name="menu_share">שיתוף</string>
     <string name="menu_install">התקנה</string>
     <string name="menu_uninstall">הסרה</string>
@@ -399,7 +399,7 @@
     <string name="app_details__no_versions__no_compatible_signers">אין גרסאות עם חותם תואם</string>
     <string name="app_details__no_versions__none_compatible_with_device">אין גרסאות תואמות להתקן זה</string>
     <string name="app_details__no_versions__explain_incompatible_signers">הגרסה המותקנת אינה תואמת לכל הגרסאות הנתמכות. הסרת היישומון תאפשר לך לצפות ולהתקין גרסאות תואמות. מצב זה קורה לרוב עם יישומונים שמותקנים דרך Google Play או מקורות אחרים, אם היישומונים נחתמו עם אישור אחר.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">מצאנו חולשה אצל %1$s. אנו ממליצים להסיר את היישומון הזה מיידית.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">מצאנו חולשה אצל %1$s. מידע נוסף בסעיף היכולות השליליות יופיע בלחיצה.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">מצאנו חולשה אצל %1$s. אנו ממליצים לעדכן את היישומון הזה לגרסה החדשה ביותר מיידית.</string>
     <string name="updates__app_with_known_vulnerability__ignore">התעלמות</string>
     <string name="app_list__dismiss_app_update">העדכון בהתעלמות</string>
@@ -622,5 +622,7 @@
     <string name="antitetherednet">שירותי רשת קשורים</string>
     <string name="antitetherednetlist">יישום זה תלוי לחלוטין במופע מסוים של שירות רשת</string>
     <string name="auto_update_time_past">העדכון הבא כאשר התנאים יתקיימו</string>
-    <string name="swap_bluetooth_permissions">יש להעניק הרשאה ל-Bluetooth או להתקנים קרובים!</string>
+    <string name="swap_bluetooth_permissions">יש להעניק הרשאה ל־Bluetooth או להתקנים קרובים!</string>
+    <string name="menu_share_apk">שיתוף קובץ APK</string>
+    <string name="apk_permissions_mismatch">ליישומון יש הרשאות מפתיעות: %s</string>
 </resources>
