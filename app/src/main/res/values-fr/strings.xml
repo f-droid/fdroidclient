@@ -622,4 +622,5 @@
     <string name="antitetherednetlist">Le fonctionnement de cette application dépend entièrement d\'un service réseau particulier</string>
     <string name="antitetherednet">Services de réseau connectés</string>
     <string name="swap_bluetooth_permissions">Veuillez autoriser l\'accès au Bluetooth ou aux appareils à proximité !</string>
+    <string name="menu_share_apk">Partager un fichier APK</string>
 </resources>

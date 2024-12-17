@@ -1,13 +1,10 @@
-* Refonte de la façon dont les dépôts sont représentés aux utilisateurs afin de préciser quand une installation provient d'un autre endroit que f-droid.org.
-
-* Les utilisateurs peuvent désormais modifier la priorité des dépôts globalement et par application.
-
-* Les anti-fonctionnalités sont désormais activées par défaut, plutôt que désactivées.
-
-* Prise en charge de la réception d'URL de dépôts via le partage.
-
-* Toutes les activités respectent le thème jour/nuit.
-
-* Mise à jour des utilisations du stockage externe pour fonctionner avec targetSdkVersion 29.
-
-* F-Droid Basic mis à jour pour fonctionner avec targetSdkVersion 34.
+* Réécriture de l'outil de mise à jour des dépôts pour rendre les mises à jour en arrière-plan plus fiables
+* Séparation du nom et du résumé dans les listes d'applications pour une meilleure lisibilité
+* Affichage d'un avertissement quand l'application ne peut pas se mettre à jour depuis le dépôts préféré
+* Les applications visant le SDK 24 sont incompatibles avec les appareils Android 15
+* Meilleur gestion des miroirs dans l'aperçu "Ajout de dépôt" (Merci Thore!)
+* Activer les mises à jour d'applications automatique sur les appareils Xiaomi ne fonctionnant pas sous MIUI (Merci Irate!)
+* Faire confiance aux certificats racine rajouté par l'utilisateur (Merci B.!)
+* Fixe les recherches insensible à la casse contenant des diacritiques (Merci Tobias!)
+* Mise à jour des descriptions des anti-fonctionnalités (Merci linsui!)
+* Ignorer les espaces lors de l'ajout de dépôts miroirs (Merci Tobias!)
