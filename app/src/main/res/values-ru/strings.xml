@@ -83,11 +83,8 @@
     <string name="proxy_host_summary">Имя хоста прокси (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт прокси</string>
     <string name="proxy_port_summary">Номера порта прокси (напр. 8118)</string>
-    <string name="status_download">Загрузка
-\n%2$s / %3$s (%4$d%%) из
-\n%1$s</string>
-    <string name="status_connecting_to_repo">Подключение к
-\n%1$s</string>
+    <string name="status_download">Загрузка\n%2$s / %3$s (%4$d%%) из\n%1$s</string>
+    <string name="status_connecting_to_repo">Подключение к\n%1$s</string>
     <string name="repos_unchanged">Все репозитории обновлены</string>
     <string name="all_other_repos_fine">Остальные репозитории не генерировали ошибки.</string>
     <string name="global_error_updating_repos">Ошибка при обновлении: %s</string>
@@ -105,12 +102,8 @@
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
     <string name="repo_confirm_delete_title">Удалить репозиторий\?</string>
-    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.
-\n
-\nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
-    <string name="repo_disabled_notification">%1$s отключен.
-\n
-\nВам нужно будет повторно включить этот репозиторий для установки приложений из него.</string>
+    <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.\n\nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
+    <string name="repo_disabled_notification">%1$s отключен.\n\nДля установки приложений из этого репозитория вам потребуется повторно его включить.</string>
     <string name="not_on_same_wifi">Данное устройство не подключено к той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте подключиться к этой сети: %s</string>
     <string name="requires_features">Требуется: %1$s</string>
     <string name="category_Development">Разработка</string>
@@ -157,11 +150,8 @@
     <string name="repo_details">Репозиторий</string>
     <string name="repo_url">Адрес</string>
     <string name="pref_language_default">Язык системы</string>
-    <string name="empty_installed_app_list">Нет установленных приложений.
-\n
-\nНа вашем устройстве есть приложения, которые недоступны в F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>
-    <string name="empty_can_update_app_list">Поздравляем!
-\nВаши приложения обновлены.</string>
+    <string name="empty_installed_app_list">Нет установленных приложений.\n\nНа вашем устройстве есть приложения, которые недоступны в F-Droid. Это может быть связано с тем, что вам необходимо обновить репозитории, либо репозитории действительно не содержат этих приложений.</string>
+    <string name="empty_can_update_app_list">Поздравляем!\nВаши приложения обновлены.</string>
     <string name="permissions">Разрешения</string>
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместима</string>
@@ -175,9 +165,7 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="touch_to_configure_local_repo">Нажмите для просмотра сведений и разрешения другим пользователям обмениваться вашими приложениями.</string>
-    <string name="status_download_unknown_size">Загрузка
-\n%2$s из
-\n%1$s</string>
+    <string name="status_download_unknown_size">Загрузка\n%2$s из\n%1$s</string>
     <string name="repo_added">Сохранен репозиторий пакетов %1$s.</string>
     <string name="about_license">Лицензия</string>
     <string name="status_inserting_apps">Сохранение информации о приложениях</string>
@@ -187,8 +175,7 @@
     <string name="login_password">Пароль</string>
     <string name="repo_edit_credentials">Изменить пароль</string>
     <string name="repo_error_empty_username">Не задано имя пользователя, учетные данные не изменены</string>
-    <string name="repo_searching_address">Поиск репозитория пакетов в
-\n%1$s</string>
+    <string name="repo_searching_address">Поиск репозитория пакетов в\n%1$s</string>
     <string name="wifi_ap">Точка доступа</string>
     <string name="category_Theming">Оформление</string>
     <string name="system_install_denied_permissions">Расширению не был предоставлен привилегированный доступ! Пожалуйста, создайте отчет об ошибке!</string>
@@ -554,12 +541,8 @@
     <string name="repo_add_new_mirror">Добавить как новое зеркало</string>
     <string name="repo_exists">Этот репозиторий уже был добавлен.</string>
     <string name="repo_io_error">Ошибка подключения к репозиторию.</string>
-    <string name="repo_intro">Репозиторий - это дополнительный источник приложений. Сторонние репозитории, которые вы сюда добавляете, имеют иные стандарты, нежели созданные F-Droid.
-\n
-\nУбедитесь, что добавляемый вами репозиторий заслуживает доверия.</string>
-    <string name="repo_invalid">Недопустимый репозиторий.
-\n
-\nСвяжитесь с сопровождающим и сообщите ему о проблеме.</string>
+    <string name="repo_intro">Репозиторий - это дополнительный источник приложений. Сторонние репозитории, которые вы сюда добавляете, имеют иные стандарты, нежели созданные F-Droid.\n\nУбедитесь, что добавляемый вами репозиторий заслуживает доверия.</string>
+    <string name="repo_invalid">Недопустимый репозиторий.\n\nСвяжитесь с сопровождающим и сообщите ему о проблеме.</string>
     <string name="swap_banner_message">Для обмена приложениями включите Wi-Fi и подключитесь к той же сети, что и ваш друг.</string>
     <string name="turn_on_wifi">Включить Wi-Fi</string>
     <string name="repo_state_fetching">Извлечение репозитория…</string>
@@ -599,7 +582,7 @@
     <string name="useDnsCache">Использовать кэш DNS</string>
     <string name="useDnsCacheSummary">Использовать кэш для минимизации запросов DNS.</string>
     <string name="repo_list_info_title">Список репозиториев</string>
-    <string name="repo_archive_toggle">Архив репозитория</string>
+    <string name="repo_archive_toggle">Архивный репозиторий</string>
     <string name="repo_archive_toggle_description">Отображать архивные и устаревшие версии приложений</string>
     <string name="repo_archive_failed">Архивный репозиторий сейчас недоступен</string>
     <string name="app_details_repository_preferred">(выбран)</string>
@@ -622,5 +605,5 @@
     <string name="swap_bluetooth_permissions">Пожалуйста, дайте разрешение на использование Bluetooth или устройств поблизости!</string>
     <string name="auto_update_time_past">Следующее обновление при выполнении условий</string>
     <string name="menu_share_apk">Поделиться APK-файлом</string>
-    <string name="apk_permissions_mismatch">Неожиданное разрешение: %s</string>
+    <string name="apk_permissions_mismatch">Приложение имеет неоднозначные полномочия: %s</string>
 </resources>
