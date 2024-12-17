@@ -583,5 +583,7 @@
     <string name="menu_share_apk">Dela APK-fil</string>
     <string name="apk_permissions_mismatch">Appen har oväntade behörigheter: %s</string>
     <string name="repo_mirror_add_info">URL:en du försöker lägga till (%s) är en spegel av ett förråd som redan finns.</string>
-    <string name="repo_list_info_title">Filförrådslista</string>
+    <string name="repo_list_info_title">Lista över förråd</string>
+    <string name="repo_archive_toggle_description">Visa arkiverade och föråldrade versioner av appar</string>
+    <string name="repo_list_info_text">Ett förråd är en källa med appar. Den här listan visar alla nu tillagda förråd. Inaktiverade förråd används inte.\n\nOm en app finns i fler än ett förråd, kommer förrådet högre upp i listan föredras automatiskt. Du kan ändra ordningen genom att hålla in och dra för att flytta.</string>
 </resources>
