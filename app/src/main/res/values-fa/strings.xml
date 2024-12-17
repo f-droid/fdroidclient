@@ -601,4 +601,5 @@
     <string name="antitetherednet">خدمت شبکهٔ چتری</string>
     <string name="antitetherednetlist">این کاره، کاملاً وابسته به نمونه‌ای خاص از یک خدمت شبکه‌ای است</string>
     <string name="auto_update_time_past">به‌روز رسانی بعدی هنگام فراهم شدن شرایط</string>
+    <string name="swap_bluetooth_permissions">لطفا دسترسی بلوتوث یا دستگاه‌های نزدیک را اجازه دهید!</string>
 </resources>
