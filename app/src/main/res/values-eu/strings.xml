@@ -476,7 +476,7 @@
     <string name="scan_removable_storage_summary">Bilatu paketeen biltegiak biltegi kengarrietan, esaterako SD txartelak edo USB giltzak edo diskoak</string>
     <string name="nearby_splash__read_external_storage">Bilatu SD txartelean biltegiak eta ispiluak.</string>
     <string name="nearby_splash__request_permission">Bilatu orain</string>
-    <string name="not_visible_nearby">Ingurua ez dago aktibo</string>
+    <string name="not_visible_nearby">Inguruan ez dago aktibo</string>
     <string name="not_visible_nearby_description">Inguruko gailuekin trukea egin aurretik, egin zure gailua ikusgai.</string>
     <string name="swap_toast_using_path">%1$s erabiltzen</string>
     <string name="swap_toast_not_removable_storage">Aukera hori ez dator bat inolako biltegi gailu kengarriarekin, saiatu berriro!</string>
@@ -566,7 +566,7 @@
     <string name="repo_io_error">Errore bat gertatu da biltegira konektatzean.</string>
     <string name="category_Nightly">nightly bertsioa</string>
     <string name="nearby_splace__external_storage_permission_button">Probatu</string>
-    <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ek zure SD txartelean repositorioak eta ispiluak bilatu ditzake, baina horretarako zure baimena behar du.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ek zure SD txartelean biltegiak eta ispiluak bilatu ditzake, baina horretarako zure baimena behar du.</string>
     <string name="swap_connection_indexv0_error">F-Droid-en bertsio zaharkitua duen norbaitekin konektatzen saiatzen ari zara. Konektatzeko F-Droid aplikazioa berritu behar dute. Aldatzailea erabil dezakete haien F-Droid aplikazioa eguneratzeko.</string>
     <string name="force_old_installer_title">Instalatzaile zaharra behartu</string>
     <string name="copied_to_clipboard">Arbelean kopiatu da</string>
@@ -621,4 +621,6 @@
     <string name="antitetherednetlist">Aplikazio hau instantzia zehatz baten sareko zerbitzuaren menpekoa da guztiz</string>
     <string name="auto_update_time_past">Hurrengo eguneraketa baldintzak betetzen direnean</string>
     <string name="menu_share_apk">Partekatu APK fitxategia</string>
+    <string name="apk_permissions_mismatch">Aplikazioak ustekabeko baimen bat dauka: %s</string>
+    <string name="swap_bluetooth_permissions">Mesedez eman Bluetooth edo Inguruko gailua baimena!</string>
 </resources>
