@@ -67,7 +67,7 @@
     <string name="theme_dark">Iluna</string>
     <string name="theme_light">Argia</string>
     <string name="other">Besteak</string>
-    <string name="update_interval">Eguneratze automatikoen eguneratzea</string>
+    <string name="update_interval">Eguneratze automatikoen maiztasuna</string>
     <string name="system_installer">Pribilegiodun Luzapena</string>
     <string name="system_installer_on">Erabili pribilegiodun luzapena paketeak instalatu, eguneratu eta kentzeko</string>
     <string name="about_source">Iturburu kodea</string>
@@ -330,8 +330,8 @@
     <string name="updates__hide_updateable_apps">Ezkutatu aplikazioak</string>
     <string name="updates__show_updateable_apps">Erakutsi aplikazioak</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Deskargatu eguneraketa %1$d.</item>
-        <item quantity="other">Deskargatu %1$d eguneraketa.</item>
+        <item quantity="one">Deskargatu aplikazio %1$d-en eguneraketa.</item>
+        <item quantity="other">Deskargatu %1$d aplikazioen eguneraketak.</item>
     </plurals>
     <string name="details_new_in_version">%s bertsioan berria</string>
     <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
@@ -523,7 +523,7 @@
     <string name="banner_no_data_or_wifi">Datuak eta WiFi-a itzalita</string>
     <string name="banner_no_internet">Internet gabe</string>
     <string name="menu_show_install_history">Instalazio historia erakutsi</string>
-    <string name="send_to_fdroid_metrics_summary">Astero informazio anonimoa bidali F-Droid Metrics-era (Keep-en instalazioen historiala behar da)</string>
+    <string name="send_to_fdroid_metrics_summary">Astero informazio anonimoa bidaltzen du F-Droid Metrics-era (Keep-en instalazioen historiala behar da)</string>
     <string name="swap_wifi_vpn_conflict">Uneko VPNarekin gatazka sortzen du!</string>
     <string name="share_apk_error">Ezin izan da aplikazio fitxategia partekatu</string>
     <string name="has_disallow_install_unknown_sources_globally">Zure gailuaren administratzaileak ez du jatorri ezezaguneko aplikazioak instalatzen uzten, biltegi berriak barne</string>
@@ -572,7 +572,7 @@
     <string name="copied_to_clipboard">Arbelean kopiatu da</string>
     <string name="ipfsgw_caption_official_gateways">IPFS pasabide ofizialak</string>
     <string name="ipfsgw_summary_disabled">Deskargatu aplikazioak IPFS web amaierako puntuak erabiliz: desgaituta</string>
-    <string name="force_old_installer_summary">Desgaitu beta Session instalatzailea, atzeko planoko eguneratze automatikoetarako laguntza barne.</string>
+    <string name="force_old_installer_summary">Desgaitu Session instalatzailea, atzeko planoko eguneratze automatikoetarako laguntza barne.</string>
     <string name="targetsdk_or_later">%s helburu</string>
     <string name="copied_permission_to_clipboard">Baimenaren izena arbelean kopiatu da</string>
     <string name="copied_url_to_clipboard">Kopiatu da URLa arbelean</string>
@@ -608,4 +608,13 @@
 \n
 \nAplikazio bat gordailu batean baino gehiagotan badago, automatikoki hobetsiko da zerrendan gorago dagoen gordailua. Gordailuak berrordenatu ditzakezu luze sakatuz eta arrastatuz.</string>
     <string name="repo_share_not_found">Ezin izan da gordailuaren helbidea aurkitu partekatutako testuan.</string>
+    <string name="repo_add_repo_and_mirror">Gehitu biltegia eta ispilua</string>
+    <string name="repo_view_repo">Ikusi biltegia</string>
+    <string name="repo_preview_included_apps">Sartutako aplikazioak:</string>
+    <string name="repo_mirror_exists">Ispilu hau dagoeneko gehitu da (%s).</string>
+    <string name="repo_mirror_add_info">Gehitzen saiatzen ari zaren URLa (%s) lehendik dagoen biltegi baten ispilua da.</string>
+    <string name="repo_and_mirror_add_both_info">Gehitzen saiatzen ari zaren URLa (%s) biltegi berri baten ispilua da. Jatorrizko biltegia eta ispilua gehituko dira.</string>
+    <string name="repo_scan_qr_code">Eskaneatu QR kodea</string>
+    <string name="auto_update_time">Eguneratze berriena: %s</string>
+    <string name="warning_no_compat_versions">Hautatutako biltegiak ez du aplikazio-bertsio bateragarririk. Eguneraketak jasotzeko, nahiago bertsio bateragarriak dituen biltegi bat.</string>
 </resources>
