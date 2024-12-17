@@ -67,8 +67,7 @@
     <string name="unknown">Nekonata</string>
     <string name="repo_confirm_delete_title">Ĉu forigi la deponejon\?</string>
     <string name="repo_added">Konservis deponejon de pakaĵoj %1$s.</string>
-    <string name="repo_searching_address">Serĉado de pakaĵa deponejo ĉe
-\n%1$s</string>
+    <string name="repo_searching_address">Serĉado de pakaĵa deponejo ĉe \n%1$s</string>
     <string name="requires_features">Postulas: %1$s</string>
     <string name="category_Development">Programado</string>
     <string name="category_Games">Ludoj</string>
@@ -132,16 +131,11 @@
     <string name="proxy_port">Pordo de retperanto</string>
     <string name="proxy_host_summary">Adreso de via retperanto (ekz. 127.0.0.1)</string>
     <string name="proxy_port_summary">Numero de pordo de via retperanto (ekz. 8118)</string>
-    <string name="status_download">Elŝutado
-\n%2$s / %3$s (%4$d%%) el
-\n%1$s</string>
-    <string name="status_download_unknown_size">Elŝutado
-\n%2$s el
-\n%1$s</string>
+    <string name="status_download">Elŝutado \n%2$s / %3$s (%4$d%%) el \n%1$s</string>
+    <string name="status_download_unknown_size">Elŝutado \n%2$s el \n%1$s</string>
     <string name="banner_updating_repositories">Ĝisdatigado de deponejoj</string>
     <string name="status_processing_xml_percent">Prilaborado de %2$s / %3$s (%4$d%%) el %1$s</string>
-    <string name="status_connecting_to_repo">Konektado al
-\n%1$s</string>
+    <string name="status_connecting_to_repo">Konektado al \n%1$s</string>
     <string name="status_inserting_apps">Konservado de aplikaĵaj detaloj</string>
     <string name="repos_unchanged">Ĉiuj deponejoj estas ĝisdataj</string>
     <string name="all_other_repos_fine">En ĉiuj aliaj deponejoj ne okazis eraro.</string>
@@ -155,12 +149,8 @@
     <string name="repo_fingerprint">Fingrospuro de subskriba ŝlosilo (SHA-256)</string>
     <string name="unsigned_description">Tio ĉi signifas, ke la listo de aplikaĵoj ne povas esti verigita. Estu singarda pri aplikaĵoj elŝutitaj el nesubskribitaj indeksoj.</string>
     <string name="repo_not_yet_updated">La deponejo ne estas jam uzita. Vi devas aktivigi ĝin por vidi la aplikaĵojn, kiujn ĝi liveras.</string>
-    <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke ĝiaj aplikaĵoj ne plu montriĝos en F-Droid.
-\n
-\nRimarko: ĉiuj antaŭe instalitaj aplikaĵoj restos en via aparato.</string>
-    <string name="repo_disabled_notification">%1$s malaktiva.
-\n
-\nVi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn el ĝi.</string>
+    <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke ĝiaj aplikaĵoj ne plu montriĝos en F-Droid. \n \nRimarko: ĉiuj antaŭe instalitaj aplikaĵoj restos en via aparato.</string>
+    <string name="repo_disabled_notification">%1$s malaktiva. \n \nVi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn el ĝi.</string>
     <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al la reto: %s</string>
     <string name="pref_language">Lingvo</string>
     <string name="pref_language_default">Laŭ operaciumo</string>
@@ -173,12 +163,9 @@
     <string name="category_Theming">Etosoj k aspekto</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Skribado</string>
-    <string name="empty_installed_app_list">Neniu aplikaĵo instalita.
-\n
-\nEn via aparato estas aplikaĵoj, tamen ili ne estas disponeblaj el F‑Droid. Eble vi devas ĝisdatigi viajn deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.</string>
+    <string name="empty_installed_app_list">Neniu aplikaĵo instalita. \n \nEn via aparato estas aplikaĵoj, tamen ili ne estas disponeblaj el F‑Droid. Eble vi devas ĝisdatigi viajn deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.</string>
     <string name="empty_search_available_app_list">Neniu kongrua aplikaĵo disponebla.</string>
-    <string name="empty_can_update_app_list">Bonege!
-\nĈiuj viaj aplikaĵoj estas ĝisdataj.</string>
+    <string name="empty_can_update_app_list">Bonege! \nĈiuj viaj aplikaĵoj estas ĝisdataj.</string>
     <string name="install_error_unknown">Instalo malsukcesis pro nekonata eraro</string>
     <string name="uninstall_error_unknown">Malinstalo malsukcesis pro nekonata eraro</string>
     <string name="system_install_denied_permissions">La privilegia aldonaĵo ne akiris ĉefuzantan permeson! Bonvolu krei erar-raporton!</string>
@@ -376,7 +363,7 @@
     <string name="app_list__dismiss_app_update">Ĝisdatigo ignorata</string>
     <string name="app_list__dismiss_vulnerable_app">Sekurec-vundeblo ignorata</string>
     <string name="app_list__dismiss_downloading_app">Elŝuto nuligita</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Trovis sekurecan problemon en %1$s. Estas konsilinde senprokraste malinstali tiun ĉi aplikaĵon.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Trovis sekurecan problemon en %1$s. Frapetu por sciiĝi pli en la sekcio “Fiebloj”.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Trovis sekurecan problemon en %1$s. Estas konsilinde senprokraste ĝisdatigi la aplikaĵon al la plej nova versio.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignori</string>
     <string name="privacy">Privateco</string>
@@ -431,7 +418,7 @@
     <string name="antidisabledalgorithmlist">Tiu ĉi aplikaĵo posedas malfortan sekurecan subskribon</string>
     <string name="antiknownvulnlist">Tiu ĉi aplikaĵo posedas sekurecan vundeblon</string>
     <string name="hide_all_notifications">Kaŝi ĉiujn sciigojn</string>
-    <string name="hide_all_notifications_summary">Malpermesi al ĉiuj agoj anonci sin sur la stata breto aŭ en la sciiga areo.</string>
+    <string name="hide_all_notifications_summary">Malpermesi al ĉiuj agoj anonci sin sur la stata strio aŭ en la sciiga areo.</string>
     <string name="prompt_to_send_crash_reports">Proponi sendi raportojn pri paneoj</string>
     <string name="prompt_to_send_crash_reports_summary">Kolekti datumojn pri misfunkcioj kaj peti pri sendi ilin al programistoj</string>
     <string name="install_history">Historio de instaladoj</string>
@@ -499,7 +486,7 @@
     <string name="send_to_fdroid_metrics">Sendi datumojn pri uzado</string>
     <string name="theme_follow_system">Laŭ operaciumo</string>
     <string name="use_pure_black_dark_theme_summary">Konsilinda nur por ekranoj OLED.</string>
-    <string name="use_pure_black_dark_theme">Uzi komplete nigran fonon por malhela haŭto</string>
+    <string name="use_pure_black_dark_theme">Uzi plene nigran fonon por malhela haŭto</string>
     <string name="banner_no_data_or_wifi">Neniu interreta konekto aktiva</string>
     <string name="banner_no_internet">Sen interreto</string>
     <string name="share_apk_error">Ne povas kunhavigi dosieron de la aplikaĵo</string>
@@ -539,12 +526,8 @@
     <string name="repo_state_adding">Aldonado de deponejo…</string>
     <string name="repo_exists">Tiu ĉi deponejo jam estas aldonita.</string>
     <string name="repo_enter_url">Permane enigi ligilon de deponejo</string>
-    <string name="repo_intro">Deponejo estas plia fonto de aplikaĵoj. Deponejoj de aliaj firmaoj – aldoneblaj tie ĉi – havas aliajn normojn ol tiuj oficiale liverataj de F-Droid.
-\n
-\nCertiĝu por ke la aldonota deponejo estu fidinda.</string>
-    <string name="repo_invalid">Malĝusta deponejo.
-\n
-\nKontaktu kun ĝia prizorganto kaj informu lin pri la problemo.</string>
+    <string name="repo_intro">Deponejo estas plia fonto de aplikaĵoj. Deponejoj de aliaj firmaoj – aldoneblaj tie ĉi – havas aliajn normojn ol tiuj oficiale liverataj de F-Droid. \n \nCertiĝu por ke la aldonota deponejo estu fidinda.</string>
+    <string name="repo_invalid">Malĝusta deponejo. \n \nKontaktu kun ĝia prizorganto kaj informu lin pri la problemo.</string>
     <string name="nearby_splace__external_storage_permission_button">Provi</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid povas trovi deponejojn kaj spegulservilojn en via SD-karto, tamen ĝi bezonas vian permeson.</string>
     <string name="swap_connection_indexv0_error">Vi provas konekti kun persono, kiu havas malnovan version de F-Droid. Por konekti, li devas ĝisdatigi la aplikaĵon F-Droid. Li povas uzi la eblon “Interŝanĝi” por elŝuti F-Droid el via aparato.</string>
@@ -585,9 +568,7 @@
     <string name="repositories_last_update_never">neniam</string>
     <string name="repo_archive_toggle">Arĥiva deponejo</string>
     <string name="repo_archive_toggle_description">Montri arĥivitajn kaj malnovajn versiojn de aplikaĵoj</string>
-    <string name="repo_list_info_text">Deponejo estas fonto de aplikaĵoj. Tiu ĉi listo montras ĉiujn aldonitajn deponejojn. Malaktivigitaj deponejoj ne estas uzataj.
-\n
-\nSe aplikaĵo troviĝas en pli ol unu deponejo, la pli supra deponejo sur la listo estas aŭtomate preferata. Vi povas reordigi deponejojn per frapetadi kaj ŝovi ilin.</string>
+    <string name="repo_list_info_text">Deponejo estas fonto de aplikaĵoj. Tiu ĉi listo montras ĉiujn aldonitajn deponejojn. Malaktivigitaj deponejoj ne estas uzataj. \n \nSe aplikaĵo troviĝas en pli ol unu deponejo, la pli supra deponejo sur la listo estas aŭtomate preferata. Vi povas reordigi deponejojn per frapetadi kaj ŝovi ilin.</string>
     <string name="repo_list_info_title">Listo de deponejoj</string>
     <string name="repo_mirror_exists">Tiu ĉi spegul-servilo jam estas aldonita (%s).</string>
     <string name="repo_mirror_add_info">La ligilo (%s), kiun vi provas aldoni estas spegul-servilo de ekzistanta deponejo.</string>
@@ -601,4 +582,9 @@
     <string name="antitetherednet">Alligita al retservo</string>
     <string name="antitetherednetlist">Tiu ĉi aplikaĵo tute dependas de difinita ekzemplo de reta servo</string>
     <string name="auto_update_time_past">Sekva ĝisdatigo post plenumi kondiĉojn</string>
+    <string name="swap_bluetooth_permissions">Donu al F-Droid la permeson “Bludento” aŭ “proksima aparato”!</string>
+    <string name="apk_permissions_mismatch">Aplikaĵo postulas neatenditan permeson: %s</string>
+    <string name="menu_share_apk">Kunhavigi APK-dosieron</string>
+    <string name="preferForeign">Preferi fremdlandajn servilojn</string>
+    <string name="preferForeignSummary">Unue provi spegul-servilojn troviĝantajn ekster via lando, ekzemple se fremdlanda protekto estas pli forta.</string>
 </resources>
