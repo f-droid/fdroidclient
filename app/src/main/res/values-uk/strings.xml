@@ -606,4 +606,6 @@
     <string name="swap_bluetooth_permissions">Надайте дозвіл на використання Bluetooth або пристрою поблизу!</string>
     <string name="menu_share_apk">Надіслати APK-файл</string>
     <string name="apk_permissions_mismatch">Застосунок має неочікуваний дозвіл: %s</string>
+    <string name="preferForeign">Надати перевагу іноземним дзеркалам</string>
+    <string name="preferForeignSummary">Спробувати дзеркала розташовані за межами країни, наприклад якщо іноземний захист сильніше.</string>
 </resources>
