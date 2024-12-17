@@ -623,4 +623,5 @@
     <string name="antitetherednet">Несменяемые сетевые сервисы</string>
     <string name="swap_bluetooth_permissions">Пожалуйста, дайте разрешение на использование Bluetooth или устройств поблизости!</string>
     <string name="auto_update_time_past">Следующее обновление при выполнении условий</string>
+    <string name="menu_share_apk">Поделиться APK файлом</string>
 </resources>
