@@ -1,0 +1,3 @@
+* Memperbaiki preferensi seekbar pada versi Android terbaru (terima kasih @dkanada)
+* Menangani API 29 split-permissions: lokasi yang baik sekarang menyiratkan lokasi yang kasar
+* Menetapkan aturan pencadangan untuk menghindari penyimpanan repo swap

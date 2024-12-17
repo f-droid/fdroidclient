@@ -1,0 +1,19 @@
+* Tombol dan pembaruan status yang lebih andal
+
+* Pembaruan Pengaturan termasuk kontrol penggunaan data baru
+
+* Operasi latar belakang hemat baterai pada Android 5.0 dan lebih baru
+
+* Item menu berbagi untuk repositori
+
+* Matikan laporan kerusakan di Pengaturan
+
+* Penampil Riwayat Pemasangan saat pencatatan diaktifkan
+
+* Daftar Anti-Fitur yang dapat diklik, ditambahkan NoSourceSince
+
+* Android 4.0 sekarang menjadi minimum yang didukung
+
+* Peningkatan besar untuk versi whitelabel khusus F-Droid
+
+* Pengaturan ahli untuk mengirim versi debug+UUID saat mengunduh

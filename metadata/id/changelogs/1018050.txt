@@ -1,0 +1,7 @@
+* Memperbaiki penggunaan repo dan mirror dari Penyimpanan Eksternal pada rilis Android terbaru
+* Manajemen WiFi yang lebih baik di Nearby
+* Bilah navigasi sekarang mengingat posisinya bahkan ketika F-Droid dimulai ulang
+* Bahasa baru: Bahasa Swahili
+* Memperbaiki pengunduhan gambar untuk repositori yang masih menggunakan index-v1
+* Memperbaiki kerusakan yang terkait dengan swap, mengelola repo dan lainnya
+* Tombol Downgrade telah dihapus, Android tidak lagi mengizinkannya

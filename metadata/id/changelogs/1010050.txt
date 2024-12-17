@@ -1,0 +1,7 @@
+* menggunakan saluran notifikasi untuk kontrol yang lebih baik (@Isira-Seneviratne)
+* Pilihan bahasa yang lebih baik dengan beberapa bahasa lokal (@spacecowboy/@bubu)
+* Tab Terbaru akan menampilkan hasil yang lebih baik pada perangkat non-Inggris
+* Pembaruan pada pustaka inti (Jackson, androidx, gradle, dll)
+* dukungan pelabelan warna putih
+
+Terima kasih para kontributor baru! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

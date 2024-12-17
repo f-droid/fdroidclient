@@ -1,0 +1,8 @@
+* Pisahkan nama dan ringkasan dalam daftar aplikasi untuk keterbacaan yang lebih baik
+* Aplikasi yang menargetkan SDK 24 tidak kompatibel dengan perangkat Android 15
+* Menangani cermin di pratinjau "Tambahkan repo" dengan lebih baik (Terima kasih Thore!)
+* Mengaktifkan pembaruan aplikasi tanpa pengawasan pada perangkat Xiaomi yang tidak menjalankan MIUI (Terima kasih Irate!)
+* Percayai sertifikat root yang ditambahkan pengguna (Terima kasih B.!)
+* Tingkatkan pelokalan untuk bahasa yang kurang umum (Terima kasih Ray!)
+* Jangan bereaksi terhadap tag NFC karena fitur NFC telah dihapus (Terima kasih Thibault!)
+* Tampilkan peringatan ketika aplikasi tidak dapat diperbarui dari repo pilihan

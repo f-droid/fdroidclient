@@ -1,0 +1,11 @@
+* Tangani izin READ_EXTERNAL_STORAGE yang tersirat, yang memicu prompt izin pada pemasangan dengan Privileged Extension (#1702)
+
+* Data indeks disanitasi untuk mengurangi ancaman yang mungkin dari server
+
+* "Read Timeout" memicu penggunaan mirror saat bacaan lambat
+
+* Perbaiki ikon yang hilang bagi yang tidak menggunakan Wi-Fi (#1592)
+
+* Gunakan judul terpisah untuk preferensi Pembaruan dan tab Pembaruan, untuk membantu terjemahan
+
+* Perbaikan UI dari @ConnyDuck (#1636, #1618)

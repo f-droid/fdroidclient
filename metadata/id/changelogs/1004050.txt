@@ -1,0 +1,13 @@
+* Perombakan besar pada daftar "Versi" di "Detail Aplikasi", dan banyak peningkatan UI lainnya, berkat kontributor baru @wsdfhjxc
+
+* Perbaikan navigasi keyboard/D-pad di banyak tempat, berkat kontributor baru @doeffinger
+
+* Tampilkan tombol "Buka" saat media terinstal dan dapat dilihat
+
+* Tambahkan tombol Bagikan ke "Aplikasi Terinstal" untuk mengekspor daftar CSV
+
+* Tambahkan daftar APK yang dapat diklik ke halaman indeks HTML swap
+
+* Coba unduh ulang indeks dari mirror
+
+* Perbaiki "Kirim F-Droid via Bluetooth" pada versi Android terbaru

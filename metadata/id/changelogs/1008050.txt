@@ -1,0 +1,9 @@
+* Konfigurasi izin Android 10 baru untuk menghentikan permintaan Sumber Tidak Dikenal #1833
+* Menangani "izin terpisah" baru: lokasi yang baik menyiratkan lokasi yang kasar
+* Memperbaiki preferensi bilah pencarian pada versi Android terbaru (terima kasih @dkanada)
+* Tetapkan aturan pencadangan untuk menghindari penyimpanan swap repo
+* Keyboard terbuka ketika pencarian dihapus
+* sinkronisasi terjemahan dengan string Android
+* memaksa domain repo umum ke HTTPS (GitLab, GitHub, Amazon)
+* efek riak standar untuk tautan pada detail aplikasi
+* menampilkan ikon default untuk aplikasi yang tidak memiliki ikon

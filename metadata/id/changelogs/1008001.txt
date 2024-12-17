@@ -1,0 +1,4 @@
+* menangani konfigurasi izin Android 10 untuk menghentikan permintaan Sumber Tidak Dikenal
+* keyboard terbuka saat pencarian dihapus
+* sinkronisasi terjemahan dengan string Android
+* memaksa domain repo umum ke HTTPS (GitLab, GitHub, Amazon)

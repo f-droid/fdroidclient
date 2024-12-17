@@ -6,7 +6,7 @@
 
 * Mengurangi penggunaan memori saat perangkat hampir habis
 
-* Tambahkan mirror khusus ke repo apa pun dengan mengklik tautan, memindai kode QR, dll.
+* Tambahkan mirror khusus ke repo apa pun dengan mengeklik tautan, memindai kode QR, dll.
 
 * Banyak perbaikan bug dan peningkatan di Swap/Nearby
 

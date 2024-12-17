@@ -1,0 +1,7 @@
+* menggunakan saluran notifikasi untuk kontrol yang lebih baik (@Isira-Seneviratne)
+* berbagi aplikasi menggunakan Berbagi Langsung dari Detail Aplikasi (@fynngodau)
+* Tab Terbaru akan menampilkan hasil yang lebih baik pada perangkat non-Inggris
+* Pembaruan pada pustaka inti (Jackson, androidx, gradle, dll)
+* dukungan pemolesan label putih
+
+Terima kasih para kontributor baru! @fynngodau @projectgus @glennmen @Isira-Seneviratne
