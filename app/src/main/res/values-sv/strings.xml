@@ -575,4 +575,5 @@
     <string name="repo_view_repo">Visa filförråd</string>
     <string name="app_details_repository_button_prefer">Föredra förråd</string>
     <string name="app_details_repositories">Förråd</string>
+    <string name="app_details_repository_expand">Expandera lista över filförråd</string>
 </resources>
