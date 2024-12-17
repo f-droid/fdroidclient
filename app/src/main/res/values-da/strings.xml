@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Den nye version er signeret med en anden nøgle end den gamle. Den gamle version skal afinstalleres før den nye version kan installeres. Gør det og forsøg igen. (NB! Afinstallation sletter alle data appen har lagret internt.)</string>
     <string name="installIncompatible">App ikke kompatibel med din enhed. Installer alligevel\?</string>
     <string name="version">Version</string>
@@ -367,7 +367,7 @@
     <string name="app_list__dismiss_app_update">Opdatering ignoreret</string>
     <string name="app_list__dismiss_vulnerable_app">Sårbarhed ignoreret</string>
     <string name="app_list__dismiss_downloading_app">Hentning annulleret</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fandt en sårbarhed i %1$s. Vi anbefaler, at du afinstallerer denne app straks.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Vi fandt en sårbarhed i %1$s. Tryk for at læse mere i Anti-Funktion afsnittet.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Vi fandt en sårbarhed i %1$s. Vi anbefaler, at du opgraderer til den nyeste version straks.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
     <string name="status_inserting_x_apps">Gemmer app-detaljer (%1$d/%2$d) fra %3$s</string>
@@ -396,8 +396,8 @@
     <string name="repo_exists_add_fingerprint">%1$s er allerede sat op, dette tilføjer ny nøgleinformation.</string>
     <string name="menu_open">Åbn</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Inkluder apps med antifunktionalitet</string>
-    <string name="show_anti_feature_apps_on">Vis apps der kræver antifunktionalitet</string>
+    <string name="show_anti_feature_apps">Inkludér Anti-Funktioner</string>
+    <string name="show_anti_feature_apps_on">Vis apps der har kendte Anti-Funktioner</string>
     <string name="force_touch_apps">Inkluder touchscreen-apps</string>
     <string name="privacy">Privatliv</string>
     <string name="preventScreenshots_title">Bloker skærmbilleder</string>
@@ -445,7 +445,7 @@
     <string name="scan_removable_storage_summary">Søg efter pakkearkiver på flytbare lagerenheder som SD-kort og USB-drev</string>
     <string name="menu_translation">Oversættelse</string>
     <string name="main_menu__updates">Nyt</string>
-    <string name="antinosourcesince">Kildekode ikke længere tilgængelig; ingen opdateringer mulige.</string>
+    <string name="antinosourcesince">Kildekoden er ikke længere tilgængelig; ingen mulige opdateringer</string>
     <string name="force_touch_apps_on">Vis apps der kræver touchscreen uanset hardwareunderstøttelse</string>
     <string name="panic_hide_warning_message">Ved en panikhændelse vil dette fjerne %1$s fra startskærmen. Kun indtastning af \"%2$d\" i den falske app %3$s kan genskabe det.</string>
     <string name="hide_on_long_search_press_summary">Langt tryk på søgeknappen skjuler appen</string>
@@ -533,7 +533,7 @@
     <string name="repo_archive_toggle_description">Vis arkiverede apps og forældede versioner af apps</string>
     <string name="nearby_splace__external_storage_permission_button">Prøv det</string>
     <string name="repo_last_update_downloaded">Seneste opdatering downloadet</string>
-    <string name="force_old_installer_summary">Deaktiver beta Session Installeren, inklusive support til automatisk baggrundsopdateringer.</string>
+    <string name="force_old_installer_summary">Deaktiver Session Installatøren, inklusiv support til automatiske baggrundsopdateringer.</string>
     <string name="repo_num_apps_button">Vis apps</string>
     <string name="app_details_repositories">Repositories</string>
     <string name="app_details_repository">Repository</string>
@@ -553,4 +553,22 @@
     <string name="app_details_repository_preferred">(foretrækkes)</string>
     <string name="app_details_repository_button_prefer">Fortrækker depot</string>
     <string name="app_details_repository_expand">Udvid depot list</string>
+    <string name="copied_url_to_clipboard">Kopieret URL til udklipsholder</string>
+    <string name="targetsdk_or_later">mål %s</string>
+    <string name="menu_share_apk">Del APK fil</string>
+    <string name="auto_update_time_past">Næste opdatering når vilkårene er opfyldt</string>
+    <string name="antitetherednetlist">Denne app er fuldstændigt afhængig af en specifik instans af en internet tjeneste</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">natlig</string>
+    <string name="apk_permissions_mismatch">App har uventet tilladelse: %s</string>
+    <string name="repo_invalid">Ugyldigt repository.\n\nKontakt vedligeholderen og informér dem om problemet.</string>
+    <string name="swap_banner_message">For at bytte apps, start dit Wi-Fi og forbind til det samme netværk som din ven.</string>
+    <string name="repo_list_info_text">En pakkebrønd er en kilde af apps. Denne liste viser alle nuværende tilføjede pakkebrønde. Deaktiverede pakkebrønde bliver ikke brugt.\n\nHvis en app er i mere end en pakkebrønd bliver pakkebrønden øverst på listen automatisk foretrukket. Du kan omsortere pakkebrøndene ved at holde og trække dem.</string>
+    <string name="repo_disable_warning">At deaktivere denne pakkebrønd vil fjerne dens \"foretrukken\" status fra alle apps.</string>
+    <string name="copied_to_clipboard">Kopieret til udklipsholder</string>
+    <string name="paste">Indsæt</string>
+    <string name="copied_permission_to_clipboard">Kopieret tilladelsesnavn til udklipsholder</string>
+    <string name="swap_connection_indexv0_error">Du prøver at forbinde til nogen med en uddateret udgave af F-Droid. For at forbinde skal de opgradere deres F-Droid app. De kan anvende byt til at opdatere deres F-Droid app fra dig.</string>
+    <string name="repo_intro">Et repository er en yderligere kilde til apps. Tredjeparts repositorier som du tilføjer her har andre standarder end de der tilbyder apps bygget af F-Droid.\n\nVær sikker på, at du kan stole på det repository som du tilføjer.</string>
+    <string name="ipfsgw_add_add">Tilføj</string>
+    <string name="auto_update_time">Tidligste næste opdatering: %s</string>
 </resources>
