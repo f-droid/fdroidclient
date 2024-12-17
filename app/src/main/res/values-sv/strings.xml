@@ -561,4 +561,16 @@
     <string name="useDnsCache">Använd DNS-cache</string>
     <string name="useDnsCacheSummary">Använd cachade resultat för att minimera DNS-förfrågningar.</string>
     <string name="app_details_repository_preferred">(föredras)</string>
+    <string name="auto_update_time_past">Nästa uppdatering när villkoren är uppfyllda</string>
+    <string name="ipfsgw_add_add">Lägg till</string>
+    <string name="ipfsgw_add_title">Lägg till gateway för IPFS</string>
+    <string name="app_details_repository">Filförråd</string>
+    <string name="repo_scan_qr_code">Skanna QR-kod</string>
+    <string name="repo_add_repo_and_mirror">Lägg till filförråd och spegel</string>
+    <string name="repo_preview_included_apps">Inkluderade appar:</string>
+    <string name="ipfsgw_caption_official_gateways">Officiella gateways för IPFS</string>
+    <string name="repositories_last_update_never">aldrig</string>
+    <string name="repositories_last_update">Uppdaterades senast: %s</string>
+    <string name="ipfsgw_caption_custom_gateways">Anpassade gateways för IPFS</string>
+    <string name="repo_view_repo">Visa filförråd</string>
 </resources>
