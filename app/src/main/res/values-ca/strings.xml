@@ -595,4 +595,6 @@
     <string name="swap_bluetooth_permissions">Doneu permisos de Bluetooth o dispositiu proper!</string>
     <string name="menu_share_apk">Comparteix el fitxer APK</string>
     <string name="apk_permissions_mismatch">L\'aplicació té un permís inesperat: %s</string>
+    <string name="preferForeign">Prefereix miralls externs</string>
+    <string name="preferForeignSummary">Prova primer els miralls que són fora del teu país, per exemple quan les proteccions estrangeres són més fortes.</string>
 </resources>
