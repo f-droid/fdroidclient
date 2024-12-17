@@ -9,5 +9,5 @@ Android selbst ist dahingehend offen, dass jeder die Wahl hat, woher er APKs ins
 * Vorgänger- und Beta-Versionen überblicken 
 * Mit dem Gerät inkompatible Apps aussortieren
 * Apps nach Kategorien und durchsuchbaren Beschreibungen finden 
-* Auf URLs zugreifen, die mit Quelltext, Spendenmöglichkeiten usw. verknüpft sind 
+* Auf URLs zugreifen, die mit Quellcode, Spendenmöglichkeiten usw. verknüpft sind 
 * Durch Überprüfung von Quell-Signaturen und APK-Hashes geschützt bleiben
