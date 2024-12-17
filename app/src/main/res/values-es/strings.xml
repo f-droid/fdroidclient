@@ -536,7 +536,7 @@
     <string name="antinosource">El código fuente ya no está disponible</string>
     <string name="antinonfreead">Complementos no libres</string>
     <string name="antiupstreamnonfree">Original no libre</string>
-    <string name="antinonfreeassets">Recursos no gratuitos</string>
+    <string name="antinonfreeassets">Recursos no libres</string>
     <string name="antinonfreedep">Dependencias no libres</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
     <string name="antiothers">Otras características indeseables</string>
