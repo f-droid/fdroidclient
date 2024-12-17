@@ -600,4 +600,6 @@
     <string name="antitetherednet">Bağlı Ağ Hizmetleri</string>
     <string name="antitetherednetlist">Bu uygulama tamamen belirli bir ağ hizmetinin örneğine bağlıdır</string>
     <string name="swap_bluetooth_permissions">Lütfen Bluetooth veya Yakındaki Aygıtlar izni verin!</string>
+    <string name="menu_share_apk">APK dosyasını paylaş</string>
+    <string name="apk_permissions_mismatch">Uygulamanın beklenmeyen izni var: %s</string>
 </resources>
