@@ -1,15 +1,15 @@
-* Przebud. repo i obsługi kopii lustrz., zarówno UX, jak i kodu
+* Przegląd obsługi repozytoriów i mirrorów, zarówno pod kątem UX, jak i kodu.
 
-* Wyśw. podgl. nowych repo
+* Wyświetlanie podglądu nowych repozytoriów
 
-* Instal. przez F-Droid i F-Droid Basic obsług. teraz autom. aktualiz. w tle
+* Instalacja z F-Droid i F-Droid Basic obsługuje teraz automatyczne aktualizacje w tle
 
-* W Androidzie 14 oznacz. apek z nieobsług. wersją docel. pakietu SDK jako niezgodne #2692
+* Na Androidzie 14 oznacz aplikacje z nieobsługiwaną docelową wersją SDK jako niekompatybilne #2692
 
-* Długie naciśn., aby skop. linki, upraw. i wersje na ekranie szczeg. apki (@Tobias_Groza)
+* Długie kliknięcie w celu skopiowania linków, uprawnień i wersji na ekranie szczegółów aplikacji (@Tobias_Groza)
 
-* Wyśw. niekompatyb. apek tylko, gdy zezw. w Ustaw. #41 (@pigpig)
+* Niekompatybilne aplikacje są wyświetlane tylko wtedy, gdy jest to dozwolone w Ustawieniach #41 (@pigpig)
 
-* Nowe ustaw. bramek IPFS
+* Nowe ustawienia bram IPFS
 
-* Wybór języka dla poszczeg. apek (@Licaon-Kter)
+* Wybór języka dla aplikacji (@Licaon-Kter)

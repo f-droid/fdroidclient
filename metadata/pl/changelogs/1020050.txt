@@ -1,0 +1,13 @@
+* Zmiana sposobu przedstawiania repozytoriów użytkownikom, aby było jasne, kiedy instalacja pochodzi z innego miejsca niż f-droid.org.
+
+* Umożliwiono użytkownikom zmianę priorytetu repozytorium globalnie i dla poszczególnych aplikacji.
+
+* Niestandardowe anty-funkcje są teraz domyślnie włączone, a nie wyłączone.
+
+* Obsługa otrzymywania adresów URL repozytoriów za pośrednictwem Share
+
+* Wszystkie działania respektują motyw dnia/nocy
+
+* Zaktualizowano wykorzystanie zewnętrznej pamięci masowej do pracy z targetSdkVersion 29
+
+* F-Droid Basic zaktualizowany do pracy z targetSdkVersion 34
