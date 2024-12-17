@@ -385,7 +385,7 @@
     <string name="app_list__dismiss_app_update">Обновление игнорируется</string>
     <string name="app_list__dismiss_vulnerable_app">Уязвимость игнорируется</string>
     <string name="app_list__dismiss_downloading_app">Загрузка отменена</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно удалить это приложение.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Мы обнаружили уязвимость в %1$s. Подробнее читайте в разделе \"Антиуязвимости\".</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Обнаружена уязвимость в %1$s. Мы рекомендуем немедленно обновить приложение.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Игнорировать</string>
     <string name="privacy">Приватность</string>
