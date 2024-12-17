@@ -619,4 +619,8 @@
     <string name="repo_mirror_add_info">הכתובת שניסית להוסיף (%s) היא אתר מראה של מאגר קיים.</string>
     <string name="repo_and_mirror_add_both_info">הכתובת שניסית להוסיף (%s) היא אתר מראה של מאגר חדש. גם מאגר המקור וגם אתר המראה יתווספו.</string>
     <string name="auto_update_time">העדכון הבא המוקדם ביותר: %s</string>
+    <string name="antitetherednet">שירותי רשת קשורים</string>
+    <string name="antitetherednetlist">יישום זה תלוי לחלוטין במופע מסוים של שירות רשת</string>
+    <string name="auto_update_time_past">העדכון הבא כאשר התנאים יתקיימו</string>
+    <string name="swap_bluetooth_permissions">יש להעניק הרשאה ל-Bluetooth או להתקנים קרובים!</string>
 </resources>
