@@ -1,0 +1,3 @@
+* Novērsiet kļūda, kas neaizvāca lietotnes, kuras vairs nav pieejamas glabātuvēs, no indeksa krātuves (#568)
+
+* Daudz ātrāka indeksa atjaunināšana

@@ -1,0 +1,7 @@
+* Pievienoti vilkšanas žesti Atjauninājumi cilnei
+
+* Zināmo ievainojamību sadaļā zem Atjauninājumi cilnes tiek rādīti brīdinājumi ar darbību sarakstu
+
+* Atjaunināti tulkojumi
+
+* Tumšo motīvu labojumi

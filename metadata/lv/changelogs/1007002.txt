@@ -1,0 +1,1 @@
+* USB OTG zibatmiņas var izmantot kā lokālās glabātavas un spoguļus

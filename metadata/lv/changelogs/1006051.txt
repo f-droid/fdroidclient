@@ -1,0 +1,3 @@
+* Atjaunināti tulkojumi
+* Novērstas pogas izmēra problēmas #1678
+* Apturētas nejaušas fona avārijas

@@ -256,7 +256,7 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi tīklājs ir iespējots</string>
     <string name="swap_toast_using_path">Izmanto %1$s</string>
     <string name="not_visible_nearby">Mijmaiņa nav iespējota</string>
-    <string name="swap_connection_misc_error">Savienošanās ar ierīci laikā atgadījās kļūda, nevar apmainīties ar to.</string>
+    <string name="swap_connection_misc_error">Savienošanās laikā ar ierīci atgadījās kļūda, nevar apmainīties ar to.</string>
     <string name="use_bluetooth">Izmantot Bluetooth</string>
     <string name="swap_qr_isnt_for_swap">Nolasītais kvadrātkods neizskatās pēc mijmaiņas koda.</string>
     <string name="swap_confirm">Apstiprināt mijmaiņu</string>
@@ -268,7 +268,7 @@
     <string name="swap_setting_up_wifi">Iestata Wi-Fi…</string>
     <string name="swap_visible_wifi">Redzams ar Wi-Fi</string>
     <string name="swap_not_visible_bluetooth">Nav redzams ar Bluetooth</string>
-    <string name="swap_error_cannot_start_bluetooth">Nevar sāknēt Bluetooth.</string>
+    <string name="swap_error_cannot_start_bluetooth">Nevar palaist Bluetooth!</string>
     <string name="swap_setting_up_bluetooth">Iestata Bluetooth…</string>
     <string name="swap_visible_bluetooth">Redzams ar Bluetooth</string>
     <string name="swap_stopping">Aptur…</string>
@@ -514,7 +514,7 @@
     <string name="unsigned_description">Tas nozīmē, ka lietotņu sarakstu nevarēja apliecināt. Jābūt uzmanīgam ar lietotnēm, kas ir lejupielādētas no neparakstītiem indeksiem.</string>
     <string name="category_Nightly">Iknakts</string>
     <string name="nearby_splash__document_tree">Meklēt glabātavas un spoguļserverus USB OTG.</string>
-    <string name="swap_toast_not_removable_storage">Šī izvēle nesaskan ar nevienu no noņemamajām krātuvēm, jāmēģina vēlreiz.</string>
+    <string name="swap_toast_not_removable_storage">Šī izvēle nesaskan ar nevienu noņemamo krātuvi, jāmēģina vēlreiz!</string>
     <string name="swap_toast_find_removeable_storage">Jāizvēlas noņemama SD karte vai USB</string>
     <string name="swap_toast_invalid_url">Nederīgs mijmaiņas URL: %1$s</string>
     <plurals name="details_last_update_days">

@@ -1,0 +1,21 @@
+F-Droid ir 1.0!
+
+Šajā versijā realizētas daudzas būtiskas izmaiņas:
+
+* Pilnībā pārveidots atjaunināšanas process
+
+* Pilnībā tulkojami kopsavilkumi un apraksti
+
+* "Kas jauns" rāda pašreizējās versijas izmaiņas
+
+* Ekrānuzņēmumi un grafikas dizains
+
+* Atbalsta datu, OTA, ZIP u.c. failu uzstādīšanu
+
+* Uzlabota izsekošanas (HTTP ETag, TLS utt.) aizsardzība 
+
+* Pilnībā fona atjauninājumi ar priviliģēto paplašinājumu
+
+* Izceļ ziedojumus lietotņu izstrādātājiem
+
+* Daudz ātrāka indeksa atjaunināšana
