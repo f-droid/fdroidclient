@@ -602,4 +602,6 @@
     <string name="swap_bluetooth_permissions">Lütfen Bluetooth veya Yakındaki Aygıtlar izni verin!</string>
     <string name="menu_share_apk">APK dosyasını paylaş</string>
     <string name="apk_permissions_mismatch">Uygulamanın beklenmeyen izni var: %s</string>
+    <string name="preferForeign">Yabancı Yansıları Tercih Et</string>
+    <string name="preferForeignSummary">Önce bulunduğun ülkenin dışında bulunan yabancı yansıları dene, örn. yabancı güvenlikler daha güçlüyse.</string>
 </resources>

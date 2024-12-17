@@ -1,0 +1,14 @@
+NOT: F-Droid İstemcisinin Temel sürümünün düşürülmüş özellikleri mevcuttur (mesela nearby share ve panik özelliği yok). Android 13'ü hedef alır ve özel eklenti veya root gerektirmeden gözetimsiz güncellemeler yapabilir.
+F-Droid, Android için özgür yazılım uygulamalarının kurulabilir bir kataloğudur. F-Droid istemcisi, aygıtınızdaki güncellemelere göz atmayı, onları kurmayı ve izlemeyi kolaylaştırır.
+
+Herhangi bir F-Droid uyumlu depoya bağlanır. Öntanımlı depo, yalnızca iyi niyetli özgür yazılımları içeren f-droid.org adresidir.
+
+Android'in kendisi, APK'ları istediğiniz yerden kurmakta özgür olduğunuz anlamında açıktır. Ancak özgür yazılım uygulama yöneticisi olarak F-Droid'i kullanmanız için birçok iyi neden vardır:
+
+* Güncellemeler olduğunda bildirim alma
+* İsteğe bağlı güncellemeleri otomatik olarak indirme ve kurma
+* Eski ve beta sürümleri takip etme
+* Aygıt ile uyumlu olmayan uygulamaları filtreleme
+* Kategoriler ve aranabilir açıklamalar aracılığıyla uygulamaları bulma
+* Bağış, kaynak kod vb. projeyle ilgili bağlantılara kolayca erişme
+* Depo dizin imzalarını ve APK karmalarını kontrol ederek güvende kalın
