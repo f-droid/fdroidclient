@@ -602,4 +602,6 @@
     <string name="menu_share_apk">Jaa APK-tiedosto</string>
     <string name="apk_permissions_mismatch">Sovelluksella on odottamaton käyttöoikeus: %s</string>
     <string name="swap_bluetooth_permissions">Anna Bluetooth- tai Lähellä oleva laite -käyttöoikeus!</string>
+    <string name="preferForeign">Suosi ulkomaisia peilejä</string>
+    <string name="preferForeignSummary">Kokeile ensin peilejä, jotka sijaitsevat maasi ulkopuolella, esim. jos ulkomaiset suojat ovat vahvempia.</string>
 </resources>
