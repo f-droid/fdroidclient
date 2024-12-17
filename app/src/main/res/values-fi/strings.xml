@@ -600,4 +600,5 @@
     <string name="repo_and_mirror_add_both_info">URL, jota yrität lisätä (%s) on uuden tietovaraston peili. Sekä alkuperäinen tietovarasto että peili lisätään.</string>
     <string name="auto_update_time">Aikaisin seuraava päivitys: %s</string>
     <string name="antitetherednet">Jaettut verkkopalvelut</string>
+    <string name="menu_share_apk">Jaa APK-tiedosto</string>
 </resources>
