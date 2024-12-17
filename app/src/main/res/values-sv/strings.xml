@@ -316,8 +316,8 @@
     <string name="updates__hide_updateable_apps">Dölj appar</string>
     <string name="updates__show_updateable_apps">Visa appar</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Hämta uppdatering för %1$d app.</item>
-        <item quantity="other">Hämta uppdateringar för %1$d appar.</item>
+        <item quantity="one">Hämta uppdatering för %1$d app:</item>
+        <item quantity="other">Hämta uppdateringar för %1$d appar:</item>
     </plurals>
     <string name="details_new_in_version">Nyheter i versionen %s</string>
     <string name="antifeatureswarning">Denna app har funktioner som du kanske inte tycker om.</string>
@@ -515,7 +515,7 @@
     <string name="antinonfreeassets">Icke-fria tillgångar</string>
     <string name="antidisabledalgorithm">Signerad med en osäker algoritm</string>
     <string name="antiknownvuln">Känd sårbarhet</string>
-    <string name="app_list_results_hidden_antifeature_settings">Några resultat gömdes baserat på dina antifunktionsinställningar.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Några appar är dolda baserat på dina antifunktionsinställningar. Tryck för att ändra.</string>
     <string name="antinonfreead">Icke-fria tillägg</string>
     <string name="antinosource">Källkoden är inte längre tillgänglig</string>
     <string name="antitrack">Spårning</string>
@@ -575,5 +575,6 @@
     <string name="repo_view_repo">Visa filförråd</string>
     <string name="app_details_repository_button_prefer">Föredra förråd</string>
     <string name="app_details_repositories">Förråd</string>
-    <string name="app_details_repository_expand">Expandera lista över filförråd</string>
+    <string name="app_details_repository_expand">Expandera lista över förråd</string>
+    <string name="repo_share_not_found">Kunde inte hitta förrådsadress i delad text.</string>
 </resources>
