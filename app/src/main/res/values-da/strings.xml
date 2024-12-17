@@ -557,7 +557,7 @@
     <string name="targetsdk_or_later">mål %s</string>
     <string name="menu_share_apk">Del APK fil</string>
     <string name="auto_update_time_past">Næste opdatering når vilkårene er opfyldt</string>
-    <string name="antitetherednetlist">Denne app er fuldstændigt afhængig af en specifik instans af en internet tjeneste</string>
+    <string name="antitetherednetlist">Denne app er helt afhængig af en bestemt instans af en netværkstjeneste</string>
     <string tools:ignore="UnusedResources" name="category_Nightly">natlig</string>
     <string name="apk_permissions_mismatch">App har uventet tilladelse: %s</string>
     <string name="repo_invalid">Ugyldigt repository.\n\nKontakt vedligeholderen og informér dem om problemet.</string>
@@ -571,4 +571,23 @@
     <string name="repo_intro">Et repository er en yderligere kilde til apps. Tredjeparts repositorier som du tilføjer her har andre standarder end de der tilbyder apps bygget af F-Droid.\n\nVær sikker på, at du kan stole på det repository som du tilføjer.</string>
     <string name="ipfsgw_add_add">Tilføj</string>
     <string name="auto_update_time">Tidligste næste opdatering: %s</string>
+    <string name="ipfsgw_summary_disabled">Hent apps ved brug af IPFS web endpoints: deaktiveret</string>
+    <string name="ipfsgw_add_title">Tilføj IPFS-gateway</string>
+    <string name="antitetherednet">Bundne Netværkstjenester</string>
+    <string name="swap_bluetooth_permissions">Giv venligst tilladelse til Bluetooth eller Enheder i nærheden!</string>
+    <string name="repo_io_error">Fejl ved tilslutning til repositoriet.</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one"/>
+        <item quantity="other">Hent apps ved brug af IPFS web endpoints: %1$d aktiveret</item>
+    </plurals>
+    <string name="ipfsgw_title">IPFS-gateways</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid kan søge efter repos og mirrors på dit SD-kort, men kræver din tilladelse til at gøre det.</string>
+    <string name="repo_error_adding_archive">Arkiver kan ikke tilføjes direkte. Tryk på repositoriet på listen, og aktiver arkivet der.</string>
+    <string name="repo_share_not_found">Kunne ikke finde repo-adressen i den delte tekst.</string>
+    <string name="warning_no_compat_versions">Det valgte repository har ingen kompatible app-versioner. For at modtage opdateringer skal du vælge et repository med kompatible versioner.</string>
+    <string name="ipfsgw_caption_official_gateways">Officielle IPFS-gateways</string>
+    <string name="ipfsgw_caption_custom_gateways">Brugerdefinerede IPFS-gateways</string>
+    <string name="ipfsgw_explainer">Hent apps fra IPFS web endpoints. (Virker kun for F-Droid-repositories med IPFS-understøttelse.)</string>
+    <string name="preferForeign">Foretræk udenlandske mirrors</string>
+    <string name="preferForeignSummary">Prøv først mirrors, der ligger uden for dit land, f.eks. hvis udenlandsk beskyttelse er stærkere.</string>
 </resources>
