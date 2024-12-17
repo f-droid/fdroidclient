@@ -586,4 +586,5 @@
     <string name="repo_list_info_title">Lista över förråd</string>
     <string name="repo_archive_toggle_description">Visa arkiverade och föråldrade versioner av appar</string>
     <string name="repo_list_info_text">Ett förråd är en källa med appar. Den här listan visar alla nu tillagda förråd. Inaktiverade förråd används inte.\n\nOm en app finns i fler än ett förråd, kommer förrådet högre upp i listan föredras automatiskt. Du kan ändra ordningen genom att hålla in och dra för att flytta.</string>
+    <string name="repo_archive_failed">Filförrådets arkiv är för närvarande inte tillgängligt</string>
 </resources>
