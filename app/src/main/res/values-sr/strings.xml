@@ -612,4 +612,5 @@
     <string name="auto_update_time_past">Следеће ажурирање када се испуне услови</string>
     <string name="antitetherednetlist">Ова апликација у потпуности зависи од одређене инстанце мрежне услуге</string>
     <string name="antitetherednet">Непроменљиве мрежне услуге</string>
+    <string name="swap_bluetooth_permissions">Дајте дозволу за Bluetooth или уређаје у близини!</string>
 </resources>
