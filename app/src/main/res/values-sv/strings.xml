@@ -583,4 +583,5 @@
     <string name="menu_share_apk">Dela APK-fil</string>
     <string name="apk_permissions_mismatch">Appen har oväntade behörigheter: %s</string>
     <string name="repo_mirror_add_info">URL:en du försöker lägga till (%s) är en spegel av ett förråd som redan finns.</string>
+    <string name="repo_list_info_title">Filförrådslista</string>
 </resources>
