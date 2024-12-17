@@ -550,4 +550,7 @@
     <string name="repo_mirror_exists">Dette mirror er allerede tilføjet (%s).</string>
     <string name="repo_mirror_add_info">URL\'en, du forsøger at tilføje (%s), er et mirror af et eksisterende repository.</string>
     <string name="repo_and_mirror_add_both_info">URL\'en, du forsøger at tilføje (%s), er et mirror af et nyt repository. Både det originale repository og mirror bliver tilføjet.</string>
+    <string name="app_details_repository_preferred">(foretrækkes)</string>
+    <string name="app_details_repository_button_prefer">Fortrækker depot</string>
+    <string name="app_details_repository_expand">Udvid depot list</string>
 </resources>
