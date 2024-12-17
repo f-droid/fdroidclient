@@ -569,7 +569,7 @@
     <string name="useDnsCacheSummary">Käytä tuloksia välimuistista DNS-kyselyjen minimoimiseksi.</string>
     <string name="paste">Liitä</string>
     <string name="app_details_repository_preferred">(ensisijainen)</string>
-    <string name="app_details_repository_button_prefer">Käytä tietovarastoa</string>
+    <string name="app_details_repository_button_prefer">Aseta ensisijaiseksi</string>
     <string name="app_details_repository_expand">Laajenna tietovarastoluettelo</string>
     <string name="repo_list_info_text">Tietovarasto on sovellusten lähde. Tämä luettelo näyttää kaikki tällä hetkellä lisätyt tietovarastot. Poistettuja tietovarastoja ei käytetä.
 \n
