@@ -26,6 +26,7 @@ import org.fdroid.index.v1.IndexV1Updater
 import java.io.File
 
 private val TAG = RepoUpdateManager::class.java.simpleName
+private const val MIN_UPDATE_INTERVAL_MILLIS = 15_000
 
 class RepoUpdateManager @JvmOverloads constructor(
     private val context: Context,
@@ -76,6 +77,14 @@ class RepoUpdateManager @JvmOverloads constructor(
 
     @WorkerThread
     fun updateRepos() {
+        if (isUpdating.value) {
+            Log.w(TAG, "Already updating repositories: updateRepos()")
+        }
+        val timeSinceLastCheck = System.currentTimeMillis() - fdroidPrefs.lastUpdateCheck
+        if (timeSinceLastCheck < MIN_UPDATE_INTERVAL_MILLIS) {
+            Log.i(TAG, "Not updating, only $timeSinceLastCheck ms since last check.")
+            return
+        }
         _isUpdating.value = true
         try {
             var reposUpdated = false
@@ -122,6 +131,9 @@ class RepoUpdateManager @JvmOverloads constructor(
 
     @WorkerThread
     fun updateRepo(repoId: Long): IndexUpdateResult {
+        if (isUpdating.value) {
+            Log.w(TAG, "Already updating repositories: updateRepo($repoId)")
+        }
         val repo = repoManager.getRepository(repoId) ?: return IndexUpdateResult.NotFound
         _isUpdating.value = true
         try {
