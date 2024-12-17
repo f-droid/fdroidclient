@@ -32,7 +32,7 @@ android {
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        versionCode 1021050
+        versionCode 1022000
         versionName getVersionName()
         applicationId "org.fdroid"
 
