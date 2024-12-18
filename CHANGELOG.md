@@ -1,3 +1,21 @@
+### 1.22.0-alpha0 (2024-12-17)
+
+* use "gentle update" API so apps don't get killed while in use
+* experimental support for un-archiving apps on Android 15
+* separate share link and share file actions in app details
+* clean internal caches more often to free up space (Thanks DerGenaue!)
+* don't update repos if they already have been updated in last 15sec
+* re-order donation badges to match website (Thanks Leo!)
+* show toast when APK has more permissions than expected
+* add settings toggle to prefer foreign mirrors
+* verify hash of downloaded image resources and reject invalid ones
+* don't show apps with "bad" anti-features in category view
+* don't show error dialog for (un)installs when user actively aborted
+* don't update repos twice on fresh/clean app start
+* auto fallback to other installer if priv-ext doesn't have permissions
+* reduce DB size by checkpointing more frequently (Thanks DerGenaue!)
+* fix a crash when a repo removed
+
 ### 1.21.0 (2024-10-10)
 
 * Fix race conditions when repositories are updated at the same time
