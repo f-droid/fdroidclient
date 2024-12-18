@@ -336,9 +336,10 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                                     .build()
                     )
             );
-            if (isAcraProcess() || HidingManager.isHidden(this)) {
-                return;
-            }
+        }
+        if (isAcraProcess() || HidingManager.isHidden(this)) {
+            Log.i(TAG, "This is the ACRA process (or we are hidden), not starting...");
+            return;
         }
 
         // register broadcast receivers

@@ -23,6 +23,7 @@ package org.fdroid.fdroid.views;
 
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -296,7 +297,12 @@ public class AppDetailsActivity extends AppCompatActivity
             uriIntent.putExtra(Intent.EXTRA_TEXT, shareUri.toString());
 
             Intent chooserIntent = Intent.createChooser(uriIntent, getString(R.string.menu_share));
-            startActivity(chooserIntent);
+            try {
+                startActivity(chooserIntent);
+            } catch (ActivityNotFoundException ex) {
+                Toast.makeText(this, getString(R.string.no_handler_app, app.name),
+                        Toast.LENGTH_LONG).show();
+            }
             return true;
         } else if (item.getItemId() == R.id.action_share_apk) {
             // allow user to share APK if app is installed
@@ -305,7 +311,12 @@ public class AppDetailsActivity extends AppCompatActivity
             streamIntent.putExtra(Intent.EXTRA_TITLE, app.name + ".apk");
 
             Intent chooserIntent = Intent.createChooser(streamIntent, getString(R.string.menu_share));
-            startActivity(chooserIntent);
+            try {
+                startActivity(chooserIntent);
+            } catch (ActivityNotFoundException ex) {
+                Toast.makeText(this, getString(R.string.no_handler_app, app.name),
+                        Toast.LENGTH_LONG).show();
+            }
         } else if (item.getItemId() == R.id.action_ignore_all) {
             model.ignoreAllUpdates();
             return true;
