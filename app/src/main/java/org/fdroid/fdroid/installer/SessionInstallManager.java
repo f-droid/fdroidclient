@@ -121,6 +121,9 @@ public class SessionInstallManager extends BroadcastReceiver {
         params.setAppPackageName(app.packageName);
         params.setSize(size);
         params.setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            params.setInstallReason(PackageManager.INSTALL_REASON_USER);
+        }
         if (Build.VERSION.SDK_INT >= 31) {
             params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED);
         }
