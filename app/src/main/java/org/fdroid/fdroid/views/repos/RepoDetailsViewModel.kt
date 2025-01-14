@@ -7,6 +7,9 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,50 +24,60 @@ import org.fdroid.fdroid.R
 import org.fdroid.fdroid.work.RepoUpdateWorker
 
 data class RepoDetailsState(
-    val repo: Repository?,
-    val archiveEnabled: Boolean? = null,
+    val repo: Repository,
+    val archiveState: ArchiveState,
 )
 
-class RepoDetailsViewModel(app: Application) : AndroidViewModel(app) {
+enum class ArchiveState {
+    ENABLED,
+    DISABLED,
+    UNKNOWN,
+}
+
+class RepoDetailsViewModel(
+    app: Application,
+    initialRepo: Repository,
+) : AndroidViewModel(app) {
+
+    companion object {
+        // TODO: Use androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+        // That seems to require setting up dependency injection.
+        val APP_KEY = object : CreationExtras.Key<Application> {}
+        val REPO_KEY = object : CreationExtras.Key<Repository> {}
+        val Factory = viewModelFactory {
+            initializer {
+                val app = this[APP_KEY] as Application
+                val repo = this[REPO_KEY] as Repository
+                RepoDetailsViewModel(app, repo)
+            }
+        }
+    }
 
     private val repoManager = FDroidApp.getRepoManager(app)
-    private val _state = MutableStateFlow<RepoDetailsState?>(null)
+
+    private val _state = MutableStateFlow(
+        RepoDetailsState(initialRepo, initialRepo.archiveState())
+    )
     val state = _state.asStateFlow()
     val liveData = _state.asLiveData()
 
     val repoLiveData = combine(_state, repoManager.repositoriesState) { s, reposState ->
-        if (s?.repo == null) {
-            null
-        } else {
-            reposState.find { repo -> repo.repoId == s.repo.repoId }
-        }
+        reposState.find { repo -> repo.repoId == s.repo.repoId }
     }.distinctUntilChanged().asLiveData()
 
-    fun initRepo(repoId: Long) {
-        val repo = repoManager.getRepository(repoId)
-        if (repo == null) {
-            _state.value = RepoDetailsState(null)
-        } else {
-            _state.value = RepoDetailsState(
-                repo = repo,
-                archiveEnabled = repo.isArchiveEnabled(),
-            )
-        }
-    }
-
-    fun setArchiveRepoEnabled(repo: Repository, enabled: Boolean) {
-        // archiveEnabled = null means we don't know current state, it's in progress
-        _state.value = _state.value?.copy(archiveEnabled = null)
+    fun setArchiveRepoEnabled(enabled: Boolean) {
+        val repo = _state.value.repo
+        _state.value = _state.value.copy(archiveState = ArchiveState.UNKNOWN)
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
-                _state.value = _state.value?.copy(archiveEnabled = enabled)
+                _state.value = _state.value.copy(archiveState = enabled.toArchiveState())
                 if (enabled && repoId != null) withContext(Dispatchers.Main) {
                     RepoUpdateWorker.updateNow(getApplication(), repoId)
                 }
             } catch (e: Exception) {
                 Log.e(this.javaClass.simpleName, "Error toggling archive repo: ", e)
-                _state.value = _state.value?.copy(archiveEnabled = repo.isArchiveEnabled())
+                _state.value = _state.value.copy(archiveState = repo.archiveState())
                 withContext(Dispatchers.Main) {
                     Toast.makeText(getApplication(), R.string.repo_archive_failed, LENGTH_SHORT)
                         .show()
@@ -73,10 +86,18 @@ class RepoDetailsViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    private fun Repository.isArchiveEnabled(): Boolean {
-        return repoManager.getRepositories().find { r ->
+    private fun Repository.archiveState(): ArchiveState {
+        val isEnabled = repoManager.getRepositories().find { r ->
             r.isArchiveRepo && r.certificate == certificate
-        }?.enabled ?: false
+        }?.enabled
+        return when (isEnabled) {
+            true -> ArchiveState.ENABLED
+            false -> ArchiveState.DISABLED
+            null -> ArchiveState.UNKNOWN
+        }
     }
 
+    private fun Boolean.toArchiveState(): ArchiveState {
+        return if (this) ArchiveState.ENABLED else ArchiveState.DISABLED
+    }
 }

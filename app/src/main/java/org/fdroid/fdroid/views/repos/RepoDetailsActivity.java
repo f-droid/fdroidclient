@@ -30,6 +30,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.lifecycle.viewmodel.MutableCreationExtras;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -132,9 +134,22 @@ public class RepoDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
         fdroidApp.setSecureWindow(this);
-
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
-        model = new ViewModelProvider(this).get(RepoDetailsViewModel.class);
+
+        repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
+        repo = FDroidApp.getRepoManager(this).getRepository(repoId);
+        if (repo == null) {
+            // repo must have been deleted just now (maybe slow UI?)
+            finish();
+            return;
+        }
+
+        ViewModelStoreOwner owner = this;
+        ViewModelProvider.Factory factory = RepoDetailsViewModel.Companion.getFactory();
+        MutableCreationExtras extras = new MutableCreationExtras();
+        extras.set(RepoDetailsViewModel.Companion.getAPP_KEY(), getApplication());
+        extras.set(RepoDetailsViewModel.Companion.getREPO_KEY(), repo);
+        model = ViewModelProvider.create(owner, factory, extras).get(RepoDetailsViewModel.class);
         repositoryDao = DBHelper.getDb(this).getRepositoryDao();
         appDao = DBHelper.getDb(this).getAppDao();
 
@@ -147,15 +162,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         repoView = findViewById(R.id.repo_view);
-
-        repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
-        model.initRepo(repoId);
-        repo = FDroidApp.getRepoManager(this).getRepository(repoId);
-        if (repo == null) {
-            // repo must have been deleted just now (maybe slow UI?)
-            finish();
-            return;
-        }
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.getAddress());
@@ -206,15 +212,21 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
         MaterialSwitch archiveRepoSwitch = findViewById(R.id.archiveRepo);
         model.getLiveData().observe(this, s -> {
-            Boolean enabled = s.getArchiveEnabled();
-            if (enabled == null) {
-                archiveRepoSwitch.setEnabled(false);
-            } else {
-                archiveRepoSwitch.setEnabled(true);
-                archiveRepoSwitch.setChecked(enabled);
+            switch (s.getArchiveState()) {
+                case ENABLED:
+                    archiveRepoSwitch.setEnabled(true);
+                    archiveRepoSwitch.setChecked(true);
+                    break;
+                case DISABLED:
+                    archiveRepoSwitch.setEnabled(true);
+                    archiveRepoSwitch.setChecked(false);
+                    break;
+                case UNKNOWN:
+                    archiveRepoSwitch.setEnabled(false);
+                    break;
             }
         });
-        archiveRepoSwitch.setOnClickListener(v -> model.setArchiveRepoEnabled(repo, archiveRepoSwitch.isChecked()));
+        archiveRepoSwitch.setOnClickListener(v -> model.setArchiveRepoEnabled(archiveRepoSwitch.isChecked()));
     }
 
     @Override
