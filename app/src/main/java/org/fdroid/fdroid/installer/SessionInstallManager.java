@@ -121,7 +121,7 @@ public class SessionInstallManager extends BroadcastReceiver {
         params.setAppPackageName(app.packageName);
         params.setSize(size);
         params.setInstallLocation(PackageInfo.INSTALL_LOCATION_AUTO);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= 26) {
             params.setInstallReason(PackageManager.INSTALL_REASON_USER);
         }
         if (Build.VERSION.SDK_INT >= 31) {
@@ -142,6 +142,13 @@ public class SessionInstallManager extends BroadcastReceiver {
     }
 
     private boolean canUseInstallConstraints(String packageName) {
+        // We had too many complaints about gentle updates failing to update apps:
+        // * with running foreground services
+        // * used default keyboards
+        // * being media players
+        // So we'll disable this feature for now until it works properly.
+        if (true) return false;
+
         String ourPackageName = context.getPackageName();
         if (Build.VERSION.SDK_INT < 34 || packageName.equals(ourPackageName)) return false;
         try {
