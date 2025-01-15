@@ -111,10 +111,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private MirrorAdapter adapterToNotify;
 
     private RepoDetailsViewModel model;
-    // FIXME access to this could be moved into ViewModel
-    private RepositoryDao repositoryDao;
-    // FIXME access to this could be moved into ViewModel
-    private AppDao appDao;
     @Nullable
     private Disposable disposable;
 
@@ -150,8 +146,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         extras.set(RepoDetailsViewModel.Companion.getAPP_KEY(), getApplication());
         extras.set(RepoDetailsViewModel.Companion.getREPO_KEY(), repo);
         model = ViewModelProvider.create(owner, factory, extras).get(RepoDetailsViewModel.class);
-        repositoryDao = DBHelper.getDb(this).getRepositoryDao();
-        appDao = DBHelper.getDb(this).getAppDao();
 
         super.onCreate(savedInstanceState);
 
@@ -208,6 +202,12 @@ public class RepoDetailsActivity extends AppCompatActivity {
             }
             this.repo = repo;
             updateRepoView();
+        });
+
+        TextView numApps = repoView.findViewById(R.id.text_num_apps);
+        model.getNumberOfAppsLiveData().observe(this, number -> {
+            String countStr = String.format(LocaleCompat.getDefault(), "%d", number);
+            numApps.setText(countStr);
         });
 
         MaterialSwitch archiveRepoSwitch = findViewById(R.id.archiveRepo);
@@ -417,20 +417,11 @@ public class RepoDetailsActivity extends AppCompatActivity {
         setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.GONE);
 
         TextView name = repoView.findViewById(R.id.text_repo_name);
-        TextView numApps = repoView.findViewById(R.id.text_num_apps);
         TextView numAppsButton = repoView.findViewById(R.id.button_view_apps);
         TextView lastUpdated = repoView.findViewById(R.id.text_last_update);
         TextView lastDownloaded = repoView.findViewById(R.id.text_last_update_downloaded);
 
         name.setText(repo.getName(App.getLocales()));
-        // load number of apps in repo
-        disposable = Single.fromCallable(() -> appDao.getNumberOfAppsInRepository(repoId))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(appCount -> {
-                    String countStr = String.format(LocaleCompat.getDefault(), "%d", appCount);
-                    numApps.setText(countStr);
-                });
         if (repo.getEnabled()) {
             numAppsButton.setOnClickListener(view -> {
                 Intent i = new Intent(this, AppListActivity.class);
@@ -469,10 +460,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 .setTitle(R.string.repo_confirm_delete_title)
                 .setMessage(R.string.repo_confirm_delete_body)
                 .setPositiveButton(R.string.delete, (dialog, which) -> {
-                    runOffUiThread(() -> {
-                        repositoryDao.deleteRepository(repoId);
-                        return true;
-                    });
+                    model.deleteRepository();
                     finish();
                 }).setNegativeButton(android.R.string.cancel, (dialog, which) -> {
                             // Do nothing...
@@ -502,10 +490,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
                     final String password = passwordInput.getText().toString();
 
                     if (!TextUtils.isEmpty(name)) {
-                        runOffUiThread(() -> {
-                            repositoryDao.updateUsernameAndPassword(repo.getRepoId(), name, password);
-                            return true;
-                        });
+                        model.updateUsernameAndPassword(name, password);
                         updateRepoView();
                         dialog.dismiss();
                     } else {
@@ -589,10 +574,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
                     adapterToNotify.notifyDataSetChanged();
                 }
                 ArrayList<String> toDisableMirrors = new ArrayList<>(disabledMirrors);
-                runOffUiThread(() -> {
-                    repositoryDao.updateDisabledMirrors(repo.getRepoId(), toDisableMirrors);
-                    return true;
-                });
+                model.updateDisabledMirrors(toDisableMirrors);
             });
 
             View repoUnverified = holder.view.findViewById(R.id.repo_unverified);

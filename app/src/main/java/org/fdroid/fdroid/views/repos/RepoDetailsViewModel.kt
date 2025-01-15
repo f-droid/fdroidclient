@@ -12,15 +12,19 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
+import org.fdroid.fdroid.data.DBHelper
 import org.fdroid.fdroid.work.RepoUpdateWorker
 
 data class RepoDetailsState(
@@ -54,6 +58,8 @@ class RepoDetailsViewModel(
     }
 
     private val repoManager = FDroidApp.getRepoManager(app)
+    private val repositoryDao = DBHelper.getDb(app).getRepositoryDao()
+    private val appDao = DBHelper.getDb(app).getAppDao()
 
     private val _state = MutableStateFlow(
         RepoDetailsState(initialRepo, initialRepo.archiveState())
@@ -61,9 +67,17 @@ class RepoDetailsViewModel(
     val state = _state.asStateFlow()
     val liveData = _state.asLiveData()
 
-    val repoLiveData = combine(_state, repoManager.repositoriesState) { s, reposState ->
+    val repoFlow = combine(_state, repoManager.repositoriesState) { s, reposState ->
         reposState.find { repo -> repo.repoId == s.repo.repoId }
-    }.distinctUntilChanged().asLiveData()
+    }.distinctUntilChanged()
+    val repoLiveData = repoFlow.asLiveData()
+
+    val numberAppsFlow: Flow<Int> = repoFlow.map { repo ->
+        if (repo != null) {
+            appDao.getNumberOfAppsInRepository(repo.repoId)
+        } else 0
+    }.flowOn(Dispatchers.IO).distinctUntilChanged()
+    val numberOfAppsLiveData = numberAppsFlow.asLiveData()
 
     fun setArchiveRepoEnabled(enabled: Boolean) {
         val repo = _state.value.repo
@@ -83,6 +97,27 @@ class RepoDetailsViewModel(
                         .show()
                 }
             }
+        }
+    }
+
+    fun deleteRepository() {
+        val repoId = _state.value.repo.repoId
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryDao.deleteRepository(repoId)
+        }
+    }
+
+    fun updateUsernameAndPassword(username: String, password: String) {
+        val repoId = _state.value.repo.repoId
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryDao.updateUsernameAndPassword(repoId, username, password)
+        }
+    }
+
+    fun updateDisabledMirrors(toDisable: List<String>) {
+        val repoId = _state.value.repo.repoId
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryDao.updateDisabledMirrors(repoId, toDisable)
         }
     }
 
