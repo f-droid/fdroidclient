@@ -1,5 +1,8 @@
 package org.fdroid.database
 
+import android.net.Uri
+import android.util.Log
+import androidx.annotation.WorkerThread
 import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -18,6 +21,8 @@ import org.fdroid.index.v2.LocalizedTextV2
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
+
+private const val TAG = "Repository"
 
 @Entity(tableName = CoreRepository.TABLE)
 internal data class CoreRepository(
@@ -214,6 +219,20 @@ public data class Repository internal constructor(
             add(0, org.fdroid.download.Mirror(address))
         }
     }
+
+    val shareUri: String
+        @WorkerThread
+        get() {
+            var uri = Uri.parse(address)
+            fingerprint?.let {
+                try {
+                    uri = uri.buildUpon().appendQueryParameter("fingerprint", it).build()
+                } catch (e: UnsupportedOperationException) {
+                    Log.e(TAG, "Failed to append fingerprint to URI: $e")
+                }
+            }
+            return uri.toString()
+        }
 }
 
 /**

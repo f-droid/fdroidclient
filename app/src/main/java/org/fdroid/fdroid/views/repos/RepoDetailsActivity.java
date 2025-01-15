@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
@@ -40,27 +38,18 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.fdroid.database.AppDao;
 import org.fdroid.database.Repository;
-import org.fdroid.database.RepositoryDao;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.Callable;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class RepoDetailsActivity extends AppCompatActivity {
     private static final String TAG = "RepoDetailsActivity";
@@ -106,13 +95,10 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private Repository repo;
     private long repoId;
     private View repoView;
-    private String shareUrl;
 
     private MirrorAdapter adapterToNotify;
 
     private RepoDetailsViewModel model;
-    @Nullable
-    private Disposable disposable;
 
     /**
      * Help function to make switching between two view states easier.
@@ -171,28 +157,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         userMirrorAdapter.setUserMirrors(repo.getUserMirrors());
         userMirrorListView.setAdapter(userMirrorAdapter);
 
-        if (repo.getAddress().startsWith("content://") || repo.getAddress().startsWith("file://")) {
-            // no need to show a QR Code, it is not shareable
-            return;
-        }
-
-        Uri uri = Uri.parse(repo.getAddress());
-        try {
-            if (repo.getFingerprint() != null) {
-                uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.getFingerprint()).build();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Invalid repo fingerprint: " + repo.getAddress());
-        }
-        String qrUriString = uri.toString();
-        disposable = Utils.generateQrBitmap(this, qrUriString)
-                .subscribe(bitmap -> {
-                    final ImageView qrCode = findViewById(R.id.qr_code);
-                    if (qrCode != null) {
-                        qrCode.setImageBitmap(bitmap);
-                    }
-                });
-
         // update UI when repo in DB changes
         model.getRepoLiveData().observe(this, repo -> {
             if (repo == null) {
@@ -227,12 +191,14 @@ public class RepoDetailsActivity extends AppCompatActivity {
             }
         });
         archiveRepoSwitch.setOnClickListener(v -> model.setArchiveRepoEnabled(archiveRepoSwitch.isChecked()));
-    }
 
-    @Override
-    protected void onDestroy() {
-        if (disposable != null) disposable.dispose();
-        super.onDestroy();
+        ImageView qrCode = findViewById(R.id.qr_code);
+        model.getQrCodeLiveData().observe(this, bitmap -> {
+            if (qrCode != null) {
+                qrCode.setImageBitmap(bitmap);
+            }
+        });
+        model.generateQrCode(this);
     }
 
     @Override
@@ -291,37 +257,12 @@ public class RepoDetailsActivity extends AppCompatActivity {
         } else if (itemId == R.id.action_share) {
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
+            intent.putExtra(Intent.EXTRA_TEXT, repo.getShareUri());
             startActivity(Intent.createChooser(intent,
                     getResources().getString(R.string.share_repository)));
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        prepareShareMenuItems(menu);
-        return true;
-    }
-
-    private void prepareShareMenuItems(Menu menu) {
-        if (!TextUtils.isEmpty(repo.getAddress())) {
-            if (!TextUtils.isEmpty(repo.getCertificate())) {
-                try {
-                    shareUrl = Uri.parse(repo.getAddress()).buildUpon()
-                            .appendQueryParameter("fingerprint", repo.getFingerprint()).toString();
-                } catch (Exception e) {
-                    Log.e(TAG, "Invalid repo fingerprint: " + repo.getAddress());
-                    shareUrl = repo.getAddress();
-                }
-            } else {
-                shareUrl = repo.getAddress();
-            }
-            menu.findItem(R.id.action_share).setVisible(true);
-        } else {
-            menu.findItem(R.id.action_share).setVisible(false);
-        }
     }
 
     private void setupDescription(View parent, Repository repo) {
@@ -591,12 +532,5 @@ public class RepoDetailsActivity extends AppCompatActivity {
             }
             return mirrors.size();
         }
-    }
-
-    private void runOffUiThread(Callable<?> r) {
-        disposable = Single.fromCallable(r)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
     }
 }

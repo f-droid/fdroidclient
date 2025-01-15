@@ -1,10 +1,13 @@
 package org.fdroid.fdroid.views.repos
 
 import android.app.Application
+import android.graphics.Bitmap
 import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -25,6 +28,7 @@ import org.fdroid.database.Repository
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.data.DBHelper
+import org.fdroid.fdroid.generateQrBitmapKt
 import org.fdroid.fdroid.work.RepoUpdateWorker
 
 data class RepoDetailsState(
@@ -78,6 +82,8 @@ class RepoDetailsViewModel(
         } else 0
     }.flowOn(Dispatchers.IO).distinctUntilChanged()
     val numberOfAppsLiveData = numberAppsFlow.asLiveData()
+
+    val qrCodeLiveData = MutableLiveData<Bitmap?>(null)
 
     fun setArchiveRepoEnabled(enabled: Boolean) {
         val repo = _state.value.repo
@@ -134,5 +140,21 @@ class RepoDetailsViewModel(
 
     private fun Boolean.toArchiveState(): ArchiveState {
         return if (this) ArchiveState.ENABLED else ArchiveState.DISABLED
+    }
+
+    // TODO: initialise this once on ViewModel creation, and don't take an Activity, do fixed size
+    fun generateQrCode(activity: AppCompatActivity) {
+        val repo = _state.value.repo
+        if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
+            // no need to show a QR Code, it is not shareable
+            qrCodeLiveData.value = null
+            return
+        }
+        viewModelScope.launch(Dispatchers.Default) {
+            val bitmap = generateQrBitmapKt(activity, repo.shareUri)
+            withContext(Dispatchers.Main) {
+                qrCodeLiveData.value = bitmap
+            }
+        }
     }
 }
