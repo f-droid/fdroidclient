@@ -320,10 +320,10 @@
     <string name="updates__hide_updateable_apps">Схаваць праграмы</string>
     <string name="updates__show_updateable_apps">Паказаць праграмы</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Спампаваць абнаўленне для %1$d праграмы.</item>
-        <item quantity="few">Спампаваць абнаўленні для %1$d праграм.</item>
-        <item quantity="many">Спампаваць абнаўленні для %1$d праграм.</item>
-        <item quantity="other">Спампаваць абнаўленні для %1$d праграм.</item>
+        <item quantity="one">Спампаваць абнаўленне для %1$d праграмы:</item>
+        <item quantity="few">Спампаваць абнаўленні для %1$d праграм:</item>
+        <item quantity="many">Спампаваць абнаўленні для %1$d праграм:</item>
+        <item quantity="other">Спампаваць абнаўленні для %1$d праграм:</item>
     </plurals>
     <string name="details_new_in_version">Новае ў версіі %s</string>
     <string name="antifeatures">Непажаданыя функцыі</string>
@@ -441,8 +441,8 @@
     <string name="repo_exists_add_mirror">Гэта копія %1$s, дадаць як люстэрка\?</string>
     <string name="repo_official_mirrors">Афіцыйныя люстэркі</string>
     <string name="repo_user_mirrors">Люстэркі карыстальніка</string>
-    <string name="show_anti_feature_apps">Паказваць праграмы з непажаданымі функцыямі</string>
-    <string name="show_anti_feature_apps_on">Паказваць праграмы, якія маюць непажаданыя функцыі</string>
+    <string name="show_anti_feature_apps">Дазволіць праграмы з анты-функцыямі</string>
+    <string name="show_anti_feature_apps_on">Паказваць праграмы, з вядомымі Анты-Функцыямі</string>
     <string name="use_bluetooth">Выкарыстаць Bluetooth</string>
     <string name="swap_toast_invalid_url">Хібны URL для абмену: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Пункт доступу Wi-Fi уключаны</string>
@@ -463,7 +463,7 @@
     <string name="prompt_to_send_crash_reports">Запыт на адпраўленне справаздач пра хібы</string>
     <string name="prompt_to_send_crash_reports_summary">Збор інфармацыі пра хібы і запыт на адпраўленне яе распрацоўшчыку</string>
     <string name="share_repository">Падзяліцца рэпазіторыям</string>
-    <string name="antinosourcesince">Зыходны код больш не даступны — абнаўляць немагчыма.</string>
+    <string name="antinosourcesince">Зыходны код больш недаступны, абнаўленні немагчымыя</string>
     <string name="send_install_history">Адправіць гісторыю ўсталёвак</string>
     <string name="send_history_csv">%s гісторыя ўсталёвак як CSV-файл</string>
     <string name="updates_disabled_by_settings">Усе абнаўленні выключаныя ў наладах перадачы даных</string>
@@ -512,7 +512,7 @@
     <string name="notification_channel_installs_description">Паказвае апавяшчэнні пра ўсталёўку праграмы.</string>
     <string name="notification_channel_installs_title">Усталёўкі</string>
     <string name="menu_opencollective">OpenCollective</string>
-    <string name="app_list_results_hidden_antifeature_settings">Некаторыя вынікі пошуку былі схаваныя з-за адключаных налад звязаных з анты-функцыямі.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Некаторыя праграмы схаваны зыходзячы з налад Анты-Функцый. Націсніце, каб змяніць.</string>
     <string name="theme_follow_system">Пераймаць у сістэмы</string>
     <string name="send_to_fdroid_metrics">Адпраўляць данныя аб выкарыстанні</string>
     <string name="send_to_fdroid_metrics_summary">Адпраўляе ананімныя данныя аб выкарыстанні F-Droid (патрабуе Утрымліваць гісторыю ўсталёвак)</string>
@@ -524,7 +524,7 @@
     <string name="swap_wifi_vpn_conflict">Канфліктуе з актыўным VPN!</string>
     <string name="antitrack">Сачэнне</string>
     <string name="antiknownvuln">Вядомая Ўразлівасць Бяспекі</string>
-    <string name="antiothers">Другія Анты Функцыі</string>
+    <string name="antiothers">Іншыя Анты-Функцыі</string>
     <string name="banner_no_internet">Няма Сеткі</string>
     <string name="latest__empty_state__upgrading">Абнаўленне базы дадзеных…</string>
     <string name="banner_no_data_or_wifi">Не уключанны \"Дадзеныя\" або WiFi</string>
@@ -557,7 +557,7 @@
     <string name="repo_invalid">Неіснуючы рэпазіторый.
 \n
 \nЗ\'яднайцеся з адміністратарам рэпазіторыя і паведаміце яму пра памылку.</string>
-    <string name="repo_exists">Гэты рэпазіторый ужо існуе.</string>
+    <string name="repo_exists">Гэты рэпазітар ужо быў дададзены.</string>
     <string name="repo_add_new_title">Дадаць рэпазіторый</string>
     <string name="repo_state_fetching">Атрыманне рэпазіторыя…</string>
     <string name="repo_io_error">Памылка падключэння да рэпазіторыя.</string>
@@ -572,9 +572,55 @@
     <string name="swap_connection_indexv0_error">Вы спрабуеце падлучыцца да карыстальніка застарэлай версіяй F-Droid. Каб падлучыцца ён павінен абнавіць яго праграмму F-Droid. Ён можа выкарыстаць прагортванне каб абнавіць яго F-Droid праграмму праз вас.</string>
     <string name="copied_to_clipboard">Скапіравана ў буфер абмену</string>
     <string name="force_old_installer_title">Прымусова выкарыстоўваць стары ўсталёўшчык</string>
-    <string name="force_old_installer_summary">Адключыць бэта-версію ўсталёўшчыка сеанса, уключаючы падтрымку аўтаматычнага фонавага абнаўлення.</string>
+    <string name="force_old_installer_summary">Адключыць сесійны ўсталёўшчык, у тым ліку падтрымку аўтаматычных фонавых абнаўленняў.</string>
     <string name="copied_permission_to_clipboard">Назва дазволу скапіравана ў буфер абмену</string>
     <string name="copied_url_to_clipboard">URL скапіраваны ў буфер абмену</string>
     <string name="targetsdk_or_later">мэты %s</string>
     <string name="repo_num_apps_button">Паказаць праграмы</string>
+    <string name="antitetherednet">Нязменныя сеткавыя сэрвісы</string>
+    <string name="antitetherednetlist">Гэта праграма цалкам залежыць ад пэўнага сеткавага сэрвісу</string>
+    <string name="repo_disable_warning_button">Адключыць</string>
+    <string name="auto_update_time_past">Наступнае абнаўленне: калі ўмовы будуць задаволены</string>
+    <string name="paste">Уставіць</string>
+    <string name="ipfsgw_explainer">Загружаць праграмы з канчатковых вэб-кропак IPFS. (Працуе толькі для рэпазітараў F-Droid, якія падтрымліваюць IPFS.)</string>
+    <string name="ipfsgw_caption_official_gateways">Афіцыйныя шлюзы IPFS</string>
+    <string name="app_details_repository">Рэпазітар</string>
+    <string name="app_details_repositories">Рэпазітары</string>
+    <string name="app_details_repository_button_prefer">Рэкамендаваны рэпазітар</string>
+    <string name="app_details_repository_expand">Разгарнуць спіс рэпазітараў</string>
+    <string name="repo_error_adding_archive">Архіўныя рэпазітары не могуць быць дададзены напрамую. Націсніце на рэпазітар са спісу і ўключыце ў ім архіў.</string>
+    <string name="repo_archive_toggle_description">Адлюстроўваць архіўныя і састарэлыя версіі праграм</string>
+    <string name="repo_archive_toggle">Архіў рэпазітара</string>
+    <string name="repo_disable_warning">Адключэнне гэтага рэпазітара выдаліць яго статус «пераважны» з усіх праграм.</string>
+    <string name="ipfsgw_title">IPFS-шлюзы</string>
+    <string name="ipfsgw_add_title">Дадаць шлюз IPFS</string>
+    <string name="ipfsgw_add_add">Дадаць</string>
+    <string name="repo_add_repo_and_mirror">Дадаць рэпазітар і люстэрка</string>
+    <string name="repo_view_repo">Паглядзець рэпазітар</string>
+    <string name="repo_scan_qr_code">Сканаваць QR-код</string>
+    <string name="repo_preview_included_apps">Уключаныя праграмы:</string>
+    <string name="repo_mirror_exists">Гэтае люстэрка ўжо было дададзена (%s).</string>
+    <string name="repositories_last_update">Апошняе абнаўленне: %s</string>
+    <string name="repositories_last_update_never">ніколі</string>
+    <string name="repo_list_info_title">Спіс рэпазітараў</string>
+    <string name="app_list_no_suggested_version">Няма рэкамендаванай для ўстаноўкі версіі.</string>
+    <string name="useDnsCache">Выкарыстоўваць кэш DNS</string>
+    <string name="useDnsCacheSummary">Выкарыстоўваць кэш для мінімізацыі запытаў DNS.</string>
+    <string name="auto_update_time">Бліжэйшае наступнае абнаўленне: %s</string>
+    <string name="ipfsgw_caption_custom_gateways">Карыстальніцкія шлюзы IPFS</string>
+    <string name="app_details_repository_preferred">(абраны)</string>
+    <string name="repo_mirror_add_info">URL, які вы спрабуеце дадаць (%s) з\'яўляецца люстэркам існуючага рэпазітара.</string>
+    <string name="repo_share_not_found">Не ўдалося знайсці адрас рэпазітара ў агульным тэксце.</string>
+    <string name="repo_and_mirror_add_both_info">URL, які вы спрабуеце дадаць (%s) з\'яўляецца люстэркам новага рэпазітара. Будуць дададзены арыгінальны рэпазітар і люстэрка.</string>
+    <string name="repo_archive_failed">Архіўны рэпазітар зараз недаступны</string>
+    <string name="repo_list_info_text">Рэпазітар - гэта крыніца праграм. У гэтым спісе адлюстроўваюцца ўсе дададзеныя рэпазітары. Адключаныя рэпазітары не выкарыстоўваюцца.\n\nКалі праграма знаходзіцца ў некалькіх рэпазітарах, перавага аўтаматычна аддаецца рэпазітару, размешчанага вышэй у спісе. Змяніць парадак рэпазітароў можна доўгім націскам і перацягваннем.</string>
+    <string name="swap_bluetooth_permissions">Калі ласка, дайце дазвол на доступ да Bluetooth або да прылад паблізу!</string>
+    <string name="warning_no_compat_versions">У абраным рэпазітары няма сумяшчальных версій праграм. Каб атрымліваць абнаўленні, выбірайце рэпазітар з сумяшчальнымі версіямі.</string>
+    <string name="ipfsgw_summary_disabled">Загрузка праграм з канчатковых вэб-кропак IPFS адключаная</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Загрузка праграм з %1$d канчатковай вэб-кропкі IPFS уключана</item>
+        <item quantity="few">Загрузка праграм з %1$d канчатковых вэб-кропак IPFS уключана</item>
+        <item quantity="many">Загрузка праграм з %1$d канчатковых вэб-кропак IPFS уключана</item>
+        <item quantity="other">Загрузка праграм з %1$d канчатковых вэб-кропак IPFS уключана</item>
+    </plurals>
 </resources>
