@@ -10,4 +10,4 @@
 
 * Afegeix dipòsits a través de additionalrerepos.xml integrat de ROM, OEM, proveïdor.
 
-*  Mostra la versió del codi a les entrades de la llista de versions expandides en mode expert
+* Mostra la versió del codi a les entrades de la llista de versions expandides en mode expert

@@ -1,11 +1,8 @@
-* Actualitzador de dipòsit reescrit per a fer més fiables les actualitzacions en segon pla
-* Divideix el nom i el resum a les llistes d'aplicacions per a una millor llegibilitat
-* Mostra un avís quan les aplicacions no es poden actualitzar des del repositori preferit
-* Les aplicacions dirigides a SDK 24 són incompatibles amb els dispositius Android 15
-* Gestionar millor els miralls a la previsualització "Afegeix un dipòsit" (Gràcies Thore!)
-* Activa les actualitzacions desateses de les aplicacions als dispositius Xiaomi que no executin el MIUI (Gràcies Irate!)
-* Confia en els certificats arrel afegits per l'usuari (Gràcies B!)
-* Corregeix la cerca sense distingir majúscules i minúscules que conté diacrítics (Gràcies a Tobias!)
-* Actualitza les descripcions característiques no adients (Gràcies Licaon!)
-* Afegeix característiques no adients de xarxa amb tethered (Gràcies linsui!)
-* Ignora els espais en blanc quan s'afegeixen repositoris de miralls (Gràcies a Tobias!)
+* utilitza l'API d'«actualització suau» perquè les aplicacions no es matin mentre s'utilitzen
+* suport experimental per a desarxivar aplicacions a Android 15
+* compartiu l'enllaç i compartiu accions de fitxer en els detalls de l'aplicació
+* mostra el torrat quan APK tingui més permisos dels esperats
+* neteja les memòries cau internes més sovint per alliberar espai (Gràcies DerGenaue!)
+* reordenar insígnies de donació per coincidir amb el lloc web (Gràcies Leo!)
+* afegeix la configuració per commutar per preferir miralls estrangers
+* moltes correccions d'errors petites
