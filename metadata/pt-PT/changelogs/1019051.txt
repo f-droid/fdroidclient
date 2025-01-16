@@ -10,6 +10,6 @@
 
 * Aplicações incompatíveis só aparecem se permitido nas Definições #41 (@pigpig)
 
-* Novas configurações de gateways IPFS
+* Novas definições de gateways IPFS
 
 * Seleção de idioma por aplicação (@Licaon-Kter)
