@@ -1,11 +1,8 @@
-* Nuashonróir repo athscríofa chun nuashonruithe cúlra a dhéanamh níos iontaofa
-* Roinn an t-ainm agus an achoimre i liostaí aipeanna le haghaidh inléiteacht níos fearr
-* Taispeáin rabhadh nuair nach féidir apps a nuashonrú ón repo roghnaithe
-* Níl feidhmchláir atá dírithe ar SDK 24 ag luí le feistí Android 15
-* Láimhseáil scátháin sa réamhamharc "Add repo" níos fearr (Go raibh maith agat Thore!)
-* Cumasaigh nuashonruithe aipeanna gan duine ar ghléasanna Xiaomi nach bhfuil ag rith MIUI (Go raibh maith Irate!)
-* Cuir muinín as bunteastais úsáideora (Go raibh maith agat B.!)
-* Deisigh cuardach cás-neamhíogair ina bhfuil diacritics (Go raibh maith agat Tobias!)
-* Nuashonraigh tuairiscí frithghné (Go raibh maith agat Licaon!)
-* Cuir frithghné glan teannta leis (Go raibh maith agat linsui!)
-* Déan neamhaird de spásanna bána agus stórtha scátháin á gcur leis (Go raibh maith agat Tobias!)
+* Úsáid API "gentle update" chun apps a chosc ó mharú agus iad in úsáid  
+* Tacaíocht turgnamhach d’aips a dhí-stóráil ar Android 15
+* Scar na gníomhartha "roinn nasc" agus "roinn comhad"
+* Taispeáin fógra nuair a bhíonn níos mó ceadanna ag APK ná mar a bhíothas ag súil  
+* Glan taisce inmheánach níos minice (Go raibh maith agat DerGenaue!)
+* Athordaigh suaitheantais síntiús (Go raibh maith agat Leo!)
+* Cuir lasc le haghaidh scátháin eachtrannacha 
+* Socraíodh fabhtanna beaga
