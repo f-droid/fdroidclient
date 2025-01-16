@@ -64,7 +64,7 @@
     <string name="antiadslist">โปรแกรมนี้มีโฆษณา</string>
     <string name="antitracklist">แอปนี้ติดตามและรายงานกิจกรรมของคุณ</string>
     <string name="antinonfreeadlist">โปรแกรมนี้สนับสนุนส่วนขยายที่ไม่เสรี</string>
-    <string name="antinonfreenetlist">แอพนี้ส่งเสริมหรือขึ้นอยู่กับบริการเครือข่ายที่ไม่ฟรีทั้งหมด</string>
+    <string name="antinonfreenetlist">แอพนี้ส่งเสริมหรือขึ้นอยู่กับบริการเครือข่ายที่ไม่สามารถเปลี่ยนแปลงได้หรือไม่ฟรี</string>
     <string name="antinonfreedeplist">แอปนี้ขึ้นอยู่กับแอปอื่นๆ ที่ไม่ฟรี</string>
     <string name="antiupstreamnonfreelist">ซอร์สโค้ดต้นฉบับมีบางส่วนที่ไม่ฟรี</string>
     <string name="antinonfreeassetslist">แอพนี้มีเนื้อหาที่ไม่ฟรี</string>
@@ -225,7 +225,7 @@
     <string name="swap_qr_isnt_for_swap">คิวอาร์โค้ด ที่คุณสแกนดูไม่เหมือนโค้ดสลับ</string>
     <string name="perms_description_app">จัดให้โดย %1$s</string>
     <string name="swap_cant_find_peers">ไม่พบคนที่คุณกำลังมองหา\?</string>
-    <string name="swap_nearby">กำลังค้นหาคนใกล้ๆ…</string>
+    <string name="swap_nearby">สวอปใกล้เคียง</string>
     <string name="swap_scan_or_type_url">คนหนึ่งต้องสแกนโค้ดหรือพิมพ์ URL ของอีกคนในเบราว์เซอร์</string>
     <string name="swap_active_hotspot">%1$s (ฮอตสปอตของคุณ)</string>
     <string name="swap_join_this_hotspot">ช่วยให้เพื่อนของคุณเข้าร่วมฮอตสปอตของคุณ</string>
@@ -298,7 +298,7 @@
     <string name="repo_add_mirror">เพิ่มแหล่งข้อมูล</string>
     <string name="updates_disabled_by_settings">การอัปเดตทั้งหมดถูกปิดใช้งานโดยการตั้ง ค่าข้อมูล/WiFi</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">ดาวน์โหลดการอัปเดตสำหรับแอป %1$d</item>
+        <item quantity="other">ดาวน์โหลดการอัปเดตสำหรับ %1$d แอป:</item>
     </plurals>
     <string name="updates__show_updateable_apps">เเสดงเเอพ</string>
     <string name="updates__hide_updateable_apps">ซ่อนเเอพ</string>
@@ -545,4 +545,37 @@
     <string name="copied_permission_to_clipboard">คัดลอก ชื่อการอนุมัติ ไปยัง คลิปบอร์ด แล้ว</string>
     <string name="copied_url_to_clipboard">คัดลอก URL ไปยังคลิปบอร์ดแล้ว</string>
     <string name="repo_num_apps_button">แสดง แอพพลิเคชั่น</string>
+    <string name="app_details_repository">พื้นที่เก็บข้อมูล</string>
+    <string name="app_details_repository_expand">ขยายรายการพื้นที่เก็บข้อมูล</string>
+    <string name="useDnsCacheSummary">ใช้ผลลัพธ์ที่แคชไว้เพื่อลดการสืบค้น DNS</string>
+    <string name="repo_list_info_title">รายการพื้นที่เก็บข้อมูล</string>
+    <string name="repo_archive_toggle">ที่เก็บถาวร</string>
+    <string name="repo_archive_failed">ที่เก็บถาวรไม่พร้อมใช้งานในขณะนี้</string>
+    <string name="repo_disable_warning">การปิดใช้งานที่เก็บนี้จะลบสถานะ \"ที่ต้องการ\" ออกจากแอปทั้งหมด</string>
+    <string name="repo_disable_warning_button">ปิดการใช้งาน</string>
+    <string name="paste">แปะ</string>
+    <string name="ipfsgw_caption_custom_gateways">เกตเวย์ IPFS แบบกำหนดเอง</string>
+    <string name="ipfsgw_add_add">เพิ่ม</string>
+    <string name="ipfsgw_caption_official_gateways">เกตเวย์ IPFS อย่างเป็นทางการ</string>
+    <string name="useDnsCache">ใช้แคช DNS</string>
+    <string name="ipfsgw_add_title">เพิ่มเกตเวย์ IPFS</string>
+    <string name="ipfsgw_summary_disabled">ดาวน์โหลดแอปโดยใช้จุดสิ้นสุดเว็บ IPFS: ปิดใช้งาน</string>
+    <string name="app_details_repository_preferred">(ที่ต้องการ)</string>
+    <string name="app_list_no_suggested_version">ไม่มีเวอร์ชันที่แนะนำสำหรับการติดตั้ง</string>
+    <string name="repositories_last_update">อัปเดตล่าสุด: %s</string>
+    <string name="repositories_last_update_never">ไม่เคย</string>
+    <string name="repo_archive_toggle_description">แสดงแอปที่เก็บไว้และแอปเวอร์ชันที่ล้าสมัย</string>
+    <string name="ipfsgw_title">เกตเวย์ IPFS</string>
+    <string name="ipfsgw_explainer">ดาวน์โหลดแอปจากจุดสิ้นสุดเว็บ IPFS (ใช้ได้กับที่เก็บ F-Droid ที่รองรับ IPFS เท่านั้น)</string>
+    <string name="force_old_installer_summary">ปิดการใช้งานตัวติดตั้งเซสชัน รวมถึงการสนับสนุนการอัปเดตพื้นหลังอัตโนมัติ.</string>
+    <string name="app_details_repositories">ที่เก็บ</string>
+    <string name="app_details_repository_button_prefer">ต้องการพื้นที่เก็บข้อมูล</string>
+    <string name="repo_error_adding_archive">ไม่สามารถเพิ่มที่เก็บข้อมูลถาวรได้โดยตรง แตะพื้นที่เก็บข้อมูลในรายการและเปิดใช้งานการเก็บถาวรที่นั่น</string>
+    <string name="repo_list_info_text">พื้นที่เก็บข้อมูลคือแหล่งที่มาของแอป รายการนี้แสดงที่เก็บที่เพิ่มไว้ในปัจจุบันทั้งหมด ไม่ได้ใช้ที่เก็บที่ถูกปิดใช้งาน
+\n
+\nหากแอปอยู่ในที่เก็บมากกว่าหนึ่งแห่ง ระบบจะเลือกใช้ที่เก็บที่อยู่สูงกว่าในรายการโดยอัตโนมัติ คุณสามารถจัดลำดับที่เก็บใหม่ได้โดยการกดค้างไว้แล้วลาก</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">ดาวน์โหลดแอปโดยใช้จุดสิ้นสุดเว็บ IPFS: เปิดใช้งาน %1$d แล้ว</item>
+    </plurals>
+    <string name="repo_share_not_found">ไม่พบที่อยู่ repo ในข้อความที่แชร์</string>
 </resources>
