@@ -1,0 +1,15 @@
+OBS: Basic-versionen av F-Droid Client har en reducerad funktionsuppsättning (t.ex. ingen när-delning och ingen panikfunktion). Den riktar sig till Android 13 och kan göra obevakade uppdateringar utan privilegierad förlängning eller root.
+
+F-Droid är en installerbar katalog med fria programvaruappar för Android. F-Droid-klientappen gör det enkelt att bläddra, installera och hålla reda på uppdateringar på din enhet.
+
+Den ansluter till alla F-Droid-kompatibla repositorier. Standardrepot finns på f-droid.org, som endast innehåller bona fide libre programvara.
+
+Android själv är öppen i den meningen att du är fri att installera APK: er från var du än vill, men det finns många goda skäl för att använda F-Droid som din apphanterare för fri programvara:
+
+* Få meddelande när uppdateringar är tillgängliga
+* Möjlighet att ladda ner och installera uppdateringar automatiskt
+* Håll reda på äldre och betaversioner
+* Filtrera bort appar som inte är kompatibla med enheten
+* Hitta appar via kategorier och sökbara beskrivningar
+* Få tillgång till tillhörande webbadresser för donationer, källkod etc.
+* Håll dig säker genom att kontrollera repo-indexsignaturer och APK-hashar
