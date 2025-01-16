@@ -250,7 +250,7 @@
     <string name="main_menu__swap_nearby">Gần đây</string>
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Thể loại</string>
-    <string name="preference_manage_installed_apps">Quản lí các ứng dụng đã cài đặt</string>
+    <string name="preference_manage_installed_apps">Quản lý các ứng dụng đã cài đặt</string>
     <string name="notification_action_update">Cập nhật</string>
     <string name="notification_action_cancel">Hủy</string>
     <string name="notification_action_install">Cài đặt</string>
