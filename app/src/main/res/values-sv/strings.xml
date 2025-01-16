@@ -600,4 +600,9 @@
     <string name="ipfsgw_explainer">Hämtaappar från IPFS-webbändpunkter. (Fungerar endast för F-Droid-förvar med IPFS-stöd.)</string>
     <string name="preferForeign">Föredrar utländska speglar</string>
     <string name="swap_bluetooth_permissions">Vänligen ge tillstånd för Bluetooth eller enhet i närheten!</string>
+    <string name="antitetherednet">Tjudringsnätverkstjänster</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Ladda ner appar med hjälp av IPFS webbslutpunkter: %1$d aktiverad</item>
+        <item quantity="other">Ladda ner appar med hjälp av IPFS webbslutpunkter: %1$d aktiverade</item>
+    </plurals>
 </resources>
