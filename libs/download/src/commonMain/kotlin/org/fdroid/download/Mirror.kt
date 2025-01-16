@@ -36,6 +36,11 @@ public data class Mirror @JvmOverloads constructor(
         return URLBuilder(url).appendPathSegments(path.trimStart('/')).build()
     }
 
+    public fun getFDroidLinkUrl(repoFingerprint: String?): String {
+        val fpr = repoFingerprint?.let { "?fingerprint=$repoFingerprint" } ?: ""
+        return "https://fdroid.link/#$url$fpr"
+    }
+
     public fun isOnion(): Boolean = url.isOnion()
 
     public fun isLocal(): Boolean = url.isLocal()

@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
+import org.fdroid.download.Mirror
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.data.DBHelper
@@ -109,7 +110,7 @@ class RepoDetailsViewModel(
     fun deleteRepository() {
         val repoId = _state.value.repo.repoId
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryDao.deleteRepository(repoId)
+            repoManager.deleteRepository(repoId)
         }
     }
 
@@ -124,6 +125,20 @@ class RepoDetailsViewModel(
         val repoId = _state.value.repo.repoId
         viewModelScope.launch(Dispatchers.IO) {
             repositoryDao.updateDisabledMirrors(repoId, toDisable)
+        }
+    }
+
+    fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {
+        val repoId = _state.value.repo.repoId
+        viewModelScope.launch(Dispatchers.IO) {
+            repoManager.setMirrorEnabled(repoId, mirror, enabled)
+        }
+    }
+
+    fun deleteUserMirror(mirror: Mirror) {
+        val repoId = _state.value.repo.repoId
+        viewModelScope.launch(Dispatchers.IO) {
+            repoManager.deleteUserMirror(repoId, mirror)
         }
     }
 

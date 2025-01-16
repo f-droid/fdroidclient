@@ -60,11 +60,13 @@ object ComposeUtils {
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
         imageVector: ImageVector? = null,
+        color: Color = MaterialTheme.colors.primary,
     ) {
         OutlinedButton(
             onClick = onClick,
             shape = RoundedCornerShape(32.dp),
-            modifier = modifier.heightIn(min = ButtonDefaults.MinHeight)
+            modifier = modifier.heightIn(min = ButtonDefaults.MinHeight),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = color),
         ) {
             if (imageVector != null) {
                 Icon(

@@ -202,6 +202,14 @@ public data class Repository internal constructor(
         }.ifEmpty { listOf(org.fdroid.download.Mirror(address)) }
     }
 
+    public fun getAllUserMirrors(): List<org.fdroid.download.Mirror> {
+        return userMirrors.map { org.fdroid.download.Mirror(it) }
+    }
+
+    public fun getAllOfficialMirrors(): List<org.fdroid.download.Mirror> {
+        return getAllMirrors(false)
+    }
+
     /**
      * Returns all mirrors, including [disabledMirrors].
      */

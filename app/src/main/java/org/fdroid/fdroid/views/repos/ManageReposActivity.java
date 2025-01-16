@@ -187,7 +187,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
 
     @Override
     public void onClicked(Repository repo) {
-        RepoDetailsActivity.launch(this, repo.getRepoId());
+        RepoDetailsActivity.Companion.launch(this, repo.getRepoId());
     }
 
     /**
