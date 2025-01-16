@@ -323,8 +323,8 @@
     <string name="repositories_summary">অ্যাপের জন্য আরো উৎস যোগ করো</string>
     <string name="malformed_repo_uri">বিকৃত ভাণ্ডার ইউআরআই উপেক্ষা করা হলো: %s</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">%1$dটি অ্যাপের জন্য হালনাগাদ নামাও।</item>
-        <item quantity="other">%1$dটি অ্যাপের জন্য হালনাগাদ নামাও।</item>
+        <item quantity="one">%1$d টি অ্যাপের জন্য হালনাগাদ ভার্সন ডাউনলোড করুন।</item>
+        <item quantity="other">%1$d টি অ্যাপের জন্য হালনাগাদ ভার্সন ডাউনলোড করুন।</item>
     </plurals>
     <string name="installed_app__updates_ignored_for_suggested_version">%1$s সংস্করণের জন্য হালনাগাদ উপেক্ষাকৃত</string>
     <string name="app_details__no_versions__none_compatible_with_device">এই যন্ত্রের সাথে সামঞ্জস্যপূর্ণ কোনো সংস্করণ নেই</string>
@@ -542,5 +542,18 @@
     <string name="repo_enter_url">রিপোজিটরির ইউআরএল নিজে যোগ করুন</string>
     <string name="repo_add_new_mirror">নতুন মিরর হিসেবে যোগ করুন</string>
     <string name="repo_num_apps_button">অ্যাপগুলো দেখান</string>
-    <string name="force_old_installer_summary">বেটা সেশন ইন্সটলার বন্ধ করুন, সয়ংক্রিয় ব্যাকগ্রাউন্ড আপডেটসহ</string>
+    <string name="force_old_installer_summary">সয়ংক্রিয় ব্যাকগ্রাউন্ড আপডেট সাপোর্ট সমৃদ্ধ সেশন ইন্সটলার নিস্ক্রিয় করুন</string>
+    <string name="repo_intro">রিপোজিটরি হলো বাড়তি অ্যাপের উৎস। আপনার যুক্ত করা তৃতীয় পক্ষের রিপোজিটরিগুলোর স্ট্যান্ডার্ড সেসব রিপোজিটরি থেকে ভিন্ন যেগুলো F-Droid ই বিল্ড করা অ্যাপ সরবরাহ করে।
+\n
+\nঅনুগ্রহ করে নিশ্চিত করুন যে আপনার যুক্ত করা রিপোজিটরিগুলো নির্ভরযোগ্য।</string>
+    <string name="app_details_repository_expand">রিপোজিটরির তালিকা বিস্তৃত করুন</string>
+    <string name="repo_state_fetching">রিপোজারিটি নামানো হচ্ছে…</string>
+    <string name="repo_add_repo_and_mirror">রিপোজিটরি ও মিরর যুক্ত করুন</string>
+    <string name="repo_view_repo">রিপোজিটরিটি দেখুন</string>
+    <string name="repo_scan_qr_code">কিউআর কোডটি স্ক্যান করুন</string>
+    <string name="app_details_repository">রিপোজিটরি</string>
+    <string name="app_details_repositories">রিপোজিটরিগুলো</string>
+    <string name="app_details_repository_preferred">(পছন্দনীয়)</string>
+    <string name="app_details_repository_button_prefer">পছন্দের রিপোজিটরি</string>
+    <string name="app_list_no_suggested_version">ইন্সটল করার মত সুপারিশ করার মত কোনো ভার্সন নেই</string>
 </resources>

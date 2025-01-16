@@ -86,7 +86,7 @@
     <string name="login_title">অথেনটিকেশন প্রয়োজন</string>
     <string name="scan_removable_storage_summary">এসডি কার্ড ও ইউএসবি ড্রাইভে প্যাকেজ রিপো খুজো</string>
     <string name="scan_removable_storage_toast">%s স্ক্যান করা হচ্ছে…</string>
-    <string name="send_version_and_uuid_summary">এই অ্যাপ্লিকেশনটির সংস্করণ এবং একটি এলোমেলো, অনন্য আইডি ডাউনলোড করার সময় অন্তর্ভুক্ত করো, যা পরবর্তীতে অ্যাপ্লিকেশনটি পুনরায় চালু করার সময় প্রভাবিত হয়।</string>
+    <string name="send_version_and_uuid_summary">এই অ্যাপ্লিকেশনটির সংস্করণ এবং একটি এলোমেলো, অনন্য আইডি ডাউনলোড করার সময় অন্তর্ভুক্ত করুন, যা পরবর্তীতে অ্যাপ্লিকেশনটি পুনরায় চালু করার সময় থেকে সক্রিয় হবে।</string>
     <string name="display">দেখাও</string>
     <string name="icon">আইকন</string>
     <string name="antifeatures">খারাপ বৈশিষ্ট্য</string>
@@ -510,4 +510,5 @@
     <string name="apps">অ্যাপস</string>
     <string name="antiknownvuln">পরিচিত দুর্বলতা</string>
     <string name="antiads">বিজ্ঞাপন</string>
+    <string name="force_old_installer_title">জোরপূর্বক পুরনো ইন্সটলার ব্যবহার করুন</string>
 </resources>
