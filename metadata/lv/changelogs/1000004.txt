@@ -4,4 +4,4 @@
 
 * Atjaunināti tulkojumi
 
-* Tumšā izskata labojumi
+* Tumšās lietotāja saskarnes labojumi
