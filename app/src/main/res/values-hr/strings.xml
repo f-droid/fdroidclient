@@ -291,7 +291,7 @@
     <string name="hide_all_notifications_summary">Ne prikazuj radnje u statusnoj traci i ploči s obavijestima.</string>
     <string name="send_install_history">Pošalji povijest instalacija</string>
     <string name="install_history">Povijest instalacija</string>
-    <string name="app_details__incompatible_mismatched_signers">Različit potpis u odnosu na instaliranu verziju</string>
+    <string name="app_details__incompatible_mismatched_signers">Drugačiji potpis u odnosu na instaliranu verziju</string>
     <string name="app_details__no_versions__no_compatible_signers">Nema verzija s kompatibilnim potpisom</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nema verzija kompatibilnih s uređajem</string>
     <string name="about_forum">Forum podrške</string>
@@ -378,7 +378,7 @@
     <string name="repo_exists_enable">%1$s je već podešen, potvrdite da ga želite ponovo uključiti.</string>
     <string name="repo_exists_and_enabled">%1$s je već podešen i omogućen.</string>
     <string name="force_old_index">Prisili korištenje starog indeks formata</string>
-    <string name="send_version_and_uuid_summary">Koristi verziju i nasumični, jedinstven identifikator ove aplikacije prilikom preuzimanja; stupa u efekt nakon ponovnog pokretanja aplikacije.</string>
+    <string name="send_version_and_uuid_summary">Koristi verziju i nasumični, jedinstveni identifikator ove aplikacije prilikom preuzimanja; stupa na snagu nakon ponovnog pokretanja aplikacije.</string>
     <string name="disabled">Onemogućeno</string>
     <string name="allow">Dopusti</string>
     <string name="repo_exists_add_mirror">Ovo je kopija od %1$s, dodati ga kao zrcalo\?</string>
@@ -394,7 +394,7 @@
     <string name="try_again">Pokušaj ponovo</string>
     <string name="force_touch_apps_on">Prikaži aplikacije koje zahtijevaju dodirni ekran, bez obzira o hardverskoj podršci</string>
     <string name="force_touch_apps">Uključi aplikacije za dodirni ekran</string>
-    <string name="antinosourcesince">Izvorni kod više nije dostupan, nije moguće ažurirati.</string>
+    <string name="antinosourcesince">Izvorni kod više nije dostupan, nije moguće ažurirati</string>
     <string name="antiknownvulnlist">Ova aplikacija sadrži poznatu sigurnosnu ranjivost</string>
     <string name="antidisabledalgorithmlist">Ova aplikacija ima slab sigurnosni potpis</string>
     <string name="antifeatureswarning">Ova aplikacija ima funkcije koje ti se možda ne sviđaju.</string>
@@ -414,9 +414,9 @@
     <string name="versions">Verzije</string>
     <string name="repo_add_mirror">Dodaj zrcalni repozitorij</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Preuzmi ažuriranje za %1$d aplikaciju.</item>
-        <item quantity="few">Preuzmi ažuriranja za %1$d aplikacije.</item>
-        <item quantity="other">Preuzmi ažuriranja za %1$d aplikacija.</item>
+        <item quantity="one">Preuzmi ažuriranje za %1$d aplikaciju:</item>
+        <item quantity="few">Preuzmi ažuriranja za %1$d aplikacije:</item>
+        <item quantity="other">Preuzmi ažuriranja za %1$d aplikacija:</item>
     </plurals>
     <string name="updates__show_updateable_apps">Prikaži aplikacije</string>
     <string name="updates__hide_updateable_apps">Sakrij aplikacije</string>
@@ -434,8 +434,8 @@
     <string name="over_data">Putem mobilne mreže</string>
     <string name="over_wifi">Putem Wi-Fi mreže</string>
     <string name="send_history_csv">%s povijest instalacija kao CSV datoteka</string>
-    <string name="show_anti_feature_apps_on">Prikaži programe koji zahtijevaju nepoželjne funkcije</string>
-    <string name="show_anti_feature_apps">Uključi programe s nepoželjnim funkcijama</string>
+    <string name="show_anti_feature_apps_on">Prikaži programe koji imaju poznate nepoželjne funkcije</string>
+    <string name="show_anti_feature_apps">Uključi nepoželjne funkcije</string>
     <string name="antifeatures">Nepoželjne funkcije</string>
     <string name="app__tts__downloading_progress">Preuzimanje, %1$d %% gotovo</string>
     <string name="not_visible_nearby">Funkcija u blizini nije uključena</string>
@@ -448,7 +448,7 @@
     <string name="swap_hidden_wifi_ssid">(skriveno)</string>
     <string name="swap_blank_wifi_ssid">(prazno)</string>
     <string name="swap_visible_hotspot">Vidljivo preko žarišne točke</string>
-    <string name="nearby_splash__request_permission">Probaj</string>
+    <string name="nearby_splash__request_permission">Traži sada</string>
     <string name="nearby_splash__document_tree">Pretraži repozitorije i zrcala repozitorija na USB OTG uređaju.</string>
     <string name="nearby_splash__read_external_storage">Pretraži repozitorije i zrcala repozitorija na SD kartici.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Oba uređaja trebaju %1$s za korištenje blizinske razmjene.</string>
@@ -532,4 +532,18 @@
     <string name="repo_io_error">Greška pri povezivanju s repozitorijem.</string>
     <string name="repo_last_update_downloaded">Posljednje ažuriranje je preuzeto</string>
     <string name="ipfsgw_add_add">Dodaj</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="about_title_basic">O F-Droid Basic</string>
+    <string name="app_details_repository">Repozitorij</string>
+    <string name="app_details_repositories">Repozitoriji</string>
+    <string name="app_details_repository_expand">Rasklopi popis repozitorija</string>
+    <string name="repo_add_new_title">Dodaj repozitorij</string>
+    <string name="repo_view_repo">Prikaži repozitorij</string>
+    <string name="app_details_repository_preferred">(preferirani)</string>
+    <string name="app_details_repository_button_prefer">Preferiraj repozitorij</string>
+    <string name="menu_share_apk">Dijeli APK datoteku</string>
+    <string name="latest__empty_state__upgrading">Aktualiziranje baze podataka …</string>
+    <string name="repositories_last_update_never">nikada</string>
+    <string name="menu_release_channel_beta">Dozvoli aktualiziranje na beta verzije</string>
+    <string name="repositories_last_update">Zadnje aktualiziranje: %s</string>
 </resources>
