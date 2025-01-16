@@ -541,4 +541,7 @@
     <string name="repo_io_error">Klaida prisijungiant prie saugyklos.</string>
     <string name="repo_enter_url">Įrašykite saugyklos adresą (URL)</string>
     <string name="app_name_basic">„F-Droid Basic“</string>
+    <string name="app_details_repository">Saugykla</string>
+    <string name="app_details_repository_expand">Išplėskite saugyklų sąrašą</string>
+    <string name="app_details_repositories">Saugyklos</string>
 </resources>
