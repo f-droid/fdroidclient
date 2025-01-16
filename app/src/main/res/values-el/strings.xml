@@ -610,4 +610,7 @@
     <string name="repo_mirror_add_info">Η διεύθυνση URL που προσπαθείτε να προσθέσετε (%s) είναι ένα είδωλο ενός υπάρχοντος αποθετηρίου.</string>
     <string name="warning_no_compat_versions">Το επιλεγμένο αποθετήριο δεν έχει συμβατές εκδόσεις εφαρμογών. Για να λάβετε ενημερώσεις, προτιμήστε ένα αποθετήριο με συμβατές εκδόσεις.</string>
     <string name="auto_update_time">Νωρίτερη επόμενη αναβάθμιση: %s</string>
+    <string name="antitetherednetlist">Αυτή η εφαρμογή εξαρτάται εξ ολοκλήρου από μία υπηρεσία δικτύου</string>
+    <string name="auto_update_time_past">Επόμενη ενημέρωση όταν πληρούνται οι προϋποθέσεις</string>
+    <string name="swap_bluetooth_permissions">Παρακαλώ επιτρέψτε την άδεια για Bluetooth ή για Κοντινή Συσκευή!</string>
 </resources>
