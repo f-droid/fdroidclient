@@ -1,0 +1,7 @@
+* Förhindra att HTTP ETag används som en spårningskaka
+
+* Förbättrad layout för skärmdumpar
+
+* Städa upp temp- och cachade filer korrekt
+
+* Fixar för mörkt läge

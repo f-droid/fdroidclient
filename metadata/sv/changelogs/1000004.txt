@@ -1,0 +1,7 @@
+* Swipe-gester läggs till i fliken Uppdateringar
+
+* Visar varningar med åtgärder i fliken Uppdateringar för KnownVulns
+
+* Översättningar uppdaterade
+
+* Fixar för mörkt användargränssnitt

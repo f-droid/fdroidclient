@@ -1,0 +1,7 @@
+* Stöd för officiella speglar för alla repon, med automatiska val baserat på tillgänglighet
+
+* Massor av UI-polering, såväl som stabilitet och buggfixar
+
+* Nya sekretesspreferenser: Förhindra skärmdumpar; avsluta vid panik
+
+* Nya språk: Koreanska (ko) och vietnamesiska (vi)

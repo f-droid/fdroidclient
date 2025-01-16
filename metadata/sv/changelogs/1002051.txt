@@ -1,0 +1,17 @@
+* Autotrimning eller -cacheborttagning vid lågt lagringutrymme
+
+* Förbättrad prestanda på lågminnesenheter
+
+* Nedladdningar respekterar inställningen ”Endast på Wi-Fi”
+
+* Minska minnesanvändningen nära urladdning
+
+* Anpassade speglar till alla repon genom att klicka på länkar, skanna QR-koder etc.
+
+* Förbättrat automatiskt spegelval
+
+* Buggfixar/förbättringar för Swap/Nearby
+
+* Fixa orsak till återkommande uppdateringsmeddelanden (# 1271)
+
+* F-Droid känner igen nightly-webbadresser från GitLab
