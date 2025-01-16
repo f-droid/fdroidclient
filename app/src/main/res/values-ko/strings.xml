@@ -586,4 +586,5 @@
     <string name="repo_and_mirror_add_both_info">추가하려고 하는 URL (%s) 새로운 저장소의 거울 이다. 원래 저장소와 거울 모두 추가됩니다.</string>
     <string name="auto_update_time">다음 업데이트: %s</string>
     <string name="warning_no_compat_versions">선택하신 저장소에는 호환되는 앱 버전이 없습니다. 업데이트를 받으시려면 호환되는 버전의 저장소를 선택하십시오.</string>
+    <string name="menu_share_apk">APK 파일 공유</string>
 </resources>
