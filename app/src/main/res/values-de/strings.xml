@@ -450,7 +450,7 @@
     <string name="send_install_history">Installationsverlauf senden</string>
     <string name="updates_disabled_by_settings">Mobilfunk-/WLAN-Einstellungen verhindern sämtliche Aktualisierungen</string>
     <string name="send_history_csv">%s Installationsverlauf als CSV-Datei</string>
-    <string name="send_installed_apps">Installierte Apps freigeben</string>
+    <string name="send_installed_apps">Installierte Apps teilen</string>
     <string name="send_installed_apps_csv">Von F-Droid installierte Apps als CSV-Datei</string>
     <string name="menu_open">Öffnen</string>
     <string name="about_forum">Support-Forum</string>
