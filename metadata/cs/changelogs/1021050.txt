@@ -1,0 +1,11 @@
+* Přepracován aktualizátor repozitářů, pro spolehlivější aktualizace na pozadí
+* Rozdělen název a souhrn v seznamech aplikací pro lepší čitelnost
+* Zobrazení varování, když nelze aktualizovat aplikace z preferovaného repozitáře
+* Aplikace cílící na SDK 24 jsou nekompatibilní s Androidem 15
+* Lepší práce se zrcadly v náhledu „Přidat repozitář“ (díky, Thore!)
+* Povolení aktualizací na pozadí na zařízeních Xiaomi bez MIUI (díky, Irate!)
+* Důvěřování uživatelem přidaným kořenovým certifikátům (díky, B.!)
+* Oprava chyby, kdy vyhledávání s diakritikou bralo ohled na velikost písmen (díky, Tobiasi!)
+* Aktualizovány popisy anti-funkcí (díky, Licaone!)
+* Přidána anti-funkce tetherované sítě (díky, linsui!)
+* Ignorování mezer při přidávání zrcadel repozitářů (díky, Tobiasi!)

@@ -1,11 +1,8 @@
-* Přepsán aktualizátor repozitářů pro spolehlivější aktualizace na pozadí
-* Rozdělen název a souhrn v sezn. aplik. pro lepší čitelnost
-* Zobrazení varování, pokud nelze aplikace aktualizovat z vybraného repozitáře
-* Aplik. cílící na SDK 24 jsou nekompat. se zařízeními Android 15
-* Lepší zprac. zrcadel v náhledu „Přidat repozitář“ (Díky Thore!)
-* Povolení akt. aplik. na pozadí na zař. Xiaomi bez MIUI (Díky Irate!)
-* Důvěra v uživ. přidané koř. cert. (Díky B.!)
-* Opravena funkčnost vyhledávání s diakritikou (Díky Tobiasi!)
-* Aktualizovány popisy anti-funkcí (Díky linsui!)
-* Přidána anti-funkce tetherované sítě (Díky linsui!)
-* Ignorování bílých znaků při přidávání zrcadlových repozitářů (Díky Tobiasi!)
+* použití API „jemné aktualizace“, aby nebyly aplikace při aktualizaci vynuceně ukončeny
+* experimentální podpora zrušení archivace aplikací v Androidu 15
+* oddělené akce sdílení odkazu a sdílení souboru
+* zobrazení zprávy, pokud má APK více oprávnění, než se očekávalo
+* častější čištění interní mezipaměti, pro uvolnění místa (díky DerGenaue!).
+* změna pořadí odznaků darů tak, aby odpovídaly webu (díky Leo!)
+* přidán přepínač pro upřednostňování zahraničních zrcadel
+* mnoho drobných oprav chyb
