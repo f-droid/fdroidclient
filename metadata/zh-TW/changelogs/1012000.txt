@@ -1,0 +1,11 @@
+* 應用程式說明在地化現在完全尊重 Android 語言設定中的語言清單
+
+* 「最新」分頁根據語言設定列出結果
+
+* 「最新」分頁現在以最新優先的順序顯示結果 (@TheLastProject @IzzySoft)
+
+* 主題支援現代化，並與內建的 Android 主題綁定 (@proletarius101)
+
+* 大幅改善搜尋結果 (@Tvax @gcbrown76)
+
+* 讓 Android 有效率地排程背景快取清除作業 (@Isira-Seneviratne)

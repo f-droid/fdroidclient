@@ -1,7 +1,7 @@
-* 使用通知頻道來做更細膩的控制 (@Isira-Seneviratne)
-* 改進了多重語系的語言選擇 (@spacecowboy/@bubu)
-* 最新分頁在非英文語系的裝置能顯示更好的結果
-* 更新核心函式庫 (Jackson, androidx, gradle, etc)
-* 潤飾例外允許標籤支援
+* 使用通知頻道進行更精細的控制 (@Isira-Seneviratne)
+* 改進多語系的語言選取 (@spacecowboy/@bubu)
+* 「最新」分頁在非英語系裝置上將顯示更好的結果
+* 更新核心函式庫 (Jackson、androidx、gradle 等)
+* 改進白牌支援
 
 感謝新貢獻者們！@spacecowboy @projectgus @glennmen @Isira-Seneviratne

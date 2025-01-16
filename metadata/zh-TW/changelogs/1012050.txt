@@ -1,0 +1,13 @@
+* 應用程式說明在地化完全尊重 Android 語言設定中的語言清單
+
+* 「最新」分頁根據語言設定顯示應用程式，並以最新優先排序 (@TheLastProject @IzzySoft)
+
+* 大幅改善搜尋結果 (@Tvax @gcbrown76)
+
+* 更可靠的快取清除
+
+* 有效率地排程快取清除作業 (@Isira-Seneviratne)
+
+* 翻修軟體庫網址解析，以確保可靠地新增軟體庫 (@projectgus)
+
+* 選擇性加入 F-Droid 統計資料
