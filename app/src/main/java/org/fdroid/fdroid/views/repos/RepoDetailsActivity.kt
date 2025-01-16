@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
+import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
@@ -36,15 +37,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     private lateinit var viewModel: RepoDetailsViewModel
 
     // Only call this once in onCreate()
-    private fun initViewModel() {
-        val repoId = intent.getLongExtra(ARG_REPO_ID, 0)
-        val repo = FDroidApp.getRepoManager(this).getRepository(repoId)
-        if (repo == null) {
-            // repo must have been deleted just now (maybe slow UI?)
-            finish()
-            return
-        }
-
+    private fun initViewModel(repo: Repository) {
         val factory = RepoDetailsViewModel.Factory
         val extras = MutableCreationExtras().apply {
             set(RepoDetailsViewModel.APP_KEY, application)
@@ -60,15 +53,34 @@ class RepoDetailsActivity : AppCompatActivity() {
         (application as FDroidApp).setSecureWindow(this)
         (application as FDroidApp).applyPureBlackBackgroundInDarkTheme(this)
 
-        initViewModel()
+        val repoId = intent.getLongExtra(ARG_REPO_ID, 0)
+        val repo = FDroidApp.getRepoManager(this).getRepository(repoId)
+        if (repo == null) {
+            // repo must have been deleted just now (maybe slow UI?)
+            finish()
+            return
+        }
+
+        initViewModel(repo)
+
+        // Needs an observer because it is lazy
+        viewModel.repoLiveData.observe(this, {})
 
         setContent {
-            val state by viewModel.state.collectAsState()
+            val repo by viewModel.repoFlow.collectAsState(repo)
+            val archiveState by viewModel.archiveStateFlow.collectAsState(ArchiveState.UNKNOWN)
             val numberOfApps by viewModel.numberAppsFlow.collectAsState(0)
+
+            val r = repo
+            if (r == null) {
+                finish()
+                return@setContent
+            }
 
             FDroidContent {
                 RepoDetailsScreen(
-                    state = state,
+                    repo = r,
+                    archiveState = archiveState,
                     numberOfApps = numberOfApps,
                     // app bar
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() },
@@ -92,10 +104,10 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onShareClicked() {
-        val uri = viewModel.state.value.repo.getShareUri()
+        val repo = viewModel.repoLiveData.value ?: return
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, uri)
+            putExtra(Intent.EXTRA_TEXT, repo.shareUri)
         }
         startActivity(
             Intent.createChooser(intent, getResources().getString(R.string.share_repository))
@@ -138,7 +150,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onShowAppsClicked() {
-        val repo = viewModel.state.value.repo
+        val repo = viewModel.repoLiveData.value ?: return
         if (!repo.enabled) {
             return
         }
@@ -149,7 +161,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onEditCredentialsClicked() {
-        val repo = viewModel.state.value.repo
+        val repo = viewModel.repoLiveData.value ?: return
 
         val view = layoutInflater.inflate(R.layout.login, null, false)
         val usernameInput = view.findViewById<TextInputLayout>(R.id.edit_name)
@@ -178,8 +190,8 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onShareMirror(mirror: Mirror) {
-        val fingerprint = viewModel.state.value.repo.fingerprint
-        val uri = mirror.getFDroidLinkUrl(fingerprint)
+        val repo = viewModel.repoLiveData.value ?: return
+        val uri = mirror.getFDroidLinkUrl(repo.fingerprint)
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, uri)

@@ -63,7 +63,8 @@ import org.fdroid.fdroid.compose.FDroidSwitchRow
 
 @Composable
 fun RepoDetailsScreen(
-    state: RepoDetailsState,
+    repo: Repository,
+    archiveState: ArchiveState,
     numberOfApps: Int,
     // app bar functions
     onBackClicked: () -> Unit,
@@ -80,9 +81,9 @@ fun RepoDetailsScreen(
     onShareMirror: (Mirror) -> Unit,
     onDeleteMirror: (Mirror) -> Unit,
 ) {
-    val officialMirrors = state.repo.getAllOfficialMirrors()
-    val userMirrors = state.repo.getAllUserMirrors()
-    val disabledMirrors = state.repo.disabledMirrors.toHashSet()
+    val officialMirrors = repo.getAllOfficialMirrors()
+    val userMirrors = repo.getAllUserMirrors()
+    val disabledMirrors = repo.disabledMirrors.toHashSet()
 
     Scaffold(topBar = {
         TopAppBar(elevation = 4.dp,
@@ -125,17 +126,17 @@ fun RepoDetailsScreen(
             ) {
                 Spacer(modifier = Modifier) // spacedBy will provide the padding
                 GeneralInfoCard(
-                    state.repo,
-                    state.archiveState,
+                    repo,
+                    archiveState,
                     numberOfApps,
                     onShowAppsClicked,
                     onToggleArchiveClicked,
                 )
-                BasicAuthCard(state.repo, onEditCredentialsClicked)
-                if (state.repo.certificate.isEmpty()) {
+                BasicAuthCard(repo, onEditCredentialsClicked)
+                if (repo.certificate.isEmpty()) {
                     UnsignedCard()
                 } else {
-                    FingerprintCard(state.repo)
+                    FingerprintExpandable(repo)
                 }
                 // The repo's address is currently also an official mirror.
                 // So if there is only one mirror, this is the address => don't show this section.
@@ -423,7 +424,8 @@ fun RepoDetailsScreenPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org/fdroid/repo", "foo bar")
     FDroidContent {
         RepoDetailsScreen(
-            RepoDetailsState(repo, ArchiveState.ENABLED),
+            repo,
+            ArchiveState.ENABLED,
             numberOfApps = 42,
             {}, {}, {}, {}, {}, // app bar
             {}, {}, {}, // other buttons

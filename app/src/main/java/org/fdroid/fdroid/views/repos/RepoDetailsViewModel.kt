@@ -17,8 +17,6 @@ import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
@@ -32,11 +30,6 @@ import org.fdroid.fdroid.data.DBHelper
 import org.fdroid.fdroid.generateQrBitmapKt
 import org.fdroid.fdroid.work.RepoUpdateWorker
 
-data class RepoDetailsState(
-    val repo: Repository,
-    val archiveState: ArchiveState,
-)
-
 enum class ArchiveState {
     ENABLED,
     DISABLED,
@@ -45,10 +38,12 @@ enum class ArchiveState {
 
 class RepoDetailsViewModel(
     app: Application,
-    initialRepo: Repository,
+    private val initialRepo: Repository,
 ) : AndroidViewModel(app) {
 
     companion object {
+        private const val TAG = "RepoDetailsViewModel"
+
         // TODO: Use androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
         // That seems to require setting up dependency injection.
         val APP_KEY = object : CreationExtras.Key<Application> {}
@@ -62,19 +57,15 @@ class RepoDetailsViewModel(
         }
     }
 
+    private val repoId = initialRepo.repoId
+
     private val repoManager = FDroidApp.getRepoManager(app)
     private val repositoryDao = DBHelper.getDb(app).getRepositoryDao()
     private val appDao = DBHelper.getDb(app).getAppDao()
 
-    private val _state = MutableStateFlow(
-        RepoDetailsState(initialRepo, initialRepo.archiveState())
-    )
-    val state = _state.asStateFlow()
-    val liveData = _state.asLiveData()
-
-    val repoFlow = combine(_state, repoManager.repositoriesState) { s, reposState ->
-        reposState.find { repo -> repo.repoId == s.repo.repoId }
-    }.distinctUntilChanged()
+    val repoFlow: Flow<Repository?> = repoManager.repositoriesState.map { reposState ->
+        reposState.find { repo -> repo.repoId == repoId }
+    }
     val repoLiveData = repoFlow.asLiveData()
 
     val numberAppsFlow: Flow<Int> = repoFlow.map { repo ->
@@ -82,23 +73,24 @@ class RepoDetailsViewModel(
             appDao.getNumberOfAppsInRepository(repo.repoId)
         } else 0
     }.flowOn(Dispatchers.IO).distinctUntilChanged()
-    val numberOfAppsLiveData = numberAppsFlow.asLiveData()
+
+    val archiveStateFlow = MutableStateFlow(initialRepo.archiveState())
 
     val qrCodeLiveData = MutableLiveData<Bitmap?>(null)
 
     fun setArchiveRepoEnabled(enabled: Boolean) {
-        val repo = _state.value.repo
-        _state.value = _state.value.copy(archiveState = ArchiveState.UNKNOWN)
         viewModelScope.launch(Dispatchers.IO) {
+            val repo = repoLiveData.value ?: return@launch
+            archiveStateFlow.emit(ArchiveState.UNKNOWN)
             try {
                 val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
-                _state.value = _state.value.copy(archiveState = enabled.toArchiveState())
+                archiveStateFlow.emit(enabled.toArchiveState())
                 if (enabled && repoId != null) withContext(Dispatchers.Main) {
                     RepoUpdateWorker.updateNow(getApplication(), repoId)
                 }
             } catch (e: Exception) {
-                Log.e(this.javaClass.simpleName, "Error toggling archive repo: ", e)
-                _state.value = _state.value.copy(archiveState = repo.archiveState())
+                Log.e(TAG, "Error toggling archive repo: ", e)
+                archiveStateFlow.emit(repo.archiveState())
                 withContext(Dispatchers.Main) {
                     Toast.makeText(getApplication(), R.string.repo_archive_failed, LENGTH_SHORT)
                         .show()
@@ -108,35 +100,24 @@ class RepoDetailsViewModel(
     }
 
     fun deleteRepository() {
-        val repoId = _state.value.repo.repoId
         viewModelScope.launch(Dispatchers.IO) {
             repoManager.deleteRepository(repoId)
         }
     }
 
     fun updateUsernameAndPassword(username: String, password: String) {
-        val repoId = _state.value.repo.repoId
         viewModelScope.launch(Dispatchers.IO) {
             repositoryDao.updateUsernameAndPassword(repoId, username, password)
         }
     }
 
-    fun updateDisabledMirrors(toDisable: List<String>) {
-        val repoId = _state.value.repo.repoId
-        viewModelScope.launch(Dispatchers.IO) {
-            repositoryDao.updateDisabledMirrors(repoId, toDisable)
-        }
-    }
-
     fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {
-        val repoId = _state.value.repo.repoId
         viewModelScope.launch(Dispatchers.IO) {
             repoManager.setMirrorEnabled(repoId, mirror, enabled)
         }
     }
 
     fun deleteUserMirror(mirror: Mirror) {
-        val repoId = _state.value.repo.repoId
         viewModelScope.launch(Dispatchers.IO) {
             repoManager.deleteUserMirror(repoId, mirror)
         }
@@ -159,13 +140,13 @@ class RepoDetailsViewModel(
 
     // TODO: initialise this once on ViewModel creation, and don't take an Activity, do fixed size
     fun generateQrCode(activity: AppCompatActivity) {
-        val repo = _state.value.repo
-        if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
-            // no need to show a QR Code, it is not shareable
-            qrCodeLiveData.value = null
-            return
-        }
         viewModelScope.launch(Dispatchers.Default) {
+            val repo = repoLiveData.value ?: return@launch
+            if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
+                // no need to show a QR Code, it is not shareable
+                qrCodeLiveData.value = null
+                return@launch
+            }
             val bitmap = generateQrBitmapKt(activity, repo.shareUri)
             withContext(Dispatchers.Main) {
                 qrCodeLiveData.value = bitmap
