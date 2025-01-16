@@ -1,0 +1,11 @@
+* O atualizador de repositórios foi refeito para fazer atualizações em segundo plano mais estáveis
+* Separar o nome e descrição na lista de apps para melhor legibilidade
+* Mostrar aviso quando apps não podem serem atualizados pelo repositório preferido
+* Apps feitos para o SDK 24 são incompatíveis com o Android 15
+* Lidar com espelhos na pré-visualização do "Adicionar repositório" de forma melhor (Obrigado Thore!)
+* Ativar atualizações automáticas em dispositivos Xiaomi não rodando MIUI (obrigado Irate!)
+* Confiar em certificados raiz adicionados pelo usuário (Obrigado B.!)
+* Consertar pesquisa insensível à capitalização contendo diacríticos (Obrigado Tobias!)
+* Atualizar as descrições das características indesejáveis (Obrigado Licaon!)
+* Adicionada nova característica indesejável de rede vinculada (Obrigado linsui!)
+* Ignorar espaços em branco ao adicionar repositórios (Obrigado Tobias!)
