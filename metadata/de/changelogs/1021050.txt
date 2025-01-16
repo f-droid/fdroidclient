@@ -1,0 +1,11 @@
+* Überarbeiteter Repo-Updater für zuverlässigere Hintergrundaktualisierungen
+* Aufteilung von Name und Zusammenfassung in App-Listen für bessere Lesbarkeit
+* Anzeige einer Warnung, wenn Apps nicht aus dem bevorzugten Repository aktualisiert werden können
+* Apps, die SDK 24 benötigen, sind inkompatibel mit Android-15-Geräten
+* Bessere Handhabung von Spiegelserver in der Vorschau „Repo hinzufügen“ (Danke Thore!)
+* Ermöglicht unbeaufsichtigte App-Updates auf Xiaomi-Geräten, auf denen kein MIUI läuft (Danke Irate!)
+* Vertrauen in vom Benutzer hinzugefügte Root-Zertifikate (Danke B.!)
+* Groß- und Kleinschreibung bei der Suche mit diakritischen Zeichen korrigiert (Danke Tobias!)
+* Anti-Feature-Beschreibungen aktualisiert (Danke Licaon!)
+* Anti-Feature Tethering-Netzwerkdienste hinzugefügt (Danke linsui!)
+* Leerzeichen werden beim Hinzufügen von Spiegelserver-Repos ignoriert (Danke Tobias!)
