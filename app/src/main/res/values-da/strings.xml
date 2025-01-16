@@ -590,4 +590,6 @@
     <string name="ipfsgw_explainer">Hent apps fra IPFS web endpoints. (Virker kun for F-Droid-repositories med IPFS-understøttelse.)</string>
     <string name="preferForeign">Foretræk udenlandske mirrors</string>
     <string name="preferForeignSummary">Prøv først mirrors, der ligger uden for dit land, f.eks. hvis udenlandsk beskyttelse er stærkere.</string>
+    <string name="repo_archive_toggle">Repository-arkiv</string>
+    <string name="repo_archive_failed">Arkiv-repo er ikke tilgængeligt i øjeblikket</string>
 </resources>
