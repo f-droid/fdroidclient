@@ -598,4 +598,6 @@
     <string name="auto_update_time_past">Következő frissítés a feltételek teljesülése esetén</string>
     <string name="menu_share_apk">APK-fájl megosztása</string>
     <string name="apk_permissions_mismatch">Az alkalmazás váratlan engedéllyel rendelkezik: %s</string>
+    <string name="preferForeign">Külföldi szerverek preferálása</string>
+    <string name="preferForeignSummary">Először az országon kívüli szervereket próbálja elérni, például ha a külföldinek erősebb a védelme.</string>
 </resources>
