@@ -577,7 +577,7 @@
     <string name="swap_bluetooth_permissions">Giv venligst tilladelse til Bluetooth eller Enheder i nærheden!</string>
     <string name="repo_io_error">Fejl ved tilslutning til repositoriet.</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one"/>
+        <item quantity="one">Hent app ved brug af IPFS web endpoints: %1$d aktiveret</item>
         <item quantity="other">Hent apps ved brug af IPFS web endpoints: %1$d aktiveret</item>
     </plurals>
     <string name="ipfsgw_title">IPFS-gateways</string>
