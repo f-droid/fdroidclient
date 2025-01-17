@@ -16,6 +16,7 @@ import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.index.v1.IndexV1UpdaterKt;
+import org.fdroid.index.v2.IndexV2UpdaterKt;
 import org.junit.Test;
 
 import java.io.File;
@@ -44,24 +45,22 @@ public class HttpDownloaderTest {
     // https://developer.android.com/reference/javax/net/ssl/SSLContext
     static {
         ArrayList<Pair<String, String>> tempUrls = new ArrayList<>(Arrays.asList(
-                new Pair<>("https://f-droid.org/repo", IndexV1UpdaterKt.SIGNED_FILE_NAME),
+                new Pair<>("https://f-droid.org/repo", IndexV2UpdaterKt.SIGNED_FILE_NAME),
                 // sites that use SNI for HTTPS
                 new Pair<>("https://mirrors.edge.kernel.org/", "debian/dists/stable/Release"),
                 new Pair<>("https://fdroid.tetaneutral.net/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
-                new Pair<>("https://ftp.fau.de/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
-                new Pair<>("https://ftp.fau.de/fdroid/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg"),
+                new Pair<>("https://opencolo.mm.fcix.net/fdroid/repo/", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg"),
                 //new Pair<>("https://microg.org/fdroid/repo/index-v1.jar"),
                 //new Pair<>("https://grobox.de/fdroid/repo/index.jar"),
-                new Pair<>("https://guardianproject.info/fdroid/repo", IndexV1UpdaterKt.SIGNED_FILE_NAME),
+                new Pair<>("https://guardianproject.info/fdroid/repo", IndexV2UpdaterKt.SIGNED_FILE_NAME),
                 new Pair<>("https://en.wikipedia.org", "/wiki/Index.html"), // no SNI but weird ipv6 lookup issues
-                new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)  // TLSv1.2 only and SNI
+                new Pair<>("https://mirror.cyberbits.eu/fdroid/repo/", IndexV2UpdaterKt.SIGNED_FILE_NAME)  // TLSv1.2 only and SNI
         ));
         if (Build.VERSION.SDK_INT < 26) {
             // domains that use Let's Encrypt won't work on Android 7.1 and older
             // https://gitlab.com/fdroid/fdroidclient/-/issues/2102
             tempUrls = new ArrayList<>(Arrays.asList(
-                new Pair<>("https://ftp.fau.de/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME),
-                new Pair<>("https://ftp.gwdg.de/pub/android/fdroid/repo/", IndexV1UpdaterKt.SIGNED_FILE_NAME)
+                    new Pair<>("https://ftp.gwdg.de/pub/android/fdroid/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg")
             ));
         }
         URLS = tempUrls;
@@ -88,7 +87,7 @@ public class HttpDownloaderTest {
     public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(1);
         String path = "index.jar";
-        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.fau.de/fdroid/repo/"));
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.gwdg.de/pub/android/fdroid/repo/"));
         receivedProgress = false;
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
@@ -156,7 +155,7 @@ public class HttpDownloaderTest {
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(2);
         String path = "index.jar";
-        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.fau.de/fdroid/repo/"));
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.gwdg.de/pub/android/fdroid/repo/"));
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
         final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
@@ -171,7 +170,7 @@ public class HttpDownloaderTest {
                     httpDownloader.download();
                     fail();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "Error downloading: ", e);
                     fail();
                 } catch (InterruptedException e) {
                     // success!
