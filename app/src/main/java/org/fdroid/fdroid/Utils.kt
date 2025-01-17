@@ -40,3 +40,15 @@ suspend fun generateQrBitmapKt(
         Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
     }
 }
+
+val String.flagEmoji: String?
+    get() {
+        if (this.length != 2) {
+            return null
+        }
+        val chars = this.uppercase().toCharArray()
+        val first = chars[0].code - 0x41 + 0x1F1E6
+        val second = chars[1].code - 0x41 + 0x1F1E6
+        val flagEmoji = String(Character.toChars(first) + Character.toChars(second))
+        return flagEmoji
+    }

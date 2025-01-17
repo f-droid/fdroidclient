@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
@@ -35,6 +36,7 @@ import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -60,6 +62,7 @@ import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
 import org.fdroid.fdroid.compose.FDroidExpandableRow
 import org.fdroid.fdroid.compose.FDroidSwitchRow
+import org.fdroid.fdroid.flagEmoji
 
 @Composable
 fun RepoDetailsScreen(
@@ -361,12 +364,26 @@ private fun OfficialMirrors(
             modifier = Modifier.padding(horizontal = 24.dp)
         ) {
             mirrors.forEachIndexed { idx, m ->
-                FDroidSwitchRow(
-                    text = m.baseUrl,
-                    checked = !disabledMirrors.contains(m.baseUrl),
-                    onCheckedChange = { checked -> setMirrorEnabled(m, checked) },
-                    modifier = Modifier.padding(vertical = 8.dp),
-                )
+                val icon = if (m.isOnion()) {
+                    "🧅"
+                } else {
+                    m.countryCode?.flagEmoji ?: ""
+                }
+                Row(
+                    horizontalArrangement = spacedBy(8.dp),
+                    verticalAlignment = CenterVertically,
+                ) {
+                    Text(
+                        text = icon,
+                        modifier = Modifier.width(20.dp),
+                    )
+                    FDroidSwitchRow(
+                        text = m.baseUrl,
+                        checked = !disabledMirrors.contains(m.baseUrl),
+                        onCheckedChange = { checked -> setMirrorEnabled(m, checked) },
+                        modifier = Modifier.padding(vertical = 8.dp),
+                    )
+                }
                 if (idx < mirrors.size - 1) Divider()
             }
         }
