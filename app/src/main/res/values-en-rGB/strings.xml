@@ -335,7 +335,7 @@
     <string name="update_all">Update all</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignore</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">We found a vulnerability with %1$s. We recommend updating to the newest version immediately.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">We found a vulnerability with %1$s. We recommend uninstalling this app immediately.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">We found a vulnerability with %1$s. Touch to read more in the Anti-Features section.</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Updates ignored for Version %1$s</string>
     <string name="installed_app__updates_ignored">Updates ignored</string>
     <string name="send_installed_apps_csv">Apps installed by F-Droid as CSV file</string>
@@ -601,4 +601,7 @@
     <string name="antitetherednet">Tethered Network Services</string>
     <string name="auto_update_time_past">Next update when conditions are fulfilled</string>
     <string name="antitetherednetlist">This app depends entirely on a certain instance of a network service</string>
+    <string name="swap_bluetooth_permissions">Please grant Bluetooth or Nearby Device permission!</string>
+    <string name="menu_share_apk">Share APK file</string>
+    <string name="apk_permissions_mismatch">App has unexpected permission: %s</string>
 </resources>

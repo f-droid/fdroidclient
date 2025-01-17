@@ -84,11 +84,8 @@
     <string name="proxy_host_summary">Su nùmene de s\'host de su serbidore intermediàriu tuo (e.g. 127.0.0.1)</string>
     <string name="proxy_port">Ghenna proxy</string>
     <string name="proxy_port_summary">Su nùmeru de sa ghenna de su serbidore intermediàriu tuo (es. 8118)</string>
-    <string name="status_download">Iscarrighende
-\n%2$s / %3$s (%4$d%%) dae
-\n%1$s</string>
-    <string name="status_connecting_to_repo">Connessione a
-\n%1$s</string>
+    <string name="status_download">Iscarrighende \n%2$s / %3$s (%4$d%%) dae \n%1$s</string>
+    <string name="status_connecting_to_repo">Connessione a \n%1$s</string>
     <string name="repos_unchanged">Totu sos depòsitos sunt agiornados</string>
     <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
     <string name="global_error_updating_repos">Faddina durante s\'agiornamentu: %s</string>
@@ -106,15 +103,10 @@
     <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu. Pro bìdere sas aplicatziones in intro, lu depes abilitare.</string>
     <string name="unknown">Disconnotu</string>
     <string name="repo_confirm_delete_title">Iscantzellare su depòsitu?</string>
-    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus a disponimentu.
-\n
-\nNota: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
-    <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.
-\n
-\nDepes torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.</string>
+    <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus a disponimentu. \n \nDae cara: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
+    <string name="repo_disabled_notification">%1$s est disabilitadu. \n \nDepes torrare a abilitare custu depòsitu pro installare sas aplicatziones chi bi sunt in intro.</string>
     <string name="repo_added">Depòsitu de pachetes %1$s sarvadu.</string>
-    <string name="repo_searching_address">Chirchende unu depòsitu de pachetes in
-\n%1$s</string>
+    <string name="repo_searching_address">Chirchende unu depòsitu de pachetes in \n%1$s</string>
     <string name="not_on_same_wifi">Su dispositivu tuo no est in sa matessi retza Wi-Fi de su depòsitu locale chi as annantu como! Proa a intrare in custa retza: %s</string>
     <string name="requires_features">Netzèssitat de: %1$s</string>
     <string name="category_Development">Isvilupu</string>
@@ -146,11 +138,8 @@
     <string name="pref_language_default">Predefinida de sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Puntu de atzessu (Hotspot)</string>
-    <string name="empty_installed_app_list">Peruna aplicatzione installada.
-\n
-\nBi sunt aplicatziones in su dispositivu tuo, ma non sunt a disponimentu dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas a disponimentu.</string>
-    <string name="empty_can_update_app_list">Bene meda!
-\nSas aplicatziones tuas sunt agiornadas.</string>
+    <string name="empty_installed_app_list">Peruna aplicatzione installada. \n \nBi sunt aplicatziones in su dispositivu tuo, ma non sunt a disponimentu in F-Droid. Custu podet nàrrere chi tèngias bisòngiu de agiornare sos depòsitos tuos, o chi a beru sas aplicatziones tuas non bi siant intre sas a disponimentu.</string>
+    <string name="empty_can_update_app_list">Bene meda! \nSas aplicatziones tuas sunt agiornadas.</string>
     <string name="install_error_unknown">Installatzione faddida pro neghe de una faddina disconnota</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro neghe de una faddina disconnota</string>
     <string name="swap_connection_misc_error">B\'est istada una faddina durante sa connessione a su dispositivu, impossìbile cumpartzire sas aplicatziones!</string>
@@ -221,9 +210,7 @@
     <string name="system_install_denied_permissions">Sos permissos de sistema non sunt istados cuntzessos a s’estensione! Pro piaghere crea una sinnalatzione de errore!</string>
     <string name="repo_details">Depòsitu</string>
     <string name="repo_url">Indiritzu</string>
-    <string name="status_download_unknown_size">Iscarrighende
-\n%2$s dae
-\n%1$s</string>
+    <string name="status_download_unknown_size">Iscarrighende \n%2$s dae \n%1$s</string>
     <string name="permissions">Permissos</string>
     <string name="more">De prus</string>
     <string name="less">Prus pagu</string>
@@ -377,7 +364,7 @@
     <string name="app_list__dismiss_app_update">Agiornamentu ignoradu</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Iscantzellamentu annulladu</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Amus agatadu una vulnerabilidade in %1$s. Racumandamus de la disinstallare immediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Amus agatadu una vulnerabilidade in %1$s. Toca pro lèghere de prus in sa setzione de sas anti-caraterìsticas.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Amus agatadu una vulnerabilidade in %1$s. Racumandamus de l\'agiornare a sa versione prus noa immediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignora</string>
     <string name="privacy">Riservadesa</string>
@@ -542,9 +529,7 @@
     <string name="force_old_installer_title">Fortza s\'installadore betzu</string>
     <string name="ipfsgw_summary_disabled">Iscàrriga aplicatziones dae sos puntos finales IPFS: disabilitadu</string>
     <string name="force_old_installer_summary">Disabìlita s\'installadore de sessione, chi incluit su suportu pro sas atualizatziones automàticas in s\'isfundu.</string>
-    <string name="repo_invalid">Depòsitu non vàlidu.
-\n
-\nCuntata su mantenidore e informa·lu de su problema.</string>
+    <string name="repo_invalid">Depòsitu non vàlidu. \n \nCuntata su mantenidore e informa·lu de su problema.</string>
     <string name="targetsdk_or_later">puntat a %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid podet chircare depòsitos e ispigros in s\'ischeda SD tua, ma tenent bisòngiu de su permissu tuo pro lu fàghere.</string>
     <string name="copied_permission_to_clipboard">Nùmene de su permissu copiadu in punta de billete</string>
@@ -554,9 +539,7 @@
     <string name="ipfsgw_caption_custom_gateways">Ghennas de collegamentu personalizadas IPFS</string>
     <string name="paste">Incolla</string>
     <string name="repo_add_new_mirror">Annanghe comente ispigru nou</string>
-    <string name="repo_intro">Unu depòsitu est una fonte additzionale de aplicatziones. Sos de tertzos chi annanghes inoghe tenent istandards diferentes cunfronta a sos chi frunint sas aplicatziones cumpiladas dae F-Droid matessi.
-\n
-\nAssegura·ti chi su depòsitu chi ses annanghende siat fidadu.</string>
+    <string name="repo_intro">Unu depòsitu est una fonte additzionale de aplicatziones. Sos de tertzos chi annanghes inoghe tenent istandards diferentes cunfronta a sos chi frunint sas aplicatziones cumpiladas dae F-Droid matessi. \n \nAssegura·ti chi su depòsitu chi ses annanghende siat fidadu.</string>
     <string name="swap_connection_indexv0_error">Ses chirchende de ti collegare a calicunu cun una versione betza de F-Droid. Pro si collegare depet agiornare s\'aplicatzione F-Droid sua. Podet impreare su cuncàmbiu pro agiornare s\'aplicatzione de F-Droid sua pro mèdiu de tene.</string>
     <string name="repo_num_apps_button">Mustra sas aplicatziones</string>
     <string name="ipfsgw_add_add">Annanghe</string>
@@ -587,9 +570,7 @@
     <string name="repo_view_repo">Pòmpia sos depòsitos</string>
     <string name="repo_scan_qr_code">Iscansi su còdighe QR</string>
     <string name="repo_error_adding_archive">Sos depòsitos de archìviu non si podent agiùnghere in manera direta. Toca su depòsitu in sa lista e abìlita s\'archìviu dae cue.</string>
-    <string name="repo_list_info_text">Unu depòsitu est una fonte de aplicatziones. Custa lista mustrat totu sos depòsitos annantos como. Sos depòsitos disabilitados non benint impreados.
-\n
-\nSi un\'aplicatzione est in prus de unu depòsitu, su depòsitu prus in artu in sa lista est in automàticu su preferidu. Podes cambiare s\'òrdine de sos depòsitos incarchende·bi subra a longu e traghende·los.</string>
+    <string name="repo_list_info_text">Unu depòsitu est una fonte de aplicatziones. Custa lista mustrat totu sos depòsitos annantos como. Sos depòsitos disabilitados non benint impreados. \n \nSi un\'aplicatzione est in prus de unu depòsitu, su depòsitu prus in artu in sa lista est in automàticu su preferidu. Podes cambiare s\'òrdine de sos depòsitos incarchende·bi in subra a longu e traghende·los.</string>
     <string name="repo_archive_failed">Su depòsitu de archìviu como no est a disponimentu</string>
     <string name="warning_no_compat_versions">Su depòsitu seletzionadu non tenet versiones cumpatìbiles de s\'aplicatzione. Pro retzire atualizatziones, preferi unu depòsitu cun versiones cumpatìbiles.</string>
     <string name="repo_mirror_add_info">S\'URL chi ses chirchende de annànghere (%s) est un\'ispigru de unu depòsitu chi esistit.</string>
@@ -600,4 +581,7 @@
     <string name="auto_update_time_past">Agiornamentu imbeniente cando sas cunditziones sunt satisfatas</string>
     <string name="antitetherednet">Servìtzios de rete ancorados</string>
     <string name="antitetherednetlist">Custa aplicatzione dipendet de su totu dae un\'istàntzia ispetzìfica de unu servìtziu de rete</string>
+    <string name="menu_share_apk">Cumpartzi s\'archìviu APK</string>
+    <string name="apk_permissions_mismatch">S\'aplicatzione tenet unu permissu no isetadu: %s</string>
+    <string name="swap_bluetooth_permissions">Fruni su permissu pro su Bluetooth o a sos dispositivos a curtzu!</string>
 </resources>

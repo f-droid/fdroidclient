@@ -1,0 +1,4 @@
+* 處理 Android 10 的權限設定，以停止「未知的來源」提示
+* 清除搜尋時開啟鍵盤
+* 與 Android 字串同步翻譯
+* 強制常見的軟體庫網域使用 HTTPS (GitLab、GitHub、Amazon)

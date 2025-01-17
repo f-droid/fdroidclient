@@ -625,4 +625,6 @@
     <string name="swap_bluetooth_permissions">¡Por favor, concede el permiso Bluetooth o Dispositivo cercano!</string>
     <string name="apk_permissions_mismatch">La aplicación tiene un permiso inesperado: %s</string>
     <string name="menu_share_apk">Compartir archivo APK</string>
+    <string name="preferForeign">Preferir espejos externos</string>
+    <string name="preferForeignSummary">Pruebe primero con espejos situados fuera de su país, por ejemplo, si las protecciones extranjeras son más fuertes.</string>
 </resources>

@@ -127,7 +127,7 @@
     <string name="antinonfreenetlist">Ši programa reklamuoja arba visiškai priklauso nuo nelaisvo tinklo paslaugos</string>
     <string name="antinonfreedeplist">Ši programėlė priklauso nuo nelaisvų programėlių</string>
     <string name="antiknownvulnlist">Šioje programėlėje yra žinomas saugumo pažeidžiamumas</string>
-    <string name="antinosourcesince">Programos kodas daugiau nebeprieinamas, atnaujinimai negalimi.</string>
+    <string name="antinosourcesince">Pradinis kodas daugiau nebeprieinamas, atnaujinimai negalimi</string>
     <string name="expert">Eksperto veiksena</string>
     <string name="expert_on">Rodyti papildomą informaciją bei įjungti papildomus nustatymus</string>
     <string name="search_hint">Ieškoti programėlių</string>
@@ -214,9 +214,9 @@
     <string name="updates__hide_updateable_apps">Slėpti programėles</string>
     <string name="updates__show_updateable_apps">Rodyti programėles</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Atsiųsti %1$d programėlės atnaujinimą.</item>
-        <item quantity="few">Atsiųsti %1$d programėlių atnaujinimus.</item>
-        <item quantity="other">Atsiųsti %1$d programėlių atnaujinimus.</item>
+        <item quantity="one">Atsiųsti %1$d programėlės atnaujinimą:</item>
+        <item quantity="few">Atsiųsti %1$d programėlių atnaujinimus:</item>
+        <item quantity="other">Atsiųsti %1$d programėlių atnaujinimus:</item>
     </plurals>
     <string name="updates_disabled_by_settings">Naujinimai išjungti, žr. Nustatymai-&gt;Naujinimai-&gt;Mob. duomenis/Wi-Fi</string>
     <string name="links">Nuorodos</string>
@@ -308,7 +308,7 @@
     <string name="empty_can_update_app_list">Sveikiname!
 \nJūsų programėlės yra atnaujintos.</string>
     <string name="swap">Keitimasis programėlėmis</string>
-    <string name="nearby_splash__request_permission">Išbandykite</string>
+    <string name="nearby_splash__request_permission">Ieškoti</string>
     <string name="nearby_splash__find_people_button">Rasti žmones netoliese</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio\? Gaukite programėlių iš įrenginių netoliese!</string>
     <string name="category_Theming">Apipavidalinimas</string>
@@ -409,8 +409,8 @@
     <string name="repo_fingerprint">Pasirašymo rakto kontrolinis kodas (SHA-256)</string>
     <string name="no_handler_app">Neturite jokios programėlės, kuri galėtų dirbti su %s.</string>
     <string name="preventScreenshots_title">Neleisti ekrano nuotraukų</string>
-    <string name="show_anti_feature_apps_on">Rodyti programėles, kurios reikalauja nelaisvų galimybių</string>
-    <string name="show_anti_feature_apps">Rodyti programėles naudojančias nelaisvas technologijas</string>
+    <string name="show_anti_feature_apps_on">Rodyti programėles, kuriose yra žinomų anti-ypatybių</string>
+    <string name="show_anti_feature_apps">Įtraukti anti-ypatybes</string>
     <string name="antifeatures">Anti-ypatybės</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="repo_exists_add_fingerprint">%1$s jau nustatyta, tai pridės naują informaciją apie raktą.</string>
@@ -523,7 +523,7 @@
     <string name="antinonfreeassets">Ne atviro kodo resursai</string>
     <string name="antidisabledalgorithm">Pasirašyta naudojant nesaugų algoritmą</string>
     <string name="antinosource">Programos kodas nebepasiekiamas</string>
-    <string name="app_list_results_hidden_antifeature_settings">Kai kurie rezultatai buvo paslėpti atsižvelgiant į jūsų nepageidaujamų ypatybių nustatymus.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Kai kurios programos buvo paslėptos atsižvelgiant į jūsų nepageidaujamų ypatybių nustatymus.</string>
     <string name="antiads">Skelbimai</string>
     <string name="antinonfreead">Ne atviro kodo papildiniai</string>
     <string name="antinonfreenet">Ne atviro kodo tinklo paslaugos</string>
@@ -541,4 +541,46 @@
     <string name="repo_io_error">Klaida prisijungiant prie saugyklos.</string>
     <string name="repo_enter_url">Įrašykite saugyklos adresą (URL)</string>
     <string name="app_name_basic">„F-Droid Basic“</string>
+    <string name="app_details_repository">Saugykla</string>
+    <string name="app_details_repository_expand">Išplėskite saugyklų sąrašą</string>
+    <string name="app_details_repositories">Saugyklos</string>
+    <string name="about_title_basic">Apie F-Droid Basic</string>
+    <string name="app_error_open">Nepavyko atverti programos.</string>
+    <string name="repo_mirror_exists">Ši tinklavietė jau buvo pridėta (%s).</string>
+    <string name="repo_mirror_add_info">URL adresas, kurį bandote pridėti (%s), yra esamos saugyklos tinklavietė.</string>
+    <string name="repo_view_repo">Rodyti saugyklą</string>
+    <string name="repo_add_repo_and_mirror">Pridėti saugyklą ir tinklavietę</string>
+    <string name="repo_scan_qr_code">Skenuoti QR kodą</string>
+    <string name="repo_preview_included_apps">Įtrauktos programėlės:</string>
+    <string name="repo_and_mirror_add_both_info">URL adresas, kurį bandote pridėti (%s), yra naujos saugyklos tinklavietė. Bus pridėta tiek pradinė saugykla, tiek tinklavietė.</string>
+    <string name="ipfsgw_caption_custom_gateways">Tinkinti IPFS tinklų sietuvai</string>
+    <string name="copied_permission_to_clipboard">Leidimo pavadinimas nukopijuotas į iškarpinę</string>
+    <string name="paste">Įdėti</string>
+    <string name="useDnsCacheSummary">Naudoti rezultatus iš podėlio, siekiant sumažinti DNS užklausas.</string>
+    <string name="apk_permissions_mismatch">Programėlė turi netikėtą leidimą: %s</string>
+    <string name="menu_share_apk">Bendrinti APK failą</string>
+    <string name="useDnsCache">Naudoti DNS podėlį</string>
+    <string name="app_details_repository_preferred">(pageidaujama)</string>
+    <string name="repo_intro">Saugykla yra papildomas programėlių šaltinis. Čia jūsų pridedamos trečiųjų šalių programėlės yra kitokių standartų nei tos, kurias teikia F-Droid.\n\nĮsitikinkite, kad pridedama saugykla yra patikima.</string>
+    <string name="repo_exists">Ši saugykla jau buvo pridėta.</string>
+    <string name="repo_share_not_found">Nepavyko bendrinamame tekste surasti saugyklos adreso.</string>
+    <string name="repo_disable_warning_button">Išjungti</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid gali atlikti saugyklų ir tinklaviečių paiešką jūsų SD kortelėje, bet tam reikia jūsų leidimo.</string>
+    <string name="ipfsgw_title">IPFS tinklų sietuvai</string>
+    <string name="ipfsgw_add_add">Pridėti</string>
+    <string name="repositories_last_update">Paskutinis atnaujinimas: %s</string>
+    <string name="repositories_last_update_never">niekada</string>
+    <string name="nearby_splace__external_storage_permission_button">Išbandyti</string>
+    <string name="copied_url_to_clipboard">URL nukopijuotas į iškarpinę</string>
+    <string name="ipfsgw_add_title">Pridėti IPFS tinklų sietuvą</string>
+    <string name="ipfsgw_caption_official_gateways">Oficialūs IPFS tinklų sietuvai</string>
+    <string name="app_details_repository_button_prefer">Teikti pirmenybę saugyklai</string>
+    <string name="app_list_no_suggested_version">Nėra įdiegimui rekomenduojamos versijos.</string>
+    <string name="repo_state_fetching">Gaunama saugykla…</string>
+    <string name="repo_list_info_title">Saugyklų sąrašas</string>
+    <string name="warning_target_sdk">Ši programėlė buvo sukurta senesnei „Android“ versijai ir negali būti automatiškai atnaujinta.</string>
+    <string name="copied_to_clipboard">Nukopijuota į iškarpinę</string>
+    <string name="force_old_installer_title">Priverstinai naudoti seną diegimo programą</string>
+    <string name="repo_num_apps_button">Rodyti programėles</string>
+    <string name="auto_update_time">Anksčiausias kitas atnaujinimas: %s</string>
 </resources>

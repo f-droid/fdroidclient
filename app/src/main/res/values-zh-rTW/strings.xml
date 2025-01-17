@@ -372,7 +372,7 @@
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下載</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">我們發現了 %1$s 的漏洞，建議您立即解除安裝此應用程式。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">我們發現了 %1$s 的漏洞。輕點以在反特徵區塊閱讀更多資訊。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">我們發現了 %1$s 的漏洞，建議您進行更新至最新版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
     <string name="privacy">隱私權</string>
@@ -590,4 +590,9 @@
     <string name="auto_update_time_past">滿足條件後下次更新</string>
     <string name="antitetherednet">有限制的網路服務</string>
     <string name="antitetherednetlist">此應用程式完全依賴網路服務的某個站台</string>
+    <string name="swap_bluetooth_permissions">請授予藍牙或附近裝置的權限！</string>
+    <string name="menu_share_apk">分享 APK 檔案</string>
+    <string name="apk_permissions_mismatch">應用程式有非預期的權限：%s</string>
+    <string name="preferForeign">偏好外國鏡像</string>
+    <string name="preferForeignSummary">先嘗試位於您國家以外的鏡像，舉例來說，如果外國的保護較強。</string>
 </resources>

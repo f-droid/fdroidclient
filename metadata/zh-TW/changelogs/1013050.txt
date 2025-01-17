@@ -1,0 +1,17 @@
+* 主題支援與內建的 Android 主題綁定 (@proletarius101)
+
+* 新增頂部橫幅通知：「沒有網際網路連線」和「沒有啟用行動數據或 Wi-Fi」
+
+* 改善 USB OTG 和 SD 卡軟體庫和鏡像的處理
+
+* 停止重複更新 Trichrome 函式庫
+
+* 更多遵循 Material Design 的變更 (@proletarius101)
+
+* 改進 OpenCollective 徽章 (@ConnyDuck)
+
+* 使用 Glide 翻修圖示載入 (@proletarius101)
+
+* 新增自適應圖示 (@12people)
+
+* 程式碼現代化 (@Isira-Seneviratne)

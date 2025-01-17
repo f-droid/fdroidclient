@@ -87,7 +87,7 @@
     <string name="keep_install_history">Behald installeringslogg</string>
     <string name="keep_install_history_summary">Lagra ein logg over alle installeringar og avinstalleringar på eit privat område</string>
     <string name="send_version_and_uuid">Send versjonsinfo og UUID-ar til tenarar</string>
-    <string name="send_version_and_uuid_summary">Ta med versjons­nummeret til appen og ein tilfeldig, unik, ID ved nedlasting. Trer først i kraft etter omstart av appen.</string>
+    <string name="send_version_and_uuid_summary">Ta med versjons­nummeret til appen og ein tilfeldig, unik, ID under nedlasting. Trer først i kraft etter omstart av appen.</string>
     <string name="force_old_index">Tving bruk av gammalt indeksformat</string>
     <string name="force_old_index_summary">Ved feil eller kompatibilitets­problem, bruk XML-basert appindeks</string>
     <string name="other">Anna</string>
@@ -523,4 +523,6 @@
     <string name="has_disallow_install_unknown_sources_globally">Administratoren av eininga di tillèt ikkje installering av appar frå ukjende kjelder. Dette gjeld òg nye pakkebrønnar.</string>
     <string name="antiupstreamnonfree">Ufri oppstraums­kode</string>
     <string name="antiothers">Annan antifunksjonalitet</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="force_old_installer_title">Tving bruk av gammal installatør</string>
 </resources>

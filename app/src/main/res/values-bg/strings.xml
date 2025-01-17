@@ -284,7 +284,7 @@
     <string name="keep_hour">1 час</string>
     <string name="keep_year">1 година</string>
     <string name="keep_forever">Завинаги</string>
-    <string name="notification_title_single_ready_to_install">Готово за инсталация</string>
+    <string name="notification_title_single_ready_to_install">Готово за инсталиране</string>
     <string name="notification_title_single_ready_to_install_update">Обновяването е готово за инсталиране</string>
     <string name="notification_title_single_install_error">Неуспешна инсталация</string>
     <string name="notification_content_single_downloading">Изтегляне на „%1$s“…</string>

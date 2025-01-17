@@ -6,8 +6,8 @@
     <string name="installIncompatible">Ứng dụng không tương thích với thiết bị, vẫn tiếp tục cài đặt?</string>
     <string name="version">Phiên bản</string>
     <string name="delete">Xóa</string>
-    <string name="cache_downloaded">Lưu các ứng dụng trong bộ nhớ đệm</string>
-    <string name="updates">Những bản cập nhật</string>
+    <string name="cache_downloaded">Giữ các ứng dụng có trong bộ nhớ đệm</string>
+    <string name="updates">Các bản cập nhật</string>
     <string name="other">Khác</string>
     <string name="update_interval">Tự động cập nhật định kì</string>
     <string name="notify">Hiện các bản cập nhật có sẵn</string>
@@ -35,7 +35,7 @@
     <string name="enable">Bật</string>
     <string name="add_key">Thêm mã khoá</string>
     <string name="overwrite">Ghi đè</string>
-    <string name="bluetooth_activity_not_found">Không tìm thấy phương pháp gửi qua Bluetooth, hãy chọn phương pháp!</string>
+    <string name="bluetooth_activity_not_found">Không tìm thấy phương thức gửi qua Bluetooth, hãy chọn một cái!</string>
     <string name="choose_bt_send">Chọn phương pháp gửi qua Bluetooth</string>
     <string name="repo_add_url">Địa chỉ kho</string>
     <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
@@ -56,7 +56,7 @@
     <string name="antiadslist">Ứng dụng này có quảng cáo</string>
     <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
     <string name="antinonfreeadlist">Ứng dụng này khuyến khích các phần mở rộng không tự do</string>
-    <string name="antinonfreenetlist">Ứng dụng này khuyến khích hoặc phụ thuộc hoàn toàn vào một dịch vụ mạng không miễn phí</string>
+    <string name="antinonfreenetlist">Ứng dụng này khuyến khích hoặc phụ thuộc hoàn toàn vào một dịch vụ không miễn phí</string>
     <string name="antinonfreedeplist">Ứng dụng này phụ thuộc vào các ứng dụng không tự do khác</string>
     <string name="antiupstreamnonfreelist">Mã nguồn không hoàn toàn tự do</string>
     <string name="display">Hiển thị</string>
@@ -130,9 +130,9 @@
     <string name="swap_welcome">Chào mừng bạn đến với F-Droid!</string>
     <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s bây giờ không?</string>
     <string name="app_name_full">F-Droid</string>
-    <string name="unstable_updates">Cập nhật bản không ổn định</string>
+    <string name="unstable_updates">Bản cập nhật không ổn định</string>
     <string name="unstable_updates_summary">Đề xuất cập nhật lên các phiên bản không ổn định</string>
-    <string name="links">Liên kết</string>
+    <string name="links">Các đường dẫn</string>
     <string name="back">Quay lại</string>
     <string name="local_repo_name_summary">Tên kho phần mềm nội bộ của bạn: %s</string>
     <string name="about_source">Mã nguồn</string>
@@ -250,7 +250,7 @@
     <string name="main_menu__swap_nearby">Gần đây</string>
     <string name="main_menu__latest_apps">Mới nhất</string>
     <string name="main_menu__categories">Thể loại</string>
-    <string name="preference_manage_installed_apps">Quản lí các ứng dụng đã cài đặt</string>
+    <string name="preference_manage_installed_apps">Quản lý các ứng dụng đã cài đặt</string>
     <string name="notification_action_update">Cập nhật</string>
     <string name="notification_action_cancel">Hủy</string>
     <string name="notification_action_install">Cài đặt</string>
@@ -300,7 +300,7 @@
     <string name="updates__hide_updateable_apps">Ẩn ứng dụng</string>
     <string name="updates__show_updateable_apps">Hiển thị ứng dụng</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">Tải các bản cập nhật của %1$d ứng dụng.</item>
+        <item quantity="other">Tải các bản cập nhật của ứng dụng %1$d:</item>
     </plurals>
     <string name="versions">Các phiên bản</string>
     <string name="clear_search">Xoá tìm kiếm</string>
@@ -400,7 +400,7 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
     <string name="antiknownvulnlist">Ứng dụng này có một lỗ hổng bảo mật đã biết</string>
-    <string name="show_anti_feature_apps">Bao gồm các ứng dụng có tính năng không mong muốn</string>
+    <string name="show_anti_feature_apps">Bao gồm các tính năng không mong muốn</string>
     <string name="show_anti_feature_apps_on">Hiện các ứng dụng yêu cầu các tính năng không mong muốn</string>
     <string name="force_touch_apps">Hiện ứng dụng cảm ứng</string>
     <string name="force_touch_apps_on">Hiện các ứng dụng yêu cầu màn hình cảm ứng bất kể phần cứng có hỗ trợ hay không</string>
@@ -438,7 +438,7 @@
     <string name="swap_blank_wifi_ssid">(trống)</string>
     <string name="swap_visible_hotspot">Có thể thấy qua điểm phát sóng</string>
     <string name="swap_error_cannot_start_bluetooth">Không thể khởi động Bluetooth!</string>
-    <string name="nearby_splash__request_permission">Thử</string>
+    <string name="nearby_splash__request_permission">Thử ngay</string>
     <string name="share_repository">Chia sẻ kho</string>
     <string name="try_again">Hãy thử lại</string>
     <string name="antinosourcesince">Mã nguồn không còn nữa, không thể có cập nhật.</string>
@@ -514,11 +514,11 @@
     <string name="antinonfreeassets">Các phần không tự do</string>
     <string name="antiknownvuln">Lỗ hổng bảo mật đã biết</string>
     <string name="antinosource">Mã nguồn không còn nữa</string>
-    <string name="app_list_results_hidden_antifeature_settings">Một số kết quả bị ẩn dựa theo cài đặt tính năng không mong muốn.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Một số kết quả bị ẩn dựa theo cài đặt tính năng không mong muốn. Nhấn để thay đổi.</string>
     <string name="antiads">Quảng cáo</string>
     <string name="antitrack">Theo dõi</string>
     <string name="antinonfreenet">Dịch vụ mạng không tự do</string>
-    <string name="antiothers">Tính năng không mong muốn khác</string>
+    <string name="antiothers">Các Tính Năng Không Mong Muốn Khác</string>
     <string name="antinsfw">Không an toàn khi làm việc</string>
     <string name="latest__empty_state__upgrading">Đang nâng cấp cơ sở dữ liệu…</string>
     <string name="menu_release_channel_beta">Cho phép bản cập nhật beta</string>
@@ -566,4 +566,26 @@
     <string name="force_old_installer_title">Sử dụng trình cài đặt cũ</string>
     <string name="repo_num_apps_button">Hiển thị ứng dụng</string>
     <string name="repo_share_not_found">Không thể tìm thấy địa chỉ kho trong văn bản được chia sẻ.</string>
+    <string name="swap_banner_message">Để tráo đổi ứng dụng, bật Wi-Fi và kết nối tới cùng mạng mà bạn của bạn đang dùng.</string>
+    <string name="repo_add_repo_and_mirror">Thêm kho và máy chủ dự phòng</string>
+    <string name="repo_view_repo">Xem kho phần mềm</string>
+    <string name="repo_scan_qr_code">Quét mã QR</string>
+    <string name="repo_mirror_exists">Máy chủ dự phòng đã được thêm từ trước (%s).</string>
+    <string name="repo_preview_included_apps">Ứng dụng đi kèm:</string>
+    <string name="repo_mirror_add_info">URL bạn muốn thêm (%s) là bản dự phòng của một kho khác.</string>
+    <string name="swap_connection_indexv0_error">Bạn đang kết nối với một người với bản F-Droid cũ. Họ phải nâng cấp ứng dụng mới kết nối được. Họ có thể dùng tính năng tráo đổi để cập nhật F-Droid từ máy bạn.</string>
+    <string name="force_old_installer_summary">Tắt Trình cài đặt trong phiên, gồm cả việc cập nhật trong nền</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid có thể tìm các kho phần mềm và bản dự phòng của chúng ở thẻ nhớ của bạn, nhưng nó cần có quyền làm thế.</string>
+    <string name="nearby_splace__external_storage_permission_button">Thử nó</string>
+    <string name="repo_and_mirror_add_both_info">URL bạn muốn thêm (%s) là bản dự phòng của một kho phần mềm mới. Cả hai sẽ được sử dụng.</string>
+    <string name="auto_update_time">Bản cập nhật tiếp gần sớm nhất: (%s)</string>
+    <string name="antitetherednet">Những Dịch Vụ Mạng Buộc</string>
+    <string name="antitetherednetlist">Ứng dụng này hoàn toàn phụ thuộc vào một phần của một dịch vụ</string>
+    <string name="auto_update_time_past">Cập nhật kế tiếp khi các điệu kiện được đáp ứng</string>
+    <string name="copied_to_clipboard">Đã sao chép vào bản tạm</string>
+    <string name="paste">Dán vào</string>
+    <string name="ipfsgw_title">Các Cổng IPFS</string>
+    <string name="turn_on_wifi">Mở lên wifi</string>
+    <string name="copied_url_to_clipboard">Đã sao chép đường URL vào bản tạm</string>
+    <string name="copied_permission_to_clipboard">Đã sao chép tên quyền cho phép vào bản tạm</string>
 </resources>

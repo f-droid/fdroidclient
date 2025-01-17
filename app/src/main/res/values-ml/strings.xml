@@ -69,7 +69,7 @@
     <string name="notification_title_single_update_available">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>
     <string name="notification_title_summary_install_error">സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="SignatureMismatch">പുതിയ പതിപ്പ് പഴയതില്‍ നിന്ന് വ്യത്യസ്തമായ ഒരു കീ ഉപയോഗിച്ച് ഒപ്പ് വെച്ചിരിക്കുന്നു. പുതിയ പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുന്നതിന്, പഴയത് ആദ്യം ഒഴിവാക്കേണ്ടതുണ്ട്. അതിനുശേഷം വീണ്ടും ശ്രമിക്കുക. (ഒഴിവാക്കുന്നത് പ്രയോഗത്തില്‍ സംഭരിച്ചിട്ടുള്ള എല്ലാ ആന്തരിക ഡേറ്റയും മായ്ക്കും)</string>
-    <string name="installIncompatible">ഈ പാക്കേജ് നിങ്ങളുടെ ഉപകരണത്തിന് അനുയോജ്യമല്ലെന്ന് തോന്നുന്നു. എന്തായാലും അത് സ്ഥാപിക്കണോ ?</string>
+    <string name="installIncompatible">ഈ പാക്കേജ് നിങ്ങളുടെ ഉപകരണത്തിന് അനുയോജ്യമല്ല. എന്തായാലും അത് സ്ഥാപിക്കണോ ?</string>
     <string name="version">പതിപ്പ്</string>
     <string name="by_author_format">%s എഴുതിയത്</string>
     <string name="delete">ഇല്ലാതാക്കുക</string>
@@ -439,7 +439,7 @@
     <string name="install_history">ഇൻസ്റ്റാൾ ചരിത്രം</string>
     <string name="install_history_summary">എല്ലാ സജ്ജമാക്കലിന്റെയും ഒഴിവാക്കലിന്റെയും സ്വകാര്യ രേഖ കാണുക</string>
     <string name="send_version_and_uuid">പതിപ്പും UUID-യും സെർവറുകളിലേക്ക് അയയ്ക്കുക</string>
-    <string name="send_version_and_uuid_summary">ആപ്പിന്റെ പതിപ്പ് വിവരവും തിരിച്ചറിയാലിനായി ക്രമത്തിൽ പെടാത്ത ഒരു സംഖ്യയും ഡൌൺലോഡ് ചെയ്യുമ്പോൾ ഉൾപെടുത്തുക, ഇത് ആപ്പിന്റെ അടുത്ത ഉപയോഗം മുതൽ പ്രതിഫലിക്കും.</string>
+    <string name="send_version_and_uuid_summary">ഈ ആപ്പിന്റെ പതിപ്പ് വിവരവും തിരിച്ചറിയാലിനായി ക്രമത്തിൽ പെടാത്ത ഒരു സംഖ്യയും ഡൌൺലോഡ് ചെയ്യുമ്പോൾ ഉൾപെടുത്തുക, ഇത് ആപ്പ് പുനരാരംഭിക്കുമ്പോൾ പ്രാബല്യത്തിൽ വരും.</string>
     <string name="share_repository">ആപ്പ് ശേഖരണം പങ്കിടുക</string>
     <string name="antinosourcesince">സോഴ്സ് കോഡ് ഇനി മുതൽ ലഭ്യമല്ല, നവീകരണം അസാധ്യമാണ്.</string>
     <string name="send_install_history">ഇൻസ്റ്റാൾ ചരിത്രം അയക്കുക</string>
@@ -553,4 +553,6 @@
     <string name="repo_invalid">അസാധുവായ ശേഖരം.
 \n
 \nപരിപാലകനെ ബന്ധപ്പെടുകയും പ്രശ്നത്തെക്കുറിച്ച് അവരെ അറിയിക്കുകയും ചെയ്യുക.</string>
+    <string name="repo_share_not_found">പങ്കുവെച്ച വാചകത്തിൽ റെപ്പോ വിലാസം കണ്ടെത്താനായില്ല.</string>
+    <string name="repo_error_adding_archive">ആർക്കൈവ് റെപ്പോസിറ്ററികൾ നേരിട്ട് ചേർക്കാനാകില്ല. ലിസ്റ്റിലുള്ള റെപ്പോസിറ്ററിയിൽ ടാപ്പ് ചെയ്ത് അവിടെ ആർക്കൈവ് സജ്ജമാക്കുക.</string>
 </resources>

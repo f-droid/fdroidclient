@@ -113,7 +113,7 @@
     <string name="repo_searching_address">Procurando por repositório de pacotes em
 \n%1$s</string>
     <string name="not_on_same_wifi">O seu dispositivo não está na mesma rede Wi-Fi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
-    <string name="requires_features">Obrigatório: %1$s</string>
+    <string name="requires_features">Suporta: %1$s</string>
     <string name="category_Development">Desenvolvimento</string>
     <string name="category_Games">Jogos</string>
     <string name="category_Internet">Internet</string>
@@ -224,7 +224,7 @@
     <string name="repo_details">Repositório</string>
     <string name="repo_url">Endereço</string>
     <string name="menu_settings">Configurações</string>
-    <string name="login_title">Autenticação obrigatória</string>
+    <string name="login_title">Autenticação necessária</string>
     <string name="login_name">Nome de usuário</string>
     <string name="login_password">Senha</string>
     <string name="repo_edit_credentials">Alterar Senha</string>
@@ -383,7 +383,7 @@
     <string name="app_list__dismiss_app_update">Atualização ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Download cancelado</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontramos uma vulnerabilidade com %1$s. Recomendamos desinstalar o app imediatamente.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontramos uma vulnerabilidade com %1$s. Toque para ler mais na seção de características indesejadas.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontramos uma vulnerabilidade com %1$s. Recomendamos atualizar para a versão mais recente imediatamente.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
     <string name="privacy">Privacidade</string>
@@ -501,7 +501,7 @@
     <string name="fdroid_metrics_report">%s Relatório das Métricas</string>
     <string name="send_fdroid_metrics_json">%s relatório das métricas como arquivo JSON</string>
     <string name="send_fdroid_metrics_report">Enviar %s Relatório de Métricas</string>
-    <string name="send_to_fdroid_metrics_summary">Enviar dados anônimos semanalmente para o F-Droid Métricas (é obrigatório \"Manter histórico de instalação\")</string>
+    <string name="send_to_fdroid_metrics_summary">Enviar dados anônimos semanalmente para o F-Droid Métricas (requer \"Manter histórico de instalação\")</string>
     <string name="send_to_fdroid_metrics">Enviar dados de uso</string>
     <string name="install_history_and_metrics">Histórico de instalação e métricas</string>
     <string name="theme_follow_system">O mesmo do sistema</string>
@@ -607,4 +607,9 @@
     <string name="auto_update_time_past">Próxima atualização quando as condições forem atendidas</string>
     <string name="antitetherednet">Serviços de rede vinculada</string>
     <string name="antitetherednetlist">Este aplicativo depende inteiramente de uma determinada instância de um serviço de rede</string>
+    <string name="swap_bluetooth_permissions">Por favor, garanta permissão ao Bluetooth ou Dispositivo Próximo!</string>
+    <string name="menu_share_apk">Compartilhar arquivo APK</string>
+    <string name="apk_permissions_mismatch">App tem uma permissão inesperada: %s</string>
+    <string name="preferForeign">Preferir Espelhos Externos</string>
+    <string name="preferForeignSummary">Preferir espelhos que estão localizados fora de seu país primeiro, por exemplo, se proteções externas forem mais fortes.</string>
 </resources>

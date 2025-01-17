@@ -1,0 +1,7 @@
+* Reescrito atualizador de repos para fazer atualizações de fundo mais confiável
+* Dividir nome e resumo em listas de aplicações para melhor legibilidade
+* Mostrar aviso quando as aplicações não podem ser atualizadas do repo preferido
+* Aplicações que visam SDK 24 são incompatíveis com dispositivos Android 15
+* Lidar melhor com espelhos na pré-visualização "Adicionar repo" (Obrigado Thore!)
+* Ativar atualizações de aplicações sem supervisão em dispositivos Xiaomi sem MIUI (Obrigado Irate!)
+...

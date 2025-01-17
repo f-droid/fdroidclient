@@ -1,0 +1,13 @@
+* Swapping வழிமம் SD cards supported
+
+* Nearby Swap bugfixes and improvements
+
+* Further improvement of "பயன்பாடு Details"
+
+* புதுப்பிப்பு மொழி and மொழிபெயர்ப்புகள் பற்றி Nearby and Swap
+
+* Improved பயன்பாடு icon தேர்வு logic
+
+* கூட்டு repos வழிமம் built-in additional_repos.xml இருந்து ROM, OEM, vendor.
+
+* காட்சி versionCode in expanded versions பட்டியல் entries in Expert பயன்முறை

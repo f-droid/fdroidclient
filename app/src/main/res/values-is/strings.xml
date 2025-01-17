@@ -584,4 +584,6 @@
     <string name="auto_update_time">Fyrsta næsta uppfærsla: %s</string>
     <string name="repo_share_not_found">Gat ekki fundið vistfang hugbúnaðarsafns í deilda textanum.</string>
     <string name="repo_list_info_text">Hugbúnaðarsafn er uppspretta fyrir forrit og fleira. Þessi listi sýnir öll hugbúnaðarsöfn sem hefur verið bætt við. Óvirk hugbúnaðarsöfn eru ekki notuð. \n \nEf forrit er í fleiri en einu hugbúnaðarsafni, er það safn notað sem er hærra á listanum. Þú getur endurraðað listanum með því að ýta lengi á atriði og draga þau til.</string>
+    <string name="preferForeign">Kjósa helst erlenda spegla</string>
+    <string name="preferForeignSummary">Prófa fyrst spegla sem staðsettir eru í öðru landi en þínu, t.d. ef verndun gagna er sterkari erlendis.</string>
 </resources>

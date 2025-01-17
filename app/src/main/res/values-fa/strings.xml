@@ -585,6 +585,6 @@
     <string name="swap_bluetooth_permissions">لطفاً دسترسی بلوتوث یا افزاره‌های نزدیک را اعطا کنید!</string>
     <string name="menu_share_apk">هم‌رسانی پروندهٔ APK</string>
     <string name="apk_permissions_mismatch">کاره اجازه‌ای غیرمنتظره دارد: %s</string>
-    <string name="preferForeign">ترجیح مخازن خارجی</string>
-    <string name="preferForeignSummary">ابتدا مخزن هایی را امتحان کنید که در خارج از کشور شما قرار دارند، به عنوان مثال. اگر اطمینان از مخزن های خارجی قوی تر باشد.</string>
+    <string name="preferForeign">ترجیح آینه‌های خارجی</string>
+    <string name="preferForeignSummary">ابتدا آزمودن آینه‌هایی در خارج از کشورتان. برای نمونه اگر مخافظت‌های خارجی قوی‌ترند.</string>
 </resources>

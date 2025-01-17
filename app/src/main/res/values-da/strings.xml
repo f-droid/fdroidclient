@@ -577,7 +577,7 @@
     <string name="swap_bluetooth_permissions">Giv venligst tilladelse til Bluetooth eller Enheder i nærheden!</string>
     <string name="repo_io_error">Fejl ved tilslutning til repositoriet.</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one"/>
+        <item quantity="one">Hent app ved brug af IPFS web endpoints: %1$d aktiveret</item>
         <item quantity="other">Hent apps ved brug af IPFS web endpoints: %1$d aktiveret</item>
     </plurals>
     <string name="ipfsgw_title">IPFS-gateways</string>
@@ -590,4 +590,6 @@
     <string name="ipfsgw_explainer">Hent apps fra IPFS web endpoints. (Virker kun for F-Droid-repositories med IPFS-understøttelse.)</string>
     <string name="preferForeign">Foretræk udenlandske mirrors</string>
     <string name="preferForeignSummary">Prøv først mirrors, der ligger uden for dit land, f.eks. hvis udenlandsk beskyttelse er stærkere.</string>
+    <string name="repo_archive_toggle">Repository-arkiv</string>
+    <string name="repo_archive_failed">Arkiv-repo er ikke tilgængeligt i øjeblikket</string>
 </resources>

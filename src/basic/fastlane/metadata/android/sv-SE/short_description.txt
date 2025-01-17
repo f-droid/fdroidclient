@@ -1,0 +1,1 @@
+Den minimala klient-appen för app-butiken som respekterar frihet och privatliv

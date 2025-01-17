@@ -1,0 +1,9 @@
+• refarita ĝisdatigilo de deponejoj por igi fonajn ĝisdatigojn pli senmalfunkciaj
+• dividita nomo kaj priskribo de apo en ap-listo por pliigi legeblon
+• montri sciigon kiam apoj neĝisdatigeblej per preferata deponejo
+• apoj celantaj SDK 24 nekongruaj kun Android 15
+• pli bona antaŭvido de deponejo dum aldoni ĝin
+• aktivigi fonajn ĝisdatigojn en aparatoj Xiaomi sen MIUI
+• fidi uzant-aldonitajn atestilojn
+• riparita usklecdistinga serĉo enhavanta kromsignojn
+• priskriboj de fiebloj

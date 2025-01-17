@@ -1,0 +1,11 @@
+* Actualitzador de dipòsit reescrit per a fer les actualitzacions en segon pla més fiables
+* Divideix el nom i el resum a les llistes d'aplicacions per a una millor llegibilitat
+* Mostra un avís quan les aplicacions no es poden actualitzar des del repositori preferit
+* Les aplicacions dirigides a SDK 24 són incompatibles amb els dispositius Android 15
+* Gestiona millor els miralls a la previsualització «Afegeix un dipòsit» (Gràcies Thore!)
+* Habilita les actualitzacions d'aplicacions no ateses als dispositius Xiaomi que no executen MIUI (Gràcies Irate!)
+* Confia en l'arrel afegida per l'usuari cert (Gràcies B.!)
+* Soluciona una cerca insensible a majúscules i minúscules que contingui diacrítics (Gràcies Tobias!)
+* Actualitza les descripcions anti-funcionals (Gràcies Licaon!)
+* Afegeix la característica no adient ancoratge a xarxa (Gràcies linsui!)
+* Ignora els espais en blanc quan s'afegeixen repeticions de mirall (Gràcies a Tobias!)

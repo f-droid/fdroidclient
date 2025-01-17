@@ -363,7 +363,7 @@
     <string name="app_list__dismiss_app_update">已忽略更新</string>
     <string name="app_list__dismiss_vulnerable_app">已忽略漏洞</string>
     <string name="app_list__dismiss_downloading_app">已取消下载</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">我们发现了关于 %1$s 的漏洞，建议你立刻卸载此应用。</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">我们发现了 %1$s 的漏洞。单击此提示在“负面特征”部分了解更多信息。</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">我们发现了关于 %1$s 的漏洞，建议你立即更新至最新版本。</string>
     <string name="updates__app_with_known_vulnerability__ignore">忽略</string>
     <string name="privacy">隐私</string>
@@ -586,4 +586,8 @@
     <string name="antitetherednetlist">此用用完全依赖某一网络服务的特定实例</string>
     <string name="antitetherednet">和特定网络服务深度捆绑</string>
     <string name="swap_bluetooth_permissions">请授予蓝牙或附近设备权限！</string>
+    <string name="apk_permissions_mismatch">Apk 有意料之外的权限：%s</string>
+    <string name="menu_share_apk">分享 APK 文件</string>
+    <string name="preferForeign">偏好海外镜像</string>
+    <string name="preferForeignSummary">首先尝试位于你所在国家之外的镜像，如果海外保护更强。</string>
 </resources>

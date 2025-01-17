@@ -614,4 +614,6 @@
     <string name="swap_bluetooth_permissions">Vă rugăm să acordați permisiunea pentru Bluetooth sau Dispozitiv apropiat!</string>
     <string name="apk_permissions_mismatch">Aplicația are permisiuni neașteptate: %s</string>
     <string name="menu_share_apk">Partajează fișierul APK</string>
+    <string name="preferForeign">Preferă depozitele de rezervă străine</string>
+    <string name="preferForeignSummary">Încercați mai întâi depozitele de rezervă care se află în afara țării dvs., de exemplu, dacă protecțiile străine sunt mai ridicate.</string>
 </resources>

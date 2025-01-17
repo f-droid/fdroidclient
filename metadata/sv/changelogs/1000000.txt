@@ -1,0 +1,7 @@
+* Stöd för installation av media, OTA, ZIP-, etc. filer
+
+* Fullt stöd för APK:er signerade med flera signeringsnycklar
+
+* Ny tibetansk översättning
+
+* Ta bort relaterade appar och kategorier efter att ha stängt av ett repo

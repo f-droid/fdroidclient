@@ -73,8 +73,8 @@
     <string name="skip">跳過</string>
     <string name="status_connecting_to_repo">正在連線至
 \n %1$s</string>
-    <string name="repos_unchanged">所有倉庫已更新至最新的版本</string>
-    <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
+    <string name="repos_unchanged">所有軟件庫已是最新的版本</string>
+    <string name="all_other_repos_fine">其他軟件庫都沒有出現問題。</string>
     <string name="global_error_updating_repos">更新時出現問題：%s</string>
     <string name="no_permissions">沒有權限</string>
     <string name="theme">主題</string>
@@ -279,7 +279,7 @@
     <string name="updates__show_updateable_apps">顯示應用程式</string>
     <string name="versions">版本</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="other">為 %1$d 個應用程式下載更新。</item>
+        <item quantity="other">為 %1$d 個應用程式下載更新：</item>
     </plurals>
     <string name="clear_search">清除搜尋</string>
     <string name="updates__tts__download_app">下載</string>
@@ -580,4 +580,13 @@
     <string name="app_details_repository">軟件庫</string>
     <string name="app_details_repository_preferred">(喜好)</string>
     <string name="repo_error_adding_archive">封存軟件庫無法直接加入。請在清單中輕觸軟件庫，然後啟用其封存。</string>
+    <string name="repo_and_mirror_add_both_info">您嘗試加入的網址 (%s) 乃新軟件庫的鏡像。將一併加入原始軟件庫及鏡像。</string>
+    <string name="repo_add_repo_and_mirror">加入軟件庫及鏡像</string>
+    <string name="repo_view_repo">查看軟件庫</string>
+    <string name="repo_scan_qr_code">掃描二維碼</string>
+    <string name="repo_preview_included_apps">包含的應用程式：</string>
+    <string name="repo_mirror_exists">此鏡像已經加入 (%s)。</string>
+    <string name="repo_mirror_add_info">您嘗試加入的網址 (%s) 乃現有軟件庫的鏡像。</string>
+    <string name="auto_update_time">下次更新最快於：%s</string>
+    <string name="warning_no_compat_versions">選取的軟件庫未有相容的應用程式版本。若要接收更新，請喜好提供相容版本的軟件庫。</string>
 </resources>

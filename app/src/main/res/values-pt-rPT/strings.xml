@@ -229,7 +229,7 @@
     <string name="uninstall_update_confirm">Substituir este app pela versão de fábrica\? Todos os dados serão removidos.</string>
     <string name="uninstall_confirm">Quer desinstalar este app\?</string>
     <string name="download_error">Falha ao descarregar!</string>
-    <string name="menu_settings">Configurações</string>
+    <string name="menu_settings">Definições</string>
     <string name="login_title">Requer autenticação</string>
     <string name="login_name">Nome de utilizador</string>
     <string name="login_password">Palavra-passe</string>
@@ -390,7 +390,7 @@
     <string name="app_list__dismiss_app_update">Atualização ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Descarga cancelada</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a desinstalação imediata da aplicação.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Encontrámos uma vulnerabilidade em %1$s. Toque para saber mais na secção de funcionalidades indesejadas.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Encontrámos uma vulnerabilidade em %1$s. Recomendamos a atualização imediata da aplicação.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
     <string name="privacy">Privacidade</string>
@@ -418,8 +418,8 @@
     <string name="repo_delete_to_overwrite">Tem que remover %1$s para adicionar isto à chave em conflito.</string>
     <string name="repo_exists_add_mirror">Isto é uma cópia de %1$s, deseja adicionar como servidor espelho\?</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Incluir características indesejadas</string>
-    <string name="show_anti_feature_apps_on">Mostrar apps que têm características indesejadas conhecidas</string>
+    <string name="show_anti_feature_apps">Incluir funcionalidades indesejadas</string>
+    <string name="show_anti_feature_apps_on">Mostrar apps que têm funcionalidades indesejadas conhecidas</string>
     <string name="force_touch_apps">Incluir aplicações de ecrã tátil</string>
     <string name="force_touch_apps_on">Mostrar apps que necessitem de ecrã tátil mesmo que o aparelho não o permita</string>
     <string name="panic_app_setting_title">Aplicação para botão de pânico</string>
@@ -527,11 +527,11 @@
     <string name="antinosource">Código-fonte já não disponível</string>
     <string name="antinonfreenet">Serviços de rede não livres</string>
     <string name="antinonfreead">Complementos não livres</string>
-    <string name="app_list_results_hidden_antifeature_settings">Algumas apps foram ocultas com base nas suas configurações de características indesejadas. Toque para alterar.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Algumas apps estão ocultas com base nas suas definições de funcionalidades indesejadas. Toque para alterar.</string>
     <string name="antinonfreedep">Dependências não livres</string>
     <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
-    <string name="antiothers">Outras características indesejadas</string>
+    <string name="antiothers">Outras funcionalidades indesejadas</string>
     <string name="antinsfw">Não é seguro para o trabalho</string>
     <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
     <string name="latest__empty_state__upgrading">Atualizando o banco de dados…</string>
@@ -616,4 +616,6 @@
     <string name="swap_bluetooth_permissions">Por favor dê a permissão para utilizar o Bluetooth ou Dispositivos Próximos!</string>
     <string name="menu_share_apk">Partilhar ficheiro APK</string>
     <string name="apk_permissions_mismatch">A app tem permissão inesperada: %s</string>
+    <string name="preferForeign">Preferir espelhos estrangeiros</string>
+    <string name="preferForeignSummary">Experimente primeiro os espelhos localizados fora do seu país, por exemplo, se as proteções estrangeiras forem mais fortes.</string>
 </resources>

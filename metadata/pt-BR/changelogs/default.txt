@@ -1,8 +1,11 @@
-* Separar nome e sumário nas listas de apps para melhor visu.
-* Apps feitos para o SDK 24 são incompatíveis com o Android 15
-* Melhor lidar com espelhos na preview de "Adic. repositório" (obrigado Thore!)
-* Ativar atualizações automáticas em dispositivos Xiaomi sem MIUI (obrigado Irate!)
-* Confiar certs root adicionados pelo usuário (thanks B.!)
-* Melhorar a tradução para linguagens menos conhecidas (obrigado Ray!)
-* Não reagir a tags NFC já que foi removido (obrigado Thibault!)
-* Mostrar aviso quando apps não podem ser atualizados do repo. preferido
+* Atualizador de repositório reescrito para tornar as atualizações em segundo plano mais confiáveis
+* Separação do nome e do resumo nas listas de aplicativos para melhor legibilidade
+* Exibe aviso quando os aplicativos não podem ser atualizados a partir do repositório preferido
+* Aplicativos direcionados ao SDK 24 são incompatíveis com dispositivos Android 15
+* Lida melhor com os espelhos na visualização “Adicionar repositório” (Obrigado, Thore!)
+* Habilita atualizações de aplicativos sem supervisão em dispositivos Xiaomi que não executam MIUI (Obrigado Irate!)
+* Confia nos certificados raiz adicionados pelo usuário (Obrigado, B.!)
+* Corrige pesquisas sem distinção entre maiúsculas e minúsculas contendo diacríticos (Obrigado Tobias!)
+* Atualiza as descrições de anti-recursos (Obrigado, Licaon!)
+* Adição do recurso anti-rede vinculada (Obrigado, Linsui!)
+* Ignora espaços em branco ao adicionar repositórios espelho (Obrigado, Tobias!)

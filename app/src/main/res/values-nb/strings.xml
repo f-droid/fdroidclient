@@ -378,7 +378,7 @@
     <string name="by_author_format">av %s</string>
     <string name="force_old_index">Tvungen bruk av gammelt indeksformat</string>
     <string name="app_installed_media">Fil installert til %s</string>
-    <string name="force_old_index_summary">I tilfelle det er feil eller kompabilitetsproblemer, bruk XML-programindeksen</string>
+    <string name="force_old_index_summary">I tilfelle det er feil eller kompatibilitetsproblemer, bruk XML-programindeksen</string>
     <string name="app_permission_storage">F-droid trenger lagringstilgang for å installere til dette lagringsmediet. Tillat det på neste skjerm for å fortsette installasjonen.</string>
     <string name="app_list_download_ready">Nedlastet, klar til installasjon</string>
     <string name="download_404">Den etterspurte fila ble ikke funnet.</string>
