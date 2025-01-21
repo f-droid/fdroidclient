@@ -19,11 +19,14 @@
 
 package org.fdroid.fdroid.views.installed;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
@@ -118,12 +121,18 @@ public class InstalledAppsActivity extends AppCompatActivity {
                             .append(app.installedVersionName).append('\n');
                 }
             }
+            String title = getString(R.string.send_installed_apps);
             ShareCompat.IntentBuilder intentBuilder = new ShareCompat.IntentBuilder(this)
-                    .setSubject(getString(R.string.send_installed_apps))
-                    .setChooserTitle(R.string.send_installed_apps)
+                    .setSubject(title)
+                    .setChooserTitle(title)
                     .setText(stringBuilder.toString())
                     .setType("text/csv");
-            startActivity(intentBuilder.getIntent());
+            try {
+                Intent chooserIntent = Intent.createChooser(intentBuilder.getIntent(), title);
+                startActivity(chooserIntent);
+            } catch (ActivityNotFoundException ex) {
+                Toast.makeText(this, R.string.no_handler_app_generic, Toast.LENGTH_LONG).show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }

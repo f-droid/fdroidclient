@@ -20,6 +20,7 @@
 
 package org.fdroid.fdroid.views;
 
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
@@ -28,6 +29,7 @@ import android.os.ParcelFileDescriptor;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
@@ -137,6 +139,7 @@ public class InstallHistoryActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.menu_share) {
             ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(this);
+            String title;
             if (showingInstallHistory) {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("Repos:\n");
@@ -147,22 +150,29 @@ public class InstallHistoryActivity extends AppCompatActivity {
                         stringBuilder.append('\n');
                     }
                 }
+                title = getString(R.string.send_install_history);
                 intentBuilder
                         .setText(stringBuilder.toString())
                         .setStream(InstallHistoryService.LOG_URI)
                         .setType("text/plain")
                         .setSubject(getString(R.string.send_history_csv, appName))
-                        .setChooserTitle(R.string.send_install_history);
+                        .setChooserTitle(title);
             } else {
+                title = getString(R.string.send_fdroid_metrics_report, appName);
                 intentBuilder
                         .setText(textView.getText())
                         .setType("application/json")
                         .setSubject(getString(R.string.send_fdroid_metrics_json, appName))
-                        .setChooserTitle(R.string.send_fdroid_metrics_report);
+                        .setChooserTitle(title);
             }
             Intent intent = intentBuilder.getIntent();
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivity(intent);
+            try {
+                Intent chooserIntent = Intent.createChooser(intent, title);
+                startActivity(chooserIntent);
+            } catch (ActivityNotFoundException ex) {
+                Toast.makeText(this, R.string.no_handler_app_generic, Toast.LENGTH_LONG).show();
+            }
         } else if (itemId == R.id.menu_delete) {
             if (showingInstallHistory) {
                 getContentResolver().delete(InstallHistoryService.LOG_URI, null, null);
