@@ -31,6 +31,7 @@ import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.QrCode
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
@@ -130,10 +131,8 @@ fun RepoDetailsScreen(
                 Spacer(modifier = Modifier) // spacedBy will provide the padding
                 GeneralInfoCard(
                     repo,
-                    archiveState,
                     numberOfApps,
                     onShowAppsClicked,
-                    onToggleArchiveClicked,
                 )
                 BasicAuthCard(repo, onEditCredentialsClicked)
                 if (repo.certificate.isEmpty()) {
@@ -162,6 +161,7 @@ fun RepoDetailsScreen(
                     )
                 }
                 // TODO: Add button to add user mirror?
+                SettingsRow(archiveState, onToggleArchiveClicked)
                 Spacer(modifier = Modifier) // spacedBy will provide the padding
             }
         }
@@ -171,10 +171,8 @@ fun RepoDetailsScreen(
 @Composable
 private fun GeneralInfoCard(
     repo: Repository,
-    archiveState: ArchiveState,
     numberOfApps: Int,
     onShowAppsClicked: () -> Unit,
-    onToggleArchiveClicked: (Boolean) -> Unit,
 ) {
     val localeList = LocaleListCompat.getDefault()
     val isDevPreview = LocalInspectionMode.current
@@ -250,17 +248,6 @@ private fun GeneralInfoCard(
                 Text(
                     text = description,
                     style = MaterialTheme.typography.body2,
-                )
-            }
-            if (description != null && archiveState != ArchiveState.UNKNOWN) {
-                Divider()
-            }
-            if (archiveState != ArchiveState.UNKNOWN) {
-                FDroidSwitchRow(
-                    text = stringResource(R.string.repo_archive_toggle_description),
-                    checked = archiveState == ArchiveState.ENABLED,
-                    enabled = true,
-                    onCheckedChange = onToggleArchiveClicked,
                 )
             }
         }
@@ -429,6 +416,28 @@ private fun UserMirrors(
                 }
                 if (idx < mirrors.size - 1) Divider()
             }
+        }
+    }
+}
+
+@Composable
+private fun SettingsRow(
+    archiveState: ArchiveState,
+    onToggleArchiveClicked: (Boolean) -> Unit,
+) {
+    if (archiveState != ArchiveState.UNKNOWN) {
+        FDroidExpandableRow(
+            text = stringResource(R.string.menu_settings),
+            imageVectorStart = Icons.Default.Settings,
+        ) {
+            FDroidSwitchRow(
+                text = stringResource(R.string.repo_archive_toggle_description),
+                checked = archiveState == ArchiveState.ENABLED,
+                enabled = true,
+                onCheckedChange = onToggleArchiveClicked,
+                modifier = Modifier
+                    .padding(horizontal = 24.dp, vertical = 8.dp),
+            )
         }
     }
 }
