@@ -12,15 +12,16 @@ import kotlin.test.assertFailsWith
 class HttpManagerIntegrationTest {
 
     private val userAgent = getRandomString()
-    private val mirrors = listOf(Mirror("https://example.org"), Mirror("https://example.net/"))
-    private val downloadRequest = DownloadRequest("", mirrors)
+    private val mirrors =
+        listOf(Mirror("https://f-droid.org/"), Mirror("https://cloudflare.f-droid.org/"))
+    private val downloadRequest = DownloadRequest(".well-known/security.txt", mirrors)
 
     @Test
     fun testResumeOnExample() = runSuspend {
         val httpManager = HttpManager(userAgent, null)
 
-        val lastLine = httpManager.getBytes(downloadRequest, 1248).decodeToString()
-        assertEquals("</html>\n", lastLine)
+        val lastLine = httpManager.getBytes(downloadRequest, 974).decodeToString()
+        assertEquals("-----END PGP SIGNATURE-----\n", lastLine)
     }
 
     @Test
@@ -33,7 +34,7 @@ class HttpManagerIntegrationTest {
         }
         assertEquals("Failed to connect to /127.0.0.1:80", e.message)
 
-        val lastLine = httpManager.getBytes(downloadRequest, 1248).decodeToString()
-        assertEquals("</html>\n", lastLine)
+        val lastLine = httpManager.getBytes(downloadRequest, 974).decodeToString()
+        assertEquals("-----END PGP SIGNATURE-----\n", lastLine)
     }
 }
