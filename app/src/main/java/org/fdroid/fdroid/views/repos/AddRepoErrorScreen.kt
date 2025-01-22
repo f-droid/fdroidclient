@@ -23,7 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.repos.ManageReposActivity.getDisallowInstallUnknownSourcesErrorMessage
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
@@ -79,7 +79,7 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
 @Preview
 @Composable
 fun AddRepoErrorInvalidFingerprintPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(INVALID_FINGERPRINT))
     }
 }
@@ -87,7 +87,7 @@ fun AddRepoErrorInvalidFingerprintPreview() {
 @Preview
 @Composable
 fun AddRepoErrorIoErrorPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(IO_ERROR, IOException("foo bar")))
     }
 }
@@ -95,7 +95,7 @@ fun AddRepoErrorIoErrorPreview() {
 @Preview
 @Composable
 fun AddRepoErrorInvalidIndexPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(
             PaddingValues(0.dp),
             AddRepoError(INVALID_INDEX, RuntimeException("foo bar"))
@@ -106,7 +106,7 @@ fun AddRepoErrorInvalidIndexPreview() {
 @Preview
 @Composable
 fun AddRepoErrorUnknownSourcesPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(UNKNOWN_SOURCES_DISALLOWED))
     }
 }
@@ -114,7 +114,7 @@ fun AddRepoErrorUnknownSourcesPreview() {
 @Preview
 @Composable
 fun AddRepoErrorArchivePreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(IS_ARCHIVE_REPO))
     }
 }

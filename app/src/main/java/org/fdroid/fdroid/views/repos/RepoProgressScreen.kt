@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 fun RepoProgressScreen(paddingValues: PaddingValues, text: String) {
@@ -40,7 +40,7 @@ fun RepoProgressScreen(paddingValues: PaddingValues, text: String) {
 @Preview
 @Composable
 fun FetchingRepoScreenPreview() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoProgressScreen(PaddingValues(0.dp), stringResource(R.string.repo_state_fetching))
     }
 }

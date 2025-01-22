@@ -15,8 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -44,28 +44,20 @@ import org.fdroid.fdroid.IPreferencesIpfs
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils.CaptionText
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.LifecycleEventListener
-import org.fdroid.fdroid.ui.theme.AppTheme
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
 class IpfsGatewaySettingsActivity : AppCompatActivity() {
 
-    lateinit var prefs: Preferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        prefs = Preferences.get()
-        val pureBlack = prefs.isPureBlack
-
+        val prefs = Preferences.get()
         setContent {
-            AppTheme(pureBlack = pureBlack) {
-                FDroidContent {
-                    IpfsGatewaySettingsScreen(
+            FDroidContent {
+                IpfsGatewaySettingsScreen(
                     prefs = prefs,
-                        onBackClicked = { onBackPressedDispatcher.onBackPressed() },
+                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                 )
-                }
             }
         }
     }
@@ -84,13 +76,13 @@ fun IpfsGatewaySettingsScreen(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                IconButton(onClick = onBackClicked) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
-                }
-            },
-            title = {
-                Text(
-                    text = stringResource(R.string.ipfsgw_title),
+                    IconButton(onClick = onBackClicked) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
+                    }
+                },
+                title = {
+                    Text(
+                        text = stringResource(R.string.ipfsgw_title),
                     )
                 },
             )
@@ -254,7 +246,7 @@ fun IpfsGatewaySettingsScreenPreview() {
             throw NotImplementedError()
     }
 
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         IpfsGatewaySettingsScreen(
             prefs = prefs,
             onBackClicked = {},

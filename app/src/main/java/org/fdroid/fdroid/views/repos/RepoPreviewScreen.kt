@@ -45,7 +45,7 @@ import org.fdroid.fdroid.R
 import org.fdroid.fdroid.Utils
 import org.fdroid.fdroid.Utils.getGlideModel
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.FileV2
 import org.fdroid.repo.FetchResult.IsExistingMirror
 import org.fdroid.repo.FetchResult.IsExistingRepository
@@ -221,7 +221,7 @@ fun LazyItemScope.RepoPreviewApp(
     val isDevPreview = LocalInspectionMode.current
     Card(
         modifier = Modifier
-            .animateItemPlacement()
+            .animateItem()
             .fillMaxWidth(),
     ) {
         Row(
@@ -284,7 +284,7 @@ fun RepoPreviewScreenFetchingPreview() {
 
         override fun getIcon(localeList: LocaleListCompat): FileV2? = null
     }
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
             PaddingValues(0.dp),
             Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository)
@@ -296,7 +296,7 @@ fun RepoPreviewScreenFetchingPreview() {
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 fun RepoPreviewScreenNewMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
             PaddingValues(0.dp),
             Fetching("https://mirror.example.org", repo, emptyList(), IsNewMirror(0L))
@@ -308,7 +308,7 @@ fun RepoPreviewScreenNewMirrorPreview() {
 @Preview
 fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
             PaddingValues(0.dp),
             Fetching("https://mirror.example.org", repo, emptyList(), IsNewRepoAndNewMirror)
@@ -321,7 +321,7 @@ fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
 fun RepoPreviewScreenExistingRepoPreview() {
     val address = "https://example.org"
     val repo = FDroidApp.createSwapRepo(address, "foo bar")
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
             PaddingValues(0.dp),
             Fetching(address, repo, emptyList(), IsExistingRepository(0L))
@@ -333,7 +333,7 @@ fun RepoPreviewScreenExistingRepoPreview() {
 @Composable
 fun RepoPreviewScreenExistingMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
             PaddingValues(0.dp),
             Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror(0L))

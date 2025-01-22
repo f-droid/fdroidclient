@@ -10,7 +10,6 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">18dp</item>
         <item name="android:paddingRight">18dp</item>
-        <item name="textAllCaps">true</item>
         <item name="android:stateListAnimator">@null</item>  <!-- no elevation change on hover -->
         <item name="android:letterSpacing">0.05</item>
     </style>

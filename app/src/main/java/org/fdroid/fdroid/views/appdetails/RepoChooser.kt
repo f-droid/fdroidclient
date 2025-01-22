@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.appdetails
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,7 +12,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -36,11 +36,9 @@ import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import androidx.core.util.Consumer
 import org.fdroid.database.Repository
-import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
-import org.fdroid.fdroid.ui.theme.AppTheme
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.repos.RepoIcon
 import org.fdroid.index.IndexFormatVersion.TWO
 
@@ -55,24 +53,22 @@ fun setContentRepoChooser(
     onRepoChanged: Consumer<Repository>,
     onPreferredRepoChanged: Consumer<Long>,
 ) {
-    val pureBlack = Preferences.get().isPureBlack
-
     composeView.setContent {
-        AppTheme(pureBlack = pureBlack) {
-            FDroidContent {
-                RepoChooser(
-                    repos = repos,
-                    currentRepoId = currentRepoId,
-                    preferredRepoId = preferredRepoId,
-                    onRepoChanged = onRepoChanged::accept,
-                    onPreferredRepoChanged = onPreferredRepoChanged::accept,
-                )
-            }
+        FDroidContent {
+            RepoChooser(
+                repos = repos,
+                currentRepoId = currentRepoId,
+                preferredRepoId = preferredRepoId,
+                onRepoChanged = onRepoChanged::accept,
+                onPreferredRepoChanged = onPreferredRepoChanged::accept,
+                // FIXME background color in light theme is not *exactly* the same, but ok for now
+                //  see https://m3.material.io/components/cards/specs
+                modifier = Modifier.background(MaterialTheme.colorScheme.surfaceContainerLow),
+            )
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RepoChooser(
     repos: List<Repository>,
@@ -200,7 +196,7 @@ private fun getRepoString(repo: Repository, isPreferred: Boolean) = buildAnnotat
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
 fun RepoChooserSingleRepoPreview() {
     val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoChooser(listOf(repo1), 1L, 1L, {}, {})
     }
 }
@@ -211,7 +207,7 @@ fun RepoChooserPreview() {
     val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
     val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
     val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoChooser(listOf(repo1, repo2, repo3), 1L, 1L, {}, {})
     }
 }
@@ -222,7 +218,7 @@ fun RepoChooserNightPreview() {
     val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
     val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
     val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoChooser(listOf(repo1, repo2, repo3), 1L, 2L, {}, {})
     }
 }

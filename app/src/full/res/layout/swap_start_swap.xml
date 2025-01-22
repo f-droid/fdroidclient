@@ -193,9 +193,9 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:indeterminate="true"
-            app:showAnimationBehavior="inward"
             app:hideAnimationBehavior="outward"
             app:indicatorSize="24dp"
+            app:showAnimationBehavior="inward"
             app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius" />
 
     </LinearLayout>

@@ -19,9 +19,8 @@ import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.nearby.SwapService
-import org.fdroid.fdroid.ui.theme.AppTheme
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.apps.AppListActivity
 import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
 import org.fdroid.fdroid.work.RepoUpdateWorker
@@ -54,24 +53,19 @@ class AddRepoActivity : AppCompatActivity() {
                 }
             }
         }
-
-        val pureBlack = Preferences.get().isPureBlack
-
         setContent {
-            AppTheme(pureBlack = pureBlack) {
-                FDroidContent {
-                    val state = repoManager.addRepoState.collectAsState().value
-                    BackHandler(state is AddRepoError) {
-                        // reset state when going back on error screen
-                        repoManager.abortAddingRepository()
-                    }
-                    AddRepoIntroScreen(
-                        state = state,
-                        onFetchRepo = this::onFetchRepo,
-                        onAddRepo = { repoManager.addFetchedRepository() },
-                        onBackClicked = { onBackPressedDispatcher.onBackPressed() },
-                    )
+            FDroidContent {
+                val state = repoManager.addRepoState.collectAsState().value
+                BackHandler(state is AddRepoError) {
+                    // reset state when going back on error screen
+                    repoManager.abortAddingRepository()
                 }
+                AddRepoIntroScreen(
+                    state = state,
+                    onFetchRepo = this::onFetchRepo,
+                    onAddRepo = { repoManager.addFetchedRepository() },
+                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
+                )
             }
         }
         addOnNewIntentListener { intent ->

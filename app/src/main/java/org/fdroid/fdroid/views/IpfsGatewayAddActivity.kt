@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -40,8 +40,7 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
-import org.fdroid.fdroid.ui.theme.AppTheme
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
 class IpfsGatewayAddActivity : AppCompatActivity() {
 
@@ -51,7 +50,7 @@ class IpfsGatewayAddActivity : AppCompatActivity() {
         val pureBlack = Preferences.get().isPureBlack
 
         setContent {
-            AppTheme(pureBlack = pureBlack) {
+            FDroidContent(pureBlack = pureBlack) {
                 IpfsGatewayAddScreen(
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                     onAddUserGateway = { url ->
@@ -86,13 +85,13 @@ fun IpfsGatewayAddScreen(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                IconButton(onClick = onBackClicked) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
-                }
-            },
-            title = {
-                Text(
-                    text = stringResource(R.string.ipfsgw_add_title),
+                    IconButton(onClick = onBackClicked) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
+                    }
+                },
+                title = {
+                    Text(
+                        text = stringResource(R.string.ipfsgw_add_title),
                     )
                 },
             )
@@ -180,7 +179,7 @@ fun IpfsGatewayAddScreen(
 @Composable
 @Preview
 fun IpfsGatewayAddScreenPreview() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         IpfsGatewayAddScreen(
             onBackClicked = {},
             onAddUserGateway = {},

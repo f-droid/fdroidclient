@@ -20,7 +20,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.ContentPaste
@@ -61,8 +61,8 @@ import com.journeyapps.barcodescanner.ScanOptions
 import com.journeyapps.barcodescanner.ScanOptions.QR_CODE
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoState
 import org.fdroid.repo.Added
@@ -94,7 +94,7 @@ fun AddRepoIntroScreen(
         TopAppBar(
             navigationIcon = {
                 IconButton(onClick = onBackClicked) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
                 }
             },
             title = {
@@ -232,7 +232,7 @@ fun AddRepoIntroContent(paddingValues: PaddingValues, onFetchRepo: (String) -> U
 @Composable
 @Preview
 fun AddRepoIntroScreenPreview() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoIntroScreen(None, {}, {}) {}
     }
 }
@@ -240,7 +240,7 @@ fun AddRepoIntroScreenPreview() {
 @Composable
 @Preview(uiMode = UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 fun AddRepoIntroScreenPreviewNight() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoIntroScreen(None, {}, {}) {}
     }
 }
