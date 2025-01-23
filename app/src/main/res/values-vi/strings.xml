@@ -64,8 +64,8 @@
     <string name="expert_on">Hiện thêm thông tin và bật các cài đặt bổ sung</string>
     <string name="search_hint">Tìm kiếm ứng dụng</string>
     <string name="appcompatibility">Tính tương thích của ứng dụng</string>
-    <string name="show_incompat_versions">Bao gồm các phiên bản không tương thích</string>
-    <string name="show_incompat_versions_on">Hiện các phiên bản không tương thích với thiết bị này</string>
+    <string name="show_incompat_versions">Hiện các phiên bản không tương thích</string>
+    <string name="show_incompat_versions_on">Với thiết bị này</string>
     <string name="local_repo">Kho nội bộ</string>
     <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
     <string name="touch_to_configure_local_repo">Chạm để xem chi tiết và cho phép những người khác trao đổi các ứng dụng của bạn.</string>
@@ -154,7 +154,7 @@
         tải ứng dụng từ mục lục không có chữ kí điện tử.
     </string>
     <string name="unknown">Không xác định</string>
-    <string name="pref_language">VIỆT NAM</string>
+    <string name="pref_language">Ngôn ngữ</string>
     <string name="pref_language_default">Mặc định hệ thống</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Điểm truy cập</string>
@@ -336,7 +336,7 @@
     <string name="empty_search_available_app_list">Không có ứng dụng trùng khớp.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng\? Hãy lấy các ứng dụng từ những người gần bạn!</string>
     <string name="nearby_splash__find_people_button">Tìm người lân cận</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có %1$s để sử dụng tính năng Lân cận.</string>
+    <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có %1$s</string>
     <string name="swap_stopping_wifi">Đang tắt Wi-Fi…</string>
     <string name="download_pending">Đang chờ tải về…</string>
     <string name="install_error_notify_title">Lỗi khi cài đặt %s</string>
@@ -400,8 +400,8 @@
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
     <string name="antiknownvulnlist">Ứng dụng này có một lỗ hổng bảo mật đã biết</string>
-    <string name="show_anti_feature_apps">Bao gồm các tính năng không mong muốn</string>
-    <string name="show_anti_feature_apps_on">Hiện các ứng dụng yêu cầu các tính năng không mong muốn</string>
+    <string name="show_anti_feature_apps">Hiện các tính năng không mong muốn</string>
+    <string name="show_anti_feature_apps_on">Hiện các ứng dụng có tính năng không mong muốn</string>
     <string name="force_touch_apps">Hiện ứng dụng cảm ứng</string>
     <string name="force_touch_apps_on">Hiện các ứng dụng yêu cầu màn hình cảm ứng bất kể phần cứng có hỗ trợ hay không</string>
     <string name="panic_app_setting_title">Ứng dụng nút hoảng loạn</string>
@@ -500,7 +500,7 @@
     <string name="send_fdroid_metrics_report">Gửi %s báo cáo số liệu</string>
     <string name="theme_follow_system">Theo hệ thống</string>
     <string name="use_pure_black_dark_theme_summary">Chỉ được khuyên dùng cho màn hình OLED.</string>
-    <string name="use_pure_black_dark_theme">Sử dụng nền đen thuần tuý trong chế độ tối</string>
+    <string name="use_pure_black_dark_theme">Dùng nền đen trong chế độ tối</string>
     <string name="banner_no_data_or_wifi">Chưa bật dữ liệu hoặc WiFi</string>
     <string name="banner_no_internet">Không có internet</string>
     <string name="share_apk_error">Không thể chia sẻ tệp ứng dụng</string>
@@ -576,9 +576,9 @@
     <string name="swap_connection_indexv0_error">Bạn đang kết nối với một người với bản F-Droid cũ. Họ phải nâng cấp ứng dụng mới kết nối được. Họ có thể dùng tính năng tráo đổi để cập nhật F-Droid từ máy bạn.</string>
     <string name="force_old_installer_summary">Tắt Trình cài đặt trong phiên, gồm cả việc cập nhật trong nền</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid có thể tìm các kho phần mềm và bản dự phòng của chúng ở thẻ nhớ của bạn, nhưng nó cần có quyền làm thế.</string>
-    <string name="nearby_splace__external_storage_permission_button">Thử nó</string>
+    <string name="nearby_splace__external_storage_permission_button">Thử ngay</string>
     <string name="repo_and_mirror_add_both_info">URL bạn muốn thêm (%s) là bản dự phòng của một kho phần mềm mới. Cả hai sẽ được sử dụng.</string>
-    <string name="auto_update_time">Bản cập nhật tiếp gần sớm nhất: (%s)</string>
+    <string name="auto_update_time">Lần tiếp theo: (%s)</string>
     <string name="antitetherednet">Những Dịch Vụ Mạng Buộc</string>
     <string name="antitetherednetlist">Ứng dụng này hoàn toàn phụ thuộc vào một phần của một dịch vụ</string>
     <string name="auto_update_time_past">Cập nhật kế tiếp khi các điệu kiện được đáp ứng</string>
