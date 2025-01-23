@@ -25,7 +25,7 @@
         </item>
 
         <item name="mainTabSwapBackground">?android:windowBackground</item>
-        <item name="mainTabSwapSplashTint">#2c2c2c</item>
+        <item name="mainTabSwapSplashTint">?attr/colorSurfaceContainerLow</item>
         <item name="categoryName">#ffffff</item>
         <item name="installedApps">#ffffff</item>
         <item name="appListItem">#ffffff</item>

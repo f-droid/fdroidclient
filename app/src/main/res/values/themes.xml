@@ -48,7 +48,7 @@
         <item name="clearButtonDrawable">@drawable/ic_close</item>
 
 
-        <item name="mainTabSwapSplashTint">#f5f5f5</item>
+        <item name="mainTabSwapSplashTint">?attr/colorSurfaceDim</item>
         <item name="categoryName">#4a4a4a</item>
         <item name="installedApps">#424242</item>
         <item name="appListItem">#424242</item>
