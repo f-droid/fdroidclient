@@ -1,5 +1,5 @@
-* use "gentle update" API so apps don't get killed while in use
 * experimental support for un-archiving apps on Android 15
+* automatically add newly installed apps to home-screen for most launchers (Thanks Dhina!)
 * separate share link and share file actions in app details
 * show toast when APK has more permissions than expected
 * clean internal caches more often to free up space (Thanks DerGenaue!)

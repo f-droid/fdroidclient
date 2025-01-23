@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Repositories at the top have a higher priority than those at the bottom -->
@@ -27,6 +26,9 @@
             https://mirrors.dotsrc.org/fdroid/repo
             https://opencolo.mm.fcix.net/fdroid/repo
             https://plug-mirror.rcac.purdue.edu/fdroid/repo
+            https://mirror.init7.net/fdroid/repo
+            https://mirror.freedif.org/fdroid/repo
+            https://de.freedif.org/fdroid/repo
         </item>
         <!-- description -->
         <item>The official F-Droid Free Software repository. Everything in this repository is always built from the source code.
@@ -65,6 +67,9 @@
             https://mirrors.dotsrc.org/fdroid/archive
             https://opencolo.mm.fcix.net/fdroid/archive
             https://plug-mirror.rcac.purdue.edu/fdroid/archive
+            https://mirror.init7.net/fdroid/archive
+            https://mirror.freedif.org/fdroid/archive
+            https://de.freedif.org/fdroid/archive
         </item>
         <!-- description -->
         <item>The archive repository of the F-Droid client. This contains older versions of

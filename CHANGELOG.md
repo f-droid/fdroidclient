@@ -1,3 +1,9 @@
+### 1.22.0 (2025-01-16)
+
+* automatically add newly installed apps to home-screen for most launchers (Thanks Dhina!)
+* disable gentle app updates again because of update issues 
+* some bug fixes
+
 ### 1.22.0-alpha0 (2024-12-17)
 
 * use "gentle update" API so apps don't get killed while in use
