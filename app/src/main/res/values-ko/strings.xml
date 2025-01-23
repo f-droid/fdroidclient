@@ -508,7 +508,7 @@
     <string name="antiothers">기타 악성 기능</string>
     <string name="antiads">광고</string>
     <string name="antinosource">소스 코드 열람 불가</string>
-    <string name="app_list_results_hidden_antifeature_settings">일부 결과는 악성 기능 설정에 따라 숨겨졌습니다.</string>
+    <string name="app_list_results_hidden_antifeature_settings">일부 결과는 당신의 악성 기능 설정에 따라 숨겨졌습니다. 눌러서 바꾸기.</string>
     <string name="antinsfw">이 앱에는 모든 곳에서 공개하거나 표시할 수 없는 콘텐츠가 포함되어 있습니다</string>
     <string name="antinonfreeassets">비자유 애셋</string>
     <string name="latest__empty_state__upgrading">데이터베이스 업그레이드 중…</string>
