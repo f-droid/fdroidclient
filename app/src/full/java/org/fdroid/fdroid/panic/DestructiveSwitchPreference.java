@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceViewHolder;
 import androidx.preference.SwitchPreferenceCompat;
 
+import com.google.android.material.materialswitch.MaterialSwitch;
+
 import org.fdroid.fdroid.R;
 
 public class DestructiveSwitchPreference extends SwitchPreferenceCompat {
@@ -33,5 +35,8 @@ public class DestructiveSwitchPreference extends SwitchPreferenceCompat {
             return;
         }
         holder.itemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.panic_destructive));
+
+        //noinspection unused // TODO choose more fitting color below
+        MaterialSwitch switchView = holder.itemView.findViewById(androidx.preference.R.id.switchWidget);
     }
 }

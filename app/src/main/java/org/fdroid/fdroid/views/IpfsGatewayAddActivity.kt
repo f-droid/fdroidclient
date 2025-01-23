@@ -39,18 +39,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils
+import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
+import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 class IpfsGatewayAddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val pureBlack = Preferences.get().isPureBlack
-
         setContent {
-            FDroidContent(pureBlack = pureBlack) {
+            FDroidContent {
                 IpfsGatewayAddScreen(
                     onBackClicked = { onBackPressedDispatcher.onBackPressed() },
                     onAddUserGateway = { url ->
@@ -135,7 +133,7 @@ fun IpfsGatewayAddScreen(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 val clipboardManager = LocalClipboardManager.current
-                ComposeUtils.FDroidOutlineButton(
+                FDroidOutlineButton(
                     stringResource(R.string.paste),
                     imageVector = Icons.Default.ContentPaste,
                     onClick = {
@@ -145,7 +143,7 @@ fun IpfsGatewayAddScreen(
                     },
                 )
                 Spacer(modifier = Modifier.weight(1f))
-                ComposeUtils.FDroidButton(
+                FDroidButton(
                     text = stringResource(R.string.ipfsgw_add_add),
                     onClick = l@{
                         errorMsg = ""
@@ -166,7 +164,6 @@ fun IpfsGatewayAddScreen(
                             errorMsg = "could not parse uri ($e)"
                             return@l
                         }
-
                         // no errors -> proceed to add the url
                         onAddUserGateway(inputUri)
                     },

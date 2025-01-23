@@ -103,8 +103,7 @@
     Buttons down the bottom of the screen, which prompt the user for further
     info, or to change the process somehow (e.g. Use Bluetooth instead of Wifi).
     -->
-    <style name="SwapTheme.Wizard.OptionButton" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@android:color/white</item>
+    <style name="SwapTheme.Wizard.OptionButton" parent="Widget.Material3.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">0dp</item>

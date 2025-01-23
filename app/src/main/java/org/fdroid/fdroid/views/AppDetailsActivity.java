@@ -40,7 +40,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.util.ObjectsCompat;
@@ -364,22 +363,20 @@ public class AppDetailsActivity extends AppCompatActivity
         }
 
         if (!apk.compatible) {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setMessage(R.string.installIncompatible);
-            builder.setPositiveButton(R.string.yes, (dialog, whichButton) -> initiateInstall(apk));
-            builder.setNegativeButton(R.string.no, (dialog, whichButton) -> {
-            });
-            AlertDialog alert = builder.create();
-            alert.show();
+            new MaterialAlertDialogBuilder(this)
+                    .setMessage(R.string.installIncompatible)
+                    .setPositiveButton(R.string.yes, (dialog, whichButton) -> initiateInstall(apk))
+                    .setNegativeButton(R.string.no, (dialog, whichButton) -> {
+                    })
+                    .show();
             return;
         }
         if (app.installedSigner != null && apk.signer != null
                 && !apk.signer.equals(app.installedSigner)) {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
-                    R.string.ok, (dialog, id) -> dialog.cancel());
-            AlertDialog alert = builder.create();
-            alert.show();
+            new MaterialAlertDialogBuilder(this)
+                    .setMessage(R.string.SignatureMismatch)
+                    .setPositiveButton(R.string.ok, (dialog, id) -> dialog.cancel())
+                    .show();
             return;
         }
         initiateInstall(apk);

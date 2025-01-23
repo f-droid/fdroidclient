@@ -21,7 +21,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import java.util.Locale
 
 object ComposeUtils {
 
@@ -45,7 +44,7 @@ object ComposeUtils {
                 )
                 Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
             }
-            Text(text = text.uppercase(Locale.getDefault()))
+            Text(text = text)
         }
     }
 
@@ -69,7 +68,7 @@ object ComposeUtils {
                 )
                 Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
             }
-            Text(text = text.uppercase(Locale.getDefault()), maxLines = 1)
+            Text(text = text, maxLines = 1)
         }
     }
 
