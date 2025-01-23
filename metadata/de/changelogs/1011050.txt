@@ -1,7 +1,7 @@
 * Verbesserte Verlinkung von URLs in App-Beschreibungen
 
-* Verbessertes handeln mit SD-Karten und USG-OTG in der Nähe
+* Verbesserte Handhabung von SD-Karten und USG-OTG im Umfeld
 
-* Modernisierter Code und von PNGs zu Vektorgrafiken gewechelts (Dange an @isira-seneviratne)
+* Modernisierter Code und Umstellung von PNGs auf Vektoren (Danke @isira-seneviratne)
 
-* Erkennen von langen Repository URLs um GitCDN/RawGit/etc Mirrors zu unterstützen
+* Erkennung längerer Repository-URLs um Spiegelserver von GitCDN/RawGit/usw zu unterstützen

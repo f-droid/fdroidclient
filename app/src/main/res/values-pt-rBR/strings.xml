@@ -67,7 +67,7 @@
     <string name="show_incompat_versions">Incluir versões incompatíveis</string>
     <string name="show_incompat_versions_on">Mostrar versões de apps que são incompatíveis com o dispositivo</string>
     <string name="local_repo">Repositório Local</string>
-    <string name="local_repo_running">O F-Droid está pronto para troca</string>
+    <string name="local_repo_running">O F-Droid está pronto para o compartilhamento</string>
     <string name="touch_to_configure_local_repo">Toque para ver detalhes e permitir que outros troquem seus apps.</string>
     <string name="deleting_repo">Apagando o repositório atual…</string>
     <string name="adding_apks_format">Adicionando %s ao repositório…</string>
@@ -110,8 +110,7 @@
 \n
 \nVocê precisará reativar este repositório para instalar apps a partir dele.</string>
     <string name="repo_added">Repositório de pacotes %1$s salvo.</string>
-    <string name="repo_searching_address">Procurando por repositório de pacotes em
-\n%1$s</string>
+    <string name="repo_searching_address">Procurando por um repositório de pacotes em\n%1$s</string>
     <string name="not_on_same_wifi">O seu dispositivo não está na mesma rede Wi-Fi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
     <string name="requires_features">Suporta: %1$s</string>
     <string name="category_Development">Desenvolvimento</string>
@@ -153,7 +152,7 @@
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
     <string name="swap_join_same_wifi_desc">Para compartilhar usando o Wi-Fi, certifique-se de que você está na mesma rede. Caso você não tenha acesso à mesma rede, um de vocês pode criar um ponto de acesso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude seu amigo a se juntar ao seu ponto de acesso</string>
-    <string name="swap_success">Troca com sucesso!</string>
+    <string name="swap_success">Troca feita com sucesso!</string>
     <string name="swap_active_hotspot">%1$s (seu ponto de acesso)</string>
     <string name="swap_switch_to_wifi">Toque para mudar para uma rede Wi-Fi</string>
     <string name="about_source">Código-fonte</string>
@@ -168,9 +167,9 @@
     <string name="swap_scan_or_type_url">Uma pessoa precisa escanear o código ou a URL da outra em um navegador.</string>
     <string name="swap_choose_apps">Escolher os apps</string>
     <string name="swap_scan_qr">Código QR</string>
-    <string name="swap_people_nearby">Pessoas por Perto</string>
-    <string name="swap_scanning_for_peers">Procurando por pessoas por perto…</string>
-    <string name="swap_nearby">Troca por Perto</string>
+    <string name="swap_people_nearby">Pessoas próximas</string>
+    <string name="swap_scanning_for_peers">Procurando pessoas próximas…</string>
+    <string name="swap_nearby">Troca por proximidade</string>
     <string name="swap_intro">Conecte e compartilhe apps com pessoas próximas de você.</string>
     <string name="swap_visible_bluetooth">Visível por Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Configurando Bluetooth…</string>
@@ -180,12 +179,12 @@
     <string name="swap_not_visible_wifi">Não visível por Wi-Fi</string>
     <string name="swap_wifi_device_name">Nome do Dispositivo</string>
     <string name="swap_cant_find_peers">Não consegue achar quem você está procurando?</string>
-    <string name="swap_send_fdroid">Enviar o F-Droid</string>
+    <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="apps">Apps</string>
     <string name="swap_no_peers_nearby">Não foi possível encontrar pessoas próximas para troca.</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar troca</string>
-    <string name="swap_qr_isnt_for_swap">O código QR que você escaneou não parece com um código de troca.</string>
+    <string name="swap_qr_isnt_for_swap">O código QR que você escaneou não parece ser um código de troca.</string>
     <string name="loading">Carregando…</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não foi possível fazer uma troca com ele!</string>
     <string name="install_confirm">precisa de acesso para</string>
@@ -286,11 +285,11 @@
     <string name="clear_search">Limpar pesquisa</string>
     <string name="main_menu__latest_apps">Destaques</string>
     <string name="main_menu__categories">Categorias</string>
-    <string name="main_menu__swap_nearby">Por perto</string>
+    <string name="main_menu__swap_nearby">Proximidade</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver %d app</item>
-        <item quantity="many">Ver todas os %d apps</item>
-        <item quantity="other">Ver todas os %d apps</item>
+        <item quantity="many">Ver todos os %d apps</item>
+        <item quantity="other">Ver todos os %d apps</item>
     </plurals>
     <string name="app_recommended_version_installed">Versão %1$s (Recomendada)</string>
     <string name="app_new">Novo</string>
@@ -324,9 +323,9 @@
     <string name="details_new_in_version">Novidades na versão %s</string>
     <string name="antifeatureswarning">Este app tem características que você pode não gostar.</string>
     <string name="antifeatures">Características indesejadas</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Sem Internet? Baixe apps de pessoas próximas a você!</string>
-    <string name="nearby_splash__find_people_button">Encontre pessoas próximas</string>
-    <string name="nearby_splash__both_parties_need_fdroid">Ambas as partes precisam do %1$s para usar o \"Por perto\".</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sem internet? Baixe apps de pessoas próximas de você!</string>
+    <string name="nearby_splash__find_people_button">Encontrar pessoas próximas</string>
+    <string name="nearby_splash__both_parties_need_fdroid">As duas pessoas precisam do %1$s para usar a troca por proximidade.</string>
     <string name="details_last_updated_today">Atualizado hoje</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Atualizado %1$d dia atrás</item>
@@ -462,7 +461,7 @@
     <string name="main_menu__updates">Atualizações</string>
     <string name="nearby_splash__read_external_storage">Pesquisar o cartão de memória por repositórios e espelhos.</string>
     <string name="nearby_splash__request_permission">Buscar agora</string>
-    <string name="not_visible_nearby">Por perto não ativado</string>
+    <string name="not_visible_nearby">Troca por proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o dispositivo visível.</string>
     <string name="swap_toast_using_path">Usando %1$s</string>
     <string name="swap_toast_not_removable_storage">Essa escolha não corresponde a nenhum dispositivo de armazenamento removível, tente novamente!</string>
@@ -548,7 +547,7 @@
 \nContate o responsável e o informe sobre o problema.</string>
     <string name="repo_io_error">Erro ao conectar ao repositório.</string>
     <string name="turn_on_wifi">Ativar o WiFi</string>
-    <string name="swap_banner_message">Para compartilhar apps, inicie seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
+    <string name="swap_banner_message">Para compartilhar apps, ative seu Wi-Fi e conecte-se à mesma rede que seu amigo.</string>
     <string name="repo_add_new_mirror">Adicionar como novo espelho</string>
     <string name="copied_to_clipboard">Copiado para a área de transferência</string>
     <string name="nearby_splace__external_storage_permission_button">Experimente</string>
@@ -558,7 +557,7 @@
     <string name="nearby_splach__external_storage_permission_explainer">O F-Droid pode procurar por repositórios e espelhos em seu cartão SD, mas precisa de sua permissão para isso.</string>
     <string name="copied_permission_to_clipboard">Copiado nome da permissão para a área de transferência</string>
     <string name="copied_url_to_clipboard">URL copiada para a área de transferência</string>
-    <string name="swap_connection_indexv0_error">Você está tentando se conectar a alguém com uma versão desatualizada do F-Droid. Para se conectar, a pessoa precisa atualizar o app F-Droid. A pessoa pode usar a troca para atualizar o app F-Droid a partir de você.</string>
+    <string name="swap_connection_indexv0_error">Você está tentando se conectar a alguém com uma versão desatualizada do F-Droid. Para se conectar, a pessoa precisa atualizar seu app F-Droid. A pessoa pode usar a troca por proximidade para atualizar o app F-Droid através de você.</string>
     <string name="repo_num_apps_button">Mostrar apps</string>
     <string name="paste">Colar</string>PluralsCandidate
 
@@ -600,8 +599,8 @@
     <string name="repo_scan_qr_code">Ler código QR</string>
     <string name="repo_preview_included_apps">Apps inclusos:</string>
     <string name="repo_mirror_exists">Este espelho já foi adicionado (%s).</string>
-    <string name="repo_mirror_add_info">A URL que você está tentando adicionar (%s) é um espelho de um repositório existente.</string>
-    <string name="repo_and_mirror_add_both_info">A URL que você está tentando adicionar (%s) é um espelho de um novo repositório. Tanto o repositório original e o espelho serão adicionados.</string>
+    <string name="repo_mirror_add_info">A URL que você está tentando adicionar (%s) é de um espelho de um repositório existente.</string>
+    <string name="repo_and_mirror_add_both_info">A URL que você está tentando adicionar (%s) é um de espelho de um novo repositório. Tanto o repositório original e o espelho serão adicionados.</string>
     <string name="warning_no_compat_versions">O repositório selecionado não tem uma versão compatível do app. Para receber atualizações, prefira um repositório com versões compatíveis.</string>
     <string name="auto_update_time">Próxima atualização: %s</string>
     <string name="auto_update_time_past">Próxima atualização quando as condições forem atendidas</string>

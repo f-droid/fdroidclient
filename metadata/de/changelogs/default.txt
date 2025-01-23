@@ -1,6 +1,8 @@
-* Überarbeiteter Paketquellen-Updater für zuverlässigere Hintergrundaktualisierungen
-* Name und Zusammenfassung in App-Listen für bessere Lesbarkeit aufgeteilt
-* Warnung, wenn Apps nicht aus dem bevorzugten Repository aktualisiert werden können
-* Apps, die auf SDK 24 setzen, sind inkompatibel mit Android-15-Geräten
-* Besseres Handhaben von Spiegelservern in der Vorschau „Paketquelle hinzufügen“ (Danke Thore!)
-* Aktivieren unbeaufsichtigter App-Updates auf Xiaomi-Geräten, auf denen kein MIUI läuft (Danke Irate!)
+* „Leise Update“-API, damit Apps während der Nutzung nicht beendet werden
+* Experimentelle Unterstützung für das Dearchivieren von Apps unter Android 15
+* Separate Aktionen zum Teilen von Links/Dateien in App-Details
+* Toast anzeigen, wenn APK mehr Berechtigungen hat als erwartet
+* Interne Caches werden öfter bereinigt (Danke DerGenaue!)
+* Spenden-Abzeichen neu angeordnet (Danke Leo!)
+* Einstellung hinzugefügt, um ausländische Spiegelserver zu bevorzugen
+* Viele kleine Fehlerkorrekturen

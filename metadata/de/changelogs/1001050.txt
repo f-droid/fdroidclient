@@ -1,7 +1,7 @@
-* Unterstützung offizieller Spiegel für jedes Repo, mit autom., auf Verfügbarkeit basierender Auswahl
+* Unterstützung offizieller Spiegel für jedes Repo, mit automatischer Auswahl je nach Verfügbarkeit
 
-* Viele UI-Verschönerungen, wie auch Stabilitäts- und Fehlerlösungen
+* Viele UI-Verschönerungen, sowie Stabilitäts- und Fehlerlösungen
 
-* Neue Datenschutzeinstellungen: Screenshots verhindern; im Notfall beenden
+* Neue Datenschutzeinstellungen: Bildschirmfotos verhindern; im Notfall beenden
 
 * Neue Übersetzungen: Koreanisch (ko) und Vietnamesisch (vi)

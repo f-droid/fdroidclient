@@ -604,4 +604,6 @@
     <string name="swap_bluetooth_permissions">Please grant Bluetooth or Nearby Device permission!</string>
     <string name="menu_share_apk">Share APK file</string>
     <string name="apk_permissions_mismatch">App has unexpected permission: %s</string>
+    <string name="preferForeign">Prefer Foreign Mirrors</string>
+    <string name="preferForeignSummary">Try mirrors that are located outside your country first, e.g. if foreign protections are stronger.</string>
 </resources>
