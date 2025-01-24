@@ -24,10 +24,12 @@
     <locale android:name="fi" />
     <locale android:name="fil" />
     <locale android:name="fr" />
+    <locale android:name="ga" />
     <locale android:name="gd" />
     <locale android:name="gl" />
     <locale android:name="he" />
     <locale android:name="hi" />
+    <locale android:name="hi-Latn" />
     <locale android:name="hr" />
     <locale android:name="hu" />
     <locale android:name="id" />
@@ -59,7 +61,6 @@
     <locale android:name="sv" />
     <locale android:name="sw" />
     <locale android:name="ta" />
-    <locale android:name="te" />
     <locale android:name="th" />
     <locale android:name="tr" />
     <locale android:name="uk" />
