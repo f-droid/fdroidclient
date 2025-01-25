@@ -143,4 +143,11 @@
     <style name="Widget.App.Preference.DialogPreference.EditTextPreference" parent="Preference.DialogPreference.EditTextPreference.Material">
         <item name="android:dialogLayout">@layout/preference_edit_text</item>
     </style>
+
+    <style name="StatusBanner" parent="Widget.Material3.CardView.Elevated">
+        <item name="android:padding">@dimen/banner__padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">?colorSurfaceBright</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
 </resources>

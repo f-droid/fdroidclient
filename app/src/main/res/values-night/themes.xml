@@ -19,7 +19,6 @@
     <!--Top level DayNight theme to be used in AndroidManifest.xml-->
     <style name="Theme.App" parent="Base.Theme.App">
         <item name="appDetailsBackground">?android:windowBackground</item>
-        <item name="appDetailsCardBackground">#424242</item>
         <item name="categoryPreviewAppCardBackground">
             @drawable/category_preview_app_card_background_dark
         </item>

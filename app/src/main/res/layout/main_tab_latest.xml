@@ -16,9 +16,9 @@
             android:orientation="vertical">
 
             <org.fdroid.fdroid.views.StatusBanner
+                style="@style/StatusBanner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:background="#cdcdcd" />
+                android:layout_height="wrap_content" />
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progress_bar"

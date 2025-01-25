@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?appDetailsCardBackground">
+    android:background="?colorSurfaceBright">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->

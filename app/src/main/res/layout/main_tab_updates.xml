@@ -18,6 +18,7 @@
 
             <org.fdroid.fdroid.views.StatusBanner
                 android:id="@+id/banner_updating_repos"
+                style="@style/StatusBanner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -37,7 +37,6 @@
         <!--and menus. colorError is used to indicate an error state for components such as-->
         <!--text fields.-->
         <item name="appDetailsBackground">#fcfcfc</item>
-        <item name="appDetailsCardBackground">#ffffff</item>
         <item name="categoryPreviewAppCardBackground">
             @drawable/category_preview_app_card_background_light
         </item>

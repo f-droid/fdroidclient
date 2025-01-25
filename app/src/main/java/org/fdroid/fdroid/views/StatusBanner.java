@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
 
 import androidx.lifecycle.Observer;
@@ -66,11 +65,6 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
 
     public StatusBanner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        int padding = (int) getResources().getDimension(R.dimen.banner__padding);
-        setPadding(padding, padding, padding, padding);
-        setBackgroundColor(0xFF4A4A4A);
-        setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-        setTextColor(0xFFFFFFFF);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         repoUpdateManager = FDroidApp.getRepoUpdateManager(context);
@@ -113,7 +107,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
      * device, and users are generally not aware of them.
      */
     private void setBannerTextAndVisibility() {
-        if (isUpdatingRepos) {
+        if (isInEditMode() || isUpdatingRepos) {
             setText(R.string.banner_updating_repositories);
             setVisibility(View.VISIBLE);
         } else if (networkState == ConnectivityMonitorService.FLAG_NET_UNAVAILABLE
@@ -135,7 +129,7 @@ public class StatusBanner extends androidx.appcompat.widget.AppCompatTextView {
                     break; // only check the first segment NOPMD
                 }
             }
-            if (localRepos.size() == 0 || !hasLocalNonSystemRepos) {
+            if (localRepos.isEmpty() || !hasLocalNonSystemRepos) {
                 setText(R.string.banner_no_data_or_wifi);
                 setVisibility(View.VISIBLE);
             } else {
