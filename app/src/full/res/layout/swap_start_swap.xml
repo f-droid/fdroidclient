@@ -45,10 +45,10 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/turn_on_wifi"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/ThemeOverlay.App.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginTop="8dp"
                     android:text="@string/turn_on_wifi" />
 
