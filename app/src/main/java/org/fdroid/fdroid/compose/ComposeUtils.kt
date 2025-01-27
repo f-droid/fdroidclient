@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.compose
 
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -13,14 +15,18 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.google.android.material.color.MaterialColors
 
 object ComposeUtils {
 
@@ -110,4 +116,12 @@ object ComposeUtils {
             modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp)
         )
     }
+}
+
+@Composable
+@ColorInt
+@ReadOnlyComposable
+fun colorAttribute(@AttrRes attrColor: Int): Color {
+    val color = MaterialColors.getColor(LocalContext.current, attrColor, 0)
+    return Color(color)
 }

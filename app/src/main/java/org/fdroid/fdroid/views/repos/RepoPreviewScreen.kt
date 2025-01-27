@@ -45,6 +45,7 @@ import org.fdroid.fdroid.R
 import org.fdroid.fdroid.Utils
 import org.fdroid.fdroid.Utils.getGlideModel
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
+import org.fdroid.fdroid.compose.colorAttribute
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.FileV2
 import org.fdroid.repo.FetchResult.IsExistingMirror
@@ -180,7 +181,7 @@ fun RepoPreviewHeader(
         if (warningText != null) Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(colorResource(R.color.warning)),
+                .background(colorAttribute(R.attr.warning)),
             contentAlignment = Alignment.Center,
         ) {
             Text(

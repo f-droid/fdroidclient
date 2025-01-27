@@ -189,7 +189,7 @@
             android:id="@+id/warning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/warning"
+            android:background="?attr/warning"
             android:padding="8dp"
             android:text="@string/warning_target_sdk"
             android:textAlignment="center"

@@ -51,6 +51,7 @@ import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
+import com.google.android.material.color.MaterialColors;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 
@@ -583,7 +584,7 @@ public class AppDetailsRecyclerViewAdapter
                 warningView.setVisibility(View.VISIBLE);
             } else if (SessionInstallManager.canBeUsed(context) && suggestedApk != null
                     && !SessionInstallManager.isTargetSdkSupported(suggestedApk.targetSdkVersion)) {
-                int color = ContextCompat.getColor(context, R.color.warning);
+                int color = MaterialColors.getColor(warningView, R.attr.warning);
                 warningView.setBackgroundColor(color);
                 warningView.setText(R.string.warning_target_sdk);
                 warningView.setVisibility(View.VISIBLE);
