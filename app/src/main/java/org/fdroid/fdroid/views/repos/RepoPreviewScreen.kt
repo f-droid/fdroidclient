@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.repos
 
 import android.content.res.Configuration
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement.spacedBy
@@ -15,7 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -213,14 +212,14 @@ fun RepoPreviewHeader(
 }
 
 @Composable
-@OptIn(ExperimentalGlideComposeApi::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalGlideComposeApi::class)
 fun LazyItemScope.RepoPreviewApp(
     repo: Repository,
     app: MinimalApp,
     localeList: LocaleListCompat,
 ) {
     val isDevPreview = LocalInspectionMode.current
-    Card(
+    ElevatedCard(
         modifier = Modifier
             .animateItem()
             .fillMaxWidth(),

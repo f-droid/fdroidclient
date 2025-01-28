@@ -277,7 +277,6 @@
                 android:paddingRight="8dp"
                 android:scrollbars="none"
                 android:text="@string/antifeatures"
-                android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold" />
 

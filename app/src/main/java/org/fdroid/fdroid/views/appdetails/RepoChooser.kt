@@ -25,7 +25,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -88,7 +87,7 @@ fun RepoChooser(
     ) {
         Box {
             val borderColor = if (isPreferred) {
-                colorResource(id = R.color.fdroid_blue)
+                MaterialTheme.colorScheme.primary
             } else {
                 MaterialTheme.colorScheme.outline
             }
@@ -116,7 +115,7 @@ fun RepoChooser(
                         imageVector = Icons.Default.ArrowDropDown,
                         contentDescription = stringResource(R.string.app_details_repository_expand),
                         tint = if (isPreferred) {
-                            colorResource(id = R.color.fdroid_blue)
+                            MaterialTheme.colorScheme.primary
                         } else {
                             MaterialTheme.colorScheme.onSurface
                         },

@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.color.MaterialColors;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.categories.CategoryController;
 
@@ -119,13 +121,18 @@ public class CategorySpan extends ReplacementSpan {
 
         // The background behind the category icon.
         Paint iconBackgroundPaint = new Paint();
-        iconBackgroundPaint.setColor(0xffd8d8d8);
+        int backgroundColor =
+                MaterialColors.getColor(context, com.google.android.material.R.attr.colorSurfaceContainerHigh, 0);
+        iconBackgroundPaint.setColor(backgroundColor);
         iconBackgroundPaint.setAntiAlias(true);
         RectF iconBackgroundRect = new RectF(0, 0, iconBackgroundSize, height);
         canvas.drawRoundRect(iconBackgroundRect, cornerRadius, cornerRadius, iconBackgroundPaint);
 
         // Category icon on top of the circular background which was just drawn.
         Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_categories);
+        int iconColor =
+                MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSurface, 0);
+        icon.setTint(iconColor);
         icon.setBounds(iconPadding, iconPadding, iconPadding + iconSize, iconPadding + iconSize);
         icon.draw(canvas);
 

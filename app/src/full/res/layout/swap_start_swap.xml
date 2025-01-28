@@ -156,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="150dp"
-                android:textColor="@color/swap_bright_blue"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="16sp"
                 tools:text="wifi network name" />
 

@@ -10,6 +10,7 @@
         </item>
     </style>
 
+    <!-- Workaround to get Material 3 for dialogs in preferences -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="dialogCornerRadius">28dp</item>
         <item name="android:colorBackground">?attr/colorSurfaceContainerHigh</item>
