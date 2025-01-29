@@ -63,9 +63,6 @@ class RepoDetailsActivity : AppCompatActivity() {
 
         initViewModel(repo)
 
-        // Needs an observer because it is lazy
-        viewModel.repoLiveData.observe(this, {})
-
         setContent {
             val repo by viewModel.repoFlow.collectAsState(repo)
             val archiveState by viewModel.archiveStateFlow.collectAsState(ArchiveState.UNKNOWN)
@@ -104,7 +101,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onShareClicked() {
-        val repo = viewModel.repoLiveData.value ?: return
+        val repo = viewModel.repoFlow.value ?: return
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, repo.shareUri)
@@ -150,7 +147,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onShowAppsClicked() {
-        val repo = viewModel.repoLiveData.value ?: return
+        val repo = viewModel.repoFlow.value ?: return
         if (!repo.enabled) {
             return
         }
@@ -161,7 +158,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onEditCredentialsClicked() {
-        val repo = viewModel.repoLiveData.value ?: return
+        val repo = viewModel.repoFlow.value ?: return
 
         val view = layoutInflater.inflate(R.layout.login, null, false)
         val usernameInput = view.findViewById<TextInputLayout>(R.id.edit_name)
@@ -190,7 +187,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     }
 
     private fun onShareMirror(mirror: Mirror) {
-        val repo = viewModel.repoLiveData.value ?: return
+        val repo = viewModel.repoFlow.value ?: return
         val uri = mirror.getFDroidLinkUrl(repo.fingerprint)
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"

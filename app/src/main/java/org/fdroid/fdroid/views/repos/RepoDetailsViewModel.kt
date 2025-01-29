@@ -8,7 +8,6 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
@@ -17,9 +16,12 @@ import info.guardianproject.netcipher.NetCipher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
@@ -38,7 +40,7 @@ enum class ArchiveState {
 
 class RepoDetailsViewModel(
     app: Application,
-    private val initialRepo: Repository,
+    initialRepo: Repository,
 ) : AndroidViewModel(app) {
 
     companion object {
@@ -63,10 +65,13 @@ class RepoDetailsViewModel(
     private val repositoryDao = DBHelper.getDb(app).getRepositoryDao()
     private val appDao = DBHelper.getDb(app).getAppDao()
 
-    val repoFlow: Flow<Repository?> = repoManager.repositoriesState.map { reposState ->
+    val repoFlow: StateFlow<Repository?> = repoManager.repositoriesState.map { reposState ->
         reposState.find { repo -> repo.repoId == repoId }
-    }
-    val repoLiveData = repoFlow.asLiveData()
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = null,
+    )
 
     val numberAppsFlow: Flow<Int> = repoFlow.map { repo ->
         if (repo != null) {
@@ -80,7 +85,7 @@ class RepoDetailsViewModel(
 
     fun setArchiveRepoEnabled(enabled: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            val repo = repoLiveData.value ?: return@launch
+            val repo = repoFlow.value ?: return@launch
             archiveStateFlow.emit(ArchiveState.UNKNOWN)
             try {
                 val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
@@ -141,7 +146,7 @@ class RepoDetailsViewModel(
     // TODO: initialise this once on ViewModel creation, and don't take an Activity, do fixed size
     fun generateQrCode(activity: AppCompatActivity) {
         viewModelScope.launch(Dispatchers.Default) {
-            val repo = repoLiveData.value ?: return@launch
+            val repo = repoFlow.value ?: return@launch
             if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
                 // no need to show a QR Code, it is not shareable
                 qrCodeLiveData.value = null
