@@ -23,7 +23,7 @@ import org.fdroid.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.apps.AppListActivity
 
-class RepoDetailsActivity : AppCompatActivity() {
+class RepoDetailsActivity : AppCompatActivity(), RepoDetailsScreenCallbacks {
 
     companion object {
         private const val TAG = "RepoDetailsActivity"
@@ -82,28 +82,17 @@ class RepoDetailsActivity : AppCompatActivity() {
                     repo = r,
                     archiveState = archiveState,
                     numberOfApps = numberOfApps,
-                    // app bar
-                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
-                    onShareClicked = this::onShareClicked,
-                    onShowQrCodeClicked = this::onShowQrCodeClicked,
-                    onDeleteClicked = this::onDeleteClicked,
-                    onInfoClicked = this::onInfoClicked,
-                    // other buttons
-                    onShowAppsClicked = this::onShowAppsClicked,
-                    onToggleArchiveClicked = { enabled ->
-                        viewModel.setArchiveRepoEnabled(enabled)
-                    },
-                    onEditCredentialsClicked = this::onEditCredentialsClicked,
-                    // mirrors
-                    setMirrorEnabled = { m, enabled -> viewModel.setMirrorEnabled(m, enabled) },
-                    onShareMirror = this::onShareMirror,
-                    onDeleteMirror = this::onDeleteMirror,
+                    callbacks = this,
                 )
             }
         }
     }
 
-    private fun onShareClicked() {
+    override fun onBackClicked() {
+        onBackPressedDispatcher.onBackPressed()
+    }
+
+    override fun onShareClicked() {
         val repo = viewModel.repoFlow.value ?: return
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
@@ -114,9 +103,7 @@ class RepoDetailsActivity : AppCompatActivity() {
         )
     }
 
-    private fun onShowQrCodeClicked() {
-        viewModel.generateQrCode(this)
-
+    override fun onShowQrCodeClicked() {
         val imageView = ImageView(this)
 
         lifecycleScope.launch(Dispatchers.Main) {
@@ -131,7 +118,7 @@ class RepoDetailsActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun onDeleteClicked() {
+    override fun onDeleteClicked() {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.repo_confirm_delete_title)
             .setMessage(R.string.repo_confirm_delete_body)
@@ -143,7 +130,7 @@ class RepoDetailsActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun onInfoClicked() {
+    override fun onInfoClicked() {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.repo_details)
             .setMessage(R.string.repo_details_info_text)
@@ -151,7 +138,7 @@ class RepoDetailsActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun onShowAppsClicked() {
+    override fun onShowAppsClicked() {
         val repo = viewModel.repoFlow.value ?: return
         if (!repo.enabled) {
             error("Show-Apps button should not even be shown")
@@ -162,7 +149,11 @@ class RepoDetailsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun onEditCredentialsClicked() {
+    override fun onToggleArchiveClicked(enabled: Boolean) {
+        viewModel.setArchiveRepoEnabled(enabled)
+    }
+
+    override fun onEditCredentialsClicked() {
         val repo = viewModel.repoFlow.value ?: return
 
         val view = layoutInflater.inflate(R.layout.login, null, false)
@@ -191,7 +182,11 @@ class RepoDetailsActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun onShareMirror(mirror: Mirror) {
+    override fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {
+        viewModel.setMirrorEnabled(mirror, enabled)
+    }
+
+    override fun onShareMirror(mirror: Mirror) {
         val repo = viewModel.repoFlow.value ?: return
         val uri = mirror.getFDroidLinkUrl(repo.fingerprint)
         val intent = Intent(Intent.ACTION_SEND).apply {
@@ -203,7 +198,7 @@ class RepoDetailsActivity : AppCompatActivity() {
         )
     }
 
-    private fun onDeleteMirror(mirror: Mirror) {
+    override fun onDeleteMirror(mirror: Mirror) {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.repo_confirm_delete_mirror_title)
             .setMessage(R.string.repo_confirm_delete_mirror_body)

@@ -58,26 +58,32 @@ import org.fdroid.fdroid.compose.FDroidSwitchRow
 import org.fdroid.fdroid.flagEmoji
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
+interface RepoDetailsScreenCallbacks {
+    // app bar functions
+    fun onBackClicked()
+    fun onShareClicked()
+    fun onShowQrCodeClicked()
+    fun onDeleteClicked()
+    fun onInfoClicked()
+
+    // other buttons
+    fun onShowAppsClicked()
+    fun onToggleArchiveClicked(enabled: Boolean)
+    fun onEditCredentialsClicked()
+
+    // mirror actions
+    fun setMirrorEnabled(mirror: Mirror, enabled: Boolean)
+    fun onShareMirror(mirror: Mirror)
+    fun onDeleteMirror(mirror: Mirror)
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RepoDetailsScreen(
     repo: Repository,
     archiveState: ArchiveState,
     numberOfApps: Int,
-    // app bar functions
-    onBackClicked: () -> Unit,
-    onShareClicked: () -> Unit,
-    onShowQrCodeClicked: () -> Unit,
-    onDeleteClicked: () -> Unit,
-    onInfoClicked: () -> Unit,
-    // other buttons
-    onShowAppsClicked: () -> Unit,
-    onToggleArchiveClicked: (Boolean) -> Unit,
-    onEditCredentialsClicked: () -> Unit,
-    // mirror actions
-    setMirrorEnabled: (Mirror, Boolean) -> Unit,
-    onShareMirror: (Mirror) -> Unit,
-    onDeleteMirror: (Mirror) -> Unit,
+    callbacks: RepoDetailsScreenCallbacks,
 ) {
     val officialMirrors = repo.allOfficialMirrors
     val userMirrors = repo.allUserMirrors
@@ -86,7 +92,7 @@ fun RepoDetailsScreen(
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
-                IconButton(onClick = onBackClicked) {
+                IconButton(onClick = callbacks::onBackClicked) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
                 }
             },
@@ -94,16 +100,16 @@ fun RepoDetailsScreen(
                 Text(stringResource(R.string.repo_details))
             },
             actions = {
-                IconButton(onClick = onShareClicked) {
+                IconButton(onClick = callbacks::onShareClicked) {
                     Icon(Icons.Default.Share, stringResource(R.string.share_repository))
                 }
-                IconButton(onClick = onShowQrCodeClicked) {
+                IconButton(onClick = callbacks::onShowQrCodeClicked) {
                     Icon(Icons.Default.QrCode, stringResource(R.string.show_repository_qr))
                 }
-                IconButton(onClick = onDeleteClicked) {
+                IconButton(onClick = callbacks::onDeleteClicked) {
                     Icon(Icons.Default.Delete, stringResource(R.string.delete))
                 }
-                IconButton(onClick = onInfoClicked) {
+                IconButton(onClick = callbacks::onInfoClicked) {
                     Icon(Icons.Default.Info, stringResource(R.string.repo_details))
                 }
             })
@@ -116,11 +122,11 @@ fun RepoDetailsScreen(
                 .verticalScroll(rememberScrollState()),
         ) {
             Spacer(modifier = Modifier.height(16.dp))
-            GeneralInfoCard(repo, numberOfApps, onShowAppsClicked)
+            GeneralInfoCard(repo, numberOfApps, callbacks::onShowAppsClicked)
             repo.username?.let {
                 if (!it.isBlank()) {
                     Spacer(modifier = Modifier.height(16.dp))
-                    BasicAuthCard(it, onEditCredentialsClicked)
+                    BasicAuthCard(it, callbacks::onEditCredentialsClicked)
                 }
             }
             repo.fingerprint?.let {
@@ -134,20 +140,20 @@ fun RepoDetailsScreen(
                 OfficialMirrors(
                     mirrors = officialMirrors,
                     disabledMirrors = disabledMirrors,
-                    setMirrorEnabled = setMirrorEnabled,
+                    setMirrorEnabled = callbacks::setMirrorEnabled,
                 )
             }
             if (userMirrors.isNotEmpty()) {
                 UserMirrors(
                     mirrors = userMirrors,
                     disabledMirrors = disabledMirrors,
-                    setMirrorEnabled = setMirrorEnabled,
-                    onShareMirror = onShareMirror,
-                    onDeleteMirror = onDeleteMirror,
+                    setMirrorEnabled = callbacks::setMirrorEnabled,
+                    onShareMirror = callbacks::onShareMirror,
+                    onDeleteMirror = callbacks::onDeleteMirror,
                 )
             }
             // TODO: Add button to add user mirror?
-            SettingsRow(archiveState, onToggleArchiveClicked)
+            SettingsRow(archiveState, callbacks::onToggleArchiveClicked)
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
@@ -382,6 +388,25 @@ private fun SettingsRow(
 
 /* Previews */
 
+private val emptyCallbacks = object : RepoDetailsScreenCallbacks {
+    // app bar
+    override fun onBackClicked() {}
+    override fun onShareClicked() {}
+    override fun onShowQrCodeClicked() {}
+    override fun onDeleteClicked() {}
+    override fun onInfoClicked() {}
+
+    // other buttons
+    override fun onShowAppsClicked() {}
+    override fun onToggleArchiveClicked(enabled: Boolean) {}
+    override fun onEditCredentialsClicked() {}
+
+    // mirror
+    override fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {}
+    override fun onShareMirror(mirror: Mirror) {}
+    override fun onDeleteMirror(mirror: Mirror) {}
+}
+
 @Composable
 @Preview
 fun RepoDetailsScreenPreview() {
@@ -390,9 +415,7 @@ fun RepoDetailsScreenPreview() {
             repo = DUMMY_TEST_REPO,
             archiveState = ArchiveState.ENABLED,
             numberOfApps = 42,
-            {}, {}, {}, {}, {}, // app bar
-            {}, {}, {}, // other buttons
-            { _, _ -> }, { _ -> }, { _ -> } // mirror
+            callbacks = emptyCallbacks,
         )
     }
 }
