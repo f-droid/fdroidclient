@@ -7,7 +7,6 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
@@ -81,8 +80,6 @@ class RepoDetailsViewModel(
 
     val archiveStateFlow = MutableStateFlow(initialRepo.archiveState())
 
-    val qrCodeLiveData = MutableLiveData<Bitmap?>(null)
-
     fun setArchiveRepoEnabled(enabled: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             val repo = repoFlow.value ?: return@launch
@@ -143,19 +140,12 @@ class RepoDetailsViewModel(
         return if (this) ArchiveState.ENABLED else ArchiveState.DISABLED
     }
 
-    // TODO: initialise this once on ViewModel creation, and don't take an Activity, do fixed size
-    fun generateQrCode(activity: AppCompatActivity) {
-        viewModelScope.launch(Dispatchers.Default) {
-            val repo = repoFlow.value ?: return@launch
-            if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
-                // no need to show a QR Code, it is not shareable
-                qrCodeLiveData.value = null
-                return@launch
-            }
-            val bitmap = generateQrBitmapKt(activity, repo.shareUri)
-            withContext(Dispatchers.Main) {
-                qrCodeLiveData.value = bitmap
-            }
+    suspend fun generateQrCode(activity: AppCompatActivity): Bitmap? {
+        val repo = repoFlow.value ?: return null
+        if (repo.address.startsWith("content://") || repo.address.startsWith("file://")) {
+            // no need to show a QR Code, it is not shareable
+            return null
         }
+        return generateQrBitmapKt(activity, repo.shareUri)
     }
 }

@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.fdroid.FDroidApp
@@ -115,8 +118,10 @@ class RepoDetailsActivity : AppCompatActivity() {
         viewModel.generateQrCode(this)
 
         val imageView = ImageView(this)
-        viewModel.qrCodeLiveData.observe(this) {
-            imageView.setImageBitmap(it)
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            val bitmap = viewModel.generateQrCode(this@RepoDetailsActivity)
+            imageView.setImageBitmap(bitmap)
         }
 
         MaterialAlertDialogBuilder(this)
