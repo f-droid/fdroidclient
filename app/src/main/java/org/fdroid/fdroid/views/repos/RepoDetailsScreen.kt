@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.repos
 
-import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -56,6 +55,7 @@ import org.fdroid.download.Mirror
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.Utils
+import org.fdroid.fdroid.asRelativeTimeString
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
 import org.fdroid.fdroid.compose.FDroidExpandableRow
@@ -185,19 +185,11 @@ private fun GeneralInfoCard(
         repo.getDescription(localeList)
     }?.replace("\n", " ")
 
-    val lastIndexUpdateTime = DateUtils.getRelativeTimeSpanString(
-        repo.timestamp,
-        System.currentTimeMillis(),
-        DateUtils.MINUTE_IN_MILLIS,
-        DateUtils.FORMAT_ABBREV_ALL
-    )
-    val lastIndexUpdate = stringResource(R.string.repo_last_update_index, lastIndexUpdateTime)
+    val lastIndexUpdate =
+        stringResource(R.string.repo_last_update_index, repo.timestamp.asRelativeTimeString())
 
-    val lastUpdatedTime = repo.lastUpdated?.let {
-        DateUtils.getRelativeTimeSpanString(
-            it, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL
-        )
-    } ?: stringResource(R.string.repositories_last_update_never)
+    val lastUpdatedTime = repo.lastUpdated?.asRelativeTimeString()
+        ?: stringResource(R.string.repositories_last_update_never)
     val lastUpdated = stringResource(R.string.repo_last_update_check, lastUpdatedTime)
 
     ElevatedCard {

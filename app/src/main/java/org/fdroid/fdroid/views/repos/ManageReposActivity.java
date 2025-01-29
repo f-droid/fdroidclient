@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.UserManager;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,6 +52,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.UtilsKt;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
 import org.fdroid.index.RepoManager;
@@ -134,9 +134,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         long lastUpdate = Preferences.get().getLastUpdateCheck();
         CharSequence lastUpdateStr = lastUpdate < 0 ?
-                getString(R.string.repositories_last_update_never) :
-                DateUtils.getRelativeTimeSpanString(lastUpdate, System.currentTimeMillis(),
-                        DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL);
+                getString(R.string.repositories_last_update_never) : UtilsKt.asRelativeTimeString(lastUpdate);
         getSupportActionBar().setSubtitle(getString(R.string.repositories_last_update, lastUpdateStr));
         View fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {

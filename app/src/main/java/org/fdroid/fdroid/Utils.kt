@@ -1,6 +1,7 @@
 package org.fdroid.fdroid
 
 import android.graphics.Bitmap
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.DisplayCompat
@@ -52,3 +53,13 @@ val String.flagEmoji: String?
         val flagEmoji = String(Character.toChars(first) + Character.toChars(second))
         return flagEmoji
     }
+
+@JvmStatic
+fun Long.asRelativeTimeString(): String {
+    return DateUtils.getRelativeTimeSpanString(
+        this,
+        System.currentTimeMillis(),
+        DateUtils.MINUTE_IN_MILLIS,
+        DateUtils.FORMAT_ABBREV_ALL
+    ).toString()
+}
