@@ -117,19 +117,24 @@ fun RepoDetailsScreen(
             modifier = Modifier.padding(paddingContent)
         ) {
             Column(
-                verticalArrangement = spacedBy(16.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
                     .verticalScroll(rememberScrollState()),
             ) {
-                Spacer(modifier = Modifier) // spacedBy will provide the padding
+                Spacer(modifier = Modifier.height(16.dp))
                 GeneralInfoCard(
                     repo,
                     numberOfApps,
                     onShowAppsClicked,
                 )
-                BasicAuthCard(repo, onEditCredentialsClicked)
+                repo.username?.let {
+                    if (!it.isBlank()) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        BasicAuthCard(it, onEditCredentialsClicked)
+                    }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
                 if (repo.certificate.isEmpty()) {
                     UnsignedCard()
                 } else {
@@ -140,6 +145,7 @@ fun RepoDetailsScreen(
                 // If there are 2 or more official mirrors, it makes sense to allow users
                 // to disable the canonical address.
                 if (officialMirrors.size > 2) {
+                    Spacer(modifier = Modifier.height(8.dp))
                     OfficialMirrors(
                         mirrors = officialMirrors,
                         disabledMirrors = disabledMirrors,
@@ -147,6 +153,7 @@ fun RepoDetailsScreen(
                     )
                 }
                 if (userMirrors.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(8.dp))
                     UserMirrors(
                         mirrors = userMirrors,
                         disabledMirrors = disabledMirrors,
@@ -156,8 +163,9 @@ fun RepoDetailsScreen(
                     )
                 }
                 // TODO: Add button to add user mirror?
+                Spacer(modifier = Modifier.height(8.dp))
                 SettingsRow(archiveState, onToggleArchiveClicked)
-                Spacer(modifier = Modifier) // spacedBy will provide the padding
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }
@@ -251,14 +259,9 @@ private fun GeneralInfoCard(
 
 @Composable
 private fun BasicAuthCard(
-    repo: Repository,
+    username: String,
     onEditCredentialsClicked: () -> Unit,
 ) {
-    val username: String = repo.username ?: return
-    if (username.isBlank()) {
-        return
-    }
-
     ElevatedCard {
         Column(
             modifier = Modifier
@@ -458,10 +461,9 @@ fun RepoDetailsScreenPreview() {
 @Composable
 @Preview
 fun BasicAuthCardPreview() {
-    val repo = FDroidApp.createSwapRepo("https://example.org/fdroid/repo", "foo bar")
     // TODO set RepositoryPreferences
     FDroidContent {
-        BasicAuthCard(repo, { })
+        BasicAuthCard("username", { })
     }
 }
 
