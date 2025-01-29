@@ -133,9 +133,9 @@ class RepoDetailsActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.repo_confirm_delete_title)
             .setMessage(R.string.repo_confirm_delete_body)
-            .setPositiveButton(R.string.delete) { _, _ ->
+            .setPositiveButton(R.string.delete) { dialog, _ ->
                 viewModel.deleteRepository()
-                finish()
+                dialog.dismiss()
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
