@@ -17,7 +17,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.apps.AppListActivity
 
 class RepoDetailsActivity : AppCompatActivity() {

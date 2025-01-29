@@ -13,15 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
@@ -33,14 +24,21 @@ import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.primarySurface
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -59,12 +57,13 @@ import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.Utils
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
 import org.fdroid.fdroid.compose.FDroidExpandableRow
 import org.fdroid.fdroid.compose.FDroidSwitchRow
 import org.fdroid.fdroid.flagEmoji
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RepoDetailsScreen(
     repo: Repository,
@@ -90,18 +89,14 @@ fun RepoDetailsScreen(
     val disabledMirrors = repo.disabledMirrors.toHashSet()
 
     Scaffold(topBar = {
-        TopAppBar(elevation = 4.dp,
-            backgroundColor = MaterialTheme.colors.primarySurface,
+        TopAppBar(
             navigationIcon = {
                 IconButton(onClick = onBackClicked) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
                 }
             },
             title = {
-                Text(
-                    text = stringResource(R.string.repo_details),
-                    modifier = Modifier.alpha(ContentAlpha.high),
-                )
+                Text(stringResource(R.string.repo_details))
             },
             actions = {
                 IconButton(onClick = onShareClicked) {
@@ -197,7 +192,7 @@ private fun GeneralInfoCard(
     } ?: stringResource(R.string.repositories_last_update_never)
     val lastUpdated = stringResource(R.string.repo_last_update_check, lastUpdatedTime)
 
-    Card {
+    ElevatedCard {
         Column(
             verticalArrangement = spacedBy(8.dp),
             modifier = Modifier
@@ -213,11 +208,11 @@ private fun GeneralInfoCard(
                         text = repo.getName(localeList) ?: "Unknown Repository",
                         maxLines = 1,
                         fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.h6,
+                        style = MaterialTheme.typography.headlineSmall,
                     )
                     Text(
                         text = repo.address.replaceFirst("https://", ""),
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.bodyMedium,
                     )
                     Text(
                         text = pluralStringResource(
@@ -225,15 +220,15 @@ private fun GeneralInfoCard(
                             numberOfApps,
                             numberOfApps,
                         ),
-                        style = MaterialTheme.typography.caption,
+                        style = MaterialTheme.typography.bodySmall,
                     )
                     Text(
                         text = lastIndexUpdate,
-                        style = MaterialTheme.typography.caption,
+                        style = MaterialTheme.typography.bodySmall,
                     )
                     Text(
                         text = lastUpdated,
-                        style = MaterialTheme.typography.caption,
+                        style = MaterialTheme.typography.bodySmall,
                     )
                 }
             }
@@ -247,7 +242,7 @@ private fun GeneralInfoCard(
             if (description != null) {
                 Text(
                     text = description,
-                    style = MaterialTheme.typography.body2,
+                    style = MaterialTheme.typography.bodyMedium,
                 )
             }
         }
@@ -264,7 +259,7 @@ private fun BasicAuthCard(
         return
     }
 
-    Card {
+    ElevatedCard {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -272,7 +267,7 @@ private fun BasicAuthCard(
         ) {
             Text(
                 text = stringResource(R.string.repo_basic_auth_title),
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.bodySmall,
             )
             Spacer(modifier = Modifier.height(4.dp))
             Row {
@@ -281,11 +276,11 @@ private fun BasicAuthCard(
                 ) {
                     Text(
                         text = stringResource(R.string.repo_basic_auth_username, username),
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.bodyMedium,
                     )
                     Text(
                         text = stringResource(R.string.repo_basic_auth_password),
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.bodyMedium,
                     )
                 }
                 FDroidOutlineButton(
@@ -317,7 +312,7 @@ private fun FingerprintExpandable(repo: Repository) {
         Text(
             text = fingerprint,
             fontFamily = FontFamily.Monospace,
-            style = MaterialTheme.typography.body2,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(horizontal = 24.dp),
         )
     }
@@ -325,11 +320,11 @@ private fun FingerprintExpandable(repo: Repository) {
 
 @Composable
 private fun UnsignedCard() {
-    Card {
+    ElevatedCard {
         Text(
             text = stringResource(R.string.repo_unsigned_description),
             color = colorResource(R.color.unsigned),
-            style = MaterialTheme.typography.body2,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),

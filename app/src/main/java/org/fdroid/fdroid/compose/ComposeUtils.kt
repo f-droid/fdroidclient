@@ -60,7 +60,7 @@ object ComposeUtils {
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
         imageVector: ImageVector? = null,
-        color: Color = MaterialTheme.colors.primary,
+        color: Color = MaterialTheme.colorScheme.primary,
     ) {
         OutlinedButton(
             onClick = onClick,
