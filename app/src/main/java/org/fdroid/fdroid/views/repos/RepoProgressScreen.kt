@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 fun RepoProgressScreen(paddingValues: PaddingValues, text: String) {
@@ -31,7 +31,7 @@ fun RepoProgressScreen(paddingValues: PaddingValues, text: String) {
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.headlineSmall,
         )
         CircularProgressIndicator(modifier = Modifier.size(64.dp))
     }
@@ -40,7 +40,7 @@ fun RepoProgressScreen(paddingValues: PaddingValues, text: String) {
 @Preview
 @Composable
 fun FetchingRepoScreenPreview() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoProgressScreen(PaddingValues(0.dp), stringResource(R.string.repo_state_fetching))
     }
 }

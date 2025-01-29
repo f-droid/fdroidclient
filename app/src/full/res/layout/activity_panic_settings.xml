@@ -16,8 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/panic_settings"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface" />
+            app:title="@string/panic_settings" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

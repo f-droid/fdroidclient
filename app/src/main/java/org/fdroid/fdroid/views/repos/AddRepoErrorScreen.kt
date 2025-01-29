@@ -7,16 +7,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -25,7 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.repos.ManageReposActivity.getDisallowInstallUnknownSourcesErrorMessage
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
@@ -48,7 +46,7 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
         Image(
             imageVector = Icons.Default.Error,
             contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.error),
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.error),
             modifier = Modifier.size(48.dp),
         )
         val title = when (state.errorType) {
@@ -67,13 +65,13 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
         }
         Text(
             text = title,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.headlineSmall,
             textAlign = TextAlign.Center,
         )
         if (state.exception != null) Text(
             text = state.exception.toString(),
-            style = MaterialTheme.typography.body1,
-            modifier = Modifier.alpha(ContentAlpha.medium),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }
@@ -81,7 +79,7 @@ fun AddRepoErrorScreen(paddingValues: PaddingValues, state: AddRepoError) {
 @Preview
 @Composable
 fun AddRepoErrorInvalidFingerprintPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(INVALID_FINGERPRINT))
     }
 }
@@ -89,7 +87,7 @@ fun AddRepoErrorInvalidFingerprintPreview() {
 @Preview
 @Composable
 fun AddRepoErrorIoErrorPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(IO_ERROR, IOException("foo bar")))
     }
 }
@@ -97,7 +95,7 @@ fun AddRepoErrorIoErrorPreview() {
 @Preview
 @Composable
 fun AddRepoErrorInvalidIndexPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(
             PaddingValues(0.dp),
             AddRepoError(INVALID_INDEX, RuntimeException("foo bar"))
@@ -108,7 +106,7 @@ fun AddRepoErrorInvalidIndexPreview() {
 @Preview
 @Composable
 fun AddRepoErrorUnknownSourcesPreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(UNKNOWN_SOURCES_DISALLOWED))
     }
 }
@@ -116,7 +114,7 @@ fun AddRepoErrorUnknownSourcesPreview() {
 @Preview
 @Composable
 fun AddRepoErrorArchivePreview() {
-    ComposeUtils.FDroidContent {
+    FDroidContent(pureBlack = true) {
         AddRepoErrorScreen(PaddingValues(0.dp), AddRepoError(IS_ARCHIVE_REPO))
     }
 }

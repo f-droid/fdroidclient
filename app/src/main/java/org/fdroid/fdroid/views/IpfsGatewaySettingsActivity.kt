@@ -14,20 +14,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Switch
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DeleteForever
-import androidx.compose.material.primarySurface
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,18 +44,14 @@ import org.fdroid.fdroid.IPreferencesIpfs
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.compose.ComposeUtils.CaptionText
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.compose.ComposeUtils.LifecycleEventListener
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
 class IpfsGatewaySettingsActivity : AppCompatActivity() {
 
-    lateinit var prefs: Preferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        prefs = Preferences.get()
-
+        val prefs = Preferences.get()
         setContent {
             FDroidContent {
                 IpfsGatewaySettingsScreen(
@@ -68,6 +63,7 @@ class IpfsGatewaySettingsActivity : AppCompatActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IpfsGatewaySettingsScreen(
     onBackClicked: () -> Unit,
@@ -79,17 +75,14 @@ fun IpfsGatewaySettingsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                elevation = 4.dp,
-                backgroundColor = MaterialTheme.colors.primarySurface,
                 navigationIcon = {
                     IconButton(onClick = onBackClicked) {
-                        Icon(Icons.Filled.ArrowBack, stringResource(R.string.back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
                     }
                 },
                 title = {
                     Text(
                         text = stringResource(R.string.ipfsgw_title),
-                        modifier = Modifier.alpha(ContentAlpha.high),
                     )
                 },
             )
@@ -120,7 +113,7 @@ fun IpfsGatewaySettingsScreen(
                 ) {
                     Text(
                         text = stringResource(id = R.string.ipfsgw_explainer),
-                        style = MaterialTheme.typography.body1,
+                        style = MaterialTheme.typography.bodyLarge,
                         modifier = Modifier.weight(1f)
                     )
                     Switch(checked = ipfsEnabled, onCheckedChange = { checked ->
@@ -157,7 +150,7 @@ fun DefaultGatewaysSettings(
             ) {
                 Text(
                     text = gatewayUrl,
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier
                         .weight(1f)
                         .align(Alignment.CenterVertically)
@@ -211,7 +204,7 @@ fun UserGatewaysSettings(
             ) {
                 Text(
                     text = gatewayUrl,
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier
                         .weight(1f)
                         .align(Alignment.CenterVertically)
@@ -253,7 +246,7 @@ fun IpfsGatewaySettingsScreenPreview() {
             throw NotImplementedError()
     }
 
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         IpfsGatewaySettingsScreen(
             prefs = prefs,
             onBackClicked = {},

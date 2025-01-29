@@ -19,8 +19,8 @@ import kotlinx.coroutines.launch
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.Preferences
 import org.fdroid.fdroid.R
-import org.fdroid.fdroid.compose.ComposeUtils.FDroidContent
 import org.fdroid.fdroid.nearby.SwapService
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.fdroid.views.apps.AppListActivity
 import org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_REPO_ID
 import org.fdroid.fdroid.work.RepoUpdateWorker

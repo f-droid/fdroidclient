@@ -27,7 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -35,6 +34,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.fdroid.database.AppDao;
@@ -203,17 +204,17 @@ public class RepoDetailsActivity extends AppCompatActivity {
             updateRepoView();
         });
 
-        SwitchCompat switchCompat = findViewById(R.id.archiveRepo);
+        MaterialSwitch archiveRepoSwitch = findViewById(R.id.archiveRepo);
         model.getLiveData().observe(this, s -> {
             Boolean enabled = s.getArchiveEnabled();
             if (enabled == null) {
-                switchCompat.setEnabled(false);
+                archiveRepoSwitch.setEnabled(false);
             } else {
-                switchCompat.setEnabled(true);
-                switchCompat.setChecked(enabled);
+                archiveRepoSwitch.setEnabled(true);
+                archiveRepoSwitch.setChecked(enabled);
             }
         });
-        switchCompat.setOnClickListener(v -> model.setArchiveRepoEnabled(repo, switchCompat.isChecked()));
+        archiveRepoSwitch.setOnClickListener(v -> model.setArchiveRepoEnabled(repo, archiveRepoSwitch.isChecked()));
     }
 
     @Override
@@ -452,7 +453,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
     }
 
     private void promptForDelete() {
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.repo_confirm_delete_title)
                 .setMessage(R.string.repo_confirm_delete_body)
                 .setPositiveButton(R.string.delete, (dialog, which) -> {
@@ -469,7 +470,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
 
     private void showChangePasswordDialog(final View parentView) {
         final View view = getLayoutInflater().inflate(R.layout.login, (ViewGroup) parentView, false);
-        final AlertDialog credentialsDialog = new AlertDialog.Builder(this).setView(view).create();
+        final AlertDialog credentialsDialog = new MaterialAlertDialogBuilder(this).setView(view).create();
         final TextInputLayout nameInputLayout = view.findViewById(R.id.edit_name);
         final TextInputLayout passwordInputLayout = view.findViewById(R.id.edit_password);
         final EditText nameInput = nameInputLayout.getEditText();

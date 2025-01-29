@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views.main;
 import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,11 +43,10 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
 
     private final LatestAdapter latestAdapter;
     private final AppCompatActivity activity;
+    private final CircularProgressIndicator progressBar;
     private final TextView emptyState;
     private final RecyclerView appList;
     private final FDroidDatabase db;
-
-    private CircularProgressIndicator progressBar;
 
     LatestViewBinder(final AppCompatActivity activity, FrameLayout parent) {
         this.activity = activity;
@@ -76,6 +74,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         layoutManager.setSpanSizeLookup(latestAdapter.getSpanSizeLookup());
 
         emptyState = latestView.findViewById(R.id.empty_state);
+        progressBar = latestView.findViewById(R.id.progress_bar);
 
         appList = latestView.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
@@ -113,6 +112,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
             appList.setVisibility(View.GONE);
             explainEmptyStateToUser();
         } else {
+            progressBar.setVisibility(View.GONE);
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.VISIBLE);
         }
@@ -122,7 +122,7 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
     public void onPreferenceChange() {
         // reload and re-filter apps from DB when anti-feature settings change
         LiveData<List<AppOverviewItem>> liveData = db.getAppDao().getAppOverviewItems(200);
-        liveData.observe(activity, new Observer<List<AppOverviewItem>>() {
+        liveData.observe(activity, new Observer<>() {
             @Override
             public void onChanged(List<AppOverviewItem> items) {
                 LatestViewBinder.this.onChanged(items);
@@ -166,17 +166,12 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
     private void explainEmptyStateToUser() {
         if (Preferences.get().isIndexNeverUpdated() &&
                 FDroidApp.getRepoUpdateManager(activity).isUpdating().getValue()) {
-            if (progressBar != null) {
-                return;
-            }
-            LinearLayout linearLayout = (LinearLayout) appList.getParent();
-            progressBar = new CircularProgressIndicator(activity);
-            progressBar.setId(R.id.progress_bar);
-            linearLayout.addView(progressBar);
+            progressBar.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
             appList.setVisibility(View.GONE);
             return;
         }
+        progressBar.setVisibility(View.GONE);
 
         StringBuilder emptyStateText = new StringBuilder();
         emptyStateText.append(activity.getString(R.string.latest__empty_state__no_recent_apps));

@@ -32,7 +32,6 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
@@ -193,7 +192,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
     @Override
     public void onToggleEnabled(Repository repo) {
         if (repo.getEnabled()) {
-            new AlertDialog.Builder(this)
+            new MaterialAlertDialogBuilder(this)
                     .setMessage(R.string.repo_disable_warning)
                     .setPositiveButton(R.string.repo_disable_warning_button, (dialog, id) -> {
                         disableRepo(repo);

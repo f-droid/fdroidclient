@@ -7,8 +7,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
@@ -41,7 +42,7 @@ public class HidingManager {
 
     public static void showHideDialog(final Context context) {
         String appName = context.getString(R.string.app_name);
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         builder.setTitle(context.getString(R.string.hiding_dialog_title, appName));
         builder.setMessage(context.getString(R.string.hiding_dialog_message, appName,
                 HidingManager.getUnhidePin(context), context.getString(R.string.hiding_calculator)));

@@ -26,9 +26,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.Apk;
@@ -82,7 +83,7 @@ public class UninstallDialogActivity extends FragmentActivity {
         }
 
         // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_App);
+        final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.Theme_App);
         builder.setTitle(appInfo.loadLabel(pm));
         builder.setIcon(appInfo.loadIcon(pm));
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> {

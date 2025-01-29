@@ -40,7 +40,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.util.ObjectsCompat;
@@ -52,6 +51,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.database.AppPrefs;
 import org.fdroid.database.AppVersion;
@@ -363,22 +363,20 @@ public class AppDetailsActivity extends AppCompatActivity
         }
 
         if (!apk.compatible) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(R.string.installIncompatible);
-            builder.setPositiveButton(R.string.yes, (dialog, whichButton) -> initiateInstall(apk));
-            builder.setNegativeButton(R.string.no, (dialog, whichButton) -> {
-            });
-            AlertDialog alert = builder.create();
-            alert.show();
+            new MaterialAlertDialogBuilder(this)
+                    .setMessage(R.string.installIncompatible)
+                    .setPositiveButton(R.string.yes, (dialog, whichButton) -> initiateInstall(apk))
+                    .setNegativeButton(R.string.no, (dialog, whichButton) -> {
+                    })
+                    .show();
             return;
         }
         if (app.installedSigner != null && apk.signer != null
                 && !apk.signer.equals(app.installedSigner)) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
-                    R.string.ok, (dialog, id) -> dialog.cancel());
-            AlertDialog alert = builder.create();
-            alert.show();
+            new MaterialAlertDialogBuilder(this)
+                    .setMessage(R.string.SignatureMismatch)
+                    .setPositiveButton(R.string.ok, (dialog, id) -> dialog.cancel())
+                    .show();
             return;
         }
         initiateInstall(apk);
@@ -615,7 +613,9 @@ public class AppDetailsActivity extends AppCompatActivity
                     if (!TextUtils.isEmpty(errorMessage) && !isFinishing()) {
                         Log.e(TAG, "uninstall aborted with errorMessage: " + errorMessage);
 
-                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetailsActivity.this);
+                        MaterialAlertDialogBuilder alertBuilder = new MaterialAlertDialogBuilder(
+                                AppDetailsActivity.this
+                        );
                         Uri uri = intent.getData();
                         if (uri == null) {
                             alertBuilder.setTitle(getString(R.string.uninstall_error_notify_title, ""));

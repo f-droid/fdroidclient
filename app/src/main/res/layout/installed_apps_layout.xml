@@ -20,8 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/installed_apps__activity_title"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface" />
+            app:title="@string/installed_apps__activity_title" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

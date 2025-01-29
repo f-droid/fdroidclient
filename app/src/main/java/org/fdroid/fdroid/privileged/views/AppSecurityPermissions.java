@@ -44,6 +44,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -206,7 +208,7 @@ public class AppSecurityPermissions {
                     dialog.dismiss();
                 }
                 PackageManager pm = getContext().getPackageManager();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
                 builder.setTitle(group.label);
                 if (perm.descriptionRes != 0) {
                     builder.setMessage(perm.loadDescription(pm));

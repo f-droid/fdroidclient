@@ -17,7 +17,6 @@ import android.util.TypedValue;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.preference.ListPreference;
@@ -25,6 +24,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -234,7 +235,7 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
             requireActivity().finish();
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity());
         builder.setTitle(getString(R.string.panic_app_dialog_title));
 
         CharSequence app = getString(R.string.panic_app_unknown_app);
@@ -266,7 +267,7 @@ public class PanicPreferencesFragment extends PreferenceFragmentCompat
 
     private void showHideConfirmationDialog() {
         String appName = getString(R.string.app_name);
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireActivity());
         builder.setTitle(R.string.panic_hide_warning_title);
         builder.setMessage(getString(R.string.panic_hide_warning_message, appName,
                 HidingManager.getUnhidePin(requireActivity()), getString(R.string.hiding_calculator)));

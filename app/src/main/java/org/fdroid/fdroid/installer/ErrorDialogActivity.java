@@ -26,9 +26,10 @@ import android.util.TypedValue;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.fdroid.fdroid.R;
 
@@ -46,7 +47,7 @@ public class ErrorDialogActivity extends FragmentActivity {
         final String message = intent.getStringExtra(EXTRA_MESSAGE);
 
         // pass the theme, it is not automatically applied due to activity's Theme.NoDisplay
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppThemeDialog);
+        final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle(title);
         builder.setNeutralButton(R.string.ok, (dialog, which) -> {
             setResult(AppCompatActivity.RESULT_OK);

@@ -10,17 +10,11 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">18dp</item>
         <item name="android:paddingRight">18dp</item>
-        <item name="textAllCaps">true</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
         <item name="android:stateListAnimator">@null</item>  <!-- no elevation change on hover -->
         <item name="android:letterSpacing">0.05</item>
     </style>
 
-    <style name="DetailsPrimaryButtonStyle" parent="Widget.App.Button">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-    </style>
-
-    <style name="ThemeOverlay.App.DetailsButton" parent="" />
+    <style name="DetailsPrimaryButtonStyle" parent="Widget.App.Button"></style>
 
     <style name="DetailsPrimaryButtonStyleSmall" parent="DetailsPrimaryButtonStyle">
         <item name="android:textSize">12sp</item>
@@ -30,9 +24,7 @@
         <item name="android:paddingRight">12dp</item>
     </style>
 
-    <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
-    </style>
+    <style name="DetailsSecondaryButtonStyle" parent="DetailsButtonStyle"></style>
 
     <style name="DetailsSecondaryButtonStyleSmall" parent="DetailsSecondaryButtonStyle">
         <item name="android:textSize">12sp</item>
@@ -46,17 +38,16 @@
         <item name="android:padding">8dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.DetailsButton</item>
     </style>
 
-    <style name="DetailsAppTitleStyle" parent="TextAppearance.MaterialComponents.Headline6">
+    <style name="DetailsAppTitleStyle" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textSize">18sp</item>
     </style>
 
 
-    <style name="DetailsLastUpdatedStyle" parent="TextAppearance.MaterialComponents.Caption" />
+    <style name="DetailsLastUpdatedStyle" parent="TextAppearance.Material3.BodySmall" />
 
-    <style name="DetailsAntiFeaturesWarningStyle" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="DetailsAntiFeaturesWarningStyle" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textStyle">bold</item>
     </style>
 

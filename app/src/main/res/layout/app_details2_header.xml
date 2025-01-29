@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Elevated"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/details_activity_padding"
@@ -188,7 +189,7 @@
             android:id="@+id/warning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/warning"
+            android:background="?attr/warning"
             android:padding="8dp"
             android:text="@string/warning_target_sdk"
             android:textAlignment="center"
@@ -276,7 +277,6 @@
                 android:paddingRight="8dp"
                 android:scrollbars="none"
                 android:text="@string/antifeatures"
-                android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold" />
 

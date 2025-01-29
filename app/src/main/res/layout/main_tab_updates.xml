@@ -2,14 +2,14 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swipe_to_refresh">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -18,59 +18,64 @@
 
             <org.fdroid.fdroid.views.StatusBanner
                 android:id="@+id/banner_updating_repos"
+                style="@style/StatusBanner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/empty_state"
+                style="@style/AppListEmptyText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/AppListEmptyText"
+                android:text="@string/empty_can_update_app_list"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos"
-                android:visibility="gone"
-                android:text="@string/empty_can_update_app_list" />
+                app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos" />
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/empty_updating_progress"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos"
+                android:layout_margin="16dp"
+                android:indeterminate="true"
                 android:visibility="gone"
                 app:hideAnimationBehavior="outward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos"
                 app:showAnimationBehavior="inward"
-                app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius"/>
+                app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius"
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:srcCompat="@drawable/no_updates_bg"
                 android:importantForAccessibility="no"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/empty_state"
-                app:tint="?attr/mainTabSwapSplashTint"
                 android:scaleType="fitCenter"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/empty_state"
+                app:srcCompat="@drawable/no_updates_bg"
+                app:tint="?attr/mainTabSwapSplashTint"
+                tools:visibility="visible" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
-                tools:listitem="@layout/app_list_item"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:scrollbars="vertical" />
+                tools:listitem="@layout/app_list_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

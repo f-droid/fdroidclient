@@ -1,66 +1,57 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!--Button-->
-    <style name="ThemeOverlay.App.Button" parent="">
+    <style name="ThemeOverlay.App.Button" parent="Widget.Material3.Button">
         <item name="colorPrimary">@color/fdroid_green</item>
     </style>
 
-    <style name="ThemeOverlay.App.Button.TextButton" parent="">
+    <style name="ThemeOverlay.App.Button.TextButton" parent="Widget.Material3.Button.TextButton">
         <item name="colorPrimary">@color/fdroid_green</item>
         <item name="android:textColor">@color/fdroid_green</item>
     </style>
 
     <!--Dialog-->
-    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
         <item name="android:textColor">@color/fdroid_green</item>
     </style>
 
 
-    <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
+    <!-- To preserve the UX before MD3 migration -->
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
         <item name="shapeAppearance">@style/ShapeAppearance.App.Card</item>
     </style>
 
-    <style name="Widget.App.Button.Dialog" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <style name="Widget.App.Button.Dialog" parent="Widget.Material3.Button.TextButton.Dialog">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.TextButton</item>
         <item name="colorPrimary">@color/fdroid_green</item>
         <item name="android:textColor">@color/fdroid_green</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
-    <style name="Widget.App.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="Widget.App.Button.TextButton" parent="Widget.Material3.Button.TextButton">
         <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
-    <style name="Widget.App.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="Widget.App.Button.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
         <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
-    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
         <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
-    <style name="AlertDialogBaseThemeDark" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog" />
-
-    <style name="ThemeOverlay.App.MaterialAlertDialog.Dark" parent="AlertDialogBaseThemeDark">
-        <item name="android:windowBackground">@color/cardview_dark_background</item>
+    <style name="Widget.App.Button.ElevatedButton" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Button</item>
     </style>
 
-    <style name="AlertDialogBaseThemeLight" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog" />
-
-    <style name="ThemeOverlay.App.MaterialAlertDialog.Light" parent="AlertDialogBaseThemeLight">
-        <item name="colorSecondary">@color/fdroid_green</item>
-    </style>
-
-    <style name="AlertDialogBaseThemeNight" parent="AlertDialogBaseThemeDark" />
-
-    <style name="MinWithDialogBaseThemeDark" parent="Theme.MaterialComponents.Dialog.MinWidth">
+    <style name="MinWithDialogBaseThemeDark" parent="Theme.Material3.DayNight.Dialog.MinWidth">
         <item name="colorSecondary">@color/fdroid_green</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MinWithDialogBaseThemeLight" parent="Theme.MaterialComponents.Light.Dialog.MinWidth">
+    <style name="MinWithDialogBaseThemeLight" parent="Theme.Material3.Light.Dialog.MinWidth">
         <item name="colorSecondary">@color/fdroid_green</item>
 
         <item name="windowActionBar">false</item>
@@ -100,7 +91,6 @@
     <style name="AppListItemStatusText">
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?attr/lightGrayTextColor</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
         <item name="fontFamily">sans-serif-light</item>
@@ -143,5 +133,21 @@
     <style name="DiscreteSeekBar" parent="Base.Widget.AppCompat.SeekBar.Discrete">
         <!-- Disable default tickMarks. We draw our own in SeekBarForegroundThumb -->
         <item name="tickMark">@null</item>
+    </style>
+
+
+    <style name="Widget.App.Preference.SwitchPreferenceCompat" parent="Preference.SwitchPreferenceCompat.Material">
+        <item name="android:widgetLayout">@layout/preference_switch</item>
+    </style>
+
+    <style name="Widget.App.Preference.DialogPreference.EditTextPreference" parent="Preference.DialogPreference.EditTextPreference.Material">
+        <item name="android:dialogLayout">@layout/preference_edit_text</item>
+    </style>
+
+    <style name="StatusBanner" parent="Widget.Material3.CardView.Elevated">
+        <item name="android:padding">@dimen/banner__padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">?colorSurfaceBright</item>
+        <item name="android:textColor">?colorOnSurface</item>
     </style>
 </resources>
