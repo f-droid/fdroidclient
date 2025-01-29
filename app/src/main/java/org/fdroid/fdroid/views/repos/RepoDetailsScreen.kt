@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.repos
 
 import androidx.compose.foundation.layout.Arrangement.spacedBy
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,9 +22,9 @@ import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -35,24 +34,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import org.fdroid.database.DUMMY_TEST_REPO
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
-import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.Utils
 import org.fdroid.fdroid.asRelativeTimeString
@@ -84,8 +79,8 @@ fun RepoDetailsScreen(
     onShareMirror: (Mirror) -> Unit,
     onDeleteMirror: (Mirror) -> Unit,
 ) {
-    val officialMirrors = repo.getAllOfficialMirrors()
-    val userMirrors = repo.getAllUserMirrors()
+    val officialMirrors = repo.allOfficialMirrors
+    val userMirrors = repo.allUserMirrors
     val disabledMirrors = repo.disabledMirrors.toHashSet()
 
     Scaffold(topBar = {
@@ -113,60 +108,47 @@ fun RepoDetailsScreen(
                 }
             })
     }) { paddingContent ->
-        Box(
-            modifier = Modifier.padding(paddingContent)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(paddingContent)
+                .padding(horizontal = 16.dp)
+                .verticalScroll(rememberScrollState()),
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .verticalScroll(rememberScrollState()),
-            ) {
-                Spacer(modifier = Modifier.height(16.dp))
-                GeneralInfoCard(
-                    repo,
-                    numberOfApps,
-                    onShowAppsClicked,
-                )
-                repo.username?.let {
-                    if (!it.isBlank()) {
-                        Spacer(modifier = Modifier.height(16.dp))
-                        BasicAuthCard(it, onEditCredentialsClicked)
-                    }
+            Spacer(modifier = Modifier.height(16.dp))
+            GeneralInfoCard(repo, numberOfApps, onShowAppsClicked)
+            repo.username?.let {
+                if (!it.isBlank()) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    BasicAuthCard(it, onEditCredentialsClicked)
                 }
-                Spacer(modifier = Modifier.height(16.dp))
-                if (repo.certificate.isEmpty()) {
-                    UnsignedCard()
-                } else {
-                    FingerprintExpandable(repo)
-                }
-                // The repo's address is currently also an official mirror.
-                // So if there is only one mirror, this is the address => don't show this section.
-                // If there are 2 or more official mirrors, it makes sense to allow users
-                // to disable the canonical address.
-                if (officialMirrors.size > 2) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OfficialMirrors(
-                        mirrors = officialMirrors,
-                        disabledMirrors = disabledMirrors,
-                        setMirrorEnabled = setMirrorEnabled,
-                    )
-                }
-                if (userMirrors.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    UserMirrors(
-                        mirrors = userMirrors,
-                        disabledMirrors = disabledMirrors,
-                        setMirrorEnabled = setMirrorEnabled,
-                        onShareMirror = onShareMirror,
-                        onDeleteMirror = onDeleteMirror,
-                    )
-                }
-                // TODO: Add button to add user mirror?
-                Spacer(modifier = Modifier.height(8.dp))
-                SettingsRow(archiveState, onToggleArchiveClicked)
-                Spacer(modifier = Modifier.height(16.dp))
             }
+            repo.fingerprint?.let {
+                FingerprintExpandable(it)
+            }
+            // The repo's address is currently also an official mirror.
+            // So if there is only one mirror, this is the address => don't show this section.
+            // If there are 2 or more official mirrors, it makes sense to allow users
+            // to disable the canonical address.
+            if (officialMirrors.size > 2) {
+                OfficialMirrors(
+                    mirrors = officialMirrors,
+                    disabledMirrors = disabledMirrors,
+                    setMirrorEnabled = setMirrorEnabled,
+                )
+            }
+            if (userMirrors.isNotEmpty()) {
+                UserMirrors(
+                    mirrors = userMirrors,
+                    disabledMirrors = disabledMirrors,
+                    setMirrorEnabled = setMirrorEnabled,
+                    onShareMirror = onShareMirror,
+                    onDeleteMirror = onDeleteMirror,
+                )
+            }
+            // TODO: Add button to add user mirror?
+            SettingsRow(archiveState, onToggleArchiveClicked)
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
@@ -178,15 +160,14 @@ private fun GeneralInfoCard(
     onShowAppsClicked: () -> Unit,
 ) {
     val localeList = LocaleListCompat.getDefault()
-    val isDevPreview = LocalInspectionMode.current
-    val description = if (isDevPreview) {
-        LoremIpsum(42).values.joinToString(" ")
-    } else {
-        repo.getDescription(localeList)
-    }?.replace("\n", " ")
+    val description = repo.getDescription(localeList)?.replace("\n", " ")
 
-    val lastIndexUpdate =
-        stringResource(R.string.repo_last_update_index, repo.timestamp.asRelativeTimeString())
+    val lastIndexTime = if (repo.timestamp < 0) {
+        stringResource(R.string.repositories_last_update_never)
+    } else {
+        repo.timestamp.asRelativeTimeString()
+    }
+    val lastIndexUpdate = stringResource(R.string.repo_last_update_index, lastIndexTime)
 
     val lastUpdatedTime = repo.lastUpdated?.asRelativeTimeString()
         ?: stringResource(R.string.repositories_last_update_never)
@@ -239,7 +220,7 @@ private fun GeneralInfoCard(
                 onClick = onShowAppsClicked,
             )
 
-            if (description != null) {
+            if (description?.isNotBlank() == true) {
                 Text(
                     text = description,
                     style = MaterialTheme.typography.bodyMedium,
@@ -290,39 +271,17 @@ private fun BasicAuthCard(
 }
 
 @Composable
-private fun FingerprintExpandable(repo: Repository) {
-    val isDevPreview = LocalInspectionMode.current
-    val fingerprint: String = if (isDevPreview) {
-        Utils.formatFingerprint(LocalContext.current, "A".repeat(64))
-    } else {
-        repo.fingerprint?.let {
-            Utils.formatFingerprint(LocalContext.current, it)
-        } ?: stringResource(R.string.unsigned)
-    }
-
+private fun FingerprintExpandable(
+    fingerprint: String,
+) {
     FDroidExpandableRow(
         text = stringResource(R.string.repo_fingerprint),
         imageVectorStart = Icons.Default.Fingerprint,
     ) {
         Text(
-            text = fingerprint,
+            text = Utils.formatFingerprint(LocalContext.current, fingerprint),
             fontFamily = FontFamily.Monospace,
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(horizontal = 24.dp),
-        )
-    }
-}
-
-@Composable
-private fun UnsignedCard() {
-    ElevatedCard {
-        Text(
-            text = stringResource(R.string.repo_unsigned_description),
-            color = colorResource(R.color.unsigned),
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
         )
     }
 }
@@ -337,31 +296,25 @@ private fun OfficialMirrors(
         text = stringResource(R.string.repo_official_mirrors),
         imageVectorStart = Icons.Default.Public,
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 24.dp)
-        ) {
+        Column {
             mirrors.forEachIndexed { idx, m ->
                 val icon = if (m.isOnion()) {
                     "🧅"
                 } else {
                     m.countryCode?.flagEmoji ?: ""
                 }
-                Row(
-                    horizontalArrangement = spacedBy(8.dp),
-                    verticalAlignment = CenterVertically,
-                ) {
-                    Text(
-                        text = icon,
-                        modifier = Modifier.width(20.dp),
-                    )
-                    FDroidSwitchRow(
-                        text = m.baseUrl,
-                        checked = !disabledMirrors.contains(m.baseUrl),
-                        onCheckedChange = { checked -> setMirrorEnabled(m, checked) },
-                        modifier = Modifier.padding(vertical = 8.dp),
-                    )
-                }
-                if (idx < mirrors.size - 1) Divider()
+                FDroidSwitchRow(
+                    text = m.baseUrl,
+                    leadingContent = {
+                        Text(
+                            text = icon,
+                            modifier = Modifier.width(20.dp),
+                        )
+                    },
+                    checked = !disabledMirrors.contains(m.baseUrl),
+                    onCheckedChange = { checked -> setMirrorEnabled(m, checked) },
+                )
+                if (idx < mirrors.size - 1) HorizontalDivider()
             }
         }
     }
@@ -380,14 +333,11 @@ private fun UserMirrors(
         imageVectorStart = Icons.Default.Dns,
     ) {
         mirrors.forEachIndexed { idx, m ->
-            Column(
-                modifier = Modifier.padding(horizontal = 24.dp)
-            ) {
+            Column {
                 FDroidSwitchRow(
                     text = m.baseUrl,
                     checked = !disabledMirrors.contains(m.baseUrl),
                     onCheckedChange = { checked -> setMirrorEnabled(m, checked) },
-                    modifier = Modifier.padding(vertical = 8.dp),
                 )
                 Row(
                     horizontalArrangement = spacedBy(16.dp),
@@ -404,7 +354,7 @@ private fun UserMirrors(
                         color = Color.Red,
                     )
                 }
-                if (idx < mirrors.size - 1) Divider()
+                if (idx < mirrors.size - 1) HorizontalDivider()
             }
         }
     }
@@ -425,8 +375,6 @@ private fun SettingsRow(
                 checked = archiveState == ArchiveState.ENABLED,
                 enabled = true,
                 onCheckedChange = onToggleArchiveClicked,
-                modifier = Modifier
-                    .padding(horizontal = 24.dp, vertical = 8.dp),
             )
         }
     }
@@ -437,11 +385,10 @@ private fun SettingsRow(
 @Composable
 @Preview
 fun RepoDetailsScreenPreview() {
-    val repo = FDroidApp.createSwapRepo("https://example.org/fdroid/repo", "foo bar")
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         RepoDetailsScreen(
-            repo,
-            ArchiveState.ENABLED,
+            repo = DUMMY_TEST_REPO,
+            archiveState = ArchiveState.ENABLED,
             numberOfApps = 42,
             {}, {}, {}, {}, {}, // app bar
             {}, {}, {}, // other buttons
@@ -454,23 +401,15 @@ fun RepoDetailsScreenPreview() {
 @Preview
 fun BasicAuthCardPreview() {
     // TODO set RepositoryPreferences
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         BasicAuthCard("username", { })
     }
 }
 
 @Composable
 @Preview
-fun UnsignedCardPreview() {
-    FDroidContent {
-        UnsignedCard()
-    }
-}
-
-@Composable
-@Preview
 fun OfficialMirrorsPreview() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         OfficialMirrors(
             mirrors = listOf(Mirror("https://mirror.example.com/fdroid/repo")),
             disabledMirrors = HashSet(),
@@ -482,7 +421,7 @@ fun OfficialMirrorsPreview() {
 @Composable
 @Preview
 fun UserMirrorsPreview() {
-    FDroidContent {
+    FDroidContent(pureBlack = true) {
         UserMirrors(
             mirrors = listOf(Mirror("https://mirror.example.com/fdroid/repo")),
             disabledMirrors = HashSet(),

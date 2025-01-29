@@ -465,7 +465,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_list_info_title">Repository List</string>
     <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.\n\nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
     <string name="repo_details">Repository</string>
-    <string name="repo_details_info_text">A repository is a source of apps.\n\nMirrors are used to distribute the load of downloading apps across multiple servers. Mirrors closer to you may be faster.\n\nOfficial mirrors are defined by the repository owner. They cannot be deleted, only disabled. You can define additional custom mirrors.</string>
+    <string name="repo_details_info_text">A repository is a source of apps.\n\nMirrors are used to distribute the load of downloading apps across multiple servers. Mirrors closer to you may be faster.\n\nOfficial mirrors are defined by the repository owner. They cannot be deleted, only disabled. You can define additional custom mirrors by adding them just like a normal repository.</string>
     <string name="repo_num_apps_button">Show apps</string>
     <string name="repo_archive_toggle">Repository Archive</string>
     <string name="repo_archive_toggle_description">Show archived apps and outdated versions of apps</string>
@@ -480,7 +480,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </plurals>
     <string name="repo_last_update_index">Last repo update: %s</string>
     <string name="repo_last_update_check">Last check for repo update: %s</string>
-    <string name="repo_unsigned_description">This repository is not signed (or it is not yet fully loaded). When a repository is unsigned, F-Droid cannot verify the list of apps included in the repository. Be careful with the apps that you download from this repository.</string>
     <string name="unknown">Unknown</string>
     <string name="repo_archive_failed">Archive repo currently not available</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>

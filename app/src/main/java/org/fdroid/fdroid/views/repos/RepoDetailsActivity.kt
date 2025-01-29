@@ -67,11 +67,11 @@ class RepoDetailsActivity : AppCompatActivity() {
         initViewModel(repo)
 
         setContent {
-            val repo by viewModel.repoFlow.collectAsState(repo)
+            val repoState by viewModel.repoFlow.collectAsState(repo)
             val archiveState by viewModel.archiveStateFlow.collectAsState(ArchiveState.UNKNOWN)
             val numberOfApps by viewModel.numberAppsFlow.collectAsState(0)
 
-            val r = repo
+            val r = repoState
             if (r == null) {
                 finish()
                 return@setContent
@@ -154,7 +154,7 @@ class RepoDetailsActivity : AppCompatActivity() {
     private fun onShowAppsClicked() {
         val repo = viewModel.repoFlow.value ?: return
         if (!repo.enabled) {
-            return
+            error("Show-Apps button should not even be shown")
         }
         val intent = Intent(this, AppListActivity::class.java).apply {
             putExtra(AppListActivity.EXTRA_REPO_ID, repo.repoId)

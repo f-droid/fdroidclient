@@ -54,7 +54,6 @@ val String.flagEmoji: String?
         return flagEmoji
     }
 
-@JvmStatic
 fun Long.asRelativeTimeString(): String {
     return DateUtils.getRelativeTimeSpanString(
         this,

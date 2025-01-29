@@ -61,7 +61,6 @@ class RepoDetailsViewModel(
     private val repoId = initialRepo.repoId
 
     private val repoManager = FDroidApp.getRepoManager(app)
-    private val repositoryDao = DBHelper.getDb(app).getRepositoryDao()
     private val appDao = DBHelper.getDb(app).getAppDao()
 
     val repoFlow: StateFlow<Repository?> = repoManager.repositoriesState.map { reposState ->
@@ -69,7 +68,7 @@ class RepoDetailsViewModel(
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
-        initialValue = null,
+        initialValue = initialRepo,
     )
 
     val numberAppsFlow: Flow<Int> = repoFlow.map { repo ->
@@ -83,7 +82,6 @@ class RepoDetailsViewModel(
     fun setArchiveRepoEnabled(enabled: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             val repo = repoFlow.value ?: return@launch
-            archiveStateFlow.emit(ArchiveState.UNKNOWN)
             try {
                 val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
                 archiveStateFlow.emit(enabled.toArchiveState())
@@ -109,7 +107,7 @@ class RepoDetailsViewModel(
 
     fun updateUsernameAndPassword(username: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryDao.updateUsernameAndPassword(repoId, username, password)
+            repoManager.updateUsernameAndPassword(repoId, username, password)
         }
     }
 

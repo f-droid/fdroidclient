@@ -21,6 +21,7 @@ import org.fdroid.index.v2.LocalizedTextV2
 import org.fdroid.index.v2.MirrorV2
 import org.fdroid.index.v2.ReleaseChannelV2
 import org.fdroid.index.v2.RepoV2
+import java.util.concurrent.TimeUnit
 
 private const val TAG = "Repository"
 
@@ -202,13 +203,11 @@ public data class Repository internal constructor(
         }.ifEmpty { listOf(org.fdroid.download.Mirror(address)) }
     }
 
-    public fun getAllUserMirrors(): List<org.fdroid.download.Mirror> {
-        return userMirrors.map { org.fdroid.download.Mirror(it) }
-    }
+    public val allUserMirrors: List<org.fdroid.download.Mirror>
+        get() = userMirrors.map { org.fdroid.download.Mirror(it) }
 
-    public fun getAllOfficialMirrors(): List<org.fdroid.download.Mirror> {
-        return getAllMirrors(false)
-    }
+    public val allOfficialMirrors: List<org.fdroid.download.Mirror>
+        get() = getAllMirrors(false)
 
     /**
      * Returns all mirrors, including [disabledMirrors].
@@ -242,6 +241,18 @@ public data class Repository internal constructor(
             return uri.toString()
         }
 }
+
+// Dummy repo to use in Compose Previews and in tests
+public val DUMMY_TEST_REPO: Repository = Repository(
+    repoId = 1L,
+    address = "https://example.com/fdroid/repo",
+    timestamp = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(2),
+    formatVersion = IndexFormatVersion.TWO,
+    certificate = "abc",
+    version = 1L,
+    weight = 1,
+    lastUpdated = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1),
+)
 
 /**
  * A database table to store repository mirror information.
