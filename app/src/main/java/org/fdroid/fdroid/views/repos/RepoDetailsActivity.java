@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,12 +23,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.lifecycle.viewmodel.MutableCreationExtras;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,27 +38,18 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.fdroid.database.AppDao;
 import org.fdroid.database.Repository;
-import org.fdroid.database.RepositoryDao;
 import org.fdroid.download.Mirror;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.Callable;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class RepoDetailsActivity extends AppCompatActivity {
     private static final String TAG = "RepoDetailsActivity";
@@ -104,17 +95,10 @@ public class RepoDetailsActivity extends AppCompatActivity {
     private Repository repo;
     private long repoId;
     private View repoView;
-    private String shareUrl;
 
     private MirrorAdapter adapterToNotify;
 
     private RepoDetailsViewModel model;
-    // FIXME access to this could be moved into ViewModel
-    private RepositoryDao repositoryDao;
-    // FIXME access to this could be moved into ViewModel
-    private AppDao appDao;
-    @Nullable
-    private Disposable disposable;
 
     /**
      * Help function to make switching between two view states easier.
@@ -132,11 +116,22 @@ public class RepoDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         FDroidApp fdroidApp = (FDroidApp) getApplication();
         fdroidApp.setSecureWindow(this);
-
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
-        model = new ViewModelProvider(this).get(RepoDetailsViewModel.class);
-        repositoryDao = DBHelper.getDb(this).getRepositoryDao();
-        appDao = DBHelper.getDb(this).getAppDao();
+
+        repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
+        repo = FDroidApp.getRepoManager(this).getRepository(repoId);
+        if (repo == null) {
+            // repo must have been deleted just now (maybe slow UI?)
+            finish();
+            return;
+        }
+
+        ViewModelStoreOwner owner = this;
+        ViewModelProvider.Factory factory = RepoDetailsViewModel.Companion.getFactory();
+        MutableCreationExtras extras = new MutableCreationExtras();
+        extras.set(RepoDetailsViewModel.Companion.getAPP_KEY(), getApplication());
+        extras.set(RepoDetailsViewModel.Companion.getREPO_KEY(), repo);
+        model = ViewModelProvider.create(owner, factory, extras).get(RepoDetailsViewModel.class);
 
         super.onCreate(savedInstanceState);
 
@@ -147,15 +142,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         repoView = findViewById(R.id.repo_view);
-
-        repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
-        model.initRepo(repoId);
-        repo = FDroidApp.getRepoManager(this).getRepository(repoId);
-        if (repo == null) {
-            // repo must have been deleted just now (maybe slow UI?)
-            finish();
-            return;
-        }
 
         TextView inputUrl = findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.getAddress());
@@ -171,28 +157,6 @@ public class RepoDetailsActivity extends AppCompatActivity {
         userMirrorAdapter.setUserMirrors(repo.getUserMirrors());
         userMirrorListView.setAdapter(userMirrorAdapter);
 
-        if (repo.getAddress().startsWith("content://") || repo.getAddress().startsWith("file://")) {
-            // no need to show a QR Code, it is not shareable
-            return;
-        }
-
-        Uri uri = Uri.parse(repo.getAddress());
-        try {
-            if (repo.getFingerprint() != null) {
-                uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.getFingerprint()).build();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Invalid repo fingerprint: " + repo.getAddress());
-        }
-        String qrUriString = uri.toString();
-        disposable = Utils.generateQrBitmap(this, qrUriString)
-                .subscribe(bitmap -> {
-                    final ImageView qrCode = findViewById(R.id.qr_code);
-                    if (qrCode != null) {
-                        qrCode.setImageBitmap(bitmap);
-                    }
-                });
-
         // update UI when repo in DB changes
         model.getRepoLiveData().observe(this, repo -> {
             if (repo == null) {
@@ -204,23 +168,37 @@ public class RepoDetailsActivity extends AppCompatActivity {
             updateRepoView();
         });
 
+        TextView numApps = repoView.findViewById(R.id.text_num_apps);
+        model.getNumberOfAppsLiveData().observe(this, number -> {
+            String countStr = String.format(LocaleCompat.getDefault(), "%d", number);
+            numApps.setText(countStr);
+        });
+
         MaterialSwitch archiveRepoSwitch = findViewById(R.id.archiveRepo);
         model.getLiveData().observe(this, s -> {
-            Boolean enabled = s.getArchiveEnabled();
-            if (enabled == null) {
-                archiveRepoSwitch.setEnabled(false);
-            } else {
-                archiveRepoSwitch.setEnabled(true);
-                archiveRepoSwitch.setChecked(enabled);
+            switch (s.getArchiveState()) {
+                case ENABLED:
+                    archiveRepoSwitch.setEnabled(true);
+                    archiveRepoSwitch.setChecked(true);
+                    break;
+                case DISABLED:
+                    archiveRepoSwitch.setEnabled(true);
+                    archiveRepoSwitch.setChecked(false);
+                    break;
+                case UNKNOWN:
+                    archiveRepoSwitch.setEnabled(false);
+                    break;
             }
         });
-        archiveRepoSwitch.setOnClickListener(v -> model.setArchiveRepoEnabled(repo, archiveRepoSwitch.isChecked()));
-    }
+        archiveRepoSwitch.setOnClickListener(v -> model.setArchiveRepoEnabled(archiveRepoSwitch.isChecked()));
 
-    @Override
-    protected void onDestroy() {
-        if (disposable != null) disposable.dispose();
-        super.onDestroy();
+        ImageView qrCode = findViewById(R.id.qr_code);
+        model.getQrCodeLiveData().observe(this, bitmap -> {
+            if (qrCode != null) {
+                qrCode.setImageBitmap(bitmap);
+            }
+        });
+        model.generateQrCode(this);
     }
 
     @Override
@@ -279,37 +257,12 @@ public class RepoDetailsActivity extends AppCompatActivity {
         } else if (itemId == R.id.action_share) {
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
+            intent.putExtra(Intent.EXTRA_TEXT, repo.getShareUri());
             startActivity(Intent.createChooser(intent,
                     getResources().getString(R.string.share_repository)));
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        prepareShareMenuItems(menu);
-        return true;
-    }
-
-    private void prepareShareMenuItems(Menu menu) {
-        if (!TextUtils.isEmpty(repo.getAddress())) {
-            if (!TextUtils.isEmpty(repo.getCertificate())) {
-                try {
-                    shareUrl = Uri.parse(repo.getAddress()).buildUpon()
-                            .appendQueryParameter("fingerprint", repo.getFingerprint()).toString();
-                } catch (Exception e) {
-                    Log.e(TAG, "Invalid repo fingerprint: " + repo.getAddress());
-                    shareUrl = repo.getAddress();
-                }
-            } else {
-                shareUrl = repo.getAddress();
-            }
-            menu.findItem(R.id.action_share).setVisible(true);
-        } else {
-            menu.findItem(R.id.action_share).setVisible(false);
-        }
     }
 
     private void setupDescription(View parent, Repository repo) {
@@ -405,20 +358,11 @@ public class RepoDetailsActivity extends AppCompatActivity {
         setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.GONE);
 
         TextView name = repoView.findViewById(R.id.text_repo_name);
-        TextView numApps = repoView.findViewById(R.id.text_num_apps);
         TextView numAppsButton = repoView.findViewById(R.id.button_view_apps);
         TextView lastUpdated = repoView.findViewById(R.id.text_last_update);
         TextView lastDownloaded = repoView.findViewById(R.id.text_last_update_downloaded);
 
         name.setText(repo.getName(App.getLocales()));
-        // load number of apps in repo
-        disposable = Single.fromCallable(() -> appDao.getNumberOfAppsInRepository(repoId))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(appCount -> {
-                    String countStr = String.format(LocaleCompat.getDefault(), "%d", appCount);
-                    numApps.setText(countStr);
-                });
         if (repo.getEnabled()) {
             numAppsButton.setOnClickListener(view -> {
                 Intent i = new Intent(this, AppListActivity.class);
@@ -457,10 +401,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
                 .setTitle(R.string.repo_confirm_delete_title)
                 .setMessage(R.string.repo_confirm_delete_body)
                 .setPositiveButton(R.string.delete, (dialog, which) -> {
-                    runOffUiThread(() -> {
-                        repositoryDao.deleteRepository(repoId);
-                        return true;
-                    });
+                    model.deleteRepository();
                     finish();
                 }).setNegativeButton(android.R.string.cancel, (dialog, which) -> {
                             // Do nothing...
@@ -490,10 +431,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
                     final String password = passwordInput.getText().toString();
 
                     if (!TextUtils.isEmpty(name)) {
-                        runOffUiThread(() -> {
-                            repositoryDao.updateUsernameAndPassword(repo.getRepoId(), name, password);
-                            return true;
-                        });
+                        model.updateUsernameAndPassword(name, password);
                         updateRepoView();
                         dialog.dismiss();
                     } else {
@@ -577,10 +515,7 @@ public class RepoDetailsActivity extends AppCompatActivity {
                     adapterToNotify.notifyDataSetChanged();
                 }
                 ArrayList<String> toDisableMirrors = new ArrayList<>(disabledMirrors);
-                runOffUiThread(() -> {
-                    repositoryDao.updateDisabledMirrors(repo.getRepoId(), toDisableMirrors);
-                    return true;
-                });
+                model.updateDisabledMirrors(toDisableMirrors);
             });
 
             View repoUnverified = holder.view.findViewById(R.id.repo_unverified);
@@ -597,12 +532,5 @@ public class RepoDetailsActivity extends AppCompatActivity {
             }
             return mirrors.size();
         }
-    }
-
-    private void runOffUiThread(Callable<?> r) {
-        disposable = Single.fromCallable(r)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
     }
 }
