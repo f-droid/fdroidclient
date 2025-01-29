@@ -141,10 +141,15 @@ fun RepoChooser(
                 onDismissRequest = { expanded = false },
             ) {
                 repos.iterator().forEach { repo ->
-                    RepoMenuItem(repo = repo, isPreferred = isPreferred, onClick = {
-                        onRepoChanged(repo)
-                        expanded = false
-                    }, modifier = modifier)
+                    RepoMenuItem(
+                        repo = repo,
+                        isPreferred = repo.repoId == preferredRepoId,
+                        onClick = {
+                            onRepoChanged(repo)
+                            expanded = false
+                        },
+                        modifier = modifier,
+                    )
                 }
             }
         }
