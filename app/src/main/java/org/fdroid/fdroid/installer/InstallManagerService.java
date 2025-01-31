@@ -194,6 +194,13 @@ public class InstallManagerService {
         appUpdateStatusManager.updateApkProgress(canonicalUri.toString(), totalBytes, bytesRead);
     }
 
+    public void onDownloadComplete(Uri canonicalUri) {
+        String canonicalUrl = canonicalUri.toString();
+        registerInstallReceiver(canonicalUrl);
+        appUpdateStatusManager.updateApk(canonicalUrl,
+                AppUpdateStatusManager.Status.ReadyToInstall, null);
+    }
+
     public void onDownloadComplete(Uri canonicalUri, File file, App intentApp, Apk intentApk) {
         String canonicalUrl = canonicalUri.toString();
         Uri localApkUri = Uri.fromFile(file);

@@ -404,9 +404,9 @@ public final class AppUpdateStatusManager {
         return updateChecker.getUpdatableApps(releaseChannels, true);
     }
 
-    private void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate) {
+    void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate) {
         if (canUpdate == null) return;
-        if (canUpdate.size() > 0) {
+        if (!canUpdate.isEmpty()) {
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
                 Repository repo = repoManager.getRepository(app.getUpdate().getRepoId());

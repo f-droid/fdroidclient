@@ -59,6 +59,7 @@ import org.acra.config.CoreConfigurationBuilder;
 import org.acra.config.DialogConfigurationBuilder;
 import org.acra.config.MailSenderConfigurationBuilder;
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.data.App;
@@ -109,6 +110,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     private static RepoManager repoManager;
     @Nullable
     private static RepoUpdateManager repoUpdateManager;
+    @Nullable
+    private static AppUpdateManager appUpdateManager;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -566,6 +569,17 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             repoUpdateManager = new RepoUpdateManager(context, DBHelper.getDb(context), getRepoManager(context));
         }
         return repoUpdateManager;
+    }
+
+    public static AppUpdateManager getAppUpdateManager(Context c) {
+        if (appUpdateManager == null) {
+            Context context = c.getApplicationContext();
+            DbUpdateChecker updateChecker =
+                    new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
+            appUpdateManager
+                    = new AppUpdateManager(context, getRepoManager(context), updateChecker);
+        }
+        return appUpdateManager;
     }
 
     /**
