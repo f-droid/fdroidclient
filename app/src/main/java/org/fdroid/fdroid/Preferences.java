@@ -40,6 +40,7 @@ import com.google.common.collect.Lists;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
 
 import java.net.InetAddress;
@@ -90,9 +91,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             editor.putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
         }
         if (!preferences.contains(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES)) {
-            editor.putBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES,
-                    PrivilegedInstaller.isExtensionInstalledCorrectly(context)
-                            != PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES);
+            editor.putBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, true);
         }
 
         editor.apply();
@@ -468,6 +467,11 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_UPDATE_NOTIFICATION_ENABLED, true);
     }
 
+    /**
+     * If this returns true, F-Droid should auto-download app updates.
+     * If {@link #canDoAutoUpdates(Context)} returns true as well,
+     * it should also auto-install the updates.
+     */
     boolean isAutoDownloadEnabled() {
         return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, IGNORED_B);
     }
@@ -918,5 +922,10 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             throw new RuntimeException(error);
         }
         return instance;
+    }
+
+    public static boolean canDoAutoUpdates(Context context) {
+        return SessionInstallManager.canBeUsed(context) ||
+                PrivilegedInstaller.isDefault(context);
     }
 }

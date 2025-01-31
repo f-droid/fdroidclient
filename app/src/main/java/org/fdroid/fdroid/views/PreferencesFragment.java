@@ -76,7 +76,6 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.UtilsKt;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
@@ -561,7 +560,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             return true;
         });
 
-        if (PrivilegedInstaller.isDefault(getActivity()) || SessionInstallManager.canBeUsed(getContext())) {
+        if (Preferences.canDoAutoUpdates(requireContext())) {
             updateAutoDownloadPref.setTitle(R.string.update_auto_install);
             updateAutoDownloadPref.setSummary(R.string.update_auto_install_summary);
         }
