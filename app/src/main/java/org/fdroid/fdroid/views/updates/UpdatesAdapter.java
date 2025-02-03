@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -156,6 +157,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 updateableApps.add(new UpdateableApp(activity, app, apk));
             }
         }
+        // sort update items by name
+        Collections.sort(updateableApps, (app1, app2) -> {
+            String name1 = app1.app.name.toLowerCase(Locale.getDefault());
+            String name2 = app2.app.name.toLowerCase(Locale.getDefault());
+            return name1.compareTo(name2);
+        });
         refreshItems();
     }
 
@@ -176,8 +183,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 appsToShowStatus.add(new AppStatus(activity, status));
             }
         }
-        //noinspection ComparatorCombinators
-        Collections.sort(appsToShowStatus, (o1, o2) -> o1.status.app.name.compareTo(o2.status.app.name));
+        // sort app status by name
+        Collections.sort(appsToShowStatus, (app1, app2) -> {
+            String name1 = app1.status.app.name.toLowerCase(Locale.getDefault());
+            String name2 = app2.status.app.name.toLowerCase(Locale.getDefault());
+            return name1.compareTo(name2);
+        });
     }
 
     /**
