@@ -1,88 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_list_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/search_card"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/sort"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
-            android:paddingEnd="8dp"
-            android:paddingRight="8dp">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/abc_ic_ab_back_material" />
-
-            <EditText
-                android:id="@+id/search"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/search_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="@string/search_hint"
-                android:imeOptions="actionSearch"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:maxLines="1"
-                android:padding="12dp"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/clear"
-                app:layout_constraintStart_toEndOf="@+id/back"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/sort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingRight="8dp">
+
+                    <ImageView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/back"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/abc_ic_ab_back_material" />
+
+                    <EditText
+                        android:id="@+id/search"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/search_hint"
+                        android:imeOptions="actionSearch"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="12dp"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/clear"
+                        app:layout_constraintStart_toEndOf="@+id/back"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/clear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/clear_search"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_clear" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <ImageView
-                android:id="@+id/clear"
+                android:id="@+id/sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/clear_search"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:contentDescription="@string/sort_search"
+                app:layout_constraintBottom_toBottomOf="@id/search_card"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_clear" />
+                app:layout_constraintStart_toEndOf="@+id/search_card"
+                app:layout_constraintTop_toTopOf="@id/search_card"
+                app:tint="?attr/colorControlNormal" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
-    <ImageView
-        android:id="@+id/sort"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:contentDescription="@string/sort_search"
-        app:layout_constraintBottom_toBottomOf="@id/search_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_card"
-        app:layout_constraintTop_toTopOf="@id/search_card"
-        app:tint="?attr/colorControlNormal" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/hiddenAppNotice"
@@ -97,9 +109,7 @@
         android:text="@string/app_list_results_hidden_antifeature_settings"
         android:visibility="gone"
         app:drawableStartCompat="@drawable/ic_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_card" />
+        tools:visibility="visible" />
 
     <!-- Don't center, only show it at the top because a keyboard will usually be shown at the bottom of the screen,
          covering most of this layout. -->
@@ -110,20 +120,13 @@
         android:layout_height="wrap_content"
         android:text="@string/empty_search_available_app_list"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiddenAppNotice" />
+        tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/app_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scrollbars="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiddenAppNotice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
         tools:listitem="@layout/app_list_item" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

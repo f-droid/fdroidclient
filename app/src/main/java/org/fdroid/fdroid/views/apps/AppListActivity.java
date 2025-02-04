@@ -37,7 +37,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -189,6 +192,16 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);
 
+        // prevents last item in appView to stay below navigation bar
+        ViewCompat.setOnApplyWindowInsetsListener(appView, (v, insets) -> {
+                    Insets innerPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars() |
+                            WindowInsetsCompat.Type.displayCutout()
+                    );
+                    v.setPadding(innerPadding.left, 0, innerPadding.right, innerPadding.bottom);
+                    return insets;
+                }
+        );
+
         // this also causes a load as we set the search terms even for empty intents, thus the query changed
         parseIntentForSearchQuery();
     }
@@ -283,12 +296,12 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         // The user may not be aware of this, so we force going through app details.
         appAdapter.setHideInstallButton(repoId > 0);
         appAdapter.setItems(items);
-        if (items.size() > 0) {
-            emptyState.setVisibility(View.GONE);
-            appView.setVisibility(View.VISIBLE);
-        } else {
+        if (items.isEmpty()) {
             emptyState.setVisibility(View.VISIBLE);
             appView.setVisibility(View.GONE);
+        } else {
+            emptyState.setVisibility(View.GONE);
+            appView.setVisibility(View.VISIBLE);
         }
     }
 
