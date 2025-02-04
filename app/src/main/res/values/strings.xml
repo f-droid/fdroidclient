@@ -442,6 +442,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="download_404">The requested file was not found.</string>
     <!-- This is a banner title, it should be maximum 30 characters -->
     <string name="banner_updating_repositories">Updating repositories</string>
+    <string name="banner_updating_apps">Updating apps</string>
     <!-- This is a banner title, it should be maximum 30 characters -->
     <string name="banner_no_internet">No internet</string>
     <!-- This is a banner title, it should be maximum 30 characters -->

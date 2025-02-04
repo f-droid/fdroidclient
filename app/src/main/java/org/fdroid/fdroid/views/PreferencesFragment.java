@@ -66,7 +66,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.apache.commons.io.IOUtils;
-import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
 import org.fdroid.fdroid.Preferences;
@@ -76,6 +75,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.UtilsKt;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+import org.fdroid.fdroid.work.AppUpdateWorker;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
@@ -555,7 +555,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private void initAutoFetchUpdatesPreference() {
         updateAutoDownloadPref.setOnPreferenceChangeListener((preference, newValue) -> {
             if (newValue instanceof Boolean && (boolean) newValue) {
-                AppUpdateStatusManager.getInstance(getActivity()).checkForUpdatesAndInstall();
+                AppUpdateWorker.updateAppsNow(requireContext());
             }
             return true;
         });
@@ -671,8 +671,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             glideRequestManager.applyDefaultRequestOptions(new RequestOptions()
                     .onlyRetrieveFromCache(Preferences.get().isBackgroundDownloadAllowed()));
             RepoUpdateWorker.scheduleOrCancel(requireContext());
+            AppUpdateWorker.scheduleOrCancel(requireContext());
         } else if (Preferences.PREF_UPDATE_INTERVAL.equals(key)) {
             RepoUpdateWorker.scheduleOrCancel(requireContext());
+            AppUpdateWorker.scheduleOrCancel(requireContext());
+        } else if (Preferences.PREF_AUTO_DOWNLOAD_INSTALL_UPDATES.equals(key)) {
+            AppUpdateWorker.scheduleOrCancel(requireContext());
         }
     }
 

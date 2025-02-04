@@ -115,6 +115,7 @@ class RepoUpdateManager @JvmOverloads constructor(
             db.getRepositoryDao().walCheckpoint()
             fdroidPrefs.lastUpdateCheck = System.currentTimeMillis()
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
+            // TODO remove app update below
             if (reposUpdated) {
                 val appUpdateStatusManager = AppUpdateStatusManager.getInstance(context)
                 if (fdroidPrefs.isAutoDownloadEnabled && fdroidPrefs.isBackgroundDownloadAllowed) {

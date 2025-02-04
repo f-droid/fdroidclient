@@ -75,6 +75,7 @@ import org.fdroid.fdroid.net.DnsCache;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
+import org.fdroid.fdroid.work.AppUpdateWorker;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
 import org.fdroid.index.IndexFormatVersion;
@@ -370,6 +371,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         ConnectivityMonitorService.registerAndStart(this);
         Utils.debugLog(TAG, "RepoUpdateWorker.scheduleOrCancel()");
         RepoUpdateWorker.scheduleOrCancel(getApplicationContext());
+        Utils.debugLog(TAG, "AppUpdateWorker.scheduleOrCancel()");
+        AppUpdateWorker.scheduleOrCancel(getApplicationContext());
 
         FDroidApp.initWifiSettings();
         WifiStateChangeService.start(this, null);

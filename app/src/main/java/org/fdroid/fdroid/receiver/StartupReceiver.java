@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.work.AppUpdateWorker;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
 
 public class StartupReceiver extends BroadcastReceiver {
@@ -34,6 +35,7 @@ public class StartupReceiver extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.e(TAG, "Received ACTION_BOOT_COMPLETED intent, scheduling update!!!");
             RepoUpdateWorker.scheduleOrCancel(ctx);
+            AppUpdateWorker.scheduleOrCancel(ctx);
         } else {
             Utils.debugLog(TAG, "received unsupported Intent " + intent);
         }

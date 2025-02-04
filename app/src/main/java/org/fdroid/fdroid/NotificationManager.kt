@@ -40,4 +40,14 @@ class NotificationManager(
         .setOngoing(true)
         .setProgress(100, progress ?: 0, progress == null)
 
+    fun getAppUpdateNotification(
+        msg: String? = null,
+    ) = NotificationCompat.Builder(context, CHANNEL_UPDATES)
+        .setSmallIcon(R.drawable.ic_refresh)
+        .setCategory(CATEGORY_SERVICE)
+        .setContentTitle(context.getString(R.string.banner_updating_apps))
+        .setContentText(msg)
+        .setOngoing(true)
+        .setProgress(100, 0, true)
+
 }

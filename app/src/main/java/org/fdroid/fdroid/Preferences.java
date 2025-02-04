@@ -472,7 +472,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
      * If {@link #canDoAutoUpdates(Context)} returns true as well,
      * it should also auto-install the updates.
      */
-    boolean isAutoDownloadEnabled() {
+    public boolean isAutoDownloadEnabled() {
         return preferences.getBoolean(PREF_AUTO_DOWNLOAD_INSTALL_UPDATES, IGNORED_B);
     }
 
