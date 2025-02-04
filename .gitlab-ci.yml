@@ -87,7 +87,7 @@ app assembleRelease test:
         - app/**/*
         - libs/**/*
   script:
-    - ./gradlew :app:assembleRelease :app:testFullDebugUnitTest
+    - ./gradlew :app:assembleRelease :app:assembleDebug :app:testFullDebugUnitTest
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
