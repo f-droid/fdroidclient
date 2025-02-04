@@ -40,7 +40,6 @@
         <item name="categoryPreviewAppCardBackground">
             @drawable/category_preview_app_card_background_light
         </item>
-        <item name="mainTabSwapBackground">#fafafa</item>
         <item name="detailPanel">?attr/colorSurfaceContainerHighest</item>
         <item name="antiFeaturesWarning">@drawable/ic_warning</item>
         <item name="backButtonDrawable">@drawable/abc_ic_ab_back_material</item>

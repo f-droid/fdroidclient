@@ -23,7 +23,6 @@
             @drawable/category_preview_app_card_background_dark
         </item>
 
-        <item name="mainTabSwapBackground">?android:windowBackground</item>
         <item name="mainTabSwapSplashTint">?attr/colorSurfaceContainerLow</item>
         <item name="categoryName">#ffffff</item>
         <item name="installedApps">#ffffff</item>
