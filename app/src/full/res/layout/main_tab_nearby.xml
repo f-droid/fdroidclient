@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.main.MainActivity"
-    android:background="?attr/mainTabSwapBackground">
+    tools:context=".views.main.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,8 +22,7 @@
             app:layout_constraintTop_toBottomOf="@+id/both_parties_need_fdroid_text"
             android:layout_marginTop="36dp"
             app:tint="?attr/mainTabSwapSplashTint"
-            android:scaleType="fitXY"
-            tools:targetApi="jelly_bean" />
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/title"

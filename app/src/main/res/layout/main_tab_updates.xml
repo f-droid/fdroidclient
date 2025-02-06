@@ -13,8 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?attr/mainTabSwapBackground">
+            android:layout_height="match_parent">
 
             <org.fdroid.fdroid.views.StatusBanner
                 android:id="@+id/banner_updating_repos"

@@ -29,12 +29,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.app.TaskStackBuilder;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -133,10 +138,21 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
                 DateUtils.getRelativeTimeSpanString(lastUpdate, System.currentTimeMillis(),
                         DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL);
         getSupportActionBar().setSubtitle(getString(R.string.repositories_last_update, lastUpdateStr));
-        findViewById(R.id.fab).setOnClickListener(view -> {
+        View fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> {
             Intent i = new Intent(this, AddRepoActivity.class);
             startActivity(i);
         });
+        ViewCompat.setOnApplyWindowInsetsListener(fab, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            mlp.leftMargin += insets.left;
+            mlp.bottomMargin += insets.bottom;
+            mlp.rightMargin += insets.right;
+            v.setLayoutParams(mlp);
+            return WindowInsetsCompat.CONSUMED;
+        });
+
         toolbar.setNavigationOnClickListener(v -> {
             Intent upIntent = NavUtils.getParentActivityIntent(ManageReposActivity.this);
             if (NavUtils.shouldUpRecreateTask(ManageReposActivity.this, upIntent) || isTaskRoot()) {

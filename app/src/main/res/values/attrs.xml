@@ -4,7 +4,6 @@
         <attr name="appDetailsBackground" format="color" />
         <attr name="appDetailsCardBackground" format="color" />
         <attr name="categoryPreviewAppCardBackground" format="reference" />
-        <attr name="mainTabSwapBackground" format="color" />
         <attr name="mainTabSwapSplashTint" format="color" />
         <attr name="warning" format="color" />
         <attr name="categoryName" format="color" />

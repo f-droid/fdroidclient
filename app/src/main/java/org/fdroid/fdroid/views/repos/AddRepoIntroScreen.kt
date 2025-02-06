@@ -110,7 +110,11 @@ fun AddRepoIntroScreen(
                 if (state.receivedRepo == null) {
                     RepoProgressScreen(paddingValues, stringResource(R.string.repo_state_fetching))
                 } else {
-                    RepoPreviewScreen(paddingValues, state, onAddRepo)
+                    RepoPreviewScreen(
+                        state = state,
+                        modifier = Modifier.padding(top = paddingValues.calculateTopPadding()),
+                        onAddRepo = onAddRepo,
+                    )
                 }
             }
 

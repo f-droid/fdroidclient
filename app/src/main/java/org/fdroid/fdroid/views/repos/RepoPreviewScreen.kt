@@ -8,9 +8,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
@@ -56,17 +60,15 @@ import org.fdroid.repo.Fetching
 
 @Composable
 fun RepoPreviewScreen(
-    paddingValues: PaddingValues,
     state: Fetching,
+    modifier: Modifier = Modifier,
     onAddRepo: () -> Unit,
 ) {
     val localeList = LocaleListCompat.getDefault()
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
         verticalArrangement = spacedBy(8.dp),
-        modifier = Modifier
-            .padding(paddingValues)
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         item {
             RepoPreviewHeader(state, onAddRepo, localeList)
@@ -94,6 +96,9 @@ fun RepoPreviewScreen(
             }
             items(items = state.apps, key = { it.packageName }) { app ->
                 RepoPreviewApp(state.receivedRepo ?: error("no repo"), app, localeList)
+            }
+            item {
+                Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
             }
         }
     }
@@ -205,7 +210,8 @@ fun RepoPreviewHeader(
             repo.getDescription(localeList)
         }
         if (description != null) Text(
-            text = description,
+            // repos are still messing up their line breaks
+            text = description.replace("\n", " "),
             style = MaterialTheme.typography.bodyMedium,
         )
     }
@@ -286,7 +292,6 @@ fun RepoPreviewScreenFetchingPreview() {
     }
     FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
-            PaddingValues(0.dp),
             Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository)
         ) {}
     }
@@ -298,7 +303,6 @@ fun RepoPreviewScreenNewMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
     FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
-            PaddingValues(0.dp),
             Fetching("https://mirror.example.org", repo, emptyList(), IsNewMirror(0L))
         ) {}
     }
@@ -310,7 +314,6 @@ fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
     FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
-            PaddingValues(0.dp),
             Fetching("https://mirror.example.org", repo, emptyList(), IsNewRepoAndNewMirror)
         ) {}
     }
@@ -323,7 +326,6 @@ fun RepoPreviewScreenExistingRepoPreview() {
     val repo = FDroidApp.createSwapRepo(address, "foo bar")
     FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
-            PaddingValues(0.dp),
             Fetching(address, repo, emptyList(), IsExistingRepository(0L))
         ) {}
     }
@@ -335,7 +337,6 @@ fun RepoPreviewScreenExistingMirrorPreview() {
     val repo = FDroidApp.createSwapRepo("https://example.org", "foo bar")
     FDroidContent(pureBlack = true) {
         RepoPreviewScreen(
-            PaddingValues(0.dp),
             Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror(0L))
         ) {}
     }

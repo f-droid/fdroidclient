@@ -79,7 +79,7 @@ workflow:
     - .gitlab-ci.yml
     - build.gradle
 
-app assembleFullRelease test:
+app assembleRelease test:
   <<: *test-template
   rules:
     - <<: *always-on-these-changes
@@ -87,7 +87,7 @@ app assembleFullRelease test:
         - app/**/*
         - libs/**/*
   script:
-    - ./gradlew :app:assembleFullRelease :app:testFullDebugUnitTest
+    - ./gradlew :app:assembleRelease :app:assembleDebug :app:testFullDebugUnitTest
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
