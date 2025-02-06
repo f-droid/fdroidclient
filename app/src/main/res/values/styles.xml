@@ -147,7 +147,7 @@
     <style name="StatusBanner" parent="Widget.Material3.CardView.Elevated">
         <item name="android:padding">@dimen/banner__padding</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">?colorSurfaceBright</item>
+        <item name="android:background">?colorSurfaceContainerHighest</item>
         <item name="android:textColor">?colorOnSurface</item>
     </style>
 </resources>
