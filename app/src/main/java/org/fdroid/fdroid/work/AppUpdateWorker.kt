@@ -16,11 +16,8 @@ import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST
 import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.fdroid.NotificationManager
@@ -113,12 +110,6 @@ class AppUpdateWorker(
                 Log.w(TAG, "Not scheduling job due to settings!")
                 workManager.cancelUniqueWork(UNIQUE_WORK_NAME_AUTO_APP_UPDATE)
             }
-        }
-
-        fun getAppUpdateWorkInfo(context: Context): Flow<WorkInfo?> {
-            return WorkManager.getInstance(context).getWorkInfosForUniqueWorkFlow(
-                UNIQUE_WORK_NAME_AUTO_APP_UPDATE
-            ).map { it.getOrNull(0) }
         }
     }
 

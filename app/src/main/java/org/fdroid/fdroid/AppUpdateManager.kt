@@ -37,7 +37,7 @@ class AppUpdateManager(
                 (app1.name ?: "").compareTo(app2.name ?: "", ignoreCase = true)
             }
         // inform the status manager of the available updates
-        statusManager.addUpdatableApps(updatableApps)
+        statusManager.addUpdatableApps(updatableApps, false)
         // update each individual app
         updatableApps.forEach { app ->
             val repo = repoManager.getRepository(app.repoId)

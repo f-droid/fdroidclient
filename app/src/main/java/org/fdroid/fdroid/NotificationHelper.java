@@ -106,7 +106,6 @@ public class NotificationHelper {
                 String url;
                 switch (intent.getAction()) {
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
-                        notificationManager.cancelAll();
                         updateStatusLists();
                         createSummaryNotifications();
                         // need to wrap in a new list to prevent ConcurrentModificationException

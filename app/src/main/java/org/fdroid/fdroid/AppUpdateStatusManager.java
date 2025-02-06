@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +24,6 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.ErrorDialogActivity;
-import org.fdroid.fdroid.installer.InstallManagerService;
 import org.fdroid.fdroid.net.DownloaderService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.index.RepoManager;
@@ -386,16 +384,14 @@ public final class AppUpdateStatusManager {
     }
 
     public void checkForUpdates() {
-        if (disposable != null) disposable.dispose();
-        disposable = Utils.runOffUiThread(this::getUpdatableApps, this::addUpdatableApps);
+        checkForUpdates(false);
     }
 
-    public void checkForUpdatesAndInstall() {
+    public void checkForUpdates(boolean singleNotification) {
         if (disposable != null) disposable.dispose();
-        disposable = Utils.runOffUiThread(this::getUpdatableApps, apps -> {
-            addUpdatableApps(apps);
-            downloadUpdates(apps);
-        });
+        boolean extraNotify = singleNotification && Preferences.get().isUpdateNotificationEnabled();
+        disposable = Utils.runOffUiThread(this::getUpdatableApps, apps ->
+                addUpdatableApps(apps, extraNotify));
     }
 
     @WorkerThread
@@ -404,8 +400,11 @@ public final class AppUpdateStatusManager {
         return updateChecker.getUpdatableApps(releaseChannels, true);
     }
 
-    void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate) {
+    void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate, boolean extraNotify) {
         if (canUpdate == null) return;
+        if (extraNotify) {
+            new NotificationManager(context).showAppUpdatesAvailableNotification(canUpdate.size());
+        }
         if (!canUpdate.isEmpty()) {
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
@@ -415,30 +414,6 @@ public final class AppUpdateStatusManager {
             endBatchUpdates(Status.UpdateAvailable);
         }
         setNumUpdatableApps(canUpdate.size());
-    }
-
-    /**
-     * Queues all apps needing update.
-     * If this app itself (e.g. F-Droid) needs to be updated, it is queued last.
-     */
-    private void downloadUpdates(List<UpdatableApp> apps) {
-        String ourPackageName = context.getPackageName();
-        App updateLastApp = null;
-        Apk updateLastApk = null;
-        for (UpdatableApp app : apps) {
-            Repository repo = repoManager.getRepository(app.getUpdate().getRepoId());
-            if (repo == null) continue; // repo could have been removed in the meantime
-            // update our own APK at the end
-            if (TextUtils.equals(ourPackageName, app.getUpdate().getPackageName())) {
-                updateLastApp = new App(app);
-                updateLastApk = new Apk(app.getUpdate(), repo);
-                continue;
-            }
-            InstallManagerService.queue(context, new App(app), new Apk(app.getUpdate(), repo));
-        }
-        if (updateLastApp != null) {
-            InstallManagerService.queue(context, updateLastApp, updateLastApk);
-        }
     }
 
     private void addUpdatableAppsNoNotify(List<UpdatableApp> canUpdate) {
