@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate;
 
@@ -41,9 +43,11 @@ public class UpdateableAppsHeader extends AppUpdateData {
 
     public static class Delegate extends AdapterDelegate<List<AppUpdateData>> {
 
+        private final AppCompatActivity activity;
         private final LayoutInflater inflater;
 
         public Delegate(AppCompatActivity activity) {
+            this.activity = activity;
             inflater = activity.getLayoutInflater();
         }
 
@@ -55,7 +59,8 @@ public class UpdateableAppsHeader extends AppUpdateData {
         @NonNull
         @Override
         protected RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent) {
-            return new ViewHolder(inflater.inflate(R.layout.updates_header, parent, false));
+            return new ViewHolder(inflater.inflate(R.layout.updates_header, parent, false),
+                    activity);
         }
 
         @Override
@@ -75,7 +80,7 @@ public class UpdateableAppsHeader extends AppUpdateData {
         private final Button downloadAll;
         private final Button toggleAppsToUpdate;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, AppCompatActivity activity) {
             super(itemView);
 
             updatesAvailable = itemView.findViewById(R.id.text_updates_available);
@@ -92,6 +97,16 @@ public class UpdateableAppsHeader extends AppUpdateData {
                 downloadAll.setVisibility(View.GONE);
                 AppUpdateWorker.updateAppsNow(v.getContext());
             });
+            String workName = AppUpdateWorker.UNIQUE_WORK_NAME_APP_UPDATE;
+            WorkManager.getInstance(activity)
+                    .getWorkInfosForUniqueWorkLiveData(workName)
+                    .observe(activity, workInfos -> {
+                        if (workInfos != null && !workInfos.isEmpty()) {
+                            if (workInfos.get(0).getState() == WorkInfo.State.RUNNING) {
+                                downloadAll.setVisibility(View.GONE);
+                            }
+                        }
+                    });
         }
 
         void bindHeader(UpdateableAppsHeader header) {

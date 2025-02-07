@@ -63,6 +63,7 @@ import org.fdroid.fdroid.nearby.TreeUriScannerIntentService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.views.AppDetailsActivity;
 import org.fdroid.fdroid.views.apps.AppListActivity;
+import org.fdroid.fdroid.work.AppUpdateWorker;
 
 /**
  * Main view shown to users upon starting F-Droid.
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
+    public static final String EXTRA_DO_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.DO_UPDATES";
 
     static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;
@@ -263,6 +265,9 @@ public class MainActivity extends AppCompatActivity {
             setSelectedMenuInNav(R.id.nearby);
             return true;
         } else if (intent.hasExtra(EXTRA_VIEW_UPDATES)) {
+            if (intent.getBooleanExtra(EXTRA_DO_UPDATES, false)) {
+                AppUpdateWorker.updateAppsNow(this);
+            }
             setSelectedMenuInNav(R.id.updates);
             return true;
         } else if (intent.hasExtra(EXTRA_VIEW_SETTINGS)) {

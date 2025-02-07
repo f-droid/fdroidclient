@@ -3,6 +3,7 @@ package org.fdroid.fdroid
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
@@ -68,8 +69,9 @@ class NotificationManager(
         val text = context.getString(R.string.notification_title_summary_app_update_available)
         val i = Intent(context, MainActivity::class.java).apply {
             putExtra(MainActivity.EXTRA_VIEW_UPDATES, true)
+            putExtra(MainActivity.EXTRA_DO_UPDATES, true)
         }
-        val pi = PendingIntent.getActivity(context, 0, i, FLAG_IMMUTABLE)
+        val pi = PendingIntent.getActivity(context, 42, i, FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE)
         return NotificationCompat.Builder(context, CHANNEL_UPDATES)
             .setSmallIcon(R.drawable.ic_notification)
             .setPriority(PRIORITY_HIGH)

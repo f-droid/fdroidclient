@@ -742,7 +742,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="one">%1$d app installed</item>
         <item quantity="other">%1$d apps installed</item>
     </plurals>
-    <string name="notification_title_summary_app_update_available">Tap to update</string>
+    <string name="notification_title_summary_app_update_available">Tap to update all</string>
     <string name="notification_title_summary_update_available">Update available</string>
     <string name="notification_title_summary_downloading">Downloading&#8230;</string>
     <string name="notification_title_summary_downloading_update">Downloading update&#8230;</string>

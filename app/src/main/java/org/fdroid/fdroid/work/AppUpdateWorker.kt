@@ -40,7 +40,7 @@ class AppUpdateWorker(
         // We are using two unique work names,
         // because [ExistingPeriodicWorkPolicy.UPDATE] doesn't update succeeded work
         // and we don't want to get into the business of canceling and re-enqueuing work.
-        private const val UNIQUE_WORK_NAME_APP_UPDATE = "appUpdate"
+        internal const val UNIQUE_WORK_NAME_APP_UPDATE = "appUpdate"
         private const val UNIQUE_WORK_NAME_AUTO_APP_UPDATE = "autoAppUpdate"
 
         /**
