@@ -34,6 +34,7 @@ import org.fdroid.fdroid.work.RepoUpdateWorker
 enum class ArchiveState {
     ENABLED,
     DISABLED,
+    LOADING,
     UNKNOWN,
 }
 
@@ -82,6 +83,7 @@ class RepoDetailsViewModel(
     fun setArchiveRepoEnabled(enabled: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             val repo = repoFlow.value ?: return@launch
+            archiveStateFlow.emit(ArchiveState.LOADING)
             try {
                 val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, NetCipher.getProxy())
                 archiveStateFlow.emit(enabled.toArchiveState())

@@ -27,6 +27,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -371,11 +372,27 @@ private fun SettingsRow(
     archiveState: ArchiveState,
     onToggleArchiveClicked: (Boolean) -> Unit,
 ) {
-    if (archiveState != ArchiveState.UNKNOWN) {
-        FDroidExpandableRow(
-            text = stringResource(R.string.menu_settings),
-            imageVectorStart = Icons.Default.Settings,
-        ) {
+    FDroidExpandableRow(
+        text = stringResource(R.string.menu_settings),
+        imageVectorStart = Icons.Default.Settings,
+    ) {
+        if (archiveState == ArchiveState.UNKNOWN) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(stringResource(R.string.repo_archive_unknown))
+                Spacer(modifier = Modifier.height(8.dp))
+                FDroidOutlineButton(
+                    text = stringResource(R.string.repo_archive_check),
+                    onClick = { onToggleArchiveClicked(true) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        } else if (archiveState == ArchiveState.LOADING) {
+            LinearProgressIndicator(
+                modifier = Modifier.fillMaxWidth(),
+            )
+        } else {
             FDroidSwitchRow(
                 text = stringResource(R.string.repo_archive_toggle_description),
                 checked = archiveState == ArchiveState.ENABLED,
