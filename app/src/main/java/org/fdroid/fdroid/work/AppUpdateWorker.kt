@@ -94,9 +94,9 @@ class AppUpdateWorker(
                     .setRequiredNetworkType(networkType)
                     .build()
                 val workRequest = PeriodicWorkRequestBuilder<AppUpdateWorker>(
-                    repeatInterval = prefs.updateInterval,
+                    repeatInterval = TimeUnit.HOURS.toMillis(24),
                     repeatIntervalTimeUnit = TimeUnit.MILLISECONDS,
-                    flexTimeInterval = 15,
+                    flexTimeInterval = 60,
                     flexTimeIntervalUnit = TimeUnit.MINUTES,
                 )
                     .setConstraints(constraints)
