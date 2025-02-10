@@ -15,26 +15,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/search_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="0dp"
                 android:layout_weight="1"
-                android:layout_marginBottom="16dp">
+                android:layout_marginEnd="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingLeft="8dp"
-                    android:paddingEnd="8dp"
-                    android:paddingRight="8dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -42,7 +36,9 @@
                         android:id="@+id/back"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/back"
+                        android:padding="8dp"
                         app:srcCompat="@drawable/abc_ic_ab_back_material" />
 
                     <EditText
@@ -63,7 +59,9 @@
                         android:id="@+id/clear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/clear_search"
+                        android:padding="8dp"
                         app:srcCompat="@drawable/ic_clear" />
 
                 </LinearLayout>
@@ -74,11 +72,9 @@
                 android:id="@+id/sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
+                android:padding="8dp"
                 android:contentDescription="@string/sort_search"
+                android:background="?attr/selectableItemBackground"
                 app:tint="?attr/colorControlNormal"
                 tools:src="@drawable/ic_sort" />
 
@@ -90,14 +86,11 @@
         android:id="@+id/hiddenAppNotice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:drawablePadding="4dp"
-        android:padding="4dp"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
         android:text="@string/app_list_results_hidden_antifeature_settings"
         android:visibility="gone"
+        android:drawablePadding="16dp"
         app:drawableStartCompat="@drawable/ic_error"
         tools:visibility="visible" />
 
@@ -114,6 +107,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/app_list"
+        android:paddingVertical="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
