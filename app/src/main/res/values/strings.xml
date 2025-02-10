@@ -465,25 +465,23 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_list_info_title">Repository List</string>
     <string name="repo_list_info_text">A repository is a source of apps. This list shows all currently added repositories. Disabled repositories are not used.\n\nIf an app is in more than one repository, the repository higher in the list is automatically preferred. You can reorder repositories by long pressing and dragging them.</string>
     <string name="repo_details">Repository</string>
-    <string name="repo_url">Address</string>
-    <string name="repo_num_apps">Number of apps</string>
+    <string name="repo_details_info_text">A repository is a source of apps.\n\nMirrors are used to distribute the load of downloading apps across multiple servers. Mirrors closer to you may be faster.\n\nOfficial mirrors are defined by the repository owner. They cannot be deleted, only disabled. You can define additional custom mirrors by adding them just like a normal repository.</string>
     <string name="repo_num_apps_button">Show apps</string>
     <string name="repo_archive_toggle">Repository Archive</string>
     <string name="repo_archive_toggle_description">Show archived apps and outdated versions of apps</string>
+    <string name="repo_archive_unknown">This repository does not appear to have an archive.</string>
+    <string name="repo_archive_check">Check for Archive</string>
     <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
     <string name="repo_description">Description</string>
-    <string name="repo_last_update">Last update</string>
-    <string name="repo_last_update_downloaded">Last update downloaded</string>
-    <string name="repo_official_mirrors">Official mirrors</string>
-    <string name="repo_user_mirrors">User mirrors</string>
-    <string name="repo_name">Name</string>
-    <string name="unsigned_description">This means that the list of
-        apps could not be verified. You should be careful
-        with apps downloaded from unsigned indexes.
-    </string>
-    <string name="repo_not_yet_updated">This repository has not been used yet.
-        You need to enable it to view the apps it provides.
-    </string>
+    <string name="repo_official_mirrors">Official Mirrors</string>
+    <string name="repo_user_mirrors">User Mirrors</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="zero">0 apps</item>
+        <item quantity="one">1 app</item>
+        <item quantity="other">%d apps</item>
+    </plurals>
+    <string name="repo_last_update_index">Last repo update: %s</string>
+    <string name="repo_last_update_check">Last check for repo update: %s</string>
     <string name="unknown">Unknown</string>
     <string name="repo_archive_failed">Archive repo currently not available</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
@@ -491,6 +489,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
         apps from it will no longer be available.\n\nNote: All
         previously installed apps will remain on your device.
     </string>
+    <string name="repo_confirm_delete_mirror_title">Delete Mirror?</string>
+    <string name="repo_confirm_delete_mirror_body">You can continue to install apps from this repository using the other mirrors.</string>
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
@@ -500,6 +500,12 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_searching_address">Looking for package repository at\n%1$s</string>
     <!-- Should be exactly the same as the standard word for "Share" throughout Android and apps -->
     <string name="share_repository">Share Repository</string>
+    <string name="share_mirror">Share Mirror</string>
+    <string name="show_repository_qr">Show Repository QR Code</string>
+    <string name="repo_basic_auth_title">Basic Auth</string>
+    <string name="repo_basic_auth_username">Username: %s</string>
+    <string name="repo_basic_auth_password">Password: ***</string>
+    <string name="repo_basic_auth_edit">Edit</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining
         this network: %s
     </string>
@@ -793,4 +799,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="ipfsgw_caption_official_gateways">Official IPFS Gateways</string>
     <string name="ipfsgw_caption_custom_gateways">Custom IPFS Gateways</string>
 
+    <string name="expand">Expand</string>
+    <string name="collapse">Collapse</string>
 </resources>

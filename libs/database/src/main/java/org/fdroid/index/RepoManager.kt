@@ -22,6 +22,7 @@ import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
+import org.fdroid.download.Mirror
 import org.fdroid.repo.AddRepoState
 import org.fdroid.repo.RepoAdder
 import org.fdroid.repo.RepoUriGetter
@@ -238,4 +239,51 @@ public class RepoManager @JvmOverloads constructor(
         return uri != null && RepoUriGetter.isSwapUri(uri)
     }
 
+    @WorkerThread
+    public fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?) {
+        repositoryDao.updateUsernameAndPassword(repoId, username, password)
+    }
+
+    @WorkerThread
+    public fun setMirrorEnabled(repoId: Long, mirror: Mirror, enabled: Boolean) {
+        val repo = repositoryDao.getRepository(repoId) ?: return
+
+        // Run as transaction to avoid race conditions between getting the mirrors and setting them
+        db.runInTransaction {
+            val disabled = repo.disabledMirrors.toMutableList()
+
+            if (enabled) {
+                if (disabled.contains(mirror.baseUrl)) {
+                    disabled.remove(mirror.baseUrl)
+                    repositoryDao.updateDisabledMirrors(repoId, disabled)
+                }
+            } else {
+                if (!disabled.contains(mirror.baseUrl)) {
+                    disabled.add(mirror.baseUrl)
+
+                    if (disabled.size == repo.getAllMirrors().size) {
+                        // if all mirrors are disabled, re-enable canonical repo as mirror
+                        disabled.remove(repo.address)
+                    }
+
+                    repositoryDao.updateDisabledMirrors(repoId, disabled)
+                }
+            }
+        }
+    }
+
+    @WorkerThread
+    public fun deleteUserMirror(repoId: Long, mirror: Mirror) {
+        val repo = repositoryDao.getRepository(repoId) ?: return
+
+        // Run as transaction to avoid race conditions between getting the mirrors and setting them
+        db.runInTransaction {
+            val user = repo.userMirrors.toMutableList()
+
+            if (user.contains(mirror.baseUrl)) {
+                user.remove(mirror.baseUrl)
+                repositoryDao.updateUserMirrors(repoId, user)
+            }
+        }
+    }
 }

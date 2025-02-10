@@ -33,7 +33,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -67,6 +66,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.RepoUpdateManager;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.UtilsKt;
 import org.fdroid.fdroid.installer.InstallHistoryService;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.installer.SessionInstallManager;
@@ -274,8 +274,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             sb.append(getString(R.string.auto_update_time_past));
         } else if (nextUpdateCheck < Long.MAX_VALUE) {
             sb.append("\n");
-            CharSequence nextUpdate = DateUtils.getRelativeTimeSpanString(nextUpdateCheck,
-                    System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
+            CharSequence nextUpdate = UtilsKt.asRelativeTimeString(nextUpdateCheck);
             sb.append(getString(R.string.auto_update_time, nextUpdate));
         } else if (position != 0) {
             sb.append("\n");
