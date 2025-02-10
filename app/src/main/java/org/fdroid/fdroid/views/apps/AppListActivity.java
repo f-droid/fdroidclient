@@ -33,14 +33,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,6 +53,7 @@ import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UiUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.LocaleCompat;
 import org.fdroid.fdroid.data.DBHelper;
@@ -109,6 +108,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         fdroidApp.setSecureWindow(this);
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+        EdgeToEdge.enable(this);
 
         super.onCreate(savedInstanceState);
 
@@ -192,15 +192,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         appView.setLayoutManager(new LinearLayoutManager(this));
         appView.setAdapter(appAdapter);
 
-        // prevents last item in appView to stay below navigation bar
-        ViewCompat.setOnApplyWindowInsetsListener(appView, (v, insets) -> {
-                    Insets innerPadding = insets.getInsets(WindowInsetsCompat.Type.systemBars() |
-                            WindowInsetsCompat.Type.displayCutout()
-                    );
-                    v.setPadding(innerPadding.left, 0, innerPadding.right, innerPadding.bottom);
-                    return insets;
-                }
-        );
+        UiUtils.setupEdgeToEdge(appView, false, true);
 
         // this also causes a load as we set the search terms even for empty intents, thus the query changed
         parseIntentForSearchQuery();

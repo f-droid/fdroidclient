@@ -56,6 +56,7 @@ import org.fdroid.fdroid.compose.ComposeUtils.FDroidButton
 import org.fdroid.fdroid.compose.ComposeUtils.FDroidOutlineButton
 import org.fdroid.fdroid.compose.FDroidExpandableRow
 import org.fdroid.fdroid.compose.FDroidSwitchRow
+import org.fdroid.fdroid.copy
 import org.fdroid.fdroid.flagEmoji
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
@@ -118,7 +119,8 @@ fun RepoDetailsScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(paddingContent)
+                // bottom padding is applied at the end, so that we draw behind the navigation bar
+                .padding(paddingContent.copy(bottom = 0.dp))
                 .padding(horizontal = 16.dp)
                 .verticalScroll(rememberScrollState()),
         ) {
@@ -155,7 +157,10 @@ fun RepoDetailsScreen(
             }
             // TODO: Add button to add user mirror?
             SettingsRow(archiveState, callbacks::onToggleArchiveClicked)
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(
+                modifier = Modifier
+                    .height(16.dp + paddingContent.calculateBottomPadding())
+            )
         }
     }
 }
