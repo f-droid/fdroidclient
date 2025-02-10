@@ -12,9 +12,11 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/search_card"
@@ -23,33 +25,31 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="0dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/sort"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_weight="1"
+                android:layout_marginBottom="16dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
                     android:paddingLeft="8dp"
                     android:paddingEnd="8dp"
-                    android:paddingRight="8dp">
+                    android:paddingRight="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:id="@+id/back"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/back"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/abc_ic_ab_back_material" />
 
                     <EditText
                         android:id="@+id/search"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:hint="@string/search_hint"
                         android:imeOptions="actionSearch"
@@ -57,23 +57,16 @@
                         android:inputType="text"
                         android:maxLines="1"
                         android:padding="12dp"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/clear"
-                        app:layout_constraintStart_toEndOf="@+id/back"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="18sp" />
 
                     <ImageView
                         android:id="@+id/clear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/clear_search"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_clear" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -86,13 +79,10 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="4dp"
                 android:contentDescription="@string/sort_search"
-                app:layout_constraintBottom_toBottomOf="@id/search_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/search_card"
-                app:layout_constraintTop_toTopOf="@id/search_card"
-                app:tint="?attr/colorControlNormal" />
+                app:tint="?attr/colorControlNormal"
+                tools:src="@drawable/ic_sort" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
