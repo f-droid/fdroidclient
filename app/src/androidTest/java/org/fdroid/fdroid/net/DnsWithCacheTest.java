@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.fdroid.fdroid.Preferences;
 import org.junit.Test;
@@ -40,12 +41,12 @@ public class DnsWithCacheTest {
         // test setup
         Preferences prefs = Preferences.get();
         prefs.setDnsCacheEnabledValue(true);
-        DnsWithCache testObject = new DnsWithCache();
+        DnsCache testObject = DnsCache.get();
 
         // populate cache
-        testObject.updateCacheAndPrefs(URL_1, LIST_1);
-        testObject.updateCacheAndPrefs(URL_2, LIST_2);
-        testObject.updateCacheAndPrefs(URL_3, LIST_3);
+        testObject.insert(URL_1, LIST_1);
+        testObject.insert(URL_2, LIST_2);
+        testObject.insert(URL_3, LIST_3);
 
         // check for cached lookup results
         List<InetAddress> testList = testObject.lookup(URL_1);
@@ -58,14 +59,8 @@ public class DnsWithCacheTest {
         prefs.setDnsCacheEnabledValue(false);
 
         // attempt non-cached lookup
-        boolean gotException = false;
-        try {
-            testList = testObject.lookup(URL_1);
-        } catch (UnknownHostException e) {
-            // test urls are not valid
-            gotException = true;
-        }
-        assertEquals(true, gotException);
+        testList = testObject.lookup(URL_1);
+        assertNull(testList);
 
         // toggle preference (true)
         prefs.setDnsCacheEnabledValue(true);
@@ -74,5 +69,12 @@ public class DnsWithCacheTest {
         testList = testObject.lookup(URL_2);
         assertEquals(1, testList.size());
         assertEquals(IP_2.getHostAddress(), testList.get(0).getHostAddress());
+
+        // test removal
+        testList = testObject.remove(URL_2);
+        assertEquals(1, testList.size());
+        assertEquals(IP_2.getHostAddress(), testList.get(0).getHostAddress());
+        testList = testObject.lookup(URL_2);
+        assertNull(testList);
     }
 }

@@ -531,17 +531,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_USE_DNS_CACHE, false);
     }
 
-    public void updateDnsCache(String urlString, List<InetAddress> ipList) {
-        // existing list is replaced, so make sure new list has values
-        if (ipList == null || ipList.isEmpty()) {
-            return;
-        } else {
-            HashMap<String, List<InetAddress>> dnsMap = getDnsCache();
-            dnsMap.put(urlString, ipList);
-            setDnsCache(dnsMap);
-        }
-    }
-
     public void setDnsCache(HashMap<String, List<InetAddress>> dnsMap) {
         HashMap<String, List<String>> stringMap = new HashMap<String, List<String>>();
         for (String url : dnsMap.keySet()) {
@@ -552,16 +541,6 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             stringMap.put(url, stringList);
         }
         preferences.edit().putString(PREF_DNS_CACHE, listMapToString(stringMap)).apply();
-    }
-
-    public List<InetAddress> queryDnsCache(String urlString) {
-        HashMap<String, List<InetAddress>> dnsMap = getDnsCache();
-        if (dnsMap.containsKey(urlString)) {
-            return dnsMap.get(urlString);
-        } else {
-            // returns empty list to avoid null issues
-            return new ArrayList<InetAddress>();
-        }
     }
 
     public HashMap<String, List<InetAddress>> getDnsCache() {

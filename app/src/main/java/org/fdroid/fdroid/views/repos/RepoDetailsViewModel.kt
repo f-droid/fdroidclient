@@ -29,6 +29,7 @@ import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.R
 import org.fdroid.fdroid.data.DBHelper
 import org.fdroid.fdroid.generateQrBitmapKt
+import org.fdroid.fdroid.net.DnsCache
 import org.fdroid.fdroid.work.RepoUpdateWorker
 
 enum class ArchiveState {
@@ -60,6 +61,7 @@ class RepoDetailsViewModel(
     }
 
     private val repoId = initialRepo.repoId
+    private val repoMirrors = initialRepo.getMirrors()
 
     private val repoManager = FDroidApp.getRepoManager(app)
     private val appDao = DBHelper.getDb(app).getAppDao()
@@ -104,6 +106,11 @@ class RepoDetailsViewModel(
     fun deleteRepository() {
         viewModelScope.launch(Dispatchers.IO) {
             repoManager.deleteRepository(repoId)
+        }
+        // clean up dns cache
+        val cache = DnsCache.get()
+        for (mirror in repoMirrors) {
+            cache.remove(mirror.url.host)
         }
     }
 
