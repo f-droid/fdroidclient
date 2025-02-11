@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.compose
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -75,7 +76,7 @@ fun FDroidExpandableRow(
             )
         }
         // content
-        if (expandedInternal) {
+        AnimatedVisibility(expandedInternal) {
             content()
         }
     }
