@@ -61,7 +61,6 @@ class RepoDetailsViewModel(
     }
 
     private val repoId = initialRepo.repoId
-    private val repoMirrors = initialRepo.getMirrors()
 
     private val repoManager = FDroidApp.getRepoManager(app)
     private val appDao = DBHelper.getDb(app).getAppDao()
@@ -104,13 +103,12 @@ class RepoDetailsViewModel(
     }
 
     fun deleteRepository() {
+        val cache = DnsCache.get()
+        val mirrors = repoFlow.value?.getAllMirrors() ?: emptyList()
+        mirrors.forEach { cache.remove(it.url.host) }
+
         viewModelScope.launch(Dispatchers.IO) {
             repoManager.deleteRepository(repoId)
-        }
-        // clean up dns cache
-        val cache = DnsCache.get()
-        for (mirror in repoMirrors) {
-            cache.remove(mirror.url.host)
         }
     }
 
