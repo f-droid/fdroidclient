@@ -28,6 +28,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,6 +41,7 @@ import org.fdroid.database.AppPrefsDao;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UiUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
@@ -59,6 +61,7 @@ public class InstalledAppsActivity extends AppCompatActivity {
         fdroidApp.setSecureWindow(this);
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+        EdgeToEdge.enable(this);
 
         super.onCreate(savedInstanceState);
 
@@ -79,6 +82,8 @@ public class InstalledAppsActivity extends AppCompatActivity {
 
         db = DBHelper.getDb(this);
         db.getAppDao().getInstalledAppListItems(getPackageManager()).observe(this, this::onLoadFinished);
+
+        UiUtils.setupEdgeToEdge(appList, false, true);
     }
 
     private void onLoadFinished(List<AppListItem> items) {
