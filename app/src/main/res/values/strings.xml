@@ -630,9 +630,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="not_visible_nearby">Nearby not enabled</string>
     <string name="not_visible_nearby_description">Before swapping with nearby devices, make your device visible.</string>
     <string name="swap_toast_using_path">Using %1$s</string>
-    <string name="swap_toast_not_removable_storage">That choice did not match any removeable storage devices, try
+    <string name="swap_toast_not_removable_storage">That choice did not match any removable storage devices, try
         again!</string>
-    <string name="swap_toast_find_removeable_storage">Choose your removeable SD Card or USB</string>
+    <string name="swap_toast_find_removeable_storage">Choose your removable SD card or USB</string>
     <string name="swap_toast_invalid_url">Invalid URL for swapping: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi hotspot enabled</string>
     <string name="swap_toast_could_not_enable_hotspot">Could not enable Wi-Fi hotspot!</string>
