@@ -261,7 +261,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_ignore_this">Ignore this update</string>
     <string name="menu_release_channel_beta">Allow beta updates</string>
     <string name="menu_website">Website</string>
-    <string name="menu_email">E-mail author</string>
+    <string name="menu_email">Send an e-mail to the author</string>
     <!-- The title for the link that points to the issue tracker for this app -->
     <string name="menu_issues">Issues</string>
     <!-- The title for the link that points to the Changelog document for this app -->
