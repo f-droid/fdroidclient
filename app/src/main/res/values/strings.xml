@@ -357,7 +357,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="force_touch_apps">Include touchscreen apps</string>
     <string name="force_touch_apps_on">Show apps that require touchscreen regardless of hardware support</string>
 
-    <string name="local_repo">Local repo</string>
+    <string name="local_repo">Local Repo</string>
     <string name="local_repo_running">F-Droid is ready to swap</string>
     <string name="touch_to_configure_local_repo">Touch to view details and allow others to swap your apps.</string>
     <string name="deleting_repo">Deleting current repo…</string>
