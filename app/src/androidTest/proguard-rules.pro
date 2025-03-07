@@ -19,6 +19,8 @@
 -keep class junit.** { *; }
 -dontwarn junit.**
 
+-keep class io.mockk.** { *; }
+
 -keep class androidx.arch.core.executor.ArchTaskExecutor {*;}
 
 -keep class org.fdroid.download.Mirror {

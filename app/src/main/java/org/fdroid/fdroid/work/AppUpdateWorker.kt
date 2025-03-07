@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.annotation.UiThread
+import androidx.annotation.VisibleForTesting
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -41,7 +42,9 @@ class AppUpdateWorker(
         // because [ExistingPeriodicWorkPolicy.UPDATE] doesn't update succeeded work
         // and we don't want to get into the business of canceling and re-enqueuing work.
         internal const val UNIQUE_WORK_NAME_APP_UPDATE = "appUpdate"
-        private const val UNIQUE_WORK_NAME_AUTO_APP_UPDATE = "autoAppUpdate"
+
+        @VisibleForTesting
+        internal const val UNIQUE_WORK_NAME_AUTO_APP_UPDATE = "autoAppUpdate"
 
         /**
          * Use this to trigger a manual update of all apps without further constraints.

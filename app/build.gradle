@@ -162,6 +162,8 @@ android {
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/LICENSE-notice.md'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/gradle/**'
@@ -232,12 +234,14 @@ dependencies {
     androidTestImplementation libs.androidx.test.runner
     androidTestImplementation libs.androidx.test.rules
     androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.androidx.test.ext.junit.ktx
     androidTestImplementation libs.androidx.test.monitor
     androidTestImplementation libs.androidx.espresso.core
     androidTestImplementation libs.androidx.test.uiautomator
     androidTestImplementation libs.androidx.work.testing
     androidTestImplementation libs.kotlin.test
     androidTestImplementation libs.kotlin.reflect
+    androidTestImplementation libs.mockk.android
     androidTestImplementation libs.turbine
 }
 
