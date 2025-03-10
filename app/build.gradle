@@ -226,8 +226,10 @@ dependencies {
     testImplementation libs.androidx.test.core
     testImplementation libs.junit
     testImplementation libs.robolectric
+    testImplementation libs.mockk
     testImplementation libs.mockito.core
     testImplementation libs.hamcrest
+    testImplementation libs.slf4j.simple
 
     androidTestImplementation libs.androidx.test.core
     androidTestImplementation libs.androidx.core.testing

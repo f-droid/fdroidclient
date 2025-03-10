@@ -2,29 +2,31 @@ package org.fdroid.fdroid
 
 import android.content.Context
 import android.net.Uri
+import androidx.core.net.toUri
 import mu.KotlinLogging
 import org.acra.util.versionCodeLong
 import org.fdroid.database.DbUpdateChecker
 import org.fdroid.database.Repository
 import org.fdroid.database.UpdatableApp
+import org.fdroid.download.DownloaderFactory
 import org.fdroid.fdroid.AppUpdateStatusManager.Status.Downloading
 import org.fdroid.fdroid.data.Apk
 import org.fdroid.fdroid.data.App
 import org.fdroid.fdroid.installer.ApkCache
 import org.fdroid.fdroid.installer.InstallManagerService
 import org.fdroid.fdroid.installer.InstallerFactory
-import org.fdroid.fdroid.net.DownloaderFactory
 import org.fdroid.index.RepoManager
 
-class AppUpdateManager(
+class AppUpdateManager @JvmOverloads constructor(
     private val context: Context,
     private val repoManager: RepoManager,
     private val updateChecker: DbUpdateChecker,
+    private val downloaderFactory: DownloaderFactory =
+        org.fdroid.fdroid.net.DownloaderFactory.INSTANCE,
+    private val statusManager: AppUpdateStatusManager = AppUpdateStatusManager.getInstance(context),
 ) {
 
     private val log = KotlinLogging.logger { }
-    private val downloaderFactory = DownloaderFactory.INSTANCE
-    private val statusManager = AppUpdateStatusManager.getInstance(context)
 
     fun updateApps() {
         // get apps with updates pending
@@ -33,6 +35,7 @@ class AppUpdateManager(
             .sortedWith { app1, app2 ->
                 // our own app will be last to update
                 if (app1.packageName == context.packageName) return@sortedWith 1
+                if (app2.packageName == context.packageName) return@sortedWith -1
                 // other apps are sorted by name
                 (app1.name ?: "").compareTo(app2.name ?: "", ignoreCase = true)
             }
@@ -46,7 +49,7 @@ class AppUpdateManager(
                 private val installManagerService = InstallManagerService.getInstance(context)
                 private val legacyApp = App(app)
                 private val legacyApk = Apk(app.update, repo)
-                private val uri = Uri.parse(legacyApk.canonicalUrl)
+                private val uri = legacyApk.canonicalUrl.toUri()
                 private var lastProgress = 0L
 
                 override fun onInstallProcessStarted() {
@@ -80,7 +83,7 @@ class AppUpdateManager(
         // legacy cruft
         val legacyApp = App(app)
         val legacyApk = Apk(app.update, repo)
-        val uri = Uri.parse(legacyApk.canonicalUrl)
+        val uri = legacyApk.canonicalUrl.toUri()
         // check if app was already installed in the meantime
         try {
             val packageInfo = context.packageManager.getPackageInfo(app.packageName, 0)
