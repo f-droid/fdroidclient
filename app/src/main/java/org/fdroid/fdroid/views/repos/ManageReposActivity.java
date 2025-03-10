@@ -51,6 +51,7 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UiUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.UtilsKt;
 import org.fdroid.fdroid.data.App;
@@ -169,6 +170,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             repoAdapter.updateItems(new ArrayList<>(items)); // copy list, so we don't modify original in adapter
             isItemReorderingEnabled = true;
         });
+        UiUtils.setupEdgeToEdge(repoList, false, true);
     }
 
     @Override
