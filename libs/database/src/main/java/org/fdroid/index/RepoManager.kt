@@ -118,11 +118,19 @@ public class RepoManager @JvmOverloads constructor(
      */
     @WorkerThread
     public fun deleteRepository(repoId: Long) {
-        repositoryDao.deleteRepository(repoId)
-        // while this gets updated automatically, getting the update may be slow,
-        // so to speed up the UI, we emit the state change right away
-        _repositoriesState.value = _repositoriesState.value.filter { repository ->
-            repository.repoId == repoId
+        db.runInTransaction {
+            // find and remove archive repo if existing
+            val repository = repositoryDao.getRepository(repoId) ?: return@runInTransaction
+            val cert = repository.certificate
+            val archiveRepoId = repositoryDao.getArchiveRepoId(cert)
+            if (archiveRepoId != null) repositoryDao.deleteRepository(archiveRepoId)
+            // delete main repo
+            repositoryDao.deleteRepository(repoId)
+            // while this gets updated automatically, getting the update may be slow,
+            // so to speed up the UI, we emit the state change right away
+            _repositoriesState.value = _repositoriesState.value.filter { repo ->
+                repo.repoId == repoId
+            }
         }
     }
 
