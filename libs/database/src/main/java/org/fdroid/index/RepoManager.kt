@@ -106,23 +106,38 @@ public class RepoManager @JvmOverloads constructor(
     }
 
     /**
-     * Enables or disables the repository with the given [repoId].
+     * Enables or disables the repository with the given [repoId]
+     * and also the corresponding archive repo if existing.
      * Data from disabled repositories is ignored in many queries.
      */
     @WorkerThread
-    public fun setRepositoryEnabled(repoId: Long, enabled: Boolean): Unit =
-        repositoryDao.setRepositoryEnabled(repoId, enabled)
+    public fun setRepositoryEnabled(repoId: Long, enabled: Boolean) {
+        if (enabled) {
+            repositoryDao.setRepositoryEnabled(repoId, true)
+        } else {
+            db.runInTransaction {
+                // find and also disable archive repo if existing
+                val repository = repositoryDao.getRepository(repoId) ?: return@runInTransaction
+                val archiveRepoId = repositoryDao.getArchiveRepoId(repository.certificate)
+                if (archiveRepoId != null) {
+                    repositoryDao.setRepositoryEnabled(archiveRepoId, false)
+                }
+                // disable main repo
+                repositoryDao.setRepositoryEnabled(repoId, false)
+            }
+        }
+    }
 
     /**
-     * Removes a Repository with the given repoId with all associated data from the database.
+     * Removes a Repository (and also the corresponding archive repo if existing)
+     * with the given repoId with all associated data from the database.
      */
     @WorkerThread
     public fun deleteRepository(repoId: Long) {
         db.runInTransaction {
             // find and remove archive repo if existing
             val repository = repositoryDao.getRepository(repoId) ?: return@runInTransaction
-            val cert = repository.certificate
-            val archiveRepoId = repositoryDao.getArchiveRepoId(cert)
+            val archiveRepoId = repositoryDao.getArchiveRepoId(repository.certificate)
             if (archiveRepoId != null) repositoryDao.deleteRepository(archiveRepoId)
             // delete main repo
             repositoryDao.deleteRepository(repoId)
