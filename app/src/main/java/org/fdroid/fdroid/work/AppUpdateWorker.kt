@@ -86,13 +86,9 @@ class AppUpdateWorker(
                 } else {
                     NetworkType.UNMETERED
                 }
-                // FIXME: inspection warning:
-                //  Some devices are never considered charging and idle at the same time.
-                //  Consider removing one of these constraints.
                 val constraints = Constraints.Builder()
                     .setRequiresBatteryNotLow(true)
                     .setRequiresStorageNotLow(true)
-                    .setRequiresCharging(true)
                     .setRequiresDeviceIdle(true)
                     .setRequiredNetworkType(networkType)
                     .build()
