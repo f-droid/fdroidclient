@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.work
 
+import android.os.Build.VERSION.SDK_INT
 import android.text.format.DateUtils
 import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -27,6 +28,7 @@ import org.fdroid.fdroid.net.ConnectivityMonitorService.FLAG_NET_NO_LIMIT
 import org.fdroid.fdroid.net.ConnectivityMonitorService.FLAG_NET_UNAVAILABLE
 import org.fdroid.fdroid.work.AppUpdateWorker.Companion.UNIQUE_WORK_NAME_APP_UPDATE
 import org.fdroid.fdroid.work.AppUpdateWorker.Companion.UNIQUE_WORK_NAME_AUTO_APP_UPDATE
+import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.runner.RunWith
 import java.io.IOException
@@ -45,6 +47,9 @@ class AppUpdateWorkerTest {
 
     @Before
     fun setup() {
+        // MockKAgentException: Mocking static is supported starting from Android P
+        assumeTrue(SDK_INT >= 48)
+
         val config = Configuration.Builder()
             .setMinimumLoggingLevel(Log.DEBUG)
             .setExecutor(SynchronousExecutor())
