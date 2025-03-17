@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -124,6 +125,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         fdroidApp.setSecureWindow(this);
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+        EdgeToEdge.enable(this);
         repoManager = FDroidApp.getRepoManager(this);
 
         super.onCreate(savedInstanceState);
