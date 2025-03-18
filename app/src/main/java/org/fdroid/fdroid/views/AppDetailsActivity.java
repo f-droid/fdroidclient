@@ -445,7 +445,8 @@ public class AppDetailsActivity extends AppCompatActivity
             // clear progress if the state got removed in the meantime (e.g. download canceled)
             adapter.clearProgress();
         }
-        if (this.currentStatus == newStatus) {
+        if (this.currentStatus == null && newStatus == null
+                || (this.currentStatus != null && this.currentStatus.equals(newStatus))) {
             Utils.debugLog(TAG, "Same app status, not updating.");
             return;
         }
