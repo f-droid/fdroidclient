@@ -47,6 +47,10 @@
     <string name="force_old_index">Force old index format</string>
     <string name="force_old_index_summary">In case there are bugs or compatibility issues, use the XML app index</string>
     <string name="other">Other</string>
+    <string name="pref_export_log_title">Save Logcat</string>
+    <string name="pref_export_log_summary">Creates a file with a (potentially sensitive) app log used for debugging</string>
+    <string name="export_log_success">Logcat saved successfully</string>
+    <string name="export_log_error">Error saving logcat</string>
 
     <string name="update_interval">Automatic update interval</string>
     <string name="over_wifi">Over Wi-Fi</string>
