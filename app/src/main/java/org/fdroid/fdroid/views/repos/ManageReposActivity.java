@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,6 +52,7 @@ import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UiUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.UtilsKt;
 import org.fdroid.fdroid.data.App;
@@ -123,6 +125,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
         fdroidApp.setSecureWindow(this);
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+        EdgeToEdge.enable(this);
         repoManager = FDroidApp.getRepoManager(this);
 
         super.onCreate(savedInstanceState);
@@ -169,6 +172,7 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             repoAdapter.updateItems(new ArrayList<>(items)); // copy list, so we don't modify original in adapter
             isItemReorderingEnabled = true;
         });
+        UiUtils.setupEdgeToEdge(repoList, false, true);
     }
 
     @Override

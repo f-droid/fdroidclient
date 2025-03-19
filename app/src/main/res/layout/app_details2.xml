@@ -5,21 +5,19 @@
     android:id="@+id/rootCoordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="org.fdroid.fdroid.views.AppDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:layout_behavior="org.fdroid.fdroid.views.FixAppBarLayoutBehavior">
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_app_bar"
+            style="?attr/collapsingToolbarLayoutLargeStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
-            style="?attr/collapsingToolbarLayoutLargeStyle"
-            android:fitsSystemWindows="true"
             app:expandedTitleMarginTop="24dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -47,6 +45,7 @@
         android:id="@+id/rvDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         app:layoutManager="LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="org.fdroid.fdroid.views.AppDetailsActivity"
