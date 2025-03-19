@@ -55,8 +55,8 @@ import java.util.concurrent.TimeUnit;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityEspressoTest {
-    public static final String TAG = "MainActivityEspressoTest";
+public class MainActivityEspressoTestFull {
+    public static final String TAG = "MainActivityEspressoTestFull";
 
     /**
      * Emulators older than {@code android-25} seem to fail at running Espresso tests.
@@ -221,7 +221,26 @@ public class MainActivityEspressoTest {
 
     @LargeTest
     @Test
+    public void startSwap() {
+        if (!BuildConfig.FLAVOR.startsWith("full")) {
+            return;
+        }
+        ViewInteraction nearbyBottonNavButton = onView(
+                allOf(withText(R.string.main_menu__swap_nearby), isDisplayed()));
+        nearbyBottonNavButton.perform(click());
+        ViewInteraction findPeopleButton = onView(
+                allOf(withId(R.id.find_people_button), withText(R.string.nearby_splash__find_people_button),
+                        isDisplayed()));
+        findPeopleButton.perform(click());
+        onView(withText(R.string.swap_send_fdroid)).check(matches(isDisplayed()));
+    }
+
+    @LargeTest
+    @Test
     public void showCategories() {
+        if (!BuildConfig.FLAVOR.startsWith("full")) {
+            return;
+        }
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(allOf(withText(R.string.main_menu__categories), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.swipe_to_refresh), isDisplayed()))
@@ -245,6 +264,9 @@ public class MainActivityEspressoTest {
     @LargeTest
     @Test
     public void showLatest() {
+        if (!BuildConfig.FLAVOR.startsWith("full")) {
+            return;
+        }
         onView(Matchers.instanceOf(StatusBanner.class)).check(matches(not(isDisplayed())));
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(allOf(withText(R.string.main_menu__latest_apps), isDisplayed())).perform(click());
@@ -267,6 +289,9 @@ public class MainActivityEspressoTest {
     public void showSearch() {
         onView(allOf(withText(R.string.menu_settings), isDisplayed())).perform(click());
         onView(withId(R.id.fab_search)).check(doesNotExist());
+        if (!BuildConfig.FLAVOR.startsWith("full")) {
+            return;
+        }
         onView(allOf(withText(R.string.main_menu__latest_apps), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.fab_search), isDisplayed())).perform(click());
         onView(withId(R.id.sort)).check(matches(isDisplayed()));
