@@ -121,6 +121,9 @@
 
 This often occurs with apps installed via Google Play or other sources, if they are signed by a different certificate.</string>
 
+    <string name="app_details_more_apps_interesting">This might also be interesting to you:</string>
+    <string name="app_details_more_apps_by_author">More apps by %1$s</string>
+
     <string name="about_title_full">About F-Droid</string>
     <string name="about_title_basic">About F-Droid Basic</string>
     <string name="about_version">Version</string>

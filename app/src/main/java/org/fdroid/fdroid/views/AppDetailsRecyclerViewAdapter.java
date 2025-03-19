@@ -51,6 +51,7 @@ import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.color.MaterialColors;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
@@ -64,12 +65,14 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
 import org.fdroid.fdroid.views.appdetails.RepoChooserKt;
+import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.fdroid.index.v2.FileV2;
 
@@ -80,6 +83,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
@@ -114,6 +123,7 @@ public class AppDetailsRecyclerViewAdapter
     private static final int VIEWTYPE_NO_VERSIONS = 6;
     private static final int VIEWTYPE_VERSIONS_LOADING = 7;
     private static final int VIEWTYPE_VERSION = 8;
+    private static final int VIEWTYPE_MORE_APPS = 9;
 
     private final Context context;
     @Nullable
@@ -128,6 +138,7 @@ public class AppDetailsRecyclerViewAdapter
     private final List<Apk> compatibleVersionsDifferentSigner = new ArrayList<>();
     private boolean versionsLoading = true;
     private boolean showVersions;
+    private boolean showAuthorApps;
 
     private HeaderViewHolder headerView;
 
@@ -135,6 +146,8 @@ public class AppDetailsRecyclerViewAdapter
     @Nullable
     private Apk suggestedApk;
     private final HashMap<String, Boolean> versionsExpandTracker = new HashMap<>();
+
+    private final CompositeDisposable disposables = new CompositeDisposable();
 
     public AppDetailsRecyclerViewAdapter(Context context, @Nullable App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
         this.context = context;
@@ -150,7 +163,9 @@ public class AppDetailsRecyclerViewAdapter
 
         items.clear();
         versions.clear();
+        disposables.clear();
         suggestedApk = null;
+        showAuthorApps = false;
 
         // Get versions
         compatibleVersionsDifferentSigner.clear();
@@ -196,6 +211,27 @@ public class AppDetailsRecyclerViewAdapter
                 setShowVersions(true);
             }
         }
+
+        // Add the "More apps by this author" section if the author has more than one app
+        Disposable disposable = Single.fromCallable(() ->
+                        !TextUtils.isEmpty(app.authorName)
+                                && DBHelper.getDb(context).getAppDao()
+                                .hasAuthorMoreThanOneApp(app.authorName))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(show -> {
+                    showAuthorApps = show;
+                    if (showAuthorApps) {
+                        notifyItemChanged(0); // onclick for author in header
+                        addItem(VIEWTYPE_MORE_APPS);
+                        notifyItemInserted(items.size() - 1);
+                    }
+                }, throwable -> {
+                    // TODO: report error
+                    Log.e("RecyclerViewAdapter", "Error checking author apps", throwable);
+                });
+        disposables.add(disposable);
+
         //noinspection NotifyDataSetChanged // too hard to know what exactly has changed
         notifyDataSetChanged();
     }
@@ -313,6 +349,12 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
+    private void openAppListWithAuthorFilter(App app) {
+        Intent intent = new Intent(context, AppListActivity.class);
+        intent.putExtra(AppListActivity.EXTRA_AUTHOR_NAME, app.authorName);
+        context.startActivity(intent);
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -354,6 +396,10 @@ public class AppDetailsRecyclerViewAdapter
                 View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
                 yield new VersionViewHolder(version);
             }
+            case VIEWTYPE_MORE_APPS -> {
+                View moreApps = inflater.inflate(R.layout.app_details2_more_apps, parent, false);
+                yield new MoreAppsViewHolder(moreApps);
+            }
             default -> throw new IllegalStateException("Unknown view type: " + viewType);
         };
     }
@@ -376,6 +422,7 @@ public class AppDetailsRecyclerViewAdapter
             case VIEWTYPE_VERSIONS:
             case VIEWTYPE_NO_VERSIONS:
             case VIEWTYPE_VERSIONS_LOADING:
+            case VIEWTYPE_MORE_APPS:
                 ((AppDetailsViewHolder) holder).bindModel();
                 break;
 
@@ -539,6 +586,11 @@ public class AppDetailsRecyclerViewAdapter
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));
                 authorView.setVisibility(View.VISIBLE);
+                if (showAuthorApps) {
+                    authorView.setOnClickListener(v -> openAppListWithAuthorFilter(app));
+                } else {
+                    authorView.setOnClickListener(null);
+                }
             } else {
                 authorView.setVisibility(View.GONE);
             }
@@ -766,6 +818,7 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         this.recyclerView = null;
+        disposables.clear();
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
@@ -1398,6 +1451,28 @@ public class AppDetailsRecyclerViewAdapter
                             });
                 }
             }
+        }
+    }
+
+    private class MoreAppsViewHolder extends AppDetailsViewHolder {
+        final MaterialButton appsByAuthor;
+
+        MoreAppsViewHolder(View view) {
+            super(view);
+            appsByAuthor = view.findViewById(R.id.apps_by_author);
+        }
+
+        @Override
+        public void bindModel() {
+            if (app == null) return;
+            if (TextUtils.isEmpty(app.authorName)) {
+                appsByAuthor.setVisibility(View.GONE);
+            } else {
+                appsByAuthor.setVisibility(View.VISIBLE);
+                appsByAuthor.setOnClickListener(v -> openAppListWithAuthorFilter(app));
+                appsByAuthor.setText(context.getString(R.string.app_details_more_apps_by_author, app.authorName));
+            }
+
         }
     }
 

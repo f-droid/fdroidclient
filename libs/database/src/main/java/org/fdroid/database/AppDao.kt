@@ -122,6 +122,21 @@ public interface AppDao {
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>>
 
+    /**
+     * Like [getAppListItems], but filters items by the given [author]
+     */
+    public fun getAppListItemsForAuthor(
+        packageManager: PackageManager,
+        author: String,
+        searchQuery: String?,
+        sortOrder: AppListSortOrder
+    ): LiveData<List<AppListItem>>
+
+    /**
+     * Returns `true` if the given [author] has at least two apps in the database.
+     */
+    public fun hasAuthorMoreThanOneApp(author: String): Boolean
+
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
     public fun getNumberOfAppsInCategory(category: String): Int
@@ -427,6 +442,18 @@ internal interface AppDaoInt : AppDao {
         } else getAppListItems(repoId, escapeQuery(searchQuery)).map(packageManager)
     }
 
+    override fun getAppListItemsForAuthor(
+        packageManager: PackageManager,
+        author: String,
+        searchQuery: String?,
+        sortOrder: AppListSortOrder
+    ): LiveData<List<AppListItem>> {
+        return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
+            LAST_UPDATED -> getAppListItemsForAuthorByLastUpdated(author).map(packageManager)
+            NAME -> getAppListItemsForAuthorByName(author).map(packageManager)
+        } else getAppListItemsForAuthor(author, escapeQuery(searchQuery)).map(packageManager)
+    }
+
     private fun escapeQuery(searchQuery: String): String {
         val sanitized = searchQuery.replace(Regex.fromLiteral("\""), "\"\"")
         return "\"*$sanitized*\""
@@ -587,6 +614,54 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+                     app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+        JOIN PreferredRepo USING (packageName)
+        WHERE pref.enabled = 1 AND authorName = :authorName
+        GROUP BY packageName HAVING MAX(pref.weight)
+        ORDER BY localizedName COLLATE NOCASE ASC""")
+    fun getAppListItemsForAuthorByName(authorName: String): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query(
+        """SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+                     app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+        JOIN PreferredRepo USING (packageName)
+        WHERE pref.enabled = 1 AND authorName = :authorName
+        GROUP BY packageName HAVING MAX(pref.weight)
+        ORDER BY app.lastUpdated DESC"""
+    )
+    fun getAppListItemsForAuthorByLastUpdated(authorName: String): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query(
+        """SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE authorName = :authorName AND app.rowid IN (
+            SELECT rowid FROM ${AppMetadataFts.TABLE}
+            WHERE authorName = :authorName AND ${AppMetadataFts.TABLE} MATCH :searchQuery
+        )"""
+    )
+    fun getAppListItemsForAuthor(
+        authorName: String,
+        searchQuery: String
+    ): LiveData<List<AppListItem>>
+
+    @Query("""SELECT COUNT(*) = 2 
+        FROM (
+            SELECT 1
+            FROM AppMetadata
+            WHERE authorName = :author
+            LIMIT 2)""")
+    override fun hasAuthorMoreThanOneApp(author: String): Boolean
 
     override fun getInstalledAppListItems(
         packageManager: PackageManager,

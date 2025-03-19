@@ -77,6 +77,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
     public static final String EXTRA_REPO_ID
             = "org.fdroid.fdroid.views.apps.AppListActivity.REPO_ID";
+    public static final String EXTRA_AUTHOR_NAME
+            = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_AUTHOR_NAME";
 
     private static final String SEARCH_TERMS_KEY = "searchTerms";
     private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
@@ -87,6 +89,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private String categoryId;
     private String searchTerms;
     private long repoId;
+    private String authorName;
     private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
@@ -210,18 +213,21 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         categoryId = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
         repoId = intent.hasExtra(EXTRA_REPO_ID) ? intent.getLongExtra(EXTRA_REPO_ID, -1) : -1;
+        authorName = intent.hasExtra(EXTRA_AUTHOR_NAME) ? intent.getStringExtra(EXTRA_AUTHOR_NAME) : null;
+
         if (repoId > 0) {
             Repository repo = FDroidApp.getRepoManager(this).getRepository(repoId);
             if (repo != null) {
                 LocaleListCompat locales = LocaleListCompat.getDefault();
                 searchInput.setText(getSearchText(repo.getName(locales), searchTerms));
             }
+        } else if (authorName != null) {
+            searchInput.setText(getSearchText(authorName, searchTerms));
         } else {
             String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
                     intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
             searchInput.setText(getSearchText(categoryName, searchTerms));
         }
-
         searchInput.setSelection(searchInput.getText().length());
 
         if (categoryId != null) {
@@ -240,10 +246,13 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
                 SortClause.WORDS.equals(sortClauseSelected) ? AppListSortOrder.NAME : AppListSortOrder.LAST_UPDATED;
         if (repoId > 0) {
             itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), repoId, search, sortOrder);
-        } else if (categoryId == null) {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), search, sortOrder);
-        } else {
+        } else if (categoryId != null) {
             itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId, search, sortOrder);
+        } else if (authorName != null) {
+            itemsLiveData = db.getAppDao().getAppListItemsForAuthor(
+                    getPackageManager(), authorName, search, sortOrder);
+        } else {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), search, sortOrder);
         }
         itemsLiveData.observe(this, this::onAppsLoaded);
     }
@@ -303,6 +312,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             // remove previous chip
             this.categoryId = null;
             this.repoId = -1;
+            this.authorName = null;
         }
         this.searchTerms = searchTerms.isEmpty() ? null : searchTerms;
         appView.scrollToPosition(0);
