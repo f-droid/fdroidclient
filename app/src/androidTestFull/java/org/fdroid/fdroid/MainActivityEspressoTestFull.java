@@ -55,8 +55,8 @@ import java.util.concurrent.TimeUnit;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityEspressoTest {
-    public static final String TAG = "MainActivityEspressoTest";
+public class MainActivityEspressoTestFull {
+    public static final String TAG = "MainActivityEspressoTestFull";
 
     /**
      * Emulators older than {@code android-25} seem to fail at running Espresso tests.
