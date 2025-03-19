@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
 import androidx.core.content.ContextCompat
@@ -36,6 +37,7 @@ class AddRepoActivity : AppCompatActivity() {
     private val repoManager: RepoManager get() = FDroidApp.getRepoManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             repeatOnLifecycle(STARTED) {
