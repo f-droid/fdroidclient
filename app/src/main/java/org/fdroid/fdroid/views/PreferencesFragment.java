@@ -26,18 +26,24 @@
 
 package org.fdroid.fdroid.views;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Process;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,6 +65,7 @@ import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import org.apache.commons.io.IOUtils;
 import org.fdroid.fdroid.AppUpdateStatusManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Languages;
@@ -73,6 +80,14 @@ import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.FDroidMetricsWorker;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
@@ -133,6 +148,10 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private RepoUpdateManager repoUpdateManager;
     private long nextUpdateCheck = Long.MAX_VALUE;
 
+    private final ActivityResultLauncher<String> createFileLauncher =
+            registerForActivityResult(new ActivityResultContracts.CreateDocument("text/plain"),
+                    this::saveLogcat);
+
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
 
@@ -178,6 +197,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         updateIntervalSeekBar.setSeekBarLiveUpdater(this::getUpdateIntervalSeekbarSummary);
         ipfsGateways = ObjectsCompat.requireNonNull(findPreference("ipfsGateways"));
         updateIpfsGatewaySummary();
+        Preference exportLogPref = ObjectsCompat.requireNonNull(findPreference("debugLog"));
+        exportLogPref.setOnPreferenceClickListener(preference -> exportLogcat());
 
         ListPreference languagePref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_LANGUAGE));
         if (Build.VERSION.SDK_INT >= 24) {
@@ -653,5 +674,35 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         } else if (Preferences.PREF_UPDATE_INTERVAL.equals(key)) {
             RepoUpdateWorker.scheduleOrCancel(requireContext());
         }
+    }
+
+    private boolean exportLogcat() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US);
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String time = sdf.format(new Date());
+        String name = requireContext().getPackageName() + "-" + time + ".txt";
+        createFileLauncher.launch(name);
+        return true;
+    }
+
+    private void saveLogcat(Uri uri) {
+        ContentResolver contentResolver = requireContext().getContentResolver();
+        Utils.runOffUiThread(() -> {
+            String command = "logcat -d --uid=" + Process.myUid() + " *:V";
+            try (OutputStream outputStream = contentResolver.openOutputStream(uri, "wt")) {
+                try (InputStream inputStream = Runtime.getRuntime().exec(command).getInputStream()) {
+                    // first log command, so we see if it is correct, e.g. has our own uid
+                    outputStream.write((command + "\n\n").getBytes(StandardCharsets.UTF_8));
+                    IOUtils.copy(inputStream, outputStream);
+                }
+                return true;
+            } catch (Exception e) {
+                Log.e(TAG, "Error saving logcat ", e);
+                return false;
+            }
+        }, result -> {
+            int res = result ? R.string.export_log_success : R.string.export_log_error;
+            Toast.makeText(requireContext(), res, Toast.LENGTH_LONG).show();
+        });
     }
 }

@@ -249,6 +249,11 @@
                 android:key="privilegedInstaller"
                 android:persistent="false"
                 android:title="@string/system_installer" />
+            <Preference
+                android:dependency="expert"
+                android:key="debugLog"
+                android:summary="@string/pref_export_log_summary"
+                android:title="@string/pref_export_log_title" />
         </PreferenceCategory>
     </PreferenceCategory>
 
