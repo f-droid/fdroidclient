@@ -222,6 +222,10 @@ public class InstallManagerService {
         appUpdateStatusManager.setDownloadError(canonicalUri.toString(), errorMsg);
     }
 
+    public void onDownloadCancelled(Uri canonicalUri) {
+        appUpdateStatusManager.setDownloadCancelled(canonicalUri.toString());
+    }
+
     private PendingIntent getDownloadCancelIntent(Uri canonicalUri) {
         Intent intentObject = new Intent(ACTION_CANCEL);
         intentObject.putExtra(DownloaderService.EXTRA_CANONICAL_URL, canonicalUri.toString());

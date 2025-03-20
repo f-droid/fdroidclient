@@ -472,6 +472,10 @@ public class AppDetailsActivity extends AppCompatActivity
                 }
                 break;
 
+            case DownloadCancelled:
+                adapter.clearProgress();
+                break;
+
             case DownloadInterrupted:
                 if (justReceived) {
                     String msg = getString(R.string.download_error);
