@@ -230,7 +230,11 @@ public class DownloaderService extends JobIntentService {
             installManagerService.onDownloadComplete(canonicalUrl, localFile, app, apk);
         } catch (InterruptedException e) {
             sendBroadcast(canonicalUrl, DownloaderService.ACTION_INTERRUPTED, localFile, repoId, canonicalUrl);
-            installManagerService.onDownloadFailed(canonicalUrl, null);
+            if (downloader.wasCancelled()) { // if it was cancelled by the user, don't show an error
+                installManagerService.onDownloadCancelled(canonicalUrl);
+            } else {
+                installManagerService.onDownloadFailed(canonicalUrl, null);
+            }
         } catch (ConnectException | HttpRetryException | NoRouteToHostException |
                  SocketTimeoutException
                  | SSLHandshakeException | SSLKeyException | SSLPeerUnverifiedException |

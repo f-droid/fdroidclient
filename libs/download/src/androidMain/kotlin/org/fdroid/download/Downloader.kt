@@ -12,7 +12,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.security.MessageDigest
 
-public abstract class Downloader constructor(
+public abstract class Downloader(
     protected val indexFile: IndexFile,
     @JvmField
     protected val outputFile: File,
@@ -194,6 +194,13 @@ public abstract class Downloader constructor(
      */
     public fun cancelDownload() {
         cancelled = true
+    }
+
+    /**
+     * Check if the download was cancelled.
+     */
+    public fun wasCancelled(): Boolean {
+        return cancelled
     }
 
     /**
