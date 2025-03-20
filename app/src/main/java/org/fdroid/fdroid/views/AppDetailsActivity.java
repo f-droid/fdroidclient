@@ -31,6 +31,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -163,7 +164,12 @@ public class AppDetailsActivity extends AppCompatActivity
         model.getVersions().observe(this, this::onVersionsChanged);
     }
 
+    @Nullable
     private String getPackageNameFromIntent(Intent intent) {
+        if (Build.VERSION.SDK_INT >= 24 && Intent.ACTION_SHOW_APP_INFO.equals(intent.getAction())) {
+            String packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME);
+            if (!TextUtils.isEmpty(packageName)) return packageName;
+        }
         if (!intent.hasExtra(EXTRA_APPID)) {
             Log.e(TAG, "No package name found in the intent!");
             return null;
