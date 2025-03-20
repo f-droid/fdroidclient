@@ -199,6 +199,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat
         updateIpfsGatewaySummary();
         Preference exportLogPref = ObjectsCompat.requireNonNull(findPreference("debugLog"));
         exportLogPref.setOnPreferenceClickListener(preference -> exportLogcat());
+        if (Build.VERSION.SDK_INT <= 23) exportLogPref.setVisible(false);
 
         ListPreference languagePref = ObjectsCompat.requireNonNull(findPreference(Preferences.PREF_LANGUAGE));
         if (Build.VERSION.SDK_INT >= 24) {
@@ -688,7 +689,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
     private void saveLogcat(Uri uri) {
         ContentResolver contentResolver = requireContext().getContentResolver();
         Utils.runOffUiThread(() -> {
-            String command = "logcat -d --uid=" + Process.myUid() + " *:V";
+            // support for --pid was introduced in SDK 24
+            String command = "logcat -d --pid=" + Process.myPid() + " *:V";
             try (OutputStream outputStream = contentResolver.openOutputStream(uri, "wt")) {
                 try (InputStream inputStream = Runtime.getRuntime().exec(command).getInputStream()) {
                     // first log command, so we see if it is correct, e.g. has our own uid
