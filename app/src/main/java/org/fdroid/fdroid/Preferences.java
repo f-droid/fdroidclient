@@ -609,7 +609,20 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         HashMap<String, Integer> output = new HashMap<String, Integer>();
         for (String line : mapString.split("\n")) {
             String[] pair = line.split(" ");
-            output.put(pair[0], Integer.valueOf(pair[1]));
+            // values may be missing or unparseable
+            String key = pair[0];
+            Integer value = 0;
+            if (pair.length > 1) {
+                try {
+                    value = Integer.valueOf(pair[1]);
+                } catch (NumberFormatException e) {
+                    // use default value if stored value can't be parsed
+                    Utils.debugLog(TAG, "Serialized map entry value can't be parsed: " + line);
+                }
+            } else {
+                Utils.debugLog(TAG, "Serialized map entry value is missing: " + line);
+            }
+            output.put(key, value);
         }
         return output;
     }
