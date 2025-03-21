@@ -262,7 +262,11 @@
             android:configChanges="layoutDirection|locale"
             android:exported="true"
             android:label="@string/app_details"
-            android:parentActivityName=".views.main.MainActivity"></activity>
+            android:parentActivityName=".views.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SHOW_APP_INFO" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".views.ScreenShotsActivity" />
 
