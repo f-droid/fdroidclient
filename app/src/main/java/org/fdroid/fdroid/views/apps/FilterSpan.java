@@ -18,12 +18,13 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.categories.CategoryController;
 
 /**
- * This draws a category "chip" in the search text view according to the material design specs
+ * This draws a filter "chip" in the search text view according to the material design specs
  * (https://material.google.com/components/chips.html#chips-specs). These contain a circle with an
- * icon representing "category" on the left, and the name of the category on the right. It also has
- * a background with curved corners behind the category text.
+ * icon representing a {@link org.fdroid.fdroid.views.apps.AppListActivity.FilterType} on the left,
+ * and the value of the filter on the right. It also has a background with curved corners behind
+ * the filter text.
  */
-public class CategorySpan extends ReplacementSpan {
+public class FilterSpan extends ReplacementSpan {
 
     private static final int HEIGHT = 32;
     private static final int CORNER_RADIUS = 16;
@@ -37,20 +38,22 @@ public class CategorySpan extends ReplacementSpan {
     private static final float DROP_SHADOW_HEIGHT = 1.5f;
 
     private final Context context;
+    private final AppListActivity.FilterType filterType;
 
-    CategorySpan(Context context) {
+    FilterSpan(Context context, AppListActivity.FilterType filterType) {
         super();
         this.context = context;
+        this.filterType = filterType;
     }
 
     @Nullable
-    private static CharSequence getCategoryName(@Nullable CharSequence text, int start, int end) {
+    private static CharSequence getFilterName(@Nullable CharSequence text, int start, int end) {
         if (text == null) {
             return null;
         }
 
         if (start + 1 >= end - 1) {
-            // This can happen when the spell checker is trying to underline text within our category
+            // This can happen when the spell checker is trying to underline text within our filter
             // name. It sometimes will ask for sub-lengths of this span.
             return null;
         }
@@ -60,8 +63,8 @@ public class CategorySpan extends ReplacementSpan {
 
     @Override
     public int getSize(@NonNull Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
-        CharSequence categoryName = getCategoryName(text, start, end);
-        if (categoryName == null) {
+        CharSequence filterName = getFilterName(text, start, end);
+        if (filterName == null) {
             return 0;
         }
 
@@ -69,7 +72,7 @@ public class CategorySpan extends ReplacementSpan {
 
         int iconBackgroundSize = (int) (ICON_BACKGROUND_SIZE * density);
         int textLeadingPadding = (int) (TEXT_LEADING_PADDING * density);
-        int textWidth = (int) paint.measureText(categoryName.toString());
+        int textWidth = (int) paint.measureText(filterName.toString());
         int textTrailingPadding = (int) (TEXT_TRAILING_PADDING * density);
         int whiteSpacePadding = (int) (WHITE_SPACE_PADDING_AT_END * density);
 
@@ -79,8 +82,8 @@ public class CategorySpan extends ReplacementSpan {
     @Override
     public void draw(@NonNull Canvas canvas, CharSequence text,
                      int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
-        CharSequence categoryName = getCategoryName(text, start, end);
-        if (categoryName == null) {
+        CharSequence filterName = getFilterName(text, start, end);
+        if (filterName == null) {
             return;
         }
 
@@ -91,7 +94,7 @@ public class CategorySpan extends ReplacementSpan {
         int cornerRadius = (int) (CORNER_RADIUS * density);
         int iconSize = (int) (ICON_SIZE * density);
         int iconPadding = (int) (ICON_PADDING * density);
-        int textWidth = (int) paint.measureText(categoryName.toString());
+        int textWidth = (int) paint.measureText(filterName.toString());
         int textLeadingPadding = (int) (TEXT_LEADING_PADDING * density);
         int textTrailingPadding = (int) (TEXT_TRAILING_PADDING * density);
         int textBelowPadding = (int) (TEXT_BELOW_PADDING * density);
@@ -102,9 +105,9 @@ public class CategorySpan extends ReplacementSpan {
         RectF backgroundRect = new RectF(0, 0, iconBackgroundSize + textLeadingPadding
                 + textWidth + textTrailingPadding, height);
 
-        int backgroundColour = CategoryController.getBackgroundColour(context, categoryName.toString());
+        int backgroundColour = CategoryController.getBackgroundColour(context, filterName.toString());
 
-        // The shadow below the entire category chip.
+        // The shadow below the entire filter chip.
         canvas.save();
         canvas.translate(0, DROP_SHADOW_HEIGHT * density);
         Paint shadowPaint = new Paint();
@@ -119,7 +122,7 @@ public class CategorySpan extends ReplacementSpan {
         backgroundPaint.setAntiAlias(true);
         canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, backgroundPaint);
 
-        // The background behind the category icon.
+        // The background behind the filter icon.
         Paint iconBackgroundPaint = new Paint();
         int backgroundColor =
                 MaterialColors.getColor(context, com.google.android.material.R.attr.colorSurfaceContainerHigh, 0);
@@ -128,8 +131,13 @@ public class CategorySpan extends ReplacementSpan {
         RectF iconBackgroundRect = new RectF(0, 0, iconBackgroundSize, height);
         canvas.drawRoundRect(iconBackgroundRect, cornerRadius, cornerRadius, iconBackgroundPaint);
 
-        // Category icon on top of the circular background which was just drawn.
-        Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_categories);
+        // icon on top of the circular background which was just drawn.
+        int drawableRes = switch (filterType) {
+            case AUTHOR -> R.drawable.ic_author;
+            case CATEGORY -> R.drawable.ic_categories;
+            case REPO -> R.drawable.ic_repo;
+        };
+        Drawable icon = ContextCompat.getDrawable(context, drawableRes);
         int iconColor =
                 MaterialColors.getColor(context, com.google.android.material.R.attr.colorOnSurface, 0);
         icon.setTint(iconColor);
@@ -142,10 +150,10 @@ public class CategorySpan extends ReplacementSpan {
                 Color.green(backgroundColour) * 0.587 +
                 Color.blue(backgroundColour) * 0.114;
 
-        // The category name drawn to the right of the category name.
+        // The filter name drawn to the right of the filter icon.
         Paint textPaint = new Paint(paint);
         textPaint.setColor(grey < 186 ? Color.WHITE : Color.BLACK);
-        canvas.drawText(categoryName.toString(), iconBackgroundSize + textLeadingPadding, bottom - textBelowPadding,
+        canvas.drawText(filterName.toString(), iconBackgroundSize + textLeadingPadding, bottom - textBelowPadding,
                 textPaint);
 
         canvas.restore();

@@ -65,7 +65,7 @@ import java.util.List;
 /**
  * Provides scrollable listing of apps for search and category views.
  */
-public class AppListActivity extends AppCompatActivity implements CategoryTextWatcher.SearchTermsChangedListener {
+public class AppListActivity extends AppCompatActivity implements FilterTextWatcher.SearchTermsChangedListener {
 
     public static final String TAG = "AppListActivity";
 
@@ -98,11 +98,18 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private FDroidDatabase db;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
     private LiveData<List<AppListItem>> itemsLiveData;
+    private FilterTextWatcher searchInputFilterWatcher;
 
     private interface SortClause {
         // these get used as settings keys, so changing them requires a migration
         String WORDS = "name";
         String LAST_UPDATED = "lastUpdated";
+    }
+
+    enum FilterType {
+        AUTHOR,
+        CATEGORY,
+        REPO
     }
 
     @Override
@@ -126,7 +133,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
         searchInput = findViewById(R.id.search);
         searchInput.setText(searchTerms);
-        searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
+        searchInputFilterWatcher = new FilterTextWatcher(this, searchInput, this);
+        searchInput.addTextChangedListener(searchInputFilterWatcher);
         searchInput.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
@@ -219,13 +227,16 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             Repository repo = FDroidApp.getRepoManager(this).getRepository(repoId);
             if (repo != null) {
                 LocaleListCompat locales = LocaleListCompat.getDefault();
+                searchInputFilterWatcher.setFilterType(FilterType.REPO);
                 searchInput.setText(getSearchText(repo.getName(locales), searchTerms));
             }
         } else if (authorName != null) {
+            searchInputFilterWatcher.setFilterType(FilterType.AUTHOR);
             searchInput.setText(getSearchText(authorName, searchTerms));
         } else {
             String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
                     intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
+            searchInputFilterWatcher.setFilterType(FilterType.CATEGORY);
             searchInput.setText(getSearchText(categoryName, searchTerms));
         }
         searchInput.setSelection(searchInput.getText().length());
@@ -313,6 +324,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             this.categoryId = null;
             this.repoId = -1;
             this.authorName = null;
+            searchInputFilterWatcher.setFilterType(FilterType.CATEGORY); // defaults to category
         }
         this.searchTerms = searchTerms.isEmpty() ? null : searchTerms;
         appView.scrollToPosition(0);
