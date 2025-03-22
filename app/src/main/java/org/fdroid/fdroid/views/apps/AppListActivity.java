@@ -271,7 +271,7 @@ public class AppListActivity extends AppCompatActivity implements FilterTextWatc
     private CharSequence getSearchText(@Nullable String category, @Nullable String searchTerms) {
         StringBuilder string = new StringBuilder();
         if (category != null) {
-            string.append(category).append(":");
+            string.append(category).append(FilterTextWatcher.FILTER_SEPARATOR);
         }
 
         if (searchTerms != null) {

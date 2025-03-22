@@ -28,6 +28,12 @@ public class FilterTextWatcher implements TextWatcher {
         void onSearchTermsChanged(@Nullable String category, @NonNull String searchTerms);
     }
 
+    /**
+     * The character that separates the filter from the search terms.
+     * This is the non-printable {@code NUL} character which is unlikely to be entered by the user.
+     */
+    public static final char FILTER_SEPARATOR = 0;
+
     private final Context context;
     private final EditText widget;
     private final SearchTermsChangedListener listener;
@@ -68,8 +74,9 @@ public class FilterTextWatcher implements TextWatcher {
         }
 
         String string = s.toString();
-        boolean removingColon = removingOrReplacing && string.indexOf(':', start) < (start + count);
-        boolean removingFirstColon = removingColon && string.indexOf(':') >= start;
+        boolean removingColon = removingOrReplacing
+                && string.indexOf(FILTER_SEPARATOR, start) < (start + count);
+        boolean removingFirstColon = removingColon && string.indexOf(FILTER_SEPARATOR) >= start;
         if (removingFirstColon) {
             removeTo = start + count - 1;
         }
@@ -83,9 +90,9 @@ public class FilterTextWatcher implements TextWatcher {
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         boolean addingOrReplacing = count > 0;
         boolean addingColon = addingOrReplacing
-                && s.subSequence(start, start + count).toString().indexOf(':') >= 0;
+                && s.subSequence(start, start + count).toString().indexOf(FILTER_SEPARATOR) >= 0;
         boolean addingFirstColon = addingColon
-                && s.subSequence(0, start).toString().indexOf(':') == -1;
+                && s.subSequence(0, start).toString().indexOf(FILTER_SEPARATOR) == -1;
         if (addingFirstColon) {
             requiresSpanRecalculation = true;
         }
@@ -106,7 +113,7 @@ public class FilterTextWatcher implements TextWatcher {
             requiresSpanRecalculation = false;
         }
 
-        int colonIndex = searchText.toString().indexOf(':');
+        int colonIndex = searchText.toString().indexOf(FILTER_SEPARATOR);
         String category = colonIndex == -1 ? null : searchText.subSequence(0, colonIndex).toString();
         String searchTerms = searchText.subSequence(colonIndex == -1 ? 0 : colonIndex + 1,
                 searchText.length()).toString();
@@ -139,7 +146,7 @@ public class FilterTextWatcher implements TextWatcher {
         removeSpans(textToSpannify, FilterSpan.class);
         removeSpans(textToSpannify, TtsSpan.class);
 
-        int colonIndex = textToSpannify.toString().indexOf(':');
+        int colonIndex = textToSpannify.toString().indexOf(FILTER_SEPARATOR);
         if (colonIndex > 0) {
             FilterSpan span = new FilterSpan(context, filterType);
             textToSpannify.setSpan(span, 0, colonIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
