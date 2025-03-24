@@ -1,7 +1,6 @@
 -dontoptimize
 -dontwarn
 -dontobfuscate
--dontshrink
 
 -dontwarn android.test.**
 -dontwarn android.support.test.**
