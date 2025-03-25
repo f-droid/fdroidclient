@@ -597,10 +597,17 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private String intMapToString(HashMap<String, Integer> intMap) {
         String output = "";
         for (String key : intMap.keySet()) {
-            if (!output.isEmpty()) {
-                output = output + "\n";
+            Integer value = intMap.get(key);
+            if (key == null || key.isEmpty()) {
+                Utils.debugLog(TAG, "Don't serialize record with null key");
+            } else if (value == null) {
+                Utils.debugLog(TAG, "Don't serialize null value for: " + key);
+            } else {
+                if (!output.isEmpty()) {
+                    output = output + "\n";
+                }
+                output = output + key + " " + value;
             }
-            output = output + key + " " + intMap.get(key);
         }
         return output;
     }
@@ -612,17 +619,21 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
             // values may be missing or unparseable
             String key = pair[0];
             Integer value = 0;
-            if (pair.length > 1) {
-                try {
-                    value = Integer.valueOf(pair[1]);
-                } catch (NumberFormatException e) {
-                    // use default value if stored value can't be parsed
-                    Utils.debugLog(TAG, "Serialized map entry value can't be parsed: " + line);
+            if (key != null && !key.isEmpty()) {
+                if (pair.length > 1) {
+                    try {
+                        value = Integer.valueOf(pair[1]);
+                    } catch (NumberFormatException e) {
+                        // use default value if stored value can't be parsed
+                        Utils.debugLog(TAG, "Serialized map entry value can't be parsed: " + line);
+                    }
+                } else {
+                    Utils.debugLog(TAG, "Serialized map entry value is missing: " + line);
                 }
+                output.put(key, value);
             } else {
-                Utils.debugLog(TAG, "Serialized map entry value is missing: " + line);
+                Utils.debugLog(TAG, "Serialized map entry key is missing: " + line);
             }
-            output.put(key, value);
         }
         return output;
     }
