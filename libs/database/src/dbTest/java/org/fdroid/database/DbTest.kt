@@ -123,7 +123,13 @@ internal abstract class DbTest {
             assertEquals(packageV2.versions.size, versions.size, "number of versions")
             packageV2.versions.forEach { (versionId, packageVersionV2) ->
                 val version = versions[versionId] ?: fail()
-                assertEquals(packageVersionV2, version)
+                // filter out duplicate entries from index data
+                val v = packageVersionV2.copy(
+                    manifest = packageVersionV2.manifest.copy(
+                        usesPermission = packageVersionV2.manifest.usesPermission.toSet().toList()
+                    )
+                )
+                assertEquals(v, version)
             }
         }
     }

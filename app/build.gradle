@@ -238,6 +238,7 @@ dependencies {
     androidTestImplementation libs.androidx.test.uiautomator
     androidTestImplementation libs.androidx.work.testing
     androidTestImplementation libs.kotlin.test
+    androidTestImplementation libs.kotlin.reflect
     androidTestImplementation libs.turbine
 }
 
