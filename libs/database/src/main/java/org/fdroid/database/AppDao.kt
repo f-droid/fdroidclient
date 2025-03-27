@@ -135,7 +135,7 @@ public interface AppDao {
     /**
      * Returns `true` if the given [author] has at least two apps in the database.
      */
-    public fun hasAuthorMoreThanOneApp(author: String): Boolean
+    public fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
@@ -661,7 +661,7 @@ internal interface AppDaoInt : AppDao {
             FROM AppMetadata
             WHERE authorName = :author
             LIMIT 2)""")
-    override fun hasAuthorMoreThanOneApp(author: String): Boolean
+    override fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
     override fun getInstalledAppListItems(
         packageManager: PackageManager,

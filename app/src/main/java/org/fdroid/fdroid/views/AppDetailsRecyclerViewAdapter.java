@@ -65,7 +65,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.SessionInstallManager;
 import org.fdroid.fdroid.privileged.views.AppDiff;
@@ -83,12 +82,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 @SuppressWarnings("LineLength")
 public class AppDetailsRecyclerViewAdapter
@@ -147,8 +140,6 @@ public class AppDetailsRecyclerViewAdapter
     private Apk suggestedApk;
     private final HashMap<String, Boolean> versionsExpandTracker = new HashMap<>();
 
-    private final CompositeDisposable disposables = new CompositeDisposable();
-
     public AppDetailsRecyclerViewAdapter(Context context, @Nullable App app, AppDetailsRecyclerViewAdapterCallbacks callbacks) {
         this.context = context;
         this.callbacks = callbacks;
@@ -163,9 +154,7 @@ public class AppDetailsRecyclerViewAdapter
 
         items.clear();
         versions.clear();
-        disposables.clear();
         suggestedApk = null;
-        showAuthorApps = false;
 
         // Get versions
         compatibleVersionsDifferentSigner.clear();
@@ -211,26 +200,10 @@ public class AppDetailsRecyclerViewAdapter
                 setShowVersions(true);
             }
         }
-
-        // Add the "More apps by this author" section if the author has more than one app
-        Disposable disposable = Single.fromCallable(() ->
-                        !TextUtils.isEmpty(app.authorName)
-                                && DBHelper.getDb(context).getAppDao()
-                                .hasAuthorMoreThanOneApp(app.authorName))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(show -> {
-                    showAuthorApps = show;
-                    if (showAuthorApps) {
-                        notifyItemChanged(0); // onclick for author in header
-                        addItem(VIEWTYPE_MORE_APPS);
-                        notifyItemInserted(items.size() - 1);
-                    }
-                }, throwable -> {
-                    // TODO: report error
-                    Log.e("RecyclerViewAdapter", "Error checking author apps", throwable);
-                });
-        disposables.add(disposable);
+        if (showAuthorApps) {
+            // item might also be added later when a repo update adds more apps by this author
+            addItem(VIEWTYPE_MORE_APPS);
+        }
 
         //noinspection NotifyDataSetChanged // too hard to know what exactly has changed
         notifyDataSetChanged();
@@ -268,6 +241,24 @@ public class AppDetailsRecyclerViewAdapter
             if (recyclerView != null && scrollTo) {
                 recyclerView.smoothScrollToPosition(startIndex - 1);
             }
+        }
+    }
+
+    void setHasAuthorMoreApps(boolean showAuthorApps) {
+        if (this.showAuthorApps == showAuthorApps) return;
+        this.showAuthorApps = showAuthorApps;
+
+        notifyItemChanged(0); // onclick for author in header
+        if (showAuthorApps) {
+            // item might be added when a repo update adds more apps by this author
+            addItem(VIEWTYPE_MORE_APPS);
+            notifyItemInserted(items.size() - 1);
+        } else {
+            // should usually be the last item...
+            int index = items.indexOf(VIEWTYPE_MORE_APPS);
+            if (index == -1) return;
+            items.remove(index);
+            notifyItemRemoved(index);
         }
     }
 
@@ -818,7 +809,6 @@ public class AppDetailsRecyclerViewAdapter
     @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
         this.recyclerView = null;
-        disposables.clear();
         super.onDetachedFromRecyclerView(recyclerView);
     }
 
