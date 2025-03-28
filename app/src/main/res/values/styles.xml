@@ -58,6 +58,24 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSecondaryContainer">?attr/colorPrimaryContainer</item>
+        <item name="colorOnSecondaryContainer">?attr/colorOnPrimaryContainer</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton" parent="">
+        <item name="colorContainer">?attr/colorSecondaryContainer</item>
+        <item name="colorOnContainer">?attr/colorOnSecondaryContainer</item>
+    </style>
+
     <!-- use this style for a text view that is a caption to a paragraph of text -->
     <style name="CaptionText">
         <item name="android:layout_width">match_parent</item>
