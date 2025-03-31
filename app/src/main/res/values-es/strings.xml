@@ -126,7 +126,7 @@
     <string name="category_Multimedia">Multimedia</string>
     <string name="category_Navigation">Navegación</string>
     <string name="category_Phone_SMS">Teléfono y SMS</string>
-    <string name="category_Reading">Leyendo</string>
+    <string name="category_Reading">System default</string>
     <string name="category_Science_Education">Ciencia y educación</string>
     <string name="category_Security">Seguridad</string>
     <string name="category_System">Sistema</string>
@@ -148,7 +148,7 @@
     <string name="banner_updating_repositories">Actualizando repositorios</string>
     <string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) desde %1$s</string>
     <string name="pref_language">Idioma</string>
-    <string name="pref_language_default">Predeterminado del sistema</string>
+    <string name="pref_language_default">System default</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Punto de acceso</string>
     <string name="category_Connectivity">Conectividad</string>
@@ -156,7 +156,7 @@
     <string name="category_Money">Dinero</string>
     <string name="category_Sports_Health">Deportes y salud</string>
     <string name="category_Theming">Personalización del tema</string>
-    <string name="category_Time">Hora</string>
+    <string name="category_Time">System default</string>
     <string name="category_Writing">Escribiendo</string>
     <string name="empty_installed_app_list">No hay aplicaciones instaladas.
 \n
