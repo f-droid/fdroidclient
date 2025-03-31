@@ -197,7 +197,7 @@
     <string name="login_title">Autenticazione richiesta</string>
     <string name="login_name">Nome utente</string>
     <string name="login_password">Password</string>
-    <string name="repo_edit_credentials">Cambia la password</string>
+    <string name="repo_edit_credentials">Cambia la Password</string>
     <string name="repo_error_empty_username">Nome utente vuoto, credenziali non cambiate</string>
     <string name="about_source">Codice sorgente</string>
     <string name="about_license">Licenza</string>
@@ -214,7 +214,7 @@
     <string name="repo_searching_address">Ricerca del repository del pacchetto su
 \n%1$s</string>
     <string name="pref_language">Lingua</string>
-    <string name="pref_language_default">Predefinita di sistema</string>
+    <string name="pref_language_default">Predefinita di Sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Connettività</string>
@@ -316,14 +316,14 @@
     <string name="app_list__name__downloading_in_progress">Scaricamento di %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installato</string>
     <string name="updates__tts__download_app">Scarica</string>
-    <string name="app_recommended_version_installed">Versione %1$s (Consigliata)</string>
+    <string name="app_recommended_version_installed">Versione %1$s (consigliata)</string>
     <string name="app_new">Nuovo</string>
     <string name="app__tts__cancel_download">Annulla scaricamento</string>
     <string name="app__install_downloaded_update">Aggiorna</string>
     <string name="app_list_download_ready">Scaricato, pronto per l\'installazione</string>
     <string name="installed_apps__activity_title">App installate</string>
     <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per versione %1$s</string>
     <string name="update_all">Aggiorna tutte</string>
     <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>
@@ -519,7 +519,7 @@
     <string name="fdroid_metrics_report">%s Rapporti metriche</string>
     <string name="install_history_and_metrics">Cronologia installazioni e metriche</string>
     <string name="send_fdroid_metrics_json">%s Rapporti metriche come file JSON</string>
-    <string name="send_fdroid_metrics_report">Invia %s rapporti metriche</string>
+    <string name="send_fdroid_metrics_report">Invia %s Rapporti Metriche</string>
     <string name="use_pure_black_dark_theme">Utilizzare lo sfondo nero puro nel tema scuro</string>
     <string name="use_pure_black_dark_theme_summary">Raccomandato solo per schermi OLED.</string>
     <string name="theme_follow_system">Segui il sistema</string>
