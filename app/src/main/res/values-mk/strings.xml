@@ -189,8 +189,8 @@
     <string name="repo_add_add">Додај</string>
     <string name="repo_add_title">Додај ново складиште</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Преземи ажурирање за %1$d апликација.</item>
-        <item quantity="other">Преземи ажурирање за %1$d апликации.</item>
+        <item quantity="one">Преземи ажурирање за %1$d апликација:</item>
+        <item quantity="other">Преземи ажурирања за %1$d апликации:</item>
     </plurals>
     <string name="updates__hide_updateable_apps">Сокриј апликации</string>
     <string name="updates__show_updateable_apps">Прикажи апликации</string>
