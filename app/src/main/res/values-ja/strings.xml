@@ -14,7 +14,7 @@
     <string name="system_installer_on">特権拡張機能を使用してパッケージをインストール、更新、および削除</string>
     <string name="local_repo_name">ローカルリポジトリの名称</string>
     <string name="local_repo_name_summary">公開するローカルリポジトリのタイトル: %s</string>
-    <string name="local_repo_https_on">ローカルリポジトリに暗号化されたHTTPS://接続を使用</string>
+    <string name="local_repo_https_on">ローカルリポジトリに暗号化されたHTTPS:// 接続を使用</string>
     <string name="app_details">アプリの詳細</string>
     <string name="no_such_app">該当するアプリが見つかりませんでした。</string>
     <string name="about_title_full">F-Droidについて</string>
@@ -115,7 +115,7 @@
     <string name="repo_added">パッケージリポジトリ%1$sを保存しました。</string>
     <string name="repo_searching_address">リポジトリを検索中
 \n%1$s</string>
-    <string name="not_on_same_wifi">あなたの端末は追加したローカルリポジトリと同じWi-Fiに接続されていません。このネットワークに接続してみてください: %s</string>
+    <string name="not_on_same_wifi">あなたの端末は追加したローカルリポジトリと同一のWi-Fiに接続されていません！こちらのネットワークへ接続してみてください: %s</string>
     <string name="requires_features">必須: %1$s</string>
     <string name="category_Development">開発</string>
     <string name="category_Games">ゲーム</string>
@@ -163,7 +163,7 @@
     <string name="swap_scan_or_type_url">どちらかがコードを読み取るか、URLをブラウザーに入力してください。</string>
     <string name="swap_choose_apps">アプリを選択</string>
     <string name="swap_scan_qr">QRコード</string>
-    <string name="swap_people_nearby">近くにいる人</string>
+    <string name="swap_people_nearby">近くの人</string>
     <string name="swap_scanning_for_peers">近くの人を探しています</string>
     <string name="swap_nearby">近くの人と交換</string>
     <string name="swap_intro">近くにいる人と接続してアプリを交換します。</string>
@@ -262,12 +262,12 @@
     <string name="update_auto_install_summary">バックグラウンドでアプリの更新をダウンロードしてインストール</string>
     <string name="keep_install_history">インストールの履歴を保存</string>
     <string name="keep_install_history_summary">すべてのインストールとアンインストールのログを非公開の保管場所に保存</string>
-    <string name="warning_no_internet">更新できません。インターネットに接続していますか？</string>
+    <string name="warning_no_internet">更新できませんでした、インターネットへ接続されていますか？</string>
     <string name="versions">バージョン</string>
     <string name="app_details_donate_prompt_unknown_author">%1$sの開発者にコーヒーを奢りましょう！</string>
     <string name="app_details_donate_prompt">%1$sは%2$sによって作成されました。コーヒーを奢りましょう！</string>
     <string name="repositories_summary">アプリのソースを追加</string>
-    <string name="notification_title_single_update_available">更新を入手可能です</string>
+    <string name="notification_title_single_update_available">更新を入手可能</string>
     <string name="notification_title_single_ready_to_install">インストールの準備完了</string>
     <string name="notification_title_single_ready_to_install_update">更新をインストールする準備が完了</string>
     <string name="notification_title_single_install_error">インストールできませんでした</string>
@@ -295,7 +295,7 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">%d個のアプリをすべて表示</item>
     </plurals>
-    <string name="app_recommended_version_installed">バージョン%1$s（推奨）</string>
+    <string name="app_recommended_version_installed">バージョン%1$s(推奨)</string>
     <string name="app_new">新規</string>
     <string name="installed_apps__activity_title">インストール済みのアプリ</string>
     <string name="installed_app__updates_ignored">更新が無視されています</string>
@@ -409,8 +409,8 @@
     <string name="show_anti_feature_apps_on">既知の好ましくない機能を持つアプリを表示する</string>
     <string name="force_touch_apps">タッチスクリーンの使用が必要なアプリ</string>
     <string name="force_touch_apps_on">ハードウェアでサポートされていない場合でも、タッチスクリーンの使用を必要とするアプリを表示</string>
-    <string name="repo_official_mirrors">公式ミラー</string>
-    <string name="repo_user_mirrors">ユーザーによるミラー</string>
+    <string name="repo_official_mirrors">公式のミラー</string>
+    <string name="repo_user_mirrors">ユーザーのミラー</string>
     <string name="use_bluetooth">Bluetoothを使用</string>
     <string name="swap_toast_invalid_url">交換の URL が無効: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi ホットスポットが有効です</string>
@@ -426,7 +426,7 @@
     <string name="prompt_to_send_crash_reports_summary">クラッシュに関するデータを収集して開発者に送信</string>
     <string name="hide_all_notifications">すべての通知を非表示</string>
     <string name="hide_all_notifications_summary">ステータスバーと通知ドロワーにアクションを表示しないよう設定。</string>
-    <string name="send_install_history">インストールの履歴を送信</string>
+    <string name="send_install_history">インストール履歴を送信</string>
     <string name="send_history_csv">%s のインストール履歴を CSV ファイルとして</string>
     <string name="install_history">インストール履歴</string>
     <string name="install_history_summary">すべてのインストールとアンインストールのプライベートログを表示</string>
@@ -434,7 +434,7 @@
     <string name="send_version_and_uuid_summary">ダウンロード時に、このアプリのバージョン、ランダムな一意の ID を含めます。アプリを再起動すると設定が有効になります。</string>
     <string name="send_installed_apps">インストールされたアプリを共有</string>
     <string name="send_installed_apps_csv">F-Droid によってインストールされたアプリを CSV ファイルとして</string>
-    <string name="updates_disabled_by_settings">データ/WiFi の設定によって、すべての更新が無効になっています</string>
+    <string name="updates_disabled_by_settings">データ/WiFi の設定により、すべての更新が無効とされています</string>
     <string name="menu_open">開く</string>
     <string name="antinosourcesince">ソースコードは入手できなくなり、更新も不可能になります</string>
     <string name="share_repository">リポジトリを共有</string>
@@ -450,7 +450,7 @@
     <string name="not_visible_nearby">Nearbyが有効ではありません</string>
     <string name="not_visible_nearby_description">近くのデバイスと交換する前に、デバイスを検知可能にしてください。</string>
     <string name="swap_toast_using_path">%1$sを使用</string>
-    <string name="swap_toast_not_removable_storage">選択したものは、どのリムーバブルストレージデバイスとも一致しませんでした。もう一度やり直してください!</string>
+    <string name="swap_toast_not_removable_storage">選択したものは、どの取り外し可能ストレージデバイスとも一致しませんでした。もう一度やり直してください!</string>
     <string name="swap_toast_find_removeable_storage">お使いの取り外し可能SDカードまたはUSBを選択してください</string>
     <string name="menu_translation">翻訳</string>
     <string name="undo">元に戻す</string>
@@ -488,12 +488,12 @@
     <string name="banner_no_data_or_wifi">データ接続または無線LANが無効です</string>
     <string name="menu_show_install_history">インストールの履歴を表示</string>
     <string name="menu_show_fdroid_metrics_report">メトリクス報告を表示</string>
-    <string name="toast_metrics_in_install_history">%sメトリクス報告はインストール履歴のビューアで閲覧できます</string>
+    <string name="toast_metrics_in_install_history">%s 解析レポートはインストール履歴ビューアで閲覧できます</string>
     <string name="send_to_fdroid_metrics_summary">匿名化されたデータを毎週F-Droidメトリクスに送信（インストールの履歴の保存が必要）</string>
-    <string name="fdroid_metrics_report">%sメトリクス報告</string>
+    <string name="fdroid_metrics_report">%s 解析レポート</string>
     <string name="install_history_and_metrics">インストールの履歴とメトリクス</string>
-    <string name="send_fdroid_metrics_json">%sメトリクス報告をJSONファイルとして</string>
-    <string name="send_fdroid_metrics_report">%sメトリクス報告を送信</string>
+    <string name="send_fdroid_metrics_json">%s JSONファイルで解析レポートを送信</string>
+    <string name="send_fdroid_metrics_report">%s 解析レポートを送信</string>
     <string name="banner_no_internet">インターネット接続がありません</string>
     <string name="swap_wifi_vpn_conflict">アクティブなVPNと衝突しています!</string>
     <string name="has_disallow_install_unknown_sources">このユーザーに、新規リポジトリを含む未知のソースを追加することはできません</string>
@@ -536,7 +536,7 @@
     <string name="app_details_repositories">リポジトリ</string>
     <string name="app_details_repository_preferred">（優先）</string>
     <string name="app_details_repository_expand">リポジトリの一覧を開く</string>
-    <string name="repositories_last_update">最終更新日：%s</string>
+    <string name="repositories_last_update">最終更新日: %s</string>
     <string name="repo_num_apps_button">アプリを表示</string>
     <string name="repo_archive_toggle">リポジトリのアーカイブ</string>
     <string name="repo_list_info_title">リポジトリの一覧</string>
@@ -555,15 +555,15 @@
 \nアプリが2つ以上のリポジトリにある場合、一覧でより上位にあるリポジトリが自動的に優先されます。長押ししてドラッグすると、リポジトリを並び替えることができます。</string>
     <string name="copied_to_clipboard">クリップボードにコピーしました</string>
     <string name="copied_url_to_clipboard">URLをクリップボードにコピーしました</string>
-    <string name="app_details_repository_button_prefer">選択</string>
+    <string name="app_details_repository_button_prefer">リポジトリを選択</string>
     <string name="repo_share_not_found">共有されたテキストではリポジトリのアドレスを発見できませんでした。</string>
     <string name="repo_disable_warning_button">無効にする</string>
-    <string name="turn_on_wifi">Wifiを有効にする</string>
+    <string name="turn_on_wifi">Wi-Fiを有効にする</string>
     <string name="repo_invalid">不正なリポジトリです。
 \n
 \n管理者に問題を報告してください。</string>
     <string name="ipfsgw_add_add">追加</string>
-    <string name="ipfsgw_caption_official_gateways">公式IPFSゲートウェイ</string>
+    <string name="ipfsgw_caption_official_gateways">公式のIPFSゲートウェイ</string>
     <string name="ipfsgw_caption_custom_gateways">任意のIPFSゲートウェイ</string>
     <string name="targetsdk_or_later">対象 %s</string>
     <plurals name="ipfsgw_summary">
@@ -595,4 +595,27 @@
     <string name="preferForeign">外部ミラーを優先</string>
     <string name="preferForeignSummary">例えば外部保護が強固である場合、まずはあなたの国外にあるミラーを試してみてください。</string>
     <string name="apk_permissions_mismatch">アプリの想定外の権限: %s</string>
+    <string name="no_handler_app_generic">これを取り扱えるアプリが導入されていないようです。</string>
+    <string name="repo_archive_unknown">このリポジトリにアーカイブが存在しないようです。</string>
+    <string name="repo_archive_check">アーカイブの確認</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="other">%d アプリ</item>
+    </plurals>
+    <string name="repo_last_update_index">最後のリポジトリ更新: %s</string>
+    <string name="repo_last_update_check">リポジトリ更新の最終確認: %s</string>
+    <string name="repo_confirm_delete_mirror_title">ミラーを削除?</string>
+    <string name="share_mirror">ミラーを共有</string>
+    <string name="show_repository_qr">リポジトリのQRコードを表示</string>
+    <string name="repo_basic_auth_title">ベーシック認証</string>
+    <string name="repo_basic_auth_username">ユーザー名: %s</string>
+    <string name="repo_basic_auth_edit">編集</string>
+    <string name="expand">展開</string>
+    <string name="repo_confirm_delete_mirror_body">このリポジトリから他のミラーを利用してアプリのインストールを継続できます。</string>
+    <string name="repo_basic_auth_password">パスワード: ***</string>
+    <string name="repo_details_info_text">リポジトリはアプリの供給源です。\n\nミラーは、アプリのダウンロード負荷を複数のサーバーへ分散するために使われます。貴方の近隣のミラーの方が速いかもしれません。\n\n公式ミラーはリポジトリの所有者により定義されます。削除は出来ず、無効化のみ可能です。通常のリポジトリと同じように、追加でカスタムミラーが定義できます。</string>
+    <string name="collapse">収納</string>
+    <string name="export_log_success">Logcat は問題なく保存されました</string>
+    <string name="export_log_error">Logcatの保存に問題が起きました</string>
+    <string name="pref_export_log_title">デバックログ</string>
+    <string name="pref_export_log_summary">デバッグで有用なlogcat出力ファイルを作成します。機微な情報が含まれている可能性がありますので、ご注意ください！</string>
 </resources>
