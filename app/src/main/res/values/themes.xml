@@ -45,7 +45,8 @@
         <item name="backButtonDrawable">@drawable/abc_ic_ab_back_material</item>
         <item name="clearButtonDrawable">@drawable/ic_close</item>
 
-
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
         <item name="mainTabSwapSplashTint">?attr/colorSurfaceDim</item>
         <item name="warning">?attr/colorTertiaryContainer</item>
         <item name="categoryName">#4a4a4a</item>
