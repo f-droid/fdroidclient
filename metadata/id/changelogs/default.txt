@@ -1,11 +1,8 @@
-* Pembaru repo yang ditulis ulang untuk membuat pembaruan latar belakang lebih andal
-* Pisahkan nama dan ringkasan dalam daftar aplikasi agar lebih mudah dibaca
-* Tampilkan peringatan ketika aplikasi tidak dapat diperbarui dari repo pilihan
-* Aplikasi yang menargetkan SDK 24 tidak kompatibel dengan perangkat Android 15
-* Tangani cermin di pratinjau "Tambahkan repo" dengan lebih baik (Terima kasih Thore!)
-* Aktifkan pembaruan aplikasi tanpa pengawasan pada perangkat Xiaomi yang tidak menjalankan MIUI (Terima kasih Irate!)
-* Percayai sertifikat root yang ditambahkan pengguna (Terima kasih B.!)
-* Perbaiki pencarian tidak peka huruf besar-kecil yang mengandung diakritik (Terima kasih Tobias!)
-* Perbarui deskripsi anti-fitur (Terima kasih Licaon!)
-* Tambahkan anti-fitur jaring tertambat (Terima kasih linsui!)
-* Abaikan spasi saat menambahkan repo cermin (Terima kasih Tobias!)
+* dukungan eksperimental untuk membatalkan pengarsipan aplikasi di Android 15
+* secara otomatis menambahkan aplikasi yang baru dipasang ke layar beranda untuk sebagian besar peluncur (Terima kasih Dhina!)
+* tindakan tautan berbagi dan berbagi file terpisah dalam detail aplikasi
+* tampilkan toast saat APK memiliki izin lebih dari yang diharapkan
+* bersihkan cache internal lebih sering untuk mengosongkan ruang (Terima kasih DerGenaue!)
+* susun ulang lencana donasi agar sesuai dengan situs web (Terima kasih Leo!)
+* tambahkan sakelar pengaturan untuk lebih memilih mirror asing
+* banyak perbaikan kutu kecil

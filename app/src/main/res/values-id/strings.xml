@@ -596,4 +596,5 @@
     <string name="apk_permissions_mismatch">Aplikasi memiliki perizinan tidak terduga: %s</string>
     <string name="preferForeign">Utamakan Cermin Asing</string>
     <string name="preferForeignSummary">Coba cermin yang terletak di luar negara Anda terlebih dahulu, mis. jika perlindungan asing lebih kuat.</string>
+    <string name="no_handler_app_generic">Anda tidak memiliki aplikasi yang dapat menangani ini.</string>
 </resources>
