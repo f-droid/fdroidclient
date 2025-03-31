@@ -645,4 +645,5 @@
     <string name="repo_basic_auth_edit">Editar</string>
     <string name="expand">Expandir</string>
     <string name="collapse">Contraer</string>
+    <string name="pref_export_log_title">Registro de depuración</string>
 </resources>
