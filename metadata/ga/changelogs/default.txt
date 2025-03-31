@@ -1,8 +1,8 @@
-* Úsáid API "gentle update" chun apps a chosc ó mharú agus iad in úsáid  
-* Tacaíocht turgnamhach d’aips a dhí-stóráil ar Android 15
-* Scar na gníomhartha "roinn nasc" agus "roinn comhad"
-* Taispeáin fógra nuair a bhíonn níos mó ceadanna ag APK ná mar a bhíothas ag súil  
-* Glan taisce inmheánach níos minice (Go raibh maith agat DerGenaue!)
-* Athordaigh suaitheantais síntiús (Go raibh maith agat Leo!)
-* Cuir lasc le haghaidh scátháin eachtrannacha 
-* Socraíodh fabhtanna beaga
+* tacaíocht thurgnamhach le haghaidh aipeanna gan chartlannú ar Android 15
+* cuir aipeanna nua-shuiteáilte go huathoibríoch ar an scáileán baile d’fhormhór na lainseálaithe (Go raibh maith agat Dhina!)
+* nasc a roinnt ar leithligh agus gníomhartha comhaid a roinnt i sonraí na haipe
+* taispeáin tósta nuair a bhíonn níos mó ceadanna ag APK ná mar a bhíothas ag súil leis
+* taisce inmheánach a ghlanadh níos minice chun spás a shaoradh (Go raibh maith agat DerGenaue!)
+* suaitheantais deonaithe a athordú chun an suíomh Gréasáin a mheaitseáil (Go raibh maith agat Leo!)
+* cuir leis na socruithe scoránaigh chun scátháin choigríche a roghnú
+* go leor ceartúcháin ar fhabhtanna beaga
