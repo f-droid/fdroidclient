@@ -94,7 +94,7 @@
     <string name="local_repo_name">Nomo de via loka deponejo</string>
     <string name="local_repo_name_summary">La anoncata nomo de via loka deponejo: %s</string>
     <string name="local_repo_https_on">Uzi ĉifritan konekton HTTPS:// por loka deponejo</string>
-    <string name="login_title">Aŭtentokontrolo nepra</string>
+    <string name="login_title">Aŭtentkontrolo postulata</string>
     <string name="login_name">Uzantnomo</string>
     <string name="login_password">Pasvorto</string>
     <string name="repo_edit_credentials">Ŝanĝi pasvorton</string>
@@ -312,7 +312,7 @@
         <item quantity="other">Ĝisdatigita antaŭ %1$d tagoj</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s estas instalita</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn el proksimaj uloj!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Seninterrete? Elŝutu aplikaĵojn de proksimaj uloj!</string>
     <string name="nearby_splash__find_people_button">Trovi proksimajn ulojn</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambaŭ flankoj bezonas %1$s por uzi proksiman interŝanĝon.</string>
     <string name="latest__empty_state__no_recent_apps">Neniu nova aplikaĵo</string>
@@ -443,7 +443,7 @@
     <string name="not_visible_nearby">Proksima interŝanĝo estas malŝaltita</string>
     <string name="not_visible_nearby_description">Antaŭ interŝanĝi kun proksimaj aparatoj, agordu vian aparaton videbla.</string>
     <string name="swap_toast_using_path">Uzas %1$s</string>
-    <string name="swap_toast_not_removable_storage">Tio ĉi ne estas demetebla konservejo, reprovu!</string>
+    <string name="swap_toast_not_removable_storage">Vi ne elektis demeteblan konservejon, reprovu!</string>
     <string name="swap_toast_find_removeable_storage">Elektu demeteblan SD-karton aŭ memor-bastoneton</string>
     <string name="scan_removable_storage_toast">Skanado de %s…</string>
     <string name="main_menu__updates">Ĝisdatigoj</string>
@@ -541,7 +541,7 @@
     <string name="ipfsgw_caption_official_gateways">Oficialaj IPFS-kluzoj</string>
     <string name="ipfsgw_summary_disabled">Elŝuti aplikaĵojn el retejaj IPFS-kluzoj: malaktiva</string>
     <string name="ipfsgw_title">IPFS-kluzoj</string>
-    <string name="ipfsgw_caption_custom_gateways">Propraj IPFS-kluzoj</string>
+    <string name="ipfsgw_caption_custom_gateways">Neoficialaj IPFS-kluzoj</string>
     <string name="paste">Alglui</string>PluralsCandidate
 
     <string name="ipfsgw_add_add">Aldoni</string>
@@ -592,4 +592,23 @@
     <string name="pref_export_log_summary">Krei dosieron enhavantan logcat-eligon, kiu estas utila por senerarigi. Averto: ĝi povas enhavi konfidencajn datumojn!</string>
     <string name="export_log_success">Logcat-protokolo konservita</string>
     <string name="export_log_error">Eraro dum konservi logcat-protokolon</string>
+    <string name="repo_archive_unknown">Tiu deponejo probable ne havas arĥivan deponejon.</string>
+    <string name="repo_archive_check">Kontroli pri arĥivo</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 aplikaĵo</item>
+        <item quantity="other">%d aplikaĵoj</item>
+    </plurals>
+    <string name="repo_last_update_index">Lasta ĝisdatigo: %s</string>
+    <string name="repo_last_update_check">Lasta kontrolo pri ĝisdatigo: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Ĉu forigi la spegul-servilon?</string>
+    <string name="repo_confirm_delete_mirror_body">Vi plue povos instali aplikaĵojn el tiu ĉi deponejo uzante aliajn spegul-servilojn.</string>
+    <string name="share_mirror">Kunhavigi spegul-servilon</string>
+    <string name="show_repository_qr">Montri QR-kodon de deponejo</string>
+    <string name="repo_basic_auth_title">Baza aŭtentkontrolo</string>
+    <string name="repo_basic_auth_username">Uzantnomo: %s</string>
+    <string name="repo_basic_auth_password">Pasvorto: ***</string>
+    <string name="repo_basic_auth_edit">Redakti</string>
+    <string name="repo_details_info_text">Deponejo estas fonto de aplikaĵoj.\n\nSpegul-serviloj estas uzataj por disigi ŝargon de aplikaĵ-elŝutoj sur plurajn servilojn. Spegul-serviloj proksimaj al vi povas esti pli rapidaj.\n\nOficialaj spegul-serviloj estas difinitaj fare de la posedanto de deponejo. Ili estas neforigeblaj, vi povas nur malaktivigi ilin. Vi povas difini pliajn proprajn spegul-servilojn per aldoni ilin same kiel norman deponejon.</string>
+    <string name="expand">Etendi</string>
+    <string name="collapse">Maletendi</string>
 </resources>
