@@ -1,8 +1,15 @@
 * Merombak penanganan repo dan mirror, baik UX maupun kode
+
 * Menampilkan pratinjau repo baru
-* Menginstal dengan F-Droid dan F-Droid Basic sekarang mendukung pembaruan latar belakang otomatis
-* Pada Android 14, tandai aplikasi dengan Versi SDK Target yang tidak didukung sebagai tidak kompatibel #2692
-* Klik lama untuk menyalin Tautan, Izin, dan Versi pada layar Detail Aplikasi (@Tobias_Groza)
-* Aplikasi yang tidak kompatibel hanya ditampilkan jika diizinkan di Pengaturan #41 (@pigpig)
-* Pengaturan Gerbang IPFS baru
+
+* Menginstal dengan F-Droid dan F-Droid Basic kini mendukung pembaruan latar belakang otomatis
+
+* Di Android 14, tandai aplikasi dengan Versi SDK Target yang tidak didukung sebagai tidak kompatibel #2692
+
+* Klik lama untuk menyalin Tautan, Izin, dan Versi di layar Detail Aplikasi (@Tobias_Groza)
+
+* Aplikasi yang tidak kompatibel hanya ditampilkan jika diizinkan di Setelan #41 (@pigpig)
+
+* Setelan Gateway IPFS Baru
+
 * Pemilihan bahasa per aplikasi (@Licaon-Kter)

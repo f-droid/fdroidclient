@@ -1,7 +1,13 @@
-* Tab Terbaru sekarang menyoroti aplikasi yang menyediakan deskripsi, terjemahan, tangkapan layar
-* Unduhan otomatis dari cermin, untuk mempercepat unduhan dan mengurangi beban pada f-droid.org
-* Menonaktifkan mirror menggunakan sakelar baru di RepoDetails (#1696)
-* Caching unduhan yang lebih efisien (per-repo; di berbagai server web #1708)
-* Memperbaiki penginstalan yang membutuhkan Sumber Tidak Dikenal dengan Ekstensi Istimewa (#1702)
-* Memperbaiki ikon yang hilang bagi mereka yang tidak menggunakan Wi-Fi (#1592)
-* Peningkatan terjemahan untuk tab Pembaruan vs preferensi
+* Tab Terbaru kini menyorot aplikasi yang menyediakan deskripsi, terjemahan, tangkapan layar
+
+* Unduh otomatis dari mirror, untuk mempercepat unduhan dan mengurangi beban di f-droid.org
+
+* Nonaktifkan mirror menggunakan sakelar baru di RepoDetails (#1696)
+
+* Penyimpanan cache unduhan yang lebih efisien (per-repo; di berbagai server web #1708)
+
+* Perbaiki penginstalan yang memerlukan Sumber Tidak Dikenal dengan Ekstensi Istimewa (#1702)
+
+* Perbaiki ikon yang hilang bagi mereka yang tidak menggunakan Wi-Fi (#1592)
+
+* Terjemahan yang ditingkatkan untuk tab Pembaruan vs preferensi
