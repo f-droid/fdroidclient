@@ -6,7 +6,7 @@
     <string name="other">Aliaj</string>
     <string name="notify">Montri disponeblajn ĝisdatigojn</string>
     <string name="notify_on">Sciigi kiam ĝisdatigoj estas disponeblaj</string>
-    <string name="app_details">Detaloj de la aplikaĵo</string>
+    <string name="app_details">Detaloj pri la aplikaĵo</string>
     <string name="no_such_app">Neniu aplikaĵo trovita.</string>
     <string name="about_site">Retejo</string>
     <string name="about_version">Versio</string>
@@ -151,7 +151,7 @@
     <string name="repo_not_yet_updated">La deponejo ne estas jam uzita. Vi devas aktivigi ĝin por vidi la aplikaĵojn, kiujn ĝi liveras.</string>
     <string name="repo_confirm_delete_body">Forigado de deponejo kaŭzos, ke ĝiaj aplikaĵoj ne plu montriĝos en F-Droid. \n \nRimarko: ĉiuj antaŭe instalitaj aplikaĵoj restos en via aparato.</string>
     <string name="repo_disabled_notification">%1$s malaktiva. \n \nVi devos reaktivigi tiun ĉi deponejon por instali aplikaĵojn el ĝi.</string>
-    <string name="not_on_same_wifi">Via aparato ne estas en la sama vifi-reto kiel la loka deponejo, kiun vi ĵus aldonis! Provu konekti al la reto: %s</string>
+    <string name="not_on_same_wifi">Via aparato ne estas en la sama sendrata reto kiel la loka deponejo, kiun vi ĵus aldonis! Konektu al la reto: %s</string>
     <string name="pref_language">Lingvo</string>
     <string name="pref_language_default">Laŭ operaciumo</string>
     <string name="wifi">Vifio</string>
@@ -384,7 +384,7 @@
     <string name="panic_hide_title">Kaŝi %s</string>
     <string name="panic_hide_summary">Malaperigi F-Droid de la aplikaĵlanĉilo</string>
     <string name="panic_hide_warning_title">Memori kiel restarigi</string>
-    <string name="panic_hide_warning_message">Post aktivigi la panikan butonon, %1$s estos forigita de la aplikaĵlanĉilo. Por restarigi ĝin, enigu “%2$d” en la ŝajn‑aplikaĵo %3$s.</string>
+    <string name="panic_hide_warning_message">Post aktivigi la panikan butonon, %1$s estos forigita de la aplikaĵlanĉilo. Por restarigi ĝin, enigu “%2$d” en la ŝajn‑aplikaĵon %3$s.</string>
     <string name="hiding_calculator">Kalkulilo</string>
     <string name="hiding_dialog_title">Kaŝi %s nun</string>
     <string name="hiding_dialog_message">Ĉu vi certe volas forigi %1$s el la lanĉilo\? Nur tajpi “%2$d” en la ŝajn‑aplikaĵo %3$s restarigos ĝin.</string>
@@ -587,4 +587,9 @@
     <string name="menu_share_apk">Kunhavigi APK-dosieron</string>
     <string name="preferForeign">Preferi fremdlandajn servilojn</string>
     <string name="preferForeignSummary">Unue provi spegul-servilojn troviĝantajn ekster via lando, ekzemple se fremdlanda protekto estas pli forta.</string>
+    <string name="no_handler_app_generic">Vi havas neniun disponeblan aplikaĵon por pritrakti tion.</string>
+    <string name="pref_export_log_title">Senerariga protokolo</string>
+    <string name="pref_export_log_summary">Krei dosieron enhavantan logcat-eligon, kiu estas utila por senerarigi. Averto: ĝi povas enhavi konfidencajn datumojn!</string>
+    <string name="export_log_success">Logcat-protokolo konservita</string>
+    <string name="export_log_error">Eraro dum konservi logcat-protokolon</string>
 </resources>
