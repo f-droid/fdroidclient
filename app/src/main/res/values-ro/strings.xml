@@ -226,7 +226,7 @@
     <string name="keep_month">O lună</string>
     <string name="keep_year">Un an</string>
     <string name="keep_forever">Totdeauna</string>
-    <string name="crash_dialog_text">O eroare neașteptată s-a produs forțând oprirea aplicației. Doriți să trimite-ți un e-mail cu detalii pentru a putea ajuta la rezolvarea acestei probleme?</string>
+    <string name="crash_dialog_text">O eroare neașteptată s-a produs forțând oprirea aplicației. Doriți să trimiteți un e-mail cu detalii pentru a putea ajuta la rezolvarea acestei probleme?</string>
     <string name="uninstalling">În curs de dezinstalare…</string>
     <string name="installIncompatible">Aplicația nu este compatibilă cu dispozitivul dumneavoastră. Instalați oricum?</string>
     <string name="installing">În curs de instalare…</string>
@@ -279,9 +279,9 @@
     </plurals>
     <string name="details_last_updated_today">Actualizate azi</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Actualizate azi</item>
-        <item quantity="few">Actualizate acum %1$d zile</item>
-        <item quantity="other">Actualizate acum %1$d de zile</item>
+        <item quantity="one">Actualizat azi</item>
+        <item quantity="few">Actualizat acum %1$d zile</item>
+        <item quantity="other">Actualizat acum %1$d de zile</item>
     </plurals>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Vezi %d</item>
