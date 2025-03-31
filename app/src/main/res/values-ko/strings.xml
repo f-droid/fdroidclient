@@ -562,7 +562,7 @@
     <string name="repo_disable_warning">이 저장소를 비활성화하면 모든 앱의 \"preferred\"상태를 제거합니다.</string>
     <string name="targetsdk_or_later">대상 %s</string>
     <string name="repositories_last_update">마지막 업데이트: %s</string>
-    <string name="repositories_last_update_never">절대 않함</string>
+    <string name="repositories_last_update_never">한 적 없음</string>
     <string name="repo_list_info_title">저장소 목록</string>
     <string name="repo_archive_toggle">저장소 아카이브</string>
     <string name="repo_last_update_downloaded">최신의 업데이트 다운로드</string>
