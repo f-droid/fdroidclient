@@ -1,8 +1,6 @@
-* experimental support for un-archiving apps on Android 15
-* automatically add newly installed apps to home-screen for most launchers (Thanks Dhina!)
-* separate share link and share file actions in app details
-* show toast when APK has more permissions than expected
-* clean internal caches more often to free up space (Thanks DerGenaue!)
-* re-order donation badges to match website (Thanks Leo!)
-* add settings toggle to prefer foreign mirrors
-* many small bug fixes
+* material design 3 (with edge-to-edge, but without dynamic colors) (Thanks proletarius!)
+* redesign repository details screens (Thanks Thore!)
+* added logcat file export in expert settings
+* update target SDK (Android 15 for basic and Android 11 for full)
+* add backlink from app's page in system settings (Thanks j-m4!)
+* use app chooser for sharing installed apps and install history (Thanks Thore!)

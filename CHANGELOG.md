@@ -1,3 +1,15 @@
+### 1.23.0-alpha0 (2025-04-01)
+
+* material design 3 (with edge-to-edge, but without dynamic colors) (Thanks proletarius!)
+* redesign repository details screens (Thanks Thore!)
+* added logcat file export in expert settings
+* update target SDK (Android 15 for basic and Android 11 for full)
+* add backlink from app's page in system settings (Thanks j-m4)
+* wording improvements (Thanks Lucas!)
+* bug fixes related to deleting repositories (Thanks Matthew and Thore!)
+* use app chooser for sharing installed apps and install history (Thanks Thore!)
+* do not show "download failed" toast if download was cancelled manually (Thanks Tobias!)
+
 ### 1.22.0 (2025-01-16)
 
 * automatically add newly installed apps to home-screen for most launchers (Thanks Dhina!)
