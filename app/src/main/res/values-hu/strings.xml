@@ -61,12 +61,8 @@
     <string name="no_handler_app">Nincs elérhető alkalmazás, ami képes ezt kezelni: %s.</string>
     <string name="theme">Téma</string>
     <string name="repo_not_yet_updated">Ezt a tárolót még nem használta. Engedélyeznie kell, hogy megtekinthesse az általa kínált alkalmazásokat.</string>
-    <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások többé nem lesznek elérhetőek.
-\n
-\nMegjegyzés: Minden korábban telepített alkalmazás az eszközön marad.</string>
-    <string name="repo_disabled_notification">%1$s letiltva.
-\n
-\nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
+    <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások többé nem lesznek elérhetőek.\n\nMegjegyzés: az összes, korábban telepített alkalmazás az eszközön marad.</string>
+    <string name="repo_disabled_notification">%1$s letiltva.\n \nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
     <string name="delete">Törlés</string>
     <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Instabil frissítések</string>
@@ -125,8 +121,7 @@
     <string name="repo_name">Név</string>
     <string name="unknown">Ismeretlen</string>
     <string name="repo_confirm_delete_title">Törli a tárolót?</string>
-    <string name="repo_searching_address">Csomagtároló keresése itt:
-\n%1$s</string>
+    <string name="repo_searching_address">Csomagtároló keresése itt:\n%1$s</string>
     <string name="pref_language">Nyelv</string>
     <string name="pref_language_default">Rendszer alapértelmezése</string>
     <string name="wifi">Wi-Fi</string>
@@ -148,9 +143,7 @@
     <string name="category_Time">Idő</string>
     <string name="category_Writing">Írás</string>
     <string name="empty_search_available_app_list">Nincs találat az elérhető alkalmazások között.</string>
-    <string name="empty_installed_app_list">Nincsenek telepített alkalmazások.
-\n
-\nVannak alkalmazások a készülékén, de azok nem érhetőek el az F-Droidból. Ez lehet azért, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek az alkalmazásai.</string>
+    <string name="empty_installed_app_list">Nincsenek telepített alkalmazások.\n\nVannak alkalmazások az eszközén, de azok nem érhetőek el az F-Droidból. Ez azért lehet, mert frissíteni kell a tárolókat, vagy mert a tárolókban valóban nem szerepelnek az alkalmazásai.</string>
     <string name="empty_can_update_app_list">Gratulálunk!\nMinden alkalmazása naprakész.</string>
     <string name="install_error_unknown">A telepítés ismeretlen hiba miatt sikertelen</string>
     <string name="uninstall_error_unknown">Az eltávolítás ismeretlen hiba miatt sikertelen</string>
@@ -250,8 +243,8 @@
     <string name="preference_category__my_apps">Saját alkalmazások</string>
     <string name="app_list__name__downloading_in_progress">%1$s letöltése</string>
     <string name="app_list__name__successfully_installed">%1$s telepítve</string>
-    <string name="warning_no_internet">Nem sikerült a frissítés. Van internetkapcsolata?</string>
-    <string name="not_on_same_wifi">Az eszköze nem ugyanazon a Wi-Fi-n van, mint a hozzáadott helyi tároló! Próbáljon ehhez a hálózathoz csatlakozni: %s</string>
+    <string name="warning_no_internet">Nem sikerült a frissítés, van internetkapcsolata?</string>
+    <string name="not_on_same_wifi">Az eszköze nem ugyanazon a Wi-Fi-n van, mint a hozzáadott helyi tároló. Próbáljon ehhez a hálózathoz csatlakozni: %s</string>
     <string name="notification_title_single_update_available">Frissítés érhető el</string>
     <string name="notification_title_summary_install_error">A telepítés sikertelen</string>
     <string name="force_old_index_summary">Abban az esetben, ha hibák vagy kompatibilitási problémák vannak, használja az XML alkalmazás indexet</string>
@@ -267,7 +260,7 @@
     <string name="app_list__dismiss_downloading_app">Letöltés megszakítva</string>
     <string name="installed_app__updates_ignored">Frissítések figyelmen kívül hagyva</string>
     <string name="update_all">Összes frissítése</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Sebezhetőség található a(z) %1$s alkalmazásban. Koppintson további információért az Előnytelen Funkciók szekcióban.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Sebezhetőség található a(z) %1$s alkalmazásban. Koppintson a továbbolvasáshoz az előnytelen funkciók szakaszában.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Egy sebezhetőség található ebben az appban: %1$s. Azonnali frissítés ajánlott a legújabb verzióra.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Figyelmen kívül hagyás</string>
     <string name="updates__hide_updateable_apps">Alkalmazások elrejtése</string>
@@ -298,7 +291,7 @@
     <string name="app_version_x_installed">%1$s verzió</string>
     <string name="app_recommended_version_installed">%1$s verzió (ajánlott)</string>
     <string name="app__tts__cancel_download">Letöltés megszakítása</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">A(z) %1$s verzió frissítései figyelmen kívül hagyva</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">A(z) %1$s verzió frissítései mellőzve</string>
     <string name="repositories_summary">További alkalmazásforrások hozzáadása</string>
     <string name="writing_index_jar">Aláírt indexfájl (index.jar) írása…</string>
     <string name="all_other_repos_fine">A többi tároló nem adott hibát.</string>
@@ -362,7 +355,7 @@
         <item quantity="other">%d megtekintése</item>
     </plurals>
     <string name="system_install_denied_permissions">A privilegizált engedélyek nem lettek megadva ehhez a kiterjesztéshez! Küldjön be hibajelentést!</string>
-    <string name="swap_join_same_wifi_desc">A Wi-Fin keresztüli cseréhez győződjön meg róla, hogy ugyanazon a hálózaton vannak. Ha nem fér hozzá a hálózathoz, akkor az egyikük Wi-Fi Hotspotot hozhat létre.</string>
+    <string name="swap_join_same_wifi_desc">A Wi-Fin keresztüli cseréhez győződjön meg róla, hogy ugyanazon a hálózaton vannak. Ha nem fér hozzá a hálózathoz, akkor az egyikük Wi-Fi hotspotot hozhat létre.</string>
     <string name="swap_join_this_hotspot">Segítsen a barátjának csatlakozni a hotspothoz</string>
     <string name="swap">Alkalmazások cseréje</string>
     <string name="swap_success">Csere sikeres!</string>
@@ -392,8 +385,8 @@
     <string name="repo_exists_and_enabled">A(z) %1$s már be lett állítva és engedélyezett.</string>
     <string name="repo_delete_to_overwrite">Először törölje a(z) %1$s alkalmazást, hogy hozzáadhassa egy ütköző kulccsal.</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="show_anti_feature_apps">Előnytelen Funkciókkal rendelkező alkalmazások belefoglalása</string>
-    <string name="show_anti_feature_apps_on">Azon alkalmazások megjelenítése, melyek tudottan Előnytelen Funkciókkal rendelkeznek</string>
+    <string name="show_anti_feature_apps">Előnytelen funkciók engedélyezése</string>
+    <string name="show_anti_feature_apps_on">Az ismerten előnytelen funkciókkal rendelkező alkalmazások megjelenítése</string>
     <string name="force_touch_apps">Érintőképernyős alkalmazások belefoglalása</string>
     <string name="force_touch_apps_on">Azon alkalmazások megjelenítése, melyekhez érintőképernyő szükséges, a hardvertámogatástól függetlenül</string>
     <string name="privacy">Adatvédelem</string>
@@ -404,7 +397,7 @@
     <string name="panic_app_unknown_app">egy ismeretlen alkalmazás</string>
     <string name="panic_app_setting_summary">Még nem lett alkalmazás beállítva</string>
     <string name="panic_app_setting_none">Nincs</string>
-    <string name="panic_app_dialog_title">Pánik alkalmazás megerősítése</string>
+    <string name="panic_app_dialog_title">Pánikalkalmazás megerősítése</string>
     <string name="panic_app_dialog_message">Biztosan engedélyezi, hogy a(z) %1$s destruktív pánikgomb műveleteket indítson el?</string>
     <string name="allow">Engedélyezés</string>
     <string name="panic_settings">Pánikgomb beállítások</string>
@@ -425,8 +418,8 @@
     <string name="repo_user_mirrors">Felhasználói tükrök</string>
     <string name="use_bluetooth">Bluetooth használata</string>
     <string name="swap_toast_invalid_url">Érvénytelen URL a cseréhez: %1$s</string>
-    <string name="swap_toast_hotspot_enabled">Wi-Fi Hotspot engedélyezve</string>
-    <string name="swap_toast_could_not_enable_hotspot">A Wi-Fi Hotspot nem engedélyezhető!</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi hotspot engedélyezve</string>
+    <string name="swap_toast_could_not_enable_hotspot">A Wi-Fi hotspot nem engedélyezhető!</string>
     <string name="warning_scaning_qr_code">A kamerának úgy tűnik nincs autofókusza. Így nehézkes lehet a kód leolvasása.</string>
     <string name="prompt_to_send_crash_reports">Kérdezzen az összeomlási jelentések küldésekor</string>
     <string name="prompt_to_send_crash_reports_summary">Adatok begyűjtése az összeomlásokról, és annak megkérdezése, hogy elküldje azokat a fejlesztőnek</string>
@@ -445,7 +438,7 @@
     <string name="app_size">Méret: %1$s</string>
     <string name="send_installed_apps">Telepített alkalmazások megosztása</string>
     <string name="send_installed_apps_csv">Az F-Droid által telepített alkalmazások CSV fájlként</string>
-    <string name="updates_disabled_by_settings">Összes frissítés letiltva az Adat/WiFi-beállításokban</string>
+    <string name="updates_disabled_by_settings">Összes frissítés letiltva az adathasználat/WiFi-beállításokban</string>
     <string name="menu_open">Megnyitás</string>
     <string name="scan_removable_storage_title">Cserélhető adattárolók átvizsgálása</string>
     <string name="scan_removable_storage_toast">Keresés: %s…</string>
@@ -490,21 +483,21 @@
     <string name="send_fdroid_metrics_report">%s metrikajelentés elküldése</string>
     <string name="menu_show_install_history">Telepítési előzmények megjelenítése</string>
     <string name="menu_show_fdroid_metrics_report">Metrikajelentés megtekintése</string>
-    <string name="toast_metrics_in_install_history">Az %s metrikajelentés a Telepítési előzmények megjelenítőjében nézhető meg</string>
+    <string name="toast_metrics_in_install_history">Az %s metrikajelentés a telepítési előzmények megjelenítőjében nézhető meg</string>
     <string name="send_to_fdroid_metrics">Használati adatok elküldése</string>
     <string name="fdroid_metrics_report">%s metrikajelentés</string>
     <string name="install_history_and_metrics">Telepítési előzmények és metrikák</string>
-    <string name="send_fdroid_metrics_json">%s metrikajelentés JSON fájlként</string>
+    <string name="send_fdroid_metrics_json">%s metrikajelentés JSON-fájlként</string>
     <string name="theme_follow_system">Rendszer követése</string>
     <string name="use_pure_black_dark_theme_summary">Csak OLED képernyőkön javasolt.</string>
     <string name="use_pure_black_dark_theme">Teljesen fekete háttér használata a sötét téma esetén</string>
-    <string name="banner_no_data_or_wifi">Nincs adatkapcsolat vagy WiFi</string>
+    <string name="banner_no_data_or_wifi">Nincs adatkapcsolat vagy Wi-Fi</string>
     <string name="banner_no_internet">Nincs internet</string>
     <string name="share_apk_error">Az alkalmazásfájl nem osztható meg</string>
     <string name="has_disallow_install_unknown_sources_globally">Az eszköze rendszergazdája nem engedélyezi az alkalmazások ismeretlen forrásokból történő telepítését, beleértve az új tárolókat is</string>
     <string name="antiads">Reklámok</string>
     <string name="swap_wifi_vpn_conflict">Ütközések az aktív VPN-nel!</string>
-    <string name="app_list_results_hidden_antifeature_settings">Egyes appok el lettek rejtve az Előnytelen Funkciók beállításai alapján. Koppintson a módosításhoz.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Egyes alkalmazások el lettek rejtve az előnytelen funkciók beállításai alapján. Koppintson a módosításhoz.</string>
     <string name="has_disallow_install_unknown_sources">Ez a felhasználó nem adhat hozzá ismeretlen forrásokat, ebbe a tárolókat is beleértve</string>
     <string name="antinonfreedep">Nem szabad függőségek</string>
     <string name="antinonfreead">Nem szabad kiegészítők</string>
@@ -515,7 +508,7 @@
     <string name="antidisabledalgorithm">Nem biztonságos algoritmussal aláírt</string>
     <string name="antiknownvuln">Ismert sérülékenység</string>
     <string name="antinosource">Már nem elérhető forráskód</string>
-    <string name="antiothers">Egyéb Előnytelen Funkciók</string>
+    <string name="antiothers">Egyéb előnytelen funkciók</string>
     <string name="antinsfw">Munkahelyen nem megfelelő</string>
     <string name="menu_release_channel_beta">Béta frissítések engedélyezése</string>
     <string name="latest__empty_state__upgrading">Adatbázis frissítése…</string>
@@ -527,20 +520,16 @@
     <string name="app_error_open">Nem sikerült elindítani az alkalmazást.</string>
     <string name="repo_last_update_downloaded">Utolsó frissítés letöltve</string>
     <string name="turn_on_wifi">Wi-Fi bekapcsolása</string>
-    <string name="repo_invalid">Érvénytelen tároló.
-\n
-\nLépjen kapcsolatba a karbantartóval, és értesítse a problémáról.</string>
+    <string name="repo_invalid">Érvénytelen tároló.\n\nLépjen kapcsolatba a karbantartóval, és értesítse a problémáról.</string>
     <string name="repo_io_error">Hiba a tárolóhoz való kapcsolódáskor.</string>
     <string name="swap_banner_message">Az alkalmazáscseréhez kapcsolja be a Wi-Fi-t, és csatlakozzon ugyanahhoz a hálózathoz, mint a barátja.</string>
     <string name="repo_add_new_title">Tároló hozzáadása</string>
     <string name="repo_state_fetching">Tároló lekérése…</string>
     <string name="repo_state_adding">Tároló hozzáadása…</string>
     <string name="repo_enter_url">Tároló webcímének kézi megadása</string>
-    <string name="repo_exists">Ez az adattár már hozzá lett adva.</string>
+    <string name="repo_exists">Ez a tároló már hozzá lett adva.</string>
     <string name="repo_add_new_mirror">Hozzáadás új tükörként</string>
-    <string name="repo_intro">Egy tároló egy további alkalmazásforrás. Az itt hozzáadott, harmadik féltől származó tárolók eltérő szabályokkal rendelkeznek, mint az F-Droid által biztosított alkalmazások tárolói.
-\n
-\nGyőződjön meg arról, hogy a hozzáadandó tároló megbízható.</string>
+    <string name="repo_intro">Egy tároló egy további alkalmazásforrás. Az itt hozzáadott, harmadik féltől származó tárolók eltérő szabályokkal rendelkeznek, mint az F-Droid által biztosított alkalmazások tárolói.\n\nGyőződjön meg arról, hogy a hozzáadandó tároló megbízható.</string>
     <string name="nearby_splace__external_storage_permission_button">Kipróbálás</string>
     <string name="nearby_splach__external_storage_permission_explainer">Az F-Droid képes keresni a SD-kártyán lévő tárolókban és tükrökben, de ehhez engedélyre van szüksége.</string>
     <string name="swap_connection_indexv0_error">Olyan valakihez próbál kapcsolódni, akinek elavult F-Droid verziója van. A kapcsolódáshoz frissítenie kell az F-Droid alkalmazást. Használhatja a cserét, hogy frissítse az F-Droid alkalmazását.</string>
@@ -570,35 +559,58 @@
     <string name="app_details_repository_button_prefer">Tároló előnyben részesítése</string>
     <string name="app_details_repository_expand">Tárolólista bővítése</string>
     <string name="app_list_no_suggested_version">Nincs telepítésre javasolt verzió.</string>
-    <string name="warning_no_compat_versions">A kiválasztott adattárnak nincs kompatibilis alkalmazásverziója. A frissítések fogadásához válasszon inkább egy kompatibilis verziókkal rendelkező adattárat.</string>
-    <string name="antitetherednet">Kapcsolt hálózati szolgáltatások</string>
-    <string name="antitetherednetlist">Ez az alkalmazás teljesen függ egy bizonyos hálózati szolgáltatástól</string>
-    <string name="repo_archive_toggle">Adattár Archívum</string>
+    <string name="warning_no_compat_versions">A kiválasztott tárolónak nincs kompatibilis alkalmazásverziója. A frissítések fogadásához válasszon inkább egy kompatibilis verziókkal rendelkező tárolót.</string>
+    <string name="antitetherednet">Kötött hálózati szolgáltatások</string>
+    <string name="antitetherednetlist">Az alkalmazás teljes mértékben egy hálózati szolgáltatás egy adott példányától függ</string>
+    <string name="repo_archive_toggle">Tárolóarchívum</string>
     <string name="useDnsCache">DNS gyorsítótár használata</string>
-    <string name="useDnsCacheSummary">Használja a gyorsítótárban tárolt eredményeket a DNS-lekérdezések minimalizálása érdekében.</string>
-    <string name="repo_add_repo_and_mirror">Adattár és másodlagos szerver hozzáadása</string>
-    <string name="repo_view_repo">Adattár megtekintése</string>
-    <string name="repo_scan_qr_code">QR-kód beolvasása</string>
-    <string name="repo_preview_included_apps">A mellékelt alkalmazások:</string>
-    <string name="repo_share_not_found">Nem található az adattár címe a megosztott szövegben.</string>
-    <string name="repo_mirror_exists">Ez a másodlagos szerver már hozzá lett adva (%s).</string>
-    <string name="repo_mirror_add_info">A hozzáadni kívánt URL (%s) egy létező adattár másolata.</string>
+    <string name="useDnsCacheSummary">Gyorsítótárazott eredmények használata a DNS-lekérdezések minimalizálása érdekében.</string>
+    <string name="repo_add_repo_and_mirror">Tároló és tükör hozzáadása</string>
+    <string name="repo_view_repo">Tároló megtekintése</string>
+    <string name="repo_scan_qr_code">QR-kód leolvasása</string>
+    <string name="repo_preview_included_apps">Tartalmazott alkalmazások:</string>
+    <string name="repo_share_not_found">Nem található az tároló címe a megosztott szövegben.</string>
+    <string name="repo_mirror_exists">Ez a tükör már hozzá lett adva (%s).</string>
+    <string name="repo_mirror_add_info">A hozzáadandó webcím (%s) egy létező tároló tükre.</string>
     <string name="repositories_last_update">Utolsó frissítés: %s</string>
-    <string name="repo_list_info_title">Adattár Lista</string>
-    <string name="repo_list_info_text">Egy adattár az alkalmazások forrása. Ez a lista az összes jelenleg hozzáadott adattárat mutatja. A letiltott adattárak nem kerülnek felhasználásra.\n\nHa egy alkalmazás több adattárban is megtalálható, akkor a listában előrébb lévő automatikusan előnyben részesül. A lista elemeit hosszan lenyomva és húzva átrendezheti.</string>
+    <string name="repo_list_info_title">Tárolólista</string>
+    <string name="repo_list_info_text">Egy tároló egy alkalmazásforrás. Ez a lista az összes jelenleg hozzáadott tárolót jeleníti meg. A letiltott tárolók nincsenek használatban.\n\nHa egy alkalmazás több tárolóban is megtalálható, akkor a listában előrébb lévő automatikusan előnyben részesül. A lista elemeit hosszan lenyomva és húzva rendezheti át.</string>
     <string name="repo_disable_warning_button">Letiltás</string>
     <string name="auto_update_time">Legkorábbi következő frissítés: %s</string>
-    <string name="repo_error_adding_archive">Archív adattárak nem adhatóak hozzá közvetlenül. Koppintson a listában lévő adattárra, és engedélyezze ott az archívumot.</string>
-    <string name="repo_and_mirror_add_both_info">A hozzáadni kívánt URL (%s) egy új adattár másolata. Mind az eredeti, mind a másodlagos adattár hozzáadásra kerül.</string>
+    <string name="repo_error_adding_archive">Archív tárolók nem adhatóak hozzá közvetlenül. Koppintson a listában lévő tárolóra, és engedélyezze ott az archívumot.</string>
+    <string name="repo_and_mirror_add_both_info">A hozzáadandó webcím (%s) egy új tároló tükre. Mind az eredeti, mind a tükör hozzá lesz adva.</string>
     <string name="repositories_last_update_never">soha</string>
-    <string name="repo_archive_failed">Az archív adattár jelenleg nem elérhető</string>
-    <string name="repo_archive_toggle_description">Archivált alkalmazások és az elavult verziók megjelenítése</string>
-    <string name="repo_disable_warning">Ezen adattár letiltásával eltávolítja az „előnyben részesített” státuszát az összes alkalmazástól.</string>
-    <string name="swap_bluetooth_permissions">Kérjük, adja meg a Bluetooth vagy a Közeli eszköz engedélyt!</string>
+    <string name="repo_archive_failed">Az archív tároló jelenleg nem érhető el</string>
+    <string name="repo_archive_toggle_description">Archivált alkalmazások és elavult verziók megjelenítése</string>
+    <string name="repo_disable_warning">A tároló letiltásával eltávolítja az „előnyben részesített” állapotát az összes alkalmazástól.</string>
+    <string name="swap_bluetooth_permissions">Adja meg a Bluetooth vagy a Közeli eszköz engedélyt!</string>
     <string name="auto_update_time_past">Következő frissítés a feltételek teljesülése esetén</string>
     <string name="menu_share_apk">APK-fájl megosztása</string>
     <string name="apk_permissions_mismatch">Az alkalmazás váratlan engedéllyel rendelkezik: %s</string>
-    <string name="preferForeign">Külföldi szerverek preferálása</string>
-    <string name="preferForeignSummary">Először az országon kívüli szervereket próbálja elérni, például ha a külföldinek erősebb a védelme.</string>
+    <string name="preferForeign">Külföldi tükrök előnyben részesítése</string>
+    <string name="preferForeignSummary">Először az országon kívül található tükröket próbálja elérni, például ha a külföldi védelmek erősebbek.</string>
     <string name="no_handler_app_generic">Nincs olyan elérhető alkalmazás, amely ezt kezelni tudná.</string>
+    <string name="expand">Kibontás</string>
+    <string name="repo_archive_unknown">Ennek a tárolónak úgy tűnik, hogy nincs archívuma.</string>
+    <string name="repo_details_info_text">Egy tároló egy további alkalmazásforrás.\n\nA tükrök az alkalmazásletöltések terhelésének több kiszolgálóra történő elosztására szolgálnak. A közelebbi tükrök gyorsabbak lehetnek.\n\nA hivatalos tükröket a tároló tulajdonosa határozza meg. Nem törölhetők, csak letilthatók. További egyéni tükröket adhat meg a szokásos tárolóként való hozzáadásukkal.</string>
+    <string name="repo_archive_check">Archívum keresése</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 alkalmazás</item>
+        <item quantity="other">%d alkalmazás</item>
+    </plurals>
+    <string name="repo_last_update_index">Utolsó tárolófrissítés: %s</string>
+    <string name="repo_last_update_check">Utolsó tárolófrissítés-ellenőrzés: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Törli a tükröt?</string>
+    <string name="repo_confirm_delete_mirror_body">Más tükrök használatával továbbra is telepíthet alkalmazásokat ebből a tárolóból.</string>
+    <string name="share_mirror">Tükör megosztása</string>
+    <string name="show_repository_qr">Tároló QR-kódjának megosztása</string>
+    <string name="repo_basic_auth_title">Basic hitelesítés</string>
+    <string name="repo_basic_auth_username">Felhasználónév: %s</string>
+    <string name="repo_basic_auth_password">Jelszó: ***</string>
+    <string name="repo_basic_auth_edit">Szerkesztés</string>
+    <string name="collapse">Összecsukás</string>
+    <string name="export_log_success">A logcat mentése sikeres</string>
+    <string name="export_log_error">Hiba a logcat mentésekor</string>
+    <string name="pref_export_log_title">Hibakeresési napló</string>
+    <string name="pref_export_log_summary">Egy fájlt hoz létre a logcat kimenetével, amely hibakereséshez hasznos. Legyen óvatos, érzékeny információkat tartalmazhat!</string>
 </resources>
