@@ -43,7 +43,7 @@
     <string name="menu_ignore_all">忽略所有更新</string>
     <string name="menu_ignore_this">忽略此更新</string>
     <string name="menu_website">网站</string>
-    <string name="menu_issues">错误</string>
+    <string name="menu_issues">问题跟踪器</string>
     <string name="menu_source">源代码</string>
     <string name="menu_upgrade">更新</string>
     <string name="details_notinstalled">未安装</string>
@@ -229,7 +229,7 @@
     <string name="interval_2w">每两周检查一次更新</string>
     <string name="theme_light">浅色</string>
     <string name="theme_dark">深色</string>
-    <string name="about_license">许可</string>
+    <string name="about_license">许可证</string>
     <string name="empty_search_available_app_list">没有相符的应用。</string>
     <string name="status_inserting_apps">正在保存应用详情</string>
     <string name="menu_email">发邮件给作者</string>
@@ -291,7 +291,7 @@
     <string name="clear_search">清除搜索</string>
     <string name="repositories_summary">添加其他应用来源</string>
     <string name="menu_video">视频</string>
-    <string name="menu_license">许可：%s</string>
+    <string name="menu_license">许可证：%s</string>
     <string name="latest__empty_state__no_recent_apps">未找到最近的应用</string>
     <string name="latest__empty_state__never_updated">应用列表更新之后，最新应用将在这里显示</string>
     <string name="latest__empty_state__no_enabled_repos">启用存储库并对其更新之后，最新应用将在这里显示</string>
@@ -561,9 +561,7 @@
     <string name="app_details_repository_expand">展开存储库列表</string>
     <string name="app_list_no_suggested_version">没有推荐安装的版本。</string>
     <string name="repo_error_adding_archive">不能直接添加归档存储库。轻按列表中的存储库并在那儿启用。</string>
-    <string name="repo_list_info_text">存储库是应用源。 词列表显示所有当前添加的存储库。停用的存储库不被使用。
-\n
-\n如果一款应用在多个存储库中，那么将自动优先选择列表内位置靠前的那个（从上到下）。你可以长按列表名并进行拖动来重新排列存储库顺序。</string>
+    <string name="repo_list_info_text">存储库是应用的来源。 此列表显示当前所有添加的存储库。已停用的存储库不会被使用。\n\n如果多个存储库中有同一款应用，那么将自动优先选择列表内位置靠前的存储库。你可以长按列表名并拖动存储库来重新排列顺序。</string>
     <string name="repo_archive_toggle">存储库存档</string>
     <string name="repo_archive_toggle_description">显示已存档应用和应用的过时版本</string>
     <string name="repo_archive_failed">存档存储库当前不可用</string>
@@ -590,4 +588,5 @@
     <string name="menu_share_apk">分享 APK 文件</string>
     <string name="preferForeign">偏好海外镜像</string>
     <string name="preferForeignSummary">首先尝试位于你所在国家之外的镜像，如果海外保护更强。</string>
+    <string name="no_handler_app_generic">你没有安装可以处理这个的应用。</string>
 </resources>
