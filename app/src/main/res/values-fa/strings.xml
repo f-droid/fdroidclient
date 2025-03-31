@@ -607,4 +607,8 @@
     <string name="repo_basic_auth_edit">ویرایش</string>
     <string name="expand">گسترش</string>
     <string name="collapse">جمع کردن</string>
+    <string name="pref_export_log_title">گزارش عیب‌یابی</string>
+    <string name="export_log_success">لاگ‌کت با موفّقیت ذخیره شد</string>
+    <string name="export_log_error">خطا در ذخیره‌سازی لاگ‌کت</string>
+    <string name="pref_export_log_summary">یک پرونده با خروجی لاگ‌کت که برای عیب‌یابی مفید است ایجاد کنید. مراقب باشید، این می‌تواند شامل اطّلاعات حساس باشد!</string>
 </resources>
