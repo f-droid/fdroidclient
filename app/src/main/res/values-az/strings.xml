@@ -36,4 +36,5 @@
     <string name="menu_add_repo">yeni depo</string>
     <string name="menu_settings">Ayarlar</string>
     <string name="menu_search">Axtar</string>
+    <string name="prompt_to_send_crash_reports_summary">Xətalar haqqında məlumat toplayın və developer\'a göndərin</string>
 </resources>
