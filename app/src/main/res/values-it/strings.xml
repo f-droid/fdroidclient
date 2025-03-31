@@ -18,7 +18,7 @@
     <string name="local_repo_name">Nome del tuo repository locale</string>
     <string name="local_repo_name_summary">Il titolo visualizzato del tuo repository: %s</string>
     <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repository locali</string>
-    <string name="app_details">Dettagli app</string>
+    <string name="app_details">Dettagli applicazione</string>
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
     <string name="about_title_full">Informazioni su F-Droid</string>
     <string name="about_site">Sito web</string>
@@ -516,10 +516,10 @@
     <string name="toast_metrics_in_install_history">Il rapporto metriche %s è visibile nel visualizzatore dello storico installazioni</string>
     <string name="send_to_fdroid_metrics_summary">Invia settimanalmente dati anonimi alle metriche F-Droid (l\'opzione \"Mantieni la cronologia delle installazioni\" dev\'essere abilitata)</string>
     <string name="send_to_fdroid_metrics">Invia dati di utilizzo</string>
-    <string name="fdroid_metrics_report">Rapporto metriche %s</string>
+    <string name="fdroid_metrics_report">%s Rapporti metriche</string>
     <string name="install_history_and_metrics">Cronologia installazioni e metriche</string>
-    <string name="send_fdroid_metrics_json">Rapporto metriche %s come file JSON</string>
-    <string name="send_fdroid_metrics_report">Invia rapporto metriche %s</string>
+    <string name="send_fdroid_metrics_json">%s Rapporti metriche come file JSON</string>
+    <string name="send_fdroid_metrics_report">Invia %s rapporti metriche</string>
     <string name="use_pure_black_dark_theme">Utilizzare lo sfondo nero puro nel tema scuro</string>
     <string name="use_pure_black_dark_theme_summary">Raccomandato solo per schermi OLED.</string>
     <string name="theme_follow_system">Segui il sistema</string>
