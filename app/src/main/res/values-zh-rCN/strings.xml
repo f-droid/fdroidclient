@@ -93,7 +93,7 @@
     <string name="repo_disabled_notification">已禁用 %1$s。
 \n
 \n需重新启用该存储库才能安装其中的应用。</string>
-    <string name="not_on_same_wifi">你的设备与刚添加的本地存储库不在同一个 Wi-Fi 网络下！请加入此网络：%s</string>
+    <string name="not_on_same_wifi">你的设备与刚添加的本地存储库不在同一个 Wi-Fi 网络！请加入此网络：%s</string>
     <string name="requires_features">需要：%1$s</string>
     <string name="category_Development">开发</string>
     <string name="category_Games">游戏</string>
@@ -257,7 +257,7 @@
     <string name="update_auto_install_summary">在后台下载并更新应用，显示通知</string>
     <string name="keep_install_history">保存安装历史</string>
     <string name="keep_install_history_summary">在应用的私有存储内记录所有安装和卸载</string>
-    <string name="warning_no_internet">无法更新，你有可用的网络连接吗？</string>
+    <string name="warning_no_internet">无法更新，你连接到互联网了吗？</string>
     <string name="main_menu__latest_apps">最新</string>
     <string name="main_menu__categories">类别</string>
     <string name="main_menu__swap_nearby">附近</string>
@@ -269,7 +269,7 @@
     <string name="app_list__name__successfully_installed">%1$s 已安装</string>
     <string name="updates__tts__download_app">下载</string>
     <string name="notification_title_single_update_available">有可用更新</string>
-    <string name="notification_title_summary_install_error">安装失败</string>
+    <string name="notification_title_summary_install_error">安装失败了</string>
     <string name="app_details_donate_prompt_unknown_author">给 %1$s 的开发者买一杯咖啡吧！</string>
     <string name="app_details_donate_prompt">%1$s 由 %2$s 开发。给他们买一杯咖啡吧！</string>
     <string name="app_version_x_available">版本 %1$s 可用</string>
@@ -280,7 +280,7 @@
     <string name="app__install_downloaded_update">更新</string>
     <string name="installed_apps__activity_title">已安装的应用</string>
     <string name="installed_app__updates_ignored">已忽略的更新</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">已忽略 %1$s 版本更新</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">已忽略 %1$s 版的更新</string>
     <string name="update_all">全部更新</string>
     <string name="updates__hide_updateable_apps">隐藏应用</string>
     <string name="updates__show_updateable_apps">显示应用</string>
@@ -303,7 +303,7 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">查看全部 %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">没有网络连接？也可以从附近的用户获取应用！</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">没有互联网连接？也可以从附近的用户获取应用！</string>
     <string name="nearby_splash__find_people_button">查找附近的人</string>
     <string name="nearby_splash__both_parties_need_fdroid">双方都需要使用 %1$s 才可以使用附近功能。</string>
     <string name="app__tts__downloading_progress">正在下载，已完成 %1$d%%</string>
@@ -312,7 +312,7 @@
     </plurals>
     <string name="notification_title_single_ready_to_install">准备安装</string>
     <string name="notification_title_single_ready_to_install_update">更新已就绪</string>
-    <string name="notification_title_single_install_error">安装失败</string>
+    <string name="notification_title_single_install_error">安装失败了</string>
     <string name="notification_content_single_downloading">正在下载“%1$s”…</string>
     <string name="notification_content_single_downloading_update">正在下载“%1$s”的更新…</string>
     <string name="notification_content_single_installing">正在安装“%1$s”…</string>
@@ -488,7 +488,7 @@
     <string name="use_pure_black_dark_theme_summary">仅推荐用于 OLED 屏幕。</string>
     <string name="use_pure_black_dark_theme">在深色主题中使用纯黑色背景</string>
     <string name="banner_no_data_or_wifi">未启用数据或 WiFi 网络</string>
-    <string name="banner_no_internet">无网络</string>
+    <string name="banner_no_internet">无互联网</string>
     <string name="share_apk_error">无法分享应用文件</string>
     <string name="has_disallow_install_unknown_sources">此用户无法添加未知来源，包括新的存储库</string>
     <string name="has_disallow_install_unknown_sources_globally">你的设备管理员不允许安装来自未知来源的应用，其中包括新的存储库</string>
@@ -589,4 +589,26 @@
     <string name="preferForeign">偏好海外镜像</string>
     <string name="preferForeignSummary">首先尝试位于你所在国家之外的镜像，如果海外保护更强。</string>
     <string name="no_handler_app_generic">你没有安装可以处理这个的应用。</string>
+    <string name="repo_archive_unknown">此存储库似乎没有存档。</string>
+    <string name="repo_archive_check">检查存档</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="other">%d 个应用</item>
+    </plurals>
+    <string name="repo_last_update_index">存储库上次更新：%s</string>
+    <string name="repo_last_update_check">存储库上次更新检查：%s</string>
+    <string name="repo_confirm_delete_mirror_title">删除镜像？</string>
+    <string name="repo_confirm_delete_mirror_body">你可以使用其他镜像继续安装来自此存储库的应用。</string>
+    <string name="share_mirror">分享镜像</string>
+    <string name="show_repository_qr">显示存储库二维码</string>
+    <string name="repo_basic_auth_title">基本身份验证</string>
+    <string name="repo_basic_auth_username">用户名：%s</string>
+    <string name="repo_basic_auth_password">密码：***</string>
+    <string name="repo_basic_auth_edit">编辑</string>
+    <string name="expand">展开</string>
+    <string name="collapse">折叠</string>
+    <string name="repo_details_info_text">存储库是应用源。\n\n镜像用于再多个服务器间分配应用下载的负荷。离你越近的镜像可能速度越快。\n\n官方镜像由存储库所有者定义。它们无法被删除，只能被停用。你可以自定义额外镜像，像正常的存储库一样添加它们。</string>
+    <string name="export_log_success">成功保存了 Logcat</string>
+    <string name="export_log_error">保存 logcat 出错</string>
+    <string name="pref_export_log_title">调试日志</string>
+    <string name="pref_export_log_summary">创建对调试有帮助的 logcat 输出文件。小心，它可能包含敏感信息！</string>
 </resources>
