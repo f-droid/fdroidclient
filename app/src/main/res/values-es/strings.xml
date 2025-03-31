@@ -626,4 +626,5 @@
     <string name="menu_share_apk">Compartir archivo APK</string>
     <string name="preferForeign">Preferir espejos externos</string>
     <string name="preferForeignSummary">Pruebe primero con espejos situados fuera de su país, por ejemplo, si las protecciones extranjeras son más fuertes.</string>
+    <string name="no_handler_app_generic">No tienes ninguna aplicación disponible que pueda manejar esto.</string>
 </resources>
