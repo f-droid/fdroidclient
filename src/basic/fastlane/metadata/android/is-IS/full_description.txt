@@ -1,0 +1,15 @@
+ATHUGAÐU: Grunnútgáfa (Basic) F-Droid forritsins er með færri eiginleika (t.d. ekki deilingu til tækja í nágrenninu og enga neyðaraðgerð). Hún miðast við Android 13 og getur séð um uppfærslur án afskipta notandans án forgangsviðbótarinnar eða rótaraðgangs.
+
+F-Droid er uppsetjanlegt safn frjáls hugbúnaðar fyrir Android. F-Droid forritið auðveldar að skoða, setja upp og sjá um uppfærslur forrita á tækinu þínu.
+
+Það tengist við öll F-Droid-samhæfð hugbúnaðarsöfn. Sjálfgefna hugbúnaðarsafnið er hýst á f-droid.org, sem inniheldur einungis sannanlega opinn og frjálsan hugbúnað.
+
+Sjálft Android er opið í þeim skilningi að þér er frjálst að setja upp APK-pakka hvaðan sem þér sýnist, en það eru margar góðar ástæður til að nota F-Droid til stýringar á frjálsu forritunum sem þú notar:
+
+* Fáðu tilkynningar þegar uppfærslur eru í boði
+* Þú getur valið að sækja og setja uppfærslur inn sjálfvirkt
+* Haltu utan um eldri útgáfur og beta-prófunarútgáfur
+* Síaðu í burtu útgáfur sem ekki henta tækinu þínu
+* Finndu forrit eftir flokkum eða leit í lýsingum
+* Farðu inn á slóðir tengdar hugbúnaði til að styrkja viðkomandi, nálgast grunnkóða, o.s.frv.
+* Tryggðu öryggið með því að yfirfara undirritanir safna og tætigildi APK-pakka

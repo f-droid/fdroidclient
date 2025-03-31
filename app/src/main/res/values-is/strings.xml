@@ -152,7 +152,7 @@
     <string name="swap_confirm_connect">Viltu ná í forrit frá %1$s núna?</string>
     <string name="swap_dont_show_again">Ekki birta þetta aftur</string>
     <string name="swap_choose_apps">Veldu forrit</string>
-    <string name="swap_scan_qr">QR-kóða</string>
+    <string name="swap_scan_qr">QR-kóði</string>
     <string name="swap_people_nearby">Fólk sem er nálægt</string>
     <string name="swap_scanning_for_peers">Leita að fólki í nágrenninu…</string>
     <string name="swap_nearby">Býtti í nágrenninu</string>
@@ -252,7 +252,7 @@
     <string name="crash_dialog_text">Upp kom óvænt villa sem þvingaði fram lokun á forritinu. Viltu senda tölvupóst með nánari upplýsingum um atvikið til að hjálpa við að laga þetta ?</string>
     <string name="keep_install_history">Halda yfirliti yfir uppsetningar</string>
     <string name="keep_install_history_summary">Geyma upplýsingar yfir allar uppsetningar og fjarlægingar í einkaannál</string>
-    <string name="warning_no_internet">Get ekki uppfært, ertu tengdur við internetið?</string>
+    <string name="warning_no_internet">Get ekki uppfært, ertu tengd/ur við internetið?</string>
     <string name="versions">Útgáfur</string>
     <string name="app_details_donate_prompt_unknown_author">Kauptu einn kaffibolla handa forriturum %1$s!</string>
     <string name="app_details_donate_prompt">%1$s er hannað af %2$s. Kauptu einn kaffibolla handa þeim!</string>
@@ -262,7 +262,7 @@
     <string name="app_new">Nýtt</string>
     <string name="installed_apps__activity_title">Uppsett forrit</string>
     <string name="installed_app__updates_ignored">Hunsaðar uppfærslur</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Hunsaðar uppfærslur fyrir %1$s-útgáfuna</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Uppfærslur hunsaðar fyrir %1$s-útgáfuna</string>
     <string name="clear_search">Hreinsa leit</string>
     <string name="repositories_summary">Bæta við öðrum upptökum fyrir hugbúnað</string>
     <string name="main_menu__latest_apps">Nýjustu</string>
@@ -586,4 +586,25 @@
     <string name="repo_list_info_text">Hugbúnaðarsafn er uppspretta fyrir forrit og fleira. Þessi listi sýnir öll hugbúnaðarsöfn sem hefur verið bætt við. Óvirk hugbúnaðarsöfn eru ekki notuð. \n \nEf forrit er í fleiri en einu hugbúnaðarsafni, er það safn notað sem er hærra á listanum. Þú getur endurraðað listanum með því að ýta lengi á atriði og draga þau til.</string>
     <string name="preferForeign">Kjósa helst erlenda spegla</string>
     <string name="preferForeignSummary">Prófa fyrst spegla sem staðsettir eru í öðru landi en þínu, t.d. ef verndun gagna er sterkari erlendis.</string>
+    <string name="repo_archive_check">Leita í geymslu</string>
+    <string name="repo_basic_auth_title">Einföld auðkenning</string>
+    <string name="show_repository_qr">Birta QR-kóða hugbúnaðarsafns</string>
+    <string name="no_handler_app_generic">Þú hefur ekki nein forrit tiltæk sem geta meðhöndlað þetta.</string>
+    <string name="repo_confirm_delete_mirror_title">Eyða spegli?</string>
+    <string name="share_mirror">Deila spegli</string>
+    <string name="repo_archive_unknown">Þetta hugbúnaðarsafn virðist ekki vera með neina geymslu.</string>
+    <string name="repo_details_info_text">Hugbúnaðarsafn er upptök fyrir forrit.\n\nSpeglar eru notaðir til að dreifa álagi við niðurhal forrita á milli margra netþjóna. Speglar sem eru nálægt þér gætu verið hraðvirkari.\n\nOpinberir speglar eru skilgreindir af eiganda hugbúnaðarsafns. Þeim er ekki hægt að eyða, aðeins gera óvirka. Þú getur skilgreint sérsniðna viðbótarspegla rétt eins og þú bætir við venjulegum hugbúnaðarsöfnum.</string>
+    <string name="repo_last_update_check">Síðasta athugun á uppfærslu hugbúnaðarsafns: %s</string>
+    <string name="repo_basic_auth_username">Notandanafn: %s</string>
+    <string name="repo_basic_auth_password">Lykilorð: ***</string>
+    <string name="repo_basic_auth_edit">Breyta</string>
+    <string name="repo_last_update_index">Síðasta uppfærsla hugbúnaðarsafns: %s</string>
+    <string name="repo_confirm_delete_mirror_body">Þú getur haldið áfram að setja upp forrit úr þessu hugbúnaðarsafni með því að nota aðra spegla.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d forrit</item>
+        <item quantity="other">%d forrit</item>
+    </plurals>
+    <string name="expand">Fella út</string>
+    <string name="collapse">Fella saman</string>
+    <string name="pref_export_log_title">Atvikaskráning</string>
 </resources>
