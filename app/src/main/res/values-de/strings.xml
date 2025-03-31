@@ -628,4 +628,8 @@
     <string name="collapse">Einklappen</string>
     <string name="repo_confirm_delete_mirror_title">Spiegelserver löschen?</string>
     <string name="repo_confirm_delete_mirror_body">Sie können weiterhin Apps von dieser Paketquelle über die anderen Spiegelserver installieren.</string>
+    <string name="pref_export_log_title">Debug-Log</string>
+    <string name="export_log_success">Logcat erfolgreich gespeichert</string>
+    <string name="export_log_error">Fehler beim Speichern des Logcats</string>
+    <string name="pref_export_log_summary">Erzeugt eine Datei mit Logcat-Ausgaben, die für die Fehlersuche nützlich sind. Vorsicht, sie könnte sensible Informationen enthalten!</string>
 </resources>
