@@ -8,7 +8,7 @@
     <string name="updates">يېڭىلانمىلار</string>
     <string name="other">باشقا</string>
     <string name="notify">ئېرىشىشكە بولىدىغان يېڭىلانمىلارنى كۆرسەت</string>
-    <string name="app_details">ئۇيغۇلىما تەپسىلاتلىرى</string>
+    <string name="app_details">ئەپ تەپسىلاتى</string>
     <string name="no_such_app">بۇنداق ئۇيغۇلىما تېپىلمىدى.</string>
     <string name="about_title_full">ف-درويد ھەققىدە</string>
     <string name="about_site">تورتۇرا</string>
@@ -26,7 +26,7 @@
     <string name="menu_manage">خەزىنە باشقۇر</string>
     <string name="menu_search">ئىزدە</string>
     <string name="menu_add_repo">يېڭى خەزىنە</string>
-    <string name="menu_launch">ئىجرا قىل</string>
+    <string name="menu_launch">ئاچ</string>
     <string name="menu_share">ھەمبەھىر</string>
     <string name="menu_install">ئورنات</string>
     <string name="menu_uninstall">ئۆچۈر</string>
@@ -56,14 +56,14 @@
     </string>
     <string name="no_handler_app">سىزنىڭ %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئۇيغۇلىمىڭىز يوق.</string>
     <string name="theme">ئۇسلۇب</string>
-    <string name="app_name_full">ف-درويد</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="back">قايتىش</string>
     <string name="menu_settings">تەڭشەكلەر</string>
     <string name="main_menu__latest_apps">ئەڭ يېڭى</string>
     <string name="main_menu__categories">تۈرلەر</string>
     <string name="next">كېيىنكى</string>
     <string name="pref_language">تىل</string>
-    <string name="pref_language_default">سىستېما سۈكۈت</string>
+    <string name="pref_language_default">سىستېما كۆڭۈلدىكى</string>
     <string name="category_Development">تەرەققىيات</string>
     <string name="category_Games">ئويۇنلار</string>
     <string name="category_Graphics">رەسىملەر</string>
@@ -93,7 +93,7 @@
     <string name="updates__tts__download_app">چۈشۈرۈش</string>
     <string name="more">جىقراق</string>
     <string name="less">ئازراق</string>
-    <string name="warning_no_internet">يېڭىلاشقا بولمىدى،ئەجەبا تورغا باغلاندىڭىزمۇ؟</string>
+    <string name="warning_no_internet">يېڭىلىيالمىدى، ئىنتېرنېتقا باغلاندىڭىزمۇ؟</string>
     <string name="unsigned">ئىمزالانمىغان</string>
     <string name="unverified">جەزىملەنمىگەن</string>
     <string name="repo_details">ئامبار</string>
@@ -105,8 +105,8 @@
     <string name="swap_send_fdroid">ف-درويدنى يوللاش</string>
     <string name="crash_dialog_title">ف-درويد موللاق ئاتتى</string>
     <string name="crash_dialog_text">كۈتۈلمىگەن بىر خاتالىق ئۇيغۇلىمىنى توختاشقا زورلاۋاتىدۇ. تەپسىلاتىنى ئېلخەت بىلەن يوللاپ مەسىلىنى ھەل قىلىشنى خالامسىز؟</string>
-    <string name="notification_title_single_update_available">ئېرىشىشچان يېڭىلانما</string>
-    <string name="notification_title_summary_install_error">ئورنىتىش مەغلۇب</string>
+    <string name="notification_title_single_update_available">يېڭىلانما بار</string>
+    <string name="notification_title_summary_install_error">ئورنىتالمىدى</string>
     <string name="by_author_format">%s گە ئاساسەن</string>
     <string name="unstable_updates">تۇراقسىز يېڭىلانمىلار</string>
     <string name="unstable_updates_summary">تۇراقسىز نەشىرىگە قارىتا تەۋسىيەلىك يېڭىلانمىلار</string>
@@ -248,4 +248,6 @@
     <string name="empty_can_update_app_list">تەبرىكلەر!
 \nسىزنىڭ ئۇيغۇلىمىلىرڭىز گۈنجەل.</string>
     <string name="empty_search_available_app_list">ماس كېلىدىغان ئۇيغۇلىما يوق.</string>
+    <string name="app_name_basic">F-Droid ئاساسى نەشرى</string>
+    <string name="prompt_to_send_crash_reports">يىمىرىلىش دوكلاتى يوللاشنى ئەسكەرتىدۇ</string>
 </resources>
