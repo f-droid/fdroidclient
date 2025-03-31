@@ -504,7 +504,7 @@
     <string name="send_to_fdroid_metrics">Надіслати дані про використання</string>
     <string name="fdroid_metrics_report">%s звіт з метриками</string>
     <string name="install_history_and_metrics">Встановити історію та метрики</string>
-    <string name="send_fdroid_metrics_json">%s звіт з метриками у вигляді файлу JSON</string>
+    <string name="send_fdroid_metrics_json">%s звіт з метриками у JSON файлі</string>
     <string name="send_fdroid_metrics_report">Надіслати %s звіт з метриками</string>
     <string name="theme_follow_system">Дотримуватись системної</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендовано лише для OLED-екранів.</string>
