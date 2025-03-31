@@ -249,9 +249,7 @@
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot</string>
     <string name="update_auto_download">Obtener actualizaciones automáticamente</string>
-    <string name="update_auto_download_summary">Las actualizaciones se descargan automáticamente y se le avisará para
-        instalarlas
-    </string>
+    <string name="update_auto_download_summary">Las actualizaciones se descargan automáticamente y se le avisa para que las instale</string>
     <string name="download_pending">Esperando a que empiece la descarga…</string>
     <string name="keep_day">Un día</string>
     <string name="keep_week">Una semana</string>
