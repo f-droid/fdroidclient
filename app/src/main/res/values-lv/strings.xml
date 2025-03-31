@@ -54,7 +54,7 @@
     <string name="about_source">Pirmkods</string>
     <string name="about_license">Licence</string>
     <string name="menu_settings">Iestatījumi</string>
-    <string name="menu_email">Nosūtīt autoram e-pasta ziņu</string>
+    <string name="menu_email">Nosūtīt autoram e-pasta ziņojumu</string>
     <string name="menu_issues">Nepilnību pieteikumi</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -85,7 +85,7 @@
     <string name="preference_manage_installed_apps">Pārvaldīt uzstādītās lietotnes</string>
     <string name="next">Tālāk</string>
     <string name="skip">Izlaist</string>
-    <string name="pref_language_default">Sistēmas</string>
+    <string name="pref_language_default">Sistēmas noklusējums</string>
     <string name="newPerms">Jauna</string>
     <string name="notification_action_update">Atjaunināt</string>
     <string name="notification_action_cancel">Atcelt</string>
@@ -99,7 +99,7 @@
     <string name="unsigned">Neparakstīts</string>
     <string name="unverified">Neapliecināts</string>
     <string name="repo_last_update">Pēdējais atjauninājums</string>
-    <string name="not_on_same_wifi">Ierīce nav tajā pašā Wi-Fi tīklā kā tikko pievienotā glabātava. Jāmēģina pievienoties šim tīklam: %s</string>
+    <string name="not_on_same_wifi">Ierīce nav tajā pašā Wi-Fi tīklā kā tikko pievienotā vietējā glabātava. Jāmēģina pievienoties šim tīklam: %s</string>
     <string name="category_Sports_Health">Sports un veselība</string>
     <string name="category_System">Sistēma</string>
     <string name="swap_send_fdroid">Sūtīt F-Droid</string>
@@ -110,7 +110,7 @@
     <string name="SignatureMismatch">Jaunā versija ir parakstīta ar atslēgu, kas atšķiras no iepriekšējās. Lai to uzstādītu, vispirms ir jānoņem iepriekšējā. Lūgums to izdarīt un mēģināt vēlreiz. (Jāņem vērā, ka noņemšana izdzēsīs visus lietotnes datus)</string>
     <string name="installIncompatible">Lietotne nav saderīga ar ierīci. Vienalga uzstādīt\?</string>
     <string name="by_author_format">izstrādātājs: %s</string>
-    <string name="unstable_updates">Nepastāvīgie atjauninājumi</string>
+    <string name="unstable_updates">Nepastāvīgi atjauninājumi</string>
     <string name="unstable_updates_summary">Piedāvāt nepastāvīgu versiju atjauninājumus</string>
     <string name="keep_install_history">Saglabāt uzstādīšanas vēsturi</string>
     <string name="keep_install_history_summary">Glabāt uzstādīšanas un noņemšanas žurnālu privātā krātuvē</string>
@@ -276,7 +276,7 @@
     <string name="swap_intro">Savienojies un apmainies ar lietotnēm ar tuvumā esošiem cilvēkiem!</string>
     <string name="swap_nearby">Klātienes mijmaiņa</string>
     <string name="swap_scanning_for_peers">Meklē cilvēkus tuvumā…</string>
-    <string name="swap_people_nearby">Cilvēki tuvumā</string>
+    <string name="swap_people_nearby">Tuvumā esoši cilvēki</string>
     <string name="swap_scan_qr">Kvadrātkods</string>
     <string name="swap_choose_apps">Izvēlēties lietotnes</string>
     <string name="swap_scan_or_type_url">Vienam cilvēkam vajag nolasīt kodu vai pārlūkā ierakstīt otra URL.</string>
@@ -303,7 +303,7 @@
     <string name="system_install_denied_permissions">Paplašinājumam netika piešķirtas paplašinātās atļaujas. Lūgums izveidot kļūdu ziņojumu.</string>
     <string name="uninstall_error_unknown">Neizdevās izdzēst nezināmas kļūdas dēļ</string>
     <string name="install_error_unknown">Neizdevās uzstādīt nezināmas kļūdas dēļ</string>
-    <string name="empty_search_available_app_list">Atbilstošas lietotnes nav pieejamas.</string>
+    <string name="empty_search_available_app_list">Nav atbilstošu lietotņu.</string>
     <string name="empty_can_update_app_list">Apsveicam! \nLietotnes ir atjauninātas.</string>
     <string name="category_Theming">Izskats</string>
     <string name="wifi_ap">Tīklājs</string>
@@ -359,7 +359,7 @@
     <string name="appcompatibility">Lietotņu saderība</string>
     <string name="search_hint">Meklēt lietotnes</string>
     <string name="expert_on">Rādīt papildu informāciju un iespējot papildu iestatījumus</string>
-    <string name="expert">Lietpratēja režīms</string>
+    <string name="expert">Iestatījumi lietpratējiem</string>
     <string name="display">Attēlojums</string>
     <string name="antinosourcesince">Pirmkods vairs nav pieejams, atjauninājumi nav iespējami</string>
     <string name="antiknownvulnlist">Šī lietotne satur zināmu drošības ievainojamību</string>
@@ -497,7 +497,7 @@
     <string name="notification_channel_updates_description">Attēlo lietotņu un glabātavu atjaunināšanas paziņojumus.</string>
     <string name="app_error_open">Nevarēja palaist lietotni.</string>
     <string name="antinsfwlist">Šajā lietotnē ir saturs, ko nevajadzētu publiskot vai kam nevajadzētu būt visur redzamam</string>
-    <string name="banner_no_data_or_wifi">Nav iespējots datu vai WiFi savienojums</string>
+    <string name="banner_no_data_or_wifi">Nav iespējoti dati vai Wi-Fi</string>
     <string name="no_handler_app">Nav pieejamas nevienas lietotnes, kas varētu apieties ar %s.</string>
     <string name="repo_last_update_downloaded">Pēdējais lejupielādētais atjauninājums</string>
     <string name="unsigned_description">Tas nozīmē, ka lietotņu sarakstu nevarēja apliecināt. Jābūt uzmanīgam ar lietotnēm, kas ir lejupielādētas no neparakstītiem indeksiem.</string>
@@ -552,7 +552,7 @@
     <string name="app_details_repositories">Glabātavas</string>
     <string name="app_list_no_suggested_version">Uzstādīšanai nav ieteikta neviena versija.</string>
     <string name="app_details_repository_preferred">(vēlama)</string>
-    <string name="app_details_repository_button_prefer">Izvēlēties šo glabātavu</string>
+    <string name="app_details_repository_button_prefer">Dot priekšroku šai glabātavai</string>
     <string name="app_details_repository_expand">Izvērst glabātavu sarakstu</string>
     <string name="repo_add_repo_and_mirror">Pievienot glabātavu un spoguļserveri</string>
     <string name="repo_view_repo">Apskatīt glabātavu</string>
@@ -597,4 +597,29 @@
     <string name="apk_permissions_mismatch">Lietotnei ir neparedzēta atļauja: %s</string>
     <string name="preferForeign">Priekšroku dot ārzemju spoguļserveriem</string>
     <string name="preferForeignSummary">Vispirms mēģināt izmantot spoguļserverus, kuri atrodas ārpus Tavas valsts, piemērma, ja ārzemju aizsardzība ir spēcīgāka.</string>
+    <string name="no_handler_app_generic">Nav pieejama neviena lietotne, kas šo var apstrādāt.</string>
+    <string name="repo_archive_unknown">Neizskatās, ka šai glabātavai būtu arhīvs.</string>
+    <string name="repo_archive_check">Pārbaudīt arhīvu</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="zero">%d lietotņu</item>
+        <item quantity="one">%d lietotne</item>
+        <item quantity="other">%d lietotnes</item>
+    </plurals>
+    <string name="repo_last_update_index">Pēdējā glabātavas atjaunināšana: %s</string>
+    <string name="repo_last_update_check">Pēdējā glabātavas atjauninājuma pārbaude: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Izdzēst spoguļglabātavu?</string>
+    <string name="repo_confirm_delete_mirror_body">Var turpināt uzstādīt lietotnes no šīs glabātavas caur citām spoguļglabātavām.</string>
+    <string name="share_mirror">Kopīgot spoguļglabātavu</string>
+    <string name="show_repository_qr">Parādīt glabātavas kvadrātkodu</string>
+    <string name="repo_basic_auth_title">Pamata autentificēšana</string>
+    <string name="repo_basic_auth_username">Lietotājvārds: %s</string>
+    <string name="repo_basic_auth_password">Parole: ***</string>
+    <string name="repo_details_info_text">Glabātava ir lietotņu avots.\n\nSpoguļglabātavas tiek izmantotas, lai izkliedētu lietotņu lejupielādēšanas radīto noslogojumu starp vairākiem serveriem. Tuvāk esošās spoguļglabātavas var būt ātrākas.\n\nOficiālās spoguļglabātavas norādā glabātavas īpašnieks. Tās nevar izdzēst, var tikai atspējot. Var norādīt papildu pielāgotas spoguļglabātavas, pievienojot tās tāpat kā parastu glabātavu.</string>
+    <string name="repo_basic_auth_edit">Labot</string>
+    <string name="collapse">Sakļaut</string>
+    <string name="expand">Izvērst</string>
+    <string name="pref_export_log_title">Atkļūdošanas žurnāls</string>
+    <string name="export_log_success">Logcat sekmīgi saglabāts</string>
+    <string name="export_log_error">Kļūda logcat saglabāšanas laikā</string>
+    <string name="pref_export_log_summary">Izveido datni ar logcat izvadi, kas ir noderīga atkļūdošanai. Jāuzmanās, jo tā var saturēt jutīgu informāciju.</string>
 </resources>
