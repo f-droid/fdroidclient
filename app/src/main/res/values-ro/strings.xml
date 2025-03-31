@@ -633,4 +633,5 @@
     <string name="export_log_success">Jurnal salvat cu succes</string>
     <string name="export_log_error">Eroare la salvarea jurnalului</string>
     <string name="pref_export_log_summary">Creează un fișier jurnal util pentru depanarea. Atenție, ar putea conține informații sensibile!</string>
+    <string name="pref_export_log_title">Jurnal de depanare</string>
 </resources>
