@@ -421,7 +421,7 @@
     <string name="repo_delete_to_overwrite">Ștergeți %1$s mai întâi pentru a-l putea adăuga pe acesta ce are o cheie diferită.</string>
     <string name="repo_exists_add_mirror">Acesta este o copie a %1$s, îl adăugăm ca server de rezervă?</string>
     <string name="repo_official_mirrors">Servere de rezervă oficiale</string>
-    <string name="repo_user_mirrors">Folosire servere de rezervă</string>
+    <string name="repo_user_mirrors">Servere de rezervă ale utilizatorilor</string>
     <string name="over_wifi">Prin Wi-Fi</string>
     <string name="over_data">Prin date mobile</string>
     <string name="over_network_always_summary">Folosește mereu această conexiune când este disponibilă</string>
@@ -609,4 +609,28 @@
     <string name="menu_share_apk">Partajează fișierul APK</string>
     <string name="preferForeign">Preferă depozitele de rezervă străine</string>
     <string name="preferForeignSummary">Încercați mai întâi depozitele de rezervă care se află în afara țării dvs., de exemplu, dacă protecțiile străine sunt mai ridicate.</string>
+    <string name="no_handler_app_generic">Nu aveți nicio aplicație disponibilă care să suporte această acțiune.</string>
+    <string name="repo_basic_auth_edit">Editare</string>
+    <string name="repo_basic_auth_username">Nume: %s</string>
+    <string name="repo_basic_auth_title">Autentificare de bază</string>
+    <string name="show_repository_qr">Afișați codul QR al depozitului</string>
+    <string name="share_mirror">Partajare depozit de rezervă</string>
+    <string name="repo_confirm_delete_mirror_title">Ștergere depozit de rezervă?</string>
+    <string name="repo_last_update_check">Ultima verificare actualizare depozit: %s</string>
+    <string name="repo_last_update_index">Ultima actualizare depozit: %s</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">O aplicație</item>
+        <item quantity="few">%d aplicații</item>
+        <item quantity="other">%d de aplicații</item>
+    </plurals>
+    <string name="repo_archive_check">Verificare arhivă</string>
+    <string name="repo_archive_unknown">Acest depozit nu pare să aibă o arhivă.</string>
+    <string name="collapse">Strânge</string>
+    <string name="expand">Extinde</string>
+    <string name="repo_basic_auth_password">Parolă: ***</string>
+    <string name="repo_confirm_delete_mirror_body">Puteți continua să instalați aplicații din acest depozit utilizând celelalte servere de rezervă.</string>
+    <string name="repo_details_info_text">Un depozit este o sursă de aplicații.\n\nDepozitele de rezervă sunt utilizate pentru a distribui sarcina de descărcare a aplicațiilor pe mai multe servere. Cele mai apropiate de dvs. pot fi mai rapide.\n\nDepozitele de rezervă oficiale sunt definite de proprietarul depozitului. Acestea nu pot fi șterse, ci doar dezactivate. Puteți defini depozite de rezervă personalizate suplimentare prin adăugarea lor, la fel ca într-un depozit normal.</string>
+    <string name="export_log_success">Jurnal salvat cu succes</string>
+    <string name="export_log_error">Eroare la salvarea jurnalului</string>
+    <string name="pref_export_log_summary">Creează un fișier jurnal util pentru depanarea. Atenție, ar putea conține informații sensibile!</string>
 </resources>
