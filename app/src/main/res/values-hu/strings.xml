@@ -600,4 +600,5 @@
     <string name="apk_permissions_mismatch">Az alkalmazás váratlan engedéllyel rendelkezik: %s</string>
     <string name="preferForeign">Külföldi szerverek preferálása</string>
     <string name="preferForeignSummary">Először az országon kívüli szervereket próbálja elérni, például ha a külföldinek erősebb a védelme.</string>
+    <string name="no_handler_app_generic">Nincs olyan elérhető alkalmazás, amely ezt kezelni tudná.</string>
 </resources>

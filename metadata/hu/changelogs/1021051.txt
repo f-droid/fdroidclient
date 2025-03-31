@@ -1,0 +1,7 @@
+* Tárolófrissítő újraírása a megbízhatóbb háttérbeli frissítés érdekében
+* Figyelmeztetés, ha az alkalmazások nem frissíthetők az előnyben részesített tárolóból
+* A tükrök kezelésének javítása a „Tároló hozzáadása” előnézetében
+* Beavatkozásmentes alkalmazásfrissítések a nem MIUI-t futtató Xiaomi-eszközökön
+* Előnytelen funkciók leírásának frissítése
+* „Kötött hálózat” előnytelen funkció hozzáadása
+* Szóközök figyelmen kívül hagyása a tükrök hozzáadásakor
