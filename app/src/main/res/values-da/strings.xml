@@ -432,7 +432,7 @@
     <string name="panic_app_setting_summary">Ingen app er valgt</string>
     <string name="panic_settings_summary">Handlinger i tilfælde af nødsituation</string>
     <string name="panic_destructive_actions">Destruktive Handlinger</string>
-    <string name="panic_hide_warning_title">Husk hvordan der gendannes</string>
+    <string name="panic_hide_warning_title">Husk hvordan du kan gendanne</string>
     <string name="nearby_splash__read_external_storage">Søg på SD-kort efter arkiver og spejle.</string>
     <string name="repo_exists_and_enabled">%1$s er allerede sat op og aktiveret.</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Den installerede version er ikke kompatibel med nogen af de tilgængelige versioner. Afinstallerer appen for at se og installere kompatible versioner. Dette sker ofte med apps installeret via Google Play eller andre kilder, hvis de er signeret med et andet certifikat.</string>
@@ -592,4 +592,5 @@
     <string name="preferForeignSummary">Prøv først mirrors, der ligger uden for dit land, f.eks. hvis udenlandsk beskyttelse er stærkere.</string>
     <string name="repo_archive_toggle">Repository-arkiv</string>
     <string name="repo_archive_failed">Arkiv-repo er ikke tilgængeligt i øjeblikket</string>
+    <string name="no_handler_app_generic">Du har ikke nogen tilgængelig app, som kan håndtere dette.</string>
 </resources>
