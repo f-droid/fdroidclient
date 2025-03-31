@@ -13,7 +13,7 @@
     <string name="system_installer_on">ניתן להשתמש בהרחבה מועדפת כדי להתקין, לעדכן, ולהסיר חבילות</string>
     <string name="local_repo_name">שם המאגר המקומי שלך</string>
     <string name="local_repo_name_summary">הכותרת המעודכנת של המאגר המקומי שלך: %s</string>
-    <string name="local_repo_https_on">שימוש בחיבור //:HTTPS עבור מאגר מקומי</string>
+    <string name="local_repo_https_on">להשתמש בחיבור //:HTTPS מוצפן עבור מאגר מקומי</string>
     <string name="app_details">פרטי יישומון</string>
     <string name="no_such_app">לא נמצא כזה יישומון.</string>
     <string name="about_title_full">על F-Droid</string>
@@ -38,7 +38,7 @@
     <string name="choose_bt_send">נא לבחור שיטת שליחה של Bluetooth</string>
     <string name="repo_add_url">כתובת מאגר</string>
     <string name="repo_add_fingerprint">טביעת אצבע (רשות)</string>
-    <string name="repo_delete_to_overwrite">עליך למחוק תחילה את %1$s כדי להוסיף זאת עם מפתח סותר.</string>
+    <string name="repo_delete_to_overwrite">יש למחוק תחילה את %1$s כדי להוסיף זאת עם מפתח סותר.</string>
     <string name="bad_fingerprint">טביעת אצבע שגויה</string>
     <string name="invalid_url">כתובת זו אינה תקינה.</string>
     <string name="malformed_repo_uri">כתובת מאגר שגויה בהתעלמות: %s</string>
@@ -168,7 +168,7 @@
     <string name="category_Writing">כתיבה</string>
     <string name="swap_choose_apps">בחירת יישומונים</string>
     <string name="swap_scan_qr">קוד QR</string>
-    <string name="swap_people_nearby">אנשים בקרבת מקום</string>
+    <string name="swap_people_nearby">אנשים בקרבתי</string>
     <string name="swap_scanning_for_peers">מתבצא חיפוש אחר אנשים בקרבת מקום…</string>
     <string name="swap_visible_bluetooth">גלוי דרך Bluetooth</string>
     <string name="swap_setting_up_bluetooth">כעת מעלה Bluetooth…</string>
@@ -191,7 +191,7 @@
     <string name="unstable_updates">עדכונים לא יציבים</string>
     <string name="unstable_updates_summary">הצעת עדכונים לגרסאות לא יציבות</string>
     <string name="about_source">קוד מקור</string>
-    <string name="swap_nearby">החלפה בקרבת מקום</string>
+    <string name="swap_nearby">החלפה בקרבתי</string>
     <string name="swap_cant_find_peers">לא מצאת את מבוקשך?</string>
     <string name="swap_send_fdroid">שליחת F-Droid</string>
     <string name="apps">יישומונים</string>
@@ -213,7 +213,7 @@
     <string name="repo_disabled_notification">%1$s נוטרל.
 \n
 \nעליך לאפשר שוב את המאגר זה כדי להתקין יישומונים מתוכו.</string>
-    <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת זו: %s</string>
+    <string name="not_on_same_wifi">המכשיר שלך אינו מחובר לאותה הרשת האלחוטית כמו המאגר המקומי שהוספת זה עתה! נא לנסות להצטרף לרשת הזאת: %s</string>
     <string name="swap_join_same_wifi_desc">כדי לבצע החלפה באמצעות רשת אלחוטית, עליך לוודא כי מכשירך מחובר לאותה הרשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור נקודת רשת אלחוטית.</string>
     <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? הנתונים הקיימים שלך לא יאבדו. האפליקציה המעודכנת תקבל גישה אל:</string>
     <string name="install_confirm_update_system">האם ברצונך להתקין עדכון לאפליקציה מובנית זו? הנתונים הקיימים שלך לא יאבדו. האפליקציה המעודכנת תקבל גישה אל:</string>
@@ -296,7 +296,7 @@
     <string name="details_new_in_version">חדש בגרסה %s</string>
     <string name="antifeatureswarning">ייתכן שביישומון זה ישנן תכונות שלא תישאנה חן בעיניך.</string>
     <string name="antifeatures">תכונות שליליות</string>
-    <string name="warning_no_internet">לא ניתן לעדכן, האם קיים חיבור לרשת?</string>
+    <string name="warning_no_internet">לא ניתן לעדכן, יש חיבור לרשת?</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">הצגת אחד</item>
         <item quantity="two">הצגת כל ה־%d</item>
@@ -310,7 +310,7 @@
     <string name="notification_action_update">עדכון</string>
     <string name="notification_action_cancel">ביטול</string>
     <string name="notification_action_install">התקנה</string>
-    <string name="notification_title_single_update_available">ישנו עדכון</string>
+    <string name="notification_title_single_update_available">יש עדכון</string>
     <string name="notification_title_summary_install_error">התקנה נכשלה</string>
     <string name="download_404">הקובץ המבוקש לא נמצא.</string>
     <string name="install_error_notify_title">שגיאה בהתקנת %s</string>
@@ -387,7 +387,7 @@
         <item quantity="other">עודכן לפני %1$d שנים</item>
     </plurals>
     <string name="force_old_index">אילוץ שימוש בתבנית המפתח הישנה</string>
-    <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח היישומונים בתבנית XML</string>
+    <string name="force_old_index_summary">במקרה שמופיעות תקלות או בעיות תאימות, יש להשתמש במפתח יישומונים בתבנית XML</string>
     <string name="app_list_download_ready">התקבל, בהמתנה להתקנה</string>
     <string name="status_inserting_x_apps">פרטי היישומון נשמרים (%1$d/%2$d) מתוך %3$s</string>
     <string name="app_installed_media">הקובץ הותקן אל %s</string>
@@ -410,7 +410,7 @@
     <string name="panic_app_unknown_app">יישומון לא ידוע</string>
     <string name="panic_app_setting_summary">לא הוגדר יישומון</string>
     <string name="panic_app_setting_none">אין</string>
-    <string name="panic_app_dialog_title">הגדרת יישומון מצוקה</string>
+    <string name="panic_app_dialog_title">אישור יישומון מצוקה</string>
     <string name="panic_app_dialog_message">לאפשר ל־%1$s לבצע פעולות כפתור מצוקה הרסניות?</string>
     <string name="allow">כן, זה בסדר</string>
     <string name="panic_settings">הגדרות כפתור מצוקה</string>
@@ -453,7 +453,7 @@
     <string name="hide_all_notifications">הסתרת כל ההתראות</string>
     <string name="hide_all_notifications_summary">למנוע מכל הפעולות להופיע בשורת המצב ובמגירת ההתראות.</string>
     <string name="prompt_to_send_crash_reports">הצגת בקשה לשליחת דוחות קריסה</string>
-    <string name="prompt_to_send_crash_reports_summary">איסוף נתונים על קריסות ולשאול האם לשלוח אותם למפתחים</string>
+    <string name="prompt_to_send_crash_reports_summary">לאסוף נתונים על קריסות ולשאול האם לשלוח אותם למפתחים</string>
     <string name="install_history">היסטוריית התקנה</string>
     <string name="install_history_summary">הצגת יומן ההתקנות וההסרות הפרטי</string>
     <string name="send_version_and_uuid">שליחת גרסה ומזהה ייחודי גלובלי לשרתים</string>
@@ -623,4 +623,26 @@
     <string name="swap_bluetooth_permissions">יש להעניק הרשאה ל־Bluetooth או להתקנים קרובים!</string>
     <string name="menu_share_apk">שיתוף קובץ APK</string>
     <string name="apk_permissions_mismatch">ליישומון יש הרשאות מפתיעות: %s</string>
+    <string name="no_handler_app_generic">אין לך אף יישומון שיכול לטפל בזה.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">יישומון</item>
+        <item quantity="two">שני יישומונים</item>
+        <item quantity="other">%d יישומונים</item>
+    </plurals>
+    <string name="repo_last_update_index">עדכון המאגר האחרון: %s</string>
+    <string name="repo_last_update_check">בדיקת עדכניות המאגר האחרונה: %s</string>
+    <string name="repo_confirm_delete_mirror_title">למחוק אתר מראה?</string>
+    <string name="repo_confirm_delete_mirror_body">להמשיך להתקין יישומונים מהמאגר בעזרת אתרי המראה האחרים.</string>
+    <string name="share_mirror">שיתוף אתר מראה</string>
+    <string name="show_repository_qr">הצגת קוד ה־QR של המאגר</string>
+    <string name="repo_basic_auth_username">שם משתמש: %s</string>
+    <string name="repo_basic_auth_password">סיסמה: ***</string>
+    <string name="repo_basic_auth_edit">עריכה</string>
+    <string name="expand">הרחבה</string>
+    <string name="collapse">צמצום</string>
+    <string name="repo_basic_auth_title">אימות בסיסי</string>
+    <string name="repo_archive_unknown">נראה שבמאגר הזה אין ארכיון.</string>
+    <string name="preferForeign">להעדיף אתרי מראה זרים</string>
+    <string name="preferForeignSummary">לנסות אתרי מראה שנמצאים מחוץ למדינה שלך תחילה, למשל אם ההגנות במדינות זרות הן אדוקות יותר.</string>
+    <string name="repo_archive_check">בדיקת ארכיון</string>
 </resources>
