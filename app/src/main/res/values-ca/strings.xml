@@ -616,6 +616,6 @@
     <plurals name="repo_num_apps_text">
         <item quantity="one">1 aplicació</item>
         <item quantity="many">%d aplicacions</item>
-        <item quantity="other">(d == 1) ? 0 : ((d != 0 &amp;&amp; d % 1000000 == 0) ? 1 : 2)</item>
+        <item quantity="other">%d aplicacions</item>
     </plurals>
 </resources>
