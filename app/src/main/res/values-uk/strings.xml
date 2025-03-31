@@ -235,7 +235,7 @@
     <string name="update_auto_download">Автозавантаження оновлень</string>
     <string name="update_auto_download_summary">Оновлення завантажуватимуться автоматично, а після завершення пропонуватиметься їх встановити</string>
     <string name="download_pending">Очікування початку завантаження…</string>
-    <string name="keep_hour">1 година</string>
+    <string name="keep_hour">1 годину</string>
     <string name="keep_day">1 день</string>
     <string name="keep_week">1 тиждень</string>
     <string name="keep_month">1 місяць</string>
@@ -345,7 +345,7 @@
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d встановлений застосунок</item>
-        <item quantity="few">%1$d встановлених застосунки</item>
+        <item quantity="few">%1$d встановлені застосунки</item>
         <item quantity="many">%1$d встановлених застосунків</item>
         <item quantity="other">%1$d встановлених застосунків</item>
     </plurals>
@@ -608,5 +608,5 @@
     <string name="apk_permissions_mismatch">Застосунок має неочікуваний дозвіл: %s</string>
     <string name="preferForeign">Надати перевагу іноземним дзеркалам</string>
     <string name="preferForeignSummary">Спробувати дзеркала розташовані за межами країни, наприклад якщо іноземний захист сильніше.</string>
-    <string name="no_handler_app_generic">У вас немає жодного доступного додатка, який би міг це впоратися.</string>
+    <string name="no_handler_app_generic">У вас немає застосунку для обробки цього.</string>
 </resources>
