@@ -55,7 +55,7 @@
     <string name="show_incompat_versions">Zahrnout nekompatibilní verze</string>
     <string name="local_repo">Místní repozitář</string>
     <string name="local_repo_running">F-Droid je připraven k výměně</string>
-    <string name="touch_to_configure_local_repo">Dotykem zobrazíte detaily a umožníte ostatním si přetáhnout vaše aplikace.</string>
+    <string name="touch_to_configure_local_repo">Dotykem zobrazíte detaily a umožníte ostatním si vyměnit vaše aplikace.</string>
     <string name="deleting_repo">Odstraňuji místní repozitář…</string>
     <string name="adding_apks_format">Přidávám aplikaci %s do repozitáře…</string>
     <string name="writing_index_jar">Zapisuji podepsaný soubor s indexem (index.jar)…</string>
@@ -598,4 +598,25 @@
     <string name="menu_share_apk">Sdílet soubor APK</string>
     <string name="preferForeign">Upřednostňovat zahraniční zrcadla</string>
     <string name="preferForeignSummary">Vyzkoušet nejprve zrcadla, která se nacházejí mimo vaši zemi, např. pokud je ochrana v zahraničí silnější.</string>
+    <string name="no_handler_app_generic">Nemáte dostupnou žádnou aplikaci, která by dokázala tuto akci zpracovat.</string>
+    <string name="repo_archive_unknown">Tento repozitář nejspíše nemá archiv.</string>
+    <string name="repo_archive_check">Zkontrolovat archiv</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 aplikace</item>
+        <item quantity="few">%d aplikace</item>
+        <item quantity="other">%d aplikací</item>
+    </plurals>
+    <string name="repo_confirm_delete_mirror_title">Odstranit zrcadlo?</string>
+    <string name="repo_confirm_delete_mirror_body">Instalace z tohoto repozitáře budete moci instalovat i nadále skrze ostatní zrcadla.</string>
+    <string name="share_mirror">Sdílet zrcadlo</string>
+    <string name="show_repository_qr">Zobrazit QR kód repozitáře</string>
+    <string name="repo_basic_auth_title">Základní autentifikace</string>
+    <string name="repo_basic_auth_username">Uživatelské jméno: %s</string>
+    <string name="repo_basic_auth_edit">Upravit</string>
+    <string name="expand">Rozbalit</string>
+    <string name="collapse">Sbalit</string>
+    <string name="repo_details_info_text">Repozitář je zdroj aplikací.\n\nZrcadla se používají pro rozložení zátěže ze stahování aplikací na více serverů. Zrcadla blíže k vám mohou být rychlejší.\n\nOficiální zrcadla jsou definována správcem repozitáře. Nelze je odstranit, pouze zakázat. Další vlastní zrcadla můžete nastavit jejich přidáním stejným způsobem, jako klasický repozitář.</string>
+    <string name="repo_last_update_index">Poslední aktualizace repozitáře: %s</string>
+    <string name="repo_last_update_check">Poslední kontrola aktualizací repozitáře: %s</string>
+    <string name="repo_basic_auth_password">Heslo: ***</string>
 </resources>
