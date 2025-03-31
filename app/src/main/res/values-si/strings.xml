@@ -81,7 +81,7 @@
     <string name="send_history_csv">%s ස්ථාපන ඉතිහාසය CSV ගොනුවක් ලෙස</string>
     <string name="installIncompatible">යෙදුම ඔබගේ උපාංගය සමඟ නොගැලපේ, කෙසේ වෙතත් ස්ථාපනය කරන්නද\?</string>
     <string name="by_author_format">%s විසින්</string>
-    <string name="version">පිටපත</string>
+    <string name="version">අනුවාදය</string>
     <string name="keep_install_history_summary">සියලුම ස්ථාපනයන් සහ අස්ථාපනය කිරීම් වල ලොගයක් පුද්ගලික ගබඩාවක ගබඩා කරන්න</string>
     <string name="send_version_and_uuid">අනුවාදය සහ UUID සේවාදායකය වෙත යවන්න</string>
     <string name="force_old_index">පැරණි දර්ශක ආකෘතිය බල කරන්න</string>
@@ -115,4 +115,6 @@
     <string name="send_fdroid_metrics_report">%s ප්‍රමිතික වාර්තාව යවන්න</string>
     <string name="send_version_and_uuid_summary">මෙම යෙදුමේ අනුවාදය සහ බාගැනීමේදී අහඹු, අද්විතීය හැඳුනුම්පතක් ඇතුළත් කරන්න, ඊළඟ යෙදුම නැවත ආරම්භ කිරීම බලපානු ඇත.</string>
     <string name="main_menu__swap_nearby">ළඟ</string>
+    <string name="versions">අනුවාද</string>
+    <string name="about_version">අනුවාදය</string>
 </resources>
