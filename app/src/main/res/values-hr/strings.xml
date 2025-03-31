@@ -21,7 +21,7 @@
     <string name="system_installer_on">Koristi povlašteno proširenje za instaliranje, ažuriranje i uklanjanje paketa</string>
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
     <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
-    <string name="local_repo_https_on">Koristi enkriptiranu HTTPS:// vezu za lokalni repozitorij</string>
+    <string name="local_repo_https_on">Koristi šrifriranu HTTPS:// vezu za lokalni repozitorij</string>
     <string name="login_title">Zahtjevana autentikacija</string>
     <string name="login_name">Korisničko ime</string>
     <string name="login_password">Lozinka</string>
@@ -108,8 +108,8 @@
     <string name="useTor">Koristi Tor</string>
     <string name="useTorSummary">Prisili promet preuzimanja kroz Tor za povećanu privatnost. Zahtijeva Orbot</string>
     <string name="proxy">Proxy</string>
-    <string name="enable_proxy_title">Omogući HTTP Proxy</string>
-    <string name="enable_proxy_summary">Postavi HTTP Proxy za sve mrežne zahtjeve</string>
+    <string name="enable_proxy_title">Omogući HTTP proxy</string>
+    <string name="enable_proxy_summary">Postavi HTTP proxy za sve mrežne zahtjeve</string>
     <string name="proxy_host">Proxy poslužitelj</string>
     <string name="proxy_host_summary">Naziv poslužitelja Vašeg proxyja (npr. 127.0.0.1)</string>
     <string name="proxy_port">Proxy port</string>
@@ -190,7 +190,7 @@
         zapis o greški!
     </string>
     <string name="swap_join_same_wifi">Spoji se na istu Wi-Fi mrežu kao i prijatelj</string>
-    <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi Hotspot.</string>
+    <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi hotspot.</string>
     <string name="swap_join_this_hotspot">Pomozite prijatelju da se pridruži Vašem hotspotu</string>
     <string name="swap">Razmjeni aplikacije</string>
     <string name="swap_success">Razmjena uspjela!</string>
@@ -503,7 +503,7 @@
     <string name="share_apk_error">Nije moguće dijeliti datoteku aplikacije</string>
     <string name="has_disallow_install_unknown_sources">Ovaj korisnik ne može dodati nepoznate izvore, što uključuje nove repozitore</string>
     <string name="has_disallow_install_unknown_sources_globally">Administrator uređaja ne dopušta instaliranje aplikacija iz nepoznatih izvora, što uključuje nove repozitorije</string>
-    <string name="swap_toast_could_not_enable_hotspot">Nije moguće uključiti WiFi hotspot!</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nije moguće uključiti Wi-Fi hotspot!</string>
     <string name="swap_toast_using_path">Koristi se %1$s</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Pogledaj (%d)</item>
@@ -512,17 +512,17 @@
     </plurals>
     <string name="use_pure_black_dark_theme_summary">Preporučuje se samo za OLED ekrane.</string>
     <string name="use_pure_black_dark_theme">Koristi potpuno crnu pozadinu u tamnoj temi</string>
-    <string name="swap_toast_hotspot_enabled">WiFi Hotspot je uključen</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi hotspot je uključen</string>
     <string name="send_fdroid_metrics_report">Pošalji %s metrički izvještaj</string>
     <string name="send_fdroid_metrics_json">%s metrički izvještaj kao JSON datoteka</string>
     <string name="install_history_and_metrics">Povijest instalacije i metrike</string>
     <string name="menu_show_install_history">Prikaži povijest instalacija</string>
     <string name="send_to_fdroid_metrics">Pošalji podatke o korištenju</string>
-    <string name="banner_no_data_or_wifi">Podaci ili WiFi nisu uključeni</string>
+    <string name="banner_no_data_or_wifi">Mobilni podaci ili Wi-Fi su isključeni</string>
     <string name="menu_show_fdroid_metrics_report">Prikaži metrički izvještaj</string>
     <string name="send_to_fdroid_metrics_summary">Tjedno šalje anonimne podatke F-Droid metrikama (zahtjeva da se povijest o instalacijama sadrži)</string>
     <string name="fdroid_metrics_report">%s metrički izvještaj</string>
-    <string name="toast_metrics_in_install_history">Izvještaj metrike %s je moguće vidjeti u Pregledniku za povijest instalacija</string>
+    <string name="toast_metrics_in_install_history">Izvještaj metrike %s je moguće vidjeti u pregledniku povijesti instalacija</string>
     <string name="antitrack">Praćenje</string>
     <string name="antiads">Oglasi</string>
     <string name="repo_io_error">Greška pri povezivanju s repozitorijem.</string>
@@ -540,6 +540,6 @@
     <string name="menu_share_apk">Dijeli APK datoteku</string>
     <string name="latest__empty_state__upgrading">Aktualiziranje baze podataka …</string>
     <string name="repositories_last_update_never">nikada</string>
-    <string name="menu_release_channel_beta">Dozvoli aktualiziranje na beta verzije</string>
-    <string name="repositories_last_update">Zadnje aktualiziranje: %s</string>
+    <string name="menu_release_channel_beta">Dozvoli ažuriranja beta verzija</string>
+    <string name="repositories_last_update">Zadnje ažuriranje: %s</string>
 </resources>
