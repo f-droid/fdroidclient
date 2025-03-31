@@ -526,7 +526,7 @@
     <string name="about_title_basic">F-Droid ബേസിക്കിനെക്കുറിച്ച്</string>
     <string name="nearby_splace__external_storage_permission_button">പരീക്ഷിച്ചു നോക്കൂ</string>
     <string name="force_old_installer_title">പഴയ ഇൻസ്റ്റാളർ നിർബന്ധിക്കുക</string>
-    <string name="force_old_installer_summary">യാന്ത്രിക പശ്ചാത്തല അപ്‌ഡേറ്റുകൾക്കുള്ള പിന്തുണ ഉൾപ്പെടെ, ബീറ്റ സെഷൻ ഇൻസ്റ്റാളർ പ്രവർത്തനരഹിതമാക്കുക.</string>
+    <string name="force_old_installer_summary">യാന്ത്രിക പശ്ചാത്തല അപ്‌ഡേറ്റുകൾക്കുള്ള പിന്തുണ ഉൾപ്പെടെ, സെഷൻ ഇൻസ്റ്റാളർ പ്രവർത്തനരഹിതമാക്കുക.</string>
     <string name="antinsfwlist">എല്ലായിടത്തും പരസ്യപ്പെടുത്താനോ ദൃശ്യമാകാനോ പാടില്ലാത്ത ഉള്ളടക്കം ഈ ആപ്പിൽ അടങ്ങിയിരിക്കുന്നു</string>
     <string name="repo_exists">ഈ റിപ്പോ ഇതിനകം ചേർത്തിട്ടുണ്ട്.</string>
     <string name="repo_add_new_title">ശേഖരം ചേർക്കുക</string>
@@ -555,4 +555,6 @@
 \nപരിപാലകനെ ബന്ധപ്പെടുകയും പ്രശ്നത്തെക്കുറിച്ച് അവരെ അറിയിക്കുകയും ചെയ്യുക.</string>
     <string name="repo_share_not_found">പങ്കുവെച്ച വാചകത്തിൽ റെപ്പോ വിലാസം കണ്ടെത്താനായില്ല.</string>
     <string name="repo_error_adding_archive">ആർക്കൈവ് റെപ്പോസിറ്ററികൾ നേരിട്ട് ചേർക്കാനാകില്ല. ലിസ്റ്റിലുള്ള റെപ്പോസിറ്ററിയിൽ ടാപ്പ് ചെയ്ത് അവിടെ ആർക്കൈവ് സജ്ജമാക്കുക.</string>
+    <string name="antitetherednetlist">ഈ ആപ്പ് പൂർണ്ണമായും ഒരു നെറ്റ് വർക്ക് സേവനത്തിന്റെ ഒരു പ്രത്യേക സന്ദർഭത്തെ ആശ്രയിച്ചിരിക്കുന്നു</string>
+    <string name="repo_view_repo">സംഭരണി ദർശിക്കുക</string>
 </resources>
