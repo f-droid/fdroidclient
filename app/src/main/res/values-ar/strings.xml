@@ -261,7 +261,7 @@
     <string name="update_auto_install">تثبيت التحديثات تلقائياً</string>
     <string name="update_auto_install_summary">تنزيل وتثبيت تحديثات التطبيقات في الخلفية، مع إظهار إشعار</string>
     <string name="versions">النُسخ</string>
-    <string name="warning_no_internet">لا يمكن التحديث. تَحقّق من ربطك بالإنترنت ؟</string>
+    <string name="warning_no_internet">لا يمكن التحديث، تحقق من اتصالك بالإنترنت؟</string>
     <string name="main_menu__swap_nearby">قريبة منك</string>
     <string name="main_menu__categories">الفئات</string>
     <string name="categories__empty_state__no_categories">ليس هناك فئات لعرضها</string>
@@ -297,7 +297,7 @@
     <string name="menu_video">فيديو</string>
     <string name="latest__empty_state__no_recent_apps">لم يتم العثور على تطبيقات حالية</string>
     <string name="antifeatureswarning">لدى هذا التطبيق ميزات قد لا تعجبك.</string>
-    <string name="notification_title_single_update_available">تحديث متوفر</string>
+    <string name="notification_title_single_update_available">متوفر تحديث</string>
     <string name="notification_content_single_downloading">جاري تنزيل \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">جاري تنزيل تحديث \"%1$s\"…</string>
     <string name="notification_title_summary_update_available">تحديث متوفر</string>
@@ -405,8 +405,8 @@
     <string name="force_touch_apps">إضافة التطبيقات التي تتطلّب لمس الشاشة</string>
     <string name="hide_on_long_search_press_title">الإخفاء عن طريق زر البحث</string>
     <string name="hide_on_long_search_press_summary">الضغط المُطوّل على زر البحث يُمكّن مِن إخفاء التطبيق</string>
-    <string name="repo_official_mirrors">مستودعات المِرآة الرسمية</string>
-    <string name="repo_user_mirrors">مستخدم مستودعات المرايا البديلة</string>
+    <string name="repo_official_mirrors">المرايا الرسمية</string>
+    <string name="repo_user_mirrors">مرايا المستخدم</string>
     <plurals name="details_last_update_days">
         <item quantity="zero">لم يتم تحديثه</item>
         <item quantity="one">تم تحديثه منذ %1$d يوم</item>
@@ -464,7 +464,7 @@
     <string name="hide_all_notifications">اخفاء جميع التنبيهات</string>
     <string name="hide_all_notifications_summary">منع جميع الإجراءات من الظهور في شريط المعلومات ودرج الإشعارات.</string>
     <string name="install_history">تاريخ التثبيت</string>
-    <string name="install_history_summary">عرض السجل الخاص لجميع عمليات التثبيت وعمليات الإزالة</string>
+    <string name="install_history_summary">اعرض السجل الخاص لجميع عمليات التثبيت وعمليات ‫إلغاء تثبيت‬</string>
     <string name="send_version_and_uuid">إرسال رقم النسخة و عنوان UUID إلى الخوادم</string>
     <string name="send_version_and_uuid_summary">إضافة إصدار هذا التطبيق ومعرف عشوائي وفريد عند التنزيل، يأخذ مفعوله عند إعادة تشغيل التطبيق التالية.</string>
     <string name="repo_delete_to_overwrite">قم أولاً بحذف %1$s لإضافة هذا باستخدام مفتاح متعارض.</string>
@@ -472,7 +472,7 @@
     <string name="antinosourcesince">لم يعد الكود المصدري متاحًا، ولا توجد تحديثات ممكنة</string>
     <string name="panic_hide_warning_message">في حالة الهلع، سيؤدي هذا إلى إزالة %1$s من درج التطبيقات. يمكن فقط للكتابة \"%2$d\" في تطبيق المزيف %3$s ويمكن استعادته.</string>
     <string name="share_repository">مشاركة المستودع</string>
-    <string name="send_install_history">إرسال سجل التثبيت</string>
+    <string name="send_install_history">أرسل تاريخ التثبيت</string>
     <string name="send_history_csv">%s تاريخ التثبيت كملف CSV</string>
     <string name="updates_disabled_by_settings">جميع التحديثات معطلة عن طريق إعدادات البيانات / واي فاي</string>
     <string name="about_forum">منتدى الدعم</string>
@@ -528,15 +528,15 @@
     <string name="notification_channel_installs_title">تثبيتات</string>
     <string name="notification_channel_swaps_title">المقايضات</string>
     <string name="notification_channel_swaps_description">يعرض P2P التطبيق مبادلة الإخطارات.</string>
-    <string name="menu_show_install_history">عرض محفوظات التثبيت</string>
+    <string name="menu_show_install_history">اعرض تاريخ التثبيت</string>
     <string name="menu_show_fdroid_metrics_report">عرض تقرير المقاييس</string>
-    <string name="toast_metrics_in_install_history">يمكن عرض تقرير المقاييس %s في عارض محفوظات التثبيت</string>
+    <string name="toast_metrics_in_install_history">يمكن عرض تقرير المقاييس %s في عارض تاريخ التثبيت</string>
     <string name="send_to_fdroid_metrics_summary">يرسل بيانات مجهولة إلى F-Droid Metrics (يتطلب الاحتفاظ بتاريخ التثبيت)</string>
     <string name="send_to_fdroid_metrics">إرسال بيانات الاستخدام</string>
     <string name="fdroid_metrics_report">%s تقرير المقاييس</string>
-    <string name="install_history_and_metrics">سجل التثبيت والمقاييس</string>
+    <string name="install_history_and_metrics">تاريخ التثبيت والمقاييس</string>
     <string name="send_fdroid_metrics_json">%s تقرير المقاييس كملف JSON</string>
-    <string name="send_fdroid_metrics_report">إرسال تقرير %s القياسات</string>
+    <string name="send_fdroid_metrics_report">أرسل تقرير %s القياسات</string>
     <string name="theme_follow_system">اتبع مظهر النظام</string>
     <string name="use_pure_black_dark_theme_summary">يوصى به لشاشات OLED فقط.</string>
     <string name="use_pure_black_dark_theme">استخدم خلفية سوداء نقية في المظهر داكن</string>
@@ -648,4 +648,28 @@
     <string name="apk_permissions_mismatch">التطبيق لديه إذن غير متوقع: %s</string>
     <string name="preferForeign">فضّل المرايا الأجنبية</string>
     <string name="preferForeignSummary">حاول استخدام المرايا الموجودة خارج بلدك أولاً، على سبيل المثال، إذا كانت الحماية الأجنبية أقوى.</string>
+    <string name="no_handler_app_generic">ليس لديك أي تطبيق متاح يمكنه التعامل مع هذا.</string>
+    <string name="repo_archive_unknown">لا يبدو أن هذا المستودع يحتوي على أرشيف.</string>
+    <string name="repo_archive_check">تحقق من أرشيف</string>
+    <string name="repo_last_update_index">آخر تحديث المستودع: %s</string>
+    <string name="repo_last_update_check">آخر تحقق من تحديث المستودع: %s</string>
+    <string name="repo_confirm_delete_mirror_title">احذف المرآة؟</string>
+    <string name="repo_confirm_delete_mirror_body">يمكنك متابعة تثبيت التطبيقات من هذا المستودع باستخدام المرايا الأخرى.</string>
+    <string name="share_mirror">شارك المرآة</string>
+    <string name="show_repository_qr">اعرض رمز QR للمستودع</string>
+    <string name="repo_basic_auth_username">اسم المستخدم: %s</string>
+    <string name="repo_basic_auth_password">كلمة المرور: ***</string>
+    <string name="repo_basic_auth_edit">عدّل</string>
+    <string name="collapse">اطوِ</string>
+    <string name="repo_details_info_text">المستودع هو مصدر للتطبيقات.\n\nتُستخدم المرايا لتوزيع تحميل تطبيقات تنزيل عبر خوادم متعددة. المرايا القريبة منك قد تكون أسرع.\n\nيتم تعريف المرايا الرسمية من قِبل صاحب المستودع. لا يمكن حذفها، مُعطّلة فقط. يمكنك تحديد مرايا مخصّصة إضافية عن طريق إضافتها تمامًا مثل المستودع العادي.</string>
+    <string name="expand">وسع</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="zero">لا تطبيق</item>
+        <item quantity="one">تطبيق</item>
+        <item quantity="two">تطبيقان</item>
+        <item quantity="few">%d تطبيقات</item>
+        <item quantity="many">%d تطبيق</item>
+        <item quantity="other">%d تطبيق</item>
+    </plurals>
+    <string name="repo_basic_auth_title">استيثاق أساسي</string>
 </resources>
