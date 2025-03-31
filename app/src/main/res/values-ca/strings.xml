@@ -443,7 +443,7 @@
     <string name="banner_no_internet">Sense Internet</string>
     <string name="menu_show_install_history">Mostrar l\'historial d\'instal·lacions</string>
     <string name="menu_show_fdroid_metrics_report">Mostrar l\'informe de mètriques</string>
-    <string name="toast_metrics_in_install_history">L\'informe de mètriques %s es pot visualitzar al visor de l\'historial d\'instal·lacions</string>
+    <string name="toast_metrics_in_install_history">L\'informe de mètriques %s es pot veure al visualitzador de l\'historial d\'instal·lacions</string>
     <string name="send_to_fdroid_metrics_summary">Enviar setmanalment dades anònimes a les mètriques de l\'F-Droid (requereix mantenir historial d’instal·lacions)</string>
     <string name="send_to_fdroid_metrics">Enviar les dades de l\'ús</string>
     <string name="fdroid_metrics_report">Informe de mètriques %s</string>
