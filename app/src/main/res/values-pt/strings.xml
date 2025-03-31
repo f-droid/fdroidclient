@@ -617,4 +617,25 @@
     <string name="apk_permissions_mismatch">A app tem permissão inesperada: %s</string>
     <string name="preferForeign">Preferir espelhos estrangeiros</string>
     <string name="preferForeignSummary">Experimente primeiro os espelhos localizados fora do seu país, por exemplo, se as proteções estrangeiras forem mais fortes.</string>
+    <string name="no_handler_app_generic">Você não tem nenhum aplicativo disponivel que pode lidar com isso.</string>
+    <string name="repo_archive_unknown">Este repositorio não parece ter um arquivo.</string>
+    <string name="repo_archive_check">Verificar por Arquivo</string>
+    <string name="repo_last_update_index">Última atualização do repositório: %s</string>
+    <string name="repo_last_update_check">Última verificação de atualizações do repositório: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Apagar servidor espelho?</string>
+    <string name="repo_confirm_delete_mirror_body">Você pode continuar a instalar apps deste repositório utilizando os outros servidores espelho.</string>
+    <string name="share_mirror">Compartilhar servidor espelho</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">Um app</item>
+        <item quantity="many">Vários apps</item>
+        <item quantity="other">Alguns apps</item>
+    </plurals>
+    <string name="show_repository_qr">Mostrar QR Code do repositório</string>
+    <string name="repo_basic_auth_title">Autenticação básica</string>
+    <string name="repo_basic_auth_username">Usuário: %s</string>
+    <string name="repo_basic_auth_password">Senha: ***</string>
+    <string name="repo_basic_auth_edit">Editar</string>
+    <string name="expand">Expandir</string>
+    <string name="collapse">Colapsar</string>
+    <string name="repo_details_info_text">A repository is a source of apps.\n\nMirrors are used to distribute the load of downloading apps across multiple servers. Mirrors closer to you may be faster.\n\nOfficial mirrors are defined by the repository owner. They cannot be deleted, only disabled. You can define additional custom mirrors by adding them just like a normal repository.</string>
 </resources>
