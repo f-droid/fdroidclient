@@ -40,7 +40,7 @@
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
     <string name="menu_manage">Dipòsits</string>
     <string name="menu_search">Cerca</string>
-    <string name="menu_add_repo">Nou Dipòsit</string>
+    <string name="menu_add_repo">Nou dipòsit</string>
     <string name="menu_launch">Obre</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instal·lar</string>
