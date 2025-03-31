@@ -124,8 +124,8 @@
     <string name="swap_view_available_networks">Натисніть, щоб відкрити доступні мережі</string>
     <string name="open_qr_code_scanner">Відкрити QR-сканер</string>
     <string name="swap_welcome">Вітаємо у F-Droid!</string>
-    <string name="swap_choose_apps">Виберіть застосунки</string>
-    <string name="swap_scan_qr">QR-код</string>
+    <string name="swap_choose_apps">Виберіть додатки</string>
+    <string name="swap_scan_qr">QR код</string>
     <string name="swap_wifi_device_name">Назва пристрою</string>
     <string name="swap_send_fdroid">Відправити F-Droid</string>
     <string name="apps">Застосунки</string>
@@ -186,7 +186,7 @@
     <string name="system_install_denied_permissions">Привілейовані дозволи на розширення не надано! Будь ласка, створіть звіт про помилку!</string>
     <string name="swap_active_hotspot">%1$s (ваша точка доступу)</string>
     <string name="swap_scanning_for_peers">Пошук людей поблизу…</string>
-    <string name="swap_nearby">Ближній обмін</string>
+    <string name="swap_nearby">Поруч обмін</string>
     <string name="swap_not_visible_bluetooth">Невидимий через Bluetooth</string>
     <string name="install_confirm_update">Дійсно встановити оновлення для цього наявного застосунку \? Наявні дані не втратяться. Оновлений застосунок отримає доступ до:</string>
     <string name="install_confirm_update_system">Дійсно встановити оновлення для цього вбудованого застосунку\? Наявні дані не втратяться. Оновлений застосунок отримає доступ до:</string>
@@ -195,10 +195,10 @@
     <string name="uninstall_update_confirm">Відновити заводську версію цього застосунку\? Усі дані буде вилучено.</string>
     <string name="perms_new_perm_prefix">Нові:</string>
     <string name="empty_installed_app_list">Жодного застосунку не встановлено. \n \nНа вашому пристрої є застосунки, недоступні в F-Droid. Можливо вам потрібно оновити свої репозиторії, або репозиторії не містять цих застосунків.</string>
-    <string name="swap_join_same_wifi_desc">Для обміну через Wi-Fi, переконайтеся, що ви під\'єднані до спільної мережі. Якщо ж ви не маєте доступу до спільної мережі, єдиний спосіб, це створити власну Wi-Fi точку доступу.</string>
+    <string name="swap_join_same_wifi_desc">Щоб переключитися за допомогою Wi-Fi, переконайтеся, що ви перебуваєте в одній мережі. Якщо у вас немає доступу до однієї мережі, один із вас може створити точку доступу Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Допоможіть вашим друзям з\'єднатися з вашою точкою доступу</string>
     <string name="swap_scan_or_type_url">Один з вас повинен сканувати код, чи ввести URL іншого у браузері.</string>
-    <string name="swap_people_nearby">Люди поблизу</string>
+    <string name="swap_people_nearby">Люди поруч</string>
     <string name="swap_cant_find_peers">Не можете знайти, кого шукаєте?</string>
     <string name="swap_no_peers_nearby">Не вдалося знайти людей поблизу для обміну.</string>
     <string name="swap_qr_isnt_for_swap">QR-код, який ви сканували, не схожий на код обміну.</string>
@@ -301,7 +301,7 @@
     </plurals>
     <string name="details_new_in_version">Нове у версії %s</string>
     <string name="antifeatureswarning">Цей застосунок містить функції, які можуть бути вам не до вподоби.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Немає інтернету? Отримуйте застосунки від людей поруч із вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">немає інтернету? Отримуйте програми від людей поблизу!</string>
     <string name="nearby_splash__find_people_button">Знайти людей поблизу</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Оновлено %1$d день тому</item>
@@ -412,8 +412,8 @@
     <string name="hiding_dialog_title">Сховати %s зараз</string>
     <string name="hide_on_long_search_press_title">Сховати кнопкою пошуку</string>
     <string name="repo_add_mirror">Додати дзеркало</string>
-    <string name="repo_official_mirrors">Офіційні дзеркала</string>
-    <string name="repo_user_mirrors">Дзеркала користувача</string>
+    <string name="repo_official_mirrors">Офіційні Дзеркала</string>
+    <string name="repo_user_mirrors">Дзеркала Користувача</string>
     <string name="over_wifi">Через Wi-Fi</string>
     <string name="over_data">Через мобільну мережу</string>
     <string name="over_network_always_summary">Завжди використовувати це з\'єднання, коли це можливо</string>
@@ -430,9 +430,9 @@
     <string name="repo_exists_enable">%1$s вже налаштовано, підтвердьте, що хочете ввімкнути знову.</string>
     <string name="repo_exists_and_enabled">%1$s вже налаштовано й увімкнено.</string>
     <string name="repo_delete_to_overwrite">Спершу видаліть %1$s, щоб додати його з конфліктним ключем.</string>
-    <string name="share_repository">Поділитися репозиторієм</string>
+    <string name="share_repository">Сховище спільного доступу</string>
     <string name="use_bluetooth">Використовувати Bluetooth</string>
-    <string name="swap_toast_hotspot_enabled">Точку доступу Wi-Fi увімкнено</string>
+    <string name="swap_toast_hotspot_enabled">Точка доступу Wi-Fi увімкнена</string>
     <string name="swap_toast_could_not_enable_hotspot">Не вдалося увімкнути Wi-Fi точку доступу!</string>
     <string name="warning_scaning_qr_code">Ваша камера не має автофокусування. Сканування коду може бути утрудненим.</string>
     <string name="send_install_history">Надіслати історію встановлення</string>
@@ -466,8 +466,8 @@
     <string name="not_visible_nearby">Поруч не ввімкнено</string>
     <string name="not_visible_nearby_description">Перед спробою обміну між пристроями поблизу, зробіть свій пристрій видимим.</string>
     <string name="swap_toast_using_path">Використання %1$s</string>
-    <string name="swap_toast_not_removable_storage">Вибір не збігається з жодними видаленими пристроями зберігання даних, повторіть спробу!</string>
-    <string name="swap_toast_find_removeable_storage">Виберіть знімну картку SD або USB</string>
+    <string name="swap_toast_not_removable_storage">Цей вибір не відповідає жодному знімному пристрою зберігання даних, спробуйте ще раз!</string>
+    <string name="swap_toast_find_removeable_storage">Виберіть знімну карту SD або USB</string>
     <string name="main_menu__updates">Оновлення</string>
     <string name="menu_translation">Переклад</string>
     <string name="undo">Повернути</string>
@@ -504,7 +504,7 @@
     <string name="send_to_fdroid_metrics">Надіслати дані про використання</string>
     <string name="fdroid_metrics_report">%s звіт з метриками</string>
     <string name="install_history_and_metrics">Встановити історію та метрики</string>
-    <string name="send_fdroid_metrics_json">%s звіт з метриками у вигляді файлу JSON</string>
+    <string name="send_fdroid_metrics_json">%s Звіт про показники як файл JSON</string>
     <string name="send_fdroid_metrics_report">Надіслати %s звіт з метриками</string>
     <string name="theme_follow_system">Дотримуватись системної</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендовано лише для OLED-екранів.</string>
@@ -609,4 +609,29 @@
     <string name="preferForeign">Надати перевагу іноземним дзеркалам</string>
     <string name="preferForeignSummary">Спробувати дзеркала розташовані за межами країни, наприклад якщо іноземний захист сильніше.</string>
     <string name="no_handler_app_generic">У вас немає застосунку для обробки цього.</string>
+    <string name="repo_details_info_text">Репозиторій є джерелом додатків. \n\nДзеркала використовуються для розподілу завантаження програм між кількома серверами. Дзеркала ближче до вас можуть бути швидшими. \n\nОфіційні дзеркала визначаються власником сховища. Їх не можна видалити, лише відключити. Ви можете визначити додаткові власні дзеркала, додавши їх так само, як звичайне сховище.</string>
+    <string name="repo_archive_check">Перевірте архів</string>
+    <string name="repo_archive_unknown">Схоже, що це сховище не має архіву.</string>
+    <string name="expand">Розгорнути</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d додаток</item>
+        <item quantity="few">%d додатки</item>
+        <item quantity="many">%d додатків</item>
+        <item quantity="other">%d додатків</item>
+    </plurals>
+    <string name="repo_last_update_index">Останнє оновлення сховища: %s</string>
+    <string name="repo_last_update_check">Остання перевірка оновлення репо: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Видалити дзеркало?</string>
+    <string name="repo_confirm_delete_mirror_body">Ви можете продовжувати інсталювати програми з цього сховища за допомогою інших дзеркал.</string>
+    <string name="share_mirror">Поділіться дзеркалом</string>
+    <string name="show_repository_qr">Показати QR-код сховища</string>
+    <string name="repo_basic_auth_title">Основна авторизація</string>
+    <string name="repo_basic_auth_username">Ім\'я користувача: %s</string>
+    <string name="repo_basic_auth_password">Пароль: ***</string>
+    <string name="repo_basic_auth_edit">Редагувати</string>
+    <string name="collapse">Згорнути</string>
+    <string name="pref_export_log_title">Журнал налагодження</string>
+    <string name="pref_export_log_summary">Створює файл з виводом logcat, корисний для налагодження. Обережно, це може містити конфіденційну інформацію!</string>
+    <string name="export_log_success">Logcat успішно збережено</string>
+    <string name="export_log_error">Помилка збереження logcat</string>
 </resources>
