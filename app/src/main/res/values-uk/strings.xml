@@ -211,7 +211,7 @@
     <string name="repo_searching_address">Пошук пакунків репозиторію в \n%1$s</string>
     <string name="more">Докладніше</string>
     <string name="less">Згорнути</string>
-    <string name="menu_settings">Параметри</string>
+    <string name="menu_settings">Налаштування</string>
     <string name="permissions">Дозволи</string>
     <string name="category_Connectivity">Зв\'язок</string>
     <string name="touch_to_configure_local_repo">Торкніться, щоб переглянути подробиці та дозволити іншим обмінюватись вашими застосунками.</string>
