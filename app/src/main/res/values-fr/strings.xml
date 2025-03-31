@@ -13,8 +13,8 @@
     <string name="system_installer">Extension Privilégiée</string>
     <string name="system_installer_on">Utiliser l’Extension Privilégiée pour installer, mettre à jour et supprimer des paquets</string>
     <string name="local_repo_name">Nom de votre dépôt local</string>
-    <string name="local_repo_name_summary">Le nom public de votre dépôt local : %s</string>
-    <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
+    <string name="local_repo_name_summary">Le nom public de votre Dépôt Local : %s</string>
+    <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le Dépôt Local</string>
     <string name="app_details">Détails de l\'application</string>
     <string name="no_such_app">Aucune appli trouvée.</string>
     <string name="about_title_full">À propos de F-Droid</string>
@@ -109,14 +109,14 @@
     <string name="unsigned_description">Cela signifie que la liste des applis n\'a pas pu être vérifiée. Soyez prudent avec les applis téléchargées depuis des index non signés.</string>
     <string name="repo_not_yet_updated">Ce dépôt n’a pas encore été utilisé. Vous devez l’activer pour voir la liste des applications qu\'il propose.</string>
     <string name="unknown">Inconnu</string>
-    <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
+    <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
     <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications et leurs mises à jour ne seront plus disponibles.
 \n
 \nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
     <string name="repo_disabled_notification">%1$s a été désactivé.
 \n
 \nVous devrez réactiver ce dépôt pour installer des applis qu’il comprend.</string>
-    <string name="not_on_same_wifi">Votre appareil n\'est pas connecté au même réseau Wifi que le dépôt local que vous venez d\'ajouter ! Essayez vous connectez à ce réseau : %s</string>
+    <string name="not_on_same_wifi">Votre appareil n\'est pas connecté au même réseau Wifi que le Dépôt Local que vous venez d\'ajouter ! Essayez vous connectez à ce réseau : %s</string>
     <string name="requires_features">Nécessite : %1$s</string>
     <string name="category_Development">Développement</string>
     <string name="category_Games">Jeux</string>
@@ -268,7 +268,7 @@
     <string name="update_auto_install">Installer automatiquement les mises à jour</string>
     <string name="update_auto_install_summary">Télécharger et mettre à jour les applications en arrière-plan en affichant une notification</string>
     <string name="keep_install_history_summary">Mémoriser toutes les installations et désinstallations dans un journal privé</string>
-    <string name="warning_no_internet">Impossible d’effectuer la mise à jour, êtes-vous connecté à Internet ?</string>
+    <string name="warning_no_internet">Impossible d’effectuer la mise à jour, êtes-vous connecté à l\'internet ?</string>
     <string name="versions">Versions</string>
     <string name="app_details_donate_prompt_unknown_author">Offrez un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-lui un café !</string>
@@ -305,7 +305,7 @@
     <string name="app_list__name__successfully_installed">%1$s est installé</string>
     <string name="installed_apps__activity_title">Applications installées</string>
     <string name="installed_app__updates_ignored">Mises à jour ignorées</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Mises à jour ignorées pour la version %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Les mises à jour sont ignorées pour la version %1$s</string>
     <string name="updates__tts__download_app">Télécharger</string>
     <string name="update_all">Tout mettre à jour</string>
     <string name="updates__hide_updateable_apps">Masquer les applications</string>
@@ -325,8 +325,8 @@
         <item quantity="many">Tout afficher (%d)</item>
         <item quantity="other">Tout afficher (%d)</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Installez des applications depuis les appareils à proximité !</string>
-    <string name="nearby_splash__find_people_button">Personnes à proximité</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Installez des applications depuis les appareils à proximité !</string>
+    <string name="nearby_splash__find_people_button">Trouver des personnes à proximité</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
     <string name="tts_category_name">Catégorie %1$s</string>
     <plurals name="tts_view_all_in_category">
@@ -358,9 +358,9 @@
         <item quantity="other">+%1$d autres…</item>
     </plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d Mise à jour</item>
-        <item quantity="many">%1$d Mises à jour</item>
-        <item quantity="other">%1$d Mises à jour</item>
+        <item quantity="one">%1$d mise à jour</item>
+        <item quantity="many">%1$d mises à jour</item>
+        <item quantity="other">%1$d mises à jour</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d application installée</item>
@@ -414,10 +414,10 @@
     <string name="panic_hide_summary">L\'application sera masquée</string>
     <string name="panic_settings">Paramètres du bouton d\'urgence</string>
     <string name="panic_settings_summary">Actions à exécuter en cas d\'urgence</string>
-    <string name="panic_app_setting_title">Appli Bouton d’urgence</string>
+    <string name="panic_app_setting_title">Appli bouton d’urgence</string>
     <string name="panic_app_dialog_title">Confirmer l\'application pour le mode panique</string>
     <string name="panic_app_dialog_message">Souhaitez-vous vraiment autoriser %1$s à déclencher les actions destructrices du bouton d\'urgence ?</string>
-    <string name="panic_destructive_actions">Actions destructrices</string>
+    <string name="panic_destructive_actions">Actions irreversibles</string>
     <string name="panic_hide_warning_title">Mémoriser comment restaurer</string>
     <string name="panic_hide_warning_message">En cas de nécessité absolue, cela supprimera %1$s du lanceur. Vous ne pourrez restaurer cette application qu\'en tapant « %2$d » dans la fausse application %3$s.</string>
     <string name="hiding_calculator">Calculatrice</string>
@@ -441,7 +441,7 @@
     <string name="use_bluetooth">Utiliser le Bluetooth</string>
     <string name="swap_toast_invalid_url">URL invalide pour l\'échange : %1$s</string>
     <string name="swap_toast_hotspot_enabled">Point d\'accès Wi-Fi activé</string>
-    <string name="swap_toast_could_not_enable_hotspot">Impossible d\'activer le point d\'accès Wi-Fi !</string>
+    <string name="swap_toast_could_not_enable_hotspot">Impossible d\'activer le point d\'accès Wi-Fi !</string>
     <string name="over_wifi">Via Wi-Fi</string>
     <string name="over_data">Via le réseau mobile</string>
     <string name="over_network_always_summary">Toujours utiliser cette connexion si disponible</string>
@@ -458,7 +458,7 @@
     <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
     <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage de l\'App est nécessaire.</string>
     <string name="share_repository">Partager le dépôt</string>
-    <string name="send_install_history">Envoyer l’historique des installations</string>
+    <string name="send_install_history">Envoyer l’historique d\'installation</string>
     <string name="send_installed_apps">Partager les applis installées</string>
     <string name="menu_open">Ouvrir</string>
     <string name="antinosourcesince">Le code source n’est plus disponible, aucune mise à jour n’est possible.</string>
@@ -472,7 +472,7 @@
     <string name="nearby_splash__request_permission">Rechercher</string>
     <string name="swap_toast_using_path">Utilisation de %1$s</string>
     <string name="swap_toast_find_removeable_storage">Sélectionnez la carte SD ou le stockage USB</string>
-    <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
+    <string name="swap_toast_not_removable_storage">Aucun périphérique de stockage amovible pour ce choix, essayez à nouveau !</string>
     <string name="nearby_splash__read_external_storage">Rechercher sur la carte SD les dépôts et miroirs.</string>
     <string name="not_visible_nearby">Appareil non visible</string>
     <string name="not_visible_nearby_description">Pour échanger avec les appareils à proximité, vous devez d’abord rendre votre appareil visible.</string>
@@ -510,11 +510,11 @@
     <string name="menu_show_install_history">Afficher l’historique des installations</string>
     <string name="send_to_fdroid_metrics_summary">Envoi hebdomadaire de données anonymes aux indicateurs métriques F-Droid (requiert la sauvegarde de l\'historique de téléchargement)</string>
     <string name="send_to_fdroid_metrics">Envoyer les données d\'utilisation</string>
-    <string name="send_fdroid_metrics_report">Envoyer le rapport d\'analyses de %s</string>
+    <string name="send_fdroid_metrics_report">Envoyer le rapport de télémétrie de %s</string>
     <string name="send_fdroid_metrics_json">Rapport d’analyse de %s en tant que fichier JSON</string>
-    <string name="fdroid_metrics_report">Rapport d\'analyse de %s</string>
+    <string name="fdroid_metrics_report">Rapport de télémétrie de %s</string>
     <string name="install_history_and_metrics">Installer l\'historique et les analyses</string>
-    <string name="toast_metrics_in_install_history">Le rapport de télémétrie de %s est visualisable dans la visionneuse de l\'installation d\'historique</string>
+    <string name="toast_metrics_in_install_history">Le rapport de télémétrie de %s est visualisable dans la visionneuse de l\'historique d\'installation</string>
     <string name="menu_show_fdroid_metrics_report">Afficher le rapport d\'analyse</string>
     <string name="theme_follow_system">Suivre le système</string>
     <string name="use_pure_black_dark_theme_summary">Recommandé uniquement pour les écrans OLED.</string>
@@ -538,7 +538,7 @@
     <string name="antinonfreeassets">Composants non libres</string>
     <string name="antiothers">Autres Antifonctions</string>
     <string name="antinsfw">Non sécurisée</string>
-    <string name="menu_release_channel_beta">Autoriser les mises à jour Bêta</string>
+    <string name="menu_release_channel_beta">Autoriser les mises à jour bêta</string>
     <string name="latest__empty_state__upgrading">Mise à jour de la base de données…</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">À propos de F-Droid Basic</string>
@@ -596,10 +596,10 @@
     <string name="app_list_no_suggested_version">Aucune version recommandée à l\'installation.</string>
     <string name="repo_disable_warning_button">Désactiver</string>
     <string name="app_details_repository_button_prefer">Privilégier ce Dépôt</string>
-    <string name="repo_list_info_title">Liste des Dépôts</string>
-    <string name="repo_archive_toggle">Archive des Dépôts</string>
+    <string name="repo_list_info_title">Liste des dépôts</string>
+    <string name="repo_archive_toggle">Archive des dépôts</string>
     <string name="repo_archive_toggle_description">Afficher les apps archivées et les anciennes versions des apps</string>
-    <string name="repositories_last_update">Dernière mise à jour : %s</string>
+    <string name="repositories_last_update">Dernière mise à jour : %s</string>
     <string name="repo_disable_warning">Désactiver ce dépôt enlèvera son statut « préféré » de toutes les applications.</string>
     <string name="repositories_last_update_never">jamais</string>
     <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.
