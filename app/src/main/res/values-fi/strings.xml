@@ -604,4 +604,5 @@
     <string name="swap_bluetooth_permissions">Anna Bluetooth- tai Lähellä oleva laite -käyttöoikeus!</string>
     <string name="preferForeign">Suosi ulkomaisia peilejä</string>
     <string name="preferForeignSummary">Kokeile ensin peilejä, jotka sijaitsevat maasi ulkopuolella, esim. jos ulkomaiset suojat ovat vahvempia.</string>
+    <string name="no_handler_app_generic">Sinulla ei ole saatavilla olevaa sovellusta, joka voisi käsitellä tätä.</string>
 </resources>
