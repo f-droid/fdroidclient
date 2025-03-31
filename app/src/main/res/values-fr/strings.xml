@@ -640,4 +640,13 @@
     <string name="repo_details_info_text">Un dépôt est une source d\'applications.\n\nLes miroirs sont utilisés pour distribuer la charge des applications de téléchargement sur plusieurs serveurs. Les miroirs plus proches de vous peuvent être plus rapides.\n\nLes miroirs officiels sont définis par le propriétaire du dépôt. Ils ne peuvent pas être supprimés, seulement désactivés. Vous pouvez définir des miroirs personnalisés supplémentaires en les ajoutant comme un dépôt normal.</string>
     <string name="repo_confirm_delete_mirror_body">Vous pouvez continuer à installer des applications de ce dépôt en utilisant les autres miroirs.</string>
     <string name="repo_basic_auth_password">Mot de passe : ***</string>
+    <string name="repo_archive_check">Vérifier les archives</string>
+    <string name="repo_basic_auth_title">Authentification de base</string>
+    <string name="repo_basic_auth_edit">Modifier</string>
+    <string name="expand">Développer</string>
+    <string name="collapse">Effondrement</string>
+    <string name="export_log_success">Logcat enregistré avec succès</string>
+    <string name="export_log_error">Erreur lors de l\'enregistrement du logcat</string>
+    <string name="pref_export_log_summary">Crée un fichier avec une sortie logcat utile pour le débogage. Attention, il peut contenir des informations sensibles !</string>
+    <string name="pref_export_log_title">Journal de débogage</string>
 </resources>
