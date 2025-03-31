@@ -15,7 +15,7 @@
     <string name="local_repo_name">Nom de votre dépôt local</string>
     <string name="local_repo_name_summary">Le nom public de votre dépôt local : %s</string>
     <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
-    <string name="app_details">Détails de l\'appli</string>
+    <string name="app_details">Détails de l\'application</string>
     <string name="no_such_app">Aucune appli trouvée.</string>
     <string name="about_title_full">À propos de F-Droid</string>
     <string name="about_site">Site Web</string>
@@ -624,4 +624,20 @@
     <string name="apk_permissions_mismatch">L\'application dispose d\'une autorisation inattendue : %s</string>
     <string name="preferForeignSummary">Essayer d\'abord des miroirs localisés en dehors de votre pays, par ex. si les protections à l\'étranger sont plus importantes.</string>
     <string name="preferForeign">Privilégier les miroirs étrangers</string>
+    <string name="no_handler_app_generic">Vous n\'avez aucune appli installée pour gérer cela.</string>
+    <string name="repo_archive_unknown">Ce dépôt ne semble pas avoir d\'archive.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d application</item>
+        <item quantity="many">%d applications</item>
+        <item quantity="other">%d applications</item>
+    </plurals>
+    <string name="repo_last_update_index">Dernière mise à jour du dépôt : %s</string>
+    <string name="repo_last_update_check">Dernière vérification de la mise à jour du dépôt : %s</string>
+    <string name="repo_confirm_delete_mirror_title">Supprimer le miroir ?</string>
+    <string name="share_mirror">Partager le miroir</string>
+    <string name="show_repository_qr">Montrer le QR code du dépôt</string>
+    <string name="repo_basic_auth_username">Nom d\'utilisateur : %s</string>
+    <string name="repo_details_info_text">Un dépôt est une source d\'applications.\n\nLes miroirs sont utilisés pour distribuer la charge des applications de téléchargement sur plusieurs serveurs. Les miroirs plus proches de vous peuvent être plus rapides.\n\nLes miroirs officiels sont définis par le propriétaire du dépôt. Ils ne peuvent pas être supprimés, seulement désactivés. Vous pouvez définir des miroirs personnalisés supplémentaires en les ajoutant comme un dépôt normal.</string>
+    <string name="repo_confirm_delete_mirror_body">Vous pouvez continuer à installer des applications de ce dépôt en utilisant les autres miroirs.</string>
+    <string name="repo_basic_auth_password">Mot de passe : ***</string>
 </resources>
