@@ -438,7 +438,7 @@
     <string name="app_size">Koko: %1$s</string>
     <string name="send_installed_apps">Jaa asennetut sovellukset</string>
     <string name="send_installed_apps_csv">Sovellukset, jotka F-Droid asentanut CSV-tiedostona</string>
-    <string name="updates_disabled_by_settings">Kaikki päivitykset on poistettu käytöstä Mobiilidata/WiFi-asetuksissa</string>
+    <string name="updates_disabled_by_settings">Kaikki päivitykset on poistettu käytöstä mobiilidata/Wi-Fi-asetuksissa</string>
     <string name="repo_exists_add_fingerprint">%1$s on jo asennettu. Tämä lisää uuden avaimen tiedot.</string>
     <string name="repo_exists_enable">%1$s on jo asennettu. Vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
