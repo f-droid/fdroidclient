@@ -22,4 +22,18 @@
     <string name="fdroid_metrics_report">%s Ölçü Məruzəsi</string>
     <string name="install_history_summary">Bütün quraşdırılma və silinmələrin özəl qeydlərini göstər</string>
     <string name="keep_install_history">Quraşdırılma tarixini saxla</string>
+    <string name="cancel">Ləğv et</string>
+    <string name="menu_launch">Aç</string>
+    <string name="back">Geri</string>
+    <string name="menu_share">Paylaş</string>
+    <string name="menu_uninstall">Qaldır</string>
+    <string name="menu_install">Yüklə</string>
+    <string name="menu_upgrade">Güncəllə</string>
+    <string name="main_menu__swap_nearby">Yaxın</string>
+    <string name="main_menu__categories">Kateqoriyalar</string>
+    <string name="main_menu__latest_apps">Son</string>
+    <string name="menu_manage">Depo</string>
+    <string name="menu_add_repo">yeni depo</string>
+    <string name="menu_settings">Ayarlar</string>
+    <string name="menu_search">Axtar</string>
 </resources>
