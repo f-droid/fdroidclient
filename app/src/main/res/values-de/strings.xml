@@ -609,4 +609,23 @@
     <string name="preferForeign">Ausländische Spiegelserver bevorzugen</string>
     <string name="preferForeignSummary">Zuerst Spiegelserver verwenden, die sich außerhalb Ihres Landes befinden, z. B. wenn die Schutzmaßnahmen im Ausland stärker sind.</string>
     <string name="no_handler_app_generic">Es ist keine App installiert, die damit umgehen kann.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 App</item>
+        <item quantity="other">%d Apps</item>
+    </plurals>
+    <string name="repo_archive_unknown">Diese Paketquelle scheint kein Archiv zu haben.</string>
+    <string name="repo_archive_check">Auf Archiv prüfen</string>
+    <string name="repo_last_update_index">Letzte Paketquellenaktualisierung: %s</string>
+    <string name="repo_last_update_check">Letzte Prüfung auf Paketquellenaktualisierung: %s</string>
+    <string name="repo_details_info_text">Eine Paketquelle ist eine Quelle für Apps.\n\nSpiegelserver werden verwendet, um die Last des Herunterladens von Apps auf mehrere Server zu verteilen. Spiegelserver in Ihrer Nähe können schneller sein.\n\nOffizielle Spiegelserver werden vom Eigentümer der Paketquelle definiert. Sie können nicht gelöscht, sondern nur deaktiviert werden. Sie können zusätzliche benutzerdefinierte Spiegelserver definieren, indem Sie sie genau wie eine normale Paketquelle hinzufügen.</string>
+    <string name="share_mirror">Spiegelserver teilen</string>
+    <string name="show_repository_qr">QR-Code der Paketquelle anzeigen</string>
+    <string name="repo_basic_auth_title">Basis-Authentifizierung</string>
+    <string name="repo_basic_auth_username">Benutzername: %s</string>
+    <string name="repo_basic_auth_password">Passwort: ***</string>
+    <string name="repo_basic_auth_edit">Bearbeiten</string>
+    <string name="expand">Ausklappen</string>
+    <string name="collapse">Einklappen</string>
+    <string name="repo_confirm_delete_mirror_title">Spiegelserver löschen?</string>
+    <string name="repo_confirm_delete_mirror_body">Sie können weiterhin Apps von dieser Paketquelle über die anderen Spiegelserver installieren.</string>
 </resources>
