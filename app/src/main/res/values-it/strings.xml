@@ -628,4 +628,25 @@
     <string name="swap_bluetooth_permissions">Si prega di dare l\'autorizzazione Bluetooth oppure Dispositivo nelle vicinanze!</string>
     <string name="preferForeignSummary">Prova prima mirror che si trovano al di fuori del tuo Paese, ad es. se le protezioni all\'estero sono più robuste.</string>
     <string name="preferForeign">Preferisci mirror esteri</string>
+    <string name="no_handler_app_generic">Non hai alcuna app disponibile che possa gestirlo.</string>
+    <string name="repo_archive_unknown">Questo repository non sembra avere un archivio.</string>
+    <string name="repo_archive_check">Cerca un archivio</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 app</item>
+        <item quantity="many">%d app</item>
+        <item quantity="other">%d app</item>
+    </plurals>
+    <string name="repo_last_update_index">Ultimo aggiornamento del repo: %s</string>
+    <string name="repo_last_update_check">Ultimo controllo di aggiornamenti del repo: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Eliminare il mirror?</string>
+    <string name="share_mirror">Condividi mirror</string>
+    <string name="show_repository_qr">Mostra il codice QR del repository</string>
+    <string name="repo_basic_auth_title">Autorizzazione di base</string>
+    <string name="repo_basic_auth_username">Nome utente: %s</string>
+    <string name="repo_basic_auth_password">Password: ***</string>
+    <string name="repo_basic_auth_edit">Modifica</string>
+    <string name="expand">Espandi</string>
+    <string name="repo_details_info_text">Un repository è una fonte di app.\n\nI mirror vengono usati per distribuire il carico di scaricamento delle app tra più server. I mirror più vicini a te potrebbero essere più veloci.\n\nI mirror ufficiali sono definiti dal proprietario del repository. Non possono essere eliminati, solo disattivati. Puoi definire mirror personalizzati aggiungendoli proprio come un repository normale.</string>
+    <string name="repo_confirm_delete_mirror_body">Puoi continuare a installare app da questo repository usando gli altri mirror.</string>
+    <string name="collapse">Riduci</string>
 </resources>
