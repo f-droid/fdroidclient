@@ -1,0 +1,11 @@
+* Pārrakstīts glabātavu atjauninātājs, lai fona atjauninājumus padarītu uzticamākus
+* Lietotņu sarakstos labākai lasāmībai atdalīts nosaukums un kopsavilkums
+* Tiek radīts brīdinājums, kad lietotnes nevar atjaunināt no vēlamās glabātavas
+* Lietotnes, kuras izmanto SDK 24 nav saderīgas ar Android 15 ierīcēm
+* Labāka spoguļu apstrāde "Pievienot glabātavu" priekšskatījumā (Paldies, Thore!)
+* Iespējoti neuzraudzīti lietotņu atjauninājumi Xiaomi ierīcēs, kurās nav MIUI (Paldies, Irate!)
+* Uzticēšanās lietotāju pievienotiem pamata sertifikātiem (Paldies, B.!)
+* Novērsta reģistrnejutīga meklēšana ar diakritiskām zīmēm (Paldies, Tobias!)
+* Atjaunināti nevēlamu iespēju apraksti (Paldies, Licaon!)
+* Pievienota piesaistīta tīkla nevēlama iespēja (Paldies, linsui!)
+* Netiek ņemtas vērā atstarpes, kad pievieno spoguļglabātavas (Paldies, Tobias!)
