@@ -267,7 +267,7 @@
     <string name="update_auto_install">Instalar las actualizaciones automáticamente</string>
     <string name="keep_install_history">Mantener el historial de instalaciones</string>
     <string name="keep_install_history_summary">Guardar un registro de todas las instalaciones y desinstalaciones de F-Droid</string>
-    <string name="warning_no_internet">No se puede actualizar. ¿Está conectado a Internet\?</string>
+    <string name="warning_no_internet">No se puede actualizar. ¿Está conectado a Internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt_unknown_author">¡Invite a los desarrolladores de %1$s a un café!</string>
     <string name="app_details_donate_prompt">%2$s han creado %1$s. ¡Invítelos a un café!</string>
@@ -306,8 +306,7 @@
     <string name="app_new">Nuevo</string>
     <string name="installed_apps__activity_title">Aplicaciones instaladas</string>
     <string name="installed_app__updates_ignored">Actualizaciones ignoradas</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Actualizaciones ignoradas para la versión %1$s
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Actualizaciones ignoradas para la versión %1$s</string>
     <string name="preference_category__my_apps">Mis aplicaciones</string>
     <string name="preference_manage_installed_apps">Gestionar las aplicaciones instaladas</string>
     <string name="tts_category_name">Categoría %1$s</string>

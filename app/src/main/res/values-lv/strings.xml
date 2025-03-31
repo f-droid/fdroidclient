@@ -66,7 +66,7 @@
     <string name="repo_details">Glabātava</string>
     <string name="repo_description">Apraksts</string>
     <string name="repo_name">Nosaukums</string>
-    <string name="repo_confirm_delete_title">Izdzēst glabātavu\?</string>
+    <string name="repo_confirm_delete_title">Izdzēst glabātavu?</string>
     <string name="pref_language">Valoda</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Internet">Tīmeklis</string>
@@ -95,7 +95,7 @@
     <string name="updates__tts__download_app">Lejupielādēt</string>
     <string name="more">Vairāk</string>
     <string name="less">Mazāk</string>
-    <string name="warning_no_internet">Nevar atjaunināt. Vai ierīcei ir savienojums ar internetu\?</string>
+    <string name="warning_no_internet">Nevar atjaunināt. Vai ierīcei ir savienojums ar internetu?</string>
     <string name="unsigned">Neparakstīts</string>
     <string name="unverified">Neapliecināts</string>
     <string name="repo_last_update">Pēdējais atjauninājums</string>
@@ -299,7 +299,7 @@
     <string name="nearby_splash__request_permission">Meklēt tagad</string>
     <string name="nearby_splash__both_parties_need_fdroid">Abiem iesaistītajiem ir nepieciešams %1$s, lai izmantotu apmaiņu.</string>
     <string name="nearby_splash__find_people_button">Atrast cilvēkus tuvumā</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nav interneta\? Iegūsti lietotnes no tuvumā esošiem cilvēkiem!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nav interneta? Iegūsti lietotnes no tuvumā esošiem cilvēkiem!</string>
     <string name="system_install_denied_permissions">Paplašinājumam netika piešķirtas paplašinātās atļaujas. Lūgums izveidot kļūdu ziņojumu.</string>
     <string name="uninstall_error_unknown">Neizdevās izdzēst nezināmas kļūdas dēļ</string>
     <string name="install_error_unknown">Neizdevās uzstādīt nezināmas kļūdas dēļ</string>

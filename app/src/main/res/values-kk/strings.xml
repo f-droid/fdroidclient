@@ -187,7 +187,7 @@
     <string name="allPerms">Бәрі</string>
     <string name="repo_name">Атау</string>
     <string name="pref_language_default">Жүйедегідей</string>
-    <string name="repo_confirm_delete_title">Репозитори жойылсын ба\?</string>
+    <string name="repo_confirm_delete_title">Репозитори жойылсын ба?</string>
     <string name="adding_apks_format">%s репозиториге қосуда…</string>
     <string name="repo_official_mirrors">Ресми айналар</string>
     <string name="antiadslist">Бұл қосымшада жарнама бар</string>

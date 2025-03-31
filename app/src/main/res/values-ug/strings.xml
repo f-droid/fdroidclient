@@ -229,10 +229,8 @@
     <string name="notification_content_single_installing">\"%1$s\"نى ئورنىتىۋاتىدۇ…</string>
     <string name="notification_content_single_installed">ئوڭۇشلۇق ئورنىتىلىدى</string>
     <plurals name="notification_summary_installed">
-        <item quantity="one">بىر
-\n%1$d ئۇيغۇلىما ئورنىتىلدى</item>
-        <item quantity="other">باشقا
-\n%1$d ئۇيغۇلىما ئورنىتىلدى</item>
+        <item quantity="one">بىر \n%1$d ئۇيغۇلىما ئورنىتىلدى</item>
+        <item quantity="other">باشقا \n%1$d ئۇيغۇلىما ئورنىتىلدى</item>
     </plurals>
     <string name="notification_title_summary_update_available">يېڭىلانما ئېرىشىشچان</string>
     <string name="notification_title_summary_downloading">چۈشۈرىۋاتىدۇ…</string>

@@ -257,7 +257,7 @@
     <string name="update_auto_install_summary">Pobieraj i aktualizuj aplikacje w tle, wyświetlając powiadomienie</string>
     <string name="keep_install_history">Przechowuj historię instalacji</string>
     <string name="keep_install_history_summary">Przechowuj dziennik wszystkich instalacji i odinstalowań w prywatnym obszarze aplikacji</string>
-    <string name="warning_no_internet">Nie można zaktualizować. Czy masz połączenie z Internetem\?</string>
+    <string name="warning_no_internet">Nie można zaktualizować. Czy masz połączenie z Internetem?</string>
     <string name="versions">Wersje</string>
     <string name="app_details_donate_prompt_unknown_author">Kup programistom %1$s kawę!</string>
     <string name="app_details_donate_prompt">%1$s jest tworzony przez %2$s. Kup im kawę!</string>
@@ -330,7 +330,7 @@
         <item quantity="other">Zaktualizowano %1$d dni temu</item>
     </plurals>
     <string name="app_list__name__successfully_installed">Zainstalowano %1$s</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu\? Pobierz aplikacje od osób w pobliżu!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu? Pobierz aplikacje od osób w pobliżu!</string>
     <string name="nearby_splash__find_people_button">Znajdź osoby w pobliżu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obydwie strony potrzebują %1$s, aby użyć wymiany w pobliżu.</string>
     <string name="latest__empty_state__no_recent_apps">Brak najnowszych aplikacji</string>
@@ -347,11 +347,13 @@
         <item quantity="one">%1$d aktualizacja</item>
         <item quantity="few">%1$d aktualizacje</item>
         <item quantity="many">%1$d aktualizacji</item>
+        <item quantity="other">%1$d aktualizacji</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d zainstalowana aplikacja</item>
         <item quantity="few">%1$d zainstalowane aplikacje</item>
         <item quantity="many">%1$d zainstalowanych aplikacji</item>
+        <item quantity="other">%1$d zainstalowanych aplikacji</item>
     </plurals>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d powiadomienie więcej…</item>

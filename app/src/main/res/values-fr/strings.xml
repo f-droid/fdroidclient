@@ -109,14 +109,14 @@
     <string name="unsigned_description">Cela signifie que la liste des applis n\'a pas pu être vérifiée. Soyez prudent avec les applis téléchargées depuis des index non signés.</string>
     <string name="repo_not_yet_updated">Ce dépôt n’a pas encore été utilisé. Vous devez l’activer pour voir la liste des applications qu\'il propose.</string>
     <string name="unknown">Inconnu</string>
-    <string name="repo_confirm_delete_title">Supprimer le dépôt \?</string>
+    <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
     <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications et leurs mises à jour ne seront plus disponibles.
 \n
 \nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
     <string name="repo_disabled_notification">%1$s a été désactivé.
 \n
 \nVous devrez réactiver ce dépôt pour installer des applis qu’il comprend.</string>
-    <string name="not_on_same_wifi">Votre appareil n\'est pas connecté au même réseau Wifi que le dépôt local que vous venez d\'ajouter ! Essayez vous connectez à ce réseau : %s</string>
+    <string name="not_on_same_wifi">Votre appareil n\'est pas connecté au même réseau Wifi que le dépôt local que vous venez d\'ajouter ! Essayez vous connectez à ce réseau : %s</string>
     <string name="requires_features">Nécessite : %1$s</string>
     <string name="category_Development">Développement</string>
     <string name="category_Games">Jeux</string>
@@ -190,9 +190,7 @@
 \nDes applications sont présentes sur votre appareil mais aucune n\'est disponible sur F-Droid. Vous devriez actualiser vos dépôts ou ajouter de nouveaux dépôts dans F-Droid pour découvrir de nouvelles applications ou mettre à jour vos applications existantes.</string>
     <string name="install_error_unknown">L\'installation a échoué pour une raison inconnue</string>
     <string name="uninstall_error_unknown">La désinstallation a échoué pour une raison inconnue</string>
-    <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si
-        vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Pour échanger via Wi-Fi, assurez-vous d\'être sur le même réseau Wi-Fi. Si vous n\'avez pas accès au même réseau, l\'un d\'entre vous peut créer un point d\'accès Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Aidez votre ami à se connecter à votre point d\'accès</string>
     <string name="swap_success">Échange réussi !</string>
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
@@ -270,7 +268,7 @@
     <string name="update_auto_install">Installer automatiquement les mises à jour</string>
     <string name="update_auto_install_summary">Télécharger et mettre à jour les applications en arrière-plan en affichant une notification</string>
     <string name="keep_install_history_summary">Mémoriser toutes les installations et désinstallations dans un journal privé</string>
-    <string name="warning_no_internet">Impossible d’effectuer la mise à jour, êtes-vous connecté à Internet \?</string>
+    <string name="warning_no_internet">Impossible d’effectuer la mise à jour, êtes-vous connecté à Internet ?</string>
     <string name="versions">Versions</string>
     <string name="app_details_donate_prompt_unknown_author">Offrez un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-lui un café !</string>
@@ -327,7 +325,7 @@
         <item quantity="many">Tout afficher (%d)</item>
         <item quantity="other">Tout afficher (%d)</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet \? Installez des applications depuis les appareils à proximité !</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Installez des applications depuis les appareils à proximité !</string>
     <string name="nearby_splash__find_people_button">Personnes à proximité</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
     <string name="tts_category_name">Catégorie %1$s</string>
@@ -601,7 +599,7 @@
     <string name="repo_list_info_title">Liste des Dépôts</string>
     <string name="repo_archive_toggle">Archive des Dépôts</string>
     <string name="repo_archive_toggle_description">Afficher les apps archivées et les anciennes versions des apps</string>
-    <string name="repositories_last_update">Dernière mise à jour : %s</string>
+    <string name="repositories_last_update">Dernière mise à jour : %s</string>
     <string name="repo_disable_warning">Désactiver ce dépôt enlèvera son statut « préféré » de toutes les applications.</string>
     <string name="repositories_last_update_never">jamais</string>
     <string name="repo_list_info_text">Un dépôt est un pourvoyeur d\'apps. Cette liste affiche tous les dépôts actuellement ajoutés.Les dépôts désactivés ne sont pas utilisés.

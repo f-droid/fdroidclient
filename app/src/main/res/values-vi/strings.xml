@@ -108,9 +108,7 @@
     <string name="repo_added">Đã lưu kho ứng dụng %1$s.</string>
     <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ
 \n%1$s</string>
-    <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng
-        này: %s
-    </string>
+    <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng này: %s</string>
     <string name="requires_features">Yêu cầu: %1$s</string>
     <string name="category_Development">Lập trình</string>
     <string name="category_Games">Trò chơi</string>
@@ -172,9 +170,7 @@
     <string name="empty_can_update_app_list">Chúc mừng!\nCác ứng dụng của bạn đã được cập nhật.</string>
     <string name="install_error_unknown">Cài đặt thất bại vì lỗi không xác định</string>
     <string name="uninstall_error_unknown">Gỡ cài đặt thất bại vì lỗi không xác định</string>
-    <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu
-        không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.</string>
     <string name="swap_success">Đã trao đổi thành công!</string>
     <string name="swap_active_hotspot">%1$s (điểm truy cập của bạn)</string>
     <string name="swap_switch_to_wifi">Chạm để chuyển sang mạng Wi-Fi</string>
@@ -334,7 +330,7 @@
         <item quantity="other">Xem %d ứng dụng</item>
     </plurals>
     <string name="empty_search_available_app_list">Không có ứng dụng trùng khớp.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng\? Hãy lấy các ứng dụng từ những người gần bạn!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng? Hãy lấy các ứng dụng từ những người gần bạn!</string>
     <string name="nearby_splash__find_people_button">Tìm người lân cận</string>
     <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có %1$s</string>
     <string name="swap_stopping_wifi">Đang tắt Wi-Fi…</string>

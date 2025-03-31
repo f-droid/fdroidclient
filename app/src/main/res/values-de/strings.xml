@@ -105,7 +105,7 @@
     <string name="unsigned_description">Die Liste der Apps konnte nicht überprüft werden. Sie sollten bei Apps vorsichtig sein, die aus nicht signierten Quellen heruntergeladen wurden.</string>
     <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht verwendet. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
     <string name="unknown">Unbekannt</string>
-    <string name="repo_confirm_delete_title">Paketquelle löschen\?</string>
+    <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
     <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden.
 \n
 \nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
@@ -215,9 +215,7 @@
     <string name="swap_no_peers_nearby">Keinen Tauschpartner gefunden.</string>
     <string name="swap_confirm">Tausch bestätigen</string>
     <string name="swap_qr_isnt_for_swap">Der QR-Code, den Sie eingelesen haben, sieht nicht wie ein Tauschcode aus.</string>
-    <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn
-        Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.
-    </string>
+    <string name="swap_join_same_wifi_desc">Um über WLAN zu tauschen, müssen Sie sich im selben Netzwerk befinden. Wenn Sie keinen gemeinsamen Netzwerkzugang haben, kann einer von Ihnen einen WLAN-Hotspot einrichten.</string>
     <string name="swap_nearby">Direktübertragung</string>
     <string name="loading">Laden …</string>
     <string name="swap_connection_misc_error">Fehler bei der Verbindungsaufnahme zum Zielgerät. Tausch ist nicht möglich!</string>
@@ -332,7 +330,7 @@
         <item quantity="other">Alle %d ansehen</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s installiert</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet\? Apps von Menschen in Ihrer Umgebung erhalten!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Kein Internet? Apps von Menschen in Ihrer Umgebung erhalten!</string>
     <string name="nearby_splash__find_people_button">In Ihrer Nähe suchen</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide benötigen %1$s, um den Direkttausch zu verwenden.</string>
     <string name="latest__empty_state__no_recent_apps">Keine kürzlich aktualisierten Apps gefunden</string>

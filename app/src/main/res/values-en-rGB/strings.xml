@@ -156,7 +156,7 @@
     <string name="nearby_splash__read_external_storage">Search SD Card for repos and mirrors.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
     <string name="nearby_splash__find_people_button">Find people nearby</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">No Internet\? Get apps from people near you!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">No Internet? Get apps from people near you!</string>
     <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension! Please create a bug report!</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
@@ -183,7 +183,7 @@
     <string name="repo_confirm_delete_body">Deleting a repository means apps from it will no longer be available.
 \n
 \nNote: All previously installed apps will remain on your device.</string>
-    <string name="repo_confirm_delete_title">Delete Repository\?</string>
+    <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="unknown">Unknown</string>
     <string name="repo_not_yet_updated">This repository has not been used yet. You need to enable it to view the apps it provides.</string>
     <string name="unsigned_description">This means that the list of apps could not be verified. You should be careful with apps downloaded from unsigned indexes.</string>
@@ -435,7 +435,7 @@
     <string name="repo_details">Repository</string>
     <string name="unverified">Unverified</string>
     <string name="unsigned">Unsigned</string>
-    <string name="warning_no_internet">Cannot update, are you connected to the Internet\?</string>
+    <string name="warning_no_internet">Cannot update, are you connected to the Internet?</string>
     <string name="antitracklist">This app tracks and reports your activity</string>
     <string name="less">Less</string>
     <string name="more">More</string>

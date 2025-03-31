@@ -136,8 +136,7 @@
     <string name="repos_unchanged">Pfimbi dzese dziri panguva yamanje</string>
     <string name="all_other_repos_fine">Dzimwe pfimbi dzose hadzina kusika kanganiso.</string>
     <string name="global_error_updating_repos">Kanganiso pakunatsa: %s</string>
-    <string name="warning_no_internet">Hatisi kukwanisa kunatsa, unechokwadi kuti wakahakira padandemutande here?
-    </string>
+    <string name="warning_no_internet">Hatisi kukwanisa kunatsa, unechokwadi kuti wakahakira padandemutande here?</string>
     <string name="installIncompatible">Zvirikuratidza sekunge pakeji inoiyi haiwirirane nemuchina wako. Urikuda kuyedza
         nekuvakirira zvakangodaro here?
     </string>
@@ -186,9 +185,7 @@
     <string name="repo_searching_address">Pfimbi yeF-Droid irikutsvagirwa pa
         %1$s
     </string>
-    <string name="not_on_same_wifi">Muchina wako hausi pamasaisai eWi-Fi mamwe chete nepfimbi yakamanikwa yawabva
-        kuwedzera! Yedza kukochekedza pamasaisai aya: %s
-    </string>
+    <string name="not_on_same_wifi">Muchina wako hausi pamasaisai eWi-Fi mamwe chete nepfimbi yakamanikwa yawabva kuwedzera! Yedza kukochekedza pamasaisai aya: %s</string>
     <string name="requires_features">Zvinosungira: %1$s</string>
     <string name="pref_language">Mutauro</string>
     <string name="pref_language_default">Sistemu ine hurongwa hwakarepo</string>
@@ -227,10 +224,7 @@
         dudziro rezvipfukuto!
     </string>
     <string name="swap_join_same_wifi">Hakira paWi-Fi imwe chete seshamwari yako</string>
-    <string name="swap_join_same_wifi_desc">Kuti utsinhana pamasaisai eWi-Fi, tanga mazvivimbisa kuti muripa masaisai
-        mamwe chete. Kana usina hupindwa pamasaisai mamwe chete, mumwe wenyu anokwanisa kusika nzvimbo yake yemasaisai
-        eWi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Kuti utsinhana pamasaisai eWi-Fi, tanga mazvivimbisa kuti muripa masaisai mamwe chete. Kana usina hupindwa pamasaisai mamwe chete, mumwe wenyu anokwanisa kusika nzvimbo yake yemasaisai eWi-Fi.</string>
     <string name="swap_join_this_hotspot">Batsira shamwari yako kupinda panzvimbo yako yemasaisai</string>
     <string name="swap">Tsinhana maApps</string>
     <string name="swap_success">Kutsinhana kwabudirira!</string>

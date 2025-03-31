@@ -122,7 +122,7 @@
     <string name="repos_unchanged">Alle argiewe is op datum</string>
     <string name="all_other_repos_fine">Alle ander argiewe het geen foute veroorsaak nie.</string>
     <string name="global_error_updating_repos">Fout tydens opdatering: %s</string>
-    <string name="warning_no_internet">Kan nie opdateer nie, is jy aan die Internet gekoppel\?</string>
+    <string name="warning_no_internet">Kan nie opdateer nie, is jy aan die Internet gekoppel?</string>
     <string name="no_handler_app">Jy het geen beskikbare program wat %s kan hanteer nie.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Ongeteken</string>
@@ -193,9 +193,7 @@
         Skep asseblief \'n foutverslag!
     </string>
     <string name="swap_join_same_wifi">Sluit aan by die dieselfde Wi-Fi as jou vriend</string>
-    <string name="swap_join_same_wifi_desc">Om te deel met behulp van Wi-Fi, sorg dat jy op dieselfde netwerk is. Indien
-        jy nie toegang het tot dieselfde netwerk nie, kan een van julle \'n Wi-Fi Hotspot skep.
-    </string>
+    <string name="swap_join_same_wifi_desc">Om te deel met behulp van Wi-Fi, sorg dat jy op dieselfde netwerk is. Indien jy nie toegang het tot dieselfde netwerk nie, kan een van julle \'n Wi-Fi Hotspot skep.</string>
     <string name="swap_join_this_hotspot">Help jou vriend om aan te sluit by jou hotspot</string>
     <string name="swap">Deel programme</string>
     <string name="swap_success">Deel sukses!</string>

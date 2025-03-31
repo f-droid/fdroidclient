@@ -85,9 +85,7 @@
     <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.
 \n
 \n Θα χρειαστεί να ενεργοποιήσετε ξανά αυτό το αποθετήριο για να εγκαταστήσετε εφαρμογές από αυτό.</string>
-    <string name="not_on_same_wifi">Η συσκευή σας δεν είναι στο ίδιο ασύρματο δίκτυο με το τοπικό αποθετήριο που μόλις
-        προσθέσατε! Δοκιμάστε να συνδεθείτε σε αυτό το δίκτυο: %s
-    </string>
+    <string name="not_on_same_wifi">Η συσκευή σας δεν είναι στο ίδιο ασύρματο δίκτυο με το τοπικό αποθετήριο που μόλις προσθέσατε! Δοκιμάστε να συνδεθείτε σε αυτό το δίκτυο: %s</string>
     <string name="requires_features">Απαιτεί: %1$s</string>
     <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Ασταθείς ενημερώσεις</string>
@@ -236,9 +234,7 @@
     <string name="interval_2w">Να γίνεται έλεγχος για ενημερώσεις κάθε 2 εβδομάδες</string>
     <string name="theme_light">Φωτεινό</string>
     <string name="theme_dark">Σκοτεινό</string>
-    <string name="swap_join_same_wifi_desc">Για να ανταλλάξετε χρησιμοποιώντας Wi-Fi, βεβαιωθείτε ότι είσαστε στο ίδιο
-        δίκτυο. Αν δεν έχετε πρόσβαση στο ίδιο δίκτυο, ένας από εσάς μπορεί να δημιουργήσει ένα σημείο πρόσβασης Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Για να ανταλλάξετε χρησιμοποιώντας Wi-Fi, βεβαιωθείτε ότι είσαστε στο ίδιο δίκτυο. Αν δεν έχετε πρόσβαση στο ίδιο δίκτυο, ένας από εσάς μπορεί να δημιουργήσει ένα σημείο πρόσβασης Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Βοηθήστε το φίλο σας να συνδεθεί στο σημείο πρόσβασής σας</string>
     <string name="swap_intro">Συνδεθείτε και ανταλλάξτε εφαρμογές με τους ανθρώπους κοντά σας.</string>
     <string name="swap_no_peers_nearby">Αδύνατη η εύρεση ανθρώπων κοντά για ανταλλαγή εφαρμογών.</string>

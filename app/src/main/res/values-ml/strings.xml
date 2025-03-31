@@ -53,7 +53,7 @@
     <string name="more">കൂടുതല്‍</string>
     <string name="less">കുറവ്</string>
     <string name="antitracklist">ഈ പ്രയോഗം നിങ്ങളുടെ പ്രവര്‍ത്തനങ്ങള്‍ നിരീക്ഷിക്കുകയും പ്രസിദ്ധപ്പെടുത്തുകയും ചെയ്യുന്നു</string>
-    <string name="warning_no_internet">പുതുക്കാന്‍ കഴിയുന്നില്ലേ, നിങ്ങൾ ഇന്റർനെറ്റിലേക്ക് കണക്റ്റുചെയ്തിട്ടുണ്ടോ\?</string>
+    <string name="warning_no_internet">പുതുക്കാന്‍ കഴിയുന്നില്ലേ, നിങ്ങൾ ഇന്റർനെറ്റിലേക്ക് കണക്റ്റുചെയ്തിട്ടുണ്ടോ?</string>
     <string name="unsigned">ഒപ്പുവയ്‌ക്കാത്തത്</string>
     <string name="unverified">പരിശോധിച്ചിട്ടില്ലാത്തത്</string>
     <string name="repo_details">സംഭരണി</string>
@@ -212,7 +212,7 @@
     <string name="unsigned_description">ഈ പ്രയോഗങ്ങളുടെ പട്ടിക പരിശോധിക്കാൻ കഴിഞ്ഞില്ല. ഒപ്പു വെക്കാത്ത ഇൻഡെക്സുകളിൽ നിന്നും ഡൌൺലോഡ് ചെയ്ത പ്രയോഗങ്ങളുമായി നിങ്ങൾ ജാഗ്രത പാലിക്കണം.</string>
     <string name="repo_not_yet_updated">ഈ ആപ്പ് ശേഖരണം ഇതുവരെ ഉപയോഗിച്ചിട്ടില്ല. ഇതിലുള്ള ആപ്പുകൾ കാണാന്‍ ഇത് സജ്ജമാക്കേണ്ടതുണ്ട്.</string>
     <string name="unknown">അജ്ഞാതം</string>
-    <string name="repo_confirm_delete_title">ആപ്പ് ശേഖരണം ഒഴിവാക്കുക\?</string>
+    <string name="repo_confirm_delete_title">ആപ്പ് ശേഖരണം ഒഴിവാക്കുക?</string>
     <string name="repo_confirm_delete_body">ഒരു ആപ്പ് ശേഖരണം നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
 \n
 \n കുറിപ്പ്: മുമ്പ് ഇൻസ്റ്റാൾ ചെയ്ത എല്ലാ ആപ്പുകളും നിങ്ങളുടെ ഉപകരണത്തില്‍ തന്നെ ഉണ്ടാകും.</string>

@@ -102,7 +102,7 @@
     <string name="category_Multimedia">බහුමාධ්ය</string>
     <string name="swap_welcome">F-Droid වෙත සාදරයෙන් පිළිගනිමු!</string>
     <string name="antitracklist">මෙම යෙදුම ඔබගේ ක්‍රියාකාරකම් නිරීක්ෂණය කර වාර්තා කරයි</string>
-    <string name="warning_no_internet">යාවත්කාලීන කළ නොහැක, ඔබ අන්තර්ජාලයට සම්බන්ධද\?</string>
+    <string name="warning_no_internet">යාවත්කාලීන කළ නොහැක, ඔබ අන්තර්ජාලයට සම්බන්ධද?</string>
     <string name="category_System">පද්ධතිය</string>
     <string name="crash_dialog_text">යෙදුම නතර කිරීමට බල කරමින් අනපේක්ෂිත දෝෂයක් සිදු විය. ගැටලුව විසඳා ගැනීමට උදවු කිරීමට විස්තර ඊමේල් කිරීමට ඔබ කැමතිද\?</string>
     <string name="not_on_same_wifi">ඔබගේ උපාංගය ඔබ දැන් එක් කළ ස්ථානීය ගබඩාව හා සමාන Wi-Fi මත නොවේ! මෙම ජාලයට සම්බන්ධ වීමට උත්සාහ කරන්න: %s</string>

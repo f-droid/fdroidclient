@@ -264,7 +264,7 @@
     <string name="keep_install_history_summary">Simpan catatan semua pemasangan dan pencopotan di dalam penyimpanan privat</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>
     <string name="update_auto_install_summary">Mengunduh dan memperbarui aplikasi di latar belakang, akan menampilkan notifikasi</string>
-    <string name="warning_no_internet">Tidak bisa memperbarui, apakah anda tersambung ke Internet\?</string>
+    <string name="warning_no_internet">Tidak bisa memperbarui, apakah anda tersambung ke Internet?</string>
     <string name="versions">Versi</string>
     <string name="app_details_donate_prompt">%1$s dibuat oleh %2$s. Belikan mereka kopi!</string>
     <string name="repositories_summary">Tambahkan sumber tambahan aplikasi</string>
@@ -324,7 +324,7 @@
         <item quantity="other">Diperbarui %1$d hari yang lalu</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s terpasang</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada Internet\? Dapatkan aplikasi dari orang-orang di sekitar Anda!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada Internet? Dapatkan aplikasi dari orang-orang di sekitar Anda!</string>
     <string name="nearby_splash__find_people_button">Temukan orang di sekitar</string>
     <string name="nearby_splash__both_parties_need_fdroid">Kedua pihak memerlukan %1$s untuk menggunakan fitur di sekitar.</string>
     <string name="latest__empty_state__no_recent_apps">Tidak ditemukan aplikasi terbaru</string>

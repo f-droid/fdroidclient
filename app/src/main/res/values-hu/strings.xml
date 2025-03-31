@@ -302,7 +302,7 @@
     <string name="repositories_summary">További alkalmazásforrások hozzáadása</string>
     <string name="writing_index_jar">Aláírt indexfájl (index.jar) írása…</string>
     <string name="all_other_repos_fine">A többi tároló nem adott hibát.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet\? Szerezzen alkalmazásokat a közelben lévő emberektől!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nincs internet? Szerezzen alkalmazásokat a közelben lévő emberektől!</string>
     <string name="nearby_splash__find_people_button">Közelben lévő emberek keresése</string>
     <string name="nearby_splash__both_parties_need_fdroid">Mindkét félnek szükséges az %1$s a funkció használatához.</string>
     <string name="install_error_notify_title">Hiba a(z) %s telepítésekor</string>

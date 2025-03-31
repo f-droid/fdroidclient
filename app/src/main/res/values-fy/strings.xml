@@ -131,7 +131,7 @@
     <string name="repo_details">Bewarplak</string>
     <string name="unverified">Net ferifieare</string>
     <string name="unsigned">Net ûndertekene</string>
-    <string name="warning_no_internet">Kin net fernije, binne jo mei it ynternet ferbûn\?</string>
+    <string name="warning_no_internet">Kin net fernije, binne jo mei it ynternet ferbûn?</string>
     <string name="antitracklist">Dizze applikaasje folget en rapportearret jo aktiviteit</string>
     <string name="app_list__name__downloading_in_progress">%1$s oan it ynladen</string>
     <string name="category_Connectivity">Ferbiningen</string>

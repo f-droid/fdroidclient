@@ -128,7 +128,7 @@
     <string name="unsigned_description">Dette betyder at listen over apps ikke kunne bekræftes. Du skal være forsigtig med apps hentet fra usignerede registre.</string>
     <string name="repo_not_yet_updated">Dette depot har ikke været benyttet endnu. Du skal aktivere det for at se de apps det indeholder.</string>
     <string name="unknown">Ukendt</string>
-    <string name="repo_confirm_delete_title">Slet Arkiv\?</string>
+    <string name="repo_confirm_delete_title">Slet Arkiv?</string>
     <string name="repo_confirm_delete_body">Slettes et arkiv, vil dets apps ikke længere være tilgængelige.
 \n
 \nBemærk: Alle allerede installerede apps vil forblive på din enhed.</string>
@@ -253,7 +253,7 @@
     <string name="keep_install_history_summary">Gem log over alle installationer og afinstallationer et privat sted</string>
     <string name="update_auto_install">Installer opdateringer automatisk</string>
     <string name="update_auto_install_summary">Hent og installer opdateringer i baggrunden, vis en notifikation</string>
-    <string name="warning_no_internet">Kan ikke opdatere. Er du forbundet til internettet\?</string>
+    <string name="warning_no_internet">Kan ikke opdatere. Er du forbundet til internettet?</string>
     <string name="main_menu__latest_apps">Seneste</string>
     <string name="main_menu__categories">Kategorier</string>
     <string name="main_menu__swap_nearby">I nærheden</string>
@@ -303,7 +303,7 @@
         <item quantity="one">Vis %d</item>
         <item quantity="other">Vis alle %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Intet Internet\? Hent apps fra folk i nærheden!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Intet Internet? Hent apps fra folk i nærheden!</string>
     <string name="nearby_splash__find_people_button">Find personer i nærheden</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge parter skal have %1$s for at benytte \"i nærheden\".</string>
     <string name="app__tts__downloading_progress">Henter, har %1$d%%</string>

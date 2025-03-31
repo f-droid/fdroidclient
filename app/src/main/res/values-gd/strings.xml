@@ -370,7 +370,7 @@
     <string name="nearby_splash__read_external_storage">Lorg ionadan-tasgaidh is sgàthanan air cairt SD.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Feumaidh an dithis %1$s airson iomlaid am fagas.</string>
     <string name="nearby_splash__find_people_button">Lorg daoine am fagas</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nach eil an t-eadar-lìon ann\? Faigh aplacaidean o dhaoine faisg ort!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nach eil an t-eadar-lìon ann? Faigh aplacaidean o dhaoine faisg ort!</string>
     <string name="share_apk_error">Cha b’ urrainn dhuinn faidhle na h-aplacaid a cho-roinneadh</string>
     <string name="uninstall_error_unknown">Cha deach leis an dì-stàladh ri linn mearachd nach aithne dhuinn</string>
     <string name="install_error_unknown">Cha deach leis an stàladh ri linn mearachd nach aithne dhuinn</string>
@@ -410,7 +410,7 @@
     <string name="repo_confirm_delete_body">Ma sguabas tu às ionad-tasgaidh, is ciall dha nach bi na h-aplacaidean uaithe ri fhaighinn dhut tuilleadh.
 \n
 \nAn aire: Fuirichidh na h-aplacaidean uile a stàlaich thu cheana air an uidheam agad.</string>
-    <string name="repo_confirm_delete_title">A bheil thu airson an t-ionad-tasgaidh a sguabadh às\?</string>
+    <string name="repo_confirm_delete_title">A bheil thu airson an t-ionad-tasgaidh a sguabadh às?</string>
     <string name="unknown">Chan eil fhios</string>
     <string name="repo_not_yet_updated">Cha deach an t-ionad-tasgaidh seo a cleachdadh fhathast. Feumaidh tu a chur an comas ach an seall thu na h-aplacaidean a bheir e dhut.</string>
     <string name="unsigned_description">Is ciall dha nach b’ urrainn dhuinn liosta nan aplacaidean a dhearbhadh. Bu chòir dhut a bhith faiceallach le aplacaidean a chaidh a luchdadh a-nuas o inneacsan gun soidhneadh.</string>
@@ -431,7 +431,7 @@
     <string name="no_handler_app">Chan eil aplacaid ri làimh dhut a làimhsicheadh %s.</string>
     <string name="permissions">Ceadan</string>
     <string name="no_permissions">Gun cheadan</string>
-    <string name="warning_no_internet">Cha ghabh ùrachadh, a bheil ceangal agad ris an eadar-lìon\?</string>
+    <string name="warning_no_internet">Cha ghabh ùrachadh, a bheil ceangal agad ris an eadar-lìon?</string>
     <string name="global_error_updating_repos">Thachair mearachd rè an ùrachaidh: %s</string>
     <string name="all_other_repos_fine">Cha do dh’adhbharaich ionad-tasgaidh sam bith eile mearachd.</string>
     <string name="repos_unchanged">Tha a h-uile ionad-tasgaidh cho ùr ’s a ghabhas</string>

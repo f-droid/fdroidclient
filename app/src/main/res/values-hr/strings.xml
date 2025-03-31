@@ -154,9 +154,7 @@
     <string name="repo_added">Spremljen repozitorij paketa %1$s.</string>
     <string name="repo_searching_address">Tražim repozitorij paketa na
 \n%1$s</string>
-    <string name="not_on_same_wifi">Vaš uređaj nije na istoj Wi-Fi mreži kao i lokalni repozitorij koji ste upravo
-        dodali! Probajte se spojiti na ovu mrežu: %s
-    </string>
+    <string name="not_on_same_wifi">Vaš uređaj nije na istoj Wi-Fi mreži kao i lokalni repozitorij koji ste upravo dodali! Probajte se spojiti na ovu mrežu: %s</string>
     <string name="requires_features">Zahtjeva: %1$s</string>
     <string name="pref_language">Jezik</string>
     <string name="pref_language_default">Zadani jezik sustava</string>
@@ -192,9 +190,7 @@
         zapis o greški!
     </string>
     <string name="swap_join_same_wifi">Spoji se na istu Wi-Fi mrežu kao i prijatelj</string>
-    <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako
-        nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi Hotspot.
-    </string>
+    <string name="swap_join_same_wifi_desc">Kako bi razmjenjivali preko Wi-Fi mreže, utvrdite da ste na istoj mreži. Ako nemate pristup istoj mreži, jedan od Vas može napraviti Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Pomozite prijatelju da se pridruži Vašem hotspotu</string>
     <string name="swap">Razmjeni aplikacije</string>
     <string name="swap_success">Razmjena uspjela!</string>
@@ -281,7 +277,7 @@
     <string name="app_list__name__downloading_in_progress">Preuzimanje %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s instaliran</string>
     <string name="updates__tts__download_app">Preuzmi</string>
-    <string name="warning_no_internet">Nije moguće ažurirati, jeste li spojeni na internet\?</string>
+    <string name="warning_no_internet">Nije moguće ažurirati, jeste li spojeni na internet?</string>
     <string name="notification_title_single_update_available">Dostupno ažuriranje</string>
     <string name="notification_title_summary_install_error">Instalacija nije uspjela</string>
     <string name="by_author_format">od %s</string>
@@ -453,7 +449,7 @@
     <string name="nearby_splash__read_external_storage">Pretraži repozitorije i zrcala repozitorija na SD kartici.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Oba uređaja trebaju %1$s za korištenje blizinske razmjene.</string>
     <string name="nearby_splash__find_people_button">Pronađi ljude u blizini</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nemate internet\? Preuzmite aplikacije od ljudi u blizini!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nemate internet? Preuzmite aplikacije od ljudi u blizini!</string>
     <string name="share_repository">Podijeli repozitorij</string>
     <string name="repo_user_mirrors">Korisnička zrcala repozitorija</string>
     <string name="repo_official_mirrors">Službena zrcaljenja repozitorija</string>

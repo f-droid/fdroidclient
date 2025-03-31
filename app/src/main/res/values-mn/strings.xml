@@ -173,7 +173,7 @@
     <string name="nearby_splash__read_external_storage">SD карт дээрээс репо, толь хайж олох.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Хоёр тал ойролцоо ашиглахын тулд %1$s хэрэгтэй.</string>
     <string name="nearby_splash__find_people_button">Ойролцоох хүмүүсийг хайж олох</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Интернет байхгүй юу\? Ойролцоох хүмүүсээс програм татаж аваарай!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Интернет байхгүй юу? Ойролцоох хүмүүсээс програм татаж аваарай!</string>
     <string name="system_install_denied_permissions">Өргөтгөлд давуу эрх олгогдоогүй байна! Алдааны тайлан үүсгэнэ үү!</string>
     <string name="uninstall_error_unknown">Үл мэдэгдэх алдааны улмаас суулгаж чадсангүй</string>
     <string name="install_error_unknown">Үл мэдэгдэх алдааны улмаас суулгаж чадсангүй</string>
@@ -200,7 +200,7 @@
     <string name="repo_confirm_delete_body">Репозиторыг устгах нь үүнээс апп ашиглах боломжгүй болно гэсэн үг юм.
 \n
 \nТэмдэглэл: Өмнө суулгасан бүх програмууд таны төхөөрөмж дээр үлдэх болно.</string>
-    <string name="repo_confirm_delete_title">Репозиторыг устгах уу\?</string>
+    <string name="repo_confirm_delete_title">Репозиторыг устгах уу?</string>
     <string name="repo_not_yet_updated">Энэ санг хараахан ашиглаагүй байна. Түүгээр хангасан програмуудыг үзэхийн тулд та үүнийг идэвхжүүлэх хэрэгтэй.</string>
     <string name="unsigned_description">Энэ нь програмын жагсаалтыг баталгаажуулах боломжгүй гэсэн үг юм. Та гарын үсэггүй индексүүдээс татаж авсан аппликешнүүдэд анхааралтай хандах хэрэгтэй.</string>
     <string name="repo_name">Нэр</string>
@@ -445,7 +445,7 @@
     <string name="repo_details">Хадгалах сан</string>
     <string name="unverified">Баталгаажаагүй</string>
     <string name="unsigned">Гарын үсэггүй</string>
-    <string name="warning_no_internet">Шинэчилж чадахгүй байна, та интернетэд холбогдсон уу\?</string>
+    <string name="warning_no_internet">Шинэчилж чадахгүй байна, та интернетэд холбогдсон уу?</string>
     <string name="antitracklist">Энэ апп нь таны үйл ажиллагааг хянах, мэдээлэх</string>
     <string name="less">Бага</string>
     <string name="more">Дэлгэрэнгүй</string>

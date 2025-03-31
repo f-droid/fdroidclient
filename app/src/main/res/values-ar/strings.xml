@@ -181,9 +181,7 @@
     <string name="uninstall_error_unknown">فشل إلغاء التثبيت نتيجة لخطأ مجهول</string>
     <string name="system_install_denied_permissions">لم يتم منح ضوابط مميزة للإضافة! يرجى إنشاء تقرير عن خطأ!</string>
     <string name="swap_join_same_wifi">إنضم إلى الإنترنت اللاسلكي مثل صديقك</string>
-    <string name="swap_join_same_wifi_desc">للتبديل باستخدام الإنترنت اللاسلكي، لضمان إن كنت على نفس الشبكة. إذا لم يكن
-        لديك الوصول إلى نفس الشبكة، يمكن إنشاء شبكة إنترنت لاسلكي.
-    </string>
+    <string name="swap_join_same_wifi_desc">للتبديل باستخدام الإنترنت اللاسلكي، لضمان إن كنت على نفس الشبكة. إذا لم يكن لديك الوصول إلى نفس الشبكة، يمكن إنشاء شبكة إنترنت لاسلكي.</string>
     <string name="swap_join_this_hotspot">دعوة صديقك للانضمام لشبكة الإنترنت الخاصة بك</string>
     <string name="swap">تطبيقات بديلة</string>
     <string name="swap_success">المبادلة تمت بنجاح!</string>

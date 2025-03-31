@@ -241,14 +241,14 @@
     <string name="panic_exit_summary">Tura ad yemdel wesnas-ayi</string>
     <string name="panic_hide_summary">Asnas ad yeffer iman-is</string>
     <string name="hide_on_long_search_press_title">Ffer s teqfilt n unadi</string>
-    <string name="repo_confirm_delete_title">Tebγiḍ tuksa n ukufi\?</string>
+    <string name="repo_confirm_delete_title">Tebγiḍ tuksa n ukufi?</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Sken-d %d</item>
         <item quantity="other">Sken-it-id akk i %d</item>
     </plurals>
     <string name="empty_can_update_app_list">Ayuz!
 \nIsnasen akk ttwaleqmen.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Ulac tuqqna γer internet\? Awid isnasen sγur labɛaḍ igellan zdat-ik!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ulac tuqqna γer internet? Awid isnasen sγur labɛaḍ igellan zdat-ik!</string>
     <string name="nearby_splash__find_people_button">Nadi γef labɛaḍ igd izzin</string>
     <string name="nearby_splash__request_permission">Nadi tura</string>
     <string name="open_qr_code_scanner">Ldi imeγri n QR</string>

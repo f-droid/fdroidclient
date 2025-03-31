@@ -239,7 +239,7 @@
     <string name="status_inserting_x_apps">Yn cadw manylion ap (%1$d/%2$d) o %3$s</string>
     <string name="repos_unchanged">Mae pob ystorfa yn gyfoes</string>
     <string name="global_error_updating_repos">Gwall wrth ddiweddaru: %s</string>
-    <string name="warning_no_internet">Methu diweddaru. Wyt ti wedi cysylltu â\'r rhyngrwyd\?</string>
+    <string name="warning_no_internet">Methu diweddaru. Wyt ti wedi cysylltu â\'r rhyngrwyd?</string>
     <string name="no_permissions">Dim caniatâd</string>
     <string name="permissions">Caniatâd</string>
     <string name="no_handler_app">Nid oes gennyt unrhyw apiau ar gael sy\'n medru ymdrin â %s.</string>
@@ -255,7 +255,7 @@
     <string name="repo_user_mirrors">Defnyddio drychau</string>
     <string name="repo_name">Enw</string>
     <string name="unknown">Anhysbys</string>
-    <string name="repo_confirm_delete_title">Dileu\'r Ystorfa\?</string>
+    <string name="repo_confirm_delete_title">Dileu\'r Ystorfa?</string>
     <string name="share_repository">Rhannu Ystorfa</string>
     <string name="not_on_same_wifi">Dyw dy ddyfais ddim ar yr un Wi-Fi a\'r ystorfa leol rwyt newydd ychwanegu! Ceisia ymuno â\'r rhwydwaith hwn: %s</string>
     <string name="requires_features">Angen: %1$s</string>
@@ -454,7 +454,7 @@
     <string name="install_error_unknown">Methwyd gosod oherwydd gwall anhysbys</string>
     <string name="uninstall_error_unknown">Methwyd dadosod oherwydd gwall anhysbys</string>
     <string name="system_install_denied_permissions">Dyw\'r caniatâd breintiedig heb eu rhoi i\'r estyniad. Crea adroddiad gwall!</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Dim rhyngrwyd\? Beth am gael apiau gan bobol gerllaw\?</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Dim rhyngrwyd? Beth am gael apiau gan bobol gerllaw?</string>
     <string name="nearby_splash__find_people_button">Canfod pobol gerllaw</string>
     <string name="nearby_splash__both_parties_need_fdroid">Mae ar y ddau barti angen defnyddio %1$s i ddefnyddio gerllaw.</string>
     <string name="nearby_splash__read_external_storage">Chwilio\'r cerdyn SD am ystorfeydd a drychau.</string>

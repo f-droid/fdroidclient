@@ -100,7 +100,7 @@
     <string name="unsigned_description">Ово значи да се листа апликација не може верификовати. Будите опрезни са апликацијама преузетим са непотписаних индекса.</string>
     <string name="repo_not_yet_updated">Овај репозиторијум још није коришћен. Омогућите га да бисте видели апликације у њему.</string>
     <string name="unknown">Непознато</string>
-    <string name="repo_confirm_delete_title">Избрисати репозиторијум\?</string>
+    <string name="repo_confirm_delete_title">Избрисати репозиторијум?</string>
     <string name="repo_confirm_delete_body">Ако избришете репозиторијум, апликације у њему више неће бити доступне.\n\nНапомена: све раније инсталиране апликације ће остати на вашем уређају.</string>
     <string name="repo_disabled_notification">Репозиторијум %1$s је онемогућен.\n\nДа бисте инсталирали апликације из њега, мораћете поново да га омогућите.</string>
     <string name="repo_added">Репозиторијум %1$s је сачуван.</string>
@@ -315,7 +315,7 @@
         <item quantity="other">Ажурирано пре %1$d дана</item>
     </plurals>
     <string name="app_list__name__successfully_installed">Апликација %1$s је инсталирана</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернет везу\? Преузмите апликације од људи у близини!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернет везу? Преузмите апликације од људи у близини!</string>
     <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
     <string name="nearby_splash__both_parties_need_fdroid">За коришћење функције „У близини” обема странама је потребан %1$s.</string>
     <string name="latest__empty_state__no_recent_apps">Нема недавних апликација</string>

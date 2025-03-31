@@ -70,7 +70,7 @@
     <string name="notification_title_summary_ready_to_install_update">হালনাগাদ ইনস্টল করতে প্রস্তুত</string>
     <string name="notification_title_summary_installing">ইনস্টলরত</string>
     <string name="unsigned">অস্বাক্ষরিত</string>
-    <string name="warning_no_internet">হালনাগাদ করা যাচ্ছে না, তুমি কী ইন্টারনেটের সাথে সংযুক্ত\?</string>
+    <string name="warning_no_internet">হালনাগাদ করা যাচ্ছে না, তুমি কী ইন্টারনেটের সাথে সংযুক্ত?</string>
     <string name="antitracklist">এই অ্যাপটি আপনার কার্যকলাপ ট্র্যাক করে এবং বলে দেয়</string>
     <string name="app_list__name__successfully_installed">%1$s ইন্সটলকৃত</string>
     <string name="app_list__name__downloading_in_progress">%1$s ডাউনলোড করা হচ্ছে</string>
@@ -235,7 +235,7 @@
     </plurals>
     <string name="requires_features">%1$s: প্রয়োজন</string>
     <string name="share_repository">ভাণ্ডার শেয়ার করো</string>
-    <string name="repo_confirm_delete_title">ভাণ্ডার মুছবে\?</string>
+    <string name="repo_confirm_delete_title">ভাণ্ডার মুছবে?</string>
     <string name="repo_user_mirrors">ব্যবহারকারী আয়না</string>
     <string name="repo_official_mirrors">প্রাতিষ্ঠানিক আয়না(মিরর)</string>
     <string name="no_permissions">কোনো অনুমতি নেই</string>
@@ -452,7 +452,7 @@
     <string name="antinosourcesince">উৎস কোড এখন অনুপভ্য, হালনাগাদ সম্ভব নয়।</string>
     <string name="latest__empty_state__no_enabled_repos">ভাণ্ডার সক্রিয় করে হালনাগাদ করলে, সর্বশেষ অ্যাপ এখানে দেখাবে</string>
     <string name="swap_intro">কাছাকাছি মানুষের সাথে যুক্ত হও ও অ্যাপ বিনিময় করো।</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ইন্টারনেট নেই\? কাছের কারো কাছ থেকে অ্যাপ নাও!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ইন্টারনেট নেই? কাছের কারো কাছ থেকে অ্যাপ নাও!</string>
     <string name="install_error_unknown">অজানা সমস্যার জন্য ইন্সটল করতে ব্যর্থ</string>
     <string name="uninstall_error_unknown">অজানা সমস্যার জন্য মুছতে ব্যর্থ</string>
     <string name="antiupstreamnonfreelist">উজানের কোড সম্পূর্ণরূপে মুক্ত না</string>

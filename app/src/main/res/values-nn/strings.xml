@@ -53,7 +53,7 @@
     <string name="more">Meir</string>
     <string name="less">Mindre</string>
     <string name="antitracklist">Denne appen sporar og rapporterer aktiviteten din</string>
-    <string name="warning_no_internet">Kan ikkje oppdatera. Er du tilkopla Internett\?</string>
+    <string name="warning_no_internet">Kan ikkje oppdatera. Er du tilkopla Internett?</string>
     <string name="unsigned">Usignert</string>
     <string name="unverified">Ikkje stadfesta</string>
     <string name="repo_details">Pakkebrønn</string>
@@ -298,7 +298,7 @@
     <string name="unsigned_description">Dette tyder at appoversikta ikkje kunne stadfestast. Du bør visa aktsemd med appar lasta ned frå usignerte indeksar.</string>
     <string name="repo_not_yet_updated">Pakkebrønnen har ikkje blitt brukt enno. Du må gjera han verksam dersom du vil sjå appane han inneheld.</string>
     <string name="unknown">Ukjend</string>
-    <string name="repo_confirm_delete_title">Vil du sletta pakkebrønnen\?</string>
+    <string name="repo_confirm_delete_title">Vil du sletta pakkebrønnen?</string>
     <string name="repo_confirm_delete_body">Viss du slettar pakkebrønnen, vert ikkje lenger appane i han tilgjengelege.
 \n
 \nMerk: Appar du har installert før, vil framleis vera installerte.</string>
@@ -325,7 +325,7 @@
     <string name="install_error_unknown">Klarte ikkje installera, grunna ukjend feil</string>
     <string name="uninstall_error_unknown">Klarte ikkje avinstallera, grunna ukjend feil</string>
     <string name="system_install_denied_permissions">Utvida løyve er ikkje gjeve til tillegget. Du bør senda ein feilrapport om dette.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Manglar du Internett-tilgang\? Hent appar frå andre i nærleiken!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Manglar du Internett-tilgang? Hent appar frå andre i nærleiken!</string>
     <string name="nearby_splash__find_people_button">Finn folk i nærleiken</string>
     <string name="nearby_splash__both_parties_need_fdroid">Begge to treng %1$s for å kunna utveksla appar.</string>
     <string name="nearby_splash__read_external_storage">Søk på SD-kort etter pakkebrønnar og speglar.</string>

@@ -238,7 +238,7 @@
     <string name="touch_to_configure_local_repo">အသေးစိတ်အချက်အလက်ကြည်ရန် နှိပ်ပါ နှင့် သင့်အက်ပ်စ့်ကို တခြားသူများလဲလှယ်ရယူရန်အတွက် ခွင့်ပြုမည်</string>
     <string name="proxy_host">Proxy Host</string>
     <string name="proxy_port">Proxy Port</string>
-    <string name="warning_no_internet">နောက်ဆုံးတင်မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား\?</string>
+    <string name="warning_no_internet">နောက်ဆုံးတင်မရပါ။ သင် အင်တာနက်နှင့်ချိတ်ဆက်ထားသလား?</string>
     <string name="no_handler_app">%s ကိုကိုင်တွယ်ရန်အတွက် သင့်တွင် ရရှိထားသော အက်ပ်မရှိပါ</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">%d အားလုံးကိုကြည့်မည်</item>

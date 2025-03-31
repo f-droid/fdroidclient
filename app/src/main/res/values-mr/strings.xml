@@ -129,7 +129,7 @@
     <string name="not_on_same_wifi">तुमचे यंत्र तुमच्याद्वारे जोडल्या गेलेल्या स्थानीक भांडाराच्या वाई-फाई वर नाही ! या नेटवर्क मध्ये सामील होण्याचा प्रयत्न करा: %s</string>
     <string name="repo_last_update">अंतिम अद्ययावत</string>
     <string name="unverified">असत्यापित</string>
-    <string name="warning_no_internet">अद्यायवत शक्य नाही, तुम्ही इंटरनेटला जोडलेले आहात का \?</string>
+    <string name="warning_no_internet">अद्यायवत शक्य नाही, तुम्ही इंटरनेटला जोडलेले आहात का ?</string>
     <string name="antitracklist">हे ऍप तुमच्या हालचालीवर पाळत ठेऊन नोंद करते</string>
     <string name="updates__tts__download_app">डाउनलोड</string>
     <string name="app_list__name__successfully_installed">%1$s इंंस्टॉल झाले</string>
@@ -280,7 +280,7 @@
     <string name="wifi_ap">हॉटस्पॉट</string>
     <string name="requires_features">%1$s गरजेचे</string>
     <string name="share_repository">भांडार सामाईक करा</string>
-    <string name="repo_confirm_delete_title">भांडार हटवावे \?</string>
+    <string name="repo_confirm_delete_title">भांडार हटवावे ?</string>
     <string name="unknown">अज्ञात</string>
     <string name="repo_user_mirrors">वापरकर्त्याचे प्रतिदुवे</string>
     <string name="repo_official_mirrors">अधिकारीक</string>

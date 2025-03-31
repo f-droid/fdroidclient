@@ -125,7 +125,7 @@
     <string name="unsigned_description">Isto significa que não foi possível verificar a lista de aplicações. Deve ter muito cuidado ao descarregar aplicações de índices não assinados.</string>
     <string name="repo_not_yet_updated">Este repositório ainda não foi utilizado. Tem que o ativar para ver as aplicações que disponibiliza.</string>
     <string name="unknown">Desconhecido</string>
-    <string name="repo_confirm_delete_title">Remover repositório\?</string>
+    <string name="repo_confirm_delete_title">Remover repositório?</string>
     <string name="repo_confirm_delete_body">Se remover um repositório, todas as aplicações aí disponibilizadas ficarão indisponíveis.
 \n
 \nNota: nenhuma das aplicações já instaladas será afetada.</string>
@@ -274,8 +274,7 @@
     <string name="app_list__name__successfully_installed">%1$s foi instalado</string>
     <string name="installed_apps__activity_title">Aplicações instaladas</string>
     <string name="installed_app__updates_ignored">Atualizações ignoradas</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s</string>
     <string name="updates__tts__download_app">Descarregar</string>
     <string name="update_all">Atualizar tudo</string>
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>

@@ -64,7 +64,7 @@
     <string name="updates__tts__download_app">გადმოწერა</string>
     <string name="repo_details">რეპოზიტორია</string>
     <string name="antitracklist">აპი თვალყურს ადევნებს თქვანს აქტივობას და ანგარიშებს აგზავნის</string>
-    <string name="warning_no_internet">განახლება შეუძლებელია. ინტერნეტი ჩართულია\?</string>
+    <string name="warning_no_internet">განახლება შეუძლებელია. ინტერნეტი ჩართულია?</string>
     <string name="swap_send_fdroid">F-Droid გაგზავნა</string>
     <string name="notification_title_single_update_available">ხელმისაწვდომია განახლება</string>
     <string name="installIncompatible">აპი შეუთავსებელია თქვენს მოწყობილობასთან. მაინც დავაყენო\?</string>

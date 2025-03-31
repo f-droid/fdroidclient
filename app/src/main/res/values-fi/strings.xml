@@ -262,7 +262,7 @@
 \n%1$s</string>
     <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia! Luo virheraportti!</string>
     <string name="versions">Versiot</string>
-    <string name="warning_no_internet">Ei voida päivittää. Oletko yhteydessä Internetiin\?</string>
+    <string name="warning_no_internet">Ei voida päivittää. Oletko yhteydessä Internetiin?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (suositeltu)</string>
@@ -290,7 +290,7 @@
     <string name="preference_manage_installed_apps">Hallitse asennettuja sovelluksia</string>
     <string name="details_new_in_version">Uutta versiossa %s</string>
     <string name="antifeatureswarning">Tässä sovelluksessa on ominaisuuksia, joista et ehkä pidä.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Ei verkkoyhteyttä\? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ei verkkoyhteyttä? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
     <string name="nearby_splash__find_people_button">Etsi lähellä olevia ihmisiä</string>
     <string name="notification_title_single_update_available">Päivitys saatavilla</string>
     <string name="notification_title_single_ready_to_install">Valmis asennettavaksi</string>

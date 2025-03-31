@@ -309,7 +309,7 @@
         <item quantity="one">Ollar %d</item>
         <item quantity="other">Ollar tódalas %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Sen Internet\? Baixa aplicacións de persoas preto de ti!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Sen Internet? Baixa aplicacións de persoas preto de ti!</string>
     <string name="nearby_splash__find_people_button">Atopar persoas preto de ti</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ámbalas partes precisan do %1$s para o emprego preto de ti.</string>
     <string name="swap_stopping_wifi">Estase a deter o Wi-Fi…</string>

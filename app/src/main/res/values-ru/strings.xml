@@ -101,7 +101,7 @@
     <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
-    <string name="repo_confirm_delete_title">Удалить репозиторий\?</string>
+    <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
     <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.\n\nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
     <string name="repo_disabled_notification">%1$s отключен.\n\nДля установки приложений из этого репозитория вам потребуется повторно его включить.</string>
     <string name="not_on_same_wifi">Данное устройство не подключено к той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте подключиться к этой сети: %s</string>
@@ -249,7 +249,7 @@
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
     <string name="keep_install_history">Сохранять историю установок</string>
     <string name="keep_install_history_summary">Сохранять журнал всех установок и удалений в приватном хранилище</string>
-    <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
+    <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Угостите разработчика %1$s чашечкой кофе ☺!</string>
     <string name="update_all">Обновить все</string>
@@ -283,7 +283,7 @@
         <item quantity="many">Показать все %d</item>
         <item quantity="other">Показать все %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей рядом с вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Получите приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
     <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>

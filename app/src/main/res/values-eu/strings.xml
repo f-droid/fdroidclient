@@ -176,9 +176,7 @@
     <string name="category_Theming">Itxura</string>
     <string name="category_Time">Denbora</string>
     <string name="category_Writing">Idazketa</string>
-    <string name="not_on_same_wifi">Zure gailua eta gehitu berri duzun biltegia ez daude Wi-Fi berean! Saiatu sare
-        honetara sartzen: %s
-    </string>
+    <string name="not_on_same_wifi">Zure gailua eta gehitu berri duzun biltegia ez daude Wi-Fi berean! Saiatu sare honetara sartzen: %s</string>
     <string name="requires_features">Behar du: %1$s</string>
     <string name="empty_installed_app_list">Ez da aplikaziorik instalatu.\n\nAplikazioak daude zure gailuan baina ez
         daude F-Droid bitartez eskuragarri. Biltegiak eguneratu behar dituzulako izan daiteke, edo benetan biltegiek ez
@@ -222,9 +220,7 @@
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
     <string name="swap_join_same_wifi">Batu zure adiskidearen Wi-Fi sare berera</string>
-    <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue
-        sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.
-    </string>
+    <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.</string>
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
     <string name="swap_connection_misc_error">Errore bat gertatu da gailura konektatzean, ezin dugu honekin trukatu!</string>
     <string name="install_confirm">baimen hauek behar ditu</string>
@@ -314,8 +310,7 @@
     <string name="app_new">Berria</string>
     <string name="installed_apps__activity_title">Instalatutako aplikazioak</string>
     <string name="installed_app__updates_ignored">Eguneraketak ezikusita</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">"Eguneraketak ezikusita %1$s bertsioarentzat"
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Eguneraketak ezikusita %1$s bertsioarentzat</string>
     <string name="preference_category__my_apps">Nire aplikazioak</string>
     <string name="preference_manage_installed_apps">Kudeatu instalatutako aplikazioak</string>
     <string name="tts_category_name">%1$s kategoria</string>

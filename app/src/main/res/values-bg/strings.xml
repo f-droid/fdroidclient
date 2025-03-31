@@ -89,7 +89,7 @@
     <string name="repo_last_update">Последно обновяване</string>
     <string name="repo_name">Иаименование</string>
     <string name="repo_not_yet_updated">Хранилището все още не е използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
-    <string name="repo_confirm_delete_title">Изтриване на хранилището\?</string>
+    <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
     <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.\n\nЗабележка: Всички инсталирани приложения ще останат на устройството.</string>
     <string name="repo_disabled_notification">Хранилището %1$s е изключеноно.\n\nЗа да инсталирате приложения от него ще трябва да го включите.</string>
     <string name="not_on_same_wifi">Устройството не е в една безжична мрежа с току-що добавеното местно хранилище! Опитайте да се свържете към тази мрежа: %s</string>

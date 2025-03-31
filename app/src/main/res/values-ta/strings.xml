@@ -173,7 +173,7 @@
     <string name="panic_hide_summary">செயலி தன்னை மறைக்கும்</string>
     <string name="antiupstreamnonfreelist">மேல்நீரோட்ட மூல குறியீடு முற்றிலும் இலவசம் அல்ல</string>
     <string name="nearby_splash__find_people_button">அருகிலுள்ளவர்களைக் கண்டறி</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">இணையம் இல்லையா\? உமக்கருகிலுள்ளவர்களிடமிருந்து செயலிகளைப் பெறுங்கள்!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">இணையம் இல்லையா? உமக்கருகிலுள்ளவர்களிடமிருந்து செயலிகளைப் பெறுங்கள்!</string>
     <string name="system_install_denied_permissions">சலுகை பெற்ற அனுமதிகள் நீட்டிப்பு க்கு வழங்கப்படவில்லை! பிழை அறிக்கையை உருவாக்கவும்!</string>
     <string name="uninstall_error_unknown">தெரியாத பிழைகாரணமாக நிறுவல்நீக்க முடியவில்லை</string>
     <string name="install_error_unknown">தெரியாத பிழைகாரணமாக நிறுவுவதில் தோல்வி</string>
@@ -352,7 +352,7 @@
     <string name="category_Sports_Health">விளையாட்டும் உடல்நலமும்</string>
     <string name="category_Multimedia">பல்லூடகம்</string>
     <string name="unverified">சரிபார்க்கப்படாதது</string>
-    <string name="warning_no_internet">புதுப்பிக்க முடியவில்லை, நீங்கள் இணையத்துடன் இணைக்கப்பட்டுள்ளீர்களா\?</string>
+    <string name="warning_no_internet">புதுப்பிக்க முடியவில்லை, நீங்கள் இணையத்துடன் இணைக்கப்பட்டுள்ளீர்களா?</string>
     <string name="updates__tts__download_app">பதிவிறக்கம்</string>
     <string name="app_list__name__successfully_installed">%1$s நிறுவப்பட்டுள்ளது</string>
     <string name="app_list__name__downloading_in_progress">%1$s ஐப் பதிவிறக்குகிறது</string>

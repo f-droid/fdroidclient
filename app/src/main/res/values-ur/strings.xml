@@ -58,10 +58,10 @@
     <string name="permissions">اجازتیں</string>
     <string name="wifi">Wi-Fi</string>
     <string name="proxy_port_summary">آپکی   پراکسی   کا   پورٹ   نمبر  (جیسے 8118  )</string>
-    <string name="proxy_port">پراکسی   پورٹ</string>
+    <string name="proxy_port">پراکسی پورٹ</string>
     <string name="proxy_host_summary">آپکی  پراکسی  ہوسٹ  کا  نام (جیسے   127.0.0.1)</string>
-    <string name="proxy_host">پراکسی    ہوسٹ</string>
-    <string name="enable_proxy_summary">ایچ ٹی ٹی پی   پر اکسی  کو  تمام  نیٹ  ورکس  کے  لئے  تشکیل  دیں</string>
+    <string name="proxy_host">پراکسی ہوسٹ</string>
+    <string name="enable_proxy_summary">ایچ ٹی ٹی پی پر اکسی کو تمام نیٹ ورکس کے لئے تشکیل دیں</string>
     <string name="notification_action_install">انسٹال</string>
     <string name="notification_action_cancel">منسوخ کریں</string>
     <string name="notification_action_update">اپڈیٹ</string>
@@ -104,8 +104,7 @@
     <string name="swap_send_fdroid">F-Droid بھیجیں۔</string>
     <string name="category_System">نظام</string>
     <string name="category_Sports_Health">کھیل اور صحت</string>
-    <string name="not_on_same_wifi">آپ کی ڈیوائس اسی وائی فائی پر نہیں ہے جیسا کہ مقامی ریپو آپ نے ابھی شامل کیا ہے! اس نیٹ ورک میں شامل ہونے کی کوشش کریں: %s
-\nاردو</string>
+    <string name="not_on_same_wifi">آپ کی ڈیوائس اسی وائی فائی پر نہیں ہے جیسا کہ مقامی ریپو آپ نے ابھی شامل کیا ہے! اس نیٹ ورک میں شامل ہونے کی کوشش کریں: %s \nاردو</string>
     <string name="repo_last_update">آخری اپ ڈیٹ۔</string>
     <string name="repo_details">مخزن</string>
     <string name="unverified">غیر تصدیق شدہ</string>

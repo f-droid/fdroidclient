@@ -167,7 +167,7 @@
     <string name="repo_confirm_delete_body">একটা ভাণ্ডার মুছা মানে এটার অ্যাপ আর উপলভ্য থাকবে না।
 \n
 \nদ্র: আগে থেকে ইন্সটল করা অ্যাপ ডিভাইসে থাকবে।</string>
-    <string name="repo_confirm_delete_title">ভাণ্ডার মুছবে\?</string>
+    <string name="repo_confirm_delete_title">ভাণ্ডার মুছবে?</string>
     <string name="unknown">অজানা</string>
     <string name="repo_not_yet_updated">এই ভাণ্ডার আগে ব্যবহার করা হয়নি। এতে বিদ্যমান অ্যাপ দেখতে এটাকে সক্রিয় করতে হবে।</string>
     <string name="unsigned_description">এর অর্থ একটা তালিকার অ্যাপ যাচাই করা যায়নি। অস্বাক্ষরিত সূচি থেকে অ্যাপ নামানোর সময় তোমাকে সাবধান হতে হবে।</string>
@@ -184,7 +184,7 @@
     <string name="use_pure_black_dark_theme">অন্ধকার রঙে সম্পূর্ণ কালো পটভূমি ব্যবহার করো</string>
     <string name="no_handler_app">এমন কোনো অ্যাপ এই মুহূর্তে তোমার কাছে নেই যা %s চালাতে পারবে।</string>
     <string name="no_permissions">কোনো অনুমতি নেই</string>
-    <string name="warning_no_internet">হালনাগাদ করা যাচ্ছে না, তুমি কী ইন্টারনেটের সাথে সংযুক্ত\?</string>
+    <string name="warning_no_internet">হালনাগাদ করা যাচ্ছে না, তুমি কী ইন্টারনেটের সাথে সংযুক্ত?</string>
     <string name="global_error_updating_repos">হালনাগাদের সময় ত্রুটি: %s</string>
     <string name="all_other_repos_fine">অন্যান্য ভাণ্ডার আয়না বানায়নি।</string>
     <string name="repos_unchanged">সব ভাণ্ডার হালনাগাদকৃত</string>
@@ -499,7 +499,7 @@
     <string name="nearby_splash__read_external_storage">ভাণ্ডার ও আয়না এসডি কার্ডে খুঁজো।</string>
     <string name="nearby_splash__both_parties_need_fdroid">কাছাকাছি ব্যবহার করতে উভয় পক্ষের %1$s লাগবে।</string>
     <string name="nearby_splash__find_people_button">কাছা</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ইন্টারনেট নেই\? কাছের কারো কাছ থেকে অ্যাপ নাও!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ইন্টারনেট নেই? কাছের কারো কাছ থেকে অ্যাপ নাও!</string>
     <string name="system_install_denied_permissions">এই এক্সটেনশনকে বিশেষ অনুমতি দেওয়া হয়নি। অনুগ্রহ করে একটি সমস্যার প্রতিবেদন বানাও।</string>
     <string name="uninstall_error_unknown">অজানা সমস্যার জন্য মুছতে ব্যর্থ</string>
     <string name="install_error_unknown">অজানা সমস্যার জন্য ইন্সটল করতে ব্যর্থ</string>

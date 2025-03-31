@@ -84,7 +84,7 @@
     <string name="repo_name">Název</string>
     <string name="unsigned_description">To znamená, že seznam aplikací se nepodařilo ověřit. S aplikacemi staženými z nepodepsaných indexů byste měli být opatrní.</string>
     <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit. Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.</string>
-    <string name="repo_confirm_delete_title">Odebrat repozitář\?</string>
+    <string name="repo_confirm_delete_title">Odebrat repozitář?</string>
     <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
     <string name="repo_disabled_notification">Repozitář %1$s zakázán.\n\nPro instalaci aplikací z tohoto repozitáře jej znovu povolte.</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
@@ -252,7 +252,7 @@
     <string name="update_auto_install">Automaticky instalovat aktualizace</string>
     <string name="update_auto_install_summary">Stahovat a aktualizovat aplikace na pozadí, zobrazovat upozornění</string>
     <string name="versions">Verze</string>
-    <string name="warning_no_internet">Nedaří se aktualizovat – jste připojeni k Internetu\?</string>
+    <string name="warning_no_internet">Nedaří se aktualizovat – jste připojeni k Internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Kupte vývojářům aplikace %1$s kávu!</string>
     <string name="app_details_donate_prompt">%1$s vytvořil vývojář %2$s. Kupte mu kávu!</string>
     <string name="app_version_x_available">Je dostupná verze %1$s</string>
@@ -335,7 +335,7 @@
         <item quantity="few">Zobrazit všechny %d</item>
         <item quantity="other">Zobrazit všech %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nemáte připojení k Internetu\? Získejte aplikace od lidí poblíž!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nemáte připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
     <string name="nearby_splash__find_people_button">Najít lidi poblíž</string>
     <string name="nearby_splash__both_parties_need_fdroid">Pro využití funkce Nablízku je třeba, aby obě strany používaly %1$s.</string>
     <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>

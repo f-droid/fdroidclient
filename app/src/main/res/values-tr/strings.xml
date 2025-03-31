@@ -105,7 +105,7 @@
     <string name="unsigned_description">Bu, uygulama listesinin teyit edilemediği anlamına gelir. İmzasız dizinlerden indirilen uygulamalara karşı temkinli olmalısınız.</string>
     <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır. Sunduğu uygulamaları görmek için etkinleştirmelisiniz.</string>
     <string name="unknown">Bilinmiyor</string>
-    <string name="repo_confirm_delete_title">Depo silinsin mi\?</string>
+    <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
     <string name="repo_confirm_delete_body">Bir depoyu silmek, oradaki uygulamaların artık kullanılamayacağı anlamına gelir.
 \n
 \nNot: Önceden yüklenen tüm uygulamalar aygıtınızda kalacaktır.</string>
@@ -260,7 +260,7 @@
     <string name="keep_install_history">Yükleme geçmişi tut</string>
     <string name="keep_install_history_summary">Tüm yükleme ve kaldırmaların günlüğünü özel olarak sakla</string>
     <string name="update_auto_install">Güncellemeleri otomatik olarak yükle</string>
-    <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız\?</string>
+    <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız?</string>
     <string name="update_auto_install_summary">Bir bildirim göstererek arka planda uygulamaları indir ve güncelle</string>
     <string name="versions">Sürümler</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine bir kahve alın!</string>
@@ -325,7 +325,7 @@
         <item quantity="other">%1$d gün önce güncellendi</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s yüklendi</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu\? Uygulamaları yakınınızdaki kişilerden alın!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu? Uygulamaları yakınınızdaki kişilerden alın!</string>
     <string name="nearby_splash__find_people_button">Yakındaki kişileri bul</string>
     <string name="nearby_splash__both_parties_need_fdroid">Yakınımda kullanımı için her iki tarafta %1$s olmalı.</string>
     <string name="latest__empty_state__never_updated">Uygulama listeniz güncellendiğinde, en son uygulamalar burada gözükecektir</string>

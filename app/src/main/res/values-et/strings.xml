@@ -85,9 +85,7 @@
     <string name="repo_added">Salvestatu paketi hoidla %1$s.</string>
     <string name="repo_searching_address">Otsitakse paketihoidlat aadressil
 \n%1$s</string>
-    <string name="not_on_same_wifi">Sinu seade ei asu äsja lisatud kohaliku hoidlaga samas Wi-Fi võrgus! Proovi liituda
-        selle võrguga: %s
-    </string>
+    <string name="not_on_same_wifi">Sinu seade ei asu äsja lisatud kohaliku hoidlaga samas Wi-Fi võrgus! Proovi liituda selle võrguga: %s</string>
     <string name="empty_installed_app_list">Mitte ühtegi rakendust ei ole paigaldatud.\n\nSinu seadmes on rakendusi,
         kuid nad ei ole paigaldatud F-Droidist. Selle põhjuseks võib olla kas vajadus hoidlaid värskendada või sinu
         rakenduste puudumine nendes hoidlates.
@@ -260,9 +258,7 @@
     <string name="theme_dark">Tume</string>
     <string name="crash_dialog_title">F-Droidi tabas krahh</string>
     <string name="crash_dialog_comment_prompt">Sa saad lisada täiendavat informatsiooni ja kommentaare siia:</string>
-    <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs
-        samasse võrku, siis saab teist üks luua WiFi tööpunkti.
-    </string>
+    <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs samasse võrku, siis saab teist üks luua WiFi tööpunkti.</string>
     <string name="swap_connection_misc_error">Seadmega ühendumine nurjus. Sellega vahetamine ei ole võimalik!</string>
     <string name="crash_dialog_text">Ootamatu viga põhjustas rakenduse krahhi.
         Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?
