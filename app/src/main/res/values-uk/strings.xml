@@ -85,7 +85,7 @@
     <string name="next">Далі</string>
     <string name="enable_proxy_title">Увімкнути HTTP-проксі</string>
     <string name="enable_proxy_summary">Налаштувати HTTP-проксі для всіх мережних запитів</string>
-    <string name="proxy_host">Проксі хост</string>
+    <string name="proxy_host">Хост проксі</string>
     <string name="proxy_host_summary">Назва хосту вашого проксі (наприклад 127.0.0.1)</string>
     <string name="proxy_port">Порт проксі</string>
     <string name="proxy_port_summary">Номер порту вашого проксі (наприклад 8118)</string>
@@ -274,7 +274,7 @@
     <string name="app_details_donate_prompt">%1$s створено %2$s. Пригости їх кавою!</string>
     <string name="app_version_x_available">Доступна версія %1$s</string>
     <string name="app_version_x_installed">Версія %1$s</string>
-    <string name="app_recommended_version_installed">Версія %1$s (Рекомендовано)</string>
+    <string name="app_recommended_version_installed">Версія %1$s (рекомендовано)</string>
     <string name="app_new">Нове</string>
     <string name="installed_apps__activity_title">Установлені застосунки</string>
     <string name="installed_app__updates_ignored">Проігноровані оновлення</string>
@@ -399,8 +399,8 @@
     <string name="sort_search">Впорядкувати пошук</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="preventScreenshots_summary">Блокує знімки екрана та приховує вміст з останніх застосунків</string>
-    <string name="panic_app_setting_title">Вибір тривожної кнопки</string>
-    <string name="panic_app_dialog_title">Підтвердити тривожну кнопку</string>
+    <string name="panic_app_setting_title">Застосунок тривожної кнопки</string>
+    <string name="panic_app_dialog_title">Підтвердити застосунок тривоги</string>
     <string name="panic_app_dialog_message">Ви впевнені, що хочете дозволити %1$s виконувати дію тривожної кнопки?</string>
     <string name="panic_settings">Налаштування тривожної кнопки</string>
     <string name="panic_settings_summary">Заходи, які необхідно вжити в екстрених випадках</string>
@@ -409,11 +409,11 @@
     <string name="panic_hide_summary">Застосунок сховає сам себе</string>
     <string name="panic_hide_warning_title">Запам\'ятайте, як відновити</string>
     <string name="hiding_calculator">Калькулятор</string>
-    <string name="hiding_dialog_title">Сховати %s зараз</string>
+    <string name="hiding_dialog_title">Приховати %s зараз</string>
     <string name="hide_on_long_search_press_title">Сховати кнопкою пошуку</string>
     <string name="repo_add_mirror">Додати дзеркало</string>
     <string name="repo_official_mirrors">Офіційні Дзеркала</string>
-    <string name="repo_user_mirrors">Дзеркала Користувача</string>
+    <string name="repo_user_mirrors">Користувацькі дзеркала</string>
     <string name="over_wifi">Через Wi-Fi</string>
     <string name="over_data">Через мобільну мережу</string>
     <string name="over_network_always_summary">Завжди використовувати це з\'єднання, коли це можливо</string>
@@ -433,7 +433,7 @@
     <string name="share_repository">Сховище спільного доступу</string>
     <string name="use_bluetooth">Використовувати Bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Точка доступу Wi-Fi увімкнена</string>
-    <string name="swap_toast_could_not_enable_hotspot">Не вдалося увімкнути Wi-Fi точку доступу!</string>
+    <string name="swap_toast_could_not_enable_hotspot">Не вдалося увімкнути точку доступу Wi-Fi!</string>
     <string name="warning_scaning_qr_code">Ваша камера не має автофокусування. Сканування коду може бути утрудненим.</string>
     <string name="send_install_history">Надіслати історію встановлення</string>
     <string name="send_history_csv">Історія встановлень %s як CSV file</string>
@@ -499,7 +499,7 @@
     <string name="notification_channel_installs_title">Встановлення</string>
     <string name="menu_show_install_history">Показати історію встановлення</string>
     <string name="menu_show_fdroid_metrics_report">Показати звіт з показниками</string>
-    <string name="toast_metrics_in_install_history">Звіт %s Metric можна переглянути в засобі перегляду журналу встановлення</string>
+    <string name="toast_metrics_in_install_history">Звіт %s метрик можна переглянути в засобі перегляду журналу встановлення</string>
     <string name="send_to_fdroid_metrics_summary">Щотижня надсилає анонімні дані до F-Droid Metrics (потрібно зберігати історію встановлення)</string>
     <string name="send_to_fdroid_metrics">Надіслати дані про використання</string>
     <string name="fdroid_metrics_report">%s звіт з метриками</string>
