@@ -1,0 +1,11 @@
+* Actualizador de repositorios reescrito para que las actualizaciones en segundo plano sean más fiables.
+* Nombre y resumen separados en las listas de aplicaciones para una mejor legibilidad.
+* Mostrar advertencia cuando las aplicaciones no se pueden actualizar desde el repositorio preferido.
+* Las aplicaciones orientadas al SDK 24 son incompatibles con dispositivos Android 15.
+* Mejor gestión de réplicas en la vista previa de "Añadir repositorio" (¡Gracias, Thore!).
+* Habilitar actualizaciones de aplicaciones desatendidas en dispositivos Xiaomi que no ejecutan MIUI (¡Gracias, Irate!).
+* Confiar en los certificados raíz añadidos por el usuario (¡Gracias, B.!).
+* Corregir la búsqueda sin distinción entre mayúsculas y minúsculas que contiene diacríticos (¡Gracias, Tobias!).
+* Actualizar las descripciones de las antifunciones (¡Gracias, Licaon!).
+* Añadir la antifunción de red anclada (¡Gracias, linsui!).
+* Ignorar los espacios en blanco al añadir repositorios de réplicas (¡Gracias, Tobias!)
