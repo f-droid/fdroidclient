@@ -34,7 +34,7 @@
     <string name="repo_name">Nume</string>
     <string name="unknown">Necunoscut</string>
     <string name="requires_features">Necesită: %1$s</string>
-    <string name="menu_email">E-mail autor</string>
+    <string name="menu_email">Trimiteți un e-mail autorului</string>
     <string name="SignatureMismatch">Noua versiune este semnată cu o cheie diferită față de versiunea veche. Pentru a putea instala noua versiune, cea veche trebuie întâi dezinstalată. Vă rugam sa faceți asta și să reîncercați. (Nu uitați că procesul de dezinstalare al aplicației o să șteargă datele interne stocate ale acesteia)</string>
     <string name="app_name_full">F-Droid</string>
     <string name="update_interval">Interval actualizări automate</string>
@@ -77,7 +77,7 @@
     <string name="show_incompat_versions_on">Se listează și aplicațiile incompatibile cu acest dispozitiv</string>
     <string name="show_incompat_versions">Include incompatibile</string>
     <string name="appcompatibility">Compatibilitate aplicații</string>
-    <string name="expert_on">Arata informații și setări suplimentare</string>
+    <string name="expert_on">Arată informații și setări suplimentare</string>
     <string name="search_hint">Caută aplicații</string>
     <string name="antinonfreeassetslist">Aceasta aplicație conține resurse ce nu sunt la disponibile la liber</string>
     <string name="antinonfreedeplist">Aplicația depinde de alte aplicații ce nu sunt software liber</string>
@@ -237,11 +237,8 @@
     <string name="keep_install_history">Păstrează istoricul instalărilor</string>
     <string name="keep_install_history_summary">Stocați un jurnal al tuturor instalărilor și dezinstalărilor într-un depozit privat</string>
     <string name="system_installer_on">Folosiți Privileged Extension pentru a instala, actualiza și a înlătura pachete</string>
-    <string name="empty_can_update_app_list">Felicitări!
-\nAplicațiile dumneavoastră sunt la zi.</string>
-    <string name="empty_installed_app_list">Nici o aplicație instalată.
-\n
-\nExista aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
+    <string name="empty_can_update_app_list">Felicitări!\nAplicațiile dumneavoastră sunt la zi.</string>
+    <string name="empty_installed_app_list">Nici o aplicație instalată.\n\nExistă aplicații pe acest dispozitiv, dar nu sunt disponibile în F-Droid. Aceasta poate fi din cauză că trebuie să actualizați depozitele sau poate depozitele chiar nu conțin aplicațiile dumneavoastră.</string>
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n
 \nVa trebui sa reactivați acest depozit pentru a putea instala aplicații din el.</string>
@@ -320,7 +317,7 @@
     <string name="app_list__name__downloading_in_progress">Se descarcă %1$s</string>
     <string name="app__install_downloaded_update">Actualizare</string>
     <string name="app_new">Nou</string>
-    <string name="app_recommended_version_installed">Versiunea %1$s (Recomandată)</string>
+    <string name="app_recommended_version_installed">Versiunea %1$s (recomandată)</string>
     <string name="app_version_x_installed">Versiunea %1$s</string>
     <string name="app_version_x_available">Versiunea %1$s disponibilă</string>
     <string name="app__tts__downloading_progress">Se descarcă, %1$d%% gata</string>
@@ -399,7 +396,7 @@
     <string name="panic_settings_summary">Acțiuni ce se vor executa în caz de urgență</string>
     <string name="panic_exit_title">Ieșire aplicație</string>
     <string name="panic_exit_summary">Aplicația se va închide</string>
-    <string name="panic_destructive_actions">Actiuni distructive</string>
+    <string name="panic_destructive_actions">Acțiuni distructive</string>
     <string name="panic_hide_title">Ascunde %s</string>
     <string name="panic_hide_summary">Aplicația se va ascunde</string>
     <string name="panic_hide_warning_title">Țineți minte cum să restaurați</string>
@@ -436,7 +433,7 @@
     <string name="swap_cant_find_peers">Nu găsiți ceea ce căutați?</string>
     <string name="swap_no_peers_nearby">Nu au fost găsite persoane în apropiere cu care să faceți schimb.</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi activat</string>
-    <string name="swap_toast_could_not_enable_hotspot">Nu s-a putut crea hotspot Wi-Fi!</string>
+    <string name="swap_toast_could_not_enable_hotspot">Hotspot-ul Wi-Fi nu a putut fi activat!</string>
     <string name="swap_toast_invalid_url">Adresă invalidă pentru schimb: %1$s</string>
     <string name="hide_all_notifications">Ascunde toate notificările</string>
     <string name="hide_all_notifications_summary">Se previne apariția mesajelor în bara de stare și în zona de notificare.</string>
@@ -530,7 +527,7 @@
     <string name="antinonfreenet">Servicii de rețea ne-libere</string>
     <string name="antiothers">Alte caracteristici</string>
     <string name="antinsfw">Nerecomandat la locul de muncă</string>
-    <string name="menu_release_channel_beta">Permiteți actualizări Beta</string>
+    <string name="menu_release_channel_beta">Permiteți actualizări beta</string>
     <string name="latest__empty_state__upgrading">Se actualizează baza de date…</string>
     <string name="antinsfwlist">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
     <string name="about_title_basic">Despre F-Droid Basic</string>
@@ -543,16 +540,12 @@
     <string name="turn_on_wifi">Porniți Wi-Fi</string>
     <string name="repo_add_new_title">Adaugă depozit</string>
     <string name="repo_add_new_mirror">Adaugă ca server de rezervă</string>
-    <string name="repo_intro">Un depozit este o sursă suplimentară de aplicații. Cele terțe pe care le adăugați aici au standarde diferite față de cele care oferă aplicațiile construite de F-Droid însuși.
-\n
-\nVă rugăm să vă asigurați că depozitul pe care îl adăugați este de încredere.</string>
+    <string name="repo_intro">Un depozit este o sursă suplimentară de aplicații. Cele terțe pe care le adăugați aici au standarde diferite față de cele care oferă aplicațiile construite de F-Droid însuși.\n\nVă rugăm să vă asigurați că depozitul pe care îl adăugați este de încredere.</string>
     <string name="repo_state_adding">Se adaugă depozitul…</string>
     <string name="repo_state_fetching">Se descarcă depozitul…</string>
     <string name="repo_enter_url">Introduceți manual adresa URL a depozitului</string>
     <string name="repo_exists">Acest depozit a fost deja adăugat.</string>
-    <string name="repo_invalid">Depozit invalid.
-\n
-\nContactați administratorul și anunțați despre această problemă.</string>
+    <string name="repo_invalid">Depozit invalid.\n\nContactați administratorul și anunțați despre această problemă.</string>
     <string name="repo_io_error">Eroare de conectare la depozit.</string>
     <string name="nearby_splace__external_storage_permission_button">Încearcă</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid poate căuta depozite și rezerve pe cardul SD, dar are nevoie de permisiunea dvs. pentru a face acest lucru.</string>
