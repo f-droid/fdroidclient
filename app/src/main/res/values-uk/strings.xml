@@ -608,4 +608,5 @@
     <string name="apk_permissions_mismatch">Застосунок має неочікуваний дозвіл: %s</string>
     <string name="preferForeign">Надати перевагу іноземним дзеркалам</string>
     <string name="preferForeignSummary">Спробувати дзеркала розташовані за межами країни, наприклад якщо іноземний захист сильніше.</string>
+    <string name="no_handler_app_generic">У вас немає жодного доступного додатка, який би міг це впоратися.</string>
 </resources>
