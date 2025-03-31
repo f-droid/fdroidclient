@@ -1,15 +1,15 @@
-NB! F-Droid Basic on piiratud funktsionaalsusega klient (nt. puuduvad naabritega jagamine ja paanikarežiimi keelamine). Ta on mõeldud Android 13-le ja saab paigaldada värskendusediseseisvalt, priviligeeritud laienduse või juurkasutajata.
+NB! F-Droid Basic on piiratud funktsionaalsusega klient (nt. puuduvad naabritega jagamine ja paanikarežiimi keelamine). Ta on mõeldud Android 13-le ja saab paigaldada uuendusi iseseisvalt, priviligeeritud laienduse või juurkasutajata.
 
-F-Droid on paigaldatav Androidi rakenduste vaba tarkvara kataloog. F-Droidi kliendirakendus võimaldab lihtsat rakenduste sirvimist, paigaldamist ja su seadmes kaasaegsena hoidmist.
+F-Droid on paigaldatav Androidi rakenduste vaba tarkvara kataloog. F-Droidi kliendirakendus võimaldab lihtsat rakenduste sirvimist, paigaldamist ja su nutiseadme kaasaegsena hoidmist.
 
-Ta ühendub kõigi F-Droidiga ühilduvate hoidlatega. Vaikimisi hoidla asub f-droid.org ja sisaldab ainult tasuta vaba tarkvara.
+Ta ühendub kõigi F-Droidiga ühilduvate hoidlatega. Vaikimisi hoidla asukoht on f-droid.org ja sisaldab ainult tasuta, vaba ja avatud lähtekoodil põhinevat tarkvara.
 
-Android on ise avatud selles mõttes, et sul on võimalus paigaldada APK pakette kõikjalt kus kohast sa soovid, kuid siin on mitmed põhjused F-Droidi kasutamiseks vaba tarkvara paigaldamisel:
+Android on ise avatud selles mõttes, et sul on võimalus paigaldada APK pakette kõikjalt kust kohast sa soovid, kuid siin on mitmed põhjused F-Droidi kasutamiseks vaba tarkvara paigaldamisel:
 
-* teavitused värskendustest, kui nad on saadaval,
-* soovi korral värskenduste automaatne alla laadimine ja paigaldamine,
+* teavitused uuendustest, kui nad on saadaval,
+* soovi korral uuenduste automaatne alla laadimine ja paigaldamine,
 * vanemate ja beetaversioonide jälgimine,
-* seadmega ühildamatute rakenduste filtreerimine,
+* nutiseadmega ühildamatute rakenduste filtreerimine,
 * rakenduste otsimine kategooriate ja kirjelduste järgi,
 * seotud kohaviitade kasutamine toetamiseks, lähtekoodiga tutvumiseks jne,
-* kindlustunne hoidla signeeritud indeksite ja APK räside kaudu.
+* kindlustunne rakenduste hoidla allkirjastatud indeksite ja APK räside kaudu.
