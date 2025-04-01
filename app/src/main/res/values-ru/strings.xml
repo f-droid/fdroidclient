@@ -611,7 +611,7 @@
     <string name="no_handler_app_generic">У вас нет ни одного доступного приложения, которое могло бы справиться с этой задачей.</string>
     <string name="repo_archive_check">Проверить архив</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">1 приложение</item>
+        <item quantity="one">%d приложение</item>
         <item quantity="few">%d приложения</item>
         <item quantity="many">%d приложений</item>
         <item quantity="other">%d приложений</item>

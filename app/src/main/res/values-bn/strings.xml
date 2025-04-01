@@ -583,7 +583,7 @@
     <string name="repo_error_adding_archive">সংরক্ষণাগারের ভাণ্ডার সরাসরি যোগ করা যাবে না। তালিকা থেকে ভাণ্ডারটি টিপ দাও এবং এখানে সংরক্ষণাগারটি সক্রিয় করো।</string>
     <string name="useDnsCacheSummary">ডিএনএস জিজ্ঞেস কমাতে ক্যাশকৃত ফলাফল ব্যবহার করো।</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">১টি অ্যাপ</item>
+        <item quantity="one">%dটি অ্যাপ</item>
         <item quantity="other">%dটি অ্যাপ</item>
     </plurals>
     <string name="repo_mirror_add_info">যে ইউআরএল তুমি যোগ করার চেষ্টা করছো (%s) তা বিদ্যমান ভাণ্ডারের আয়না।</string>

@@ -591,7 +591,7 @@
     <string name="no_handler_app_generic">کاره‌ای ندارید که بتواند این کار را بکند.</string>
     <string name="repo_archive_unknown">به نظر مخزن بایگانی‌ای ندارد.</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">۱ کاره</item>
+        <item quantity="one">%d کاره</item>
         <item quantity="other">%d کاره</item>
     </plurals>
     <string name="repo_details_info_text">مخزن منبعی از کاره‌هاست.\n\nآینه‌ها یبرای توزیع بار کاره‌های در حال بارگیری بین چندین کارساز استفاده می‌شوند. آینه‌های نزدیک ممکن است سریع‌تر باشند.\n\nآینه‌های رسمی به دست مالکان مخزن تعریف شده‌اند. این اینه‌ها قابل حذف نبوده و تنها می‌توانند از کار بیفتند. می‌توانید آینه‌های سفارشی اضافی را با افزودنشان مانند یک مخزن معمولی تعریف کنید.</string>

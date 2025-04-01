@@ -617,7 +617,7 @@
     <string name="repo_confirm_delete_mirror_body">Você pode continuar a instalar apps deste repositório utilizando os outros servidores espelho.</string>
     <string name="share_mirror">Compartilhar servidor espelho</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">Um app</item>
+        <item quantity="one">%d app</item>
         <item quantity="many">%d apps</item>
         <item quantity="other">%d apps</item>
     </plurals>

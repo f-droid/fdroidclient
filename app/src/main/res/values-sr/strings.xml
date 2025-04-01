@@ -604,7 +604,7 @@
     <string name="repo_archive_unknown">Изгледа да овај репозиторијум нема архиву.</string>
     <string name="repo_archive_check">Провера архива</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">1 апликација</item>
+        <item quantity="one">%d апликација</item>
         <item quantity="few">%d апликације</item>
         <item quantity="other">%d апликација</item>
     </plurals>
