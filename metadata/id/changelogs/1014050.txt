@@ -1,9 +1,17 @@
-* Perombakan menu Bagikan untuk menggunakan opsi bawaan seperti Nearby
+* Perombakan menu Share untuk menggunakan opsi bawaan seperti Nearby
+
 * Peningkatan alur kerja dan navigasi Nearby dengan banyak perbaikan bug
-* Perbaikan desain material (@proletarius101)
+
+* Peningkatan desain material (@proletarius101)
+
 * Aplikasi tanpa ikon aplikasi PNG kini ditampilkan di Tab Terbaru (@ashutoshgngwr)
-* Manajemen ikon yang lebih baik dengan pengaturan Data / WiFi terbatas
-* Mendukung lebih banyak pemindai barcode (@Lugerun)
-* Memungkinkan untuk memilih AntiFitur mana yang akan ditampilkan
-* Memblokir penambahan repositori ketika admin perangkat melarang "Sumber Tidak Dikenal"
-* Menghapus pengaturan "Izinkan Permintaan Push"
+
+* Manajemen ikon yang lebih baik dengan pengaturan Data/WiFi yang terbatas
+
+* Mendukung lebih banyak pemindai kode batang (@Lugerun)
+
+* Izinkan pemilihan AntiFitur yang akan ditampilkan
+
+* Blokir penambahan repo saat admin perangkat melarang "Sumber Tidak Dikenal"
+
+* Hapus pengaturan "Izinkan Permintaan Push"

@@ -1,6 +1,6 @@
-* „Leise Update“-API, damit Apps während der Nutzung nicht beendet werden
 * Experimentelle Unterstützung für das Dearchivieren von Apps unter Android 15
-* Separate Aktionen zum Teilen von Links/Dateien in App-Details
+* Automatisches Hinzufügen neu installierter Apps zum Startbildschirm (Danke Dhina!)
+* Separate Teilen-Aktionen für Links/Dateien in App-Details
 * Toast anzeigen, wenn APK mehr Berechtigungen hat als erwartet
 * Interne Caches werden öfter bereinigt (Danke DerGenaue!)
 * Spenden-Abzeichen neu angeordnet (Danke Leo!)

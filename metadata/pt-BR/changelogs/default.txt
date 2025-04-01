@@ -1,11 +1,5 @@
-* Atualizador de repositório reescrito para tornar as atualizações em segundo plano mais confiáveis
-* Separação do nome e do resumo nas listas de aplicativos para melhor legibilidade
-* Exibe aviso quando os aplicativos não podem ser atualizados a partir do repositório preferido
-* Aplicativos direcionados ao SDK 24 são incompatíveis com dispositivos Android 15
-* Lida melhor com os espelhos na visualização “Adicionar repositório” (Obrigado, Thore!)
-* Habilita atualizações de aplicativos sem supervisão em dispositivos Xiaomi que não executam MIUI (Obrigado Irate!)
-* Confia nos certificados raiz adicionados pelo usuário (Obrigado, B.!)
-* Corrige pesquisas sem distinção entre maiúsculas e minúsculas contendo diacríticos (Obrigado Tobias!)
-* Atualiza as descrições de anti-recursos (Obrigado, Licaon!)
-* Adição do recurso anti-rede vinculada (Obrigado, Linsui!)
-* Ignora espaços em branco ao adicionar repositórios espelho (Obrigado, Tobias!)
+*  Suporte experimental para desarquivar aplicativos no Android 15
+. Adicionar automaticamente aplicativos recém-instalados à tela inicial para a maioria dos lançadores (Obrigado, Dhina!).
+ Ações separadas de compartilhamento de link e compartilhamento de arquivo nos detalhes do aplicativo
+. Mostrar brinde quando o APK tiver mais permissões do que o esperado
+. Limpar caches internos com mais frequência para liberar espaço (Obrigado, DerGenaue!).

@@ -30,7 +30,7 @@
     <string name="repo_details">Repositorio</string>
     <string name="unverified">Sin verificar</string>
     <string name="unsigned">Sin firma</string>
-    <string name="warning_no_internet">No se puede actualizar, ¿está conectado a Internet\?</string>
+    <string name="warning_no_internet">No se puede actualizar, ¿está conectado a Internet?</string>
     <string name="antitracklist">Esta aplicación realiza un seguimiento e informa de su actividad</string>
     <string name="less">Menos</string>
     <string name="more">Más</string>

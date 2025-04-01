@@ -1,9 +1,17 @@
-* Dukungan tema yang terkait dengan tema Android bawaan (@proletarius101)
-* Pemberitahuan spanduk atas yang baru: "Tidak Ada Internet" dan "Tidak Ada Data atau WiFi yang diaktifkan"
-* Penanganan yang lebih baik untuk repositori dan mirror USB-OTG dan Kartu SD
-* Menghentikan pembaruan berulang dari Trichrome Library
-* Lebih banyak perubahan untuk mengikuti Desain Material (@proletarius101)
-* Memperbaiki lencana OpenCollective (@ConnyDuck)
-* Perbaikan pemuatan ikon menggunakan Glide (@proletarius101)
+* Dukungan tema terikat pada tema Android bawaan (@proletarius101)
+
+* Notifikasi banner atas baru: "Tidak Ada Internet" dan "Tidak Ada Data atau WiFi yang diaktifkan"
+
+* Penanganan repo dan mirror USB-OTG dan Kartu SD yang ditingkatkan
+
+* Hentikan pembaruan berulang Trichrome Library
+
+* Lebih banyak perubahan akan menyusul Material Design (@proletarius101)
+
+* Tingkatkan lencana OpenCollective (@ConnyDuck)
+
+* Perombakan pemuatan ikon menggunakan Glide (@proletarius101)
+
 * Ikon adaptif baru (@12people)
+
 * Modernisasi kode (@Isira-Seneviratne)

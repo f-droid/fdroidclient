@@ -84,7 +84,7 @@
     <string name="category_Games">Игри</string>
     <string name="skip">Прескокни</string>
     <string name="useTor">Користи Tor</string>
-    <string name="repo_confirm_delete_title">Избриши складиште\?</string>
+    <string name="repo_confirm_delete_title">Избриши складиште?</string>
     <string name="local_repo">Локално складиште</string>
     <string name="appcompatibility">Компатибилност со апликации</string>
     <string name="search_hint">Пребарувај апликации</string>
@@ -172,7 +172,7 @@
     <string name="repo_details">Складиште</string>
     <string name="unverified">Непроверена</string>
     <string name="unsigned">Непотпишана</string>
-    <string name="warning_no_internet">Не може да се ажурира, дали сте поврзани на интернет\?</string>
+    <string name="warning_no_internet">Не може да се ажурира, дали сте поврзани на интернет?</string>
     <string name="antitracklist">Оваа апликација ја следи и јавува вашата активност</string>
     <string name="less">Помалку</string>
     <string name="more">Повеќе</string>
@@ -189,8 +189,8 @@
     <string name="repo_add_add">Додај</string>
     <string name="repo_add_title">Додај ново складиште</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Преземи ажурирање за %1$d апликација.</item>
-        <item quantity="other">Преземи ажурирање за %1$d апликации.</item>
+        <item quantity="one">Преземи ажурирање за %1$d апликација:</item>
+        <item quantity="other">Преземи ажурирања за %1$d апликации:</item>
     </plurals>
     <string name="updates__hide_updateable_apps">Сокриј апликации</string>
     <string name="updates__show_updateable_apps">Прикажи апликации</string>

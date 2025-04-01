@@ -135,7 +135,7 @@
     <string name="notification_action_update">अपडेट</string>
     <string name="notification_action_cancel">रद्द करें</string>
     <string name="app_list__name__downloading_in_progress">%1$s डाउनलोड हो रहा है</string>
-    <string name="warning_no_internet">अपडेट नही हो पा रहा। क्या आप इंटरनेट से जुड़े हैं\?</string>
+    <string name="warning_no_internet">अपडेट नही हो पा रहा। क्या आप इंटरनेट से जुड़े हैं?</string>
     <string name="unverified">असत्यापित</string>
     <string name="repo_last_update">अंतिम अपडेट</string>
     <string name="wifi">वाई-फ़ाई</string>
@@ -144,8 +144,8 @@
     <string name="notification_title_summary_install_error">इन्स्टॉल असफल हुआ</string>
     <string name="by_author_format">%s के द्वारा</string>
     <string name="hide_all_notifications">सभी अधिसूचनाएं छुपाएं</string>
-    <string name="menu_manage">रिपॉज़िटॉरिज़</string>
-    <string name="menu_add_repo">नई रिपॉिज़टरी</string>
+    <string name="menu_manage">रिपॉज़िटरीज़</string>
+    <string name="menu_add_repo">नया रिपॉज़िटरी</string>
     <string name="menu_launch">खोलें</string>
     <string name="menu_install">इंस्टॉल करें</string>
     <string name="menu_uninstall">अनइंस्टॉल करें</string>
@@ -385,7 +385,7 @@
     <string name="swap_hidden_wifi_ssid">(छिपा हुआ)</string>
     <string name="disabled">बंद किया गया</string>
     <string name="repo_not_yet_updated">इस रिपॉजिटरी का उपयोग अभी तक नहीं किया गया है। आपको इस रेपो की एप्प्स देखने की लिए इसे चालू करना होगा।</string>
-    <string name="repo_confirm_delete_title">डिलीट रिपॉजिटरी \?</string>
+    <string name="repo_confirm_delete_title">डिलीट रिपॉजिटरी ?</string>
     <string name="category_Theming">विषय</string>
     <string name="empty_can_update_app_list">बधाई हो!
 \nआपके सभी ऐप्स अप टू डेट हैं।</string>
@@ -466,7 +466,7 @@
     <string name="nearby_splash__read_external_storage">रेपो और मिरर के लिए एसडी कार्ड सर्च करें।</string>
     <string name="nearby_splash__both_parties_need_fdroid">दोनों पक्षों को आस-पास का उपयोग के लिए %1$s की आवश्यकता है।</string>
     <string name="nearby_splash__find_people_button">आस-पास के लोगों को खोजें</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">इंटरनेट नहीं है\? अपने आस-पास के लोगों से ऐप्स प्राप्त करें!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">इंटरनेट नहीं है? अपने आस-पास के लोगों से ऐप्स प्राप्त करें!</string>
     <string name="system_install_denied_permissions">एक्सटेंशन को विशेषाधिकार प्राप्त नहीं है! कृपया एक बग रिपोर्ट बनाएं!</string>
     <string name="uninstall_error_unknown">अज्ञात त्रुटि के कारण अनइंस्टॉल करने में विफल</string>
     <string name="install_error_unknown">अज्ञात त्रुटि के कारण इंस्टॉल करने में विफल</string>

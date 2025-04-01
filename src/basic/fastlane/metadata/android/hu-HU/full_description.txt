@@ -1,0 +1,15 @@
+MEGJEGYZÉS: Az alap F-Droid verzió csökkentett funkciókészlettel rendelkezik (pl. nincs közeli megosztás és nincs pánik funkció). Az android 13-as rendszert célozza meg, és képes felügyelet nélküli frissítéseket végezni jogosultsági kiterjesztés vagy root nélkül.
+
+Az F-Droid egy telepíthető szabad szoftver alkalmazáskatalógus az androidhoz. Az F-Droid kliensalkalmazás megkönnyíti a böngészést, a telepítést és a frissítések nyomon követését a készülékén.
+
+Bármely F-Droid kompatibilis tárolóhoz csatlakozik. Az alapértelmezett tároló az f-droid.org oldalon található, amely csak jóhiszemű szabad szoftvereket tartalmaz.
+
+Maga az android nyitott abban az értelemben, hogy az APK-kat bárhonnan szabadon telepítheti, de számos komoly ok szól amellett, hogy az F-Droidot használja szabad szoftveres alkalmazáskezelőként:
+
+* Értesítést kap, ha frissítések állnak rendelkezésre
+* Automatikusan letöltheti és telepítheti a frissítéseket
+* Régebbi és béta verziók nyomon követése
+* Szűrje ki a készülékével nem kompatibilis alkalmazásokat
+* Alkalmazások keresése kategóriák és kereshető leírások segítségével
+* Hozzáférés a kapcsolódó URL-ekhez, adományozáshoz, forráskódhoz stb.
+* Biztonságban maradhat a tárolóindex aláírások és az APK-hash ellenőrzésével

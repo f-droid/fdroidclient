@@ -1,7 +1,13 @@
-* Pelokalan deskripsi aplikasi sepenuhnya menghormati daftar di Pengaturan Bahasa Android
-* Tab Terbaru menampilkan aplikasi berdasarkan Pengaturan Bahasa, dengan urutan yang terbaru terlebih dahulu (@TheLastProject @IzzySoft)
-* Hasil pencarian sangat ditingkatkan (@Tvax @gcbrown76)
+* Pelokalan deskripsi aplikasi sepenuhnya mengikuti daftar di Setelan Bahasa Android
+
+* Tab Terbaru menampilkan aplikasi berdasarkan Setelan Bahasa, diurutkan dari yang terbaru terlebih dahulu (@TheLastProject @IzzySoft)
+
+* Hasil penelusuran ditingkatkan secara signifikan (@Tvax @gcbrown76)
+
 * Pembersihan cache yang lebih andal
-* Menjadwalkan pembersihan cache secara efisien (@Isira-Seneviratne)
-* Penguraian URL repo yang dirombak untuk penambahan repo yang andal (@projectgus)
-* Ikut serta dalam Metrik F-Droid
+
+* Jadwalkan pembersihan cache secara efisien (@Isira-Seneviratne)
+
+* Perombakan penguraian URL repo untuk penambahan repo yang andal (@projectgus)
+
+* Metrik F-Droid Opt-in

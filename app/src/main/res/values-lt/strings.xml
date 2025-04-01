@@ -51,7 +51,7 @@
     <string name="repo_last_update">Paskutinis atnaujinimas</string>
     <string name="repo_name">Pavadinimas</string>
     <string name="repo_not_yet_updated">Ši saugykla dar nebuvo naudota. Norėdami matyti jos teikiamas programėles, turite ją įjungti.</string>
-    <string name="repo_confirm_delete_title">Ištrinti saugyklą\?</string>
+    <string name="repo_confirm_delete_title">Ištrinti saugyklą?</string>
     <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programėlių katalogas nebebus pasiekiamas.
 \n
 \nPastaba: Visos anksčiau įdiegtos programėlės išliks jūsų įrenginyje.</string>
@@ -96,7 +96,7 @@
     <string name="more">Daugiau</string>
     <string name="less">Mažiau</string>
     <string name="antitracklist">Ši programėlė seka ir perduoda Jūsų veiksmus</string>
-    <string name="warning_no_internet">Nepavyksta atnaujinti, ar esate prisijungę prie interneto\?</string>
+    <string name="warning_no_internet">Nepavyksta atnaujinti, ar esate prisijungę prie interneto?</string>
     <string name="unsigned">Nepasirašyta</string>
     <string name="unverified">Nepatikrinta</string>
     <string name="repo_details">Saugykla</string>
@@ -310,7 +310,7 @@
     <string name="swap">Keitimasis programėlėmis</string>
     <string name="nearby_splash__request_permission">Ieškoti</string>
     <string name="nearby_splash__find_people_button">Rasti žmones netoliese</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio\? Gaukite programėlių iš įrenginių netoliese!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Neturite interneto ryšio? Gaukite programėlių iš įrenginių netoliese!</string>
     <string name="category_Theming">Apipavidalinimas</string>
     <string name="share_repository">Bendrinti saugyklą</string>
     <string name="status_download">Atsiunčiama

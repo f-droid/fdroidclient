@@ -5,7 +5,7 @@
     <string name="updates">Hizivadennoù</string>
     <string name="yes">Ya</string>
     <string name="next">A-heul</string>
-    <string name="notification_action_update">Hizivat</string>
+    <string name="notification_action_update">Hizivaat</string>
     <string name="notification_action_install">Staliañ</string>
     <string name="version">Stumm</string>
     <string name="by_author_format">dre %s</string>
@@ -30,7 +30,7 @@
     <string name="app_version_x_available">Stumm %1$s hegerz</string>
     <string name="app_version_x_installed">Stumm %1$s</string>
     <string name="app_list__name__downloading_in_progress">O pellgargañ %1$s</string>
-    <string name="app_list__name__successfully_installed">%1$s \'zo staliet</string>
+    <string name="app_list__name__successfully_installed">Staliet eo bet %1$s</string>
     <string name="no">Ket</string>
     <string name="back">Distreiñ</string>
     <string name="cancel">Nullañ</string>
@@ -41,7 +41,7 @@
     <string name="menu_launch">Digeriñ</string>
     <string name="menu_share">Rannañ</string>
     <string name="menu_install">Staliañ</string>
-    <string name="menu_upgrade">Hizivañ</string>
+    <string name="menu_upgrade">Hizivaat</string>
     <string name="main_menu__categories">Rummadoù</string>
     <string name="main_menu__swap_nearby">Nes</string>
     <string name="details_notinstalled">Ket staliet</string>
@@ -75,7 +75,7 @@
     <string name="category_Phone_SMS">Pellgomz ha SMS</string>
     <string name="swap_welcome">Donemat war F-Droid !</string>
     <string name="updates__tts__download_app">Pellgargañ</string>
-    <string name="warning_no_internet">Hizivadenn dibosupl, ha kevreet emaoc\'h da internet \?</string>
+    <string name="warning_no_internet">Hizivadenn dibosupl, ha kevreet emaoc\'h da internet ?</string>
     <string name="newPerms">Nevez</string>
     <string name="app_details">Munudoù an arload</string>
     <string name="unverified">Ket gwiriet</string>
@@ -97,4 +97,6 @@
     <string name="login_password">Ger-tremen</string>
     <string name="about_license">Aotre</string>
     <string name="app_recommended_version_installed">Stumm %1$s (erbedet)</string>
+    <string name="swap_dont_show_again">Arabat skrammañ an dra-se din en-dro</string>
+    <string name="antitracklist">Heuliet ha treuzkaset e vez ho obererezh gant an arload-mañ</string>
 </resources>

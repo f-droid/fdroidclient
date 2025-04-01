@@ -1,4 +1,4 @@
-* Actualitzador de dipòsit reescrit per a fer les actualitzacions en segon pla més fiables
+* Actualitzador de dipòsit reescrit per a fer actualitzacions en segon pla més fiables
 * Divideix el nom i el resum a les llistes d'aplicacions per a una millor llegibilitat
 * Mostra un avís quan les aplicacions no es poden actualitzar des del repositori preferit
 * Les aplicacions dirigides a SDK 24 són incompatibles amb els dispositius Android 15

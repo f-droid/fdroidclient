@@ -63,7 +63,7 @@
     <string name="more">Ocachi</string>
     <string name="less">Ahmo ixquich</string>
     <string name="antitracklist">Inin tepoztlatlatquitl mitzpihpiya</string>
-    <string name="warning_no_internet">Ahmo huel mochihua yancuic ¿tehuatzin, ca titencui centilnonotzamatlatl\?</string>
+    <string name="warning_no_internet">Ahmo huel mochihua yancuic ¿tehuatzin, ca titencui centilnonotzamatlatl?</string>
     <string name="unsigned">Ahmo quipia tocatlaliztli</string>
     <string name="unverified">Ahmo tlachicahualli</string>
     <string name="category_Multimedia">Centlacotontli tlaixiptlayotl ihuan amatlacuiloli</string>
@@ -99,4 +99,5 @@
     <string name="over_wifi">Ica pelehuiliztli Wi-Fi</string>
     <string name="over_data">Itechpa tlapohualiztli</string>
     <string name="over_network_always_summary">Xineconilia mochipa inin tencuiliztli ihcuac ca neconiliztli</string>
+    <string name="app_name_full">F-Droid</string>
 </resources>

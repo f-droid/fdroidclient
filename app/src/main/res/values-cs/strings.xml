@@ -13,7 +13,7 @@
     <string name="system_installer_on">Použít privilegované rozšíření k instalaci, aktualizaci a odebírání balíčků</string>
     <string name="local_repo_name">Název místního repozitáře</string>
     <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
-    <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
+    <string name="local_repo_https_on">Použít šifrované spojení HTTPS:// pro místní repozitář</string>
     <string name="app_details">Podrobnosti o aplikaci</string>
     <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
     <string name="about_title_full">O aplikaci F-Droid</string>
@@ -46,7 +46,7 @@
     <string name="menu_issues">Problémy</string>
     <string name="menu_source">Zdrojový kód</string>
     <string name="menu_upgrade">Aktualizovat</string>
-    <string name="details_notinstalled">Nenainstalováno</string>
+    <string name="details_notinstalled">Není nainstalováno</string>
     <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
     <string name="antitracklist">Tato aplikace zaznamenává a odesílá vaši aktivitu</string>
     <string name="expert">Pokročilý režim</string>
@@ -55,7 +55,7 @@
     <string name="show_incompat_versions">Zahrnout nekompatibilní verze</string>
     <string name="local_repo">Místní repozitář</string>
     <string name="local_repo_running">F-Droid je připraven k výměně</string>
-    <string name="touch_to_configure_local_repo">Dotykem zobrazíte detaily a umožníte ostatním si přetáhnout vaše aplikace.</string>
+    <string name="touch_to_configure_local_repo">Dotykem zobrazíte detaily a umožníte ostatním si vyměnit vaše aplikace.</string>
     <string name="deleting_repo">Odstraňuji místní repozitář…</string>
     <string name="adding_apks_format">Přidávám aplikaci %s do repozitáře…</string>
     <string name="writing_index_jar">Zapisuji podepsaný soubor s indexem (index.jar)…</string>
@@ -67,7 +67,7 @@
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Povolit HTTP proxy</string>
     <string name="enable_proxy_summary">Nastavit HTTP proxy pro všechny síťové požadavky</string>
-    <string name="proxy_host">Proxy server</string>
+    <string name="proxy_host">Server proxy</string>
     <string name="proxy_host_summary">Název hostitele s vaší proxy (např. 127.0.0.1)</string>
     <string name="proxy_port">Port proxy</string>
     <string name="status_connecting_to_repo">Připojování k\n%1$s</string>
@@ -84,7 +84,7 @@
     <string name="repo_name">Název</string>
     <string name="unsigned_description">To znamená, že seznam aplikací se nepodařilo ověřit. S aplikacemi staženými z nepodepsaných indexů byste měli být opatrní.</string>
     <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit. Pro zobrazení nabízených aplikací je nutné ho nejprve aktualizovat.</string>
-    <string name="repo_confirm_delete_title">Odebrat repozitář\?</string>
+    <string name="repo_confirm_delete_title">Odebrat repozitář?</string>
     <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
     <string name="repo_disabled_notification">Repozitář %1$s zakázán.\n\nPro instalaci aplikací z tohoto repozitáře jej znovu povolte.</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
@@ -252,7 +252,7 @@
     <string name="update_auto_install">Automaticky instalovat aktualizace</string>
     <string name="update_auto_install_summary">Stahovat a aktualizovat aplikace na pozadí, zobrazovat upozornění</string>
     <string name="versions">Verze</string>
-    <string name="warning_no_internet">Nedaří se aktualizovat – jste připojeni k Internetu\?</string>
+    <string name="warning_no_internet">Aktualizace se nezdařila – jste připojeni k internetu?</string>
     <string name="app_details_donate_prompt_unknown_author">Kupte vývojářům aplikace %1$s kávu!</string>
     <string name="app_details_donate_prompt">%1$s vytvořil vývojář %2$s. Kupte mu kávu!</string>
     <string name="app_version_x_available">Je dostupná verze %1$s</string>
@@ -335,7 +335,7 @@
         <item quantity="few">Zobrazit všechny %d</item>
         <item quantity="other">Zobrazit všech %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nemáte připojení k Internetu\? Získejte aplikace od lidí poblíž!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nemáte připojení k Internetu? Získejte aplikace od lidí poblíž!</string>
     <string name="nearby_splash__find_people_button">Najít lidi poblíž</string>
     <string name="nearby_splash__both_parties_need_fdroid">Pro využití funkce Nablízku je třeba, aby obě strany používaly %1$s.</string>
     <string name="app__tts__downloading_progress">Stahování, %1$d%% dokončeno</string>
@@ -421,7 +421,7 @@
     <string name="use_bluetooth">Použít Bluetooth</string>
     <string name="swap_toast_invalid_url">Neplatná URL adresa pro výměnu: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi zapnut</string>
-    <string name="swap_toast_could_not_enable_hotspot">Nedaří se zapnout hotspot Wi-Fi!</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nepodařilo se zapnout hotspot Wi-Fi!</string>
     <string name="over_wifi">Přes Wi-Fi</string>
     <string name="over_data">Přes mobilní data</string>
     <string name="over_network_always_summary">Pokud je k dispozici, vždy použít toto připojení</string>
@@ -439,7 +439,7 @@
     <string name="send_history_csv">%s historii instalací jako soubor CSV</string>
     <string name="send_version_and_uuid">Odesílat verzi a UUID na servery</string>
     <string name="send_version_and_uuid_summary">Při stahování zahrnout verzi této aplikace a náhodné, jedinečné ID (projeví se při příštím restartu aplikace).</string>
-    <string name="updates_disabled_by_settings">Veškeré aktualizace zakázány kvůli nastavením dat/WiFi</string>
+    <string name="updates_disabled_by_settings">Veškeré aktualizace zakázány kvůli nastavením dat/Wi-Fi</string>
     <string name="antinosourcesince">Zdrojový kód již není k dispozici, aktualizace nejsou možné</string>
     <string name="share_repository">Sdílet repozitář</string>
     <string name="about_forum">Fórum podpory</string>
@@ -494,12 +494,12 @@
     <string name="banner_no_internet">Žádný internet</string>
     <string name="menu_show_install_history">Zobrazit průběh instalací</string>
     <string name="menu_show_fdroid_metrics_report">Zobrazit hlášení metrik</string>
-    <string name="toast_metrics_in_install_history">Hlášení metrik %s lze prohlédnout v náhledu průběhu instalací</string>
+    <string name="toast_metrics_in_install_history">Hlášení metrik %s si lze prohlédnout v historii instalací</string>
     <string name="send_to_fdroid_metrics_summary">Odesílá anonymizovaná data týdně pro metriky F-Droid (vyžaduje uchování průběhu instalací)</string>
     <string name="send_to_fdroid_metrics">Odesílat data o používání</string>
     <string name="fdroid_metrics_report">%s Hlášení metrik</string>
     <string name="install_history_and_metrics">Průběh instalací a metriky</string>
-    <string name="send_fdroid_metrics_json">%s hlášení metrik jako soubor JSON</string>
+    <string name="send_fdroid_metrics_json">%s Hlášení metrik jako soubor JSON</string>
     <string name="send_fdroid_metrics_report">Odeslat hlášení metrik %s</string>
     <string name="share_apk_error">Nepodařilo se sdílet soubor aplikace</string>
     <string name="swap_wifi_vpn_conflict">Konflikty s aktivní VPN!</string>
@@ -598,4 +598,29 @@
     <string name="menu_share_apk">Sdílet soubor APK</string>
     <string name="preferForeign">Upřednostňovat zahraniční zrcadla</string>
     <string name="preferForeignSummary">Vyzkoušet nejprve zrcadla, která se nacházejí mimo vaši zemi, např. pokud je ochrana v zahraničí silnější.</string>
+    <string name="no_handler_app_generic">Nemáte dostupnou žádnou aplikaci, která by dokázala tuto akci zpracovat.</string>
+    <string name="repo_archive_unknown">Tento repozitář nejspíše nemá archiv.</string>
+    <string name="repo_archive_check">Zkontrolovat archiv</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 aplikace</item>
+        <item quantity="few">%d aplikace</item>
+        <item quantity="other">%d aplikací</item>
+    </plurals>
+    <string name="repo_confirm_delete_mirror_title">Odstranit zrcadlo?</string>
+    <string name="repo_confirm_delete_mirror_body">Instalace z tohoto repozitáře budete moci instalovat i nadále skrze ostatní zrcadla.</string>
+    <string name="share_mirror">Sdílet zrcadlo</string>
+    <string name="show_repository_qr">Zobrazit QR kód repozitáře</string>
+    <string name="repo_basic_auth_title">Základní autentifikace</string>
+    <string name="repo_basic_auth_username">Uživatelské jméno: %s</string>
+    <string name="repo_basic_auth_edit">Upravit</string>
+    <string name="expand">Rozbalit</string>
+    <string name="collapse">Sbalit</string>
+    <string name="repo_details_info_text">Repozitář je zdroj aplikací.\n\nZrcadla se používají pro rozložení zátěže ze stahování aplikací na více serverů. Zrcadla blíže k vám mohou být rychlejší.\n\nOficiální zrcadla jsou definována správcem repozitáře. Nelze je odstranit, pouze zakázat. Další vlastní zrcadla můžete nastavit jejich přidáním stejným způsobem, jako klasický repozitář.</string>
+    <string name="repo_last_update_index">Poslední aktualizace repozitáře: %s</string>
+    <string name="repo_last_update_check">Poslední kontrola aktualizací repozitáře: %s</string>
+    <string name="repo_basic_auth_password">Heslo: ***</string>
+    <string name="export_log_success">Protokol úspěšně uložen</string>
+    <string name="export_log_error">Chyba při ukládání protokolu</string>
+    <string name="pref_export_log_summary">Vytvoří soubor s výstupem protokolu. Užitečné pro ladění. Opatrně, může obsahovat citlivé informace!</string>
+    <string name="pref_export_log_title">Ladicí protokol</string>
 </resources>

@@ -19,7 +19,7 @@
     <string name="system_installer_on">Kasuta pakettide paigaldamiseks, värskendamiseks ja eemaldamiseks priviligeeritud laiendust</string>
     <string name="local_repo_name">Kohaliku hoidla nimi</string>
     <string name="local_repo_name_summary">Kohaliku hoidla reklaamitud nimi: %s</string>
-    <string name="local_repo_https_on">Kasuta kohaliku hoidlaga krüpteeritud HTTPS:// ühendust</string>
+    <string name="local_repo_https_on">Kasuta kohaliku hoidla jaoks krüptitud https-ühendust</string>
     <string name="login_title">Autentimine on nõutav</string>
     <string name="login_name">Kasutajanimi</string>
     <string name="login_password">Salasõna</string>
@@ -75,7 +75,7 @@
     <string name="repo_not_yet_updated">Seda hoidlat ei ole veel kasutatud. Hoidla pakutavate rakenduste vaatamiseks
         kasutamiseks pead sa hoidla lubama.
     </string>
-    <string name="repo_confirm_delete_title">Kas kustutada hoidla?</string>
+    <string name="repo_confirm_delete_title">Kas kustutame tarkvarahoidla?</string>
     <string name="repo_confirm_delete_body">Hoidla kustutamine tähendab, et hoidla pakutavad rakendused ei ole enam saadaval.
 \n
 \nMärkus: paigaldatud rakendused jäävad seadmesse alles.</string>
@@ -85,9 +85,7 @@
     <string name="repo_added">Salvestatu paketi hoidla %1$s.</string>
     <string name="repo_searching_address">Otsitakse paketihoidlat aadressil
 \n%1$s</string>
-    <string name="not_on_same_wifi">Sinu seade ei asu äsja lisatud kohaliku hoidlaga samas Wi-Fi võrgus! Proovi liituda
-        selle võrguga: %s
-    </string>
+    <string name="not_on_same_wifi">Sinu seade ei asu äsja lisatud kohaliku hoidlaga samas WiFi võrgus! Proovi liituda selle võrguga: %s</string>
     <string name="empty_installed_app_list">Mitte ühtegi rakendust ei ole paigaldatud.\n\nSinu seadmes on rakendusi,
         kuid nad ei ole paigaldatud F-Droidist. Selle põhjuseks võib olla kas vajadus hoidlaid värskendada või sinu
         rakenduste puudumine nendes hoidlates.
@@ -102,8 +100,8 @@
     <string name="menu_share">Jaga</string>
     <string name="menu_install">Paigalda</string>
     <string name="menu_uninstall">Eemalda</string>
-    <string name="menu_ignore_all">Ignoreeri kõiki värskendusi</string>
-    <string name="menu_ignore_this">Ignoreeri seda värskendust</string>
+    <string name="menu_ignore_all">Eira kõiki värskendusi</string>
+    <string name="menu_ignore_this">Eira seda uuendust</string>
     <string name="menu_website">Veebileht</string>
     <string name="menu_issues">Probleemid</string>
     <string name="menu_changelog">Muudatuste logi</string>
@@ -144,7 +142,7 @@
     <string name="enable_proxy_summary">Konfigureeri HTTP puhverserver kõigile võrgupäringutele</string>
     <string name="proxy_host">Puhverserveri nimi</string>
     <string name="proxy_host_summary">Sinu puhverserveri nimi (nt 127.0.0.1)</string>
-    <string name="proxy_port">Puhverserver port</string>
+    <string name="proxy_port">Puhverserveri port</string>
     <string name="proxy_port_summary">Sinu puhverserveri pordi number (nt 8118)</string>
     <string name="status_download">Allalaadimine
 \n%2$s / %3$s (%4$d%%) masinast
@@ -170,7 +168,7 @@
     <string name="unknown">Tundmatu</string>
     <string name="requires_features">Nõuab: %1$s</string>
     <string name="pref_language">Keel</string>
-    <string name="pref_language_default">Süsteemi vaikesäte</string>
+    <string name="pref_language_default">Süsteemi keel</string>
     <string name="wifi">WiFi</string>
     <string name="wifi_ap">Tööpunkt</string>
     <string name="category_Connectivity">Ühenduvus</string>
@@ -201,7 +199,7 @@
     <string name="swap_active_hotspot">%1$s (sinu tööpunkt)</string>
     <string name="swap_view_available_networks">Puuduta saadaolevate võrkude avamiseks</string>
     <string name="swap_switch_to_wifi">WiFi võrku lülitumiseks puuduta</string>
-    <string name="open_qr_code_scanner">Ava QR skanner</string>
+    <string name="open_qr_code_scanner">Ava QR-koodi skanner</string>
     <string name="swap_welcome">Tere tulemast F-Droidi!</string>
     <string name="swap_confirm_connect">Kas soovid rakendusi hankida %1$s\'st nüüd?</string>
     <string name="swap_dont_show_again">Ära seda enam näita</string>
@@ -210,7 +208,7 @@
     <string name="swap_scan_qr">QR-kood</string>
     <string name="swap_people_nearby">Inimesed lähedal</string>
     <string name="swap_scanning_for_peers">Otsitakse lähedal asuvaid inimesi…</string>
-    <string name="swap_nearby">Läheduses vahetus</string>
+    <string name="swap_nearby">Andmevahetus läheduses</string>
     <string name="swap_intro">Ühendu ja vaheta rakendusi inimestega, kes on su läheduses.</string>
     <string name="swap_visible_bluetooth">Bluetoothi kaudu nähtav</string>
     <string name="swap_setting_up_bluetooth">Bluetoothi seadistamine…</string>
@@ -260,9 +258,7 @@
     <string name="theme_dark">Tume</string>
     <string name="crash_dialog_title">F-Droidi tabas krahh</string>
     <string name="crash_dialog_comment_prompt">Sa saad lisada täiendavat informatsiooni ja kommentaare siia:</string>
-    <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs
-        samasse võrku, siis saab teist üks luua WiFi tööpunkti.
-    </string>
+    <string name="swap_join_same_wifi_desc">WiFi kaudu vahetamiseks peate olema samas võrgus. Kui sul puudub ligipääs samasse võrku, siis saab üks teist luua oma nutiseadmes WiFi pääsupunkt.</string>
     <string name="swap_connection_misc_error">Seadmega ühendumine nurjus. Sellega vahetamine ei ole võimalik!</string>
     <string name="crash_dialog_text">Ootamatu viga põhjustas rakenduse krahhi.
         Kas sa soovid saata selle detailid e-mailiga, et probleem parandada?
@@ -277,9 +273,9 @@
     <string name="app_list__name__downloading_in_progress">Allalaadimine %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s paigaldatud</string>
     <string name="updates__tts__download_app">Laadi alla</string>
-    <string name="warning_no_internet">Ei saa värskendada! Kas oled ühendatud Internetti?</string>
+    <string name="warning_no_internet">Ei saa uuendada! Kas nutiseadme internetiühendus toimib?</string>
     <string name="notification_title_single_update_available">Värskendus on saadaval</string>
-    <string name="notification_title_summary_install_error">Paigaldamine nurjus</string>
+    <string name="notification_title_summary_install_error">Paigaldamine ei õnnestunud</string>
     <string name="by_author_format">autor: %s</string>
     <string name="keep_install_history">Säilita paigalduse ajalugu</string>
     <string name="keep_install_history_summary">Salvesta kõigi paigaldamiste ja eemaldamiste logi privaathoidukohas</string>
@@ -338,7 +334,7 @@
         <item quantity="one">Kuva %d</item>
         <item quantity="other">Kuva kõik %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Internetti ei ole? Hangi rakendused sinu lähedal olevatelt inimestelt!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Internetiühendust ei ole? Hangi rakendused sinu lähedal olevatelt inimestelt!</string>
     <string name="nearby_splash__find_people_button">Otsi inimesi mu lähedal</string>
     <string name="nearby_splash__both_parties_need_fdroid">Naabriotsinguks peab mõlemal osapoolel olema %1$s.</string>
     <string name="app__tts__downloading_progress">Allalaadimine, %1$d%% valmis</string>
@@ -348,18 +344,18 @@
     </plurals>
     <string name="notification_title_single_ready_to_install">Valmis paigaldamiseks</string>
     <string name="notification_title_single_ready_to_install_update">Värskendused on valmis paigalduseks</string>
-    <string name="notification_title_single_install_error">Paigaldamine nurjus</string>
+    <string name="notification_title_single_install_error">Paigaldamine ei õnnestunud</string>
     <string name="notification_content_single_downloading">\"%1$s\" allalaadimine…</string>
     <string name="notification_content_single_downloading_update">\"%1$s\" värskenduse allalaadimine…</string>
     <string name="notification_content_single_installing">\"%1$s\" paigaldamine…</string>
     <string name="notification_content_single_installed">Edukalt paigaldatud</string>
     <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d värskendus</item>
-        <item quantity="other">%1$d värskendust</item>
+        <item quantity="one">%1$d uuendus</item>
+        <item quantity="other">%1$d uuendust</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d rakendus paigaldatud</item>
-        <item quantity="other">%1$d rakendust paigaldatud</item>
+        <item quantity="one">%1$d rakendus on paigaldatud</item>
+        <item quantity="other">%1$d rakendust on paigaldatud</item>
     </plurals>
     <string name="notification_title_summary_update_available">Värskendus on saadaval</string>
     <string name="notification_title_summary_downloading">Allalaadimine…</string>
@@ -397,7 +393,7 @@
     <string name="panic_app_unknown_app">tundmatu rakendus</string>
     <string name="panic_app_setting_summary">Ühtegi rakendust ei ole määratud</string>
     <string name="panic_app_setting_none">Puudub</string>
-    <string name="panic_app_dialog_title">Kinnitada paanika rakendus</string>
+    <string name="panic_app_dialog_title">Kinnita paanikanupu rakendus</string>
     <string name="panic_app_dialog_message">Kas sa oled kindel, et %1$s tohib käivitada kõike hävitava paanikanupu tegevused?</string>
     <string name="allow">Luba</string>
     <string name="panic_settings">Paanikanupu seaded</string>
@@ -439,9 +435,9 @@
     <string name="over_network_never_summary">Ära kasuta seda ühendust alla laadimiseks mitte kunagi</string>
     <string name="send_installed_apps">Jaga paigaldatud rakendusi</string>
     <string name="send_installed_apps_csv">F-Droidi paigaldatud rakendused CSV failina</string>
-    <string name="updates_disabled_by_settings">Kõik uuendused, mille keelavad andmeside/WiFi seaded</string>
-    <string name="repo_add_mirror">Lisa peegel</string>
-    <string name="repo_exists_add_mirror">See on %1$s koopia. Kas lisada ta peegliks?</string>
+    <string name="updates_disabled_by_settings">Kõik uuendused on andmeside/WiFi seadistuse alusel keelatud</string>
+    <string name="repo_add_mirror">Lisa peegelserver</string>
+    <string name="repo_exists_add_mirror">See on %1$s koopia. Kas lisame ta peegelserveriks?</string>
     <string name="menu_open">Ava</string>
     <string name="antidisabledalgorithmlist">Sellel rakendusel on nõrk turvasignatuur</string>
     <string name="antiknownvulnlist">Sellel rakendusel on tuntud turvanõrkus</string>
@@ -450,23 +446,23 @@
     <string name="show_anti_feature_apps_on">Kuva rakendusi, millel leidub mittesobivaid omadusi</string>
     <string name="force_touch_apps">Kaasa puuteekraani rakendused</string>
     <string name="force_touch_apps_on">Kaasa rakendused, mis vajavad puuteekraani sõltumata riistvara toest</string>
-    <string name="repo_official_mirrors">Ametlikud peeglid</string>
-    <string name="repo_user_mirrors">Kasuta peegleid</string>
-    <string name="share_repository">Jaga repositooriumit</string>
+    <string name="repo_official_mirrors">Ametlikud peegelserverid</string>
+    <string name="repo_user_mirrors">Kasutaja valitud peegelserverid</string>
+    <string name="share_repository">Jaga tarkvarahoidlat</string>
     <string name="use_bluetooth">Kasuta Bluetoothi</string>
     <string name="swap_toast_invalid_url">Vigane URL vahetamiseks: %1$s</string>
-    <string name="swap_toast_hotspot_enabled">Wi-Fi ühenduspunkt lubatud</string>
-    <string name="swap_toast_could_not_enable_hotspot">Wi-Fi ühenduspunkti lubamine nurjus!</string>
+    <string name="swap_toast_hotspot_enabled">WiFi pääsupunkt on kasutusel</string>
+    <string name="swap_toast_could_not_enable_hotspot">WiFi pääsupunkti kasutuselevõtmine ei õnnestunud!</string>
     <string name="about_forum">Toe foorum</string>
     <string name="app_suggested">Soovitatud</string>
     <string name="app_size">Suurus: %1$s</string>
     <string name="scan_removable_storage_title">Skanni eemaldatavat mäluseadet</string>
     <string name="scan_removable_storage_summary">Otsi pakettide hoidlaid eemaldatavalt mäluseadmelt nagu SD kaart või USB mälupulk</string>
-    <string name="nearby_splash__read_external_storage">Otsi SD kaardilt hoidlaid ja peegleid.</string>
+    <string name="nearby_splash__read_external_storage">Otsi SD-kaardilt tarkvarahoidlaid ja peegelservereid.</string>
     <string name="nearby_splash__request_permission">Otsi nüüd</string>
     <string name="swap_toast_using_path">Kasutatakse %1$s</string>
     <string name="swap_toast_not_removable_storage">See valik ei vastanud mitte ühelegi eemaldatavale mäluseadmele. Proovi uuesti!</string>
-    <string name="swap_toast_find_removeable_storage">Vali eemaldatav SD kaart või uSB mälupulk</string>
+    <string name="swap_toast_find_removeable_storage">Vali eemaldatav SD-kaart või USB mälupulk</string>
     <string name="scan_removable_storage_toast">%s skannimine…</string>
     <string name="not_visible_nearby">Naabrus pole lubatud</string>
     <string name="not_visible_nearby_description">Tee enda seade enne vahetamist naabruses oleva seadmega nähtavaks.</string>
@@ -491,7 +487,7 @@
     <string name="disabled">Keelatud</string>
     <string name="swap_error_cannot_start_bluetooth">Bluetoothi ei saa käivitada!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Naabrus suleti, sest teda ei kasutatud.</string>
-    <string name="nearby_splash__document_tree">Otsi USB OTG meedialt hoidlaid ja peegleid.</string>
+    <string name="nearby_splash__document_tree">Otsi USB OTG meedialt tarkvarahoidlaid ja peegelservereid.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Kuvatakse rakenduste ja repositooriumite värskenduste teavitusi.</string>
     <string name="notification_channel_updates_title">Värskendused</string>
@@ -501,17 +497,17 @@
     <string name="notification_channel_installs_title">Paigaldused</string>
     <string name="menu_show_install_history">Kuva paigaldamise ajalugu</string>
     <string name="menu_show_fdroid_metrics_report">Kuva meetrika raport</string>
-    <string name="toast_metrics_in_install_history">%s meetrika raport on nähtav paigaldamise ajaloo vaates</string>
+    <string name="toast_metrics_in_install_history">%s meetrika aruanne on nähtav paigaldamise ajaloo vaates</string>
     <string name="send_to_fdroid_metrics_summary">Saada anonüümselt ja iganädalaselt F-Droidi meetrika (vajalik on paigaldamise ajaloo säilitamine)</string>
     <string name="send_to_fdroid_metrics">Saada kasutamise andmed</string>
-    <string name="fdroid_metrics_report">%s meetrika raport</string>
+    <string name="fdroid_metrics_report">%s meetrika aruanne</string>
     <string name="install_history_and_metrics">Paigalda ajalugu ja meetrika</string>
     <string name="send_fdroid_metrics_json">%s meetrika JSON failina</string>
-    <string name="send_fdroid_metrics_report">Saada %s meetrika raport</string>
+    <string name="send_fdroid_metrics_report">Saada %s meetrika aruanne</string>
     <string name="theme_follow_system">Kasuta üldist teemat</string>
     <string name="use_pure_black_dark_theme_summary">Soovitame kasutamiseks vaid OLED-ekraanidel.</string>
     <string name="use_pure_black_dark_theme">Tumedas teemas kasuta musta tausta</string>
-    <string name="banner_no_data_or_wifi">3G, 4G või WiFi pole kasutusel</string>
+    <string name="banner_no_data_or_wifi">Andmeside/WiFi pole kasutusel</string>
     <string name="banner_no_internet">Internetiühendus puudub</string>
     <string name="share_apk_error">Rakenduse faili jagamine ei õnnestunud</string>
     <string name="has_disallow_install_unknown_sources_globally">Sinu seadme haldaja ei luba rakenduste paigaldamist tundmatutest allikatest, sealhulgas uutest hoidlatest</string>
@@ -531,7 +527,7 @@
     <string name="antiothers">Muud omadused, mis ei sobi</string>
     <string name="antinsfw">Ei sobi kasutamiseks töökohas</string>
     <string name="latest__empty_state__upgrading">Andmebaasi uuendamine…</string>
-    <string name="menu_release_channel_beta">Kaasa uuendamiseks ka beeta-versioonid</string>
+    <string name="menu_release_channel_beta">Kaasa uuendamiseks ka beetaversioonid</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Teave F-Droid Basic\'u kohta</string>
     <string name="repo_last_update_downloaded">Viimane uuendus on allalaaditud</string>
@@ -554,9 +550,9 @@
 \n
 \nPalun kontrolli, et sinu lisatav hoidla on usaldusväärne.</string>
     <string name="ipfsgw_summary_disabled">Laadi rakendusi IPFS võrgu kaudu: välja lülitatud</string>
-    <string name="ipfsgw_caption_custom_gateways">Kohandatud IPFS lüüsid</string>
+    <string name="ipfsgw_caption_custom_gateways">Kohandatud IPFSi lüüsid</string>
     <string name="swap_connection_indexv0_error">Sa proovid luua ühendust aegunud F-Droid\'i versiooniga. Jätkamaks peab tolles nutiseadmes uuendama F-Droid\'i rakendust. Selleks saab kasutada võimalust laadida rakendus sinu nutiseadmest.</string>
-    <string name="nearby_splach__external_storage_permission_explainer">F-Droid saab otsida hoidlaid ja peegelservereid sinu nutiseadme SD kaardilt, aga vajab sinu luba, et nii teha.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid saab otsida tarkvarahoidlaid ja peegelservereid sinu nutiseadme SD-kaardilt, aga vajab selleks sinu luba.</string>
     <string name="repo_state_fetching">Laadime hoidla andmeid…</string>
     <string name="repo_state_adding">Lisame hoidla…</string>
     <string name="repo_exists">See tarkvarahoidla on juba lisatud.</string>
@@ -565,14 +561,14 @@
 \nVõta ühendust haldajaga ja anna neile teada sellest veast.</string>
     <string name="repo_io_error">Viga ühenduse loomisel hoidlaga.</string>
     <string name="targetsdk_or_later">SDK versioon %s</string>
-    <string name="turn_on_wifi">Lülita Wi-Fi sisse</string>
+    <string name="turn_on_wifi">Lülita WiFi sisse</string>
     <string name="copied_url_to_clipboard">URL on kopeeritud lõikelauale</string>
     <string name="copied_permission_to_clipboard">Õiguste nimi on kopeeritud lõikelauale</string>
-    <string name="ipfsgw_title">IPFS lüüsid</string>
+    <string name="ipfsgw_title">IPFSi lüüsid</string>
     <string name="ipfsgw_explainer">Laadi rakendusi IPFS võrgu kaudu. (Toimib vaid siis, kui kasutatavatel tarkvarahoidlatel on IPFS võrgu tugi.)</string>
-    <string name="ipfsgw_add_title">Lisa IPFS lüüs</string>
+    <string name="ipfsgw_add_title">Lisa IPFSi lüüs</string>
     <string name="ipfsgw_add_add">Lisa</string>
-    <string name="ipfsgw_caption_official_gateways">Ametlikud IPFS lüüsid</string>
+    <string name="ipfsgw_caption_official_gateways">Ametlikud IPFSi lüüsid</string>
     <string name="repo_add_new_title">Lisa hoidla</string>
     <string name="repo_add_new_mirror">Lisa uue peegelserverina</string>
     <string name="nearby_splace__external_storage_permission_button">Proovi seda</string>
@@ -596,13 +592,13 @@
     <string name="repositories_last_update_never">mitte kunagi</string>
     <string name="app_details_repository_button_prefer">Eelista tarkvarahoidlat</string>
     <string name="repo_error_adding_archive">Arhiivi tarkvarahoidlat ei saa otse lisada. Vajuta loendis tarkvarahoidlale ja lülita arhiiv tööle sealt.</string>
-    <string name="repo_add_repo_and_mirror">Lisa hoidla ja peegel</string>
+    <string name="repo_add_repo_and_mirror">Lisa tarkvarahoidla ja peegelserver</string>
     <string name="repo_view_repo">Vaata hoidlat</string>
-    <string name="repo_scan_qr_code">Skanneeri QR Kood</string>
+    <string name="repo_scan_qr_code">Skanneeri QR-koodi</string>
     <string name="repo_preview_included_apps">Lisatud rakendused:</string>
-    <string name="repo_mirror_exists">See peegel on juba lisatud (%s).</string>
-    <string name="repo_mirror_add_info">URL, mida te üritate lisada (%s), on olemasoleva hoidla peegel.</string>
-    <string name="repo_and_mirror_add_both_info">URL, mida te üritate lisada (%s), on uue hoidla peegel. Lisatakse nii algne hoidla kui ka peegel.</string>
+    <string name="repo_mirror_exists">See peegelserver on juba lisatud (%s).</string>
+    <string name="repo_mirror_add_info">Võrguaadress, mida te üritad lisada (%s), on olemasoleva tarkvarahoidla peegelserver.</string>
+    <string name="repo_and_mirror_add_both_info">Võrguaadress, mida te üritad lisada (%s), on uue tarkvarahoidla peegelserver. Lisatame nii algse tarkvarahoidla kui ka peegelserveri.</string>
     <string name="warning_no_compat_versions">Valitud tarkvarahoidlas ei ole sinu nutiseadme jaoks sobivaid rakenduse versioone. Uuenduste laadimiseks palun eelista hoidlat, kus selliseid versioone leidub.</string>
     <string name="auto_update_time">Varaseim järgmine uuendus: %s</string>
     <string name="auto_update_time_past">Järgmine uuendus tingimuste täitmisel</string>
@@ -613,4 +609,28 @@
     <string name="menu_share_apk">Jaga APK-faili</string>
     <string name="preferForeign">Eelista välismaiseid peegelservereid</string>
     <string name="preferForeignSummary">Esmalt proovi kasutada väljaspool oma riiki asuvaid peegelservereid, seda näiteks olukorras, kus privaatsus on väljaspool oma riiki paremini tagatud.</string>
+    <string name="no_handler_app_generic">Selle tegevuse jaoks ei leidu ühtegi sobivat rakendust.</string>
+    <string name="repo_confirm_delete_mirror_title">Kas kustutame peegelserveri?</string>
+    <string name="repo_confirm_delete_mirror_body">Sa võid jätkata selles tarkvarahoidlas asuvate rakenduste paigaldamist teistest peegelserveritest.</string>
+    <string name="repo_archive_unknown">Siin tarkvarahoidlas ei tundu leiduma rakenduste arhiivi.</string>
+    <string name="repo_archive_check">Kontrolli arhiivi olemasolu</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 rakendus</item>
+        <item quantity="other">%d rakendust</item>
+    </plurals>
+    <string name="repo_last_update_index">Viimane tarkvarahoidla uuendus: %s</string>
+    <string name="repo_last_update_check">Tarkvarahoidla uuenduste olemasolu viimane kontroll: %s</string>
+    <string name="share_mirror">Jaga peegelserverit</string>
+    <string name="show_repository_qr">Näita tarkvarahoidla QR-koodi</string>
+    <string name="repo_basic_auth_title">Lihtautentimine</string>
+    <string name="repo_basic_auth_username">Kasutajanimi: %s</string>
+    <string name="repo_basic_auth_password">Salasõna: ***</string>
+    <string name="repo_basic_auth_edit">Muuda</string>
+    <string name="expand">Laienda vaadet</string>
+    <string name="collapse">Ahenda vaadet</string>
+    <string name="repo_details_info_text">Tarkvarahoidla on rakenduste allikas.\n\nPeegelserverid on kasutusel rakenduste laadimisest tekkiva koormuse jagamiseks eri serverite vahel. Sageli on sulle lähemal asuvad peegelserverid kiiremad.\n\nAmetlikud peegelserverid on lisanud tarkvarahoidla omanik. Neid saad kasutusest eemaldada, aga mitte kustutada. Täiendavaid peegelservereid saad nii, nagu tavalisi tarkvarahoidlaid.</string>
+    <string name="pref_export_log_title">Silumislogi</string>
+    <string name="export_log_success">Logcati väljundi salvestamine õnnestus</string>
+    <string name="export_log_error">Logcati väljundi salvestamisel tekkis viga</string>
+    <string name="pref_export_log_summary">Loob logcati väljundist faili, mis on abiks veaotsingul. Ettevaatust, failis võib olla privaatseid andmeid!</string>
 </resources>

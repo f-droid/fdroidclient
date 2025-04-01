@@ -53,7 +53,7 @@
     <string name="more">Meer</string>
     <string name="less">Minder</string>
     <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert ze</string>
-    <string name="warning_no_internet">Kan niet bijwerken, bent u verbonden met het internet\?</string>
+    <string name="warning_no_internet">Kan niet bijwerken, bent u verbonden met het internet?</string>
     <string name="unsigned">Ongetekend</string>
     <string name="unverified">ongeverifiëerd</string>
     <string name="repo_details">Bron</string>
@@ -265,7 +265,7 @@
     <string name="unsigned_description">Dit betekent dat de lijst van apps niet geverifieerd kon worden. Wees voorzichtig met het downloaden van apps van niet-ondertekende bronnen.</string>
     <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Schakel de bron in om de beschikbare apps te kunnen zien.</string>
     <string name="unknown">Onbekend</string>
-    <string name="repo_confirm_delete_title">Wilt u deze applicatiebron verwijderen\?</string>
+    <string name="repo_confirm_delete_title">Wilt u deze applicatiebron verwijderen?</string>
     <string name="repo_confirm_delete_body">Als een bron wordt verwijderd, zijn de apps in die bron niet meer beschikbaar.
 \n
 \nLet op: eerder geïnstalleerde apps blijven op dit apparaat staan.</string>

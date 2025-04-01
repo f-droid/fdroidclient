@@ -40,7 +40,7 @@
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
     <string name="menu_manage">Dipòsits</string>
     <string name="menu_search">Cerca</string>
-    <string name="menu_add_repo">Nou Dipòsit</string>
+    <string name="menu_add_repo">Nou dipòsit</string>
     <string name="menu_launch">Obre</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instal·lar</string>
@@ -366,7 +366,7 @@
     <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tingueu</string>
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
     <string name="hide_on_long_search_press_summary">Si manteniu premut el botó de cerca l\'aplicació s\'amagarà</string>
-    <string name="repo_official_mirrors">Rèpliques oficials</string>
+    <string name="repo_official_mirrors">Rèpliques Oficials</string>
     <string name="repo_user_mirrors">Rèpliques mantingudes per usuaris</string>
     <string name="use_bluetooth">Useu Bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Punt d\'accés Wifi actiu</string>
@@ -443,7 +443,7 @@
     <string name="banner_no_internet">Sense Internet</string>
     <string name="menu_show_install_history">Mostrar l\'historial d\'instal·lacions</string>
     <string name="menu_show_fdroid_metrics_report">Mostrar l\'informe de mètriques</string>
-    <string name="toast_metrics_in_install_history">L\'informe de mètriques %s es pot visualitzar al visor de l\'historial d\'instal·lacions</string>
+    <string name="toast_metrics_in_install_history">L\'informe de mètriques %s es pot veure al visualitzador de l\'historial d\'instal·lacions</string>
     <string name="send_to_fdroid_metrics_summary">Enviar setmanalment dades anònimes a les mètriques de l\'F-Droid (requereix mantenir historial d’instal·lacions)</string>
     <string name="send_to_fdroid_metrics">Enviar les dades de l\'ús</string>
     <string name="fdroid_metrics_report">Informe de mètriques %s</string>
@@ -597,4 +597,25 @@
     <string name="apk_permissions_mismatch">L\'aplicació té un permís inesperat: %s</string>
     <string name="preferForeign">Prefereix miralls externs</string>
     <string name="preferForeignSummary">Prova primer els miralls que són fora del teu país, per exemple quan les proteccions estrangeres són més fortes.</string>
+    <string name="no_handler_app_generic">No teniu cap aplicació disponible que pugui gestionar això.</string>
+    <string name="repo_details_info_text">Un dipòsit és una font d\'aplicacions.\n\nEls miralls s\'utilitzen per distribuir la càrrega de descarregar aplicacions a través de diversos servidors. Els miralls més propers a tu poden ser més ràpids.\n\nEls miralls oficials són definits per qui posseeix el dipòsit. No es poden suprimir, només es desactiven. Podeu definir miralls personalitzats addicionals afegint-los com un dipòsit normal.</string>
+    <string name="repo_archive_unknown">Aquest diposit no sembla tenir un arxiu.</string>
+    <string name="repo_archive_check">Comprova errades a l\'Arxiu</string>
+    <string name="repo_last_update_index">Última actualització del dipòsit: %s</string>
+    <string name="repo_last_update_check">Última comprovació per a l\'actualització del dipòsit: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Voleu suprimir el Mirall?</string>
+    <string name="repo_confirm_delete_mirror_body">Podeu continuar instal·lant aplicacions des d\'aquest dipòsit utilitzant les altres rèpliques.</string>
+    <string name="share_mirror">Comparteix el mirall</string>
+    <string name="show_repository_qr">Mostra el codi QR del repositori</string>
+    <string name="repo_basic_auth_title">Autenticació bàsica</string>
+    <string name="repo_basic_auth_username">Nom d\'usuari: %s</string>
+    <string name="repo_basic_auth_password">Contrasenya: ***</string>
+    <string name="repo_basic_auth_edit">Editar</string>
+    <string name="collapse">Replegar</string>
+    <string name="expand">Expandeix</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 aplicació</item>
+        <item quantity="many">%d aplicacions</item>
+        <item quantity="other">%d aplicacions</item>
+    </plurals>
 </resources>

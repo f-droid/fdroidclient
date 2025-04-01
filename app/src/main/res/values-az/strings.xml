@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="yes">Bəli</string>
     <string name="updates">Yeniləmələr</string>
     <string name="ok">Oldu</string>
@@ -22,4 +22,27 @@
     <string name="fdroid_metrics_report">%s Ölçü Məruzəsi</string>
     <string name="install_history_summary">Bütün quraşdırılma və silinmələrin özəl qeydlərini göstər</string>
     <string name="keep_install_history">Quraşdırılma tarixini saxla</string>
+    <string name="cancel">Ləğv et</string>
+    <string name="menu_launch">Aç</string>
+    <string name="back">Geri</string>
+    <string name="menu_share">Paylaş</string>
+    <string name="menu_uninstall">Sil</string>
+    <string name="menu_install">Quraşdır</string>
+    <string name="menu_upgrade">Yenilə</string>
+    <string name="main_menu__swap_nearby">Yaxın</string>
+    <string name="main_menu__categories">Kateqoriyalar</string>
+    <string name="main_menu__latest_apps">Son</string>
+    <string name="menu_manage">Depo</string>
+    <string name="menu_add_repo">Yeni Depo</string>
+    <string name="menu_settings">Tənzimləmələr</string>
+    <string name="menu_search">Axtar</string>
+    <string name="prompt_to_send_crash_reports_summary">Xətalar haqqında məlumat toplayın və developer\'a göndərin</string>
+    <string name="notification_action_install">Quraşdır</string>
+    <string name="newPerms">Yeni</string>
+    <string name="pref_language">Dil</string>
+    <string name="pref_language_default">İlkin Sistem</string>
+    <string name="notification_action_update">Yenilə</string>
+    <string tools:ignore="UnusedResources" name="category_Games">Oyunlar</string>
+    <string tools:ignore="UnusedResources" name="category_Internet">İnternet</string>
+    <string name="notification_action_cancel">Ləğv et</string>
 </resources>

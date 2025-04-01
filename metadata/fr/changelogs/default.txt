@@ -1,11 +1,8 @@
-* Réécriture de l'outil de mise à jour des dépôts pour rendre les mises à jour en arrière-plan plus fiables
-* Séparation du nom et du résumé dans les listes d'applications pour une meilleure lisibilité
-* Affichage d'un avertissement quand l'application ne peut pas se mettre à jour depuis le dépôts préféré
-* Les applications ciblant le SDK 24 sont incompatibles avec les appareils Android 15
-* Meilleur gestion des miroirs dans l'aperçu "Ajout de dépôt" (Merci Thore !)
-* Activer les mises à jour d'applications automatique sur les appareils Xiaomi ne fonctionnant pas sous MIUI (Merci Irate !)
-* Faire confiance aux certificats racine rajouté par l'utilisateur (Merci B.!)
-* Corrige les recherches insensible à la casse contenant des diacritiques (Merci Tobias !)
-* Mise à jour des descriptions des anti-fonctionnalités (Merci Licaon !)
- * Ajout d'une anti-fonctionnalité de filtre captif (Merci linsui !)
-* Ignore les espaces lors de l'ajout de dépôts miroirs (Merci Tobias !)
+support expérimental pour le désarchivage des applications sur Android 15
+ajout automatique des applications nouvellement installées à l'écran d'accueil pour la plupart des lanceurs (Merci Dhina !)
+actions séparées pour le partage de lien et le partage de fichier dans les détails de l'application
+affichage d'un toast lorsque l'APK a plus de permissions que prévu
+nettoyage plus fréquent des caches internes pour libérer de l'espace (Merci DerGenaue !)
+réorganisation des badges de donation pour correspondre au site web (Merci Leo !)
+ajout d'un bouton dans les paramètres pour préférer les miroirs étrangers
+nombreuses petites corrections de bugs

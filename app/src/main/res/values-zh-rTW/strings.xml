@@ -595,4 +595,23 @@
     <string name="apk_permissions_mismatch">應用程式有非預期的權限：%s</string>
     <string name="preferForeign">偏好外國鏡像</string>
     <string name="preferForeignSummary">先嘗試位於您國家以外的鏡像，舉例來說，如果外國的保護較強。</string>
+    <string name="no_handler_app_generic">您沒有任何可以處理這個的應用程式。</string>
+    <string name="repo_details_info_text">軟體庫是應用程式的來源。\n\n鏡像用於在多台伺服器上分散下載應用程式的負載。離您較近的鏡像可能較快。\n\n正式鏡像由軟體庫擁有者定義。它們無法刪除，只能停用。您可以透過新增鏡像來定義額外的自訂鏡像，就像一般的軟體庫一樣。</string>
+    <string name="repo_archive_unknown">此軟體庫似乎沒有封存。</string>
+    <string name="repo_archive_check">檢查封存</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="other">%d 個應用程式</item>
+    </plurals>
+    <string name="repo_last_update_index">最後軟體庫更新時間：%s</string>
+    <string name="repo_last_update_check">軟體庫更新最後檢查時間：%s</string>
+    <string name="share_mirror">分享鏡像</string>
+    <string name="show_repository_qr">顯示軟體庫 QR Code</string>
+    <string name="repo_basic_auth_title">基本驗證</string>
+    <string name="repo_basic_auth_username">使用者名稱：%s</string>
+    <string name="repo_basic_auth_password">密碼：***</string>
+    <string name="expand">展開</string>
+    <string name="collapse">折疊</string>
+    <string name="repo_basic_auth_edit">編輯</string>
+    <string name="repo_confirm_delete_mirror_title">刪除鏡像？</string>
+    <string name="repo_confirm_delete_mirror_body">您可以使用其他鏡像來從此軟體庫繼續安裝應用程式。</string>
 </resources>

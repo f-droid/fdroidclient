@@ -7,7 +7,7 @@
     <string name="version">Phiên bản</string>
     <string name="delete">Xóa</string>
     <string name="cache_downloaded">Giữ các ứng dụng có trong bộ nhớ đệm</string>
-    <string name="updates">Các bản cập nhật</string>
+    <string name="updates">Bản cập nhật</string>
     <string name="other">Khác</string>
     <string name="update_interval">Tự động cập nhật định kì</string>
     <string name="notify">Hiện các bản cập nhật có sẵn</string>
@@ -26,7 +26,7 @@
     <string name="app_inst_known_source">Đã cài đặt (từ %s)</string>
     <string name="app_inst_unknown_source">Đã cài đặt (không rõ nguồn gốc)</string>
     <string name="added_on">Đã thêm vào %s</string>
-    <string name="ok">OK</string>
+    <string name="ok">Được rồi</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
     <string name="repo_add_title">Thêm kho mới</string>
@@ -88,7 +88,7 @@
     <string name="repos_unchanged">Tất cả các kho đã được cập nhật</string>
     <string name="global_error_updating_repos">Lỗi khi cập nhật: %s</string>
     <string name="no_permissions">Không có quyền</string>
-    <string name="no_handler_app">Bạn không có ứng dụng nào để xử lí %s.</string>
+    <string name="no_handler_app">Bạn không có ứng dụng nào để xử lý %s.</string>
     <string name="theme">Chủ đề</string>
     <string name="unverified">Chưa kiểm tra</string>
     <string name="repo_num_apps">Số ứng dụng</string>
@@ -108,9 +108,7 @@
     <string name="repo_added">Đã lưu kho ứng dụng %1$s.</string>
     <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ
 \n%1$s</string>
-    <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng
-        này: %s
-    </string>
+    <string name="not_on_same_wifi">Thiết bị của bạn không trong cùng mạng Wi-Fi với kho nội bộ mới thêm! Hãy vào mạng này: %s</string>
     <string name="requires_features">Yêu cầu: %1$s</string>
     <string name="category_Development">Lập trình</string>
     <string name="category_Games">Trò chơi</string>
@@ -149,7 +147,7 @@
     <string name="proxy_host_summary">Tên máy chủ proxy của bạn (ví dụ 127.0.0.1)</string>
     <string name="banner_updating_repositories">Đang cập nhật các kho</string>
     <string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ %1$s</string>
-    <string name="unsigned">Chưa được kí</string>
+    <string name="unsigned">Chưa được ký</string>
     <string name="unsigned_description">Điều này nghĩa là danh sách ứng dụng không được kiểm duyệt. Bạn hãy cẩn thận khi
         tải ứng dụng từ mục lục không có chữ kí điện tử.
     </string>
@@ -172,9 +170,7 @@
     <string name="empty_can_update_app_list">Chúc mừng!\nCác ứng dụng của bạn đã được cập nhật.</string>
     <string name="install_error_unknown">Cài đặt thất bại vì lỗi không xác định</string>
     <string name="uninstall_error_unknown">Gỡ cài đặt thất bại vì lỗi không xác định</string>
-    <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu
-        không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.</string>
     <string name="swap_success">Đã trao đổi thành công!</string>
     <string name="swap_active_hotspot">%1$s (điểm truy cập của bạn)</string>
     <string name="swap_switch_to_wifi">Chạm để chuyển sang mạng Wi-Fi</string>
@@ -334,7 +330,7 @@
         <item quantity="other">Xem %d ứng dụng</item>
     </plurals>
     <string name="empty_search_available_app_list">Không có ứng dụng trùng khớp.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng\? Hãy lấy các ứng dụng từ những người gần bạn!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Không có mạng? Hãy lấy các ứng dụng từ những người gần bạn!</string>
     <string name="nearby_splash__find_people_button">Tìm người lân cận</string>
     <string name="nearby_splash__both_parties_need_fdroid">Cả hai bên cần có %1$s</string>
     <string name="swap_stopping_wifi">Đang tắt Wi-Fi…</string>
@@ -391,14 +387,14 @@
     <plurals name="details_last_update_years">
         <item quantity="other">Được cập nhật %1$d năm trước</item>
     </plurals>
-    <string name="over_wifi">Bằng Wi-Fi</string>
-    <string name="over_data">Bằng dữ liệu di động</string>
+    <string name="over_wifi">Qua Wi-Fi</string>
+    <string name="over_data">Qua dữ liệu di động</string>
     <string name="over_network_always_summary">Luôn dùng kết nối này nếu có thể</string>
     <string name="over_network_on_demand_summary">Chỉ sử dụng kết nối này khi nhấn nút tải xuống</string>
     <string name="over_network_never_summary">Không bao giờ tải xuống bằng kết nối này</string>
     <string name="sort_search">Sắp xếp tìm kiếm</string>
     <string name="menu_liberapay">Liberapay</string>
-    <string name="antidisabledalgorithmlist">Ứng dụng này có chữ kí bảo mật yếu</string>
+    <string name="antidisabledalgorithmlist">Ứng dụng này có chữ ký bảo mật yếu</string>
     <string name="antiknownvulnlist">Ứng dụng này có một lỗ hổng bảo mật đã biết</string>
     <string name="show_anti_feature_apps">Hiện các tính năng không mong muốn</string>
     <string name="show_anti_feature_apps_on">Hiện các ứng dụng có tính năng không mong muốn</string>
@@ -507,7 +503,7 @@
     <string name="swap_wifi_vpn_conflict">Xung đột với VPN đang hoạt động!</string>
     <string name="has_disallow_install_unknown_sources">Nguồn không xác định không thể được người dùng này thêm vào, bao gồm cả các kho mới</string>
     <string name="has_disallow_install_unknown_sources_globally">Quản trị viên thiết bị không cho phép cài đặt ứng dụng từ nguồn không xác định, bao gồm cả các kho mới</string>
-    <string name="antidisabledalgorithm">Được kí bằng thuật toán không an toàn</string>
+    <string name="antidisabledalgorithm">Được ký bằng thuật toán không an toàn</string>
     <string name="antinonfreedep">Phụ thuộc vào những thứ không tự do</string>
     <string name="antinonfreead">Phần mở rộng không tự do</string>
     <string name="antiupstreamnonfree">Dự án mẹ không tự do</string>
@@ -588,4 +584,15 @@
     <string name="turn_on_wifi">Mở lên wifi</string>
     <string name="copied_url_to_clipboard">Đã sao chép đường URL vào bản tạm</string>
     <string name="copied_permission_to_clipboard">Đã sao chép tên quyền cho phép vào bản tạm</string>
+    <string name="repo_details_info_text">Kho lưu trữ là nguồn ứng dụng. \nMirror được sử dụng để phân phối tải ứng dụng tải xuống trên nhiều máy chủ. Mirror gần bạn hơn có thể nhanh hơn. \nMirror chính thức được xác định bởi chủ sở hữu kho lưu trữ. Chúng không thể bị xóa, chỉ có thể bị vô hiệu hóa. Bạn có thể xác định mirror tùy chỉnh bổ sung bằng cách thêm chúng giống như một kho lưu trữ thông thường.</string>
+    <string name="repo_archive_check">Kiểm tra lưu trữ</string>
+    <string name="repo_confirm_delete_mirror_title">Xóa máy chủ dự phòng?</string>
+    <string name="no_handler_app_generic">Bạn không có ứng dụng nào có thể xử lý được việc này.</string>
+    <string name="apk_permissions_mismatch">Ứng dụng có quyền không mong muốn: %s</string>
+    <string name="repo_archive_unknown">Kho lưu trữ này không có mục lưu trữ.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="other">Số ít\n1 ứng dụng\n\nSố nhiều\n%d các ứng dụng</item>
+    </plurals>
+    <string name="repo_last_update_index">Cập nhật repo cuối cùng %s</string>
+    <string name="repo_last_update_check">Kiểm tra lần cuối để cập nhật repo %s</string>
 </resources>

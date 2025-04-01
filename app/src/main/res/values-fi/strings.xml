@@ -12,9 +12,9 @@
     <string name="notify_on">Näytä ilmoitus, kun päivityksiä on saatavilla</string>
     <string name="system_installer">Etuoikeutettu laajennus</string>
     <string name="system_installer_on">Käytä F-Droidin etuoikeutettuja laajennuksia pakettien asentamiseen, päivittämiseen ja poistamiseen</string>
-    <string name="local_repo_name">Paikallisen sovelluslähteesi nimi</string>
-    <string name="local_repo_name_summary">Paikallisen sovelluslähteesi mainostettava otsikko: %s</string>
-    <string name="local_repo_https_on">Käytä salattua HTTPS-yhteyttä paikalliselle sovelluslähteelle</string>
+    <string name="local_repo_name">Paikallisen ohjelmavarastosi nimi</string>
+    <string name="local_repo_name_summary">Paikallisen ohjelmavarastosi mainostettava otsikko: %s</string>
+    <string name="local_repo_https_on">Käytä salattua HTTPS-yhteyttä paikalliselle ohjelmavarastolle</string>
     <string name="app_details">Sovelluksen tiedot</string>
     <string name="no_such_app">Sovellusta ei löytynyt.</string>
     <string name="about_title_full">Tietoa F-Droidista</string>
@@ -35,11 +35,11 @@
     <string name="overwrite">Korvaa</string>
     <string name="bluetooth_activity_not_found">Bluetooth-lähetystapaa ei löytynyt, valitse jokin!</string>
     <string name="choose_bt_send">Valitse Bluetooth-lähetystapa</string>
-    <string name="repo_add_url">Sovelluslähteen osoite</string>
+    <string name="repo_add_url">Ohjelmavaraston osoite</string>
     <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
     <string name="menu_manage">Ohjelmavarastot</string>
     <string name="menu_search">Haku</string>
-    <string name="menu_add_repo">Uusi sovelluslähde</string>
+    <string name="menu_add_repo">Uusi ohjelmavarasto</string>
     <string name="menu_launch">Avaa</string>
     <string name="menu_share">Jaa</string>
     <string name="menu_install">Asenna</string>
@@ -61,14 +61,14 @@
     <string name="search_hint">Etsi sovelluksia</string>
     <string name="appcompatibility">Sovellusten yhteensopivuus</string>
     <string name="show_incompat_versions">Sisällytä yhteensopimattomat versiot</string>
-    <string name="local_repo">Paikallinen sovelluslähde</string>
+    <string name="local_repo">Paikallinen ohjelmavarasto</string>
     <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
     <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tarkemmat tiedot ja salli muiden vaihtaa sovelluksia.</string>
-    <string name="deleting_repo">Poistetaan nykyistä sovelluslähdettä…</string>
-    <string name="adding_apks_format">Lisätään %s sovelluslähteisiin…</string>
+    <string name="deleting_repo">Poistetaan nykyistä ohjelmavarastoa…</string>
+    <string name="adding_apks_format">Lisätään %s ohjelmavarastoon…</string>
     <string name="writing_index_jar">Kirjoitetaan allekirjoitettua hakemistotiedostoa (index.jar)…</string>
-    <string name="linking_apks">Liitetään APK-tiedostot sovelluslähteeseen…</string>
-    <string name="copying_icons">Kopioidaan sovelluskuvakkeita sovelluslähteeseen…</string>
+    <string name="linking_apks">Liitetään APK-tiedostot ohjelmavarastoon…</string>
+    <string name="copying_icons">Kopioidaan sovelluskuvakkeita ohjelmavarastoon…</string>
     <string name="icon">Kuvake</string>
     <string name="next">Seuraava</string>
     <string name="skip">Ohita</string>
@@ -79,18 +79,14 @@
     <string name="proxy_host_summary">Välityspalvelimesi isäntänimi (esim. 127.0.0.1)</string>
     <string name="proxy_port">Välityspalvelimen portti</string>
     <string name="proxy_port_summary">Välityspalvelimesi porttinumero (esim. 8118)</string>
-    <string name="repos_unchanged">Kaikki sovelluslähteet ovat ajan tasalla</string>
-    <string name="all_other_repos_fine">Muut sovelluslähteet eivät luoneet virheitä.</string>
+    <string name="repos_unchanged">Kaikki ohjelmavarastot ovat ajan tasalla</string>
+    <string name="all_other_repos_fine">Muut ohjelmavarastot eivät luoneet virheitä.</string>
     <string name="global_error_updating_repos">Virhe päivityksen aikana: %s</string>
     <string name="theme">Teema</string>
     <string name="unverified">Vahvistamaton</string>
     <string name="repo_not_yet_updated">Tätä sovelluslähdettä ei ole vielä käytetty. Sinun tulee ottaa se ensin käyttöön, nähdäksesi sovellukset joita se tarjoaa.</string>
-    <string name="repo_confirm_delete_body">Sovelluslähteen poistaminen tarkoittaa, että sieltä olevat sovellukset eivät ole enää saatavissa.
-\n
-\nHuomautus: Kaikki aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
-    <string name="repo_disabled_notification">%1$s poistettu käytöstä.
-\n
-\nSinun pitää ottaa tämä sovelluslähde uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
+    <string name="repo_confirm_delete_body">Ohjelmavaraston poistaminen tarkoittaa, että sieltä olevat sovellukset eivät ole enää saatavissa. \n \nHuomautus: Kaikki aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
+    <string name="repo_disabled_notification">%1$s poistettu käytöstä. \n \nSinun pitää ottaa tämä ohjelmavarasto uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
     <string name="requires_features">Vaatii: %1$s</string>
     <string name="category_Development">Kehittäminen</string>
     <string name="category_Games">Pelit</string>
@@ -160,13 +156,13 @@
     <string name="show_incompat_versions_on">Näytä sovelluksen versiot, jotka eivät ole yhteensopivia laitteen kanssa</string>
     <string name="useTor">Käytä Tor-verkkoa</string>
     <string name="useTorSummary">Pakota latausliikenne Tor-verkon kautta yksityisyyden lisäämiseksi. Vaatii Orbotin</string>
-    <string name="banner_updating_repositories">Päivitetään sovelluslähteitä</string>
+    <string name="banner_updating_repositories">Päivitetään ohjelmavarastoja</string>
     <string name="status_inserting_apps">Tallennetaan sovelluksen tietoja</string>
     <string name="no_permissions">Ei käyttöoikeuksia</string>
     <string name="permissions">Käyttöluvat</string>
     <string name="unsigned">Allekirjoittamaton</string>
     <string name="repo_details">Ohjelmavarasto</string>
-    <string name="repo_confirm_delete_title">Poistetaanko sovelluslähde?</string>
+    <string name="repo_confirm_delete_title">Poistetaanko ohjelmavarasto?</string>
     <string name="update_auto_install">Asenna päivitykset automaattisesti</string>
     <string name="menu_flattr">Flattr</string>
     <string name="repo_url">Osoite</string>
@@ -175,8 +171,8 @@
     <string name="repo_last_update">Viimeisin päivitys</string>
     <string name="repo_name">Nimi</string>
     <string name="unknown">Tuntematon</string>
-    <string name="repo_added">Tallennettiin sovelluslähde %1$s.</string>
-    <string name="not_on_same_wifi">Laitteesi ei ole samassa Wi-Fi-verkossa kuin juuri lisäämäsi paikallinen sovelluslähde! Kokeile liittyä verkkoon: %s</string>
+    <string name="repo_added">Tallennettiin ohjelmavarasto %1$s.</string>
+    <string name="not_on_same_wifi">Laitteesi ei ole samassa Wi-Fi-verkossa kuin juuri lisäämäsi paikallinen ohjelmavarasto! Kokeile liittyä verkkoon: %s</string>
     <string name="pref_language">Kieli</string>
     <string name="pref_language_default">Järjestelmän oletus</string>
     <string name="wifi">Wi-Fi</string>
@@ -200,14 +196,13 @@
     <string name="keep_install_history">Säilytä asennushistoria</string>
     <string name="keep_install_history_summary">Säilytä lokia kaikista asennuksista ja poistoista yksityisessä säilössä</string>
     <string name="update_auto_install_summary">Lataa ja päivitä sovellukset taustalla näyttäen ilmoitus</string>
-    <string name="malformed_repo_uri">Ohitetaan virheellisesti muodostettu sovelluslähteen URI: %s</string>
+    <string name="malformed_repo_uri">Ohitetaan virheellisesti muodostettu ohjelmavaraston URI: %s</string>
     <string name="antinonfreeassetslist">Tämä sovellus sisältää ei-vapaita resursseja</string>
     <string name="status_connecting_to_repo">Yhdistetään osoitteeseen
 \n%1$s</string>
     <string name="no_handler_app">Sinulla ei ole yhtään sovellusta, joka voi käsitellä %s.</string>
     <string name="repo_fingerprint">Allekirjoitusvarmenteen sormenjälki (SHA-256)</string>
-    <string name="repo_searching_address">Etsitään sovelluslähdettä osoitteesta
-\n%1$s</string>
+    <string name="repo_searching_address">Etsitään ohjelmavarastoa osoitteesta \n%1$s</string>
     <string name="category_Connectivity">Yhteydet</string>
     <string name="category_Graphics">Grafiikka</string>
     <string name="empty_installed_app_list">Ei asennettuja sovelluksia.
@@ -262,7 +257,7 @@
 \n%1$s</string>
     <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia! Luo virheraportti!</string>
     <string name="versions">Versiot</string>
-    <string name="warning_no_internet">Ei voida päivittää. Oletko yhteydessä Internetiin\?</string>
+    <string name="warning_no_internet">Ei voida päivittää. Oletko yhteydessä Internetiin?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
     <string name="app_version_x_installed">Versio %1$s</string>
     <string name="app_recommended_version_installed">Versio %1$s (suositeltu)</string>
@@ -279,7 +274,7 @@
         <item quantity="other">Lataa päivitykset %1$d sovellukseen:</item>
     </plurals>
     <string name="clear_search">Tyhjennä haku</string>
-    <string name="repositories_summary">Lisää muita sovelluslähteitä</string>
+    <string name="repositories_summary">Lisää muita ohjelmavarastoja</string>
     <string name="menu_video">Video</string>
     <string name="main_menu__latest_apps">Uusimmat</string>
     <string name="main_menu__categories">Luokat</string>
@@ -290,7 +285,7 @@
     <string name="preference_manage_installed_apps">Hallitse asennettuja sovelluksia</string>
     <string name="details_new_in_version">Uutta versiossa %s</string>
     <string name="antifeatureswarning">Tässä sovelluksessa on ominaisuuksia, joista et ehkä pidä.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Ei verkkoyhteyttä\? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Ei verkkoyhteyttä? Hanki sovelluksia lähellä olevilta ihmisiltä!</string>
     <string name="nearby_splash__find_people_button">Etsi lähellä olevia ihmisiä</string>
     <string name="notification_title_single_update_available">Päivitys saatavilla</string>
     <string name="notification_title_single_ready_to_install">Valmis asennettavaksi</string>
@@ -322,7 +317,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Version %1$s päivitykset sivuutetaan</string>
     <string name="updates__tts__download_app">Lataa</string>
     <string name="main_menu__swap_nearby">Lähellä</string>
-    <string name="latest__empty_state__no_enabled_repos">Kun otat sovelluslähteen käyttöön ja annat sen päivittyä, uusimpien sovelluksien pitäsi näkyä tässä</string>
+    <string name="latest__empty_state__no_enabled_repos">Kun otat ohjelmavaraston käyttöön ja annat sen päivittyä, uusimpien sovelluksien pitäsi näkyä tässä</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Näytä yksi</item>
         <item quantity="other">Näytä kaikki %d</item>
@@ -342,7 +337,7 @@
     <string name="over_wifi">Wi-Fi-yhteydellä</string>
     <string name="over_data">Mobiilidatayhteydellä</string>
     <string name="over_network_always_summary">Käytä aina tätä yhteyttä, kun se on saatavilla</string>
-    <string name="over_network_on_demand_summary">Käytä tätä yhteyttä vain, kun klikkaan \'Lataa\'</string>
+    <string name="over_network_on_demand_summary">Käytä tätä yhteyttä vain, kun napsautan \'Lataa\'</string>
     <string name="over_network_never_summary">Älä koskaan lataa mitään käyttäen tätä yhteyttä</string>
     <string name="app_details__no_versions__no_compatible_signers">Ei versioita yhteensopivalla allekirjoittajalla</string>
     <string name="app_details__no_versions__none_compatible_with_device">Ei laitteen kanssa yhteensopivia versioita</string>
@@ -357,10 +352,10 @@
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Löysimme haavoittuvuuden %1$s-sovelluksesta. Kosketa ja lue lisää Haittaominaisuudet-kohdasta.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Löysimme haavoittuvuuden %1$s-sovelluksesta. Suosittelemme päivittämään heti uusimpaan versioon.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Sivuuta</string>
-    <string name="repo_add_mirror">Lisää toisiopalvelin</string>
+    <string name="repo_add_mirror">Lisää peilipalvelin</string>
     <string name="sort_search">Lajittele haku</string>
     <string name="repo_exists_and_enabled">%1$s on jo asennettu ja käytössä.</string>
-    <string name="repo_exists_add_mirror">Tämä on lähteen %1$s kopio, lisätäänkö toisiopalvelimena?</string>
+    <string name="repo_exists_add_mirror">Tämä on lähteen %1$s kopio, lisätäänkö peilipalvelimena?</string>
     <string name="menu_license">Lisenssi: %s</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="antidisabledalgorithmlist">Tällä sovelluksella on heikko turvallisuusallekirjoitus</string>
@@ -396,8 +391,8 @@
     <string name="hide_on_long_search_press_summary">Hakunapin pitäminen pohjassa piilottaa sovelluksen</string>
     <string name="download_404">Pyydettyä tiedostoa ei löytynyt.</string>
     <string name="status_inserting_x_apps">Tallennetaan sovellusten tietoja (%1$d/%2$d) lähteestä %3$s</string>
-    <string name="repo_official_mirrors">Viralliset toisiopalvelimet</string>
-    <string name="repo_user_mirrors">Käyttäjien toisiopalvelimet</string>
+    <string name="repo_official_mirrors">Viralliset peilipalvelimet</string>
+    <string name="repo_user_mirrors">Käyttäjien peilipalvelimet</string>
     <string name="use_bluetooth">Käytä Bluetoothia</string>
     <string name="swap_toast_invalid_url">Virheellinen URL vaihtamiselle: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi-tukiasema käytössä</string>
@@ -408,11 +403,11 @@
         <item quantity="other">+%1$d lisää…</item>
     </plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="one">Yksi päivitys</item>
+        <item quantity="one">%1$d päivitys</item>
         <item quantity="other">%1$d päivitystä</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">Yksi sovellus asennettu</item>
+        <item quantity="one">%1$d sovellus asennettu</item>
         <item quantity="other">%1$d sovellusta asennettu</item>
     </plurals>
     <string name="warning_scaning_qr_code">Kamerassasi ei näytä olevan automaattitarkennusta. Koodin lukeminen voi olla hankalaa.</string>
@@ -443,19 +438,19 @@
     <string name="app_size">Koko: %1$s</string>
     <string name="send_installed_apps">Jaa asennetut sovellukset</string>
     <string name="send_installed_apps_csv">Sovellukset, jotka F-Droid asentanut CSV-tiedostona</string>
-    <string name="updates_disabled_by_settings">Kaikki päivitykset on poistettu käytöstä Mobiilidata/WiFi-asetuksissa</string>
+    <string name="updates_disabled_by_settings">Kaikki päivitykset on poistettu käytöstä mobiilidata/Wi-Fi-asetuksissa</string>
     <string name="repo_exists_add_fingerprint">%1$s on jo asennettu. Tämä lisää uuden avaimen tiedot.</string>
     <string name="repo_exists_enable">%1$s on jo asennettu. Vahvista, että haluat ottaa sen käyttöön uudelleen.</string>
     <string name="repo_delete_to_overwrite">Poista ensin %1$s lisätäksesi tämän, jossa on ristiriitainen avain.</string>
     <string name="menu_open">Avaa</string>
     <string name="antinosourcesince">Lähdekoodi ei ole enää saatavilla; päivityksiä ei ole mahdollista tehdä</string>
-    <string name="share_repository">Jaa sovelluslähde</string>
+    <string name="share_repository">Jaa ohjelmavarasto</string>
     <string name="scan_removable_storage_title">Lue irrotettava tallennusväline</string>
     <string name="scan_removable_storage_toast">Luetaan %s…</string>
-    <string name="scan_removable_storage_summary">Etsi sovelluslähteitä irrotettavasta tallennusvälineestä, kuten SD-korteilta ja USB-muistitikuilta</string>
+    <string name="scan_removable_storage_summary">Etsi ohjelmavarastoja irrotettavasta tallennusvälineestä, kuten SD-korteilta ja USB-muistitikuilta</string>
     <string name="menu_translation">Käännös</string>
     <string name="main_menu__updates">Päivitykset</string>
-    <string name="nearby_splash__read_external_storage">Etsi SD-kortilta sovelluslähteitä ja toisiopalvelimia.</string>
+    <string name="nearby_splash__read_external_storage">Etsi SD-kortilta ohjelmavarastoja ja peilipalvelimia.</string>
     <string name="nearby_splash__request_permission">Hae nyt</string>
     <string name="not_visible_nearby">Lähistöllä ei ole käytössä</string>
     <string name="not_visible_nearby_description">Ennen kuin vaihdat lähistöllä olevien laitteiden kanssa, tee laitteesi näkyväksi.</string>
@@ -472,8 +467,8 @@
     <string name="panic_will_be_wiped">Asennus ja kaikki data poistetaan</string>
     <string name="panic_apps_to_uninstall">Sovellukset, jotka poistetaan ja joiden data pyyhitään</string>
     <string name="panic_add_apps_to_uninstall">Lisää sovelluksia poistettavaksi ja pyyhittäväksi</string>
-    <string name="panic_reset_repos_title">Nollaa sovelluslähteesi</string>
-    <string name="panic_reset_repos_summary">Pakota sovelluslähdeasetukset takaisin oletukseksi</string>
+    <string name="panic_reset_repos_title">Nollaa ohjelmavarastot</string>
+    <string name="panic_reset_repos_summary">Pakota ohjelmavarastoasetukset takaisin oletukseksi</string>
     <string name="swap_visible_hotspot">Näkyvä muille tukiaseman kautta</string>
     <string name="swap_setting_up_hotspot">Määritetään tukisasemaa…</string>
     <string name="swap_stopping_hotspot">Pysäytetään tukiasema…</string>
@@ -481,10 +476,10 @@
     <string name="swap_stopping">Pysäytetään…</string>
     <string name="swap_error_cannot_start_bluetooth">Bluetoothia ei voitu käynnistää!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Lähellä on suljettu, koska se oli toimettomana.</string>
-    <string name="nearby_splash__document_tree">Etsi USB OTG:ltä sovelluslähteitä ja toisiopalvelimia.</string>
+    <string name="nearby_splash__document_tree">Etsi USB OTG:ltä ohjelmavarastoja ja peilipalvelimia.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_title">Vaihdot</string>
-    <string name="notification_channel_updates_description">Näyttää sovelluksen ja sovelluslähteen päivitysilmoitukset.</string>
+    <string name="notification_channel_updates_description">Näyttää sovelluksen ja ohjelmavaraston päivitysilmoitukset.</string>
     <string name="notification_channel_updates_title">Päivitykset</string>
     <string name="notification_channel_swaps_description">Näyttää P2P-sovelluksenvaihtoilmoitukset.</string>
     <string name="notification_channel_installs_description">Näyttää sovelluksen asennusilmoitukset.</string>
@@ -494,19 +489,19 @@
     <string name="theme_follow_system">Sama kuin järjestelmässä</string>
     <string name="share_apk_error">Ei voitu jakaa sovellustiedostoa</string>
     <string name="banner_no_data_or_wifi">Ei dataa tai WiFiä käytössä</string>
-    <string name="banner_no_internet">Ei internet-yhteyttä</string>
+    <string name="banner_no_internet">Ei Internet-yhteyttä</string>
     <string name="menu_show_install_history">Näytä asennushistoria</string>
     <string name="menu_show_fdroid_metrics_report">Näytä raportti</string>
     <string name="send_to_fdroid_metrics_summary">Lähetä anonyymiä dataa viikottain F-Droid Metricsille (vaatii asennushistorian säilyttämisen)</string>
     <string name="send_to_fdroid_metrics">Lähetä käyttödataa</string>
     <string name="install_history_and_metrics">Asennushistoria ja tilastot</string>
-    <string name="toast_metrics_in_install_history">%s analytiikkaraportti on nähtävillä asennushistorian näkymässä</string>
-    <string name="fdroid_metrics_report">%s analytiikkaraportti</string>
+    <string name="toast_metrics_in_install_history">%s-analytiikkaraportti on nähtävillä asennushistorian näkymässä</string>
+    <string name="fdroid_metrics_report">%s-analytiikkaraportti</string>
     <string name="send_fdroid_metrics_json">%s-analytiikkaraportti JSON-tiedostona</string>
     <string name="send_fdroid_metrics_report">Lähetä %s-analytiikkaraportti</string>
     <string name="swap_wifi_vpn_conflict">Ristiriidassa aktiivisen VPN:n kanssa!</string>
-    <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet sovelluslähteet</string>
-    <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet sovelluslähteet</string>
+    <string name="has_disallow_install_unknown_sources">Tämä käyttäjä ei voi lisätä tuntemattomia lähteitä, mukaan lukien uudet ohjelmavarastot</string>
+    <string name="has_disallow_install_unknown_sources_globally">Laitteesi järjestelmänvalvoja ei salli sovellusten asentamista tuntemattomista lähteistä, mukaan lukien uudet ohjelmavarastot</string>
     <string name="antinonfreedep">Ei-vapaat riippuvuudet</string>
     <string name="app_list_results_hidden_antifeature_settings">Joitakin sovelluksia on piilotettu haittaominaisuusasetusten perusteella. Muuta koskettamalla.</string>
     <string name="antiads">Mainokset</string>
@@ -528,7 +523,7 @@
     <string name="antinsfwlist">Sovellus sisältää sisältöä, joka ei sovi näkyville joka paikkaan</string>
     <string name="app_error_open">Sovellusta ei voitu käynnistää.</string>
     <string name="about_title_basic">Tietoja F-Droid Basicista</string>
-    <string name="repo_add_new_title">Lisää sovelluslähde</string>
+    <string name="repo_add_new_title">Lisää ohjelmavarasto</string>
     <string name="repo_add_new_mirror">Lataa uutena peilipalvelimena</string>
     <string name="app_name_basic">F-Droidin alkeet</string>
     <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
@@ -569,34 +564,32 @@
     <string name="paste">Liitä</string>
     <string name="app_details_repository_preferred">(ensisijainen)</string>
     <string name="app_details_repository_button_prefer">Aseta ensisijaiseksi</string>
-    <string name="app_details_repository_expand">Laajenna tietovarastoluettelo</string>
-    <string name="repo_list_info_text">Tietovarasto on sovellusten lähde. Tämä luettelo näyttää kaikki tällä hetkellä lisätyt tietovarastot. Poistettuja tietovarastoja ei käytetä.
-\n
-\nJos sovellus on useammassa kuin yhdessä tietovarastossa, luettelossa ylempänä olevaa tietovarastoa pidetään automaattisesti parempana. Voit järjestää tietovarastot uudelleen painamalla niitä pitkään ja vetämällä niitä.</string>
-    <string name="repo_archive_failed">Tietovarastoarkisto ei tällä hetkellä ole käytettävissä</string>
-    <string name="ipfsgw_explainer">Lataa sovelluksia IPFS-verkkopäätepisteistä. (Toimii vain F-Droid-tietovarastoissa, joissa on IPFS-tuki.)</string>
-    <string name="repo_list_info_title">Tietovarastoluettelo</string>
-    <string name="repo_archive_toggle">Tietovarastoarkisto</string>
-    <string name="repo_disable_warning">Tämän tietovaraston poistaminen käytöstä poistaa sen \"ensisijaisen\" tilan kaikista sovelluksista.</string>
+    <string name="app_details_repository_expand">Laajenna ohjelmavarastoluettelo</string>
+    <string name="repo_list_info_text">Ohjelmavarasto on sovellusten lähde. Tämä luettelo näyttää kaikki tällä hetkellä lisätyt ohjelmavarastot. Poistettuja ohjelmavarastoja ei käytetä.\n \nJos sovellus on useammassa kuin yhdessä ohjelmavarastossa, luettelossa ylempänä olevaa ohjelmavarastoa pidetään automaattisesti ensisijaisena. Voit järjestää ohjelmavarastot uudelleen painamalla niitä pitkään ja vetämällä niitä.</string>
+    <string name="repo_archive_failed">Ohjelmavarastoarkisto ei ole tällä hetkellä käytettävissä</string>
+    <string name="ipfsgw_explainer">Lataa sovelluksia IPFS-verkkopäätepisteistä. (Toimii vain F-Droid-ohjelmavarastoissa, joissa on IPFS-tuki.)</string>
+    <string name="repo_list_info_title">Ohjelmavarastoluettelo</string>
+    <string name="repo_archive_toggle">Ohjelmavarastoarkisto</string>
+    <string name="repo_disable_warning">Tämän ohjelmavaraston poistaminen käytöstä poistaa sen \"ensisijaisen\" tilan kaikista sovelluksista.</string>
     <string name="ipfsgw_summary_disabled">Lataa sovelluksia IPFS-verkkopäätepisteiden avulla: pois käytöstä</string>
     <plurals name="ipfsgw_summary">
         <item quantity="one">Lataa sovelluksia IPFS-verkkopäätepisteen avulla: %1$d käytössä</item>
         <item quantity="other">Lataa sovelluksia IPFS-verkkopäätepisteiden avulla: %1$d käytössä</item>
     </plurals>
-    <string name="app_details_repository">Tietovarasto</string>
-    <string name="app_details_repositories">Tietovarastot</string>
-    <string name="repo_error_adding_archive">Tietovarastoja ei voi lisätä suoraan. Napauta luettelossa olevaa tietovarastoa ja ota tietovarasto käyttöön siellä.</string>
-    <string name="repo_share_not_found">Tietovaraston osoitetta ei löytynyt jaetusta tekstistä.</string>
+    <string name="app_details_repository">Ohjelmavarasto</string>
+    <string name="app_details_repositories">Ohjelmavarastot</string>
+    <string name="repo_error_adding_archive">Ohjelmavarastoja ei voi lisätä suoraan. Napauta luettelossa olevaa ohjelmavarastoa ja ota ohjelmavarasto käyttöön siellä.</string>
+    <string name="repo_share_not_found">Ohjelmavaraston osoitetta ei löytynyt jaetusta tekstistä.</string>
     <string name="repo_scan_qr_code">Lue QR-koodi</string>
     <string name="repo_preview_included_apps">Sisältyvät sovellukset:</string>
     <string name="repo_add_repo_and_mirror">Lisää ohjelmavarasto ja peilipalvelin</string>
     <string name="repo_mirror_exists">Tämä peilipalvelin on jo lisätty (%s).</string>
     <string name="antitetherednetlist">Tämä sovellus riippuu täysin tietystä verkkopalvelun esiintymästä</string>
     <string name="auto_update_time_past">Seuraava päivitys, kun ehdot täyttyvät</string>
-    <string name="warning_no_compat_versions">Valitulla tietovarastolla ei ole yhteensopivia sovellusversioita. Jos haluat vastaanottaa päivityksiä, valitse tietovarasto, jossa on yhteensopivia versioita.</string>
-    <string name="repo_view_repo">Näytä tietovarasto</string>
-    <string name="repo_mirror_add_info">URL, jota yrität lisätä (%s) on olemassa olevan tietovaraston peili.</string>
-    <string name="repo_and_mirror_add_both_info">URL, jota yrität lisätä (%s) on uuden tietovaraston peili. Sekä alkuperäinen tietovarasto että peili lisätään.</string>
+    <string name="warning_no_compat_versions">Valitulla ohjelmavarastolla ei ole yhteensopivia sovellusversioita. Jos haluat vastaanottaa päivityksiä, valitse ohjelmavarasto, jossa on yhteensopivia versioita.</string>
+    <string name="repo_view_repo">Näytä ohjelmavarasto</string>
+    <string name="repo_mirror_add_info">URL, jota yrität lisätä (%s) on olemassa olevan ohjelmavaraston peili.</string>
+    <string name="repo_and_mirror_add_both_info">URL, jota yrität lisätä (%s) on uuden ohjelmavaraston peili. Sekä alkuperäinen ohjelmavarasto että peili lisätään.</string>
     <string name="auto_update_time">Aikaisin seuraava päivitys: %s</string>
     <string name="antitetherednet">Jaettut verkkopalvelut</string>
     <string name="menu_share_apk">Jaa APK-tiedosto</string>
@@ -604,4 +597,18 @@
     <string name="swap_bluetooth_permissions">Anna Bluetooth- tai Lähellä oleva laite -käyttöoikeus!</string>
     <string name="preferForeign">Suosi ulkomaisia peilejä</string>
     <string name="preferForeignSummary">Kokeile ensin peilejä, jotka sijaitsevat maasi ulkopuolella, esim. jos ulkomaiset suojat ovat vahvempia.</string>
+    <string name="no_handler_app_generic">Sinulla ei ole saatavilla olevaa sovellusta, joka voisi käsitellä tätä.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 sovellus</item>
+        <item quantity="other">%d sovellusta</item>
+    </plurals>
+    <string name="repo_basic_auth_username">Käyttäjätunnus: %s</string>
+    <string name="repo_basic_auth_password">Salasana: ***</string>
+    <string name="repo_basic_auth_edit">Muokkaa</string>
+    <string name="show_repository_qr">Näytä ohjelmavaraston QR-koodi</string>
+    <string name="repo_confirm_delete_mirror_title">Poistetaanko peilipalvelin?</string>
+    <string name="share_mirror">Jaa peilipalvelin</string>
+    <string name="repo_last_update_index">Viimeisin ohjelmavaraston päivitys: %s</string>
+    <string name="expand">Laajenna</string>
+    <string name="collapse">Supista</string>
 </resources>

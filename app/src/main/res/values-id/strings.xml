@@ -14,9 +14,9 @@
     <string name="notify_on">Tampilkan notifikasi ketika pembaruan telah tersedia</string>
     <string name="system_installer_on">Gunakan Ekstensi Istimewa untuk memasang, memperbarui, dan menghapus paket</string>
     <string name="local_repo_name">Nama Repo Lokal Anda</string>
-    <string name="local_repo_name_summary">Judul repo lokal Anda yang diiklankan: %s</string>
-    <string name="local_repo_https_on">Gunakan koneksi HTTPS:// terenkripsi untuk repo lokal</string>
-    <string name="app_details">Detail Aplikasi</string>
+    <string name="local_repo_name_summary">Judul Repo Lokal Anda yang diiklankan: %s</string>
+    <string name="local_repo_https_on">Gunakan koneksi HTTPS:// terenkripsi untuk Repo Lokal</string>
+    <string name="app_details">Detail aplikasi</string>
     <string name="no_such_app">Tidak ditemukan aplikasi yang serupa.</string>
     <string name="about_title_full">Tentang F-Droid</string>
     <string name="about_version">Versi</string>
@@ -24,7 +24,7 @@
     <string name="about_source">Kode sumber</string>
     <string name="app_incompatible">Tidak kompatibel</string>
     <string name="app_installed">Terpasang</string>
-    <string name="app_not_installed">Tidak Terpasang</string>
+    <string name="app_not_installed">Tidak terpasang</string>
     <string name="app_inst_known_source">Terpasang (dari %s)</string>
     <string name="app_inst_unknown_source">Terpasang (dari sumber tidak dikenal)</string>
     <string name="added_on">Ditambahkan pada %s</string>
@@ -39,7 +39,7 @@
     <string name="back">Kembali</string>
     <string name="cancel">Batalkan</string>
     <string name="enable">Aktif</string>
-    <string name="add_key">Tambahkan Kunci</string>
+    <string name="add_key">Tambahkan kunci</string>
     <string name="overwrite">Timpa</string>
     <string name="bluetooth_activity_not_found">Tidak ditemukan metode pengiriman Bluetooth, pilih salah satu!</string>
     <string name="choose_bt_send">Pilih metode pengiriman Bluetooth</string>
@@ -50,17 +50,17 @@
     <string name="malformed_repo_uri">Mengabaikan format URI repo yang salah: %s</string>
     <string name="menu_manage">Repositori</string>
     <string name="menu_search">Telusuri</string>
-    <string name="menu_add_repo">Repositori Baru</string>
+    <string name="menu_add_repo">Repositori baru</string>
     <string name="menu_launch">Buka</string>
     <string name="menu_share">Bagikan</string>
     <string name="menu_install">Pasang</string>
     <string name="menu_uninstall">Copot</string>
-    <string name="menu_ignore_all">Abaikan Semua Pembaruan</string>
-    <string name="menu_ignore_this">Abaikan Pembaruan Ini</string>
+    <string name="menu_ignore_all">Abaikan semua pembaruan</string>
+    <string name="menu_ignore_this">Abaikan pembaruan ini</string>
     <string name="menu_website">Situs Web</string>
     <string name="menu_issues">Masalah</string>
     <string name="menu_changelog">Catatan Perubahan</string>
-    <string name="menu_source">Kode Sumber</string>
+    <string name="menu_source">Kode sumber</string>
     <string name="menu_upgrade">Perbarui</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -89,11 +89,11 @@
     <string name="next">Berikutnya</string>
     <string name="skip">Lewati</string>
     <string name="proxy">Proxy</string>
-    <string name="enable_proxy_title">Aktifkan Proxy HTTP</string>
-    <string name="enable_proxy_summary">Konfigurasikan Proxy HTTP untuk semua permintaan jaringan</string>
-    <string name="proxy_host">Host Proxy</string>
+    <string name="enable_proxy_title">Aktifkan proksi HTTP</string>
+    <string name="enable_proxy_summary">Konfigurasikan proksi HTTP untuk semua permintaan jaringan</string>
+    <string name="proxy_host">Hos proksi</string>
     <string name="proxy_host_summary">Nama host proxy Anda (mis. 127.0.0.1)</string>
-    <string name="proxy_port">Port Proxy</string>
+    <string name="proxy_port">Porta proksi</string>
     <string name="proxy_port_summary">Nomor port proxy Anda (mis. 8118)</string>
     <string name="status_download">Mengunduh
 \n%2$s / %3$s (%4$d%%) dari
@@ -125,7 +125,7 @@
     <string name="repo_not_yet_updated">Repositori ini belum digunakan.
         Anda harus mengaktifkannya untuk melihat aplikasi yang disediakan.
     </string>
-    <string name="repo_confirm_delete_title">Hapus Repositori?</string>
+    <string name="repo_confirm_delete_title">Hapus repositori?</string>
     <string name="repo_confirm_delete_body">Menghapus repositori artinya aplikasi dari repositori tersebut tidak akan tersedia lagi.
 \n
 \nCatatan: Semua aplikasi yang terpasang sebelumnya akan tetap ada di perangkat Anda.</string>
@@ -135,12 +135,12 @@
     <string name="login_title">Diperlukan autentikasi</string>
     <string name="login_name">Nama pengguna</string>
     <string name="login_password">Kata Sandi</string>
-    <string name="repo_edit_credentials">Ubah Kata Sandi</string>
+    <string name="repo_edit_credentials">Ubah kata sandi</string>
     <string name="repo_error_empty_username">Nama pengguna kosong, kredensial tidak berubah</string>
     <string name="about_license">Lisensi</string>
     <string name="local_repo_running">F-Droid siap bertukar</string>
     <string name="system_installer">Ekstensi Istimewa</string>
-    <string name="menu_email">Pembuat Email</string>
+    <string name="menu_email">Kirim e-mail ke pembuat</string>
     <string name="antinonfreeassetslist">Aplikasi ini mengandung aset non-bebas</string>
     <string name="touch_to_configure_local_repo">Sentuh untuk melihat detail dan izinkan orang lain untuk menukar aplikasi Anda.</string>
     <string name="useTor">Gunakan Tor</string>
@@ -154,10 +154,10 @@
     <string name="repo_added">Menyimpan paket Repositori %1$s.</string>
     <string name="repo_searching_address">Mencari repositori paket di
 \n%1$s</string>
-    <string name="not_on_same_wifi">Perangkat Anda tidak berada pada jaringan Wi-Fi yang sama dengan repo lokal yang baru saja anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
+    <string name="not_on_same_wifi">Perangkat Anda tidak berada dalam jaringan Wi-Fi yang sama dengan Repo Lokal yang baru saja Anda tambahkan! Coba bergabung dengan jaringan ini: %s</string>
     <string name="requires_features">Memerlukan: %1$s</string>
     <string name="pref_language">Bahasa</string>
-    <string name="pref_language_default">Ikuti Sistem Perangkat</string>
+    <string name="pref_language_default">Bawaan perangkat</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Konektivitas</string>
@@ -187,7 +187,7 @@
     <string name="uninstall_error_unknown">Gagal menghapus karena kesalahan yang tidak diketahui</string>
     <string name="system_install_denied_permissions">Izin khusus belum diberikan ke ekstensi! Harap laporkan error!</string>
     <string name="swap_join_same_wifi">Gabung ke Wi-Fi yang sama dengan teman Anda</string>
-    <string name="swap_join_same_wifi_desc">Untuk bertukar menggunakan Wi-Fi, pastikan Anda berada pada jaringan yang sama. Jika Anda tidak memiliki akses ke jaringan yang sama, salah satu dari kalian dapat membuat Hotspot Wi-Fi.</string>
+    <string name="swap_join_same_wifi_desc">Untuk bertukar menggunakan Wi-Fi, pastikan Anda berada pada jaringan yang sama. Jika Anda tidak memiliki akses ke jaringan yang sama, salah satu dari kalian dapat membuat hotspot Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Bantu teman Anda bergabung ke hotspot Anda</string>
     <string name="swap">Bertukar aplikasi</string>
     <string name="swap_success">Pertukaran berhasil!</string>
@@ -195,16 +195,16 @@
     <string name="swap_active_hotspot">%1$s (hotspot Anda)</string>
     <string name="swap_view_available_networks">Ketuk untuk melihat jaringan yang tersedia</string>
     <string name="swap_switch_to_wifi">Ketuk untuk beralih ke jaringan Wi-Fi</string>
-    <string name="open_qr_code_scanner">Buka Pemindai QR</string>
+    <string name="open_qr_code_scanner">Buka pemindai QR</string>
     <string name="swap_welcome">Selamat datang di F-Droid!</string>
     <string name="swap_confirm_connect">Apakah Anda ingin mengambil aplikasi dari %1$s sekarang\?</string>
     <string name="swap_dont_show_again">Jangan tampilkan lagi</string>
     <string name="swap_scan_or_type_url">Salah satu orang harus memindai kode, atau mengetik URL-nya pada browser.</string>
-    <string name="swap_choose_apps">Pilih Aplikasi</string>
+    <string name="swap_choose_apps">Pilih aplikasi</string>
     <string name="swap_scan_qr">Kode QR</string>
-    <string name="swap_people_nearby">Orang Di Sekitar</string>
+    <string name="swap_people_nearby">Orang-orang di sekitar</string>
     <string name="swap_scanning_for_peers">Menelusuri orang di sekitar…</string>
-    <string name="swap_nearby">Bertukar Di Sekitar</string>
+    <string name="swap_nearby">Bertukar di sekitar</string>
     <string name="swap_intro">Sambungkan dan saling bertukar aplikasi dengan orang-orang di sekitar Anda.</string>
     <string name="swap_visible_bluetooth">Terlihat melalui Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Menyiapkan Bluetooth…</string>
@@ -250,11 +250,11 @@
     <string name="update_auto_download">Otomatis unduh pembaruan</string>
     <string name="update_auto_download_summary">Pembaruan diunduh secara otomatis dan Anda akan diberi tahu untuk memasangnya</string>
     <string name="download_pending">Menunggu untuk mulai mengunduh…</string>
-    <string name="keep_hour">1 Jam</string>
-    <string name="keep_day">1 Hari</string>
-    <string name="keep_week">1 Minggu</string>
-    <string name="keep_month">1 Bulan</string>
-    <string name="keep_year">1 Tahun</string>
+    <string name="keep_hour">1 jam</string>
+    <string name="keep_day">1 hari</string>
+    <string name="keep_week">1 minggu</string>
+    <string name="keep_month">1 bulan</string>
+    <string name="keep_year">1 tahun</string>
     <string name="keep_forever">Selamanya</string>
     <string name="install_error_notify_title">Kesalahan memasang %s</string>
     <string name="uninstall_error_notify_title">Kesalahan menghapus %s</string>
@@ -264,14 +264,14 @@
     <string name="keep_install_history_summary">Simpan catatan semua pemasangan dan pencopotan di dalam penyimpanan privat</string>
     <string name="update_auto_install">Otomatis memasang pembaruan</string>
     <string name="update_auto_install_summary">Mengunduh dan memperbarui aplikasi di latar belakang, akan menampilkan notifikasi</string>
-    <string name="warning_no_internet">Tidak bisa memperbarui, apakah anda tersambung ke Internet\?</string>
+    <string name="warning_no_internet">Tidak bisa memperbarui, apakah Anda tersambung ke internet?</string>
     <string name="versions">Versi</string>
     <string name="app_details_donate_prompt">%1$s dibuat oleh %2$s. Belikan mereka kopi!</string>
     <string name="repositories_summary">Tambahkan sumber tambahan aplikasi</string>
-    <string name="notification_title_single_update_available">Pembaruan Tersedia</string>
+    <string name="notification_title_single_update_available">Pembaruan tersedia</string>
     <string name="notification_title_single_ready_to_install">Siap untuk dipasang</string>
     <string name="notification_title_single_ready_to_install_update">Pembaruan siap untuk dipasang</string>
-    <string name="notification_title_single_install_error">Pemasangan Gagal</string>
+    <string name="notification_title_single_install_error">Pemasangan gagal</string>
     <string name="notification_content_single_downloading">Mengunduh \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Mengunduh pembaruan untuk \"%1$s\"…</string>
     <string name="notification_content_single_installing">Memasang \"%1$s\"…</string>
@@ -283,7 +283,7 @@
     <string name="notification_title_summary_ready_to_install_update">Pembaruan siap untuk pasang</string>
     <string name="notification_title_summary_installing">Memasang</string>
     <string name="notification_title_summary_installed">Berhasil dipasang</string>
-    <string name="notification_title_summary_install_error">Pemasangan Gagal</string>
+    <string name="notification_title_summary_install_error">Pemasangan gagal</string>
     <string name="notification_action_update">Perbarui</string>
     <string name="notification_action_cancel">Batal</string>
     <string name="notification_action_install">Pasang</string>
@@ -297,12 +297,12 @@
         <item quantity="other">Lihat semua %d</item>
     </plurals>
     <string name="main_menu__swap_nearby">Di Sekitar</string>
-    <string name="app_recommended_version_installed">Versi %1$s (Disarankan)</string>
+    <string name="app_recommended_version_installed">Versi %1$s (disarankan)</string>
     <string name="app_new">Baru</string>
     <string name="app_list__name__downloading_in_progress">Mengunduh %1$s</string>
-    <string name="installed_apps__activity_title">Aplikasi Yang Terpasang</string>
+    <string name="installed_apps__activity_title">Aplikasi terpasang</string>
     <string name="installed_app__updates_ignored">Pembaruan diabaikan</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Pembaruan diabaikan untuk Versi %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Pembaruan diabaikan untuk versi %1$s</string>
     <string name="updates__tts__download_app">Unduh</string>
     <string name="update_all">Perbarui semua</string>
     <string name="updates__hide_updateable_apps">Sembunyikan aplikasi</string>
@@ -315,7 +315,7 @@
     <plurals name="tts_view_all_in_category">
         <item quantity="other">Lihat keseluruhan %1$d aplikasi dari kategori %2$s</item>
     </plurals>
-    <string name="preference_category__my_apps">Aplikasi Saya</string>
+    <string name="preference_category__my_apps">Aplikasi saya</string>
     <string name="app__install_downloaded_update">Perbarui</string>
     <string name="details_new_in_version">Apa yang baru dalam versi %s</string>
     <string name="antifeatureswarning">Aplikasi ini memiliki fitur yang mungkin Anda tidak sukai.</string>
@@ -324,7 +324,7 @@
         <item quantity="other">Diperbarui %1$d hari yang lalu</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s terpasang</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada Internet\? Dapatkan aplikasi dari orang-orang di sekitar Anda!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Tidak ada internet? Dapatkan aplikasi dari orang-orang di sekitar Anda!</string>
     <string name="nearby_splash__find_people_button">Temukan orang di sekitar</string>
     <string name="nearby_splash__both_parties_need_fdroid">Kedua pihak memerlukan %1$s untuk menggunakan fitur di sekitar.</string>
     <string name="latest__empty_state__no_recent_apps">Tidak ditemukan aplikasi terbaru</string>
@@ -340,10 +340,10 @@
         <item quantity="other">+%1$d lainnya…</item>
     </plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="other">%1$d Pembaruan</item>
+        <item quantity="other">%1$d pembaruan</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="other">%1$d Aplikasi Terpasang</item>
+        <item quantity="other">%1$d aplikasi terpasang</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="other">Diperbarui %1$d minggu yang lalu</item>
@@ -376,18 +376,18 @@
     <string name="privacy">Privasi</string>
     <string name="preventScreenshots_title">Cegah screenshot</string>
     <string name="preventScreenshots_summary">Blokir pengambilan screenshoot dan sembunyikan konten aplikasi dari layar ringkasan aplikasi baru-baru ini</string>
-    <string name="panic_app_setting_title">Aplikasi Tombol Panik</string>
+    <string name="panic_app_setting_title">Aplikasi tombol panik</string>
     <string name="panic_app_unknown_app">aplikasi tidak dikenal</string>
     <string name="panic_app_setting_summary">Tidak ada aplikasi yang disetel</string>
     <string name="panic_app_setting_none">Tidak ada</string>
-    <string name="panic_app_dialog_title">Konfirmasi Aplikasi Panik</string>
+    <string name="panic_app_dialog_title">Konfirmasi aplikasi panik</string>
     <string name="panic_app_dialog_message">Apakah Anda yakin ingin mengizinkan %1$s untuk mengaktifkan tindakan destruktif tombol panik\?</string>
     <string name="allow">Izinkan</string>
     <string name="panic_settings">Setelan tombol panik</string>
     <string name="panic_settings_summary">Tindakan yang akan diambil dalam keadaan darurat</string>
     <string name="panic_exit_title">Keluar aplikasi</string>
     <string name="panic_exit_summary">Aplikasi ini akan ditutup</string>
-    <string name="panic_destructive_actions">Tindakan Destruktif</string>
+    <string name="panic_destructive_actions">Tindakan destruktif</string>
     <string name="panic_hide_title">Sembunyikan %s</string>
     <string name="panic_hide_summary">Aplikasi akan sembunyi dengan sendirinya</string>
     <string name="sort_search">Urutkan hasil penelusuran</string>
@@ -405,7 +405,7 @@
     <string name="panic_hide_warning_title">Ingat cara untuk memulihkan</string>
     <string name="panic_hide_warning_message">Saat keadaan panik, tindakan ini akan menghapus %1$s dari peluncur. Hanya mengetik \"%2$d\" di aplikasi %3$s yang palsu yang bisa memulihkannya.</string>
     <string name="hiding_calculator">Kalkulator</string>
-    <string name="hiding_dialog_title">Sembunyikan %s Sekarang</string>
+    <string name="hiding_dialog_title">Sembunyikan %s sekarang</string>
     <string name="hiding_dialog_message">Apakah Anda yakin ingin menghapus %1$s dari peluncur\? Hanya dengan mengetik \"%2$d\" di aplikasi %3$s yang palsu bisa memulihkannya.</string>
     <string name="hiding_dialog_warning">Peringatan: Pintasan aplikasi apapun di layar utama juga akan terhapus dan perlu ditambahkan kembali secara manual.</string>
     <string name="hide_on_long_search_press_title">Sembunyikan dengan tombol telusuri</string>
@@ -423,12 +423,12 @@
     <string name="use_bluetooth">Gunakan Bluetooth</string>
     <string name="swap_toast_invalid_url">URL untuk bertukar tidak valid: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Hotspot Wi-Fi diaktifkan</string>
-    <string name="swap_toast_could_not_enable_hotspot">Tidak bisa mengaktifkan Hotspot Wi-Fi!</string>
+    <string name="swap_toast_could_not_enable_hotspot">Tidak dapat mengaktifkan hotspot Wi-Fi!</string>
     <string name="prompt_to_send_crash_reports">Meminta pengiriman laporan mogok</string>
     <string name="prompt_to_send_crash_reports_summary">Kumpulkan data kemogokan dan minta agar dikirimkan ke pengembang</string>
     <string name="hide_all_notifications">Sembunyikan semua notifikasi</string>
     <string name="hide_all_notifications_summary">Cegah semua tindakan agar tidak tampil di status bar dan panel notifikasi.</string>
-    <string name="send_install_history">Kirim Riwayat Pemasangan</string>
+    <string name="send_install_history">Kirim riwayat pemasangan</string>
     <string name="send_history_csv">Riwayat pemasangan %s sebagai berkas CSV</string>
     <string name="install_history">Riwayat pemasangan</string>
     <string name="install_history_summary">Lihat log privat dari semua pemasangan dan pencopotan</string>
@@ -439,16 +439,16 @@
     <string name="app_size">Ukuran: %1$s</string>
     <string name="send_installed_apps">Bagikan aplikasi yang terpasang</string>
     <string name="send_installed_apps_csv">Aplikasi terpasang oleh F-Droid sebagai berkas CSV</string>
-    <string name="updates_disabled_by_settings">Semua pembaruan dinonaktifkan oleh Setelan Data/WiFi</string>
+    <string name="updates_disabled_by_settings">Semua pembaruan dinonaktifkan oleh pengaturan data/Wi-Fi</string>
     <string name="menu_open">Buka</string>
     <string name="antinosourcesince">Kode sumber tidak lagi tersedia, pembaruan tidak dapat dilakukan</string>
-    <string name="share_repository">Bagikan Repositori</string>
+    <string name="share_repository">Bagikan repositori</string>
     <string name="scan_removable_storage_title">Pindai penyimpanan portabel</string>
     <string name="scan_removable_storage_toast">Memindai %s…</string>
     <string name="main_menu__updates">Pembaruan</string>
     <string name="nearby_splash__request_permission">Cari sekarang</string>
     <string name="swap_toast_using_path">Menggunakan %1$s</string>
-    <string name="swap_toast_find_removeable_storage">Pilih Kartu SD atau USB portabel Anda</string>
+    <string name="swap_toast_find_removeable_storage">Pilih kartu SD atau USB portabel Anda</string>
     <string name="scan_removable_storage_summary">Mencari repo paket pada penyimpanan portabel seperti Kartu SD dan flash disk USB</string>
     <string name="menu_translation">Terjemahan</string>
     <string name="nearby_splash__read_external_storage">Menelusuri Kartu SD untuk repo dan mirror.</string>
@@ -484,18 +484,18 @@
     <string name="notification_channel_installs_title">Pemasangan</string>
     <string name="menu_show_install_history">Tampilkan riwayat pemasangan</string>
     <string name="menu_show_fdroid_metrics_report">Tampilkan laporan metrik</string>
-    <string name="toast_metrics_in_install_history">Laporan Metrik %s dapat dilihat dalam bagian Riwayat Pemasangan</string>
+    <string name="toast_metrics_in_install_history">Laporan Metrik %s dapat dilihat dalam penampil riwayat pemasangan</string>
     <string name="send_to_fdroid_metrics_summary">Kirim data perminggu secara anonim ke Metrik F-Droid (memerlukan Simpanan riwayat pemasangan)</string>
     <string name="send_to_fdroid_metrics">Kirim data penggunaan</string>
-    <string name="fdroid_metrics_report">Laporan Metrik %s</string>
+    <string name="fdroid_metrics_report">Laporan metrik %s</string>
     <string name="install_history_and_metrics">Riwayat pemasangan dan metrik</string>
     <string name="send_fdroid_metrics_json">Laporan metrik %s sebagai berkas JSON</string>
-    <string name="send_fdroid_metrics_report">Kirim Laporan Metrik %s</string>
+    <string name="send_fdroid_metrics_report">Kirim Laporan metrik %s</string>
     <string name="theme_follow_system">Ikuti sistem</string>
     <string name="use_pure_black_dark_theme_summary">Direkomendasikan hanya untuk layar OLED.</string>
     <string name="use_pure_black_dark_theme">Gunakan latar belakang hitam murni dalam tema gelap</string>
-    <string name="banner_no_data_or_wifi">Data atau WiFi tidak aktif</string>
-    <string name="banner_no_internet">Tanpa Internet</string>
+    <string name="banner_no_data_or_wifi">Data atau Wi-Fi tidak aktif</string>
+    <string name="banner_no_internet">Tidak ada internet</string>
     <string name="share_apk_error">Tidak dapat membagikan file aplikasi</string>
     <string name="has_disallow_install_unknown_sources">Sumber tidak dikenal tidak dapat ditambahkan oleh pengguna ini, termasuk repo baru</string>
     <string name="has_disallow_install_unknown_sources_globally">Admin perangkat Anda tidak mengizinkan pemasangan aplikasi dari sumber yang tidak dikenal, termasuk repo baru</string>
@@ -513,7 +513,7 @@
     <string name="antinosource">Kode Sumber Tidak Lagi Tersedia</string>
     <string name="antiothers">Anti-Fitur Lainnya</string>
     <string name="antinsfw">Tidak Aman untuk Kerja</string>
-    <string name="menu_release_channel_beta">Perbolehkan Pembaruan Beta</string>
+    <string name="menu_release_channel_beta">Perbolehkan pembaruan beta</string>
     <string name="latest__empty_state__upgrading">Meningkatkan basis data…</string>
     <string name="app_name_basic">F‐Droid Basic</string>
     <string name="antinsfwlist">Aplikasi ini berisi konten yang seharusnya tidak dipublikasikan atau terlihat di mana pun</string>
@@ -546,26 +546,26 @@
     <string name="copied_permission_to_clipboard">Nama perizinan disalin ke papan klip</string>
     <string name="copied_url_to_clipboard">URL disalin ke papan klip</string>
     <string name="app_details_repository">Repositori</string>
-    <string name="app_details_repository_button_prefer">Dipilih</string>
+    <string name="app_details_repository_button_prefer">Utamakan repositori</string>
     <string name="app_details_repository_expand">Buka daftar repositori</string>
     <string name="app_list_no_suggested_version">Tidak ada versi yang disarankan untuk pemasangan.</string>
     <string name="repo_share_not_found">Tidak dapat mencari alamat repositori dalam teks terbagi.</string>
-    <string name="repo_archive_toggle">Arsip Repositori</string>
+    <string name="repo_archive_toggle">Arsip repositori</string>
     <string name="repo_archive_failed">Repositori arsip saat ini tidak tersedia</string>
     <string name="repo_disable_warning">Menonaktifkan repositori ini akan menghilangkan status \"lebih disukai\" dari semua aplikasi.</string>
     <string name="targetsdk_or_later">sasaran %s</string>
     <string name="repo_disable_warning_button">Nonaktifkan</string>
     <string name="ipfsgw_explainer">Unduh aplikasi dari titik akhir web IPFS. (Hanya bekerja pada repositori F-Droid dengan dukungan IPFS.)</string>
-    <string name="repositories_last_update">Pembaruan Terakhir: %s</string>
-    <string name="repo_list_info_title">Daftar Repositori</string>
+    <string name="repositories_last_update">Pembaruan terakhir: %s</string>
+    <string name="repo_list_info_title">Daftar repositori</string>
     <string name="repo_archive_toggle_description">Tampilkan aplikasi terarsip dan versi lawas aplikasi</string>
     <plurals name="ipfsgw_summary">
         <item quantity="other">Unduh aplikasi menggunakan titik akhir web IPFS: %1$d diaktifkan</item>
     </plurals>
     <string name="paste">Tempel</string>
     <string name="ipfsgw_title">Gerbang IPFS</string>
-    <string name="ipfsgw_caption_custom_gateways">Gerbang IPFS Kustom</string>
-    <string name="useDnsCache">Gunakan Tembolok DNS</string>
+    <string name="ipfsgw_caption_custom_gateways">Gerbang IPFS kustom</string>
+    <string name="useDnsCache">Gunakan tembolok DNS</string>
     <string name="useDnsCacheSummary">Gunakan hasil dalam tembolok untuk meminimalkan kueri DNS.</string>
     <string name="app_details_repositories">Repositori</string>
     <string name="app_details_repository_preferred">(lebih disukai)</string>
@@ -575,12 +575,12 @@
 \n
 \nJika sebuah aplikasi dalam lebih dari satu repositori, yang tertinggi dalam daftar akan dipilih. Anda dapat mengurutkan ulang repositori dengan menekan lama dan menggesernya.</string>
     <string name="repo_num_apps_button">Tampilkan aplikasi</string>
-    <string name="ipfsgw_add_title">Tambahkan Gerbang IPFS</string>
+    <string name="ipfsgw_add_title">Tambahkan gerbang IPFS</string>
     <string name="ipfsgw_add_add">Tambahkan</string>
     <string name="ipfsgw_summary_disabled">Unduh aplikasi menggunakan titik akhir web IPFS: dinonaktifkan</string>
-    <string name="ipfsgw_caption_official_gateways">Gerbang IPFS Resmi</string>
+    <string name="ipfsgw_caption_official_gateways">Gerbang IPFS resmi</string>
     <string name="repo_view_repo">Tinjau repositori</string>
-    <string name="repo_scan_qr_code">Pindai Kode RS (Respons Cepat)</string>
+    <string name="repo_scan_qr_code">Pindai kode QR</string>
     <string name="repo_mirror_add_info">URL yang hendak Anda tambahkan (%s) merupakan cerminan repositori yang sudah ada.</string>
     <string name="repo_add_repo_and_mirror">Tambah repositori dan mirror</string>
     <string name="repo_preview_included_apps">Termasuk aplikasi:</string>
@@ -594,6 +594,29 @@
     <string name="swap_bluetooth_permissions">Silakan berikan perizinan Bluetooth atau Perangkat di Sekitar!</string>
     <string name="menu_share_apk">Bagikan berkas APK</string>
     <string name="apk_permissions_mismatch">Aplikasi memiliki perizinan tidak terduga: %s</string>
-    <string name="preferForeign">Utamakan Cermin Asing</string>
+    <string name="preferForeign">Utamakan cermin asing</string>
     <string name="preferForeignSummary">Coba cermin yang terletak di luar negara Anda terlebih dahulu, mis. jika perlindungan asing lebih kuat.</string>
+    <string name="no_handler_app_generic">Anda tidak memiliki aplikasi yang dapat menangani ini.</string>
+    <string name="repo_confirm_delete_mirror_title">Hapus cermin?</string>
+    <string name="share_mirror">Bagikan cermin</string>
+    <string name="show_repository_qr">Tampilkan kode QR repositori</string>
+    <string name="repo_basic_auth_title">Autentikasi dasar</string>
+    <string name="repo_details_info_text">Repositori adalah sumber aplikasi.\n\nCermin digunakan untuk mendistribusikan beban pengunduhan aplikasi di beberapa server. Cermin lebih dekat dengan Anda bisa lebih cepat.\n\nCermin resmi didefinisikan oleh pemilik repositori. Mereka tidak dapat dihapus, hanya dinonaktifkan. Anda dapat mendefinisikan cermin kustom tambahan dengan menambahkannya seperti repositori normal.</string>
+    <string name="repo_archive_unknown">Repositori ini sepertinya tidak memiliki arsip.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="other">%d aplikasi</item>
+    </plurals>
+    <string name="repo_last_update_index">Pembaruan repo terakhir: %s</string>
+    <string name="repo_last_update_check">Periksa pembaruan repo terakhir: %s</string>
+    <string name="repo_confirm_delete_mirror_body">Anda dapat lanjut mengunduh aplikasi dari repositori ini menggunakan cermin yang lain.</string>
+    <string name="repo_basic_auth_username">Nama pengguna: %s</string>
+    <string name="repo_basic_auth_password">Kata sandi: ***</string>
+    <string name="repo_basic_auth_edit">Sunting</string>
+    <string name="expand">Buka</string>
+    <string name="collapse">Tutup</string>
+    <string name="repo_archive_check">Periksa arsip</string>
+    <string name="pref_export_log_title">Log pengawakutuan</string>
+    <string name="export_log_success">Logcat berhasil disimpan</string>
+    <string name="pref_export_log_summary">Membuat berkas dengan keluaran logcat berguna untuk pengawakutuan. Hati-hati, ini dapat berisi informasi sensitif!</string>
+    <string name="export_log_error">Terjadi kesalahan menyimpan logcat</string>
 </resources>

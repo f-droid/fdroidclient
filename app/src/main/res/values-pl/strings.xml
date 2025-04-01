@@ -11,7 +11,7 @@
     <string name="system_installer_on">Używaj uprzywilejowanego rozszerzenia, aby instalować, aktualizować i usuwać pakiety</string>
     <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
     <string name="local_repo_name_summary">Wyświetlana nazwa lokalnego repozytorium: %s</string>
-    <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS dla lokalnego repozytorium</string>
+    <string name="local_repo_https_on">Korzystaj z bezpieczonego połączenia HTTPS dla lokalnego repozytorium</string>
     <string name="app_details">Szczegóły aplikacji</string>
     <string name="no_such_app">Nie znaleziono takiej aplikacji.</string>
     <string name="about_title_full">O F-Droid</string>
@@ -74,7 +74,7 @@
     <string name="repos_unchanged">Wszystkie repozytoria są aktualne</string>
     <string name="all_other_repos_fine">Wszystkie inne repozytoria nie powodowały błędów.</string>
     <string name="global_error_updating_repos">Błąd podczas aktualizacji: %s</string>
-    <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s.</string>
+    <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s</string>
     <string name="theme">Motyw</string>
     <string name="unverified">Niezweryfikowane</string>
     <string name="repo_num_apps">Liczba aplikacji</string>
@@ -83,7 +83,7 @@
     <string name="repo_last_update">Ostatnia aktualizacja</string>
     <string name="repo_name">Nazwa</string>
     <string name="unknown">Nieznana</string>
-    <string name="repo_confirm_delete_title">Usunąć repozytorium?</string>
+    <string name="repo_confirm_delete_title">Czy usunąć repozytorium?</string>
     <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
 \n
 \nUwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
@@ -102,7 +102,7 @@
     <string name="swap">Wymień aplikacje</string>
     <string name="swap_no_wifi_network">Brak sieci</string>
     <string name="swap_view_available_networks">Naciśnij, aby otworzyć dostępne sieci</string>
-    <string name="open_qr_code_scanner">Otwórz skaner QR</string>
+    <string name="open_qr_code_scanner">Otwórz skaner kodów QR</string>
     <string name="swap_welcome">Witaj w F-Droid!</string>
     <string name="swap_confirm_connect">Czy chcesz teraz pobrać aplikacje od %1$s\?</string>
     <string name="app_name_full">F-Droid</string>
@@ -231,7 +231,7 @@
     <string name="repo_error_empty_username">Pusta nazwa użytkownika, dane uwierzytelniające nie zostały zmienione</string>
     <string name="about_license">Licencja</string>
     <string name="status_inserting_apps">Zapisywanie szczegółów aplikacji</string>
-    <string name="menu_email">E-mail autora</string>
+    <string name="menu_email">Wyślij e-mail do autora</string>
     <string name="antinonfreeassetslist">Ta aplikacja zawiera niewolne zasoby</string>
     <string name="crash_dialog_title">F-Droid uległ awarii</string>
     <string name="crash_dialog_text">Wystąpił nieoczekiwany błąd zmuszający aplikację do zatrzymania się. Czy chciałbyś przesłać e-mailem szczegóły, aby pomóc naprawić problem\?</string>
@@ -257,7 +257,7 @@
     <string name="update_auto_install_summary">Pobieraj i aktualizuj aplikacje w tle, wyświetlając powiadomienie</string>
     <string name="keep_install_history">Przechowuj historię instalacji</string>
     <string name="keep_install_history_summary">Przechowuj dziennik wszystkich instalacji i odinstalowań w prywatnym obszarze aplikacji</string>
-    <string name="warning_no_internet">Nie można zaktualizować. Czy masz połączenie z Internetem\?</string>
+    <string name="warning_no_internet">Nie można zaktualizować. Czy masz połączenie z Internetem?</string>
     <string name="versions">Wersje</string>
     <string name="app_details_donate_prompt_unknown_author">Kup programistom %1$s kawę!</string>
     <string name="app_details_donate_prompt">%1$s jest tworzony przez %2$s. Kup im kawę!</string>
@@ -277,7 +277,7 @@
     <string name="notification_title_summary_ready_to_install_update">Aktualizacja gotowa do instalacji</string>
     <string name="notification_title_summary_installing">Instalowanie</string>
     <string name="notification_title_summary_installed">Zainstalowano pomyślnie</string>
-    <string name="notification_title_summary_install_error">Instalacja zakończona niepowodzeniem</string>
+    <string name="notification_title_summary_install_error">Instalacja nie powiodła się</string>
     <string name="notification_action_update">Aktualizacja</string>
     <string name="notification_action_cancel">Anuluj</string>
     <string name="notification_action_install">Zainstaluj</string>
@@ -330,7 +330,7 @@
         <item quantity="other">Zaktualizowano %1$d dni temu</item>
     </plurals>
     <string name="app_list__name__successfully_installed">Zainstalowano %1$s</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu\? Pobierz aplikacje od osób w pobliżu!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Brak Internetu? Pobierz aplikacje od osób w pobliżu!</string>
     <string name="nearby_splash__find_people_button">Znajdź osoby w pobliżu</string>
     <string name="nearby_splash__both_parties_need_fdroid">Obydwie strony potrzebują %1$s, aby użyć wymiany w pobliżu.</string>
     <string name="latest__empty_state__no_recent_apps">Brak najnowszych aplikacji</string>
@@ -347,11 +347,13 @@
         <item quantity="one">%1$d aktualizacja</item>
         <item quantity="few">%1$d aktualizacje</item>
         <item quantity="many">%1$d aktualizacji</item>
+        <item quantity="other">%1$d aktualizacji</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d zainstalowana aplikacja</item>
         <item quantity="few">%1$d zainstalowane aplikacje</item>
         <item quantity="many">%1$d zainstalowanych aplikacji</item>
+        <item quantity="other">%1$d zainstalowanych aplikacji</item>
     </plurals>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d powiadomienie więcej…</item>
@@ -439,7 +441,7 @@
     <string name="use_bluetooth">Użyj Bluetooth</string>
     <string name="swap_toast_invalid_url">Nieprawidłowy URL wymiany: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Włączono hotspot Wi-Fi</string>
-    <string name="swap_toast_could_not_enable_hotspot">Nie można włączyć hotspota Wi-Fi!</string>
+    <string name="swap_toast_could_not_enable_hotspot">Nie udało się włączyć hotspota Wi-Fi!</string>
     <string name="over_wifi">Przez Wi-Fi</string>
     <string name="over_data">Przez transmisję danych</string>
     <string name="over_network_always_summary">Zawsze używaj tego połączenia, gdy jest dostępne</string>
@@ -624,4 +626,30 @@
     <string name="menu_share_apk">Udostępnij plik APK</string>
     <string name="preferForeignSummary">Najpierw wypróbuj serwery lustrzane znajdujące się poza granicami Twojego kraju, np. jeśli zagraniczna ochrona jest silniejsza.</string>
     <string name="preferForeign">Preferuj zagraniczne serwery lustrzane</string>
+    <string name="no_handler_app_generic">Nie masz żadnej dostępnej aplikacji, która mogłaby to obsłużyć</string>
+    <string name="repo_archive_unknown">To repozytorium nie wydaje się mieć archiwum.</string>
+    <string name="repo_archive_check">Sprawdź archiwum</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 aplikacja</item>
+        <item quantity="few">%d aplikacje</item>
+        <item quantity="many">%d aplikacji</item>
+        <item quantity="other">%d aplikacji</item>
+    </plurals>
+    <string name="repo_last_update_index">Ostatnia aktualizacja repozytorium: %s</string>
+    <string name="repo_last_update_check">Ostatnie sprawdzenie aktualizacji repozytorium: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Czy usunąć serwer lustrzany?</string>
+    <string name="share_mirror">Udostępnij serwer lustrzany</string>
+    <string name="repo_basic_auth_username">Nazwa użytkownika: %s</string>
+    <string name="repo_basic_auth_password">Hasło: ***</string>
+    <string name="repo_basic_auth_edit">Edytuj</string>
+    <string name="show_repository_qr">Pokaż kod QR repozytorium</string>
+    <string name="repo_basic_auth_title">Podstawowe uwierzytelnienie</string>
+    <string name="expand">Rozwiń</string>
+    <string name="collapse">Zwiń</string>
+    <string name="repo_confirm_delete_mirror_body">Możesz kontynuować instalację aplikacji z tego repozytorium, używając innych serwerów lustrzanych.</string>
+    <string name="repo_details_info_text">Repozytorium jest źródłem aplikacji.\n\nSerwery lustrzane służą do rozłożenia obciążenia pobierania aplikacji na wielu serwerach. Serwery lustrzane bliżej Ciebie mogą być szybsze.\n\nOficjalne serwery lustrzane są zdefiniowane przez właściciela repozytorium. Nie mogą zostać usunięte, tylko wyłączone. Możesz zdefiniować dodatkowe niestandardowe serwery lustrzane, dodając je po prostu jak normalne repozytorium.</string>
+    <string name="export_log_error">Błąd podczas zapisywania logcata</string>
+    <string name="pref_export_log_title">Dziennik debugowania</string>
+    <string name="export_log_success">Logcat został zapisany</string>
+    <string name="pref_export_log_summary">Tworzy plik z danymi wyjściowymi logcat przydatnymi do debugowania. Ostrożnie, może zawierać poufne informacje!</string>
 </resources>

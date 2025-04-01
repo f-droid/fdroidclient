@@ -18,7 +18,7 @@
     <string name="local_repo_name">Nome del tuo repository locale</string>
     <string name="local_repo_name_summary">Il titolo visualizzato del tuo repository: %s</string>
     <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repository locali</string>
-    <string name="app_details">Dettagli app</string>
+    <string name="app_details">Dettagli applicazione</string>
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
     <string name="about_title_full">Informazioni su F-Droid</string>
     <string name="about_site">Sito web</string>
@@ -197,7 +197,7 @@
     <string name="login_title">Autenticazione richiesta</string>
     <string name="login_name">Nome utente</string>
     <string name="login_password">Password</string>
-    <string name="repo_edit_credentials">Cambia la password</string>
+    <string name="repo_edit_credentials">Cambia la Password</string>
     <string name="repo_error_empty_username">Nome utente vuoto, credenziali non cambiate</string>
     <string name="about_source">Codice sorgente</string>
     <string name="about_license">Licenza</string>
@@ -214,7 +214,7 @@
     <string name="repo_searching_address">Ricerca del repository del pacchetto su
 \n%1$s</string>
     <string name="pref_language">Lingua</string>
-    <string name="pref_language_default">Predefinita di sistema</string>
+    <string name="pref_language_default">Predefinita di Sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Connettività</string>
@@ -233,9 +233,7 @@
     <string name="system_install_denied_permissions">I privilegi non sono stati concessi all\'estensione! Per favore
         segnala questo problema!
     </string>
-    <string name="swap_join_same_wifi_desc">Per scambiare usando il Wi-Fi, assicuratevi di trovarvi sulla stessa rete.
-        Se non avete accesso alla stessa rete, uno dei due può creare un Hotspot Wi-Fi.
-    </string>
+    <string name="swap_join_same_wifi_desc">Per scambiare usando il Wi-Fi, assicuratevi di trovarvi sulla stessa rete. Se non avete accesso alla stessa rete, uno dei due può creare un Hotspot Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Aiuta il tuo amico a collegarsi al tuo hotspot</string>
     <string name="swap_success">Scambio avvenuto!</string>
     <string name="swap_active_hotspot">%1$s (il tuo hotspot)</string>
@@ -276,7 +274,7 @@
     <string name="keep_install_history">Mantieni la cronologia delle installazioni</string>
     <string name="keep_install_history_summary">Salva un log delle installazioni e disinstallazioni in un posto sicuro</string>
     <string name="versions">Versioni</string>
-    <string name="warning_no_internet">Impossibile effettuare l\'aggiornamento, sei connesso ad Internet\?</string>
+    <string name="warning_no_internet">Impossibile effettuare l\'aggiornamento, sei connesso ad Internet?</string>
     <string name="app_details_donate_prompt_unknown_author">Offri agli sviluppatori di %1$s un caffè!</string>
     <string name="app_details_donate_prompt">%1$s è creato da %2$s. Offri un caffè!</string>
     <string name="app_version_x_available">Versione %1$s disponibile</string>
@@ -318,14 +316,14 @@
     <string name="app_list__name__downloading_in_progress">Scaricamento di %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installato</string>
     <string name="updates__tts__download_app">Scarica</string>
-    <string name="app_recommended_version_installed">Versione %1$s (Consigliata)</string>
+    <string name="app_recommended_version_installed">Versione %1$s (consigliata)</string>
     <string name="app_new">Nuovo</string>
     <string name="app__tts__cancel_download">Annulla scaricamento</string>
     <string name="app__install_downloaded_update">Aggiorna</string>
     <string name="app_list_download_ready">Scaricato, pronto per l\'installazione</string>
     <string name="installed_apps__activity_title">App installate</string>
     <string name="installed_app__updates_ignored">Aggiornamenti ignorati</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per Versione %1$s</string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Aggiornamenti ignorati per versione %1$s</string>
     <string name="update_all">Aggiorna tutte</string>
     <string name="updates__hide_updateable_apps">Nascondi applicazioni</string>
     <string name="updates__show_updateable_apps">Mostra applicazioni</string>
@@ -518,10 +516,10 @@
     <string name="toast_metrics_in_install_history">Il rapporto metriche %s è visibile nel visualizzatore dello storico installazioni</string>
     <string name="send_to_fdroid_metrics_summary">Invia settimanalmente dati anonimi alle metriche F-Droid (l\'opzione \"Mantieni la cronologia delle installazioni\" dev\'essere abilitata)</string>
     <string name="send_to_fdroid_metrics">Invia dati di utilizzo</string>
-    <string name="fdroid_metrics_report">Rapporto metriche %s</string>
+    <string name="fdroid_metrics_report">%s Rapporti metriche</string>
     <string name="install_history_and_metrics">Cronologia installazioni e metriche</string>
-    <string name="send_fdroid_metrics_json">Rapporto metriche %s come file JSON</string>
-    <string name="send_fdroid_metrics_report">Invia rapporto metriche %s</string>
+    <string name="send_fdroid_metrics_json">%s Rapporti metriche come file JSON</string>
+    <string name="send_fdroid_metrics_report">Invia %s Rapporti Metriche</string>
     <string name="use_pure_black_dark_theme">Utilizzare lo sfondo nero puro nel tema scuro</string>
     <string name="use_pure_black_dark_theme_summary">Raccomandato solo per schermi OLED.</string>
     <string name="theme_follow_system">Segui il sistema</string>
@@ -630,4 +628,25 @@
     <string name="swap_bluetooth_permissions">Si prega di dare l\'autorizzazione Bluetooth oppure Dispositivo nelle vicinanze!</string>
     <string name="preferForeignSummary">Prova prima mirror che si trovano al di fuori del tuo Paese, ad es. se le protezioni all\'estero sono più robuste.</string>
     <string name="preferForeign">Preferisci mirror esteri</string>
+    <string name="no_handler_app_generic">Non hai alcuna app disponibile che possa gestirlo.</string>
+    <string name="repo_archive_unknown">Questo repository non sembra avere un archivio.</string>
+    <string name="repo_archive_check">Cerca un archivio</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 app</item>
+        <item quantity="many">%d app</item>
+        <item quantity="other">%d app</item>
+    </plurals>
+    <string name="repo_last_update_index">Ultimo aggiornamento del repo: %s</string>
+    <string name="repo_last_update_check">Ultimo controllo di aggiornamenti del repo: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Eliminare il mirror?</string>
+    <string name="share_mirror">Condividi mirror</string>
+    <string name="show_repository_qr">Mostra il codice QR del repository</string>
+    <string name="repo_basic_auth_title">Autorizzazione di base</string>
+    <string name="repo_basic_auth_username">Nome utente: %s</string>
+    <string name="repo_basic_auth_password">Password: ***</string>
+    <string name="repo_basic_auth_edit">Modifica</string>
+    <string name="expand">Espandi</string>
+    <string name="repo_details_info_text">Un repository è una fonte di app.\n\nI mirror vengono usati per distribuire il carico di scaricamento delle app tra più server. I mirror più vicini a te potrebbero essere più veloci.\n\nI mirror ufficiali sono definiti dal proprietario del repository. Non possono essere eliminati, solo disattivati. Puoi definire mirror personalizzati aggiungendoli proprio come un repository normale.</string>
+    <string name="repo_confirm_delete_mirror_body">Puoi continuare a installare app da questo repository usando gli altri mirror.</string>
+    <string name="collapse">Riduci</string>
 </resources>

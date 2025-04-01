@@ -176,7 +176,7 @@
     <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>
     <string name="next">Siguiente</string>
     <string name="skip">Omitir</string>
-    <string name="warning_no_internet">No se pudo actualizar, ¿estás conectado a internet\?</string>
+    <string name="warning_no_internet">No se pudo actualizar, ¿estás conectado a internet?</string>
     <string name="unsigned">Sin firmar</string>
     <string name="unverified">Sin verificar</string>
     <string name="repo_details">Repositorio</string>
@@ -306,7 +306,7 @@
     <string name="unsigned_description">Esto significa que la lista de aplicaciones no pudo ser verificada. Deberías ser cuidadoso con aplicaciones descargadas de indexadores sin firmar.</string>
     <string name="repo_not_yet_updated">Este repositorio no fue utilizado todavía. Necesitás habilitarlo para ver las aplicaciones que provee.</string>
     <string name="unknown">Desconocido</string>
-    <string name="repo_confirm_delete_title">¿Eliminar repositorio\?</string>
+    <string name="repo_confirm_delete_title">¿Eliminar repositorio?</string>
     <string name="repo_confirm_delete_body">Eliminar un repositorio significa que aplicaciones provenientes de él ya no estarán disponibles.
 \n
 \nNota: Todas las aplicaciones instaladas previamente permanecerán en tu dispositivo.</string>
@@ -334,7 +334,7 @@
     <string name="install_error_unknown">Instalación fallida debido a un error desconocido</string>
     <string name="uninstall_error_unknown">Desinstalación fallida debido a un error desconocido</string>
     <string name="system_install_denied_permissions">¡Los permisos con privilegios no fueron aprobados para la extensión! ¡Creá un reporte de bug, por favor!</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">¿Sin internet\? ¡Obtené aplicaciones de personas cercanas a vos!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿Sin internet? ¡Obtené aplicaciones de personas cercanas a vos!</string>
     <string name="nearby_splash__find_people_button">Encontrar personas cerca</string>
     <string name="nearby_splash__both_parties_need_fdroid">Ambos necesitan %1$s para usar cerca.</string>
     <string name="nearby_splash__read_external_storage">Busque en la tarjeta SD repositorios y espejos.</string>

@@ -13,9 +13,9 @@
     <string name="system_installer">Ayrıcalıklı Uzantı</string>
     <string name="system_installer_on">Paketleri yüklemek, güncellemek ve kaldırmak için Ayrıcalıklı Uzantıyı kullan</string>
     <string name="local_repo_name">Yerel Deponuzun adı</string>
-    <string name="local_repo_name_summary">Yerel deponuzun duyurulan adı: %s</string>
-    <string name="local_repo_https_on">Yerel depo için şifrelenmiş HTTPS:// bağlantısı kullan</string>
-    <string name="app_details">Uygulama Ayrıntıları</string>
+    <string name="local_repo_name_summary">Yerel deponuzun tanıtım başlığı: %s</string>
+    <string name="local_repo_https_on">Yerel depo için şifrelenmiş HTTPS:// bağlantısı kullanın</string>
+    <string name="app_details">Uygulama ayrıntıları</string>
     <string name="no_such_app">Böyle bir uygulama yok.</string>
     <string name="about_title_full">F-Droid Hakkında</string>
     <string name="about_site">İnternet Sitesi</string>
@@ -41,7 +41,7 @@
     <string name="malformed_repo_uri">Hatalı depo URI\'si yok sayılıyor: %s</string>
     <string name="menu_manage">Depolar</string>
     <string name="menu_search">Ara</string>
-    <string name="menu_add_repo">Yeni Depo</string>
+    <string name="menu_add_repo">Yeni depo</string>
     <string name="menu_launch">Aç</string>
     <string name="menu_share">Paylaş</string>
     <string name="menu_install">Yükle</string>
@@ -50,7 +50,7 @@
     <string name="menu_ignore_this">Bu güncellemeyi yoksay</string>
     <string name="menu_website">İnternet Sitesi</string>
     <string name="menu_issues">Sorunlar</string>
-    <string name="menu_source">Kaynak Kodu</string>
+    <string name="menu_source">Kaynak kodu</string>
     <string name="menu_upgrade">Güncelle</string>
     <string name="details_notinstalled">Yüklü değil</string>
     <string name="antiadslist">Bu uygulama reklam içerir</string>
@@ -78,11 +78,11 @@
     <string name="next">Sonraki</string>
     <string name="skip">Atla</string>
     <string name="proxy">Vekil</string>
-    <string name="enable_proxy_title">HTTP vekilini etkinleştir</string>
-    <string name="enable_proxy_summary">HTTP Vekilini tüm ağ istekleri için yapılandır</string>
-    <string name="proxy_host">Vekil Sunucu</string>
+    <string name="enable_proxy_title">HTTP vekil sunucuyu etkinleştir</string>
+    <string name="enable_proxy_summary">HTTP vekil sunucusunu tüm ağ istekleri için yapılandır</string>
+    <string name="proxy_host">Vekil sunucu</string>
     <string name="proxy_host_summary">Vekil sunucu adresi (örn. 127.0.0.1)</string>
-    <string name="proxy_port">Vekil Bağlantı Noktası</string>
+    <string name="proxy_port">Vekil sunucu bağlantı noktası</string>
     <string name="proxy_port_summary">Vekil bağlantı noktası numarası (örn. 8118)</string>
     <string name="status_download">İndiriliyor
 \n%2$s / %3$s (%%%4$d)
@@ -105,7 +105,7 @@
     <string name="unsigned_description">Bu, uygulama listesinin teyit edilemediği anlamına gelir. İmzasız dizinlerden indirilen uygulamalara karşı temkinli olmalısınız.</string>
     <string name="repo_not_yet_updated">Bu depo henüz kullanılmamıştır. Sunduğu uygulamaları görmek için etkinleştirmelisiniz.</string>
     <string name="unknown">Bilinmiyor</string>
-    <string name="repo_confirm_delete_title">Depo silinsin mi\?</string>
+    <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
     <string name="repo_confirm_delete_body">Bir depoyu silmek, oradaki uygulamaların artık kullanılamayacağı anlamına gelir.
 \n
 \nNot: Önceden yüklenen tüm uygulamalar aygıtınızda kalacaktır.</string>
@@ -115,7 +115,7 @@
     <string name="repo_added">Paket deposu %1$s kaydedildi.</string>
     <string name="repo_searching_address">%1$s konumunda paket deposu
 \naranıyor</string>
-    <string name="not_on_same_wifi">Aygıtınız az önce eklediğiniz yerel depo ile aynı kablosuz ağda değil! Bu ağa katılmayı deneyin: %s</string>
+    <string name="not_on_same_wifi">Aygıtınız az önce eklediğiniz Yerel Depo ile aynı kablosuz ağda değil! Bu ağa katılmayı deneyin: %s</string>
     <string name="requires_features">Gerektirdiği: %1$s</string>
     <string name="category_Development">Geliştirme</string>
     <string name="category_Games">Oyunlar</string>
@@ -140,7 +140,7 @@
     <string name="login_title">Kimlik doğrulama gerekli</string>
     <string name="login_name">Kullanıcı adı</string>
     <string name="login_password">Parola</string>
-    <string name="repo_edit_credentials">Parolayı Değiştir</string>
+    <string name="repo_edit_credentials">Parolayı değiştir</string>
     <string name="repo_error_empty_username">Boş kullanıcı adı, kimlik verileri değiştirilmedi</string>
     <string name="about_source">Kaynak kod</string>
     <string name="about_license">Lisans</string>
@@ -166,7 +166,7 @@
     <string name="repo_details">Depo</string>
     <string name="repo_url">Adres</string>
     <string name="pref_language">Dil</string>
-    <string name="pref_language_default">Sistem Öntanımlı</string>
+    <string name="pref_language_default">Sistem öntanımlı</string>
     <string name="wifi">Kablosuz</string>
     <string name="category_Connectivity">Bağlanabilirlik</string>
     <string name="category_Graphics">Çizim</string>
@@ -187,11 +187,11 @@
     <string name="swap_switch_to_wifi">Bir kablosuz ağa geçmek için dokunun</string>
     <string name="swap_dont_show_again">Bunu bir daha gösterme</string>
     <string name="swap_scan_or_type_url">Birisinin kodu taraması veya bağlantıyı tarayıcıya girmesi gerekir.</string>
-    <string name="swap_choose_apps">Uygulama Seç</string>
+    <string name="swap_choose_apps">Uygulamaları seçin</string>
     <string name="swap_scan_qr">QR kod</string>
-    <string name="swap_people_nearby">Yakındaki Kişiler</string>
+    <string name="swap_people_nearby">Yakındaki kişiler</string>
     <string name="swap_scanning_for_peers">Yakındaki kişiler aranıyor…</string>
-    <string name="swap_nearby">Yakınımda Takas</string>
+    <string name="swap_nearby">Yakınımda takas</string>
     <string name="swap_intro">Yakınınızdaki kişilerle bağlanın ve uygulamaları takaslayın.</string>
     <string name="swap_visible_bluetooth">Bluetooth\'dan görünür</string>
     <string name="swap_setting_up_bluetooth">Bluetooth ayarlanıyor…</string>
@@ -237,10 +237,10 @@
     <string name="crash_dialog_comment_prompt">Ek bilgi ve yorumları buraya ekleyebilirsiniz:</string>
     <string name="wifi_ap">Erişim noktası</string>
     <string name="system_install_denied_permissions">Uzantıya ayrıcalıklı izinler verilmemiştir! Lütfen bir hata bildirimi oluşturun!</string>
-    <string name="swap_join_same_wifi_desc">Kablosuz ağ üzerinden takaslamak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir kablosuz ağ bağlantı noktası oluşturabilir.</string>
+    <string name="swap_join_same_wifi_desc">Kablosuz ağ üzerinden takas yapmak istiyorsanız, aynı ağda olduğunuzdan emin olun. Eğer aynı ağa erişiminiz yoksa, biriniz bir kablosuz ağ erişim noktası oluşturabilir.</string>
     <string name="swap_join_this_hotspot">Arkadaşınızın bağlantı noktanıza bağlanmasına yardım edin</string>
     <string name="swap_active_hotspot">%1$s (erişim noktanız)</string>
-    <string name="menu_email">Geliştiriciye E-posta Gönder</string>
+    <string name="menu_email">Geliştiriciye e-posta gönder</string>
     <string name="update_auto_download">Güncellemeleri otomatik al</string>
     <string name="update_auto_download_summary">Güncellemeler otomatik olarak indirilir ve yüklenmeleri istenir</string>
     <string name="useTor">Tor kullan</string>
@@ -251,16 +251,16 @@
     <string name="uninstall_error_notify_title">%s kaldırılamadı</string>
     <string name="installing">Yükleniyor…</string>
     <string name="uninstalling">Kaldırılıyor…</string>
-    <string name="keep_hour">1 Saat</string>
-    <string name="keep_day">1 Gün</string>
-    <string name="keep_week">1 Hafta</string>
-    <string name="keep_month">1 Ay</string>
-    <string name="keep_year">1 Yıl</string>
+    <string name="keep_hour">1 saat</string>
+    <string name="keep_day">1 gün</string>
+    <string name="keep_week">1 hafta</string>
+    <string name="keep_month">1 ay</string>
+    <string name="keep_year">1 yıl</string>
     <string name="keep_forever">Daima</string>
     <string name="keep_install_history">Yükleme geçmişi tut</string>
     <string name="keep_install_history_summary">Tüm yükleme ve kaldırmaların günlüğünü özel olarak sakla</string>
     <string name="update_auto_install">Güncellemeleri otomatik olarak yükle</string>
-    <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız\?</string>
+    <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız?</string>
     <string name="update_auto_install_summary">Bir bildirim göstererek arka planda uygulamaları indir ve güncelle</string>
     <string name="versions">Sürümler</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine bir kahve alın!</string>
@@ -272,10 +272,10 @@
     <string name="main_menu__latest_apps">En son</string>
     <string name="main_menu__categories">Kategoriler</string>
     <string name="main_menu__swap_nearby">Yakınımda</string>
-    <string name="notification_title_single_update_available">Güncelleme Mevcut</string>
+    <string name="notification_title_single_update_available">Güncelleme mevcut</string>
     <string name="notification_title_single_ready_to_install">Yüklenmeye hazır</string>
     <string name="notification_title_single_ready_to_install_update">Güncelleme yüklenmeye hazır</string>
-    <string name="notification_title_single_install_error">Yükleme Başarısız</string>
+    <string name="notification_title_single_install_error">Yükleme başarısız</string>
     <string name="notification_content_single_downloading">\"%1$s\" indiriliyor…</string>
     <string name="notification_content_single_downloading_update">\"%1$s\" için güncelleme indiriliyor…</string>
     <string name="notification_content_single_installing">\"%1$s\" yükleniyor…</string>
@@ -287,7 +287,7 @@
     <string name="notification_title_summary_ready_to_install_update">Güncelleme yüklenmeye hazır</string>
     <string name="notification_title_summary_installing">Yükleniyor</string>
     <string name="notification_title_summary_installed">Yükleme başarılı</string>
-    <string name="notification_title_summary_install_error">Yükleme Başarısız</string>
+    <string name="notification_title_summary_install_error">Yükleme başarısız</string>
     <string name="notification_action_update">Güncelle</string>
     <string name="notification_action_cancel">İptal</string>
     <string name="notification_action_install">Yükle</string>
@@ -325,7 +325,7 @@
         <item quantity="other">%1$d gün önce güncellendi</item>
     </plurals>
     <string name="app_list__name__successfully_installed">%1$s yüklendi</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu\? Uygulamaları yakınınızdaki kişilerden alın!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">İnternet yok mu? Uygulamaları yakınınızdaki kişilerden alın!</string>
     <string name="nearby_splash__find_people_button">Yakındaki kişileri bul</string>
     <string name="nearby_splash__both_parties_need_fdroid">Yakınımda kullanımı için her iki tarafta %1$s olmalı.</string>
     <string name="latest__empty_state__never_updated">Uygulama listeniz güncellendiğinde, en son uygulamalar burada gözükecektir</string>
@@ -342,12 +342,12 @@
         <item quantity="other">+%1$d daha…</item>
     </plurals>
     <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d Güncelleme</item>
-        <item quantity="other">%1$d Güncelleme</item>
+        <item quantity="one">%1$d güncelleme</item>
+        <item quantity="other">%1$d güncelleme</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="one">%1$d Uygulama Yüklendi</item>
-        <item quantity="other">%1$d Uygulama Yüklendi</item>
+        <item quantity="one">%1$d uygulama yüklendi</item>
+        <item quantity="other">%1$d uygulama yüklendi</item>
     </plurals>
     <plurals name="details_last_update_weeks">
         <item quantity="one">%1$d hafta önce güncellendi</item>
@@ -383,7 +383,7 @@
     <string name="privacy">Gizlilik</string>
     <string name="preventScreenshots_title">Ekran görüntüsü almayı engelle</string>
     <string name="preventScreenshots_summary">Ekran görüntüsü almayı engeller ve uygulama içeriğini en son uygulamalar ekranında gizler</string>
-    <string name="panic_app_setting_title">Panik Düğmesi Uygulaması</string>
+    <string name="panic_app_setting_title">Acil durum düğmesi uygulaması</string>
     <string name="panic_app_unknown_app">bilinmeyen bir uygulama</string>
     <string name="panic_app_setting_summary">Ayarlanan uygulama yok</string>
     <string name="panic_app_setting_none">Yok</string>
@@ -394,13 +394,13 @@
     <string name="panic_settings_summary">Acil durumda uygulanacak eylemler</string>
     <string name="panic_exit_title">Uygulamadan çık</string>
     <string name="panic_exit_summary">Bu uygulama kapatılacak</string>
-    <string name="panic_destructive_actions">Yıkıcı Eylemler</string>
+    <string name="panic_destructive_actions">Yıkıcı eylemler</string>
     <string name="panic_hide_title">%s uygulamasını gizle</string>
     <string name="panic_hide_summary">Uygulama kendisini gizleyecek</string>
     <string name="panic_hide_warning_title">Nasıl geri yükleneceğini hatırla</string>
     <string name="panic_hide_warning_message">Panik durumunda, %1$s başlatıcıdan kaldırılır. Sahte %3$s uygulamasına yalnızca \"%2$d\" yazarak geri yüklenebilir.</string>
     <string name="hiding_calculator">Hesap Makinesi</string>
-    <string name="hiding_dialog_title">%s Ögesini Şimdi Gizle</string>
+    <string name="hiding_dialog_title">%s ögesini şimdi gizle</string>
     <string name="hiding_dialog_message">%1$s ögesini başlatıcıdan kaldırmak istediğinize emin misiniz\? Yalnızca sahte %3$s uygulamasında \"%2$d\" yazmak onu geri yükleyebilir.</string>
     <string name="hiding_dialog_warning">Uyarı: Ana ekrandaki her bir uygulama kısayolu da kaldırılacak ve elle yeniden eklenmesi gerekecek.</string>
     <string name="hide_on_long_search_press_title">Arama düğmesiyle gizle</string>
@@ -439,11 +439,11 @@
     <string name="install_history_summary">Tüm yükleme ve kaldırmaların özel günlüğünü görüntüle</string>
     <string name="send_version_and_uuid">Sunuculara sürüm ve UUID gönder</string>
     <string name="send_version_and_uuid_summary">İndirirken bu uygulamanın sürümünü ve rastgele benzersiz bir kimliği ekle, bir sonraki uygulama yeniden başlamasıyla etkin olur.</string>
-    <string name="share_repository">Depoyu Paylaş</string>
+    <string name="share_repository">Depoyu paylaş</string>
     <string name="antinosourcesince">Artık kullanılabilir bir kaynak kodu yok, güncelleme mümkün değil</string>
-    <string name="send_install_history">Yükleme Geçmişini Gönder</string>
+    <string name="send_install_history">Yükleme geçmişini gönder</string>
     <string name="send_history_csv">%s geçmişi CSV dosyası olarak yükle</string>
-    <string name="updates_disabled_by_settings">Tüm güncellemeler Veri/Kablosuz Ayarları tarafından devre dışı bırakıldı</string>
+    <string name="updates_disabled_by_settings">Tüm güncellemeler mobil veri/Kablosuz bağlantı ayarları tarafından devre dışı bırakıldı</string>
     <string name="send_installed_apps">Yüklü uygulamaları paylaş</string>
     <string name="send_installed_apps_csv">F-Droid tarafından CSV dosyası olarak yüklenmiş uygulamalar,</string>
     <string name="menu_open">Aç</string>
@@ -455,8 +455,8 @@
     <string name="nearby_splash__read_external_storage">Depolar ve yansımalar için SD Kart ara.</string>
     <string name="nearby_splash__request_permission">Şimdi ara</string>
     <string name="swap_toast_using_path">%1$s kullanılıyor</string>
-    <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, tekrar deneyin!</string>
-    <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB\'nizi seçin</string>
+    <string name="swap_toast_not_removable_storage">Bu seçim herhangi bir çıkarılabilir depolama aygıtıyla eşleşmedi, yeniden deneyin!</string>
+    <string name="swap_toast_find_removeable_storage">Çıkarılabilir SD Kart veya USB belleğinizi seçin</string>
     <string name="not_visible_nearby">Yakınımda etkin değil</string>
     <string name="not_visible_nearby_description">Yakındaki aygıtlarla takas etmeden önce aygıtınızı görünür hale getirin.</string>
     <string name="scan_removable_storage_toast">%s taranıyor…</string>
@@ -491,18 +491,18 @@
     <string name="notification_channel_installs_title">Yüklemeler</string>
     <string name="menu_show_install_history">Yükleme geçmişini göster</string>
     <string name="menu_show_fdroid_metrics_report">Ölçüm raporunu göster</string>
-    <string name="toast_metrics_in_install_history">%s Ölçüm raporu Yükleme Geçmişi görüntüleyicisinde görüntülenebilir</string>
+    <string name="toast_metrics_in_install_history">%s Ölçüm raporu yükleme geçmişi görüntüleyicisinde görülebilir</string>
     <string name="send_to_fdroid_metrics_summary">F-Droid Ölçümleri\'ne haftalık olarak anonim veri gönderir (Yükleme geçmişini tut etkin olmalı)</string>
     <string name="send_to_fdroid_metrics">Kullanım verilerini gönder</string>
-    <string name="fdroid_metrics_report">%s Ölçüm Raporu</string>
+    <string name="fdroid_metrics_report">%s Ölçüm raporu</string>
     <string name="install_history_and_metrics">Yükleme geçmişi ve ölçümler</string>
     <string name="send_fdroid_metrics_json">JSON dosyası olarak %s ölçüm raporu</string>
-    <string name="send_fdroid_metrics_report">%s Ölçüm Raporu Gönder</string>
+    <string name="send_fdroid_metrics_report">%s Ölçüm raporu gönder</string>
     <string name="theme_follow_system">Sisteme uy</string>
     <string name="use_pure_black_dark_theme_summary">Yalnızca OLED ekranlar için önerilir.</string>
     <string name="use_pure_black_dark_theme">Koyu temada saf siyah arka plan kullan</string>
-    <string name="banner_no_data_or_wifi">Veri veya kablosuz etkin değil</string>
-    <string name="banner_no_internet">İnternet Yok</string>
+    <string name="banner_no_data_or_wifi">Mobil veri veya kablosuz bağlantı etkin değil</string>
+    <string name="banner_no_internet">İnternet yok</string>
     <string name="share_apk_error">Uygulama dosyası paylaşılamadı</string>
     <string name="has_disallow_install_unknown_sources">Bilinmeyen kaynaklar bu kullanıcı tarafından eklenemez, buna yeni depolar da dahildir</string>
     <string name="has_disallow_install_unknown_sources_globally">Cihaz yöneticiniz, yeni depolar da dahil olmak üzere bilinmeyen kaynaklardan uygulama yüklemeye izin vermiyor</string>
@@ -520,7 +520,7 @@
     <string name="antinosource">Kaynak Kodu Artık Yok</string>
     <string name="antiothers">Diğer Karşıt-Özellikler</string>
     <string name="antinsfw">İş için Güvenli Değil</string>
-    <string name="menu_release_channel_beta">Beta Güncellemelerine İzin Ver</string>
+    <string name="menu_release_channel_beta">Beta güncellemelerine İzin Ver</string>
     <string name="latest__empty_state__upgrading">Veri tabanı yükseltiliyor…</string>
     <string name="category_Nightly">kararsız</string>
     <string name="app_name_basic">F-Droid Temel</string>
@@ -529,7 +529,7 @@
     <string name="warning_target_sdk">Bu uygulama Android\'in eski bir sürümü için geliştirilmiştir ve otomatik olarak güncellenemez.</string>
     <string name="app_error_open">Uygulama başlatılamadı.</string>
     <string name="repo_last_update_downloaded">Son güncelleme indirildi</string>
-    <string name="turn_on_wifi">Wifi\'yi aç</string>
+    <string name="turn_on_wifi">Kablosuz bağlantıyı aç</string>
     <string name="repo_state_adding">Depo ekleniyor…</string>
     <string name="repo_invalid">Geçersiz depo.
 \n
@@ -554,32 +554,32 @@
     <string name="copied_url_to_clipboard">URL panoya kopyalandı</string>
     <string name="targetsdk_or_later">hedefler %s</string>
     <string name="repo_num_apps_button">Uygulamaları göster</string>
-    <string name="ipfsgw_caption_official_gateways">Resmi IPFS Ağ Geçitleri</string>
+    <string name="ipfsgw_caption_official_gateways">Resmi IPFS ağ geçitleri</string>
     <string name="ipfsgw_summary_disabled">IPFS web uç noktalarını kullanarak uygulamaları indirin: devre dışı</string>
-    <string name="ipfsgw_title">IPFS Ağ Geçitleri</string>
-    <string name="ipfsgw_caption_custom_gateways">Resmi IPFS Ağ Geçitleri</string>
+    <string name="ipfsgw_title">IPFS ağ geçitleri</string>
+    <string name="ipfsgw_caption_custom_gateways">Özel IPFS ağ geçitleri</string>
     <string name="paste">Yapıştır</string>
     <string name="ipfsgw_add_add">Ekle</string>
     <string name="ipfsgw_explainer">IPFS web uç noktalarından uygulamaları indirin. (Yalnızca IPFS desteği olan F-Droid depoları için çalışır.)</string>
-    <string name="ipfsgw_add_title">IPFS Ağ Geçidi Ekle</string>
+    <string name="ipfsgw_add_title">IPFS Ağ geçidi ekle</string>
     <plurals name="ipfsgw_summary">
         <item quantity="one">IPFS web uç noktalarını kullanarak uygulamaları indirin: %1$d etkin</item>
         <item quantity="other">IPFS web uç noktalarını kullanarak uygulamaları indirin: %1$d etkin</item>
     </plurals>
     <string name="useDnsCacheSummary">DNS sorgularını en aza indirmek için önbelleğe alınan sonuçları kullan.</string>
-    <string name="useDnsCache">DNS Önbelleği Kullan</string>
+    <string name="useDnsCache">DNS önbelleği kullan</string>
     <string name="repo_share_not_found">Paylaşılan metinde depo adresi bulunamadı.</string>
     <string name="app_details_repository">Depo</string>
     <string name="app_details_repositories">Depolar</string>
-    <string name="app_details_repository_button_prefer">Tercih Edilen Depo</string>
+    <string name="app_details_repository_button_prefer">Tercih edilen depo</string>
     <string name="app_details_repository_expand">Depo listesini genişlet</string>
     <string name="app_list_no_suggested_version">Kurulum için tavsiye edilen sürüm yok.</string>
     <string name="repo_error_adding_archive">Arşiv depoları doğrudan eklenemez. Listedeki depoya dokunun ve oradaki arşivi etkinleştirin.</string>
-    <string name="repo_list_info_title">Depo Listesi</string>
+    <string name="repo_list_info_title">Depo listesi</string>
     <string name="repo_list_info_text">Depo, bir uygulama kaynağıdır. Bu liste eklenen tüm depoları gösterir. Devre dışı bırakılan depolar kullanılmaz.
 \n
 \nBir uygulama birden fazla depoda bulunuyorsa, listede daha üstte bulunan depo otomatik olarak tercih edilir. Depoları uzun basarak ve sürükleyerek yeniden sıralayabilirsiniz.</string>
-    <string name="repo_archive_toggle">Arşiv Deposu</string>
+    <string name="repo_archive_toggle">Depo arşivi</string>
     <string name="repo_archive_toggle_description">Arşivlenen uygulamaları ve uygulamaların eski sürümlerini göster</string>
     <string name="repositories_last_update">Son Güncelleme: %s</string>
     <string name="repositories_last_update_never">yok</string>
@@ -602,6 +602,28 @@
     <string name="swap_bluetooth_permissions">Lütfen Bluetooth veya Yakındaki Aygıtlar izni verin!</string>
     <string name="menu_share_apk">APK dosyasını paylaş</string>
     <string name="apk_permissions_mismatch">Uygulamanın beklenmeyen izni var: %s</string>
-    <string name="preferForeign">Yabancı Yansıları Tercih Et</string>
+    <string name="preferForeign">Yabancı yansıları yeğle</string>
     <string name="preferForeignSummary">Önce bulunduğun ülkenin dışında bulunan yabancı yansıları dene, örn. yabancı güvenlikler daha güçlüyse.</string>
+    <string name="pref_export_log_title">Hata Ayıklama Günlüğü</string>
+    <string name="no_handler_app_generic">Bunu halledebilecek herhangi bir uygulamanız yok.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 uygulama</item>
+        <item quantity="other">%d uygulama</item>
+    </plurals>
+    <string name="repo_details_info_text">Depo bir uygulama kaynağıdır\n\nYansılar, uygulama indirme yükünü birden çok sunucuya dağıtmak için kullanılır. Size yakın yansılar daha hızlı olabilir.\n\nResmi yansılar depo sahibi tarafından tanımlanır. Silinemezler, yalnızca devre dışı bırakılırlar. Normal bir depo gibi ekleyerek ek özel yansılar tanımlayabilirsiniz.</string>
+    <string name="repo_archive_unknown">Bu depo bir arşive sahipmiş gibi görünmüyor.</string>
+    <string name="repo_archive_check">Arşivi kontrol edin</string>
+    <string name="repo_last_update_index">Son depo güncellemesi: %s</string>
+    <string name="repo_last_update_check">Depo güncellemesine son bakış: %s</string>
+    <string name="expand">Genişlet</string>
+    <string name="collapse">Daralt</string>
+    <string name="repo_basic_auth_edit">Düzenle</string>
+    <string name="repo_confirm_delete_mirror_body">Diğer yansıları kullanarak uygulamaları bu depodan yüklemeye devam edebilirsiniz.</string>
+    <string name="repo_basic_auth_password">Parola: ***</string>
+    <string name="repo_confirm_delete_mirror_title">Yansı silinsin mi?</string>
+    <string name="show_repository_qr">Deponun QR kodunu göster</string>
+    <string name="share_mirror">Yansıyı paylaş</string>
+    <string name="repo_basic_auth_username">Kullanıcı adı: %s</string>
+    <string name="export_log_success">Logcat başarıyla kaydedildi</string>
+    <string name="export_log_error">Logcat kaydedilirken hata oluştu</string>
 </resources>

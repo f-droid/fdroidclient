@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="updates__tts__download_app">डाउनलोड</string>
     <string name="app_list__name__successfully_installed">%1$s स्थापित छ</string>
     <string name="app_list__name__downloading_in_progress">%1$s डाउनलोड गर्दै</string>
@@ -69,4 +69,11 @@
     <string name="delete">मेट्नुहोस्</string>
     <string name="wifi">Wi-Fi</string>
     <string name="apps">अनुप्रयोग</string>
+    <string name="updates">अद्यावधिकहरू</string>
+    <string name="repo_last_update">अन्तिम अद्यावधिक</string>
+    <string name="unverified">अप्रमाणित</string>
+    <string tools:ignore="UnusedResources" name="category_Sports_Health">खेलकुद र स्वास्थ्य</string>
+    <string name="repo_details">भण्डार</string>
+    <string name="by_author_format">द्वारा %s</string>
+    <string name="prompt_to_send_crash_reports">बिग्रेको  खंडमा  रिपोर्टहरु पठाउन सोधनु</string>
 </resources>

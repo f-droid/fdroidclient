@@ -8,7 +8,7 @@
 
 * Desactivar els informes de fallada a la configuració
 
-* Instal·lar el visor de l'historial quan el registre estigui habilitat
+* Instal·lar el visualitzador de l'historial quan el registre estigui habilitat
 
 * Llista de característiques no adients clicables, afegida NoSourceSince (SenseFontDesDe)
 

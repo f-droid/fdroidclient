@@ -320,7 +320,7 @@
     <plurals name="button_view_all_apps_in_category">
         <item quantity="other">%d개 모두 보기</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">인터넷이 없나요\? 근처 사람들로부터 앱을 받으세요!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">인터넷이 없나요? 근처 사람들로부터 앱을 받으세요!</string>
     <string name="nearby_splash__find_people_button">근처 사람들 찾기</string>
     <string name="nearby_splash__both_parties_need_fdroid">근처 공유를 하려는 모든 기기에 %1$s가 필요합니다.</string>
     <string name="app__tts__downloading_progress">다운로드 중, %1$d%% 완료</string>
@@ -562,7 +562,7 @@
     <string name="repo_disable_warning">이 저장소를 비활성화하면 모든 앱의 \"preferred\"상태를 제거합니다.</string>
     <string name="targetsdk_or_later">대상 %s</string>
     <string name="repositories_last_update">마지막 업데이트: %s</string>
-    <string name="repositories_last_update_never">절대 않함</string>
+    <string name="repositories_last_update_never">한 적 없음</string>
     <string name="repo_list_info_title">저장소 목록</string>
     <string name="repo_archive_toggle">저장소 아카이브</string>
     <string name="repo_last_update_downloaded">최신의 업데이트 다운로드</string>

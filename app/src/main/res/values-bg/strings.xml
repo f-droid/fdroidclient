@@ -13,7 +13,7 @@
     <string name="system_installer">Инсталиране чрез системни разрешения</string>
     <string name="system_installer_on">Ползване на системни права за инсталиране, обновяване и премахване на приложения</string>
     <string name="local_repo_name">Име на местното хранилище</string>
-    <string name="local_repo_name_summary">Обявява хранилището под името: %s</string>
+    <string name="local_repo_name_summary">Местното хранилище е известно като: %s</string>
     <string name="local_repo_https_on">Шифроване на връзката (HTTPS://) с местното хранилище</string>
     <string name="app_details">Описание на приложението</string>
     <string name="no_such_app">Не е намерено такова приложение.</string>
@@ -21,7 +21,7 @@
     <string name="about_site">Страница</string>
     <string name="about_version">Версия</string>
     <string name="app_installed">Инсталирано</string>
-    <string name="app_not_installed">Неинсталирана</string>
+    <string name="app_not_installed">Не инсталирана</string>
     <string name="app_inst_known_source">Инсталирано (от %s)</string>
     <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
     <string name="added_on">Добавено на %s</string>
@@ -31,7 +31,7 @@
     <string name="repo_add_title">Добавяне на хранилище</string>
     <string name="repo_add_add">Добавяне</string>
     <string name="cancel">Отказ</string>
-    <string name="add_key">Добавете ключ</string>
+    <string name="add_key">Добавяне на ключ</string>
     <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане. Моля, изберете такъв!</string>
     <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
     <string name="repo_add_url">Адрес на хранилището</string>
@@ -44,7 +44,7 @@
     <string name="menu_share">Споделяне</string>
     <string name="menu_install">Инсталиране</string>
     <string name="menu_uninstall">Премахване</string>
-    <string name="menu_ignore_all">Пренебрегване на всички обновявания</string>
+    <string name="menu_ignore_all">Пренебрегване на обновявания</string>
     <string name="menu_ignore_this">Пренебрегване на това обновяване</string>
     <string name="menu_website">Страница</string>
     <string name="menu_issues">Дефекти</string>
@@ -70,8 +70,8 @@
     <string name="next">Напред</string>
     <string name="skip">Пропускане</string>
     <string name="proxy">Прокси</string>
-    <string name="enable_proxy_title">Включване на прокси на HTTP</string>
-    <string name="enable_proxy_summary">Настройка на прокси на HTTP за всички заявки</string>
+    <string name="enable_proxy_title">Включване на прокси по HTTP</string>
+    <string name="enable_proxy_summary">Настройка на прокси по HTTP за всички заявки</string>
     <string name="proxy_host">Хост на прокси</string>
     <string name="proxy_host_summary">Име на хоста на прокси (напр. 127.0.0.1)</string>
     <string name="proxy_port">Порт на прокси</string>
@@ -89,7 +89,7 @@
     <string name="repo_last_update">Последно обновяване</string>
     <string name="repo_name">Иаименование</string>
     <string name="repo_not_yet_updated">Хранилището все още не е използвано. За да разгледате приложенията, които предлага, трябва да го включите.</string>
-    <string name="repo_confirm_delete_title">Изтриване на хранилището\?</string>
+    <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
     <string name="repo_confirm_delete_body">Изтриването на хранилище означава, че приложенията от него няма да са достъпни.\n\nЗабележка: Всички инсталирани приложения ще останат на устройството.</string>
     <string name="repo_disabled_notification">Хранилището %1$s е изключеноно.\n\nЗа да инсталирате приложения от него ще трябва да го включите.</string>
     <string name="not_on_same_wifi">Устройството не е в една безжична мрежа с току-що добавеното местно хранилище! Опитайте да се свържете към тази мрежа: %s</string>
@@ -107,7 +107,7 @@
     <string name="swap_join_same_wifi">Свържете се към една и съща безжична мрежа с приятеля си</string>
     <string name="swap">Разменяне</string>
     <string name="swap_view_available_networks">(Натиснете за преглед на наличните мрежи)</string>
-    <string name="open_qr_code_scanner">Отваряне на четец на QR кодове</string>
+    <string name="open_qr_code_scanner">Отваряне на четец за QR</string>
     <string name="swap_welcome">Добре дошли в F-Droid!</string>
     <string name="app_name_full">F-Droid</string>
     <string name="theme_dark">Тъмна</string>
@@ -158,7 +158,7 @@
     <string name="install_confirm_update_no_perms">Искате да обновите инсталирано приложение\? Текущата информация няма да бъде загубена. Не изисква изрични разрешения.</string>
     <string name="install_confirm_update_system_no_perms">Искате да обновите вградено приложение\? Текущата информация няма да бъде загубена. Не изисква изрични разрешения.</string>
     <string name="swap_send_fdroid">Изпращане F-Droid</string>
-    <string name="swap_scan_qr">QR код</string>
+    <string name="swap_scan_qr">Код за QR</string>
     <string name="swap_scanning_for_peers">Търсене на хора…</string>
     <string name="swap_no_wifi_network">Все още няма мрежа</string>
     <string name="swap_intro">Свързване и обмяна на приложения с хора около вас.</string>
@@ -241,7 +241,7 @@
     <string name="app_details_donate_prompt">Авторът на %1$s е %2$s. Почерпете ги кафе!</string>
     <string name="app_version_x_available">Издание %1$s е налично</string>
     <string name="app_version_x_installed">Издание %1$s</string>
-    <string name="app_recommended_version_installed">Издание %1$s (Препоръчително)</string>
+    <string name="app_recommended_version_installed">Издание %1$s (препоръчително)</string>
     <string name="app_new">Ново</string>
     <string name="app__install_downloaded_update">Обновяване</string>
     <string name="app_list__name__downloading_in_progress">Изтегля се %1$s</string>
@@ -286,7 +286,7 @@
     <string name="keep_forever">Завинаги</string>
     <string name="notification_title_single_ready_to_install">Готово за инсталиране</string>
     <string name="notification_title_single_ready_to_install_update">Обновяването е готово за инсталиране</string>
-    <string name="notification_title_single_install_error">Неуспешна инсталация</string>
+    <string name="notification_title_single_install_error">Грешка при инсталиране</string>
     <string name="notification_content_single_downloading">Изтегляне на „%1$s“…</string>
     <string name="notification_content_single_downloading_update">Изтегля се обновяване на „%1$s“…</string>
     <string name="notification_content_single_installing">Инсталиране „%1$s“…</string>
@@ -299,7 +299,7 @@
         <item quantity="one">%1$d инсталирано приложение</item>
         <item quantity="other">%1$d инсталирани приложения</item>
     </plurals>
-    <string name="notification_title_summary_update_available">Налично издание</string>
+    <string name="notification_title_summary_update_available">Има обновяване</string>
     <string name="notification_title_summary_downloading">Изтегляне…</string>
     <string name="notification_title_summary_downloading_update">Изтегля се обновяване…</string>
     <string name="notification_title_summary_ready_to_install">Готово за инсталиране</string>
@@ -331,9 +331,9 @@
     <string name="notification_action_update">Обновяване</string>
     <string name="notification_action_cancel">Отказ</string>
     <string name="notification_action_install">Инсталиране</string>
-    <string name="warning_no_internet">Грешка при обновяване, има ли интернет?</string>
-    <string name="notification_title_single_update_available">Налично издание</string>
-    <string name="notification_title_summary_install_error">Неуспешна инсталация</string>
+    <string name="warning_no_internet">Грешка при обновяване, има ли връзка с интернет?</string>
+    <string name="notification_title_single_update_available">Има обновяване</string>
+    <string name="notification_title_summary_install_error">Грешка при инсталиране</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Преглед на %d</item>
         <item quantity="other">Всички %d</item>
@@ -366,10 +366,10 @@
     <string name="app_installed_media">Файлът е инсталиран в %s</string>
     <string name="app_permission_storage">F-Droid се нуждае от разрешение, за да инсталира приложението в хранилището. Моля, разрешете на следващия екран, за да продължи инсталирането.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Открита е уязвимост в %1$s. Докоснете, за да прочетете повече в секцията за анти-функции.</string>
-    <string name="panic_app_setting_title">Приложение при тревога</string>
+    <string name="panic_app_setting_title">Приложение при паника</string>
     <string name="panic_app_unknown_app">непознато приложение</string>
     <string name="panic_app_setting_summary">Няма зададено приложение</string>
-    <string name="panic_app_dialog_title">Потвърдете приложение при тревога</string>
+    <string name="panic_app_dialog_title">Потвърдете приложение при паника</string>
     <string name="panic_app_dialog_message">Сигурни ли сте, че искате да разрешите на %1$s да задейства унищожителните действия на бутона за тревога\?</string>
     <string name="allow">Разрешаване</string>
     <string name="panic_settings">Настройки на бутон за тревога</string>
@@ -404,7 +404,7 @@
     <string name="show_anti_feature_apps">Приложения с анти-функции</string>
     <string name="show_anti_feature_apps_on">Показване на приложения, които изискват анти-функции</string>
     <string name="hiding_calculator">Калкулатор</string>
-    <string name="hiding_dialog_title">Скрий %s Сега</string>
+    <string name="hiding_dialog_title">Скриване на %s</string>
     <string name="use_bluetooth">Използване Bluetooth</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Инсталираното издание не е съвместимо с никое от наличните издания. За да видите и инсталирате съвместими издания премахнете инсталираното. Това често се случва с приложения, инсталирани чрез Google Play или други източници, ако са подписани с различен сертификат.</string>
     <string name="app_list__dismiss_app_update">Изданието е пренебрегнато</string>
@@ -412,7 +412,7 @@
     <string name="panic_exit_title">Излизане от приложението</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Камерата няма автоматичен фокус. Сканирането на кода може да бъде затруднено.</string>
-    <string name="share_repository">Сподели хранилище</string>
+    <string name="share_repository">Споделяне на хранилище</string>
     <string name="updates_disabled_by_settings">Всички обновявания са изключени от настройките за безжична мрежа и мобилни данни</string>
     <string name="nearby_splash__request_permission">Търсене</string>
     <string name="swap_toast_using_path">Използва се %1$s</string>
@@ -427,8 +427,8 @@
     <string name="swap_toast_could_not_enable_hotspot">Безжичната точка за достъп не може да бъде включена!</string>
     <string name="swap_toast_hotspot_enabled">Включена точка за достъп през безжична мрежа</string>
     <string name="swap_toast_invalid_url">Невалиден URL адрес за размяна: %1$s</string>
-    <string name="swap_toast_find_removeable_storage">Изберете вашата сменяема SD карта или USB</string>
-    <string name="swap_toast_not_removable_storage">Този избор не съвпада с никакви преносими устройства за съхранение, опитайте отново!</string>
+    <string name="swap_toast_find_removeable_storage">Изберете сменяема SD карта или USB</string>
+    <string name="swap_toast_not_removable_storage">Този избор не съвпада с никакви преносими носители, опитайте отново!</string>
     <string name="not_visible_nearby_description">Преди да разменяте с устройства наблизо, направете устройството си видимо.</string>
     <string name="swap_error_cannot_start_bluetooth">Не може да се стартира Bluetooth!</string>
     <string name="swap_stopping">Спиране…</string>
@@ -479,16 +479,16 @@
     <string name="install_history_and_metrics">Дневник на инсталирания и статистика</string>
     <string name="menu_show_install_history">История на инсталирани приложения</string>
     <string name="menu_show_fdroid_metrics_report">Преглед на метрики</string>
-    <string name="toast_metrics_in_install_history">Статистиката за %s е видима при преглед на дневника на инсталиранията</string>
+    <string name="toast_metrics_in_install_history">Статистиката на %s е видима при преглед на дневника на инсталиранията</string>
     <string name="send_to_fdroid_metrics_summary">Всяка седмица изпраща анонимни данни към F-Droid Metrics (изисква запазване на дневник за инсталиранията)</string>
     <string name="send_to_fdroid_metrics">Изпращане на данни за използването</string>
-    <string name="fdroid_metrics_report">Статистика за %s</string>
-    <string name="send_fdroid_metrics_json">Статистика на %s като файл на JSON</string>
+    <string name="fdroid_metrics_report">Статистика на %s</string>
+    <string name="send_fdroid_metrics_json">Статистика на %s като JSON</string>
     <string name="send_fdroid_metrics_report">Изпращане на статистика за %s</string>
     <string name="theme_follow_system">Според системата</string>
     <string name="use_pure_black_dark_theme_summary">Препоръчително само за екрани с OLED.</string>
     <string name="use_pure_black_dark_theme">Тъмната тема ползва чисто черен фон</string>
-    <string name="banner_no_data_or_wifi">Мобилните данни и W-iFi са изключени</string>
+    <string name="banner_no_data_or_wifi">Мобилните данни и безжичната мрежа са изключени</string>
     <string name="banner_no_internet">Няма връзка с интернет</string>
     <string name="share_apk_error">Грешка при споделяне на файл на приложение</string>
     <string name="apps">Приложения</string>
@@ -518,7 +518,7 @@
     <string name="warning_target_sdk">Приложението е създадено за по-ранно издание на Андроид и не може да бъде обновено автоматично.</string>
     <string name="app_error_open">Приложението не може да бъде отворено.</string>
     <string name="swap_banner_message">За да разменяте приложения и двамата се свържете към една безжична мрежа.</string>
-    <string name="turn_on_wifi">Включване на Wi-Fi</string>
+    <string name="turn_on_wifi">Включване на безжична мрежа</string>
     <string name="repo_add_new_title">Добавяне на хранилище</string>
     <string name="repo_add_new_mirror">Добавяне като ново огледало</string>
     <string name="repo_intro">Хранилището е допълнителен източник на приложения. Тези хранилища, които добавяте имат различни изисквания към приложенията от вграденото във F-Droid.\n\nДобавяйте само хранилища, на които имате доверие.</string>
@@ -572,7 +572,7 @@
     <string name="repo_disable_warning">Изключване на това хранилище ще премахне състоянието „предпочитано“ от всички приложения.</string>
     <string name="repo_add_repo_and_mirror">Добавяне на хранилище или огледало</string>
     <string name="repo_view_repo">Преглед</string>
-    <string name="repo_scan_qr_code">Сканиране на код за QR</string>
+    <string name="repo_scan_qr_code">Сканиране на QR</string>
     <string name="repo_preview_included_apps">Налични приложения:</string>
     <string name="repo_mirror_exists">Това огледало е вече добавено (%s).</string>
     <string name="repo_and_mirror_add_both_info">Адресът, който добавяте (%s) е огледало на ново хранилище. И хранилището, и огледалото ще бъдат добавени.</string>
@@ -587,4 +587,28 @@
     <string name="menu_share_apk">Споделяне на APK</string>
     <string name="preferForeignSummary">Пробване първо на огледала, намиращи се извън държавата напр. ако чуждестранната защита е по-добра.</string>
     <string name="preferForeign">Предпочитане на външни огледала</string>
+    <string name="no_handler_app_generic">Никое инсталирано приложение не може да се справи с тази задача.</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 приложение</item>
+        <item quantity="other">%d приложения</item>
+    </plurals>
+    <string name="repo_last_update_index">Последно обновяване на хранилището: %s</string>
+    <string name="repo_last_update_check">Последна проверка за обновяване на хранилището: %s</string>
+    <string name="repo_archive_unknown">Хранилището изглежда няма архив.</string>
+    <string name="repo_archive_check">Проверяване за архив</string>
+    <string name="repo_confirm_delete_mirror_title">Премахване на огледалото?</string>
+    <string name="repo_details_info_text">Хранилиата са източник на приложения.\n\nОгледалата се използват за разпределение на натоварването при изтегляне на приложения между повече сървъри. Огледалата в близост до вас може да са по-бързи.\n\nОфициалните огледала са определени от собственика на хранилището. Не могат да бъдат премахвани, а само изключвани. Можете да добавяте допълнителни огледала по същия начин, по който добавяте хранилища.</string>
+    <string name="repo_confirm_delete_mirror_body">Можете да инсталирате приложения от другите огледала.</string>
+    <string name="share_mirror">Споделяне на огледало</string>
+    <string name="show_repository_qr">QR на хранилище</string>
+    <string name="repo_basic_auth_title">Обикновено удостоверяване</string>
+    <string name="repo_basic_auth_username">Потребител: %s</string>
+    <string name="repo_basic_auth_password">Парола: ***</string>
+    <string name="repo_basic_auth_edit">Променяне</string>
+    <string name="collapse">Свиване</string>
+    <string name="expand">Разгъване</string>
+    <string name="export_log_success">Дневникът е запазен</string>
+    <string name="pref_export_log_summary">Създава файл с изхода на logcat, полезен за отстраняване на грешки. Внимавайте, файлът може да съдържа чувствителна информация!</string>
+    <string name="pref_export_log_title">Дневник</string>
+    <string name="export_log_error">Грешка при запазване на днвеника</string>
 </resources>

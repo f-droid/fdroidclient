@@ -124,9 +124,7 @@
     <string name="repo_added">Uložený archív balíkov %1$s.</string>
     <string name="repo_searching_address">Hľadá sa repozitár na
 \n %1$s</string>
-    <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve
-        pridali! Skúste sa pripojiť na túto sieť: %s
-    </string>
+    <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve pridali! Skúste sa pripojiť na túto sieť: %s</string>
     <string name="requires_features">Vyžaduje: %1$s</string>
     <string name="category_Development">Vývoj</string>
     <string name="category_Games">Hry</string>
@@ -234,9 +232,7 @@
     <string name="repo_details">Repozitár</string>
     <string name="repo_url">Adresa</string>
     <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
-    <string name="swap_join_same_wifi_desc">Pre výmenu cez wifi sa uistite, že ste v rovnakej sieti. Ak nemáte prístup
-        do rovnakej siete, možete vytvoriť na jednom zo zariadení Wi-Fi Hotspot.
-    </string>
+    <string name="swap_join_same_wifi_desc">Pre výmenu cez wifi sa uistite, že ste v rovnakej sieti. Ak nemáte prístup do rovnakej siete, možete vytvoriť na jednom zo zariadení Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Pomôžte kamarátovi pripojiť sa k vášmu hotspotu</string>
     <string name="swap_switch_to_wifi">Dotykom prepnúť na Wi-Fi</string>
     <string name="swap_people_nearby">Ľudia v okolí</string>

@@ -1,7 +1,8 @@
-* Tárolófrissítő újraírása a megbízhatóbb háttérbeli frissítés érdekében
-* Figyelmeztetés, ha az alkalmazások nem frissíthetők az előnyben részesített tárolóból
-* A tükrük kezelésének javítása a „Tároló hozzáadása” előnézetében
-* Beavatkozásmentes alkalmazásfrissítések a nem MIUI-t futtató Xiaomi-eszközökön
-* Előnytelen funkciók leírásának frissítése
-* „Kötött hálózat” előnytelen funkció hozzáadása
-* Szóközök figyelmen kívül hagyása a tükrök hozzáadásakor
+* kísérleti támogatás az alkalmazások archiválásának feloldásához android 15 alatt
+* újonnan telepített alkalmazások aut. hozzáadása a kezdőképernyőhöz a legtöbb indítóban
+* külön link- és fájlmegosztási műveletek az alkalmazás részleteiben
+* pirítós megjelenítése, ha az APK több jogosultsággal rendelkezik a vártnál
+* gyakrabban tisztítja a belső gyorsítótárakat
+* adományozási jelvények újrarendezése
+* kapcsoló hozzáadása az idegen tükrök előnyben részesítéséhez
+* sok apró hibajavítás

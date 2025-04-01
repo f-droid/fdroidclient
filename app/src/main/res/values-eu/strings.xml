@@ -176,9 +176,7 @@
     <string name="category_Theming">Itxura</string>
     <string name="category_Time">Denbora</string>
     <string name="category_Writing">Idazketa</string>
-    <string name="not_on_same_wifi">Zure gailua eta gehitu berri duzun biltegia ez daude Wi-Fi berean! Saiatu sare
-        honetara sartzen: %s
-    </string>
+    <string name="not_on_same_wifi">Zure gailua eta gehitu berri duzun biltegia ez daude Wi-Fi berean! Saiatu sare honetara sartzen: %s</string>
     <string name="requires_features">Behar du: %1$s</string>
     <string name="empty_installed_app_list">Ez da aplikaziorik instalatu.\n\nAplikazioak daude zure gailuan baina ez
         daude F-Droid bitartez eskuragarri. Biltegiak eguneratu behar dituzulako izan daiteke, edo benetan biltegiek ez
@@ -222,9 +220,7 @@
     <string name="swap_no_peers_nearby">Ezin izan da inguruan partekatzeko jenderik aurkitu.</string>
     <string name="swap_confirm">Berretsi trukea</string>
     <string name="swap_join_same_wifi">Batu zure adiskidearen Wi-Fi sare berera</string>
-    <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue
-        sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.
-    </string>
+    <string name="swap_join_same_wifi_desc">Wi-Fi bidez partekatzeko, egiaztatu biak sare berean zaudetela. Ez baduzue sare berera konektatzerik zuetako batek Wi-Fi gune bat sor dezake.</string>
     <string name="swap_qr_isnt_for_swap">Eskaneatu duzun QR kodea ez diruri truke kode bat.</string>
     <string name="swap_connection_misc_error">Errore bat gertatu da gailura konektatzean, ezin dugu honekin trukatu!</string>
     <string name="install_confirm">baimen hauek behar ditu</string>
@@ -314,8 +310,7 @@
     <string name="app_new">Berria</string>
     <string name="installed_apps__activity_title">Instalatutako aplikazioak</string>
     <string name="installed_app__updates_ignored">Eguneraketak ezikusita</string>
-    <string name="installed_app__updates_ignored_for_suggested_version">"Eguneraketak ezikusita %1$s bertsioarentzat"
-    </string>
+    <string name="installed_app__updates_ignored_for_suggested_version">Eguneraketak ezikusita %1$s bertsioarentzat</string>
     <string name="preference_category__my_apps">Nire aplikazioak</string>
     <string name="preference_manage_installed_apps">Kudeatu instalatutako aplikazioak</string>
     <string name="tts_category_name">%1$s kategoria</string>
@@ -440,7 +435,7 @@
     <string name="repo_delete_to_overwrite">Aurretik ezabatu %1$s hau gehitzeko gakoen arteko talka batean.</string>
     <string name="repo_exists_add_mirror">Hau %1$s biltegiaren kopia bat da, ispilu gisa gehitu?</string>
     <string name="repo_official_mirrors">Ispilu ofizialak</string>
-    <string name="repo_user_mirrors">Erabiltzaileen ispiluak</string>
+    <string name="repo_user_mirrors">Erabiltzailaren ispiluak</string>
     <string name="use_bluetooth">Erabili Bluetooth</string>
     <string name="swap_toast_invalid_url">Trukaketarako URL baliogabea: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi sarrera gunea gaituta</string>
@@ -623,4 +618,26 @@
     <string name="menu_share_apk">Partekatu APK fitxategia</string>
     <string name="apk_permissions_mismatch">Aplikazioak ustekabeko baimen bat dauka: %s</string>
     <string name="swap_bluetooth_permissions">Mesedez eman Bluetooth edo Inguruko gailua baimena!</string>
+    <string name="share_mirror">Partekatu ispilua</string>
+    <string name="preferForeignSummary">Saiatu zure herrialdetik kanpo dauden ispiluak, adibidez, atzerriko babesak indartsuagoak badira.</string>
+    <string name="repo_last_update_index">Azken eguneraketa: %s</string>
+    <string name="repo_last_update_check">Eguneraketaren azken egiaztapena: %s</string>
+    <string name="repo_confirm_delete_mirror_body">Biltegi honetako aplikazioak instalatzen jarrai dezakezu beste ispiluak erabiliz.</string>
+    <string name="repo_basic_auth_title">Oinarrizko autentifikazioa</string>
+    <string name="repo_basic_auth_username">Erabiltzaile-izana: %s</string>
+    <string name="no_handler_app_generic">Ez duzu aplikazio erabilgarririk hau kudeatzeko.</string>
+    <string name="repo_details_info_text">Biltegia aplikazioen iturburua da.\n\nIspiluak erabiltzen dira deskargatzeko aplikazioen karga hainbat zerbitzaritan banatzeko. Zuregandik gertuagoko ispiluak azkarragoak izan daitezke.\n\nBiltegiaren jabeak ispilu ofizialak definitzen ditu. Ezin dira ezabatu, desgaitu baizik. Ispilu pertsonalizatuak defini ditzakezu biltegi normal bat bezala gehituz.</string>
+    <string name="repo_archive_unknown">Biltegi honek ez dirudi artxiborik duenik.</string>
+    <string name="repo_archive_check">Egiaztatu artxiboa</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">Aplikazio 1</item>
+        <item quantity="other">%d aplikazio</item>
+    </plurals>
+    <string name="repo_confirm_delete_mirror_title">Ezabatu ispilua?</string>
+    <string name="show_repository_qr">Erakutsi biltegiaren QR kodea</string>
+    <string name="repo_basic_auth_password">Pasahitza: ***</string>
+    <string name="repo_basic_auth_edit">Editatu</string>
+    <string name="expand">Zabaldu</string>
+    <string name="collapse">Tolestu</string>
+    <string name="preferForeign">Hobetsi kanpoko ispiluak</string>
 </resources>

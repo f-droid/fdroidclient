@@ -100,7 +100,7 @@
     <string name="unsigned_description">Ово значи да се листа апликација не може верификовати. Будите опрезни са апликацијама преузетим са непотписаних индекса.</string>
     <string name="repo_not_yet_updated">Овај репозиторијум још није коришћен. Омогућите га да бисте видели апликације у њему.</string>
     <string name="unknown">Непознато</string>
-    <string name="repo_confirm_delete_title">Избрисати репозиторијум\?</string>
+    <string name="repo_confirm_delete_title">Избрисати репозиторијум?</string>
     <string name="repo_confirm_delete_body">Ако избришете репозиторијум, апликације у њему више неће бити доступне.\n\nНапомена: све раније инсталиране апликације ће остати на вашем уређају.</string>
     <string name="repo_disabled_notification">Репозиторијум %1$s је онемогућен.\n\nДа бисте инсталирали апликације из њега, мораћете поново да га омогућите.</string>
     <string name="repo_added">Репозиторијум %1$s је сачуван.</string>
@@ -315,7 +315,7 @@
         <item quantity="other">Ажурирано пре %1$d дана</item>
     </plurals>
     <string name="app_list__name__successfully_installed">Апликација %1$s је инсталирана</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернет везу\? Преузмите апликације од људи у близини!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Немате интернет везу? Преузмите апликације од људи у близини!</string>
     <string name="nearby_splash__find_people_button">Пронађи људе у близини</string>
     <string name="nearby_splash__both_parties_need_fdroid">За коришћење функције „У близини” обема странама је потребан %1$s.</string>
     <string name="latest__empty_state__no_recent_apps">Нема недавних апликација</string>
@@ -598,4 +598,26 @@
     <string name="menu_share_apk">Дели APK фајл</string>
     <string name="preferForeignSummary">Прво проба резервне изворе који се налазе ван ваше земље, нпр. ако су стране заштите јаче.</string>
     <string name="preferForeign">Преферирај стране резервне изворе</string>
+    <string name="repo_confirm_delete_mirror_title">Избрисати резервни извор?</string>
+    <string name="repo_basic_auth_title">Основна потврда идентитета</string>
+    <string name="repo_confirm_delete_mirror_body">Можете наставити да инсталирате апликације из овог репозиторијума користећи друге резервне изворе.</string>
+    <string name="repo_archive_unknown">Изгледа да овај репозиторијум нема архиву.</string>
+    <string name="repo_archive_check">Провера архива</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d апликација</item>
+        <item quantity="few">%d апликације</item>
+        <item quantity="other">%d апликација</item>
+    </plurals>
+    <string name="repo_last_update_index">Последње ажурирање репозиторијума: %s</string>
+    <string name="repo_last_update_check">Последња провера ажурирања репозиторијума: %s</string>
+    <string name="share_mirror">Дели резервни извор</string>
+    <string name="repo_basic_auth_username">Корисничко име: %s</string>
+    <string name="repo_basic_auth_password">Лозинка: ***</string>
+    <string name="repo_basic_auth_edit">Измени</string>
+    <string name="expand">Прошири</string>
+    <string name="collapse">Скупи</string>
+    <string name="no_handler_app_generic">Немате апликацију која може да обради ово.</string>
+    <string name="repo_details_info_text">Репозиторијум је извор апликација.\n\nРезервни извори се користе за дистрибуцију оптерећења преузимања апликација на више сервера. Резервни извори који су вам ближи могу бити бржи.\n\nЗваничне резервне изворе дефинише власник репозиторијума. Не могу се избрисати, само онемогућити. Можете дефинисати додатне прилагођене резервне изворе тако што ћете их додати баш као нормални репозиторијум.</string>
+    <string name="show_repository_qr">Прикажи QR кôд репозиторијума</string>
+    <string name="pref_export_log_title">Дневник отклањања грешака</string>
 </resources>

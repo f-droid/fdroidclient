@@ -84,7 +84,7 @@
     <string name="system_installer_on">ཨེཕ་རོཌ་ཁེ་ཕན་འཕར་མ་བེད་སྤྱོད་བྱས་ཏེ་འགྲིག་བཅུག་དང་། གསར་བསྒྱུར། ཐུམ་སྒྲིལ་མེད་པ་བཟོས།</string>
     <string name="local_repo_name">ཁྱེད་རང་གི་རཱེ་པ་བསྟི་གནས་ཀྱི་མིང་།</string>
     <string name="local_repo_name_summary">ཁྱེད་རང་གི་རཱེ་པོ་བསྟི་གནས་ཀྱི་ཁྱབ་བསྒྲགས་འགོ་བརྗོད།:%s</string>
-    <string name="local_repo_https_on">HTTPS གསང་སྡོམ་བེད་སྤྱོད་://རཱེ་པོ་བསྟི་གནས་ལ་མཐུད་ཀ།</string>
+    <string name="local_repo_https_on">HTTPS གསང་སྡོམ་བེད་སྤྱོད་://རཱེ་པོ་བསྟི་གནས་ལ་མཐུད་ཀ།</string>
     <string name="login_title">ཁུངས་ལྡན་ར་སྤྲོད་དགོས།</string>
     <string name="login_name">སྤྱོད་མིང།</string>
     <string name="login_password">གསང་ཨང་།</string>

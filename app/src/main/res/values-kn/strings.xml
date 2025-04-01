@@ -252,7 +252,7 @@
     <string name="preference_manage_installed_apps">ಸ್ಥಾಪಿಸಲಾದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಿ</string>
     <string name="details_notinstalled">ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ</string>
     <string name="antitracklist">ಈ ಅಪ್ಲಿಕೇಶನ್ ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡುತ್ತದೆ ಮತ್ತು ವರದಿ ಮಾಡುತ್ತದೆ</string>
-    <string name="warning_no_internet">ನವೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ, ನೀವು ಇಂಟರ್ನೆಟ್‌ಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದ್ದೀರಾ\?</string>
+    <string name="warning_no_internet">ನವೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ, ನೀವು ಇಂಟರ್ನೆಟ್‌ಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದ್ದೀರಾ?</string>
     <string name="theme">ಥೀಮ್</string>
     <string name="unsigned">ಸಹಿ ಮಾಡಲಾಗಿಲ್ಲ</string>
     <string name="unverified">ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ</string>
@@ -411,7 +411,7 @@
     <string name="nearby_splash__document_tree">ರೆಪೊಗಳು ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಯುಎಸ್‌ಬಿ ಒಟಿಜಿಯನ್ನು ಹುಡುಕಿ.</string>
     <string name="nearby_splash__read_external_storage">ರೆಪೊಸಿಟರಿ ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಎಸ್‌ಡಿ ಕಾರ್ಡ್ ಹುಡುಕಿ.</string>
     <string name="nearby_splash__both_parties_need_fdroid">ಹತ್ತಿರದಲ್ಲಿ ಬಳಸಲು ಎರಡೂ ಪಕ್ಷಗಳಿಗೆ %1$s ಅಗತ್ಯವಿದೆ.</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">ಇಂಟರ್ನೆಟ್ ಇಲ್ಲವೇ\? ನಿಮ್ಮ ಹತ್ತಿರದ ಜನರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯಿರಿ!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">ಇಂಟರ್ನೆಟ್ ಇಲ್ಲವೇ? ನಿಮ್ಮ ಹತ್ತಿರದ ಜನರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯಿರಿ!</string>
     <string name="system_install_denied_permissions">ವಿಸ್ತರಣೆಗೆ ಸವಲತ್ತು ಅನುಮತಿಗಳನ್ನು ನೀಡಲಾಗಿಲ್ಲ! ದಯವಿಟ್ಟು ದೋಷ ವರದಿಯನ್ನು ರಚಿಸಿ!</string>
     <string name="uninstall_error_unknown">ಅಜ್ಞಾತ ದೋಷದಿಂದಾಗಿ ಅಸ್ಥಾಪಿಸಲು ವಿಫಲವಾಗಿದೆ</string>
     <string name="install_error_unknown">ಅಜ್ಞಾತ ದೋಷದಿಂದಾಗಿ ಸ್ಥಾಪಿಸಲು ವಿಫಲವಾಗಿದೆ</string>
@@ -437,7 +437,7 @@
     <string name="repo_confirm_delete_body">ರೆಪೊಸಿಟರಿಯನ್ನು ಅಳಿಸುವುದು ಎಂದರೆ ಅದರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿರುವುದಿಲ್ಲ.
 \n
 \nಗಮನಿಸಿ: ಈ ಹಿಂದೆ ಸ್ಥಾಪಿಸಲಾದ ಎಲ್ಲಾ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಉಳಿಯುತ್ತವೆ.</string>
-    <string name="repo_confirm_delete_title">ಭಂಡಾರವನ್ನು ಅಳಿಸುವುದೇ\?</string>
+    <string name="repo_confirm_delete_title">ಭಂಡಾರವನ್ನು ಅಳಿಸುವುದೇ?</string>
     <string name="repo_not_yet_updated">ಈ ಭಂಡಾರವನ್ನು ಇನ್ನೂ ಬಳಸಲಾಗಿಲ್ಲ. ಅದು ಒದಗಿಸುವ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನೀವು ಅದನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಬೇಕಾಗಿದೆ.</string>
     <string name="unsigned_description">ಇದರರ್ಥ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಪಟ್ಟಿಯನ್ನು ಪರಿಶೀಲಿಸಲಾಗುವುದಿಲ್ಲ. ಸಹಿ ಮಾಡದ ಸೂಚಿಕೆಗಳಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳೊಂದಿಗೆ ನೀವು ಜಾಗರೂಕರಾಗಿರಬೇಕು.</string>
     <string name="repo_user_mirrors">ಬಳಕೆದಾರ ಕನ್ನಡಿಗಳು</string>

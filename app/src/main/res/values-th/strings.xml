@@ -251,12 +251,9 @@
     <string name="keep_install_history_summary">เก็บประวัติการติดตั้งและการถอนโปรแกรมต่างๆ ทั้งหมดไว้ในหน่วยความจำเฉพาะ</string>
     <string name="writing_index_jar">กำลังบันทึกไฟล์ดรรชนีพร้อมลายเซ็นดิจิตอล (index.jar)…</string>
     <string name="all_other_repos_fine">repos อื่นๆ ทั้งหมดไม่ได้สร้างข้อผิดพลาด</string>
-    <string name="warning_no_internet">ไม่สามารถอัปเดต คุณเชื่อมต่อกับอินเทอร์เน็ตหรือยัง\?</string>
+    <string name="warning_no_internet">ไม่สามารถอัปเดต คุณเชื่อมต่อกับอินเทอร์เน็ตหรือยัง?</string>
     <string name="swap_confirm_connect">คุณต้องการรับแอปจาก %1$s ตอนนี้หรือไม่\?</string>
-    <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi,
-        คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ
-        WiFi ของตัวเองแทนได้เช่นกัน
-    </string>
+    <string name="swap_join_same_wifi_desc">เมื่อคุณต้องการแบ่งปันโปรแกรมผ่าน WiFi, คุณจะต้องอยู่ในเครือข่ายเดียวกันก่อน, แต่ถ้าคุณเข้าเครือข่ายเดียวกันไม่ได้ คนใดคนหนึ่งสามารถเปิดตัวส่งสัญญาณ WiFi ของตัวเองแทนได้เช่นกัน</string>
     <string name="system_install_denied_permissions">ส่วนขยายช่วยติดตั้งทำงาน แต่กลับไม่ได้รับสิทธิ์ในการจัดการโปรแกรมจากระบบ!, หากเป็นไปได้ ช่วยรายงานปัญหานี้ไปที่ทีมพัฒนา F-Droid ด้วย!</string>
     <string name="empty_installed_app_list">ไม่มีการติดตั้งแอป
 \n
@@ -458,7 +455,7 @@
     <string name="panic_destructive_actions">การกระทำที่ทำลายล้าง</string>
     <string name="swap_toast_using_path">กำลังใช้ %1$s</string>
     <string name="antifeatureswarning">แอปนี้มีคุณสมบัติที่คุณอาจไม่ชอบ</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">อินเทอร์เน็ตไม่มีเหรอ\? ลองรับแอพจากคนใกล้ตัวคุณสิ!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">อินเทอร์เน็ตไม่มีเหรอ? ลองรับแอพจากคนใกล้ตัวคุณสิ!</string>
     <string name="panic_hide_warning_message">ในกรณีที่เกิดความตื่นตระหนก การดำเนินการนี้จะลบ %1$s ออกจากตัวเรียกใช้งาน มีเพียงการพิมพ์ \"%2$d\" ในแอป %3$s ปลอมเท่านั้นที่สามารถกู้คืนได้</string>
     <string name="antiads">โฆษณา</string>
     <string name="panic_hide_title">ซ่อน %s</string>

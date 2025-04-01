@@ -15,7 +15,7 @@
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
     <string name="local_repo_name_summary">Den annonserade titeln på ditt lokala förråd: %s</string>
     <string name="local_repo_https_on">Använd krypterad HTTPS://-anslutning för lokalt förråd</string>
-    <string name="app_details">Detaljer för app</string>
+    <string name="app_details">Appdetaljer</string>
     <string name="no_such_app">Hittade ingen sådan app.</string>
     <string name="about_title_full">Om F-Droid</string>
     <string name="about_site">Webbplats</string>
@@ -32,7 +32,7 @@
     <string name="repo_add_add">Lägg till</string>
     <string name="cancel">Avbryt</string>
     <string name="enable">Aktivera</string>
-    <string name="add_key">Lägg till en nyckel</string>
+    <string name="add_key">Lägg till nyckel</string>
     <string name="overwrite">Skriv över</string>
     <string name="bluetooth_activity_not_found">Ingen metod för att kunna skicka med Bluetooth hittades, välj en!</string>
     <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>
@@ -106,7 +106,7 @@
         Du måste aktivera det för att se apparna det tillhandahåller.
     </string>
     <string name="unknown">Okänd</string>
-    <string name="repo_confirm_delete_title">Radera förråd?</string>
+    <string name="repo_confirm_delete_title">Ta bort förråd?</string>
     <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga.
 \n
 \nObservera: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
@@ -115,7 +115,7 @@
 \nDu måste återaktivera detta förråd för att installera appar från det.</string>
     <string name="repo_searching_address">Söker efter paketförråd på
 \n%1$s</string>
-    <string name="not_on_same_wifi">Din enhet är inte på samma wifi som det lokala förrådet du just lagt till! Försök ansluta till detta nätverk: %s</string>
+    <string name="not_on_same_wifi">Din enhet är inte på samma Wi-Fi som det lokala förrådet du just lade till! Prova att gå med i detta nätverk: %s</string>
     <string name="requires_features">Kräver: %1$s</string>
     <string name="category_Development">Utveckling</string>
     <string name="category_Games">Spel</string>
@@ -131,7 +131,7 @@
     <string name="swap">Utbyta appar</string>
     <string name="swap_no_wifi_network">Inget nätverk ännu</string>
     <string name="swap_view_available_networks">Tryck för att öppna tillgängliga nätverk</string>
-    <string name="open_qr_code_scanner">Öppna QR-läsare</string>
+    <string name="open_qr_code_scanner">Öppna QR-skanner</string>
     <string name="swap_welcome">Välkommen till F-Droid!</string>
     <string name="swap_confirm_connect">Vill du ta emot appar från %1$s nu?</string>
     <string name="app_name_full">F-Droid</string>
@@ -166,14 +166,14 @@
     <string name="repo_edit_credentials">Ändra lösenord</string>
     <string name="repo_error_empty_username">Tomt användarnamn, användaruppgifterna har inte ändrats</string>
     <string name="about_license">Licens</string>
-    <string name="menu_email">E-posta utvecklare</string>
+    <string name="menu_email">Skicka ett e-postmeddelande till utvecklaren</string>
     <string name="antinonfreeassetslist">Denna app innehåller icke-fria tillgångar</string>
     <string name="useTor">Använd Tor</string>
     <string name="useTorSummary">Tvinga hämtningstrafik genom Tor för ökad integritet. Kräver Orbot</string>
     <string name="status_processing_xml_percent">Bearbetar %2$s / %3$s (%4$d%%) från %1$s</string>
     <string name="status_inserting_apps">Sparar appdetaljer</string>
     <string name="repo_added">Sparat paketförråd %1$s.</string>
-    <string name="wifi_ap">Surfzon</string>
+    <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Anslutbarhet</string>
     <string name="category_Graphics">Grafik</string>
     <string name="category_Money">Pengar</string>
@@ -190,10 +190,10 @@
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
     <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats utökningen! Skapa en felrapport!</string>
-    <string name="swap_join_same_wifi_desc">För att utbyta via wifi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en wifi-surfzon.</string>
-    <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din surfzon</string>
+    <string name="swap_join_same_wifi_desc">För att utbyta via Wi-Fi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en Wi-Fi-hotspot.</string>
+    <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din hotspot</string>
     <string name="swap_success">Utbyte lyckades!</string>
-    <string name="swap_active_hotspot">%1$s (din surfzon)</string>
+    <string name="swap_active_hotspot">%1$s (din hotspot)</string>
     <string name="swap_switch_to_wifi">Tryck för att växla till ett Wi-Fi-nätverk</string>
     <string name="swap_dont_show_again">Visa inte detta igen</string>
     <string name="swap_scan_or_type_url">En person behöver skanna koden eller skriva in adressen för den andra i en webbläsare.</string>
@@ -263,14 +263,14 @@
     <string name="keep_install_history_summary">Lagra en logg över alla installationer och avinstallationer i en privat butik</string>
     <string name="update_auto_install">Installera uppdateringar automatiskt</string>
     <string name="update_auto_install_summary">Hämta och uppdatera appar i bakgrunden, visar en avisering</string>
-    <string name="warning_no_internet">Kan inte uppdatera, är du ansluten till Internet\?</string>
+    <string name="warning_no_internet">Kan inte uppdatera, är du ansluten till internet?</string>
     <string name="versions">Versioner</string>
     <string name="app_details_donate_prompt_unknown_author">Köp en kopp kaffe till %1$s-utvecklarna!</string>
     <string name="app_details_donate_prompt">%1$s är skapad av %2$s. Köp en kaffe till dem!</string>
     <string name="repositories_summary">Lägg till ytterligare källor till appar</string>
     <string name="app_version_x_available">Version %1$s är tillgänglig</string>
     <string name="app_version_x_installed">Version %1$s</string>
-    <string name="app_recommended_version_installed">Version %1$s (Rekommenderad)</string>
+    <string name="app_recommended_version_installed">Version %1$s (rekommenderad)</string>
     <string name="app_new">Ny</string>
     <string name="installed_apps__activity_title">Installerade appar</string>
     <string name="installed_app__updates_ignored">Uppdateringar ignorerade</string>
@@ -288,7 +288,7 @@
     <string name="notification_title_single_update_available">Uppdatering tillgänglig</string>
     <string name="notification_title_single_ready_to_install">Färdig att installeras</string>
     <string name="notification_title_single_ready_to_install_update">Uppdatering redo att installeras</string>
-    <string name="notification_title_single_install_error">Installation misslyckades</string>
+    <string name="notification_title_single_install_error">Installationen misslyckades</string>
     <string name="notification_content_single_downloading">Hämtar \"%1$s\"…</string>
     <string name="notification_content_single_downloading_update">Hämtar uppdatering för \"%1$s\"…</string>
     <string name="notification_content_single_installing">Installerar \"%1$s\"…</string>
@@ -398,13 +398,13 @@
     <string name="panic_hide_title">Dölj %s</string>
     <string name="panic_hide_summary">Appen kommer att döljas</string>
     <string name="preventScreenshots_summary">Blockerar skärmdumpar från att tas och döljer appinnehåll från de senaste apparnas skärm</string>
-    <string name="panic_app_setting_title">Panikknappapp</string>
+    <string name="panic_app_setting_title">App för panikknapp</string>
     <string name="sort_search">Sortera sökning</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="panic_hide_warning_title">Kom ihåg hur man återställer</string>
     <string name="panic_hide_warning_message">I en paniksituation kommer detta ta bort %1$s från startaren. Att bara skriva \"%2$d\" i fejk %3$s appen kan återställa det.</string>
     <string name="hiding_calculator">Kalkylator</string>
-    <string name="hiding_dialog_title">Dölj %s Nu</string>
+    <string name="hiding_dialog_title">Dölj %s nu</string>
     <string name="hiding_dialog_message">Är du säker på att du vill ta bort %1$s från startaren? Att bara skriva \"%2$d\" i fejkappen %3$s kan återställa det.</string>
     <string name="hiding_dialog_warning">Varning: Alla appgenvägar på startskärmen kommer också att tas bort och måste läggas till igen manuellt.</string>
     <string name="hide_on_long_search_press_title">Dölj med sökknappen</string>
@@ -430,8 +430,8 @@
     <string name="repo_user_mirrors">Användarspeglar</string>
     <string name="use_bluetooth">Använd Bluetooth</string>
     <string name="swap_toast_invalid_url">Ogiltig URL för växling: %1$s</string>
-    <string name="swap_toast_hotspot_enabled">Wi-Fi-accesspunkt aktiverad</string>
-    <string name="swap_toast_could_not_enable_hotspot">Kunde inte aktivera Wi-Fi-accesspunkt!</string>
+    <string name="swap_toast_hotspot_enabled">Wi-Fi-hotspot aktiverad</string>
+    <string name="swap_toast_could_not_enable_hotspot">Kunde inte aktivera Wi-Fi-hotspot!</string>
     <string name="warning_scaning_qr_code">Din kamera verkar inte ha autofokus. Det kan bli svårt att skanna koden.</string>
     <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
     <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
@@ -444,7 +444,7 @@
     <string name="share_repository">Dela förråd</string>
     <string name="send_install_history">Skicka installationshistorik</string>
     <string name="send_history_csv">%s installera historiken som en CSV-fil</string>
-    <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av Mobildata/Wi-Fi-inställningar</string>
+    <string name="updates_disabled_by_settings">Alla uppdateringar inaktiverades av mobildata/Wi-Fi-inställningar</string>
     <string name="send_installed_apps">Dela installerade appar</string>
     <string name="send_installed_apps_csv">Appar installerade av F-Droid som CSV-fil</string>
     <string name="menu_open">Öppna</string>
@@ -462,7 +462,7 @@
     <string name="not_visible_nearby">I närheten inte aktiverat</string>
     <string name="not_visible_nearby_description">Gör din enhet synlig innan du byter med närliggande enheter.</string>
     <string name="swap_toast_not_removable_storage">Det valet matchade inte några borttagbara lagringsenheter, försök igen!</string>
-    <string name="swap_toast_find_removeable_storage">Välj borttagbart SD-kort eller USB</string>
+    <string name="swap_toast_find_removeable_storage">Välj ditt borttagbara SD-kort eller USB</string>
     <string name="menu_translation">Översättning</string>
     <string name="undo">Ångra</string>
     <string name="app_list__dismiss_installing_app">Installationen avbröts</string>
@@ -493,17 +493,17 @@
     <string name="notification_channel_swaps_title">Byten</string>
     <string name="menu_show_install_history">Visa installationshistorik</string>
     <string name="menu_show_fdroid_metrics_report">Visa mätvärdesrapport</string>
-    <string name="toast_metrics_in_install_history">%s-mätvärdesrapporten är synlig i Install History-visaren</string>
+    <string name="toast_metrics_in_install_history">Statistikrapporten %s kan ses i installationshistoriken</string>
     <string name="send_to_fdroid_metrics_summary">Skickar anonyma data varje vecka till F-Droid Metrics (kräver Behåll installationshistorik)</string>
     <string name="send_to_fdroid_metrics">Skicka användningsdata</string>
-    <string name="fdroid_metrics_report">%s-mätvärdesrapport</string>
+    <string name="fdroid_metrics_report">%s-statistikrapport</string>
     <string name="install_history_and_metrics">Installera historik och mätvärden</string>
-    <string name="send_fdroid_metrics_json">%s-mätvärdesrapport som JSON-fil</string>
-    <string name="send_fdroid_metrics_report">Skicka %s-mätvärdesrapport</string>
+    <string name="send_fdroid_metrics_json">%s-statistikrapport som JSON-fil</string>
+    <string name="send_fdroid_metrics_report">Skicka %s statistikrapport</string>
     <string name="theme_follow_system">Följ systemet</string>
     <string name="use_pure_black_dark_theme_summary">Rekommenderas endast för OLED-skärmar.</string>
     <string name="use_pure_black_dark_theme">Använd ren svart bakgrund i mörkt tema</string>
-    <string name="banner_no_data_or_wifi">Ingen data eller WiFi aktiverat</string>
+    <string name="banner_no_data_or_wifi">Ingen mobildata eller WiFi aktiverat</string>
     <string name="banner_no_internet">Inget internet</string>
     <string name="share_apk_error">Det gick inte att dela appfilen</string>
     <string name="swap_wifi_vpn_conflict">Konflikter med aktiv VPN!</string>
@@ -532,7 +532,7 @@
     <string name="category_Nightly">nattlig</string>
     <string name="warning_target_sdk">Den här appen byggdes för en äldre version av Android och kan inte uppdateras automatiskt.</string>
     <string name="copied_to_clipboard">Kopierad till urklipp</string>
-    <string name="turn_on_wifi">Sätt på wifi</string>
+    <string name="turn_on_wifi">Slå på Wi-Fi</string>
     <string name="nearby_splace__external_storage_permission_button">Testa den</string>
     <string name="force_old_installer_title">Tvinga gammal installerare</string>
     <string name="repo_state_adding">Lägger till förråd…</string>
@@ -563,15 +563,15 @@
     <string name="app_details_repository_preferred">(föredras)</string>
     <string name="auto_update_time_past">Nästa uppdatering när villkoren är uppfyllda</string>
     <string name="ipfsgw_add_add">Lägg till</string>
-    <string name="ipfsgw_add_title">Lägg till gateway för IPFS</string>
+    <string name="ipfsgw_add_title">Lägg till IPFS-gateway</string>
     <string name="app_details_repository">Filförråd</string>
     <string name="repo_scan_qr_code">Skanna QR-kod</string>
     <string name="repo_add_repo_and_mirror">Lägg till filförråd och spegel</string>
     <string name="repo_preview_included_apps">Inkluderade appar:</string>
-    <string name="ipfsgw_caption_official_gateways">Officiella gateways för IPFS</string>
+    <string name="ipfsgw_caption_official_gateways">Officiella IPFS-gateways</string>
     <string name="repositories_last_update_never">aldrig</string>
     <string name="repositories_last_update">Uppdaterades senast: %s</string>
-    <string name="ipfsgw_caption_custom_gateways">Anpassade gateways för IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Anpassade IPFS-gateways</string>
     <string name="repo_view_repo">Visa filförråd</string>
     <string name="app_details_repository_button_prefer">Föredra förråd</string>
     <string name="app_details_repositories">Förråd</string>
@@ -590,19 +590,43 @@
     <string name="auto_update_time">Nästa tidigaste uppdatering: %s</string>
     <string name="repo_disable_warning_button">Inaktivera</string>
     <string name="repo_disable_warning">Att inaktivera förrådet kommer ta bort dess status som \"föredragen\" från alla appar.</string>
-    <string name="ipfsgw_title">Gateways för IPFS</string>
+    <string name="ipfsgw_title">IPFS-gateways</string>
     <string name="warning_no_compat_versions">Det valda förvaret har inga kompatibla appversioner. För att ta emot uppdateringar, föredra ett förvar med kompatibla versioner.</string>
     <string name="ipfsgw_summary_disabled">Hämta appar med IPFS-webbändpunkter: inaktiverad</string>
     <string name="repo_error_adding_archive">Arkivförvar kan inte läggas till direkt. Tryck på förvarslistan och aktivera arkivet där.</string>
-    <string name="repo_archive_toggle">Förvarsarkiv</string>
+    <string name="repo_archive_toggle">Förrådsarkiv</string>
     <string name="preferForeignSummary">Testa speglar som är placerade utanför ditt land först, t.ex. om det utländska skyddet är starkare.</string>
     <string name="repo_and_mirror_add_both_info">URL:en du försöker lägga till (%s) är en spegel av ett nytt arkiv. Både originalförvaret och spegeln kommer att läggas till.</string>
     <string name="ipfsgw_explainer">Hämtaappar från IPFS-webbändpunkter. (Fungerar endast för F-Droid-förvar med IPFS-stöd.)</string>
-    <string name="preferForeign">Föredrar utländska speglar</string>
+    <string name="preferForeign">Föredra utländska speglar</string>
     <string name="swap_bluetooth_permissions">Vänligen ge tillstånd för Bluetooth eller enhet i närheten!</string>
     <string name="antitetherednet">Tjudringsnätverkstjänster</string>
     <plurals name="ipfsgw_summary">
         <item quantity="one">Ladda ner appar med hjälp av IPFS webbslutpunkter: %1$d aktiverad</item>
         <item quantity="other">Ladda ner appar med hjälp av IPFS webbslutpunkter: %1$d aktiverade</item>
     </plurals>
+    <string name="export_log_success">Logcat har sparats</string>
+    <string name="repo_archive_unknown">Detta förråd verkar inte ha något arkiv.</string>
+    <string name="repo_archive_check">Sök efter arkiv</string>
+    <string name="repo_last_update_check">Senaste kontrollen efter förrådsuppdatering: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Ta bort spegel?</string>
+    <string name="repo_confirm_delete_mirror_body">Du kan fortsätta att installera appar från detta förråd med hjälp av de andra speglarna.</string>
+    <string name="share_mirror">Dela spegel</string>
+    <string name="repo_basic_auth_username">Användarnamn: %s</string>
+    <string name="repo_basic_auth_password">Lösenord: ***</string>
+    <string name="repo_basic_auth_edit">Redigera</string>
+    <string name="expand">Expandera</string>
+    <string name="collapse">Komprimera</string>
+    <string name="no_handler_app_generic">Du har ingen tillgänglig app som kan hantera detta.</string>
+    <string name="pref_export_log_title">Felsökningslogg</string>
+    <string name="repo_basic_auth_title">Grundläggande autentisering</string>
+    <string name="pref_export_log_summary">Skapar en fil med logcat-utmatning användbar för felsökning. Var försiktig, den kan innehålla känslig information!</string>
+    <string name="export_log_error">Det gick inte att spara logcat</string>
+    <string name="repo_details_info_text">Ett förråd är en källa till appar.\n\nSpeglar används för att fördela belastningen av hämtningsbara appar över flera servrar. Speglar närmare dig kan vara snabbare.\n\nOfficiella speglar definieras av förrådsägaren. De kan inte tas bort, bara inaktiveras. Du kan definiera ytterligare anpassade speglar genom att lägga till dem precis som ett vanligt förråd.</string>
+    <string name="show_repository_qr">Visa förrådets QR-kod</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 app</item>
+        <item quantity="other">%d appar</item>
+    </plurals>
+    <string name="repo_last_update_index">Senaste förrådsuppdatering: %s</string>
 </resources>

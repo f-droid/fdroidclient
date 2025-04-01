@@ -1,9 +1,8 @@
-• pliigita senmalfunkcieco de fonaj ĝisdatigoj
-• dividi nomon k priskribon sur aplikaĵ-listo por pliigi legeblecon
-• averto se aplikaĵo neĝisdatigebla per implicita deponejo
-• marki apojn celantajn SDK 24 kiel nekongruajn kun Android 15
-• plibonigita antaŭvido de spegulserviloj en Aldoni deponejon
-• senasistaj ĝisdatigoj de aplikaĵoj por aparatoj Xiaomi sen MIUI
-• konfidi uzant-aldonitajn radikajn atestilojn
-• riparis usklec-blindajn serĉojn kun supersignoj
-• nova fieblo: Alligita al retservo
+• prova subteno por malarĥivigi aplikaĵojn ĉe Android 15
+• aŭtomate aldoni nov-instalitajn apojn al ĉefekrano (@Dhina)
+• apartigitaj agoj Kunhavigi ligilon kaj Kunhavigi APK-dosieron
+• montri sciigon kiam apo postulas pli da permesoj ol esperata
+• pli ofte forviŝi internan kaŝmemoron por ŝpari spacon (@DerGenaue)
+• reordigitaj butonoj Donaci laŭ retejoj (@Leo)
+• agordo por preferi fremdlandajn servilojn
+• aliaj etaj erar-riparoj

@@ -10,8 +10,8 @@
     <string name="update_interval">Интервал автоматического обновления</string>
     <string name="notify">Показывать доступные обновления</string>
     <string name="notify_on">Отображать уведомление о доступных обновлениях</string>
-    <string name="system_installer">Привилегированное расширение</string>
-    <string name="system_installer_on">Использовать привилегированное расширение для установки, обновления и удаления пакетов</string>
+    <string name="system_installer">Особое расширение</string>
+    <string name="system_installer_on">Использовать Особое расширение для установки, обновления и удаления пакетов</string>
     <string name="local_repo_name">Название вашего локального репозитория</string>
     <string name="local_repo_name_summary">Публичное название вашего локального репозитория: %s</string>
     <string name="local_repo_https_on">Использовать защищенное HTTPS:// соединение для локального репозитория</string>
@@ -101,7 +101,7 @@
     <string name="unsigned_description">Это означает, что список приложений не может быть верифицирован. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
     <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Включите его, чтобы просмотреть содержащиеся в нем приложения.</string>
     <string name="unknown">Неизвестно</string>
-    <string name="repo_confirm_delete_title">Удалить репозиторий\?</string>
+    <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
     <string name="repo_confirm_delete_body">Удаление репозитория означает, что приложения из него будут недоступны.\n\nПримечание: все ранее установленные приложения останутся на вашем устройстве.</string>
     <string name="repo_disabled_notification">%1$s отключен.\n\nДля установки приложений из этого репозитория вам потребуется повторно его включить.</string>
     <string name="not_on_same_wifi">Данное устройство не подключено к той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте подключиться к этой сети: %s</string>
@@ -156,7 +156,7 @@
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместима</string>
     <string name="more">Подробнее</string>
-    <string name="less">Свернуть</string>
+    <string name="less">Меньше</string>
     <string name="back">Назад</string>
     <string name="bad_fingerprint">Неверный отпечаток</string>
     <string name="invalid_url">URL некорректен.</string>
@@ -249,7 +249,7 @@
     <string name="update_auto_install_summary">Загрузка и обновление приложений в фоновом режиме с отображением уведомления</string>
     <string name="keep_install_history">Сохранять историю установок</string>
     <string name="keep_install_history_summary">Сохранять журнал всех установок и удалений в приватном хранилище</string>
-    <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету\?</string>
+    <string name="warning_no_internet">Не удается обновить. Вы подключены к интернету?</string>
     <string name="versions">Версии</string>
     <string name="app_details_donate_prompt_unknown_author">Угостите разработчика %1$s чашечкой кофе ☺!</string>
     <string name="update_all">Обновить все</string>
@@ -283,7 +283,7 @@
         <item quantity="many">Показать все %d</item>
         <item quantity="other">Показать все %d</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета\? Получите приложения от людей рядом с вами!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Нет интернета? Получите приложения от людей рядом с вами!</string>
     <string name="notification_title_single_ready_to_install">Готово к установке</string>
     <string name="notification_title_single_install_error">Установка не удалась</string>
     <string name="notification_content_single_downloading">Загрузка \"%1$s\"…</string>
@@ -302,7 +302,7 @@
         <item quantity="other">Обновлено %1$d дней назад</item>
     </plurals>
     <string name="app_details_donate_prompt">Угостите %2$s чашечкой кофе за создание %1$s ☺!</string>
-    <string name="app_recommended_version_installed">Версия %1$s (Рекомендована)</string>
+    <string name="app_recommended_version_installed">Версия %1$s (рекомендована)</string>
     <string name="app__install_downloaded_update">Обновить</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Скачать обновление для %1$d приложения:</item>
@@ -509,7 +509,7 @@
     <string name="theme_follow_system">Определена системой</string>
     <string name="use_pure_black_dark_theme_summary">Рекомендуется только для OLED-экранов.</string>
     <string name="use_pure_black_dark_theme">Использовать абсолютно черный фон в темной теме</string>
-    <string name="banner_no_data_or_wifi">Передача данных или WiFi отключены</string>
+    <string name="banner_no_data_or_wifi">Передача данных или Wi-Fi отключены</string>
     <string name="banner_no_internet">Нет интернета</string>
     <string name="share_apk_error">Не удалось поделиться файлом приложения</string>
     <string name="swap_wifi_vpn_conflict">VPN необходимо отключить!</string>
@@ -528,7 +528,7 @@
     <string name="antiknownvuln">Известная уязвимость</string>
     <string name="antiothers">Прочие анти-функции</string>
     <string name="antinsfw">Небезопасно для работы</string>
-    <string name="menu_release_channel_beta">Разрешить обновления до бета-версий</string>
+    <string name="menu_release_channel_beta">Разрешить бета-версии</string>
     <string name="latest__empty_state__upgrading">Обновление базы данных…</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">О F-Droid Basic</string>
@@ -608,4 +608,30 @@
     <string name="apk_permissions_mismatch">Приложение имеет неоднозначные полномочия: %s</string>
     <string name="preferForeignSummary">Предпочитать зеркала, расположенные за пределами вашей страны, например, если за рубежом защита сильнее.</string>
     <string name="preferForeign">Отдавать предпочтение зарубежным зеркалам</string>
+    <string name="no_handler_app_generic">У вас нет ни одного доступного приложения, которое могло бы справиться с этой задачей.</string>
+    <string name="repo_archive_check">Проверить архив</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d приложение</item>
+        <item quantity="few">%d приложения</item>
+        <item quantity="many">%d приложений</item>
+        <item quantity="other">%d приложений</item>
+    </plurals>
+    <string name="show_repository_qr">Показать QR-код репозитория</string>
+    <string name="repo_basic_auth_title">Простая авторизация</string>
+    <string name="repo_details_info_text">Репозиторий — это источник приложений.\n\nЗеркала используются для распределения нагрузки между несколькими серверами при скачивании приложений. Зеркала, расположенные ближе к вам, могут быть быстрее.\n\nОфициальные зеркала определяются владельцем репозитория. Их нельзя удалить, только отключить. Вы можете определить дополнительные пользовательские зеркала, добавив их так же, как и обычный репозиторий.</string>
+    <string name="repo_archive_unknown">Похоже, что у этого репозитория нет архива.</string>
+    <string name="repo_last_update_index">Последнее обновление репозитория: %s</string>
+    <string name="repo_last_update_check">Последняя проверка обновления репозитория: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Удалить зеркало?</string>
+    <string name="repo_confirm_delete_mirror_body">Вы можете продолжать устанавливать приложения из этого репозитория, используя другие зеркала.</string>
+    <string name="share_mirror">Поделиться зеркалом</string>
+    <string name="repo_basic_auth_username">Имя пользователя: %s</string>
+    <string name="repo_basic_auth_password">Пароль: ***</string>
+    <string name="repo_basic_auth_edit">Редактировать</string>
+    <string name="expand">Развернуть</string>
+    <string name="collapse">Свернуть</string>
+    <string name="pref_export_log_title">Отладочный лог</string>
+    <string name="pref_export_log_summary">Создает файл с выводом logcat, полезный для отладки. Будьте бдительны, он может содержать конфиденциальную информацию!</string>
+    <string name="export_log_success">Logcat успешно сохранен</string>
+    <string name="export_log_error">Ошибка сохранения logcat</string>
 </resources>

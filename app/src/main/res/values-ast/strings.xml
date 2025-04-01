@@ -105,7 +105,7 @@
     <string name="unsigned_description">Esto significa que la llista d\'aplicaciones nun se pudo verificar. Habríes tener curiáu coles aplicaciones que baxes d\'índices ensin firmar.</string>
     <string name="repo_not_yet_updated">Esti depósitu entá nun s\'usó. Tienes d\'activalu pa ver les aplicaciones que forne.</string>
     <string name="unknown">Unknown</string>
-    <string name="repo_confirm_delete_title">¿Quies desaniciar el depósitu\?</string>
+    <string name="repo_confirm_delete_title">¿Quies desaniciar el depósitu?</string>
     <string name="repo_confirm_delete_body">El desaniciu d\'un depósitu significa que les sos aplicaciones yá nun van tar disponibles.
 \n
 \nNota: toles aplicaciones instalaes anteriormente van siguir nel preséu.</string>
@@ -258,7 +258,7 @@
     <string name="update_auto_install">Anovamientos automáticos</string>
     <string name="keep_install_history">Caltener l\'historial d\'instalaciones</string>
     <string name="keep_install_history_summary">Store a log of all installs and uninstalls in a private store</string>
-    <string name="warning_no_internet">Nun se pue anovar. ¿Tienes accesu a internet\?</string>
+    <string name="warning_no_internet">Nun se pue anovar. ¿Tienes accesu a internet?</string>
     <string name="versions">Versiones</string>
     <string name="app_details_donate_prompt">%2$s creó «%1$s». ¡Convídalu a unos culinos!</string>
     <string name="app_version_x_available">Versión %1$s disponible</string>
@@ -326,7 +326,7 @@
         <item quantity="one">Ver %d aplicación</item>
         <item quantity="other">Ver les %d aplicaciones</item>
     </plurals>
-    <string name="nearby_splash__download_apps_from_people_nearby">¿Nun tienes accesu a internet\? ¡Consigui aplicaciones de la xente cercano!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">¿Nun tienes accesu a internet? ¡Consigui aplicaciones de la xente cercano!</string>
     <string name="nearby_splash__find_people_button">Atopar xente cierca</string>
     <string name="nearby_splash__both_parties_need_fdroid">Dambes partes necesiten «%1$s» pa usar la cercanía.</string>
     <string name="app__tts__downloading_progress">En descarga, completóse\'l %1$d%%</string>

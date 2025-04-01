@@ -173,7 +173,7 @@
     <string name="swap_welcome">Welcome sa F-Droid!</string>
     <string name="newPerms">Bago</string>
     <string name="updates__tts__download_app">I-download</string>
-    <string name="warning_no_internet">Di ma-update, nakakonekta ka ba sa Internet\?</string>
+    <string name="warning_no_internet">Di ma-update, nakakonekta ka ba sa Internet?</string>
     <string name="repo_last_update">Huling update</string>
     <string name="app_details">Detalye ng App</string>
     <string name="more">Dagdag</string>
@@ -317,7 +317,7 @@
     <string name="repo_user_mirrors">Mga mirror ng user</string>
     <string name="unsigned_description">Ibig sabihin nito, hindi kayang mabeperika ang listahan ng mga app. Kailangan mong mag-ingat sa mga app na na-download mula sa mga di-pirmadong index.</string>
     <string name="repo_not_yet_updated">Hindi pa nagagamit ang repositoryong ito. Kailangan mo muna itong buksan para makita ang mga app na nandito.</string>
-    <string name="repo_confirm_delete_title">Burahin ang Repositoryo\?</string>
+    <string name="repo_confirm_delete_title">Burahin ang Repositoryo?</string>
     <string name="repo_disabled_notification">Sinara ang %1$s.
 \n
 \nKailangan mo ulit buksan itong repositoryo para ma-install mo muli ang mga app na nandito.</string>
@@ -399,7 +399,7 @@
 \n
 \nTandaan: Mananatili pa rin ang mga na-install mo na app sa iyong device.</string>
     <string name="nearby_splash__request_permission">Subukan</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Walang internet\? Kumuha ng mga app mula sa taong malapit sa\'yo!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Walang internet? Kumuha ng mga app mula sa taong malapit sa\'yo!</string>
     <string name="nearby_splash__read_external_storage">Maghanap sa SD card para sa mga repo at mirror.</string>
     <string name="swap_success">Nagpalitan na!</string>
     <string name="swap_not_visible_bluetooth">Di-kita via Bluetooth</string>
