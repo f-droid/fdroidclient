@@ -340,11 +340,13 @@
     <plurals name="notification_summary_updates">
         <item quantity="one">עדכון %1$d</item>
         <item quantity="two">%1$d עדכונים</item>
+        <item quantity="many">%1$d עדכונים</item>
         <item quantity="other">%1$d עדכונים</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">יישומון %1$d הותקן</item>
         <item quantity="two">%1$d יישומונים הותקנו</item>
+        <item quantity="many">%1$d יישומונים הותקנו</item>
         <item quantity="other">%1$d יישומונים הותקנו</item>
     </plurals>
     <string name="notification_title_summary_update_available">עדכון זמין</string>
@@ -627,6 +629,7 @@
     <plurals name="repo_num_apps_text">
         <item quantity="one">יישומון</item>
         <item quantity="two">שני יישומונים</item>
+        <item quantity="many">שני יישומונים</item>
         <item quantity="other">%d יישומונים</item>
     </plurals>
     <string name="repo_last_update_index">עדכון המאגר האחרון: %s</string>
