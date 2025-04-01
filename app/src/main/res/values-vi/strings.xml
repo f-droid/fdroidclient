@@ -588,7 +588,7 @@
     <string name="repo_archive_check">Kiểm tra lưu trữ</string>
     <string name="repo_confirm_delete_mirror_title">Xóa máy chủ dự phòng?</string>
     <string name="no_handler_app_generic">Bạn không có ứng dụng nào có thể xử lý được việc này.</string>
-    <string name="apk_permissions_mismatch">Ứng dụng có quyền không mong muốn</string>
+    <string name="apk_permissions_mismatch">Ứng dụng có quyền không mong muốn: %s</string>
     <string name="repo_archive_unknown">Kho lưu trữ này không có mục lưu trữ.</string>
     <plurals name="repo_num_apps_text">
         <item quantity="other">Số ít\n1 ứng dụng\n\nSố nhiều\n%d các ứng dụng</item>
