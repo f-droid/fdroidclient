@@ -39,15 +39,15 @@ weblate.fetch()
 upstream = repo.remotes.upstream
 upstream.fetch()
 
-url = 'https://hosted.weblate.org/exports/stats/f-droid/f-droid/?format=json'
+url = 'https://hosted.weblate.org/api/components/f-droid/f-droid/statistics/?format=json'
 r = requests.get(url)
 r.raise_for_status()
-app = r.json()
+app = r.json()['results']
 
-url = 'https://hosted.weblate.org/exports/stats/f-droid/f-droid-metadata/?format=json'
+url = 'https://hosted.weblate.org/api/components/f-droid/f-droid-metadata/statistics/?format=json'
 r = requests.get(url)
 r.raise_for_status()
-metadata = r.json()
+metadata = r.json()['results']
 
 
 # with open('f-droid-metadata.json') as fp:
