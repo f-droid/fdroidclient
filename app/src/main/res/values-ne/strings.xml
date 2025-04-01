@@ -75,5 +75,5 @@
     <string tools:ignore="UnusedResources" name="category_Sports_Health">खेलकुद र स्वास्थ्य</string>
     <string name="repo_details">भण्डार</string>
     <string name="by_author_format">द्वारा %s</string>
-    <string name="prompt_to_send_crash_reports">"बिग्रेको  खंडमा  रिपोर्टहरु पठाउन सोधनु"</string>
+    <string name="prompt_to_send_crash_reports">बिग्रेको  खंडमा  रिपोर्टहरु पठाउन सोधनु</string>
 </resources>
