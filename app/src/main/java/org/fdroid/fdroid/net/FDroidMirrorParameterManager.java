@@ -18,13 +18,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FDroidMirrorParameterManager implements MirrorParameterManager {
 
     private final ConcurrentHashMap<String, Integer> errorCache;
     private static final int DELAY_TIME = 5;
     private static final TimeUnit DELAY_UNIT = TimeUnit.SECONDS;
-    private volatile boolean writeErrorScheduled = false;
+    private AtomicBoolean writeErrorScheduled = new AtomicBoolean(false);
     private final Runnable delayedErrorWrite;
     private final ScheduledExecutorService writeErrorExecutor = Executors.newSingleThreadScheduledExecutor();
 
@@ -32,17 +33,17 @@ public class FDroidMirrorParameterManager implements MirrorParameterManager {
         Preferences prefs = Preferences.get();
         errorCache = new ConcurrentHashMap<String, Integer>(prefs.getMirrorErrorData());
         delayedErrorWrite = () -> {
-            Map<String, Integer> snapshot = Collections.unmodifiableMap(new HashMap<String, Integer>(errorCache));
-            Preferences writePrefs = Preferences.get();
-            writePrefs.setMirrorErrorData(snapshot);
-            writeErrorScheduled = false;
+            if (writeErrorScheduled.compareAndSet(true, false)) {
+                Map<String, Integer> snapshot = Collections.unmodifiableMap(new HashMap<String, Integer>(errorCache));
+                Preferences writePrefs = Preferences.get();
+                writePrefs.setMirrorErrorData(snapshot);
+            }
         };
     }
 
     public void updateErrorCacheAndPrefs(@NonNull String url, @NonNull Integer errorCount) {
         errorCache.put(url, errorCount);
-        if (!writeErrorScheduled) {
-            writeErrorScheduled = true;
+        if (writeErrorScheduled.compareAndSet(false, true)) {
             writeErrorExecutor.schedule(delayedErrorWrite, DELAY_TIME, DELAY_UNIT);
         }
     }
