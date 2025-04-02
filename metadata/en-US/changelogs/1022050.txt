@@ -1,0 +1,8 @@
+* experimental support for un-archiving apps on Android 15
+* automatically add newly installed apps to home-screen for most launchers (Thanks Dhina!)
+* separate share link and share file actions in app details
+* show toast when APK has more permissions than expected
+* clean internal caches more often to free up space (Thanks DerGenaue!)
+* re-order donation badges to match website (Thanks Leo!)
+* add settings toggle to prefer foreign mirrors
+* many small bug fixes
