@@ -166,7 +166,7 @@ public class PreferencesTest {
         Preferences preferences = Preferences.get();
         // serialize an empty map
         preferences.setMirrorErrorData(new HashMap<>(0));
-        HashMap<String, Integer> result = preferences.getMirrorErrorData();
+        Map<String, Integer> result = preferences.getMirrorErrorData();
         // deserializing should return an empty map without throwing any exceptions
         assertNotNull(result);
         assertEquals(result.size(), 0);

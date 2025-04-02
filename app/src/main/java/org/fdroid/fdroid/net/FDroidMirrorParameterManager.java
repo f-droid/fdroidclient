@@ -11,29 +11,32 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.App;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class FDroidMirrorParameterManager implements MirrorParameterManager {
 
-    private volatile HashMap<String, Integer> errorCache;
-    private static final int DELAY_TIME = 1;
+    private final ConcurrentHashMap<String, Integer> errorCache;
+    private static final int DELAY_TIME = 5;
     private static final TimeUnit DELAY_UNIT = TimeUnit.SECONDS;
     private volatile boolean writeErrorScheduled = false;
-
-    private final Runnable delayedErrorWrite = () -> {
-        Preferences prefs = Preferences.get();
-        prefs.setMirrorErrorData(errorCache);
-        writeErrorScheduled = false;
-    };
-
+    private final Runnable delayedErrorWrite;
     private final ScheduledExecutorService writeErrorExecutor = Executors.newSingleThreadScheduledExecutor();
 
     public FDroidMirrorParameterManager() {
         Preferences prefs = Preferences.get();
-        errorCache = prefs.getMirrorErrorData();
+        errorCache = new ConcurrentHashMap<String, Integer>(prefs.getMirrorErrorData());
+        delayedErrorWrite = () -> {
+            Map<String, Integer> snapshot = Collections.unmodifiableMap(new HashMap<String, Integer>(errorCache));
+            Preferences writePrefs = Preferences.get();
+            writePrefs.setMirrorErrorData(snapshot);
+            writeErrorScheduled = false;
+        };
     }
 
     public void updateErrorCacheAndPrefs(@NonNull String url, @NonNull Integer errorCount) {

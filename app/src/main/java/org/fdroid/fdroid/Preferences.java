@@ -594,7 +594,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return output;
     }
 
-    private String intMapToString(HashMap<String, Integer> intMap) {
+    private String intMapToString(Map<String, Integer> intMap) {
         String output = "";
         for (String key : intMap.keySet()) {
             Integer value = intMap.get(key);
@@ -612,7 +612,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return output;
     }
 
-    private HashMap<String, Integer> stringToIntMap(String mapString) {
+    private Map<String, Integer> stringToIntMap(String mapString) {
         HashMap<String, Integer> output = new HashMap<String, Integer>();
         for (String line : mapString.split("\n")) {
             String[] pair = line.split(" ");
@@ -646,12 +646,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_PREFER_FOREIGN, false);
     }
 
-    public void setMirrorErrorData(HashMap<String, Integer> mirrorErrorMap) {
+    public void setMirrorErrorData(Map<String, Integer> mirrorErrorMap) {
         preferences.edit().putString(PREF_MIRROR_ERROR_DATA, intMapToString(mirrorErrorMap)).apply();
     }
 
-    public HashMap<String, Integer> getMirrorErrorData() {
-        HashMap<String, Integer> mirrorDataMap = new HashMap<String, Integer>();
+    public Map<String, Integer> getMirrorErrorData() {
+        Map<String, Integer> mirrorDataMap = new HashMap<String, Integer>();
         String mapString = preferences.getString(PREF_MIRROR_ERROR_DATA, "");
         if (mapString == null || mapString.isEmpty()) {
             // no-op, return empty map to avoid null issues
