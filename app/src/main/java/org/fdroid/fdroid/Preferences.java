@@ -594,22 +594,46 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return output;
     }
 
-    private String intMapToString(HashMap<String, Integer> intMap) {
+    private String intMapToString(Map<String, Integer> intMap) {
         String output = "";
         for (String key : intMap.keySet()) {
-            if (!output.isEmpty()) {
-                output = output + "\n";
+            Integer value = intMap.get(key);
+            if (key == null || key.isEmpty()) {
+                Utils.debugLog(TAG, "Don't serialize record with null key");
+            } else if (value == null) {
+                Utils.debugLog(TAG, "Don't serialize null value for: " + key);
+            } else {
+                if (!output.isEmpty()) {
+                    output = output + "\n";
+                }
+                output = output + key + " " + value;
             }
-            output = output + key + " " + intMap.get(key);
         }
         return output;
     }
 
-    private HashMap<String, Integer> stringToIntMap(String mapString) {
+    private Map<String, Integer> stringToIntMap(String mapString) {
         HashMap<String, Integer> output = new HashMap<String, Integer>();
         for (String line : mapString.split("\n")) {
             String[] pair = line.split(" ");
-            output.put(pair[0], Integer.valueOf(pair[1]));
+            // values may be missing or unparseable
+            String key = pair[0];
+            Integer value = 0;
+            if (key != null && !key.isEmpty()) {
+                if (pair.length > 1) {
+                    try {
+                        value = Integer.valueOf(pair[1]);
+                    } catch (NumberFormatException e) {
+                        // use default value if stored value can't be parsed
+                        Utils.debugLog(TAG, "Serialized map entry value can't be parsed: " + line);
+                    }
+                } else {
+                    Utils.debugLog(TAG, "Serialized map entry value is missing: " + line);
+                }
+                output.put(key, value);
+            } else {
+                Utils.debugLog(TAG, "Serialized map entry key is missing: " + line);
+            }
         }
         return output;
     }
@@ -622,12 +646,12 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
         return preferences.getBoolean(PREF_PREFER_FOREIGN, false);
     }
 
-    public void setMirrorErrorData(HashMap<String, Integer> mirrorErrorMap) {
+    public void setMirrorErrorData(Map<String, Integer> mirrorErrorMap) {
         preferences.edit().putString(PREF_MIRROR_ERROR_DATA, intMapToString(mirrorErrorMap)).apply();
     }
 
-    public HashMap<String, Integer> getMirrorErrorData() {
-        HashMap<String, Integer> mirrorDataMap = new HashMap<String, Integer>();
+    public Map<String, Integer> getMirrorErrorData() {
+        Map<String, Integer> mirrorDataMap = new HashMap<String, Integer>();
         String mapString = preferences.getString(PREF_MIRROR_ERROR_DATA, "");
         if (mapString == null || mapString.isEmpty()) {
             // no-op, return empty map to avoid null issues

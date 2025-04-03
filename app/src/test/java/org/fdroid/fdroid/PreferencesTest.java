@@ -20,6 +20,7 @@ package org.fdroid.fdroid;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import android.content.Context;
@@ -35,6 +36,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowLog;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RunWith(RobolectricTestRunner.class)
@@ -156,5 +158,17 @@ public class PreferencesTest {
         assertEquals(testValue, Preferences.get().getKeepCacheTime());
         assertNotEquals(Long.parseLong(defaults.getString(Preferences.PREF_KEEP_CACHE_TIME, null)),
                 Preferences.get().getKeepCacheTime());
+    }
+
+    @Test
+    public void testMirrorErrorMethods() {
+        Preferences.setupForTests(CONTEXT);
+        Preferences preferences = Preferences.get();
+        // serialize an empty map
+        preferences.setMirrorErrorData(new HashMap<>(0));
+        Map<String, Integer> result = preferences.getMirrorErrorData();
+        // deserializing should return an empty map without throwing any exceptions
+        assertNotNull(result);
+        assertEquals(result.size(), 0);
     }
 }
