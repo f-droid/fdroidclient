@@ -25,7 +25,7 @@ public class FDroidMirrorParameterManager implements MirrorParameterManager {
     private final ConcurrentHashMap<String, Integer> errorCache;
     private static final int DELAY_TIME = 5;
     private static final TimeUnit DELAY_UNIT = TimeUnit.SECONDS;
-    private AtomicBoolean writeErrorScheduled = new AtomicBoolean(false);
+    private final AtomicBoolean writeErrorScheduled = new AtomicBoolean(false);
     private final Runnable delayedErrorWrite;
     private final ScheduledExecutorService writeErrorExecutor = Executors.newSingleThreadScheduledExecutor();
 
