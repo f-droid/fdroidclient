@@ -29,7 +29,7 @@ object TestDataMinV1 {
         version = 1,
         name = "MinV1",
         icon = "min-v1.png",
-        address = "https://min-v1.org",
+        address = "https://min-v1.org/repo",
         description = "This is a repo with minimal data.",
     )
 

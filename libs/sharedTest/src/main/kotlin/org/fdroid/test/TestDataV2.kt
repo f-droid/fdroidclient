@@ -123,7 +123,7 @@ object TestDataMinV2 {
                     size = 0,
                 ),
         ),
-        address = "https://min-v1.org",
+        address = "https://min-v1.org/repo",
         description = mapOf(LOCALE to "This is a repo with minimal data."),
     )
 
