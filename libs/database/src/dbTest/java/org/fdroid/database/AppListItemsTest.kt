@@ -492,6 +492,9 @@ internal class AppListItemsTest : AppTest() {
 
     @Test
     fun testOnlyFromGivenCategories() {
+        // nothing is installed
+        every { pm.getInstalledPackages(0) } returns emptyList()
+
         // insert three apps
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageName1, app1, locales)
@@ -500,8 +503,8 @@ internal class AppListItemsTest : AppTest() {
 
         // only two apps are in category B
         listOf(
-            appDao.getAppListItemsByName("B").getOrFail(),
-            appDao.getAppListItemsByLastUpdated("B").getOrFail(),
+            appDao.getAppListItems(pm, "B", null, NAME).getOrFail(),
+            appDao.getAppListItems(pm, "B", null, LAST_UPDATED).getOrFail(),
         ).forEach { apps ->
             assertEquals(2, apps.size)
             assertNotEquals(packageName2, apps[0].packageName)
@@ -510,8 +513,8 @@ internal class AppListItemsTest : AppTest() {
 
         // no app is in category C
         listOf(
-            appDao.getAppListItemsByName("C").getOrFail(),
-            appDao.getAppListItemsByLastUpdated("C").getOrFail(),
+            appDao.getAppListItems(pm, "C", null, NAME).getOrFail(),
+            appDao.getAppListItems(pm, "C", null, LAST_UPDATED).getOrFail(),
         ).forEach { apps ->
             assertEquals(0, apps.size)
         }
@@ -520,8 +523,8 @@ internal class AppListItemsTest : AppTest() {
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName2, app1, locales)
         listOf(
-            appDao.getAppListItemsByName("B").getOrFail(),
-            appDao.getAppListItemsByLastUpdated("B").getOrFail(),
+            appDao.getAppListItems(pm, "B", null, NAME).getOrFail(),
+            appDao.getAppListItems(pm, "B", null, LAST_UPDATED).getOrFail(),
         ).forEach { apps ->
             assertEquals(2, apps.size)
             assertNotEquals(packageName2, apps[0].packageName)
@@ -616,10 +619,11 @@ internal class AppListItemsTest : AppTest() {
      * Uses category "A" as all apps should be in that.
      */
     private fun getItems(alsoInstalled: Boolean = true, block: (List<AppListItem>) -> Unit) {
+        every { pm.getInstalledPackages(0) } returns emptyList()
         appDao.getAppListItemsByName().getOrFail().let(block)
-        appDao.getAppListItemsByName("A").getOrFail().let(block)
+        appDao.getAppListItems(pm, "A", null, NAME).getOrFail().let(block)
         appDao.getAppListItemsByLastUpdated().getOrFail().let(block)
-        appDao.getAppListItemsByLastUpdated("A").getOrFail().let(block)
+        appDao.getAppListItems(pm, "A", null, LAST_UPDATED).getOrFail().let(block)
         if (alsoInstalled) {
             // everything is always considered to be installed
             val packageInfo =
