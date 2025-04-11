@@ -588,9 +588,10 @@ internal class AppListItemsTest : AppTest() {
         val packageInfo = packageInfoCreator(packageName)
 
         // sqlite has a maximum number of 999 variables that can be used in a query
+        // one additional package info is added to the package lists with each test case
         val listPackageInfo = listOf(packageInfo)
-        val packageInfoOk = MutableList(999) { packageInfoCreator(getRandomString()) }
-        val packageInfoNotOk1 = MutableList(1000) { packageInfoCreator(getRandomString()) }
+        val packageInfoOk = MutableList(998) { packageInfoCreator(getRandomString()) }
+        val packageInfoNotOk1 = MutableList(999) { packageInfoCreator(getRandomString()) }
         val packageInfoNotOk2 = MutableList(5000) { packageInfoCreator(getRandomString()) }
 
         // app gets returned no matter how many packages are installed

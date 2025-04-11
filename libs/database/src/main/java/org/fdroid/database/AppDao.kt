@@ -620,12 +620,16 @@ internal interface AppDaoInt : AppDao {
                         emptyList()
                     }
                 }
-                if (shouldUpdate) value = result.sortedWith { i1, i2 ->
-                    // we need to re-sort the result, because each liveData is only sorted in itself
-                    val n1 = i1.name ?: ""
-                    val n2 = i2.name ?: ""
-                    n1.compareTo(n2, ignoreCase = true)
-                }
+                if (shouldUpdate) value = result
+                    // the chunked query does not return distinct values since room 2.7.0
+                    .distinct()
+                    // we need to re-sort the result,
+                    // because each liveData is only sorted in itself
+                    .sortedWith { i1, i2 ->
+                        val n1 = i1.name ?: ""
+                        val n2 = i2.name ?: ""
+                        n1.compareTo(n2, ignoreCase = true)
+                    }
             }
         }
     }
