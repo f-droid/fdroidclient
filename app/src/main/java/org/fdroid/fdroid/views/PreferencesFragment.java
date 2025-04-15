@@ -704,7 +704,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat
             }
         }, result -> {
             int res = result ? R.string.export_log_success : R.string.export_log_error;
-            Toast.makeText(requireContext(), res, Toast.LENGTH_LONG).show();
+            Context context = getContext();
+            if (context != null) Toast.makeText(context, res, Toast.LENGTH_LONG).show();
         });
     }
 }
