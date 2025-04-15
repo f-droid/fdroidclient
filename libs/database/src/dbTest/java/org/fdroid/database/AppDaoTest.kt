@@ -196,11 +196,12 @@ internal class AppDaoTest : AppTest() {
         assertEquals(2, appDao.getNumberOfAppsInCategory("B"))
         assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
 
-        // app1 as a variant of app2 in another repo will show one more app in B
+        // app1 as a variant of app2 in another repo will NOT show one more app in B
+        // because repo2 has less priority, so repo1 is preferred which doesn't have app1 in B
         val repoId2 = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId2, packageName2, app1, locales)
         assertEquals(3, appDao.getNumberOfAppsInCategory("A"))
-        assertEquals(3, appDao.getNumberOfAppsInCategory("B"))
+        assertEquals(2, appDao.getNumberOfAppsInCategory("B"))
         assertEquals(0, appDao.getNumberOfAppsInCategory("C"))
     }
 

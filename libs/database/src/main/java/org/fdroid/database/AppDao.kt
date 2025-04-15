@@ -636,7 +636,9 @@ internal interface AppDaoInt : AppDao {
 
     @Query("""SELECT COUNT(DISTINCT packageName) FROM ${AppMetadata.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%'""")
+        JOIN PreferredRepo USING (packageName)
+        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
+            repoId = preferredRepoId""")
     override fun getNumberOfAppsInCategory(category: String): Int
 
     @Query("SELECT COUNT(*) FROM ${AppMetadata.TABLE} WHERE repoId = :repoId")
