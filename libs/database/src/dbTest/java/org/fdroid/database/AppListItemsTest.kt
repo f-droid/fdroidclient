@@ -11,11 +11,13 @@ import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.database.AppListSortOrder.NAME
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.index.v2.MetadataV2
+import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.collections.map
 import kotlin.random.Random
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -613,6 +615,106 @@ internal class AppListItemsTest : AppTest() {
         every { pm.getInstalledPackages(0) } returns packageInfoNotOk2 + listPackageInfo
         assertNotNull(appDao.getInstalledAppListItems(pm).getOrFail()[0].installedVersionName)
     }
+
+    // region author tests
+    @Test
+    fun testAuthor_NoApp() {
+        // should never happen, but test this just in case
+        every { pm.getInstalledPackages(0) } returns emptyList()
+        val author = getRandomString()
+
+        assertFalse(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        assertTrue(appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail().isEmpty())
+        assertTrue(appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
+            .getOrFail().isEmpty())
+    }
+
+    @Test
+    fun testAuthor_OneApp() {
+        every { pm.getInstalledPackages(0) } returns emptyList()
+        val author = getRandomString()
+        val packageName = getRandomString()
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName, getRandomMetadataV2(author), locales)
+
+        assertFalse(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        val appsForAuthor = appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail()
+        assertEquals(1, appsForAuthor.size)
+        assertEquals(1, appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
+            .getOrFail().size)
+        assertEquals(packageName, appsForAuthor[0].packageName)
+    }
+
+    @Test
+    fun testAuthor_TwoApps() {
+        every { pm.getInstalledPackages(0) } returns emptyList()
+        val author = getRandomString()
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        val packageName1 = getRandomString()
+        val packageName2 = getRandomString()
+        val metadata2 = getRandomMetadataV2(author)
+        val metadata1 = getRandomMetadataV2(author, metadata2.lastUpdated + 1)
+        appDao.insert(repoId, packageName1, metadata1, locales)
+        appDao.insert(repoId, packageName2, metadata2, locales)
+
+        assertTrue(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        val appsForAuthor = appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
+            .getOrFail()
+        assertEquals(2, appsForAuthor.size)
+        assertEquals(packageName1, appsForAuthor[0].packageName)
+        assertEquals(packageName2, appsForAuthor[1].packageName)
+    }
+
+    @Test
+    fun testAuthor_MultipleApps() {
+        every { pm.getInstalledPackages(0) } returns emptyList()
+        val author = getRandomString()
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        for (i in 1..50) {
+            appDao.insert(repoId, getRandomString(), getRandomMetadataV2(author), locales)
+        }
+
+        assertTrue(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        assertEquals(50, appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail().size)
+    }
+
+    @Test
+    fun testHasAuthorMoreThanOneApp_OneAppDifferentRepos() {
+        every { pm.getInstalledPackages(0) } returns emptyList()
+        val author = getRandomString()
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        val packageName = getRandomString()
+        appDao.insert(repoId1, packageName, getRandomMetadataV2(author), locales)
+        val app4 = getRandomMetadataV2(author)
+        appDao.insert(repoId2, packageName, app4, locales)
+        appPrefsDao.update(
+            AppPrefs(
+                packageName = packageName,
+                preferredRepoId = repoId2,
+            )
+        )
+        assertFalse(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        val appsForAuthor = appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail()
+        assertEquals(1, appsForAuthor.size)
+        assertEquals(packageName, appsForAuthor[0].packageName)
+        assertEquals(repoId2, appsForAuthor[0].repoId)
+    }
+
+    @Test
+    fun testHasAuthorMoreThanOneApp_TwoAppsDifferentRepos() {
+        every { pm.getInstalledPackages(0) } returns emptyList()
+        val author = getRandomString()
+        val repoId1 = repoDao.insertOrReplace(getRandomRepo())
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId1, getRandomString(), getRandomMetadataV2(author), locales)
+        appDao.insert(repoId2, getRandomString(), getRandomMetadataV2(author), locales)
+
+        assertTrue(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        val appsForAuthor = appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail()
+        assertEquals(2, appsForAuthor.size)
+    }
+    // endregion
 
     /**
      * Runs the given block on all getAppListItems* methods.

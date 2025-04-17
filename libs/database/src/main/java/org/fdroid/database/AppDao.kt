@@ -647,7 +647,10 @@ internal interface AppDaoInt : AppDao {
         FROM (
             SELECT 1
             FROM AppMetadata
-            WHERE authorName = :author
+            JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+            JOIN PreferredRepo USING (packageName)
+            WHERE authorName = :author AND repoId = preferredRepoId
+            GROUP BY packageName
             LIMIT 2)""")
     override fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
