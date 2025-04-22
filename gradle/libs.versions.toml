@@ -15,6 +15,7 @@ okhttp = "4.12.0"
 room = "2.8.3"
 glide = "5.0.5"
 glideCompose = "1.0.0-beta08"
+molecule = "2.2.0"
 
 androidxCoreKtx = "1.17.0"
 androidxAppcompat = "1.7.1"
@@ -120,6 +121,7 @@ glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = 
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 glide-annotations = { module = "com.github.bumptech.glide:annotations", version.ref = "glide" }
 
+molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
 guardianproject-netcipher = { module = "info.guardianproject.netcipher:netcipher", version.ref = "guardianprojectNetcipher" }
 guardianproject-panic = { module = "info.guardianproject.panic:panic", version.ref = "guardianprojectPanic" }
 nanohttpd = { module = "org.nanohttpd:nanohttpd", version.ref = "nanohttpd" }

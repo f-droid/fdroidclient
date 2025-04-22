@@ -49,6 +49,7 @@ fun AppDetailsPreview() {
             packageName = "foo",
             name = "bar",
             summary = "This is a nice app!",
+            isNew = false,
         )
         AppDetails(item)
     }

@@ -27,6 +27,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.window.core.layout.WindowWidthSizeClass
 import org.fdroid.basic.R
+import org.fdroid.basic.ui.main.apps.AppNavigationItem
+import org.fdroid.basic.ui.main.apps.FilterInfo
+import org.fdroid.basic.ui.main.apps.FilterModel
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 enum class AppDestinations(
@@ -38,7 +41,7 @@ enum class AppDestinations(
 }
 
 @Composable
-fun Main() {
+fun Main(filterInfo: FilterInfo) {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.APPS) }
     FDroidContent {
         val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -80,7 +83,11 @@ fun Main() {
                 }
             }
         ) {
-            if (currentDestination == AppDestinations.APPS) Apps(Modifier)
+            if (currentDestination == AppDestinations.APPS) Apps(
+                apps = filterInfo.model.apps,
+                filterInfo = filterInfo,
+                modifier = Modifier,
+            )
             else Text(
                 text = "TODO",
                 modifier = Modifier.safeDrawingPadding(),
@@ -93,5 +100,25 @@ fun Main() {
 @PreviewScreenSizes
 @Composable
 fun MainPreview() {
-    Main()
+    val apps = listOf(
+        AppNavigationItem("", "foo", "bar", false),
+        AppNavigationItem("", "foo", "bar", false),
+        AppNavigationItem("", "foo", "bar", false),
+    )
+    val filterInfo = object : FilterInfo {
+        override val model = FilterModel(
+            isLoading = false,
+            apps = apps,
+            onlyInstalledApps = false,
+            sortBy = Sort.NAME,
+            allCategories = listOf("foo", "bar"),
+            addedCategories = emptyList(),
+        )
+
+        override fun sortBy(sort: Sort) {}
+        override fun addCategory(category: String) {}
+        override fun removeCategory(category: String) {}
+        override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
+    }
+    Main(filterInfo)
 }

@@ -30,16 +30,20 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.basic.R
 import org.fdroid.basic.ui.main.Sort
 
+interface FilterInfo {
+    val model: FilterModel
+
+    fun sortBy(sort: Sort)
+    fun addCategory(category: String)
+    fun removeCategory(category: String)
+    fun showOnlyInstalledApps(onlyInstalled: Boolean)
+}
+
 @Composable
 fun ColumnScope.AppsFilter(
     filterExpanded: Boolean,
-    sortBy: Sort,
-    onlyInstalledApps: Boolean,
-    addedCategories: MutableList<String>,
+    filter: FilterInfo,
     addedRepos: MutableList<String>,
-    categories: List<String>,
-    onSortByChanged: (Sort) -> Unit,
-    toggleOnlyInstalledApps: () -> Unit,
 ) {
     AnimatedVisibility(filterExpanded) {
         FlowRow(
@@ -50,7 +54,7 @@ fun ColumnScope.AppsFilter(
             var sortByMenuExpanded by remember { mutableStateOf(false) }
             var repoMenuExpanded by remember { mutableStateOf(false) }
             var categoryMenuExpanded by remember { mutableStateOf(false) }
-            addedCategories.forEach { category ->
+            filter.model.addedCategories.forEach { category ->
                 FilterChip(
                     selected = true,
                     trailingIcon = {
@@ -64,7 +68,7 @@ fun ColumnScope.AppsFilter(
                         Text(category)
                     },
                     onClick = {
-                        addedCategories.remove(category)
+                        filter.removeCategory(category)
                     }
                 )
             }
@@ -89,7 +93,7 @@ fun ColumnScope.AppsFilter(
             FilterChip(
                 selected = false,
                 leadingIcon = {
-                    val vector = when (sortBy) {
+                    val vector = when (filter.model.sortBy) {
                         Sort.NAME -> Icons.Filled.SortByAlpha
                         Sort.LATEST -> Icons.Filled.AccessTime
                     }
@@ -99,7 +103,7 @@ fun ColumnScope.AppsFilter(
                     Icon(Icons.Filled.ArrowDropDown, null)
                 },
                 label = {
-                    val s = when (sortBy) {
+                    val s = when (filter.model.sortBy) {
                         Sort.NAME -> "Sort by name"
                         Sort.LATEST -> "Sort by latest"
                     }
@@ -114,7 +118,7 @@ fun ColumnScope.AppsFilter(
                                 Icon(Icons.Filled.SortByAlpha, null)
                             },
                             onClick = {
-                                onSortByChanged(Sort.NAME)
+                                filter.sortBy(Sort.NAME)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -124,7 +128,7 @@ fun ColumnScope.AppsFilter(
                                 Icon(Icons.Filled.AccessTime, null)
                             },
                             onClick = {
-                                onSortByChanged(Sort.LATEST)
+                                filter.sortBy(Sort.LATEST)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -133,8 +137,8 @@ fun ColumnScope.AppsFilter(
                 onClick = { sortByMenuExpanded = !sortByMenuExpanded },
             )
             FilterChip(
-                selected = onlyInstalledApps,
-                leadingIcon = if (onlyInstalledApps) {
+                selected = filter.model.onlyInstalledApps,
+                leadingIcon = if (filter.model.onlyInstalledApps) {
                     {
                         Icon(
                             imageVector = Icons.Filled.Done,
@@ -144,7 +148,7 @@ fun ColumnScope.AppsFilter(
                     }
                 } else null,
                 label = { Text(stringResource(R.string.app_installed)) },
-                onClick = toggleOnlyInstalledApps,
+                onClick = { filter.showOnlyInstalledApps(!filter.model.onlyInstalledApps) },
             )
             FilterChip(
                 selected = false,
@@ -161,11 +165,11 @@ fun ColumnScope.AppsFilter(
                         expanded = categoryMenuExpanded,
                         onDismissRequest = { categoryMenuExpanded = false },
                     ) {
-                        categories.forEach { category ->
+                        filter.model.allCategories.forEach { category ->
                             DropdownMenuItem(
                                 text = { Text(category) },
                                 onClick = {
-                                    addedCategories.add(category)
+                                    filter.addCategory(category)
                                     categoryMenuExpanded = false
                                 },
                             )
