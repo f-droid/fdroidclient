@@ -344,8 +344,8 @@ private fun UserMirrors(
         text = stringResource(R.string.repo_user_mirrors),
         imageVectorStart = Icons.Default.Dns,
     ) {
-        mirrors.forEachIndexed { idx, m ->
-            Column {
+        Column {
+            mirrors.forEachIndexed { idx, m ->
                 FDroidSwitchRow(
                     text = m.baseUrl,
                     checked = !disabledMirrors.contains(m.baseUrl),
