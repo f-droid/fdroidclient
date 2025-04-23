@@ -7,18 +7,41 @@ import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import org.fdroid.basic.ui.main.NUM_ITEMS
 import org.fdroid.basic.ui.main.Sort
 import org.fdroid.basic.ui.main.apps.AppNavigationItem
 import org.fdroid.basic.ui.main.apps.FilterModel
 import org.fdroid.basic.ui.main.apps.FilterPresenter
+import org.fdroid.basic.ui.main.updates.UpdatableApp
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {
+
+    companion object {
+        val fakeUpdates = listOf(
+            UpdatableApp(
+                name = "App Name 123",
+                currentVersionName = "1.0.1",
+                updateVersionName = "1.1.0",
+                size = 123456789,
+                whatsNew = "Lots of changes in this version!\nThey are all awesome.\n" +
+                    "Only the best changes."
+            ),
+            UpdatableApp(
+                name = "App Name 456",
+                currentVersionName = "3.0.1",
+                updateVersionName = "3.1.0",
+                size = 9876543,
+            )
+        )
+    }
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     val categories = listOf(
@@ -67,6 +90,27 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             allCategories = categories,
             addedCategoriesFlow = addedCategories,
         )
+    }
+    private val _updates = MutableStateFlow(fakeUpdates)
+    val updates = _updates.asStateFlow()
+    val numUpdates = _updates.map { it.size }
+
+    init {
+        viewModelScope.launch {
+            delay(5000)
+            _updates.update {
+                it.toMutableList().apply {
+                    val app = UpdatableApp(
+                        name = "App Name 789",
+                        currentVersionName = "4.0.1",
+                        updateVersionName = "4.3.0",
+                        size = 4561237,
+                        whatsNew = "This new version is super fast and aimed at fixing some bugs and enhancing your experience even more. So take the chance to update your app and always enjoy the best of Inter. In addition to the exciting new features in the latest version, we regularly release new versions to improve what you are already using on our app. To keep making your life simpler, keep your app up to date and take advantage of everything we prepare for you. "
+                    )
+                    add(app)
+                }
+            }
+        }
     }
 
     fun sortBy(sort: Sort) {

@@ -16,6 +16,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val viewModel: MainViewModel = viewModel()
+            val numUpdates = viewModel.numUpdates.collectAsState(0).value
+            val updates = viewModel.updates.collectAsState().value
             val filterInfo = object : FilterInfo {
                 override val model = viewModel.filterModel.collectAsState().value
                 override fun sortBy(sort: Sort) = viewModel.sortBy(sort)
@@ -24,7 +26,7 @@ class MainActivity : ComponentActivity() {
                 override fun showOnlyInstalledApps(onlyInstalled: Boolean) =
                     viewModel.showOnlyInstalledApps(onlyInstalled)
             }
-            Main(filterInfo)
+            Main(numUpdates, updates, filterInfo)
         }
     }
 }

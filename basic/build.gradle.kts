@@ -38,6 +38,11 @@ android {
     buildFeatures {
         compose = true
     }
+    packaging {
+        resources {
+            excludes += listOf("META-INF/LICENSE.md", "META-INF/LICENSE-notice.md")
+        }
+    }
 }
 
 dependencies {
@@ -48,7 +53,6 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.compose.material.icons.extended)
-    implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.adaptive)
@@ -56,6 +60,8 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.navigation)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite.android)
     implementation(libs.molecule.runtime)
+
+    debugImplementation(libs.androidx.compose.ui.tooling.preview)
 
     testImplementation(libs.junit)
 

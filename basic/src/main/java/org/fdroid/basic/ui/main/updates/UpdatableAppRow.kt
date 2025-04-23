@@ -1,0 +1,86 @@
+package org.fdroid.basic.ui.main.updates
+
+import android.text.format.Formatter
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Android
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import org.fdroid.fdroid.ui.theme.FDroidContent
+
+@Composable
+fun UpdatableAppRow(app: UpdatableApp, modifier: Modifier = Modifier) {
+    var isExpanded by remember { mutableStateOf(false) }
+    Column {
+        ListItem(
+            leadingContent = {
+                Icon(
+                    Icons.Filled.Android,
+                    tint = MaterialTheme.colorScheme.secondary,
+                    contentDescription = null,
+                )
+            },
+            headlineContent = {
+                Text(app.name)
+            },
+            supportingContent = {
+                val size = app.size.let {
+                    Formatter.formatFileSize(LocalContext.current, it)
+                }
+                Text("${app.currentVersionName} → ${app.updateVersionName} • $size")
+            },
+            trailingContent = {
+                if (app.whatsNew != null) IconButton(onClick = { isExpanded = !isExpanded }) {
+                    if (isExpanded) {
+                        Icon(Icons.Default.ArrowDropUp, "TODO")
+                    } else {
+                        Icon(Icons.Default.ArrowDropDown, "TODO")
+                    }
+                }
+            },
+            modifier = modifier,
+        )
+        AnimatedVisibility(visible = isExpanded, modifier = Modifier.padding(8.dp)) {
+            Text(
+                text = app.whatsNew ?: "",
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun UpdatableAppRowPreview() {
+    val app = UpdatableApp(
+        name = "App Update 123",
+        currentVersionName = "1.0.1",
+        updateVersionName = "1.1.0",
+        size = 123456789,
+        whatsNew = "This is new, all is new, nothing old.",
+    )
+    FDroidContent {
+        UpdatableAppRow(app)
+    }
+}

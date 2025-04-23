@@ -2,7 +2,6 @@ package org.fdroid.basic.ui.main
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Update
@@ -30,6 +29,7 @@ import org.fdroid.basic.R
 import org.fdroid.basic.ui.main.apps.AppNavigationItem
 import org.fdroid.basic.ui.main.apps.FilterInfo
 import org.fdroid.basic.ui.main.apps.FilterModel
+import org.fdroid.basic.ui.main.updates.UpdatableApp
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 enum class AppDestinations(
@@ -41,7 +41,7 @@ enum class AppDestinations(
 }
 
 @Composable
-fun Main(filterInfo: FilterInfo) {
+fun Main(numUpdates: Int, updates: List<UpdatableApp>, filterInfo: FilterInfo) {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.APPS) }
     FDroidContent {
         val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -63,9 +63,9 @@ fun Main(filterInfo: FilterInfo) {
                         icon = {
                             BadgedBox(
                                 badge = {
-                                    if (dest == AppDestinations.UPDATES) {
+                                    if (dest == AppDestinations.UPDATES && numUpdates > 0) {
                                         Badge {
-                                            Text(text = "13")
+                                            Text(text = numUpdates.toString())
                                         }
                                     }
                                 }
@@ -88,9 +88,8 @@ fun Main(filterInfo: FilterInfo) {
                 filterInfo = filterInfo,
                 modifier = Modifier,
             )
-            else Text(
-                text = "TODO",
-                modifier = Modifier.safeDrawingPadding(),
+            else Updates(
+                apps = updates,
             )
         }
     }
@@ -120,5 +119,5 @@ fun MainPreview() {
         override fun removeCategory(category: String) {}
         override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
     }
-    Main(filterInfo)
+    Main(2, emptyList(), filterInfo)
 }
