@@ -63,7 +63,7 @@ fun Apps(
                 Column(
                     modifier.fillMaxSize()
                 ) {
-                    var filterExpanded by rememberSaveable { mutableStateOf(false) }
+                    var filterExpanded by rememberSaveable { mutableStateOf(true) }
                     val addedRepos = remember { mutableStateListOf<String>() }
                     val showFilterBadge = addedRepos.isNotEmpty() ||
                         filterInfo.model.addedCategories.isNotEmpty() ||
@@ -95,9 +95,7 @@ fun Apps(
         detailPane = {
             AnimatedPane {
                 navigator.currentDestination?.contentKey?.let {
-                    AppDetails(
-                        appItem = it,
-                    )
+                    AppDetails(appItem = it)
                 } ?: Text("No app selected", modifier = Modifier.padding(16.dp))
             }
         },

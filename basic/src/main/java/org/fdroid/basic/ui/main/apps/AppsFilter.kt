@@ -54,42 +54,6 @@ fun ColumnScope.AppsFilter(
             var sortByMenuExpanded by remember { mutableStateOf(false) }
             var repoMenuExpanded by remember { mutableStateOf(false) }
             var categoryMenuExpanded by remember { mutableStateOf(false) }
-            filter.model.addedCategories.forEach { category ->
-                FilterChip(
-                    selected = true,
-                    trailingIcon = {
-                        Icon(
-                            Icons.Filled.Clear,
-                            null,
-                            modifier = Modifier.size(FilterChipDefaults.IconSize)
-                        )
-                    },
-                    label = {
-                        Text(category)
-                    },
-                    onClick = {
-                        filter.removeCategory(category)
-                    }
-                )
-            }
-            addedRepos.forEach { repo ->
-                FilterChip(
-                    selected = true,
-                    trailingIcon = {
-                        Icon(
-                            Icons.Filled.Clear,
-                            null,
-                            modifier = Modifier.size(FilterChipDefaults.IconSize)
-                        )
-                    },
-                    label = {
-                        Text(repo)
-                    },
-                    onClick = {
-                        addedRepos.remove(repo)
-                    }
-                )
-            }
             FilterChip(
                 selected = false,
                 leadingIcon = {
@@ -156,7 +120,7 @@ fun ColumnScope.AppsFilter(
                     Icon(
                         Icons.Filled.Add,
                         null,
-                        modifier = Modifier.size(FilterChipDefaults.IconSize)
+                        modifier = Modifier.size(FilterChipDefaults.IconSize),
                     )
                 },
                 label = {
@@ -182,9 +146,9 @@ fun ColumnScope.AppsFilter(
                 selected = false,
                 leadingIcon = {
                     Icon(
-                        Icons.Filled.Add,
-                        null,
-                        modifier = Modifier.size(FilterChipDefaults.IconSize)
+                        imageVector = Icons.Filled.Add,
+                        contentDescription = null,
+                        modifier = Modifier.size(FilterChipDefaults.IconSize),
                     )
                 },
                 label = {
@@ -211,6 +175,34 @@ fun ColumnScope.AppsFilter(
                 },
                 onClick = { repoMenuExpanded = !repoMenuExpanded },
             )
+            filter.model.addedCategories.forEach { category ->
+                FilterChip(
+                    selected = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Clear,
+                            contentDescription = null,
+                            modifier = Modifier.size(FilterChipDefaults.IconSize),
+                        )
+                    },
+                    label = { Text(category) },
+                    onClick = { filter.removeCategory(category) }
+                )
+            }
+            addedRepos.forEach { repo ->
+                FilterChip(
+                    selected = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Clear,
+                            contentDescription = null,
+                            modifier = Modifier.size(FilterChipDefaults.IconSize),
+                        )
+                    },
+                    label = { Text(repo) },
+                    onClick = { addedRepos.remove(repo) }
+                )
+            }
         }
     }
 }

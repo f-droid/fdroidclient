@@ -77,7 +77,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     private val _onlyInstalledApps = MutableStateFlow(false)
     val onlyInstalledApps = _onlyInstalledApps.asStateFlow<Boolean>()
-    private val _sortBy = MutableStateFlow<Sort>(Sort.NAME)
+    private val _sortBy = MutableStateFlow<Sort>(Sort.LATEST)
     val sortBy = _sortBy.asStateFlow<Sort>()
     private val _addedCategories = MutableStateFlow<List<String>>(emptyList())
     val addedCategories = _addedCategories.asStateFlow<List<String>>()

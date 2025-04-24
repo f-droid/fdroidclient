@@ -7,7 +7,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.FilterList
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -20,14 +19,9 @@ import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import kotlinx.coroutines.launch
-import org.fdroid.basic.ui.main.MainOverFlowMenu
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,7 +32,6 @@ fun AppSearchInputField(
     showFilterBadge: Boolean
 ) {
     val scope = rememberCoroutineScope()
-    var menuExpanded by remember { mutableStateOf(false) }
     SearchBarDefaults.InputField(
         modifier = Modifier,
         searchBarState = searchBarState,
@@ -77,13 +70,6 @@ fun AppSearchInputField(
                         )
                     }
                 }
-                IconButton(onClick = { menuExpanded = true }) {
-                    Icon(
-                        Icons.Default.MoreVert,
-                        contentDescription = null,
-                    )
-                }
-                MainOverFlowMenu(menuExpanded) { menuExpanded = false }
             }
         }
     )

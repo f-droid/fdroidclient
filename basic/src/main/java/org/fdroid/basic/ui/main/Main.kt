@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apps
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -16,6 +17,7 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -51,6 +53,7 @@ fun Main(numUpdates: Int, updates: List<UpdatableApp>, filterInfo: FilterInfo) {
                 else -> NavigationSuiteType.NavigationRail
             }
         }
+        var menuExpanded by remember { mutableStateOf(false) }
         NavigationSuiteScaffold(
             modifier = Modifier.fillMaxSize(),
             layoutType = customNavSuiteType,
@@ -81,6 +84,18 @@ fun Main(numUpdates: Int, updates: List<UpdatableApp>, filterInfo: FilterInfo) {
                         onClick = { currentDestination = dest }
                     )
                 }
+                item(
+                    icon = {
+                        Icon(
+                            Icons.Default.MoreVert,
+                            contentDescription = null,
+                        )
+                        MainOverFlowMenu(menuExpanded) { menuExpanded = false }
+                    },
+                    label = { Text("More") },
+                    selected = false,
+                    onClick = { menuExpanded = true }
+                )
             }
         ) {
             if (currentDestination == AppDestinations.APPS) Apps(
