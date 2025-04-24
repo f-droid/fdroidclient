@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,6 +31,7 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 @Composable
 fun UpdatableAppRow(app: UpdatableApp, modifier: Modifier = Modifier) {
     var isExpanded by remember { mutableStateOf(false) }
+    val isSelected = false // TODO
     Column {
         ListItem(
             leadingContent = {
@@ -56,6 +59,13 @@ fun UpdatableAppRow(app: UpdatableApp, modifier: Modifier = Modifier) {
                     }
                 }
             },
+            colors = ListItemDefaults.colors(
+                containerColor = if (isSelected) {
+                    MaterialTheme.colorScheme.surfaceVariant
+                } else {
+                    Color.Transparent
+                }
+            ),
             modifier = modifier,
         )
         AnimatedVisibility(visible = isExpanded, modifier = Modifier.padding(8.dp)) {

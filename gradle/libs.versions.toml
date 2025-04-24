@@ -31,6 +31,7 @@ androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
 androidxComposeBom = "2025.09.01"
 androidxActivityCompose = "1.11.0"
+androidxNavCompose = "2.9.1"
 accompanistDrawablepainter = "0.37.3"
 material = "1.13.0"
 
@@ -102,6 +103,7 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha",
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavCompose" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-material3-adaptive = { module = "androidx.compose.material3.adaptive:adaptive" }

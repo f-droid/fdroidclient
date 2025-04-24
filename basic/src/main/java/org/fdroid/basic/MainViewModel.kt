@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.fdroid.basic.ui.main.NUM_ITEMS
+import org.fdroid.basic.ui.main.Repository
 import org.fdroid.basic.ui.main.Sort
 import org.fdroid.basic.ui.main.apps.AppNavigationItem
 import org.fdroid.basic.ui.main.apps.FilterModel
@@ -94,6 +95,19 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val _updates = MutableStateFlow(fakeUpdates)
     val updates = _updates.asStateFlow()
     val numUpdates = _updates.map { it.size }
+    private val _repos = MutableStateFlow(
+        listOf(
+            Repository(
+                address = "http://example.org",
+                timestamp = System.currentTimeMillis(),
+                lastUpdated = null,
+                weight = 2,
+                enabled = true,
+                name = "My first repository",
+            )
+        )
+    )
+    val repos = _repos.asStateFlow()
 
     init {
         viewModelScope.launch {

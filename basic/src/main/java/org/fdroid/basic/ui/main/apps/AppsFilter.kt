@@ -44,10 +44,11 @@ fun ColumnScope.AppsFilter(
     filterExpanded: Boolean,
     filter: FilterInfo,
     addedRepos: MutableList<String>,
+    modifier: Modifier = Modifier,
 ) {
     AnimatedVisibility(filterExpanded) {
         FlowRow(
-            modifier = Modifier
+            modifier = modifier
                 .padding(horizontal = 16.dp),
             horizontalArrangement = spacedBy(16.dp),
         ) {

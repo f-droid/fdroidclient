@@ -3,4 +3,8 @@
 
     <string name="app_name">F-Droid Next</string>
 
+    <string name="about">About</string>
+    <string name="discover">Discover</string>
+    <string name="apps_my">My apps</string>
+
 </resources>
