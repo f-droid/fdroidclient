@@ -178,7 +178,7 @@ object TestDataMidV2 {
                 size = 132352235,
             ),
         ),
-        address = "https://mid-v1.org",
+        address = "https://mid-v1.org/repo",
         description = mapOf(
             LOCALE to "This is a repo with medium data.",
             "de" to "Dies ist ein Repo mit mittlerer Datendichte.",
@@ -719,7 +719,7 @@ object TestDataMaxV2 {
                 size = Long.MAX_VALUE - 1,
             ),
         ),
-        address = "https://max-v1.org",
+        address = "https://max-v1.org/repo",
         webBaseUrl = "https://www.max-v1.org",
         description = mapOf(
             LOCALE to "This is a repo with maximum data.",
@@ -727,7 +727,7 @@ object TestDataMaxV2 {
         ),
         mirrors = listOf(
             MirrorV2("https://max-v1.com", "us"),
-            MirrorV2("https://max-v1.org", "nl"),
+            MirrorV2("https://max-v1.org/repo", "nl"),
         ),
         antiFeatures = mapOf(
             "VeryBad" to AntiFeatureV2(

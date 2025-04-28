@@ -5,11 +5,11 @@
     "maxage": 2147483647,
     "name": "MaxV1",
     "icon": "max-v1.png",
-    "address": "https://max-v1.org",
+    "address": "https://max-v1.org/repo",
     "description": "This is a repo with maximum data.",
     "mirrors": [
       "https://max-v1.com",
-      "https://max-v1.org"
+      "https://max-v1.org/repo"
     ]
   },
   "requests": {
