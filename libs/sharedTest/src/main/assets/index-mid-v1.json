@@ -5,7 +5,7 @@
     "maxage": 23,
     "name": "MidV1",
     "icon": "mid-v1.png",
-    "address": "https://mid-v1.org",
+    "address": "https://mid-v1.org/repo",
     "description": "This is a repo with medium data.",
     "mirrors": [
       "https://mid-v1.com"

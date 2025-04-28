@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.builtins.serializer
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Mirror
@@ -44,6 +45,9 @@ import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
+import org.fdroid.repo.FetchResult.IsNewMirror
+import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
+import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.TestUtils.decodeHex
 import org.fdroid.test.TestUtils.getRandomString
@@ -135,7 +139,7 @@ internal class RepoAdderTest {
 
     @Test
     fun testAddingMinRepo() = runTest {
-        val url = "https://example.org/repo/"
+        val url = "https://min-v1.org/repo/"
         val urlTrimmed = url.trimEnd('/')
         val repoName = TestDataMinV2.repo.name.getBestLocale(localeList)
 
@@ -144,7 +148,7 @@ internal class RepoAdderTest {
         // repo not in DB
         every { repoDao.getRepository(any<String>()) } returns null
 
-        expectMinRepoPreview(repoName, FetchResult.IsNewRepoAndNewMirror) {
+        expectMinRepoPreview(repoName, IsNewRepository) {
             repoAdder.fetchRepository(url = url, proxy = null)
         }
 
@@ -164,10 +168,10 @@ internal class RepoAdderTest {
             })
         } returns 42L
         every { repoDao.getRepository(42L) } returns newRepo
-        every { repoDao.updateUserMirrors(42L, listOf(urlTrimmed)) } just Runs
 
         repoAdder.addRepoState.test {
-            assertIs<Fetching>(awaitItem()) // still Fetching from last call
+            val fetching: Fetching = awaitItem() as Fetching // still Fetching from last call
+            assertIs<IsNewRepository>(fetching.fetchResult)
 
             repoAdder.addFetchedRepository()
 
@@ -176,10 +180,6 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertIs<Added>(addedState)
             assertEquals(newRepo, addedState.repo)
-        }
-
-        verify {
-            repoDao.updateUserMirrors(42L, listOf(urlTrimmed))
         }
     }
 
@@ -206,7 +206,7 @@ internal class RepoAdderTest {
         )
         every { repoDao.getRepository(any<String>()) } returns existingRepo
 
-        expectMinRepoPreview(repoName, FetchResult.IsNewMirror(42L)) {
+        expectMinRepoPreview(repoName, IsNewMirror(42L)) {
             repoAdder.fetchRepository(url = url, proxy = null)
         }
 
@@ -218,7 +218,9 @@ internal class RepoAdderTest {
         every { repoDao.updateUserMirrors(42L, listOf(url.trimEnd('/'))) } just Runs
 
         repoAdder.addRepoState.test {
-            assertIs<Fetching>(awaitItem()) // still Fetching from last call
+            val fetching: Fetching = awaitItem() as Fetching // still Fetching from last call
+            assertIs<IsNewMirror>(fetching.fetchResult)
+            assertEquals(existingRepo.repoId, fetching.fetchResult.existingRepoId)
 
             repoAdder.addFetchedRepository()
 
@@ -699,7 +701,7 @@ internal class RepoAdderTest {
         }
         val addRepoState = repoAdder.addRepoState.value
         assertIs<Fetching>(addRepoState)
-        assertIs<FetchResult.IsNewRepository>(addRepoState.fetchResult)
+        assertIs<IsNewRepository>(addRepoState.fetchResult)
         assertEquals(63, addRepoState.apps.size)
     }
 

@@ -29,7 +29,7 @@ object TestDataMinV1 {
         version = 1,
         name = "MinV1",
         icon = "min-v1.png",
-        address = "https://min-v1.org",
+        address = "https://min-v1.org/repo",
         description = "This is a repo with minimal data.",
     )
 
@@ -69,7 +69,7 @@ object TestDataMidV1 {
         maxAge = 23,
         name = "MidV1",
         icon = "mid-v1.png",
-        address = "https://mid-v1.org",
+        address = "https://mid-v1.org/repo",
         description = "This is a repo with medium data.",
         mirrors = listOf("https://mid-v1.com"),
     )
@@ -417,9 +417,9 @@ object TestDataMaxV1 {
         maxAge = Int.MAX_VALUE,
         name = "MaxV1",
         icon = "max-v1.png",
-        address = "https://max-v1.org",
+        address = "https://max-v1.org/repo",
         description = "This is a repo with maximum data.",
-        mirrors = listOf("https://max-v1.com", "https://max-v1.org"),
+        mirrors = listOf("https://max-v1.com", "https://max-v1.org/repo"),
     )
 
     const val PACKAGE_NAME_1 = TestDataMidV1.PACKAGE_NAME_1
