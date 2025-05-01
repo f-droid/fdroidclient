@@ -8,7 +8,7 @@
     "address": "https://mid-v1.org/repo",
     "description": "This is a repo with medium data.",
     "mirrors": [
-      "https://mid-v1.com"
+      "https://mid-v1.com/repo"
     ]
   },
   "requests": {

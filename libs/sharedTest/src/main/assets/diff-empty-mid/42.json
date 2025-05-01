@@ -23,7 +23,7 @@
     },
     "mirrors": [
       {
-        "url": "https://mid-v1.com"
+        "url": "https://mid-v1.com/repo"
       }
     ],
     "timestamp": 1337,
