@@ -183,7 +183,7 @@ object TestDataMidV2 {
             LOCALE to "This is a repo with medium data.",
             "de" to "Dies ist ein Repo mit mittlerer Datendichte.",
         ),
-        mirrors = listOf(MirrorV2("https://mid-v1.com")),
+        mirrors = listOf(MirrorV2("https://mid-v1.com/repo")),
         categories = mapOf(
             "Cat1" to CategoryV2(
                 name = mapOf(LOCALE to "Cat1"),

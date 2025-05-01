@@ -71,7 +71,7 @@ object TestDataMidV1 {
         icon = "mid-v1.png",
         address = "https://mid-v1.org/repo",
         description = "This is a repo with medium data.",
-        mirrors = listOf("https://mid-v1.com"),
+        mirrors = listOf("https://mid-v1.com/repo"),
     )
 
     const val PACKAGE_NAME_1 = TestDataMinV1.PACKAGE_NAME
