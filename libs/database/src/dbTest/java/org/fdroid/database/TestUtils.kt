@@ -25,7 +25,7 @@ internal object TestUtils {
     fun assertRepoEquals(repoV2: RepoV2, repo: Repository) {
         val repoId = repo.repoId
         // mirrors
-        val expectedMirrors = repoV2.mirrors.map { it.toMirror(repoId) }.toSet()
+        val expectedMirrors = repoV2.mirrors.toMirrors(repoId).toSet()
         Assert.assertEquals(expectedMirrors, repo.mirrors.toSet())
         // anti-features
         val expectedAntiFeatures = repoV2.antiFeatures.toRepoAntiFeatures(repoId).toSet()

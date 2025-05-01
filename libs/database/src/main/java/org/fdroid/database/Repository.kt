@@ -288,6 +288,10 @@ internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
     countryCode = countryCode,
 )
 
+internal fun List<MirrorV2>.toMirrors(repoId: Long): List<Mirror> {
+    return this.map { it.toMirror(repoId) }
+}
+
 /**
  * An attribute belonging to a [Repository].
  */
