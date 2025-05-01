@@ -7,6 +7,7 @@ import org.fdroid.database.LocalizedIcon
 import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryPreferences
 import org.fdroid.database.toCoreRepository
+import org.fdroid.database.toMirrors
 import org.fdroid.database.toRepoAntiFeatures
 import org.fdroid.database.toRepoCategories
 import org.fdroid.database.toRepoReleaseChannel
@@ -36,7 +37,7 @@ internal open class RepoV2StreamReceiver(
                 formatVersion = formatVersion,
                 certificate = certificate
             ),
-            mirrors = emptyList(),
+            mirrors = repo.mirrors.toMirrors(REPO_ID),
             antiFeatures = repo.antiFeatures.toRepoAntiFeatures(REPO_ID),
             categories = repo.categories.toRepoCategories(REPO_ID),
             releaseChannels = repo.releaseChannels.toRepoReleaseChannel(REPO_ID),

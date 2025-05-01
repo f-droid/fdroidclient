@@ -29,6 +29,7 @@ import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.database.RepositoryPreferences
 import org.fdroid.database.toCoreRepository
+import org.fdroid.database.toMirrors
 import org.fdroid.download.Downloader
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
@@ -47,6 +48,7 @@ import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
 import org.fdroid.repo.FetchResult.IsNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
+import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.TestUtils.decodeHex
 import org.fdroid.test.TestUtils.getRandomString
@@ -175,6 +177,39 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertIs<Added>(addedState)
             assertEquals(newRepo, addedState.repo)
+        }
+    }
+
+    @Test
+    fun testAddingMidRepoByOfficialMirror() = runTest {
+        val url = "https://mid-v1.com/repo" // official mirror
+        val repoName = TestDataMidV2.repo.name.getBestLocale(localeList)
+
+        mockMidRepoDownload(url)
+
+        // repo not in DB
+        every { repoDao.getRepository(any<String>()) } returns null
+
+        expectMidRepoPreview(repoName, url, IsNewRepository)
+
+        val newRepo: Repository = mockk()
+        mockNewRepoDbInsertion(repoName, TestDataMidV2.repo.address, newRepo)
+
+        repoAdder.addRepoState.test {
+            val fetching: Fetching = awaitItem() as Fetching // still Fetching from last call
+            assertIs<IsNewRepository>(fetching.fetchResult)
+
+            repoAdder.addFetchedRepository()
+
+            assertIs<Adding>(awaitItem()) // now moved to Adding
+
+            val addedState = awaitItem()
+            assertIs<Added>(addedState)
+            assertEquals(newRepo, addedState.repo)
+        }
+
+        verify(exactly = 0) {
+            repoDao.updateUserMirrors(42L, listOf(url))
         }
     }
 
@@ -807,6 +842,18 @@ internal class RepoAdderTest {
         )
     }
 
+    private fun mockMidRepoDownload(
+        // Override the URL to download, e.g., when adding via a user/official mirror
+        downloadUrl: String = TestDataMidV2.repo.address,
+    ) {
+        mockRepoDownload(
+            downloadUrl,
+            "index-mid-v2.json",
+            "diff-empty-mid/entry.jar",
+            "561630a90ec9bcc29bc133cbd14b2d14d94124bb043c8d48effbad9d18d482fb",
+        )
+    }
+
     private fun mockRepoDownload(
         downloadUrlTrimmed: String,
         indexFile: String,
@@ -883,6 +930,54 @@ internal class RepoAdderTest {
         url: String,
         expectedFetchResult: FetchResult,
     ) {
+        expectRepoPreview(
+            repoName,
+            url,
+            expectedFetchResult,
+            TestDataMinV2.repo,
+        ) { awaitItem ->
+            val state = awaitItem()
+            assertIs<Fetching>(state)
+            assertEquals(TestDataMinV2.packages.size, state.apps.size)
+            assertEquals(TestDataMinV2.PACKAGE_NAME, state.apps[0].packageName)
+            assertFalse(state.done)
+        }
+    }
+
+    private suspend fun expectMidRepoPreview(
+        repoName: String?,
+        url: String,
+        expectedFetchResult: FetchResult,
+    ) {
+        expectRepoPreview(
+            repoName,
+            url,
+            expectedFetchResult,
+            TestDataMidV2.repo,
+        ) { awaitItem ->
+            val state = awaitItem()
+            assertIs<Fetching>(state)
+            assertEquals(1, state.apps.size)
+            assertEquals(TestDataMidV2.PACKAGE_NAME_1, state.apps[0].packageName)
+            assertFalse(state.done)
+
+            // onAppReceived (second app)
+            val stateNext = awaitItem()
+            assertIs<Fetching>(stateNext)
+            assertEquals(TestDataMidV2.packages.size, stateNext.apps.size)
+            assertEquals(TestDataMidV2.PACKAGE_NAME_1, stateNext.apps[0].packageName)
+            assertEquals(TestDataMidV2.PACKAGE_NAME_2, stateNext.apps[1].packageName)
+            assertFalse(stateNext.done)
+        }
+    }
+
+    private suspend fun expectRepoPreview(
+        repoName: String?,
+        url: String,
+        expectedFetchResult: FetchResult,
+        expectedRepo: RepoV2,
+        onAppsReceived: suspend (suspend () -> AddRepoState) -> Unit,
+    ) {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
 
@@ -904,19 +999,16 @@ internal class RepoAdderTest {
             val state2 = awaitItem()
             assertIs<Fetching>(state2)
             val repo = state2.receivedRepo ?: fail()
-            assertEquals(TestDataMinV2.repo.address, repo.address)
+            assertEquals(expectedRepo.address, repo.address)
             assertEquals(repoName, repo.getName(localeList))
+            assertEquals(expectedRepo.mirrors.toMirrors(0L), repo.mirrors)
             val result = state2.fetchResult ?: fail()
             assertEquals(expectedFetchResult, result)
             assertTrue(state2.apps.isEmpty())
             assertFalse(state2.done)
 
-            // onAppReceived
-            val state3 = awaitItem()
-            assertIs<Fetching>(state3)
-            assertEquals(TestDataMinV2.packages.size, state3.apps.size)
-            assertEquals(TestDataMinV2.PACKAGE_NAME, state3.apps[0].packageName)
-            assertFalse(state3.done)
+            // onAppReceived (state3)
+            onAppsReceived(::awaitItem)
 
             // final result
             val state4 = awaitItem()
