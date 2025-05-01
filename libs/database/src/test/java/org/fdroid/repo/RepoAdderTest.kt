@@ -45,6 +45,7 @@ import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
 import org.fdroid.repo.FetchResult.IsNewMirror
+import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.TestUtils.decodeHex
@@ -138,35 +139,34 @@ internal class RepoAdderTest {
     @Test
     fun testAddingMinRepo() = runTest {
         val url = TestDataMinV2.repo.address
+        testAddingMinRepoInt(url, IsNewRepository)
+    }
+
+    @Test
+    fun testAddingMinRepoByUserMirror() = runTest {
+        val url = "https://user-mirror-of-min-v1.org/repo"
+        testAddingMinRepoInt(url, IsNewRepoAndNewMirror)
+    }
+
+    private suspend fun testAddingMinRepoInt(
+        url: String,
+        expectedResult: FetchResult,
+    ) {
         val repoName = TestDataMinV2.repo.name.getBestLocale(localeList)
 
-        mockMinRepoDownload()
+        mockMinRepoDownload(url)
 
         // repo not in DB
         every { repoDao.getRepository(any<String>()) } returns null
 
-        expectMinRepoPreview(repoName, url, IsNewRepository)
+        expectMinRepoPreview(repoName, url, expectedResult)
 
         val newRepo: Repository = mockk()
-        val txnSlot = slot<Callable<Repository>>()
-        every { db.runInTransaction(capture(txnSlot)) } answers {
-            assertTrue(txnSlot.isCaptured)
-            txnSlot.captured.call()
-        }
-        every {
-            repoDao.insert(match<NewRepository> {
-                // Note that we are not using the url the user used to add the repo,
-                // but what the repo tells us to use
-                it.address == TestDataMinV2.repo.address &&
-                    it.formatVersion == IndexFormatVersion.TWO &&
-                    it.name.getBestLocale(localeList) == repoName
-            })
-        } returns 42L
-        every { repoDao.getRepository(42L) } returns newRepo
+        mockNewRepoDbInsertion(repoName, TestDataMinV2.repo.address, newRepo, url)
 
         repoAdder.addRepoState.test {
             val fetching: Fetching = awaitItem() as Fetching // still Fetching from last call
-            assertIs<IsNewRepository>(fetching.fetchResult)
+            assertEquals(expectedResult, fetching.fetchResult)
 
             repoAdder.addFetchedRepository()
 
@@ -179,7 +179,7 @@ internal class RepoAdderTest {
     }
 
     @Test
-    fun testAddingUserMirrorForMinRepo() = runTest {
+    fun testAddingUserMirrorForExistingMinRepo() = runTest {
         val url = "https://user-mirror-of-min-v1.org/repo"
         val repoName = TestDataMinV2.repo.name.getBestLocale(localeList)
 
@@ -848,6 +848,34 @@ internal class RepoAdderTest {
         every {
             digest.digest()
         } returns digestHex.decodeHex()
+    }
+
+    private fun mockNewRepoDbInsertion(
+        repoName: String?,
+        repoAddress: String,
+        newRepo: Repository,
+        userMirrorUrl: String? = null,
+    ) {
+        val txnSlot = slot<Callable<Repository>>()
+        every { db.runInTransaction(capture(txnSlot)) } answers {
+            assertTrue(txnSlot.isCaptured)
+            txnSlot.captured.call()
+        }
+
+        every {
+            repoDao.insert(match<NewRepository> {
+                // Note that we are not using the url the user used to add the repo,
+                // but what the repo tells us to use
+                it.address == repoAddress &&
+                    it.formatVersion == IndexFormatVersion.TWO &&
+                    it.name.getBestLocale(localeList) == repoName
+            })
+        } returns 42L
+        every { repoDao.getRepository(42L) } returns newRepo
+
+        if (userMirrorUrl != null && userMirrorUrl != repoAddress) {
+            every { repoDao.updateUserMirrors(42L, listOf(userMirrorUrl)) } just Runs
+        }
     }
 
     private suspend fun expectMinRepoPreview(
