@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Android
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -22,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +41,11 @@ fun UpdatableAppRow(app: UpdatableApp, modifier: Modifier = Modifier) {
                     Icons.Filled.Android,
                     tint = MaterialTheme.colorScheme.secondary,
                     contentDescription = null,
+                    modifier = Modifier
+                        .clip(MaterialTheme.shapes.medium)
+                        .size(48.dp)
+                        .background(Color.White)
+                        .padding(8.dp),
                 )
             },
             headlineContent = {

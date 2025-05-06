@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 fun AppsSearch(
     searchBarState: SearchBarState,
     onItemClick: (AppNavigationItem) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val textFieldState = rememberTextFieldState()
     val inputField = @Composable {
@@ -29,6 +30,7 @@ fun AppsSearch(
         state = searchBarState,
         windowInsets = WindowInsets(),
         inputField = inputField,
+        modifier = modifier,
     )
     ExpandedFullScreenSearchBar(
         state = searchBarState,
