@@ -24,14 +24,17 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import androidx.window.core.layout.WindowWidthSizeClass
 import org.fdroid.basic.R
-import org.fdroid.basic.ui.main.apps.AppNavigationItem
-import org.fdroid.basic.ui.main.apps.FilterInfo
-import org.fdroid.basic.ui.main.apps.FilterModel
-import org.fdroid.basic.ui.main.updates.UpdatableApp
+import org.fdroid.basic.ui.main.apps.InstalledApp
+import org.fdroid.basic.ui.main.apps.MinimalApp
+import org.fdroid.basic.ui.main.apps.MyAppsScaffold
+import org.fdroid.basic.ui.main.apps.UpdatableApp
+import org.fdroid.basic.ui.main.discover.AppNavigationItem
+import org.fdroid.basic.ui.main.discover.DiscoverScaffold
+import org.fdroid.basic.ui.main.discover.FilterInfo
+import org.fdroid.basic.ui.main.discover.FilterModel
+import org.fdroid.basic.ui.main.discover.Sort
 
 enum class BottomNavDestinations(
     @StringRes val label: Int,
@@ -43,10 +46,13 @@ enum class BottomNavDestinations(
 
 @Composable
 fun BottomBarScreen(
-    navController: NavHostController,
+    onMainNav: (String) -> Unit,
     numUpdates: Int,
     updates: List<UpdatableApp>,
-    filterInfo: FilterInfo
+    installed: List<InstalledApp>,
+    filterInfo: FilterInfo,
+    currentItem: MinimalApp?,
+    onSelectAppItem: (MinimalApp) -> Unit,
 ) {
     var currentDestination by rememberSaveable { mutableStateOf(BottomNavDestinations.APPS) }
     val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -89,14 +95,19 @@ fun BottomBarScreen(
         }
     ) {
         when (currentDestination) {
-            BottomNavDestinations.APPS -> Apps(
+            BottomNavDestinations.APPS -> DiscoverScaffold(
                 apps = filterInfo.model.apps,
                 filterInfo = filterInfo,
-                onMainNav = { navController.navigate(it) },
+                onMainNav = onMainNav,
+                currentItem = currentItem,
+                onSelectAppItem = onSelectAppItem,
                 modifier = Modifier,
             )
-            BottomNavDestinations.UPDATES -> Updates(
-                apps = updates,
+            BottomNavDestinations.UPDATES -> MyAppsScaffold(
+                updatableApps = updates,
+                installedApps = installed,
+                currentItem = currentItem,
+                onSelectAppItem = onSelectAppItem,
             )
         }
     }
@@ -126,5 +137,5 @@ fun BottomBarPreview() {
         override fun removeCategory(category: String) {}
         override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
     }
-    BottomBarScreen(rememberNavController(), 2, emptyList(), filterInfo)
+    BottomBarScreen({ }, 2, emptyList(), emptyList(), filterInfo, null, {})
 }

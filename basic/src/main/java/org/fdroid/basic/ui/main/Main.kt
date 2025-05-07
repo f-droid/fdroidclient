@@ -14,7 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import org.fdroid.basic.MainViewModel
 import org.fdroid.basic.R
 import org.fdroid.basic.ui.icons.PackageVariant
-import org.fdroid.basic.ui.main.apps.FilterInfo
+import org.fdroid.basic.ui.main.discover.FilterInfo
+import org.fdroid.basic.ui.main.discover.Sort
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 sealed class NavDestinations(
@@ -45,6 +46,7 @@ fun Main(viewModel: MainViewModel = viewModel()) {
             composable(route = NavDestinations.Main.id) {
                 val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle(0).value
                 val updates = viewModel.updates.collectAsStateWithLifecycle().value
+                val installed = viewModel.installed.collectAsStateWithLifecycle().value
                 val filterInfo = object : FilterInfo {
                     override val model = viewModel.filterModel.collectAsStateWithLifecycle().value
                     override fun sortBy(sort: Sort) = viewModel.sortBy(sort)
@@ -55,7 +57,16 @@ fun Main(viewModel: MainViewModel = viewModel()) {
                     override fun showOnlyInstalledApps(onlyInstalled: Boolean) =
                         viewModel.showOnlyInstalledApps(onlyInstalled)
                 }
-                BottomBarScreen(navController, numUpdates, updates, filterInfo)
+                val currentItem = viewModel.appDetails.collectAsStateWithLifecycle().value
+                BottomBarScreen(
+                    onMainNav = { navController.navigate(it) },
+                    numUpdates = numUpdates,
+                    updates = updates,
+                    installed = installed,
+                    filterInfo = filterInfo,
+                    currentItem = currentItem,
+                    onSelectAppItem = viewModel::setAppDetails,
+                )
             }
             composable(route = NavDestinations.Repos.id) {
                 val repos = viewModel.repos.collectAsStateWithLifecycle().value

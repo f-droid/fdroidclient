@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.updates
+package org.fdroid.basic.ui.main.apps
 
 import android.text.format.Formatter
 import androidx.compose.animation.AnimatedVisibility
@@ -11,6 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Android
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material.icons.filled.NewReleases
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -31,22 +33,33 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
-fun UpdatableAppRow(app: UpdatableApp, modifier: Modifier = Modifier) {
+fun UpdatableAppRow(
+    app: UpdatableApp,
+    isSelected: Boolean,
+    modifier: Modifier = Modifier
+) {
     var isExpanded by remember { mutableStateOf(false) }
-    val isSelected = false // TODO
     Column {
         ListItem(
             leadingContent = {
-                Icon(
-                    Icons.Filled.Android,
-                    tint = MaterialTheme.colorScheme.secondary,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.medium)
-                        .size(48.dp)
-                        .background(Color.White)
-                        .padding(8.dp),
-                )
+                BadgedBox(badge = {
+                    Icon(
+                        imageVector = Icons.Filled.NewReleases,
+                        tint = MaterialTheme.colorScheme.error,
+                        contentDescription = null, modifier = Modifier.size(24.dp),
+                    )
+                }) {
+                    Icon(
+                        Icons.Filled.Android,
+                        tint = MaterialTheme.colorScheme.secondary,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .clip(MaterialTheme.shapes.medium)
+                            .size(48.dp)
+                            .background(Color.White)
+                            .padding(8.dp),
+                    )
+                }
             },
             headlineContent = {
                 Text(app.name)
@@ -91,6 +104,7 @@ fun UpdatableAppRow(app: UpdatableApp, modifier: Modifier = Modifier) {
 @Composable
 fun UpdatableAppRowPreview() {
     val app = UpdatableApp(
+        packageName = "",
         name = "App Update 123",
         currentVersionName = "1.0.1",
         updateVersionName = "1.1.0",
@@ -98,6 +112,9 @@ fun UpdatableAppRowPreview() {
         whatsNew = "This is new, all is new, nothing old.",
     )
     FDroidContent {
-        UpdatableAppRow(app)
+        Column {
+            UpdatableAppRow(app, false)
+            UpdatableAppRow(app, true)
+        }
     }
 }

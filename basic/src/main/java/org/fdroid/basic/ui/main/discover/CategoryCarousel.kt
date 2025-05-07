@@ -1,6 +1,6 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.discover
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Android
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -22,21 +21,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import org.fdroid.basic.MainViewModel
+import org.fdroid.basic.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppCarousel(
-    title: String,
-    apps: List<AppNavigationItem>,
+fun CategoryCarousel(
+    onTitleTap: () -> Unit,
+    onCategoryTap: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel = viewModel(),
+) {
+    CategoryCarousel(viewModel.categories, modifier, onTitleTap, onCategoryTap)
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+fun CategoryCarousel(
+    categories: List<Pair<String, Int>>,
     modifier: Modifier = Modifier,
     onTitleTap: () -> Unit,
-    onAppTap: (AppNavigationItem) -> Unit,
+    onCategoryTap: (String) -> Unit,
 ) {
-    val carouselState = rememberCarouselState { apps.size }
+    val carouselState = rememberCarouselState { categories.size }
     Column(modifier = modifier) {
         Row(
             verticalAlignment = CenterVertically,
@@ -46,7 +59,7 @@ fun AppCarousel(
                 .padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
             Text(
-                text = title,
+                text = "Categories",
                 style = MaterialTheme.typography.headlineSmall,
             )
             Icon(
@@ -60,31 +73,29 @@ fun AppCarousel(
             itemSpacing = 8.dp,
             contentPadding = PaddingValues(horizontal = 16.dp),
         ) { index ->
-            AppBox(apps[index], onAppTap)
+            CategoryBox(categories[index], onCategoryTap)
         }
     }
 }
 
 @Composable
-fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
+fun CategoryBox(category: Pair<String, Int>, onCategoryTap: (String) -> Unit) {
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier
             .padding(8.dp)
-            .clickable { onAppTap(app) },
+            .clickable { onCategoryTap(category.first) },
     ) {
-        Icon(
-            Icons.Filled.Android,
-            tint = MaterialTheme.colorScheme.secondary,
+        Image(
+            painter = painterResource(category.second),
             contentDescription = null,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
                 .clip(MaterialTheme.shapes.medium)
-                .size(76.dp)
-                .background(Color.White)
-                .padding(8.dp),
+                .size(76.dp),
         )
         Text(
-            text = app.name,
+            text = category.first,
             style = MaterialTheme.typography.bodySmall,
             minLines = 2,
             maxLines = 2,
@@ -94,15 +105,16 @@ fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
 
 @Preview
 @Composable
-fun AppCarouselPreview() {
-    val apps = listOf(
-        AppNavigationItem("", Names.randomName, "bar", true),
-        AppNavigationItem("", Names.randomName, "bar", false),
-        AppNavigationItem("", Names.randomName, "bar", false),
-        AppNavigationItem("", Names.randomName, "bar", false),
-        AppNavigationItem("", Names.randomName, "bar", false),
+fun CategoryCarouselPreview() {
+    val categories = listOf(
+        Pair(stringResource(R.string.category_Time), R.drawable.category_theming),
+        Pair(stringResource(R.string.category_Games), R.drawable.category_games),
+        Pair(stringResource(R.string.category_Money), R.drawable.category_money),
+        Pair(stringResource(R.string.category_Reading), R.drawable.category_reading),
+        Pair(stringResource(R.string.category_Theming), R.drawable.category_theming),
+        Pair(stringResource(R.string.category_Connectivity), R.drawable.category_connectivity),
     )
     FDroidContent {
-        AppCarousel("Preview Apps", apps, onTitleTap = {}) {}
+        CategoryCarousel(categories, onTitleTap = {}) {}
     }
 }

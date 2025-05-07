@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.lists
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -39,6 +39,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
+import org.fdroid.basic.ui.main.apps.MinimalApp
+import org.fdroid.basic.ui.main.discover.AppNavigationItem
+import org.fdroid.basic.ui.main.discover.AppsFilter
+import org.fdroid.basic.ui.main.discover.FilterInfo
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +50,7 @@ fun AppList(
     listState: LazyListState,
     apps: List<AppNavigationItem>,
     filterInfo: FilterInfo,
-    currentItem: AppNavigationItem?,
+    currentItem: MinimalApp?,
     modifier: Modifier = Modifier,
     onBackClicked: () -> Unit,
     onItemClick: (AppNavigationItem) -> Unit,

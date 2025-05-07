@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.discover
 
 object Names {
 

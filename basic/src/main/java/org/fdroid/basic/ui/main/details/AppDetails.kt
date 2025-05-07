@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.details
 
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Android
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,14 +16,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.fdroid.basic.ui.main.apps.MinimalApp
+import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 fun AppDetails(
-    appItem: AppNavigationItem,
+    appItem: MinimalApp?,
     modifier: Modifier = Modifier,
 ) {
-    Row(
+    if (appItem == null) CircularProgressIndicator()
+    else Row(
         modifier = modifier
             .safeDrawingPadding()
             .padding(16.dp),
@@ -35,8 +39,8 @@ fun AppDetails(
             modifier = Modifier.size(48.dp),
         )
         Column {
-            Text(appItem.name, style = MaterialTheme.typography.headlineMedium)
-            Text(appItem.summary, style = MaterialTheme.typography.bodyMedium)
+            Text(appItem.name ?: "Unknown app", style = MaterialTheme.typography.headlineMedium)
+            Text("Summary foo bar", style = MaterialTheme.typography.bodyMedium)
         }
     }
 }

@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.discover
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement.spacedBy
@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import org.fdroid.basic.R
-import org.fdroid.basic.ui.main.Sort
 
 interface FilterInfo {
     val model: FilterModel

@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.discover
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets

@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.apps
+package org.fdroid.basic.ui.main.discover
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import org.fdroid.basic.ui.main.CategoryCarousel
 import org.fdroid.basic.ui.main.MainOverFlowMenu
 import org.fdroid.basic.ui.main.topBarMenuItems
 
@@ -84,14 +83,13 @@ fun Discover(
         ) {
             AppsSearch(searchBarState, onAppTap, modifier = Modifier.padding(top = 8.dp))
             AppCarousel(
-                title = "New apps",
+                title = "New",
                 apps = apps,
                 onTitleTap = onTitleTap,
                 onAppTap = onAppTap,
             )
-            CategoryCarousel(onTitleTap, {})
             AppCarousel(
-                title = "Other apps",
+                title = "Recently updated",
                 apps = apps.filter { it.packageName.toInt() % 2 == 0 },
                 onTitleTap = onTitleTap,
                 onAppTap = onAppTap,

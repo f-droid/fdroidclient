@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main
+package org.fdroid.basic.ui.main.discover
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
@@ -21,12 +21,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import org.fdroid.basic.ui.main.apps.AppDetails
-import org.fdroid.basic.ui.main.apps.AppList
-import org.fdroid.basic.ui.main.apps.AppNavigationItem
-import org.fdroid.basic.ui.main.apps.Discover
-import org.fdroid.basic.ui.main.apps.FilterInfo
-import org.fdroid.basic.ui.main.apps.FilterModel
+import org.fdroid.basic.ui.main.apps.MinimalApp
+import org.fdroid.basic.ui.main.details.AppDetails
+import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 enum class Sort {
@@ -38,13 +35,15 @@ const val NUM_ITEMS = 42
 
 @Composable
 @OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3Api::class)
-fun Apps(
+fun DiscoverScaffold(
     apps: List<AppNavigationItem>,
     filterInfo: FilterInfo,
     onMainNav: (String) -> Unit,
+    onSelectAppItem: (MinimalApp) -> Unit,
+    currentItem: MinimalApp?,
     modifier: Modifier = Modifier,
 ) {
-    val navigator = rememberListDetailPaneScaffoldNavigator<AppNavigationItem>()
+    val navigator = rememberListDetailPaneScaffoldNavigator<MinimalApp>()
     val scope = rememberCoroutineScope()
     BackHandler(enabled = navigator.canNavigateBack()) {
         scope.launch {
@@ -66,6 +65,7 @@ fun Apps(
                             apps = apps,
                             onTitleTap = { discoverNavController.navigate("list") },
                             onAppTap = {
+                                onSelectAppItem(it)
                                 scope.launch { navigator.navigateTo(Detail, it) }
                             },
                             onMainNav = { onMainNav(it) },
@@ -77,14 +77,11 @@ fun Apps(
                             listState = listState,
                             apps = apps,
                             filterInfo = filterInfo,
-                            currentItem = if (isDetailVisible) {
-                                navigator.currentDestination?.contentKey
-                            } else {
-                                null
-                            },
+                            currentItem = if (isDetailVisible) currentItem else null,
                             onBackClicked = { discoverNavController.popBackStack() },
                             modifier = Modifier,
                         ) {
+                            onSelectAppItem(it)
                             scope.launch { navigator.navigateTo(Detail, it) }
                         }
                     }
@@ -94,7 +91,7 @@ fun Apps(
         detailPane = {
             AnimatedPane {
                 navigator.currentDestination?.contentKey?.let {
-                    AppDetails(appItem = it)
+                    AppDetails(it)
                 } ?: Text("No app selected", modifier = Modifier.padding(16.dp))
             }
         },
@@ -104,7 +101,7 @@ fun Apps(
 @Preview
 @PreviewScreenSizes
 @Composable
-fun AppsPreview() {
+fun DiscoverScaffoldPreview() {
     FDroidContent {
         val apps = listOf(
             AppNavigationItem("1", "foo", "bar", false),
@@ -126,6 +123,6 @@ fun AppsPreview() {
             override fun removeCategory(category: String) {}
             override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
         }
-        Apps(apps, filterInfo, {})
+        DiscoverScaffold(apps, filterInfo, {}, {}, null)
     }
 }
