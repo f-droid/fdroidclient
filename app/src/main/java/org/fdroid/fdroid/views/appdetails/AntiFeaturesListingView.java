@@ -18,6 +18,7 @@
 
 package org.fdroid.fdroid.views.appdetails;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
@@ -106,7 +108,13 @@ public class AntiFeaturesListingView extends RecyclerView {
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                     i.setData(Uri.parse("https://f-droid.org/docs/Anti-Features#" + antiFeatureId));
-                    getContext().startActivity(i);
+                    try {
+                        getContext().startActivity(i);
+                    } catch (ActivityNotFoundException ex) {
+                        Toast.makeText(getContext(),
+                                getContext().getString(R.string.no_handler_app, antiFeatureId),
+                                Toast.LENGTH_LONG).show();
+                    }
                 });
             }
 
