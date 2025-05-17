@@ -177,7 +177,6 @@ dependencies {
     implementation libs.androidx.preference.ktx
     implementation libs.androidx.gridlayout
     implementation libs.androidx.recyclerview
-    implementation libs.androidx.cardview
     implementation libs.androidx.vectordrawable
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.lifecycle.livedata.ktx
