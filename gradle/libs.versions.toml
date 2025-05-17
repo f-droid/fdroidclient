@@ -22,7 +22,6 @@ androidxLifecycleLivedataKtx = "2.8.7"
 androidxWork = "2.10.0"
 androidxRecyclerview = "1.4.0"
 androidxConstraintlayout = "2.2.1"
-androidxPaletteKtx = "1.0.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.0.0"
 androidxComposeBom = "2025.03.00"
@@ -80,7 +79,6 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidxLifecycleLivedataKtx" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidxConstraintlayout" }
 androidx-gridlayout = { module = "androidx.gridlayout:gridlayout", version.ref = "androidxGridlayout" }
-androidx-palette-ktx = { module = "androidx.palette:palette-ktx", version.ref = "androidxPaletteKtx" }
 androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "androidxPreferenceKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidxRecyclerview" }
