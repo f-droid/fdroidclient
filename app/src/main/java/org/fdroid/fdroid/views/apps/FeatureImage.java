@@ -15,7 +15,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
-import androidx.palette.graphics.Palette;
 
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.DataSource;
@@ -30,9 +29,9 @@ import org.fdroid.fdroid.data.App;
 import java.util.Random;
 
 /**
- * A feature image can have a {@link android.graphics.drawable.Drawable} or a {@link Palette}. If
- * a Drawable is available, then it will draw that, otherwise it will attempt to fall back to the
- * Palette you gave it. If a Palette is given, it will draw a series of triangles like so:
+ * A feature image can have a {@link android.graphics.drawable.Drawable}. If a Drawable is
+ * available, then it will draw that, otherwise it will attempt to fall back to the colour you gave
+ * it. If a colour is given, it will draw a series of triangles like so:
  * <p>
  * +_----+----_+_----+----_+
  * | \_  |  _/ | \_  |  _/ |
@@ -42,12 +41,12 @@ import java.util.Random;
  * |   \_|_/   |   \_|_/   |
  * +-----+-----+-----+-----+
  * <p>
- * where each triangle is filled with one of two variations of the {@link Palette#getDominantColor(int)}
- * that is chosen randomly. The randomness is first seeded with the colour that has been selected.
- * This is so that if this repaints itself in the future, it will have the same unique pattern rather
- * than picking a new random pattern each time.
+ * where each triangle is filled with one of two variations of the colour that is chosen randomly.
+ * The randomness is first seeded with the colour that has been selected. This is so that if this
+ * repaints itself in the future, it will have the same unique pattern rather than picking a new
+ * random pattern each time.
  * <p>
- * It is suggested that you obtain the Palette from the icon of an app.
+ * It is suggested that you obtain the colour from the icon of an app.
  */
 @SuppressWarnings("LineLength")
 public class FeatureImage extends AppCompatImageView {
@@ -92,9 +91,9 @@ public class FeatureImage extends AppCompatImageView {
     }
 
     /**
-     * Takes the {@link Palette#getDominantColor(int)} from the palette, dims it substantially, and
-     * then creates a second variation that is slightly dimmer still. These two colours are then
-     * randomly allocated to each triangle which is expected to be rendered.
+     * Takes the {@code colour}, dims it substantially, and then creates a second variation that is
+     * slightly dimmer still. These two colours are then randomly allocated to each triangle which
+     * is expected to be rendered.
      */
     public void setColour(@ColorInt int colour) {
         if (colour == 0) {
@@ -207,7 +206,7 @@ public class FeatureImage extends AppCompatImageView {
 
     /**
      * First try to draw whatever image was given to this view. If that doesn't exist, try to draw
-     * a geometric pattern based on the palette that was given to us. If we haven't had a colour
+     * a geometric pattern based on the colour that was given to us. If we haven't had a colour
      * assigned to us (using {@link #setColour(int)}) then clear the view by filling it with white.
      */
     @Override
