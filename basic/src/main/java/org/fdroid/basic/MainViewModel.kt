@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.update
 import org.fdroid.basic.manager.AppDetailsManager
 import org.fdroid.basic.manager.MyAppsManager
-import org.fdroid.basic.ui.main.Repository
+import org.fdroid.basic.manager.RepositoryManager
 import org.fdroid.basic.ui.main.apps.InstalledApp
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
@@ -33,6 +33,7 @@ class MainViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val myAppsManager: MyAppsManager,
     private val appDetailsManager: AppDetailsManager,
+    val repositoryManager: RepositoryManager,
 ) : AndroidViewModel(app) {
 
     companion object {
@@ -111,22 +112,8 @@ class MainViewModel @Inject constructor(
     val numUpdates = myAppsManager.numUpdates
     val appDetails = appDetailsManager.appDetails
 
-    private val _repos = MutableStateFlow(
-        listOf(
-            Repository(
-                address = "http://example.org",
-                timestamp = System.currentTimeMillis(),
-                lastUpdated = null,
-                weight = 2,
-                enabled = true,
-                name = "My first repository",
-            )
-        )
-    )
-    val repos = _repos.asStateFlow()
 
     fun setAppDetails(app: MinimalApp) {
-        appDetailsManager.setAppDetails(null)
         val newApp = filterModel.value.apps.find { it.packageName == app.packageName }
             ?: (updates.value.find { it.packageName == app.packageName }
                 ?: installed.value.find { it.packageName == app.packageName })?.let {

@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
@@ -47,7 +46,6 @@ import org.fdroid.basic.ui.main.discover.FilterInfo
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppList(
-    listState: LazyListState,
     apps: List<AppNavigationItem>,
     filterInfo: FilterInfo,
     currentItem: MinimalApp?,
@@ -96,7 +94,6 @@ fun AppList(
                 addedRepos = addedRepos,
             )
             LazyColumn(
-                state = listState,
                 contentPadding = PaddingValues(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.then(

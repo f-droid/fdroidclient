@@ -16,6 +16,7 @@ import org.fdroid.basic.R
 import org.fdroid.basic.ui.icons.PackageVariant
 import org.fdroid.basic.ui.main.discover.FilterInfo
 import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.main.repositories.RepositoriesScaffold
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 sealed class NavDestinations(
@@ -69,8 +70,17 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                 )
             }
             composable(route = NavDestinations.Repos.id) {
-                val repos = viewModel.repos.collectAsStateWithLifecycle().value
-                Repositories(repos, null) { navController.popBackStack() }
+                val repositoryManager = viewModel.repositoryManager
+                val repos = repositoryManager.repos.collectAsStateWithLifecycle().value
+                val visibleRepository =
+                    repositoryManager.visibleRepository.collectAsStateWithLifecycle().value
+                RepositoriesScaffold(
+                    repositories = repos,
+                    currentRepository = visibleRepository,
+                    onRepositorySelected = repositoryManager::setVisibleRepository,
+                ) {
+                    navController.popBackStack()
+                }
             }
             composable(route = NavDestinations.Settings.id) {
                 Settings { navController.popBackStack() }

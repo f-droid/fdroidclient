@@ -26,7 +26,7 @@ fun InstalledAppRow(
     isSelected: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    Column {
+    Column(modifier = modifier) {
         ListItem(
             leadingContent = {
                 Icon(

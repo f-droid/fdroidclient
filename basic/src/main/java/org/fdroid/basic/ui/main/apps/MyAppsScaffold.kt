@@ -57,7 +57,7 @@ fun MyAppsScaffold(
         },
         detailPane = {
             AnimatedPane {
-                navigator.currentDestination?.contentKey?.let {
+                currentItem?.let {
                     AppDetails(it)
                 } ?: Text("No app selected", modifier = Modifier.padding(16.dp))
             }

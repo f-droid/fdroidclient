@@ -39,7 +39,7 @@ fun UpdatableAppRow(
     modifier: Modifier = Modifier
 ) {
     var isExpanded by remember { mutableStateOf(false) }
-    Column {
+    Column(modifier = modifier) {
         ListItem(
             leadingContent = {
                 BadgedBox(badge = {

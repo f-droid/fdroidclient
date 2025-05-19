@@ -2,7 +2,6 @@ package org.fdroid.basic.ui.main.discover
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
@@ -51,7 +50,6 @@ fun DiscoverScaffold(
         }
     }
     val isDetailVisible = navigator.scaffoldValue[Detail] == PaneAdaptedValue.Expanded
-    val listState = rememberLazyListState()
     ListDetailPaneScaffold(
         directive = navigator.scaffoldDirective,
         value = navigator.scaffoldValue,
@@ -74,7 +72,6 @@ fun DiscoverScaffold(
                     }
                     composable("list") {
                         AppList(
-                            listState = listState,
                             apps = apps,
                             filterInfo = filterInfo,
                             currentItem = if (isDetailVisible) currentItem else null,
@@ -90,7 +87,7 @@ fun DiscoverScaffold(
         },
         detailPane = {
             AnimatedPane {
-                navigator.currentDestination?.contentKey?.let {
+                currentItem?.let {
                     AppDetails(it)
                 } ?: Text("No app selected", modifier = Modifier.padding(16.dp))
             }
