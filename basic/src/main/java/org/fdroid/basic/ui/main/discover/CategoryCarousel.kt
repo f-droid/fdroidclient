@@ -26,7 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import org.fdroid.basic.MainViewModel
 import org.fdroid.basic.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
@@ -36,7 +36,7 @@ fun CategoryCarousel(
     onTitleTap: () -> Unit,
     onCategoryTap: (String) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: MainViewModel = viewModel(),
+    viewModel: MainViewModel = hiltViewModel(),
 ) {
     CategoryCarousel(viewModel.categories, modifier, onTitleTap, onCategoryTap)
 }

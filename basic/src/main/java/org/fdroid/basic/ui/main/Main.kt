@@ -6,8 +6,8 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -39,7 +39,7 @@ val moreMenuItems = listOf(
 )
 
 @Composable
-fun Main(viewModel: MainViewModel = viewModel()) {
+fun Main(viewModel: MainViewModel = hiltViewModel()) {
     FDroidContent {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = NavDestinations.Main.id) {

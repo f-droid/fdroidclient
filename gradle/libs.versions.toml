@@ -3,6 +3,8 @@ compileSdk = "36"
 kotlin = "2.2.21"
 androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on buildserver
 androidKspPlugin = "2.2.21-2.0.4" # first version needs to match kotlin version
+hilt = "2.56.2"
+hiltNavigationCompose = "1.2.0"
 dokka = "2.1.0"
 mavenPublish = "0.34.0"
 jlleitschuhKtlint = "13.1.0"
@@ -110,6 +112,7 @@ androidx-compose-material3-adaptive = { module = "androidx.compose.material3.ada
 androidx-compose-material3-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation" }
 androidx-compose-material3-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout" }
 androidx-compose-material3-adaptive-navigation-suite-android = { module = "androidx.compose.material3:material3-adaptive-navigation-suite-android" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -122,6 +125,9 @@ glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 glide-annotations = { module = "com.github.bumptech.glide:annotations", version.ref = "glide" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 
 molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
 guardianproject-netcipher = { module = "info.guardianproject.netcipher:netcipher", version.ref = "guardianprojectNetcipher" }
@@ -181,6 +187,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
+android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
