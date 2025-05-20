@@ -1,0 +1,6 @@
+* material design 3 (dengan tampilan edge-to-edge, tetapi tanpa warna dinamis) (Terima kasih proletariu!)
+* desain ulang layar detail repositori (Terima kasih Thore)
+* tambah ekspor file logcat di pengaturan lanjutan
+* perbarui target SDK (Android 15 untuk versi dasar dan Android 11 untuk versi lengkap)
+* tambah tautan balik dari halaman aplikasi di pengaturan sistem (Terima kasih j-m4)
+* gunakan pemilih aplikasi untuk berbagi aplikasi yang terpasang dan riwayat instalasi (Terima kasih Thore)

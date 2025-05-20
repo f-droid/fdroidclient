@@ -1,0 +1,6 @@
+* dearadh ábhar 3 (le imeall-go-imeall, ach gan dathanna dinimiciúla) (Go raibh maith agat proletarius!)
+* scáileáin sonraí stórtha a athdhearadh (Go raibh maith agat Thore!)
+* Chuir onnmhairiú comhad logcat isteach i socruithe saineolaithe
+* nuashonraigh an sprioc SDK (Android 15 le haghaidh bunúsach agus Android 11 iomlán)
+* cuir backlink ó leathanach na haipe i socruithe an chórais (Go raibh maith agat j-m4!)
+* úsáid roghnóir aip chun aipeanna suiteáilte a roinnt agus stair a shuiteáil (Go raibh maith agat Thore!)

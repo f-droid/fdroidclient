@@ -1,0 +1,8 @@
+* izmēģinājuma atbalsts Android 15 lietotņu arhivēšanas atcelšanai
+* tikko kā uzstādītās lietotnes tiek automātiski pievienotas sākuma ekrānam vairumā palaidēju (Paldies, Dhina!)
+* informācijā par lietotni atdalīta kopīgošanas saite un datnes kopīgošanas darbības
+* tiek rādīts uznirstošs paziņojums, kad APK ir vairāk atļauju nekā paredzēts
+* tiek biežāk notīrīti iekšējie keši, lai atbrīvotu vietu (Paldies, DerGenaue!)
+* pārkārtotas ziedojuma nozīmītes, lai atbilstu tīmekļvietnei (Paldies, Leo!)
+* pievienots iestatījumu slēdzis, lai dotu priekšroku ārējiem spoguļiem
+* daudzi mazu nepilnību labojumi

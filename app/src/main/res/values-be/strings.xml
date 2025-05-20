@@ -22,7 +22,7 @@
     <string name="system_installer">Прывілеяванае пашырэнне</string>
     <string name="system_installer_on">Выкарыстоўваць прывілеяванае пашырэнне для ўсталёўкі, абнаўлення ці выдалення пакункаў</string>
     <string name="local_repo_name">Назва вашага лакальнага рэпазіторыя</string>
-    <string name="local_repo_name_summary">Ваш лакальны рэпазіторый прапануецца пад назвай: %s</string>
+    <string name="local_repo_name_summary">Публічная назва вашага лакальнага рэпазіторыя: %s</string>
     <string name="local_repo_https_on">Выкарыстоўваць зашыфраванае злучэнне HTTPS для лакальнага рэпазіторыя</string>
     <string name="login_title">Патрабуецца аўтэнтыфікацыя</string>
     <string name="login_name">Імя карыстальніка</string>
@@ -58,7 +58,7 @@
     <string name="enable">Уключыць</string>
     <string name="add_key">Дадаць ключ</string>
     <string name="overwrite">Перазапісаць</string>
-    <string name="bluetooth_activity_not_found">Не знойдзена метаду адпраўлення праз Bluetooth, абярыце адзін!</string>
+    <string name="bluetooth_activity_not_found">Не знойдзена метаду адпраўлення праз Bluetooth, выберыце якісьці!</string>
     <string name="choose_bt_send">Абраць метад адпраўлення праз Bluetooth</string>
     <string name="repo_add_url">Адрас рэпазіторыя</string>
     <string name="repo_add_fingerprint">Адбітак (неабавязкова)</string>
@@ -71,7 +71,7 @@
     <string name="menu_search">Пошук</string>
     <string name="menu_add_repo">Новы рэпазіторый</string>
     <string name="menu_launch">Адкрыць</string>
-    <string name="menu_share">Падзяліцца</string>
+    <string name="menu_share">Абагуліць</string>
     <string name="menu_install">Усталяваць</string>
     <string name="menu_uninstall">Выдаліць</string>
     <string name="menu_ignore_all">Ігнараваць усе абнаўленні</string>
@@ -110,9 +110,9 @@
     <string name="copying_icons">Капіяванне значкоў праграм у рэпазіторый…</string>
     <string name="icon">Значок</string>
     <string name="next">Далей</string>
-    <string name="skip">Прамінуць</string>
+    <string name="skip">Прапусціць</string>
     <string name="useTor">Выкарыстоўваць Tor</string>
-    <string name="useTorSummary">Сілком спампоўваць праз Tor для лепшай прыватнасці. Патрабуе Orbot</string>
+    <string name="useTorSummary">Дзеля лепшай прыватнасці прымусова спампоўваць праз Tor. Патрабуецца Orbot</string>
     <string name="proxy">Проксі</string>
     <string name="enable_proxy_title">Выкарыстоўваць HTTP-проксі</string>
     <string name="enable_proxy_summary">Наладзіць HTTP-проксі для ўсіх сеткавых запытаў</string>
@@ -155,16 +155,14 @@
     <string name="repo_confirm_delete_body">Калі выдаліць рэпазіторый, то праграмы ў ім больш не будуць даступныя.
 \n
 \nУвага: усе папярэдне ўсталяваныя праграмы застануцца на вашай прыладзе.</string>
-    <string name="repo_disabled_notification">%1$s адключаны.
-\n
-\nДля ўсталёўкі праграм з гэтага рэпазіторыя неабходна ўключыць яго.</string>
+    <string name="repo_disabled_notification">%1$s адключаны. \n \nКаб ўсталяваць праграмы з гэтага рэпазіторыя, трэба яго ўключыць.</string>
     <string name="repo_added">Рэпазіторый пакункаў %1$s захаваны.</string>
     <string name="repo_searching_address">Пошук рэпазіторыя пакункаў у
 \n%1$s</string>
     <string name="not_on_same_wifi">Ваша прылада не знаходзіцца ў той жа сетцы Wi-Fi, што і лакальны рэпазіторый, які вы толькі што дадалі. Паспрабуйце падлучыцца да сеткі «%s»</string>
     <string name="requires_features">Патрабуецца: %1$s</string>
     <string name="pref_language">Мова</string>
-    <string name="pref_language_default">Прадвызначаная сістэмная</string>
+    <string name="pref_language_default">Сістэмная</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Пункт доступу</string>
     <string name="category_Connectivity">Сувязь</string>
@@ -230,10 +228,10 @@
     <string name="loading">Загрузка…</string>
     <string name="swap_connection_misc_error">Падчас злучэння з прыладай адбылася памылка. Немагчыма працягнуць абмен!</string>
     <string name="install_confirm">патрабуецца доступ да</string>
-    <string name="install_confirm_update">Усталяваць абнаўленне для гэтага існуючага прыкладання? Існуючыя дадзеныя не будуць страчаны. Абноўленае прыкладанне атрымае доступ да:</string>
-    <string name="install_confirm_update_system">Усталяваць абнаўленне для гэтага ўбудаванага прыкладання? Існуючыя дадзеныя не будуць страчаны. Абноўленае прыкладанне атрымае доступ да:</string>
-    <string name="install_confirm_update_no_perms">Усталяваць абнаўленне для гэтага прыкладання? Вашы iснуючыя дадзеныя не будуць згублены. Спецыяльны доступ не патрабуецца.</string>
-    <string name="install_confirm_update_system_no_perms">Усталяваць абнаўленне для гэтага ўбудаванага прыкладання? Вашы iснуючыя дадзеныя не будуць згублены. Спецыяльны доступ не патрабуецца.</string>
+    <string name="install_confirm_update">Усталяваць абнаўленне для наяўнай праграмы? Існуючыя даныя застануцца. Абноўленая праграма атрымае доступ да:</string>
+    <string name="install_confirm_update_system">Усталяваць абнаўленне для ўбудаванай праграмы? Існуючыя даныя застануцца. Абноўленая праграма атрымае доступ да:</string>
+    <string name="install_confirm_update_no_perms">Усталяваць абнаўленне для наяўнай праграмы? Існуючыя даныя застануцца. Спецыяльны доступ для яе не патрабуецца.</string>
+    <string name="install_confirm_update_system_no_perms">Усталяваць абнаўленне для ўбудаванай праграмы? Існуючыя даныя застануцца. Спецыяльны доступ для яе не патрабуецца.</string>
     <string name="newPerms">Новыя</string>
     <string name="allPerms">Усе</string>
     <string name="perm_costs_money">Гэта можа каштаваць грошай</string>
@@ -265,7 +263,7 @@
     <string name="theme_dark">Цёмная</string>
     <string name="crash_dialog_title">F-Droid даў хібу</string>
     <string name="crash_dialog_text">Узнікла нечаканая памылка, што прывяла да аварыйнага спынення праграмы. Хочаце адправіць электронны ліст з падрабязнасцямі, каб дапамагчы выправіць гэтую праблему\?</string>
-    <string name="crash_dialog_comment_prompt">Можаце ўвясці дадатковую інфармацыю і каментары сюды:</string>
+    <string name="crash_dialog_comment_prompt">Можаце ўвесці дадатковую інфармацыю і каментары сюды:</string>
     <string name="notification_title_single_update_available">Даступна абнаўленне</string>
     <string name="notification_title_single_ready_to_install">Гатова да ўсталёўкі</string>
     <string name="notification_title_single_ready_to_install_update">Абнаўленне гатовае да ўсталёўкі</string>
@@ -285,7 +283,7 @@
     <string name="notification_action_update">Абнавіць</string>
     <string name="notification_action_cancel">Скасаваць</string>
     <string name="notification_action_install">Усталяваць</string>
-    <string name="app_version_x_available">Версія %1$s даступная</string>
+    <string name="app_version_x_available">Даступна версія %1$s</string>
     <string name="app_version_x_installed">Версія %1$s</string>
     <string name="clear_search">Ачысціць пошук</string>
     <string name="main_menu__latest_apps">Апошнія</string>
@@ -398,8 +396,8 @@
     <string name="app_list__dismiss_app_update">Абнаўленне ігнаруецца</string>
     <string name="app_list__dismiss_vulnerable_app">Уразлівасць ігнаруецца</string>
     <string name="app_list__dismiss_downloading_app">Спампоўка скасаваная</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Мы знайшлі ўразлівасць у %1$s. Мы рэкамендуем неадкладна выдаліць гэтую праграму.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Мы знайшлі ўразлівасць у %1$s. Мы рэкамендуем неадкладна абнавіцца да найноўшай версіі.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Знойдзена ўразлівасць у %1$s. Націсніце, каб даведацца больш пра непажаданыя функцыі.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_upgrade">Знойдзена ўразлівасць у %1$s. Мы рэкамендуем неадкладна абнавіць праграму да самай новай версіі.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ігнараваць</string>
     <string name="privacy">Прыватнасць</string>
     <string name="preventScreenshots_title">Прадухіліць здымкі экрана</string>
@@ -460,32 +458,32 @@
     <string name="send_version_and_uuid_summary">Уключыць гэтую версію праграмы і выпадковы ўнікальны ідэнтыфікатар падчас спампоўвання. Падзейнічае пасля перазапуску праграмы.</string>
     <string name="prompt_to_send_crash_reports">Запыт на адпраўленне справаздач пра хібы</string>
     <string name="prompt_to_send_crash_reports_summary">Збор інфармацыі пра хібы і запыт на адпраўленне яе распрацоўшчыку</string>
-    <string name="share_repository">Падзяліцца рэпазіторыям</string>
+    <string name="share_repository">Абагуліць рэпазіторый</string>
     <string name="antinosourcesince">Зыходны код больш недаступны, абнаўленні немагчымыя</string>
     <string name="send_install_history">Адправіць гісторыю ўсталёвак</string>
     <string name="send_history_csv">%s гісторыя ўсталёвак як CSV-файл</string>
-    <string name="updates_disabled_by_settings">Усе абнаўленні выключаныя ў наладах перадачы даных</string>
+    <string name="updates_disabled_by_settings">Усе абнаўленні адключаны ў наладах перадачы праз мабільную сетку/Wi-Fi</string>
     <string name="send_installed_apps">Падзяліцца ўсталяванымі праграмамі</string>
     <string name="send_installed_apps_csv">Праграмы, усталяваныя F-Droid як CSV-файл</string>
     <string name="menu_open">Адкрыць</string>
     <string name="about_forum">Форум падтрымкі</string>
     <string name="app_suggested">Прапанавана</string>
     <string name="app_size">Памер: %1$s</string>
-    <string name="scan_removable_storage_title">Сканаваць рухомы носьбіт</string>
+    <string name="scan_removable_storage_title">Сканаваць здымны носьбіт</string>
     <string name="scan_removable_storage_toast">Сканаванне %s…</string>
-    <string name="scan_removable_storage_summary">Шукаць рэпазіторыі пакункаў на рухомых носьбітах кшталту SD-картак і USB-назапашвальнікаў</string>
+    <string name="scan_removable_storage_summary">Шукаць рэпазіторыі пакункаў на здымных носьбітах накшталт SD-карт і USB-назапашвальнікаў</string>
     <string name="main_menu__updates">Абнаўленні</string>
     <string name="nearby_splash__read_external_storage">Пошук на SD-картцы рэпазіторыяў і люстэркаў.</string>
     <string name="nearby_splash__request_permission">Шукаць ящэ</string>
     <string name="not_visible_nearby">Рэжым \"Паблізу\" не ўключаны</string>
     <string name="not_visible_nearby_description">Перад абменам з прыладамі паблізу зрабіце вашую прыладу бачнай.</string>
     <string name="swap_toast_using_path">Выкарыстанне %1$s</string>
-    <string name="swap_toast_not_removable_storage">Гэты выбар не адпавядае рухомаму носьбіту, паспрабуйце яшчэ раз!</string>
-    <string name="swap_toast_find_removeable_storage">Абярыце SD-картку ці USB-назапашвальнік</string>
+    <string name="swap_toast_not_removable_storage">Гэты выбар не адпавядае ніводнаму здымнаму носьбіту, паспрабуйце яшчэ раз!</string>
+    <string name="swap_toast_find_removeable_storage">Выберыце SD-карту або USB-назапашвальнік</string>
     <string name="menu_translation">Пераклад</string>
     <string name="undo">Адрабіць</string>
     <string name="app_list__dismiss_installing_app">Усталёўка скасаваная</string>
-    <string name="menu_select_for_wipe">Абярыце для ачысткі</string>
+    <string name="menu_select_for_wipe">Выберыце для ачысткі</string>
     <string name="try_again">Паспрабуйце зноў</string>
     <string name="panic_will_be_wiped">Будуць выдаленыя разам з усімі данымі</string>
     <string name="panic_apps_to_uninstall">Праграмы мусяць быць выдаленыя разам з усімі данымі</string>
@@ -511,7 +509,7 @@
     <string name="notification_channel_installs_title">Усталёўкі</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="app_list_results_hidden_antifeature_settings">Некаторыя праграмы схаваны зыходзячы з налад Анты-Функцый. Націсніце, каб змяніць.</string>
-    <string name="theme_follow_system">Пераймаць у сістэмы</string>
+    <string name="theme_follow_system">Як у сістэме</string>
     <string name="send_to_fdroid_metrics">Адпраўляць данныя аб выкарыстанні</string>
     <string name="send_to_fdroid_metrics_summary">Адпраўляе ананімныя данныя аб выкарыстанні F-Droid (патрабуе Утрымліваць гісторыю ўсталёвак)</string>
     <string name="send_fdroid_metrics_report">Адправіць %s Паведамленне Аб Выкарыстанні</string>
@@ -521,25 +519,25 @@
     <string name="toast_metrics_in_install_history">%s Паведамленне аб выкарыстанні можна праглядзець ў праглядчыку Гісторыі Ўсталёвак</string>
     <string name="swap_wifi_vpn_conflict">Канфліктуе з актыўным VPN!</string>
     <string name="antitrack">Сачэнне</string>
-    <string name="antiknownvuln">Вядомая Ўразлівасць Бяспекі</string>
+    <string name="antiknownvuln">Вядомая ўразлівасць</string>
     <string name="antiothers">Іншыя Анты-Функцыі</string>
     <string name="banner_no_internet">Няма Сеткі</string>
-    <string name="latest__empty_state__upgrading">Абнаўленне базы дадзеных…</string>
-    <string name="banner_no_data_or_wifi">Не уключанны \"Дадзеныя\" або WiFi</string>
-    <string name="antinonfreenet">Не Вольныя Сеткавыя Паслугі</string>
-    <string name="antiupstreamnonfree">Больш Не Вольны</string>
-    <string name="antinonfreeassets">Не Вольныя Рэсурсы</string>
-    <string name="antinosource">Зыходны Код Болей Не Даступны</string>
+    <string name="latest__empty_state__upgrading">Абнаўленне базы даных…</string>
+    <string name="banner_no_data_or_wifi">Не ўключаны мабільныя даныя або Wi-Fi</string>
+    <string name="antinonfreenet">Несвабодныя сеткавыя сэрвісы</string>
+    <string name="antiupstreamnonfree">Несвабодны бацькоўскі рэпазіторый</string>
+    <string name="antinonfreeassets">Несвабодныя рэсурсы</string>
+    <string name="antinosource">Зыходны код больш не даступны</string>
     <string name="share_apk_error">Не магчыма падзяліцца файлам прыкладання</string>
     <string name="has_disallow_install_unknown_sources_globally">Адміністратар вашай прылады не дазваляе ўсталёўваць прыкладанні з незнаёмых крыніц, якія ўтрымліваюць новыя рэпазіторыі</string>
     <string name="menu_release_channel_beta">Дазваляць Beta Абнаўленні</string>
     <string name="has_disallow_install_unknown_sources">Незнаёмыя крыніцы не могуць быць дабаўленыя гэтым карыстальнікам, якія утрымліваюць новыя рэпазіторыі</string>
     <string name="menu_show_fdroid_metrics_report">Паказваць паведамленні аб выкарыстанні</string>
-    <string name="antinonfreead">Не Вольныя Дапаўненні</string>
-    <string name="antinonfreedep">Не Вольныя Залежнасці</string>
+    <string name="antinonfreead">Несвабодныя дадаткі</string>
+    <string name="antinonfreedep">Несвабодныя залежнасці</string>
     <string name="antiads">Рэклама</string>
     <string name="menu_show_install_history">Паказваць гісторыю ўсталёвак</string>
-    <string name="antidisabledalgorithm">Зарэгістравана Выкарыстоўванне Небяспечнага Алгарытму</string>
+    <string name="antidisabledalgorithm">Падпісана праз небяспечны алгарытм</string>
     <string name="antinsfw">Небяспечна для працы (NSFW)</string>
     <string name="use_pure_black_dark_theme">Выкарыстоўваць чысты чорны фон у цёмнай тэме</string>
     <string name="use_pure_black_dark_theme_summary">Рэкамендуецца толькі для OLED экранаў.</string>
@@ -552,18 +550,14 @@
     <string name="app_error_open">Не атрымалася запусціць праграму.</string>
     <string name="turn_on_wifi">Уключыць wifi</string>
     <string name="repo_state_adding">Дадаецца рэпазіторый…</string>
-    <string name="repo_invalid">Неіснуючы рэпазіторый.
-\n
-\nЗ\'яднайцеся з адміністратарам рэпазіторыя і паведаміце яму пра памылку.</string>
+    <string name="repo_invalid">Несапраўдны рэпазіторый. \n \nЗвяжыцеся з суправаджальнікам рэпазіторыя і паведаміце яму пра памылку.</string>
     <string name="repo_exists">Гэты рэпазітар ужо быў дададзены.</string>
     <string name="repo_add_new_title">Дадаць рэпазіторый</string>
     <string name="repo_state_fetching">Атрыманне рэпазіторыя…</string>
     <string name="repo_io_error">Памылка падключэння да рэпазіторыя.</string>
     <string name="repo_enter_url">Увесці URL-спасылку на рэпазіторый уласнаручна</string>
     <string name="repo_add_new_mirror">Дадаць як новае люстэрка</string>
-    <string name="repo_intro">Рэпазіторый гэта дадатковая крыніца праграм. Неафіцыйныя рэпазіторыі якія вы дадаеце сюды маюць розныя сандарты чым тыя якія збіраюцца праз F-Droid.
-\n
-\nКалі ласка упэўніцеся, што можаце давяраць дабаўленаму вамі рэпазіторыю.</string>
+    <string name="repo_intro">Рэпазіторый — гэта дадатковая крыніца праграм. Стандарты старонніх рэпазіторыяў, якія дадаюцца вамі, адрозніваюцца ад тых, што збіраюцца праз F-Droid. \n \nПераканайцеся, што рэпазіторыю, які вы дадаяце можна давяраць.</string>
     <string name="swap_banner_message">Каб падзяліцца праграмамі, запусціце Wi-Fi і падлучыцеся да адной і той жа сеткі як і сябар.</string>
     <string name="nearby_splace__external_storage_permission_button">Паспрабаваць</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid можа шукаць рэпазіторыі і люстэркі на вашай SD карце, але патрабуе вашага дазволу каб выканаць гэта.</string>
@@ -584,11 +578,11 @@
     <string name="ipfsgw_caption_official_gateways">Афіцыйныя шлюзы IPFS</string>
     <string name="app_details_repository">Рэпазітар</string>
     <string name="app_details_repositories">Рэпазітары</string>
-    <string name="app_details_repository_button_prefer">Рэкамендаваны рэпазітар</string>
+    <string name="app_details_repository_button_prefer">Прыярытэтны рэпазіторый</string>
     <string name="app_details_repository_expand">Разгарнуць спіс рэпазітараў</string>
     <string name="repo_error_adding_archive">Архіўныя рэпазітары не могуць быць дададзены напрамую. Націсніце на рэпазітар са спісу і ўключыце ў ім архіў.</string>
     <string name="repo_archive_toggle_description">Адлюстроўваць архіўныя і састарэлыя версіі праграм</string>
-    <string name="repo_archive_toggle">Архіў рэпазітара</string>
+    <string name="repo_archive_toggle">Архіў рэпазіторыя</string>
     <string name="repo_disable_warning">Адключэнне гэтага рэпазітара выдаліць яго статус «пераважны» з усіх праграм.</string>
     <string name="ipfsgw_title">IPFS-шлюзы</string>
     <string name="ipfsgw_add_title">Дадаць шлюз IPFS</string>
@@ -600,7 +594,7 @@
     <string name="repo_mirror_exists">Гэтае люстэрка ўжо было дададзена (%s).</string>
     <string name="repositories_last_update">Апошняе абнаўленне: %s</string>
     <string name="repositories_last_update_never">ніколі</string>
-    <string name="repo_list_info_title">Спіс рэпазітараў</string>
+    <string name="repo_list_info_title">Спіс рэпазіторыяў</string>
     <string name="app_list_no_suggested_version">Няма рэкамендаванай для ўстаноўкі версіі.</string>
     <string name="useDnsCache">Выкарыстоўваць кэш DNS</string>
     <string name="useDnsCacheSummary">Выкарыстоўваць кэш для мінімізацыі запытаў DNS.</string>
@@ -621,4 +615,20 @@
         <item quantity="many">Загрузка праграм з %1$d канчатковых вэб-кропак IPFS уключана</item>
         <item quantity="other">Загрузка праграм з %1$d канчатковых вэб-кропак IPFS уключана</item>
     </plurals>
+    <string name="pref_export_log_title">Журнал адладкі</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d праграма</item>
+        <item quantity="few">%d праграмы</item>
+        <item quantity="many">%d праграм</item>
+        <item quantity="other">%d праграм</item>
+    </plurals>
+    <string name="repo_last_update_index">Апошняе абнаўленне рэпазіторыя: %s</string>
+    <string name="share_mirror">Абагуліць люстэрка</string>
+    <string name="show_repository_qr">Паказаць QR-код рэпазіторыя</string>
+    <string name="repo_confirm_delete_mirror_title">Выдаліць люстэрка?</string>
+    <string name="repo_basic_auth_username">Імя карыстальніка: %s</string>
+    <string name="menu_share_apk">Абагуліць файл APK</string>
+    <string name="repo_basic_auth_password">Пароль: ***</string>
+    <string name="repo_basic_auth_edit">Рэдагаваць</string>
+    <string name="repo_last_update_check">Апошняя праверка абнаўлення рэпазіторыя: %s</string>
 </resources>

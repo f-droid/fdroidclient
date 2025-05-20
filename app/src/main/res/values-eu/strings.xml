@@ -640,4 +640,8 @@
     <string name="expand">Zabaldu</string>
     <string name="collapse">Tolestu</string>
     <string name="preferForeign">Hobetsi kanpoko ispiluak</string>
+    <string name="pref_export_log_title">Arazketa erregistroa</string>
+    <string name="pref_export_log_summary">Arazketa egiteko erabilgarria den logcat fitxategi bat sortzen du. Kontuz, informazio sentikorra izan dezake!</string>
+    <string name="export_log_success">Logcat behar bezala gorde da</string>
+    <string name="export_log_error">Errorea logcat gordetzean</string>
 </resources>

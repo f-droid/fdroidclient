@@ -533,7 +533,7 @@
     <string name="swap_stopping_wifi">Ag stopadh Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Níl sé le feiceáil trí Wi-Fi</string>
     <string name="swap_wifi_vpn_conflict">Coimhlintí le VPN gníomhach!</string>
-    <string name="swap_wifi_device_name">Ainm an Ghléis</string>
+    <string name="swap_wifi_device_name">Ainm an ghléis</string>
     <string name="swap_cant_find_peers">Nach féidir leat a fháil amach cé atá á lorg agat?</string>
     <string name="swap_send_fdroid">Seol F-Droid</string>
     <string name="apps">Feidhmchláir</string>

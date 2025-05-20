@@ -1,0 +1,11 @@
+* Güncellemelerini daha güvenilir hale getirmek için yeniden yazıldıi
+* Daha iyi okunabilirlik için uygulama listelerinde adı ve özeti
+* Uygulamalar tercih edilen depodan güncellenemediğinde uyar
+* SDK 24 uygulamaları Android 15 cihazlarıyla uyumsuzdur
+* "Depo ekle" aynalarını iyileştirdi (Teşekkürler Thore!)
+* MIUI çalıştırmayan Xiaomi cihazlarında güncellemeleri etkinleştirdi (Teşekkürler Irate!)
+* Kullanıcı tarafından eklenen kök sertifikalar (Teşekkürler B.!)
+* Diakritik işaretler içeren büyük/küçük harfe duyarlı olmayan aramayı düzeltti (Teşekkürler Tobias!)
+* Anti-özellik açıklamalarını güncelledi (Teşekkürler Licaon!)
+* Bağlı net anti-özellik ekledi (Teşekkürler linsui!)
+* Ayna depoları ekleme hatasını giderdi (Teşekkürler Tobias!)

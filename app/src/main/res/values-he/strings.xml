@@ -648,4 +648,9 @@
     <string name="preferForeign">להעדיף אתרי מראה זרים</string>
     <string name="preferForeignSummary">לנסות אתרי מראה שנמצאים מחוץ למדינה שלך תחילה, למשל אם ההגנות במדינות זרות הן אדוקות יותר.</string>
     <string name="repo_archive_check">בדיקת ארכיון</string>
+    <string name="pref_export_log_title">יומן ניפוי שגיאות</string>
+    <string name="pref_export_log_summary">יוצר קובץ עם פלט של logcat שימושי לאיתור שגיאות. זהירות, הוא עלול להכיל מידע רגיש!</string>
+    <string name="export_log_success">Logcat נשמר בהצלחה</string>
+    <string name="export_log_error">שגיאה בשמירת logcat</string>
+    <string name="repo_details_info_text">מאגר הוא מקור ליישומונים.\n\nאתרי מראה משמשים לחלוקת עומס דרך הורדת יישומונים ממספר שרתים. אתרי מראה קרובים יותר אליך עשויים להיות מהירים יותר.\n\nאתרי מראה רשמיים מוגדרים על ידי בעל המאגר. לא ניתן למחוק אותם, רק להשבית אותם. ניתן להגדיר אתרי מראה נוספים מותאמים אישית על ידי הוספתם בדיוק כמו מאגר רגיל.</string>
 </resources>

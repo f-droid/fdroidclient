@@ -28,8 +28,8 @@
     <string name="app_inst_known_source">Terpasang (dari %s)</string>
     <string name="app_inst_unknown_source">Terpasang (dari sumber tidak dikenal)</string>
     <string name="added_on">Ditambahkan pada %s</string>
-    <string name="ok">Oke</string>
-    <string name="yes">Iya</string>
+    <string name="ok">OK</string>
+    <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="repo_add_title">Tambahkan repositori baru</string>
     <string name="repo_add_add">Tambahkan</string>
@@ -213,7 +213,7 @@
     <string name="swap_setting_up_wifi">Menyiapkan Wi-Fi…</string>
     <string name="swap_stopping_wifi">Menghentikan Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Tidak terlihat melalui Wi-Fi</string>
-    <string name="swap_wifi_device_name">Nama Perangkat</string>
+    <string name="swap_wifi_device_name">Nama perangkat</string>
     <string name="swap_cant_find_peers">Tidak bisa menemukan siapa yang Anda cari\?</string>
     <string name="swap_send_fdroid">Kirimkan F-Droid</string>
     <string name="apps">Aplikasi</string>
@@ -474,7 +474,7 @@
     <string name="disabled">Dinonaktifkan</string>
     <string name="swap_error_cannot_start_bluetooth">Tidak bisa menyalakan Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Fitur di sekitar telah ditutup karena tidak ada aktivitas.</string>
-    <string name="nearby_splash__document_tree">Menelusuri USB OTG untuk repo dan mirror.</string>
+    <string name="nearby_splash__document_tree">Menelusuri USB OTG untuk repositori dan pencerminan.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_swaps_description">Tampilkan notifikasi pertukaran aplikasi P2P.</string>
     <string name="notification_channel_swaps_title">Bertukar</string>

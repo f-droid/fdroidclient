@@ -81,9 +81,9 @@
     <string name="enable_proxy_title">HTTP-Proxy aktivieren</string>
     <string name="enable_proxy_summary">HTTP-Proxy für alle Netzwerkanfragen konfigurieren</string>
     <string name="proxy_host">Proxy-Rechner</string>
-    <string name="proxy_host_summary">Ihr Proxy-Rechnername (z. B. 127.0.0.1)</string>
+    <string name="proxy_host_summary">Ihr Proxy-Rechnername (z.B. 127.0.0.1)</string>
     <string name="proxy_port">Proxy-Port</string>
-    <string name="proxy_port_summary">Proxy-Port konfigurieren (z. B. 8818)</string>
+    <string name="proxy_port_summary">Proxy-Port konfigurieren (z.B. 8818)</string>
     <string name="status_download">%2$s / %3$s (%4$d%%) von
 \n%1$s
 \nherunterladen</string>
@@ -106,9 +106,7 @@
     <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht verwendet. Um darin bereitgestellte Apps anzuzeigen, muss sie aktiviert werden.</string>
     <string name="unknown">Unbekannt</string>
     <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
-    <string name="repo_confirm_delete_body">Nach Löschen einer Paketquelle können keine Apps mehr aus ihr abgerufen werden.
-\n
-\nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
+    <string name="repo_confirm_delete_body">Nach dem Löschen einer Paketquelle können keine Apps mehr aus dieser Quelle abgerufen werden.\n\nHinweis: Alle bisher installierten Apps bleiben auf Ihrem Gerät.</string>
     <string name="repo_disabled_notification">»%1$s« deaktiviert.
 \n
 \nSie müssen diese Paketquelle wieder aktivieren, um Apps daraus installieren zu können.</string>
@@ -442,7 +440,7 @@
     <string name="send_version_and_uuid">Version und UUID an Server senden</string>
     <string name="prompt_to_send_crash_reports">Absturzbericht anfordern</string>
     <string name="hide_all_notifications_summary">Anzeigen zu Aktivitäten in der Statusleiste und den Benachrichtigungen generell vermeiden.</string>
-    <string name="send_version_and_uuid_summary">Beim Herunterladen die Version dieser App und eine zufällige, eindeutige ID einschließen, wird beim nächsten App-Start wirksam.</string>
+    <string name="send_version_and_uuid_summary">Beim Herunterladen von Apps, die Version dieser App und eine zufällige, eindeutige ID senden. Wird beim nächsten App-Start wirksam.</string>
     <string name="share_repository">Paketquelle teilen</string>
     <string name="antinosourcesince">Der Quellcode ist nicht mehr erhältlich, keine Aktualisierungen möglich</string>
     <string name="send_install_history">Installationsverlauf senden</string>
@@ -607,7 +605,7 @@
     <string name="apk_permissions_mismatch">App hat unerwartete Berechtigung: %s</string>
     <string name="menu_share_apk">APK-Datei teilen</string>
     <string name="preferForeign">Ausländische Spiegelserver bevorzugen</string>
-    <string name="preferForeignSummary">Zuerst Spiegelserver verwenden, die sich außerhalb Ihres Landes befinden, z. B. wenn die Schutzmaßnahmen im Ausland stärker sind.</string>
+    <string name="preferForeignSummary">Zuerst Spiegelserver verwenden, die sich außerhalb Ihres Landes befinden, z.B. wenn die Schutzmaßnahmen im Ausland stärker sind.</string>
     <string name="no_handler_app_generic">Es ist keine App installiert, die damit umgehen kann.</string>
     <plurals name="repo_num_apps_text">
         <item quantity="one">1 App</item>

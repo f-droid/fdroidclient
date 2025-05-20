@@ -87,7 +87,7 @@
     <string name="menu_settings">تنظیمات</string>
     <string name="menu_add_repo">مخزن جدید</string>
     <string name="menu_launch">گشودن</string>
-    <string name="menu_ignore_all">چشم‌پوشی از تمام به‌روز رسانی‌ها</string>
+    <string name="menu_ignore_all">چشم‌پوشی از همهٔ به‌روز رسانی‌ها</string>
     <string name="menu_ignore_this">چشم‌پوشی از این به‌روز رسانی</string>
     <string name="menu_website">پایگاه وب</string>
     <string name="menu_changelog">گزارش دگرگونی</string>
@@ -124,7 +124,7 @@
     <string name="global_error_updating_repos">خطا هنگام به‌روز رسانی: %s</string>
     <string name="permissions">اجازه‌ها</string>
     <string name="no_handler_app">هیچ کاره‌ای ندارید که بتواند %s را مدیریت کند.</string>
-    <string name="unverified">تأیید نشده</string>
+    <string name="unverified">تأیید نشده</string>
     <string name="repo_details">مخزن</string>
     <string name="repo_url">نشانی</string>
     <string name="repo_num_apps">تعداد کاره‌ها</string>
@@ -141,7 +141,7 @@
     <string name="category_Graphics">گرافیک</string>
     <string name="category_Internet">اینترنت</string>
     <string name="category_Money">مالی</string>
-    <string name="category_Multimedia">چند رسانه‌ای</string>
+    <string name="category_Multimedia">چندرسانه‌ای</string>
     <string name="category_Navigation">ناوبری</string>
     <string name="category_Phone_SMS">تلفن و پیامک</string>
     <string name="category_Reading">خواندن</string>
@@ -164,7 +164,7 @@
     <string name="open_qr_code_scanner">گشودن پویشگر پاس</string>
     <string name="swap_welcome">به اف‌دروید خوش آمدید!</string>
     <string name="swap_confirm_connect">می‌خواهید اکنون کاره‌ها را از %1$s بگیرید؟</string>
-    <string name="swap_dont_show_again">دیگر این را نشان نده</string>
+    <string name="swap_dont_show_again">دیگر نمایش داده نشود</string>
     <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را پوییده، یا نشانیش را در مرورگری بنویسد.</string>
     <string name="swap_choose_apps">گزینش کاره‌ها</string>
     <string name="swap_scan_qr">کد پاس</string>
@@ -606,9 +606,9 @@
     <string name="repo_basic_auth_password">گذرواژه: ***</string>
     <string name="repo_basic_auth_edit">ویرایش</string>
     <string name="expand">گسترش</string>
-    <string name="collapse">جمع کردن</string>
-    <string name="pref_export_log_title">گزارش عیب‌یابی</string>
+    <string name="collapse">جمع کردن</string>
+    <string name="pref_export_log_title">گزارش اشکال‌زدایی</string>
     <string name="export_log_success">لاگ‌کت با موفّقیت ذخیره شد</string>
-    <string name="export_log_error">خطا در ذخیره‌سازی لاگ‌کت</string>
-    <string name="pref_export_log_summary">یک پرونده با خروجی لاگ‌کت که برای عیب‌یابی مفید است ایجاد کنید. مراقب باشید، این می‌تواند شامل اطّلاعات حساس باشد!</string>
+    <string name="export_log_error">خطا در ذخیره کردن لاگ‌کت</string>
+    <string name="pref_export_log_summary">پرونده‌ای با خروجی لاگ‌کت می‌سازد که برای اشکال‌زدایی مفید است. مراقب باشید. ممکن است دارای اطّلاعات حسّاس باشد!</string>
 </resources>

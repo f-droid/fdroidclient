@@ -283,7 +283,7 @@
     <string name="app_recommended_version_installed">Verze %1$s (doporučeno)</string>
     <string name="app_new">Nové</string>
     <string name="installed_apps__activity_title">Nainstalované aplikace</string>
-    <string name="installed_app__updates_ignored">Aktualizace budou ignorovány</string>
+    <string name="installed_app__updates_ignored">Aktualizace ignorovány</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Aktualizace na verzi %1$s jsou ignorovány</string>
     <string name="main_menu__swap_nearby">Nablízku</string>
     <string name="preference_category__my_apps">Moje aplikace</string>
@@ -403,7 +403,7 @@
     <string name="hiding_dialog_title">Skrýt %s</string>
     <string name="hiding_dialog_message">Opravdu chcete odebrat %1$s ze spouštěče\? Lze jej obnovit pouze zadáním „%2$d“ ve falešné aplikaci %3$s.</string>
     <string name="hiding_dialog_warning">Varování: jakýkoli zástupce aplikace na domovské obrazovce bude také odebrán a bude třeba jej znovu ručně přidat.</string>
-    <string name="hide_on_long_search_press_title">Skrýt tlačítko vyhledávání</string>
+    <string name="hide_on_long_search_press_title">Skrýt tlačítkem vyhledávání</string>
     <string name="hide_on_long_search_press_summary">Dlouhý stisk tlačítka hledání skryje aplikaci</string>
     <string name="sort_search">Setřídit hledání</string>
     <string name="menu_liberapay">Liberapay</string>
@@ -491,7 +491,7 @@
     <string name="use_pure_black_dark_theme_summary">Doporučeno jen pro OLED obrazovky.</string>
     <string name="use_pure_black_dark_theme">S tmavým motivem použít čistě černé pozadí</string>
     <string name="banner_no_data_or_wifi">Nejsou povolena data ani Wi-Fi</string>
-    <string name="banner_no_internet">Žádný internet</string>
+    <string name="banner_no_internet">Bez internetu</string>
     <string name="menu_show_install_history">Zobrazit průběh instalací</string>
     <string name="menu_show_fdroid_metrics_report">Zobrazit hlášení metrik</string>
     <string name="toast_metrics_in_install_history">Hlášení metrik %s si lze prohlédnout v historii instalací</string>

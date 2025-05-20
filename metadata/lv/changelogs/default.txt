@@ -1,8 +1,6 @@
-* Izmēģinājuma atbalsts lietotņu arhivēšanas atcelšanai Android 15
-* Automātiski pievieno no jauna uzstādītās lietotnes vairuma palaidēju sākumekrānā (Paldies, Dhina!)
-* Lietotņu informācijā atdalītas saites un datņu kopīgošanas darbības
-* Rāda izgaistošu ziņojumu, kad APK ir vairāk atļauju nekā paredzēts
-* Biežāk tiek tīrītas iekšējās kešatmiņas, lai atbrīvotu vietu (Paldies, DeGenaue!)
-* Pārkārtotas ziedojumu nozīmītes, lai atbilstu tīmekļvietnei (Paldies, Leo!)
-* Pievienots iestatījumu slēdzis, lai dotu priekšroku ārējiem spoguļiem
-* daudzi mazu kļūdu labojumi
+* materiālais izskats 3 (ar no malas līdz malai, bet bez pielāgojošām krāsām) (Paldies, proletarius!)
+* pārizveidoti glabātavu informācijas skati (Paldies, Thore!)
+* lietpratēju iestatījumos pievienota logcat datnes izguve
+* atjaunināts mērķa SDK (Android 15 pamata un Android 11 pilnajai)
+* pievienota atgriešanās saite no lietotnes lapas sistēmas iestatījumos (Paldies, j-m4!)
+* uzstādīto lietotņu un uzstādīšanas vēstures kopīgošanai tiek izmantots lietotņu atlasītājs (Paldies, Thore!)

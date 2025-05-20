@@ -1,0 +1,6 @@
+* material design 3 (kenardan kenara, ancak dinamik renkler olmadan) (Teşekkürler proletarius!)
+* depo ayrıntı ekranlarını yeniden tasarladı (Teşekkürler Thore!)
+* uzman ayarlarına logcat dosyası dışa aktarma eklendi
+* hedef SDK'yi güncellendi (temel için Android 15 ve tam sürüm için Android 11)
+* sistem ayarlarına uygulamanın sayfasından geri bağlantı eklendi (Teşekkürler j-m4!)
+* yüklü uygulamaları ve yükleme geçmişini paylaşmak için uygulama seçiciyi kullandı (Teşekkürler Thore!)

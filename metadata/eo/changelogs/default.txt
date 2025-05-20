@@ -1,0 +1,6 @@
+• Material Design 3 (eĝo-al-eĝo sed sen dinamikaj koloroj) (@Thanks proletarius)
+• refarita ekrano kun detaloj pri deponejo (@Thore)
+• eblo elporti logcat-protokolon en altnivelaj agordoj
+• alcela SDK: Android 15 por F-Droid Baza kaj Android 11 por F-Droid
+• revena ligilo el aplikaĵa paĝo en operaciumaj agordoj (@j-m4)
+• uzi aplikaĵ-elektilon por kunhavigi instalitajn aplikaĵojn kaj historion de instaladoj (@Thore)

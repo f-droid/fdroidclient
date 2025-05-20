@@ -1,4 +1,4 @@
-RIMARKO: la baza versio de kliento F-Droid estas senigita de kelkaj ebloj (kiel proksima interŝanĝo kaj panika butono). Ĝi celas Android 13 kaj povas ĝisdatigi aplikaĵojn fone sen uzi ĉefuzantan permeson aŭ privilegian aldonaĵon.
+RIMARKO: la baza versio de kliento F-Droid estas senigita de kelkaj ebloj (kiel proksima interŝanĝo kaj panika butono). Ĝi celas Android 13 kaj povas ĝisdatigi aplikaĵojn fone sen uzi ĉefuzantan permeson aŭ la privilegian aldonaĵon.
 
 F-Droid estas instalebla katalogo de liberaj aplikaĵoj por Android. La kliento plifaciligas foliumadon, instaladon kaj spuradon de ĝisdatigoj ĉe via aparato.
 

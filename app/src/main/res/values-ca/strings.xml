@@ -14,7 +14,7 @@
     <string name="system_installer_on">Instal·lar, actualitzar i suprimir paquets fent servir l\'extensió privilegiada</string>
     <string name="local_repo_name">Nom del vostre dipòsit local</string>
     <string name="local_repo_name_summary">Títol per difondre el vostre dipòsit local: %s</string>
-    <string name="local_repo_https_on">Connexió xifrada (HTTPS://) per als dipòsits locals</string>
+    <string name="local_repo_https_on">Usar connexió xifrada HTTPS:// per al dipòsit local</string>
     <string name="app_details">Detalls de l\'aplicació</string>
     <string name="no_such_app">No s\'ha trobat cap aplicació d\'aquest tipus.</string>
     <string name="about_title_full">Quant a l\'F-Droid</string>
@@ -40,7 +40,7 @@
     <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
     <string name="menu_manage">Dipòsits</string>
     <string name="menu_search">Cerca</string>
-    <string name="menu_add_repo">Nou dipòsit</string>
+    <string name="menu_add_repo">Nou repositori</string>
     <string name="menu_launch">Obre</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_install">Instal·lar</string>
@@ -77,8 +77,8 @@
     <string name="next">Següent</string>
     <string name="skip">Ometre</string>
     <string name="proxy">Proxy</string>
-    <string name="enable_proxy_title">Habilita HTTP Proxy</string>
-    <string name="enable_proxy_summary">Utilitzar un servidor intermediari HTTP per a totes les peticions de connexió</string>
+    <string name="enable_proxy_title">Habilitar proxy HTTP</string>
+    <string name="enable_proxy_summary">Configurar servidor intermediari HTTP per a totes les peticions de connexió</string>
     <string name="proxy_host">Servidor intermediari</string>
     <string name="proxy_host_summary">El nom del vostre servidor intermediari (p. ex. 127.0.0.1)</string>
     <string name="proxy_port">Port del servidor intermediari</string>
@@ -106,7 +106,7 @@
     <string name="repo_disabled_notification">%1$s inhabilitat.\n\nHabiliteu el dipòsit novament per instal·lar les aplicacions que conté.</string>
     <string name="repo_added">Dipòsit de paquets desat %1$s.</string>
     <string name="repo_searching_address">S\'està cercant un dipòsit de paquets a\n%1$s</string>
-    <string name="not_on_same_wifi">El dipòsit local que acabeu d\'afegir i el vostre dispositiu no són a la mateixa Wi-Fi. Proveu amb aquesta xarxa: %s</string>
+    <string name="not_on_same_wifi">El teu dispositiu no està en la mateixa Wi-Fi que el Repo local que acabes d\'afegir! Mira si pots afegir-te a aquesta xarxa: %s</string>
     <string name="requires_features">Requereix: %1$s</string>
     <string name="category_Development">Desenvolupament</string>
     <string name="category_Games">Jocs</string>
@@ -122,7 +122,7 @@
     <string name="swap">Intercanvieu aplicacions</string>
     <string name="swap_no_wifi_network">Encara sense connexió</string>
     <string name="swap_view_available_networks">Toqueu per mostrar les xarxes disponibles</string>
-    <string name="open_qr_code_scanner">Obre l\'escàner de codis QR</string>
+    <string name="open_qr_code_scanner">Obrir escàner de QRs</string>
     <string name="swap_welcome">Us donem la benvinguda a F-Droid!</string>
     <string name="swap_confirm_connect">Voleu baixar aplicacions des de %1$s ara?</string>
     <string name="app_name_full">F-Droid</string>
@@ -182,14 +182,14 @@
     <string name="uninstall_error_unknown">La desinstal·lació ha fallat per un error desconegut</string>
     <string name="empty_can_update_app_list">Enhorabona!\nLes vostres aplicacions estan actualitzades.</string>
     <string name="system_install_denied_permissions">No s\'han concedit els permisos de sistema a l\'extensió! Si podeu, informeu d\'aquesta errada!</string>
-    <string name="swap_join_same_wifi_desc">Per intercanviar utilitzant Wi-Fi, assegureu-vos que us trobeu a la mateixa xarxa. Si no teniu accés a la mateixa xarxa, un de vosaltres pot crear un punt d\'accés Wi-Fi.</string>
+    <string name="swap_join_same_wifi_desc">Per canviar a usar Wi-Fi, assegureu-vos que us trobeu a la mateixa xarxa. Si no teniu accés a la mateixa xarxa, un de vosaltres pot crear un punt d\'accés Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajudeu al vostre amic a unir-se al vostre punt d\'accés</string>
     <string name="swap_success">Intercanvi correcte!</string>
     <string name="swap_active_hotspot">%1$s (el vostre punt d\'accés)</string>
     <string name="swap_switch_to_wifi">Toqueu per canviar a una xarxa Wi-Fi</string>
     <string name="swap_dont_show_again">No ho torneu a mostrar</string>
     <string name="swap_scan_or_type_url">Una persona necessita escanejar el codi, o escriure l\'URL de l\'altra al navegador.</string>
-    <string name="swap_choose_apps">Trieu les aplicacions</string>
+    <string name="swap_choose_apps">Escollir aplicacions</string>
     <string name="swap_scan_qr">Codi QR</string>
     <string name="swap_people_nearby">Persones a prop</string>
     <string name="swap_scanning_for_peers">S\'està cercant persones a prop…</string>
@@ -219,7 +219,7 @@
     <string name="login_title">Es requereix autenticació</string>
     <string name="login_name">Nom d\'usuari</string>
     <string name="login_password">Contrasenya</string>
-    <string name="repo_edit_credentials">Canvia la contrasenya</string>
+    <string name="repo_edit_credentials">Canviar la contrasenya</string>
     <string name="repo_error_empty_username">El nom d\'usuari és buit, les credencials no s\'han canviat</string>
     <string name="about_license">Llicència</string>
     <string name="empty_search_available_app_list">Cap coincidència amb les aplicacions disponibles.</string>
@@ -228,7 +228,7 @@
     <string name="crash_dialog_text">S\'ha aturat l\'aplicació per un error inesperat. Voleu enviar els detalls amb correu electrònic per ajudar a resoldre la incidència?</string>
     <string name="crash_dialog_comment_prompt">Podeu afegir informació addicional i comentaris aquí:</string>
     <string name="antinonfreeassetslist">Aquesta aplicació conté parts no lliures</string>
-    <string name="menu_email">Correu electrònic de l\'autor</string>
+    <string name="menu_email">Enviar correu electrònic a l\'autora</string>
     <string name="swap_stopping_wifi">S\'està aturant la connexió Wi-Fi…</string>
     <string name="useTor">Utilitzeu Tor</string>
     <string name="useTorSummary">Forçar el tràfic de baixada mitjançant Tor per millorar la privadesa. Requereix l\'Orbot</string>
@@ -279,7 +279,7 @@
     <string name="notification_action_update">Actualitzar</string>
     <string name="notification_action_cancel">Cancel·lar</string>
     <string name="notification_action_install">Instal·lar</string>
-    <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
+    <string name="app_recommended_version_installed">Versió %1$s (recomanada)</string>
     <string name="app_new">Nova</string>
     <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
     <string name="installed_app__updates_ignored">Actualitzacions ignorades</string>
@@ -330,11 +330,11 @@
     <string name="privacy">Privadesa</string>
     <string name="preventScreenshots_title">Blocar les captures de pantalla</string>
     <string name="preventScreenshots_summary">Bloca fer captures de pantalla i amaga el contingut de la aplicació a la pantalla d\'aplicacions recents</string>
-    <string name="panic_app_setting_title">Aplicació \"Botó del pànic\"</string>
+    <string name="panic_app_setting_title">Aplicació \"Botó de pànic\"</string>
     <string name="panic_app_unknown_app">una aplicació desconeguda</string>
     <string name="panic_app_setting_summary">No heu definit cap aplicació</string>
     <string name="panic_app_setting_none">Cap</string>
-    <string name="panic_app_dialog_title">Aplicació \"Confirmeu pànic\"</string>
+    <string name="panic_app_dialog_title">Aplicació Confirmar pànic</string>
     <string name="panic_app_dialog_message">Tingueu la seguretat que voleu permetre que %1$s iniciï accions destructives de \"Botó del pànic\"?</string>
     <string name="allow">Permetre</string>
     <string name="panic_settings">Configuració del \"Botó del pànic\"</string>
@@ -349,7 +349,7 @@
     <string name="panic_hide_warning_title">Recordar com restaurar-ho</string>
     <string name="panic_hide_warning_message">En una situació de pànic, això esborrarà %1$s de la interfície d\'inici. Només es podrà restaurar escrivint \"%2$d\" a la falsa aplicació %3$s.</string>
     <string name="hiding_calculator">Calculadora</string>
-    <string name="hiding_dialog_title">Amaga %s ara</string>
+    <string name="hiding_dialog_title">Amagar %s ara</string>
     <string name="over_wifi">Amb Wi-Fi</string>
     <string name="over_data">Amb dades</string>
     <string name="over_network_always_summary">Utilitzeu sempre aquesta connexió quan estigui disponible</string>
@@ -366,11 +366,11 @@
     <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tingueu</string>
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
     <string name="hide_on_long_search_press_summary">Si manteniu premut el botó de cerca l\'aplicació s\'amagarà</string>
-    <string name="repo_official_mirrors">Rèpliques Oficials</string>
-    <string name="repo_user_mirrors">Rèpliques mantingudes per usuaris</string>
+    <string name="repo_official_mirrors">Miralls oficials</string>
+    <string name="repo_user_mirrors">Miralls d\'usuària</string>
     <string name="use_bluetooth">Useu Bluetooth</string>
-    <string name="swap_toast_hotspot_enabled">Punt d\'accés Wifi actiu</string>
-    <string name="swap_toast_could_not_enable_hotspot">No ha estat possible activar el punt d\'accés Wifi!</string>
+    <string name="swap_toast_hotspot_enabled">Punt d\'accés Wifi habilitat</string>
+    <string name="swap_toast_could_not_enable_hotspot">No s\'ha pogut habilitar el punt d\'accés Wifi!</string>
     <string name="warning_scaning_qr_code">Sembla que la teva càmera no té sistema d\'autoenfocament. Potser serà difícil d\'escanejar el codi.</string>
     <string name="repo_exists_add_fingerprint">%1$s ja està configurat, això afegirà informació de la nova clau.</string>
     <string name="repo_exists_enable">%1$s ja està configurat, confirmeu que el voleu reactivar.</string>
@@ -386,7 +386,7 @@
     <string name="install_history_summary">Veure l\'històric privat de totes les des/instal·lacions</string>
     <string name="send_version_and_uuid">Enviar la versió i l\'UUID als servidors</string>
     <string name="send_version_and_uuid_summary">Incloure la versió de l\'aplicació i un ID aleatori únic per a les baixades, essent efectiu al proper reinici de l\'aplicació.</string>
-    <string name="share_repository">Comparteix el dipòsit</string>
+    <string name="share_repository">Compartir repositori</string>
     <string name="send_install_history">Enviar l\'historial d\'instal·lacions</string>
     <string name="send_history_csv">Historial d\'instal·lacions com a fitxer CSV de %s</string>
     <string name="updates_disabled_by_settings">Totes les actualitzacions deshabilitades per la configuració de dades mòbils/WiFi</string>
@@ -407,7 +407,7 @@
     <string name="not_visible_nearby_description">Abans d\'intercanviar amb dispositius propers, feu el vostre dispositiu visible.</string>
     <string name="swap_toast_using_path">Utilitzant %1$s</string>
     <string name="swap_toast_not_removable_storage">Aquesta tria no concorda amb cap dispositiu d\'emmagatzematge extraïble, torneu-ho a provar!</string>
-    <string name="swap_toast_find_removeable_storage">Trieu la vostra targeta SD extraïble o USB</string>
+    <string name="swap_toast_find_removeable_storage">Trieu la vostra targeta SD o USB extraïbles</string>
     <string name="menu_translation">Traducció</string>
     <string name="disabled">Desactivat</string>
     <string name="undo">Desfés</string>
@@ -439,8 +439,8 @@
     <string name="theme_follow_system">Seguir el sistema</string>
     <string name="use_pure_black_dark_theme_summary">Recomanat només per a pantalles OLED.</string>
     <string name="use_pure_black_dark_theme">Utilitzar fons negre pur en el tema fosc</string>
-    <string name="banner_no_data_or_wifi">Dades/WiFi desactivats</string>
-    <string name="banner_no_internet">Sense Internet</string>
+    <string name="banner_no_data_or_wifi">Dades/WiFi desactivades</string>
+    <string name="banner_no_internet">Sense internet</string>
     <string name="menu_show_install_history">Mostrar l\'historial d\'instal·lacions</string>
     <string name="menu_show_fdroid_metrics_report">Mostrar l\'informe de mètriques</string>
     <string name="toast_metrics_in_install_history">L\'informe de mètriques %s es pot veure al visualitzador de l\'historial d\'instal·lacions</string>
@@ -448,7 +448,7 @@
     <string name="send_to_fdroid_metrics">Enviar les dades de l\'ús</string>
     <string name="fdroid_metrics_report">Informe de mètriques %s</string>
     <string name="install_history_and_metrics">Historial d\'instal·lació i mètriques</string>
-    <string name="send_fdroid_metrics_json">Informe de mètriques %s com a fitxer JSON</string>
+    <string name="send_fdroid_metrics_json">Informe de mètriques %s com a document JSON</string>
     <string name="send_fdroid_metrics_report">Enviar informe de mètriques %s</string>
     <string name="share_apk_error">No es pot compartir l\'arxiu de l\'aplicació</string>
     <string name="has_disallow_install_unknown_sources">L\'usuari actual no pot afegir fonts desconegudes, això inclou nous dipòsits</string>
@@ -481,7 +481,7 @@
     <string name="force_old_installer_summary">Desactivar la sessió de l\'instal·lador, incloent-hi el suport a les actualitzacions automàtiques en segon pla.</string>
     <string name="app_details_repositories">Dipòsits</string>
     <string name="app_details_repository_preferred">(preferit)</string>
-    <string name="app_details_repository_button_prefer">Repositori preferit</string>
+    <string name="app_details_repository_button_prefer">Preferir repositori</string>
     <string name="repo_disable_warning_button">Desactiva</string>
     <string name="swap_banner_message">Per intercanviar aplicacions, engegueu el vostre Wi-Fi i connecteu-vos a la mateixa xarxa que la de l\'altre dispositiu.</string>
     <plurals name="notification_summary_more">
@@ -493,8 +493,8 @@
     <string name="repositories_last_update_never">mai</string>
     <string name="antinsfwlist">Aquesta aplicació té contingut que no s\'ha de fer públic, ni visible a tot arreu</string>
     <string name="useDnsCacheSummary">Empreu els resultats de la memòria cau per minimitzar el nombre de consultes DNS.</string>
-    <string name="repo_list_info_title">Llista de dipòsits</string>
-    <string name="repo_archive_toggle">Arxiu del dipòsit</string>
+    <string name="repo_list_info_title">Llista de repositoris</string>
+    <string name="repo_archive_toggle">Arxiu del repositori</string>
     <string name="repo_archive_failed">L\'arxiu del dipòsit no està disponible actualment</string>
     <string name="repo_last_update_downloaded">Darrera actualització descarregada</string>
     <string name="repo_disable_warning">Desactivant aquest dipòsit traureu el seu estat de \"preferit\" a totes les aplicacions.</string>
@@ -531,7 +531,7 @@
     <string name="category_Nightly">cada nit</string>
     <string name="app__tts__downloading_progress">S\'està baixant, %1$d%% completat</string>
     <string name="warning_target_sdk">Aquesta aplicació va ser construïda per a una versió més antiga d\'Android i no es pot actualitzar automàticament.</string>
-    <string name="turn_on_wifi">Encén el wifi</string>
+    <string name="turn_on_wifi">Engegar el wifi</string>
     <plurals name="details_last_update_days">
         <item quantity="one">Actualitzada fa %1$d dia</item>
         <item quantity="many">Actualitzada fa %1$d dies</item>
@@ -548,7 +548,7 @@
         <item quantity="many">Actualitzada fa %1$d setmanes</item>
         <item quantity="other">Actualitzada fa %1$d setmanes</item>
     </plurals>
-    <string name="useDnsCache">Empreu la memòria cau de DNS</string>
+    <string name="useDnsCache">Emprar la memòria cau de DNS</string>
     <string name="nearby_splach__external_storage_permission_explainer">L\'F-Droid pot buscar dipòsits i rèpliques a la vostra targeta SD, però per fer-ho, necessita el vostre permís.</string>
     <string name="nearby_splace__external_storage_permission_button">Proveu-ho</string>
     <string name="repo_share_not_found">No ha estat possible trobar l\'adreça del dipòsit en el text compartit.</string>
@@ -570,7 +570,7 @@
     <string name="ipfsgw_caption_official_gateways">Passarel·les IPFS Oficials</string>
     <string name="ipfsgw_caption_custom_gateways">Passarel·les IPFS a mida</string>
     <string name="paste">Enganxa</string>
-    <string name="ipfsgw_title">Passarel·la IPFS</string>
+    <string name="ipfsgw_title">Passarel·les IPFS</string>
     <string name="ipfsgw_add_title">Afegir una passarel·la IPFS</string>
     <string name="ipfsgw_summary_disabled">Descarregar les aplicacions des de nodes IPFS: desactivat</string>
     <string name="ipfsgw_add_add">Afegir</string>
@@ -595,18 +595,18 @@
     <string name="swap_bluetooth_permissions">Doneu permisos de Bluetooth o dispositiu proper!</string>
     <string name="menu_share_apk">Comparteix el fitxer APK</string>
     <string name="apk_permissions_mismatch">L\'aplicació té un permís inesperat: %s</string>
-    <string name="preferForeign">Prefereix miralls externs</string>
+    <string name="preferForeign">Preferir miralls estrangers</string>
     <string name="preferForeignSummary">Prova primer els miralls que són fora del teu país, per exemple quan les proteccions estrangeres són més fortes.</string>
     <string name="no_handler_app_generic">No teniu cap aplicació disponible que pugui gestionar això.</string>
     <string name="repo_details_info_text">Un dipòsit és una font d\'aplicacions.\n\nEls miralls s\'utilitzen per distribuir la càrrega de descarregar aplicacions a través de diversos servidors. Els miralls més propers a tu poden ser més ràpids.\n\nEls miralls oficials són definits per qui posseeix el dipòsit. No es poden suprimir, només es desactiven. Podeu definir miralls personalitzats addicionals afegint-los com un dipòsit normal.</string>
     <string name="repo_archive_unknown">Aquest diposit no sembla tenir un arxiu.</string>
-    <string name="repo_archive_check">Comprova errades a l\'Arxiu</string>
+    <string name="repo_archive_check">Comprovar l\'arxiu</string>
     <string name="repo_last_update_index">Última actualització del dipòsit: %s</string>
     <string name="repo_last_update_check">Última comprovació per a l\'actualització del dipòsit: %s</string>
-    <string name="repo_confirm_delete_mirror_title">Voleu suprimir el Mirall?</string>
+    <string name="repo_confirm_delete_mirror_title">Voleu suprimir el mirall?</string>
     <string name="repo_confirm_delete_mirror_body">Podeu continuar instal·lant aplicacions des d\'aquest dipòsit utilitzant les altres rèpliques.</string>
-    <string name="share_mirror">Comparteix el mirall</string>
-    <string name="show_repository_qr">Mostra el codi QR del repositori</string>
+    <string name="share_mirror">Compartir mirall</string>
+    <string name="show_repository_qr">Mostrar codi QR del repositori</string>
     <string name="repo_basic_auth_title">Autenticació bàsica</string>
     <string name="repo_basic_auth_username">Nom d\'usuari: %s</string>
     <string name="repo_basic_auth_password">Contrasenya: ***</string>
@@ -618,4 +618,8 @@
         <item quantity="many">%d aplicacions</item>
         <item quantity="other">%d aplicacions</item>
     </plurals>
+    <string name="pref_export_log_title">Registre de depuració</string>
+    <string name="export_log_success">Logcat guardat amb èxit</string>
+    <string name="export_log_error">Error en desar el logcat</string>
+    <string name="pref_export_log_summary">Crea un document amb l\'egressió de logcat que és útil per a depurar. Compte que pot contenir informació confidencial!</string>
 </resources>
