@@ -648,4 +648,8 @@
     <string name="preferForeign">להעדיף אתרי מראה זרים</string>
     <string name="preferForeignSummary">לנסות אתרי מראה שנמצאים מחוץ למדינה שלך תחילה, למשל אם ההגנות במדינות זרות הן אדוקות יותר.</string>
     <string name="repo_archive_check">בדיקת ארכיון</string>
+    <string name="pref_export_log_title">יומן ניפוי שגיאות</string>
+    <string name="pref_export_log_summary">יצירת קובץ עם הפלט מ־logcat לניפוי שגיאות. זהירות, יכול להיות שיופיעו בו נתונים רגישים!</string>
+    <string name="export_log_success">ה־Logcat נשמר בהצלחה</string>
+    <string name="export_log_error">שגיאה בשמירת logcat</string>
 </resources>
