@@ -28,8 +28,8 @@
     <string name="app_inst_known_source">Terpasang (dari %s)</string>
     <string name="app_inst_unknown_source">Terpasang (dari sumber tidak dikenal)</string>
     <string name="added_on">Ditambahkan pada %s</string>
-    <string name="ok">Oke</string>
-    <string name="yes">Iya</string>
+    <string name="ok">OK</string>
+    <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="repo_add_title">Tambahkan repositori baru</string>
     <string name="repo_add_add">Tambahkan</string>
