@@ -213,7 +213,7 @@
     <string name="swap_setting_up_wifi">Menyiapkan Wi-Fi…</string>
     <string name="swap_stopping_wifi">Menghentikan Wi-Fi…</string>
     <string name="swap_not_visible_wifi">Tidak terlihat melalui Wi-Fi</string>
-    <string name="swap_wifi_device_name">Nama Perangkat</string>
+    <string name="swap_wifi_device_name">Nama perangkat</string>
     <string name="swap_cant_find_peers">Tidak bisa menemukan siapa yang Anda cari\?</string>
     <string name="swap_send_fdroid">Kirimkan F-Droid</string>
     <string name="apps">Aplikasi</string>
