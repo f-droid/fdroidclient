@@ -1,0 +1,6 @@
+* Material Design 3 (amb vora-a-vora, però sense colors dinàmics) (gràcies, proletarius!)
+* Redisseny de les captures dels detalls dels repositoris (gràcies, Thore!)
+* S'ha afegit l'exportació del fitxer logcat a la configuració avançada
+* S'ha actualitzat l'SDK objectiu (Android 15 per al bàsic i Android 11 per al complet)
+* S'ha afegit un retroenllaç de la pàgina de les aplicacions a la configuració del sistema (gràcies, j-m4!)
+* Es pot utilitzar el selector d'aplicacions per a compartir aplicacions instal·lades i l'historial d'instal·lacions (gràcies, Thore!)
