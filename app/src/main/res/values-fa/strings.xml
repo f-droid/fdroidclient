@@ -164,7 +164,7 @@
     <string name="open_qr_code_scanner">گشودن پویشگر پاس</string>
     <string name="swap_welcome">به اف‌دروید خوش آمدید!</string>
     <string name="swap_confirm_connect">می‌خواهید اکنون کاره‌ها را از %1$s بگیرید؟</string>
-    <string name="swap_dont_show_again">دیگر این را نشان نده</string>
+    <string name="swap_dont_show_again">دیگر نمایش داده نشود</string>
     <string name="swap_scan_or_type_url">لازم است یک نفر رمز دیگری را پوییده، یا نشانیش را در مرورگری بنویسد.</string>
     <string name="swap_choose_apps">گزینش کاره‌ها</string>
     <string name="swap_scan_qr">کد پاس</string>
