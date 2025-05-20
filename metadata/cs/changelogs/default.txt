@@ -1,0 +1,6 @@
+* material design 3 (s podporou edge-to-edge, ale bez dynamických barev) (díky, proletariusi!)
+* redesign obrazovky s podrobnostmi o repozitáři (díky, Thore!)
+* přidán export protokolu v pokročilých nastaveních
+* aktualizováno cílové SDK (Android 15 pro Basic a Android 11 pro klasický klient)
+* přidán zpětný odkaz ze stránky aplikace v systémových nastaveních (díky, j-m4!)
+* použit výběr aplikace pro sdílení nainstalovaných aplikací a historie instalací (díky, Thore!)
