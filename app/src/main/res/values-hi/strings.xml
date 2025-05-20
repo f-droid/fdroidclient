@@ -579,4 +579,9 @@
     <string name="app_details_repositories">भांडरें</string>
     <string name="app_details_repository_preferred">(पसंदीदा)</string>
     <string name="app_details_repository_button_prefer">भंडार चुनें</string>
+    <string name="repo_add_repo_and_mirror">रिपोजिटरी और मिरर जोड़ें</string>
+    <string name="repo_view_repo">रिपॉज़िटरी देखें</string>
+    <string name="export_log_error">लॉगकैट सहेजने में त्रुटि</string>
+    <string name="repo_scan_qr_code">QR कोड स्कैन करें</string>
+    <string name="app_list_no_suggested_version">स्थापना के लिए किसी संस्करण की अनुशंसा नहीं की गई है।</string>
 </resources>
