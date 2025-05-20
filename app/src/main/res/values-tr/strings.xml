@@ -626,4 +626,5 @@
     <string name="repo_basic_auth_username">Kullanıcı adı: %s</string>
     <string name="export_log_success">Logcat başarıyla kaydedildi</string>
     <string name="export_log_error">Logcat kaydedilirken hata oluştu</string>
+    <string name="pref_export_log_summary">Hata ayıklama için yararlı olan logcat çıktısını içeren bir dosya oluşturur. Dikkatli olun, hassas bilgiler içerebilir!</string>
 </resources>
