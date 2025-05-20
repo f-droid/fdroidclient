@@ -1,0 +1,6 @@
+* Material Design 3 (mit Rand-zu-Rand, aber ohne dynamische Farben) (Danke proletarius!)
+* Repository-Detailseiten neu gestaltet (Danke Thore!)
+* Logcat-Dateiexport in den Experteneinstellungen hinzugefügt
+* Update des Ziel-SDK (Android 15 für Basic und Android 11 für Vollversion)
+* Rückverweis von der App-Seite zu den Systemeinstellungen hinzugefügt (Danke j-m4!)
+* App-Auswahl für die Freigabe installierter Apps und den Installationsverlauf (Danke Thore!)
