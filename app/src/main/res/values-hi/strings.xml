@@ -553,7 +553,7 @@
     <string name="paste">पेस्ट</string>PluralsCandidate
 
     <string name="force_old_installer_title">पुराने इंस्टॉलर को बाध्य करें</string>
-    <string name="force_old_installer_summary">स्वचालित पृष्ठभूमि अपडेट के लिए समर्थन सहित बीटा सत्र इंस्टॉलर को अक्षम करें।</string>
+    <string name="force_old_installer_summary">स्वचालित पृष्ठभूमि अपडेट के लिए समर्थन सहित सेशन इंस्टॉलर को अक्षम करें।</string>
     <string name="useDnsCache">डीएनएस कैश का प्रयोग करें</string>
     <string name="turn_on_wifi">वाईफ़ाई चालू करें</string>
     <string name="ipfsgw_title">आईपीएफएस गेटवे</string>
@@ -571,4 +571,12 @@
     <string name="ipfsgw_summary_disabled">आईपीएफएस वेब एंडपॉइंट का उपयोग करके ऐप्स डाउनलोड करें: अक्षम</string>
     <string name="ipfsgw_add_title">आईपीएफएस गेटवे जोड़ें</string>
     <string name="ipfsgw_add_add">जोड़ें</string>
+    <string name="pref_export_log_title">डीबग लोग</string>
+    <string name="export_log_success">लोगकैट सफलतापूर्ण सुरक्षित किया गया</string>
+    <string name="app_details_repository_expand">भांडोरों की लिस्ट विस्तृत करें</string>
+    <string name="pref_export_log_summary">लोगकैट आउट्पुट के साथ एक डीबगिंग के लिए ज़रूरी फाइल बनाता है | सावधान, इसमे संवेदनशील जानकारी हो सकती है!</string>
+    <string name="app_details_repository">भंडार</string>
+    <string name="app_details_repositories">भांडरें</string>
+    <string name="app_details_repository_preferred">(पसंदीदा)</string>
+    <string name="app_details_repository_button_prefer">भंडार चुनें</string>
 </resources>
