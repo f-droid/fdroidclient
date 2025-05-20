@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">A versão nova foi assinada com uma chave diferente da antiga. Para instalar a versão nova, você precisa desinstalar a antiga primeiro. (Observa que a desinstalação apaga todos os dados internos armazenados pelo app)</string>
     <string name="installIncompatible">O app é incompatível com seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
     <string name="version">Versão</string>
-    <string name="delete">Excluir</string>
+    <string name="delete">Apagar</string>
     <string name="cache_downloaded">Manter apps em cache</string>
     <string name="updates">Atualizações</string>
     <string name="other">Outros</string>
@@ -25,7 +25,7 @@
     <string name="app_inst_known_source">Instalado (via %s)</string>
     <string name="app_inst_unknown_source">Instalado (de uma fonte desconhecida)</string>
     <string name="added_on">Adicionada em %s</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="repo_add_title">Adicionar novo repositório</string>
@@ -68,7 +68,7 @@
     <string name="show_incompat_versions_on">Mostrar versões de apps que são incompatíveis com o dispositivo</string>
     <string name="local_repo">Repositório Local</string>
     <string name="local_repo_running">O F-Droid está pronto para o compartilhamento</string>
-    <string name="touch_to_configure_local_repo">Toque para ver detalhes e permitir que outros troquem seus apps.</string>
+    <string name="touch_to_configure_local_repo">Toque para ver os detalhes e permitir que outros troquem seus apps.</string>
     <string name="deleting_repo">Apagando o repositório atual…</string>
     <string name="adding_apks_format">Adicionando %s ao repositório…</string>
     <string name="writing_index_jar">Escrevendo arquivo de índice assinado (index.jar)…</string>
@@ -89,7 +89,7 @@
     <string name="repos_unchanged">Todos os repositórios estão atualizados</string>
     <string name="all_other_repos_fine">Todos os outros repositórios não geraram erros.</string>
     <string name="global_error_updating_repos">Um erro ocorreu durante a atualização: %s</string>
-    <string name="no_permissions">Nenhuma permissão</string>
+    <string name="no_permissions">Não há permissões</string>
     <string name="no_handler_app">Você não tem nenhum app instalado que possa processar %s.</string>
     <string name="theme">Tema</string>
     <string name="unsigned">Sem assinatura</string>
@@ -102,8 +102,8 @@
     <string name="unsigned_description">Isto significa que a lista de apps não pôde ser verificada. Você deve ter cuidado com apps baixados a partir de índices não assinados.</string>
     <string name="repo_not_yet_updated">Este repositório ainda não foi usado. Você precisa ativá-lo para ver os apps que ele disponibiliza.</string>
     <string name="unknown">Desconhecido</string>
-    <string name="repo_confirm_delete_title">Excluir repositório?</string>
-    <string name="repo_confirm_delete_body">A exclusão de um repositório significa que os apps do mesmo não estarão mais disponíveis. \n \nObservação: Todos os apps instalados previamente permanecerão no seu dispositivo.</string>
+    <string name="repo_confirm_delete_title">Apagar repositório?</string>
+    <string name="repo_confirm_delete_body">O apagamento de um repositório significa que os apps do mesmo não estarão mais disponíveis. \n \nObservação: Todos os apps instalados previamente permanecerão no seu dispositivo.</string>
     <string name="repo_disabled_notification">%1$s foi desativado.\n\nVocê precisará reativar este repositório para instalar apps dele.</string>
     <string name="repo_added">Repositório de pacotes %1$s salvo.</string>
     <string name="repo_searching_address">Procurando por um repositório de pacotes em\n%1$s</string>
@@ -121,7 +121,7 @@
     <string name="category_System">Sistema</string>
     <string name="swap_join_same_wifi">Entre na mesma rede Wi-Fi que seu amigo</string>
     <string name="swap">Trocar apps</string>
-    <string name="swap_no_wifi_network">Nenhuma rede ainda</string>
+    <string name="swap_no_wifi_network">Não há rede ainda</string>
     <string name="swap_view_available_networks">Toque para abrir as redes disponíveis</string>
     <string name="open_qr_code_scanner">Abrir o leitor de código QR</string>
     <string name="swap_welcome">Boas-vindas ao F-Droid!</string>
@@ -139,7 +139,7 @@
     <string name="pref_language_default">Padrão do sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Ponto de acesso</string>
-    <string name="empty_installed_app_list">Nenhum app instalado.\n\nExistem apps no seu dispositivo, mas eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os repositórios realmente não têm os seus apps neles.</string>
+    <string name="empty_installed_app_list">Não há apps instalados.\n\nExistem apps no seu dispositivo, mas eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os repositórios realmente não têm os seus apps neles.</string>
     <string name="empty_can_update_app_list">Parabéns!\nTodos os seus apps estão atualizados.</string>
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
@@ -293,7 +293,7 @@
     <string name="installed_app__updates_ignored_for_suggested_version">Atualizações ignoradas para a versão %1$s</string>
     <string name="updates__tts__download_app">Baixar</string>
     <string name="update_all">Atualizar tudo</string>
-    <string name="updates__hide_updateable_apps">Esconder apps</string>
+    <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Baixar atualização para %1$d app:</item>
@@ -371,7 +371,7 @@
     <string name="app_details__no_versions__show_incompat_versions">Para mostrar versões incompatíveis aqui mesmo assim, ative a configuração \"%1$s\".</string>
     <string name="app_details__no_versions__no_compatible_signers">Nenhuma versão com a mesma assinatura</string>
     <string name="app_details__no_versions__none_compatible_with_device">Nenhuma versão compatível com este dispositivo</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com nenhuma versão disponível. Desinstalar o app permitirá que você veja e instale versões compatíveis. Geralmente, isso ocorre pois o app foi assinado com um certificado diferente, como ao instalar pelo Google Play ou outras fontes.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">A versão instalada não é compatível com nenhuma versão disponível. Desinstalar o app permitirá que você visualize e instale versões compatíveis. Geralmente, isso ocorre pois o app foi assinado com um certificado diferente, como ao instalar pelo Google Play ou outras fontes.</string>
     <string name="app_list__dismiss_app_update">Atualização ignorada</string>
     <string name="app_list__dismiss_vulnerable_app">Vulnerabilidade ignorada</string>
     <string name="app_list__dismiss_downloading_app">Download cancelado</string>
@@ -402,7 +402,7 @@
     <string name="hiding_dialog_message">Você tem certeza que quer remover %1$s da launcher? Para restaurar, será necessário digitar \"%2$d\" no app de %3$s falso.</string>
     <string name="hiding_dialog_warning">Atenção: Todos os atalhos de apps na tela inicial também serão removidos e precisarão ser adicionados novamente manualmente.</string>
     <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisar</string>
-    <string name="hide_on_long_search_press_summary">Pressionar e segurar o botão de pesquisa esconderá o app</string>
+    <string name="hide_on_long_search_press_summary">Pressionar e segurar o botão de pesquisa ocultará o app</string>
     <string name="sort_search">Ordenar pesquisa</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Pode ser difícil ler o código.</string>
@@ -436,7 +436,7 @@
     <string name="send_install_history">Enviar histórico de instalação</string>
     <string name="send_history_csv">Histórico de instalação do %s como arquivo CSV</string>
     <string name="install_history">Histórico de instalação</string>
-    <string name="install_history_summary">Visualizar o registro privado de todas as instalações e desinstalações</string>
+    <string name="install_history_summary">Visualize o registro privado de todas as instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID aos servidores</string>
     <string name="send_version_and_uuid_summary">Incluir a versão deste app e um ID único e aleatório quando baixar. Se aplica após reiniciar o app.</string>
     <string name="updates_disabled_by_settings">Todas as atualizações estão desativadas pelas configurações de dados móveis/Wi-Fi</string>
@@ -528,7 +528,7 @@
     <string name="warning_target_sdk">Este app foi compilado para uma versão antiga do Android e não pode ser atualizado automaticamente.</string>
     <string name="app_error_open">Não foi possível abrir o app.</string>
     <string name="repo_add_new_title">Adicionar repositório</string>
-    <string name="repo_intro">Um repositório é uma fonte adicional de apps. Apps que você adiciona aqui possuem padrões diferentes dos fornecidos pelo próprio F-Droid.\n\nCertifique-se de que o repositório que você está adicionando é confiável.</string>
+    <string name="repo_intro">Um repositório é uma fonte adicional de apps. Os repositórios de terceiros que você adiciona aqui possuem padrões diferentes dos fornecidos pelo próprio F-Droid.\n\nCertifique-se de que o repositório que você está adicionando é confiável.</string>
     <string name="repo_state_fetching">Buscando o repositório…</string>
     <string name="repo_state_adding">Adicionando o repositório…</string>
     <string name="repo_enter_url">Digitar URL do repositório manualmente</string>
@@ -602,20 +602,20 @@
     <string name="preferForeignSummary">Preferir espelhos que estão localizados fora de seu país, caso por exemplo, proteções estrangeiras são mais fortes.</string>
     <string name="no_handler_app_generic">Você não tem nenhum app disponível para processar isso.</string>
     <string name="repo_archive_unknown">O repositório não parece ter um arquivo.</string>
-    <string name="repo_archive_check">Buscar arquivo</string>
+    <string name="repo_archive_check">Conferir se há um arquivo</string>
     <plurals name="repo_num_apps_text">
         <item quantity="one">%d app</item>
         <item quantity="many">%d de apps</item>
         <item quantity="other">%d apps</item>
     </plurals>
     <string name="repo_last_update_index">Última atualização do repositório: %s</string>
-    <string name="repo_last_update_check">Última busca por atualizações de repositório: %s</string>
-    <string name="repo_confirm_delete_mirror_title">Excluir espelho?</string>
+    <string name="repo_last_update_check">Última busca por atualizações do repositório: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Apagar espelho?</string>
     <string name="share_mirror">Compartilhar espelho</string>
     <string name="collapse">Minimizar</string>
     <string name="repo_basic_auth_title">Autenticação básica</string>
     <string name="repo_basic_auth_password">Senha: ***</string>
-    <string name="repo_details_info_text">Um repositório é uma fonte de apps.\n\nOs espelhos são usados para distribuir a carga de baixar apps entre vários servidores. Espelhos pertos de você podem ser mais rápidos.\n\nEspelhos oficiais são definidos pelo dono do repositório. Eles não podem ser excluídos, somente desativados. Você pode definir espelhos adicionais da mesma forma que adiciona um repositório normal.</string>
+    <string name="repo_details_info_text">Um repositório é uma fonte de apps.\n\nOs espelhos são usados para distribuir a carga de baixar apps entre vários servidores. Espelhos pertos de você podem ser mais rápidos.\n\nEspelhos oficiais são definidos pelo dono do repositório. Eles não podem ser apagados, somente desativados. Você pode definir espelhos adicionais da mesma forma que adiciona um repositório normal.</string>
     <string name="repo_confirm_delete_mirror_body">Você pode continuar instalando apps deste repositório usando os outros espelhos.</string>
     <string name="show_repository_qr">Mostrar código QR do repositório</string>
     <string name="repo_basic_auth_username">Nome de usuário: %s</string>
