@@ -646,4 +646,7 @@
     <string name="expand">Expandir</string>
     <string name="collapse">Contraer</string>
     <string name="pref_export_log_title">Registro de depuración</string>
+    <string name="export_log_success">Logcat guardado correctamente</string>
+    <string name="export_log_error">Error al guardar logcat</string>
+    <string name="pref_export_log_summary">Crea un archivo con la salida logcat útil para la depuración. Cuidado, ¡podría contener información sensible!</string>
 </resources>
