@@ -88,6 +88,21 @@ internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Clos
             getRepositoryDao().resetETags()
         }
     }
+
+    // just here to make KSP happy
+    override fun close() {
+        super.close()
+    }
+
+    // just here to make KSP happy
+    override fun runInTransaction(body: Runnable) {
+        super.runInTransaction(body)
+    }
+
+    // just here to make KSP happy
+    override fun <V> runInTransaction(body: Callable<V>): V {
+        return super.runInTransaction(body)
+    }
 }
 
 /**

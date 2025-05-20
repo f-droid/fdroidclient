@@ -2,6 +2,7 @@
 compileSdk = "35"
 kotlin = "2.0.20"
 androidGradlePlugin = "8.6.1"
+androidKspPlugin = "2.0.20-1.0.25" # first version needs to match kotlin version
 dokka = "1.9.20"
 mavenPublish = "0.18.0"
 jlleitschuhKtlint = "12.1.1"
@@ -159,6 +160,7 @@ json = { module = "org.json:json", version.ref = "json" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
