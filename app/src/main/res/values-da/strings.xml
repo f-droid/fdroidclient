@@ -604,4 +604,9 @@
     <string name="repo_basic_auth_edit">Rediger</string>
     <string name="expand">Udvid</string>
     <string name="collapse">Minimer</string>
+    <string name="export_log_success">Logcat blev gemt</string>
+    <string name="export_log_error">Fejl ved lagring af logcat</string>
+    <string name="pref_export_log_summary">Opretter en fil med logcat-output – nyttigt til fejlfinding. Pas på, det kan indeholde følsomme oplysninger!</string>
+    <string name="repo_basic_auth_title">Basal godkendelse</string>
+    <string name="pref_export_log_title">Fejlfindingslog</string>
 </resources>
