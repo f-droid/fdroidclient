@@ -530,4 +530,14 @@
     <string name="antinsfwlist">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਜਾਂ ਹਰ ਥਾਂ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ</string>
     <string name="category_Nightly">ਨਾਈਟਲੀ</string>
     <string name="app_error_open">ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਲਾਂਚ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।</string>
+    <string name="pref_export_log_summary">ਜਾਂਚ ਵਿੱਚ ਮਦਦ ਲਈ logcat ਆਊਟਪੁੱਟ ਨਾਲ ਇਕ ਫਾਇਲ ਬਣਾਈ ਜਾਵੇਗੀ। ਸਾਵਧਾਨ, ਇਸ ਵਿੱਚ ਸੰਵੇਦਨਸ਼ੀਲ ਜਾਣਕਾਰੀ ਹੋ ਸਕਦੀ ਹੈ!</string>
+    <string name="export_log_success">ਲੋਗਕੈਟ ਸਫਲਤਾਪੂਰਵਕ ਸੁਰੱਖਿਅਤ</string>
+    <string name="export_log_error">logcat ਸੁਰੱਖਿਅਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ</string>
+    <string name="app_details_repository">ਰਿਪੋਜ਼ਟਰੀ</string>
+    <string name="app_details_repository_button_prefer">ਰਿਪੋਜ਼ਟਰੀ ਨੂੰ ਤਰਜੀਹ</string>
+    <string name="app_details_repositories">ਰਿਪੋਜ਼ਟਰੀਆਂ</string>
+    <string name="app_details_repository_preferred">(ਤਰਜੀਹੀ)</string>
+    <string name="app_details_repository_expand">repository list ਨੂੰ ਫੈਲਾਓ</string>
+    <string name="force_old_installer_title">ਧੱਕੇ ਨਾਲ ਪੁਰਾਣਾ ਇੰਸਟਾਲਰ ਵਰਤੋ</string>
+    <string name="force_old_installer_summary">ਸੈਸ਼ਨ ਇੰਸਟਾਲਰ ਅਯੋਗ ਕਰੋ, ਆਟੋਮੈਟਿਕ ਬੈਕਗ੍ਰਾਊਂਡ ਅੱਪਡੇਟ ਲਈ ਸਮਰਥਨ ਸਮੇਤ।</string>
 </resources>
