@@ -11,7 +11,11 @@ import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole.Det
 import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
@@ -19,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import org.fdroid.basic.ui.main.details.AppDetails
 import org.fdroid.basic.ui.main.discover.Names
+import org.fdroid.basic.ui.main.discover.Sort
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
@@ -28,6 +33,8 @@ fun MyAppsScaffold(
     installedApps: List<InstalledApp>,
     currentItem: MinimalApp?,
     onSelectAppItem: (MinimalApp) -> Unit,
+    sortBy: Sort,
+    onSortChanged: (Sort) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val navigator = rememberListDetailPaneScaffoldNavigator<MinimalApp>()
@@ -51,7 +58,9 @@ fun MyAppsScaffold(
                     onItemClick = {
                         onSelectAppItem(it)
                         scope.launch { navigator.navigateTo(Detail, it) }
-                    }
+                    },
+                    sortBy = sortBy,
+                    onSortChanged = onSortChanged,
                 )
             }
         },
@@ -87,11 +96,14 @@ fun MyAppsScaffoldPreview() {
         val installedApp1 = InstalledApp("", Names.randomName, "3.0.1")
         val installedApp2 = InstalledApp("", Names.randomName, "1.0")
         val installedApp3 = InstalledApp("", Names.randomName, "0.1")
+        var sortBy by remember { mutableStateOf<Sort>(Sort.NAME) }
         MyAppsScaffold(
             updatableApps = listOf(app1, app2),
             installedApps = listOf(installedApp1, installedApp2, installedApp3),
             currentItem = null,
             onSelectAppItem = {},
+            sortBy = sortBy,
+            onSortChanged = { sortBy = it },
         )
     }
 }

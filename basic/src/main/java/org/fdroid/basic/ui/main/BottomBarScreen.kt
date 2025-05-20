@@ -53,6 +53,8 @@ fun BottomBarScreen(
     filterInfo: FilterInfo,
     currentItem: MinimalApp?,
     onSelectAppItem: (MinimalApp) -> Unit,
+    sortBy: Sort,
+    onSortChanged: (Sort) -> Unit,
 ) {
     var currentDestination by rememberSaveable { mutableStateOf(BottomNavDestinations.APPS) }
     val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -108,6 +110,8 @@ fun BottomBarScreen(
                 installedApps = installed,
                 currentItem = currentItem,
                 onSelectAppItem = onSelectAppItem,
+                sortBy = sortBy,
+                onSortChanged = onSortChanged,
             )
         }
     }
@@ -137,5 +141,5 @@ fun BottomBarPreview() {
         override fun removeCategory(category: String) {}
         override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
     }
-    BottomBarScreen({ }, 2, emptyList(), emptyList(), filterInfo, null, {})
+    BottomBarScreen({ }, 2, emptyList(), emptyList(), filterInfo, null, {}, Sort.NAME, {})
 }

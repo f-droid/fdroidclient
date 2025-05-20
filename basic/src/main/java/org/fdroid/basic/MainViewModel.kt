@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.update
 import org.fdroid.basic.manager.AppDetailsManager
 import org.fdroid.basic.manager.MyAppsManager
 import org.fdroid.basic.manager.RepositoryManager
-import org.fdroid.basic.ui.main.apps.InstalledApp
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.basic.ui.main.discover.FilterModel
@@ -31,30 +30,10 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     app: Application,
     private val savedStateHandle: SavedStateHandle,
-    private val myAppsManager: MyAppsManager,
+    val myAppsManager: MyAppsManager,
     private val appDetailsManager: AppDetailsManager,
     val repositoryManager: RepositoryManager,
 ) : AndroidViewModel(app) {
-
-    companion object {
-        val installedApps = listOf(
-            InstalledApp(
-                packageName = "1000",
-                name = Names.randomName,
-                versionName = "1.0.1",
-            ),
-            InstalledApp(
-                packageName = "1001",
-                name = Names.randomName,
-                versionName = "0.1",
-            ),
-            InstalledApp(
-                packageName = "1002",
-                name = Names.randomName,
-                versionName = "3.0.1",
-            ),
-        )
-    }
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     val categories = listOf(

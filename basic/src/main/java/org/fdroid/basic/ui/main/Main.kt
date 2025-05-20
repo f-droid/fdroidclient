@@ -67,6 +67,8 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                     filterInfo = filterInfo,
                     currentItem = currentItem,
                     onSelectAppItem = viewModel::setAppDetails,
+                    sortBy = viewModel.myAppsManager.sortBy.collectAsStateWithLifecycle().value,
+                    onSortChanged = viewModel.myAppsManager::sortBy,
                 )
             }
             composable(route = NavDestinations.Repos.id) {
