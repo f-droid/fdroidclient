@@ -14,8 +14,8 @@
     <string name="system_installer_on">Gebruik bevoorrechte extensie om pakketten te installeren, te updaten en te verwijderen</string>
     <string name="local_repo_name">Naam van uw lokale bron</string>
     <string name="local_repo_name_summary">De geadverteerde titel van uw lokale bron: %s</string>
-    <string name="local_repo_https_on">Gebruik versleutelde HTTPS verbinding voor lokale bron</string>
-    <string name="app_details">App-details</string>
+    <string name="local_repo_https_on">Gebruik versleutelde https:// verbinding voor lokale bron</string>
+    <string name="app_details">App details</string>
     <string name="no_such_app">Geen app gevonden.</string>
     <string name="about_title_full">Over F-Droid</string>
     <string name="about_site">Website</string>
@@ -41,12 +41,12 @@
     <string name="malformed_repo_uri">Misvormde gegevensbank URI negeren: %s</string>
     <string name="menu_manage">Opslagplaatsen</string>
     <string name="menu_search">Zoeken</string>
-    <string name="menu_add_repo">Nieuwe opslagplaats</string>
+    <string name="menu_add_repo">Nieuwe gegevensbank</string>
     <string name="menu_launch">Openen</string>
     <string name="menu_share">Delen</string>
     <string name="menu_install">Installeren</string>
     <string name="menu_uninstall">Verwijderen</string>
-    <string name="menu_ignore_all">Alle updates negeren</string>
+    <string name="menu_ignore_all">Negeer alle updates</string>
     <string name="menu_ignore_this">Negeer deze update</string>
     <string name="menu_website">Website</string>
     <string name="menu_issues">Problemen</string>
@@ -80,7 +80,7 @@
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Schakel HTTP proxy in</string>
     <string name="enable_proxy_summary">Configureer HTTP proxy voor alle netwerk aanvragen</string>
-    <string name="proxy_host">Proxy Host</string>
+    <string name="proxy_host">Proxy host</string>
     <string name="proxy_host_summary">Hostnaam van uw proxy (bijv. 127.0.0.1)</string>
     <string name="proxy_port">Proxy poort</string>
     <string name="proxy_port_summary">Poortnummer van uw proxy (bijv. 8118)</string>
@@ -104,7 +104,7 @@
     <string name="unsigned_description">Dit betekent dat de lijst van apps niet geverifieerd kon worden. Wees voorzichtig met apps gedownload uit niet-ondertekende bronnen.</string>
     <string name="repo_not_yet_updated">Deze bron is nog niet eerder gebruikt. Schakel het in om de apps die het bevat te kunnen bekijken.</string>
     <string name="unknown">Onbekend</string>
-    <string name="repo_confirm_delete_title">Gegevensbank verwijderen?</string>
+    <string name="repo_confirm_delete_title">Verwijder gegevensbank?</string>
     <string name="repo_confirm_delete_body">Als een bron verwijderd wordt zijn de apps daaruit niet meer beschikbaar.
 \n
 \n Let op: alle eerder geïnstalleerde apps blijven op je apparaat staan.</string>
@@ -114,7 +114,7 @@
     <string name="repo_added">Bron %1$s opgeslagen.</string>
     <string name="repo_searching_address">Er wordt gezocht naar bronnen op
 \n%1$s</string>
-    <string name="not_on_same_wifi">Uw apparaat staat niet op dezelfde wifi als de lokale opslagplaats die u zojuist hebt toegevoegd! Maak verbinding met dit netwerk: %s</string>
+    <string name="not_on_same_wifi">Uw apparaat zit niet op dezelfde WiFi als de lokale gegevensbank als die zojuist is toegevoegd. Probeer verbinding te maken met netwerk: %s</string>
     <string name="requires_features">Vereist: %1$s</string>
     <string name="category_Development">Ontwikkeling</string>
     <string name="category_Games">Spellen</string>
@@ -130,7 +130,7 @@
     <string name="swap">Apps uitwisselen</string>
     <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
     <string name="swap_view_available_networks">Tik om de lijst met beschikbare netwerken te openen</string>
-    <string name="open_qr_code_scanner">Open QR-code scanner</string>
+    <string name="open_qr_code_scanner">Open QR scanner</string>
     <string name="swap_welcome">Welkom bij F-Droid!</string>
     <string name="swap_confirm_connect">Wilt u nu apps van %1$s ontvangen\?</string>
     <string name="app_incompatible">Niet compatibel</string>
@@ -152,7 +152,7 @@
 \nAl uw apps zijn bijgewerkt.</string>
     <string name="install_error_unknown">Installatie mislukt door een onbekende fout</string>
     <string name="uninstall_error_unknown">De-installatie mislukt door een onbekende fout</string>
-    <string name="swap_join_same_wifi_desc">Om via wifi uit te wisselen maakt u beiden verbinding met hetzelfde netwerk. Indien u geen toegang heeft tot hetzelfde netwerk kan één van u een wifi hotspot aanmaken.</string>
+    <string name="swap_join_same_wifi_desc">Om te wisselen via WiFi, zorg dat u met hetzelfde netwerk verbonden bent. Indien u geen toegang heeft tot hetzelfde netwerk kan één van u een WiFi hotspot aanmaken.</string>
     <string name="swap_join_this_hotspot">Help uw vriend om zich met uw hotspot te verbinden</string>
     <string name="swap_success">Uitwisseling succesvol!</string>
     <string name="swap_active_hotspot">%1$s (uw hotspot)</string>
@@ -169,7 +169,7 @@
     <string name="category_Writing">Schrijven</string>
     <string name="swap_scan_or_type_url">Eén persoon moet de code scannen, of type de URL van de ander in een browser.</string>
     <string name="swap_choose_apps">Kies apps</string>
-    <string name="swap_scan_qr">QR-code</string>
+    <string name="swap_scan_qr">QR code</string>
     <string name="swap_people_nearby">Personen in de buurt</string>
     <string name="swap_scanning_for_peers">Zoeken naar personen in de buurt…</string>
     <string name="swap_nearby">Uitwisseling in de buurt</string>
@@ -235,7 +235,7 @@
     <string name="status_inserting_apps">App gegevens opslaan</string>
     <string name="login_title">Authenticatie vereist</string>
     <string name="repo_error_empty_username">Lege gebruikersnaam, gegevens niet gewijzigd</string>
-    <string name="menu_email">E-mail auteur</string>
+    <string name="menu_email">Stuur een e-mail naar de auteur</string>
     <string name="antinonfreeassetslist">Deze app bevat niet-vrije elementen</string>
     <string name="empty_search_available_app_list">Geen overeenkomende apps beschikbaar.</string>
     <string name="crash_dialog_title">F-Droid is gestopt</string>
@@ -261,7 +261,7 @@
     <string name="update_auto_install_summary">Download en update apps op de achtergrond, waarbij een melding wordt getoond</string>
     <string name="keep_install_history">Bewaar installatie geschiedenis</string>
     <string name="keep_install_history_summary">Bewaar een privélogboek van alle installaties en deïnstallaties</string>
-    <string name="warning_no_internet">Kan niet bijwerken, bent u verbonden met het internet?</string>
+    <string name="warning_no_internet">Kan niet bijwerken, bent u verbonden met internet?</string>
     <string name="versions">Versies</string>
     <string name="app_details_donate_prompt_unknown_author">Doneer de ontwikkelaars van %1$s een kop koffie!</string>
     <string name="app_details_donate_prompt">%1$s is gemaakt door %2$s. Doneer ze een kop koffie!</string>
@@ -325,7 +325,7 @@
     </plurals>
     <string name="notification_title_summary_downloading_update">Update downloaden…</string>
     <string name="app_list__name__successfully_installed">%1$s geïnstalleerd</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Ontvang apps van mensen bij u in de buurt!</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Geen internet? Ontvang apps van mensen in de buurt!</string>
     <string name="nearby_splash__find_people_button">Zoek mensen in de buurt</string>
     <string name="nearby_splash__both_parties_need_fdroid">Beide partijen moeten %1$s gebruiken.</string>
     <string name="latest__empty_state__no_recent_apps">Geen recente apps gevonden</string>
@@ -377,7 +377,7 @@
     <string name="app_list__dismiss_app_update">Update genegeerd</string>
     <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
     <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Er is een kwetsbaarheid gevonden in %1$s. We raden aan deze app onmiddellijk te verwijderen.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Er is een kwetsbaarheid gevonden in %1$s. Raak aan om meer te lezen in de sectie Anti-Features.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Er is een kwetsbaarheid gevonden in %1$s. We raden aan deze app onmiddellijk te updaten naar de meest recente versie.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Negeer</string>
     <string name="privacy">Privacy</string>
@@ -422,8 +422,8 @@
     <string name="repo_user_mirrors">Gebruikers bronnen</string>
     <string name="use_bluetooth">Gebruik Bluetooth</string>
     <string name="swap_toast_invalid_url">Ongeldige URL voor uitwisselen: %1$s</string>
-    <string name="swap_toast_hotspot_enabled">Wifi-hotspot ingeschakeld</string>
-    <string name="swap_toast_could_not_enable_hotspot">Kon wifi-hotspot niet inschakelen!</string>
+    <string name="swap_toast_hotspot_enabled">WiFi hotspot ingeschakeld</string>
+    <string name="swap_toast_could_not_enable_hotspot">WiFi hotspot kon niet worden ingeschakeld!</string>
     <string name="over_wifi">Via wifi</string>
     <string name="over_data">Via mobiel netwerk</string>
     <string name="over_network_always_summary">Gebruik altijd deze verbinding indien beschikbaar</string>
@@ -440,10 +440,10 @@
     <string name="send_version_and_uuid">Verstuur versie en UUID naar servers</string>
     <string name="send_version_and_uuid_summary">Voeg het versienummer van de app en een willekeurige ID toe tijdens het downloaden, wordt van kracht na herstarten van de app.</string>
     <string name="antinosourcesince">De broncode is niet meer beschikbaar, bijwerken niet mogelijk</string>
-    <string name="share_repository">Gegevensbank delen</string>
+    <string name="share_repository">Deel gegevensbank</string>
     <string name="send_install_history">Verstuur installatie geschiedenis</string>
     <string name="send_history_csv">%s installatie geschiedenis als CSV bestand</string>
-    <string name="updates_disabled_by_settings">Alle updates zijn uitgeschakeld door data of wifi instellingen</string>
+    <string name="updates_disabled_by_settings">Alle updates zijn uitgeschakeld door data of WiFi instellingen</string>
     <string name="about_forum">Ondersteuning forum</string>
     <string name="app_suggested">Aanbevolen</string>
     <string name="app_size">Grootte: %1$s</string>
@@ -459,7 +459,7 @@
     <string name="nearby_splash__request_permission">Nu zoeken</string>
     <string name="not_visible_nearby">In de buurt niet ingeschakeld</string>
     <string name="swap_toast_using_path">Maakt gebruik van %1$s</string>
-    <string name="swap_toast_not_removable_storage">Deze keuze komt niet overeen met een verwijderbare opslag, probeer opnieuw!</string>
+    <string name="swap_toast_not_removable_storage">Deze keuze komt niet overeen met een verwijderbare opslag, probeer opnieuw.</string>
     <string name="swap_toast_find_removeable_storage">Kies uw verwijderbare SD-kaart of USB-stick</string>
     <string name="menu_translation">Vertaling</string>
     <string name="undo">Ongedaan maken</string>
@@ -491,17 +491,17 @@
     <string name="notification_channel_installs_title">Installaties</string>
     <string name="menu_show_install_history">Toon installatie geschiedenis</string>
     <string name="menu_show_fdroid_metrics_report">Toon statistiekenrapport</string>
-    <string name="toast_metrics_in_install_history">Het %s statistiekenrapport is zichtbaar in de installatiegeschiedenis viewer</string>
+    <string name="toast_metrics_in_install_history">Het %s statistieken rapport is zichtbaar in de installatiegeschiedenis</string>
     <string name="send_to_fdroid_metrics_summary">Verstuur anonieme gegevens wekelijks naar F-Droid Statistieken (vereist het behouden van installatie geschiedenis)</string>
     <string name="send_to_fdroid_metrics">Verstuur gebruiksgegevens</string>
-    <string name="fdroid_metrics_report">%s Statistiekenrapport</string>
+    <string name="fdroid_metrics_report">%s Statistieken rapport</string>
     <string name="install_history_and_metrics">Installatie geschiedenis en statistieken</string>
-    <string name="send_fdroid_metrics_json">%s statistiekenrapport als JSON bestand</string>
-    <string name="send_fdroid_metrics_report">Verstuur %s statistiekenrapport</string>
+    <string name="send_fdroid_metrics_json">%s statistieken rapport als JSON bestand</string>
+    <string name="send_fdroid_metrics_report">Verstuur %s statistieken rapport</string>
     <string name="theme_follow_system">Systeemstandaard</string>
     <string name="use_pure_black_dark_theme_summary">Alleen aanbevolen voor OLED schermen.</string>
     <string name="use_pure_black_dark_theme">Puur zwarte achtergrond bij donker thema</string>
-    <string name="banner_no_data_or_wifi">Data of wifi niet ingeschakeld</string>
+    <string name="banner_no_data_or_wifi">Data of WiFi niet ingeschakeld</string>
     <string name="banner_no_internet">Geen internet</string>
     <string name="share_apk_error">App bestand kon niet worden gedeeld</string>
     <string name="swap_wifi_vpn_conflict">Conflicteert met actieve VPN!</string>
@@ -530,7 +530,7 @@
     <string name="antinsfwlist">Deze app bevat inhoud welke niet overal gepubliceerd of zichtbaar mag worden</string>
     <string name="app_error_open">App kon niet worden gestart.</string>
     <string name="copied_to_clipboard">Gekopieerd naar klembord</string>
-    <string name="turn_on_wifi">Schakel wifi in</string>
+    <string name="turn_on_wifi">WiFi inschakelen</string>
     <string name="nearby_splace__external_storage_permission_button">Proberen</string>
     <string name="force_old_installer_title">Dwing oude installatie af</string>
     <string name="force_old_installer_summary">Schakel de sessie installatie uit, inclusief de ondersteuning voor automatische achtergrond updates.</string>
@@ -556,10 +556,10 @@
     <string name="swap_banner_message">Om apps uit te wisselen zet wifi aan en maak beiden een verbinding met hetzelfde netwerk.</string>
     <string name="paste">Plakken</string>PluralsCandidate
 
-    <string name="ipfsgw_title">IPFS Gateways</string>
-    <string name="ipfsgw_add_title">IPFS Gateway toevoegen</string>
+    <string name="ipfsgw_title">IPFS gateways</string>
+    <string name="ipfsgw_add_title">IPFS gateway toevoegen</string>
     <string name="ipfsgw_add_add">Toevoegen</string>
-    <string name="ipfsgw_caption_official_gateways">Officiële IPFS Gateways</string>
+    <string name="ipfsgw_caption_official_gateways">Officiële IPFS gateways</string>
     <string name="ipfsgw_explainer">Download apps van IPFS web eindpunten. (Werkt alleen voor F-Droid gegevensbanken met IPFS ondersteuning.)</string>
     <string name="app_details_repository">Gegevensbank</string>
     <string name="repo_error_adding_archive">Archief-gegevensbanken kunnen niet direct worden toegevoegd. Tik de gegevensbank in de lijst en maak het daar actief.</string>
@@ -575,7 +575,7 @@
     <string name="useDnsCache">Gebruik DNS cache</string>
     <string name="useDnsCacheSummary">Gebruik resultaten in de cache om DNS aanvragen te verminderen.</string>
     <string name="repo_archive_failed">Gegevensbank archief niet beschikbaar op dit moment</string>
-    <string name="ipfsgw_caption_custom_gateways">Aangepaste IPFS Gateways</string>
+    <string name="ipfsgw_caption_custom_gateways">Aangepaste IPFS gateways</string>
     <string name="app_details_repository_preferred">(geprefereerd)</string>
     <string name="app_details_repository_button_prefer">Prefereer gegevensbank</string>
     <string name="repo_list_info_text">Een gegevensbank is een bron van apps. Deze lijst toont alle toegevoegde gegevensbanken. Inactieve gegevensbanken worden niet gebruikt.
@@ -597,10 +597,36 @@
     <string name="antitetherednetlist">Deze app is volledig afhankelijk van een bepaald exemplaar van een netwerkdienst</string>
     <string name="apk_permissions_mismatch">Programma vraagt onverwachte permissies: %s</string>
     <string name="repo_mirror_exists">Deze spiegelserver is al toegevoegd (%s).</string>
-    <string name="repo_scan_qr_code">QR-code scannen</string>
+    <string name="repo_scan_qr_code">Scan QR code</string>
     <string name="repo_preview_included_apps">Bijgevoegde programma\'s:</string>
     <string name="repo_add_repo_and_mirror">Voeg archief en \"distributie punt\" optie toe</string>
     <string name="repo_and_mirror_add_both_info">Deze link (%s) leid naar een distributie punt van een reeds bekend archief. Zowel orgineel als distributie punt zullen worden toegevoegd.</string>
     <string name="auto_update_time">Eerstvolgende versie: %s</string>
     <string name="swap_bluetooth_permissions">Verleen toestemming voor Bluetooth of Apparaat in de buurt!</string>
+    <string name="pref_export_log_title">Debug log</string>
+    <string name="export_log_success">Logcat succesvol bewaard</string>
+    <string name="export_log_error">Fout bij bewaren logcat</string>
+    <string name="repo_details_info_text">Een gegevensbank is een bron van apps.\n\nBackup-servers worden gebruikt om de belasting van het downloaden van apps over meerdere servers te verdelen. Backup-servers dichtbij zijn mogelijk sneller.\n\nOfficiële backup-servers worden gedefinieerd door de eigenaar van het archief. Ze kunnen niet worden verwijderd, alleen uitgeschakeld. U kunt extra aangepaste backup-servers definiëren door ze toe te voegen, net als een normale gegevensbank.</string>
+    <string name="repo_archive_unknown">Deze gegevensbank lijkt geen archief te hebben.</string>
+    <string name="repo_archive_check">Controleer op archief</string>
+    <string name="repo_confirm_delete_mirror_title">Verwijder backup-server?</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 app</item>
+        <item quantity="other">%d apps</item>
+    </plurals>
+    <string name="repo_last_update_index">Laatste gegevensbank update: %s</string>
+    <string name="repo_last_update_check">Laatste controle op gegevensbank update: %s</string>
+    <string name="repo_confirm_delete_mirror_body">U kunt doorgaan met het installeren van apps van deze gegevensbank via de backup-servers.</string>
+    <string name="share_mirror">Deel backup-server</string>
+    <string name="show_repository_qr">Toon gegevensbank QR code</string>
+    <string name="repo_basic_auth_title">Basis autenticatie</string>
+    <string name="collapse">Inklappen</string>
+    <string name="expand">Uitklappen</string>
+    <string name="no_handler_app_generic">Er is geen app beschikbaar die dit kan afhandelen.</string>
+    <string name="repo_basic_auth_username">Gebruikersnaam: %s</string>
+    <string name="repo_basic_auth_password">Wachtwoord: ***</string>
+    <string name="repo_basic_auth_edit">Bewerken</string>
+    <string name="preferForeignSummary">Probeer eerst backup-servers in het buitenland, bijvoorbeeld als buitenlandse bescherming sterker is.</string>
+    <string name="preferForeign">Voorkeur voor buitenlandse backup-servers</string>
+    <string name="pref_export_log_summary">Maakt een bestand met logcat uitvoer, handig voor debuggen. Voorzichtig, het kan gevoelige informatie bevatten!</string>
 </resources>
