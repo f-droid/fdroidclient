@@ -649,7 +649,8 @@
     <string name="preferForeignSummary">לנסות אתרי מראה שנמצאים מחוץ למדינה שלך תחילה, למשל אם ההגנות במדינות זרות הן אדוקות יותר.</string>
     <string name="repo_archive_check">בדיקת ארכיון</string>
     <string name="pref_export_log_title">יומן ניפוי שגיאות</string>
-    <string name="pref_export_log_summary">יצירת קובץ עם הפלט מ־logcat לניפוי שגיאות. זהירות, יכול להיות שיופיעו בו נתונים רגישים!</string>
-    <string name="export_log_success">ה־Logcat נשמר בהצלחה</string>
+    <string name="pref_export_log_summary">יוצר קובץ עם פלט של logcat שימושי לאיתור שגיאות. זהירות, זה עלול להכיל מידע רגיש!</string>
+    <string name="export_log_success">Logcat נשמר בהצלחה</string>
     <string name="export_log_error">שגיאה בשמירת logcat</string>
+    <string name="repo_details_info_text">מאגר הוא מקור ליישומים.\n\nמראות משמשות לחלוקת עומס הורדת יישומים על פני מספר שרתים. מראות קרובות יותר אליך עשויות להיות מהירות יותר.\n\nמראות רשמיות מוגדרות על ידי בעל המאגר. לא ניתן למחוק אותן, רק להשבית אותן. ניתן להגדיר מראות מותאמות אישית נוספות על ידי הוספתן בדיוק כמו מאגר רגיל.</string>
 </resources>
