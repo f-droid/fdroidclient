@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_full">F-Droid</string>
-    <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a app e tente novamente. (Tenha em atenção que irá apagar todos os dados guardados pela app)</string>
+    <string name="SignatureMismatch">A nova versão está assinada com uma chave diferente da antiga. Para instalar a nova versão, tem que desinstalar a antiga. Remova a app e tente novamente. (Tenha em atenção que irá eliminar todos os dados guardados pela app)</string>
     <string name="installIncompatible">A aplicação não é compatível com o seu aparelho. Deseja instalação instalar mesmo assim?</string>
     <string name="version">Versão</string>
     <string name="delete">Excluir</string>
@@ -52,7 +52,7 @@
     <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo repositório</string>
     <string name="menu_launch">Abrir</string>
-    <string name="menu_share">Compartilhar</string>
+    <string name="menu_share">Partilhar</string>
     <string name="menu_install">Instalar</string>
     <string name="menu_uninstall">Desinstalar</string>
     <string name="menu_ignore_all">Ignorar todas as atualizações</string>
@@ -60,7 +60,7 @@
     <string name="menu_website">Site</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_changelog">Registo de alterações</string>
-    <string name="menu_source">Código fonte</string>
+    <string name="menu_source">Código-fonte</string>
     <string name="menu_upgrade">Atualizar</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -128,10 +128,10 @@
     <string name="repo_added">O repositório de pacotes %1$s foi guardado.</string>
     <string name="repo_searching_address">A procurar um repositório de pacotes em
 \n%1$s</string>
-    <string name="not_on_same_wifi">O seu dispositivo não está conectado à mesma rede Wi-Fi do repositório local que acabou de adicionar! Tente ligar-se a esta rede: %s</string>
+    <string name="not_on_same_wifi">O seu dispositivo não está ligado à mesma rede Wi-Fi do repositório local que acabou de adicionar! Tente ligar-se a esta rede: %s</string>
     <string name="requires_features">Requer: %1$s</string>
     <string name="pref_language">Idioma</string>
-    <string name="pref_language_default">Pré-definições do sistema</string>
+    <string name="pref_language_default">Definições do sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Ponto de acesso (hotspot)</string>
     <string name="category_Connectivity">Conectividade</string>
@@ -140,13 +140,13 @@
     <string name="category_Graphics">Gráficos</string>
     <string name="category_Internet">Internet</string>
     <string name="category_Money">Finanças</string>
-    <string name="category_Multimedia">Multimídia</string>
+    <string name="category_Multimedia">Multimédia</string>
     <string name="category_Navigation">Navegação</string>
     <string name="category_Phone_SMS">Telefone e SMS</string>
     <string name="category_Reading">Leitura</string>
     <string name="category_Science_Education">Ciência e educação</string>
     <string name="category_Security">Segurança</string>
-    <string name="category_Sports_Health">Esportes e saúde</string>
+    <string name="category_Sports_Health">Desporto e saúde</string>
     <string name="category_System">Sistema</string>
     <string name="category_Theming">Temas</string>
     <string name="category_Time">Tempo</string>
@@ -159,7 +159,7 @@
         favor reporte este erro!
     </string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
-    <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vocês pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
+    <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
     <string name="swap">Trocar aplicações</string>
     <string name="swap_success">Troca feita com sucesso!</string>
@@ -167,7 +167,7 @@
     <string name="swap_active_hotspot">%1$s (no seu ponto de acesso)</string>
     <string name="swap_view_available_networks">Toque para abrir as redes disponíveis</string>
     <string name="swap_switch_to_wifi">Toque para mudar para uma rede Wi-Fi</string>
-    <string name="open_qr_code_scanner">Abrir leitor de QR code</string>
+    <string name="open_qr_code_scanner">Abrir leitor de código QR</string>
     <string name="swap_welcome">Bem-vindo(a) ao F-Droid!</string>
     <string name="swap_dont_show_again">Não mostrar novamente</string>
     <string name="swap_choose_apps">Escolher aplicações</string>
@@ -194,7 +194,7 @@
     <string name="theme_dark">Escuro</string>
     <string name="swap_confirm_connect">Deseja obter agora as aplicações de %1$s\?</string>
     <string name="swap_scan_or_type_url">Uma pessoa tem que digitalizar o código ou digitar o URL da outra no navegador de Internet.</string>
-    <string name="swap_scan_qr">QR code</string>
+    <string name="swap_scan_qr">Código QR</string>
     <string name="swap_people_nearby">Pessoas próximas</string>
     <string name="swap_scanning_for_peers">A procurar pessoas próximas…</string>
     <string name="swap_nearby">Troca por proximidade</string>
@@ -220,7 +220,7 @@
     <string name="uninstall_update_confirm">Substituir esta aplicação pela versão de fábrica? Todos os dados serão removidos.</string>
     <string name="uninstall_confirm">Quer desinstalar esta aplicação?</string>
     <string name="download_error">Falha ao descarregar!</string>
-    <string name="menu_settings">Configurações</string>
+    <string name="menu_settings">Definições</string>
     <string name="login_title">Requer autenticação</string>
     <string name="login_name">Nome de utilizador</string>
     <string name="login_password">Senha</string>
@@ -233,7 +233,7 @@
     <string name="crash_dialog_title">O F-Droid terminou abruptamente</string>
     <string name="crash_dialog_text">Ocorreu um erro inesperado e a app foi encerrada. Gostaria de nos enviar um e-mail com os detalhes do erro\?</string>
     <string name="crash_dialog_comment_prompt">Pode adicionar algumas informações e comentários aqui:</string>
-    <string name="menu_email">E-mail do autor</string>
+    <string name="menu_email">Enviar um e-mail para o autor</string>
     <string name="useTor">Utilizar Tor</string>
     <string name="useTorSummary">Forçar downloads através da rede Tor para mais privacidade. Necessita do Orbot</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
@@ -285,7 +285,7 @@
     <string name="latest__empty_state__never_updated">Assim que a lista for atualizada, as aplicações mais recentes serão mostradas aqui</string>
     <string name="latest__empty_state__no_enabled_repos">Assim que ativar um repositório e o atualizar, as aplicações mais recentes serão mostradas aqui</string>
     <string name="categories__empty_state__no_categories">Não há categorias para mostrar</string>
-    <string name="preference_category__my_apps">Minhas aplicações</string>
+    <string name="preference_category__my_apps">As minhas aplicações</string>
     <string name="preference_manage_installed_apps">Gerir aplicações instaladas</string>
     <string name="details_new_in_version">Novidades da versão %s</string>
     <string name="antifeatureswarning">Esta aplicação tem características que poderá não querer.</string>
@@ -433,12 +433,12 @@
     <string name="over_network_always_summary">Utilizar sempre esta ligação se disponível</string>
     <string name="over_network_on_demand_summary">Apenas utilizar esta conexão ao fazer o Download</string>
     <string name="over_network_never_summary">Nunca baixar através desta ligação</string>
-    <string name="share_repository">Compartilhar repositório</string>
+    <string name="share_repository">Partilhar repositório</string>
     <string name="use_bluetooth">Utilizar Bluetooth</string>
     <string name="hide_all_notifications_summary">Impedir exibição das ações na barra de estado e nas notificações.</string>
     <string name="install_history_summary">Ver registo privado de todas as instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID para os servidores</string>
-    <string name="updates_disabled_by_settings">Todas as atualizações desativadas nas definições da Wi-Fi/dados móveis</string>
+    <string name="updates_disabled_by_settings">Todas as atualizações desativadas nas definições de Wi-Fi/dados móveis</string>
     <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Esta aplicação contém uma falha de segurança conhecida</string>
     <string name="antinosourcesince">O código-fonte já não está disponível e não é possível atualizar</string>
@@ -461,7 +461,7 @@
     <string name="not_visible_nearby">Proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o seu visível.</string>
     <string name="swap_toast_using_path">A utilizar %1$s</string>
-    <string name="swap_toast_not_removable_storage">A escolha não coincide com um armazenamento removível, tente novamente!</string>
+    <string name="swap_toast_not_removable_storage">A escolha não coincide com um armazenamento amovível, tente novamente!</string>
     <string name="swap_toast_find_removeable_storage">Escolha o seu cartão SD ou USB</string>
     <string name="main_menu__updates">Atualizações</string>
     <string name="menu_translation">Tradução</string>
@@ -589,7 +589,7 @@
     <string name="warning_no_compat_versions">O repositório selecionado não tem versões compatíveis com a app. Para receber atualizações, prefira um repositório com versões compatíveis.</string>
     <string name="repo_add_repo_and_mirror">Adicionar repositório e espelho</string>
     <string name="repo_view_repo">Visualizar repositório</string>
-    <string name="repo_scan_qr_code">Ler QR code</string>
+    <string name="repo_scan_qr_code">Digitalizar código QR</string>
     <string name="repo_preview_included_apps">Apps incluídos:</string>
     <string name="repo_mirror_exists">Este espelho já foi adicionado (%s).</string>
     <string name="repo_mirror_add_info">A URL que tenta adicionar (%s) é um espelho de um repositório existente.</string>
