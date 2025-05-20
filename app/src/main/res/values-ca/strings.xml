@@ -77,7 +77,7 @@
     <string name="next">Següent</string>
     <string name="skip">Ometre</string>
     <string name="proxy">Proxy</string>
-    <string name="enable_proxy_title">Habilita HTTP Proxy</string>
+    <string name="enable_proxy_title">Habilita proxy HTTP</string>
     <string name="enable_proxy_summary">Utilitzar un servidor intermediari HTTP per a totes les peticions de connexió</string>
     <string name="proxy_host">Servidor intermediari</string>
     <string name="proxy_host_summary">El nom del vostre servidor intermediari (p. ex. 127.0.0.1)</string>
@@ -279,7 +279,7 @@
     <string name="notification_action_update">Actualitzar</string>
     <string name="notification_action_cancel">Cancel·lar</string>
     <string name="notification_action_install">Instal·lar</string>
-    <string name="app_recommended_version_installed">Versió %1$s (Recomanada)</string>
+    <string name="app_recommended_version_installed">Versió %1$s (recomanada)</string>
     <string name="app_new">Nova</string>
     <string name="installed_apps__activity_title">Aplicacions instal·lades</string>
     <string name="installed_app__updates_ignored">Actualitzacions ignorades</string>
@@ -366,7 +366,7 @@
     <string name="force_touch_apps_on">Mostra les aplicacions que requereixen pantalla tàctil, independent del maquinari que tingueu</string>
     <string name="hiding_dialog_warning">Alerta: s\'eliminarà qualsevol icona de la pantalla d\'inici i caldrà tornar a afegir-la manualment.</string>
     <string name="hide_on_long_search_press_summary">Si manteniu premut el botó de cerca l\'aplicació s\'amagarà</string>
-    <string name="repo_official_mirrors">Rèpliques Oficials</string>
+    <string name="repo_official_mirrors">Rèpliques oficials</string>
     <string name="repo_user_mirrors">Rèpliques mantingudes per usuaris</string>
     <string name="use_bluetooth">Useu Bluetooth</string>
     <string name="swap_toast_hotspot_enabled">Punt d\'accés Wifi actiu</string>
@@ -386,7 +386,7 @@
     <string name="install_history_summary">Veure l\'històric privat de totes les des/instal·lacions</string>
     <string name="send_version_and_uuid">Enviar la versió i l\'UUID als servidors</string>
     <string name="send_version_and_uuid_summary">Incloure la versió de l\'aplicació i un ID aleatori únic per a les baixades, essent efectiu al proper reinici de l\'aplicació.</string>
-    <string name="share_repository">Comparteix el dipòsit</string>
+    <string name="share_repository">Comparteix el repositori</string>
     <string name="send_install_history">Enviar l\'historial d\'instal·lacions</string>
     <string name="send_history_csv">Historial d\'instal·lacions com a fitxer CSV de %s</string>
     <string name="updates_disabled_by_settings">Totes les actualitzacions deshabilitades per la configuració de dades mòbils/WiFi</string>
@@ -440,7 +440,7 @@
     <string name="use_pure_black_dark_theme_summary">Recomanat només per a pantalles OLED.</string>
     <string name="use_pure_black_dark_theme">Utilitzar fons negre pur en el tema fosc</string>
     <string name="banner_no_data_or_wifi">Dades/WiFi desactivats</string>
-    <string name="banner_no_internet">Sense Internet</string>
+    <string name="banner_no_internet">Sense internet</string>
     <string name="menu_show_install_history">Mostrar l\'historial d\'instal·lacions</string>
     <string name="menu_show_fdroid_metrics_report">Mostrar l\'informe de mètriques</string>
     <string name="toast_metrics_in_install_history">L\'informe de mètriques %s es pot veure al visualitzador de l\'historial d\'instal·lacions</string>
@@ -493,8 +493,8 @@
     <string name="repositories_last_update_never">mai</string>
     <string name="antinsfwlist">Aquesta aplicació té contingut que no s\'ha de fer públic, ni visible a tot arreu</string>
     <string name="useDnsCacheSummary">Empreu els resultats de la memòria cau per minimitzar el nombre de consultes DNS.</string>
-    <string name="repo_list_info_title">Llista de dipòsits</string>
-    <string name="repo_archive_toggle">Arxiu del dipòsit</string>
+    <string name="repo_list_info_title">Llista de repositoris</string>
+    <string name="repo_archive_toggle">Arxiu del repositori</string>
     <string name="repo_archive_failed">L\'arxiu del dipòsit no està disponible actualment</string>
     <string name="repo_last_update_downloaded">Darrera actualització descarregada</string>
     <string name="repo_disable_warning">Desactivant aquest dipòsit traureu el seu estat de \"preferit\" a totes les aplicacions.</string>
@@ -600,10 +600,10 @@
     <string name="no_handler_app_generic">No teniu cap aplicació disponible que pugui gestionar això.</string>
     <string name="repo_details_info_text">Un dipòsit és una font d\'aplicacions.\n\nEls miralls s\'utilitzen per distribuir la càrrega de descarregar aplicacions a través de diversos servidors. Els miralls més propers a tu poden ser més ràpids.\n\nEls miralls oficials són definits per qui posseeix el dipòsit. No es poden suprimir, només es desactiven. Podeu definir miralls personalitzats addicionals afegint-los com un dipòsit normal.</string>
     <string name="repo_archive_unknown">Aquest diposit no sembla tenir un arxiu.</string>
-    <string name="repo_archive_check">Comprova errades a l\'Arxiu</string>
+    <string name="repo_archive_check">Comprova errades a l\'arxiu</string>
     <string name="repo_last_update_index">Última actualització del dipòsit: %s</string>
     <string name="repo_last_update_check">Última comprovació per a l\'actualització del dipòsit: %s</string>
-    <string name="repo_confirm_delete_mirror_title">Voleu suprimir el Mirall?</string>
+    <string name="repo_confirm_delete_mirror_title">Voleu suprimir el mirall?</string>
     <string name="repo_confirm_delete_mirror_body">Podeu continuar instal·lant aplicacions des d\'aquest dipòsit utilitzant les altres rèpliques.</string>
     <string name="share_mirror">Comparteix el mirall</string>
     <string name="show_repository_qr">Mostra el codi QR del repositori</string>
@@ -618,4 +618,8 @@
         <item quantity="many">%d aplicacions</item>
         <item quantity="other">%d aplicacions</item>
     </plurals>
+    <string name="pref_export_log_title">Registre de depuració</string>
+    <string name="export_log_success">Logcat desat correctament</string>
+    <string name="export_log_error">Error al desar logcat</string>
+    <string name="pref_export_log_summary">Crea un fitxer amb la eixida logcat útil per a la depuració. Compte, podria contenir informació sensible!</string>
 </resources>
