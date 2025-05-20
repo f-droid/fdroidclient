@@ -491,7 +491,7 @@
     <string name="use_pure_black_dark_theme_summary">Doporučeno jen pro OLED obrazovky.</string>
     <string name="use_pure_black_dark_theme">S tmavým motivem použít čistě černé pozadí</string>
     <string name="banner_no_data_or_wifi">Nejsou povolena data ani Wi-Fi</string>
-    <string name="banner_no_internet">Žádný internet</string>
+    <string name="banner_no_internet">Bez internetu</string>
     <string name="menu_show_install_history">Zobrazit průběh instalací</string>
     <string name="menu_show_fdroid_metrics_report">Zobrazit hlášení metrik</string>
     <string name="toast_metrics_in_install_history">Hlášení metrik %s si lze prohlédnout v historii instalací</string>
