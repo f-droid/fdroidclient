@@ -16,7 +16,7 @@
     <string name="local_repo_name_summary">로컬 저장소의 홍보 제목: %s</string>
     <string name="local_repo_https_on">로컬 저장소에 암호화된 HTTPS:// 연결을 사용</string>
     <string name="app_details">앱 정보</string>
-    <string name="no_such_app">앱을 찾을 수 없음.</string>
+    <string name="no_such_app">해당 앱을 찾을 수 없습니다.</string>
     <string name="about_title_full">F-Droid 정보</string>
     <string name="about_site">웹사이트</string>
     <string name="about_version">버전</string>
@@ -139,9 +139,9 @@
     <string name="unstable_updates_summary">불안정한 버전으로의 업데이트를 제안합니다</string>
     <string name="login_title">인증 필요</string>
     <string name="login_name">사용자 이름</string>
-    <string name="login_password">암호</string>
-    <string name="repo_edit_credentials">암호 변경</string>
-    <string name="repo_error_empty_username">사용자 이름 비어있음, 인증정보가 변경되지 않음</string>
+    <string name="login_password">비밀번호</string>
+    <string name="repo_edit_credentials">비밀번호 변경</string>
+    <string name="repo_error_empty_username">사용자 이름 비어 있음, 인증정보가 변경되지 않음</string>
     <string name="about_source">소스 코드</string>
     <string name="about_license">라이선스</string>
     <string name="app_incompatible">호환되지 않음</string>
@@ -192,7 +192,7 @@
     <string name="swap_dont_show_again">다시 보지 않기</string>
     <string name="swap_scan_or_type_url">한명은 코드를 스캔하거나, 상대방의 URL을 브라우저에 입력해야 합니다.</string>
     <string name="swap_choose_apps">앱 선택</string>
-    <string name="swap_scan_qr">QR 코드</string>
+    <string name="swap_scan_qr">QR코드</string>
     <string name="swap_people_nearby">근처 사용자</string>
     <string name="swap_scanning_for_peers">근처 사용자를 검색 중…</string>
     <string name="swap_nearby">근거리 교환</string>
@@ -210,8 +210,8 @@
     <string name="swap_no_peers_nearby">근처에 교환할 사용자를 찾을 수 없습니다.</string>
     <string name="swap_connecting">연결 중</string>
     <string name="swap_confirm">교환 확인</string>
-    <string name="swap_qr_isnt_for_swap">스캔한 QR 코드는 교환 코드가 아닌 것 같습니다.</string>
-    <string name="loading">로드 중…</string>
+    <string name="swap_qr_isnt_for_swap">스캔한 QR코드는 교환 코드가 아닌 것 같습니다.</string>
+    <string name="loading">불러오는 중…</string>
     <string name="swap_connection_misc_error">기기에 연결하는 동안 오류가 발생하여 교환할 수 없습니다!</string>
     <string name="install_confirm">아래의 접근 권한 필요</string>
     <string name="install_confirm_update">기존 앱에 업데이트를 설치하시겠습니까\? 기존 데이터는 손실되지 않습니다. 업데이트된 앱은 다음에 접근할 수 있습니다:</string>
@@ -508,7 +508,7 @@
     <string name="antiothers">기타 악성 기능</string>
     <string name="antiads">광고</string>
     <string name="antinosource">소스 코드 열람 불가</string>
-    <string name="app_list_results_hidden_antifeature_settings">일부 결과는 당신의 악성 기능 설정에 따라 숨겨졌습니다. 눌러서 바꾸기.</string>
+    <string name="app_list_results_hidden_antifeature_settings">일부 결과는 당신의 악성 기능 설정에 따라 숨겨졌습니다. 바꾸려면 터치하세요.</string>
     <string name="antinsfw">이 앱에는 모든 곳에서 공개하거나 표시할 수 없는 콘텐츠가 포함되어 있습니다</string>
     <string name="antinonfreeassets">비자유 애셋</string>
     <string name="latest__empty_state__upgrading">데이터베이스 업그레이드 중…</string>
@@ -580,7 +580,7 @@
     <string name="repo_preview_included_apps">포함 앱:</string>
     <string name="repo_add_repo_and_mirror">저장소 및 미러 추가</string>
     <string name="repo_view_repo">저장소 보기</string>
-    <string name="repo_scan_qr_code">QR 코드 스캔</string>
+    <string name="repo_scan_qr_code">QR코드 스캔</string>
     <string name="repo_mirror_exists">이 거울은 이미 추가되었습니다 (%s).</string>
     <string name="repo_mirror_add_info">추가하려고 하는 URL (%s) 기존 저장소의 거울 이다.</string>
     <string name="repo_and_mirror_add_both_info">추가하려고 하는 URL (%s) 새로운 저장소의 거울 이다. 원래 저장소와 거울 모두 추가됩니다.</string>
@@ -597,7 +597,7 @@
     <string name="repo_archive_check">아카이브 확인</string>
     <string name="repo_confirm_delete_mirror_title">미러를 삭제하시겠습니까?</string>
     <string name="share_mirror">미러 공유</string>
-    <string name="show_repository_qr">저장소 QR 코드 표시</string>
+    <string name="show_repository_qr">저장소 QR코드 표시</string>
     <string name="repo_basic_auth_password">비밀번호: ***</string>
     <string name="repo_basic_auth_edit">편집</string>
     <string name="expand">펼치기</string>
