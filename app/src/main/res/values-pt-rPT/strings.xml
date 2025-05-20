@@ -26,7 +26,7 @@
     <string name="about_source">Código-fonte</string>
     <string name="app_incompatible">Incompatível</string>
     <string name="app_installed">Instalada</string>
-    <string name="app_not_installed">Não instalada</string>
+    <string name="app_not_installed">Não instalado</string>
     <string name="app_inst_known_source">Instalada (de %s)</string>
     <string name="app_inst_unknown_source">Instalada (de fonte desconhecida)</string>
     <string name="added_on">Adicionada em %s</string>
@@ -60,7 +60,7 @@
     <string name="menu_website">Site</string>
     <string name="menu_issues">Problemas</string>
     <string name="menu_changelog">Registo de alterações</string>
-    <string name="menu_source">Código-fonte</string>
+    <string name="menu_source">Código fonte</string>
     <string name="menu_upgrade">Atualizar</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
@@ -113,7 +113,7 @@
     <string name="repo_details">Repositório</string>
     <string name="repo_url">Endereço</string>
     <string name="repo_num_apps">Número de aplicações</string>
-    <string name="repo_fingerprint">Identificação da chave de assinatura (SHA-256)</string>
+    <string name="repo_fingerprint">Identificadores digitais da chave de assinatura (SHA-256)</string>
     <string name="repo_description">Descrição</string>
     <string name="repo_last_update">Última atualização</string>
     <string name="repo_name">Nome</string>
@@ -124,9 +124,7 @@
     <string name="repo_confirm_delete_body">Se remover um repositório, todas as aplicações aí disponibilizadas ficarão indisponíveis.
 \n
 \nNota: nenhuma das aplicações já instaladas será afetada.</string>
-    <string name="repo_disabled_notification">%1$s desativado.
-\n
-\nTem que tornar a ativar o repositório para poder instalar aplicações.</string>
+    <string name="repo_disabled_notification">%1$s desativado. \n \nTem que reativar o repositório para poder instalar as aplicações.</string>
     <string name="repo_added">O repositório de pacotes %1$s foi guardado.</string>
     <string name="repo_searching_address">A procurar um repositório de pacotes em
 \n%1$s</string>
@@ -292,7 +290,7 @@
     <string name="details_new_in_version">Novidades da versão %s</string>
     <string name="antifeatureswarning">Esta aplicação tem características que poderá não querer.</string>
     <string name="antifeatures">Características indesejadas</string>
-    <string name="warning_no_internet">Não é possível atualizar. Está ligado à Internet?</string>
+    <string name="warning_no_internet">Não é possível atualizar, está ligado à Internet?</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Ver (%d)</item>
         <item quantity="many">Ver todas (%d)</item>
@@ -316,7 +314,7 @@
     <string name="notification_title_summary_ready_to_install_update">Atualização pronta a instalar</string>
     <string name="notification_title_summary_installing">A instalar</string>
     <string name="notification_title_summary_installed">Instalação feita com sucesso</string>
-    <string name="notification_title_summary_install_error">Falha ao instalar</string>
+    <string name="notification_title_summary_install_error">A instalação falhou</string>
     <string name="notification_action_update">Atualizar</string>
     <string name="notification_action_cancel">Cancelar</string>
     <string name="notification_action_install">Instalar</string>
@@ -428,7 +426,7 @@
     <string name="prompt_to_send_crash_reports">Pedir para enviar relatórios de erros</string>
     <string name="prompt_to_send_crash_reports_summary">Recolher dados sobre os erros e pedir para os enviar ao programador</string>
     <string name="hide_all_notifications">Ocultar todas as notificações</string>
-    <string name="send_install_history">Enviar histórico de instalações</string>
+    <string name="send_install_history">Enviar histórico da instalação</string>
     <string name="install_history">Histórico de instalações</string>
     <string name="over_wifi">Em Wi-Fi</string>
     <string name="over_data">Em dados móveis</string>
@@ -440,7 +438,7 @@
     <string name="hide_all_notifications_summary">Impedir exibição das ações na barra de estado e nas notificações.</string>
     <string name="install_history_summary">Ver registo privado de todas as instalações e desinstalações</string>
     <string name="send_version_and_uuid">Enviar versão e UUID para os servidores</string>
-    <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme as definições de Wi-Fi/dados móveis</string>
+    <string name="updates_disabled_by_settings">Todas as atualizações desativadas nas definições da Wi-Fi/dados móveis</string>
     <string name="antidisabledalgorithmlist">Esta aplicação tem uma assinatura de segurança fraca</string>
     <string name="antiknownvulnlist">Esta aplicação contém uma falha de segurança conhecida</string>
     <string name="antinosourcesince">O código-fonte já não está disponível e não é possível atualizar</string>
@@ -525,7 +523,7 @@
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
     <string name="antiothers">Outras características indesejadas</string>
     <string name="antinsfw">Não é seguro para o trabalho (NSFW)</string>
-    <string name="menu_release_channel_beta">Permitir Atualizações Beta</string>
+    <string name="menu_release_channel_beta">Permitir atualizações beta</string>
     <string name="latest__empty_state__upgrading">A atualizar a base de dados…</string>
     <string name="repo_last_update_downloaded">Última atualização descarregada</string>
     <string name="warning_target_sdk">Esta app foi criada para uma versão do Android mais antiga e não pode ser automaticamente atualizada.</string>
@@ -554,13 +552,13 @@
     <string name="app_details_repository_expand">Expandir a lista de repositórios</string>
     <string name="app_list_no_suggested_version">Nenhuma versão recomendada para instalação.</string>
     <string name="repo_error_adding_archive">Os repositórios de arquivos não podem ser adicionados diretamente. Toque no repositório da lista e ative o arquivo nesse local.</string>
-    <string name="app_details_repository_button_prefer">Repositório Preferido</string>
+    <string name="app_details_repository_button_prefer">Repositório preferido</string>
     <string name="repo_intro">Um repositório é uma fonte adicional de apps. Os de terceiros que adiciona aqui têm padrões diferentes àqueles que fornecem aps construídos pelo próprio F-Droid. \n \nCertifique-se que o repositório que está a adicionar é confiável.</string>
     <string name="repo_state_fetching">A obter o repositório…</string>
     <string name="repo_io_error">Erro ao conectar com o repositório.</string>
     <string name="repo_list_info_title">Lista de repositórios</string>
     <string name="repo_list_info_text">Um repositório é uma fonte de aplicações. Esta lista mostra todos os repositórios atualmente adicionados. Os repositórios desativados não são utilizados.\n\nSe uma aplicação estiver em mais do que um repositório, o repositório no topo da lista é automaticamente preferido. Pode reordenar os repositórios premindo longamente e arrastando-os.</string>
-    <string name="repo_archive_toggle">Arquivo do Repositório</string>
+    <string name="repo_archive_toggle">Arquivo do repositório</string>
     <string name="repo_archive_failed">O repositório de arquivos não está atualmente disponível</string>
     <string name="repo_disable_warning">A desativação deste repositório removerá o seu estatuto de \"preferido\" de todas as aplicações.</string>
     <string name="repo_disable_warning_button">Desativar</string>
@@ -602,15 +600,15 @@
     <string name="swap_bluetooth_permissions">Por favor dê a permissão para utilizar o Bluetooth ou Dispositivos Próximos!</string>
     <string name="menu_share_apk">Partilhar arquivo APK</string>
     <string name="apk_permissions_mismatch">A app tem permissão inesperada: %s</string>
-    <string name="preferForeign">Preferir espelhos estrangeiros</string>
+    <string name="preferForeign">Preferir sites réplica estrangeiros</string>
     <string name="preferForeignSummary">Experimente primeiro os espelhos localizados fora do seu país, por exemplo, se as proteções estrangeiras forem mais fortes.</string>
     <string name="pref_export_log_summary">Cria um arquivo com a saída do logcat útil para depuração. Cuidado, pode conter informações sensíveis!</string>
     <string name="export_log_success">Logcat salvo com sucesso</string>
     <string name="repo_archive_unknown">Este repositorio não parece ter um arquivo.</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">%d app</item>
-        <item quantity="many">%d apps</item>
-        <item quantity="other">%d apps</item>
+        <item quantity="one">%d aplicação</item>
+        <item quantity="many">%d aplicações</item>
+        <item quantity="other">%d aplicações</item>
     </plurals>
     <string name="repo_last_update_index">Última atualização do repositório: %s</string>
     <string name="repo_basic_auth_edit">Editar</string>
@@ -620,7 +618,9 @@
     <string name="repo_details_info_text">Um repositório é uma fonte de aplicações..\n\nServidores espelhos são usados para distribuir a carga de download de aplicativos entre vários servidores. Espelhos mais próximos de você podem ser mais rápidos.\n\nServidores espelhos oficiais são definidos pelo proprietário do repositório. Eles não podem ser excluídos, apenas desativados. Você pode definir espelhos personalizados adicionais adicionando-os da mesma forma que um repositório normal.</string>
     <string name="export_log_error">Erro ao salvar logcat</string>
     <string name="repo_last_update_check">Última verificação de atualizações do repositório: %s</string>
-    <string name="repo_confirm_delete_mirror_body">Você pode continuar a instalar apps deste repositório utilizando os outros servidores espelho.</string>
+    <string name="repo_confirm_delete_mirror_body">Pode continuar a instalar as aplicações deste repositório usando os outros sites réplica.</string>
     <string name="repo_basic_auth_username">Usuário: %s</string>
     <string name="repo_basic_auth_password">Senha: ***</string>
+    <string name="pref_export_log_title">Registo da depuração</string>
+    <string name="repo_confirm_delete_mirror_title">Eliminar site réplica?</string>
 </resources>
