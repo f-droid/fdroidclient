@@ -63,7 +63,7 @@
     <string name="swap_welcome">Mirë se vini në F-Droid!</string>
     <string name="swap_dont_show_again">Mos e shfaq më këtë</string>
     <string name="swap_people_nearby">Njerëz atypari</string>
-    <string name="swap_wifi_device_name">Emër Pajisjeje</string>
+    <string name="swap_wifi_device_name">Emër pajisjeje</string>
     <string name="swap_cant_find_peers">S’po gjeni atë çka kërkoni?</string>
     <string name="swap_send_fdroid">Dërgoni F-Droid</string>
     <string name="apps">Aplikacione</string>
@@ -606,4 +606,7 @@
     <string name="repo_details_info_text">Një depo është një burim aplikacionesh.\n\nPasqyrat përdoren për të shpërndarë ngarkesën e shkarkimit të aplikacioneve nëpër shërbyes të shumtë. Pasqyrat më afër jush mund të jenë më të shpejta.\n\nPasqyrat zyrtare përcaktohen nga i zoti i depos. Ato s’mund të fshihen, vetëm mund të çaktivizohen. Mund të përcaktoni pasqyra shtesë duke i shtuar njësoj si një depo normale.</string>
     <string name="share_mirror">Ndani pasqyrë më te tjerë</string>
     <string name="export_log_error">Gabim në ruajtje logcat-i</string>
+    <string name="pref_export_log_title">Regjistër diagnostikimesh</string>
+    <string name="pref_export_log_summary">Sjell krijimin e një kartele me ç’jepet nga mjeti “logcat”, e dobishme për diagnostikime. Kujdes, mund të përmbajë hollësi me spec!</string>
+    <string name="export_log_success">Ç’u prodhua nga “logcat” u ruajt me sukses</string>
 </resources>
