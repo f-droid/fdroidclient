@@ -187,9 +187,9 @@
     <string name="swap_view_available_networks">اضغط لفتح الشبكات المتاحة</string>
     <string name="swap_switch_to_wifi">انقر للتحول إلى شبكة Wi-Fi</string>
     <string name="open_qr_code_scanner">افتح ماسح رمز QR</string>
-    <string name="swap_welcome">أهلا وسهلا بك في اف-درويد !</string>
+    <string name="swap_welcome">أهلاً وسهلاً بك في اف-درويد!</string>
     <string name="swap_confirm_connect">هل ترغب في الحصول على التطبيقات من %1$s الآن؟</string>
-    <string name="swap_dont_show_again">عدم إظهار ذلك مرة أخرى</string>
+    <string name="swap_dont_show_again">لا تظهر هذا مرة أخرى</string>
     <string name="swap_scan_or_type_url">شخص واحد يحتاج إلى فحص الرمز، أو كتابة عنوان الرابط الآخر في المتصفح.</string>
     <string name="swap_choose_apps">اختر تطبيقات</string>
     <string name="swap_scan_qr">رمز QR</string>
@@ -256,7 +256,7 @@
     <string name="update_auto_install">ثبِّت التحديثات تلقائيًا</string>
     <string name="update_auto_install_summary">نزّل وثبِّت تحديثات التطبيقات في الخلفية، مع إظهار إشعار</string>
     <string name="versions">النُسخ</string>
-    <string name="warning_no_internet">لا يمكن التحديث، تحقق من اتصالك بالإنترنت؟</string>
+    <string name="warning_no_internet">لا يمكن التحديث، هل فعلاً متصل بالإنترنت؟</string>
     <string name="main_menu__swap_nearby">قريب منك</string>
     <string name="main_menu__categories">الفئات</string>
     <string name="categories__empty_state__no_categories">ليس هناك فئات لعرضها</string>
