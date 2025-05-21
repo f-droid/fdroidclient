@@ -37,24 +37,24 @@ class MainViewModel @Inject constructor(
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     val categories = listOf(
-        Pair(app.getString(R.string.category_Internet), R.drawable.category_internet),
-        Pair(app.getString(R.string.category_Games), R.drawable.category_games),
-        Pair(app.getString(R.string.category_Navigation), R.drawable.category_navigation),
-        Pair(app.getString(R.string.category_Multimedia), R.drawable.category_money),
-        Pair(app.getString(R.string.category_Security), R.drawable.category_security),
-        Pair(app.getString(R.string.category_Reading), R.drawable.category_reading),
-        Pair(app.getString(R.string.category_Time), R.drawable.category_theming),
-        Pair(app.getString(R.string.category_Money), R.drawable.category_money),
-        Pair(app.getString(R.string.category_Theming), R.drawable.category_theming),
-        Pair(app.getString(R.string.category_Connectivity), R.drawable.category_connectivity),
-        Pair(app.getString(R.string.category_Phone_SMS), R.drawable.category_system),
+        Pair(app.getString(R.string.category_Internet), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Games), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Navigation), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Multimedia), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Security), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Reading), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Time), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Money), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Theming), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Connectivity), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Phone_SMS), R.drawable.ic_launcher),
         Pair(
             app.getString(R.string.category_Science_Education),
-            R.drawable.category_science_education
+            R.drawable.ic_launcher
         ),
-        Pair(app.getString(R.string.category_Sports_Health), R.drawable.category_security),
-        Pair(app.getString(R.string.category_System), R.drawable.category_system),
-        Pair(app.getString(R.string.category_Writing), R.drawable.category_writing),
+        Pair(app.getString(R.string.category_Sports_Health), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_System), R.drawable.ic_launcher),
+        Pair(app.getString(R.string.category_Writing), R.drawable.ic_launcher),
     )
 
     val initialApps = buildList {

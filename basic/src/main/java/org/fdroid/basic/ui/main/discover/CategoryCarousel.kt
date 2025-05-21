@@ -107,12 +107,12 @@ fun CategoryBox(category: Pair<String, Int>, onCategoryTap: (String) -> Unit) {
 @Composable
 fun CategoryCarouselPreview() {
     val categories = listOf(
-        Pair(stringResource(R.string.category_Time), R.drawable.category_theming),
-        Pair(stringResource(R.string.category_Games), R.drawable.category_games),
-        Pair(stringResource(R.string.category_Money), R.drawable.category_money),
-        Pair(stringResource(R.string.category_Reading), R.drawable.category_reading),
-        Pair(stringResource(R.string.category_Theming), R.drawable.category_theming),
-        Pair(stringResource(R.string.category_Connectivity), R.drawable.category_connectivity),
+        Pair(stringResource(R.string.category_Time), R.drawable.ic_launcher),
+        Pair(stringResource(R.string.category_Games), R.drawable.ic_launcher),
+        Pair(stringResource(R.string.category_Money), R.drawable.ic_launcher),
+        Pair(stringResource(R.string.category_Reading), R.drawable.ic_launcher),
+        Pair(stringResource(R.string.category_Theming), R.drawable.ic_launcher),
+        Pair(stringResource(R.string.category_Connectivity), R.drawable.ic_launcher),
     )
     FDroidContent {
         CategoryCarousel(categories, onTitleTap = {}) {}
