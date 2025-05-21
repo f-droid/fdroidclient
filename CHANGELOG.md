@@ -1,3 +1,12 @@
+### 1.23.0 (2025-05-22)
+
+* Updated app screenshots for Material 3 (Thanks Thore!)
+* Last material design adaptions: rounder cards
+* Don't add official mirror as user mirror (Thanks Thore!)
+* Fix user mirror UI bug (Thanks oldherl!)
+* Respect preferred repo for counting apps in categories
+* Fixed crash on started (Thanks Matthew!)
+
 ### 1.23.0-alpha0 (2025-04-01)
 
 * material design 3 (with edge-to-edge, but without dynamic colors) (Thanks proletarius!)
