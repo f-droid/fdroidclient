@@ -9,12 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
@@ -30,7 +30,6 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.views.apps.AppListActivity;
-import org.fdroid.fdroid.views.apps.FeatureImage;
 import org.fdroid.index.v2.FileV2;
 
 import java.util.List;
@@ -43,7 +42,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
 
     private final Button viewAll;
     private final TextView heading;
-    private final FeatureImage image;
+    private final ImageView image;
     private final AppPreviewAdapter appCardsAdapter;
     private final FrameLayout background;
 
@@ -72,7 +71,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
     }
 
     private static String translateCategory(Context context, String categoryName) {
-        int categoryNameId = getCategoryResource(context, categoryName, "string", false);
+        int categoryNameId = getCategoryResource(context, categoryName);
         return categoryNameId == 0 ? categoryName : context.getString(categoryNameId);
     }
 
@@ -98,17 +97,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
                     .apply(Utils.getAlwaysShowIconRequestOptions())
                     .into(image);
         } else {
-            // try to get local image resource
-            int categoryImageId = getCategoryResource(activity, item.category.getId(), "drawable", true);
-            if (categoryImageId == 0) {
-                Log.w(TAG, "No image for: " + item.category.getId());
-                image.setColour(backgroundColour);
-                image.setImageDrawable(null);
-                Glide.with(activity).clear(image);
-            } else {
-                image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
-                Glide.with(activity).load(categoryImageId).into(image);
-            }
+            Glide.with(activity).clear(image);
         }
         Resources r = activity.getResources();
         viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, item.numApps, item.numApps));
@@ -129,26 +118,14 @@ public class CategoryController extends RecyclerView.ViewHolder {
     }
 
     /**
-     * @param requiresLowerCaseId Previously categories were translated using strings such as "category_Reading"
-     *                            for the "Reading" category. Now we also need to have drawable resources such as
-     *                            "category_reading". Note how drawables must have only lower case letters, whereas
-     *                            we already have upper case letters in strings.xml. Hence this flag.
+     *
      */
-    private static int getCategoryResource(Context context, @NonNull String categoryName, String resourceType,
-                                           boolean requiresLowerCaseId) {
+    private static int getCategoryResource(Context context, @NonNull String categoryName) {
         String suffix = categoryName.replace(" & ", "_").replace(" ", "_").replace("'", "");
-        if (requiresLowerCaseId) {
-            suffix = suffix.toLowerCase(Locale.ENGLISH);
-        }
-        return context.getResources().getIdentifier("category_" + suffix, resourceType, context.getPackageName());
+        return context.getResources().getIdentifier("category_" + suffix, "string", context.getPackageName());
     }
 
     public static int getBackgroundColour(Context context, @NonNull String categoryId) {
-        int colourId = getCategoryResource(context, categoryId, "color", true);
-        if (colourId > 0) {
-            return ContextCompat.getColor(context, colourId);
-        }
-
         // Seed based on the categoryName, so that each time we try to choose a colour for the same
         // category it will look the same for each different user, and each different session.
         Random random = new Random(categoryId.toLowerCase(Locale.ENGLISH).hashCode());

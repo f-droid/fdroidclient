@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="@+id/app_cards"
         tools:background="#ffffbbbb" />
 
-    <org.fdroid.fdroid.views.apps.FeatureImage
+    <ImageView
         android:id="@+id/category_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -55,9 +55,7 @@
         app:layout_constraintEnd_toEndOf="@+id/category_background"
         app:layout_constraintStart_toStartOf="@+id/category_background"
         app:layout_constraintTop_toTopOf="@+id/category_background"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/category_graphics"
-        tools:targetApi="jelly_bean" />
+        tools:ignore="ContentDescription" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/app_cards"
