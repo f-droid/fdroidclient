@@ -180,6 +180,7 @@ dependencies {
     implementation libs.androidx.recyclerview
     implementation libs.androidx.vectordrawable
     implementation libs.androidx.constraintlayout
+    implementation libs.androidx.swiperefreshlayout
     implementation libs.androidx.lifecycle.livedata.ktx
     implementation libs.androidx.work.runtime
     implementation libs.guava // somehow needed for work-runtime to function
