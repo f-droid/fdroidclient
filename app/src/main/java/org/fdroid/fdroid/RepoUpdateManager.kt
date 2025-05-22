@@ -117,11 +117,7 @@ class RepoUpdateManager @JvmOverloads constructor(
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
                 val appUpdateStatusManager = AppUpdateStatusManager.getInstance(context)
-                if (fdroidPrefs.isAutoDownloadEnabled && fdroidPrefs.isBackgroundDownloadAllowed) {
-                    appUpdateStatusManager.checkForUpdatesAndInstall()
-                } else {
-                    appUpdateStatusManager.checkForUpdates()
-                }
+                appUpdateStatusManager.checkForUpdates(true)
             }
         } finally {
             notificationManager.cancelUpdateRepoNotification()

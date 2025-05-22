@@ -19,6 +19,12 @@
 -keep class junit.** { *; }
 -dontwarn junit.**
 
+-keep class kotlin.reflect.** { *; }
+-keep class io.mockk.** { *; }
+-keep class kotlin.io.** { *; }
+-keep class kotlin.collections.** { *; }
+-keep class java.util.concurrent.Executor { *; }
+
 -keep class androidx.arch.core.executor.ArchTaskExecutor {*;}
 
 -keep class org.fdroid.download.Mirror {
@@ -26,4 +32,4 @@
 }
 
 # This is necessary so that RemoteWorkManager can be initialized (also marked with @Keep)
--keep class androidx.work.WorkManager { *; }
+-keep class androidx.work.** { *; }

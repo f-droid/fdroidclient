@@ -162,6 +162,8 @@ android {
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/LICENSE-notice.md'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/gradle/**'
@@ -196,6 +198,7 @@ dependencies {
     implementation libs.adapterdelegates4
     implementation libs.slf4j.api
     implementation libs.logback.android
+    implementation libs.microutils.kotlin.logging
 
     implementation libs.rxjava
     implementation libs.rxandroid
@@ -223,20 +226,24 @@ dependencies {
     testImplementation libs.androidx.test.core
     testImplementation libs.junit
     testImplementation libs.robolectric
+    testImplementation libs.mockk
     testImplementation libs.mockito.core
     testImplementation libs.hamcrest
+    testImplementation libs.slf4j.simple
 
     androidTestImplementation libs.androidx.test.core
     androidTestImplementation libs.androidx.core.testing
     androidTestImplementation libs.androidx.test.runner
     androidTestImplementation libs.androidx.test.rules
     androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.androidx.test.ext.junit.ktx
     androidTestImplementation libs.androidx.test.monitor
     androidTestImplementation libs.androidx.espresso.core
     androidTestImplementation libs.androidx.test.uiautomator
     androidTestImplementation libs.androidx.work.testing
     androidTestImplementation libs.kotlin.test
     androidTestImplementation libs.kotlin.reflect
+    androidTestImplementation libs.mockk.android
     androidTestImplementation libs.turbine
 }
 

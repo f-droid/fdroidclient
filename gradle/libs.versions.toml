@@ -141,6 +141,7 @@ mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExtJunit" }
+androidx-test-ext-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidxTestExtJunit" }
 androidx-test-core-ktx = { module = "androidx.test:core-ktx", version.ref = "androidxTestCoreKtx" }
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "androidxCoreTesting" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxEspressoCore" }
@@ -150,6 +151,7 @@ androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidxT
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "androidxWork" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4jApi" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4jApi" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }

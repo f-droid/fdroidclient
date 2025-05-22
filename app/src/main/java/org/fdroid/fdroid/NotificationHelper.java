@@ -37,6 +37,7 @@ import org.fdroid.fdroid.views.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SuppressWarnings("LineLength")
 public class NotificationHelper {
@@ -105,10 +106,12 @@ public class NotificationHelper {
                 String url;
                 switch (intent.getAction()) {
                     case AppUpdateStatusManager.BROADCAST_APPSTATUS_LIST_CHANGED:
-                        notificationManager.cancelAll();
                         updateStatusLists();
                         createSummaryNotifications();
-                        for (AppUpdateStatusManager.AppUpdateStatus appUpdateStatus : appUpdateStatusManager.getAll()) {
+                        // need to wrap in a new list to prevent ConcurrentModificationException
+                        List<AppUpdateStatusManager.AppUpdateStatus> list =
+                                new ArrayList<>(appUpdateStatusManager.getAll());
+                        for (AppUpdateStatusManager.AppUpdateStatus appUpdateStatus : list) {
                             createNotification(appUpdateStatus);
                         }
                         break;

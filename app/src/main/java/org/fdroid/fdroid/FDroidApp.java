@@ -59,6 +59,7 @@ import org.acra.config.CoreConfigurationBuilder;
 import org.acra.config.DialogConfigurationBuilder;
 import org.acra.config.MailSenderConfigurationBuilder;
 import org.apache.commons.net.util.SubnetUtils;
+import org.fdroid.database.DbUpdateChecker;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.Repository;
 import org.fdroid.fdroid.data.App;
@@ -74,6 +75,7 @@ import org.fdroid.fdroid.net.DnsCache;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
+import org.fdroid.fdroid.work.AppUpdateWorker;
 import org.fdroid.fdroid.work.CleanCacheWorker;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
 import org.fdroid.index.IndexFormatVersion;
@@ -109,6 +111,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
     private static RepoManager repoManager;
     @Nullable
     private static RepoUpdateManager repoUpdateManager;
+    @Nullable
+    private static AppUpdateManager appUpdateManager;
 
     // for the local repo on this device, all static since there is only one
     public static volatile int port;
@@ -367,6 +371,8 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
         ConnectivityMonitorService.registerAndStart(this);
         Utils.debugLog(TAG, "RepoUpdateWorker.scheduleOrCancel()");
         RepoUpdateWorker.scheduleOrCancel(getApplicationContext());
+        Utils.debugLog(TAG, "AppUpdateWorker.scheduleOrCancel()");
+        AppUpdateWorker.scheduleOrCancel(getApplicationContext());
 
         FDroidApp.initWifiSettings();
         WifiStateChangeService.start(this, null);
@@ -566,6 +572,17 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
             repoUpdateManager = new RepoUpdateManager(context, DBHelper.getDb(context), getRepoManager(context));
         }
         return repoUpdateManager;
+    }
+
+    public static AppUpdateManager getAppUpdateManager(Context c) {
+        if (appUpdateManager == null) {
+            Context context = c.getApplicationContext();
+            DbUpdateChecker updateChecker =
+                    new DbUpdateChecker(DBHelper.getDb(context), context.getPackageManager());
+            appUpdateManager
+                    = new AppUpdateManager(context, getRepoManager(context), updateChecker);
+        }
+        return appUpdateManager;
     }
 
     /**
