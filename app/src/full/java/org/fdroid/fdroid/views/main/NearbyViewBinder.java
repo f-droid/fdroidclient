@@ -77,7 +77,7 @@ public class NearbyViewBinder {
         Button startButton = swapView.findViewById(R.id.find_people_button);
         startButton.setOnClickListener(v -> {
             final String coarseLocation = Manifest.permission.ACCESS_COARSE_LOCATION;
-            if (PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
+            if (Build.VERSION.SDK_INT <= 30 && PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(activity, coarseLocation)) {
                 ActivityCompat.requestPermissions(activity, new String[]{coarseLocation},
                         MainActivity.REQUEST_LOCATION_PERMISSIONS);
             } else {

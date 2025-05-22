@@ -10,12 +10,12 @@ import androidx.test.core.app.ApplicationProvider;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.nearby.LocalRepoManager;
-import org.fdroid.fdroid.shadows.ShadowLog;
 import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.shadows.ShadowLog;
 
 import java.io.File;
 import java.io.IOException;
