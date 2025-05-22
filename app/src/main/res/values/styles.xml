@@ -16,10 +16,8 @@
     </style>
 
 
-    <!-- To preserve the UX before MD3 migration -->
-    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
-        <item name="shapeAppearance">@style/ShapeAppearance.App.Card</item>
-    </style>
+    <!-- All our cards are Elevated -->
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated"/>
 
     <style name="Widget.App.Button.Dialog" parent="Widget.Material3.Button.TextButton.Dialog">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.TextButton</item>
