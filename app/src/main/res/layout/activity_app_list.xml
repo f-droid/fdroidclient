@@ -21,17 +21,16 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/search_card"
-                style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:id="@+id/back"
@@ -73,9 +72,9 @@
                 android:id="@+id/sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:contentDescription="@string/sort_search"
                 android:padding="8dp"
+                android:contentDescription="@string/sort_search"
+                android:background="?attr/selectableItemBackground"
                 app:tint="?attr/colorControlNormal"
                 tools:src="@drawable/ic_sort" />
 
@@ -87,11 +86,11 @@
         android:id="@+id/hiddenAppNotice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:drawablePadding="16dp"
         android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
         android:text="@string/app_list_results_hidden_antifeature_settings"
         android:visibility="gone"
+        android:drawablePadding="16dp"
         app:drawableStartCompat="@drawable/ic_error"
         tools:visibility="visible" />
 
@@ -108,10 +107,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/app_list"
+        android:paddingVertical="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingVertical="16dp"
         tools:listitem="@layout/app_list_item" />
 
 </LinearLayout>
