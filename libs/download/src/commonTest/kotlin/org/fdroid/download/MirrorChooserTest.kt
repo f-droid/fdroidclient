@@ -1,11 +1,11 @@
 package org.fdroid.download
 
-import io.ktor.client.network.sockets.SocketTimeoutException
-import io.ktor.utils.io.errors.IOException
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.io.IOException
 import org.fdroid.getIndexFile
 import org.fdroid.runSuspend
+import java.net.SocketTimeoutException
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals

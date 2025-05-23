@@ -1,7 +1,6 @@
 package org.fdroid.download
 
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.ProxyConfig
 import io.ktor.client.plugins.HttpTimeout
@@ -10,7 +9,6 @@ import io.ktor.client.plugins.UserAgent
 import io.ktor.client.plugins.timeout
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.basicAuth
-import io.ktor.client.request.get
 import io.ktor.client.request.head
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
@@ -20,6 +18,7 @@ import io.ktor.client.request.setBody
 import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.HttpStatement
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.HttpHeaders.ContentType
 import io.ktor.http.HttpHeaders.ETag
 import io.ktor.http.HttpHeaders.LastModified
@@ -31,8 +30,10 @@ import io.ktor.http.Url
 import io.ktor.http.contentLength
 import io.ktor.utils.io.ByteChannel
 import io.ktor.utils.io.ByteReadChannel
-import io.ktor.utils.io.core.isEmpty
-import io.ktor.utils.io.core.readBytes
+import io.ktor.utils.io.InternalAPI
+import io.ktor.utils.io.exhausted
+import io.ktor.utils.io.readRemaining
+import kotlinx.io.readByteArray
 import mu.KotlinLogging
 import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -130,6 +131,7 @@ public open class HttpManager @JvmOverloads constructor(
         return HeadInfo(true, response.headers[ETag], contentLength, lastModified)
     }
 
+    @OptIn(InternalAPI::class)
     @JvmOverloads
     @Throws(ResponseException::class, NoResumeException::class, CancellationException::class)
     public suspend fun get(
@@ -145,14 +147,13 @@ public open class HttpManager @JvmOverloads constructor(
                 if (skipBytes > 0L && response.status != PartialContent) {
                     throw NoResumeException()
                 }
-                val channel: ByteReadChannel = response.body()
-                while (!channel.isClosedForRead) {
-                    val packet = channel.readRemaining(READ_BUFFER.toLong())
-                    while (!packet.isEmpty) {
-                        val readBytes = packet.readBytes()
-                        receiver.receive(readBytes, contentLength)
-                        skipBytes += readBytes.size
-                    }
+                val channel: ByteReadChannel = response.bodyAsChannel()
+                val readBufferSize = DEFAULT_BUFFER_SIZE.toLong() * 8
+                while (!channel.exhausted()) {
+                    val packet = channel.readRemaining(readBufferSize)
+                    val readBytes = packet.readByteArray()
+                    receiver.receive(readBytes, contentLength)
+                    skipBytes += readBytes.size
                 }
             }
         }

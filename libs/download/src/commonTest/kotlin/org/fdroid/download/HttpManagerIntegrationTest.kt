@@ -2,7 +2,7 @@ package org.fdroid.download
 
 import io.ktor.client.engine.ProxyBuilder
 import io.ktor.http.Url
-import io.ktor.utils.io.errors.IOException
+import kotlinx.io.IOException
 import org.fdroid.getRandomString
 import org.fdroid.runSuspend
 import kotlin.test.Test

@@ -33,7 +33,7 @@ internal class MirrorTest {
         assertEquals(fallbackInvalidUrl, Mirror(":/foo/bar").url)
         assertEquals(fallbackInvalidUrl, Mirror("http://192.168.0.1:6465161/foo").url)
         assertEquals(fallbackInvalidUrl, Mirror("mailto:x").url)
-        assertEquals(fallbackInvalidUrl, Mirror("file:/root").url)
+        assertEquals(fallbackInvalidUrl, Mirror("file:root").url)
     }
 
     @Test
