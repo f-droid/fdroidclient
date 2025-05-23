@@ -108,7 +108,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
         val packageInfo = try {
             @Suppress("DEPRECATION")
             packageManager.getPackageInfo(packageName, GET_SIGNATURES)
-        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (_: PackageManager.NameNotFoundException) {
             null
         }
         val version = getVersion(

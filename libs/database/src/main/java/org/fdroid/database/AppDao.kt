@@ -14,7 +14,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
-import androidx.room.RoomWarnings.Companion.CURSOR_MISMATCH
+import androidx.room.RoomWarnings.Companion.QUERY_MISMATCH
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.serialization.SerializationException
@@ -382,7 +382,7 @@ internal interface AppDaoInt : AppDao {
      * Used by [DbUpdateChecker] to get specific apps with available updates.
      */
     @Transaction
-    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, added, app.lastUpdated, localizedName,
              localizedSummary, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName""")
@@ -577,7 +577,7 @@ internal interface AppDaoInt : AppDao {
      * Warning: Can not be called with more than 999 [packageNames].
      */
     @Transaction
-    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
                      app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app

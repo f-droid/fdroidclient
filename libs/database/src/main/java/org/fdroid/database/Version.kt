@@ -87,6 +87,7 @@ internal fun PackageVersionV2.toVersion(
 /**
  * A version of an [App] identified by [AppManifest.versionCode] and [AppManifest.signer].
  */
+@ConsistentCopyVisibility
 public data class AppVersion internal constructor(
     @Embedded internal val version: Version,
     @Relation(
