@@ -402,10 +402,11 @@ public final class AppUpdateStatusManager {
 
     void addUpdatableApps(@Nullable List<UpdatableApp> canUpdate, boolean extraNotify) {
         if (canUpdate == null) return;
-        if (extraNotify) {
-            new NotificationManager(context).showAppUpdatesAvailableNotification(canUpdate.size());
-        }
         if (!canUpdate.isEmpty()) {
+            if (extraNotify) {
+                NotificationManager nm = new NotificationManager(context);
+                nm.showAppUpdatesAvailableNotification(canUpdate.size());
+            }
             startBatchUpdates();
             for (UpdatableApp app : canUpdate) {
                 Repository repo = repoManager.getRepository(app.getUpdate().getRepoId());
