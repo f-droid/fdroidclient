@@ -1,9 +1,10 @@
-package org.fdroid.basic.ui.main.discover
+package org.fdroid.basic.ui.main.lists
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -11,7 +12,6 @@ import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -25,29 +25,29 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import org.fdroid.basic.R
+import org.fdroid.basic.ui.main.discover.FilterModel
+import org.fdroid.basic.ui.main.discover.Sort
 
 interface FilterInfo {
     val model: FilterModel
 
+    fun toggleFilterVisibility()
     fun sortBy(sort: Sort)
     fun addCategory(category: String)
     fun removeCategory(category: String)
-    fun showOnlyInstalledApps(onlyInstalled: Boolean)
 }
 
 @Composable
 fun ColumnScope.AppsFilter(
-    filterExpanded: Boolean,
     filter: FilterInfo,
     addedRepos: MutableList<String>,
     modifier: Modifier = Modifier,
 ) {
-    AnimatedVisibility(filterExpanded) {
+    AnimatedVisibility(filter.model.areFiltersShown) {
         FlowRow(
             modifier = modifier
+                .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             horizontalArrangement = spacedBy(16.dp),
         ) {
@@ -99,20 +99,6 @@ fun ColumnScope.AppsFilter(
                     }
                 },
                 onClick = { sortByMenuExpanded = !sortByMenuExpanded },
-            )
-            FilterChip(
-                selected = filter.model.onlyInstalledApps,
-                leadingIcon = if (filter.model.onlyInstalledApps) {
-                    {
-                        Icon(
-                            imageVector = Icons.Filled.Done,
-                            contentDescription = null,
-                            modifier = Modifier.size(FilterChipDefaults.IconSize),
-                        )
-                    }
-                } else null,
-                label = { Text(stringResource(R.string.app_installed)) },
-                onClick = { filter.showOnlyInstalledApps(!filter.model.onlyInstalledApps) },
             )
             FilterChip(
                 selected = false,

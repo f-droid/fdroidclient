@@ -11,7 +11,11 @@ import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole.Det
 import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
@@ -23,6 +27,7 @@ import kotlinx.coroutines.launch
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.details.AppDetails
 import org.fdroid.basic.ui.main.lists.AppList
+import org.fdroid.basic.ui.main.lists.FilterInfo
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 enum class Sort {
@@ -35,10 +40,12 @@ const val NUM_ITEMS = 42
 @Composable
 @OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3Api::class)
 fun DiscoverScaffold(
+    appList: AppList,
     apps: List<AppNavigationItem>,
     filterInfo: FilterInfo,
     onMainNav: (String) -> Unit,
     onSelectAppItem: (MinimalApp) -> Unit,
+    onAppListChanged: (AppList) -> Unit,
     currentItem: MinimalApp?,
     modifier: Modifier = Modifier,
 ) {
@@ -61,7 +68,10 @@ fun DiscoverScaffold(
                     composable("discover") {
                         Discover(
                             apps = apps,
-                            onTitleTap = { discoverNavController.navigate("list") },
+                            onTitleTap = {
+                                onAppListChanged(it)
+                                discoverNavController.navigate("list")
+                            },
                             onAppTap = {
                                 onSelectAppItem(it)
                                 scope.launch { navigator.navigateTo(Detail, it) }
@@ -72,6 +82,7 @@ fun DiscoverScaffold(
                     }
                     composable("list") {
                         AppList(
+                            appList = appList,
                             apps = apps,
                             filterInfo = filterInfo,
                             currentItem = if (isDetailVisible) currentItem else null,
@@ -105,21 +116,25 @@ fun DiscoverScaffoldPreview() {
             AppNavigationItem("2", "foo", "bar", false),
             AppNavigationItem("3", "foo", "bar", false),
         )
+        var filterExpanded by rememberSaveable { mutableStateOf(true) }
         val filterInfo = object : FilterInfo {
             override val model = FilterModel(
                 isLoading = false,
+                areFiltersShown = filterExpanded,
                 apps = apps,
-                onlyInstalledApps = false,
                 sortBy = Sort.NAME,
                 allCategories = listOf("foo", "bar"),
                 addedCategories = emptyList(),
             )
 
+            override fun toggleFilterVisibility() {
+                filterExpanded = !filterExpanded
+            }
+
             override fun sortBy(sort: Sort) {}
             override fun addCategory(category: String) {}
             override fun removeCategory(category: String) {}
-            override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
         }
-        DiscoverScaffold(apps, filterInfo, {}, {}, null)
+        DiscoverScaffold(AppList.New, apps, filterInfo, {}, {}, {}, null)
     }
 }

@@ -133,7 +133,7 @@ fun MyAppsList(
                 Text(
                     text = stringResource(R.string.updates),
                     style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(horizontal = 16.dp),
+                    modifier = Modifier.padding(16.dp),
                 )
             }
             items(updatableApps, key = { it.packageName }, contentType = { "A" }) { app ->
@@ -157,7 +157,7 @@ fun MyAppsList(
                 Text(
                     text = stringResource(R.string.installed_apps__activity_title),
                     style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(horizontal = 16.dp),
+                    modifier = Modifier.padding(16.dp),
                 )
             }
             items(installedApps, key = { it.packageName }, contentType = { "B" }) { app ->

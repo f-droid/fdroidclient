@@ -14,8 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import org.fdroid.basic.MainViewModel
 import org.fdroid.basic.R
 import org.fdroid.basic.ui.icons.PackageVariant
-import org.fdroid.basic.ui.main.discover.FilterInfo
 import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.main.lists.FilterInfo
 import org.fdroid.basic.ui.main.repositories.RepositoriesScaffold
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
@@ -50,13 +50,14 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                 val installed = viewModel.installed.collectAsStateWithLifecycle().value
                 val filterInfo = object : FilterInfo {
                     override val model = viewModel.filterModel.collectAsStateWithLifecycle().value
+                    override fun toggleFilterVisibility() {
+                        viewModel.toggleListFilterVisibility()
+                    }
+
                     override fun sortBy(sort: Sort) = viewModel.sortBy(sort)
                     override fun addCategory(category: String) = viewModel.addCategory(category)
                     override fun removeCategory(category: String) =
                         viewModel.removeCategory(category)
-
-                    override fun showOnlyInstalledApps(onlyInstalled: Boolean) =
-                        viewModel.showOnlyInstalledApps(onlyInstalled)
                 }
                 val currentItem = viewModel.appDetails.collectAsStateWithLifecycle().value
                 BottomBarScreen(
@@ -64,6 +65,8 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                     numUpdates = numUpdates,
                     updates = updates,
                     installed = installed,
+                    onAppListChanged = viewModel::setAppList,
+                    appList = viewModel.currentList.collectAsStateWithLifecycle().value,
                     filterInfo = filterInfo,
                     currentItem = currentItem,
                     onSelectAppItem = viewModel::setAppDetails,

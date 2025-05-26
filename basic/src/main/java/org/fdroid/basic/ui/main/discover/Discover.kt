@@ -28,6 +28,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import org.fdroid.basic.ui.main.MainOverFlowMenu
+import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.basic.ui.main.topBarMenuItems
 
 @Composable
@@ -35,7 +36,7 @@ import org.fdroid.basic.ui.main.topBarMenuItems
 fun Discover(
     apps: List<AppNavigationItem>,
     modifier: Modifier = Modifier,
-    onTitleTap: () -> Unit,
+    onTitleTap: (AppList) -> Unit,
     onAppTap: (AppNavigationItem) -> Unit,
     onMainNav: (String) -> Unit,
 ) {
@@ -83,24 +84,24 @@ fun Discover(
         ) {
             AppsSearch(searchBarState, onAppTap, modifier = Modifier.padding(top = 8.dp))
             AppCarousel(
-                title = "New",
+                title = AppList.New.title,
                 apps = apps,
-                onTitleTap = onTitleTap,
+                onTitleTap = { onTitleTap(AppList.New) },
                 onAppTap = onAppTap,
             )
             AppCarousel(
-                title = "Recently updated",
+                title = AppList.RecentlyUpdated.title,
                 apps = apps.filter { it.packageName.toInt() % 2 == 0 },
-                onTitleTap = onTitleTap,
+                onTitleTap = { onTitleTap(AppList.RecentlyUpdated) },
                 onAppTap = onAppTap,
             )
             FilledTonalButton(
-                onClick = onTitleTap,
+                onClick = { onTitleTap(AppList.All) },
                 modifier = Modifier
                     .align(End)
                     .padding(16.dp),
             ) {
-                Text("All apps")
+                Text(AppList.All.title)
             }
         }
     }

@@ -1,5 +1,6 @@
 package org.fdroid.basic.ui.main.lists
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,26 +27,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.exitUntilCollapsedScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
-import org.fdroid.basic.ui.main.discover.AppsFilter
-import org.fdroid.basic.ui.main.discover.FilterInfo
+
+sealed class AppList(val title: String) {
+    data object New : AppList("New apps")
+    data object RecentlyUpdated : AppList("Recently updated")
+    data object All : AppList("All apps")
+}
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppList(
+    appList: AppList,
     apps: List<AppNavigationItem>,
     filterInfo: FilterInfo,
     currentItem: MinimalApp?,
@@ -54,13 +57,12 @@ fun AppList(
     onItemClick: (AppNavigationItem) -> Unit,
 ) {
     val scrollBehavior = exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-    var filterExpanded by rememberSaveable { mutableStateOf(true) }
     val addedRepos = remember { mutableStateListOf<String>() }
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                        Text("New apps")
+                    Text(appList.title)
                 },
                 navigationIcon = {
                     IconButton(onClick = onBackClicked) {
@@ -68,10 +70,9 @@ fun AppList(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { filterExpanded = !filterExpanded }) {
+                    IconButton(onClick = { filterInfo.toggleFilterVisibility() }) {
                         val showFilterBadge = addedRepos.isNotEmpty() ||
-                            filterInfo.model.addedCategories.isNotEmpty() ||
-                            filterInfo.model.onlyInstalledApps
+                            filterInfo.model.addedCategories.isNotEmpty()
                         BadgedBox(badge = {
                             if (showFilterBadge) Badge(containerColor = MaterialTheme.colorScheme.secondary)
                         }) {
@@ -87,21 +88,24 @@ fun AppList(
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
-        Column(modifier = Modifier.padding(paddingValues)) {
+        Column(
+            modifier = Modifier
+                .padding(paddingValues),
+        ) {
             AppsFilter(
-                filterExpanded = filterExpanded,
                 filter = filterInfo,
                 addedRepos = addedRepos,
+                modifier = Modifier.background(TopAppBarDefaults.topAppBarColors().containerColor),
             )
             LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.then(
-                        if (currentItem == null) Modifier
-                        else Modifier.selectableGroup()
-                    ),
+                    if (currentItem == null) Modifier
+                    else Modifier.selectableGroup()
+                ),
             ) {
-                items(apps) { navItem ->
+                items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
                     val isSelected = currentItem?.packageName == navItem.packageName
                     val interactionModifier = if (currentItem == null) {
                         Modifier.clickable(
@@ -115,11 +119,12 @@ fun AppList(
                     }
                     val modifier = Modifier
                         .fillMaxWidth()
+                        .animateItem()
                         .padding(horizontal = 8.dp)
                         .then(interactionModifier)
                     AppItem(navItem.name, navItem.summary, navItem.isNew, isSelected, modifier)
                 }
-                item {
+                item(contentType = "S") {
                     Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
                 }
             }

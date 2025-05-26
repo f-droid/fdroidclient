@@ -24,12 +24,13 @@ import org.fdroid.basic.ui.main.discover.FilterPresenter
 import org.fdroid.basic.ui.main.discover.NUM_ITEMS
 import org.fdroid.basic.ui.main.discover.Names
 import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.main.lists.AppList
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     app: Application,
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     val myAppsManager: MyAppsManager,
     private val appDetailsManager: AppDetailsManager,
     val repositoryManager: RepositoryManager,
@@ -70,8 +71,10 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private val _onlyInstalledApps = MutableStateFlow(false)
-    val onlyInstalledApps = _onlyInstalledApps.asStateFlow<Boolean>()
+    private val _currentList = MutableStateFlow<AppList>(AppList.New)
+    val currentList = _currentList.asStateFlow()
+    private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", true)
+    val showFilters = _showFilters.asStateFlow()
     private val _sortBy = MutableStateFlow<Sort>(Sort.LATEST)
     val sortBy = _sortBy.asStateFlow<Sort>()
     private val _addedCategories = MutableStateFlow<List<String>>(emptyList())
@@ -79,8 +82,8 @@ class MainViewModel @Inject constructor(
 
     val filterModel: StateFlow<FilterModel> = scope.launchMolecule(mode = ContextClock) {
         FilterPresenter(
+            areFiltersShownFlow = showFilters,
             appsFlow = flow { emit(initialApps) },
-            onlyInstalledAppsFlow = onlyInstalledApps,
             sortByFlow = sortBy,
             allCategories = categories.map { it.first },
             addedCategoriesFlow = addedCategories,
@@ -91,6 +94,9 @@ class MainViewModel @Inject constructor(
     val numUpdates = myAppsManager.numUpdates
     val appDetails = appDetailsManager.appDetails
 
+    fun setAppList(appList: AppList) {
+        _currentList.value = appList
+    }
 
     fun setAppDetails(app: MinimalApp) {
         val newApp = filterModel.value.apps.find { it.packageName == app.packageName }
@@ -99,6 +105,10 @@ class MainViewModel @Inject constructor(
                 AppNavigationItem(it.packageName, it.name ?: "Unknown app", "Summary", false)
             }
         appDetailsManager.setAppDetails(newApp)
+    }
+
+    fun toggleListFilterVisibility() {
+        _showFilters.update { !it }
     }
 
     fun sortBy(sort: Sort) {
@@ -120,9 +130,4 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
-    fun showOnlyInstalledApps(onlyInstalled: Boolean) {
-        _onlyInstalledApps.update { onlyInstalled }
-    }
-
 }

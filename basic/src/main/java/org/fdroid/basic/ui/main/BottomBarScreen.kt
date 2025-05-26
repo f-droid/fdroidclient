@@ -32,9 +32,10 @@ import org.fdroid.basic.ui.main.apps.MyAppsScaffold
 import org.fdroid.basic.ui.main.apps.UpdatableApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.basic.ui.main.discover.DiscoverScaffold
-import org.fdroid.basic.ui.main.discover.FilterInfo
 import org.fdroid.basic.ui.main.discover.FilterModel
 import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.main.lists.AppList
+import org.fdroid.basic.ui.main.lists.FilterInfo
 
 enum class BottomNavDestinations(
     @StringRes val label: Int,
@@ -50,11 +51,13 @@ fun BottomBarScreen(
     numUpdates: Int,
     updates: List<UpdatableApp>,
     installed: List<InstalledApp>,
+    appList: AppList,
     filterInfo: FilterInfo,
     currentItem: MinimalApp?,
     onSelectAppItem: (MinimalApp) -> Unit,
     sortBy: Sort,
     onSortChanged: (Sort) -> Unit,
+    onAppListChanged: (AppList) -> Unit,
 ) {
     var currentDestination by rememberSaveable { mutableStateOf(BottomNavDestinations.APPS) }
     val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -98,11 +101,13 @@ fun BottomBarScreen(
     ) {
         when (currentDestination) {
             BottomNavDestinations.APPS -> DiscoverScaffold(
+                appList = appList,
                 apps = filterInfo.model.apps,
                 filterInfo = filterInfo,
                 onMainNav = onMainNav,
                 currentItem = currentItem,
                 onSelectAppItem = onSelectAppItem,
+                onAppListChanged = onAppListChanged,
                 modifier = Modifier,
             )
             BottomNavDestinations.UPDATES -> MyAppsScaffold(
@@ -126,20 +131,35 @@ fun BottomBarPreview() {
         AppNavigationItem("", "foo", "bar", false),
         AppNavigationItem("", "foo", "bar", false),
     )
+    var filterExpanded by rememberSaveable { mutableStateOf(true) }
     val filterInfo = object : FilterInfo {
         override val model = FilterModel(
             isLoading = false,
+            areFiltersShown = filterExpanded,
             apps = apps,
-            onlyInstalledApps = false,
             sortBy = Sort.NAME,
             allCategories = listOf("foo", "bar"),
             addedCategories = emptyList(),
         )
 
+        override fun toggleFilterVisibility() {}
         override fun sortBy(sort: Sort) {}
         override fun addCategory(category: String) {}
-        override fun removeCategory(category: String) {}
-        override fun showOnlyInstalledApps(onlyInstalled: Boolean) {}
+        override fun removeCategory(category: String) {
+            filterExpanded = !filterExpanded
+        }
     }
-    BottomBarScreen({ }, 2, emptyList(), emptyList(), filterInfo, null, {}, Sort.NAME, {})
+    BottomBarScreen(
+        onMainNav = { },
+        numUpdates = 2,
+        updates = emptyList(),
+        installed = emptyList(),
+        appList = AppList.New,
+        filterInfo = filterInfo,
+        currentItem = null,
+        onSelectAppItem = {},
+        sortBy = Sort.NAME,
+        onSortChanged = {},
+        onAppListChanged = {},
+    )
 }
