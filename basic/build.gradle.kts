@@ -49,6 +49,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":libs:index"))
+    implementation(project(":libs:database"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -64,6 +66,8 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.navigation)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite.android)
     implementation(libs.molecule.runtime)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
