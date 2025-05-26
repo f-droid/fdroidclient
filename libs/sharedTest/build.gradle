@@ -3,20 +3,20 @@ plugins {
     id 'com.android.library'
 }
 
-kotlin {
-    jvmToolchain(17)
-}
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
 // not really an Android library, but index is not publishing for JVM at the moment
 android {
     namespace 'org.fdroid.test'
     compileSdk libs.versions.compileSdk.get().toInteger()
     defaultConfig {
         minSdkVersion 21
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
