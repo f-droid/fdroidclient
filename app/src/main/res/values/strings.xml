@@ -735,8 +735,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     </plurals>
     <!-- as in software updates -->
     <plurals name="notification_summary_app_updates">
-        <item quantity="one">%1$d Update available</item>
-        <item quantity="other">%1$d Updates available</item>
+        <item quantity="one">%1$d update available</item>
+        <item quantity="other">%1$d updates available</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d app installed</item>
