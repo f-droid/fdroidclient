@@ -49,6 +49,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import org.fdroid.basic.R
+import org.fdroid.basic.ui.Names.names
 import org.fdroid.basic.ui.asRelativeTimeString
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
@@ -204,6 +205,7 @@ fun AppDetails(
                     .height(240.dp)
                     .padding(vertical = 8.dp)
             ) { index ->
+                names
                 AsyncImage(
                     model = item.phoneScreenshots[index].name,
                     contentDescription = "",

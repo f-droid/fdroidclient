@@ -17,7 +17,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import org.fdroid.basic.ui.main.discover.Names
+import coil3.compose.AsyncImage
+import org.fdroid.basic.ui.Names
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -29,7 +30,13 @@ fun InstalledAppRow(
     Column(modifier = modifier) {
         ListItem(
             leadingContent = {
-                Icon(
+                app.icon?.let {
+                    AsyncImage(
+                        model = app.icon,
+                        contentDescription = null,
+                        modifier = Modifier.size(48.dp),
+                    )
+                } ?: Icon(
                     Icons.Filled.Android,
                     tint = MaterialTheme.colorScheme.secondary,
                     contentDescription = null,

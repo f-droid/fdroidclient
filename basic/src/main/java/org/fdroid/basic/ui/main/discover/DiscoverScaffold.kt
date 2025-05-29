@@ -112,9 +112,9 @@ fun DiscoverScaffold(
 fun DiscoverScaffoldPreview() {
     FDroidContent {
         val apps = listOf(
-            AppNavigationItem("1", "foo", "bar", false),
-            AppNavigationItem("2", "foo", "bar", false),
-            AppNavigationItem("3", "foo", "bar", false),
+            AppNavigationItem("1", "foo", null, "bar", false),
+            AppNavigationItem("2", "foo", null, "bar", false),
+            AppNavigationItem("3", "foo", null, "bar", false),
         )
         var filterExpanded by rememberSaveable { mutableStateOf(true) }
         val filterInfo = object : FilterInfo {

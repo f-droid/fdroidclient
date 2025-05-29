@@ -63,7 +63,7 @@ data class TestApp(
     override val name: String?,
     override val summary: String?,
     val description: String? = null,
-    val icon: FileV2? = null,
+    override val icon: String? = null,
     val featureGraphic: FileV2? = null,
     val phoneScreenshots: List<FileV2> = emptyList(),
     override val metadata: AppMetadata = AppMetadata(
@@ -74,7 +74,7 @@ data class TestApp(
         isCompatible = true,
     )
 ) : IApp {
-    override fun getIcon(localeList: LocaleListCompat): FileV2? = icon
+    override fun getIcon(localeList: LocaleListCompat): FileV2? = icon?.let { FileV2(it) }
     override fun getDescription(localeList: LocaleListCompat): String? = description
     override fun getFeatureGraphic(localeList: LocaleListCompat): FileV2? = featureGraphic
     override fun getPhoneScreenshots(localeList: LocaleListCompat): List<FileV2> = phoneScreenshots
@@ -125,7 +125,7 @@ val newPipeApp = TestApp(
         categories = listOf("Internet", "Multimedia"),
         isCompatible = true,
     ),
-    icon = FileV2(name = "https://f-droid.org/repo/org.schabi.newpipe/en-US/icon_OHy4y1W-fJCNhHHOBCM9V_cxZNJJgbcNkB-x7UDTY9Q=.png"),
+    icon = "https://f-droid.org/repo/org.schabi.newpipe/en-US/icon_OHy4y1W-fJCNhHHOBCM9V_cxZNJJgbcNkB-x7UDTY9Q=.png",
     featureGraphic = FileV2("https://f-droid.org/repo/org.schabi.newpipe/en-US/featureGraphic_aeQS-fmo5GZhNiioPTtd8Sjgb53Mvvg6LOV2ww-irYA=.png"),
     phoneScreenshots = listOf(
         FileV2("https://f-droid.org/repo/org.schabi.newpipe/en-US/phoneScreenshots/00.png"),

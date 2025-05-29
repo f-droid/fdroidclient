@@ -18,12 +18,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 fun AppItem(
     name: String,
     summary: String,
+    icon: String?,
     isNew: Boolean,
     isSelected: Boolean,
     modifier: Modifier = Modifier,
@@ -39,7 +41,13 @@ fun AppItem(
                     contentDescription = null, modifier = Modifier.size(24.dp),
                 )
             }) {
-                Icon(
+                icon?.let {
+                    AsyncImage(
+                        model = icon,
+                        contentDescription = null,
+                        modifier = Modifier.size(48.dp),
+                    )
+                } ?: Icon(
                     Icons.Filled.Android,
                     tint = MaterialTheme.colorScheme.secondary,
                     contentDescription = null,
@@ -66,7 +74,7 @@ fun AppItem(
 @Composable
 fun AppItemPreview() {
     FDroidContent {
-        AppItem("This is app 1", "It has summary 2", false, false)
+        AppItem("This is app 1", "It has summary 2", null, false, false)
     }
 }
 
@@ -74,7 +82,7 @@ fun AppItemPreview() {
 @Composable
 fun AppItemPreviewNew() {
     FDroidContent {
-        AppItem("This is app 1", "It has summary 2", true, false)
+        AppItem("This is app 1", "It has summary 2", null, true, false)
     }
 }
 
@@ -82,6 +90,6 @@ fun AppItemPreviewNew() {
 @Composable
 fun AppItemPreviewSelected() {
     FDroidContent {
-        AppItem("This is app 1", "It has summary 2", false, true)
+        AppItem("This is app 1", "It has summary 2", null, false, true)
     }
 }

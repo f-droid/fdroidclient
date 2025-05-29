@@ -122,7 +122,14 @@ fun AppList(
                         .animateItem()
                         .padding(horizontal = 8.dp)
                         .then(interactionModifier)
-                    AppItem(navItem.name, navItem.summary, navItem.isNew, isSelected, modifier)
+                    AppItem(
+                        name = navItem.name,
+                        summary = navItem.summary,
+                        icon = navItem.icon,
+                        isNew = navItem.isNew,
+                        isSelected = isSelected,
+                        modifier = modifier,
+                    )
                 }
                 item(contentType = "S") {
                     Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
@@ -23,8 +24,11 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
+import org.fdroid.basic.ui.Names
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -73,7 +77,16 @@ fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
             .padding(8.dp)
             .clickable { onAppTap(app) },
     ) {
-        Icon(
+        app.icon?.let {
+            AsyncImage(
+                app.icon,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .requiredSize(76.dp)
+                    .clip(MaterialTheme.shapes.medium),
+            )
+        } ?: Icon(
             Icons.Filled.Android,
             tint = MaterialTheme.colorScheme.secondary,
             contentDescription = null,
@@ -96,11 +109,11 @@ fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
 @Composable
 fun AppCarouselPreview() {
     val apps = listOf(
-        AppNavigationItem("", Names.randomName, "bar", true),
-        AppNavigationItem("", Names.randomName, "bar", false),
-        AppNavigationItem("", Names.randomName, "bar", false),
-        AppNavigationItem("", Names.randomName, "bar", false),
-        AppNavigationItem("", Names.randomName, "bar", false),
+        AppNavigationItem("", Names.randomName, summary = "bar", isNew = true),
+        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
+        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
+        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
+        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
     )
     FDroidContent {
         AppCarousel("Preview Apps", apps, onTitleTap = {}) {}

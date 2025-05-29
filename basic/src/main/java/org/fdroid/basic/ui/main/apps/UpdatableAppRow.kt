@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -49,7 +50,13 @@ fun UpdatableAppRow(
                         contentDescription = null, modifier = Modifier.size(24.dp),
                     )
                 }) {
-                    Icon(
+                    app.icon?.let {
+                        AsyncImage(
+                            model = app.icon,
+                            contentDescription = null,
+                            modifier = Modifier.size(48.dp),
+                        )
+                    } ?: Icon(
                         Icons.Filled.Android,
                         tint = MaterialTheme.colorScheme.secondary,
                         contentDescription = null,

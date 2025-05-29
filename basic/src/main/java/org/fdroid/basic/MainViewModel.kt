@@ -17,12 +17,13 @@ import kotlinx.coroutines.flow.update
 import org.fdroid.basic.manager.AppDetailsManager
 import org.fdroid.basic.manager.MyAppsManager
 import org.fdroid.basic.manager.RepositoryManager
+import org.fdroid.basic.ui.Icons
+import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.basic.ui.main.discover.FilterModel
 import org.fdroid.basic.ui.main.discover.FilterPresenter
 import org.fdroid.basic.ui.main.discover.NUM_ITEMS
-import org.fdroid.basic.ui.main.discover.Names
 import org.fdroid.basic.ui.main.discover.Sort
 import org.fdroid.basic.ui.main.lists.AppList
 import javax.inject.Inject
@@ -63,6 +64,13 @@ class MainViewModel @Inject constructor(
             val category = categories.getOrElse(i) { categories.random() }.first
             val navItem = AppNavigationItem(
                 packageName = "$i",
+                icon = when (i) {
+                    0 -> "https://f-droid.org/repo/icons/org.wikimedia.commons.wikimedia.1.png"
+                    1 -> "https://f-droid.org/repo/org.videolan.vlc/en-US/icon_yAfSvPRJukZzMMfUzvbYqwaD1XmHXNtiPBtuPVHW-6s=.png"
+                    2 -> "https://f-droid.org/repo/net.thunderbird.android/en-US/icon_llBuXRxsJFITCCuDze-ENOPa1J_HFZLudN5K3gU-xiU=.png"
+                    3 -> "https://f-droid.org/repo/org.schabi.newpipe/en-US/icon_OHy4y1W-fJCNhHHOBCM9V_cxZNJJgbcNkB-x7UDTY9Q=.png"
+                    else -> Icons.randomIcon
+                },
                 name = Names.randomName,
                 summary = "Summary of the app • $category",
                 isNew = i > NUM_ITEMS - 4,
@@ -102,7 +110,13 @@ class MainViewModel @Inject constructor(
         val newApp = filterModel.value.apps.find { it.packageName == app.packageName }
             ?: (updates.value.find { it.packageName == app.packageName }
                 ?: installed.value.find { it.packageName == app.packageName })?.let {
-                AppNavigationItem(it.packageName, it.name ?: "Unknown app", "Summary", false)
+                AppNavigationItem(
+                    packageName = it.packageName,
+                    name = it.name ?: "Unknown app",
+                    icon = it.icon,
+                    summary = "Summary",
+                    isNew = false
+                )
             }
         appDetailsManager.setAppDetails(newApp)
     }

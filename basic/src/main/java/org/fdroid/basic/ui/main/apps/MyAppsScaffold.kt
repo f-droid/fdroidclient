@@ -21,8 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import org.fdroid.basic.ui.Icons
+import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.main.details.AppDetails
-import org.fdroid.basic.ui.main.discover.Names
 import org.fdroid.basic.ui.main.discover.Sort
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
@@ -93,9 +94,9 @@ fun MyAppsScaffoldPreview() {
             updateVersionName = "3.1.0",
             size = 9876543,
         )
-        val installedApp1 = InstalledApp("", Names.randomName, "3.0.1")
-        val installedApp2 = InstalledApp("", Names.randomName, "1.0")
-        val installedApp3 = InstalledApp("", Names.randomName, "0.1")
+        val installedApp1 = InstalledApp("", Names.randomName, Icons.randomIcon, "3.0.1")
+        val installedApp2 = InstalledApp("", Names.randomName, Icons.randomIcon, "1.0")
+        val installedApp3 = InstalledApp("", Names.randomName, Icons.randomIcon, "0.1")
         var sortBy by remember { mutableStateOf<Sort>(Sort.NAME) }
         MyAppsScaffold(
             updatableApps = listOf(app1, app2),

@@ -8,6 +8,7 @@ import org.fdroid.basic.ui.main.apps.MinimalApp
 class AppNavigationItem(
     override val packageName: String,
     override val name: String,
+    override val icon: String? = null,
     val summary: String,
     val isNew: Boolean,
 ): MinimalApp, Parcelable

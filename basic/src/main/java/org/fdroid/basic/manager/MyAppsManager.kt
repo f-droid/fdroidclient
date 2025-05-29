@@ -7,9 +7,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.fdroid.basic.ui.Icons
+import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.main.apps.InstalledApp
 import org.fdroid.basic.ui.main.apps.UpdatableApp
-import org.fdroid.basic.ui.main.discover.Names
 import org.fdroid.basic.ui.main.discover.Sort
 import java.util.Locale
 import javax.inject.Inject
@@ -31,36 +32,43 @@ class MyAppsManager @Inject constructor() {
             InstalledApp(
                 packageName = "1000",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "1.0.1",
             ),
             InstalledApp(
                 packageName = "1001",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "0.1",
             ),
             InstalledApp(
                 packageName = "1002",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "3.0.1",
             ),
             InstalledApp(
                 packageName = "1003",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "0.2.1",
             ),
             InstalledApp(
                 packageName = "1004",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "0.0.1",
             ),
             InstalledApp(
                 packageName = "1005",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "1.1.1",
             ),
             InstalledApp(
                 packageName = "1006",
                 name = Names.randomName,
+                icon = Icons.randomIcon,
                 versionName = "2.0.1",
             ),
         ).sortedBy { it.name.lowercase(Locale.getDefault()) }
@@ -74,6 +82,7 @@ class MyAppsManager @Inject constructor() {
                     UpdatableApp(
                         packageName = "2000",
                         name = Names.randomName,
+                        icon = Icons.randomIcon,
                         currentVersionName = "1.0.1",
                         updateVersionName = "1.1.0",
                         size = 123456789,
@@ -83,6 +92,7 @@ class MyAppsManager @Inject constructor() {
                     UpdatableApp(
                         packageName = "2001",
                         name = Names.randomName,
+                        icon = Icons.randomIcon,
                         currentVersionName = "3.0.1",
                         updateVersionName = "3.1.0",
                         size = 9876543,
@@ -98,6 +108,7 @@ class MyAppsManager @Inject constructor() {
                     UpdatableApp(
                         packageName = "2003",
                         name = Names.randomName,
+                        icon = Icons.randomIcon,
                         currentVersionName = "3.0.1",
                         updateVersionName = "3.1.0",
                         size = 9876543,

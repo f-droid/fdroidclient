@@ -127,9 +127,9 @@ fun BottomBarScreen(
 @Composable
 fun BottomBarPreview() {
     val apps = listOf(
-        AppNavigationItem("", "foo", "bar", false),
-        AppNavigationItem("", "foo", "bar", false),
-        AppNavigationItem("", "foo", "bar", false),
+        AppNavigationItem("", "foo", null, "bar", false),
+        AppNavigationItem("", "foo", null, "bar", false),
+        AppNavigationItem("", "foo", null, "bar", false),
     )
     var filterExpanded by rememberSaveable { mutableStateOf(true) }
     val filterInfo = object : FilterInfo {

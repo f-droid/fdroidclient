@@ -10,5 +10,6 @@ data class UpdatableApp(
     val currentVersionName: String,
     val updateVersionName: String,
     val size: Long,
+    override val icon: String? = null,
     val whatsNew: String? = null,
 ): MinimalApp, Parcelable
