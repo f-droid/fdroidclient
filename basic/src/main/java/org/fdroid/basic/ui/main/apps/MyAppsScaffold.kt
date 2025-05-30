@@ -8,6 +8,7 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole.Detail
+import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole.List
 import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
@@ -46,6 +47,7 @@ fun MyAppsScaffold(
         }
     }
     val isDetailVisible = navigator.scaffoldValue[Detail] == PaneAdaptedValue.Expanded
+    val isListVisible = navigator.scaffoldValue[List] == PaneAdaptedValue.Expanded
     ListDetailPaneScaffold(
         directive = navigator.scaffoldDirective,
         value = navigator.scaffoldValue,
@@ -68,7 +70,8 @@ fun MyAppsScaffold(
         detailPane = {
             AnimatedPane {
                 currentItem?.let {
-                    AppDetails(it)
+                    val back: () -> Unit = { scope.launch { navigator.navigateBack() } }
+                    AppDetails(it, if (isListVisible) null else back)
                 } ?: Text("No app selected", modifier = Modifier.padding(16.dp))
             }
         },

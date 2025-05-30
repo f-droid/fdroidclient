@@ -97,7 +97,7 @@ val newPipeApp = TestApp(
         "It only parses the website in order to gain the information it needs. " +
         "Therefore this app can be used on devices without Google Services installed. " +
         "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
-        LoremIpsum(256).values.joinToString(" "),
+        LoremIpsum(128).values.joinToString(" "),
     metadata = AppMetadata(
         repoId = 1,
         packageName = "org.schabi.newpipe",
@@ -113,8 +113,8 @@ val newPipeApp = TestApp(
         video = null,
         authorName = "Team NewPipe",
         authorEmail = "team@newpipe.net",
-        authorWebSite = null,
-        authorPhone = null,
+        authorWebSite = "https://newpipe.net",
+        authorPhone = "123456",
         donate = listOf("https://newpipe.net/donate"),
         liberapayID = null,
         liberapay = "TeamNewPipe",
