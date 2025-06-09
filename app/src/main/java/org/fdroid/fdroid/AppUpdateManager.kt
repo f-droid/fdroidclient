@@ -28,7 +28,10 @@ class AppUpdateManager @JvmOverloads constructor(
 
     private val log = KotlinLogging.logger { }
 
-    fun updateApps() {
+    /**
+     * Returns true if all apps were updates successfully.
+     */
+    fun updateApps(): Boolean {
         // get apps with updates pending
         val releaseChannels = Preferences.get().backendReleaseChannels
         val updatableApps = updateChecker.getUpdatableApps(releaseChannels, true)
@@ -42,9 +45,10 @@ class AppUpdateManager @JvmOverloads constructor(
         // inform the status manager of the available updates
         statusManager.addUpdatableApps(updatableApps, false)
         // update each individual app
+        var success = true
         updatableApps.forEach { app ->
             val repo = repoManager.getRepository(app.repoId)
-                ?: return // repo removed in the meantime?
+                ?: return@forEach // repo removed in the meantime?
             val listener = object : AppInstallListener {
                 private val installManagerService = InstallManagerService.getInstance(context)
                 private val legacyApp = App(app)
@@ -74,11 +78,16 @@ class AppUpdateManager @JvmOverloads constructor(
                     installManagerService.onDownloadComplete(uri)
                 }
             }
-            updateApp(app, repo, listener)
+            success = success && updateApp(app, repo, listener)
         }
+        return success
     }
 
-    private fun updateApp(app: UpdatableApp, repo: Repository, listener: AppInstallListener?) {
+    private fun updateApp(
+        app: UpdatableApp,
+        repo: Repository,
+        listener: AppInstallListener?,
+    ): Boolean {
         listener?.onInstallProcessStarted()
         // legacy cruft
         val legacyApp = App(app)
@@ -88,7 +97,7 @@ class AppUpdateManager @JvmOverloads constructor(
         try {
             val packageInfo = context.packageManager.getPackageInfo(app.packageName, 0)
             // bail out if app update was already installed
-            if (packageInfo.versionCodeLong >= app.update.manifest.versionCode) return
+            if (packageInfo.versionCodeLong >= app.update.manifest.versionCode) return true
         } catch (e: Exception) {
             log.error(e) { "Error getting package info for ${app.packageName}" }
         }
@@ -104,13 +113,14 @@ class AppUpdateManager @JvmOverloads constructor(
         } catch (e: Exception) {
             log.error(e) { "Error downloading $uri" }
             listener?.onDownloadFailed(e)
-            return
+            return false
         }
         listener?.onReadyToInstall()
         // install file
         log.info { "Download of ${app.name} (${app.packageName}) complete, installing..." }
         val installer = InstallerFactory.create(context, legacyApp, legacyApk)
         installer.installPackage(Uri.fromFile(file), uri)
+        return true
     }
 
 }

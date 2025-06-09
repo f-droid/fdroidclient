@@ -122,11 +122,13 @@ class AppUpdateWorker(
             Log.e(TAG, "Error while running setForeground", e)
         }
         return try {
-            appUpdateManager.updateApps()
-            Result.success()
+            if (appUpdateManager.updateApps()) Result.success()
+            else if (runAttemptCount <= 3) Result.retry()
+            else Result.failure()
         } catch (e: Exception) {
             Log.e(TAG, "Error updating repos", e)
-            Result.failure()
+            if (runAttemptCount <= 3) Result.retry()
+            else Result.failure()
         }
     }
 
