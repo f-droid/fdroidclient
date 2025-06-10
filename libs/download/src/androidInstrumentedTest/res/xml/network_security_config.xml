@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">http.badssl.com</domain>
         <domain includeSubdomains="false">neverssl.com</domain>
+        <domain includeSubdomains="false">httpforever.com</domain>
     </domain-config>
 </network-security-config>
