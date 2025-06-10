@@ -1,8 +1,8 @@
 package org.fdroid.database
 
-import android.net.Uri
 import android.util.Log
 import androidx.annotation.WorkerThread
+import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -68,6 +68,7 @@ internal fun RepoV2.toCoreRepository(
     certificate = certificate,
 )
 
+@ConsistentCopyVisibility
 public data class Repository internal constructor(
     @Embedded internal val repository: CoreRepository,
     @Relation(
@@ -190,8 +191,8 @@ public data class Repository internal constructor(
      * Subsequent calls re-use the
      */
     @delegate:Ignore
-    public val fingerprint: String? by lazy {
-        certificate?.let { getFingerprint(it) }
+    public val fingerprint: String by lazy {
+        getFingerprint(certificate)
     }
 
     /**
@@ -230,13 +231,11 @@ public data class Repository internal constructor(
     val shareUri: String
         @WorkerThread
         get() {
-            var uri = Uri.parse(address)
-            fingerprint?.let {
-                try {
-                    uri = uri.buildUpon().appendQueryParameter("fingerprint", it).build()
-                } catch (e: UnsupportedOperationException) {
-                    Log.e(TAG, "Failed to append fingerprint to URI: $e")
-                }
+            var uri = address.toUri()
+            try {
+                uri = uri.buildUpon().appendQueryParameter("fingerprint", fingerprint).build()
+            } catch (e: UnsupportedOperationException) {
+                Log.e(TAG, "Failed to append fingerprint to URI: $e")
             }
             return uri.toString()
         }
@@ -323,7 +322,7 @@ public abstract class RepoAttribute {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-public data class AntiFeature internal constructor(
+public data class AntiFeature(
     internal val repoId: Long,
     internal val id: String,
     override val icon: LocalizedFileV2,
@@ -358,7 +357,7 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
         onDelete = ForeignKey.CASCADE,
     )],
 )
-public data class Category internal constructor(
+public data class Category(
     public val repoId: Long,
     public val id: String,
     override val icon: LocalizedFileV2,

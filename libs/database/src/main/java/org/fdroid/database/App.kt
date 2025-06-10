@@ -147,6 +147,7 @@ internal data class AppMetadataFts(
  * A class to represent all data of an App.
  * It combines the metadata and localized filed such as icons and screenshots.
  */
+@ConsistentCopyVisibility
 public data class App internal constructor(
     @Embedded public val metadata: AppMetadata,
     @Relation(
@@ -241,6 +242,7 @@ public data class App internal constructor(
  *
  * It includes [antiFeatureKeys] so some clients can apply filters to them.
  */
+@ConsistentCopyVisibility
 public data class AppOverviewItem internal constructor(
     public override val repoId: Long,
     public override val packageName: String,
@@ -279,6 +281,7 @@ public data class AppOverviewItem internal constructor(
  *
  * It includes [antiFeatureKeys] of the highest version, so some clients can apply filters to them.
  */
+@ConsistentCopyVisibility
 public data class AppListItem internal constructor(
     public override val repoId: Long,
     public override val packageName: String,
@@ -335,6 +338,7 @@ public data class AppListItem internal constructor(
  * An app that has an [update] available.
  * It is meant to display available updates in the UI.
  */
+@ConsistentCopyVisibility
 public data class UpdatableApp internal constructor(
     public override val repoId: Long,
     public override val packageName: String,

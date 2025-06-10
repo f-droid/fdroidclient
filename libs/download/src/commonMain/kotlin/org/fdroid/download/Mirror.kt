@@ -20,11 +20,11 @@ public data class Mirror @JvmOverloads constructor(
             URLBuilder(baseUrl.trimEnd('/')).build()
             // we fall back to a non-existent URL if someone tries to sneak in an invalid mirror URL to crash us
             // to make it easier for potential callers
-        } catch (e: URLParserException) {
+        } catch (_: URLParserException) {
             val log = KotlinLogging.logger {}
             log.warn { "Someone gave us an invalid URL: $baseUrl" }
             URLBuilder("http://127.0.0.1:64335").build()
-        } catch (e: IllegalArgumentException) {
+        } catch (_: IllegalArgumentException) {
             val log = KotlinLogging.logger {}
             log.warn { "Someone gave us an invalid URL: $baseUrl" }
             URLBuilder("http://127.0.0.1:64335").build()

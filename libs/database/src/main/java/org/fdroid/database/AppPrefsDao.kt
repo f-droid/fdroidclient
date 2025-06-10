@@ -5,7 +5,7 @@ import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.map
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.MapInfo
+import androidx.room.MapColumn
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
 
@@ -39,12 +39,18 @@ internal interface AppPrefsDaoInt : AppPrefsDao {
     /**
      * Use [getPreferredRepos] instead as this handles more than 1000 package names.
      */
-    @MapInfo(keyColumn = "packageName", valueColumn = "preferredRepoId")
     @Query(
         """SELECT packageName, preferredRepoId FROM PreferredRepo 
              WHERE packageName IN (:packageNames)"""
     )
-    fun getPreferredReposInternal(packageNames: List<String>): Map<String, Long>
+    fun getPreferredReposInternal(
+        packageNames: List<String>,
+    ): Map<
+        @MapColumn("packageName")
+        String,
+        @MapColumn("preferredRepoId")
+        Long
+        >
 
     @Insert(onConflict = REPLACE)
     override fun update(appPrefs: AppPrefs)

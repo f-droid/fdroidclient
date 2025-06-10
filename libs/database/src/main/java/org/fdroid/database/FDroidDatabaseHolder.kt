@@ -61,7 +61,7 @@ public object FDroidDatabaseHolder {
                 addMigrations(MIGRATION_2_3, MIGRATION_5_6)
                 // We allow destructive migration (if no real migration was provided),
                 // so we have the option to nuke the DB in production (if that will ever be needed).
-                fallbackToDestructiveMigration()
+                fallbackToDestructiveMigration(false)
                 // Add our [FixtureCallback] if a fixture was provided
                 if (fixture != null) addCallback(FixtureCallback(fixture))
             }

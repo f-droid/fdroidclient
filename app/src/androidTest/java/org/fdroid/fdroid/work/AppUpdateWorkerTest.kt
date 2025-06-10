@@ -42,13 +42,13 @@ class AppUpdateWorkerTest {
 
     private val context get() = getInstrumentation().targetContext
     private val workManager get() = WorkManager.getInstance(context)
-    private val preferences: Preferences = mockk()
-    private val updateManager: AppUpdateManager = mockk()
+    private val preferences: Preferences by lazy { mockk() }
+    private val updateManager: AppUpdateManager by lazy { mockk() }
 
     @Before
     fun setup() {
         // MockKAgentException: Mocking static is supported starting from Android P
-        assumeTrue(SDK_INT >= 48)
+        assumeTrue(SDK_INT >= 28)
 
         val config = Configuration.Builder()
             .setMinimumLoggingLevel(Log.DEBUG)
@@ -62,6 +62,7 @@ class AppUpdateWorkerTest {
         every { Preferences.get() } returns preferences
         every { preferences.isLocalRepoHttpsEnabled } returns false
         every { preferences.isOnDemandDownloadAllowed } returns true
+        every { preferences.mirrorErrorData } returns emptyMap<String, Int>()
     }
 
     @Test

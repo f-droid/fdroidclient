@@ -4,7 +4,7 @@ import io.ktor.client.plugins.ResponseException
 import io.ktor.http.HttpStatusCode.Companion.Forbidden
 import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.Url
-import io.ktor.utils.io.errors.IOException
+import kotlinx.io.IOException
 import mu.KotlinLogging
 
 public interface MirrorChooser {

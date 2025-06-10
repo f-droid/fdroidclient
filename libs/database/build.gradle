@@ -1,7 +1,7 @@
 plugins {
     id 'kotlin-android'
     id 'com.android.library'
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     id 'org.jetbrains.dokka'
     id 'com.vanniktech.maven.publish'
 }
@@ -15,11 +15,6 @@ android {
         targetSdk 34 // relevant for instrumentation tests (targetSdk 21 fails on Android 14)
 
         consumerProguardFiles "consumer-rules.pro"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
-            }
-        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments disableAnalytics: 'true'
     }
@@ -56,9 +51,6 @@ android {
         freeCompilerArgs += "-Xexplicit-api=strict"
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
-    kapt {
-        correctErrorTypes true
-    }
     aaptOptions {
         // needed only for instrumentation tests: assets.openFd()
         noCompress "json"
@@ -80,7 +72,7 @@ dependencies {
 
     implementation libs.androidx.room.runtime
     implementation libs.androidx.room.ktx
-    kapt libs.androidx.room.compiler
+    ksp libs.androidx.room.compiler
 
     implementation libs.microutils.kotlin.logging
     implementation libs.kotlinx.serialization.json
@@ -110,8 +102,8 @@ dependencies {
     androidTestImplementation libs.commons.io
 }
 
-plugins.withId("kotlin-kapt") {
-    kapt.useBuildCache = true
+ksp {
+    arg(new RoomSchemaArgProvider(new File(projectDir, "schemas")))
 }
 
 signing {
@@ -126,4 +118,19 @@ tasks.withType(DokkaTask).configureEach {
                 "footerMessage": "© 2010-2022 F-Droid Limited and Contributors"
             }"""]
     )
+}
+
+class RoomSchemaArgProvider implements CommandLineArgumentProvider {
+    @InputDirectory
+    @PathSensitive(PathSensitivity.RELATIVE)
+    File schemaDir
+
+    RoomSchemaArgProvider(File schemaDir) {
+        this.schemaDir = schemaDir
+    }
+
+    @Override
+    Iterable<String> asArguments() {
+        return ["room.schemaLocation=${schemaDir.path}".toString()]
+    }
 }

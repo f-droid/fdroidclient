@@ -14,7 +14,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
-import androidx.room.RoomWarnings.Companion.CURSOR_MISMATCH
+import androidx.room.RoomWarnings.Companion.QUERY_MISMATCH
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.serialization.SerializationException
@@ -382,7 +382,7 @@ internal interface AppDaoInt : AppDao {
      * Used by [DbUpdateChecker] to get specific apps with available updates.
      */
     @Transaction
-    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, added, app.lastUpdated, localizedName,
              localizedSummary, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName""")
@@ -577,7 +577,7 @@ internal interface AppDaoInt : AppDao {
      * Warning: Can not be called with more than 999 [packageNames].
      */
     @Transaction
-    @SuppressWarnings(CURSOR_MISMATCH) // no anti-features needed here
+    @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
                      app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
@@ -620,12 +620,16 @@ internal interface AppDaoInt : AppDao {
                         emptyList()
                     }
                 }
-                if (shouldUpdate) value = result.sortedWith { i1, i2 ->
-                    // we need to re-sort the result, because each liveData is only sorted in itself
-                    val n1 = i1.name ?: ""
-                    val n2 = i2.name ?: ""
-                    n1.compareTo(n2, ignoreCase = true)
-                }
+                if (shouldUpdate) value = result
+                    // the chunked query does not return distinct values since room 2.7.0
+                    .distinct()
+                    // we need to re-sort the result,
+                    // because each liveData is only sorted in itself
+                    .sortedWith { i1, i2 ->
+                        val n1 = i1.name ?: ""
+                        val n2 = i2.name ?: ""
+                        n1.compareTo(n2, ignoreCase = true)
+                    }
             }
         }
     }
