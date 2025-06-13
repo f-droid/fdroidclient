@@ -1,4 +1,4 @@
-image: registry.gitlab.com/fdroid/fdroidserver:buildserver-bullseye
+image: registry.gitlab.com/fdroid/fdroidserver:buildserver-bookworm
 
 stages:
   - lint
@@ -21,10 +21,10 @@ workflow:
     JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
   before_script:
     - echo "org.gradle.caching=true" >> gradle.properties
-    - test -e /etc/apt/sources.list.d/bullseye-backports.list
-        || echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list
+    - test -e /etc/apt/sources.list.d/bookworm-backports.list
+        || echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list
     - apt update
-    - apt-get -qy install -t bullseye-backports --no-install-recommends git sdkmanager openjdk-17-jdk-headless
+    - apt-get -qy install -t bookworm-backports --no-install-recommends git sdkmanager openjdk-17-jdk-headless
 
     - test -n "$ANDROID_HOME" || source /etc/profile.d/bsenv.sh
 
@@ -154,7 +154,7 @@ libs lint ktlintCheck:
 
 app tools scripts:
   stage: lint
-  image: debian:bullseye-slim
+  image: debian:bookworm-slim
   rules:
     - <<: *always-on-these-changes
     - changes:
@@ -207,7 +207,7 @@ app errorprone:
 
 libs database schema:
   stage: lint
-  image: debian:bullseye-backports
+  image: debian:bookworm-backports
   rules:
     - <<: *always-on-these-changes
     - changes:
@@ -339,7 +339,7 @@ deploy_nightly:
     JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
-    - apt-get install -t bullseye-backports openjdk-17-jdk-headless fdroidserver
+    - apt-get install -t bookworm-backports fdroidserver
     - sed -i
         's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
         app/src/main/res/values*/strings.xml
