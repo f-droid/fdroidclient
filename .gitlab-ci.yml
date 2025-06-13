@@ -339,7 +339,7 @@ deploy_nightly:
     JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
-    - apt-get install -t bookworm-backports fdroidserver
+    - apt-get install -t bookworm-backports androguard fdroidserver
     - sed -i
         's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
         app/src/main/res/values*/strings.xml
