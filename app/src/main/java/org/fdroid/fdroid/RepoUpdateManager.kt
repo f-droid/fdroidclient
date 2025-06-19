@@ -10,6 +10,7 @@ import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
@@ -33,8 +34,80 @@ class RepoUpdateManager @JvmOverloads constructor(
     private val db: FDroidDatabase,
     private val repoManager: RepoManager = FDroidApp.getRepoManager(context),
     private val notificationManager: NotificationManager = NotificationManager(context),
-    forceIndexV1: Boolean = Preferences.get().isForceOldIndexEnabled,
-) : IndexUpdateListener {
+    private val compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(
+        packageManager = context.packageManager,
+        forceTouchApps = Preferences.get().forceTouchApps(),
+    ),
+    private val indexUpdateListener: IndexUpdateListener = object : IndexUpdateListener {
+        override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
+            Log.d(TAG, "Downloading ${repo.address} ($bytesRead/$totalBytes)")
+            if (!Preferences.get().isUpdateNotificationEnabled) return
+
+            val percent = if (totalBytes > 0) {
+                Utils.getPercent(bytesRead, totalBytes)
+            } else {
+                -1
+            }
+            val size = Utils.getFriendlySize(bytesRead)
+            val message: String = if (totalBytes == -1L) {
+                context.getString(R.string.status_download_unknown_size, repo.address, size)
+            } else {
+                val totalSize = Utils.getFriendlySize(totalBytes)
+                context.getString(R.string.status_download, repo.address, size, totalSize, percent)
+            }
+            notificationManager.showUpdateRepoNotification(msg = message, progress = percent)
+        }
+
+        /**
+         * If an updater is unable to know how many apps it has to process (i.e. it
+         * is streaming apps to the database or performing a large database query
+         * which touches all apps, but is unable to report progress), then it call
+         * this listener with [totalApps] = 0. Doing so will result in a message of
+         * "Saving app details" sent to the user. If you know how many apps you have
+         * processed, then a message of "Saving app details (x/total)" is displayed.
+         */
+        override fun onUpdateProgress(repo: Repository, appsProcessed: Int, totalApps: Int) {
+            Log.d(TAG, "Committing ${repo.address} ($appsProcessed/$totalApps)")
+            if (!Preferences.get().isUpdateNotificationEnabled) return
+
+            if (totalApps > 0) notificationManager.showUpdateRepoNotification(
+                msg = context.getString(
+                    R.string.status_inserting_x_apps,
+                    appsProcessed,
+                    totalApps,
+                    repo.address,
+                ),
+                progress = Utils.getPercent(appsProcessed.toLong(), totalApps.toLong())
+            ) else notificationManager.showUpdateRepoNotification(
+                msg = context.getString(R.string.status_inserting_apps),
+            )
+        }
+    },
+    private val repoUpdater: RepoUpdater = RepoUpdater(
+        tempDir = context.cacheDir,
+        db = DBHelper.getDb(context),
+        downloaderFactory = DownloaderFactory.INSTANCE,
+        repoUriBuilder = RepoUriBuilder { repository, pathElements ->
+            val repoAddress = Utils.getRepoAddress(repository)
+            Utils.getUri(repoAddress, *pathElements)
+        },
+        compatibilityChecker = compatibilityChecker,
+        listener = indexUpdateListener,
+    ),
+    private val indexV1Updater: IndexV1Updater? = if (Preferences.get().isForceOldIndexEnabled) {
+        IndexV1Updater(
+            database = db,
+            tempFileProvider = { File.createTempFile("dl-", "", context.cacheDir) },
+            downloaderFactory = DownloaderFactory.INSTANCE,
+            repoUriBuilder = RepoUriBuilder { repository, pathElements ->
+                val repoAddress = Utils.getRepoAddress(repository)
+                Utils.getUri(repoAddress, *pathElements)
+            },
+            compatibilityChecker = compatibilityChecker,
+            listener = indexUpdateListener,
+        )
+    } else null,
+) {
 
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating = _isUpdating.asStateFlow()
@@ -49,30 +122,6 @@ class RepoUpdateManager @JvmOverloads constructor(
     }
     val nextUpdateLiveData = nextUpdateFlow.asLiveData()
 
-    private val uriBuilder = RepoUriBuilder { repository, pathElements ->
-        val repoAddress = Utils.getRepoAddress(repository)
-        Utils.getUri(repoAddress, *pathElements)
-    }
-    private val compatibilityChecker = CompatibilityCheckerImpl(
-        packageManager = context.packageManager,
-        forceTouchApps = Preferences.get().forceTouchApps(),
-    )
-    private val repoUpdater: RepoUpdater = RepoUpdater(
-        tempDir = context.cacheDir,
-        db = DBHelper.getDb(context),
-        downloaderFactory = DownloaderFactory.INSTANCE,
-        repoUriBuilder = uriBuilder,
-        compatibilityChecker = compatibilityChecker,
-        listener = this@RepoUpdateManager,
-    )
-    private val indexV1Updater: IndexV1Updater? = if (forceIndexV1) IndexV1Updater(
-        database = db,
-        tempFileProvider = { File.createTempFile("dl-", "", context.cacheDir) },
-        downloaderFactory = DownloaderFactory.INSTANCE,
-        repoUriBuilder = uriBuilder,
-        compatibilityChecker = compatibilityChecker,
-        listener = this,
-    ) else null
     private val fdroidPrefs = Preferences.get()
 
     @WorkerThread
@@ -166,49 +215,5 @@ class RepoUpdateManager @JvmOverloads constructor(
             // be called from code that is executed by runOffUiThread()
             Utils.showToastFromService(context, msgBuilder.toString(), LENGTH_LONG)
         }
-    }
-
-    override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
-        Log.d(TAG, "Downloading ${repo.address} ($bytesRead/$totalBytes)")
-        if (!fdroidPrefs.isUpdateNotificationEnabled) return
-
-        val percent = if (totalBytes > 0) {
-            Utils.getPercent(bytesRead, totalBytes)
-        } else {
-            -1
-        }
-        val size = Utils.getFriendlySize(bytesRead)
-        val message: String = if (totalBytes == -1L) {
-            context.getString(R.string.status_download_unknown_size, repo.address, size)
-        } else {
-            val totalSize = Utils.getFriendlySize(totalBytes)
-            context.getString(R.string.status_download, repo.address, size, totalSize, percent)
-        }
-        notificationManager.showUpdateRepoNotification(msg = message, progress = percent)
-    }
-
-    /**
-     * If an updater is unable to know how many apps it has to process (i.e. it
-     * is streaming apps to the database or performing a large database query
-     * which touches all apps, but is unable to report progress), then it call
-     * this listener with [totalApps] = 0. Doing so will result in a message of
-     * "Saving app details" sent to the user. If you know how many apps you have
-     * processed, then a message of "Saving app details (x/total)" is displayed.
-     */
-    override fun onUpdateProgress(repo: Repository, appsProcessed: Int, totalApps: Int) {
-        Log.d(TAG, "Committing ${repo.address} ($appsProcessed/$totalApps)")
-        if (!fdroidPrefs.isUpdateNotificationEnabled) return
-
-        if (totalApps > 0) notificationManager.showUpdateRepoNotification(
-            msg = context.getString(
-                R.string.status_inserting_x_apps,
-                appsProcessed,
-                totalApps,
-                repo.address,
-            ),
-            progress = Utils.getPercent(appsProcessed.toLong(), totalApps.toLong())
-        ) else notificationManager.showUpdateRepoNotification(
-            msg = context.getString(R.string.status_inserting_apps),
-        )
     }
 }
