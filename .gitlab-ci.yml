@@ -353,4 +353,16 @@ deploy_nightly:
     - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," app/build.gradle
     # build the APKs!
     - ./gradlew assembleDebug
+
+    # taken from fdroiddata/.gitlab-ci.yml as a tmp workaround until this is released:
+    # https://gitlab.com/fdroid/fdroidserver/-/merge_requests/1666
+    - rm -rf $fdroidserver
+    - mkdir $fdroidserver
+    - git ls-remote https://gitlab.com/fdroid/fdroidserver.git master
+    - curl --silent https://gitlab.com/fdroid/fdroidserver/-/archive/master/fdroidserver-master.tar.gz
+        | tar -xz --directory=$fdroidserver --strip-components=1
+    - export PATH="$fdroidserver:$PATH"
+    - export PYTHONPATH="$fdroidserver:$fdroidserver/examples"
+    - export PYTHONUNBUFFERED=true
+
     - fdroid nightly -v
