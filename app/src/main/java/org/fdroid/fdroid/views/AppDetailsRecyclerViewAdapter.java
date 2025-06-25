@@ -51,6 +51,7 @@ import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.color.MaterialColors;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
@@ -70,6 +71,7 @@ import org.fdroid.fdroid.privileged.views.AppDiff;
 import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
 import org.fdroid.fdroid.views.appdetails.AntiFeaturesListingView;
 import org.fdroid.fdroid.views.appdetails.RepoChooserKt;
+import org.fdroid.fdroid.views.apps.AppListActivity;
 import org.fdroid.fdroid.views.main.MainActivity;
 import org.fdroid.index.v2.FileV2;
 
@@ -114,6 +116,7 @@ public class AppDetailsRecyclerViewAdapter
     private static final int VIEWTYPE_NO_VERSIONS = 6;
     private static final int VIEWTYPE_VERSIONS_LOADING = 7;
     private static final int VIEWTYPE_VERSION = 8;
+    private static final int VIEWTYPE_MORE_APPS = 9;
 
     private final Context context;
     @Nullable
@@ -128,6 +131,7 @@ public class AppDetailsRecyclerViewAdapter
     private final List<Apk> compatibleVersionsDifferentSigner = new ArrayList<>();
     private boolean versionsLoading = true;
     private boolean showVersions;
+    private boolean showAuthorApps;
 
     private HeaderViewHolder headerView;
 
@@ -196,6 +200,11 @@ public class AppDetailsRecyclerViewAdapter
                 setShowVersions(true);
             }
         }
+        if (showAuthorApps) {
+            // item might also be added later when a repo update adds more apps by this author
+            addItem(VIEWTYPE_MORE_APPS);
+        }
+
         //noinspection NotifyDataSetChanged // too hard to know what exactly has changed
         notifyDataSetChanged();
     }
@@ -232,6 +241,24 @@ public class AppDetailsRecyclerViewAdapter
             if (recyclerView != null && scrollTo) {
                 recyclerView.smoothScrollToPosition(startIndex - 1);
             }
+        }
+    }
+
+    void setHasAuthorMoreApps(boolean showAuthorApps) {
+        if (this.showAuthorApps == showAuthorApps) return;
+        this.showAuthorApps = showAuthorApps;
+
+        notifyItemChanged(0); // onclick for author in header
+        if (showAuthorApps) {
+            // item might be added when a repo update adds more apps by this author
+            addItem(VIEWTYPE_MORE_APPS);
+            notifyItemInserted(items.size() - 1);
+        } else {
+            // should usually be the last item...
+            int index = items.indexOf(VIEWTYPE_MORE_APPS);
+            if (index == -1) return;
+            items.remove(index);
+            notifyItemRemoved(index);
         }
     }
 
@@ -313,6 +340,12 @@ public class AppDetailsRecyclerViewAdapter
         }
     }
 
+    private void openAppListWithAuthorFilter(App app) {
+        Intent intent = new Intent(context, AppListActivity.class);
+        intent.putExtra(AppListActivity.EXTRA_AUTHOR_NAME, app.authorName);
+        context.startActivity(intent);
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -354,6 +387,10 @@ public class AppDetailsRecyclerViewAdapter
                 View version = inflater.inflate(R.layout.app_details2_version_item, parent, false);
                 yield new VersionViewHolder(version);
             }
+            case VIEWTYPE_MORE_APPS -> {
+                View moreApps = inflater.inflate(R.layout.app_details2_more_apps, parent, false);
+                yield new MoreAppsViewHolder(moreApps);
+            }
             default -> throw new IllegalStateException("Unknown view type: " + viewType);
         };
     }
@@ -376,6 +413,7 @@ public class AppDetailsRecyclerViewAdapter
             case VIEWTYPE_VERSIONS:
             case VIEWTYPE_NO_VERSIONS:
             case VIEWTYPE_VERSIONS_LOADING:
+            case VIEWTYPE_MORE_APPS:
                 ((AppDetailsViewHolder) holder).bindModel();
                 break;
 
@@ -539,6 +577,11 @@ public class AppDetailsRecyclerViewAdapter
             if (!TextUtils.isEmpty(app.authorName)) {
                 authorView.setText(context.getString(R.string.by_author_format, app.authorName));
                 authorView.setVisibility(View.VISIBLE);
+                if (showAuthorApps) {
+                    authorView.setOnClickListener(v -> openAppListWithAuthorFilter(app));
+                } else {
+                    authorView.setOnClickListener(null);
+                }
             } else {
                 authorView.setVisibility(View.GONE);
             }
@@ -1398,6 +1441,28 @@ public class AppDetailsRecyclerViewAdapter
                             });
                 }
             }
+        }
+    }
+
+    private class MoreAppsViewHolder extends AppDetailsViewHolder {
+        final MaterialButton appsByAuthor;
+
+        MoreAppsViewHolder(View view) {
+            super(view);
+            appsByAuthor = view.findViewById(R.id.apps_by_author);
+        }
+
+        @Override
+        public void bindModel() {
+            if (app == null) return;
+            if (TextUtils.isEmpty(app.authorName)) {
+                appsByAuthor.setVisibility(View.GONE);
+            } else {
+                appsByAuthor.setVisibility(View.VISIBLE);
+                appsByAuthor.setOnClickListener(v -> openAppListWithAuthorFilter(app));
+                appsByAuthor.setText(context.getString(R.string.app_details_more_apps_by_author, app.authorName));
+            }
+
         }
     }
 

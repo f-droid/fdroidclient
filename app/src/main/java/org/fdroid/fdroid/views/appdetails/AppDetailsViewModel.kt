@@ -37,12 +37,15 @@ class AppDetailsViewModel(app: Application) : AndroidViewModel(app) {
     val versions: LiveData<List<AppVersion>> = _versions
     private val _appData = MutableLiveData<AppData>()
     val appData: LiveData<AppData> = _appData
+    private val _hasAuthorMoreApps = MutableLiveData<Boolean>()
+    val hasAuthorMoreApps: LiveData<Boolean> = _hasAuthorMoreApps
 
     private val db = DBHelper.getDb(app.applicationContext)
     private val repoManager = FDroidApp.getRepoManager(app.applicationContext)
     private var packageName: String? = null
     private var appLiveData: LiveData<App?>? = null
     private var versionsLiveData: LiveData<List<AppVersion>>? = null
+    private var hasAuthorMoreAppsLiveData: LiveData<Boolean>? = null
     private var appPrefsLiveData: LiveData<AppPrefs>? = null
     private var preferredRepoId: Long? = null
     private var repos: List<Repository>? = null
@@ -75,6 +78,7 @@ class AppDetailsViewModel(app: Application) : AndroidViewModel(app) {
         appLiveData?.removeObserver(onAppChanged)
         appPrefsLiveData?.removeObserver(onAppPrefsChanged)
         versionsLiveData?.removeObserver(onVersionsChanged)
+        hasAuthorMoreAppsLiveData?.removeObserver(onHasAuthorMoreAppsChanged)
     }
 
     @UiThread
@@ -98,7 +102,11 @@ class AppDetailsViewModel(app: Application) : AndroidViewModel(app) {
         if (_app.value == null && app != null) {
             preferredRepoId = app.repoId // DB loads preferred repo first
             resetVersionsLiveData(app.repoId)
+            resetHasAuthorMoreAppsLiveData(app.authorName)
             tryToPublishAppData()
+        } else if (_app.value?.authorName != app?.authorName) {
+            // in case a repo update added the authorName to the app metadata
+            resetHasAuthorMoreAppsLiveData(app?.authorName)
         }
         _app.value = app
     }
@@ -110,6 +118,10 @@ class AppDetailsViewModel(app: Application) : AndroidViewModel(app) {
 
     private val onVersionsChanged: Observer<List<AppVersion>> = Observer { versions ->
         _versions.value = versions
+    }
+
+    private val onHasAuthorMoreAppsChanged: Observer<Boolean> = Observer { hasMoreApps ->
+        _hasAuthorMoreApps.value = hasMoreApps
     }
 
     private suspend fun loadRepos(packageName: String) = withContext(Dispatchers.IO) {
@@ -133,6 +145,19 @@ class AppDetailsViewModel(app: Application) : AndroidViewModel(app) {
         val packageName = this.packageName ?: error("packageName not initialized")
         versionsLiveData = db.getVersionDao().getAppVersions(repoId, packageName).also { liveData ->
             liveData.observeForever(onVersionsChanged)
+        }
+    }
+
+    private fun resetHasAuthorMoreAppsLiveData(authorName: String?) {
+        hasAuthorMoreAppsLiveData?.removeObserver(onHasAuthorMoreAppsChanged)
+        if (authorName?.isEmpty() == false) {
+            hasAuthorMoreAppsLiveData =
+                db.getAppDao().hasAuthorMoreThanOneApp(authorName).also { liveData ->
+                    liveData.observeForever(onHasAuthorMoreAppsChanged)
+                }
+        } else {
+            // app with no author cannot have more apps for the author
+            _hasAuthorMoreApps.postValue(false)
         }
     }
 

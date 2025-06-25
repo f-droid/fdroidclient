@@ -65,7 +65,7 @@ import java.util.List;
 /**
  * Provides scrollable listing of apps for search and category views.
  */
-public class AppListActivity extends AppCompatActivity implements CategoryTextWatcher.SearchTermsChangedListener {
+public class AppListActivity extends AppCompatActivity implements FilterTextWatcher.SearchTermsChangedListener {
 
     public static final String TAG = "AppListActivity";
 
@@ -77,6 +77,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_SEARCH_TERMS";
     public static final String EXTRA_REPO_ID
             = "org.fdroid.fdroid.views.apps.AppListActivity.REPO_ID";
+    public static final String EXTRA_AUTHOR_NAME
+            = "org.fdroid.fdroid.views.apps.AppListActivity.EXTRA_AUTHOR_NAME";
 
     private static final String SEARCH_TERMS_KEY = "searchTerms";
     private static final String SORT_CLAUSE_KEY = "sortClauseSelected";
@@ -87,6 +89,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private String categoryId;
     private String searchTerms;
     private long repoId;
+    private String authorName;
     private String sortClauseSelected;
     private TextView emptyState;
     private EditText searchInput;
@@ -95,11 +98,18 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private FDroidDatabase db;
     private Utils.KeyboardStateMonitor keyboardStateMonitor;
     private LiveData<List<AppListItem>> itemsLiveData;
+    private FilterTextWatcher searchInputFilterWatcher;
 
     private interface SortClause {
         // these get used as settings keys, so changing them requires a migration
         String WORDS = "name";
         String LAST_UPDATED = "lastUpdated";
+    }
+
+    enum FilterType {
+        AUTHOR,
+        CATEGORY,
+        REPO
     }
 
     @Override
@@ -123,7 +133,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
         searchInput = findViewById(R.id.search);
         searchInput.setText(searchTerms);
-        searchInput.addTextChangedListener(new CategoryTextWatcher(this, searchInput, this));
+        searchInputFilterWatcher = new FilterTextWatcher(this, searchInput, this);
+        searchInput.addTextChangedListener(searchInputFilterWatcher);
         searchInput.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 // Hide the keyboard (http://stackoverflow.com/a/1109108 (when pressing search)
@@ -210,18 +221,24 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
         categoryId = intent.hasExtra(EXTRA_CATEGORY) ? intent.getStringExtra(EXTRA_CATEGORY) : null;
         searchTerms = intent.hasExtra(EXTRA_SEARCH_TERMS) ? intent.getStringExtra(EXTRA_SEARCH_TERMS) : null;
         repoId = intent.hasExtra(EXTRA_REPO_ID) ? intent.getLongExtra(EXTRA_REPO_ID, -1) : -1;
+        authorName = intent.hasExtra(EXTRA_AUTHOR_NAME) ? intent.getStringExtra(EXTRA_AUTHOR_NAME) : null;
+
         if (repoId > 0) {
             Repository repo = FDroidApp.getRepoManager(this).getRepository(repoId);
             if (repo != null) {
                 LocaleListCompat locales = LocaleListCompat.getDefault();
+                searchInputFilterWatcher.setFilterType(FilterType.REPO);
                 searchInput.setText(getSearchText(repo.getName(locales), searchTerms));
             }
+        } else if (authorName != null) {
+            searchInputFilterWatcher.setFilterType(FilterType.AUTHOR);
+            searchInput.setText(getSearchText(authorName, searchTerms));
         } else {
             String categoryName = intent.hasExtra(EXTRA_CATEGORY_NAME) ?
                     intent.getStringExtra(EXTRA_CATEGORY_NAME) : null;
+            searchInputFilterWatcher.setFilterType(FilterType.CATEGORY);
             searchInput.setText(getSearchText(categoryName, searchTerms));
         }
-
         searchInput.setSelection(searchInput.getText().length());
 
         if (categoryId != null) {
@@ -240,10 +257,13 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
                 SortClause.WORDS.equals(sortClauseSelected) ? AppListSortOrder.NAME : AppListSortOrder.LAST_UPDATED;
         if (repoId > 0) {
             itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), repoId, search, sortOrder);
-        } else if (categoryId == null) {
-            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), search, sortOrder);
-        } else {
+        } else if (categoryId != null) {
             itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), categoryId, search, sortOrder);
+        } else if (authorName != null) {
+            itemsLiveData = db.getAppDao().getAppListItemsForAuthor(
+                    getPackageManager(), authorName, search, sortOrder);
+        } else {
+            itemsLiveData = db.getAppDao().getAppListItems(getPackageManager(), search, sortOrder);
         }
         itemsLiveData.observe(this, this::onAppsLoaded);
     }
@@ -251,7 +271,7 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
     private CharSequence getSearchText(@Nullable String category, @Nullable String searchTerms) {
         StringBuilder string = new StringBuilder();
         if (category != null) {
-            string.append(category).append(":");
+            string.append(category).append(FilterTextWatcher.FILTER_SEPARATOR);
         }
 
         if (searchTerms != null) {
@@ -303,6 +323,8 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
             // remove previous chip
             this.categoryId = null;
             this.repoId = -1;
+            this.authorName = null;
+            searchInputFilterWatcher.setFilterType(FilterType.CATEGORY); // defaults to category
         }
         this.searchTerms = searchTerms.isEmpty() ? null : searchTerms;
         appView.scrollToPosition(0);

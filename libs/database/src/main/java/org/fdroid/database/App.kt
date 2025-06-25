@@ -163,6 +163,7 @@ public data class App internal constructor(
 ) : MinimalApp {
     public override val repoId: Long get() = metadata.repoId
     override val packageName: String get() = metadata.packageName
+    public val authorName: String? get() = metadata.authorName
     internal val icon: LocalizedFileV2? get() = getLocalizedFile("icon")
     internal val featureGraphic: LocalizedFileV2? get() = getLocalizedFile("featureGraphic")
     internal val promoGraphic: LocalizedFileV2? get() = getLocalizedFile("promoGraphic")

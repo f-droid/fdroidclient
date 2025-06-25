@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import org.fdroid.fdroid.R;
 
@@ -16,29 +17,41 @@ import org.fdroid.fdroid.R;
  * The search input treats text before the first colon as a category name. Text after this colon
  * (or all text if there is no colon) is the free text search terms.
  * The behaviour of this search input is:
- * * Replacing anything before the first colon with a {@link CategorySpan} that renders a "Chip"
+ * * Replacing anything before the first colon with a {@link FilterSpan} that renders a "Chip"
  * including an icon representing "category" and the name of the category.
  * * Removing the trailing ":" from a category chip will cause it to remove the entire category
  * from the input.
  */
-public class CategoryTextWatcher implements TextWatcher {
+public class FilterTextWatcher implements TextWatcher {
 
     interface SearchTermsChangedListener {
         void onSearchTermsChanged(@Nullable String category, @NonNull String searchTerms);
     }
 
+    /**
+     * The character that separates the filter from the search terms.
+     * This is the non-printable {@code NUL} character which is unlikely to be entered by the user.
+     */
+    public static final char FILTER_SEPARATOR = 0;
+
     private final Context context;
     private final EditText widget;
     private final SearchTermsChangedListener listener;
 
+    private AppListActivity.FilterType filterType;
+
     private int removeTo = -1;
     private boolean requiresSpanRecalculation = false;
 
-    CategoryTextWatcher(final Context context, final EditText widget,
-                        final SearchTermsChangedListener listener) {
+    FilterTextWatcher(final Context context, final EditText widget,
+                      final SearchTermsChangedListener listener) {
         this.context = context;
         this.widget = widget;
         this.listener = listener;
+    }
+
+    public void setFilterType(AppListActivity.FilterType filterType) {
+        this.filterType = filterType;
     }
 
     /**
@@ -61,8 +74,9 @@ public class CategoryTextWatcher implements TextWatcher {
         }
 
         String string = s.toString();
-        boolean removingColon = removingOrReplacing && string.indexOf(':', start) < (start + count);
-        boolean removingFirstColon = removingColon && string.indexOf(':') >= start;
+        boolean removingColon = removingOrReplacing
+                && string.indexOf(FILTER_SEPARATOR, start) < (start + count);
+        boolean removingFirstColon = removingColon && string.indexOf(FILTER_SEPARATOR) >= start;
         if (removingFirstColon) {
             removeTo = start + count - 1;
         }
@@ -70,15 +84,15 @@ public class CategoryTextWatcher implements TextWatcher {
 
     /**
      * If the user added a colon, and there was not previously a colon before the newly added
-     * one, then request for a {@link CategorySpan} to be added when able.
+     * one, then request for a {@link FilterSpan} to be added when able.
      */
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         boolean addingOrReplacing = count > 0;
         boolean addingColon = addingOrReplacing
-                && s.subSequence(start, start + count).toString().indexOf(':') >= 0;
+                && s.subSequence(start, start + count).toString().indexOf(FILTER_SEPARATOR) >= 0;
         boolean addingFirstColon = addingColon
-                && s.subSequence(0, start).toString().indexOf(':') == -1;
+                && s.subSequence(0, start).toString().indexOf(FILTER_SEPARATOR) == -1;
         if (addingFirstColon) {
             requiresSpanRecalculation = true;
         }
@@ -87,7 +101,7 @@ public class CategoryTextWatcher implements TextWatcher {
     /**
      * If it was decided that we were removing a category, then ensure that the relevant
      * characters are removed. If it was deemed we were adding a new category, then ensure
-     * that the relevant {@link CategorySpan} is added to {@param searchText}.
+     * that the relevant {@link FilterSpan} is added to {@param searchText}.
      */
     @Override
     public void afterTextChanged(Editable searchText) {
@@ -99,7 +113,7 @@ public class CategoryTextWatcher implements TextWatcher {
             requiresSpanRecalculation = false;
         }
 
-        int colonIndex = searchText.toString().indexOf(':');
+        int colonIndex = searchText.toString().indexOf(FILTER_SEPARATOR);
         String category = colonIndex == -1 ? null : searchText.subSequence(0, colonIndex).toString();
         String searchTerms = searchText.subSequence(colonIndex == -1 ? 0 : colonIndex + 1,
                 searchText.length()).toString();
@@ -119,7 +133,7 @@ public class CategoryTextWatcher implements TextWatcher {
     }
 
     /**
-     * Ensures that a {@link CategorySpan} is in {@param textToSpannify} if required.
+     * Ensures that a {@link FilterSpan} is in {@param textToSpannify} if required.
      * Will firstly remove all existing category spans, and then add back one if necessary.
      * In addition, also adds a {@link TtsSpan} to indicate to screen readers that the category
      * span has semantic meaning representing a category.
@@ -129,19 +143,26 @@ public class CategoryTextWatcher implements TextWatcher {
             return;
         }
 
-        removeSpans(textToSpannify, CategorySpan.class);
+        removeSpans(textToSpannify, FilterSpan.class);
         removeSpans(textToSpannify, TtsSpan.class);
 
-        int colonIndex = textToSpannify.toString().indexOf(':');
+        int colonIndex = textToSpannify.toString().indexOf(FILTER_SEPARATOR);
         if (colonIndex > 0) {
-            CategorySpan span = new CategorySpan(context);
+            FilterSpan span = new FilterSpan(context, filterType);
             textToSpannify.setSpan(span, 0, colonIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             // For accessibility reasons, make this more clear to screen readers that the
-            // span we just added semantically represents a category.
-            CharSequence categoryName = textToSpannify.subSequence(0, colonIndex);
-            TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(R.string.tts_category_name,
-                    categoryName)).build();
+            // span we just added semantically represents a specific filter.
+            CharSequence filterName = textToSpannify.subSequence(0, colonIndex);
+
+            @StringRes int ttsFilterDescription = switch (filterType) {
+                case CATEGORY -> R.string.tts_category_name;
+                case REPO -> R.string.tts_repo_name;
+                case AUTHOR -> R.string.tts_author_name;
+            };
+
+            TtsSpan ttsSpan = new TtsSpan.TextBuilder(context.getString(ttsFilterDescription,
+                    filterName)).build();
             textToSpannify.setSpan(ttsSpan, 0, 0, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }

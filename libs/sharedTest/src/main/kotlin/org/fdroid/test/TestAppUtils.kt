@@ -15,9 +15,12 @@ import kotlin.test.assertEquals
 
 object TestAppUtils {
 
-    fun getRandomMetadataV2(): MetadataV2 = MetadataV2(
+    fun getRandomMetadataV2(
+        authorName: String? = null,
+        lastUpdated: Long? = null
+    ): MetadataV2 = MetadataV2(
         added = Random.nextLong(),
-        lastUpdated = Random.nextLong(),
+        lastUpdated = lastUpdated ?: Random.nextLong(),
         name = getRandomLocalizedTextV2().orNull(),
         summary = getRandomLocalizedTextV2().orNull(),
         description = getRandomLocalizedTextV2().orNull(),
@@ -29,7 +32,7 @@ object TestAppUtils {
         translation = getRandomString().orNull(),
         preferredSigner = getRandomString().orNull(),
         video = getRandomLocalizedTextV2().orNull(),
-        authorName = getRandomString().orNull(),
+        authorName = authorName ?: getRandomString().orNull(),
         authorEmail = getRandomString().orNull(),
         authorWebSite = getRandomString().orNull(),
         authorPhone = getRandomString().orNull(),

@@ -14,6 +14,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
+import androidx.room.RawQuery
+import androidx.room.RoomRawQuery
 import androidx.room.RoomWarnings.Companion.QUERY_MISMATCH
 import androidx.room.Transaction
 import androidx.room.Update
@@ -121,6 +123,21 @@ public interface AppDao {
         searchQuery: String?,
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>>
+
+    /**
+     * Like [getAppListItems], but filters items by the given [author]
+     */
+    public fun getAppListItemsForAuthor(
+        packageManager: PackageManager,
+        author: String,
+        searchQuery: String?,
+        sortOrder: AppListSortOrder
+    ): LiveData<List<AppListItem>>
+
+    /**
+     * Returns `true` if the given [author] has at least two apps in the database.
+     */
+    public fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
@@ -409,10 +426,29 @@ internal interface AppDaoInt : AppDao {
         searchQuery: String?,
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>> {
-        return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
-            LAST_UPDATED -> getAppListItemsByLastUpdated(category).map(packageManager)
-            NAME -> getAppListItemsByName(category).map(packageManager)
-        } else getAppListItems(category, escapeQuery(searchQuery)).map(packageManager)
+        return if (searchQuery.isNullOrEmpty()) {
+            val queryBuilder =
+                StringBuilder("""
+                SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+                       version.antiFeatures, app.isCompatible, app.preferredSigner
+                FROM ${AppMetadata.TABLE} AS app
+                JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+                JOIN PreferredRepo USING (packageName)
+                LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+                LEFT JOIN AppPrefs USING (packageName)
+                WHERE pref.enabled = 1
+                    AND repoId = PreferredRepo.preferredRepoId
+                    AND categories LIKE '%,' || ? || ',%' 
+                GROUP BY packageName HAVING MAX(pref.weight)""")
+            addOrderBy(queryBuilder, sortOrder)
+            val rawQuery = RoomRawQuery(
+                sql = queryBuilder.toString().trimIndent(),
+                onBindStatement = { it.bindText(1, category) }
+            )
+            this.getAppListItems(rawQuery).map(packageManager)
+        } else {
+            getAppListItems(category, escapeQuery(searchQuery)).map(packageManager)
+        }
     }
 
     override fun getAppListItems(
@@ -421,10 +457,59 @@ internal interface AppDaoInt : AppDao {
         searchQuery: String?,
         sortOrder: AppListSortOrder,
     ): LiveData<List<AppListItem>> {
-        return if (searchQuery.isNullOrEmpty()) when (sortOrder) {
-            LAST_UPDATED -> getAppListItemsByLastUpdated(repoId).map(packageManager)
-            NAME -> getAppListItemsByName(repoId).map(packageManager)
-        } else getAppListItems(repoId, escapeQuery(searchQuery)).map(packageManager)
+        return if (searchQuery.isNullOrEmpty()) {
+            val queryBuilder =
+                StringBuilder("""
+                SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
+                    version.antiFeatures, app.isCompatible, app.preferredSigner
+                FROM ${AppMetadata.TABLE} AS app
+                LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+                WHERE repoId = :repoId""")
+            addOrderBy(queryBuilder, sortOrder)
+            val rawQuery = RoomRawQuery(
+                sql = queryBuilder.toString().trimIndent(),
+                onBindStatement = { it.bindLong(1, repoId) }
+            )
+            this.getAppListItems(rawQuery).map(packageManager)
+        } else {
+            getAppListItems(repoId, escapeQuery(searchQuery)).map(packageManager)
+        }
+    }
+
+    override fun getAppListItemsForAuthor(
+        packageManager: PackageManager,
+        authorName: String,
+        searchQuery: String?,
+        sortOrder: AppListSortOrder
+    ): LiveData<List<AppListItem>> {
+        return if (searchQuery.isNullOrEmpty()) {
+            val queryBuilder =
+                StringBuilder("""
+                SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
+                     version.antiFeatures, app.isCompatible, app.preferredSigner
+                FROM ${AppMetadata.TABLE} AS app
+                JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+                JOIN PreferredRepo USING (packageName)
+                LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+                WHERE pref.enabled = 1 AND authorName = ?
+                      AND PreferredRepo.preferredRepoId = repoId
+                GROUP BY packageName HAVING MAX(pref.weight)""")
+            addOrderBy(queryBuilder, sortOrder)
+            val rawQuery = RoomRawQuery(
+                sql = queryBuilder.toString().trimIndent(),
+                onBindStatement = { it.bindText(1, authorName) }
+            )
+            this.getAppListItems(rawQuery).map(packageManager)
+        } else {
+            getAppListItemsForAuthor(authorName, escapeQuery(searchQuery)).map(packageManager)
+        }
+    }
+
+    private fun addOrderBy(queryBuilder: StringBuilder, sortOrder: AppListSortOrder) {
+        when (sortOrder) {
+            LAST_UPDATED -> queryBuilder.append(" ORDER BY app.lastUpdated DESC")
+            NAME -> queryBuilder.append(" ORDER BY localizedName COLLATE NOCASE ASC")
+        }
     }
 
     private fun escapeQuery(searchQuery: String): String {
@@ -524,54 +609,8 @@ internal interface AppDaoInt : AppDao {
         ORDER BY app.lastUpdated DESC""")
     fun getAppListItemsByLastUpdated(): LiveData<List<AppListItem>>
 
-    @Transaction
-    @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
-        FROM ${AppMetadata.TABLE} AS app
-        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        JOIN PreferredRepo USING (packageName)
-        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        LEFT JOIN AppPrefs USING (packageName)
-        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
-            repoId = PreferredRepo.preferredRepoId
-        GROUP BY packageName HAVING MAX(pref.weight)
-        ORDER BY app.lastUpdated DESC""")
-    fun getAppListItemsByLastUpdated(category: String): LiveData<List<AppListItem>>
-
-    @Transaction
-    @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
-               version.antiFeatures, app.isCompatible, app.preferredSigner
-        FROM ${AppMetadata.TABLE} AS app
-        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        JOIN PreferredRepo USING (packageName)
-        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
-            repoId = preferredRepoId
-        GROUP BY packageName HAVING MAX(pref.weight)
-        ORDER BY localizedName COLLATE NOCASE ASC""")
-    fun getAppListItemsByName(category: String): LiveData<List<AppListItem>>
-
-    @Transaction
-    @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
-        FROM ${AppMetadata.TABLE} AS app
-        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE repoId = :repoId
-        ORDER BY app.lastUpdated DESC""")
-    fun getAppListItemsByLastUpdated(repoId: Long): LiveData<List<AppListItem>>
-
-    @Transaction
-    @Query("""
-        SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
-               version.antiFeatures, app.isCompatible, app.preferredSigner
-        FROM ${AppMetadata.TABLE} AS app
-        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE repoId = :repoId
-        ORDER BY localizedName COLLATE NOCASE ASC""")
-    fun getAppListItemsByName(repoId: Long): LiveData<List<AppListItem>>
+    @RawQuery(observedEntities = [AppListItem::class])
+    fun getAppListItems(query: RoomRawQuery): LiveData<List<AppListItem>>
 
     /**
      * Warning: Can not be called with more than 999 [packageNames].
@@ -587,6 +626,33 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName COLLATE NOCASE ASC""")
     fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>
+
+    @Transaction
+    @Query(
+        """SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
+               version.antiFeatures, app.isCompatible, app.preferredSigner
+        FROM ${AppMetadata.TABLE} AS app
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE authorName = :authorName AND app.rowid IN (
+            SELECT rowid FROM ${AppMetadataFts.TABLE}
+            WHERE authorName = :authorName AND ${AppMetadataFts.TABLE} MATCH :searchQuery
+        )"""
+    )
+    fun getAppListItemsForAuthor(
+        authorName: String,
+        searchQuery: String
+    ): LiveData<List<AppListItem>>
+
+    @Query("""SELECT COUNT(*) = 2 
+        FROM (
+            SELECT 1
+            FROM AppMetadata
+            JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+            JOIN PreferredRepo USING (packageName)
+            WHERE authorName = :author AND repoId = preferredRepoId
+            GROUP BY packageName
+            LIMIT 2)""")
+    override fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
     override fun getInstalledAppListItems(
         packageManager: PackageManager,

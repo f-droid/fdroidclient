@@ -162,6 +162,7 @@ public class AppDetailsActivity extends AppCompatActivity
         model.getApp().observe(this, this::onAppChanged);
         model.getAppData().observe(this, this::onAppDataChanged);
         model.getVersions().observe(this, this::onVersionsChanged);
+        model.getHasAuthorMoreApps().observe(this, this::onHasAuthorMoreAppsChanged);
     }
 
     @Nullable
@@ -731,6 +732,10 @@ public class AppDetailsActivity extends AppCompatActivity
         adapter.updateItems(app, apks, appPrefs); // pass apks no apkList as null means loading
         refreshStatus();
         supportInvalidateOptionsMenu();
+    }
+
+    private void onHasAuthorMoreAppsChanged(boolean hasMoreApps) {
+        adapter.setHasAuthorMoreApps(hasMoreApps);
     }
 
     @Nullable
