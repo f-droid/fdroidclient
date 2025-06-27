@@ -10,7 +10,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.Icons.Default
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Cloud
+import androidx.compose.material.icons.filled.DeveloperMode
+import androidx.compose.material.icons.filled.OpenInBrowser
+import androidx.compose.material.icons.filled.SignalCellularAlt
+import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -22,13 +29,11 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import org.fdroid.basic.Category
 import org.fdroid.basic.MainViewModel
-import org.fdroid.basic.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -38,13 +43,13 @@ fun CategoryCarousel(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel(),
 ) {
-    CategoryCarousel(viewModel.categories, modifier, onTitleTap, onCategoryTap)
+    CategoryCarousel(MainViewModel.categories, modifier, onTitleTap, onCategoryTap)
 }
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun CategoryCarousel(
-    categories: List<Pair<String, Int>>,
+    categories: List<Category>,
     modifier: Modifier = Modifier,
     onTitleTap: () -> Unit,
     onCategoryTap: (String) -> Unit,
@@ -79,15 +84,15 @@ fun CategoryCarousel(
 }
 
 @Composable
-fun CategoryBox(category: Pair<String, Int>, onCategoryTap: (String) -> Unit) {
+fun CategoryBox(category: Category, onCategoryTap: (String) -> Unit) {
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier
             .padding(8.dp)
-            .clickable { onCategoryTap(category.first) },
+            .clickable { onCategoryTap(category.name) },
     ) {
         Image(
-            painter = painterResource(category.second),
+            imageVector = category.imageVector,
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = Modifier
@@ -95,7 +100,7 @@ fun CategoryBox(category: Pair<String, Int>, onCategoryTap: (String) -> Unit) {
                 .size(76.dp),
         )
         Text(
-            text = category.first,
+            text = category.name,
             style = MaterialTheme.typography.bodySmall,
             minLines = 2,
             maxLines = 2,
@@ -107,12 +112,12 @@ fun CategoryBox(category: Pair<String, Int>, onCategoryTap: (String) -> Unit) {
 @Composable
 fun CategoryCarouselPreview() {
     val categories = listOf(
-        Pair(stringResource(R.string.category_Time), R.drawable.ic_launcher),
-        Pair(stringResource(R.string.category_Games), R.drawable.ic_launcher),
-        Pair(stringResource(R.string.category_Money), R.drawable.ic_launcher),
-        Pair(stringResource(R.string.category_Reading), R.drawable.ic_launcher),
-        Pair(stringResource(R.string.category_Theming), R.drawable.ic_launcher),
-        Pair(stringResource(R.string.category_Connectivity), R.drawable.ic_launcher),
+        Category("App Store & Updater", Default.Storefront),
+        Category("Browser", Default.OpenInBrowser),
+        Category("Calendar & Agenda", Default.CalendarMonth),
+        Category("Cloud Storage & File Sync", Default.Cloud),
+        Category("Connectivity", Default.SignalCellularAlt),
+        Category("Development", Default.DeveloperMode),
     )
     FDroidContent {
         CategoryCarousel(categories, onTitleTap = {}) {}
