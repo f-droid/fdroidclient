@@ -120,7 +120,8 @@ public class AppDetailsActivity extends AppCompatActivity
         fdroidApp.setSecureWindow(this);
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
-        EdgeToEdge.enable(this);
+        // Edge-to-edge has a bug in Android 10 (and lower?) where end of page is overlayed
+        if (Build.VERSION.SDK_INT > 29) EdgeToEdge.enable(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_details2);
