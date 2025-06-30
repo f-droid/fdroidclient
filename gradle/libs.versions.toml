@@ -4,6 +4,7 @@ kotlin = "2.2.21"
 androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on buildserver
 androidKspPlugin = "2.2.21-2.0.4" # first version needs to match kotlin version
 hilt = "2.56.2"
+hiltWork = "1.2.0"
 hiltNavigationCompose = "1.2.0"
 dokka = "2.1.0"
 mavenPublish = "0.34.0"
@@ -27,6 +28,7 @@ androidxLifecycleLivedataKtx = "2.9.4"
 androidxWork = "2.10.5"
 androidxDocumentfile = "1.1.0"
 androidxLocalbroadcastmanager = "1.1.0"
+androidxHiltCompiler = "1.2.0"
 androidxRecyclerview = "1.4.0"
 androidxConstraintlayout = "2.2.1"
 androidxSwipeRefreshLayout = "1.1.0"
@@ -98,6 +100,8 @@ androidx-vectordrawable = { module = "androidx.vectordrawable:vectordrawable", v
 androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "androidxDocumentfile" }
 androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "androidxLocalbroadcastmanager" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "androidxWork" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidxWork" }
+androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -114,6 +118,7 @@ androidx-compose-material3-adaptive-navigation = { module = "androidx.compose.ma
 androidx-compose-material3-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout" }
 androidx-compose-material3-adaptive-navigation-suite-android = { module = "androidx.compose.material3:material3-adaptive-navigation-suite-android" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompiler" }
 
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }

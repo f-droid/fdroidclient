@@ -7,14 +7,20 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -31,6 +37,7 @@ import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaf
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,11 +50,15 @@ import org.fdroid.basic.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
+@OptIn(
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class,
+    ExperimentalMaterial3ExpressiveApi::class
+)
 fun RepositoriesScaffold(
-    repositories: List<Repository>,
+    repositories: List<Repository>?,
     currentRepository: Repository?,
     onRepositorySelected: (Repository) -> Unit,
+    onAddRepo: () -> Unit,
     onBackClicked: () -> Unit,
 ) {
     val navigator = rememberListDetailPaneScaffoldNavigator<Repository>()
@@ -76,17 +87,34 @@ fun RepositoriesScaffold(
                             },
                         )
                     },
+                    floatingActionButton = {
+                        FloatingActionButton(
+                            onClick = onAddRepo,
+                            modifier = Modifier.padding(16.dp)
+                        ) {
+                            Icon(Icons.Default.Add, contentDescription = "Add repo")
+                        }
+                    }
                 ) { paddingValues ->
-                    RepositoriesList(
-                        repositories = repositories,
-                        currentRepository = if (isDetailVisible) currentRepository else null,
-                        onRepositorySelected = {
-                            onRepositorySelected(it)
-                            scope.launch { navigator.navigateTo(Detail, it) }
-                        },
-                        modifier = Modifier
-                            .padding(paddingValues),
-                    )
+                    if (repositories == null) {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxSize(),
+                        ) {
+                            LoadingIndicator(modifier = Modifier.padding(paddingValues))
+                        }
+                    } else {
+                        RepositoriesList(
+                            repositories = repositories,
+                            currentRepository = if (isDetailVisible) currentRepository else null,
+                            onRepositorySelected = {
+                                onRepositorySelected(it)
+                                scope.launch { navigator.navigateTo(Detail, it) }
+                            },
+                            modifier = Modifier
+                                .padding(paddingValues),
+                        )
+                    }
                 }
             }
         },
@@ -126,6 +154,17 @@ fun RepositoriesScaffold(
     showBackground = true,
     uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
 )
+@Composable
+fun RepositoriesScaffoldLoadingPreview() {
+    FDroidContent {
+        RepositoriesScaffold(null, null, {}, {}) { }
+    }
+}
+
+@Preview(
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+)
 @PreviewScreenSizes
 @Composable
 fun RepositoriesScaffoldPreview() {
@@ -148,7 +187,7 @@ fun RepositoriesScaffoldPreview() {
                 name = "My second repository",
             ),
         )
-        RepositoriesScaffold(repos, repos[0], {}) { }
+        RepositoriesScaffold(repos, repos[0], {}, {}) { }
     }
 }
 

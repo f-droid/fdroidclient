@@ -85,13 +85,13 @@ fun Discover(
             AppsSearch(searchBarState, onAppTap, modifier = Modifier.padding(top = 8.dp))
             AppCarousel(
                 title = AppList.New.title,
-                apps = apps,
+                apps = apps.filter { it.isNew },
                 onTitleTap = { onTitleTap(AppList.New) },
                 onAppTap = onAppTap,
             )
             AppCarousel(
                 title = AppList.RecentlyUpdated.title,
-                apps = apps.filter { it.packageName.toInt() % 2 == 0 },
+                apps = apps.filter { !it.isNew },
                 onTitleTap = { onTitleTap(AppList.RecentlyUpdated) },
                 onAppTap = onAppTap,
             )

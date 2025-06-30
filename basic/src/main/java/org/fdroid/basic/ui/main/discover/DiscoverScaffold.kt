@@ -58,7 +58,8 @@ fun DiscoverScaffold(
         }
     }
     val isDetailVisible = navigator.scaffoldValue[Detail] == PaneAdaptedValue.Expanded
-    val isListVisible = navigator.scaffoldValue[ListDetailPaneScaffoldRole.List] == PaneAdaptedValue.Expanded
+    val isListVisible =
+        navigator.scaffoldValue[ListDetailPaneScaffoldRole.List] == PaneAdaptedValue.Expanded
     ListDetailPaneScaffold(
         directive = navigator.scaffoldDirective,
         value = navigator.scaffoldValue,

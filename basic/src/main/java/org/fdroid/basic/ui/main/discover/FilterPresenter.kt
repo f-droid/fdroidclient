@@ -28,7 +28,7 @@ fun FilterPresenter(
         apps = if (sortBy == Sort.NAME) {
             newApps.sortedBy { it.name.lowercase(Locale.getDefault()) }
         } else {
-            newApps.sortedByDescending { it.packageName.toInt() }
+            newApps.sortedByDescending { it.lastUpdated }
         },
         sortBy = sortBy,
         allCategories = allCategories,

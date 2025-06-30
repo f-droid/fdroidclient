@@ -45,8 +45,10 @@ import androidx.compose.material.icons.filled.Wallet
 import androidx.compose.material.icons.filled.Wallpaper
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
@@ -56,20 +58,19 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
+import org.fdroid.basic.download.getDownloadRequest
 import org.fdroid.basic.manager.AppDetailsManager
 import org.fdroid.basic.manager.MyAppsManager
-import org.fdroid.basic.manager.RepositoryManager
-import org.fdroid.basic.ui.Icons
-import org.fdroid.basic.ui.Names
+import org.fdroid.basic.repo.RepositoryManager
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.basic.ui.main.discover.FilterModel
 import org.fdroid.basic.ui.main.discover.FilterPresenter
-import org.fdroid.basic.ui.main.discover.NUM_ITEMS
 import org.fdroid.basic.ui.main.discover.Sort
 import org.fdroid.basic.ui.main.lists.AppList
+import org.fdroid.database.FDroidDatabase
 import javax.inject.Inject
 
 data class Category(val name: String, val imageVector: ImageVector)
@@ -79,6 +80,7 @@ class MainViewModel @Inject constructor(
     app: Application,
     savedStateHandle: SavedStateHandle,
     val myAppsManager: MyAppsManager,
+    private val db: FDroidDatabase,
     private val appDetailsManager: AppDetailsManager,
     val repositoryManager: RepositoryManager,
 ) : AndroidViewModel(app) {
@@ -131,26 +133,6 @@ class MainViewModel @Inject constructor(
         )
     }
 
-    val initialApps = buildList {
-        repeat(NUM_ITEMS) { i ->
-            val category = categories.getOrElse(i) { categories.random() }.name
-            val navItem = AppNavigationItem(
-                packageName = "$i",
-                icon = when (i) {
-                    0 -> "https://f-droid.org/repo/icons/org.wikimedia.commons.wikimedia.1.png"
-                    1 -> "https://f-droid.org/repo/org.videolan.vlc/en-US/icon_yAfSvPRJukZzMMfUzvbYqwaD1XmHXNtiPBtuPVHW-6s=.png"
-                    2 -> "https://f-droid.org/repo/net.thunderbird.android/en-US/icon_llBuXRxsJFITCCuDze-ENOPa1J_HFZLudN5K3gU-xiU=.png"
-                    3 -> "https://f-droid.org/repo/org.schabi.newpipe/en-US/icon_OHy4y1W-fJCNhHHOBCM9V_cxZNJJgbcNkB-x7UDTY9Q=.png"
-                    else -> Icons.randomIcon
-                },
-                name = Names.randomName,
-                summary = "Summary of the app • $category",
-                isNew = i > NUM_ITEMS - 4,
-            )
-            add(navItem)
-        }
-    }
-
     private val _currentList = MutableStateFlow<AppList>(AppList.New)
     val currentList = _currentList.asStateFlow()
     private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", true)
@@ -160,10 +142,25 @@ class MainViewModel @Inject constructor(
     private val _addedCategories = MutableStateFlow<List<String>>(emptyList())
     val addedCategories = _addedCategories.asStateFlow<List<String>>()
 
+    val localeList = LocaleListCompat.getDefault()
     val filterModel: StateFlow<FilterModel> = scope.launchMolecule(mode = ContextClock) {
         FilterPresenter(
             areFiltersShownFlow = showFilters,
-            appsFlow = flow { emit(initialApps) },
+            appsFlow = db.getAppDao().getAppOverviewItems().asFlow().map { list ->
+                list.mapNotNull {
+                    val repository = repositoryManager.getRepository(it.repoId)
+                        ?: return@mapNotNull null
+                    AppNavigationItem(
+                        packageName = it.packageName,
+                        name = it.name ?: "Unknown",
+                        summary = it.summary ?: "Unknown",
+                        isNew = it.lastUpdated == it.added,
+                        lastUpdated = it.lastUpdated,
+                        iconDownloadRequest = it.getIcon(localeList)
+                            ?.getDownloadRequest(repository),
+                    )
+                }
+            },
             sortByFlow = sortBy,
             allCategories = categories.map { it.name },
             addedCategoriesFlow = addedCategories,
@@ -185,9 +182,8 @@ class MainViewModel @Inject constructor(
                 AppNavigationItem(
                     packageName = it.packageName,
                     name = it.name ?: "Unknown app",
-                    icon = it.icon,
                     summary = "Summary",
-                    isNew = false
+                    isNew = false,
                 )
             }
         appDetailsManager.setAppDetails(newApp)

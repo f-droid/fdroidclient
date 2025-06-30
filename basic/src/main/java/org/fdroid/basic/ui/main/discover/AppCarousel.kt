@@ -77,9 +77,9 @@ fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
             .padding(8.dp)
             .clickable { onAppTap(app) },
     ) {
-        app.icon?.let {
-            AsyncImage(
-                app.icon,
+        app.iconDownloadRequest?.let {
+            AsyncImage( // TODO error handling
+                app.iconDownloadRequest,
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier

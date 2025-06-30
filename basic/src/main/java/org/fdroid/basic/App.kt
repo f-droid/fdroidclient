@@ -1,7 +1,71 @@
 package org.fdroid.basic
 
 import android.app.Application
+import android.content.Context
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
+import coil3.ImageLoader
+import coil3.SingletonImageLoader
+import coil3.disk.DiskCache
+import coil3.disk.directory
+import coil3.key.Keyer
+import coil3.memory.MemoryCache
+import coil3.request.Options
+import coil3.request.crossfade
+import coil3.util.DebugLogger
 import dagger.hilt.android.HiltAndroidApp
+import org.fdroid.basic.repo.RepoUpdateWorker
+import org.fdroid.download.DownloadRequest
+import org.fdroid.download.coil.DownloadRequestFetcher
+import java.io.File
+import javax.inject.Inject
 
 @HiltAndroidApp
-class App : Application()
+class App : Application(), Configuration.Provider, SingletonImageLoader.Factory {
+
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
+    @Inject
+    lateinit var downloadRequestFetcherFactory: DownloadRequestFetcher.Factory
+
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
+            .setWorkerFactory(workerFactory)
+            .build()
+
+    override fun onCreate() {
+        super.onCreate()
+        RepoUpdateWorker.scheduleOrCancel(applicationContext)
+    }
+
+    override fun newImageLoader(context: Context): ImageLoader {
+        return ImageLoader.Builder(context)
+            .crossfade(true)
+            .components {
+                val keyer = object : Keyer<DownloadRequest> {
+                    override fun key(
+                        data: DownloadRequest,
+                        options: Options
+                    ): String {
+                        return data.indexFile.sha256
+                            ?: (data.mirrors[0].baseUrl + data.indexFile.name)
+                    }
+                }
+                add(keyer)
+                add(downloadRequestFetcherFactory)
+            }
+            .memoryCache {
+                MemoryCache.Builder()
+                    .maxSizePercent(context, 0.25)
+                    .build()
+            }
+            .diskCache {
+                DiskCache.Builder()
+                    .directory(File(context.cacheDir, "coil"))
+                    .maxSizePercent(0.05)
+                    .build()
+            }
+            .logger(if (BuildConfig.DEBUG) DebugLogger() else null)
+            .build()
+    }
+}

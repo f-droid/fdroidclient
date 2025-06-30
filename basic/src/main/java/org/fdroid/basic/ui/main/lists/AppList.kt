@@ -125,7 +125,7 @@ fun AppList(
                     AppItem(
                         name = navItem.name,
                         summary = navItem.summary,
-                        icon = navItem.icon,
+                        downloadRequest = navItem.iconDownloadRequest,
                         isNew = navItem.isNew,
                         isSelected = isSelected,
                         modifier = modifier,

@@ -76,13 +76,14 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
             }
             composable(route = NavDestinations.Repos.id) {
                 val repositoryManager = viewModel.repositoryManager
-                val repos = repositoryManager.repos.collectAsStateWithLifecycle().value
+                val repos = repositoryManager.repos.collectAsStateWithLifecycle(null).value
                 val visibleRepository =
                     repositoryManager.visibleRepository.collectAsStateWithLifecycle().value
                 RepositoriesScaffold(
                     repositories = repos,
                     currentRepository = visibleRepository,
                     onRepositorySelected = repositoryManager::setVisibleRepository,
+                    onAddRepo = repositoryManager::addRepo,
                 ) {
                     navController.popBackStack()
                 }

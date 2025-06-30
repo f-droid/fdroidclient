@@ -1,14 +1,15 @@
 package org.fdroid.basic.ui.main.discover
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import org.fdroid.basic.ui.main.apps.MinimalApp
+import org.fdroid.download.DownloadRequest
 
-@Parcelize
 class AppNavigationItem(
     override val packageName: String,
     override val name: String,
-    override val icon: String? = null,
+    val iconDownloadRequest: DownloadRequest? = null,
     val summary: String,
     val isNew: Boolean,
-): MinimalApp, Parcelable
+    val lastUpdated: Long = -1,
+) : MinimalApp {
+    override val icon: String? = null
+}

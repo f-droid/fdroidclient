@@ -19,13 +19,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import org.fdroid.download.DownloadRequest
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 fun AppItem(
     name: String,
     summary: String,
-    icon: String?,
+    downloadRequest: DownloadRequest?,
     isNew: Boolean,
     isSelected: Boolean,
     modifier: Modifier = Modifier,
@@ -41,9 +42,9 @@ fun AppItem(
                     contentDescription = null, modifier = Modifier.size(24.dp),
                 )
             }) {
-                icon?.let {
+                downloadRequest?.let {
                     AsyncImage(
-                        model = icon,
+                        model = downloadRequest,
                         contentDescription = null,
                         modifier = Modifier.size(48.dp),
                     )
