@@ -10,12 +10,15 @@ import androidx.annotation.AnyThread
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.net.toUri
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
@@ -174,27 +177,33 @@ internal class RepoAdder(
             fetchRepo(nUri.uri, nUri.fingerprint, proxy, nUri.username, nUri.password, receiver)
         } catch (e: SigningException) {
             log.error(e) { "Error verifying repo with given fingerprint." }
-            addRepoState.value = AddRepoError(INVALID_FINGERPRINT, e)
+            onError(AddRepoError(INVALID_FINGERPRINT, e))
             return
         } catch (e: IOException) {
             log.error(e) { "Error fetching repo." }
-            addRepoState.value = AddRepoError(IO_ERROR, e)
+            onError(AddRepoError(IO_ERROR, e))
             return
         } catch (e: SerializationException) {
             log.error(e) { "Error fetching repo." }
-            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            onError(AddRepoError(INVALID_INDEX, e))
             return
         } catch (e: NotFoundException) { // v1 repos can also have 404
             log.error(e) { "Error fetching repo." }
-            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            onError(AddRepoError(INVALID_INDEX, e))
             return
         }
         // set final result
         val finalRepo = receivedRepo
         if (finalRepo == null) {
-            addRepoState.value = AddRepoError(INVALID_INDEX)
+            onError(AddRepoError(INVALID_INDEX))
         } else {
             addRepoState.value = Fetching(fetchUrl, finalRepo, apps, fetchResult, done = true)
+        }
+    }
+
+    private suspend fun onError(state: AddRepoError) {
+        if (currentCoroutineContext().isActive) {
+            addRepoState.value = state
         }
     }
 
@@ -226,7 +235,7 @@ internal class RepoAdder(
     private fun getFetchResult(fetchUrlIn: String, fetchedRepo: Repository): FetchResult {
         // Note the delicate difference between fetchedRepo (from the network) and
         // existingRepo (from the database) in this function!
-        val cert = fetchedRepo.certificate ?: error("Certificate was null")
+        val cert = fetchedRepo.certificate
         val existingRepo = repositoryDao.getRepository(cert)
         val fetchUrl = fetchUrlIn.trimEnd('/')
 
@@ -261,7 +270,7 @@ internal class RepoAdder(
     }
 
     @WorkerThread
-    internal fun addFetchedRepository(): Repository? {
+    internal suspend fun addFetchedRepository(): Repository? {
         // prevent double calls (e.g. caused by double tapping a UI button)
         if (addRepoState.compareAndSet(Adding, Adding)) return null
 
@@ -289,7 +298,7 @@ internal class RepoAdder(
                     icon = repo.repository.icon ?: emptyMap(),
                     address = repo.address,
                     formatVersion = repo.formatVersion,
-                    certificate = repo.certificate ?: error("Repo had no certificate"),
+                    certificate = repo.certificate,
                     username = repo.username,
                     password = repo.password,
                 )
@@ -348,7 +357,7 @@ internal class RepoAdder(
                         icon = archiveRepo.repository.icon ?: emptyMap(),
                         address = archiveRepo.address,
                         formatVersion = archiveRepo.formatVersion,
-                        certificate = archiveRepo.certificate ?: error("Repo had no certificate"),
+                        certificate = archiveRepo.certificate,
                         username = archiveRepo.username,
                         password = archiveRepo.password,
                     )
@@ -364,7 +373,7 @@ internal class RepoAdder(
                     // no-op
                 }
             }
-            val uri = Uri.parse(address)
+            val uri = address.toUri()
             fetchRepo(uri, repo.fingerprint, proxy, repo.username, repo.password, receiver)
             return@withContext archiveRepoId
         }
@@ -398,7 +407,7 @@ internal class RepoAdder(
 }
 
 internal val defaultRepoUriBuilder = RepoUriBuilder { repo, pathElements ->
-    val builder = Uri.parse(repo.address).buildUpon()
+    val builder = repo.address.toUri().buildUpon()
     pathElements.forEach { builder.appendEncodedPath(it) }
     builder.build()
 }
