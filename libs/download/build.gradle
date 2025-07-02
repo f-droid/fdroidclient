@@ -59,6 +59,10 @@ kotlin {
                     transitive = false // we don't need all that it pulls in, just the basics
                 }
                 implementation libs.glide.annotations
+                implementation("io.coil-kt.coil3:coil-core:3.3.0") {
+                    transitive = false // we don't need all that it pulls in, just the basics
+                }
+                implementation "javax.inject:javax.inject:1"
             }
         }
         androidUnitTest {
