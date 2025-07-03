@@ -103,6 +103,9 @@ class ApkVerifier {
                     getExtraPermissions(expectedApk.requestedPermissions, localApkInfo.requestedPermissions);
             // we only complain if localApk has more permissions than expected, don't care if it has less
             if (!extraPermissions.isEmpty()) {
+                for (String p : extraPermissions) {
+                    Log.w(TAG, "App has extra permission: " + p);
+                }
                 throw new ApkPermissionUnequalException(String.join(" ", extraPermissions));
             }
         }
