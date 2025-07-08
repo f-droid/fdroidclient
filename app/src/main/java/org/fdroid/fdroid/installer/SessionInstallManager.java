@@ -328,10 +328,11 @@ public class SessionInstallManager extends BroadcastReceiver {
         if (Build.VERSION.SDK_INT == 31 && targetSdk >= 29) return true;
         if (Build.VERSION.SDK_INT == 32 && targetSdk >= 29) return true;
         if (Build.VERSION.SDK_INT == 33 && targetSdk >= 30) return true;
+        if (Build.VERSION.SDK_INT == 34 && targetSdk >= 31) return true;
         // This needs to be adjusted as new Android versions are released
         // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
-        // https://cs.android.com/android/platform/superproject/+/android-13.0.0_r42:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=2095;drc=6aba151873bfae198ef9eceb10f943e18b52d58c
-        // current code requires targetSdk 31 on SDK 34+
-        return Build.VERSION.SDK_INT >= 34 && targetSdk >= 31;
+        // https://cs.android.com/android/platform/superproject/+/android-16.0.0_r2:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=329;drc=73caa0299d9196ddeefe4f659f557fb880f6536d
+        // current code requires targetSdk 33 on SDK 35+
+        return Build.VERSION.SDK_INT >= 35 && targetSdk >= 33;
     }
 }

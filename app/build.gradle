@@ -87,7 +87,7 @@ android {
         }
         basic {
             dimension "base"
-            targetSdkVersion 35
+            targetSdkVersion 36
             applicationIdSuffix ".basic"
         }
     }

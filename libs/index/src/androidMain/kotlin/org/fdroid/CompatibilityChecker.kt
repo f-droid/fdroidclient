@@ -56,12 +56,15 @@ public class CompatibilityCheckerImpl @JvmOverloads constructor(
 public object CompatibilityCheckerUtils {
     // Mirrored from AOSP due to lack of public APIs
     // frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+    // search for MIN_INSTALLABLE_TARGET_SDK
+    // https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-16.0.0_r1/services/core/java/com/android/server/pm/PackageManagerService.java
     // TODO: Keep this in sync with AOSP to avoid INSTALL_FAILED_DEPRECATED_SDK_VERSION errors
     @JvmOverloads
     public fun minInstallableTargetSdk(sdkInt: Int = SDK_INT): Int {
         return when (sdkInt) {
             34 -> 23 // Android 6.0, M
             35 -> 24 // Android 7.0, N
+            36 -> 24 // Android 7.0, N (didn't change)
             else -> 1 // Android 1.0, BASE
         }
     }
