@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
+import org.fdroid.basic.ui.categories.Category
 import java.util.Locale
 
 @Composable
@@ -11,11 +12,12 @@ fun FilterPresenter(
     areFiltersShownFlow: StateFlow<Boolean>,
     appsFlow: Flow<List<AppNavigationItem>>,
     sortByFlow: StateFlow<Sort>,
-    allCategories: List<String>,
+    allCategoriesFlow: Flow<List<Category>>,
     addedCategoriesFlow: StateFlow<List<String>>,
 ): FilterModel {
     val apps = appsFlow.collectAsState(null).value
     val sortBy = sortByFlow.collectAsState().value
+    val allCategories = allCategoriesFlow.collectAsState(null).value
     val addedCategories = addedCategoriesFlow.collectAsState().value
 
     val newApps = apps?.filter { app ->
@@ -41,6 +43,6 @@ data class FilterModel(
     val areFiltersShown: Boolean,
     val apps: List<AppNavigationItem>,
     val sortBy: Sort,
-    val allCategories: List<String>,
+    val allCategories: List<Category>?,
     val addedCategories: List<String>,
 )

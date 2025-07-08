@@ -138,7 +138,7 @@ fun BottomBarPreview() {
             areFiltersShown = filterExpanded,
             apps = apps,
             sortBy = Sort.NAME,
-            allCategories = listOf("foo", "bar"),
+            allCategories = emptyList(),
             addedCategories = emptyList(),
         )
 

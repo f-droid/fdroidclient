@@ -100,7 +100,7 @@ fun ColumnScope.AppsFilter(
                 },
                 onClick = { sortByMenuExpanded = !sortByMenuExpanded },
             )
-            FilterChip(
+            if (!filter.model.allCategories.isNullOrEmpty()) FilterChip(
                 selected = false,
                 leadingIcon = {
                     Icon(
@@ -115,11 +115,11 @@ fun ColumnScope.AppsFilter(
                         expanded = categoryMenuExpanded,
                         onDismissRequest = { categoryMenuExpanded = false },
                     ) {
-                        filter.model.allCategories.forEach { category ->
+                        filter.model.allCategories?.forEach { category ->
                             DropdownMenuItem(
-                                text = { Text(category) },
+                                text = { Text(category.name) },
                                 onClick = {
-                                    filter.addCategory(category)
+                                    filter.addCategory(category.id)
                                     categoryMenuExpanded = false
                                 },
                             )

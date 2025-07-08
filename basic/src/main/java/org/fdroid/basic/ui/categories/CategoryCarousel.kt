@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.discover
+package org.fdroid.basic.ui.categories
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -10,14 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.Icons.Default
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.CalendarMonth
-import androidx.compose.material.icons.filled.Cloud
-import androidx.compose.material.icons.filled.DeveloperMode
-import androidx.compose.material.icons.filled.OpenInBrowser
-import androidx.compose.material.icons.filled.SignalCellularAlt
-import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,7 +25,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import org.fdroid.basic.Category
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.fdroid.basic.MainViewModel
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
@@ -43,7 +36,8 @@ fun CategoryCarousel(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = hiltViewModel(),
 ) {
-    CategoryCarousel(MainViewModel.categories, modifier, onTitleTap, onCategoryTap)
+    val categories = viewModel.categories.collectAsStateWithLifecycle(null).value
+    CategoryCarousel(categories ?: emptyList(), modifier, onTitleTap, onCategoryTap)
 }
 
 @Composable
@@ -112,12 +106,12 @@ fun CategoryBox(category: Category, onCategoryTap: (String) -> Unit) {
 @Composable
 fun CategoryCarouselPreview() {
     val categories = listOf(
-        Category("App Store & Updater", Default.Storefront),
-        Category("Browser", Default.OpenInBrowser),
-        Category("Calendar & Agenda", Default.CalendarMonth),
-        Category("Cloud Storage & File Sync", Default.Cloud),
-        Category("Connectivity", Default.SignalCellularAlt),
-        Category("Development", Default.DeveloperMode),
+        Category("App Store & Updater", "App Store & Updater"),
+        Category("Browser", "Browser"),
+        Category("Calendar & Agenda", "Calendar & Agenda"),
+        Category("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
+        Category("Connectivity", "Connectivity"),
+        Category("Development", "Development"),
     )
     FDroidContent {
         CategoryCarousel(categories, onTitleTap = {}) {}

@@ -2,6 +2,7 @@ package org.fdroid.basic.ui.main.discover
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -27,6 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import org.fdroid.basic.ui.categories.Category
+import org.fdroid.basic.ui.categories.CategoryList
 import org.fdroid.basic.ui.main.MainOverFlowMenu
 import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.basic.ui.main.topBarMenuItems
@@ -35,6 +38,7 @@ import org.fdroid.basic.ui.main.topBarMenuItems
 @OptIn(ExperimentalMaterial3Api::class)
 fun Discover(
     apps: List<AppNavigationItem>,
+    categories: List<Category>?,
     modifier: Modifier = Modifier,
     onTitleTap: (AppList) -> Unit,
     onAppTap: (AppNavigationItem) -> Unit,
@@ -82,7 +86,7 @@ fun Discover(
                 .verticalScroll(rememberScrollState())
                 .padding(paddingValues)
         ) {
-            AppsSearch(searchBarState, onAppTap, modifier = Modifier.padding(top = 8.dp))
+            AppsSearch(searchBarState, categories, onAppTap, modifier = Modifier.padding(top = 8.dp))
             AppCarousel(
                 title = AppList.New.title,
                 apps = apps.filter { it.isNew },
@@ -103,6 +107,7 @@ fun Discover(
             ) {
                 Text(AppList.All.title)
             }
+            CategoryList(categories, Modifier.heightIn(max = 1000.dp))
         }
     }
 }

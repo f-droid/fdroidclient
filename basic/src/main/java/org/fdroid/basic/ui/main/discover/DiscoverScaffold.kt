@@ -71,6 +71,7 @@ fun DiscoverScaffold(
                     composable("discover") {
                         Discover(
                             apps = apps,
+                            categories = filterInfo.model.allCategories,
                             onTitleTap = {
                                 onAppListChanged(it)
                                 discoverNavController.navigate("list")
@@ -127,7 +128,7 @@ fun DiscoverScaffoldPreview() {
                 areFiltersShown = filterExpanded,
                 apps = apps,
                 sortBy = Sort.NAME,
-                allCategories = listOf("foo", "bar"),
+                allCategories = emptyList(),
                 addedCategories = emptyList(),
             )
 
