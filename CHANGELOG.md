@@ -1,3 +1,10 @@
+### 1.23.1 (2025-07-11)
+
+* Disable edge-to-edge for Android 10 and below since it caused issues there
+* Fix top app bar background in OLED black theme
+* Fix implied POST_NOTIFICATIONS permission mismatch
+* Fix minimum installable target SDK for Android 16 (marks apps as incompatible again)
+
 ### 1.23.0 (2025-05-22)
 
 * Updated app screenshots for Material 3 (Thanks Thore!)
