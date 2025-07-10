@@ -35,7 +35,7 @@ fun RepositoryItem(
             Text(repoItem.address)
         },
         trailingContent = {
-            Switch(true, onCheckedChange = null)
+            Switch(repoItem.enabled, onCheckedChange = null)
         },
         colors = ListItemDefaults.colors(
             containerColor = if (isSelected) {

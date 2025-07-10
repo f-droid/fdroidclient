@@ -16,6 +16,7 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideFDroidDatabase(@ApplicationContext context: Context): FDroidDatabase {
-        return FDroidDatabaseHolder.getDb(context)
+        val initialData = InitialData(context)
+        return FDroidDatabaseHolder.getDb(context, "fdroid_db", initialData)
     }
 }

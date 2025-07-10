@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.hilt)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.parcelize)
+    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.compose.compiler)
 }
 
@@ -55,6 +56,7 @@ dependencies {
     implementation(project(":libs:index"))
     implementation(project(":libs:database"))
     implementation(project(":libs:download"))
+    implementation(libs.kotlinx.serialization.json)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
