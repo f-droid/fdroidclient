@@ -27,6 +27,7 @@ fun CategoryList(categories: List<Category>?, modifier: Modifier = Modifier) {
             state = state,
             columns = GridCells.Adaptive(150.dp),
             contentPadding = PaddingValues(12.dp),
+            userScrollEnabled = false,
             modifier = modifier,
         ) {
             item(key = "header", span = {

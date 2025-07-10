@@ -67,6 +67,7 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                     installed = installed,
                     onAppListChanged = viewModel::setAppList,
                     appList = viewModel.currentList.collectAsStateWithLifecycle().value,
+                    discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
                     filterInfo = filterInfo,
                     currentItem = currentItem,
                     onSelectAppItem = viewModel::setAppDetails,

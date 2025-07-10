@@ -23,6 +23,8 @@ import org.fdroid.basic.repo.RepositoryManager
 import org.fdroid.basic.ui.categories.Category
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
+import org.fdroid.basic.ui.main.discover.DiscoverModel
+import org.fdroid.basic.ui.main.discover.DiscoverPresenter
 import org.fdroid.basic.ui.main.discover.FilterModel
 import org.fdroid.basic.ui.main.discover.FilterPresenter
 import org.fdroid.basic.ui.main.discover.Sort
@@ -44,6 +46,21 @@ class MainViewModel @Inject constructor(
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
+    val apps = db.getAppDao().getAppOverviewItems().asFlow().map { list ->
+        list.mapNotNull {
+            val repository = repositoryManager.getRepository(it.repoId)
+                ?: return@mapNotNull null
+            AppNavigationItem(
+                packageName = it.packageName,
+                name = it.name ?: "Unknown",
+                summary = it.summary ?: "Unknown",
+                isNew = it.lastUpdated == it.added,
+                lastUpdated = it.lastUpdated,
+                iconDownloadRequest = it.getIcon(localeList)
+                    ?.getDownloadRequest(repository),
+            )
+        }
+    }
     val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
         val collator = Collator.getInstance(Locale.getDefault())
         categories.map { category ->
@@ -64,24 +81,17 @@ class MainViewModel @Inject constructor(
     val addedCategories = _addedCategories.asStateFlow<List<String>>()
 
     val localeList = LocaleListCompat.getDefault()
+    val discoverModel: StateFlow<DiscoverModel> = scope.launchMolecule(mode = ContextClock) {
+        DiscoverPresenter(
+            appsFlow = apps,
+            categoriesFlow = categories,
+            repositoriesFlow = repositoryManager.repos,
+        )
+    }
     val filterModel: StateFlow<FilterModel> = scope.launchMolecule(mode = ContextClock) {
         FilterPresenter(
             areFiltersShownFlow = showFilters,
-            appsFlow = db.getAppDao().getAppOverviewItems().asFlow().map { list ->
-                list.mapNotNull {
-                    val repository = repositoryManager.getRepository(it.repoId)
-                        ?: return@mapNotNull null
-                    AppNavigationItem(
-                        packageName = it.packageName,
-                        name = it.name ?: "Unknown",
-                        summary = it.summary ?: "Unknown",
-                        isNew = it.lastUpdated == it.added,
-                        lastUpdated = it.lastUpdated,
-                        iconDownloadRequest = it.getIcon(localeList)
-                            ?.getDownloadRequest(repository),
-                    )
-                }
-            },
+            appsFlow = apps,
             sortByFlow = sortBy,
             allCategoriesFlow = categories,
             addedCategoriesFlow = addedCategories,

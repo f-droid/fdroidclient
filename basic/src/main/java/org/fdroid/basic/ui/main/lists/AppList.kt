@@ -49,7 +49,6 @@ sealed class AppList(val title: String) {
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppList(
     appList: AppList,
-    apps: List<AppNavigationItem>,
     filterInfo: FilterInfo,
     currentItem: MinimalApp?,
     modifier: Modifier = Modifier,
@@ -105,6 +104,7 @@ fun AppList(
                     else Modifier.selectableGroup()
                 ),
             ) {
+                val apps = filterInfo.model.apps
                 items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
                     val isSelected = currentItem?.packageName == navItem.packageName
                     val interactionModifier = if (currentItem == null) {

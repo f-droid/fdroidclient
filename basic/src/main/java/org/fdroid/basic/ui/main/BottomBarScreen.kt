@@ -31,8 +31,10 @@ import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.apps.MyAppsScaffold
 import org.fdroid.basic.ui.main.apps.UpdatableApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
+import org.fdroid.basic.ui.main.discover.DiscoverModel
 import org.fdroid.basic.ui.main.discover.DiscoverScaffold
 import org.fdroid.basic.ui.main.discover.FilterModel
+import org.fdroid.basic.ui.main.discover.LoadingDiscoverModel
 import org.fdroid.basic.ui.main.discover.Sort
 import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.basic.ui.main.lists.FilterInfo
@@ -52,6 +54,7 @@ fun BottomBarScreen(
     updates: List<UpdatableApp>,
     installed: List<InstalledApp>,
     appList: AppList,
+    discoverModel: DiscoverModel,
     filterInfo: FilterInfo,
     currentItem: MinimalApp?,
     onSelectAppItem: (MinimalApp) -> Unit,
@@ -101,8 +104,8 @@ fun BottomBarScreen(
     ) {
         when (currentDestination) {
             BottomNavDestinations.APPS -> DiscoverScaffold(
+                discoverModel = discoverModel,
                 appList = appList,
-                apps = filterInfo.model.apps,
                 filterInfo = filterInfo,
                 onMainNav = onMainNav,
                 currentItem = currentItem,
@@ -155,6 +158,7 @@ fun BottomBarPreview() {
         updates = emptyList(),
         installed = emptyList(),
         appList = AppList.New,
+        discoverModel = LoadingDiscoverModel(true),
         filterInfo = filterInfo,
         currentItem = null,
         onSelectAppItem = {},

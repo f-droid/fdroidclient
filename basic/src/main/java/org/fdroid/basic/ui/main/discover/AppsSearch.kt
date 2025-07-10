@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.basic.ui.categories.Category
-import org.fdroid.basic.ui.categories.CategoryList
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -40,7 +39,7 @@ fun AppsSearch(
         state = searchBarState,
         inputField = inputField,
     ) {
-        CategoryList(categories)
+
     }
 }
 

@@ -42,7 +42,7 @@ const val NUM_ITEMS = 42
 @OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3Api::class)
 fun DiscoverScaffold(
     appList: AppList,
-    apps: List<AppNavigationItem>,
+    discoverModel: DiscoverModel,
     filterInfo: FilterInfo,
     onMainNav: (String) -> Unit,
     onSelectAppItem: (MinimalApp) -> Unit,
@@ -70,8 +70,7 @@ fun DiscoverScaffold(
                 NavHost(navController = discoverNavController, startDestination = "discover") {
                     composable("discover") {
                         Discover(
-                            apps = apps,
-                            categories = filterInfo.model.allCategories,
+                            discoverModel = discoverModel,
                             onTitleTap = {
                                 onAppListChanged(it)
                                 discoverNavController.navigate("list")
@@ -87,7 +86,6 @@ fun DiscoverScaffold(
                     composable("list") {
                         AppList(
                             appList = appList,
-                            apps = apps,
                             filterInfo = filterInfo,
                             currentItem = if (isDetailVisible) currentItem else null,
                             onBackClicked = { discoverNavController.popBackStack() },
@@ -140,6 +138,14 @@ fun DiscoverScaffoldPreview() {
             override fun addCategory(category: String) {}
             override fun removeCategory(category: String) {}
         }
-        DiscoverScaffold(AppList.New, apps, filterInfo, {}, {}, {}, null)
+        DiscoverScaffold(
+            appList = AppList.New,
+            discoverModel = LoadingDiscoverModel(true),
+            filterInfo = filterInfo,
+            onMainNav = {},
+            onSelectAppItem = {},
+            onAppListChanged = {},
+            currentItem = null,
+        )
     }
 }
