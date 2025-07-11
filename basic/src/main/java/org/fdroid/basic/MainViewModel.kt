@@ -16,8 +16,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
+import org.fdroid.basic.details.AppDetailsManager
 import org.fdroid.basic.download.getDownloadRequest
-import org.fdroid.basic.manager.AppDetailsManager
 import org.fdroid.basic.manager.MyAppsManager
 import org.fdroid.basic.repo.RepositoryManager
 import org.fdroid.basic.ui.categories.Category
@@ -107,17 +107,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun setAppDetails(app: MinimalApp) {
-        val newApp = filterModel.value.apps.find { it.packageName == app.packageName }
-            ?: (updates.value.find { it.packageName == app.packageName }
-                ?: installed.value.find { it.packageName == app.packageName })?.let {
-                AppNavigationItem(
-                    packageName = it.packageName,
-                    name = it.name ?: "Unknown app",
-                    summary = "Summary",
-                    isNew = false,
-                )
-            }
-        appDetailsManager.setAppDetails(newApp)
+        appDetailsManager.setAppDetails(app)
     }
 
     fun toggleListFilterVisibility() {

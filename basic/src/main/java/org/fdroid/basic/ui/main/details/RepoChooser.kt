@@ -1,5 +1,6 @@
 package org.fdroid.basic.ui.main.details
 
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,10 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -29,16 +28,19 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.os.LocaleListCompat
 import org.fdroid.basic.R
-import org.fdroid.basic.ui.icons.PackageVariant
+import org.fdroid.basic.ui.main.repositories.RepoIcon
+import org.fdroid.basic.ui.utils.FDroidOutlineButton
 import org.fdroid.database.Repository
+import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.index.IndexFormatVersion.TWO
 
-
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun RepoChooser(
-    repos: List<String>,
+    repos: List<Repository>,
     currentRepoId: Long,
     preferredRepoId: Long,
     onRepoChanged: (Repository) -> Unit,
@@ -47,8 +49,10 @@ fun RepoChooser(
 ) {
     if (repos.isEmpty()) return
     var expanded by remember { mutableStateOf(false) }
-    val currentRepo = repos[0]
-    val isPreferred = true
+    val currentRepo = remember(currentRepoId) {
+        repos.find { it.repoId == currentRepoId } ?: error("Current repoId not in list")
+    }
+    val isPreferred = currentRepo.repoId == preferredRepoId
     Column(
         modifier = modifier.fillMaxWidth(),
     ) {
@@ -75,7 +79,7 @@ fun RepoChooser(
                     }
                 },
                 leadingIcon = {
-                    Icon(PackageVariant, null, Modifier.size(24.dp))
+                    RepoIcon(repo = currentRepo, modifier = Modifier.size(24.dp))
                 },
                 trailingIcon = {
                     if (repos.size > 1) Icon(
@@ -110,9 +114,9 @@ fun RepoChooser(
                 repos.iterator().forEach { repo ->
                     RepoMenuItem(
                         repo = repo,
-                        isPreferred = repo == repos[0],
+                        isPreferred = repo.repoId == preferredRepoId,
                         onClick = {
-                            // onRepoChanged(repo)
+                            onRepoChanged(repo)
                             expanded = false
                         },
                         modifier = modifier,
@@ -121,21 +125,20 @@ fun RepoChooser(
             }
         }
         if (!isPreferred) {
-            OutlinedButton(
-                onClick = { onPreferredRepoChanged(0L) },
+            FDroidOutlineButton(
+                text = stringResource(R.string.app_details_repository_button_prefer),
+                onClick = { onPreferredRepoChanged(currentRepo.repoId) },
                 modifier = Modifier
                     .align(End)
                     .padding(top = 8.dp),
-            ) {
-                Text(stringResource(R.string.app_details_repository_button_prefer))
-            }
+            )
         }
     }
 }
 
 @Composable
 private fun RepoMenuItem(
-    repo: String,
+    repo: Repository,
     isPreferred: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
@@ -149,17 +152,48 @@ private fun RepoMenuItem(
         },
         modifier = modifier,
         onClick = onClick,
-        leadingIcon = { Icon(PackageVariant, null, Modifier.size(24.dp)) }
+        leadingIcon = { RepoIcon(repo, Modifier.size(24.dp)) }
     )
 }
 
 @Composable
-private fun getRepoString(repo: String, isPreferred: Boolean) = buildAnnotatedString {
-    append(repo)
+private fun getRepoString(repo: Repository, isPreferred: Boolean) = buildAnnotatedString {
+    append(repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repository")
     if (isPreferred) {
         append(" ")
         pushStyle(SpanStyle(fontWeight = Bold))
         append(" ")
         append(stringResource(R.string.app_details_repository_preferred))
+    }
+}
+
+@Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+fun RepoChooserSingleRepoPreview() {
+    val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
+    FDroidContent(pureBlack = true) {
+        RepoChooser(listOf(repo1), 1L, 1L, {}, {})
+    }
+}
+
+@Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+fun RepoChooserPreview() {
+    val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
+    val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
+    val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
+    FDroidContent(pureBlack = true) {
+        RepoChooser(listOf(repo1, repo2, repo3), 1L, 1L, {}, {})
+    }
+}
+
+@Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+fun RepoChooserNightPreview() {
+    val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
+    val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
+    val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
+    FDroidContent(pureBlack = true) {
+        RepoChooser(listOf(repo1, repo2, repo3), 1L, 2L, {}, {})
     }
 }

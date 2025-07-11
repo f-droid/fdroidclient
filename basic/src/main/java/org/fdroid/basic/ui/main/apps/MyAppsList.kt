@@ -35,6 +35,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import org.fdroid.basic.R
+import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.ui.main.discover.Sort
 
 @Composable
@@ -42,7 +43,7 @@ import org.fdroid.basic.ui.main.discover.Sort
 fun MyAppsList(
     updatableApps: List<UpdatableApp>,
     installedApps: List<InstalledApp>,
-    currentItem: MinimalApp?,
+    currentItem: AppDetailsItem?,
     onItemClick: (MinimalApp) -> Unit,
     sortBy: Sort,
     onSortChanged: (Sort) -> Unit,
@@ -137,7 +138,7 @@ fun MyAppsList(
                 )
             }
             items(updatableApps, key = { it.packageName }, contentType = { "A" }) { app ->
-                val isSelected = app.packageName == currentItem?.packageName
+                val isSelected = app.packageName == currentItem?.app?.packageName
                 val interactionModifier = if (currentItem == null) {
                     Modifier.clickable(
                         onClick = { onItemClick(app) }
@@ -161,7 +162,7 @@ fun MyAppsList(
                 )
             }
             items(installedApps, key = { it.packageName }, contentType = { "B" }) { app ->
-                val isSelected = app.packageName == currentItem?.packageName
+                val isSelected = app.packageName == currentItem?.app?.packageName
                 val interactionModifier = if (currentItem == null) {
                     Modifier.clickable(
                         onClick = { onItemClick(app) }

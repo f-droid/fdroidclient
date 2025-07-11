@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -29,9 +30,10 @@ fun ExpandableSection(
     icon: Painter?,
     title: String,
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-    var sectionExpanded by rememberSaveable { mutableStateOf(false) }
+    val isPreview = LocalInspectionMode.current
+    var sectionExpanded by rememberSaveable { mutableStateOf(isPreview) }
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

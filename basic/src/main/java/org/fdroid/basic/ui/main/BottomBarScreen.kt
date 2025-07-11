@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.window.core.layout.WindowWidthSizeClass
 import org.fdroid.basic.R
+import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.ui.main.apps.InstalledApp
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.apps.MyAppsScaffold
@@ -56,7 +57,7 @@ fun BottomBarScreen(
     appList: AppList,
     discoverModel: DiscoverModel,
     filterInfo: FilterInfo,
-    currentItem: MinimalApp?,
+    currentItem: AppDetailsItem?,
     onSelectAppItem: (MinimalApp) -> Unit,
     sortBy: Sort,
     onSortChanged: (Sort) -> Unit,

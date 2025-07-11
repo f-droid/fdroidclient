@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.ui.Icons
 import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.main.details.AppDetails
@@ -33,7 +34,7 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 fun MyAppsScaffold(
     updatableApps: List<UpdatableApp>,
     installedApps: List<InstalledApp>,
-    currentItem: MinimalApp?,
+    currentItem: AppDetailsItem?,
     onSelectAppItem: (MinimalApp) -> Unit,
     sortBy: Sort,
     onSortChanged: (Sort) -> Unit,

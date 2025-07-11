@@ -17,7 +17,6 @@ import dagger.hilt.android.HiltAndroidApp
 import org.fdroid.basic.repo.RepoUpdateWorker
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.coil.DownloadRequestFetcher
-import java.io.File
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -60,8 +59,10 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
                     .build()
             }
             .diskCache {
+                // TODO disk cache needs to be manually filled by the Fetcher
+                //  this is not automatic like it is with Glide
                 DiskCache.Builder()
-                    .directory(File(context.cacheDir, "coil"))
+                    .directory(context.cacheDir.resolve("coil"))
                     .maxSizePercent(0.05)
                     .build()
             }

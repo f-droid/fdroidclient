@@ -1,4 +1,4 @@
-package org.fdroid.basic.ui.main.details
+package org.fdroid.basic.ui.icons
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 
-public val License: ImageVector
+val License: ImageVector
     get() {
         if (_License != null) {
             return _License!!

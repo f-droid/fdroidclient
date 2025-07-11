@@ -36,8 +36,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
+import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.ui.main.apps.MinimalApp
-import org.fdroid.basic.ui.main.discover.AppNavigationItem
 
 sealed class AppList(val title: String) {
     data object New : AppList("New apps")
@@ -50,10 +50,10 @@ sealed class AppList(val title: String) {
 fun AppList(
     appList: AppList,
     filterInfo: FilterInfo,
-    currentItem: MinimalApp?,
+    currentItem: AppDetailsItem?,
     modifier: Modifier = Modifier,
     onBackClicked: () -> Unit,
-    onItemClick: (AppNavigationItem) -> Unit,
+    onItemClick: (MinimalApp) -> Unit,
 ) {
     val scrollBehavior = exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val addedRepos = remember { mutableStateListOf<String>() }
@@ -106,7 +106,7 @@ fun AppList(
             ) {
                 val apps = filterInfo.model.apps
                 items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
-                    val isSelected = currentItem?.packageName == navItem.packageName
+                    val isSelected = currentItem?.app?.packageName == navItem.packageName
                     val interactionModifier = if (currentItem == null) {
                         Modifier.clickable(
                             onClick = { onItemClick(navItem) }

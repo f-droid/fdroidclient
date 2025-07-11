@@ -25,6 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
+import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.details.AppDetails
 import org.fdroid.basic.ui.main.lists.AppList
@@ -36,8 +37,6 @@ enum class Sort {
     LATEST,
 }
 
-const val NUM_ITEMS = 42
-
 @Composable
 @OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3Api::class)
 fun DiscoverScaffold(
@@ -47,7 +46,7 @@ fun DiscoverScaffold(
     onMainNav: (String) -> Unit,
     onSelectAppItem: (MinimalApp) -> Unit,
     onAppListChanged: (AppList) -> Unit,
-    currentItem: MinimalApp?,
+    currentItem: AppDetailsItem?,
     modifier: Modifier = Modifier,
 ) {
     val navigator = rememberListDetailPaneScaffoldNavigator<MinimalApp>()
