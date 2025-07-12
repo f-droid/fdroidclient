@@ -14,12 +14,12 @@ public class DbUpdateChecker @JvmOverloads constructor(
     db: FDroidDatabase,
     private val packageManager: PackageManager,
     compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(packageManager),
+    private val updateChecker: UpdateChecker = UpdateChecker(compatibilityChecker),
 ) {
 
     private val appDao = db.getAppDao() as AppDaoInt
     private val versionDao = db.getVersionDao() as VersionDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
-    private val updateChecker = UpdateChecker(compatibilityChecker)
 
     /**
      * Returns a list of apps that can be updated.
