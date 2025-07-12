@@ -326,9 +326,9 @@ public abstract class RepoAttribute {
 public data class AntiFeature internal constructor(
     internal val repoId: Long,
     internal val id: String,
-    override val icon: LocalizedFileV2,
+    override val icon: LocalizedFileV2 = emptyMap(),
     override val name: LocalizedTextV2,
-    override val description: LocalizedTextV2,
+    override val description: LocalizedTextV2 = emptyMap(),
 ) : RepoAttribute() {
     internal companion object {
         const val TABLE = "AntiFeature"
@@ -361,9 +361,9 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
 public data class Category internal constructor(
     public val repoId: Long,
     public val id: String,
-    override val icon: LocalizedFileV2,
+    override val icon: LocalizedFileV2 = emptyMap(),
     override val name: LocalizedTextV2,
-    override val description: LocalizedTextV2,
+    override val description: LocalizedTextV2 = emptyMap(),
 ) : RepoAttribute() {
     internal companion object {
         const val TABLE = "Category"
@@ -398,7 +398,7 @@ public data class ReleaseChannel(
     internal val id: String,
     override val icon: LocalizedFileV2 = emptyMap(),
     override val name: LocalizedTextV2,
-    override val description: LocalizedTextV2,
+    override val description: LocalizedTextV2 = emptyMap(),
 ) : RepoAttribute() {
     internal companion object {
         const val TABLE = "ReleaseChannel"
