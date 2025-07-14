@@ -175,6 +175,21 @@ internal class IndexV2DiffTest : DbTest() {
     }
 
     @Test
+    @Ignore("Removing all packages via diff currently not supported") // TODO
+    fun testMinRemovePackages() {
+        val diffJson = """{
+          "packages": null
+        }""".trimIndent()
+        testJsonDiff(
+            startPath = "index-min-v2.json",
+            diff = diffJson,
+            endIndex = TestDataMinV2.index.copy(
+                packages = emptyMap(),
+            ),
+        )
+    }
+
+    @Test
     fun testMinNoMetadataNoVersion() {
         val diffJson = """{
           "packages": {
