@@ -7,6 +7,8 @@ import org.fdroid.index.parseV2
 import org.fdroid.index.v2.IndexV2
 import org.fdroid.index.v2.IndexV2DiffStreamProcessor
 import org.fdroid.test.TestDataMaxV2
+import org.fdroid.test.TestDataMaxV2.PACKAGE_NAME_3
+import org.fdroid.test.TestDataMaxV2.app3
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
 import org.junit.Ignore
@@ -175,6 +177,21 @@ internal class IndexV2DiffTest : DbTest() {
     }
 
     @Test
+    @Ignore("Removing all packages via diff currently not supported") // TODO
+    fun testMinRemovePackages() {
+        val diffJson = """{
+          "packages": null
+        }""".trimIndent()
+        testJsonDiff(
+            startPath = "index-min-v2.json",
+            diff = diffJson,
+            endIndex = TestDataMinV2.index.copy(
+                packages = emptyMap(),
+            ),
+        )
+    }
+
+    @Test
     fun testMinNoMetadataNoVersion() {
         val diffJson = """{
           "packages": {
@@ -186,6 +203,90 @@ internal class IndexV2DiffTest : DbTest() {
             startPath = "index-min-v2.json",
             diff = diffJson,
             endIndex = TestDataMinV2.index,
+        )
+    }
+
+    @Test
+    fun testMaxRemoveOptionals() {
+        val diffJson = """{
+          "packages": {
+            "$PACKAGE_NAME_3": {
+                "metadata": {
+                    "name": null,
+                    "summary": null,
+                    "description": null,
+                    "categories": null,
+                    "donate": null,
+                    "icon": null,
+                    "featureGraphic": null,
+                    "promoGraphic": null,
+                    "tvBanner": null,
+                    "video": null,
+                    "screenshots": null,
+                    "sevenInch": null,
+                    "tenInch": null,
+                    "wear": null,
+                    "tv": null
+                 },
+                  "versions": {
+                    "8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06": {
+                        "src": null, 
+                        "releaseChannels": null, 
+                        "antiFeatures": null, 
+                        "whatsNew": null,
+                        "manifest": {
+                            "usesSdk": null,
+                            "maxSdkVersion": null,
+                            "signer": null,
+                            "usesPermission": null,
+                            "usesPermissionSdk23": null,
+                            "nativecode": null,
+                            "features": null
+                        }
+                    }
+                  }
+                }
+            }
+        }""".trimIndent()
+        val packages = TestDataMaxV2.index.packages.toMutableMap()
+        val versions = packages[PACKAGE_NAME_3]!!.versions.toMutableMap()
+        val version = versions["8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06"]!!
+        versions["8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06"] = version
+            .copy(
+                src = null,
+                releaseChannels = emptyList(),
+                antiFeatures = emptyMap(),
+                whatsNew = emptyMap(),
+                manifest = version.manifest.copy(
+                    usesSdk = null,
+                    maxSdkVersion = null,
+                    signer = null,
+                    usesPermission = emptyList(),
+                    usesPermissionSdk23 = emptyList(),
+                    nativecode = emptyList(),
+                    features = emptyList(),
+                )
+            )
+        packages[PACKAGE_NAME_3] = app3.copy(
+            metadata = app3.metadata.copy(
+                name = null,
+                summary = null,
+                description = null,
+                categories = emptyList(),
+                donate = emptyList(),
+                icon = null,
+                featureGraphic = null,
+                promoGraphic = null,
+                tvBanner = null,
+                video = null,
+                screenshots = null,
+            ),
+            versions = versions,
+        )
+        testJsonDiff(
+            startPath = "index-max-v2.json",
+            diff = diffJson,
+            endIndex = TestDataMaxV2.index.copy(packages = packages),
         )
     }
 

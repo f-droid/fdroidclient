@@ -1,7 +1,6 @@
 package org.fdroid.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import org.fdroid.database.TestUtils.assertRepoEquals
@@ -16,12 +15,14 @@ import org.fdroid.test.TestRepoUtils.getRandomLocalizedFileV2
 import org.fdroid.test.TestRepoUtils.getRandomLocalizedTextV2
 import org.fdroid.test.TestRepoUtils.getRandomMirror
 import org.fdroid.test.TestRepoUtils.getRandomRepo
+import org.fdroid.test.TestUtils.getRandomList
 import org.fdroid.test.TestUtils.getRandomMap
 import org.fdroid.test.TestUtils.getRandomString
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.random.Random
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Tests that repository diffs get applied to the database correctly.
@@ -171,11 +172,13 @@ internal class RepositoryDiffTest : DbTest() {
         val repo = getRandomRepo().copy(antiFeatures = antiFeatures)
 
         @Suppress("UNCHECKED_CAST")
-        val newAntiFeatures = mapOf(antiFeatureKey to antiFeature.copy(
-            icon = emptyMap(),
-            name = getRandomLocalizedTextV2(),
-            description = getRandomLocalizedTextV2(),
-        ))
+        val newAntiFeatures = mapOf(
+            antiFeatureKey to antiFeature.copy(
+                icon = emptyMap(),
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
+        )
         val json = """
             {
               "antiFeatures": {
@@ -188,6 +191,32 @@ internal class RepositoryDiffTest : DbTest() {
                 expectedFeatures.toRepoAntiFeatures(repos[0].repoId)
             assertEquals(expectedRepoAntiFeatures.toSet(), repos[0].antiFeatures.toSet())
             assertRepoEquals(repo.copy(antiFeatures = expectedFeatures), repos[0])
+        }
+    }
+
+    @Test
+    fun antiFeaturesRemovedOptionalsDiff() {
+        val antiFeatureKey = getRandomString()
+        val antiFeature = AntiFeatureV2(
+            icon = getRandomLocalizedFileV2(),
+            name = getRandomLocalizedTextV2(),
+            description = getRandomLocalizedTextV2(),
+        )
+        val antiFeatures = mapOf(antiFeatureKey to antiFeature)
+        val repo = getRandomRepo().copy(antiFeatures = antiFeatures)
+        val json = """
+            {
+              "antiFeatures": {
+                  "$antiFeatureKey": {
+                      "icon": null,
+                      "description": null
+                  }
+              }
+            }""".trimIndent()
+        testDiff(repo, json) { repos ->
+            // icon and description maps were emptied (not nulled as they aren't nullable)
+            assertEquals(emptyMap(), repos[0].getAntiFeatures()[antiFeatureKey]!!.icon)
+            assertEquals(emptyMap(), repos[0].getAntiFeatures()[antiFeatureKey]!!.description)
         }
     }
 
@@ -212,11 +241,37 @@ internal class RepositoryDiffTest : DbTest() {
               "categories": ${Json.encodeToString(categories)}
             }""".trimIndent()
         testDiff(repo, json) { repos ->
-            val expectedFeatures = repo.categories.applyDiff(categories)
+            val expectedCategories = repo.categories.applyDiff(categories)
             val expectedRepoCategories =
-                expectedFeatures.toRepoCategories(repos[0].repoId)
+                expectedCategories.toRepoCategories(repos[0].repoId)
             assertEquals(expectedRepoCategories.toSet(), repos[0].categories.toSet())
-            assertRepoEquals(repo.copy(categories = expectedFeatures), repos[0])
+            assertRepoEquals(repo.copy(categories = expectedCategories), repos[0])
+        }
+    }
+
+    @Test
+    fun categoriesRemovedOptionalsDiff() {
+        val categoryId = getRandomString()
+        val repo = getRandomRepo().copy(categories = getRandomMap {
+            categoryId to CategoryV2(
+                icon = getRandomLocalizedFileV2(),
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
+        })
+        val json = """
+            {
+              "categories": {
+                  "$categoryId": {
+                      "icon": null,
+                      "description": null
+                  }
+              }
+            }""".trimIndent()
+        testDiff(repo, json) { repos ->
+            // icon and description maps were emptied (not nulled as they aren't nullable)
+            assertEquals(emptyMap(), repos[0].getCategories()[categoryId]!!.icon)
+            assertEquals(emptyMap(), repos[0].getCategories()[categoryId]!!.description)
         }
     }
 
@@ -241,6 +296,87 @@ internal class RepositoryDiffTest : DbTest() {
                 expectedFeatures.toRepoReleaseChannel(repos[0].repoId)
             assertEquals(expectedRepoReleaseChannels.toSet(), repos[0].releaseChannels.toSet())
             assertRepoEquals(repo.copy(releaseChannels = expectedFeatures), repos[0])
+        }
+    }
+
+    @Test
+    fun releaseChannelsRemovedOptionalsDiff() {
+        val releaseChannelKey = getRandomString()
+        val repo = getRandomRepo().copy(releaseChannels = getRandomMap {
+            releaseChannelKey to ReleaseChannelV2(
+                name = getRandomLocalizedTextV2(),
+                description = getRandomLocalizedTextV2(),
+            )
+        })
+        val json = """
+            {
+              "releaseChannels": {
+                  "$releaseChannelKey": {
+                      "description": null,
+                      "icon": null
+                  }
+              }
+            }""".trimIndent()
+        testDiff(repo, json) { repos ->
+            // icon and description maps were emptied (not nulled as they aren't nullable)
+            assertEquals(emptyMap(), repos[0].getReleaseChannels()[releaseChannelKey]!!.icon)
+            assertEquals(emptyMap(), repos[0].getReleaseChannels()[releaseChannelKey]!!.description)
+        }
+    }
+
+    @Test
+    fun removeAllOptionalsDiff() {
+        val repo = getRandomRepo().copy(
+            // ensure optional values exist
+            name = getRandomLocalizedTextV2(2),
+            webBaseUrl = getRandomString(),
+            mirrors = getRandomList(2) { getRandomMirror() },
+            antiFeatures = getRandomMap(2) {
+                getRandomString() to AntiFeatureV2(
+                    icon = getRandomLocalizedFileV2(),
+                    name = getRandomLocalizedTextV2(),
+                    description = getRandomLocalizedTextV2(),
+                )
+            },
+            categories = getRandomMap(2) {
+                getRandomString() to CategoryV2(
+                    icon = getRandomLocalizedFileV2(),
+                    name = getRandomLocalizedTextV2(),
+                    description = getRandomLocalizedTextV2(),
+                )
+            },
+            releaseChannels = getRandomMap(2) {
+                getRandomString() to ReleaseChannelV2(
+                    name = getRandomLocalizedTextV2(),
+                    description = getRandomLocalizedTextV2(),
+                )
+            },
+        )
+        assertTrue(repo.name.isNotEmpty())
+        assertTrue(repo.icon.isNotEmpty())
+        assertTrue(!repo.webBaseUrl.isNullOrEmpty())
+        assertTrue(repo.mirrors.isNotEmpty())
+        assertTrue(repo.antiFeatures.isNotEmpty())
+        assertTrue(repo.categories.isNotEmpty())
+        assertTrue(repo.releaseChannels.isNotEmpty())
+        val json = """
+            {
+              "name": null,
+              "icon": null,
+              "webBaseUrl": null,
+              "mirrors": null,
+              "antiFeatures": null,
+              "categories": null,
+              "releaseChannels": null
+            }""".trimIndent()
+        testDiff(repo, json) { repos ->
+            assertEquals(emptyMap(), repos[0].repository.name)
+            assertEquals(null, repos[0].repository.icon)
+            assertEquals(null, repos[0].webBaseUrl)
+            assertEquals(emptyList(), repos[0].mirrors)
+            assertEquals(emptyMap(), repos[0].getAntiFeatures())
+            assertEquals(emptyMap(), repos[0].getCategories())
+            assertEquals(emptyMap(), repos[0].getReleaseChannels())
         }
     }
 
