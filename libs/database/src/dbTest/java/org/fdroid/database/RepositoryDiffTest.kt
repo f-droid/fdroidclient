@@ -331,6 +331,26 @@ internal class RepositoryDiffTest : DbTest() {
             name = getRandomLocalizedTextV2(2),
             webBaseUrl = getRandomString(),
             mirrors = getRandomList(2) { getRandomMirror() },
+            antiFeatures = getRandomMap(2) {
+                getRandomString() to AntiFeatureV2(
+                    icon = getRandomLocalizedFileV2(),
+                    name = getRandomLocalizedTextV2(),
+                    description = getRandomLocalizedTextV2(),
+                )
+            },
+            categories = getRandomMap(2) {
+                getRandomString() to CategoryV2(
+                    icon = getRandomLocalizedFileV2(),
+                    name = getRandomLocalizedTextV2(),
+                    description = getRandomLocalizedTextV2(),
+                )
+            },
+            releaseChannels = getRandomMap(2) {
+                getRandomString() to ReleaseChannelV2(
+                    name = getRandomLocalizedTextV2(),
+                    description = getRandomLocalizedTextV2(),
+                )
+            },
         )
         assertTrue(repo.name.isNotEmpty())
         assertTrue(repo.icon.isNotEmpty())
