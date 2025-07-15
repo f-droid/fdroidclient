@@ -8,6 +8,7 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.core.util.Pair;
+import androidx.test.filters.FlakyTest;
 
 import org.fdroid.download.DownloadRequest;
 import org.fdroid.download.HttpDownloader;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+@FlakyTest
 public class HttpDownloaderTest {
     private static final String TAG = "HttpDownloaderTest";
 

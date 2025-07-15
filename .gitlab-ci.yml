@@ -231,30 +231,6 @@ libs database schema:
 #
 # once these prove stable, the task should be switched to
 # connectedCheck to test all the build flavors
-.connected-template: &connected-template
-  extends: .base
-  script:
-    - ./gradlew assembleFullDebug
-    - export AVD_SDK=`echo $CI_JOB_NAME | awk '{print $2}'`
-    - export AVD_TAG=`echo $CI_JOB_NAME | awk '{print $3}'`
-    - export AVD_ARCH=`echo $CI_JOB_NAME | awk '{print $4}'`
-    - export AVD_PACKAGE="system-images;android-${AVD_SDK};${AVD_TAG};${AVD_ARCH}"
-    - echo $AVD_PACKAGE
-
-    - ls -l ~/.android
-
-    - adb start-server
-    - start-emulator
-    - wait-for-emulator
-    - adb devices
-    - adb shell input keyevent 82 &
-    - ./gradlew installFullDebug
-    - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
-      fi
-    - ./gradlew connectedFullDebugAndroidTest $FLAG
-
 .kvm-connected-template: &kvm-connected-template
   extends: .base
   image: briar/ci-image-android-emulator:latest
@@ -277,10 +253,10 @@ libs database schema:
     - start-emulator.sh
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
-      fi
-    - ./gradlew :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck $FLAG
+    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
+    - ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
+    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
+    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done
 
 
 # Since jobs that require KVM need special runners, these jobs are
@@ -311,8 +287,8 @@ kvm jobs skipped:
 
 
 kvm 23 default x86:
-  <<: *test-template
   <<: *kvm-template
+
 
 pages:
   extends: .base

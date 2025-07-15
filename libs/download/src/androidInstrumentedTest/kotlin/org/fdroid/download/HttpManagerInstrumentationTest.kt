@@ -1,7 +1,9 @@
 package org.fdroid.download
 
 import android.os.Build.VERSION.SDK_INT
+import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.FlakyTest
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.okhttp.OkHttp
@@ -22,7 +24,9 @@ import javax.net.ssl.SSLHandshakeException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.fail
 
+@FlakyTest
 @RunWith(AndroidJUnit4::class)
 @Suppress("BlockingMethodInNonBlockingContext")
 internal class HttpManagerInstrumentationTest {
@@ -31,11 +35,29 @@ internal class HttpManagerInstrumentationTest {
 
     @Test
     fun testCleartext() = runSuspend {
-        val httpManager = HttpManager(userAgent, null)
-        val mirror = Mirror("http://neverssl.com")
-        val downloadRequest = DownloadRequest("/", listOf(mirror))
+        suspend fun noSsl(url: String) {
+            val httpManager = HttpManager(userAgent, null)
+            val mirror = Mirror(url)
+            val downloadRequest = DownloadRequest("/", listOf(mirror))
 
-        httpManager.getBytes(downloadRequest)
+            httpManager.getBytes(downloadRequest)
+        }
+        // try different services in case one is down
+        listOf(
+            "http://http.badssl.com/",
+            "http://neverssl.com",
+            "http://httpforever.com/",
+        ).forEach { url ->
+            Log.i("HttpManagerInstrumentationTest", "Testing $url")
+            try {
+                noSsl(url)
+                Log.i("HttpManagerInstrumentationTest", "Success $url")
+                return@runSuspend // success
+            } catch (e: Exception) {
+                Log.e("HttpManagerInstrumentationTest", "Error $url ", e)
+            }
+        }
+        fail("All no-SSL domains failed.")
     }
 
     @Test(expected = SSLHandshakeException::class)
