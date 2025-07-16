@@ -26,8 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.fdroid.basic.ui.main.discover.FilterModel
-import org.fdroid.basic.ui.main.discover.Sort
 
 interface FilterInfo {
     val model: FilterModel

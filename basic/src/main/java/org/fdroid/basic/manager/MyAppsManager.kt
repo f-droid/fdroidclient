@@ -11,7 +11,7 @@ import org.fdroid.basic.ui.Icons
 import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.main.apps.InstalledApp
 import org.fdroid.basic.ui.main.apps.UpdatableApp
-import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.main.lists.Sort
 import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton

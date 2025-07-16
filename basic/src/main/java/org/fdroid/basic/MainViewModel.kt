@@ -25,9 +25,9 @@ import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.basic.ui.main.discover.DiscoverModel
 import org.fdroid.basic.ui.main.discover.DiscoverPresenter
-import org.fdroid.basic.ui.main.discover.FilterModel
-import org.fdroid.basic.ui.main.discover.FilterPresenter
-import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.main.lists.FilterModel
+import org.fdroid.basic.ui.main.lists.FilterPresenter
+import org.fdroid.basic.ui.main.lists.Sort
 import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.database.FDroidDatabase
 import java.text.Collator

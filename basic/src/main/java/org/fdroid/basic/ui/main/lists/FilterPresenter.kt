@@ -1,11 +1,17 @@
-package org.fdroid.basic.ui.main.discover
+package org.fdroid.basic.ui.main.lists
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.basic.ui.categories.Category
+import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import java.util.Locale
+
+enum class Sort {
+    NAME,
+    LATEST,
+}
 
 @Composable
 fun FilterPresenter(

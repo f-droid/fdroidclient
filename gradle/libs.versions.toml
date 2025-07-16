@@ -10,6 +10,7 @@ dokka = "2.1.0"
 mavenPublish = "0.34.0"
 jlleitschuhKtlint = "13.1.0"
 
+kotlinxSerializationCore = "1.8.1"
 kotlinxSerializationJson = "1.9.0"
 kotlinxCoroutinesTest = "1.10.2"
 
@@ -36,8 +37,13 @@ androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
 androidxComposeBom = "2025.09.01"
 androidxActivityCompose = "1.11.0"
-androidxNavCompose = "2.9.1"
 accompanistDrawablepainter = "0.37.3"
+
+# navigation3
+nav3Core = "1.0.0-alpha10"
+lifecycleViewmodelNav3 = "2.10.0-alpha04"
+material3AdaptiveNav3 = "1.0.0-alpha03"
+
 material = "1.13.0"
 
 #noinspection GradleDependency newer version need minSdk 24 or library desugering
@@ -84,6 +90,7 @@ json = "20220320"
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
@@ -110,13 +117,12 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha",
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavCompose" }
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
-androidx-compose-material3-adaptive = { module = "androidx.compose.material3.adaptive:adaptive" }
-androidx-compose-material3-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation" }
-androidx-compose-material3-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout" }
-androidx-compose-material3-adaptive-navigation-suite-android = { module = "androidx.compose.material3:material3-adaptive-navigation-suite-android" }
+androidx-compose-material3-adaptive-navigation3 = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "material3AdaptiveNav3" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompiler" }
 

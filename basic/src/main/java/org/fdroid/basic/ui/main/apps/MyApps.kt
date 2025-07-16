@@ -33,20 +33,29 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
 import org.fdroid.basic.R
 import org.fdroid.basic.details.AppDetailsItem
-import org.fdroid.basic.ui.main.discover.Sort
+import org.fdroid.basic.ui.Names
+import org.fdroid.basic.ui.NavigationKey
+import org.fdroid.basic.ui.main.BottomBar
+import org.fdroid.basic.ui.main.lists.Sort
+import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun MyAppsList(
+fun MyApps(
     updatableApps: List<UpdatableApp>,
     installedApps: List<InstalledApp>,
     currentItem: AppDetailsItem?,
     onItemClick: (MinimalApp) -> Unit,
+    onNav: (NavKey) -> Unit,
     sortBy: Sort,
     onSortChanged: (Sort) -> Unit,
+    isBigScreen: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
@@ -120,6 +129,9 @@ fun MyAppsList(
                 scrollBehavior = scrollBehavior,
             )
         },
+        bottomBar = {
+            if (!isBigScreen) BottomBar(updatableApps.size, NavigationKey.MyApps, onNav)
+        },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
         LazyColumn(
@@ -179,5 +191,44 @@ fun MyAppsList(
                 InstalledAppRow(app, isSelected, modifier)
             }
         }
+    }
+}
+
+@Preview
+@PreviewScreenSizes
+@Composable
+fun MyAppsScaffoldPreview() {
+    FDroidContent {
+        val app1 = UpdatableApp(
+            packageName = "A",
+            name = Names.randomName,
+            currentVersionName = "1.0.1",
+            updateVersionName = "1.1.0",
+            size = 123456789,
+        )
+        val app2 = UpdatableApp(
+            packageName = "B",
+            name = Names.randomName,
+            currentVersionName = "3.0.1",
+            updateVersionName = "3.1.0",
+            size = 9876543,
+        )
+        val installedApp1 =
+            InstalledApp("1", Names.randomName, org.fdroid.basic.ui.Icons.randomIcon, "3.0.1")
+        val installedApp2 =
+            InstalledApp("2", Names.randomName, org.fdroid.basic.ui.Icons.randomIcon, "1.0")
+        val installedApp3 =
+            InstalledApp("3", Names.randomName, org.fdroid.basic.ui.Icons.randomIcon, "0.1")
+        var sortBy by remember { mutableStateOf(Sort.NAME) }
+        MyApps(
+            updatableApps = listOf(app1, app2),
+            installedApps = listOf(installedApp1, installedApp2, installedApp3),
+            currentItem = null,
+            onItemClick = {},
+            onNav = {},
+            sortBy = sortBy,
+            onSortChanged = { sortBy = it },
+            isBigScreen = false,
+        )
     }
 }

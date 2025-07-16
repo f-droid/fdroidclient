@@ -3,8 +3,7 @@ package org.fdroid.basic.repo
 import android.content.Context
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -13,6 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import org.fdroid.basic.ui.main.repositories.Repository
+import org.fdroid.basic.utils.IoDispatcher
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.Added
@@ -24,12 +24,14 @@ import javax.inject.Singleton
 @Singleton // TODO maybe more like a ViewModel name clash with RepoManager
 class RepositoryManager @Inject constructor(
     @ApplicationContext private val context: Context,
+    @IoDispatcher private val coroutineScope: CoroutineScope,
     private val repoManager: RepoManager,
 ) {
 
     val repos: Flow<List<Repository>> = repoManager.repositoriesState.map { repos ->
         repos.map {
             Repository(
+                repoId = it.repoId,
                 address = it.address,
                 timestamp = it.timestamp,
                 lastUpdated = it.lastUpdated,
@@ -52,7 +54,7 @@ class RepositoryManager @Inject constructor(
     fun addRepo() {
         // just temp code to get repo into DB
         repoManager.fetchRepositoryPreview("https://f-droid.org/repo")
-        GlobalScope.launch(Dispatchers.IO) {
+        coroutineScope.launch {
             var hasAdded = false
             repoManager.addRepoState.collect {
                 if (it is Fetching) {

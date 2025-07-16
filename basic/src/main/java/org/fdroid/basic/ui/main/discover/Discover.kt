@@ -37,7 +37,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
+import org.fdroid.basic.ui.NavigationKey
 import org.fdroid.basic.ui.categories.CategoryList
+import org.fdroid.basic.ui.main.BottomBar
 import org.fdroid.basic.ui.main.MainOverFlowMenu
 import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.basic.ui.main.topBarMenuItems
@@ -47,10 +50,12 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Discover(
     discoverModel: DiscoverModel,
+    numUpdates: Int,
+    isBigScreen: Boolean,
     modifier: Modifier = Modifier,
     onTitleTap: (AppList) -> Unit,
     onAppTap: (AppNavigationItem) -> Unit,
-    onMainNav: (String) -> Unit,
+    onNav: (NavKey) -> Unit,
 ) {
     val searchBarState = rememberSearchBarState()
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
@@ -62,7 +67,7 @@ fun Discover(
                 },
                 actions = {
                     topBarMenuItems.forEach { dest ->
-                        IconButton(onClick = { onMainNav(dest.id) }) {
+                        IconButton(onClick = { onNav(dest.id) }) {
                             Icon(
                                 imageVector = dest.icon,
                                 contentDescription = stringResource(dest.label),
@@ -78,13 +83,16 @@ fun Discover(
                     }
                     MainOverFlowMenu(menuExpanded, {
                         menuExpanded = false
-                        onMainNav(it.id)
+                        onNav(it.id)
                     }) {
                         menuExpanded = false
                     }
                 },
                 scrollBehavior = scrollBehavior,
             )
+        },
+        bottomBar = {
+            if (!isBigScreen) BottomBar(numUpdates, NavigationKey.Discover, onNav)
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
@@ -154,6 +162,13 @@ fun Discover(
 @Composable
 fun LoadingDiscoverPreview() {
     FDroidContent {
-        Discover(LoadingDiscoverModel(true), Modifier, {}, {}, {})
+        Discover(
+            discoverModel = LoadingDiscoverModel(true),
+            numUpdates = 23,
+            isBigScreen = false,
+            onTitleTap = {},
+            onAppTap = {},
+            onNav = {},
+        )
     }
 }
