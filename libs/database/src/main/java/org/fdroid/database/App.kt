@@ -379,6 +379,7 @@ public data class UpdatableApp internal constructor(
     public override val repoId: Long,
     public override val packageName: String,
     public val installedVersionCode: Long,
+    public val installedVersionName: String,
     public val update: AppVersion,
     public val isFromPreferredRepo: Boolean,
     /**

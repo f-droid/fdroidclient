@@ -69,6 +69,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
                 val app = getUpdatableApp(
                     version = version,
                     installedVersionCode = getLongVersionCode(packageInfo),
+                    installedVersionName = packageInfo.versionName ?: "???", // should never be null
                     isFromPreferredRepo = preferredRepoId == version.repoId,
                 )
                 if (app != null) updatableApps.add(app)
@@ -158,6 +159,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
     private fun getUpdatableApp(
         version: Version,
         installedVersionCode: Long,
+        installedVersionName: String,
         isFromPreferredRepo: Boolean,
     ): UpdatableApp? {
         val versionedStrings = versionDao.getVersionedStrings(
@@ -171,6 +173,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
             repoId = version.repoId,
             packageName = version.packageName,
             installedVersionCode = installedVersionCode,
+            installedVersionName = installedVersionName,
             update = version.toAppVersion(versionedStrings),
             isFromPreferredRepo = isFromPreferredRepo,
             hasKnownVulnerability = version.hasKnownVulnerability,
