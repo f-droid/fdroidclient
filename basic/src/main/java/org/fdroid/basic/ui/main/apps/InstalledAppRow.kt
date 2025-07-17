@@ -1,57 +1,44 @@
 package org.fdroid.basic.ui.main.apps
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Android
-import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import org.fdroid.basic.R
 import org.fdroid.basic.ui.Names
+import org.fdroid.basic.ui.icons.PackageName
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 fun InstalledAppRow(
-    app: InstalledApp,
+    app: InstalledAppItem,
     isSelected: Boolean,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
         ListItem(
             leadingContent = {
-                app.icon?.let {
-                    AsyncImage(
-                        model = app.icon,
-                        contentDescription = null,
-                        modifier = Modifier.size(48.dp),
-                    )
-                } ?: Icon(
-                    Icons.Filled.Android,
-                    tint = MaterialTheme.colorScheme.secondary,
+                AsyncImage(
+                    model = PackageName(app.packageName, app.iconDownloadRequest),
+                    error = painterResource(R.drawable.ic_repo_app_default),
                     contentDescription = null,
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.medium)
-                        .size(48.dp)
-                        .background(Color.White)
-                        .padding(8.dp),
+                    modifier = Modifier.size(48.dp),
                 )
             },
             headlineContent = {
                 Text(app.name)
             },
             supportingContent = {
-                Text(app.versionName)
+                Text(app.installedVersionName)
             },
             colors = ListItemDefaults.colors(
                 containerColor = if (isSelected) {
@@ -68,10 +55,11 @@ fun InstalledAppRow(
 @Preview
 @Composable
 fun InstalledAppRowPreview() {
-    val app = InstalledApp(
+    val app = InstalledAppItem(
         packageName = "",
         name = Names.randomName,
-        versionName = "1.0.1",
+        installedVersionName = "1.0.1",
+        lastUpdated = System.currentTimeMillis() - 5000,
     )
     FDroidContent {
         Column {

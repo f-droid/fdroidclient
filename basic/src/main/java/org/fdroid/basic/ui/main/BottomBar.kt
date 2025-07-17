@@ -9,6 +9,7 @@ import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.basic.ui.BottomNavDestinations
@@ -31,8 +32,13 @@ fun BottomBar(numUpdates: Int, currentNavKey: NavKey, onNav: (NavigationKey) -> 
 }
 
 @Composable
-fun NavigationRail(numUpdates: Int, currentNavKey: NavKey, onNav: (NavigationKey) -> Unit) {
-    NavigationRail {
+fun NavigationRail(
+    numUpdates: Int,
+    currentNavKey: NavKey,
+    onNav: (NavigationKey) -> Unit,
+    modifier: Modifier,
+) {
+    NavigationRail(modifier) {
         BottomNavDestinations.entries.forEach { dest ->
             NavigationRailItem(
                 icon = { NavIcon(dest, numUpdates) },

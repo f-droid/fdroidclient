@@ -1,10 +1,12 @@
 package org.fdroid.basic.details
 
+import android.content.Intent
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
+import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.asFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,6 +24,7 @@ fun DetailsPresenter(
     db: FDroidDatabase,
     repoManager: RepoManager,
     updateChecker: UpdateChecker,
+    viewModel: AppDetailsViewModel,
     packageInfoFlow: StateFlow<AppInfo?>,
 ): AppDetailsItem? {
     val packagePair = packageInfoFlow.collectAsState().value ?: return null
@@ -47,9 +50,18 @@ fun DetailsPresenter(
         updateChecker.getSuggestedVersion(
             versions = versions,
             preferredSigner = app.metadata.preferredSigner,
-            // TODO releaseChannels beta
-            releaseChannels = null,
+            releaseChannels = appPrefs.releaseChannels,
             preferencesGetter = { appPrefs },
+        )
+    }
+    val possibleUpdate = if (versions == null || appPrefs == null) {
+        null
+    } else {
+        updateChecker.getUpdate(
+            versions = versions,
+            allowedSignersGetter = app.metadata.preferredSigner?.let { { setOf(it) } },
+            allowedReleaseChannels = appPrefs.releaseChannels,
+            preferencesGetter = null, // ignoring existing preferences to include ignored versions
         )
     }
     val installedVersionCode = packagePair.packageInfo?.let {
@@ -58,14 +70,13 @@ fun DetailsPresenter(
     val installedVersion = packagePair.packageInfo?.let {
         versions?.find { it.versionCode == installedVersionCode }
     }
+    val installedSigner = packagePair.packageInfo?.signatures?.get(0)?.let {
+        sha256(it.toByteArray())
+    }
     val noCompatibleVersions = if (packagePair.packageInfo != null && versions != null) {
-        // get installed signer
-        val signer = packagePair.packageInfo.signatures?.get(0)?.let {
-            sha256(it.toByteArray())
-        }
         // return true of no version has same signer
         versions.none { version ->
-            version.manifest.signer?.sha256?.get(0) == signer
+            version.manifest.signer?.sha256?.get(0) == installedSigner
         }
     } else {
         false
@@ -84,14 +95,49 @@ fun DetailsPresenter(
         preferredRepoId = preferredRepoId,
         repositories = repositories, // TODO maybe use emptyList() when only in F-Droid repo
         dbApp = app,
+        actions = AppDetailsActions(
+            allowBetaVersions = viewModel::allowBetaUpdates,
+            ignoreAllUpdates = if (installedVersionCode == null) {
+                null
+            } else {
+                viewModel::ignoreAllUpdates
+            },
+            ignoreThisUpdate = if (installedVersionCode == null || possibleUpdate == null ||
+                possibleUpdate.versionCode <= installedVersionCode
+            ) {
+                null
+            } else {
+                viewModel::ignoreThisUpdate
+            },
+            shareApk = null, // TODO
+            uninstallApp = null, // TODO
+            launchIntent = packagePair.launchIntent,
+            shareIntent = getShareIntent(repo, packageName, app.name ?: ""),
+        ),
         versions = versions,
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
         suggestedVersion = suggestedVersion,
+        possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
-        launchIntent = packagePair.launchIntent,
         noCompatibleVersions = noCompatibleVersions,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
         localeList = locales,
     )
+}
+
+private fun getShareIntent(
+    repo: org.fdroid.database.Repository,
+    packageName: String,
+    appName: String,
+): Intent? {
+    val webBaseUrl = repo.webBaseUrl ?: return null
+    val shareUri = webBaseUrl.toUri().buildUpon().appendPath(packageName).build()
+    val uriIntent = Intent(Intent.ACTION_SEND).apply {
+        setType("text/plain")
+        putExtra(Intent.EXTRA_SUBJECT, appName)
+        putExtra(Intent.EXTRA_TITLE, appName)
+        putExtra(Intent.EXTRA_TEXT, shareUri.toString())
+    }
+    return Intent.createChooser(uriIntent, appName)
 }

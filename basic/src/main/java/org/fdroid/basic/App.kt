@@ -15,6 +15,8 @@ import coil3.request.crossfade
 import coil3.util.DebugLogger
 import dagger.hilt.android.HiltAndroidApp
 import org.fdroid.basic.repo.RepoUpdateWorker
+import org.fdroid.basic.ui.icons.ApplicationIconFetcher
+import org.fdroid.basic.ui.icons.PackageName
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.coil.DownloadRequestFetcher
 import javax.inject.Inject
@@ -24,6 +26,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
 
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
+
     @Inject
     lateinit var downloadRequestFetcherFactory: DownloadRequestFetcher.Factory
 
@@ -41,7 +44,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
         return ImageLoader.Builder(context)
             .crossfade(true)
             .components {
-                val keyer = object : Keyer<DownloadRequest> {
+                val downloadRequestKeyer = object : Keyer<DownloadRequest> {
                     override fun key(
                         data: DownloadRequest,
                         options: Options
@@ -50,8 +53,14 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
                             ?: (data.mirrors[0].baseUrl + data.indexFile.name)
                     }
                 }
-                add(keyer)
+                add(downloadRequestKeyer)
                 add(downloadRequestFetcherFactory)
+
+                val packageNameKeyer = object : Keyer<PackageName> {
+                    override fun key(data: PackageName, options: Options): String = data.packageName
+                }
+                add(packageNameKeyer)
+                add(ApplicationIconFetcher.Factory(this@App.applicationContext, downloadRequestFetcherFactory))
             }
             .memoryCache {
                 MemoryCache.Builder()

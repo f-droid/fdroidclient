@@ -1,7 +1,6 @@
 package org.fdroid.basic.ui.main.details
 
 import android.text.format.Formatter
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
-import androidx.compose.material.icons.filled.Image
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +34,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -91,17 +90,10 @@ fun AppDetailsHeader(
         horizontalArrangement = spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        item.icon?.let { icon ->
-            AsyncImage(
-                model = icon,
-                contentDescription = "",
-                placeholder = rememberVectorPainter(Icons.Default.Image),
-                error = rememberVectorPainter(Icons.Default.Error),
-                modifier = Modifier.size(64.dp),
-            )
-        } ?: Image(
-            painter = rememberVectorPainter(Icons.Default.Image),
-            contentDescription = null,
+        AsyncImage(
+            model = item.icon,
+            contentDescription = "",
+            error = painterResource(R.drawable.ic_repo_app_default),
             modifier = Modifier.size(64.dp),
         )
         Column {
@@ -166,7 +158,7 @@ fun AppDetailsHeader(
             val context = LocalContext.current
             OutlinedButton(
                 onClick = {
-                    context.startActivity(item.launchIntent)
+                    context.startActivity(item.actions.launchIntent)
                 },
                 modifier = Modifier.weight(1f)
             ) {

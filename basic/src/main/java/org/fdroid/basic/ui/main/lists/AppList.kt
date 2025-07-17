@@ -36,7 +36,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.ui.main.apps.MinimalApp
 
 sealed class AppList(val title: String) {
@@ -50,7 +49,7 @@ sealed class AppList(val title: String) {
 fun AppList(
     appList: AppList,
     filterInfo: FilterInfo,
-    currentItem: AppDetailsItem?,
+    currentPackageName: String?,
     modifier: Modifier = Modifier,
     onBackClicked: () -> Unit,
     onItemClick: (MinimalApp) -> Unit,
@@ -100,14 +99,14 @@ fun AppList(
                 contentPadding = PaddingValues(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.then(
-                    if (currentItem == null) Modifier
+                    if (currentPackageName == null) Modifier
                     else Modifier.selectableGroup()
                 ),
             ) {
                 val apps = filterInfo.model.apps
                 items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
-                    val isSelected = currentItem?.app?.packageName == navItem.packageName
-                    val interactionModifier = if (currentItem == null) {
+                    val isSelected = currentPackageName == navItem.packageName
+                    val interactionModifier = if (currentPackageName == null) {
                         Modifier.clickable(
                             onClick = { onItemClick(navItem) }
                         )

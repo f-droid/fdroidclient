@@ -12,6 +12,7 @@ import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
+import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
@@ -21,8 +22,19 @@ enum class MainButtonState {
     NONE, INSTALL, UPDATE
 }
 
+class AppDetailsActions(
+    val allowBetaVersions: () -> Unit,
+    val ignoreAllUpdates: (() -> Unit)? = null,
+    val ignoreThisUpdate: (() -> Unit)? = null,
+    val shareApk: (() -> Unit)? = null,
+    val uninstallApp: (() -> Unit)? = null,
+    val launchIntent: Intent? = null,
+    val shareIntent: Intent? = null,
+)
+
 data class AppDetailsItem(
     val app: AppMetadata,
+    val actions: AppDetailsActions,
     /**
      * The ID of the repo that is currently set as preferred.
      * Note that the repository ID of this [app] may be different.
@@ -45,11 +57,18 @@ data class AppDetailsItem(
      * Needed, because the [installedVersion] may not be available, e.g. too old.
      */
     val installedVersionCode: Long? = null,
+    /**
+     * The currently suggested version for installation.
+     */
     val suggestedVersion: PackageVersion? = null,
+    /**
+     * Similar to [suggestedVersion], but doesn't obey [appPrefs] for ignoring versions.
+     * This is useful for (un-)ignoring this version.
+     */
+    val possibleUpdate: PackageVersion? = null,
     val appPrefs: AppPrefs? = null,
     val whatsNew: String? = null,
     val antiFeatures: List<AntiFeature>? = null,
-    val launchIntent: Intent? = null,
     /**
      * true if this app from this repository has no versions with a
      * compatible signer. This means that the app is installed, but does not receive updates either
@@ -63,17 +82,19 @@ data class AppDetailsItem(
         preferredRepoId: Long,
         repositories: List<Repository>,
         dbApp: App,
+        actions: AppDetailsActions,
         versions: List<AppVersion>?,
         installedVersion: AppVersion?,
         installedVersionCode: Long?,
         suggestedVersion: AppVersion?,
+        possibleUpdate: AppVersion?,
         appPrefs: AppPrefs?,
-        launchIntent: Intent?,
         noCompatibleVersions: Boolean,
         authorHasMoreThanOneApp: Boolean,
         localeList: LocaleListCompat,
     ) : this(
         app = dbApp.metadata,
+        actions = actions,
         preferredRepoId = preferredRepoId,
         repositories = repositories,
         name = dbApp.name ?: "Unknown App",
@@ -93,12 +114,12 @@ data class AppDetailsItem(
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
         suggestedVersion = suggestedVersion,
+        possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
         whatsNew = installedVersion?.getWhatsNew(localeList),
         antiFeatures = installedVersion?.getAntiFeatures(repository, localeList)
             ?: suggestedVersion?.getAntiFeatures(repository, localeList)
             ?: versions?.first()?.getAntiFeatures(repository, localeList),
-        launchIntent = launchIntent,
         noCompatibleVersions = noCompatibleVersions,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
     )
@@ -107,7 +128,23 @@ data class AppDetailsItem(
      * True if the app is installed (and has a launch intent)
      * and thus the 'Open' button should be shown.
      */
-    val showOpenButton: Boolean get() = launchIntent != null
+    val showOpenButton: Boolean get() = actions.launchIntent != null
+    val allowsBetaVersions: Boolean
+        get() = appPrefs?.releaseChannels?.contains(RELEASE_CHANNEL_BETA) == true
+
+    val ignoresAllUpdates: Boolean get() = appPrefs?.ignoreAllUpdates == true
+
+    /**
+     * True if the update from [possibleUpdate] is being ignored
+     * and not already ignoring all updates anyway.
+     */
+    val ignoresCurrentUpdate: Boolean
+        get() {
+            if (ignoresAllUpdates) return false
+            val prefs = appPrefs ?: return false
+            val updateVersionCode = possibleUpdate?.versionCode ?: return false
+            return actions.ignoreThisUpdate != null && prefs.shouldIgnoreUpdate(updateVersionCode)
+        }
 
     /**
      * Specifies what main button should be shown.
@@ -244,6 +281,8 @@ val testApp = AppDetailsItem(
         categories = listOf("Internet", "Multimedia"),
         isCompatible = true,
     ),
+    actions = AppDetailsActions({}, {}, {}, {}, {}, Intent(), Intent()),
+    appPrefs = AppPrefs("org.schabi.newpipe"),
     name = "New Pipe",
     summary = "Lightweight YouTube frontend",
     description = "NewPipe does not use any Google framework libraries, or the YouTube API. " +
@@ -277,4 +316,5 @@ val testApp = AppDetailsItem(
     ),
     installedVersion = testVersion2,
     suggestedVersion = testVersion1,
+    possibleUpdate = testVersion1,
 )

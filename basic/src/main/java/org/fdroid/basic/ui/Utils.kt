@@ -1,8 +1,29 @@
 package org.fdroid.basic.ui
 
 import android.text.format.DateUtils
+import org.fdroid.index.v2.PackageManifest
+import org.fdroid.index.v2.PackageVersion
+import org.fdroid.index.v2.SignerV2
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.concurrent.TimeUnit
+
+fun getPreviewVersion(versionName: String, size: Long? = null) = object : PackageVersion {
+    override val versionCode: Long = 23
+    override val versionName: String = versionName
+    override val added: Long = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(3)
+    override val size: Long? = size
+    override val signer: SignerV2? = null
+    override val releaseChannels: List<String>? = null
+    override val packageManifest: PackageManifest = object : PackageManifest {
+        override val minSdkVersion: Int? = null
+        override val maxSdkVersion: Int? = null
+        override val featureNames: List<String>? = null
+        override val nativecode: List<String>? = null
+        override val targetSdkVersion: Int? = null
+    }
+    override val hasKnownVulnerability: Boolean = false
+}
 
 fun Long.asRelativeTimeString(): String {
     return DateUtils.getRelativeTimeSpanString(

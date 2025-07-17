@@ -16,6 +16,7 @@ import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -31,9 +32,11 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import org.fdroid.basic.MainViewModel
 import org.fdroid.basic.R
+import org.fdroid.basic.details.AppDetailsViewModel
 import org.fdroid.basic.ui.NavigationKey
 import org.fdroid.basic.ui.icons.PackageVariant
 import org.fdroid.basic.ui.main.apps.MyApps
+import org.fdroid.basic.ui.main.apps.MyAppsViewModel
 import org.fdroid.basic.ui.main.details.AppDetails
 import org.fdroid.basic.ui.main.discover.Discover
 import org.fdroid.basic.ui.main.lists.AppList
@@ -78,7 +81,7 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
     val isBigScreen = remember(windowAdaptiveInfo) {
         windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WIDTH_DP_MEDIUM_LOWER_BOUND)
     }
-    val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>()//(directive = directive)
+    val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
     FDroidContent {
         NavDisplay(
             backStack = backStack,
@@ -97,7 +100,8 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                         Text("No app selected")
                     },
                 ) {
-                    val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle(0).value
+                    val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
+                    val numUpdates = myAppsViewModel.numUpdates.collectAsStateWithLifecycle(0).value
                     Discover(
                         discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
                         onTitleTap = {
@@ -105,7 +109,6 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                             backStack.add(NavigationKey.AppList)
                         },
                         onAppTap = {
-                            viewModel.setAppDetails(it)
                             backStack.add(NavigationKey.AppDetails(it.packageName))
                         },
                         onNav = { backStack.add(it) },
@@ -119,31 +122,35 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                         Text("No app selected")
                     },
                 ) {
-                    val updates = viewModel.updates.collectAsStateWithLifecycle().value
-                    val installed = viewModel.installed.collectAsStateWithLifecycle().value
-                    val currentItem = viewModel.appDetails.collectAsStateWithLifecycle().value
+                    val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
+                    val myAppsModel =
+                        myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
                     MyApps(
-                        updatableApps = updates,
-                        installedApps = installed,
-                        currentItem = currentItem,
-                        onItemClick = {
-                            viewModel.setAppDetails(it)
-                            backStack.add(NavigationKey.AppDetails(it.packageName))
+                        myAppsModel = myAppsModel,
+                        currentPackageName = if (isBigScreen) {
+                            (backStack.last() as? NavigationKey.AppDetails)?.packageName
+                        } else null,
+                        onAppItemClick = {
+                            backStack.add(NavigationKey.AppDetails(it))
                         },
                         onNav = { backStack.add(it) },
-                        sortBy = viewModel.myAppsManager.sortBy.collectAsStateWithLifecycle().value,
+                        onRefresh = myAppsViewModel::refresh,
                         isBigScreen = isBigScreen,
-                        onSortChanged = viewModel.myAppsManager::sortBy,
+                        onSortChanged = myAppsViewModel::changeSortOrder,
                     )
                 }
                 entry<NavigationKey.AppDetails>(
                     metadata = ListDetailSceneStrategy.detailPane("appdetails")
                 ) {
-                    val currentItem = viewModel.appDetails.collectAsStateWithLifecycle().value
-                    it.packageName // TODO use?
+                    val appDetailsViewModel = hiltViewModel<AppDetailsViewModel>()
+                    LaunchedEffect(it.packageName) {
+                        appDetailsViewModel.setAppDetails(it.packageName)
+                    }
                     AppDetails(
-                        appItem = currentItem,
-                        onBackNav = { backStack.removeLastOrNull() },
+                        item = appDetailsViewModel.appDetails.collectAsStateWithLifecycle().value,
+                        onBackNav = if (isBigScreen) null else {
+                            { backStack.removeLastOrNull() }
+                        },
                         modifier = Modifier,
                     )
                 }
@@ -165,15 +172,15 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                         override fun removeCategory(category: String) =
                             viewModel.removeCategory(category)
                     }
-                    val currentItem = viewModel.appDetails.collectAsStateWithLifecycle().value
                     AppList(
                         appList = viewModel.currentList.collectAsStateWithLifecycle().value,
                         filterInfo = filterInfo,
-                        currentItem = currentItem,
+                        currentPackageName = if (isBigScreen) {
+                            (backStack.last() as? NavigationKey.AppDetails)?.packageName
+                        } else null,
                         onBackClicked = { backStack.removeLastOrNull() },
                         modifier = Modifier,
                     ) {
-                        viewModel.setAppDetails(it)
                         backStack.add(NavigationKey.AppDetails(it.packageName))
                     }
                 }
@@ -192,7 +199,7 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                         onRepositorySelected = {
                             repositoryManager.setVisibleRepository(it)
                             backStack.add(NavigationKey.RepoDetails(it.repoId))
-                        } ,
+                        },
                         onAddRepo = repositoryManager::addRepo,
                     ) {
                         backStack.removeLastOrNull()

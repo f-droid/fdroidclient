@@ -1,7 +1,9 @@
 package org.fdroid.basic.ui.main.apps
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,16 +12,18 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -30,135 +34,146 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.basic.R
-import org.fdroid.basic.details.AppDetailsItem
+import org.fdroid.basic.manager.AppUpdateItem
 import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.NavigationKey
+import org.fdroid.basic.ui.getPreviewVersion
 import org.fdroid.basic.ui.main.BottomBar
 import org.fdroid.basic.ui.main.lists.Sort
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import java.util.concurrent.TimeUnit.DAYS
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun MyApps(
-    updatableApps: List<UpdatableApp>,
-    installedApps: List<InstalledApp>,
-    currentItem: AppDetailsItem?,
-    onItemClick: (MinimalApp) -> Unit,
+    myAppsModel: MyAppsModel,
+    currentPackageName: String?,
+    onAppItemClick: (String) -> Unit,
     onNav: (NavKey) -> Unit,
-    sortBy: Sort,
     onSortChanged: (Sort) -> Unit,
+    onRefresh: () -> Unit,
     isBigScreen: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    LifecycleStartEffect(myAppsModel) {
+        onRefresh()
+        onStopOrDispose { }
+    }
+    val updatableApps = myAppsModel.appUpdates
+    val installedApps = myAppsModel.installedApps
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    var sortByMenuExpanded by remember { mutableStateOf(false) }
-                    Column {
-                        Text("My apps")
-                        FilterChip(
-                            selected = false,
-                            leadingIcon = {
-                                val vector = when (sortBy) {
-                                    Sort.NAME -> Icons.Filled.SortByAlpha
-                                    Sort.LATEST -> Icons.Filled.AccessTime
-                                }
-                                Icon(
-                                    vector,
-                                    null,
-                                    modifier = Modifier.size(FilterChipDefaults.IconSize)
-                                )
-                            },
-                            trailingIcon = {
-                                Icon(Icons.Filled.ArrowDropDown, null)
-                            },
-                            label = {
-                                val s = when (sortBy) {
-                                    Sort.NAME -> "Sort by name"
-                                    Sort.LATEST -> "Sort by latest"
-                                }
-                                Text(s)
-                                DropdownMenu(
-                                    expanded = sortByMenuExpanded,
-                                    onDismissRequest = { sortByMenuExpanded = false },
-                                ) {
-                                    DropdownMenuItem(
-                                        text = { Text("Sort by name") },
-                                        leadingIcon = {
-                                            Icon(Icons.Filled.SortByAlpha, null)
-                                        },
-                                        onClick = {
-                                            onSortChanged(Sort.NAME)
-                                            sortByMenuExpanded = false
-                                        },
-                                    )
-                                    DropdownMenuItem(
-                                        text = { Text("Sort by latest") },
-                                        leadingIcon = {
-                                            Icon(Icons.Filled.AccessTime, null)
-                                        },
-                                        onClick = {
-                                            onSortChanged(Sort.LATEST)
-                                            sortByMenuExpanded = false
-                                        },
-                                    )
-                                }
-                            },
-                            onClick = { sortByMenuExpanded = !sortByMenuExpanded },
-                        )
-                    }
+                    Text("My apps")
                 },
                 actions = {
-                    if (updatableApps.isNotEmpty()) Button(
-                        onClick = {},
-                        modifier = Modifier.padding(end = 16.dp),
+                    var sortByMenuExpanded by remember { mutableStateOf(false) }
+                    IconButton(onClick = { sortByMenuExpanded = !sortByMenuExpanded }) {
+                        Icon(Icons.Filled.MoreVert, null)
+                    }
+                    DropdownMenu(
+                        expanded = sortByMenuExpanded,
+                        onDismissRequest = { sortByMenuExpanded = false },
                     ) {
-                        Text("Update all")
+                        DropdownMenuItem(
+                            text = { Text("Sort by name") },
+                            leadingIcon = {
+                                Icon(Icons.Filled.SortByAlpha, null)
+                            },
+                            trailingIcon = {
+                                RadioButton(
+                                    selected = myAppsModel.sortOrder == Sort.NAME,
+                                    onClick = null,
+                                )
+                            },
+                            onClick = {
+                                onSortChanged(Sort.NAME)
+                                sortByMenuExpanded = false
+                            },
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Sort by latest") },
+                            leadingIcon = {
+                                Icon(Icons.Filled.AccessTime, null)
+                            },
+                            trailingIcon = {
+                                RadioButton(
+                                    selected = myAppsModel.sortOrder == Sort.LATEST,
+                                    onClick = null,
+                                )
+                            },
+                            onClick = {
+                                onSortChanged(Sort.LATEST)
+                                sortByMenuExpanded = false
+                            },
+                        )
                     }
                 },
                 scrollBehavior = scrollBehavior,
             )
         },
         bottomBar = {
-            if (!isBigScreen) BottomBar(updatableApps.size, NavigationKey.MyApps, onNav)
+            if (!isBigScreen) BottomBar(updatableApps?.size ?: 0, NavigationKey.MyApps, onNav)
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
-        LazyColumn(
+        if (updatableApps == null && installedApps == null) Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            LoadingIndicator(Modifier.size(128.dp))
+        } else LazyColumn(
             modifier
                 .padding(paddingValues)
                 .then(
-                    if (currentItem == null) Modifier
+                    if (currentPackageName == null) Modifier
                     else Modifier.selectableGroup()
                 ),
         ) {
-            if (updatableApps.isNotEmpty()) item(key = "A", contentType = "header") {
-                Text(
-                    text = stringResource(R.string.updates),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(16.dp),
-                )
+            if (updatableApps == null || updatableApps.isNotEmpty()) {
+                item(key = "A", contentType = "header") {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = stringResource(R.string.updates),
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .weight(1f),
+                        )
+                        if (updatableApps?.isNotEmpty() == true) Button(
+                            onClick = {},
+                            modifier = Modifier.padding(end = 16.dp),
+                        ) {
+                            Text("Update all")
+                        }
+                    }
+                }
             }
-            items(updatableApps, key = { it.packageName }, contentType = { "A" }) { app ->
-                val isSelected = app.packageName == currentItem?.app?.packageName
-                val interactionModifier = if (currentItem == null) {
+            if (updatableApps != null) items(
+                items = updatableApps,
+                key = { it.packageName },
+                contentType = { "A" },
+            ) { app ->
+                val isSelected = app.packageName == currentPackageName
+                val interactionModifier = if (currentPackageName == null) {
                     Modifier.clickable(
-                        onClick = { onItemClick(app) }
+                        onClick = { onAppItemClick(app.packageName) }
                     )
                 } else {
                     Modifier.selectable(
                         selected = isSelected,
-                        onClick = { onItemClick(app) }
+                        onClick = { onAppItemClick(app.packageName) }
                     )
                 }
                 val modifier = Modifier
@@ -166,23 +181,29 @@ fun MyApps(
                     .then(interactionModifier)
                 UpdatableAppRow(app, isSelected, modifier)
             }
-            if (updatableApps.isNotEmpty()) item(key = "B", contentType = "header") {
-                Text(
-                    text = stringResource(R.string.installed_apps__activity_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(16.dp),
-                )
+            if (!updatableApps.isNullOrEmpty() && !installedApps.isNullOrEmpty()) {
+                item(key = "B", contentType = "header") {
+                    Text(
+                        text = stringResource(R.string.installed_apps__activity_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(16.dp),
+                    )
+                }
             }
-            items(installedApps, key = { it.packageName }, contentType = { "B" }) { app ->
-                val isSelected = app.packageName == currentItem?.app?.packageName
-                val interactionModifier = if (currentItem == null) {
+            if (installedApps != null) items(
+                items = installedApps,
+                key = { it.packageName },
+                contentType = { "B" },
+            ) { app ->
+                val isSelected = app.packageName == currentPackageName
+                val interactionModifier = if (currentPackageName == null) {
                     Modifier.clickable(
-                        onClick = { onItemClick(app) }
+                        onClick = { onAppItemClick(app.packageName) }
                     )
                 } else {
                     Modifier.selectable(
                         selected = isSelected,
-                        onClick = { onItemClick(app) }
+                        onClick = { onAppItemClick(app.packageName) }
                     )
                 }
                 val modifier = Modifier
@@ -195,40 +216,74 @@ fun MyApps(
 }
 
 @Preview
-@PreviewScreenSizes
 @Composable
-fun MyAppsScaffoldPreview() {
+fun MyAppsLoadingPreview() {
     FDroidContent {
-        val app1 = UpdatableApp(
-            packageName = "A",
-            name = Names.randomName,
-            currentVersionName = "1.0.1",
-            updateVersionName = "1.1.0",
-            size = 123456789,
-        )
-        val app2 = UpdatableApp(
-            packageName = "B",
-            name = Names.randomName,
-            currentVersionName = "3.0.1",
-            updateVersionName = "3.1.0",
-            size = 9876543,
-        )
-        val installedApp1 =
-            InstalledApp("1", Names.randomName, org.fdroid.basic.ui.Icons.randomIcon, "3.0.1")
-        val installedApp2 =
-            InstalledApp("2", Names.randomName, org.fdroid.basic.ui.Icons.randomIcon, "1.0")
-        val installedApp3 =
-            InstalledApp("3", Names.randomName, org.fdroid.basic.ui.Icons.randomIcon, "0.1")
-        var sortBy by remember { mutableStateOf(Sort.NAME) }
         MyApps(
-            updatableApps = listOf(app1, app2),
-            installedApps = listOf(installedApp1, installedApp2, installedApp3),
-            currentItem = null,
-            onItemClick = {},
+            myAppsModel = MyAppsModel(
+                appUpdates = null,
+                installedApps = null,
+                sortOrder = Sort.NAME,
+            ),
+            currentPackageName = null,
+            onAppItemClick = {},
             onNav = {},
-            sortBy = sortBy,
-            onSortChanged = { sortBy = it },
+            onSortChanged = { },
             isBigScreen = false,
+            onRefresh = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+fun MyAppsPreview() {
+    FDroidContent {
+        val app1 = AppUpdateItem(
+            packageName = "AX",
+            name = "App Update 123",
+            installedVersionName = "1.0.1",
+            update = getPreviewVersion("1.1.0", 123456789),
+            whatsNew = "This is new, all is new, nothing old.",
+        )
+        val app2 = AppUpdateItem(
+            packageName = "BX",
+            name = Names.randomName,
+            installedVersionName = "3.0.1",
+            update = getPreviewVersion("3.1.0", 9876543),
+            whatsNew = null,
+        )
+        val installedApp1 = InstalledAppItem(
+            packageName = "1",
+            name = Names.randomName,
+            installedVersionName = "1",
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(1)
+        )
+        val installedApp2 = InstalledAppItem(
+            packageName = "2",
+            name = Names.randomName,
+            installedVersionName = "2",
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(2)
+        )
+        val installedApp3 = InstalledAppItem(
+            packageName = "3",
+            name = Names.randomName,
+            installedVersionName = "3",
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(3)
+        )
+        val model = MyAppsModel(
+            appUpdates = listOf(app1, app2),
+            installedApps = listOf(installedApp1, installedApp2, installedApp3),
+            sortOrder = Sort.NAME,
+        )
+        MyApps(
+            myAppsModel = model,
+            currentPackageName = null,
+            onAppItemClick = {},
+            onNav = {},
+            onSortChanged = { },
+            isBigScreen = false,
+            onRefresh = {},
         )
     }
 }

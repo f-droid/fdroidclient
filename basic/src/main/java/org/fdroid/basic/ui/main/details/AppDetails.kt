@@ -14,7 +14,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.CurrencyBitcoin
@@ -25,23 +24,19 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.Mail
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.carousel.HorizontalUncontainedCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
@@ -55,7 +50,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
@@ -69,7 +63,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.os.LocaleListCompat
 import coil3.compose.AsyncImage
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.basic.R
 import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.details.testApp
@@ -83,13 +79,13 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
     ExperimentalSharedTransitionApi::class
 )
 fun AppDetails(
-    appItem: AppDetailsItem?,
+    item: AppDetailsItem?,
     onBackNav: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
     val topAppBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
-    if (appItem == null) Box(
+    if (item == null) Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -97,44 +93,9 @@ fun AppDetails(
     } else Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent,
-                ),
-                title = {
-                    if (topAppBarState.overlappedFraction == 1f) {
-                        Text(appItem.name)
-                    }
-                },
-                navigationIcon = {
-                    if (onBackNav != null) IconButton(onClick = onBackNav) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Localized description",
-                        )
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { /* do something */ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Share,
-                            contentDescription = "Localized description",
-                        )
-                    }
-                    var expanded by remember { mutableStateOf(false) }
-                    IconButton(onClick = { expanded = !expanded }) {
-                        Icon(
-                            imageVector = Icons.Filled.MoreVert,
-                            contentDescription = "Localized description",
-                        )
-                    }
-                    AppDetailsMenu(expanded) { expanded = false }
-                },
-                scrollBehavior = scrollBehavior,
-            )
+            AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav)
         },
     ) { innerPadding ->
-        val item = appItem
         Column(
             modifier = modifier
                 .verticalScroll(rememberScrollState())
@@ -354,6 +315,13 @@ fun AppDetails(
                             icon = Icons.Default.Code,
                             title = stringResource(R.string.menu_source),
                             url = sourceCode,
+                        )
+                    }
+                    item.app.video?.getBestLocale(LocaleListCompat.getDefault())?.let { video ->
+                        AppDetailsLink(
+                            icon = Icons.Default.OndemandVideo,
+                            title = stringResource(R.string.menu_video),
+                            url = video,
                         )
                     }
                 }

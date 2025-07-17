@@ -16,19 +16,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
-import org.fdroid.basic.details.AppDetailsManager
 import org.fdroid.basic.download.getDownloadRequest
-import org.fdroid.basic.manager.MyAppsManager
 import org.fdroid.basic.repo.RepositoryManager
 import org.fdroid.basic.ui.categories.Category
-import org.fdroid.basic.ui.main.apps.MinimalApp
 import org.fdroid.basic.ui.main.discover.AppNavigationItem
 import org.fdroid.basic.ui.main.discover.DiscoverModel
 import org.fdroid.basic.ui.main.discover.DiscoverPresenter
+import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.basic.ui.main.lists.FilterModel
 import org.fdroid.basic.ui.main.lists.FilterPresenter
 import org.fdroid.basic.ui.main.lists.Sort
-import org.fdroid.basic.ui.main.lists.AppList
 import org.fdroid.database.FDroidDatabase
 import java.text.Collator
 import java.util.Locale
@@ -38,9 +35,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     app: Application,
     savedStateHandle: SavedStateHandle,
-    val myAppsManager: MyAppsManager,
-    private val db: FDroidDatabase,
-    private val appDetailsManager: AppDetailsManager,
+    db: FDroidDatabase,
     val repositoryManager: RepositoryManager,
 ) : AndroidViewModel(app) {
 
@@ -97,17 +92,9 @@ class MainViewModel @Inject constructor(
             addedCategoriesFlow = addedCategories,
         )
     }
-    val updates = myAppsManager.updates
-    val installed = myAppsManager.installed
-    val numUpdates = myAppsManager.numUpdates
-    val appDetails = appDetailsManager.appDetails
 
     fun setAppList(appList: AppList) {
         _currentList.value = appList
-    }
-
-    fun setAppDetails(app: MinimalApp) {
-        appDetailsManager.setAppDetails(app)
     }
 
     fun toggleListFilterVisibility() {
