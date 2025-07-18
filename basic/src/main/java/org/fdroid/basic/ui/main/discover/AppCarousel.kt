@@ -35,10 +35,10 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 @Composable
 fun AppCarousel(
     title: String,
-    apps: List<AppNavigationItem>,
+    apps: List<AppDiscoverItem>,
     modifier: Modifier = Modifier,
     onTitleTap: () -> Unit,
-    onAppTap: (AppNavigationItem) -> Unit,
+    onAppTap: (AppDiscoverItem) -> Unit,
 ) {
     val carouselState = rememberCarouselState { apps.size }
     Column(modifier = modifier) {
@@ -70,7 +70,7 @@ fun AppCarousel(
 }
 
 @Composable
-fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
+fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier
@@ -109,11 +109,11 @@ fun AppBox(app: AppNavigationItem, onAppTap: (AppNavigationItem) -> Unit) {
 @Composable
 fun AppCarouselPreview() {
     val apps = listOf(
-        AppNavigationItem("", Names.randomName, summary = "bar", isNew = true),
-        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
-        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
-        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
-        AppNavigationItem("", Names.randomName, summary = "bar", isNew = false),
+        AppDiscoverItem("", Names.randomName, isNew = true),
+        AppDiscoverItem("", Names.randomName, isNew = false),
+        AppDiscoverItem("", Names.randomName, isNew = false),
+        AppDiscoverItem("", Names.randomName, isNew = false),
+        AppDiscoverItem("", Names.randomName, isNew = false),
     )
     FDroidContent {
         AppCarousel("Preview Apps", apps, onTitleTap = {}) {}

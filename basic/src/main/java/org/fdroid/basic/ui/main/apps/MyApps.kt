@@ -48,7 +48,7 @@ import org.fdroid.basic.ui.Names
 import org.fdroid.basic.ui.NavigationKey
 import org.fdroid.basic.ui.getPreviewVersion
 import org.fdroid.basic.ui.main.BottomBar
-import org.fdroid.basic.ui.main.lists.Sort
+import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import java.util.concurrent.TimeUnit.DAYS
 
@@ -59,7 +59,7 @@ fun MyApps(
     currentPackageName: String?,
     onAppItemClick: (String) -> Unit,
     onNav: (NavKey) -> Unit,
-    onSortChanged: (Sort) -> Unit,
+    onSortChanged: (AppListSortOrder) -> Unit,
     onRefresh: () -> Unit,
     isBigScreen: Boolean,
     modifier: Modifier = Modifier,
@@ -93,12 +93,12 @@ fun MyApps(
                             },
                             trailingIcon = {
                                 RadioButton(
-                                    selected = myAppsModel.sortOrder == Sort.NAME,
+                                    selected = myAppsModel.sortOrder == AppListSortOrder.NAME,
                                     onClick = null,
                                 )
                             },
                             onClick = {
-                                onSortChanged(Sort.NAME)
+                                onSortChanged(AppListSortOrder.NAME)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -109,12 +109,12 @@ fun MyApps(
                             },
                             trailingIcon = {
                                 RadioButton(
-                                    selected = myAppsModel.sortOrder == Sort.LATEST,
+                                    selected = myAppsModel.sortOrder == AppListSortOrder.LAST_UPDATED,
                                     onClick = null,
                                 )
                             },
                             onClick = {
-                                onSortChanged(Sort.LATEST)
+                                onSortChanged(AppListSortOrder.LAST_UPDATED)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -223,7 +223,7 @@ fun MyAppsLoadingPreview() {
             myAppsModel = MyAppsModel(
                 appUpdates = null,
                 installedApps = null,
-                sortOrder = Sort.NAME,
+                sortOrder = AppListSortOrder.NAME,
             ),
             currentPackageName = null,
             onAppItemClick = {},
@@ -274,7 +274,7 @@ fun MyAppsPreview() {
         val model = MyAppsModel(
             appUpdates = listOf(app1, app2),
             installedApps = listOf(installedApp1, installedApp2, installedApp3),
-            sortOrder = Sort.NAME,
+            sortOrder = AppListSortOrder.NAME,
         )
         MyApps(
             myAppsModel = model,

@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 import org.fdroid.basic.R
+import org.fdroid.basic.ui.main.lists.AppListType
 
 sealed interface NavigationKey : NavKey {
 
@@ -21,7 +22,7 @@ sealed interface NavigationKey : NavKey {
     data class AppDetails(val packageName: String) : NavigationKey
 
     @Serializable
-    data object AppList : NavigationKey
+    data class AppList(val type: AppListType) : NavigationKey
 
     @Serializable
     data object Repos : NavigationKey

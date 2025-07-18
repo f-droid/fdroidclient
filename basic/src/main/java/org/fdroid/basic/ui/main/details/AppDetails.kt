@@ -70,7 +70,9 @@ import org.fdroid.basic.R
 import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.details.testApp
 import org.fdroid.basic.ui.Names.names
+import org.fdroid.basic.ui.NavigationKey
 import org.fdroid.basic.ui.icons.License
+import org.fdroid.basic.ui.main.lists.AppListType
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -80,6 +82,7 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 )
 fun AppDetails(
     item: AppDetailsItem?,
+    onNav: (NavigationKey) -> Unit,
     onBackNav: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
@@ -354,18 +357,20 @@ fun AppDetails(
                 }
             }
             // More apps by dev
-            if (item.authorHasMoreThanOneApp) Button(
-                onClick = {},
-                modifier = Modifier
-                    .align(CenterHorizontally)
-                    .padding(bottom = 16.dp),
-            ) {
-                val s =
-                    stringResource(
-                        R.string.app_details_more_apps_by_author,
-                        item.app.authorName!!
-                    )
-                Text(s)
+            if (item.authorHasMoreThanOneApp) {
+                val authorName = item.app.authorName!!
+                val title = stringResource(R.string.app_list_author, authorName)
+                Button(
+                    onClick = {
+                        onNav(NavigationKey.AppList(AppListType.Author(title, authorName)))
+                    },
+                    modifier = Modifier
+                        .align(CenterHorizontally)
+                        .padding(bottom = 16.dp),
+                ) {
+                    val s = stringResource(R.string.app_details_more_apps_by_author, authorName)
+                    Text(s)
+                }
             }
         }
     }
@@ -375,7 +380,7 @@ fun AppDetails(
 @Composable
 fun AppDetailsLoadingPreview() {
     FDroidContent {
-        AppDetails(null, { })
+        AppDetails(null, { }, {})
     }
 }
 
@@ -383,6 +388,6 @@ fun AppDetailsLoadingPreview() {
 @Composable
 fun AppDetailsPreview() {
     FDroidContent {
-        AppDetails(testApp, { })
+        AppDetails(testApp, { }, {})
     }
 }

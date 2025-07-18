@@ -17,8 +17,8 @@ import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.basic.download.getDownloadRequest
 import org.fdroid.basic.manager.MyAppsManager
 import org.fdroid.basic.repo.RepositoryManager
-import org.fdroid.basic.ui.main.lists.Sort
 import org.fdroid.database.AppListItem
+import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
 import javax.inject.Inject
@@ -45,7 +45,7 @@ class MyAppsViewModel @Inject constructor(
     private val installedApps = MutableStateFlow<List<InstalledAppItem>?>(null)
     private var installedAppsLiveData =
         db.getAppDao().getInstalledAppListItems(application.packageManager)
-    private val sortOrder = savedStateHandle.getMutableStateFlow("sort", Sort.NAME)
+    private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     private val localeList = LocaleListCompat.getDefault()
     private val installedAppsObserver = Observer<List<AppListItem>> { list ->
@@ -77,7 +77,7 @@ class MyAppsViewModel @Inject constructor(
         installedAppsLiveData.removeObserver(installedAppsObserver)
     }
 
-    fun changeSortOrder(sort: Sort) {
+    fun changeSortOrder(sort: AppListSortOrder) {
         sortOrder.value = sort
     }
 

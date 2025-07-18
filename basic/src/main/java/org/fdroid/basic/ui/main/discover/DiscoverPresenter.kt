@@ -8,7 +8,7 @@ import org.fdroid.basic.ui.main.repositories.Repository
 
 @Composable
 fun DiscoverPresenter(
-    appsFlow: Flow<List<AppNavigationItem>>,
+    appsFlow: Flow<List<AppDiscoverItem>>,
     categoriesFlow: Flow<List<Category>>,
     repositoriesFlow: Flow<List<Repository>>,
 ): DiscoverModel {
@@ -40,7 +40,7 @@ sealed class DiscoverModel
 data class LoadingDiscoverModel(val isFirstStart: Boolean) : DiscoverModel()
 object NoEnabledReposDiscoverModel : DiscoverModel()
 data class LoadedDiscoverModel(
-    val newApps: List<AppNavigationItem>,
-    val recentlyUpdatedApps: List<AppNavigationItem>,
+    val newApps: List<AppDiscoverItem>,
+    val recentlyUpdatedApps: List<AppDiscoverItem>,
     val categories: List<Category>?,
 ) : DiscoverModel()

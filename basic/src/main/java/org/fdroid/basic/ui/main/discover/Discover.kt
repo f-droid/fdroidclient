@@ -38,11 +38,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
+import org.fdroid.basic.R
 import org.fdroid.basic.ui.NavigationKey
 import org.fdroid.basic.ui.categories.CategoryList
 import org.fdroid.basic.ui.main.BottomBar
 import org.fdroid.basic.ui.main.MainOverFlowMenu
-import org.fdroid.basic.ui.main.lists.AppList
+import org.fdroid.basic.ui.main.lists.AppListType
 import org.fdroid.basic.ui.main.topBarMenuItems
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
@@ -53,8 +54,8 @@ fun Discover(
     numUpdates: Int,
     isBigScreen: Boolean,
     modifier: Modifier = Modifier,
-    onTitleTap: (AppList) -> Unit,
-    onAppTap: (AppNavigationItem) -> Unit,
+    onListTap: (AppListType) -> Unit,
+    onAppTap: (AppDiscoverItem) -> Unit,
     onNav: (NavKey) -> Unit,
 ) {
     val searchBarState = rememberSearchBarState()
@@ -120,29 +121,34 @@ fun Discover(
                 is LoadedDiscoverModel -> {
                     AppsSearch(
                         searchBarState = searchBarState,
-                        categories = discoverModel.categories,
-                        onItemClick = onAppTap,
                         modifier = Modifier.padding(top = 8.dp),
                     )
+                    val listNew = AppListType.New(stringResource(R.string.app_list_new))
                     AppCarousel(
-                        title = AppList.New.title,
+                        title = listNew.title,
                         apps = discoverModel.newApps,
-                        onTitleTap = { onTitleTap(AppList.New) },
+                        onTitleTap = { onListTap(listNew) },
                         onAppTap = onAppTap,
                     )
+                    val listRecentlyUpdated = AppListType.RecentlyUpdated(
+                        stringResource(R.string.app_list_recently_updated),
+                    )
                     AppCarousel(
-                        title = AppList.RecentlyUpdated.title,
+                        title = listRecentlyUpdated.title,
                         apps = discoverModel.recentlyUpdatedApps,
-                        onTitleTap = { onTitleTap(AppList.RecentlyUpdated) },
+                        onTitleTap = { onListTap(listRecentlyUpdated) },
                         onAppTap = onAppTap,
+                    )
+                    val listAll = AppListType.All(
+                        title = stringResource(R.string.app_list_all),
                     )
                     FilledTonalButton(
-                        onClick = { onTitleTap(AppList.All) },
+                        onClick = { onListTap(listAll) },
                         modifier = Modifier
                             .align(End)
                             .padding(16.dp),
                     ) {
-                        Text(AppList.All.title)
+                        Text(listAll.title)
                     }
                 }
                 NoEnabledReposDiscoverModel -> {
@@ -152,7 +158,7 @@ fun Discover(
             AnimatedVisibility(discoverModel is LoadedDiscoverModel) {
                 val categories = (discoverModel as LoadedDiscoverModel).categories
                 // TODO remove max height hack
-                CategoryList(categories, Modifier.heightIn(max = 2000.dp))
+                CategoryList(categories, onNav, Modifier.heightIn(max = 2000.dp))
             }
         }
     }
@@ -166,7 +172,7 @@ fun LoadingDiscoverPreview() {
             discoverModel = LoadingDiscoverModel(true),
             numUpdates = 23,
             isBigScreen = false,
-            onTitleTap = {},
+            onListTap = {},
             onAppTap = {},
             onNav = {},
         )

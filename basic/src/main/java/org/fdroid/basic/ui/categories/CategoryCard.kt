@@ -12,12 +12,22 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.fdroid.basic.ui.NavigationKey
+import org.fdroid.basic.ui.main.lists.AppListType
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
-fun CategoryCard(category: Category) {
+fun CategoryCard(
+    category: Category,
+    onNav: (NavigationKey) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     AssistChip(
-        onClick = {},
+        onClick = {
+            val type = AppListType.Category(category.name, category.id)
+            val navKey = NavigationKey.AppList(type)
+            onNav(navKey)
+        },
         leadingIcon = {
             Image(
                 imageVector = category.imageVector,
@@ -35,7 +45,7 @@ fun CategoryCard(category: Category) {
                 overflow = TextOverflow.Ellipsis,
             )
         },
-        modifier = Modifier.padding(horizontal = 4.dp)
+        modifier = modifier.padding(horizontal = 4.dp)
     )
 }
 
@@ -43,6 +53,6 @@ fun CategoryCard(category: Category) {
 @Composable
 fun CategoryCardPreview() {
     FDroidContent {
-        CategoryCard(Category("VPN & Proxy", "VPN & Proxy"))
+        CategoryCard(Category("VPN & Proxy", "VPN & Proxy"), {})
     }
 }

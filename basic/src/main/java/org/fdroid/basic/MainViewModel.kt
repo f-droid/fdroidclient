@@ -11,21 +11,14 @@ import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.update
 import org.fdroid.basic.download.getDownloadRequest
 import org.fdroid.basic.repo.RepositoryManager
 import org.fdroid.basic.ui.categories.Category
-import org.fdroid.basic.ui.main.discover.AppNavigationItem
+import org.fdroid.basic.ui.main.discover.AppDiscoverItem
 import org.fdroid.basic.ui.main.discover.DiscoverModel
 import org.fdroid.basic.ui.main.discover.DiscoverPresenter
-import org.fdroid.basic.ui.main.lists.AppList
-import org.fdroid.basic.ui.main.lists.FilterModel
-import org.fdroid.basic.ui.main.lists.FilterPresenter
-import org.fdroid.basic.ui.main.lists.Sort
 import org.fdroid.database.FDroidDatabase
 import java.text.Collator
 import java.util.Locale
@@ -45,10 +38,9 @@ class MainViewModel @Inject constructor(
         list.mapNotNull {
             val repository = repositoryManager.getRepository(it.repoId)
                 ?: return@mapNotNull null
-            AppNavigationItem(
+            AppDiscoverItem(
                 packageName = it.packageName,
                 name = it.name ?: "Unknown",
-                summary = it.summary ?: "Unknown",
                 isNew = it.lastUpdated == it.added,
                 lastUpdated = it.lastUpdated,
                 iconDownloadRequest = it.getIcon(localeList)
@@ -66,15 +58,6 @@ class MainViewModel @Inject constructor(
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
 
-    private val _currentList = MutableStateFlow<AppList>(AppList.New)
-    val currentList = _currentList.asStateFlow()
-    private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", true)
-    val showFilters = _showFilters.asStateFlow()
-    private val _sortBy = MutableStateFlow<Sort>(Sort.LATEST)
-    val sortBy = _sortBy.asStateFlow<Sort>()
-    private val _addedCategories = MutableStateFlow<List<String>>(emptyList())
-    val addedCategories = _addedCategories.asStateFlow<List<String>>()
-
     val localeList = LocaleListCompat.getDefault()
     val discoverModel: StateFlow<DiscoverModel> = scope.launchMolecule(mode = ContextClock) {
         DiscoverPresenter(
@@ -83,41 +66,5 @@ class MainViewModel @Inject constructor(
             repositoriesFlow = repositoryManager.repos,
         )
     }
-    val filterModel: StateFlow<FilterModel> = scope.launchMolecule(mode = ContextClock) {
-        FilterPresenter(
-            areFiltersShownFlow = showFilters,
-            appsFlow = apps,
-            sortByFlow = sortBy,
-            allCategoriesFlow = categories,
-            addedCategoriesFlow = addedCategories,
-        )
-    }
 
-    fun setAppList(appList: AppList) {
-        _currentList.value = appList
-    }
-
-    fun toggleListFilterVisibility() {
-        _showFilters.update { !it }
-    }
-
-    fun sortBy(sort: Sort) {
-        _sortBy.update { sort }
-    }
-
-    fun addCategory(category: String) {
-        _addedCategories.update {
-            addedCategories.value.toMutableList().apply {
-                add(category)
-            }
-        }
-    }
-
-    fun removeCategory(category: String) {
-        _addedCategories.update {
-            addedCategories.value.toMutableList().apply {
-                remove(category)
-            }
-        }
-    }
 }

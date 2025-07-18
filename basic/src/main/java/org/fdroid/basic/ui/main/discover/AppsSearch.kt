@@ -11,15 +11,12 @@ import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.fdroid.basic.ui.categories.Category
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppsSearch(
     searchBarState: SearchBarState,
-    categories: List<Category>?,
-    onItemClick: (AppNavigationItem) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val textFieldState = rememberTextFieldState()
@@ -49,6 +46,6 @@ fun AppsSearch(
 fun AppsSearchPreview() {
     FDroidContent {
         val state = rememberSearchBarState(SearchBarValue.Expanded)
-        AppsSearch(state, emptyList(), {})
+        AppsSearch(state)
     }
 }

@@ -40,9 +40,10 @@ import org.fdroid.basic.ui.main.apps.MyAppsViewModel
 import org.fdroid.basic.ui.main.details.AppDetails
 import org.fdroid.basic.ui.main.discover.Discover
 import org.fdroid.basic.ui.main.lists.AppList
-import org.fdroid.basic.ui.main.lists.FilterInfo
-import org.fdroid.basic.ui.main.lists.Sort
+import org.fdroid.basic.ui.main.lists.AppListInfo
+import org.fdroid.basic.ui.main.lists.AppListViewModel
 import org.fdroid.basic.ui.main.repositories.RepositoryList
+import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 sealed class NavDestinations(
@@ -104,9 +105,8 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                     val numUpdates = myAppsViewModel.numUpdates.collectAsStateWithLifecycle(0).value
                     Discover(
                         discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
-                        onTitleTap = {
-                            viewModel.setAppList(it)
-                            backStack.add(NavigationKey.AppList)
+                        onListTap = {
+                            backStack.add(NavigationKey.AppList(it))
                         },
                         onAppTap = {
                             backStack.add(NavigationKey.AppDetails(it.packageName))
@@ -148,6 +148,7 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                     }
                     AppDetails(
                         item = appDetailsViewModel.appDetails.collectAsStateWithLifecycle().value,
+                        onNav = { navKey -> backStack.add(navKey) },
                         onBackNav = if (isBigScreen) null else {
                             { backStack.removeLastOrNull() }
                         },
@@ -159,29 +160,34 @@ fun Main(viewModel: MainViewModel = hiltViewModel()) {
                         Text("No app selected")
                     },
                 ) {
-                    val filterInfo = object : FilterInfo {
+                    val appListViewModel = hiltViewModel<AppListViewModel>()
+                    LaunchedEffect(it.type) {
+                        appListViewModel.load(it.type)
+                    }
+                    val appListInfo = object : AppListInfo {
                         override val model =
-                            viewModel.filterModel.collectAsStateWithLifecycle().value
+                            appListViewModel.appListModel.collectAsStateWithLifecycle().value
 
                         override fun toggleFilterVisibility() {
-                            viewModel.toggleListFilterVisibility()
+                            appListViewModel.toggleListFilterVisibility()
                         }
 
-                        override fun sortBy(sort: Sort) = viewModel.sortBy(sort)
-                        override fun addCategory(category: String) = viewModel.addCategory(category)
+                        override fun sortBy(sort: AppListSortOrder) = appListViewModel.sortBy(sort)
+                        override fun addCategory(category: String) =
+                            appListViewModel.addCategory(category)
+
                         override fun removeCategory(category: String) =
-                            viewModel.removeCategory(category)
+                            appListViewModel.removeCategory(category)
                     }
                     AppList(
-                        appList = viewModel.currentList.collectAsStateWithLifecycle().value,
-                        filterInfo = filterInfo,
+                        appListInfo = appListInfo,
                         currentPackageName = if (isBigScreen) {
                             (backStack.last() as? NavigationKey.AppDetails)?.packageName
                         } else null,
                         onBackClicked = { backStack.removeLastOrNull() },
                         modifier = Modifier,
-                    ) {
-                        backStack.add(NavigationKey.AppDetails(it.packageName))
+                    ) { packageName ->
+                        backStack.add(NavigationKey.AppDetails(packageName))
                     }
                 }
                 entry<NavigationKey.Repos>(

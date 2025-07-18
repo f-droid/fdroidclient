@@ -5,50 +5,46 @@ import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.basic.ui.categories.Category
-import org.fdroid.basic.ui.main.discover.AppNavigationItem
+import org.fdroid.database.AppListSortOrder
 import java.util.Locale
 
-enum class Sort {
-    NAME,
-    LATEST,
-}
-
 @Composable
-fun FilterPresenter(
+fun AppListPresenter(
+    listFlow: StateFlow<AppListType>,
+    appsFlow: StateFlow<List<AppListItem>?>,
     areFiltersShownFlow: StateFlow<Boolean>,
-    appsFlow: Flow<List<AppNavigationItem>>,
-    sortByFlow: StateFlow<Sort>,
+    sortByFlow: StateFlow<AppListSortOrder>,
     allCategoriesFlow: Flow<List<Category>>,
     addedCategoriesFlow: StateFlow<List<String>>,
-): FilterModel {
+): AppListModel {
     val apps = appsFlow.collectAsState(null).value
     val sortBy = sortByFlow.collectAsState().value
     val allCategories = allCategoriesFlow.collectAsState(null).value
     val addedCategories = addedCategoriesFlow.collectAsState().value
 
-    val newApps = apps?.filter { app ->
+    val filteredApps = apps?.filter { app ->
         addedCategories.isEmpty() || addedCategories.any { app.summary.contains(it) }
-    } ?: emptyList()
+    }
 
-    return FilterModel(
-        isLoading = apps == null,
-        areFiltersShown = areFiltersShownFlow.collectAsState().value,
-        apps = if (sortBy == Sort.NAME) {
-            newApps.sortedBy { it.name.lowercase(Locale.getDefault()) }
+    return AppListModel(
+        list = listFlow.collectAsState().value,
+        apps = if (sortBy == AppListSortOrder.NAME) {
+            filteredApps?.sortedBy { it.name.lowercase(Locale.getDefault()) }
         } else {
-            newApps.sortedByDescending { it.lastUpdated }
+            filteredApps?.sortedByDescending { it.lastUpdated }
         },
+        areFiltersShown = areFiltersShownFlow.collectAsState().value,
         sortBy = sortBy,
         allCategories = allCategories,
         addedCategories = addedCategories,
     )
 }
 
-data class FilterModel(
-    val isLoading: Boolean,
+data class AppListModel(
+    val list: AppListType,
+    val apps: List<AppListItem>?,
     val areFiltersShown: Boolean,
-    val apps: List<AppNavigationItem>,
-    val sortBy: Sort,
+    val sortBy: AppListSortOrder,
     val allCategories: List<Category>?,
     val addedCategories: List<String>,
 )

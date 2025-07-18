@@ -15,12 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
 import org.fdroid.basic.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import kotlin.math.max
 
 @Composable
-fun CategoryList(categories: List<Category>?, modifier: Modifier = Modifier) {
+fun CategoryList(
+    categories: List<Category>?,
+    onNav: (NavKey) -> Unit,
+    modifier: Modifier = Modifier
+) {
     if (categories != null) Column {
         val state = rememberLazyGridState()
         LazyVerticalGrid(
@@ -40,7 +45,7 @@ fun CategoryList(categories: List<Category>?, modifier: Modifier = Modifier) {
                 )
             }
             items(categories, key = { it.name }) { category ->
-                CategoryCard(category)
+                CategoryCard(category, onNav)
             }
         }
     }
@@ -59,6 +64,6 @@ fun CategoryListPreview() {
             Category("Development", "Development"),
             Category("doesn't exist", "Foo bar"),
         )
-        CategoryList(categories)
+        CategoryList(categories, {})
     }
 }

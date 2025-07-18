@@ -21,8 +21,10 @@ import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -36,23 +38,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import org.fdroid.basic.ui.main.apps.MinimalApp
-
-sealed class AppList(val title: String) {
-    data object New : AppList("New apps")
-    data object RecentlyUpdated : AppList("Recently updated")
-    data object All : AppList("All apps")
-}
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun AppList(
-    appList: AppList,
-    filterInfo: FilterInfo,
+    appListInfo: AppListInfo,
     currentPackageName: String?,
     modifier: Modifier = Modifier,
     onBackClicked: () -> Unit,
-    onItemClick: (MinimalApp) -> Unit,
+    onItemClick: (String) -> Unit,
 ) {
     val scrollBehavior = exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val addedRepos = remember { mutableStateListOf<String>() }
@@ -60,7 +54,7 @@ fun AppList(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(appList.title)
+                    Text(appListInfo.model.list.title)
                 },
                 navigationIcon = {
                     IconButton(onClick = onBackClicked) {
@@ -68,9 +62,9 @@ fun AppList(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { filterInfo.toggleFilterVisibility() }) {
+                    IconButton(onClick = { appListInfo.toggleFilterVisibility() }) {
                         val showFilterBadge = addedRepos.isNotEmpty() ||
-                            filterInfo.model.addedCategories.isNotEmpty()
+                            appListInfo.model.addedCategories.isNotEmpty()
                         BadgedBox(badge = {
                             if (showFilterBadge) Badge(containerColor = MaterialTheme.colorScheme.secondary)
                         }) {
@@ -91,11 +85,13 @@ fun AppList(
                 .padding(paddingValues),
         ) {
             AppsFilter(
-                filter = filterInfo,
+                info = appListInfo,
                 addedRepos = addedRepos,
                 modifier = Modifier.background(TopAppBarDefaults.topAppBarColors().containerColor),
             )
-            LazyColumn(
+            val apps = appListInfo.model.apps
+            if (apps == null) LoadingIndicator()
+            else LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.then(
@@ -103,17 +99,16 @@ fun AppList(
                     else Modifier.selectableGroup()
                 ),
             ) {
-                val apps = filterInfo.model.apps
                 items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
                     val isSelected = currentPackageName == navItem.packageName
                     val interactionModifier = if (currentPackageName == null) {
                         Modifier.clickable(
-                            onClick = { onItemClick(navItem) }
+                            onClick = { onItemClick(navItem.packageName) }
                         )
                     } else {
                         Modifier.selectable(
                             selected = isSelected,
-                            onClick = { onItemClick(navItem) }
+                            onClick = { onItemClick(navItem.packageName) }
                         )
                     }
                     val modifier = Modifier
@@ -121,11 +116,8 @@ fun AppList(
                         .animateItem()
                         .padding(horizontal = 8.dp)
                         .then(interactionModifier)
-                    AppItem(
-                        name = navItem.name,
-                        summary = navItem.summary,
-                        downloadRequest = navItem.iconDownloadRequest,
-                        isNew = navItem.isNew,
+                    AppListRow(
+                        item = navItem,
                         isSelected = isSelected,
                         modifier = modifier,
                     )

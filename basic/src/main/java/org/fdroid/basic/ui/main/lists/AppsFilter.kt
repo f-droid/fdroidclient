@@ -26,23 +26,24 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import org.fdroid.database.AppListSortOrder
 
-interface FilterInfo {
-    val model: FilterModel
+interface AppListInfo {
+    val model: AppListModel
 
     fun toggleFilterVisibility()
-    fun sortBy(sort: Sort)
+    fun sortBy(sort: AppListSortOrder)
     fun addCategory(category: String)
     fun removeCategory(category: String)
 }
 
 @Composable
 fun ColumnScope.AppsFilter(
-    filter: FilterInfo,
+    info: AppListInfo,
     addedRepos: MutableList<String>,
     modifier: Modifier = Modifier,
 ) {
-    AnimatedVisibility(filter.model.areFiltersShown) {
+    AnimatedVisibility(info.model.areFiltersShown) {
         FlowRow(
             modifier = modifier
                 .fillMaxWidth()
@@ -55,9 +56,9 @@ fun ColumnScope.AppsFilter(
             FilterChip(
                 selected = false,
                 leadingIcon = {
-                    val vector = when (filter.model.sortBy) {
-                        Sort.NAME -> Icons.Filled.SortByAlpha
-                        Sort.LATEST -> Icons.Filled.AccessTime
+                    val vector = when (info.model.sortBy) {
+                        AppListSortOrder.NAME -> Icons.Filled.SortByAlpha
+                        AppListSortOrder.LAST_UPDATED -> Icons.Filled.AccessTime
                     }
                     Icon(vector, null, modifier = Modifier.size(FilterChipDefaults.IconSize))
                 },
@@ -65,9 +66,9 @@ fun ColumnScope.AppsFilter(
                     Icon(Icons.Filled.ArrowDropDown, null)
                 },
                 label = {
-                    val s = when (filter.model.sortBy) {
-                        Sort.NAME -> "Sort by name"
-                        Sort.LATEST -> "Sort by latest"
+                    val s = when (info.model.sortBy) {
+                        AppListSortOrder.NAME -> "Sort by name"
+                        AppListSortOrder.LAST_UPDATED -> "Sort by latest"
                     }
                     Text(s)
                     DropdownMenu(
@@ -80,7 +81,7 @@ fun ColumnScope.AppsFilter(
                                 Icon(Icons.Filled.SortByAlpha, null)
                             },
                             onClick = {
-                                filter.sortBy(Sort.NAME)
+                                info.sortBy(AppListSortOrder.NAME)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -90,7 +91,7 @@ fun ColumnScope.AppsFilter(
                                 Icon(Icons.Filled.AccessTime, null)
                             },
                             onClick = {
-                                filter.sortBy(Sort.LATEST)
+                                info.sortBy(AppListSortOrder.LAST_UPDATED)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -98,7 +99,7 @@ fun ColumnScope.AppsFilter(
                 },
                 onClick = { sortByMenuExpanded = !sortByMenuExpanded },
             )
-            if (!filter.model.allCategories.isNullOrEmpty()) FilterChip(
+            if (!info.model.allCategories.isNullOrEmpty()) FilterChip(
                 selected = false,
                 leadingIcon = {
                     Icon(
@@ -113,11 +114,11 @@ fun ColumnScope.AppsFilter(
                         expanded = categoryMenuExpanded,
                         onDismissRequest = { categoryMenuExpanded = false },
                     ) {
-                        filter.model.allCategories?.forEach { category ->
+                        info.model.allCategories?.forEach { category ->
                             DropdownMenuItem(
                                 text = { Text(category.name) },
                                 onClick = {
-                                    filter.addCategory(category.id)
+                                    info.addCategory(category.id)
                                     categoryMenuExpanded = false
                                 },
                             )
@@ -159,7 +160,7 @@ fun ColumnScope.AppsFilter(
                 },
                 onClick = { repoMenuExpanded = !repoMenuExpanded },
             )
-            filter.model.addedCategories.forEach { category ->
+            info.model.addedCategories.forEach { category ->
                 FilterChip(
                     selected = true,
                     trailingIcon = {
@@ -170,7 +171,7 @@ fun ColumnScope.AppsFilter(
                         )
                     },
                     label = { Text(category) },
-                    onClick = { filter.removeCategory(category) }
+                    onClick = { info.removeCategory(category) }
                 )
             }
             addedRepos.forEach { repo ->
