@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import org.fdroid.basic.R
 import org.fdroid.basic.details.AppDetailsItem
+import org.fdroid.basic.ui.startActivitySafe
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -52,7 +53,7 @@ fun AppDetailsTopAppBar(
         actions = {
             val context = LocalContext.current
             item.actions.shareIntent?.let { shareIntent ->
-                IconButton(onClick = { context.startActivity(shareIntent) }) {
+                IconButton(onClick = { context.startActivitySafe(shareIntent) }) {
                     Icon(
                         imageVector = Icons.Filled.Share,
                         contentDescription = stringResource(R.string.menu_share),

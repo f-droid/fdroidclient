@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import org.fdroid.basic.ui.openUriSafe
 
 @Composable
 fun AppDetailsLink(icon: ImageVector, title: String, url: String, modifier: Modifier = Modifier) {
@@ -34,7 +35,7 @@ fun AppDetailsLink(icon: ImageVector, title: String, url: String, modifier: Modi
             .heightIn(min = 48.dp)
             .fillMaxWidth()
             .combinedClickable(
-                onClick = { uriHandler.openUri(url) },
+                onClick = { uriHandler.openUriSafe(url) },
                 onLongClick = {
                     haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                     val entry = ClipEntry(ClipData.newPlainText("", url))

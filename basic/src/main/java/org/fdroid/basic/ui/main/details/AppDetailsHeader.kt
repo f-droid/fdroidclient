@@ -44,6 +44,7 @@ import org.fdroid.basic.details.AppDetailsItem
 import org.fdroid.basic.details.MainButtonState
 import org.fdroid.basic.details.testApp
 import org.fdroid.basic.ui.asRelativeTimeString
+import org.fdroid.basic.ui.startActivitySafe
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -158,7 +159,7 @@ fun AppDetailsHeader(
             val context = LocalContext.current
             OutlinedButton(
                 onClick = {
-                    context.startActivity(item.actions.launchIntent)
+                    context.startActivitySafe(item.actions.launchIntent)
                 },
                 modifier = Modifier.weight(1f)
             ) {

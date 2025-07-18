@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.basic.BuildConfig.VERSION_NAME
 import org.fdroid.basic.R
+import org.fdroid.basic.ui.openUriSafe
 import org.fdroid.fdroid.ui.theme.FDroidContent
 
 @Composable
@@ -78,7 +79,7 @@ fun About(onBackClicked: () -> Unit) {
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier
                         .padding(top = 4.dp)
-                        .clickable { uriHandler.openUri("https://f-droid.org") }
+                        .clickable { uriHandler.openUriSafe("https://f-droid.org") }
                 )
                 Text(
                     text = "Gitlab",
@@ -86,7 +87,7 @@ fun About(onBackClicked: () -> Unit) {
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier
                         .padding(top = 4.dp)
-                        .clickable { uriHandler.openUri("https://gitlab.com/fdroid") }
+                        .clickable { uriHandler.openUriSafe("https://gitlab.com/fdroid") }
                 )
             }
             Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
