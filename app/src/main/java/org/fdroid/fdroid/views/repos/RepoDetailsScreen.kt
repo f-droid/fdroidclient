@@ -139,7 +139,7 @@ fun RepoDetailsScreen(
             // So if there is only one mirror, this is the address => don't show this section.
             // If there are 2 or more official mirrors, it makes sense to allow users
             // to disable the canonical address.
-            if (officialMirrors.size > 2) {
+            if (officialMirrors.size >= 2) {
                 OfficialMirrors(
                     mirrors = officialMirrors,
                     disabledMirrors = disabledMirrors,
