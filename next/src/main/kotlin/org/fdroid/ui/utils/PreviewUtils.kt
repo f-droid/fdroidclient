@@ -1,0 +1,161 @@
+package org.fdroid.ui.utils
+
+import android.content.Intent
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
+import org.fdroid.database.AppMetadata
+import org.fdroid.database.AppPrefs
+import org.fdroid.index.v2.PackageManifest
+import org.fdroid.index.v2.PackageVersion
+import org.fdroid.index.v2.SignerV2
+import org.fdroid.ui.details.AntiFeature
+import org.fdroid.ui.details.AppDetailsActions
+import org.fdroid.ui.details.AppDetailsItem
+import java.util.concurrent.TimeUnit.DAYS
+
+object Names {
+    val randomName: String get() = names.random()
+    val names = listOf(
+        "Anstop",
+        "PipePipe",
+        "A2DP Volume",
+        "Com-Phone Story Maker",
+        "Lightning",
+        "BitAC - Bitcoin Address Checker",
+        "Text Launcher",
+        "Polaris",
+        "Chubby Click - Metronome",
+        "SUSI.AI",
+        "Moon Phase",
+        "Export Contacts",
+        "Import Contacts",
+        "DNG Processor",
+        "Rootless Pixel Launcher",
+        "AndroDNS",
+        "androidVNC",
+        "PrBoom For Android",
+        "FakeStandby",
+        "eBooks",
+        "ANONguard",
+        "Acrylic Paint",
+        "Immich",
+    )
+}
+
+val testVersion1 = object : PackageVersion {
+    override val versionCode: Long = 42
+    override val versionName: String = "42.23.0-alpha1337-33d2252b90"
+    override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
+    override val size: Long? = 1024 * 1024 * 42
+    override val signer: SignerV2? = SignerV2(
+        listOf("271721a9cddc96660336c19a39ae3cca4375072c80d3c8170860c333d2252b90")
+    )
+    override val releaseChannels: List<String>? = null
+    override val packageManifest: PackageManifest = object : PackageManifest {
+        override val minSdkVersion: Int? = null
+        override val maxSdkVersion: Int? = null
+        override val featureNames: List<String>? = null
+        override val nativecode: List<String>? = listOf("amd64", "x86")
+        override val targetSdkVersion: Int? = 13
+    }
+    override val hasKnownVulnerability: Boolean = false
+}
+val testVersion2 = object : PackageVersion {
+    override val versionCode: Long = 23
+    override val versionName: String = "23.42.0"
+    override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
+    override val size: Long? = 1024 * 1024 * 23
+    override val signer: SignerV2? = SignerV2(
+        listOf("271721a9cddc96660336c19a39ae3cca4375072c80d3c8170860c333d2252b90")
+    )
+    override val releaseChannels: List<String>? = null
+    override val packageManifest: PackageManifest = object : PackageManifest {
+        override val minSdkVersion: Int? = null
+        override val maxSdkVersion: Int? = null
+        override val featureNames: List<String>? = null
+        override val nativecode: List<String>? = null
+        override val targetSdkVersion: Int? = 13
+    }
+    override val hasKnownVulnerability: Boolean = false
+}
+val testApp = AppDetailsItem(
+    app = AppMetadata(
+        repoId = 1,
+        packageName = "org.schabi.newpipe",
+        added = 1441756800000,
+        lastUpdated = 1747214796000,
+        webSite = "https://newpipe.net",
+        changelog = "https://github.com/TeamNewPipe/NewPipe/releases",
+        license = "GPL-3.0-or-later",
+        sourceCode = "https://github.com/TeamNewPipe/NewPipe",
+        issueTracker = "https://github.com/TeamNewPipe/NewPipe/issues",
+        translation = "https://hosted.weblate.org/projects/newpipe/",
+        preferredSigner = "cb84069bd68116bafae5ee4ee5b08a567aa6d898404e7cb12f9e756df5cf5cab",
+        video = null,
+        authorName = "Team NewPipe",
+        authorEmail = "team@newpipe.net",
+        authorWebSite = "https://newpipe.net",
+        authorPhone = "123456",
+        donate = listOf("https://newpipe.net/donate"),
+        liberapayID = null,
+        liberapay = "TeamNewPipe",
+        openCollective = "TeamNewPipe",
+        bitcoin = "TeamNewPipe",
+        litecoin = "TeamNewPipe",
+        flattrID = null,
+        categories = listOf("Internet", "Multimedia"),
+        isCompatible = true,
+    ),
+    actions = AppDetailsActions({}, {}, {}, {}, {}, Intent(), Intent()),
+    appPrefs = AppPrefs("org.schabi.newpipe"),
+    name = "New Pipe",
+    summary = "Lightweight YouTube frontend",
+    description = "NewPipe does not use any Google framework libraries, or the YouTube API. " +
+        "It only parses the website in order to gain the information it needs. " +
+        "Therefore this app can be used on devices without Google Services installed. " +
+        "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
+        LoremIpsum(128).values.joinToString(" "),
+    antiFeatures = listOf(
+        AntiFeature(
+            id = "NonFreeNet",
+            icon = null,
+            name = "This app promotes or depends entirely on a non-free network service",
+            reason = "Depends on Youtube for videos.",
+        ),
+        AntiFeature(
+            id = "FooBar",
+            icon = null,
+            name = "This app promotes or depends entirely on a non-free network service",
+            reason = "Depends on Youtube for videos.",
+        ),
+    ),
+    whatsNew = "This release fixes YouTube only providing a 360p stream.\n\n" +
+        "Note that the solution employed in this version is likely temporary, " +
+        "and in the long run the SABR video protocol needs to be implemented, " +
+        "but TeamNewPipe members are currently busy so any help would be greatly appreciated! " +
+        "https://github.com/TeamNewPipe/NewPipe/issues/12248",
+    authorHasMoreThanOneApp = true,
+    versions = listOf(
+        testVersion1,
+        testVersion2,
+    ),
+    installedVersion = testVersion2,
+    suggestedVersion = testVersion1,
+    possibleUpdate = testVersion1,
+)
+
+fun getPreviewVersion(versionName: String, size: Long? = null) = object : PackageVersion {
+    override val versionCode: Long = 23
+    override val versionName: String = versionName
+    override val added: Long = System.currentTimeMillis() - DAYS.toMillis(3)
+    override val size: Long? = size
+    override val signer: SignerV2? = null
+    override val releaseChannels: List<String>? = null
+    override val packageManifest: PackageManifest = object : PackageManifest {
+        override val minSdkVersion: Int? = null
+        override val maxSdkVersion: Int? = null
+        override val featureNames: List<String>? = null
+        override val nativecode: List<String>? = null
+        override val targetSdkVersion: Int? = null
+    }
+    override val hasKnownVulnerability: Boolean = false
+}
