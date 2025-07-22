@@ -4,6 +4,8 @@
 * Fix top app bar background in OLED black theme
 * Fix implied POST_NOTIFICATIONS permission mismatch
 * Fix minimum installable target SDK for Android 16 (marks apps as incompatible again)
+* Fix index diff bug when removing icons
+* Fix cash when setting session timeout with conscrypt installed
 
 ### 1.23.0 (2025-05-22)
 
