@@ -62,7 +62,7 @@ public class HttpDownloaderTest {
             // domains that use Let's Encrypt won't work on Android 7.1 and older
             // https://gitlab.com/fdroid/fdroidclient/-/issues/2102
             tempUrls = new ArrayList<>(Arrays.asList(
-                    new Pair<>("https://ftp.gwdg.de/pub/android/fdroid/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg")
+                    new Pair<>("https://cloudflare.f-droid.org/repo", "dev.lonami.klooni/en-US/phoneScreenshots/1-game.jpg")
             ));
         }
         URLS = tempUrls;
@@ -89,7 +89,7 @@ public class HttpDownloaderTest {
     public void downloadUninterruptedTestWithProgress() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(1);
         String path = "index.jar";
-        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.gwdg.de/pub/android/fdroid/repo/"));
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://cloudflare.f-droid.org/repo/"));
         receivedProgress = false;
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
@@ -157,7 +157,7 @@ public class HttpDownloaderTest {
     public void downloadThenCancel() throws IOException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(2);
         String path = "index.jar";
-        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://ftp.gwdg.de/pub/android/fdroid/repo/"));
+        List<Mirror> mirrors = Mirror.fromStrings(Collections.singletonList("https://cloudflare.f-droid.org/repo/"));
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
         final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
