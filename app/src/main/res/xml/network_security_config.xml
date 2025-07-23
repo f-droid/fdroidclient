@@ -11,23 +11,30 @@
 
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">amazonaws.com</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">f-droid.org</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">github.com</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">githubusercontent.com</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">github.io</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">gitlab.com</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">gitlab.io</domain>
+        <certificateTransparency enabled="true"/>
     </domain-config>
 </network-security-config>
