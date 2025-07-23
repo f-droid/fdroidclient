@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.CrisisAlert
 import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -21,8 +21,8 @@ import androidx.compose.ui.graphics.ColorFilter.Companion.tint
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -34,7 +34,9 @@ fun AntiFeatures(
         colors = CardDefaults.elevatedCardColors(
             containerColor = MaterialTheme.colorScheme.inverseSurface,
         ),
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
         ExpandableSection(
             icon = rememberVectorPainter(Icons.Default.WarningAmber),
@@ -45,15 +47,13 @@ fun AntiFeatures(
                 item.antiFeatures?.forEach { antiFeature ->
                     ListItem(
                         leadingContent = {
-                            antiFeature.icon?.let { icon ->
-                                AsyncImage(
-                                    model = icon,
-                                    contentDescription = "",
-                                    colorFilter = tint(MaterialTheme.colorScheme.inverseOnSurface),
-                                    error = rememberVectorPainter(Icons.Default.Error),
-                                    modifier = Modifier.size(32.dp),
-                                )
-                            }
+                            AsyncShimmerImage(
+                                model = antiFeature.icon,
+                                contentDescription = "",
+                                colorFilter = tint(MaterialTheme.colorScheme.inverseOnSurface),
+                                error = rememberVectorPainter(Icons.Default.CrisisAlert),
+                                modifier = Modifier.size(32.dp),
+                            )
                         },
                         headlineContent = {
                             Text(

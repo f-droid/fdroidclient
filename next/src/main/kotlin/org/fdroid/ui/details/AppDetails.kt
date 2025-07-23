@@ -64,14 +64,13 @@ import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
-import coil3.compose.AsyncImage
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
-import org.fdroid.ui.utils.Names
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
+import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -195,14 +194,14 @@ fun AppDetails(
                         .height(240.dp)
                         .padding(vertical = 8.dp)
                 ) { index ->
-                    Names.names
-                    AsyncImage(
+                    AsyncShimmerImage(
                         model = item.phoneScreenshots[index],
                         contentDescription = "",
                         contentScale = ContentScale.Fit,
                         placeholder = rememberVectorPainter(Icons.Default.Image),
                         error = rememberVectorPainter(Icons.Default.Error),
                         modifier = Modifier
+                            .size(120.dp, 240.dp)
                             .clip(MaterialTheme.shapes.medium),
                     )
                 }

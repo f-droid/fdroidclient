@@ -1,6 +1,5 @@
 package org.fdroid.ui.discover
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -9,10 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Android
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,13 +20,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import org.fdroid.ui.utils.Names
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.Names
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -77,24 +73,13 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
             .padding(8.dp)
             .clickable { onAppTap(app) },
     ) {
-        app.iconDownloadRequest?.let {
-            AsyncImage( // TODO error handling
-                app.iconDownloadRequest,
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .requiredSize(76.dp)
-                    .clip(MaterialTheme.shapes.medium),
-            )
-        } ?: Icon(
-            Icons.Filled.Android,
-            tint = MaterialTheme.colorScheme.secondary,
+        AsyncShimmerImage(
+            model = app.iconDownloadRequest,
             contentDescription = null,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .clip(MaterialTheme.shapes.medium)
-                .size(76.dp)
-                .background(Color.White)
-                .padding(8.dp),
+                .requiredSize(76.dp)
+                .clip(MaterialTheme.shapes.medium),
         )
         Text(
             text = app.name,

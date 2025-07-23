@@ -13,9 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import org.fdroid.next.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.next.R
+import org.fdroid.ui.utils.AsyncShimmerImage
 
 @Composable
 fun AppListRow(
@@ -27,7 +27,7 @@ fun AppListRow(
         headlineContent = { Text(item.name) },
         supportingContent = { Text(item.summary) },
         leadingContent = {
-            AsyncImage(
+            AsyncShimmerImage(
                 model = item.iconDownloadRequest,
                 error = painterResource(R.drawable.ic_repo_app_default),
                 contentDescription = null,

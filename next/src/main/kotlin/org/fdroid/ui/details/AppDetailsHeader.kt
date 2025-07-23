@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
+import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
@@ -89,7 +90,7 @@ fun AppDetailsHeader(
         horizontalArrangement = spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        AsyncImage(
+        AsyncShimmerImage(
             model = item.icon,
             contentDescription = "",
             error = painterResource(R.drawable.ic_repo_app_default),

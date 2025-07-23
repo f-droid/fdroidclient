@@ -29,10 +29,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
 import org.fdroid.download.PackageName
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
+import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.getPreviewVersion
 
 @Composable
@@ -52,7 +52,7 @@ fun UpdatableAppRow(
                         contentDescription = null, modifier = Modifier.size(24.dp),
                     )
                 }) {
-                    AsyncImage(
+                    AsyncShimmerImage(
                         model = PackageName(app.packageName, app.iconDownloadRequest),
                         error = painterResource(R.drawable.ic_repo_app_default),
                         contentDescription = null,
