@@ -1,5 +1,7 @@
 package org.fdroid.ui
 
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -12,6 +14,7 @@ import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -42,8 +45,16 @@ import org.fdroid.ui.repositories.RepositoriesViewModel
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
-fun Main() {
+fun Main(onListeningForIntent: () -> Unit = {}) {
     val backStack = rememberNavBackStack<NavigationKey>(NavigationKey.Discover)
+    // set up intent routing by listening to new intents from activity
+    val activity = (LocalActivity.current as ComponentActivity)
+    DisposableEffect(backStack) {
+        val intentListener = IntentRouter(backStack)
+        activity.addOnNewIntentListener(intentListener)
+        onListeningForIntent() // call this to get informed about initial intents we have missed
+        onDispose { activity.removeOnNewIntentListener(intentListener) }
+    }
     // Override the defaults so that there isn't a horizontal space between the panes.
     val windowAdaptiveInfo = currentWindowAdaptiveInfo()
     val directive = remember(windowAdaptiveInfo) {

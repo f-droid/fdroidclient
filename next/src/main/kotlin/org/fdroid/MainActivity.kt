@@ -21,14 +21,19 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setContent {
+            Main {
+                // inform OnNewIntentListeners about the initial intent (otherwise would be missed)
+                if (savedInstanceState == null && intent != null) {
+                    onNewIntent(intent)
+                }
+            }
+        }
         if (SDK_INT >= 33 && ContextCompat.checkSelfPermission(
                 this, POST_NOTIFICATIONS
             ) != PERMISSION_GRANTED
         ) {
             requestPermissionLauncher.launch(POST_NOTIFICATIONS)
-        }
-        setContent {
-            Main()
         }
     }
 }
