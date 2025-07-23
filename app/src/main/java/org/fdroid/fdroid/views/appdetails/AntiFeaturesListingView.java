@@ -154,8 +154,6 @@ public class AntiFeaturesListingView extends RecyclerView {
             return context.getString(R.string.antinonfreeadlist);
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreedep_key))) {
             return context.getString(R.string.antinonfreedeplist);
-        } else if (antiFeatureName.equals(context.getString(R.string.antiupstreamnonfree_key))) {
-            return context.getString(R.string.antiupstreamnonfreelist);
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreeassets_key))) {
             return context.getString(R.string.antinonfreeassetslist);
         } else if (antiFeatureName.equals(context.getString(R.string.antidisabledalgorithm_key))) {
@@ -184,8 +182,6 @@ public class AntiFeaturesListingView extends RecyclerView {
             return R.drawable.ic_antifeature_nonfreeadd;
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreedep_key))) {
             return R.drawable.ic_antifeature_nonfreedep;
-        } else if (antiFeatureName.equals(context.getString(R.string.antiupstreamnonfree_key))) {
-            return R.drawable.ic_antifeature_upstreamnonfree;
         } else if (antiFeatureName.equals(context.getString(R.string.antinonfreeassets_key))) {
             return R.drawable.ic_antifeature_nonfreeassets;
         } else if (antiFeatureName.equals(context.getString(R.string.antidisabledalgorithm_key))) {

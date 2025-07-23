@@ -24,7 +24,6 @@
     <string name="antitetherednet_key">TetheredNet</string>
     <string name="antinonfreead_key">NonFreeAdd</string>
     <string name="antinonfreedep_key">NonFreeDep</string>
-    <string name="antiupstreamnonfree_key">UpstreamNonFree</string>
     <string name="antinonfreeassets_key">NonFreeAssets</string>
     <string name="antidisabledalgorithm_key">DisabledAlgorithm</string>
     <string name="antiknownvuln_key">KnownVuln</string>
