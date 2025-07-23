@@ -2,11 +2,8 @@ package org.fdroid.ui.apps
 
 import androidx.annotation.RestrictTo
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
@@ -22,7 +19,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -46,10 +42,11 @@ import androidx.navigation3.runtime.NavKey
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
-import org.fdroid.ui.utils.Names
-import org.fdroid.ui.NavigationKey
-import org.fdroid.ui.utils.getPreviewVersion
 import org.fdroid.ui.BottomBar
+import org.fdroid.ui.NavigationKey
+import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.Names
+import org.fdroid.ui.utils.getPreviewVersion
 import java.util.concurrent.TimeUnit.DAYS
 
 @Composable
@@ -128,12 +125,8 @@ fun MyApps(
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
-        if (updatableApps == null && installedApps == null) Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            LoadingIndicator(Modifier.size(128.dp))
-        } else LazyColumn(
+        if (updatableApps == null && installedApps == null) BigLoadingIndicator()
+        else LazyColumn(
             modifier
                 .padding(paddingValues)
                 .then(

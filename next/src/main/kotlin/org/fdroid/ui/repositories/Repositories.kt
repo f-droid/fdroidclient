@@ -3,8 +3,6 @@ package org.fdroid.ui.repositories
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
 import android.os.Parcelable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -14,13 +12,11 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,6 +25,7 @@ import androidx.core.os.LocaleListCompat
 import kotlinx.parcelize.Parcelize
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
+import org.fdroid.ui.utils.BigLoadingIndicator
 
 @Composable
 @OptIn(
@@ -64,24 +61,16 @@ fun Repositories(
             }
         }
     ) { paddingValues ->
-        if (repositories == null) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                LoadingIndicator(modifier = Modifier.padding(paddingValues))
-            }
-        } else {
-            RepositoriesList(
-                repositories = repositories,
-                currentRepository = currentRepository,
-                onRepositorySelected = {
-                    onRepositorySelected(it)
-                },
-                modifier = Modifier
-                    .padding(paddingValues),
-            )
-        }
+        if (repositories == null) BigLoadingIndicator()
+        else RepositoriesList(
+            repositories = repositories,
+            currentRepository = currentRepository,
+            onRepositorySelected = {
+                onRepositorySelected(it)
+            },
+            modifier = Modifier
+                .padding(paddingValues),
+        )
     }
 }
 

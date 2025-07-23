@@ -1,13 +1,11 @@
 package org.fdroid.ui.discover
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -17,7 +15,6 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -29,7 +26,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -38,14 +34,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
+import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
-import org.fdroid.ui.NavigationKey
-import org.fdroid.ui.categories.CategoryList
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.MainOverFlowMenu
+import org.fdroid.ui.NavigationKey
+import org.fdroid.ui.categories.CategoryList
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.topBarMenuItems
-import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.utils.BigLoadingIndicator
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -114,9 +111,7 @@ fun Discover(
                                 .fillMaxWidth()
                         )
                     }
-                    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                        LoadingIndicator(Modifier.size(128.dp))
-                    }
+                    BigLoadingIndicator()
                 }
                 is LoadedDiscoverModel -> {
                     AppsSearch(

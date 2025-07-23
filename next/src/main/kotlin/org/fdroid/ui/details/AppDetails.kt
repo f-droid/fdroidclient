@@ -71,6 +71,7 @@ import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -86,12 +87,8 @@ fun AppDetails(
 ) {
     val topAppBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
-    if (item == null) Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        LoadingIndicator(Modifier.size(128.dp))
-    } else Scaffold(
+    if (item == null) BigLoadingIndicator()
+    else Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav)

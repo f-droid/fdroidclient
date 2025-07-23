@@ -24,7 +24,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -37,7 +36,11 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.fdroid.database.AppListSortOrder
+import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.utils.BigLoadingIndicator
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -90,7 +93,7 @@ fun AppList(
                 modifier = Modifier.background(TopAppBarDefaults.topAppBarColors().containerColor),
             )
             val apps = appListInfo.model.apps
-            if (apps == null) LoadingIndicator()
+            if (apps == null) BigLoadingIndicator()
             else LazyColumn(
                 contentPadding = PaddingValues(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -127,5 +130,54 @@ fun AppList(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    FDroidContent {
+        val model = AppListModel(
+            list = AppListType.New("New"),
+            apps = listOf(
+                AppListItem("1", "This is app 1", "It has summary 2", 0, null),
+                AppListItem("2", "This is app 2", "It has summary 2", 0, null),
+            ),
+            areFiltersShown = true,
+            sortBy = AppListSortOrder.NAME,
+            allCategories = null,
+            addedCategories = emptyList(),
+        )
+        val info = object : AppListInfo {
+            override val model: AppListModel = model
+            override fun toggleFilterVisibility() {}
+            override fun sortBy(sort: AppListSortOrder) {}
+            override fun addCategory(category: String) {}
+            override fun removeCategory(category: String) {}
+        }
+        AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewEmpty() {
+    FDroidContent {
+        val model = AppListModel(
+            list = AppListType.New("New"),
+            apps = null,
+            areFiltersShown = true,
+            sortBy = AppListSortOrder.NAME,
+            allCategories = null,
+            addedCategories = emptyList(),
+        )
+        val info = object : AppListInfo {
+            override val model: AppListModel = model
+            override fun toggleFilterVisibility() {}
+            override fun sortBy(sort: AppListSortOrder) {}
+            override fun addCategory(category: String) {}
+            override fun removeCategory(category: String) {}
+        }
+        AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
     }
 }
