@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:filename")
+
 package org.fdroid.ui.apps
 
 import androidx.compose.runtime.Composable
@@ -20,7 +22,9 @@ fun MyAppsPresenter(
     val collator = Collator.getInstance(Locale.getDefault())
     return MyAppsModel(
         appUpdates = when (sortOrder) {
-            AppListSortOrder.NAME -> appUpdates?.sortedWith { a1, a2 -> collator.compare(a1.name, a2.name) }
+            AppListSortOrder.NAME -> appUpdates?.sortedWith { a1, a2 ->
+                collator.compare(a1.name, a2.name)
+            }
             AppListSortOrder.LAST_UPDATED -> appUpdates?.sortedByDescending { it.update.added }
         },
         installedApps = installedApps?.filter {
@@ -28,7 +32,9 @@ fun MyAppsPresenter(
             it.packageName !in packageNames
         }?.let { apps ->
             when (sortOrder) {
-                AppListSortOrder.NAME -> apps.sortedWith { a1, a2 -> collator.compare(a1.name, a2.name) }
+                AppListSortOrder.NAME -> apps.sortedWith { a1, a2 ->
+                    collator.compare(a1.name, a2.name)
+                }
                 AppListSortOrder.LAST_UPDATED -> apps.sortedByDescending { it.lastUpdated }
             }
         },

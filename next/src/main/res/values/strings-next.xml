@@ -2,10 +2,11 @@
 <resources>
 
     <string name="app_name">F-Droid Next</string>
+    <string name="about_text">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. This app makes it easy to browse, install, and keep track of updates on your device.</string>
 
-    <string name="about">About</string>
-    <string name="discover">Discover</string>
-    <string name="apps_my">My apps</string>
+    <string name="menu_about">About</string>
+    <string name="menu_discover">Discover</string>
+    <string name="menu_apps_my">My apps</string>
 
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>

@@ -183,7 +183,9 @@ class AppDetailsActions(
 )
 
 enum class MainButtonState {
-    NONE, INSTALL, UPDATE
+    NONE,
+    INSTALL,
+    UPDATE,
 }
 
 data class AntiFeature(

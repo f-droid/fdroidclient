@@ -25,7 +25,7 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
             if (packageName.matches(packageNameRegex)) {
                 backStack.add(NavigationKey.AppDetails(packageName))
             } else {
-                log.warn { "Malformed package name: $packageName"}
+                log.warn { "Malformed package name: $packageName" }
             }
         } else if (uri != null) {
             val packagesUrlRegex = "^/([a-z][a-z][a-zA-Z_-]*/)?packages/[A-Za-z\\d_.]+/?$".toRegex()
@@ -34,7 +34,7 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
                 if (packageName.matches(packageNameRegex)) {
                     backStack.add(NavigationKey.AppDetails(packageName))
                 } else {
-                    log.warn { "Malformed package name: $packageName"}
+                    log.warn { "Malformed package name: $packageName" }
                 }
             } else if (uri.path?.matches(packagesUrlRegex) == true) {
                 val packageName = uri.lastPathSegment ?: return

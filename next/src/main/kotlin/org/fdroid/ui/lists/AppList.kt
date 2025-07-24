@@ -69,7 +69,9 @@ fun AppList(
                         val showFilterBadge = addedRepos.isNotEmpty() ||
                             appListInfo.model.addedCategories.isNotEmpty()
                         BadgedBox(badge = {
-                            if (showFilterBadge) Badge(containerColor = MaterialTheme.colorScheme.secondary)
+                            if (showFilterBadge) Badge(
+                                containerColor = MaterialTheme.colorScheme.secondary,
+                            )
                         }) {
                             Icon(
                                 Icons.Filled.FilterList,

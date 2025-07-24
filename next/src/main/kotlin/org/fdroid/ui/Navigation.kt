@@ -46,8 +46,8 @@ enum class BottomNavDestinations(
     @StringRes val label: Int,
     val icon: ImageVector,
 ) {
-    DISCOVER(NavigationKey.Discover, R.string.discover, Icons.Filled.Explore),
-    MY_APPS(NavigationKey.MyApps, R.string.apps_my, Icons.Filled.Apps),
+    DISCOVER(NavigationKey.Discover, R.string.menu_discover, Icons.Filled.Explore),
+    MY_APPS(NavigationKey.MyApps, R.string.menu_apps_my, Icons.Filled.Apps),
 }
 
 sealed class NavDestinations(
@@ -61,7 +61,7 @@ sealed class NavDestinations(
     object Settings :
         NavDestinations(NavigationKey.Settings, R.string.menu_settings, Icons.Filled.Settings)
 
-    object About : NavDestinations(NavigationKey.About, R.string.about, Icons.Filled.Info)
+    object About : NavDestinations(NavigationKey.About, R.string.menu_about, Icons.Filled.Info)
 }
 
 val topBarMenuItems = listOf(

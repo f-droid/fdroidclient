@@ -103,7 +103,8 @@ fun DetailsPresenter(
             } else {
                 viewModel::ignoreAllUpdates
             },
-            ignoreThisUpdate = if (installedVersionCode == null || possibleUpdate == null ||
+            ignoreThisUpdate = if (installedVersionCode == null ||
+                possibleUpdate == null ||
                 possibleUpdate.versionCode <= installedVersionCode
             ) {
                 null

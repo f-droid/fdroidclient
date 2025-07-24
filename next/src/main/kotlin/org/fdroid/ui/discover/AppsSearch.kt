@@ -35,9 +35,7 @@ fun AppsSearch(
     ExpandedFullScreenSearchBar(
         state = searchBarState,
         inputField = inputField,
-    ) {
-
-    }
+    ) { }
 }
 
 @Preview

@@ -89,6 +89,7 @@ val License: ImageVector
         return _License!!
     }
 
+@Suppress("ktlint:standard:backing-property-naming")
 private var _License: ImageVector? = null
 
 @Preview

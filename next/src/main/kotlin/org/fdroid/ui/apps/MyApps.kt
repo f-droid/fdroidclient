@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.BottomBar
@@ -106,12 +107,12 @@ fun MyApps(
                             },
                             trailingIcon = {
                                 RadioButton(
-                                    selected = myAppsModel.sortOrder == AppListSortOrder.LAST_UPDATED,
+                                    selected = myAppsModel.sortOrder == LAST_UPDATED,
                                     onClick = null,
                                 )
                             },
                             onClick = {
-                                onSortChanged(AppListSortOrder.LAST_UPDATED)
+                                onSortChanged(LAST_UPDATED)
                                 sortByMenuExpanded = false
                             },
                         )

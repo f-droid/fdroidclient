@@ -29,9 +29,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        if (SDK_INT >= 33 && ContextCompat.checkSelfPermission(
-                this, POST_NOTIFICATIONS
-            ) != PERMISSION_GRANTED
+        if (SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) != PERMISSION_GRANTED
         ) {
             requestPermissionLauncher.launch(POST_NOTIFICATIONS)
         }

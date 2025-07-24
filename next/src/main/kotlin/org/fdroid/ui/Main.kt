@@ -179,8 +179,6 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 ) {
                     val viewModel = hiltViewModel<RepositoriesViewModel>()
                     val repos = viewModel.repos.collectAsStateWithLifecycle(null).value
-                    val visibleRepository =
-                        viewModel.visibleRepository.collectAsStateWithLifecycle().value
                     Repositories(
                         repositories = repos,
                         currentRepositoryId = if (isBigScreen) {

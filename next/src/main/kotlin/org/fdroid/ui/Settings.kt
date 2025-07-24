@@ -49,6 +49,6 @@ fun Settings(onBackClicked: () -> Unit) {
 @Composable
 fun SettingsPreview() {
     FDroidContent {
-        Settings {  }
+        Settings { }
     }
 }

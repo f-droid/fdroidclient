@@ -15,11 +15,11 @@ import coil3.request.crossfade
 import coil3.util.DebugLogger
 import dagger.hilt.android.HiltAndroidApp
 import org.fdroid.download.DownloadRequest
+import org.fdroid.download.LocalIconFetcher
+import org.fdroid.download.PackageName
 import org.fdroid.download.coil.DownloadRequestFetcher
 import org.fdroid.next.BuildConfig
 import org.fdroid.repo.RepoUpdateWorker
-import org.fdroid.download.LocalIconFetcher
-import org.fdroid.download.PackageName
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -61,7 +61,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
                     override fun key(data: PackageName, options: Options): String = data.packageName
                 }
                 add(packageNameKeyer)
-                add(LocalIconFetcher.Factory(this@App.applicationContext, downloadRequestFetcherFactory))
+                add(LocalIconFetcher.Factory(context, downloadRequestFetcherFactory))
             }
             .memoryCache {
                 MemoryCache.Builder()

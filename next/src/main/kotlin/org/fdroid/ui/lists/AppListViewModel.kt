@@ -82,7 +82,9 @@ class AppListViewModel @Inject constructor(
         } else {
             when (items[0]) {
                 is AppOverviewItem -> onAppOverviewItems(items as List<AppOverviewItem>)
-                is org.fdroid.database.AppListItem -> onAppListItems(items as List<org.fdroid.database.AppListItem>)
+                is org.fdroid.database.AppListItem -> {
+                    onAppListItems(items as List<org.fdroid.database.AppListItem>)
+                }
                 else -> error("Unknown item class: ${items[0]?.javaClass?.name}")
             }
         }

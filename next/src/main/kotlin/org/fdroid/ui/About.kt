@@ -62,7 +62,7 @@ fun About(onBackClicked: () -> Unit) {
         ) {
             AboutHeader(modifier = Modifier.padding(top = 32.dp))
             Text(
-                text = "F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. This app makes it easy to browse, install, and keep track of updates on your device.",
+                text = stringResource(R.string.about_text),
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(top = 24.dp),
             )

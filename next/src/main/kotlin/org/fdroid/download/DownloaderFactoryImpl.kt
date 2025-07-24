@@ -3,13 +3,6 @@ package org.fdroid.download
 import android.net.Uri
 import org.fdroid.IndexFile
 import org.fdroid.database.Repository
-import org.fdroid.download.DownloadRequest
-import org.fdroid.download.Downloader
-import org.fdroid.download.DownloaderFactory
-import org.fdroid.download.HttpDownloader
-import org.fdroid.download.HttpDownloaderV2
-import org.fdroid.download.HttpManager
-import org.fdroid.download.Mirror
 import org.fdroid.index.IndexFormatVersion
 import java.io.File
 import javax.inject.Inject

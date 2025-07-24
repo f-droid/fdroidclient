@@ -23,6 +23,8 @@ class HtmlDescriptionTest {
     @Test
     fun testLinkWithDotAtTheEnd() {
         val description = """please visit our website: https://wikimediafoundation.org/."""
+
+        @Suppress("ktlint:standard:max-line-length")
         val expectedDescription = """please visit our website: <a href="https://wikimediafoundation.org/">https://wikimediafoundation.org/</a>."""
         assertEquals(expectedDescription, getHtmlDescription(description))
     }

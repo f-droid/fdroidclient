@@ -35,7 +35,7 @@ class RepositoriesViewModel @Inject constructor(
     }
 
     private val _visibleRepositoryItem = MutableStateFlow<RepositoryItem?>(null)
-    val visibleRepository = _visibleRepositoryItem.asStateFlow()
+    val visibleRepositoryItem = _visibleRepositoryItem.asStateFlow()
 
     fun setVisibleRepository(repositoryItem: RepositoryItem?) {
         _visibleRepositoryItem.value = repositoryItem

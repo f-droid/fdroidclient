@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:filename")
+
 package org.fdroid.ui.lists
 
 import androidx.compose.runtime.Composable

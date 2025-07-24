@@ -23,8 +23,11 @@ val PackageVariant: ImageVector
             return _PackageVariant!!
         }
         _PackageVariant = Builder(
-            name = "packageVariant", defaultWidth = 24.0.dp, defaultHeight
-            = 24.0.dp, viewportWidth = 24.0f, viewportHeight = 24.0f
+            name = "packageVariant",
+            defaultWidth = 24.dp,
+            defaultHeight = 24.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f,
         ).apply {
             path(
                 fill = SolidColor(Color(0xFF000000)), stroke = null, strokeLineWidth = 0.0f,
@@ -81,6 +84,7 @@ val PackageVariant: ImageVector
         return _PackageVariant!!
     }
 
+@Suppress("ktlint:standard:backing-property-naming")
 private var _PackageVariant: ImageVector? = null
 
 @Preview
