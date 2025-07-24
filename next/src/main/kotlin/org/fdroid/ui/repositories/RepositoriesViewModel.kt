@@ -8,34 +8,37 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
 import javax.inject.Inject
 
 @HiltViewModel
 class RepositoriesViewModel @Inject constructor(
     app: Application,
-    private val repoManager: RepoManager,
+    repoManager: RepoManager,
 ) : AndroidViewModel(app) {
 
-    val repos: Flow<List<Repository>> = repoManager.repositoriesState.map { repos ->
+    private val localeList = LocaleListCompat.getDefault()
+    val repos: Flow<List<RepositoryItem>> = repoManager.repositoriesState.map { repos ->
         repos.map {
-            Repository(
+            RepositoryItem(
                 repoId = it.repoId,
                 address = it.address,
+                name = it.getName(localeList) ?: "Unknown Repo",
+                icon = it.getIcon(localeList)?.getDownloadRequest(it),
                 timestamp = it.timestamp,
                 lastUpdated = it.lastUpdated,
                 weight = it.weight,
                 enabled = it.enabled,
-                name = it.getName(LocaleListCompat.getDefault()) ?: "Unknown Repo",
             )
         }
     }
 
-    private val _visibleRepository = MutableStateFlow<Repository?>(null)
-    val visibleRepository = _visibleRepository.asStateFlow()
+    private val _visibleRepositoryItem = MutableStateFlow<RepositoryItem?>(null)
+    val visibleRepository = _visibleRepositoryItem.asStateFlow()
 
-    fun setVisibleRepository(repository: Repository?) {
-        _visibleRepository.value = repository
+    fun setVisibleRepository(repositoryItem: RepositoryItem?) {
+        _visibleRepositoryItem.value = repositoryItem
     }
 
 }

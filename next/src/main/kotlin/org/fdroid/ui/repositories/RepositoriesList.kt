@@ -13,28 +13,26 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.core.os.LocaleListCompat
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class)
 fun RepositoriesList(
-    repositories: List<Repository>,
-    currentRepository: Repository?,
-    onRepositorySelected: (Repository) -> Unit,
+    repositories: List<RepositoryItem>,
+    currentRepositoryId: Long?,
+    onRepositorySelected: (RepositoryItem) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         contentPadding = PaddingValues(vertical = 8.dp),
         verticalArrangement = spacedBy(8.dp),
         modifier = modifier.then(
-            if (currentRepository == null) Modifier
+            if (currentRepositoryId == null) Modifier
             else Modifier.selectableGroup()
         ),
     ) {
-        val localeList = LocaleListCompat.getDefault()
         items(repositories) { repoItem ->
-            val isSelected = currentRepository == repoItem
-            val interactionModifier = if (currentRepository == null) {
+            val isSelected = currentRepositoryId == repoItem.repoId
+            val interactionModifier = if (currentRepositoryId == null) {
                 Modifier.clickable(
                     onClick = { onRepositorySelected(repoItem) }
                 )
@@ -47,7 +45,6 @@ fun RepositoriesList(
             RepositoryRow(
                 repoItem = repoItem,
                 isSelected = isSelected,
-                localeList = localeList,
                 modifier = Modifier
                     .fillMaxWidth()
                     .then(interactionModifier),

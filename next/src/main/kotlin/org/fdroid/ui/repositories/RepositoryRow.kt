@@ -1,8 +1,6 @@
 package org.fdroid.ui.repositories
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Android
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
@@ -11,25 +9,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.core.os.LocaleListCompat
+import androidx.compose.ui.unit.dp
+import org.fdroid.ui.utils.AsyncShimmerImage
 
 @Composable
 fun RepositoryRow(
-    repoItem: Repository,
+    repoItem: RepositoryItem,
     isSelected: Boolean,
-    localeList: LocaleListCompat,
     modifier: Modifier = Modifier,
 ) {
     ListItem(
         leadingContent = {
-            Icon(
-                Icons.Filled.Android,
-                tint = MaterialTheme.colorScheme.secondary,
+            AsyncShimmerImage(
+                model = repoItem.icon,
                 contentDescription = null,
+                modifier = Modifier.size(48.dp)
             )
         },
         headlineContent = {
-            Text(repoItem.getName(localeList) ?: "Unknown repo")
+            Text(repoItem.name)
         },
         supportingContent = {
             Text(repoItem.address)

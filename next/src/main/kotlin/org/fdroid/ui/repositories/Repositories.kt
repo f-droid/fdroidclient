@@ -2,7 +2,6 @@ package org.fdroid.ui.repositories
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
-import android.os.Parcelable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -21,8 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.os.LocaleListCompat
-import kotlinx.parcelize.Parcelize
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.utils.BigLoadingIndicator
@@ -33,9 +30,9 @@ import org.fdroid.ui.utils.BigLoadingIndicator
     ExperimentalMaterial3ExpressiveApi::class
 )
 fun Repositories(
-    repositories: List<Repository>?,
-    currentRepository: Repository?,
-    onRepositorySelected: (Repository) -> Unit,
+    repositories: List<RepositoryItem>?,
+    currentRepositoryId: Long?,
+    onRepositorySelected: (RepositoryItem) -> Unit,
     onAddRepo: () -> Unit,
     onBackClicked: () -> Unit,
 ) {
@@ -64,7 +61,7 @@ fun Repositories(
         if (repositories == null) BigLoadingIndicator()
         else RepositoriesList(
             repositories = repositories,
-            currentRepository = currentRepository,
+            currentRepositoryId = currentRepositoryId,
             onRepositorySelected = {
                 onRepositorySelected(it)
             },
@@ -93,7 +90,7 @@ fun RepositoriesScaffoldLoadingPreview() {
 fun RepositoriesScaffoldPreview() {
     FDroidContent {
         val repos = listOf(
-            Repository(
+            RepositoryItem(
                 repoId = 1,
                 address = "http://example.org",
                 timestamp = System.currentTimeMillis(),
@@ -102,7 +99,7 @@ fun RepositoriesScaffoldPreview() {
                 enabled = true,
                 name = "My first repository",
             ),
-            Repository(
+            RepositoryItem(
                 repoId = 2,
                 address = "http://example.com",
                 timestamp = System.currentTimeMillis(),
@@ -112,19 +109,17 @@ fun RepositoriesScaffoldPreview() {
                 name = "My second repository",
             ),
         )
-        Repositories(repos, repos[0], {}, {}) { }
+        Repositories(repos, repos[0].repoId, {}, {}) { }
     }
 }
 
-@Parcelize
-data class Repository(
+data class RepositoryItem(
     val repoId: Long,
     val address: String,
+    val name: String,
+    val icon: DownloadRequest? = null,
     val timestamp: Long,
     val lastUpdated: Long?,
     val weight: Int,
     val enabled: Boolean,
-    private val name: String,
-) : Parcelable {
-    fun getName(localeList: LocaleListCompat): String? = name
-}
+)

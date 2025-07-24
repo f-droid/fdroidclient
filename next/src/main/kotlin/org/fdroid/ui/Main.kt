@@ -183,7 +183,9 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                         viewModel.visibleRepository.collectAsStateWithLifecycle().value
                     Repositories(
                         repositories = repos,
-                        currentRepository = visibleRepository,
+                        currentRepositoryId = if (isBigScreen) {
+                            (backStack.last() as? NavigationKey.RepoDetails)?.repoId
+                        } else null,
                         onRepositorySelected = {
                             viewModel.setVisibleRepository(it)
                             backStack.add(NavigationKey.RepoDetails(it.repoId))
