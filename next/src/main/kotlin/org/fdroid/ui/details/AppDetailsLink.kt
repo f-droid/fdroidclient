@@ -18,8 +18,10 @@ import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import org.fdroid.next.R
 import org.fdroid.ui.utils.openUriSafe
 
 @Composable
@@ -43,7 +45,7 @@ fun AppDetailsLink(icon: ImageVector, title: String, url: String, modifier: Modi
                         clipboardManager.setClipEntry(entry)
                     }
                 },
-                onLongClickLabel = "Copy link",
+                onLongClickLabel = stringResource(R.string.copy_link),
             ),
     ) {
         Icon(icon, null)

@@ -8,9 +8,35 @@
     <string name="menu_discover">Discover</string>
     <string name="menu_apps_my">My apps</string>
 
+    <string name="first_start_loading">Retrieving apps…\n\nThis may take some time.</string>
+    <string name="no_repos_enabled">No repositories enabled.\nEnable at least one repository to see apps.</string>
+    <string name="no_app_selected">No app selected</string>
+    <string name="no_repository_selected">No repository selected</string>
+
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>
     <string name="app_list_all">All apps</string>
     <string name="app_list_author">Apps by %s</string>
+
+    <string name="search_placeholder">Search…</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_latest">Sort by latest</string>
+    <string name="category">Category</string>
+
+    <string name="author_by">By %1$s</string>
+    <string name="last_updated">Last updated: %1$s</string>
+    <!-- The placeholder in round brackets will be replaced with the size of the app -->
+    <string name="last_updated_with_size">Last updated: %1$s (%2$s)</string>
+    <string name="whats_new_title">What\'s new</string>
+    <string name="donate_title">Donate</string>
+    <string name="anti_features_title">This app has anti-features</string>
+    <string name="developer_contact">Developer contact</string>
+    <string name="copy_link">Copy link</string>
+    <string name="app_no_compatible_versions">Can not update this app, because no compatible versions available in repository.</string>
+    <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android.</string>
+    <string name="added_x_ago">Added %1$s</string>
+    <string name="size_colon">Size: %1$s</string>
+    <string name="signer_colon">Signer: %1$s</string>
+    <string name="architectures_colon">Architectures: %1$s</string>
 
 </resources>

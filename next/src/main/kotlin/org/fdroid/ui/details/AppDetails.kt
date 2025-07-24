@@ -112,7 +112,7 @@ fun AppDetails(
                         .padding(horizontal = 16.dp, vertical = 8.dp),
                 ) {
                     Text(
-                        text = "What's new",
+                        text = stringResource(R.string.whats_new_title),
                         style = MaterialTheme.typography.titleMediumEmphasized,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                     )
@@ -160,7 +160,11 @@ fun AppDetails(
                 }
                 TextButton(onClick = { descriptionExpanded = !descriptionExpanded }) {
                     Text(
-                        text = if (descriptionExpanded) "Less" else "More",
+                        text = if (descriptionExpanded) {
+                            stringResource(R.string.less)
+                        } else {
+                            stringResource(R.string.more)
+                        },
                         textAlign = Center,
                         maxLines = if (descriptionExpanded) Int.MAX_VALUE else 3,
                         modifier = Modifier
@@ -207,7 +211,7 @@ fun AppDetails(
                     .padding(horizontal = 16.dp, vertical = 8.dp),
             ) {
                 Text(
-                    text = "Donate",
+                    text = stringResource(R.string.donate_title),
                     style = MaterialTheme.typography.titleMediumEmphasized,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                 )
@@ -244,7 +248,7 @@ fun AppDetails(
                 item.bitcoinUri?.let { bitcoinUri ->
                     AppDetailsLink(
                         icon = Icons.Default.CurrencyBitcoin,
-                        title = "Bitcoin",
+                        title = stringResource(R.string.menu_bitcoin),
                         url = bitcoinUri,
                         modifier = modifier
                             .padding(horizontal = 16.dp)
@@ -254,7 +258,7 @@ fun AppDetails(
                 item.litecoinUri?.let { litecoinUri ->
                     AppDetailsLink(
                         icon = Icons.Default.CurrencyBitcoin,
-                        title = "Litecoin",
+                        title = stringResource(R.string.menu_litecoin),
                         url = litecoinUri,
                         modifier = modifier
                             .padding(horizontal = 16.dp)
@@ -327,7 +331,7 @@ fun AppDetails(
             // Developer contact
             if (item.showAuthorContact) ExpandableSection(
                 icon = rememberVectorPainter(Icons.Default.Person),
-                title = "Developer contact",
+                title = stringResource(R.string.developer_contact),
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             ) {
                 Column(modifier = Modifier.padding(start = 16.dp)) {

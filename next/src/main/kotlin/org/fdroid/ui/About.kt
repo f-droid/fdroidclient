@@ -44,7 +44,10 @@ fun About(onBackClicked: () -> Unit) {
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = onBackClicked) {
-                        Icon(Icons.AutoMirrored.Default.ArrowBack, "back")
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                            contentDescription = stringResource(R.string.back),
+                        )
                     }
                 },
                 title = {
@@ -69,12 +72,12 @@ fun About(onBackClicked: () -> Unit) {
             Column(modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)) {
                 val uriHandler = LocalUriHandler.current
                 Text(
-                    text = "Links",
+                    text = stringResource(R.string.links),
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.bodyLarge,
                 )
                 Text(
-                    text = "Homepage",
+                    text = stringResource(R.string.menu_website),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier
@@ -82,7 +85,7 @@ fun About(onBackClicked: () -> Unit) {
                         .clickable { uriHandler.openUriSafe("https://f-droid.org") }
                 )
                 Text(
-                    text = "Gitlab",
+                    text = stringResource(R.string.about_source),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier

@@ -26,7 +26,10 @@ fun Settings(onBackClicked: () -> Unit) {
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = onBackClicked) {
-                        Icon(Icons.AutoMirrored.Default.ArrowBack, "back")
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                            contentDescription = stringResource(R.string.back),
+                        )
                     }
                 },
                 title = {

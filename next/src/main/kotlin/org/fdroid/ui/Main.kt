@@ -18,6 +18,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -31,6 +32,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.next.R
 import org.fdroid.ui.apps.MyApps
 import org.fdroid.ui.apps.MyAppsViewModel
 import org.fdroid.ui.details.AppDetails
@@ -80,7 +82,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
             entryProvider = entryProvider {
                 entry<NavigationKey.Discover>(
                     metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                        Text("No app selected")
+                        Text(stringResource(R.string.no_app_selected))
                     },
                 ) {
                     val viewModel = hiltViewModel<DiscoverViewModel>()
@@ -101,7 +103,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 }
                 entry<NavigationKey.MyApps>(
                     metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                        Text("No app selected")
+                        Text(stringResource(R.string.no_app_selected))
                     },
                 ) {
                     val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
@@ -139,7 +141,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 }
                 entry<NavigationKey.AppList>(
                     metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                        Text("No app selected")
+                        Text(stringResource(R.string.no_app_selected))
                     },
                 ) {
                     val appListViewModel = hiltViewModel<AppListViewModel>()
@@ -174,7 +176,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 }
                 entry<NavigationKey.Repos>(
                     metadata = ListDetailSceneStrategy.listPane("repos") {
-                        Text(text = "No repository selected")
+                        Text(text = stringResource(R.string.no_repository_selected))
                     },
                 ) {
                     val viewModel = hiltViewModel<RepositoriesViewModel>()

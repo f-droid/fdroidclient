@@ -63,7 +63,7 @@ fun AppDetailsTopAppBar(
             IconButton(onClick = { expanded = !expanded }) {
                 Icon(
                     imageVector = Icons.Filled.MoreVert,
-                    contentDescription = "Localized description",
+                    contentDescription = stringResource(R.string.more),
                 )
             }
             AppDetailsMenu(item, expanded) { expanded = false }

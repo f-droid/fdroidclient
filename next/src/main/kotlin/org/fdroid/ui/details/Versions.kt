@@ -33,9 +33,9 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.next.R
+import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.testApp
-import org.fdroid.ui.utils.FDroidOutlineButton
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -101,7 +101,10 @@ fun Version(
                         overflow = TextOverflow.Ellipsis,
                     )
                     Text(
-                        text = "Added " + version.added.asRelativeTimeString(),
+                        text = stringResource(
+                            R.string.added_x_ago,
+                            version.added.asRelativeTimeString(),
+                        ),
                         style = MaterialTheme.typography.bodyMedium,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
@@ -135,7 +138,10 @@ fun Version(
                 Column(modifier = Modifier.weight(1f)) {
                     version.size?.let { size ->
                         Text(
-                            text = "Size: " + Formatter.formatFileSize(LocalContext.current, size),
+                            text = stringResource(
+                                R.string.size_colon,
+                                Formatter.formatFileSize(LocalContext.current, size)
+                            ),
                             style = MaterialTheme.typography.bodySmall,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
@@ -144,7 +150,10 @@ fun Version(
                     version.packageManifest.nativecode?.let { nativeCode ->
                         if (nativeCode.isNotEmpty()) {
                             Text(
-                                text = "Architectures: " + nativeCode.joinToString(", "),
+                                text = stringResource(
+                                    R.string.architectures_colon,
+                                    nativeCode.joinToString(", ")
+                                ),
                                 style = MaterialTheme.typography.bodySmall,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
@@ -153,7 +162,10 @@ fun Version(
                     }
                     version.signer?.let { signer ->
                         Text(
-                            text = "Signer: " + signer.sha256[0].substring(0..15),
+                            text = stringResource(
+                                R.string.signer_colon,
+                                signer.sha256[0].substring(0..15)
+                            ),
                             style = MaterialTheme.typography.bodySmall,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,

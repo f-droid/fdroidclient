@@ -61,7 +61,7 @@ fun Discover(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("F-Droid")
+                    Text(stringResource(R.string.app_name))
                 },
                 actions = {
                     topBarMenuItems.forEach { dest ->
@@ -104,7 +104,7 @@ fun Discover(
                 is LoadingDiscoverModel -> {
                     AnimatedVisibility(discoverModel.isFirstStart) {
                         Text(
-                            "This is the first start, loading repositories...",
+                            stringResource(R.string.first_start_loading),
                             textAlign = TextAlign.Center,
                             modifier = Modifier
                                 .padding(16.dp)
@@ -147,7 +147,7 @@ fun Discover(
                     }
                 }
                 NoEnabledReposDiscoverModel -> {
-                    Text("No repositories enabled.\nEnable at least one repository to see apps.")
+                    Text(stringResource(R.string.no_repos_enabled))
                 }
             }
             AnimatedVisibility(discoverModel is LoadedDiscoverModel) {

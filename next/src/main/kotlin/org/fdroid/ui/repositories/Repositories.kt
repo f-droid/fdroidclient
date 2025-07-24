@@ -41,7 +41,10 @@ fun Repositories(
             TopAppBar(
                 navigationIcon = {
                     IconButton(onClick = onBackClicked) {
-                        Icon(Icons.AutoMirrored.Default.ArrowBack, "back")
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                            contentDescription = stringResource(R.string.back),
+                        )
                     }
                 },
                 title = {
@@ -54,7 +57,10 @@ fun Repositories(
                 onClick = onAddRepo,
                 modifier = Modifier.padding(16.dp)
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Add repo")
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.menu_add_repo),
+                )
             }
         }
     ) { paddingValues ->

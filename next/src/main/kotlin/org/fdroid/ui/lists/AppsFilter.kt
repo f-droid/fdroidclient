@@ -25,8 +25,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.next.R
 
 interface AppListInfo {
     val model: AppListModel
@@ -67,8 +69,8 @@ fun ColumnScope.AppsFilter(
                 },
                 label = {
                     val s = when (info.model.sortBy) {
-                        AppListSortOrder.NAME -> "Sort by name"
-                        AppListSortOrder.LAST_UPDATED -> "Sort by latest"
+                        AppListSortOrder.NAME -> stringResource(R.string.sort_by_name)
+                        AppListSortOrder.LAST_UPDATED -> stringResource(R.string.sort_by_latest)
                     }
                     Text(s)
                     DropdownMenu(
@@ -76,7 +78,7 @@ fun ColumnScope.AppsFilter(
                         onDismissRequest = { sortByMenuExpanded = false },
                     ) {
                         DropdownMenuItem(
-                            text = { Text("Sort by name") },
+                            text = { Text(stringResource(R.string.sort_by_name)) },
                             leadingIcon = {
                                 Icon(Icons.Filled.SortByAlpha, null)
                             },
@@ -86,9 +88,12 @@ fun ColumnScope.AppsFilter(
                             },
                         )
                         DropdownMenuItem(
-                            text = { Text("Sort by latest") },
+                            text = { Text(stringResource(R.string.sort_by_latest)) },
                             leadingIcon = {
-                                Icon(Icons.Filled.AccessTime, null)
+                                Icon(
+                                    imageVector = Icons.Filled.AccessTime,
+                                    contentDescription = null,
+                                )
                             },
                             onClick = {
                                 info.sortBy(AppListSortOrder.LAST_UPDATED)
@@ -109,7 +114,7 @@ fun ColumnScope.AppsFilter(
                     )
                 },
                 label = {
-                    Text("Category")
+                    Text(stringResource(R.string.category))
                     DropdownMenu(
                         expanded = categoryMenuExpanded,
                         onDismissRequest = { categoryMenuExpanded = false },
@@ -137,7 +142,7 @@ fun ColumnScope.AppsFilter(
                     )
                 },
                 label = {
-                    Text("Repository")
+                    Text(stringResource(R.string.repo_details))
                     DropdownMenu(
                         expanded = repoMenuExpanded,
                         onDismissRequest = { repoMenuExpanded = false },

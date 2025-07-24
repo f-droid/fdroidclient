@@ -73,7 +73,7 @@ fun MyApps(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("My apps")
+                    Text(stringResource(R.string.menu_apps_my))
                 },
                 actions = {
                     var sortByMenuExpanded by remember { mutableStateOf(false) }
@@ -85,7 +85,7 @@ fun MyApps(
                         onDismissRequest = { sortByMenuExpanded = false },
                     ) {
                         DropdownMenuItem(
-                            text = { Text("Sort by name") },
+                            text = { Text(stringResource(R.string.sort_by_name)) },
                             leadingIcon = {
                                 Icon(Icons.Filled.SortByAlpha, null)
                             },
@@ -101,7 +101,7 @@ fun MyApps(
                             },
                         )
                         DropdownMenuItem(
-                            text = { Text("Sort by latest") },
+                            text = { Text(stringResource(R.string.sort_by_latest)) },
                             leadingIcon = {
                                 Icon(Icons.Filled.AccessTime, null)
                             },
@@ -149,7 +149,7 @@ fun MyApps(
                             onClick = {},
                             modifier = Modifier.padding(end = 16.dp),
                         ) {
-                            Text("Update all")
+                            Text(stringResource(R.string.update_all))
                         }
                     }
                 }

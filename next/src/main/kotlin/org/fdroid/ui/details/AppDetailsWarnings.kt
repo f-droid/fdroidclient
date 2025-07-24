@@ -16,9 +16,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.next.R
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -39,7 +41,7 @@ fun AppDetailsWarnings(
             ) {
                 Icon(Icons.Default.WarningAmber, "")
                 Text(
-                    "Can not update this app, because no compatible versions available in repository.",
+                    text = stringResource(R.string.app_no_compatible_versions),
                     style = MaterialTheme.typography.bodyLarge,
                 )
             }
@@ -51,7 +53,7 @@ fun AppDetailsWarnings(
             ) {
                 Icon(Icons.Default.WarningAmber, "")
                 Text(
-                    "Auto-update not available, because app targets old version of Android.",
+                    stringResource(R.string.app_no_auto_update),
                     style = MaterialTheme.typography.bodyLarge,
                 )
             }

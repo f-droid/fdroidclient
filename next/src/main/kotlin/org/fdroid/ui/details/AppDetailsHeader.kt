@@ -106,7 +106,7 @@ fun AppDetailsHeader(
             item.app.authorName?.let { authorName ->
                 SelectionContainer {
                     Text(
-                        text = "By $authorName",
+                        text = stringResource(R.string.author_by, authorName),
                         style = MaterialTheme.typography.bodyMedium,
                     )
                 }
@@ -119,9 +119,9 @@ fun AppDetailsHeader(
             SelectionContainer {
                 Text(
                     text = if (size == null) {
-                        "Last updated: $lastUpdated"
+                        stringResource(R.string.last_updated, lastUpdated)
                     } else {
-                        "Last updated: $lastUpdated ($size)"
+                        stringResource(R.string.last_updated_with_size, lastUpdated, size)
                     },
                     style = MaterialTheme.typography.bodyMedium,
                 )

@@ -16,7 +16,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.launch
+import org.fdroid.next.R
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,13 +34,16 @@ fun AppSearchInputField(
         onSearch = {
             scope.launch { searchBarState.animateToCollapsed() }
         },
-        placeholder = { Text("Search...") },
+        placeholder = { Text(stringResource(R.string.search_placeholder)) },
         leadingIcon = {
             if (searchBarState.currentValue == SearchBarValue.Expanded) {
                 IconButton(
                     onClick = { scope.launch { searchBarState.animateToCollapsed() } }
                 ) {
-                    Icon(Icons.AutoMirrored.Default.ArrowBack, contentDescription = "Back")
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                        contentDescription = stringResource(R.string.back)
+                    )
                 }
             } else {
                 Icon(Icons.Default.Search, contentDescription = null)
