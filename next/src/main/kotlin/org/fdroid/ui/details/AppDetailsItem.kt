@@ -212,10 +212,11 @@ private fun AppVersion?.getAntiFeatures(
 
 @VisibleForTesting
 internal fun getHtmlDescription(description: String?): String? {
-    return description?.replace("(\\s)(https://\\S+[^\\s.])([\\s\\n.])".toRegex()) {
-        val prefix = it.groups[1]?.value ?: it.value
-        val url = it.groups[2]?.value ?: it.value
-        val suffix = it.groups[3]?.value ?: it.value
-        "$prefix<a href=\"$url\">$url</a>$suffix"
-    }?.replace("\n", "<br>\n")
+    return description?.replace("</?h[1-6]>".toRegex(), "")
+        ?.replace("(\\s)(https://\\S+[^\\s.])([\\s\\n.])".toRegex()) {
+            val prefix = it.groups[1]?.value ?: it.value
+            val url = it.groups[2]?.value ?: it.value
+            val suffix = it.groups[3]?.value ?: it.value
+            "$prefix<a href=\"$url\">$url</a>$suffix"
+        }?.replace("(?<!</p>|ul>|</li>)\n".toRegex(), "<br>\n")
 }
