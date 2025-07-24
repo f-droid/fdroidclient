@@ -23,6 +23,8 @@ import org.fdroid.fdroid.installer.Installer
 import org.fdroid.fdroid.installer.InstallerFactory
 import org.fdroid.index.RepoManager
 import org.fdroid.index.v2.FileV1
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
 import java.io.IOException
@@ -130,7 +132,7 @@ class AppUpdateManagerTest {
         } returns updates
         every { statusManager.addUpdatableApps(updates, false) } just Runs
 
-        appUpdateManager.updateApps()
+        assertTrue(appUpdateManager.updateApps())
     }
 
     @Test
@@ -160,7 +162,7 @@ class AppUpdateManagerTest {
         every { downloader.download() } just Runs
         every { installer.installPackage(any(), any()) } just Runs
 
-        appUpdateManager.updateApps()
+        assertTrue(appUpdateManager.updateApps())
 
         verify(exactly = 2) {
             installManagerService.onDownloadComplete(any())
@@ -192,7 +194,7 @@ class AppUpdateManagerTest {
             packageManager.getPackageInfo(app2.packageName, any<Int>())
         } returns getPackageInfo(2)
 
-        appUpdateManager.updateApps()
+        assertTrue(appUpdateManager.updateApps())
 
         verify(exactly = 0) {
             installManagerService.onDownloadComplete(any())
@@ -237,7 +239,7 @@ class AppUpdateManagerTest {
         every { installer1.installPackage(any(), any()) } just Runs
         every { installer2.installPackage(any(), any()) } just Runs
 
-        appUpdateManager.updateApps()
+        assertTrue(appUpdateManager.updateApps())
 
         verifyOrder {
             // app1 gets installed last, because it is us and updating us kills us
@@ -270,7 +272,7 @@ class AppUpdateManagerTest {
         every { downloader.setListener(any()) } just Runs
         every { downloader.download() } throws IOException("foo bar")
 
-        appUpdateManager.updateApps()
+        assertFalse(appUpdateManager.updateApps())
 
         verify(exactly = 0) {
             installer.installPackage(any(), any())

@@ -6,18 +6,19 @@ import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.work.Configuration
+import androidx.work.ListenableWorker.Result
+import androidx.work.WorkInfo.Companion.STOP_REASON_NOT_STOPPED
 import androidx.work.WorkInfo.State.ENQUEUED
-import androidx.work.WorkInfo.State.FAILED
 import androidx.work.WorkInfo.State.SUCCEEDED
 import androidx.work.WorkManager
 import androidx.work.testing.SynchronousExecutor
+import androidx.work.testing.TestListenableWorkerBuilder
 import androidx.work.testing.WorkManagerTestInitHelper
-import io.mockk.Runs
 import io.mockk.every
-import io.mockk.just
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.verify
+import kotlinx.coroutines.runBlocking
 import org.fdroid.fdroid.AppUpdateManager
 import org.fdroid.fdroid.FDroidApp
 import org.fdroid.fdroid.Preferences
@@ -69,7 +70,7 @@ class AppUpdateWorkerTest {
     @Throws(Exception::class)
     fun testHappyPath() {
         FDroidApp.networkState = FLAG_NET_NO_LIMIT
-        every { updateManager.updateApps() } just Runs
+        every { updateManager.updateApps() } returns true
 
         AppUpdateWorker.updateAppsNow(context)
 
@@ -91,7 +92,26 @@ class AppUpdateWorkerTest {
         val workInfo = workManager.getWorkInfosForUniqueWork(UNIQUE_WORK_NAME_APP_UPDATE).get()
 
         assertEquals(1, workInfo.size)
-        assertEquals(FAILED, workInfo[0].state)
+        assertEquals(ENQUEUED, workInfo[0].state)
+        assertEquals(STOP_REASON_NOT_STOPPED, workInfo[0].stopReason)
+
+        verify(exactly = 1) { updateManager.updateApps() }
+
+        // build the worker manually, so we can see what result it returns
+        runBlocking {
+            val worker = TestListenableWorkerBuilder<AppUpdateWorker>(context, runAttemptCount = 3)
+                .build()
+            assertEquals(Result.retry(), worker.doWork())
+        }
+        verify(exactly = 2) { updateManager.updateApps() }
+
+        // now build the worker with a higher runAttemptCount
+        runBlocking {
+            val worker = TestListenableWorkerBuilder<AppUpdateWorker>(context, runAttemptCount = 4)
+                .build()
+            assertEquals(Result.failure(), worker.doWork()) // now it fails
+        }
+        verify(exactly = 3) { updateManager.updateApps() }
     }
 
     @Test
@@ -146,7 +166,7 @@ class AppUpdateWorkerTest {
         assertEquals(ENQUEUED, workInfo[0].state)
         val id = workInfo[0].id
 
-        every { updateManager.updateApps() } just Runs
+        every { updateManager.updateApps() } returns true
 
         val testDriver = WorkManagerTestInitHelper.getTestDriver(context) ?: fail()
         testDriver.setPeriodDelayMet(id)
