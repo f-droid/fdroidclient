@@ -141,6 +141,8 @@ public interface AppDao {
 
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
+    public suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
+
     public fun getNumberOfAppsInCategory(category: String): Int
 
     public fun getNumberOfAppsInRepository(repoId: Long): Int
@@ -705,6 +707,20 @@ internal interface AppDaoInt : AppDao {
             }
         }
     }
+
+    @Transaction
+    @Query(
+        """
+        SELECT repoId, packageName, app.lastUpdated, app.name, app.summary,
+            app.description, app.authorName, app.categories,
+            matchinfo(${AppMetadataFts.TABLE}, 'pcx')
+        FROM ${AppMetadata.TABLE} AS app
+        JOIN PreferredRepo USING (packageName)
+        JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
+        WHERE ${AppMetadataFts.TABLE} MATCH :searchQuery AND
+            repoId = preferredRepoId"""
+    )
+    override suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
 
     //
     // Misc Queries
