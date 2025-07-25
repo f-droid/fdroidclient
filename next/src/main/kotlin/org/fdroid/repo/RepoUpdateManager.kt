@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.map
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.NotificationManager
-import org.fdroid.next.R
+import org.fdroid.appsearch.AppSearchManager
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloaderFactory
@@ -20,6 +20,8 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.index.v1.IndexV1Updater
+import org.fdroid.next.R
+import org.fdroid.updates.UpdatesManager
 import java.io.File
 import javax.inject.Inject
 
@@ -29,6 +31,7 @@ class RepoUpdateManager(
     private val context: Context,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
+    private val updatesManager: UpdatesManager,
     private val downloaderFactory: DownloaderFactory,
     private val notificationManager: NotificationManager,
     private val compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(
@@ -98,6 +101,7 @@ class RepoUpdateManager(
             listener = indexUpdateListener,
         )
     } else null,
+    private val appSearchManager: AppSearchManager,
 ) {
 
     @Inject
@@ -105,9 +109,19 @@ class RepoUpdateManager(
         @ApplicationContext context: Context,
         db: FDroidDatabase,
         repositoryManager: RepoManager,
+        updatesManager: UpdatesManager,
         downloaderFactory: DownloaderFactory,
         notificationManager: NotificationManager,
-    ) : this(context, db, repoManager = repositoryManager, downloaderFactory, notificationManager)
+        appSearchManager: AppSearchManager,
+    ) : this(
+        context = context,
+        db = db,
+        repoManager = repositoryManager,
+        updatesManager = updatesManager,
+        downloaderFactory = downloaderFactory,
+        notificationManager = notificationManager,
+        appSearchManager = appSearchManager,
+    )
 
     private val isUpdateNotificationEnabled = true
     private val _isUpdating = MutableStateFlow(false)
@@ -162,7 +176,8 @@ class RepoUpdateManager(
             // TODO fdroidPrefs.lastUpdateCheck = System.currentTimeMillis()
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
-                // TODO appUpdateStatusManager.checkForUpdates(true)
+                updatesManager.loadUpdates()
+                appSearchManager.updateIndex()
             }
         } finally {
             notificationManager.cancelUpdateRepoNotification()
@@ -177,7 +192,7 @@ class RepoUpdateManager(
         }
         val repo = repoManager.getRepository(repoId) ?: return IndexUpdateResult.NotFound
         _isUpdating.value = true
-        try {
+        return try {
             // show notification
             if (isUpdateNotificationEnabled) {
                 val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
@@ -185,7 +200,12 @@ class RepoUpdateManager(
             }
 
             // indexV1Updater only gets used directly if forceIndexV1 was true
-            return indexV1Updater?.update(repo) ?: repoUpdater.update(repo)
+            val result = indexV1Updater?.update(repo) ?: repoUpdater.update(repo)
+            if (result is IndexUpdateResult.Processed) {
+                updatesManager.loadUpdates()
+                appSearchManager.updateIndex()
+            }
+            result
         } finally {
             notificationManager.cancelUpdateRepoNotification()
             _isUpdating.value = false

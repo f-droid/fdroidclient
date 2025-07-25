@@ -98,6 +98,8 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                         onNav = { backStack.add(it) },
                         numUpdates = numUpdates,
                         isBigScreen = isBigScreen,
+                        onSearch = viewModel::search,
+                        onSearchCleared = viewModel::onSearchCleared,
                         modifier = Modifier,
                     )
                 }
@@ -190,7 +192,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             viewModel.setVisibleRepository(it)
                             backStack.add(NavigationKey.RepoDetails(it.repoId))
                         },
-                        onAddRepo = { },
+                        onAddRepo = viewModel::addRepo,
                     ) {
                         backStack.removeLastOrNull()
                     }

@@ -91,6 +91,8 @@ class AppDetailsViewModel @Inject constructor(
             updatesManager.loadUpdates()
         }
     }
+
+    // TODO update app search when preferred repo changes
 }
 
 class AppInfo(

@@ -1,7 +1,6 @@
 package org.fdroid.ui.discover
 
 import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
@@ -14,25 +13,40 @@ import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 import org.fdroid.next.R
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)
 fun AppSearchInputField(
     searchBarState: SearchBarState,
     textFieldState: TextFieldState,
+    onSearch: suspend (String) -> Unit,
+    onSearchCleared: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
+    // set-up search as you type
+    LaunchedEffect(Unit) {
+        snapshotFlow { textFieldState.text }
+            .debounce(500)
+            .collectLatest {
+                if (it.length > 2) onSearch(textFieldState.text.toString())
+            }
+    }
     SearchBarDefaults.InputField(
         modifier = Modifier,
         searchBarState = searchBarState,
         textFieldState = textFieldState,
         onSearch = {
-            scope.launch { searchBarState.animateToCollapsed() }
+            scope.launch { onSearch(it) }
         },
         placeholder = { Text(stringResource(R.string.search_placeholder)) },
         leadingIcon = {
@@ -51,7 +65,7 @@ fun AppSearchInputField(
         },
         trailingIcon = {
             if (textFieldState.text.isNotEmpty()) {
-                IconButton(onClick = { textFieldState.setTextAndPlaceCursorAtEnd("") }) {
+                IconButton(onClick = onSearchCleared) {
                     Icon(
                         Icons.Filled.Clear,
                         contentDescription = null,

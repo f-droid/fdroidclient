@@ -41,4 +41,9 @@ class RepositoriesViewModel @Inject constructor(
         _visibleRepositoryItem.value = repositoryItem
     }
 
+    fun addRepo() {
+    }
+
+    // TODO update appsearch when repo got disabled
+
 }

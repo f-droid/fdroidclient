@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android.ksp)
+    alias(libs.plugins.android.kapt)
     alias(libs.plugins.android.hilt)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
@@ -87,6 +88,12 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.android.compiler)
     ksp(libs.androidx.hilt.compiler)
+
+    implementation(libs.androidx.appsearch)
+    implementation(libs.androidx.concurrent.futures.ktx)
+    // ksp: https://issuetracker.google.com/issues/234116803
+    kapt(libs.androidx.appsearch.compiler)
+    implementation(libs.androidx.appsearch.local.storage)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
 

@@ -50,10 +50,12 @@ fun Discover(
     discoverModel: DiscoverModel,
     numUpdates: Int,
     isBigScreen: Boolean,
-    modifier: Modifier = Modifier,
+    onSearch: suspend (String) -> Unit,
+    onSearchCleared: () -> Unit,
     onListTap: (AppListType) -> Unit,
     onAppTap: (AppDiscoverItem) -> Unit,
     onNav: (NavKey) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val searchBarState = rememberSearchBarState()
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
@@ -116,6 +118,12 @@ fun Discover(
                 is LoadedDiscoverModel -> {
                     AppsSearch(
                         searchBarState = searchBarState,
+                        searchResults = discoverModel.searchResults,
+                        onSearch = onSearch,
+                        onItemSelected = {
+                            onNav(NavigationKey.AppDetails(it.packageName))
+                        },
+                        onSearchCleared = onSearchCleared,
                         modifier = Modifier.padding(top = 8.dp),
                     )
                     val listNew = AppListType.New(stringResource(R.string.app_list_new))
@@ -170,6 +178,8 @@ fun LoadingDiscoverPreview() {
             onListTap = {},
             onAppTap = {},
             onNav = {},
+            onSearch = {},
+            onSearchCleared = {},
         )
     }
 }
