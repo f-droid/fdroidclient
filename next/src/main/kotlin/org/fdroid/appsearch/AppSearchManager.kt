@@ -134,7 +134,7 @@ class AppSearchManager @Inject constructor(
                 repoId = app.repoId,
                 name = app.name,
                 summary = app.summary,
-                description = app.getDescription(localeList),
+                description = app.description,
                 packageName = app.packageName,
                 authorName = app.authorName,
                 icon = app.getIcon(localeList),

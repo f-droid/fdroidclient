@@ -1,7 +1,9 @@
 package org.fdroid.ui.discover
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -15,6 +17,7 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -26,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -55,6 +59,7 @@ fun Discover(
     onListTap: (AppListType) -> Unit,
     onAppTap: (AppDiscoverItem) -> Unit,
     onNav: (NavKey) -> Unit,
+    onSearchOptionChanged: (SearchOption) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val searchBarState = rememberSearchBarState()
@@ -119,11 +124,32 @@ fun Discover(
                     AppsSearch(
                         searchBarState = searchBarState,
                         searchResults = discoverModel.searchResults,
+                        time = discoverModel.searchTime,
                         onSearch = onSearch,
                         onNav = onNav,
                         onSearchCleared = onSearchCleared,
                         modifier = Modifier.padding(top = 8.dp),
                     )
+
+                    SearchRadioButton(
+                        text = "Sqlite LIKE",
+                        isSelected = discoverModel.searchOption == SearchOption.LIKE,
+                    ) {
+                        onSearchOptionChanged(SearchOption.LIKE)
+                    }
+                    SearchRadioButton(
+                        text = "Room FTS4",
+                        isSelected = discoverModel.searchOption == SearchOption.FTS,
+                    ) {
+                        onSearchOptionChanged(SearchOption.FTS)
+                    }
+                    SearchRadioButton(
+                        text = "Appsearch",
+                        isSelected = discoverModel.searchOption == SearchOption.APPSEARCH,
+                    ) {
+                        onSearchOptionChanged(SearchOption.APPSEARCH)
+                    }
+
                     val listNew = AppListType.New(stringResource(R.string.app_list_new))
                     AppCarousel(
                         title = listNew.title,
@@ -165,6 +191,25 @@ fun Discover(
     }
 }
 
+@Composable
+fun SearchRadioButton(text: String, isSelected: Boolean, onClick: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.clickable(onClick = onClick)
+    ) {
+        Text(
+            text, modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .weight(1f)
+        )
+        RadioButton(
+            selected = isSelected,
+            onClick = null, modifier = Modifier
+                .padding(end = 16.dp)
+        )
+    }
+}
+
 @Preview
 @Composable
 fun LoadingDiscoverPreview() {
@@ -178,6 +223,7 @@ fun LoadingDiscoverPreview() {
             onNav = {},
             onSearch = {},
             onSearchCleared = {},
+            onSearchOptionChanged = {},
         )
     }
 }

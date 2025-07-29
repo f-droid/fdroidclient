@@ -13,14 +13,10 @@ import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 import org.fdroid.next.R
 
@@ -34,13 +30,13 @@ fun AppSearchInputField(
 ) {
     val scope = rememberCoroutineScope()
     // set-up search as you type
-    LaunchedEffect(Unit) {
-        snapshotFlow { textFieldState.text }
-            .debounce(500)
-            .collectLatest {
-                if (it.length > 2) onSearch(textFieldState.text.toString())
-            }
-    }
+//    LaunchedEffect(Unit) {
+//        snapshotFlow { textFieldState.text }
+//            .debounce(500)
+//            .collectLatest {
+//                if (it.length > 2) onSearch(textFieldState.text.toString())
+//            }
+//    }
     SearchBarDefaults.InputField(
         modifier = Modifier,
         searchBarState = searchBarState,

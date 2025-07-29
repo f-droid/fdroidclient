@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
@@ -33,13 +34,14 @@ import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryCard
 import org.fdroid.ui.lists.AppListRow
-import org.fdroid.ui.utils.BigLoadingIndicator
+import kotlin.time.Duration
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppsSearch(
     searchBarState: SearchBarState,
     searchResults: SearchResults?,
+    time: Duration?,
     onSearch: suspend (String) -> Unit,
     onNav: (NavigationKey) -> Unit,
     onSearchCleared: () -> Unit,
@@ -78,7 +80,7 @@ fun AppsSearch(
         },
     ) {
         if (searchResults == null) {
-            if (textFieldState.text.length >= 3) BigLoadingIndicator()
+//            if (textFieldState.text.length >= 3) BigLoadingIndicator()
         } else if (searchResults.apps.isEmpty()) {
             Text(
                 text = stringResource(R.string.search_no_results),
@@ -89,6 +91,15 @@ fun AppsSearch(
             )
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
+                if (time != null) item(key = "time", contentType = "time") {
+                    Text(
+                        "Search time: $time",
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .fillMaxWidth()
+                    )
+                }
                 items(
                     searchResults.categories,
                     key = { it.id },
@@ -115,7 +126,7 @@ private fun AppsSearchLoadingPreview() {
     FDroidContent {
         Box(Modifier.fillMaxSize()) {
             val state = rememberSearchBarState(SearchBarValue.Expanded)
-            AppsSearch(state, null, {}, {}, {})
+            AppsSearch(state, null, null, {}, {}, {})
         }
     }
 }
@@ -127,7 +138,7 @@ private fun AppsSearchEmptyPreview() {
     FDroidContent {
         Box(Modifier.fillMaxSize()) {
             val state = rememberSearchBarState(SearchBarValue.Expanded)
-            AppsSearch(state, SearchResults(emptyList(), emptyList()), {}, {}, {})
+            AppsSearch(state, SearchResults(emptyList(), emptyList()), null, {}, {}, {})
         }
     }
 }

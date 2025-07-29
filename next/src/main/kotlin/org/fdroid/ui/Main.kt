@@ -100,6 +100,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                         isBigScreen = isBigScreen,
                         onSearch = viewModel::search,
                         onSearchCleared = viewModel::onSearchCleared,
+                        onSearchOptionChanged = viewModel::onSearchOptionChanged,
                         modifier = Modifier,
                     )
                 }
