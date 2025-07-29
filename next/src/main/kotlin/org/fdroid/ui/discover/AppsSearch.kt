@@ -27,9 +27,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.fdroid.appsearch.SearchResults
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
-import org.fdroid.ui.lists.AppListItem
+import org.fdroid.ui.NavigationKey
+import org.fdroid.ui.categories.CategoryCard
 import org.fdroid.ui.lists.AppListRow
 import org.fdroid.ui.utils.BigLoadingIndicator
 
@@ -37,9 +39,9 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppsSearch(
     searchBarState: SearchBarState,
-    searchResults: List<AppListItem>?,
+    searchResults: SearchResults?,
     onSearch: suspend (String) -> Unit,
-    onItemSelected: (AppListItem) -> Unit,
+    onNav: (NavigationKey) -> Unit,
     onSearchCleared: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -77,7 +79,7 @@ fun AppsSearch(
     ) {
         if (searchResults == null) {
             if (textFieldState.text.length >= 3) BigLoadingIndicator()
-        } else if (searchResults.isEmpty()) {
+        } else if (searchResults.apps.isEmpty()) {
             Text(
                 text = stringResource(R.string.search_no_results),
                 textAlign = TextAlign.Center,
@@ -87,9 +89,18 @@ fun AppsSearch(
             )
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(searchResults, key = { it.packageName }) { item ->
+                items(
+                    searchResults.categories,
+                    key = { it.id },
+                    contentType = { "category" }) { item ->
+                    CategoryCard(categoryItem = item, onNav = onNav)
+                }
+                items(
+                    searchResults.apps,
+                    key = { it.packageName },
+                    contentType = { "app" }) { item ->
                     AppListRow(item, false, modifier.clickable {
-                        onItemSelected(item)
+                        onNav(NavigationKey.AppDetails(item.packageName))
                     })
                 }
             }
@@ -116,7 +127,7 @@ private fun AppsSearchEmptyPreview() {
     FDroidContent {
         Box(Modifier.fillMaxSize()) {
             val state = rememberSearchBarState(SearchBarValue.Expanded)
-            AppsSearch(state, emptyList(), {}, {}, {})
+            AppsSearch(state, SearchResults(emptyList(), emptyList()), {}, {}, {})
         }
     }
 }

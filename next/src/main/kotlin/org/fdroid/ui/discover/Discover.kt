@@ -120,9 +120,7 @@ fun Discover(
                         searchBarState = searchBarState,
                         searchResults = discoverModel.searchResults,
                         onSearch = onSearch,
-                        onItemSelected = {
-                            onNav(NavigationKey.AppDetails(it.packageName))
-                        },
+                        onNav = onNav,
                         onSearchCleared = onSearchCleared,
                         modifier = Modifier.padding(top = 8.dp),
                     )

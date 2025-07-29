@@ -15,7 +15,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import org.fdroid.appsearch.AppDocument
 import org.fdroid.appsearch.AppSearchManager
+import org.fdroid.appsearch.CategoryDocument
+import org.fdroid.appsearch.SearchResults
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
@@ -64,7 +67,7 @@ class DiscoverViewModel @Inject constructor(
             )
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
-    private val searchResults = MutableStateFlow<List<AppListItem>?>(null)
+    private val searchResults = MutableStateFlow<SearchResults?>(null)
 
     val localeList = LocaleListCompat.getDefault()
     val discoverModel: StateFlow<DiscoverModel> = scope.launchMolecule(mode = ContextClock) {
@@ -77,17 +80,26 @@ class DiscoverViewModel @Inject constructor(
     }
 
     suspend fun search(term: String) = withContext(ioScope.coroutineContext) {
-        searchResults.value = appSearchManager.search(term).mapNotNull {
-            val repository = repoManager.getRepository(it.repoId)
-                ?: return@mapNotNull null
-            AppListItem(
-                packageName = it.packageName,
-                name = it.name ?: "Unknown",
-                summary = it.summary ?: "Unknown",
-                lastUpdated = it.lastUpdated,
-                iconDownloadRequest = it.icon?.getDownloadRequest(repository),
-            )
+        val categories = mutableListOf<CategoryItem>()
+        val apps = mutableListOf<AppListItem>()
+        appSearchManager.search(term).forEach {
+            if (it is AppDocument) {
+                val repository = repoManager.getRepository(it.repoId) ?: return@forEach
+                AppListItem(
+                    packageName = it.packageName,
+                    name = it.name ?: "Unknown",
+                    summary = it.summary ?: "",
+                    lastUpdated = it.lastUpdated,
+                    iconDownloadRequest = it.icon?.getDownloadRequest(repository),
+                ).also { app -> apps.add(app) }
+            } else if (it is CategoryDocument) {
+                CategoryItem(
+                    id = it.id,
+                    name = it.name ?: "Unknown category",
+                ).also { c -> categories.add(c) }
+            }
         }
+        searchResults.value = SearchResults(apps, categories)
     }
 
     fun onSearchCleared() {

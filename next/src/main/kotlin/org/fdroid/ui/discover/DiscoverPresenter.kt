@@ -3,17 +3,17 @@ package org.fdroid.ui.discover
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import org.fdroid.appsearch.SearchResults
 import org.fdroid.database.Repository
 import org.fdroid.ui.categories.CategoryItem
-import org.fdroid.ui.lists.AppListItem
 
 @Composable
 fun DiscoverPresenter(
     appsFlow: Flow<List<AppDiscoverItem>>,
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
-    searchResultsFlow: MutableStateFlow<List<AppListItem>?>,
+    searchResultsFlow: StateFlow<SearchResults?>,
 ): DiscoverModel {
     val apps = appsFlow.collectAsState(null).value
     val categories = categoriesFlow.collectAsState(null).value
@@ -48,5 +48,5 @@ data class LoadedDiscoverModel(
     val newApps: List<AppDiscoverItem>,
     val recentlyUpdatedApps: List<AppDiscoverItem>,
     val categories: List<CategoryItem>?,
-    val searchResults: List<AppListItem>? = null,
+    val searchResults: SearchResults? = null,
 ) : DiscoverModel()

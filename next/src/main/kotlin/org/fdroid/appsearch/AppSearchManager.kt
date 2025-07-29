@@ -9,6 +9,7 @@ import androidx.appsearch.app.SetSchemaRequest
 import androidx.appsearch.localstorage.LocalStorage
 import androidx.concurrent.futures.await
 import androidx.core.os.LocaleListCompat
+import androidx.lifecycle.asFlow
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.awaitCancellation
@@ -20,6 +21,8 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 import javax.inject.Singleton
+
+sealed interface AppSearchDoc
 
 @Singleton
 class AppSearchManager @Inject constructor(
@@ -41,7 +44,7 @@ class AppSearchManager @Inject constructor(
             try {
                 val setSchemaRequest = SetSchemaRequest.Builder()
                     .setForceOverride(true)
-                    .addDocumentClasses(AppDocument::class.java)
+                    .addDocumentClasses(AppDocument::class.java, CategoryDocument::class.java)
                     .build()
                 val response = session.setSchemaAsync(setSchemaRequest).await()
                 response.migrationFailures.forEach { failure ->
@@ -68,7 +71,7 @@ class AppSearchManager @Inject constructor(
     }
 
     @SuppressLint("RequiresFeature") // we only use local search which supports this
-    suspend fun search(s: String = "F-Droid"): List<AppDocument> {
+    suspend fun search(s: String = "F-Droid"): List<AppSearchDoc> {
         awaitInitialization()
         val weights = mapOf(
             "name" to 100.0,
@@ -95,7 +98,8 @@ class AppSearchManager @Inject constructor(
             // we just use a single page for simplicity
             val resultList = results.nextPageAsync.await()
             resultList.map { r ->
-                r.getDocument(AppDocument::class.java)
+                if (r.genericDocument.namespace == "app") r.getDocument(AppDocument::class.java)
+                else r.getDocument(CategoryDocument::class.java)
             }
         }
     }
@@ -145,6 +149,26 @@ class AppSearchManager @Inject constructor(
             "Error putting documents: $result"
         }
         log.info { "Added ${result.successes.size} apps. Flushing to disk..." }
+        session.requestFlushAsync()
+
+        val categoryDocs = db.getRepositoryDao().getLiveCategories().asFlow().first().map {
+            CategoryDocument(
+                id = it.id,
+                repoId = it.repoId,
+                name = it.getName(localeList),
+                description = it.getDescription(localeList),
+                icon = it.getIcon(localeList),
+            )
+        }
+        log.debug { "Got ${categoryDocs.size} categories. Adding to appsearch.." }
+        val categoryPutRequest = PutDocumentsRequest.Builder()
+            .addDocuments(categoryDocs)
+            .build()
+        val categoryResult = session.putAsync(categoryPutRequest).await()
+        if (!categoryResult.isSuccess) log.error {
+            "Error putting documents: $result"
+        }
+        log.info { "Added ${categoryResult.successes.size} categories. Flushing to disk..." }
         session.requestFlushAsync()
     }
 
