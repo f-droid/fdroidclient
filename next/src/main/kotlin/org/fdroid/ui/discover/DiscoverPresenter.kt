@@ -4,10 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
-import org.fdroid.appsearch.SearchResults
 import org.fdroid.database.Repository
 import org.fdroid.ui.categories.CategoryItem
-import kotlin.time.Duration
 
 @Composable
 fun DiscoverPresenter(
@@ -15,14 +13,10 @@ fun DiscoverPresenter(
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
-    searchOptionFlow: StateFlow<SearchOption>,
-    searchTimeFlow: StateFlow<Duration?>,
 ): DiscoverModel {
     val apps = appsFlow.collectAsState(null).value
     val categories = categoriesFlow.collectAsState(null).value
     val searchResults = searchResultsFlow.collectAsState().value
-    val searchOption = searchOptionFlow.collectAsState().value
-    val searchTime = searchTimeFlow.collectAsState().value
 
     return if (apps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
@@ -42,8 +36,6 @@ fun DiscoverPresenter(
             recentlyUpdatedApps = apps.filter { !it.isNew },
             categories = categories,
             searchResults = searchResults,
-            searchOption = searchOption,
-            searchTime = searchTime,
         )
     }
 }
@@ -56,6 +48,4 @@ data class LoadedDiscoverModel(
     val recentlyUpdatedApps: List<AppDiscoverItem>,
     val categories: List<CategoryItem>?,
     val searchResults: SearchResults? = null,
-    val searchOption: SearchOption = SearchOption.APPSEARCH,
-    val searchTime: Duration? = null,
 ) : DiscoverModel()

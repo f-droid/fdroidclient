@@ -2,6 +2,7 @@ package org.fdroid.ui.discover
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +16,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
@@ -28,20 +28,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import org.fdroid.appsearch.SearchResults
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryCard
+import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListRow
-import kotlin.time.Duration
+import org.fdroid.ui.utils.BigLoadingIndicator
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppsSearch(
     searchBarState: SearchBarState,
     searchResults: SearchResults?,
-    time: Duration?,
     onSearch: suspend (String) -> Unit,
     onNav: (NavigationKey) -> Unit,
     onSearchCleared: () -> Unit,
@@ -80,8 +79,11 @@ fun AppsSearch(
         },
     ) {
         if (searchResults == null) {
-//            if (textFieldState.text.length >= 3) BigLoadingIndicator()
+            if (textFieldState.text.length >= 3) BigLoadingIndicator()
         } else if (searchResults.apps.isEmpty()) {
+            if (searchResults.categories.isNotEmpty()) {
+                CategoriesFlowRow(searchResults.categories, onNav)
+            }
             Text(
                 text = stringResource(R.string.search_no_results),
                 textAlign = TextAlign.Center,
@@ -91,30 +93,38 @@ fun AppsSearch(
             )
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                if (time != null) item(key = "time", contentType = "time") {
-                    Text(
-                        "Search time: $time",
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .fillMaxWidth()
-                    )
-                }
-                items(
-                    searchResults.categories,
-                    key = { it.id },
-                    contentType = { "category" }) { item ->
-                    CategoryCard(categoryItem = item, onNav = onNav)
+                item(
+                    key = "categories",
+                    contentType = "category",
+                ) {
+                    CategoriesFlowRow(searchResults.categories, onNav)
                 }
                 items(
                     searchResults.apps,
                     key = { it.packageName },
-                    contentType = { "app" }) { item ->
-                    AppListRow(item, false, modifier.clickable {
-                        onNav(NavigationKey.AppDetails(item.packageName))
-                    })
+                    contentType = { "app" },
+                ) { item ->
+                    AppListRow(
+                        item = item, isSelected = false,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .animateItem()
+                            .padding(horizontal = 8.dp)
+                            .clickable {
+                                onNav(NavigationKey.AppDetails(item.packageName))
+                            }
+                    )
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (NavigationKey) -> Unit) {
+    FlowRow(modifier = Modifier.padding(horizontal = 8.dp)) {
+        categories.forEach { item ->
+            CategoryCard(categoryItem = item, onNav = onNav)
         }
     }
 }
@@ -126,7 +136,7 @@ private fun AppsSearchLoadingPreview() {
     FDroidContent {
         Box(Modifier.fillMaxSize()) {
             val state = rememberSearchBarState(SearchBarValue.Expanded)
-            AppsSearch(state, null, null, {}, {}, {})
+            AppsSearch(state, null, {}, {}, {})
         }
     }
 }
@@ -138,7 +148,25 @@ private fun AppsSearchEmptyPreview() {
     FDroidContent {
         Box(Modifier.fillMaxSize()) {
             val state = rememberSearchBarState(SearchBarValue.Expanded)
-            AppsSearch(state, SearchResults(emptyList(), emptyList()), null, {}, {}, {})
+            AppsSearch(state, SearchResults(emptyList(), emptyList()), {}, {}, {})
+        }
+    }
+}
+
+@Preview
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun AppsSearchPreview() {
+    FDroidContent {
+        Box(Modifier.fillMaxSize()) {
+            val state = rememberSearchBarState(SearchBarValue.Expanded)
+            val categories = listOf(
+                CategoryItem("Bookmark", "Bookmark"),
+                CategoryItem("Browser", "Browser"),
+                CategoryItem("Calculator", "Calc"),
+                CategoryItem("Money", "Money"),
+            )
+            AppsSearch(state, SearchResults(emptyList(), categories), {}, {}, {})
         }
     }
 }

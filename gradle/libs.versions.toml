@@ -3,7 +3,6 @@ compileSdk = "36"
 kotlin = "2.2.21"
 androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on buildserver
 androidKspPlugin = "2.2.21-2.0.4" # first version needs to match kotlin version
-androidKaptPlugin = "2.2.0"
 hilt = "2.56.2"
 hiltWork = "1.2.0"
 hiltNavigationCompose = "1.2.0"
@@ -36,15 +35,13 @@ androidxConstraintlayout = "2.2.1"
 androidxSwipeRefreshLayout = "1.1.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
-androidxComposeBom = "2025.09.01"
-androidxActivityCompose = "1.11.0"
+androidxComposeBom = "2025.11.01"
+androidxActivityCompose = "1.12.0"
 accompanistDrawablepainter = "0.37.3"
-appsearch = "1.1.0"
-concurrentFuturesKtx = "1.3.0"
 
 # navigation3
-nav3Core = "1.0.0-alpha10"
-lifecycleViewmodelNav3 = "2.10.0-alpha04"
+nav3Core = "1.0.0"
+lifecycleViewmodelNav3 = "2.10.0"
 material3AdaptiveNav3 = "1.0.0-alpha03"
 
 material = "1.13.0"
@@ -129,11 +126,6 @@ androidx-compose-material3-adaptive-navigation3 = { group = "androidx.compose.ma
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompiler" }
 
-androidx-appsearch = { module = "androidx.appsearch:appsearch", version.ref = "appsearch" }
-androidx-appsearch-compiler = { module = "androidx.appsearch:appsearch-compiler", version.ref = "appsearch" }
-androidx-appsearch-local-storage = { module = "androidx.appsearch:appsearch-local-storage", version.ref = "appsearch" }
-androidx-concurrent-futures-ktx = { module = "androidx.concurrent:concurrent-futures-ktx", version.ref = "concurrentFuturesKtx" }
-
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 accompanist-drawablepainter = { module = "com.google.accompanist:accompanist-drawablepainter", version.ref = "accompanistDrawablepainter" }
@@ -209,7 +201,6 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
-android-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "androidKaptPlugin" }
 android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

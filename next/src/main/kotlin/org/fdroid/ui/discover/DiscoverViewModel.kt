@@ -1,6 +1,7 @@
 package org.fdroid.ui.discover
 
 import android.app.Application
+import android.database.sqlite.SQLiteException
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
@@ -18,10 +19,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
-import org.fdroid.appsearch.AppDocument
-import org.fdroid.appsearch.AppSearchManager
-import org.fdroid.appsearch.CategoryDocument
-import org.fdroid.appsearch.SearchResults
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
@@ -32,14 +29,7 @@ import org.fdroid.utils.IoDispatcher
 import java.text.Collator
 import java.util.Locale
 import javax.inject.Inject
-import kotlin.time.Duration
 import kotlin.time.measureTime
-
-enum class SearchOption {
-    LIKE,
-    FTS,
-    APPSEARCH,
-}
 
 @HiltViewModel
 class DiscoverViewModel @Inject constructor(
@@ -48,8 +38,7 @@ class DiscoverViewModel @Inject constructor(
     private val db: FDroidDatabase,
     updatesManager: UpdatesManager,
     private val repoManager: RepoManager,
-    private val appSearchManager: AppSearchManager,
-    @IoDispatcher private val ioScope: CoroutineScope,
+    @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger { }
@@ -80,8 +69,6 @@ class DiscoverViewModel @Inject constructor(
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
     private val searchResults = MutableStateFlow<SearchResults?>(null)
-    private val searchOption = MutableStateFlow(SearchOption.FTS)
-    private val searchTime = MutableStateFlow<Duration?>(null)
 
     val localeList = LocaleListCompat.getDefault()
     val discoverModel: StateFlow<DiscoverModel> = scope.launchMolecule(mode = ContextClock) {
@@ -90,62 +77,10 @@ class DiscoverViewModel @Inject constructor(
             categoriesFlow = categories,
             repositoriesFlow = repoManager.repositoriesState,
             searchResultsFlow = searchResults,
-            searchOptionFlow = searchOption,
-            searchTimeFlow = searchTime,
         )
     }
 
     suspend fun search(term: String) = withContext(ioScope.coroutineContext) {
-        val duration = measureTime {
-            searchResults.value = when (searchOption.value) {
-                SearchOption.LIKE -> searchLike(term)
-                SearchOption.FTS -> searchFts(term)
-                SearchOption.APPSEARCH -> searchAppSearch(term)
-            }
-        }
-        searchTime.value = duration
-    }
-
-    private suspend fun searchAppSearch(term: String): SearchResults {
-        val categories = mutableListOf<CategoryItem>()
-        val apps = mutableListOf<AppListItem>()
-        val sanitized = term.replace(Regex.fromLiteral("\""), "")
-        appSearchManager.search(sanitized).forEach {
-            if (it is AppDocument) {
-                val repository = repoManager.getRepository(it.repoId) ?: return@forEach
-                AppListItem(
-                    packageName = it.packageName,
-                    name = it.name?.getBestLocale(localeList) ?: "Unknown",
-                    summary = it.summary?.getBestLocale(localeList) ?: "",
-                    lastUpdated = it.lastUpdated,
-                    iconDownloadRequest = it.icon?.getDownloadRequest(repository),
-                ).also { app -> apps.add(app) }
-            } else if (it is CategoryDocument) {
-                CategoryItem(
-                    id = it.id,
-                    name = it.name ?: "Unknown category",
-                ).also { c -> categories.add(c) }
-            }
-        }
-        return SearchResults(apps, categories)
-    }
-
-    private fun searchLike(term: String): SearchResults {
-        val sanitized = term.replace(Regex.fromLiteral("\""), "")
-        val apps = db.getAppDao().getAppSearchItemsLike(sanitized).mapNotNull {
-            val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
-            AppListItem(
-                packageName = it.packageName,
-                name = it.name?.getBestLocale(localeList) ?: "Unknown",
-                summary = it.summary?.getBestLocale(localeList) ?: "",
-                lastUpdated = it.lastUpdated,
-                iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
-            )
-        }
-        return SearchResults(apps, emptyList())
-    }
-
-    private suspend fun searchFts(term: String): SearchResults {
         val sanitized = term.replace(Regex.fromLiteral("\""), "")
         val query = sanitized.split(' ').joinToString(" ") { word ->
             if (word.isBlank()) "" else {
@@ -161,29 +96,37 @@ class DiscoverViewModel @Inject constructor(
             }
         }
         log.info { "Searching for: $query" }
-        val apps = db.getAppDao().getAppSearchItemsFts(query).mapNotNull {
-            val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
-            AppListItem(
-                packageName = it.packageName,
-                name = it.name?.getBestLocale(localeList) ?: "Unknown",
-                summary = it.summary?.getBestLocale(localeList) ?: "",
-                lastUpdated = it.lastUpdated,
-                iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
-            )
-        }
-        val categories = this.categories.first().filter {
-            // TODO handle diacritics as well
-            it.name.contains(sanitized, ignoreCase = true)
-        }
-        return SearchResults(apps, categories)
-    }
+        val duration = measureTime {
+            val apps = try {
+                db.getAppDao().getAppSearchItems(query).sortedDescending().mapNotNull {
+                    val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+                    AppListItem(
 
-    fun onSearchOptionChanged(option: SearchOption) {
-        searchOption.value = option
+                        packageName = it.packageName,
+                        name = it.name.getBestLocale(localeList) ?: "Unknown",
+                        summary = it.summary.getBestLocale(localeList) ?: "",
+                        lastUpdated = it.lastUpdated,
+                        iconDownloadRequest = it.getIcon(localeList)
+                            ?.getDownloadRequest(repository),
+                    )
+                }
+            } catch (e: SQLiteException) {
+                log.error(e) { "Error searching for $query: " }
+                emptyList()
+            }
+            val categories = this@DiscoverViewModel.categories.first().filter {
+                // TODO handle diacritics as well
+                it.name.contains(sanitized, ignoreCase = true)
+            }
+            searchResults.value = SearchResults(apps, categories)
+        }
+        log.debug {
+            val numResults = searchResults.value?.apps?.size ?: 0
+            "Search for $query had $numResults results and took $duration"
+        }
     }
 
     fun onSearchCleared() {
         searchResults.value = null
-        searchTime.value = null
     }
 }

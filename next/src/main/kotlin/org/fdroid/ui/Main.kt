@@ -26,8 +26,7 @@ import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDe
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
-import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
-import androidx.navigation3.scene.rememberSceneSetupNavEntryDecorator
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import org.fdroid.database.AppListSortOrder
@@ -48,7 +47,7 @@ import org.fdroid.ui.repositories.RepositoriesViewModel
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun Main(onListeningForIntent: () -> Unit = {}) {
-    val backStack = rememberNavBackStack<NavigationKey>(NavigationKey.Discover)
+    val backStack = rememberNavBackStack(NavigationKey.Discover)
     // set up intent routing by listening to new intents from activity
     val activity = (LocalActivity.current as ComponentActivity)
     DisposableEffect(backStack) {
@@ -70,13 +69,9 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     FDroidContent {
         NavDisplay(
             backStack = backStack,
-            onBack = { keysToRemove ->
-                repeat(keysToRemove) { backStack.removeLastOrNull() }
-            },
             sceneStrategy = listDetailStrategy,
             entryDecorators = listOf(
-                rememberSceneSetupNavEntryDecorator(),
-                rememberSavedStateNavEntryDecorator(),
+                rememberSaveableStateHolderNavEntryDecorator(),
                 rememberViewModelStoreNavEntryDecorator(),
             ),
             entryProvider = entryProvider {
@@ -100,7 +95,6 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                         isBigScreen = isBigScreen,
                         onSearch = viewModel::search,
                         onSearchCleared = viewModel::onSearchCleared,
-                        onSearchOptionChanged = viewModel::onSearchOptionChanged,
                         modifier = Modifier,
                     )
                 }

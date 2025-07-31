@@ -1,4 +1,4 @@
-package org.fdroid.appsearch
+package org.fdroid.ui.discover
 
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem

@@ -43,7 +43,4 @@ class RepositoriesViewModel @Inject constructor(
 
     fun addRepo() {
     }
-
-    // TODO update appsearch when repo got disabled
-
 }

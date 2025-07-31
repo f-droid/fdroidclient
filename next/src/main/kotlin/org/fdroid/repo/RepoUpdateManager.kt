@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.map
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.NotificationManager
-import org.fdroid.appsearch.AppSearchManager
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloaderFactory
@@ -101,7 +100,6 @@ class RepoUpdateManager(
             listener = indexUpdateListener,
         )
     } else null,
-    private val appSearchManager: AppSearchManager,
 ) {
 
     @Inject
@@ -112,7 +110,6 @@ class RepoUpdateManager(
         updatesManager: UpdatesManager,
         downloaderFactory: DownloaderFactory,
         notificationManager: NotificationManager,
-        appSearchManager: AppSearchManager,
     ) : this(
         context = context,
         db = db,
@@ -120,7 +117,6 @@ class RepoUpdateManager(
         updatesManager = updatesManager,
         downloaderFactory = downloaderFactory,
         notificationManager = notificationManager,
-        appSearchManager = appSearchManager,
     )
 
     private val isUpdateNotificationEnabled = true
@@ -177,7 +173,6 @@ class RepoUpdateManager(
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
                 updatesManager.loadUpdates()
-                appSearchManager.updateIndex()
             }
         } finally {
             notificationManager.cancelUpdateRepoNotification()
@@ -203,7 +198,6 @@ class RepoUpdateManager(
             val result = indexV1Updater?.update(repo) ?: repoUpdater.update(repo)
             if (result is IndexUpdateResult.Processed) {
                 updatesManager.loadUpdates()
-                appSearchManager.updateIndex()
             }
             result
         } finally {
