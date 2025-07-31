@@ -80,7 +80,7 @@ internal class CountryCodeMigrationTest {
             FDroidDatabaseInt::class.java,
             TEST_DB
         )
-            .addMigrations(MIGRATION_2_3, MIGRATION_5_6)
+            .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
             .allowMainThreadQueries()
             .build().use { db ->
                 // check repo got timestamp and etag reset

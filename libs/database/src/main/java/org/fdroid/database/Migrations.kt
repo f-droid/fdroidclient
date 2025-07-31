@@ -159,3 +159,66 @@ internal class CountryCodeMigration : AutoMigrationSpec {
         }
     }
 }
+
+/**
+ * The tokenizer of the FTS4 table for the app metadata was modified.
+ * This migration is needed to recreate the FTS table to respect the new tokenizer
+ * and also re-create the triggers to keep the FTS table in sync with the AppMetadata table.
+ */
+internal val MIGRATION_8_9 = object : Migration(8, 9) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("DROP TABLE `AppMetadataFts`")
+        db.execSQL("DROP TRIGGER IF EXISTS `room_fts_content_sync_AppMetadataFts_BEFORE_UPDATE`")
+        db.execSQL("DROP TRIGGER IF EXISTS `room_fts_content_sync_AppMetadataFts_BEFORE_DELETE`")
+        db.execSQL("DROP TRIGGER IF EXISTS `room_fts_content_sync_AppMetadataFts_AFTER_UPDATE`")
+        db.execSQL("DROP TRIGGER IF EXISTS `room_fts_content_sync_AppMetadataFts_AFTER_INSERT`")
+        // table creation taken from auto-generated code:
+        // build/generated/ksp/debug/kotlin/org/fdroid/database/FDroidDatabaseInt_Impl.kt
+        db.execSQL(
+            """
+                CREATE VIRTUAL TABLE IF NOT EXISTS `AppMetadataFts`
+                USING FTS4(
+                    `repoId` INTEGER NOT NULL,
+                    `name` TEXT, `summary` TEXT,
+                    `description` TEXT,
+                    `authorName` TEXT,
+                    `packageName` TEXT NOT NULL,
+                    tokenize=unicode61 `remove_diacritics=1` `separators=.` `tokenchars=-`,
+                    content=`AppMetadata`,
+                    notindexed=`repoId`
+            )""".trimIndent()
+        )
+        db.execSQL(
+            """
+            CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_BEFORE_UPDATE
+            BEFORE UPDATE ON `AppMetadata` BEGIN DELETE FROM `AppMetadataFts`
+            WHERE `docid`=OLD.`rowid`; END
+            """.trimIndent()
+        )
+        db.execSQL(
+            """
+            CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_BEFORE_DELETE
+            BEFORE DELETE ON `AppMetadata` BEGIN DELETE FROM `AppMetadataFts`
+            WHERE `docid`=OLD.`rowid`; END
+            """.trimIndent()
+        )
+        db.execSQL(
+            """
+            CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_AFTER_UPDATE
+            AFTER UPDATE ON `AppMetadata` BEGIN INSERT INTO
+            `AppMetadataFts`(`docid`, `repoId`, `name`, `summary`, `description`, `authorName`, `packageName`)
+            VALUES (NEW.`rowid`, NEW.`repoId`, NEW.`name`, NEW.`summary`, NEW.`description`, NEW.`authorName`, NEW.`packageName`)
+            ; END""".trimIndent()
+        )
+        db.execSQL(
+            """
+            CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_AppMetadataFts_AFTER_INSERT
+            AFTER INSERT ON `AppMetadata` BEGIN INSERT INTO
+            `AppMetadataFts`(`docid`, `repoId`, `name`, `summary`, `description`, `authorName`, `packageName`)
+            VALUES (NEW.`rowid`, NEW.`repoId`, NEW.`name`, NEW.`summary`, NEW.`description`, NEW.`authorName`, NEW.`packageName`)
+            ; END""".trimIndent()
+        )
+        // rebuild the FTS table to populate it with the new tokenizer
+        db.execSQL("INSERT INTO AppMetadataFts(AppMetadataFts) VALUES('rebuild')")
+    }
+}

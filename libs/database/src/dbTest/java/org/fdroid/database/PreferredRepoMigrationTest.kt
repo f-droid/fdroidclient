@@ -80,7 +80,7 @@ internal class PreferredRepoMigrationTest {
             FDroidDatabaseInt::class.java,
             TEST_DB
         )
-            .addMigrations(MIGRATION_2_3, MIGRATION_5_6)
+            .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
             .allowMainThreadQueries()
             .build().use { db ->
                 // repo without cert did not get migrated, the other one did

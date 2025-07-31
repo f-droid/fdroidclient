@@ -9,6 +9,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Fts4
+import androidx.room.FtsOptions
 import androidx.room.Ignore
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
@@ -127,16 +128,23 @@ internal fun MetadataV2.toAppMetadata(
 @Entity(tableName = AppMetadataFts.TABLE)
 @Fts4(
     contentEntity = AppMetadata::class,
-    // make FTS for non-ASCII characters case insensitive, but do not remove diacritics
-    tokenizer = "unicode61 \"remove_diacritics=0\""
+    // make FTS for non-ASCII characters case insensitive, CJK languages are handled separately,
+    // because there's no tokenizer available that handles everything
+    tokenizer = FtsOptions.TOKENIZER_UNICODE61,
+    // can't use remove_diacritics=2 because it is SDK_INT >=30
+    // see: https://www.twisterrob.net/blog/2023/10/sqlite-unicode61-remove-diacritics-2.html
+    // separators=. is mainly for package name search
+    // tokenchars=- is so that searching for F-Droid works as expected
+    tokenizerArgs = ["remove_diacritics=1", "separators=.", "tokenchars=-"],
+    notIndexed = ["repoId"],
 )
 internal data class AppMetadataFts(
     val repoId: Long,
-    val packageName: String,
-    @ColumnInfo(name = "localizedName")
     val name: String? = null,
-    @ColumnInfo(name = "localizedSummary")
     val summary: String? = null,
+    val description: String? = null,
+    val authorName: String? = null,
+    val packageName: String,
 ) {
     internal companion object {
         const val TABLE = "AppMetadataFts"

@@ -2,7 +2,7 @@ package org.fdroid.database
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.room.testing.MigrationTestHelper
@@ -23,7 +23,7 @@ import kotlin.test.assertEquals
 private const val TEST_DB = "fts-test"
 
 @RunWith(AndroidJUnit4::class)
-internal class FtsCaseInsensitiveMigrationTest {
+internal class FtsAddColumnsMigrationTest {
 
     @get:Rule
     val helper: MigrationTestHelper = MigrationTestHelper(
@@ -149,43 +149,80 @@ internal class FtsCaseInsensitiveMigrationTest {
 
     @Test
     fun testMigration() = runBlocking {
-        helper.createDatabase(TEST_DB, 5).use { db ->
-            // Database has schema version 5. Insert some data using SQL queries.
+        helper.createDatabase(TEST_DB, 8).use { db ->
+            // Database has schema version 8. Insert some data using SQL queries.
             // We can't use DAO classes because they expect the latest schema.
-            db.insert(CoreRepository.TABLE, SQLiteDatabase.CONFLICT_FAIL, repo)
-            db.insert(RepositoryPreferences.TABLE, SQLiteDatabase.CONFLICT_FAIL, repoPrefs)
-            db.insert(AppMetadata.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiMetadata)
-            db.insert(AppMetadata.TABLE, SQLiteDatabase.CONFLICT_FAIL, transportrMetadata)
-            db.insert(Version.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiVersion)
-            db.insert(Version.TABLE, SQLiteDatabase.CONFLICT_FAIL, transportrVersion)
+            db.insert(CoreRepository.TABLE, CONFLICT_FAIL, repo)
+            db.insert(RepositoryPreferences.TABLE, CONFLICT_FAIL, repoPrefs)
+            db.insert(AppMetadata.TABLE, CONFLICT_FAIL, oeffiMetadata)
+            db.insert(AppMetadata.TABLE, CONFLICT_FAIL, transportrMetadata)
+            db.insert(Version.TABLE, CONFLICT_FAIL, oeffiVersion)
+            db.insert(Version.TABLE, CONFLICT_FAIL, transportrVersion)
 
-            // Show that search is case sensitive for diacritics
-            assertSearch(db, "Öffi", 1)
-            assertSearch(db, "öffi", 0)
-            // using no diacritics does match any case
+            // default search with no diacritics
+            assertSearch(db, "*Transport*", 1)
+            assertSearch(db, "Transportr", 1)
+            assertSearch(db, "*f*", 2)
+            // no or wrong diacritics
             assertSearch(db, "Offi", 0)
             assertSearch(db, "offi", 0)
-            // it's case sensitive so only "öffentlichen" from Transportr is found
-            assertSearch(db, "öff*", 1)
+            assertSearch(db, "õffi", 0)
+            assertSearch(db, "*Offi*", 0)
+            assertSearch(db, "*offi*", 0)
+            assertSearch(db, "Konig", 0)
+            // correct diacritics
+            assertSearch(db, "*Öffi*", 1)
+            assertSearch(db, "*öffi*", 1)
+            assertSearch(db, "Öffi", 1)
+            assertSearch(db, "öffi", 1)
+            // both apps have "öff" in their name or summary
+            assertSearch(db, "*öff*", 2)
             assertSearch(db, "König", 1)
-
         }
 
-        helper.runMigrationsAndValidate(TEST_DB, 6, true, MIGRATION_5_6).close()
+        helper.runMigrationsAndValidate(TEST_DB, 9, true, MIGRATION_8_9).close()
 
         // now get the Room DB, so we can use our DAOs for verifying the migration
         Room.databaseBuilder(context, FDroidDatabaseInt::class.java, TEST_DB)
             .allowMainThreadQueries()
-            .addMigrations(MIGRATION_8_9) // was added later
             .build().use { db ->
                 // assert that apps are still there
                 val metadata = db.getAppDao().getAppMetadata()
                 assertEquals(2, metadata.size)
                 // default search with no diacritics
                 assertGetAppListItems(db, "*Transport*", 2)
+                assertGetAppListItems(db, "Transportr", 1)
+                assertGetAppListItems(db, "*f*", 2)
+                // no or wrong diacritics also produces results now
+                assertGetAppListItems(db, "Offi", 1)
+                assertGetAppListItems(db, "offi", 1)
+                assertGetAppListItems(db, "õffi", 1)
+                assertGetAppListItems(db, "*Offi*", 1)
+                assertGetAppListItems(db, "*offi*", 1)
+                assertGetAppListItems(db, "Konig", 1)
+                // correct diacritics still produces results
+                assertGetAppListItems(db, "*Öffi*", 1)
+                assertGetAppListItems(db, "*öffi*", 1)
+                assertGetAppListItems(db, "Öffi", 1)
+                assertGetAppListItems(db, "öffi", 1)
+                // both apps have "öff" in their name or summary
+                assertGetAppListItems(db, "*öff*", 2)
+                assertGetAppListItems(db, "König", 1)
 
-                // other tests here were removed, because MIGRATION_8_9 changed this once again
-                // and has its own test
+                // a new app also gets updated in the index
+                assertGetAppListItems(db, "Rosa", 0)
+                assertGetAppListItems(db, "Elefant", 0)
+                val newApp = AppMetadata(
+                    repoId = 1,
+                    packageName = "org.example",
+                    added = 23,
+                    lastUpdated = 42,
+                    name = mapOf("de_DE" to "Rosa Elefant"),
+                    isCompatible = true
+                )
+                db.getAppDao().insert(newApp)
+                assertGetAppListItems(db, "Rosa", 1)
+                assertGetAppListItems(db, "Elefant", 1)
             }
     }
 
@@ -195,8 +232,8 @@ internal class FtsCaseInsensitiveMigrationTest {
     }
 
     private fun assertGetAppListItems(db: FDroidDatabaseInt, query: String, expected: Int) {
-        db.getAppDao().getAppListItems(query).getOrFail().let {
-            assertEquals(expected, it.size)
+        db.getAppDao().getAppListItems(query).getOrFail().let { result ->
+            assertEquals(expected, result.size, "${result.map { it.name }}")
         }
     }
 
