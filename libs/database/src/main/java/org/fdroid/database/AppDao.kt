@@ -237,13 +237,19 @@ internal interface AppDaoInt : AppDao {
             }
             // diff metadata
             val diffedApp = applyDiff(metadata, jsonObject)
-            val updatedApp =
-                if (jsonObject.containsKey("name") || jsonObject.containsKey("summary")) {
-                    diffedApp.copy(
-                        localizedName = diffedApp.name.getBestLocale(locales),
-                        localizedSummary = diffedApp.summary.getBestLocale(locales),
-                    )
-                } else diffedApp
+            val containsName = jsonObject.containsKey("name")
+            val containsSummary = jsonObject.containsKey("summary")
+            val containsDescription = jsonObject.containsKey("description")
+            val updatedApp = if (containsName || containsSummary || containsDescription) {
+                diffedApp.copy(
+                    name = if (containsName) diffedApp.name.zero() else diffedApp.name,
+                    summary = if (containsSummary) diffedApp.summary.zero() else diffedApp.summary,
+                    description = if (containsDescription) diffedApp.description.zero()
+                    else diffedApp.description,
+                    localizedName = diffedApp.name.getBestLocale(locales),
+                    localizedSummary = diffedApp.summary.getBestLocale(locales),
+                )
+            } else diffedApp
             updateAppMetadata(updatedApp)
             // diff localizedFiles
             val localizedFiles = getLocalizedFiles(repoId, packageName)

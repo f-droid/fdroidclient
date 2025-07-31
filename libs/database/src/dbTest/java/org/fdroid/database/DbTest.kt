@@ -114,7 +114,12 @@ internal abstract class DbTest {
         assertEquals(sortedIndex.packages.size, appDao.countApps(), "number of packages")
         sortedIndex.packages.forEach { (packageName, packageV2) ->
             assertEquals(
-                packageV2.metadata,
+                // zero-whitespace hack needs to get applied to expected data
+                packageV2.metadata.copy(
+                    name = packageV2.metadata.name.zero(),
+                    summary = packageV2.metadata.summary.zero(),
+                    description = packageV2.metadata.description.zero(),
+                ),
                 appDao.getApp(repoId, packageName)?.toMetadataV2()?.sort()
             )
             val versions = versionDao.getAppVersions(repoId, packageName).getOrFail().map {

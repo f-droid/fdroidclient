@@ -596,15 +596,18 @@
       "metadata": {
         "name": {
           "en-US": "App3",
-          "en": "en "
+          "en": "en ",
+          "zh-CN": "自由软件仓库"
         },
         "summary": {
           "en-US": "App3 summary",
-          "en": "en "
+          "en": "en ",
+          "ja": "这个仓库中的"
         },
         "description": {
           "en-US": "App3 description",
-          "en": "en "
+          "en": "en ",
+          "ko-KR": "切始终是从"
         },
         "added": 1234567890,
         "lastUpdated": 9223372036854775807,

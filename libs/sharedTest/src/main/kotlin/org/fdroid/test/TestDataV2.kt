@@ -1055,14 +1055,17 @@ object TestDataMaxV2 {
             name = mapOf(
                 LOCALE to "App3",
                 "en" to "en ",
+                "zh-CN" to "自由软件仓库",
             ),
             summary = mapOf(
                 LOCALE to "App3 summary",
                 "en" to "en ",
+                "ja" to "这个仓库中的",
             ),
             description = mapOf(
                 LOCALE to "App3 description",
                 "en" to "en ",
+                "ko-KR" to "切始终是从",
             ),
             added = 1234567890,
             lastUpdated = Long.MAX_VALUE,

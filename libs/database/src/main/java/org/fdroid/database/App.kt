@@ -97,9 +97,9 @@ internal fun MetadataV2.toAppMetadata(
     packageName = packageName,
     added = added,
     lastUpdated = lastUpdated,
-    name = name,
-    summary = summary,
-    description = description,
+    name = name.zero(),
+    summary = summary.zero(),
+    description = description.zero(),
     localizedName = name.getBestLocale(locales),
     localizedSummary = summary.getBestLocale(locales),
     webSite = webSite,
@@ -124,6 +124,33 @@ internal fun MetadataV2.toAppMetadata(
     categories = categories,
     isCompatible = isCompatible,
 )
+
+/**
+ * Introduce zero whitespace for CJK (Chinese, Japanese, Korean) languages.
+ * This is needed, because the sqlite tokenizers available to us either handle those languages
+ * or do diacritics removals.
+ * Since we can't remove diacritics here ourselves,
+ * we help the tokenizer for CJK languages instead.
+ */
+internal fun LocalizedTextV2?.zero(): LocalizedTextV2? {
+    if (this == null) return null
+    return toMutableMap().mapValues { (locale, text) ->
+        if (locale.startsWith("zh") || locale.startsWith("ja") || locale.startsWith("ko")) {
+            StringBuilder().apply {
+                text.forEachIndexed { i, char ->
+                    if (Character.isIdeographic(char.code) && i + 1 < text.length) {
+                        append(char)
+                        append("\u200B")
+                    } else {
+                        append(char)
+                    }
+                }
+            }.toString()
+        } else {
+            text
+        }
+    }
+}
 
 @Entity(tableName = AppMetadataFts.TABLE)
 @Fts4(
