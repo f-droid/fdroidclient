@@ -37,11 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/fab_margin"
         android:contentDescription="@string/menu_add_repo"
+        app:layout_gravity="bottom|end"
         android:src="@drawable/ic_add"
-        app:layout_anchor="@id/list"
-        app:layout_anchorGravity="bottom|end"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior" />
+        app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
