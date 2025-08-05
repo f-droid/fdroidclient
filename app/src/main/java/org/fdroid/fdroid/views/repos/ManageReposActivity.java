@@ -146,11 +146,12 @@ public class ManageReposActivity extends AppCompatActivity implements RepoAdapte
             startActivity(i);
         });
         ViewCompat.setOnApplyWindowInsetsListener(fab, (v, windowInsets) -> {
+            int fabMargin = getResources().getDimensionPixelSize(R.dimen.fab_margin);
             Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
             ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            mlp.leftMargin += insets.left;
-            mlp.bottomMargin += insets.bottom;
-            mlp.rightMargin += insets.right;
+            mlp.leftMargin = insets.left + fabMargin;
+            mlp.bottomMargin = insets.bottom + fabMargin;
+            mlp.rightMargin = insets.right + fabMargin;
             v.setLayoutParams(mlp);
             return WindowInsetsCompat.CONSUMED;
         });
