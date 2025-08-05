@@ -113,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
 
         fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
         EdgeToEdge.enable(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
 
         super.onCreate(savedInstanceState);
 
