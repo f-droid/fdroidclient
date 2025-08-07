@@ -466,6 +466,7 @@ public class Apk implements Comparable<Apk>, Parcelable {
                     set.add(Manifest.permission.READ_MEDIA_VIDEO);
                     set.add(Manifest.permission.READ_MEDIA_IMAGES);
                 }
+                set.add(Manifest.permission.POST_NOTIFICATIONS);
             }
             // Else do nothing. The targetSdk for the above split-permissions is set to 33,
             // so we don't make any changes for apps targeting 33 or above
