@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.view.View;
+
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
 import org.fdroid.fdroid.R;
 
 public class LatestLayoutPolicy {
@@ -81,7 +82,7 @@ public class LatestLayoutPolicy {
                 // will only have padding on the right. This will allow the same amount of padding
                 // on the left, centre, and right of the grid, rather than double the padding in the
                 // middle (which would happen if both left and right padding was set for both items).
-                boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
+                boolean isLtr = parent.getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
                 boolean isAtStart = relativePositionInCycle == 1 || relativePositionInCycle == 3;
                 int paddingStart = isAtStart ? horizontalPadding : 0;
                 int paddingLeft = isLtr ? paddingStart : horizontalPadding;

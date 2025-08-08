@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -38,12 +39,10 @@ import androidx.compose.ui.platform.ComposeView;
 import androidx.compose.ui.platform.ViewCompositionStrategy;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.os.ConfigurationCompat;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.text.HtmlCompat;
 import androidx.core.text.util.LinkifyCompat;
-import androidx.core.view.ViewCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -500,7 +499,7 @@ public class AppDetailsRecyclerViewAdapter
             descriptionView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             descriptionMoreView.setOnClickListener(v -> {
                 TransitionManager.beginDelayedTransition(recyclerView, null);
-                if (TextViewCompat.getMaxLines(descriptionView) != MAX_LINES) {
+                if (descriptionView.getMaxLines() != MAX_LINES) {
                     descriptionView.setMaxLines(MAX_LINES);
                     descriptionMoreView.setText(R.string.more);
                     descriptionIsExpanded = false;
@@ -964,7 +963,7 @@ public class AppDetailsRecyclerViewAdapter
             Drawable iconDrawable = ContextCompat.getDrawable(headerView.getContext(), icon);
             final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less);
             final Drawable expandMore = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_more);
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
+            headerView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     iconDrawable, null, isExpanded ? expandLess : expandMore, null);
         }
     }
@@ -997,11 +996,8 @@ public class AppDetailsRecyclerViewAdapter
         NoVersionsViewHolder(View view) {
             super(view);
             headerView = view.findViewById(R.id.information);
-            final Drawable versions = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_versions);
-            final Drawable accessTime = DrawableCompat.wrap(Objects.requireNonNull(versions)).mutate();
-            DrawableCompat.setTint(accessTime, Color.parseColor("#B4B4B4"));
-            TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(headerView,
-                    accessTime, null, null, null);
+            headerView.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_versions, 0, 0, 0);
+            TextViewCompat.setCompoundDrawableTintList(headerView, ColorStateList.valueOf(Color.parseColor("#B4B4B4")));
             itemView.setOnClickListener(v -> explainIncompatibleVersions());
         }
 
@@ -1214,7 +1210,7 @@ public class AppDetailsRecyclerViewAdapter
 
             int margin = context.getResources().getDimensionPixelSize(R.dimen.layout_horizontal_margin);
             int padding = context.getResources().getDimensionPixelSize(R.dimen.details_activity_padding);
-            ViewCompat.setPaddingRelative(view, margin + padding + ViewCompat.getPaddingStart(view), view.getPaddingTop(), margin + ViewCompat.getPaddingEnd(view), view.getPaddingBottom());
+            view.setPaddingRelative(margin + padding + view.getPaddingStart(), view.getPaddingTop(), margin + view.getPaddingEnd(), view.getPaddingBottom());
         }
 
         void bindModel(final Apk apk) {
@@ -1480,7 +1476,7 @@ public class AppDetailsRecyclerViewAdapter
             text = parent.getContext().getString(resIdText, formatArg);
         }
         view.setText(text);
-        TextViewCompat.setCompoundDrawablesRelativeWithIntrinsicBounds(view, resIdDrawable, 0, 0, 0);
+        view.setCompoundDrawablesRelativeWithIntrinsicBounds(resIdDrawable, 0, 0, 0);
         parent.addView(view);
         view.setOnClickListener(v -> onLinkClicked(url));
         view.setOnLongClickListener(v -> {

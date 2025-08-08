@@ -16,7 +16,6 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.LocaleListCompat;
-import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
@@ -176,7 +175,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
                     R.dimen.category_preview__app_list__padding__horizontal__first);
             int horizontalPaddingLast = (int) r.getDimension(
                     R.dimen.category_preview__app_list__padding__horizontal__last);
-            boolean isLtr = ViewCompat.getLayoutDirection(parent) == ViewCompat.LAYOUT_DIRECTION_LTR;
+            boolean isLtr = parent.getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
             int itemPosition = parent.getChildLayoutPosition(view);
             boolean first = itemPosition == 0;
             boolean end = itemPosition == NUM_OF_APPS_PER_CATEGORY_ON_OVERVIEW - 1;

@@ -42,7 +42,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -129,9 +128,8 @@ public class AppSecurityPermissions {
             }
 
             Preferences.Theme theme = Preferences.get().getTheme();
-            Drawable wrappedIconDrawable = DrawableCompat.wrap(iconDrawable).mutate();
-            DrawableCompat.setTint(wrappedIconDrawable, theme == Preferences.Theme.light ? Color.BLACK : Color.WHITE);
-            return wrappedIconDrawable;
+            iconDrawable.setTint(theme == Preferences.Theme.light ? Color.BLACK : Color.WHITE);
+            return iconDrawable;
         }
     }
 
