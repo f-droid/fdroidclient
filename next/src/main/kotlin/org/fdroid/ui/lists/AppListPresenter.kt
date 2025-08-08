@@ -4,6 +4,7 @@ package org.fdroid.ui.lists
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.AppListSortOrder
@@ -21,6 +22,7 @@ fun AppListPresenter(
     filteredCategoryIdsFlow: StateFlow<Set<String>>,
     repositoriesFlow: Flow<List<RepositoryItem>>,
     filteredRepositoryIdsFlow: StateFlow<Set<Long>>,
+    searchQueryFlow: StateFlow<String>,
 ): AppListModel {
     val apps = appsFlow.collectAsState(null).value
     val sortBy = sortByFlow.collectAsState().value
@@ -28,11 +30,24 @@ fun AppListPresenter(
     val filteredCategoryIds = filteredCategoryIdsFlow.collectAsState().value
     val repositories = repositoriesFlow.collectAsState(emptyList()).value
     val filteredRepositoryIds = filteredRepositoryIdsFlow.collectAsState().value
+    val searchQuery = searchQueryFlow.collectAsState().value
 
+    val availableCategoryIds = remember(apps) {
+        apps?.flatMap { it.categoryIds ?: emptySet() }?.toSet() ?: emptySet()
+    }
+    val filteredCategories = remember(categories, apps) {
+        categories?.filter {
+            it.id in availableCategoryIds
+        }
+    }
     val filteredApps = apps?.filter {
-        (filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds) &&
-            (filteredCategoryIds.isEmpty() ||
-                (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty())
+        val matchesCategories = filteredCategoryIds.isEmpty() ||
+            (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty()
+        val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
+        val matchesQuery = searchQuery.isEmpty() ||
+            it.name.contains(searchQuery, ignoreCase = true) ||
+            it.summary.contains(searchQuery, ignoreCase = true)
+        matchesCategories && matchesRepos && matchesQuery
     }
     val locale = Locale.getDefault()
     return AppListModel(
@@ -44,7 +59,7 @@ fun AppListPresenter(
         },
         areFiltersShown = areFiltersShownFlow.collectAsState().value,
         sortBy = sortBy,
-        categories = categories,
+        categories = filteredCategories,
         filteredCategoryIds = filteredCategoryIds,
         repositories = repositories,
         filteredRepositoryIds = filteredRepositoryIds,

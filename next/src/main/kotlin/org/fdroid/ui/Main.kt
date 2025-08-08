@@ -165,6 +165,9 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
 
                         override fun removeRepository(repoId: Long) =
                             appListViewModel.removeRepository(repoId)
+
+                        override fun onSearch(query: String) =
+                            appListViewModel.onSearch(query)
                     }
                     AppList(
                         appListInfo = appListInfo,

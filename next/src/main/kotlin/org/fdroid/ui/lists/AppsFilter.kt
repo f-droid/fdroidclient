@@ -45,6 +45,7 @@ interface AppListInfo {
     fun removeCategory(categoryId: String)
     fun addRepository(repoId: Long)
     fun removeRepository(repoId: Long)
+    fun onSearch(query: String)
 }
 
 @Composable
@@ -236,6 +237,7 @@ private fun Preview() {
             override fun removeCategory(categoryId: String) {}
             override fun addRepository(repoId: Long) {}
             override fun removeRepository(repoId: Long) {}
+            override fun onSearch(query: String) {}
         }
         AppsFilter(info)
     }
