@@ -28,6 +28,7 @@ import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
 import org.fdroid.next.R
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.repositories.RepositoryItem
 import java.text.Collator
 import java.util.Locale
 import java.util.concurrent.TimeUnit
@@ -56,12 +57,19 @@ class AppListViewModel @Inject constructor(
             )
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
+    private val repositories = repoManager.repositoriesState.map { repositories ->
+        repositories.mapNotNull {
+            if (it.enabled) RepositoryItem(it, localeList)
+            else null
+        }.sortedBy { it.weight }
+    }
 
     private val currentList =
         MutableStateFlow<AppListType>(AppListType.New(app.getString(R.string.app_list_new)))
-    private val showFilters = savedStateHandle.getMutableStateFlow("showFilters", true)
+    private val showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
     private val sortBy = MutableStateFlow(AppListSortOrder.LAST_UPDATED)
-    private val addedCategories = MutableStateFlow<List<String>>(emptyList())
+    private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
+    private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
 
     val appListModel: StateFlow<AppListModel> = scope.launchMolecule(mode = ContextClock) {
         AppListPresenter(
@@ -69,8 +77,10 @@ class AppListViewModel @Inject constructor(
             appsFlow = apps,
             areFiltersShownFlow = showFilters,
             sortByFlow = sortBy,
-            allCategoriesFlow = categories,
-            addedCategoriesFlow = addedCategories,
+            categoriesFlow = categories,
+            filteredCategoryIdsFlow = filteredCategoryIds,
+            repositoriesFlow = repositories,
+            filteredRepositoryIdsFlow = filteredRepositoryIds,
         )
     }
 
@@ -106,7 +116,7 @@ class AppListViewModel @Inject constructor(
         appsLiveData = null
 
         currentList.value = type
-        when (type) {
+        when (type) { // TODO we may want to clean up the mess below and introduce new DB methods
             is AppListType.Author -> {
                 appsLiveData = db.getAppDao().getAppListItemsForAuthor(
                     packageManager = application.packageManager,
@@ -171,17 +181,33 @@ class AppListViewModel @Inject constructor(
     }
 
     fun addCategory(category: String) {
-        addedCategories.update {
-            addedCategories.value.toMutableList().apply {
+        filteredCategoryIds.update {
+            filteredCategoryIds.value.toMutableSet().apply {
                 add(category)
             }
         }
     }
 
     fun removeCategory(category: String) {
-        addedCategories.update {
-            addedCategories.value.toMutableList().apply {
+        filteredCategoryIds.update {
+            filteredCategoryIds.value.toMutableSet().apply {
                 remove(category)
+            }
+        }
+    }
+
+    fun addRepository(repoId: Long) {
+        filteredRepositoryIds.update {
+            filteredRepositoryIds.value.toMutableSet().apply {
+                add(repoId)
+            }
+        }
+    }
+
+    fun removeRepository(repoId: Long) {
+        filteredRepositoryIds.update {
+            filteredRepositoryIds.value.toMutableSet().apply {
+                remove(repoId)
             }
         }
     }
@@ -191,11 +217,13 @@ class AppListViewModel @Inject constructor(
             val repository = repoManager.getRepository(it.repoId)
                 ?: return@mapNotNull null
             AppListItem(
+                repoId = it.repoId,
                 packageName = it.packageName,
                 name = it.name ?: "Unknown",
                 summary = it.summary ?: "Unknown",
                 lastUpdated = it.lastUpdated,
                 iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
+                categoryIds = it.categories?.toSet(),
             )
         }
     }
@@ -205,11 +233,13 @@ class AppListViewModel @Inject constructor(
             val repository = repoManager.getRepository(it.repoId)
                 ?: return@mapNotNull null
             AppListItem(
+                repoId = it.repoId,
                 packageName = it.packageName,
                 name = it.name ?: "Unknown",
                 summary = it.summary ?: "Unknown",
                 lastUpdated = it.lastUpdated,
                 iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
+                categoryIds = it.categories?.toSet(),
             )
         }
     }

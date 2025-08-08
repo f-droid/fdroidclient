@@ -101,13 +101,14 @@ class DiscoverViewModel @Inject constructor(
                 db.getAppDao().getAppSearchItems(query).sortedDescending().mapNotNull {
                     val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
                     AppListItem(
-
+                        repoId = it.repoId,
                         packageName = it.packageName,
                         name = it.name.getBestLocale(localeList) ?: "Unknown",
                         summary = it.summary.getBestLocale(localeList) ?: "",
                         lastUpdated = it.lastUpdated,
                         iconDownloadRequest = it.getIcon(localeList)
                             ?.getDownloadRequest(repository),
+                        categoryIds = it.categories?.toSet(),
                     )
                 }
             } catch (e: SQLiteException) {

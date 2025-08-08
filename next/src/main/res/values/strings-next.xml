@@ -22,6 +22,7 @@
     <string name="search_no_results">No apps found.\n\nTry to use less search terms or add/enable more repositories.</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by latest</string>
+    <string name="filter_selected">selected</string>
     <string name="category">Category</string>
 
     <string name="author_by">By %1$s</string>

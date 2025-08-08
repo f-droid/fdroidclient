@@ -118,14 +118,3 @@ fun RepositoriesScaffoldPreview() {
         Repositories(repos, repos[0].repoId, {}, {}) { }
     }
 }
-
-data class RepositoryItem(
-    val repoId: Long,
-    val address: String,
-    val name: String,
-    val icon: DownloadRequest? = null,
-    val timestamp: Long,
-    val lastUpdated: Long?,
-    val weight: Int,
-    val enabled: Boolean,
-)

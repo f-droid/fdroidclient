@@ -34,6 +34,7 @@ import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryCard
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListRow
+import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.BigLoadingIndicator
 
 @Composable
@@ -124,7 +125,11 @@ fun AppsSearch(
 private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (NavigationKey) -> Unit) {
     FlowRow(modifier = Modifier.padding(horizontal = 8.dp)) {
         categories.forEach { item ->
-            CategoryCard(categoryItem = item, onNav = onNav)
+            CategoryCard(categoryItem = item, onSelected = {
+                val type = AppListType.Category(item.name, item.id)
+                val navKey = NavigationKey.AppList(type)
+                onNav(navKey)
+            })
         }
     }
 }

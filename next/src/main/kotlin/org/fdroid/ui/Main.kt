@@ -154,11 +154,17 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                         }
 
                         override fun sortBy(sort: AppListSortOrder) = appListViewModel.sortBy(sort)
-                        override fun addCategory(category: String) =
-                            appListViewModel.addCategory(category)
+                        override fun addCategory(categoryId: String) =
+                            appListViewModel.addCategory(categoryId)
 
-                        override fun removeCategory(category: String) =
-                            appListViewModel.removeCategory(category)
+                        override fun removeCategory(categoryId: String) =
+                            appListViewModel.removeCategory(categoryId)
+
+                        override fun addRepository(repoId: Long) =
+                            appListViewModel.addRepository(repoId)
+
+                        override fun removeRepository(repoId: Long) =
+                            appListViewModel.removeRepository(repoId)
                     }
                     AppList(
                         appListInfo = appListInfo,

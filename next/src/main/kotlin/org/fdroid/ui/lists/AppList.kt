@@ -1,12 +1,12 @@
 package org.fdroid.ui.lists
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
@@ -25,11 +25,12 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.exitUntilCollapsedScrollBehavior
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -72,7 +73,7 @@ fun AppList(
                 actions = {
                     IconButton(onClick = { appListInfo.toggleFilterVisibility() }) {
                         val showFilterBadge = addedRepos.isNotEmpty() ||
-                            appListInfo.model.addedCategories.isNotEmpty()
+                            appListInfo.model.filteredCategoryIds.isNotEmpty()
                         BadgedBox(badge = {
                             if (showFilterBadge) Badge(
                                 containerColor = MaterialTheme.colorScheme.secondary,
@@ -94,11 +95,6 @@ fun AppList(
             modifier = Modifier
                 .padding(paddingValues),
         ) {
-            AppsFilter(
-                info = appListInfo,
-                addedRepos = addedRepos,
-                modifier = Modifier.background(TopAppBarDefaults.topAppBarColors().containerColor),
-            )
             val apps = appListInfo.model.apps
             if (apps == null) BigLoadingIndicator()
             else LazyColumn(
@@ -136,6 +132,17 @@ fun AppList(
                     Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
                 }
             }
+            // Bottom Sheet
+            val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
+            if (appListInfo.model.areFiltersShown) {
+                ModalBottomSheet(
+                    modifier = Modifier.fillMaxHeight(),
+                    sheetState = sheetState,
+                    onDismissRequest = { appListInfo.toggleFilterVisibility() },
+                ) {
+                    AppsFilter(info = appListInfo)
+                }
+            }
         }
     }
 }
@@ -147,20 +154,24 @@ private fun Preview() {
         val model = AppListModel(
             list = AppListType.New("New"),
             apps = listOf(
-                AppListItem("1", "This is app 1", "It has summary 2", 0, null),
-                AppListItem("2", "This is app 2", "It has summary 2", 0, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, null),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, null),
             ),
             areFiltersShown = true,
             sortBy = AppListSortOrder.NAME,
-            allCategories = null,
-            addedCategories = emptyList(),
+            categories = null,
+            filteredCategoryIds = emptySet(),
+            repositories = emptyList(),
+            filteredRepositoryIds = emptySet(),
         )
         val info = object : AppListInfo {
             override val model: AppListModel = model
             override fun toggleFilterVisibility() {}
             override fun sortBy(sort: AppListSortOrder) {}
-            override fun addCategory(category: String) {}
-            override fun removeCategory(category: String) {}
+            override fun addCategory(categoryId: String) {}
+            override fun removeCategory(categoryId: String) {}
+            override fun addRepository(repoId: Long) {}
+            override fun removeRepository(repoId: Long) {}
         }
         AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
     }
@@ -175,15 +186,19 @@ private fun PreviewEmpty() {
             apps = null,
             areFiltersShown = true,
             sortBy = AppListSortOrder.NAME,
-            allCategories = null,
-            addedCategories = emptyList(),
+            categories = null,
+            filteredCategoryIds = emptySet(),
+            repositories = emptyList(),
+            filteredRepositoryIds = emptySet(),
         )
         val info = object : AppListInfo {
             override val model: AppListModel = model
             override fun toggleFilterVisibility() {}
             override fun sortBy(sort: AppListSortOrder) {}
-            override fun addCategory(category: String) {}
-            override fun removeCategory(category: String) {}
+            override fun addCategory(categoryId: String) {}
+            override fun removeCategory(categoryId: String) {}
+            override fun addRepository(repoId: Long) {}
+            override fun removeRepository(repoId: Long) {}
         }
         AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
     }

@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
-import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
 import javax.inject.Inject
 
@@ -20,18 +19,7 @@ class RepositoriesViewModel @Inject constructor(
 
     private val localeList = LocaleListCompat.getDefault()
     val repos: Flow<List<RepositoryItem>> = repoManager.repositoriesState.map { repos ->
-        repos.map {
-            RepositoryItem(
-                repoId = it.repoId,
-                address = it.address,
-                name = it.getName(localeList) ?: "Unknown Repo",
-                icon = it.getIcon(localeList)?.getDownloadRequest(it),
-                timestamp = it.timestamp,
-                lastUpdated = it.lastUpdated,
-                weight = it.weight,
-                enabled = it.enabled,
-            )
-        }
+        repos.map { RepositoryItem(it, localeList) }
     }
 
     private val _visibleRepositoryItem = MutableStateFlow<RepositoryItem?>(null)

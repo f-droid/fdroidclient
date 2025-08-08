@@ -16,8 +16,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
-import org.fdroid.next.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.next.R
+import org.fdroid.ui.NavigationKey
+import org.fdroid.ui.lists.AppListType
 import kotlin.math.max
 
 @Composable
@@ -45,7 +47,11 @@ fun CategoryList(
                 )
             }
             items(categories, key = { it.name }) { category ->
-                CategoryCard(category, onNav)
+                CategoryCard(category, {
+                    val type = AppListType.Category(category.name, category.id)
+                    val navKey = NavigationKey.AppList(type)
+                    onNav(navKey)
+                })
             }
         }
     }
