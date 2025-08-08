@@ -288,6 +288,7 @@ public data class AppOverviewItem internal constructor(
     public override val name: String? = null,
     @ColumnInfo(name = "localizedSummary")
     public override val summary: String? = null,
+    public val categories: List<String>? = null,
     internal val antiFeatures: Map<String, LocalizedTextV2>? = null,
     @Relation(
         parentColumn = "packageName",
@@ -326,6 +327,7 @@ public data class AppListItem internal constructor(
     @ColumnInfo(name = "localizedSummary")
     public override val summary: String? = null,
     public val lastUpdated: Long,
+    public val categories: List<String>? = null,
     internal val antiFeatures: String?,
     @Relation(
         parentColumn = "packageName",
