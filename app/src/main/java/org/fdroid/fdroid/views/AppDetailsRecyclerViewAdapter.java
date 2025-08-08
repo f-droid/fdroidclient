@@ -8,7 +8,6 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.Spannable;
 import android.text.Spanned;
@@ -959,12 +958,8 @@ public class AppDetailsRecyclerViewAdapter
          * user can expand/collapse this item.
          */
         void updateExpandableItem(boolean isExpanded) {
-            final int icon = getIcon();
-            Drawable iconDrawable = ContextCompat.getDrawable(headerView.getContext(), icon);
-            final Drawable expandLess = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_less);
-            final Drawable expandMore = ContextCompat.getDrawable(headerView.getContext(), R.drawable.ic_expand_more);
-            headerView.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    iconDrawable, null, isExpanded ? expandLess : expandMore, null);
+            headerView.setCompoundDrawablesRelativeWithIntrinsicBounds(getIcon(), 0,
+                    isExpanded ? R.drawable.ic_expand_less : R.drawable.ic_expand_more, 0);
         }
     }
 
