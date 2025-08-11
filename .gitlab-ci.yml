@@ -78,6 +78,8 @@ workflow:
   changes:
     - .gitlab-ci.yml
     - build.gradle
+    - settings.gradle
+    - gradle/libs.versions.toml
 
 app assembleRelease test:
   <<: *test-template
