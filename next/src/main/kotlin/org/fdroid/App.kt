@@ -2,6 +2,8 @@ package org.fdroid
 
 import android.app.Application
 import android.content.Context
+import androidx.compose.runtime.Composer
+import androidx.compose.runtime.ExperimentalComposeRuntimeApi
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import coil3.ImageLoader
@@ -36,8 +38,10 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
             .setWorkerFactory(workerFactory)
             .build()
 
+    @OptIn(ExperimentalComposeRuntimeApi::class)
     override fun onCreate() {
         super.onCreate()
+        Composer.setDiagnosticStackTraceEnabled(BuildConfig.DEBUG)
         RepoUpdateWorker.Companion.scheduleOrCancel(applicationContext)
     }
 
