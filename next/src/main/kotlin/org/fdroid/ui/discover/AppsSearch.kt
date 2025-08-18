@@ -2,8 +2,8 @@ package org.fdroid.ui.discover
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,12 +15,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopSearchBar
 import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -33,6 +35,7 @@ import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryCard
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListRow
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.BigLoadingIndicator
@@ -47,9 +50,8 @@ fun AppsSearch(
     onSearchCleared: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    TopSearchBar(
+    SearchBar(
         state = searchBarState,
-        windowInsets = WindowInsets(),
         inputField = {
             // InputField is different from ExpandedFullScreenSearchBar to separate textFieldState
             SearchBarDefaults.InputField(
@@ -94,11 +96,32 @@ fun AppsSearch(
             )
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                item(
-                    key = "categories",
-                    contentType = "category",
-                ) {
-                    CategoriesFlowRow(searchResults.categories, onNav)
+                if (searchResults.categories.isNotEmpty()) {
+                    item(
+                        key = "categories",
+                        contentType = "category",
+                    ) {
+                        CategoriesFlowRow(searchResults.categories, onNav)
+                    }
+                }
+                if (searchResults.apps.isNotEmpty()) {
+                    item(
+                        key = "appsHeader",
+                        contentType = "appsHeader",
+                    ) {
+                        Column {
+                            if (searchResults.categories.isNotEmpty()) {
+                                HorizontalDivider(
+                                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                                )
+                            }
+                            Text(
+                                text = stringResource(R.string.apps),
+                                style = MaterialTheme.typography.labelLarge,
+                                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                            )
+                        }
+                    }
                 }
                 items(
                     searchResults.apps,
@@ -110,7 +133,6 @@ fun AppsSearch(
                         modifier = Modifier
                             .fillMaxWidth()
                             .animateItem()
-                            .padding(horizontal = 8.dp)
                             .clickable {
                                 onNav(NavigationKey.AppDetails(item.packageName))
                             }
@@ -123,13 +145,32 @@ fun AppsSearch(
 
 @Composable
 private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (NavigationKey) -> Unit) {
-    FlowRow(modifier = Modifier.padding(horizontal = 8.dp)) {
-        categories.forEach { item ->
-            CategoryCard(categoryItem = item, onSelected = {
-                val type = AppListType.Category(item.name, item.id)
-                val navKey = NavigationKey.AppList(type)
-                onNav(navKey)
-            })
+    Column(modifier = Modifier.padding(horizontal = 8.dp)) {
+        Text(
+            text = stringResource(R.string.main_menu__categories),
+            style = MaterialTheme.typography.labelLarge,
+            modifier = Modifier.padding(8.dp)
+        )
+        FlowRow {
+            categories.forEach { item ->
+                CategoryCard(categoryItem = item, onSelected = {
+                    val type = AppListType.Category(item.name, item.id)
+                    val navKey = NavigationKey.AppList(type)
+                    onNav(navKey)
+                })
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun AppsSearchCollapsedPreview() {
+    FDroidContent {
+        Box(Modifier.fillMaxSize()) {
+            val state = rememberSearchBarState()
+            AppsSearch(state, null, {}, {}, {})
         }
     }
 }
@@ -161,7 +202,7 @@ private fun AppsSearchEmptyPreview() {
 @Preview
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-private fun AppsSearchPreview() {
+private fun AppsSearchOnlyCategoriesPreview() {
     FDroidContent {
         Box(Modifier.fillMaxSize()) {
             val state = rememberSearchBarState(SearchBarValue.Expanded)
@@ -172,6 +213,28 @@ private fun AppsSearchPreview() {
                 CategoryItem("Money", "Money"),
             )
             AppsSearch(state, SearchResults(emptyList(), categories), {}, {}, {})
+        }
+    }
+}
+
+@Preview
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun AppsSearchPreview() {
+    FDroidContent {
+        Box(Modifier.fillMaxSize()) {
+            val state = rememberSearchBarState(SearchBarValue.Expanded)
+            val categories = listOf(
+                CategoryItem("Bookmark", "Bookmark"),
+                CategoryItem("Browser", "Browser"),
+                CategoryItem("Calculator", "Calc"),
+                CategoryItem("Money", "Money"),
+            )
+            val apps = listOf(
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, null),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, null),
+            )
+            AppsSearch(state, SearchResults(apps, categories), {}, {}, {})
         }
     }
 }

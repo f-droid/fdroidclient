@@ -27,6 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -133,7 +134,9 @@ fun Discover(
                             onNav(it)
                         },
                         onSearchCleared = onSearchCleared,
-                        modifier = Modifier.padding(top = 8.dp),
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .align(Alignment.CenterHorizontally),
                     )
                     val listNew = AppListType.New(stringResource(R.string.app_list_new))
                     AppCarousel(
