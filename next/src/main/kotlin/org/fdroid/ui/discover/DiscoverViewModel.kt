@@ -27,9 +27,11 @@ import org.fdroid.ui.lists.AppListItem
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import java.text.Collator
+import java.text.Normalizer
+import java.text.Normalizer.Form.NFKD
 import java.util.Locale
 import javax.inject.Inject
-import kotlin.time.measureTime
+import kotlin.time.measureTimedValue
 
 @HiltViewModel
 class DiscoverViewModel @Inject constructor(
@@ -43,6 +45,8 @@ class DiscoverViewModel @Inject constructor(
 
     private val log = KotlinLogging.logger { }
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+    private val collator = Collator.getInstance(Locale.getDefault())
+    private val normalizerRegex = "\\p{M}".toRegex()
 
     val numUpdates = updatesManager.numUpdates
     val apps = db.getAppDao().getAppOverviewItems().asFlow().map { list ->
@@ -60,7 +64,6 @@ class DiscoverViewModel @Inject constructor(
         }
     }
     val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
-        val collator = Collator.getInstance(Locale.getDefault())
         categories.map { category ->
             CategoryItem(
                 id = category.id,
@@ -96,8 +99,8 @@ class DiscoverViewModel @Inject constructor(
             }
         }
         log.info { "Searching for: $query" }
-        val duration = measureTime {
-            val apps = try {
+        val timedApps = measureTimedValue {
+            try {
                 db.getAppDao().getAppSearchItems(query).sortedDescending().mapNotNull {
                     val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
                     AppListItem(
@@ -115,19 +118,30 @@ class DiscoverViewModel @Inject constructor(
                 log.error(e) { "Error searching for $query: " }
                 emptyList()
             }
-            val categories = this@DiscoverViewModel.categories.first().filter {
-                // TODO handle diacritics as well
-                it.name.contains(sanitized, ignoreCase = true)
-            }
-            searchResults.value = SearchResults(apps, categories)
         }
+        val timedCategories = measureTimedValue {
+            this@DiscoverViewModel.categories.first().filter {
+                // normalization removed diacritics, so searches without them work
+                it.name.normalize().contains(sanitized.normalize(), ignoreCase = true)
+            }
+        }
+        searchResults.value = SearchResults(timedApps.value, timedCategories.value)
         log.debug {
             val numResults = searchResults.value?.apps?.size ?: 0
-            "Search for $query had $numResults results and took $duration"
+            "Search for $query had $numResults results " +
+                "and took ${timedApps.duration} and ${timedCategories.duration}"
         }
     }
 
     fun onSearchCleared() {
         searchResults.value = null
+    }
+
+    /**
+     * Normalizes the string by removing any diacritics that may appear.
+     */
+    private fun String.normalize(): String {
+        if (Normalizer.isNormalized(this, NFKD)) return this
+        return Normalizer.normalize(this, NFKD).replace(normalizerRegex, "")
     }
 }
