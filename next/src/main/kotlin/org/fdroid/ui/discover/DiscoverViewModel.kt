@@ -24,11 +24,10 @@ import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
+import org.fdroid.ui.utils.normalize
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import java.text.Collator
-import java.text.Normalizer
-import java.text.Normalizer.Form.NFKD
 import java.util.Locale
 import javax.inject.Inject
 import kotlin.time.measureTimedValue
@@ -46,7 +45,6 @@ class DiscoverViewModel @Inject constructor(
     private val log = KotlinLogging.logger { }
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     private val collator = Collator.getInstance(Locale.getDefault())
-    private val normalizerRegex = "\\p{M}".toRegex()
 
     val numUpdates = updatesManager.numUpdates
     val apps = db.getAppDao().getAppOverviewItems().asFlow().map { list ->
@@ -55,7 +53,7 @@ class DiscoverViewModel @Inject constructor(
                 ?: return@mapNotNull null
             AppDiscoverItem(
                 packageName = it.packageName,
-                name = it.name ?: "Unknown",
+                name = it.getName(localeList) ?: "Unknown App",
                 isNew = it.lastUpdated == it.added,
                 lastUpdated = it.lastUpdated,
                 iconDownloadRequest = it.getIcon(localeList)
@@ -135,13 +133,5 @@ class DiscoverViewModel @Inject constructor(
 
     fun onSearchCleared() {
         searchResults.value = null
-    }
-
-    /**
-     * Normalizes the string by removing any diacritics that may appear.
-     */
-    private fun String.normalize(): String {
-        if (Normalizer.isNormalized(this, NFKD)) return this
-        return Normalizer.normalize(this, NFKD).replace(normalizerRegex, "")
     }
 }

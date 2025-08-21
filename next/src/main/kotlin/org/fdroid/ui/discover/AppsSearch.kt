@@ -40,6 +40,11 @@ import org.fdroid.ui.lists.AppListRow
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.BigLoadingIndicator
 
+/**
+ * The minimum amount of characters we start auto-searching for.
+ */
+const val SEARCH_THRESHOLD = 2
+
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppsSearch(
@@ -50,13 +55,14 @@ fun AppsSearch(
     onSearchCleared: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val textFieldState = rememberTextFieldState()
     SearchBar(
         state = searchBarState,
         inputField = {
-            // InputField is different from ExpandedFullScreenSearchBar to separate textFieldState
+            // InputField is different from ExpandedFullScreenSearchBar to separate onSearch()
             SearchBarDefaults.InputField(
                 searchBarState = searchBarState,
-                textFieldState = rememberTextFieldState(),
+                textFieldState = textFieldState,
                 placeholder = { Text(stringResource(R.string.search_placeholder)) },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Search, contentDescription = null)
@@ -66,7 +72,6 @@ fun AppsSearch(
         },
         modifier = modifier,
     )
-    val textFieldState = rememberTextFieldState()
     ExpandedFullScreenSearchBar(
         state = searchBarState,
         inputField = {
@@ -82,8 +87,8 @@ fun AppsSearch(
         },
     ) {
         if (searchResults == null) {
-            if (textFieldState.text.length >= 3) BigLoadingIndicator()
-        } else if (searchResults.apps.isEmpty()) {
+            if (textFieldState.text.length >= SEARCH_THRESHOLD) BigLoadingIndicator()
+        } else if (searchResults.apps.isEmpty() && textFieldState.text.length >= SEARCH_THRESHOLD) {
             if (searchResults.categories.isNotEmpty()) {
                 CategoriesFlowRow(searchResults.categories, onNav)
             }

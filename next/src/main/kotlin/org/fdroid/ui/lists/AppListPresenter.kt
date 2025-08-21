@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
+import org.fdroid.ui.utils.normalize
 import java.util.Locale
 
 @Composable
@@ -30,7 +31,7 @@ fun AppListPresenter(
     val filteredCategoryIds = filteredCategoryIdsFlow.collectAsState().value
     val repositories = repositoriesFlow.collectAsState(emptyList()).value
     val filteredRepositoryIds = filteredRepositoryIdsFlow.collectAsState().value
-    val searchQuery = searchQueryFlow.collectAsState().value
+    val searchQuery = searchQueryFlow.collectAsState().value.normalize()
 
     val availableCategoryIds = remember(apps) {
         apps?.flatMap { it.categoryIds ?: emptySet() }?.toSet() ?: emptySet()
@@ -45,8 +46,8 @@ fun AppListPresenter(
             (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty()
         val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
         val matchesQuery = searchQuery.isEmpty() ||
-            it.name.contains(searchQuery, ignoreCase = true) ||
-            it.summary.contains(searchQuery, ignoreCase = true)
+            it.name.normalize().contains(searchQuery, ignoreCase = true) ||
+            it.summary.normalize().contains(searchQuery, ignoreCase = true)
         matchesCategories && matchesRepos && matchesQuery
     }
     val locale = Locale.getDefault()

@@ -1,6 +1,7 @@
 package org.fdroid.ui.discover
 
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.placeCursorAtEnd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
@@ -21,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.fdroid.next.R
 
@@ -35,10 +37,16 @@ fun AppSearchInputField(
     val scope = rememberCoroutineScope()
     // set-up search as you type
     LaunchedEffect(Unit) {
+        textFieldState.edit { placeCursorAtEnd() }
         snapshotFlow { textFieldState.text }
+            .distinctUntilChanged()
             .debounce(500)
             .collectLatest {
-                if (it.length > 2) onSearch(textFieldState.text.toString())
+                if (it.isEmpty()) {
+                    onSearchCleared()
+                } else if (it.length >= SEARCH_THRESHOLD) {
+                    onSearch(textFieldState.text.toString())
+                }
             }
     }
     SearchBarDefaults.InputField(
@@ -60,15 +68,18 @@ fun AppSearchInputField(
                     )
                 }
             } else {
-                Icon(Icons.Default.Search, contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = stringResource(R.string.menu_search),
+                )
             }
         },
         trailingIcon = {
             if (textFieldState.text.isNotEmpty()) {
                 IconButton(onClick = onSearchCleared) {
                     Icon(
-                        Icons.Filled.Clear,
-                        contentDescription = null,
+                        imageVector = Icons.Filled.Clear,
+                        contentDescription = stringResource(R.string.clear_search),
                     )
                 }
             }

@@ -106,8 +106,8 @@ class AppListViewModel @Inject constructor(
             AppListItem(
                 repoId = it.repoId,
                 packageName = it.packageName,
-                name = it.name ?: "Unknown",
-                summary = it.summary ?: "Unknown",
+                name = it.getName(localeList) ?: "Unknown App",
+                summary = it.getSummary(localeList) ?: "Unknown",
                 lastUpdated = it.lastUpdated,
                 iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
                 categoryIds = it.categories?.toSet(),
