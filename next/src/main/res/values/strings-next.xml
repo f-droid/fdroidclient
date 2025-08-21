@@ -13,6 +13,8 @@
     <string name="no_app_selected">No app selected</string>
     <string name="no_repository_selected">No repository selected</string>
 
+    <string name="my_apps_empty">No apps installed.\n\nInstall apps and they will appear here.</string>
+
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>
     <string name="app_list_all">All apps</string>
@@ -21,6 +23,7 @@
     <string name="search_placeholder">Search…</string>
     <string name="search_no_results">No apps found.\n\nTry to use less search terms or add/enable more repositories.</string>
     <string name="search_filter_no_results">No matching apps.\n\nTry to use less search terms or remove filters.</string>
+    <string name="search_my_apps_no_results">No matching apps.\n\nTry to use less search terms.</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by latest</string>
     <!-- Used for filtering lists of apps by certain criteria -->

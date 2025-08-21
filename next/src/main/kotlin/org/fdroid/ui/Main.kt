@@ -33,6 +33,7 @@ import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.apps.MyApps
+import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsViewModel
 import org.fdroid.ui.details.AppDetails
 import org.fdroid.ui.details.AppDetailsViewModel
@@ -104,10 +105,18 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     },
                 ) {
                     val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
-                    val myAppsModel =
-                        myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
+                    val myAppsInfo = object : MyAppsInfo {
+                        override val model =
+                            myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
+
+                        override fun refresh() = myAppsViewModel.refresh()
+                        override fun changeSortOrder(sort: AppListSortOrder) =
+                            myAppsViewModel.changeSortOrder(sort)
+
+                        override fun search(query: String) = myAppsViewModel.search(query)
+                    }
                     MyApps(
-                        myAppsModel = myAppsModel,
+                        myAppsInfo = myAppsInfo,
                         currentPackageName = if (isBigScreen) {
                             (backStack.last() as? NavigationKey.AppDetails)?.packageName
                         } else null,
@@ -115,9 +124,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             backStack.add(NavigationKey.AppDetails(it))
                         },
                         onNav = { backStack.add(it) },
-                        onRefresh = myAppsViewModel::refresh,
                         isBigScreen = isBigScreen,
-                        onSortChanged = myAppsViewModel::changeSortOrder,
                     )
                 }
                 entry<NavigationKey.AppDetails>(

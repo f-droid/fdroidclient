@@ -1,8 +1,11 @@
 package org.fdroid.ui.apps
 
+import androidx.activity.compose.BackHandler
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.annotation.RestrictTo
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,6 +14,7 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
@@ -30,11 +34,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleStartEffect
@@ -45,6 +51,7 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.NavigationKey
+import org.fdroid.ui.lists.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.Names
 import org.fdroid.ui.utils.getPreviewVersion
@@ -53,29 +60,46 @@ import java.util.concurrent.TimeUnit.DAYS
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun MyApps(
-    myAppsModel: MyAppsModel,
+    myAppsInfo: MyAppsInfo,
     currentPackageName: String?,
     onAppItemClick: (String) -> Unit,
     onNav: (NavKey) -> Unit,
-    onSortChanged: (AppListSortOrder) -> Unit,
-    onRefresh: () -> Unit,
     isBigScreen: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val myAppsModel = myAppsInfo.model
     LifecycleStartEffect(myAppsModel) {
-        onRefresh()
+        myAppsInfo.refresh()
         onStopOrDispose { }
     }
     val updatableApps = myAppsModel.appUpdates
     val installedApps = myAppsModel.installedApps
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+    var searchActive by rememberSaveable { mutableStateOf(false) }
+    val onSearchCleared = { myAppsInfo.search("") }
+    // when search bar is shown, back button closes it again
+    BackHandler(enabled = searchActive) {
+        searchActive = false
+        onSearchCleared()
+    }
+    val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     Scaffold(
         topBar = {
-            TopAppBar(
+            if (searchActive) {
+                TopSearchBar(onSearch = myAppsInfo::search, onSearchCleared) {
+                    onBackPressedDispatcher?.onBackPressed()
+                }
+            } else TopAppBar(
                 title = {
                     Text(stringResource(R.string.menu_apps_my))
                 },
                 actions = {
+                    IconButton(onClick = { searchActive = true }) {
+                        Icon(
+                            imageVector = Icons.Filled.Search,
+                            contentDescription = stringResource(R.string.menu_search),
+                        )
+                    }
                     var sortByMenuExpanded by remember { mutableStateOf(false) }
                     IconButton(onClick = { sortByMenuExpanded = !sortByMenuExpanded }) {
                         Icon(Icons.Filled.MoreVert, null)
@@ -96,7 +120,7 @@ fun MyApps(
                                 )
                             },
                             onClick = {
-                                onSortChanged(AppListSortOrder.NAME)
+                                myAppsInfo.changeSortOrder(AppListSortOrder.NAME)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -112,7 +136,7 @@ fun MyApps(
                                 )
                             },
                             onClick = {
-                                onSortChanged(LAST_UPDATED)
+                                myAppsInfo.changeSortOrder(LAST_UPDATED)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -127,7 +151,20 @@ fun MyApps(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
         if (updatableApps == null && installedApps == null) BigLoadingIndicator()
-        else LazyColumn(
+        else if (updatableApps.isNullOrEmpty() && installedApps.isNullOrEmpty()) {
+            Text(
+                text = if (searchActive) {
+                    stringResource(R.string.search_my_apps_no_results)
+                } else {
+                    stringResource(R.string.my_apps_empty)
+                },
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .padding(16.dp),
+            )
+        } else LazyColumn(
             modifier
                 .padding(paddingValues)
                 .then(
@@ -212,19 +249,24 @@ fun MyApps(
 @Preview
 @Composable
 fun MyAppsLoadingPreview() {
+    val info = object : MyAppsInfo {
+        override val model = MyAppsModel(
+            appUpdates = null,
+            installedApps = null,
+            sortOrder = AppListSortOrder.NAME,
+        )
+
+        override fun refresh() {}
+        override fun changeSortOrder(sort: AppListSortOrder) {}
+        override fun search(query: String) {}
+    }
     FDroidContent {
         MyApps(
-            myAppsModel = MyAppsModel(
-                appUpdates = null,
-                installedApps = null,
-                sortOrder = AppListSortOrder.NAME,
-            ),
+            myAppsInfo = info,
             currentPackageName = null,
             onAppItemClick = {},
             onNav = {},
-            onSortChanged = { },
             isBigScreen = false,
-            onRefresh = {},
         )
     }
 }
@@ -272,13 +314,16 @@ fun MyAppsPreview() {
             sortOrder = AppListSortOrder.NAME,
         )
         MyApps(
-            myAppsModel = model,
+            myAppsInfo = object : MyAppsInfo {
+                override val model = model
+                override fun refresh() {}
+                override fun changeSortOrder(sort: AppListSortOrder) {}
+                override fun search(query: String) {}
+            },
             currentPackageName = null,
             onAppItemClick = {},
             onNav = {},
-            onSortChanged = { },
             isBigScreen = false,
-            onRefresh = {},
         )
     }
 }

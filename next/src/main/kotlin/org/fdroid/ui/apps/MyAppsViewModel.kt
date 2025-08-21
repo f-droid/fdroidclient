@@ -40,14 +40,13 @@ class MyAppsViewModel @Inject constructor(
     private val repoManager: RepoManager,
 ) : AndroidViewModel(app) {
 
-    val updates = updatesManager.updates
-    val numUpdates = updatesManager.numUpdates
+    private val localeList = LocaleListCompat.getDefault()
+    private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+
+    private val updates = updatesManager.updates
     private val installedApps = MutableStateFlow<List<InstalledAppItem>?>(null)
     private var installedAppsLiveData =
         db.getAppDao().getInstalledAppListItems(application.packageManager)
-    private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
-    private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
-    private val localeList = LocaleListCompat.getDefault()
     private val installedAppsObserver = Observer<List<AppListItem>> { list ->
         installedApps.value = list.map { app ->
             InstalledAppItem(
@@ -61,10 +60,13 @@ class MyAppsViewModel @Inject constructor(
             )
         }
     }
+    private val searchQuery = savedStateHandle.getMutableStateFlow<String>("query", "")
+    private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
     val myAppsModel: StateFlow<MyAppsModel> = scope.launchMolecule(mode = ContextClock) {
         MyAppsPresenter(
             appUpdatesFlow = updates,
             installedAppsFlow = installedApps,
+            searchQueryFlow = searchQuery,
             sortOrderFlow = sortOrder,
         )
     }
@@ -75,6 +77,10 @@ class MyAppsViewModel @Inject constructor(
 
     override fun onCleared() {
         installedAppsLiveData.removeObserver(installedAppsObserver)
+    }
+
+    fun search(query: String) {
+        searchQuery.value = query
     }
 
     fun changeSortOrder(sort: AppListSortOrder) {
