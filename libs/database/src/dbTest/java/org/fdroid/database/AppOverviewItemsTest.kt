@@ -1,16 +1,20 @@
 package org.fdroid.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.coroutines.runBlocking
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.TestUtils.getOrAwaitValue
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.index.v2.MetadataV2
+import org.fdroid.test.TestAppUtils.getRandomMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
+import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -19,13 +23,13 @@ import kotlin.test.assertTrue
 internal class AppOverviewItemsTest : AppTest() {
 
     @Test
-    fun testAntiFeatures() {
-        // insert one apps with without version
+    fun testAntiFeatures() = runBlocking {
+        // insert one app with without version
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageName, app1, locales)
 
         // without version, anti-features are empty
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertNull(apps[0].antiFeatures)
         }
@@ -33,7 +37,7 @@ internal class AppOverviewItemsTest : AppTest() {
         // with one version, the app has those anti-features
         val version = getRandomPackageVersionV2(versionCode = 42)
         versionDao.insert(repoId, packageName, "1", version, true)
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(version.antiFeatures, apps[0].antiFeatures)
         }
@@ -41,7 +45,7 @@ internal class AppOverviewItemsTest : AppTest() {
         // with two versions, the app has the anti-features of the highest version
         val version2 = getRandomPackageVersionV2(versionCode = 23)
         versionDao.insert(repoId, packageName, "2", version2, true)
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(version.antiFeatures, apps[0].antiFeatures)
         }
@@ -49,20 +53,20 @@ internal class AppOverviewItemsTest : AppTest() {
         // with three versions, the app has the anti-features of the highest version
         val version3 = getRandomPackageVersionV2(versionCode = 1337)
         versionDao.insert(repoId, packageName, "3", version3, true)
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(version3.antiFeatures, apps[0].antiFeatures)
         }
     }
 
     @Test
-    fun testIcons() {
+    fun testIcons() = runBlocking {
         // insert one app
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageName, app1, locales)
 
         // icon is returned correctly
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app1.icon.getBestLocale(locales), apps[0].getIcon(locales))
         }
@@ -72,14 +76,14 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.insert(repoId2, packageName, app2, locales)
 
         // app is still returned as before
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app1.icon.getBestLocale(locales), apps[0].getIcon(locales))
         }
 
         // after preferring second repo, icon is returned from app in second repo
         appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2.icon.getBestLocale(locales), apps[0].getIcon(locales))
         }
@@ -99,17 +103,18 @@ internal class AppOverviewItemsTest : AppTest() {
     }
 
     @Test
-    fun testIncompatibleFlag() {
+    fun testIncompatibleFlag() = runBlocking {
         // insert two apps
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageName1, app1, locales)
         appDao.insert(repoId, packageName2, app2, locales)
 
         // both apps are not compatible
-        appDao.getAppOverviewItems().getOrFail().also {
-            assertEquals(2, it.size)
-        }.forEach {
-            assertFalse(it.isCompatible)
+        getItems().forEach { apps ->
+            assertEquals(2, apps.size)
+            apps.forEach {
+                assertFalse(it.isCompatible)
+            }
         }
         // both apps, in the same category, are not compatible
         appDao.getAppOverviewItems("A").getOrFail().also {
@@ -128,10 +133,10 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.updateCompatibility(repoId)
 
         // now only one is not compatible
-        appDao.getAppOverviewItems().getOrFail().also {
-            assertEquals(2, it.size)
-            assertFalse(it[0].isCompatible)
-            assertTrue(it[1].isCompatible)
+        getItems().forEach { apps ->
+            assertEquals(2, apps.size)
+            assertFalse(apps[0].isCompatible)
+            assertTrue(apps[1].isCompatible)
         }
         appDao.getAppOverviewItems("A").getOrFail().also {
             assertEquals(2, it.size)
@@ -143,14 +148,14 @@ internal class AppOverviewItemsTest : AppTest() {
     }
 
     @Test
-    fun testGetByRepoWeight() {
+    fun testGetByRepoWeight() = runBlocking {
         // insert one app with one version
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageName, app1, locales)
         versionDao.insert(repoId, packageName, "1", getRandomPackageVersionV2(2), true)
 
         // app is returned correctly
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app1, apps[0])
         }
@@ -160,21 +165,21 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.insert(repoId2, packageName, app2, locales)
 
         // app is still returned as before, new repo doesn't override old one
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app1, apps[0])
         }
 
         // now second app from second repo is returned after preferring it explicitly
         appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
         }
     }
 
     @Test
-    fun testGetByRepoPref() {
+    fun testGetByRepoPref() = runBlocking {
         // insert same app into three repos (repoId1 has highest weight)
         val repoId1 = repoDao.insertOrReplace(getRandomRepo())
         val repoId3 = repoDao.insertOrReplace(getRandomRepo())
@@ -184,7 +189,7 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.insert(repoId3, packageName, app3, locales)
 
         // app is returned correctly from repo1
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app1, apps[0])
         }
@@ -195,7 +200,7 @@ internal class AppOverviewItemsTest : AppTest() {
 
         // prefer repo3 for this app
         appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId3))
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app3, apps[0])
         }
@@ -206,7 +211,7 @@ internal class AppOverviewItemsTest : AppTest() {
 
         // prefer repo2 for this app
         appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId2))
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
         }
@@ -220,7 +225,7 @@ internal class AppOverviewItemsTest : AppTest() {
 
         // prefer repo1 for this app
         appPrefsDao.update(AppPrefs(packageName, preferredRepoId = repoId1))
-        appDao.getAppOverviewItems().getOrFail().let { apps ->
+        getItems().forEach { apps ->
             assertEquals(1, apps.size)
             assertEquals(app1, apps[0])
         }
@@ -341,7 +346,7 @@ internal class AppOverviewItemsTest : AppTest() {
     }
 
     @Test
-    fun testOnlyFromEnabledRepos() {
+    fun testOnlyFromEnabledRepos() = runBlocking {
         val repoId = repoDao.insertOrReplace(getRandomRepo())
         appDao.insert(repoId, packageName1, app1, locales)
         appDao.insert(repoId, packageName2, app2, locales)
@@ -349,18 +354,24 @@ internal class AppOverviewItemsTest : AppTest() {
         appDao.insert(repoId2, packageName3, app3, locales)
 
         // 3 apps from 2 repos
-        assertEquals(3, appDao.getAppOverviewItems().getOrAwaitValue()?.size)
+        getItems().forEach { apps ->
+            assertEquals(3, apps.size)
+        }
         assertEquals(3, appDao.getAppOverviewItems("A").getOrAwaitValue()?.size)
 
         // only 1 app after disabling first repo
         repoDao.setRepositoryEnabled(repoId, false)
-        assertEquals(1, appDao.getAppOverviewItems().getOrAwaitValue()?.size)
+        getItems().forEach { apps ->
+            assertEquals(1, apps.size)
+        }
         assertEquals(1, appDao.getAppOverviewItems("A").getOrAwaitValue()?.size)
         assertEquals(1, appDao.getAppOverviewItems("B").getOrAwaitValue()?.size)
 
         // no more apps after disabling all repos
         repoDao.setRepositoryEnabled(repoId2, false)
-        assertEquals(0, appDao.getAppOverviewItems().getOrAwaitValue()?.size)
+        getItems().forEach { apps ->
+            assertEquals(0, apps.size)
+        }
         assertEquals(0, appDao.getAppOverviewItems("A").getOrAwaitValue()?.size)
         assertEquals(0, appDao.getAppOverviewItems("B").getOrAwaitValue()?.size)
     }
@@ -403,6 +414,65 @@ internal class AppOverviewItemsTest : AppTest() {
         // each app still gets returned properly
         assertEquals(app1, appDao.getAppOverviewItem(repoId1, packageName))
         assertEquals(app2, appDao.getAppOverviewItem(repoId2, packageName))
+    }
+
+    @Test
+    fun testByAuthor() = runBlocking {
+        val author = getRandomString()
+        val packageName = getRandomString()
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName, getRandomMetadataV2(author), locales)
+
+        // author has only one app
+        assertFalse(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        assertEquals(0, appDao.getAppsByAuthor("foo bar").size)
+        appDao.getAppsByAuthor(author).let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(packageName, apps[0].packageName)
+        }
+
+        // now add 49 more apps
+        (1 until 50).forEach { _ ->
+            appDao.insert(repoId, getRandomString(), getRandomMetadataV2(author), locales)
+        }
+        assertTrue(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
+        assertEquals(50, appDao.getAppsByAuthor(author).size)
+    }
+
+    @Test
+    fun testByCategory() = runBlocking {
+        // insert three apps
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName1, app1, locales)
+        appDao.insert(repoId, packageName2, app2, locales)
+        appDao.insert(repoId, packageName3, app3, locales)
+
+        // only two apps are in category B
+        appDao.getAppsByCategory("B").let { apps ->
+            assertEquals(2, apps.size)
+            assertNotEquals(packageName2, apps[0].packageName)
+            assertNotEquals(packageName2, apps[1].packageName)
+        }
+
+        // no app is in category C
+        assertEquals(0, appDao.getAppsByCategory("C").size)
+
+        // we'll add app1 as a variant of app2, but its repo has lower weight, so no effect
+        val repoId2 = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId2, packageName2, app1, locales)
+        appDao.getAppsByCategory("B").let { apps ->
+            assertEquals(2, apps.size)
+            assertNotEquals(packageName2, apps[0].packageName)
+            assertNotEquals(packageName2, apps[1].packageName)
+        }
+    }
+
+    private suspend fun getItems(): List<List<AppOverviewItem>> {
+        return listOf(
+            appDao.getAppOverviewItems().getOrFail(),
+            // manually sort the second list, so both results are comparable
+            appDao.getAllApps().sortedByDescending { it.lastUpdated },
+        )
     }
 
     private fun assertEquals(expected: MetadataV2, actual: AppOverviewItem?) {
