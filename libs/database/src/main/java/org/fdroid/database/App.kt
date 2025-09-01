@@ -285,9 +285,15 @@ public data class AppOverviewItem internal constructor(
     public val added: Long,
     public val lastUpdated: Long,
     @ColumnInfo(name = "localizedName")
+    @Deprecated("Use getName() method instead.")
     public override val name: String? = null,
     @ColumnInfo(name = "localizedSummary")
+    @Deprecated("Use getSummary() method instead.")
     public override val summary: String? = null,
+    @ColumnInfo(name = "name")
+    internal val internalName: LocalizedTextV2? = null,
+    @ColumnInfo(name = "summary")
+    internal val internalSummary: LocalizedTextV2? = null,
     public val categories: List<String>? = null,
     internal val antiFeatures: Map<String, LocalizedTextV2>? = null,
     @Relation(
@@ -300,6 +306,14 @@ public data class AppOverviewItem internal constructor(
      */
     public val isCompatible: Boolean,
 ) : MinimalApp {
+    public fun getName(localeList: LocaleListCompat): String? {
+        return internalName.getBestLocale(localeList)
+    }
+
+    public fun getSummary(localeList: LocaleListCompat): String? {
+        return internalSummary.getBestLocale(localeList)
+    }
+
     public override fun getIcon(localeList: LocaleListCompat): FileV2? {
         return localizedIcon?.filter { icon ->
             icon.repoId == repoId

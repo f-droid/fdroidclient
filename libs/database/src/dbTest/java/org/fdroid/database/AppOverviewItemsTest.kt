@@ -481,7 +481,8 @@ internal class AppOverviewItemsTest : AppTest() {
         assertEquals(expected.lastUpdated, actual.lastUpdated)
         assertEquals(expected.name.getBestLocale(locales), actual.name)
         assertEquals(expected.summary.getBestLocale(locales), actual.summary)
-        assertEquals(expected.summary.getBestLocale(locales), actual.summary)
+        assertEquals(expected.name.getBestLocale(locales), actual.getName(locales))
+        assertEquals(expected.summary.getBestLocale(locales), actual.getSummary(locales))
         assertEquals(expected.icon.getBestLocale(locales), actual.getIcon(locales))
     }
 

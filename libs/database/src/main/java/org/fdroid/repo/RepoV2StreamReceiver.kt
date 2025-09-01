@@ -61,6 +61,8 @@ internal open class RepoV2StreamReceiver(
             lastUpdated = p.metadata.lastUpdated,
             name = p.metadata.name.getBestLocale(locales),
             summary = p.metadata.summary.getBestLocale(locales),
+            internalName = p.metadata.name,
+            internalSummary = p.metadata.summary,
             antiFeatures = p.versions.values.lastOrNull()?.antiFeatures,
             localizedIcon = p.metadata.icon?.map { (locale, file) ->
                 LocalizedIcon(

@@ -60,6 +60,8 @@ internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Clos
     abstract override fun getAppDao(): AppDaoInt
     abstract override fun getVersionDao(): VersionDaoInt
     abstract override fun getAppPrefsDao(): AppPrefsDaoInt
+
+    @Deprecated("Will be removed in future version")
     override fun afterLocalesChanged(locales: LocaleListCompat) {
         val appDao = getAppDao()
         runInTransaction {
@@ -119,6 +121,7 @@ public interface FDroidDatabase {
      * Call this after the system [Locale]s have changed.
      * If this isn't called, the cached localized app metadata (e.g. name, summary) will be wrong.
      */
+    @Deprecated("Will be removed in future version")
     public fun afterLocalesChanged(
         locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
     )

@@ -376,6 +376,7 @@ internal interface AppDaoInt : AppDao {
         WHERE repoId = :repoId""")
     override fun updateCompatibility(repoId: Long)
 
+    @Deprecated("Will be removed in future version")
     @Query("""UPDATE ${AppMetadata.TABLE} SET localizedName = :name, localizedSummary = :summary
         WHERE repoId = :repoId AND packageName = :packageName""")
     fun updateAppMetadata(repoId: Long, packageName: String, name: String?, summary: String?)
@@ -423,7 +424,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-            localizedSummary, categories, version.antiFeatures, app.isCompatible
+            localizedSummary, app.name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
@@ -438,7 +439,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-             localizedSummary, categories, version.antiFeatures, app.isCompatible
+             localizedSummary, app.name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
@@ -458,7 +459,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, added, app.lastUpdated, localizedName,
-             localizedSummary, categories, app.isCompatible
+             localizedSummary, name, summary, categories, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName""")
     fun getAppOverviewItem(repoId: Long, packageName: String): AppOverviewItem?
 
@@ -508,7 +509,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-            localizedSummary, categories, version.antiFeatures, app.isCompatible
+            localizedSummary, name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         WHERE repoId = :repoId""")
@@ -543,7 +544,7 @@ internal interface AppDaoInt : AppDao {
         val queryBuilder = StringBuilder(
             """
         SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-            localizedSummary, categories, version.antiFeatures, app.isCompatible
+            localizedSummary, name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN PreferredRepo USING (packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
