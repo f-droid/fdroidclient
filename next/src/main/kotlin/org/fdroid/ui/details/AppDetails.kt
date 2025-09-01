@@ -3,6 +3,7 @@ package org.fdroid.ui.details
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.CurrencyBitcoin
@@ -64,6 +66,7 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
+import org.fdroid.ui.categories.CategoryCard
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.AsyncShimmerImage
@@ -348,6 +351,21 @@ fun AppDetails(
                             title = stringResource(R.string.menu_email),
                             url = authorEmail,
                         )
+                    }
+                }
+            }
+            if (!item.categories.isNullOrEmpty()) ExpandableSection(
+                icon = rememberVectorPainter(Icons.Default.Category),
+                title = stringResource(R.string.main_menu__categories),
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                initiallyExpanded = true,
+            ) {
+                FlowRow(modifier = Modifier.padding(start = 16.dp)) {
+                    item.categories.forEach { item ->
+                        CategoryCard(item, onSelected = {
+                            val categoryNav = AppListType.Category(item.name, item.id)
+                            onNav(NavigationKey.AppList(categoryNav))
+                        })
                     }
                 }
             }

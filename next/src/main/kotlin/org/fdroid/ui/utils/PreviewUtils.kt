@@ -7,6 +7,7 @@ import org.fdroid.database.AppPrefs
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
+import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
@@ -114,6 +115,10 @@ val testApp = AppDetailsItem(
         "Therefore this app can be used on devices without Google Services installed. " +
         "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
         LoremIpsum(128).values.joinToString(" "),
+    categories = listOf(
+        CategoryItem("Multimedia", "Multimedia"),
+        CategoryItem("Internet", "Internet"),
+    ),
     antiFeatures = listOf(
         AntiFeature(
             id = "NonFreeNet",

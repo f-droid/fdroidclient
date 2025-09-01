@@ -14,6 +14,7 @@ import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.SessionInstallManager
+import org.fdroid.ui.categories.CategoryItem
 
 data class AppDetailsItem(
     val app: AppMetadata,
@@ -34,6 +35,7 @@ data class AppDetailsItem(
     val icon: DownloadRequest? = null,
     val featureGraphic: DownloadRequest? = null,
     val phoneScreenshots: List<DownloadRequest> = emptyList(),
+    val categories: List<CategoryItem>? = null,
     val versions: List<PackageVersion>? = null,
     val installedVersion: PackageVersion? = null,
     /**
@@ -87,6 +89,13 @@ data class AppDetailsItem(
         featureGraphic = dbApp.getFeatureGraphic(localeList)?.getDownloadRequest(repository),
         phoneScreenshots = dbApp.getPhoneScreenshots(localeList).mapNotNull {
             it.getDownloadRequest(repository)
+        },
+        categories = dbApp.metadata.categories?.mapNotNull { categoryId ->
+            val category = repository.getCategories()[categoryId] ?: return@mapNotNull null
+            CategoryItem(
+                id = category.id,
+                name = category.getName(localeList) ?: "Unknown Category",
+            )
         },
         versions = versions,
         installedVersion = installedVersion,

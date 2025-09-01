@@ -30,10 +30,10 @@ fun ExpandableSection(
     icon: Painter?,
     title: String,
     modifier: Modifier = Modifier,
+    initiallyExpanded: Boolean = LocalInspectionMode.current,
     content: @Composable () -> Unit,
 ) {
-    val isPreview = LocalInspectionMode.current
-    var sectionExpanded by rememberSaveable { mutableStateOf(isPreview) }
+    var sectionExpanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
     Column(modifier = modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
