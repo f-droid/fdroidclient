@@ -2,6 +2,7 @@ package org.fdroid.ui.utils
 
 import android.content.Intent
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
+import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
 import org.fdroid.index.v2.PackageManifest
@@ -11,6 +12,8 @@ import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
+import org.fdroid.ui.lists.AppListInfo
+import org.fdroid.ui.lists.AppListModel
 import java.util.concurrent.TimeUnit.DAYS
 
 object Names {
@@ -163,4 +166,17 @@ fun getPreviewVersion(versionName: String, size: Long? = null) = object : Packag
         override val targetSdkVersion: Int? = null
     }
     override val hasKnownVulnerability: Boolean = false
+}
+
+fun getAppListInfo(model: AppListModel) = object : AppListInfo {
+    override val model: AppListModel = model
+    override val showOnboarding: Boolean = false
+    override fun toggleFilterVisibility() {}
+    override fun sortBy(sort: AppListSortOrder) {}
+    override fun addCategory(categoryId: String) {}
+    override fun removeCategory(categoryId: String) {}
+    override fun addRepository(repoId: Long) {}
+    override fun removeRepository(repoId: Long) {}
+    override fun onSearch(query: String) {}
+    override fun onOnboardingSeen() {}
 }

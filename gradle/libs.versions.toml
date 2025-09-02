@@ -21,6 +21,7 @@ glide = "5.0.5"
 glideCompose = "1.0.0-beta08"
 coilCompose = "3.3.0"
 molecule = "2.2.0"
+hints = "1.1.1"
 
 androidxCoreKtx = "1.17.0"
 androidxAppcompat = "1.7.1"
@@ -138,12 +139,12 @@ glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = 
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 glide-annotations = { module = "com.github.bumptech.glide:annotations", version.ref = "glide" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
-coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 
 molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
+compose-hints = { module = "com.viktormykhailiv:compose-hints", version.ref = "hints" }
 guardianproject-netcipher = { module = "info.guardianproject.netcipher:netcipher", version.ref = "guardianprojectNetcipher" }
 guardianproject-panic = { module = "info.guardianproject.panic:panic", version.ref = "guardianprojectPanic" }
 nanohttpd = { module = "org.nanohttpd:nanohttpd", version.ref = "nanohttpd" }

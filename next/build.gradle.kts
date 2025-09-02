@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "org.fdroid.next"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -77,7 +77,7 @@ dependencies {
 
     implementation(libs.molecule.runtime)
     implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
+    implementation(libs.compose.hints)
 
     implementation(libs.slf4j.api)
     implementation(libs.logback.android)

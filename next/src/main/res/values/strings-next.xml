@@ -48,4 +48,8 @@
     <string name="signer_colon">Signer: %1$s</string>
     <string name="architectures_colon">Architectures: %1$s</string>
 
+    <string name="onboarding_app_list_filter_title">Filter</string>
+    <string name="onboarding_app_list_filter_message">Here you can apply filters to the list of apps, e.g. showing only apps within a certain category or repository. Changing the sort order is also possible.</string>
+    <string name="got_it">Got it</string>
+
 </resources>

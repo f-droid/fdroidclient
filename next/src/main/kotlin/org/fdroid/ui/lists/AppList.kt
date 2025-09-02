@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.FilterList
@@ -35,6 +36,7 @@ import androidx.compose.material3.TopAppBarDefaults.exitUntilCollapsedScrollBeha
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -46,11 +48,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.viktormykhailiv.compose.hints.hintAnchor
+import com.viktormykhailiv.compose.hints.rememberHint
+import com.viktormykhailiv.compose.hints.rememberHintAnchorState
+import com.viktormykhailiv.compose.hints.rememberHintController
 import kotlinx.coroutines.FlowPreview
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.getAppListInfo
+import org.fdroid.utils.OnboardingCard
 
 @Composable
 @OptIn(
@@ -66,6 +74,25 @@ fun AppList(
 ) {
     var searchActive by rememberSaveable { mutableStateOf(false) }
     val scrollBehavior = exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+
+    val hintController = rememberHintController(
+        overlay = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
+    )
+    val hint = rememberHint {
+        OnboardingCard(
+            title = stringResource(R.string.onboarding_app_list_filter_title),
+            message = stringResource(R.string.onboarding_app_list_filter_message),
+            modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
+        ) {
+            appListInfo.onOnboardingSeen()
+            hintController.dismiss()
+        }
+    }
+    val hintAnchor = rememberHintAnchorState(hint)
+    LaunchedEffect(appListInfo.showOnboarding) {
+        if (appListInfo.showOnboarding) hintController.show(hintAnchor)
+    }
+
     Scaffold(
         topBar = {
             if (searchActive) {
@@ -99,7 +126,13 @@ fun AppList(
                             contentDescription = stringResource(R.string.menu_search),
                         )
                     }
-                    IconButton(onClick = { appListInfo.toggleFilterVisibility() }) {
+                    IconButton(
+                        onClick = { appListInfo.toggleFilterVisibility() },
+                        modifier = Modifier.hintAnchor(
+                            state = hintAnchor,
+                            shape = RoundedCornerShape(16.dp),
+                        )
+                    ) {
                         val showFilterBadge =
                             appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
                                 appListInfo.model.filteredCategoryIds.isNotEmpty()
@@ -123,7 +156,9 @@ fun AppList(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
         Column(
-            modifier = Modifier.padding(paddingValues),
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
         ) {
             val apps = appListInfo.model.apps
             if (apps == null) BigLoadingIndicator()
@@ -201,16 +236,7 @@ private fun Preview() {
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
-        val info = object : AppListInfo {
-            override val model: AppListModel = model
-            override fun toggleFilterVisibility() {}
-            override fun sortBy(sort: AppListSortOrder) {}
-            override fun addCategory(categoryId: String) {}
-            override fun removeCategory(categoryId: String) {}
-            override fun addRepository(repoId: Long) {}
-            override fun removeRepository(repoId: Long) {}
-            override fun onSearch(query: String) {}
-        }
+        val info = getAppListInfo(model)
         AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
     }
 }
@@ -229,16 +255,7 @@ private fun PreviewLoading() {
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
-        val info = object : AppListInfo {
-            override val model: AppListModel = model
-            override fun toggleFilterVisibility() {}
-            override fun sortBy(sort: AppListSortOrder) {}
-            override fun addCategory(categoryId: String) {}
-            override fun removeCategory(categoryId: String) {}
-            override fun addRepository(repoId: Long) {}
-            override fun removeRepository(repoId: Long) {}
-            override fun onSearch(query: String) {}
-        }
+        val info = getAppListInfo(model)
         AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
     }
 }
@@ -257,16 +274,7 @@ private fun PreviewEmpty() {
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
-        val info = object : AppListInfo {
-            override val model: AppListModel = model
-            override fun toggleFilterVisibility() {}
-            override fun sortBy(sort: AppListSortOrder) {}
-            override fun addCategory(categoryId: String) {}
-            override fun removeCategory(categoryId: String) {}
-            override fun addRepository(repoId: Long) {}
-            override fun removeRepository(repoId: Long) {}
-            override fun onSearch(query: String) {}
-        }
+        val info = getAppListInfo(model)
         AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
     }
 }

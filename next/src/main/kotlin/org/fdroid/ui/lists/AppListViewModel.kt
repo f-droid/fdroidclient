@@ -24,6 +24,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
 import org.fdroid.next.R
+import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
 import java.text.Collator
@@ -36,6 +37,7 @@ class AppListViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
+    private val settingsManager: SettingsManager,
 ) : AndroidViewModel(app) {
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
@@ -65,6 +67,7 @@ class AppListViewModel @Inject constructor(
     private val sortBy = MutableStateFlow(AppListSortOrder.LAST_UPDATED)
     private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
+    val showOnboarding = settingsManager.showFilterOnboarding
 
     val appListModel: StateFlow<AppListModel> = scope.launchMolecule(mode = ContextClock) {
         AppListPresenter(
@@ -158,4 +161,6 @@ class AppListViewModel @Inject constructor(
     fun onSearch(query: String) {
         this.query.value = query
     }
+
+    fun onOnboardingSeen() = settingsManager.onFilterOnboardingSeen()
 }

@@ -35,9 +35,11 @@ import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.repositories.RepositoryItem
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.getAppListInfo
 
 interface AppListInfo {
     val model: AppListModel
+    val showOnboarding: Boolean
 
     fun toggleFilterVisibility()
     fun sortBy(sort: AppListSortOrder)
@@ -46,6 +48,7 @@ interface AppListInfo {
     fun addRepository(repoId: Long)
     fun removeRepository(repoId: Long)
     fun onSearch(query: String)
+    fun onOnboardingSeen()
 }
 
 @Composable
@@ -229,16 +232,7 @@ private fun Preview() {
             ),
             filteredRepositoryIds = setOf(2),
         )
-        val info = object : AppListInfo {
-            override val model: AppListModel = model
-            override fun toggleFilterVisibility() {}
-            override fun sortBy(sort: AppListSortOrder) {}
-            override fun addCategory(categoryId: String) {}
-            override fun removeCategory(categoryId: String) {}
-            override fun addRepository(repoId: Long) {}
-            override fun removeRepository(repoId: Long) {}
-            override fun onSearch(query: String) {}
-        }
+        val info = getAppListInfo(model)
         AppsFilter(info)
     }
 }

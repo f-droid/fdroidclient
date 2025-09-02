@@ -155,6 +155,8 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     val appListInfo = object : AppListInfo {
                         override val model =
                             appListViewModel.appListModel.collectAsStateWithLifecycle().value
+                        override val showOnboarding: Boolean =
+                            appListViewModel.showOnboarding.collectAsStateWithLifecycle().value
 
                         override fun toggleFilterVisibility() {
                             appListViewModel.toggleListFilterVisibility()
@@ -175,6 +177,8 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
 
                         override fun onSearch(query: String) =
                             appListViewModel.onSearch(query)
+
+                        override fun onOnboardingSeen() = appListViewModel.onOnboardingSeen()
                     }
                     AppList(
                         appListInfo = appListInfo,
