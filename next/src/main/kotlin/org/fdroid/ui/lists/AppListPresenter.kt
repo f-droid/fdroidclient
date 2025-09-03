@@ -34,12 +34,21 @@ fun AppListPresenter(
     val searchQuery = searchQueryFlow.collectAsState().value.normalize()
 
     val availableCategoryIds = remember(apps) {
-        apps?.flatMap { it.categoryIds ?: emptySet() }?.toSet() ?: emptySet()
+        // if there's only one category, we'll not show the filters for it
+        apps?.flatMap { it.categoryIds ?: emptySet() }?.toSet()?.takeIf { it.size > 1 }
+            ?: emptySet()
     }
     val filteredCategories = remember(categories, apps) {
         categories?.filter {
             it.id in availableCategoryIds
         }
+    }
+    val availableRepositories = remember(apps) {
+        val repoIds = mutableSetOf<Long>()
+        apps?.forEach { repoIds.add(it.repoId) }
+        val repos = repositories.filter { it.repoId in repoIds }
+        // if there's only one repository, we'll not show the filters for it
+        if (repos.size > 1) repos else emptyList()
     }
     val filteredApps = apps?.filter {
         val matchesCategories = filteredCategoryIds.isEmpty() ||
@@ -62,7 +71,7 @@ fun AppListPresenter(
         sortBy = sortBy,
         categories = filteredCategories,
         filteredCategoryIds = filteredCategoryIds,
-        repositories = repositories,
+        repositories = availableRepositories,
         filteredRepositoryIds = filteredRepositoryIds,
     )
 }
