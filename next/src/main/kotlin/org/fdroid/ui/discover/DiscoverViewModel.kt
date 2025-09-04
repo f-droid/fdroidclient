@@ -83,18 +83,23 @@ class DiscoverViewModel @Inject constructor(
 
     suspend fun search(term: String) = withContext(ioScope.coroutineContext) {
         val sanitized = term.replace(Regex.fromLiteral("\""), "")
-        val query = sanitized.split(' ').joinToString(" ") { word ->
-            if (word.isBlank()) "" else {
-                var isCjk = false
-                // go through word and separate CJK chars (if needed)
-                val newString = word.toList().joinToString("") {
-                    if (Character.isIdeographic(it.code)) {
-                        isCjk = true
-                        "$it* "
-                    } else "$it"
-                }
-                if (isCjk) newString else "$newString*"
+        val splits = sanitized.split(' ').filter { it.isNotBlank() }
+        val query = splits.joinToString(" AND ") { word ->
+            var isCjk = false
+            // go through word and separate CJK chars (if needed)
+            val newString = word.toList().joinToString("") {
+                if (Character.isIdeographic(it.code)) {
+                    isCjk = true
+                    "$it* "
+                } else "$it"
             }
+            // add * to enable prefix matches
+            if (isCjk) newString else "$newString*"
+        }.let { firstPassQuery ->
+            // if we had more than one word, also look for both combined to find CamelCase names
+            if (splits.size > 1) {
+                "$firstPassQuery OR ${splits.joinToString("")}*"
+            } else firstPassQuery
         }
         log.info { "Searching for: $query" }
         val timedApps = measureTimedValue {
