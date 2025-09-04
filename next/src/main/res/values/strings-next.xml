@@ -24,8 +24,12 @@
     <string name="search_no_results">No apps found.\n\nTry to use less search terms or add/enable more repositories.</string>
     <string name="search_filter_no_results">No matching apps.\n\nTry to use less search terms or remove filters.</string>
     <string name="search_my_apps_no_results">No matching apps.\n\nTry to use less search terms.</string>
+    <string name="sort_title">Sorting and compatibility</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by latest</string>
+    <string name="filter_only_compatible">Apps compatible with this device</string>
+    <string name="filter_button_save">Save above as default</string>
+    <string name="filter_button_clear_all">Clear all filters</string>
     <!-- Used for filtering lists of apps by certain criteria -->
     <string name="filter">Filter</string>
     <!-- Used for filter chips (e.g. categories) when they are currently selected -->

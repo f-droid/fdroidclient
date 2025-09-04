@@ -32,7 +32,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults.exitUntilCollapsedScrollBehavior
+import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -73,7 +73,7 @@ fun AppList(
     onItemClick: (String) -> Unit,
 ) {
     var searchActive by rememberSaveable { mutableStateOf(false) }
-    val scrollBehavior = exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
 
     val hintController = rememberHintController(
         overlay = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
@@ -84,7 +84,7 @@ fun AppList(
             message = stringResource(R.string.onboarding_app_list_filter_message),
             modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
         ) {
-            appListInfo.onOnboardingSeen()
+            appListInfo.actions.onOnboardingSeen()
             hintController.dismiss()
         }
     }
@@ -96,15 +96,15 @@ fun AppList(
     Scaffold(
         topBar = {
             if (searchActive) {
-                val onSearchCleared = { appListInfo.onSearch("") }
-                TopSearchBar(onSearch = appListInfo::onSearch, onSearchCleared) {
+                val onSearchCleared = { appListInfo.actions.onSearch("") }
+                TopSearchBar(onSearch = appListInfo.actions::onSearch, onSearchCleared) {
                     searchActive = false
                     onSearchCleared()
                 }
             } else TopAppBar(
                 title = {
                     Text(
-                        text = appListInfo.model.list.title,
+                        text = appListInfo.list.title,
                         maxLines = 1,
                         overflow = TextOverflow.MiddleEllipsis,
                     )
@@ -127,7 +127,7 @@ fun AppList(
                         )
                     }
                     IconButton(
-                        onClick = { appListInfo.toggleFilterVisibility() },
+                        onClick = { appListInfo.actions.toggleFilterVisibility() },
                         modifier = Modifier.hintAnchor(
                             state = hintAnchor,
                             shape = RoundedCornerShape(16.dp),
@@ -206,11 +206,11 @@ fun AppList(
             }
             // Bottom Sheet
             val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
-            if (appListInfo.model.areFiltersShown) {
+            if (appListInfo.showFilters) {
                 ModalBottomSheet(
                     modifier = Modifier.fillMaxHeight(),
                     sheetState = sheetState,
-                    onDismissRequest = { appListInfo.toggleFilterVisibility() },
+                    onDismissRequest = { appListInfo.actions.toggleFilterVisibility() },
                 ) {
                     AppsFilter(info = appListInfo)
                 }
@@ -224,13 +224,12 @@ fun AppList(
 private fun Preview() {
     FDroidContent {
         val model = AppListModel(
-            list = AppListType.New("New"),
             apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, null),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, true, null),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, null),
             ),
-            areFiltersShown = true,
             sortBy = AppListSortOrder.NAME,
+            filterIncompatible = true,
             categories = null,
             filteredCategoryIds = emptySet(),
             repositories = emptyList(),
@@ -246,10 +245,9 @@ private fun Preview() {
 private fun PreviewLoading() {
     FDroidContent {
         val model = AppListModel(
-            list = AppListType.New("New"),
             apps = null,
-            areFiltersShown = true,
             sortBy = AppListSortOrder.NAME,
+            filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
             repositories = emptyList(),
@@ -265,10 +263,9 @@ private fun PreviewLoading() {
 private fun PreviewEmpty() {
     FDroidContent {
         val model = AppListModel(
-            list = AppListType.New("New"),
             apps = emptyList(),
-            areFiltersShown = true,
             sortBy = AppListSortOrder.NAME,
+            filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
             repositories = emptyList(),

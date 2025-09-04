@@ -12,8 +12,10 @@ import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
+import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
 import org.fdroid.ui.lists.AppListModel
+import org.fdroid.ui.lists.AppListType
 import java.util.concurrent.TimeUnit.DAYS
 
 object Names {
@@ -170,13 +172,20 @@ fun getPreviewVersion(versionName: String, size: Long? = null) = object : Packag
 
 fun getAppListInfo(model: AppListModel) = object : AppListInfo {
     override val model: AppListModel = model
+    override val actions: AppListActions = object : AppListActions {
+        override fun toggleFilterVisibility() {}
+        override fun sortBy(sort: AppListSortOrder) {}
+        override fun toggleFilterIncompatible() {}
+        override fun addCategory(categoryId: String) {}
+        override fun removeCategory(categoryId: String) {}
+        override fun addRepository(repoId: Long) {}
+        override fun removeRepository(repoId: Long) {}
+        override fun saveFilters() {}
+        override fun clearFilters() {}
+        override fun onSearch(query: String) {}
+        override fun onOnboardingSeen() {}
+    }
+    override val list: AppListType = AppListType.New("New")
+    override val showFilters: Boolean = false
     override val showOnboarding: Boolean = false
-    override fun toggleFilterVisibility() {}
-    override fun sortBy(sort: AppListSortOrder) {}
-    override fun addCategory(categoryId: String) {}
-    override fun removeCategory(categoryId: String) {}
-    override fun addRepository(repoId: Long) {}
-    override fun removeRepository(repoId: Long) {}
-    override fun onSearch(query: String) {}
-    override fun onOnboardingSeen() {}
 }

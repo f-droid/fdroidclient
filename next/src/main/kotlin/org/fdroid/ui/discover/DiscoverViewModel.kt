@@ -112,6 +112,7 @@ class DiscoverViewModel @Inject constructor(
                         name = it.name.getBestLocale(localeList) ?: "Unknown",
                         summary = it.summary.getBestLocale(localeList) ?: "",
                         lastUpdated = it.lastUpdated,
+                        isCompatible = true, // doesn't matter here, as we don't filter
                         iconDownloadRequest = it.getIcon(localeList)
                             ?.getDownloadRequest(repository),
                         categoryIds = it.categories?.toSet(),

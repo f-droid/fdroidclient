@@ -40,7 +40,9 @@ import org.fdroid.ui.details.AppDetailsViewModel
 import org.fdroid.ui.discover.Discover
 import org.fdroid.ui.discover.DiscoverViewModel
 import org.fdroid.ui.lists.AppList
+import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
+import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.lists.AppListViewModel
 import org.fdroid.ui.repositories.Repositories
 import org.fdroid.ui.repositories.RepositoriesViewModel
@@ -155,30 +157,13 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     val appListInfo = object : AppListInfo {
                         override val model =
                             appListViewModel.appListModel.collectAsStateWithLifecycle().value
+                        override val actions: AppListActions = appListViewModel
+                        override val list: AppListType =
+                            appListViewModel.currentList.collectAsStateWithLifecycle().value
+                        override val showFilters: Boolean =
+                            appListViewModel.showFilters.collectAsStateWithLifecycle().value
                         override val showOnboarding: Boolean =
                             appListViewModel.showOnboarding.collectAsStateWithLifecycle().value
-
-                        override fun toggleFilterVisibility() {
-                            appListViewModel.toggleListFilterVisibility()
-                        }
-
-                        override fun sortBy(sort: AppListSortOrder) = appListViewModel.sortBy(sort)
-                        override fun addCategory(categoryId: String) =
-                            appListViewModel.addCategory(categoryId)
-
-                        override fun removeCategory(categoryId: String) =
-                            appListViewModel.removeCategory(categoryId)
-
-                        override fun addRepository(repoId: Long) =
-                            appListViewModel.addRepository(repoId)
-
-                        override fun removeRepository(repoId: Long) =
-                            appListViewModel.removeRepository(repoId)
-
-                        override fun onSearch(query: String) =
-                            appListViewModel.onSearch(query)
-
-                        override fun onOnboardingSeen() = appListViewModel.onOnboardingSeen()
                     }
                     AppList(
                         appListInfo = appListInfo,

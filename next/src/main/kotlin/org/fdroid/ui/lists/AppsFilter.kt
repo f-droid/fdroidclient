@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -14,12 +16,17 @@ import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.PhonelinkErase
+import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SortByAlpha
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,20 +43,7 @@ import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.repositories.RepositoryItem
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.getAppListInfo
-
-interface AppListInfo {
-    val model: AppListModel
-    val showOnboarding: Boolean
-
-    fun toggleFilterVisibility()
-    fun sortBy(sort: AppListSortOrder)
-    fun addCategory(categoryId: String)
-    fun removeCategory(categoryId: String)
-    fun addRepository(repoId: Long)
-    fun removeRepository(repoId: Long)
-    fun onSearch(query: String)
-    fun onOnboardingSeen()
-}
+import kotlin.random.Random
 
 @Composable
 fun AppsFilter(
@@ -58,7 +52,10 @@ fun AppsFilter(
 ) {
     val scrollState = rememberScrollState()
     Column(modifier = Modifier.verticalScroll(scrollState)) {
-        FilterHeader(Icons.AutoMirrored.Default.Sort, "Sorting")
+        FilterHeader(
+            icon = Icons.AutoMirrored.Default.Sort,
+            text = stringResource(R.string.sort_title),
+        )
         FlowRow(
             horizontalArrangement = spacedBy(8.dp),
             modifier = modifier
@@ -82,7 +79,7 @@ fun AppsFilter(
                     Text(stringResource(R.string.sort_by_name))
                 },
                 onClick = {
-                    if (!byNameSelected) info.sortBy(AppListSortOrder.NAME)
+                    if (!byNameSelected) info.actions.sortBy(AppListSortOrder.NAME)
                 },
             )
             val byLatestSelected = info.model.sortBy == AppListSortOrder.LAST_UPDATED
@@ -102,15 +99,46 @@ fun AppsFilter(
                     Text(stringResource(R.string.sort_by_latest))
                 },
                 onClick = {
-                    if (!byLatestSelected) info.sortBy(AppListSortOrder.LAST_UPDATED)
+                    if (!byLatestSelected) info.actions.sortBy(AppListSortOrder.LAST_UPDATED)
                 },
             )
-
+            FilterChip(
+                selected = info.model.filterIncompatible,
+                leadingIcon = {
+                    if (info.model.filterIncompatible) {
+                        Icon(
+                            imageVector = Icons.Default.Check,
+                            contentDescription = stringResource(R.string.filter_selected),
+                        )
+                    } else {
+                        Icon(Icons.Default.PhonelinkErase, null)
+                    }
+                },
+                label = {
+                    Text(stringResource(R.string.filter_only_compatible))
+                },
+                onClick = info.actions::toggleFilterIncompatible,
+            )
+        }
+        TextButton(
+            onClick = info.actions::saveFilters,
+            modifier = modifier
+                .align(Alignment.End)
+                .padding(horizontal = 16.dp),
+        ) {
+            Icon(Icons.Default.Save, null)
+            Spacer(modifier.width(ButtonDefaults.IconSpacing))
+            Text(
+                text = stringResource(R.string.filter_button_save)
+            )
         }
         val categories = info.model.categories
         if (categories != null) {
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-            FilterHeader(Icons.Default.Category, "Categories")
+            FilterHeader(
+                icon = Icons.Default.Category,
+                text = stringResource(R.string.main_menu__categories),
+            )
             FlowRow(
                 modifier = modifier
                     .fillMaxWidth()
@@ -120,9 +148,9 @@ fun AppsFilter(
                     val isSelected = item.id in info.model.filteredCategoryIds
                     CategoryCard(item, selected = isSelected, onSelected = {
                         if (isSelected) {
-                            info.removeCategory(item.id)
+                            info.actions.removeCategory(item.id)
                         } else {
-                            info.addCategory(item.id)
+                            info.actions.addCategory(item.id)
                         }
                     })
                 }
@@ -130,7 +158,10 @@ fun AppsFilter(
         }
         if (info.model.repositories.isNotEmpty()) {
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-            FilterHeader(PackageVariant, "Repositories")
+            FilterHeader(
+                icon = PackageVariant,
+                text = stringResource(R.string.app_details_repositories),
+            )
             FlowRow(
                 horizontalArrangement = spacedBy(8.dp),
                 modifier = modifier
@@ -158,14 +189,25 @@ fun AppsFilter(
                         },
                         onClick = {
                             if (selected) {
-                                info.removeRepository(repo.repoId)
+                                info.actions.removeRepository(repo.repoId)
                             } else {
-                                info.addRepository(repo.repoId)
+                                info.actions.addRepository(repo.repoId)
                             }
                         },
                     )
                 }
             }
+        }
+        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+        TextButton(
+            onClick = info.actions::clearFilters,
+            modifier = modifier
+                .align(Alignment.End)
+                .padding(horizontal = 16.dp),
+        ) {
+            Icon(Icons.Default.Clear, null)
+            Spacer(modifier.width(ButtonDefaults.IconSpacing))
+            Text(stringResource(R.string.filter_button_clear_all))
         }
     }
 }
@@ -191,13 +233,12 @@ private fun FilterHeader(icon: ImageVector, text: String) {
 private fun Preview() {
     FDroidContent {
         val model = AppListModel(
-            list = AppListType.New("New"),
             apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, null),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, true, null),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, null),
             ),
-            areFiltersShown = true,
             sortBy = AppListSortOrder.NAME,
+            filterIncompatible = Random.nextBoolean(),
             categories = listOf(
                 CategoryItem("App Store & Updater", "App Store & Updater"),
                 CategoryItem("Browser", "Browser"),

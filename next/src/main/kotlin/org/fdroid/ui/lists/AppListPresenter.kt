@@ -15,10 +15,9 @@ import java.util.Locale
 
 @Composable
 fun AppListPresenter(
-    listFlow: StateFlow<AppListType>,
     appsFlow: StateFlow<List<AppListItem>?>,
-    areFiltersShownFlow: StateFlow<Boolean>,
     sortByFlow: StateFlow<AppListSortOrder>,
+    filterIncompatibleFlow: StateFlow<Boolean>,
     categoriesFlow: Flow<List<CategoryItem>>,
     filteredCategoryIdsFlow: StateFlow<Set<String>>,
     repositoriesFlow: Flow<List<RepositoryItem>>,
@@ -27,6 +26,7 @@ fun AppListPresenter(
 ): AppListModel {
     val apps = appsFlow.collectAsState(null).value
     val sortBy = sortByFlow.collectAsState().value
+    val filterIncompatible = filterIncompatibleFlow.collectAsState().value
     val categories = categoriesFlow.collectAsState(null).value
     val filteredCategoryIds = filteredCategoryIdsFlow.collectAsState().value
     val repositories = repositoriesFlow.collectAsState(emptyList()).value
@@ -57,32 +57,21 @@ fun AppListPresenter(
         val matchesQuery = searchQuery.isEmpty() ||
             it.name.normalize().contains(searchQuery, ignoreCase = true) ||
             it.summary.normalize().contains(searchQuery, ignoreCase = true)
-        matchesCategories && matchesRepos && matchesQuery
+        val matchesCompatibility = !filterIncompatible || it.isCompatible
+        matchesCategories && matchesRepos && matchesQuery && matchesCompatibility
     }
     val locale = Locale.getDefault()
     return AppListModel(
-        list = listFlow.collectAsState().value,
         apps = if (sortBy == AppListSortOrder.NAME) {
             filteredApps?.sortedBy { it.name.lowercase(locale) }
         } else {
             filteredApps?.sortedByDescending { it.lastUpdated }
         },
-        areFiltersShown = areFiltersShownFlow.collectAsState().value,
         sortBy = sortBy,
+        filterIncompatible = filterIncompatible,
         categories = filteredCategories,
         filteredCategoryIds = filteredCategoryIds,
         repositories = availableRepositories,
         filteredRepositoryIds = filteredRepositoryIds,
     )
 }
-
-data class AppListModel(
-    val list: AppListType,
-    val apps: List<AppListItem>?,
-    val areFiltersShown: Boolean,
-    val sortBy: AppListSortOrder,
-    val categories: List<CategoryItem>?,
-    val filteredCategoryIds: Set<String>,
-    val repositories: List<RepositoryItem>,
-    val filteredRepositoryIds: Set<Long>,
-)

@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ class AppListViewModel @Inject constructor(
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
     private val settingsManager: SettingsManager,
-) : AndroidViewModel(app) {
+) : AndroidViewModel(app), AppListActions {
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
@@ -61,20 +62,23 @@ class AppListViewModel @Inject constructor(
     }
     private val query = MutableStateFlow("")
 
-    private val currentList =
+    private val _currentList =
         MutableStateFlow<AppListType>(AppListType.New(app.getString(R.string.app_list_new)))
-    private val showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
-    private val sortBy = MutableStateFlow(AppListSortOrder.LAST_UPDATED)
+    val currentList = _currentList.asStateFlow()
+    private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
+    val showFilters = _showFilters.asStateFlow()
+
+    private val sortBy = MutableStateFlow(settingsManager.appListSortOrder.value)
+    private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible.value)
     private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
     val showOnboarding = settingsManager.showFilterOnboarding
 
     val appListModel: StateFlow<AppListModel> = scope.launchMolecule(mode = ContextClock) {
         AppListPresenter(
-            listFlow = currentList,
             appsFlow = apps,
-            areFiltersShownFlow = showFilters,
             sortByFlow = sortBy,
+            filterIncompatibleFlow = filterIncompatible,
             categoriesFlow = categories,
             filteredCategoryIdsFlow = filteredCategoryIds,
             repositoriesFlow = repositories,
@@ -86,7 +90,7 @@ class AppListViewModel @Inject constructor(
     @UiThread
     fun load(type: AppListType) {
         apps.value = null
-        currentList.value = type
+        _currentList.value = type
 
         viewModelScope.launch(Dispatchers.IO) {
             apps.value = loadApps(type)
@@ -112,37 +116,42 @@ class AppListViewModel @Inject constructor(
                 name = it.getName(localeList) ?: "Unknown App",
                 summary = it.getSummary(localeList) ?: "Unknown",
                 lastUpdated = it.lastUpdated,
+                isCompatible = it.isCompatible,
                 iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
                 categoryIds = it.categories?.toSet(),
             )
         }
     }
 
-    fun toggleListFilterVisibility() {
-        showFilters.update { !it }
+    override fun toggleFilterVisibility() {
+        _showFilters.update { !it }
     }
 
-    fun sortBy(sort: AppListSortOrder) {
+    override fun sortBy(sort: AppListSortOrder) {
         sortBy.update { sort }
     }
 
-    fun addCategory(category: String) {
+    override fun toggleFilterIncompatible() {
+        filterIncompatible.update { !it }
+    }
+
+    override fun addCategory(categoryId: String) {
         filteredCategoryIds.update {
             filteredCategoryIds.value.toMutableSet().apply {
-                add(category)
+                add(categoryId)
             }
         }
     }
 
-    fun removeCategory(category: String) {
+    override fun removeCategory(categoryId: String) {
         filteredCategoryIds.update {
             filteredCategoryIds.value.toMutableSet().apply {
-                remove(category)
+                remove(categoryId)
             }
         }
     }
 
-    fun addRepository(repoId: Long) {
+    override fun addRepository(repoId: Long) {
         filteredRepositoryIds.update {
             filteredRepositoryIds.value.toMutableSet().apply {
                 add(repoId)
@@ -150,7 +159,7 @@ class AppListViewModel @Inject constructor(
         }
     }
 
-    fun removeRepository(repoId: Long) {
+    override fun removeRepository(repoId: Long) {
         filteredRepositoryIds.update {
             filteredRepositoryIds.value.toMutableSet().apply {
                 remove(repoId)
@@ -158,9 +167,19 @@ class AppListViewModel @Inject constructor(
         }
     }
 
-    fun onSearch(query: String) {
+    override fun saveFilters() {
+        settingsManager.saveAppListFilter(sortBy.value, filterIncompatible.value)
+    }
+
+    override fun clearFilters() {
+        filterIncompatible.value = false
+        filteredCategoryIds.value = emptySet()
+        filteredRepositoryIds.value = emptySet()
+    }
+
+    override fun onSearch(query: String) {
         this.query.value = query
     }
 
-    fun onOnboardingSeen() = settingsManager.onFilterOnboardingSeen()
+    override fun onOnboardingSeen() = settingsManager.onFilterOnboardingSeen()
 }
