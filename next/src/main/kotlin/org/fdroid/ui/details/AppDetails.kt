@@ -66,7 +66,7 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
-import org.fdroid.ui.categories.CategoryCard
+import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.AsyncShimmerImage
@@ -362,7 +362,7 @@ fun AppDetails(
             ) {
                 FlowRow(modifier = Modifier.padding(start = 16.dp)) {
                     item.categories.forEach { item ->
-                        CategoryCard(item, onSelected = {
+                        CategoryChip(item, onSelected = {
                             val categoryNav = AppListType.Category(item.name, item.id)
                             onNav(NavigationKey.AppList(categoryNav))
                         })

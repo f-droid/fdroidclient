@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
-import org.fdroid.ui.categories.CategoryCard
+import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.repositories.RepositoryItem
@@ -146,7 +146,7 @@ fun AppsFilter(
             ) {
                 categories.forEach { item ->
                     val isSelected = item.id in info.model.filteredCategoryIds
-                    CategoryCard(item, selected = isSelected, onSelected = {
+                    CategoryChip(item, selected = isSelected, onSelected = {
                         if (isSelected) {
                             info.actions.removeCategory(item.id)
                         } else {

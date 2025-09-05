@@ -4,7 +4,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -171,9 +170,13 @@ fun Discover(
                 }
             }
             AnimatedVisibility(discoverModel is LoadedDiscoverModel) {
-                val categories = (discoverModel as LoadedDiscoverModel).categories
-                // TODO remove max height hack
-                CategoryList(categories, onNav, Modifier.heightIn(max = 2000.dp))
+                CategoryList(
+                    categories = (discoverModel as LoadedDiscoverModel).categories,
+                    onNav = onNav,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                )
             }
         }
     }

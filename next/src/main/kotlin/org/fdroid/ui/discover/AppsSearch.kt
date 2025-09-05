@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
-import org.fdroid.ui.categories.CategoryCard
+import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListRow
@@ -158,7 +158,7 @@ private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (Navigation
         )
         FlowRow {
             categories.forEach { item ->
-                CategoryCard(categoryItem = item, onSelected = {
+                CategoryChip(categoryItem = item, onSelected = {
                     val type = AppListType.Category(item.name, item.id)
                     val navKey = NavigationKey.AppList(type)
                     onNav(navKey)

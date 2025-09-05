@@ -18,7 +18,7 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 
 @Composable
-fun CategoryCard(
+fun CategoryChip(
     categoryItem: CategoryItem,
     onSelected: () -> Unit,
     modifier: Modifier = Modifier,
@@ -53,12 +53,12 @@ fun CategoryCard(
 fun CategoryCardPreview() {
     FDroidContent {
         Column {
-            CategoryCard(
+            CategoryChip(
                 CategoryItem("VPN & Proxy", "VPN & Proxy"),
                 selected = true,
                 onSelected = {},
             )
-            CategoryCard(
+            CategoryChip(
                 CategoryItem("VPN & Proxy", "VPN & Proxy"),
                 selected = false,
                 onSelected = {},

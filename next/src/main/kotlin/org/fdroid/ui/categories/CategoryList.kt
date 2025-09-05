@@ -1,13 +1,9 @@
 package org.fdroid.ui.categories
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +16,6 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.lists.AppListType
-import kotlin.math.max
 
 @Composable
 fun CategoryList(
@@ -28,26 +23,19 @@ fun CategoryList(
     onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (categories != null) Column {
-        val state = rememberLazyGridState()
-        LazyVerticalGrid(
-            state = state,
-            columns = GridCells.Adaptive(150.dp),
-            contentPadding = PaddingValues(12.dp),
-            userScrollEnabled = false,
-            modifier = modifier,
+    if (categories != null) Column(
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(R.string.main_menu__categories),
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 8.dp, start = 4.dp),
+        )
+        FlowRow(
+            horizontalArrangement = Arrangement.Start,
         ) {
-            item(key = "header", span = {
-                GridItemSpan(max(1, state.layoutInfo.maxSpan))
-            }) {
-                Text(
-                    text = stringResource(R.string.main_menu__categories),
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.padding(bottom = 8.dp, start = 4.dp),
-                )
-            }
-            items(categories, key = { it.name }) { category ->
-                CategoryCard(category, {
+            categories.forEach { category ->
+                CategoryChip(category, {
                     val type = AppListType.Category(category.name, category.id)
                     val navKey = NavigationKey.AppList(type)
                     onNav(navKey)
