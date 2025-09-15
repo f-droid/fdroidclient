@@ -94,11 +94,11 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
 @Composable
 fun AppCarouselPreview() {
     val apps = listOf(
-        AppDiscoverItem("", Names.randomName, isNew = true),
-        AppDiscoverItem("", Names.randomName, isNew = false),
-        AppDiscoverItem("", Names.randomName, isNew = false),
-        AppDiscoverItem("", Names.randomName, isNew = false),
-        AppDiscoverItem("", Names.randomName, isNew = false),
+        AppDiscoverItem("", Names.randomName),
+        AppDiscoverItem("", Names.randomName),
+        AppDiscoverItem("", Names.randomName),
+        AppDiscoverItem("", Names.randomName),
+        AppDiscoverItem("", Names.randomName),
     )
     FDroidContent {
         AppCarousel("Preview Apps", apps, onTitleTap = {}) {}

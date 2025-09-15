@@ -10,18 +10,20 @@ import org.fdroid.ui.categories.CategoryItem
 
 @Composable
 fun DiscoverPresenter(
-    appsFlow: Flow<List<AppDiscoverItem>>,
+    newAppsFlow: Flow<List<AppDiscoverItem>>,
+    recentlyUpdatedAppsFlow: Flow<List<AppDiscoverItem>>,
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
 ): DiscoverModel {
-    val apps = appsFlow.collectAsState(null).value
+    val newApps = newAppsFlow.collectAsState(null).value
+    val recentlyUpdatedApps = recentlyUpdatedAppsFlow.collectAsState(null).value
     val categories = categoriesFlow.collectAsState(null).value
     val searchResults = searchResultsFlow.collectAsState().value
 
-    return if (apps.isNullOrEmpty()) {
+    return if (newApps.isNullOrEmpty() || recentlyUpdatedApps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
-        if (apps == null) {
+        if (newApps == null && recentlyUpdatedApps == null) {
             LoadingDiscoverModel(false)
         } else if (repositories?.all { !it.enabled } == true) {
             NoEnabledReposDiscoverModel
@@ -33,8 +35,8 @@ fun DiscoverPresenter(
         }
     } else {
         LoadedDiscoverModel(
-            newApps = apps.filter { it.isNew },
-            recentlyUpdatedApps = apps.filter { !it.isNew },
+            newApps = newApps,
+            recentlyUpdatedApps = recentlyUpdatedApps,
             categories = categories?.groupBy { it.group },
             searchResults = searchResults,
         )

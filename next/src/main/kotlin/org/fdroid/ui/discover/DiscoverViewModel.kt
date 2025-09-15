@@ -19,7 +19,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
+import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.database.Repository
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
 import org.fdroid.ui.categories.CategoryItem
@@ -47,18 +49,16 @@ class DiscoverViewModel @Inject constructor(
     private val collator = Collator.getInstance(Locale.getDefault())
 
     val numUpdates = updatesManager.numUpdates
-    val apps = db.getAppDao().getAppOverviewItems().asFlow().map { list ->
+    val newApps = db.getAppDao().getNewAppsFlow().map { list ->
         list.mapNotNull {
-            val repository = repoManager.getRepository(it.repoId)
-                ?: return@mapNotNull null
-            AppDiscoverItem(
-                packageName = it.packageName,
-                name = it.getName(localeList) ?: "Unknown App",
-                isNew = it.lastUpdated == it.added,
-                lastUpdated = it.lastUpdated,
-                iconDownloadRequest = it.getIcon(localeList)
-                    ?.getDownloadRequest(repository),
-            )
+            val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+            it.toAppDiscoverItem(repository)
+        }
+    }
+    val recentlyUpdatedApps = db.getAppDao().getRecentlyUpdatedAppsFlow().map { list ->
+        list.mapNotNull {
+            val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+            it.toAppDiscoverItem(repository)
         }
     }
     private val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
@@ -74,7 +74,8 @@ class DiscoverViewModel @Inject constructor(
     val localeList = LocaleListCompat.getDefault()
     val discoverModel: StateFlow<DiscoverModel> = scope.launchMolecule(mode = ContextClock) {
         DiscoverPresenter(
-            appsFlow = apps,
+            newAppsFlow = newApps,
+            recentlyUpdatedAppsFlow = recentlyUpdatedApps,
             categoriesFlow = categories,
             repositoriesFlow = repoManager.repositoriesState,
             searchResultsFlow = searchResults,
@@ -140,4 +141,11 @@ class DiscoverViewModel @Inject constructor(
     fun onSearchCleared() {
         searchResults.value = null
     }
+
+    private fun AppOverviewItem.toAppDiscoverItem(repository: Repository) = AppDiscoverItem(
+        packageName = packageName,
+        name = getName(localeList) ?: "Unknown App",
+        lastUpdated = lastUpdated,
+        iconDownloadRequest = getIcon(localeList)?.getDownloadRequest(repository),
+    )
 }
