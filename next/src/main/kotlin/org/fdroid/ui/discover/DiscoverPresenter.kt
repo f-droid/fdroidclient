@@ -5,6 +5,7 @@ import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.Repository
+import org.fdroid.ui.categories.CategoryGroup
 import org.fdroid.ui.categories.CategoryItem
 
 @Composable
@@ -34,7 +35,7 @@ fun DiscoverPresenter(
         LoadedDiscoverModel(
             newApps = apps.filter { it.isNew },
             recentlyUpdatedApps = apps.filter { !it.isNew },
-            categories = categories,
+            categories = categories?.groupBy { it.group },
             searchResults = searchResults,
         )
     }
@@ -46,6 +47,6 @@ object NoEnabledReposDiscoverModel : DiscoverModel()
 data class LoadedDiscoverModel(
     val newApps: List<AppDiscoverItem>,
     val recentlyUpdatedApps: List<AppDiscoverItem>,
-    val categories: List<CategoryItem>?,
+    val categories: Map<CategoryGroup, List<CategoryItem>>?,
     val searchResults: SearchResults? = null,
 ) : DiscoverModel()

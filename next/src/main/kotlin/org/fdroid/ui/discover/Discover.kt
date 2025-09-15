@@ -171,10 +171,11 @@ fun Discover(
             }
             AnimatedVisibility(discoverModel is LoadedDiscoverModel) {
                 CategoryList(
-                    categories = (discoverModel as LoadedDiscoverModel).categories,
+                    categoryMap = (discoverModel as LoadedDiscoverModel).categories,
                     onNav = onNav,
                     modifier = Modifier
-                        .padding(16.dp)
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 16.dp)
                         .fillMaxWidth()
                 )
             }

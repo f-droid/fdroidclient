@@ -36,6 +36,16 @@
     <string name="filter_selected">selected</string>
     <string name="category">Category</string>
 
+    <string name="category_group_productivity">Productivity</string>
+    <string name="category_group_tools">Tools</string>
+    <string name="category_group_wallets">Digital Wallets</string>
+    <string name="category_group_media">Entertainment &amp; Media</string>
+    <string name="category_group_communication">Communication</string>
+    <string name="category_group_device">Device</string>
+    <string name="category_group_storage">Files &amp; Storage</string>
+    <string name="category_group_interests">Interests</string>
+    <string name="category_group_misc">Miscellaneous</string>
+
     <string name="author_by">By %1$s</string>
     <string name="last_updated">Last updated: %1$s</string>
     <!-- The placeholder in round brackets will be replaced with the size of the app -->

@@ -61,7 +61,7 @@ class DiscoverViewModel @Inject constructor(
             )
         }
     }
-    val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
+    private val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
         categories.map { category ->
             CategoryItem(
                 id = category.id,
