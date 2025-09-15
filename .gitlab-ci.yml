@@ -338,7 +338,7 @@ kvm jobs skipped:
     - printf "\x1b[32m${CI_SERVER_URL}/$CI_PROJECT_PATH/-/settings/ci_cd#js-cicd-variables-settings\n"
 
 
-kvm 23 default x86:
+kvm 24 default x86:
   <<: *kvm-template
 
 
