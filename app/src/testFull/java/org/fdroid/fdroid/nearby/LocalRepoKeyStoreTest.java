@@ -31,7 +31,7 @@ import java.util.jar.JarFile;
 import java.util.jar.JarOutputStream;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = {23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
+@Config(sdk = {24, 25, 32, 35}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
 public class LocalRepoKeyStoreTest {
 
     @Test
