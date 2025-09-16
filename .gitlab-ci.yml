@@ -300,9 +300,6 @@ libs database schema:
     - export AVD="$AVD_PACKAGE"
     - echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "$AVD"
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
-    - sed -i "s@hw.cpu.ncore.*@hw.cpu.ncore=$(getconf _NPROCESSORS_ONLN)@" $HOME/.android/avd/"$NAME_AVD".avd/config.ini
-    - getconf _NPROCESSORS_ONLN
-    - grep core $HOME/.android/avd/"$NAME_AVD".avd/config.ini
     - df -h
     - start-emulator.sh
     - ./gradlew installFullDebug
