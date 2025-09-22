@@ -8,6 +8,7 @@ import org.fdroid.database.AppPrefs
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
+import org.fdroid.install.InstallState
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
@@ -111,7 +112,20 @@ val testApp = AppDetailsItem(
         categories = listOf("Internet", "Multimedia"),
         isCompatible = true,
     ),
-    actions = AppDetailsActions({}, {}, {}, {}, {}, Intent(), Intent()),
+    actions = AppDetailsActions(
+        installAction = { _, _ -> },
+        requestUserConfirmation = { _, _ -> },
+        checkUserConfirmation = { _, _ -> },
+        cancelInstall = {},
+        allowBetaVersions = {},
+        ignoreAllUpdates = {},
+        ignoreThisUpdate = {},
+        shareApk = {},
+        uninstallApp = {},
+        launchIntent = Intent(),
+        shareIntent = Intent(),
+    ),
+    installState = InstallState.Unknown,
     appPrefs = AppPrefs("org.schabi.newpipe"),
     name = "New Pipe",
     summary = "Lightweight YouTube frontend",
@@ -149,7 +163,7 @@ val testApp = AppDetailsItem(
         testVersion2,
     ),
     installedVersion = testVersion2,
-    suggestedVersion = testVersion1,
+    suggestedVersion = null,
     possibleUpdate = testVersion1,
 )
 

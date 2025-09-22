@@ -1,6 +1,9 @@
 package org.fdroid.ui.details
 
 import android.text.format.Formatter
+import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,19 +15,29 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
@@ -38,8 +51,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.install.InstallState
 import org.fdroid.next.R
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.asRelativeTimeString
@@ -147,12 +164,83 @@ fun AppDetailsHeader(
         onPreferredRepoChanged = {},
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     )
+    // check user confirmation ON_RESUME to work around Android bug
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val currentInstallState by rememberUpdatedState(item.installState)
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                val state = currentInstallState
+                if (state is InstallState.UserConfirmationNeeded) {
+                    Log.i("AppDetailsHeader", "Resumed. Checking user confirmation... $state")
+                    item.actions.checkUserConfirmation(item.app.packageName, state)
+                }
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
+    }
     // Main Buttons
-    if (item.showOpenButton || item.mainButtonState != MainButtonState.NONE) Row(
+    val buttonLineModifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 8.dp)
+    if (item.mainButtonState == MainButtonState.PROGRESS) {
+        Row(
+            modifier = buttonLineModifier,
+            verticalAlignment = CenterVertically,
+        ) {
+            Column(
+                verticalArrangement = spacedBy(8.dp, CenterVertically),
+                modifier = Modifier.weight(1f)
+            ) {
+                val strRes = when (item.installState) {
+                    InstallState.Starting -> R.string.status_install_preparing
+                    is InstallState.PreApproved -> R.string.status_install_preparing
+                    is InstallState.Downloading -> R.string.downloading
+                    is InstallState.Installing -> R.string.installing
+                    is InstallState.UserConfirmationNeeded -> R.string.installing
+                    else -> -1
+                }
+                if (strRes >= 0) Text(
+                    text = stringResource(strRes),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                if (item.installState is InstallState.Downloading) {
+                    val animatedProgress by animateFloatAsState(
+                        targetValue = item.installState.downloadedBytes /
+                            item.installState.totalBytes.toFloat(),
+                        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
+                    )
+                    LinearWavyProgressIndicator(
+                        stopSize = 0.dp,
+                        progress = { animatedProgress },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                } else {
+                    LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth())
+                }
+            }
+            var cancelled by remember { mutableStateOf(false) }
+            IconButton(onClick = {
+                if (!cancelled) item.actions.cancelInstall(item.app.packageName)
+                cancelled = true
+            }) {
+                AnimatedVisibility(cancelled) {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                }
+                AnimatedVisibility(!cancelled) {
+                    Icon(
+                        imageVector = Icons.Default.Cancel,
+                        contentDescription = stringResource(R.string.cancel),
+                    )
+                }
+            }
+        }
+    } else if (item.showOpenButton || item.mainButtonState != MainButtonState.NONE) Row(
         horizontalArrangement = spacedBy(8.dp, CenterHorizontally),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = buttonLineModifier,
     ) {
         if (item.showOpenButton) {
             val context = LocalContext.current
@@ -166,7 +254,16 @@ fun AppDetailsHeader(
             }
         }
         if (item.mainButtonState != MainButtonState.NONE) {
-            Button(onClick = {}, modifier = Modifier.weight(1f)) {
+            // button is for either installing or updating
+            Button(
+                onClick = {
+                    require(item.suggestedVersion != null) {
+                        "suggestedVersion was null"
+                    }
+                    item.actions.installAction(item.app, item.suggestedVersion)
+                },
+                modifier = Modifier.weight(1f)
+            ) {
                 if (item.mainButtonState == MainButtonState.INSTALL) {
                     Text(stringResource(R.string.menu_install))
                 } else if (item.mainButtonState == MainButtonState.UPDATE) {
@@ -183,6 +280,17 @@ fun AppDetailsHeaderPreview() {
     FDroidContent {
         Column {
             AppDetailsHeader(testApp, PaddingValues())
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewProgress() {
+    FDroidContent {
+        Column {
+            val app = testApp.copy(installState = InstallState.Starting)
+            AppDetailsHeader(app, PaddingValues())
         }
     }
 }

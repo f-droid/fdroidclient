@@ -7,18 +7,26 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import androidx.annotation.UiThread
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import app.cash.molecule.RecompositionMode.Immediate
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import mu.KotlinLogging
 import org.fdroid.UpdateChecker
+import org.fdroid.database.AppMetadata
+import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
+import org.fdroid.install.AppInstallManager
+import org.fdroid.install.InstallState
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
@@ -26,12 +34,14 @@ import javax.inject.Inject
 @HiltViewModel
 class AppDetailsViewModel @Inject constructor(
     private val app: Application,
-    @IoDispatcher private val scope: CoroutineScope,
+    @param:IoDispatcher private val scope: CoroutineScope,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
     private val updateChecker: UpdateChecker,
     private val updatesManager: UpdatesManager,
+    private val appInstallManager: AppInstallManager,
 ) : AndroidViewModel(app) {
+    private val log = KotlinLogging.logger { }
     private val packageInfoFlow = MutableStateFlow<AppInfo?>(null)
 
     val appDetails: StateFlow<AppDetailsItem?> = scope.launchMolecule(
@@ -41,6 +51,7 @@ class AppDetailsViewModel @Inject constructor(
             db = db,
             repoManager = repoManager,
             updateChecker = updateChecker,
+            appInstallManager = appInstallManager,
             viewModel = this,
             packageInfoFlow = packageInfoFlow,
         )
@@ -48,6 +59,10 @@ class AppDetailsViewModel @Inject constructor(
 
     fun setAppDetails(packageName: String) {
         packageInfoFlow.value = null
+        loadPackageInfoFlow(packageName)
+    }
+
+    private fun loadPackageInfoFlow(packageName: String) {
         val packageManager = app.packageManager
         scope.launch {
             val packageInfo = try {
@@ -61,6 +76,57 @@ class AppDetailsViewModel @Inject constructor(
                 val intent = packageManager.getLaunchIntentForPackage(packageName)
                 AppInfo(packageName, packageInfo, intent)
             }
+        }
+    }
+
+    @UiThread
+    fun install(appMetadata: AppMetadata, version: AppVersion) {
+        val repo = repoManager.getRepository(version.repoId) ?: return // TODO
+        val icon = appDetails.value?.icon
+        viewModelScope.launch(Dispatchers.Main) {
+            val result = appInstallManager.install(appMetadata, version, repo, icon)
+            if (result is InstallState.Installed) {
+                // to reload packageInfoFlow with fresh packageInfo
+                loadPackageInfoFlow(appMetadata.packageName)
+            }
+        }
+    }
+
+    @UiThread
+    fun requestUserConfirmation(
+        packageName: String,
+        installState: InstallState.UserConfirmationNeeded,
+    ) {
+        scope.launch(Dispatchers.Main) {
+            val result = appInstallManager.requestUserConfirmation(packageName, installState)
+            if (result is InstallState.Installed) withContext(Dispatchers.Main) {
+                // to reload packageInfoFlow with fresh packageInfo
+                loadPackageInfoFlow(packageName)
+            }
+        }
+    }
+
+    @UiThread
+    fun checkUserConfirmation(
+        packageName: String,
+        installState: InstallState.UserConfirmationNeeded,
+    ) {
+        scope.launch(Dispatchers.Main) {
+            delay(500) // wait a moment to increase chance that state got updated
+            appInstallManager.checkUserConfirmation(packageName, installState)
+        }
+    }
+
+    @UiThread
+    fun cancelInstall(packageName: String) {
+        appInstallManager.cancel(packageName)
+    }
+
+    override fun onCleared() {
+        val packageName = packageInfoFlow.value?.packageName
+        log.info { "App details screen left: $packageName" }
+        packageName?.let {
+            appInstallManager.cleanUp(it)
         }
     }
 

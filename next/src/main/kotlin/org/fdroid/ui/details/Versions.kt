@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -30,6 +31,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
+import org.fdroid.database.AppVersion
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.next.R
@@ -41,6 +44,7 @@ import org.fdroid.ui.utils.testApp
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun Versions(
     item: AppDetailsItem,
+    scrollUp: suspend () -> Unit,
 ) {
     ExpandableSection(
         icon = rememberVectorPainter(Icons.Default.AccessTime),
@@ -53,12 +57,20 @@ fun Versions(
                     version = version,
                     isInstalled = item.installedVersion == version,
                     isSuggested = item.suggestedVersion == version,
-                    isInstallable = if (item.installedVersion == null) {
-                        true
+                    isInstallable = if (item.installState.showProgress) {
+                        false
                     } else {
-                        // TODO take compatibility and signer into account
-                        item.installedVersion.versionCode < version.versionCode
+                        if (item.installedVersion == null) {
+                            true
+                        } else {
+                            // TODO take compatibility and signer into account
+                            item.installedVersion.versionCode < version.versionCode
+                        }
                     },
+                    installAction = { version: AppVersion ->
+                        item.actions.installAction(item.app, version)
+                    },
+                    scrollUp = scrollUp,
                 )
             }
         }
@@ -71,6 +83,8 @@ fun Version(
     isInstalled: Boolean,
     isSuggested: Boolean,
     isInstallable: Boolean,
+    installAction: (AppVersion) -> Unit,
+    scrollUp: suspend () -> Unit,
 ) {
     val isPreview = LocalInspectionMode.current
     var expanded by rememberSaveable { mutableStateOf(isPreview) }
@@ -172,10 +186,18 @@ fun Version(
                         )
                     }
                 }
-                if (isInstallable) FDroidOutlineButton(
-                    text = stringResource(R.string.menu_install),
-                    onClick = {},
-                )
+                if (isInstallable) {
+                    val coroutineScope = rememberCoroutineScope()
+                    FDroidOutlineButton(
+                        text = stringResource(R.string.menu_install),
+                        onClick = {
+                            installAction(version as AppVersion)
+                            coroutineScope.launch {
+                                scrollUp()
+                            }
+                        },
+                    )
+                }
             }
         }
     }
@@ -185,6 +207,6 @@ fun Version(
 @Composable
 fun VersionsPreview() {
     FDroidContent {
-        Versions(testApp)
+        Versions(testApp) {}
     }
 }

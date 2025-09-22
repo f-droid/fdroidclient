@@ -13,12 +13,14 @@ import org.fdroid.download.DownloadRequest
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.v2.PackageVersion
+import org.fdroid.install.InstallState
 import org.fdroid.install.SessionInstallManager
 import org.fdroid.ui.categories.CategoryItem
 
 data class AppDetailsItem(
     val app: AppMetadata,
     val actions: AppDetailsActions,
+    val installState: InstallState,
     /**
      * The ID of the repo that is currently set as preferred.
      * Note that the repository ID of this [app] may be different.
@@ -45,7 +47,7 @@ data class AppDetailsItem(
     /**
      * The currently suggested version for installation.
      */
-    val suggestedVersion: PackageVersion? = null,
+    val suggestedVersion: AppVersion? = null,
     /**
      * Similar to [suggestedVersion], but doesn't obey [appPrefs] for ignoring versions.
      * This is useful for (un-)ignoring this version.
@@ -68,6 +70,7 @@ data class AppDetailsItem(
         repositories: List<Repository>,
         dbApp: App,
         actions: AppDetailsActions,
+        installState: InstallState,
         versions: List<AppVersion>?,
         installedVersion: AppVersion?,
         installedVersionCode: Long?,
@@ -80,6 +83,7 @@ data class AppDetailsItem(
     ) : this(
         app = dbApp.metadata,
         actions = actions,
+        installState = installState,
         preferredRepoId = preferredRepoId,
         repositories = repositories,
         name = dbApp.name ?: "Unknown App",
@@ -138,7 +142,9 @@ data class AppDetailsItem(
      */
     val mainButtonState: MainButtonState
         get() {
-            return if (installedVersionCode == null) { // app is not installed
+            return if (installState.showProgress) {
+                MainButtonState.PROGRESS
+            } else if (installedVersionCode == null) { // app is not installed
                 if (suggestedVersion == null) MainButtonState.NONE
                 else MainButtonState.INSTALL
             } else { // app is installed
@@ -163,7 +169,7 @@ data class AppDetailsItem(
             val targetSdk = suggestedVersion?.packageManifest?.targetSdkVersion
             // auto-updates are only available on SDK 31 and up
             return if (targetSdk != null && SDK_INT >= 31) {
-                !SessionInstallManager.isTargetSdkSupported(targetSdk)
+                !SessionInstallManager.isAutoUpdateSupported(targetSdk)
             } else {
                 false
             }
@@ -182,6 +188,16 @@ data class AppDetailsItem(
 }
 
 class AppDetailsActions(
+    val installAction: (AppMetadata, AppVersion) -> Unit,
+    val requestUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
+    /**
+     * A workaround for Android 10, 11, 12 and 13 where tapping outside the confirmation dialog
+     * dismisses it without any feedback for us.
+     * So when our activity resumes while we are in state [InstallState.UserConfirmationNeeded]
+     * we need to call this method, so we can manually check if our session progressed or not.
+     */
+    val checkUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
+    val cancelInstall: (String) -> Unit,
     val allowBetaVersions: () -> Unit,
     val ignoreAllUpdates: (() -> Unit)? = null,
     val ignoreThisUpdate: (() -> Unit)? = null,
@@ -195,6 +211,7 @@ enum class MainButtonState {
     NONE,
     INSTALL,
     UPDATE,
+    PROGRESS,
 }
 
 data class AntiFeature(

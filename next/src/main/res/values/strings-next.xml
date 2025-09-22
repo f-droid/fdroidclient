@@ -50,6 +50,7 @@
     <string name="last_updated">Last updated: %1$s</string>
     <!-- The placeholder in round brackets will be replaced with the size of the app -->
     <string name="last_updated_with_size">Last updated: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Preparing installation…</string>
     <string name="whats_new_title">What\'s new</string>
     <string name="donate_title">Donate</string>
     <string name="anti_features_title">This app has anti-features</string>

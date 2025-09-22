@@ -14,6 +14,7 @@ import org.fdroid.UpdateChecker
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
+import org.fdroid.install.AppInstallManager
 import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
@@ -25,6 +26,7 @@ fun DetailsPresenter(
     db: FDroidDatabase,
     repoManager: RepoManager,
     updateChecker: UpdateChecker,
+    appInstallManager: AppInstallManager,
     viewModel: AppDetailsViewModel,
     packageInfoFlow: StateFlow<AppInfo?>,
 ): AppDetailsItem? {
@@ -41,6 +43,7 @@ fun DetailsPresenter(
             repoManager.getRepository(repoId)
         }
     }
+    val installState = appInstallManager.getAppFlow(packageName).collectAsState().value
 
     val versions =
         db.getVersionDao().getAppVersions(packageName).asFlow().collectAsState(null).value
@@ -91,12 +94,17 @@ fun DetailsPresenter(
     Log.d(TAG, "   app '${app.name}' ($packageName) in ${repo.address}")
     Log.d(TAG, "   versions: ${versions?.size}")
     Log.d(TAG, "   appPrefs: $appPrefs")
+    Log.d(TAG, "   installState: $installState")
     return AppDetailsItem(
         repository = repo,
         preferredRepoId = preferredRepoId,
         repositories = repositories, // TODO maybe use emptyList() when only in F-Droid repo
         dbApp = app,
         actions = AppDetailsActions(
+            installAction = viewModel::install,
+            requestUserConfirmation = viewModel::requestUserConfirmation,
+            checkUserConfirmation = viewModel::checkUserConfirmation,
+            cancelInstall = viewModel::cancelInstall,
             allowBetaVersions = viewModel::allowBetaUpdates,
             ignoreAllUpdates = if (installedVersionCode == null) {
                 null
@@ -116,6 +124,7 @@ fun DetailsPresenter(
             launchIntent = packagePair.launchIntent,
             shareIntent = getShareIntent(repo, packageName, app.name ?: ""),
         ),
+        installState = installState,
         versions = versions,
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,

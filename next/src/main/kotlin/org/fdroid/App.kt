@@ -50,12 +50,8 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
             .crossfade(true)
             .components {
                 val downloadRequestKeyer = object : Keyer<DownloadRequest> {
-                    override fun key(
-                        data: DownloadRequest,
-                        options: Options
-                    ): String {
-                        return data.indexFile.sha256
-                            ?: (data.mirrors[0].baseUrl + data.indexFile.name)
+                    override fun key(data: DownloadRequest, options: Options): String {
+                        return data.getCacheKey()
                     }
                 }
                 add(downloadRequestKeyer)
@@ -84,3 +80,5 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
             .build()
     }
 }
+
+fun DownloadRequest.getCacheKey() = indexFile.sha256 ?: (mirrors[0].baseUrl + indexFile.name)

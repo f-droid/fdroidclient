@@ -1,5 +1,6 @@
 package org.fdroid.ui.details
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
@@ -41,6 +44,7 @@ import androidx.compose.material3.carousel.HorizontalUncontainedCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +55,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
@@ -64,6 +69,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.install.InstallState
 import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryChip
@@ -84,7 +90,9 @@ fun AppDetails(
     onBackNav: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
+    val context = LocalContext.current
     val topAppBarState = rememberTopAppBarState()
+    val snackbarHostState = remember { SnackbarHostState() }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     if (item == null) BigLoadingIndicator()
     else Scaffold(
@@ -92,10 +100,23 @@ fun AppDetails(
         topBar = {
             AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav)
         },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { innerPadding ->
+        // react to install state changes
+        LaunchedEffect(item.installState) {
+            val state = item.installState
+            if (state is InstallState.UserConfirmationNeeded) {
+                Log.i("AppDetails", "Requesting user confirmation... $state")
+                item.actions.requestUserConfirmation(item.app.packageName, state)
+            } else if (state is InstallState.Error) {
+                val msg = context.getString(R.string.install_error_notify_title, state.msg ?: "")
+                snackbarHostState.showSnackbar(msg)
+            }
+        }
+        val scrollState = rememberScrollState()
         Column(
             modifier = modifier
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .fillMaxWidth()
                 .padding(bottom = innerPadding.calculateBottomPadding()),
         ) {
@@ -329,7 +350,7 @@ fun AppDetails(
             }
             // Versions
             if (!item.versions.isNullOrEmpty()) {
-                Versions(item)
+                Versions(item) { scrollState.scrollTo(0) }
             }
             // Developer contact
             if (item.showAuthorContact) ExpandableSection(
