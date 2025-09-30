@@ -81,7 +81,7 @@ public class CompatibilityChecker {
         if (apk.targetSdkVersion < minInstallableTargetSdk) {
             incompatibleReasons.add(context.getString(
                     R.string.targetsdk_or_later,
-                    Utils.getAndroidVersionName(minInstallableTargetSdk)));
+                    Utils.getAndroidVersionName(apk.targetSdkVersion)));
         }
 
         if (apk.features != null) {
