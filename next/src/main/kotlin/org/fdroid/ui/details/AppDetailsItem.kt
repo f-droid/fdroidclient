@@ -2,6 +2,7 @@ package org.fdroid.ui.details
 
 import android.content.Intent
 import android.os.Build.VERSION.SDK_INT
+import androidx.activity.result.ActivityResult
 import androidx.annotation.VisibleForTesting
 import androidx.core.os.LocaleListCompat
 import org.fdroid.database.App
@@ -198,11 +199,12 @@ class AppDetailsActions(
      */
     val checkUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
     val cancelInstall: (String) -> Unit,
+    val onUninstallResult: (String, ActivityResult) -> Unit,
     val allowBetaVersions: () -> Unit,
     val ignoreAllUpdates: (() -> Unit)? = null,
     val ignoreThisUpdate: (() -> Unit)? = null,
     val shareApk: (() -> Unit)? = null,
-    val uninstallApp: (() -> Unit)? = null,
+    val uninstallIntent: Intent? = null,
     val launchIntent: Intent? = null,
     val shareIntent: Intent? = null,
 )

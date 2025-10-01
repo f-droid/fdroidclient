@@ -1,6 +1,8 @@
 package org.fdroid.ui.details
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Preview
@@ -24,6 +26,9 @@ fun AppDetailsMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
 ) {
+    val uninstallLauncher = rememberLauncherForActivityResult(StartActivityForResult()) {
+        item.actions.onUninstallResult(item.app.packageName, it)
+    }
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = onDismiss,
@@ -87,13 +92,13 @@ fun AppDetailsMenu(
                 onDismiss()
             },
         )
-        if (item.actions.uninstallApp != null) DropdownMenuItem(
+        if (item.actions.uninstallIntent != null) DropdownMenuItem(
             leadingIcon = {
                 Icon(Icons.Default.Delete, null)
             },
             text = { Text(stringResource(R.string.menu_uninstall)) },
             onClick = {
-                item.actions.uninstallApp()
+                uninstallLauncher.launch(item.actions.uninstallIntent)
                 onDismiss()
             },
         )

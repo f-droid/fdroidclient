@@ -24,4 +24,6 @@ sealed class InstallState(val showProgress: Boolean) {
     data object Installed : InstallState(false)
     data object UserAborted : InstallState(false)
     data class Error(val msg: String?) : InstallState(false)
+
+    data object Uninstalled : InstallState(false)
 }

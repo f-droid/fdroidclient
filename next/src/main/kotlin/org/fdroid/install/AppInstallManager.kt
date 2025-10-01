@@ -1,7 +1,10 @@
 package org.fdroid.install
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent.ACTION_DELETE
 import android.graphics.Bitmap
+import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
 import coil3.SingletonImageLoader
@@ -58,7 +61,7 @@ class AppInstallManager @Inject constructor(
         version: AppVersion,
         repo: Repository,
         iconDownloadRequest: DownloadRequest?,
-    ): InstallState? {
+    ): InstallState {
         val flow = apps.getOrPut(appMetadata.packageName) {
             MutableStateFlow(InstallState.Starting)
         }
@@ -194,6 +197,31 @@ class AppInstallManager @Inject constructor(
         val job = jobs[packageName]
         log.debug { "Canceling job for $packageName $job" }
         job?.cancel()
+    }
+
+    /**
+     * Must be called after receiving the result from the [ACTION_DELETE] uninstall Intent.
+     *
+     * Note: We are not using [android.content.pm.PackageInstaller.uninstall],
+     * because on Android 10 to 13 (at least) we don't get feedback
+     * when the user taps outside the confirmation dialog.
+     * Using this non-deprecated API ([ACTION_DELETE]) seems to work
+     * without issues everywhere.
+     */
+    @UiThread
+    fun onUninstallResult(packageName: String, activityResult: ActivityResult): InstallState {
+        val flow = apps.getOrPut(packageName) {
+            MutableStateFlow(InstallState.Unknown)
+        }
+        val result = when (activityResult.resultCode) {
+            Activity.RESULT_OK -> InstallState.Uninstalled
+            Activity.RESULT_FIRST_USER -> InstallState.UserAborted
+            else -> InstallState.UserAborted
+        }
+        val code = activityResult.data?.getIntExtra("android.intent.extra.INSTALL_RESULT", -1)
+        log.info { "Uninstall result received: ${activityResult.resultCode} => $result ($code)" }
+        flow.update { result }
+        return result
     }
 
     @UiThread

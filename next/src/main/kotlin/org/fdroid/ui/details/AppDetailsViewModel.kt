@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
+import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -120,6 +121,15 @@ class AppDetailsViewModel @Inject constructor(
     @UiThread
     fun cancelInstall(packageName: String) {
         appInstallManager.cancel(packageName)
+    }
+
+    @UiThread
+    fun onUninstallResult(packageName: String, activityResult: ActivityResult) {
+        val result = appInstallManager.onUninstallResult(packageName, activityResult)
+        if (result is InstallState.Uninstalled) {
+            // to reload packageInfoFlow with fresh packageInfo
+            loadPackageInfoFlow(packageName)
+        }
     }
 
     override fun onCleared() {

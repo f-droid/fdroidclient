@@ -1,6 +1,7 @@
 package org.fdroid.ui.details
 
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -105,6 +106,7 @@ fun DetailsPresenter(
             requestUserConfirmation = viewModel::requestUserConfirmation,
             checkUserConfirmation = viewModel::checkUserConfirmation,
             cancelInstall = viewModel::cancelInstall,
+            onUninstallResult = viewModel::onUninstallResult,
             allowBetaVersions = viewModel::allowBetaUpdates,
             ignoreAllUpdates = if (installedVersionCode == null) {
                 null
@@ -120,7 +122,12 @@ fun DetailsPresenter(
                 viewModel::ignoreThisUpdate
             },
             shareApk = null, // TODO
-            uninstallApp = null, // TODO
+            uninstallIntent = packagePair.packageInfo?.let {
+                Intent(Intent.ACTION_DELETE).apply {
+                    setData(Uri.fromParts("package", it.packageName, null))
+                    putExtra(Intent.EXTRA_RETURN_RESULT, true)
+                }
+            },
             launchIntent = packagePair.launchIntent,
             shareIntent = getShareIntent(repo, packageName, app.name ?: ""),
         ),
