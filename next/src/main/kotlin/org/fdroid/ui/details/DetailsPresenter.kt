@@ -16,6 +16,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
+import org.fdroid.install.InstallState
 import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
@@ -44,7 +45,8 @@ fun DetailsPresenter(
             repoManager.getRepository(repoId)
         }
     }
-    val installState = appInstallManager.getAppFlow(packageName).collectAsState().value
+    val installState =
+        appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
 
     val versions =
         db.getVersionDao().getAppVersions(packageName).asFlow().collectAsState(null).value

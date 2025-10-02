@@ -14,7 +14,11 @@ import mu.KotlinLogging
 import org.fdroid.download.coil.DownloadRequestFetcher
 import javax.inject.Inject
 
-data class PackageName(val packageName: String, val iconDownloadRequest: DownloadRequest?)
+data class PackageName(
+    val packageName: String,
+    val iconDownloadRequest: DownloadRequest?,
+    val warnOnError: Boolean = false,
+)
 
 class LocalIconFetcher(
     private val packageManager: PackageManager,
@@ -29,7 +33,7 @@ class LocalIconFetcher(
             val info = packageManager.getApplicationInfo(data.packageName, 0)
             info.loadUnbadgedIcon(packageManager)
         } catch (e: PackageManager.NameNotFoundException) {
-            log.error(e) { "Error getting icon from packageManager: " }
+            if (data.warnOnError) log.error(e) { "Error getting icon from packageManager: " }
             return downloadRequestFetcher?.fetch()
         }
 

@@ -164,6 +164,7 @@ class SessionInstallManager @Inject constructor(
     suspend fun install(
         sessionId: Int?,
         packageName: String,
+        state: InstallStateWithInfo,
         apkFile: File,
     ): InstallState = suspendCancellableCoroutine { cont ->
         val size = apkFile.length()
@@ -186,7 +187,14 @@ class SessionInstallManager @Inject constructor(
             context.unregisterReceiver(this)
             when (status) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    cont.resume(InstallState.Installed)
+                    val newState = InstallState.Installed(
+                        name = state.name,
+                        versionName = state.versionName,
+                        currentVersionName = state.currentVersionName,
+                        lastUpdated = state.lastUpdated,
+                        iconDownloadRequest = state.iconDownloadRequest,
+                    )
+                    cont.resume(newState)
                 }
                 PackageInstaller.STATUS_PENDING_USER_ACTION -> {
                     val flags = if (SDK_INT >= 31) {
@@ -199,7 +207,12 @@ class SessionInstallManager @Inject constructor(
                     val progress = installer.getSessionInfo(sessionId)?.progress
                         ?: error("No session info for $sessionId")
                     cont.resume(
-                        InstallState.UserConfirmationNeeded(sessionId, pendingIntent, progress)
+                        InstallState.UserConfirmationNeeded(
+                            state = state,
+                            sessionId = sessionId,
+                            intent = pendingIntent,
+                            progress = progress,
+                        )
                     )
                 }
                 else -> {
@@ -209,7 +222,15 @@ class SessionInstallManager @Inject constructor(
                         msg != null &&
                         msg.contains("PreapprovalDetails")
                     ) {
-                        cont.resume(InstallState.PreApprovalFailed)
+                        val newState = InstallState.PreApproved(
+                            name = state.name,
+                            versionName = state.versionName,
+                            currentVersionName = state.currentVersionName,
+                            lastUpdated = state.lastUpdated,
+                            iconDownloadRequest = state.iconDownloadRequest,
+                            result = PreApprovalResult.Error(msg),
+                        )
+                        cont.resume(newState)
                     } else {
                         cont.resume(InstallState.Error(msg))
                     }
@@ -258,7 +279,14 @@ class SessionInstallManager @Inject constructor(
             context.unregisterReceiver(this)
             when (status) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    cont.resume(InstallState.Installed)
+                    val newState = InstallState.Installed(
+                        name = installState.name,
+                        versionName = installState.versionName,
+                        currentVersionName = installState.currentVersionName,
+                        lastUpdated = installState.lastUpdated,
+                        iconDownloadRequest = installState.iconDownloadRequest,
+                    )
+                    cont.resume(newState)
                 }
                 PackageInstaller.STATUS_PENDING_USER_ACTION -> {
                     error("Got STATUS_PENDING_USER_ACTION again")

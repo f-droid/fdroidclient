@@ -1,0 +1,108 @@
+package org.fdroid.install
+
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
+import android.content.Context
+import android.content.Intent
+import androidx.annotation.StringRes
+import org.fdroid.MainActivity
+import org.fdroid.next.R
+import org.fdroid.ui.IntentRouter.Companion.ACTION_MY_APPS
+import kotlin.math.roundToInt
+
+data class InstallNotificationState(
+    val apps: List<AppState>,
+    val numBytesDownloaded: Long,
+    val numTotalBytes: Long,
+) {
+    val percent: Int? = if (numTotalBytes > 0) {
+        ((numBytesDownloaded.toFloat() / numTotalBytes) * 100).roundToInt()
+    } else {
+        null
+    }
+    val needsConfirmation: Boolean
+        get() = apps.find { it.category == AppStateCategory.NEEDS_CONFIRMATION } != null
+    val isInProgress: Boolean = apps.any { it.category != AppStateCategory.INSTALLED }
+
+    fun getTitle(context: Context): String {
+        val numActiveApps: Int = apps.count { it.category != AppStateCategory.INSTALLED }
+        val installTitle = context.resources.getQuantityString(
+            R.plurals.notification_installing_title,
+            numActiveApps,
+            numActiveApps,
+        )
+        val needsUserConfirmation =
+            apps.find { it.category == AppStateCategory.NEEDS_CONFIRMATION } != null
+        return if (needsUserConfirmation) {
+            val s = context.getString(R.string.notification_installing_confirmation)
+            "$s $installTitle"
+        } else {
+            installTitle
+        }
+    }
+
+    fun getBigText(context: Context): String {
+        // split app apps into their categories
+        val installing = mutableListOf<AppState>()
+        val toConfirm = mutableListOf<AppState>()
+        val installed = mutableListOf<AppState>()
+        apps.forEach { appState ->
+            when (appState.category) {
+                AppStateCategory.INSTALLING -> installing.add(appState)
+                AppStateCategory.NEEDS_CONFIRMATION -> toConfirm.add(appState)
+                AppStateCategory.INSTALLED -> installed.add(appState)
+            }
+        }
+        val sb = StringBuilder()
+        fun printApps(@StringRes titleRes: Int, list: List<AppState>, showTitle: Boolean = true) {
+            if (list.isEmpty()) return
+            if (showTitle) {
+                if (sb.isNotEmpty()) sb.append("\n⠀\n")
+                sb.append(context.getString(titleRes))
+            }
+            sb.append("\n")
+            list.forEach { appState ->
+                sb.append("• ").append(appState.displayStr).append("\n")
+            }
+        }
+
+        val showInstallTitle = toConfirm.isNotEmpty() || installed.isNotEmpty()
+        printApps(R.string.notification_installing_section_confirmation, toConfirm)
+        printApps(R.string.notification_installing_section_installing, installing, showInstallTitle)
+        printApps(R.string.notification_installing_section_installed, installed)
+        return sb.toString()
+    }
+
+    fun getPendingIntent(context: Context): PendingIntent {
+        val i = Intent(ACTION_MY_APPS).apply {
+            setClass(context, MainActivity::class.java)
+        }
+        val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+        return PendingIntent.getActivity(context, 0, i, flags)
+    }
+}
+
+data class AppState(
+    val packageName: String,
+    val category: AppStateCategory,
+    val name: String,
+    val installVersionName: String,
+    val currentVersionName: String?,
+) {
+    val displayStr: String
+        get() {
+            val versionStr = if (currentVersionName == null) {
+                installVersionName
+            } else {
+                "$currentVersionName → $installVersionName"
+            }
+            return "$name $versionStr"
+        }
+}
+
+enum class AppStateCategory {
+    INSTALLING,
+    NEEDS_CONFIRMATION,
+    INSTALLED
+}

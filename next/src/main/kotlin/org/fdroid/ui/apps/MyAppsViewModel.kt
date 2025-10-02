@@ -12,36 +12,37 @@ import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import mu.KotlinLogging
 import org.fdroid.database.AppListItem
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
-import org.fdroid.download.DownloadRequest
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
+import org.fdroid.install.AppInstallManager
+import org.fdroid.install.InstallState
 import org.fdroid.updates.UpdatesManager
+import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
-
-data class InstalledAppItem(
-    val packageName: String,
-    val name: String,
-    val installedVersionName: String,
-    val lastUpdated: Long,
-    val iconDownloadRequest: DownloadRequest? = null,
-)
 
 @HiltViewModel
 class MyAppsViewModel @Inject constructor(
     app: Application,
+    @param:IoDispatcher private val scope: CoroutineScope,
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
+    private val appInstallManager: AppInstallManager,
     private val updatesManager: UpdatesManager,
     private val repoManager: RepoManager,
 ) : AndroidViewModel(app) {
 
+    private val log = KotlinLogging.logger { }
     private val localeList = LocaleListCompat.getDefault()
-    private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+    private val moleculeScope =
+        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
     private val updates = updatesManager.updates
     private val installedApps = MutableStateFlow<List<InstalledAppItem>?>(null)
@@ -62,8 +63,9 @@ class MyAppsViewModel @Inject constructor(
     }
     private val searchQuery = savedStateHandle.getMutableStateFlow<String>("query", "")
     private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
-    val myAppsModel: StateFlow<MyAppsModel> = scope.launchMolecule(mode = ContextClock) {
+    val myAppsModel: StateFlow<MyAppsModel> = moleculeScope.launchMolecule(mode = ContextClock) {
         MyAppsPresenter(
+            appInstallStatesFlow = appInstallManager.appInstallStates,
             appUpdatesFlow = updates,
             installedAppsFlow = installedApps,
             searchQueryFlow = searchQuery,
@@ -96,5 +98,12 @@ class MyAppsViewModel @Inject constructor(
             db.getAppDao().getInstalledAppListItems(application.packageManager).apply {
                 observeForever(installedAppsObserver)
             }
+    }
+
+    fun confirmAppInstall(packageName: String, state: InstallState.UserConfirmationNeeded) {
+        log.info { "Asking user to confirm install of $packageName..." }
+        scope.launch(Dispatchers.Main) {
+            appInstallManager.requestUserConfirmation(packageName, state)
+        }
     }
 }

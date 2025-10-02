@@ -31,6 +31,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.install.InstallState
 import org.fdroid.next.R
 import org.fdroid.ui.apps.MyApps
 import org.fdroid.ui.apps.MyAppsInfo
@@ -116,6 +117,10 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             myAppsViewModel.changeSortOrder(sort)
 
                         override fun search(query: String) = myAppsViewModel.search(query)
+                        override fun confirmAppInstall(
+                            packageName: String,
+                            state: InstallState.UserConfirmationNeeded,
+                        ) = myAppsViewModel.confirmAppInstall(packageName, state)
                     }
                     MyApps(
                         myAppsInfo = myAppsInfo,

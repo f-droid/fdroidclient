@@ -68,7 +68,7 @@ fun Versions(
                         }
                     },
                     installAction = { version: AppVersion ->
-                        item.actions.installAction(item.app, version)
+                        item.actions.installAction(item.app, version, item.icon)
                     },
                     scrollUp = scrollUp,
                 )

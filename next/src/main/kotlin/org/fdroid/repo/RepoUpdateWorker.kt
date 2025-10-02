@@ -22,6 +22,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import mu.KotlinLogging
 import org.fdroid.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.NotificationManager
 import java.util.concurrent.TimeUnit
@@ -93,11 +94,14 @@ class RepoUpdateWorker @AssistedInject constructor(
         }
     }
 
+    private val log = KotlinLogging.logger { }
+
     override suspend fun doWork(): Result {
+        log.info { "Starting RepoUpdateWorker... $runAttemptCount" }
         try {
             setForeground(getForegroundInfo())
         } catch (e: Exception) {
-            Log.e(TAG, "Error while running setForeground", e)
+            log.error(e) { "Error while running setForeground" }
         }
         val repoId = inputData.getLong("repoId", -1)
         return try {
@@ -105,7 +109,7 @@ class RepoUpdateWorker @AssistedInject constructor(
             else repoUpdateManager.updateRepos()
             Result.success()
         } catch (e: Exception) {
-            Log.e(TAG, "Error updating repos", e)
+            log.error(e) { "Error updating repos" }
             Result.failure()
         }
     }

@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent.ACTION_DELETE
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
+import androidx.core.os.LocaleListCompat
 import coil3.SingletonImageLoader
 import coil3.memory.MemoryCache
 import coil3.request.ImageRequest
@@ -19,10 +21,15 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.updateAndGet
 import mu.KotlinLogging
+import org.fdroid.LocaleChooser.getBestLocale
+import org.fdroid.NotificationManager
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
@@ -32,7 +39,6 @@ import org.fdroid.getCacheKey
 import org.fdroid.utils.IoDispatcher
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.ConcurrentLinkedQueue
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -41,35 +47,33 @@ class AppInstallManager @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val downloaderFactory: DownloaderFactory,
     private val sessionInstallManager: SessionInstallManager,
+    private val notificationManager: NotificationManager,
     @param:IoDispatcher private val scope: CoroutineScope,
 ) {
 
     private val log = KotlinLogging.logger { }
-    private val queue = ConcurrentLinkedQueue<AppVersion>()
-    private val apps = ConcurrentHashMap<String, MutableStateFlow<InstallState>>()
+    private val apps = MutableStateFlow<Map<String, InstallState>>(emptyMap())
     private val jobs = ConcurrentHashMap<String, Job>()
+    val appInstallStates = apps.asStateFlow()
 
-    fun getAppFlow(packageName: String): StateFlow<InstallState> {
-        return apps.getOrPut(packageName) {
-            MutableStateFlow(InstallState.Unknown)
-        }
+    fun getAppFlow(packageName: String): Flow<InstallState> {
+        return apps.map { it[packageName] ?: InstallState.Unknown }
     }
 
     @UiThread
     suspend fun install(
         appMetadata: AppMetadata,
         version: AppVersion,
+        currentVersionName: String?,
         repo: Repository,
         iconDownloadRequest: DownloadRequest?,
     ): InstallState {
-        val flow = apps.getOrPut(appMetadata.packageName) {
-            MutableStateFlow(InstallState.Starting)
-        }
+        val packageName = appMetadata.packageName
         val job = scope.async {
-            installInt(flow, appMetadata, version, repo, iconDownloadRequest)
+            installInt(appMetadata, version, currentVersionName, repo, iconDownloadRequest)
         }
         // keep track of this job, in case we want to cancel it
-        jobs.put(appMetadata.packageName, job)
+        jobs.put(packageName, job)
         // wait for job to return
         val result = try {
             job.await()
@@ -77,21 +81,31 @@ class AppInstallManager @Inject constructor(
             InstallState.UserAborted
         } finally {
             // remove job as it has completed
-            jobs.remove(appMetadata.packageName)
+            jobs.remove(packageName)
         }
-        flow.update { result }
+        apps.updateApp(packageName) { result }
+        onStatesUpdated()
         return result
     }
 
     @WorkerThread
     private suspend fun installInt(
-        flow: MutableStateFlow<InstallState>,
         appMetadata: AppMetadata,
         version: AppVersion,
+        currentVersionName: String?,
         repo: Repository,
         iconDownloadRequest: DownloadRequest?,
     ): InstallState {
-        flow.update { InstallState.Starting }
+        apps.updateApp(appMetadata.packageName) {
+            InstallState.Starting(
+                name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault()) ?: "Unknown",
+                versionName = version.versionName,
+                currentVersionName = currentVersionName,
+                lastUpdated = version.added,
+                iconDownloadRequest = iconDownloadRequest,
+            )
+        }
+        onStatesUpdated()
         val coroutineContext = currentCoroutineContext()
         // get the icon for pre-approval (usually in memory cache, so should be quick)
         coroutineContext.ensureActive()
@@ -104,18 +118,38 @@ class AppInstallManager @Inject constructor(
             is PreApprovalResult.Error -> InstallState.Error(preApprovalResult.errorMsg)
             is PreApprovalResult.UserAborted -> InstallState.UserAborted
             else -> {
-                flow.update { InstallState.PreApproved(preApprovalResult) }
+                apps.checkAndUpdateApp(appMetadata.packageName) {
+                    InstallState.PreApproved(
+                        name = it.name,
+                        versionName = it.versionName,
+                        currentVersionName = it.currentVersionName,
+                        lastUpdated = it.lastUpdated,
+                        iconDownloadRequest = it.iconDownloadRequest,
+                        result = preApprovalResult,
+                    )
+                }
                 val sessionId = (preApprovalResult as? PreApprovalResult.Success)?.sessionId
                 coroutineContext.ensureActive()
                 // download file
                 val file = File(context.cacheDir, version.file.sha256)
                 val downloader =
-                    downloaderFactory.create(repo, android.net.Uri.EMPTY, version.file, file)
+                    downloaderFactory.create(repo, Uri.EMPTY, version.file, file)
+                val now = System.currentTimeMillis()
                 downloader.setListener { bytesRead, totalBytes ->
                     coroutineContext.ensureActive()
-                    flow.update {
-                        InstallState.Downloading(sessionId, bytesRead, totalBytes)
+                    apps.checkAndUpdateApp(appMetadata.packageName) {
+                        InstallState.Downloading(
+                            name = it.name,
+                            versionName = it.versionName,
+                            currentVersionName = it.currentVersionName,
+                            lastUpdated = it.lastUpdated,
+                            iconDownloadRequest = it.iconDownloadRequest,
+                            downloadedBytes = bytesRead,
+                            totalBytes = totalBytes,
+                            startMillis = now,
+                        )
                     }
+                    onStatesUpdated()
                 }
                 try {
                     downloader.download()
@@ -127,12 +161,23 @@ class AppInstallManager @Inject constructor(
                     return InstallState.Error(msg)
                 }
                 coroutineContext.ensureActive()
-                flow.update { InstallState.Installing(sessionId) }
-                val result = sessionInstallManager.install(sessionId, version.packageName, file)
-                if (result is InstallState.PreApprovalFailed) {
+                val newState = apps.checkAndUpdateApp(appMetadata.packageName) {
+                    InstallState.Installing(
+                        name = it.name,
+                        versionName = it.versionName,
+                        currentVersionName = it.currentVersionName,
+                        lastUpdated = it.lastUpdated,
+                        iconDownloadRequest = it.iconDownloadRequest,
+                    )
+                }
+                val result =
+                    sessionInstallManager.install(sessionId, version.packageName, newState, file)
+                if (result is InstallState.PreApproved &&
+                    result.result is PreApprovalResult.Error
+                ) {
                     // if pre-approval failed (e.g. due to app label mismatch),
                     // then try to install again, this time not using the pre-approved session
-                    sessionInstallManager.install(null, version.packageName, file)
+                    sessionInstallManager.install(null, version.packageName, newState, file)
                 } else {
                     result
                 }
@@ -148,13 +193,16 @@ class AppInstallManager @Inject constructor(
         packageName: String,
         installState: InstallState.UserConfirmationNeeded,
     ): InstallState? {
-        val flow = apps[packageName] ?: error("No state for $packageName $installState")
-        if (flow.value !is InstallState.UserConfirmationNeeded) {
-            log.error { "Unexpected state: ${flow.value}" }
+        val state = apps.value[packageName] ?: error("No state for $packageName $installState")
+        if (state !is InstallState.UserConfirmationNeeded) {
+            log.error { "Unexpected state: $state" }
             return null
         }
+        log.info { "Requesting user confirmation for $packageName" }
         val result = sessionInstallManager.requestUserConfirmation(installState)
-        flow.update { result }
+        log.info { "User confirmation for $packageName $result" }
+        apps.updateApp(packageName) { result }
+        onStatesUpdated()
         return result
     }
 
@@ -170,9 +218,9 @@ class AppInstallManager @Inject constructor(
         packageName: String,
         installState: InstallState.UserConfirmationNeeded,
     ) {
-        val flow = apps[packageName] ?: error("No state for $packageName $installState")
-        if (flow.value !is InstallState.UserConfirmationNeeded) {
-            log.debug { "State has changed. Now: ${flow.value}" }
+        val state = apps.value[packageName] ?: error("No state for $packageName $installState")
+        if (state !is InstallState.UserConfirmationNeeded) {
+            log.debug { "State has changed. Now: $state" }
             return
         }
         val sessionInfo =
@@ -210,9 +258,6 @@ class AppInstallManager @Inject constructor(
      */
     @UiThread
     fun onUninstallResult(packageName: String, activityResult: ActivityResult): InstallState {
-        val flow = apps.getOrPut(packageName) {
-            MutableStateFlow(InstallState.Unknown)
-        }
         val result = when (activityResult.resultCode) {
             Activity.RESULT_OK -> InstallState.Uninstalled
             Activity.RESULT_FIRST_USER -> InstallState.UserAborted
@@ -220,17 +265,67 @@ class AppInstallManager @Inject constructor(
         }
         val code = activityResult.data?.getIntExtra("android.intent.extra.INSTALL_RESULT", -1)
         log.info { "Uninstall result received: ${activityResult.resultCode} => $result ($code)" }
-        flow.update { result }
+        apps.updateApp(packageName) { result }
         return result
     }
 
     @UiThread
     fun cleanUp(packageName: String) {
-        val flow = apps[packageName] ?: return
-        if (!flow.value.showProgress) {
-            log.info { "Cleaning up state for $packageName ${flow.value}" }
+        val state = apps.value[packageName] ?: return
+        if (!state.showProgress) {
+            log.info { "Cleaning up state for $packageName $state" }
             jobs.remove(packageName)?.cancel()
-            apps.remove(packageName)
+            apps.update { oldApps ->
+                oldApps.toMutableMap().apply {
+                    remove(packageName)
+                }
+            }
+        }
+    }
+
+    private fun onStatesUpdated() {
+        val appStates = mutableListOf<AppState>()
+        var numBytesDownloaded = 0L
+        var numTotalBytes = 0L
+        // go throw all apps that have active state
+        apps.value.toMap().forEach { packageName, state ->
+            // assign a category to each in progress state
+            val appStateCategory = when (state) {
+                is InstallState.Installing, is InstallState.PreApproved,
+                is InstallState.Starting -> AppStateCategory.INSTALLING
+                is InstallState.Downloading -> {
+                    numBytesDownloaded += state.downloadedBytes
+                    numTotalBytes += state.totalBytes
+                    AppStateCategory.INSTALLING
+                }
+                is InstallState.Installed -> AppStateCategory.INSTALLED
+                is InstallState.UserConfirmationNeeded -> AppStateCategory.NEEDS_CONFIRMATION
+                else -> null
+            }
+            // track app state for in progress apps
+            val appState = appStateCategory?.let {
+                // all states that get a category above must be InstallStateWithInfo
+                state as InstallStateWithInfo
+                AppState(
+                    packageName = packageName,
+                    category = it,
+                    name = state.name,
+                    installVersionName = state.versionName,
+                    currentVersionName = state.currentVersionName,
+                )
+            }
+            if (appState != null) appStates.add(appState)
+        }
+        val notificationState = InstallNotificationState(
+            apps = appStates,
+            numBytesDownloaded = numBytesDownloaded,
+            numTotalBytes = numTotalBytes,
+        )
+        if (notificationState.isInProgress) {
+            notificationManager.showAppInstallNotification(notificationState)
+        } else {
+            // cancel notification if no more apps are in progress
+            notificationManager.cancelAppInstallNotification()
         }
     }
 
@@ -253,6 +348,30 @@ class AppInstallManager @Inject constructor(
                 SingletonImageLoader.get(context).execute(request).image?.toBitmap()
             }
         }
+    }
+
+    private fun MutableStateFlow<Map<String, InstallState>>.updateApp(
+        packageName: String,
+        function: (InstallState) -> InstallState,
+    ) = update { oldMap ->
+        val newMap = oldMap.toMutableMap()
+        newMap[packageName] = function(newMap[packageName] ?: InstallState.Unknown)
+        newMap
+    }
+
+    private fun MutableStateFlow<Map<String, InstallState>>.checkAndUpdateApp(
+        packageName: String,
+        function: (InstallStateWithInfo) -> InstallStateWithInfo,
+    ): InstallStateWithInfo {
+        return updateAndGet { oldMap ->
+            val oldState = oldMap[packageName]
+            check(oldState is InstallStateWithInfo) {
+                "State for $packageName was $oldState"
+            }
+            val newMap = oldMap.toMutableMap()
+            newMap[packageName] = function(oldState)
+            newMap
+        }[packageName] as InstallStateWithInfo
     }
 
 }

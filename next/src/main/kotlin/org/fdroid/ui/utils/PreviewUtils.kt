@@ -9,6 +9,8 @@ import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
 import org.fdroid.install.InstallState
+import org.fdroid.ui.apps.MyAppsInfo
+import org.fdroid.ui.apps.MyAppsModel
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
@@ -113,7 +115,7 @@ val testApp = AppDetailsItem(
         isCompatible = true,
     ),
     actions = AppDetailsActions(
-        installAction = { _, _ -> },
+        installAction = { _, _, _ -> },
         requestUserConfirmation = { _, _ -> },
         checkUserConfirmation = { _, _ -> },
         cancelInstall = {},
@@ -203,4 +205,16 @@ fun getAppListInfo(model: AppListModel) = object : AppListInfo {
     override val list: AppListType = AppListType.New("New")
     override val showFilters: Boolean = false
     override val showOnboarding: Boolean = false
+}
+
+fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
+    override val model = model
+    override fun refresh() {}
+    override fun changeSortOrder(sort: AppListSortOrder) {}
+    override fun search(query: String) {}
+    override fun confirmAppInstall(
+        packageName: String,
+        state: InstallState.UserConfirmationNeeded,
+    ) {
+    }
 }

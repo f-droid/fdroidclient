@@ -14,13 +14,17 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
     private val log = KotlinLogging.logger { }
     private val packageNameRegex = "[A-Za-z\\d_.]+".toRegex()
 
+    companion object {
+        const val ACTION_MY_APPS = "org.fdroid.action.MY_APPS"
+    }
+
     override fun accept(value: Intent) {
         val intent = value
         log.info { "Incoming intent: $intent" }
         val uri = intent.data
         if (ACTION_MAIN == intent.action) {
             // launcher intent, do nothing
-        } else if (SDK_INT >= 24 && ACTION_SHOW_APP_INFO == intent.action) { // App Details
+        } else if (ACTION_SHOW_APP_INFO == intent.action) { // App Details
             val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: return
             if (packageName.matches(packageNameRegex)) {
                 backStack.add(NavigationKey.AppDetails(packageName))
@@ -39,6 +43,10 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
             } else if (uri.path?.matches(packagesUrlRegex) == true) {
                 val packageName = uri.lastPathSegment ?: return
                 backStack.add(NavigationKey.AppDetails(packageName))
+            }
+        } else if (ACTION_MY_APPS == intent.action) {
+            if (backStack.lastOrNull() !is NavigationKey.MyApps) {
+                backStack.add(NavigationKey.MyApps)
             }
         } else {
             log.warn { "Unknown intent: $intent - uri: $uri $SDK_INT" }

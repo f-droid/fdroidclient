@@ -189,7 +189,7 @@ data class AppDetailsItem(
 }
 
 class AppDetailsActions(
-    val installAction: (AppMetadata, AppVersion) -> Unit,
+    val installAction: (AppMetadata, AppVersion, DownloadRequest?) -> Unit,
     val requestUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
     /**
      * A workaround for Android 10, 11, 12 and 13 where tapping outside the confirmation dialog

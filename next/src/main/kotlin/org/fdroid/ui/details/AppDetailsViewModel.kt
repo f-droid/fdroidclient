@@ -24,6 +24,7 @@ import org.fdroid.UpdateChecker
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.download.DownloadRequest
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
@@ -45,7 +46,7 @@ class AppDetailsViewModel @Inject constructor(
     private val log = KotlinLogging.logger { }
     private val packageInfoFlow = MutableStateFlow<AppInfo?>(null)
 
-    val appDetails: StateFlow<AppDetailsItem?> = scope.launchMolecule(
+    val appDetails: StateFlow<AppDetailsItem?> = viewModelScope.launchMolecule(
         context = Dispatchers.IO, mode = Immediate,
     ) {
         DetailsPresenter(
@@ -81,11 +82,19 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     @UiThread
-    fun install(appMetadata: AppMetadata, version: AppVersion) {
-        val repo = repoManager.getRepository(version.repoId) ?: return // TODO
-        val icon = appDetails.value?.icon
-        viewModelScope.launch(Dispatchers.Main) {
-            val result = appInstallManager.install(appMetadata, version, repo, icon)
+    fun install(
+        appMetadata: AppMetadata,
+        version: AppVersion,
+        iconDownloadRequest: DownloadRequest?,
+    ) {
+        scope.launch(Dispatchers.Main) {
+            val result = appInstallManager.install(
+                appMetadata = appMetadata,
+                version = version,
+                currentVersionName = packageInfoFlow.value?.packageInfo?.versionName,
+                repo = repoManager.getRepository(version.repoId) ?: return@launch, // TODO
+                iconDownloadRequest = iconDownloadRequest,
+            )
             if (result is InstallState.Installed) {
                 // to reload packageInfoFlow with fresh packageInfo
                 loadPackageInfoFlow(appMetadata.packageName)

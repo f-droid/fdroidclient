@@ -196,7 +196,7 @@ fun AppDetailsHeader(
                 modifier = Modifier.weight(1f)
             ) {
                 val strRes = when (item.installState) {
-                    InstallState.Starting -> R.string.status_install_preparing
+                    is InstallState.Starting -> R.string.status_install_preparing
                     is InstallState.PreApproved -> R.string.status_install_preparing
                     is InstallState.Downloading -> R.string.downloading
                     is InstallState.Installing -> R.string.installing
@@ -209,8 +209,7 @@ fun AppDetailsHeader(
                 )
                 if (item.installState is InstallState.Downloading) {
                     val animatedProgress by animateFloatAsState(
-                        targetValue = item.installState.downloadedBytes /
-                            item.installState.totalBytes.toFloat(),
+                        targetValue = item.installState.progress,
                         animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
                     )
                     LinearWavyProgressIndicator(
@@ -260,7 +259,7 @@ fun AppDetailsHeader(
                     require(item.suggestedVersion != null) {
                         "suggestedVersion was null"
                     }
-                    item.actions.installAction(item.app, item.suggestedVersion)
+                    item.actions.installAction(item.app, item.suggestedVersion, item.icon)
                 },
                 modifier = Modifier.weight(1f)
             ) {
@@ -289,7 +288,7 @@ fun AppDetailsHeaderPreview() {
 private fun PreviewProgress() {
     FDroidContent {
         Column {
-            val app = testApp.copy(installState = InstallState.Starting)
+            val app = testApp.copy(installState = InstallState.Starting("", "", "", 23))
             AppDetailsHeader(app, PaddingValues())
         }
     }
