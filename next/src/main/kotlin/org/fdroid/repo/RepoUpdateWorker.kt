@@ -23,8 +23,8 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import mu.KotlinLogging
-import org.fdroid.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.NotificationManager
+import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.MINUTES
 

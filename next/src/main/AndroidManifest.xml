@@ -67,6 +67,10 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name="org.fdroid.install.AppInstallService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
         <!-- needed for declaring foregroundServiceType for WorkManager -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"

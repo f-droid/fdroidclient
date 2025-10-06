@@ -2,6 +2,7 @@ package org.fdroid.install
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.Intent.ACTION_DELETE
 import android.graphics.Bitmap
 import android.net.Uri
@@ -321,7 +322,16 @@ class AppInstallManager @Inject constructor(
             numBytesDownloaded = numBytesDownloaded,
             numTotalBytes = numTotalBytes,
         )
+        val serviceIntent = Intent(context, AppInstallService::class.java)
+        // stop foreground service, if no app is installing and it is still running
+        if (!notificationState.isInstallingSomeApp && AppInstallService.isServiceRunning) {
+            context.stopService(serviceIntent)
+        }
         if (notificationState.isInProgress) {
+            // start foreground service if at least one app is installing and not already running
+            if (notificationState.isInstallingSomeApp && !AppInstallService.isServiceRunning) {
+                context.startService(serviceIntent)
+            }
             notificationManager.showAppInstallNotification(notificationState)
         } else {
             // cancel notification if no more apps are in progress

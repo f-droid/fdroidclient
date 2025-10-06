@@ -17,17 +17,19 @@ import org.fdroid.install.InstallNotificationState
 import org.fdroid.next.R
 import javax.inject.Inject
 
-const val NOTIFICATION_ID_REPO_UPDATE: Int = 0
-const val NOTIFICATION_ID_APP_INSTALLS: Int = 1
-const val CHANNEL_UPDATES = "update-channel"
-const val CHANNEL_INSTALLS = "install-channel"
-
 class NotificationManager @Inject constructor(
     @param:ApplicationContext private val context: Context,
 ) {
 
     private val nm = NotificationManagerCompat.from(context)
     private var lastRepoUpdateNotification = 0L
+
+    companion object {
+        const val NOTIFICATION_ID_REPO_UPDATE: Int = 0
+        const val NOTIFICATION_ID_APP_INSTALLS: Int = 1
+        private const val CHANNEL_UPDATES = "update-channel"
+        private const val CHANNEL_INSTALLS = "install-channel"
+    }
 
     init {
         createNotificationChannels()
@@ -88,8 +90,12 @@ class NotificationManager @Inject constructor(
             .setContentTitle(state.getTitle(context))
             .setStyle(BigTextStyle().bigText(state.getBigText(context)))
             .setContentIntent(pi)
-            .setOngoing(true)
-            .setProgress(100, state.percent ?: 0, state.percent == null)
+            .setOngoing(state.isInstallingSomeApp)
+            .apply {
+                if (state.isInstallingSomeApp) {
+                    setProgress(100, state.percent ?: 0, state.percent == null)
+                }
+            }
         return builder
     }
 

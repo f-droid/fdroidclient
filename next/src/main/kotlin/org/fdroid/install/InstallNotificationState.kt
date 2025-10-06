@@ -16,14 +16,27 @@ data class InstallNotificationState(
     val numBytesDownloaded: Long,
     val numTotalBytes: Long,
 ) {
+
+    constructor() : this(emptyList(), 0, 0)
+
     val percent: Int? = if (numTotalBytes > 0) {
         ((numBytesDownloaded.toFloat() / numTotalBytes) * 100).roundToInt()
     } else {
         null
     }
-    val needsConfirmation: Boolean
-        get() = apps.find { it.category == AppStateCategory.NEEDS_CONFIRMATION } != null
+
+    /**
+     * Returns true if there are apps that have an installation in progress which could be
+     * waiting for user confirmation or downloading, or waiting for system installer.
+     */
     val isInProgress: Boolean = apps.any { it.category != AppStateCategory.INSTALLED }
+
+    /**
+     * Returns true if there is at least one app either downloading for actually installing.
+     * If there are only apps that have been installed already or are waiting for user confirmation,
+     * this will return false.
+     */
+    val isInstallingSomeApp: Boolean = apps.any { it.category == AppStateCategory.INSTALLING }
 
     fun getTitle(context: Context): String {
         val numActiveApps: Int = apps.count { it.category != AppStateCategory.INSTALLED }
