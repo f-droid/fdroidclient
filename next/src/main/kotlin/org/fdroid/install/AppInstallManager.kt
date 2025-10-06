@@ -113,12 +113,17 @@ class AppInstallManager @Inject constructor(
         val icon = getIcon(iconDownloadRequest)
         // request pre-approval from user (if available)
         coroutineContext.ensureActive()
-        val preApprovalResult = sessionInstallManager.requestPreapproval(appMetadata, icon)
+        val preApprovalResult = sessionInstallManager.requestPreapproval(
+            app = appMetadata,
+            icon = icon,
+            isUpdate = currentVersionName != null,
+            version = version,
+        )
         // continue depending on result, abort early if no approval was given
         return when (preApprovalResult) {
             is PreApprovalResult.Error -> InstallState.Error(preApprovalResult.errorMsg)
             is PreApprovalResult.UserAborted -> InstallState.UserAborted
-            else -> {
+            is PreApprovalResult.Success, PreApprovalResult.NotSupported -> {
                 apps.checkAndUpdateApp(appMetadata.packageName) {
                     InstallState.PreApproved(
                         name = it.name,

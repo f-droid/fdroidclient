@@ -30,6 +30,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppMetadata
+import org.fdroid.database.AppVersion
 import org.fdroid.utils.IoDispatcher
 import java.io.File
 import javax.inject.Inject
@@ -60,11 +61,12 @@ class SessionInstallManager @Inject constructor(
             if (SDK_INT == 32 && targetSdk >= 29) return true
             if (SDK_INT == 33 && targetSdk >= 30) return true
             if (SDK_INT == 34 && targetSdk >= 31) return true
+            if (SDK_INT == 35 && targetSdk >= 33) return true
             // This needs to be adjusted as new Android versions are released
             // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
             // https://cs.android.com/android/platform/superproject/+/android-16.0.0_r2:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=329;drc=73caa0299d9196ddeefe4f659f557fb880f6536d
-            // current code requires targetSdk 33 on SDK 35+
-            return SDK_INT >= 35 && targetSdk >= 33
+            // current code requires targetSdk 34 on SDK 36+
+            return SDK_INT >= 36 && targetSdk >= 34
         }
     }
 
@@ -86,8 +88,16 @@ class SessionInstallManager @Inject constructor(
     /**
      * Requests installation pre-approval (if available on this device).
      */
-    suspend fun requestPreapproval(app: AppMetadata, icon: Bitmap?): PreApprovalResult {
-        return if (SDK_INT >= 34) {
+    suspend fun requestPreapproval(
+        app: AppMetadata,
+        icon: Bitmap?,
+        isUpdate: Boolean,
+        version: AppVersion
+    ): PreApprovalResult {
+        return if (isUpdate && canDoAutoUpdate(version)) {
+            // should not be needed, so we say not supported
+            PreApprovalResult.NotSupported
+        } else if (SDK_INT >= 34) {
             try {
                 preapproval(app, icon)
             } catch (e: Exception) {
@@ -335,6 +345,31 @@ class SessionInstallManager @Inject constructor(
             params.setRequestUpdateOwnership(true)
         }
         return params
+    }
+
+    private fun canDoAutoUpdate(version: AppVersion): Boolean {
+        if (SDK_INT < 31) return false
+        val targetSdkVersion = version.manifest.targetSdkVersion ?: return false
+        // docs: https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
+        return if (isAutoUpdateSupported(targetSdkVersion)) {
+            val ourPackageName = context.packageName
+            if (ourPackageName == version.packageName) return true
+            val sourceInfo = try {
+                context.packageManager.getInstallSourceInfo(version.packageName)
+            } catch (e: Exception) {
+                log.error(e) { "Could not get package info: " }
+                return false
+            }
+            if (SDK_INT >= 34 && sourceInfo.updateOwnerPackageName == ourPackageName) {
+                true
+            } else if (sourceInfo.installingPackageName == ourPackageName) {
+                true
+            } else {
+                false
+            }
+        } else {
+            false
+        }
     }
 
     private fun getInstallIntentSender(
