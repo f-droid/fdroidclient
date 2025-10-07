@@ -57,7 +57,7 @@ android {
     buildTypes {
         // use proguard on debug too since we have unknowingly broken
         // release builds before.
-        all {
+        configureEach {
             manifestPlaceholders = [applicationLabel: APP_NAME]
             minifyEnabled true
             shrinkResources true
@@ -91,7 +91,7 @@ android {
             applicationIdSuffix ".basic"
         }
     }
-    applicationVariants.all { variant ->
+    applicationVariants.configureEach { variant ->
         variant.resValue "string", "applicationId", variant.applicationId
     }
 
@@ -182,6 +182,8 @@ dependencies {
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.swiperefreshlayout
     implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.documentfile
+    implementation libs.androidx.localbroadcastmanager
     implementation libs.androidx.work.runtime
     implementation libs.guava // somehow needed for work-runtime to function
 
@@ -204,7 +206,7 @@ dependencies {
     implementation libs.rxandroid
 
     implementation libs.glide
-    implementation(libs.glide.compose)
+    implementation libs.glide.compose
     annotationProcessor libs.glide.compiler
 
     implementation libs.okhttp
