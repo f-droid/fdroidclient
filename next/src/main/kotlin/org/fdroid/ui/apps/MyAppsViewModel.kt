@@ -82,7 +82,9 @@ class MyAppsViewModel @Inject constructor(
     }
 
     fun updateAll() {
-        updatesManager.updateAll()
+        scope.launch {
+            updatesManager.updateAll()
+        }
     }
 
     fun search(query: String) {

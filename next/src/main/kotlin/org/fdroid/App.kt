@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.compose.runtime.Composer
 import androidx.compose.runtime.ExperimentalComposeRuntimeApi
+import androidx.compose.runtime.tooling.ComposeStackTraceMode
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import coil3.ImageLoader
@@ -22,6 +23,7 @@ import org.fdroid.download.PackageName
 import org.fdroid.download.coil.DownloadRequestFetcher
 import org.fdroid.next.BuildConfig
 import org.fdroid.repo.RepoUpdateWorker
+import org.fdroid.updates.AppUpdateWorker
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -41,8 +43,11 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
     @OptIn(ExperimentalComposeRuntimeApi::class)
     override fun onCreate() {
         super.onCreate()
-        Composer.setDiagnosticStackTraceEnabled(BuildConfig.DEBUG)
-        RepoUpdateWorker.Companion.scheduleOrCancel(applicationContext)
+        if (BuildConfig.DEBUG) {
+            Composer.setDiagnosticStackTraceMode(ComposeStackTraceMode.SourceInformation)
+        }
+        RepoUpdateWorker.scheduleOrCancel(applicationContext)
+        AppUpdateWorker.scheduleOrCancel(applicationContext)
     }
 
     override fun newImageLoader(context: Context): ImageLoader {

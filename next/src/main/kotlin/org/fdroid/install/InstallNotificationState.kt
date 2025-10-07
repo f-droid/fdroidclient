@@ -43,6 +43,8 @@ data class InstallNotificationState(
      */
     private val isUpdatingApps: Boolean = apps.all { it.currentVersionName != null }
 
+    val numInstalled: Int get() = apps.count { it.category == AppStateCategory.INSTALLED }
+
     fun getTitle(context: Context): String {
         val titleRes = if (isUpdatingApps) {
             R.plurals.notification_updating_title
@@ -94,6 +96,24 @@ data class InstallNotificationState(
         printApps(R.string.notification_installing_section_confirmation, toConfirm)
         printApps(R.string.notification_installing_section_installing, installing, showInstallTitle)
         printApps(R.string.notification_installing_section_installed, installed)
+        return sb.toString()
+    }
+
+    fun getSuccessTitle(context: Context): String {
+        return context.resources.getQuantityString(
+            R.plurals.notification_update_success_title,
+            numInstalled,
+            numInstalled,
+        )
+    }
+
+    fun getSuccessBigText(): String {
+        val sb = StringBuilder()
+        apps.forEach { appState ->
+            if (appState.category == AppStateCategory.INSTALLED) {
+                sb.append(appState.displayStr).append("\n")
+            }
+        }
         return sb.toString()
     }
 

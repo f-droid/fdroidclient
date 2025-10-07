@@ -1,10 +1,14 @@
 package org.fdroid.ui.utils
 
+import android.app.ActivityManager
+import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 import android.content.Context
 import android.content.Intent
+import android.os.PowerManager
 import android.text.format.DateUtils
 import android.util.Log
 import androidx.compose.ui.platform.UriHandler
+import androidx.core.content.ContextCompat
 import java.text.Normalizer
 import java.text.Normalizer.Form.NFKD
 
@@ -42,4 +46,22 @@ fun Long.asRelativeTimeString(): String {
         DateUtils.MINUTE_IN_MILLIS,
         DateUtils.FORMAT_ABBREV_ALL
     ).toString()
+}
+
+fun canStartForegroundService(context: Context): Boolean {
+    val powerManager = ContextCompat.getSystemService(context, PowerManager::class.java)
+        ?: return false
+    return powerManager.isIgnoringBatteryOptimizations(context.packageName) ||
+        context.isAppInForeground()
+}
+
+fun Context.isAppInForeground(): Boolean {
+    val activityManager = ContextCompat.getSystemService(this, ActivityManager::class.java)
+    val runningAppProcesses = activityManager?.runningAppProcesses ?: return false
+    for (appProcess in runningAppProcesses) {
+        if (appProcess.importance == IMPORTANCE_FOREGROUND &&
+            appProcess.processName == packageName
+        ) return true
+    }
+    return false
 }

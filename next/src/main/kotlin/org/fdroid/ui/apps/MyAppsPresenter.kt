@@ -27,6 +27,7 @@ fun MyAppsPresenter(
     val sortOrder = sortOrderFlow.collectAsState().value
     val processedPackageNames = mutableSetOf<String>()
 
+    // TODO process updates first
     val installingApps = appInstallStates.mapNotNull { (packageName, state) ->
         if (state is InstallStateWithInfo) {
             processedPackageNames.add(packageName)

@@ -37,12 +37,16 @@ class AppInstallService : Service() {
     ): Int {
         log.info { "onStartCommand" }
         val notificationState = InstallNotificationState()
-        ServiceCompat.startForeground(
-            this,
-            NotificationManager.NOTIFICATION_ID_APP_INSTALLS,
-            notificationManager.getAppInstallNotification(notificationState).build(),
-            if (SDK_INT >= 30) FOREGROUND_SERVICE_TYPE_MANIFEST else 0,
-        )
+        try {
+            ServiceCompat.startForeground(
+                this,
+                NotificationManager.NOTIFICATION_ID_APP_INSTALLS,
+                notificationManager.getAppInstallNotification(notificationState).build(),
+                if (SDK_INT >= 30) FOREGROUND_SERVICE_TYPE_MANIFEST else 0,
+            )
+        } catch (e: Exception) {
+            log.error(e) { "Error starting foreground service: " }
+        }
         return super.onStartCommand(intent, flags, startId)
     }
 

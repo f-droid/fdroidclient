@@ -31,6 +31,7 @@ import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
+import org.fdroid.ui.utils.isAppInForeground
 import org.fdroid.utils.IoDispatcher
 import java.io.File
 import javax.inject.Inject
@@ -94,10 +95,15 @@ class SessionInstallManager @Inject constructor(
         isUpdate: Boolean,
         version: AppVersion
     ): PreApprovalResult {
-        return if (isUpdate && canDoAutoUpdate(version)) {
+        return if (!context.isAppInForeground()) {
+            log.info { "App not in foreground, pre-approval not supported." }
+            PreApprovalResult.NotSupported
+        } else if (isUpdate && canDoAutoUpdate(version)) {
             // should not be needed, so we say not supported
+            log.info { "Can do auto-update pre-approval not needed." }
             PreApprovalResult.NotSupported
         } else if (SDK_INT >= 34) {
+            log.info { "Requesting pre-approval..." }
             try {
                 preapproval(app, icon)
             } catch (e: Exception) {

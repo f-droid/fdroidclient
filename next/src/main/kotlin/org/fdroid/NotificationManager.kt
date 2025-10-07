@@ -27,8 +27,10 @@ class NotificationManager @Inject constructor(
     companion object {
         const val NOTIFICATION_ID_REPO_UPDATE: Int = 0
         const val NOTIFICATION_ID_APP_INSTALLS: Int = 1
+        const val NOTIFICATION_ID_APP_INSTALL_SUCCESS: Int = 2
         private const val CHANNEL_UPDATES = "update-channel"
         private const val CHANNEL_INSTALLS = "install-channel"
+        private const val CHANNEL_INSTALL_SUCCESS = "install-success-channel"
     }
 
     init {
@@ -44,6 +46,10 @@ class NotificationManager @Inject constructor(
             NotificationChannelCompat.Builder(CHANNEL_INSTALLS, IMPORTANCE_LOW)
                 .setName(s(R.string.notification_channel_installs_title))
                 .setDescription(s(R.string.notification_channel_installs_description))
+                .build(),
+            NotificationChannelCompat.Builder(CHANNEL_INSTALL_SUCCESS, IMPORTANCE_LOW)
+                .setName(s(R.string.notification_channel_install_success_title))
+                .setDescription(s(R.string.notification_channel_install_success_description))
                 .build(),
         )
         nm.createNotificationChannelsCompat(channels)
@@ -74,6 +80,31 @@ class NotificationManager @Inject constructor(
         .setOngoing(true)
         .setProgress(100, progress ?: 0, progress == null)
 
+    // TODO pass in bigText with apps and their version changes
+    fun showAppUpdatesAvailableNotification(numUpdates: Int) {
+        val n = getAppUpdatesAvailableNotification(numUpdates).build()
+        if (checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+            // TODO different ID
+            nm.notify(NOTIFICATION_ID_REPO_UPDATE, n)
+        }
+    }
+
+    private fun getAppUpdatesAvailableNotification(numUpdates: Int): NotificationCompat.Builder {
+        val title = context.resources.getQuantityString(
+            R.plurals.notification_summary_app_updates,
+            numUpdates, numUpdates,
+        )
+        val text = context.getString(R.string.notification_title_summary_app_update_available)
+        // TODO different channel
+        return NotificationCompat.Builder(context, CHANNEL_UPDATES)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setPriority(PRIORITY_HIGH)
+            .setContentTitle(title)
+            .setContentText(text)
+            .setOngoing(false)
+            .setAutoCancel(true)
+    }
+
     fun showAppInstallNotification(installNotificationState: InstallNotificationState) {
         // TODO we may need some throttling when many apps download at the same time
         val n = getAppInstallNotification(installNotificationState).build()
@@ -103,29 +134,23 @@ class NotificationManager @Inject constructor(
         nm.cancel(NOTIFICATION_ID_APP_INSTALLS)
     }
 
-    // TODO pass in bigText with apps and their version changes
-    fun showAppUpdatesAvailableNotification(numUpdates: Int) {
-        val n = getAppUpdatesAvailableNotification(numUpdates).build()
+    fun showInstallSuccessNotification(installNotificationState: InstallNotificationState) {
+        val n = getInstallSuccessNotification(installNotificationState).build()
         if (checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
-            // TODO different ID
-            nm.notify(NOTIFICATION_ID_REPO_UPDATE, n)
+            nm.notify(NOTIFICATION_ID_APP_INSTALL_SUCCESS, n)
         }
     }
 
-    private fun getAppUpdatesAvailableNotification(numUpdates: Int): NotificationCompat.Builder {
-        val title = context.resources.getQuantityString(
-            R.plurals.notification_summary_app_updates,
-            numUpdates, numUpdates,
-        )
-        val text = context.getString(R.string.notification_title_summary_app_update_available)
-        // TODO different channel
-        return NotificationCompat.Builder(context, CHANNEL_UPDATES)
+    fun getInstallSuccessNotification(state: InstallNotificationState): NotificationCompat.Builder {
+        val pi = state.getPendingIntent(context)
+        val builder = NotificationCompat.Builder(context, CHANNEL_INSTALL_SUCCESS)
             .setSmallIcon(R.drawable.ic_notification)
-            .setPriority(PRIORITY_HIGH)
-            .setContentTitle(title)
-            .setContentText(text)
-            .setOngoing(false)
+            .setCategory(CATEGORY_SERVICE)
+            .setContentTitle(state.getSuccessTitle(context))
+            .setStyle(BigTextStyle().bigText(state.getSuccessBigText()))
+            .setContentIntent(pi)
             .setAutoCancel(true)
+        return builder
     }
 
     private fun s(@StringRes id: Int): String {

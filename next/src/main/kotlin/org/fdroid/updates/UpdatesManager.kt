@@ -2,8 +2,10 @@ package org.fdroid.updates
 
 import androidx.core.os.LocaleListCompat
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
@@ -65,10 +67,11 @@ class UpdatesManager @Inject constructor(
         _numUpdates.value = updates.size
     }
 
-    fun updateAll() {
+    suspend fun updateAll(): List<Job> {
+        val appsToUpdate = updates.value ?: updates.first() ?: return emptyList()
         val concurrencyLimit = min(Runtime.getRuntime().availableProcessors(), 8)
         val semaphore = Semaphore(concurrencyLimit)
-        updates.value?.forEach { update ->
+        return appsToUpdate.map { update ->
             // launch a new co-routine for each app to update
             coroutineScope.launch {
                 // suspend here until we get a permit from the semaphore (there's free workers)

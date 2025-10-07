@@ -56,6 +56,46 @@ class AppInstallManager @Inject constructor(
     private val apps = MutableStateFlow<Map<String, InstallState>>(emptyMap())
     private val jobs = ConcurrentHashMap<String, Job>()
     val appInstallStates = apps.asStateFlow()
+    val installNotificationState: InstallNotificationState
+        get() {
+            val appStates = mutableListOf<AppState>()
+            var numBytesDownloaded = 0L
+            var numTotalBytes = 0L
+            // go throw all apps that have active state
+            apps.value.toMap().forEach { packageName, state ->
+                // assign a category to each in progress state
+                val appStateCategory = when (state) {
+                    is InstallState.Installing, is InstallState.PreApproved,
+                    is InstallState.Starting -> AppStateCategory.INSTALLING
+                    is InstallState.Downloading -> {
+                        numBytesDownloaded += state.downloadedBytes
+                        numTotalBytes += state.totalBytes
+                        AppStateCategory.INSTALLING
+                    }
+                    is InstallState.Installed -> AppStateCategory.INSTALLED
+                    is InstallState.UserConfirmationNeeded -> AppStateCategory.NEEDS_CONFIRMATION
+                    else -> null
+                }
+                // track app state for in progress apps
+                val appState = appStateCategory?.let {
+                    // all states that get a category above must be InstallStateWithInfo
+                    state as InstallStateWithInfo
+                    AppState(
+                        packageName = packageName,
+                        category = it,
+                        name = state.name,
+                        installVersionName = state.versionName,
+                        currentVersionName = state.currentVersionName,
+                    )
+                }
+                if (appState != null) appStates.add(appState)
+            }
+            return InstallNotificationState(
+                apps = appStates,
+                numBytesDownloaded = numBytesDownloaded,
+                numTotalBytes = numTotalBytes,
+            )
+        }
 
     fun getAppFlow(packageName: String): Flow<InstallState> {
         return apps.map { it[packageName] ?: InstallState.Unknown }
@@ -290,43 +330,7 @@ class AppInstallManager @Inject constructor(
     }
 
     private fun onStatesUpdated() {
-        val appStates = mutableListOf<AppState>()
-        var numBytesDownloaded = 0L
-        var numTotalBytes = 0L
-        // go throw all apps that have active state
-        apps.value.toMap().forEach { packageName, state ->
-            // assign a category to each in progress state
-            val appStateCategory = when (state) {
-                is InstallState.Installing, is InstallState.PreApproved,
-                is InstallState.Starting -> AppStateCategory.INSTALLING
-                is InstallState.Downloading -> {
-                    numBytesDownloaded += state.downloadedBytes
-                    numTotalBytes += state.totalBytes
-                    AppStateCategory.INSTALLING
-                }
-                is InstallState.Installed -> AppStateCategory.INSTALLED
-                is InstallState.UserConfirmationNeeded -> AppStateCategory.NEEDS_CONFIRMATION
-                else -> null
-            }
-            // track app state for in progress apps
-            val appState = appStateCategory?.let {
-                // all states that get a category above must be InstallStateWithInfo
-                state as InstallStateWithInfo
-                AppState(
-                    packageName = packageName,
-                    category = it,
-                    name = state.name,
-                    installVersionName = state.versionName,
-                    currentVersionName = state.currentVersionName,
-                )
-            }
-            if (appState != null) appStates.add(appState)
-        }
-        val notificationState = InstallNotificationState(
-            apps = appStates,
-            numBytesDownloaded = numBytesDownloaded,
-            numTotalBytes = numTotalBytes,
-        )
+        val notificationState = installNotificationState
         val serviceIntent = Intent(context, AppInstallService::class.java)
         // stop foreground service, if no app is installing and it is still running
         if (!notificationState.isInstallingSomeApp && AppInstallService.isServiceRunning) {
@@ -335,7 +339,11 @@ class AppInstallManager @Inject constructor(
         if (notificationState.isInProgress) {
             // start foreground service if at least one app is installing and not already running
             if (notificationState.isInstallingSomeApp && !AppInstallService.isServiceRunning) {
-                context.startService(serviceIntent)
+                try {
+                    context.startService(serviceIntent)
+                } catch (e: Exception) {
+                    log.error { "Couldn't start service: $e ${e.message}" }
+                }
             }
             notificationManager.showAppInstallNotification(notificationState)
         } else {
