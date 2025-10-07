@@ -113,6 +113,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
 
                         override fun refresh() = myAppsViewModel.refresh()
+                        override fun updateAll() = myAppsViewModel.updateAll()
                         override fun changeSortOrder(sort: AppListSortOrder) =
                             myAppsViewModel.changeSortOrder(sort)
 

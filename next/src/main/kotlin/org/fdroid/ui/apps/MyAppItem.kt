@@ -21,6 +21,7 @@ data class InstallingAppItem(
 }
 
 data class AppUpdateItem(
+    val repoId: Long,
     override val packageName: String,
     override val name: String,
     val installedVersionName: String,

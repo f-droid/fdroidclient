@@ -210,6 +210,7 @@ fun getAppListInfo(model: AppListModel) = object : AppListInfo {
 fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
     override val model = model
     override fun refresh() {}
+    override fun updateAll() {}
     override fun changeSortOrder(sort: AppListSortOrder) {}
     override fun search(query: String) {}
     override fun confirmAppInstall(

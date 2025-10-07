@@ -5,20 +5,28 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import mu.KotlinLogging
+import org.fdroid.database.AppVersion
 import org.fdroid.database.DbUpdateChecker
+import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
+import org.fdroid.install.AppInstallManager
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.min
 
 @Singleton
 class UpdatesManager @Inject constructor(
+    private val db: FDroidDatabase,
     private val dbUpdateChecker: DbUpdateChecker,
-    @IoDispatcher private val coroutineScope: CoroutineScope,
     private val repoManager: RepoManager,
+    private val appInstallManager: AppInstallManager,
+    @param:IoDispatcher private val coroutineScope: CoroutineScope,
 ) {
     private val log = KotlinLogging.logger { }
 
@@ -38,6 +46,7 @@ class UpdatesManager @Inject constructor(
             log.info { "Checking for updates..." }
             dbUpdateChecker.getUpdatableApps(onlyFromPreferredRepo = true).map { update ->
                 AppUpdateItem(
+                    repoId = update.repoId,
                     packageName = update.packageName,
                     name = update.name ?: "Unknown app",
                     installedVersionName = update.installedVersionName,
@@ -54,5 +63,31 @@ class UpdatesManager @Inject constructor(
         }
         _updates.value = updates
         _numUpdates.value = updates.size
+    }
+
+    fun updateAll() {
+        val concurrencyLimit = min(Runtime.getRuntime().availableProcessors(), 8)
+        val semaphore = Semaphore(concurrencyLimit)
+        updates.value?.forEach { update ->
+            // launch a new co-routine for each app to update
+            coroutineScope.launch {
+                // suspend here until we get a permit from the semaphore (there's free workers)
+                semaphore.withPermit {
+                    updateApp(update)
+                }
+            }
+        }
+    }
+
+    private suspend fun updateApp(update: AppUpdateItem) {
+        val app = db.getAppDao().getApp(update.repoId, update.packageName) ?: return
+        appInstallManager.install(
+            appMetadata = app.metadata,
+            // we know this is true, because we set this above in loadUpdates()
+            version = update.update as AppVersion,
+            currentVersionName = update.installedVersionName,
+            repo = repoManager.getRepository(update.repoId) ?: return,
+            iconDownloadRequest = update.iconDownloadRequest
+        )
     }
 }

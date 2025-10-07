@@ -215,7 +215,7 @@ fun MyApps(
                                     .weight(1f),
                             )
                             Button(
-                                onClick = {},
+                                onClick = myAppsInfo::updateAll,
                                 modifier = Modifier.padding(end = 16.dp),
                             ) {
                                 Text(stringResource(R.string.update_all))
@@ -356,6 +356,7 @@ fun MyAppsPreview() {
             )
         )
         val app1 = AppUpdateItem(
+            repoId = 1,
             packageName = "B1",
             name = "App Update 123",
             installedVersionName = "1.0.1",
@@ -363,6 +364,7 @@ fun MyAppsPreview() {
             whatsNew = "This is new, all is new, nothing old.",
         )
         val app2 = AppUpdateItem(
+            repoId = 2,
             packageName = "B2",
             name = Names.randomName,
             installedVersionName = "3.0.1",

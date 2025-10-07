@@ -81,6 +81,10 @@ class MyAppsViewModel @Inject constructor(
         installedAppsLiveData.removeObserver(installedAppsObserver)
     }
 
+    fun updateAll() {
+        updatesManager.updateAll()
+    }
+
     fun search(query: String) {
         searchQuery.value = query
     }

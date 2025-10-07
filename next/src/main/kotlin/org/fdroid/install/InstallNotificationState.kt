@@ -38,10 +38,20 @@ data class InstallNotificationState(
      */
     val isInstallingSomeApp: Boolean = apps.any { it.category == AppStateCategory.INSTALLING }
 
+    /**
+     * Returns true if *all* apps being installed are updates to existing apps.
+     */
+    private val isUpdatingApps: Boolean = apps.all { it.currentVersionName != null }
+
     fun getTitle(context: Context): String {
+        val titleRes = if (isUpdatingApps) {
+            R.plurals.notification_updating_title
+        } else {
+            R.plurals.notification_installing_title
+        }
         val numActiveApps: Int = apps.count { it.category != AppStateCategory.INSTALLED }
         val installTitle = context.resources.getQuantityString(
-            R.plurals.notification_installing_title,
+            titleRes,
             numActiveApps,
             numActiveApps,
         )

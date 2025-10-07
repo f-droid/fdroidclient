@@ -103,6 +103,7 @@ fun UpdatableAppRow(
 @Composable
 fun UpdatableAppRowPreview() {
     val app1 = AppUpdateItem(
+        repoId = 1,
         packageName = "A",
         name = "App Update 123",
         installedVersionName = "1.0.1",
@@ -110,6 +111,7 @@ fun UpdatableAppRowPreview() {
         whatsNew = "This is new, all is new, nothing old.",
     )
     val app2 = AppUpdateItem(
+        repoId = 2,
         packageName = "B",
         name = "App Update 456",
         installedVersionName = "1.0.1",

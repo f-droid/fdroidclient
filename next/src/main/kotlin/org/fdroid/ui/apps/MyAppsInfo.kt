@@ -6,6 +6,7 @@ import org.fdroid.install.InstallState
 interface MyAppsInfo {
     val model: MyAppsModel
     fun refresh()
+    fun updateAll()
     fun changeSortOrder(sort: AppListSortOrder)
     fun search(query: String)
     fun confirmAppInstall(packageName: String, state: InstallState.UserConfirmationNeeded)
