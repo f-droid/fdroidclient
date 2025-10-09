@@ -1,14 +1,8 @@
 package org.fdroid.install
 
-import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
-import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
-import android.content.Intent
 import androidx.annotation.StringRes
-import org.fdroid.MainActivity
 import org.fdroid.next.R
-import org.fdroid.ui.IntentRouter.Companion.ACTION_MY_APPS
 import kotlin.math.roundToInt
 
 data class InstallNotificationState(
@@ -115,14 +109,6 @@ data class InstallNotificationState(
             }
         }
         return sb.toString()
-    }
-
-    fun getPendingIntent(context: Context): PendingIntent {
-        val i = Intent(ACTION_MY_APPS).apply {
-            setClass(context, MainActivity::class.java)
-        }
-        val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
-        return PendingIntent.getActivity(context, 0, i, flags)
     }
 }
 

@@ -37,6 +37,18 @@ class UpdatesManager @Inject constructor(
     private val _numUpdates = MutableStateFlow(0)
     val numUpdates = _numUpdates.asStateFlow()
 
+    val notificationStates: UpdateNotificationState
+        get() = UpdateNotificationState(
+            updates = updates.value?.map { update ->
+                AppUpdate(
+                    packageName = update.packageName,
+                    name = update.name,
+                    currentVersionName = update.installedVersionName,
+                    updateVersionName = update.update.versionName,
+                )
+            } ?: emptyList()
+        )
+
     init {
         loadUpdates()
     }

@@ -8,6 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import mu.KotlinLogging
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.NotificationManager
@@ -119,6 +120,7 @@ class RepoUpdateManager(
         notificationManager = notificationManager,
     )
 
+    private val log = KotlinLogging.logger { }
     private val isUpdateNotificationEnabled = true
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating = _isUpdating.asStateFlow()
@@ -132,10 +134,8 @@ class RepoUpdateManager(
     }
 
     @WorkerThread
-    fun updateRepos() {
-        if (isUpdating.value) {
-            Log.w(TAG, "Already updating repositories: updateRepos()")
-        }
+    suspend fun updateRepos() {
+        if (isUpdating.value) log.warn { "Already updating repositories: updateRepos()" }
         // TODO
 //            if (timeSinceLastCheck < MIN_UPDATE_INTERVAL_MILLIS) {
 //                Log.i(TAG, "Not updating, only $timeSinceLastCheck ms since last check.")
@@ -172,7 +172,12 @@ class RepoUpdateManager(
             // TODO fdroidPrefs.lastUpdateCheck = System.currentTimeMillis()
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
-                updatesManager.loadUpdates()
+                updatesManager.loadUpdates().join()
+                val numUpdates = updatesManager.numUpdates.value
+                if (numUpdates > 0) {
+                    val states = updatesManager.notificationStates
+                    notificationManager.showAppUpdatesAvailableNotification(states)
+                }
             }
         } finally {
             notificationManager.cancelUpdateRepoNotification()
@@ -182,9 +187,8 @@ class RepoUpdateManager(
 
     @WorkerThread
     fun updateRepo(repoId: Long): IndexUpdateResult {
-        if (isUpdating.value) {
-            Log.w(TAG, "Already updating repositories: updateRepo($repoId)")
-        }
+        if (isUpdating.value) log.warn { "Already updating repositories: updateRepo($repoId)" }
+
         val repo = repoManager.getRepository(repoId) ?: return IndexUpdateResult.NotFound
         _isUpdating.value = true
         return try {

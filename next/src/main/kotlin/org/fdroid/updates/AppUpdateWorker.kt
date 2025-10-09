@@ -88,6 +88,7 @@ class AppUpdateWorker @AssistedInject constructor(
             log.error(e) { "Error while running setForeground: " }
         }
         return try {
+            nm.cancelAppUpdatesAvailableNotification()
             // Updating apps will try start a foreground service
             // and it will "share" the same notification.
             // This is easier than trying to tell the [AppInstallManager]

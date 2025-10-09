@@ -1,7 +1,11 @@
 package org.fdroid
 
 import android.Manifest.permission.POST_NOTIFICATIONS
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationChannelCompat
@@ -10,17 +14,22 @@ import androidx.core.app.NotificationCompat.BigTextStyle
 import androidx.core.app.NotificationCompat.CATEGORY_SERVICE
 import androidx.core.app.NotificationCompat.PRIORITY_HIGH
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
 import androidx.core.content.ContextCompat.checkSelfPermission
 import dagger.hilt.android.qualifiers.ApplicationContext
+import mu.KotlinLogging
 import org.fdroid.install.InstallNotificationState
 import org.fdroid.next.R
+import org.fdroid.ui.IntentRouter.Companion.ACTION_MY_APPS
+import org.fdroid.updates.UpdateNotificationState
 import javax.inject.Inject
 
 class NotificationManager @Inject constructor(
     @param:ApplicationContext private val context: Context,
 ) {
 
+    private val log = KotlinLogging.logger {}
     private val nm = NotificationManagerCompat.from(context)
     private var lastRepoUpdateNotification = 0L
 
@@ -28,9 +37,11 @@ class NotificationManager @Inject constructor(
         const val NOTIFICATION_ID_REPO_UPDATE: Int = 0
         const val NOTIFICATION_ID_APP_INSTALLS: Int = 1
         const val NOTIFICATION_ID_APP_INSTALL_SUCCESS: Int = 2
+        const val NOTIFICATION_ID_APP_UPDATES_AVAILABLE: Int = 3
         private const val CHANNEL_UPDATES = "update-channel"
         private const val CHANNEL_INSTALLS = "install-channel"
         private const val CHANNEL_INSTALL_SUCCESS = "install-success-channel"
+        private const val CHANNEL_UPDATES_AVAILABLE = "updates-available-channel"
     }
 
     init {
@@ -50,6 +61,10 @@ class NotificationManager @Inject constructor(
             NotificationChannelCompat.Builder(CHANNEL_INSTALL_SUCCESS, IMPORTANCE_LOW)
                 .setName(s(R.string.notification_channel_install_success_title))
                 .setDescription(s(R.string.notification_channel_install_success_description))
+                .build(),
+            NotificationChannelCompat.Builder(CHANNEL_UPDATES_AVAILABLE, IMPORTANCE_DEFAULT)
+                .setName(s(R.string.notification_channel_updates_available_title))
+                .setDescription(s(R.string.notification_channel_updates_available_description))
                 .build(),
         )
         nm.createNotificationChannelsCompat(channels)
@@ -80,29 +95,30 @@ class NotificationManager @Inject constructor(
         .setOngoing(true)
         .setProgress(100, progress ?: 0, progress == null)
 
-    // TODO pass in bigText with apps and their version changes
-    fun showAppUpdatesAvailableNotification(numUpdates: Int) {
-        val n = getAppUpdatesAvailableNotification(numUpdates).build()
+    fun showAppUpdatesAvailableNotification(notificationState: UpdateNotificationState) {
+        val n = getAppUpdatesAvailableNotification(notificationState).build()
         if (checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
-            // TODO different ID
-            nm.notify(NOTIFICATION_ID_REPO_UPDATE, n)
+            nm.notify(NOTIFICATION_ID_APP_UPDATES_AVAILABLE, n)
         }
     }
 
-    private fun getAppUpdatesAvailableNotification(numUpdates: Int): NotificationCompat.Builder {
-        val title = context.resources.getQuantityString(
-            R.plurals.notification_summary_app_updates,
-            numUpdates, numUpdates,
-        )
-        val text = context.getString(R.string.notification_title_summary_app_update_available)
-        // TODO different channel
-        return NotificationCompat.Builder(context, CHANNEL_UPDATES)
+    private fun getAppUpdatesAvailableNotification(
+        state: UpdateNotificationState,
+    ): NotificationCompat.Builder {
+        val pi = getMyAppsPendingIntent(context)
+        return NotificationCompat.Builder(context, CHANNEL_UPDATES_AVAILABLE)
             .setSmallIcon(R.drawable.ic_notification)
             .setPriority(PRIORITY_HIGH)
-            .setContentTitle(title)
-            .setContentText(text)
+            .setContentTitle(state.getTitle(context))
+            .setContentIntent(pi)
+            .setStyle(BigTextStyle().bigText(state.getBigText()))
             .setOngoing(false)
             .setAutoCancel(true)
+    }
+
+    fun cancelAppUpdatesAvailableNotification() {
+        log.info { "cancel app updates available notification" }
+        nm.cancel(NOTIFICATION_ID_APP_UPDATES_AVAILABLE)
     }
 
     fun showAppInstallNotification(installNotificationState: InstallNotificationState) {
@@ -114,7 +130,7 @@ class NotificationManager @Inject constructor(
     }
 
     fun getAppInstallNotification(state: InstallNotificationState): NotificationCompat.Builder {
-        val pi = state.getPendingIntent(context)
+        val pi = getMyAppsPendingIntent(context)
         val builder = NotificationCompat.Builder(context, CHANNEL_INSTALLS)
             .setSmallIcon(R.drawable.ic_notification)
             .setCategory(CATEGORY_SERVICE)
@@ -142,7 +158,7 @@ class NotificationManager @Inject constructor(
     }
 
     fun getInstallSuccessNotification(state: InstallNotificationState): NotificationCompat.Builder {
-        val pi = state.getPendingIntent(context)
+        val pi = getMyAppsPendingIntent(context)
         val builder = NotificationCompat.Builder(context, CHANNEL_INSTALL_SUCCESS)
             .setSmallIcon(R.drawable.ic_notification)
             .setCategory(CATEGORY_SERVICE)
@@ -151,6 +167,14 @@ class NotificationManager @Inject constructor(
             .setContentIntent(pi)
             .setAutoCancel(true)
         return builder
+    }
+
+    private fun getMyAppsPendingIntent(context: Context): PendingIntent {
+        val i = Intent(ACTION_MY_APPS).apply {
+            setClass(context, MainActivity::class.java)
+        }
+        val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+        return PendingIntent.getActivity(context, 0, i, flags)
     }
 
     private fun s(@StringRes id: Int): String {

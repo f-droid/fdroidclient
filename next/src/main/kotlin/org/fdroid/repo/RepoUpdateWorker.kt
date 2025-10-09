@@ -97,7 +97,13 @@ class RepoUpdateWorker @AssistedInject constructor(
     private val log = KotlinLogging.logger { }
 
     override suspend fun doWork(): Result {
-        log.info { "Starting RepoUpdateWorker... $runAttemptCount" }
+        log.info {
+            if (SDK_INT >= 31) {
+                "Starting RepoUpdateWorker... $this stopReason: ${this.stopReason} $runAttemptCount"
+            } else {
+                "Starting RepoUpdateWorker... $this $runAttemptCount"
+            }
+        }
         try {
             setForeground(getForegroundInfo())
         } catch (e: Exception) {
@@ -110,7 +116,17 @@ class RepoUpdateWorker @AssistedInject constructor(
             Result.success()
         } catch (e: Exception) {
             log.error(e) { "Error updating repos" }
-            Result.failure()
+            if (runAttemptCount <= 3) {
+                Result.retry()
+            } else {
+                log.warn { "Not retrying, already tried $runAttemptCount times." }
+                Result.failure()
+            }
+        } finally {
+            log.info {
+                if (SDK_INT >= 31) "finished doWork $this (stopReason: ${this.stopReason})"
+                else "finished doWork $this"
+            }
         }
     }
 

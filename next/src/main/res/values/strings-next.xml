@@ -65,6 +65,8 @@
 
     <string name="notification_channel_install_success_title">Automatically installed apps</string>
     <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically.</string>
+    <string name="notification_channel_updates_available_title">Informs about available app updates</string>
+    <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found.</string>
     <plurals name="notification_installing_title">
         <item quantity="one">Installing %1$d app…</item>
         <item quantity="other">Installing %1$d apps…</item>
