@@ -3,6 +3,7 @@ package org.fdroid.ui
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -114,6 +115,13 @@ fun AboutHeader(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .padding(top = 16.dp)
                 .alpha(0.75f)
+                .combinedClickable(
+                    onClick = { },
+                    onLongClick = {
+                        // intentional crash for testing crash reporter, could be moved elsewhere
+                        error("BOOOM!")
+                    },
+                )
         )
     }
 }

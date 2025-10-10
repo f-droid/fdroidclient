@@ -22,6 +22,9 @@ android {
     }
 
     buildTypes {
+        all {
+            buildConfigField("String", "ACRA_REPORT_EMAIL", "\"t+fdroidnext@grobox.de\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -82,6 +85,9 @@ dependencies {
     implementation(libs.slf4j.api)
     implementation(libs.logback.android)
     implementation(libs.microutils.kotlin.logging)
+
+    implementation(libs.acra.mail)
+    implementation(libs.acra.dialog)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)

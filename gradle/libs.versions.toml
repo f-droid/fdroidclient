@@ -152,6 +152,7 @@ jmdns = { module = "org.jmdns:jmdns", version.ref = "jmdns" }
 zxing-core = { module = "com.google.zxing:core", version.ref = "zxingCore" }
 acra-mail = { module = "ch.acra:acra-mail", version.ref = "acra" }
 acra-dialog = { module = "ch.acra:acra-dialog", version.ref = "acra" }
+acra-notification = { module = "ch.acra:acra-notification", version.ref = "acra" }
 adapterdelegates4 = { module = "com.hannesdorfmann:adapterdelegates4", version.ref = "adapterdelegates4" }
 bcprov-jdk15to18 = { module = "org.bouncycastle:bcprov-jdk15to18", version.ref = "bouncycastle" }
 bcpkix-jdk15to18 = { module = "org.bouncycastle:bcpkix-jdk15to18", version.ref = "bouncycastle" }

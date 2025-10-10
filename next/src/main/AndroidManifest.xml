@@ -67,6 +67,12 @@
                 <data android:pathPattern="/.*/packages/.*" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="org.fdroid.ui.CrashActivity"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance"
+            android:process=":acra" />
 
         <service
             android:name="org.fdroid.install.AppInstallService"

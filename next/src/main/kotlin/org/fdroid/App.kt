@@ -17,12 +17,22 @@ import coil3.request.Options
 import coil3.request.crossfade
 import coil3.util.DebugLogger
 import dagger.hilt.android.HiltAndroidApp
+import org.acra.ACRA
+import org.acra.ReportField
+import org.acra.config.dialog
+import org.acra.config.mailSender
+import org.acra.data.StringFormat.JSON
+import org.acra.ktx.initAcra
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.LocalIconFetcher
 import org.fdroid.download.PackageName
 import org.fdroid.download.coil.DownloadRequestFetcher
 import org.fdroid.next.BuildConfig
+import org.fdroid.next.BuildConfig.APPLICATION_ID
+import org.fdroid.next.BuildConfig.VERSION_NAME
+import org.fdroid.next.R
 import org.fdroid.repo.RepoUpdateWorker
+import org.fdroid.ui.CrashActivity
 import org.fdroid.updates.AppUpdateWorker
 import javax.inject.Inject
 
@@ -40,12 +50,47 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
             .setWorkerFactory(workerFactory)
             .build()
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        initAcra {
+            reportFormat = JSON
+            reportContent = listOf(
+                ReportField.USER_COMMENT,
+                ReportField.PACKAGE_NAME,
+                ReportField.APP_VERSION_NAME,
+                ReportField.ANDROID_VERSION,
+                ReportField.PRODUCT,
+                ReportField.BRAND,
+                ReportField.PHONE_MODEL,
+                ReportField.DISPLAY,
+                ReportField.TOTAL_MEM_SIZE,
+                ReportField.AVAILABLE_MEM_SIZE,
+                ReportField.CUSTOM_DATA,
+                ReportField.STACK_TRACE_HASH,
+                ReportField.STACK_TRACE,
+            )
+            reportSendFailureToast = getString(R.string.crash_report_error)
+            sendReportsInDevMode = true
+            dialog {
+                reportDialogClass = CrashActivity::class.java
+            }
+            mailSender {
+                mailTo = BuildConfig.ACRA_REPORT_EMAIL
+                subject = "$APPLICATION_ID $VERSION_NAME: Crash Report"
+                reportFileName = "ACRA-report.stacktrace.json"
+            }
+        }
+    }
+
     @OptIn(ExperimentalComposeRuntimeApi::class)
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
             Composer.setDiagnosticStackTraceMode(ComposeStackTraceMode.SourceInformation)
         }
+        // bail out here if we are the ACRA process to not initialize anything in crash process
+        if (ACRA.isACRASenderServiceProcess()) return
+
         RepoUpdateWorker.scheduleOrCancel(applicationContext)
         AppUpdateWorker.scheduleOrCancel(applicationContext)
     }
