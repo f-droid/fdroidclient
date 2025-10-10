@@ -47,6 +47,8 @@ import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.lists.AppListViewModel
 import org.fdroid.ui.repositories.Repositories
 import org.fdroid.ui.repositories.RepositoriesViewModel
+import org.fdroid.ui.settings.Settings
+import org.fdroid.ui.settings.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
@@ -217,7 +219,14 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     }
                 }
                 entry(NavigationKey.Settings) {
-                    Settings { backStack.removeLastOrNull() }
+                    val viewModel = hiltViewModel<SettingsViewModel>()
+                    Settings(
+                        onSaveLogcat = {
+                            viewModel.onSaveLogcat(it)
+                            backStack.removeLastOrNull()
+                        },
+                        onBackClicked = { backStack.removeLastOrNull() },
+                    )
                 }
                 entry(NavigationKey.About) {
                     About { backStack.removeLastOrNull() }
