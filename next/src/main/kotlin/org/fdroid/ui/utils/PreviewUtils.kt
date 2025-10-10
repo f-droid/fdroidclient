@@ -19,6 +19,9 @@ import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
 import org.fdroid.ui.lists.AppListModel
 import org.fdroid.ui.lists.AppListType
+import org.fdroid.ui.repositories.RepositoryInfo
+import org.fdroid.ui.repositories.RepositoryItem
+import org.fdroid.ui.repositories.RepositoryModel
 import java.util.concurrent.TimeUnit.DAYS
 
 object Names {
@@ -218,4 +221,16 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
         state: InstallState.UserConfirmationNeeded,
     ) {
     }
+}
+
+fun getRepositoriesInfo(
+    model: RepositoryModel,
+    currentRepositoryId: Long? = null,
+): RepositoryInfo = object : RepositoryInfo {
+    override val model: RepositoryModel = model
+    override val currentRepositoryId: Long? = currentRepositoryId
+    override fun onRepositorySelected(repositoryItem: RepositoryItem) {}
+    override fun onAddRepo() {}
+    override fun onRepositoryMoved(fromIndex: Int, toIndex: Int) {}
+    override fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long) {}
 }

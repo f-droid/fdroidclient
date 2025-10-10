@@ -7,14 +7,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,17 +21,12 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.getRepositoriesInfo
 
 @Composable
-@OptIn(
-    ExperimentalMaterial3Api::class, ExperimentalMaterial3AdaptiveApi::class,
-    ExperimentalMaterial3ExpressiveApi::class
-)
+@OptIn(ExperimentalMaterial3Api::class)
 fun Repositories(
-    repositories: List<RepositoryItem>?,
-    currentRepositoryId: Long?,
-    onRepositorySelected: (RepositoryItem) -> Unit,
-    onAddRepo: () -> Unit,
+    info: RepositoryInfo,
     onBackClicked: () -> Unit,
 ) {
     Scaffold(
@@ -54,7 +47,7 @@ fun Repositories(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onAddRepo,
+                onClick = info::onAddRepo,
                 modifier = Modifier.padding(16.dp)
             ) {
                 Icon(
@@ -64,13 +57,9 @@ fun Repositories(
             }
         }
     ) { paddingValues ->
-        if (repositories == null) BigLoadingIndicator()
+        if (info.model.repositories == null) BigLoadingIndicator()
         else RepositoriesList(
-            repositories = repositories,
-            currentRepositoryId = currentRepositoryId,
-            onRepositorySelected = {
-                onRepositorySelected(it)
-            },
+            info = info,
             modifier = Modifier
                 .padding(paddingValues),
         )
@@ -84,7 +73,9 @@ fun Repositories(
 @Composable
 fun RepositoriesScaffoldLoadingPreview() {
     FDroidContent {
-        Repositories(null, null, {}, {}) { }
+        val model = RepositoryModel(null)
+        val info = getRepositoriesInfo(model)
+        Repositories(info) {}
     }
 }
 
@@ -111,10 +102,12 @@ fun RepositoriesScaffoldPreview() {
                 timestamp = System.currentTimeMillis(),
                 lastUpdated = null,
                 weight = 2,
-                enabled = true,
+                enabled = false,
                 name = "My second repository",
             ),
         )
-        Repositories(repos, repos[0].repoId, {}, {}) { }
+        val model = RepositoryModel(repos)
+        val info = getRepositoriesInfo(model, repos[0].repoId)
+        Repositories(info) { }
     }
 }

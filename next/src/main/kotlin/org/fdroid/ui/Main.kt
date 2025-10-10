@@ -47,6 +47,9 @@ import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.lists.AppListViewModel
 import org.fdroid.ui.repositories.Repositories
 import org.fdroid.ui.repositories.RepositoriesViewModel
+import org.fdroid.ui.repositories.RepositoryInfo
+import org.fdroid.ui.repositories.RepositoryItem
+import org.fdroid.ui.repositories.RepositoryModel
 import org.fdroid.ui.settings.Settings
 import org.fdroid.ui.settings.SettingsViewModel
 
@@ -190,18 +193,29 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     },
                 ) {
                     val viewModel = hiltViewModel<RepositoriesViewModel>()
-                    val repos = viewModel.repos.collectAsStateWithLifecycle(null).value
-                    Repositories(
-                        repositories = repos,
-                        currentRepositoryId = if (isBigScreen) {
+                    val info = object : RepositoryInfo {
+                        override val model: RepositoryModel =
+                            viewModel.model.collectAsStateWithLifecycle().value
+
+                        override val currentRepositoryId: Long? = if (isBigScreen) {
                             (backStack.last() as? NavigationKey.RepoDetails)?.repoId
-                        } else null,
-                        onRepositorySelected = {
-                            viewModel.setVisibleRepository(it)
-                            backStack.add(NavigationKey.RepoDetails(it.repoId))
-                        },
-                        onAddRepo = viewModel::addRepo,
-                    ) {
+                        } else null
+
+                        override fun onRepositorySelected(repositoryItem: RepositoryItem) {
+                            backStack.add(NavigationKey.RepoDetails(repositoryItem.repoId))
+                        }
+
+                        override fun onAddRepo() = viewModel.addRepo()
+
+                        override fun onRepositoryMoved(fromIndex: Int, toIndex: Int) =
+                            viewModel.onRepositoriesMoved(fromIndex, toIndex)
+
+                        override fun onRepositoriesFinishedMoving(
+                            fromRepoId: Long,
+                            toRepoId: Long,
+                        ) = viewModel.onRepositoriesFinishedMoving(fromRepoId, toRepoId)
+                    }
+                    Repositories(info) {
                         backStack.removeLastOrNull()
                     }
                 }
