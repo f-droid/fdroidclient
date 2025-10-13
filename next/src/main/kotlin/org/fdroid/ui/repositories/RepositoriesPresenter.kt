@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 fun RepositoriesPresenter(
     repositoriesFlow: Flow<List<RepositoryItem>>,
     repoSortingMapFlow: StateFlow<Map<Long, Int>>,
+    showOnboardingFlow: StateFlow<Boolean>,
 ): RepositoryModel {
     val repositories = repositoriesFlow.collectAsState(null).value
     val repoSortingMap = repoSortingMapFlow.collectAsState().value
@@ -17,5 +18,6 @@ fun RepositoriesPresenter(
             // newly added repos will not be in repoSortingMap, so they need fallback
             repoSortingMap[repo.repoId] ?: repositories.find { it.repoId == repo.repoId }?.weight
         },
+        showOnboarding = showOnboardingFlow.collectAsState().value,
     )
 }

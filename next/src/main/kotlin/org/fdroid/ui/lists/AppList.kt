@@ -24,7 +24,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -52,19 +51,16 @@ import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
-import kotlinx.coroutines.FlowPreview
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.getAppListInfo
-import org.fdroid.utils.OnboardingCard
+import org.fdroid.ui.utils.getHintOverlayColor
 
 @Composable
-@OptIn(
-    ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class,
-    FlowPreview::class
-)
+@OptIn(ExperimentalMaterial3Api::class)
 fun AppList(
     appListInfo: AppListInfo,
     currentPackageName: String?,
@@ -76,21 +72,25 @@ fun AppList(
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
 
     val hintController = rememberHintController(
-        overlay = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
+        overlay = getHintOverlayColor(),
     )
     val hint = rememberHint {
         OnboardingCard(
             title = stringResource(R.string.onboarding_app_list_filter_title),
             message = stringResource(R.string.onboarding_app_list_filter_message),
             modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
-        ) {
-            appListInfo.actions.onOnboardingSeen()
-            hintController.dismiss()
-        }
+            onGotIt = {
+                appListInfo.actions.onOnboardingSeen()
+                hintController.dismiss()
+            },
+        )
     }
     val hintAnchor = rememberHintAnchorState(hint)
     LaunchedEffect(appListInfo.showOnboarding) {
-        if (appListInfo.showOnboarding) hintController.show(hintAnchor)
+        if (appListInfo.showOnboarding) {
+            hintController.show(hintAnchor)
+            appListInfo.actions.onOnboardingSeen()
+        }
     }
 
     Scaffold(

@@ -18,9 +18,9 @@ import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import org.fdroid.utils.DraggableItem
-import org.fdroid.utils.dragContainer
-import org.fdroid.utils.rememberDragDropState
+import org.fdroid.ui.utils.DraggableItem
+import org.fdroid.ui.utils.dragContainer
+import org.fdroid.ui.utils.rememberDragDropState
 
 @Composable
 fun RepositoriesList(

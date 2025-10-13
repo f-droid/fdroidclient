@@ -7,10 +7,15 @@ import android.content.Intent
 import android.os.PowerManager
 import android.text.format.DateUtils
 import android.util.Log
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.UriHandler
 import androidx.core.content.ContextCompat
 import java.text.Normalizer
 import java.text.Normalizer.Form.NFKD
+
+@Composable
+fun getHintOverlayColor() = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f)
 
 fun Context.startActivitySafe(i: Intent?) {
     if (i == null) return

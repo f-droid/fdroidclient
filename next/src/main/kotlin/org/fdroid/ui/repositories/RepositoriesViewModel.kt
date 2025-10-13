@@ -15,12 +15,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import mu.KotlinLogging
 import org.fdroid.index.RepoManager
+import org.fdroid.settings.SettingsManager
 import javax.inject.Inject
 
 @HiltViewModel
 class RepositoriesViewModel @Inject constructor(
     app: Application,
     private val repoManager: RepoManager,
+    private val settingsManager: SettingsManager,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger { }
@@ -34,6 +36,7 @@ class RepositoriesViewModel @Inject constructor(
         }
     }
     private val repoSortingMap: MutableStateFlow<Map<Long, Int>>
+    private val showOnboarding = settingsManager.showRepositoriesOnboarding
 
     init {
         // just add repos to sortingMap, because they are already pre-sorted by weight
@@ -49,6 +52,7 @@ class RepositoriesViewModel @Inject constructor(
         RepositoriesPresenter(
             repositoriesFlow = repos,
             repoSortingMapFlow = repoSortingMap,
+            showOnboardingFlow = showOnboarding,
         )
     }
 
@@ -75,4 +79,6 @@ class RepositoriesViewModel @Inject constructor(
 
     fun addRepo() {
     }
+
+    fun onOnboardingSeen() = settingsManager.onRepositoriesOnboardingSeen()
 }

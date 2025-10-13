@@ -16,6 +16,8 @@ class SettingsManager @Inject constructor() {
     val appListSortOrder = _appListSortOrder.asStateFlow()
     private val _showFilterOnboarding = MutableStateFlow(true)
     val showFilterOnboarding = _showFilterOnboarding.asStateFlow()
+    private val _showRepositoriesOnboarding = MutableStateFlow(true)
+    val showRepositoriesOnboarding = _showRepositoriesOnboarding.asStateFlow()
 
     fun saveAppListFilter(sortOrder: AppListSortOrder, filterIncompatible: Boolean) {
         _appListSortOrder.value = sortOrder
@@ -24,6 +26,11 @@ class SettingsManager @Inject constructor() {
 
     fun onFilterOnboardingSeen() {
         _showFilterOnboarding.value = false
+        // TODO persist
+    }
+
+    fun onRepositoriesOnboardingSeen() {
+        _showRepositoriesOnboarding.value = false
         // TODO persist
     }
 

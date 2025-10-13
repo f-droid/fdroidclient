@@ -17,7 +17,7 @@
  * https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/foundation/foundation/integration-tests/foundation-demos/src/main/java/androidx/compose/foundation/demos/LazyColumnDragAndDropDemo.kt;drc=e6d33dd5d0a60001a5784d84123b05308d35f410
  */
 
-package org.fdroid.utils
+package org.fdroid.ui.utils
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring

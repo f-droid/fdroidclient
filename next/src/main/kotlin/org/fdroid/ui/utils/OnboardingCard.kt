@@ -1,4 +1,4 @@
-package org.fdroid.utils
+package org.fdroid.ui.utils
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn

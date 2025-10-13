@@ -2,6 +2,8 @@ package org.fdroid.ui.repositories
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -14,13 +16,20 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.viktormykhailiv.compose.hints.rememberHint
+import com.viktormykhailiv.compose.hints.rememberHintAnchorState
+import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.next.R
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.OnboardingCard
+import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepositoriesInfo
 
 @Composable
@@ -29,6 +38,30 @@ fun Repositories(
     info: RepositoryInfo,
     onBackClicked: () -> Unit,
 ) {
+    val hintController = rememberHintController(
+        overlay = getHintOverlayColor(),
+    )
+    val hint = rememberHint {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+            OnboardingCard(
+                title = stringResource(R.string.repo_list_info_title),
+                message = stringResource(R.string.repo_list_info_text),
+                modifier = Modifier
+                    .padding(horizontal = 32.dp, vertical = 8.dp),
+                onGotIt = {
+                    info.onOnboardingSeen()
+                    hintController.dismiss()
+                },
+            )
+        }
+    }
+    val hintAnchor = rememberHintAnchorState(hint)
+    LaunchedEffect(info.model.showOnboarding) {
+        if (info.model.showOnboarding) {
+            hintController.show(hintAnchor)
+            info.onOnboardingSeen()
+        }
+    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -43,6 +76,7 @@ fun Repositories(
                 title = {
                     Text(stringResource(R.string.app_details_repositories))
                 },
+                // TODO show when repos were last updated
             )
         },
         floatingActionButton = {
@@ -73,7 +107,7 @@ fun Repositories(
 @Composable
 fun RepositoriesScaffoldLoadingPreview() {
     FDroidContent {
-        val model = RepositoryModel(null)
+        val model = RepositoryModel(null, false)
         val info = getRepositoriesInfo(model)
         Repositories(info) {}
     }
@@ -106,7 +140,7 @@ fun RepositoriesScaffoldPreview() {
                 name = "My second repository",
             ),
         )
-        val model = RepositoryModel(repos)
+        val model = RepositoryModel(repos, false)
         val info = getRepositoriesInfo(model, repos[0].repoId)
         Repositories(info) { }
     }

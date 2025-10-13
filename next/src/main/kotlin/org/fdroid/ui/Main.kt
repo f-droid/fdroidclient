@@ -201,6 +201,8 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             (backStack.last() as? NavigationKey.RepoDetails)?.repoId
                         } else null
 
+                        override fun onOnboardingSeen() = viewModel.onOnboardingSeen()
+
                         override fun onRepositorySelected(repositoryItem: RepositoryItem) {
                             backStack.add(NavigationKey.RepoDetails(repositoryItem.repoId))
                         }

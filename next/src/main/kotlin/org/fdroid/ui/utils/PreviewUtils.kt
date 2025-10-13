@@ -229,6 +229,7 @@ fun getRepositoriesInfo(
 ): RepositoryInfo = object : RepositoryInfo {
     override val model: RepositoryModel = model
     override val currentRepositoryId: Long? = currentRepositoryId
+    override fun onOnboardingSeen() {}
     override fun onRepositorySelected(repositoryItem: RepositoryItem) {}
     override fun onAddRepo() {}
     override fun onRepositoryMoved(fromIndex: Int, toIndex: Int) {}
